@@ -1,0 +1,70 @@
+Parmanode Plebian Edition: README
+08/April/2023
+
+
+ABOUT
+
+Parmanode is a software package for home computers (Linux, Mac, or Windows)
+that comes with an installation wizard so that non-technical users have
+the ability to download and verify Bitcoin Core and sync using an external 
+or internal dirve, and also have configuration options presented to them
+with automation. No manual bitcoin.conf file editing will be required.
+
+This edition is for Linux Only.
+
+The aim is that all people need to do is read the menu options carefully - 
+no command line interaction is required. For example, bitcoin-cli commands
+are available in a menu, and pruning can be activated from menu options.
+
+The software also comes with helpful information, including links to various
+articles on my website, armantheparmn.com, so that Bitcoiners keep learning
+more about Bitcoin and how to be safely self-sovereign. Information on how 
+to connect various wallets to the node is provided in the menus. Much effort
+has not been made for this aspect of the software in the first version; more
+will be done later.
+
+The most basic usage would be an internal drive to sync, running the latest
+version of Bitcoin Core, and connecting Sparrow Bitcoin Wallet or Specter
+Desktop Wallet directly to the node on the same computer.
+
+The initial release is for the Linux user only, and although they are the
+ones least likely to need an easy node installation package, this was chosen
+so that the code can be more easily written and easier to follow. Later version
+will be modified for Mac users. The hardest will be reprogramming for 
+Windows PowerShell, if ever. The Mac version will require a Docker container 
+running Linux (installed automatically by the software). Some of the code 
+for that is done, but I decided halfway through coding that to switch over
+to Linux. This avoids the complication of trying to do too many things at 
+once. Once the Linux version is running smoothly, the Mac version will be 
+finished.
+
+BITCOIN CORE VERSION included... 
+
+Bitcoin 24.01
+
+        verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
+        User created: bitcoin
+        Group created: bitcoin
+
+
+DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
+
+Internal drive:
+               
+               /|--- $HOME ---|
+                |             |--- .bitcoin                        (may or may not be a symlink)
+                |             |--- .parmanode                      (config files)
+                |             |--- parmanode ---|
+                |                               |--- bitcoin ---|  (keeps B core download and pgp stuff)
+                |--- media ---|
+                |             |--- parmanode ---|                  (ext drive mountpoint) 
+                |                               |--- .bitcoin ---| (symlink target)
+                |           
+                |--- usr  --- |--- local  ------|--- bin ---|       (keeps bitcoin binary files)
+
+
+If an external drive is used, a symlink on the internal drive will poing to the .bitcoin directory.
+
+               /|--- .bitcoin ---|
+
+
