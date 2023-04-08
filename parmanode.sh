@@ -22,9 +22,9 @@
 
 	clean_exit 
 
-# Debug - delete before release.
+# Debug - comment out before release.
 
-	debug_point "Pause here to check for error output before clear screen." 
+	# debug_point "Pause here to check for error output before clear screen." 
 
 
 #Begin program:
