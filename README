@@ -70,7 +70,7 @@ If an external drive is used, a symlink on the internal drive will poing to the 
 
 HOW TO RUN
 
-If you have git installed (or get it with 'sudo apt install git'), you can
+If you have git installed (you can get it with 'sudo apt install git'),
 make a directory on you computer, navigate to it then type:
 
 git clone https://github.com/ArmanTheParman/Parmanode.git
