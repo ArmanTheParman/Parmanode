@@ -2,7 +2,7 @@ function which_os {
 if [[ "$(uname -s)" == "Darwin" ]]
 then
     OS="Mac"
-    return 0
+    return 1
 fi
 
 if [[ "$(uname -s)" == "Linux" ]]
