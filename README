@@ -63,7 +63,7 @@ Internal drive:
                 |--- usr  --- |--- local  ------|--- bin ---|       (keeps bitcoin binary files)
 
 
-If an external drive is used, a symlink on the internal drive will poing to the .bitcoin directory.
+If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
                /|--- .bitcoin ---|
 
