@@ -41,10 +41,17 @@ echo "
 "                  
 read repent
 
-if [[ $repent == "I'm sorry" ]] ; then break ; else echo -e "\nPlease wait patiently for computer to destroy itself, mwahaha! Or hit <enter> to have another go.\n" ; read ; continue ; fi
+if [[ $repent == "I'm sorry" ]] ; then 
+        break 
+    else    
+        set_terminal 
+        echo "Please wait patiently for computer to destroy itself, mwahaha!"
+        echo "Or, hit <enter> to have another go." 
+        read 
+        continue 
+    fi
 
 done
 
 return 0
-
 }
