@@ -35,11 +35,8 @@ q | Q | quit)
     exit 0
     ;;
 *)
-    echo "
-
-Invalid choice, try again. Hit <enter>"
-    read
-
+    invalid
 esac
+
 done
 }
