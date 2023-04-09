@@ -1,12 +1,3 @@
-#!/bin/bash
-
-# source all the  modules.
-
-	for file in ./**/*.sh
-	do
-	source $file
-	done
-
 
 # Check OS function and store in variable for later.
 

@@ -174,7 +174,7 @@ echo "
 
                          (up) set a username and password
 
-			 (c) use cookie (default setting)
+			 (c)  use cookie (default setting)
 
 ########################################################################################
 
@@ -183,18 +183,22 @@ choose "xpq" ; exit_choice ; set_terminal
 
 case $choice in
 	up|UP|Up|uP)
-		echo "Please enter an RPC username: " '\n'
+		echo "Please enter an RPC username:
+	       	" 
 		read rpcuser
 		
 		while true ; do
 		set_terminal
-		echo "Please enter an PRC password: " '\n'
+		echo "Please enter an PRC password:
+	       	" 
 		read rpcpassword
-		echo "Please repeat the password: " '\n'
+		echo "Please repeat the password:
+	       	"
 		read rpcpassword2
 		
 		if [[ $rpcpassword != $rpcpassword2 ]] ; then
-		       echo "Passwords do not match. Try again."'\n'
+		       echo "Passwords do not match. Try again.
+		       "
                        continue
 		else
 	               break
