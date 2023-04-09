@@ -1,5 +1,5 @@
 #USAGE:
-#exit_choice ; if [[ $? ==1 ]]; then return 1 ; fi 
+#exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi 
 
 function exit_choice {
 read choice
