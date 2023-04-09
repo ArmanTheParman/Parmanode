@@ -1,6 +1,5 @@
 function install_parmanode {
 
-
 set_terminal
 
 install_check "parmanode-start" #checks parmanode.conf, and exits if already installed.

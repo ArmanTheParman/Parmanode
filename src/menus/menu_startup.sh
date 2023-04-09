@@ -1,7 +1,4 @@
-#Refactored for Linux
-
 function menu_startup {
-set_terminal
 while true
 do
 set_terminal
@@ -21,22 +18,25 @@ echo "
 read choice
 
 case $choice in
-i)
-    clear
-    menu_install
-    ;;
 
-p)    
-    menu_parmanode
-    continue
-    ;;
+    i)
+        menu_install
+        ;;
 
-q | Q | quit)
-    exit 0
-    ;;
-*)
-    invalid
+    p)    
+        menu_parmanode
+        ;;
+
+    q | Q | quit)
+        exit 0
+        ;;
+
+    *)
+        invalid
+
 esac
 
 done
+
+return 0
 }
