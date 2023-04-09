@@ -1,13 +1,24 @@
-function sudo_check {
+# This page needs a log of work and has errors.
 
-while true ; do
+
+function sudo_check {
+set_terminal
+if command -v sudo >/dev/null 2>&1
+	then return 0
+else
+	echo "Need sudo to run Parmanod. Aborting"
+	enter_continue
+	exit 0
+	fi
+
+
+function sudo_check_temp {
+
 set_terminal
 
 if command -v sudo >/dev/null 2>&1
-
-then break
-
-else 
+	then return 0 
+	fi
 
 echo "
 ########################################################################################
@@ -26,6 +37,7 @@ if [[ $OS = "Mac" ]] ; then
 
 ########################################################################################
 "
+enter_exit ; exit 1
 else
 echo "
     If you can't get passed this checkpoint, you could try venturing into the world
@@ -37,15 +49,25 @@ echo "
 
 ########################################################################################
 "
-enter_exit ; break
 fi
-
-done
-return 0
+enter_exit ;
+exit 1
 }
 
-function gpg_check {
 
+function gpg_check {
+if command -v gpg >/dev/null 2>&1 ; then
+return 0
+else
+echo "Parmanode needs gpg to run. Aborting"
+enter_continue
+exit 1
+}
+
+
+
+function gpg_check_temp {
+while true ; do
 set_terminal
 if command -v gpg >/dev/null 2>&1
 then return 0 
@@ -116,6 +138,6 @@ if [[ $choice == "q" ]] ; then exit 0 ; fi
 invalid
 continue
 done
-
+fi
 return 0
 }
