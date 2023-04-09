@@ -6,6 +6,7 @@ set_terminal
 format_warnings
 if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
 select_drive_ID
+if [ $? == 1 ] ; then return 1 ; fi
 
 #User has typed sd? , or overidden the requirement, to proceed. All failures to this point return 1.
 
@@ -108,27 +109,35 @@ return 0
 
 function select_drive_ID {
 
-read -p "Hit <enter> to see the list..."
-
 set_terminal
 
-lsblk
+while true ; do
 
+if [[ $OS == "Linux" ]] 
+then
+lsblk
 echo "Enter the identifier of the disk to be formatted (e.g. \"sdb\", \"sdc\", \"sdd\"." 
-echo "Do not include partition numbers. Eg. don't type sdb1 or sdb2, just sdb):
+echo "Do not include partition numbers. Eg. don't type \"sdb1\" or \"sdb2\", just \"sdb\"):
 " 
+else #(Mac) 
+diskutil list
+echo "Enter the identifier of the disk to be formatted (e.g. disk2 or disk3): " 
+echo "Do not include partition numbers. Eg. don't type disk2s1 or disk2s2, just disk2:"  
+fi
 read disk
 
-    if [[ $disk == "sda" ]]
-        then
-            echo "You must be crazy. Parmanode refuses to format the drive that runs your operating system.
-            " 
-            read "Hit <enter> to go back."
-            return 1
+    if [[ $disk == "sda" || $disk == "disk0" ]] ; then
+        echo "You must be crazy. Parmanode refuses to format the drive that runs your operating system.
+        " 
+        read "Hit <enter> to go back."
+        continue 
     fi
 
+case $OS in
+Linux)
+
     if [[ $disk =~ ^sd[a-z] ]]
-        then
+    then
         set_terminal
         sudo fdisk -l | grep "$disk" 
         echo -e "
@@ -139,14 +148,20 @@ read disk
 
                                (y)      Yes
 
-                               (n)      No
+                               (n)      No, try again.
+
+                               (q)      Quit
+            
 
 ########################################################################################
 "        
 choose "x"
 read confirm
-        if [[ $confirm != "y" ]] ; then return 1 ; fi
-        else
+        if [[ $confirm == "y" ]] ; then return 0 ; fi
+        if [[ $confirm == "n" ]] ; then continue ; fi
+        if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
+
+    else #regex else
         set_terminal
         echo "
 ########################################################################################
@@ -162,15 +177,65 @@ read confirm
 Hit <enter> to abort, or type "yolo" to destroy the drive."
 
 read choice
-        if [[ $choice != "yolo" ]] ; then return 1 ; fi
-        fi
+        if [[ $choice != "yolo" ]] ; then exit 0 ; fi
+        fi #regex fi
+;;
 
+Mac)
+    if [[ $disk =~ ^disk[1-9] ]] ; then
+    set_terminal
+    diskutil list
+echo -e "
+########################################################################################        
+
+    Take another look above and check it really is the drive you want to format.
+
+                               (y)      Yes
+
+                               (n)      No, try again
+
+                               (q)      Quit
+
+########################################################################################
+"        
+choose "x"
+read confirm
+        if [[ $confirm != "y" ]] ; then return 0 ; fi
+        if [[ $confirm == "n" ]] ; then continue ; fi
+        if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
+        
+
+    else # part of regex if
+        
+        set_terminal
+        echo "
+########################################################################################
+
+    Your entry does not match the pattern "disk" followed by a number.
+
+    This requirement is a precaution. If you have a non-standard drive, you 
+    may have a name with a different pattern. You can override this requirement
+    if you are sure you know what you are doing. 
+
+########################################################################################
+
+Hit <enter> to abort, or type "yolo" to destroy the drive."
+
+read choice
+        if [[ $choice == "yolo" ]] ; then return 0 ; else exit 0 ; fi
+    fi #regex fi ending
+;;
+esac
+done
 return 0
 }
 
 ########################################################################################
 
 function format_warnings {
+while true ; do
+set_terminal
+if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
 
@@ -183,7 +248,6 @@ echo "
 
                          (s)     skip formatting
     
-			 
     If skipping, make sure your drive is formatted and mounts to: 
 			 
 	                 /media/$(whoami)/parmanode
@@ -191,16 +255,38 @@ echo "
 ########################################################################################
 
 "
-choose "xq"
-
-read choice
-set_terminal
-if [[ $choice == "s" ]] 
-        then return 1 #skips formatting.
-	else
-	#exit if (y) not selected
-	if [[ $choice != 'y' ]] ; then return 1 ; fi 
 fi
+if [[ $OS == "Mac" ]] ; then
+echo "
+########################################################################################
+
+    YOU ARE ABOUT TO FORMAT THE DRIVE! All data on the drive will be erased.
+
+    If you skip formatting, make sure there is enough free capacity on the drive 
+    before running Bitcoin.
+                
+                             (y)     format drive
+
+                             (s)     skip formatting
+    
+    If skipping, make sure your drive is formatted. 
+    
+########################################################################################
+
+"
+fi
+choose "xq" ; read choice
+case $choice in 
+    s|S)
+        return 1 ;;
+    q|Q)
+        exit 0 ;;
+    y|Y)
+        break ;; # proceed to format drive below
+    *)
+        invalid ;;
+    esac
+done
 
 set_terminal
 echo "
@@ -225,6 +311,8 @@ echo "
 ########################################################################################
 
 "
+read -p "Hit <enter> to see the list..."
+
 return 0
 }
 
