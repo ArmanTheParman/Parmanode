@@ -7,7 +7,7 @@ ABOUT
 Parmanode is a software package for home computers (Linux, Mac, or Windows)
 that comes with an installation wizard so that non-technical users have
 the ability to download and verify Bitcoin Core and sync using an external 
-or internal dirve, and also have configuration options presented to them
+or internal drive, and also have configuration options presented to them
 with automation. No manual bitcoin.conf file editing will be required.
 
 This edition is for Linux Only.
