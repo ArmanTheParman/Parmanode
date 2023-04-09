@@ -7,7 +7,9 @@ if command -v sudo >/dev/null 2>&1
 
 then break
 
-else echo "
+else 
+
+echo "
 ########################################################################################
 
                             Testing \"sudo\" checkpoint
@@ -15,8 +17,17 @@ else echo "
     Parmanode has tested if the \"sudo\" command is available on your computer and it
     is not. The test failed. The program can not continue and will exit. Sudo is 
     necessary for certain commands that Parmanode will use, like mounting and 
-    formatting the external drive. 
+    formatting the external drive." 
 
+if [[ $OS = "Mac" ]] ; then
+    echo "
+    It's possible that \"sudo\" has been disabled on your system. Until this is
+    rectified, you cannot use Parmanode. Terribly sorry. Have a lovely day.
+
+########################################################################################
+"
+else
+echo "
     If you can't get passed this checkpoint, you could try venturing into the world
     of learning to use the command line, and install sudo with the command:
 
@@ -35,13 +46,14 @@ return 0
 
 function gpg_check {
 
-while true ; do
-
 set_terminal
 if command -v gpg >/dev/null 2>&1
-then break
+then return 0 
+fi
 
-else echo "
+if [[ $OS == "Linux" ]] ; then
+while true ; do
+echo "
 ########################################################################################
 
                             Testing \"gpg\" checkpoint
@@ -56,20 +68,54 @@ else echo "
 
     Parmanode can instal gpg for you if you like:
 
-                              (gpg)      Install gpg
+                              (g)      Install gpg
 
 ########################################################################################
 "
-choose "x"
+choose "xq"
 read choice
 
 #Install gpg
-if [[ $choice != "gpg" ]] ; then exit 0 ; fi
-set_terminal
-sudo apt-get install gpg -y
-enter_continue ; set_terminal
-break
-fi
+if [[ $choice == "gpg" ]] ; then 
+set_terminal ; sudo apt-get install gpg -y ; enter_continue ; set_terminal ; break ; fi
+
+if [[ $choice == "q" ]] ; then exit 0 ; fi
+
+invalid ; continue
 done
+
+
+
+if [[ $OS == "Mac" ]] ; then
+while true ; do
+echo "
+########################################################################################
+
+                            Testing \"gpg\" checkpoint
+
+    Parmanode has tested if the \"gpg\" command is available on your computer and it
+    is not. The test failed. The program can not continue and will exit. gpg is 
+    necessary for certain commands that Parmanode will use, like verifying 
+    signatures from developers who release their code. 
+
+    If you want Parmanode to install it for you using \"brew\", then you can select
+    that. Note it takes a while if you don't already have brew installed. 
+    Parmanode will take care of installing brew if needed. Note that the quickest way
+    to get gpg is to exit Parmanode and install gpg yourself from gpgtools.org
+
+                          g)      Parmanode to install gpg 
+                             
+                          q)      Quit and install gpg yourself
+
+########################################################################################
+"
+choose "xq"
+read choice
+if [[ $choice == "g" ]] ; then install_gpg_mac ; fi
+if [[ $choice == "q" ]] ; then exit 0 ; fi
+invalid
+continue
+done
+
 return 0
 }
