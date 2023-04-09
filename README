@@ -77,5 +77,4 @@ git clone https://github.com/ArmanTheParman/Parmanode.git
 
 You'll then have a copy of the program in your directory.
 
-To run it, change directory to src, and type './parmanode.sh' - do not move the location of parmanode.sh
-relative to the other files.
+To run it, cd into the downloaded directory ("Parmanode"), then type './run_parmanode'
