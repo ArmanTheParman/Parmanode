@@ -1,5 +1,6 @@
 #slightly convoluted but allows exiting functionality to expand for later versions.
 #clean_exit should be placed at code initial execution.
+
 function clean_exit {
 
 trap parmanode_clean_exit EXIT
