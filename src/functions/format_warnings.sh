@@ -35,7 +35,7 @@ echo "
 
                              (s)     skip formatting
     
-    If skipping, make sure your drive is formatted. 
+    If skipping, make sure your drive is formatted and mounted.
     
 ########################################################################################
 
@@ -54,7 +54,7 @@ case $choice in
     esac
 done
 
-set_terminal
+set_terminal "pink"
 echo "
 ########################################################################################
 ########################################################################################
@@ -78,6 +78,7 @@ echo "
 
 "
 read -p "Hit <enter> to see the list..."
+set_terminal
 
 return 0
 }

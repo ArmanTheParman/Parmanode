@@ -1,12 +1,15 @@
 function set_terminal {
+colour=$1
 
-printf '\033[8;38;88t'
+printf '\033[8;38;88t'   # sets terminal size
 
-if [[ $OS == "Linux" ]] ; then
-    echo -e "\033[38;2;255;145;0m" #Orange colour setting
-elif [[ $OS == "Mac" ]] ; then
-    echo -e "\033[38;5;208m"        #won't work in /bin/zsh, but script runs in /bin/bash which works.
-fi
+echo -e "\033[38;2;255;145;0m" #Orange colour setting
+        
+        # alternative format saved for future use
+        # echo -e "\033[38;5;208m" - won't work in /bin/zsh, but script runs in /bin/bash which works.
+
+
+if [[ $colour = "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
 
 clear
 return 0
@@ -27,5 +30,3 @@ printf '\033[8;38;200t'
 
 return 0
 }
-
-
