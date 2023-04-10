@@ -20,6 +20,8 @@
 
     debug_point "Pause here to check for error output before clear screen." 
 
+
+
 #Begin program:
 
 	set_terminal # custom function for screen size and colour.

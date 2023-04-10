@@ -2,7 +2,7 @@ function select_drive_ID {
 
 set_terminal
 
-while true ; do
+while true ; do     #while 1
 
 if [[ $OS == "Linux" ]] 
 then
@@ -14,10 +14,11 @@ else #(Mac)
 diskutil list
 echo "Enter the identifier of the disk to be formatted (e.g. disk2 or disk3): " 
 echo "Do not include partition numbers. Eg. don't type disk2s1 or disk2s2, just disk2:"  
-fi
+fi #end OS choice and ID prompt
+
 read disk
 
-    if [[ $disk == "sda" || $disk == "disk0" ]] ; then
+    if [[ $disk == "sda" || $disk == "disk0" ]] ; then #OS considered
         echo "You must be crazy. Parmanode refuses to format the drive that runs your operating system.
         " 
         read "Hit <enter> to go back."
@@ -68,8 +69,13 @@ read confirm
 Hit <enter> to abort, or type "yolo" to destroy the drive."
 
 read choice
-        if [[ $choice != "yolo" ]] ; then exit 0 ; fi
-        fi #regex fi
+
+        if [[ $choice == "yolo" ]] ; then return 0 ; fi
+        if [[ $choice == "" ]] ; then exit 1 ; fi
+        invalid 
+        continue
+    fi #regex fi
+
 ;;
 
 Mac)
@@ -110,13 +116,13 @@ read confirm
 
 ########################################################################################
 
-Hit <enter> to abort, or type "yolo" to destroy the drive."
+Hit <enter> to abort, or type "yolo" to format the drive."
 
-read choice
+        read choice
         if [[ $choice == "yolo" ]] ; then return 0 ; else exit 0 ; fi
     fi #regex fi ending
 ;;
-esac
-done
+esac # end case Linux vs Mac
+done # end while 1
 return 0
 }
