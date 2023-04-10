@@ -1,18 +1,4 @@
-# This page needs a log of work and has errors.
-
-
 function sudo_check {
-set_terminal
-if command -v sudo >/dev/null 2>&1
-	then return 0
-else
-	echo "Need sudo to run Parmanod. Aborting"
-	enter_continue
-	exit 0
-	fi
-}
-
-function sudo_check_temp {
 
 set_terminal
 
