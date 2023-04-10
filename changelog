@@ -1,5 +1,10 @@
 Parmanode Plebian Edition
-Version 1.1.0 
+
+Version 1.1.0 (under construction)
     - adding MacOS support
+
+Version 1.0.1
+    - fixed missing of=/dev/$disk in dd commands fo zero and random data choices.
+    
 Version 1.0.0
 
