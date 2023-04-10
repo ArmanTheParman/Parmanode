@@ -72,7 +72,7 @@ echo "
     be able to connect to that instead of directly to Bitcoin Core. If this is enabled, you are not 
     as limited, and can connect from another computer. Fulcrum will be available for Parmanode in 
     later versions. Tor will also be available later, allowing you to connect to your Fulcrum
-    Parmanode server from outsite your home network.
+    Parmanode server from outside your home network.
 
 ##############################################################################################################
 
@@ -134,7 +134,7 @@ echo "
     Unfortunately, this is harder than it needs to be.
 
     You MUST open a Wallet in Electrum at least once. Even a dummy/discardable wallet will do. This will
-    populate a default config file. Then exit Electrum all together. Shut it down.
+    populate a default config file. Then exit Electrum altogether. Shut it down.
 
     Then navigate to $HOME/.electrum
 
