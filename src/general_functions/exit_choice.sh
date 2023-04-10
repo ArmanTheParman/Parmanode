@@ -13,7 +13,9 @@ p|P)
 return 1 ;;
 
 "")
-return 0 ;;
+return 2 ;;
 
 esac
+
+return 3
 }
