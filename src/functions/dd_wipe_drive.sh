@@ -4,15 +4,19 @@ echo "
 ########################################################################################
 
     \"Craig Wright is a liar and a fraud. \" will be used to write over and erase
-    the disk.
+    the disk. 
+    
+    Please note, this is not a full forensic wipe. If you want that,
+    you must learn to use the dd command. Be aware the execution of the command
+    can take days, which is why I decided to omit that option from Parmanode.
 
 	       <enter>      Proceed
 
-		 (0)        Write zeros (VERY slow, hours even)
+		 (0)        Write zeros (slowest)
 
-		 (r)        Random data (Even SLOWER!), best for unnecessary extra privacy
+		 (r)        Random data (Even SLOWER!)
 
-		 (c)        Choose a custom string (Funnest option)
+		 (c)        Choose a custom string (Funnest and recommended option)
 
 ########################################################################################
 "
@@ -28,12 +32,14 @@ case $choice in
 
 	0)
 	    please_wait
-        sudo dd if=/dev/zero bs=10M count=100 status=progress ; sync ; return 0 
+        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 status=progress ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 ; sync ; return 0 ; fi
 	    ;;
 
 	r|R)   
 	    please_wait
-        sudo dd if=/dev/urandom bs=10M count=100 status=progress ; sync ; return 0 
+        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 status=progress ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 ; sync ; return 0 ; fi
 	    ;;
 
     c|C) 
@@ -58,9 +64,13 @@ Your string is: $string
         exit 0
         ;;
 
-    *)
+    "")
         string="Craig Wright is a liar and a fraud. " #default string if no customised string selected
 	    break
+        ;;
+    *)
+        invalid
+        continue
         ;;
 esac    
 done
@@ -68,7 +78,12 @@ done
 # break point from while
 please_wait
 # "status=progress" won't work becuase of the pipe, but leving it in for future reference.
-yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=1000 status=progress && sync && return 0
+if [[ $OS == "Linux" ]] ; then
+    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=500 status=progress && sync && return 0
+    fi
+if [[ $OS == "Mac" ]] ; then
+    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=500 && sync && return 0
+
 # if it ran successfully, code exits.    
 
 echo " 
