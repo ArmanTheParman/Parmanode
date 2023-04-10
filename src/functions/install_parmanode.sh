@@ -8,7 +8,9 @@ install_check "parmanode-start" #checks parmanode.conf, and exits if already ins
 if [[ $OS == "Linux" ]] ; then update_computer ; fi
 
 choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
-if [ $? == 1 ] ; then return 1 ; fi
+return_value=$?
+if [[ $return_value == "1" ]] ; then return 1 ; fi
+if [[ $return_value == "2" ]] ; then return 2 ; fi
 
 home_parmanode_directories # parmanode-start entered in config file within the nest of functions as soon as drive edited.
 if [ $? == 1 ] ; then debug_point "exiting out of home pn dir" ; return 1 ; fi

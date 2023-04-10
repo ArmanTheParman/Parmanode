@@ -1,54 +1,64 @@
 function format_ext_drive {
-	
-set_terminal
+format_warnings     #Warn the user to pay attention.
+    if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
+    select_drive_ID
+    if [ $? == 1 ] ; then return 1 ; fi
 
-#Warn the user to pay attention.
-format_warnings
-if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
-select_drive_ID
-if [ $? == 1 ] ; then return 1 ; fi
+unmount   #failure here exits program
 
-#User has typed sd? , or overidden the requirement, to proceed. All failures to this point return 1.
+dd_wipe_drive  #failure here exits program 
 
-set_terminal
-
-unmount
-
-dd_wipe_drive   #function defined at the end of the file.
-
-#partition function written below
-partition_drive 
+if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
 #Format the drive
+if [[ $OS == "Mac" ]] ; then
+    set_terminal
+    read -p "Are you sure you want to format $disk? (y/n) " answer
+    if [[ $answer != "y" ]] ; then return 2 ; fi #returns to menu 
+        # Answer "y", code proceeds:
+        set_terminal
+        diskutil eraseDisk exFAT "parmanode" $disk    #formats and labels
+    set_terminal ; echo "
+#######################################################################################
 
-sudo mkfs.ext4 -F /dev/$disk
-enter_continue
+    If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
+    and labelled as \"parmanode\".
 
-#Mounting
-sudo mkdir /media/$(whoami)/parmanode 2>/dev/null    #makes mountpoint
-sudo mount /dev/$disk /media/$(whoami)/parmanode
-sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode
-sudo e2label /dev/$disk parmanode
+#######################################################################################
+    "
+    enter_continue
+    return 0
+    fi
 
-#Extract the *NEW* UUID of the disk
-UUID=$(sudo blkid /dev/$disk | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
-UUID_temp=$(echo "$UUID" | sed 's/"//g')
-UUID=$UUID_temp
+if [[ $OS == "Linux" ]] ; then
+        sudo mkfs.ext4 -F /dev/$disk
+        enter_continue
 
-#Write to fstab 
-if grep -q $UUID /etc/fstab 
-	    then
-        echo "unable to write to fstab. You will have to manually mount the drive each time you boot up." 
-        else 
-	    echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
-fi
+        #Mounting
+        sudo mkdir /media/$(whoami)/parmanode 2>/dev/null    #makes mountpoint
+        sudo mount /dev/$disk /media/$(whoami)/parmanode
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode
+        sudo e2label /dev/$disk parmanode
 
-#confirmation output.
-echo "Some more cool computer stuff happened in the background."
-enter_continue # pause not required as all the above code has no output
-parmanode_conf_add "UUID=$UUID"
-set_terminal
-echo "
+        #Extract the *NEW* UUID of the disk
+        UUID=$(sudo blkid /dev/$disk | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
+        UUID_temp=$(echo "$UUID" | sed 's/"//g')
+        UUID=$UUID_temp
+
+        #Write to fstab 
+        if grep -q $UUID /etc/fstab 
+                then
+                echo "unable to write to fstab. You will have to manually mount the drive each time you boot up." 
+                else 
+                echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
+        fi
+
+        #confirmation output.
+        echo "Some more cool computer stuff happened in the background."
+        enter_continue # pause not required as all the above code has no output
+        parmanode_conf_add "UUID=$UUID"
+        set_terminal
+        echo "
 #######################################################################################
 
     If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
@@ -66,8 +76,7 @@ echo "
     automount on reboot.
 
 ########################################################################################
-"
-enter_continue
-
-return 0
+        "
+        enter_continue
+        return 0
 }
