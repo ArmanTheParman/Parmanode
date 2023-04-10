@@ -26,14 +26,13 @@ echo "
     configuration file. This may not be 100% reliable. Would you like to go through 
     the Bitcoin uninstall procedure anyway, just in case? 
     
-                                   (y)   yes 
+                                  (y)   yes 
 
-                                   (s)   skip
+                                  (s)   skip
 
 ########################################################################################    
 "
 choose "xpq" 
-exit_choice
 
 while true
 do
@@ -46,6 +45,12 @@ do
     s|S|skip|SKIP|Skip)
     break
     ;;
+
+    p|P)
+    return 1 ;;
+
+    q|Q|Quit|QUIT)
+    exit 0 ;;
 
     *)
     invalid 
