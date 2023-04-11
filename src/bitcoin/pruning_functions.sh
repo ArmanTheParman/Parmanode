@@ -116,7 +116,7 @@ done
                                     # parmanode.conf
 
 confirm_set_the_prune
-                                    # The logic seem convoluted. Explained:
+                                    # The logic seems convoluted. Explained:
                                     # "Set_the_prune", STP always calls "confirm_set_the_prune", 
                                     # CSTP, at the end of the function.
                                     # When STP finally breaks from the loop, it hits 
