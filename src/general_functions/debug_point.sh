@@ -9,12 +9,14 @@ echo "$1"
 
 while true
 do
-    echo "
+
+echo "
 debug point - hit "d" and <enter> to proceed."
 read choice
 
 if [[ $choice == "d" ]] ; then break ; fi
 done
+
 return 0
 }
 	

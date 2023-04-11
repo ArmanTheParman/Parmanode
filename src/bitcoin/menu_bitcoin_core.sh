@@ -1,4 +1,4 @@
-/unction menu_bitcoin_core {
+function menu_bitcoin_core {
 while true
 do
 set_terminal
@@ -27,7 +27,7 @@ echo "
 
 ########################################################################################
 "
-choose "xpq" ; exit_choice ; set_terminal
+choose "xpq" ; read ; set_terminal
 
 case $choice in
 
@@ -143,8 +143,12 @@ set_rpc_authentication
 continue
 ;;
 
-p)
+p|P)
 return 1
+;;
+
+q|Q|Quit|QUIT)
+exit 0
 ;;
 
 *)
@@ -179,7 +183,7 @@ echo "
 ########################################################################################
 
 "
-choose "xpq" ; exit_choice ; set_terminal
+choose "xpq" ; exit_choice ; if [ $? = 1 ] ; then return 1 ; fi ; set_terminal
 
 case $choice in
 	up|UP|Up|uP)

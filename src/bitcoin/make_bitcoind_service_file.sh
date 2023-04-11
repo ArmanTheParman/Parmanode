@@ -31,8 +31,8 @@ echo "
 
 ########################################################################################
 "
-choose "x" ; exit_choice
-
+choose "xq" 
+read
 set_terminal
 
 case $choice in
@@ -43,6 +43,9 @@ s|S)
     echo "skipping..."
     enter_continue
     return 1
+    ;;
+q|Q)
+    exit 0
     ;;
 *)
     invalid

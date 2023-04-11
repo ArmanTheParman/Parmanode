@@ -9,9 +9,6 @@ return 0
 }
 
 
-
-
-
 function installed_config_remove {
 program=$1
 
