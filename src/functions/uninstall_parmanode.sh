@@ -11,12 +11,15 @@ echo "
 ########################################################################################
 "
 choose "epq"
-exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi 
 
+exit_choice 
+if [ $? == 1 ] ; then return 1 ; fi 
 if grep -q "bitcoin" $HOME/.parmanode/installed.conf #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin 
 else 
 set_terminal
+
+while true ; do
 echo "
 ########################################################################################
     
@@ -33,9 +36,8 @@ echo "
 ########################################################################################    
 "
 choose "xpq" 
+read choice
 
-while true
-do
     case $choice in
     
     y|Y|yes|YES)
@@ -71,7 +73,7 @@ echo "
 "
 choose "epq"
 exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
-
+unset choice
 #check other programs are installed in later versions.
 
 #Drive management:
@@ -86,27 +88,26 @@ if [[ $OS == "Linux" ]] ; then
             else
                 sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
             fi
+    fi
 
     if [[ $OS == "Mac" ]] ; then
 
         disktultil unmount "parmanode"
 
-
-        #uninstall parmanode directories and config files contained within.
-        rm -rf $HOME/.parmanode >/dev/null 2>&1
-        rm -rf $HOME/parmanode >/dev/null 2>&1
-
-        set_terminal
-        echo "
-        ########################################################################################
-
-                                Parmanode has been uninstalled
-
-        ########################################################################################
-        "
-        previous_menu
         fi
-fi
+#uninstall parmanode directories and config files contained within.
+rm -rf $HOME/.parmanode >/dev/null 2>&1
+rm -rf $HOME/parmanode >/dev/null 2>&1
+
+set_terminal
+echo "
+########################################################################################
+
+                        Parmanode has been uninstalled
+
+########################################################################################
+"
+previous_menu
 return 0
 
 }

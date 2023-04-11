@@ -8,6 +8,9 @@ if [[ $drive == "external" ]]
                                             # create symlink later. Double check.
 delete_dot_bitcoin_directory                                        
 set_dot_bitcoin_symlink
+mkdir /media/$(whoami)/parmanode/.bitcoin && return 0
+debug_point "Error - failed to make .bitcoin directory on external drive. Aborting."
+exit 1
 fi
-return 0
+return 1 
 }

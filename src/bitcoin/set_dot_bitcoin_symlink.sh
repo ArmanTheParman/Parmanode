@@ -1,5 +1,4 @@
 function set_dot_bitcoin_symlink {
-debug_point "entered set dot bitcoin symlink"
 set_terminal
 
 #check there is a drive mounted, then make .bitcoin directory on external drive.
@@ -46,11 +45,9 @@ mount_drive
 done
 # make a symlink on internal drive (.bitcoin should not exist there at this point)
 
-    rm $HOME/.bitcoin #removes symlink if it exists. Can't remove directory becuase no -r option.
+    rm $HOME/.bitcoin /dev/null 2>&1 #removes symlink if it exists. Can't remove directory becuase no -r option.
 
-    cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin     
-    if [[ -d $HOME/.bitcoin ]] ; then debug_point ".bitoin made" ; else debug_point "failed to make .bition" ; fi
-    #symlink can be made withouterrors even if target doesn't exist yet.
+    cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin    #symlink can be made withouterrors even if target doesn't exist yet
 
 set_terminal
 echo "
