@@ -79,32 +79,34 @@ exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
     #also decided against removing /media/$(whoami)/parmanode directory for mounting.
     #unmounting is sufficient.
 
-if [[ $OS == "Linux" ]]
+if [[ $OS == "Linux" ]] ; then
 
-    if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
-        umount /media/$(whoami)/parmanode > /dev/null 2>&1
-    else
-        sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
-    fi
+        if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
+                umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            else
+                sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            fi
 
-if [[ $OS == "Mac" ]] ; then
+    if [[ $OS == "Mac" ]] ; then
 
-    disktultil unmount "parmanode"
+        disktultil unmount "parmanode"
 
 
-#uninstall parmanode directories and config files contained within.
-    rm -rf $HOME/.parmanode >/dev/null 2>&1
-    rm -rf $HOME/parmanode >/dev/null 2>&1
+        #uninstall parmanode directories and config files contained within.
+        rm -rf $HOME/.parmanode >/dev/null 2>&1
+        rm -rf $HOME/parmanode >/dev/null 2>&1
 
-set_terminal
-echo "
-########################################################################################
+        set_terminal
+        echo "
+        ########################################################################################
 
-                           Parmanode has been uninstalled
+                                Parmanode has been uninstalled
 
-########################################################################################
-"
-previous_menu
-
+        ########################################################################################
+        "
+        previous_menu
+        fi
+fi
 return 0
+
 }

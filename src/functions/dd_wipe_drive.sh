@@ -83,6 +83,7 @@ if [[ $OS == "Linux" ]] ; then
     fi
 if [[ $OS == "Mac" ]] ; then
     yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=500 && sync && return 0
+    fi
 
 # if it ran successfully, code exits.    
 
