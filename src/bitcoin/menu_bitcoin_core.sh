@@ -1,4 +1,4 @@
-function menu_bitcoin_core {
+/unction menu_bitcoin_core {
 while true
 do
 set_terminal
@@ -36,7 +36,7 @@ echo "
 ########################################################################################
     
     Bitcoind should have been configured to restart automatically if your 
-    computer restarts. However, the resart may fail, which sometimes happens if
+    computer restarts. However, the restart may fail, which sometimes happens if
     you have an external drive.
 
 ########################################################################################
@@ -105,7 +105,7 @@ echo "
     
     If you have a spare drive, it is a good idea to make a copy of the bitcoin data 
     directory from time to time. This could save you waiting a long time if you were 
-    ever experienced data corruption and needed to resync the blockchain.
+    ever to experience data corruption and needed to resync the blockchain.
 
     It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
     work correctly when it comes time to use the backed up data, and it's likely the 
@@ -168,7 +168,7 @@ echo "
 
     Remote Procedure Call (RPC) is how wallet applications connect to Bitcoin
     Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software might prefer the althernative way which is with
+    data directory. Some software might prefer the alternative way which is with
     a username and password. If you require this, you can select that here (up) or
     manually edit the bitcoin.conf file yourself.
 
