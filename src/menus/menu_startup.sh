@@ -7,7 +7,7 @@ echo "
 
                     (i)          Installation / Settings
 
-                    (p)          Run Parmanode 
+                    (rp)        Run Parmanode 
 
 ########################################################################################
 
@@ -23,7 +23,7 @@ case $choice in
         menu_install
         ;;
 
-    p)    
+    rp|RP|Rp|rP)    
         menu_parmanode
         ;;
 

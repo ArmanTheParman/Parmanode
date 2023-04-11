@@ -27,7 +27,7 @@ echo "
 
 ########################################################################################
 "
-choose "xpq" ; read ; set_terminal
+choose "xpq" ; read choice ; set_terminal
 
 case $choice in
 

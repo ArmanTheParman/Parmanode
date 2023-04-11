@@ -1,5 +1,4 @@
 function make_bitcoind_service_file {
-debug_point "entered make bitcoind service file"
 set_terminal
 
 echo "
@@ -32,7 +31,7 @@ echo "
 ########################################################################################
 "
 choose "xq" 
-read
+read choice
 set_terminal
 
 case $choice in
