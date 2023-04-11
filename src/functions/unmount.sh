@@ -7,9 +7,10 @@ sleep 2
 
 if [[ $OS == "Linux" ]] ; then
 
-        { for i in $(sudo lsblk -nrpo NAME /dev/sdb) ; do sudo umount $i >/dev/null 2>&1 ; done ; } && { sleep 2 && set_terminal && return 0 ; }
+        for i in $(sudo lsblk -nrpo NAME /dev/sdb) ; do sudo umount >/dev/null 2>&1 && return 0 ; done 
+
         #redunant but harmless...
-        { sudo umount /dev/$disk >/dev/null 2>&1 ; } && { sleep 2 && set_terminal && return 0 ; }
+        sudo umount /dev/$disk >/dev/null 2>&1 && sleep 2 && return 0 
 
 
     echo "Encountered unexpected error when unmounting drive. Aborting."
