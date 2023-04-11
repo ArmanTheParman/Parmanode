@@ -18,19 +18,22 @@ if $(mkdir /media/$(whoami)/parmanode/.bitcoin) ; then
 
     A data directory already exits on the external drive.
     
-    You can choose to delete this directory and start again or you can leave the 
-    directory as is, and Parmanode will connect Bitcoin Core to it to continue 
-    syncing.
+    You have options:
 
+                    b)     Parmanode will back-up the directory on the
+                           external drive (Do you really have the space?)
+                    
+                    d)     Delete and make new directory
 
-                         d)     delete and make new directory
-
-                         s)     skip
+                    s)     Skip - ie use existing .bitcoin directory on ext drive
 
 ########################################################################################
 "
         choose "xq" ; read choice
         case $choice in 
+
+            b|B) make_backup_dot_bitcoind && return 0 ;;
+
             d|D) rm -rf /media/$(whoami)/parmanode/.bitcoin && mkdir /media/$(whoami)/parmanode/.bitcoin && return 0 ;;
             
             s|S) return 0 ;;
