@@ -1,5 +1,3 @@
-# This page needs a log of work and has errors.
-
 function sudo_check {
 
 set_terminal

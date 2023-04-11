@@ -35,10 +35,10 @@ make_bitcoin_conf
 
 #make a script that service file will use
 make_mount_check_script
-debug_point "made mount check script."
 
 #make service file
 make_bitcoind_service_file
+if [ $? == 1 ] ; then return 1 ; fi
 
 set_terminal
 

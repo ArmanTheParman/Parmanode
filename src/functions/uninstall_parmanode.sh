@@ -26,14 +26,13 @@ echo "
     configuration file. This may not be 100% reliable. Would you like to go through 
     the Bitcoin uninstall procedure anyway, just in case? 
     
-                                   (y)   yes 
+                                  (y)   yes 
 
-                                   (s)   skip
+                                  (s)   skip
 
 ########################################################################################    
 "
 choose "xpq" 
-exit_choice
 
 while true
 do
@@ -46,6 +45,12 @@ do
     s|S|skip|SKIP|Skip)
     break
     ;;
+
+    p|P)
+    return 1 ;;
+
+    q|Q|Quit|QUIT)
+    exit 0 ;;
 
     *)
     invalid 
@@ -74,27 +79,34 @@ exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
     #also decided against removing /media/$(whoami)/parmanode directory for mounting.
     #unmounting is sufficient.
 
-if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
-    umount /media/$(whoami)/parmanode > /dev/null 2>&1
-else
-    sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
+if [[ $OS == "Linux" ]] ; then
+
+        if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
+                umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            else
+                sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            fi
+
+    if [[ $OS == "Mac" ]] ; then
+
+        disktultil unmount "parmanode"
+
+
+        #uninstall parmanode directories and config files contained within.
+        rm -rf $HOME/.parmanode >/dev/null 2>&1
+        rm -rf $HOME/parmanode >/dev/null 2>&1
+
+        set_terminal
+        echo "
+        ########################################################################################
+
+                                Parmanode has been uninstalled
+
+        ########################################################################################
+        "
+        previous_menu
+        fi
 fi
-
-rm -rf $HOME/.parmanode 
-rm -rf $HOME/parmanode 
-
-#uninstall parmanode directories and config files contained within.
-
-#Done
-set_terminal
-echo "
-########################################################################################
-
-                           Parmanode has been uninstalled
-
-########################################################################################
-"
-previous_menu
-
 return 0
+
 }

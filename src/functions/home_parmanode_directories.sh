@@ -1,6 +1,4 @@
 function home_parmanode_directories {
-debug_point "enter home parmanode directories"
-# Parmanode directory, always on internal drive
 
 if [[ -d $HOME/parmanode/ ]] #if to check that parmanode exists
 then
@@ -28,9 +26,9 @@ choose "xq"
         set_terminal 
         case $choice in
         u|U) 
-	    uninstall_parmanode # when done, expecting code to return here.
-        return 1
-        ;;
+            uninstall_parmanode # when done, expecting code to return here.
+            return 1
+            ;;
         p|P) #abort
             return 1 ;;
         yolo|YOLO) #proceed with merging
@@ -39,7 +37,7 @@ choose "xq"
             exit 0
             ;;
         *)
-	    continue;;
+            continue;;
         esac
 
 break
@@ -71,14 +69,14 @@ choose "x" ; read choice
 	
 	case $choice in
 	q)
-	exit 0 ;;
-	
-        yolo|YOLO)
-	break ;;
+        exit 0 ;;
+        
+    yolo|YOLO)
+        break ;;
 
 	*)
         invalid
-	read ;;
+        read ;;
         esac
 done
 #break point, "yolo", to delete and replace .parmanode
