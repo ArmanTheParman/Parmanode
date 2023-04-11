@@ -1,4 +1,4 @@
-/unction menu_bitcoin_core {
+function menu_bitcoin_core {
 while true
 do
 set_terminal
