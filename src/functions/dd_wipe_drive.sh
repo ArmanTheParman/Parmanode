@@ -32,14 +32,14 @@ case $choice in
 
 	0)
 	    please_wait
-        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 status=progress ; sync ; return 0 ; fi
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 ; sync ; return 0 ; fi
+        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500  >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
 	r|R)   
 	    please_wait
-        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 status=progress ; sync ; return 0 ; fi
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 ; sync ; return 0 ; fi
+        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
     c|C) 
@@ -79,10 +79,10 @@ done
 please_wait
 # "status=progress" won't work becuase of the pipe, but leving it in for future reference.
 if [[ $OS == "Linux" ]] ; then
-    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=500 status=progress && sync && return 0
+    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 && sync && return 0
     fi
 if [[ $OS == "Mac" ]] ; then
-    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=500 && sync && return 0
+    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=500 >/dev/null 2>&1 && sync && return 0
     fi
 
 # if it ran successfully, code exits.    
