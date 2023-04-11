@@ -24,6 +24,7 @@ echo "
 ########################################################################################
     
                     Previou Bitcoin installation not detected
+                         (excludes data direcotry check)
 
     Bitcoin doesn't appear to be installed according to the intstalltion 
     configuration file. This may not be 100% reliable. Would you like to go through 

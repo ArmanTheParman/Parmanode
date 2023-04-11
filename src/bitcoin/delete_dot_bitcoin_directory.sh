@@ -3,7 +3,7 @@ function delete_dot_bitcoin_directory {
 
 if [[ -d "$HOME/.bitcoin" && ! -L "$HOME/.bitcoin" ]]        
 then
-debug_point " .bitcoin proper directory exists"
+# .bitcoin directory exists on internal drive"
 while true
 do
 set_terminal
