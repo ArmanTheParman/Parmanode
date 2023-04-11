@@ -73,6 +73,6 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 HOW TO RUN
 
-Find the latest tag (1.0) and download/unzip that to a directory on your drive.
+Find the latest tag and download/unzip that to a directory on your drive.
 
 To run it, cd into the downloaded directory ("Parmanode"), then type './run_parmanode'
