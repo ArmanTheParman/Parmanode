@@ -1,9 +1,7 @@
 function mount_drive {
 
-    #if mounted, make .bitcoin and exit 0
+    #if mounted, exit 
 	    if mountpoint -q "/media/$(whoami)/parmanode" ; then
-			mkdir /media/$(whoami)/parmanode/.bitcoin > /dev/null 2>&1 
-			# potentially redundant depending on which function calls but no harm if the directory exits.
 			return 0
 			fi
 
