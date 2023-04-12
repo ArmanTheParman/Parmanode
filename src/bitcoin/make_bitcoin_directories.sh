@@ -8,14 +8,18 @@ make_parmanode_bitcoin_directory
 
 # If external drive - create necessary directories 
 
+if [[ $drive == "external" ]] ; then 
 make_external_drive_directories              
+fi
     # calls format_choice
     # calls delete_dot_bitcoin_directory (+/- make_backup_dot_bitcoin_director)
     # calls set_dot_bitcoin_symlink
                                                                               
                                    
 #Internal drive - create directories, and back up if existing.
+if [[ $drive == "internal" ]] ; then
 make_internal_drive_directories
+fi
     # check if drive is internal
     # give user options if .bitcoin exists
     # option to call make_bakcup_dot_bitcoin
