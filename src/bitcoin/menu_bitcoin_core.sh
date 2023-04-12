@@ -8,21 +8,21 @@ echo "
 ########################################################################################
 
 
-                 start)    Start Bitcoind
+            start)    Start Bitcoind
 
-                 stop)     Start Bitcoind 
+            stop)     Start Bitcoind 
 
-                 c)        How to connect your wallet
+            c)        How to connect your wallet
 
-                 n)        Access Bitcoin node information (bitcoin-cli)
-                            
-                 d)        Inspect Bitcoin debug.log file
+            n)        Access Bitcoin node information ....(bitcoin-cli)
+                    
+            d)        Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
 
-                 bc)       Inspect and edit bitcoin.conf file 
+            bc)       Inspect and edit bitcoin.conf file 
 
-                 dd)       Backup/Restore data directory (Instructions only)
+            dd)       Backup/Restore data directory (Instructions only)
 
-                 pw)       Set, remove, or change RPC user/pass
+            pw)       Set, remove, or change RPC user/pass
 
 
 ########################################################################################

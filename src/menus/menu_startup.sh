@@ -1,13 +1,20 @@
 function menu_startup {
-while true
-do
+while true ; do
 set_terminal
 echo "
 ########################################################################################
 
-                    (i)          Installation / Settings
+                              PARMANODE STARTUP MENU 
+            
 
-                    (rp)        Run Parmanode 
+                         (i)         Install Programs......  (Hint: start here)
+
+                         (r)         Run Parmanode
+
+			 (a)         About Parmanode
+
+                         (m)	     Bitcoin Mentorship Info
+
 
 ########################################################################################
 
@@ -23,8 +30,16 @@ case $choice in
         menu_install
         ;;
 
-    rp|RP|Rp|rP)    
+    r|R|R|r)    
         menu_parmanode
+        ;;
+
+    a|A)
+        about
+        ;;
+
+    m|M)
+        mentorship
         ;;
 
     q | Q | quit)
@@ -33,6 +48,7 @@ case $choice in
 
     *)
         invalid
+	;;
 
 esac
 

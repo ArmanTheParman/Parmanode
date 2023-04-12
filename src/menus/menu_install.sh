@@ -6,13 +6,13 @@ set_terminal
 echo "
 ########################################################################################
 
-                    i)          Install Parmanode
+                    i)          Install Parmanode ......... (Must install first)
 
                     u)          Uninstall Parmanode
 
                     pp)         Parmanode Premium
 
-                    a)          Add more programs
+                    a)          Add more program .......... (Can install Bitcoin here)
 
                     r)          Remove programs
 
