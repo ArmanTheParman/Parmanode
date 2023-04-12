@@ -33,7 +33,7 @@ return 0
 
 function set_terminal_high {
 
-set_terminal
-printf '\033[8;55;88t' 
+printf '\033[8;47;88t' 
+clear
 return 0
 }
