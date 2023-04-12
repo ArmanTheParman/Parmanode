@@ -1,26 +1,23 @@
-Parmanode 1.1 - Not yet ready. Working on Mac OS support.
-
-Parmanode 1.0 - Plebian Edition: README
-See tag v1.0.0
-08/April/2023
-
-
+Parmanode 1.1 Plebian Cheese - Mac and Linux - Pre-Release
+13 April 2023
 ABOUT
 
-Parmanode is a software package for home computers (Linux, Mac, or Windows)
-that comes with an installation wizard so that non-technical users have
+Parmanode is a software package for home computers (Linux, Mac, and
+maybe one day, Windows). The Linux version is tested and working. The Mac
+version needs testing - use with caution, or just wait for the full
+release.
+
+Parmanode comes with an installation wizard so that non-technical users have
 the ability to download and verify Bitcoin Core and sync using an external 
 or internal drive, and also have configuration options presented to them
 with automation. No manual bitcoin.conf file editing will be required.
-
-This edition is for Linux Only.
 
 The aim is that all people need to do is read the menu options carefully - 
 no command line interaction is required. For example, bitcoin-cli commands
 are available in a menu, and pruning can be activated from menu options.
 
 The software also comes with helpful information, including links to various
-articles on my website, armantheparmn.com, so that Bitcoiners keep learning
+articles on my website, armantheparman.com, so that Bitcoiners keep learning
 more about Bitcoin and how to be safely self-sovereign. Information on how 
 to connect various wallets to the node is provided in the menus. Much effort
 has not been made for this aspect of the software in the first version; more
@@ -29,17 +26,6 @@ will be done later.
 The most basic usage would be an internal drive to sync, running the latest
 version of Bitcoin Core, and connecting Sparrow Bitcoin Wallet or Specter
 Desktop Wallet directly to the node on the same computer.
-
-The initial release is for the Linux user only, and although they are the
-ones least likely to need an easy node installation package, this was chosen
-so that the code can be more easily written and easier to follow. Later version
-will be modified for Mac users. The hardest will be reprogramming for 
-Windows PowerShell, if ever. The Mac version will require a Docker container 
-running Linux (installed automatically by the software). Some of the code 
-for that is done, but I decided halfway through coding that to switch over
-to Linux. This avoids the complication of trying to do too many things at 
-once. Once the Linux version is running smoothly, the Mac version will be 
-finished.
 
 BITCOIN CORE VERSION included... 
 

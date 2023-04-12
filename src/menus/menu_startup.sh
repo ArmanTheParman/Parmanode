@@ -4,16 +4,16 @@ set_terminal
 echo "
 ########################################################################################
 
-                              PARMANODE STARTUP MENU 
+                               PARMANODE STARTUP MENU 
             
 
-                         (i)         Install Programs......  (Hint: start here)
+		 (i)         Install Programs......  (Hint: start here)
 
-                         (r)         Run Parmanode
+		 (r)         Run Parmanode
 
-			 (a)         About Parmanode
+		 (a)         About Parmanode
 
-                         (m)	     Bitcoin Mentorship Info
+		 (m)	     Bitcoin Mentorship Info
 
 
 ########################################################################################

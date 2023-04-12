@@ -2,8 +2,9 @@ function which_os {
 if [[ "$(uname -s)" == "Darwin" ]]
 then
     OS="Mac"
-    debug_point "debug - which os ; mac off" 
-    exit 1
+    set_terminal ; echo "The Mac version is not fully tested. Use with caution. Bug reports very welcome."
+    enter_continue ; set_terminal
+    return 0 
 fi
 
 if [[ "$(uname -s)" == "Linux" ]]
