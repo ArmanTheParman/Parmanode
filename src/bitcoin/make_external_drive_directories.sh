@@ -47,6 +47,4 @@ if $(mkdir /media/$(whoami)/parmanode/.bitcoin) ; then
         
 fi #ends if drive external
 
-debug_point "drive setting is no external, yet called external drive function for unknown reason. Aborting."
-exit 1 
 }
