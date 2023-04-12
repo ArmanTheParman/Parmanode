@@ -25,6 +25,7 @@ echo "
             3) An ext drive (1 Tb) OR and internal drive with spare capacity
 
             4) Users must not hold ANY shitcoins. Honesty system
+            
             5) Free: 
 
                    - Donation appreciated (if felt you received value)

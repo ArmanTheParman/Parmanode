@@ -10,7 +10,7 @@ echo "
 
             start)    Start Bitcoind
 
-            stop)     Start Bitcoind 
+            stop)     Stop Bitcoind 
 
             c)        How to connect your wallet
 
@@ -32,6 +32,7 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in
 
 start|START|Start)
+if [[ $OS == "Linux" ]] ; then 
 echo "
 ########################################################################################
     
@@ -44,11 +45,25 @@ echo "
 enter_continue
 run_bitcoind
 continue
+fi
+
+if [[ $OS == "Mac" ]] ; then
+sudo /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/
+continue
+fi
 ;;
 
 stop|STOP|Stop)
+if [[ $OS == "Linux" ]] ; then 
 sudo systemctl stop bitcoind.service
 continue 
+fi
+
+if [[ $OS == "Mac" ]] ; then
+sudo /usr/local/bin/bitcoin-cli stop
+continue
+fi
+
 ;;
 
 c|C)
@@ -103,6 +118,8 @@ dd|DD)
 echo "
 ########################################################################################
     
+                          BACKUP BITCOIN DATA DIRECTORY    
+
     If you have a spare drive, it is a good idea to make a copy of the bitcoin data 
     directory from time to time. This could save you waiting a long time if you were 
     ever to experience data corruption and needed to resync the blockchain.
@@ -126,10 +143,11 @@ echo "
 
     or external drive:
 
-                        /media/$(whoami)/parmanode/.bitcoin 
+                LINUX :   /media/$(whoami)/parmanode/.bitcoin 
+                MAC   :   /Volumes/parmanode/.bitcoin
 
     Note that if you have an external drive for Parmanode, the internal directory 
-    $HOME/.bitcoin is actually a symlink to the external 
+    $HOME/.bitcoin is actually a symlink (shortcut) to the external 
     directory.
 
 ########################################################################################
@@ -163,71 +181,3 @@ return 0
 }
 
 
-function set_rpc_authentication {
-while true ; do
-echo "
-########################################################################################
-
-                               RPC Authentication
-
-    Remote Procedure Call (RPC) is how wallet applications connect to Bitcoin
-    Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software might prefer the alternative way which is with
-    a username and password. If you require this, you can select that here (up) or
-    manually edit the bitcoin.conf file yourself.
-
-                         (up) set a username and password
-
-			 (c)  use cookie (default setting)
-
-########################################################################################
-
-"
-choose "xpq" ; exit_choice ; if [ $? = 1 ] ; then return 1 ; fi ; set_terminal
-
-case $choice in
-	up|UP|Up|uP)
-		echo "Please enter an RPC username:
-	       	" 
-		read rpcuser
-		
-		while true ; do
-		set_terminal
-		echo "Please enter an PRC password:
-	       	" 
-		read rpcpassword
-		echo "Please repeat the password:
-	       	"
-		read rpcpassword2
-		
-		if [[ $rpcpassword != $rpcpassword2 ]] ; then
-		       echo "Passwords do not match. Try again.
-		       "
-                       continue
-		else
-	               break
-		fi
-
-		done
-
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-		echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
-		echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
-
-		break
-		;;
-	c)
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-		;;	
-
-	*)
-		invalid
-		continue
-		;;	
-esac
-
-done
-return 0
-}

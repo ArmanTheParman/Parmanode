@@ -102,7 +102,8 @@ mv $HOME/.parmanode/temp/b*/* $HOME/parmanode/bitcoin/
 
 rm $HOME/parmanode/bitcoin/bitcoin.conf 
 
-#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others.
+#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
+#makes target directories if they don't exist
 sudo install -m 0755 -o root -g root -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin

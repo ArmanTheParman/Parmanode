@@ -12,6 +12,8 @@ echo "
 
                              b)      Bitcoin Core
 
+            Not yet avaiable...                        
+
                              f)      Fulcrum (an Electrum Server)
 
                              m)      Mempool.Space
@@ -42,7 +44,7 @@ b|B)
     clear
     menu_bitcoin_core
     ;;
-f | F | m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | tor | TOR)
+f | F | m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | t | T)
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."
