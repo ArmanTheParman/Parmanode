@@ -1,7 +1,7 @@
 #stop bitcoin
 #delete .bitcoin (proper drive or symlink, leave hdd alone)
 #delete $HOME/parmanode/bitcoin
-#delete binary files in /etc/usr/bin (rm *bitcoin*)
+#delete binary files in /usr/local/bin (rm *bitcoin*)
 #delete bitcoin from install.conf
 #hdd setting in parmanode.conf can stay.
 #remove bitcoin user and group
@@ -53,7 +53,7 @@ done
 /usr/bin/bitcoin-cli stop 2>/dev/null
 
 rm -rf $HOME/parmanode/bitcoin $HOME/.bitcoin 2>/dev/null #if symlink, symlink deleted. If a real directory, directory removed.
-sudo rm /etc/usr/bin/*bitcoin* 2>/dev/null
+sudo rm /usr/local/bin/*bitcoin* 2>/dev/null
 sudo rm /etc/systemd/system/bitcoin.service 2>/dev/null
 delete_line "$HOME/.parmanode/installed.conf" "bitcoin" 2>/dev/null
 sudo groupdel bitcoin 2>/dev/null  && sudo userdel bitcoin 2>/dev/null
