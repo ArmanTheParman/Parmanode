@@ -1,3 +1,5 @@
+#may not be required
+
 function install_gpg_mac {
 
 if command -v "brew" ; then

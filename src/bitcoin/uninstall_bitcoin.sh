@@ -30,7 +30,7 @@ echo "
 
     The bitcoin user and group on the Linux system will be removed.
 
-    The bitcoin service file will be deleted.
+    The bitcoin service file will be deleted (For Linux users).
 
 
 ########################################################################################
@@ -50,13 +50,12 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
 
-/usr/bin/bitcoin-cli stop 2>/dev/null
+/usr/local/bin/bitcoin-cli stop 2>/dev/null
 
 rm -rf $HOME/parmanode/bitcoin $HOME/.bitcoin 2>/dev/null #if symlink, symlink deleted. If a real directory, directory removed.
 sudo rm /usr/local/bin/*bitcoin* 2>/dev/null
 sudo rm /etc/systemd/system/bitcoin.service 2>/dev/null
 delete_line "$HOME/.parmanode/installed.conf" "bitcoin" 2>/dev/null
-sudo groupdel bitcoin 2>/dev/null  && sudo userdel bitcoin 2>/dev/null
 
 set_terminal
 echo "
