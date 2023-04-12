@@ -1,7 +1,9 @@
-Parmanode Plebian Edition
+Version 1.1.0 (pre-release) ; April 13 2023
+    - added MacOS support
+    - changed dripe wipe text to a call to #FreeRoss
 
-Version 1.1.0 (under construction)
-    - adding MacOS support
+Version 1.0.2
+    - several errors corrected
 
 Version 1.0.1
     - fixed missing of=/dev/$disk in dd commands fo zero and random data choices.
