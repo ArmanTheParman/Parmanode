@@ -22,7 +22,7 @@ set_terminal ; echo "
     The program includes …
 
 ########################################################################################
-" ; exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "
+" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal ; echo "
 ########################################################################################
 
     The program includes …
@@ -47,7 +47,7 @@ set_terminal ; echo "
             Inheritance planning
 
 ########################################################################################
-" ; exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "                       
+" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "                       
 ########################################################################################
 
 Reference #1: Identity is hidden for privacy, but available on request, on a 
@@ -88,7 +88,7 @@ YYYY
 
 ########################################################################################
 "
-exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "
+enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "
 ########################################################################################
 
 Reference #2: Identity is hidden for privacy, but available on request, on a 
@@ -118,7 +118,7 @@ Kind regards,
 WWWW
 
 ########################################################################################                                
-" ; exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal ; echo "
+" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal ; echo "
 ########################################################################################                            
 
                         Contact Arman The Parman for more info:
@@ -126,5 +126,5 @@ WWWW
                         armantheparman@protonmail.com
 
 ########################################################################################
-" ; previous_menu ; read ; return 0                           
+" ; previous_menu ; return 0                           
 }
