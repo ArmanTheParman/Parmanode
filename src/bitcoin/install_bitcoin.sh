@@ -7,20 +7,17 @@ install_check "bitcoin-start"
     return_value="$?"
     if [[ $return_value = "1" ]] ; then return 1 ; fi       #Bitcoin already installed
 
-
 change_drive_selection
     # abort bitoin installation if return 1
     if [[ $? == 1 ]] ; then return 1 ; fi
 
 
-
-# set $prune_value. Doing this now as it is related to 
-# the drive choice. Use variable later for setting bitcoin.conf
-
 prune_choice 
-    # make bitcoin directories in appropriate locations
+    # set $prune_value. Doing this now as it is related to 
+    # the drive choice. Use variable later for setting bitcoin.conf
 
 make_bitcoin_directories $drive         
+    # make bitcoin directories in appropriate locations
     # external or internal argument
     # installed entry made when parmanode/bitcoin directory made.
 

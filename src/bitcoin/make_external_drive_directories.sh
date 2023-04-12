@@ -20,12 +20,12 @@ if $(mkdir /media/$(whoami)/parmanode/.bitcoin) ; then
     
     You have options:
 
-                    b)     Parmanode will back-up the directory on the
-                           external drive (Do you really have the space?)
-                    
-                    d)     Delete and make new directory
+            b)     Parmanode will back-up the directory on the
+                    external drive (Do you really have the space?)
+            
+            d)     Delete and make new directory
 
-                    s)     Skip - ie use existing .bitcoin directory on ext drive
+            s)     Skip - i.e. use the existing .bitcoin directory on the ext drive
 
 ########################################################################################
 "
@@ -45,7 +45,8 @@ if $(mkdir /media/$(whoami)/parmanode/.bitcoin) ; then
         done
     fi #ends mkdir if
         
-exit 1
-fi
-return 1 
+fi #ends if drive external
+
+debug_point "drive setting is no external, yet called external drive function for unknown reason. Aborting."
+exit 1 
 }
