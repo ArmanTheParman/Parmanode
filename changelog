@@ -1,6 +1,9 @@
 Version 1.1.0 (pre-release) ; April 13 2023
     - added MacOS support
     - changed dripe wipe text to a call to #FreeRoss
+    - added an About section
+    - code cleaned up, directories moved around.
+    - added info on mentorship program with Parman 
 
 Version 1.0.2
     - several errors corrected
