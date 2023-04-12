@@ -1,4 +1,7 @@
+Parmanode 1.1 - Not yet ready. Working on Mac OS support.
+
 Parmanode 1.0 - Plebian Edition: README
+See tag v1.0.0
 08/April/2023
 
 
@@ -70,11 +73,6 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 HOW TO RUN
 
-If you have git installed (you can get it with 'sudo apt install git'),
-make a directory on you computer, navigate to it then type:
-
-git clone https://github.com/ArmanTheParman/Parmanode.git
-
-You'll then have a copy of the program in your directory.
+Find the latest tag and download/unzip that to a directory on your drive.
 
 To run it, cd into the downloaded directory ("Parmanode"), then type './run_parmanode'

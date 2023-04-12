@@ -1,5 +1,4 @@
 function make_bitcoind_service_file {
-debug_point "entered make bitcoind service file"
 set_terminal
 
 echo "
@@ -31,8 +30,8 @@ echo "
 
 ########################################################################################
 "
-choose "x" ; exit_choice
-
+choose "xq" 
+read choice
 set_terminal
 
 case $choice in
@@ -43,6 +42,9 @@ s|S)
     echo "skipping..."
     enter_continue
     return 1
+    ;;
+q|Q)
+    exit 0
     ;;
 *)
     invalid

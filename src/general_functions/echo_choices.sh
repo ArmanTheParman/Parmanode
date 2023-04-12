@@ -24,7 +24,6 @@ echo "Type your choice, or (p) for previous, (q) to quit, then <enter>: "
 return 0
 fi
 
-
 if [[ $1 == "xq" ]]
 then
 echo "Type your choice, or (q) to quit, then <enter>: "
@@ -43,7 +42,7 @@ echo "Hit <enter> to continue, (p) for previous, (q) to quit, then <enter>: "
 return 0
 fi
 
-return 0
+return 1 
 }
 
 function invalid {

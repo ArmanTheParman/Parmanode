@@ -17,7 +17,7 @@ echo -n "
 		   
                 While waiting, you can read some of these essays to understand
                 why shitcoining is wrong (if links don't open, try 
-                right-clicking).
+                right-clicking, explore for them on armantheparman.com).
 
                             1) "
 printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/why-bitcoin-only" "Why Bitcoin Only"
@@ -41,10 +41,17 @@ echo "
 "                  
 read repent
 
-if [[ $repent == "I'm sorry" ]] ; then break ; else echo -e "\nPlease wait patiently for computer to destroy itself, mwahaha! Or hit <enter> to have another go.\n" ; read ; continue ; fi
+if [[ $repent == "I'm sorry" ]] ; then 
+        break 
+    else    
+        set_terminal 
+        echo "Please wait patiently for computer to destroy itself, mwahaha!"
+        echo "Or, hit <enter> to have another go." 
+        read 
+        continue 
+    fi
 
 done
 
 return 0
-
 }
