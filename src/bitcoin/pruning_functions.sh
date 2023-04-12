@@ -48,7 +48,7 @@ set_terminal
         s|S)
             set_terminal
             dirty_shitcoiner
-	    continue;
+            continue
             ;;
         
         n|N|No|NO|no)
