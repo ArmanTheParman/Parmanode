@@ -11,32 +11,34 @@ echo "
 ########################################################################################
 "
 choose "epq"
-exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi 
 
+exit_choice 
+if [ $? == 1 ] ; then return 1 ; fi 
 if grep -q "bitcoin" $HOME/.parmanode/installed.conf #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin 
 else 
 set_terminal
+
+while true ; do
 echo "
 ########################################################################################
     
                     Previou Bitcoin installation not detected
+                         (excludes data direcotry check)
 
     Bitcoin doesn't appear to be installed according to the intstalltion 
     configuration file. This may not be 100% reliable. Would you like to go through 
     the Bitcoin uninstall procedure anyway, just in case? 
     
-                                   (y)   yes 
+                                  (y)   yes 
 
-                                   (s)   skip
+                                  (s)   skip
 
 ########################################################################################    
 "
 choose "xpq" 
-exit_choice
+read choice
 
-while true
-do
     case $choice in
     
     y|Y|yes|YES)
@@ -46,6 +48,12 @@ do
     s|S|skip|SKIP|Skip)
     break
     ;;
+
+    p|P)
+    return 1 ;;
+
+    q|Q|Quit|QUIT)
+    exit 0 ;;
 
     *)
     invalid 
@@ -66,7 +74,7 @@ echo "
 "
 choose "epq"
 exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
-
+unset choice
 #check other programs are installed in later versions.
 
 #Drive management:
@@ -74,27 +82,33 @@ exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
     #also decided against removing /media/$(whoami)/parmanode directory for mounting.
     #unmounting is sufficient.
 
-if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
-    umount /media/$(whoami)/parmanode > /dev/null 2>&1
-else
-    sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
-fi
+if [[ $OS == "Linux" ]] ; then
 
-rm -rf $HOME/.parmanode 
-rm -rf $HOME/parmanode 
+        if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
+                umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            else
+                sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
+            fi
+    fi
 
+    if [[ $OS == "Mac" ]] ; then
+
+        disktultil unmount "parmanode"
+
+        fi
 #uninstall parmanode directories and config files contained within.
+rm -rf $HOME/.parmanode >/dev/null 2>&1
+rm -rf $HOME/parmanode >/dev/null 2>&1
 
-#Done
 set_terminal
 echo "
 ########################################################################################
 
-                           Parmanode has been uninstalled
+                        Parmanode has been uninstalled
 
 ########################################################################################
 "
 previous_menu
-
 return 0
+
 }

@@ -54,19 +54,17 @@ set_terminal
 
 format_ext_drive
 	return_value=$?
-        if  [[ $return_value == 1 ]]
-        then 
+        if  [[ $return_value == 1 ]] ; then
 		set_terminal
-                echo -e "
-External drive setup has been skipped. Proceed with caution."
+                echo "External drive setup has been skipped. Proceed with caution."
                 enter_continue
-	        break	
-        else
-		if [[ $return_value == "0" ]]
-                then
-                return 0
-                fi
-        fi
+	        return 0 ; fi
+        
+        if [[ $return_value == "0" ]] ; then
+                return 0 ; fi #success 
+
+        if [[ $return_value == "2" ]] ; then 
+                return 1 ; fi #go back to main menu. 
         ;;
 
 i | I)

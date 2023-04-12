@@ -8,15 +8,9 @@
 	done
 
 
-# Check OS function and store in variable for later.
+# Check OS function and store in variable for later. Exits if Windows, or if not if Mac/Linux not detected.
 
-	OS=$(which_os)
-
-# Make sure Linux computer. 
-
-	if [[ $OS != "linux" ]] ; then echo "Wrong operating system. This version of Parmanode \
-	is for Linux only. Aborting ... " ; enter_continue ; exit 0 ; fi
-	# enter_continue is a custom echo function with a read command for confirmation.
+	which_os
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
@@ -24,7 +18,8 @@
 
 # Debug - comment out before release.
 
-	# debug_point "Pause here to check for error output before clear screen." 
+    debug_point "Pause here to check for error output before clear screen." 
+
 
 
 #Begin program:

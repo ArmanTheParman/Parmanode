@@ -7,7 +7,7 @@ input_file=$1
 search_string=$2
 
 
-	sed -i "/${search_string}/d" "$input_file" 
+	sed -i "/${search_string}/d" "$input_file" >/dev/null 2>&1
 
 return 0
 }
