@@ -10,7 +10,7 @@ echo "
 
                  start)    Start Bitcoind
 
-                 stop)     Start Bitcoind 
+                 stop)     Stop Bitcoind 
 
                  c)        How to connect your wallet
 
