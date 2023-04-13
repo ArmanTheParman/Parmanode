@@ -31,7 +31,7 @@ echo "
                    - Donation appreciated (if felt you received value)
                    - Honesty system, suggested: 0.002 bitcoin
                    - Or your choice
-                   - Yes, the code is open source, MIT licence, like Bitoin
+                   - Yes, the code is open source, MIT licence, like Bitcoin
 
 
 	To report bugs, armantheparman@protonmail.com
