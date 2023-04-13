@@ -8,21 +8,21 @@ echo "
 ########################################################################################
 
 
-            start)    Start Bitcoind
+       start)    Start Bitcoind............................................(Do it)
 
-            stop)     Stop Bitcoind 
+       stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
-            c)        How to connect your wallet
+       c)        How to connect your wallet...........(Otherwise no point to this)
 
-            n)        Access Bitcoin node information ....(bitcoin-cli)
-                    
-            d)        Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
+       n)        Access Bitcoin node information ....................(bitcoin-cli)
+	    
+       d)        Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
 
-            bc)       Inspect and edit bitcoin.conf file 
+       bc)       Inspect and edit bitcoin.conf file 
 
-            dd)       Backup/Restore data directory (Instructions only)
+       dd)       Backup/Restore data directory.................(Instructions only)
 
-            pw)       Set, remove, or change RPC user/pass
+       pw)       Set, remove, or change RPC user/pass
 
 
 ########################################################################################
@@ -48,19 +48,23 @@ continue
 fi
 
 if [[ $OS == "Mac" ]] ; then
-sudo /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/
+/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/
+enter_continue 
 continue
+
 fi
 ;;
 
 stop|STOP|Stop)
 if [[ $OS == "Linux" ]] ; then 
 sudo systemctl stop bitcoind.service
+enter_continue
 continue 
 fi
 
 if [[ $OS == "Mac" ]] ; then
-sudo /usr/local/bin/bitcoin-cli stop
+/usr/local/bin/bitcoin-cli stop
+enter_continue
 continue
 fi
 
@@ -93,7 +97,7 @@ tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal;
+set_terminal
 continue ;;
 
 

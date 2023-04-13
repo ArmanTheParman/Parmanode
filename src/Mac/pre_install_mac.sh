@@ -35,11 +35,13 @@ if [[ $chip == "x86_64" ]] ; then echo "
 
 ########################################################################################
 "
-fi #ends x86_64 chip
 choose "epq"
 read choice
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "p" ]] ; then return 1 ; fi
+return 0
+fi #ends x86_64 chip
+
 
 
 
@@ -80,6 +82,7 @@ choose "epq"
 read choice
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "p" ]] ; then return 1 ; fi
+return 0
 fi #ends ARM chip
 
 debug_point "Unknown chip. Aborting." ; enter_exit ; exit 1

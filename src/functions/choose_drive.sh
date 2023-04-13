@@ -24,7 +24,7 @@ echo "
 
 ########################################################################################
 "
-choose "xq"
+choose "xpq"
 
 read choice
 
@@ -68,14 +68,15 @@ format_ext_drive
         ;;
 
 i | I)
-
         hdd="internal"
-
-        return 0 ;
+        return 0 
         ;;
 
-q | Q | quit)
+q|Q|quit|QUIT|Quit)
         exit 0
+        ;;
+p|P)
+        return 2
         ;;
 *)
         clear
