@@ -35,11 +35,11 @@ if [[ $chip == "x86_64" ]] ; then echo "
 
 ########################################################################################
 "
-fi #ends x86_64 chip
 choose "epq"
 read choice
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "p" ]] ; then return 1 ; fi
+fi #ends x86_64 chip
 
 
 
