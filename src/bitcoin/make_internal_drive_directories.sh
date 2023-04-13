@@ -45,6 +45,7 @@ case $choice in
         rm -rf $HOME/.bitcoin/
         echo ".bitcoin directory deleted."
         enter_continue
+	set_terminal
         break
         ;;
 
