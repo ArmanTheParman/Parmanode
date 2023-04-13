@@ -6,8 +6,16 @@ function delete_line {
 input_file=$1
 search_string=$2
 
-
+	if [[ $OS == "Linux" ]] 
+	then
 	sed -i "/${search_string}/d" "$input_file" >/dev/null 2>&1
+        fi
+
+
+	if [[ $OS == "Mac" ]]
+	then
+	sed -i "" "/${search_string}/d" "$input_file" >/dev/null 2>&1
+	fi		
 
 return 0
 }
