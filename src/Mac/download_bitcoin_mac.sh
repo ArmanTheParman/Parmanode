@@ -18,9 +18,12 @@ set_terminal
 mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
 tar -xf bitcoin_Mac* -C $HOME/.parmanode/temp >/dev/null 2>&1
 
-#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others.
-sudo install -m 0755 -o root -g root -t /usr/local/bin $HOME/.parmanode/temp/bitcoin*
-
+#Alternative to Linux Install command...
+sudo chown $(whoami):$(whoami) /$HOME/.parmanode/temp/bitcoin*
+sudo chmod 0755 $HOME/.parmanode/temp/bitcoin*
+if [[ -d /usr/local/bin ]] ; then true ; else sudo mkdir -p /usr/local/bin ]] ; fi
+mv $HOME/.parmanode/temp/bitcoin* /usr/local/bin
 sudo rm -rf $HOME/.parmanode/temp
-return 0      # abort bitoin installation if return 1
+
+return 0      
 }
