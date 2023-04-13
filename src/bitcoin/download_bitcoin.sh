@@ -1,4 +1,4 @@
-function download_bitcoin {
+function download_bitcoin_linux {
 cd $HOME/parmanode/bitcoin
 
 set_terminal

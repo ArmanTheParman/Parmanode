@@ -26,8 +26,6 @@
 
 	set_terminal # custom function for screen size and colour.
 	intro
-	sudo_check
-	gpg_check
 	menu_startup
 
 exit 0

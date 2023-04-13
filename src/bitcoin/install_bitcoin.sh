@@ -20,7 +20,7 @@ make_bitcoin_directories $drive
     # external or internal argument
     # installed entry made when parmanode/bitcoin directory made.
 
-if [[ $OS == "Linux" ]] ; then download_bitcoin ; fi
+if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
 if [[ $OS == "Mac" ]] ; then download_bitcoin_mac ; fi
 
 #setup bitcoin.conf
