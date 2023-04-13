@@ -1,9 +1,9 @@
 function make_internal_drive_directories {
-
-if [[ $drive == "internal" ]]
-then true
-else return 1
-fi
+#proceed only if internal drive selected.
+    if [[ $drive == "internal" ]]
+    then true
+    else return 1
+    fi
 
 # If .bitcoin directory exists, decide what to do with it.
 # If it doesn't exists, do nothing, running bitcoind will create it automatically.
@@ -45,6 +45,7 @@ case $choice in
         rm -rf $HOME/.bitcoin/
         echo ".bitcoin directory deleted."
         enter_continue
+	set_terminal
         break
         ;;
 

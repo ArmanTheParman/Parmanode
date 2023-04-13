@@ -11,7 +11,6 @@ change_drive_selection
     # abort bitoin installation if return 1
     if [[ $? == 1 ]] ; then return 1 ; fi
 
-
 prune_choice 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice. Use variable later for setting bitcoin.conf

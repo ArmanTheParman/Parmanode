@@ -52,10 +52,12 @@ done
 
 /usr/local/bin/bitcoin-cli stop 2>/dev/null
 
-rm -rf $HOME/parmanode/bitcoin $HOME/.bitcoin 2>/dev/null #if symlink, symlink deleted. If a real directory, directory removed.
+sudo rm -rf $HOME/parmanode/bitcoin $HOME/.bitcoin 2>/dev/null #if symlink, symlink deleted. If a real directory, directory removed.
 sudo rm /usr/local/bin/*bitcoin* 2>/dev/null
 sudo rm /etc/systemd/system/bitcoin.service 2>/dev/null
-delete_line "$HOME/.parmanode/installed.conf" "bitcoin" 2>/dev/null
+delete_line "$HOME/.parmanode/installed.conf" "bitcoin" 
+delete_line "$HOME/.parmanode/installed.conf" "bitcoin-start" 
+delete_line "$HOME/.parmanode/installed.conf" "bitcoin-end" 
 
 set_terminal
 echo "

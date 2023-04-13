@@ -70,7 +70,7 @@ done
                                     # Write prune choice to config file:
 				    # Menu breaks to here.
 
-parmanode_conf_add "prune_value=$prune_value"
+parmanode_conf_add "prune_value=$prune_value" >/dev/null 2>&1
 
                                     # Prune choice gets added to bitcoin.conf elsewhere in the code
 return 0
