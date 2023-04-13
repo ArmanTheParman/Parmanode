@@ -12,7 +12,7 @@ echo "
 
             stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
-            c)        How to connect your wallet...(Otherwise there's no point to this)
+            c)        How to connect your wallet...........(Otherwise no point to this)
 
             n)        Access Bitcoin node information ....................(bitcoin-cli)
                     
