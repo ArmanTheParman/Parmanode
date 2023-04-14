@@ -13,8 +13,6 @@ echo "
 
                     (u)          Uninstall Parmanode
 
-                    
-
                     (a)          Add more programs ......... (Can install Bitcoin here)
 
                     (r)          Remove programs
@@ -36,11 +34,6 @@ i)
 u)
     set_terminal
     uninstall_parmanode
-    continue
-    ;;
-pp)
-    set_terminal
-    premium
     continue
     ;;
 a)
