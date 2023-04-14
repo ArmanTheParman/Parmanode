@@ -21,9 +21,11 @@ set_terminal ; echo "
 
     The program includes …
 
-########################################################################################
-" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal ; echo "
-########################################################################################
+####https://armantheparman.com/donations/
+
+                        Nostr:    pub1ltt9gry09lf2z6396rvzmk2a8wkh3yx5xhgkjzzg5znh62yr53rs0hk97y
+
+                        L####################################################################################
 
     The program includes …
 

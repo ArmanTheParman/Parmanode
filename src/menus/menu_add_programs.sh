@@ -5,8 +5,8 @@ set_terminal
 echo "
 ########################################################################################
 
-    Please select a program you'd like to add. Currently, only Bitcoin Core is
-    available.
+                         P A R M A N O D E - Install Programs
+
 
 ########################################################################################
           
