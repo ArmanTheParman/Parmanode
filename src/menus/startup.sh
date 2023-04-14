@@ -11,9 +11,11 @@ echo "
 
                  (r)         Run Parmanode
 
+                 (pp)        Parmanode Premium 
+
                  (a)         About Parmanode
 
-                 (pp)        Parmanode Premium 
+                 (ip)        What's my computer's IP address?
 
                  (m)         Bitcoin Mentorship Info
  
@@ -41,6 +43,10 @@ case $choice in
     pp)
         set_terminal
         premium
+        continue
+        ;;
+    ip|IP|iP|Ip)
+        IP_address
         continue
         ;;
     m|M)
