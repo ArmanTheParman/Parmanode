@@ -1,5 +1,21 @@
 function mount_drive {
 
+if [[ $OS == "Mac" ]] ; then
+    #if mounted, exit 
+	    if mountpoint -q "/Volumes/parmanode" ; then
+			return 0
+			fi
+
+    # If function didn't return 0, try mounting with label, then UUID, then loop.
+		sleep 1
+    	diskutil mount parmanode || { debug_point "Unable to mount disk. Aborting." ; return 1 ; }
+		return 0
+		
+fi
+
+########################################################################################
+
+if [[ $OS == "Linux" ]] ; then
     #if mounted, exit 
 	    if mountpoint -q "/media/$(whoami)/parmanode" ; then
 			return 0
@@ -22,4 +38,5 @@ function mount_drive {
 		read choice ; if [[ $choice == "q" ]] ; then return 1 ; fi
 
 return 0
+fi
 }
