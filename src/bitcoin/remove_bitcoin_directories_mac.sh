@@ -90,7 +90,7 @@ done
 fi #end checking internal drive for .bitoin directory
 
 #Check for Bitcoin data directory in default Mac location
-if [[ -d "$HOME/Library/"Application Support"/Bitcoin/" ]] ; then 
+if [[ -d "$HOME/Library/'Application Support'/Bitcoin/" ]] ; then 
     set_terminal ; echo "
 ########################################################################################
     
@@ -111,8 +111,8 @@ fi #end checking internal drive for data directory at defaul mac location
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
 
 #Remove symlink from default Bitcoin directory to $HOME/.bitcoin
-if [[ -L "$HOME/Library/"Application Support"/Bitcoin" ]] ; then
-    rm "$HOME/Library/"Application Support"/Bitcoin" ; fi 
+if [[ -L "$HOME/Library/'Application Support'/Bitcoin" ]] ; then
+    rm "$HOME/Library/'Application Support'/Bitcoin" ; fi 
 
 
 return 0
