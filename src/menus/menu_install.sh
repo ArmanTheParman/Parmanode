@@ -6,7 +6,7 @@ set_terminal
 echo "
 ########################################################################################
 
-                                   P A R M A N O D E
+                            P A R M A N O D E - Install Menu
 
 
                     (i)          Install Parmanode ......... (Must install first)
@@ -16,8 +16,6 @@ echo "
                     (a)          Add more programs ......... (Can install Bitcoin here)
 
                     (r)          Remove programs
-
-                    (ip)         What's my computer's IP address?
 
 ########################################################################################
 "
@@ -42,10 +40,6 @@ a)
     return 0;;
 r|R)
     remove_programs
-    continue
-    ;;
-ip|IP|iP|Ip)
-    IP_address
     continue
     ;;
 quit | QUIT | q | Q)
