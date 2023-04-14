@@ -9,17 +9,17 @@ echo "
                                    P A R M A N O D E
 
 
-                    i)          Install Parmanode ......... (Must install first)
+                    (i)          Install Parmanode ......... (Must install first)
 
-                    u)          Uninstall Parmanode
+                    (u)          Uninstall Parmanode
 
-                    pp)         Parmanode Premium
+                    
 
-                    a)          Add more programs ......... (Can install Bitcoin here)
+                    (a)          Add more programs ......... (Can install Bitcoin here)
 
-                    r)          Remove programs
+                    (r)          Remove programs
 
-                    ip)         What's my computer's IP address?
+                    (ip)         What's my computer's IP address?
 
 ########################################################################################
 "

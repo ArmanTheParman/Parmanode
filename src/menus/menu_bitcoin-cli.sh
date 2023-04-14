@@ -10,27 +10,27 @@ echo "
 
 ########################################################################################                                
 
-                        v)            Version         
+                        (v)            Version         
 
-                        gi)           Get info            
+                        (gi)           Get info            
                 
-                        ni)           Net info
+                        (ni)           Net info
                 
-                        gbh)          Get blockhash   
+                        (gbh)          Get blockhash   
                 
-                        gbi)          Get blockchain info 
+                        (gbi)          Get blockchain info 
                 
-                        gdi)          Get deployment info
+                        (gdi)          Get deployment info
                 
-                        gd)           Get difficulty  
+                        (gd)           Get difficulty  
                 
-                        gmi)          Get mempool info    
+                        (gmi)          Get mempool info    
                 
-                        gtosi)        Get tx out set info 
+                        (gtosi)        Get tx out set info 
                                         
-                        gcc)          Get connection count    
+                        (gcc)          Get connection count    
                 
-                        vm)           Verify a message
+                        (vm)           Verify a message
 
 
 ########################################################################################
