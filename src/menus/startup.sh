@@ -13,7 +13,7 @@ echo "
 
                  (a)         About Parmanode
 
-                 (pp)         Parmanode Premium 
+                 (pp)        Parmanode Premium 
 
                  (m)         Bitcoin Mentorship Info
  
