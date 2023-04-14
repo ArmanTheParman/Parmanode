@@ -1,4 +1,5 @@
-Parmanode 1.1.0 Plebian Cheese - Mac and Linux 
+Parmanode 2.0.0 Plebian Cheese 
+For Mac (x86, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 13 April 2023
 
 FOR MAC USERS WISHING TO USE AN EXTERNAL DRIVE, PLEASE
@@ -7,7 +8,8 @@ WAIT FOR THE NEXT RELEASE THIS WEEKEND.
 Parmanode is a software package for home computers (Linux, Mac, and
 maybe one day, Windows). The Linux version is tested and working. The Mac
 version needs testing - use with caution, or just wait for the full
-release.
+release. Support for Raspberry Pi 32 bit and 64 bit running Linux OS has
+been added.
 
 Parmanode comes with an installation wizard so that non-technical users have
 the ability to download and verify Bitcoin Core and sync using an external 
