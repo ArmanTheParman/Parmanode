@@ -1,4 +1,4 @@
-unction startup {
+function startup {
 while true ; do
 set_terminal
 echo "
