@@ -38,7 +38,11 @@ case $choice in
     a|A)
         about
         ;;
-
+    pp)
+        set_terminal
+        premium
+        continue
+        ;;
     m|M)
         mentorship
         ;;
