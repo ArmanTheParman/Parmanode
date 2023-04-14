@@ -82,7 +82,7 @@ wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
 		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
 		
 	    if [[ $chip == "x86_64" ]] ; then 
-		https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
 
 sha256sum --ignore-missing --check SHA256SUMS
 
