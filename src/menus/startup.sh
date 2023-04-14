@@ -1,23 +1,24 @@
-function menu_startup {
+function startup {
 while true ; do
 set_terminal
 echo "
 ########################################################################################
 
-                               PARMANODE STARTUP MENU 
+                               P A R M A N O D E - STARTUP MENU 
             
 
-		 (i)         Install Programs......  (Hint: start here)
+                 (i)         Install/Uninstall ......  (Hint: start here)
 
-		 (r)         Run Parmanode
+                 (r)         Run Parmanode
 
-		 (a)         About Parmanode
+                 (a)         About Parmanode
 
-		 (m)	     Bitcoin Mentorship Info
+                 (pp)         Parmanode Premium 
 
+                 (m)         Bitcoin Mentorship Info
+ 
 
 ########################################################################################
-
 "
 choose "xq"
 echo "

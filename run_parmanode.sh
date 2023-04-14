@@ -18,7 +18,7 @@
 
 # Debug - comment out before release.
 
-     debug_point "Pause here to check for error output before clear screen." 
+#     debug_point "Pause here to check for error output before clear screen." 
 
 
 
@@ -26,6 +26,6 @@
 
 	set_terminal # custom function for screen size and colour.
 	intro
-	menu_startup
+	startup
 
 exit 0

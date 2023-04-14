@@ -10,27 +10,27 @@ echo "
 
 ########################################################################################          
 
-                             b)      Bitcoin Core
+                             (b)      Bitcoin Core
 
             Not yet avaiable...                        
 
-                             f)      Fulcrum (an Electrum Server)
+                             (f)      Fulcrum (an Electrum Server)
 
-                             m)      Mempool.Space
+                             (m)      Mempool.Space
 
-                             l)      LND
+                             (l)      LND
 
-                             rtl)    RTL
+                             (rtl)    RTL
 
-                             bps)    BTCPay Server
+                             (bps)    BTCPay Server
 
-                             s)      Specter Desktop
+                             (s)      Specter Desktop
 
-                             th)     ThunderHub
+                             (th)     ThunderHub
 
-                             lh)     LND Hub
+                             (lh)     LND Hub
 
-                             t)      Tor 
+                             (t)      Tor 
 
 #######################################################################################
 
