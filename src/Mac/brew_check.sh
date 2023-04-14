@@ -45,6 +45,7 @@ set_terminal
 echo "Download using curl failed. Unknown error. You should try again. 
 Proceed with caution."
 return 0
+fi
 }
         
 
