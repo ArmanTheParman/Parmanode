@@ -1,4 +1,4 @@
-function startup {
+unction startup {
 while true ; do
 set_terminal
 echo "
@@ -9,16 +9,18 @@ echo "
 
                  (i)         Install/Uninstall ......  (Hint: start here)
 
-                 (r)         Run Parmanode
+                 (r)         Run Parmanodee
 
                  (pp)        Parmanode Premium 
 
+                 (e)         Education
+
+                 (t)         Tools
+
+                 (d)         Donate
+
                  (a)         About Parmanode
 
-                 (ip)        What's my computer's IP address?
-
-                 (m)         Bitcoin Mentorship Info
- 
 
 ########################################################################################
 "
@@ -36,27 +38,24 @@ case $choice in
     r|R|R|r)    
         menu_parmanode
         ;;
-
+    pp)
+        premium
+        ;;
+    e|E)
+        education
+        ;;
+    t|T)
+        PMtools
+        ;;
+    d|D)
+        donations
+        ;;
     a|A)
         about
         ;;
-    pp)
-        set_terminal
-        premium
-        continue
-        ;;
-    ip|IP|iP|Ip)
-        IP_address
-        continue
-        ;;
-    m|M)
-        mentorship
-        ;;
-
     q | Q | quit)
         exit 0
         ;;
-
     *)
         invalid
 	;;

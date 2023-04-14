@@ -9,13 +9,13 @@ echo "
                             P A R M A N O D E - Install Menu
 
 
-                    (i)          Install Parmanode ......... (Must install first)
+                    (i)        Install Parmanode ....... (Must install first)
 
-                    (u)          Uninstall Parmanode
+                    (u)        Uninstall Parmanode
 
-                    (a)          Add more programs ......... (Can install Bitcoin here)
+                    (a)        Add more programs ....... (Can install Bitcoin here)
 
-                    (r)          Remove programs
+                    (r)        Remove programs
 
 ########################################################################################
 "
