@@ -3,6 +3,7 @@ Current Pre-release
     - added IP address lookup for user's computer
     - added Homebrew installation for Macs
     - added Bitcoin Core dependencies for Mac
+    - critical errors for Mac version fixed
     
 
 
