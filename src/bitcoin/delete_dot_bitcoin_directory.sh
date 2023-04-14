@@ -1,6 +1,6 @@
 function delete_dot_bitcoin_directory {                        
 #.bitcoin will be deleted if it exists and is not a symlink.
-
+if [[ $OS == "Linux" ]] ; then
 if [[ -d "$HOME/.bitcoin" && ! -L "$HOME/.bitcoin" ]]        
 then
 # .bitcoin directory exists on internal drive"
@@ -68,4 +68,13 @@ fi
 
 
 return 0
+fi # End if linux
+
+#UNFINISHED
+#if [[ $OS == "Mac" ]] ; then
+#
+#if [[ -d "$HOME/Library/"Application Support"/Bitcoin/" && ! -L "~/Library/Application Support/Bitcoin/" ]] ; then
+
+
+
 }
