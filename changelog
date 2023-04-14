@@ -1,7 +1,9 @@
 Current Pre-release
+    - Added Raspberry Pi (32 bit and 64 bit) support with Linux OS.
     - added IP address lookup for user's computer
     - added Homebrew installation for Macs
     - added Bitcoin Core dependencies for Mac
+    
 
 
 Version 1.1.0
