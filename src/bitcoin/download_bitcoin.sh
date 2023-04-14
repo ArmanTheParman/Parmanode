@@ -71,15 +71,18 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
 wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
 
-set_terminal ; echo "
-    Do you have 32 bit Pi 4 or 64 bit? Type 32 or 64 then <enter>."
-    read choice 
-    if [[ $choice == "32" ]] ; then 
-        wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+# ARM Pi4 support. If not, checks for 64 bit x86.
 
-    if [[ $choice == "64" ]] ; then 
-        wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
-        
+	chip="$(uname -m)" >/dev/null 2>&1
+	    read choice 
+	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+
+	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
+		
+	    if [[ $chip == "x86_64" ]] ; then 
+		https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
 
 sha256sum --ignore-missing --check SHA256SUMS
 
@@ -114,7 +117,7 @@ rm $HOME/parmanode/bitcoin/bitcoin.conf
 
 #"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
 #makes target directories if they don't exist
-sudo install -m 0755 -o $(whoami)root -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin
 return 0     
