@@ -5,7 +5,7 @@ set_terminal_wide ; echo "
                                 
                                               About Parmanode
             
-            Version:                1.1.0
+            Version:                2.0.0                
 
             Websites:               www.parmanode.com  (under construction) 
                                     github.com/armantheparman/parmanode
@@ -27,8 +27,8 @@ set_terminal_wide ; echo "
 
             Licence:                MIT (Free open source)
 
-            Conditions of use:      Only one rule - users who own shitcoins ("alt"coins), 
-                                    aka "shitcoiners", are not permitted to use this 
+            Conditions of use:      Only one rule - users who own shitcoins (\"alt\"coins), 
+                                    aka \"shitcoiners\", are not permitted to use this 
                                     software.
 
 ##############################################################################################################
