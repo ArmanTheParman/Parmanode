@@ -21,9 +21,9 @@ if [[ $OS == "Linux" ]] ; then
 
 if [[ $OS == "Mac" ]] ; then
 
-        diskutil unmountDisk && return 0
+        diskutil unmountDisk $disk && return 0
         sleep 2
-        diskutil unmountDisk && return 0
+        diskutil unmountDisk $disk && return 0
 
     echo "Encountered unexpected error when unmounting drive. Aborting."
     enter_continue
