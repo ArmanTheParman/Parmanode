@@ -11,9 +11,9 @@ return 0
 
 
 function parmanode_conf_remove {
-program=$1
+remove_it=$1
 
-delete_line "$HOME/.parmanode/parmanode.conf" "$program"
+delete_line "$HOME/.parmanode/parmanode.conf" "$remove_it"
 
 return 0
 }
