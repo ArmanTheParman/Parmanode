@@ -8,26 +8,29 @@ install_check "bitcoin-start"
     if [[ $return_value = "1" ]] ; then return 1 ; fi       #Bitcoin already installed
 
 change_drive_selection
+    # User has choice to change drive selection made when first installing Parmanode.
     # abort bitoin installation if return 1
     if [[ $? == 1 ]] ; then return 1 ; fi
 
 prune_choice 
     # set $prune_value. Doing this now as it is related to 
-    # the drive choice. Use variable later for setting bitcoin.conf
+    # the drive choice just made by the user. i
+    # Use variable later for setting bitcoin.conf
 
-make_bitcoin_directories $drive         
+make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
-    # external or internal argument
-    # installed entry made when parmanode/bitcoin directory made.
+    # installed entry gets made when parmanode/bitcoin directory gets made.
+    # symlinks created (before Bitcoin core installed)
 
-if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
-if [[ $OS == "Mac" ]] ; then download_bitcoin_mac ; fi
+# Download bitcoin software
+    if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
+    if [[ $OS == "Mac" ]] ; then download_bitcoin_mac ; fi
 
 #setup bitcoin.conf
-make_bitcoin_conf
-    if  [ $? -ne 0 ]
-        then return 1
-    fi
+    make_bitcoin_conf
+        if  [ $? -ne 0 ]
+            then return 1
+        fi
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then
