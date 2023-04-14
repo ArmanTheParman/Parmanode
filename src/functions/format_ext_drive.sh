@@ -70,7 +70,7 @@ if [[ $OS == "Linux" ]] ; then
     to a storage device (like a hard drive, SSD, or USB drive) to distinguish it 
     from other devices. 
     
-    Stay calm: YOU DON'T HAVE TO REMMEBER IT OR WRITE IT DOWN.  
+    Stay calm: YOU DON'T HAVE TO REMEMBER IT OR WRITE IT DOWN.  
 
     The /etc/fstab file has been updated to include the UUID and the drive should 
     automount on reboot.
