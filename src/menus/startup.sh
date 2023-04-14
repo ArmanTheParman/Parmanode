@@ -4,7 +4,7 @@ set_terminal
 echo "
 ########################################################################################
 
-                               P A R M A N O D E - STARTUP MENU 
+                             P A R M A N O D E - STARTUP MENU 
             
 
                  (i)         Install/Uninstall ......  (Hint: start here)
