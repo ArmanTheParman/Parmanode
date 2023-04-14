@@ -68,9 +68,19 @@ read #using custom function "enter_continue" here produced a strange error I don
      #line) without any user input to continue."
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
+wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
+wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
+
+set_terminal ; echo "
+    Do you have 32 bit Pi 4 or 64 bit? Type 32 or 64 then <enter>."
+    read choice 
+    if [[ $choice == "32" ]] ; then 
+        wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+
+    if [[ $choice == "64" ]] ; then 
+        wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
+        
+
 sha256sum --ignore-missing --check SHA256SUMS
 
 set_terminal
