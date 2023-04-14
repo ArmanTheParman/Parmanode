@@ -4,11 +4,11 @@ pre_install_mac
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 if [[ $chip == "arm64" ]] ; then
-wget http://parman.org/downloadable/bitcoin_Mac_ARM_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
+curl -O http://parman.org/downloadable/bitcoin_Mac_ARM_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
     fi
 
 if [[ $chip == "x86_64" ]] ; then
-wget http://parman.org/downloadable/bitcoin_Mac_x86-64_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
+curl -O http://parman.org/downloadable/bitcoin_Mac_x86-64_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
     fi
 
 set_terminal
