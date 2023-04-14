@@ -30,7 +30,8 @@ make_bitcoin_conf
     fi
 
 #make a script that service file will use
-make_mount_check_script
+if [[ $OS == "Linux" ]] ; then
+make_mount_check_script ; fi
 
 #make service file
 if [[ $OS == "Linux" ]] ; then 

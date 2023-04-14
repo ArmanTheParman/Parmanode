@@ -48,7 +48,7 @@ continue
 fi
 
 if [[ $OS == "Mac" ]] ; then
-/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/
+/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
 enter_continue 
 continue
 
