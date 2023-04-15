@@ -4,7 +4,7 @@ function pre_install_mac {
 
 chip=$(uname -m)
 
-if [[ $chip == "x86_64" ]] ; then echo "
+if [[ $chip == "x86_64" ]] ; then set_terminal ; echo "
 ########################################################################################
 
 
