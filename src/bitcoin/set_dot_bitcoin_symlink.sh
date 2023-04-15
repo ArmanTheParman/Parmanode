@@ -13,11 +13,11 @@ if [[ $OS == "Linux" && $drive == "external" ]] ; then
     fi
 
 if [[ $OS == "Mac" && $drive == "internal" ]] ; then
-    cd "$HOME/Library/"Application Support"/" && ln -s $HOME/.bitcoin Bitcoin && break
+    cd $HOME/Library/"Application Support"/ && ln -s $HOME/.bitcoin Bitcoin && break
     fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
-    cd "$HOME/Library/"Application Support"/" && ln -s /Volumes/parmanode/.bitcoin Bitcoin && break
+    cd $HOME/Library/"Application Support"/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && break
     fi
 done
 
