@@ -1,4 +1,6 @@
 function dd_wipe_drive {
+
+while true ; do
 set_terminal
 echo "
 ########################################################################################
@@ -23,9 +25,6 @@ echo "
 choose "xq"
 
 read choice
-
-while true
-do
 set_terminal
 
 case $choice in
@@ -43,7 +42,6 @@ case $choice in
 	    ;;
 
     c|C) 
-
         echo "
 ########################################################################################
 
@@ -57,6 +55,7 @@ case $choice in
         echo "
 Your string is: $string 
 "
+        enter_continue
         break 
         ;;
 
