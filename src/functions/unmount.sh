@@ -30,5 +30,5 @@ if [[ $OS == "Mac" ]] ; then
     exit 1
     fi
 
-debug_point "function failed" ; exit 1
+debug "function failed" ; exit 1
 }

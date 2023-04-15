@@ -30,7 +30,7 @@ if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "s" ]] ; then break ; fi
 if [[ $choice == "d" ]] ; then 
     cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
-    || debug_point "Error deleting .bitcoin directory. Continuing." ;  break ; fi 
+    || debug "Error deleting .bitcoin directory. Continuing." ;  break ; fi 
     
 invalid #if all above if statements not true, then invalid choice and loop.
 done
@@ -65,7 +65,7 @@ if [[ $choice == "s" ]] ; then
             break ; fi
 if [[ $choice == "d" ]] ; then 
     cd ; rm -rf $HOME/.bitcoin >/dev/null 2>&1 \
-    || debug_point "Error deleting .bitcoin directory. Continuing." ; break ; fi 
+    || debug "Error deleting .bitcoin directory. Continuing." ; break ; fi 
     
 invalid #if all above if statements not true, then invalid choice and loop.
 done

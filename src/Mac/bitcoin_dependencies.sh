@@ -4,7 +4,7 @@ if command -v brew >/dev/null 2>&1
 	then
 	true
 	else
-	debug_point "Homebrew not installed. Unknown cause. Aborting." ; exit 0
+	debug "Homebrew not installed. Unknown cause. Aborting." ; exit 0
 	fi
 
 while true ; do

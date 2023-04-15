@@ -1,0 +1,67 @@
+########################################################################################
+Version 2.0.4 - 15th April
+########################################################################################
+
+                        i      Notes to developers
+
+
+Thank you, you lovely open source developers for contriubiting and reviewing the 
+Parmanode code.
+
+This document is to help quickly uderstand how the code works in a convenient place
+rather than littered in hard-to-find places which you may end up reading but in an
+inefficient order.
+
+FREQUENTLY USED CUSTOM FUNCTIONS
+
+    set_terminal    This is used a lot to clear the screen. It also sets the terminal
+                    dimensions and changes the text colour to orange. It doesn't 
+                    seem to be working on Mac, but it was at one stage. It's probably
+                    a good thing as many mac terminals have a white background and
+                    I failed at finding how to change it to black without mouse input.
+                    If someone wants to take that on, that'd be awesome.
+    
+    debug           This is a useful function to help me debug and rarely present an
+                    error to the user before aborting. It takes a string argument which
+                    gets printed, before a read command so the screen doesn't clear, 
+                    and devs or users can see the error message before continuing.
+
+    choose          I have several functions that are echo statements to be printed
+                    menu options, found in the echo_choices.sh file. "choose" takes
+                    various string arguments. The letters mean: "x" - choose from
+                    options above, "p" - text to offer option to go to the previous 
+                    menu, and "q" text to offer user to quit.
+    
+    error.sh        This is a file with various error messages. I may expand on it or 
+                    I might get rid of it all together. It's yet to be determined what
+                    is best.
+
+    delete_line     A useful sed function that takes two arguments, the filename and 
+                    the string to find. It then removes every line where that string 
+                    ocurrs. Useful for modifiying config files.
+
+
+EXPLANATION OF CONFIGURATION FILES  
+
+    parmanode.conf  Some user choices, like drive=external / internal, is kep in a config
+                    file for easy access of variables selected during previous times the
+                    software was run.
+                
+    installed.conf  Useful to know if an installation process has begun, eg bitcoin-start, 
+                    in order to know if the user's system has been modified, and can 
+                    direct the need for uninstallation or clean install. When something
+                    has finised installing, the "end" line is added to the configuration
+                    file, eg bitcoin-end, for similar reasons.
+
+BITCOIN MAC COMMPILED BINARIES
+
+    I have chosen to compile Bitcoin Core for Mac myself, as it is mostly a GUI based
+    installation. It's not clear to me how to acces the daemon either, so I made a
+    version, from source, which has no GUI, no wallet. The "no wallet" decision might be
+    a mistake (to connect Sparrow), I'm not sure, I'm waiting to find out, and if is, 
+    it's a simple matter of re-compiling and changing the binary offerred when Parmanode
+    downloads it from parman.org. 
+
+    Later, when that is cleared up, I will sign the binary with my gpg key, and 
+    document the steps to reproduce it.
+

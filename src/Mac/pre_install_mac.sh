@@ -85,5 +85,5 @@ if [[ $choice == "p" ]] ; then return 1 ; fi
 return 0
 fi #ends ARM chip
 
-debug_point "Unknown chip. Aborting." ; enter_exit ; exit 1
+debug "Unknown chip. Aborting." ; enter_exit ; exit 1
 }

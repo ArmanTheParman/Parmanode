@@ -18,7 +18,7 @@
 
 # Debug - comment out before release.
 
-#     debug_point "Pause here to check for error output before clear screen." 
+#     debug "Pause here to check for error output before clear screen." 
 
 
 
