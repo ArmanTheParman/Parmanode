@@ -73,6 +73,8 @@ fi #end checking internal drive for .bitoin directory
 
 #Check for Bitcoin data directory in default Mac location
 if [[ -d $HOME/Library/"Application Support"/Bitcoin/ ]] ; then 
+
+while true ; do
     set_terminal ; echo "
 ########################################################################################
     
@@ -82,11 +84,24 @@ if [[ -d $HOME/Library/"Application Support"/Bitcoin/ ]] ; then
 
             $HOME/Library/Application Support/Bitcoin
     
-    This is just for your information. Parmanode won't touch it.
+   This must be removed or renamed for Parmanode to continue with your selected 
+   settings.
+
+                                 r) Rename
+
+                                 d) Delete
 
 ########################################################################################
 "
-enter_continue 
+choose "xq" ; read choice
+    case $choice in
+        r|R) set_terminal ; make_backup_Bitcoin_mac ; break ;;
+        d|D) rm -rf $HOME/Library/Application\ Support/Bitcoin ; break ;;
+        q|Q) exit 0 ;;
+        *)   invalid ;;
+        esac
+    done
+
 fi #end checking internal drive for data directory at defaul mac location
 
 #Remove symlink to drive
