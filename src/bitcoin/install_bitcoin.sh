@@ -85,6 +85,6 @@ return 0
 fi
 
 
-debug_point "Unknown error. Aborting." ; enter_exit ; exit 1
+debug "Unknown error. Aborting." ; enter_exit ; exit 1
 }
 

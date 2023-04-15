@@ -14,10 +14,10 @@ fi
 if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]]
 then
     check_if_win7
-    debug_point "This version of Parmanode will not work on Windows. Aborting."
+    debug "This version of Parmanode will not work on Windows. Aborting."
     exit 1
 fi
-debug_point "OS not detected. Aborting."
+debug"OS not detected. Aborting."
 exit 1
 }
 

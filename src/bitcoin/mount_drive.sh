@@ -8,7 +8,7 @@ if [[ $OS == "Mac" ]] ; then
 
     # If function didn't return 0, try mounting with label, then UUID, then loop.
 		sleep 1
-    	diskutil mount parmanode || { debug_point "Unable to mount disk. Aborting." ; return 1 ; }
+    	diskutil mount parmanode || { debug "Unable to mount disk. Aborting." ; return 1 ; }
 		return 0
 		
 fi
