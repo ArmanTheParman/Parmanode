@@ -12,7 +12,7 @@ echo "
 
 ########################################################################################
 
-            u)          Uninstall Parmanode (before attemptin install again) 
+            u)          Uninstall Parmanode (before attempting install again) 
 
             p)          Abort to the previous menu
 
