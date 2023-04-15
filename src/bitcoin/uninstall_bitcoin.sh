@@ -5,7 +5,7 @@
 #delete bitcoin from install.conf
 #hdd setting in parmanode.conf can stay.
 #remove prune choice from parmanode.conf
-function uninstall_bitcoin_linux {
+function uninstall_bitcoin {
 clear
 while true
 do

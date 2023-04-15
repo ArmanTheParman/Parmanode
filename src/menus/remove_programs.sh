@@ -20,8 +20,7 @@ read choice
 case $choice in
 
 b|B)
-if [[ $OS == "Linux" ]] ; then uninstall_bitcoin_linux ; fi
-if [[ $OS == "Mac" ]] ; then uninstall_bitcoin_mac; fi
+uninstall_bitcoin
 
 uninstall_bitcoin_mac
 return 0
