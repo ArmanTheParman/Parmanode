@@ -3,9 +3,9 @@ set_terminal
 echo "
 ########################################################################################
 
-                    Format drive? (y) (n)
+                      Format drive? (y) (n)
                 
-                    You don't have to if you've already done this.
+                      You don't have to if you've already done this.
 
 ########################################################################################
 "
