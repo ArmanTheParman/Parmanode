@@ -23,7 +23,6 @@ if [[ $OS == "Mac" && $drive == "external" ]] ; then
     cd $HOME/Library/Application\ Support/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
     cd $HOME && ln -s /Volumes/parmanode/.bitcoin .bitcoin && break
     fi
-debug_point "Symlink error. Proceed with caution." ; break
 done
 
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
