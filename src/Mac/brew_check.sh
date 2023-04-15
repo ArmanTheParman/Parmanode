@@ -1,6 +1,6 @@
 function brew_check {
 
-if command -v brew >/dev/null 2>&1i 
+if command -v brew >/dev/null 2>&1
     then
 	return 0
     else
