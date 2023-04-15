@@ -1,6 +1,5 @@
 
 function make_bitcoin_directories {
-drive=$1
 
 # Remove bitcoin directories if they exist. If nothing exists there will
 # be no user input required.
