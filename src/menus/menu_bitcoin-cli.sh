@@ -152,7 +152,7 @@ vm)
     read -p "Please paste in the MESSAGE TEXT and hit <enter> : " message
     echo ""
     echo ""
-    /usr/local/bin/bitcoin-cli verifymessage $address $signature $message
+   /usr/local/bin/bitcoin-cli verifymessage "$address" "$signature" "$message" 
     echo "
 Hit <enter> to go back to the menu."
     read    
