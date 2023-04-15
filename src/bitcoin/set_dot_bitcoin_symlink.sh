@@ -17,7 +17,8 @@ if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
-    cd $HOME/Library/"Application Support"/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && break
+    cd $HOME/Library/"Application Support"/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
+    cd $HOME && ln-s /Volumes/parmanode/.bitcoin .bitcoin ; break
     fi
 done
 
@@ -37,11 +38,13 @@ set_terminal ; echo "
     For Linux users with an external drive, $HOME/.bitcoin points to
     /media/$(whoami)/parmanode/.bitcoin
 
-    For Mac users with an external drive, $HOME/Library/Application Support/Bitcoin
-    points to /Volumes/parmanode/.bitcoin
+    For Mac users with an external drive, 
+    $HOME/Library/Application Support/Bitcoin points to 
+    /Volumes/parmanode/.bitcoin
 
-    For Mac users with an internal drive, $HOME/Library/Application Support/Bitcoin
-    pionts to $HOME/.bitcoin
+    For Mac users with an internal drive, 
+    $HOME/Library/Application Support/Bitcoin pionts to 
+    $HOME/.bitcoin
 
 ########################################################################################
 "

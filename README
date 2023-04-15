@@ -1,4 +1,4 @@
-Parmanode 2.0.3 Plebian Cheese 
+Parmanode 2.0.4 Plebian Cheese 
 For Mac (x86, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 13 April 2023
 
@@ -12,7 +12,8 @@ or internal drive, and also have configuration options presented to them
 with automation. No manual bitcoin.conf file editing will be required.
 
 The aim is that all people need to do is read the menu options carefully - 
-no command line interaction is required. For example, bitcoin-cli commands
+no command line interact
+ion is required. For example, bitcoin-cli commands
 are available in a menu, and pruning can be activated from menu options.
 
 The software also comes with helpful information, including links to various

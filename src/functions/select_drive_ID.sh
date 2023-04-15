@@ -85,7 +85,8 @@ Mac)
 echo -e "
 ########################################################################################        
 
-    Take another look above and check it really is the drive you want to format.
+    Take another look above and check $disk is really is the drive you want to
+    format.
 
                                (y)      Yes
 
