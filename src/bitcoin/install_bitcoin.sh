@@ -9,8 +9,8 @@ install_check "bitcoin-start"
 
 change_drive_selection
     # User has choice to change drive selection made when first installing Parmanode.
-    # abort bitoin installation if return 1
-    if [[ $? == 1 ]] ; then return 1 ; fi
+    # abort bitoin installation if return 2 
+    if [[ $? == 1 || $? == 2 ]] ; then return 1 ; fi
 
 prune_choice 
     # set $prune_value. Doing this now as it is related to 

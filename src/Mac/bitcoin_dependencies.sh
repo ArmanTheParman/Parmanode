@@ -39,6 +39,7 @@ invalid
 done
 
 # while loop breaks to here
+please_wait
 brew install automake libtool boost pkg-config libevent zeromq berkeley-db@4 && return 0 
 set_terminal
 echo "Error installing Bitcoin dependencies. You should try again. Proceed with caution."
