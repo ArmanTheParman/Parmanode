@@ -69,7 +69,7 @@ if [[ $choice == "d" ]] ; then
     
 invalid #if all above if statements not true, then invalid choice and loop.
 done
-fi #end checking internal drive for .bitoin directory
+fi #end checking internal drive for .bitcoin directory
 
 #Check for Bitcoin data directory in default Mac location
 if [[ -d $HOME/Library/"Application Support"/Bitcoin/ ]] ; then 
