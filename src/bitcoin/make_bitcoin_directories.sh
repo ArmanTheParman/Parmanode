@@ -16,11 +16,11 @@ drive=$1
         format_choice 
 
         if [[ $OS == "Linux" ]] ; then
-            mkdir /media/$(whoami)/parmanode/.bitoin >/dev/null 2>&1 || \
+            mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 || \
             { debug_point "Error creating .bitcoin directory on ext drive. Aborting." ; exit 1 ; } ; fi                                                                      
 
         if [[ $OS == "Mac" ]] ; then
-            mkdir /Volumes/parmanode/.bitoin >/dev/null 2>&1 || \
+            mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 || \
             { debug_point "Error creating .bitcoin directory on ext drive. Aborting." ; exit 1 ; } ; fi                                                                      
     fi
 
