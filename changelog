@@ -1,4 +1,10 @@
-Current Pre-release
+Version 2.0.3
+    - small corrections 
+Version 2.0.2
+    - small corrections
+Version 2.0.1
+    - Critical Patch
+Version 2.0.0
     - Added Raspberry Pi (32 bit and 64 bit) support with Linux OS.
     - added IP address lookup for user's computer
     - added Homebrew installation for Macs
