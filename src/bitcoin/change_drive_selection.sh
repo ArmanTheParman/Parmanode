@@ -10,7 +10,7 @@ if [[ -z "$drive" ]] ; then set_terminal ; echo "No drive choice. Something went
 echo "
 ########################################################################################
     
-    You have chosen an $drive drive to run the Bitcoin blockchain data.
+         You have chosen an $drive drive to run the Bitcoin blockchain data.
 
                             (a) to accept and continue
 

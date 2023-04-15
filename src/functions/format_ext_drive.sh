@@ -12,13 +12,9 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
-    set_terminal
-    read -p "Are you sure you want to format $disk? (y/n) " answer
-    if [[ $answer != "y" ]] ; then return 2 ; fi #returns to menu 
-        # Answer "y", code proceeds:
         set_terminal
         diskutil eraseDisk exFAT "parmanode" $disk    #formats and labels
-    set_terminal ; echo "
+        set_terminal ; echo "
 #######################################################################################
 
     If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
