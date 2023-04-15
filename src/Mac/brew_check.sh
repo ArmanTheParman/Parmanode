@@ -34,7 +34,7 @@ choose "epq" ; read choice
 if [[ $choice == "p" ]] ; then return 1 ; fi
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "s" ]] ; then return 0 ; fi
-if [[ $choice == "" ]] ; then break ; fi
+if [[ $choice == "i" ]] ; then break ; fi
 invalid
 done
 
