@@ -7,17 +7,19 @@ install_check "fulcrum-start"
     #first check if Fulcrum has been installed
     return_value="$?"
     if [[ $return_value = "1" ]] ; then return 1 ; fi       #Fulcrum already installed
-    log "fulcrum" "fulcrum install check passed."
+    log "fulcrum" "install check passed."
 
 fulcrum_drive_selectrion
   if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "fulcrum drive seletected as $drive_fulcrum"
+  log "fulcrum" "drive seletected as $drive_fulcrum"
 
 fulcrum_make_directories
   if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "fulcrum directories function exited."
+  log "fulcrum" "make directories function exited."
 
 make_fulcrum_config
+  if [[ $? == 1 ]] ; then return 1 ; fi
+  log "fulcrum" "make config fucntion exited." 
 
 
 
