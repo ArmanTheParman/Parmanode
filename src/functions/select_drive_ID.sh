@@ -85,7 +85,8 @@ Mac)
 echo -e "
 ########################################################################################        
 
-    Take another look above and check it really is the drive you want to format.
+    Take another look above and check $disk is really is the drive you want to
+    format.
 
                                (y)      Yes
 
@@ -97,7 +98,7 @@ echo -e "
 "        
 choose "x"
 read confirm
-        if [[ $confirm != "y" ]] ; then return 0 ; fi
+        if [[ $confirm == "y" ]] ; then return 0 ; fi
         if [[ $confirm == "n" ]] ; then continue ; fi
         if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
         

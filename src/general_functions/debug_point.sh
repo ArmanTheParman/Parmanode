@@ -3,7 +3,7 @@
 # without my knowledge. Only the character "d" will allow th
 # code to contine.
 
-function debug_point {
+function debug {
 
 echo "$1"
 

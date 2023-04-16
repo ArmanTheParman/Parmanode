@@ -6,29 +6,31 @@ set_terminal
 echo "
 ########################################################################################
 
-                                   Parmanode \"Apps\"
+                              P A R M A N O D E - \"Apps\"
 
 ########################################################################################          
 
-                             b)      Bitcoin Core
+                             (b)      Bitcoin Core
 
-                             f)      Fulcrum (an Electrum Server)
+            Not yet avaiable...                        
 
-                             m)      Mempool.Space
+                             (f)      Fulcrum (an Electrum Server)
 
-                             l)      LND
+                             (m)      Mempool.Space
 
-                             rtl)    RTL
+                             (l)      LND
 
-                             bps)    BTCPay Server
+                             (rtl)    RTL
 
-                             s)      Specter Desktop
+                             (bps)    BTCPay Server
 
-                             th)     ThunderHub
+                             (s)      Specter Desktop
 
-                             lh)     LND Hub
+                             (th)     ThunderHub
 
-                             t)      Tor 
+                             (lh)     LND Hub
+
+                             (t)      Tor 
 
 #######################################################################################
 
@@ -42,7 +44,7 @@ b|B)
     clear
     menu_bitcoin_core
     ;;
-f | F | m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | tor | TOR)
+f | F | m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | t | T)
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."

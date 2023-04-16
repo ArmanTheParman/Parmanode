@@ -6,11 +6,11 @@ source $HOME/.parmanode/parmanode.conf
 while true
 do
 set_terminal
-if [[ -z "$drive" ]] ; then echo "No drive choice. Something went wrong. Please re-install Parmanande." ; fi
+if [[ -z "$drive" ]] ; then set_terminal ; echo "No drive choice. Something went wrong. Please re-install Parmanande." ; return 2 ; fi
 echo "
 ########################################################################################
     
-    You have chosen an $drive drive to run the Bitcoin blockchain data.
+         You have chosen an $drive drive to run the Bitcoin blockchain data.
 
                             (a) to accept and continue
 

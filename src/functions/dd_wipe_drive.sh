@@ -1,9 +1,11 @@
 function dd_wipe_drive {
+
+while true ; do
 set_terminal
 echo "
 ########################################################################################
 
-    \"Craig Wright is a liar and a fraud. \" will be used to write over and erase
+    \"#FreeRoss.org - Sign the petition. \" will be used to write over and erase
     the disk. 
     
     Please note, this is not a full forensic wipe. If you want that,
@@ -23,9 +25,6 @@ echo "
 choose "xq"
 
 read choice
-
-while true
-do
 set_terminal
 
 case $choice in
@@ -43,7 +42,6 @@ case $choice in
 	    ;;
 
     c|C) 
-
         echo "
 ########################################################################################
 
@@ -57,6 +55,7 @@ case $choice in
         echo "
 Your string is: $string 
 "
+        enter_continue
         break 
         ;;
 
@@ -65,7 +64,7 @@ Your string is: $string
         ;;
 
     "")
-        string="Craig Wright is a liar and a fraud. " #default string if no customised string selected
+        string="#FreeRoss.org - Sign the petition. " #default string if no customised string selected
 	    break
         ;;
     *)

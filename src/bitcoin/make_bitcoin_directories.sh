@@ -1,26 +1,32 @@
 
 function make_bitcoin_directories {
-drive=$1
 
+# Remove bitcoin directories if they exist. If nothing exists there will
+# be no user input required.
+    if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux ; fi
+    if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac ; fi 
 
-#has the bitcoin directory on parmanode been made? If not, make it.
-make_parmanode_bitcoin_directory             
+#make_parmanode_bitcoin_directory             
+    mkdir $HOME/parmanode/bitcoin > /dev/null 2>&1 && \
+    installed_config_add "bitcoin-start"     #First significant install "change" made to drive
 
-# If external drive - create necessary directories 
+    if [[ $drive == "external" ]] ; then 
 
-make_external_drive_directories              
-    # calls format_choice
-    # calls delete_dot_bitcoin_directory (+/- make_backup_dot_bitcoin_director)
-    # calls set_dot_bitcoin_symlink
-                                                                              
-                                   
-#Internal drive - create directories, and back up if existing.
-make_internal_drive_directories
-    # check if drive is internal
-    # give user options if .bitcoin exists
-    # option to call make_bakcup_dot_bitcoin
-    # abort bitoin installation if return 1
-    if [[ $? == 1 ]] ; then return ; fi 
+        format_choice 
+
+        if [[ $OS == "Linux" ]] ; then
+            mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 ; fi
+
+        if [[ $OS == "Mac" ]] ; then
+            mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1  ; fi
+    fi
+
+    if [[ $drive == "internal" ]] ; then 
+        mkdir $HOME/.bitcoin >/dev/null 2>&1 
+    fi
+
+#Symlinks 
+    set_dot_bitcoin_symlink
 
 return 0
 }

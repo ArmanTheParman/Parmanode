@@ -12,13 +12,9 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
-    set_terminal
-    read -p "Are you sure you want to format $disk? (y/n) " answer
-    if [[ $answer != "y" ]] ; then return 2 ; fi #returns to menu 
-        # Answer "y", code proceeds:
         set_terminal
         diskutil eraseDisk exFAT "parmanode" $disk    #formats and labels
-    set_terminal ; echo "
+        set_terminal ; echo "
 #######################################################################################
 
     If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
@@ -70,7 +66,7 @@ if [[ $OS == "Linux" ]] ; then
     to a storage device (like a hard drive, SSD, or USB drive) to distinguish it 
     from other devices. 
     
-    Stay calm: YOU DON'T HAVE TO REMMEBER IT OR WRITE IT DOWN.  
+    Stay calm: YOU DON'T HAVE TO REMEMBER IT OR WRITE IT DOWN.  
 
     The /etc/fstab file has been updated to include the UUID and the drive should 
     automount on reboot.

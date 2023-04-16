@@ -1,5 +1,4 @@
-function download_bitcoin {
-    #downloads
+function download_bitcoin_linux {
 cd $HOME/parmanode/bitcoin
 
 set_terminal
@@ -69,9 +68,22 @@ read #using custom function "enter_continue" here produced a strange error I don
      #line) without any user input to continue."
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
-wget  https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
+wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
+wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
+
+# ARM Pi4 support. If not, checks for 64 bit x86.
+
+	chip="$(uname -m)" >/dev/null 2>&1
+	    read choice 
+	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+
+	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
+		
+	    if [[ $chip == "x86_64" ]] ; then 
+		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
+
 sha256sum --ignore-missing --check SHA256SUMS
 
 set_terminal
@@ -103,9 +115,10 @@ mv $HOME/.parmanode/temp/b*/* $HOME/parmanode/bitcoin/
 
 rm $HOME/parmanode/bitcoin/bitcoin.conf 
 
-#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others.
-sudo install -m 0755 -o root -g root -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
+#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
+#makes target directories if they don't exist
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin
-return 0      # abort bitoin installation if return 1
+return 0     
 }
