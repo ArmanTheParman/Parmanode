@@ -24,12 +24,11 @@ echo "
 choose "xpq" ; read choice
 
 case $choice in q|Q|QUIT|Quit) exit 1 ;; p|P) return 1 ;;
-    e|E) fulcrum_drive="external" ;;
-    i|I) fulcrum_drive="internal" ;;
+    e|E) drive_fulcrum="external" ; break ;;
+    i|I) drive_fulcrum="internal" ; break ;;
     *) invalid ;;
     esac
-
-parmanode_conf_add "fulcrum_drive=${fulcrum_drive}"
-
 done
+
+parmanode_conf_add "drive_fulcrum=${drive_fulcrum}" && return 0
 }
