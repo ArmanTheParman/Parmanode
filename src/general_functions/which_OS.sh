@@ -1,4 +1,7 @@
 function which_os {
+
+chip="$(uname -m)" >/dev/null 2>&1
+
 if [[ "$(uname -s)" == "Darwin" ]]
 then
     OS="Mac"

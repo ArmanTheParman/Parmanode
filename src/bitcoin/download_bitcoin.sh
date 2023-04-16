@@ -76,13 +76,13 @@ wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
 	chip="$(uname -m)" >/dev/null 2>&1
 	    read choice 
 	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
 
 	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 
-		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
 		
 	    if [[ $chip == "x86_64" ]] ; then 
-		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
 
 sha256sum --ignore-missing --check SHA256SUMS
 
