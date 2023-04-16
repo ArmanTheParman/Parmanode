@@ -9,7 +9,7 @@ echo "
                                    Remove Programs
 
 
-                             b)     Bitcoin Core
+                                (b)      Bitcoin Core
 				  
 ########################################################################################
 
@@ -21,6 +21,8 @@ case $choice in
 
 b|B)
 uninstall_bitcoin
+
+uninstall_bitcoin_mac
 return 0
 ;;
 

@@ -1,6 +1,6 @@
 
 #USAGE:
-#exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi 
+#exit_choice ; if [[ $? == 1 ]]; then return 1 ; fi
 #if a case for $choice exists immediately after the function, must include empty string as an option
 
 function exit_choice {

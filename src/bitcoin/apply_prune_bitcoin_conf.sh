@@ -1,4 +1,4 @@
-function apply_prune_bitcoin.conf {
+function apply_prune_bitcoin_conf {
 
 #source prune value from parmanode.conf
 

@@ -1,7 +1,30 @@
-Parmanode Plebian Edition
+Version 2.0.4
+    - Critical patch 
+Version 2.0.3
+    - small corrections 
+Version 2.0.2
+    - small corrections
+Version 2.0.1
+    - Critical Patch
+Version 2.0.0
+    - Added Raspberry Pi (32 bit and 64 bit) support with Linux OS.
+    - added IP address lookup for user's computer
+    - added Homebrew installation for Macs
+    - added Bitcoin Core dependencies for Mac
+    - critical errors for Mac version fixed
+    
 
-Version 1.1.0 (under construction)
-    - adding MacOS support
+
+Version 1.1.0
+    - added MacOS support
+    - changed dripe wipe text to a call to #FreeRoss
+    - added an About section
+    - code cleaned up, directories moved around.
+    - added info on mentorship program with Parman 
+    - several bugs fixed related to permissions
+
+Version 1.0.2
+    - several errors corrected
 
 Version 1.0.1
     - fixed missing of=/dev/$disk in dd commands fo zero and random data choices.

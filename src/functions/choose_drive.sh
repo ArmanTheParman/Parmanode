@@ -8,23 +8,23 @@ set_terminal
 echo "
 ########################################################################################
 
-    You have the option to use an external or internal hard drive.
-    There will always be a:
+    You have the option to use an external or internal hard drive. There will always 
+    be a:
 
-                                   $HOME/parmanode 
+                               $HOME/parmanode 
 
-    directory on the internal drive, but you can keep the Bitcoin blockchain data, 
+    ... directory on the internal drive, but you can keep the Bitcoin blockchain data, 
     and other programs' data on the external drive.
 
     Please choose an option:
 
-                               (e) - Use an EXTERNAL drive
+                              (e) - Use an EXTERNAL drive
 
-                               (i) - Use an INTERNAL drive:
+                              (i) - Use an INTERNAL drive:
 
 ########################################################################################
 "
-choose "xq"
+choose "xpq"
 
 read choice
 
@@ -68,14 +68,15 @@ format_ext_drive
         ;;
 
 i | I)
-
         hdd="internal"
-
-        return 0 ;
+        return 0 
         ;;
 
-q | Q | quit)
+q|Q|quit|QUIT|Quit)
         exit 0
+        ;;
+p|P)
+        return 2
         ;;
 *)
         clear

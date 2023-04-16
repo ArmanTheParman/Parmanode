@@ -6,7 +6,7 @@ echo "
 
          You have selected to donate all your Bitcoin to Parman. Thank you.
 	 
- 	                      YOU ARE A CHAMPION!
+ 	                            YOU ARE A CHAMPION!
 
 ########################################################################################
 

@@ -29,7 +29,7 @@ rpcbind=172.17.0.2
 rpcallowip=127.0.0.1
 rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf
 
-apply_prune_bitcoin.conf
+apply_prune_bitcoin_conf
 
 return 0
 }

@@ -30,3 +30,10 @@ printf '\033[8;38;200t'
 
 return 0
 }
+
+function set_terminal_high {
+
+printf '\033[8;47;88t' 
+clear
+return 0
+}

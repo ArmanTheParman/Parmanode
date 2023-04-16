@@ -14,23 +14,24 @@ echo "
 
 	Requirements:
 
-            1) Linux or Mac (Not available for Windows yet)
+            1) Linux (including Pi4) and Mac (Not available for Windows yet)
 
             2) CPU Architecture:
 
 			   - AMD/Intel 64 architecture (x86-64) 
-			   - or M2 Mac chip
-			   - NOT ARM (Raspbery Pi) yet
+			   - or M1/M2 Mac chip
+			   - Raspbery Pi 32 or 64 bit
 
             3) An ext drive (1 Tb) OR and internal drive with spare capacity
 
-            4) Users must not hold ANY shitcoins. Honesty system
+            4) Users must not hold ANY shitcoins. Honesty system.
+            
             5) Free: 
 
                    - Donation appreciated (if felt you received value)
                    - Honesty system, suggested: 0.002 bitcoin
                    - Or your choice
-                   - Yes, the code is open source, MIT licence, like Bitoin
+                   - Yes, the code is open source, MIT licence, like Bitcoin
 
 
 	To report bugs, armantheparman@protonmail.com

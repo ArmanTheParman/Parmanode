@@ -6,15 +6,16 @@ set_terminal
 echo "
 ########################################################################################
 
-                    i)          Install Parmanode
+                            P A R M A N O D E - Install Menu
 
-                    u)          Uninstall Parmanode
 
-                    pp)         Parmanode Premium
+                  (i)       Install Parmanode ....... (Must install first)
 
-                    a)          Add more programs
+                  (u)       Uninstall Parmanode
 
-                    r)          Remove programs
+                  (a)       Add more programs ....... (Can install Bitcoin here)
+
+                  (r)       Remove programs
 
 ########################################################################################
 "
@@ -31,11 +32,6 @@ i)
 u)
     set_terminal
     uninstall_parmanode
-    continue
-    ;;
-pp)
-    set_terminal
-    premium
     continue
     ;;
 a)

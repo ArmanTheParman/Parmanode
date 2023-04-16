@@ -4,9 +4,7 @@
 #delete binary files in /usr/local/bin (rm *bitcoin*)
 #delete bitcoin from install.conf
 #hdd setting in parmanode.conf can stay.
-#remove bitcoin user and group
 #remove prune choice from parmanode.conf
-
 function uninstall_bitcoin {
 clear
 while true
@@ -18,20 +16,16 @@ echo "
                          Bitcoin Core will be uninstalled
 
 
-    This will remove the Bitcoin data directory if it exists on the internal 
-    drive, but will not modify the external drive (you can wipe the drive 
-    yourself manually).
+    This will give you the option to remove or keep the Bitcoin data directory if 
+    it exists on the internal or external drive.  If a symlink to the external drive 
+    exists, it will be delete. Configuration files related to Bitcoin will be deleted.  
+    Saved choices to the Parmanode configuration file will be deleted.  
+    
+    The bitcoin service file will be deleted (for Linux users only).
 
-    If a symlink to the external drive exists, it will be delete.
-
-    Configuration files related to Bitcoin will be deleted.
-
-    Saved choices to the Parmanode configuration file will be deleted.
-
-    The bitcoin user and group on the Linux system will be removed.
-
-    The bitcoin service file will be deleted.
-
+    If you choose to keep the Bitcoin data directory, Parmanode will not be able to 
+    connect to it because the symlinks would be delted. You need to install Bitcoin
+    again and choose to keep the data directory found.
 
 ########################################################################################
 
@@ -50,13 +44,22 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
 
-/usr/bin/bitcoin-cli stop 2>/dev/null
+/usr/local/bin/bitcoin-cli stop >/dev/null 2>&1 #binaries are in the same location, mac or linux
 
-rm -rf $HOME/parmanode/bitcoin $HOME/.bitcoin 2>/dev/null #if symlink, symlink deleted. If a real directory, directory removed.
-sudo rm /usr/local/bin/*bitcoin* 2>/dev/null
-sudo rm /etc/systemd/system/bitcoin.service 2>/dev/null
-delete_line "$HOME/.parmanode/installed.conf" "bitcoin" 2>/dev/null
-sudo groupdel bitcoin 2>/dev/null  && sudo userdel bitcoin 2>/dev/null
+#remove bitcoin directories and symlinks
+if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux ; fi
+if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac ; fi
+
+# Remove binaries
+sudo rm /usr/local/bin/bitcoin* 2>/dev/null
+
+#Modify config file
+installed_config_remove "bitcoin"
+installed_config_remove "bitcoin-start"
+installed_config_remove "bitcoin-end"
+
+#Remove service file for Linux only
+sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
 echo "
@@ -66,8 +69,7 @@ echo "
 
 ########################################################################################
 "
-installed_config_remove "bitcoin"
 enter_continue
-return 0
 
+return 0
 }

@@ -5,32 +5,33 @@ set_terminal
 echo "
 ########################################################################################
 
-    Please select a program you'd like to add. Currently, only Bitcoin Core is
-    available.
+
+                         P A R M A N O D E - Install Programs
+
 
 ########################################################################################
           
-                        b)        Bitcoin Core
+                        (b)        Bitcoin Core
 
             Not yet avaiable...                        
 
-                        f)        Fulcrum (an Electrum Server)
+                        (f)        Fulcrum (an Electrum Server)
 
-                        m)        Mempool.Space
+                        (m)        Mempool.Space
 
-                        l)        LND
+                        (l)        LND
 
-                        rtl)      RTL
+                        (rtl)      RTL
 
-                        bps)      BTCPay Server
+                        (bps)      BTCPay Server
 
-                        s)        Specter Desktop
+                        (s)        Specter Desktop
 
-                        th)       ThunderHub
+                        (th)       ThunderHub
 
-                        lh)       LND Hub
+                        (lh)       LND Hub
 
-                        tor)      Tor 
+                        (t)      Tor 
 
 ########################################################################################
 

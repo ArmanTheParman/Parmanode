@@ -10,27 +10,28 @@ echo "
 
 ########################################################################################                                
 
-                        v)            Version         
 
-                        gi)           Get info            
+                        (v)            Version         
+
+                        (gi)           Get info            
                 
-                        ni)           Net info
+                        (ni)           Net info
                 
-                        gbh)          Get blockhash   
+                        (gbh)          Get blockhash   
                 
-                        gbi)          Get blockchain info 
+                        (gbi)          Get blockchain info 
                 
-                        gdi)          Get deployment info
+                        (gdi)          Get deployment info
                 
-                        gd)           Get difficulty  
+                        (gd)           Get difficulty  
                 
-                        gmi)          Get mempool info    
+                        (gmi)          Get mempool info    
                 
-                        gtosi)        Get tx out set info 
+                        (gtosi)        Get tx out set info 
                                         
-                        gcc)          Get connection count    
+                        (gcc)          Get connection count    
                 
-                        vm)           Verify a message
+                        (vm)           Verify a message
 
 
 ########################################################################################
@@ -151,7 +152,7 @@ vm)
     read -p "Please paste in the MESSAGE TEXT and hit <enter> : " message
     echo ""
     echo ""
-    /usr/local/bin/bitcoin-cli verifymessage $address $signature $message
+   /usr/local/bin/bitcoin-cli verifymessage "$address" "$signature" "$message" 
     echo "
 Hit <enter> to go back to the menu."
     read    

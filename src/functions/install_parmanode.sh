@@ -6,6 +6,16 @@ install_check "parmanode-start" #checks parmanode.conf, and exits if already ins
     if [ $? == 1 ] ; then return 1 ; fi #error mesages done in install_check, this ensures code exits to menu
 
 if [[ $OS == "Linux" ]] ; then update_computer ; fi
+if [[ $OS == "Mac" ]] ; then 
+	brew_check 
+	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
+	bitcoin_dependencies 
+	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
+fi
+
+#Test for necessary functions
+sudo_check
+gpg_check
 
 choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
 return_value=$?
