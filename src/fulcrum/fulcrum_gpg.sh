@@ -1,6 +1,8 @@
 function fulcrum_gpg {
 
-echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
+cd $HOME/parmanode/fulcrum/download || { debug "Failed to change into fulcrum directory. Aborting" ; return 1 ; }
+
+{ echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5
 Comment: Hostname: pgp.mit.edu
 
@@ -36,8 +38,16 @@ hlEslrxzIvWaTBZVFohhBBgRCAAJBQJZmei+AhsMAAoJECGBClQgMcAsfpABAPbyEFpS8QBU
 6Zm48JWhtNVoaL1/IfZO/b9uh8fm3rlTAP9tykvFgntdXYVlEu2EMaFiZro+aaFCaulAi7XK
 jdzE/g==
 =PElt
------END PGP PUBLIC KEY BLOCK-----" | gpg --import >/dev/null 2>&1
+-----END PGP PUBLIC KEY BLOCK-----" | gpg --import >/dev/null 2>&1 ; } || \
+{ log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 }
 
-
-
+if gpg --verify Ful*asc Ful*.gz SHA256SUMS.asc 2>&1 | grep -q "Good" 
+    then 
+        log "fulcrum" "gpg verification passed"
+        return 0
+    else
+        log "fulcrum" "gpg verification failed"
+        debug "gpg verification failed. Aborting." 
+        return 1
+    fi
 }
