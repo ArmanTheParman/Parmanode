@@ -38,5 +38,8 @@ if [[ $drive_fulcrum == "internal" ]] ; then
     { debug "mkdir fulcrum_db on internal drive failed. Continue with caution." && return 1 ; } 
     return 0
     fi
+
+debug "fulcrum_make_directries failed to enter if statements"
+return 1
 }
 

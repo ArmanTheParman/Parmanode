@@ -9,7 +9,7 @@ install_check "fulcrum-start"
   if [[ $return_value = "1" ]] ; then return 1 ; fi       #Fulcrum already installed
   log "fulcrum" "install check passed."
 
-fulcrum_drive_selectrion
+fulcrum_drive_selection
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "drive seletected as $drive_fulcrum"
 
