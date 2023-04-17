@@ -43,14 +43,15 @@ echo "
 ########################################################################################
 "
 enter_continue
+mount_drive ; echo "Bitcoin will start in a moment..."
 run_bitcoind
-echo "Bitcoin has started." ; enter_continue
+echo "If there are not printed errors, Bitcoin has started." ; enter_continue
 continue
 fi
 
 if [[ $OS == "Mac" ]] ; then
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
-enter_continue 
+echo "Bitcoin has started." ; enter_continue 
 continue
 
 fi
