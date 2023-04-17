@@ -39,7 +39,7 @@ if [[ $fulcrum_drive == "external" ]] ; then
     Linux) rm -rf /media/$(whoami)/parmanode/fulcrum_db ;;
     esac
     fi
-/start
+
 if [[ $fulcrum_drive == "internal" ]] ; then
     rm -rf $HOME/parmanode/fulcrum_db
     fi
