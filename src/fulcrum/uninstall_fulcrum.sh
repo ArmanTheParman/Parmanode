@@ -21,7 +21,7 @@ case $choice in
     esac
 done    
 
-if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf ; then 
+if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
     set_terminal ; echo "
 Fulcrum is not installed. No need to uninstall. Exiting. 
 " && enter_continue && return 1
@@ -39,7 +39,7 @@ if [[ $fulcrum_drive == "external" ]] ; then
     Linux) rm -rf /media/$(whoami)/parmanode/fulcrum_db ;;
     esac
     fi
-
+/start
 if [[ $fulcrum_drive == "internal" ]] ; then
     rm -rf $HOME/parmanode/fulcrum_db
     fi
@@ -49,6 +49,6 @@ rm -rf $HOME/parmanode/fulcrum
 sudo rm /usr/local/bin/Fulcrum*
 sudo rm /etc/systemd/system/fulcrum.service
 
-installed_config_removed "fulcrum"
-log "fulcrum" "uninstall completed" && return 0
+installed_config_remove "fulcrum"
+log "fulcrum" "uninstall completed" && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
 }
