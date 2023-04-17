@@ -69,7 +69,7 @@ read #using custom function "enter_continue" here produced a strange error I don
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
-crul -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
@@ -83,12 +83,12 @@ crul -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
 	    if [[ $chip == "x86_64" ]] ; then 
 		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
 
-sha256sum --ignore-missing --check SHA256SUMS
+if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
 
 set_terminal
 
 #gpg check
-please_wait
+echo " Please wait a moment for gpg verificatoin..."
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A
 
     if gpg --verify SHA256SUMS.asc 2>&1 | grep -q "Good" 
@@ -104,7 +104,7 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
 #unpack Bitcoin core:
 
 mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
-tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null  2>&1
+tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null 2>&1
 
 #move bitcoin program files to new directory.
 

@@ -3,11 +3,11 @@ function make_mount_check_script {
 
 echo "#!/bin/bash
 
-source \$HOME/.parmanode/parmanode.conf #should get drive variable
+source \$HOME/.parmanode/parmanode.conf 
 
-if [[ \$drive == \"internal\" ]] ; then exit 0 ; fi
+if [[ \$drive == \"internal\" && \$drive_fulcrum == \"internal\" ]] ; then exit 0 ; fi
 
-if [[ \$drive == \"external\" ]] 
+if [[ \$drive == \"external\" || \$drive_fulcrum == \"external\" ]] 
 then
     mount_point_pattern=\"/media/*/parmanode\"
 
@@ -37,8 +37,8 @@ else
     exit 1
 fi" > $HOME/.parmanode/mount_check.sh 2>/dev/null
 
-sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 1>/dev/null
-sudo chmod +x $HOME/.parmanode/mount_check.sh 1>/dev/null
+sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 
+sudo chmod +x $HOME/.parmanode/mount_check.sh 
 
 return 0
 }
