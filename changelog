@@ -1,4 +1,5 @@
-
+Version 2.0.6
+    - Many little fixes to Bitcoin functions
 Version 2.0.5
     - Critical patch; fixed dev/null bug when uninstalling Bitcoin
 Version 2.0.4
