@@ -47,9 +47,10 @@ case $choice in
 
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-		echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
-		echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
-
+				echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
+				echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
+				parmanode_conf_add "rpcuser=$rpcuser"
+				parmanode_conf_add "rpcpassword=$rpcpassword"	
 		break
 		;;
 	c)

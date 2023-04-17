@@ -41,7 +41,7 @@ r|R)
 s|S)
     echo "skipping..."
     enter_continue
-    return 1
+    return 0 
     ;;
 q|Q)
     exit 0
@@ -128,11 +128,10 @@ WantedBy=multi-user.target
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 
-
-
 sudo systemctl daemon-reload 
 sudo systemctl disable bitcoind.service >/dev/null 2>&1
 sudo systemctl enable bitcoind.service >/dev/null 2>&1
+
 return 0
 }
 
