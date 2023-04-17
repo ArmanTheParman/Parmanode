@@ -74,7 +74,6 @@ wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
 	chip="$(uname -m)" >/dev/null 2>&1
-	    read choice 
 	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 		wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
 
