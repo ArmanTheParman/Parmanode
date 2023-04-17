@@ -21,7 +21,7 @@ case $choice in
     esac
 done    
 
-if ! grep "fulcrum-start" $HOME/.parmanode/installed.config ; then 
+if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf ; then 
     set_terminal ; echo "
 Fulcrum is not installed. No need to uninstall. Exiting. 
 " && enter_continue && return 1
