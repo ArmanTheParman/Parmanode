@@ -11,8 +11,6 @@ echo "
 
                                (b)      Bitcoin Core
 
-                               (f)      Fulcrum server
-				  
 ########################################################################################
 
 "
@@ -23,11 +21,6 @@ case $choice in
 
 b|B)
 uninstall_bitcoin
-return 0
-;;
-
-f|F)
-uninstall_fulcrum
 return 0
 ;;
 

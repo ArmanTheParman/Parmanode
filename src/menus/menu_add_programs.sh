@@ -13,9 +13,9 @@ echo "
           
                      (b)        Bitcoin Core
 
-                     (f)        Fulcrum (an Electrum Server) - Linux only for now
-
          Not yet avaiable...                        
+
+                     (f)        Fulcrum (an Electrum Server)
 
                      (m)        Mempool.Space
 
