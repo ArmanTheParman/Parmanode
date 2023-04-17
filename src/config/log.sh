@@ -8,7 +8,7 @@ rm $HOME/.parmanode/"$1".log
 fi
 
 
-echo date "$2" >> $HOME/.parmanode/"$1".log
+echo "$(date) $2" >> $HOME/.parmanode/"$1".log
 
 
 }
