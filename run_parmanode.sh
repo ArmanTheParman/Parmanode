@@ -18,9 +18,12 @@
 
 # Debug - comment out before release.
 
-#     debug "Pause here to check for error output before clear screen." 
+     debug "Pause here to check for error output before clear screen." 
 
 
+# Load config 
+
+    source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
 
 #Begin program:
 

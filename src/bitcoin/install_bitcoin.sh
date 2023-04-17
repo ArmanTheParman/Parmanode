@@ -39,7 +39,6 @@ make_mount_check_script ; fi
 #make service file
 if [[ $OS == "Linux" ]] ; then 
     make_bitcoind_service_file
-    if [ $? == 1 ] ; then return 1 ; fi
 fi
 
 set_terminal

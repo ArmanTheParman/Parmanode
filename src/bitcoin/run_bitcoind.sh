@@ -13,9 +13,9 @@ set_terminal
         if grep -q "external" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 #config file determines if bitcoin is running on an internal or external drive
         then
         echo "
-########################################################################################                
+########################################################################################
 
-	Please connect the drive, otherwise bitcoind will have errors.
+          Please connect the drive, otherwise bitcoind will have errors.
 
 ########################################################################################    
 "
