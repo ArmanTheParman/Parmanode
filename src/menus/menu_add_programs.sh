@@ -11,27 +11,27 @@ echo "
 
 ########################################################################################
           
-                        (b)        Bitcoin Core
+                     (b)        Bitcoin Core
 
-            Not yet avaiable...                        
+         Not yet avaiable...                        
 
-                        (f)        Fulcrum (an Electrum Server)
+                     (f)        Fulcrum (an Electrum Server)
 
-                        (m)        Mempool.Space
+                     (m)        Mempool.Space
 
-                        (l)        LND
+                     (l)        LND
 
-                        (rtl)      RTL
+                     (rtl)      RTL
 
-                        (bps)      BTCPay Server
+                     (bps)      BTCPay Server
 
-                        (s)        Specter Desktop
+                     (s)        Specter Desktop
 
-                        (th)       ThunderHub
+                     (th)       ThunderHub
 
-                        (lh)       LND Hub
+                     (lh)       LND Hub
 
-                        (t)      Tor 
+                     (t)        Tor 
 
 ########################################################################################
 
@@ -42,10 +42,15 @@ read choice
 
 case $choice in
     B|b|bitcoin|Bitcoin)
-        clear
+        set_terminal 
         install_bitcoin
         return 0
         ;;
+    f|F)
+       set_terminal
+       install_fulcrum
+       return 0 
+       ;;
     q|Q|quit|QUIT)
         exit 0
         ;;
