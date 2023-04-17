@@ -1,3 +1,6 @@
+
+Version 2.0.5
+    - Critical patch; fixed dev/null bug when uninstalling Bitcoin
 Version 2.0.4
     - Critical patch 
 Version 2.0.3
