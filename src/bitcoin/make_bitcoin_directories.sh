@@ -18,7 +18,7 @@ function make_bitcoin_directories {
             mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 ; fi
 
         if [[ $OS == "Mac" ]] ; then
-            mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1  ; fi
+            mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 ; fi
     fi
 
     if [[ $drive == "internal" ]] ; then 
