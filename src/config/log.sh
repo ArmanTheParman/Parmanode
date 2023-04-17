@@ -3,7 +3,7 @@
 
 function log {
 
-if [[ $2 == "delete" ]] ; then
+if [[ $2 == "delete" ]] >/dev/null 2>&1 ; then
 rm $HOME/.parmanode/"$1".log
 fi
 

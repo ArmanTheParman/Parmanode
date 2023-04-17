@@ -4,9 +4,6 @@ function fulcrum_make_directories {
     mkdir $HOME/parmanode/fulcrum >/dev/null 2>&1 && \
     installed_config_add "fulcrum-start"
 
-
-
-
 # Make fulcrum_db on the internal or external drive
 
 if [[ $drive_fulcrum == "external" ]] ; then
@@ -14,7 +11,7 @@ if [[ $drive_fulcrum == "external" ]] ; then
 set_terminal ; echo "
 ########################################################################################
 
-                        Please connect drive then hit <enter> 
+               Please ensure the drive is connected, then hit <enter> 
 
 ########################################################################################
 "
