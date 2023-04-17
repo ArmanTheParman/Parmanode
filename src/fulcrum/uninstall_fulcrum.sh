@@ -28,15 +28,15 @@ Fulcrum is not installed. No need to uninstall. Exiting.
 fi
 
 log "fulcrum" "uninstall commenced"
-parmanode_conf_remove "fulcrum"
-
-
+source $HOME/.parmanode/parmanode.conf
+#parmanode_conf_remove "fulcrum"
+debug "$fulcrum_drive"
 if [[ $fulcrum_drive == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
     enter_continue ; log "fulcrum" "drive not mounted, fulcrum_db  not deleted during uninstall." ; }
     case $OS in
-    Mac) rm -rf /Volumes/parmanode/fulcrum_db ;;
-    Linux) rm -rf /media/$(whoami)/parmanode/fulcrum_db ;;
+    Mac) rm -rf /Volumes/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
+    Linux) rm -rf /media/$(whoami)/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
     esac
     fi
 
@@ -50,5 +50,5 @@ sudo rm /usr/local/bin/Fulcrum*
 sudo rm /etc/systemd/system/fulcrum.service
 
 installed_config_remove "fulcrum"
-log "fulcrum" "uninstall completed" && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
+log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
 }

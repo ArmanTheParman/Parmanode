@@ -18,8 +18,12 @@ set_terminal ; echo "
 enter_continue ; mount_drive && log "fulcrum" "Drive mounted."
 
 case $OS in
-    Linux) mkdir /media/$(whoami)/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db made - external" && return 0 ;;
+    Linux) 
+    debug " in case - Linux"
+    mkdir /media/$(whoami)/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db made - external" && return 0 
+    debug "after mkdir" ;;
     Mac ) mkdir /Volumes/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db made - external" && return 0 ;;
+
     *) log "fulcrum" "mkdir fulcrum_db on ext drive failed."    
        debug "Failed to make fulcrum_db. Continue with caution." 
        return 1 ;;
