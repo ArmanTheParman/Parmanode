@@ -15,7 +15,7 @@ echo "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the external drive. Would like 
-    to delete that data or leave it be (skip) ?
+    to delete that data or leave it be (i.e. skip)?
 
                             d)          delete
 
