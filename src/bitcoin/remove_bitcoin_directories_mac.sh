@@ -3,7 +3,7 @@ function remove_bitcoin_directories_mac {
 source $HOME/.parmanode/parmanode.conf
 
 #Remove Parmanode/bitcoin directory (installation files)
-sudo rm -rf $HOME/parmanode/bitcoin /dev/null 2>&1 
+sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
 
 #check if data directory on external drive or internal drive
 source $HOME/.parmanode/parmanode.conf   # gets drive choice
