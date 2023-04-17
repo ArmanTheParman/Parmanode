@@ -39,7 +39,7 @@ hlEslrxzIvWaTBZVFohhBBgRCAAJBQJZmei+AhsMAAoJECGBClQgMcAsfpABAPbyEFpS8QBU
 jdzE/g==
 =PElt
 -----END PGP PUBLIC KEY BLOCK-----" | gpg --import >/dev/null 2>&1 ; } || \
-{ log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 }
+{ log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 ; }
 
 if gpg --verify Ful*asc Ful*.gz SHA256SUMS.asc 2>&1 | grep -q "Good" 
     then 

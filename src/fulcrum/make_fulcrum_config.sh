@@ -11,6 +11,7 @@ source $HOME/.parmanode/parmanode.conf
 
     if [[ $drive_fulcrum == "internal" ]] ; then
     datadir="/$HOME/parmanode/fulcrum_db"
+    fi
 
 # make config file, part 1
 echo "
@@ -24,7 +25,7 @@ peering = false " > $HOME/parmanode/fulcrum/fulcrum.conf || \
 debug "echo redirect failed when making fulcrum.conf" ; return 1 ;}
 
 # make config file, part 2
-if [[ -z $rpcuser ]] ; then ; return 0
+if [[ -z $rpcuser ]] ; then return 0
 else
 echo "rpcuser = $rpcuser
 rpcpassword = $rpcpassword" > $HOME/parmanode/fulcrum/fulcrum.conf || \

@@ -38,9 +38,11 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode
 rm $HOME/parmanode/fulcrum/download/Ful*/Ful* || \
 { log "fulcrum" "failed to move/install files" ; debug "failed to move/install fulcrum files" ; return 1 ; }
 
-make_fulcrum_service_file
-
 make_ssl_certificates
+  if [[ $? == 1 ]] ; then return 1 ; fi
+  log "fulcrum" "make_ssl exited." 
+
+make_fulcrum_service_file
 
 fulcrum_success_install
 
