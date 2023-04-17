@@ -9,7 +9,7 @@ echo "
 
                  (i)         Install/Uninstall ......  (Hint: start here)
 
-                 (r)         Run Parmanodee
+                 (r)         Run Parmanode
 
                  (pp)        Parmanode Premium 
 

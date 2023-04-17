@@ -1,6 +1,7 @@
 function mount_drive {
 
 if [[ $OS == "Mac" ]] ; then
+if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
     #if mounted, exit 
 	    if mountpoint -q "/Volumes/parmanode" ; then
 			return 0
@@ -12,10 +13,12 @@ if [[ $OS == "Mac" ]] ; then
 		return 0
 		
 fi
+fi
 
 ########################################################################################
 
 if [[ $OS == "Linux" ]] ; then
+if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
     #if mounted, exit 
 	    if mountpoint -q "/media/$(whoami)/parmanode" ; then
 			return 0
@@ -27,9 +30,11 @@ if [[ $OS == "Linux" ]] ; then
         sleep 1
 
 		sudo mount -L parmanode /media/$(whoami)/parmanode
+			sleep 5
 			if mountpoint -q "/media/$(whoami)/parmanode" ; then return 0 ; fi
 
 		sudo mount -U $UUID
+		 	sleep 5
 			if mountpoint -q "/media/$(whoami)/parmanode" ; then return 0 ; fi
 
 		set_terminal
@@ -37,6 +42,6 @@ if [[ $OS == "Linux" ]] ; then
 		echo "Drive not mounted. Mounting ... Hit (q) to abort."
 		read choice ; if [[ $choice == "q" ]] ; then return 1 ; fi
 
-return 0
+fi
 fi
 }
