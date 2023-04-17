@@ -46,8 +46,8 @@ if [[ $fulcrum_drive == "internal" ]] ; then
 
 rm -rf $HOME/parmanode/fulcrum
 
-rm /usr/local/bin Fulcrum*
-rm /etc/systemd/system/fulcrum.service
+sudo rm /usr/local/bin/Fulcrum*
+sudo rm /etc/systemd/system/fulcrum.service
 
 installed_config_removed "fulcrum"
 log "fulcrum" "uninstall completed" && return 0
