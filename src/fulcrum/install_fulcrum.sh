@@ -1,5 +1,4 @@
 function install_fulcrum {
-log "fulcrum" "delete" >/dev/null 2&>1
 
 set_terminal
 

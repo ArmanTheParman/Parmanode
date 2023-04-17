@@ -39,7 +39,7 @@ fi #end checking external drive for data directory
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
-echo "
+set_terminal ; echo "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:

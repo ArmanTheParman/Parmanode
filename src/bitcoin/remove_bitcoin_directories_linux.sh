@@ -1,7 +1,7 @@
 function remove_bitcoin_directories_linux {
 
 #Remove Parmanode/bitcoin directory (installation files)
-sudo rm -rf $HOME/parmanode/bitcoin /dev/null 2>&1 
+sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
 
 #check if data directory on external drive or internal drive
 source $HOME/.parmanode/parmanode.conf   # gets drive choice
@@ -56,7 +56,7 @@ fi # ends response to drive=external but no directory found
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
-echo "
+set_terminal ; echo "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:
@@ -89,7 +89,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 #Remove symlink to drive
-if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
+if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
 
 return 0
 }

@@ -37,8 +37,8 @@ else
     exit 1
 fi" > $HOME/.parmanode/mount_check.sh 2>/dev/null
 
-sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 1>/dev/null
-sudo chmod +x $HOME/.parmanode/mount_check.sh 1>/dev/null
+sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 
+sudo chmod +x $HOME/.parmanode/mount_check.sh 
 
 return 0
 }
