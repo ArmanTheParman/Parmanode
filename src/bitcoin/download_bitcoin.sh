@@ -84,7 +84,7 @@ wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
 		
 	    if [[ $chip == "x86_64" ]] ; then 
         please_wait
-		curl -LO\# https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
 
 if ! $(sha256sum --ignore-missing --check SHA256SUMS) ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
 
