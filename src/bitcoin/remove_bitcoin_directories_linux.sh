@@ -1,7 +1,7 @@
 function remove_bitcoin_directories_linux {
 
 #Remove Parmanode/bitcoin directory (installation files)
-sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
+rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
 
 #check if data directory on external drive or internal drive
 source $HOME/.parmanode/parmanode.conf   # gets drive choice
@@ -39,14 +39,18 @@ if [[ $drive == "external" && ! -d /media/$(whoami)/parmanode/.bitcoin ]] ; then
 ########################################################################################
 
     Your settings indicate that you use an external drive for Bitcoin Core with
-    the Parmanode software, however, a Bitcoin data directory has not been detected
-    at the expected location.
+    the Parmanode software - a Bitcoin data directory has not been detected
+    at the default location for Parmanode settings.
 
-    The directory may not exist, or the drive may not be connected.
+    The directory may not exist yet, or the drive may not be connected.
 
-    There is nothing you need to do to continue uninstalling Bitcoin, however, you
-    will need to manually delete the data if you want to get rid of it. Or you
-    can just format the drive by installing Bitcoin again with Parmanode.
+    UNINSTALLING:
+        There is nothing you need to do to continue uninstalling Bitcoin. You can 
+        just format the drive by installing Bitcoin again with Parmanode if you want.
+
+    INSTALLING:
+        An existing bitcoin data directory will mean that an installation of Bitcoin
+        will attempt to continue syncing the data that is there.
 
 ########################################################################################
 "
