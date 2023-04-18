@@ -13,9 +13,9 @@ echo "
           
                      (b)        Bitcoin Core
 
-         Not yet avaiable...                        
-
                      (f)        Fulcrum (an Electrum Server)
+
+         Not yet avaiable...                        
 
                      (m)        Mempool.Space
 
