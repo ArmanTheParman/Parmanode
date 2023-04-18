@@ -1,7 +1,5 @@
 function fulcrum_gpg {
 
-cd $HOME/parmanode/fulcrum/download || { debug "Failed to change into fulcrum directory. Aborting" ; return 1 ; }
-
 { echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5
 Comment: Hostname: pgp.mit.edu
@@ -41,7 +39,7 @@ jdzE/g==
 -----END PGP PUBLIC KEY BLOCK-----" | gpg --import >/dev/null 2>&1 ; } || \
 { log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 ; }
 
-if gpg --verify Ful*asc Ful*.gz SHA256SUMS.asc 2>&1 | grep -q "Good" 
+if gpg --verify $HOME/parmanode/fulcrum/Ful*asc $HOME/parmanode/fulcrum/Ful*.gz 2>&1 | grep -q "Good" 
     then 
         log "fulcrum" "gpg verification passed"
         return 0
