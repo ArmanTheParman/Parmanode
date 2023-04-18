@@ -68,7 +68,11 @@ Latest:
         Easier way - coming soon.
 
 	Surest way - Run this command in terminal:
-	git clone http://github.com:armantheparman/parmanode.git
+
+                git clone http://github.com/armantheparman/parmanode.git
+        or
+                git clone git@github.com:armantheparman/parmandoe.git
+
         It will download a directory called "parmanode" to your working directory
 	Then cd parmanode, to change into that directory.
 	Then type './run_parmanode'
