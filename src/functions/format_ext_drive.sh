@@ -27,8 +27,10 @@ if [[ $OS == "Mac" ]] ; then
     fi
 
 if [[ $OS == "Linux" ]] ; then
-        sudo mkfs.ext4 -F /dev/$disk
-        enter_continue
+        
+        remove_UUID_fstab "$disk" #delete fstab entry of the disk immediately before formatting
+
+        sudo mkfs.ext4 -F /dev/$disk ; enter_continue
 
         #Mounting
         sudo mkdir /media/$(whoami)/parmanode 2>/dev/null    #makes mountpoint
@@ -36,18 +38,11 @@ if [[ $OS == "Linux" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode
         sudo e2label /dev/$disk parmanode
 
-        #Extract the *NEW* UUID of the disk
-        UUID=$(sudo blkid /dev/$disk | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
-        UUID_temp=$(echo "$UUID" | sed 's/"//g')
-        UUID=$UUID_temp
+        #Extract the *NEW* UUID of the disk and write to config file.
+        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
 
         #Write to fstab 
-        if grep -q $UUID /etc/fstab 
-                then
-                echo "unable to write to fstab. You will have to manually mount the drive each time you boot up." 
-                else 
-                echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
-        fi
+        echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
 
         #confirmation output.
         echo "Some more cool computer stuff happened in the background."

@@ -77,11 +77,6 @@ exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
 unset choice
 #check other programs are installed in later versions.
 
-#Drive management:
-    #Decided against removing UUID from /etc/fstab. 
-    #also decided against removing /media/$(whoami)/parmanode directory for mounting.
-    #unmounting is sufficient.
-
 if [[ $OS == "Linux" ]] ; then
 
         if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
