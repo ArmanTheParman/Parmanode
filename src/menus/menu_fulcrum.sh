@@ -26,17 +26,20 @@ echo "
 choose "xpq" ; read choice ; set_terminal
 
 case $choice in
+
 start | START)
 set_terminal
 echo "Fulcrum starting..."
 sudo systemctl start fulcrum.service
 enter_continue
 ;;
+
 stop | STOP) 
 set_terminal
 echo "Fulcrum stopping"
 enter_continue
 ;;
+
 c|C)
 electrum_wallet_info
 continue
@@ -54,12 +57,12 @@ echo "
 "
 enter_continue
 set_terminal_wider
-tail journalctl -fexu fulcrum.service & 
+journalctl -fexu fulcrum.service &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
+set_terminal_wider
 continue ;;
 
 fc|FC|Fc|fC)
@@ -78,10 +81,14 @@ nano $HOME/parmanode/fulcrum/fulcrum.conf
 continue
 ;;
 
-
+up|UP|Up|uP)
+user_pass_fulcrum
+continue
+;;
 
 esac
 done
+
 return 0
 }
 
