@@ -18,7 +18,7 @@
 
 # Debug - comment out before release.
 
-     debug "Pause here to check for error output before clear screen." 
+#     debug "Pause here to check for error output before clear screen." 
 
 
 # Load config 
