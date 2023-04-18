@@ -8,17 +8,17 @@ echo "
 ########################################################################################
 
 
-      (start)    Start Fulcrum ............................................(Do it)
+      (start)    Start Fulcrum 
 
-      (stop)     Stop Fulcrum ..................(One does not simply stop Bitcoin)
+      (stop)     Stop Fulcrum 
 
       (c)        How to connect your Electrum wallet to Fulcrum
 	    
       (d)        Inspect Fulcrum logs
 
-      (bc)       Inspect and edit fulcrum.conf file 
+      (fc)       Inspect and edit fulcrum.conf file 
 
-      (pw)       Set/remove/change Bitcoin rpc user/pass in Fulcrum config file
+      (up)       Set/remove/change Bitcoin rpc user/pass in Fulcrum config file
 
 
 ########################################################################################
@@ -42,8 +42,41 @@ electrum_wallet_info
 continue
 ;;
 
+d|D)
+echo "
+########################################################################################
+    
+    This will show the fulcrum journalctl log output in real time as it populates.
+    
+    You can hit <control>-c to make it stop.
 
+########################################################################################
+"
+enter_continue
+set_terminal_wider
+tail journalctl -fexu fulcrum.service & 
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+set_terminal
+continue ;;
 
+fc|FC|Fc|fC)
+echo "
+########################################################################################
+    
+        This will run Nano text editor to edit fulcrum.conf. See the controls
+        at the bottom to save and exit. Be careful messing around with this file.
+
+	  Any changes will only be applied once you restart Fulcrum.
+
+########################################################################################
+"
+enter_continue
+nano $HOME/parmanode/fulcrum/fulcrum.conf
+continue
+;;
 
 
 

@@ -22,7 +22,7 @@ echo "
 
       (dd)       Backup/Restore data directory.................(Instructions only)
 
-      (pw)       Set, remove, or change RPC user/pass
+      (up)       Set, remove, or change RPC user/pass
 
 
 ########################################################################################
@@ -164,7 +164,7 @@ enter_continue
 continue
 ;;
 
-pw)
+up)
 set_rpc_authentication
 continue
 ;;
