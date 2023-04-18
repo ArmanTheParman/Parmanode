@@ -1,4 +1,5 @@
-#Parmanode 2.1.0 Plebian Cheese 
+# Parmanode 2.1.0 Plebian Cheese 
+
 For Mac (x86, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
 
@@ -29,7 +30,7 @@ Desktop Wallet directly to the node on the same computer.
 
 ## Software included
 
-###Bitcoin 24.01
+### Bitcoin 24.01
 
         Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
@@ -53,9 +54,9 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
                /|--- .bitcoin ---|
 
-###Fulcrum v1.9.1 for Linux x86_64 and ARM64 (Pi) only. Not Mac (yet).
+### Fulcrum v1.9.1 for Linux x86_64 and ARM64 (Pi) only. Not Mac (yet).
 
-##HOW TO RUN
+## HOW TO RUN
 
 Stable:
 	Find the latest tag and download/unzip that to a directory on your drive.
@@ -72,7 +73,7 @@ Latest:
 	Then cd parmanode, to change into that directory.
 	Then type './run_parmanode'
 
-##INSTRUCTIONS TO UPGRADE
+## INSTRUCTIONS TO UPGRADE
 
         Simply download a new version and run it. You can delete the old copy but do not touch
         any of the directories or files that Parmanode has made. 
