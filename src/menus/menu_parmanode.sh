@@ -44,7 +44,10 @@ b|B)
     clear
     menu_bitcoin_core
     ;;
-f | F | m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | t | T)
+f|F)
+    menu_fulcrum
+    ;;
+m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | t | T)
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."

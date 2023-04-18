@@ -89,7 +89,8 @@ echo "
 
     Note that a connection with Electrum Wallet is not possible until Fulcrum Server is installed.
 
-    Once Fulcrum is installed, you can connect to it from your Electrum Wallet with the following steps:
+    Once Fulcrum is installed (and synchronised), you can connect to it from your Electrum Wallet with the
+    following steps:
 
         1) Go to Electrum Network settings (from menu or the circle on the bottom right)
 	
@@ -111,8 +112,6 @@ echo "
     
     At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
     to 1, you should try to fix that (f).
-
-    Instructions to connect to Tor soon.
 
 ##############################################################################################################
 
