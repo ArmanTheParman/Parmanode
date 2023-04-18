@@ -1,6 +1,6 @@
 # Parmanode 2.1.0 Plebian Cheese 
 
-For Mac (x86, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
+For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
 
 Parmanode is a software package for home computers (Linux, Mac, and
@@ -12,10 +12,10 @@ the ability to download and verify Bitcoin Core and sync using an external
 or internal drive, and also have configuration options presented to them
 with automation. No manual bitcoin.conf file editing will be required.
 
-The aim is that all people need to do is read the menu options carefully - 
-no command line interact
-ion is required. For example, bitcoin-cli commands
-are available in a menu, and pruning can be activated from menu options.
+All people need to do is read the menu options carefully, and respond to
+the questions - no command line interaction is required. For example, 
+bitcoin-cli commands are available in a menu, and pruning can be activated 
+from menu options.
 
 The software also comes with helpful information, including links to various
 articles on my website, armantheparman.com, so that Bitcoiners keep learning
@@ -32,7 +32,7 @@ Desktop Wallet directly to the node on the same computer.
 
 ### Bitcoin 24.01
 
-        Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
+Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
 DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
 
