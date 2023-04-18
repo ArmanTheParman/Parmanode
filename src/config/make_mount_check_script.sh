@@ -1,3 +1,6 @@
+#used for systemctl access 
+#testing the command requires sudo before find. But sudo must be removed when
+#used with systemctl.
 
 function make_mount_check_script {
 
@@ -15,7 +18,7 @@ then
 
             while [[ \$counter -le 5 ]] ; do   #Checking if it's mounted, up to 5 times, 1 second each, then exit...
 
-                mount_point=\$(sudo find /media -type d -path \"\$mount_point_pattern\" | head -1)
+                mount_point=\$(find /media -type d -path \"\$mount_point_pattern\" | head -1)
 
                     if [ -n \"\$mount_point\" ] && mountpoint -q \"\$mount_point\" 
                     then 
