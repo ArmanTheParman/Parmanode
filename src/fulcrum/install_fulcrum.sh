@@ -24,7 +24,7 @@ download_fulcrum
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Download exited." 
 
-fulcrum_gpg.sh
+fulcrum_gpg
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "gpg exited." 
 
@@ -32,10 +32,10 @@ extract_fulcrum_tar
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Download exited." 
 
-
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/fulcrum/download/Ful*/Ful* && \
-rm $HOME/parmanode/fulcrum/download/Ful*/Ful* || \
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/fulcrum/Ful*/Ful* && \
+rm $HOME/parmanode/fulcrum/Ful*/Ful* || \
 { log "fulcrum" "failed to move/install files" ; debug "failed to move/install fulcrum files" ; return 1 ; }
+log "fulcrum" "files installed"
 
 make_ssl_certificates
   if [[ $? == 1 ]] ; then return 1 ; fi

@@ -69,7 +69,8 @@ Group=$(id -ng)
 
 [Install]
 WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/fulcrum.service > /dev/null
+" | sudo tee /etc/systemd/system/fulcrum.service > /dev/null \
+&& log "fulcrum" "service file made"
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 

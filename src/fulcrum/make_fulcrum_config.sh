@@ -25,13 +25,13 @@ peering = false " > $HOME/parmanode/fulcrum/fulcrum.conf || \
 debug "echo redirect failed when making fulcrum.conf" ; return 1 ;}
 
 # make config file, part 2
-if [[ -z $rpcuser ]] ; then return 0
+if [[ -z $rpcuser ]] ; then true
 else
 echo "rpcuser = $rpcuser
 rpcpassword = $rpcpassword" > $HOME/parmanode/fulcrum/fulcrum.conf || \
 { log "fulcrum" "make_fulcrum_config, echo redirect failed." ; \
 debug "echo redirect failed when making fulcrum.conf" ; return 1 ; }
 fi
-
+log "fulcrum" "fulcrum config file made"
 return 0
 }

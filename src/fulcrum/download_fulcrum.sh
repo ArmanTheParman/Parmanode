@@ -2,7 +2,8 @@ function download_fulcrum {
 
 cd $HOME/parmanode/fulcrum || { debug "Failed to change into fulcrum directory. Aborting" ; return 1 ; }
 
-if [[OS == "Linux" ]] ; then
+source $HOME/.parmanode/parmanode.conf
+if [[ $OS == "Linux" ]] ; then
 
         if [[ $chip == "x86_64" ]] ; then
             curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.9.1/Fulcrum-1.9.1-x86_64-linux.tar.gz && \
