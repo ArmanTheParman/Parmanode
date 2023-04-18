@@ -1,4 +1,6 @@
-function home_parmanode_directories {
+function make_home_parmanode {
+
+#make $HOME/parmanode
 
 if [[ -d $HOME/parmanode/ ]] #if to check that parmanode exists
 then
@@ -45,45 +47,8 @@ done #end menu while loop
 fi #end if internal directory parmanode exists.
 
 
-mkdir $HOME/parmanode > /dev/null 2>&1 && installed_config_add "parmanode-start" >/dev/null 
+mkdir $HOME/parmanode > /dev/null 2>&1 
 #first point the drive is modified during the installation; noted in config file.
-
-#make parmanode hidden directory
-if [[ -d $HOME/.parmanode ]] 
-then
-	while true
-	do
-	set_terminal
-	echo "
-########################################################################################
-
-                      The .parmanode direcotry already exists
-
-    It seems you are trying to re-install parmanode. It's better to fully uninstall
-    Parmanode (u) before proceeding. Or type (yolo) to continue (the .parmanode 
-    directory will be replaced).
-
-########################################################################################
-"
-choose "x" ; read choice
-	
-	case $choice in
-	q)
-        exit 0 ;;
-        
-    yolo|YOLO)
-        break ;;
-
-	*)
-        invalid
-        read ;;
-        esac
-done
-#break point, "yolo", to delete and replace .parmanode
-fi # end of checking $HOME/.parmanode existence
-
-# If no .parmanode, or if yolo, rm then create.
-rm -rf $HOME/.parmanode && mkdir $HOME/.parmanode 
 
 return 0
 }
