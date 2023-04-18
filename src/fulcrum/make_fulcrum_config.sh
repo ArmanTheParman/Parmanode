@@ -28,7 +28,7 @@ debug "echo redirect failed when making fulcrum.conf" ; return 1 ;}
 if [[ -z $rpcuser ]] ; then true
 else
 echo "rpcuser = $rpcuser
-rpcpassword = $rpcpassword" > $HOME/parmanode/fulcrum/fulcrum.conf || \
+rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf || \
 { log "fulcrum" "make_fulcrum_config, echo redirect failed." ; \
 debug "echo redirect failed when making fulcrum.conf" ; return 1 ; }
 fi
