@@ -1,5 +1,5 @@
 ########################################################################################
-Version 2.0.6 - 17th April
+Version 2.1.0 - 18th April
 ########################################################################################
 
                               #Notes to developers
@@ -39,6 +39,9 @@ FREQUENTLY USED CUSTOM FUNCTIONS
     delete_line     A useful sed function that takes two arguments, the filename and 
                     the string to find. It then removes every line where that string 
                     ocurrs. Useful for modifiying config files.
+    
+    log             A function that takes two variable (desired filename prefix) and 
+                    a message for the custom log file.
 
 
 EXPLANATION OF CONFIGURATION FILES  
