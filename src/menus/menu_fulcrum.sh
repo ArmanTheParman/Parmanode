@@ -86,6 +86,14 @@ user_pass_fulcrum
 continue
 ;;
 
+p|P)
+return 0
+;;
+*)
+invalid
+;;
+
+
 esac
 done
 
