@@ -47,24 +47,5 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "key = /home/parman/parmanode/fulcrum/key.pem" >> fulcrum.conf \
 && echo "peering = false" >> fulcrum.conf
 
-#make service file:
-RUN echo "[Unit]" >> /etc/system/systemd/fulcrum.service \
-&& echo "Description=Fulcrum_daemon" >> /etc/system/systemd/fulcrum.service \
-&& echo "After=network-online.target" >> /etc/system/systemd/fulcrum.service \
-&& echo "Wants=network-online.target" >> /etc/system/systemd/fulcrum.service \
-&& echo "" >> /etc/system/systemd/fulcrum.service \
-&& echo "[Service]" >> /etc/system/systemd/fulcrum.service \
-&& echo "ExecStart=/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf" >> /etc/system/systemd/fulcrum.service \
-&& echo "" >> /etc/system/systemd/fulcrum.service \
-&& echo "User=parman" >> /etc/system/systemd/fulcrum.service \
-&& echo "Group=parman" >> /etc/system/systemd/fulcrum.service \
-&& echo "" >> /etc/system/systemd/fulcrum.service \
-&& echo "[Install]" >> /etc/system/systemd/fulcrum.service \
-&& echo "WantedBy=multi-user.target" >> /etc/system/systemd/fulcrum.service 
-
-RUN root
-RUN systemctl enable /etc/systemd/system/fulcrum.service
-
-CMD systemctl start /etc/systemd/system/fulcrum.service && tail -f /dev/null
-
+CMD /home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf
 
