@@ -24,6 +24,11 @@ uninstall_bitcoin
 return 0
 ;;
 
+f|F)
+uninstall_fulcrum
+return 0
+;;
+
 p|P)
 	return 0
 	;;
