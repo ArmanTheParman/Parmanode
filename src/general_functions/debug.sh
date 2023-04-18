@@ -12,7 +12,7 @@ do
 
 echo "
 debug point - hit "d" and <enter> to proceed."
-read choice
+read -u 0 choice
 
 if [[ $choice == "d" ]] ; then break ; fi
 done

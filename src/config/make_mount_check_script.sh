@@ -12,26 +12,23 @@ if [[ \$drive == \"internal\" && \$drive_fulcrum == \"internal\" ]] ; then exit 
 
 if [[ \$drive == \"external\" || \$drive_fulcrum == \"external\" ]] 
 then
-    mount_point_pattern=\"/media/*/parmanode\"
-
             counter=0
 
             while [[ \$counter -le 5 ]] ; do   #Checking if it's mounted, up to 5 times, 1 second each, then exit...
 
-                mount_point=\$(find /media -type d -path \"\$mount_point_pattern\" | head -1)
+                mount_point=\"/media/$(whoami)/parmanode\"
 
                     if [ -n \"\$mount_point\" ] && mountpoint -q \"\$mount_point\" 
                     then 
                         exit 0 
                     else 
-                        clear
+                        if mount | grep -q parmanode ; then log \"parmanode\" \"WARNING: mount check with label, not mount point.\" ; exit 0 ; fi
                         echo \"Drive not mounted. Error. Repeat try for 5 seconds... \" 
                         sleep 1
                         counter=\"\$(( \$counter + 1 ))\"
                         continue
                     fi
             done
-            
             exit 1
 else
     clear

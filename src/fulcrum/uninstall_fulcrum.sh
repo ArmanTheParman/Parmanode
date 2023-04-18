@@ -30,24 +30,26 @@ fi
 log "fulcrum" "uninstall commenced"
 source $HOME/.parmanode/parmanode.conf
 #parmanode_conf_remove "fulcrum"
-debug "$fulcrum_drive"
-if [[ $fulcrum_drive == "external" ]] ; then
+if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
     enter_continue ; log "fulcrum" "drive not mounted, fulcrum_db  not deleted during uninstall." ; }
     case $OS in
-    Mac) rm -rf /Volumes/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
-    Linux) rm -rf /media/$(whoami)/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
+    Mac) 
+        rm -rf /Volumes/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
+    Linux)
+        rm -rf /media/$(whoami)/parmanode/fulcrum_db || debug "failed to delete fulcrum_db."
+        ;;
     esac
     fi
 
-if [[ $fulcrum_drive == "internal" ]] ; then
+if [[ $drive_fulcrum == "internal" ]] ; then
     rm -rf $HOME/parmanode/fulcrum_db
     fi
 
 rm -rf $HOME/parmanode/fulcrum
 
-sudo rm /usr/local/bin/Fulcrum*
-sudo rm /etc/systemd/system/fulcrum.service
+sudo rm /usr/local/bin/Fulcrum* 2>/dev/null
+sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null
 
 installed_config_remove "fulcrum"
 log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
