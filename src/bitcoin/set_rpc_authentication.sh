@@ -7,9 +7,9 @@ echo "
 
     Remote Procedure Call (RPC) is how wallet applications connect to Bitcoin
     Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software might prefer the alternative way which is with
-    a username and password. If you require this, you can select that here (up) or
-    manually edit the bitcoin.conf file yourself.
+    data directory. Some software (eg Fulcrum Server) might prefer the alternative 
+	way which is with a username and password. If you require this, you can select 
+	that here (up) or manually edit the bitcoin.conf file yourself.
 
                          (up) set a username and password
 
