@@ -83,5 +83,5 @@ Latest:
         any of the directories or files that Parmanode has made. 
 
         You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version
-        of Bitcoin is oferred by Parmanode, the software will ask what you want to do.
+        of Bitcoin is offered by Parmanode, the software will ask what you want to do.
 
