@@ -5,9 +5,9 @@ echo "
 
                                RPC Authentication
 
-    Remote Procedure Call (RPC) is how wallet applications connect to Bitcoin
+    Remote Procedure Call (RPC) is how other applications connect to Bitcoin
     Core. Fulcrum Server requires the rpcuser/rpcpassword method, rather than the
-    cookie file method (if you dn't understand, don't worry about it.)
+    cookie file method (if you dn't understand, don't worry about it).
     
     You will now be able to type in what your username and password is in bitcoin.conf
     so that Fulcrum is given permission to connect. If you want to change the
@@ -24,13 +24,13 @@ case $choice in
         exit 0 ;;
 
 	    "")
-		echo "Please enter an RPC username:
+		echo "Please enter an RPC username: (Do not use the characters: # \" or ' otherwise problems may arise.)
 	       	" 
 		read rpcuser
 		
 		while true ; do
 		set_terminal
-		echo "Please enter an PRC password:
+		echo "Please enter an PRC password: (Do not use the characters: # \" or ' otherwise problems may arise.)
 	       	" 
 		read rpcpassword
 		echo "Please repeat the password:
