@@ -22,13 +22,13 @@ choose "xpq" ; exit_choice ; if [ $? = 1 ] ; then return 1 ; fi ; set_terminal
 
 case $choice in
 	up|UP|Up|uP)
-		echo "Please enter an RPC username:
+		echo "Please enter an RPC username: (Do not use the characters: # \" or ' otherwise problems may arise.)
 	       	" 
 		read rpcuser
 		
 		while true ; do
 		set_terminal
-		echo "Please enter an PRC password:
+		echo "Please enter an PRC password: (Do not use the characters: # \" or ' otherwise problems may arise.)
 	       	" 
 		read rpcpassword
 		echo "Please repeat the password:
