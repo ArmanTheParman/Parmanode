@@ -40,17 +40,17 @@ case $choice in
 		if [[ $rpcpassword != $rpcpassword2 ]] ; then
 		       echo "Passwords do not match. Try again.
 		       "
-            continue
-		else
-	               break
-		fi
+               continue
+			   else  break ; fi
 
-		done
+		done #end while 1
 
-                delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
+              if [[ $OS == "Linux" ]] ; then
+			    delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
                 delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
 				echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
 				echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
+				fi
 		break
 		;;
 
@@ -60,6 +60,6 @@ case $choice in
             ;;	
 esac
 
-done
+done #end while 2
 return 0
 }
