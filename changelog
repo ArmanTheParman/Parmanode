@@ -1,3 +1,6 @@
+Version 2.1.1 beta
+    - User/pass automatically copied to fulcrum.conf from bitcoin.conf if it exists.
+    - set user/pass menus modified
 Version 2.1.0
     - Added Fulcrum for Linux only (x86_64, and ARM64/Pi)
 Version 2.0.6
@@ -19,7 +22,8 @@ Version 2.0.0
     - added Bitcoin Core dependencies for Mac
     - critical errors for Mac version fixed
     
-
+You MUST restart Bitcoin and Fulcrum (not Parmanode) if you have made any changes 
+	here for those changes to take effect.
 
 Version 1.1.0
     - added MacOS support

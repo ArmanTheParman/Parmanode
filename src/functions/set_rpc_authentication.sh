@@ -3,17 +3,22 @@ while true ; do
 echo "
 ########################################################################################
 
-                               RPC Authentication
+                           Bitcoin Core RPC Authentication
 
-    Remote Procedure Call (RPC) is how wallet applications connect to Bitcoin
+    Remote Procedure Call (RPC) is how other applications connect to Bitcoin
     Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software (eg Fulcrum Server) might prefer the alternative 
-	way which is with a username and password. If you require this, you can select 
-	that here (up) or manually edit the bitcoin.conf file yourself.
+    data directory. Some software (eg Fulcrum Server) REQUIRES the alternative 
+    way, which is with a username and password. You can set a username and password 
+    here.
 
-                         (up) set a username and password
 
-			 (c)  use cookie (default setting)
+                  (up) set a username and password .... (if installing Fulcrum)
+
+                  (c)  use cookie ..................... (default setting)
+	
+
+	If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
+	those changes to take effect.
 
 ########################################################################################
 
@@ -22,13 +27,15 @@ choose "xpq" ; exit_choice ; if [ $? = 1 ] ; then return 1 ; fi ; set_terminal
 
 case $choice in
 	up|UP|Up|uP)
-		echo "Please enter an RPC username: (Do not use the characters: # \" or ' otherwise problems may arise.)
+		echo "Please enter an RPC username: (Do not use the characters: # \" or '"
+		echo "otherwise problems may arise.)
 	       	" 
 		read rpcuser
 		
 		while true ; do
 		set_terminal
-		echo "Please enter an PRC password: (Do not use the characters: # \" or ' otherwise problems may arise.)
+		echo "Please enter an RPC username: (Do not use the characters: # \" or '"
+		echo "otherwise problems may arise.)
 	       	" 
 		read rpcpassword
 		echo "Please repeat the password:
@@ -38,7 +45,7 @@ case $choice in
 		if [[ $rpcpassword != $rpcpassword2 ]] ; then
 		       echo "Passwords do not match. Try again.
 		       "
-                       continue
+                   continue
 		else
 	               break
 		fi
