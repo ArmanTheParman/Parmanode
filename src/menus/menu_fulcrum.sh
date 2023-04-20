@@ -18,7 +18,7 @@ echo "
 
       (fc)       Inspect and edit fulcrum.conf file 
 
-      (up)       Set/remove/change Bitcoin rpc user/pass in Fulcrum config file
+      (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
 
 
 ########################################################################################
@@ -82,7 +82,7 @@ continue
 ;;
 
 up|UP|Up|uP)
-user_pass_fulcrum
+set_rpc_authentication
 continue
 ;;
 
