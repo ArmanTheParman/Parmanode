@@ -3,7 +3,7 @@
 
 FROM debian 
 RUN apt-get update
-RUN apt-get install -y wget gpg sudo procps vim nano systemd
+RUN apt-get install -y wget gpg sudo procps vim nano systemd 
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -47,5 +47,12 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "key = /home/parman/parmanode/fulcrum/key.pem" >> fulcrum.conf \
 && echo "peering = false" >> fulcrum.conf
 
-CMD /home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf
+#get necessary scripts within container.
+RUN mkdir -p /home/parman/parmanode/temp
+COPY ../../src/ /home/parman/parmanode/temp
+RUN find /home/parman/parmanode/temp -type f -exec cp {} /home/parman/parmanode/src/ \;
+RUN rm -rf /home/parman/parmanode/temp
+
+#make all functions available to "docker exec"
+CMD source /home/parman/parmanode/src/*.sh && tail -f /dev/null 
 
