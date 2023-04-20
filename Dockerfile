@@ -8,7 +8,9 @@ RUN apt-get install -y wget gpg sudo procps vim nano systemd
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
 RUN chown -R parman:parman /home/parman/
+RUN echo 'parman:parmanode' | chpasswd
 USER parman
+
 
 RUN mkdir -p /home/parman/parmanode/fulcrum
 RUN mkdir -p /home/parman/Downloads
@@ -49,10 +51,12 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 
 #get necessary scripts within container.
 RUN mkdir -p /home/parman/parmanode/temp
-COPY ../../src/ /home/parman/parmanode/temp
+RUN mkdir -p /home/parman/parmanode/src
+COPY ./src/ /home/parman/parmanode/temp
 RUN find /home/parman/parmanode/temp -type f -exec cp {} /home/parman/parmanode/src/ \;
+USER root
 RUN rm -rf /home/parman/parmanode/temp
-
 #make all functions available to "docker exec"
-CMD source /home/parman/parmanode/src/*.sh && tail -f /dev/null 
+RUN echo 'for file in /home/parman/parmanode/src/*.sh ; do . $file ; done' >> $HOME/.bashrc 
 
+CMD tail -f /dev/null 

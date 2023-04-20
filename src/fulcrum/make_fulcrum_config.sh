@@ -30,7 +30,7 @@ peering = false " > $HOME/parmanode/fulcrum/fulcrum.conf || \
 { log "fulcrum" "make_fulcrum_config, echo redirect failed." ; \
 debug "echo redirect failed when making fulcrum.conf" ; return 1 ;}
 
-edit_user_pass_fulcrum_config #gets user and pass from bitcoin.conf and adds to fulcrum.conf
+edit_user_pass_fulcrum_conf #gets user and pass from bitcoin.conf and adds to fulcrum.conf
 
 log "fulcrum" "fulcrum config file made"
 return 0

@@ -1,4 +1,4 @@
-function edut_user_pass_fulcrum_conf {
+function edit_user_pass_fulcrum_conf {
 
 rpcuser=$(grep -w "rpcuser" $HOME/.bitcoin/bitcoin.conf | awk -F '=' '{print $2}')
 
