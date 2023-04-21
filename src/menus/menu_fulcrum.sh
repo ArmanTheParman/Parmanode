@@ -30,8 +30,9 @@ case $choice in
 start | START)
 set_terminal
 echo "Fulcrum starting..."
-sudo systemctl start fulcrum.service
-enter_continue
+if [[ $OS == "Linux" ]] ; then sudo systemctl start fulcrum.service ; enter_continue ; fi
+if [[ $OS == "Mac"]] ; then start_fulcrum_docker ; fi 
+set_terminal
 ;;
 
 stop | STOP) 
