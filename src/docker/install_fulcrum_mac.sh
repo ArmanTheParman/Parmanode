@@ -21,8 +21,14 @@ install_docker
 build_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
 
-run_fulcrum_docker
+warning_deleting_fulcrum
+  if [[ $? == 1 ]] ; then return 1 ; fi
 
-    edit_user_pass_fulcrum_docker 
+run_fulcrum_docker
+  if [[ $? == 1 ]] ; then return 1 ; fi
+
+edit_user_pass_fulcrum_docker
+  if [[ $? == 1 ]] ; then return 1 ; fi
+
 return 0
 }
