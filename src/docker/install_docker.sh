@@ -31,7 +31,7 @@ esac
 done
 
 docker_install_check  
-    if [ $? = 2 ] ; then 
+    if [ $? = 1 ] ; then 
         log "docker" "Docker is already installed. Returning to menu." 
         echo ""
         echo "Docker is already instaled. Returning to menu."
