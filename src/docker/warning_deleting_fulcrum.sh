@@ -7,6 +7,8 @@ WARNING: If you have a previous Fulcrum container, this installation will delete
 and any Fulcrum images. We're starting fresh, too bad. If you want to preserve any old
 data, you should quit now, and back them up. If you don't know how... internet  ;p
 
+                               <enter> to continue
+
 ########################################################################################
 "
 choose "xpq" ; read choice

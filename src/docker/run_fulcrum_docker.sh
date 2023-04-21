@@ -7,8 +7,8 @@ if [[ $drive_fulcrum == "external" ]] ; then
         docker_volume_mount="/Volumes/parmanode/fulcrum_db"
 
         while true ; do
-        if ! mountpoint -q "/Volumes/parmanode" ; then
-                set_terminal ; echo "Please connect the drive. Enter to try again, (p) to return." ; read choice 
+        if $( ! mount | grep parmanode ) ; then
+                set_terminal ; echo "Please connect the drive. <enter> to try again, (p) to return." ; read choice 
                 if [[ $choice == "p" ]] ; then return 1 ; fi
                 else 
                 break
