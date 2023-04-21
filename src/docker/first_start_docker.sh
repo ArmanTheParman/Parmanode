@@ -1,6 +1,6 @@
 function first_start_docker {
-open -a Docker
-sudo usermod -aG docker $(whoami)
+open -a Docker && log "docker" "docker opened"
+sudo usermod -aG docker $(whoami) && log "docker" "usermod applied"
 while true ; do
 set_terminal ; echo "
 ########################################################################################
