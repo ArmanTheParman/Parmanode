@@ -48,9 +48,11 @@ case $choice in
         ;;
     f|F)
        set_terminal
-       install_fulcrum
+       if [[ $OS == "Linux" ]] ; then install_fulcrum ; fi
+       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac ; fi
        return 0 
        ;;
+
     q|Q|quit|QUIT)
         exit 0
         ;;
