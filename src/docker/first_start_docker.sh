@@ -1,5 +1,6 @@
-function start_docker {
+function first_start_docker {
 open -a Docker
+sudo usermod -aG docker $(whoami)
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -24,11 +25,6 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "epq" ; read choice
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 0 ;; "") break ;; *) invalid ;; esac
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; "") return 0 ;; *) invalid ;; esac
 done
-
-
-#command runs Docker Desktop without attachment or output to the terminal...
-
-return 0
 }

@@ -25,7 +25,7 @@ please_wait
 download_docker
     if [ $? = 1 ] ; then return 1 ; fi
 
-start_docker
+first_start_docker
 
 return 0
 

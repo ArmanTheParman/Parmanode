@@ -1,4 +1,4 @@
-function set_user_pass_fulcrum_docker {
+function edit_user_pass_fulcrum_docker {
 
 #from the host machine
 rpcuser=$(grep -w "rpcuser" $HOME/.bitcoin/bitcoin.conf | awk -F '=' '{print $2}')
