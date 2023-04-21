@@ -17,18 +17,24 @@ fulcrum_make_directories
 
 install_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
-
+  log "fulcrum" "Docker install done"
+  
 build_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
+  log "fulcrum" "Fulcrum docker build done."
 
 warning_deleting_fulcrum
   if [[ $? == 1 ]] ; then return 1 ; fi
 
 run_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
+  log "fulcrum" "Fulcrum docker run done."
 
 edit_user_pass_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
+  log "fulcrum" "user/pass edited in docker fulcrum.conf" 
+
+installed_config_add "fulcrum"
 
 return 0
 }
