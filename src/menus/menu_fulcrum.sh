@@ -31,16 +31,15 @@ start | START)
 set_terminal
 echo "Fulcrum starting..."
 if [[ $OS == "Linux" ]] ; then sudo systemctl start fulcrum.service ; enter_continue ; fi
-if [[ $OS == "Mac"]] ; then start_fulcrum_docker ; fi 
+if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi 
 set_terminal
 ;;
 
 stop | STOP) 
 set_terminal
-if [[ $OS == "Linux" ]] ; then ; echo "Fulcrum stopping" ; sudo systemctl stop fulcrum.service ; fi
-if [[ $OS == "Mac" ]] ; then ; echo "fulcrum stopping inside running container." ; stop_fulcrum_docker ; fi
-
-enter_continue
+if [[ $OS == "Linux" ]] ; then echo "Fulcrum stopping" ; sudo systemctl stop fulcrum.service ; enter_continue ; fi
+if [[ $OS == "Mac" ]] ; then echo "Stopping Fulcrum inside running container..." ; stop_fulcrum_docker ; fi
+set_terminal
 ;;
 
 c|C)
@@ -52,7 +51,7 @@ d|D)
 echo "
 ########################################################################################
     
-    This will show the fulcrum journalctl log output in real time as it populates.
+    This will show the fulcrum log output in real time as it populates.
     
     You can hit <control>-c to make it stop.
 
@@ -71,7 +70,8 @@ fi
 if [[ $OS == "Mac" ]] ; then
     enter_continue
     set_terminal_wider
-    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log
+    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log || \
+    echo "Error. Is the container running? Is Fulcrum running?" && enter_continue
     set_terminal
 fi
 continue ;;

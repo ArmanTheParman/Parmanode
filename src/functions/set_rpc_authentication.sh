@@ -12,9 +12,12 @@ echo "
     here.
 
 
-                  (up) set a username and password .... (if installing Fulcrum)
+          (up) Set username and password ...... (must be set if installing Fulcrum)
 
-                  (c)  use cookie ..................... (default setting)
+          (u)  Leave username and password unchanged
+
+          (c)  Use cookie ..................... (default setting)
+
 	
 
 	If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
@@ -34,7 +37,7 @@ case $choice in
 		
 		while true ; do
 		set_terminal
-		echo "Please enter an RPC username: (Do not use the characters: # \" or '"
+		echo "Please enter an RPC password: (Do not use the characters: # \" or '"
 		echo "otherwise problems may arise.)
 	       	" 
 		read rpcpassword
@@ -60,6 +63,9 @@ case $choice in
 				parmanode_conf_add "rpcpassword=$rpcpassword"	
 		break
 		;;
+
+	u|U) break ;;
+
 	c)
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
