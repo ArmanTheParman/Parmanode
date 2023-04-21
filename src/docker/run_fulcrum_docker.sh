@@ -5,5 +5,6 @@ docker run -d --name fulcrum -p 50002:50002 -p 50001:50001 -p 50003:50003 fulcru
 #additional port, 50003 added in case user needs another, the container does not have
 #to be rebuilt.
 
+#need to mount volume from container to chosen drive,
 
 }
