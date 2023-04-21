@@ -1,6 +1,7 @@
 function start_fulcrum_docker {
 
 if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+    set_terminal
     echo "
     Fulcrum not installed according to settings file (installed.conf)"
     enter_continue 
@@ -8,6 +9,7 @@ if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
     fi
 
 if ! $( docker ps -a | grep fulcrum ) ; then
+    set_terminal
     echo "
     Fulcrum container does not exist."
     enter_continue
@@ -15,17 +17,32 @@ if ! $( docker ps -a | grep fulcrum ) ; then
     fi
 
 if $( docker ps | grep fulcrum) ; then
+    set_terminal
     echo "
     The Fulcrum container is already running."
     echo "
-    Starting Fulcrum within the container."
+    Starting Fulcrum within the running container."
+
     docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum.conf \
     >/home/parman/parmanode/fulcrum/fulcrum.log 2>&1"
+
     enter_continue
-    fi
+    return 0
+else
+    if $( docker ps -a | grep fulcrum ) ; then
+       set_terminal 
+        echo "
+        Starting docker container."
+        docker start fulcrum
 
+        echo "
+        Starting Fulcrum within the running container."
 
+        docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum.conf \
+        >/home/parman/parmanode/fulcrum/fulcrum.log 2>&1"
 
-
-docker start fulcrum
+        enter_continue
+        return 0
+        fi
+fi
 }

@@ -37,7 +37,9 @@ set_terminal
 
 stop | STOP) 
 set_terminal
-echo "Fulcrum stopping"
+if [[ $OS == "Linux" ]] ; then ; echo "Fulcrum stopping" ; sudo systemctl stop fulcrum.service ; fi
+if [[ $OS == "Mac" ]] ; then ; echo "fulcrum stopping inside running container." ; stop_fulcrum_docker ; fi
+
 enter_continue
 ;;
 
@@ -56,17 +58,26 @@ echo "
 
 ########################################################################################
 "
-enter_continue
-set_terminal_wider
-journalctl -fexu fulcrum.service &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal_wider
+if [[ $OS == "Linux" ]] ; then
+    enter_continue
+    set_terminal_wider
+    journalctl -fexu fulcrum.service &
+    tail_PID=$!
+    trap 'kill $tail_PID' SIGINT #condition added to memory
+    wait $tail_PID # code waits here for user to control-c
+    trap - SIGINT # reset the trap so control-c works elsewhere.
+    set_terminal
+fi
+if [[ $OS == "Mac" ]] ; then
+    enter_continue
+    set_terminal_wider
+    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log
+    set_terminal
+fi
 continue ;;
 
 fc|FC|Fc|fC)
+if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
     
@@ -79,6 +90,23 @@ echo "
 "
 enter_continue
 nano $HOME/parmanode/fulcrum/fulcrum.conf
+fi
+
+if [[ $OS == "Mac" ]] ; then
+echo "
+########################################################################################
+    
+        This will run Nano text editor to edit fulcrum.conf. See the controls
+        at the bottom to save and exit. Be careful messing around with this file.
+
+	  Any changes will only be applied once you restart Fulcrum.
+
+########################################################################################
+"
+enter_continue
+docker exec -it fulcrum nano /home/parman/parmanode/fulcrum/fulcrum.conf
+fi
+
 continue
 ;;
 
