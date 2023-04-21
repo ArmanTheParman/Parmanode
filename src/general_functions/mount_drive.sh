@@ -3,13 +3,14 @@ function mount_drive {
 if [[ $OS == "Mac" ]] ; then
 if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
     #if mounted, exit 
-	    if mountpoint -q "/Volumes/parmanode" ; then
+	    if mount | grep "parmanode" >/dev/null 2>&1 ; then
 			return 0
 			fi
 
     # If function didn't return 0, try mounting with label, then UUID, then loop.
 		sleep 1
-    	diskutil mount parmanode || { debug "Unable to mount disk. Aborting." ; return 1 ; }
+    	diskutil mount parmanode >/dev/null 2>&1 || { debug "Unable to mount disk. Aborting." ; return 1 ; }
+		set_terminal
 		return 0
 		
 fi
