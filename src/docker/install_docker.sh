@@ -49,10 +49,12 @@ set_terminal ; echo "
 please_wait
 download_docker
     if [ $? = 1 ] ; then return 1 ; fi
+    log "fulcrum" "Docker downloaded"
 
 first_start_docker
     if [ $? = 1 ] ; then return 1 ; fi
-
+    log "fulcrum" "Docker first start"
+    
 return 0
 }
 

@@ -14,8 +14,7 @@ set_terminal ; echo "
 enter_continue
 
 { docker build -t fulcrum ./ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
-&& log "fulcrum" "fulcrum docker build done" || { log "fulcrum" "fulcrum docker build failed" ; \
-return 1 ;}
+|| log "fulcrum" "fulcrum docker build failed" && return 1 
 
 echo "
 ########################################################################################

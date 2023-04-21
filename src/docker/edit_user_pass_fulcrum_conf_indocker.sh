@@ -1,4 +1,6 @@
 function edit_user_pass_fulcrum_conf_indocker {
+# called by edit_user_pass_fulcrum_conf_indocker (from within the container,
+# all the scripts are copied there at Dockerbuild).
 
 rpcuser=$1
 
