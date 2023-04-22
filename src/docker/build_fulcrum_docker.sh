@@ -25,15 +25,16 @@ set_terminal ; echo "
 
     You can take a look now if you want:
 
-                            log)      See log file of build process
+
+                            l)   See log file of build process
     
+
+
     The installation of Fulcrum will continue when you exit the document reader.
 
 ########################################################################################                    
 "
 choose "xpq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 0 ;; *) set_terminal ;; 
-                log|LOG|Log) nano $HOME/.parmanode/docker_build.log ;;
-                esac
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; l|L) nano $HOME/.parmanode/docker_build.log ;; *) set_terminal ;; esac
 return 0
 }

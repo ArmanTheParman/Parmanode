@@ -15,17 +15,29 @@ fulcrum_make_directories
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "make directories function exited."
 
-install_docker
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "Docker install done"
-  
+install_docker_intro
+  if [[ $? == 1 ]] ; then log "docker" "installation abandoned" ; return 1 
+  else
+  log "fulcrum" "Docker install to proceed."
+  fi
+
+docker_install_check  
+
+if [[ $docker_installed == "false" ]] ; then
+    download_docker
+    if [ $? = 1 ] ; then return 1 ; fi
+
+start_docker
+    if [ $? = 1 ] ; then return 1 ; fi
+    log "fulcrum" "Docker started"
+
 build_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Fulcrum docker build done."
 
 warning_deleting_fulcrum
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "warning message reached."
+  if [[ $? == 1 ]] ; then log "fulcrum" "warning message, abort" ; return 1 ; fi
+  log "fulcrum" "warning message reached, continue."
   
 run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
