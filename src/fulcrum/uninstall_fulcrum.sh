@@ -1,5 +1,10 @@
 function uninstall_fulcrum {
 
+if [[ $OS == "Mac" ]] ; then
+    uninstall_fulcrum_docker
+    return 0
+    fi
+
 while true
 do
 set_terminal ; echo "
