@@ -30,7 +30,7 @@ Desktop Wallet directly to the node on the same computer.
 
 ## Software included
 
-### Bitcoin 24.01
+### Bitcoin 24.0u
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
@@ -60,7 +60,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 Stable:
 	Find the latest tag and download/unzip that to a directory on your drive.
-	To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode'
+	To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
 Latest:
 	Easy way - Navigate to the github repository, and click the green 'code' button. 
         In the pop-uo, click download zip, then proceed as instructed in stable version.
