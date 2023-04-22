@@ -58,30 +58,29 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 ## HOW TO RUN
 
-Stable:
-	Find the latest tag and download/unzip that to a directory on your drive.
-	To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
-Latest:
-	Easy way - Navigate to the github repository, and click the green 'code' button. 
-        In the pop-uo, click download zip, then proceed as instructed in stable version.
-        
-        Easier way - coming soon.
+#### Stable:
 
-	Surest way - Run this command in terminal:
+Find the latest tag and download/unzip that to a directory on your drive.
+To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
+
+#### Latest:
+
+Easy way - Navigate to the github repository, and click the green 'code' button. In 
+           the pop-uo, click download zip, then proceed as instructed in stable version.
+        
+Easier way - coming soon.
+
+Surest way - Run this command in terminal:
 
                 git clone http://github.com/armantheparman/parmanode.git
         or
                 git clone git@github.com:armantheparman/parmanode.git
 
-        It will download a directory called "parmanode" to your working directory
-	Then cd parmanode, to change into that directory.
-	Then type './run_parmanode.sh'
+It will download a directory called "parmanode" to your working directory. Then cd parmanode, to change into that directory. Then type './run_parmanode.sh'
 
 ## INSTRUCTIONS TO UPGRADE
 
-        Simply download a new version and run it. You can delete the old copy but do not touch
-        any of the directories or files that Parmanode has made. 
+Simply download a new version and run it. You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
 
-        You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version
-        of Bitcoin is offered by Parmanode, the software will ask what you want to do.
+You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version of Bitcoin is offered by Parmanode, the software will ask what you want to do.
 
