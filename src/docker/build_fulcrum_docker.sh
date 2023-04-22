@@ -26,7 +26,9 @@ set_terminal ; echo "
     You can take a look now if you want:
 
 
-                            l)   See log file of build process
+                     L)   See log file of build process     (see controls at the 
+                                                             bottom, exit with 
+                                                             control-x)
     
 
 
