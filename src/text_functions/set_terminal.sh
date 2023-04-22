@@ -11,7 +11,7 @@ echo -e "\033[38;2;255;145;0m" #Orange colour setting
 
 if [[ $colour = "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
 
-clear
+tput clear
 return 0
 }
 
@@ -34,13 +34,11 @@ return 0
 function set_terminal_high {
 set_terminal
 printf '\033[8;47;88t' 
-clear
 return 0
 }
 
 function set_terminal_bit_higher {
 set_terminal
 printf '\033[8;43;88t' 
-clear
 return 0
 }
