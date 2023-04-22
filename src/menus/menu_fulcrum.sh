@@ -119,11 +119,10 @@ continue
 p|P)
 return 0
 ;;
+
 *)
 invalid
 ;;
-
-
 esac
 done
 

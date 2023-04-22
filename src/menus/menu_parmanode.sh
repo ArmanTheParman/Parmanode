@@ -2,7 +2,7 @@ function menu_parmanode {
 clear
 while true
 do
-set_terminal
+set_terminal_bit_higher
 echo "
 ########################################################################################
 
