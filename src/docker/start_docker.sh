@@ -1,6 +1,5 @@
 function start_docker {
-open -a Docker && log "docker" "docker opened" || { log "docker" "docker failed to open" && return 1 ; }
-sudo usermod -aG docker $(whoami) && log "docker" "usermod applied"
+nohup open -a Docker >/dev/null 2>&1 & && log "docker" "docker open -a nohup" || { log "docker" "docker failed to open" && return 1 ; }
 
 set_terminal ; echo "
 ########################################################################################
@@ -22,9 +21,12 @@ set_terminal ; echo "
     the Applications menu, something went wrong. Carefully place the computer in the
     bin and buy a new one, preferable Linux, not Mac, and not, God forbid, Windows.
 
+########################################################################################
     Only hit <enter> once you're sure Docker is running in the background, otherwise 
     hit (q) to quit or (p) to return to the menu.
-    
+
+    For this choice, you may need to click the terminal window with the mouse for 
+    your keyboard input to register.
 ########################################################################################
 "
 choose "epq" ; read choice

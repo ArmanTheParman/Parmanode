@@ -18,7 +18,7 @@ fulcrum_make_directories
 install_docker_intro
   if [[ $? == 1 ]] ; then log "docker" "installation abandoned" ; return 1 
   else
-  log "fulcrum" "Docker install to proceed."
+  log "docker" "Docker install to proceed."
   fi
 
 docker_install_check  
@@ -27,10 +27,10 @@ if [[ $docker_installed == "false" ]] ; then
     download_docker
     if [ $? = 1 ] ; then return 1 ; fi
     fi
-    
+
 start_docker
     if [ $? = 1 ] ; then return 1 ; fi
-    log "fulcrum" "Docker started"
+    log "docker" "Docker started"
 
 build_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi

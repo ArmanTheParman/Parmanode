@@ -13,6 +13,6 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "xpq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) break ;; esac 
+case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) return 0  ;; esac 
 return 0
 }
