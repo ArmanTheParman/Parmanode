@@ -39,20 +39,25 @@ DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
 Internal drive:
                
                /|--- $HOME ---|
-                |             |--- .bitcoin                        (may or may not be a symlink)
-                |             |--- .parmanode                      (config files)
+                |             |--- .bitcoin                           (may or may not be a symlink)
+                |             |--- .parmanode                         (config files)
                 |             |--- parmanode ---|
-                |                               |--- bitcoin ---|  (keeps B core download and pgp stuff)
+                |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
+                |                               |
+                |                               |--- fulcrum ------|  (keeps Fulcrum binary and config)
+                |                               |
+                |                               |--- fulcrum_db ---|  (fulcrum databas)
                 |--- media ---|
-                |             |--- parmanode ---|                  (ext drive mountpoint) 
-                |                               |--- .bitcoin ---| (symlink target)
+                |             |--- parmanode ---|                  
+                |                               |--- .bitcoin ---|    (symlink target and ext drive mountpoint)
                 |           
-                |--- usr  --- |--- local  ------|--- bin ---|       (keeps bitcoin binary files)
+                |--- usr  --- |--- local  ------|--- bin ---|         (keeps bitcoin binary files)
 
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
-               /|--- .bitcoin ---|
+               /|--- .bitcoin ----|
+                |--- fulcrum_db---|
 
 ### Fulcrum v1.9.1 for Linux x86_64 and ARM64 (Pi) only. Not Mac (yet).
 
