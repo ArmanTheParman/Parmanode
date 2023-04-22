@@ -42,7 +42,11 @@ Internal drive:
                 |             |--- .bitcoin                        (may or may not be a symlink)
                 |             |--- .parmanode                      (config files)
                 |             |--- parmanode ---|
-                |                               |--- bitcoin ---|  (keeps B core download and pgp stuff)
+                |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
+                |                               |
+                |                               |--- fulcrum ------|
+                |                               |
+                |                               |--- fulcrum_db ---|
                 |--- media ---|
                 |             |--- parmanode ---|                  (ext drive mountpoint) 
                 |                               |--- .bitcoin ---| (symlink target)
@@ -52,7 +56,8 @@ Internal drive:
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
-               /|--- .bitcoin ---|
+               /|--- .bitcoin ----|
+                |--- fulcrum_db---|
 
 ### Fulcrum v1.9.1 for Linux x86_64 and ARM64 (Pi) only. Not Mac (yet).
 
