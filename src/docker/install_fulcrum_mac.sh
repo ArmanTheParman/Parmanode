@@ -26,7 +26,8 @@ docker_install_check
 if [[ $docker_installed == "false" ]] ; then
     download_docker
     if [ $? = 1 ] ; then return 1 ; fi
-
+    fi
+    
 start_docker
     if [ $? = 1 ] ; then return 1 ; fi
     log "fulcrum" "Docker started"
