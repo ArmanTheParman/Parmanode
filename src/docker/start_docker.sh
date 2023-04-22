@@ -3,7 +3,7 @@ function start_docker {
 ( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
 || log "docker" "docker failed to nohup open -a" 
 
-set_terminal ; echo "
+set_terminal "pink" ; echo "
 ########################################################################################
 
                                 Docker is starting
@@ -34,7 +34,7 @@ set_terminal ; echo "
     background that may be causing Docker not to start properly. Use this function
     at your own risk...
 
-                        yolo)   send kill SITINT signal to Docker
+                        yolo)   send kill SIGINT signal to Docker
 ########################################################################################
 "
 choose "epq" ; read choice
