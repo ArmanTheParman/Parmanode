@@ -8,11 +8,11 @@ set_terminal ; echo "
     preserve any old data, you should quit now, and back them up. If you don't know 
     how... see internet  ;p
 
-                                <enter> to continue
+                              <enter>    to continue
 
 ########################################################################################
 "
 choose "xpq" ; read choice
-while true ; do case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
+case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) break ;; esac 
 return 0
 }

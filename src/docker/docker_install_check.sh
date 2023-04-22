@@ -9,9 +9,11 @@ set_terminal ; echo "
 
 ######################################################################################## 
 "
-enter_continue ; return 1
+    enter_continue ; set_terminal
+    docker_installed="true" && log "docker" "docker_installed=true"
+    return 1
 fi
 
-log "docker" "docker not installed yet. Proceed with installation."
+docker_installed="false" && log "docker" "docker_installed=false"
 return 0
 }

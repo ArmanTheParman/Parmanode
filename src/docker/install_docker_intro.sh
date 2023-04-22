@@ -1,10 +1,10 @@
-function install_docker {
+function install_docker_intro {
 
 #Docker Installation
 set_terminal ; echo "
 ########################################################################################
 
-                                Docker Insallation
+                                     Docker 
 
     There is no Fulcrum executable available yet for Mac computers. To get around
     this, Parmanode will use Docker on your system, and run a Linux container
@@ -12,7 +12,7 @@ set_terminal ; echo "
     intstalled on the Linux container which your computer can access.
     
     If you already have docker on your system, Parmanode will detect that and skip
-    installation of Docker. i
+    installation of Docker.
     
     If you don't have Docker yet, and the automated Parmanode installation of Docker 
     fails, you could download and install Docker yourself, and still be able to 
@@ -21,32 +21,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "epq" ; read choice 
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 0 ;; *) set_terminal ;; esac
-
-docker_install_check  
-    if [ $? = 1 ] ; then 
-        log "docker" "Docker is already installed. Returning to menu." 
-        echo ""
-        echo "Docker is already instaled. Returning to menu."
-        return 0 
-        fi
-
-set_terminal ; echo "
-########################################################################################
-
-                               Downloading Docker...
-
-########################################################################################
-
-"
-please_wait
-download_docker
-    if [ $? = 1 ] ; then return 1 ; fi
-    log "fulcrum" "Docker downloaded"
-
-first_start_docker
-    if [ $? = 1 ] ; then return 1 ; fi
-    log "fulcrum" "Docker first start"
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) set_terminal ;; esac
     
 return 0
 }
