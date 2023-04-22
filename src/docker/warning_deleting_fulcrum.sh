@@ -13,6 +13,12 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "xpq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) return 0  ;; esac 
+case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) clean_containers_fulcrum ; return 0  ;; esac 
 return 0
+}
+
+function clean_containers_fulcrum {
+docker stop fulcrum >/dev/null 2>&1 && log "fulcrum" "container stopped"
+docker rm fulcrum >/dev/null 2>&1 && log "fulcrum" "container removed"
+docker rmi fulcrum >/dev/null 2>&1 && log "fulcrum" "docker image deleted"
 }

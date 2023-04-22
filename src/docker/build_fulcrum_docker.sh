@@ -26,10 +26,11 @@ set_terminal ; echo "
     You can take a look now if you want:
 
 
-                     L)   See log file of build process     (see controls at the 
+               L)       See log file of build process       (see controls at the 
                                                              bottom, exit with 
                                                              control-x)
     
+            <enter>     Continue installation
 
 
     The installation of Fulcrum will continue when you exit the document reader.
