@@ -120,6 +120,10 @@ p|P)
 return 0
 ;;
 
+q|Q|Quit|QUIT)
+exit 0
+;;
+
 *)
 invalid
 ;;
