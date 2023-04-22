@@ -25,9 +25,10 @@ build_fulcrum_docker
 
 warning_deleting_fulcrum
   if [[ $? == 1 ]] ; then return 1 ; fi
-
+  log "fulcrum" "warning message reached."
+  
 run_fulcrum_docker
-  if [[ $? == 1 ]] ; then return 1 ; fi
+  if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
   log "fulcrum" "Fulcrum docker run done."
 
 edit_user_pass_fulcrum_docker

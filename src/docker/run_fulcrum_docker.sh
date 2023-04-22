@@ -8,10 +8,11 @@ if [[ $drive_fulcrum == "external" ]] ; then
 
         while true ; do
         if $( ! mount | grep parmanode ) ; then
-                set_terminal ; echo "Please connect the drive. <enter> to try again, (p) to return." ; read choice 
+                log "fulcrum" "drive mount test failed. Offer to try again or exit."
+                set_terminal ; echo "Please connect the drive, then hit <enter> to try again, (p) to return." ; read choice 
                 if [[ $choice == "p" ]] ; then return 1 ; fi
                 else 
-                break
+                continue
                 fi
         done
 
@@ -21,9 +22,11 @@ if [[ $drive_fulcrum == "internal" ]] ; then
     docker_volume_mount="$HOME/parmanode/fulcrum_db"
     fi
 
-docker stop fulcrum >/dev/null 2>&1
-docker rm fulcrum >/dev/null 2>&1
-docker rmi fulcrum >/dev/null 2>&1
+log "fulcrum" "Docker Volume Mount set at $docker_volume_mount"
+
+docker stop fulcrum >/dev/null 2>&1 && log "fulcrum" "container stopped"
+docker rm fulcrum >/dev/null 2>&1 && log "fulcrum" "container removed"
+docker rmi fulcrum >/dev/null 2>&1 && log "fulcrum" "docker image deleted"
 
 docker run -d --name fulcrum \
                 -p 50002:50001 \
@@ -31,7 +34,7 @@ docker run -d --name fulcrum \
                 -p 50003:50003 \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
                 fulcrum \
-&& return 0
+&& log "fulcrum" "run command executed." && return 0
 
 return 1 
 }
