@@ -1,6 +1,6 @@
 function set_rpc_authentication {
 while true ; do
-echo "
+set_terminal ; echo "
 ########################################################################################
 
                            Bitcoin Core RPC Authentication
