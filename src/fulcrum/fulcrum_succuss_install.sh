@@ -1,5 +1,7 @@
 function fulcrum_success_install {
-    
+
+
+if [[ $OS == "Linux" ]] ; then
 set_terminal ; echo "
 ########################################################################################
     
@@ -11,5 +13,23 @@ set_terminal ; echo "
 ########################################################################################
 " && installed_config_add "fulcrum-end" && log "fulcrum" "install finished"
 enter_continue
-return 0 
+fi
+
+
+
+if [[ $OS == "Mac" ]] ; then
+set_terminal ; echo "
+########################################################################################
+    
+                                    SUCCESS !!!
+
+    Fulcrum can now be started from the Parmanode menu. I can begin syncing even
+    before Bitcoin has finished syncing, but it's probably better to wait for Bitcoin
+    to sync up first.
+
+########################################################################################
+" && installed_config_add "fulcrum-end" && log "fulcrum" "install finished"
+enter_continue
+fi
+
 }

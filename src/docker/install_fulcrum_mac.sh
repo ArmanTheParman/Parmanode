@@ -50,5 +50,7 @@ edit_user_pass_fulcrum_docker
 
 installed_config_add "fulcrum-end"
 
+fulcrum_success_install
+
 return 0
 }
