@@ -71,11 +71,11 @@ Latest:
 
                 git clone http://github.com/armantheparman/parmanode.git
         or
-                git clone git@github.com:armantheparman/parmandoe.git
+                git clone git@github.com:armantheparman/parmanode.git
 
         It will download a directory called "parmanode" to your working directory
 	Then cd parmanode, to change into that directory.
-	Then type './run_parmanode'
+	Then type './run_parmanode.sh'
 
 ## INSTRUCTIONS TO UPGRADE
 
