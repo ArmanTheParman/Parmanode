@@ -31,7 +31,7 @@ else
         echo "Starting Fulcrum within the running container."
 
         docker_exec_command
-        
+
         enter_continue
         return 0
         fi
