@@ -12,12 +12,17 @@ echo "
     here.
 
 
-          (up) Set username and password ...... (must be set if installing Fulcrum)
+     (up) Set Bitcoin username and password
+	      and copy to Fulcrum configuration ...... (must use password if
+                                                    installing Fulcrum)
 
-          (u)  Leave username and password unchanged
+     (u)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
-          (c)  Use cookie ..................... (default setting)
 
+     (c)  Use cookie ............................. (default setting for Bitcoin only.
+                                                    Won't work with Fulcrum.)
+	
+	 (p)  Exit this menu
 	
 
 	If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
@@ -26,7 +31,7 @@ echo "
 ########################################################################################
 
 "
-choose "xpq" ; exit_choice ; if [ $? = 1 ] ; then return 1 ; fi ; set_terminal
+choose "xpq" ; read choice
 
 case $choice in
 	up|UP|Up|uP)
@@ -34,9 +39,9 @@ case $choice in
 		echo "otherwise problems may arise.)
 	       	" 
 		read rpcuser
-		
 		while true ; do
 		set_terminal
+		echo "Username set"	
 		echo "Please enter an RPC password: (Do not use the characters: # \" or '"
 		echo "otherwise problems may arise.)
 	       	" 
@@ -48,35 +53,62 @@ case $choice in
 		if [[ $rpcpassword != $rpcpassword2 ]] ; then
 		       echo "Passwords do not match. Try again.
 		       "
-                   continue
+			   enter_continue ; continue 
 		else
-	               break
+	           echo "Password set"    
+			   enter_continue ; break
 		fi
 
 		done
+                set_rpc_authentication_update_conf_edits #defined below
 
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-				echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
-				echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
-				parmanode_conf_add "rpcuser=$rpcuser"
-				parmanode_conf_add "rpcpassword=$rpcpassword"	
-		break
+				add_userpass_to_fulcrum	
+
+	    continue	
 		;;
 
-	u|U) break ;;
-
+	u|U) 
+				add_userpass_to_fulcrum
+				;;
 	c)
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
+                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
+                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
 		;;	
+
+	p|P) break ;;
+	q|Q|Quit|QUIT) exit 0 ;;
 
 	*)
 		invalid
-		continue
 		;;	
 esac
 
 done
 return 0
+}
+
+function set_rpc_authentication_update_conf_edits {
+
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
+	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
+	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
+	parmanode_conf_add "rpcuser=$rpcuser"
+	parmanode_conf_add "rpcpassword=$rpcpassword"
+
+}
+
+function add_userpass_to_fulcrum {
+
+source $HOME/.parmanode/parmanode.conf
+
+	if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; fi
+
+	if [[ $OS == "Linux" ]] ; then
+					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
+					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
+					echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
+					echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
+					fi
+
 }
