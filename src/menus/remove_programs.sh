@@ -6,12 +6,12 @@ set_terminal
 echo "
 ########################################################################################
 
-                                  Remove Programs
+                                   Remove Programs
 
 
-                              (b)      Bitcoin Core
+                             (b)      Bitcoin Core
                                
-                              (f)      Fulcrum Server
+                             (f)      Fulcrum Server
 
 ########################################################################################
 

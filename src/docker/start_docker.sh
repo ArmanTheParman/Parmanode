@@ -1,5 +1,7 @@
 function start_docker {
-nohup open -a Docker >/dev/null 2>&1 & && log "docker" "docker open -a nohup" || { log "docker" "docker failed to open" && return 1 ; }
+
+( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
+|| log "docker" "docker failed to nohup open -a" 
 
 set_terminal ; echo "
 ########################################################################################
@@ -25,11 +27,24 @@ set_terminal ; echo "
     Only hit <enter> once you're sure Docker is running in the background, otherwise 
     hit (q) to quit or (p) to return to the menu.
 
-    For this choice, you may need to click the terminal window with the mouse for 
-    your keyboard input to register.
+    You may need to click the terminal window with the mouse for your keyboard input 
+    to register.
+########################################################################################
+    You can also request Parmanode to "kill" any Docker processes running in the 
+    background that may be causing Docker not to start properly. Use this function
+    at your own risk...
+
+                        yolo)   send kill SITINT signal to Docker
 ########################################################################################
 "
 choose "epq" ; read choice
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) return 0 ;; esac
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; yolo|YOLO) kill_docker ;; *) return 0 ;; esac
 
+}
+
+function kill_docker {
+for pid in $(pgrep docker)
+do 
+    kill -2 $pid
+done
 }
