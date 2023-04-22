@@ -30,7 +30,7 @@ Desktop Wallet directly to the node on the same computer.
 
 ## Software included
 
-### Bitcoin 24.0u
+### Bitcoin 24.01
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
