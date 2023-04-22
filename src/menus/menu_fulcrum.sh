@@ -70,8 +70,8 @@ fi
 if [[ $OS == "Mac" ]] ; then
     enter_continue
     set_terminal_wider
-    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log || \
-    echo "Error. Is the container running? Is Fulcrum running?" && enter_continue
+    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
+    enter_continue
     set_terminal
 fi
 continue ;;
