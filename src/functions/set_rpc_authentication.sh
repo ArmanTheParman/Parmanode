@@ -12,20 +12,19 @@ echo "
     here.
 
 
-     (up) Set Bitcoin username and password
-	      and copy to Fulcrum configuration ...... (must use password if
+    (up) Set Bitcoin username and password
+         and copy to Fulcrum configuration ...... (must use password if
                                                     installing Fulcrum)
 
-     (u)  Leave username and password unchanged ...(and add to Fulcrum configuration)
+    (u)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
 
-     (c)  Use cookie ............................. (default setting for Bitcoin only.
-                                                    Won't work with Fulcrum.)
-	
-	 (p)  Exit this menu
-	
+    (c)  Use cookie ............................. (default setting for Bitcoin only.
+                                                   Won't work with Fulcrum.) 
 
-	If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
+    (p)  Exit this menu
+
+    If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
 	those changes to take effect.
 
 ########################################################################################
