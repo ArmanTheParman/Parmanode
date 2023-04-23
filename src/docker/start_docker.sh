@@ -25,16 +25,15 @@ set_terminal "pink" ; echo "
 
 ########################################################################################
     Only hit <enter> once you're sure Docker is running in the background, otherwise 
-    hit (q) to quit or (p) to return to the menu.
-
-    You may need to click the terminal window with the mouse for your keyboard input 
-    to register.
+    hit (q) to quit or (p) to return to the menu. Answer the pop-up questions, and
+    wait to see \"Docker engine starting\", and when that's done, proceed by hitting
+    <enter> here.
 ########################################################################################
     You can also request Parmanode to "kill" any Docker processes running in the 
     background that may be causing Docker not to start properly. Use this function
     at your own risk...
 
-                        yolo)   send kill SIGINT signal to Docker
+                      yolo)   send kill SIGINT signal to Docker
 ########################################################################################
 "
 choose "epq" ; read choice

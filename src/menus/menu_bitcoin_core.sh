@@ -24,6 +24,8 @@ echo "
 
       (up)       Set, remove, or change RPC user/pass
 
+      (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
+
 
 ########################################################################################
 "
@@ -166,6 +168,11 @@ continue
 
 up)
 set_rpc_authentication
+continue
+;;
+
+ai|AI|aI|Ai)
+rpcallowip_add
 continue
 ;;
 
