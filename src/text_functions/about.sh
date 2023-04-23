@@ -5,7 +5,7 @@ set_terminal_wide ; echo "
                                 
                                               About Parmanode
             
-            Version:                2.2.1                
+            Version:                2.2.2                
 
             Websites:               www.parmanode.com  (under construction) 
                                     github.com/armantheparman/parmanode
