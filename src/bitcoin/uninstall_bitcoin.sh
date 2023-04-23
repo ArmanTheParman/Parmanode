@@ -34,10 +34,12 @@ Choose (y) or (n) then <enter>.
 read choice
 
 case $choice in
-    y | Y)
+    y|Y)
         break ;;
-    n | N)
+    n|N)
         return 0 ;;
+    q|Q|Quit|quit)
+        exit 0 ;;
     *)
         invalid ;;
 esac

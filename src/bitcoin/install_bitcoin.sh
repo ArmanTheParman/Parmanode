@@ -12,7 +12,7 @@ change_drive_selection
     # abort bitcoin installation if return 2 
     if [[ $? == 1 || $? == 2 ]] ; then return 1 ; fi
 
-prune_choice 
+prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. i
     # Use variable later for setting bitcoin.conf
