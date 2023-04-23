@@ -12,9 +12,11 @@ set_terminal ; echo "
     here.
 
 
+    (p)  Exit this menu
+
     (s) Set Bitcoin username and password
-         and copy to Fulcrum configuration ...... (must use password if
-                                                    installing Fulcrum)
+        and copy to Fulcrum configuration ....... (must use password if
+                                                   installing Fulcrum)
 
     (L)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
@@ -22,7 +24,6 @@ set_terminal ; echo "
     (c)  Use cookie ............................. (default setting for Bitcoin only.
                                                    Won't work with Fulcrum.) 
 
-    (p)  Exit this menu
 
     If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
 	those changes to take effect.
