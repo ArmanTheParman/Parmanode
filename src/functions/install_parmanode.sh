@@ -16,6 +16,7 @@ fi
 #Test for necessary functions
 sudo_check
 gpg_check
+curl_check
 make_dot_parmanode
 
 choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
