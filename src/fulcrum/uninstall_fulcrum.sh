@@ -38,13 +38,7 @@ source $HOME/.parmanode/parmanode.conf
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
     enter_continue ; log "fulcrum" "drive not mounted, fulcrum_db  not deleted during uninstall." ; }
-    case $OS in
-    Mac) 
-        rm -rf /Volumes/parmanode/fulcrum_db && log "fulcrum" "fulcrum_db removed from ext drive." ;;
-    Linux)
-        rm -rf /media/$(whoami)/parmanode/fulcrum_db || debug "failed to delete fulcrum_db."
-        ;;
-    esac
+    rm -rf /media/$(whoami)/parmanode/fulcrum_db || debug "failed to delete fulcrum_db."
     fi
 
 if [[ $drive_fulcrum == "internal" ]] ; then
