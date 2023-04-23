@@ -9,9 +9,9 @@ echo "
                                    Remove Programs
 
 
-                               (b)      Bitcoin Core
-
-							   (f)      Fulcrum Server
+                             (b)      Bitcoin Core
+                               
+                             (f)      Fulcrum Server
 
 ########################################################################################
 

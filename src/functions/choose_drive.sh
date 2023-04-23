@@ -18,9 +18,9 @@ echo "
 
     Please choose an option:
 
-                              (e) - Use an EXTERNAL drive
+                           (e) - Use an EXTERNAL drive
 
-                              (i) - Use an INTERNAL drive:
+                           (i) - Use an INTERNAL drive:
 
 ########################################################################################
 "

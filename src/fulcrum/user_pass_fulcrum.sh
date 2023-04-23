@@ -58,12 +58,8 @@ case $choice in
 
 		done #end while 1
 
-              if [[ $OS == "Linux" ]] ; then
-			    delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
-                delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
-				echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
-				echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
-				fi
+		add_userpass_to_fulcrum
+
 		break
 		;;
 

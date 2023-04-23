@@ -1,5 +1,5 @@
 ########################################################################################
-Version 2.1.1 - 20th April
+    Version 2.1.1 - 23th April
 ########################################################################################
 
                               #Notes to developers
@@ -67,4 +67,17 @@ BITCOIN MAC COMMPILED BINARIES
 
     Later, when that is cleared up, I will sign the binary with my gpg key, and 
     document the steps to reproduce it.
+
+DOCKER FULCRUM SHENANIGANARY
+
+    It's a shame Mac Fulcrum binaries are not available for download. I had a horrible 
+    time trying to compile them myself, and gave up. The alternative is to run Fulcrum
+    in a Linux Docker container on the Mac, which works fine.
+
+    Making edits to the fulcrum.conf file is a little tricky, if making it available
+    from a menu. The solution was to copy the parmanode repository into the container
+    when building the docker file. Then at the docker exec command, sourcing the file
+    containing the function to edit the conf file, followed by the function and 
+    parameters. It's a roundabout way, but it works.
+
 

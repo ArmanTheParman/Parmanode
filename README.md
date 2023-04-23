@@ -1,18 +1,18 @@
-# Parmanode 2.1.1 Plebian Cheese 
+# Parmanode 2.2.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
 
-Parmanode is a software package for home computers (Linux, Mac, and
-maybe one day, Windows). Support for Raspberry Pi 32 bit and 64 bit running 
-Linux OS has been added.
+Parmanode is Bitcoin and Electrum Server (Fulcrum) installation wizard 
+software for home desktop computers. More features (programs and educational
+material) will be added as development continues.
 
-Parmanode comes with an installation wizard so that non-technical users have
-the ability to download and verify Bitcoin Core and sync using an external 
+Parmanode is designed for non-technical users giving them the ability to 
+download and verify Bitcoin Core (and Fulcrum) and sync using an external 
 or internal drive, and also have configuration options presented to them
-with automation. No manual bitcoin.conf file editing will be required.
+with automation. No manual configuration file editing will be required.
 
-All people need to do is read the menu options carefully, and respond to
+Users only need to read the menu options carefully, and respond to
 the questions - no command line interaction is required. For example, 
 bitcoin-cli commands are available in a menu, and pruning can be activated 
 from menu options.
@@ -20,13 +20,15 @@ from menu options.
 The software also comes with helpful information, including links to various
 articles on my website, armantheparman.com, so that Bitcoiners keep learning
 more about Bitcoin and how to be safely self-sovereign. Information on how 
-to connect various wallets to the node is provided in the menus. Much effort
-has not been made for this aspect of the software in the first version; more
-will be done later.
+to connect various wallets to the node is provided in the menus. 
 
 The most basic usage would be an internal drive to sync, running the latest
 version of Bitcoin Core, and connecting Sparrow Bitcoin Wallet or Specter
 Desktop Wallet directly to the node on the same computer.
+
+While I tried to avoid it, for now, Mac users who wish to use Fulcrum will
+need to run it in a Docker container. It has been made very easy, just 
+follow the wizard menu options.
 
 ## Software included
 
@@ -59,7 +61,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
                /|--- .bitcoin ----|
                 |--- fulcrum_db---|
 
-### Fulcrum v1.9.1 for Linux x86_64 and ARM64 (Pi) only. Not Mac (yet).
+### Fulcrum v1.9.1 
 
 ## HOW TO RUN
 
