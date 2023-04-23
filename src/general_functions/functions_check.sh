@@ -161,14 +161,15 @@ set_terminal ; echo "
 "
 choose "xpq" ; read
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
-i|I)
-if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; fi 
-if [[ $OS == "Mac" ]] ; then brew install curl ; fi
-;;
 
-*) invalid ;; esac 
+    i|I)
+    if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; fi 
+    if [[ $OS == "Mac" ]] ; then brew install curl ; fi
+    ;;
+
+    *) invalid ;; 
+esac 
 done
-fi
 fi
 
 return 0
