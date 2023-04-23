@@ -7,7 +7,7 @@ sleep 2
 
 if [[ $OS == "Linux" ]] ; then
 
-        for i in $( sudo lsblk -nrpo NAME /dev/$disk ) ; do sudo umount >/dev/null 2>&1 ; done 
+        for i in $( sudo lsblk -nrpo NAME /dev/$disk ) ; do sudo umount $i >/dev/null 2>&1 ; done 
         
         #redunant but harmless...
         sudo umount /dev/$disk >/dev/null 2>&1 && sleep 2 
@@ -20,5 +20,4 @@ if [[ $OS == "Mac" ]] ; then
         diskutil unmountDisk $disk && return 0
         return 0
     fi
-
 }
