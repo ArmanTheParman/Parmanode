@@ -1,4 +1,4 @@
-function menu_bitcoin_core {
+nction menu_bitcoin_core {
 while true
 do
 set_terminal
@@ -34,46 +34,11 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in
 
 start|START|Start)
-if [[ $OS == "Linux" ]] ; then 
-echo "
-########################################################################################
-    
-    Bitcoind should have been configured to restart automatically if your 
-    computer restarts. However, the restart may fail, which sometimes happens if
-    you have an external drive.
-
-########################################################################################
-"
-enter_continue
-mount_drive ; echo "Bitcoin will start in a moment..."
 run_bitcoind
-echo "If there are not printed errors, Bitcoin has started." ; enter_continue
-continue
-fi
-
-if [[ $OS == "Mac" ]] ; then
-/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
-echo "Bitcoin has started." ; enter_continue 
-continue
-
-fi
 ;;
 
 stop|STOP|Stop)
-if [[ $OS == "Linux" ]] ; then 
-set_terminal ; echo "Please wait a moment for Bitcoin to stop."
-sudo systemctl stop bitcoind.service
-enter_continue
-continue 
-fi
-
-if [[ $OS == "Mac" ]] ; then
-set_terminal ; echo "Please wait a moment for Bitcoin to stop."
-/usr/local/bin/bitcoin-cli stop
-enter_continue
-continue
-fi
-
+stop_bitcoind
 ;;
 
 c|C)

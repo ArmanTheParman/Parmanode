@@ -65,6 +65,18 @@ return 0
 }
 
 function set_rpc_authentication_update_conf_edits {
+	
+	set_terminal ; echo "
+########################################################################################
+
+    Bitcoin must be stopped before changing passwords, otherwise you won't be 
+	permitted to stop Bitcoin later (the starting Bitcoin password won't match the
+	stopping Bitcoin pasword).
+
+########################################################################################
+"
+enter_continue
+stop_bitcoind
 
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
@@ -72,6 +84,8 @@ function set_rpc_authentication_update_conf_edits {
 	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
 	parmanode_conf_add "rpcuser=$rpcuser"
 	parmanode_conf_add "rpcpassword=$rpcpassword"
+
+run_bitcoind
 
 }
 
