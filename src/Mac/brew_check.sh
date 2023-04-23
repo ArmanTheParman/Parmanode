@@ -2,16 +2,16 @@ function brew_check {
 
 if command -v brew >/dev/null 2>&1
     then
+    log "parmanode" "Brew already installed."
 	return 0
     else
+    log "parmanode" "Brew not yet installed."
 while true ; do
 set_terminal
 echo "
 ########################################################################################
 
-
                                      Homebrew
-
 
    In order to install certain dependencies (these are fragments of code that Bitcoin
    needs to function) Homebrew is needed. Homebrew is a package manager (a program
@@ -24,9 +24,9 @@ echo "
    sure your computer doesn't go into hybernation during the process to save power. It
    may take around 30 minutes, speaking from experience (I have an old Mac).
    
-				i)    Install Homebrew 
+                            i)    Install Homebrew 
 				
-				s)    Skip
+                            s)    Skip
 
 ########################################################################################
 "
@@ -37,13 +37,14 @@ if [[ $choice == "s" ]] ; then return 0 ; fi
 if [[ $choice == "i" ]] ; then break ; fi
 invalid
 done
-
+log "parmanode" "Installing homebrew..."
 # User chose <enter>, while breaks to here:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && return 0
 
 set_terminal
-echo "Download using curl failed. Unknown error. You should try again. 
+echo "Download homebrew failed. Unknown error. You should try again. 
 Proceed with caution."
+log "parmanode" "Install homebrew failed"
 return 0
 fi
 }
