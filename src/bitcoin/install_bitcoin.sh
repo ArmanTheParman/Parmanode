@@ -12,6 +12,9 @@ change_drive_selection \
     # User has choice to change drive selection made when first installing Parmanode.
     # abort bitcoin installation if return 2 
     if [[ $? == 1 || $? == 2 ]] ; then return 1 ; fi
+    #Just in case
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+
 
 prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
     # set $prune_value. Doing this now as it is related to 
@@ -22,6 +25,8 @@ make_bitcoin_directories
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
+    #Just in case
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
 # Download bitcoin software
     if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
@@ -57,6 +62,10 @@ echo "
 
 ########################################################################################
 " && installed_config_add "bitcoin-end"
+
+#Just in case
+    sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+
 enter_continue
 return 0 
 fi
@@ -80,6 +89,9 @@ echo "
 
 ########################################################################################
 " && installed_config_add "bitcoin-end"
+    #Just in case
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >dev/null 2>&1
+
 enter_continue
 return 0 
 fi
