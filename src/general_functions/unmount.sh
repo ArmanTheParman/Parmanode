@@ -7,28 +7,18 @@ sleep 2
 
 if [[ $OS == "Linux" ]] ; then
 
-        for i in $(sudo lsblk -nrpo NAME /dev/sdb) ; do sudo umount >/dev/null 2>&1 && return 0 ; done 
-
+        for i in $( sudo lsblk -nrpo NAME /dev/$disk ) ; do sudo umount >/dev/null 2>&1 ; done 
+        
         #redunant but harmless...
-        sudo umount /dev/$disk >/dev/null 2>&1 && sleep 2 && return 0 
-
-
-    echo "Encountered unexpected error when unmounting drive. Aborting."
-    enter_continue
-    exit 1
+        sudo umount /dev/$disk >/dev/null 2>&1 && sleep 2 
+        return 0
     fi
 
 
 if [[ $OS == "Mac" ]] ; then
 
         diskutil unmountDisk $disk && return 0
-        sleep 2
-        diskutil unmountDisk $disk && return 0
-
-    echo "Encountered unexpected error when unmounting drive. Aborting."
-    enter_continue
-    exit 1
+        return 0
     fi
 
-debug "function failed" ; exit 1
 }
