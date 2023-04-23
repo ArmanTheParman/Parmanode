@@ -19,6 +19,8 @@ echo "
       (fc)       Inspect and edit fulcrum.conf file 
 
       (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
+    
+      (wizard)   Connect this Fulcrum server to Bitcoin on a different computer
 
 
 ########################################################################################
@@ -122,6 +124,10 @@ return 0
 
 q|Q|Quit|QUIT)
 exit 0
+;;
+
+wizard|Wizard|W|w)
+fulcrum_to_remote
 ;;
 
 *)

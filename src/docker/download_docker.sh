@@ -28,7 +28,8 @@ if [[ -f $HOME/parmanode/docker/Docker.dmg ]] ; then
     return 1 ; }
     sleep 3  
     # install application to folder
-    cp -r /Volumes/Docker/Docker.app /Applications && log "docker" "docker app copied to applications"
+    cp -r /Volumes/Docker/Docker.app /Applications && log "docker" "docker app copied to applications" \
+    && diskutil unmount /Volumes/Docker
 else
     log "docker" "docker.dmg does not exist, can't attach as volume"
 fi

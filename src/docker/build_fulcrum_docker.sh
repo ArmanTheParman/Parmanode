@@ -16,6 +16,7 @@ enter_continue
 { docker build -t fulcrum ./ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
 || { log "fulcrum" "fulcrum docker build failed" && return 1 ; }
 
+while true ; do
 set_terminal ; echo "
 ########################################################################################
 
@@ -38,6 +39,7 @@ set_terminal ; echo "
 ########################################################################################                    
 "
 choose "xpq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; l|L) nano $HOME/.parmanode/docker_build.log ;; *) set_terminal ;; esac
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; l|L) nano $HOME/.parmanode/docker_build.log ;; *) set_terminal ; break ;; esac
+done
 return 0
 }
