@@ -141,3 +141,38 @@ fi #end if Mac
 done #end while 1
 return 0
 }
+
+
+function curl_check {
+if [[ -z $(command -v curl) ]] ; then
+while true ; do
+set_terminal ; echo "
+########################################################################################
+
+    The program curl needs to be installed on your computer for Parmanode to work.
+    It's a small command line program that is used to download links from the 
+    internet.
+    
+                          i)          Install curl
+
+                          q)          Quit
+
+########################################################################################
+"
+choose "xpq" ; read
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
+i|I)
+if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; fi 
+if [[ $OS == "Mac" ]] ; then brew install curl ; fi
+;;
+
+*) invalid ;; esac 
+done
+fi
+fi
+
+return 0
+}
+
+
+
