@@ -85,7 +85,7 @@ It will download a directory called "parmanode" to your working directory. Then 
 
 ## INSTRUCTIONS TO UPGRADE
 
-Simply download a new version and run it. You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
+Simply download a new version and run it. You can delete the old copy but do not touch any of the directories or files that Parmanode has made. If you are to download to exactly the same directory, then you'll have to delete the old copy of Parmanode first, or delete it.
 
 You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version of Bitcoin is offered by Parmanode, the software will ask what you want to do.
 
