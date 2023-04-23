@@ -12,11 +12,11 @@ set_terminal ; echo "
     here.
 
 
-    (up) Set Bitcoin username and password
+    (s) Set Bitcoin username and password
          and copy to Fulcrum configuration ...... (must use password if
                                                     installing Fulcrum)
 
-    (u)  Leave username and password unchanged ...(and add to Fulcrum configuration)
+    (L)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
 
     (c)  Use cookie ............................. (default setting for Bitcoin only.
@@ -33,14 +33,16 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 
 case $choice in
-	up|UP|Up|uP)
+    s|S)
+	    set_terminal
 		echo "Please enter an RPC username: (Do not use the characters: # \" or '"
 		echo "otherwise problems may arise.)
 	       	" 
 		read rpcuser
 		while true ; do
 		set_terminal
-		echo "Username set"	
+		echo "Username set
+		"	
 		echo "Please enter an RPC password: (Do not use the characters: # \" or '"
 		echo "otherwise problems may arise.)
 	       	" 
@@ -66,7 +68,7 @@ case $choice in
 	    continue	
 		;;
 
-	u|U) 
+	l|L) 
 				add_userpass_to_fulcrum
 				;;
 	c)

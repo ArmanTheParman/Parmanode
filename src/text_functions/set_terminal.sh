@@ -12,7 +12,6 @@ echo -e "\033[38;2;255;145;0m" #Orange colour setting
 if [[ $colour = "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
 
 tput clear
-tput cup 0 0
 return 0
 }
 
