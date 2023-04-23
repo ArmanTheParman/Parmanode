@@ -7,7 +7,8 @@ install_check "bitcoin-start"
     return_value="$?"
     if [[ $return_value = "1" ]] ; then return 1 ; fi       #Bitcoin already installed
 
-change_drive_selection
+change_drive_selection \
+    && log "bitcoin" "install - change drive selection function exit"
     # User has choice to change drive selection made when first installing Parmanode.
     # abort bitcoin installation if return 2 
     if [[ $? == 1 || $? == 2 ]] ; then return 1 ; fi
