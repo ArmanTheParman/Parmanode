@@ -159,7 +159,7 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read
+choose "xpq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)
