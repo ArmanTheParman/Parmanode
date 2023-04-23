@@ -14,9 +14,9 @@ echo "
     not have to be on the same drive as the Bitcoin data. It will take around 100 Gb
     of data.
                           
-                              e)     external drive
+                               e)     External drive
 
-                              i)     internal drive   
+                               i)     Internal drive   
 
 ########################################################################################
 "

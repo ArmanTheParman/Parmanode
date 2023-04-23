@@ -8,9 +8,9 @@ echo "
     \"#FreeRoss.org - Sign the petition. \" will be used to write over and erase
     the disk. 
     
-    Please note, this is not a full forensic wipe. If you want that,
-    you must learn to use the dd command. Be aware the execution of the command
-    can take days, which is why I decided to omit that option from Parmanode.
+    Please note, this is not a full forensic wipe. If you want that, you must learn 
+    to use the dd command. Be aware the execution of the command can take days, which 
+    is why I decided to omit that option from Parmanode.
 
 	       <enter>      Proceed
 

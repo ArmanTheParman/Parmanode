@@ -1,5 +1,4 @@
 function install_fulcrum {
-
 set_terminal
 
 install_check "fulcrum-start"

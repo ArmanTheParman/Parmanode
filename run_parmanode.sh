@@ -1,5 +1,6 @@
 #!/bin/bash
-
+    original_dir=$(pwd)
+	
 # source all the  modules.
 
 	for file in ./src/**/*.sh

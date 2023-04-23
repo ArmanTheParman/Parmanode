@@ -107,24 +107,19 @@ Hit <enter> to go back to the menu."
     continue
     ;;
 gtosi)  
-    set_terminal
-    echo -n "
+    set_terminal ; echo "
 ########################################################################################    
 
-        Warning, this command takes a minute or two...
+         Warning, this command takes a minute or two...
 
-        It provides information about every UTXO on the blockchain. 
+         It provides information about every UTXO on the blockchain. 
 
-        What is a UTXO?  - see: " 
-printf "\e]8;;%s\a%s\e]8;;\a" "https://armantheparman.com/utxo" "armantheparman.com: What is a UTXO?"
-echo "
-
+         What is a UTXO?  - see: https://armantheparman.com/utxo
 
 ########################################################################################
-
-waiting...
-
 "
+please_wait
+
     /usr/local/bin/bitcoin-cli gettxoutsetinfo
     echo "
 Hit <enter> to go back to the menu."
