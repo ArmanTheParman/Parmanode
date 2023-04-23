@@ -42,13 +42,13 @@ if [[ $drive_fulcrum == "external" ]] ; then
     fi
 
 if [[ $drive_fulcrum == "internal" ]] ; then
-    rm -rf $HOME/parmanode/fulcrum_db
+    rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
     fi
 
-rm -rf $HOME/parmanode/fulcrum
+rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcrum direcctory removed from int drive."
 
-sudo rm /usr/local/bin/Fulcrum* 2>/dev/null
-sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null
+sudo rm /usr/local/bin/Fulcrum* 2>/dev/null && log "fulcrum" "Fulcrum binary deleted from /usr/local/bin."
+sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null && log "fulcrum" "service file deteleted."
 
 installed_config_remove "fulcrum"
 log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }

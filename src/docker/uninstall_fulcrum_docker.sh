@@ -33,10 +33,12 @@ if [[ $drive_fulcrum == "external" ]] ; then
 rm -rf /Volumes/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from ext drive."
 
 if [[ $drive_fulcrum == "internal" ]] ; then
-    rm -rf $HOME/parmanode/fulcrum_db
+    rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
+
     fi
 
-rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 
+rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcrum direcctory removed from int drive."
+
 
 stop_and_remove_docker_containers_and_images_fulcrum
 
