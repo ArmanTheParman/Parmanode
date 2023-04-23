@@ -121,13 +121,16 @@ continue
 p|P)
 return 0
 ;;
-
+Fulcrum Docker container is not running
 q|Q|Quit|QUIT)
 exit 0
 ;;
 
 wizard|Wizard|W|w)
-fulcrum_to_remote
+if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
+if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
+enter_continue
+fi
 ;;
 
 *)
