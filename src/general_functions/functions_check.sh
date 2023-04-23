@@ -163,8 +163,8 @@ choose "xpq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)
-    if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; fi 
-    if [[ $OS == "Mac" ]] ; then brew install curl ; fi
+    if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; break ; fi 
+    if [[ $OS == "Mac" ]] ; then brew install curl ; break ; fi
     ;;
 
     *) invalid ;; 
