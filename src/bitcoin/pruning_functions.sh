@@ -24,23 +24,23 @@ echo "
     space for the minimum prune value.
 
 
-                                p) I want to prune
+                              prune)     I want to prune
 
-                                s) I enjoy shitcoining
+                              s)         I enjoy shitcoining
 
-                                n) No pruning
+                              n)         No pruning
 
 
 ########################################################################################
 "
-choose "xq"
+choose "xpq"
 
 read choice
 set_terminal
 
         case $choice in
 
-        p|P)
+        prune|Prune|PRUNE)
             set_the_prune           #function definition later in this file. "prune_value" variable gets set.
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
@@ -56,6 +56,9 @@ set_terminal
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
             
+        p|P)
+            return 1
+            ;;
         q|Q|quit|QUIT)
             exit 0
             ;;
