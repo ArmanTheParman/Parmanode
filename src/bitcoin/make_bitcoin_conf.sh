@@ -2,7 +2,7 @@ function make_bitcoin_conf {
 #Parmanode default config settings. Can be changed.
 #Create a bitcoin.conf file in data directory.
 #Overrides any existing file named bitcoin.conf
-set_terminal``
+set_terminal
 
 
 if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
@@ -17,7 +17,7 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 		done
 	fi
 
-echo "
+{ echo "
 server=1
 txindex=1
 blockfilterindex=1
@@ -27,7 +27,9 @@ rpcport=8332
 rpcbind=127.0.0.1
 rpcbind=172.17.0.2
 rpcallowip=127.0.0.1
-rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf
+rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
+|| log "bitcoin" "bitcoin conf failed"
+
 
 apply_prune_bitcoin_conf
 

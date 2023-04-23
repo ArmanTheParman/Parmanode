@@ -25,5 +25,6 @@ then
 	echo "blockfilterindex=1" >> $HOME/.bitcoin/bitcoin.conf
 fi
 
+log "bitcoin" "end of apply_prune_bitcoin_conf function"
 return 0
 }

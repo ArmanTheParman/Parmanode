@@ -27,7 +27,7 @@ make_bitcoin_directories
     if [[ $OS == "Mac" ]] ; then download_bitcoin_mac ; fi
 
 #setup bitcoin.conf
-    make_bitcoin_conf
+make_bitcoin_conf
         if  [ $? -ne 0 ]
             then return 1
         fi
