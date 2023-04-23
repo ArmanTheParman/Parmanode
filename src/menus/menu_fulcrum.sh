@@ -121,7 +121,7 @@ continue
 p|P)
 return 0
 ;;
-Fulcrum Docker container is not running
+
 q|Q|Quit|QUIT)
 exit 0
 ;;
