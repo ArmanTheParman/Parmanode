@@ -56,9 +56,5 @@ RUN find /home/parman/parmanode/temp -type f -exec cp {} /home/parman/parmanode/
 USER root
 RUN rm -rf /home/parman/parmanode/temp
 #make all functions available to "docker exec"
-RUN echo 'for file in /home/parman/parmanode/src/*.sh ; do . $file ; done' >> $HOME/.bashrc 
 USER parman
-RUN echo 'for file in /home/parman/parmanode/src/*.sh ; do . $file ; done' >> $HOME/.bashrc 
-
-
 CMD tail -f /dev/null 

@@ -1,4 +1,12 @@
-Version 2.1.1 beta
+Version 2.2.0
+    - Fulcrum for Mac added (runs in Docker container) 
+    - Added functionality; Connect Fulcrum server to Bitcoin on a different computer
+    - User can modify user/pass in Bitcoin and have Fulcrum copy it to fulcrum.conf
+    - Added menu option in Bitcoin; add rpcallowip values to bitcoin.conf
+    - Made sure fstab doesn't have multiple entries with repeated drive formatting
+    - Added a logging function
+    - Various bug fixes
+Version 2.1.1 
     - User/pass automatically copied to fulcrum.conf from bitcoin.conf if it exists.
     - set user/pass menus modified
 Version 2.1.0
