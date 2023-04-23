@@ -1,3 +1,5 @@
+Version 2.2.1
+    - mount bug fixed for Linux
 Version 2.2.0
     - Fulcrum for Mac added (runs in Docker container) 
     - Added functionality; Connect Fulcrum server to Bitcoin on a different computer
