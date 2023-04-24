@@ -1,4 +1,4 @@
-# Parmanode 2.2.4 Plebian Cheese 
+# Parmanode 2.2.5 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
@@ -32,6 +32,8 @@ follow the wizard menu options.
 
 ## Software included
 
+### Fulcrum v1.9.1 
+
 ### Bitcoin 24.01
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
@@ -60,8 +62,6 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
                /|--- .bitcoin ----|
                 |--- fulcrum_db---|
-
-### Fulcrum v1.9.1 
 
 ## HOW TO RUN
 
