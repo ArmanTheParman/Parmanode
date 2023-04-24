@@ -5,15 +5,19 @@ set_terminal
 install_check "bitcoin-start" 
     #first check if Bitcoin has been installed
     return_value="$?"
-    if [[ $return_value = "1" ]] ; then return 1 ; fi       #Bitcoin already installed
+    if [[ $return_value = "1" ]] ; then
+        log "bitcoin" "install_check return 1, exit" ; return 1 ; fi      
 
 change_drive_selection \
     && log "bitcoin" "install - change drive selection function exit"
     # User has choice to change drive selection made when first installing Parmanode.
     # abort bitcoin installation if return 2 
-    if [[ $? == 1 || $? == 2 ]] ; then return 1 ; fi
-    #Just in case
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+    if [[ $? == 1 || $? == 2 ]] ; then 
+    log "bitcoin" "change_drive_selection return 1 or 2; exit" ; return 1 ; fi
+
+#Just in case
+    sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
+        && "bitcoin" "chown applied in install_bitcoin function"
 
 
 prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
