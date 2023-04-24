@@ -1,10 +1,7 @@
+Version 2.2.5
+    - Drive ID choice less restrictive
 Version 2.2.4
-    - smol bug fixed
-Version 2.2.3
-    - smol bug fixed
-Version 2.2.2
-    - smol bug fixed
-Version 2.2.1
+    - smol bugs fixed
     - mount bug fixed for Linux
 Version 2.2.0
     - Fulcrum for Mac added (runs in Docker container) 
