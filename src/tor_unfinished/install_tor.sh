@@ -10,4 +10,16 @@ set_terminal ; echo "
 
 ########################################################################################    
 "
+choose "epq" ; read choice 
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
+
+set_terminal
+
+if [[ $OS == "Linux" ]] ; then sudo apt-get install tor -y ; fi
+if [[ $OS == "Mac" ]] ; then brew install tor ; fi
+
+
+
+
+
 }
