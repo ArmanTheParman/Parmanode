@@ -10,13 +10,13 @@ echo "
     If you skip formatting, make sure there is enough free capacity on the drive 
     before running Bitcoin.
                 
-                         (y)     format drive
+                         (y)     Format drive
 
-                         (s)     skip formatting
+                         (s)     Skip formatting
     
     If skipping, make sure your drive is formatted and mounts to: 
 			 
-	                 /media/$(whoami)/parmanode
+	                      /media/$(whoami)/parmanode
     
 ########################################################################################
 
