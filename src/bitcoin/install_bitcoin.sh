@@ -17,7 +17,8 @@ change_drive_selection \
 
 #Just in case
     sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
-        && "bitcoin" "chown applied in install_bitcoin function"
+        && log "bitcoin" "chown applied in install_bitcoin function" \
+        || log "bitcoin" "unable to execute chown in intstall_bitcoin function"
 
 
 prune_choice ; if [ $? == 1 ] ; then return 1 ; fi

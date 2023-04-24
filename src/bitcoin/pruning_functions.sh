@@ -41,6 +41,7 @@ set_terminal
         case $choice in
 
         prune|Prune|PRUNE)
+            log "bitcoin" "user chose to prune"
             set_the_prune           #function definition later in this file. "prune_value" variable gets set.
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
@@ -52,6 +53,7 @@ set_terminal
             ;;
         
         n|N|No|NO|no)
+            log "bitcoin" "user chose no pruning"
             prune_value="0"
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
