@@ -15,6 +15,8 @@ echo "
 
                      (f)        Fulcrum (an Electrum Server)
 
+                     (t)        Tor [NOT READY YET]
+
          Not yet avaiable...                        
 
                      (m)        Mempool.Space
@@ -30,8 +32,6 @@ echo "
                      (th)       ThunderHub
 
                      (lh)       LND Hub
-
-                     (t)        Tor 
 
 ########################################################################################
 
@@ -52,6 +52,10 @@ case $choice in
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac ; fi
        return 0 
        ;;
+    
+    t|T|tor|Tor)
+       install_tor 
+       return 0 ;;
 
     q|Q|quit|QUIT)
         exit 0

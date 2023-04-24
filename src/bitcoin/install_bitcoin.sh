@@ -41,10 +41,12 @@ log "bitcoin" "make_bitcoin_directories function..." && \
             log "bitcoin" "ownership statement: $statement" ; fi
 
 # Download bitcoin software
-    if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
-    if [[ $OS == "Mac" ]] ; then download_bitcoin_mac ; fi
+
+    if [[ $OS == "Linux" ]] ; then log "bitcoin" "download function Linux..." && download_bitcoin_linux ; fi
+    if [[ $OS == "Mac" ]] ; then log "bitcoin" "download function Mac..." && download_bitcoin_mac ; fi
 
 #setup bitcoin.conf
+log "bitcoin" "make_bitcoin_conf function ..."
 make_bitcoin_conf
         if  [ $? -ne 0 ]
             then return 1
