@@ -21,6 +21,7 @@ fi
 
 # make config file
 echo "
+fast-sync = 1000
 datadir = $datadir
 bitcoind = 127.0.0.1:8332
 ssl = 0.0.0.0:50002
