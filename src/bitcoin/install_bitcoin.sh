@@ -16,22 +16,29 @@ change_drive_selection \
     log "bitcoin" "change_drive_selection return 1 or 2; exit" ; return 1 ; fi
 
 #Just in case
-    sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
+    if [[ $OS == "Linux" && $drive == "external" ]] ; then
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
         && log "bitcoin" "chown applied in install_bitcoin function" \
-        || log "bitcoin" "unable to execute chown in intstall_bitcoin function"
+        || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
 
 
-prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
+log "bitcoin" "prune choice function..." && \
+    prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. i
     # Use variable later for setting bitcoin.conf
 
-make_bitcoin_directories 
+log "bitcoin" "make_bitcoin_directories function..." && \
+    make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
     #Just in case
-            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+            if [[ $OS == "Linux" && $drive == "external" ]] ; then
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 && \
+            statement=$(ls -dlah /media/$(whoami)/parmanode) && \
+            log "bitcoin" "bitcoin chown run again" && \ 
+            log "bitcoin" "ownership statement: $statement" ; fi
 
 # Download bitcoin software
     if [[ $OS == "Linux" ]] ; then download_bitcoin_linux ; fi
