@@ -19,10 +19,13 @@ fi #end OS choice and ID prompt
 read disk
 
     if [[ $disk == "sda" || $disk == "disk0" ]] ; then #OS considered
-        echo "You must be crazy. Parmanode refuses to format the drive that runs your operating system.
-        " 
-        read "Hit <enter> to go back."
-        continue 
+        echo "This could be a system drive. Be careful and check. If you're sure, then"
+        echo "type (yolo) and hit <enter>, or (x) to try again, (p) to return, (q) to quit."
+        echo ""
+        read choice
+        case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
+        yolo|Yolo|YOLO) true ;; x|X) continue ;; *) invalid ; continue ;; 
+        esac
     fi
 
 case $OS in
@@ -58,20 +61,21 @@ read confirm
         echo "
 ########################################################################################
 
-    Your entry does not match the pattern "sd" followed by a letter.
+    Your entry does not match the pattern "sd" followed by a letter, which is the
+    convention for SSD drives (you really should be using one of those, or something
+    better).
 
-    This requirement is a precaution. If you have a non-standard drive, you 
-    may have a name with a different pattern. You can override this requirement
-    if you are sure you know what you are doing. 
+    If you have a non-standard drive, you may have a name with a different pattern. 
+    You can continue if you are sure you know what you are doing. 
 
 ########################################################################################
 
-Hit <enter> to abort, or type "yolo" to destroy the drive."
+Hit <enter> to abort, or type "yolo" to proceed."
 
 read choice
 
         if [[ $choice == "yolo" ]] ; then return 0 ; fi
-        if [[ $choice == "" ]] ; then exit 1 ; fi
+        if [[ $choice == "" ]] ; then return 1 ; fi
         invalid 
         continue
     fi #regex fi
@@ -120,7 +124,7 @@ read confirm
 Hit <enter> to abort, or type "yolo" to format the drive."
 
         read choice
-        if [[ $choice == "yolo" ]] ; then return 0 ; else exit 0 ; fi
+        if [[ $choice == "yolo" ]] ; then return 0 ; else return 1 ; fi
     fi #regex fi ending
 ;;
 esac # end case Linux vs Mac
