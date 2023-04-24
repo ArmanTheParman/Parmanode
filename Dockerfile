@@ -3,14 +3,14 @@
 
 FROM debian 
 RUN apt-get update
-RUN apt-get install -y wget gpg sudo procps vim nano systemd 
+RUN apt-get install -y wget gpg sudo procps vim nano systemd curl
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
-USER parman
 
+USER parman
 
 RUN mkdir -p /home/parman/parmanode/fulcrum
 RUN mkdir -p /home/parman/parmanode/fulcrum_db
