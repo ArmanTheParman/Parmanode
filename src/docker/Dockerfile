@@ -49,7 +49,7 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "fast-sync = 2000" \
 && echo "peering = false" >> fulcrum.conf
  
-get necessary scripts within container.
+#get necessary scripts within container.
 RUN mkdir -p /home/parman/parmanode/temp
 RUN mkdir -p /home/parman/parmanode/src
 COPY ./src/ /home/parman/parmanode/temp
