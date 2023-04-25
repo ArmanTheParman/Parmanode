@@ -39,3 +39,6 @@ RUN cd ~/.nbxplorer/Main
 #install BTCpayserver
 RUN cd ~/source && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main && touch ~/.btcpayserver/Main/settings.config
+
+
+CMD tail -f /dev/null
