@@ -23,13 +23,29 @@ fi
 }
 
 ########################################################################################
-function unable_install_docker_linux }
-set_terminal ; echo "
-########################################################################################
-    Parmanode was unable to match your OS to an available Docker installation. Please
-    manually install Docker yourself, then come back to Parmanode. Next time, choose
-    to skip the Docker installation and proceed. 
-########################################################################################
+function unable_install_docker_linux {
+set_terminal_wider ; echo "
+###########################################################################################################
+
+    Parmanode was unable to match your OS to an available Docker installation. Please manually install 
+    Docker yourself, then come back to Parmanode. Next time, choose to skip the Docker installation and 
+    proceed. 
+
+    You can try running this command:
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+    ... although it is likely to not work. You would need to update your source list file. Instructions
+    are here:
+
+                https://docs.docker.com/engine/install/ubuntu/#install-from-a-package
+
+    The tricky part is making sure the command suggest locates a file correctly. The links may not be
+    kept up to date, so try the command, but tinker and manually edit the file so it points to the right
+    download (if needed).
+dd
+
+###########################################################################################################
 "
 enter_continue ; return 1 
 }
