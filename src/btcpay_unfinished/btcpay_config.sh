@@ -1,0 +1,1 @@
+located in $HOME/.btcpayserver/
