@@ -22,9 +22,8 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 # Install postgres and make databases
 RUN apt install postgresql postgresql-contrib -y 
 USER postgres
-RUN ./src/btcpay/postgress_script.sh
-RUN createdb -O parman btcpayserver
-RUN createdb -O parman nbxplorer
+COPY postgres_script.sh /usr/local/bin
+RUN /usr/local/bin/postgres_script.sh
 
 USER parman
 
@@ -40,5 +39,4 @@ RUN mkdir -p ~/.btcpayserver/Main
 EXPOSE 49392
 EXPOSE 8080
 
-CMD tail -f /dev/nuoll
-ENTRYPOINT [ "pg_ctlcluster 13 main start" ]
+CMD tail -f /dev/null
