@@ -19,10 +19,12 @@ RUN cd /home/parman/Downloads && wget https://packages.microsoft.com/config/ubun
 USER root
 RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
 
-# Install postgres
+# Install postgres and make databases
 RUN apt install postgresql postgresql-contrib -y 
 USER postgres
 RUN ./src/btcpay/postgress_script.sh
+RUN createdb -O parman btcpayserver
+RUN createdb -O parman nbxplorer
 
 USER parman
 
@@ -39,3 +41,4 @@ EXPOSE 49392
 EXPOSE 8080
 
 CMD tail -f /dev/nuoll
+ENTRYPOINT [ "pg_ctlcluster 13 main start" ]

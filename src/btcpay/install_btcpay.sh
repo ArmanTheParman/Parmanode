@@ -91,8 +91,8 @@ log "nbxplorer" "end nbxplorer_config" && return 0
 }
 
 function create_pg_database { #probably need to runa from inside the container
-#info...
-postgres@68504571ad77:~$ pg_ctlcluster 13 main start
+#info..
+
 
 #create postgres user
     sudo -i -u postgres
