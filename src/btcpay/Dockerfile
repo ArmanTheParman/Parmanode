@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 RUN apt-get update
-RUN apt-get install -y wget gpg sudo procps vim nano systemd curl git
+RUN apt-get install -y wget gpg sudo procps vim nano systemd curl git expect
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -21,6 +21,8 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 
 # Install postgres
 RUN apt install postgresql postgresql-contrib -y 
+USER postgres
+RUN ./src/btcpay/postgress_script.sh
 
 USER parman
 
@@ -28,12 +30,12 @@ USER parman
 RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
 RUN cd ~/parmanode/NBXplorer && ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
-RUN touch ~/.nbxplorer/Main/settings.config
 
 #install BTCpayserver
-RUN cd ~/source && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
-RUN touch ~/.btcpayserver/Main/settings.config
 
+EXPOSE 49392
+EXPOSE 8080
 
-CMD tail -f /dev/null
+CMD tail -f /dev/nuoll
