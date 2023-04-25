@@ -24,11 +24,11 @@ RUN apt install postgresql postgresql-contrib -y
 USER parman
 
 # install NBX
-RUN mkdir ~/source 
-RUN cd ~/source && git clone https://github.com/dgarage/NBXplorer
-RUN cd ~/source/NBXplorer && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
+RUN cd ~/parmanode/NBXplorer && ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
-RUN cd ~/.nbxplorer/Main
+RUN touch ~/.nbxplorer/Main/settings.config
+#RUN cd ~/.nbxplorer/Main
 
 #test - take this out of dockerfile later
 #cd ~/source/NBXplorer
@@ -38,7 +38,8 @@ RUN cd ~/.nbxplorer/Main
 
 #install BTCpayserver
 RUN cd ~/source && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
-RUN mkdir -p ~/.btcpayserver/Main && touch ~/.btcpayserver/Main/settings.config
+RUN mkdir -p ~/.btcpayserver/Main 
+RUN touch ~/.btcpayserver/Main/settings.config
 
 
 CMD tail -f /dev/null
