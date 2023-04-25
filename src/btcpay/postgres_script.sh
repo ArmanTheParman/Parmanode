@@ -6,7 +6,7 @@ set timeout -1
 spawn createuser --pwprompt --interactive
 
 expect "Enter name of role to add: "
-send "parmanode\r"
+send "parman\r"
 
 expect "Enter password for new role: "
 send "NietShitcoin\r"
