@@ -20,7 +20,7 @@ USER root
 RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
 
 # Install postgres and make databases
-RUN apt install postgresql postgresql-contrib -y 
+RUN apt install postgresql-13 postgresql-contrib -y 
 USER postgres
 COPY postgres_script.sh /usr/local/bin
 RUN /usr/local/bin/postgres_script.sh
