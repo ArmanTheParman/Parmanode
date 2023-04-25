@@ -4,7 +4,7 @@ Requires=btcpayserver.service
 After=nbxplorer.service
 
 [Service]
-ExecStart=/usr/bin/dotnet run --no-launch-profile --no-build -c Release -p "/home/satoshi/source/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@
+ExecStart=/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project "/home/satoshi/source/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@
 User=satoshi
 Group=satoshi
 Type=simple
