@@ -1,0 +1,197 @@
+#From BTCpay server documentation
+
+Forward ports with a reverse SSH tunnel
+Advantages
+
+    no port forwarding needed on the LAN of the host
+    encrypted connection
+    hides the IP of the host
+
+Requirements
+
+    a Virtual Private Server (VPS) - eg. a minimal package on Lunanode for ~3.5$/month
+    root access on the VPS - only root can forward ports under no. 1000
+    ssh access to the host computer (where the ports will be forwarded from)
+
+Setup
+On the host (your BTCPay Server instance)
+
+Check for an ssh public key:
+
+cat ~/.ssh/*.pub
+
+ 
+
+ 
+        Copied!
+    
+
+If there is none generate one (keep pressing ENTER):
+
+ssh-keygen -t rsa -b 4096
+
+ 
+
+ 
+        Copied!
+    
+
+This will generate the SSH keypair id_rsa (private key) and id_rsa.pub inside ~/.ssh.
+
+The private key needs to get added to the ssh-agent:
+
+# start the ssh-agent in the background
+eval $(ssh-agent -s)
+
+# add private key to ssh-agent
+ssh-add ~/.ssh/id_rsa
+
+ 
+
+ 
+        Copied!
+    
+
+Copy the public key over to the VPS (fill in the VPS_IP_ADDRESS). You will be prompted for the root password of the VPS.
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@VPS_IP_ADDRESS
+
+ 
+
+ 
+        Copied!
+    
+
+To verify that it works, SSH into the VPS – this should not prompt for the password anymore:
+
+ssh root@VPS_IP_ADDRESS
+
+ 
+
+ 
+        Copied!
+    
+
+On the VPS
+
+You can either reuse the connection from before or login as root.
+
+Edit the sshd config:
+
+sudo nano /etc/ssh/sshd_config
+
+ 
+
+ 
+        Copied!
+    
+
+Make sure these entries are active (meaning there is no # at the beggining of the line). Alternatively, you can just paste these on the end of the file:
+
+RSAAuthentication yes     # not needed on latest OpenSSH versions
+PubkeyAuthentication yes
+GatewayPorts yes
+AllowTcpForwarding yes
+ClientAliveInterval 60
+
+ 
+
+ 
+        Copied!
+    
+
+CTRL+O, ENTER to save, CTRL+X to exit.
+
+WARNING
+
+You can lose access at this point if the sshd config is wrong. Please double-check!
+
+Restart the sshd service:
+
+sudo systemctl restart sshd
+
+ 
+
+ 
+        Copied!
+    
+
+Back to the host (your BTCPay Server instance)
+Install and set up autossh
+
+Install the autossh dependency:
+
+sudo apt-get install autossh
+
+ 
+
+ 
+        Copied!
+    
+
+Create the service file:
+
+sudo nano /etc/systemd/system/autossh-tunnel.service
+
+ 
+
+ 
+        Copied!
+    
+
+Paste the following and fill in the VPS_IP_ADDRESS. Add or remove ports as required.
+
+[Unit]
+Description=AutoSSH tunnel service
+After=network.target
+
+[Service]
+User=root
+Group=root
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -C -M 0 -v -N -o "ServerAliveInterval=60" -R 9735:localhost:9735 -R 443:localhost:443 -R 80:localhost:80 root@VPS_IP_ADDRESS
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
+
+ 
+
+ 
+        Copied!
+    
+
+Enable and start the service:
+
+sudo systemctl enable autossh-tunnel
+sudo systemctl start autossh-tunnel
+
+ 
+
+ 
+        Copied!
+    
+
+The port forwarding with a reverse ssh-tunnel is now complete. You should be able access the ports/services of the host computer through the IP of the VPS.
+Monitoring
+
+Check if there are any errors on the host computer:
+
+sudo journalctl -f -n 20 -u autossh-tunnel
+
+ 
+
+ 
+        Copied!
+    
+
+To check if tunnel is active on the VPS:
+
+netstat -tulpn
+
+ 
+
+ 
+        Copied!
+    
+

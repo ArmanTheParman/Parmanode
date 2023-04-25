@@ -18,8 +18,9 @@ RUN cd /home/parman/Downloads && wget https://packages.microsoft.com/config/ubun
 
 USER root
 RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
-RUN apt install postgresql postgresql-contrib -y 
 
+# Install postgres
+RUN apt install postgresql postgresql-contrib -y 
 
 USER parman
 
@@ -28,13 +29,6 @@ RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
 RUN cd ~/parmanode/NBXplorer && ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 RUN touch ~/.nbxplorer/Main/settings.config
-#RUN cd ~/.nbxplorer/Main
-
-#test - take this out of dockerfile later
-#cd ~/source/NBXplorer
-#./run.sh
-
-
 
 #install BTCpayserver
 RUN cd ~/source && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
