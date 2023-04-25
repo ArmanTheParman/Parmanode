@@ -1,0 +1,2 @@
+warning for users - must run /run_parmanode from parmanode directory
+warning for users in readme - don't forget to include .sh extension
