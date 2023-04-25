@@ -50,3 +50,9 @@ read
 return 0
 }
 
+function errormessage {
+echo ""
+echo "There has been an error. See log files for more info."
+enter_continue
+}
+
