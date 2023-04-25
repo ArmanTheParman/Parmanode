@@ -13,7 +13,7 @@ set_terminal ; echo "
 "
 enter_continue
 
-{ docker build -t fulcrum ./ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
+{ docker build -t fulcrum ./src/docker 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
 || { log "fulcrum" "fulcrum docker build failed" && return 1 ; }
 
 while true ; do
