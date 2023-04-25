@@ -1,4 +1,4 @@
-# function make_postgress_database {
+# function make_postgres_database {
 
 USER postgres
 RUN service postgresql start && \

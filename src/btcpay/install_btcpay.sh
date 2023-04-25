@@ -90,26 +90,17 @@ postgres=User ID=$postgres_user;Password=$postgress_password;Host=localhost;Port
 log "nbxplorer" "end nbxplorer_config" && return 0
 }
 
-function create_pg_database { #probably need to runa from inside the container
-#info..
+function create_pg_database { #probably need to run from inside the container
 
-
-#create postgres user
-    sudo -i -u postgres
-
-  
-
-#create databases
-    createdb -O parman btcpayserver
-    createdb -O parman nbxplorer
-
-#alternative
-su - postgres -c "createdb -O parman parman_db"
-}
+docker exec -d -u postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && \
+                                                createdb -O parman nbxplorer" && \
+log "btcpay" "2 databases created" || \
+log "btcpay" "2 databases failed to be created" 
 
 function postgres_create { #create database user
-
 docker exec -d 
+}
 
-
+function start_postgres {
+/usr/bin/pg_ctlcluster 13 main start
 }
