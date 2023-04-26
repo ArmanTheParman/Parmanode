@@ -33,6 +33,13 @@ build_btcpay
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
+start_postgres && create_pg_databases
+
+run_nbxplorer
+    if [ $? == 1 ] ; then return 1 ; fi
+
+run_btcpay
+
 }
 
 
@@ -49,7 +56,5 @@ run_btcpay_docker
 
 
 
-run_btcpay_docker
 
-start_postgres && create_pg_databases
 }

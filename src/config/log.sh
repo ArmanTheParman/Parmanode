@@ -10,5 +10,5 @@ fi
 
 echo "$(date) $2" >> $HOME/.parmanode/"$1".log
 
-
+echo "$(date) $2" >> $HOME/.parmanode/parmanode_all.log 
 }
