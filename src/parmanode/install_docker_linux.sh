@@ -1,9 +1,25 @@
 function install_docker_linux {
+while true ; do
+set_terminal ; echo "
+########################################################################################
+    
+    Docker manuals recommend running an uninstall command in case there are older
+    versions on the system which might cause conflicts. Shall Parmanode do that for
+    you now?
 
-#OS check (debian based)
+                 y)     yes, please, I'll have 2 of those thanks, doc.
+                 
+                 n)     nah, skip it, I'll risk it.
 
-# uninstall first...
-sudo apt-get remove docker docker-engine docker.io containerd runc
+########################################################################################
+"
+choose "xpq" ; read choice
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
+y|Y|YES|yes|Yes) sudo apt-get remove docker docker-engine docker.io containerd runc ;;
+n|N|NO|No) break ;;
+*) invalid
+esac
+done
 
 debian_or_ubuntu #exits if neither
 download_docker_linux
