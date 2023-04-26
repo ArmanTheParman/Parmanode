@@ -17,9 +17,9 @@ echo "
                     
                      (bps)      BTCPay Server
 
-         Not yet avaiable...                        
-
                      (t)        Tor 
+
+         Not yet avaiable...                        
 
                      (m)        Mempool.Space
 

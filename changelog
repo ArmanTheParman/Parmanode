@@ -3,6 +3,7 @@ Version 2.2.5
     - Fast sync added for Fulcrum (1Gb memory for Linux/Pi, 2Gb for Docker/Mac)
     - Docker installation option for Parmanode install wizard (linux)
     - BTCPay Server added for Linux
+    - Tor for Mac and Linux added
     - Additional menu to view config files and logs. 
     - Menus consolidated
 Version 2.2.4
