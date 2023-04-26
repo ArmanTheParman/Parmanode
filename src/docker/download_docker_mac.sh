@@ -1,4 +1,4 @@
-function download_docker {
+function download_docker_mac {
 set_terminal ; echo "
 ########################################################################################
 

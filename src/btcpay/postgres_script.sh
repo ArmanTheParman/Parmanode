@@ -24,4 +24,3 @@ expect "Shall the new role be allowed to create more new roles? (y/n) "
 send "n\r"
 
 expect eof
-
