@@ -1,6 +1,6 @@
 function menu_startup {
 while true ; do
-set_terminal
+set_terminal_bit_higher
 echo "
 ########################################################################################
 

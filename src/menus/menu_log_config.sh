@@ -40,6 +40,8 @@ while true ; do set_terminal ; echo "
                         pc)            parmanode.conf
                         pl)            parmanode.log
 
+                        pa)            parmanode_all.log
+
 ########################################################################################
 "
 choose "xpq" ; read choice
