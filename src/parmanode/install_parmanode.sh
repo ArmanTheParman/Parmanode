@@ -31,6 +31,9 @@ make_home_parmanode
     parmanode_conf_add "drive=$hdd" 
     installed_config_add "parmanode-end" 
 
+# Set variables
+    Linux_distro
+
 set_terminal ; echo "
 ########################################################################################
     

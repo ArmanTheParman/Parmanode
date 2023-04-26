@@ -24,11 +24,11 @@ install_docker_intro
 docker_install_check  
 
 if [[ $docker_installed == "false" ]] ; then
-    download_docker
+    download_docker_mac
     if [ $? = 1 ] ; then return 1 ; fi
     fi
 
-start_docker
+start_docker_mac
     if [ $? = 1 ] ; then return 1 ; fi
     log "docker" "Docker started"
 

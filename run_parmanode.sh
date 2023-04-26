@@ -1,11 +1,14 @@
 #!/bin/bash
     original_dir=$(pwd)
 	
-# source all the  modules.
+# source all the modules. Exclude executable scripts
 
-	for file in ./src/**/*.sh
-	do
-	source $file
+	for file in ./src/**/*.sh ; do
+
+		if [[ $file != *"/postgress_script.sh" ]]; then
+	    source $file
+		fi 
+
 	done
 
 
@@ -21,7 +24,6 @@
 
   #   debug "Pause here to check for error output before clear screen." 
 
-
 # Load config 
 
     source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
@@ -30,6 +32,6 @@
 
 	set_terminal # custom function for screen size and colour.
 	intro
-	startup
+	menu_startup
 
 exit 0

@@ -1,4 +1,4 @@
-function startup {
+function menu_startup {
 while true ; do
 set_terminal
 echo "
