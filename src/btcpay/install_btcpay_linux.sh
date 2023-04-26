@@ -11,22 +11,34 @@ function install_btcpay_linux {
     return 1
     fi
 
-user_pass_check_exists 
+while true ; do user_pass_check_exists 
     return_status=$?
-    if [ $return_status == 1 ] ; then return 1 ;
-
+    if [ $return_status == 1 ] ; then return 1 ; fi
+    if [ $return_status == 2 ] ; then continue ; fi
+    if [ $return_status == 0 ] ; then break ; fi 
+    done
     
+make_btcpay_directories # .btcpayserver and .nbxplorer
+    if [ $? == 1 ] ; then return 1 ; fi
 
+btcpay_config
+    if [ $? == 1 ] ; then return 1 ; fi
+
+nbxplorer_config
+    if [ $? == 1 ] ; then return 1 ; fi
+
+build_btcpay 
+    if [ $? == 1 ] ; then return 1 ; fi
+
+run_btcpay_docker
+    if [ $? == 1 ] ; then return 1 ; fi
 
 }
-# 2. Populate config files
-#       ~/.nbxplorer/Main/settings.config
-#       ~/.btcpayserver/Main/settings.config
+
 
 # 3. make_postgress_database
     # user to put password (find interactive command,
 
-function install_btcpay {
 
 # message to user; confirmation
 
@@ -34,9 +46,8 @@ function install_btcpay {
 
 
 
-make_btcpay_directories
 
-build_btcpay 
+
 
 run_btcpay_docker
 

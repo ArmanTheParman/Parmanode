@@ -3,6 +3,7 @@ if ! cat $SHOME/.bitcoin/bitcoin.conf | grep "rpcuser=" ; then
 
 while true ; do set_terminal ; echo "
 ########################################################################################    
+
     A Bitcoin username and password has not been set. Please do that through the
     Parmanode Bitcoin menu and come back and attempt to install BTCpay Server again.
 

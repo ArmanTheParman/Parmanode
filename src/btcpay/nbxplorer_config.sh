@@ -1,7 +1,6 @@
 function nbxplorer_config {
 source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=")
 source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
-source $HOME/.parmanode/parmanode.conf  #get postgres user and password
 
 echo "
 btc.rpc.auth=${rpcuser}:${rpcpassword}
