@@ -3,9 +3,9 @@
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
 
-Parmanode is Bitcoin and Electrum Server (Fulcrum) installation wizard 
-software for home desktop computers. More features (programs and educational
-material) will be added as development continues.
+Parmanode is an automated Bitcoin, Electrum Server (Fulcrum), and BTCPay 
+installation wizard software for home desktop computers. More features 
+(programs and educational material) will be added as development continues.
 
 Parmanode is designed for non-technical users giving them the ability to 
 download and verify Bitcoin Core (and Fulcrum) and sync using an external 
@@ -13,14 +13,14 @@ or internal drive, and also have configuration options presented to them
 with automation. No manual configuration file editing will be required.
 
 Users only need to read the menu options carefully, and respond to
-the questions - no command line interaction is required. For example, 
-bitcoin-cli commands are available in a menu, and pruning can be activated 
-from menu options.
+the questions - no command line interaction is ever needed. For example, 
+from a menu, bitcoin-cli commands are available, pruning can be activated 
+and rpcuser/rpcpassword can also be set.
 
 The software also comes with helpful information, including links to various
 articles on my website, armantheparman.com, so that Bitcoiners keep learning
 more about Bitcoin and how to be safely self-sovereign. Information on how 
-to connect various wallets to the node is provided in the menus. 
+to connect various wallets to the node is provided.
 
 The most basic usage would be an internal drive to sync, running the latest
 version of Bitcoin Core, and connecting Sparrow Bitcoin Wallet or Specter

@@ -39,22 +39,9 @@ run_nbxplorer
     if [ $? == 1 ] ; then return 1 ; fi
 
 run_btcpay
+    if [ $? == 1 ] ; then return 1 ; fi
 
-}
-
-
-# 3. make_postgress_database
-    # user to put password (find interactive command,
-
-
-# message to user; confirmation
-
-# check if docker is installed and install if needed.
-
-
-
-
-
-
-
+installed_conf_add "btcpay"
+success "BTCPay Server" "installed."
+return 0
 }

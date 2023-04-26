@@ -40,8 +40,10 @@ FREQUENTLY USED CUSTOM FUNCTIONS
                     the string to find. It then removes every line where that string 
                     ocurrs. Useful for modifiying config files.
     
-    log             A function that takes two variable (desired filename prefix) and 
-                    a message for the custom log file.
+    log             A function that takes two variables (desired filename prefix) and 
+                    a message for the custom log file. The log function also populates
+                    parmanode_all.log, so all messages from various files can be 
+                    viewed at once.
 
 
 EXPLANATION OF CONFIGURATION FILES  
