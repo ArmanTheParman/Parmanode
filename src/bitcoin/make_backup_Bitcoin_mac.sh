@@ -6,7 +6,7 @@ final_directory="$prefix$counter"
 
 while [ -d "$final_directory" ]
 do
-    counter = $((counter + 1))
+    counter=$((counter + 1))
     final_directory="$prefix$counter"
 done
 

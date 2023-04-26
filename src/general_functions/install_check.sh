@@ -5,7 +5,7 @@ program_name=$1
     if grep -q "$1" $HOME/.parmanode/installed.conf 2>/dev/null
 
     then 
-        log "$1" "Install error. Already installed, can't re-install"
+        log "$1" "Install error. Already installed"
         install_error "$program_name"
         previous_menu
         return 1 

@@ -9,7 +9,7 @@ echo -e "\033[38;2;255;145;0m" #Orange colour setting
         # echo -e "\033[38;5;208m" - won't work in /bin/zsh, but script runs in /bin/bash which works.
 
 
-if [[ $colour = "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
+if [[ $colour == "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
 
 tput clear
 return 0
