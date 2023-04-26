@@ -1,4 +1,4 @@
-function menu_parmanode {
+function menu_programs {
 clear
 while true
 do

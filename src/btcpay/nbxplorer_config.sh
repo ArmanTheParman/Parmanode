@@ -1,6 +1,6 @@
 function nbxplorer_config {
-source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=")
-source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
+    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=")
+    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
 
 echo "
 btc.rpc.auth=${rpcuser}:${rpcpassword}

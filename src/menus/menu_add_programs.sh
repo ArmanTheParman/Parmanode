@@ -14,18 +14,18 @@ echo "
                      (b)        Bitcoin Core
 
                      (f)        Fulcrum (an Electrum Server)
-
-                     (t)        Tor [NOT READY YET]
+                    
+                     (bps)      BTCPay Server
 
          Not yet avaiable...                        
+
+                     (t)        Tor 
 
                      (m)        Mempool.Space
 
                      (l)        LND
 
                      (rtl)      RTL
-
-                     (bps)      BTCPay Server
 
                      (s)        Specter Desktop
 
@@ -52,9 +52,16 @@ case $choice in
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac ; fi
        return 0 
        ;;
+    btcp|BTCP|Btcp)
+       if [[ $OS == "Linux" ]] ; then 
+       install_btcpay_linux 
+       else
+       set_terminal ; echo "Only available for Linux, currently" ; enter_continue
+       fi
+       ;;
     
     t|T|tor|Tor)
-       install_tor 
+       #install_tor 
        return 0 ;;
 
     q|Q|quit|QUIT)

@@ -15,8 +15,16 @@ case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 
 set_terminal
 
-if [[ $OS == "Linux" ]] ; then sudo apt-get install tor -y ; fi
-if [[ $OS == "Mac" ]] ; then brew install tor ; fi
+if [[ $OS == "Linux" ]] ; then sudo apt install tor -y ; fi
+if [[ $OS == "Mac" ]] ; then 
+    while ! command -v brew ; do 
+        set_terminal ; echo "Homebrew needs to be installed. Do that now (y) (n)?"
+        read choice
+        case $choice in y|Y) install_homebrew ;; n|N) break ;; esac
+    done
+
+    brew install tor 
+fi
 
 
 
