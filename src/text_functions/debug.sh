@@ -4,19 +4,10 @@
 # code to contine.
 
 function debug {
-
+echo "Debut point. Message:"
 echo "$1"
-
-while true
-do
-
-echo "
-debug point - hit "d" and <enter> to proceed."
-read -u 0 choice
-
-if [[ $choice == "d" ]] ; then break ; fi
-done
-
+log "debug" "$1"
+enter_continue
 return 0
 }
 	
