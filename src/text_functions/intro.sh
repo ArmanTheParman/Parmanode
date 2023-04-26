@@ -30,9 +30,7 @@ echo "
             4) Users must not hold ANY shitcoins. Honesty system.
             
             5) Free: 
-                   - Donation appreciated (if felt you received value)
-                   - Honesty system, suggested: 0.002 bitcoin
-                   - Or your choice
+                   - Donations appreciated
                    - Yes, the code is open source, MIT licence, like Bitcoin
 
     To report bugs:
