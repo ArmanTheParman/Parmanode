@@ -16,6 +16,9 @@ echo "
 
             1) Linux (including Pi4) and Mac (Not available for Windows yet)
 
+                   - Debian and Ubuntu Linux systems supported, including Mint.
+                   - Other Linux distributions have not been tested yet.
+
             2) CPU Architecture:
 
                    - AMD/Intel 64 architecture (x86-64) 
