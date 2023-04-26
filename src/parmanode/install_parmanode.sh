@@ -27,6 +27,9 @@ choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if 
 make_home_parmanode 
     if [ $? == 1 ] ; then return 1 ; fi #exiting this function with return 1 takes user to menu.
 
+install_docker_linux
+    if [ $? == 1 ] ; then return 1 ; fi 
+    
 # Update config files
     parmanode_conf_add "drive=$hdd" 
     installed_config_add "parmanode-end" 
