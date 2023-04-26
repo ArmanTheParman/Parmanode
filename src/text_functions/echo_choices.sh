@@ -44,6 +44,12 @@ echo "Hit <enter> to continue, (p) for previous, (q) to quit, then <enter>: "
 return 0
 fi
 
+if [[ $1 == "qc" ]]
+then
+echo "Hit (q) then <enter> to quit, anything else to continue"
+return 0
+fi
+
 return 1 
 }
 
