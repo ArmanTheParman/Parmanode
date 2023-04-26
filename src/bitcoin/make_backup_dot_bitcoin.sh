@@ -9,7 +9,7 @@ final_directory="$prefix$counter"       # The aim is to produce a backup directo
 while [ -d "$final_directory" ]         # counts the number of backups that exist with
                                         # this numbering format.
 do
-    counter = $((counter + 1))
+    counter=$((counter + 1))
     final_directory="$prefix$counter"
 done
 
