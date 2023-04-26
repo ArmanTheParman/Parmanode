@@ -11,6 +11,8 @@ echo "
 
                  (r)         Run Parmanode
 
+                 (l)         See logs and configuration files
+
                  (pp)        Parmanode Premium 
 
                  (e)         Education
@@ -37,6 +39,8 @@ case $choice in
 
     r|R|R|r)    
         menu_parmanode
+        ;;
+    l|L) menu_log_config
         ;;
     pp)
         premium

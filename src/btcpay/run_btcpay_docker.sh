@@ -6,12 +6,11 @@ docker run -d \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            -p 8080:8080 \
            -p 23001:80 \
-           -p 49392:49392i \
+           -p 49392:49392 \
            btcpay && \
-log "btcpay" "docker run btcpay executed" \
+log "btcpay" "docker run btcpay executed" && return 0 \
 || log "btcpay" "docker run btcpay failed" && return 1 
 
-return 0
 }    
 
     # Notes:

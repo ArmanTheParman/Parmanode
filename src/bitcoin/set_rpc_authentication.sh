@@ -11,12 +11,15 @@ set_terminal ; echo "
     way, which is with a username and password. You can set a username and password 
     here.
 
-
     (p)  Exit this menu
 
     (s) Set Bitcoin username and password
         and copy to Fulcrum configuration ....... (must use password if
                                                    installing Fulcrum)
+	
+	d)  Set Bitcoin username and password
+	    and DON'T copy anywhere else
+
 
     (L)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
@@ -43,6 +46,13 @@ case $choice in
 
 	    continue	
 		;;
+		
+	d|D)        password_changer
+
+                set_rpc_authentication_update_conf_edits
+
+	    continue
+		;;
 
 	l|L) 
 				add_userpass_to_fulcrum
@@ -52,7 +62,8 @@ case $choice in
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
 		;;	
 
-	p|P) break ;;
+	p|P) return 0 ;;
+
 	q|Q|Quit|QUIT) exit 0 ;;
 
 	*)
@@ -61,7 +72,6 @@ case $choice in
 esac
 
 done
-return 0
 }
 
 function set_rpc_authentication_update_conf_edits {
@@ -69,14 +79,15 @@ function set_rpc_authentication_update_conf_edits {
 	set_terminal ; echo "
 ########################################################################################
 
-    Bitcoin must be stopped before changing passwords, otherwise you won't be 
-	permitted to stop Bitcoin later (the starting Bitcoin password won't match the
+    Bitcoin must be (will be) stopped before changing passwords, otherwise you won't 
+	be permitted to stop Bitcoin later (the starting Bitcoin password won't match the
 	stopping Bitcoin pasword).
 
 ########################################################################################
 "
 enter_continue
-stop_bitcoind
+stop_bitcoind ; if [ $? == 1 ] ; then ; echo "Unable to stop bitcoin daemon. Aborting password change."
+										enter_continue ; return 1 ; fi
 
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
