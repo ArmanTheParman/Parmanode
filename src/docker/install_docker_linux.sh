@@ -30,6 +30,7 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P|s|P) return 1 ;; 
 i|I|install|Install)
+    log "docker" "docker install chosen"
     break ;;
 *) invalid ;;
 esac 
@@ -56,22 +57,25 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 y|Y|YES|yes|Yes) 
+    log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
     docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     docker-ce-rootless-extras ;;
 
-n|N|NO|No) break ;;
+n|N|NO|No) 
+    log "docker" "skipping uninstall of old Docker versions" ; break ;;
 *) invalid ;;
 esac
 done
 
-
-
 # download_docker_linux
-log "docker" "docker auto install linux ..." && docker_package_download_linux
+log "docker" "docker auto install linux ..." 
+docker_package_download_linux
+log "docker" "... exited docker package download linux"
 
-success "Docker" "insalling."
 installed_conf_add "docker" 
 log "docker" "Install success." 
+success "Docker" "insalling."
+
 return 0
 }

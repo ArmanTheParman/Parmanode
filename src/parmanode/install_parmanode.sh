@@ -28,8 +28,11 @@ make_home_parmanode
     if [ $? == 1 ] ; then return 1 ; fi #exiting this function with return 1 takes user to menu.
 
 install_docker_linux
-    if [ $? == 1 ] ; then return 1 ; fi 
-    
+    if [ $? == 0 ] ; then 
+    log "docker" "... exiting install docker linux, success"
+    else
+    return 1 ; fi 
+        
 # Update config files
     parmanode_conf_add "drive=$hdd" 
     installed_config_add "parmanode-end" 
@@ -37,19 +40,27 @@ install_docker_linux
 # Set variables
     Linux_distro
 
+while true ; do
 set_terminal ; echo "
 ########################################################################################
     
-                                      Success
+                                 S U C C E S S  ! ! 
                                       				    
-    Parmanode has been installed. You can now go ahead in install Bitcoin Core from 
-    the instalation menu.
+    Parmanode has been installed. Insall Bitcoin now? 
+
+                           y)      Yes, install Bitcoin
+
+                           n)      No, I will do it later
 
 ########################################################################################
-
 "
-enter_continue
-
+choose "xq" ; read choice
+case $choice in
+    y|Y|YES|Yes|yes) install_bitcoin ; return 0 ;;
+    n|N|No|NO|no) break ;;
+    *) invalid ;;
+    esac 
+done    
 return 0
 }
 
