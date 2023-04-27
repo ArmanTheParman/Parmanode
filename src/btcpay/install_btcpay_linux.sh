@@ -1,6 +1,6 @@
 function install_btcpay_linux {
 
-if [ $1 != "resume" ] ; then
+if [ -n "$1" ] && [ $1 != "resume" ] ; then
 {
     # Install checks...
     install_check "btcpay"
@@ -13,7 +13,6 @@ if [ $1 != "resume" ] ; then
         install_docker_linux "btcpay" || return 1
 
         fi
-
 }
 else
 installed_config_remove "btcpay-half"
