@@ -26,7 +26,8 @@ sudo usermod -aG docker $USER
 debug "exit status is $1"
 enter_continue
 
- || log "docker" "failed to add docker group to $USER" && \
+ #|| log "docker" "failed to add docker group to $USER" && \
+
 debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
 if installing BTCPay server, then the rest of the intstallation will fail."
 }
