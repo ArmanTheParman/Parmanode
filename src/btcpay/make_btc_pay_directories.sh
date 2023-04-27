@@ -11,7 +11,7 @@ if [ -d $HOME/.btcpayserver ] ; then
 
     choose "qc" ; read choice ; case $choice in q|Q) return 0 ;; esac
     rm -rf $HOME/.btcpayserver 
-    installed_conf_remove "btcpay-end"
+    installed_config_remove "btcpay-end"
     fi
 
 if [ -d $HOME/.nbxplorer ] ; then 
@@ -21,14 +21,14 @@ if [ -d $HOME/.nbxplorer ] ; then
     echo "the existance of $HOME/.nbxplorer was checked for. It does exists, which"
     echo "is unexpected. Deleting..."
 
-    choose "qc" ; read choice ; case $choice in q|Q) return 1 ;; esac
+    choose "qc" ; read choice ; case $choice in q|Q) return 0 ;; esac
     rm -rf $HOME/.nbxplorer
-    installed_conf_remove "btcpay-end"
+    installed_config_remove "btcpay-end"
     fi
 
 mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main && \
   log "btcpay" ".btcpayserver mkdir success" && \
-  installed_conf_add "btcpay-start" && \
+  installed_config_add "btcpay-start" && \
   return 0 \
   || return 1 && log "btcpay" "mkdir .bitpayserver & .nbxploerer failed"
 }

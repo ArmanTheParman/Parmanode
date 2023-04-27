@@ -51,7 +51,7 @@ log "btcpay" "entering run_btcpay..."
 run_btcpay
     if [ $? == 1 ] ; then return 1 ; fi
 
-installed_conf_add "btcpay-end"
+installed_config_add "btcpay-end"
 success "BTCPay Server" "installed."
 return 0
 }
