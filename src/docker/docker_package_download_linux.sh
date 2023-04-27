@@ -15,19 +15,28 @@ get_linux_version_codename && echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt-get update -y
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
-debug "exit status is $1"
 
 installed_config_add "docker-start" 
+counter=0 ; while [[ $counter -le 1 ]] ; do
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+exit_status=$?
+if [ $exit_status != 0 ] ; then
+echo "An error at this stage is sometimes fixed by repeating the command. Repeating in 3..2..1..."
+sleep 3
+counter=$((counter + 1 ))
+continue
+fi
+break
+done
 
-#log "docker" "docker install failed" && announce "Docker install failed" && return 1
+log "docker" "exit status of apt-get install is $exit_status"
+if [ $exit_status == 0 ] ; then true ; else announce "Docker install failed." && return 1 ; fi
 
-sudo usermod -aG docker $USER
-debug "exit status is $1"
-enter_continue
 
- #|| log "docker" "failed to add docker group to $USER" && \
+sudo usermod -aG docker $USER $$ log "docker" "exit status of usermod is $?"
 
+if id | grep docker ; then true ; else 
 debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
 if installing BTCPay server, then the rest of the intstallation will fail."
+fi
 }
