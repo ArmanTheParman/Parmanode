@@ -43,25 +43,25 @@ read choice
 case $choice in
     B|b|bitcoin|Bitcoin)
         set_terminal 
-        install_bitcoin
+        install_bitcoin || return 1
         return 0
         ;;
     f|F)
        set_terminal
-       if [[ $OS == "Linux" ]] ; then install_fulcrum ; fi
-       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac ; fi
+       if [[ $OS == "Linux" ]] ; then install_fulcrum || return 1 ; fi
+       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac || return 1 ; fi
        return 0 
        ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
-       install_btcpay_linux 
+       install_btcpay_linux || return 1 
        else
        set_terminal ; echo "Only available for Linux, currently" ; enter_continue
        fi
        ;;
     
     t|T|tor|Tor)
-       install_tor 
+       install_tor || return 1 
        return 0 ;;
 
     q|Q|quit|QUIT)

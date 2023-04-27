@@ -26,9 +26,16 @@ esac
 done
 
 
+# stop containers, delete containers, delete images
+docker stop btcpay
+docker rm btcpay
+docker rmi btcpay
 
+#remove directories
+rm -rf $HOME/.btcpayserver $HOME/.nbxploerer
 
-
-
-
+installed_config_remove "btcpay"
+log "btcpay" "Uninstalled"
+success "BTCPay Server" "uninstalled."
+return 0
 }

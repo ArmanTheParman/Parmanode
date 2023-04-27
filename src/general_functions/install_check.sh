@@ -19,7 +19,7 @@ program_name=$1
 function install_error {
 program_name=$1
 if [[ $program_name == "parmanode" ]] ; then
-
+set_terminal
 echo "
 ########################################################################################
 	
