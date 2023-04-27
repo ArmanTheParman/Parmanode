@@ -8,7 +8,9 @@ while true ; do set_terminal ; echo "
 ########################################################################################
 "
 choose "epq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
+case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac 
+done
+debug "choice made to uninstall"
 log "docker" "uninstall Docker selected"
 
 set_terminal ; echo "
