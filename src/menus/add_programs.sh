@@ -15,7 +15,7 @@ echo "
 
                      (f)        Fulcrum (an Electrum Server)
                     
-                     (bps)      BTCPay Server
+                     (btcp)     BTCPay Server
 
                      (t)        Tor 
 

@@ -11,11 +11,11 @@ echo "
 
                              (b)      Bitcoin Core
                                
-                             (f)      Fulcrum Server
-							
-							 (btcp)   BTCPay Server
+                             (f)      Fulcrum Server 
 
-							 (t)      Tor
+                             (btcp)   BTCPay Server
+
+                             (t)      Tor
 
 ########################################################################################
 
