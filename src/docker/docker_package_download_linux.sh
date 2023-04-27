@@ -23,7 +23,8 @@ exit_status=$?
 if [ $exit_status != 0 ] ; then
 echo ""
 echo ""
-echo "An error at this stage is sometimes fixed by repeating the command. Repeating in 10 secons ..." 
+echo "An error at this stage is sometimes fixed by repeating "
+echo "the command. Repeating in 10 secons ..." 
 sleep 10
 counter=$((counter + 1 ))
 continue
@@ -48,13 +49,10 @@ fi
 
 
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
-newgrp docker && log "docker" "newgrp docker applied"
 
 if cat /etc/group | grep docker | grep $whoami ; then
-log "docker" "/etc/group values good"
-
-if id | grep docker ; then true ; else 
-debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
-if installing BTCPay server, then the rest of the intstallation will fail."
+log "docker" "docker update in users's /etc/group"
+else
+debug "failed to add docker group to $USER. Proceed with caution or do it yourself."
 fi
 }

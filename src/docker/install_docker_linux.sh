@@ -1,4 +1,5 @@
 function install_docker_linux {
+installed_from=$1
 
 #exclude Linux distros that don't have apt-get
 if ! command -v apt-get ; then
@@ -88,24 +89,42 @@ case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
 y|Y|YES|yes|Yes) 
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
-    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras
-    break ;;
+    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-p is stored in memory until the next time the user's group membership changes. This output is then piped to the grep command, which searches for the string "docker" in the output.
 
-n|N|NO|No) 
-    log "docker" "skipping uninstall of old Docker versions" ; break ;;
-*) invalid ;;
-esac
+If the output of id | grep docker is not showing the updated group membership, it is likely because the user's group membership has not been updated since the last time the command was run. In this case, sourcing the /etc/group file will not refresh the output of the command, as the group membership information is already stored in memory.
+
+To refresh the output of id | grep docker, you can try one of the methods mentioned earlier, such as using the newgrp
 done
 
 # download_docker_linux
 log "docker" "docker auto install linux ..." 
 docker_package_download_linux || return 1
-log "docker" "... exited docker package download linux"
 
 installed_config_add "docker-end" 
 log "docker" "Install success." 
 success "Docker" "insalling."
+
+if [[ $installed_from == "btcpay" ]] ; then
+set_terminal ; echo "
+######################################################################################## 
+
+    In order for Docker to run properly from the Parmanode menu, Parmanode must first
+    exit. When you return, the BTCPay installation will continue.
+
+########################################################################################
+"
+enter_continue ; installed_config_add "btcpay-half" ; exit 0
+else
+set_terminal ; echo "
+######################################################################################## 
+
+    In order for Docker to run properly from the Parmanode menu, Parmanode must first
+    exit. 
+
+########################################################################################
+"
+enter_continue ; exit 0
+fi
 
 return 0
 }
