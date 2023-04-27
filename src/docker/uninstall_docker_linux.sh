@@ -21,7 +21,7 @@ echo "Purging Docker programs..."
 sleep 1
 sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
     docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras 
+    docker-ce-rootless-extras -y
 
 set_terminal
 echo "
