@@ -33,5 +33,6 @@ sudo rm -rf /var/lib/containerd
 
 log "docker" "uninstall; function finished"
 installed_config_remove "docker"
+success "docker" "uninstalled."
 return 0
 }
