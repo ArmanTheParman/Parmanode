@@ -1,5 +1,5 @@
 function user_pass_check_exists {
-if ! cat $SHOME/.bitcoin/bitcoin.conf | grep "rpcuser=" ; then
+if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=" ; then
 
 while true ; do set_terminal ; echo "
 ########################################################################################    
