@@ -1,3 +1,4 @@
+#Not used, for reference:
 function manual_download_docker_linux {
 
 chip="$(uname -m)" >/dev/null 2>&1
@@ -57,8 +58,6 @@ curl -LO https://download.docker.com/linux/debian/dists/$VC/pool/stable/$chip/do
 curl -LO https://download.docker.com/linux/debian/dists/$VC/pool/stable/$chip/docker-ce-cli_23.0.4-1~debian.10~$VC_$chip.deb
 curl -LO https://download.docker.com/linux/debian/dists/$VC/pool/stable/$chip/docker-buildx-plugin_0.10.4-1~debian.11~$VC_$chip.deb
 curl -LO https://download.docker.com/linux/debian/dists/$VC/pool/stable/$chip/docker-compose-plugin_2.6.0~debian-$VC_$chip.deb
-else
-
 fi
 unset chip
 }

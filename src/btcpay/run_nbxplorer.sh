@@ -9,6 +9,7 @@ else
 docker start btcpay || log "nbxplorer" "failed to start btcpay docker container"     
 count=$((count + 1))
 fi
+done
 
 set_terminal ; echo "
 ########################################################################################

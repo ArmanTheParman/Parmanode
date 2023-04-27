@@ -1,6 +1,6 @@
 function Linux_distro {
     
-if [[ $OS == "Linux" ; ]] ; then
+if [[ $OS == "Linux" ]] ; then
 
     if [ -f /etc/debian_version ]; then
     parmanode_conf_add "Linux=Debian"
