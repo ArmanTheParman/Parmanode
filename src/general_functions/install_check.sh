@@ -17,6 +17,7 @@ arg2=$2
 
     else 
         if [[ $arg2 == "i=0" || $arg2 == "i==0" ]] ; then return 1 ; fi
+        log "$program_name" "arg2 is $arg2"
         log "$program_name" "Install check passed; not installed. Continuing."
         return 0
     fi
