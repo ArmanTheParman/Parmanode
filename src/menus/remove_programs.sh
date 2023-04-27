@@ -13,6 +13,8 @@ echo "
                                
                              (f)      Fulcrum Server 
 
+							 (d)      Docker
+
                              (btcp)   BTCPay Server
 
                              (t)      Tor
@@ -32,6 +34,11 @@ return 0
 
 f|F)
 uninstall_fulcrum
+return 0
+;;
+
+d|D) 
+uninstall_docker_linux 
 return 0
 ;;
 
