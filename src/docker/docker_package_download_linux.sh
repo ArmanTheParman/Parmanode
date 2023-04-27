@@ -18,7 +18,7 @@ sudo apt-get update -y
 
 installed_config_add "docker-start" 
 counter=0 ; while [[ $counter -le 1 ]] ; do
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin -y 
 exit_status=$?
 if [ $exit_status != 0 ] ; then
 echo ""
