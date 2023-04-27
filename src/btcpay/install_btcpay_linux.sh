@@ -2,7 +2,11 @@ function install_btcpay_linux {
 
 # Install checks...
 
-    install_check "btcpay" ; if [ $? == 1 ] ; then return 1 ; fi
+    install_check "btcpay" "i==0" 
+        if [ $? == 1 ] ; then 
+        need_docker_for_btcpay && \ 
+        install_docker_linux || return 1 
+        fi
 
     if ! command -v bitcoin-cli ; then
     set_terminal
@@ -10,6 +14,8 @@ function install_btcpay_linux {
     enter_continue
     return 1
     fi
+
+    install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
 
 while true ; do user_pass_check_exists 
     return_status=$?
@@ -32,7 +38,7 @@ log "btcpay" "entering nbxplorer_config..."
 nbxplorer_config
     if [ $? == 1 ] ; then return 1 ; fi
 
-log "btcpay" "entering buit_btcpay..."
+log "btcpay" "entering build_btcpay..."
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
 
