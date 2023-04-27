@@ -1,6 +1,13 @@
 function install_check { 
 program_name=$1
 
+if [[ $1 == "continue" ]] ; then 
+    if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
+    then
+    return 1
+    else
+    return 0
+    fi
 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
 
@@ -37,8 +44,7 @@ echo "
 return 0
 
 else
-echo "
-
+set_terminal ; echo "
 ########################################################################################
                                     
                                     Install Error
