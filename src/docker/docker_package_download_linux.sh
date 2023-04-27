@@ -43,12 +43,12 @@ if [ $exit_status != 0 ] ; then
                       echo ""
                       sleep 30 ; echo " 30 .. 29 ......."
                       sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
-                      || echo "" && announe "Docker install failed." && return 1 ; fi
+                      || echo "" && announce "Docker install failed." && return 1 ; fi
 fi
 
 
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
-newgrp docker
+newgrp docker && log "docker" "newgrp docker applied"
 
 if id | grep docker ; then true ; else 
 debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
