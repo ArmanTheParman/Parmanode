@@ -2,7 +2,7 @@ function install_bitcoin {
 
 set_terminal
 
-install_check "bitcoin-start" 
+install_check "bitcoin" 
     #first check if Bitcoin has been installed
     return_value="$?"
     if [[ $return_value == "1" ]] ; then

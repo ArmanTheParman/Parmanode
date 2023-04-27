@@ -4,8 +4,8 @@ function make_btcpay_directories {
 
 if [ -d $HOME/.btcpayserver ] ; then 
     set_terminal
-    echo "
-    As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
+    echo ""
+    echo "As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
     echo "the existance of $HOME/.btcpayserver was checked for. It does exists, which"
     echo "is unexpected. Deleting..."
 
@@ -16,8 +16,8 @@ if [ -d $HOME/.btcpayserver ] ; then
 
 if [ -d $HOME/.nbxplorer ] ; then 
     set_terminal
-    echo "
-    As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
+    echo ""
+    echo "As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
     echo "the existance of $HOME/.nbxplorer was checked for. It does exists, which"
     echo "is unexpected. Deleting..."
 

@@ -2,7 +2,7 @@ function install_btcpay_linux {
 
 # Install checks...
 
-    install_check "btcpay-start" ; if [ $? == 1 ] ; then return 1 ; fi
+    install_check "btcpay" ; if [ $? == 1 ] ; then return 1 ; fi
 
     if ! command -v bitcoin-cli ; then
     set_terminal
