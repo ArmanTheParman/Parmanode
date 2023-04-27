@@ -1,6 +1,6 @@
 function install_btcpay_linux {
 
-if [ -n "$1" ] && [ $1 != "resume" ] ; then
+if [ -z $1 ] ; then
 {
     # Install checks...
     install_check "btcpay"
