@@ -10,18 +10,19 @@ echo "
                     
                     (ip)        What's my computer's IP address?
 
-                    ... More soon
 
+
+                    ... More soon
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpq" ; read choice ; set_terminal
 
 case $choice in
 
     ip|IP|iP|Ip)
         IP_address
-        continue
+        return 0
         ;;
     p|P)
         return 0

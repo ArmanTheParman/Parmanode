@@ -12,6 +12,10 @@ echo "
                              (b)      Bitcoin Core
                                
                              (f)      Fulcrum Server
+							
+							 (btcp)   BTCPay Server
+
+							 (t)      Tor
 
 ########################################################################################
 
@@ -28,6 +32,11 @@ return 0
 
 f|F)
 uninstall_fulcrum
+return 0
+;;
+
+t|T|TOR|Tor|tor)
+uninstall_tor
 return 0
 ;;
 

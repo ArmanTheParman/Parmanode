@@ -22,7 +22,7 @@ echo "
 
                                     Error CF100
 
-    Make sure Parmanode has been installed first (go to Add programs menu).
+    Make sure Parmanode has been installed first (go to Add more programs menu).
     
     Or, Parmanode may need to be re-insalled cleanly after uninstalling.
 
