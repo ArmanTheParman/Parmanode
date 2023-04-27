@@ -73,7 +73,7 @@ log "docker" "docker auto install linux ..."
 docker_package_download_linux
 log "docker" "... exited docker package download linux"
 
-installed_conf_add "docker" 
+installed_config_add "docker" 
 log "docker" "Install success." 
 success "Docker" "insalling."
 
