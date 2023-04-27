@@ -50,6 +50,9 @@ fi
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
 newgrp docker && log "docker" "newgrp docker applied"
 
+if cat /etc/group | grep docker | grep $whoami ; then
+log "docker" "/etc/group values good"
+
 if id | grep docker ; then true ; else 
 debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
 if installing BTCPay server, then the rest of the intstallation will fail."
