@@ -15,13 +15,18 @@ get_linux_version_codename && echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt-get update -y
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+debug "exit status is $1"
 
-enter_continue 
 installed_config_add "docker-start" 
 
 #log "docker" "docker install failed" && announce "Docker install failed" && return 1
 
-sudo usermod -aG docker $USER || log "docker" "failed to add docker group to $USER" && \
-debug "failed to add docker group to $USER. Proceed with caution or do it yourself."
+sudo usermod -aG docker $USER
+debug "exit status is $1"
+enter_continue
+
+ || log "docker" "failed to add docker group to $USER" && \
+debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
+if installing BTCPay server, then the rest of the intstallation will fail."
 }
