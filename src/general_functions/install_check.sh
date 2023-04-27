@@ -10,13 +10,11 @@ if [[ $1 == "continue" ]] ; then
     fi
 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
-
         then 
             log "$program_name" "Install error. Already installed"
             install_error "$program_name"
             previous_menu
             return 1 
-
         else 
             log "$program_name" "Install check passed; not installed. Continuing."
             return 0
