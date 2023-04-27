@@ -4,32 +4,32 @@ set_terminal_bit_higher
 echo "
 ########################################################################################
 #                                                                                      #
-#                           P A R M A N O D E - Main Menu                              # 
-#                                                                                      # 
+#                           P A R M A N O D E - Main Menu                              #
+#                                                                                      #
 #                                                                                      #
 #           (i)         Install Parmanode ..................(Hint: start here)         #
 #                                                                                      #
 #           (a)         Add more programs ..........(Can install Bitcoin here)         #
-#                                                                                      # 
+#                                                                                      #
 #           (p)         Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
 #           (r)         Remove programs                                                #
 #                                                                                      #
-#           (l)         See logs and configuration files                               # 
+#           (l)         See logs and configuration files                               #
 #                                                                                      #
 #           (pp)        Parmanode Premium                                              #
 #                                                                                      #
 #           (e)         Education                                                      #
 #                                                                                      #
-#           (t)         Tools                                                          #           
+#           (t)         Tools                                                          #
 #                                                                                      #
-#           (d)         Donate ;)                                                      #  
+#           (d)         Donate ;)                                                      #
 #                                                                                      #
 #           (u)         Uninstall Parmanode ..........(Who'd do such a thing?)         #
 #                                                                                      #
-#           (ap)        About Parmanode                                                #      
+#           (ap)        About Parmanode                                                #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
