@@ -61,7 +61,7 @@ case $choice in
        ;;
     
     t|T|tor|Tor)
-       #install_tor 
+       install_tor 
        return 0 ;;
 
     q|Q|quit|QUIT)
