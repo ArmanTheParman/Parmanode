@@ -4,7 +4,7 @@
 # code to contine.
 
 function debug {
-echo "Debut point. Message:"
+echo "Debug point. Message:"
 echo "$1"
 log "debug" "$1"
 enter_continue
