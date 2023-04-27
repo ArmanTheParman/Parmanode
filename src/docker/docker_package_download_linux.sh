@@ -49,5 +49,4 @@ fi
 
 
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
-fi
 }
