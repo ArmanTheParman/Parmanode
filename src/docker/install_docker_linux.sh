@@ -85,15 +85,18 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "xpq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
-y|Y|YES|yes|Yes) 
+case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
+y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
-    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-p is stored in memory until the next time the user's group membership changes. This output is then piped to the grep command, which searches for the string "docker" in the output.
+    docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+    docker-ce-rootless-extras -y
+    break ;;
 
-If the output of id | grep docker is not showing the updated group membership, it is likely because the user's group membership has not been updated since the last time the command was run. In this case, sourcing the /etc/group file will not refresh the output of the command, as the group membership information is already stored in memory.
-
-To refresh the output of id | grep docker, you can try one of the methods mentioned earlier, such as using the newgrp
+n|N|NO|No)
+    log "docker" "skipping uninstall of old Docker versions" ; break ;;
+*) invalid ;;
+esac
 done
 
 # download_docker_linux
