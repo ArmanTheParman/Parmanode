@@ -15,7 +15,7 @@ echo "
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#           (r)         Remove programs                                                #
+#           (r)         Remove (uninstall) programs                                    #
 #                                                                                      #
 #           (l)         See logs and configuration files                               #
 #                                                                                      #

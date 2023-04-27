@@ -35,6 +35,11 @@ uninstall_fulcrum
 return 0
 ;;
 
+btcp|BTCP|Btcp)
+uninstall_btcpay
+return 0
+;;
+
 t|T|TOR|Tor|tor)
 uninstall_tor
 return 0
