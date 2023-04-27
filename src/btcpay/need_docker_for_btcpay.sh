@@ -10,9 +10,9 @@ set_terminal ; echo "
 
     Push ahead with Docker installation?
 
-                           y)      Yes, please, that'd be lovely
+                      y)      Yes, please, that'd be lovely
 
-                           n)      No thanks, don't touch my computer
+                      n)      No thanks, don't touch my computer
 
 ########################################################################################
 "

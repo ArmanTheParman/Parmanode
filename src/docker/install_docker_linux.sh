@@ -1,5 +1,23 @@
 function install_docker_linux {
 
+if [[ $1 == "menu" ]] ; then
+#Docker explainer
+set_terminal ; echo "
+########################################################################################
+
+                                     DOCKER
+    
+    Docker is a technology that allows software applications to be packaged and run 
+    in a way that is more efficient and portable. With Docker, developers can create 
+    "containers" that include all the necessary parts of an application, such as the 
+    code, operating system, and other dependencies. These containers are like mini
+    virtual computers that run inside real computers.
+
+########################################################################################
+"
+enter_continue
+fi   
+
 install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
 
 #exclude Linux distros that don't have apt-get
@@ -7,6 +25,9 @@ if ! command -v apt-get ; then
 unable_install_docker_linux && return 1
 fi
 
+if [[ $1 == "btcpay" ]] ; then
+log "btcpay" "install docker from btcpay install"
+else
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -35,13 +56,12 @@ i|I|install|Install)
 *) invalid ;;
 esac 
 done
+fi
 
 while true ; do
 set_terminal ; echo "
 ########################################################################################
     
-                                  Pushing on...
-
     Docker manuals recommend running an UNINSTALL command in case there are older
     versions on the system which might cause conflicts. Shall Parmanode do that for
     you now?
@@ -58,7 +78,8 @@ y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
     docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-    docker-ce-rootless-extras ;;
+    docker-ce-rootless-extras
+    break ;;
 
 n|N|NO|No) 
     log "docker" "skipping uninstall of old Docker versions" ; break ;;

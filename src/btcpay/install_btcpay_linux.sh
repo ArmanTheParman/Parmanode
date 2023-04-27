@@ -4,19 +4,17 @@ function install_btcpay_linux {
 install_check "btcpay"
     if [ $? == 1 ] ; then return 1 ; fi
 
-if ! command -v docker ; then
+if ! command -v docker >dev/null 2>&1 ; then
     need_docker_for_btcpay || return 1 
-    install_docker_linux || return 1
+    install_docker_linux "btcpay" || return 1
     fi
 
-    if ! command -v bitcoin-cli ; then
+    if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal
     echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."
     enter_continue
     return 1
     fi
-
-    install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
 
 while true ; do user_pass_check_exists 
     return_status=$?

@@ -14,6 +14,8 @@ echo "
                      (b)        Bitcoin Core
 
                      (f)        Fulcrum (an Electrum Server)
+
+                     (d)        Docker
                     
                      (btcp)     BTCPay Server
 
@@ -52,6 +54,10 @@ case $choice in
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac || return 1 ; fi
        return 0 
        ;;
+    d|D)
+        set_terminal
+        install_docker_linux "menu"
+        ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
        install_btcpay_linux || return 1 
