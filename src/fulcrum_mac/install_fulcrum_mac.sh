@@ -1,7 +1,7 @@
 function install_fulcrum_mac {
 set_terminal
 
-install_check "fulcrum-start"
+install_check "fulcrum"
   #first check if Fulcrum has been installed
   return_value="$?"
   if [[ $return_value == "1" ]] ; then return 1 ; fi       #Fulcrum already installed
