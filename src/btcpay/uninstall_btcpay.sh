@@ -13,7 +13,7 @@ while true ; do set_terminal ; echo "
 
 ########################################################################################
 "
-choose "epq" ; read
+choose "epq" ; read choice
 case $choice in 
 Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 
