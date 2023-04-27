@@ -29,7 +29,7 @@ docker rm btcpay
 docker rmi btcpay
 
 #remove directories
-rm -rf $HOME/.btcpayserver $HOME/.nbxploerer
+rm -rf $HOME/.btcpayserver $HOME/.nbxplorer
 
 installed_config_remove "btcpay"
 log "btcpay" "Uninstalled"
