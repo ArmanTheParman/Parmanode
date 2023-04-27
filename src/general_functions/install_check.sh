@@ -3,17 +3,13 @@
 # Default is $2 is "i==1"
 
 function install_check { 
-log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
 program_name=$1
-log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
 arg2=$2
-log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
 
-    if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
+    if grep -q "$program_name-end" $HOME/.parmanode/installed.conf 2>/dev/null
 
     then 
         if [[ $arg2 == "i=0" || $arg2 == "i==0" ]] ; then return 0 ; fi
-        log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
         log "$program_name" "Install error. Already installed"
         install_error "$program_name"
         previous_menu
@@ -21,7 +17,6 @@ log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
 
     else 
         if [[ $arg2 == "i=0" || $arg2 == "i==0" ]] ; then return 1 ; fi
-        log "install_check" "1 is $1, 2 is $2, arg2 is $arg2"
         log "$program_name" "Install check passed; not installed. Continuing."
         return 0
     fi
