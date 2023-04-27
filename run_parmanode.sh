@@ -5,7 +5,7 @@
 
 	for file in ./src/**/*.sh ; do
 
-		if [[ $file != *"/postgress_script.sh" ]]; then
+		if [[ $file != *"/postgres_script.sh" ]]; then
 	    source $file
 		fi 
 

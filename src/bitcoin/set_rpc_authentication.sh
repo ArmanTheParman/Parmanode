@@ -86,7 +86,7 @@ function set_rpc_authentication_update_conf_edits {
 ########################################################################################
 "
 enter_continue
-stop_bitcoind ; if [ $? == 1 ] ; then ; echo "Unable to stop bitcoin daemon. Aborting password change."
+stop_bitcoind ; if [ $? == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
 										enter_continue ; return 1 ; fi
 
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"

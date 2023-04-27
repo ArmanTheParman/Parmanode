@@ -3,7 +3,7 @@ function install_docker_linux {
 docker_install_check ; if [ $? == 1 ] ; then return 1 ; fi
 
 #exclude Linux distros that don't have apt-get
-if [[ ! command -v apt-get ]] ; then
+if ! command -v apt-get ; then
 unable_install_docker_linux && return 1
 fi
 
