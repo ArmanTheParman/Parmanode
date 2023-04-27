@@ -43,7 +43,7 @@ if [ $exit_status != 0 ] ; then
 fi
 
 
-sudo usermod -aG docker $USER $$ log "docker" "exit status of usermod is $?"
+sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
 
 if id | grep docker ; then true ; else 
 debug "failed to add docker group to $USER. Proceed with caution or do it yourself. \
