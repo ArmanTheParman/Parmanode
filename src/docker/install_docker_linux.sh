@@ -100,7 +100,7 @@ done
 
 # download_docker_linux
 log "docker" "docker auto install linux ..." 
-docker_package_download_linux
+docker_package_download_linux || return 1
 log "docker" "... exited docker package download linux"
 
 installed_config_add "docker-end" 
