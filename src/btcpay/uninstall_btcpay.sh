@@ -6,22 +6,19 @@ while true ; do set_terminal ; echo "
  
     Parmanode will uninstall BTCPay from your system (Not Docker). Are you sure you
     want to continue?
-                                y)    Yes
 
+                                y)    Yes
 
                                 n)    No
 
 ########################################################################################
 "
 choose "epq" ; read
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P|N|n|No|NO|no) return 1 ;; 
-
-    y|Y|Yes|YES|yes)    
-    break
-    ;;
-    
-    *)
-    invalid ;;
+case $choice in 
+Q|q|Quit|QUIT) exit 0 ;;
+p|P|N|n|No|NO|no) return 1 ;; 
+y|Y|Yes|YES|yes) break ;;
+*) invalid ;;
 esac
 done
 
