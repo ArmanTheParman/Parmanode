@@ -3,11 +3,8 @@
 # Default is $2 is "i==1"
 
 function install_check { 
-log "install_check" "arg 1 is $1, arg 2 is $2"
 program_name=$1
-log "install_check" "arg 1 is $1, arg 2 is $2"
 arg2=$2
-log "install_check" "arg 1 is $1, arg 2 is $2"
 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
 
