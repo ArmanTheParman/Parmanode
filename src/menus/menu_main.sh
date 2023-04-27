@@ -3,33 +3,35 @@ while true ; do
 set_terminal_bit_higher
 echo "
 ########################################################################################
-
-                             P A R M A N O D E - Main Menu 
-            
-
-            (i)         Install Parmanode ..................(Hint: start here)
-
-            (a)         Add more programs ..........(Can install Bitcoin here)
-
-            (p)         Programs ...............(Bitcoin, Fulcrum, BTCPay etc) 
-
-            (r)         Remove programs
-
-            (l)         See logs and configuration files
-
-            (pp)        Parmanode Premium 
-
-            (e)         Education
-
-            (t)         Tools
-
-            (d)         Donate
-
-            (u)         Uninstall Parmanode ..........(Who'd do such a thing?)
-
-            (ap)        About Parmanode
-
-
+#                                                                                      #
+#                           P A R M A N O D E - Main Menu                              # 
+#                                                                                      # 
+#                                                                                      #
+#           (i)         Install Parmanode ..................(Hint: start here)         #
+#                                                                                      #
+#           (a)         Add more programs ..........(Can install Bitcoin here)         #
+#                                                                                      # 
+#           (p)         Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
+#                                                                                      #
+#--------------------------------------------------------------------------------------#
+#                                                                                      #
+#           (r)         Remove programs                                                #
+#                                                                                      #
+#           (l)         See logs and configuration files                               # 
+#                                                                                      #
+#           (pp)        Parmanode Premium                                              #
+#                                                                                      #
+#           (e)         Education                                                      #
+#                                                                                      #
+#           (t)         Tools                                                          #           
+#                                                                                      #
+#           (d)         Donate ;)                                                      #  
+#                                                                                      #
+#           (u)         Uninstall Parmanode ..........(Who'd do such a thing?)         #
+#                                                                                      #
+#           (ap)        About Parmanode                                                #      
+#                                                                                      #
+#                                                                                      #
 ########################################################################################
 "
 choose "xq"
