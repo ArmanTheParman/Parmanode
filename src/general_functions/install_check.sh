@@ -8,6 +8,7 @@ if [[ $1 == "continue" ]] ; then
     else
     return 0
     fi
+fi
 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
         then 
