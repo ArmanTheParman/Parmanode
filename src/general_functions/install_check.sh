@@ -1,3 +1,6 @@
+# Argumen 1 passes program name. If already installed, then error processing.
+# If argument $2 is "i==0" then calling function wants opposite behaviour.
+# Default is $2 is "i==1"
 
 function install_check { 
 program_name=$1
@@ -5,18 +8,19 @@ program_name=$1
     if grep -q "$1" $HOME/.parmanode/installed.conf 2>/dev/null
 
     then 
+        if [[ $2 == "i=0" || $2 == "i==0" ]] ; then return 0 ; fi
         log "$1" "Install error. Already installed"
         install_error "$program_name"
         previous_menu
         return 1 
 
     else 
+        if [[ $2 == "i=0" || $2 == "i==0" ]] ; then return 1 ; fi
         log "$1" "Install check passed; not installed. Continuing."
         return 0
 
 
     fi
-
 }
 
 function install_error {

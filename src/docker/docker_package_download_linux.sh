@@ -16,6 +16,7 @@ get_linux_version_codename && echo \
 
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
+&& installed_config_add "docker-start" \
 || log "docker" "docker install failed" && return 1
 
 sudo usermod -aG docker $USER || log "docker" "failed to add docker group to $USER" && \

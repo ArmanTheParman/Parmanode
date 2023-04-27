@@ -1,6 +1,6 @@
 function install_docker_linux {
 
-docker_install_check ; if [ $? == 1 ] ; then return 1 ; fi
+install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
 
 #exclude Linux distros that don't have apt-get
 if ! command -v apt-get ; then
@@ -35,8 +35,6 @@ i|I|install|Install)
 *) invalid ;;
 esac 
 done
-
-########################################################################################
 
 while true ; do
 set_terminal ; echo "
@@ -73,7 +71,7 @@ log "docker" "docker auto install linux ..."
 docker_package_download_linux
 log "docker" "... exited docker package download linux"
 
-installed_config_add "docker" 
+installed_config_add "docker-end" 
 log "docker" "Install success." 
 success "Docker" "insalling."
 
