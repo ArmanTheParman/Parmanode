@@ -13,7 +13,7 @@ echo "
                                
                              (f)      Fulcrum Server 
 
-							 (d)      Docker
+                             (d)      Docker
 
                              (btcp)   BTCPay Server
 
