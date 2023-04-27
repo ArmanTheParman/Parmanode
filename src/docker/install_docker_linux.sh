@@ -1,5 +1,10 @@
 function install_docker_linux {
 
+#exclude Linux distros that don't have apt-get
+if ! command -v apt-get ; then
+unable_install_docker_linux && return 1
+fi
+
 if [[ $1 == "menu" ]] ; then
 #Docker explainer
 set_terminal ; echo "
@@ -16,20 +21,26 @@ set_terminal ; echo "
 ########################################################################################
 "
 enter_continue
-fi   
 
 install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
 
-#exclude Linux distros that don't have apt-get
-if ! command -v apt-get ; then
-unable_install_docker_linux && return 1
-fi
+fi   
+
 
 if [[ $1 == "btcpay" ]] ; then
-log "btcpay" "install docker from btcpay install"
+
+    install_check "docker" "continue" 
+    if [ $? == 1 ] ; then 
+    set_terminal ; echo "Docker is already installed. Skipping its installation."
+    enter_continue
+    log "btcpay" "Docker already installed. Skipping its installation. Continue with BTCPay install."
+    return 0 ; fi #The point is to exit without error
+
+    log "btcpay" "install docker from btcpay install"
+
 else
-while true ; do
-set_terminal ; echo "
+
+while true ; do set_terminal ; echo "
 ########################################################################################
 
                                 Install Docker

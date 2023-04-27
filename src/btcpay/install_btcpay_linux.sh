@@ -5,8 +5,11 @@ install_check "btcpay"
     if [ $? == 1 ] ; then return 1 ; fi
 
 if ! command -v docker >dev/null 2>&1 ; then
+
     need_docker_for_btcpay || return 1 
+
     install_docker_linux "btcpay" || return 1
+
     fi
 
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
