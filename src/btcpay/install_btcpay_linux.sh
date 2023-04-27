@@ -13,6 +13,7 @@ if [ $1 != "resume" ] ; then
         install_docker_linux "btcpay" || return 1
 
         fi
+
 }
 else
 installed_config_remove "btcpay-half"

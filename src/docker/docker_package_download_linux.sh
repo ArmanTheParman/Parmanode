@@ -24,7 +24,7 @@ if [ $exit_status != 0 ] ; then
 echo ""
 echo ""
 echo "An error at this stage is sometimes fixed by repeating "
-echo "the command. Repeating in 10 secons ..." 
+echo "the command. Repeating in 10 seconds ..." 
 sleep 10
 counter=$((counter + 1 ))
 continue
@@ -49,10 +49,5 @@ fi
 
 
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
-
-if cat /etc/group | grep docker | grep $whoami ; then
-log "docker" "docker update in users's /etc/group"
-else
-debug "failed to add docker group to $USER. Proceed with caution or do it yourself."
 fi
 }
