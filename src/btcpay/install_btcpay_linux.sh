@@ -2,11 +2,11 @@ function install_btcpay_linux {
 
 # Install checks...
 
-    install_check "btcpay" "i==0" 
-        if [ $? == 1 ] ; then 
-        need_docker_for_btcpay && \ 
-        install_docker_linux || return 1 
-        fi
+install_check "btcpay" "i==0" #if already installed, exit status 0 
+    if [ $? == 1 ] ; then 
+    need_docker_for_btcpay && \ 
+    install_docker_linux || return 1 
+    fi
 
     if ! command -v bitcoin-cli ; then
     set_terminal
