@@ -38,7 +38,7 @@ return 0
 ;;
 
 d|D) 
-uninstall_docker_linux || debug "failed to uninstall docker"
+uninstall_docker_linux 
 return 0
 ;;
 
