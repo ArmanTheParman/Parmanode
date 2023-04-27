@@ -82,4 +82,21 @@ DOCKER FULCRUM SHENANIGANARY
     containing the function to edit the conf file, followed by the function and 
     parameters. It's a roundabout way, but it works.
 
+DOCKER INSTALL FROM BTCPAY INSTALL SHENANIGANARY
+
+    Docker has been a pain in the arse. After install, using usermod -aG docker $USER
+    to add the user to the docker group is useful to avoid needing sudo to run 
+    docker with every command. However, the memory needs to be refreshed,and every 
+    way possible, that I could find, to refresh the memory, causes a new shell
+    environment which causes the parmanode script to exit. So, I am getting the user
+    to exit parmandoe and re-run it once docker installs. The problem is that the
+    docker installation function is called by the btcpay install function. So to
+    get the function to continue exactly where it left off when the user comes back
+    has not been difficult, but it makes the code lood ugly and hard to follow. At 
+    the point of exiting, I've added a flag to the install config file "btcpay-half"
+    and then at the run_parmanode script, I've checked for that existing, and if so,
+    it runs the btcpay install function, but with an argument, "resume". An if 
+    statement splits the code so the start section is skipped if "resume" exists.
+    Upon exiting the function (return 1 or 2), menu main is called again.
+
 

@@ -1,16 +1,22 @@
 function install_btcpay_linux {
 
-# Install checks...
-install_check "btcpay"
-    if [ $? == 1 ] ; then return 1 ; fi
+if [ $1 != "resume" ] ; then
+{
+    # Install checks...
+    install_check "btcpay"
+        if [ $? == 1 ] ; then return 1 ; fi
 
-if ! command -v docker >dev/null 2>&1 ; then
+    if ! command -v docker >dev/null 2>&1 ; then
 
-    need_docker_for_btcpay || return 1 
+        need_docker_for_btcpay || return 1 
 
-    install_docker_linux "btcpay" || return 1
+        install_docker_linux "btcpay" || return 1
 
-    fi
+        fi
+}
+else
+installed_config_remove "btcpay-half"
+fi
 
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal

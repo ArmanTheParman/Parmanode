@@ -28,6 +28,10 @@
 
     source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
 
+# Continue if user left unfinished
+	if cat $HOME/.parmanode/parmanode.conf | grep "btcpay-half" ; then
+          install_btcpay_linux "resume"
+		  fi
 #Begin program:
 
 	set_terminal # custom function for screen size and colour.
