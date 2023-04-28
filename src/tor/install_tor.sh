@@ -39,9 +39,5 @@ set_terminal ; echo "
     Mac users can stop Tor from the terminal with :
 
             brew services stop tor
-
-########################################################################################
-"
-enter_continue
-return 0
-}
+parman@ParmanGPU:~/coding/parmanode$ curl --insecure http://localhost:23001
+curl: (56) Recv failure: Connection reset by peer
