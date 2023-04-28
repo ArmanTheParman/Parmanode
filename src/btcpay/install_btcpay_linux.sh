@@ -51,7 +51,7 @@ log "btcpay" "entering build_btcpay..."
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
 
-if ! cat $HOME/.bitoin/bitcoin.conf | grep "rpcport=8335" >/dev/null 2>&1 ; then
+if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcport=8335" >/dev/null 2>&1 ; then
     bitcoin_conf_add "rpcport=8335" && sudo systemctl restart bitcoind.service
     fi
 
