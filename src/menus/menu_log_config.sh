@@ -14,8 +14,10 @@ set_terminal ; echo "
     your computer's file system. Most are located in $HOME/.parmanode/
     (Note the \".\", that's not an accident)
 
-    Hit <enter> to continue, and (Free Ross) to hide this message next time.
-    
+    Hit <enter> to continue 
+    or 
+    Hit <enter> and (Free Ross) to hide this message next time    
+
 ########################################################################################
 "
 choose "xpq" ; read choice
