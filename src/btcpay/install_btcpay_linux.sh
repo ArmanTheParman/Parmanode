@@ -60,7 +60,9 @@ run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering start_postgress..."
-start_postgres && create_pg_databases
+start_postgres && make_postgres_user && create_pg_databases \
+&& log "btcpay" "three postgres functions completed" \
+|| log "btcpay" "three postgress functions failed"
 
 log "btcpay" "entering run_nbxplorer.."
 run_nbxplorer

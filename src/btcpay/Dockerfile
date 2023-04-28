@@ -23,7 +23,6 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 RUN apt install postgresql-13 postgresql-contrib -y 
 USER postgres
 COPY postgres_script.sh /usr/local/bin
-RUN /usr/local/bin/postgres_script.sh
 
 USER parman
 
