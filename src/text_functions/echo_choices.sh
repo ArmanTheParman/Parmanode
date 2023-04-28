@@ -70,7 +70,7 @@ return 0
 function please_wait { 
 set_terminal
 echo "
-Please wait, this will take a some time...
+Please wait, this may take a some time...
 "
 return 0
 }
