@@ -22,8 +22,5 @@ log "btcpay" "docker run btcpay executed" && return 0 \
     # make sure the 8080 port is not duplicated when other programs, eg RTL, are added.
     # 49392 is for REST API
     # 9735 is not needed by BTCpay; LND uses that for LN protocol communication
-    # 8332 on the host is in use by Fulcrum. New port to listen will be 8335. 
-              #"port switch" at container interface.
-              #add rpcport=8335 to bitcoin conf
     # 8070, 8060 and 8050 are spare ports so users wont have to re-run (remake) the container for
     # extra features later.
