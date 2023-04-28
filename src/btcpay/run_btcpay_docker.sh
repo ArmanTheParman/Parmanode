@@ -9,7 +9,7 @@ docker run -d \
            -p 49392:49392 \
            -p 5432:5432 \
            -p 9735:9735 \
-           -p 8335:8332 \
+           -p 8332:8332 \
            btcpay && \
 log "btcpay" "docker run btcpay executed" && return 0 \
 || log "btcpay" "docker run btcpay failed" && return 1 
