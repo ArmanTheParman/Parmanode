@@ -1,7 +1,4 @@
 function menu_main {
-
-#. $original_dir/src/menus/menu_log_config.sh >/dev/null 2>&1 #to refresh as new log files not being "seen"
-
 while true ; do
 set_terminal_bit_higher
 echo "

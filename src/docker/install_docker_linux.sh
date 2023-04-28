@@ -112,22 +112,23 @@ set_terminal ; echo "
 ######################################################################################## 
 
     In order for Docker to run properly from the Parmanode menu, Parmanode must first
-    exit. When you return, the BTCPay installation will continue.
+    exit. You can then immediately run Parmanode again. When you return, the BTCPay 
+    installation will continue.
 
 ########################################################################################
 "
-enter_continue ; installed_config_add "btcpay-half" ; exit 0
+installed_config_add "btcpay-half" ; enter_continue ; exit 0
+# run_parmanode looks for flag, "btcpay-half"
+
 else
 set_terminal ; echo "
 ######################################################################################## 
 
     In order for Docker to run properly from the Parmanode menu, Parmanode must first
-    exit. 
+    exit. You can then immediately run Parmanode again. 
 
 ########################################################################################
 "
 enter_continue ; exit 0
 fi
-
-return 0
 }

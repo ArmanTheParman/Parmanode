@@ -30,7 +30,6 @@
 
 # Continue if user left unfinished
 	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
-	      debug "starting btcpay-half, with resume"
           install_btcpay_linux "resume"
 		  fi
 #Begin program:

@@ -1,6 +1,6 @@
 function install_btcpay_linux {
 
-if [ -z $1 ] ; then
+if [[ $1 != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
     install_check "btcpay"
