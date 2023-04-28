@@ -1,7 +1,8 @@
 # createuser postgres function done in dockerfile.
 
 function start_postgres {
-/usr/bin/pg_ctlcluster 13 main start
+docker exec -d -u postgres btcpay /bin/bash -c "/usr/bin/pg_ctlcluster 13 main start" \
+|| log "btcpay" "failed to start postgress"
 }
 
 function create_pg_databases {

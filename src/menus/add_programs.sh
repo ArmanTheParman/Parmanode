@@ -57,6 +57,7 @@ case $choice in
     d|D)
         set_terminal
         install_docker_linux "menu"
+        return 0
         ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
@@ -64,6 +65,7 @@ case $choice in
        else
        set_terminal ; echo "Only available for Linux, currently" ; enter_continue
        fi
+       return 0
        ;;
     
     t|T|tor|Tor)
