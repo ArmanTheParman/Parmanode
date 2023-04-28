@@ -8,7 +8,7 @@ set_terminal ; echo "
     BTCPay will be installed inside a Docker container (a virtual computer) together 
     with its backend programs: NBXplorer and Postgres database. 
 
-    Push ahead with Docker installation?
+    Push ahead with Docker installation? (Will automoatically skip if Docker instaled)
 
                       y)      Yes, please, that'd be lovely
 
