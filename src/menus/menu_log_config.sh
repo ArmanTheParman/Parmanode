@@ -42,6 +42,8 @@ while true ; do set_terminal ; echo "
 
                         pa)            parmanode_all.log
 
+                        delete)        DELETE ALL LOGS (not conf)
+
 ########################################################################################
 "
 choose "xpq" ; read choice
@@ -60,6 +62,7 @@ nbxpc) less $HOME/.nbxplorer/Main/settings.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
 pl) less $HOME/.parmanode/parmanode.log ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
+delete|DELETE|Delete) rm $HOME/.parmanode/*.log ;;
 *) invalid ;;
 esac
 done
