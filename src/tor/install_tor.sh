@@ -10,14 +10,14 @@ set_terminal ; echo "
 
 ########################################################################################    
 "
-choose "epq" ; read choice 
+choose "epq" ; read choice
 case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 
 set_terminal
 
 if [[ $OS == "Linux" ]] ; then sudo apt install tor -y ; enter_continue || errormessage && return 1 ; fi
-if [[ $OS == "Mac" ]] ; then 
-    while ! command -v brew ; do 
+if [[ $OS == "Mac" ]] ; then
+    while ! command -v brew ; do
         set_terminal ; echo "Homebrew needs to be installed. Do that now (y) (n)?"
         read choice
         case $choice in y|Y) install_homebrew ;; n|N) break ;; esac
@@ -39,5 +39,9 @@ set_terminal ; echo "
     Mac users can stop Tor from the terminal with :
 
             brew services stop tor
-parman@ParmanGPU:~/coding/parmanode$ curl --insecure http://localhost:23001
-curl: (56) Recv failure: Connection reset by peer
+
+########################################################################################
+"
+enter_continue
+return 0
+}
