@@ -25,12 +25,13 @@ done
 
 # stop containers, delete containers, delete images
 please_wait
-sudo docker stop btcpay || log "btcpay" "failed to stop btcpay"
-sudo docker rm btcpay || log "btcpay" "failed to remove btcpay docker container"
-sudo docker rmi btcpay || log "btcpay" "failed to remive btcpay image"
+echo "Stopping containers..." && sudo docker stop btcpay || log "btcpay" "failed to stop btcpay"
+echo "Removing containers..." && sleep 1 && sudo docker rm btcpay || log "btcpay" "failed to remove btcpay docker container"
+echo "Removing Docker images..." && sleep 1 && sudo docker rmi btcpay || log "btcpay" "failed to remive btcpay image"
 
 #remove directories
-rm -rf $HOME/.btcpayserver $HOME/.nbxplorer || log "btcpay" "failed to delete .btcpayserver and .nbxplorer"
+echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer \
+|| log "btcpay" "failed to delete .btcpayserver and .nbxplorer"
 
 installed_config_remove "btcpay"
 log "btcpay" "Uninstalled"
