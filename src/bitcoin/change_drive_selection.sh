@@ -1,7 +1,7 @@
 # CHECK CONFIG FOR DRIVE CHOICE, AND OFFER USER TO SWAP CHOICE.
 
 function change_drive_selection {
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 while true ; do
 
@@ -47,7 +47,7 @@ read choice
             log "bitcoin" "drive choice changed from earlier selection"
 			delete_line "$HOME/.parmanode/parmanode.conf" "drive="  >/dev/null  #clean up potential multiple entries before writing.
 			echo "drive=$drive_swap_choice" >> "$HOME/.parmanode/parmanode.conf" 2>/dev/null
-			source $HOME/.parmanode/parmanode.conf #updates drive variable for this shell session.
+			source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 #updates drive variable for this shell session.
             fi
             ;;
         p|P) return 1 ;; q|Q|quit|QUIT) exit 0 ;; *) invalid ;;

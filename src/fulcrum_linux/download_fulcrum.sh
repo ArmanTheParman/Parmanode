@@ -2,7 +2,7 @@ function download_fulcrum {
 
 cd $HOME/parmanode/fulcrum || { debug "Failed to change into fulcrum directory. Aborting" ; return 1 ; }
 
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 if [[ $OS == "Linux" ]] ; then
 
         if [[ $chip == "x86_64" ]] ; then

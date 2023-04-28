@@ -102,7 +102,7 @@ run_bitcoind
 
 function add_userpass_to_fulcrum {
 
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 	if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; fi
 

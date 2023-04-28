@@ -33,7 +33,7 @@ Fulcrum is not installed. No need to uninstall. Exiting.
 fi
 
 log "fulcrum" "uninstall commenced"
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #parmanode_conf_remove "fulcrum"
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
