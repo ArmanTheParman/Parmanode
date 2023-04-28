@@ -24,6 +24,7 @@ done
 
 
 # stop containers, delete containers, delete images
+please_wait
 docker stop btcpay
 docker rm btcpay
 docker rmi btcpay
