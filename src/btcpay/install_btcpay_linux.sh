@@ -53,6 +53,7 @@ build_btcpay
 
 if ! cat $HOME/.bitoin/bitcoin.conf | grep "rpcport=8335" >/dev/null 2>&1 ; then
     bitcoin_conf_add "rpcport=8335" && sudo systemctl restart bitcoind.service
+    fi
 
 log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
