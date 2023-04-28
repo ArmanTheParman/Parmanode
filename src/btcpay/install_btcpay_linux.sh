@@ -68,5 +68,6 @@ run_btcpay
 
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
+log "btcpay" "Btcpay install success"
 return 0
 }
