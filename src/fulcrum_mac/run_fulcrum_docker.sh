@@ -1,6 +1,6 @@
 function run_fulcrum_docker {
 
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
 

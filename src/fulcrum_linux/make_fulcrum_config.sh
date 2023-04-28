@@ -1,5 +1,5 @@
 function make_fulcrum_config {
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 # make config file
 if [[ -z $rpcuser ]] ; then #from parmanode.conf 
