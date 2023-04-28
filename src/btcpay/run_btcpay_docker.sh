@@ -7,6 +7,8 @@ docker run -d \
            -p 8080:8080 \
            -p 23001:80 \
            -p 49392:49392 \
+           -p 5432:5432 \
+           -p 9735:9735 \
            btcpay && \
 log "btcpay" "docker run btcpay executed" && return 0 \
 || log "btcpay" "docker run btcpay failed" && return 1 

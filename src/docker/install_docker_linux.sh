@@ -108,25 +108,29 @@ log "docker" "Install success."
 success "Docker" "insalling."
 
 if [[ $installed_from == "btcpay" ]] ; then
-set_terminal ; echo "
+set_terminal "pink" ; echo "
+######################################################################################## 
 ######################################################################################## 
 
     In order for Docker to run properly from the Parmanode menu, Parmanode must first
     exit. You can then immediately run Parmanode again. When you return, the BTCPay 
     installation will continue.
 
+######################################################################################## 
 ########################################################################################
 "
 installed_config_add "btcpay-half" ; enter_continue ; exit 0
 # run_parmanode looks for flag, "btcpay-half"
 
 else
-set_terminal ; echo "
+set_terminal "pink" ; echo "
+######################################################################################## 
 ######################################################################################## 
 
     In order for Docker to run properly from the Parmanode menu, Parmanode must first
     exit. You can then immediately run Parmanode again. 
 
+######################################################################################## 
 ########################################################################################
 "
 enter_continue ; exit 0

@@ -31,11 +31,12 @@
 # Continue if user left unfinished
 	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
           install_btcpay_linux "resume"
+		  skip_intro="true"
 		  fi
 #Begin program:
 
 	set_terminal # custom function for screen size and colour.
-	intro
+	if [[ $skip_intro != "true" ]] ; then intro ; fi
 	menu_main
 
 exit 0
