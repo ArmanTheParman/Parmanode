@@ -1,7 +1,7 @@
 function run_btcpay_docker {
 
 docker run -d \
-           --name btcpay \ 
+           --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            -p 8080:8080 \
