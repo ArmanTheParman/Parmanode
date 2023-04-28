@@ -34,6 +34,6 @@ rm -rf $HOME/.btcpayserver $HOME/.nbxplorer
 
 installed_config_remove "btcpay"
 log "btcpay" "Uninstalled"
-success "BTCPay Server" "uninstalled."
+success "BTCPay Server" "being uninstalled."
 return 0
 }
