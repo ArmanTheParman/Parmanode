@@ -16,6 +16,7 @@ if [[ $1 != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start
 }
 else
 installed_config_remove "btcpay-half"
+set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
 
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
