@@ -25,9 +25,9 @@ done
 
 # stop containers, delete containers, delete images
 please_wait
-docker stop btcpay
-docker rm btcpay
-docker rmi btcpay
+sudo docker stop btcpay
+sudo docker rm btcpay
+sudo docker rmi btcpay
 
 #remove directories
 rm -rf $HOME/.btcpayserver $HOME/.nbxplorer
