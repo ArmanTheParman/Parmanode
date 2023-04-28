@@ -51,6 +51,9 @@ log "btcpay" "entering build_btcpay..."
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
 
+if ! cat $HOME/.bitoin/bitcoin.conf | grep "rpcport=8335" >/dev/null 2>&1 ; then
+    bitcoin_conf_add "rpcport=8335" && sudo systemctl restart bitcoind.service
+
 log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
@@ -65,6 +68,7 @@ run_nbxplorer
 log "btcpay" "entering run_btcpay..."
 run_btcpay
     if [ $? == 1 ] ; then return 1 ; fi
+
 
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
