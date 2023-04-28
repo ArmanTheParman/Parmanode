@@ -4,7 +4,7 @@ count=0
 while [ $count -le 1 ] ; do
 
 if docker ps | grep btcpay ; then   
-docker exec -d -u parman btcpay /bin/bash -c "$HOME/parmanode/btcypayserver/run.sh" && \
+docker exec -d -u parman btcpay /bin/bash -c "$HOME/parmanode/btcpayserver/run.sh" && \
     log "btcpay" "btcpay started" && return 0 || log "btcpay" "failed to start btcpay" && return 1    
 else
 docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
