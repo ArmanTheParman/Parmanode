@@ -1,3 +1,5 @@
+Version 2.2.5
+    - Bug if user downloads from github directly to $HOME directory. Fixed.
 Version 2.2.4
     - smol bug fixed
 Version 2.2.3
