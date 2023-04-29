@@ -19,4 +19,3 @@ log "btcpay" "docker run btcpay executed" && return 0 \
     # 8070, 8060 and 8050 are spare ports so users wont have to re-run (remake) the container for
     # extra features later.
 
-\
