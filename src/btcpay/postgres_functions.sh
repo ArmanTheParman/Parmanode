@@ -9,8 +9,7 @@ docker exec -d -u postgres btcpay /bin/bash -c \
     createdb -O postgres nbxplorer"
 
 docker exec -d -u root btcpay /bin/bash -c \
-"echo \"local   nbxplorer  postgres  trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf ; \ 
-echo \"local   btcpayserver postgres  trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf"
+"echo \"host all  postgres  172.17.0.1/32 trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf" 
 }
 
 # /usr/local/bin/postgres_script.sh ; \
