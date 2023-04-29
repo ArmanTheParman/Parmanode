@@ -10,6 +10,7 @@ RUN echo 'parman:parmanode' | chpasswd
 
 USER parman
 
+RUN mkdir -p /home/parman/parmanode
 RUN mkdir -p /home/parman/Downloads
 
 #BTCpay download
