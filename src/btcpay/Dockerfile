@@ -22,9 +22,10 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 # Install postgres and make databases
 RUN apt install postgresql-13 postgresql-contrib -y 
 USER postgres
-COPY postgres_script.sh /usr/local/bin
-
+USER root
+RUN usermod -aG parman postgres
 USER parman
+COPY postgres_script.sh /home/parman/parmanode
 
 # install NBX
 RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
