@@ -7,14 +7,14 @@ docker exec -d -u root btcpay /bin/bash -c \
 docker exec -d -u postgres btcpay /bin/bash -c \
    "/usr/bin/pg_ctlcluster 13 main start" 
    
-docker exec -d -u postgres btcpay /bin/bash -c \
    "createdb -O postgres btcpayserver ; \
     createdb -O postgres nbxplorer"
-}
-# /usr/local/bin/postgres_script.sh ; \
-#createdb -O parman btcpayserver ; \
-#createdb -O parman nbxplorer" \
 
+docker exec -d -u postgres btcpay /bin/bash -c \
+"/usr/local/bin/postgres_script.sh ; \
+createdb -O parman btcpayserver ; \
+createdb -O parman nbxplorer" 
+}
 # config file: /etc/postgresql/13/main/pg_hba.conf 
 
 #docker exec -d -u root btcpay /bin/bash -c \
