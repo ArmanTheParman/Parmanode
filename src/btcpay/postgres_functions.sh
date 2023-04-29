@@ -1,12 +1,16 @@
 # start postgress, create parman database user with script, create 2 databases.
 
 function startup_postgres {
-docker exec -d -u postgres btcpay /bin/bash -c "/usr/bin/pg_ctlcluster 13 main start ; \
-createdb -O postgres btcpayserver ; \
-createdb -O postgres nbxplorer" ; \
-echo "local   nbxplorer  postgres  trust" | sudo tee -a /etc/postgresql*/*/main/pg_hba.conf ; \ 
-echo "local   btcpayserver postgres  trust" | sudo tee -a /etc/postgresql*/*/main/pg_hba.conf ; \
-|| log "btcpay" "failed to do startup postgress"
+docker exec -d -u postgres btcpay /bin/bash -c \
+   "/usr/bin/pg_ctlcluster 13 main start" 
+   
+docker exec -d -u postgres btcpay /bin/bash -c \
+   "createdb -O postgres btcpayserver ; \
+    createdb -O postgres nbxplorer"
+
+docker exec -d -u root btcpay /bin/bash -c \
+"echo \"local   nbxplorer  postgres  trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf ; \ 
+echo \"local   btcpayserver postgres  trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf"
 }
 
 # /usr/local/bin/postgres_script.sh ; \
