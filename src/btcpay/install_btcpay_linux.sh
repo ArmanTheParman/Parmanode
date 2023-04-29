@@ -8,11 +8,11 @@ if [[ $1 != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start
 
     if ! command -v docker >dev/null 2>&1 ; then
 
-        need_docker_for_btcpay || return 1 
+        need_docker_for_btcpay || return 1  #docker="no" or docker="yes" set
 
-        install_docker_linux "btcpay" || return 1
+        if [[ $docker == "yes" ]] ; then install_docker_linux "btcpay" || return 1 ; fi
 
-        fi
+    fi
 }
 else
 installed_config_remove "btcpay-half"

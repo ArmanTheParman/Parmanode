@@ -19,6 +19,8 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 case $choice in Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 y|Yes|Y|yes)
-return 0 ;;
+docker="yes" && return 0 ;;
+n|N|No|NO|no)
+docker="no" && return 0 ;;
 esac
 }
