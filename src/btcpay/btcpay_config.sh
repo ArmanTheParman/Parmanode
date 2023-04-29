@@ -5,7 +5,7 @@ network=mainnet
 port=23001
 bind=0.0.0.0
 chains=btc
-postgres=User ID=postgres;Host=localhost;Port=5432;Database=btcpayserver;
+postgres=User ID=postgres;Host=127.0.0.1;Port=5432;Database=btcpayserver;
 " | tee $HOME/.btcpayserver/Main/settings.config >/dev/null 2>&1 || \
     { log "btcpay" "failed to make settings.config" && \
     log "btcpay" "failed to make settings.config" && errormessage && return 1 ; }
