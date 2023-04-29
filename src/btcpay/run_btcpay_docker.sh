@@ -4,7 +4,6 @@ docker run -d \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
-           --network="host" \
            -p 8080:8080 \
            -p 8070:8070 \
            -p 8060:8060 \
@@ -26,3 +25,5 @@ log "btcpay" "docker run btcpay executed" && return 0 \
     # 9735 is not needed by BTCpay; LND uses that for LN protocol communication
     # 8070, 8060 and 8050 are spare ports so users wont have to re-run (remake) the container for
     # extra features later.
+
+#           --network="host" \
