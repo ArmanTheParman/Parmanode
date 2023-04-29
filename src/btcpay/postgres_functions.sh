@@ -9,7 +9,7 @@ docker exec -d -u postgres btcpay /bin/bash -c \
    #or service posgresql start
 
 docker exec -d -u postgres btcpay /bin/bash -c \
-"/usr/local/bin/postgres_script.sh ; \
+"/home/parman/parmanode/postgres_script.sh ; \
 createdb -O parman btcpayserver ; \
 createdb -O parman nbxplorer" 
 }
