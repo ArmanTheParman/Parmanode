@@ -4,6 +4,7 @@ docker run -d \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
+           --network="host" \
            -p 8080:8080 \
            -p 8070:8070 \
            -p 8060:8060 \
