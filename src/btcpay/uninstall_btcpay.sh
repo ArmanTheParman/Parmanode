@@ -28,7 +28,6 @@ please_wait
 echo "Stopping containers..." && sudo docker stop btcpay || log "btcpay" "failed to stop btcpay. May not be running."
 echo "Removing containers..." && sleep 1 && sudo docker rm btcpay || log "btcpay" "failed to remove btcpay docker container. May not exist."
 echo "Removing Docker images..." && sleep 1 && sudo docker rmi btcpay || log "btcpay" "failed to remove btcpay image. May not exist"
-enter_continue
 
 #remove directories
 echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer \
