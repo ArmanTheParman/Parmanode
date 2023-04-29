@@ -2,7 +2,7 @@
 
 function startup_postgres {
 docker exec -d -u root btcpay /bin/bash -c \
-"echo \"host all  postgres  trust\" | tee -a /etc/postgresql/*/main/pg_hba.conf" 
+"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
 docker exec -d -u postgres btcpay /bin/bash -c \
    "/usr/bin/pg_ctlcluster 13 main start" 
