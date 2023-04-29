@@ -4,10 +4,8 @@ function startup_postgres {
 #docker exec -d -u root btcpay /bin/bash -c \
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
-docker exec -d -u postgres btcpay /bin/bash -c \
-   "/usr/bin/pg_ctlcluster 13 main start" 
-   #or service posgresql start
-
+docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
+sleep 1
 docker exec -d -u postgres btcpay /bin/bash -c \
 "/home/parman/parmanode/postgres_script.sh ; \
 createdb -O parman btcpayserver ; \
