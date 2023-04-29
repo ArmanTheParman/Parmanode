@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 RUN apt-get update
-RUN apt-get install -y wget gpg sudo procps vim nano systemd curl git expect
+RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 

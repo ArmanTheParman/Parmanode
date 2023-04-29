@@ -3,7 +3,7 @@
 
 FROM debian 
 RUN apt-get update
-RUN apt-get install -y wget gpg sudo procps vim nano systemd curl
+RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
