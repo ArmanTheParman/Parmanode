@@ -11,7 +11,7 @@ docker run -d \
            -p 23001:23001 \
            -p 49392:49392 \
            -p 9735:9735 \
-           -p 8332:8332 \
+           -p 8336:8332 \
            btcpay && \
 log "btcpay" "docker run btcpay executed" && return 0 \
 || log "btcpay" "docker run btcpay failed" && return 1
@@ -19,6 +19,7 @@ log "btcpay" "docker run btcpay executed" && return 0 \
 }    
 
     # Notes:
+    # take note of the host bitcoin rpcport.
     # make sure the 8080 port is not duplicated when other programs, eg RTL, are added.
     # 49392 is for REST API
     # 9735 is not needed by BTCpay; LND uses that for LN protocol communication
