@@ -1,7 +1,6 @@
 function create_account_btcpay {
-#disabling for now, may not be needed:
-return 0
-
+#The code runs fine but I can't get it to make a new BTC account``
+#Keeping it for future reference
 while true ; do
 set_terminal ; echo "
 ########################################################################################

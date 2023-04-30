@@ -1,4 +1,4 @@
-function donation {
+function donations {
 set_terminal
 echo "
 ########################################################################################
