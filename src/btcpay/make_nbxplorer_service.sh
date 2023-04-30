@@ -1,10 +1,10 @@
 function make_nbxplorer_service {
-
-echo "[Unit]
+docker exec -it -u root btcpay /bin/bash -c \
+"echo \"[Unit]
 Description=NBXplorer daemon
 
 [Service]
-ExecStart=/usr/bin/dotnet "/home/parman/NBXplorer/NBXplorer/bin/Release/netcoreapp2.1/NBXplorer.dll" -c /home/parman/.nbxplorer/Main/settings.config
+ExecStart=/usr/bin/dotnet \"/home/parman/NBXplorer/NBXplorer/bin/Release/netcoreapp2.1/NBXplorer.dll\" -c /home/parman/.nbxplorer/Main/settings.config
 User=parman
 Group=parman
 Type=simple
@@ -17,7 +17,7 @@ NoNewPrivileges=true
 PrivateDevices=true
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/nbxplorer.service \
+WantedBy=multi-user.target\" | sudo tee /etc/systemd/system/nbxplorer.service" \ 
 && log "nbxplorer" "nbxplorer service file made"
 
 return 0
