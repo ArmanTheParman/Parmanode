@@ -47,6 +47,7 @@ log "btcpay" "entering nbxplorer_config..."
 nbxplorer_config
     if [ $? == 1 ] ; then return 1 ; fi
 
+
 log "btcpay" "entering build_btcpay..."
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
@@ -54,6 +55,9 @@ build_btcpay
 log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
+
+log "nbxplorer" "entering nbxplorer make service file..."
+make_nbxplorer_service
 
 log "btcpay" "entering start_postgress..."
 startup_postgres \
