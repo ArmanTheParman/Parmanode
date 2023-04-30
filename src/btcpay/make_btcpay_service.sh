@@ -18,7 +18,7 @@ ProtectSystem=full
 NoNewPrivileges=true
 PrivateDevices=true
 
-[Install]\" | sudo -a tee /etc/systemd/system/btcpay.service" >/dev/null 2>&1 \
+[Install]\" | sudo tee /etc/systemd/system/btcpay.service" >/dev/null 2>&1 \
 && log "btcpay" "btcpay service file made"
 
 return 0

@@ -17,7 +17,7 @@ NoNewPrivileges=true
 PrivateDevices=true
 
 [Install]
-WantedBy=multi-user.target\" | sudo -a tee /etc/systemd/system/nbxplorer.service" >/dev/null 2>&1 \
+WantedBy=multi-user.target\" | sudo tee /etc/systemd/system/nbxplorer.service" >/dev/null 2>&1 \
 && log "nbxplorer" "nbxplorer service file made"
 
 return 0
