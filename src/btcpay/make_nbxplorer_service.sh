@@ -4,7 +4,7 @@ docker exec -it -u root btcpay /bin/bash -c \
 Description=NBXplorer daemon
 
 [Service]
-ExecStart=/usr/bin/dotnet \"/home/parman/NBXplorer/NBXplorer/bin/Release/netcoreapp2.1/NBXplorer.dll\" -c /home/parman/.nbxplorer/Main/settings.config
+ExecStart=
 User=parman
 Group=parman
 Type=simple
