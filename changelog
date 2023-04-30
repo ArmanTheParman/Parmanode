@@ -1,11 +1,13 @@
-Version 2.2.5
+Version 2.3.0 
     - Drive ID choice less restrictive
     - Fast sync added for Fulcrum (1Gb memory for Linux/Pi, 2Gb for Docker/Mac)
-    - Docker installation option for Parmanode install wizard (linux)
-    - BTCPay Server added for Linux
+    - Docker installation option for Parmanode install wizard (Linux)
+    - BTCPay Server added for Linux (Docker)
     - Tor for Mac and Linux added
     - Additional menu to view config files and logs. 
     - Menus consolidated
+Version 2.2.5
+    - Bug if user downloads from github directly to $HOME directory. Fixed.
 Version 2.2.4
     - smol bugs fixed
     - mount bug fixed for Linux
