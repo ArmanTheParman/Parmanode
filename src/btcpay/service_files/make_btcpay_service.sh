@@ -6,9 +6,9 @@ Requires=bitcoind.service
 After=bitcoind.service
 
 [Service]
-ExecStart=/usr/bin/dotnet "/home/satoshi/source/NBXplorer/NBXplorer/bin/Release/netcoreapp2.1/NBXplorer.dll" -c /home/satoshi/.nbxplorer/Main/settings.config
-User=satoshi
-Group=satoshi
+ExecStart=/usr/bin/dotnet "/home/parman/parmanode/NBXplorer/NBXplorer/bin/Release/netcoreapp2.1/NBXplorer.dll" -c /home/parman/.nbxplorer/Main/settings.config
+User=parman
+Group=parman
 Type=simple
 PIDFile=/run/nbxplorer/nbxplorer.pid
 Restart=on-failure
