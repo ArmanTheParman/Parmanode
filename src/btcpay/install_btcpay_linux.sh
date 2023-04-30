@@ -61,9 +61,9 @@ startup_postgres \
 && log "btcpay" "startup postgress function completed" \
 || log "btcpay" "startup postgress function failed"
 
-log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer
-    if [ $? == 1 ] ; then return 1 ; fi
+#log "btcpay" "entering run_nbxplorer.."
+#run_nbxplorer
+#    if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering run_btcpay..."
 run_btcpay
