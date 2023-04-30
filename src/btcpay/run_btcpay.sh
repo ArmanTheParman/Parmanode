@@ -1,4 +1,3 @@
-#not running container, but btcpay WITHIN container
 function run_btcpay {
 count=0
 while [ $count -le 1 ] ; do
