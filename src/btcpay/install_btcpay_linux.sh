@@ -62,7 +62,7 @@ startup_postgres \
 || log "btcpay" "startup postgress function failed"
 
 log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer
+run_nbxplorer > $HOME/parmanode/nbx_extra_log.log
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering run_btcpay..."
