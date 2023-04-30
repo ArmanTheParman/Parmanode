@@ -56,12 +56,6 @@ log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
-log "nbxplorer" "entering nbxplorer make service file..."
-make_nbxplorer_service
-
-log "btcpay" "entering btcpay make service file..."
-make_btcpay_service
-
 log "btcpay" "entering start_postgress..."
 startup_postgres \
 && log "btcpay" "startup postgress function completed" \
