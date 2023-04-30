@@ -16,6 +16,8 @@ echo "
 
                              (btcp)    BTCPay Server
 
+                             (t)       Tor 
+
             Not yet avaiable...                        
 
                              (m)       Mempool.Space
@@ -29,8 +31,6 @@ echo "
                              (th)      ThunderHub
 
                              (lh)      LND Hub
-
-                             (t)       Tor 
 
 #######################################################################################
 
@@ -51,7 +51,11 @@ btcp|BTCP)
     menu_btcpay
     ;;
 
-m | M | l | L | RTL | rtl |is | S | th | TH | lh | LH | t | T)
+t|T)
+    menu_tor
+    ;;
+
+m | M | l | L | RTL | rtl |is | S | th | TH | lh | LH )
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."
