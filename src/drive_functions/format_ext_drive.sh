@@ -40,10 +40,10 @@ if [[ $OS == "Linux" ]] ; then
         enter_continue
 
         #Mounting
-        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1    
-        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
-        sudo e2label /dev/$disk parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
+        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
+        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
