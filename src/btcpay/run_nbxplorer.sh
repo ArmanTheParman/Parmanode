@@ -4,7 +4,8 @@ while [ $count -le 1 ] ; do
 
 if docker ps | grep btcpay ; then   
 docker exec -d -u parman btcpay /bin/bash -c \
-"/usr/bin/dotnet \"/home/parman/parmanode/NBXplorer/NBXplorer/bin/Release/net6.0/NBXplorer.dll\" -c /home/parman/.nbxplorer/Main/settings.config" \
+"/usr/bin/dotnet \"/home/parman/parmanode/NBXplorer/NBXplorer/bin/Release/net6.0/NBXplorer.dll >/home/parman/parmanode/nbx.log\" -c \\
+/home/parman/.nbxplorer/Main/settings.config" \
 && log "nbxplorer" "nbxplorer started" && return 0 || log "nbxplorer" "failed to start nbxplorer" && return 1    
 #docker exec -d -u parman btcpay /bin/bash -c "$HOME/parmanode/NBXplorer/run.sh" && \
 
