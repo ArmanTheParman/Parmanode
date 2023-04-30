@@ -3,7 +3,7 @@ while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                               BTCPay admin account
+                                BTCPay admin account
     
     Would you like to create a BTCPay admin account?
 
@@ -45,11 +45,10 @@ echo "
 
     Your one time password is: $otp
 
-    Accept (y) or try again (n) ?" ; read choice
-
-echo "
 ########################################################################################
-"
+
+Accept (y) or try again (n) ?" ; read choice
+
 
 docker exec -it -u root btcpay /bin/bash -c "echo \"Main:email=$email;password=$password;otp=$otp\" \\
 | tee $HOME/.btcpayserver/Main/settings.config >/dev/null 2>&1"
