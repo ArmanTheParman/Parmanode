@@ -9,7 +9,7 @@ if [[ $OS == "Linux" ]] ; then
     parmanode_conf_add "Linux=Ubuntu"
 
     else
-    parmanod_conf_add "Linux=Unknown"
+    parmanode_conf_add "Linux=Unknown"
 
     fi
 
