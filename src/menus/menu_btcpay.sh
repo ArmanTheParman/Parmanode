@@ -12,18 +12,17 @@ set_terminal ; echo "
 
 ########################################################################################
 
-              start)        Start BTCPay Server (via docker container start) 
+             pp)           BTC ParmanPay - Online payment app, worldwide access
+
+             bl)           View BTCPay Server log
+
+             nl)           View NBXplorer log
+
+             start)        Start BTCPay Server (via docker container start) 
                                                     - rarely this is needed
 
-              stop)         Stop BTCPay Server (via docker container start)
+             stop)         Stop BTCPay Server (via docker container start)
                                                     - rarely this is needed
- 
-              bl)           View BTCPay Server log
-
-              nl)           View NBXplorer log
-              
-              pp)           BTC ParmanPay - Online payment app, worldwide access
-              
 
 ######################################################################################## 
 "
