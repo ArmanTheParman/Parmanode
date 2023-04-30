@@ -1,4 +1,7 @@
 function create_account_btcpay {
+#disabling for now, may not be needed:
+return 0
+
 while true ; do
 set_terminal ; echo "
 ########################################################################################

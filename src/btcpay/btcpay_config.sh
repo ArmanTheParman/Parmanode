@@ -13,4 +13,3 @@ postgres=User ID=parman;Password=NietShitcoin;Host=localhost;Port=5432;Database=
 
 log "btcpay" "End btcpayserver_config" && return 0
 }
-#postgres=User ID=parman;Password=NietShitcoin;Host=172.17.0.1;Port=5432;Database=btcpayserver;
