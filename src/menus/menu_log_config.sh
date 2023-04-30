@@ -64,7 +64,7 @@ nbxpc) less $HOME/.nbxplorer/Main/settings.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
 pl) less $HOME/.parmanode/parmanode.log ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
-delete|DELETE|Delete) rm $HOME/.parmanode/*.log ; echo "" ; echo "Deleting" ; sleep 1 ;;
+delete|DELETE|Delete) rm $HOME/.parmanode/*.log ; echo "" ; echo "Deleting" ; sleep 0.5 ;;
 *) invalid ;;
 esac
 done
