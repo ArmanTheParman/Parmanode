@@ -59,6 +59,9 @@ run_btcpay_docker
 log "nbxplorer" "entering nbxplorer make service file..."
 make_nbxplorer_service
 
+log "btcpay" "entering btcpay make service file..."
+make_btcpay_service
+
 log "btcpay" "entering start_postgress..."
 startup_postgres \
 && log "btcpay" "startup postgress function completed" \
@@ -73,6 +76,7 @@ run_btcpay
     if [ $? == 1 ] ; then return 1 ; fi
 
 debug "pause"
+create_account_btcpay
 
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
