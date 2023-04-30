@@ -16,6 +16,9 @@
 
 	which_os
 
+# get IP address
+IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}')
+
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
 	clean_exit 
