@@ -30,6 +30,9 @@ case $choice in
     q|Q|Quit|QUIT)
         exit 0
         ;;
+    "")
+    return 0 
+    ;;
     *)
         invalid 
         ;;
