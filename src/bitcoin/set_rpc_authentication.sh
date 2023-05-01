@@ -31,12 +31,11 @@ choose "xpq" ; read choice
 
 case $choice in
     s|S)
-	            stop_bitcoind & 
-				PID=$!
-
+	            stop_bitcoind  
+                debug1 "pre-password changer"
 	            password_changer
 				 
-                wait $PID ; set_rpc_authentication_update_conf_edits #defined below
+                set_rpc_authentication_update_conf_edits #defined below
 
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
@@ -51,11 +50,10 @@ case $choice in
 				break
 				;;
 	c)
-	            stop_bitcoind & 
-				PID=$!
+	            stop_bitcoind
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
-				wait $PID ; run_bitcoind &
+				run_bitcoind 
 				break
 		;;	
 
@@ -69,6 +67,7 @@ case $choice in
 esac
 
 done
+return 0
 }
 
 function set_rpc_authentication_update_conf_edits {
