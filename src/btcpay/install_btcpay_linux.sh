@@ -29,7 +29,7 @@ fi
 while true ; do user_pass_check_exists 
     return_status=$?
     if [ $return_status == 1 ] ; then return 1 ; fi
-    if [ $return_status == 2 ] ; then continue ; fi
+    if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
     if [ $return_status == 0 ] ; then break ; fi 
     done
     

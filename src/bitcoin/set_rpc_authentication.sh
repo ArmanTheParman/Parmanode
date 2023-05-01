@@ -12,19 +12,16 @@ set_terminal_bit_higher ; echo "
 	Some software (eg Fulcrum Server) REQUIRES the alternative way, which is with a 
 	USERNAME And PASSWORD. For convenience, you can set a username and password here.
 
-    (s) Set Bitcoin username and password
-        and copy to Fulcrum configuration ....... (must use password if
-                                                   installing Fulcrum)
-
-    (L) Leave Bitcoin username and password unchanged 
-	                                      ....... (and add to Fulcrum configuration)
 
 
-    (c)  Use cookie ............................. (default setting for Bitcoin only.
-                                                   Won't work with Fulcrum.) 
+		(s) Set Bitcoin username and password
 
+		(L) Leave Bitcoin username and password unchanged 
 
-    (p) Exit this menu (set username/pass from menu later)
+		(c)  Use cookie .......................... (default Won't work with Fulcrum) 
+
+		(p) Exit this menu (set username/pass from menu later)
+
 
 
     If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
