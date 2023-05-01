@@ -31,13 +31,19 @@ case $choice in
 
 	0)
 	    please_wait
-        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Linux" ]] ; then 
+        remove_fstab_entry
+        sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+
         if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500  >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
 	r|R)   
 	    please_wait
-        if [[ $OS == "Linux" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Linux" ]] ; then 
+        remove_fstab_entry 
+        sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+
         if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
