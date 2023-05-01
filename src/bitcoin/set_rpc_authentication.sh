@@ -14,13 +14,13 @@ set_terminal_bit_higher ; echo "
 
 
 
-		(s) Set Bitcoin username and password
+	   (s) Set the Bitcoin username and password (edits bitcoin.conf)
 
-		(L) Leave Bitcoin username and password unchanged 
+       (L) Leave Bitcoin username and password unchanged 
 
-		(c)  Use cookie .......................... (default Won't work with Fulcrum) 
+       (c) Use cookie ...(deletes from bitocin.conf; Won't work with Fulcrum) 
 
-		(p) Exit this menu (set username/pass from menu later)
+       (p) Exit this menu (set username/pass from menu later)
 
 
 
@@ -38,7 +38,7 @@ case $choice in
 				 
                 set_rpc_authentication_update_conf_edits #defined below
 
-				add_userpass_to_fulcrum	
+				add_userpass_to_fulcrum #(extracted from bitcoin.conf)	
 
 	    break	
 		;;

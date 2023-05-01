@@ -44,9 +44,7 @@ run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
   log "fulcrum" "Fulcrum docker run done."
 
-edit_user_pass_fulcrum_docker
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "user/pass edited in docker fulcrum.conf" 
+check_rpc_authentication_exists
 
 installed_config_add "fulcrum-end"
 
