@@ -1,7 +1,7 @@
 
 function hide_messages_add {
-label=$1
-value=$2
+label="$1"
+value="$2"
 
 hide_messages_remove $label
 

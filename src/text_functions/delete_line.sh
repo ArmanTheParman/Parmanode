@@ -4,8 +4,8 @@
 
 function delete_line {
 
-input_file=$1
-search_string=$2
+input_file="$1"
+search_string="$2"
 
 	if [[ $OS == "Linux" ]] 
 	then
