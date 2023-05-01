@@ -37,7 +37,6 @@ if [[ $OS == "Linux" ]] ; then
         remove_UUID_fstab "$disk" && log "bitcoin" "UUID removed for $disk from fstab"
 
         sudo mkfs.ext4 -F -L "parmanode" /dev/$disk && log "bitcoin" "mkfs done" && \
-        enter_continue
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
@@ -53,7 +52,6 @@ if [[ $OS == "Linux" ]] ; then
         sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
 
         #confirmation output.
-        echo "Some more cool computer stuff happened in the background."
         enter_continue # pause not required as all the above code has no output
         parmanode_conf_add "UUID=$UUID"
         set_terminal
