@@ -61,6 +61,7 @@ break ; done
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; fi
+	instructions
 	menu_main
 
 exit 0

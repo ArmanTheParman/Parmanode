@@ -1,6 +1,6 @@
 function menu_log_config {
 
-. $HOME/.parmanode/hide_messages.conf
+. $HOME/.parmanode/hide_messages.conf >/dev/null
 
 if [[ $message_menu_log_config != "1" ]] ; then 
 set_terminal ; echo "

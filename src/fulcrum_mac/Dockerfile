@@ -12,6 +12,10 @@ RUN echo 'parman:parmanode' | chpasswd
 
 USER parman
 
+#get necessary scripts within container.
+WORKDIR /home/parman
+RUN git clone http://github.com/armantheparman/parmanode.git
+
 RUN mkdir -p /home/parman/parmanode/fulcrum
 RUN mkdir -p /home/parman/parmanode/fulcrum_db
 RUN mkdir -p /home/parman/Downloads
@@ -49,10 +53,7 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "fast-sync = 2000" \
 && echo "peering = false" >> fulcrum.conf
  
-#get necessary scripts within container.
-WORKDIR /home/parman
-RUN git clone http://github.com/armantheparman/parmanode.git
-USER root
+
 
 #make all functions available to "docker exec" without specifying user
 USER parman

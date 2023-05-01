@@ -1,9 +1,9 @@
 function intro {
-set_terminal_bit_higher
-
+. $HOME/.parmanode/hide_messages.conf >/dev/null
+set_terminal_high
+if [[ $message_intro != "1" ]] ; then 
 while true
 do
-
 echo "
 ########################################################################################
 
@@ -45,13 +45,15 @@ echo "
 Hit <enter> to continue, or (q) to quit, then <enter>.
 
 If you hold shitcoins, please hit (s) - be honest!
+
+To hide this screen next time, type \"Free Ross\" then <enter>.
 "
-
 read choice
+case $choice in 
+s|S) dirty_shitcoiner ; continue ;;
+q|Q|QUIT|Quit|quit) exit 0 ;;
+"Free Ross"|"free ross"|"free Ross") hide_messages_add "intro" "1" ; break ;;
 
-if [[ $choice == "s" || $choice == "S" ]] ; then dirty_shitcoiner ; continue ; fi
-if [[ $choice == "q" || $choice == "Q" ]] ; then exit 0 ; fi
-return 0
-done
+esac ; done ; fi ; return 0
 }
 
