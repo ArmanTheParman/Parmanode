@@ -1,7 +1,7 @@
 function test_directory_placement {
 cd ..
 testing_dir=$(pwd)
-cd -
+cd - >/dev/null
 if [[ $testing_dir == "$HOME" ]] ; then
 clear ; echo "
 ########################################################################################
