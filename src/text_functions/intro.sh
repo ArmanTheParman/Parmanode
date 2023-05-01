@@ -16,6 +16,9 @@ echo "
 
             1) Linux (including Pi4) and Mac (Not available for Windows yet)
 
+                   - Debian and Ubuntu Linux systems supported, including Mint.
+                   - Other Linux distributions have not been tested yet.
+
             2) CPU Architecture:
 
                    - AMD/Intel 64 architecture (x86-64) 
@@ -27,9 +30,7 @@ echo "
             4) Users must not hold ANY shitcoins. Honesty system.
             
             5) Free: 
-                   - Donation appreciated (if felt you received value)
-                   - Honesty system, suggested: 0.002 bitcoin
-                   - Or your choice
+                   - Donations appreciated
                    - Yes, the code is open source, MIT licence, like Bitcoin
 
     To report bugs:

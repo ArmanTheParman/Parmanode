@@ -7,11 +7,12 @@ set_terminal
 
 if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 	then 
-	    set_terminal ; echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation."
+	    set_terminal ; echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation." && \
+		log "bitcoin" "bitcoin.conf exists already"
 		read choice
 		while true ; do
 			if [[ $choice == "a" ]] ; then return 1 ; fi
-			if [[ $choice == "o" ]] ; then break ; fi
+			if [[ $choice == "o" ]] ; then log "bitcoin" "conf overwrite" && break ; fi
 			echo ""
 			invlalid
 		done
@@ -29,7 +30,9 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 
 rpcbind=127.0.0.1
 rpcbind=172.17.0.2
-rpcallowip=127.0.0.1
+rpcbind=172.17.0.3
+rpcallowip=10.0.0.0/8
+rpcallowip=192.168.0.0/16
 rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
 || log "bitcoin" "bitcoin conf failed"
 

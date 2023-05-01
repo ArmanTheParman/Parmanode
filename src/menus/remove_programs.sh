@@ -9,9 +9,15 @@ echo "
                                    Remove Programs
 
 
-                             (b)      Bitcoin Core
+                           (bitcoin)          Bitcoin Core
                                
-                             (f)      Fulcrum Server
+                           (f)                Fulcrum Server 
+
+                           (d)                Docker
+
+                           (btcp)             BTCPay Server
+
+                           (t)                Tor
 
 ########################################################################################
 
@@ -28,6 +34,21 @@ return 0
 
 f|F)
 uninstall_fulcrum
+return 0
+;;
+
+d|D) 
+uninstall_docker_linux 
+return 0
+;;
+
+btcp|BTCP|Btcp)
+uninstall_btcpay
+return 0
+;;
+
+t|T|TOR|Tor|tor)
+uninstall_tor
 return 0
 ;;
 

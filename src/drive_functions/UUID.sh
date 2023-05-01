@@ -1,3 +1,14 @@
+function remove_UUID_fstab {
+
+drive_ID=$1
+
+get_UUID "${drive_ID}"
+
+delete_line "/etc/fstab" "$UUID"
+    
+return 0
+}
+
 function get_UUID {
 
 drive_ID=$1
@@ -9,13 +20,3 @@ drive_ID=$1
 return 0
 }
 
-function remove_UUID_fstab {
-
-drive_ID=$1
-
-get_UUID "${drive_ID}"
-
-delete_line "/etc/fstab" "$UUID"
-    
-return 0
-}

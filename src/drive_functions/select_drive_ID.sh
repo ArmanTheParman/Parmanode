@@ -52,8 +52,8 @@ Linux)
 "        
 choose "x"
 read confirm
-        if [[ $confirm == "y" ]] ; then return 0 ; fi
-        if [[ $confirm == "n" ]] ; then continue ; fi
+        if [[ $confirm == "y" || $confirm == "yes" ]] ; then return 0 ; fi
+        if [[ $confirm == "n" || $confirm == "no" ]] ; then continue ; fi
         if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
 
     else #regex else

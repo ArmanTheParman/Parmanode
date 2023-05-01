@@ -1,28 +1,31 @@
-
 function install_check { 
 program_name=$1
 
-    if grep -q "$1" $HOME/.parmanode/installed.conf 2>/dev/null
-
-    then 
-        log "$1" "Install error. Already installed, can't re-install"
-        install_error "$program_name"
-        previous_menu
-        return 1 
-
-    else 
-        log "$1" "Install check passed; not installed. Continuing."
-        return 0
-
-
+if [[ $2 == "continue" ]] ; then 
+    if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
+    then
+    return 1
+    else
+    return 0
     fi
+fi
 
+    if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
+        then 
+            log "$program_name" "Install error. Already installed"
+            install_error "$program_name"
+            previous_menu
+            return 1 
+        else 
+            log "$program_name" "Install check passed; not installed. Continuing."
+            return 0
+        fi
 }
 
 function install_error {
 program_name=$1
 if [[ $program_name == "parmanode" ]] ; then
-
+set_terminal
 echo "
 ########################################################################################
 	
@@ -40,8 +43,7 @@ echo "
 return 0
 
 else
-echo "
-
+set_terminal ; echo "
 ########################################################################################
                                     
                                     Install Error

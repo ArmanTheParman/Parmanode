@@ -1,7 +1,5 @@
 function IP_address {
-
-IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}')
-
+#IP variable in run_parmanode.sh
 echo "
 ########################################################################################
 
@@ -10,11 +8,12 @@ echo "
 
 
 
-    Your computer's "self" IP address is:                         127.0.0.1
+    Your computer's "self" IP address should be:                  127.0.0.1
 
 
 
     For reference, every computer's default self IP address is    127.0.0.1 
+                                                            or    localhost
 
 
 ########################################################################################
