@@ -34,7 +34,7 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf \
-&& echo "Bitcoin has started." ; enter_continue 
+&& enter_continue 
 continue
 
 fi
