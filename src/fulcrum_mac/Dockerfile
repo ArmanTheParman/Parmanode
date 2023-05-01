@@ -40,7 +40,7 @@ RUN openssl req -newkey rsa:2048 -new -nodes -x509 -days 36500 -keyout key.pem -
 
 #make fulcrum config file
 USER parman
-WORKDIR /home/parman/parmanode/fulcrum
+WORKDIR /home/parman/parmanode/
 RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "bitcoind = 127.0.0.1:8332" >> fulcrum.conf \
 && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \
@@ -53,4 +53,4 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 
 #make all functions available to "docker exec" without specifying user
 USER parman
-CMD tail -f /dev/null 
+CMD tail -f /dev/null && mv /home/parman/parmanode/fulcrum.conf /home/parman/parmanode/fulcrum/ 
