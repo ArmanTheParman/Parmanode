@@ -28,16 +28,13 @@ if [[ $OS == "Linux" ]] ; then
         fi
 
 echo "If there are not printed errors, Bitcoin has started." ; enter_continue
-continue
 fi                 
 
 
 if [[ $OS == "Mac" ]] ; then
 debug1 "about to stop bitcoind mac"
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf \
-&& debug1 "wait a bit for bitcoind to stop" && sleep 3 && enter_continue 
-continue
-
+&& enter_continue 
 fi
 return 0
 }
