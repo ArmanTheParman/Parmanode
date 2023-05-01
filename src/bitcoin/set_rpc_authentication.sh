@@ -1,5 +1,6 @@
 function set_rpc_authentication {
 while true ; do
+debug1 "beginning of set rpc authentication loop"
 set_terminal_bit_higher ; echo "
 ########################################################################################
 
@@ -23,9 +24,6 @@ set_terminal_bit_higher ; echo "
        (p) Exit this menu (set username/pass from menu later)
 
 
-
-    If you make changminute or sotake effect.
-
 ########################################################################################
 
 "
@@ -37,10 +35,10 @@ case $choice in
 				 
                 set_rpc_authentication_update_conf_edits #defined below
 
-				add_userpass_to_fulcrum #(extracted from bitcoin.conf)	
-
-	    break	
-		;;
+				add_userpass_to_fulcrum 
+				#(extracted from bitcoin.conf)	
+                break
+		        ;;
 		
 	l|L) 
 				add_userpass_to_fulcrum
@@ -66,7 +64,8 @@ done
 
 function set_rpc_authentication_update_conf_edits {
 
-stop_bitcoind ; if [ $? == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
+stop_bitcoind && rv=$? && sleep 3 && debug1 "waiting 3 after calling stop bitcoind"
+if [ $rv == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
 										enter_continue ; return 1 ; fi
 
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"

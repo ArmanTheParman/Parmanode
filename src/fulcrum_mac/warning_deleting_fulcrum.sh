@@ -1,5 +1,5 @@
 function warning_deleting_fulcrum {
-
+if [[ $debug == 1 ]] ; then return 0 ; fi
 set_terminal ; echo "
 ########################################################################################
 

@@ -6,12 +6,12 @@ set_terminal ; echo "
 
                                 Password changer
 
+    Please enter an RPC username: (Do not use the characters: # \" or '
+    otherwise problems may arise.)
+
+    Enter (p) to go back.
+
 ########################################################################################
-"
-echo "Please enter an RPC username: (Do not use the characters: # \" or '"
-echo "otherwise problems may arise.)
-    " 
-echo "Enter (p) to go back.
 "
 read rpcuser
 

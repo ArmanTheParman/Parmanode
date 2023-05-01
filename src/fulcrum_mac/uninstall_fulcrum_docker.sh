@@ -1,5 +1,5 @@
 function uninstall_fulcrum_docker {
-set_terminal ; while true ; do
+if [[ $debug != 1 ]] ; then set_terminal ; while true ; do
 echo "
 ########################################################################################
 
@@ -11,7 +11,7 @@ echo "
 choose "epq" ; read choice
 case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; 
 "") break ;;
-*) invalid ;; esac ; done
+*) invalid ;; esac ; done ; fi
 
 #uninstall....
 please_wait
