@@ -1,12 +1,6 @@
 function edit_user_pass_fulcrum_docker {
 #from the host machine
-if [[ -z $1 || -z $2 ]] ; then
-    rpcuser=$(grep -w "rpcuser" $HOME/.bitcoin/bitcoin.conf | awk -F '=' '{print $2}')
-    rpcpassword=$(grep -w "rpcpassword" $HOME/.bitcoin/bitcoin.conf | awk -F '=' '{print $2}')
-else
-rpcuser=$1
-rpcpassword=$2
-fi
+source $HOME/.bitcoin/bitcoin.conf
 
 if docker ps | grep fulcrum >/dev/null 2>&1 ; then
     { docker exec -d -u parman fulcrum /bin/bash -c \

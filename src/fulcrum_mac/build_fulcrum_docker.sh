@@ -24,10 +24,13 @@ set_terminal ; echo "
     to:
                     $HOME/.parmanode/docker_build.log
 
-    You can take a look now if you want:
+    You can take a look now if you want; it's generally a good idea to scroll to 
+    the bottom and make sure there isn't an error there. If there is, it will 
+    explain a lot if this install later fails. Please contact me to report if this
+    happens.
 
 
-               L)       See log file of build process       (see controls at the 
+            L)          See log file of build process       (see controls at the 
                                                              bottom, exit with 
                                                              control-x)
     
