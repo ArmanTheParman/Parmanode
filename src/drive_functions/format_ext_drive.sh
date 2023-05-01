@@ -51,7 +51,7 @@ if [[ $OS == "Linux" ]] ; then
         sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
 
         #confirmation output.
-        enter_continue # pause not required as all the above code has no output
+        if [[ $debug = 1 ]] ; then enter_continue ; fi # pause not required as all the above code has no output
         parmanode_conf_add "UUID=$UUID"
         set_terminal
         echo "

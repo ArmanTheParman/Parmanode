@@ -34,29 +34,6 @@ invalid #if all above if statements not true, then invalid choice and loop.
 done
 fi #end checking external drive for data directory
 
-if [[ $drive == "external" && ! -d /media/$(whoami)/parmanode/.bitcoin ]] ; then        #potentially unmounted
-    set_terminal ; echo "
-########################################################################################
-
-    Your settings indicate that you use an external drive for Bitcoin Core with
-    the Parmanode software - a Bitcoin data directory has not been detected
-    at the default location for Parmanode settings.
-
-    The directory may not exist yet, or the drive may not be connected.
-
-    UNINSTALLING:
-        There is nothing you need to do to continue uninstalling Bitcoin. You can 
-        just format the drive by installing Bitcoin again with Parmanode if you want.
-
-    INSTALLING:
-        An existing bitcoin data directory will mean that an installation of Bitcoin
-        will attempt to continue syncing the data that is there.
-
-########################################################################################
-"
-enter_continue
-fi # ends response to drive=external but no directory found 
-
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do

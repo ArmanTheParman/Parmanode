@@ -1,16 +1,8 @@
 function run_bitcoind {
 if [[ $OS == "Linux" ]] ; then 
-         set_terminal ; echo "
-########################################################################################
-    
-    Bitcoind should have been configured to restart automatically if your 
-    computer restarts. However, the restart may fail, which sometimes happens if
-    you have an external drive.
-
-########################################################################################
-"
-        enter_continue
-        mount_drive ; echo "Bitcoin will start in a moment..."
+        set_terminal
+        echo "Bitcoin will start in a moment..."
+        mount_drive  
         set_terminal
 
         if grep -q "internal" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 # config file determines if bitcoin is running on an internal or external drive

@@ -15,11 +15,11 @@ echo "
 
                      (f)        Fulcrum (an Electrum Server)
 
-                     (d)        Docker
-                    
                      (btcp)     BTCPay Server
 
                      (t)        Tor 
+
+                     (d)        Docker
 
          Not yet avaiable...                        
 

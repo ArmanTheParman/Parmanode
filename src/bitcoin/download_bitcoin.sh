@@ -95,8 +95,7 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
     if gpg --verify SHA256SUMS.asc 2>&1 | grep -q "Good" 
     then
         echo "GPG verification of the SHA256SUMS file passed. "
-        echo "Continuing with instalation."
-        enter_continue
+        sleep 3 
     else 
         echo "GPG verification failed. Aborting." 
         enter_continue

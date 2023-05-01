@@ -1,20 +1,6 @@
 function make_ssl_certificates {
 
-set_terminal ; echo "
-
-########################################################################################
-
-                             SSL Cerfificate and Keys
-
-    Parmanode will now make OpenSSL keys and certificate. This is like a public and
-    private key and is used for secure communication between your Fulcrum server and
-    other devices.
-
-######################################################################################## 
-"
-enter_continue 
-echo ""
-echo ""
+set_terminal
 
 if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; sudo apt install openssl -y ; fi
 
