@@ -20,8 +20,6 @@ echo "
 
 		 (c)        Choose a custom string (Funnest and recommended option)
 
-         (s)        Skip wiping and just format (least fun)
-
 ########################################################################################
 "
 choose "xq"
@@ -61,8 +59,6 @@ Your string is: $string
         break 
         ;;
     
-    s|S) return 0 ;;
-
     q|Q|quit|Quit|QUIT)
         exit 0
         ;;
