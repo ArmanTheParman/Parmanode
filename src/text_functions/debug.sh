@@ -11,3 +11,9 @@ enter_continue
 return 0
 }
 	
+function debug1 {
+
+if [ $debug = 1 ] ; then
+debug $@
+fi
+}
