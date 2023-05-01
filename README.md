@@ -62,7 +62,8 @@ Internal drive:
                 |             |--- parmanode ---|
                 |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
                 |                               |
-                |                               |--- fulcrum ------|  (keeps Fulcrum binary and config)
+                |                               |--- fulcrum ------|  (keeps Fulcrum binary and config. Volume
+                |                               |                      mounted for docker version)
                 |                               |
                 |                               |--- fulcrum_db ---|  (fulcrum databas)
                 |--- media ---|

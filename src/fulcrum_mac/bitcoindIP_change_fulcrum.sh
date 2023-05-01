@@ -27,13 +27,5 @@ done
 
     edit_bitcoindIP_fulcrum_indocker $IP
 
-else
-    log "fulcrum" "Can't change bitcoind IP in fulcrum.conf. Aborting."
-    enter_continue
-    return 1
-fi
-
-
-
 return 0
 }
