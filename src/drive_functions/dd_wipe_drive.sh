@@ -84,6 +84,7 @@ done
 please_wait
 # "status=progress" won't work becuase of the pipe, but leving it in for future reference.
 if [[ $OS == "Linux" ]] ; then
+    remove_fstab_entry
     yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 && sync && return 0
     fi
 if [[ $OS == "Mac" ]] ; then
