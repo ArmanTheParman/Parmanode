@@ -31,10 +31,10 @@ choose "xpq" ; read choice
 
 case $choice in
     s|S)
-	            stop_bitcoind  
                 debug1 "pre-password changer"
 	            password_changer
 				 
+	            stop_bitcoind  
                 set_rpc_authentication_update_conf_edits #defined below
 
 				add_userpass_to_fulcrum 
