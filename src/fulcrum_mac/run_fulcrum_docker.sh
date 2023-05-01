@@ -35,5 +35,9 @@ docker run -d --name fulcrum \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 \
 && log "fulcrum" "run command executed." && return 0
 
+sleep 3
+
+docker exec -d -u parman fulcrum /bin/bash -c "cd $HOME/parmanode ; mv fulcrum.conf ./fulcrum/"
+
 return 1 
 }

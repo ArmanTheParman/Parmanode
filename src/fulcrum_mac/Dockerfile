@@ -53,4 +53,4 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 
 #make all functions available to "docker exec" without specifying user
 USER parman
-CMD tail -f /dev/null ; mv /home/parman/parmanode/fulcrum.conf /home/parman/parmanode/fulcrum/ 
+CMD tail -f /dev/null 
