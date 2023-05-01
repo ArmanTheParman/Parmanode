@@ -2,8 +2,9 @@ function make_fulcrum_symlinks_docker {
 
 #On host
 
-cd $HOME/parmanode/fulcrum/config
-ln -s $HOME/parmanode/fulcrum/fulcrum.conf fulcrum.conf
+cd $HOME/parmanode/fulcrum/
+rm fulcrum.conf
+ln -s $HOME/parmanode/fulcrum/config/fulcrum.conf fulcrum.conf
 
 #In Docker
 

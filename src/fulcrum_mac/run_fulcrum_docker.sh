@@ -37,8 +37,7 @@ docker run -d --name fulcrum \
 
 sleep 3
 
-docker exec -d -u parman fulcrum /bin/bash -c "ln -s /home/parman/parmanode/fulcrum/fulcrum.conf /home/parman/parmanode/fulcrum/config/fulcrum.conf" \
-&& return 0
+make_fulcrum_symlinks_docker && return 0
 
 return 1 
 }
