@@ -1,4 +1,4 @@
-Version 2.3.0 
+Version 2.3.1 
     - Drive ID choice less restrictive
     - Fast sync added for Fulcrum (1Gb memory for Linux/Pi, 2Gb for Docker/Mac)
     - Docker installation option for Parmanode install wizard (Linux)
@@ -6,6 +6,8 @@ Version 2.3.0
     - Tor for Mac and Linux added
     - Additional menu to view config files and logs. 
     - Menus consolidated
+    - Mount bugs fixed
+    - Install location bug fixed - cant run from home directory
 Version 2.2.5
     - Bug if user downloads from github directly to $HOME directory. Fixed.
 Version 2.2.4
