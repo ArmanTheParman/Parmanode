@@ -2,7 +2,7 @@
     Version 2.3.1 - 1st May, 2023
 ########################################################################################
 
-                              #Notes to developers
+                             #Notes to developers
 
 
 Thank you, you lovely open source developers for contriubiting and reviewing the 
@@ -25,6 +25,10 @@ FREQUENTLY USED CUSTOM FUNCTIONS
                     error to the user before aborting. It takes a string argument which
                     gets printed, before a read command so the screen doesn't clear, 
                     and devs or users can see the error message before continuing.
+    
+    debug1          This will execute only if the run_parmanode program receives an
+                    argument, "debug", which sets debug=1. Then debug1 calls debug,
+                    otherwise the debug points are skipped. 
 
     choose          I have several functions that are echo statements to be printed
                     menu options, found in the echo_choices.sh file. "choose" takes
