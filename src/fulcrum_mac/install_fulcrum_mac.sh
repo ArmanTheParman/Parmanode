@@ -45,7 +45,7 @@ run_fulcrum_docker
   log "fulcrum" "Fulcrum docker run done."
 
 check_rpc_authentication_exists && log "fulcrum" "check rpc auth exists done"
-    debug1 "ceck rpc auth exists should have been called."
+    debug1 "check rpc auth exists should have been called."
 
 installed_config_add "fulcrum-end"
 
