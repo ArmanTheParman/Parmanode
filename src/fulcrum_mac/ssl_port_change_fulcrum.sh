@@ -28,24 +28,12 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;; 
 
 2) 
-
     edit_ssl_port_fulcrum_indocker 50002
-
-else
-    log "fulcrum" "Unable to set SSL to 50002"
-    enter_continue
-    return 1
-fi
 ;;
 
 yolo|YOLO|Yolo)
 
     edit_ssl_port_fulcrum_indocker 50003
-else
-    set_terminal ; echo "Fulcrum Docker container is not running"
-    enter_continue
-    return 1
-fi
 ;; 
 
 x|X) 
