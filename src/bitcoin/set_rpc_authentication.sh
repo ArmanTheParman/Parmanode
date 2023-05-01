@@ -31,12 +31,18 @@ choose "xpq" ; read choice
 
 case $choice in
     s|S)
+	            stop_bitcoind & 
+				PID=$!
+
 	            password_changer
 				 
-                set_rpc_authentication_update_conf_edits #defined below
+                wait $PID ; set_rpc_authentication_update_conf_edits #defined below
 
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
+
+				sleep 1 ; start_bitcoind
+
                 break
 		        ;;
 		
@@ -45,8 +51,10 @@ case $choice in
 				break
 				;;
 	c)
+	            stop_bitcoind & ; PID=$!
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+				wait $PID ; run_bitcoind &
 				break
 		;;	
 
@@ -63,10 +71,6 @@ done
 }
 
 function set_rpc_authentication_update_conf_edits {
-
-stop_bitcoind && rv=$? && sleep 3 && debug1 "waiting 3 after calling stop bitcoind"
-if [ $rv == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
-										enter_continue ; return 1 ; fi
 
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
