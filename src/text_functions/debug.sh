@@ -14,6 +14,9 @@ return 0
 function debug1 {
 
 if [ $debug = 1 ] ; then
-debug $1
+echo "first, echo alone..."
+echo "$1"
+echo "now, calling debug function..."
+debug "$1"
 fi
 }

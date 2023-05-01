@@ -1,5 +1,5 @@
 function install_btcpay_mac {
-if [[ $1 != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
+if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
     install_check "btcpay"

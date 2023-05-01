@@ -6,9 +6,9 @@ function edit_user_pass_fulcrum_conf_indocker {
 # any updates here will not be reflected in the user's container if they update the hose
 # computers' parmanode version, without rebuilding the docker container.
 
-rpcuser=$1
+rpcuser="$1"
 
-rpcpassword=$2
+rpcpassword="$2"
 
 delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
 
