@@ -5,7 +5,7 @@ function fulcrum_make_directories {
     installed_config_add "fulcrum-start"
 
 #Make config directory for docker; useful now or later.
-    mkdir $HOME/parmanode/fulcrum/config >2>&1
+    mkdir $HOME/parmanode/fulcrum/config 2>&1
 # Make fulcrum_db on the internal or external drive
 
 if [[ $drive_fulcrum == "external" ]] ; then
