@@ -38,3 +38,7 @@ debug1 "about to stop bitcoind mac"
 fi
 return 0
 }
+
+function start_bitcoind {
+run_bitcoind
+}

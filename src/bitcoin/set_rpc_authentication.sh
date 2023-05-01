@@ -40,7 +40,7 @@ case $choice in
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
 
-				sleep 1 ; start_bitcoind
+				sleep 1 ; run_bitcoind
 
                 break
 		        ;;
@@ -72,12 +72,14 @@ return 0
 
 function set_rpc_authentication_update_conf_edits {
 
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
-	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" >/dev/null 2>&1
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" >/dev/null 2>&1
+	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf 2>&1
+	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
 	parmanode_conf_add "rpcpassword=$rpcpassword"
+
+set_terminal
 
 run_bitcoind
 
