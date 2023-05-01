@@ -39,9 +39,7 @@ IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $
 
 	clean_exit 
 
-# Debug - comment out before release.
-
-if [[ $debug == 1 ]] ; then debug "Pause here to check for error output before clear screen." ; fi
+debug1 "Pause here to check for error output before clear screen." 
 
 # Load config 
 source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
