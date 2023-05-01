@@ -12,10 +12,6 @@ RUN echo 'parman:parmanode' | chpasswd
 
 USER parman
 
-#get necessary scripts within container.
-WORKDIR /home/parman
-RUN git clone http://github.com/armantheparman/parmanode.git
-
 RUN mkdir -p /home/parman/parmanode/fulcrum
 RUN mkdir -p /home/parman/parmanode/fulcrum_db
 RUN mkdir -p /home/parman/Downloads
@@ -50,7 +46,7 @@ RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \
 && echo "cert = /home/parman/parmanode/fulcrum/cert.pem" >> fulcrum.conf \
 && echo "key = /home/parman/parmanode/fulcrum/key.pem" >> fulcrum.conf \
-&& echo "fast-sync = 2000" \
+&& echo "fast-sync = 2000" >> fulcrum.conf \
 && echo "peering = false" >> fulcrum.conf
  
 

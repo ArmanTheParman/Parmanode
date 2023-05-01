@@ -9,13 +9,13 @@ search_string="$2"
 
 	if [[ $OS == "Linux" ]] 
 	then
-	sudo sed -i "/${search_string}/d" "$input_file" >/dev/null 2>&1
+	sudo sed -i "/${search_string}/d" "$input_file" 
         fi
 
 
 	if [[ $OS == "Mac" ]]
 	then
-	sudo sed -i "" "/${search_string}/d" "$input_file" >/dev/null 2>&1
+	sudo sed -i "" "/${search_string}/d" "$input_file" 
 	fi		
 
 return 0
