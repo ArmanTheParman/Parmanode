@@ -14,7 +14,7 @@ set_terminal_bit_higher ; echo "
 
 
 
-	   (s) Set the Bitcoin username and password (edits bitcoin.conf)
+       (s) Set the Bitcoin username and password (edits bitcoin.conf)
 
        (L) Leave Bitcoin username and password unchanged 
 
@@ -24,8 +24,7 @@ set_terminal_bit_higher ; echo "
 
 
 
-    If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
-	those changes to take effect.
+    If you make changminute or sotake effect.
 
 ########################################################################################
 
