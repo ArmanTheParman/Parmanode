@@ -39,21 +39,19 @@ if [[ $OS == "Linux" ]] ; then
         sudo mkfs.ext4 -F /dev/$disk && log "bitcoin" "mkfs done" && \
         enter_continue
 
+        #Extract the *NEW* UUID of the disk and write to config file.
+        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
+        #Write to fstab 
+        echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
+        log "bitcoin" "fstab grep output for parmanode:" && \
+        grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
+debug "wait here and test manual mount"
         #Mounting
         sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
         sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
         sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
 
-        #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
-
-        #Write to fstab 
-        echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
-        
-        log "bitcoin" "fstab grep output for parmanode:" && \
-        grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
-    
         #confirmation output.
         echo "Some more cool computer stuff happened in the background."
         enter_continue # pause not required as all the above code has no output
