@@ -1,4 +1,5 @@
 #!/bin/bash
+if [[ $1 != "debug" ]] ; then exit 0 ; fi
 
 if [[ "$1" == "debug" || $1 == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 
@@ -24,6 +25,6 @@ if [[ "$1" == "debug" || $1 == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 
     source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1exit 0
 
-	"$1"
+	"$2"
 
 enter_continue

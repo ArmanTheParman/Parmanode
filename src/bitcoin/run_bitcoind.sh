@@ -7,7 +7,7 @@ if [[ $OS == "Linux" ]] ; then
 
         if grep -q "internal" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 # config file determines if bitcoin is running on an internal or external drive
         then    
-                sudo systemctl start bitcoind.service &
+                sudo systemctl start bitcoind.service 
                 return 0
         fi
 
@@ -33,8 +33,7 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 debug1 "about to stop bitcoind mac"
-/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf \
-&& enter_continue 
+/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf 
 fi
 return 0
 }
