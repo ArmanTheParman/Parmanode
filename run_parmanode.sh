@@ -44,7 +44,7 @@ IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $
 if [[ $debug == 1 ]] ; then debug "Pause here to check for error output before clear screen." ; fi
 
 # Load config 
-
+source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
 
 #OPTIONALITY:
 while true ; do
@@ -62,7 +62,7 @@ break ; done
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; fi
 	instructions
-	menu_main    source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
+	menu_main    
 
 
 exit 0
