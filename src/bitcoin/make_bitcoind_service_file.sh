@@ -1,62 +1,4 @@
 function make_bitcoind_service_file {
-set_terminal
-
-echo "
-########################################################################################
-
-    A bitcoind service file in /etc/systemd/system/ will be created in order to 
-    instruct Bitcoin Core to start automatically after a reboot.
-
-    (The d in bitcoind means deamon, which means to run in the background.)
-
-########################################################################################
-"
-enter_continue
-
-#check if service file already exists
-
-if [[ -e /etc/systemd/system/bitcoind.service ]]
-then
-
-while true
-do
-set_terminal
-echo "
-########################################################################################
-    
-        A bitcoind.service file named \"bitcoind.service\" already exists. 
-
-	    Would you like to (r) to replace or (s) to skip (use current)?
-
-########################################################################################
-"
-choose "xq" 
-read choice
-set_terminal
-
-case $choice in
-r|R)
-    break
-    ;;
-s|S)
-    echo "skipping..."
-    enter_continue
-    return 0 
-    ;;
-q|Q)
-    exit 0
-    ;;
-*)
-    invalid
-    ;;
-
-esac
-done
-fi
-
-# inner while loop's break reaches here, otherwise exits with return=1
-
-# make bitcoin.service and add this text...
 
 echo "[Unit]
 Description=Bitcoin daemon
@@ -82,15 +24,10 @@ Restart=on-failure
 TimeoutStartSec=infinity
 TimeoutStopSec=600
 
-# Directory creation and permissions
-####################################
-
-# Run as bitcoin:bitcoin
 
 User=$(whoami)
 Group=$(id -ng)
 
-# /run/bitc$(id -ng)oind
 RuntimeDirectory=bitcoind
 RuntimeDirectoryMode=0710
 

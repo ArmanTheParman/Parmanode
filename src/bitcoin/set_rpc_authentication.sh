@@ -1,31 +1,30 @@
 function set_rpc_authentication {
 while true ; do
-set_terminal ; echo "
+set_terminal_bit_higher ; echo "
 ########################################################################################
 
                            Bitcoin Core RPC Authentication
 
-    Remote Procedure Call (RPC) is how other applications connect to Bitcoin
-    Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software (eg Fulcrum Server) REQUIRES the alternative 
-    way, which is with a username and password. You can set a username and password 
-    here.
-
-    (p)  Exit this menu
+    Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
+	Bitcoin Core. The default authentication method is with what's caled a COOKIE 
+	FILE Stored in the Bitcoin data directory. 
+	
+	Some software (eg Fulcrum Server) REQUIRES the alternative way, which is with a 
+	USERNAME And PASSWORD. For convenience, you can set a username and password here.
 
     (s) Set Bitcoin username and password
         and copy to Fulcrum configuration ....... (must use password if
                                                    installing Fulcrum)
-	
-	d)  Set Bitcoin username and password
-	    and DON'T copy anywhere else
 
-
-    (L)  Leave username and password unchanged ...(and add to Fulcrum configuration)
+    (L) Leave Bitcoin username and password unchanged 
+	                                      ....... (and add to Fulcrum configuration)
 
 
     (c)  Use cookie ............................. (default setting for Bitcoin only.
                                                    Won't work with Fulcrum.) 
+
+
+    (p) Exit this menu (set username/pass from menu later)
 
 
     If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
@@ -44,22 +43,17 @@ case $choice in
 
 				add_userpass_to_fulcrum	
 
-	    continue	
+	    break	
 		;;
 		
-	d|D)        password_changer
-
-                set_rpc_authentication_update_conf_edits
-
-	    continue
-		;;
-
 	l|L) 
 				add_userpass_to_fulcrum
+				break
 				;;
 	c)
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+				break
 		;;	
 
 	p|P) return 0 ;;
@@ -75,17 +69,7 @@ done
 }
 
 function set_rpc_authentication_update_conf_edits {
-	
-	set_terminal ; echo "
-########################################################################################
 
-    Bitcoin must be (will be) stopped before changing passwords, otherwise you won't 
-	be permitted to stop Bitcoin later (the starting Bitcoin password won't match the
-	stopping Bitcoin pasword).
-
-########################################################################################
-"
-enter_continue
 stop_bitcoind ; if [ $? == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
 										enter_continue ; return 1 ; fi
 

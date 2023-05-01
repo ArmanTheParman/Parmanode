@@ -69,7 +69,7 @@ echo "
                                     SUCCESS !!!
 
     Bitcoin Core will begin syncing after a reboot, or you can start Bitcoin Core 
-    from the Parmanode menu.
+    from the Parmanode Bitcoin menu.
 
     You can also access Bitcoin functions from the Parmanode menu.
     
