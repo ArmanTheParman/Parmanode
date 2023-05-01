@@ -45,6 +45,8 @@ Internal drive:
                /|--- $HOME ---|
                 |             |--- .bitcoin                           (may or may not be a symlink)
                 |             |--- .parmanode                         (config files)
+                |             |--- .btcpayserver                      (config, mounted to docker container) 
+                |             |--- .nbxplorer                         (config, mounted to docker container)
                 |             |--- parmanode ---|
                 |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
                 |                               |
@@ -56,6 +58,12 @@ Internal drive:
                 |                               |--- .bitcoin ---|    (symlink target and ext drive mountpoint)
                 |           
                 |--- usr  --- |--- local  ------|--- bin ---|         (keeps bitcoin binary files)
+                |
+                |
+                |---Docker conatainer (btcpay) ---|
+                                                  |---home/parman/parmanode/btcpayserver
+                                                  |---home/parman/parmanode/NBXplorer
+                                                                  
 
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
@@ -69,6 +77,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 Find the latest tag and download/unzip that to a directory on your drive.
 To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
+Do not forget to type the ".sh" extension in the run command.
 
 #### Latest:
 
