@@ -40,7 +40,7 @@ IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $
 
 # Debug - comment out before release.
 
-if [[ $debug == 1 ]] ; then ; debug "Pause here to check for error output before clear screen." ; fi
+if [[ $debug == 1 ]] ; then debug "Pause here to check for error output before clear screen." ; fi
 
 # Load config 
 
