@@ -1,6 +1,17 @@
 #!/bin/bash
-    original_dir=$(pwd)
-	
+original_dir=$(pwd) >/dev/null 2>&1
+
+if [[ ! $(basename $(pwd)) == "parmanode" ]] >/dev/null ; then
+clear
+echo "The Parmanode script must be run while your working directory is the
+Parmanode directory where the file lives. Running the file from outside
+the directory will cause the functions of the program to faile. Exiting.
+Hit <enter> to exit."
+read
+exit 0
+fi
+
+
 # source all the modules. Exclude executable scripts
 
 	for file in ./src/**/*.sh ; do
@@ -11,6 +22,7 @@
 
 	done
 
+test_directory_placement
 
 # Check OS function and store in variable for later. Exits if Windows, or if not if Mac/Linux not detected.
 
