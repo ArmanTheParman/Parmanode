@@ -21,30 +21,9 @@ if [[ "$1" == "debug" || $1 == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 
 	clean_exit 
 
-# Debug - comment out before release.
 
-if [[ $debug == 1 ]] ; then debug1 "Pause here to check for error output before clear screen." ; fi
+    source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1exit 0
 
-# Load config 
+	"$1"
 
-    source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
-
-#OPTIONALITY:
-while true ; do
-
-# Continue if user left unfinished
- 	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
-	install_btcpay_linux "resume"
-	skip_intro="true"
-	break
-	fi
-
-break ; done
-
-#Begin program:
-	set_terminal # custom function for screen size and colour.
-	if [[ $skip_intro != "true" ]] ; then intro ; fi
-	instructions
-	#menu_main
-
-exit 0
+enter_continue
