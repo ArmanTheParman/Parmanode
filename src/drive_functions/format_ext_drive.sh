@@ -34,8 +34,8 @@ if [[ $OS == "Mac" ]] ; then
 if [[ $OS == "Linux" ]] ; then
 
         #delete fstab entry of the disk immediately before formatting
-        remove_UUID_fstab "$disk" && log "bitcoin" "UUID removed for $disk from fstab"
-debug "check if UUID removed from fstab"
+        remove_UUID_fstab "$disk" >> $HOME/.parmanode/bitcoin.log && log "bitcoin" "UUID removed for $disk from fstab"
+debug "check if $UUID removed from fstab; disk is $disk"
         sudo mkfs.ext4 -F -L "parmanode" /dev/$disk && log "bitcoin" "mkfs done" && \
 
         #Extract the *NEW* UUID of the disk and write to config file.

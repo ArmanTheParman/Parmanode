@@ -63,7 +63,7 @@ startup_postgres \
 
 sleep 4
 log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer > $HOME/parmanode/nbx_extra_log.log
+run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log
     if [ $? == 1 ] ; then return 1 ; fi
 
 sleep 1
