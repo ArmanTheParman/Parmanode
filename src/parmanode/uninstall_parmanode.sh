@@ -37,7 +37,7 @@ echo "
 ########################################################################################    
 "
 choose "xpq" 
-read choice
+if [[ $debug == 0 ]] ; then read choice ; else choice="y" ; fi
 
     case $choice in
     
@@ -65,6 +65,7 @@ fi #ends if bitcoin installed/unsinstalled
 
 set_terminal
 
+if [[ $debug == 0 ]] ; then 
 echo "
 ########################################################################################
 
@@ -75,6 +76,8 @@ echo "
 choose "epq"
 exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
 unset choice
+fi
+
 #check other programs are installed in later versions.
 
 if [[ $OS == "Linux" ]] ; then
@@ -105,5 +108,4 @@ echo "
 "
 previous_menu
 return 0
-
 }
