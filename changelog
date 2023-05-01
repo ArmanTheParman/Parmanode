@@ -8,6 +8,7 @@ Version 2.3.1
     - Menus consolidated
     - Mount bugs fixed
     - Install location bug fixed - cant run from home directory
+    - Pesky user/password but sorted out
 Version 2.2.5
     - Bug if user downloads from github directly to $HOME directory. Fixed.
 Version 2.2.4

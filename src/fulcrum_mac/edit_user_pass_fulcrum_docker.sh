@@ -4,7 +4,7 @@ source $HOME/.bitcoin/bitcoin.conf
 
 if docker ps | grep fulcrum >/dev/null 2>&1 ; then
     { docker exec -d -u parman fulcrum /bin/bash -c \
-    "source /home/parman/parmanode/src/edit_user_pass_fulcrum_conf_indocker.sh ; \
+    "source /home/parman/parmanode/src/fulcrum_mac/edit_user_pass_fulcrum_conf_indocker.sh ; \
     edit_user_pass_fulcrum_conf_indocker $rpcuser $rpcpassword" \
     && log "fulcrum" "docker exec edit user pass fulcrum indocker has run" && return 0 ; } \
     || { log "fulcrum" "Failed to run edit_user_pass_fulcrum_conf_indocker" && return 1 ; }

@@ -1,14 +1,20 @@
-# Parmanode 2.3.1 Plebian Cheese 
+# Parmanode 2.3.2 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 18 April 2023
 
-Parmanode is an automated Bitcoin, Electrum Server (Fulcrum), and BTCPay 
-installation wizard software for home desktop computers. More features 
-(programs and educational material) will be added as development continues.
+Parmanode is an automated installation wizard and menu for desktiop
+computers, with the following software (list is growing):
+
+                Bitcoin
+                Electrum Server (Fulcrum)
+                BTCPay 
+                Docker
+                Tor
+                Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
-download and verify Bitcoin Core (and Fulcrum) and sync using an external 
+download and verify Bitcoin related software, and sync using an external 
 or internal drive, and also have configuration options presented to them
 with automation. No manual configuration file editing will be required.
 
@@ -30,11 +36,17 @@ While I tried to avoid it, for now, Mac users who wish to use Fulcrum will
 need to run it in a Docker container. It has been made very easy, just 
 follow the wizard menu options.
 
-## Software included
+## Software versions included
 
 ### Fulcrum v1.9.1 
 
 ### Bitcoin 24.01
+
+### BTCPay (latest)
+
+### Docker (latest)
+
+### Tor (lates)
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
@@ -76,6 +88,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
 #### Stable:
 
 Find the latest tag and download/unzip that to a directory on your drive.
+It must not be the home directory (Parmanode will know and not let you run it, apologies).
 To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
 Do not forget to type the ".sh" extension in the run command.
 
