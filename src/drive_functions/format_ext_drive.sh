@@ -33,6 +33,9 @@ if [[ $OS == "Mac" ]] ; then
 
 if [[ $OS == "Linux" ]] ; then
 
+get_UUID "$disk"
+debug "pre fstab removal. disk is $disk; UUID is $UUID"
+
         #delete fstab entry of the disk immediately before formatting
         remove_UUID_fstab "$disk" >> $HOME/.parmanode/bitcoin.log && log "bitcoin" "UUID removed for $disk from fstab"
 debug "check if $UUID removed from fstab; disk is $disk"
