@@ -25,7 +25,7 @@ if [[ $drive_fulcrum == "internal" ]] ; then
 log "fulcrum" "Docker Volume Mount set at $docker_volume_mount"
 
 
-
+please_wait
 docker run -d --name fulcrum \
                 -p 50002:50001 \
                 -p 50001:50002 \
@@ -33,11 +33,12 @@ docker run -d --name fulcrum \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
                 -v $HOME/parmanode/fulcrum:/home/parman/parmanode/fulcrum/ \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 \
-&& log "fulcrum" "run command executed." && return 0
+&& log "fulcrum" "run command executed."
 
 sleep 3
 
-docker exec -d -u parman fulcrum /bin/bash -c "cd $HOME/parmanode ; mv fulcrum.conf ./fulcrum/"
+docker exec -d -u parman fulcrum /bin/bash -c "cd $HOME/parmanode ; mv fulcrum.conf ./fulcrum/" \
+&& return 0
 
 return 1 
 }
