@@ -1,4 +1,7 @@
 #!/bin/bash
+
+if [[ $1 == "debug" || $1 == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
+
 original_dir=$(pwd) >/dev/null 2>&1
 
 if [[ ! $(basename $(pwd)) == "parmanode" ]] >/dev/null ; then
@@ -12,19 +15,24 @@ exit 0
 fi
 
 
-# source all the  modules.
+# source all the modules. Exclude executable scripts
 
-	for file in ./src/**/*.sh
-	do
-	source $file
+	for file in ./src/**/*.sh ; do
+
+		if [[ $file != *"/postgres_script.sh" ]]; then
+	    source $file
+		fi 
+
 	done
 
 test_directory_placement
-debug
 
 # Check OS function and store in variable for later. Exits if Windows, or if not if Mac/Linux not detected.
 
 	which_os
+
+# get IP address
+IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}')
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
@@ -32,17 +40,27 @@ debug
 
 # Debug - comment out before release.
 
-  #   debug "Pause here to check for error output before clear screen." 
-
+     debug "Pause here to check for error output before clear screen." 
 
 # Load config 
 
     source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
 
-#Begin program:
+#OPTIONALITY:
+while true ; do
 
+# Continue if user left unfinished
+ 	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
+	install_btcpay_linux "resume"
+	skip_intro="true"
+	break
+	fi
+
+break ; done
+
+#Begin program:
 	set_terminal # custom function for screen size and colour.
-	intro
-	startup
+	if [[ $skip_intro != "true" ]] ; then intro ; fi
+	menu_main
 
 exit 0

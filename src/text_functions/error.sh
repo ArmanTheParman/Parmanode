@@ -22,7 +22,7 @@ echo "
 
                                     Error CF100
 
-    Make sure Parmanode has been installed first (go to Add programs menu).
+    Make sure Parmanode has been installed first (go to Add more programs menu).
     
     Or, Parmanode may need to be re-insalled cleanly after uninstalling.
 
@@ -48,5 +48,11 @@ Hit <enter> to abort.
 "
 read
 return 0
+}
+
+function errormessage {
+echo ""
+echo "There has been an error. See log files for more info."
+enter_continue
 }
 

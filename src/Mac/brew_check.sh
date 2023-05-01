@@ -39,7 +39,8 @@ invalid
 done
 log "parmanode" "Installing homebrew..."
 # User chose <enter>, while breaks to here:
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && return 0
+
+install_homebrew && return 0
 
 set_terminal
 echo "Download homebrew failed. Unknown error. You should try again. 

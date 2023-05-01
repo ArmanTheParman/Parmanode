@@ -2,7 +2,7 @@ function apply_prune_bitcoin_conf {
 
 #source prune value from parmanode.conf
 
-source $HOME/.parmanode/parmanode.conf
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 #check if prune_value set. If not, calls function to set it. 
 if [[ -z ${prune_value} ]] ; then echo "Prune choice not detected. Needs to be set." ; enter_continue ; prune_choice ; fi

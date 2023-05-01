@@ -4,16 +4,21 @@ format_warnings     #Warn the user to pay attention.
     select_drive_ID
     if [ $? == 1 ] ; then return 1 ; fi
 
-unmount   #failure here exits program
+log "bitcoin" "unmounting function..."
+   unmount   #failure here exits program
 
-dd_wipe_drive  #failure here exits program 
+
+log "bitcoin" "dd_wipe_drive function..."
+   dd_wipe_drive  #failure here exits program 
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
         set_terminal
-        diskutil eraseDisk exFAT "parmanode" $disk    #formats and labels
+        log "bitcoin" "eraseDisk $disk ..."
+        diskutil eraseDisk exFAT "parmanode" $disk \
+            || log "bitcoin" "failed to eraseDisk"   
         set_terminal ; echo "
 #######################################################################################
 
@@ -27,25 +32,25 @@ if [[ $OS == "Mac" ]] ; then
     fi
 
 if [[ $OS == "Linux" ]] ; then
-        
-        remove_UUID_fstab "$disk" #delete fstab entry of the disk immediately before formatting
-
-        sudo mkfs.ext4 -F /dev/$disk ; enter_continue
-
-        #Mounting
-        sudo mkdir /media/$(whoami)/parmanode 2>/dev/null    #makes mountpoint
-        sudo mount /dev/$disk /media/$(whoami)/parmanode
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode
-        sudo e2label /dev/$disk parmanode
+        #in case I allow no wiping in future version, duplicating this function
+        #it wipes a nonsense UUID if the drive has just been wiped, so no harm.
+        remove_fstab_entry
+        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk && log "bitcoin" "mkfs done" && \
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
-
+        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
         #Write to fstab 
         echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
+        log "bitcoin" "fstab grep output for parmanode:" && \
+        grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
+
+        #Mounting
+        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
+        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
 
         #confirmation output.
-        echo "Some more cool computer stuff happened in the background."
         enter_continue # pause not required as all the above code has no output
         parmanode_conf_add "UUID=$UUID"
         set_terminal
@@ -62,9 +67,11 @@ if [[ $OS == "Linux" ]] ; then
     from other devices. 
     
     Stay calm: YOU DON'T HAVE TO REMEMBER IT OR WRITE IT DOWN.  
+               This is just information for you, you can ignore it.
 
     The /etc/fstab file has been updated to include the UUID and the drive should 
-    automount on reboot.
+    automount on reboot. If you don't understand that, don't worry about it, just 
+    proceed.
 
 ########################################################################################
         "
