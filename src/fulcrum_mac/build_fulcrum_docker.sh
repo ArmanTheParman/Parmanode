@@ -11,7 +11,7 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-enter_continue
+sleep 0.5
 
 { docker build -t fulcrum ./src/fulcrum_mac/ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
 || { log "fulcrum" "fulcrum docker build failed" && return 1 ; }
