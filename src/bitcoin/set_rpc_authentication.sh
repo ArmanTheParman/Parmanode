@@ -51,7 +51,8 @@ case $choice in
 				break
 				;;
 	c)
-	            stop_bitcoind & ; PID=$!
+	            stop_bitcoind & 
+				PID=$!
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
 				wait $PID ; run_bitcoind &
