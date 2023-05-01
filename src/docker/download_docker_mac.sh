@@ -1,4 +1,5 @@
 function download_docker_mac {
+#Downloads and installs for mac
 set_terminal ; echo "
 ########################################################################################
 

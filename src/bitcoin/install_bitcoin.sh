@@ -104,7 +104,7 @@ echo "
 ########################################################################################
 " && installed_config_add "bitcoin-end"
     #Just in case
-            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >dev/null 2>&1
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
 enter_continue
 return 0 
