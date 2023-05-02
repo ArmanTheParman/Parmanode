@@ -6,6 +6,7 @@ function startup_postgres {
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
 docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
+debug1 "done docker exec postgres start"
 postgres_intermission || return 1
 }
 
@@ -25,6 +26,7 @@ postgres_intermission || return 1
 
 
 function postgres_intermission {
+debug1 "entered postgres_intermission"
 set_terminal
 
 counter=0
