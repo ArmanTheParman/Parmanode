@@ -4,6 +4,7 @@ function nbxplorer_config {
 
 echo "
 btc.rpc.auth=${rpcuser}:${rpcpassword}
+bind=0.0.0.0:24445
 port=24445
 mainnet=1
 postgres=User ID=parman;Password=NietShitcoin;Host=localhost;Port=5432;Database=nbxplorer;
