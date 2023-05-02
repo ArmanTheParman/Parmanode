@@ -37,7 +37,7 @@ docker run -d --name fulcrum \
 
 sleep 3
 
-make_fulcrum_symlinks_docker
 move_fulcrum_config
+make_fulcrum_symlinks_docker
 return 0
 }
