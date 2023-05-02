@@ -1,4 +1,5 @@
 function uninstall_btcpay {
+if [[ $debug != 1 ]] ; then 
 while true ; do set_terminal ; echo "
 ########################################################################################
 
@@ -13,14 +14,14 @@ while true ; do set_terminal ; echo "
 
 ########################################################################################
 "
-choose "epq" ; read choice ; if [[ $debug == 1 ]] ; then break ; fi
+choose "epq" ; read choice ; 
 case $choice in 
 Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 
 y|Y|Yes|YES|yes) break ;;
 *) invalid ;;
 esac
-done
+done ; fi
 
 
 # stop containers, delete containers, delete images
