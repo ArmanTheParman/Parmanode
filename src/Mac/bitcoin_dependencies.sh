@@ -4,8 +4,7 @@ if command -v brew >/dev/null 2>&1
 	then
 	true
 	else
-    log "parmanode" "Unexpected failure of brew command"
-	debug "Homebrew not installed. Unknown cause. Aborting." ; exit 0
+    exit 0
 	fi
 
 while true ; do
@@ -39,16 +38,12 @@ if [[ $choice == "" ]] ; then break ; fi
 invalid
 done
 
-log "parmanode" "Installing bitcoin dependencies..."
-
-
 # while loop breaks to here
 please_wait
 brew install automake libtool boost pkg-config libevent zeromq berkeley-db@4 && \
-log "parmanode" "bitcoin dependencies installed successfully" && return 0 
+return 0 
 set_terminal
 echo "Error installing Bitcoin dependencies. You should try again. Proceed with caution."
-log "parmanode" "error installing bitcoin dependencies"
 read
 return 0
 }
