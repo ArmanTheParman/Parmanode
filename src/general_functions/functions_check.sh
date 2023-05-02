@@ -2,7 +2,7 @@ function sudo_check {
 
 set_terminal
 
-if command -v sudo >/dev/null 2>&1
+if command -v sudo && id | grep sudo >/dev/null 2>&1
 	then return 0 
 	fi
 
@@ -20,7 +20,7 @@ echo "
     It's possible that \"sudo\" has been disabled on your system. Until this is
     rectified, you cannot use Parmanode. Terribly sorry. Have a lovely day.
 
-########################################################################################
+#########################sudo_check###############################################################
 "
 enter_exit ; exit 1
 fi

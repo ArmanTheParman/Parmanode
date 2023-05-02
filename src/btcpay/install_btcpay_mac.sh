@@ -1,4 +1,5 @@
 function install_btcpay_mac {
+
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
@@ -10,6 +11,7 @@ if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to sta
         need_docker_for_btcpay || return 1  #docker="no" or docker="yes" set
 
         if [[ $docker == "yes" ]] ; then download_docker_mac "btcpay" || return 1 ; fi 
+
     fi
 }
 else
@@ -57,7 +59,7 @@ run_btcpay_docker
 log "btcpay" "entering start_postgress..."
 startup_postgres \
 && log "btcpay" "startup postgress function completed" \
-|| log "btcpay" "startup postgress function failed"
+|| log "btcpay" "startup postgress function failed" && return 1
 
 sleep 4
 log "btcpay" "entering run_nbxplorer.."
