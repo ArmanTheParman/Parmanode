@@ -49,6 +49,7 @@ nbxplorer_config
 
 
 log "btcpay" "entering build_btcpay..."
+set_terminal ; please_wait 
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
 
