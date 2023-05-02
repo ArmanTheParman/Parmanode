@@ -51,9 +51,7 @@ case $choice in
     f|F)
        set_terminal
        if [[ $OS == "Linux" ]] ; then install_fulcrum || return 1 ; fi
-       if [[ $OS == "Mac" ]] ; then 
-        set_terminal ; echo "Fulcrum Mac is down for maintenance. Sorry for inconvenience; won't be long."
-        return 1 ; install_fulcrum_mac || return 1 ; fi
+       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac || return 1 ; fi
        return 0 
        ;;
     d|D)
