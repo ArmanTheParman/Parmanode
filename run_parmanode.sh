@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [[ $1 == "debug" || "$1" == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 
 original_dir=$(pwd) >/dev/null 2>&1
