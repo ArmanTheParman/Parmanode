@@ -78,39 +78,7 @@ invalid #if all above if statements not true, then invalid choice and loop.
 done
 fi #end checking internal drive for .bitcoin directory
 
-#Check for Bitcoin data directory in default Mac location
-if [[ -d $HOME/Library/"Application Support"/Bitcoin/ ]] ; then 
 
-while true ; do
-    set_terminal ; echo "
-########################################################################################
-    
-    By the way, even though your Parmanode settings indicate you're wishing to use 
-    an external drive for the Bitcoin data directory, an internal drive directory
-    containing a Bitcoin data directory has been found in :
-
-            $HOME/Library/Application Support/Bitcoin
-    
-   This must be removed or renamed for Parmanode to continue with your selected 
-   settings.
-
-                                 r) Rename
-
-                                 d) Delete
-
-########################################################################################
-"
-choose "xq" ; read choice
-    case $choice in
-        r|R) set_terminal ; log "bitcoin" "make bakcup internal .bitcoin" && make_backup_Bitcoin_mac ; break ;;
-        d|D) log "bitcoin" "deleting Application Support/Bitcoin" && \
-             rm -rf $HOME/Library/Application\ Support/Bitcoin ; break ;;
-        q|Q) exit 0 ;;
-        *)   invalid ;;
-        esac
-    done
-
-fi #end checking internal drive for data directory at defaul mac location
 
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 

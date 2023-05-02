@@ -1,5 +1,6 @@
 function start_docker_mac {
-
+if [[ $OS != "Mac" ]] ; then return ; fi
+:
 ( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
 || log "docker" "docker failed to nohup open -a" 
 

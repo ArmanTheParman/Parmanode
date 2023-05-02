@@ -3,11 +3,21 @@ this_install="$1"
 
 set_terminal
 
+if [[ "$this_install" != "docker" ]] ; then
 install_check "bitcoin" 
     #first check if Bitcoin has been installed
     return_value="$?"
     if [[ $return_value == "1" ]] ; then
         log "bitcoin" "install_check return 1, exit" ; return 1 ; fi      
+else
+install_check "btc_docker"
+    return_value="$?"
+    if [[ $return_value == "1" ]] ; then
+        log "btc_docker" "install_check return 1, exit" ; return 1 ; fi      
+fi
+
+
+
 
 change_drive_selection \
     && log "bitcoin" "install - change drive selection function exit"
@@ -46,6 +56,7 @@ log "bitcoin" "make_bitcoin_directories function..." && \
     if [[ $this_install == "docker" ]] ; then
         install_check "docker" "installed_return=0" 
         if [[ $? == 1 ]] ; then install_docker ; fi        	
+        if ! command -v docker ; then start_docker_mac ; fi 
         docker build -t bitcoin . || errormessage
         break 
         fi
@@ -138,7 +149,7 @@ echo "
 
 
 ########################################################################################
-" && installed_config_add "bitcoin-end"
+" && installed_config_add "btc_dockern-end"
     #Just in case
             sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
