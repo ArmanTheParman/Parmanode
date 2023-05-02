@@ -53,6 +53,7 @@ case $choice in
 	            stop_bitcoind
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+				sleep 1
 				run_bitcoind 
 				break
 		;;	
