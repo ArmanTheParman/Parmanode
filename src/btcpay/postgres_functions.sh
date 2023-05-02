@@ -39,7 +39,7 @@ postgres_database_creation
 #accessible by host.
 
     docker exec -it -u postgres btcpay /bin/bash -c " \
-    echo \"$(psql -l | grep btcpayserver)\" >/home/parman/.parmanode_docker/database_running.log"
+    echo \"$(/usr/bin/psql -l | grep btcpayserver)\" >/home/parman/.parmanode_docker/database_running.log"
 
 sleep 2
 
