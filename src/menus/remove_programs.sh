@@ -27,7 +27,7 @@ read choice
 
 case $choice in
 
-b|B)
+bitcoin|Bitcoin|BITCOIN)
 uninstall_bitcoin
 return 0
 ;;
