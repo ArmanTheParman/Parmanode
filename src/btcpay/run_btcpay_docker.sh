@@ -1,6 +1,6 @@
 function run_btcpay_docker {
 if [[ $OS == "Linux" ]] ; then
-docker run -d \
+docker run -d -u parman \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
@@ -11,7 +11,7 @@ log "btcpay" "docker run btcpay executed" && return 0 \
 fi
 
 if [[ $OS == "Mac" ]] ; then
-docker run -d \
+docker run -d -u parman \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
