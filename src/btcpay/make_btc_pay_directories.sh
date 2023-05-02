@@ -26,7 +26,7 @@ if [ -d $HOME/.nbxplorer ] ; then
     installed_config_remove "btcpay-end"
     fi
 
-mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main ~/.parmanode_docker && \
+mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main && \
   log "btcpay" ".btcpayserver mkdir success" && \
   installed_config_add "btcpay-start" && \
   return 0 \
