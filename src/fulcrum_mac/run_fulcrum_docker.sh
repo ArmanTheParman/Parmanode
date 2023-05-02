@@ -27,7 +27,9 @@ log "fulcrum" "Docker Volume Mount set at $docker_volume_mount"
 
 please_wait
 docker run -d --name fulcrum \
-                --network="host"				
+                -p 50001:50001 \
+                -p 50002:50002 \
+                -p 50003:50003 \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
                 -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 \
