@@ -1,4 +1,5 @@
 function install_bitcoin {
+this_install="$1"
 
 set_terminal
 
@@ -41,9 +42,16 @@ log "bitcoin" "make_bitcoin_directories function..." && \
             log "bitcoin" "ownership statement: $statement" ; fi
 
 # Download bitcoin software
-
-    if [[ $OS == "Linux" ]] ; then log "bitcoin" "download function Linux..." && download_bitcoin_linux ; fi
-    if [[ $OS == "Mac" ]] ; then log "bitcoin" "download function Mac..." && download_bitcoin_mac ; fi
+    while true ; do
+    if [[ $this_install == "docker" ]] ; then
+        install_check "docker" "installed_return=0" 
+        if [[ $? == 1 ]] then install_docker ; fi        	
+        docker build -t bitcoin . || errormessage
+        break 
+        fi
+    if [[ $OS == "Linux" ]] ; then log "bitcoin" "download function Linux..." && download_bitcoin_linux ; break ; fi
+    if [[ $OS == "Mac" ]] ; then log "bitcoin" "download function Mac..." && download_bitcoin_mac ; break ; fi
+    done
 
 #setup bitcoin.conf
 log "bitcoin" "make_bitcoin_conf function ..."
@@ -52,17 +60,20 @@ make_bitcoin_conf
             then return 1
         fi
 
-#make a script that service file will use
-if [[ $OS == "Linux" ]] ; then
-make_mount_check_script ; fi
+if [[ $this_install != "docker" ]] then 
 
-#make service file
-if [[ $OS == "Linux" ]] ; then 
-    make_bitcoind_service_file
+	#make a script that service file will use
+	if [[ $OS == "Linux" ]] ; then
+	make_mount_check_script ; fi
+
+	#make service file
+	if [[ $OS == "Linux" ]] ; then 
+	    make_bitcoind_service_file
+	fi
 fi
 
 set_terminal
-if [[ $OS == "Linux" ]] ; then
+if [[ $OS == "Linux" && $this_install != "docker" ]] ; then
 echo "
 ########################################################################################
     
@@ -86,7 +97,7 @@ fi
 
 
 set_terminal
-if [[ $OS == "Mac" ]] ; then
+if [[ $OS == "Mac" && $this_install != "docker" ]] ; then
 echo "
 ########################################################################################
     
@@ -100,6 +111,31 @@ echo "
     start after a reboot, as it seemed to introduce too much potential for error. 
 
     Do remmember to manually restart Bitcoin should your computer power off. 
+
+########################################################################################
+" && installed_config_add "bitcoin-end"
+    #Just in case
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+
+enter_continue
+return 0 
+fi
+
+set_terminal
+if [[ $this_install == "docker" ]] ; then
+echo "
+########################################################################################
+    
+                                    SUCCESS !!!
+
+    Bitcoin Core will run in the Docker container. The data will be written external
+    to the container. That is, if you chose an external drive, it will be written
+    there. But if you chose an internal drive, it will be written there on the disk,
+    not in the docker container. You can theoretically switch drives around (while
+    the container is stopped), but do make sure you keep backups, as unpredictable
+    things can happen, and I've experienced blockchain data corruption doing that.
+    Starting again, without a backup drive is no fun.
+
 
 ########################################################################################
 " && installed_config_add "bitcoin-end"

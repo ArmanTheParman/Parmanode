@@ -20,6 +20,8 @@ echo "
                      (t)        Tor 
 
                      (d)        Docker
+                     
+                     (bid)      Bitcoin in Docker (necessary fo Mac BTCPay)
 
          Not yet avaiable...                        
 
@@ -48,17 +50,20 @@ case $choice in
         install_bitcoin || return 1
         return 0
         ;;
+
     f|F)
        set_terminal
        if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 ; fi
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac && return 0 ; fi
        return 0 
        ;;
+
     d|D)
         set_terminal
         install_docker_linux "menu"
         return 0
         ;;
+
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
        install_btcpay_linux && return 0 ; fi
@@ -70,9 +75,15 @@ case $choice in
        install_tor || return 1 
        return 0 ;;
 
+    bid|BID|Bid)
+       bitcoin_docker_warning
+       install_bitcoin "docker"
+       return 0 ;;
+
     q|Q|quit|QUIT)
         exit 0
         ;;
+
     p|P)
         return 0 
         ;;
