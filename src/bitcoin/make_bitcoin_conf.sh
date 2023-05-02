@@ -28,9 +28,7 @@ rpcport=8332
 zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
 
-rpcbind=127.0.0.1
-rpcbind=172.17.0.2
-rpcbind=172.17.0.3
+rpcbind=0.0.0.0
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
 rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
