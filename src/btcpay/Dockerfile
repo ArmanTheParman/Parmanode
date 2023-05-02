@@ -23,7 +23,7 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 RUN apt install postgresql-13 postgresql-contrib -y 
 USER postgres
 USER root
-RUN usermod -aG parman postgres && chmod 775 -R /home/parman
+RUN usermod -aG parman postgres 
 USER parman
 COPY postgres_script.sh /home/parman/parmanode
 
