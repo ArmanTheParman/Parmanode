@@ -58,7 +58,7 @@ run_btcpay_docker
 
 log "btcpay" "entering start_postgress..."
 { startup_postgres \
-&& log "btcpay" "startup postgress function completed" ; \
+&& log "btcpay" "startup postgress function completed" ; } \
 || { log "btcpay" "startup postgress function failed" && return 1 ; }
 
 sleep 4
