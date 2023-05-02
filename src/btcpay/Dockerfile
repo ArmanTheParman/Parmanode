@@ -23,7 +23,7 @@ RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get updat
 RUN apt install postgresql-13 postgresql-contrib -y 
 USER postgres
 USER root
-RUN usermod -aG parman postgres
+RUN usermod -aG parman postgres 
 USER parman
 COPY postgres_script.sh /home/parman/parmanode
 
@@ -38,6 +38,7 @@ RUN mkdir -p ~/.btcpayserver/Main
 
 EXPOSE 49392
 EXPOSE 8080
+EXPOSE 23001
 EXPOSE 80
 
 CMD tail -f /dev/null

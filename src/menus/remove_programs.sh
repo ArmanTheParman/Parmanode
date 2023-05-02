@@ -27,7 +27,7 @@ read choice
 
 case $choice in
 
-b|B)
+bitcoin|Bitcoin|BITCOIN)
 uninstall_bitcoin
 return 0
 ;;
@@ -38,6 +38,7 @@ return 0
 ;;
 
 d|D) 
+if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
 uninstall_docker_linux 
 return 0
 ;;
