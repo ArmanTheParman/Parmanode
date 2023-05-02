@@ -5,9 +5,7 @@ docker run -d -u parman \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
-           btcpay && \
-log "btcpay" "docker run btcpay executed" && return 0 \
-|| log "btcpay" "docker run btcpay failed" && return 1
+           btcpay 
 fi
 
 if [[ $OS == "Mac" ]] ; then
@@ -23,9 +21,10 @@ docker run -d -u parman \
            -p 8060:8060 \
            -p 8050:8050 \
            -p 9735:9735 \
-           btcpay && \
-log "btcpay" "docker run btcpay executed" && return 0 \
-|| log "btcpay" "docker run btcpay failed" && return 1
+           btcpay 
+
+debug1 "after docker run"
+log "docker" "after docker run"
 fi
 }    
 
