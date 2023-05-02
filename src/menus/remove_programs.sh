@@ -38,6 +38,7 @@ return 0
 ;;
 
 d|D) 
+if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
 uninstall_docker_linux 
 return 0
 ;;
