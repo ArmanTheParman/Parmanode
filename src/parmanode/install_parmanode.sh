@@ -11,6 +11,9 @@ if [[ $OS == "Mac" ]] ; then
 	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
 	bitcoin_dependencies 
 	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
+
+        greadlink_check 
+        
 fi
 
 #Test for necessary functions
