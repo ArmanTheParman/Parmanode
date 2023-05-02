@@ -56,7 +56,7 @@ p|P)
     menu_programs
     ;;
 
-r|R)
+remove|REMOVE)
     remove_programs
     continue
     ;;
@@ -80,7 +80,7 @@ d|D)
     donations
     ;;
 
-u)
+uninstall|UNINSTALL)
     set_terminal
     uninstall_parmanode
     continue
