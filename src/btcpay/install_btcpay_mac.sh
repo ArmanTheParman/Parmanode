@@ -49,7 +49,6 @@ nbxplorer_config
 
 
 log "btcpay" "entering build_btcpay..."
-set_terminal ; please_wait 
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
 
@@ -60,7 +59,7 @@ run_btcpay_docker
 log "btcpay" "entering start_postgress..."
 startup_postgres \
 && log "btcpay" "startup postgress function completed" \
-|| log "btcpay" "startup postgress function failed"
+|| log "btcpay" "startup postgress function failed" && return 1
 
 sleep 4
 log "btcpay" "entering run_nbxplorer.."

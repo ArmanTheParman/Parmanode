@@ -61,7 +61,6 @@ startup_postgres \
 && log "btcpay" "startup postgress function completed" \
 || log "btcpay" "startup postgress function failed" && return 1
 
-
 sleep 4
 log "btcpay" "entering run_nbxplorer.."
 run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log

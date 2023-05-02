@@ -1,3 +1,5 @@
+Version - beta testing
+    - added -u parman for docker run commands, btcpay
 Version 2.3.1 
     - Drive ID choice less restrictive
     - Fast sync added for Fulcrum (1Gb memory for Linux/Pi, 2Gb for Docker/Mac)
