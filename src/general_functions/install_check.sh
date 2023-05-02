@@ -5,7 +5,7 @@ if [[ "$2" == "installed_return=0" ]] ; then
     if grep -q "progrem_name" $HOME/.parmanode/installed.con 2>/dev/null
     then
     return 0 ; else return 1 ; fi
-
+fi
 
 if [[ "$2" == "continue" ]] ; then 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null

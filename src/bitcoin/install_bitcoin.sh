@@ -45,7 +45,7 @@ log "bitcoin" "make_bitcoin_directories function..." && \
     while true ; do
     if [[ $this_install == "docker" ]] ; then
         install_check "docker" "installed_return=0" 
-        if [[ $? == 1 ]] then install_docker ; fi        	
+        if [[ $? == 1 ]] ; then install_docker ; fi        	
         docker build -t bitcoin . || errormessage
         break 
         fi
@@ -60,7 +60,7 @@ make_bitcoin_conf
             then return 1
         fi
 
-if [[ $this_install != "docker" ]] then 
+if [[ $this_install != "docker" ]] ; then 
 
 	#make a script that service file will use
 	if [[ $OS == "Linux" ]] ; then
