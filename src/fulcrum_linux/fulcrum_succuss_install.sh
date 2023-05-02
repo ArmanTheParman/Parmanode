@@ -13,5 +13,4 @@ set_terminal ; echo "
 ########################################################################################
 " && installed_config_add "fulcrum-end" && log "fulcrum" "install finished"
 enter_continue
-fi
 }
