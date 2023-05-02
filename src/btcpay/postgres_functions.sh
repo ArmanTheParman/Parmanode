@@ -38,14 +38,8 @@ postgres_database_creation
 #get container to write to a log file the status of the database. Log is in a mounted volume
 #accessible by host.
 
-    docker exec -it -u root  btcpay /bin/bash -c " \
-    runuser -u postgres -- echo \"$(/usr/bin/psql -l | grep btcpayserver)\" >/home/parman/.parmanode_docker/database_running.log"
-
-sleep 2
-
-#check if container wrote to the log file (success?)
-if grep "btcpayserver" >/dev/null 2>&1 $HOME/.parmanode_docker/database_running.log
-then return 0 ; fi
+if docker exec -it -u postgres btcpay psql -l | grep btcpayserver >/dev/null 2>&1 ; then
+return 0 ; fi
 
 counter=$((counter + 1))
 
