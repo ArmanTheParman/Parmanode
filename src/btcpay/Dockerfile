@@ -38,6 +38,7 @@ RUN mkdir -p ~/.btcpayserver/Main
 
 EXPOSE 49392
 EXPOSE 8080
+EXPOSE 23001
 EXPOSE 80
 
 CMD tail -f /dev/null
