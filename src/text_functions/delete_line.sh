@@ -4,7 +4,7 @@
 
 function delete_line {
 
-input_file="$1"
+input_file="$(readlink -f "$1")"
 search_string="$2"
 
 	if [[ $OS == "Linux" ]] 
