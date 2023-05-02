@@ -13,7 +13,7 @@ while true ; do set_terminal ; echo "
 
 ########################################################################################
 "
-choose "epq" ; read choice
+choose "epq" ; read choice ; if [[ $debug == 1 ]] ; then break ; fi
 case $choice in 
 Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 

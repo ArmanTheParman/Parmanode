@@ -6,7 +6,7 @@ function startup_postgres {
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
 docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
-postgres_intermission
+postgres_intermission || return 1
 }
 
 
@@ -37,12 +37,12 @@ postgres_database_creation
 #accessible by host.
 
     docker exec -it -u postgres btcpay /bin/bash -c " \
-    echo \"$(psql -l | grep btcpayserver)\" > $HOME/.btcpayserver/database_running.log"
+    echo \"$(psql -l | grep btcpayserver)\" >/home/parman/.docker/database_running.log"
 
 wait 2
 
 #check if container wrote to the log file (success?)
-if grep "btcpayserver" >/dev/null 2>&1 $HOME/.btcpayserver/database_running.log
+if grep "btcpayserver" >/dev/null 2>&1 $HOME/.docker/database_running.log
 then return 0 ; fi
 
 counter=$((counter + 1))

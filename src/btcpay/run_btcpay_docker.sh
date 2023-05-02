@@ -15,6 +15,7 @@ docker run -d \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
+           -v $HOME/.docker:/home/parman/.docker \
            -p 49393:49392 \
            -p 23001:23001 \
            -p 8080:8080 \

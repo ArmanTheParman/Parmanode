@@ -59,9 +59,8 @@ run_btcpay_docker
 log "btcpay" "entering start_postgress..."
 startup_postgres \
 && log "btcpay" "startup postgress function completed" \
-|| log "btcpay" "startup postgress function failed"
+|| log "btcpay" "startup postgress function failed" && return 1
 
-btpay_install_intermission
 
 sleep 4
 log "btcpay" "entering run_nbxplorer.."
