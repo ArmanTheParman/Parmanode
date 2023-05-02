@@ -34,7 +34,6 @@ fi
 if [[ $OS == "Mac" ]] ; then
 debug1 "about to stop bitcoind mac"
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-echo "starting bitcoind..."
 sleep 1.5
 fi
 return 0
