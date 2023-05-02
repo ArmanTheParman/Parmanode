@@ -16,9 +16,9 @@ docker run -d -u parman \
            -v $HOME/.parmanode_docker:/home/parman/.parmanode_docker \
            -p 49393:49392 \
            -p 23001:23001 \
+           -p 8070:8070 \
            -p 8080:8080 \
            -p 8090:8090 \
-           
            btcpay 
 
 debug1 "after docker run"
