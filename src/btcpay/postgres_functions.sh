@@ -41,7 +41,7 @@ postgres_database_creation
     docker exec -it -u postgres btcpay /bin/bash -c " \
     echo \"$(psql -l | grep btcpayserver)\" >/home/parman/.docker/database_running.log"
 
-wait 2
+sleep 2
 
 #check if container wrote to the log file (success?)
 if grep "btcpayserver" >/dev/null 2>&1 $HOME/.docker/database_running.log
