@@ -37,7 +37,7 @@ RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git
 RUN mkdir -p ~/.btcpayserver/Main 
 
 #make a communication channel to host
-RUN mkdir /home/parman/.docker
+RUN mkdir /home/parman/.parmanode_docker
 
 
 EXPOSE 49392
