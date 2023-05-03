@@ -1,3 +1,6 @@
+Version 2.3.4
+    - Menu improvements
+    - Start/Stop menu options for BTCPay and systemctl
 Version 2.3.3 
     - BTCPay Server added for Linux (Docker)
     - Tor for Mac and Linux added

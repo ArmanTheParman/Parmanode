@@ -37,9 +37,9 @@ IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
 	clean_exit 
-	
+
 # Config directory needs to be made
-mkdir $HOME/.parmanode >/dev/null 2>&1 #NEW
+mkdir $HOME/.parmanode >/dev/null 
 debug1 "Pause here to check for error output before clear screen." 
 
 # Load config 
