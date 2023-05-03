@@ -16,8 +16,14 @@ set_terminal ; echo "
 
              bl)           View BTCPay Server log
 
-             nl)           View NBXplorer log
+             nl)           View NBXplorer log"
+if [[ $OS == "Linux" ]] ; then
+echo "
+########################################################################################
+" ; fi
 
+if [[ $OS == "Mac" ]] ; then #for when btcpay on mac is read
+echo "
              start)        Start BTCPay Server (via docker container start) 
                                                     - rarely this is needed
 
