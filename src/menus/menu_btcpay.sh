@@ -43,11 +43,7 @@ echo "
 choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
-start|STOP|Stop)
-break ;;
-stop|STOP|Stop)
-if [[ $OS == "Mac" ]] ; then docker stop btcpay ; fi
-if [[ $OS == "Linux" ]] ; then sudo systemctl stop btcpay.service ; fi
+start|START|Start)
 break ;;
 
 bl|BL|Bl)
