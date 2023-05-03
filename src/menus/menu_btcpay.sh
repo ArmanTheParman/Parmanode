@@ -14,6 +14,14 @@ set_terminal ; echo "
 
              pp)           BTC ParmanPay - Online payment app, worldwide access
 
+             start)        Start BTCPay
+
+             stop)         Stop BTCPay
+
+             startn)       Start NBXplorer
+
+             stopn)        Stop NBXplorer
+
              bl)           View BTCPay Server log
 
              nl)           View NBXplorer log"
@@ -36,10 +44,10 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
 start|STOP|Stop)
-docker start btcpay
 break ;;
 stop|STOP|Stop)
-docker stop btcpay
+if [[ $OS == "Mac" ]] ; then docker stop btcpay ; fi
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop btcpay.service ; fi
 break ;;
 
 bl|BL|Bl)

@@ -21,5 +21,9 @@ PrivateDevices=true
 [Install]\" | sudo tee /etc/systemd/system/btcpay.service" >/dev/null 2>&1 \
 && log "btcpay" "btcpay service file made"
 
+sudo systemctl daemon-reload
+sudo systemctl enable btcpay.service
+sudo systemctl start btcpay.service
+
 return 0
 }
