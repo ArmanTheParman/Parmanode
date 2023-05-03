@@ -20,5 +20,9 @@ PrivateDevices=true
 WantedBy=multi-user.target\" | sudo tee /etc/systemd/system/nbxplorer.service" >/dev/null 2>&1 \
 && log "nbxplorer" "nbxplorer service file made"
 
+sudo systemctl daemon-reload
+sudo systemctl enable nbxplorer.service
+sudo systemcl start nbxplorer.service
+
 return 0
 }
