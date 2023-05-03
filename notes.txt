@@ -1,0 +1,20 @@
+docker network create --driver bridge my-network
+
+docker network create --driver bridge --subnet 172.20.0.0/16 --gateway 172.20.0.1 my-network
+
+git remote add remote-repo ssh://user@remote-ip-address:/path/to/remote/directory
+
+cd /path/to/my-project-bare
+git init --bare
+
+
+On macOS, Docker uses a virtual machine (VM) to host the Docker engine, which creates a separate network namespace for the containers. The --network host option is not supported because the virtual machine hosting the Docker engine is not part of the macOS network stack.
+
+To allow containers to access services running on the host, you can use the docker.for.mac.localhost DNS name, which resolves to the IP address of the host from within a container. This allows you to access services running on the host using their regular IP addresses.
+
+For example, if you have a web server running on port 8080 on your host, you can access it from a container using the following URL:
+
+bash
+Copy code
+http://docker.for.mac.localhost:8080
+This will resolve to the IP address of the host, allowing the container to access the web server running on the host.`

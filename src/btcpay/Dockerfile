@@ -35,7 +35,9 @@ RUN mkdir -p ~/.nbxplorer/Main
 #install BTCpayserver
 RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
-
+WORKDIR /home/parman/Downloads 
+RUN curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz 
+RUN tar -xf bitcoin-* 
 EXPOSE 49392
 EXPOSE 8080
 EXPOSE 23001
