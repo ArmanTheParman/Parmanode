@@ -1,7 +1,6 @@
 # Parmanode 2.3.4 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
-18 April 2023
 
 Parmanode is an automated installation wizard and menu for desktiop
 computers, with the following software (list is growing):
