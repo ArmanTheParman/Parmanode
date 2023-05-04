@@ -28,39 +28,19 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;; 
 
 2) 
-
-if docker ps | grep fulcrum >/dev/null 2>&1 ; then
-    { docker exec -d -u parman fulcrum /bin/bash -c \
-    "source /home/parman/parmanode/src/edit_ssl_port_fulcrum_indocker.sh ; \
-    edit_ssl_port_fulcrum_indocker 50002" \
-    && log "fulcrum" "docker exec edit ssl port fulcrum indocker 50002 has run" && break ; } \
-    || { log "fulcrum" "Failed to edit ssl port fulcrum indocker 50002" && return 1 ; }
-else
-    set_terminal ; echo "Fulcrum Docker container is not running - can't change SSL port to default, 50002. Aborting."
-    log "fulcrum" "Unable to set SSL to 50002, fulcrum container not running."
-    enter_continue
-    return 1
-fi
+    edit_ssl_port_fulcrum_indocker 50002
 ;;
 
 yolo|YOLO|Yolo)
 
-if docker ps | grep fulcrum >/dev/null 2>&1 ; then
-    { docker exec -d -u parman fulcrum /bin/bash -c \
-    "source /home/parman/parmanode/src/edit_ssl_port_fulcrum_indocker.sh ; \
-    edit_ssl_port_fulcrum_indocker 50003" \
-    && log "fulcrum" "docker exec edit ssl port fulcrum indocker 50003 has run" && break ; } \
-    || { log "fulcrum" "Failed to edit ssl port fulcrum indocker 50003" && return 1 ; }
-else
-    set_terminal ; echo "Fulcrum Docker container is not running - can't change SSL port to 5003. Aborting."
-    enter_continue
-    return 1
-fi
+    edit_ssl_port_fulcrum_indocker 50003
 ;; 
 
-x|X) break ;;
+x|X) 
+break ;;
 
-*) invalid ;; 
+*) 
+invalid ;; 
 esac
 
 done

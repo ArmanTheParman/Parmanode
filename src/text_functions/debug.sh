@@ -4,10 +4,17 @@
 # code to contine.
 
 function debug {
-echo "Debug point. Message:"
-echo "$1"
+echo "Debug point. Message:
+"
+echo "$1
+"
 log "debug" "$1"
 enter_continue
 return 0
 }
 	
+function debug1 {
+if [ $debug = 1 ] ; then
+debug "$1"
+fi
+}

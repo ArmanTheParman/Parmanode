@@ -15,11 +15,11 @@ echo "
 
                      (f)        Fulcrum (an Electrum Server)
 
-                     (d)        Docker
-                    
                      (btcp)     BTCPay Server
 
                      (t)        Tor 
+
+                     (d)        Docker
 
          Not yet avaiable...                        
 
@@ -50,8 +50,8 @@ case $choice in
         ;;
     f|F)
        set_terminal
-       if [[ $OS == "Linux" ]] ; then install_fulcrum || return 1 ; fi
-       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac || return 1 ; fi
+       if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 ; fi
+       if [[ $OS == "Mac" ]] ; then install_fulcrum_mac && return 0 ; fi
        return 0 
        ;;
     d|D)
@@ -61,11 +61,9 @@ case $choice in
         ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
-       install_btcpay_linux || return 1 
-       else
-       set_terminal ; echo "Only available for Linux, currently" ; enter_continue
-       fi
-       return 0
+       install_btcpay_linux && return 0 ; fi
+       if [[ $OS == "Mac" ]] ; then 
+       no_mac || return 1  ; fi
        ;;
     
     t|T|tor|Tor)

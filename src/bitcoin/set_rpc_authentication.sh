@@ -1,35 +1,28 @@
 function set_rpc_authentication {
 while true ; do
-set_terminal ; echo "
+debug1 "beginning of set rpc authentication loop"
+set_terminal_bit_higher ; echo "
 ########################################################################################
 
                            Bitcoin Core RPC Authentication
 
-    Remote Procedure Call (RPC) is how other applications connect to Bitcoin
-    Core. The default authentication method is a cookie file stored in the Bitcoin
-    data directory. Some software (eg Fulcrum Server) REQUIRES the alternative 
-    way, which is with a username and password. You can set a username and password 
-    here.
-
-    (p)  Exit this menu
-
-    (s) Set Bitcoin username and password
-        and copy to Fulcrum configuration ....... (must use password if
-                                                   installing Fulcrum)
+    Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
+	Bitcoin Core. The default authentication method is with what's caled a COOKIE 
+	FILE Stored in the Bitcoin data directory. 
 	
-	d)  Set Bitcoin username and password
-	    and DON'T copy anywhere else
+	Some software (eg Fulcrum Server) REQUIRES the alternative way, which is with a 
+	USERNAME And PASSWORD. For convenience, you can set a username and password here.
 
 
-    (L)  Leave username and password unchanged ...(and add to Fulcrum configuration)
 
+       (s) Set the Bitcoin username and password (edits bitcoin.conf)
 
-    (c)  Use cookie ............................. (default setting for Bitcoin only.
-                                                   Won't work with Fulcrum.) 
+       (L) Leave Bitcoin username and password unchanged 
 
+       (c) Use cookie ...(deletes from bitocin.conf; Won't work with Fulcrum) 
 
-    If you make changes, you MUST restart Bitcoin and Fulcrum (not Parmanode) for 
-	those changes to take effect.
+       (p) Exit this menu (set username/pass from menu later)
+
 
 ########################################################################################
 
@@ -38,28 +31,31 @@ choose "xpq" ; read choice
 
 case $choice in
     s|S)
+                debug1 "pre-password changer"
 	            password_changer
 				 
+	            stop_bitcoind  
                 set_rpc_authentication_update_conf_edits #defined below
 
-				add_userpass_to_fulcrum	
+				add_userpass_to_fulcrum 
+				#(extracted from bitcoin.conf)	
 
-	    continue	
-		;;
+				sleep 1 ; run_bitcoind
+
+                break
+		        ;;
 		
-	d|D)        password_changer
-
-                set_rpc_authentication_update_conf_edits
-
-	    continue
-		;;
-
 	l|L) 
 				add_userpass_to_fulcrum
+				break
 				;;
 	c)
+	            stop_bitcoind
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+				sleep 1
+				run_bitcoind 
+				break
 		;;	
 
 	p|P) return 0 ;;
@@ -72,29 +68,19 @@ case $choice in
 esac
 
 done
+return 0
 }
 
 function set_rpc_authentication_update_conf_edits {
-	
-	set_terminal ; echo "
-########################################################################################
 
-    Bitcoin must be (will be) stopped before changing passwords, otherwise you won't 
-	be permitted to stop Bitcoin later (the starting Bitcoin password won't match the
-	stopping Bitcoin pasword).
-
-########################################################################################
-"
-enter_continue
-stop_bitcoind ; if [ $? == 1 ] ; then echo "Unable to stop bitcoin daemon. Aborting password change."
-										enter_continue ; return 1 ; fi
-
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser"
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword"
-	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf
-	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" >/dev/null 2>&1
+	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" >/dev/null 2>&1
+	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf 2>&1
+	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
 	parmanode_conf_add "rpcpassword=$rpcpassword"
+
+set_terminal
 
 run_bitcoind
 

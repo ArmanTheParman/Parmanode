@@ -1,8 +1,8 @@
 ########################################################################################
-    Version 2.2.5 - 25th April
+    Version 2.3.3 - 3rd May, 2023
 ########################################################################################
 
-                              #Notes to developers
+                             #Notes to developers
 
 
 Thank you, you lovely open source developers for contriubiting and reviewing the 
@@ -12,6 +12,11 @@ This document is to help quickly uderstand how the code works in a convenient pl
 rather than littered in hard-to-find places which you may end up reading but in an
 inefficient order.
 
+ARGUMENTS  
+                    If you add "debug" as an argument to ./run_parmanode.sh, useful
+                    things lik skipping over some code, or activating debug stopping
+                    points with messages happens.
+                    
 FREQUENTLY USED CUSTOM FUNCTIONS
 
     set_terminal    This is used a lot to clear the screen. It also sets the terminal
@@ -25,6 +30,10 @@ FREQUENTLY USED CUSTOM FUNCTIONS
                     error to the user before aborting. It takes a string argument which
                     gets printed, before a read command so the screen doesn't clear, 
                     and devs or users can see the error message before continuing.
+    
+    debug1          This will execute only if the run_parmanode program receives an
+                    argument, "debug", which sets debug=1. Then debug1 calls debug,
+                    otherwise the debug points are skipped. 
 
     choose          I have several functions that are echo statements to be printed
                     menu options, found in the echo_choices.sh file. "choose" takes

@@ -1,6 +1,6 @@
 function menu_log_config {
 
-. $HOME/.parmanode/hide_messages.conf
+. $HOME/.parmanode/hide_messages.conf >/dev/null
 
 if [[ $message_menu_log_config != "1" ]] ; then 
 set_terminal ; echo "
@@ -15,8 +15,10 @@ set_terminal ; echo "
     (Note the \".\", that's not an accident)
 
     Hit <enter> to continue 
+
     or 
-    Hit <enter> and (Free Ross) to hide this message next time    
+
+    Type (Free Ross) then hit <enter> to hide this message next time    
 
 ########################################################################################
 "
@@ -64,7 +66,7 @@ nbxpc) less $HOME/.nbxplorer/Main/settings.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
 pl) less $HOME/.parmanode/parmanode.log ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
-delete|DELETE|Delete) rm $HOME/.parmanode/*.log ; echo "" ; echo "Deleting" ; sleep 1 ;;
+delete|DELETE|Delete) rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
 *) invalid ;;
 esac
 done

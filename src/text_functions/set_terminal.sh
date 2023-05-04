@@ -1,5 +1,5 @@
 function set_terminal {
-colour=$1
+colour="$1"
 
 printf '\033[8;38;88t'   # sets terminal size
 

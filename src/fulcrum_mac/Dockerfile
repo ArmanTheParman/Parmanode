@@ -3,7 +3,7 @@
 
 FROM debian 
 RUN apt-get update
-RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl
+RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -40,22 +40,18 @@ RUN openssl req -newkey rsa:2048 -new -nodes -x509 -days 36500 -keyout key.pem -
 
 #make fulcrum config file
 USER parman
-WORKDIR /home/parman/parmanode/fulcrum
+WORKDIR /home/parman/parmanode/fulcrum/
 RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "bitcoind = 127.0.0.1:8332" >> fulcrum.conf \
 && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \
 && echo "cert = /home/parman/parmanode/fulcrum/cert.pem" >> fulcrum.conf \
 && echo "key = /home/parman/parmanode/fulcrum/key.pem" >> fulcrum.conf \
-&& echo "fast-sync = 2000" \
+&& echo "fast-sync = 2000" >> fulcrum.conf \
 && echo "peering = false" >> fulcrum.conf
  
-#get necessary scripts within container.
-RUN mkdir -p /home/parman/parmanode/temp
-RUN mkdir -p /home/parman/parmanode/src
-COPY ./src/ /home/parman/parmanode/temp
-RUN find /home/parman/parmanode/temp -type f -exec cp {} /home/parman/parmanode/src/ \;
-USER root
-RUN rm -rf /home/parman/parmanode/temp
-#make all functions available to "docker exec"
+RUN mkdir /home/parman/parmanode/config
+#will contain symlinks to be made after docker run
+
+#make all functions available to "docker exec" without specifying user
 USER parman
 CMD tail -f /dev/null 

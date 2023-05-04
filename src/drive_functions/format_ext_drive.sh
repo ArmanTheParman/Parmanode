@@ -32,31 +32,26 @@ if [[ $OS == "Mac" ]] ; then
     fi
 
 if [[ $OS == "Linux" ]] ; then
-
-        #delete fstab entry of the disk immediately before formatting
-        remove_UUID_fstab "$disk" && log "bitcoin" "UUID removed for $disk from fstab"
-
-        sudo mkfs.ext4 -F /dev/$disk && log "bitcoin" "mkfs done" && \
-        enter_continue
-
-        #Mounting
-        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1    
-        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
-        sudo e2label /dev/$disk parmanode >> $HOME/.parmanod/bitcoin.log 2>&1 
+        #in case I allow no wiping in future version, duplicating this function
+        #it wipes a nonsense UUID if the drive has just been wiped, so no harm.
+        remove_fstab_entry
+        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk && log "bitcoin" "mkfs done" && \
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
-
         #Write to fstab 
         echo "UUID=$UUID /media/$(whoami)/parmanode ext4 defaults 0 2" | sudo tee -a /etc/fstab > /dev/null 2>&1
-        
         log "bitcoin" "fstab grep output for parmanode:" && \
         grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
-    
+
+        #Mounting
+        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
+        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+
         #confirmation output.
-        echo "Some more cool computer stuff happened in the background."
-        enter_continue # pause not required as all the above code has no output
+        if [[ $debug = 1 ]] ; then enter_continue ; fi # pause not required as all the above code has no output
         parmanode_conf_add "UUID=$UUID"
         set_terminal
         echo "

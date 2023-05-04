@@ -4,6 +4,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 # make config file
 if [[ -z $rpcuser ]] ; then #from parmanode.conf 
     set_rpc_authentication 
+    set_terminal
     if [ $? != 0 ] ; then set_terminal ; echo "Error setting rps user/pass. Aborting installation." ; enter_continue ; return 1 ; fi
 fi
 

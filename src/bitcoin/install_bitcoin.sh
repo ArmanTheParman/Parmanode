@@ -69,7 +69,7 @@ echo "
                                     SUCCESS !!!
 
     Bitcoin Core will begin syncing after a reboot, or you can start Bitcoin Core 
-    from the Parmanode menu.
+    from the Parmanode Bitcoin menu.
 
     You can also access Bitcoin functions from the Parmanode menu.
     
@@ -104,7 +104,7 @@ echo "
 ########################################################################################
 " && installed_config_add "bitcoin-end"
     #Just in case
-            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >dev/null 2>&1
+            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
 enter_continue
 return 0 

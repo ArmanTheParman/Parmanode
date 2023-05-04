@@ -5,12 +5,15 @@ set_terminal
 install_check "parmanode" #checks parmanode.conf, and exits if already installed.
     if [ $? == 1 ] ; then return 1 ; fi #error mesages done in install_check, this ensures code exits to menu
 
-if [[ $OS == "Linux" ]] ; then update_computer ; fi
+if [[ $OS == "Linux" || $debug == 0 ]] ; then update_computer ; fi
 if [[ $OS == "Mac" ]] ; then 
 	brew_check 
 	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
 	bitcoin_dependencies 
 	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
+
+    greadlink_check 
+        
 fi
 
 #Test for necessary functions
@@ -26,12 +29,6 @@ choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if 
 
 make_home_parmanode 
     if [ $? == 1 ] ; then return 1 ; fi #exiting this function with return 1 takes user to menu.
-
-install_docker_linux
-    if [ $? == 0 ] ; then 
-    log "docker" "... exiting install docker linux, success"
-    else
-    return 1 ; fi 
         
 # Update config files
     parmanode_conf_add "drive=$hdd" 

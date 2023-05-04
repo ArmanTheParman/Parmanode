@@ -1,7 +1,7 @@
 function install_check { 
-program_name=$1
+program_name="$1"
 
-if [[ $2 == "continue" ]] ; then 
+if [[ "$2" == "continue" ]] ; then 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
     then
     return 1
@@ -23,7 +23,7 @@ fi
 }
 
 function install_error {
-program_name=$1
+program_name="$1"
 if [[ $program_name == "parmanode" ]] ; then
 set_terminal
 echo "
