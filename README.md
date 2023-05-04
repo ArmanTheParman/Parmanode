@@ -89,9 +89,15 @@ If an external drive is used, a symlink on the internal drive will point to the 
 #### Stable:
 
 Find the latest tag and download/unzip that to a directory on your drive.
+
 It must not be the home directory (Parmanode will know and not let you run it, apologies).
+
 To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
+
 Do not forget to type the ".sh" extension in the run command.
+
+You will be asked at some point for a password - this is your computer's "sudo" or login
+password, and is necessary for Parmanode to access system functions like mounting drives.
 
 #### Latest:
 
@@ -100,13 +106,17 @@ Easy way - Navigate to the github repository, and click the green 'code' button.
         
 Easier way - coming soon.
 
-Surest way - Run this command in terminal:
+Surest way - In terminal, navige to anywhere but the home directory and run this command:
 
                 git clone http://github.com/armantheparman/parmanode.git
         or
                 git clone git@github.com:armantheparman/parmanode.git
 
-It will download a directory called "parmanode" to your working directory. Then cd parmanode, to change into that directory. Then type './run_parmanode.sh'
+It will download a directory called "parmanode" to your working directory. Then cd 
+parmanode, to change into that directory. Then type './run_parmanode.sh'
+
+Note that you may get a fingerprint error by the terminal when you run the git clone
+command; that's ok, it's safe to proceed.
 
 ## INSTRUCTIONS TO UPGRADE
 
