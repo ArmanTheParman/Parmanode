@@ -41,7 +41,7 @@ make_ssl_certificates
   log "fulcrum" "make_ssl exited." 
 
 make_fulcrum_service_file
-
+start_fulcrum_linux
 fulcrum_success_install
 
 return 0

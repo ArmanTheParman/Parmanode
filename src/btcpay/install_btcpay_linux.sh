@@ -1,12 +1,12 @@
 function install_btcpay_linux {
 
-if [[ $1 != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
+if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
     install_check "btcpay"
         if [ $? == 1 ] ; then return 1 ; fi
 
-    if ! command -v docker >dev/null 2>&1 ; then
+    if ! command -v docker >/dev/null 2>&1 ; then
 
         need_docker_for_btcpay || return 1  #docker="no" or docker="yes" set
 
@@ -29,7 +29,7 @@ fi
 while true ; do user_pass_check_exists 
     return_status=$?
     if [ $return_status == 1 ] ; then return 1 ; fi
-    if [ $return_status == 2 ] ; then continue ; fi
+    if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
     if [ $return_status == 0 ] ; then break ; fi 
     done
     
@@ -47,6 +47,7 @@ log "btcpay" "entering nbxplorer_config..."
 nbxplorer_config
     if [ $? == 1 ] ; then return 1 ; fi
 
+
 log "btcpay" "entering build_btcpay..."
 build_btcpay 
     if [ $? == 1 ] ; then return 1 ; fi
@@ -56,19 +57,23 @@ run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering start_postgress..."
-startup_postgres \
-&& log "btcpay" "startup postgress function completed" \
-|| log "btcpay" "startup postgress function failed"
+{ startup_postgres \
+&& log "btcpay" "startup postgress function completed" ; } \
+|| { log "btcpay" "startup postgress function failed" && return 1 ; }
 
+sleep 4
 log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer
+run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log
     if [ $? == 1 ] ; then return 1 ; fi
 
+sleep 4
 log "btcpay" "entering run_btcpay..."
 run_btcpay
     if [ $? == 1 ] ; then return 1 ; fi
 
-debug "pause"
+make_btcpay_service
+make_nbxplorer_service
+
 
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."

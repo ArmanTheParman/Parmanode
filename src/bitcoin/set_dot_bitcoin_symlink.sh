@@ -35,19 +35,22 @@ set_terminal ; echo "
                                  
                                  Symlinks created
 
+    NOTHING TO DO, IT'S JUST FOR YOUR INFORMATION IN CASE YOU WANT IT.
+
 
     A symlink to the data directory has been created.
 
-    For Linux users with an external drive, $HOME/.bitcoin points to
-    /media/$(whoami)/parmanode/.bitcoin
+        For Linux users with an external drive,
+        $HOME/.bitcoin points to
+        /media/$(whoami)/parmanode/.bitcoin
 
-    For Mac users with an external drive, 
-    $HOME/Library/Application Support/Bitcoin points to 
-    /Volumes/parmanode/.bitcoin
+        For Mac users with an external drive, 
+        $HOME/Library/Application Support/Bitcoin points to 
+        /Volumes/parmanode/.bitcoin
 
-    For Mac users with an internal drive, 
-    $HOME/Library/Application Support/Bitcoin pionts to 
-    $HOME/.bitcoin
+        For Mac users with an internal drive, 
+        $HOME/Library/Application Support/Bitcoin pionts to 
+        $HOME/.bitcoin
 
 ########################################################################################
 "

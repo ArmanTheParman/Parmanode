@@ -107,7 +107,7 @@ echo "
 ########################################################################################
 "
 enter_continue
-docker exec -it fulcrum nano /home/parman/parmanode/fulcrum/fulcrum.conf
+nano $HOME/parmanode/fulcrum/fulcrum.conf
 fi
 
 continue

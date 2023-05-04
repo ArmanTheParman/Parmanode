@@ -10,27 +10,27 @@ echo "
 
 ########################################################################################          
 
-                             (b)      Bitcoin Core
+                             (b)       Bitcoin Core
 
-                             (f)      Fulcrum (an Electrum Server)
+                             (f)       Fulcrum (an Electrum Server)
+
+                             (btcp)    BTCPay Server
+
+                             (t)       Tor 
 
             Not yet avaiable...                        
 
-                             (m)      Mempool.Space
+                             (m)       Mempool.Space
 
-                             (l)      LND
+                             (l)       LND
 
-                             (rtl)    RTL
+                             (rtl)     RTL
 
-                             (bps)    BTCPay Server
+                             (s)       Specter Desktop
 
-                             (s)      Specter Desktop
+                             (th)      ThunderHub
 
-                             (th)     ThunderHub
-
-                             (lh)     LND Hub
-
-                             (t)      Tor 
+                             (lh)      LND Hub
 
 #######################################################################################
 
@@ -47,7 +47,16 @@ b|B)
 f|F)
     menu_fulcrum
     ;;
-m | M | l | L | RTL | rtl | bps | BPS | s | S | th | TH | lh | LH | t | T)
+btcp|BTCP)
+    if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
+    menu_btcpay
+    ;;
+
+t|T)
+    menu_tor
+    ;;
+
+m | M | l | L | RTL | rtl |is | S | th | TH | lh | LH )
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."

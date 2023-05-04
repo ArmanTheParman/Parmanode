@@ -1,4 +1,1 @@
-warning for users - must run /run_parmanode from parmanode directory
-warning for users in readme - don't forget to include .sh extension
-make a checklist for version of instaled software, eg  
-    using postgres-13 and won't go to 14 or it will make the script fail.
+add #NEW to changes on master since release

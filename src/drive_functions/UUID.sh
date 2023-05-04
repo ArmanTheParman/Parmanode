@@ -1,6 +1,6 @@
 function remove_UUID_fstab {
 
-drive_ID=$1
+drive_ID="$1"
 
 get_UUID "${drive_ID}"
 
