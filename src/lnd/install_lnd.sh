@@ -1,4 +1,5 @@
 function install_lnd {
+download_lnd
 
 }
 
