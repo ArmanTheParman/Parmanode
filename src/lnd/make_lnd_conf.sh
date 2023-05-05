@@ -1183,9 +1183,7 @@ protocol.wumbo-channels=true
 ; rpcmiddleware.intercepttimeout=2s
 
 ; Add the named middleware to the list of mandatory middlewares. All RPC
-; requests are blocked/denied if any of the mandatory middlewares is not
-; registered. Can be specified multiple times.
-; rpcmiddleware.addmandatory=my-example-middleware
+; requests are blocked/denied if .lnd/*-example-middleware
 ; rpcmiddleware.addmandatory=other-mandatory-middleware
 
 [remotesigner]
@@ -1280,6 +1278,5 @@ protocol.wumbo-channels=true
 ; Duration of the sweep batch window. The sweep is held back during the batch
 ; window to allow more inputs to be added and thereby lower the fee per input.
 ; sweeper.batchwindowduration=30s" | tee $HOME/.lnd/lnd.conf >/dev/null 2>&1
-make_lnd_service
 
 } 
