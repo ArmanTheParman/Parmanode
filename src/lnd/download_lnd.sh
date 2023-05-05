@@ -1,6 +1,8 @@
 function download_lnd {
 if [[ $OS != "Linux" ]] ; then return 1 ; fi
 mkdir $HOME/parmanode/lnd >/dev/null 2>&1
+rm -rf $HOME/parmanode/lnd/*
+
 
 if [[ $chip == "x86_64" ]] ; then
 cd $HOME/parmanode/lnd
