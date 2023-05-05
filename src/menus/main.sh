@@ -6,14 +6,17 @@ echo "
 #                                                                                      #
 #                           P A R M A N O D E - Main Menu                              #
 #                                                                                      #
-#                                                                                      #
-#         (i)           Install Parmanode ..................(Hint: start here)         #
-#                                                                                      #
-#         (a)           Add more programs ..........(Can install Bitcoin here)         #
+#                                                                                      #"
+if ! grep -q "parmanode" $HOME/.parmanode/installed.conf ; then 
+echo "#         (i)           Install Parmanode                                              #
+"
+else
+echo "#         (add)           Add more programs                                            #
 #                                                                                      #
 #         (p)           Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
-#                                                                                      #
-#--------------------------------------------------------------------------------------#
+#                                                                                      #" ; fi
+
+echo "#--------------------------------------------------------------------------------------#
 #                                                                                      #
 #         (remove)      Remove (uninstall) programs                                    #
 #                                                                                      #
@@ -31,7 +34,6 @@ echo "
 #                                                                                      #
 #         (ap)          About Parmanode                                                #
 #                                                                                      #
-#                                                                                      #
 ########################################################################################
 "
 choose "xq"
@@ -44,7 +46,7 @@ case $choice in
 
 i|I)
     install_parmanode  ;;
-add|Add| ADD| a |A)
+add|Add| ADD)
     menu_add_programs ;;
 p|P)
     menu_programs ;;

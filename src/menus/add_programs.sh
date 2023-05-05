@@ -10,30 +10,52 @@ echo "
 
 
 ########################################################################################
-          
-                     (b)        Bitcoin Core
 
-                     (f)        Fulcrum (an Electrum Server)
+Not yet installed...          
+"
+if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (b)       Bitcoin Core
+                            " ; fi
+if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (f)       Fulcrum (an Electrum Server)
+                            " ; fi
+if ! grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (btcp)    BTCPay Server
+                            " ; fi
+if ! grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (t)       Tor 
+                            " ; fi
+if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (lnd)     LND
+                            " ; fi
+echo "Already installed...
+"
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Bitcoin Core
+                            " ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Fulcrum (an Electrum Server)
+                            " ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       BTCPay Server
+                            " ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Tor 
+                            " ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       LND
+                            " ; fi
+echo "Not yet avaiable...                        
 
-                     (btcp)     BTCPay Server - Linux only
+                            (m)        Mempool.Space
 
-                     (t)        Tor 
+                            (rtl)      RTL
 
-                     (d)        Docker
+                            (s)        Specter Desktop
 
-                     (lnd)      LND - Lunx only
+                            (th)       ThunderHub
 
-         Not yet avaiable...                        
-
-                     (m)        Mempool.Space
-
-                     (rtl)      RTL
-
-                     (s)        Specter Desktop
-
-                     (th)       ThunderHub
-
-                     (lh)       LND Hub
+                            (lh)       LND Hub
 
 ########################################################################################
 
