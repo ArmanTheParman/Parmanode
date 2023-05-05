@@ -4,11 +4,18 @@ set_terminal ; echo "
 ########################################################################################
 
     Please type in an alias for your LND node. It's a good idea not to give away
-    personal information about yourself on this public network. For example, don't
+    personal information about yourself on the public network. For example, don't
     use your real name or Twitter handle. If you leave it blank, the node will be
     called Parmanode_LND followed by a random number.
 
-    Please type in your choice...
+    Info about privacy. Can people know much about you if you run a LND node? It
+    depends on a lot of things, but the most revealing thing is how much bitcoin you
+    put on your node channels. This is publically searcable on lightning explorers
+    like 1ml.com and others. If you put your name as the alias, anyone can easily
+    see how much bitcoin you put in your channel, and your IP address; so, don't do
+    that.
+
+    Please type in your alias choice...
 
 ########################################################################################
 "
