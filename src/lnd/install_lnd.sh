@@ -1,4 +1,7 @@
 function install_lnd {
+set_terminal
+please_wait
+
 install_check "lnd" || return 1
 
 download_lnd && install_config_add "lnd-start" #lnd directory gets made too
