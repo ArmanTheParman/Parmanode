@@ -1,4 +1,5 @@
 function menu_main {
+source $HOME/.parmanode/installed.conf
 while true ; do
 set_terminal_bit_higher
 echo "
@@ -11,7 +12,7 @@ if ! grep -q "parmanode" $HOME/.parmanode/installed.conf ; then
 echo "#         (i)           Install Parmanode                                              #
 "
 else
-echo "#         (add)           Add more programs                                            #
+echo "#         (add)         Add more programs                                            #
 #                                                                                      #
 #         (p)           Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
 #                                                                                      #" ; fi
