@@ -18,8 +18,8 @@ echo "
                            (btcp)             BTCPay Server
 
                            (t)                Tor
-						   
-						   (lnd)              LND
+
+                           (lnd)              LND
 
 ########################################################################################
 
@@ -56,7 +56,7 @@ return 0
 ;;
 
 lnd|LND|Lnd)
-if [[ $OS == "Linux" ]] ; then uninstall_lnd ; fi
+if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
 ;;
 
 p|P)

@@ -17,3 +17,22 @@ delete_line "$HOME/.parmanode/installed.conf" "$program"
 return 0
 }
 
+function installed_conf_remove {
+installed_config_remove
+}
+function installed_conf_add {
+installed_config_add
+}
+function install_conf_remove {
+installed_config_remove
+}
+function install_conf_add {
+installed_config_add
+}
+function install_config_remove {
+installed_config_remove
+}
+function install_config_add {
+installed_config_add
+}
+
