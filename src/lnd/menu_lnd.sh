@@ -6,6 +6,8 @@ function menu_lnd {
 
 #delete lnd wallet
 
+# $ sudo journalctl -f -u lnd
 
+#lncli getinfo
 
 }
