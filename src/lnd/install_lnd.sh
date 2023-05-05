@@ -7,6 +7,8 @@ install_check "lnd" || return 1
 make_lnd_directories && \
 installed_config_add "lnd-start" 
 
+download_lnd
+
 verify_lnd || return 1
 unpack_lnd
 
