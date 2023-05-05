@@ -15,13 +15,13 @@ echo "
 
                      (f)        Fulcrum (an Electrum Server)
 
-                     (btcp)     BTCPay Server
+                     (btcp)     BTCPay Server - Linux only
 
                      (t)        Tor 
 
                      (d)        Docker
 
-                     (lnd)      LND
+                     (lnd)      LND - Lunx only
 
          Not yet avaiable...                        
 
