@@ -1,4 +1,5 @@
 function make_lnd_service {
+debug1 "inside make lnd service"
 
 echo "[Unit]
 Description=LND Lightning Network Daemon
@@ -49,6 +50,8 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/lnd.service >/dev/null 2>&1
+
+debug1 "going to cat lnd.service..." && cat /etc/systemd/system/lnd.service && enter_continue
 
 sudo systemctl daemon-reload >/dev/null 2>&1
 sudo systemctl enable lnd >/dev/null 2>&1
