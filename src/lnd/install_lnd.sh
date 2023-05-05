@@ -9,7 +9,11 @@ make_dot_lnd
 
 
 set_lnd_alias
-
+set_lnd_password
 make_lnd_conf
+
+
+#do last. Also runs LND
+make_lnd_service
 
 }
