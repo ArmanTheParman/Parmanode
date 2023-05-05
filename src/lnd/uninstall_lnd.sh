@@ -22,7 +22,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 sudo systemctl stop lnd.service
 sudo rm /etc/systemd/system/lnd.service
-rm -rf $HOME/lnd $HOME/.lnd
+rm -rf $HOME/parmanode/lnd $HOME/.lnd
 installed_conf_remove "lnd"
 success "LND" "being uninstalled."
 return 0
