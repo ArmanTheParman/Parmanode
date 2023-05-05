@@ -30,7 +30,7 @@ bitcoin.feerate=50
 bitcoind.dir=~/.bitcoin
 bitcoind.config=~/.bitcoin/bitcoin.conf
 bitcoind.rpcuser=$rpcuser
-bitcoind.rpcpass=$rpcuser
+bitcoind.rpcpass=$rpcpassword
 bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
 bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
 
