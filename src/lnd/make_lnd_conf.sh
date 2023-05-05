@@ -1,7 +1,7 @@
 function make_lnd_conf {
 source $HOME/.bitcoin/bitcoin.conf
 
-echo " [Application Options]
+echo "[Application Options]
 tlsextraip=0.0.0.0
 tlsextradomain=0.0.0.0
 tlsautorefresh=true
