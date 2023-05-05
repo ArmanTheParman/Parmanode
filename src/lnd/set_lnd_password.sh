@@ -1,6 +1,5 @@
 #restarts LND
 function set_lnd_password {
-touch $HOME/.lnd/password.txt && chmod 600 $HOME/.lnd/password.txt
 
 while true ; do
 set_terminal ; echo "
@@ -18,15 +17,21 @@ set_terminal
 echo "Please repeat the password:
 "
 read lndpassword2
+
+#delete file, create file, later populate file.
+rm $SHOME/.lnd/password.txt >/dev/null 2>&1
+touch $HOME/.lnd/password.txt && chmod 600 $HOME/.lnd/password.txt
+
+
 if [[ $lndpassword != $lndpassword2 ]] ; then
     echo "Passwords do not match. Try again."
     enter_continue ; continue
 else
     echo "Password set"
     echo "$lndpassword" > $HOME/.lnd/password.txt 
-    echo "Always restart LND when you change your password."
     enter_continue
     break
 fi
+
 done
 }
