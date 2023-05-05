@@ -18,11 +18,11 @@ echo "
 
                              (t)       Tor 
 
+                             (lnd)     LND
+
             Not yet avaiable...                        
 
                              (m)       Mempool.Space
-
-                             (l)       LND
 
                              (rtl)     RTL
 
@@ -55,8 +55,12 @@ btcp|BTCP)
 t|T)
     menu_tor
     ;;
+lnd|LND|Lnd)
+if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; fi
+;;
 
-m | M | l | L | RTL | rtl |is | S | th | TH | lh | LH )
+m | M | RTL | rtl |is | S | th | TH | lh | LH )
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."
