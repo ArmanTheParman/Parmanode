@@ -1,5 +1,5 @@
 function unpack_lnd {
-cd $HOME/parmanode && mkdir lnd >/dev/null 2>&1
-tar -xvf lnd-* -C ./lnd
+cd $HOME/parmanode/lnd >/dev/null 2>&1
+tar -xvf lnd-*.gz -C ./lnd
 rm lnd-*
 }

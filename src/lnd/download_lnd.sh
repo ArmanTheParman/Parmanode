@@ -1,6 +1,6 @@
 function download_lnd {
 if [[ $OS != "Linux" ]] ; then return 1 ; fi
-mkdir $HOME/parmanode/lnd >/dev/null 2>&1
+
 rm -rf $HOME/parmanode/lnd/*
 
 #get signatures and SHA256 file
