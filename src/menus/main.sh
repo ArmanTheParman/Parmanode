@@ -38,69 +38,35 @@ choose "xq"
 echo "
 (Note, <enter> is the same as <return>)"
 read choice
+set_terminal
 
 case $choice in
 
 i|I)
-    set_terminal
-    install_parmanode ; if [$? == 0 ] ; then return 0 ; fi 
-    continue
-    ;;
-
-a|A)
-    set_terminal
-    menu_add_programs
-    ;;
-
+    install_parmanode  ;;
+add|Add| ADD| a |A)
+    menu_add_programs ;;
 p|P)
-    menu_programs
-    ;;
-
+    menu_programs ;;
 remove|REMOVE)
-    remove_programs
-    continue
-    ;;
-    
-l|L) menu_log_config
-    ;;
-    
+    remove_programs ;;
+l|L) 
+    menu_log_config ;;
 pp)
-    premium
-    ;;
-
+    premium ;;
 e|E)
-    education
-    ;;
-
+    education ;;
 t|T)
-    PMtools
-    ;;
-
+    PMtools ;;
 d|D)
-    donations
-    ;;
-
+    donations ;;
 uninstall|UNINSTALL)
-    set_terminal
-    uninstall_parmanode
-    continue
-    ;;
-
+    uninstall_parmanode ;;
 ap|AP|Ap|aP)
-    about
-    ;;
-
+    about ;;
 q | Q | quit)
-    exit 0
-    ;;
-
+    exit 0 ;;
 *)
-    invalid
-	;;
-
-esac
-
-done
-
-return 0
+    invalid ;;
+esac ; done ; return 0
 }

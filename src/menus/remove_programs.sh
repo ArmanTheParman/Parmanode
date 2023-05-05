@@ -6,23 +6,32 @@ set_terminal
 echo "
 ########################################################################################
 
-                                   Remove Programs
+             Remove Programs
 
-
-                           (bitcoin)          Bitcoin Core
-                               
-                           (f)                Fulcrum Server 
-
-                           (d)                Docker
-
-                           (btcp)             BTCPay Server
-
-                           (t)                Tor
-
-                           (lnd)              LND
-
+"
+if grep -q "parmanode-end" $HOME/.parmanode/installed.conf ; then
+echo "                                           (parmanode)        Parmanode
+" ; fi
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                                           (bitcoin)          Bitcoin Core
+" ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (f)                Fulcrum Server 
+" ; fi
+if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (d)                Docker 
+" ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (btcp)             BTCPay 
+" ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (t)                Tor 
+" ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (lnd)              LND 
+" ; fi
+echo "
 ########################################################################################
-
 "
 choose "xpq"
 read choice
