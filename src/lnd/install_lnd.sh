@@ -16,6 +16,8 @@ sudo install -m 0755 -o root -g root -t /usr/local/bin $HOME/parmanode/lnd/lnd-*
 
 set_lnd_alias
 set_lnd_password
+
+
 make_lnd_conf ; debug1 "lnd conf made"
 
 #do last. Also runs LND

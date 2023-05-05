@@ -1088,9 +1088,9 @@ protocol.wumbo-channels=true
 ; Etcd namespace to use.
 ; db.etcd.namespace=lnd
 
-; Whether to disable the use of TLS for etcd.
-; db.etcd.disabletls=false
-
+; Whether to disable the use of TLS for
+; Enable the RPC middleware interceptor functionality.
+ rpcmiddleware.enab
 ; Path to the TLS certificate for etcd RPC.
 ; db.etcd.cert_file=/key/path
 
@@ -1113,6 +1113,8 @@ protocol.wumbo-channels=true
 ; If non zero, LND will use this as peer port for the embedded etcd instance.
 ; db.etcd.embedded_peer_port=1235
 
+; Enable the RPC middleware interceptor functionality.
+ rpcmiddleware.enab
 ; If set the embedded etcd instance will log to the specified file. Useful when
 ; testing with embedded etcd.
 ; db.etcd.embedded_log_file=/path/etcd.log
