@@ -106,16 +106,15 @@ alias|ALIAS|Alias) set_lnd_alias ;;
 
 wallet|Wallet|WALLET) lncli wallet ;;
 
+sbc|SCB|Scb) scb ;;
 
+delete|DELETE|Delete) delete_wallet ;;
 
-esac
+*) invalid ;;
+
+esac ; done
+
 #option to turn tor on/off
-
-#create lnd wallet
-
-#delete lnd wallet
-
-# $ sudo journalctl -f -u lnd
 
 #lncli getinfo
 
