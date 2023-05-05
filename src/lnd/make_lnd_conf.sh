@@ -1211,9 +1211,9 @@ protocol.wumbo-channels=true
 
 ; If a wallet with private key material already exists, migrate it into a
 ; watch-only wallet on first startup.
-; WARNING: This cannot be undone! Make sure you have backed up your seed before
-; you use this flag! All private keys will be purged from the wallet after first
-; unlock with this flag!
+; WARNING: This cannot be undone. Make sure you have backed up your seed before
+; you use this flag. All private keys will be purged from the wallet after first
+; unlock with this flag.
 ; remotesigner.migrate-wallet-to-watch-only=true
 
 [gossip]
@@ -1266,7 +1266,7 @@ protocol.wumbo-channels=true
 
 ; DEPRECATED: This is now turned on by default for Neutrino (use 
 ; neutrino.validatechannels=true to turn off) and shouldn't be used for any
-; other backend!
+; other backend.
 ; routing.assumechanvalid=true
 
 ; If set to true, then we'll prune a channel if only a single edge is seen as

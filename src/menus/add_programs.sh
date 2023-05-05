@@ -71,8 +71,8 @@ case $choice in
        return 0 ;;
 
     lnd|LND|Lnd)
-       if [[ $OS == "Linux" ]] ; then install_lnd ; fi 
-       if [[ $OS == "Mac" ]] ; then no_mac ; fi
+       if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
+       if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
        ;;
 
     q|Q|quit|QUIT)
