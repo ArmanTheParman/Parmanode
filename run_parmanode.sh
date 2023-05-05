@@ -32,7 +32,8 @@ test_directory_placement
 	which_os
 
 # get IP address
-IP=$(ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}')
+if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 ) ; fi
+if [[ $OS == "Mac" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' ) ; fi
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
