@@ -4,7 +4,7 @@ please_wait
 
 install_check "lnd" || return 1
 
-download_lnd && install_config_add "lnd-start" #lnd directory gets made too
+download_lnd && installed_config_add "lnd-start" #lnd directory gets made too
 verify_lnd || return 1
 unpack_lnd
 
