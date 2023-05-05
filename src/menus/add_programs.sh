@@ -21,11 +21,11 @@ echo "
 
                      (d)        Docker
 
+                     (l)        LND
+
          Not yet avaiable...                        
 
                      (m)        Mempool.Space
-
-                     (l)        LND
 
                      (rtl)      RTL
 
@@ -69,6 +69,11 @@ case $choice in
     t|T|tor|Tor)
        install_tor || return 1 
        return 0 ;;
+
+    lnd|LND|Lnd)
+       if [[ $OS == "Linux" ]] ; then install_lnd ; fi 
+       if [[ $OS == "Mac" ]] ; then no_mac ; fi
+       ;;
 
     q|Q|quit|QUIT)
         exit 0

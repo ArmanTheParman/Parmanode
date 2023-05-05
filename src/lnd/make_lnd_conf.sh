@@ -264,7 +264,7 @@ maxpendingchannels=2
 ; will exit if no wallet exists or the password is incorrect; if
 ; wallet-unlock-allow-create is also set then lnd will ignore this flag if no
 ; wallet exists and allow a wallet to be created through RPC.
-wallet-unlock-password-file=/home/$(whoami)/.lnd/password.txt
+wallet-unlock-password-file=$HOME/.lnd/password.txt
 
 ; Don't fail with an error if wallet-unlock-password-file is set but no wallet
 ; exists yet. Not recommended for auto-provisioned or high-security systems
@@ -1027,7 +1027,7 @@ tor.v3=true
 
 ; If set, then lnd will create and accept requests for channels larger than 0.16
 ; BTC
-; protocol.wumbo-channels=true
+protocol.wumbo-channels=true
 
 ; Set to disable support for anchor commitments. If not set, lnd will use anchor
 ; channels by default if the remote channel party supports them. Note that lnd
@@ -1280,5 +1280,6 @@ tor.v3=true
 ; Duration of the sweep batch window. The sweep is held back during the batch
 ; window to allow more inputs to be added and thereby lower the fee per input.
 ; sweeper.batchwindowduration=30s" | tee $HOME/.lnd/lnd.conf
+make_lnd_service
 
 } 

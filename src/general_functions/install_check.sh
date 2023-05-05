@@ -10,16 +10,25 @@ if [[ "$2" == "continue" ]] ; then
     fi
 fi
 
+if [[ "$2" == "uninstall" ]] ; then 
     if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
-        then 
-            log "$program_name" "Install error. Already installed"
-            install_error "$program_name"
-            previous_menu
-            return 1 
-        else 
-            log "$program_name" "Install check passed; not installed. Continuing."
-            return 0
-        fi
+    then
+    return 0
+    else
+    return 1
+    fi
+fi
+
+if grep -q "$program_name" $HOME/.parmanode/installed.conf 2>/dev/null
+    then 
+        log "$program_name" "Install error. Already installed"
+        install_error "$program_name"
+        previous_menu
+        return 1 
+    else 
+        log "$program_name" "Install check passed; not installed. Continuing."
+        return 0
+    fi
 }
 
 function install_error {
