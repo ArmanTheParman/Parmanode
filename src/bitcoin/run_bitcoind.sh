@@ -24,10 +24,11 @@ if [[ $OS == "Linux" ]] ; then
 "
         enter_continue
         set_terminal
-        sudo systemctl start bitcoind.service &
+        sudo systemctl start bitcoind.service 
         fi
 
-echo "If there are not printed errors, Bitcoin has started." ; enter_continue
+echo "If there are not printed errors, Bitcoin has started." 
+echo "You can see progress from the Parmanode Bitcoin log menu." ; enter_continue
 fi                 
 
 
