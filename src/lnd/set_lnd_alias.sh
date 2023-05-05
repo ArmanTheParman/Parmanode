@@ -37,4 +37,9 @@ Hit <enter> to accept or (x) to try again."
 read choice
 if [[ $choice == "" ]] ; then break ; else continue ; fi
 done
+
+if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
+delete_line "$HOME/.lnd/lnd.conf" "alias="
+echo "alias=$alias" >> $HOME/.lnd/lnd.conf 2>&1
+fi
 }
