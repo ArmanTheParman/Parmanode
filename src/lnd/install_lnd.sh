@@ -9,6 +9,7 @@ make_dot_lnd
 
 
 set_lnd_alias
+
 make_lnd_conf
 
 }
