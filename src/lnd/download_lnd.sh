@@ -4,7 +4,7 @@ mkdir $HOME/parmanode/lnd >/dev/null 2>&1
 rm -rf $HOME/parmanode/lnd/*
 
 #get signatures and SHA256 file
-cd $HOME/lnd
+cd $HOME/parmanode/lnd
 curl -LO https://github.com/lightningnetwork/lnd/releases/download/v0.16.2-beta/manifest-v0.16.2-beta.txt 
 curl -LO https://github.com/lightningnetwork/lnd/releases/download/v0.16.2-beta/manifest-roasbeef-v0.16.2-beta.sig
 

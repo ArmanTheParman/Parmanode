@@ -2,7 +2,8 @@ function verify_lnd {
 #import Roasbeef's public key
 gpg --import $original_dir/src/lnd/roasbeef.pgp >/dev/null 2>&1
 
-cd $HOME/parmanode
+cd $HOME/parmanode/lnd
+
 #verify SHA256 output list file.
 if ! gpg verify *.sig manifest*.txt ; then
     set_terminal
