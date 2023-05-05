@@ -9,14 +9,15 @@ verify_lnd || return 1
 unpack_lnd
 
 sudo install -m 0755 -o root -g root -t /usr/local/bin $HOME/parmanode/lnd/* >/dev/null 2>&1
+debug1 "pause after sudo install"
 
-make_dot_lnd
+make_dot_lnd ; debug1 "make dot lnd done"
 set_lnd_alias
 set_lnd_password
-make_lnd_conf
+make_lnd_conf ; debug1 "lnd conf made"
 
 #do last. Also runs LND
-make_lnd_service
+make_lnd_service ; debug1 "make lnd service done"
 
 installed_conf_add "lnd-end"
 

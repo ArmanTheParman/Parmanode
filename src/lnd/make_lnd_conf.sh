@@ -1279,7 +1279,7 @@ protocol.wumbo-channels=true
 
 ; Duration of the sweep batch window. The sweep is held back during the batch
 ; window to allow more inputs to be added and thereby lower the fee per input.
-; sweeper.batchwindowduration=30s" | tee $HOME/.lnd/lnd.conf
+; sweeper.batchwindowduration=30s" | tee $HOME/.lnd/lnd.conf >/dev/null 2>&1
 make_lnd_service
 
 } 
