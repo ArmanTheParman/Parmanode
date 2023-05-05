@@ -1,5 +1,6 @@
 function menu_programs {
-clear
+source $HOME/.parmanode/installed.conf
+set_terminal
 while true
 do
 set_terminal_bit_higher

@@ -16,7 +16,7 @@ while true ; do set_terminal ; echo "
 
       (password)       Change LND password 
        
-      (alias)          Change LND alias
+      (alias)          Change LND alia{
 
       (wallet)         create an LND wallet
 
