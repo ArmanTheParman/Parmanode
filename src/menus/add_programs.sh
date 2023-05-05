@@ -45,7 +45,7 @@ read choice
 case $choice in
     B|b|bitcoin|Bitcoin)
         set_terminal 
-        install_bitcoin || return 1
+        install_bitcoin
         return 0
         ;;
     f|F)
@@ -61,13 +61,13 @@ case $choice in
         ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
-       install_btcpay_linux && return 0 ; fi
+       install_btcpay_linux ; return 0 ; fi
        if [[ $OS == "Mac" ]] ; then 
-       no_mac || return 1  ; fi
+       no_mac ; return 0  ; fi
        ;;
     
     t|T|tor|Tor)
-       install_tor || return 1 
+       install_tor 
        return 0 ;;
 
     lnd|LND|Lnd)

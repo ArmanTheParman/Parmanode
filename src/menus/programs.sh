@@ -10,35 +10,26 @@ echo "
 
 ########################################################################################          
 
-                            "
-if cat $HOME/.parmanode/installed.conf | grep "bitcoin-end" ; then
+Installed...
+
+"
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
                        echo "(b)       Bitcoin Core
-                            "
-if cat $HOME/.parmanode/installed.conf | grep "fulcrum-end" ; then
+                            " ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
                        echo "(f)       Fulcrum (an Electrum Server)
-                            "
-if cat $HOME/.parmanode/installed.conf | grep "btcpay-end" ; then
+                            " ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
                        echo "(btcp)    BTCPay Server
-                            "
-if cat $HOME/.parmanode/installed.conf | grep "tor-end" ; then
+                            " ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
                        echo "(t)       Tor 
-                            "
-                             (lnd)     LND
-
-            Not yet avaiable...                        
-
-                             (m)       Mempool.Space
-
-                             (rtl)     RTL
-
-                             (s)       Specter Desktop
-
-                             (th)      ThunderHub
-
-                             (lh)      LND Hub
-
+                            " ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+                       echo "(lnd)     LND
+                            " ; fi
+echo "                            
 #######################################################################################
-
 "
 choose "xpq"
 read choice
@@ -53,7 +44,7 @@ f|F)
     menu_fulcrum
     ;;
 btcp|BTCP)
-    if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
+    if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
     menu_btcpay
     ;;
 
