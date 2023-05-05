@@ -21,7 +21,7 @@ echo "
 
                      (d)        Docker
 
-                     (l)        LND
+                     (lnd)        LND
 
          Not yet avaiable...                        
 

@@ -6,7 +6,7 @@ cd $HOME/parmanode
 #verify SHA256 output list file.
 if ! gpg verify *.sig manifest*.txt ; then
     set_terminal
-    echo "GPG verification fail. Unknown reason. Please report to Parman. Aborting."
+    echo "GPG verification failed. Unknown reason. Please report to Parman. Aborting."
     enter_continue
     return 1
 else
