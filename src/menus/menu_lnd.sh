@@ -20,6 +20,10 @@ while true ; do ; set_terminal ; echo "
 
       (wallet)         create an LND wallet
 
+      (scb)            Static Channel Backup 
+
+      (delete)         Delete existing wallet and its files (macaroons, channel.db)
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -58,7 +62,8 @@ echo "
         This will run Nano text editor to edit lnd.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	  Any changes will only be applied once you restart LND.
+
+	  *** ANY CHANGES WILL ONLY BE APPLIED ONCE YOU RESTART LND ***
 
 ########################################################################################
 "
@@ -70,8 +75,39 @@ password|PASSWORD|Password)
 echo "
 ########################################################################################
 
-    Your LND password is NOT a passphrase. It allows you to unlock your wallet.
-    .
+    If you already have a lightning wallet loaded, changing your password will make 
+    you lose access to it. Not a disaster, you just have to change the password back 
+    to the original. Even though passwords in this context are not passphrases, they 
+    are just as important. A password locks the wallet, whereas a passphrase 
+    contributes to the entropy of the wallet.
+
+    If your intensions are to delete the wallet and start fresh, and create a new
+    password, then delete the wallet first, then change the password, then create
+    your new wallet.
+
+    Note, deleting a wallet with bitcoin in it does not delete the bitcoin. You can
+    recover the wallet as long as you have a copy of the seed phrase.
+
+    Also note that funds in lightning channels no longer are recoverable by the
+    seed phrase - those funds are in share 2 f 2 multisignature addresses, that are
+    returned to your wallet when the channel is closed. To keep access to those
+    funds in a channel, you need to keep your lightning node running, or restore
+    your lightning node with bothe the seed AND the channel back up file. I'll 
+    add more on that in later editions of Parmanode. 
+
+########################################################################################
+"
+enter_continue
+set_lnd_password
+;;
+
+
+alias|ALIAS|Alias) set_lnd_alias ;;
+
+wallet|Wallet|WALLET) lncli wallet ;;
+
+
+
 esac
 #option to turn tor on/off
 
