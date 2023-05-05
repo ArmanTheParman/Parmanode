@@ -24,8 +24,8 @@ if [[ $lndpassword != $lndpassword2 ]] ; then
 else
     echo "Password set"
     echo "$lndpassword" > $HOME/.lnd/password.txt 
-        if sudo systemctl status lnd.service >/dev/null 2>&1 ; then
-        sudo systemctl restart lnd.service ; fi
+    echo "Always restart LND when you change your password."
+    enter_continue
     break
 fi
 done
