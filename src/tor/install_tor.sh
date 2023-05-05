@@ -12,7 +12,7 @@ set_terminal ; echo "
 "
 choose "epq" ; read choice
 
-if which tor >/dev/null 2>&1 ; then installed_config_add "tor" ; return 0 ; fi
+if which tor >/dev/null 2>&1 ; then installed_config_add "tor-end" ; return 0 ; fi
 
 case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 
