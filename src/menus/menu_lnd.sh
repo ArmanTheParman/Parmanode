@@ -1,5 +1,5 @@
 function menu_lnd {
-
+true
 #option to turn tor on/off
 
 #create lnd wallet
