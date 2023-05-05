@@ -1,4 +1,4 @@
-# Parmanode 2.3.4 Plebian Cheese 
+# Parmanode 3.0.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 

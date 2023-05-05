@@ -42,6 +42,7 @@ set_terminal ; echo "
 
 ########################################################################################
 "
+installed_config_add "tor-end"
 enter_continue
 return 0
 }

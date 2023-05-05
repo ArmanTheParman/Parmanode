@@ -10,14 +10,19 @@ echo "
 
 ########################################################################################          
 
-                             (b)       Bitcoin Core
-
-                             (f)       Fulcrum (an Electrum Server)
-
-                             (btcp)    BTCPay Server
-
-                             (t)       Tor 
-
+                            "
+if cat $HOME/.parmanode/installed.conf | grep "bitcoin-end" ; then
+                       echo "(b)       Bitcoin Core
+                            "
+if cat $HOME/.parmanode/installed.conf | grep "fulcrum-end" ; then
+                       echo "(f)       Fulcrum (an Electrum Server)
+                            "
+if cat $HOME/.parmanode/installed.conf | grep "btcpay-end" ; then
+                       echo "(btcp)    BTCPay Server
+                            "
+if cat $HOME/.parmanode/installed.conf | grep "tor-end" ; then
+                       echo "(t)       Tor 
+                            "
                              (lnd)     LND
 
             Not yet avaiable...                        
