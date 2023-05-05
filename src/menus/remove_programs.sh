@@ -19,6 +19,8 @@ echo "
 
                            (t)                Tor
 
+						   (lnd)              LND
+
 ########################################################################################
 
 "
@@ -51,6 +53,10 @@ return 0
 t|T|TOR|Tor|tor)
 uninstall_tor
 return 0
+;;
+
+lnd|LND|Lnd)
+if [[ $OS == "Linux" ]] ; then uninstall_lnd ; fi
 ;;
 
 p|P)
