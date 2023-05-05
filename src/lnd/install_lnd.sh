@@ -1,4 +1,4 @@
-unction install_lnd {
+function install_lnd {
 download_lnd
 verify_lnd || return 1
 unpack_lnd
@@ -9,6 +9,7 @@ make_dot_lnd
 
 
 set_lnd_alias
+
 make_lnd_conf
 
 }
