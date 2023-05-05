@@ -1218,7 +1218,7 @@ protocol.wumbo-channels=true
 
 ; Specify a set of pinned gossip syncers, which will always be actively syncing
 ; whenever the corresponding peer is online. A pinned syncer does not count
-; towards the configured `numgraphsyncpeers` since pinned syncers are not
+; towards the configured numgraphsyncpeers since pinned syncers are not
 ; rotated. Configuring a pinned syncer does not ensure a persistent connection
 ; to the target peer, they will only be pinned if the connection remains active
 ; via some other mechanism, e.g. having an open channel.
