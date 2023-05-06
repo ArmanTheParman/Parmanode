@@ -1,6 +1,6 @@
 Version 3.0.0
     - LND (for linux)
-    - Menu improvements
+    - Menu improvements - now dynamically changes
 Version 2.3.4
     - BTCPay Server added for Linux (Docker)
     - Tor for Mac and Linux added
