@@ -45,14 +45,11 @@ set_terminal ; echo "
 
     A static channel backup file will ba saved to your desktop.
 
-    LND will be stopped first. Please restart it again when you're ready.
-
     File name: channel.backup
 
 ########################################################################################
 "
 enter_continue
-sudo systemctl stop lnd.service
 lncli exportchanbackup --all --output_file $HOME/desktop/channel.backup
 
 return 0
