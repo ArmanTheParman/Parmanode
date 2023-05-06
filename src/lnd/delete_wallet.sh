@@ -15,9 +15,10 @@ set_terminal "pink" ; echo "
 
     If you type (delete) then <enter> ...
     
-                            - the wallet file will be deleted
-                            - the channel.db file will be deleted (not SCB)
-                            - the macaroons for the wallet will be deleted
+                       - the wallet file will be deleted
+                       - the channel.db file will be deleted 
+                       - the channel.backup file (no any that you saved to desktop)
+                       - the macaroons for the wallet will be deleted
 
                  (\"macarooni whaty what?\" - Don't worry about it)
 
@@ -35,8 +36,7 @@ esac
 done
 
 sudo systemctl stop lnd.service
-cd $HOME/.lnd/data/chain/bitcoin/mainnet/
-rm -rf wallet.db channel.db *.macaroon
+cd $HOME/.lnd/data/chain/bitcoin/mainnet/*
 echo "Wallet deleted, and LND stopped. Please restart again yourself when ready."
 enter_continue
 return 0
