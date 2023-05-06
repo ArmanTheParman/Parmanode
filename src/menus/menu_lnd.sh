@@ -18,7 +18,7 @@ while true ; do set_terminal ; echo "
        
       (alias)          Change LND alias
 
-      (wallet)         Create an LND wallet
+      (create)         Create an LND wallet
 
       (scb)            Static Channel Backup 
 
@@ -105,7 +105,7 @@ set_lnd_password
 alias|ALIAS|Alias) 
 set_lnd_alias ;;
 
-wallet|Wallet|WALLET) create_wallet ;;
+create|CREATE|Create) create_wallet ;;
 
 sbc|SCB|Scb) scb ;;
 
