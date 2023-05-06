@@ -34,9 +34,10 @@ break ;;
 esac
 done
 
+sudo systemctl stop lnd.service
 cd $HOME/.lnd/data/chain/bitcoin/mainnet/
 rm -rf wallet.db channel.db *.macaroon
-echo "Wallet deleted"
+echo "Wallet deleted, and LND stopped. Please restart again yourself when ready."
 enter_continue
 return 0
 }
