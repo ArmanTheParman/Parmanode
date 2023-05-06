@@ -1,26 +1,37 @@
 function remove_programs {
-
+source $HOME/.parmanode/installed.conf
 while true ; do
 set_terminal
 
 echo "
 ########################################################################################
 
-                                   Remove Programs
+             Remove Programs
 
-
-                           (bitcoin)          Bitcoin Core
-                               
-                           (f)                Fulcrum Server 
-
-                           (d)                Docker
-
-                           (btcp)             BTCPay Server
-
-                           (t)                Tor
-
+"
+if grep -q "parmanode-end" $HOME/.parmanode/installed.conf ; then
+echo "                                           (parmanode)        Parmanode
+" ; fi
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                                           (bitcoin)          Bitcoin Core
+" ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (f)                Fulcrum Server 
+" ; fi
+if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (d)                Docker 
+" ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (btcp)             BTCPay 
+" ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (t)                Tor 
+" ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (lnd)              LND 
+" ; fi
+echo "
 ########################################################################################
-
 "
 choose "xpq"
 read choice
@@ -51,6 +62,10 @@ return 0
 t|T|TOR|Tor|tor)
 uninstall_tor
 return 0
+;;
+
+lnd|LND|Lnd)
+if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
 ;;
 
 p|P)

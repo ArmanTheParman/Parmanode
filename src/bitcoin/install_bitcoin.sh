@@ -75,7 +75,7 @@ echo "
     
 
 ########################################################################################
-" && installed_config_add "bitcoin-end"
+" && installed_conf_add "bitcoin-end"
 
 #Just in case
     sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
@@ -102,7 +102,7 @@ echo "
     Do remmember to manually restart Bitcoin should your computer power off. 
 
 ########################################################################################
-" && installed_config_add "bitcoin-end"
+" && installed_conf_add "bitcoin-end"
     #Just in case
             sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
