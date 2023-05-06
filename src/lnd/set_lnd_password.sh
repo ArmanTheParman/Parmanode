@@ -7,12 +7,14 @@ set_terminal ; echo "
 
                                   LND password
  
-    Please set a password for LND. Do not use the characters: # \" or ' otherwise
+    Please type in a password for LND. Do not use the characters: # \" or ' otherwise
     bad things will happen to you.
+    
+    OR, (p) and <enter> to go back
 
 ########################################################################################
 "
-read lndpassword
+read lndpassword ; if [[ $lndpassword == "q" ]] ; then return 1 ; fi
 set_terminal
 echo "Please repeat the password:
 "
