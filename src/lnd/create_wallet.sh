@@ -8,4 +8,5 @@ set_terminal
 echo "You will be asked for a password - this is you LND password, not passphrase.
 "
 lncli create
+enter_continue
 }
