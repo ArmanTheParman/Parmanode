@@ -14,7 +14,7 @@ echo "#         (i)           Install Parmanode                                 
 else
 echo "#         (add)         Add more programs                                              #
 #                                                                                      #
-#         (p)           Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
+#         (use)         Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
 #                                                                                      #" ; fi
 
 echo "#--------------------------------------------------------------------------------------#
@@ -49,7 +49,7 @@ i|I)
     install_parmanode  ;;
 add|Add| ADD)
     menu_add_programs ;;
-p|P)
+use|USE|Use)
     menu_programs ;;
 remove|REMOVE)
     remove_programs ;;
