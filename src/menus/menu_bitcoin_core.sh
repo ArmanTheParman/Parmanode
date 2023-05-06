@@ -16,7 +16,7 @@ echo "
 
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
 	    
-      (log)        Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
+      (log)      Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
 
       (bc)       Inspect and edit bitcoin.conf file 
 
