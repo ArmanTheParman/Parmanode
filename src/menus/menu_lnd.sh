@@ -68,8 +68,7 @@ echo "
 ########################################################################################
 "
 enter_continue
-nano $HOME/parmanode/fulcrum/fulcrum.conf
-;;
+nano $HOME/.lnd/lnd.conf
 
 password|PASSWORD|Password)
 echo "
