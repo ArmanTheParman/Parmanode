@@ -68,7 +68,7 @@ echo "
 ########################################################################################
 "
 enter_continue
-nano $HOME/.lnd/lnd.conf
+nano $HOME/.lnd/lnd.conf ;;
 
 password|PASSWORD|Password)
 echo "
