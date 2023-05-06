@@ -12,7 +12,7 @@ if ! grep -q "parmanode" $HOME/.parmanode/installed.conf ; then
 echo "#         (i)           Install Parmanode                                              #
 "
 else
-echo "#         (add)         Add more programs                                            #
+echo "#         (add)         Add more programs                                              #
 #                                                                                      #
 #         (p)           Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
 #                                                                                      #" ; fi
