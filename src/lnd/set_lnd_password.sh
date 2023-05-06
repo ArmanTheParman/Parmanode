@@ -11,10 +11,13 @@ set_terminal ; echo "
     bad things will happen to you.
     
     OR, (p) and <enter> to go back
+    OR, (q) and <enter> to quit
 
 ########################################################################################
 "
-read lndpassword ; if [[ $lndpassword == "q" ]] ; then return 1 ; fi
+read lndpassword 
+    if [[ $lndpassword == "p" ]] ; then return 1 ; fi
+    if [[ $lndpassword == "q" ]] ; then exit 0 ; fi
 set_terminal
 echo "Please repeat the password:
 "
