@@ -102,13 +102,16 @@ set_lnd_password
 ;;
 
 
-alias|ALIAS|Alias) set_lnd_alias ;;
+alias|ALIAS|Alias) 
+set_lnd_alias ;;
 
-wallet|Wallet|WALLET) lncli wallet ;;
+wallet|Wallet|WALLET) 
+lncli wallet ;;
 
 sbc|SCB|Scb) scb ;;
 
-delete|DELETE|Delete) delete_wallet ;;
+delete|DELETE|Delete) 
+delete_wallet ;;
 
 *) invalid ;;
 
