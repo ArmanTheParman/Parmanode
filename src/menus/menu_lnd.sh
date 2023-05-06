@@ -107,7 +107,7 @@ set_lnd_alias ;;
 
 create|CREATE|Create) create_wallet ;;
 
-sbc|SCB|Scb) scb ;;
+scb|SCB|Scb) scb ;;
 
 delete|DELETE|Delete) delete_wallet ;;
 
