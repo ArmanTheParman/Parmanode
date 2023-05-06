@@ -24,7 +24,7 @@ set_terminal "pink" ; echo "
 ########################################################################################
 "
 choose "xpq" ; read choice
-case $choic3 in
+case $choice in
 Q|q|Quit|QUIT|quit) 
 exit 0 ;;
 p|P) return 1 ;;
