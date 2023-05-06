@@ -52,7 +52,7 @@ follow the wizard menu options.
 
 ### Docker (latest)
 
-### Tor (lates)
+### Tor (latest)
 
 ### LND v0.16.2 
 
@@ -129,7 +129,7 @@ command; that's ok, it's safe to proceed.
 
 ## INSTRUCTIONS TO UPGRADE
 
-Simply download a new version and run it. You can delete the old copy but do not touch any of the directories or files that Parmanode has made. If you are to download to exactly the same directory, then you'll have to delete the old copy of Parmanode first, or delete it.
+Simply download a new version and run it.
+You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
 
-You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version of Bitcoin is offered by Parmanode, the software will ask what you want to do.
-
+If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin blockchain
