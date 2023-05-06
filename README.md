@@ -52,7 +52,7 @@ follow the wizard menu options.
 
 ### Docker (latest)
 
-### Tor (lates)
+### Tor (latest)
 
 ### LND v0.16.2 
 
