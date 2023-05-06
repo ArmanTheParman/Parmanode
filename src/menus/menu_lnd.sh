@@ -16,9 +16,9 @@ while true ; do set_terminal ; echo "
 
       (password)       Change LND password 
        
-      (alias)          Change LND alia{
+      (alias)          Change LND alias
 
-      (wallet)         create an LND wallet
+      (wallet)         Create an LND wallet
 
       (scb)            Static Channel Backup 
 
