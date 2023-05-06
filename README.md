@@ -1,6 +1,13 @@
-# Parmanode 2.3.4 Plebian Cheese 
+# Parmanode 3.0.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
+
+Version 3 of Parmanode begins the introduction of LND. For Linux
+OS only currently.
+
+Version 3 is not fully backwards compatible with earlier versions,
+it's best to fully uninstall previous versions before using version 3.
+Blockchain data does not need to be deleted.
 
 Parmanode is an automated installation wizard and menu for desktiop
 computers, with the following software (list is growing):
@@ -47,6 +54,8 @@ follow the wizard menu options.
 
 ### Tor (lates)
 
+### LND v0.16.2 
+
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
 DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
@@ -58,6 +67,7 @@ Internal drive:
                 |             |--- .parmanode                         (config files)
                 |             |--- .btcpayserver                      (config, mounted to docker container) 
                 |             |--- .nbxplorer                         (config, mounted to docker container)
+                |             |--- .lnd                               
                 |             |--- parmanode ---|
                 |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
                 |                               |
@@ -65,6 +75,8 @@ Internal drive:
                 |                               |                      mounted for docker version)
                 |                               |
                 |                               |--- fulcrum_db ---|  (fulcrum databas)
+                |                               |
+                |                               |--- LND ----------|  (downloaded files)
                 |--- media ---|
                 |             |--- parmanode ---|                  
                 |                               |--- .bitcoin ---|    (symlink target and ext drive mountpoint)
