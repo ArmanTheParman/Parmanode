@@ -1,5 +1,0 @@
-Linux user now have BTCPay running in a Docker container.
-
-Mac and Linux users have Bitcoin, Fulcrum, and Tor
-
-Drive mounting bugs fixed

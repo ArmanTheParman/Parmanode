@@ -101,6 +101,7 @@ echo "
         3) Type the IP address of the computer that runs Parmanode.
                 You can find this by typing \"ifconfig | grep broadcast\" in your terminal window. 
                 You'll see it as one of the outputs. Typically something like 192.168.0.150
+                If you don't have ifconfig, you can install it, or use "ip a" as a replacement.
 
         4) If the wallet and Parmanode are on the same computer, you can type either
             \"localhost\" or \"127.0.0.1\"

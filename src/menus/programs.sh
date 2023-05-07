@@ -48,6 +48,7 @@ f|F)
     menu_fulcrum
     ;;
 btcp|BTCP)
+    if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
     menu_btcpay
     ;;
 

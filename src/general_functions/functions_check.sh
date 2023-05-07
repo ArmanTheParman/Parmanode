@@ -1,10 +1,13 @@
 function sudo_check {
 
 set_terminal
-
+if [[ $OS != "Mac" ]] ; then
 if command -v sudo && id | grep sudo >/dev/null 2>&1
 	then return 0 
 	fi
+else
+if command -v sudo >/dev/null 2>&1 ; then return 0 ; fi
+fi
 
 if [[ $OS == "Mac" ]] ; then
 echo "
