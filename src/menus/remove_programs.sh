@@ -14,24 +14,45 @@ echo "                                           (parmanode)        Parmanode
 " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
 echo "                                           (bitcoin)          Bitcoin Core
+"
+elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then
+echo "                                           (bitcoin)          Bitcoin (partial)
 " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (f)                Fulcrum Server 
+echo "                                           (f)                Fulcrum Server
+"
+elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (f)                Fulcrum (partial) 
 " ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (d)                Docker 
+"
+elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (d)                Docker (partial) 
 " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (btcp)             BTCPay 
+"
+elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (btcp)             BTCPay (partial) 
 " ; fi
 if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (t)                Tor 
+"
+elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (t)                Tor (partial)
 " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (lnd)              LND 
+"
+elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (lnd)              LND (partial) 
 " ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (mem)              Mempool Space 
+"
+elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (mem)              Mempool (partial) 
 " ; fi
 echo "
 ########################################################################################
