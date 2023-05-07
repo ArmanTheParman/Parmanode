@@ -34,5 +34,5 @@ RUN rm -rf /home/bitcoin/downloads/*
 
 EXPOSE 8332
 
-CMD /home/bitcoin/bin/bitcoind -datadir=/home/bitcoin/.bitcoin ; tail -f /dev/null 
+CMD  tail -f /dev/null 
 
