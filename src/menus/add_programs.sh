@@ -103,8 +103,7 @@ case $choice in
        ;;
     
     mem|MEM|Mem)
-       if [[ $OS == "Linux" ]] ; then install_mempool ; return 0 ; fi 
-       if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
+       install_mempool
        ;;
 
 

@@ -72,7 +72,7 @@ if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
 ;;
 
 mem|MEM|Mem)
-if [[ $OS == "Linux" ]] ; then uninstall_mempool ; return 0 ; fi
+uninstall_mempool
 ;;
 
 p|P)
