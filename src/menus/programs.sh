@@ -29,6 +29,9 @@ if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (lnd)     LND
                             " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (mem)     Mempool Space 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -56,8 +59,12 @@ lnd|LND|Lnd)
 if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
 if [[ $OS == "Mac" ]] ; then no_mac ; fi
 ;;
+mem|MEM|Mem)
+if [[ $OS == "Linux" ]] ; then menu_mempool ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; fi
+;;
 
-m | M | RTL | rtl |is | S | th | TH | lh | LH )
+RTL | rtl |is | S | th | TH | lh | LH )
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."

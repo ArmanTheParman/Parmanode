@@ -29,6 +29,9 @@ echo "                             (t)       Tor
 if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (lnd)     LND
                             " ; fi
+if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (mem)     Mempool Space 
+                            " ; fi
 echo "Already installed...
 "
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -46,9 +49,10 @@ echo "                                       Tor
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
 echo "                                       LND
                             " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Mempool Space 
+                            " ; fi
 echo "Not yet avaiable...                        
-
-                            (m)        Mempool.Space
 
                             (rtl)      RTL
 
@@ -97,6 +101,12 @@ case $choice in
        if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
        if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
        ;;
+    
+    mem|MEM|Mem)
+       if [[ $OS == "Linux" ]] ; then install_mempool ; return 0 ; fi 
+       if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
+       ;;
+
 
     q|Q|quit|QUIT)
         exit 0
