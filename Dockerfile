@@ -1,9 +1,3 @@
-#Install Bitcoin in Docker
-##install Debian and programs
-FROM debian 
-RUN apt-get update
-RUN apt-get install -y wget gnupg sudo procps vim  nano systemd curl git
-
 #Make users and groups and directories
 RUN groupadd -r bitcoin && useradd -r -g bitcoin -u 1000 bitcoin
 RUN mkdir /home ; mkdir /home/bitcoin ; mkdir /home/bitcoin/.bitcoin ; mkdir /home/bitcoin/downloads
@@ -34,5 +28,4 @@ RUN rm -rf /home/bitcoin/downloads/*
 
 EXPOSE 8332
 
-CMD  tail -f /dev/null 
 
