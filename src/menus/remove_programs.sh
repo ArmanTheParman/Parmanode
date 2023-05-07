@@ -30,6 +30,9 @@ echo "                                           (t)                Tor
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (lnd)              LND 
 " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (mem)              Mempool Space 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -66,6 +69,10 @@ return 0
 
 lnd|LND|Lnd)
 if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
+;;
+
+mem|MEM|Mem)
+if [[ $OS == "Linux" ]] ; then uninstall_mempool ; return 0 ; fi
 ;;
 
 p|P)
