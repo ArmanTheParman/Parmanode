@@ -22,7 +22,7 @@ set_terminal ; echo "
 
              stopn)        Stop NBXplorer
 
-             bl)           View BTCPay Server log
+             log)           View BTCPay Server log
 
              nl)           View NBXplorer log"
 if [[ $OS == "Linux" ]] ; then
@@ -46,7 +46,7 @@ case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 start|START|Start)
 break ;;
 
-bl|BL|Bl)
+log|Log|LOG)
 echo "
 ########################################################################################
     

@@ -1,4 +1,5 @@
 function menu_add_programs {
+source $HOME/.parmanode/installed.conf
 while true
 do
 set_terminal
@@ -10,30 +11,56 @@ echo "
 
 
 ########################################################################################
-          
-                     (b)        Bitcoin Core
 
-                     (f)        Fulcrum (an Electrum Server)
+Not yet installed...          
+"
+if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (b)       Bitcoin Core
+                            " ; fi
+if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (f)       Fulcrum (an Electrum Server)
+                            " ; fi
+if ! grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (btcp)    BTCPay Server
+                            " ; fi
+if ! grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (t)       Tor 
+                            " ; fi
+if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (lnd)     LND
+                            " ; fi
+if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (mem)     Mempool Space 
+                            " ; fi
+echo "Already installed...
+"
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Bitcoin Core
+                            " ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Fulcrum (an Electrum Server)
+                            " ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       BTCPay Server
+                            " ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Tor 
+                            " ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       LND
+                            " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Mempool Space 
+                            " ; fi
+echo "Not yet avaiable...                        
 
-                     (btcp)     BTCPay Server
+                            (rtl)      RTL
 
-                     (t)        Tor 
+                            (s)        Specter Desktop
 
-                     (d)        Docker
+                            (th)       ThunderHub
 
-         Not yet avaiable...                        
-
-                     (m)        Mempool.Space
-
-                     (l)        LND
-
-                     (rtl)      RTL
-
-                     (s)        Specter Desktop
-
-                     (th)       ThunderHub
-
-                     (lh)       LND Hub
+                            (lh)       LND Hub
 
 ########################################################################################
 
@@ -45,7 +72,7 @@ read choice
 case $choice in
     B|b|bitcoin|Bitcoin)
         set_terminal 
-        install_bitcoin || return 1
+        install_bitcoin
         return 0
         ;;
     f|F)
@@ -61,14 +88,24 @@ case $choice in
         ;;
     btcp|BTCP|Btcp)
        if [[ $OS == "Linux" ]] ; then 
-       install_btcpay_linux && return 0 ; fi
+       install_btcpay_linux ; return 0 ; fi
        if [[ $OS == "Mac" ]] ; then 
-       no_mac || return 1  ; fi
+       no_mac ; return 0  ; fi
        ;;
     
     t|T|tor|Tor)
-       install_tor || return 1 
+       install_tor 
        return 0 ;;
+
+    lnd|LND|Lnd)
+       if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
+       if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
+       ;;
+    
+    mem|MEM|Mem)
+       install_mempool
+       ;;
+
 
     q|Q|quit|QUIT)
         exit 0
