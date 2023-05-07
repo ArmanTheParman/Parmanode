@@ -1,4 +1,11 @@
-Version 2.3.4444 
+Version 3.2.0
+    - Mempool Space added for Mac
+Version 3.1.0
+    - Mempool Space added for Linux
+Version 3.0.0
+    - LND (for linux)
+    - Menu improvements - now dynamically changes
+Version 2.3.4
     - BTCPay Server added for Linux (Docker)
     - Tor for Mac and Linux added
     - Additional menu to view config files and logs. 

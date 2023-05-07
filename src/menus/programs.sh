@@ -1,5 +1,6 @@
 function menu_programs {
-clear
+source $HOME/.parmanode/installed.conf
+set_terminal
 while true
 do
 set_terminal_bit_higher
@@ -10,30 +11,29 @@ echo "
 
 ########################################################################################          
 
-                             (b)       Bitcoin Core
+Installed...
 
-                             (f)       Fulcrum (an Electrum Server)
-
-                             (btcp)    BTCPay Server
-
-                             (t)       Tor 
-
-            Not yet avaiable...                        
-
-                             (m)       Mempool.Space
-
-                             (l)       LND
-
-                             (rtl)     RTL
-
-                             (s)       Specter Desktop
-
-                             (th)      ThunderHub
-
-                             (lh)      LND Hub
-
+"
+if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (b)       Bitcoin Core
+                            " ; fi
+if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (f)       Fulcrum (an Electrum Server)
+                            " ; fi
+if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (btcp)    BTCPay Server
+                            " ; fi
+if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (t)       Tor 
+                            " ; fi
+if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (lnd)     LND
+                            " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (mem)     Mempool Space 
+                            " ; fi
+echo "                            
 #######################################################################################
-
 "
 choose "xpq"
 read choice
@@ -48,15 +48,22 @@ f|F)
     menu_fulcrum
     ;;
 btcp|BTCP)
-    if [[ $OS == "Mac" ]] ; then no mac ; continue ; fi
+    if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
     menu_btcpay
     ;;
 
 t|T)
     menu_tor
     ;;
+lnd|LND|Lnd)
+if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; fi
+;;
+mem|MEM|Mem)
+    menu_mempool
+;;
 
-m | M | l | L | RTL | rtl |is | S | th | TH | lh | LH )
+RTL | rtl |is | S | th | TH | lh | LH )
     clear
     echo "Not yet available. Stay tuned for future versions."
     echo "Hit <enter> to return to menu."

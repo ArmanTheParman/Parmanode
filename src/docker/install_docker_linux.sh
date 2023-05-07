@@ -47,8 +47,8 @@ while true ; do set_terminal ; echo "
                                 Install Docker
     
     Parmanode will now install Docker on your system. Currently this is not required
-    if you will be using Parmanode for Bitcoin Core and Fulcrum alone. But for LND 
-    and BTCpay Server, you'll need Docker.
+    if you will be using Parmanode for Bitcoin Core and Fulcrum alone. But for BTCpay 
+    Server, and Mempool Space, you'll need Docker.
     
     You may wish to install Docker yourself, eg if this automatic install fails.  If 
     it previously failed, and you've been successful installing Docker yourself, nice
