@@ -60,8 +60,7 @@ if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
 if [[ $OS == "Mac" ]] ; then no_mac ; fi
 ;;
 mem|MEM|Mem)
-if [[ $OS == "Linux" ]] ; then menu_mempool ; fi
-if [[ $OS == "Mac" ]] ; then no_mac ; fi
+    menu_mempool
 ;;
 
 RTL | rtl |is | S | th | TH | lh | LH )

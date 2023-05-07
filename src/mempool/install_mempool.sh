@@ -20,9 +20,13 @@ if [[ -z $rpcuser ]] ; then
 cd $HOME/parmanode
 git_check #installs if not istalled
 git clone http://github.com/mempool/mempool.git
-
 cd mempool/docker
-if ! which docker ; then install_docker_linux ; fi
+
+if ! which docker ; then
+    if [[ $OS == "Linux" ]] ; then install_docker_linux ; fi
+    if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
+fi
+
 make_docker_compose
 
 installed_conf_add "mempool-end"
