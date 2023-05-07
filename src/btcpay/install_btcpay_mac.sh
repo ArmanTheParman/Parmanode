@@ -18,22 +18,6 @@ else
 installed_config_remove "btcpay-half"
 set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
-
-# TEMPORARY COMMENT OUT
-#    if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
-#    set_terminal
-#    echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."
-#    enter_continue
-#    return 1
-#    fi
-
-#TEMPORARY COMMENT OUT
-#while true ; do user_pass_check_exists 
-#    return_status=$?
-#    if [ $return_status == 1 ] ; then return 1 ; fi
-#    if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
-#    if [ $return_status == 0 ] ; then break ; fi 
-#    done
     
 log "btcpay" "entering make_btcpay_directories..."
 make_btcpay_directories 
@@ -57,6 +41,16 @@ build_btcpay
 log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
+
+run_bitcoind_docker
+    if [ $? == 1 ] ; then return 1 ; fi
+
+while true ; do user_pass_check_exists 
+    return_status=$?
+    if [ $return_status == 1 ] ; then return 1 ; fi
+    if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
+    if [ $return_status == 0 ] ; then break ; fi 
+    done
 
 log "btcpay" "entering start_postgress..."
 startup_postgres \
