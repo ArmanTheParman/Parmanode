@@ -178,5 +178,11 @@ fi
 return 0
 }
 
+function git_check {
+if [[ $OS == "Linux" ]] ; then
+if ! which git ; then
+sudo apt-get install git -y
+fi ; fi
 
+}
 
