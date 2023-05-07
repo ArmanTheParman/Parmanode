@@ -1,5 +1,4 @@
 function menu_main {
-source $HOME/.parmanode/installed.conf
 while true ; do
 set_terminal_bit_higher
 echo "
