@@ -1,3 +1,5 @@
+Version 3.1.0
+    - Mempool Space added for Linux
 Version 3.0.0
     - LND (for linux)
     - Menu improvements - now dynamically changes

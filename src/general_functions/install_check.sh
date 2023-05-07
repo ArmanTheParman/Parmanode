@@ -69,3 +69,16 @@ return 0
 fi
 }
 
+function already_uninstalled {
+set_terminal ; echo "
+########################################################################################
+
+                                Already Uninstalled
+
+    "$1" is not installed. Aborting uninstallation.
+
+########################################################################################
+"
+enter_continue
+return 1
+}
