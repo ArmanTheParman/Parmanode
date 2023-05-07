@@ -90,11 +90,7 @@ case $choice in
        if [[ $OS == "Linux" ]] ; then 
        install_btcpay_linux ; return 0 ; fi
        if [[ $OS == "Mac" ]] ; then 
-<<<<<<< HEAD
        install_btcpay_mac || return 1  ; fi
-=======
-       no_mac ; return 0  ; fi
->>>>>>> master
        ;;
     
     t|T|tor|Tor)
