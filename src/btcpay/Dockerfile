@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
 #Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
+RUN groupadd -r parman && useradd -m -g parman -u 999 parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 
@@ -41,14 +41,11 @@ EXPOSE 8080
 EXPOSE 23001
 
 #Make users and groups and directories
-USER root
-RUN groupadd -r bitcoin && useradd -r -g bitcoin -u 1000 bitcoin
-RUN mkdir /home ; mkdir /home/bitcoin ; mkdir /home/bitcoin/.bitcoin ; mkdir /home/bitcoin/downloads
-RUN chown -R bitcoin:bitcoin /home/bitcoin
+USER parman 
+RUN mkdir /home/parman/parmanode/bitcoin ; mkdir /home/parman/.bitcoin 
 
 # Bitcoin Core 24.0.1 download
-USER bitcoin
-WORKDIR /home/bitcoin/downloads
+WORKDIR /home/parman/Downloads
 RUN wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
 RUN wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS
 Run wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc
@@ -60,14 +57,14 @@ RUN gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD047930
 RUN if { gpg --verify SHA256SUMS.asc 2>&1 | grep -q Good ; } ; then true ; else exit ; fi
 
 #unpack Bitcoin core:
-USER bitcoin
+USER parman
 RUN tar -xvf bitcoin*
 
 #move bitcoin program files to new directory.
-RUN mv /home/bitcoin/downloads/bit*/* /home/bitcoin/
+RUN mv /home/parman/Downloads/bit*/* /home/parman/parmanode/bitcoin/
 
 #remove the downloaded files
-RUN rm -rf /home/bitcoin/downloads/*
+RUN rm -rf /home/parman/Doanloads/*
 
 EXPOSE 8332
 
