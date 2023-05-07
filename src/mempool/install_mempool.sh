@@ -1,5 +1,5 @@
 function install_mempool {
-
+set_terminal
 install_check "mempool" || return 1
 
 source $HOME/.bitcoin/bitcoin.conf
