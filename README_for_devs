@@ -1,5 +1,5 @@
 ########################################################################################
-    Version 2.3.4 - 4th May, 2023
+    Version 3.2.0 - 7th May, 2023
 ########################################################################################
 
                              #Notes to developers
@@ -19,9 +19,7 @@ ARGUMENTS
                     
 FREQUENTLY USED CUSTOM FUNCTIONS
 
-    set_terminal    This is used a lot to clear the screen. It also sets the terminal
-                    dimensions and changes the text colour to orange. It doesn't 
-                    seem to be working on Mac, but it was at one stage. It's probably
+    set_terminal    This is used a lot tstop lnd.sern Mac, but it was at one stage. It's probably
                     a good thing as many mac terminals have a white background and
                     I failed at finding how to change it to black without mouse input.
                     If someone wants to take that on, that'd be awesome.

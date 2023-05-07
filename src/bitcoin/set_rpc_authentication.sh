@@ -31,7 +31,6 @@ choose "xpq" ; read choice
 
 case $choice in
     s|S)
-                debug1 "pre-password changer"
 	            password_changer
 				 
 	            stop_bitcoind  

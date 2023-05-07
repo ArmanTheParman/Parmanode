@@ -1,6 +1,13 @@
-# Parmanode 2.3.4 Plebian Cheese 
+# Parmanode 3.2.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
+
+Version 3 of Parmanode begins the introduction of LND. For Linux
+OS only currently.
+
+Version 3 is not fully backwards compatible with earlier versions,
+it's best to fully uninstall previous versions before using version 3.
+Blockchain data does not need to be deleted.
 
 Parmanode is an automated installation wizard and menu for desktiop
 computers, with the following software (list is growing):
@@ -10,6 +17,7 @@ computers, with the following software (list is growing):
                 BTCPay 
                 Docker
                 Tor
+                Mempool Space
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -45,7 +53,11 @@ follow the wizard menu options.
 
 ### Docker (latest)
 
-### Tor (lates)
+### Tor (latest)
+
+### LND v0.16.2 
+
+### Mempool Space (Latest)
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
@@ -58,6 +70,7 @@ Internal drive:
                 |             |--- .parmanode                         (config files)
                 |             |--- .btcpayserver                      (config, mounted to docker container) 
                 |             |--- .nbxplorer                         (config, mounted to docker container)
+                |             |--- .lnd                               
                 |             |--- parmanode ---|
                 |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
                 |                               |
@@ -65,18 +78,22 @@ Internal drive:
                 |                               |                      mounted for docker version)
                 |                               |
                 |                               |--- fulcrum_db ---|  (fulcrum databas)
+                |                               |
+                |                               |--- LND ----------|  (downloaded files) 
+                |                               |
+                |                               |--- mempool ------|  (downloaded files)
+                |                               
                 |--- media ---|
                 |             |--- parmanode ---|                  
                 |                               |--- .bitcoin ---|    (symlink target and ext drive mountpoint)
                 |           
                 |--- usr  --- |--- local  ------|--- bin ---|         (keeps bitcoin binary files)
                 |
-                |
                 |---Docker conatainer (btcpay) ---|
-                                                  |---home/parman/parmanode/btcpayserver
-                                                  |---home/parman/parmanode/NBXplorer
-                                                                  
-
+                |                                 |---home/parman/parmanode/btcpayserver
+                |                                 |---home/parman/parmanode/NBXplorer
+                |                                                  
+                |---3 Docker containers (mempool: api, web, db)
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
@@ -117,7 +134,7 @@ command; that's ok, it's safe to proceed.
 
 ## INSTRUCTIONS TO UPGRADE
 
-Simply download a new version and run it. You can delete the old copy but do not touch any of the directories or files that Parmanode has made. If you are to download to exactly the same directory, then you'll have to delete the old copy of Parmanode first, or delete it.
+Simply download a new version and run it.
+You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
 
-You do not need to uninstall the old Parmanode or uninstall Bitcoin. When a new version of Bitcoin is offered by Parmanode, the software will ask what you want to do.
-
+If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin blockchain
