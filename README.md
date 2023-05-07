@@ -1,4 +1,4 @@
-# Parmanode 3.0.0 Plebian Cheese 
+# Parmanode 3.1.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
@@ -17,6 +17,7 @@ computers, with the following software (list is growing):
                 BTCPay 
                 Docker
                 Tor
+                Mempool Space
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -56,6 +57,8 @@ follow the wizard menu options.
 
 ### LND v0.16.2 
 
+### Mempool Space (Latest)
+
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
 DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
@@ -76,19 +79,21 @@ Internal drive:
                 |                               |
                 |                               |--- fulcrum_db ---|  (fulcrum databas)
                 |                               |
-                |                               |--- LND ----------|  (downloaded files)
+                |                               |--- LND ----------|  (downloaded files) 
+                |                               |
+                |                               |--- mempool ------|  (downloaded files)
+                |                               
                 |--- media ---|
                 |             |--- parmanode ---|                  
                 |                               |--- .bitcoin ---|    (symlink target and ext drive mountpoint)
                 |           
                 |--- usr  --- |--- local  ------|--- bin ---|         (keeps bitcoin binary files)
                 |
-                |
                 |---Docker conatainer (btcpay) ---|
-                                                  |---home/parman/parmanode/btcpayserver
-                                                  |---home/parman/parmanode/NBXplorer
-                                                                  
-
+                |                                 |---home/parman/parmanode/btcpayserver
+                |                                 |---home/parman/parmanode/NBXplorer
+                |                                                  
+                |---3 Docker containers (mempool: api, web, db)
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
