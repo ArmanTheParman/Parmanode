@@ -1,6 +1,5 @@
 function set_rpc_authentication {
 while true ; do
-debug1 "beginning of set rpc authentication loop"
 set_terminal_bit_higher ; echo "
 ########################################################################################
 
@@ -33,7 +32,6 @@ case $choice in
     s|S)
 	            password_changer
                         source $HOME/.parmanode/parmanode.conf
-                        debug1 "bitcoin docker value: $bitcoin_docker"
 
 		    if [[ $bitcoin_docker == true ]] ; then
                     stop_bitcoind_docker ; else stop_bitcoind ; fi  
