@@ -1,12 +1,16 @@
 function install_bitcoin {
+bitcoin_docker=false
+if [[ $1 == "docker" ]] ; then bitcoin_docker=true ; fi
 
 set_terminal
 
+if [[ $bitcoin_docker == true ]] ; then true ; else
 install_check "bitcoin" 
     #first check if Bitcoin has been installed
     return_value="$?"
     if [[ $return_value == "1" ]] ; then
         log "bitcoin" "install_check return 1, exit" ; return 1 ; fi      
+fi
 
 change_drive_selection \
     && log "bitcoin" "install - change drive selection function exit"
@@ -41,9 +45,10 @@ log "bitcoin" "make_bitcoin_directories function..." && \
             log "bitcoin" "ownership statement: $statement" ; fi
 
 # Download bitcoin software
-
+if [[ $bitcoin_docker == true ]] ; then true ; else
     if [[ $OS == "Linux" ]] ; then log "bitcoin" "download function Linux..." && download_bitcoin_linux ; fi
     if [[ $OS == "Mac" ]] ; then log "bitcoin" "download function Mac..." && download_bitcoin_mac ; fi
+fi
 
 #setup bitcoin.conf
 log "bitcoin" "make_bitcoin_conf function ..."
@@ -52,13 +57,15 @@ make_bitcoin_conf
             then return 1
         fi
 
-#make a script that service file will use
-if [[ $OS == "Linux" ]] ; then
-make_mount_check_script ; fi
+if [[ $bitcoin_docker == true ]] ; then true ; else
+	#make a script that service file will use
+	if [[ $OS == "Linux" ]] ; then
+	make_mount_check_script ; fi
 
-#make service file
-if [[ $OS == "Linux" ]] ; then 
-    make_bitcoind_service_file
+	#make service file
+	if [[ $OS == "Linux" ]] ; then 
+	    make_bitcoind_service_file
+	fi
 fi
 
 set_terminal

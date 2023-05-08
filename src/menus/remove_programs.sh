@@ -18,6 +18,9 @@ echo "                                           (bitcoin)          Bitcoin Core
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then
 echo "                                           (bitcoin)          Bitcoin (partial)
 " ; fi
+if grep -q "bitcoin_docker=true" $HOME/.parmanode/parmanode.conf ; then
+echo "                                           (bd)               Bitcoin in Docker
+" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (f)                Fulcrum Server
 "

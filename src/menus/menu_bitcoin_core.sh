@@ -1,4 +1,6 @@
 function menu_bitcoin_core {
+source $HOME/.parmanode/parmanode.conf
+
 while true
 do
 set_terminal
@@ -34,11 +36,11 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in
 
 start|START|Start)
-run_bitcoind
+if [[ $bitcoin_docker == true ]] ; then run_bitcoind_docker ; else run_bitcoind ; fi
 ;;
 
 stop|STOP|Stop)
-stop_bitcoind
+if [[ $bitcoin_docker == true ]] ; then stop_bitcoind_docker ; else stop_bitcoind ; fi
 ;;
 
 c|C)

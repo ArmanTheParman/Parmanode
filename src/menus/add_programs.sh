@@ -21,7 +21,7 @@ if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (f)       Fulcrum (an Electrum Server)
                             " ; fi
 if ! grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
-echo "                             (btcp)    BTCPay Server
+echo "                             (btcp)    BTCPay Server (+ Bitocin in Docker)
                             " ; fi
 if ! grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (t)       Tor 

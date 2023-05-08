@@ -42,6 +42,8 @@ log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
+install_bitcoin "docker" && parmanode_conf_add "bitcoin_docker=true"
+
 run_bitcoind_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
