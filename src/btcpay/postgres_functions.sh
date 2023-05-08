@@ -42,7 +42,7 @@ if docker exec -it -u postgres btcpay psql -l | grep btcpayserver >/dev/null 2>&
 return 0 ; fi
 
 counter=$((counter + 1))
-
+sleep 2
 done
 
 log "btcpay" "failed to start btcpay database"
