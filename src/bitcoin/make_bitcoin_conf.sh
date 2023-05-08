@@ -7,14 +7,17 @@ set_terminal
 
 if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 	then 
-	    set_terminal ; echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation." && \
-		log "bitcoin" "bitcoin.conf exists already"
-		read choice
-		while true ; do
+
+            while true ; do
+	    set_terminal 
+            echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation." && \
+            log "bitcoin" "bitcoin.conf exists already"
+	    read choice
+
 			if [[ $choice == "a" ]] ; then return 1 ; fi
 			if [[ $choice == "o" ]] ; then log "bitcoin" "conf overwrite" && break ; fi
 			echo ""
-			invlalid
+			invalid
 		done
 	fi
 
