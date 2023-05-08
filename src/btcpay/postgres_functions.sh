@@ -2,27 +2,16 @@
 # start postgress, create parman database user with script, create 2 databases.
 
 function startup_postgres {
-#docker exec -d -u root btcpay /bin/bash -c \
-#"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
+counter=0
+while [ $counter -le 3 ] ; do
+{ docker exec -it -u root btcpay service postgresql start && break ; } || \
+{ debug1 "done docker exec postgres start" && \
+sleep 3 && counter=$((counter + 1)) ; }
+done
 
-docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
-debug1 "done docker exec postgres start"
-postgres_intermission || return 1
+postgres_intermission || { debug1 "failed postgres_intermission" && return 1 ; }
+
 }
-
-
-# config file: /etc/postgresql/13/main/pg_hba.conf 
-
-#docker exec -d -u root btcpay /bin/bash -c \
-#"echo \"
-#local   all             postgres                                peer
-#local   all             all                                     peer
-#host    all             all             127.0.0.1/32            trust
-#host    all             all             ::1/128                 trust
-#local   replication     all                                     peer
-#host    replication     all             127.0.0.1/32            md5
-#host    replication     all             ::1/128                 md5
-#" | tee /etc/postgresql/*/main/pg_hba.conf >/dev/null"
 
 
 function postgres_intermission {
@@ -39,7 +28,7 @@ postgres_database_creation
 #accessible by host.
 
 if docker exec -it -u postgres btcpay psql -l | grep btcpayserver >/dev/null 2>&1 ; then
-return 0 ; fi
+return 0 ; else sleep 1 ; debug1 "no database detected. counter is $counter" ; fi
 
 counter=$((counter + 1))
 
@@ -59,6 +48,20 @@ sleep 1
 docker exec -d -u postgres btcpay /bin/bash -c \
 "/home/parman/parmanode/postgres_script.sh ; \
 createdb -O parman btcpayserver ; \
-createdb -O parman nbxplorer" 
+createdb -O parman nbxplorer" || debug1 "attempt to create postgres database" 
 
 }
+# config file: /etc/postgresql/13/main/pg_hba.conf 
+
+#docker exec -d -u root btcpay /bin/bash -c \
+#"echo \"
+#local   all             postgres                                peer
+#local   all             all                                     peer
+#host    all             all             127.0.0.1/32            trust
+#host    all             all             ::1/128                 trust
+#local   replication     all                                     peer
+#host    replication     all             127.0.0.1/32            md5
+#host    replication     all             ::1/128                 md5
+#" | tee /etc/postgresql/*/main/pg_hba.conf >/dev/null"
+
+
