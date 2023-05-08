@@ -70,6 +70,12 @@ uninstall_bitcoin
 return 0
 ;;
 
+bd|BD|Bd)
+stop_bitcoind_docker
+parmanode_conf_remove "bitcoin_docker=1"
+return 0
+;;
+
 f|F)
 uninstall_fulcrum
 return 0
