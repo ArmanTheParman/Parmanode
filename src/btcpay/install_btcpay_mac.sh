@@ -42,8 +42,8 @@ log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
-run_bitcoind_docker
-    if [ $? == 1 ] ; then return 1 ; fi
+#run_bitcoind_docker
+#    if [ $? == 1 ] ; then return 1 ; fi
 
 while true ; do user_pass_check_exists 
     return_status=$?

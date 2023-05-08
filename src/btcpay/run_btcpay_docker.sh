@@ -4,6 +4,7 @@ docker run -d -u parman \
            --name btcpay \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
+           -v $HOME/.bitcoin:/home/parman/.bitcoin \
            --network="host" \
            btcpay 
 fi

@@ -44,7 +44,7 @@ EXPOSE 23001
 USER parman 
 RUN mkdir /home/parman/parmanode/bitcoin ; mkdir /home/parman/.bitcoin 
 
-# Bitcoin Core 24.0.1 download
+# Bitcoin Core 24.0.1 download ; may not need if not using Bitcoin in container but useful for testing
 WORKDIR /home/parman/Downloads
 RUN wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
 RUN wget https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS
@@ -62,9 +62,6 @@ RUN tar -xvf bitcoin*
 
 #move bitcoin program files to new directory.
 RUN mv /home/parman/Downloads/bit*/* /home/parman/parmanode/bitcoin/
-
-#remove the downloaded files
-RUN rm -rf /home/parman/Doanloads/*
 
 EXPOSE 8332
 
