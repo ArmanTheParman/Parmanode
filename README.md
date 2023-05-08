@@ -134,7 +134,7 @@ command; that's ok, it's safe to proceed.
 
 ## INSTRUCTIONS TO UPGRADE
 
-Simply download a new version and run it.
-You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
-
 If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin blockchain
+
+Otherwise, simply download a new version and run it.
+You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
