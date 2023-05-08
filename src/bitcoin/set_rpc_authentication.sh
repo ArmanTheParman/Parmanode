@@ -32,8 +32,11 @@ choose "xpq" ; read choice
 case $choice in
     s|S)
 	            password_changer
-				 
-	            stop_bitcoind  
+                        source $HOME/.parmanode/parmanode.conf
+                        debug1 "bitcoin docker value: $bitcoin_docker"
+
+		    if [[ $bitcoin_docker == true ]] ; then
+                    stop_bitcoind_docker ; else stop_bitcoind ; fi  
 
                     set_rpc_authentication_update_conf_edits #defined below
 
@@ -41,17 +44,19 @@ case $choice in
 
                    #(extracted from bitcoin.conf)	
 
-                    sleep 1 ; run_bitcoind
-
-                break
-		        ;;
+                   sleep 1
+                   if [[ $bitcoin_docker == true ]] ; then
+                   run_bitcoind_docker ; else run_bitcoind ; fi
+              
+                   break
+	 	   ;;
 		
 	l|L) 
 				add_userpass_to_fulcrum
 				break
 				;;
 	c)
-	            stop_bitcoind
+                stop_bitcoind
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
 				sleep 1
@@ -83,7 +88,7 @@ function set_rpc_authentication_update_conf_edits {
 
 set_terminal
 
-run_bitcoind
+if [[ $bitcoin_docker == true ]] ; then run_bitcoind_docker ; else run_bitcoind ; fi
 
 }
 

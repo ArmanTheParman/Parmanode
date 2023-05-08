@@ -3,7 +3,9 @@ function nbxplorer_config {
     source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
 
 echo "
-btc.rpc.auth=${rpcuser}:${rpcpassword}
+btc.rpc.user=${rpcuser}
+btc.rpc.pass=${rpcpassword}
+btc.rpc.url=http://127.0.0.1:8332
 bind=0.0.0.0:24445
 port=24445
 mainnet=1

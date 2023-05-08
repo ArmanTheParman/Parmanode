@@ -1,6 +1,9 @@
 function install_bitcoin {
 bitcoin_docker=false
-if [[ $1 == "docker" ]] ; then bitcoin_docker=true ; fi
+if [[ $1 == "docker" ]] ; then 
+bitcoin_docker=true 
+parmanode_conf_add "bitcoin_docker=true"
+fi
 
 set_terminal
 

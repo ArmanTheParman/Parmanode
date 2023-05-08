@@ -11,12 +11,14 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
             while true ; do
 	    set_terminal 
             echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation." && \
+            debug1 "if in debug mode, d to leave conf as is"
             log "bitcoin" "bitcoin.conf exists already"
 	    read choice
 
 			if [[ $choice == "a" ]] ; then return 1 ; fi
 			if [[ $choice == "o" ]] ; then log "bitcoin" "conf overwrite" && break ; fi
 			echo ""
+                        if [[ $choice == "d" && $debug == 1 ]] ; then apply_prune_bitcoin_conf ; return 0 ; fi
 			invalid
 		done
 	fi
@@ -32,9 +34,7 @@ zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
 
 rpcbind=0.0.0.0
-rpcallowip=10.0.0.0/8
-rpcallowip=192.168.0.0/16
-rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
+rpcallowip=0.0.0.0/0" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
 || log "bitcoin" "bitcoin conf failed"
 
 
