@@ -34,12 +34,14 @@ case $choice in
 	            password_changer
 				 
 	            stop_bitcoind  
-                set_rpc_authentication_update_conf_edits #defined below
 
-				add_userpass_to_fulcrum 
-				#(extracted from bitcoin.conf)	
+                    set_rpc_authentication_update_conf_edits #defined below
 
-				sleep 1 ; run_bitcoind
+                    add_userpass_to_fulcrum #aborts if no fulcrum
+
+                   #(extracted from bitcoin.conf)	
+
+                    sleep 1 ; run_bitcoind
 
                 break
 		        ;;
@@ -86,6 +88,8 @@ run_bitcoind
 }
 
 function add_userpass_to_fulcrum {
+
+if grep -q "fulcrum" $HOME/.parmanode/installed.conf ; then true ; else return 1 ; fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 

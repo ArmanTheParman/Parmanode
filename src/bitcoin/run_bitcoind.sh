@@ -33,7 +33,7 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
-debug1 "about to stop bitcoind mac"
+debug1 "about to start bitcoind mac"
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 sleep 1.5
 fi
