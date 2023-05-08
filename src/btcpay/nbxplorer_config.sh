@@ -5,7 +5,7 @@ function nbxplorer_config {
 echo "
 btc.rpc.user=${rpcuser}
 btc.rpc.pass=${rpcpassword}
-btc.rpc.url=http://127.0.0.1:8332
+btc.rpc.url=http://192.168.0.166:8332
 bind=0.0.0.0:24445
 port=24445
 mainnet=1
