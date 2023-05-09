@@ -22,9 +22,6 @@ set_terminal ; echo "
 
              nl)           View NBXplorer log
 
-             startd)       Start BTCPay Server (within docker container start) 
-                                                    - rarely this is needed
-
 ######################################################################################## 
 " 
 choose "xpq" ; read choice ; set_terminal
@@ -32,14 +29,13 @@ case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
 start|START|Start)
 docker start btcpay
+startup_postgres && \
+run_nbxplorer && \
+run_btcpay
 ;;
 
 stop|STOP|Stop)
 docker stop btcpay
-;;
-
-startd|STARTD|Stard|StartD)
-run_btcpay
 ;;
 
 log|Log|LOG)

@@ -57,7 +57,7 @@ run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering start_postgress..."
-{ startup_postgres \
+{ startup_postgres "install" \
 && log "btcpay" "startup postgress function completed" ; } \
 || { log "btcpay" "startup postgress function failed" && return 1 ; }
 
