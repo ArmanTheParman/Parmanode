@@ -5,6 +5,8 @@ if ! sudo systemctl status lnd.service >/dev/null ; then
     enter_continue ; return 1 ; 
 fi
 set_terminal
+lnd_wallet_info
+set_terminal
 echo "You will be asked for a password - this is you LND password, not passphrase.
 "
 lncli create

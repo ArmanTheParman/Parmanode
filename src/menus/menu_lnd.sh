@@ -4,6 +4,8 @@ while true ; do set_terminal ; echo "
                                      LND Menu                               
 ########################################################################################
 
+      (i)              Important info
+
       (start)          Start LND 
 
       (stop)           Stop LND
@@ -18,7 +20,9 @@ while true ; do set_terminal ; echo "
        
       (alias)          Change LND alias
 
-      (create)         Create an LND wallet
+      (create)         Create an LND wallet (or restore a wallet with seed)
+
+      (ul)             Unlock Wallet
 
       (scb)            Static Channel Backup 
 
@@ -30,6 +34,7 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
+i|I|info|Info) lnd_info ;;
 start|START|Start) sudo systemctl start lnd.service ;;
 stop|STOP|Stop) sudo systemctl stop lnd.service ;; 
 restart|RESTART|Restart) sudo systemctl restart lnd.service ;;
@@ -104,7 +109,11 @@ set_lnd_password
 alias|ALIAS|Alias) 
 set_lnd_alias ;;
 
-create|CREATE|Create) create_wallet ;;
+create|CREATE|Create) create_wallet ; lncli unlock ;;
+
+ul|UL|Ul|unlock|Unlock) 
+lncli unlock
+;;
 
 scb|SCB|Scb) scb ;;
 
