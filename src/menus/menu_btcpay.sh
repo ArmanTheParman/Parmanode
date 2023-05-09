@@ -60,12 +60,7 @@ set_terminal_wider
 tail -f $HOME/.btcpayserver/btcpay.log &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here              startn)       Start NBXplorer
-
-             stopn)        Stop NBXplorer
-
-             log)           View BTCPay Server log
-nl|NL|Nl)
+wait $tail_PID # code waits here              
 echo "
 ########################################################################################
     
