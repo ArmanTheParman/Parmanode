@@ -18,7 +18,7 @@ while true ; do set_terminal ; echo "
        
       (alias)          Change LND alias
 
-      (create)         Create an LND wallet
+      (create)         Create an LND wallet (or restore a wallet with seed)
 
       (scb)            Static Channel Backup 
 
