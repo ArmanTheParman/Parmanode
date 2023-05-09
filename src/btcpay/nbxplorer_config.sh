@@ -3,8 +3,9 @@ function nbxplorer_config {
     source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
 
 echo "
-btc.rpc.auth=${rpcuser}:${rpcpassword}
-bind=0.0.0.0:24445
+btc.rpc.user=${rpcuser}
+btc.rpc.pass=${rpcpassword}
+bind=127.0.0.1:24445
 port=24445
 mainnet=1
 postgres=User ID=parman;Password=NietShitcoin;Host=localhost;Port=5432;Database=nbxplorer;
