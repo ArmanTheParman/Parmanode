@@ -42,9 +42,11 @@ case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 start|START|Start)
 docker start btcpay
 ;;
+
 stop|STOP|Stop)
 docker stop btcpay
 ;;
+
 log|Log|LOG)
 echo "
 ########################################################################################
@@ -60,7 +62,12 @@ set_terminal_wider
 tail -f $HOME/.btcpayserver/btcpay.log &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here              
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+set_terminal
+continue ;;
+
+nl|NL|Nl)
 echo "
 ########################################################################################
     
