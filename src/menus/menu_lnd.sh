@@ -22,6 +22,8 @@ while true ; do set_terminal ; echo "
 
       (create)         Create an LND wallet (or restore a wallet with seed)
 
+      (ul)             Unlock Wallet
+
       (scb)            Static Channel Backup 
 
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
@@ -108,6 +110,10 @@ alias|ALIAS|Alias)
 set_lnd_alias ;;
 
 create|CREATE|Create) create_wallet ;;
+
+ul|UL|Ul|unlock|Unlock) 
+lncli unlock
+;;
 
 scb|SCB|Scb) scb ;;
 
