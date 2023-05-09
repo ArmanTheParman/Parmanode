@@ -1,6 +1,6 @@
 function mentorship {
 
-set_terminal ; echo "
+set_terminal_bit_higher ; echo "
 ########################################################################################
 
                                 Mentorship with Parman
@@ -18,14 +18,6 @@ set_terminal ; echo "
     This is a one-to-one mentorship course (not a group/class), at your own pace, 
     involving multiple video call meetings - it could take weeks, or if you want to 
     take your time, months.
-
-    The program includes …
-
-####https://armantheparman.com/donations/
-
-                        Nostr:    pub1ltt9gry09lf2z6396rvzmk2a8wkh3yx5xhgkjzzg5znh62yr53rs0hk97y
-
-                        L####################################################################################
 
     The program includes …
 
@@ -49,7 +41,7 @@ set_terminal ; echo "
             Inheritance planning
 
 ########################################################################################
-" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "                       
+" ; enter_continue ; clear ; set_terminal_bit_higher ; echo "                       
 ########################################################################################
 
 Reference #1: Identity is hidden for privacy, but available on request, on a 
@@ -90,7 +82,7 @@ YYYY
 
 ########################################################################################
 "
-enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal_high ; echo "
+enter_continue ; clear ; set_terminal_bit_higher ; echo "
 ########################################################################################
 
 Reference #2: Identity is hidden for privacy, but available on request, on a 
@@ -120,7 +112,7 @@ Kind regards,
 WWWW
 
 ########################################################################################                                
-" ; enter_continue ; if [[ $? == 1 ]]; then return 1 ; fi ; set_terminal ; echo "
+" ; enter_continue ; clear ; set_terminal ; echo "
 ########################################################################################                            
 
                         Contact Arman The Parman for more info:
