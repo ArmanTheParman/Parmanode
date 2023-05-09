@@ -7,7 +7,7 @@ function startup_postgres {
 
 docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
 debug1 "done docker exec postgres start"
-postgres_intermission || return 1
+if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
 }
 
 
