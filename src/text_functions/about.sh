@@ -17,6 +17,9 @@ set_terminal_wide ; echo "
                                     Twitter:  @parman_the
                                     Telegram: @parman_the
 
+            Telegram group
+            chat/help:              https://t.me/parmanode
+            
             gpg Public key
             fetch:                  gpg --keyserver keyserver.ubuntu.com --recv-key E7C061D4C5E5BC98
                                     
