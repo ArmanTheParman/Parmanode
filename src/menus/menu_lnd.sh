@@ -4,6 +4,8 @@ while true ; do set_terminal ; echo "
                                      LND Menu                               
 ########################################################################################
 
+      (i)              Important info
+
       (start)          Start LND 
 
       (stop)           Stop LND
@@ -30,6 +32,7 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
+i|I|info|Info) lnd_info ;;
 start|START|Start) sudo systemctl start lnd.service ;;
 stop|STOP|Stop) sudo systemctl stop lnd.service ;; 
 restart|RESTART|Restart) sudo systemctl restart lnd.service ;;
