@@ -18,10 +18,6 @@ set_terminal ; echo "
 
              stop)         Stop BTCPay
 
-             startnbx)     Start NBXplorer
-
-             stopnbx)      Stop NBXplorer
-
              log)          View BTCPay Server log
 
              nl)           View NBXplorer log"
@@ -44,16 +40,10 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
 start|START|Start)
-sudo systemctl start btcpay.service
+docker start btcpay
 ;;
 stop|STOP|Stop)
-sudo systemctl stop btcpay.service
-;;
-startnbx|STARTNBX)
-sudo systemctl start nbxplorer.service
-;;
-stopnbx|STOPNBX)
-sudo systemctl stop nbxplorer.service
+docker stop btcpay
 ;;
 log|Log|LOG)
 echo "
@@ -70,11 +60,11 @@ set_terminal_wider
 tail -f $HOME/.btcpayserver/btcpay.log &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
-continue ;;
+wait $tail_PID # code waits here              startn)       Start NBXplorer
 
+             stopn)        Stop NBXplorer
+
+             log)           View BTCPay Server log
 nl|NL|Nl)
 echo "
 ########################################################################################
