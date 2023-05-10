@@ -1,9 +1,12 @@
 #!/bin/bash
 
+#check if in debugging mode
 if [[ $1 == "debug" || "$1" == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 
+#save position of working directory
 original_dir=$(pwd) >/dev/null 2>&1
 
+#check script is being run from parmanode directory so relative paths work
 if [[ ! $(basename $(pwd)) == "parmanode" ]] >/dev/null ; then
 clear
 echo "The Parmanode script must be run while your working directory is the
@@ -13,7 +16,6 @@ Hit <enter> to exit."
 read
 exit 0
 fi
-
 
 # source all the modules. Exclude executable scripts
 
@@ -25,6 +27,8 @@ fi
 
 	done
 
+# Make sure parmanode git directory is not place in $HOME directory, or it will be wipe 
+# out by the program
 test_directory_placement
 
 # Check OS function and store in variable for later. Exits if Windows, or if not if Mac/Linux not detected.
@@ -34,6 +38,9 @@ test_directory_placement
 # get IP address
 if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 ) ; fi
 if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' ) ; fi
+
+# get version
+source ./src/config/version.conf
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
