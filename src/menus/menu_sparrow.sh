@@ -18,9 +18,16 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
+if [[ $OS == "linux" ]] ; then
 nohup $HOME/parmanode/Sparrow/bin/Sparrow >/dev/null 2>&1 &
 please_wait
 sleep 2
+fi
+
+if [[ $OS == "Mac" ]] ; then 
+open /Applications/Sparrow.app
+fi
+
 return 0 ;;
 
 rc|RC|Rc|rC)
