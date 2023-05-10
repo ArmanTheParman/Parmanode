@@ -32,6 +32,8 @@ echo "#-------------------------------------------------------------------------
 #                                                                                      #
 #         (uninstall)   Uninstall Parmanode ..........(Who'd do such a thing?)         #
 #                                                                                      #
+#         (update)      Update Parmanode                                               #
+#                                                                                      #
 #         (ap)          About Parmanode                                                #
 #                                                                                      #
 ########################################################################################
@@ -64,6 +66,8 @@ d|D)
     donations ;;
 uninstall|UNINSTALL)
     uninstall_parmanode ;;
+update|UPDATE|Update)
+    update_parmanode ;;
 ap|AP|Ap|aP)
     about ;;
 q | Q | quit)

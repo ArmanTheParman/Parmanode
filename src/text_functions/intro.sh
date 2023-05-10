@@ -12,34 +12,31 @@ echo "
 
 ########################################################################################
 
+
     Requirements:
 
-            1) Linux (including Pi4) and Mac (Not available for Windows yet)
+            1) Debian/Ubuntu/Mint Linux, Mac (including Raspberr Pi 4)
+            
+             (Not available for Windows yet)
 
-                   - Debian and Ubuntu Linux systems supported, including Mint.
-                   - Other Linux distributions have not been tested yet.
+            2) recommended: An ext drive (1 Tb) OR internal drive with spare capacity
 
-            2) CPU Architecture:
-
-                   - AMD/Intel 64 architecture (x86-64) 
-                   - or M1/M2 Mac chip
-                   - Raspbery Pi 32 or 64 bit
-
-            3) An ext drive (1 Tb) OR and internal drive with spare capacity
-
-            4) Users must not hold ANY shitcoins. Honesty system.
+            3) Users must not hold ANY shitcoins. Honesty system.
             
             5) Free: 
                    - Donations appreciated
                    - Yes, the code is open source, MIT licence, like Bitcoin
+o
 
     To report bugs:
                    - armantheparman@protonmail.com
                    - Telegram chat: https:/t.me/parmanode
-    
+
+
     To hire personal assistance to setup:
                    - email armantheparman@protonmail.com
     
+
 ########################################################################################
 
 Hit <enter> to continue, or (q) to quit, then <enter>.
