@@ -7,7 +7,7 @@ echo "
 #                           P A R M A N O D E - Main Menu                              #
 #                                                                                      #
 #                                                                                      #"
-if ! grep -q "parmanode" $HOME/.parmanode/installed.conf ; then 
+if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
 echo "#         (i)           Install Parmanode                                              #
 "
 else
