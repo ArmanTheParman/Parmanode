@@ -1,3 +1,10 @@
+Version 3.2.1
+    - Sparrow added
+    - version.conf added to check for hard forks of this software on upgrades
+    - improved flow testing directory placement of parmanode.git
+    - update paramnode from within software autmatically
+    - Intro more brief
+    - installs git on Linux systems
 Version 3.2.0
     - Mempool Space added for Mac
 Version 3.1.0
