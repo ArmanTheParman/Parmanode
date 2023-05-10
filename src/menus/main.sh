@@ -51,7 +51,8 @@ i|I)
 add|Add| ADD)
     menu_add_programs ;;
 use|USE|Use)
-    menu_programs ;;
+    menu_programs 
+    ;;
 remove|REMOVE)
     remove_programs ;;
 l|L) 

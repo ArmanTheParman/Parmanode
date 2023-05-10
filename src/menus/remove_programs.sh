@@ -54,9 +54,12 @@ echo "                                           (mem)              Mempool Spac
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (mem)              Mempool (partial) 
 " ; fi
+if grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (s)                Sparrow (partial) 
+" ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (s)                Sparrow Wallet 
-"
+" ; fi
 echo "
 ########################################################################################
 "

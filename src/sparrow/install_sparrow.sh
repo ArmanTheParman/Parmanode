@@ -1,12 +1,10 @@
 function install_sparrow {
-
+set_terminal
 install_check "sparrow" || return 1
 
-download_sparrow
+download_sparrow && installed_conf_add "sparrow-start"
 verify_sparrow || return 1
 unpack_sparrow
-mv $HOME/parmanode/Sparrow/bin/Sparrow /usr/local/bin
-make_run_sparrow_script
 installed_conf_add "sparrow-end"
 set_terminal ; echo "
 ########################################################################################
@@ -32,16 +30,11 @@ function verify_sparrow {
 
 curl https://keybase.io/craigraw/pgp_keys.asc | gpg --import
 
-if ! gpg --verify sparrow*.asc sparrow*.gz >/dev/null 2>&1 ; then
+if ! gpg --verify sparrow*.asc sparrow*.txt >/dev/null 2>&1 ; then
 set_terminal ; echo "GPG verification failed. Aborting. Contact Parman for help." ; enter_continue ; return 1 ; fi
+
+if ! sha256sum --ignore-missing --check *parrow*.txt ; then echo "Checksum failed. Aborting. Contact Parman for help" 
+enter_continue ; return 1 ; fi
+
 }
 
-function make_run_sparrow_script {
-
-cat <<EOF $HOME/Desktop/run_Sparrow.sh
-#!/bin/bash
-Sparrow &
-clear
-EOF
-sudo chmod +x $HOME/Desktop/run_Sparrow.sh
-}
