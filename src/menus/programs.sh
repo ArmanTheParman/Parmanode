@@ -32,6 +32,9 @@ if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (mem)     Mempool Space 
                             " ; fi
+if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (s)       Sparrow Wallet 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -62,6 +65,10 @@ if [[ $OS == "Mac" ]] ; then no_mac ; fi
 mem|MEM|Mem)
     menu_mempool
 ;;
+
+s|S|Sparrow|SPARROW|sparrow)
+   menu_sparrow
+   ;;
 
 RTL | rtl |is | S | th | TH | lh | LH )
     clear
