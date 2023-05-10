@@ -1,6 +1,9 @@
 function install_sparrow {
 set_terminal
 install_check "sparrow" || return 1
+if [[ $OS == "Mac" ]] ; then
+mac_sparrow_headsup
+fi
 
 download_sparrow && installed_conf_add "sparrow-start"
 verify_sparrow || return 1
@@ -44,3 +47,19 @@ enter_continue ; return 1 ; fi
 
 }
 
+function mac_sparrow_headsup {
+
+set_terminal ; echo " 
+########################################################################################
+
+    Dear Mac user, Parmanode will download Sparrow for you, verify it, and move the
+    program to your Applications folder.
+
+    When you see a Mac popul to drag an icon to the Applications, don't do it, wait,
+    Parmanode is taking care of it and it will automagically happen and close itself.
+
+########################################################################################
+"
+enter_continue
+
+}
