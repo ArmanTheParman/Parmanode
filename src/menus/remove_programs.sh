@@ -54,6 +54,9 @@ echo "                                           (mem)              Mempool Spac
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (mem)              Mempool (partial) 
 " ; fi
+if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (s)                Sparrow Wallet 
+"
 echo "
 ########################################################################################
 "
@@ -95,6 +98,11 @@ if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
 mem|MEM|Mem)
 uninstall_mempool
 ;;
+
+s|S|SPARROW|Sparrow|sparrow)
+    uninstall_sparrow
+	return 0 
+	;;
 
 p|P)
 	return 0
