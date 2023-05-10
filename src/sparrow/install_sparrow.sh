@@ -4,8 +4,14 @@ install_check "sparrow" || return 1
 
 download_sparrow && installed_conf_add "sparrow-start"
 verify_sparrow || return 1
-unpack_sparrow
+
+if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
+if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
+    cp -r /Volumes/Sparrow/Sparrow.app /Applications
+    diskutil unmountDisk /Volumes/Sparrow
+    fi
 installed_conf_add "sparrow-end"
+
 set_terminal ; echo "
 ########################################################################################
 
