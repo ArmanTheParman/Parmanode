@@ -8,10 +8,14 @@ echo "
                                 P A R M A N O D E - Tools
 
                     
+                    (u)     Update computer (Linux or Mac)
+
                     (ip)    What's my computer's IP address?
 
-                    (d)     Delete your previous choices to hide Parmanode messages
+                    (d)     Delete your previous preference to hide certain Parmanode
+                            mssages
 
+                    (h)     Check system resources with \"htop\" (installs if needed)
 
 
                     ... More soon
@@ -21,6 +25,11 @@ echo "
 choose "xpq" ; read choice ; set_terminal
 
 case $choice in
+
+    u|U|up|UP|update|UPDATE|Update)
+    if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi
+    if [[ $OS == "Mac" ]] ; then set_terminal ; please_wait ; brew update && brew upgrade ; fi
+    ;;
 
     ip|IP|iP|Ip)
         IP_address
@@ -32,6 +41,13 @@ case $choice in
     p|P)
         return 0
         ;;
+    h|H|htop|HTOP|Htop)
+        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1
+        else
+        nohup gnome-terminal -- bash -c "htop"
+        fi
+        ;;
+
     q|Q|Quit|QUIT)
         exit 0
         ;;

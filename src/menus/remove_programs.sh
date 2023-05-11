@@ -68,6 +68,11 @@ read choice
 
 case $choice in
 
+	parmanode|PARMANODE|Parmanode)
+		uninstall_parmanode
+		exit 0
+		;;
+
 bitcoin|Bitcoin|BITCOIN)
 uninstall_bitcoin
 return 0
