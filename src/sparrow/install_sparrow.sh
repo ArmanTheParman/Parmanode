@@ -13,6 +13,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
+make_sparrow_config
 installed_conf_add "sparrow-end"
 
 set_terminal ; echo "
