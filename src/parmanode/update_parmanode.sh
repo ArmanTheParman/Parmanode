@@ -38,7 +38,11 @@ n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $original_dir
 git pull 
+echo"
+    YOU MUST EXIT PARMANODE AND RELAUNCE FOR THE UPDATE TO TAKE EFFECT
+    "
 enter_continue
+
 return 0 ;;
 *)
 invalid ;;
