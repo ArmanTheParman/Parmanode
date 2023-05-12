@@ -8,8 +8,7 @@ echo "
 #                                                                                      #
 #                                                                                      #"
 if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
-echo "#         (i)           Install Parmanode                                              #
-"
+echo "#         (i)           Install Parmanode                                              #"
 else
 echo "#         (add)         Add more programs                                              #
 #                                                                                      #
