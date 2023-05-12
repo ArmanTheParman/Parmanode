@@ -2,6 +2,7 @@ function btcpay_config {
 
 echo "
 network=mainnet
+bind=0.0.0.0
 port=23001
 chains=btc
 BTC.explorer.url=http://127.0.0.1:24445
