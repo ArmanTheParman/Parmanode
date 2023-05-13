@@ -1,6 +1,6 @@
 function select_drive_ID {
 
-set_terminal
+set_terminal_high
 
 while true ; do     #while 1
 
@@ -9,6 +9,7 @@ then
 lsblk
 echo "Enter the identifier of the disk to be formatted (e.g. \"sdb\", \"sdc\", \"sdd\"." 
 echo "Do not include partition numbers. Eg. don't type \"sdb1\" or \"sdb2\", just \"sdb\"):
+echo "It is CASE SENSITIVE!"
 " 
 else #(Mac) 
 diskutil list
@@ -33,7 +34,7 @@ Linux)
 
     if [[ $disk =~ ^sd[a-z] ]]
     then
-        set_terminal
+        set_terminal_high
         sudo fdisk -l | grep "$disk" 
         echo -e "
 ########################################################################################        
@@ -57,7 +58,7 @@ read confirm
         if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
 
     else #regex else
-        set_terminal
+        set_terminal_high
         echo "
 ########################################################################################
 
@@ -84,7 +85,7 @@ read choice
 
 Mac)
     if [[ $disk =~ ^disk[1-9] ]] ; then
-    set_terminal
+    set_terminal_high
     diskutil list
 echo -e "
 ########################################################################################        
@@ -109,7 +110,7 @@ read confirm
 
     else # part of regex if
         
-        set_terminal
+        set_terminal_high
         echo "
 ########################################################################################
 
