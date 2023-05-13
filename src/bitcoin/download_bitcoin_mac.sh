@@ -19,10 +19,10 @@ mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
 tar -xf bitcoin_Mac* -C $HOME/.parmanode/temp >/dev/null 2>&1
 
 #Alternative to Linux Install command...
-sudo chown $(whoami):$(whoami) /$HOME/.parmanode/temp/bitcoin*
-sudo chmod 0755 $HOME/.parmanode/temp/bitcoin*
+sudo chown -R $(whoami):$(whoami) /$HOME/.parmanode/temp/
+sudo chmod -R 0755 $HOME/.parmanode/temp/
 if [[ -d /usr/local/bin ]] ; then true ; else sudo mkdir -p /usr/local/bin ]] ; fi
-mv $HOME/.parmanode/temp/bitcoin* /usr/local/bin
+sudo mv $HOME/.parmanode/temp/b*/* /usr/local/bin
 sudo rm -rf $HOME/.parmanode/temp
 
 return 0      

@@ -19,48 +19,7 @@ then uninstall_bitcoin
 else 
 set_terminal
 
-while true ; do
-echo "
-########################################################################################
-    
-                    Previou Bitcoin installation not detected
-                         (excludes data direcotry check)
 
-    Bitcoin doesn't appear to be installed according to the intstalltion 
-    configuration file. This may not be 100% reliable. Would you like to go through 
-    the Bitcoin uninstall procedure anyway, just in case? 
-    
-                                  (y)   yes 
-
-                                  (s)   skip
-
-########################################################################################    
-"
-choose "xpq" 
-if [[ $debug == 0 ]] ; then read choice ; else choice="y" ; fi
-
-    case $choice in
-    
-    y|Y|yes|YES)
-    uninstall_bitcoin
-    break ;;
-
-    s|S|skip|SKIP|Skip)
-    break
-    ;;
-
-    p|P)
-    return 1 ;;
-
-    q|Q|Quit|QUIT)
-    exit 0 ;;
-
-    *)
-    invalid 
-    continue ;;
-    esac
-
-done
 fi #ends if bitcoin installed/unsinstalled
 
 set_terminal

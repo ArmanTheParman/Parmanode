@@ -7,12 +7,14 @@ if [[ $1 == "debug" || "$1" == "debug=1" ]] ; then debug=1 ; else debug=0 ; fi
 original_dir=$(pwd) >/dev/null 2>&1
 
 #check script is being run from parmanode directory so relative paths work
-if [[ ! $(basename $(pwd)) == "parmanode" ]] >/dev/null ; then
+if [[ -f do_not_delete_move_rename.txt ]] ; then true ; else
 clear
-echo "The Parmanode script must be run while your working directory is the
-Parmanode directory where the file lives. Running the file from outside
-the directory will cause the functions of the program to faile. Exiting.
-Hit <enter> to exit."
+echo "
+The run_parmanode.sh script must be run from it's original directory. It
+cannot be moved relative to all the other files, nor can it be run
+by calling it from a different direcory.
+
+Exiting. Hit <enter> to exit."
 read
 exit 0
 fi
