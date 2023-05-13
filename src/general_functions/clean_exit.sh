@@ -10,5 +10,6 @@ trap parmanode_clean_exit EXIT
 function parmanode_clean_exit {
 
     tput sgr0 #resets colours of users terminal before quitting
+    reset
     return 0
 }
