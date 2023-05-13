@@ -6,6 +6,7 @@ function copy_bitcoin {
 plug in drive containing blockchain
 change label to parmanode
 
+Take care with different bitcoin.conf
 
 
 
