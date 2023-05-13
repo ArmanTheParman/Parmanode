@@ -8,7 +8,7 @@ set_terminal ; echo "
                                     Instructions
 
     The first thing you need to do is install Parmanode (there's an option for that in
-    the main menu). This will createt he necessary directory structure, and give you
+    the main menu). This will create the necessary directory structure, and give you
     the option to format an external drive, should you wish to use that.
 
     Once that is done, you can add individual programs. That is also available from
