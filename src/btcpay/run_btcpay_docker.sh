@@ -5,7 +5,8 @@ docker run -d -u parman \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
-           btcpay 
+           btcpay \
+           --restart unless-stopped
 fi
 
 if [[ $OS == "Mac" ]] ; then
@@ -20,7 +21,8 @@ docker run -d -u parman \
            -p 8070:8070 \
            -p 8080:8080 \
            -p 8090:8090 \
-           btcpay 
+           btcpay \
+           --restart unless-stopped
 
 debug1 "after docker run"
 log "docker" "after docker run"
