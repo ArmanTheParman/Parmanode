@@ -5,6 +5,7 @@ install_check "rtl" "uninstall" || { echo "Not installed. Skipping uninstall." ;
 please_wait
 
 docker stop rtl 2>/dev/null
+docker rm rtl 2>/dev/null
 docker rmi rtl 2>/dev/null
 rm -rf $HOME/parmanode/rtl
 rm ./src/rtl/RTL-Config.json >/dev/null 2&>1
