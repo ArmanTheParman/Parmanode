@@ -13,5 +13,6 @@ WORKDIR /home/$USERNAME/
 RUN mkdir .lnd rtl_db
 RUN git clone https://github.com/Ride-The-Lightning/RTL.git
 RUN cd RTL && npm install --omit=dev --legacy-peer-deps
+RUN cp RTL RTL2
 
 CMD tail -f /dev/null

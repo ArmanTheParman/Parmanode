@@ -25,6 +25,7 @@ docker run -d --name rtl -p 3000:3000 \
                          rtl \
         || { debug1 "failed to run rtl image" && return 1 ; }
 
+docker exec -d -e source="/home/$(whoami)/RTL2/" -e dest="/home/$(whoami)/RTL/" rtl sh -c "mv ${source}* $dest && rm -rf $source"
 mv $original_dir/src/rtl/RTL-Config.json $HOME/parmanode/rtl
 rtl_password_changer
 
