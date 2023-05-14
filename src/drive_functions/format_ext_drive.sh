@@ -17,8 +17,11 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 if [[ $OS == "Mac" ]] ; then
         set_terminal
         log "bitcoin" "eraseDisk $disk ..."
-        diskutil eraseDisk exFAT "parmanode" $disk \
-            || log "bitcoin" "failed to eraseDisk"   
+        if [[ $(uname -m) == "arm64" ]] ; then
+        diskutil eraseDisk APFS "parmanode" $disk || log "bitcoin" "failed to eraseDisk"
+        else
+        diskutil eraseDisk exFAT "parmanode" $disk || log "bitcoin" "failed to eraseDisk"   
+        fi
         set_terminal ; echo "
 #######################################################################################
 

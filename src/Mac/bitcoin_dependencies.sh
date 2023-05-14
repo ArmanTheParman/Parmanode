@@ -1,10 +1,10 @@
 function bitcoin_dependencies {
-
+while true ; do
 if command -v brew >/dev/null 2>&1
 	then
 	true
 	else
-    exit 0
+    break
 	fi
 
 while true ; do
@@ -29,11 +29,9 @@ echo "
 
 ########################################################################################
 "
-choose "epq" ; read choice
+choose "x" ; read choice
 
-if [[ $choice == "p" ]] ; then return 1 ; fi
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then return 0 ; fi
+if [[ $choice == "s" ]] ; then break 2 ; fi
 if [[ $choice == "" ]] ; then break ; fi
 invalid
 done
@@ -45,7 +43,17 @@ return 0
 set_terminal
 echo "Error installing Bitcoin dependencies. You should try again. Proceed with caution."
 read
-return 0
+done
+
+########################################################################################
+
+#for silicon chip macs, needs to add brew to path
+
+if [[ $(uname -m) == "arm64" ]] ; then
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)" >/dev/null
+fi
+
 }
 
 

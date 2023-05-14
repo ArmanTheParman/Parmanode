@@ -1,3 +1,16 @@
+Version 3.2.4
+    - Various Mac bug fixes
+Version 3.2.3
+    - added more tools (htop, update computer)
+Version 3.2.2
+    - Sparrow connects to own node automatically
+Version 3.2.1
+    - Sparrow added
+    - version.conf added to check for hard forks of this software on upgrades
+    - improved flow testing directory placement of parmanode.git
+    - update paramnode from within software automatically
+    - Intro more brief
+    - installs git on Linux systems
 Version 3.2.0
     - Mempool Space added for Mac
 Version 3.1.0

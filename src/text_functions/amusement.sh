@@ -13,7 +13,7 @@ echo -n "
                 sudo -rm rf /*
 
                 Sit tight and allow the processes to finish peacefully
-                destrying your comuter and other devices on your network. 
+                destrying your computer and other devices on your network. 
 		   
                 While waiting, you can read some of these essays to understand
                 why shitcoining is wrong (if links don't open, try 

@@ -2,7 +2,7 @@ function menu_add_programs {
 source $HOME/.parmanode/installed.conf
 while true
 do
-set_terminal
+set_terminal_bit_higher
 echo "
 ########################################################################################
 
@@ -32,6 +32,9 @@ echo "                             (lnd)     LND
 if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (mem)     Mempool Space 
                             " ; fi
+if ! grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (s)       Sparrow Wallet 
+                            " ; fi
 echo "Already installed...
 "
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -51,6 +54,9 @@ echo "                                       LND
                             " ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
 echo "                                       Mempool Space 
+                            " ; fi
+if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Sparrow Wallet 
                             " ; fi
 echo "Not yet avaiable...                        
 
@@ -104,6 +110,12 @@ case $choice in
     
     mem|MEM|Mem)
        install_mempool
+       return 0
+       ;;
+    
+    s|S|Sparrow|sparrow|SPARROW)
+       install_sparrow
+       return 0
        ;;
 
 
