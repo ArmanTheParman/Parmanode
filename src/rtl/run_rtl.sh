@@ -1,6 +1,6 @@
 function run_rtl {
 
-docker exec -d
+docker exec -d rtl node rtl
 
 
 }

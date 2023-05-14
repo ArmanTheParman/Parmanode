@@ -12,6 +12,7 @@ install_check "rtl" "install"
 #fi
 
 mkdir $HOME/parmanode/rtl
+installed_config_add "rtl-start"
 make_rtl_config
 
 docker build --build-arg USERNAME="$(whoami)" \
@@ -27,5 +28,8 @@ docker run -d --name rtl -p 3000:3000 \
 rtl_password_changer
 
 run_rtl
+
+success "RTL" "being installed."
+installed_config_add "rtl-end"
 
 }
