@@ -18,6 +18,7 @@ computers, with the following software (list is growing):
                 Docker
                 Tor
                 Mempool Space
+                Specter Bitcoin Wallet
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
