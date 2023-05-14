@@ -1,0 +1,5 @@
+This file is necessary as an anchor.
+run_parmanode.sh will use it to determine if it is being
+run from the correct directory.
+Moving or deleting this file will cause parmanode to stop 
+working

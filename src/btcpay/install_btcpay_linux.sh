@@ -1,5 +1,5 @@
 function install_btcpay_linux {
-
+set_terminal
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
@@ -57,7 +57,7 @@ run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering start_postgress..."
-{ startup_postgres \
+{ startup_postgres "install" \
 && log "btcpay" "startup postgress function completed" ; } \
 || { log "btcpay" "startup postgress function failed" && return 1 ; }
 

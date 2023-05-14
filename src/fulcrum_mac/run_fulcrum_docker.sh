@@ -32,6 +32,7 @@ docker run -d --name fulcrum \
                 -p 50003:50003 \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
                 -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
+                --restart unless-stopped \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 \
 && log "fulcrum" "run command executed."
 
