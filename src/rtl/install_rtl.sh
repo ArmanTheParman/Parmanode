@@ -1,11 +1,7 @@
 function install_rtl {
 
 install_check "rtl" 
-        if [ $? == 1 ] ; then 
-        echo "Partial install detected. Please uninstall first, then try again. Aborting."
-        enter_continue
-        return 1
-        fi
+        if [ $? == 1 ] ; then return 1 ; fi
 
 #if working on installing on host...
 #	install_nodejs 
