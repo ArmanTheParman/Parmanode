@@ -1,9 +1,8 @@
 function install_rtl {
-if [[ $1 == "docker" ]] ; then install="docker" ; else install="host" ; fi
 
 install_check "rtl" "install"
 
-#if [[ $install == "host" ]] ; then 
+#if working on installing on host...
 #	install_nodejs 
 #download_rtl
 #	verify_rtl || return 1
