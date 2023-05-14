@@ -16,7 +16,8 @@ installed_config_add "rtl-start"
 make_rtl_config
 
 docker build -t rtl ./src/rtl || { debug1 "failed to build rtl image" && return 1 ; }
-docker run -d --name rtl -p 3000:3000 \
+docker run -d --name rtl \
+                         --network="host" \
                          -v $HOME/parmanode/rtl:/home/parman/RTL2 \
 			 -v $HOME/.lnd:/home/parman/.lnd \
                          -v $HOME/.parmanode/:/home/parman/.parmanode \
