@@ -36,5 +36,5 @@ echo "
       }
     }
   ]
-}" > ./src/rtl/RTL-Config.json 2>/dev/null
+}" > ${original_dir}/src/rtl/RTL-Config.json 2>/dev/null
 }
