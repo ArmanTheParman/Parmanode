@@ -19,14 +19,14 @@ echo "
       \"Authentication\": {
        \"macaroonPath\": \"/home/parman/.lnd/data/chain/bitcoin/mainnet\",
         \"configPath\": \"/home/parman/.lnd/lnd.conf\",
-        \"swapMacaroonPath\"\",
-        \"boltzMacaroonPath\"\"
+        \"swapMacaroonPath\": \"\",
+        \"boltzMacaroonPath\": \"\"
       },
       \"Settings\": {
         \"userPersona\": \"MERCHANT\",
         \"themeMode\": \"DAY\",
         \"themeColor\": \"PURPLE\",
-        \"channelBackupPath\"\",
+        \"channelBackupPath\": \"\",
         \"logLevel\": \"ERROR\",
         \"lnServerUrl\": \"https://127.0.0.1:8080\",
         \"swapServerUrl\": \"https://127.0.0.1:8081\",
