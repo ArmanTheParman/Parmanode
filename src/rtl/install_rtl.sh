@@ -18,7 +18,7 @@ make_rtl_config
 docker build --build-arg USERNAME="$(whoami)" \
              --build-arg "USERID"=$(id -u) \
              -t rtl ./src/rtl || { debug1 "failed to build rtl image" && return 1 ; }
-
+debug1 "check RTL-Config.json in right place before docker run"
 docker run -d --name rtl -p 3000:3000 \
                          -v $HOME/parmanode/rtl:/home/$(whoami)/RTL \
                          -v $HOME/parmanode/rtl_db:/home/$(whoami)/rtl_db \
