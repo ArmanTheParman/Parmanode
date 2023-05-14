@@ -7,8 +7,8 @@ please_wait
 docker stop rtl 2>/dev/null
 docker rm rtl 2>/dev/null
 docker rmi rtl 2>/dev/null
-rm -rf $HOME/parmanode/rtl >/dev/null 2>&1
-rm ./src/rtl/RTL-Config.json >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/rtl >/dev/null 2>&1
+sudo rm ./src/rtl/RTL-Config.json >/dev/null 2>&1
 
 installed_config_remove "rtl"
 success "RTL" "being uninstalled."
