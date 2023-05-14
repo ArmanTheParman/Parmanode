@@ -1,16 +1,21 @@
 FROM node
+ARG USERNAME
+ARG USERID
 
 RUN apt-get update
 RUN apt-get install -y wget gnupg sudo procps vim curl git
 
 #Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u 9998 parman
-RUN chown -R parman:parman /home/parman/
-RUN echo 'parman:parmanode' | chpasswd
+RUN groupadd -r $USERNAME && useradd -m -g $USERNAME -u $USERID $USERNAME 
+RUN chown -R $USERNAME:$USERNAME /home/$USERNAME
 
-USER parman
+USER $USERNAME 
 
-WORKDIR /home/parman/
+WORKDIR /home/$USERNAME/
+RUN mkdir .lnd
 RUN git clone https://github.com/Ride-The-Lightning/RTL.git
 RUN cd RTL && npm install --omit=dev --legacy-peer-deps
+
+COPY RTL-Config.json /home/$USERNAME/RTL/
+
 CMD tail -f /dev/null

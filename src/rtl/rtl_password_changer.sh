@@ -1,34 +1,28 @@
-function password_changer {
+function rtl_password_changer {
 
 while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                                Password changer
+                                RTL password set/change
 
-    Please enter an RPC username: (Do not use the characters: # \" or '
+    Please typa in a password for RTL. (Do not use the characters: # \" or '
     otherwise problems may arise.)
-
-    Enter (p) to go back.
+    
+    Type p then <enter> to go back.
 
 ########################################################################################
 "
-read rpcuser
+read rtl_pass
 
-    if [[ $rpcuser == "p" ]] ; then return 1 ; fi
-
+    if [[ $rtl_pass == "p" ]] ; then return 1 ; fi
     set_terminal
-    echo "Username set
-    "	
-    echo "Please enter an RPC password: (Do not use the characters: # \" or '"
-    echo "otherwise problems may arise.)
-        " 
-    read rpcpassword
+    echo ""
     echo "Please repeat the password:
         "
-    read rpcpassword2
+    read rtl_pass2 
 
-    if [[ $rpcpassword != $rpcpassword2 ]] ; then
+    if [[ $rtl_pass != $rtl_pass2 ]] ; then
             echo "Passwords do not match. Try again.
             "
             enter_continue ; continue 
@@ -38,7 +32,12 @@ read rpcuser
     fi
 
 done
-
+ set_rtl_password "$rtl_pass"
 
 return 0
+}
+
+function set_rtl_password {
+$new_password="$1"
+swap_string "$HOME/parmanode/RTL/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","
 }
