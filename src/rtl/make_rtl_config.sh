@@ -5,7 +5,7 @@ echo "
   \"multiPass\": \"$rlt_password\",
   \"port\": \"3000\",
   \"defaultNodeIndex\": 1,
-  \"dbDirectoryPath\": \"/home/parman/parmanode/rtl_db\",
+  \"dbDirectoryPath\": \"/home/$(whoami)/rtl_db\",
   \"SSO\": {
     \"rtlSSO\": 0,
     \"rtlCookiePath\": \"\",
