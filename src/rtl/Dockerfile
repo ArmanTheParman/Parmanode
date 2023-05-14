@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y wget gnupg sudo procps vim curl git
 
 #Make users and groups and directories
-RUN groupadd -r $USERNAME && useradd -m -g $USERNAME 
+RUN groupadd -r $USERNAME && useradd -m -g $USERNAME $USERNAME 
 RUN chown -R $USERID:$USERID /home/$USERNAME
 
 WORKDIR /home/$USERNAME/
