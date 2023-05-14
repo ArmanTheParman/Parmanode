@@ -10,6 +10,6 @@ rm -rf $HOME/parmanode/rtl
 rm ./src/rtl/RTL-Config.json >/dev/null 2&>1
 
 installed_config_remove "rtl"
-success "rtl" "being uninstalled."
+success "RTL" "being uninstalled."
 return 0
 }

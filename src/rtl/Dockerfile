@@ -7,9 +7,7 @@ RUN apt-get install -y wget gnupg sudo procps vim curl git
 
 #Make users and groups and directories
 RUN groupadd -r $USERNAME && useradd -m -g $USERNAME -u $USERID $USERNAME 
-RUN chown -R $USERNAME:$USERNAME /home/$USERNAME
-
-USER $USERNAME 
+RUN chown -R $USERID:$USERID /home/$USERNAME
 
 WORKDIR /home/$USERNAME/
 RUN mkdir .lnd
