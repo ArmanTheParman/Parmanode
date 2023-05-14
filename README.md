@@ -18,6 +18,7 @@ computers, with the following software (list is growing):
                 Docker
                 Tor
                 Mempool Space
+                Specter Bitcoin Wallet
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -57,7 +58,9 @@ follow the wizard menu options.
 
 ### LND v0.16.2 
 
-### Mempool Space (Latest)
+### Mempool Space (latest)
+
+### Specter Bitcoin Wallet (latest)
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
