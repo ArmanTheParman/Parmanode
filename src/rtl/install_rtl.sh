@@ -11,7 +11,7 @@ install_check "rtl"
 #install_rtl
 #fi
 
-mkdir $HOME/parmanode/rtl
+mkdir $HOME/parmanode/rtl $HOME/parmanode/rtl_db
 installed_config_add "rtl-start"
 make_rtl_config
 
