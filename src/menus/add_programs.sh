@@ -35,6 +35,9 @@ echo "                             (mem)     Mempool Space
 if ! grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (s)       Sparrow Wallet 
                             " ; fi
+if ! grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (r)       RTL Wallet
+                            " ; fi
 echo "Already installed...
 "
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -58,9 +61,10 @@ echo "                                       Mempool Space
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
 echo "                                       Sparrow Wallet 
                             " ; fi
+if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       RTL Wallet 
+                            " ; fi
 echo "Not yet avaiable...                        
-
-                            (rtl)      RTL
 
                             (s)        Specter Desktop
 
@@ -117,7 +121,10 @@ case $choice in
        install_sparrow
        return 0
        ;;
-
+   r|R|RTL|rtl|Rtl)
+      install_rtl
+      return 0
+      ;;
 
     q|Q|quit|QUIT)
         exit 0

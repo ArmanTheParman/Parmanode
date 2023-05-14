@@ -35,6 +35,9 @@ if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (s)       Sparrow Wallet 
                             " ; fi
+if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (r)       RTL Wallet 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -69,13 +72,10 @@ mem|MEM|Mem)
 s|S|Sparrow|SPARROW|sparrow)
    menu_sparrow
    ;;
+r|R|RTL|rtl|Rtl)
+   menu_rtl
+   ;;
 
-RTL | rtl |is | S | th | TH | lh | LH )
-    clear
-    echo "Not yet available. Stay tuned for future versions."
-    echo "Hit <enter> to return to menu."
-    read
-    ;;
 p)
     return 0
     ;;

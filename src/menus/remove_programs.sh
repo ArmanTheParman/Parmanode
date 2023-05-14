@@ -60,6 +60,12 @@ echo "                                           (s)                Sparrow Wall
 elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (s)                Sparrow (partial) 
 " ; fi
+if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (r)                RTL Wallet 
+"  
+elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (r)                RTL (partial) 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -110,6 +116,10 @@ uninstall_mempool
 s|S|SPARROW|Sparrow|sparrow)
     uninstall_sparrow
 	return 0 
+	;;
+R|r|RTL|rtl|Rtl)
+	uninstall_rtl
+	return 0
 	;;
 
 p|P)
