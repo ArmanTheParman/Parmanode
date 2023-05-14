@@ -26,6 +26,8 @@ docker run -d --name rtl -p 3000:3000 \
                          rtl \
         || { debug1 "failed to run rtl image" && return 1 ; }
 debug1 "pause before password. check on container."
+
+mv $original_dir/src/rtl/RTL-Config.json $HOME/parmanode/rtl
 rtl_password_changer
 
 run_rtl
