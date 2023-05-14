@@ -21,8 +21,7 @@ docker run -d -u parman \
            -p 8070:8070 \
            -p 8080:8080 \
            -p 8090:8090 \
-           btcpay \
-           --restart unless-stopped
+           btcpay 
 
 debug1 "after docker run"
 log "docker" "after docker run"
