@@ -21,7 +21,7 @@ docker build --build-arg USERNAME="$(whoami)" \
 
 docker run -d --name rtl -p 3000:3000 \
                          -v $HOME/parmanode/rtl:/home/parman/RTL \
-			 -v $HOME/.lnd:/home/$(whoami)/.lnd
+			 -v $HOME/.lnd:/home/$(whoami)/.lnd \
                          --restart unless-stopped \
         || { debug1 "failed to run rtl image" && return 1 ; }
 
