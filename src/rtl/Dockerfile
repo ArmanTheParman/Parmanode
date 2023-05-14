@@ -14,6 +14,4 @@ RUN mkdir .lnd rtl_db
 RUN git clone https://github.com/Ride-The-Lightning/RTL.git
 RUN cd RTL && npm install --omit=dev --legacy-peer-deps
 
-COPY RTL-Config.json /home/$USERNAME/RTL/
-
 CMD tail -f /dev/null
