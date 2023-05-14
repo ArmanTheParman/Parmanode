@@ -1,6 +1,6 @@
 function install_rtl {
 
-install_check "rtl" "install"
+install_check "rtl" 
 
 #if working on installing on host...
 #	install_nodejs 
