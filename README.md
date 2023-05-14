@@ -1,4 +1,4 @@
-# Parmanode 3.2.4 Plebian Cheese 
+# Parmanode 3.3.0 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
@@ -18,7 +18,8 @@ computers, with the following software (list is growing):
                 Docker
                 Tor
                 Mempool Space
-                Specter Bitcoin Wallet
+                Sparrow Bitcoin Wallet
+                Ride The Lightning Wallet
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -60,10 +61,10 @@ follow the wizard menu options.
 
 ### Mempool Space (latest)
 
-### Specter Bitcoin Wallet (latest)
+### Sparrow Bitcoin Wallet (1.7.6)
 
-Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
-       
+### Ride The Lightning (latest)
+
 DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
 
 Internal drive:
@@ -73,7 +74,8 @@ Internal drive:
                 |             |--- .parmanode                         (config files)
                 |             |--- .btcpayserver                      (config, mounted to docker container) 
                 |             |--- .nbxplorer                         (config, mounted to docker container)
-                |             |--- .lnd                               
+                |             |--- .lnd                               (lnd database)                          
+                |             |--- .sparrow                           (confit and wallet files)
                 |             |--- parmanode ---|
                 |                               |--- bitcoin ------|  (keeps B core download and pgp stuff)
                 |                               |
@@ -85,6 +87,10 @@ Internal drive:
                 |                               |--- LND ----------|  (downloaded files) 
                 |                               |
                 |                               |--- mempool ------|  (downloaded files)
+                |                               |                                        
+                |                               |--- RTL ----------|  (config and database)
+                |                               |                                        
+                |                               |--- Sparrow ------|  (binary)
                 |                               
                 |--- media ---|
                 |             |--- parmanode ---|                  
@@ -92,11 +98,12 @@ Internal drive:
                 |           
                 |--- usr  --- |--- local  ------|--- bin ---|         (keeps bitcoin binary files)
                 |
-                |---Docker conatainer (btcpay) ---|
-                |                                 |---home/parman/parmanode/btcpayserver
-                |                                 |---home/parman/parmanode/NBXplorer
+                |--- Docker conatainer (btcpay) ---|
+                |                                  |---home/parman/parmanode/btcpayserver
+                |                                  |---home/parman/parmanode/NBXplorer
                 |                                                  
-                |---3 Docker containers (mempool: api, web, db)
+                |--- 3 Docker containers                              (mempool: api, web, db)
+                |--- RTL Docker 
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
