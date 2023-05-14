@@ -58,7 +58,9 @@ follow the wizard menu options.
 
 ### LND v0.16.2 
 
-### Mempool Space (Latest)
+### Mempool Space (latest)
+
+### Specter Bitcoin Wallet (latest)
 
 Verification public key: E777299FC265DD04793070EB944D35F9AC3DB76A
        
