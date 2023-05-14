@@ -20,12 +20,12 @@ docker build --build-arg USERNAME="$(whoami)" \
              -t rtl ./src/rtl || { debug1 "failed to build rtl image" && return 1 ; }
 
 docker run -d --name rtl -p 3000:3000 \
-                         -v $HOME/parmanode/rtl:/home/parman/RTL \
+                         -v $HOME/parmanode/rtl:/home/$(whoami)/RTL \
 			 -v $HOME/.lnd:/home/$(whoami)/.lnd \
                          rtl \
                          --restart unless-stopped \
         || { debug1 "failed to run rtl image" && return 1 ; }
-
+debug1 "pause before password. check on container."
 rtl_password_changer
 
 run_rtl
