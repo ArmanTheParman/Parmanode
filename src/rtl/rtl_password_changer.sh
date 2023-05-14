@@ -39,5 +39,5 @@ return 0
 
 function set_rtl_password {
 $new_password="$1"
-swap_string "$HOME/parmanode/RTL/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","
+swap_string "$HOME/parmanode/rtl/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","
 }
