@@ -5,7 +5,8 @@ docker run -d -u parman \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
-           btcpay 
+           btcpay \
+           --restart unless-stopped
 fi
 
 if [[ $OS == "Mac" ]] ; then
