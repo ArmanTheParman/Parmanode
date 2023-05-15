@@ -32,7 +32,7 @@ source $HOME/.bitcoin/bitcoin.conf
       STATISTICS_ENABLED: \"true\"
     image: mempool/backend:latest
     user: \"1000:1000\"
-    restart: always
+    restart: unless-stopped 
     stop_grace_period: 1m
     command: \"./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh\"
     volumes:
