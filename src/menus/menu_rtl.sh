@@ -26,11 +26,11 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
-docker stop rtl
+run_rtl
 return 0 ;;
 
 stop|STOP|Stop)
-docker start rtl
+docker stop rtl
 return 0 ;;
 
 restart|RESTART|Restart)
