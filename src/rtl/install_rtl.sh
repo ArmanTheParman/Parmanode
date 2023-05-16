@@ -11,7 +11,7 @@ install_check "rtl"
 #install_rtl
 #fi
 
-mkdir $HOME/parmanode/rtl 
+mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
 installed_config_add "rtl-start"
 make_rtl_config
 
@@ -28,6 +28,9 @@ mv $original_dir/src/rtl/RTL-Config.json $HOME/parmanode/rtl
 rtl_password_changer
 
 run_rtl
+
+
+make_rtl_startup_script
 
 success "RTL" "being installed."
 installed_config_add "rtl-end"
