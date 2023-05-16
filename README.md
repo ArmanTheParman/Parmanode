@@ -1,4 +1,4 @@
-# Parmanode 3.3.0 Plebian Cheese 
+# Parmanode 3.3.1 Plebian Cheese 
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
@@ -6,7 +6,7 @@ Version 3 of Parmanode begins the introduction of LND. For Linux
 OS only currently.
 
 Version 3 is not fully backwards compatible with earlier versions,
-it's best to fully uninstall previous versions before using version 3.
+it's best to fully unihe nstall previous versions before using version 3.
 Blockchain data does not need to be deleted.
 
 Parmanode is an automated installation wizard and menu for desktiop
