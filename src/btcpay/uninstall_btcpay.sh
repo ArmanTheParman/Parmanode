@@ -37,6 +37,11 @@ if [[ $debug != 1 ]]
 echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer \
 || log "btcpay" "failed to delete .btcpayserver and .nbxplorer"
 
+#remove service files
+sudo systemctl stop btcpay.service
+sudo systemctl disable btcpay.service
+sudo rm /etc/systemd/system/btcpay.service
+
 installed_config_remove "btcpay"
 log "btcpay" "Uninstalled"
 success "BTCPay Server" "being uninstalled."
