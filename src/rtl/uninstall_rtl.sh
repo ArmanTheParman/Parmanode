@@ -10,6 +10,10 @@ docker rmi rtl 2>/dev/null
 sudo rm -rf $HOME/parmanode/rtl >/dev/null 2>&1
 sudo rm ./src/rtl/RTL-Config.json >/dev/null 2>&1
 
+sudo systemctl stop rtl.service
+sudo systemctl disable rtl.service
+sudo systemctl rm /etc/systemd/system/rtl.service
+
 installed_config_remove "rtl"
 success "RTL" "being uninstalled."
 return 0
