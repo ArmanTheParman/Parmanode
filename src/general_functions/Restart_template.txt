@@ -1,0 +1,17 @@
+#must remember to have uninstall functions delete the service file
+
+echo "[Unit]
+Description=Parmanode Start Up App
+After=network.target 
+
+[Service]
+
+ExecStart=$HOME/parmanode/startup_scripts/app.sh
+
+User=$(whoami)
+Group=$(whoami)
+
+Restart=on-failure
+RestartSec=10
+[Install]
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/app.service
