@@ -67,6 +67,9 @@ while true ; do
 
 break ; done
 
+#fix fstab for older parmanode versions
+fix_fstab
+
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; fi
