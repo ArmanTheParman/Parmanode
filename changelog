@@ -1,3 +1,5 @@
+Version 3.3.3
+    - fixed fstab "but"; added "nofail" directive to drive.
 Version 3.3.2
     - Adjusted RTL start up procedure after reboot
     - Added service files for BTCPay and RTL
