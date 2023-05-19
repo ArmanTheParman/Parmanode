@@ -21,8 +21,6 @@ echo "#-------------------------------------------------------------------------
 #                                                                                      #
 #         (l)           See logs and configuration files                               #
 #                                                                                      #
-#         (pp)          Parmanode Premium                                              #
-#                                                                                      #
 #         (e)           Education                                                      #
 #                                                                                      #
 #         (t)           Tools                                                          #
@@ -56,8 +54,6 @@ remove|REMOVE)
     remove_programs ;;
 l|L) 
     menu_log_config ;;
-pp)
-    premium ;;
 e|E)
     education ;;
 t|T)
