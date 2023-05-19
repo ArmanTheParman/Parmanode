@@ -13,6 +13,8 @@ echo "
 
                     (m)        Bitcoin Mentorship Info
 
+                    (n)        Six reasons to run a node
+
             .... more soon
 
 
@@ -26,6 +28,9 @@ case $choice in
         ;;
     m|M)
         mentorship
+        ;;
+    n|N|node|Node)
+        6reasons_node 
         ;;
     p|P)
         return 0
