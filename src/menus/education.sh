@@ -15,6 +15,8 @@ echo "
 
                     (n)        Six reasons to run a node
 
+                    (s)        Seperation of money and state
+
             .... more soon
 
 
@@ -30,7 +32,10 @@ case $choice in
         mentorship
         ;;
     n|N|node|Node)
-        6reasons_node 
+        less_function "6rn"
+        ;;
+    s|S)
+        less_function "joinus"
         ;;
     p|P)
         return 0
