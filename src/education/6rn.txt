@@ -153,4 +153,7 @@ Coolness factor and street cred.
 Running your own node is super cool, and gives you a great appreciation of the power 
 of Bitcoin. You’ll probably end up buying more.
 
+
+
+Hit "q" to exit
 ########################################################################################
