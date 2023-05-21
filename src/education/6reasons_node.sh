@@ -8,8 +8,9 @@ the arrows (our use VIM keys if you know what that is.)
 To exit, just hit q then <enter>
 "
 enter_continue
-set_terminal_higher
-less $original_dir/src/eduction/6rn.txt
+set_terminal_bit_higher
+less $original_dir/src/education/6rn.txt
+enter_continue
 set_terminal
 
 }

@@ -37,6 +37,12 @@ printf '\033[8;47;88t'
 return 0
 }
 
+function set_terminal_higher {
+set_terminal
+printf '\033[8;50;88t' 
+return 0
+}
+
 function set_terminal_bit_higher {
 set_terminal
 printf '\033[8;43;88t' 
