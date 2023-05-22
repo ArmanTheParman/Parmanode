@@ -43,7 +43,7 @@ set_terminal ; echo "
     
                                  S U C C E S S  ! ! 
                                       				    
-    Parmanode has been installed. Insall Bitcoin now? 
+    Parmanode has been installed. Install Bitcoin now? 
 
                            y)      Yes, install Bitcoin
 
