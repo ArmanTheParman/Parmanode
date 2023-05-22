@@ -27,7 +27,7 @@ set_terminal ; echo "
 "
 choose "xpq" ; read choice
 case $choice in 
-"Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ;;
+"Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ; set_terminal ;;
 esac
 fi
 return 0

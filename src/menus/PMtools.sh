@@ -42,6 +42,8 @@ case $choice in
         return 0
         ;;
     h|H|htop|HTOP|Htop)
+        if [[ $OS == "Mac" ]] ; then htop ; break ; fi
+
         if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1
         else
         nohup gnome-terminal -- bash -c "htop"

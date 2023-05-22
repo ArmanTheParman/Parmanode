@@ -32,7 +32,11 @@ fi
 return 0 ;;
 
 rc|RC|Rc|rC)
-rm -rf $HOME/.sparrow
+rm -rf $HOME/.sparrow/*
+cp $original_dir/src/sparrow/config $HOME/.sparrow/
+echo "The sparrow configuration directory has been emptied, and a new configuration file has been creatd."
+enter_continue
+
 ;;
 
 *)

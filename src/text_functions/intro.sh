@@ -49,7 +49,7 @@ read choice
 case $choice in 
 s|S) dirty_shitcoiner ; continue ;;
 q|Q|QUIT|Quit|quit) exit 0 ;;
-"Free Ross"|"free ross"|"free Ross") hide_messages_add "intro" "1" ; break ;;
+"Free Ross"|"free ross"|"free Ross") hide_messages_add "intro" "1" ; set_terminal ; break ;;
 "") break ;;
 
 esac ; done ; fi ; return 0
