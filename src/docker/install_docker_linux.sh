@@ -105,7 +105,7 @@ docker_package_download_linux || return 1
 
 installed_config_add "docker-end" 
 log "docker" "Install success." 
-success "Docker" "insalling."
+success "Docker" "installing."
 
 if [[ $installed_from == "btcpay" ]] ; then
 set_terminal "pink" ; echo "
