@@ -12,8 +12,7 @@ source $HOME/.parmanode/var
 
 export $(sudo blkid -o export $disk) >/dev/null
 
-if grep -q "$UUID" /etc/fstab ; then echo "UUID already exists in fstab" ; sleep 2 ; return 1 ; fi
-
+delete_line "/etc/fstab" "$UUID"
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 
 }
