@@ -26,7 +26,7 @@ return 0
 }
 
 function detect_drive {
-before=$(sudo blkid) >/dev/null 2>&1
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" >> $HOME/.parmanode/tmp
 
 set_terminal pink ; echo "
 ########################################################################################
@@ -49,7 +49,6 @@ set_terminal ; echo "
 ########################################################################################
 "
 read
-debug1 "before is... $before"
 
 set_terminal ; echo "
 ########################################################################################
@@ -61,10 +60,11 @@ set_terminal ; echo "
 "
 enter_continue
 
-    after=$(sudo blkid) >/dev/null 2>&1
-    debug1 "after is ... $after"
+    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/tmp
 
     disk=$(diff <(echo "$before") <(echo "$after") | grep -E "^>" | awk '{print $3}')
+        echo "disk=$disk" >> $HOME/.parmanode/tmp
+
     if [[ -z $disk ]] 
         then echo "No new drive dected. Try again. Hit <enter>."
             read ; continue 
@@ -75,9 +75,15 @@ done
 }
 
 function drive_details {
+source $HOME/.parmanode/tmp
     
 export $(sudo blkid -o export $disk) >/dev/null
 size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
+echo "size=$size" >> $HOME/.parmanode/tmp
+echo "LABEL=$LABEL" >> $HOME/.parmanode/tmp
+echo "UUID=$UUID" >> $HOME/.parmanode/tm
+echo "TYPE=$TYPE" >> $HOME/.parmanode/tmp
+
 echo "
 ########################################################################################
 
@@ -99,6 +105,7 @@ case $choice in yes|YES|Yes|y|Y) return 0 ;; *) return 1 ;; esac
 }
 
 function label_check {
+source $HOME/.parmanode/tmp
 
 if [[ $LABEL == "parmanode" ]] ; then return 0 ; fi
 
