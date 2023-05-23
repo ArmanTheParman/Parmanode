@@ -107,7 +107,7 @@ if [[ $1 == "after" ]] ; then
 echo "
     Hit <enter> to continue
 ########################################################################################
-" ; return 0 ; else 
+" ; return 0 ; fi
 echo "
     Type yes if you think this is correct, anything else to abort.
 
