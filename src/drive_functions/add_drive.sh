@@ -61,6 +61,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 enter_continue
+set_terminal
     sleep 1.2
     sudo blkid -g >/dev/null
     after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/after
@@ -101,7 +102,13 @@ echo "
 
         The drive size is $size
 
-
+"
+if [[ $1 == "after" ]] ; then
+echo "
+    Hit <enter> to continue
+########################################################################################
+" ; return 0 ; else 
+echo "
     Type yes if you think this is correct, anything else to abort.
 
 ########################################################################################
@@ -138,10 +145,10 @@ esac
 done
 
 if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
-else sudo e2label $disk parmanode
+else sudo e2label $disk parmanode >/dev/null 
 fi
 
-drive_details ; if [ $? == 1 ] ; then return 1 ; fi
+drive_details "after" ; if [ $? == 1 ] ; then return 1 ; fi
 return 0
 }
 

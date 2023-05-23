@@ -8,6 +8,7 @@ function write_to_fstab {
 }
 
 function write_to_fstab2 {
+source $HOME/.parmanode/var
 
 export $(sudo blkid -o export $disk) >/dev/null
 
