@@ -50,8 +50,7 @@ set_terminal ; echo "
 read
 
 sudo blkid -g >/dev/null
-before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=\"$before\"" > $HOME/.parmanode/tmp
-
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=\"$before\"" > $HOME/.parmanode/before
 set_terminal ; echo "
 ########################################################################################
 
@@ -62,29 +61,28 @@ set_terminal ; echo "
 "
 enter_continue
     sudo blkid -g >/dev/null
-    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=\"$after\"" >> $HOME/.parmanode/tmp
+    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=\"$after\"" >> $HOME/.parmanode/after
 
-    disk=$(diff <(echo $before) <(echo $after) | grep -E "^>" | awk '{print $3}')
-        echo "disk=\"$disk\"" >> $HOME/.parmanode/tmp
+    disk_after=$(cat $HOME/.parmanode/after | tail -n1 )
+    disk_before=$(cat $HOME/.parmanode/before | tail -n1 )
 
-    disk2=$(diff <(echo $before) <(echo $after)) 
-    echo $disk2 > $HOME/.parmanode/disk2
-
-    if [[ -z $disk ]] 
+    if [[ $disk_after == $disk_before ]] 
         then echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
+            disk=$disk_after
+            echo "disk=\"$disk\"" >$HOME/.parmanode/var
             break
     fi
 done
 }
 
 function drive_details {
-source $HOME/.parmanode/tmp
+source $HOME/.parmanode/var
     
 export $(sudo blkid -o export $disk) >/dev/null
 size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
-echo "size=\"$size\"" > $HOME/.parmanode/var
+echo "size=\"$size\"" >> $HOME/.parmanode/var
 echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
 echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
 echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
