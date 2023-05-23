@@ -49,6 +49,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 read
+debug1 "before is... $before"
 
 set_terminal ; echo "
 ########################################################################################
@@ -61,6 +62,8 @@ set_terminal ; echo "
 enter_continue
 
     after=$(sudo blkid) >/dev/null 2>&1
+    debug1 "after is ... $after"
+
     disk=$(diff <(echo "$before") <(echo "$after") | grep -E "^>" | awk '{print $3}')
     if [[ -z $disk ]] 
         then echo "No new drive dected. Try again. Hit <enter>."
