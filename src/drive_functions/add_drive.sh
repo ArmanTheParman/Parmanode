@@ -1,4 +1,10 @@
 function add_drive {
+if [[ $(uname -m) == "Darwin" ]] ; then
+    set_terminal
+    echo "Presently available for Linux only. Stay tuned. Hit <enter> to abort."
+    enter_continue
+    return 1
+    fi
 
 info_add_drive 
 
