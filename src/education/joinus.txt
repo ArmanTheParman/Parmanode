@@ -1,0 +1,233 @@
+########################################################################################
+
+                             We Are Separating Money and state
+                             Join us
+
+There are many people buying bitcoin today because they believe the price will go up 
+and they will become wealthier. This is overlooking a more important reason to own 
+bitcoin. Read on to find out more.
+
+
+Life is Tough, and the Rich Get Richer
+
+Have you noticed life keeps getting harder and harder for most people? Have you 
+noticed that the savings from a lifetime’s worth of labour is used to pay for a 
+non-extravagant home? Why so extreme? Land is not that scarce. Homes are not that 
+difficult to build – why should two people exchange their life’s effort merely for 
+shelter?
+
+It’s not just homes. Have you noticed that most things are getting more expensive 
+(particularly since 1971)? Have you felt the pressure to use any savings towards a 
+deposit for a home ASAP, before the home rises in price, wiping out the savings? Or 
+invest your savings so it doesn’t lose its value (even though you’ll be taxed on the 
+gains you need just to keep up)?
+
+If you work in your specialised area of expertise and receive money in return, 
+shouldn’t you be able to use that money to get back from society at a later time what 
+you put in? Doesn’t it feel like that money’s value is being stolen from you?
+
+It is. This is how:
+
+Central banks create money that you are obliged to use by law. On its own, that might 
+not sound like a big problem. But central banks (or the hidden people that own these 
+banks) create more of this money without any cost to themselves. And they do not 
+distribute the money fairly amongst the users of that money.
+
+No, they hand it to the rich (I’m simplifying it) or themselves, to buy assets 
+(basically stealing the assets, but also raising the prices). This is a special 
+privilege that we seem to tolerate. If anyone else created money out of thin air and 
+started to buy things with it, they’d be thrown in jail.
+
+So why do we tolerate it? Because people in suits tell us it’s necessary and good for 
+the economy, and we nod and say, “yes”. We have all been scammed. I’m not even going 
+to go into the manipulation of natural interest rates to borrow money, but that does 
+add to the scam.
+
+It’s outside the scope of this essay to give an account of why the mainstream version 
+of economics is wrong (Keynesian Economics, and Modern Monetary Theory). Great minds 
+of the School of Austrian Economics have debunked it all already; Carl Menger, Ludwig 
+von Mises, Murray Rothbard, Friedrich Hayek. I suggest you accept it for now, but 
+just don’t trust me: go check for yourself later.
+
+A great introductory essay is “The Bullish Case for Bitcoin” by Vijay Boyapati, which 
+introduces general concepts of money and how it evolves, and it might be refreshing to 
+see that economics is quite simple and can make a lot of sense. Then if you’re curious 
+to read more about real economics, I suggest this excellent book by Robert Murphy, 
+Choice, which is a commentary on the difficult-to-read masterpiece by Ludwig von Mises, 
+Human action. This is the way to learn it, as it has been banned or silenced from 
+mainstream University education.
+
+The Solution With “a Sly Roundabout Way“
+
+Now, assuming printing money is damaging for society, enriches a select few, is used 
+to effectively milk the time, labour, and wealth of all humans, what can be done about 
+it?
+
+Nobel Prize winning economist, Friedrich Hayek, introduces the problem and hints at the 
+solution, all the way back in 1984:
+
+    “I don’t believe we shall ever have a good money again before we take the thing out 
+    of the hands of government, that is, we can’t take them violently out of the hands 
+    of government, all we can do is by some sly roundabout way introduce something 
+    they can’t stop.”
+
+We need “a sly roundabout way” to take money out of the hands of government – and 
+crucially, in a way which can’t be stopped.
+
+The cypherpunks have been trying to do this for decades. They are a group of freedom 
+and privacy activists and used cryptography as their tool. They helped create the 
+internet, defended PGP (cryptographic communication) from being banned, and had many 
+failed iterations of creating a money separate from the state.
+
+They kept failing, but kept getting better, until the final iteration: BITCOIN. The 
+final piece of the puzzle was that this version could not be stopped. Every previous 
+version was shut down by the state (the cause of the “failure”).
+
+For more information on the cypherpunks, there is an excellent 44-minute documentary 
+on their history that I highly recommend called, cypherpunks write code.
+
+Bitcoin started at almost, but not quite, zero value. Satoshi Nakamoto paid for the 
+electricity his computer used to mine the first block, for which he received 50 
+bitcoins (more info on mining) – the value was not zero. He exchanged his money for 
+electricity, which he exchanged for 50 bitcoin. Eventually, bitcoin was traded 
+directly for money. The rest is history.
+
+For an examination of why the “no intrinsic value” narrative for Bitcoin is false, see 
+here. In fact, I have many essays countering false FUD narratives.
+
+Bitcoin will become money with time, but it isn’t yet. As the network of people that 
+choose to adopt it grows, its value also goes up (Metcalfe’s law). In the meantime, 
+from the beginning to the point where it is ubiquitously accepted as payment, its 
+exchange rate against government tokens will be volatile. So be it. 
+
+With Bitcoin, Satoshi Nakamoto solved many problems. First and foremost, humanity is 
+separating money and state, the same way the printing press separated church and state.
+
+Secondly, Bitcoin introduces absolute scarcity in the supply of money (no, no one can 
+simply change the supply cap of Bitcoin). This is good news for people who wish to 
+earn money and keep it until a later time, as it won’t lose its value (this applies 
+in the future, once bitcoin is universally accepted – it’s not quite true now during 
+the volatile years). 
+
+Some may argue, particularly those that have been scammed, that the money supply 
+needs to grow with the economy, and therefore Bitcoin won’t work because it’s scarce. 
+This is absolute garbage, and indicates a brainwashed victim. The cure is to learn 
+Austrian Economics; links were provided earlier.
+
+Altcoins
+
+During Bitcoin’s early adoption phase, everything was on track for a while, until 
+altcoins were created, slowing down the ultimate goal. Some might initially think 
+this is fine, but they should realise that if infinite altcoins can be created out 
+of thin air, then no digital token is scarce (just like the fiat money we’re supposed 
+to be replacing).
+
+I used to be concerned about this until some seriously deep thinking, and have since 
+concluded it’s actually not true. What matters is not just scarcity, but RELEVANT 
+scarcity, which only Bitcoin has. What do I mean by that? Well, my fingernails are 
+kind of scarce – does that matter? Of course not, they are not relevant as money. 
+So too, the copies of Bitcoin are not relevant, with or without modifications or 
+“improvements”. Why? Because money is not just made up of the properties of the 
+token/unit itself, but also the properties of the network of people that use it. 
+
+For example, if there is an incredibly superior money in existence (actually, there 
+is one, it’s called Bitcoin), then it would not be of any use as money if there was 
+only one person in the world that valued it. Think of Bitcoin on day 1 – it was only 
+Satoshi Nakamoto who was accumulating it. It was only valuable to him. Now we have many 
+more people who value bitcoin, after 14 years of its existence, and continually proving 
+itself to be resilient and unchangeable unilaterally by any entity.
+
+Now think of any altcoin. It was created by an individual or group, and most of the 
+time, they awarded some portion of the supply to themselves (instead of competatively 
+mining via electricity expenditure the way Satoshi did). The initial network of people 
+starts small and grows as well, but that network falls FAR behind Bitcoin, the leader 
+in the race towards one money. 
+
+And many more altcoins come (and go), all competing for the attention of value exiting 
+fiat, all against the leader, Bitcoin. Any “superior” features tend to just be 
+trade-offs which was been rejected by Bitcoin, and any truly new discovery can simply 
+be incorporated into Bitcoin if useful. In this way, nothing can improve on Bitcoin, 
+and nothing can surpass its network. I make the logical case here of why only Bitcoin 
+can succeed as money, and why all altcoins will eventually fail.
+
+There is another important reason why altcoins are no competition to Bitcoin – that is 
+that they are ALL centralised. It is difficult for a newcomer to understand this or 
+accept it, but I’ll begin to explain.
+
+When there is a leader, a CEO, or a spiritual head of a digital money not run by the 
+state, then they are just like the iterations of money the cypherpunks attempted 
+BEFORE they succeeded with Bitcoin. If there is someone in charge, they can be used 
+either to shut down the network, or secretly enlist to help the state overtake that 
+money and create a digital surveillance coin of the state. To resist state involvement 
+or attack, a digital money must be decentralised – an important property that is 
+poorly understood, and used as a marketing buzzword by altcoins without justification. 
+Only Bitcoin is truly decentralised in the relevant sense of the word, and I elaborate 
+here.
+
+Given that altcoins are centralised, they are not able to compete with Bitcoin to 
+separate money and state. Not only that, but they are actually just like fiat money. 
+Why? Because fiat money is money that is controlled by a few people (this is always 
+true), and those people get to create money FOR FREE, enriching themselves and 
+impoverishing everyone else.
+
+What is the point of kicking out central banks from the control of money, only to 
+give it to, say, Vitalik Buterin? He, together with the Ethereum Foundation (led by 
+The World Economic Forum – enemies of humanity), controls the direction of this 
+altcoin; AND don’t forget that 70% of the supply was unethically awarded to 
+themselves at zero cost.
+
+Gold
+
+Gold is not the answer. It was, but now it’s actually the problem. Society had sound 
+money before fiat money, but because gold was not easily portable, it wasn’t feasible 
+to use for trade, as the world became more interconnected.
+
+Sending gold long distances was a problem, solved by 3rd party banks, which settle 
+trades with private ledgers. Because these 3rd parties are necessary, peer-to-peer 
+trade with gold can never work in global trade. Worse, gold’s supply can never be 
+known, since these 3rd parties can easily and “forever” use a system of fractional 
+reserve to suppress the supply and also enrich themselves.
+
+Sorry, but gold failed, and is why fiat came to be. Bitcoin is here to clean up its 
+mess (One might argue that humans failed, but no, humans are a constant, the money we 
+use is a variable; it can no longer be gold).
+
+One Money
+
+Now I wish to move on to why it’s true that multiple free market monies are not stable, 
+and the trend will be towards the existence of just one.  In a free society, money 
+evolves from a state of barter, in order to reduce the risk of specialisation, and 
+solve the coincidence–of-wants problem. That very natural force that brings money 
+about in society is the same force that resolves multiple free-market contenders for 
+money into one single money. I write about this here, and the logic is irrefutable.
+
+Conclusion
+
+Once you’ve read up to here (and the associated links), you will hopefully see the 
+truth that Bitcoin is separating money and state, and that nothing else can do this. 
+Either it will, or the state will become more powerful and enslave all humanity. 
+There is no middle equilibrium – this is a war.
+
+Given that there is this war for humanity’s freedom going on, what is the point of 
+buying Bitcoin? Is it really so you can own more of your master’s token (fiat)? No. 
+You should be accumulating more bitcoin and never selling for two main reasons:
+
+    Selfish reason – get it for cheap now before the world wakes up.
+
+    Altruistic reason – hold as many as you can (and teach others) to help Bitcoin 
+    succeed and bring about a world where the state does not control money.
+
+If you have a gambling urge, in addition to owning Bitcoin for the future, then and 
+only then, is it morally acceptable to use some portion of your savings to gamble on 
+the price of Bitcoin, with the purpose of selling it later for a better quality of life. 
+
+The same is true for altcoins – you should know none will ever be money (as they must 
+compete against Bitcoin, and there can only be one free-market money in a free 
+society), and so the only reason to own them is for gambling.
+
+Of course, you are free to go off to the shitcoin casinos and gamble all you want, 
+but we enlightened Bitcoiners are separating money and state; join us.
+
+
+Hit "q" to exit
+########################################################################################
