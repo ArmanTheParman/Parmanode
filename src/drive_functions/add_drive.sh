@@ -26,6 +26,8 @@ return 0
 }
 
 function detect_drive {
+sudo blkid -g >/dev/null
+
 before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" >> $HOME/.parmanode/tmp
 
 set_terminal pink ; echo "
@@ -59,7 +61,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 enter_continue
-
+    sudo blkid -g >/dev/null
     after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/tmp
 
     disk=$(diff <(echo "$before") <(echo "$after") | grep -E "^>" | awk '{print $3}')
