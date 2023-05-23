@@ -28,7 +28,7 @@ return 0
 function detect_drive {
 sudo blkid -g >/dev/null
 
-before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" >> $HOME/.parmanode/tmp
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" > $HOME/.parmanode/tmp
 
 set_terminal pink ; echo "
 ########################################################################################
@@ -68,7 +68,7 @@ enter_continue
         echo "disk=$disk" >> $HOME/.parmanode/tmp
 
     if [[ -z $disk ]] 
-        then echo "No new drive dected. Try again. Hit <enter>."
+        then echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
             break
