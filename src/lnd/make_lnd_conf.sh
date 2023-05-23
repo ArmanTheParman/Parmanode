@@ -119,8 +119,6 @@ rpcmiddleware.enable=true
 [routing]
 
 [sweeper]
-
-[Modifications by Parmanode]
 " | tee $HOME/.lnd/lnd.conf >/dev/null 2>&1
 
 } 
