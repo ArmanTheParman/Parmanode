@@ -13,7 +13,7 @@ echo "
                  (ip)    What's my computer's IP address?
 
                  (d)     Delete your previous preference to hide certain Parmanode
-                            mssages
+                            messages
 
                  (h)     Check system resources with \"htop\" (installs if needed)
 
