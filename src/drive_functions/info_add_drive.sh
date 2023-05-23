@@ -17,7 +17,7 @@ set_terminal ; echo "
     The mount point must be /home/$(whoami)/parmanode. If the directory does not exist
     it will be created.
 
-    Make sure that if you have an old Parmanode drive, to disconnect it now.
+    MAKE SURE THAT IF YOU HAVE AN OLD PARMANODE DRIVE, TO DISCONNECT IT NOW.
 
 ########################################################################################
 "
