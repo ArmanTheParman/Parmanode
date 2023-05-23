@@ -1,4 +1,4 @@
-function PMtools {
+function menu_tools {
 
 while true ; do
 set_terminal
@@ -16,6 +16,8 @@ echo "
                             mssages
 
                     (h)     Check system resources with \"htop\" (installs if needed)
+
+                    (a)     Add a new external drive to parmanode
 
 
                     ... More soon
@@ -48,6 +50,9 @@ case $choice in
         else
         nohup gnome-terminal -- bash -c "htop"
         fi
+        ;;
+    a|A|add|ADD|Add)
+        add_drive
         ;;
 
     q|Q|Quit|QUIT)

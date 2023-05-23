@@ -47,9 +47,9 @@ if [[ $OS == "Linux" ]] ; then
 
         #Mounting
         sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
-        sudo mount /dev/$disk /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
-        sudo e2label /dev/$disk parmanode >> $HOME/.parmanode/bitcoin.log 2>&1 
+        sudo mount /dev/$disk /media/$(whoami)/parmanode 2>&1 
+        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
+        sudo e2label /dev/$disk parmanode 2>&1 
 
         #confirmation output.
         if [[ $debug = 1 ]] ; then enter_continue ; fi # pause not required as all the above code has no output
