@@ -45,7 +45,7 @@ set_terminal ; echo "
 
                                    S U C C E S S ! 
 
-    Mempool Space has finished being installed. It may day a few days for the backend
+    Mempool Space has finished being installed. It may take a few days for the backend
     to synchronise. You can access the webpage at $IP:4080
 
     You can take a look before the synchronisation is finished; more info will appear
