@@ -26,9 +26,6 @@ return 0
 }
 
 function detect_drive {
-sudo blkid -g >/dev/null
-
-before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" > $HOME/.parmanode/tmp
 
 set_terminal pink ; echo "
 ########################################################################################
@@ -51,6 +48,9 @@ set_terminal ; echo "
 ########################################################################################
 "
 read
+
+sudo blkid -g >/dev/null
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" > $HOME/.parmanode/tmp
 
 set_terminal ; echo "
 ########################################################################################
