@@ -48,6 +48,5 @@ source $HOME/.bitcoin/bitcoin.conf
     restart: always
     stop_grace_period: 1m
     volumes:
-      - ./mysql/data:/var/lib/mysql" | tee $HOME/parmanode/mempool/docker/docker-compose.yml >(tee \
-      $HOME/parmanode/mempool/mempool-config.json)
+      - ./mysql/data:/var/lib/mysql" | tee $HOME/parmanode/mempool/docker/docker-compose.yml >/dev/null 2>&1
 }
