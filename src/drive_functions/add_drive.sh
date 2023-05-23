@@ -91,13 +91,13 @@ echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
 echo "
 ########################################################################################
 
-    Drive details:
+    DRIVE DETAILS:
 
-    The label is $LABEL
+        The label is $LABEL
 
-    The UUID is ${UUID}
+        The UUID is ${UUID}
 
-    The drive size is $size
+        The drive size is $size
 
 
     Type yes if you think this is correct, anything else to abort.
@@ -109,7 +109,7 @@ case $choice in yes|YES|Yes|y|Y) return 0 ;; *) return 1 ;; esac
 }
 
 function label_check {
-source $HOME/.parmanode/tmp
+source $HOME/.parmanode/var
 
 if [[ $LABEL == "parmanode" ]] ; then return 0 ; fi
 
