@@ -57,7 +57,7 @@ l|L)
 e|E)
     education ;;
 t|T)
-    PMtools ;;
+    menu_tools ;;
 d|D)
     donations ;;
 uninstall|UNINSTALL)

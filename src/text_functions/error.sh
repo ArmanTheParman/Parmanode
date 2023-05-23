@@ -24,7 +24,7 @@ echo "
 
     Make sure Parmanode has been installed first (go to Add more programs menu).
     
-    Or, Parmanode may need to be re-insalled cleanly after uninstalling.
+    Or, Parmanode may need to be re-installed cleanly after uninstalling.
 
 ########################################################################################    
 "
