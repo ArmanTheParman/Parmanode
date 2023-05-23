@@ -1,4 +1,6 @@
 function install_mempool {
+if [[ $1 != "resume" ]] ; then
+{
 set_terminal
 install_check "mempool" || return 1
 
@@ -23,8 +25,14 @@ git clone http://github.com/mempool/mempool.git
 cd mempool/docker
 
 if ! which docker ; then
-    if [[ $OS == "Linux" ]] ; then install_docker_linux ; fi
+    if [[ $OS == "Linux" ]] ; then install_docker_linux "mempool" ; fi
     if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
+fi
+
+}
+else
+installed_config_remove "mempool-half"
+set_terminal ; echo "Resuming Mempool install" ; enter_continue
 fi
 
 make_docker_compose

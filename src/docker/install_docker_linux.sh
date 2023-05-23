@@ -113,7 +113,7 @@ set_terminal "pink" ; echo "
 ######################################################################################## 
 
     In order for Docker to run properly from the Parmanode menu, Parmanode must first
-    exit. You can then immediately run Parmanode again. When you return, the BTCPay 
+    exit. You can then immediately run Parmanode again. When you return, the 
     installation will continue.
 
 ######################################################################################## 
@@ -121,6 +121,20 @@ set_terminal "pink" ; echo "
 "
 installed_config_add "btcpay-half" ; enter_continue ; exit 0
 # run_parmanode looks for flag, "btcpay-half"
+elif [[ $installed_from == "mempool" ]] ; then
+set_terminal "pink" ; echo "
+######################################################################################## 
+######################################################################################## 
+
+    In order for Docker to run properly from the Parmanode menu, Parmanode must first
+    exit. You can then immediately run Parmanode again. When you return, the 
+    installation will continue.
+
+######################################################################################## 
+########################################################################################
+"
+installed_config_add "mempool-half" ; enter_continue ; exit 0
+# run_parmanode looks for flag, "mempool-half"
 
 else
 set_terminal "pink" ; echo "

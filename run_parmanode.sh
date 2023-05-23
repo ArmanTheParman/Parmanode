@@ -65,6 +65,12 @@ while true ; do
 	break
 	fi
 
+ 	if cat $HOME/.parmanode/installed.conf | grep "mempool-half" ; then
+	install_mempool "resume"
+	skip_intro="true"
+	break
+	fi
+
 break ; done
 
 #fix fstab for older parmanode versions
@@ -72,8 +78,7 @@ fix_fstab
 
 #Begin program:
 	set_terminal # custom function for screen size and colour.
-	if [[ $skip_intro != "true" ]] ; then intro ; fi
-	instructions
+	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 	menu_main    
 
 
