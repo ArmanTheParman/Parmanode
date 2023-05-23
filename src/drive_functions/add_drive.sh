@@ -50,7 +50,7 @@ set_terminal ; echo "
 read
 
 sudo blkid -g >/dev/null
-before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=\"$before\"" > $HOME/.parmanode/before
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" > $HOME/.parmanode/before
 set_terminal ; echo "
 ########################################################################################
 
@@ -61,7 +61,7 @@ set_terminal ; echo "
 "
 enter_continue
     sudo blkid -g >/dev/null
-    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=\"$after\"" >> $HOME/.parmanode/after
+    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/after
 
     disk_after=$(cat $HOME/.parmanode/after | tail -n1 )
     disk_before=$(cat $HOME/.parmanode/before | tail -n1 )
@@ -70,8 +70,9 @@ enter_continue
         then echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
-            disk=$disk_after
-            echo "disk=\"$disk\"" >$HOME/.parmanode/var
+            sed -i s/://g $HOME/.parmanode/after
+            disk=$(cat $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
+            echo "disk=\"$disk\"" > $HOME/.parmanode/var
             break
     fi
 done
