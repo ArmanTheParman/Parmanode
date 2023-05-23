@@ -38,8 +38,8 @@ test_directory_placement
 	which_os
 
 # get IP address
-if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 ) ; fi
-if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' ) ; fi
+if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
+if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 
 # get version
 source ./src/config/version.conf
@@ -65,6 +65,12 @@ while true ; do
 	break
 	fi
 
+ 	if cat $HOME/.parmanode/installed.conf | grep "mempool-half" ; then
+	install_mempool "resume"
+	skip_intro="true"
+	break
+	fi
+
 break ; done
 
 #fix fstab for older parmanode versions
@@ -72,8 +78,7 @@ fix_fstab
 
 #Begin program:
 	set_terminal # custom function for screen size and colour.
-	if [[ $skip_intro != "true" ]] ; then intro ; fi
-	instructions
+	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 	menu_main    
 
 

@@ -1,3 +1,7 @@
+Version 3.3.4
+    - Fixed some docker bugs affecting Debian Pi
+    - Fixed IP address formatting affecting Pi
+    - Fixed mempool install affecting fresh docker installs
 Version 3.3.3
     - fixed fstab "but"; added "nofail" directive to drive.
 Version 3.3.2

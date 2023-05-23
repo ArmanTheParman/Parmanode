@@ -14,6 +14,14 @@ get_linux_version_codename && echo \
   "$(echo "$VCequivalent")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
+#fix ubuntu label to debian if needed:
+   source /etc/os-release
+   if [[ $ID == "debian" ]] ; then 
+       sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >/dev/null 2>&1
+   fi
+
+
+
 sudo apt-get update -y
 
 installed_config_add "docker-start" 
