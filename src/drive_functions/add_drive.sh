@@ -63,6 +63,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 enter_continue
+    sleep 1.2
     sudo blkid -g >/dev/null
     after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/after
 
@@ -130,6 +131,7 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "xpq" ; read choice
+debug1 "choice is $choice"
 case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 0 ;;
 y|Y|Yes|Yes|yes) break ;;
 n|N|NO|No|no) return 1 ;;
