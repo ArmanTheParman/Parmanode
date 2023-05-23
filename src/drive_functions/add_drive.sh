@@ -67,6 +67,7 @@ enter_continue
             read ; continue 
         else
             break
+    fi
 done
 }
 
