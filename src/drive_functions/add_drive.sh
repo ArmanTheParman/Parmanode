@@ -67,8 +67,8 @@ enter_continue
     disk=$(diff <(echo $before) <(echo $after) | grep -E "^>" | awk '{print $3}')
         echo "disk=\"$disk\"" >> $HOME/.parmanode/tmp
 
-    disk2=$(diff <(echo $before) <(echo $after) 
-    echo "$disk2" > $HOME/.parmanode/disk2
+    disk2=$(diff <(echo $before) <(echo $after)) 
+    echo $disk2 > $HOME/.parmanode/disk2
 
     if [[ -z $disk ]] 
         then echo "No new drive detected. Try again. Hit <enter>."
