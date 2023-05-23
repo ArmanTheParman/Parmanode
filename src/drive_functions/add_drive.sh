@@ -97,7 +97,7 @@ case $choice in yes|YES|Yes|y|Y) return 0 ;; *) return 1 ;; esac
 
 function label_check {
 
-if [[ $LABEL == "parmanode" ]] ; then return 0 ; find
+if [[ $LABEL == "parmanode" ]] ; then return 0 ; fi
 
 while true ; do
 set_terminal ; echo "
