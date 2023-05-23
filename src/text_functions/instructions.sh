@@ -11,23 +11,30 @@ set_terminal ; echo "
     the main menu). This will create the necessary directory structure, and give you
     the option to format an external drive, should you wish to use that.
 
-    Once that is done, you can add individual programs. That is also available from
-    the main menu, under \"add programs\". Start with Bitcoin, and work your way
-    down.
+    Once Parmnode installation is done, you will be able to add individual programs. 
+    These are also availeble from the main menu, under \"add programs\". Start by 
+    adding Bitcoin, and work your way down the list. You can add any you like and are
+    not obliged to install everything.
 
-    To use functions for each of the programs, from the main menu, select \"use 
-    programs\". For each program there are various functions you can select. These
-    are just ways for you to interact with the installed software in an easy way. There
-    is nothing stopping you from using the programs directly yourself. For example,
-    running \"bitcoin-cli getblockchaininfo\" from the terminal will still work.
+    To use any program, select \"use programs\"from the main menu. For each program 
+    there are various functions you can select. These are included as ways for you 
+    to interact with the installed software in an easy way. There is nothing stopping 
+    you from using the programs directly yourself. For example, running \"bitcoin-cli 
+    getblockchaininfo\" from the terminal will still work.
 
-    To not see this menu again, type in \"Free Ross\" then <enter>.
+    To hide this message next time, type in \"Free Ross\" then <enter>.
+
+    To read about why you should run a node at all, (Parman's 6 reasons to run a node)
+    type \"node\" and <enter>.
+
+    To continue on to the main menu, just hit <enter>.
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+read choice
 case $choice in 
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ; set_terminal ;;
+node|NODE|Node) 6reasons_node ;;
 esac
 fi
 return 0
