@@ -83,7 +83,7 @@ export $(sudo blkid -o export $disk) >/dev/null
 size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
 echo "size=$size" >> $HOME/.parmanode/tmp
 echo "LABEL=$LABEL" >> $HOME/.parmanode/tmp
-echo "UUID=$UUID" >> $HOME/.parmanode/tm
+echo "UUID=\"$UUID\"" >> $HOME/.parmanode/tm
 echo "TYPE=$TYPE" >> $HOME/.parmanode/tmp
 
 echo "
@@ -93,7 +93,7 @@ echo "
 
     The label is $LABEL
 
-    The UUID is $UUID
+    The UUID is ${UUID}
 
     The drive size is $size
 
