@@ -50,7 +50,7 @@ set_terminal ; echo "
 read
 
 sudo blkid -g >/dev/null
-before=$(sudo blkid) >/dev/null 2>&1 ; echo "\"before=$before\"" > $HOME/.parmanode/tmp
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=\"$before\"" > $HOME/.parmanode/tmp
 
 set_terminal ; echo "
 ########################################################################################
@@ -62,7 +62,7 @@ set_terminal ; echo "
 "
 enter_continue
     sudo blkid -g >/dev/null
-    after=$(sudo blkid) >/dev/null 2>&1 ; echo "\"after=$after\"" >> $HOME/.parmanode/tmp
+    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=\"$after\"" >> $HOME/.parmanode/tmp
 
     disk=$(diff <(echo $before) <(echo $after) | grep -E "^>" | awk '{print $3}')
         echo "disk=\"$disk\"" >> $HOME/.parmanode/tmp
