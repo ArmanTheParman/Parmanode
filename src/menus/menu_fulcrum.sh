@@ -14,7 +14,7 @@ echo "
 
       (c)        How to connect your Electrum wallet to Fulcrum
 	    
-      (log)        Inspect Fulcrum logs
+      (log)      Inspect Fulcrum logs
 
       (fc)       Inspect and edit fulcrum.conf file 
 
