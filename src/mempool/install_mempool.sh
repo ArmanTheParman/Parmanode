@@ -2,7 +2,7 @@ function install_mempool {
 
 if [[ $1 != "resume" ]] ; then
 {
-if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] then 
+if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
     pi4_warning
     if [ $? == 1 ] ; then return 1 ; fi
 fi
