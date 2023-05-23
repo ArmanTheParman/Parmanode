@@ -1,4 +1,5 @@
 Version 3.3.4
+    - Tool to import other ext or FAT32 drive to parmanode (Linux only)
     - Fixed some docker bugs affecting Debian Pi
     - Fixed IP address formatting affecting Pi
     - Fixed mempool install affecting fresh docker installs
