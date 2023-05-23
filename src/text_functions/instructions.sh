@@ -33,7 +33,7 @@ set_terminal ; echo "
 "
 read choice
 case $choice in 
-"Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ;;
+"Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ; set_terminal ;;
 node|NODE|Node) 6reasons_node ;;
 esac
 fi

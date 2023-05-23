@@ -20,6 +20,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
+while true ; do
     #if mounted, exit 
 	    if mountpoint -q "/media/$(whoami)/parmanode" ; then
 			return 0
@@ -40,9 +41,9 @@ if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
 
 		set_terminal
 		
-		echo "Drive not mounted. Mounting ... Hit (q) to abort."
+		echo "Drive not mounted. <enter> to try again. Hit (q) to abort."
 		read choice ; if [[ $choice == "q" ]] ; then return 1 ; fi
-
+done
 fi
 fi
 }

@@ -1,4 +1,12 @@
 function install_mempool {
+
+if [[ $1 != "resume" ]] ; then
+{
+if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
+    pi4_warning
+    if [ $? == 1 ] ; then return 1 ; fi
+fi
+
 set_terminal
 install_check "mempool" || return 1
 
@@ -23,21 +31,28 @@ git clone http://github.com/mempool/mempool.git
 cd mempool/docker
 
 if ! which docker ; then
-    if [[ $OS == "Linux" ]] ; then install_docker_linux ; fi
+    if [[ $OS == "Linux" ]] ; then install_docker_linux "mempool" ; fi
     if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
+fi
+
+}
+else
+installed_config_remove "mempool-half"
+set_terminal ; echo "Resuming Mempool install" ; enter_continue
 fi
 
 make_docker_compose
 
 installed_conf_add "mempool-end"
-docker compose up -d
+
+cd $HOME/parmanode/mempool/docker && docker compose up -d
 
 set_terminal ; echo "
 ########################################################################################
 
                                    S U C C E S S ! 
 
-    Mempool Space has finished being installed. It may day a few days for the backend
+    Mempool Space has finished being installed. It may take a few days for the backend
     to synchronise. You can access the webpage at $IP:4080
 
     You can take a look before the synchronisation is finished; more info will appear
