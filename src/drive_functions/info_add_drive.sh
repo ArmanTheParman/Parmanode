@@ -11,7 +11,7 @@ set_terminal ; echo "
     at the same time. Unpredictable things can happen.
 
     If you add your own drive, the label will be changed to "parmanode" as Parmanode
-    expects this label - the poor thing gets a little confused if it's not labeleld
+    expects this label - the poor thing gets a little confused if it's not labelled 
     right.
 
     The mount point must be /home/$(whoami)/parmanode. If the directory does not exist
