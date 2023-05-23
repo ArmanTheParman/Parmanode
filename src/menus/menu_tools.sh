@@ -8,19 +8,19 @@ echo "
                                 P A R M A N O D E - Tools
 
                     
-                    (u)     Update computer (Linux or Mac)
+                 (u)     Update computer (Linux or Mac)
 
-                    (ip)    What's my computer's IP address?
+                 (ip)    What's my computer's IP address?
 
-                    (d)     Delete your previous preference to hide certain Parmanode
+                 (d)     Delete your previous preference to hide certain Parmanode
                             mssages
 
-                    (h)     Check system resources with \"htop\" (installs if needed)
+                 (h)     Check system resources with \"htop\" (installs if needed)
 
-                    (a)     Add a new external drive to parmanode
+                 (a)     Add a new external drive to parmanode
 
 
-                    ... More soon
+                 ... More soon
 
 ########################################################################################
 "
