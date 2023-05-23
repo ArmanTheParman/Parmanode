@@ -65,7 +65,7 @@ enter_continue
     after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/tmp
 
     disk=$(diff <(echo '$before') <(echo '$after') | grep -E "^>" | awk '{print $3}')
-        echo 'disk=$disk' >> $HOME/.parmanode/tmp
+        echo "disk=\"$disk\"" >> $HOME/.parmanode/tmp
 
     if [[ -z $disk ]] 
         then echo "No new drive detected. Try again. Hit <enter>."
@@ -81,10 +81,10 @@ source $HOME/.parmanode/tmp
     
 export $(sudo blkid -o export $disk) >/dev/null
 size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
-echo "size=\"$size"\" > $HOME/.parmanode/var
-echo "LABEL=\"$LABEL"\" >> $HOME/.parmanode/var
-echo "UUID=\"$UUID"\" >> $HOME/.parmanode/var
-echo "TYPE=\"$TYPE"\" >> $HOME/.parmanode/var
+echo "size=\"$size\"" > $HOME/.parmanode/var
+echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
+echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
+echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
 
 echo "
 ########################################################################################
