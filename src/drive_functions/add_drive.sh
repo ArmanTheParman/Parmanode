@@ -50,7 +50,7 @@ set_terminal ; echo "
 read
 
 sudo blkid -g >/dev/null
-before=$(sudo blkid) >/dev/null 2>&1 ; echo 'before=$before' > $HOME/.parmanode/tmp
+before=$(sudo blkid) >/dev/null 2>&1 ; echo "before=$before" > $HOME/.parmanode/tmp
 
 set_terminal ; echo "
 ########################################################################################
@@ -62,7 +62,7 @@ set_terminal ; echo "
 "
 enter_continue
     sudo blkid -g >/dev/null
-    after=$(sudo blkid) >/dev/null 2>&1 ; echo 'after=$after' >> $HOME/.parmanode/tmp
+    after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/tmp
 
     disk=$(diff <(echo '$before') <(echo '$after') | grep -E "^>" | awk '{print $3}')
         echo 'disk=$disk' >> $HOME/.parmanode/tmp
@@ -81,10 +81,10 @@ source $HOME/.parmanode/tmp
     
 export $(sudo blkid -o export $disk) >/dev/null
 size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
-echo 'size=$size' >> $HOME/.parmanode/tmp
-echo 'LABEL=$LABEL' >> $HOME/.parmanode/tmp
-echo 'UUID=$UUID' >> $HOME/.parmanode/tm
-echo 'TYPE=$TYPE' >> $HOME/.parmanode/tmp
+echo "size=\"$size"\" > $HOME/.parmanode/var
+echo "LABEL=\"$LABEL"\" >> $HOME/.parmanode/var
+echo "UUID=\"$UUID"\" >> $HOME/.parmanode/var
+echo "TYPE=\"$TYPE"\" >> $HOME/.parmanode/var
 
 echo "
 ########################################################################################
