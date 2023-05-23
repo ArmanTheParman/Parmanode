@@ -64,7 +64,7 @@ enter_continue
     sudo blkid -g >/dev/null
     after=$(sudo blkid) >/dev/null 2>&1 ; echo "after=$after" >> $HOME/.parmanode/tmp
 
-    disk=$(diff <(echo '$before') <(echo '$after') | grep -E "^>" | awk '{print $3}')
+    disk=$(diff <(echo $before) <(echo $after) | grep -E "^>" | awk '{print $3}')
         echo "disk=\"$disk\"" >> $HOME/.parmanode/tmp
 
     if [[ -z $disk ]] 
