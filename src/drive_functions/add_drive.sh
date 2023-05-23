@@ -5,9 +5,10 @@ info_add_drive
 detect_drive
 
 drive_details ; if [ $? == 1 ] ; then return 1 ; fi
-
+    debug1 "finished drive details"
 label_check ; if [ $? == 1 ] ; then return 1 ; fi
-
+    debug1 "finished label check"
+    
 if [[ ! -d /media/$(whoami)/parmanode ]] ; then sudo mkdir -p /media/$(whoami)/parmanode ; fi
 
 write_to_fstab2
