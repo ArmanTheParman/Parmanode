@@ -38,7 +38,8 @@ fi
 make_docker_compose
 
 installed_conf_add "mempool-end"
-docker compose up -d
+
+cd $HOME/parmanode/mempool/docker && docker compose up -d
 
 set_terminal ; echo "
 ########################################################################################
