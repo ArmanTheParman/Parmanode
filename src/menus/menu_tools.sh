@@ -1,4 +1,4 @@
-function PMtools {
+function menu_tools {
 
 while true ; do
 set_terminal
@@ -8,17 +8,19 @@ echo "
                                 P A R M A N O D E - Tools
 
                     
-                    (u)     Update computer (Linux or Mac)
+                 (u)     Update computer (Linux or Mac)
 
-                    (ip)    What's my computer's IP address?
+                 (ip)    What's my computer's IP address?
 
-                    (d)     Delete your previous preference to hide certain Parmanode
-                            mssages
+                 (d)     Delete your previous preference to hide certain Parmanode
+                            messages
 
-                    (h)     Check system resources with \"htop\" (installs if needed)
+                 (h)     Check system resources with \"htop\" (installs if needed)
+
+                 (a)     Add a new external drive to parmanode
 
 
-                    ... More soon
+                 ... More soon
 
 ########################################################################################
 "
@@ -48,6 +50,9 @@ case $choice in
         else
         nohup gnome-terminal -- bash -c "htop"
         fi
+        ;;
+    a|A|add|ADD|Add)
+        add_drive
         ;;
 
     q|Q|Quit|QUIT)
