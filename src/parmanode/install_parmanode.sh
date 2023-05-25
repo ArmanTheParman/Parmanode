@@ -5,7 +5,8 @@ set_terminal
 install_check "parmanode" #checks parmanode.conf, and exits if already installed.
     if [ $? == 1 ] ; then return 1 ; fi #error mesages done in install_check, this ensures code exits to menu
 
-if [[ $OS == "Linux" || $debug == 0 ]] ; then update_computer ; fi
+update_computer 
+
 if [[ $OS == "Mac" ]] ; then 
 	brew_check 
 	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
