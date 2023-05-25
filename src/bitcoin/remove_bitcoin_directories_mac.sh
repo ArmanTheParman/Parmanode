@@ -70,9 +70,8 @@ if [[ $choice == "s" ]] ; then
             break ; fi
 if [[ $choice == "d" ]] ; then 
     log "bitcoin" "user chose to delete internal .bitcoin dir"
-    cd && rm -rf $HOME/.bitcoin >/dev/null 2>&1 \
-    || { log "bitcoin" "error deleting .bitcoin on internal drive." && \
-    debug "Error deleting .bitcoin directory. Continuing." ; } ; break ; fi 
+    cd && rm -rf $HOME/.bitcoin ; debug1 "check output deleting" 
+    break ; fi 
     
 invalid #if all above if statements not true, then invalid choice and loop.
 done
