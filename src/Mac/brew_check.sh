@@ -2,7 +2,7 @@ function brew_check {
 
 if command -v brew >/dev/null 2>&1
     then
-    log "parmanode" "Brew already installed."
+    log "parmanode" "Brew is installed."
 	return 0
     else
     log "parmanode" "Brew not yet installed."
@@ -13,16 +13,16 @@ echo "
 
                                      Homebrew
 
-   In order to install certain dependencies (these are fragments of code that Bitcoin
-   needs to function) Homebrew is needed. Homebrew is a package manager (a program
-   that manages certain other programs' installation and maintenance on your system
-   via web servers where the software is delievered to you). 
+   In order to install certain dependencies (dependencies are fragments of code that 
+   Bitcoin needs to function) Homebrew is needed. Homebrew is a package manager (a 
+   program that manages certain other programs' installation and maintenance on your 
+   system via web servers where the software is delievered to you). 
 
    Parmanode has detected that Homebrew has not been installed on your system before.
    It will do this for you now, with your approval. It doesn't harm or slow down
    your system, but it is a real pain to download - it's going to take a while. Make
    sure your computer doesn't go into hybernation during the process to save power. It
-   may take around 30 minutes, speaking from experience (I have an old Mac).
+   may take around 30 minutes, speaking from experience (I tested with an old Mac).
    
                             i)    Install Homebrew 
 				

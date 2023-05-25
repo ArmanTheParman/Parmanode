@@ -27,7 +27,7 @@ log "bitcoin" "prune choice function..." && \
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. i
     # Use variable later for setting bitcoin.conf
-
+debug1 ".bitcoin exists?"
 log "bitcoin" "make_bitcoin_directories function..." && \
     make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
@@ -94,7 +94,7 @@ echo "
 
     Bitcoin Core can begin syncing once you select \"START\" from the Bitcoin menu
     found under the \"Run Parmanode\" menu. You can also watch it fly if you select
-    to observe the debug file (same menu).
+    to observe the log file (same menu).
     
     For now, I have not created a Mac service file to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
@@ -104,7 +104,7 @@ echo "
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
     #Just in case
-            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+            sudo chown -R $(whoami):staff /media/$(whoami)/parmanode >/dev/null 2>&1
 
 enter_continue
 return 0 
