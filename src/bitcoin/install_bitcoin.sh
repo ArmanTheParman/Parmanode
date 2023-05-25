@@ -94,7 +94,7 @@ echo "
 
     Bitcoin Core can begin syncing once you select \"START\" from the Bitcoin menu
     found under the \"Run Parmanode\" menu. You can also watch it fly if you select
-    to observe the debug file (same menu).
+    to observe the log file (same menu).
     
     For now, I have not created a Mac service file to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
