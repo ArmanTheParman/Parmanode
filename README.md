@@ -122,7 +122,8 @@ Also, do note it is case sensitive):
     cd parmanode
     ./run_parmanode.sh
 
-Note that you may get a fingerprint error by the terminal when you run the git clone
+Note that you may get a fingerprint error in the terminal when you run the git clone. That's
+fine, carry on.
 
 This will add the program to your desktop and run the program.
 You can move it but DO NOT move it to the home directory or really bad things will happen.
