@@ -114,7 +114,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 ## HOW TO RUN
 
-Open the terminal application and type the following (and <enter> after each line.
+Open the terminal application and type the following (and hit \<enter\> after each line.
 Also, do note it is case sensitive):
 
     cd Desktop
