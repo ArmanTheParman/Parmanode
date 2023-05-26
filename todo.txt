@@ -1,1 +1,3 @@
-add #NEW to changes on master since release
+make bitcoin-cli commands loop
+uninstall docker - mac
+
