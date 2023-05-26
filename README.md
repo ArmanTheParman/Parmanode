@@ -129,7 +129,7 @@ and hit \<enter\>:
 
 From then on to run Parmanode, you can double click the run_parmanode.sh file. If you
 get a popup, choose to "run in terminal". Alternatively you can open terminal, navigate to
-right directory with cd Desktop/parmanode, then type ./run_parmanode.sh
+the right directory with cd Desktop/parmanode, then type ./run_parmanode.sh
 
 If you get a fingerprint error/warning when you run the git clone. That's fine, carry on.
 
