@@ -1,5 +1,7 @@
 # Parmanode 3.3.5
 
+(Instructions to install at the end)
+
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
 Version 3 of Parmanode begins the introduction of LND. For Linux
@@ -112,39 +114,36 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 ## HOW TO RUN
 
-#### Stable:
+Open the terminal application and type the following (and <enter> after each line.
+Also, do note it is case sensitive):
 
-Find the latest tag and download/unzip that to a directory on your drive.
-
-It must not be the home directory (Parmanode will know and not let you run it, apologies).
-
-To run it, 'cd' into the downloaded directory ("Parmanode"), then type './run_parmanode.sh'
-
-Do not forget to type the ".sh" extension in the run command.
-
-You will be asked at some point for a password - this is your computer's "sudo" or login
-password, and is necessary for Parmanode to access system functions like mounting drives.
-
-#### Latest:
-
-Easy way - Navigate to the github repository, and click the green 'code' button. In 
-           the pop-uo, click download zip, then proceed as instructed in stable version.
-        
-Easier way - coming soon.
-
-Surest way - In terminal, navige to anywhere but the home directory and run this command:
-
-                git clone http://github.com/armantheparman/parmanode.git
-
-It will download a directory called "parmanode" to your working directory. Then cd 
-parmanode, to change into that directory. Then type './run_parmanode.sh'
+    cd Desktop
+    git clone http://github.com/armantheparman/parmanode.git
+    cd parmanode
+    ./run_parmanode.sh
 
 Note that you may get a fingerprint error by the terminal when you run the git clone
-command; that's ok, it's safe to proceed.
+
+This will add the program to your desktop and run the program.
+You can move it but DO NOT move it to the home directory or really bad things will happen.
+
+Actually, you can rename the directory from parmanode to anything else, then you could
+move it anywhere. The reason this is mentioned is that Parmanode will create an application
+directory called parmanode which lives in the home directory. This will create conflict
+and file loss if you don't follow these instructions.
+
+When the program runs, you will be asked at some point for a password - this is your 
+computer's "sudo" or login password, and is necessary for Parmanode to access system 
+functions like mounting drives.
+
 
 ## INSTRUCTIONS TO UPGRADE
 
-If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin blockchain
+If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall 
+version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin 
+blockchain.
 
-Otherwise, simply download a new version and run it.
-You can delete the old copy but do not touch any of the directories or files that Parmanode has made. 
+Otherwise, use the parmanode menu to upgrade to the latest version.
+You could also just type "git pull" from within the parmanode directory. Not the parmanode
+application directory in the home menu, the parmanode directory on your desktop.
+ 
