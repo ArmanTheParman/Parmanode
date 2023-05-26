@@ -122,8 +122,16 @@ Also, do note it is case sensitive):
     cd parmanode
     ./run_parmanode.sh
 
-Note that you may get a fingerprint error in the terminal when you run the git clone. That's
-fine, carry on.
+If you don't like all that typing, copy and paste the following single line into terminal
+and hit \<enter\>:
+
+    cd Desktop && git clone http://github.com/armantheparman/parmanode.git && cd parmanode && ./run_parmanode.sh
+
+From then on to run Parmanode, you can double click the run_parmanode.sh file. If you
+get a popup, choose to "run in terminal". Alternatively you can open terminal, navigate to
+right directory with cd Desktop/parmanode, then type ./run_parmanode.sh
+
+If you get a fingerprint error/warning when you run the git clone. That's fine, carry on.
 
 This will add the program to your desktop and run the program.
 You can move it but DO NOT move it to the home directory or really bad things will happen.
