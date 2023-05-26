@@ -56,7 +56,7 @@ set_terminal ; echo "
     Dear Mac user, Parmanode will download Sparrow for you, verify it, and move the
     program to your Applications folder.
 
-    When you see a Mac popul to drag an icon to the Applications, don't do it, wait,
+    When you see a Mac popup to drag an icon to the Applications, don't do it, wait,
     Parmanode is taking care of it and it will automagically happen and close itself.
 
 ########################################################################################
