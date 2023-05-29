@@ -44,7 +44,7 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then 
-    if ! docker ps ; then start_docker_mac ; fi
+    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 fi
 
 make_docker_compose
