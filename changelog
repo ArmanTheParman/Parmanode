@@ -1,3 +1,7 @@
+Version 3.3.6
+    - Docker apps on Mac work better now. (Issue with checking docker status)
+    - Zip file downloads no longer supported - they are not git repos
+      and updates fail because if.
 Version 3.3.5
     - more educational material
 Version 3.3.4
@@ -5,7 +9,6 @@ Version 3.3.4
     - Fixed some docker bugs affecting Debian Pi
     - Fixed IP address formatting affecting Pi
     - Fixed mempool install affecting fresh docker installs
->>>>>>> master
 Version 3.3.3
     - fixed fstab "but"; added "nofail" directive to drive.
 Version 3.3.2
