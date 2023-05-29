@@ -35,11 +35,15 @@ if ! which docker ; then
     if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
 fi
 
+
 }
 else
 installed_config_remove "mempool-half"
 set_terminal ; echo "Resuming Mempool install" ; enter_continue
 fi
+
+
+if ! docker ps ; then start_docker_mac ; fi
 
 make_docker_compose
 
