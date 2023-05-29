@@ -19,6 +19,11 @@ installed_config_remove "btcpay-half"
 set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
 
+if [[ $OS == "Mac" ]] ; then 
+    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
+fi
+
+
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal
     echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."

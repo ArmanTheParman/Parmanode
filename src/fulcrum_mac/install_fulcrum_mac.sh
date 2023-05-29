@@ -28,9 +28,9 @@ if [[ $docker_installed == "false" ]] ; then
     if [ $? == 1 ] ; then return 1 ; fi
     fi
 
-start_docker_mac
-    if [ $? == 1 ] ; then return 1 ; fi
-    log "docker" "Docker started"
+if [[ $OS == "Mac" ]] ; then 
+    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
+fi
 
 warning_deleting_fulcrum
   if [[ $? == 1 ]] ; then log "fulcrum" "warning message, abort" ; return 1 ; fi
