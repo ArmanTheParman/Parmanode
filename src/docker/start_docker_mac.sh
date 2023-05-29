@@ -16,7 +16,7 @@ set_terminal_bit_higher "pink" ; echo "
     window without terminating the program. Don't right-click-quit from the dock, 
     that will terminate instead. There is also an icon in the menu bar, top-right of 
     the desktop (near the time) - again, don't shut that down. If you do see it there, 
-    even though no window poppped up, you're good to go.
+    even though no window popped up, you're good to go.
 
     If after a few minutes nothing has happened, to run Docker try clicking the 
     Docker icon from the applications folder. If a Docker icon doesn't even exist in
