@@ -2,7 +2,7 @@ function success {
 set_terminal ; echo "
 ########################################################################################
                                   
-                                S U C C E S S  ! !
+                                 S U C C E S S  ! !
 
     $1 has finished $2
 
