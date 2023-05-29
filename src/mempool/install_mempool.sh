@@ -43,7 +43,9 @@ set_terminal ; echo "Resuming Mempool install" ; enter_continue
 fi
 
 
-if ! docker ps ; then start_docker_mac ; fi
+if [[ $OS == "Mac" ]] ; then 
+    if ! docker ps ; then start_docker_mac ; fi
+fi
 
 make_docker_compose
 
