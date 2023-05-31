@@ -11,7 +11,7 @@ fi
 if [[ $OS == "Mac" ]] ; then
 set_terminal 
 please_wait
-/usr/local/bin/bitcoin-cli 
+/usr/local/bin/bitcoin-cli stop
 enter_continue
 fi
 
