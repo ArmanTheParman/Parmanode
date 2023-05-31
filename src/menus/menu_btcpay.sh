@@ -28,14 +28,14 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
 start|START|Start)
-docker start btcpay
+sudo docker start btcpay
 startup_postgres && \
 run_nbxplorer && \
 run_btcpay
 ;;
 
 stop|STOP|Stop)
-docker stop btcpay
+sudo docker stop btcpay
 ;;
 
 log|Log|LOG)

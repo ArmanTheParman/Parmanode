@@ -1,15 +1,10 @@
-# Parmanode 3.3.5
+# Parmanode 3.3.6
 
-(Instructions to install at the end)
+## Instructions to install at the end
+
+## Introduction
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
-
-Version 3 of Parmanode begins the introduction of LND. For Linux
-OS only currently.
-
-Version 3 is not fully backwards compatible with earlier versions,
-it's best to fully unihe nstall previous versions before using version 3.
-Blockchain data does not need to be deleted.
 
 Parmanode is an automated installation wizard and menu for desktiop
 computers, with the following software (list is growing):
@@ -47,27 +42,7 @@ While I tried to avoid it, for now, Mac users who wish to use Fulcrum will
 need to run it in a Docker container. It has been made very easy, just 
 follow the wizard menu options.
 
-## Software versions included
-
-### Fulcrum v1.9.1 
-
-### Bitcoin 24.01
-
-### BTCPay (latest)
-
-### Docker (latest)
-
-### Tor (latest)
-
-### LND v0.16.2 
-
-### Mempool Space (latest)
-
-### Sparrow Bitcoin Wallet (1.7.6)
-
-### Ride The Lightning (latest)
-
-DRIVE STRUCTURE (for when Parmanode software is installed with Bitcoin Core):
+## DRIVE STRUCTURE 
 
 Internal drive:
                
@@ -112,7 +87,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
                /|--- .bitcoin ----|
                 |--- fulcrum_db---|
 
-## HOW TO RUN
+## HOW TO RUN / INSTALL
 
 Open the terminal application and type the following (and hit \<enter\> after each line.
 Also, do note it is case sensitive):
