@@ -7,11 +7,11 @@ unset rpcuser && unset rpcpassword
 source $HOME/.bitcoin/bitcoin.conf
 
 if [[ -z $rpcuser || -z $rpcpassword ]] ; then
-debug1 "user/pass string empty. calling set rpc authentication"
 set_rpc_authentication
 else
-debug1 "user/pass is not empty: $rpcuser and $rpcpassword"
-edit_user_pass_fulcrum_docker
+
+if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; fi
+
 fi
 return 0
 }

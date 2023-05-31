@@ -3,7 +3,7 @@ count=0
 while [ $count -le 1 ] ; do
 
 if docker ps | grep btcpay ; then   
-sudo docker exec -d -u parman btcpay /bin/bash -c \
+docker exec -d -u parman btcpay /bin/bash -c \
 "/usr/bin/dotnet run --no-launch-profile --no-build -c Release -p \"\\
 /home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\" -- \$@ \\
 >/home/parman/.btcpayserver/btcpay.log" \
@@ -11,7 +11,7 @@ sudo docker exec -d -u parman btcpay /bin/bash -c \
 #docker exec -d -u parman btcpay /bin/bash -c "$HOME/parmanode/btcpayserver/run.sh" && \
 
 else
-sudo docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
+docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
 count=$((count + 1))
 fi
 done

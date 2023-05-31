@@ -26,7 +26,7 @@ echo "
             5) Free: 
                    - Donations appreciated
                    - Yes, the code is open source, MIT licence, like Bitcoin
-o
+
 
     To report bugs:
                    - armantheparman@protonmail.com

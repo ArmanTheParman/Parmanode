@@ -30,12 +30,12 @@ run_rtl
 return 0 ;;
 
 stop|STOP|Stop)
-sudo docker stop rtl
+docker stop rtl
 return 0 ;;
 
 restart|RESTART|Restart)
-sudo docker stop rtl 
-sudo docker start rtl
+docker stop rtl 
+docker start rtl
 return 0 
 ;;
 

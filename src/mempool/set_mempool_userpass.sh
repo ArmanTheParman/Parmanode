@@ -13,10 +13,10 @@ swap_string "$HOME/parmanode/mempool/mempool-config.json" "CORE_RPC_USERNAME" \
 swap_string "$HOME/parmanode/mempool/mempool-config.json" "CORE_RPC_PASSWORD" \
 "      CORE_RPC_PASSWORD: \"$rpcpassword\""
 
-sudo docker cp $HOME/parmanode/mempool/mempool-config.json docker-api-1:/backend/
+docker cp $HOME/parmanode/mempool/mempool-config.json docker-api-1:/backend/
 
 
-sudo docker compose restart api
+docker compose restart api
 
 log "mempool" "username password changed in mempool"
 
