@@ -4,7 +4,7 @@ function untinstall_docker_mac {
 osascript -e 'quit app "Docker"'
 
 # Stop all docker containers
-sudo docker stop $(docker ps -aq)
+docker stop $(docker ps -aq)
 
 # Remove the Docker Desktop application
 sudo rm -rf /Applications/Docker.app
