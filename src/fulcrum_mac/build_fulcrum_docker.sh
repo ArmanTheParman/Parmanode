@@ -13,7 +13,7 @@ set_terminal ; echo "
 "
 sleep 0.5
 
-{ sudo docker build -t fulcrum ./src/fulcrum_mac/ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
+{ docker build -t fulcrum ./src/fulcrum_mac/ 2>&1 | tee $HOME/.parmanode/docker_build.log ; } \
 || { log "fulcrum" "fulcrum docker build failed" && return 1 ; }
 
 while true ; do

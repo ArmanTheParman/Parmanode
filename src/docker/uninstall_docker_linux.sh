@@ -15,7 +15,7 @@ log "docker" "uninstall Docker selected"
 set_terminal ; echo "
 Stopping all running containers...
 "
-sudo docker stop $(docker ps -q) > /dev/null 2>&1
+docker stop $(docker ps -q) > /dev/null 2>&1
 
 echo "Purging Docker programs..."
 sleep 1

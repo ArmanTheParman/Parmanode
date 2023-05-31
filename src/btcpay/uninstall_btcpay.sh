@@ -26,10 +26,10 @@ done ; fi
 
 # stop containers, delete containers, delete images
 please_wait
-echo "Stopping containers..." && sudo docker stop btcpay || log "btcpay" "failed to stop btcpay. May not be running."
-echo "Removing containers..." && sleep 0.5 && sudo docker rm btcpay || log "btcpay" "failed to remove btcpay docker container. May not exist."
+echo "Stopping containers..." && docker stop btcpay || log "btcpay" "failed to stop btcpay. May not be running."
+echo "Removing containers..." && sleep 0.5 && docker rm btcpay || log "btcpay" "failed to remove btcpay docker container. May not exist."
 if [[ $debug != 1 ]]  
-    then echo "Removing Docker images..." && sleep 0.5 && sudo docker rmi btcpay \
+    then echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay \
     || log "btcpay" "failed to remove btcpay image. May not exist" 
     fi
 
