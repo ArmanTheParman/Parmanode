@@ -40,6 +40,8 @@ make_ssl_certificates
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "make_ssl exited." 
 
+check_fulcrum_pass
+
 make_fulcrum_service_file
 start_fulcrum_linux
 fulcrum_success_install

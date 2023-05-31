@@ -39,6 +39,6 @@ fi
 }
 
 function docker_exec_command {
-docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf \
+sudo docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf \
     >>/home/parman/parmanode/fulcrum/fulcrum.log 2>&1"
 }

@@ -30,9 +30,10 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in
 
 start | START)
+check_fulcrum_pass
 set_terminal
 echo "Fulcrum starting..."
-if [[ $OS == "Linux" ]] ; then sudo systemctl start fulcrum.service ; enter_continue ; fi
+if [[ $OS == "Linux" ]] ; then start_fulcrum_linux ; enter_continue ; fi
 if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi 
 set_terminal
 ;;
@@ -141,6 +142,7 @@ done
 
 return 0
 }
+
 
 
 
