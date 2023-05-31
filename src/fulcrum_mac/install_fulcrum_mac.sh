@@ -21,12 +21,8 @@ install_docker_intro
   log "docker" "Docker install to proceed."
   fi
 
-docker_install_check  
-
-if [[ $docker_installed == "false" ]] ; then
-    download_docker_mac
+if ! which docker ; then download_docker_mac ; fi
     if [ $? == 1 ] ; then return 1 ; fi
-    fi
 
 if [[ $OS == "Mac" ]] ; then 
     if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
