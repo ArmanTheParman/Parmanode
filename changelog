@@ -1,5 +1,6 @@
 Version 3.3.6
     - Docker apps on Mac work better now. (Issue with checking docker status)
+    - More sudo for docker commands (redundant for most)
     - Zip file downloads no longer supported - they are not git repos
       and updates fail because if.
 Version 3.3.5

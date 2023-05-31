@@ -11,7 +11,7 @@ if [[ $OS == "Mac" ]] ; then
     fi
 fi
 
-cd $HOME/parmanode/mempool/docker && docker compose down 
+cd $HOME/parmanode/mempool/docker && sudo docker compose down 
 cd $HOME
 rm -rf $HOME/parmanode/mempool >/dev/null 2>&1
 
