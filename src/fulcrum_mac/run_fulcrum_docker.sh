@@ -30,7 +30,6 @@ docker run -d --name fulcrum \
                 -p 50001:50001 \
                 -p 50002:50002 \
                 -p 50003:50003 \
-                -p 8332:8332 \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
                 -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 \
