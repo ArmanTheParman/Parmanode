@@ -24,6 +24,7 @@ install_docker_intro
 if ! which docker >/dev/null 2>&1 ; then download_docker_mac ; fi
     if [ $? == 1 ] ; then return 1 ; fi
 
+#start docker if it exists
 if [[ $OS == "Mac" ]] ; then 
     if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 fi
@@ -43,6 +44,12 @@ run_fulcrum_docker
 check_rpc_authentication_exists && log "fulcrum" "check rpc auth exists done"
 
 installed_config_add "fulcrum-end"
+
+#start docker if it exists
+if [[ $OS == "Mac" ]] ; then 
+    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
+fi
+
 start_fulcrum_docker
 fulcrum_success_install
 
