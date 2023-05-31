@@ -36,12 +36,14 @@ warning_deleting_fulcrum
 build_fulcrum_docker
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Fulcrum docker build done."
-  
+
 run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
   log "fulcrum" "Fulcrum docker run done."
 
 check_rpc_authentication_exists && log "fulcrum" "check rpc auth exists done"
+
+add_IP_fulcrum_config_mac  
 
 installed_config_add "fulcrum-end"
 
