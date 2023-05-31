@@ -28,14 +28,16 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
 start|START|Start)
-sudo docker start btcpay
+if [[ $OS == "Linux" ]] ; then
+docker start btcpay
 startup_postgres && \
 run_nbxplorer && \
 run_btcpay
+fi
 ;;
 
 stop|STOP|Stop)
-sudo docker stop btcpay
+if [[ $OS == "Linux" ]] ; then docker stop btcpay ; fi
 ;;
 
 log|Log|LOG)
