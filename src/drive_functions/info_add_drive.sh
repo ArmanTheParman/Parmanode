@@ -7,15 +7,15 @@ set_terminal ; echo "
     where things could go wrong. I have tried to anticipate what I can, and as things
     pop up (from user feedback), I will make improvements.
 
-    Currently, you should never attach two Parmanode external drives to the computer
-    at the same time. Unpredictable things can happen.
+    Currently, you shouldn't attach two Parmanode external drives to the computer
+    simultaneously. Unpredictable things can happen.
 
-    If you add your own drive, the label will be changed to "parmanode" as Parmanode
-    expects this label - the poor thing gets a little confused if it's not labelled 
-    right.
+    If you add your own drive, the label will be changed to "parmanode" (as Parmanode
+    expects this label) - the poor thing gets a little confused if it's not labelled 
+    this way.
 
-    The mount point must be /home/$(whoami)/parmanode. If the directory does not exist
-    it will be created.
+    The mount point must be /home/$(whoami)/parmanode for Linux, and
+    /Volumes/parmanode for Mac. If the directory does not exist it will be created.
 
     MAKE SURE THAT IF YOU HAVE AN OLD PARMANODE DRIVE, TO DISCONNECT IT NOW.
 
