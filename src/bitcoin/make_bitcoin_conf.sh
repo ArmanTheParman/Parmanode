@@ -9,17 +9,30 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 	then 
 
             while true ; do
-	    set_terminal 
-            echo "The bitcoin.conf file already exists. Hit (o) to overwrite, or (a) to abort the installation." && \
-            log "bitcoin" "bitcoin.conf exists already"
-	    read choice
+	    set_terminal ; echo "
+########################################################################################
 
-			if [[ $choice == "a" ]] ; then return 1 ; fi
-			if [[ $choice == "o" ]] ; then log "bitcoin" "conf overwrite" && break ; fi
-			echo ""
-			invalid
-		done
-	fi
+    A bitcoin.conf file already exists. You can keep the one you have, but be
+	aware if this file was not originally birthed by Parmanode, it may cause conflicts
+	if there are unexpected settings. Your prune choice will still be added to it.
+
+	It's safest to discard the old copy, but the choice is yours.
+
+							o)          overwrite
+
+							yolo) 		keep the one you have
+
+							a)			abort installation
+
+########################################################################################
+"
+choose "xpq" ; read choice
+
+case $choice in q|Q|QUIT|Quit|quit) exit 0 ;; p|P) return 1 ;; o|O) log "bitcoin" "conf overwrite" && break ;;
+yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; *) invalid ;; 
+esac 
+done
+fi
 
 { echo "
 server=1
