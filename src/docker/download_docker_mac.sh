@@ -1,6 +1,7 @@
 function download_docker_mac {
 #Downloads and installs for mac
-set_terminal ; echo "
+please_wait
+echo "
 ########################################################################################
 
                                Downloading Docker...
@@ -8,7 +9,6 @@ set_terminal ; echo "
 ########################################################################################
 
 "
-please_wait
 
 if [ ! -f $HOME/parmanode/docker/Docker.dmg ] ; then 
 
