@@ -52,15 +52,17 @@ case $choice in
         fi
         ;;
     a|A|add|ADD|Add)
-        add_drive
+        add_drive 
         ;;
 
     q|Q|Quit|QUIT)
         exit 0
         ;;
+
     "")
-    return 0 
-    ;;
+        return 0 
+        ;;
+
     *)
         invalid 
         ;;
