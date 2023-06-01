@@ -75,7 +75,6 @@ if [[ $OS == "Mac" ]] ; then
     set_terminal_wider
     docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
     echo ""
-    enter_continue
     set_terminal
 fi
 continue ;;

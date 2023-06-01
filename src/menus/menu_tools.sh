@@ -52,12 +52,7 @@ case $choice in
         fi
         ;;
     a|A|add|ADD|Add)
-	if [[ $OS == "Linux" ]] ; then
-        add_drive ; fi
-	
-	if [[ $OS == "Mac" ]] ; then
-	no_mac
-	fi
+        add_drive 
         ;;
 
     q|Q|Quit|QUIT)
