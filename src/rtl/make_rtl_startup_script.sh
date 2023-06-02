@@ -28,7 +28,7 @@ Group=$(whoami)
 Restart=on-failure
 RestartSec=10
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/rtl.service 2>/dev/null
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/rtl.service >/dev/null 2>&1
 
 sudo systemctl stop rtl.service 2>/dev/null
 sudo systemctl disable rtl.service 2>/dev/null
