@@ -1,5 +1,6 @@
 function format_choice {
 set_terminal
+if [[ $format == "false" ]] ; then return 0 ; fi
 echo "
 ########################################################################################
 
