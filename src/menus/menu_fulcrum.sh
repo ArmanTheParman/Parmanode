@@ -12,6 +12,8 @@ echo "
 
       (stop)     Stop Fulcrum 
 
+      (r)        Restart Fulcrum
+
       (c)        How to connect your Electrum wallet to Fulcrum
 	    
       (log)      Inspect Fulcrum logs
@@ -43,6 +45,16 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then echo "Fulcrum stopping" ; sudo systemctl stop fulcrum.service ; enter_continue ; fi
 if [[ $OS == "Mac" ]] ; then echo "Stopping Fulcrum inside running container..." ; stop_fulcrum_docker ; fi
 set_terminal
+;;
+
+r|R) 
+if [[ $OS == "Linux" ]] ; then 
+    sudo systemctl restart fulcrum.service
+    fi
+if [[ $OS == "Mac" ]] ; then
+    stop_fulcrum_docker
+    start_fulcrum_docker
+    fi
 ;;
 
 c|C)
