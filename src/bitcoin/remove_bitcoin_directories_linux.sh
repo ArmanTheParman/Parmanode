@@ -25,7 +25,7 @@ echo "
 "
 choose "xq" ; read choice 
 if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then break ; fi
+if [[ $choice == "s" ]] ; then export format="false" ; break ; fi
 if [[ $choice == "d" ]] ; then 
     cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing." ;  break ; fi 
@@ -52,7 +52,7 @@ set_terminal ; echo "
                                 
     If skipping, and you have chosen an external drive, it will be renamed 
     to .bitcoin_backup0 in order to created a symlink to the external drive of the
-    same name.
+    same name (otherwise there'd be a file name conflict).
 
 ########################################################################################
 "
