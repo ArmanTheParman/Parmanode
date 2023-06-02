@@ -18,11 +18,11 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 
 	It's safest to discard the old copy, but the choice is yours.
 
-                            o)          overwrite
+                           o)          overwrite
 
-                            yolo) 		keep the one you have
+                           yolo) 		keep the one you have
                             
-							a)			abort installation
+						   a)			abort installation
 
 ########################################################################################
 "
