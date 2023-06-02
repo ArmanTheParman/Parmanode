@@ -6,7 +6,7 @@ set_terminal ; echo "
 
                                 RTL password set/change
 
-    Please typa in a password for RTL. (Do not use the characters: # \" or '
+    Please type a in a password for RTL. (Do not use the characters: # \" or '
     otherwise problems may arise.)
     
     Type p then <enter> to go back.
