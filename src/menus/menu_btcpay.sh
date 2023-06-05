@@ -14,9 +14,9 @@ set_terminal ; echo "
 
              pp)           BTC ParmanPay - Online payment app, worldwide access
 
-             start)        Start BTCPay (starts Docker)
+             start)        Start BTCPay (starts Docker container)
 
-             stop)         Stop BTCPay (stops Docker)
+             stop)         Stop BTCPay (stops Docker container)
 
              log)          View BTCPay Server log
 

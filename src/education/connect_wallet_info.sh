@@ -63,17 +63,12 @@ echo "
 
     Unfortunately, for now, this wallet needs to be on the same computer as the Parmanode software.
      
-    In the Sparrow Server settings, use 127.0.0.1 as the IP address and 8332 as the port. 
+    In the Sparrow Server settings, use 127.0.0.1 as the IP address and 8332 as the port (Parmanode has
+    actualy autoconfigured it for you). 
    
-    The default connection method in Sparrow uses a cookie. This should work. If it doesn't, you can 
-    change to the \"User/Pass\" method, but you do need to enter a rpcuser and rpcpassword in the 
-    bitcoin.conf file (accessible through Parmanode menu). You then have to restart bitcoind.
- 
-    If you ever decided to install Fulcrum (an Electrum server) on your Parmanode, then Sparrow will 
-    be able to connect to that instead of directly to Bitcoin Core. If this is enabled, you are not 
-    as limited, and can connect from another computer. Fulcrum will be available for Parmanode in 
-    later versions. Tor will also be available later, allowing you to connect to your Fulcrum
-    Parmanode server from outside your home network.
+    If you ever decided to install Fulcrum (an Electrum server) on your Parmanode, then Sparrow will NOT
+    be able to connect to that as I first though - wait for Electrum Desktop Wallet to be included with
+    Parmanode, and you can connect that.
 
 ##############################################################################################################
 
