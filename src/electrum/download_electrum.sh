@@ -1,6 +1,5 @@
 function download_electrum {
 
-mkdir -p $HOME/parmanode/electrum >/dev/null 2>&1
 cd $HOME/parmanode/electrum
 
 curl -LO https://download.electrum.org/4.4.4/electrum-4.4.4-x86_64.AppImage && \

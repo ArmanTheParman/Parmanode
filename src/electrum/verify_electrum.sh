@@ -8,4 +8,15 @@ if ! gpg --verify electrum*.asc electrum*.AppImage 2>&1 | grep "Good" ; then
     enter_continue
     return 1
     fi
+
+set_terminal ; echo "
+########################################################################################
+
+    The Electrum download has been successfullty verified against the developer's 
+    pgp signature and public key.
+
+########################################################################################
+"
+enter_continue
+
 }
