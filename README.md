@@ -11,6 +11,7 @@ computers, with the following software (list is growing):
 
                 Bitcoin
                 Electrum Server (Fulcrum)
+                LND
                 BTCPay 
                 Docker
                 Tor
