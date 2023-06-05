@@ -1,9 +1,5 @@
 function uninstall_electrum {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; fi
-
-if [[ $OS = "Linux" ]] ; then
-
 rm -rf $HOME/parmanode/electrum
 installed_config_remove "electrum"
 
@@ -26,5 +22,4 @@ case $choice in y|Y) rm -rf $HOME/.electrum ; break ;; n|N|NO|no) break ;; *) in
 
 success "Electrum" "being uninstalled."
 
-fi
 }
