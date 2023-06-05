@@ -2,6 +2,7 @@ function uninstall_electrum {
 
 rm -rf $HOME/parmanode/electrum
 installed_config_remove "electrum"
+if [[ $OS == "Mac" ]] ; then rm -rf /Applications/Electrum.app ; fi
 
 while true ; do
 set_terminal ; echo "
