@@ -6,7 +6,7 @@
 
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
-Parmanode is an automated installation wizard and menu for desktiop
+Parmanode is an automated installation wizard and menu for desktop
 computers, with the following software (list is growing):
 
                 Bitcoin
