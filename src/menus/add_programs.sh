@@ -38,6 +38,9 @@ echo "                             (s)       Sparrow Wallet
 if ! grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
 echo "                             (r)       RTL Wallet
                             " ; fi
+if ! grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                             (e)       Electrum Wallet 
+                            " ; fi
 echo "Already installed...
 "
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -64,16 +67,11 @@ echo "                                       Sparrow Wallet
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
 echo "                                       RTL Wallet 
                             " ; fi
-echo "Not yet avaiable...                        
-
-                            (s)        Specter Desktop
-
-                            (th)       ThunderHub
-
-                            (lh)       LND Hub
-
+if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
+echo "                                       Electrum Wallet 
+                            " ; fi
+echo "
 ########################################################################################
-
 "
 choose "xpq"
 
@@ -124,6 +122,9 @@ case $choice in
    r|R|RTL|rtl|Rtl)
       install_rtl
       return 0
+      ;;
+   e|E|electrum|Electrum|ELECTRUM)
+      install_electrum
       ;;
 
     q|Q|quit|QUIT)

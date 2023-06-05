@@ -1,4 +1,4 @@
-# Parmanode 3.3.6
+# Parmanode 3.3.7
 
 ## Instructions to install at the end
 
@@ -18,6 +18,7 @@ computers, with the following software (list is growing):
                 Mempool Space
                 Sparrow Bitcoin Wallet
                 Ride The Lightning Wallet
+                Electrum Desktop Wallet
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 

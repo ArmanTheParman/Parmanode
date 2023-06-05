@@ -66,6 +66,12 @@ echo "                                           (r)                RTL Wallet
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (r)                RTL (partial) 
 " ; fi
+if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (e)                Electrum Wallet 
+"  
+elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (e)                Electrum (partial) 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -119,6 +125,11 @@ s|S|SPARROW|Sparrow|sparrow)
 	;;
 R|r|RTL|rtl|Rtl)
 	uninstall_rtl
+	return 0
+	;;
+
+e|E|Electrum|electrum|ELECTRUM)
+    uninstall_electrum
 	return 0
 	;;
 

@@ -1,3 +1,3 @@
 make bitcoin-cli commands loop
 uninstall docker - mac
-can't use sudo for Mac docker
+don't use sudo for Mac docker
