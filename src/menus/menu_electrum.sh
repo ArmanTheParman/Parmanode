@@ -15,6 +15,7 @@ p|P) return 1 ;;
 
 start|Start|START|S|s)
 run_electrum
+enter_continue
 return 0 ;;
 
 *)

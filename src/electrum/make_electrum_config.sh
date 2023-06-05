@@ -11,4 +11,5 @@ echo "{
     \"show_addresses_tab\": true,
     \"show_utxo_tab\": true
 }" | tee $HOME/.electrum/config >/dev/null 2>&1
+debug1 "check config made"
 }
