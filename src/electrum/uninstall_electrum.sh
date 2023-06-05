@@ -10,6 +10,10 @@ set_terminal ; echo "
 
     Do you also wish to delete the Electrum configuration directory and wallet files?
 
+    (Note that if you are upgrading Electrum to a newer version, you only need to
+    replace the application file(s); the configuration directory can be left alone
+    and it will work with the newer version of Electrum)
+
 
                                   y)          Yes
 
