@@ -38,6 +38,9 @@ if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (r)       RTL Wallet 
                             " ; fi
+if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (e)       Electrum Wallet 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -74,6 +77,10 @@ s|S|Sparrow|SPARROW|sparrow)
    ;;
 r|R|RTL|rtl|Rtl)
    menu_rtl
+   ;;
+
+e|E|Electrum|electrum|ELECTRUM)
+   menu_electrum
    ;;
 
 p)
