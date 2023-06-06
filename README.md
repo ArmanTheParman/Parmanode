@@ -125,6 +125,17 @@ When the program runs, you will be asked at some point for a password - this is 
 computer's "sudo" or login password, and is necessary for Parmanode to access system 
 functions like mounting drives.
 
+Please be aware, you can not run the program as the root user. You'd need to create a new
+user with it's own home directory, and also give it a password and sudo permission.
+
+## Run on a VPS
+
+You can install Parmanode on a virtual private server but be aware the data requirement
+can get expensive unless you run it pruned. Remember you can't run as root.
+ 
+
+
+
 
 ## INSTRUCTIONS TO UPGRADE
 
