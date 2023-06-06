@@ -1,8 +1,5 @@
 function run_electrum {
 
-#delete certificates, cach, and sockets - more likely to connect to server.
-cd $HOME/.electrum && rm -rf certs cache daemon*
-
 please_wait
 
 
