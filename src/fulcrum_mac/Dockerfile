@@ -36,7 +36,8 @@ RUN mv /home/parman/parmanode/fulcrum/Fu*/* /home/parman/parmanode/fulcrum/ && r
 
 #make openssl key and cert
 WORKDIR /home/parman/parmanode/fulcrum
-RUN openssl req -newkey rsa:2048 -new -nodes -x509 -days 36500 -keyout key.pem -out cert.pem -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=/"
+RUN openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
+RUN openssl req -new -x509 -key key.pem -out cert.pem -days 36500 -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=/" 
 
 #make fulcrum config file
 USER parman
