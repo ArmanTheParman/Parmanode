@@ -4,12 +4,10 @@ set_terminal
 
 if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; sudo apt install openssl -y ; fi
 
-openssl req -newkey rsa:2048 -new -nodes -x509 -days 36500 \
--keyout $HOME/parmanode/fulcrum/key.pem \
--out $HOME/parmanode/fulcrum/cert.pem \
--subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=/" && \
-log "fulcrum" "ssl keys made" && \
-return 0
+cd $HOME/parmanode/fulcrum/
+openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 36500 -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=/" >/dev/null
 
-debug "SSL key generation failed. Aborting." && return 1
 }
+
+
