@@ -17,7 +17,7 @@ fi
     datadir="/Volumes/parmanode/fulcrum_db" ; fi
 
     if [[ $drive_fulcrum == "internal" ]] ; then
-    datadir="/$HOME/parmanode/fulcrum_db"
+    datadir="$HOME/parmanode/fulcrum_db"
     fi
 
 # make config file
