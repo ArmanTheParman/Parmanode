@@ -159,6 +159,5 @@ version 2 of Parmanode before installing version 3. You don't need to delete the
 blockchain.
 
 Otherwise, use the parmanode menu to upgrade to the latest version.
-You could also just type "git pull" from within the parmanode directory. Not the parmanode
-application directory in the home menu, the parmanode directory on your desktop.
+You could also just type "git pull" from within the parmanode SCRIPT directory.
  
