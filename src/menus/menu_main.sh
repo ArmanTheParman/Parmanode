@@ -4,15 +4,16 @@ set_terminal_bit_higher
 echo "
 ########################################################################################
 #                                                                                      #
-#                           P A R M A N O D E - Main Menu                              #
+#    P A R M A N O D E -- Main Menu                                                    #
 #                                                                                      #
+########################################################################################
 #                                                                                      #"
 if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
 echo "#         (i)           Install Parmanode                                              #"
 else
-echo "#         (add)         Add more programs                                              #
+echo "#         (add)         Add more programs (Install menu)                               #
 #                                                                                      #
-#         (use)         Use programs ...............(Bitcoin, Fulcrum, BTCPay etc)     #
+#         (use)         Use programs (Apps menu)........(Bitcoin, Sparrow, etc)        #
 #                                                                                      #" ; fi
 
 echo "#--------------------------------------------------------------------------------------#
