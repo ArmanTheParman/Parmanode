@@ -111,14 +111,18 @@ initially. You'll need to install git like this...
 
 You can then close terminal, open it again, and try the sequence of commands above again.
 
+If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
+
 From then on, to run Parmanode, you can double click the run_parmanode.sh file. If you
 get a popup, choose to "run in terminal". Alternatively you can open terminal, navigate to
 the right directory with 
     
     cd Desktop/parmanode
+
+Then run the proram:
+
     ./run_parmanode.sh
 
-If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
 
 ## An important note about the naming and location of parmanode
 
