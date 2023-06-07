@@ -15,7 +15,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     fi
 make_sparrow_config
 
-if [[ $OS == "Linux" ]] ; then sparrow_udev ; fi
+if [[ $OS == "Linux" ]] ; then udev ; fi
 
 installed_conf_add "sparrow-end"
 

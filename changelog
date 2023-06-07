@@ -1,6 +1,6 @@
 Version 3.3.7
     - Electrum Desktop Wallet
-    - Sparrow udev rules automatically installed (only required for Linux)
+    - udev rules automatically installed (only required for Linux)
     - Fulcrum SSL certificate bug fixed. Connections should work better now.
 Version 3.3.6
     - Docker apps on Mac work better now. (Issue with checking docker status)

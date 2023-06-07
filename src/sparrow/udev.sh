@@ -1,4 +1,6 @@
-function sparrow_udev {
+#accessed by Sparrow and Electrum install
+
+function udev {
 
 if [[ $OS == "Mac" ]] ; then
     set_terminal ; echo "
@@ -13,8 +15,8 @@ if [[ $OS == "Mac" ]] ; then
     fi
 
 
-cd $HOME/parmanode/Sparrow
-curl -LO http://parman.org/downloadable/sparrow-udev
-sudo ./sparrow-udev installudevrules
-rm sparrow-udev
+cd /tmp
+curl -LO http://parman.org/downloadable/udev
+sudo ./udev installudevrules
+rm udev
 }
