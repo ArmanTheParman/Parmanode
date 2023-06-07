@@ -104,28 +104,42 @@ and hit \<enter\>:
 
     cd Desktop && git clone http://github.com/armantheparman/parmanode.git && cd parmanode && ./run_parmanode.sh
 
-From then on to run Parmanode, you can double click the run_parmanode.sh file. If you
+On some Linux distributions, git may not be installed by default so the git command above may not work
+initially. You'll need to install git like this...
+
+    sudo apt update -y && sudo apt install git -y
+
+You can then close terminal, open it again, and try the sequence of commands above again.
+
+From then on, to run Parmanode, you can double click the run_parmanode.sh file. If you
 get a popup, choose to "run in terminal". Alternatively you can open terminal, navigate to
 the right directory with 
     
     cd Desktop/parmanode
     ./run_parmanode.sh
 
-If you get a fingerprint error/warning when you run the git clone. That's fine, carry on.
+If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
 
-This will add the program to your desktop and run the program.
-You can move it but DO NOT move it to the home directory or really bad things will happen.
+## An important note about the naming and location of parmanode
 
-Actually, you can rename the directory from parmanode to anything else, then you could
-move it anywhere. The reason this is mentioned is that Parmanode will create an application
-directory called parmanode which lives in the home directory. This will create conflict
-and file loss if you don't follow these instructions.
+The program will create a directory structure on your computer, as shown above under
+"drive structure". One of these directories is called "parmanode". This is a PROGRAM
+directory where all the installed stuff is kept. This is different to the SCRIPT 
+parmanode directory which is the one you download containing the code (and where the
+run_parmanode.sh file lives). If you download that directory to inside the home directory, 
+then when the new directory is created, it will overwrite the scrip directory! This I 
+didn't anticipate when nameing the directories. Changing it now is a massive task, so 
+for now, I've simply prevented parmanode from working if you keep it in this location. 
+If you really wanted to keep the script directory in the home directory, you can rename
+it to something other than "parmanode". 
+
+## A note about superuser
 
 When the program runs, you will be asked at some point for a password - this is your 
 computer's "sudo" or login password, and is necessary for Parmanode to access system 
 functions like mounting drives.
 
-Please be aware, you can not run the program as the root user. You'd need to create a new
+Please be aware, you cannot run the program as the root user. You'd need to create a new
 user with it's own home directory, and also give it a password and sudo permission.
 
 ## Run on a VPS
@@ -133,9 +147,6 @@ user with it's own home directory, and also give it a password and sudo permissi
 You can install Parmanode on a virtual private server but be aware the data requirement
 can get expensive unless you run it pruned. Remember you can't run as root.
  
-
-
-
 
 ## INSTRUCTIONS TO UPGRADE
 
