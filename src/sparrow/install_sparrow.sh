@@ -14,6 +14,9 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     diskutil unmountDisk /Volumes/Sparrow
     fi
 make_sparrow_config
+
+if [[ $OS == "Linux" ]] ; then sparrow_udev ; fi
+
 installed_conf_add "sparrow-end"
 
 set_terminal ; echo "

@@ -17,6 +17,4 @@ cd $HOME/parmanode/Sparrow
 curl -LO http://parman.org/downloadable/sparrow-udev
 sudo ./sparrow-udev installudevrules
 rm sparrow-udev
-success "The udev rules" "being installed"
-
 }
