@@ -3,7 +3,6 @@ if [[ $OS == "Linux" ]] ; then
 nohup $HOME/parmanode/Sparrow/bin/Sparrow >/dev/null 2>&1 & 
 please_wait
 sleep 2
-debug1 "debug"
 fi
 
 if [[ $OS == "Mac" ]] ; then 

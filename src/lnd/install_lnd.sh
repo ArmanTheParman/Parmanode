@@ -18,10 +18,10 @@ set_lnd_alias
 set_lnd_password
 
 
-make_lnd_conf ; debug1 "lnd conf made"
+make_lnd_conf
 
 #do last. Also runs LND
-make_lnd_service ; debug1 "make lnd service done"
+make_lnd_service 
 
 installed_conf_add "lnd-end"
 
