@@ -1,5 +1,4 @@
 function menu_programs {
-source $HOME/.parmanode/installed.conf
 set_terminal
 while true
 do

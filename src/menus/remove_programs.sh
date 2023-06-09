@@ -1,5 +1,4 @@
 function remove_programs {
-source $HOME/.parmanode/installed.conf
 while true ; do
 set_terminal
 
