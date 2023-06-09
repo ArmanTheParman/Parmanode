@@ -1,6 +1,5 @@
 function set_rpc_authentication {
 while true ; do
-debug1 "beginning of set rpc authentication loop"
 set_terminal_bit_higher ; echo "
 ########################################################################################
 

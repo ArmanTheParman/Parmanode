@@ -25,7 +25,6 @@ if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
 
 
 function postgres_intermission {
-debug1 "entered postgres_intermission"
 set_terminal
 
 counter=0

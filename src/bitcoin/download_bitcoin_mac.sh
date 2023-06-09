@@ -22,9 +22,7 @@ sudo chown -R $(whoami):staff /$HOME/.parmanode/temp/
 sudo chmod -R 0755 $HOME/.parmanode/temp/
 
 if [[ -d /usr/local/bin ]] ; then true ; else sudo mkdir -p /usr/local/bin ]] ; fi
-debug1 "pause and check bitcoin upacked"
 sudo mv $HOME/.parmanode/temp/* /usr/local/bin
-debug1 "read output. temp deleted next"
 sudo rm -rf $HOME/.parmanode/temp
 
 return 0      

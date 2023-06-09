@@ -98,14 +98,11 @@ if [[ $OS == "Mac" ]] ; then
     disk_after=$(cat $HOME/.parmanode/after | grep . $HOME/.parmanode/after | tail -n1 ) 
     # grep . filters out empty lines
     disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tail -n1 )
-debug1 "disk_before done"
+
     if [[ "$disk_after" == "$disk_before" ]] ; then 
-        debug1 "after = $disk_after"
-        debug1 "before = $disk_before"
         echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
-        debug1 "in else"
             if [[ $OS == "Linux" ]] ; then
                 sed -i s/://g $HOME/.parmanode/after
                 disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
@@ -113,7 +110,6 @@ debug1 "disk_before done"
                 fi
             
             if [[ $OS == "Mac" ]] ; then
-            debug1 "in os MAC"
                 Ddiff=$(($(cat $HOME/.parmanode/after | wc -l)-$(cat $HOME/.parmanode/before |wc -l)))
                 disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
@@ -122,7 +118,6 @@ debug1 "disk_before done"
 
             break
     fi
-    debug1 "before done"
 done
 }
 
@@ -131,7 +126,6 @@ source $HOME/.parmanode/var
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
-debug1 "disk is $disk"
 diskutil info $disk
 echo "
 ########################################################################################

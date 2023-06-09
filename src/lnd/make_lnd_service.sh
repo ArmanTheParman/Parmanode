@@ -1,5 +1,4 @@
 function make_lnd_service {
-debug1 "inside make lnd service"
 
 echo "[Unit]
 Description=LND Lightning Network Daemon

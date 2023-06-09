@@ -23,7 +23,7 @@ function make_bitcoin_directories {
             mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 && \ 
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
     fi
-debug1 ".bitcoin exists?"
+
     if [[ $drive == "internal" ]] ; then 
         mkdir $HOME/.bitcoin >/dev/null 2>&1 && \
         log "bitcoin" ".bitcoin dir made on int drive" 
