@@ -1,0 +1,14 @@
+function add_docker_group {
+
+if [[ $OS == "Linux" ]] ; then true ; else return 1 ; fi
+
+if which docker ; then true ; else return 1 ; fi
+
+if grep docker /etc/group ; then true ; else return 1 ; fi
+
+if id $whoami | grep docker ; then return p ; else 
+    sudo usermod -aG docker $whoami
+    fi
+
+return 0
+}
