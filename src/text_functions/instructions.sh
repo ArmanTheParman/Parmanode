@@ -1,7 +1,10 @@
 function instructions {
-. $HOME/.parmanode/hide_messages.conf >/dev/null
 
-if [[ $message_instructions != "1" ]] ; then 
+if [[ -f $HOME/.parmanode/hide_mesages.conf ]] ; then
+. $HOME/.parmanode/hide_messages.conf >/dev/null
+fi
+
+if [[ ${message_instructions} != "1" ]] ; then 
 set_terminal ; echo "
 ########################################################################################
 
