@@ -18,7 +18,7 @@ else
 installed_config_remove "btcpay-half"
 set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
-
+debug1 "add docker group"
 add_docker_group
 
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
