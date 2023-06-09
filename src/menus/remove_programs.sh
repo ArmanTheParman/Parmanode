@@ -1,4 +1,17 @@
 function remove_programs {
+
+if ! grep -q parmanode $HOME/.parmanode/installed.conf ; then 
+set_terminal ; echo "
+########################################################################################
+
+    Intsall Parmanode before trying to remove anyting... obviously!
+
+########################################################################################
+"
+enter_continue
+return 1 
+fi
+
 while true ; do
 set_terminal
 
