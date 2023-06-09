@@ -1,5 +1,9 @@
 function intro {
+
+if [[ -f $HOME/.parmanode/hide_mesages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
+fi
+
 set_terminal_high
 if [[ $message_intro != "1" ]] ; then 
 while true
