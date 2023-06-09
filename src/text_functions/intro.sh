@@ -1,6 +1,6 @@
 function intro {
 
-if [[ -f $HOME/.parmanode/hide_mesages.conf ]] ; then
+if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
 fi
 
