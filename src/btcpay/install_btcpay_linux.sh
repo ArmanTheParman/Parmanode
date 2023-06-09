@@ -19,6 +19,8 @@ installed_config_remove "btcpay-half"
 set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
 
+add_docker_group
+
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal
     echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."
