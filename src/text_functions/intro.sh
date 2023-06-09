@@ -5,7 +5,7 @@ if [[ -f $HOME/.parmanode/hide_mesages.conf ]] ; then
 fi
 
 set_terminal_high
-if [[ $message_intro != "1" ]] ; then 
+if [[ ${message_intro} != "1" ]] ; then 
 while true
 do
 echo "
