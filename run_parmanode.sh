@@ -59,6 +59,7 @@ source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
 while true ; do
 
 # Continue if user left unfinished
+if [[ -f $HOME/.parmanode/installed.conf ]] ; then
  	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
 	install_btcpay_linux "resume"
 	skip_intro="true"
@@ -70,6 +71,7 @@ while true ; do
 	skip_intro="true"
 	break
 	fi
+fi
 
 break ; done
 
