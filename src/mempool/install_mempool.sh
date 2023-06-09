@@ -42,7 +42,12 @@ installed_config_remove "mempool-half"
 set_terminal ; echo "Resuming Mempool install" ; enter_continue
 fi
 
-add_docker_group
+if [[ $OS == "Linux" ]] ; then
+    if ! id | grep docker ; then 
+        docker_troubleshooting
+        add_docker_group
+        fi
+fi
 
 if [[ $OS == "Mac" ]] ; then 
     if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
