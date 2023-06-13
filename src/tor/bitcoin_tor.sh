@@ -68,6 +68,7 @@ if [[ $1 == "toronly" ]] ; then
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "bind="
     echo "bind=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    fi
 
 if [[ $2 == "onlyout" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
@@ -78,4 +79,3 @@ if [[ $2 == "onlyout" ]] ; then
     sudo systemctl start bitcoind.service
 
 }
-
