@@ -32,13 +32,15 @@ else echo "#####################################################################
 fi
 
 choose "xpq" ; read choice
-case Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
+case $choice in 
+Q|q|quit|QUIT|Quit) exit 0 ;;
+p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" ; return 0 ;;
 "2")
     bitcoin_tor "toronly" ; return 0 ;;
 "3")
-    bitcoin_tor "toronly" "onlyout" ; return 0 ;;
+    bitcoin_tor "toronly" "onlyout" ; return 0 
     true ;;
 "4")
     true ;;
