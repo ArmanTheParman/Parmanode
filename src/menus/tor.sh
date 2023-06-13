@@ -36,7 +36,7 @@ if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi
 
 status|STATUS) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then
+if [[ $OS == "Mac" ]] ; then true
     if brew services list | grep tor | grep "started" >/dev/null 2>&1 ; then set_terminal ; echo "Tor is running"
     enter_continue
     else
