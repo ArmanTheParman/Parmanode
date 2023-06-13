@@ -32,7 +32,7 @@ else echo "#####################################################################
 fi
 
 choose "xpq" ; read choice
-esac Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
+case Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" ; return 0 ;;
 "2")
