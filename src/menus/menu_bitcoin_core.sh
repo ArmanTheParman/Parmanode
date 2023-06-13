@@ -25,6 +25,8 @@ echo "
       (up)       Set, remove, or change RPC user/pass
 
       (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
+      
+      (tor)      Tor menu options for Bitcoin
 
 
 ########################################################################################
