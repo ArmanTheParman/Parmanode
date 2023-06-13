@@ -33,6 +33,7 @@ stop|STOP)
 if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; return 0 ; fi
 if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi
 ;;
+
 status|STATUS) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; return 0 ; fi
 if [[ $OS == "Mac" ]] ; then
