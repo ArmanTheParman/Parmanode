@@ -22,9 +22,25 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
-start|START) sudo systemctl start tor ; return 0 ;;
-stop|STOP) sudo systemctl stop tor return 0 ;;
-status|STATUS) sudo systemctl status tor return 0 ;;
+start|START) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; return 0 
+if [[ $OS == "Mac" ]] ; then brew services start tor ; return 0
+;;
+stop|STOP) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; return 0
+if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0
+;;
+status|STATUS) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; return 0
+if [[ $OS == "Mac" ]] ; then
+    if brew services list | grep tor | grep "started" >/dev/null 2>&1 ; then set_terminal ; echo "Tor is running"
+    enter_continue
+    else
+    set_terminal ; echo "Tor is not running"
+    enter_continue
+    fi
+fi
+;;
 
 *)
 invalid ;;
