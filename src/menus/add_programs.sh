@@ -20,7 +20,7 @@ echo "#                            (f)       Fulcrum (an Electrum Server)       
 if ! grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
 echo "#                            (btcp)    BTCPay Server                                   #
 #                                                                                      #" ; fi
-if ! grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+if ! which tor >/dev/null 2>&1 ; then
 echo "#                            (t)       Tor                                             #
 #                                                                                      #" ; fi
 if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
@@ -49,7 +49,7 @@ echo "#                                      Fulcrum (an Electrum Server)       
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
 echo "#                                      BTCPay Server                                   #
 #                                                                                      #" ; fi
-if grep -q "tor-end" $HOME/.parmanode/installed.conf ; then
+if which tor >/dev/null 2>&1 ; then
 echo "#                                      Tor                                             #
 #                                                                                      #" ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
