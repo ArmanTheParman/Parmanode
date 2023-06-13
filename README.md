@@ -94,7 +94,7 @@ If an external drive is used, a symlink on the internal drive will point to the 
 Open the terminal application and type the following (and hit \<enter\> after each line.
 Also, do note it is case sensitive):
 
-    cd Desktop
+    cd ~/Desktop
     git clone http://github.com/armantheparman/parmanode.git
     cd parmanode
     ./run_parmanode.sh
