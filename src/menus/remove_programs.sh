@@ -48,7 +48,7 @@ echo "                                           (btcp)             BTCPay
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (btcp)             BTCPay (partial) 
 " ; fi
-if which tor ; then                               
+if which tor >/dev/null 2>&1 ; then                               
 echo "                                           (t)                Tor 
 "
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then                               
