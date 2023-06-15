@@ -43,7 +43,7 @@ p|P) return 1 ;;
     bitcoin_tor "toronly" "onlyout" ; return 0 
     true ;;
 "4")
-    true ;;
+    bitcoin_tor_remove ;;
 "5")
     set_terminal
     sudo cat /var/lib/tor/bitcoin-service/hostname

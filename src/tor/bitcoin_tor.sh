@@ -8,13 +8,15 @@ if [[ ! -f /etc/tor/torrc ]] ; then
 set_terminal ; echo "
 ########################################################################################
     /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
-    Parmanode won't be able to automate this process for you. Aborting.
+    Parmanode won't be able to automate this process for you. Sorry! Aborting.
 ########################################################################################
 "
 enter_continue ; return 1 ;
 fi
 
 usermod -a -G tor $USER 
+
+echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
 if sudo grep -q "ControlPort 9051" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "ControlPort 9051" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -31,6 +33,7 @@ if sudo grep -q "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; 
 if sudo grep -q "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
+
 if ! grep -q "listen=1" /$HOME/.bitcoin/bitcoin.conf ; then
     echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf
     fi
@@ -45,7 +48,7 @@ if sudo grep -q "HiddenServicePort 8333 127.0.0.1:8333" \
     echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-#Bitcoind stopping - remember to start it up inside this function later
+#Bitcoind stopping - start it up inside this function later
 
     sudo systemctl restart tor
     sudo systemctl stop bitcoind.service
@@ -74,7 +77,6 @@ if [[ $2 == "onlyout" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
     echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
-
 
     sudo systemctl start bitcoind.service
 
