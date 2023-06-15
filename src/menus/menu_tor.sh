@@ -20,10 +20,11 @@ set_terminal ; echo "
                  - Generally faster and more reliable
                 
 "
-if which tor ; then echo "
+if [[ -f /var/lib/tor/bitcoin-service/hostname ]] ; then 
+get_onion_address_variable >/dev/null ; echo "
 ________________________________________________________________________________________
 
-    5)    What's my onion address?
+           Onion adress: $ONION_ADDR 
 
 ########################################################################################
 "
@@ -43,13 +44,7 @@ p|P) return 1 ;;
     bitcoin_tor "toronly" "onlyout" ; return 0 
     true ;;
 "4")
-    bitcoin_tor_remove ;;
-"5")
-    set_terminal
-    sudo cat /var/lib/tor/bitcoin-service/hostname
-    enter_continue
-    return 0
-    ;;
+    bitcoin_tor_remove ; return 0 ;;
 *)
     invalid ;;
 esac
