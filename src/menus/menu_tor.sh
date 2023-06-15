@@ -3,50 +3,54 @@ while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                        Tor options for Bitcoin (Linux only)
+                                  TOR
 
+                       status)         Check if Tor is running
 
-     1)    Allow Tor connections and clearnet connections
-                 - Helps you and the network overall
+                                           - q to exit
 
-     2)    Force Tor only connections
-                 - Extra private but only helps the Tor network of nodes
-    
-     3)    Force Tor only OUTWARD connections
-                 - Only helps yourself but most private of all options
-                 - You can connect to tor nodes, they can't connect to you
+                       stop)           Stop Tor 
 
-     4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
-                 - Generally faster and more reliable
-                
+                                           - q to exit
+
+                       start)          Start Tor (normally starts automatically)
+
+                                           - q to exit
+  
+######################################################################################## 
 "
-if [[ -f /var/lib/tor/bitcoin-service/hostname ]] ; then 
-get_onion_address_variable >/dev/null ; echo "
-________________________________________________________________________________________
-
-           Onion adress: $ONION_ADDR 
-
-########################################################################################
-"
-else echo "########################################################################################
-"
-fi
-
 choose "xpq" ; read choice
 case $choice in 
-Q|q|quit|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
-"1")
-    bitcoin_tor "torandclearnet" ; return 0 ;;
-"2")
-    bitcoin_tor "toronly" ; return 0 ;;
-"3")
-    bitcoin_tor "toronly" "onlyout" ; return 0 
-    true ;;
-"4")
-    bitcoin_tor_remove ; return 0 ;;
+Q|q|QUIT|Quit|quit) 
+    exit 0 ;; 
+
+p|P) 
+    return 0 ;;
+
+start|START) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services start tor ; return 0 ; fi ;;
+
+stop|STOP) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi ;;
+
+status|STATUS) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then true
+    if brew services list | grep tor | grep "started" >/dev/null 2>&1 ; then set_terminal ; echo "Tor is running"
+    enter_continue
+    else
+    set_terminal ; echo "Tor is not running"
+    enter_continue
+    fi
+fi
+;;
+
 *)
-    invalid ;;
-esac
+invalid ;;
+esac  
+
 done
+return 0
 }
