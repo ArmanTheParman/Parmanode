@@ -17,6 +17,7 @@ fi
 please_wait
 
 usermod -a -G tor $USER >/dev/null 2>&1
+usermod -a -G debian-tor $USER >/dev/null 2>&1
 
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
