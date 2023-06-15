@@ -1,3 +1,5 @@
+Version 3.3.8
+    - Added options to run Bitcoin behind Tor
 Version 3.3.7
     - Electrum Desktop Wallet
     - udev rules automatically installed (only required for Linux)
