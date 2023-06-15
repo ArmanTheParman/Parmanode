@@ -143,6 +143,12 @@ rpcallowip_add
 continue
 ;;
 
+tor|TOR|Tor)
+menu_tor_bitcoin
+continue
+;;
+
+
 p|P)
 return 1
 ;;
