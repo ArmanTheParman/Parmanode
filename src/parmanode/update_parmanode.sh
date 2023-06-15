@@ -1,6 +1,6 @@
 function update_parmanode {
 
-if [[ ! -f $original_dir/src/config/version.conf ]] ; then
+if [[ ! -f $original_dir/version.conf ]] ; then
 set_terminal ; echo "
 ########################################################################################
 
