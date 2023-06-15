@@ -1,4 +1,12 @@
 function menu_tor_bitcoin {
+
+if ! which tor >/dev/null 2>&1 ; then set_terminal
+echo "
+    You need to install Tor first. Aborting.
+    "
+enter_continue
+fi
+
 while true ; do
 set_terminal ; echo "
 ########################################################################################

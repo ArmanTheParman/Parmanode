@@ -28,32 +28,32 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
-if sudo grep -q "ControlPort 9051" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "ControlPort 9051" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "ControlPort 9051" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep -q "CookieAuthentication 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "CookieAuthentication 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "CookieAuthentication 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep -q "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "CookieAuthFileGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep -q "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if ! grep -q "listen=1" /$HOME/.bitcoin/bitcoin.conf ; then
+if ! grep "listen=1" /$HOME/.bitcoin/bitcoin.conf ; then
     echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf
     fi
 
-if sudo grep -q "HiddenServiceDir /var/lib/tor/bitcoin-service/" \
+if sudo grep "HiddenServiceDir /var/lib/tor/bitcoin-service/" \
     /etc/tor/torrc | grep -v "^#" ; then true ; else
     echo "HiddenServiceDir /var/lib/tor/bitcoin-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep -q "HiddenServicePort 8332 127.0.0.1:8332" \
+if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
     /etc/tor/torrc | grep -v "^#" ; then true ; else
     echo "HiddenServicePort 8332 127.0.0.1:8332" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
