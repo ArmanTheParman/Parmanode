@@ -84,6 +84,7 @@ if [[ $2 == "onlyout" ]] ; then
 
 echo "    Changes have been made to torrc file and bitcoin.conf file, and Bitcoin"
 echo "    has been restarted."
+echo ""
 enter_continue
 
 }
