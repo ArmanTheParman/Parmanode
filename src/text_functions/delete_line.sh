@@ -19,8 +19,6 @@ if ! cat $HOME/.parmanode/parmanode.conf | grep -q parmanode-end ; then
                 input_file="$(greadlink -f "$1")"
 		sudo sed -i "" "/${search_string}/d" "$input_file" 
 		fi		
-
-
 fi
 
 }
