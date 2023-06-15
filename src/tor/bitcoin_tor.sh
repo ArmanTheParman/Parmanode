@@ -44,7 +44,7 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if ! grep "listen=1" /$HOME/.bitcoin/bitcoin.conf ; then
+if ! grep "listen=1" $HOME/.bitcoin/bitcoin.conf ; then
     echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf
     fi
 
