@@ -22,7 +22,7 @@ if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (btcp)    BTCPay Server
                             " ; fi
-if which tor ; then
+if which tor >/dev/null 2>&1 ; then
                        echo "    (t)       Tor 
                             " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then
@@ -63,6 +63,7 @@ btcp|BTCP)
 t|T)
     menu_tor
     ;;
+
 lnd|LND|Lnd)
 if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
 if [[ $OS == "Mac" ]] ; then no_mac ; fi
