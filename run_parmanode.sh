@@ -78,6 +78,15 @@ break ; done
 #fix fstab for older parmanode versions
 fix_fstab
 
+if [[ $1 == "debug2" ]] ; then
+
+delete_line "/etc/tor/torrc" "bitcoin-service"
+
+enter_continue
+exit
+
+fi
+
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi

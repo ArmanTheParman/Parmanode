@@ -89,6 +89,7 @@ if [[ $2 == "onlyout" ]] ; then
     fi
 
     sudo systemctl start bitcoind.service
+    sudo systemctl restart tor
 
 echo "    Changes have been made to torrc file and bitcoin.conf file, and Bitcoin"
 echo "    has been restarted."
