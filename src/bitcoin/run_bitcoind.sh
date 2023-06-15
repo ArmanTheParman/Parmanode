@@ -34,11 +34,11 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
-enter_continue
+if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
 fi
 return 0
 }
 
 function start_bitcoind {
-run_bitcoind
+run_bitcoind $1
 }

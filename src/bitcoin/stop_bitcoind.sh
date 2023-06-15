@@ -12,7 +12,7 @@ if [[ $OS == "Mac" ]] ; then
 set_terminal 
 please_wait
 /usr/local/bin/bitcoin-cli stop
-enter_continue
+if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
 fi
 
 return 0
