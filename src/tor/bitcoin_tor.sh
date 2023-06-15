@@ -14,7 +14,9 @@ set_terminal ; echo "
 enter_continue ; return 1 ;
 fi
 
-usermod -a -G tor $USER 
+please_wait
+
+usermod -a -G tor $USER >/dev/null 2>&1
 
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
@@ -79,5 +81,9 @@ if [[ $2 == "onlyout" ]] ; then
     fi
 
     sudo systemctl start bitcoind.service
+
+echo "    Changes have been made to torrc file and bitcoin.conf file, and Bitcoin"
+echo "    has been restarted."
+enter_continue
 
 }
