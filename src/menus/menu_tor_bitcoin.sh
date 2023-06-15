@@ -20,11 +20,12 @@ set_terminal ; echo "
                  - Generally faster and more reliable
                 
 "
-if [[ -f /var/lib/tor/bitcoin-service/hostname ]] ; then 
+if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable >/dev/null ; echo "
-________________________________________________________________________________________
 
-           Onion adress: $ONION_ADDR 
+    Onion adress: $ONION_ADDR 
+
+
 
 ########################################################################################
 "
