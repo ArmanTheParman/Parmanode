@@ -12,6 +12,8 @@ echo "
 
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
+      (restart)  Restart Bitcoind
+
       (c)        How to connect your wallet...........(Otherwise no point to this)
 
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
@@ -41,6 +43,14 @@ run_bitcoind
 
 stop|STOP|Stop)
 stop_bitcoind
+;;
+
+restart|RESTART|Restart)
+if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
+if [[ $OS == "Mac" ]] ; then
+stop_bitcoind "no_interruption"
+run_bitcoind "no_interruption"
+fi
 ;;
 
 c|C)
