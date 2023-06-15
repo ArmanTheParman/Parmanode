@@ -6,7 +6,7 @@ stop_bitcoind
 
 delete_line "/etc/tor/torrc" "# Additions by Parmanode"
 delete_line "/etc/tor/torrc" "bitcoin-service"
-delete_line "/etc/tor/torrc" "127.0.0.1:8333"
+delete_line "/etc/tor/torrc" "127.0.0.1:8332"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"

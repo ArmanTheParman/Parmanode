@@ -18,6 +18,14 @@ please_wait
 
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
 
+#start fresh
+delete_line "/etc/tor/torrc" "# Additions by Parmanode"
+delete_line "/etc/tor/torrc" "bitcoin-service"
+delete_line "/etc/tor/torrc" "127.0.0.1:8332"
+delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
+delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
+delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
+
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
 if sudo grep -q "ControlPort 9051" /etc/tor/torrc | grep -v '^#' ; then true ; else
@@ -45,9 +53,9 @@ if sudo grep -q "HiddenServiceDir /var/lib/tor/bitcoin-service/" \
     echo "HiddenServiceDir /var/lib/tor/bitcoin-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep -q "HiddenServicePort 8333 127.0.0.1:8333" \
+if sudo grep -q "HiddenServicePort 8332 127.0.0.1:8332" \
     /etc/tor/torrc | grep -v "^#" ; then true ; else
-    echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 8332 127.0.0.1:8332" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 #Bitcoind stopping - start it up inside this function later
