@@ -28,33 +28,33 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 
-if sudo grep "ControlPort 9051" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "ControlPort 9051" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "ControlPort 9051" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "CookieAuthentication 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "CookieAuthentication 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "CookieAuthentication 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "CookieAuthFileGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' ; then true ; else
+if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if ! grep "listen=1" $HOME/.bitcoin/bitcoin.conf ; then
-    echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf
+if ! grep "listen=1" $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1 ; then
+    echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
 if sudo grep "HiddenServiceDir /var/lib/tor/bitcoin-service/" \
-    /etc/tor/torrc | grep -v "^#" ; then true ; else
+    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServiceDir /var/lib/tor/bitcoin-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
-    /etc/tor/torrc | grep -v "^#" ; then true ; else
+    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServicePort 8332 127.0.0.1:8332" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
