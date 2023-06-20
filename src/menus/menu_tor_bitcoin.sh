@@ -14,7 +14,7 @@ set_terminal ; echo "
                         Tor options for Bitcoin (Linux only)
 
 
-     1)    Allow Tor connections and clearnet connections
+     1)    Allow Tor connections AND clearnet connections
                  - Helps you and the network overall
 
      2)    Force Tor only connections
