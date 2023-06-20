@@ -5,7 +5,7 @@ set_terminal
 echo "
 ########################################################################################
     
-    The current version of Bitcoin Core that will be installed is 24.0.1
+    The current version of Bitcoin Core that will be installed is 25.0
 
     The pgp key that will be used to verify the SHA256 file list is:
 
@@ -68,21 +68,22 @@ read #using custom function "enter_continue" here produced a strange error I don
      #line) without any user input to continue."
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS 
-curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/SHA256SUMS.asc 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
 	chip="$(uname -m)" >/dev/null 2>&1
     parmanode_conf_add "chip=$chip"
 	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-arm-linux-gnueabihf.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
 
-	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-aarch64-linux-gnu.tar.gz ; fi
+	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 (same file as 32 bit)
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
 		
 	    if [[ $chip == "x86_64" ]] ; then 
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz ; fi
+		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
+
 
 if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
 
