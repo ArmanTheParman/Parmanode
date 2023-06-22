@@ -84,6 +84,12 @@ echo "                                           (e)                Electrum Wal
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (e)                Electrum (partial) 
 " ; fi
+if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (ts)               Tor Server 
+"
+elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (ts)               Tor Server (partial) 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -142,6 +148,10 @@ R|r|RTL|rtl|Rtl)
 
 e|E|Electrum|electrum|ELECTRUM)
     uninstall_electrum
+	return 0
+	;;
+ts|TS|Ts)
+	uninstall_tor_server
 	return 0
 	;;
 
