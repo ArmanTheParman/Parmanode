@@ -15,9 +15,8 @@ fi
 log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
-echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
+echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
-debug1 "pause 1"
 sudo systemctl restart tor
 
 if which apache2 ; then
@@ -67,7 +66,6 @@ echo "server {
 sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; enter_continue ; return 1 ; log "tor-server" "Failed at nginx restart" ; }
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
-debug1 "pause-end"
 success "A Tor server" "being installed."
 return 0
 }
