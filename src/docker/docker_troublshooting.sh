@@ -15,6 +15,8 @@ set_terminal ; echo "
     If you're accessing the computer in the regular way, you'd need to quit
     Parmanode, log out, and log back in. Then return to what you were trying to do.
 
+    On some systems, a complete reboot is required.
+
 ########################################################################################
 "
 enter_continue
