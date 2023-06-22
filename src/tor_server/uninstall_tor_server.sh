@@ -6,7 +6,7 @@ enter_continue
 return 1
 fi
 
-delete_line "/etc/tor/torrc" "/var/lib/tor/tor-server"
+delete_line "/etc/tor/torrc" "tor-server"
 delete_line "/etc/tor/torrc" "127.0.0.1:7001" 
 sudo rm /etc/nginx/conf.d/tor-server.conf >/dev/null
 installed_conf_remove "tor-server"
@@ -27,4 +27,5 @@ read choice
 if [[ $choice == "y" ]] ; then
     sudo apt-get purge nginx
 fi
+return 0
 }

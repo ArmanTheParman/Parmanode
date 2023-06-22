@@ -1,7 +1,5 @@
 function menu_tor_server {
-debug "in menu_tor_server"
 server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
-debug "after onion variable"
 while true ; do set_terminal ; echo "
 ########################################################################################
                                   Tor Server Menu 
@@ -55,9 +53,9 @@ sudo shopt -s dotglob ; sudo chmod -R 755 /tor-server/*
 ;;
 
 m|M)
-sudo chown www-data:www-data /tor-server-move
-sudo chmod 755 /tor-server-move/*
-sudo shopt -s dotglob ; sudo mv -r /tor-server-move/* /tor-server/
+sudo chown -R www-data:www-data /tor-server-move
+sudo chmod -R 755 /tor-server-move/*
+sudo shopt -s dotglob ; sudo mv /tor-server-move/* /tor-server/
 ;;
 
 off|Off|OFF) index_off ;;
@@ -104,12 +102,14 @@ enter_continue
 }
 function index_off {
 
-swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              autoindex off; # autoindex tag"
+swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              # autoindex off"
+sudo systemctl restart nginx
 
 }
 
 function index_on {
 
 swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              autoindex on; # autoindex tag"
+sudo systemctl restart nginx
 
 }

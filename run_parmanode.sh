@@ -85,7 +85,7 @@ enter_continue
 exit
 
 fi
-debug "Pausing here"
+debug1 "Pausing here"
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi

@@ -1,5 +1,6 @@
 # searches for a string, then delete that line for all occurrances of the string.
 # arguments should use full paths to file.
+# careful if the search string has / , then there can be errors
 
 function delete_line {
 

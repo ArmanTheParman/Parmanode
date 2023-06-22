@@ -5,7 +5,7 @@ if [[ $? == 1 ]] ; then return 1 ; fi
 
 if [[ $OS != "Linux" ]] ; then echo "Only available for Linux. Aborting" ; enter_continue ; return 1 ; fi
 
-if ! which tor ; then 
+if ! which tor >/dev/null 2>&1 ; then 
     set_terminal
     echo "Tor needs to be installed in order to proceed. Do that now? y or n."
     read choice
@@ -17,7 +17,7 @@ installed_conf_add "tor-server-start"
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
 echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
-
+debug1 "pause 1"
 sudo systemctl restart tor
 
 if which apache2 ; then
@@ -35,7 +35,7 @@ if which apache2 ; then
     if [[ $choice != "yolo" ]] ; then return 1 ; fi
 fi
 
-if ! which nginx ; then
+if ! which nginx >/dev/null 2>&1 ; then
     set_terminal
     echo "Nginx needs to be installed in order to proceed. Do that now? y or n."
     read choice
@@ -47,7 +47,7 @@ if [[ -d /tor-server ]] ; then true ; else
     sudo chown -R www-data:www-data /tor-server
     sudo chmod -R 755 /tor-server
     sudo chown -R www-data:www-data /tor-server-move
-    sudo chmod -R 755 /tor-server-move/*
+    sudo chmod -R 755 /tor-server-move
 fi
 
 echo "server {
@@ -67,6 +67,7 @@ echo "server {
 sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; enter_continue ; return 1 ; log "tor-server" "Failed at nginx restart" ; }
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
+debug1 "pause-end"
 success "A Tor server" "being installed."
 return 0
 }

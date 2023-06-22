@@ -152,7 +152,6 @@ e|E|Electrum|electrum|ELECTRUM)
 	;;
 ts|TS|Ts)
 	uninstall_tor_server
-	uninstall_tor_server
 	return 0
 	;;
 
