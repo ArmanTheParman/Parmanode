@@ -5,8 +5,7 @@ set_terminal
 install_check "bitcoin" 
     #first check if Bitcoin has been installed
     return_value="$?"
-    if [[ $return_value == "1" ]] ; then
-        log "bitcoin" "install_check return 1, exit" ; return 1 ; fi      
+    if [[ $return_value == "1" ]] ; then return 1 ; fi      
 
 change_drive_selection \
     && log "bitcoin" "install - change drive selection function exit"
