@@ -16,7 +16,7 @@ log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
-echo "HiddenServicePort 7000 127.0.0.1:7000" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
+echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
 
 sudo systemctl restart tor
 
@@ -49,7 +49,7 @@ if [[ -d /tor-server ]] ; then true ; else
 fi
 
 echo "server {
-	listen 7000 default_server;
+	listen 7001 default_server;
 
 	root /tor-server/;
 	index index.html;
@@ -96,7 +96,7 @@ return 1
 fi
 
 delete_line "/etc/tor/torrc" "/var/lib/tor/tor-server"
-delete_line "/etc/tor/torrc" "127.0.0.1:7000" 
+delete_line "/etc/tor/torrc" "127.0.0.1:7001" 
 sudo rm /etc/nginx/conf.d/tor-server.conf >/dev/null
 installed_conf_remove "tor-server"
 
