@@ -39,7 +39,7 @@ if ! which nginx ; then
     set_terminal
     echo "Nginx needs to be installed in order to proceed. Do that now? y or n."
     read choice
-    case $choice in y|Y|Yes|YES|yes) then install_nginx ; else return 1 ;; esac 
+    case $choice in y|Y|Yes|YES|yes) install_nginx ; return 1 ;; esac 
 fi
 
 if [[ -d /tor-server ]] ; then true ; else
