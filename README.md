@@ -84,6 +84,8 @@ Internal drive:
                 |                                                  
                 |--- 3 Docker containers                              (mempool: api, web, db)
                 |--- RTL Docker 
+                |---tor-server-move          Put files here before adding to server 
+                |---tor-server               Location of darkweb server files
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
