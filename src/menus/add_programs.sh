@@ -38,6 +38,9 @@ echo "#                            (r)       RTL Wallet                         
 if ! grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
 echo "#                            (e)       Electrum Wallet                                 #
 #                                                                                      #" ; fi
+if ! grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
+echo "#                            (ts)       Tor Server                                     #
+#                                                                                      #" ; fi
 echo "# Already installed...                                                                 #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -66,6 +69,9 @@ echo "#                                      RTL Wallet                         
 #                                                                                      #" ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
 echo "#                                      Electrum Wallet                                 #
+#                                                                                      #" ; fi
+if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
+echo "#                                      Tor Server                                      #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -122,6 +128,9 @@ case $choice in
       ;;
    e|E|electrum|Electrum|ELECTRUM)
       install_electrum
+      ;;
+   ts|TS|Ts)
+      install_tor_server
       ;;
 
     q|Q|quit|QUIT)
