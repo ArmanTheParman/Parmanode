@@ -16,7 +16,7 @@ log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2&>1
+echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 sudo systemctl restart tor
 
 if which apache2 ; then

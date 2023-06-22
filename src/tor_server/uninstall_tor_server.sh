@@ -9,6 +9,7 @@ fi
 delete_line "/etc/tor/torrc" "tor-server"
 delete_line "/etc/tor/torrc" "127.0.0.1:7001" 
 sudo rm /etc/nginx/conf.d/tor-server.conf >/dev/null
+sudo rm -rf /var/lib/tor/tor-server
 installed_conf_remove "tor-server"
 
 set_terminal
