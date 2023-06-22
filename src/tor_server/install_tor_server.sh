@@ -9,7 +9,7 @@ if ! which tor ; then
     set_terminal
     echo "Tor needs to be installed in order to proceed. Do that now? y or n."
     read choice
-    case $choice in y|Y|Yes|YES|yes) then install_tor ; else return 1 ;; esac 
+    case $choice in y|Y|Yes|YES|yes) install_tor ; else return 1 ;; esac 
 fi
 
 log "tor-server" "Beginning tor-server install"
