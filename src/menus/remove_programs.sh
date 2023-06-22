@@ -150,6 +150,11 @@ e|E|Electrum|electrum|ELECTRUM)
     uninstall_electrum
 	return 0
 	;;
+ts|TS|Ts)
+	uninstall_tor_server
+	uninstall_tor_server
+	return 0
+	;;
 
 p|P)
 	return 0

@@ -1,5 +1,5 @@
 function install_tor_server {
-
+set_terminal
 install_check "tor-server"
 if [[ $? == 1 ]] ; then return 1 ; fi
 
@@ -62,7 +62,7 @@ echo "server {
 		autoindex on; # autoindex tag
 		try_files \$uri \$uri/ =404;
 	}
-}" | sudo tee -a /etc/nginx/conf.d/tor-server.conf
+}" | sudo tee -a /etc/nginx/conf.d/tor-server.conf >/dev/null 2>&1
 
 sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; enter_continue ; return 1 ; log "tor-server" "Failed at nginx restart" ; }
 log "tor-server" "finished install"

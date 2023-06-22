@@ -1,4 +1,4 @@
-function unsinstall_tor-server {
+function uninstall_tor_server {
     
 if ! grep -q "tor-server" ~/.parmanode/installed.conf ; then set_terminal
 echo "Tor-server is not installed. Aborting uninstall." 
@@ -22,7 +22,7 @@ if [[ $choice == "yolo" ]] ; then
 fi
 
 set_terminal
-echo "Do you wish to uninstall Nginx? \"y\" will uninstal."
+echo "Do you wish to uninstall Nginx? \"y\" will uninstall."
 read choice
 if [[ $choice == "y" ]] ; then
     sudo apt-get purge nginx

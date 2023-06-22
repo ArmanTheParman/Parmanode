@@ -39,7 +39,7 @@ if ! grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
 echo "#                            (e)       Electrum Wallet                                 #
 #                                                                                      #" ; fi
 if ! grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
-echo "#                            (ts)       Tor Server                                     #
+echo "#                            (ts)      Tor Server                                     #
 #                                                                                      #" ; fi
 echo "# Already installed...                                                                 #
 #                                                                                      #"

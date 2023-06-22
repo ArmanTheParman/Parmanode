@@ -1,7 +1,7 @@
 function menu_tor_server {
-
-server_onion="$(sudo grep /var/lib/tor/tor-server/hostname)"
-
+debug "in menu_tor_server"
+server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
+debug "after onion variable"
 while true ; do set_terminal ; echo "
 ########################################################################################
                                   Tor Server Menu 
@@ -24,9 +24,9 @@ while true ; do set_terminal ; echo "
              (on)            Turn on file indexing
 
 
-    Onion address: ${server_onion}:7001
+  Onion address: ${server_onion}:7001
 
-    Server location: /tor-server/
+  Server location: /tor-server/
 
 ########################################################################################
 "
