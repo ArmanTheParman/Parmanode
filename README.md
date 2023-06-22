@@ -12,14 +12,14 @@ computers, with the following software (list is growing):
                 Bitcoin
                 Electrum Server (Fulcrum)
                 LND
-                BTCPay 
+                BTCPay (Linux only)
                 Docker
                 Tor
                 Mempool Space
                 Sparrow Bitcoin Wallet
                 Ride The Lightning Wallet
                 Electrum Desktop Wallet
-                Darknet Tor Server
+                Darknet Tor Server (Linux Only)
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -84,8 +84,8 @@ Internal drive:
                 |                                                  
                 |--- 3 Docker containers                              (mempool: api, web, db)
                 |--- RTL Docker 
-                |---tor-server-move          Put files here before adding to server 
-                |---tor-server               Location of darkweb server files
+                |--- tor-server-move          Put files here before adding to server 
+                |--- tor-server               Location of darkweb server files
 
 If an external drive is used, a symlink on the internal drive will point to the .bitcoin directory.
 
