@@ -40,6 +40,9 @@ if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (e)       Electrum Wallet 
                             " ; fi
+if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (ts)      Tor Server 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -82,7 +85,9 @@ r|R|RTL|rtl|Rtl)
 e|E|Electrum|electrum|ELECTRUM)
    menu_electrum
    ;;
-
+ts|TS|Ts)
+   menu_tor_server
+   ;;
 p)
     return 0
     ;;
