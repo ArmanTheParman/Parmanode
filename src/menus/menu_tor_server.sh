@@ -2,12 +2,14 @@ function menu_tor_server {
 
 server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
 
-if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
 
-while true ; do set_terminal ; echo "
+while true ; do 
+if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
+set_terminal ; echo "
 ########################################################################################
                                   Tor Server Menu 
 ########################################################################################
+
 
              (rn)            Retart Nginx 
 
@@ -29,6 +31,7 @@ while true ; do set_terminal ; echo "
   Onion address: ${server_onion}:7001
 
   Server location: /tor-server/
+
 
 ########################################################################################
 "
