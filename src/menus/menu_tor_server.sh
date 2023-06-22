@@ -104,12 +104,12 @@ enter_continue
 }
 function index_off {
 
-swap_string "/etc/nginx/donf.d/tor-server.conf" "autoindex" "              autoindex off; # autoindex tag"
+swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              autoindex off; # autoindex tag"
 
 }
 
 function index_on {
 
-swap_string "/etc/nginx/donf.d/tor-server.conf" "autoindex" "              autoindex on; # autoindex tag"
+swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              autoindex on; # autoindex tag"
 
 }
