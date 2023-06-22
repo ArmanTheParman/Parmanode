@@ -29,7 +29,7 @@ fi
 
 ########################################################################################    
 "
-        if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
+        enter_continue 
         set_terminal
         sudo systemctl start bitcoind.service 
         fi
