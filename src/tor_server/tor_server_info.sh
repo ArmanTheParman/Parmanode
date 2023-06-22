@@ -1,4 +1,4 @@
-unction tor_server_info {
+function tor_server_info {
 
 set_terminal_high
 echo "
