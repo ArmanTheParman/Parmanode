@@ -10,6 +10,6 @@ if [[ ! -f "$input_file" ]]; then
     return 1
 fi
 
-sed -i "/$search_string/c\\$new_line" "$input_file"
+sudo sed -i "/$search_string/c\\$new_line" "$input_file"
 
 }
