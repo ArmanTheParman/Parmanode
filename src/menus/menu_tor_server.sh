@@ -1,5 +1,9 @@
 function menu_tor_server {
+
 server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
+
+if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
+
 while true ; do set_terminal ; echo "
 ########################################################################################
                                   Tor Server Menu 
@@ -17,9 +21,9 @@ while true ; do set_terminal ; echo "
 
              (m)             Move files to server directory
             
-             (off)           Turn off file indexing
+             (off)           Turn off file indexing    [ Currently $status ]
             
-             (on)            Turn on file indexing
+             (on)            Turn on file indexing     [ Currently $status ]
 
 
   Onion address: ${server_onion}:7001
