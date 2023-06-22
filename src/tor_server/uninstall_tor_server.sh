@@ -12,11 +12,13 @@ sudo rm /etc/nginx/conf.d/tor-server.conf >/dev/null
 installed_conf_remove "tor-server"
 
 set_terminal
-echo "Do you wish to delete the /tor-server directory an all its contents?"
+echo "Do you wish to delete the /tor-server directory  and the"
+echo "tor-server-move directory an all its contents?"
 echo "Type \"yolo\" to delete, or anything else to leave it, then <enter>."
 read choice
 if [[ $choice == "yolo" ]] ; then
     sudo rm -rf /tor-server
+    sudo rm -rf /tor-server-move
 fi
 
 set_terminal

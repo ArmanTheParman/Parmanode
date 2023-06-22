@@ -43,9 +43,11 @@ if ! which nginx ; then
 fi
 
 if [[ -d /tor-server ]] ; then true ; else
-    sudo mkdir /tor-server
-    sudo chown www-data:www-data /tor-server
-    sudo chmod 755 /tor-server
+    sudo mkdir /tor-server /tor-server-move
+    sudo chown -R www-data:www-data /tor-server
+    sudo chmod -R 755 /tor-server
+    sudo chown -R www-data:www-data /tor-server-move
+    sudo chmod -R 755 /tor-server-move/*
 fi
 
 echo "server {
@@ -57,7 +59,7 @@ echo "server {
 	server_name _;
 
 	location / {
-		autoindex on;
+		autoindex on; # autoindex tag
 		try_files \$uri \$uri/ =404;
 	}
 }" | sudo tee -a /etc/nginx/conf.d/tor-server.conf
