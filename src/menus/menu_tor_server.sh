@@ -77,7 +77,6 @@ esac
 done
 }
 
-f
 function index_off {
 
 swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              # autoindex off"
