@@ -50,10 +50,9 @@ source ./version.conf
 	
 # Config directory needs to be made
 mkdir $HOME/.parmanode >/dev/null 2>&1 
-debug1 "Pause here to check for error output before clear screen." 
 
 # Load config 
-source $HOME/.parmanode/parmanode.conf	>/dev/null 2>&1
+if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
 
 #OPTIONALITY:
 while true ; do
