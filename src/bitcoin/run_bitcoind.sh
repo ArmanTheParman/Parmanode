@@ -1,5 +1,12 @@
 function run_bitcoind {
 if [[ $OS == "Linux" ]] ; then 
+
+if [[ $1 == "no_interruption" ]] ; then
+sudo systemctl start bitcoind.service
+return 0
+fi
+
+
         set_terminal
         echo "Bitcoin will start in a moment..."
         mount_drive  
@@ -22,7 +29,7 @@ if [[ $OS == "Linux" ]] ; then
 
 ########################################################################################    
 "
-        enter_continue
+        if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
         set_terminal
         sudo systemctl start bitcoind.service 
         fi
