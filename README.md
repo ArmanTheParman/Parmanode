@@ -1,4 +1,4 @@
-# Parmanode 3.3.9
+# Parmanode 3.4.0
 
 #### Instructions to install at the end
 
@@ -19,6 +19,7 @@ computers, with the following software (list is growing):
                 Sparrow Bitcoin Wallet
                 Ride The Lightning Wallet
                 Electrum Desktop Wallet
+                Darknet Tor Server
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
