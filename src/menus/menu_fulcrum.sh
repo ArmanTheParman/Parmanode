@@ -1,6 +1,15 @@
 function menu_fulcrum {
 while true
 do
+
+if sudo cat /etc/tor/torrc | grep "fulcrum" >/dev/null 2>&1 ; then
+    if sudo cat /var/lib/tor/fulcrum-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+    F_tor="on"
+    fi
+else
+    F_tor="off"
+fi
+
 set_terminal
 echo "
 ########################################################################################
@@ -23,10 +32,23 @@ echo "
       (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
     
       (wizard)   Connect this Fulcrum server to Bitcoin on a different computer
+    
+      (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
+
+      (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
+"
+if sudo [ -f /var/lib/tor/fulcrum-service/hostname ] ; then 
+get_onion_address_variable "fulcrum" >/dev/null ; echo "
+
+    Onion adress: $ONION_ADDR_FULCRUM:7002 
+
 
 
 ########################################################################################
 "
+else echo "########################################################################################
+"
+fi
 choose "xpq" ; read choice ; set_terminal
 
 case $choice in
@@ -143,6 +165,14 @@ if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
 if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
 enter_continue
 fi
+;;
+
+tor|TOR|Tor)
+fulcrum_tor
+;;
+
+torx|TORX|Torx)
+fulcrum_tor_remove
 ;;
 
 *)

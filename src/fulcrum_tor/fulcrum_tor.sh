@@ -1,4 +1,4 @@
-function make_fulcrum_tor {
+function fulcrum_tor {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
@@ -18,7 +18,7 @@ please_wait
 
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
 
-if ! cat ~/parmanode/fulcrum/fulcrum.conf | grep "tcp" ; then
+if ! cat ~/parmanode/fulcrum/fulcrum.conf | grep "tcp" >/dev/null 2>&1 ; then
     echo "tcp = 0.0.0.0:50001" | sudo tee -a ~/parmanode/fulcrum/fulcrum.conf >/dev/null 2>&1
     fi
 
