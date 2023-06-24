@@ -26,6 +26,7 @@ fast-sync = 1000
 datadir = $datadir
 bitcoind = 127.0.0.1:8332
 ssl = 0.0.0.0:50002
+tcp = 0.0.0.0:50001
 cert = $HOME/parmanode/fulcrum/cert.pem
 key = $HOME/parmanode/fulcrum/key.pem
 peering = false " > $HOME/parmanode/fulcrum/fulcrum.conf || \

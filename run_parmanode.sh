@@ -86,6 +86,13 @@ exit
 
 fi
 debug1 "Pausing here"
+
+if [[ $2 == "fulcrum" ]] ; then
+make_fulcrum_tor
+debug1 "end"
+exit
+fi
+
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
