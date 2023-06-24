@@ -26,7 +26,9 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onion"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
+if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+fi
 
 if sudo grep "ControlPort 9051" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "ControlPort 9051" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -64,7 +66,7 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
     sudo systemctl restart bitcoind.service #enables tor address
     sudo systemctl stop bitcoind.service
 
-get_onion_address_variable 
+get_onion_address_variable "bitcoin"
 
 if [[ $1 == "torandclearnet" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="

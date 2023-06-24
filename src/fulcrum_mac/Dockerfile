@@ -45,6 +45,7 @@ WORKDIR /home/parman/parmanode/fulcrum/
 RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "bitcoind = 127.0.0.1:8332" >> fulcrum.conf \
 && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \
+&& echo "tcp = 0.0.0.0:50001" >> fulcrum.conf \
 && echo "cert = /home/parman/parmanode/fulcrum/cert.pem" >> fulcrum.conf \
 && echo "key = /home/parman/parmanode/fulcrum/key.pem" >> fulcrum.conf \
 && echo "fast-sync = 2000" >> fulcrum.conf \
