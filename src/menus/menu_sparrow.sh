@@ -12,6 +12,8 @@ while true ; do set_terminal ; echo "
 
       (ssl)       Connect Sparrow to Fulcrum vis ssl
 
+      (rtor)      Connect to a remote Electrum/Fulcrum server (eg a friend's)
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -33,15 +35,13 @@ sparrow_fulcrumtor
 ;;
 
 ssl|Ssl|SSL)
+no_mac
 sparrow_fulcrumssl
 ;;
 
-#rc|RC|Rc|rC)
-#rm -rf $HOME/.sparrow/*
-#cp $original_dir/src/sparrow/config $HOME/.sparrow/
-#echo "The sparrow configuration directory has been emptied, and a new configuration file has been creatd."
-#enter_continue
-#;;
+st|ST|St)
+sparrow_remote
+;;
 
 *)
 invalid
