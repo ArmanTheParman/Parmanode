@@ -13,7 +13,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
-make_sparrow_config "fulcrum-tor"
+make_sparrow_config 
 
 if [[ $OS == "Linux" ]] ; then udev ; fi
 
