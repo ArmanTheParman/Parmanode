@@ -1,19 +1,26 @@
 function menu_sparrow {
 while true ; do set_terminal ; echo "
 ########################################################################################
-                                Sparrow Menu                               
+                                 Sparrow Menu                               
 ########################################################################################
 
-      (start)     Start Sparrow 
 
-      (d)         Connect Sparrow directly to Bitcoin Core via tcp (defualt)
+         (start)                 Start Sparrow 
 
-      (tor)       Connect Sparrow via Tor
 
-      (ssl)       Connect Sparrow to Fulcrum vis ssl
+----------------------------------------------------------------------------------------
 
-      (rtor)      Connect to a remote Electrum/Fulcrum server (eg a friend's)
-                      - available for Mac
+                          CONFIGURATION MODIFICATIONS
+                          
+         (d)       Connect Sparrow directly to Bitcoin Core via tcp (defualt)
+
+         (tor)     Connect Sparrow via Tor
+
+         (ssl)     Connect Sparrow to Fulcrum vis ssl
+
+         (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
+                    - available for Mac
+
 
 ########################################################################################
 "
