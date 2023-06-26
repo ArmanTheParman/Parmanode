@@ -31,16 +31,16 @@ elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then
 echo "                                           (bitcoin)          Bitcoin (partial)
 " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (f)                Fulcrum Server
+echo "                                           (fulcrum)          Fulcrum Server
 "
 elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (f)                Fulcrum (partial) 
+echo "                                           (fulcrum)          Fulcrum (partial)
 " ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (d)                Docker 
+echo "                                           (docker)           Docker 
 "
 elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (d)                Docker (partial) 
+echo "                                           (docker)           Docker (partial) 
 " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (btcp)             BTCPay 
@@ -49,10 +49,10 @@ elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then
 echo "                                           (btcp)             BTCPay (partial) 
 " ; fi
 if which tor >/dev/null 2>&1 ; then                               
-echo "                                           (t)                Tor 
+echo "                                           (tor)              Tor 
 "
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then                               
-echo "                                           (t)                Tor (partial)
+echo "                                           (tor)              Tor (partial)
 " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (lnd)              LND 
@@ -108,12 +108,12 @@ uninstall_bitcoin
 return 0
 ;;
 
-f|F)
+fulcrum|Fulcrum|FULCRUM)
 uninstall_fulcrum
 return 0
 ;;
 
-d|D) 
+docker|Docker|DOCKER)
 if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; continue ; fi
 uninstall_docker_linux 
 return 0
@@ -124,7 +124,8 @@ uninstall_btcpay
 return 0
 ;;
 
-t|T|TOR|Tor|tor)
+TOR|Tor|tor)
+no_mac
 uninstall_tor
 return 0
 ;;
@@ -151,6 +152,7 @@ e|E|Electrum|electrum|ELECTRUM)
 	return 0
 	;;
 ts|TS|Ts)
+	no_mac
 	uninstall_tor_server
 	return 0
 	;;
