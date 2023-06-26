@@ -1,5 +1,5 @@
 function no_mac {
-
+if [[ $OS == "Mac" ]] ; then
 set_terminal ; echo "
 ########################################################################################
 
@@ -9,4 +9,5 @@ set_terminal ; echo "
 "
 enter_continue
 return 0
+fi
 }

@@ -4,7 +4,7 @@ while true ; do set_terminal ; echo "
                                 Sparrow Menu                               
 ########################################################################################
 
-      (start)          Start Sparrow 
+      (start)     Start Sparrow 
 
       (d)         Connect Sparrow directly to Bitcoin Core via tcp (defualt)
 
@@ -28,6 +28,7 @@ sparrow_core
 ;;
 
 tor|Tor|TOR)
+no_mac
 sparrow_fulcrumtor
 ;;
 
