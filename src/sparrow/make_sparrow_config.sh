@@ -19,18 +19,19 @@ get_onion_address_variable "fulcrum" >/dev/null
     fi
 
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
-
-# the following odd bit of code is because electrumServer comes after useLegacyCoreWallet
-# and using a placehoder corrupts the file.
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$ONION_ADDR_FULCRUM:7002\","
-
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
 fi
-}
 
 if [[ $1 == "fulcrumssl" ]] ; then
-
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"ssl://127.0.0.1:50002\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
 fi
+
+if [[ $1 == "fulcrumremote" ]] then
+if ! which tor ; then install_tor ; fi
+swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
+swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$REMOTE_TOR_ADDR:$REMOTE_PORT\","
+swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+}
