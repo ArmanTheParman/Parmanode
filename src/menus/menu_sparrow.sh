@@ -1,10 +1,26 @@
 function menu_sparrow {
 while true ; do set_terminal ; echo "
 ########################################################################################
-                                Sparrow Menu                               
+                                 Sparrow Menu                               
 ########################################################################################
 
-      (start)          Start Sparrow 
+
+         (start)                 Start Sparrow 
+
+
+----------------------------------------------------------------------------------------
+
+                          CONFIGURATION MODIFICATIONS
+                          
+         (d)       Connect Sparrow directly to Bitcoin Core via tcp (defualt)
+
+         (tor)     Connect Sparrow via Tor
+
+         (ssl)     Connect Sparrow to Fulcrum vis ssl
+
+         (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
+                    - available for Mac
+
 
 ########################################################################################
 "
@@ -17,12 +33,23 @@ start|Start|START|S|s)
 run_sparrow
 return 0 ;;
 
-#rc|RC|Rc|rC)
-#rm -rf $HOME/.sparrow/*
-#cp $original_dir/src/sparrow/config $HOME/.sparrow/
-#echo "The sparrow configuration directory has been emptied, and a new configuration file has been creatd."
-#enter_continue
-#;;
+d|D)
+sparrow_core
+;;
+
+tor|Tor|TOR)
+no_mac
+sparrow_fulcrumtor
+;;
+
+ssl|Ssl|SSL)
+no_mac
+sparrow_fulcrumssl
+;;
+
+rtor|Rtor|RTOR)
+sparrow_remote
+;;
 
 *)
 invalid
