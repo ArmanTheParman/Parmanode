@@ -34,4 +34,5 @@ if ! which tor ; then install_tor ; fi
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$REMOTE_TOR_ADDR:$REMOTE_PORT\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+fi
 }
