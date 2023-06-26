@@ -20,6 +20,8 @@ while true ; do set_terminal ; echo "
 
          (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
                     - available for Mac
+         
+         (torssl)  Connect by Tor with SSL (NOT AVAILABLE)
 
 
 ########################################################################################
