@@ -13,7 +13,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
-make_sparrow_config
+make_sparrow_config "fulcrum-tor"
 
 if [[ $OS == "Linux" ]] ; then udev ; fi
 
@@ -25,8 +25,8 @@ set_terminal ; echo "
                                 S U C C E S S ! !
     
     Sparrow has been installed. The executable is in /usr/local/bin and available 
-    in your PATH. There is also a handy icon on your desktop which is 
-    "double-clickable" to run.
+    in your PATH. It's best though, to run Sparrow from the Parmanode menu, because
+    of reasons. 
 
 ########################################################################################
 "
