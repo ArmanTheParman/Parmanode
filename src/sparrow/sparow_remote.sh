@@ -36,6 +36,7 @@ echo "
 read REMOTE_PORT
 rm $HOME/.sparrow/config
 make_sparrow_config "fulcrumremote"
+break
 ;;
 esac
 done

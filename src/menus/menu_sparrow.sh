@@ -13,6 +13,7 @@ while true ; do set_terminal ; echo "
       (ssl)       Connect Sparrow to Fulcrum vis ssl
 
       (rtor)      Connect to a remote Electrum/Fulcrum server (eg a friend's)
+                      - available for Mac
 
 ########################################################################################
 "
@@ -39,7 +40,7 @@ no_mac
 sparrow_fulcrumssl
 ;;
 
-st|ST|St)
+rtor|Rtor|RTOR)
 sparrow_remote
 ;;
 
