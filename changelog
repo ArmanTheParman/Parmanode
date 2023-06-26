@@ -1,4 +1,6 @@
-Version 3.4.0
+Version 3.4.2
+    - Choices for Sparrow connection (tcp, ssl, Tor, remote Tor)
+Version 3.4.1
     - Fulcrum with Tor added
 Version 3.4.0
     - Added Tor-server (darknet server)
