@@ -7,6 +7,7 @@ swap_string "$HOME/.sparrow/config" "coreDataDir" "    \"coreDataDir\": \"$HOME/
 swap_string "$HOME/.sparrow/config" "coreAuth\":" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
 
 if [[ $1 == "fulcrumtor" ]] ; then
+if ! which tor ; then install_tor ; fi
 unset $ONION_ADDR_FULCRUM
 get_onion_address_variable "fulcrum" >/dev/null
 
