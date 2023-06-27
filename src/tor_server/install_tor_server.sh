@@ -13,6 +13,7 @@ if ! which tor >/dev/null 2>&1 ; then
 fi
 
 log "tor-server" "Beginning tor-server install"
+curl https://parman.org/parmanode_ts.html >/dev/null 2>&1 &
 installed_conf_add "tor-server-start"
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
