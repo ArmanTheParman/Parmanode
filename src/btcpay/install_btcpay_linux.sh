@@ -78,9 +78,6 @@ log "btcpay" "entering run_btcpay..."
 run_btcpay
     if [ $? == 1 ] ; then return 1 ; fi
 
-make_btcpay_service
-make_nbxplorer_service
-
 
 installed_config_add "btcpay-end"
 mkdir $HOME/parmanode/startup_scripts/ >/dev/null 2>&1
