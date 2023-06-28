@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #check if in debugging mode
-if [[ $1 == "debug" || "$1" == "debug=1" ]] ; then exportl debug=1 ; else export debug=0 ; fi
+if [[ $1 == "debug" || "$1" == "debug=1" ]] ; then export debug=1 ; else export debug=0 ; fi
 
 #save position of working directory
 original_dir=$(pwd) >/dev/null 2>&1
