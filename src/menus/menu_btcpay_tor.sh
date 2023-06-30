@@ -9,11 +9,13 @@ set_terminal ; echo "
                                BTCPay over Tor Menu 
 ########################################################################################
 
-    To access your BTCPay Server over Tor, you need to enter the Onion address below
+    To access your BTCPay Server over Tor, you need to enter the onion address below
     (and port) into a Tor browser. You can do this from any computer, on any
     operating system.   
 
-    Onion address: http://${server_onion}:7003
+    Onion address: 
+    
+    http://${btcpay_onion}:7003
 
 ########################################################################################
 "
