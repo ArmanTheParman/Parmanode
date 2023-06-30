@@ -1,6 +1,6 @@
 function nbxplorer_config {
-    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=")
-    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=")
+    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=") >/dev/null 2>&1
+    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=") >/dev/null 2>&1
 
 echo "
 btc.rpc.user=${rpcuser}

@@ -1,5 +1,7 @@
 Version 3.4.3
     - BTCPay can be exposed over Tor
+    - Allow BTCPay installation without Bitcoin installation
+    - Allow Fulcrum installation without Bitcoin installation
 Version 3.4.2
     - Choices for Sparrow connection (tcp, ssl, Tor, remote Tor)
 Version 3.4.1
