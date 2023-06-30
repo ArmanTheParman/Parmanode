@@ -1,9 +1,13 @@
 function install_tor_server {
-set_terminal
-install_check "tor-server"
-if [[ $? == 1 ]] ; then return 1 ; fi
+if [[ -z $1 ]] ; then
+    install="ts"
+else
+    install="$1"
+fi
 
-if [[ $OS != "Linux" ]] ; then echo "Only available for Linux. Aborting" ; enter_continue ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no mac ; return 1 ; fi
+
+set_terminal
 
 if ! which tor >/dev/null 2>&1 ; then 
     set_terminal
@@ -11,14 +15,6 @@ if ! which tor >/dev/null 2>&1 ; then
     read choice
     case $choice in y|Y|Yes|YES|yes) install_tor ; return 1 ;; esac 
 fi
-
-log "tor-server" "Beginning tor-server install"
-curl https://parman.org/parmanode_ts.html >/dev/null 2>&1 &
-installed_conf_add "tor-server-start"
-
-echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-sudo systemctl restart tor
 
 if which apache2 ; then
     set_terminal
@@ -34,6 +30,19 @@ if which apache2 ; then
     read choice
     if [[ $choice != "yolo" ]] ; then return 1 ; fi
 fi
+
+if [[ $install == "ts" ]] ; then
+install_check "tor-server"
+if [[ $? == 1 ]] ; then return 1 ; fi
+
+log "tor-server" "Beginning tor-server install"
+curl https://parman.org/parmanode_ts.html >/dev/null 2>&1 &
+installed_conf_add "tor-server-start"
+
+echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+sudo systemctl restart tor
+
 
 if ! which nginx >/dev/null 2>&1 ; then
     set_terminal
@@ -68,6 +77,35 @@ sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; ente
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
 success "A Tor server" "being installed."
+
+fi # end if install = ts
+
+
+if [[ $install == "btcpay" ]] ; then
+
+install_check "btcpTOR"
+if [[ $? == "1" ]] ; then return 1 ; fi
+
+log "btcpTOR" "Beginning btcpTOR install"
+curl http://parman.org/downloadable/counter/parmanode_btcpTOR.html >/dev/null 2>&1 &
+installed_conf_add "btcpTOR-start"
+
+if [ -z $selfIP ] ; then
+echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServicePort 7003 127.0.0.1:23001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+else
+echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServicePort 7003 $selfIP:$selfPort" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+fi
+
+sudo systemctl restart tor
+
+installed_conf_add "btcpTOR-end"
+
+success "BTCPay over Tor" "being installed."
+
+fi # end if install=btcpay
+
 return 0
 }
 
