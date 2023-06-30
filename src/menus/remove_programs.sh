@@ -90,6 +90,12 @@ echo "                                           (ts)               Tor Server
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then                               
 echo "                                           (ts)               Tor Server (partial) 
 " ; fi
+if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (btcpt)            Tor Server 
+"
+elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then                               
+echo "                                           (btcpt)            Tor Server (partial) 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -125,7 +131,7 @@ return 0
 ;;
 
 TOR|Tor|tor)
-no_mac
+no_mac || return 1
 uninstall_tor
 return 0
 ;;
@@ -152,10 +158,12 @@ e|E|Electrum|electrum|ELECTRUM)
 	return 0
 	;;
 ts|TS|Ts)
-	no_mac
+	no_mac || return 1
 	uninstall_tor_server
 	return 0
 	;;
+btcpt|BTCPT)
+	uninstall_btcpay_tor
 
 p|P)
 	return 0
