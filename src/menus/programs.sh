@@ -43,6 +43,9 @@ if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
                        echo "    (ts)      Tor Server 
                             " ; fi
+if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then
+                       echo "    (btcpt)   BTCPay over Tor 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -87,6 +90,9 @@ e|E|Electrum|electrum|ELECTRUM)
    ;;
 ts|TS|Ts)
    menu_tor_server
+   ;;
+btcpt|BTCPT)
+   menu_btcpay_tor
    ;;
 p)
     return 0

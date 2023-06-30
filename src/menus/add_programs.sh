@@ -41,6 +41,9 @@ echo "#                            (e)       Electrum Wallet                    
 if ! grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
 echo "#                            (ts)      Tor Server (Darknet Server)                     #
 #                                                                                      #" ; fi
+if ! grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then
+echo "#                            (btcpt)   BTCP over Tor (Darknet BTCPay)                  #
+#                                                                                      #" ; fi
 echo "# Already installed...                                                                 #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then
@@ -72,6 +75,9 @@ echo "#                                      Electrum Wallet                    
 #                                                                                      #" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then
 echo "#                                      Tor Server                                      #
+#                                                                                      #" ; fi
+if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then
+echo "#                                      BTCP over Tor (Darknet BTCPay)                  #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -131,6 +137,10 @@ case $choice in
       ;;
    ts|TS|Ts)
       install_tor_server
+      ;;
+   
+   btcpt|BTCPT)
+      install_btcpay_tor
       ;;
 
     q|Q|quit|QUIT)
