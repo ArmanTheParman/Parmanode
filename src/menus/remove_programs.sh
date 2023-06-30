@@ -163,7 +163,9 @@ ts|TS|Ts)
 	return 0
 	;;
 btcpt|BTCPT)
+	no_mac || return 1
 	uninstall_btcpay_tor
+    ;;
 
 p|P)
 	return 0
