@@ -30,6 +30,7 @@ u|U) export own_btcpay=1
 *) invalid ;;
 esac
 done
+fi # end if btcpay not installed with parmanode
 
 if [[ $own_btcpay == 1 ]] ; then
 
@@ -79,13 +80,14 @@ export serfPort
 break
 done
 
+fi #end if own btcpay
 
 
 install_tor_server "btcpay"
 
 unset selfPort selfIP
 
-btcpayTOR_onion="$(sudo cat /var/lib/tor/btcpTOR-server/hostname)"
+btcpayTOR_onion="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
 set_terminal
 echo "
 ########################################################################################
@@ -104,4 +106,4 @@ echo "
  ########################################################################################
 "
 enter_continue
-    }
+}

@@ -1,5 +1,5 @@
 function install_tor_server {
-if [[ -z $1 ]] then
+if [[ -z $1 ]] ; then
     install="ts"
 else
     install="$1"
@@ -77,7 +77,9 @@ sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; ente
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
 success "A Tor server" "being installed."
-fi
+
+fi # end if install = ts
+
 
 if [[ $install == "btcpay" ]] ; then
 
@@ -95,11 +97,14 @@ else
 echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 echo "HiddenServicePort 7003 $selfIP:$selfPort" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 fi
+
 sudo systemctl restart tor
 
 installed_conf_add "btcpTOR-end"
 
 success "BTCPay over Tor" "being installed."
+
+fi # end if install=btcpay
 
 return 0
 }

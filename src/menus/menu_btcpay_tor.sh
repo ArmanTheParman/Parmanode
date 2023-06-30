@@ -4,7 +4,6 @@ no_mac || return 1
 
 btcpay_onion="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
 
-while true ; do 
 set_terminal ; echo "
 ########################################################################################
                                BTCPay over Tor Menu 
