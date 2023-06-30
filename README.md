@@ -1,4 +1,4 @@
-# Parmanode 3.4.2
+# Parmanode 3.4.3
 
 #### Instructions to install at the end
 
@@ -10,9 +10,9 @@ Parmanode is an automated installation wizard and menu for desktop
 computers, with the following software (list is growing):
 
                 Bitcoin
-                Electrum Server (Fulcrum)
+                Electrum Server (Fulcrum) - via Docker
                 LND
-                BTCPay (Linux only)
+                BTCPay (Linux only) +/- over Tor
                 Docker
                 Tor
                 Mempool Space
