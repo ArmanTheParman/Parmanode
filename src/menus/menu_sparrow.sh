@@ -40,12 +40,12 @@ sparrow_core
 ;;
 
 tor|Tor|TOR)
-no_mac
+no_mac || return 1
 sparrow_fulcrumtor
 ;;
 
 ssl|Ssl|SSL)
-no_mac
+no_mac || return 1
 sparrow_fulcrumssl
 ;;
 
