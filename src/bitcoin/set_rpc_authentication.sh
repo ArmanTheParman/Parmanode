@@ -1,4 +1,9 @@
 function set_rpc_authentication {
+if [[ $bitcoin == "yolo" ]]
+	then export rpcuser=null ; export rpcpassword=null
+	return 
+	fi
+
 while true ; do
 set_terminal_bit_higher ; echo "
 ########################################################################################

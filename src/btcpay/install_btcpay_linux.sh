@@ -29,8 +29,15 @@ fi
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal
     echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."
-    enter_continue
+    echo "If you wish to ignore this advice at your own risk, type yolo and <enter>"
+    echo "Otherwise, hit <enter> to exit"
+    read choice
+
+    if [[ $choice != "yolo" ]] ; then
+    export bitcoin="yolo"
     return 1
+    fi
+
     fi
 
 while true ; do user_pass_check_exists 
