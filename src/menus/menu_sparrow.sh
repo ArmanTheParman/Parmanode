@@ -12,7 +12,7 @@ while true ; do set_terminal ; echo "
 
                           CONFIGURATION MODIFICATIONS
                           
-         (d)       Connect Sparrow directly to Bitcoin Core via tcp (defualt)
+         (d)       Connect Sparrow directly to Bitcoin Core via tcp (default)
 
          (tor)     Connect Sparrow via Tor
 
