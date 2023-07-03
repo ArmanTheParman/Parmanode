@@ -1,6 +1,7 @@
 function installed_config_add {
 
 program="$1"
+
 installed_config_remove "$program" # ensures only single entry.
 
 echo "$program" >> $HOME/.parmanode/installed.conf

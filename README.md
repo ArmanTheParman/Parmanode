@@ -114,6 +114,10 @@ initially. You'll need to install git like this...
 
 You can then close terminal, open it again, and try the sequence of commands above again.
 
+On Macs, to use git, you may be asked to install the *command line developer tools*. You
+will be given the option to do so with a popup window, and you'll need to proceed with 
+it to use git. It takes a few minutes to install.
+
 If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
 
 From then on, to run Parmanode, you can double click the run_parmanode.sh file. If you

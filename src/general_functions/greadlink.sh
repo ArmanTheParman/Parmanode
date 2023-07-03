@@ -2,6 +2,9 @@ function greadlink_check {
 
 if ! command -v greadlink ; then 
 get_greadlink
+if [ $? == 0 ] ; then installed_conf_add "greadlink" ; fi
+else
+installed_conf_add "greadlink"
 fi
 
 }
@@ -11,8 +14,6 @@ function get_greadlink {
 
 info_greadlink
 brew install coreutils
-
-
 }
 
 function info_greadlink {
