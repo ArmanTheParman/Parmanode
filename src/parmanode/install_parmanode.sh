@@ -10,10 +10,9 @@ curl https://parman.org/downloadable/parmanode_install.html >/dev/null 2>&1 &
 update_computer 
 
 if [[ $OS == "Mac" ]] ; then 
+
 	brew_check 
-	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
-	bitcoin_dependencies 
-	if [ $? == 1 ] ; then return 1 ; fi   #returns to menu if user chose "p" inside function 
+	if [ $? == 1 ] ; then return 1 ; fi   
 
     greadlink_check 
         
@@ -25,16 +24,18 @@ gpg_check
 curl_check
 make_dot_parmanode
 
-choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
-    return_value=$?
-    if [[ $return_value == "1" ]] ; then return 1 ; fi
-    if [[ $return_value == "2" ]] ; then return 2 ; fi
+    #changing to make drive selection only during bitcoin installation.
+    #choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
+    #    return_value=$?
+    #    if [[ $return_value == "1" ]] ; then return 1 ; fi
+    #    if [[ $return_value == "2" ]] ; then return 2 ; fi
 
 make_home_parmanode 
     if [ $? == 1 ] ; then return 1 ; fi #exiting this function with return 1 takes user to menu.
         
 # Update config files
-    parmanode_conf_add "drive=$hdd" 
+
+#   parmanode_conf_add "drive=$hdd" 
     installed_config_add "parmanode-end" 
 
 # Set variables
@@ -50,7 +51,7 @@ set_terminal ; echo "
 
                            y)      Yes, install Bitcoin
 
-                           n)      No, I will do it later
+                           n)      No, I might do it later
 
 ########################################################################################
 "

@@ -7,9 +7,7 @@ install_check "fulcrum"
   if [[ $return_value == "1" ]] ; then return 1 ; fi       #Fulcrum already installed
   log "fulcrum" "install check passed."
 
-fulcrum_drive_selection
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "drive seletected as $drive_fulcrum"
+choose_and_prepare_drive_parmanode "Fulcrum"
 
 fulcrum_make_directories
   if [[ $? == 1 ]] ; then return 1 ; fi
@@ -23,8 +21,7 @@ download_fulcrum
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Download exited." 
 
-fulcrum_gpg
-  if [[ $? == 1 ]] ; then return 1 ; fi
+fulcrum_gpgfulcrum_drive_selectionthen return 1 ; fi
   log "fulcrum" "gpg exited." 
 
 extract_fulcrum_tar

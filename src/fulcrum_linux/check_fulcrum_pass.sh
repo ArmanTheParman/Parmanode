@@ -2,8 +2,7 @@ function check_fulcrum_pass {
 set_terminal
 while true ; do
 if which bitcoin-cli >/dev/null ; then
-if ! cat $HOME/.bitcoin/bitcoin.conf | grep -q "rpcuser" 
-then
+if ! cat $HOME/.bitcoin/bitcoin.conf | grep -q "rpcuser" ; then
 
 while true ; do
 set_terminal ; echo "
@@ -29,7 +28,9 @@ else # if there's a user/pass, exit the function with exit code 0, and allow Ful
 return 0
 fi
 
-done # outer while loop
+else
+break
 fi # end if bitcoin-cli exists
+done # outer while loop
 
 }
