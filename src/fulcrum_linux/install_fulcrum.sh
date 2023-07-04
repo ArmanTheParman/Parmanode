@@ -21,7 +21,8 @@ download_fulcrum
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "Download exited." 
 
-fulcrum_gpgfulcrum_drive_selectionthen return 1 ; fi
+fulcrum_gpg
+  if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "gpg exited." 
 
 extract_fulcrum_tar
