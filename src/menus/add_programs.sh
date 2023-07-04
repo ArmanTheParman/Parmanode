@@ -156,7 +156,7 @@ case $choice in
       fi
       ;;
    ts|TS|Ts)
-      if [[ $toradd == 1 ]] ; then
+      if [[ $torserveradd == 1 ]] ; then
       install_tor_server
       fi
       ;;
