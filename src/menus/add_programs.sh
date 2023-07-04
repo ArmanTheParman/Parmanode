@@ -110,7 +110,7 @@ case $choice in
         fi
         ;;
     btcp|BTCP|Btcp)
-       if [[ $btcpadd == 1 ]] ; then
+       if [[ $btcpayadd == 1 ]] ; then
        if [[ $OS == "Linux" ]] ; then 
        install_btcpay_linux ; return 0 ; fi
        if [[ $OS == "Mac" ]] ; then 
