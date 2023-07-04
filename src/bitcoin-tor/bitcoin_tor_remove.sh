@@ -1,6 +1,6 @@
 function bitcoin_tor_remove {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then return 1 ; fi
 
 stop_bitcoind
 
@@ -13,11 +13,11 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
 sudo rm -rf /var/lib/tor/bitcoin*
 rm $HOME/.bitcoin/*onion*
-run_bitcoind
+if which bitcoind ; then run_bitcoind ; fi
 
 set_terminal
 echo "
-Bitcoin changes have been made and the program has been restarted."
+Tor connection for Bitcoin disabled"
 enter_continue
 return 0
 
