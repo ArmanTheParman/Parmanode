@@ -4,6 +4,7 @@ Version 3.4.4
     - Improved uninstall process 
     - Menu improvements (hidden stuff)
     - fixed issue with Deiban docker install
+    - Docker permission issues fixed for Linux
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
