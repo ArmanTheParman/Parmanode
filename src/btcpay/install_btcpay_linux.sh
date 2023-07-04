@@ -24,7 +24,7 @@ fi
     if ! id | grep docker ; then 
         add_docker_group
             if ! id | grep docker ; then
-            docker_troubleshooting
+            docker_troubleshooting "btcpay"
             fi
         fi
 else
