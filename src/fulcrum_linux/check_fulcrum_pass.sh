@@ -28,9 +28,15 @@ else # if there's a user/pass, exit the function with exit code 0, and allow Ful
 return 0
 fi
 
+<<<<<<< HEAD
 else
 break
+=======
+
+>>>>>>> master
 fi # end if bitcoin-cli exists
+done # outer while loop
+
 done # outer while loop
 
 }
