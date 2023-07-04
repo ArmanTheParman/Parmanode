@@ -3,6 +3,7 @@ Version 3.4.4
       to work without Bitcoin Core instaled.
     - Improved uninstall process 
     - Menu improvements (hidden stuff)
+    - fixed issue with Deiban docker install
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
