@@ -45,17 +45,17 @@ set_terminal
 case $choice in
 
 i|I)
-    if [[ $parmanodemain ==1 ]] ; then
+    if [[ $parmanodemain == 1 ]] ; then
     install_parmanode 
     fi
     ;;
 add|Add| ADD)
-    if [[ $parmanodemain ==0 ]] ; then
+    if [[ $parmanodemain == 0 ]] ; then
     menu_add_programs
     fi
     ;;
 use|USE|Use)
-    if [[ $parmanodemain ==0 ]] ; then
+    if [[ $parmanodemain == 0 ]] ; then
     menu_programs 
     fi 
     ;;

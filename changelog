@@ -2,6 +2,7 @@ Version 3.4.4
     - Cleaner install of Parmanode, allowing other programs
       to work without Bitcoin Core instaled.
     - Improved uninstall process 
+    - Menu improvements (hidden stuff)
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
