@@ -45,7 +45,7 @@ enter_continue
 fi
 
 if [[ $OS == "Linux" ]] ; then
-
+echo "installing udev rules..."
 udev
 
 set_terminal ; echo "
