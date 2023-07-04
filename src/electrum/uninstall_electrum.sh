@@ -1,6 +1,11 @@
 function uninstall_electrum {
+set_terminal ; echo "Are you sure you want to uninstall Electrum? y or n. "
+echo ""
+read choice
+if [[ $choice == y ]] ; then true ; else return 1 ; fi
 
-rm -rf $HOME/parmanode/electrum
+
+rm -rf $HOME/parmanode/electrum >/dev/null 2>&1
 installed_config_remove "electrum"
 if [[ $OS == "Mac" ]] ; then rm -rf /Applications/Electrum.app ; fi
 
