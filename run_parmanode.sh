@@ -59,14 +59,29 @@ while true ; do
 
 # Continue if user left unfinished
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then
+
  	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
 	install_btcpay_linux "resume"
 	skip_intro="true"
 	break
 	fi
 
+	if cat $HOME/.parmanode/installed.conf | grep "dockerexit=1" ; then
+	export dokerexitbtcpay=1
+	install_btcpay_linux || { skip_intro="false" ; break ; }
+	skip_intro="true"
+	break
+	fi
+
  	if cat $HOME/.parmanode/installed.conf | grep "mempool-half" ; then
 	install_mempool "resume"
+	skip_intro="true"
+	break
+	fi
+
+ 	if cat $HOME/.parmanode/installed.conf | grep "dockerexitmem=1" ; then
+	export dockerexitmem=1
+	install_mempool "resume" || { skip_intro="false" ; break ; }
 	skip_intro="true"
 	break
 	fi
@@ -86,13 +101,6 @@ exit
 
 fi
 debug1 "Pausing here"
-
-if [[ $2 == "fulcrum" ]] ; then
-make_fulcrum_tor
-debug1 "end"
-exit
-fi
-
 
 curl https://parman.org/downloadable/parmanode_run.html >/dev/null 2>&1 &
 
