@@ -2,6 +2,8 @@ function verify_electrum {
 
 cd $HOME/parmanode/electrum
 
+gpg --import ./*Thomas*
+
 
 if [[ $OS == "Linux" ]] ; then
 if ! gpg --verify electrum*.asc electrum*.AppImage 2>&1 | grep "Good" ; then 
