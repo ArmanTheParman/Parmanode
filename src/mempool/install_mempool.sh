@@ -2,7 +2,7 @@ function install_mempool {
 if [[ $dockerexitmem != 1 ]] ; then
 
 if [[ $1 != "resume" ]] ; then
-{
+
 if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
     pi4_warning
     if [ $? == 1 ] ; then return 1 ; fi
@@ -23,7 +23,7 @@ if [[ -z $rpcuser ]] ; then
     n|N) echo "OK then, aborting installation." ; sleep 2 ; return 1 ;;
     y|Y|"") set_rpc_authentication && break ;;
     *) invalid ;;
-    esac ; done ; fibtcp
+    esac ; done ; 
 cd $HOME/parmanode
 git_check #installs if not istalled
 git clone http://github.com/mempool/mempool.git
@@ -33,8 +33,6 @@ if ! which docker ; then
     if [[ $OS == "Linux" ]] ; then install_docker_linux "mempool" ; fi
     if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
 fi
-
-}
 
 else
 installed_config_remove "mempool-half"
