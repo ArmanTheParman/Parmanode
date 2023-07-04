@@ -41,7 +41,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     if ! id | grep docker ; then 
-        docker_troubleshooting
+        docker_troubleshooting "mempool"
         add_docker_group
         fi
 fi
