@@ -8,9 +8,9 @@ echo "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #"
-if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
+if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then parmanodemain=1
 echo "#         (i)           Install Parmanode                                              #"
-else
+else parmanodemain=0
 echo "#         (add)         Add more programs (Install menu)                               #
 #                                                                                      #
 #         (use)         Use programs (Apps menu)........(Bitcoin, Sparrow, etc)        #
@@ -45,11 +45,19 @@ set_terminal
 case $choice in
 
 i|I)
-    install_parmanode  ;;
+    if [[ $parmanodemain ==1 ]] ; then
+    install_parmanode 
+    fi
+    ;;
 add|Add| ADD)
-    menu_add_programs ;;
+    if [[ $parmanodemain ==0 ]] ; then
+    menu_add_programs
+    fi
+    ;;
 use|USE|Use)
+    if [[ $parmanodemain ==0 ]] ; then
     menu_programs 
+    fi 
     ;;
 remove|REMOVE)
     remove_programs ;;
