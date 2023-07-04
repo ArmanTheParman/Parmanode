@@ -32,7 +32,4 @@ else
 break
 fi # end if bitcoin-cli exists
 done # outer while loop
-
-done # outer while loop
-
 }
