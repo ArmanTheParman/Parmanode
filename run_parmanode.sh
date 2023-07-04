@@ -66,7 +66,7 @@ if [[ -f $HOME/.parmanode/installed.conf ]] ; then
 	break
 	fi
 
-	if cat $HOME/.parmanode/parmanode.conf | grep "dockerexit=1" ; then
+	if cat $HOME/.parmanode/parmanode.conf | grep "dockerexitbtcpay=1" ; then
 	export dokerexitbtcpay=1
 	install_btcpay_linux || { skip_intro="false" ; break ; }
 	skip_intro="true"
