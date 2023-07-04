@@ -23,7 +23,7 @@ if [[ -z $rpcuser ]] ; then
     n|N) echo "OK then, aborting installation." ; sleep 2 ; return 1 ;;
     y|Y|"") set_rpc_authentication && break ;;
     *) invalid ;;
-    esac ; done ; 
+    esac ; done ; fi
 cd $HOME/parmanode
 git_check #installs if not istalled
 git clone http://github.com/mempool/mempool.git
