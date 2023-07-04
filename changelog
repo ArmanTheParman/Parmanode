@@ -1,3 +1,7 @@
+Version 3.4.4
+    - Cleaner install of Parmanode, allowing other programs
+      to work without Bitcoin Core instaled.
+    - Improved uninstall process 
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
@@ -21,8 +25,7 @@ Version 3.3.6
     - Docker apps on Mac work better now. (Issue with checking docker status)
     - More sudo for docker commands (redundant for most)
     - Zip file downloads no longer supported - they are not git repos
-      and updates fail because if.
-Version 3.3.5
+      and updates fail because if.sparrow5
     - more educational material
 Version 3.3.4
     - Tool to import other ext or FAT32 drive to parmanode (Linux only)
