@@ -110,21 +110,21 @@ exit 0
 ;;
 
 bitcoin|Bitcoin|BITCOIN)
-if [[ $bitcoinmenu == 1]] ; then
+if [[ $bitcoinmenu == 1 ]] ; then
 uninstall_bitcoin
 return 0
 fi
 ;;
 
 fulcrum|Fulcrum|FULCRUM)
-if [[ $fulcrummenu == 1]] ; then
+if [[ $fulcrummenu == 1 ]] ; then
 uninstall_fulcrum
 return 0
 fi
 ;;
 
 docker|Docker|DOCKER)
-if [[ $dockermenu == 1]] ; then
+if [[ $dockermenu == 1 ]] ; then
 if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; continue ; fi
 uninstall_docker_linux 
 return 0
@@ -132,14 +132,14 @@ fi
 ;;
 
 btcp|BTCP|Btcp)
-if [[ $btcpaymenu == 1]] ; then
+if [[ $btcpaymenu == 1 ]] ; then
 uninstall_btcpay
 return 0
 fi
 ;;
 
 TOR|Tor|tor)
-if [[ $tormenu == 1]] ; then
+if [[ $tormenu == 1 ]] ; then
 no_mac || return 1
 uninstall_tor
 return 0
@@ -147,38 +147,38 @@ fi
 ;;
 
 lnd|LND|Lnd)
-if [[ $lndmenu == 1]] ; then
+if [[ $lndmenu == 1 ]] ; then
 if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
 fi
 ;;
 
 mem|MEM|Mem)
-if [[ $mempoolmenu == 1]] ; then
+if [[ $mempoolmenu == 1 ]] ; then
 uninstall_mempool
 fi
 ;;
 
 s|S|SPARROW|Sparrow|sparrow)
-if [[ $sparrowmenu == 1]] ; then
+if [[ $sparrowmenu == 1 ]] ; then
     uninstall_sparrow
 	return 0 
 	fi
 	;;
 R|r|RTL|rtl|Rtl)
-if [[ $rtlmenu == 1]] ; then
+if [[ $rtlmenu == 1 ]] ; then
 	uninstall_rtl
 	return 0
 	fi
 	;;
 
 e|E|Electrum|electrum|ELECTRUM)
-if [[ $electrummenu == 1]] ; then
+if [[ $electrummenu == 1 ]] ; then
     uninstall_electrum
 	return 0
 	fi
 	;;
 ts|TS|Ts)
-if [[ $torservermenu == 1]] ; then
+if [[ $torservermenu == 1 ]] ; then
 	no_mac || return 1
 	uninstall_tor_server
 	return 0
