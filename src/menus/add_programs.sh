@@ -133,6 +133,13 @@ case $choice in
     
     mem|MEM|Mem)
        if [[ $mempooladd == 1 ]] ; then
+       if [[ $OS == "Linux" ]] ; then
+       if [[ "$(uname -m)" == arm* || "$(arch)" == arm* ]] ; then
+       set_terminal ; echo "Raspberry Pi detected; this wont work, but feel free to try."
+       echo "y to try, n to abort, then <enter>"
+       read choice ; case $choice in y|Y|yes|YES) install_mempool ; return 0 ;; esac
+       fi ; fi
+       
        install_mempool
        return 0
        fi
