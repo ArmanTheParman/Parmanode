@@ -11,6 +11,8 @@ function make_bitcoin_directories {
     log "bitcoin" "mkdir /parmanode/bitcoin" && \
     installed_conf_add "bitcoin-start"     #First significant install "change" made to drive
 
+debug1 "$drive, is drive variable"
+
     if [[ $drive == "external" ]] ; then 
         log "bitcoin" "format choice for external drive" && \
         format_choice 
