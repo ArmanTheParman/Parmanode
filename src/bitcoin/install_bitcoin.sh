@@ -2,17 +2,34 @@ function install_bitcoin {
 
 set_terminal
 
-install_check "bitcoin" 
+install_check "Bitcoin" 
     #first check if Bitcoin has been installed
     return_value="$?"
     if [[ $return_value == "1" ]] ; then return 1 ; fi      
 
-change_drive_selection \
-    && log "bitcoin" "install - change drive selection function exit"
-    # User has choice to change drive selection made when first installing Parmanode.
-    # abort bitcoin installation if return 2 
-    if [[ $? == 1 || $? == 2 ]] ; then 
-    log "bitcoin" "change_drive_selection return 1 or 2; exit" ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then
+
+    if [ -f /home/.parmanode/installed.conf ] ; then
+        if ! grep -q "btc_dependencies=installed" /home/.parmanode/installed.conf ; then
+        bitcoin_dependencies || { set_terminal ; echo "Unable to install bitcoin dependencies. Aborting." ;\
+        echo "Sometimes repeating installing Bitcoin will work for this error." ; enter_continue ; return 1 ; }
+        fi
+    else
+        bitcoin_dependencies || { set_terminal ; echo "Unable to install bitcoin dependencies. Aborting." ;\
+        echo "Sometimes repeating installing Bitcoin will work for this error." ; enter_continue ; return 1 ; }
+    fi
+fi
+
+choose_and_prepare_drive_parmanode "bitcoin"
+parmanode_conf_add "drive=$hdd"
+export drive
+
+#                change_drive_selection \
+#                    && log "bitcoin" "install - change drive selection function exit"
+#                    # User has choice to change drive selection made when first installing Parmanode.
+#                    # abort bitcoin installation if return 2 
+#                    if [[ $? == 1 || $? == 2 ]] ; then 
+#                    log "bitcoin" "change_drive_selection return 1 or 2; exit" ; return 1 ; fi
 
 #Just in case
     if [[ $OS == "Linux" && $drive == "external" ]] ; then

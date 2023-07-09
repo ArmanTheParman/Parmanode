@@ -19,6 +19,7 @@ fi
 if ! sha256sum --ignore-missing --check man*.txt ; then
 set_terminal
 echo "SHA256 check failed. Unknown reason. Please report to Parman. Aborting."
+enter_continue
 return 1
 fi
 }   

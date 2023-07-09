@@ -9,8 +9,10 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update -y
 
 #modified instruction from official Docker guide to include Linuxmint conversion
-get_linux_version_codename && echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  sudo source /etc/os-releases
+    if [[ $ID != "debian" ]] ; then ID="ubuntu" ; fi
+  get_linux_version_codename 
+  echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
   "$(echo "$VCequivalent")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 

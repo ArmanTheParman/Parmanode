@@ -1,3 +1,1 @@
-make bitcoin-cli commands loop
-uninstall docker - mac
-don't use sudo for Mac docker
+connect electrum to fulcrum by tor

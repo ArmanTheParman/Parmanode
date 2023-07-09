@@ -4,12 +4,10 @@ format_warnings     #Warn the user to pay attention.
     select_drive_ID
     if [ $? == 1 ] ; then return 1 ; fi
 
-log "bitcoin" "unmounting function..."
-   unmount   #failure here exits program
+unmount   #failure here exits program
 
 
-log "bitcoin" "dd_wipe_drive function..."
-   dd_wipe_drive  #failure here exits program 
+dd_wipe_drive  #failure here exits program 
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
@@ -38,21 +36,19 @@ if [[ $OS == "Linux" ]] ; then
         #in case I allow no wiping in future version, duplicating this function
         #it wipes a nonsense UUID if the drive has just been wiped, so no harm.
         remove_fstab_entry
-        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk && log "bitcoin" "mkfs done" && \
+        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk 
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID" && log "bitcoin" "new UUID $UUID"
+        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
 
         write_to_fstab "$UUID"
 
         #Mounting
-        sudo mkdir /media/$(whoami)/parmanode >> $HOME/.parmanode/bitcoin.log 2>&1    
+        sudo mkdir /media/$(whoami)/parmanode 2>&1    
         sudo mount /dev/$disk /media/$(whoami)/parmanode 2>&1 
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
         sudo e2label /dev/$disk parmanode 2>&1 
 
-        #confirmation output.
-        if [[ $debug = 1 ]] ; then enter_continue ; fi # pause not required as all the above code has no output
         parmanode_conf_add "UUID=$UUID"
         set_terminal
         echo "

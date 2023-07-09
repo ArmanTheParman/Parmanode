@@ -29,6 +29,8 @@ read disk
         esac
     fi
 
+export disk
+
 case $OS in
 Linux)
 

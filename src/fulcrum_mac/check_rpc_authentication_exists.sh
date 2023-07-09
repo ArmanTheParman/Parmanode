@@ -2,6 +2,7 @@ function check_rpc_authentication_exists {
 #in case there is a password in memory, and that's not current
 #with bitcoin.conf, must unset first, otherwise if bitcoin.conf
 #is empty, old password will stay in memory...
+if ! which bitcoind ; then return 0 ; fi
 
 unset rpcuser && unset rpcpassword
 source $HOME/.bitcoin/bitcoin.conf

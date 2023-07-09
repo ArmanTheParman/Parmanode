@@ -1,5 +1,6 @@
 function install_btcpay_linux {
 set_terminal
+if [[ $dockerexitbtcpay != 1 ]] ; then
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
     # Install checks...
@@ -19,12 +20,24 @@ installed_config_remove "btcpay-half"
 set_terminal ; echo "Resuming BTCPay install" ; enter_continue
 fi
 
-if [[ $OS == "Linux" ]] ; then
+
     if ! id | grep docker ; then 
-        docker_troubleshooting
         add_docker_group
+            if ! id | grep docker ; then
+            docker_troubleshooting "btcpay"
+            fi
         fi
-fi
+else
+set_terminal
+echo " Resuming BTCPay install. Type x to do this later and reach main menu."
+echo " You'll need to exit Parmanode and return to install BTCPay, or you"
+echo " could attempt to install it again from the menu, it should pick up"
+echo " where it left off."
+read choice
+case $choice in x|X) return 0 ;; esac
+parmanode_conf_remove "dockerexitbtcpay"
+unset dockerexitbtcpay
+fi # end if dockerexit !=1 -- ie resume here if program exited during docker install.
 
     if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
     set_terminal
