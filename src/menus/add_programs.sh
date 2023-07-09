@@ -137,7 +137,7 @@ case $choice in
        if [[ "$(uname -m)" == arm* || "$(uname -m)" == aarch* ]] ; then
        set_terminal ; echo "Raspberry Pi detected; this wont work, but feel free to try."
        echo "y to try, or just <enter> to abort."
-       read choice ; case $choice in y|Y|yes|YES) install_mempool ; return 0 ;; esac
+       read choice ; case $choice in y|Y|yes|YES) install_mempool ; return 0 ;; *) return 0 ;; esac
        fi ; fi
        
        install_mempool
