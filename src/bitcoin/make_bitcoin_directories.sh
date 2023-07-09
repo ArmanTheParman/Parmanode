@@ -13,10 +13,6 @@ function make_bitcoin_directories {
 
 debug1 "$drive, is drive variable"
 
-    if [[ $drive == "external" ]] ; then 
-        log "bitcoin" "format choice for external drive" && \
-        format_choice 
-
         if [[ $OS == "Linux" ]] ; then
             mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 && \
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi

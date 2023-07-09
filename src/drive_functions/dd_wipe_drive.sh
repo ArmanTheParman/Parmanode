@@ -20,6 +20,8 @@ echo "
 
 		 (c)        Choose a custom string (Funnest and recommended option)
 
+         (s)        Skip wiping
+
 ########################################################################################
 "
 choose "xq"
@@ -62,17 +64,14 @@ case $choice in
 Your string is: $string 
 "
         enter_continue
-        break 
-        ;;
-    
-    q|Q|quit|Quit|QUIT)
-        exit 0
+        break wipe
         ;;
 
     "")
         string="#FreeRoss.org - Sign the petition. " #default string if no customised string selected
 	    break
         ;;
+    s|S) return 0 ;;
     *)
         invalid
         continue
