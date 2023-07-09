@@ -20,7 +20,6 @@ debug1 "$drive, is drive variable"
         if [[ $OS == "Mac" ]] ; then
             mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 && \ 
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
-    fi
 
     if [[ $drive == "internal" ]] ; then 
         mkdir $HOME/.bitcoin >/dev/null 2>&1 && \
