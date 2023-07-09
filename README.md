@@ -7,10 +7,8 @@
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
 Parmanode is an automated installation wizard and menu for desktop
-computers, if [[ $bitcoinaa == 1 ]] ; then
-if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
-if [[ $OS == "Mac" ]] ; then no_mac ; fi
-f
+computers, with the following software (list is growing):
+
                 Bitcoin
                 Electrum Server (Fulcrum) - via Docker
                 LND
