@@ -5,6 +5,10 @@ Version 3.4.4
     - Menu improvements (hidden stuff)
     - fixed issue with Deiban docker install
     - Docker permission issues fixed for Linux
+    - code clean up - Mempool not available for Pi's
+    - code clean up - Sparrow not available for Pi's
+    - code clean up - Electrum available for Pi's; needs python version
+      to be done later.
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
