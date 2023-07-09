@@ -60,7 +60,7 @@ format_ext_drive "$1"
         if  [[ $return_value == 1 ]] ; then
 		set_terminal
                 echo "External drive setup has been skipped. Proceed with caution."
-                enter_continuefulcrum_drive_selection
+                enter_continue
 	        return 0 ; fi
         
         if [[ $return_value == "0" ]] ; then
