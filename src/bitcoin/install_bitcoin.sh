@@ -22,6 +22,7 @@ fi
 
 choose_and_prepare_drive_parmanode "Bitcoin"
 parmanode_conf_add "drive=$hdd"
+source $HOME/.parmanode/parmanode.conf
 export drive
 
 #                change_drive_selection \
