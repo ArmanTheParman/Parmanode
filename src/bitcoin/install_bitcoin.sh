@@ -24,6 +24,7 @@ choose_and_prepare_drive_parmanode "Bitcoin"
 parmanode_conf_add "drive=$hdd"
 source $HOME/.parmanode/parmanode.conf
 export drive
+debug1 "drive is $drive"
 
 #                change_drive_selection \
 #                    && log "bitcoin" "install - change drive selection function exit"
