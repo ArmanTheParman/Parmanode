@@ -1,4 +1,14 @@
 function install_electrum {
+if [[ SOS == "Linux" ]] ; then
+if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
+    set_terminal
+    echo "Parmanode has detected you are running a computer with an ARM chip,"
+    echo "possibly a Raspberry Pi. Unfortunately, this version of Parmanode"
+    echo "does not support Electrum. It will be included in a future version."
+    enter_continue
+    return 1
+    fi
+    fi
 
 set_terminal
 
@@ -45,7 +55,7 @@ enter_continue
 fi
 
 if [[ $OS == "Linux" ]] ; then
-
+echo "installing udev rules..."
 udev
 
 set_terminal ; echo "

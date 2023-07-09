@@ -1,4 +1,4 @@
-# Parmanode 3.4.3
+# Parmanode 3.4.4
 
 #### Instructions to install at the end
 
@@ -7,8 +7,10 @@
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
 Parmanode is an automated installation wizard and menu for desktop
-computers, with the following software (list is growing):
-
+computers, if [[ $bitcoinaa == 1 ]] ; then
+if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; fi
+f
                 Bitcoin
                 Electrum Server (Fulcrum) - via Docker
                 LND
@@ -113,6 +115,10 @@ initially. You'll need to install git like this...
     sudo apt update -y && sudo apt install git -y
 
 You can then close terminal, open it again, and try the sequence of commands above again.
+
+On Macs, to use git, you may be asked to install the *command line developer tools*. You
+will be given the option to do so with a popup window, and you'll need to proceed with 
+it to use git. It takes a few minutes to install.
 
 If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
 

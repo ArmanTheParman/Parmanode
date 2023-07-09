@@ -2,7 +2,7 @@ function install_nginx {
 
 if which nginx ; then set_terminal ; echo "Nginx already installed." ; enter_continue ; return 1 ; fi
 
-sudo apt-get install nginx
+sudo apt-get install nginx -y
 installed_conf_add "nginx-end"
 enter_continue
 return 0

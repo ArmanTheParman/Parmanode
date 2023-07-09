@@ -1,4 +1,21 @@
 function uninstall_rtl {
+set_terminal ; echo "
+########################################################################################
+
+                                 Uninstall RTL 
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi
 
 install_check "rtl" "uninstall" || { echo "Not installed. Skipping uninstall." ; enter_continue ; return 1 ; }
 

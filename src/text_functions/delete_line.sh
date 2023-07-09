@@ -4,7 +4,7 @@
 
 function delete_line {
 
-if ! cat $HOME/.parmanode/parmanode.conf | grep -q parmanode-end ; then 
+if cat $HOME/.parmanode/installed.conf | grep -q parmanode-end ; then 
 
 	search_string="$2"
 

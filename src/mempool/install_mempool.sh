@@ -1,7 +1,8 @@
 function install_mempool {
+if [[ $dockerexitmem != 1 ]] ; then
 
 if [[ $1 != "resume" ]] ; then
-{
+
 if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
     pi4_warning
     if [ $? == 1 ] ; then return 1 ; fi
@@ -23,8 +24,6 @@ if [[ -z $rpcuser ]] ; then
     y|Y|"") set_rpc_authentication && break ;;
     *) invalid ;;
     esac ; done ; fi
-
-
 cd $HOME/parmanode
 git_check #installs if not istalled
 git clone http://github.com/mempool/mempool.git
@@ -35,8 +34,6 @@ if ! which docker ; then
     if [[ $OS == "Mac" ]] ; then download_docker_mac ; fi
 fi
 
-
-}
 else
 installed_config_remove "mempool-half"
 set_terminal ; echo "Resuming Mempool install" ; enter_continue
@@ -44,10 +41,22 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     if ! id | grep docker ; then 
-        docker_troubleshooting
+        docker_troubleshooting "mempool"
         add_docker_group
         fi
 fi
+
+else
+set_terminal
+echo " Resuming Mempool install. Type x to do this later and reach main menu."
+echo " You'll need to exit Parmanode and return to install Mempool, or you"
+echo " could attempt to install it again from the menu, it should pick up"
+echo " where it left off."
+read choice
+case $choice in x|X) return 0 ;; esac
+parmanode_conf_remove "dockerexitmem"
+unset dockerexitmem
+fi # end if dockerexit !=1 -- ie resume here if program exited during docker install.
 
 if [[ $OS == "Mac" ]] ; then 
     if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi

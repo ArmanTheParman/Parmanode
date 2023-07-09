@@ -8,6 +8,8 @@ function fulcrum_make_directories {
     mkdir $HOME/parmanode/fulcrum/config 2>&1
 # Make fulcrum_db on the internal or external drive
 
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+
 if [[ $drive_fulcrum == "external" ]] ; then
 
 set_terminal ; echo "
