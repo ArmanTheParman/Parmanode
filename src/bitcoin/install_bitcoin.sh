@@ -20,7 +20,7 @@ if [[ $OS == "Mac" ]] ; then
     fi
 fi
 
-choose_and_prepare_drive_parmanode "bitcoin"
+choose_and_prepare_drive_parmanode "Bitcoin"
 parmanode_conf_add "drive=$hdd"
 export drive
 
