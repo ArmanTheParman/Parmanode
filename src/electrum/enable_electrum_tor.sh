@@ -16,9 +16,10 @@ enter_continue
 
 get_onion_address_variable "fulcrum" >/dev/null 
 
-swap_string "$HOME/.electrum/config" "\"server" "    \"server\": \"server\": \"${ONION_ADDR_FULCRUM}:7002:t\","
+debug1 "pre 2 swaps"
+swap_string "$HOME/.electrum/config2" "\"server" "    \"server\": \"server\": \"${ONION_ADDR_FULCRUM}:7002:t\","
 
-swap_string "$HOME/.electrum/config" "oneserver" "    \"oneserver\": false,\n     \"proxy\": \"socks5:127.0.0.1:9050::\","
+swap_string "$HOME/.electrum/config2" "oneserver" "    \"oneserver\": false,\n     \"proxy\": \"socks5:127.0.0.1:9050::\","
 
 if [[ $torbrowser == 1 ]] ; then
 swap_string "$HOME/.electrum/config" "oneserver" "    \"oneserver\": false,\n     \"proxy\": \"socks5:127.0.0.1:9150::\","
