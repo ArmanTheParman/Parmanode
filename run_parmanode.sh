@@ -50,6 +50,8 @@ source ./version.conf
 	
 # Config directory needs to be made
 mkdir $HOME/.parmanode >/dev/null 2>&1 
+# Empty parmanode.conf file if it doesnt' exist
+parmanode_conf_add
 
 # Load config 
 if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
