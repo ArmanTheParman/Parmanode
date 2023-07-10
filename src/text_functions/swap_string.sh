@@ -10,6 +10,12 @@ if [[ ! -f "$input_file" ]]; then
     return 1
 fi
 
-sudo sed -i "/$search_string/c\\$new_line" "$input_file"
+if [[ $OS == "Mac" ]] ; then 
+sudo sed -i "" '/$search_string/c\\$new_line/g' "$input_file"
+fi
+
+if [[ $OS == "Linux ]] ; then
+sudo sed -i '/$search_string/c\\$new_line/g' "$input_file"
+fi
 
 }

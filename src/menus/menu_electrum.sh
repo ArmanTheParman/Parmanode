@@ -29,7 +29,10 @@ enter_continue
 return 0 ;;
 
 tor|TOR|t|T)
-if [[ $OS == "Mac" ]] ; then no_mac ; fi
+#if [[ $OS == "Mac" ]] ; then no_mac ; fi
+etor=off
+if [[ $OS == "Mac" && $etor == "off" ]] ; then enable_electrum_tor ; fi
+if [[ $OS == "Mac" && $etor == "on" ]] ; then disable_electrum_tor; fi
 if [[ $OS == "Linux" && $etor == "off" ]] ; then enable_electrum_tor ; fi
 if [[ $OS == "Linux" && $etor == "on" ]] ; then disable_electrum_tor; fi
 ;;
