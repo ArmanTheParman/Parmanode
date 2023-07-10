@@ -11,11 +11,13 @@ if [[ ! -f "$input_file" ]]; then
 fi
 
 if [[ $OS == "Mac" ]] ; then 
-sudo sed -i "" '/$search_string/c\\$new_line/g' "$input_file"
+debug1 "in swapstring, pre-perl. arg1 is $1 arg2 $2 arg3 $3"
+sudo perl -pi -e 's/^.*$search_string.*$/$new_line/g' $1
+debug1 "after perl"
 fi
 
-if [[ $OS == "Linux ]] ; then
-sudo sed -i '/$search_string/c\\$new_line/g' "$input_file"
+if [[ $OS == "Linux" ]] ; then
+sudo sed -i '/$search_string/c\$new_line/' "$input_file"
 fi
 
 }
