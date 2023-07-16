@@ -1,6 +1,7 @@
 Version 3.4.4
     - Cleaner install of Parmanode, allowing other programs
       to work without Bitcoin Core necessarily being instaled.
+    - Created own function to replace faulty sed command on Macs
     - Improved uninstall process 
     - Menu improvements (hidden stuff)
     - fixed issue with Deiban docker install
