@@ -13,7 +13,7 @@ if [[ $positionnewline == "after" ]] ; then
     count=$(wc -l /tmp/temp2.txt | awk '{print $1}')
     tail -n $(($count -1)) /tmp/temp2.txt > /tmp/temp3.txt
 
-    sudo cat /tmp/temp1.txt /tmp/temp3.txt | sudo tee $inputfile
+    sudo cat /tmp/temp1.txt /tmp/temp3.txt | sudo tee $inputfile >/dev/null
 fi
 
 
@@ -23,20 +23,20 @@ if [[ $positionnewline == "before" ]] ; then
     head -n $(($count - 1)) /tmp/temp1.txt > /tmp/temp2.txt
     echo $newline | tee -a /tmp/temp2.txt >/dev/null
     sudo grep -A 100000 ${searchstring} ${inputfile} >> /tmp/temp2.txt 
-    sudo cat /tmp/temp2.txt | sudo tee $inputfile
+    sudo cat /tmp/temp2.txt | sudo tee $inputfile >/dev/null
 fi
 
 if [[ $positionnewline == "swap" ]] ; then
     sudo grep -m1 -B 1000000 ${searchstring} ${inputfile} > /tmp/temp1.txt
     count=$(wc -l /tmp/temp1.txt | awk '{print $1}')
     head -n $(($count - 1)) /tmp/temp1.txt > /tmp/temp2.txt
-    echo $newline | tee -a /tmp/temp2.txt >/dev/null
+    echo $newline | tee -a /tmp/temp2.txt >/dev/null 
 
     sudo grep -A 100000 ${searchstring} ${inputfile} > /tmp/temp3.txt 
     count=$(wc -l /tmp/temp3.txt | awk '{print $1}')
     tail -n $(($count -1)) /tmp/temp3.txt > /tmp/temp4.txt
 
-    sudo cat /tmp/temp2.txt /tmp/temp4.txt | sudo tee $inputfile
+    sudo cat /tmp/temp2.txt /tmp/temp4.txt | sudo tee $inputfile >/dev/null
 fi
 
 if [[ $positionnewline == "delete" ]] ; then
@@ -48,7 +48,7 @@ if [[ $positionnewline == "delete" ]] ; then
     count=$(wc -l /tmp/temp3.txt | awk '{print $1}')
     tail -n $(($count - 1)) /tmp/temp3.txt > /tmp/temp4.txt
 
-    sudo cat /tmp/temp2.txt /tmp/temp4.txt | sudo tee $inputfile
+    sudo cat /tmp/temp2.txt /tmp/temp4.txt | sudo tee $inputfile >/dev/null
 fi
 
 cd /tmp >/dev/null
