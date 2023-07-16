@@ -4,9 +4,11 @@ while true ; do set_terminal ; echo "
                                 Electrum Menu                               
 ########################################################################################
 
+
+
              (start)            Start Electrum 
 "
-if ! cat $HOME/.electrum/config | grep "\"server" | grep "onion" ; then echo " 
+if ! cat $HOME/.electrum/config | grep "\"server" | grep "onion" >/dev/null ; then echo " 
              (tor)              Enable Tor Connection      [Currently Disabled]" 
 etor=off
 else
@@ -16,6 +18,9 @@ etor=on
 fi
 echo "
 
+"
+cat $HOME/.electrum/config | grep "onion" 
+echo "
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -29,8 +34,6 @@ enter_continue
 return 0 ;;
 
 tor|TOR|t|T)
-#if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
-etor=off
 if [[ $OS == "Mac" && $etor == "off" ]] ; then enable_electrum_tor ; fi
 if [[ $OS == "Mac" && $etor == "on" ]] ; then disable_electrum_tor; fi
 if [[ $OS == "Linux" && $etor == "off" ]] ; then enable_electrum_tor ; fi
