@@ -2,6 +2,9 @@
 # arguments should use full paths to file.
 # careful if the search string has / , then there can be errors
 
+# argument 1 - input file
+# argument 2 - searchstring
+
 function delete_line {
 
 if cat $HOME/.parmanode/installed.conf | grep -q parmanode-end ; then 
@@ -10,15 +13,13 @@ if cat $HOME/.parmanode/installed.conf | grep -q parmanode-end ; then
 
 		if [[ $OS == "Linux" ]] 
 		then
-                input_file="$(readlink -f "$1")"
-		sudo sed -i "/${search_string}/d" "$input_file" 
+            input_file="$(readlink -f "$1")"	# to assign absolute path
+			sudo sed -i "/${search_string}/d" "$input_file" 
 		fi
 
 
-		if [[ $OS == "Mac" ]]
-		then
-                input_file="$(greadlink -f "$1")"
-		sudo sed -i "" "/${search_string}/d" "$input_file" 
+		if [[ $OS == "Mac" ]] ; then
+				change_string_mac "$1" "$2" null delete
 		fi		
 fi
 
