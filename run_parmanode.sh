@@ -94,14 +94,6 @@ break ; done
 #fix fstab for older parmanode versions
 fix_fstab
 
-if [[ $1 == "debug2" ]] ; then
-
-delete_line "/etc/tor/torrc" "bitcoin-service"
-
-enter_continue
-exit
-
-fi
 debug1 "Pausing here"
 
 curl https://parman.org/downloadable/parmanode_run.html >/dev/null 2>&1 &

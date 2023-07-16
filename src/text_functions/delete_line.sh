@@ -14,7 +14,7 @@ return 1
 fi
 
 if [[ $OS == "Mac" ]] ; then
-	change_string_mac "$1" "$2" null delete
+	change_string_mac "$1" "$2" "null" "delete"
 	return 0
 fi		
 
