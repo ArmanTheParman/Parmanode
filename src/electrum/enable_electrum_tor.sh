@@ -16,14 +16,31 @@ enter_continue
 
 get_onion_address_variable "fulcrum" >/dev/null 
 
-debug1 "pre 2 swaps"
-swap_string "$HOME/.electrum/config2" "\"server" "    \"server\": \"server\": \"${ONION_ADDR_FULCRUM}:7002:t\","
+#makes first part of file.
+cd $HOME/.electrum/
+grep -m1 "\"server" -B100 "$HOME/.electrum/config" > preconfig
+
+#deletes last line
+head -n $(($(wc -l < preconfig) - 1)) preconfig > file.tmp && mv file.tmp preconfig 
+
+#make second part of file
+echo "    \"server\": \"server\": \"${ONION_ADDR_FULCRUM}:7002:t\"," >> preconfig2
+
+grep -A 999 "\"server" preconfig > preconfig1.5
+
+cat preconfig preconfig1.5 preconfig2 > config
+rm preconf*
+
+#next part
+#makes first part of file
+grep -m1 "\"server\"" =B100 "$HOME/.electrum/config" > preconfig
+
+#delete last line
+head -n $(($(wc -l < preconfig) - 1)) preconfig > file.tmp && mv file.tmp preconfig 
+
+#make second part of file
 
 swap_string "$HOME/.electrum/config2" "oneserver" "    \"oneserver\": false,\n     \"proxy\": \"socks5:127.0.0.1:9050::\","
-
-if [[ $torbrowser == 1 ]] ; then
-swap_string "$HOME/.electrum/config" "oneserver" "    \"oneserver\": false,\n     \"proxy\": \"socks5:127.0.0.1:9150::\","
-fi
 
 success "Electrum Wallet" "being setup to connect to Tor."
 
