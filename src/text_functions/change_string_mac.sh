@@ -1,12 +1,5 @@
-#need to carefully check this. There is a bug related to the if statements
-# the subsequent cat files need checking.
-
 #not taken into account multiple entries of a searchstring.
-#delete function will remove multiple entries, so be careful
-#to use it in other parts of this function.
-
-#need to check wc is no 1 or zero when subtraction. Review before finalising.
-
+#delete function will remove multiple entries, so be careful #to use it in other parts of this function.
 
 function change_string_mac {
 #will replace entire line containing search string with the new line
@@ -23,6 +16,7 @@ return 1
 fi
 
 if ! grep -q $searchstring $inputfile ; then
+log "error" "searchstring, $searchstring, doesnt exist, using change_sting_mac for file $inputfile"
 return 0
 fi
 
