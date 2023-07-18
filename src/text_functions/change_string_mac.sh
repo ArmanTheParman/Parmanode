@@ -19,21 +19,25 @@ if [[ ! -f $inputfile ]] ; then echo "File doesn't exist. Change_string_mac func
 echo "
 Aborting."
 enter_continue
-exit 0
+return 1
 fi
 
-#working
+if ! grep -q $searchstring $inputfile ; then
+return 0
+fi
+
+if [[ $debug == 1 && $(grep $searchstring $inputfile | wc -l | awk '{print $1}') > 1 ]] ; then
+echo "Warning. More than 1 instance of search term found. Aborting." ; return 0 
+fi
+
 if [[ $positionnewline == "after" ]] ; then
     sudo grep -m1 -B 100000 ${searchstring} ${inputfile} > /tmp/temp1.txt
     echo $newline | tee -a /tmp/temp1.txt >/dev/null
     #new line is added after seaerchstring
-
     sudo grep -A 100000 ${searchstring} ${inputfile} > /tmp/temp2.txt 
     count=$(wc -l /tmp/temp2.txt | awk '{print $1}')
-
     if [[ $count == 1 ]] ; then 
     #condition where there's nothing to add because nothing comes after the searchstring
-    read -p "count is 1, no lines after searchstring. Hit enter."
         cat /tmp/temp1.txt | sudo tee $inputfile >/dev/null
         #file done
     else
@@ -68,7 +72,6 @@ fi
 if [[ $positionnewline == "swap" ]] ; then
     sudo grep -m1 -B 100000 ${searchstring} ${inputfile} > /tmp/temp1.txt
     count=$(wc -l /tmp/temp1.txt | awk '{print $1}')
-    cat /tmp/temp1.txt
 
     if [ $count == 1 ] ; then # means searchstring is on line one of input file.
         #need to delete first line of inputfile and replace with newline...
