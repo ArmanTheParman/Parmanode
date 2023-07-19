@@ -5,7 +5,7 @@ else
     install="$1"
 fi
 
-if [[ $OS == "Mac" ]] ; then no mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 set_terminal
 
