@@ -1,4 +1,5 @@
 function install_rtl {
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 install_check "rtl" 
         if [ $? == 1 ] ; then return 1 ; fi
