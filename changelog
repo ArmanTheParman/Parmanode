@@ -1,14 +1,14 @@
 Version 3.4.4
     - Cleaner install of Parmanode, allowing other programs
-      to work without Bitcoin Core necessarily being instaled.
+      to work without Bitcoin Core necessarily being installed.
     - Created own function to replace faulty sed command on Macs
     - Improved uninstall process 
     - Menu improvements (hidden stuff)
-    - fixed issue with Deiban docker install
+    - fixed issue with Deiban Docker install
     - Docker permission issues fixed for Linux
     - code clean up - Mempool not available for Pi's
     - code clean up - Sparrow not available for Pi's
-    - code clean up - Electrum available for Pi's; needs python version
+    - code clean up - Electrum is available for Pi's; needs python version
       to be done later.
     - Download issue with LND and rpi4 64 bit fixed
 Version 3.4.3

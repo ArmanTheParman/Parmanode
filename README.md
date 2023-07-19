@@ -7,7 +7,9 @@
 For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
 
 Parmanode is an automated installation wizard and menu for desktop
-computers, with the following software (list is growing):
+computers, with the following software (list is growing). You don't have
+to install all of them, Parmanode lets you select what you want
+to include:
 
                 Bitcoin
                 Electrum Server (Fulcrum) - via Docker
@@ -25,9 +27,10 @@ computers, with the following software (list is growing):
 Parmanode is designed for non-technical users giving them the ability to 
 download and verify Bitcoin related software, and sync using an external 
 or internal drive, and also have configuration options presented to them
-with automation. No manual configuration file editing will be required.
+with automation. No manual configuration file editing will be required -
+Parmanode takes care of all that in the background.
 
-Users only need to read the menu options carefully, and respond to
+Users only need to read the menu options CAREFULLY, and respond to
 the questions - no command line interaction is ever needed. For example, 
 from a menu, bitcoin-cli commands are available, pruning can be activated 
 and rpcuser/rpcpassword can also be set.
@@ -35,15 +38,24 @@ and rpcuser/rpcpassword can also be set.
 The software also comes with helpful information, including links to various
 articles on my website, armantheparman.com, so that Bitcoiners keep learning
 more about Bitcoin and how to be safely self-sovereign. Information on how 
-to connect various wallets to the node is provided.
+to connect various wallets to the node is provided, altough, Parmanode gives
+options connects the wallet for the user in the background. For example,
+in the Parmanode Sparrow menu, you can choose an option to connect Sparrow
+to your own node, a Fulcrum/Electrum server on the same computer, or
+to your own Fulcrum/Electrum server via Tor, or to an external computer via
+Tor. All the configuration is done automatically.
 
-The most basic usage would be an internal drive to sync, running the latest
-version of Bitcoin Core, and connecting Sparrow Bitcoin Wallet or Specter
-Desktop Wallet directly to the node on the same computer.
+The most basic usage would be an internal drive to sync the Bitcoin
+blockchain, running the latest version of Bitcoin Core, and connecting 
+Sparrow Bitcoin Wallet or Specter Desktop Wallet directly to the node on 
+the same computer.
 
 While I tried to avoid it, for now, Mac users who wish to use Fulcrum will
-need to run it in a Docker container. It has been made very easy, just 
-follow the wizard menu options.
+follow the wizard menu options. Connecting me be problematic, so I 
+recommend for now that Mac users use Bitcoin Core and Sparrow on the same
+computer, and let Parmanode connect the two. If you want to use Sparrow
+or Electrum with an Electrum Wallet, the better way would be to use a 
+Linux machine, at least for now.
 
 ## DRIVE STRUCTURE 
 
