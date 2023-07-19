@@ -5,9 +5,10 @@ echo "
 
                                 Uninstall Parmanode
 
-    This will frist remove all programs associated with Parmanode and finally you'll
-    be asked to confirm removing the Parmanode program and directories and 
-    configuration files.
+    This will first give you the option to remove programs installed with Parmanode 
+    before removing the Parmanode installation files and configuration files. Finally,
+    you'll have the option to delete the Parmanode script directory that was 
+    downloaded form GitHub.
 
 ########################################################################################
 "
