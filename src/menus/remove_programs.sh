@@ -48,12 +48,16 @@ echo "                                           (btcp)             BTCPay
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1                               
 echo "                                           (btcp)             BTCPay (partial) 
 " ; fi
+#############################
+if [[ $OS != "Mac" ]] ; then
 if which tor >/dev/null 2>&1 ; then tormenu=1
 echo "                                           (tor)              Tor 
 "
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1
 echo "                                           (tor)              Tor (partial)
 " ; fi
+fi
+#############################
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndmenu=1
 echo "                                           (lnd)              LND 
 "
