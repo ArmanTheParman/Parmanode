@@ -60,7 +60,7 @@ echo "                                           (lnd)              LND
 elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then lndmenu=1
 echo "                                           (lnd)              LND (partial) 
 " ; fi
-if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoomenu=1
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
 echo "                                           (mem)              Mempool Space 
 "
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
