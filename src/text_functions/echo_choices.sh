@@ -44,6 +44,14 @@ echo "Hit <enter> to continue, (p) for previous, (q) to quit, then <enter>: "
 return 0
 fi
 
+if [[ $1 == "esq" ]]
+then
+echo "Hit <enter> to continue, (s) to skip, (q) to quit, then <enter>: "
+# while true ; do 
+# case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
+return 0
+fi
+
 if [[ $1 == "qc" ]]
 then
 echo "Hit (q) then <enter> to quit, anything else to continue"

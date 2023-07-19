@@ -26,6 +26,7 @@ case $choice in
 
 if grep -q "bitcoin" $HOME/.parmanode/installed.conf #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
+set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
@@ -99,8 +100,8 @@ echo "
 
                             Parmanode will be uninstalled
 
-    Note: The directory $HOME/parmanode will be left in tact; you may wish to delete
-    that yourself
+    Note: The directory $HOME/parmanode will be left in tact; you may wish to delete 
+    that yourself.
 
 ########################################################################################
 "
