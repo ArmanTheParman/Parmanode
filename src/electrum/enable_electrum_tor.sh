@@ -19,11 +19,16 @@ fi
 if [[ $OS == "Mac" ]] ; then
     set_terminal ; 
     echo "Please paste in the onion address for your Fulcrum/Electrum server you wish to use."
+    echo ""
     echo "Note this is not the onion address for your Bitcoin Node. It's for Fulcrum/Electrum."
+    echo ""
     echo "You need the long string plus the ending \".onion\". If there is a port number for"
     echo "the address, then include that as well. For example:"
+    echo ""
     echo "wcyj5idoz7ohlpvmaltoppe1h2nc6j46npghyyls2cqxs7yoquwyjmy4.onion:7002"
+    echo ""
     echo "After pasting the address, hit <enter>."
+    echo ""
     read ONION_ADDR_FULCRUM
     set_terminal
     echo "Do you use Tor by a browser (b) or daemon (d). Please choose, then <enter>."
