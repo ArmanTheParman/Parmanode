@@ -8,10 +8,7 @@ searchstring="$2"
 newline="$3"
 positionnewline="$4" #("before" or "after" or "swap" or "delte")
 
-if [[ ! -f $inputfile ]] ; then echo "File doesn't exist. Change_string_mac function failed." 
-echo "
-Aborting."
-enter_continue
+if [[ ! -f $inputfile ]] ; then 
 return 1
 fi
 
