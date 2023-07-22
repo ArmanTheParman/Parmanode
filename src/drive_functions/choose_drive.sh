@@ -42,7 +42,7 @@ echo "
 
     Note, it is strongly recommended that you use a solid state drive (SSD) as your
     external drive, otherwise you're going to have a bad time, mkay?
-" ; if [[ $1 == "bitcoin" ]] ; then echo "
+" ; if [[ $1 == "Bitcoin" ]] ; then echo "
     Also note, there will be some directories on the internal drive with symlinks 
     ("shortcut links") to the external drive once you install Bitcoin Core. 
     Do not delete these." ; fi 
@@ -57,6 +57,7 @@ set_terminal
 
 format_ext_drive "$1"
 	return_value=$?
+
         if  [[ $return_value == 1 ]] ; then
 		set_terminal
                 echo "External drive setup has been skipped. Proceed with caution."
