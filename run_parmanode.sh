@@ -42,8 +42,7 @@ if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | g
 if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 
 # get version
-source ./version.conf
-
+update_version_info
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
 	clean_exit 
@@ -96,12 +95,11 @@ fix_fstab
 
 debug1 "Pausing here"
 
-curl https://parman.org/downloadable/parmanode_run.html >/dev/null 2>&1 &
+curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null 2>&1 &
 
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 	menu_main    
-
 
 exit 0
