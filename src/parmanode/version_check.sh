@@ -1,4 +1,6 @@
 function update_version_info {
+#called by run_parmanode
+
 #must be in this order
 export_latest_version
 export_local_version
@@ -14,7 +16,6 @@ fi
 
 function check_for_updates {
 if [[ $latest_version != $version ]] ; then
-    unset version >/dev/null
     export old_version=1
     return 0
     fi
