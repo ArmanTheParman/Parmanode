@@ -16,11 +16,11 @@ source $HOME/.bitcoin/bitcoin.conf
       - 4080:8080
   api:
     environment:
-      ELECTRUM_HOST: \"192.168.0.206\"
+      ELECTRUM_HOST: \"$IP\"
       ELECTRUM_PORT: \"50002\"
       ELECTRUM_TLS_ENABLED: \"true\"
       MEMPOOL_BACKEND: \"electrum\"
-      CORE_RPC_HOST: \"192.168.0.206\"
+      CORE_RPC_HOST: \"$IP\"
       CORE_RPC_PORT: \"8332\"
       CORE_RPC_USERNAME: \"$rpcuser\"
       CORE_RPC_PASSWORD: \"$rpcpassword\"
