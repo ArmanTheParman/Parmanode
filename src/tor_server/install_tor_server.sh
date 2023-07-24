@@ -36,7 +36,7 @@ install_check "tor-server"
 if [[ $? == 1 ]] ; then return 1 ; fi
 
 log "tor-server" "Beginning tor-server install"
-curl https://parman.org/parmanode_ts.html >/dev/null 2>&1 &
+curl -s https://parman.org/parmanode_${version}_install_tor_server_counter >/dev/null 2>&1 &
 installed_conf_add "tor-server-start"
 
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -87,7 +87,7 @@ install_check "btcpTOR"
 if [[ $? == "1" ]] ; then return 1 ; fi
 
 log "btcpTOR" "Beginning btcpTOR install"
-curl http://parman.org/downloadable/counter/parmanode_btcpTOR.html >/dev/null 2>&1 &
+curl -s http://parman.org/parmanode_${version}_btcpaytor_install_counter >/dev/null 2>&1 &
 installed_conf_add "btcpTOR-start"
 
 if [ -z $selfIP ] ; then
