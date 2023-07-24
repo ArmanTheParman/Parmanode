@@ -1,3 +1,5 @@
+Version 3.4.5
+    - Mempool config bug fixed (IP address error)
 Version 3.4.4
     - Cleaner install of Parmanode, allowing other programs
       to work without Bitcoin Core necessarily being installed.
