@@ -13,5 +13,5 @@ cd $HOME/parmanode/specter
 tar -xvf *tar* || { log "specter" "tar extract failed" && return 1 ; }
 sudo chmod +x *AppImage*
 rm *tar*
-
+fi
 }

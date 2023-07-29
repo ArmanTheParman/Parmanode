@@ -165,6 +165,7 @@ fi
 mem|MEM|Mem)
 if [[ $mempoolmenu == 1 ]] ; then
 uninstall_mempool
+return 0
 fi
 ;;
 
@@ -198,11 +199,13 @@ btcpt|BTCPT)
 if [[ $btcpTORmenu == 1 ]] ; then
 	no_mac || return 1
 	uninstall_btcpay_tor
+	return 0
 	fi
     ;;
 specter|SPECTER|Specter)
 if [[ $spectermenu == 1 ]] ; then
     uninstall_specter
+	return 0
 	fi
 	;;
 

@@ -122,7 +122,7 @@ btcpt|BTCPT)
    ;;
 
 specter|SPECTER|Specter)
-   if [[ $specterapp ==1 ]] ; then
+   if [[ $specterapp == 1 ]] ; then
    menu_specter
    fi
    ;;

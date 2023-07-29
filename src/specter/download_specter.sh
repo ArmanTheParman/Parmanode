@@ -10,7 +10,7 @@ if [[ $OS == "Mac" ]] ; then
 curl -LO https://github.com/cryptoadvance/specter-desktop/releases/download/v${specter_version}/Specter-v${specter_version}.dmg || return 1
 fi
 
-if [[ $OS == "Linux" && ]] ; then
+if [[ $OS == "Linux" ]] ; then
 
         if [[ $chip == "x86_64" || $chip == "amd64" ]] ; then
         curl -LO https://github.com/cryptoadvance/specter-desktop/releases/download/v${specter_version}/specter_desktop-v${specter_version}-x86_64-linux-gnu.tar.gz || return 1
