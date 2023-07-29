@@ -3,6 +3,8 @@
 function udev {
 
 if [[ $OS == "Mac" ]] ; then
+
+if [[ $1 == "specter" ]] ; then return 0 ; fi
     set_terminal ; echo "
 ########################################################################################
 

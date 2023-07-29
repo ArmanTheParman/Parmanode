@@ -166,23 +166,27 @@ case $choice in
    e|E|electrum|Electrum|ELECTRUM)
       if [[ $electrumadd == 1 ]] ; then
       install_electrum
+      return 0
       fi
       ;;
    ts|TS|Ts)
       if [[ $torserveradd == 1 ]] ; then
       install_tor_server
+      return 0
       fi
       ;;
    
    btcpt|BTCPT)
       if [[ $btcpTORadd == 1 ]] ; then
       install_btcpay_tor
+      return 0
       fi
       ;;
    
    specter|Specter|SPECTER)
       if [[ $specteradd == 1 ]] ; then
       install_specter
+      return 0
       fi
       ;;
 
