@@ -5,47 +5,47 @@ set_terminal_higher
 echo "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E -- Main Menu --> Install Menu                                   #
+#    P A R M A N O D E --> Main Menu --> Install Menu                                  #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
 # Not yet installed...                                                                 #
 #                                                                                      #"
 if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=1
-echo "#                            (b)       Bitcoin Core                                    #
+echo "#                            (b)           Bitcoin Core                                #
 #                                                                                      #" ; fi
 if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=1
-echo "#                            (f)       Fulcrum (an Electrum Server)                    #
+echo "#                            (f)           Fulcrum (an Electrum Server)                #
 #                                                                                      #" ; fi
 if ! grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayadd=1
-echo "#                            (btcp)    BTCPay Server                                   #
+echo "#                            (btcp)        BTCPay Server                               #
 #                                                                                      #" ; fi
 if ! which tor >/dev/null 2>&1 ; then toradd=1
-echo "#                            (t)       Tor                                             #
+echo "#                            (t)           Tor                                         #
 #                                                                                      #" ; fi
 if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndadd=1
-echo "#                            (lnd)     LND                                             #
+echo "#                            (lnd)         LND                                         #
 #                                                                                      #" ; fi
 if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempooladd=1
-echo "#                            (mem)     Mempool Space                                   #
+echo "#                            (mem)         Mempool Space                               #
 #                                                                                      #" ; fi
 if ! grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowadd=1
-echo "#                            (s)       Sparrow Wallet                                  #
+echo "#                            (s)           Sparrow Wallet                              #
 #                                                                                      #" ; fi
 if ! grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtladd=1
-echo "#                            (r)       RTL Wallet                                      #
+echo "#                            (r)           RTL Wallet                                  #
 #                                                                                      #" ; fi
 if ! grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumadd=1
-echo "#                            (e)       Electrum Wallet                                 #
+echo "#                            (e)           Electrum Wallet                             #
 #                                                                                      #" ; fi
 if ! grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserveradd=1
-echo "#                            (ts)      Tor Server (Darknet Server)                     #
+echo "#                            (ts)          Tor Server (Darknet Server)                 #
 #                                                                                      #" ; fi
 if ! grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORadd=1
-echo "#                            (btcpt)   BTCP over Tor (Darknet BTCPay)                  #
+echo "#                            (btcpt)       BTCP over Tor (Darknet BTCPay)              #
 #                                                                                      #" ; fi
 if ! grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specteradd=1
-echo "#                            (specter) Specter Wallet                                  #
+echo "#                            (specter)     Specter Wallet                              #
 #                                                                                      #" ; fi
 echo "# Already installed...                                                                 #
 #                                                                                      #"
