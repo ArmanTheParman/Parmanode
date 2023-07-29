@@ -100,6 +100,12 @@ echo "                                           (btcpt)            Tor Server
 elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
 echo "                                           (btcpt)            Tor Server (partial) 
 " ; fi
+if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
+echo "                                           (specter)          Specter Wallet 
+"
+elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
+echo "                                           (specter)          Specter Wallet 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -194,6 +200,11 @@ if [[ $btcpTORmenu == 1 ]] ; then
 	uninstall_btcpay_tor
 	fi
     ;;
+specter|SPECTER|Specter)
+if [[ $spectermenu == 1 ]] ; then
+    uninstall_specter
+	fi
+	;;
 
 p|P)
 	return 0

@@ -22,6 +22,7 @@ to include:
                 Ride The Lightning Wallet
                 Electrum Desktop Wallet
                 Darknet Tor Server (Linux Only)
+                Specter Desktop
                 Educational material by Parman
 
 Parmanode is designed for non-technical users giving them the ability to 
@@ -141,6 +142,9 @@ the right directory with
 Then run the proram:
 
     ./run_parmanode.sh
+
+Parmanode is not designed to be run by a user (login) that did not originally install the software. If
+you try this, you will get errors.
 
 
 ## An important note about the naming and location of parmanode
