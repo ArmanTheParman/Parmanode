@@ -25,7 +25,7 @@ verify_specter || return 1
 
 unpack_specter
 
-udev
+udev "specter"
 
 installed_conf_add "specter-end"
 
