@@ -14,37 +14,40 @@ Installed...
 
 "
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
-                       echo "    (b)       Bitcoin Core
+                       echo "    (b)          Bitcoin Core
                             " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
-                       echo "    (f)       Fulcrum (an Electrum Server)
+                       echo "    (f)          Fulcrum (an Electrum Server)
                             " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
-                       echo "    (btcp)    BTCPay Server
+                       echo "    (btcp)       BTCPay Server
                             " ; fi
 if which tor >/dev/null 2>&1 ; then torapp=1
-                       echo "    (t)       Tor 
+                       echo "    (t)          Tor 
                             " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
-                       echo "    (lnd)     LND
+                       echo "    (lnd)        LND
                             " ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
-                       echo "    (mem)     Mempool Space 
+                       echo "    (mem)        Mempool Space 
                             " ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
-                       echo "    (s)       Sparrow Wallet 
+                       echo "    (s)          Sparrow Wallet 
                             " ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlapp=1
-                       echo "    (r)       RTL Wallet 
+                       echo "    (r)          RTL Wallet 
                             " ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
-                       echo "    (e)       Electrum Wallet 
+                       echo "    (e)          Electrum Wallet 
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo "    (ts)      Tor Server 
+                       echo "    (ts)         Tor Server 
                             " ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORapp=1
-                       echo "    (btcpt)   BTCPay over Tor 
+                       echo "    (btcpt)      BTCPay over Tor 
+                            " ; fi
+if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
+                       echo "    (specter)    Specter Wallet 
                             " ; fi
 echo "                            
 #######################################################################################
@@ -117,6 +120,13 @@ btcpt|BTCPT)
    menu_btcpay_tor
    fi
    ;;
+
+specter|SPECTER|Specter)
+   if [[ $specterapp ==1 ]] ; then
+   menu_specter
+   fi
+   ;;
+
 p)
    return 0
    ;;

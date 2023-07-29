@@ -1,7 +1,7 @@
 function menu_add_programs {
 while true
 do
-set_terminal_bit_higher
+set_terminal_higher
 echo "
 ########################################################################################
 #                                                                                      #
@@ -44,6 +44,9 @@ echo "#                            (ts)      Tor Server (Darknet Server)        
 if ! grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORadd=1
 echo "#                            (btcpt)   BTCP over Tor (Darknet BTCPay)                  #
 #                                                                                      #" ; fi
+if ! grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specteradd=1
+echo "#                            (specter) Specter Wallet                                  #
+#                                                                                      #" ; fi
 echo "# Already installed...                                                                 #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=0
@@ -78,6 +81,9 @@ echo "#                                      Tor Server                         
 #                                                                                      #" ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORadd=0
 echo "#                                      BTCP over Tor (Darknet BTCPay)                  #
+#                                                                                      #" ; fi
+if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterdd=0
+echo "#                                      Specter Wallet                                  #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -171,6 +177,12 @@ case $choice in
    btcpt|BTCPT)
       if [[ $btcpTORadd == 1 ]] ; then
       install_btcpay_tor
+      fi
+      ;;
+   
+   specter|Specter|SPECTER)
+      if [[ $specteradd == 1 ]] ; then
+      install_specter
       fi
       ;;
 
