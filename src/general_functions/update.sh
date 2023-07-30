@@ -27,7 +27,7 @@ then
     fi
     
     if [[ $OS == "Mac" ]] ; then
-        if ! command -v brew ; then return 0 ; fi
+        if ! command -v brew >/dev/null ; then return 0 ; fi
         brew update ; brew upgrade ; fi
 echo "
 "

@@ -14,6 +14,8 @@ echo "
 
 ########################################################################################
 
+            d)          Delete the directory and contents, and start over
+
             u)          Uninstall Parmanode (before attempting install again) 
 
             p)          Abort to the previous menu
@@ -27,6 +29,9 @@ choose "xq"
         read choice
         set_terminal 
         case $choice in
+        d|D)
+            rm -rf $HOME/parmanode/ >/dev/null 2>&1
+            ;;
         u|U) 
             uninstall_parmanode # when done, expecting code to return here.
             return 1

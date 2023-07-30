@@ -24,6 +24,7 @@ if [[ -z $rpcuser ]] ; then
     y|Y|"") set_rpc_authentication && break ;;
     *) invalid ;;
     esac ; done ; fi
+
 cd $HOME/parmanode
 git_check #installs if not istalled
 git clone http://github.com/mempool/mempool.git

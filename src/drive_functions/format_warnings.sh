@@ -5,7 +5,8 @@ if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
 
-    YOU ARE ABOUT TO FORMAT THE DRIVE! All data on the drive will be erased.
+    YOU ARE ABOUT TO FORMAT THE DRIVE! All data on the drive will be erased. You will
+    be asked to confirm exactly which drive is to be formatted.
 
     If you skip formatting, make sure there is enough free capacity on the drive 
     before running Bitcoin.
