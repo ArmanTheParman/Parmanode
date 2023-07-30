@@ -183,4 +183,10 @@ blockchain.
 
 Otherwise, use the parmanode menu to upgrade to the latest version.
 You could also just type "git pull" from within the parmanode SCRIPT directory.
+
+Use the update option within the Parmanode software to update. Note, this will not
+automatically update the softwre that Parmanode installed for you on your system. To
+get newwer versions of updated software, you need to uninstall the particular app, then
+reinstall it with the new version of Parmanode - it will then install the newer version
+ of the app for you.
  
