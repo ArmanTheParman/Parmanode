@@ -21,11 +21,13 @@ echo "
     exists, it will be delete. Configuration files related to Bitcoin will be deleted.  
     Saved choices to the Parmanode configuration file will be deleted.  
     
-    The bitcoin service file will be deleted (for Linux users only).
+    The Bitcoin service file will be deleted (for Linux users only).
 
     If you choose to keep the Bitcoin data directory, Parmanode will not be able to 
     connect to it because the symlinks would be delted. You need to install Bitcoin
     again and choose to keep the data directory found.
+
+    UNINSTALL BITCOIN?
 
 ########################################################################################
 

@@ -5,7 +5,7 @@ set_terminal
 install_check "parmanode" #checks parmanode.conf, and exits if already installed.
     if [ $? == 1 ] ; then return 1 ; fi #error mesages done in install_check, this ensures code exits to menu
 
-curl https://parman.org/downloadable/parmanode_install.html >/dev/null 2>&1 &
+curl -s https://parman.org/downloadable/parmanode_${version}_install_parmanode_counter >/dev/null 2>&1 &
 
 update_computer 
 

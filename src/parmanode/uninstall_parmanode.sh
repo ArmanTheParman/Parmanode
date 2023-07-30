@@ -5,13 +5,15 @@ echo "
 
                                 Uninstall Parmanode
 
-    This will frist remove all programs associated with Parmanode and finally you'll
-    be asked to confirm removing the Parmanode program and directories and 
-    configuration files.
+    This will first give you the option to remove programs installed with Parmanode 
+    before removing the Parmanode installation files and configuration files. Finally,
+    you'll have the option to delete the Parmanode script directory that was 
+    downloaded form GitHub.
 
 ########################################################################################
 "
 choose "epq"
+read choice
 case $choice in
 
     q|QUIT|Q|quit)
@@ -24,6 +26,7 @@ case $choice in
 
 if grep -q "bitcoin" $HOME/.parmanode/installed.conf #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
+set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
@@ -97,8 +100,8 @@ echo "
 
                             Parmanode will be uninstalled
 
-    Note: The directory $HOME/parmanode will be left in tact; you may wish to delete
-    that yourself
+    Note: The directory $HOME/parmanode will be left in tact; you may wish to delete 
+    that yourself.
 
 ########################################################################################
 "

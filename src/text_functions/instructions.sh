@@ -15,7 +15,7 @@ set_terminal ; echo "
     the option to format an external drive, should you wish to use that.
 
     Once Parmnode installation is done, you will be able to add individual programs. 
-    These are also availeble from the main menu, under \"add programs\". Start by 
+    These are also available from the main menu, under \"add programs\". Start by 
     adding Bitcoin, and work your way down the list. You can add any you like and are
     not obliged to install everything.
 

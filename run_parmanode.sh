@@ -42,14 +42,15 @@ if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | g
 if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 
 # get version
-source ./version.conf
-
+update_version_info
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours.
 
 	clean_exit 
 	
 # Config directory needs to be made
 mkdir $HOME/.parmanode >/dev/null 2>&1 
+# Empty parmanode.conf file if it doesnt' exist
+parmanode_conf_add
 
 # Load config 
 if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
@@ -92,22 +93,13 @@ break ; done
 #fix fstab for older parmanode versions
 fix_fstab
 
-if [[ $1 == "debug2" ]] ; then
-
-delete_line "/etc/tor/torrc" "bitcoin-service"
-
-enter_continue
-exit
-
-fi
 debug1 "Pausing here"
 
-curl https://parman.org/downloadable/parmanode_run.html >/dev/null 2>&1 &
+curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null 2>&1 &
 
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 	menu_main    
-
 
 exit 0

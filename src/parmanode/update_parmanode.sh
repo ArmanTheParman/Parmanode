@@ -1,5 +1,20 @@
 function update_parmanode {
 
+if [[ version_incompatibility == 1 ]] ; then
+set_terminal ; echo "
+########################################################################################
+
+    Parmanode has detected that your version of Parmanode is not backwards compatible
+    with the latest version. To get the new version, you should uninstall Parmanode.
+    You would also need to uninstall all the apps Parmanode installed for you to 
+    be sure of no conflicts. Alternatively, continue to use this current version.
+
+########################################################################################
+"
+enter_continue
+return 1 
+fi
+
 if [[ ! -f $original_dir/version.conf ]] ; then
 set_terminal ; echo "
 ########################################################################################
@@ -44,8 +59,11 @@ cd $original_dir
 if git pull | grep "Already up" ; then enter_continue ; return 0 ; fi
 
 echo "
+
     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
+
     "
+
 enter_continue
 
 return 0 ;;

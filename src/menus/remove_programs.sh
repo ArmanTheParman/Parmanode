@@ -48,19 +48,23 @@ echo "                                           (btcp)             BTCPay
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1                               
 echo "                                           (btcp)             BTCPay (partial) 
 " ; fi
+#############################
+if [[ $OS != "Mac" ]] ; then
 if which tor >/dev/null 2>&1 ; then tormenu=1
 echo "                                           (tor)              Tor 
 "
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1
 echo "                                           (tor)              Tor (partial)
 " ; fi
+fi
+#############################
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndmenu=1
 echo "                                           (lnd)              LND 
 "
 elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then lndmenu=1
 echo "                                           (lnd)              LND (partial) 
 " ; fi
-if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoomenu=1
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
 echo "                                           (mem)              Mempool Space 
 "
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
@@ -95,6 +99,12 @@ echo "                                           (btcpt)            Tor Server
 "
 elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
 echo "                                           (btcpt)            Tor Server (partial) 
+" ; fi
+if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
+echo "                                           (specter)          Specter Wallet 
+"
+elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
+echo "                                           (specter)          Specter Wallet 
 " ; fi
 echo "
 ########################################################################################
@@ -155,6 +165,7 @@ fi
 mem|MEM|Mem)
 if [[ $mempoolmenu == 1 ]] ; then
 uninstall_mempool
+return 0
 fi
 ;;
 
@@ -188,8 +199,15 @@ btcpt|BTCPT)
 if [[ $btcpTORmenu == 1 ]] ; then
 	no_mac || return 1
 	uninstall_btcpay_tor
+	return 0
 	fi
     ;;
+specter|SPECTER|Specter)
+if [[ $spectermenu == 1 ]] ; then
+    uninstall_specter
+	return 0
+	fi
+	;;
 
 p|P)
 	return 0

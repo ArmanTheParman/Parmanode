@@ -3,13 +3,12 @@ while true ; do
 echo "
 ########################################################################################
 
-    This will uninstall Fulcrum only. If you want to uninstall Docker as well, you 
-    can do that afterwards from within the Docker application.
+    This will uninstall Fulcrum only. (Not Docker) 
 
 ########################################################################################        
 "
-choose "epq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; 
+choose "esq" ; read choice
+case $choice in q|Q|QUIT|Quit) exit 0 ;; s|S) return 1 ;; 
 "") break ;;
 *) invalid ;; esac ; done 
 
