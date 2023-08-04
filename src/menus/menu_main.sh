@@ -9,30 +9,30 @@ echo "
 ########################################################################################
 #                                                                                      #"
 if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then parmanodemain=1
-echo "#         (i)           Install Parmanode                                              #"
+echo "#    (i)                  Install Parmanode                                            #"
 else parmanodemain=0
-echo "#         (add)         Add more programs (Install menu)                               #
+echo "#    (add)                Add more programs (Install menu)                             #
 #                                                                                      #
-#         (use)         Use programs (Apps menu)........(Bitcoin, Sparrow, etc)        #
+#    (use)                Use programs (Apps menu)........(Bitcoin, Sparrow, etc)      #
 #                                                                                      #" ; fi
 
 echo "#--------------------------------------------------------------------------------------#
 #                                                                                      #
-#         (remove)      Remove (uninstall) programs                                    #
+#    (remove)             Remove (uninstall) programs                                  #
 #                                                                                      #
-#         (l)           See logs and configuration files                               #
+#    (l)                  See logs and configuration files                             #
 #                                                                                      #
-#         (e)           Education                                                      #
+#    (e)                  Education                                                    #
 #                                                                                      #
-#         (t)           Tools                                                          #
+#    (t)                  Tools                                                        #
 #                                                                                      #
-#         (d)           Donate ;)                                                      #
+#    (d)                  Donate ;)                                                    #
 #                                                                                      #
-#         (uninstall)   Uninstall Parmanode ..........(Who'd do such a thing?)         #
+#    (uninstall)          Uninstall Parmanode ..........(Who'd do such a thing?)       #
 #                                                                                      #
-#         (update)      Update Parmanode                                               #
+#    (update)             Update Parmanode                                             #
 #                                                                                      #
-#         (ap)          About Parmanode                                                #
+#    (ap)                 About Parmanode                                              #
 #                                                                                      #
 ########################################################################################
 "
