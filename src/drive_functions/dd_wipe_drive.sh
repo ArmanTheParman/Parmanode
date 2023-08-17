@@ -19,7 +19,7 @@ echo "
 		 (r)        Random data (Even SLOWER!)
 
 		 (c)        Choose a custom string (Funnest and recommended option)
-
+         
          (s)        Skip wiping
 
 ########################################################################################
@@ -64,7 +64,7 @@ case $choice in
 Your string is: $string 
 "
         enter_continue
-        break wipe
+        break 
         ;;
 
     "")
