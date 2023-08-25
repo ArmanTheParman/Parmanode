@@ -1,11 +1,17 @@
 function menu_bitcoin_core {
 while true
 do
-set_terminal
+set_terminal_custom "55"
 echo "
 ########################################################################################
-                                Bitcoin Core Menu                               
+                                 Bitcoin Core Menu                               
 ########################################################################################
+
+"
+if ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then echo "
+                   BITCOIN IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+fi
+echo "
 
 
       (start)    Start Bitcoind............................................(Do it)
