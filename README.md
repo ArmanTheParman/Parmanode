@@ -1,4 +1,4 @@
-# Parmanode 3.4.6
+# Parmanode 3.4.7
 
 #### Instructions to install at the end
 
@@ -106,6 +106,8 @@ If an external drive is used, a symlink on the internal drive will point to the 
                 |--- fulcrum_db---|
 
 ## HOW TO RUN / INSTALL
+
+IF YOU WISH TO ENQUIRE ABOUT HIRING ME TO ASSIST WITH SETUP AND A WALKTHROUGH OF THE SOFTWARE, PLEASE SEND AN EMAIL TO ARMANTHEPARMAN AT PROTONMAIL DOT COM.
 
 Open the terminal application and type the following (and hit \<enter\> after each line.
 Also, do note it is case sensitive):

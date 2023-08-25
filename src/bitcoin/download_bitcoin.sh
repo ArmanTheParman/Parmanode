@@ -12,7 +12,7 @@ echo "
                 Michael Ford: E777299FC265DD04793070EB944D35F9AC3DB76A 
     
     The downloaded file will then be hased (SHA256) and compared to the hash result 
-    provided by Michael Ford.
+    provided by Michael Ford (Bitcoin Developer).
     
     You may wish to learn how to do this yourself...
 
