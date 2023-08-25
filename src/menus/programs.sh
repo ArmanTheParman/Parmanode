@@ -26,7 +26,7 @@ if which tor >/dev/null 2>&1 ; then torapp=1
                        echo "    (t)          Tor 
                             " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
-                       echo "    (lnd)        LND
+                       echo "    (l)          LND
                             " ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
                        echo "    (mem)        Mempool Space 
@@ -52,7 +52,7 @@ if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
 echo "                            
 #######################################################################################
 "
-choose "xpq"
+
 read choice
 
 case $choice in
@@ -81,7 +81,7 @@ t|T)
     fi
     ;;
 
-lnd|LND|Lnd)
+lnd|LND|Lnd|L|l)
     if [[ $lndapp == 1 ]] ; then
     if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
     if [[ $OS == "Mac" ]] ; then no_mac ; fi

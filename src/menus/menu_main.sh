@@ -13,7 +13,7 @@ echo "#    (i)                  Install Parmanode                               
 else parmanodemain=0
 echo "#    (add)                Add more programs (Install menu)                             #
 #                                                                                      #
-#    (use)                Use programs (Apps menu)........(Bitcoin, Sparrow, etc)      #
+#    (u)                  Use programs (Apps menu)........(Bitcoin, Sparrow, etc)      #
 #                                                                                      #" ; fi
 
 echo "#--------------------------------------------------------------------------------------#
@@ -54,7 +54,7 @@ add|Add| ADD)
     menu_add_programs
     fi
     ;;
-use|USE|Use)
+use|USE|Use|u|U)
     if [[ $parmanodemain == 0 ]] ; then
     menu_programs 
     fi 
