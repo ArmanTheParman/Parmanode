@@ -5,15 +5,14 @@ set_terminal
 echo "
 ########################################################################################
 
-          It is strongly recommended that you update your operating system first. 
-          
-          Especially if you have a Mac and have an old installation of \"Homebrew\",
-          this really needs to be updated or you're likely to run into errors.
+      It is strongly recommended that you update your operating system first. 
+      (Parmanode will do that for you now)...
 
-          Do look at the output, especially near the start; if there is a
-          recommendation to run a command related to \"git unshallow\", then do that.
-          This is a very recent change to Homebrew - I will make edits to Parmanode
-          to take care of this for you in the future.
+      Especially if you have a Mac and have an old installation of \"Homebrew\",
+      this really needs to be updated or you're likely to run into errors.
+
+      As it's running, do look at the output, especially near the start; if there is 
+      a recommendation to run a command related to \"git unshallow\", then do that.
 
 ########################################################################################
 
