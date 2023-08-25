@@ -39,12 +39,6 @@ set_terminal ; echo "
                                  Update Parmanode
     
     Parmanode will update itself by extracting the latest version from Github.com
-    The menus might look a little different afterwards, and hopefully zi bugz will be
-    fewer.
-
-    THIS WILL ONLY WORK IF YOU DOWNLOADED YOUR COPY OF PARMANODE USING THE GIT
-    COMMAND. IF YOU DOWNLOADED A ZIP FILE, THEN THIS UPDATE WON'T WORK, YOU'LL NEED TO
-    DELETE THIS COPY AND DOWNLOAD THE NEWER VERSION.
 
     Proceed?  (y) or (n)
 
