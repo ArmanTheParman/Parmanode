@@ -65,9 +65,11 @@ sudo chmod -R 755 /tor-server-move/*
 sudo shopt -s dotglob ; sudo mv /tor-server-move/* /tor-server/
 ;;
 
-off|Off|OFF) index_off ;;
+off|Off|OFF) 
+index_off ;;
 
-on|ON|On) index_on ;;
+on|ON|On) 
+index_on ;;
 
 *)
 invalid
