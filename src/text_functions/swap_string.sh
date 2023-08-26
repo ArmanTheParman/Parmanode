@@ -16,6 +16,6 @@ if [[ ! -f "$input_file" ]]; then
     return 1
 fi
 
-sudo sed -i '' "/$search_string/c\\$new_line/" "$input_file"
-
+sudo sed -i "/$search_string/c\\$new_line/" "$input_file"
+debug "check sed worked"
 }
