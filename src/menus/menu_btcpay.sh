@@ -2,13 +2,22 @@ function menu_btcpay {
 while true ; do
 set_terminal ; echo "
 ########################################################################################
+                                 BTCPay Server Menu
+########################################################################################
 
-                                  BTCPay Server
 
     The BTCPay server webpage is available to you via a browser on any device on this 
-    network. Enter the following address to access:
-
-                  http://${IP}:23001
+    network. 
+    
+    Enter the following address to access: http://${IP}:23001
+"
+if docker ps | grep btcp >/dev/null 2>&1 ; then echo "
+    BTCPay SERVER IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+else
+echo "
+    BTCPay SERVER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+echo "
 
 ########################################################################################
 

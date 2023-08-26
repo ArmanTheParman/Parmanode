@@ -3,7 +3,14 @@ while true ; do set_terminal ; echo "
 ########################################################################################
                                 Mempool Space Menu                               
 ########################################################################################
-
+"
+if docker ps | grep mempool >/dev/null 2>&1 ; then echo "
+                   MEMPOOL IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+else
+echo "
+                   MEMPOOL IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+echo "
 
       (start)          Start Mempool Space 
 
