@@ -191,4 +191,34 @@ automatically update the softwre that Parmanode installed for you on your system
 get newwer versions of updated software, you need to uninstall the particular app, then
 reinstall it with the new version of Parmanode - it will then install the newer version
  of the app for you.
+
+## Install together with PARMANODL
+
+Parmanodl is a Linux Mint operating system with Parmanode pre-configured. It is a 3 Gb
+download from my darkweb server - This was just a simple way to host a massive file.
+
+To download it you need Tor.
+
+If you have the Tor browser, put this in the address bar to download:
+
+http://y3qwmjwxdsrpqvvdqosd3zv2fugiprceqewdaqeeqh7m4egkfatdhzqd.onion:7001/Parmanodl_1.0.0.iso
+
+If you have the Tor daemon, run this command in the Linux Terminal:
+
+torify curl -O http://y3qwmjwxdsrpqvvdqosd3zv2fugiprceqewdaqeeqh7m4egkfatdhzqd.onion:7001/Parmanodl_1.0.0.iso
+
+Once you have the iso file, you need to flash it to a USB drive - thumb drive or full
+external HDD, doesn't matter. Flash it with something like Balena Etcher, or the dd
+command if you're fancy.
+
+Then, on the computer you wish to install the operating system, figure out how to
+boot from the USB. Every computer will be different; Google is your friend here.
+
+You'll then get a Linux boot menu. Choose the OEM install.
+
+A user called "parman" will be made. The password is "parmanode". You can and probably 
+should change the password, but don't change the username.
+
+On the desktop, there are instructions on how to run it (it's easy).
+
  
