@@ -1,8 +1,18 @@
 function menu_lnd {
-while true ; do set_terminal ; echo "
+while true ; do set_terminal_custom "45" ; echo "
 ########################################################################################
                                      LND Menu                               
 ########################################################################################
+
+"
+if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
+                   LND IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+else
+echo "
+                   LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+echo "
+
 
       (i)              Important info
 

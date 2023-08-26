@@ -10,11 +10,20 @@ else
     F_tor="off"
 fi
 
-set_terminal
+set_terminal_custom 45
 echo "
 ########################################################################################
                                    Fulcrum Menu                               
 ########################################################################################
+
+"
+if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo "
+                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+else
+echo "
+                   FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+echo "
 
 
       (start)    Start Fulcrum 
