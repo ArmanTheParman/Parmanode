@@ -199,6 +199,8 @@ reinstall it with the new version of Parmanode - it will then install the newer 
 
 ## MAKE YOUR OWN PARMANODL
 
+	https://github.com/ArmanTheParman/ParmanodL
+
 ParmanodL is a computer running Linux and Parmanode which can be purchased ready made with
 the blockchain syced.
 
