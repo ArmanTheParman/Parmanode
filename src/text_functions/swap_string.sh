@@ -17,5 +17,4 @@ if [[ ! -f "$input_file" ]]; then
 fi
 
 sudo sed -i "/$search_string/c\\$new_line/" "$input_file"
-debug "check sed worked"
 }
