@@ -109,23 +109,26 @@ If an external drive is used, a symlink on the internal drive will point to the 
 
 IF YOU WISH TO ENQUIRE ABOUT HIRING ME TO ASSIST WITH SETUP AND A WALKTHROUGH OF THE SOFTWARE, PLEASE SEND AN EMAIL TO ARMANTHEPARMAN AT PROTONMAIL DOT COM.
 
+IF YOU WISH TO BUY A READY MADE PARMANODE NODE ("PARMANODL") PLEASE CONTACT ME:
+
+    armantheparman@protonmail.com
+
+If you want to start a new computer yourself with parmanode (build your own ParmanodL), 
+then see instructions near the end.
+
+To simply install parmanode on your existing computer, read on...
+
 Open the terminal application and type the following (and hit \<enter\> after each line.
 Also, do note it is case sensitive):
 
-    cd ~/Desktop
-    git clone http://github.com/armantheparman/parmanode.git
+    cd ~/Desktop ; git clone http://github.com/armantheparman/parmanode.git
     cd parmanode
     ./run_parmanode.sh
-
-If you don't like all that typing, copy and paste the following single line into terminal
-and hit \<enter\>:
-
-    cd Desktop && git clone http://github.com/armantheparman/parmanode.git && cd parmanode && ./run_parmanode.sh
 
 On some Linux distributions, git may not be installed by default so the git command above may not work
 initially. You'll need to install git like this...
 
-    sudo apt update -y && sudo apt install git -y
+    sudo apt update -y ; sudo apt install git -y
 
 You can then close terminal, open it again, and try the sequence of commands above again.
 
@@ -141,13 +144,15 @@ the right directory with
     
     cd Desktop/parmanode
 
-Then run the proram:
+Then run the program:
 
     ./run_parmanode.sh
 
 Parmanode is not designed to be run by a user (login) that did not originally install the software. If
 you try this, you will get errors.
 
+You can make a script that you can double-click and run parmanode that way (see ParmanodL)
+instructions for infor about that.
 
 ## An important note about the naming and location of parmanode
 
@@ -192,33 +197,64 @@ get newwer versions of updated software, you need to uninstall the particular ap
 reinstall it with the new version of Parmanode - it will then install the newer version
  of the app for you.
 
-## Install together with PARMANODL
+## MAKE YOUR OWN PARMANODL
 
-Parmanodl is a Linux Mint operating system with Parmanode pre-configured. It is a 3 Gb
-download from my darkweb server - This was just a simple way to host a massive file.
+	https://github.com/ArmanTheParman/ParmanodL
 
-To download it you need Tor.
+ParmanodL is a computer running Linux and Parmanode which can be purchased ready made with
+the blockchain syced.
 
-If you have the Tor browser, put this in the address bar to download:
+But this is how you make your own.
 
-http://y3qwmjwxdsrpqvvdqosd3zv2fugiprceqewdaqeeqh7m4egkfatdhzqd.onion:7001/Parmanodl_1.0.0.iso
+Download Linux Mint iso.
 
-If you have the Tor daemon, run this command in the Linux Terminal:
+    cd ~/Downloads
+    curl -LO https://mirrors.advancedhosters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
 
-torify curl -O http://y3qwmjwxdsrpqvvdqosd3zv2fugiprceqewdaqeeqh7m4egkfatdhzqd.onion:7001/Parmanodl_1.0.0.iso
+hash the downloaded file. The command is:
 
-Once you have the iso file, you need to flash it to a USB drive - thumb drive or full
-external HDD, doesn't matter. Flash it with something like Balena Etcher, or the dd
-command if you're fancy.
+    shasum -a 256 linuxmint-21.2-cinnamon-64bit.iso
+
+You should get:
+
+    116578dda0e03f1421c214acdd66043b586e7afc7474e0796c150ac164a90a2a
+
+Then flash the file to a usb drive - a thumb drive or even a full external SSD drive. The 1Tb
+drive you need for the blockchain will do nicely; it's temporary.
+
+Use Balena Etcher to flash the iso file to the drive. This will make it a Linux drive and no longer
+readable by a Windows or Mac computer, so when it's finished flashing, ignore the pop-up 
+oferring you to format it.
 
 Then, on the computer you wish to install the operating system, figure out how to
 boot from the USB. Every computer will be different; Google is your friend here.
 
-You'll then get a Linux boot menu. Choose the OEM install.
+You'll then get a Linux boot menu. Choose the OEM install. You'll install the software
+as though you were the computer manufacturer, preparing the software for a customer.
+All your settings you choose are temporary, so don't stress about what choices you make
+during the install.
 
-A user called "parman" will be made. The password is "parmanode". You can and probably 
-should change the password, but don't change the username.
+Once installed, you'll see an icon on the desktop to "ship to end user". Double click it.
+Then dismiss the pop up and restart the computer. You'll be asked to remove the USB drive.
 
-On the desktop, there are instructions on how to run it (it's easy).
+This time when the computer boots up, you'll make your computer account and fill in details
+that will remain.
 
- 
+Next, make sure you have an internet connection and run the following commands in terminal 
+(black icon on the tasbar at the bottom), one after the other, and hit <enter> after each
+line. Copy/paste is best:
+
+    sudo apt update -y ; sudo apt install git -y
+    cd ~/Desktop ; git clone http://github.com/armantheparman/parmanode.git
+
+The above commands will install git, then use git to download Parmanode to the desktop (this
+is the best place for it to live, try not to move it). 
+
+The next commands will create a script which sits on the desktop and you can double click it
+to run Parmanode. You'll get a pop up and choose to "run in terminal".
+
+    echo '#!/bin/bash' > ~/Desktop/run_parmanode.sh
+    echo "cd ; cd Desktop ; cd parmanode ; ./run_parmanode.sh" >> $HOME/Desktop/run_parmanode.sh
+    sudo chmod +x $HOME/Desktop/run_parmanode.sh
+
+
