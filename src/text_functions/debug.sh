@@ -4,6 +4,7 @@
 # code to contine.
 
 function debug {
+if [ $debug == 1 ] ; then
 echo "Debug point. Message:
 "
 echo "$1
@@ -11,6 +12,7 @@ echo "$1
 log "debug" "$1"
 enter_continue
 return 0
+fi
 }
 	
 function debug1 {
