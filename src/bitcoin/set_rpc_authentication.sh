@@ -43,7 +43,9 @@ case $choice in
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
 
-				sleep 1 ; run_bitcoind
+				sleep 1 
+				echo "Starting Bitcoin"
+				run_bitcoind
 
                 break
 		        ;;
