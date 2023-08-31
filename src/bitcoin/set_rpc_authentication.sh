@@ -17,7 +17,11 @@ set_terminal_bit_higher ; echo "
     Some software (eg Fulcrum Server) REQUIRES the alternative way, which is with a 
     USERNAME And PASSWORD. For convenience, you can set a username and password here.
 
-
+	Please be aware changing a setting here to make one wallet work, can mess up
+	another. For example, if you first installed Sparrow and if works fine, then you
+	decided to install Fulcrum, you'll need to set a password for bitcoin. If you do
+	that, Sparrow will no longer connect unless you go into the network preferences
+	and enter the username/password.
 
        (s) Set the Bitcoin username and password (edits bitcoin.conf)
 
