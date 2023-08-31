@@ -10,7 +10,7 @@ echo "Hit s to skip or anything else to continue."
 read choice
 if [[ $choice == "s" ]] ; then return ; fi
 stop_bitcoind
-echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitocin/bitcoin.conf >/dev/null 2>&1
+echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 debug "check rpc line added"
 run_bitcoind
 fi
