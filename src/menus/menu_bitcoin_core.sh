@@ -40,7 +40,7 @@ echo "
       (up)       Set, remove, or change RPC user/pass
 
       (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
-      c
+      
       (tor)      Tor menu options for Bitcoin
 
 
@@ -109,9 +109,7 @@ echo "
 ########################################################################################
 "
 enter_continue
-nano $HOME/.bitcoin/bitcoin.conf
-continue
-;;
+nano $HOME/.bitcoin/bitcoin.confif [ $debug == 1 ] ; then
 
 dd|DD)
 echo "
