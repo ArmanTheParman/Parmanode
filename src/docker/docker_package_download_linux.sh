@@ -10,7 +10,7 @@ sudo apt-get update -y
 
 #modified instruction from official Docker guide to include Linuxmint conversion
   sudo source /etc/os-releases
-    if [[ $ID != "debian" ]] ; then ID="ubuntu" ; fi
+    if [[ $ID != "debian" ]] ; then export ID="ubuntu" ; fi
   get_linux_version_codename 
 
   debug "about to edit etc/apt/sources... $VCequivalent. ID is $ID"
