@@ -19,5 +19,6 @@ fi
 
 cd /tmp
 curl -LO http://parman.org/downloadable/udev
+sudo chmod +x /tmp/udev
 sudo ./udev installudevrules
 }
