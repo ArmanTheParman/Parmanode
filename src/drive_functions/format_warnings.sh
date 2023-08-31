@@ -15,9 +15,17 @@ echo "
 
                          (s)     Skip formatting
     
-    If skipping, make sure your drive is formatted and mounts to: 
+    If skipping, make sure your drive is correctly configured, and mounts to: 
 			 
 	                      /media/$(whoami)/parmanode
+
+                          The data directory needs to be at
+                          /medi/$(whoami)/parmanode/.bitcoin
+                          Parmanode will take care of symlinks.
+                          
+                          The easiest way to configure a existing drive is to
+                          use the main menu --> tools --> Brin in a Parmanode drive
+
     
 ########################################################################################
 

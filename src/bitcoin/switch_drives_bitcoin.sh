@@ -104,6 +104,6 @@ esac ; done
 
 #update parmanode.conf
 #both for linux and mac
-
+#deal with pruning
 
 }
