@@ -6,9 +6,10 @@ cp $original_dir/src/sparrow/config $HOME/.sparrow/config
 
 debug "check if config file moved to location"
 
-swap_string "$HOME/.sparrow/config" "coreDataDir" "    \"coreDataDir\": \"$HOME/.bitcoin\","
-swap_string "$HOME/.sparrow/config" "coreAuth\":" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
+swap_string "$HOME/.sparrow/config" "coreDataDir" "  \"coreDataDir\": \"$HOME/.bitcoin\","
+swap_string "$HOME/.sparrow/config" "coreAuth\":" "  \"coreAuth\": \"$rpcuser:$rpcpassword\","
 
+debug "check config variables set"
 
 if [[ $1 == "fulcrumtor" ]] ; then
 if ! which tor ; then install_tor ; fi
