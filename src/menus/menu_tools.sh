@@ -17,7 +17,8 @@ echo "
 
                  (h)     Check system resources with \"htop\" (installs if needed)
 
-                 (a)     Add a new external drive to parmanode
+                 (a)     Bring in a Parmanode drive from another installation, or
+                         add a new external drive to Parmanode
 
 
                  ... More soon
