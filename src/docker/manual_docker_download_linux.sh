@@ -10,7 +10,7 @@ if [[ $chip == "armv7l" ]] ; then chip="armhf" ; fi
 
 get_linux_version_codename
 
-if [[ !-z $VCequivalent ]] ; then VC=$VCequivalent ; fi
+if [ ! -z $VCequivalent ] ; then VC=$VCequivalent ; fi
 debug "VC is $VC"
 
 if [[ $VC == "bionic" ]] ; then
