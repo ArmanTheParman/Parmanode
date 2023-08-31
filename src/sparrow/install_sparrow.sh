@@ -27,7 +27,8 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
 
 make_sparrow_config 
 
-if [[ $OS == "Linux" ]] ; then udev ; fi
+if [[ $OS == "Linux" ]] ; then udev "sparrow" ; fi
+debug "Did udev function run?"
 
 add_localhost_to_bitcoinconf
 
