@@ -4,6 +4,8 @@ mkdir $HOME/.sparrow >/dev/null 2>&1
 rm $HOME/.sparrow/config >/dev/null 2>&1
 cp $original_dir/src/sparrow/config $HOME/.sparrow/config
 
+debug "check if config file moved to location"
+
 swap_string "$HOME/.sparrow/config" "coreDataDir" "    \"coreDataDir\": \"$HOME/.bitcoin\","
 swap_string "$HOME/.sparrow/config" "coreAuth\":" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
 
