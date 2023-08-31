@@ -1,5 +1,6 @@
 function get_linux_version_codename {
 . /etc/os-release && VC=$VERSION_CODENAME
+. $HOME/.parmanode/parmanode.conf #(fix ID variable)
 
 
 
