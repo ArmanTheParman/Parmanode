@@ -24,6 +24,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
+
 make_sparrow_config 
 
 if [[ $OS == "Linux" ]] ; then udev ; fi
@@ -44,6 +45,11 @@ set_terminal ; echo "
 enter_continue 
 return 0
 }
+
+
+
+########################################################################################################################
+
 
 function unpack_sparrow {
 cd $HOME/parmanode

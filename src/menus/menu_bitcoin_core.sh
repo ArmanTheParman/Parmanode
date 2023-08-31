@@ -109,7 +109,9 @@ echo "
 ########################################################################################
 "
 enter_continue
-nano $HOME/.bitcoin/bitcoin.confif [ $debug == 1 ] ; then
+nano $HOME/.bitcoin/bitcoin.conf
+continue
+;;
 
 dd|DD)
 echo "
