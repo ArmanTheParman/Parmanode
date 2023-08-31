@@ -15,6 +15,6 @@ if [[ ! -f "$input_file" ]]; then
     enter_continue
     return 1
 fi
-
+debug "test sed"
 sudo sed -i "/$search_string/c\\$new_line/" "$input_file"
 }
