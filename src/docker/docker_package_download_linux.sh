@@ -12,6 +12,9 @@ sudo apt-get update -y
   sudo source /etc/os-releases
     if [[ $ID != "debian" ]] ; then ID="ubuntu" ; fi
   get_linux_version_codename 
+
+  debug "about to edit etc/apt/sources... $VCequivalent. ID is $ID"
+
   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
   "$(echo "$VCequivalent")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
