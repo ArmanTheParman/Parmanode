@@ -7,7 +7,7 @@ set_terminal ; echo "
 
                                Docker Troublshooting
 
-    Parmanode added your username to the docker group, but it will 
+    Parmanode tried to add your username to the docker group, but it will 
     require you to log out of the session you're in and return.
 
     That means, if you're accessing this via SSH, you need to exit out of the user.
