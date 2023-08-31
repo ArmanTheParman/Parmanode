@@ -23,10 +23,10 @@ echo "
 if [[ $mempool_running == 1 ]] ; then echo "
       To see Mempool Space, navigate to http://$IP:4080
 
-
+" ; fi
+echo "
 ########################################################################################
 "
-fi
 choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
