@@ -5,7 +5,7 @@ while true ; do set_terminal ; echo "
 ########################################################################################
 "
 if docker ps | grep mempool >/dev/null 2>&1 ; then echo "
-                   MEMPOOL IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+                   MEMPOOL IS RUNNING"
                    export mempool_running=1
 else
 echo "
