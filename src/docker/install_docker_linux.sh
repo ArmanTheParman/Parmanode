@@ -107,7 +107,13 @@ installed_config_add "docker-end"
 log "docker" "Install success." 
 success "Docker" "installing."
 
-if [[ $installed_from == "btcpay" ]] ; then
+if [[ $installed_from == "btcpay" ]                if [[ $choice == "y" ]] ; then 
+                      echo ""
+                      echo ""
+                      sleep 30 ; echo " 30 .. 29 ......."
+                      sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
+                      || echo "" && announce "Docker install failed." && return 1 ; fi
+] ; then
 set_terminal "pink" ; echo "
 ######################################################################################## 
 ######################################################################################## 

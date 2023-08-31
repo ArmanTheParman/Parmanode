@@ -51,10 +51,10 @@ if [ $exit_status != 0 ] ; then
            read choice 
                 if [[ $choice == "y" ]] ; then 
                       echo ""
-                      echo ""
+                      echo "Waiting ..."
                       sleep 30 ; echo " 30 .. 29 ......."
                       sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
-                      || echo "" && announce "Docker install failed." && return 1 ; fi
+                      || echo "" && announce "Docker install failed." && export docker_package_install_fail=1 && return 1 ; fi
 fi
 
 

@@ -42,6 +42,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     if ! id | grep docker ; then 
+        if [[ $docker_package_download_linux == 1 ]] ; then return 1 ; fi
         docker_troubleshooting "mempool"
         add_docker_group
         fi
