@@ -29,6 +29,8 @@ make_sparrow_config
 
 if [[ $OS == "Linux" ]] ; then udev ; fi
 
+add_localhost_to_bitcoinconf
+
 installed_conf_add "sparrow-end"
 
 set_terminal ; echo "
