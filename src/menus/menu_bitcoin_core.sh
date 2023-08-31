@@ -113,14 +113,6 @@ nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 
-
-# (change)   Change where Bitcoin syncs to (eg internal vs external)
-
-# change|CHANGE|Change)
-# change_bitcoin_datadir
-# continue
-# ;;
-
 dd|DD)
 echo "
 ########################################################################################
