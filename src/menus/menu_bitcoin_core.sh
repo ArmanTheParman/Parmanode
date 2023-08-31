@@ -12,7 +12,8 @@ echo "
 "
 if ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then echo "
                    BITCOIN IS RUNNING -- SEE LOG MENU FOR PROGRESS 
-                         ...syncing to the $drive drive."
+
+                         (syncing to the $drive drive)"
 else
 echo "
                    BITCOIN IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
@@ -39,7 +40,7 @@ echo "
       (up)       Set, remove, or change RPC user/pass
 
       (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
-      
+      c
       (tor)      Tor menu options for Bitcoin
 
 
@@ -112,6 +113,13 @@ nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 
+
+# (change)   Change where Bitcoin syncs to (eg internal vs external)
+
+# change|CHANGE|Change)
+# change_bitcoin_datadir
+# continue
+# ;;
 
 dd|DD)
 echo "

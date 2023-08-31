@@ -1,0 +1,57 @@
+function change_bitcoin_datadir {
+
+while true ; do
+
+source ~/.parmanode/parmaode.conf
+if [[ $drive == "external" ]] ; then swap_to="internal" ; fi
+if [[ $drive == "internal" ]] ; then swap_to="external" ; fi
+
+if [[ -z $drive ]] ; then (change)   Change where Bitcoin syncs to (eg internal vs external)
+
+# change|CHANGE|Change)
+# change_bitcoin_datadir
+# continue
+# ;;
+
+    set_terminal
+    echo "
+
+    No Bitcoin data directory set. Exiting."
+    sleep 2
+    return 1
+    fi
+
+
+set_terminal 
+echo "
+########################################################################################
+    
+    Bitcoin core is currently configured to sync to the $drive drive.
+
+    Would you like to....
+
+              p)    Leave as is and go back.
+
+              s)    Switch to the $swap_to drive.
+
+########################################################################################
+"
+read choice
+
+case $choice in
+q|Q|quit|QUIT|Quit)
+exit ;;
+p|P)
+return 0 ;;
+
+s|S|swap|switch)
+export $drive $swap_to
+switch_drives_bitcoin
+;;
+*)
+invalid
+;;
+esac
+done #end while loop
+}
+
