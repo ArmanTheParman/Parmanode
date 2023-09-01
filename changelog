@@ -2,6 +2,7 @@ Version 3.4.9
     -New version of Linux mint "victoria", compatibility added; Docker should work now.
     -Saprrow new version broke autoconnection to node - fixed.
     -Fixed udev rule installation bug
+    -Removed mempool; Newer versions are not working. Too much headache.
 Version 3.4.8
     -menu improvements
 Version 3.4.7
