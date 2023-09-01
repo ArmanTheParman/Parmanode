@@ -26,9 +26,9 @@ echo "#                            (t)           Tor                            
 if ! grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndadd=1
 echo "#                            (lnd)         LND                                         #
 #                                                                                      #" ; fi
-if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempooladd=1
-echo "#                            (mem)         Mempool Space                               #
-#                                                                                      #" ; fi
+# if ! grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempooladd=1
+# echo "#                            (mem)         Mempool Space                               #
+# #                                                                                      #" ; fi
 if ! grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowadd=1
 echo "#                            (s)           Sparrow Wallet                              #
 #                                                                                      #" ; fi
@@ -64,9 +64,9 @@ echo "#                                      Tor                                
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndadd=0
 echo "#                                      LND                                             #
 #                                                                                      #" ; fi
-if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempooladd=0
-echo "#                                      Mempool Space                                   #
-#                                                                                      #" ; fi
+# if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempooladd=0
+# echo "#                                      Mempool Space                                   #
+# #                                                                                      #" ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowadd=0
 echo "#                                      Sparrow Wallet                                  #
 #                                                                                      #" ; fi
@@ -137,19 +137,19 @@ case $choice in
        fi
        ;;
     
-    mem|MEM|Mem)
-       if [[ $mempooladd == 1 ]] ; then
-       if [[ $OS == "Linux" ]] ; then
-       if [[ "$(uname -m)" == arm* || "$(uname -m)" == aarch* ]] ; then
-       set_terminal ; echo "Raspberry Pi detected; this wont work, but feel free to try."
-       echo "y to try, or just <enter> to abort."
-       read choice ; case $choice in y|Y|yes|YES) install_mempool ; return 0 ;; *) return 0 ;; esac
-       fi ; fi
+   #  mem|MEM|Mem)
+   #     if [[ $mempooladd == 1 ]] ; then
+   #     if [[ $OS == "Linux" ]] ; then
+   #     if [[ "$(uname -m)" == arm* || "$(uname -m)" == aarch* ]] ; then
+   #     set_terminal ; echo "Raspberry Pi detected; this wont work, but feel free to try."
+   #     echo "y to try, or just <enter> to abort."
+   #     read choice ; case $choice in y|Y|yes|YES) install_mempool ; return 0 ;; *) return 0 ;; esac
+   #     fi ; fi
        
-       install_mempool
-       return 0
-       fi
-       ;;
+   #     install_mempool
+   #     return 0
+   #     fi
+   #     ;;
     
     s|S|Sparrow|sparrow|SPARROW)
        if [[ $sparrowadd == 1 ]] ; then
