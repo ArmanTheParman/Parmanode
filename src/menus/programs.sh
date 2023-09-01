@@ -28,9 +28,9 @@ if which tor >/dev/null 2>&1 ; then torapp=1
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
                        echo "    (l)          LND
                             " ; fi
-if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
-                       echo "    (mem)        Mempool Space 
-                            " ; fi
+# if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
+#                        echo "    (mem)        Mempool Space 
+#                             " ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
                        echo "    (s)          Sparrow Wallet 
                             " ; fi
@@ -87,11 +87,11 @@ lnd|LND|Lnd|L|l)
     if [[ $OS == "Mac" ]] ; then no_mac ; fi
     fi
 ;;
-mem|MEM|Mem)
-   if [[ $mempoolapp == 1 ]] ; then
-   menu_mempool
-   fi
-;;
+# mem|MEM|Mem)
+#    if [[ $mempoolapp == 1 ]] ; then
+#    menu_mempool
+#    fi
+# ;;
 
 s|S|Sparrow|SPARROW|sparrow)
    if [[ $sparrowapp == 1 ]] ; then
