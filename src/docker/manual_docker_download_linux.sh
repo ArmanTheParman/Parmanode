@@ -1,9 +1,6 @@
 #Not used, for reference:
 function manual_download_docker_linux {
 
-chip="$(uname -m)" >/dev/null 2>&1
-parmanode_conf_add "chip=$chip"
-
 if [[ $chip == "x86_64" ]] ; then chip="amd64" ; fi
 if [[ $chip == "aarch64" ]] ; then chip="arm64" ; fi
 if [[ $chip == "armv7l" ]] ; then chip="armhf" ; fi

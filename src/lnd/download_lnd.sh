@@ -24,5 +24,4 @@ fi
 if [[ $chip == "armv7l" ]] ; then
 curl -LO https://github.com/lightningnetwork/lnd/releases/download/v0.16.2-beta/lnd-linux-armv7-v0.16.2-beta.tar.gz
 fi
-debug1 "end download lnd"
 }

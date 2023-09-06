@@ -73,8 +73,6 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
-	chip="$(uname -m)" >/dev/null 2>&1
-    parmanode_conf_add "chip=$chip"
 	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
 

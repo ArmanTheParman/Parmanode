@@ -1,6 +1,7 @@
 function download_sparrow {
 cd $HOME/parmanode
 sparrow_version="1.7.8"
+
 if [[ $OS == "Linux" ]] ; then
 
     if [[ $chip == "x86_64" || $chip == "amd64" ]] ; then

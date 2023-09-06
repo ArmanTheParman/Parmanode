@@ -40,6 +40,7 @@ make_home_parmanode
 
 # Set variables
     Linux_distro
+    check_chip
 
 while true ; do
 set_terminal ; echo "
