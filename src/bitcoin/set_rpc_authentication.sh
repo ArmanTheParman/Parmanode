@@ -47,6 +47,9 @@ case $choice in
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
 				#checks if fulcrum installed, otherwise returns
+				
+				export btc_authentication="user/pass"
+				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
 
 				sleep 1 
 				echo "Starting Bitcoin"
@@ -63,6 +66,10 @@ case $choice in
 	            stop_bitcoind
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
                 delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+
+				export btc_authentication="cookie"
+				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
+
 				sleep 1
 				run_bitcoind 
 				break

@@ -47,6 +47,10 @@ echo "#                            (btcpt)       BTCP over Tor (Darknet BTCPay) 
 if ! grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specteradd=1
 echo "#                            (specter)     Specter Wallet                              #
 #                                                                                      #" ; fi
+if ! grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorer=1
+echo "#                            (bre)         BTC RPC Explorer                            #
+#                                                                                      #" ; fi
+########################################################################################
 echo "# Already installed...                                                                 #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=0
@@ -84,6 +88,9 @@ echo "#                                      BTCP over Tor (Darknet BTCPay)     
 #                                                                                      #" ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterdd=0
 echo "#                                      Specter Wallet                                  #
+#                                                                                      #" ; fi
+if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorer=0
+echo "#                                      BTC RPC Explorer                                #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -133,10 +140,17 @@ case $choice in
     lnd|LND|Lnd)
        if [[ $lndadd == 1 ]] ; then
        if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
-       if [[ $OS == "Mac" ]] ; then no_mac ;  return 0 ; fi
+       if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
        fi
        ;;
-    
+   
+    bre|BRE|Bre)
+       if [[ $btcrpcexplorer == 1 ]] ; then
+         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi 
+         install_btcrpcexplorer ; return 0 
+       fi
+       ;;
+
    #  mem|MEM|Mem)
    #     if [[ $mempooladd == 1 ]] ; then
    #     if [[ $OS == "Linux" ]] ; then
