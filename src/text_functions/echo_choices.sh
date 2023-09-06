@@ -5,6 +5,7 @@
     # invalid
     # previous menu
     # please wait
+    # announce
 
 function enter_continue {
 echo "Hit <enter> to continue." ; read
@@ -82,3 +83,16 @@ Please wait, this may take some time...
 "
 return 0
 }
+
+function announce {
+set_terminal ; echo "
+########################################################################################
+
+    $1
+
+########################################################################################
+"
+enter_continue
+return 0
+}
+

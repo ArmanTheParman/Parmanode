@@ -2,8 +2,6 @@ function pre_install_mac {
 
 # need to divide in to x86 chips and M2 chips
 
-chip=$(uname -m)
-
 if [[ $chip == "x86_64" ]] ; then set_terminal ; echo "
 ########################################################################################
 
