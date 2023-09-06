@@ -2,11 +2,13 @@
 # confugure_btcrpcexplorer
 # btcrpcexplorer_questions
 # make_btcrpcexplorer_config
-
+# make_btcrpcexplorer_service
 
 
 function install_btcrpcexplorer {
 set_terminal
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $chip != "x86_64" ]] ; then return 1 ; fi
 
 install_nodejs || return 1
 
