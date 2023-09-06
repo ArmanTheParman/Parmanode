@@ -1,3 +1,6 @@
+Version 3.5.0
+    -BTR RPC Explorer added
+    -various tweaks here and there
 Version 3.4.9
     -New version of Linux mint "victoria", compatibility added; Docker should work now.
     -Saprrow new version broke autoconnection to node - fixed.
