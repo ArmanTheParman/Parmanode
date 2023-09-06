@@ -1,6 +1,15 @@
 function menu_btcrpcexplorer {
 while true
 do
+unset output
+unset enabled
+enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
+
+if [[ $enabled == true ]] ; then 
+output="     ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
+
+                   http://$IP:3003     Note the port is 3003 not 3002"
+fi
 set_terminal
 
 echo "
@@ -22,11 +31,16 @@ echo "
 
                   (restart)  Restart BTC RPC EXPLORER 
 
+                  (e)        Enable access from other computers (via nginx)
 
-    ACCESS THE PROGRAM FROM YOUR BROWSWER:
+                  (d)        Disable access from other computers
+
+
+    ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 
                   http://127.0.0.1:3002
                 
+$output
 
 ########################################################################################
 "
@@ -44,6 +58,12 @@ sudo systemctl stop btcrpcexplorer.service >/dev/null
 ;;
 restart|Restart|RESTART)
 sudo systemctl restart btcrpcexplorer.service >/dev/null
+;;
+e|E|enable|Enable|ENABLE)
+enable_access_bre
+;;
+d|D|Disable|disable|DISABLE)
+disable_access_bre
 ;;
 esac
 done

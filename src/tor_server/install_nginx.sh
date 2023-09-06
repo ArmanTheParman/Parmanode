@@ -1,6 +1,15 @@
 function install_nginx {
 
-if which nginx ; then set_terminal ; echo "Nginx already installed." ; enter_continue ; return 1 ; fi
+if cat $HOME/.parmanode/installed.conf | grep -q "nginx-end" ; then 
+    set_terminal
+    echo "Nginx alread installed." ; enter_continue ; return 1
+else
+    if which nginx ; then 
+    set_terminal 
+    echo "Nginx already installed." ; enter_continue 
+    installed_conf_add "nginx-end"     
+    return 1 ; fi
+fi
 
 sudo apt-get install nginx -y
 installed_conf_add "nginx-end"
