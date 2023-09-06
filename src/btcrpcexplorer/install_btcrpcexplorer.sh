@@ -6,6 +6,7 @@
 
 
 function install_btcrpcexplorer {
+set_terminal
 
 install_nodejs || return 1
 
@@ -21,9 +22,15 @@ installed_config_add "btcrpcexplorer-end"
 
 configure_btcrpcexplorer
 
+debug "configure done"
+
 btcrpcexplorer_questions
 
 make_btcrpcexplorer_config
+
+make_btcrpcexplorer_service
+
+debug "install done"
 
 success "BTC RPC Explorer" "being installed."
 return 0
@@ -32,7 +39,7 @@ return 0
 function configure_btcrpcexplorer {
 #for older versions of Parmanode...
 if cat $HOME/.parmanode/parmanode.conf | grep -q "btc_authentication" ; then return 0 ; else
-    if cat $HOME/.bitcoin | grep -q "rpcuser=" ; then export btc_authentication="user/pass" ; else export btc_authentication="cookie" ; fi
+    if cat $HOME/.bitcoin/bitcoin.conf | grep -q "rpcuser=" ; then export btc_authentication="user/pass" ; else export btc_authentication="cookie" ; fi
     parmanode_conf_remove "btc_authentication"
     parmanode_conf_add "btc_authentication=$btc_authentication"
 fi
@@ -69,7 +76,7 @@ if [[ $fast_computer == "yes" ]] ; then
 else
     echo "BTCEXP_SLOW_DEVICE_MODE=true" > $HOME/parmanode/btc-rpc-explorer/.env 
 fi
-
+debug "btc auth - $btc_authentication"
 if [[ $btc_authentication == "user/pass" ]] ; then
     echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $HOME/parmanode/btc-rpc-explorer/.env 
     echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $HOME/parmanode/btc-rpc-explorer/.env 
@@ -78,4 +85,29 @@ else
 fi
 
 echo "BTCEXP_BITCOIND_RPC_TIMEOUT=50000" >> $HOME/parmanode/btc-rpc-explorer/.env 
+echo "BTCEXP=0.0.0.0" >> $HOME/parmanode/btc-rpc-explorer/.env 
+echo "BTCEXP_ADDRESS_API=electrumx" >> $HOME/parmanode/btc-rpc-explorer/.env 
+echo "BTCEXP_ELECTRUMX_SERVERS=tcp://127.0.0.1:50001" >> $HOME/parmanode/btc-rpc-explorer/.env 
+echo "BTCEXP_NO_RATES=false" >> $HOME/parmanode/btc-rpc-explorer/.env 
+}
+
+function make_btcrpcexplorer_service {
+
+echo "[Unit]
+Description=BTC RPC Explorer
+After=bitcoind.service
+PartOf=bitcoind.service
+
+[Service]
+WorkingDirectory=$HOME/parmanode/btc-rpc-explorer
+ExecStart=/usr/bin/npm start
+User=$USER
+
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service
+
+sudo systemctl enable btcrpcexplorer.service
 }
