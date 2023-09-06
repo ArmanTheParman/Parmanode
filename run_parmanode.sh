@@ -34,12 +34,10 @@ fi
 test_directory_placement
 
 # Check OS function and store in variable for later. Exits if Windows, or if not if Mac/Linux not detected.
+which_os
 
-	which_os
+get_ip_address
 
-# get IP address
-if [[ $OS == "Linux" ]] ; then IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
-if [[ $OS == "Mac" ]] ; then IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 
 # get version
 update_version_info

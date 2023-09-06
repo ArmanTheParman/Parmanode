@@ -49,9 +49,13 @@ if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORapp=1
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
                        echo "    (specter)    Specter Wallet 
                             " ; fi
+if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorerapp=1
+                       echo "    (bre)        BTC RPC Explorer 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
+choose "xpq"
 
 read choice
 
@@ -124,6 +128,12 @@ btcpt|BTCPT)
 specter|SPECTER|Specter)
    if [[ $specterapp == 1 ]] ; then
    menu_specter
+   fi
+   ;;
+
+bre|BRE|Bre)
+   if [[ $btcrpcexplorerapp == 1 ]] ; then
+   menu_btcrpcexplorer 
    fi
    ;;
 
