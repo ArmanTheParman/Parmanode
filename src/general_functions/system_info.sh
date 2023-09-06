@@ -2,6 +2,7 @@
     # Linux_distro
     # which_os
     # check_if_win7
+    # get_ip_address
     # IP_address
     # get_linux_version_codename 
     # check_chip
@@ -67,6 +68,11 @@ else
     OS="Not_Win"
 fi
 return 0
+}
+
+function get_ip_address {
+if [[ $OS == "Linux" ]] ; then export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
+if [[ $OS == "Mac" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 }
 
 function IP_address {

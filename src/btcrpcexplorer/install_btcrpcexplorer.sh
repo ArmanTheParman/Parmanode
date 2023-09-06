@@ -100,7 +100,7 @@ PartOf=bitcoind.service
 
 [Service]
 WorkingDirectory=$HOME/parmanode/btc-rpc-explorer
-ExecStart=/usr/bin/npm start
+ExecStart=/usr/bin/btc-rpc-explorer
 User=$USER
 
 Restart=always

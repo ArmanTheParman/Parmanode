@@ -30,7 +30,6 @@ then
         brew update ; brew upgrade ; fi
 echo "
 "
-enter_continue
 fi
 return 0
 }
