@@ -1,5 +1,10 @@
 function dd_wipe_drive {
 
+dd_bypass || return 1
+return 0
+#This function has been tempremental and creates too much delay in installation, so I've simplified
+#The remainder of the code won't run. dd_bypass is at the end of the file.
+
 while true ; do
 set_terminal
 echo "
@@ -97,4 +102,21 @@ Wiping the drive failed for some reason. Aborting.
 "
 enter_continue
 exit 1
+}
+
+function dd_bypass {
+
+string="Parman loves you :) "
+
+please_wait
+# "status=progress" won't work becuase of the pipe, but leving it in for future reference.
+if [[ $OS == "Linux" ]] ; then
+    remove_fstab_entry
+    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
+    fi
+if [[ $OS == "Mac" ]] ; then
+    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
+    fi
+
+return 1
 }
