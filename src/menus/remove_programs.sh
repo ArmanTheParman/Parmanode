@@ -107,6 +107,14 @@ elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=
 echo "                                           (specter)          Specter Wallet 
 " ; fi
 echo "
+"
+if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
+echo "                                           (bre)              BTC RPC Explorer 
+"
+elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
+echo "                                           (bre)              BTCrpcEXP (partial)
+" ; fi
+echo "
 ########################################################################################
 "
 choose "xpq"
@@ -205,6 +213,12 @@ if [[ $btcpTORmenu == 1 ]] ; then
 specter|SPECTER|Specter)
 if [[ $spectermenu == 1 ]] ; then
     uninstall_specter
+	return 0
+	fi
+	;;
+bre|BRE|Bre)
+if [[ $btcrpcexplorermenu == 1 ]] ; then
+    uninstall_btcrpcexplorer
 	return 0
 	fi
 	;;
