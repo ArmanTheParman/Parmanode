@@ -46,6 +46,7 @@ case $choice in
 
 				add_userpass_to_fulcrum 
 				#(extracted from bitcoin.conf)	
+				#checks if fulcrum installed, otherwise returns
 
 				sleep 1 
 				echo "Starting Bitcoin"
@@ -99,13 +100,20 @@ function add_userpass_to_fulcrum {
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
-	if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; fi
+	if cat $HOME/.parmanode/installed.conf | grep -q "fulcrum-end" ; then
+		true
+	else
+		return 1
+	fi
+
+	if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; return 0 ; fi
 
 	if [[ $OS == "Linux" ]] ; then
 					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
 					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
 					echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
 					echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
+					return 0
 					fi
 
 }
