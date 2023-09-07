@@ -63,11 +63,11 @@ Linux machine, at least for now.
 I have added copious comments to the code so that a non-developer can read
 it in an instructional way and learn what's going on. I expect it shouldn't
 be that hard to follow. All commands in the code are executable manually in 
-the terminal, so you can experiment and try out thins you see.
+the terminal, so you can experiment and try out things you see.
 
 I suggest using sofware called Visual Studio Code (VSC), as it colour codes 
 everything and makes it easier to follow the syntax. Open the parmanode 
-script folder that you download from GitHub and read the code in VSC softwrae.
+script folder that you downloaded from GitHub and read the code in VSC software.
 
 It can be a bit of a maze if you don't know where to start. I suggest to start
 at the "run_parmanode.sh" file and branch out from there. Most guidance is
