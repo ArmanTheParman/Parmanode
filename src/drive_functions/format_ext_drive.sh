@@ -6,7 +6,6 @@ format_warnings     #Warn the user to pay attention.
 
 unmount   #failure here exits program
 
-
 dd_wipe_drive  #failure here exits program 
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
