@@ -6,6 +6,7 @@
     # previous menu
     # please wait
     # announce
+    # errormessage
 
 function enter_continue {
 echo "Hit <enter> to continue." ; read
@@ -97,3 +98,8 @@ enter_continue
 return 0
 }
 
+function errormessage {
+echo ""
+echo "There has been an error. See log files for more info."
+enter_continue
+}

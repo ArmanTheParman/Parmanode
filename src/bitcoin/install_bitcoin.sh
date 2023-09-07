@@ -23,34 +23,27 @@ choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added a
 parmanode_conf_add "drive=$hdd"
 source $HOME/.parmanode/parmanode.conf
 export drive
-debug1 "drive is $drive"
 
-#                change_drive_selection \
-#                    && log "bitcoin" "install - change drive selection function exit"
-#                    # User has choice to change drive selection made when first installing Parmanode.
-#                    # abort bitcoin installation if return 2 
-#                    if [[ $? == 1 || $? == 2 ]] ; then 
-#                    log "bitcoin" "change_drive_selection return 1 or 2; exit" ; return 1 ; fi
-
-#Just in case
+#Just in case (redundant permission setting)
     if [[ $OS == "Linux" && $drive == "external" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
-        && log "bitcoin" "chown applied in install_bitcoin function" \
+        && log "bitcoin" "redundant chown applied in install_bitcoin function" \
         || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
 
 
-log "bitcoin" "prune choice function..." && \
-    prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
+prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
     # set $prune_value. Doing this now as it is related to 
-    # the drive choice just made by the user. i
+    # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 
-log "bitcoin" "make_bitcoin_directories function..." && \
+# The log call here helps determine if the function reached here in case troubleshooting later.
+log "bitcoin" "make_bitcoin_directories function..."
     make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
-    #Just in case
+
+    #Just in case - even more redundancy, leaving it as it helped a lot once when debugging.
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
             sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 && \
             statement=$(ls -dlah /media/$(whoami)/parmanode) && \
@@ -64,16 +57,13 @@ log "bitcoin" "make_bitcoin_directories function..." && \
 
 #setup bitcoin.conf
 log "bitcoin" "make_bitcoin_conf function ..."
-make_bitcoin_conf
-        if  [ $? -ne 0 ]
-            then return 1
-        fi
+make_bitcoin_conf || return 1
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then
 make_mount_check_script ; fi
 
-#make service file
+#make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" ]] ; then 
     make_bitcoind_service_file
 fi
@@ -94,16 +84,15 @@ echo "
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
 
-#Just in case
+#Just in case - what? again? Anyway, I'll leave it.
     sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
 
 enter_continue
-return 0 
 fi
 
 
-set_terminal
 if [[ $OS == "Mac" ]] ; then
+set_terminal
 echo "
 ########################################################################################
     
@@ -113,10 +102,10 @@ echo "
     found under the \"Run Parmanode\" menu. You can also watch it fly if you select
     to observe the log file (same menu).
     
-    For now, I have not created a Mac service file to automatically make Bitcoin Core 
+    For now, I have not created a service file to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
 
-    Do remmember to manually restart Bitcoin should your computer power off. 
+    Do remmember to manually restart Bitcoin should your Mac power off. 
 
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
@@ -124,10 +113,8 @@ echo "
             sudo chown -R $(whoami):staff /media/$(whoami)/parmanode >/dev/null 2>&1
 
 enter_continue
-return 0 
 fi
 
-
-debug "Unknown error. Aborting." ; enter_exit ; exit 1
+set_terminal
 }
 

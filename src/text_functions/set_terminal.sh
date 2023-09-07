@@ -3,7 +3,7 @@ colour="$1"
 
 printf '\033[8;38;88t'   # sets terminal size
 
-echo -e "\033[38;2;255;145;0m" #Orange colour setting
+echo -e "\033[38;2;255;145;0m" #Orange colour setting. Unfortuantely, had bit trouble making this work in Macs.
         
         # alternative format saved for future use
         # echo -e "\033[38;5;208m" - won't work in /bin/zsh, but script runs in /bin/bash which works.

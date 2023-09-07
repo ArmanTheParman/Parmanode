@@ -1,6 +1,6 @@
 function download_bitcoin_mac {
 cd $HOME/parmanode/bitcoin
-pre_install_mac
+pre_install_mac #information for the user
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 if [[ $chip == "arm64" ]] ; then
@@ -18,12 +18,11 @@ set_terminal
 mkdir -p $HOME/.parmanode/temp/ >/dev/null 2>&1
 tar -xf bitcoin_Mac* -C $HOME/.parmanode/temp >/dev/null 2>&1
 
+#set permissions
 sudo chown -R $(whoami):staff /$HOME/.parmanode/temp/
 sudo chmod -R 0755 $HOME/.parmanode/temp/
 
-if [[ -d /usr/local/bin ]] ; then true ; else sudo mkdir -p /usr/local/bin ]] ; fi
+if [[ -d /usr/local/bin ]] ; then true ; else sudo mkdir -p /usr/local/bin ; fi
 sudo mv $HOME/.parmanode/temp/* /usr/local/bin
 sudo rm -rf $HOME/.parmanode/temp
-
-return 0      
 }
