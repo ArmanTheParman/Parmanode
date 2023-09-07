@@ -40,9 +40,9 @@ echo "
     If you skip formatting, make sure there is enough free capacity on the drive 
     before running Bitcoin.
                 
-                             (y)     format drive
+                             (y)     Format drive
 
-                             (s)     skip formatting
+                             (s)     Skip formatting
     
     If skipping, make sure your drive is formatted and mounted.
     
@@ -62,6 +62,10 @@ case $choice in
         invalid ;;
     esac
 done
+
+
+# Later, "I'll need to improve this so that the drive is detected without as much user
+# input needed"
 
 set_terminal "pink"
 echo "
