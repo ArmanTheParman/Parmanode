@@ -94,7 +94,7 @@ set_terminal
 echo " Please wait a moment for gpg verification..."
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A
 
-    if gpg --verify SHA256SUMS.asc | grep "Good" 
+    if gpg --verify SHA256SUMS.asc 2>&1 | grep "Good"  # it is vital for the "2>&1" to remain for this function to work
     then
         echo "GPG verification of the SHA256SUMS file passed. "
         enter_continue
