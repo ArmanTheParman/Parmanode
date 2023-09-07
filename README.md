@@ -58,6 +58,17 @@ computer, and let Parmanode connect the two. If you want to use Sparrow
 or Electrum with an Electrum Wallet, the better way would be to use a 
 Linux machine, at least for now.
 
+## READ THE CODE
+
+I have added copious comments to the code so that a non-developer can read
+it in an instructional way and learn what's going on. I expect it shouldn't
+be that hard to follow. All commands in the code are executable manually in 
+the terminal, so you can experiment and try out thins you see.
+
+I suggest using sofware called Visual Studio Code (VSC), as it colour codes 
+everything and makes it easier to follow the syntax. Open the parmanode 
+script folder that you download from GitHub and read the code in VSC softwrae.
+
 ## DRIVE STRUCTURE 
 
 Internal drive:
