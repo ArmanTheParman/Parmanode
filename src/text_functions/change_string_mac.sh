@@ -2,13 +2,17 @@
 #delete function will remove multiple entries, so be careful #to use it in other parts of this function.
 
 function change_string_mac {
-#will replace entire line containing search string with the new line
+# will replace entire line containing search string with the new line
+# Some fancy options created with "positionnewline", the fourth argument 
+# to help with adding a line before or after a search item
+# Useful for modifying configuration files of apps without disturbing syntax or structure.
+
 inputfile="$1"
 searchstring="$2"
 newline="$3"
-positionnewline="$4" #("before" or "after" or "swap" or "delte")
+positionnewline="$4" #("before" or "after" or "swap" or "delete")
 
-if [[ ! -f $inputfile ]] ; then 
+if [[ ! -f $inputfile ]] ; then # if file doesn't exist
 return 1
 fi
 

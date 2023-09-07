@@ -27,7 +27,7 @@ set_terminal_bit_higher ; echo "
 
        (L) Leave Bitcoin username and password unchanged 
 
-       (c) Use cookie ...(deletes from bitocin.conf; Won't work with Fulcrum) 
+       (c) Use cookie ...(deletes from bitcoin.conf; Won't work with Fulcrum) 
 
        (p) Exit this menu (set username/pass from menu later)
 

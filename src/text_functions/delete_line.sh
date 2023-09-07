@@ -18,8 +18,12 @@ if [[ $OS == "Mac" ]] ; then
 	return 0
 fi		
 
+# For Linux...
 search_string="$2"
 input_file="$(readlink -f "$1")"	# to assign absolute path
 sudo sed -i "/${search_string}/d" "$input_file" 
+# I will need to change the delimeter in the sed command to @ later instead of / to
+# avoid a bug if the search_strin contains a /.
+# Everything is working now, so not urgent.
 }
 
