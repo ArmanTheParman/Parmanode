@@ -31,6 +31,8 @@ echo "
 ########################################################################################
 "
 choose "epq" ; read choice
+# below is my menu logic before I got comfortable using case.
+# I'm leaving it here for interest, it works fine and doesn't hurt.
 if [[ $choice == "p" ]] ; then return 1 ; fi
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "s" ]] ; then return 0 ; fi
@@ -43,8 +45,18 @@ log "parmanode" "Installing homebrew..."
 install_homebrew && return 0
 
 set_terminal
-echo "Download homebrew failed. Unknown error. You should try again. 
+
+announce "Download homebrew failed. Unknown error. You should try again." "\
 Proceed with caution."
+# announce takes 1 or 2 arguments and prints on a seperate line each with 
+# a nice border above and below. The \ at the end of the line continues the code
+# ont he second line as if there is no new line.
+# announce also includes an enter_continue command.
+
+# the log function creates a file named argument 1 followed by log. Eg, below,
+# the file will be parmanode.log. It will append argument two to the log file 
+# and timestamp. Sometimes can be useful if I have problems with debugging, or
+# if a user asks for help.
 log "parmanode" "Install homebrew failed"
 return 0
 fi

@@ -2,7 +2,7 @@ function make_home_parmanode {
 
 #make $HOME/parmanode
 
-if [[ -d $HOME/parmanode/ ]] #if to check that parmanode exists
+if [[ -d $HOME/parmanode/ ]] # if -d to check that parmanode directory exists
 then
 while true #start menu loop
 do
