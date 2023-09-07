@@ -4,7 +4,7 @@ format_warnings     #Warn the user to pay attention.
     select_drive_ID
     if [ $? == 1 ] ; then return 1 ; fi
 
-unmount   #failure here exits program
+unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
 
 dd_wipe_drive  #failure here exits program 
 
