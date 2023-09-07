@@ -2,25 +2,24 @@ function install_bitcoin {
 
 set_terminal
 
-install_check "Bitcoin" 
-    #first check if Bitcoin has been installed
-    return_value="$?"
-    if [[ $return_value == "1" ]] ; then return 1 ; fi      
-
 if [[ $OS == "Mac" ]] ; then
 
-    if [ -f /home/.parmanode/installed.conf ] ; then
         if ! grep -q "btc_dependencies=installed" /home/.parmanode/installed.conf ; then
-        bitcoin_dependencies || { set_terminal ; echo "Unable to install bitcoin dependencies. Aborting." ;\
-        echo "Sometimes repeating installing Bitcoin will work for this error." ; enter_continue ; return 1 ; }
+        # A function followed by || means that if the function fails, the OR operator makes
+        # the following block run, otherwise it skips it.
+        bitcoin_dependencies || 
+                {
+                set_terminal
+                echo "Unable to install bitcoin dependencies. Aborting." 
+                echo "Sometimes repeating installing Bitcoin will work for this error." 
+                enter_continue 
+                return 1 
+                }
         fi
-    else
-        bitcoin_dependencies || { set_terminal ; echo "Unable to install bitcoin dependencies. Aborting." ;\
-        echo "Sometimes repeating installing Bitcoin will work for this error." ; enter_continue ; return 1 ; }
-    fi
 fi
 
-choose_and_prepare_drive_parmanode "Bitcoin"
+choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
+                                             # called by a fulcrum installation.
 parmanode_conf_add "drive=$hdd"
 source $HOME/.parmanode/parmanode.conf
 export drive
