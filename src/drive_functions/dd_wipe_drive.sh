@@ -1,10 +1,10 @@
 function dd_wipe_drive {
-
+#This function has been tempremental and creates too much delay in installation, so I've simplified.
+#The remainder of the code won't run. dd_bypass is at the end of the file.
 dd_bypass || return 1
 return 0
-#This function has been tempremental and creates too much delay in installation, so I've simplified
-#The remainder of the code won't run. dd_bypass is at the end of the file.
 
+########################################################################################
 while true ; do
 set_terminal
 echo "
@@ -106,12 +106,15 @@ exit 1
 
 function dd_bypass {
 
-string="Parman loves you :) "
+string="Parman loves you :) " #spread the love
 
 please_wait
-# "status=progress" won't work becuase of the pipe, but leving it in for future reference.
 if [[ $OS == "Linux" ]] ; then
-    remove_fstab_entry
+    remove_fstab_entry # don't want multiple parmanode entries in fstab
+
+    # the yes command prints the string over and over, and given to the dd command
+    # The wiping will involved 1 megabyte x 250 times (as per variables below) and the string will
+    # be writting in the space. Wiping the entire drive like this takes too long.
     yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
     fi
 if [[ $OS == "Mac" ]] ; then
