@@ -1,7 +1,15 @@
 function menu_log_config {
 
+# the "." below at the start of the line is another way to write "source"
+# source will "run" the file specified.
+# sourcing is necessary to see if the variable below is set, hiding the message.
 . $HOME/.parmanode/hide_messages.conf >/dev/null
 
+# The variable $message_menu_log_config can't be found with a simple search becuase it
+# is created in the function, hide_message_add, by concatinating "message_" with 
+# "menu_log_config" which is passed as a different variable.
+# It's a bit ugly, and I'd do it better next time. To fix one day.
+``
 if [[ $message_menu_log_config != "1" ]] ; then 
 set_terminal ; echo "
 ########################################################################################
@@ -25,6 +33,8 @@ set_terminal ; echo "
 choose "xpq" ; read choice
 case $choice in 
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ;;
+# The above function results in a variable message_menu_log_config=1 set in a config file.
+# Which results in hiding the message next time, because of the if statement at the start.
 esac
 fi
 

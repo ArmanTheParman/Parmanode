@@ -1,4 +1,7 @@
 function remove_programs {
+# another dynamic menu. Each program is listed either as available to be removed,
+# or as a partial (failed) installation, that can be removed. The menu variable is 
+# set to toggle the availability of the menu logic below, via if statements.
 
 if ! grep -q parmanode $HOME/.parmanode/installed.conf ; then 
 set_terminal ; echo "

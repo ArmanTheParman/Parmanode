@@ -1,4 +1,12 @@
 function menu_add_programs {
+# the somewhat complex code for the menu is to make it dynamic, depending on if
+# programs have been installed or not. It is split into "Noy yet installed..." and
+# "installed", sorted by if statements checking the installed.conf file. There is
+# variable set to 0 or 1 to assist with command availability in the menu logic below.
+# if the variable is not set to 1, then the installation of that program isn't executable.
+# Without this, it is possible for the use to select installation even if the menu 
+# doesn't show the program as available to install.
+
 while true
 do
 set_terminal_higher
