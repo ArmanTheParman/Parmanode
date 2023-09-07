@@ -69,6 +69,12 @@ I suggest using sofware called Visual Studio Code (VSC), as it colour codes
 everything and makes it easier to follow the syntax. Open the parmanode 
 script folder that you download from GitHub and read the code in VSC softwrae.
 
+It can be a bit of a maze if you don't know where to start. I suggest to start
+at the "run_parmanode.sh" file and branch out from there. Most guidance is
+on that page, and more is added as you branch out. The majority of the comments
+for now are related to installing parmanode, custom functions, and installing
+Bitcoin Core.
+
 ## DRIVE STRUCTURE 
 
 Internal drive:
