@@ -29,7 +29,7 @@ echo "
 ########################################################################################
 "
 if sudo systemctl status btcrpcexplorer | grep "active (running)" >/dev/null 2>&1 ; then echo "
-    BTC RPC EXPLORER IS RUNNING -- SEE LOG MENU FOR PROGRESS 
+    BTC RPC EXPLORER IS RUNNING 
 "
 else
 echo "
