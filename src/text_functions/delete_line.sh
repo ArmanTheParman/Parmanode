@@ -21,6 +21,7 @@ fi
 # For Linux...
 search_string="$2"
 input_file="$(readlink -f "$1")"	# to assign absolute path
+echo "delete line $search_string, input file $input_file" >> $HOME/.parmanode/sed.log 2>&1  
 sudo sed -i "/${search_string}/d" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
 # I will need to change the delimeter in the sed command to @ later instead of / to
 # avoid a bug if the search_strin contains a /.
