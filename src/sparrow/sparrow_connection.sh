@@ -1,3 +1,0 @@
-function sparrow_connection {
-
-}

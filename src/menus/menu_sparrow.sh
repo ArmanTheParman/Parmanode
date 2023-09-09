@@ -1,12 +1,17 @@
 function menu_sparrow {
-while true ; do set_terminal ; echo "
+while true ; do 
+
+source $HOME/.parmanode/sparrow.connection >/dev/null
+
+set_terminal ; echo "
 ########################################################################################
                                  Sparrow Menu                               
 ########################################################################################
 
+                      SPARROW CONNECTION TYPE: $connection
+
 
          (start)                 Start Sparrow 
-
 
 ----------------------------------------------------------------------------------------
 
@@ -16,13 +21,17 @@ while true ; do set_terminal ; echo "
 
          (tor)     Connect Sparrow via Tor
 
-         (ssl)     Connect Sparrow to Fulcrum vis ssl
+         (ssl)     Connect Sparrow to Fulcrum via ssl (port 50002)
+
+         (tcp)     Connect Sparrow to Fulcrum via tcp (port 50001)
 
          (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
-                    - available for Mac
          
          (torssl)  Connect by Tor with SSL (NOT AVAILABLE)
 
+----------------------------------------------------------------------------------------
+
+         (t)       Troubleshooting
 
 ########################################################################################
 "
@@ -49,8 +58,16 @@ no_mac || return 1
 sparrow_fulcrumssl
 ;;
 
+tcp|TCP|Tcp)
+sparrow_fulcrumtcp
+;;
+
 rtor|Rtor|RTOR)
 sparrow_remote
+;;
+
+t|T)
+troubleshooting_sparrow
 ;;
 
 *)
