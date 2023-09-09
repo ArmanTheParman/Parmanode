@@ -1,16 +1,25 @@
 function test_directory_placement {
-cd ..
-testing_dir=$(pwd)
-cd - >/dev/null
+cd .. #moves one directory up the tree
+testing_dir=$(pwd) #places the output of the command, pwd, into a variable
+cd - >/dev/null # "cd - " means go back to the directory before, whatever it was
+# >/dev/null ; this means redirect the output (>) to a file called /dev/null, 
+# which is a discard file
 
-if [[ $testing_dir == "$HOME" ]] ; then
-test_directory_placement_message
+
+# Note that = assigns values and == compares values
+# as in = says "make the left side equal the right side"
+# and == says check if the left side is the same as the right side
+if [[ $testing_dir == "$HOME" ]] ; then #if so then bad news. 
+# Also $HOME is going to be different for everyon's computer. On Linux, it is /home/username.
+# on Macs it's /Users/username/
+test_directory_placement_message #see below for function details
 fi
 
-if pwd >/dev/null | grep "$HOME/parmanode" ; then
+if pwd >/dev/null | grep "$HOME/parmanode" ; then #if the result of pwd (which will not 
+#be printed because of >/dev/null) when grep'ed (a search function) includes
+#"$HOME/parmanode", then do the function below
 test_directory_placement_message2
 fi
-
 }
 
 function test_directory_placement_message {
@@ -21,10 +30,10 @@ clear ; echo "
     Oh dear, you've downloaded the Parmanode software directly to your home directory. 
     This will cause a conflict for the Parmanode installation. Here's what you do:
 
-    after exiting this program, from the command line, type exactly this (case
+    After exiting this program, from the command line, type exactly this (case
     sensitive)...
 
-			cd .. && mv parmanode ./Desktop/
+			cd .. && mv parmanode \$HOME/Desktop/
 	
     Then, you will see the downloaded directory moved to your desktop. You can enter
     the directory from the command line with...
@@ -38,8 +47,15 @@ clear ; echo "
     Take a photo of these instructions or copy them to a file if it's hard to remember.
 
 ########################################################################################
-"
-enter_continue && exit 0 	
+" #Note a backslash before $ means that the $ will be printed. Otherwise, the $ will
+#be interpreted. Eg $HOME will instead print whatever the variable HOME is holding.
+#The first time I want "$HOME" to be printed, hence the backslash. The second time,
+#I wanted to full result of $HOME/Desktop/parmanode, eg /home/parman/Desktop/parmanode
+enter_continue && exit 0 
+#enter_continue is a custom function I made which prints something and prompts the user
+#to hit enter, using the read command.
+#&& means to run the second command only if the first command runds successfully. It's
+#kind of unneccesary here, but doesn't matter.
 }
 
 function test_directory_placement_message2 {
@@ -54,7 +70,7 @@ clear ; echo "
 	install the program, and doing so will wipe the program you're using now.
 
     Here's what you do: after exiting this program, move the downloaded parmanode
-	directory to somewhere else, eg your Desktop ($HOME/Desktop).
+	script directory to somewhere else, eg your Desktop ($HOME/Desktop).
 	
     You can enter the directory from the command line with...
 
@@ -64,7 +80,8 @@ clear ; echo "
 
 			./run_parmanode.sh
 
-	Take a photo of these instructions or copy them to a file if it's hard to remember.
+	Tip:
+    Take a photo of these instructions or copy them to a file if it's hard to remember.
 
 ########################################################################################
 "

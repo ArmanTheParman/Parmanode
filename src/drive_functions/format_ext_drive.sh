@@ -4,8 +4,7 @@ format_warnings     #Warn the user to pay attention.
     select_drive_ID
     if [ $? == 1 ] ; then return 1 ; fi
 
-unmount   #failure here exits program
-
+unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
 
 dd_wipe_drive  #failure here exits program 
 
@@ -15,7 +14,7 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 if [[ $OS == "Mac" ]] ; then
         set_terminal
         log "bitcoin" "eraseDisk $disk ..."
-        if [[ $(uname -m) == "arm64" ]] ; then
+        if [[ $chip == "arm64" ]] ; then # arm chip computers have a different file system
         diskutil eraseDisk APFS "parmanode" $disk || log "bitcoin" "failed to eraseDisk"
         else
         diskutil eraseDisk exFAT "parmanode" $disk || log "bitcoin" "failed to eraseDisk"   
@@ -33,9 +32,11 @@ if [[ $OS == "Mac" ]] ; then
     fi
 
 if [[ $OS == "Linux" ]] ; then
-        #in case I allow no wiping in future version, duplicating this function
-        #it wipes a nonsense UUID if the drive has just been wiped, so no harm.
+        # The following function is redundant, but added in case the dd function (which
+        # calls this function earlier is discarded). 
         remove_fstab_entry
+        
+        # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" /dev/$disk 
 
         #Extract the *NEW* UUID of the disk and write to config file.
@@ -43,7 +44,8 @@ if [[ $OS == "Linux" ]] ; then
 
         write_to_fstab "$UUID"
 
-        #Mounting
+        # Mounting... Make the mount directory, mount the drive, set the permissions,
+        # and label drive (Last bit is redundant)
         sudo mkdir /media/$(whoami)/parmanode 2>&1    
         sudo mount /dev/$disk /media/$(whoami)/parmanode 2>&1 
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 

@@ -1,3 +1,11 @@
+# This function is a bit of mess, and it grew as parmanode grew.
+# It's basically sometimes checking if a program is installed 
+# or not installed.
+
+# The logic is hard for even me to follow now, but the code works as is,
+# and touching it might break something.
+# I wll stop using this function, and later claw it back.
+
 function install_check { 
 program_name="$1"
 

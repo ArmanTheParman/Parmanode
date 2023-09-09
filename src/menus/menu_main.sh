@@ -1,6 +1,10 @@
 function menu_main {
 while true ; do
-set_terminal_bit_higher
+set_terminal_bit_higher #custom function to resize the window
+
+# if statements in the menu printout makes the menu dynamic, ie changes accoring to the
+# tests performed. Variables are set to assit logic in the menu choice excution part
+# of the code at the bottom.
 echo "
 ########################################################################################
 #                                                                                      #
@@ -36,21 +40,25 @@ echo "#-------------------------------------------------------------------------
 #                                                                                      #
 ########################################################################################
 "
-choose "xq"
+choose "xq" # custom fuction to print a prompt. Different argumens give different messages
+# "xq" means add a prompt about choosing and one about how to quit.
 echo "
 (Note, <enter> is the same as <return>)"
-read choice
+read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 
-case $choice in
-
+case $choice in #the variable choice is tested through each of the case-choices below.
+# these end in a closing bracked, have some code, and end with a ;;
+# once there is a match, the case block is exited (after the esac point below). Then
+# it repeats because case is inside a while loop.
 i|I)
-    if [[ $parmanodemain == 1 ]] ; then
+    if [[ $parmanodemain == 1 ]] ; then # this variable makes install_parmanode only available to execute if
+    # parmanodemain is set to 1, otherwise, the function can't run even if the user types "i".
     install_parmanode 
     fi
     ;;
 add|Add| ADD)
-    if [[ $parmanodemain == 0 ]] ; then
+    if [[ $parmanodemain == 0 ]] ; then # with parmanodemain set to 0, it's possible to add programs
     menu_add_programs
     fi
     ;;

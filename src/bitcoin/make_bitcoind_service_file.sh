@@ -1,3 +1,7 @@
+# Variables can't be left in this file, they are all interpreted, then
+# writting to the file
+# Much of the text is from the sample service file from Bitcoin Core developers.
+
 function make_bitcoind_service_file {
 
 echo "[Unit]
@@ -68,7 +72,5 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload 
 sudo systemctl disable bitcoind.service >/dev/null 2>&1
 sudo systemctl enable bitcoind.service >/dev/null 2>&1
-
-return 0
 }
 

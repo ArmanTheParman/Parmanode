@@ -1,19 +1,18 @@
 function greadlink_check {
 
-if ! command -v greadlink ; then 
+if ! command -v greadlink ; then #checks if the command doesn't exist (! is "not")
 get_greadlink
-if [ $? == 0 ] ; then installed_conf_add "greadlink" ; fi
+if [ $? == 0 ] ; then installed_conf_add "greadlink" ; fi #adds to config if command above doesn't return an error
 else
-installed_conf_add "greadlink"
+installed_conf_add "greadlink" # if the command exists, it's noted in the config file.
 fi
-
 }
 
 
 function get_greadlink {
 
 info_greadlink
-brew install coreutils
+brew install coreutils # greadlink is part of coreutils package.
 }
 
 function info_greadlink {

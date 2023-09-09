@@ -5,10 +5,10 @@ function make_bitcoin_conf {
 set_terminal
 
 
-if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
+if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
-            while true ; do
+        while true ; do
 	    set_terminal ; echo "
 ########################################################################################
 
@@ -28,14 +28,17 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]]
 "
 choose "xpq" ; read choice
 
-case $choice in q|Q|QUIT|Quit|quit) exit 0 ;; p|P) return 1 ;; o|O) log "bitcoin" "conf overwrite" && break ;;
-yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; *) invalid ;; 
+case $choice in 
+    q|Q|QUIT|Quit|quit) exit 0 ;; 
+    p|P) return 1 ;; 
+    o|O) log "bitcoin" "conf overwrite" && break ;;
+    yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
+    *) invalid ;; 
 esac 
 done
 fi
 
-{ echo "
-server=1
+echo "server=1
 txindex=1
 blockfilterindex=1
 daemon=1
@@ -49,11 +52,7 @@ rpcbind=0.0.0.0
 rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
-rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made" ; } \
-|| log "bitcoin" "bitcoin conf failed"
+rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made"  
 
-
-apply_prune_bitcoin_conf
-
-return 0
+apply_prune_bitcoin_conf # Here is where the prune choice is added to bitcoin.conf
 }

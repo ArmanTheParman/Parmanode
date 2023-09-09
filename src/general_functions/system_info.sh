@@ -1,12 +1,42 @@
 # Functions...
-    # Linux_distro
     # which_os
+    # Linux_distro
     # check_if_win7
     # get_ip_address
     # IP_address
     # get_linux_version_codename 
     # check_chip
 
+function which_os {
+# This function just extracts and stores the operating system name
+
+if [[ "$(uname -s)" == "Darwin" ]] #uname gives useful info about the system.
+then
+    export OS="Mac"
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    # This is adding the variable to a configuration file.
+    # Parmanode_conf_add takes an argument (the text after it is called) and addes that to 
+    # The parmanode.conf file
+    # I later realised this is unncessary if I just "export" the variable, making it always available
+    # I'll clean up the code later.
+    return 0 
+fi
+
+if [[ "$(uname -s)" == "Linux" ]]
+then
+    export OS="Linux"
+    if [[ -e $HOME/.parmnode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    return 0
+fi
+
+if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]]
+then
+    check_if_win7
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    exit 1
+fi
+exit 1
+}
 function Linux_distro {
     
 if [[ $OS == "Linux" ]] ; then
@@ -29,31 +59,7 @@ fi
 return 0
 }
 
-function which_os {
 
-chip=$(uname -m)
-if [[ "$(uname -s)" == "Darwin" ]]
-then
-    OS="Mac"
-    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
-    return 0 
-fi
-
-if [[ "$(uname -s)" == "Linux" ]]
-then
-    OS="Linux"
-    if [[ -e $HOME/.parmnode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
-    return 0
-fi
-
-if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]]
-then
-    check_if_win7
-    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
-    exit 1
-fi
-exit 1
-}
 
 function check_if_win7 {
 # will return win7+, linux, or not_win string.
@@ -73,10 +79,15 @@ return 0
 function get_ip_address {
 if [[ $OS == "Linux" ]] ; then export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
 if [[ $OS == "Mac" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
+# Through a series of searches (grep), the results being passed by the | symbol to the right and being
+# searched on again, the results are narrowed down.
+# awk is used to print out a field (like selecting a column in an excel row), and cut
+# can split text according to a delimeter (-d) and choosing a resulting field (-f)
 }
 
 function IP_address {
-#IP variable in run_parmanode.sh
+#IP variable is printed for the user.
+clear
 echo "
 ########################################################################################
 

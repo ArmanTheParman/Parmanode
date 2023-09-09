@@ -1,3 +1,7 @@
+# prune_choice
+# set_the_prune
+# confirm_set_the_prune
+
 function prune_choice {
 
 while true
@@ -48,13 +52,13 @@ set_terminal
 
         s|S)
             set_terminal
-            dirty_shitcoiner
-            continue
+            dirty_shitcoiner        # LOL
+            continue                # continue results in the loop starting over.
             ;;
         
         n|N|No|NO|no)
             log "bitcoin" "user chose no pruning"
-            prune_value="0"
+            export prune_value="0"
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
             
@@ -75,15 +79,12 @@ done
 # Write prune choice to config file:
 # Menu breaks to here.
 
-parmanode_conf_remove "prune_value=" 2>&1 && \
+#$prune_value set earlier when function called (see function below)
+
+parmanode_conf_remove "prune_value=" 2>&1 
 parmanode_conf_add "prune_value=$prune_value" >/dev/null 2>&1
 # Prune choice gets added to bitcoin.conf elsewhere in the code
-
-return 0
 }
-
-
-
 
 ########################################################################################
 
@@ -131,10 +132,10 @@ confirm_set_the_prune
                                     # The code then goes back to "prune_choice", breaks
                                     # from the loop, and gets to writing the $prune_choice
                                     # to parmanode.conf.
+
+                                    # Hopefully this didn't break you
 return 0
 }
-
-
 
 ########################################################################################
 
