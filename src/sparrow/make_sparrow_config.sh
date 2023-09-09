@@ -14,13 +14,13 @@ swap_string "$HOME/.sparrow/config" "coreAuth\":" "  \"coreAuth\": \"$rpcuser:$r
 # serverType is BITCOIN_CORE on the template
 # coreAuthType is USERPASS on the template
 
-echo "connection=userpass" > $HOME/.parmanode/sparrow.connection
+echo "connection=Bitcoin_userpass" > $HOME/.parmanode/sparrow.connection
 
     #cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
     if [[ $1 == "cookie" ]] ; then 
     swap_string "$HOME/.sparrow/config" "coreAuthType" "    \"coreAuthType\": \"COOKIE\","
-    echo "connection=cookie" > $HOME/.parmanode/sparrow.connection #overwrites previous, so order important.
+    echo "connection=Bitcoin_cookie" > $HOME/.parmanode/sparrow.connection #overwrites previous, so order important.
     return 0
     fi
 
@@ -48,15 +48,23 @@ swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM
 # needed line...
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$ONION_ADDR_FULCRUM:7002\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
-echo "connection=fulcrumtor" > $HOME/.parmanode/sparrow.connection
+echo "connection=FulcrumTOR" > $HOME/.parmanode/sparrow.connection
 fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 if [[ $1 == "fulcrumssl" ]] ; then
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"ssl://127.0.0.1:50002\","
-swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
-echo "connection=fulcrumssl" > $HOME/.parmanode/sparrow.connection
+swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": false,"
+echo "connection=FulcrumSSL" > $HOME/.parmanode/sparrow.connection
+return 0
+fi
+
+if [[ $1 == "fulcrumtcp" ]] ; then
+swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
+swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://127.0.0.1:50001\","
+swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": false,"
+echo "connection=FulcrumTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
@@ -65,9 +73,13 @@ if ! which tor ; then install_tor ; fi
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$REMOTE_TOR_ADDR:$REMOTE_PORT\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
-echo "connection=fulcrumremotessl" > $HOME/.parmanode/sparrow.connection
+echo "connection=FulcrumRemoteTOR" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
+
+
+
+
+
+
 }
-#"coreAuthType": "COOKIE",
-#  "coreAuthType": "USERPASS",
