@@ -50,6 +50,8 @@ echo "
 
                   (dt)       Disable access via Tor $t_enabled
 
+                  (c)        View config file
+
 
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
@@ -87,6 +89,8 @@ enable_bre_tor
 dt|DT|Dt|dT)
 disable_bre_tor
 ;;
+c|C)
+set_terminal ; cat ~/parmanode/btc-rcp-explorer/.env ; enter_continue ;;
 esac
 done
 }
