@@ -37,8 +37,9 @@ if which node >/dev/null ; then export nodejs="true" ; else export nodejs="false
 nodejs_version=$(node --version | cut -d "." -f 1 | cut -d "v" -f 2)
 if [[ $nodejs_version -lt 16 ]] ; then 
     export nodejs_version="old"
-    installed_config_add "nodejs"
 else 
     export nodejs_version="new"
+    installed_config_add "nodejs"
+
 fi
 }
