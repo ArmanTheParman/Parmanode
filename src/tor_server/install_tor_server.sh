@@ -39,6 +39,10 @@ log "tor-server" "Beginning tor-server install"
 curl -s https://parman.org/parmanode_${version}_install_tor_server_counter >/dev/null 2>&1 &
 installed_conf_add "tor-server-start"
 
+if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
+echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+fi
+
 echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 sudo systemctl restart tor
