@@ -36,21 +36,23 @@ echo "
     BTC RPC EXPLORER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
 echo "
-                  (start)    Start BTC RPC EXPLORER
+                 (start)    Start BTC RPC EXPLORER
 
-                  (stop)     Start BTC RPC EXPLORER
+                 (stop)     Start BTC RPC EXPLORER
 
-                  (restart)  Restart BTC RPC EXPLORER 
+                 (restart)  Restart BTC RPC EXPLORER 
 
-                  (e)        Enable access from other computers (via nginx)
+                 (e)        Enable access from other computers (via nginx)
 
-                  (d)        Disable access from other computers (tcp)
+                 (d)        Disable access from other computers (tcp)
 
-                  (t)        Enable access via Tor $t_enabled
+                 (t)        Enable access via Tor $t_enabled
 
-                  (dt)       Disable access via Tor $t_enabled
+                 (dt)       Disable access via Tor $t_enabled
 
-                  (c)        Edit config file
+                 (c)        Edit config file (can manually adjust settings, eg
+                                              point to an existing Electrum/Fulcrum
+                                              server. Remember to restart afte edits)
 
 
 
