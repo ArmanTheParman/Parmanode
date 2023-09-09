@@ -1,3 +1,5 @@
+Version 3.5.2
+    -BTC RPC Explorer - tor enabled
 Version 3.5.1
     -add ability to access BTC RPC Explorer from other computers on the network
      with Nginx

@@ -1,4 +1,4 @@
-# Parmanode 3.5.1
+# Parmanode 3.5.2
 
 #### Instructions to install at the end
 
