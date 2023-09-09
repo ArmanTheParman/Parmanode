@@ -32,6 +32,7 @@ case $choice in
         mentorship
         ;;
     n|N|node|Node)
+        # the less function inside the custom less_function takes a variable to know which file to print.
         less_function "6rn"
         ;;
     s|S)

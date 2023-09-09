@@ -1,6 +1,8 @@
-#used for systemctl access 
-#testing the command requires sudo before find. But sudo must be removed when
-#used with systemctl.
+# The systemd service file will run this script to make sure the drive is mounted if needed.
+# Can't simply make a text file, because it's dynamically adjusted according to the directories
+# in use
+# Lots of backslashes as escape characters here so that the special characters are printed as is
+# rather than being interpreted.
 
 function make_mount_check_script {
 
@@ -37,8 +39,8 @@ else
     exit 1
 fi" > $HOME/.parmanode/mount_check.sh 2>/dev/null
 
+# Sets permission of the new file, mount_check.sh
 sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 
+# Makes file executable
 sudo chmod +x $HOME/.parmanode/mount_check.sh 
-
-return 0
 }

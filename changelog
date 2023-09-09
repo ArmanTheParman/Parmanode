@@ -3,6 +3,8 @@ Version 3.5.1
      with Nginx
     -simplified drive preparation, drive wiping now done in the background without
      extra fun prompts
+    -many more comments added to code for educational purposes, allowing non-coders
+     to follow along.
 Version 3.5.0
     -BTC RPC Explorer added
     -various tweaks here and there

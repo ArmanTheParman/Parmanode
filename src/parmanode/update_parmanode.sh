@@ -1,6 +1,7 @@
 function update_parmanode {
 
-if [[ version_incompatibility == 1 ]] ; then
+if [[ version_incompatibility == 1 ]] ; then #this variable is set in update_version_info 
+# function. If 1, then the current version can't be updated.
 set_terminal ; echo "
 ########################################################################################
 
@@ -15,7 +16,8 @@ enter_continue
 return 1 
 fi
 
-if [[ ! -f $original_dir/version.conf ]] ; then
+if [[ ! -f $original_dir/version.conf ]] ; then # this file was introduced in newer versions
+# of parmanode
 set_terminal ; echo "
 ########################################################################################
 
@@ -32,6 +34,7 @@ set_terminal ; echo "
 enter_continue ; return 1 
 fi
 
+# above checks done without exiting, update can proceed.
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -51,7 +54,8 @@ n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $original_dir
 if git pull | grep "Already up" ; then enter_continue ; return 0 ; fi
-
+# grep searches for a string that occurs only when there are no updates required.
+# otherwise, some update has happened...
 echo "
 
     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT

@@ -1,7 +1,7 @@
 function download_bitcoin_linux {
 cd $HOME/parmanode/bitcoin
 
-set_terminal
+set_terminal_high
 echo "
 ########################################################################################
     
@@ -25,24 +25,26 @@ echo "
 
             - After a few seconds you'll get a hash. Compare it to the one listed 
               by Michael Ford.
+            
+
 
     Hit <enter> to keep reading.
 
 ########################################################################################
 "
-read ; set_terminal
+read ; set_terminal_high
 echo "
 ########################################################################################
     
             - Next, if you don't feel like trusting Michael Ford is sufficiently 
               safe, you can import the public keys of anyone else who has signed the 
-              file.
+              file. I will add more signature verifications later.
 
     What actually do these signers do?
 
-    The take the code, written in programming language, and compile it (convert it
+    They take the code, written in programming language, and compile it (convert it
     to machine code, ie binary) then zip the result. This produces one file that they 
-    hash.If there is any tampering of the code, the hash produced will change. If many
+    hash. If there is any tampering of the code, the hash produced will change. If many
     people who read the code are providing the same hash, we can be confident sure 
     there hasn't been any funny business between the time they check to when you got 
     your hands on a copy.
@@ -68,6 +70,7 @@ read #using custom function "enter_continue" here produced a strange error I don
      #line) without any user input to continue."
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
+
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
 
@@ -84,37 +87,37 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 
 
 if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
-
+enter_continue
 set_terminal
 
 #gpg check
 echo " Please wait a moment for gpg verification..."
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A
 
-    if gpg --verify SHA256SUMS.asc 2>&1 | grep -q "Good" 
+    if gpg --verify SHA256SUMS.asc 2>&1 | grep "Good"  # it is vital for the "2>&1" to remain for this function to work
     then
         echo "GPG verification of the SHA256SUMS file passed. "
-        sleep 3 
+        enter_continue
     else 
         echo "GPG verification failed. Aborting." 
         enter_continue
         exit 1
     fi
 #unpack Bitcoin core:
-
+set_terminal
 mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
 tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null 2>&1
 
-#move bitcoin program files to new directory.
-
+# Move bitcoin program files to new directory.
+# All binaries go to $HOME/parmanode/bitcoin.
 mv $HOME/.parmanode/temp/b*/* $HOME/parmanode/bitcoin/
 
 #delete sample bitcoin.conf to avoid confusion.
-
 rm $HOME/parmanode/bitcoin/bitcoin.conf 
 
-#"installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
-#makes target directories if they don't exist
+# "installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
+# makes target directories if they don't exist
+# "install" is just a glorified copy command
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin

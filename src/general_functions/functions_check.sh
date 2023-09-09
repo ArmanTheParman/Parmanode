@@ -25,7 +25,7 @@ echo "
 
 #########################sudo_check###############################################################
 "
-enter_exit ; exit 1
+enter_exit ; exit 1 #enter_exit is a basic custom printing command.
 fi
 
 if [[ $OS == "Linux" ]] ; then
@@ -179,10 +179,10 @@ return 0
 }
 
 function git_check {
-if [[ $OS == "Linux" ]] ; then
-if ! which git ; then
-sudo apt-get install git -y
-fi ; fi
-
+if [[ $OS == "Linux" ]] ; then    # if the os is linux, then
+if ! which git ; then             # check that git doesn't exist, then
+sudo apt-get install git -y       # install git
+fi  
+fi
 }
 
