@@ -50,7 +50,7 @@ echo "
 
                   (dt)       Disable access via Tor $t_enabled
 
-                  (c)        View config file
+                  (c)        Edit config file
 
 
 
@@ -90,7 +90,7 @@ dt|DT|Dt|dT)
 disable_bre_tor
 ;;
 c|C)
-set_terminal ; cat ~/parmanode/btc-rpc-explorer/.env ; enter_continue ;;
+set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ; enter_continue ;;
 esac
 done
 }
