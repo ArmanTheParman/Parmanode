@@ -1,9 +1,7 @@
-function fulcrum_tor {
+function enable_bre_tor {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-
 if [[ ! -f /etc/tor/torrc ]] ; then
 set_terminal ; echo "
 ########################################################################################
@@ -13,14 +11,8 @@ set_terminal ; echo "
 "
 enter_continue ; return 1 ;
 fi
-
 please_wait
-
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
-
-if ! cat ~/parmanode/fulcrum/fulcrum.conf | grep "tcp" >/dev/null 2>&1 ; then
-    echo "tcp = 0.0.0.0:50001" | sudo tee -a ~/parmanode/fulcrum/fulcrum.conf >/dev/null 2>&1
-    fi
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -42,24 +34,23 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServiceDir /var/lib/tor/fulcrum-service/" \
+# if there's this search string, that doesn't start with #, then...
+if sudo grep "HiddenServiceDir /var/lib/tor/bre-service/" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServiceDir /var/lib/tor/fulcrum-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServiceDir /var/lib/tor/bre-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServicePort 7002 127.0.0.1:50001" \
+if sudo grep "HiddenServicePort 3004 127.0.0.1:3002" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 7002 127.0.0.1:50001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 3004 127.0.0.1:3002" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 sudo systemctl restart tor
-sudo systemctl restart fulcrum.service
-
-get_onion_address_variable "fulcrum" >/dev/null 2>&1
-
+restart_bre >/dev/null
+get_onion_address_variable "bre" >/dev/null 2>&1
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
 echo ""
 enter_continue
-
 }
+
