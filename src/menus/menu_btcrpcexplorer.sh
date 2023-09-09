@@ -90,7 +90,7 @@ dt|DT|Dt|dT)
 disable_bre_tor
 ;;
 c|C)
-set_terminal ; cat ~/parmanode/btc-rcp-explorer/.env ; enter_continue ;;
+set_terminal ; cat ~/parmanode/btc-rpt-explorer/.env ; enter_continue ;;
 esac
 done
 }
