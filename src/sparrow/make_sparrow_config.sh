@@ -1,16 +1,34 @@
+# takes arguments to set connection type
+# defualt, no argument, is plain connection to Bitcoin Core.
 function  make_sparrow_config {
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 mkdir $HOME/.sparrow >/dev/null 2>&1
 rm $HOME/.sparrow/config >/dev/null 2>&1
-cp $original_dir/src/sparrow/config $HOME/.sparrow/config
+cp $original_dir/src/sparrow/config $HOME/.sparrow/config # copies template across
 
-debug "check if config file moved to location"
+debug "check if config file moved to correct location"
 
+# These settings can be written every time regardless of connection type...
 swap_string "$HOME/.sparrow/config" "coreDataDir" "  \"coreDataDir\": \"$HOME/.bitcoin\","
 swap_string "$HOME/.sparrow/config" "coreAuth\":" "  \"coreAuth\": \"$rpcuser:$rpcpassword\","
+# serverType is BITCOIN_CORE on the template
+# coreAuthType is USERPASS on the template
 
-debug "check config variables set"
+echo "connection=userpass" > $HOME/.parmanode/sparrow.connection
 
+    #cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+    if [[ $1 == "cookie" ]] ; then 
+    swap_string "$HOME/.sparrow/config" "coreAuthType" "    \"coreAuthType\": \"COOKIE\","
+    echo "connection=cookie" > $HOME/.parmanode/sparrow.connection #overwrites previous, so order important.
+    return 0
+    fi
+
+    if [ -z $1 ] ; then return 0 ; fi # not more if checks as argument is empty.
+    #cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 if [[ $1 == "fulcrumtor" ]] ; then
 if ! which tor ; then install_tor ; fi
 unset $ONION_ADDR_FULCRUM
@@ -23,16 +41,23 @@ get_onion_address_variable "fulcrum" >/dev/null
     make_sparrow_config
     return 1
     fi
-
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
+
+# electrum server details needs to be writen immediately after "useLegacyCoreWallet"
+# the swap function finds that line, and writes two lines. The first line rewrites what exists and second line inserts the
+# needed line...
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$ONION_ADDR_FULCRUM:7002\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+echo "connection=fulcrumtor" > $HOME/.parmanode/sparrow.connection
 fi
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 if [[ $1 == "fulcrumssl" ]] ; then
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"ssl://127.0.0.1:50002\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+echo "connection=fulcrumssl" > $HOME/.parmanode/sparrow.connection
+return 0
 fi
 
 if [[ $1 == "fulcrumremote" ]] ; then
@@ -40,5 +65,9 @@ if ! which tor ; then install_tor ; fi
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$REMOTE_TOR_ADDR:$REMOTE_PORT\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+echo "connection=fulcrumremotessl" > $HOME/.parmanode/sparrow.connection
+return 0
 fi
 }
+#"coreAuthType": "COOKIE",
+#  "coreAuthType": "USERPASS",

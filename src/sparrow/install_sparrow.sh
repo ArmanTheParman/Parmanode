@@ -1,3 +1,8 @@
+# install_sparrow
+# unpack_sparrow
+# verify_sparrow
+# mac_sparrow_headsup
+
 function install_sparrow {
 if [[ SOS == "Linux" ]] ; then
 if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
@@ -11,7 +16,6 @@ if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then
     fi
 
 set_terminal
-install_check "sparrow" || return 1
 if [[ $OS == "Mac" ]] ; then
 mac_sparrow_headsup
 fi
