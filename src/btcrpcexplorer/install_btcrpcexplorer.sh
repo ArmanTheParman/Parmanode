@@ -10,6 +10,22 @@ set_terminal
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if [[ $chip != "x86_64" ]] ; then return 1 ; fi
 
+if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-endd >/dev/null ; then 
+    set_terminal ; announce "
+    Be Warned, BTC RPC Explorer won't work unless you installed Fulcrum first.
+    You could, instead modify the configurtion file and point it to a Fulcrum
+    or Electrum Server on this or another machine.
+
+    Proceed anyway?   y  or  n"
+    
+    read choice
+
+    if [[ $choice == "y" ]] ; then return 1 ; fi
+fi
+
+
+
+
 install_nodejs || return 1
 
 installed_config_add "btcrpcexplorer-start" 
