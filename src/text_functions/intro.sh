@@ -19,7 +19,7 @@ echo "
 
     Requirements:
 
-            1) Debian/Ubuntu/Mint Linux, Mac (including Raspberr Pi 4)
+            1) Debian/Ubuntu/Mint Linux, Mac (including Raspberry Pi 4)
             
              (Not available for Windows yet)
 
