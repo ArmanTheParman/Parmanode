@@ -96,9 +96,12 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
 
     if gpg --verify SHA256SUMS.asc 2>&1 | grep "Good"  # it is vital for the "2>&1" to remain for this function to work
     then
+        echo ""
         echo "GPG verification of the SHA256SUMS file passed. "
+        echo ""
         enter_continue
     else 
+        echo ""
         echo "GPG verification failed. Aborting." 
         enter_continue
         exit 1
