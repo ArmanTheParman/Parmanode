@@ -100,9 +100,6 @@ echo "
 
                             Parmanode will be uninstalled
 
-    Note: The directory $HOME/parmanode will be left in tact; you may wish to delete 
-    that yourself.
-
 ########################################################################################
 "
 choose "epq"
@@ -132,7 +129,7 @@ rm -rf $HOME/.parmanode >/dev/null 2>&1
 set_terminal ; echo "
 ########################################################################################
 
-    Do you also wish to delete the Parmanode script direcotry, the one you downloaded
+    Do you also wish to delete the Parmanode script directory, the one you downloaded
     from GitHub?
 
                                    y)    Yes
