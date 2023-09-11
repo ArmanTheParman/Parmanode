@@ -48,7 +48,7 @@ case $choice in
 				#(extracted from bitcoin.conf)	
 				#checks if fulcrum installed, otherwise returns
 				
-				export btc_authentication="user/pass"
+				export btc_authentication="user/pass" >/dev/null
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
 
 				sleep 1 
