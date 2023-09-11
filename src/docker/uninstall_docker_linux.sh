@@ -25,7 +25,7 @@ sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
 
 set_terminal
 echo "
-Remove all docker containers, images, and volumes and configuration choices?
+Removing all Docker containers, images, and volumes and configuration choices.
 "
 choose "qc" ; read choice ; case $choice in q|Q|Quit|QUIT|quit) return 1 ;; esac
 
