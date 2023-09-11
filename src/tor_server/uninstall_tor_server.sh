@@ -22,11 +22,5 @@ if [[ $choice == "yolo" ]] ; then
     sudo rm -rf /tor-server-move
 fi
 
-set_terminal
-echo "Do you wish to uninstall Nginx? \"y\" will uninstall."
-read choice
-if [[ $choice == "y" ]] ; then
-    sudo apt-get purge nginx
-fi
 return 0
 }
