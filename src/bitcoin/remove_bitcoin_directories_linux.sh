@@ -46,26 +46,42 @@ set_terminal ; echo "
 
     Would like to delete that data or leave it be (skip) ?
 
-                            d)          delete
+                            d)          Delete
 
-                            s)          skip 
+                            b)          Back-up then delete 
+
+                            i)          Ignore and leave it
                                 
-    If skipping, and you have chosen an external drive, it will be renamed 
-    to .bitcoin_backup0 in order to created a symlink to the external drive of the
-    same name (otherwise there'd be a file name conflict).
+    If backing up, the directory will be renamed to $HOME/.bitcoin_backup0 
 
 ########################################################################################
 "
 choose "xq" ; read choice 
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then 
-            if [[ $drive == "external" ]] ; then make_backup_dot_bitcoin ; fi
-            break ; fi
-if [[ $choice == "d" ]] ; then 
+
+case $choice in
+q|Q|quit|Quit|QUIT) 
+    exit ;;
+b|B)
+    make_backup_dot_bitcoin 
+    break
+    ;;
+d|D)
     cd ; rm -rf $HOME/.bitcoin >/dev/null 2>&1 \
-    || debug "Error deleting .bitcoin directory. Continuing." ; break ; fi 
-    
-invalid #if all above if statements not true, then invalid choice and loop.
+    || debug "Error deleting .bitcoin directory. Continuing."
+    break
+    ;;
+i|I)
+    if [[ $drive == "external" ]] ; then 
+    announce "Because a symlink of the same name is required, to keep" \
+    "this directory, it must be backed up; can't be left as is."
+    make_backup_dot_bitcoin
+    fi
+    break
+    ;;
+*)  
+    invalid
+    ;;
+esac
 done
 fi #end checking internal drive for .bitcoin directory
 

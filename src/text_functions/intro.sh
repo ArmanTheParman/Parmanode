@@ -43,11 +43,11 @@ echo "
 
 ########################################################################################
 
-Hit <enter> to continue, or (q) to quit, then <enter>.
+    Hit <enter> to continue, or (q) to quit, then <enter>.
 
-If you hold shitcoins, please hit (s) - be honest!
+    If you hold shitcoins, please hit (s) - be honest!
 
-To hide this screen next time, type \"Free Ross\" then <enter>.
+    To hide this screen next time, type \"Free Ross\" then <enter>.
 "
 read choice
 case $choice in 
