@@ -1,5 +1,5 @@
 function choose_and_prepare_drive_parmanode {
-# Expect argument, either Bitcoin or Fulcrum for $1
+# Expect argument, either Bitcoin or Fulcrum or Electrs for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
@@ -30,7 +30,19 @@ e | E)    #External drive setup
 if [[ $1 == "Bitcoin" ]] ; then export hdd="external" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
+
         parmanode_conf_add "drive_fulcrum=external"
+        
+        # check if drive prepared with Bitcoin install...
+        # "drive=external" exactly like that is only added by a bitcoin installation.
+        if grep "drive=external" $HOME/.parmanode/parmanode.conf ; then
+        return 0
+        fi
+fi
+
+if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
+
+        parmanode_conf_add "drive_electrs=external"
         
         # check if drive prepared with Bitcoin install...
         # "drive=external" exactly like that is only added by a bitcoin installation.
@@ -58,7 +70,8 @@ enter_continue
 
 set_terminal
 
-format_ext_drive "$1" # passes bitcoin or fulcrum
+format_ext_drive "$1" # Redundant, passes bitcoin or fulcrum or electrs
+
 	return_value=$? # checks for success and adds result a a more permanent variable.
 
         if  [[ $return_value == 1 ]] ; then
@@ -78,6 +91,10 @@ i | I)
         if [[ $1 == "Bitcoin" ]] ; then export hdd="internal" ; fi
         if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="internal" 
                parmanode_conf_add "drive_fulcrum=internal"
+               fi
+        return 0 
+        if [[ $1 == "Electrs" ]] ; then export drive_electrs="internal" 
+               parmanode_conf_add "drive_electrs=internal"
                fi
         return 0 
         ;;
