@@ -1,4 +1,5 @@
 function format_ext_drive {
+    
 format_warnings     #Warn the user to pay attention.
     if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
     select_drive_ID
