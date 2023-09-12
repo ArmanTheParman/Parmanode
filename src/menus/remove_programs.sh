@@ -115,6 +115,12 @@ echo "                                           (bre)              BTC RPC Expl
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
 echo "                                           (bre)              BTCrpcEXP (partial)
 " ; fi
+if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
+echo "                                           (ers)              electrs 
+"
+elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
+echo "                                           (ers)              electrs (partial) 
+" ; fi
 echo "
 ########################################################################################
 "
@@ -223,7 +229,12 @@ if [[ $btcrpcexplorermenu == 1 ]] ; then
 	return 0
 	fi
 	;;
-
+ers|ERS|Ers|electrs)
+if [[ $electrsmenu == 1 ]] ; then
+	uninstall_electrs
+	return
+	fi
+	;;
 p|P)
 	return 0
 	;;
