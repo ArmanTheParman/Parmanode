@@ -15,7 +15,11 @@ echo "
     for your wallet. This data can be kept on the internal or external drive - it does
     not have to be on the same drive as the Bitcoin data. It will take around 100 Gb
     of data.
-                          fulcrum_drive_selection
+
+                        e)      External drive
+
+                        i)      Internal drive
+
 ########################################################################################
 "
 choose "xpq" ; read choice
