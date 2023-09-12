@@ -3,8 +3,16 @@ function install_electrs {
     build_dependencies_electrs
     download_electrs
     compile_electrs
-    check_pruning_off || return 1
 
+    # check Bitcoin settings
+    unset rpcuser rpcpassword prune server
+    source $HOME/.bitcoin/bitcoin.conf >/dev/null
+    check_pruning_off || return 1
+    check_server_1 || return 1
+    check_bitcoin_auth_only
+
+    #config
+    make_electrs_config 
 }
 
 function build_dependencies_electrs {
@@ -58,15 +66,68 @@ cd $HOME/parmanode/electrs && cargo build --locked --release
 }
 
 function check_pruning_off {
-
-if ! cat $HOME/.bitcoin/bitcoin.conf | grep "prune=" ; then return 0 
-else
-    if cat $HOME/.bitcoin/bitcoin.conf | grep "prune=0" ; then return 0 
+    if [[ $prune -gt 0 ]] ; then
     announce "Note that Electrs won't work if Bitcoin is pruned. You'll have to" \
     "completely start bitcoin sync again without pruning to use Electrs. Sorry."
     return 1
+    else
+    return 0
     fi
-fi
+}
 
+function check_server_1 {
+if [[ $server -ne 1 ]] ; then 
+announce "\"server=1\" needs to be included in the bitcoin.conf file." \
+"Please do that and try again. Aborting." 
+return 1 
+fi
+}
+
+
+
+function check_bitcoin_auth_only {
+
+if [ -z $rpcuser ] ; then
+while true ; do
+set_terminal ; echo "
+########################################################################################
+
+    A username and password for Bitcoin Core authentication needs to be set for 
+    Electrs to function properly. 
+    
+    Do that now?   y   or   n
+
+########################################################################################
+"
+read choice ; choose "xq"
+case $choice in
+q|Q) 
+exit 0 ;;
+y|Y|Yes|YES|yes)
+set_rpc_authentication
+return 0
+;;
+n|no|N|NO|No)
+return 0
+;;
+*)
+invalid ;;
+esac ; done
+fi
+}
+
+function make_electrs_config {
+mkdir -p $HOME/.electrs
+
+choose_db_dir
+
+echo "daemon_rpc_addr = \"127.0.0.1:8332\"
+daemon_p2p_addr = \"127.0.0.1:8333\"
+db_dir=$db_dir
+network=\"bitcoin\"
+electrum_rpc_addr = \"127.0.0.1:50001\"
+log_filters = \"INFO\"
+auth=\"$rpcuser:$rpcpassword\"
+" | tee $HOME/.electrs/config.toml >/dev/null
 
 }
