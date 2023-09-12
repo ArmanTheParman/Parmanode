@@ -1,8 +1,10 @@
 function install_electrs {
 
-    build_dependencies_electrs
-    download_electrs
-    compile_electrs
+    build_dependencies_electrs && log "electrs" "build_dependencies success"
+    download_electrs && log "electrs" "download_electrs success" 
+    compile_electrs && log "electrs" "compile_electrs success"
+
+    debug "build, download, compile... done"
 
     # check Bitcoin settings
     unset rpcuser rpcpassword prune server
@@ -11,8 +13,19 @@ function install_electrs {
     check_server_1 || return 1
     check_bitcoin_auth_only
 
+    #prepare drives
+    choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+    prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; }
     #config
-    make_electrs_config 
+    make_electrs_config && log "electrs" "config done"
+    debug "config done"
+
+    make_electrs_service
+
+    installed_config_add "electrs-end"
+    success "electrs" "being installed"
+
+
 }
 
 function build_dependencies_electrs {
@@ -58,10 +71,14 @@ source $HOME/.cargo/env #or restart shell
 }
 
 function download_electrs {
-cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs
+cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs && installed_config_add "electrs-start"
 }
 
 function compile_electrs {
+set_terminal
+announce "electrs does not need sha256 or gpg verification because it will be" \
+"compiled from source."
+set_terminal ; please_wait ; echo ""
 cd $HOME/parmanode/electrs && cargo build --locked --release
 }
 
@@ -83,8 +100,6 @@ return 1
 fi
 }
 
-
-
 function check_bitcoin_auth_only {
 
 if [ -z $rpcuser ] ; then
@@ -95,7 +110,7 @@ set_terminal ; echo "
     A username and password for Bitcoin Core authentication needs to be set for 
     Electrs to function properly. 
     
-    Do that now?   y   or   n
+                            Do that now?   y   or   n
 
 ########################################################################################
 "
@@ -130,4 +145,19 @@ log_filters = \"INFO\"
 auth=\"$rpcuser:$rpcpassword\"
 " | tee $HOME/.electrs/config.toml >/dev/null
 
+}
+
+function prepare_drive_electrs {
+
+mkdir -p $HOME/.electrs
+
+if [[ $drive_electrs == "internal" ]] ; then
+    mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+fi
+
+if [[ $drive_electrs == "external" ]] ; then
+    mkdir -p /media/$USER/parmanode/electrs_db && return 0
+fi  
+
+return 1
 }
