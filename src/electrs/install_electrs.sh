@@ -60,7 +60,7 @@ esac ; done ; set_terminal
     debug "finished electrs install"
     success "electrs" "being installed"
 
-
+backup_electrs
 }
 
 ########################################################################################
@@ -103,4 +103,42 @@ announce "\"server=1\" needs to be included in the bitcoin.conf file." \
 "Please do that and try again. Aborting." 
 return 1 
 fi
+}
+
+function backup_electrs {
+
+while true ; do
+
+set_terminal ; echo "
+########################################################################################
+
+    Now that you've gone through the pain of waiting for electrs to compile, you might
+    as well back up the files created and keep a copy somewhere out of the way. That
+    way, if you ever uninstall/reinstall, you can get Parmanode to use the backup, and
+    copy it to the location needed.
+
+    Do that?
+
+                y)      Yes. Brilliant.
+
+                n)      Nah
+
+########################################################################################
+"
+read choice
+set_terminal
+
+case $choice in 
+n|N|No|NO|nah|NAH) return 0 ;;
+y|Y|YES|Yes|yes|shit_yeah) backup_electrs ; return 0 ;;
+*) invalid ;;
+esac
+done
+}
+
+
+function backup_electrs {
+rm -rf $HOME/.electrs_backup >/dev/null 2>&1
+mkdir -p $HOME/.electrs_backup >/dev/null 2>&1
+cp -r $HOME/parmanode/electrs/target $HOME/.electrs_backup >/dev/null 2>&1
 }
