@@ -65,15 +65,16 @@ case $choice in
 start | START)
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
 set_terminal
+please_wait
 echo "electrs starting..."
 echo ""
-if [[ $OS == "Linux" ]] ; then start_electrs ; enter_continue ; fi
+if [[ $OS == "Linux" ]] ; then start_electrs ; fi
 set_terminal
 ;;
 
 stop | STOP) 
 set_terminal
-if [[ $OS == "Linux" ]] ; then echo "electrs stopping" ; stop_electrs ; enter_continue ; fi
+if [[ $OS == "Linux" ]] ; then echo "electrs stopping" ; stop_electrs ; fi
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 set_terminal
 ;;
