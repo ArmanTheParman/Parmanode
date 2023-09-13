@@ -69,7 +69,7 @@ fi
 
 function install_cargo {
 
-announce "You will soon see a promt to install cargo. Choose \"1\" to continue" \
+announce "You will soon see a prompt to install cargo. Choose \"1\" to continue" \
 "the installation."
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
@@ -78,7 +78,9 @@ debug "install cargo function end"
 }
 
 function download_electrs {
+debug "before"
 cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs && installed_config_add "electrs-start"
+debug "after"
 }
 
 function compile_electrs {
