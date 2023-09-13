@@ -14,15 +14,10 @@ set_terminal_bit_higher ; echo "
     Bitcoin Core. The default authentication method is with what's caled a COOKIE 
     FILE Stored in the Bitcoin data directory. 
 	
-    Some software (eg Fulcrum or Electrum Server) REQUIRES the alternative way, 
-	which is with a USERNAME and PASSWORD. For convenience, you can set a 
-	username and password here.
-
-	Please be aware changing a setting here to make one wallet work, can mess up
-	another. For example, if you first installed Sparrow and if works fine, then you
-	decided to install Fulcrum, you'll need to set a password for bitcoin. If you do
-	that, Sparrow will no longer connect unless you go into the network preferences
-	and enter the username/password.
+    Some software (eg Fulcrum or Electrum Server) requires the alternative way, 
+    which is with a USERNAME and PASSWORD, rather than a cookie file. 
+	
+	For convenience, you can set a username and password here.
 
 
        (s)     Set the Bitcoin username and password (edits bitcoin.conf)
