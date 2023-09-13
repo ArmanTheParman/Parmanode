@@ -58,8 +58,8 @@ echo "#                            (specter)     Specter Wallet                 
 if ! grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexploreradd=1
 echo "#                            (bre)         BTC RPC Explorer                            #
 #                                                                                      #" ; fi
-if ! grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsadd=1
-echo "#                            (ers)         electrs                                     #
+if ! grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsadd=0
+echo "#                            (ers)         electrs (available soon)                                    #
 #                                                                                      #" ; fi
 ########################################################################################
 echo "# Already installed...                                                                 #
