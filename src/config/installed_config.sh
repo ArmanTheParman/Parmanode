@@ -11,9 +11,8 @@ return 0
 
 
 function installed_config_remove {
-program="$1"
 
-delete_line "$HOME/.parmanode/installed.conf" "$program"
+delete_line "$HOME/.parmanode/installed.conf" "${1}"
 
 return 0
 }

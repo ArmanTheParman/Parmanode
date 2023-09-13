@@ -21,7 +21,7 @@ function install_electrs {
     make_electrs_config && log "electrs" "config done"
     debug "config done"
 
-    make_electrs_service
+    make_electrs_service || log "electrs" "service file faile"
 
     installed_config_add "electrs-end"
     success "electrs" "being installed"
