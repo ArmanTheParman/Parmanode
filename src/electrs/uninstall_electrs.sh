@@ -11,6 +11,7 @@ if [[ $drive_electrs == "external" ]] ; then
 sudo rm -rf /media/$USER/parmanode/electrs_db >/dev/null
 else
 rm -rf $HOME/parmanode/electrs
+fi
 
 installed_config_remove "electrs"
 
