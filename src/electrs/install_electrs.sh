@@ -56,7 +56,7 @@ fi
 fi
 
 # if old version of cargo, won't work
-if ! which cargo ; then sudo install_cargo
+if ! which cargo ; then install_cargo
 else
     if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
     sudo apt purge cargo rustc -y
@@ -70,6 +70,7 @@ function install_cargo {
 #please follow prompts to insall cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh
 source $HOME/.cargo/env #or restart shell
+debug "install cargo function end"
 }
 
 function download_electrs {
