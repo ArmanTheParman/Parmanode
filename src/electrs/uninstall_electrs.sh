@@ -9,9 +9,9 @@ sudo rm /etc/systemd/system/electrs.servcie >/dev/null
 
 if [[ $drive_electrs == "external" ]] ; then
 sudo rm -rf /media/$USER/parmanode/electrs_db >/dev/null
-else
-rm -rf $HOME/parmanode/electrs
 fi
+
+rm -rf $HOME/parmanode/electrs
 
 installed_config_remove "electrs"
 

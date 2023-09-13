@@ -78,9 +78,7 @@ debug "install cargo function end"
 }
 
 function download_electrs {
-debug "before"
 cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs && installed_config_add "electrs-start"
-debug "after"
 }
 
 function compile_electrs {
