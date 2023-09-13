@@ -59,7 +59,7 @@ if ! grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpce
 echo "#                            (bre)         BTC RPC Explorer                            #
 #                                                                                      #" ; fi
 if ! grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsadd=0
-echo "#                            (ers)         electrs (available soon)                                    #
+echo "#                            (ers)         electrs (available soon)                    #
 #                                                                                      #" ; fi
 ########################################################################################
 echo "# Already installed...                                                                 #
