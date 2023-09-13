@@ -1,4 +1,5 @@
 function install_electrs {
+    set_terminal
 
     build_dependencies_electrs && log "electrs" "build_dependencies success"
     download_electrs && log "electrs" "download_electrs success" 
@@ -135,7 +136,11 @@ fi
 function make_electrs_config {
 mkdir -p $HOME/.electrs
 
-choose_db_dir
+if [[ $drive_electrs == "external" ]] ; then 
+    db_dir="/media/$USER/parmanode/electrs_db"
+else
+    db_dir="$HOME/parmanode/electrs/electrs_db"
+fi
 
 echo "daemon_rpc_addr = \"127.0.0.1:8332\"
 daemon_p2p_addr = \"127.0.0.1:8333\"
