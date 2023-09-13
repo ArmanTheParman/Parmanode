@@ -7,4 +7,6 @@ sudo systemctl disable electrs.service >/dev/null
 sudo rm /etc/systemd/system/electrs.servcie >/dev/null
 
 installed_config_remove "electrs"
+
+debug "end of uninstall"
 }

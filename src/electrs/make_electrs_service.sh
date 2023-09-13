@@ -26,7 +26,7 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-}" | tee sudo /etc/systemd/system/electrs.service
+}" | tee sudo /etc/systemd/system/electrs.service >/dev/null 2>&1
 
 sudo systemctl daemon-reload
 sudo systemctl enable electrs.service
