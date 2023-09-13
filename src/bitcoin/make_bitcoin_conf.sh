@@ -20,9 +20,9 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
                            o)           overwrite
 
-                           yolo) 		keep the one you have
+                           yolo)        keep the one you have
 
-                           a)			abort installation
+                           a)           abort installation
 
 ########################################################################################
 "
