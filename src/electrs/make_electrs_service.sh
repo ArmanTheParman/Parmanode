@@ -25,11 +25,10 @@ NoNewPrivileges=true
 MemoryDenyWriteExecute=true
 
 [Install]
-WantedBy=multi-user.target
-}" | sudo tee /etc/systemd/system/electrs.service >/dev/null 2>&1
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/electrs.service >/dev/null 2>&1
 debug "check service file"
 
-sudo systemctl daemon-reload
-sudo systemctl enable electrs.service
+sudo systemctl daemon-reload >/dev/null
+sudo systemctl enable electrs.service >/dev/null
 
 }
