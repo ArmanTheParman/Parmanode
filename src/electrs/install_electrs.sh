@@ -68,9 +68,11 @@ fi
 ########################################################################################
 
 function install_cargo {
-# The following is the recommended way to install cargo.
-# The <<<'1' was added, and sends a 1 input to the interactive prompt, making the choice automatic.
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh <<<'1'
+
+announce "You will soon see a promt to install cargo. Choose \"1\" to continue" \
+"the installation."
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
 source $HOME/.cargo/env #or restart shell
 debug "install cargo function end"
 }
