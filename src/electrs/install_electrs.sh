@@ -67,7 +67,7 @@ backup_electrs
 
 function install_cargo {
 
-announce "You will soon see a prompt to install cargo. Choose \"1\" to continue" \
+announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" \
 "the installation."
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
@@ -80,10 +80,8 @@ cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs && 
 }
 
 function compile_electrs {
-set_terminal
-announce "electrs does not need sha256 or gpg verification because it will be" \
-"compiled from source."
-set_terminal ; please_wait ; echo ""
+set_terminal ; echo "   Compiling electrs..."
+please_wait ; echo ""
 cd $HOME/parmanode/electrs && cargo build --locked --release
 }
 
