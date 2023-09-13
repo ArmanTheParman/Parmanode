@@ -17,13 +17,12 @@ echo "
 ########################################################################################
 
 "
-if sudo systemctl status electrs.service | grep 
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
 #                    ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS "
-# else
-# echo "
-#                    ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
-# fi
+else
+echo "
+                   ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
 echo "
 
 
