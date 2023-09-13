@@ -30,7 +30,8 @@ function install_electrs {
 }
 
 function build_dependencies_electrs {
-sudo apt update -y
+please_wait
+sudo apt update -y >/dev/null 2>&1
 
 if ! which clang ; then sudo apt install -y clang ; fi
 
@@ -67,8 +68,9 @@ fi
 ########################################################################################
 
 function install_cargo {
-#please follow prompts to insall cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh
+# The following is the recommended way to install cargo.
+# The <<<'1' was added, and sends a 1 input to the interactive prompt, making the choice automatic.
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh <<<'1'
 source $HOME/.cargo/env #or restart shell
 debug "install cargo function end"
 }
