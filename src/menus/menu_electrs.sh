@@ -36,7 +36,7 @@ echo "
 	    
       (log)      Inspect electrs logs
 
-      (fc)       Inspect and edit config.toml file 
+      (ec)       Inspect and edit config.toml file 
 
       (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)
     
@@ -123,7 +123,7 @@ fi
 
 continue ;;
 
-fc|FC|Fc|fC)
+ec|EC|Ec|eC)
 if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################

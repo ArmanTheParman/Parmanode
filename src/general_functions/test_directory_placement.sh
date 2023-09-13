@@ -28,30 +28,33 @@ clear ; echo "
 ########################################################################################
 
     Oh dear, you've downloaded the Parmanode software directly to your home directory. 
-    This will cause a conflict for the Parmanode installation. Here's what you do:
+    This will cause a conflict for the Parmanode installation. 
+    
+    Parmanode can move the directory that you got from GitHub to your Desktop. Make
+    Parmanode do that now?
 
-    After exiting this program, from the command line, type exactly this (case
-    sensitive)...
+              y)      do it (you'll need to then restart parmanode from the Desktop)
 
-			cd .. && mv parmanode \$HOME/Desktop/
-	
-    Then, you will see the downloaded directory moved to your desktop. You can enter
-    the directory from the command line with...
+              n)      nah (ok, but parmanode won't run if you don't move it somewhere)
 
-	        cd $HOME/Desktop/parmanode
 
-    Then you can run the program from there with...
-
-			./run_parmanode.sh
-
-    Take a photo of these instructions or copy them to a file if it's hard to remember.
-
+    
 ########################################################################################
-" #Note a backslash before $ means that the $ will be printed. Otherwise, the $ will
-#be interpreted. Eg $HOME will instead print whatever the variable HOME is holding.
-#The first time I want "$HOME" to be printed, hence the backslash. The second time,
-#I wanted to full result of $HOME/Desktop/parmanode, eg /home/parman/Desktop/parmanode
+"
+read choice
+
+case $choice in
+
+y|Y|Yes|YES|yes)
+announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit"
+cd ; mv $original_dir $HOME/Desktop/
 enter_continue && exit 0 
+;;
+*)
+exit 0
+;;
+esac
+
 #enter_continue is a custom function I made which prints something and prompts the user
 #to hit enter, using the read command.
 #&& means to run the second command only if the first command runds successfully. It's
@@ -69,21 +72,24 @@ clear ; echo "
 	This won't do, because Parmanode needs to create a directory of that same name to
 	install the program, and doing so will wipe the program you're using now.
 
-    Here's what you do: after exiting this program, move the downloaded parmanode
-	script directory to somewhere else, eg your Desktop ($HOME/Desktop).
-	
-    You can enter the directory from the command line with...
+    Parmanode can move the directory that you got from GitHub to your Desktop. Make
+    Parmanode do that now?
 
-	        cd $HOME/Desktop/parmanode
+              y)      do it (you'll need to then restart parmanode from the Desktop)
 
-	Then you can run the program from there with...
-
-			./run_parmanode.sh
-
-	Tip:
-    Take a photo of these instructions or copy them to a file if it's hard to remember.
+              n)      nah (ok, but parmanode won't run if you don't move it somewhere)
 
 ########################################################################################
 "
-enter_continue && exit 0
+case $choice in
+
+y|Y|Yes|YES|yes)
+announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit"
+cd ; mv $original_dir $HOME/Desktop/
+enter_continue && exit 0 
+;;
+*)
+exit 0
+;;
+esac
 }
