@@ -19,9 +19,9 @@ echo "
 
     PROCEED?
 
-                        y)      yes please, this is amazing
+                        y)      Yes please, this is amazing
 
-                        n)      nah mate
+                        n)      Nah mate
     
 ########################################################################################
 "
