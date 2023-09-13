@@ -19,14 +19,15 @@ echo "
 			 
 	                      /media/$(whoami)/parmanode
 
-                          The data directory needs to be at
+    The data directory needs to be at
+
                           /medi/$(whoami)/parmanode/.bitcoin
-                          Parmanode will take care of symlinks.
+
+    Parmanode will take care of symlinks.
                           
                           The easiest way to configure a existing drive is to
                           use the main menu --> tools --> Brin in a Parmanode drive
 
-    
 ########################################################################################
 
 "
@@ -53,10 +54,12 @@ fi
 choose "xq" ; read choice
 case $choice in 
     s|S)
+        export skip_formatting="true"
         return 1 ;;
     q|Q)
         exit 0 ;;
     y|Y)
+        export skip_formatting="false"
         break ;; # proceed to format drive below
     *)
         invalid ;;
