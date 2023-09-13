@@ -65,6 +65,7 @@ read choice
 
 echo "Please connect the drive you wish to use."
 enter_continue
+fi # end if drive external
 
 if [[ $serverE == "fulcrum" ]] ; then
     parmanode_conf_add "drive_fulcrum=${drive_fulcrum}" && return 0

@@ -39,7 +39,7 @@ if ! dpkg -l | grep build-essential ; then sudo apt install -y build-essential ;
 
 # cargo install needed, but won't work if 64 bit system uses a 32 bit os,
 # like Raspian OS 32-bit (it supports 64 bit chips, but cargo won't work)
-if $(uname -m) == "aarch64" ; then 
+if [[ $(uname -m) == "aarch64" ]] ; then 
     if [[ $(file /bin/bash | grep 64 | cut -d " " -f 3) != "64-bit" ]] then
     set_terminal ; echo "
 ########################################################################################
