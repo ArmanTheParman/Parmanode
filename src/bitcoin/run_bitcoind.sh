@@ -24,9 +24,6 @@ fi
         then
         sudo systemctl start bitcoind.service 
         fi
-
-echo "If there are not printed errors, Bitcoin has started." 
-echo "You can see progress from the Parmanode Bitcoin log menu." ; enter_continue
 fi                 
 
 
