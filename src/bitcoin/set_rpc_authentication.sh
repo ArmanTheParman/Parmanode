@@ -1,7 +1,7 @@
 function set_rpc_authentication {
 if [[ $bitcoin == "yolo" ]]
 	then export rpcuser=null ; export rpcpassword=null
-	return 
+	return 0 
 	fi
 
 while true ; do
@@ -14,15 +14,15 @@ set_terminal_bit_higher ; echo "
     Bitcoin Core. The default authentication method is with what's caled a COOKIE 
     FILE Stored in the Bitcoin data directory. 
 	
-    Some software (eg Fulcrum or Electrum Server) REQUIRES the alternative way, 
-	which is with a USERNAME and PASSWORD. For convenience, you can set a 
-	username and password here.
+    Some software (eg Fulcrum or Electrum Server) requires the alternative way, 
+    which is with a USERNAME and PASSWORD, rather than a cookie file. 
+	
+	For convenience, you can set a username and password here.
 
-	Please be aware changing a setting here to make one wallet work, can mess up
-	another. For example, if you first installed Sparrow and if works fine, then you
-	decided to install Fulcrum, you'll need to set a password for bitcoin. If you do
-	that, Sparrow will no longer connect unless you go into the network preferences
-	and enter the username/password.
+	Note, this password doesn't need to be incredibly secure, and do also bear in 
+    mind that it will be stored on the computer in clear text insie the bitcoin.conf
+	file and other configuration files. Therefore, don't use highly sensitive
+	passwords that you might use for other things.
 
 
        (s)     Set the Bitcoin username and password (edits bitcoin.conf)
@@ -74,10 +74,10 @@ case $choice in
 
 				sleep 1
 				run_bitcoind 
-				break
+				return 1 #important for testing if user/pass set
 		;;	
 
-	p|P) return 0 ;;
+	p|P) return 1 ;; #important for testing if user/pass set
 
 	q|Q|Quit|QUIT) exit 0 ;;
 
