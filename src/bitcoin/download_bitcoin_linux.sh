@@ -77,13 +77,19 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
 	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
 
-	    if [[ $chip == "aarch64" ]] ; then 				#64 bit Pi4 (same file as 32 bit)
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
-		
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+
+	    if [[ $chip == "aarch64" ]] ; then 				
+
+            if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-aarch64-linux-gnu.tar.gz 
+            else
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+            fi
+
 	    if [[ $chip == "x86_64" ]] ; then 
-		curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
 
 
 if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi

@@ -151,7 +151,7 @@ echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
 echo "
 ########################################################################################
 
-    DRIVE DETAILS:
+    DETAILS OF THE DRIVE TO BE IMPORTED...
 
         The label is $LABEL
 
