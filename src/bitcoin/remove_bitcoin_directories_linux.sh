@@ -10,7 +10,7 @@ source $HOME/.parmanode/parmanode.conf   # gets drive choice
 
 if [[ $drive == "external" && -d /media/$(whoami)/parmanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
-    if [[ $skip_formatting = "true" ]] ; then break ; fi
+    if [[ $skip_formatting = "true" ]] ; then export format="false" ; break ; fi
 set_terminal
 
 echo "
@@ -91,6 +91,6 @@ fi #end checking internal drive for .bitcoin directory
 if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
 
 
-unset skip_formatting
+unset skip_formatting format
 return 0
 }
