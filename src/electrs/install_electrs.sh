@@ -2,7 +2,9 @@ function install_electrs {
     set_terminal
 
     build_dependencies_electrs && log "electrs" "build_dependencies success"
+    debug "build dependencies done"
     download_electrs && log "electrs" "download_electrs success" 
+    debug "download electrs done"
     compile_electrs && log "electrs" "compile_electrs success"
 
     debug "build, download, compile... done"
@@ -60,6 +62,7 @@ fi
 if ! which cargo ; then install_cargo
 else
     if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
+    debug "will uninstall then reinstall cargo, because < 63 version"
     sudo apt purge cargo rustc -y
     install_cargo
     fi
