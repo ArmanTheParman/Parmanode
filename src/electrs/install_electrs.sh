@@ -50,6 +50,9 @@ esac ; done ; set_terminal
     #prepare drives
     choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
     prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; }
+
+    make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."
+
     #config
     make_electrs_config && log "electrs" "config done"
     debug "config done"
