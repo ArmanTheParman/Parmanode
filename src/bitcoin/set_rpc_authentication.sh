@@ -1,7 +1,7 @@
 function set_rpc_authentication {
 if [[ $bitcoin == "yolo" ]]
 	then export rpcuser=null ; export rpcpassword=null
-	return 
+	return 0 
 	fi
 
 while true ; do
@@ -74,10 +74,10 @@ case $choice in
 
 				sleep 1
 				run_bitcoind 
-				break
+				return 1 #important for testing if user/pass set
 		;;	
 
-	p|P) return 0 ;;
+	p|P) return 1 ;; #important for testing if user/pass set
 
 	q|Q|Quit|QUIT) exit 0 ;;
 
