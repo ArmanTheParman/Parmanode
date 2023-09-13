@@ -18,7 +18,7 @@ echo "
 
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
-#                    ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+                   ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS "
 else
 echo "
                    ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
