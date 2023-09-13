@@ -52,6 +52,9 @@ if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorerapp=1
                        echo "    (bre)        BTC RPC Explorer 
                             " ; fi
+if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
+                       echo "    (ers)        electrs 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -134,6 +137,11 @@ specter|SPECTER|Specter)
 bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 ]] ; then
    menu_btcrpcexplorer 
+   fi
+   ;;
+ers|ERS|Ers)
+   if [[ $electrsapp == 1 ]] ; then
+   menu_electrs
    fi
    ;;
 
