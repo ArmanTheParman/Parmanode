@@ -60,6 +60,7 @@ else
     if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
     sudo apt purge cargo rustc -y
     install_cargo
+    fi
 fi
 }
 ########################################################################################
