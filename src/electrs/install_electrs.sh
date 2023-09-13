@@ -142,3 +142,9 @@ rm -rf $HOME/.electrs_backup >/dev/null 2>&1
 mkdir -p $HOME/.electrs_backup >/dev/null 2>&1
 cp -r $HOME/parmanode/electrs/target $HOME/.electrs_backup >/dev/null 2>&1
 }
+
+function add_electrs_edits_bitcoin_conf {
+
+    delete_line
+
+    }

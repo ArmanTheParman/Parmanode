@@ -27,6 +27,8 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
 echo "
 
 
+      (i)        Important info / Troubleshooting
+
       (start)    Start electrs 
 
       (stop)     Stop electrs 
@@ -62,6 +64,11 @@ fi
 choose "xpq" ; read choice ; set_terminal
 
 case $choice in
+
+I|i|info|INFO)
+    info_electrs
+    break
+    ;;
 
 start | START)
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
