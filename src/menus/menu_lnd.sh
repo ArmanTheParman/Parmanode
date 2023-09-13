@@ -45,9 +45,9 @@ case $choice in
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 i|I|info|Info) lnd_info ;;
-start|START|Start) sudo systemctl start lnd.service ;;
-stop|STOP|Stop) sudo systemctl stop lnd.service ;; 
-restart|RESTART|Restart) sudo systemctl restart lnd.service ;;
+start|START|Start) start_lnd ;;
+stop|STOP|Stop) stop_lnd ;; 
+restart|RESTART|Restart) restart_lnd ;;
 
 log|LOG|Log)
 echo "
