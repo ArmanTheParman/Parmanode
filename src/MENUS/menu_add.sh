@@ -124,7 +124,9 @@ case $choice in
     f|F)
        if [[ $fulcrumadd == 1 ]] ; then
        set_terminal
-       if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 ; fi
+       if [[ $OS == "Linux" ]] ; then 
+       electrs_better_4pi || return 1 
+       install_fulcrum && return 0 ; fi
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac && return 0 ; fi
        return 0 
        fi
@@ -243,5 +245,26 @@ esac
 done
 
 return 0
+
+}
+
+
+function electrs_better_4pi {
+
+Pi=$(uname -m) >/dev/null
+
+while true ; do
+if [[ $Pi == "arm64" || $Pi == "aarch64" || $Pi == "armv6l" || $Pi == "armv7l" ]] ; then
+set_terminal
+announce "It's best for Raspberry Pi's to use electrs insteat of Fulcrum" \
+"Abort Fulcrum installation?     y     or     n"
+read choice
+
+case $choice in 
+y|Y) return 1 ;;
+n|N) return 0 ;;
+*) invalid ;;
+esac
+done
 
 }
