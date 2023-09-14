@@ -3,17 +3,52 @@ function info_electrs {
 set_terminal ; echo "
 ########################################################################################
 
-    It is possible, that when you inspect the log file, you'll see electrs starting
-    and then terminating, and after some time starting again and failing again.
+    Raspberry Pi issues:
 
-    I have observed this while testing, and left electrs to run. After an hour or so
-    I was able to overcome this problem itself and begin syncing the chain.
+        It is possible that when you inspect the log file, you'll see electrs starting
+        and then terminating, and after some time starting again and failing again.
 
-    Until some fix is released by the developer or electrs or Bitcoin, this will have
-    to do I'm afraid. My testing was done on a Raspberry Pi 64-bit, and it is 
-    unclear if this will happen on other systems.
+        I have observed this while testing on a Raspberry Pi 64-bit, but it works fine
+        on a Linux AMD 64 bit desktop computer.
+
+        The problem resolved on its own after an hour or so, and may do the same for 
+        you, just a warning and hint.
+
+        Until some fix is released by the developer of electrs or Bitcoin, this will 
+        have to do I'm afraid. 
+
+        Testing on an Intel i5 desktop computer running Linux Mint works completely 
+        fine.
 
 ########################################################################################
 "
 enter_continue
+
+set_terminal ; echo "
+########################################################################################
+
+    Connectivity:
+
+        Electrum wallet works perfectly fine with electrs, but for best results in
+        terms of connectivity, you should run Electrum using the Parmanode menu.
+
+        Sometimes, for absoutely no apparant reason, the wallet won't connect but 
+        restarting the wallet fixes it. Go figure; computers.
+
+    Sparrow Wallet:
+
+        Sparrow wallet will connect via TCP, but not SSL - sorry, I can't figure out
+        why. If you specifically want an SSL connection using Sparrow, then run
+        Fulcrum instead of electrs; that works.
+    
+    Ports:
+
+        Because Parmamnode supports both Fulcrum AND electrs as "Electrum Servers",
+        the typical ports 50001 and 50002 has been reserved for Fulcrum, and 
+        50005/50006 is used for electrs. This is to avoid any port conflicts.
+
+########################################################################################
+"
+enter_continue
+
 }

@@ -25,6 +25,8 @@ set_terminal ; echo "
 
          (tcp)     Connect Sparrow to Fulcrum via tcp (port 50001)
 
+         (ers)     Connect Sparrow to electrs via tcp (port 50005)
+
          (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
          
          (torssl)  Connect by Tor with SSL (NOT AVAILABLE)
@@ -64,6 +66,10 @@ sparrow_fulcrumtcp
 
 rtor|Rtor|RTOR)
 sparrow_remote
+;;
+
+ers|ERS|Ers)
+sparrow_electrs
 ;;
 
 t|T)
