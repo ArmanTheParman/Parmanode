@@ -25,6 +25,10 @@ function lnd_info {
     You can buy the on line, and the give your computer some power during a powerout
     and allow you to safely shut the computer down, avoiding data corruption.
 
+    TROUBLESHOOTING
+    
+        If you are having issues with LND, try uninstalling and reinstalling using
+        Parmanode.
 
     TYPE c TO LEARN ABOUT CHANNEL BACKUPS, THEN <ENTER> OR JUST <ENTER> TO RETURN  
 

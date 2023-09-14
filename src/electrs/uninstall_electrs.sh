@@ -1,6 +1,8 @@
 function uninstall_electrs {
 source $HOME/.parmanode/parmanode.conf
 
+electrs_nginx remove
+
 parmanode_conf_remove "electrs"
 
 sudo systemctl stop electrs.service >/dev/null

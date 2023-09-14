@@ -1,46 +1,17 @@
 function install_electrs {
-while true ; do
-set_terminal
-echo "
-########################################################################################
-    
-    Parmanode will now install ELECTRS on your system.
 
-    Please note, you may be prompted to install cargo, a necessary program to compile
-    electrs from source code. If you see an option to choose 1, 2, or 3, you need to
-    select 1 to continue the installation.
+    restore_elctrs #get electrs_compile true/false
 
-    Also note, that because this is going to be compiled, no hash or gpg verification
-    is necessary. This is because you are not trusting anyone per se, except that 
-    the code is open source, and probably has had many eyes laid upon it. You are 
-    of course free to read the code yourself to be sure. 
+    preamble_install_electrs || return 1
 
-    This might take 10 to 30 minutes, depending on the speed of your computer.
-
-    PROCEED?
-
-                        y)      Yes please, this is amazing
-
-                        n)      Nah mate
-    
-########################################################################################
-"
-read choice
-case $choice in
-n|No|nah|NO|no) return 1 ;;
-y|yes|YES|Yes|yeah|shit_yeah) break ;;
-*) invalid ;;
-esac ; done ; set_terminal
-    
     install_nginx #the function checks first before attempting install.
-
-    build_dependencies_electrs && log "electrs" "build_dependencies success"
-    debug "build dependencies done"
-    download_electrs && log "electrs" "download_electrs success" 
-    debug "download electrs done"
-    compile_electrs && log "electrs" "compile_electrs success"
-
-    debug "build, download, compile... done"
+    electrs_nginx add
+    build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
+    if [[ $compile_electrs == "true" ]] ; then
+    download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
+    compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
+    elif [[ $compile_electrs == "false" ]] ; then
+    cp -r $HOME/.electrs_backup $HOME/parmanode/electrs2/
 
     # check Bitcoin settings
     unset rpcuser rpcpassword prune server
@@ -51,21 +22,21 @@ esac ; done ; set_terminal
 
     #prepare drives
     choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
-    prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; }
+    prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
 
-    make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."
+    make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
     #config
-    make_electrs_config && log "electrs" "config done"
-    debug "config done"
+    make_electrs_config && log "electrs" "config done" ; debug "config done"
 
-    make_electrs_service || log "electrs" "service file faile"
+    make_electrs_service || log "electrs" "service file failed" ; debug "service file done"
 
-    installed_config_add "electrs-end"
-    debug "finished electrs install"
+    installed_config_add "electrs-end" ; debug "finished electrs install"
+
     success "electrs" "being installed"
 
-backup_electrs
+    backup_electrs
+
 }
 
 ########################################################################################
@@ -108,46 +79,38 @@ return 1
 fi
 }
 
-function backup_electrs {
+function restore_elctrs {
 
+if [ -d $HOME/.electrs_backup ] ; then
 while true ; do
-
-set_terminal ; echo "
+set_terminal
+echo "
 ########################################################################################
 
-    Now that you've gone through the pain of waiting for electrs to compile, you might
-    as well back up the files created and keep a copy somewhere out of the way. That
-    way, if you ever uninstall/reinstall, you can get Parmanode to use the backup, and
-    copy it to the location needed.
+    Parmanode has detected that you've previously compiled and backup up electrs.
 
-    Do that?
+    To save time, would you like to use that backup or comile electrs all over again.
 
-                y)      Yes. Brilliant.
+    If that was an old version, you'll need to compile again instead, to get the new
+    version, of course.
 
-                n)      Nah
+                       u)    Use backup
+
+                       c)    Compile again
 
 ########################################################################################
 "
-read choice
-set_terminal
+choose "xpq" ; read choice ; set_terminal
 
-case $choice in 
-n|N|No|NO|nah|NAH) return 0 ;;
-y|Y|YES|Yes|yes|shit_yeah) backup_electrs ; return 0 ;;
+case $choice in
+q|Q) exit 0 ;;
+p|P) return 1 ;;
+u|U|use|Use) export electrs_compile="false" && return 0 ;;
+c|C|compile) export electrs_compile="true" && return 0 ;;
 *) invalid ;;
 esac
 done
+else
+export electrs_compile="true" 
+fi
 }
-
-
-function backup_electrs {
-rm -rf $HOME/.electrs_backup >/dev/null 2>&1
-mkdir -p $HOME/.electrs_backup >/dev/null 2>&1
-cp -r $HOME/parmanode/electrs/target $HOME/.electrs_backup >/dev/null 2>&1
-}
-
-function add_electrs_edits_bitcoin_conf {
-
-    delete_line
-
-    }
