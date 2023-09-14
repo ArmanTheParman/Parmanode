@@ -18,7 +18,10 @@ echo "
 
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
-                   ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+                   ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS 
+
+      127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
+"
 else
 echo "
                    ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
@@ -47,6 +50,9 @@ echo "
       (tor)      Enable Tor connections to electrs-- electrs Tor Status : $F_tor
 
       (torx)     Disable Tor connection to electrs -- electrs Tor Status : $F_tor
+
+
+
 "
 if sudo [ -f /var/lib/tor/electrs-service/hostname ] ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
@@ -73,7 +79,7 @@ start | START)
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
 set_terminal
 please_wait
-echo "electrs starting..."
+echo "electrs starting.... "
 echo ""
 if [[ $OS == "Linux" ]] ; then start_electrs ; fi
 set_terminal
@@ -119,7 +125,7 @@ if [[ $OS == "Linux" ]] ; then
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the trap so control-c works elsewhere.
+    trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
 fi
 
@@ -145,7 +151,7 @@ echo "
 enter_continue
 nano $HOME/.electrs/config.toml
 fi
-
+. 
 if [[ $OS == "Mac" ]] ; then
 no_mac ; return 1 
 fi
