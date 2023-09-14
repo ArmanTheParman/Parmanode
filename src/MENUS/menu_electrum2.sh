@@ -1,34 +1,34 @@
 function menu_sparrow {
 while true ; do 
 
-source $HOME/.parmanode/sparrow.connection >/dev/null
+source $HOME/.parmanode/electrum.connection >/dev/null 2>&1
 
 set_terminal ; echo "
 ########################################################################################
-                                 Sparrow Menu                               
+                                 Electrum Menu                               
 ########################################################################################
 
-                      SPARROW CONNECTION TYPE: $connection
+                      ELECTRUM CONNECTION TYPE: $connection
 
 
-         (start)                 Start Sparrow 
+         (start)                 Start Electrum 
 
 ----------------------------------------------------------------------------------------
 
                           CONFIGURATION MODIFICATIONS
-                          
-         (d)       Connect Sparrow directly to Bitcoin Core via tcp (default)
 
-         (tor)     Connect Sparrow via Tor
+         (ssl)     Connect Electrum to Fulcrum via ssl (port 50002)
 
-         (ssl)     Connect Sparrow to Fulcrum via ssl (port 50002)
+         (tcp)     Connect Electrum to Fulcrum via tcp (port 50001)
 
-         (tcp)     Connect Sparrow to Fulcrum via tcp (port 50001)
+         (tcp2)    Connect Electrum to electrs via tcp (port 50005)
 
-         (ers)     Connect Sparrow to electrs via tcp (port 50005)
+         (ssl2)    Connect Electrum to electrs via tcp (port 50006)
 
-         (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
+         (tor)     Connect Electrum via Tor
          
+         (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
+
 ----------------------------------------------------------------------------------------
 
          (t)       Troubleshooting
