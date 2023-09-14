@@ -265,6 +265,7 @@ y|Y) return 1 ;;
 n|N) return 0 ;;
 *) invalid ;;
 esac
+fi
 done
 
 }
