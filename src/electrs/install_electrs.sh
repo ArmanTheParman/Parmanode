@@ -31,6 +31,8 @@ n|No|nah|NO|no) return 1 ;;
 y|yes|YES|Yes|yeah|shit_yeah) break ;;
 *) invalid ;;
 esac ; done ; set_terminal
+    
+    install_nginx #the function checks first before attempting install.
 
     build_dependencies_electrs && log "electrs" "build_dependencies success"
     debug "build dependencies done"
