@@ -35,7 +35,4 @@ sudo sed -i "/electrs-START/,/electrs-END/d" /etc/nginx/nginx.conf >/dev/null
 sudo systemctl restart nginx >/dev/null
 fi
 
-
-
-
 }
