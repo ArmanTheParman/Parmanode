@@ -1,5 +1,6 @@
 Version 3.5.3
     -electrum connections to server improved
+    -Check docker installed before RTL install, otherwise fail.
 Version 3.5.2
     -electrs software code added ; not yet functional
     -BTC RPC Explorer - tor enabled
