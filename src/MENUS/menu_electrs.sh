@@ -10,10 +10,12 @@ else
     F_tor="off"
 fi
 
+electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
+
 set_terminal_custom 45
 echo "
 ########################################################################################
-                                   Electrs Menu                               
+                                 Electrs $electrs_version Menu                               
 ########################################################################################
 
 "

@@ -15,10 +15,11 @@ announce "Sorry, you need Docker first. This will be seemless soon, but for now,
 "Please installed btcpay first to get Docker. Uninstall btcpay later if you want." 
 return 1
 else
-        if ! id | grep -q docker 
+        if ! id | grep -q docker ; then
         announce "Docker is installed but a reboot is required to get the USER into the Docker group." \
         "Please reboot and try installing again."
         return 1
+        fi
 fi
 
 
