@@ -50,7 +50,7 @@ if [[ $OS == "Linux" ]] ; then
         remove_fstab_entry
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
-        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk 
+        sudo mkfs.ext4 -F -L "parmanode" $disk 
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
@@ -60,9 +60,9 @@ if [[ $OS == "Linux" ]] ; then
         # Mounting... Make the mount directory, mount the drive, set the permissions,
         # and label drive (Last bit is redundant)
         sudo mkdir /media/$(whoami)/parmanode 2>&1    
-        sudo mount /dev/$disk /media/$(whoami)/parmanode 2>&1 
+        sudo mount $disk /media/$(whoami)/parmanode 2>&1 
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
-        sudo e2label /dev/$disk parmanode 2>&1 
+        sudo e2label $disk parmanode 2>&1 
 
         parmanode_conf_add "UUID=$UUID"
         set_terminal
