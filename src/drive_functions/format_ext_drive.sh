@@ -50,7 +50,8 @@ if [[ $OS == "Linux" ]] ; then
         sudo mkfs.ext4 -F -L "parmanode" $disk 
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
+        get_UUID "$disk" || return 1
+        parmanode_conf_add "UUID=$UUID"
 
         write_to_fstab "$UUID"
 
