@@ -15,15 +15,10 @@ format_warnings || return 1 # return 1 means user skipped formatting.
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
-debug "after detect_drive function, disk is $disk"
-
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
-    debug "before dd function"
 dd_wipe_drive  #failure here exits program 
-    debug "after dd function"
 
-if [[ $OS == "Linux" ]] ; then debug "before partition" ; partition_drive ; fi   # Partition step not required for Mac
-debug "before format"
+if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
@@ -44,12 +39,11 @@ if [[ $OS == "Mac" ]] ; then
     "
     enter_continue
     return 0
-    fi
+fi
 
 if [[ $OS == "Linux" ]] ; then
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
-        debug "before remove fstab, UUID is $UUID"
         remove_parmanode_fstab
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
