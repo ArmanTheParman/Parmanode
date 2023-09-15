@@ -1,4 +1,22 @@
 function uninstall_btcrpcexplorer {
+    
+set_terminal ; echo "
+########################################################################################
+
+                                 Uninstall BTC RPC Explorer
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi
 
 rm -rf $HOME/parmanode/btc-rpc*
 

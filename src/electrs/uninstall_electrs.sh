@@ -1,4 +1,23 @@
 function uninstall_electrs {
+
+set_terminal ; echo "
+########################################################################################
+
+                                 Uninstall electrs 
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi
+
 source $HOME/.parmanode/parmanode.conf
 
 if [ -d $HOME/.electrs_backup ] ; then 
