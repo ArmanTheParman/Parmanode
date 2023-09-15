@@ -18,6 +18,8 @@ set_terminal "pink" ; echo "
     Please make sure the drive you wish to add to Parmanode is DISCONNECTED. Do not 
     disconnect any of your other drives at this time.
     
+    DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
+    
     Hit <enter> only once this is done.
 
 ########################################################################################
