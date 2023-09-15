@@ -24,8 +24,16 @@ if [ -d $HOME/.electrs_backup ] ; then
 
 while true ; do
     set_terminal
-    announce "A backup of electrs directory has been found in addition to the electrs" \
-    "installation. Remove that too?    y    or    n ?"
+    echo "
+########################################################################################
+
+    A backup of electrs directory has been found in addition to the electrs
+    installation. Remove that too?    
+    
+                                 y    or    n ?
+
+######################################################################################## 
+"
     read choice
     case $choice in
     y|Y) rm -rf $HOME/.electrs_backup >/dev/null ;;
