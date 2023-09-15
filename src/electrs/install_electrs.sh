@@ -4,9 +4,9 @@ debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
 
-restore_elctrs #get electrs_compile true/false
+# restore_elctrs #get electrs_compile true/false
 
-preamble_install_electrs || return 1
+# preamble_install_electrs || return 1
 
 # install_nginx #the function checks first before attempting install.
 # electrs_nginx add
