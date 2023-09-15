@@ -11,7 +11,7 @@ if [[ $OS == "Linux" ]] ; then
         # if the $disk variable is set, typically during drive preparation,
         # then this umount procedure will work and umount the correct drive.
         # At other times, the variable is empty so nothing will be unmounted.
-        for i in $( sudo lsblk -nrpo NAME /dev/$disk )
+        for i in $( sudo lsblk -nrpo NAME $disk )
         do 
             sudo umount $i >/dev/null 2>&1 
             done 
