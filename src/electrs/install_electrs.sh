@@ -3,22 +3,18 @@ function install_electrs {
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 unset electrs_compile && restore_elctrs #get electrs_compile true/false
-[[ $electrs_compile == "false" ]] || preamble_install_electrs || return 1
-[[ $electrs_compile == "false" ]] && cp -r $HOME/.electrs_backup $HOME/parmanode/electrs
 
+[[ $electrs_compile == "false" ]] && please_wait && rm -rf $HOME/parmanode/electrs/ && cp -r $HOME/.electrs_backup $HOME/parmanode/electrs
 
-[[ $electrs_compile == "true" ]] && build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
-
-log "electrs" "compile_electrs $compile_electrs"
 if [[ $electrs_compile == "true" ]] ; then
+preamble_install_electrs || return 1
+build_dependencies_electrs && log "electrs" "build_dependencies success" 
 download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
 compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
-elif [[ $electrs_compile == "false" ]] ; then
-rm -rf $HOME/parmanode/electrs
-cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
 fi
 
-make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+#remove old certs (in case they were copied from backup), then make new certs
+rm $HOME/parmanode/electrs/*.pem && make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 install_nginx #the function chethis is available first before attempting install.
 electrs_nginx add
 
