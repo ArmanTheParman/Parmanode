@@ -33,12 +33,6 @@ gpg_check  # needed to download programs from github
 curl_check # needed to download things using the command prompt rather than a browser.
 make_dot_parmanode # creates a hidden configuration directory for parmanode.
 
-    #changing to make drive selection only during bitcoin installation.
-    #choose_and_prepare_drive_parmanode # Sets $hdd value. format_external_drive, if external
-    #    return_value=$?
-    #    if [[ $return_value == "1" ]] ; then return 1 ; fi
-    #    if [[ $return_value == "2" ]] ; then return 2 ; fi
-
 make_home_parmanode  # creates the directory that holds all the apps' directories installed by parmanode.
     if [ $? == 1 ] ; then return 1 ; fi #exiting this function with return 1 takes user to menu.
         
@@ -50,27 +44,19 @@ make_home_parmanode  # creates the directory that holds all the apps' directorie
     Linux_distro #gets the linux distro into a config file
     check_chip #gets the chip type into config file
 
-while true ; do
 set_terminal ; echo "
 ########################################################################################
     
                                  S U C C E S S  ! ! 
                                       				    
-    Parmanode has been installed. Install Bitcoin now? 
-
-                           y)      Yes, install Bitcoin
-
-                           n)      No, I might do it later
+    Parmanode has been installed. 
+    
+    You can now go to the \"add\" menu to install the prgrams you want, 
+    eg Bitcoin Core and many others.
 
 ########################################################################################
 "
-choose "xq" ; read choice
-case $choice in
-    y|Y|YES|Yes|yes) install_bitcoin ; return 0 ;;
-    n|N|No|NO|no) break ;;
-    *) invalid ;; #invalid is a custom function prompting the user to try again
-    esac 
-done    
+enter_continue
 return 0
 }
 

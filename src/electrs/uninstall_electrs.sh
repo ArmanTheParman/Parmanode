@@ -30,5 +30,6 @@ fi
 
 rm -rf $HOME/parmanode/electrs
 
+parmanode_conf_remove "electrs"
 installed_config_remove "electrs" ; debug "end of uninstall"
 }

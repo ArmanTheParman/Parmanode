@@ -1,9 +1,19 @@
 function format_ext_drive {
-    
-format_warnings     #Warn the user to pay attention.
-    if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
-    select_drive_ID
-    if [ $? == 1 ] ; then return 1 ; fi
+
+#quit if internal drive chosen
+if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
+
+#quit if external drive set for either of the other programs that use this function
+if [[ $1 == "Bitcoin" && $drive == "external" && $drive_fulcrum == "external" || $drive_electrs == "external" ]] ; then return 0 ; fi
+if [[ $1 == "Fulcrum" && $drive_fulcrum == "external" && $drive == "external" || $drive_electrs == "external" ]] ; then return 0 ; fi
+if [[ $1 == "electrs" && $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == "external" ]] ; then return 0 ; fi
+
+format_warnings || return 1 # return 1 means user skipped formatting.
+
+#select_drive_ID || return 1 #gets $disk variable (exported)
+detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
 

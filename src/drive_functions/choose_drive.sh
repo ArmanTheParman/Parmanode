@@ -27,7 +27,7 @@ read choice #user's choice stored in variable, choice
 case $choice in
 e | E)    #External drive setup
 
-if [[ $1 == "Bitcoin" ]] ; then export hdd="external" ; fi
+if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 
@@ -70,25 +70,11 @@ enter_continue
 
 set_terminal
 
-format_ext_drive "$1" # Redundant, passes bitcoin or fulcrum or electrs
 
-	return_value=$? # checks for success and adds result a a more permanent variable.
-
-        if  [[ $return_value == 1 ]] ; then
-		set_terminal
-                echo "External drive setup has been skipped. Proceed with caution."
-                enter_continue
-	        return 0 ; fi
-        
-        if [[ $return_value == "0" ]] ; then
-                return 0 ; fi #success 
-
-        if [[ $return_value == "2" ]] ; then 
-                return 1 ; fi #go back to main menu. 
-        ;;
+;;
 
 i | I)
-        if [[ $1 == "Bitcoin" ]] ; then export hdd="internal" ; fi
+        if [[ $1 == "Bitcoin" ]] ; then export drive="internal" ; parmanode_conf_add "drive=internal" ; fi
         if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="internal" 
                parmanode_conf_add "drive_fulcrum=internal"
                fi
