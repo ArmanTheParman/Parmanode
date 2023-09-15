@@ -20,6 +20,8 @@ set_terminal "pink" ; echo "
     
     Hit <enter> only once this is done.
 
+    If a window pops up, a file explorer, you can safely close that.
+
 ########################################################################################
 "
 read
@@ -66,6 +68,7 @@ if [[ $OS == "Mac" ]] ; then
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
+                debug "disk is $disk"
                 return 0
                 fi
             
@@ -74,6 +77,7 @@ if [[ $OS == "Mac" ]] ; then
                 export disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
+                debug "disk is $disk"
                 return 0
                 fi
 
