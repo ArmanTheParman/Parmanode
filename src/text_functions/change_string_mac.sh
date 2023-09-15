@@ -15,7 +15,6 @@ positionnewline="$4" #("before" or "after" or "swap" or "delete")
 if [[ ! -f $inputfile ]] ; then # if file doesn't exist
 return 1
 fi
-
 if ! grep -q $searchstring $inputfile ; then
 log "error" "searchstring, $searchstring, doesnt exist, using change_sting_mac for file $inputfile"
 return 0
@@ -42,7 +41,6 @@ if [[ $positionnewline == "after" ]] ; then
     fi
 fi
 
-
 #working
 if [[ $positionnewline == "before" ]] ; then
     sudo grep -m1 -B 1000000 ${searchstring} ${inputfile} > /tmp/temp1.txt
@@ -61,7 +59,6 @@ if [[ $positionnewline == "before" ]] ; then
         #file done
     fi
 fi
-
 
 #working ok now
 if [[ $positionnewline == "swap" ]] ; then
@@ -95,7 +92,6 @@ if [[ $positionnewline == "swap" ]] ; then
         #file done
     fi
 fi
-
 #this part works
 if [[ $positionnewline == "delete" ]] ; then
     
