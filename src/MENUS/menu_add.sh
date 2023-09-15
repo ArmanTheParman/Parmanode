@@ -224,9 +224,8 @@ case $choice in
    ers|ERS|Ers|electrs)
       if [[ $electrsadd == 1 ]] ; then
          if [[ $OS != "Mac" ]] ; then
-         debug "before install_electrs"
          install_electrs
-         debug "after install electrs" ; return 0
+         return 0
          else
          no_mac ; return 0
          fi
