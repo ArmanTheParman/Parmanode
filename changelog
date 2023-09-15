@@ -1,5 +1,7 @@
+Version 3.6.1
+    -Electrum and Sparrow can connect to Fulcrum or electrs Tor, from menu selection
 Version 3.6.0
-    -electrum connections to server improved
+    -Electrum connections to server improved
     -Check docker installed before RTL install, otherwise fail.
     -electrs added
 Version 3.5.2
