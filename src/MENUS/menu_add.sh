@@ -68,7 +68,7 @@ if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=0
 echo "#                                      Bitcoin Core                                    #
 #                                                                                      #" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=0
-echo "#                                    install_electrs  Fulcrum (an Electrum Server)                    #
+echo "#                                      Fulcrum (an Electrum Server)                    #
 #                                                                                      #" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayadd=0
 echo "#                                      BTCPay Server                                   #
