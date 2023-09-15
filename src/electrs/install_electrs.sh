@@ -1,8 +1,5 @@
 function install_electrs {
-    echo "test"
-    enter_continue
-}
-function nothing {
+ 
 debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
@@ -54,9 +51,8 @@ backup_electrs
 
 function install_cargo {
 
-function check_server_1 {
-if [[ $server -ne 1 ]] ; then tall Cargo. Choose \"1\" to continue" \
-"the installation."
+announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" \
+"the installation"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
 source $HOME/.cargo/env #or restart shell
