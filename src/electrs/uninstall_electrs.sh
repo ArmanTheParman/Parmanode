@@ -37,6 +37,7 @@ while true ; do
     read choice
     case $choice in
     y|Y) rm -rf $HOME/.electrs_backup >/dev/null ;;
+    n|N) break ;;
     *) invalid
     esac
 done
