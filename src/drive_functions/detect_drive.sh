@@ -20,8 +20,6 @@ set_terminal "pink" ; echo "
     
     Hit <enter> only once this is done.
 
-    If a window pops up, a file explorer, you can safely close that.
-
 ########################################################################################
 "
 read
@@ -40,6 +38,8 @@ set_terminal ; echo "
 
     Now go ahead and re-connect the drive you wish to use for Parmanode. Do not 
     connect any other drive.
+
+    If a window pops up, a file explorer, you can safely close that.
 
 ########################################################################################
 "
