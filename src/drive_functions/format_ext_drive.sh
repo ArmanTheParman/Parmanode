@@ -50,7 +50,7 @@ if [[ $OS == "Linux" ]] ; then
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
         debug "before remove fstab, UUID is $UUID"
-        remove_fstab_entry
+        remove_parmanode_fstab
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" $disk 
