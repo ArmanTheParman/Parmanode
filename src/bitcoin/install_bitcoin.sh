@@ -69,6 +69,8 @@ if [[ $OS == "Linux" ]] ; then
     make_bitcoind_service_file
 fi
 
+please_wait && rund_bitcoind
+
 set_terminal
 if [[ $OS == "Linux" ]] ; then
 echo "
@@ -76,8 +78,9 @@ echo "
     
                                     SUCCESS !!!
 
-    Bitcoin Core will begin syncing after a reboot, or you can start Bitcoin Core 
-    from the Parmanode Bitcoin menu.
+    Bitcoin Core should have started syncing. Note is should also continue to sync 
+    after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
+    any time.
 
     You can also access Bitcoin functions from the Parmanode menu.
     
