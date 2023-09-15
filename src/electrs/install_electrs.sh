@@ -8,9 +8,9 @@ restore_elctrs #get electrs_compile true/false
 
 preamble_install_electrs || return 1
 
-install_nginx #the function checks first before attempting install.
-electrs_nginx add
-build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
+# install_nginx #the function checks first before attempting install.
+# electrs_nginx add
+# build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
 
 # log "electrs" "compile_electrs $compile_electrs"
 # if [[ $compile_electrs == "true" ]] ; then
