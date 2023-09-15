@@ -2,10 +2,17 @@ function check_rpc_bitcoin {
 unset rpcuser
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 if [ -z $rpcuser ] ; then
-announce \
-    "The program won't work unless Bitcoin Core has a username and password set." \
-    "Would you like to set that now?    y   or    n"
+set_terminal ; echo "
+########################################################################################    
+
+    The program won't work unless Bitcoin Core has a username and password set.
+
+    Would you like to set that now?    
     
+                                   y   or    n
+
+######################################################################################## 
+"    
 read choice
 
     case $choice in 
