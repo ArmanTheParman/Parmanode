@@ -20,10 +20,8 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-endd >/dev/null ; then
     
     read choice
 
-    if [[ $choice == "y" ]] ; then return 1 ; fi
+    if [[ $choice != "y" ]] ; then return 1 ; fi
 fi
-
-
 
 
 install_nodejs || return 1
