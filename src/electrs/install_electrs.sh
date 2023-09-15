@@ -12,14 +12,14 @@ install_nginx #the function checks first before attempting install.
 electrs_nginx add
 build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
 
-log "electrs" "compile_electrs $compile_electrs"
-if [[ $compile_electrs == "true" ]] ; then
-download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
-compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
-elif [[ $compile_electrs == "false" ]] ; then
-rm -rf $HOME/parmanode/electrs
-cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
-fi
+# log "electrs" "compile_electrs $compile_electrs"
+# if [[ $compile_electrs == "true" ]] ; then
+# download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
+# compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
+# elif [[ $compile_electrs == "false" ]] ; then
+# rm -rf $HOME/parmanode/electrs
+# cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
+# fi
 
 debug "test"
 }
