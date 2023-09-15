@@ -2,19 +2,19 @@ function install_electrs {
 
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-restore_elctrs #get electrs_compile true/false
+unset electrs_compile && restore_elctrs #get electrs_compile true/false
+[[ $electrs_compile == "false" ]] || preamble_install_electrs || return 1
+[[ $electrs_compile == "false" ]] && mv $HOME/.electrs_backup $HOME/parmanode/electrs
 
-preamble_install_electrs || return 1
-
-install_nginx #the function checks first before attempting install.
+install_nginx #the function chethis is amazcks first before attempting install.
 electrs_nginx add
-build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
+[[ $electrs_compile == "true" ]] && build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
 
 log "electrs" "compile_electrs $compile_electrs"
-if [[ $compile_electrs == "true" ]] ; then
+if [[ $electrs_compile == "true" ]] ; then
 download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
 compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
-elif [[ $compile_electrs == "false" ]] ; then
+elif [[ $electrs_compile == "false" ]] ; then
 rm -rf $HOME/parmanode/electrs
 cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
 fi
@@ -86,38 +86,4 @@ return 1
 fi
 }
 
-function restore_elctrs {
 
-if [ -d $HOME/.electrs_backup ] ; then
-while true ; do
-set_terminal
-echo "
-########################################################################################
-
-    Parmanode has detected that you've previously compiled and backup up electrs.
-
-    To save time, would you like to use that backup or comile electrs all over again.
-
-    If that was an old version, you'll need to compile again instead, to get the new
-    version, of course. 
-
-                       u)    Use backup
-
-                       c)    Compile again
-
-########################################################################################
-"
-choose "xpq" ; read choice ; set_terminal
-
-case $choice in
-q|Q) exit 0 ;;
-p|P) return 1 ;;
-u|U|use|Use) export electrs_compile="false" && return 0 ;;
-c|C|compile) export electrs_compile="true" && return 0 ;;
-*) invalid ;;
-esac
-done
-else
-export electrs_compile="true" 
-fi
-}
