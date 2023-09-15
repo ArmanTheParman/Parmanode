@@ -19,8 +19,9 @@ return 0
 }
 
 function get_UUID {
-
-drive_ID=$1
+debug "arg 1 is $1"
+drive_ID=${1}
+debug "drive ID is $drive_ID"
 if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
 
         UUID=$(sudo blkid $drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
