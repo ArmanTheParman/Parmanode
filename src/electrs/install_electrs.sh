@@ -1,13 +1,11 @@
 function install_electrs {
-    echo "test"
-    enter_continue
-}
 
-function nothing {
 debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
+}
 
+function nothing {
 restore_elctrs #get electrs_compile true/false
 
 preamble_install_electrs || return 1
