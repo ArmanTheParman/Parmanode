@@ -68,7 +68,7 @@ if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=0
 echo "#                                      Bitcoin Core                                    #
 #                                                                                      #" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=0
-echo "#                                      Fulcrum (an Electrum Server)                    #
+echo "#                                    install_electrs  Fulcrum (an Electrum Server)                    #
 #                                                                                      #" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayadd=0
 echo "#                                      BTCPay Server                                   #
@@ -225,7 +225,8 @@ case $choice in
       if [[ $electrsadd == 1 ]] ; then
          if [[ $OS != "Mac" ]] ; then
          debug "before install_electrs"
-         install_electrs ; debug "after install electrs" ; return 0
+         install_electrs
+         debug "after install electrs" ; return 0
          else
          no_mac ; return 0
          fi
