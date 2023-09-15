@@ -1,4 +1,5 @@
 function make_electrum_config {
+
 if [[ $OS == "Linux" ]] ; then
 echo "{
     \"auto_connect\": false,
@@ -7,15 +8,19 @@ echo "{
     \"decimal_point\": 8,
     \"is_maximized\": false,
     \"oneserver\": true,
-    \"server\": \"localhost:50002:s\",
+    \"server\": \"127.0.0.1:50002:s\",
     \"show_addresses_tab\": true,
     \"show_utxo_tab\": true
 }" | tee $HOME/.electrum/config >/dev/null 2>&1
+    
+echo "connection=\"fulcrumssl\"" > $HOME/.parmanode/electrum.connection
+
 fi
+
 
 if [[ $OS == "Mac" ]] ; then 
 
-    echo "connection=\"Docker_Fulcrum\"" > $HOME/.parmanode/electrum.connection
+    echo "connection=\"docker_fulcrum_ssl\"" > $HOME/.parmanode/electrum.connection
 
     if docker inspect fulcrum | grep '"IPAddress"' | grep '172.17.0.2' >/dev/null ; then
         F_IP="172.17.0.2"
@@ -41,19 +46,6 @@ if [[ $OS == "Mac" ]] ; then
         \"is_maximized\": false,
         \"oneserver\": true,
         \"server\": \"${F_IP}:50002:s\",
-        \"show_addresses_tab\": true,
-        \"show_utxo_tab\": true
-    }" | tee $HOME/.electrum/config >/dev/null 2>&1
-
-else #Linux
-echo "{
-        \"auto_connect\": false,
-        \"check_updates\": false,
-        \"config_version\": 3,
-        \"decimal_point\": 8,
-        \"is_maximized\": false,
-        \"oneserver\": true,
-        \"server\": \"127.0.0.1:50002:s\",
         \"show_addresses_tab\": true,
         \"show_utxo_tab\": true
     }" | tee $HOME/.electrum/config >/dev/null 2>&1

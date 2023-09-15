@@ -4,23 +4,23 @@ do
 
 if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
-    F_tor="on"
+    E_tor="on"
     fi
 else
-    F_tor="off"
+    E_tor="off"
 fi
 
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 
-set_terminal_custom 45
+set_terminal_custom 50
 echo "
 ########################################################################################
                                  Electrs $electrs_version Menu                               
 ########################################################################################
-
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
                    ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS 
+
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 "
@@ -47,20 +47,14 @@ echo "
 
       (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)
     
-      (wizard)   Connect this electrs server to Bitcoin on a different computer
-    
-      (tor)      Enable Tor connections to electrs-- electrs Tor Status : $F_tor
+      (tor)      Enable Tor connections to electrs-- electrs Tor Status : $E_tor
 
-      (torx)     Disable Tor connection to electrs -- electrs Tor Status : $F_tor
-
-
+      (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor
 
 "
 if sudo [ -f /var/lib/tor/electrs-service/hostname ] ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
-
-    Onion adress: $ONION_ADDR_ELECTRS:7005 
-
+    Onion adress: $ONION_ADDR_ELECTRS:7004 
 
 
 ########################################################################################
@@ -174,19 +168,12 @@ q|Q|Quit|QUIT)
 exit 0
 ;;
 
-wizard|Wizard|W|w)
-# if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
-# if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
-# enter_continue
-# fi
-;;
-
 tor|TOR|Tor)
-#fulcrum_tor
+electrs_tor
 ;;
 
 torx|TORX|Torx)
-#fulcrum_tor_remove
+electrs_tor_remove
 ;;
 
 *)

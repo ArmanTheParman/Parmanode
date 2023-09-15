@@ -40,7 +40,7 @@ echo "
 
       (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
     
-      (wizard)   Connect this Fulcrum server to Bitcoin on a different computer
+      (wizard)   Connect this Fulcrum server to Bitcoin Core on a different computer
     
       (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 

@@ -46,7 +46,7 @@ set_terminal ; echo "
     this:
 
         1. Completely close Electrum
-        2. Restart Fulcrum Server
+        2. Restart Fulcrum or electrs Server
         3. Restart Electrum from the Parmanode menu 
 
 ########################################################################################
@@ -74,7 +74,7 @@ set_terminal ; echo "
     this:
 
         1. Completely close Electrum
-        2. Restart Fulcrum Server
+        2. Restart Fulcrum or electrs Server
         3. Restart Electrum from the Parmanode menu
 
 ########################################################################################
