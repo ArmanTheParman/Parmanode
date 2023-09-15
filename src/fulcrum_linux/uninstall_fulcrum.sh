@@ -5,26 +5,23 @@ if [[ $OS == "Mac" ]] ; then
     return 0
     fi
 
-while true
-do
 set_terminal ; echo "
 ########################################################################################
 
-                            Fulcrum will be uninstalled
+                                 Uninstall Fulcrum 
+
+    Are you sure? (y) (n)
 
 ########################################################################################
 "
-choose "epq" ; read choice
-case $choice in 
+choose "x" 
+read choice
+set_terminal
 
-     q|Q|Quit|QUIT) exit 1 ;; p|P) return 1 ;;
-     
-    "") break ;;
-
-    *) Invalid ;;
-
-    esac
-done    
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi  
 
 if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
     set_terminal ; echo "
