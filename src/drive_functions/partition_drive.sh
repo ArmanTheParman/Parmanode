@@ -1,15 +1,15 @@
 function partition_drive {
 
-if [ ! -e "$drive" ] ; then #eg if /dev/sda doesn't exist
+if [ ! -e "$disk" ] ; then #eg if /dev/sda doesn't exist
     set_terminal
-    echo "Drive $drive does not exist. Exiting."
+    echo "Drive $disk does not exist. Exiting."
     enter_continue
     exit 1
 fi
 
 # Create a new GPT partition table and a single partition on the drive
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
-sudo fdisk "$drive" <<EOF >/dev/null 
+sudo fdisk "$disk" <<EOF >/dev/null 
 g
 n
 1
@@ -23,5 +23,5 @@ EOF
 # This will send g, enter, n, enter, 1, enter, enter, enter, & w to fdisk
 # automating the normally interactive job.
 
-echo "A new GPT partition table and a single partition have been created on $drive."
+echo "A new GPT partition table and a single partition have been created on $disk."
 }
