@@ -17,7 +17,7 @@ read choice
 
     case $choice in 
     y|Y|YES|Yes|yes) 
-    please_wait ; set_rpc_authentication && return 0
+    please_wait ; set_rpc_authentication "s" && return 0
     return 1
     ;;
     esac

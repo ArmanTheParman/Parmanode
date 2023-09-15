@@ -5,7 +5,10 @@ if [[ $bitcoin == "yolo" ]]
 	fi
 
 while true ; do
-set_terminal_bit_higher ; echo "
+set_terminal_bit_higher  
+
+if [[ -z $1 ]] ; then
+echo "
 ########################################################################################
 
                            Bitcoin Core RPC Authentication
@@ -38,6 +41,10 @@ set_terminal_bit_higher ; echo "
 
 "
 choose "xpq" ; read choice
+fi
+else
+choice=$1
+fi
 
 case $choice in
     s|S)
