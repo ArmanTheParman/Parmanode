@@ -3,9 +3,7 @@ function install_electrs {
 debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
-}
 
-function nothing {
 restore_elctrs #get electrs_compile true/false
 
 preamble_install_electrs || return 1
@@ -22,6 +20,11 @@ elif [[ $compile_electrs == "false" ]] ; then
 rm -rf $HOME/parmanode/electrs
 cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
 fi
+
+debug "test"
+}
+
+function nothing {
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -90,6 +93,7 @@ fi
 }
 
 function restore_elctrs {
+debug "in restore electrs"
 
 if [ -d $HOME/.electrs_backup ] ; then
 while true ; do
