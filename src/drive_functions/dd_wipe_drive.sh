@@ -118,6 +118,7 @@ if [[ $OS == "Linux" ]] ; then
     if [[ $debug != 1 ]] ; then
     yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
     fi
+fi
 
 if [[ $OS == "Mac" ]] ; then
     yes "$string " | sudo dd of=$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
