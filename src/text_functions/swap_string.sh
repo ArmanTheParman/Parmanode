@@ -1,7 +1,7 @@
 function swap_string {
 
 if [[ $OS == "Mac" ]] ; then
-change_string_mac "$1" "$2" "$3" swapi >> $HOME/.parmanode/change_string_mac.log 2>&1
+change_string_mac "$1" "$2" "$3" swap >> $HOME/.parmanode/change_string_mac.log 2>&1
 return 0
 fi
 
