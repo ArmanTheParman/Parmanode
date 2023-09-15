@@ -6,8 +6,7 @@ unset electrs_compile && restore_elctrs #get electrs_compile true/false
 [[ $electrs_compile == "false" ]] || preamble_install_electrs || return 1
 [[ $electrs_compile == "false" ]] && mv $HOME/.electrs_backup $HOME/parmanode/electrs
 
-install_nginx #the function chethis is amazcks first before attempting install.
-electrs_nginx add
+
 [[ $electrs_compile == "true" ]] && build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
 
 log "electrs" "compile_electrs $compile_electrs"
@@ -18,6 +17,10 @@ elif [[ $electrs_compile == "false" ]] ; then
 rm -rf $HOME/parmanode/electrs
 cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
 fi
+
+make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+install_nginx #the function chethis is amazcks first before attempting install.
+electrs_nginx add
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -31,7 +34,6 @@ choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepar
 format_ext_drive "electrs" || return 1
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
 
-make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 #config
 make_electrs_config && log "electrs" "config done" ; debug "config done"
