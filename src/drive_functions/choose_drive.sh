@@ -36,7 +36,6 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
         # check if drive prepared with Bitcoin install...
         # "drive=external" exactly like that is only added by a bitcoin installation.
         if grep "drive=external" $HOME/.parmanode/parmanode.conf ; then
-        return 0
         fi
 fi
 
@@ -47,7 +46,6 @@ if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         # check if drive prepared with Bitcoin install...
         # "drive=external" exactly like that is only added by a bitcoin installation.
         if grep "drive=external" $HOME/.parmanode/parmanode.conf ; then
-        return 0
         fi
 fi
 
@@ -71,17 +69,19 @@ enter_continue
 set_terminal
 
 
+return 0
 ;;
 
 i | I)
         if [[ $1 == "Bitcoin" ]] ; then export drive="internal" ; parmanode_conf_add "drive=internal" ; fi
+
         if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="internal" 
                parmanode_conf_add "drive_fulcrum=internal"
                fi
-        return 0 
         if [[ $1 == "Electrs" ]] ; then export drive_electrs="internal" 
                parmanode_conf_add "drive_electrs=internal"
                fi
+
         return 0 
         ;;
 
@@ -89,10 +89,10 @@ q|Q|quit|QUIT|Quit)
         exit 0
         ;;
 p|P)
-        return 2
+        return 1 
         ;;
 *)
-        clear
+        set_terminal
 	invalid
         ;;  
 esac
