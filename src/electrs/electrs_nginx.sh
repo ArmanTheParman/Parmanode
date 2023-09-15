@@ -10,8 +10,8 @@ which nginx >/dev/null || { announce "Nginx not installed. Aborting." && return 
 
 if [[ $1 = "add" ]] ; then 
 set_terminal
-[ ! -f $HOME/parmanode/electrs/cert.pem ] || { announce "Can't add SSL redirection using Nginx - no certificate found. Aborting." && return 1 ; }
-[ ! -f $HOME/parmanode/electrs/key.pem ] || { announce "Can't add SSL redirection using Nginx - no key found. Aborting." && return 1 ; } 
+[ ! -f $HOME/parmanode/electrs/cert.pem ] && { announce "Can't add SSL redirection using Nginx - no certificate found. Aborting." && return 1 ; }
+[ ! -f $HOME/parmanode/electrs/key.pem ] && { announce "Can't add SSL redirection using Nginx - no key found. Aborting." && return 1 ; } 
 
 echo "# Parmanode - flag electrs-START
 stream {
