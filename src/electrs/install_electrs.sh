@@ -40,7 +40,9 @@ installed_config_add "electrs-end" ; debug "finished electrs install"
 
 success "electrs" "being installed"
 
+if [[ $electrs_compile == "true" ]] ; then
 backup_electrs
+fi
 
 }
 
