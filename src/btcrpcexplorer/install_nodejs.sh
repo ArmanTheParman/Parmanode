@@ -1,8 +1,8 @@
 function install_nodejs {
 
-if cat $HOME/.parmanode/installed.conf | grep -q "nodejs-end" ; then return 0 ; fi
+if cat $HOME/.parmanode/installed.conf | grep -q "nodejs" ; then return 0 ; fi
 
-check_nodejs ; if [[ $nodejs_version == "new" ]] ; then installed_config_add "nodejs-end" ; return 0 ; fi
+check_nodejs ; if [[ $nodejs_version == "new" ]] ; then installed_config_add "nodejs" ; return 0 ; fi
 
 mkdir $HOME/parmanode/nodejs
 cd $HOME/parmanode/nodejs
