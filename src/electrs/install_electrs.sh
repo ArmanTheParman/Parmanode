@@ -1,45 +1,46 @@
 function install_electrs {
+grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 
-    restore_elctrs #get electrs_compile true/false
+restore_elctrs #get electrs_compile true/false
 
-    preamble_install_electrs || return 1
+preamble_install_electrs || return 1
 
-    install_nginx #the function checks first before attempting install.
-    electrs_nginx add
-    build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
+install_nginx #the function checks first before attempting install.
+electrs_nginx add
+build_dependencies_electrs && log "electrs" "build_dependencies success" ; debug "build dependencies done"
 
-    log "electrs" "compile_electrs $compile_electrs"
-    if [[ $compile_electrs == "true" ]] ; then
-    download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
-    compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
-    elif [[ $compile_electrs == "false" ]] ; then
-    rm -rf $HOME/parmanode/electrs
-    cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
-    fi
+log "electrs" "compile_electrs $compile_electrs"
+if [[ $compile_electrs == "true" ]] ; then
+download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
+compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
+elif [[ $compile_electrs == "false" ]] ; then
+rm -rf $HOME/parmanode/electrs
+cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
+fi
 
-    # check Bitcoin settings
-    unset rpcuser rpcpassword prune server
-    source $HOME/.bitcoin/bitcoin.conf >/dev/null
-    check_pruning_off || return 1
-    check_server_1 || return 1
-    check_rpc_bitcoin
+# check Bitcoin settings
+unset rpcuser rpcpassword prune server
+source $HOME/.bitcoin/bitcoin.conf >/dev/null
+check_pruning_off || return 1
+check_server_1 || return 1
+check_rpc_bitcoin
 
-    #prepare drives
-    choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
-    prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
+#prepare drives
+choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
 
-    make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
-    #config
-    make_electrs_config && log "electrs" "config done" ; debug "config done"
+#config
+make_electrs_config && log "electrs" "config done" ; debug "config done"
 
-    make_electrs_service || log "electrs" "service file failed" ; debug "service file done"
+make_electrs_service || log "electrs" "service file failed" ; debug "service file done"
 
-    installed_config_add "electrs-end" ; debug "finished electrs install"
+installed_config_add "electrs-end" ; debug "finished electrs install"
 
-    success "electrs" "being installed"
+success "electrs" "being installed"
 
-    backup_electrs
+backup_electrs
 
 }
 

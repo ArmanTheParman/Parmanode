@@ -12,8 +12,8 @@ if [[ $chip != "x86_64" ]] ; then return 1 ; fi
 
 if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-endd >/dev/null ; then 
     set_terminal ; echo "
-    Be Warned, BTC RPC Explorer won't work unless you installed Fulcrum first.
-    You could, instead modify the configurtion file and point it to a Fulcrum
+    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin and Fulcrum 
+    first. You could, instead modify the configurtion file and point it to a Fulcrum
     or Electrum Server on this or another machine.
 
     Proceed anyway?   y  or  n"
