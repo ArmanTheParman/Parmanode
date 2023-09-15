@@ -17,7 +17,7 @@ echo "Enter the identifier of the disk to be formatted (e.g. disk2 or disk3): "
 echo "Do not include partition numbers. Eg. don't type disk2s1 or disk2s2, just disk2:"  
 fi #end OS choice and ID prompt
 
-read disk
+read disk 
 
     if [[ $disk == "sda" || $disk == "disk0" ]] ; then #OS considered
         echo "This could be a system drive. Be careful and check. If you're sure, then"

@@ -29,6 +29,7 @@ choose "xq" ; read choice
 if [[ $choice == "q" ]] ; then exit 0 ; fi
 if [[ $choice == "s" ]] ; then export format="false" ; break ; fi
 if [[ $choice == "d" ]] ; then 
+    please_wait
     cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing." ;  break ; fi 
     

@@ -1,5 +1,22 @@
 function uninstall_tor_server {
-    
+    set_terminal ; echo "
+########################################################################################
+
+                                 Uninstall Tor Server 
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi
+
 if ! grep -q "tor-server" ~/.parmanode/installed.conf ; then set_terminal
 echo "Tor-server is not installed. Aborting uninstall." 
 enter_continue

@@ -1,12 +1,21 @@
 function format_ext_drive {
-    
-format_warnings     #Warn the user to pay attention.
-    if [ $? == 1 ] ; then return 1 ; fi # return 1 means user skipped formatting.
-    select_drive_ID
-    if [ $? == 1 ] ; then return 1 ; fi
+
+#quit if internal drive chosen
+if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
+
+#quit if external drive set for either of the other programs that use this function
+if [[ $1 == "Bitcoin" && $drive == "external" && $drive_fulcrum == "external" || $drive_electrs == "external" ]] ; then return 0 ; fi
+if [[ $1 == "Fulcrum" && $drive_fulcrum == "external" && $drive == "external" || $drive_electrs == "external" ]] ; then return 0 ; fi
+if [[ $1 == "electrs" && $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == "external" ]] ; then return 0 ; fi
+
+format_warnings || return 1 # return 1 means user skipped formatting.
+
+#select_drive_ID || return 1 #gets $disk variable (exported)
+detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
-
 dd_wipe_drive  #failure here exits program 
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
@@ -30,27 +39,28 @@ if [[ $OS == "Mac" ]] ; then
     "
     enter_continue
     return 0
-    fi
+fi
 
 if [[ $OS == "Linux" ]] ; then
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
-        remove_fstab_entry
+        remove_parmanode_fstab
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
-        sudo mkfs.ext4 -F -L "parmanode" /dev/$disk 
+        sudo mkfs.ext4 -F -L "parmanode" $disk 
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" && parmanode_conf_add "UUID=$UUID"
+        get_UUID "$disk" || return 1
+        parmanode_conf_add "UUID=$UUID"
 
         write_to_fstab "$UUID"
 
         # Mounting... Make the mount directory, mount the drive, set the permissions,
         # and label drive (Last bit is redundant)
         sudo mkdir /media/$(whoami)/parmanode 2>&1    
-        sudo mount /dev/$disk /media/$(whoami)/parmanode 2>&1 
+        sudo mount $disk /media/$(whoami)/parmanode 2>&1 
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
-        sudo e2label /dev/$disk parmanode 2>&1 
+        sudo e2label $disk parmanode 2>&1 
 
         parmanode_conf_add "UUID=$UUID"
         set_terminal

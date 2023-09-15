@@ -8,7 +8,6 @@ if [[ $chip == "armv7l" ]] ; then chip="armhf" ; fi
 get_linux_version_codename
 
 if [ ! -z $VCequivalent ] ; then VC=$VCequivalent ; fi
-debug "VC is $VC"
 
 if [[ $VC == "bionic" ]] ; then
 curl -LO https://download.docker.com/linux/ubuntu/dists/$VC/pool/stable/$chip/containerd.io_1.6.9-1_$chip.deb

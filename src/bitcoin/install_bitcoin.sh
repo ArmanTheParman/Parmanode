@@ -19,17 +19,16 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
-                                             # called by a fulcrum installation.
-parmanode_conf_add "drive=$hdd"
-source $HOME/.parmanode/parmanode.conf
-export drive
+                                             # called by a fulcrum installation, and electrs.
+                                             # drive=internal or drive=external exported and added to parmanode.conf
+
+format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
 
 #Just in case (redundant permission setting)
     if [[ $OS == "Linux" && $drive == "external" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
         && log "bitcoin" "redundant chown applied in install_bitcoin function" \
         || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
-
 
 prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
     # set $prune_value. Doing this now as it is related to 
@@ -68,6 +67,8 @@ if [[ $OS == "Linux" ]] ; then
     make_bitcoind_service_file
 fi
 
+please_wait && rund_bitcoind
+
 set_terminal
 if [[ $OS == "Linux" ]] ; then
 echo "
@@ -75,8 +76,9 @@ echo "
     
                                     SUCCESS !!!
 
-    Bitcoin Core will begin syncing after a reboot, or you can start Bitcoin Core 
-    from the Parmanode Bitcoin menu.
+    Bitcoin Core should have started syncing. Note is should also continue to sync 
+    after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
+    any time.
 
     You can also access Bitcoin functions from the Parmanode menu.
     

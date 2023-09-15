@@ -5,26 +5,23 @@ if [[ $OS == "Mac" ]] ; then
     return 0
     fi
 
-while true
-do
 set_terminal ; echo "
 ########################################################################################
 
-                            Fulcrum will be uninstalled
+                                 Uninstall Fulcrum 
+
+    Are you sure? (y) (n)
 
 ########################################################################################
 "
-choose "epq" ; read choice
-case $choice in 
+choose "x" 
+read choice
+set_terminal
 
-     q|Q|Quit|QUIT) exit 1 ;; p|P) return 1 ;;
-     
-    "") break ;;
-
-    *) Invalid ;;
-
-    esac
-done    
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi  
 
 if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
     set_terminal ; echo "
@@ -34,7 +31,6 @@ fi
 
 log "fulcrum" "uninstall commenced"
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
-#parmanode_conf_remove "fulcrum"
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
     enter_continue ; log "fulcrum" "drive not mounted, fulcrum_db  not deleted during uninstall." ; }
@@ -50,6 +46,7 @@ rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcr
 sudo rm /usr/local/bin/Fulcrum* 2>/dev/null && log "fulcrum" "Fulcrum binary deleted from /usr/local/bin."
 sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null && log "fulcrum" "service file deteleted."
 
+parmanode_conf_remove "fulcrum"
 installed_config_remove "fulcrum"
 log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
 }
