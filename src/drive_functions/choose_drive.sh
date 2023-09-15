@@ -33,10 +33,6 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 
         parmanode_conf_add "drive_fulcrum=external"
         
-        # check if drive prepared with Bitcoin install...
-        # "drive=external" exactly like that is only added by a bitcoin installation.
-        if grep "drive=external" $HOME/.parmanode/parmanode.conf ; then
-        fi
 fi
 
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
