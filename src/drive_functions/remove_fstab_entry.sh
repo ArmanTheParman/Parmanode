@@ -27,6 +27,7 @@ if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
         UUID=$(sudo blkid $drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
         UUID_temp=$(echo "$UUID" | sed 's/"//g')
         export UUID=$UUID_temp
+        debug "UUID in get_UUID is $UUID"
 
 return 0 
 }
