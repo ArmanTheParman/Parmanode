@@ -23,7 +23,7 @@ function get_UUID {
 drive_ID=$1
 if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
 
-        UUID=$(sudo blkid /dev/${drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
+        UUID=$(sudo blkid $drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
         UUID_temp=$(echo "$UUID" | sed 's/"//g')
         UUID=$UUID_temp
 
