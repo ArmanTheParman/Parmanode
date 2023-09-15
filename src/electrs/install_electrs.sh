@@ -1,8 +1,6 @@
 function install_electrs {
 
-debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
-debug "after bitcoin installed check"
 
 restore_elctrs #get electrs_compile true/false
 
@@ -89,7 +87,6 @@ fi
 }
 
 function restore_elctrs {
-debug "in restore electrs"
 
 if [ -d $HOME/.electrs_backup ] ; then
 while true ; do
@@ -102,7 +99,7 @@ echo "
     To save time, would you like to use that backup or comile electrs all over again.
 
     If that was an old version, you'll need to compile again instead, to get the new
-    version, of course. might exit immediately, and it would seem like it's not running. Ensure the function's comman
+    version, of course. 
 
                        u)    Use backup
 
