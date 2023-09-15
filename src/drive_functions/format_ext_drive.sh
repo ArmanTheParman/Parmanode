@@ -18,11 +18,13 @@ detect_drive || return 1 #alternative (better) way to get $disk variable, and ex
 debug "after detect_drive function, disk is $disk"
 
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
-
+    debug "before dd function"
 dd_wipe_drive  #failure here exits program 
+    debug "after dd function"
 
 if [[ $OS == "Linux" ]] ; then debug "before partition" ; partition_drive ; fi   # Partition step not required for Mac
 debug "before format"
+
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
         set_terminal
@@ -47,6 +49,7 @@ if [[ $OS == "Mac" ]] ; then
 if [[ $OS == "Linux" ]] ; then
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
+        debug "before remove fstab, UUID is $UUID"
         remove_fstab_entry
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4

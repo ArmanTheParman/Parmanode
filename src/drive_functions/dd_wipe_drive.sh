@@ -108,7 +108,8 @@ function dd_bypass {
 
 string="Parman loves you :) " #spread the love
 
-please_wait
+please_wait ; debug "in dd bypass"
+
 if [[ $OS == "Linux" ]] ; then
     remove_fstab_entry # don't want multiple parmanode entries in fstab
 
@@ -116,6 +117,7 @@ if [[ $OS == "Linux" ]] ; then
     # The wiping will involved 1 megabyte x 250 times (as per variables below) and the string will
     # be writting in the space. Wiping the entire drive like this takes too long.
     if [[ $debug != 1 ]] ; then
+    debug "in dd function, didn't skip for some reason"
     yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
     fi
 fi
@@ -123,6 +125,6 @@ fi
 if [[ $OS == "Mac" ]] ; then
     yes "$string " | sudo dd of=$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
     fi
-
+debug "end of dd bypass"
 return 1
 }
