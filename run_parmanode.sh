@@ -8,7 +8,7 @@
 #checks if in debugging mode. Mainly for developing, not client usage
 #If debug is 1, then a debuging function becomes active, which pauses the
 #program wherever it appears. "export" keeps variable in global memory.
-if [[ $1 == "debug" ]] ; then export debug=1 ; else export debug=0 ; fi
+if [[ $1 == "debug" || $1 == d ]] ; then export debug=1 ; else export debug=0 ; fi
 
 #save position of working directory. 
 export original_dir=$(pwd) >/dev/null 2>&1
