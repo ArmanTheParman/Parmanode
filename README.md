@@ -79,12 +79,6 @@ Bitcoin Core.
 
 ## HOW TO RUN / INSTALL
 
-IF YOU WISH TO ENQUIRE ABOUT HIRING ME TO ASSIST WITH SETUP AND A WALKTHROUGH OF THE SOFTWARE, PLEASE SEND AN EMAIL TO ARMANTHEPARMAN AT PROTONMAIL DOT COM.
-
-IF YOU WISH TO BUY A READY MADE PARMANODE NODE ("PARMANODL") PLEASE CONTACT ME:
-
-    armantheparman@protonmail.com
-
 If you want to start a new computer yourself with parmanode (build your own ParmanodL), 
 then see instructions near the end.
 
