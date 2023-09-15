@@ -1,7 +1,7 @@
 function install_fulcrum_mac {
 set_terminal
 
-grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
+grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 choose_and_prepare_drive_parmanode "Fulcrum"
   if [[ $? == 1 ]] ; then return 1 ; fi
