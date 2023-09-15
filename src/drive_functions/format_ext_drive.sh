@@ -15,6 +15,8 @@ format_warnings || return 1 # return 1 means user skipped formatting.
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
+debug "after detect_drive function, disk is $disk"
+
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
 
 dd_wipe_drive  #failure here exits program 
