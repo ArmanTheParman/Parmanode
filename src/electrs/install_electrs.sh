@@ -30,6 +30,7 @@ check_rpc_bitcoin
 
 #prepare drives
 choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+format_ext_drive "electrs" || return 1
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
 
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"

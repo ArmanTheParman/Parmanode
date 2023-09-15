@@ -41,25 +41,6 @@ if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         
 fi
 
-set_terminal
-echo "
-########################################################################################
-
-    Note, it is strongly recommended that you use a solid state drive (SSD) as your
-    external drive, otherwise you're going to have a bad time, mkay?
-" ; if [[ $1 == "Bitcoin" ]] ; then echo "
-    Also note, there will be some directories on the internal drive with symlinks 
-    ("shortcut links") to the external drive once you install Bitcoin Core. 
-    Do not delete these." ; fi 
-echo "
-    Go ahead and connect the drive to the computer if you haven't done so.
-
-########################################################################################
-"
-enter_continue
-
-set_terminal
-
 
 return 0
 ;;
