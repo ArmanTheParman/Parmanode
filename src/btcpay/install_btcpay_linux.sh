@@ -1,5 +1,5 @@
 function install_btcpay_linux {
-grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
+grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 set_terminal
 if [[ $dockerexitbtcpay != 1 ]] ; then
