@@ -1,5 +1,6 @@
 function install_electrs {
-grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
+debug "before bitcoin install check"
+grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
 
 restore_elctrs #get electrs_compile true/false
