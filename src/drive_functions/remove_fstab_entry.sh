@@ -33,6 +33,7 @@ if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
         else
         announce "error extracting UUID, aborting"
         return 1
+        fi
 
 return 0 
 }
