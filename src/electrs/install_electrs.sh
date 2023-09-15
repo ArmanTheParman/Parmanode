@@ -1,4 +1,8 @@
 function install_electrs {
+    echo "test"
+    enter_continue
+}
+function nothing {
 debug "before bitcoin install check"
 grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
 debug "after bitcoin installed check"
@@ -50,7 +54,8 @@ backup_electrs
 
 function install_cargo {
 
-announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" \
+function check_server_1 {
+if [[ $server -ne 1 ]] ; then tall Cargo. Choose \"1\" to continue" \
 "the installation."
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
@@ -99,7 +104,7 @@ echo "
     To save time, would you like to use that backup or comile electrs all over again.
 
     If that was an old version, you'll need to compile again instead, to get the new
-    version, of course.
+    version, of course. might exit immediately, and it would seem like it's not running. Ensure the function's comman
 
                        u)    Use backup
 
