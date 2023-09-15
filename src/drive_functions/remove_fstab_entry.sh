@@ -24,9 +24,11 @@ drive_ID=${1}
 debug "drive ID is $drive_ID"
 if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
 
-        UUID=$(sudo blkid $drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
-        UUID_temp=$(echo "$UUID" | sed 's/"//g')
-        export UUID=$UUID_temp
+        # UUID=$(sudo blkid $drive_ID} | grep -o 'UUID="[^"]*"' | grep -o '"[^"]*"')
+        # UUID_temp=$(echo "$UUID" | sed 's/"//g')
+        # export UUID=$UUID_temp
+        if [[ $(sudo blkid | grep parmanode | wc -l) == 1 ]] ; then 
+        export UUID="$(sudo blkid | grep parmanode | cut -d " " -f 3 | cut -d \" -f 2)"
         debug "UUID in get_UUID is $UUID"
 
 return 0 
