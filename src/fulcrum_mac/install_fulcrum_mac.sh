@@ -6,6 +6,8 @@ grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Mus
 choose_and_prepare_drive_parmanode "Fulcrum"
   if [[ $? == 1 ]] ; then return 1 ; fi
 
+format_ext_drive "Fulcrum"
+
 fulcrum_make_directories
   if [[ $? == 1 ]] ; then return 1 ; fi
   log "fulcrum" "make directories function exited."

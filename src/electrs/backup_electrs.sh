@@ -1,5 +1,4 @@
 function backup_electrs {
-
 while true ; do
 
 set_terminal ; echo "
@@ -31,6 +30,7 @@ done
 }
 
 function backup_electrs_do {
+please_wait
 rm -rf $HOME/.electrs_backup >/dev/null 2>&1
 mkdir -p $HOME/.electrs_backup >/dev/null 2>&1
 cp -r $HOME/parmanode/electrs/ $HOME/.electrs_backup >/dev/null 2>&1
