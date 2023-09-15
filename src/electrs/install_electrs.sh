@@ -19,7 +19,7 @@ cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
 fi
 
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
-install_nginx #the function chethis is amazcks first before attempting install.
+install_nginx #the function chethis is available first before attempting install.
 electrs_nginx add
 
 # check Bitcoin settings

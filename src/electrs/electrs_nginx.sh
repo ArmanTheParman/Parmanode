@@ -1,6 +1,11 @@
 function electrs_nginx {
 #certificates need www-data owner.
 
+if [[ $1 = "remove" ]] ; then
+sudo sed -i "/electrs-START/,/electrs-END/d" /etc/nginx/nginx.conf >/dev/null
+sudo systemctl restart nginx >/dev/null
+fi
+
 which nginx >/dev/null || { announce "Nginx not installed. Aborting." && return 1 ; } 
 
 if [[ $1 = "add" ]] ; then 
@@ -30,9 +35,6 @@ stream {
 sudo systemctl restart nginx >/dev/null
 fi
 
-if [[ $1 = "remove" ]] ; then
-sudo sed -i "/electrs-START/,/electrs-END/d" /etc/nginx/nginx.conf >/dev/null
-sudo systemctl restart nginx >/dev/null
-fi
+
 
 }
