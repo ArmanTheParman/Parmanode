@@ -46,7 +46,7 @@ read choice
 case $choice in
 
 y|Y|Yes|YES|yes)
-announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit"
+announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit" 
 cd ; mv $original_dir $HOME/Desktop/
 exit 0 
 ;;
@@ -86,7 +86,7 @@ case $choice in
 y|Y|Yes|YES|yes)
 announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit"
 cd ; mv $original_dir $HOME/Desktop/
-enter_continue && exit 0 
+exit 0 
 ;;
 *)
 exit 0
