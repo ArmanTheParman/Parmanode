@@ -22,7 +22,6 @@ docker run -d -u parman \
            -p 8090:8090 \
            btcpay 
 
-debug1 "after docker run"
 log "docker" "after docker run"
 fi
 }    

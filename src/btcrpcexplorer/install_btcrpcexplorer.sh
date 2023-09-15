@@ -46,7 +46,6 @@ make_btcrpcexplorer_config
 
 make_btcrpcexplorer_service
 
-debug "install done"
 
 success "BTC RPC Explorer" "being installed."
 return 0
@@ -92,7 +91,6 @@ if [[ $fast_computer == "yes" ]] ; then
 else
     echo "BTCEXP_SLOW_DEVICE_MODE=true" > $HOME/parmanode/btc-rpc-explorer/.env 
 fi
-debug "btc auth - $btc_authentication"
 if [[ $btc_authentication == "user/pass" ]] ; then
     echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $HOME/parmanode/btc-rpc-explorer/.env 
     echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $HOME/parmanode/btc-rpc-explorer/.env 
