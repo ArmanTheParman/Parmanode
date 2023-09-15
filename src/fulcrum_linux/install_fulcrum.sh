@@ -1,6 +1,8 @@
 function install_fulcrum {
 set_terminal
 
+grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || announce "Must install Bitcoin first. Aborting." && return 1
+
 choose_and_prepare_drive_parmanode "Fulcrum"
 
 format_ext_drive "Fulcrum" || return 1
