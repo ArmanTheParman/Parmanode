@@ -17,7 +17,6 @@ function install_electrs {
     cp -r $HOME/.electrs_backup $HOME/parmanode/electrs/
     fi
 
-
     # check Bitcoin settings
     unset rpcuser rpcpassword prune server
     source $HOME/.bitcoin/bitcoin.conf >/dev/null

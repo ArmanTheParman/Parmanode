@@ -3,7 +3,6 @@
 #delete $HOME/parmanode/bitcoin
 #delete binary files in /usr/local/bin (rm *bitcoin*)
 #delete bitcoin from install.conf
-#hdd setting in parmanode.conf can stay.
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
 clear
@@ -61,6 +60,7 @@ sudo rm /usr/local/bin/bitcoin* 2>/dev/null
 installed_config_remove "bitcoin"
 installed_config_remove "bitcoin-start"
 installed_config_remove "bitcoin-end"
+parmanode_conf_remove "drive="
 
 #Remove service file for Linux only
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1

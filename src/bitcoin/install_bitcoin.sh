@@ -19,10 +19,10 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
-                                             # called by a fulcrum installation.
-parmanode_conf_add "drive=$hdd"
-source $HOME/.parmanode/parmanode.conf
-export drive
+                                             # called by a fulcrum installation, and electrs.
+                                             # drive=internal or drive=external exported and added to parmanode.conf
+
+format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
 
 #Just in case (redundant permission setting)
     if [[ $OS == "Linux" && $drive == "external" ]] ; then
