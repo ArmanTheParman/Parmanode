@@ -13,7 +13,12 @@ if ! which tor >/dev/null 2>&1 ; then
     set_terminal
     echo "Tor needs to be installed in order to proceed. Do that now? y or n."
     read choice
-    case $choice in y|Y|Yes|YES|yes) install_tor ; return 1 ;; esac 
+    case $choice in 
+        y|Y|Yes|YES|yes) 
+            install_tor ;; 
+        *) 
+            return 1 ;;
+    esac
 fi
 
 if which apache2 ; then

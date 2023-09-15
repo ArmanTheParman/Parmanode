@@ -224,7 +224,8 @@ case $choice in
    ers|ERS|Ers|electrs)
       if [[ $electrsadd == 1 ]] ; then
          if [[ $OS != "Mac" ]] ; then
-         install_electrs ; return 0
+         install_electrs
+         return 0
          else
          no_mac ; return 0
          fi
@@ -266,6 +267,7 @@ n|N) return 0 ;;
 *) invalid ;;
 esac
 fi
+break
 done
 
 }

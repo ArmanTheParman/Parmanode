@@ -1,5 +1,4 @@
 function swap_string {
-
 if [[ $OS == "Mac" ]] ; then
 change_string_mac "$1" "$2" "$3" swap >> $HOME/.parmanode/change_string_mac.log 2>&1
 return 0
@@ -15,7 +14,7 @@ if [[ ! -f "$input_file" ]]; then
     enter_continue
     return 1
 fi
-debug "test sed"
+#every ocurranced swapped
 echo "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
 sudo sed -i "\@$search_string@c\\$new_line" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
 }

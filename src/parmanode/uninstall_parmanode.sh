@@ -48,50 +48,54 @@ then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal
 fi
 
-if grep -q "docker" $HOME/.parmanode/installed.conf
-then
-    if [[ $OS == "Linux" ]] ; then uninstall_docker_linux ; fi #confirmation inside function
-    if [[ $OS == "Mac" ]] ; then
-        set_terminal
-        echo "Uninstall docker for Mac? y or n. "
-        echo ""
-        read choice
-        if [[ $choice == y ]] ; then uninstall_docker_mac ; fi
-    fi
-set_terminal
-fi
-
 if grep -q "electrum" $HOME/.parmanode/installed.conf
 then
 uninstall_electrum
 set_terminal
 fi
 
-if grep-q "lnd" $HOME/.parmanode/installd.conf
+if grep -q "lnd" $HOME/.parmanode/installd.conf
 then
 uninstall_lnd
 set_terminal
 fi
 
 
-if grep-q "rtl" $HOME/.parmanode/installd.conf
+if grep -q "rtl" $HOME/.parmanode/installd.conf
 then
 uninstall_rtl #Confirmation inside function
 set_terminal
 fi
 
-if grep-q "sparrow" $HOME/.parmanode/installd.conf
+if grep -q "sparrow" $HOME/.parmanode/installd.conf
 then
 uninstall_sparrow
 set_terminal
 fi
 
-if grep-q "tor-server" $HOME/.parmanode/installd.conf
+if grep -q "tor-server" $HOME/.parmanode/installd.conf
 then
 uninstall_tor_server
 set_terminal
 fi
 
+if grep -q "specter" $HOME/.parmanode/installed.conf
+then
+uninstall_specter
+set_terminal
+fi
+
+if grep -q "electrs" $HOME/.parmanode/installed.conf
+then
+uninstall_elctrs
+set_terminal
+fi
+
+if grep -q "btcrpcexplorer" $HOME/.parmanode/installed.conf
+then
+uninstall_btcrpcexplorer
+set_terminal
+fi
 set_terminal
 
 if [[ $debug == 0 ]] ; then 

@@ -1,14 +1,12 @@
 function install_fulcrum_mac {
 set_terminal
 
-install_check "fulcrum"
-  #first check if Fulcrum has been installed
-  return_value="$?"
-  if [[ $return_value == "1" ]] ; then return 1 ; fi       #Fulcrum already installed
-  log "fulcrum" "install check passed."
+grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 choose_and_prepare_drive_parmanode "Fulcrum"
   if [[ $? == 1 ]] ; then return 1 ; fi
+
+format_ext_drive "Fulcrum"
 
 fulcrum_make_directories
   if [[ $? == 1 ]] ; then return 1 ; fi

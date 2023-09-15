@@ -28,11 +28,7 @@ done ; fi
 please_wait
 echo "Stopping containers..." && docker stop btcpay || log "btcpay" "failed to stop btcpay. May not be running."
 echo "Removing containers..." && sleep 0.5 && docker rm btcpay || log "btcpay" "failed to remove btcpay docker container. May not exist."
-if [[ $debug != 1 ]]  
-    then echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay \
-    || log "btcpay" "failed to remove btcpay image. May not exist" 
-    fi
-
+echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay || log "btcpay" "failed to remove btcpay image. May not exist" 
 #remove directories
 echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer \
 || log "btcpay" "failed to delete .btcpayserver and .nbxplorer"

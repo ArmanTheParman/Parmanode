@@ -39,19 +39,19 @@ case $choice in
 	0)
 	    please_wait
         if [[ $OS == "Linux" ]] ; then 
-        remove_fstab_entry
-        sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        remove_parmanode_fstab 
+        sudo dd if=/dev/zero of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
 
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=/dev/$disk bs=1M count=500  >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=$disk bs=1M count=500  >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
 	r|R)   
 	    please_wait
         if [[ $OS == "Linux" ]] ; then 
-        remove_fstab_entry 
-        sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        remove_parmanode_fstab 
+        sudo dd if=/dev/urandom of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
 
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
     c|C) 
@@ -88,11 +88,11 @@ done
 please_wait
 # "status=progress" won't work becuase of the pipe, but leving it in for future reference.
 if [[ $OS == "Linux" ]] ; then
-    remove_fstab_entry
-    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=500 >/dev/null 2>&1 && sync && return 0
+    remove_parmanode_fstab
+    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=500 >/dev/null 2>&1 && sync && return 0
     fi
 if [[ $OS == "Mac" ]] ; then
-    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=500 >/dev/null 2>&1 && sync && return 0
+    yes "$string " | sudo dd of=$disk bs=1000000 count=500 >/dev/null 2>&1 && sync && return 0
     fi
 
 # if it ran successfully, code exits.    
@@ -105,21 +105,22 @@ exit 1
 }
 
 function dd_bypass {
-
 string="Parman loves you :) " #spread the love
 
-please_wait
+please_wait 
+
 if [[ $OS == "Linux" ]] ; then
-    remove_fstab_entry # don't want multiple parmanode entries in fstab
+    remove_parmanode_fstab # don't want multiple parmanode entries in fstab
 
     # the yes command prints the string over and over, and given to the dd command
     # The wiping will involved 1 megabyte x 250 times (as per variables below) and the string will
     # be writting in the space. Wiping the entire drive like this takes too long.
-    yes "$string " | sudo dd iflag=fullblock of=/dev/$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
-    fi
-if [[ $OS == "Mac" ]] ; then
-    yes "$string " | sudo dd of=/dev/$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
-    fi
+   
+    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
+fi
 
+if [[ $OS == "Mac" ]] ; then
+    yes "$string " | sudo dd of=$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
+    fi
 return 1
 }
