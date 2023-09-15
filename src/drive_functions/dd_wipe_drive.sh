@@ -105,7 +105,7 @@ exit 1
 }
 
 function dd_bypass {
-
+debug "entered dd_bypass"
 string="Parman loves you :) " #spread the love
 
 please_wait ; debug "in dd bypass"
