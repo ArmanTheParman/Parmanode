@@ -266,6 +266,7 @@ n|N) return 0 ;;
 *) invalid ;;
 esac
 fi
+break
 done
 
 }
