@@ -21,7 +21,7 @@ unmount   #failure here exits program. Need drive not to be mounted in order to 
 
 dd_wipe_drive  #failure here exits program 
 
-if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
+if [[ $OS == "Linux" ]] ; then debug "before partition" ; partition_drive ; fi   # Partition step not required for Mac
 debug "before format"
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
