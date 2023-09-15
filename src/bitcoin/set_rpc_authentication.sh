@@ -41,7 +41,6 @@ echo "
 
 "
 choose "xpq" ; read choice
-fi
 else
 choice=$1
 fi
