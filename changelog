@@ -1,6 +1,7 @@
 Version 3.6.2
     -Much improved flow for setting up external hard drive.
     -Various bugs fixed
+    -Bitcoin Menu improvements, including start/stop output improvements
 Version 3.6.1
     -Electrum and Sparrow can connect to Fulcrum or electrs Tor, from menu selection
 Version 3.6.0

@@ -4,20 +4,33 @@ do
 set_terminal_custom "45"
 source ~/.parmanode/parmanode.conf
 
+unset running output1 output2 
+if ! ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
+if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi
+if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
+
+if [[ $running != false ]] ; then running=true ; fi
+
+if [[ $running == true ]] ; then
+output1="                   Bitcoin is RUNNING -- see log menu for progress" 
+
+output2="                         (Syncing to the $drive drive)"
+else
+output1="                   Bitcoin is NOT running -- choose \"start\" to run"
+
+output2="                         (Will sync to the $drive drive)"
+fi                         
+
 echo "
 ########################################################################################
                                  Bitcoin Core Menu                               
 ########################################################################################
 
 "
-if ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then echo "
-                   BITCOIN IS RUNNING -- SEE LOG MENU FOR PROGRESS 
-
-                         (syncing to the $drive drive)"
-else
-echo "
-                   BITCOIN IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
-fi
+echo "$output1"
+echo ""
+echo "$output2"
+echo ""
 echo "
 
 
@@ -55,13 +68,17 @@ run_bitcoind
 ;;
 
 stop|STOP|Stop)
-stop_bitcoind
+while pgrep bitcoind ; do 
+stop_bitcoind 
+sleep 2
+done
+
 ;;
 
 restart|RESTART|Restart)
 if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
 if [[ $OS == "Mac" ]] ; then
-stop_bitcoind "no_interruption"
+stop_bitcoind 
 run_bitcoind "no_interruption"
 fi
 ;;
