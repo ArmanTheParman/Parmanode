@@ -29,6 +29,7 @@ fi
 
 
 function postgres_intermission {
+rm /tmp/postgres*
 if [[ $debug == 1 ]] ; then postgres_intermission_bypass ; fi 
 set_terminal
 log "btcpay" "in postgres_intermission"
