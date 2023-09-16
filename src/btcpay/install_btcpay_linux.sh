@@ -22,8 +22,8 @@ build_btcpay || return 1 ; log "btcpay" "entering build_btcpay..."
 run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
 
 log "btcpay" "entering start_postgress..."
-startup_postgres "install" && log "btcpay" "startup postgress function completed" || \ 
-{ log "btcpay" "startup postgress function failed" && return 1 ; }
+startup_postgres "install" || return 1 
+log "btcpay" "exited start_progress"
 
 sleep 4
 run_nbxplorer || return 1 ; log "btcpay" "entering run_nbxplorer.."
