@@ -79,7 +79,7 @@ while true ; do #begins the loop
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits
 #otherwise not point.
 	if id | grep -q docker && which docker >/dev/null ; then
-		if ! grep docker-end < $HOME/.parmanode/installed.conf ; then
+		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
 			installed_config_add "docker-end"
 		fi
 	fi
