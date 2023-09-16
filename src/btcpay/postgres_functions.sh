@@ -41,8 +41,8 @@ postgres_database_creation
 #get container to write to a log file the status of the database. Log is in a mounted volume
 #accessible by host.
 
-docker exec -it -u postgres btcpay psql -l > /tmp/postgres.tmp
-if grep -q btcpayserver < /tmp/postgres.tmp ; then
+docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
+if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
 return 0 
 fi
 
