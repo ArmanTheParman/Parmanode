@@ -279,22 +279,22 @@ if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i  ]]      ; then echo  "$torserver_i"; fi
 echo "#                                                                                      #
-# Installed partially (need to uninstall)                                              #
+# Installed partially (need to uninstall)...                                           #
 #                                                                                      #"
-echo -n "$bitcoin_p"
-echo -n "$electrs_i"
-echo -n "$btcrpcexplorer_p"
-echo -n "$sparrow_p"
-echo -n "$electrum_p"
-echo -n "$specter_p"
-echo -n "$lnd_p"
-echo -n "$docker_p"
-echo -n "$rtl_p"
-echo -n "$btcpay_p"
-echo -n "$fulcrum_p"
-echo -n "$tor_p"
-echo -n "$btcpTOR_p"
-echo -n "$torserver_p"
+if [[ -n $bitcoin_p ]]         ; then echo  "$bitcoin_p"; fi
+if [[ -n $electrs_p ]]         ; then echo  "$electrs_p"; fi
+if [[ -n $btcrpcexplorer_p ]]  ; then echo  "$btcrpcexplorer_p"; fi
+if [[ -n $sparrow_p ]]         ; then echo  "$sparrow_p"; fi
+if [[ -n $electrum_p ]]        ; then echo  "$electrum_p"; fi
+if [[ -n $specter_p ]]         ; then echo  "$specter_p"; fi
+if [[ -n $lnd_p ]]             ; then echo  "$lnd_p"; fi
+if [[ -n $docker_p ]]          ; then echo  "$docker_p"; fi
+if [[ -n $rtl_p ]]             ; then echo  "$rtl_p"; fi
+if [[ -n $btcpay_p ]]          ; then echo  "$btcpay_p"; fi
+if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
+if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
+if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
+if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
 echo "
 ########################################################################################
 "
