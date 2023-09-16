@@ -104,7 +104,7 @@ set_terminal "pink" ; echo "
 choose "xpq" ; read choice  ; set_terminal
 case $choice in
 q|Q) exit 0 ;;
-p|P| return 1 ;;
+p|P) return 1 ;;
 no|NO|N|n|No) return 1 ;;
 y|Y|YES|Yes|yes) sudo reboot ;;
 *) invalid ;;
