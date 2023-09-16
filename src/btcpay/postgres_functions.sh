@@ -5,8 +5,12 @@ function startup_postgres {
 #docker exec -d -u root btcpay /bin/bash -c \
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
-docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
-if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
+log "btcpay" "in startup_postres"
+
+docker exec -d -u root btcpay /bin/bash -c "service postgresql start" || { debug "failed docker exec postgresql start" ; log "btcpay" "postgresql start failed" ; }
+if [[ $1 == "install" ]] ; then 
+    postgres_intermission || { log "btcpay" "postgres_intermission failed" ; return 1 ; } 
+fi
 }
 
 
@@ -26,6 +30,7 @@ if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
 
 function postgres_intermission {
 set_terminal
+log "btcpay" "in postgres_intermission"
 
 counter=0
 while [ $counter -le 5 ] ; do
@@ -52,7 +57,7 @@ return 1
 
 
 function postgres_database_creation {
-
+log "btcpay" "in postgres_database_creation"
 sleep 1
 docker exec -d -u postgres btcpay /bin/bash -c \
 "/home/parman/parmanode/postgres_script.sh ; \
