@@ -34,7 +34,7 @@ set_terminal
 log "btcpay" "in postgres_intermission"
 
 counter=0
-while [ $counter -le 15 ] ; do
+while [ $counter -le 45 ] ; do
 postgres_database_creation
 
 #check if database created before prceeding.
