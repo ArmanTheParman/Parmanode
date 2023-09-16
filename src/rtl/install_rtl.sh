@@ -1,5 +1,6 @@
 function install_rtl {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." && return 1 ; }
 
 
 #if working on installing on host...
