@@ -78,6 +78,7 @@ docker_package_download_linux || return 1
 log "docker" "Install success. Reboot needed." 
 success "Docker" "installing."
 if ! id | grep docker ; then
+while true ; do
 set_terminal "pink" ; echo "
 ######################################################################################## 
 ######################################################################################## 
@@ -109,7 +110,8 @@ y|Y|YES|Yes|yes) sudo reboot ;;
 *) invalid ;;
 esac
 done
-else #if docker group added, make sure installed config reflects it.
+#if docker group added, make sure installed config reflects it.
+else 
     if ! grep docker-end < $HOME/.parmanode/installed.conf ; then
         installed_config_add "docker-end"
     fi
