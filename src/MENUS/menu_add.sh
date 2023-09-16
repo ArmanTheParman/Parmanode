@@ -22,7 +22,7 @@ echo "
 if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=1
 echo "#                            (b)           Bitcoin Core                                #
 #                                                                                      #" ; fi
-if ! grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=1
+if [[ $OS != "Mac" ]] && ! grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=1
 echo "#                            (d)           Docker                                      #
 #                                                                                      #" ; fi
 if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=1
@@ -109,7 +109,7 @@ echo "#                                      BTC RPC Explorer                   
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsadd=0
 echo "#                                      electrs                                         #
 #                                                                                      #" ; fi
-if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=0
+if [[ $OS != "Mac" ]] && grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=0
 echo "#                                      Docker                                          # 
 #                                                                                      #" ; fi
 echo "#                                                                                      #
