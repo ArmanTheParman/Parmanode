@@ -16,7 +16,6 @@ set_terminal ; echo "
     Docker is required to run -
 
                 BTCPay Server
-                BTC RPC Explorer
                 RTL Wallet
                 Fulcrum (on Macs)
 
