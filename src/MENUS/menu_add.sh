@@ -279,7 +279,7 @@ if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i  ]]      ; then echo  "$torserver_i"; fi
 echo "#                                                                                      #
-# Installed partially (need to uninstall)...                                           #
+# Failed install (need to uninstall)...                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo  "$bitcoin_p"; fi
 if [[ -n $electrs_p ]]         ; then echo  "$electrs_p"; fi
