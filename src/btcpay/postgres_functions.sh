@@ -86,4 +86,5 @@ docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
 debug "wait here a bit after postgres btcpay psql -l"
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
 return 0 
+fi
 }
