@@ -87,4 +87,15 @@ debug "wait here a bit after postgres btcpay psql -l"
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
 return 0 
 fi
+
+counter=$((counter + 1))
+sleep 2
+done
+
+log "btcpay" "failed to start btcpay database"
+set_terminal
+echo "Docker was unable to start the btcpay postgress database. Installation has failed."
+enter_continue
+return 1
+
 }
