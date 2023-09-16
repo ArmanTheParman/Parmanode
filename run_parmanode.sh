@@ -76,41 +76,11 @@ if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parma
 while true ; do #begins the loop
 
 # Continue if user left unfinished
-if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits
-#otherwise not point.
+if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if id | grep -q docker && which docker >/dev/null ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
 			installed_config_add "docker-end"
 		fi
-	fi
-
- 	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
-	install_btcpay_linux "resume" # return to the installation, but with a new variable
-	# indicating the need to resume
-	skip_intro="true" #allows program to go straig to the needed location without
-	# first going through any program info prompts
-
-	break #exits the  hile loop
-	fi
-
-	if cat $HOME/.parmanode/parmanode.conf | grep "dockerexitbtcpay=1" ; then
-	export dokerexitbtcpay=1
-	install_btcpay_linux || { skip_intro="false" ; break ; }
-	skip_intro="true"
-	break
-	fi
-
- 	if cat $HOME/.parmanode/installed.conf | grep "mempool-half" ; then
-	install_mempool "resume"
-	skip_intro="true"
-	break
-	fi
-
- 	if cat $HOME/.parmanode/parmanode.conf | grep "dockerexitmem=1" ; then
-	export dockerexitmem=1
-	install_mempool "resume" || { skip_intro="false" ; break ; }
-	skip_intro="true"
-	break
 	fi
 fi
 
