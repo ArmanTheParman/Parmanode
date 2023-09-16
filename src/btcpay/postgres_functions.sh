@@ -29,6 +29,7 @@ fi
 
 
 function postgres_intermission {
+if [[ $debug == 1 ]] ; then postgres_intermission_bypass && return 0 ; fi 
 set_terminal
 log "btcpay" "in postgres_intermission"
 
@@ -66,4 +67,23 @@ docker exec -d -u postgres btcpay /bin/bash -c \
 createdb -O parman btcpayserver ; \
 createdb -O parman nbxplorer" 
 
+}
+
+function postgres_intermission_bypass {
+set_terminal
+log "btcpay" "in postgres_intermission"
+
+counter=0
+while [ $counter -le 5 ] ; do
+postgres_database_creation
+
+#check if database created before prceeding.
+
+#get container to write to a log file the status of the database. Log is in a mounted volume
+#accessible by host.
+
+docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
+debug "wait here a bit after postgres btcpay psql -l"
+if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
+return 0 
 }
