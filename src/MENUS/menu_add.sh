@@ -23,7 +23,7 @@ if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=1
 echo "#                            (b)           Bitcoin Core                                #
 #                                                                                      #" ; fi
 if ! grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=1
-echo "#                            (b)           Docker                                      #
+echo "#                            (d)           Docker                                      #
 #                                                                                      #" ; fi
 if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=1
 echo "#                            (f)           Fulcrum (an Electrum Server)                #
