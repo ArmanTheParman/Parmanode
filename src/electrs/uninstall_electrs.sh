@@ -78,7 +78,14 @@ case $choice in
 q|Q) quit 0 ;; p|P) return 1 ;;
 d|D) sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
 l|L) break ;;
-b|B) sudo mv /media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup ; break ;;
+b|B) 
+if [[ -d /media/$USER/parmanode/electrs_db_backup ]] ; then
+    electrs_backup_exists #function defined below
+    else
+    sudo mv /media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup
+fi
+break
+;;
 *) invalid ;;
 esac
 done
@@ -90,4 +97,42 @@ rm -rf $HOME/parmanode/electrs
 parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs" ; debug "end of uninstall"
 success "electrs" "being uninstalled."
+}
+
+function electrs_backup_exists {
+while true ; do
+set_terminal "pink"
+echo "
+########################################################################################
+
+    You have chosen to backup electrs_db to electrs_db_backup, but a directory
+    with the name electrs_db_backup already exists. What would you like to do?
+
+            d)    Delete the old backup directory and back up the current
+                  electrs_db to electrs_db_backup
+            
+            2)    Move electrs_db_backup to electrs_db_backup2 and backup the 
+                  electrs_db directory as electrs_db_backup - note parmanode is not 
+                  configured to ever used the number 2 backup, you're on your own 
+                  here with this fancy stuff, sorry.
+
+            nah)  Changed my mind, delete the backups and the current electrs_db
+
+########################################################################################
+"
+choose "xpq"
+read choice
+case $choice in q|Q) quit ;; p|P) return 1 ;;
+d|D) rm -rf media/$USER/parmanode/electrs_db_backup ; break ;; 
+2) 
+mv media/$USER/parmanode/electrs_db_backup media/$USER/parmanode/electrs_db_backup2
+mv media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup 
+;;
+nah|Nah|NAH)
+rm -rf /media/$USER/parmanode/electrs_db
+rm -rf /media/$USER/parmanode/electrs_db_backup 
+;;
+*) invalid ;;
+esac
+done
 }
