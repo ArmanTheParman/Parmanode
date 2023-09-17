@@ -12,9 +12,7 @@ sudo systemctl restart tor
 sudo systemctl restart fulcrum.service
 
 set_terminal
-echo "
-Fulcrum changes have been made and the program has been restarted."
-enter_continue
+parmanode_conf_remove "fulcrum_tor"
 return 0
 
 }

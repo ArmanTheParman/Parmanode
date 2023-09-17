@@ -81,11 +81,31 @@ if [[ $1 == "electrstcp" ]] ; then
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://127.0.0.1:50005\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": false,"
-echo "connection=ElectrumTCP" > $HOME/.parmanode/sparrow.connection
+echo "connection=ElectrsTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+if [[ $1 == "electrstor" ]] ; then
+if ! which tor ; then install_tor ; fi
+unset $ONION_ADDR_ELECTRS
+get_onion_address_variable "electrs" >/dev/null
 
+    if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+    set_terminal
+    echo "Electrs Tor must first be enabled from the electrs menu. Aborting."
+    enter_continue
+    make_sparrow_config
+    return 1
+    fi
+swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 
-
+# electrum server details needs to be writen immediately after "useLegacyCoreWallet"
+# the swap function finds that line, and writes two lines. The first line rewrites what exists and second line inserts the
+# needed line...
+swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://$ONION_ADDR_ELECTRS:7004\","
+swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": true,"
+echo "connection=ElectrsTOR" > $HOME/.parmanode/sparrow.connection
+fi
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 }

@@ -12,9 +12,7 @@ sudo systemctl restart tor
 sudo systemctl restart electrs.service
 
 set_terminal
-echo "
-Electrs changes have been made and the program has been restarted."
-enter_continue
+parmanode_conf_remove "electrs_tor"
 return 0
 
 }
