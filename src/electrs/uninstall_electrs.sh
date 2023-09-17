@@ -36,8 +36,8 @@ while true ; do
 "
     read choice
     case $choice in
-    y|Y) rm -rf $HOME/.electrs_backup >/dev/null ;;
-    n|N) break ;;
+    y|Y) please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ;;
+    n|N) please_wait ; break ;;
     *) invalid
     esac
 done
@@ -60,4 +60,5 @@ rm -rf $HOME/parmanode/electrs
 
 parmanode_conf_remove "electrs"
 installed_config_remove "electrs" ; debug "end of uninstall"
+success "electrs" "being uninstalled."
 }

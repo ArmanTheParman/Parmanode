@@ -106,7 +106,7 @@ fi
 
 #LND
 unset lnd_i lnd_p lnd_n
-if ! grep -q "lnd-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "lnd-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 lnd_i="#                                      LND                                             #
 #                                                                                      #"
@@ -115,14 +115,14 @@ elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then
 lnd_p="#                                      LND                                             #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 lnd_n="#                            (lnd)         LND                                         #
 #                                                                                      #"
 fi
 
 #RTL
 unset 
-if ! grep -q "rtl-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "rtl-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 rtl_i="#                                      RTL Wallet                                      #
 #                                                                                      #"
@@ -132,14 +132,14 @@ elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then
 rtl_p="#                                      RTL Wallet                                      #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 rtl_n="#                            (r)           RTL Wallet                                  #
 #                                                                                      #"
 fi
 
 #Electrum
 unset 
-if ! grep -q "electrum-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "electrum-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 electrum_i="#                                      Electrum                                        #
 #                                                                                      #"
@@ -148,7 +148,7 @@ elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then
 electrum_p="#                                      Electrum                                        #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 electrum_n="#                            (e)           Electrum Wallet                             #
 #                                                                                      #"
 fi
@@ -156,7 +156,7 @@ fi
 
 #Tor
 unset tor_i tor_p tor_n
-if ! grep -q "tor-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "tor-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 tor_i="#                                      Tor                                             #
 #                                                                                      #"
@@ -165,7 +165,7 @@ elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then
 tor_p="#                                      Tor                                             #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 tor_n="#                            (t)           Tor                                         #
 #                                                                                      #"
 fi
@@ -181,14 +181,14 @@ elif grep -q "specter-start" < $HOME/.parmanode/installed.conf ; then
 specter_p="#                                      Specter Wallet                                  #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 specter_n="#                            (specter)     Specter Wallet                              #
 #                                                                                      #"
 fi
 
 #Tor Server
 unset torserver_i torserver_p torserver_n
-if ! grep -q "tor-server-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "tor-server-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 torserver_i="#                                      Tor Server                                      #
 #                                                                                      #"
@@ -197,14 +197,14 @@ elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then
 torserver_p="#                                      Tor Server                                      #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 torserver_n="#                            (ts)          Tor Server (Darknet Server)                 #
 #                                                                                      #"
 fi
 
 #BTCPay Tor
 unset btcpTOR_i btcpTOR_p btcpTOR_n
-if ! grep -q "btcpTOR-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "btcpTOR-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 btcpTOR_i="#                                      BTCP over Tor (Darknet BTCPay)                  #
 #                                                                                      #"
@@ -213,14 +213,14 @@ elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then
 btcpTOR_p="#                                      BTCP over Tor (Darknet BTCPay)                  #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 btcpTOR_n="#                            (btcpt)       BTCP over Tor (Darknet BTCPay)              #
 #                                                                                      #"
 fi
 
 #BTC RPC Explorer
 unset btcrpcexplorer_i btcrpcexplorer_p btcrpcexplorer_n
-if ! grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 
+if grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 btcrpcexplore_i="#                                      BTC RPC Explorer                                #
 #                                                                                      #"
@@ -229,7 +229,7 @@ elif grep -q "btcrpcexplore-start" $HOME/.parmanode/installed.conf ; then
 btcrpcexplore_p="#                                      BTC RPC Explorer                                #
 #                                                                                      #"
 else
-   #not installd
+   #not installed
 btcrpcexplore_n="#                                      BTC RPC Explorer                                #
 #                                                                                      #"
 fi
