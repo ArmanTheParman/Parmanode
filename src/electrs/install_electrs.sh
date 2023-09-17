@@ -29,7 +29,16 @@ check_rpc_bitcoin
 
 #prepare drives
 choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+
+source $HOME/.parmanode/parmanode.conf >/dev/null
+if [[ $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == "external" ]] ; then 
+    # format not needed
+    # check if there is a backup electrs_db on the drive and restore it
+      restore_elctrs_drive # check export electrum_db_restore=true, and modify prepare_drive_electrs function later.
+else
 format_ext_drive "electrs" || return 1
+fi
+
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
 
 

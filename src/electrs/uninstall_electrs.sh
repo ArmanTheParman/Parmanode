@@ -52,7 +52,33 @@ sudo systemctl disable electrs.service >/dev/null
 sudo rm /etc/systemd/system/electrs.service >/dev/null
 
 if [[ $drive_electrs == "external" ]] ; then
-sudo rm -rf /media/$USER/parmanode/electrs_db >/dev/null
+while true ; do
+set_termianl "pink" ; echo "
+########################################################################################
+
+    Do you want to delete the electrs_db database directory, or leave it, or back
+    it up as electrs_db_backup (remaining on the drive)?
+
+                d)        Delete
+
+                l)        Leave it there
+
+                b)        Back it up (just renames it)
+
+########################################################################################
+"
+choose "xpq"  
+read choice
+set_terminal
+case $choice in
+q|Q) quit 0 ;; p|P) return 1 ;;
+d|D) sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
+l|L) break ;;
+b|B) sudo mv /media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup ; break ;;
+*) invalid ;;
+esac
+done
+debug "electrs_db choice executed"
 fi
 
 rm -rf $HOME/parmanode/electrs
