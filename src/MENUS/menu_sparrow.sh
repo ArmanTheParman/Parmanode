@@ -19,7 +19,7 @@ set_terminal ; echo "
                           
          (d)       Connect Sparrow directly to Bitcoin Core via tcp (default)
 
-         (tor)     Connect Sparrow via Tor
+         (tor)     Connect Sparrow via Tor (Fulcrum)
 
          (ssl)     Connect Sparrow to Fulcrum via ssl (port 50002)
 
