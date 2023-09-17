@@ -230,7 +230,6 @@ case $choice in
    ers|ERS|Ers|electrs)
       if [[ $electrsadd == 1 ]] ; then
          if [[ $OS != "Mac" ]] ; then
-         if [[ $chip == ]]
          install_electrs
          return 0
          else
