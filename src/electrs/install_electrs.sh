@@ -15,7 +15,8 @@ compile_electrs && log "electrs" "compile_electrs success" ; debug "build, downl
 fi
 
 #remove old certs (in case they were copied from backup), then make new certs
-rm $HOME/parmanode/electrs/*.pem && make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+rm $HOME/parmanode/electrs/*.pem  
+{ make_ssl_certificates "electrs" && debug "check certs error " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 install_nginx #the function chethis is available first before attempting install.
 electrs_nginx add
 
