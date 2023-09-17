@@ -56,7 +56,7 @@ if [[ $1 == "fulcrum" ]] ; then
     fi
     
 get_onion_address_variable "fulcrum" 
-if ! grep -q "fulcrum-tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then
 announce "Fulcrum doesn't seem to have Tor turned on. Aborting." && return 1
 fi
 [ -z $ONION_ADDR_FULCRUM ] && announce "Fulcrum doesn't seem to have Tor turned on. Aborting." && return 1
@@ -79,7 +79,7 @@ if [[ $1 == "electrs" ]] ; then
     fi
     
 get_onion_address_variable "electrs" 
-if ! grep -q "electrs-tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then
 announce "electrs doesn't seem to have Tor turned on. Aborting." && return 1
 fi
 [ -z $ONION_ADDR_ELECTRS ] && announce "electrs doesn't seem to have Tor turned on. Aborting." && return 1

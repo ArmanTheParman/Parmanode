@@ -53,7 +53,7 @@ sudo systemctl restart electrs.service
 
 get_onion_address_variable "electrs" >/dev/null 2>&1
 
-parmanode_conf_add "electrs-tor=true"
+parmanode_conf_add "electrs_tor=true"
 
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."

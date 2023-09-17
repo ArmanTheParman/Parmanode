@@ -46,7 +46,7 @@ echo "
 
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 "
-if grep -q "fulcrum-tor" < $HOME/.parmanode/parmanode.conf ; then 
+if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum" >/dev/null ; echo "
 
     Onion adress: $ONION_ADDR_FULCRUM:7002 

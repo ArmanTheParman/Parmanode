@@ -52,7 +52,7 @@ echo "
       (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor
 
 "
-if grep -q "electrs-tor" < $HOME/.parmanode/parmanode.conf ; then 
+if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
     Onion adress: $ONION_ADDR_ELECTRS:7004 
 
