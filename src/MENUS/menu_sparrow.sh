@@ -27,7 +27,7 @@ set_terminal ; echo "
 
          (tor1)    Connect Sparrow via Tor (Fulcrum, port 7002)
 
-         (tor2)    Connect Sparrow via Tor (electrs, port 7006) 
+         (tor2)    Connect Sparrow via Tor (electrs, port 7004) 
 
          (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
          
