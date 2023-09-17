@@ -22,6 +22,9 @@ echo "
 if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinadd=1
 echo "#                            (b)           Bitcoin Core                                #
 #                                                                                      #" ; fi
+if [[ $OS != "Mac" ]] && ! grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=1
+echo "#                            (d)           Docker                                      #
+#                                                                                      #" ; fi
 if ! grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumadd=1
 echo "#                            (f)           Fulcrum (an Electrum Server)                #
 #                                                                                      #" ; fi
@@ -106,6 +109,9 @@ echo "#                                      BTC RPC Explorer                   
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsadd=0
 echo "#                                      electrs                                         #
 #                                                                                      #" ; fi
+if [[ $OS != "Mac" ]] && grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockeradd=0
+echo "#                                      Docker                                          # 
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -134,7 +140,7 @@ case $choice in
     d|D)
        if [[ $dockeradd == 1 ]] ; then
         set_terminal
-        install_docker_linux "menu"
+        install_docker_parmanode_linux  
         return 0
         fi
         ;;
@@ -252,10 +258,8 @@ return 0
 
 function electrs_better_4pi {
 
-Pi=$(uname -m) >/dev/null
-
 while true ; do
-if [[ $Pi == "arm64" || $Pi == "aarch64" || $Pi == "armv6l" || $Pi == "armv7l" ]] ; then
+if [[ $chip == "arm64" || $chip == "aarch64" || $chip == "armv6l" || $chip == "armv7l" ]] ; then
 set_terminal
 announce "It's best for Raspberry Pi's to use electrs insteat of Fulcrum" \
 "Abort Fulcrum installation?     y     or     n"

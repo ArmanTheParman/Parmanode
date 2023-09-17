@@ -3,36 +3,24 @@ set_terminal
 
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-choose_and_prepare_drive_parmanode "Fulcrum"
-  if [[ $? == 1 ]] ; then return 1 ; fi
+choose_and_prepare_drive_parmanode "Fulcrum" || return 1
 
-format_ext_drive "Fulcrum"
+format_ext_drive "Fulcrum" || return 1
 
-fulcrum_make_directories
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "make directories function exited."
+fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
-install_docker_intro
-  if [[ $? == 1 ]] ; then log "docker" "installation abandoned" ; return 1 
-  else
-  log "docker" "Docker install to proceed."
-  fi
+install_docker_intro || return 1 ; log "docker" "installation abandoned" 
 
-if ! which docker >/dev/null 2>&1 ; then download_docker_mac ; fi
-    if [ $? == 1 ] ; then return 1 ; fi
+if ! which docker >/dev/null 2>&1 ; then download_docker_mac || return 1 ; fi
 
-#start docker if it exists
-if [[ $OS == "Mac" ]] ; then 
-    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
-fi
+#start docker if it is not running 
+if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
 warning_deleting_fulcrum
   if [[ $? == 1 ]] ; then log "fulcrum" "warning message, abort" ; return 1 ; fi
   log "fulcrum" "warning message reached, continue."
 
-build_fulcrum_docker
-  if [[ $? == 1 ]] ; then return 1 ; fi
-  log "fulcrum" "Fulcrum docker build done."
+build_fulcrum_docker || return 1 ; log "fulcrum" "Fulcrum docker build done."
 
 run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
@@ -44,10 +32,8 @@ add_IP_fulcrum_config_mac
 
 installed_config_add "fulcrum-end"
 
-#start docker if it exists
-if [[ $OS == "Mac" ]] ; then 
-    if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
-fi
+#start docker if it isn't running 
+if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
 start_fulcrum_docker
 fulcrum_success_install
