@@ -12,7 +12,7 @@ announce \
 return 1
 fi
 
-if ! grep -q "fulcrum-tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then
 announce \
 "Please enable TOR in Fulcrum menu first."
 return 1 
@@ -40,7 +40,7 @@ announce \
 return 1 
 fi
 
-if ! grep -q "electrs-tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then
 announce \
 "Please enable TOR in electrs menu first."
 return 1
