@@ -8,8 +8,10 @@ fi
 
 
 if [[ $drive_electrs == "external" ]] ; then
-       [[ $prepare_drive_electrs == "true" ]] && mkdir -p /media/$USER/parmanode/electrs_db && return 0
+       if [[ $prepare_drive_electrs == "true" ]] ; then
+       mkdir -p /media/$USER/parmanode/electrs_db 
+       return 0
 fi  
+
 debug "end of prepare_drive_electrs"
-return 1
 }
