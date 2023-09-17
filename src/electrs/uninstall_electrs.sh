@@ -46,8 +46,6 @@ fi
 
 electrs_nginx remove
 
-parmanode_conf_remove "electrs"
-
 sudo systemctl stop electrs.service >/dev/null
 sudo systemctl disable electrs.service >/dev/null
 sudo rm /etc/systemd/system/electrs.service >/dev/null
@@ -58,7 +56,7 @@ fi
 
 rm -rf $HOME/parmanode/electrs
 
-parmanode_conf_remove "electrs"
+parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs" ; debug "end of uninstall"
 success "electrs" "being uninstalled."
 }
