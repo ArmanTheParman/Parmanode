@@ -45,6 +45,8 @@ echo "
       (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
+
+      (dc)       Fulcrum database corrupted?
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum" >/dev/null ; echo "
@@ -182,6 +184,10 @@ fulcrum_tor
 
 torx|TORX|Torx)
 fulcrum_tor_remove
+;;
+
+dc|DC|Dc|dC)
+fulcrum_database_correpted
 ;;
 
 *)
