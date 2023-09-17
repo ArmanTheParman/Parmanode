@@ -39,7 +39,7 @@ done
 # while loop breaks to here
 please_wait
 brew install automake libtool boost pkg-config libevent zeromq berkeley-db@4 && \
-installed_conf_add "btc_dependencies=installed" && \
+installed_conf_add "btc_dependencies" && \
 return 0 
 done
 

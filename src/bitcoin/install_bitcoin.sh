@@ -4,7 +4,7 @@ set_terminal
 
 if [[ $OS == "Mac" ]] ; then
 
-        if ! grep -q "btc_dependencies=installed" /home/.parmanode/installed.conf ; then
+        if ! grep -q "btc_dependencies" /home/.parmanode/installed.conf ; then
         # A function followed by || means that if the function fails, the OR operator makes
         # the following block run, otherwise it skips it.
         bitcoin_dependencies || 
