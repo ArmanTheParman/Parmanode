@@ -44,6 +44,7 @@ postgres_database_creation
 
 docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
+rm /tmp/postgres* >/dev/null 2>&1
 return 0 
 fi
 

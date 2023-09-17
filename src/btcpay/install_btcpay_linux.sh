@@ -1,6 +1,8 @@
 function install_btcpay_linux {
+
 grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." && return 1 ; }
+btcpay_install_preamble || return 1
 
 set_terminal
 while true ; do user_pass_check_exists 
