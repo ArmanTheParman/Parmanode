@@ -73,7 +73,7 @@ set_terminal
 
 stop | STOP) 
 set_terminal
-if [[ $OS == "Linux" ]] ; then echo "Fulcrum stopping" ; sudo systemctl stop fulcrum.service ; enter_continue ; fi
+if [[ $OS == "Linux" ]] ; then echo "Fulcrum stopping" ; stop_fulcrum_linux ; fi
 if [[ $OS == "Mac" ]] ; then echo "Stopping Fulcrum inside running container..." ; stop_fulcrum_docker ; fi
 set_terminal
 ;;
