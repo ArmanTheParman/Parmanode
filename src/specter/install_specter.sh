@@ -35,8 +35,10 @@ set_terminal ; echo "
 
                                 S U C C E S S ! !
     
-    Specter has been installed. The executable is in $HOME/parmanode/specter as an
-    \"AppImage\" and executable permissions have been enabled.
+    Specter has been installed. 
+    
+    The executable is in $HOME/parmanode/specter as an \"AppImage\" and 
+    executable permissions have been enabled.
 
     You can run it from there, or run Specter from the Parmanode menu. Please don't
     move the file.
