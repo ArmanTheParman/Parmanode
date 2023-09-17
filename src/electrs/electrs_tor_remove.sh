@@ -7,7 +7,7 @@ please_wait
 delete_line "/etc/tor/torrc" "electrs-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:50005"
 
-sudo rm -rf /var/lib/tor/electrs*
+sudo rm -rf /var/lib/tor/electrs-service
 sudo systemctl restart tor
 sudo systemctl restart electrs.service
 
