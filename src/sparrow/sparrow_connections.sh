@@ -12,6 +12,12 @@ announce \
 return 1
 fi
 
+if ! grep -q "fulcrum-tor" < $HOME/.parmanode/parmanode.conf ; then
+announce \
+"Please enable TOR in Fulcrum menu first."
+return 1 
+fi
+
 
 set_terminal
 echo "Make sure Sparrow has been shut down before proceeding."
@@ -31,6 +37,12 @@ fi
 if ! grep -q "electrs-end" < $HOME/.parmanode/installed.conf ; then
 announce \
 "Please install electrs first."
+return 1 
+fi
+
+if ! grep -q "electrs-tor" < $HOME/.parmanode/parmanode.conf ; then
+announce \
+"Please enable TOR in electrs menu first."
 return 1
 fi
 

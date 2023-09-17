@@ -41,7 +41,7 @@ rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcr
 
 stop_and_remove_docker_containers_and_images_fulcrum
 
-parmanode_conf_remove "fulcrum"
+parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
 
 log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
