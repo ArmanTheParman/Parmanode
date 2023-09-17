@@ -57,7 +57,7 @@ sparrow_fulcrumtor
 
 tor2|Tor2|TOR2)
 no_mac || return 1
-sparrot_electrstor
+sparrow_electrstor
 ;;
 
 ssl|Ssl|SSL)
