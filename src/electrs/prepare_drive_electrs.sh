@@ -8,7 +8,7 @@ fi
 
 
 if [[ $drive_electrs == "external" ]] ; then
-       if [[ $prepare_drive_electrs == "true" ]] ; then
+       if [[ $electrs_db_restore == "false" ]] ; then
        mkdir -p /media/$USER/parmanode/electrs_db 
        return 0
        fi

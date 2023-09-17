@@ -27,9 +27,9 @@ case $choice in q|Q) quit 0 ;; p|P) return 1 ;;
 #if "use it" selected, that's the only case where a new electrum_db directory won't be created.
 #"ignore it" is only available if the directory is not called electrum_db, so it's all good.
 #The variable electrum_db_restore is needed for the function prepare_drive_electrs
-u|U) export electrum_db_restore="true" ; break ;;
-del|Del|DEL) sudo rm -rf /media/$USER/parmanode/$dirname ; export electrum_db_restore="false" ; break ;;
-i|I) unset dirname ; electrum_db_restore="false" ; break ;;
+u|U) export electrs_db_restore="true" ; break ;;
+del|Del|DEL) sudo rm -rf /media/$USER/parmanode/$dirname ; export electrs_db_restore="false" ; break ;;
+i|I) unset dirname ; electrs_db_restore="false" ; break ;;
 *) invalid
 esac
 done

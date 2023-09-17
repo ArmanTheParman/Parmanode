@@ -35,6 +35,7 @@ if [[ $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == 
     # format not needed
     # check if there is a backup electrs_db on the drive and restore it
       restore_elctrs_drive # check export electrum_db_restore=true, and modify prepare_drive_electrs function later.
+      debug "restore variable - $electrum_db_restore"
 else
 format_ext_drive "electrs" || return 1
 fi
