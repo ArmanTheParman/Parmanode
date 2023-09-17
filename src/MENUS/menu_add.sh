@@ -230,6 +230,7 @@ case $choice in
    ers|ERS|Ers|electrs)
       if [[ $electrsadd == 1 ]] ; then
          if [[ $OS != "Mac" ]] ; then
+         if [[ $chip == ]]
          install_electrs
          return 0
          else
@@ -258,10 +259,8 @@ return 0
 
 function electrs_better_4pi {
 
-Pi=$(uname -m) >/dev/null
-
 while true ; do
-if [[ $Pi == "arm64" || $Pi == "aarch64" || $Pi == "armv6l" || $Pi == "armv7l" ]] ; then
+if [[ $chip == "arm64" || $chip == "aarch64" || $chip == "armv6l" || $chip == "armv7l" ]] ; then
 set_terminal
 announce "It's best for Raspberry Pi's to use electrs insteat of Fulcrum" \
 "Abort Fulcrum installation?     y     or     n"
