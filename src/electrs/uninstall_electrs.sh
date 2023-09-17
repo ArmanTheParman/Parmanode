@@ -28,8 +28,12 @@ while true ; do
 ########################################################################################
 
     A backup of electrs directory has been found in addition to the electrs
-    installation. Remove that too?    
+    installation. 
     
+    Keeping it can save you time compiling it all again if you choose to re-install it.
+
+    Remove that too? 
+
                                  y    or    n ?
 
 ######################################################################################## 
@@ -53,7 +57,7 @@ sudo rm /etc/systemd/system/electrs.service >/dev/null
 
 if [[ $drive_electrs == "external" ]] ; then
 while true ; do
-set_termianl "pink" ; echo "
+set_terminal "pink" ; echo "
 ########################################################################################
 
     Do you want to delete the electrs_db database directory, or leave it, or back
