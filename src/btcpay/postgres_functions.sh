@@ -5,8 +5,12 @@ function startup_postgres {
 #docker exec -d -u root btcpay /bin/bash -c \
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" # i for in-place, s for substitute, g for global, find 1 replace with stirng 2
 
-docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
-if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
+log "btcpay" "in startup_postres"
+
+docker exec -d -u root btcpay /bin/bash -c "service postgresql start" || { debug "failed docker exec postgresql start" ; log "btcpay" "postgresql start failed" ; }
+if [[ $1 == "install" ]] ; then 
+    postgres_intermission || { log "btcpay" "postgres_intermission failed" ; return 1 ; } 
+fi
 }
 
 
@@ -25,10 +29,12 @@ if [[ $1 == "install" ]] ; then postgres_intermission || return 1 ; fi
 
 
 function postgres_intermission {
+rm /tmp/postgres*
 set_terminal
+log "btcpay" "in postgres_intermission"
 
 counter=0
-while [ $counter -le 5 ] ; do
+while [ $counter -le 45 ] ; do
 postgres_database_creation
 
 #check if database created before prceeding.
@@ -36,10 +42,23 @@ postgres_database_creation
 #get container to write to a log file the status of the database. Log is in a mounted volume
 #accessible by host.
 
-if docker exec -it -u postgres btcpay psql -l | grep btcpayserver >/dev/null 2>&1 ; then
-return 0 ; fi
+docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
+if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
+return 0 
+fi
 
 counter=$((counter + 1))
+set_terminal ; echo "
+
+    Some computers are slow.
+    Parmanode will try 45 times with a 2 second pause for each try to give slow
+    computers a chance to build the databases necessary for BTCPay to work.
+    For most computers, the job should be done in under 5 seconds.
+    You may quit at any time wit control-c.
+
+    Counter is up to $counter
+    
+    "
 sleep 2
 done
 
@@ -52,7 +71,7 @@ return 1
 
 
 function postgres_database_creation {
-
+log "btcpay" "in postgres_database_creation"
 sleep 1
 docker exec -d -u postgres btcpay /bin/bash -c \
 "/home/parman/parmanode/postgres_script.sh ; \

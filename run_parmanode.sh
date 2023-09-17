@@ -78,6 +78,11 @@ while true ; do #begins the loop
 # Continue if user left unfinished
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits
 #otherwise not point.
+	if id | grep -q docker && which docker >/dev/null ; then
+		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
+			installed_config_add "docker-end"
+		fi
+	fi
 
  	if cat $HOME/.parmanode/installed.conf | grep "btcpay-half" ; then
 	install_btcpay_linux "resume" # return to the installation, but with a new variable
