@@ -45,6 +45,7 @@ fi
 
 
 electrs_nginx remove
+electrs_tor_remove
 
 sudo systemctl stop electrs.service >/dev/null
 sudo systemctl disable electrs.service >/dev/null

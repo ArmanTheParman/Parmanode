@@ -13,9 +13,6 @@ sudo systemctl restart electrs.service
 
 set_terminal
 parmanode_conf_remove "electrs_tor"
-echo "
-Electrs changes have been made and the program has been restarted."
-enter_continue
 return 0
 
 }
