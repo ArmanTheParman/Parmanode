@@ -68,7 +68,7 @@ p|P) return 1 ;;
 bc) less $HOME/.bitcoin/bitcoin.conf ;;
 bl) less $HOME/.parmanode/bitcoin.log ;;
 btcpc) less $HOME/.btcpayserver/Main/settings.config ;;
-btcpl) less $HOME/.parmanode/btcp.log ;;
+btcpl) less $HOME/.parmanode/btcpay.log ;;
 fc) less $HOME/parmanode/fulcrum/fulcrum.conf ;;
 fl) less $HOME/.parmanode/fulcrum.log ;;
 ic) less $HOME/.parmanode/installed.conf ;;

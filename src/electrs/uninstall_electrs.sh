@@ -36,8 +36,8 @@ while true ; do
 "
     read choice
     case $choice in
-    y|Y) rm -rf $HOME/.electrs_backup >/dev/null ;;
-    n|N) break ;;
+    y|Y) please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ;;
+    n|N) please_wait ; break ;;
     *) invalid
     esac
 done
@@ -45,8 +45,7 @@ fi
 
 
 electrs_nginx remove
-
-parmanode_conf_remove "electrs"
+electrs_tor_remove
 
 sudo systemctl stop electrs.service >/dev/null
 sudo systemctl disable electrs.service >/dev/null
@@ -58,6 +57,7 @@ fi
 
 rm -rf $HOME/parmanode/electrs
 
-parmanode_conf_remove "electrs"
+parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs" ; debug "end of uninstall"
+success "electrs" "being uninstalled."
 }

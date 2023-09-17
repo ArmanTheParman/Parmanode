@@ -27,7 +27,7 @@ fi
 
 rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
 
-installed_config_remove "tor"
+installed_config_remove "tor-end"
 
 enter_continue
 return 0

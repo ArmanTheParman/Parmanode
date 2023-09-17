@@ -1,11 +1,6 @@
 function install_docker_linux {
 installed_from="$1"
 
-#exclude Linux distros that don't have apt-get
-if ! command -v apt-get ; then
-unable_install_docker_linux && return 1
-fi
-
 if [[ "$1" == "menu" ]] ; then
 #Docker explainer
 set_terminal ; echo "
