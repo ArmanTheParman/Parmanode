@@ -5,7 +5,7 @@ grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || { announce "M
 unset electrs_compile && restore_elctrs #get electrs_compile true/false
 
 [[ $electrs_compile == "false" ]] && please_wait && rm -rf $HOME/parmanode/electrs/ && cp -r $HOME/.electrs_backup $HOME/parmanode/electrs
-
+installed_config_add "electrs-start"
 if [[ $electrs_compile == "true" ]] ; then
 preamble_install_electrs || return 1
 build_dependencies_electrs && log "electrs" "build_dependencies success" 
