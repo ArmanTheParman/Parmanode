@@ -13,7 +13,7 @@ echo "
 ########################################################################################
 #                                                                                      #"
 if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then parmanodemain=1
-echo "#    (i)                  Install Parmanode                                            #"
+echo "#    (i)                  Install Parmanode          [DO THIS FIRST!!]                 #"
 else parmanodemain=0
 echo "#    (add)                Add more programs (Install menu)                             #
 #                                                                                      #

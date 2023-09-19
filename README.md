@@ -1,196 +1,118 @@
-# Parmanode 3.6.2
+# Parmanode 3.7.0
 
-#### Instructions to install at the end
+### Open Source, easy AF Bitcoin node for desktop computers
+
+![Menu](https://parmanode.com/wp-content/uploads/2023/09/parmanode_menu.png)
+
+![OS available](https://parmanode.com/wp-content/uploads/2023/09/Screen-Shot-2023-09-19-at-4.28.57-pm.png)
 
 ## Introduction
 
-For Mac (x86_64, M1/M2), Linux (x86_64, and Raspberry Pi 32 or 64 bit)
-
-Parmanode is an automated installation wizard and menu for desktop
-computers, with the following software (list is growing). You don't have
-to install all of them! 
+Parmanode is an automated installation wizard and menu for desktop computers, with the following software (list is growing). You don't have to install all of them! 
 
 Parmanode lets you select what you want to include in your set up:
 
-                Bitcoin
-                Electrum Server (Fulcrum)
-                Electrum Server (electrs)
-                Electrum Desktop Wallet
-                Sparrow Bitcoin Wallet
-                Specter Desktop
-                LND
-                Ride The Lightning Wallet
-                BTCPay (Linux only) +/- over Tor
-                BTC RPC Explorer
-                Docker
-                Tor
-                Darknet Tor Server (Linux Only)
-                Educational material by Parman
+![Available programs](https://parmanode.com/wp-content/uploads/2023/09/programs.png)
 
-Parmanode is designed for non-technical users giving them the ability to 
-download and verify Bitcoin related software, and sync using an external 
-or internal drive, and also have configuration options presented to them
-with automation. No manual configuration file editing will be required -
-Parmanode takes care of all that in the background.
+Parmanode is designed for non-technical users giving them the ability to  download and verify Bitcoin related software, and sync using an external  or internal drive, and also have configuration options presented to them with automation. No manual configuration file editing will be required - Parmanode takes care of all that in the background.
 
 Users only need to read the menu options CAREFULLY, and respond to
 the questions - no command line interaction is ever needed. For example, 
 from a menu, bitcoin-cli commands are available, pruning can be activated 
 and rpcuser/rpcpassword can also be set.
 
-The software also comes with helpful information, including links to various
-articles on my website, armantheparman.com, so that Bitcoiners keep learning
-more about Bitcoin and how to be safely self-sovereign. Information on how 
-to connect various wallets to the node is provided, altough, Parmanode gives
-options to connect the wallet for the users in the background. For example,
-in the Parmanode Electrum (or Sparrow) menu, you can choose an option to 
-connect Sparrow to your own node, Fulcrum or electrs server on the same 
-computer, or to your own Fulcrum/electrs server via Tor, or to an external 
-computer via Tor. All the configuration is done automatically.
+The software also comes with helpful information, including links to various articles on my website, armantheparman.com, so that Bitcoiners keep learning more about Bitcoin and how to be safely self-sovereign.
 
-The most basic usage would be an internal drive to sync the Bitcoin
-blockchain, running the latest version of Bitcoin Core, and connecting 
-Sparrow Bitcoin Wallet or Specter Desktop Wallet directly to the node on 
-the same computer.
+![Education](https://www.parmanode.com/wp-content/uploads/2023/09/sss.png)
 
-While I tried to avoid it, for now, Mac users who wish to use Fulcrum will
-need to use Docker. Connecting may be problematic, so I recommend for now 
-that Mac users use Bitcoin Core and Sparrow on the same computer, and let 
-Parmanode connect the two. If you want to use Sparrow or Electrum with an 
-Electrum Wallet, the better way would be to use a Linux machine, at 
-least for now.
+Information on how  to connect various wallets to the node is provided, altough, Parmanode gives options to connect the wallet for the users in the background AUTOMAGICALLY. For example:
 
-## READ THE CODE
+![Electrum](https://parmanode.com/wp-content/uploads/2023/09/electrum.png)
 
-I have added copious comments to the code so that a non-developer can read
-it in an instructional way and learn what's going on. I expect it shouldn't
-be that hard to follow. All commands in the code are executable manually in 
-the terminal, so you can experiment and try out things you see.
+The most basic usage of Parmanode would be an internal drive to sync the Bitcoin blockchain, running the latest version of Bitcoin Core, and connecting Sparrow or Specter directly to Bitcoin Core on the same computer. If Electrum is required, then one of the Electrum servers (Fulcrum or electrs) is also required.
 
-I suggest using sofware called Visual Studio Code (VSC), as it colour codes 
-everything and makes it easier to follow the syntax. Open the parmanode 
-script folder that you downloaded from GitHub and read the code in VSC software.
+While I tried to avoid it, for now, Mac users who wish to use Fulcrum will need to use Docker. Connecting may be problematic, so I recommend for now that Mac users use Bitcoin Core and Sparrow on the same computer, and let Parmanode connect the two. If you want to use Sparrow or Electrum with an Electrum Wallet, the better way would be to use a Linux machine, at least for now.
 
-It can be a bit of a maze if you don't know where to start. I suggest to start
-at the "run_parmanode.sh" file and branch out from there. Most guidance is
-on that page, and more is added as you branch out. The majority of the comments
-for now are related to installing parmanode, custom functions, and installing
-Bitcoin Core.
+## Read The Code?
 
-## HOW TO RUN / INSTALL
+I have added copious comments to the code so that a non-developer can read it in an instructional way and learn what's going on. I expect it shouldn't be that hard to follow. All commands in the code are executable manually in the terminal, so you can experiment and try out things you see.
 
-If you want to start a new computer yourself with parmanode (build your own ParmanodL), 
-then see instructions near the end.
+I suggest using sofware called Visual Studio Code (VSC), as it colour codes everything and makes it easier to follow the syntax. Open the parmanode script folder that you downloaded from GitHub and read the code in VSC software.
 
-To simply install parmanode on your existing computer, read on...
+It can be a bit of a maze if you don't know where to start. I suggest to start at the "run_parmanode.sh" file and branch out from there. Most guidance is on that page, and more is added as you branch out. The majority of the comments for now are related to installing parmanode, custom functions, and installing Bitcoin Core.
 
-Open the terminal application and type the following (and hit \<enter\> after each line.
-Also, do note it is case sensitive):
+## How to Run/Install
 
-    cd ~/Desktop ; git clone http://github.com/armantheparman/parmanode.git
-    cd parmanode
-    ./run_parmanode.sh
+The simplest way to install is to copy and paste the following line into the Linux or Mac terminal...
 
-On some Linux distributions, git may not be installed by default so the git command above may not work
-initially. You'll need to install git like this...
+    curl https://parmanode.com/install.sh | sh
 
-    sudo apt update -y ; sudo apt install git -y
+On Macs, to use git (necessary), you may be asked to install the command line developer tools. You will be given the option to do so with a popup window, and you'll need to proceed with it to use git. It takes a few minutes to install.
 
-You can then close terminal, open it again, and try the sequence of commands above again.
+If you are extra cautious, you can see the installation code first (it's very short), you can type in the above command but omit the "| sh" ending. That will print out the code to the screen.
 
-On Macs, to use git, you may be asked to install the *command line developer tools*. You
-will be given the option to do so with a popup window, and you'll need to proceed with 
-it to use git. It takes a few minutes to install.
+If you get a fingerprint error/warning when you run the installation command, that's fine, carry on.
 
-If you get a fingerprint error/warning when you run the git clone, that's fine, carry on.
+From then on, to run Parmanode, you can double click the run_parmanode.sh file on the desktop. If you get a popup, choose to "run in terminal". 
 
-From then on, to run Parmanode, you can double click the run_parmanode.sh file. If you
-get a popup, choose to "run in terminal". Alternatively you can open terminal, navigate to
-the right directory with 
-    
-    cd Desktop/parmanode
+Alternatively you can open terminal, navigate to the right directory with 
+
+    cd Desktop/parmanode 
 
 Then run the program:
 
-    ./run_parmanode.sh
+    ./run_parmanode.sh 
 
-Parmanode is not designed to be run by a user (login) that did not originally install the software. If
-you try this, you will get errors.
+Parmanode is not designed to be run by a user (login) that did not originally install the software. If you try this, you will get errors.
 
-You can make a script that you can double-click and run parmanode that way (see ParmanodL)
-instructions for infor about that.
-
-## An important note about the naming and location of parmanode
-
-The program will create a directory structure on your computer and programs will be
-downloaded to /home/"user"/parmanode (Linux) or /Users/"user"/parmande (Mac).
-
-For this reason, don't download the script directory, also called "parmanode", to the
-home directory. If you do, the program will warn you and correct it.
-
-## A note about superuser
+## A Note About Superuser
 
 When the program runs, you will be asked at some point for a password - this is your 
 computer's "sudo" or login password, and is necessary for Parmanode to access system 
 functions like mounting drives.
 
-Please be aware, you cannot run the program as the root user. You'd need to create a new
-user with it's own home directory, and also give it a password and sudo permission.
+Please be aware, you cannot run the program as the root user. 
 
 ## Run on a VPS
 
-You can install Parmanode on a virtual private server but be aware the data requirement
-can get expensive unless you run it pruned. Remember, you can't run as root.
- 
+You can install Parmanode on a virtual private server but be aware the data requirement (for Bitcoin Core) can get expensive unless you run it pruned. Remember, you can't run as root.
 
-## INSTRUCTIONS TO UPGRADE
+## A Warning About SSH
 
-If you have any version of Parmanode 2.x.x, going to version 3.x.x, you need to uninstall 
-version 2 of Parmanode before installing version 3. You don't need to delete the Bitcoin 
-blockchain.
+You can access the computer with parmanode (ParmanodL) using SSH, but be aware, some apps are designed to work in a graphical environment. Parmanode might cause pop ups windows such as wallets, but you won't see them via SSH. It's fine to access by SSH, but just be mindful of this.
 
-Otherwise, use the parmanode menu to upgrade to the latest version.
-You could also just type "git pull" from within the parmanode SCRIPT directory.
+## Instructions to Upgrade
 
-Use the update option within the Parmanode software to update. Note, this will not
-automatically update the softwre that Parmanode installed for you on your system. To
-get newwer versions of updated software, you need to uninstall the particular app, then
-reinstall it with the new version of Parmanode - it will then install the newer version
- of the app for you.
+Use the update option within the Parmanode software to update. 
 
-## MAKE YOUR OWN PARMANODL
+Note, this will NOT automatically update the software that Parmanode installed for you on your system. 
 
-	https://github.com/ArmanTheParman/ParmanodL
+To get newer versions of updated apps, you need to uninstall the particular app, (you should use Parmanode remove tools), then reinstall it (with the new version of Parmanode) - it will then install the newer version of the app for you.
+
+## Make Your Own "PARMANODL"
+
+    https://github.com/ArmanTheParman/ParmanodL 
 
 ParmanodL is a computer running Linux and Parmanode which can be purchased ready made with
 the blockchain syced.
 
-But this is how you make your own.
+But this is how you make your own:
 
 Download Linux Mint iso.
 
-    cd ~/Downloads
-    curl -LO https://mirrors.advancedhThis is a PROGRAM
-directory where all the installed stuff is kept. This is different to the SCRIPT 
-parmanode directory which is the one you download containing the code (and where the
-run_parmanode.sh file lives). If you download that directory to inside the home directory, 
-then when the new directory is created, it will overwrite the scrip directory! This I 
-didn't anticipate when nameing the directories. Changing it now is a massive task, so 
-for now, I've simply prevented parmanode from working if you keep it in this location. 
-If you really wanted to keep the script directory in the home directory, you can rename
-it to something other than "parmanode". 
-osters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
+    cd ~/Downloads curl -LO 
 
-hash the downloaded file. The command is:
+    https://mirrors.advancedhosters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
 
-    shasum -a 256 linuxmint-21.2-cinnamon-64bit.iso
+Hash the downloaded file (to be sure it's safe). The command is:
+
+    shasum -a 256 ~/Downloads/linuxmint-21.2-cinnamon-64bit.iso 
 
 You should get:
 
-    116578dda0e03f1421c214acdd66043b586e7afc7474e0796c150ac164a90a2a
+    116578dda0e03f1421c214acdd66043b586e7afc7474e0796c150ac164a90a2a 
 
-Then flash the file to a usb drive - a thumb drive or even a full external SSD drive. The 1Tb
-drive you need for the blockchain will do nicely; it's temporary.
+Then flash the file to a USB drive (a thumb drive or even a full external SSD drive). The 1Tb drive you need for the blockchain will do nicely; you can use it for this and then use if for the blockchain data next.
 
 Use Balena Etcher to flash the iso file to the drive. This will make it a Linux drive and no longer
 readable by a Windows or Mac computer, so when it's finished flashing, ignore the pop-up 
@@ -210,21 +132,8 @@ Then dismiss the pop up and restart the computer. You'll be asked to remove the 
 This time when the computer boots up, you'll make your computer account and fill in details
 that will remain.
 
-Next, make sure you have an internet connection and run the following commands in terminal 
-(black icon on the tasbar at the bottom), one after the other, and hit <enter> after each
-line. Copy/paste is best:
+Next, make sure you have an internet connection and run the following commands in terminal  (black icon on the tasbar at the bottom), one after the other, and hit  after each line. Copy/paste is best:
 
-    sudo apt update -y ; sudo apt install git -y
-    cd ~/Desktop ; git clone http://github.com/armantheparman/parmanode.git
+    curl https://parmanode.com/install.sh | sh
 
-The above commands will install git, then use git to download Parmanode to the desktop (this
-is the best place for it to live, try not to move it). 
-
-The next commands will create a script which sits on the desktop and you can double click it
-to run Parmanode. You'll get a pop up and choose to "run in terminal".
-
-    echo '#!/bin/bash' > ~/Desktop/run_parmanode.sh
-    echo "cd ; cd Desktop ; cd parmanode ; ./run_parmanode.sh" >> $HOME/Desktop/run_parmanode.sh
-    sudo chmod +x $HOME/Desktop/run_parmanode.sh
-
-
+The above command will install git, then use git to download Parmanode and create a Desktop icon for you to run the program.
