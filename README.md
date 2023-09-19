@@ -172,17 +172,7 @@ Download Linux Mint iso.
     cd ~/Downloads
     curl -LO https://mirrors.advancedhosters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
     
-directory where all the installed stuff is kept. This is different to the SCRIPT 
-parmanode directory which is the one you download containing the code (and where the
-run_parmanode.sh file lives). If you download that directory to inside the home directory, 
-then when the new directory is created, it will overwrite the scrip directory! This I 
-didn't anticipate when nameing the directories. Changing it now is a massive task, so 
-for now, I've simply prevented parmanode from working if you keep it in this location. 
-If you really wanted to keep the script directory in the home directory, you can rename
-it to something other than "parmanode". 
-osters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
-
-hash the downloaded file. The command is:
+Hash the downloaded file. The command is:
 
     shasum -a 256 linuxmint-21.2-cinnamon-64bit.iso
 
