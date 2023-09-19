@@ -170,7 +170,8 @@ But this is how you make your own.
 Download Linux Mint iso.
 
     cd ~/Downloads
-    curl -LO https://mirrors.advancedhThis is a PROGRAM
+    curl -LO https://mirrors.advancedhosters.com/linuxmint/isos/stable/21.2/linuxmint-21.2-cinnamon-64bit.iso
+    
 directory where all the installed stuff is kept. This is different to the SCRIPT 
 parmanode directory which is the one you download containing the code (and where the
 run_parmanode.sh file lives). If you download that directory to inside the home directory, 
