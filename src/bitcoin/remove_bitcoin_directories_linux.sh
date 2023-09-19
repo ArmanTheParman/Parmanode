@@ -17,17 +17,17 @@ echo "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the external drive. Would like 
-    to delete that data or leave it be (i.e. skip)?
+    to delete that data or leave it?
 
-                            d)          delete
+                            d)          Delete
 
-                            s)          skip
+                            l)          Leave it 
 
 ########################################################################################
 "
 choose "xq" ; read choice 
 if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then export format="false" ; break ; fi
+if [[ $choice == "l" ]] ; then export format="false" ; break ; fi
 if [[ $choice == "d" ]] ; then 
     please_wait
     cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
