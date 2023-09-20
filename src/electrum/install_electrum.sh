@@ -6,7 +6,7 @@ mac_electrum_headsup
 
 if [[ $computer_type == Pi ]] ; then 
 
-  check_for_python || { announce "Your system doesn't have python3, aborting installation." ; return 1 } 
+  check_for_python || { announce "Your system doesn't have python3, aborting installation." ; return 1 ; } 
 
   electrum_dependencies 
 
