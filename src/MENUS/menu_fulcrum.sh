@@ -17,7 +17,7 @@ echo "
 ########################################################################################
 
 "
-if [[ $OS != "Mac"]] ; then
+if [[ $OS != "Mac" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo "
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS "
 else
