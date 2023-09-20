@@ -43,7 +43,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
-check_wallet_connect "Electrum"
+check_wallet_connected "Electrum"
 run_electrum
 enter_continue
 return 0 ;;
