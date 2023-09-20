@@ -1,6 +1,7 @@
 Version 3.7.1
     -Electrum Wallet for Pi's added
     -Sparrow Wallet for Pi's added
+    -Fulcrum database corruption strategy added
 Version 3.7.0
     -New installation script
     -Revamped README
