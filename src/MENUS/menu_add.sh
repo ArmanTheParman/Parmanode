@@ -351,14 +351,6 @@ case $choice in
     
     s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then
-
-        if [[ $chip == "arm64" || $chip == "aarch64" || $chip == "armv6l" || $chip == "armv7l" ]] ; then
-        announce \
-        "Sorry but Sparrow isn't available with Parmanode on non-Mac ARM chips (Raspberry Pi)" \
-        "Coming soon, promise."
-        continue
-        fi
-
        install_sparrow
        return 0
        fi

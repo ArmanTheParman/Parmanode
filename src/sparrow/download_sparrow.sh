@@ -11,6 +11,10 @@ if [[ $OS == "Linux" ]] ; then
     curl -LO https://github.com/sparrowwallet/sparrow/releases/download/${sparrow_version}/sparrow-${sparrow_version}-aarch64.tar.gz 
     fi
 fi
+
+https://github.com/sparrowwallet/sparrow/releases/download/1.7.9/sparrow-1.7.9-aarch64.tar.gz
+
+
 if [[ $OS == "Mac" ]] ; then
     if [[ $chip == "aarch64" ]] ; then
     curl -LO https://github.com/sparrowwallet/sparrow/releases/download/${sparrow_version}/Sparrow-${sparrow_version}-aarch64.dmg
