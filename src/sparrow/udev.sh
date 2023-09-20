@@ -15,7 +15,7 @@ if [[ $OS == "Mac" ]] ; then
     return 0
 fi
 
-if [[ $chip == "x86_64"]] ; then
+if [[ $chip == "x86_64" ]] ; then
 cd /tmp
 curl -LO http://parman.org/downloadable/udev
 sudo chmod +x /tmp/udev
