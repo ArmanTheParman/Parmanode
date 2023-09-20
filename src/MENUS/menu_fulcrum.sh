@@ -187,7 +187,7 @@ fulcrum_tor_remove
 ;;
 
 dc|DC|Dc|dC)
-fulcrum_database_correpted
+database_corrupted
 ;;
 
 *)
