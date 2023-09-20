@@ -81,7 +81,7 @@ if [[ $1 == "electrstcp" ]] ; then
 swap_string "$HOME/.sparrow/config" "serverType" "    \"serverType\": \"ELECTRUM_SERVER\"," 
 swap_string "$HOME/.sparrow/config" "useLegacyCoreWallet" "    \"useLegacyCoreWallet\": false,\n    \"electrumServer\": \"tcp://127.0.0.1:50005\","
 swap_string "$HOME/.sparrow/config" "useProxy" "    \"useProxy\": false,"
-echo "connection=ElectrsTCP" > $HOME/.parmanode/sparrow.connection
+echo "connection=electrsTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
