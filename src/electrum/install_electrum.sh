@@ -94,11 +94,11 @@ set_terminal ; echo "
     
     Electrum has been installed. The Program files are in:
 
-    $HOME/parmanode/electrum 
+        $HOME/parmanode/electrum 
 
     Although you can open Electrum manually with the text command:
 
-    $HOME/parmanode/electrum/run_electrum 
+        $HOME/parmanode/electrum/run_electrum 
 
     ...it's best to run Electrum through Parmanode as extra background work has gone 
     in to making sure you have a good connection to the Electrs or Fulcrum server.
