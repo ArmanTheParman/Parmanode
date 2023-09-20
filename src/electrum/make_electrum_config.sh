@@ -13,14 +13,14 @@ echo "{
     \"show_utxo_tab\": true
 }" | tee $HOME/.electrum/config >/dev/null 2>&1
     
-echo "connection=\"fulcrumssl\"" > $HOME/.parmanode/electrum.connection
+echo "connection=\"FulcrumSSL\"" > $HOME/.parmanode/electrum.connection
 
 fi
 
 
 if [[ $OS == "Mac" ]] ; then 
 
-    echo "connection=\"docker_fulcrum_ssl\"" > $HOME/.parmanode/electrum.connection
+    echo "connection=\"Docker_FulcrumSSL\"" > $HOME/.parmanode/electrum.connection
 
     if docker inspect fulcrum | grep '"IPAddress"' | grep '172.17.0.2' >/dev/null ; then
         F_IP="172.17.0.2"
