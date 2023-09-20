@@ -66,14 +66,38 @@ function check_if_win7 {
 if [[ $(uname -s) == MINGW* ]] ; then
     version=$(wmic os get version | grep -oE "[0-9]+.[0-9]+")
     if (( $(echo "$version >= 6.1" | bc -l) )) ; then
-        OS="Win"
+        export OS="Win"
     else
-        OS="Win_old"
+        export OS="Win_old"
     fi
 else
-    OS="Not_Win"
+    export OS="Not_Win"
 fi
 return 0
+}
+function which_computer_type {
+
+if [[ $OS == "Linux"]] ; then
+
+   if [[$(uname -m) == "aarch64" || \
+        $(uname -m) == "arm"     || \
+        $(uname -m) == "armhf"   || \
+        $(uname -m) == "armv7l"  || \
+        $(uname -m) == "armv6l"  || \
+        $(uname -m) == "armv8l"        ]] ; then
+        
+            export computer_type=Pi
+            parmanode_conf_add "computer_type=Pi"
+   else
+            export computer_type=LinuxPC
+            parmanode_conf_add "computer_type=LinuxPC"
+   fi
+
+    
+else
+            export computer_type=Mac
+            parmanode_conf_add "computer_type=Mac"
+fi
 }
 
 function get_ip_address {

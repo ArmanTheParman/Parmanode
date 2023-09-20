@@ -1,4 +1,4 @@
-#Not used, for reference:
+#Not used, for reference only for now:
 function manual_download_docker_linux {
 
 if [[ $chip == "x86_64" ]] ; then chip="amd64" ; fi

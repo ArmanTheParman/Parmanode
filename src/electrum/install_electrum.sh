@@ -1,24 +1,22 @@
 function install_electrum {
-if [[ SOS == "Linux" ]] ; then
-if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
-    set_terminal
-    echo "Parmanode has detected you are running a computer with an ARM chip,"
-    echo "possibly a Raspberry Pi. Unfortunately, this version of Parmanode"
-    echo "does not support Electrum. It will be included in a future version."
-    enter_continue
-    return 1
-    fi
-    fi
 
 set_terminal
 
-install_check "electrum" || return 1
-
 mac_electrum_headsup
 
-make_electrum_directories
+if [[ $computer_type == Pi ]] ; then 
 
-download_electrum && installed_conf_add "electrum-start"
+  check_for_python || { announce "Your system doesn't have python3, aborting installation." ; return 1 } 
+
+  electrum_dependencies 
+
+fi
+
+
+make_electrum_directories
+installed_conf_add "electrum-start"
+
+download_electrum 
 
 verify_electrum || return 1
 
@@ -54,7 +52,7 @@ set_terminal ; echo "
 enter_continue
 fi
 
-if [[ $OS == "Linux" ]] ; then
+if [[ $computer_type == "LinuxPC" ]] ; then
 echo "installing udev rules..."
 udev
 
@@ -74,7 +72,7 @@ set_terminal ; echo "
     this:
 
         1. Completely close Electrum
-        2. Restart Fulcrum or electrs Server
+        2. Restart Fulcrum or electrs server
         3. Restart Electrum from the Parmanode menu
 
 ########################################################################################
@@ -82,8 +80,38 @@ set_terminal ; echo "
 enter_continue 
 fi
 
+if [[ $computer_type == "Pi" ]] ; then
+echo "installing udev rules..."
+udev
 
+set_terminal ; echo "
+########################################################################################
 
+                                S U C C E S S ! !
+    
+    Electrum has been installed. The Program files are in $HOME/parmanode/electrum. 
+
+    Although you can open Electrum manually with 
+
+    $HOME/parmanode/electrum/run_electrum 
+
+    ...it's best to run Electrum through Parmanode as extra background work has gone 
+
+    in to making sure you have a good connection to the server.
+
+    Do be patient when loading the wallet - it can take 30 seconds to a minute for it
+    to connect to the server. You'll see a red dot in the bottom right hand corner,
+    but eventually it should turn green if you wait a bit. If it doesn't work, do 
+    this:
+
+        1. Completely close Electrum
+        2. Restart Fulcrum or electrs server
+        3. Restart Electrum from the Parmanode menu
+
+########################################################################################
+"
+enter_continue 
+fi
 }
 
 

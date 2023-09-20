@@ -5,7 +5,7 @@
 
 function install_sparrow {
 if [[ SOS == "Linux" ]] ; then
-if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv71" ]] ; then 
+if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then 
     set_terminal
     echo "Parmanode has detected you are running a computer with an ARM chip,"
     echo "possibly a Raspberry Pi. Unfortunately, Sparrow is not available"

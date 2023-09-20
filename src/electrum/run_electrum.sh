@@ -2,8 +2,13 @@ function run_electrum {
 
 please_wait
 
-if [[ $OS == "Linux" ]] ; then
+if [[ $computer_type == "LinuxPC" ]] ; then
 nohup $HOME/parmanode/electrum/electrum*AppImage >/dev/null 2>&1 &
+fi
+
+
+if [[ $computer_type == "Pi" ]] ; then
+nohup $HOME/parmanode/electrum/run_electrum >/dev/null 2>&1 &
 fi
 
 if [[ $OS == "Mac" ]] ; then
