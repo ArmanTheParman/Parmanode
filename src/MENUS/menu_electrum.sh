@@ -48,8 +48,6 @@ run_electrum
 enter_continue
 return 0 ;;
 
-
-
 ssl|Ssl|SSL)
 check_fulcrum_ssl
 modify_electrum_config fulcrumssl

@@ -43,7 +43,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
-check_wallet_connect "Fulcrum"
+check_wallet_connected "Fulcrum"
 run_sparrow
 return 0 ;;
 
