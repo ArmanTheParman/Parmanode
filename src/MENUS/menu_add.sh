@@ -371,6 +371,7 @@ case $choice in
       ;;
    e|E|electrum|Electrum|ELECTRUM)
       if [[ -n $electrum_n ]] ; then
+      debug "before install_electrum"
       install_electrum
       return 0
       fi
