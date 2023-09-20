@@ -371,14 +371,6 @@ case $choice in
       ;;
    e|E|electrum|Electrum|ELECTRUM)
       if [[ -n $electrum_n ]] ; then
-
-        if [[ $chip == "arm64" || $chip == "aarch64" || $chip == "armv6l" || $chip == "armv7l" ]] ; then
-        announce \
-        "Sorry but Electrum isn't ready with Parmanode for ARM chips (eg RaspberryPi)" \
-        "Coming soon, promise"
-        continue
-        fi
-
       install_electrum
       return 0
       fi
