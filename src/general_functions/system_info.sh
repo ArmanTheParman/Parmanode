@@ -87,7 +87,7 @@ if [[ $OS == "Linux" ]] ; then
          $(uname -m) == "armv8l"        ]] ; then
         
             export computer_type=Pi >/dev/null
-            parmanode_conf_add "computer_type=Pi"
+            parmanode_conf_add "computer_type=Pi" >/dev/null
    else
             export computer_type=LinuxPC >/dev/null
             parmanode_conf_add "computer_type=LinuxPC"
