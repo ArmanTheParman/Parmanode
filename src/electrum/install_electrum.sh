@@ -18,6 +18,8 @@ installed_conf_add "electrum-start"
 
 download_electrum 
 
+if [[ $computer_type == Pi ]] ; then extract_electrum ; fi
+
 verify_electrum || return 1
 
 mac_electrum_applications #Mac only
