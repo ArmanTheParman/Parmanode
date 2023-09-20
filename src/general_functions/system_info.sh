@@ -90,13 +90,13 @@ if [[ $OS == "Linux" ]] ; then
             parmanode_conf_add "computer_type=Pi" >/dev/null
    else
             export computer_type=LinuxPC >/dev/null
-            parmanode_conf_add "computer_type=LinuxPC"
+            parmanode_conf_add "computer_type=LinuxPC" >/dev/null
    fi
 
     
 else
             export computer_type=Mac >/dev/null
-            parmanode_conf_add "computer_type=Mac"
+            parmanode_conf_add "computer_type=Mac" >/dev/null
 fi
 }
 
