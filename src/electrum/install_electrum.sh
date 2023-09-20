@@ -89,7 +89,9 @@ set_terminal ; echo "
 
                                 S U C C E S S ! !
     
-    Electrum has been installed. The Program files are in $HOME/parmanode/electrum. 
+    Electrum has been installed. The Program files are in 
+
+    $HOME/parmanode/electrum. 
 
     Although you can open Electrum manually with 
 
