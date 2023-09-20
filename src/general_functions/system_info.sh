@@ -79,12 +79,12 @@ function which_computer_type {
 
 if [[ $OS == "Linux" ]] ; then
 
-   if [[$(uname -m) == "aarch64" || \
-        $(uname -m) == "arm"     || \
-        $(uname -m) == "armhf"   || \
-        $(uname -m) == "armv7l"  || \
-        $(uname -m) == "armv6l"  || \
-        $(uname -m) == "armv8l"        ]] ; then
+   if [[ $(uname -m) == "aarch64" || \
+         $(uname -m) == "arm"     || \
+         $(uname -m) == "armhf"   || \
+         $(uname -m) == "armv7l"  || \
+         $(uname -m) == "armv6l"  || \
+         $(uname -m) == "armv8l"        ]] ; then
         
             export computer_type=Pi
             parmanode_conf_add "computer_type=Pi"
