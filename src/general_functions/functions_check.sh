@@ -186,3 +186,6 @@ fi
 fi
 }
 
+function check_for_python {
+if ! which python3 >/dev/null ; then return 1 ; else return 0 ; fi
+}

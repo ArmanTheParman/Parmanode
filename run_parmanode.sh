@@ -52,6 +52,8 @@ which_os #use a search function to find functions, eg seach "which_os {". By inc
 # the { in your search, you'll narrow down to where the function is defined, and exclude
 # the results where it is called on.
 
+which_computer_type
+
 get_ip_address #a function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
