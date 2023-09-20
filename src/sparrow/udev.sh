@@ -25,8 +25,8 @@ fi
 if [[ $chip == "aarch64" ]] ; then
 cd /tmp
 curl -LO http://parman.org/downloadable/udev_aarch64
-sudo chmod +x /tmp/udev_arch64
-sudo ./udev_arch64 installudevrules
+sudo chmod +x /tmp/udev_aarch64
+sudo ./udev_aarch64 installudevrules
 fi
 
 
