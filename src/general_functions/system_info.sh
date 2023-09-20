@@ -77,7 +77,7 @@ return 0
 }
 function which_computer_type {
 
-if [[ $OS == "Linux"]] ; then
+if [[ $OS == "Linux" ]] ; then
 
    if [[$(uname -m) == "aarch64" || \
         $(uname -m) == "arm"     || \
