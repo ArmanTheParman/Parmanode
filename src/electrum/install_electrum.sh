@@ -56,7 +56,7 @@ fi
 
 if [[ $computer_type == "LinuxPC" ]] ; then
 echo "installing udev rules..."
-udev
+udev "electrum"
 
 set_terminal ; echo "
 ########################################################################################
