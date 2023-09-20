@@ -1,3 +1,8 @@
+Version 3.7.1
+    -Electrum Wallet for Pi's added
+Version 3.7.0
+    -New installation script
+    -Revamped README
 Version 3.6.2
     -Much improved flow for setting up external hard drive.
     -Various bugs fixed
