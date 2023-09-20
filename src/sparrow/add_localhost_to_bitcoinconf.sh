@@ -2,7 +2,7 @@
 # making sure it's in there. If not, it skips.
 
 function add_localhost_to_bitcoinconf {
-if grep -q bitcoin-end < $HOME/.parmanode/installed.conf
+if grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcallowip=127.0.0.1" >/dev/null 2>&1 ; then
     set_terminal
     echo ' 
