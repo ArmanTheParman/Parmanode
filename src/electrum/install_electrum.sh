@@ -70,8 +70,9 @@ set_terminal ; echo "
 
     Do be patient when loading the wallet - it can take 30 seconds to a minute for it
     to connect to the server. You'll see a red dot in the bottom right hand corner,
-    but eventually it should turn green if you wait a bit. If it doesn't work, do 
-    this:
+    but eventually it should turn green if you wait a bit. 
+    
+    If it doesn't work, do this:
 
         1. Completely close Electrum
         2. Restart Fulcrum or electrs server
@@ -91,22 +92,22 @@ set_terminal ; echo "
 
                                 S U C C E S S ! !
     
-    Electrum has been installed. The Program files are in 
+    Electrum has been installed. The Program files are in:
 
-    $HOME/parmanode/electrum. 
+    $HOME/parmanode/electrum 
 
-    Although you can open Electrum manually with 
+    Although you can open Electrum manually with the text command:
 
     $HOME/parmanode/electrum/run_electrum 
 
     ...it's best to run Electrum through Parmanode as extra background work has gone 
-
-    in to making sure you have a good connection to the server.
+    in to making sure you have a good connection to the Electrs or Fulcrum server.
 
     Do be patient when loading the wallet - it can take 30 seconds to a minute for it
     to connect to the server. You'll see a red dot in the bottom right hand corner,
-    but eventually it should turn green if you wait a bit. If it doesn't work, do 
-    this:
+    but eventually it should turn green if you wait a bit. 
+    
+    If it doesn't work, do this:
 
         1. Completely close Electrum
         2. Restart Fulcrum or electrs server
