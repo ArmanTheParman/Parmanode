@@ -6,7 +6,7 @@ source ~/.parmanode/parmanode.conf >/dev/null
 
 unset running output1 output2 
 if ! ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
-if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi
+if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
 if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
 
 if [[ $running != false ]] ; then running=true ; fi
