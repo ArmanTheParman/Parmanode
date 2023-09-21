@@ -5,7 +5,7 @@ if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 fi
 
 if [[ ${message_instructions} != "1" ]] ; then 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
                                     Instructions
@@ -16,7 +16,7 @@ set_terminal ; echo "
     menus with \"q\" and <enter>. Anternatively, you can exit by holding <control>
     and hitting \"c\".
 
-    The first thing you need to do to use Parmanode is to \"install\" it (there's 
+    ${bright_magenta}The first thing you need to do to use Parmanode is to \"install\" it $orange(there's 
     an option for that in the main menu - you can't miss it). This will create 
     the necessary directory structure on your system.
 
