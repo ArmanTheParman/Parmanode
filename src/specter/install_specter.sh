@@ -14,7 +14,6 @@ if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then
 set_terminal
 install_check "specter" || return 1
 
-
 specter_mac_warning || return 1 
 
 specter_make_dir && installed_conf_add "specter-start"
