@@ -27,7 +27,6 @@ then
     export OS="Linux"
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
     return 0
-else
 fi
 
 if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]] 
