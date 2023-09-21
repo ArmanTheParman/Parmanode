@@ -13,7 +13,7 @@ if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "extern
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then return 0 ; fi
 
 format_warnings 
-
+if [[ $skip_formatting == true ]] ; then return 0 ; fi
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
