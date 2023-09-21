@@ -54,6 +54,10 @@ which_os #use a search function to find functions, eg seach "which_os {". By inc
 
 which_computer_type
 
+# Config directory needs to be made
+mkdir $HOME/.parmanode >/dev/null 2>&1  #2>&1 means if there is a standard error output (2), 
+# send it to standard output (1), which is, in this case, to /dev/null.
+
 get_ip_address #a function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
@@ -62,10 +66,6 @@ update_version_info
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
 clean_exit 
-	
-# Config directory needs to be made
-mkdir $HOME/.parmanode >/dev/null 2>&1  #2>&1 means if there is a standard error output (2), 
-# send it to standard output (1), which is, in this case, to /dev/null.
 
 # With no argument after the function, this will create a parmanode.conf file if it doesnt' exist.
 parmanode_conf_add
