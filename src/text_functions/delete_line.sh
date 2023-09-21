@@ -7,11 +7,12 @@
 
 function delete_line {
 
-if cat $HOME/.parmanode/installed.conf | grep -q parmanode-end ; then 
+#program exits if parmanode not "installed"- preventing the use of the function before installation 
+if grep -q parmanode-end < $HOME/.parmanode/installed.conf ; then 
 true
 else
 return 1
-fi
+fi >/dev/null 2>&1
 
 if [[ $OS == "Mac" ]] ; then
 	change_string_mac "$1" "$2" "null" "delete"

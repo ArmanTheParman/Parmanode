@@ -5,7 +5,7 @@ if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 fi
 
 if [[ ${message_instructions} != "1" ]] ; then 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
                                     Instructions
