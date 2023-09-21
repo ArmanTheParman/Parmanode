@@ -83,8 +83,7 @@ echo "#                                          (r)                RTL Wallet  
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then rtlmenu=1
 echo "#                                          (r)                RTL (partial)            #
 #                                                                                      #" ; fi
-if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo "#                                           (e)                Electrum Wallet         #
+echo "#                                           (e)               Electrum Wallet         #
 #                                                                                      #"  
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummenu=1
 echo "#                                          (e)                Electrum (partial)       #
