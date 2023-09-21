@@ -52,7 +52,6 @@ $bright_magenta bright magenta
 $bright_cyan bright cyan
 $bright_which bright white
 "
-enter_continue
 fi
 
 }
