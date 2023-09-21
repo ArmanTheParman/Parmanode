@@ -12,7 +12,7 @@ debug2 "testing after bitcoin check"
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then return 0 ; fi
 
-format_warnings || return 1 # return 1 means user skipped formatting.
+format_warnings 
 
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
