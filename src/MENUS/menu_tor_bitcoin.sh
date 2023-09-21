@@ -8,7 +8,7 @@ enter_continue
 fi
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
 $cyan                        Tor options for Bitcoin (Linux only)   $orange

@@ -4,7 +4,7 @@ function remove_programs {
 # set to toggle the availability of the menu logic below, via if statements.
 
 if ! grep -q parmanode $HOME/.parmanode/installed.conf ; then 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Intsall Parmanode before trying to remove anyting... obviously!
