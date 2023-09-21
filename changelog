@@ -1,9 +1,11 @@
+Version 3.7.2
+    -critical bug fix
+    -pretty colours
 Version 3.7.1
     -Electrum Wallet for Pi's added
     -Sparrow Wallet for Pi's added
     -Fulcrum database corruption strategy added
     -Wallets now check that server is running, and give warning
-    -More colours
 Version 3.7.0
     -New installation script
     -Revamped README
