@@ -9,7 +9,7 @@
     # errormessage
 
 function enter_continue {
-echo "Hit <enter> to continue." ; read
+echo "${yellow}Hit <enter> to continue.$orange" ; read
 return 0
 }
 
