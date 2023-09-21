@@ -24,5 +24,6 @@ export bright_magenta="\e[95m"
 export bright_cyan="\e[96m"
 export bright_white="\e[97m"
 fi
-
+echo "$bright_cyan"
+enter_continue
 }
