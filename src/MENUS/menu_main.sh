@@ -42,8 +42,7 @@ echo "#-------------------------------------------------------------------------
 "
 choose "xq" # custom fuction to print a prompt. Different argumens give different messages
 # "xq" means add a prompt about choosing and one about how to quit.
-echo "
-(Note, <enter> is the same as <return>)"
+
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 
