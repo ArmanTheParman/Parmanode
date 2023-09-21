@@ -12,14 +12,13 @@ fi
 
 download_sparrow && installed_conf_add "sparrow-start"
 verify_sparrow || return 1
+make_sparrow_config 
 
 if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
 if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
-
-make_sparrow_config 
 
 if [[ $OS == "Linux" ]] ; then udev "sparrow" ; fi
 debug "Did udev function run?"
