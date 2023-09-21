@@ -238,7 +238,7 @@ fi
 while true
 do
 set_terminal_higher
-echo "
+echo -e "
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
