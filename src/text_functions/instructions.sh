@@ -16,8 +16,8 @@ set_terminal ; echo -e "
     menus with \"q\" and <enter>. Anternatively, you can exit by holding <control>
     and hitting \"c\".
 
-    The first thing you need to do to use Parmanode is to \"install\" it (there's 
-    an option for that in the main menu - you can't miss it). This will create 
+    ${bright_mangeta}The first thing you need to do to use Parmanode is to \"install\" it (there's 
+    an option for that in the main menu - you can't miss it). ${orange}This will create 
     the necessary directory structure on your system.
 
     Only then you will be able to add individual programs from the \"add\" menu.
