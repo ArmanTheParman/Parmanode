@@ -1,5 +1,6 @@
 function set_colours {
-
+#colours don't work on Mac in the way I've implemented this, so excluding.
+if [[ $OS == Linux ]] ; then
 export black="\e[30m"
 export red="\e[31m"
 export green="\e[32m"
@@ -22,5 +23,6 @@ export bright_blue="\e[94m"
 export bright_magenta="\e[95m"
 export bright_cyan="\e[96m"
 export bright_white="\e[97m"
+fi
 
 }
