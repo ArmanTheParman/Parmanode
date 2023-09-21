@@ -295,7 +295,7 @@ if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
 if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
-echo "
+echo "#                                                                                      #
 ########################################################################################
 "
 choose "xpq"
