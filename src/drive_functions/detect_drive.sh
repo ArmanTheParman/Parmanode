@@ -15,7 +15,7 @@ while true ; do
 set_terminal "pink" ; echo -e "
 ########################################################################################
 
-    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$orange Do not 
+    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
     
     DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
