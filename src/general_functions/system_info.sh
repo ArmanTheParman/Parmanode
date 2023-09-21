@@ -10,6 +10,8 @@
 function which_os {
 # This function just extracts and stores the operating system name
 
+debug2 "in which os"
+
 if [[ "$(uname -s)" == "Darwin" ]] #uname gives useful info about the system.
 then
     export OS="Mac"
