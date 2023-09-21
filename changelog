@@ -1,6 +1,7 @@
 Version 3.7.2
     -critical bug fix
     -pretty colours
+    -pruning bug fixed
 Version 3.7.1
     -Electrum Wallet for Pi's added
     -Sparrow Wallet for Pi's added
