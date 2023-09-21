@@ -45,7 +45,7 @@ choose "xq" ; read choice
 case $choice in 
     s|S)
         export skip_formatting="true"
-        return 1 ;;
+        return 0 ;;
     q|Q)
         exit 0 ;;
     y|Y)
