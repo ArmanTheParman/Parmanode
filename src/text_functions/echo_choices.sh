@@ -14,7 +14,7 @@ return 0
 }
 
 function enter_exit {
-echo "Hit <enter> to exit." ; read
+echo -e "Hit <enter> to exit." ; read
 return 0
 }
 
