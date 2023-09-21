@@ -29,7 +29,7 @@ fi
 }
 
 function colour_check {
-if [[ $debug == 1 ]]
+if [[ $debug == 1 ]] ; then
 echo -e "
 $black black
 $red red
