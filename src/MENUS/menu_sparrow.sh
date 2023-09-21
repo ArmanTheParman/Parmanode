@@ -3,9 +3,9 @@ while true ; do
 
 source $HOME/.parmanode/sparrow.connection >/dev/null
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-                                 Sparrow Menu                               
+                   $cyan              Sparrow Menu                         $orange      
 ########################################################################################
 
                       SPARROW CONNECTION TYPE: $connection

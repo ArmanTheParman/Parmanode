@@ -3,7 +3,7 @@ while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                                  TOR
+                     $cyan                    TOR    $orange
 
                        status)         Check if Tor is running
 

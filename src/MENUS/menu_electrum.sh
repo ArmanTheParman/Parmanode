@@ -5,9 +5,9 @@ source $HOME/.parmanode/electrum.connection >/dev/null 2>&1
 if cat $HOME/.electrum/config | grep "\"server" | grep "7002" >/dev/null ; then connection=fulcrumTOR ; fi
 if cat $HOME/.electrum/config | grep "\"server" | grep "7004" >/dev/null ; then connection=electrsTOR ; fi
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-                                 Electrum Menu                               
+                                 ${cyan}Electrum Menu${orange}
 ########################################################################################
 
                           ELECTRUM CONNECTION TYPE: $connection

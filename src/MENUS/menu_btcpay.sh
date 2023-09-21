@@ -1,8 +1,8 @@
 function menu_btcpay {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-                                 BTCPay Server Menu
+                                 ${cyan}BTCPay Server Menu${yellow}
 ########################################################################################
 
 

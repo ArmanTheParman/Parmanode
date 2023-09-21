@@ -23,9 +23,9 @@ else
 t_enabled="(currently: disabled)"
 fi
 set_terminal_high
-echo "
+echo -e "
 ########################################################################################
-                                BTC RPC EXPLORER 
+                                ${cyan}BTC RPC EXPLORER${orange}
 ########################################################################################
 "
 if sudo systemctl status btcrpcexplorer | grep "active (running)" >/dev/null 2>&1 ; then echo "
