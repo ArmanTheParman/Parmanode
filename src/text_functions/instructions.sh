@@ -10,29 +10,33 @@ set_terminal ; echo "
 
                                     Instructions
 
-    The first thing you need to do is install Parmanode (there's an option for that in
-    the main menu). This will create the necessary directory structure, and give you
-    the option to format an external drive, should you wish to use that.
+    You can navigate the Parmanode menu system by typing the letters corresponing to 
+    the choice you want to make, and hit <enter>. You can always go back up the 
+    menu \"tree\" by hitting \"p\" and <enter>. Similarly, you can quit at most
+    menus with \"q\" and <enter>. Anternatively, you can exit by holding <control>
+    and hitting \"c\".
 
-    Once Parmnode installation is done, you will be able to add individual programs. 
-    These are also available from the main menu, under \"add programs\". Start by 
-    adding Bitcoin, and work your way down the list. You can add any you like and are
-    not obliged to install everything.
+    The first thing you need to do to use Parmanode is to \"install\" it (there's 
+    an option for that in the main menu - you can't miss it). This will create 
+    the necessary directory structure on your system.
 
-    To use any program, select \"use programs\"from the main menu. For each program 
-    there are various functions you can select. These are included as ways for you 
-    to interact with the installed software in an easy way. There is nothing stopping 
-    you from using the programs directly yourself. For example, running \"bitcoin-cli 
-    getblockchaininfo\" from the terminal will still work.
+    Only then you will be able to add individual programs from the \"add\" menu.
 
-    To hide this message next time, type in \"Free Ross\" then <enter>.
+    There are many programs available - you don't need to install them all.
 
-    To read about why you should run a node at all, (Parman's 6 reasons to run a node)
-    type \"node\" and <enter>.
-
-    To continue on to the main menu, just hit <enter>.
+    To use any program you've installed, select \"use\" option from the main menu. 
+    For each program there are various functions you can select. These are included 
+    as ways for you to interact with the installed software in an easy way. 
 
 ########################################################################################
+    
+To hide this message next time, type in \"Free Ross\" then <enter>.
+
+To read about why you should run a node at all, (Parman's 6 reasons to run a node)
+type \"node\" and <enter>.
+
+
+To continue on to the main menu, just hit <enter>.
 "
 read choice
 case $choice in 
