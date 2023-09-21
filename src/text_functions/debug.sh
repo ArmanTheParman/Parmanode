@@ -20,3 +20,13 @@ if [ $debug == 1 ] ; then
 debug "$1"
 fi
 }
+
+function debug2 {
+
+if [[ $debug == 2 ]] ; then
+echo "${1}"
+enter_continue
+return 0
+fi
+
+}
