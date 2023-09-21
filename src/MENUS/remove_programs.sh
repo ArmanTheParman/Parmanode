@@ -20,9 +20,9 @@ set_terminal
 
 echo -e "
 ########################################################################################
-
+#                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Remove Programs$orange                              #
-
+#                                                                                      #
 ########################################################################################
 "
 if grep -q "parmanode-end" $HOME/.parmanode/installed.conf ; then
