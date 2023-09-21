@@ -1,5 +1,5 @@
 function remove_programs {
-# another dynamic menu. Each program is listed either as available to be removed,
+# another dynamic menu. Each program is listed either as available to be removed, 
 # or as a partial (failed) installation, that can be removed. The menu variable is 
 # set to toggle the availability of the menu logic below, via if statements.
 
@@ -84,7 +84,7 @@ elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then rtlmenu=1
 echo "#                                          (r)                RTL (partial)            #
 #                                                                                      #" ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo "#                                           (e)               Electrum Wallet          #
+echo "#                                          (e)                Electrum Wallet          #
 #                                                                                      #"  
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummenu=1
 echo "#                                          (e)                Electrum (partial)       #
