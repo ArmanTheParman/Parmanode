@@ -11,35 +11,29 @@ do
 echo "
 ########################################################################################
 
-    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your computer 
-    with the option of additional related programs.
+                            P  A  R  M  A  N  O  D  E
 
 ########################################################################################
 
+    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your computer 
+    with the option of additional related programs. 
+    
+    Everything is Free Open Source Software.
 
     Requirements:
 
-            1) Debian/Ubuntu/Mint Linux, Mac (including Raspberry Pi 4)
+            1) Debian based Linux (includes Ubuntu/Mint) PC/Pi, or Mac
             
-             (Not available for Windows yet)
+                          (Not available for Windows yet)
 
-            2) recommended: An ext drive (1 Tb) OR internal drive with spare capacity
+            2) Recommended: An external OR internal drive (1 Tb required)
 
-            3) Users must not hold ANY shitcoins. Honesty system.
-            
-            5) Free: 
-                   - Donations appreciated
-                   - Yes, the code is open source, MIT licence, like Bitcoin
+            3) Users must not hold ANY shitcoins! Honesty system.
 
 
     To report bugs:
                    - armantheparman@protonmail.com
                    - Telegram chat: https:/t.me/parmanode
-
-
-    To hire personal assistance to setup:
-                   - email armantheparman@protonmail.com
-    
 
 ########################################################################################
 

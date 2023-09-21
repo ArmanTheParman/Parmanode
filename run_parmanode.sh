@@ -40,6 +40,8 @@ fi
 
 	done #ends the loop
 
+set_colours #just exports variables with colour settings to make it easier to code with colours
+
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
@@ -54,6 +56,10 @@ which_os #use a search function to find functions, eg seach "which_os {". By inc
 
 which_computer_type
 
+# Config directory needs to be made
+mkdir $HOME/.parmanode >/dev/null 2>&1  #2>&1 means if there is a standard error output (2), 
+# send it to standard output (1), which is, in this case, to /dev/null.
+
 get_ip_address #a function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
@@ -62,10 +68,6 @@ update_version_info
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
 clean_exit 
-	
-# Config directory needs to be made
-mkdir $HOME/.parmanode >/dev/null 2>&1  #2>&1 means if there is a standard error output (2), 
-# send it to standard output (1), which is, in this case, to /dev/null.
 
 # With no argument after the function, this will create a parmanode.conf file if it doesnt' exist.
 parmanode_conf_add
@@ -73,20 +75,15 @@ parmanode_conf_add
 # Load config variables
 if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
 
-# For some insallations of apps, the program needs to exit. This loop will check
-# if the program should return to a particular spot
-while true ; do #begins the loop
-
-# Continue if user left unfinished
+#if docker is set up on the machine, then it is detected by Parmanode
+#and added to the config file
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if id | grep -q docker && which docker >/dev/null ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
-			installed_config_add "docker-end"
+			installed_config_add "docker-end" 
 		fi
 	fi
 fi
-
-break ; done
 
 # fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
 # In older versions there was a field missing in fstab which caused a system crash if
