@@ -35,10 +35,10 @@ if [[ $OS == "Mac" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and re-connect the drive you wish to use for Parmanode. Do not 
+    Now go ahead and ${cyan}re-connect$pink the drive you wish to use for Parmanode. Do not 
     connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
