@@ -9,12 +9,12 @@
     # errormessage
 
 function enter_continue {
-echo -e "${yellow}Hit <enter> to continue.$orange" ; read
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }
 
 function enter_exit {
-echo -e "${yellow}Hit <enter> to exit.$orange" ; read
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to exit.$orange" ; read
 return 0
 }
 
@@ -22,25 +22,25 @@ function choose {
 
 if [[ $1 == "xpq" ]]
 then
-echo -e "${yellow}Type your choice, or (p) for previous, (q) to quit, then <enter>: $orange"
+echo -e "${yellow}Type your ${cyan}choice${yellow}, or ${cyan}(p)${yellow} for previous, ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 return 0
 fi
 
 if [[ $1 == "xq" ]]
 then
-echo -e "${yellow}Type your choice, or (q) to quit, then <enter>: $orange"
+echo -e "${yellow}Type your ${cyan}choice${yellow}, or ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 return 0
 fi
 
 if [[ $1 == "x" ]]
 then
-echo -e "${yellow}Type your choice, then <enter>: $orange"
+echo -e "${yellow}Type your ${cyan}choice${yellow}, then <enter>: $orange"
 return 0
 fi
 
 if [[ $1 == "epq" ]]
 then
-echo -e "${yellow}Hit <enter> to continue, (p) for previous, (q) to quit, then <enter>: $orange"
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue, ${cyan}(p)${yellow} for previous, ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 # while true ; do 
 # case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
 return 0
@@ -48,7 +48,7 @@ fi
 
 if [[ $1 == "esq" ]]
 then
-echo -e "${yellow}Hit <enter> to continue, (s) to skip, (q) to quit, then <enter>: $orange"
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue, ${cyan}(s)${yellow} to skip, ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 # while true ; do 
 # case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
 return 0
@@ -56,7 +56,7 @@ fi
 
 if [[ $1 == "qc" ]]
 then
-echo -e "${yellow}Hit (q) then <enter> to quit, anything else to continue.$orange"
+echo -e "${yellow}Hit ${cyan}(q)${yellow} then <enter> to quit, ${cyan}anything${yellow} else to continue.$orange"
 return 0
 fi
 
@@ -67,13 +67,13 @@ function invalid {
 
 set_terminal
 
-echo -e "${yellow}Invalid choice. Hit <enter> before trying again. $orange" ; read
+echo -e "${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read
 return 0
 }
 
 function previous_menu { 
 
-echo -e "${yellow}Hit <enter> to go back to the previous menu.$orange" ; read
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to go back to the previous menu.$orange" ; read
 return 0
 }
 

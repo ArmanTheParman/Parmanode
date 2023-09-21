@@ -5,10 +5,10 @@ set_terminal_bit_higher #custom function to resize the window
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
-echo "
+echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E -- Main Menu                                                    #
+#    P A R M A N O D E -- ${cyan}Main Menu$orange                                                    #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #"
