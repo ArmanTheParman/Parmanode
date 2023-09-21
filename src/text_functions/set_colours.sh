@@ -1,6 +1,6 @@
 function set_colours {
 #colours don't work on Mac in the way I've implemented this, so excluding.
-if [[ $OS == "Linux" ]] ; then
+if [[ $(uname -s) == "Linux" ]] ; then
 export black="\e[30m"
 export red="\e[31m"
 export green="\e[32m"
