@@ -23,5 +23,36 @@ export bright_blue="\e[94m"
 export bright_magenta="\e[95m"
 export bright_cyan="\e[96m"
 export bright_white="\e[97m"
+colour_check
 fi
+
+}
+
+function colour_check {
+if [[ $debug == 1 ]]
+echo -e "
+$black black
+$red red
+$green green
+$yellow yellow
+$blue blue
+$mangeta mangeta
+$cyan cyan
+$white white
+$reset reset
+$orange orange
+$pink pink
+$bright_black bright black
+$grey grey
+$bright_red bright red
+$bright_green bright green
+$bright_yellow bright yellow
+$bright_blue bright blue
+$bright_magenta bright magenta
+$bright_cyan bright cyan
+$bright_which bright white
+"
+enter_continue
+
+
 }
