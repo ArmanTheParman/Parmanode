@@ -1,6 +1,6 @@
 function menu_tor {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
                      $cyan                    TOR    $orange

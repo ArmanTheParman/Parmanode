@@ -3,7 +3,7 @@ set_terminal
 while true
 do
 set_terminal_bit_higher
-echo "
+echo -e "
 ########################################################################################
 
                 $cyan              P A R M A N O D E - \"Apps\"    $orange

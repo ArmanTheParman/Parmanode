@@ -2,7 +2,7 @@ function menu_tools {
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
  
                       $cyan          P A R M A N O D E - Tools   $orange
