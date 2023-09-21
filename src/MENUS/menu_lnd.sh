@@ -1,7 +1,7 @@
 function menu_lnd {
-while true ; do set_terminal_custom "45" ; echo "
+while true ; do set_terminal_custom "45" ; echo -e "
 ########################################################################################
-                                     LND Menu                               
+                                     ${cyan}LND Menu${orange}                               
 ########################################################################################
 
 "

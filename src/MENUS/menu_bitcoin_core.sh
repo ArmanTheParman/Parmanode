@@ -21,9 +21,9 @@ output1="                   Bitcoin is NOT running -- choose \"start\" to run"
 output2="                         (Will sync to the $drive drive)"
 fi                         
 
-echo "
+echo -e "
 ########################################################################################
-                                 Bitcoin Core Menu                               
+                                 ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
 
 "

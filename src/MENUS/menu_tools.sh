@@ -5,7 +5,7 @@ set_terminal
 echo "
 ########################################################################################
  
-                                P A R M A N O D E - Tools
+                      $cyan          P A R M A N O D E - Tools   $orange
 
                     
                  (u)     Update computer (Linux or Mac)

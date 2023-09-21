@@ -13,9 +13,9 @@ fi
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 
 set_terminal_custom 50
-echo "
+echo -e "
 ########################################################################################
-                                 Electrs $electrs_version Menu                               
+                                 ${cyal}Electrs $electrs_version Menu${$orange} 
 ########################################################################################
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
