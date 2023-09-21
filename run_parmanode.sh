@@ -73,20 +73,15 @@ parmanode_conf_add
 # Load config variables
 if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
 
-# For some insallations of apps, the program needs to exit. This loop will check
-# if the program should return to a particular spot
-while true ; do #begins the loop
-
-# Continue if user left unfinished
+#if docker is set up on the machine, then it is detected by Parmanode
+#and added to the config file
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if id | grep -q docker && which docker >/dev/null ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
-			installed_config_add "docker-end"
+			installed_config_add "docker-end" 
 		fi
 	fi
 fi
-
-break ; done
 
 # fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
 # In older versions there was a field missing in fstab which caused a system crash if
