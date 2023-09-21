@@ -26,7 +26,7 @@ echo -e "
 ########################################################################################
 #                                                                                      #"
 if grep -q "parmanode-end" $HOME/.parmanode/installed.conf ; then
-echo "#                                          (parmanode)        Parmanode               #"
+echo "#                                          (parmanode)        Parmanode               #
 " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo "                                           (bitcoin)          Bitcoin Core
