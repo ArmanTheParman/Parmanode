@@ -18,7 +18,7 @@ fi
 while true ; do
 set_terminal
 
-echo "
+echo -e "
 ########################################################################################
 
    $cyan          Remove Programs   $orange
