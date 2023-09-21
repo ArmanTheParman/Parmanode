@@ -12,7 +12,7 @@ set_terminal pink ; echo "
 enter_continue 
 
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal "pink" ; echo -e "
 ########################################################################################
 
     Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$ornage Do not 
