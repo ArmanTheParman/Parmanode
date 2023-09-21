@@ -26,9 +26,12 @@ fi
 
 if [[ "$(uname -s)" == "Linux" ]]
 then
+debug2 "in Linux"
     export OS="Linux"
     if [[ -e $HOME/.parmnode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
     return 0
+else
+debug2 "in else Linux"
 fi
 
 if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]]
