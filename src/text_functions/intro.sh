@@ -39,7 +39,7 @@ echo -e "
 
     If you hold shitcoins, please hit$cyan (s)$orange - be honest!
 
-    To hide this screen next time, type \"Free Ross\" then <enter>.
+    To hide this screen next time, type$pink \"Free Ross\"$orange then <enter>.
 "
 read choice
 case $choice in 
