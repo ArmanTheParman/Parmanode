@@ -1,5 +1,5 @@
 function check_wallet_connected {
-
+debug "1"
 #Make sure the wallet can connect to whatever server it is set up to connect to.
 
 unset running 
@@ -10,6 +10,7 @@ if [[ $running != false ]] ; then running=true ; fi
 if [[ $running == false ]] ; then announce "Bitcoin is not running, don't expect $1 to be connected." ; return 0 ; fi
 
 
+debug "1"
 if [[ $connection == Bitcoin_userpass ]] ; then
   if ! grep -q "rpcuser" < $HOME/.bitcoin/bitcoin.conf ; then
       announce "$1 is configured to connect to Bitcoin with a username and "\
@@ -18,6 +19,7 @@ if [[ $connection == Bitcoin_userpass ]] ; then
   fi
 fi
 
+debug "1"
 if [[ $connection == Bitcoin_cookie ]] ; then
   if  grep -q "rpcuser" < $HOME/.bitcoin/bitcoin.conf ; then
       announce "$1 is configured to connect to Bitcoin by cookie file but"\
@@ -26,6 +28,7 @@ if [[ $connection == Bitcoin_cookie ]] ; then
   fi
 fi
 
+debug "1"
 if [[ $connection == FulcrumTOR || $connection == FulcrumSSL || $connection == FulcrumTCP ]] ; then
    if ! ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then
    announce "$1 is configured to connect to Fulcrum, but Fulcrum is"\
@@ -33,6 +36,7 @@ if [[ $connection == FulcrumTOR || $connection == FulcrumSSL || $connection == F
    fi
 fi
 
+debug "1"
 if [[ $connection == electrsTCP || $connection == electrsTOR || $connection == electrsSSL ]] ; then
   if ! ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then 
   announce "$1 is configured to connect to electrs, but electrs is"\
@@ -40,6 +44,7 @@ if [[ $connection == electrsTCP || $connection == electrsTOR || $connection == e
   fi
 fi
 
+debug "1"
 if [[ $connection == Docker_FulcrumSSL ]] ; then
   if ! docker ps | grep fulcrum ; then
   announce "$1 is configured to connect to Fulcrum, but Fulcrum is"\
@@ -47,4 +52,5 @@ if [[ $connection == Docker_FulcrumSSL ]] ; then
   fi
 fi
 
+debug "1"
 }
