@@ -7,16 +7,17 @@ set_terminal ; echo -e "
     external drive. 
 
 
-    Internal drive:                $HOME/.bitcoin   $green The . means the directory 
+    Internal drive:                $HOME/.bitcoin   $green 
+                                                           The . means the directory 
                                                            is hidden $orange
 
     External drive:                /.bitcoin
     
     External drive mount point:    /media/$USER/parmanode/.bitcoin
-                                        
+                                       $green 
                                    The drive is called \"parmanode\" and is
                                    mounted to /media/$USER and you can access
-                                   it from there.
+                                   it from there. $orange
                     
     You can copy the .bitcoin data to your other computer and it will continue to
     sync there.$pink It is absolutely vital that you stop Bitcoin before copying data
