@@ -41,23 +41,24 @@ case $choice in
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
         echo "Choices reset" ; sleep 0.6 ;;
-    h|H)
-        announce "To exit htop, hit$cyan q$orange"
-        if ! which htop >/dev/null ; then sudo apt install htop ; fi
-        htop
-        return 0
         ;;
+
     p|P)
         return 0
         ;;
-    h|H|htop|HTOP|Htop)
-        if [[ $OS == "Mac" ]] ; then htop ; break ; fi
 
-        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1
-        else
-        nohup gnome-terminal -- bash -c "htop"
-        fi
+    h|H|htop|HTOP|Htop)
+
+        announce "To exit htop, hit$cyan q$orange"
+
+        if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
+
+        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1 ; fi
+
+        htop
+
         ;;
+
     a|A|add|ADD|Add)
         add_drive 
         ;;
