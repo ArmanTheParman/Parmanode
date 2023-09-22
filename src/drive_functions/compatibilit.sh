@@ -29,7 +29,7 @@ set_terminal ; echo -e "
 
     However, for internal drives, you can just copy data from another computer to
     $HOME/.bitcoin (make sure Bitcoin is stopped) then install 
-    Bitcoin with Parmanode.  It will detect the data and promtp you to keep or 
+    Bitcoin with Parmanode. It will detect the data and promtp you to keep or 
     discard it.
 
 ########################################################################################
