@@ -3,10 +3,10 @@ set_terminal
 while true
 do
 set_terminal_bit_higher
-echo "
+echo -e "
 ########################################################################################
 
-                              P A R M A N O D E - \"Apps\"
+     P A R M A N O D E --> Main Menu --> ${cyan}\"Apps\"$orange                               
 
 ########################################################################################          
 

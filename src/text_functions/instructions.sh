@@ -5,34 +5,35 @@ if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 fi
 
 if [[ ${message_instructions} != "1" ]] ; then 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-                                    Instructions
+                               $cyan     Instructions$orange
 
-    The first thing you need to do is install Parmanode (there's an option for that in
-    the main menu). This will create the necessary directory structure, and give you
-    the option to format an external drive, should you wish to use that.
+    1. The first thing you need to do to use Parmanode is to$green \"install\"$orange it 
+       (there's an option for that in the main menu - you can't miss it). 
 
-    Once Parmnode installation is done, you will be able to add individual programs. 
-    These are also available from the main menu, under \"add programs\". Start by 
-    adding Bitcoin, and work your way down the list. You can add any you like and are
-    not obliged to install everything.
+    2. Add individual programs from the$green \"add\"$orange menu. You don't need to install them 
+       all.
 
-    To use any program, select \"use programs\"from the main menu. For each program 
-    there are various functions you can select. These are included as ways for you 
-    to interact with the installed software in an easy way. There is nothing stopping 
-    you from using the programs directly yourself. For example, running \"bitcoin-cli 
-    getblockchaininfo\" from the terminal will still work.
+    3. Use programs from the$green \"use\"$orange menu. 
 
-    To hide this message next time, type in \"Free Ross\" then <enter>.
-
-    To read about why you should run a node at all, (Parman's 6 reasons to run a node)
-    type \"node\" and <enter>.
-
-    To continue on to the main menu, just hit <enter>.
+    4. Each program has its$green own menu$orange nested under the \"use\" menu, are various 
+       functions are available for you to make it easier to interact with the program.
+       
+    5. If you$green update$orange Parmanode (esiest way is from the menu) the programs Parmanode
+       has installed for you won't be changed. To get newer version of installed
+       programs, use Parmanode to uninstall the program, then re-install using 
+       Parmanode. The updated script will install the newer version for you.
 
 ########################################################################################
+    
+To hide this message next time, type in$pink \"Free Ross\"$orange then <enter>.
+
+To read about why you should run a node at all, (Parman's 6 reasons to run a node)
+type$pink \"node\"$orange and <enter>.
+
+To continue on to the main menu, just hit$cyan <enter>${orange}.
 "
 read choice
 case $choice in 

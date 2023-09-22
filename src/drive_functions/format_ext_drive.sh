@@ -1,5 +1,5 @@
 function format_ext_drive {
-
+if [[ $skip_formatting == true ]] ; then return 0 ; fi
 #quit if internal drive chosen
 if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
@@ -8,11 +8,12 @@ if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 #quit if external drive set for either of the other programs that use this function
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
+debug2 "testing after bitcoin check"
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then return 0 ; fi
 
-format_warnings || return 1 # return 1 means user skipped formatting.
-
+format_warnings #skip_formatting variable set #DO NOT MOVE
+if [[ $skip_formatting == true ]] ; then return 0 ; fi
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 

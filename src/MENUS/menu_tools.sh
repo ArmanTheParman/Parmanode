@@ -2,10 +2,10 @@ function menu_tools {
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
  
-                                P A R M A N O D E - Tools
+                      $cyan          P A R M A N O D E - Tools   $orange
 
                     
                  (u)     Update computer (Linux or Mac)
@@ -19,6 +19,8 @@ echo "
 
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
+                
+                 (x)     Block data compatibility with other computers
 
 
                  ... More soon
@@ -40,20 +42,30 @@ case $choice in
         ;;
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
-        echo "Choices reset" ; sleep 0.6 ;;
+        echo "Choices reset" ; sleep 0.6 
+        ;;
+
     p|P)
         return 0
         ;;
-    h|H|htop|HTOP|Htop)
-        if [[ $OS == "Mac" ]] ; then htop ; break ; fi
 
-        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1
-        else
-        nohup gnome-terminal -- bash -c "htop"
-        fi
+    h|H|htop|HTOP|Htop)
+
+        announce "To exit htop, hit$cyan q$orange"
+
+        if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
+
+        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1 ; fi
+
+        htop
+
         ;;
+
     a|A|add|ADD|Add)
         add_drive 
+        ;;
+    
+    x|X) compatibility
         ;;
 
     q|Q|Quit|QUIT)
@@ -71,3 +83,4 @@ case $choice in
 done
 return 0
 }
+

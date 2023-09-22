@@ -1,7 +1,7 @@
 function menu_specter {
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
-                                 Specter Menu                               
+                 $cyan                Specter Menu            $orange                   
 ########################################################################################
 
 

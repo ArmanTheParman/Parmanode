@@ -38,10 +38,10 @@ case $choice in
 esac
 fi
 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
 
-                         Parmanode log and configuration files
+$cyan                         Parmanode log and configuration files $orange
 
                         bc)            bitcoin.conf
                         bl)            bitcoin.log

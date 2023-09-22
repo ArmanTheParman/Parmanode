@@ -11,7 +11,7 @@
   "groupByAddress": true,
   "includeMempoolOutputs": true,
   "notifyNewTransactions": true,
-  "checkNewVersions": true,
+  "checkNewVersions": false,
   "theme": "LIGHT",
   "openWalletsInNewWindows": false,
   "hideEmptyUsedAddresses": false,

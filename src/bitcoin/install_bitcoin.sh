@@ -67,7 +67,7 @@ if [[ $OS == "Linux" ]] ; then
     make_bitcoind_service_file
 fi
 
-please_wait && rund_bitcoind
+please_wait && run_bitcoind
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then

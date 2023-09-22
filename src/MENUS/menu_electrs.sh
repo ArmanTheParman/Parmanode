@@ -9,13 +9,11 @@ if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
 else
     E_tor="off"
 fi
-
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
-
 set_terminal_custom 50
-echo "
+echo -e "
 ########################################################################################
-                                 Electrs $electrs_version Menu                               
+                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
@@ -63,7 +61,6 @@ else echo "#####################################################################
 "
 fi
 choose "xpq" ; read choice ; set_terminal
-
 case $choice in
 
 I|i|info|INFO)

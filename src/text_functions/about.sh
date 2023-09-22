@@ -1,9 +1,9 @@
 function about {
 
-set_terminal_wide ; echo "
+set_terminal_wide ; echo -e "
 ##############################################################################################################
                                 
-                                              About Parmanode
+                          $cyan                    About Parmanode $orange
             
             Version:                $version          
 

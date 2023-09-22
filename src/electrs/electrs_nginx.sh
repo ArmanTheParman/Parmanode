@@ -1,14 +1,16 @@
+#installs or uninstalls based on function argument
 function electrs_nginx {
 #certificates need www-data owner.
 
 if [[ $1 = "remove" ]] ; then
 sudo sed -i "/electrs-START/,/electrs-END/d" /etc/nginx/nginx.conf >/dev/null
 sudo systemctl restart nginx >/dev/null
+return 0
 fi
 
-which nginx >/dev/null || { announce "Nginx not installed. Aborting." && return 1 ; } 
 
 if [[ $1 = "add" ]] ; then 
+which nginx >/dev/null || { announce "Nginx not installed. Aborting." && return 1 ; } 
 set_terminal
 [ ! -f $HOME/parmanode/electrs/cert.pem ] && { announce "Can't add SSL redirection using Nginx - no certificate found. Aborting." && return 1 ; }
 [ ! -f $HOME/parmanode/electrs/key.pem ] && { announce "Can't add SSL redirection using Nginx - no key found. Aborting." && return 1 ; } 
