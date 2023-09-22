@@ -9,7 +9,7 @@ RUN chown -R parman:parman /home/parman
 
 WORKDIR /home/parman/
 RUN mkdir .lnd rtl_db RTL2
-RUN git clone https://github.com/Ride-The-Lightning/RTL.git
+RUN git clone --depth 1 https://github.com/Ride-The-Lightning/RTL.git
 RUN cd RTL && npm install --omit=dev --legacy-peer-deps
 RUN cd /home/parman/RTL && ln -s /home/parman/RTL2/RTL-Config.json RTL-Config.json
 CMD tail -f /dev/null
