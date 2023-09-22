@@ -1,10 +1,10 @@
 function remove_programs {
-# another dynamic menu. Each program is listed either as available to be removed,
+# another dynamic menu. Each program is listed either as available to be removed, 
 # or as a partial (failed) installation, that can be removed. The menu variable is 
 # set to toggle the availability of the menu logic below, via if statements.
 
 if ! grep -q parmanode $HOME/.parmanode/installed.conf ; then 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Intsall Parmanode before trying to remove anyting... obviously!
@@ -18,110 +18,108 @@ fi
 while true ; do
 set_terminal
 
-echo "
+echo -e "
 ########################################################################################
-
-             Remove Programs
-
-"
-if grep -q "parmanode-end" $HOME/.parmanode/installed.conf ; then
-echo "                                           (parmanode)        Parmanode
-" ; fi
+#                                                                                      #
+#    P A R M A N O D E --> Main Menu --> ${cyan}Remove Programs$orange                               #
+#                                                                                      #
+########################################################################################
+#                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo "                                           (bitcoin)          Bitcoin Core
-"
+echo "#                                          (bitcoin)          Bitcoin Core             #
+#                                                                                      #"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo "                                           (bitcoin)          Bitcoin (partial)
-" ; fi
+echo "#                                          (bitcoin)          Bitcoin (partial)        #
+#                                                                                      #" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrummenu=1 
-echo "                                           (fulcrum)          Fulcrum Server
-"
+echo "#                                          (fulcrum)          Fulcrum Server           #
+#                                                                                      #"
 elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then fulcrummenu=1                                
-echo "                                           (fulcrum)          Fulcrum (partial)
-" ; fi
+echo "#                                          (fulcrum)          Fulcrum (partial)        #
+#                                                                                      #" ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
-echo "                                           (docker)           Docker 
-"
+echo "#                                          (docker)           Docker                   #
+#                                                                                      #"
 elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then dockermenu=1                       
-echo "                                           (docker)           Docker (partial) 
-" ; fi
+echo "#                                          (docker)           Docker (partial)         #
+#                                                                                      #" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpaymenu=1              
-echo "                                           (btcp)             BTCPay 
-"
+echo "#                                          (btcp)             BTCPay                   #
+#                                                                                      #"
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1                               
-echo "                                           (btcp)             BTCPay (partial) 
-" ; fi
+echo "#                                          (btcp)             BTCPay (partial)         #
+#                                                                                      #" ; fi
 #############################
 if [[ $OS != "Mac" ]] ; then
 if which tor >/dev/null 2>&1 ; then tormenu=1
-echo "                                           (tor)              Tor 
-"
+echo "#                                          (tor)              Tor                      #
+#                                                                                      #"
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1
-echo "                                           (tor)              Tor (partial)
-" ; fi
+echo "#                                          (tor)              Tor (partial)            #
+#                                                                                      #" ; fi
 fi
 #############################
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndmenu=1
-echo "                                           (lnd)              LND 
-"
+echo "#                                          (lnd)              LND                      #
+#                                                                                      #"
 elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then lndmenu=1
-echo "                                           (lnd)              LND (partial) 
-" ; fi
+echo "#                                          (lnd)              LND (partial)            #
+#                                                                                      #" ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
-echo "                                           (mem)              Mempool Space 
-"
+echo "#                                          (mem)              Mempool Space            #
+#                                                                                      #"
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
-echo "                                           (mem)              Mempool (partial) 
-" ; fi
+echo "#                                          (mem)              Mempool (partial)        #
+#                                                                                      #" ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo "                                           (s)                Sparrow Wallet 
-"  
+echo "#                                          (s)                Sparrow Wallet           #
+#                                                                                      #"  
 elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo "                                           (s)                Sparrow (partial) 
-" ; fi
+echo "#                                          (s)                Sparrow (partial)        #
+#                                                                                      #" ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo "                                           (r)                RTL Wallet 
-"  
+echo "#                                          (r)                RTL Wallet               #
+#                                                                                      #" 
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo "                                           (r)                RTL (partial) 
-" ; fi
+echo "#                                          (r)                RTL (partial)            #
+#                                                                                      #" ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo "                                           (e)                Electrum Wallet 
-"  
+echo "#                                          (e)                Electrum Wallet          #
+#                                                                                      #"  
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo "                                           (e)                Electrum (partial) 
-" ; fi
+echo "#                                          (e)                Electrum (partial)       #
+#                                                                                      #" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "                                           (ts)               Tor Server 
-"
+echo "#                                          (ts)               Tor Server               #
+#                                                                                      #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "                                           (ts)               Tor Server (partial) 
-" ; fi
+echo "#                                          (ts)               Tor Server (partial)     #
+#                                                                                      #" ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
-echo "                                           (btcpt)            Tor Server 
-"
+echo "#                                          (btcpt)            Tor Server               #
+#                                                                                      #"
 elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
-echo "                                           (btcpt)            Tor Server (partial) 
-" ; fi
+echo "#                                          (btcpt)            Tor Server (partial)     #
+#                                                                                      #" ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo "                                           (specter)          Specter Wallet 
-"
+echo "#                                          (specter)          Specter Wallet           #
+#                                                                                      #"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo "                                           (specter)          Specter Wallet 
-" ; fi
+echo "#                                          (specter)          Specter Wallet           #
+#                                                                                      #" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo "                                           (bre)              BTC RPC Explorer 
-"
+echo "#                                          (bre)              BTC RPC Explorer         #
+#                                                                                      #"
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo "                                           (bre)              BTCrpcEXP (partial)
-" ; fi
+echo "#                                          (bre)              BTCrpcEXP (partial)      #
+#                                                                                      #" ; fi
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo "                                           (ers)              electrs 
-"
+echo "#                                          (ers)              electrs                  #
+#                                                                                      #"
 elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo "                                           (ers)              electrs (partial) 
-" ; fi
-echo "
+echo "#                                          (ers)              electrs (partial)        #
+#                                                                                      #" ; fi
+echo "#                                                                                      #
 ########################################################################################
 "
 choose "xpq"

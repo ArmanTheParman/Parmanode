@@ -12,7 +12,10 @@ fi
 
 download_sparrow && installed_conf_add "sparrow-start"
 verify_sparrow || return 1
-make_sparrow_config 
+
+if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
+
+make_sparrow_config "$_connect"
 
 if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
 if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*

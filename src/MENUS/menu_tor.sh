@@ -1,9 +1,9 @@
 function menu_tor {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-                                  TOR
+                     $cyan                    TOR    $orange
 
                        status)         Check if Tor is running
 

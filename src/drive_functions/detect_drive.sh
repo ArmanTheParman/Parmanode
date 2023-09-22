@@ -12,10 +12,10 @@ set_terminal pink ; echo "
 enter_continue 
 
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal "pink" ; echo -e "
 ########################################################################################
 
-    Please make sure the drive you wish to add to Parmanode is DISCONNECTED. Do not 
+    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
     
     DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
@@ -35,10 +35,10 @@ if [[ $OS == "Mac" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and re-connect the drive you wish to use for Parmanode. Do not 
+    Now go ahead and ${cyan}re-connect$orange the drive you wish to use for Parmanode. Do not 
     connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.

@@ -36,10 +36,10 @@ fi
 
 # above checks done without exiting, update can proceed.
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-                                 Update Parmanode
+                      $cyan           Update Parmanode  $orange
     
     Parmanode will update itself by extracting the latest version from Github.com
 

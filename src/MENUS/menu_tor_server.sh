@@ -5,9 +5,9 @@ server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
 
 while true ; do 
 if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-                         Tor Server (Darknet Server) Menu 
+        $cyan                 Tor Server (Darknet Server) Menu $orange
 ########################################################################################
 
 

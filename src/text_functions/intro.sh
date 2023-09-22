@@ -8,46 +8,38 @@ set_terminal_high
 if [[ ${message_intro} != "1" ]] ; then 
 while true
 do
-echo "
+echo -e "
 ########################################################################################
 
-    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your computer 
-    with the option of additional related programs.
+           $cyan                  P  A  R  M  A  N  O  D  E    $orange
 
 ########################################################################################
+
+    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your desktop
+    computer. Parmanode is Free Open Source Software (FOSS).
 
 
     Requirements:
 
-            1) Debian/Ubuntu/Mint Linux, Mac (including Raspberry Pi 4)
+            1) Debian based Linux computer
             
-             (Not available for Windows yet)
+            2) An external OR internal drive (1 Tb recommended)
 
-            2) recommended: An ext drive (1 Tb) OR internal drive with spare capacity
-
-            3) Users must not hold ANY shitcoins. Honesty system.
-            
-            5) Free: 
-                   - Donations appreciated
-                   - Yes, the code is open source, MIT licence, like Bitcoin
+            3) Users must not hold ANY shitcoins! Honesty system.
 
 
     To report bugs:
                    - armantheparman@protonmail.com
+
                    - Telegram chat: https:/t.me/parmanode
-
-
-    To hire personal assistance to setup:
-                   - email armantheparman@protonmail.com
-    
 
 ########################################################################################
 
-    Hit <enter> to continue, or (q) to quit, then <enter>.
+    Hit$cyan <enter>$orange to continue, or$cyan (q)$orange to quit, then <enter>.
 
-    If you hold shitcoins, please hit (s) - be honest!
+    If you hold shitcoins, please hit$cyan (s)$orange - be honest!
 
-    To hide this screen next time, type \"Free Ross\" then <enter>.
+    To hide this screen next time, type$pink \"Free Ross\"$orange then <enter>.
 "
 read choice
 case $choice in 

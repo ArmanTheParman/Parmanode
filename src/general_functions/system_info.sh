@@ -25,18 +25,20 @@ fi
 if [[ "$(uname -s)" == "Linux" ]]
 then
     export OS="Linux"
-    if [[ -e $HOME/.parmnode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
     return 0
 fi
 
-if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]]
+if [[ "$(uname -s)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]] 
 then
     check_if_win7
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
     exit 1
 fi
-exit 1
+echo "unknown OS, exiting." ; sleep 3
+
 }
+
 function Linux_distro {
     
 if [[ $OS == "Linux" ]] ; then

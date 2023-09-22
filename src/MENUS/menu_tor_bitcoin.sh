@@ -8,10 +8,10 @@ enter_continue
 fi
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-                        Tor options for Bitcoin (Linux only)
+$cyan                        Tor options for Bitcoin (Linux only)   $orange
 
 
      1)    Allow Tor connections AND clearnet connections

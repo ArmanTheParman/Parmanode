@@ -5,10 +5,10 @@ set_terminal_bit_higher #custom function to resize the window
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
-echo "
+echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E -- Main Menu                                                    #
+#    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #"
@@ -42,8 +42,7 @@ echo "#-------------------------------------------------------------------------
 "
 choose "xq" # custom fuction to print a prompt. Different argumens give different messages
 # "xq" means add a prompt about choosing and one about how to quit.
-echo "
-(Note, <enter> is the same as <return>)"
+
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 

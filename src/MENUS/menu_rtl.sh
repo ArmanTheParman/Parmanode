@@ -1,7 +1,7 @@
 function menu_rtl {
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
-                                    RTL Menu                               
+                                 $cyan   RTL Menu     $orange 
 ########################################################################################
 
       The RTL wallet can be accessed in your browser at:

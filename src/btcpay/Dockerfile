@@ -28,12 +28,12 @@ USER parman
 COPY postgres_script.sh /home/parman/parmanode
 
 # install NBX
-RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
+RUN cd ~/parmanode && git clone -depth 1 https://github.com/dgarage/NBXplorer
 RUN cd ~/parmanode/NBXplorer && ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
-RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
+RUN cd ~/parmanode && git clone --depth 1 https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
 EXPOSE 49392
