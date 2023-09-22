@@ -1,6 +1,7 @@
 function menu_electrs {
 while true
 do
+debug "in menu electrs"
 
 if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
