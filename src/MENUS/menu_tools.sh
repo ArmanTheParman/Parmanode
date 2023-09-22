@@ -19,6 +19,8 @@ echo -e "
 
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
+                
+                 (x)     Block data compatibility with other computers
 
 
                  ... More soon
@@ -62,6 +64,9 @@ case $choice in
     a|A|add|ADD|Add)
         add_drive 
         ;;
+    
+    x|X) compatibility
+        ;;
 
     q|Q|Quit|QUIT)
         exit 0
@@ -78,3 +83,4 @@ case $choice in
 done
 return 0
 }
+
