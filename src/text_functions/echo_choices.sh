@@ -86,7 +86,7 @@ return 0
 }
 
 function announce {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     $1
