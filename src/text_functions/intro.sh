@@ -8,40 +8,38 @@ set_terminal_high
 if [[ ${message_intro} != "1" ]] ; then 
 while true
 do
-echo "
+echo -e "
 ########################################################################################
 
-                            P  A  R  M  A  N  O  D  E
+           $cyan                  P  A  R  M  A  N  O  D  E    $orange
 
 ########################################################################################
 
-    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your computer 
-    with the option of additional related programs. 
-    
-    Everything is Free Open Source Software.
+    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your desktop
+    computer. Parmanode is Free Open Source Software (FOSS).
+
 
     Requirements:
 
-            1) Debian based Linux (includes Ubuntu/Mint) PC/Pi, or Mac
+            1) Debian based Linux computer
             
-                          (Not available for Windows yet)
-
-            2) Recommended: An external OR internal drive (1 Tb required)
+            2) An external OR internal drive (1 Tb recommended)
 
             3) Users must not hold ANY shitcoins! Honesty system.
 
 
     To report bugs:
                    - armantheparman@protonmail.com
+
                    - Telegram chat: https:/t.me/parmanode
 
 ########################################################################################
 
-    Hit <enter> to continue, or (q) to quit, then <enter>.
+    Hit$cyan <enter>$orange to continue, or$cyan (q)$orange to quit, then <enter>.
 
-    If you hold shitcoins, please hit (s) - be honest!
+    If you hold shitcoins, please hit$cyan (s)$orange - be honest!
 
-    To hide this screen next time, type \"Free Ross\" then <enter>.
+    To hide this screen next time, type$pink \"Free Ross\"$orange then <enter>.
 "
 read choice
 case $choice in 
