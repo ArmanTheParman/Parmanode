@@ -11,11 +11,10 @@ else
 fi
 
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
-debug "test"
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                 ${cyal}Electrs $electrs_version Menu${$orange} 
+                                 ${cyan}Electrs $electrs_version Menu${$orange} 
 ########################################################################################
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
@@ -63,7 +62,7 @@ else echo "#####################################################################
 "
 fi
 choose "xpq" ; read choice ; set_terminal
-
+debug "test"
 case $choice in
 
 I|i|info|INFO)
