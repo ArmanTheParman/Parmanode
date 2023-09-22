@@ -40,7 +40,7 @@ case $choice in
         ;;
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
-        echo "Choices reset" ; sleep 0.6 ;;
+        echo "Choices reset" ; sleep 0.6 
         ;;
 
     p|P)
