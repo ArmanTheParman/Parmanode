@@ -43,7 +43,11 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
+
+debug "1"
 check_wallet_connected "Sparrow"
+
+debug "1"
 run_sparrow
 return 0 ;;
 
