@@ -9,9 +9,11 @@ if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
 else
     E_tor="off"
 fi
-
+debug "10"
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
+debug "9"
 set_terminal_custom 50
+debug "8"
 echo -e "
 ########################################################################################
                                  ${cyan}Electrs $electrs_version Menu${$orange} 
