@@ -16,7 +16,7 @@ set_terminal ; echo "
       2. Continue with the this drive import function and follow the screen prompts
          exactly.
 
-      3. Then install bitcoin (uninstall first if you have it already) using 
+      3. Then install Bitcoin (uninstall first if you have it already) using 
          Parmanode. You will be asked if you want and internal or external drive.
          Choose external drive, then select to skip formatting when prompted.
 
