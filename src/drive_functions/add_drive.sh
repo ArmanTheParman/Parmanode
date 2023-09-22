@@ -1,6 +1,6 @@
 function add_drive {
 
-info_add_drive 
+info_add_drive || return 1
 
 detect_drive
 
