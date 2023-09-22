@@ -26,6 +26,8 @@ set_terminal ; echo -e "
          (tor1)    Connect Sparrow via Tor (Fulcrum, port 7002)
 
          (ers)     Connect Sparrow to electrs via tcp (port 50005)
+        
+          N/A      Connect Sparrow to electrs via SSL (Not available)
 
          (tor2)    Connect Sparrow via Tor (electrs, port 7004) 
 
