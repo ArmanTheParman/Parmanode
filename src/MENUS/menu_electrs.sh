@@ -13,7 +13,7 @@ debug "10"
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 debug "9"
 set_terminal_custom 50
-debug "$cyan hi"
+debug "$cyann hi"
 echo -e "test"
 debug "11"
 echo -e "
