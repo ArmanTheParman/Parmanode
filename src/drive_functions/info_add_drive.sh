@@ -1,6 +1,6 @@
 function info_add_drive {
 while true ; do
-set_terminal ; echo " 
+set_terminal ; echo -e " 
 ########################################################################################
 
     Using a second drive for Parmanode is possible but the file systems must be
