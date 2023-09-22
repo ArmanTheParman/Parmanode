@@ -17,16 +17,20 @@ echo -e "
                                  ${cyan}Electrs $electrs_version Menu${$orange} 
 ########################################################################################
 "
+debug "1"
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
                    ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS 
 
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 "
+debug "2"
 else
 echo "
                    ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+                   debug "3"
 fi
+debug "4"
 echo "
 
 
@@ -51,6 +55,7 @@ echo "
       (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor
 
 "
+debug "5"
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
     Onion adress: $ONION_ADDR_ELECTRS:7004 
@@ -60,9 +65,10 @@ get_onion_address_variable "electrs" >/dev/null ; echo "
 "
 else echo "########################################################################################
 "
+debug "6"
 fi
 choose "xpq" ; read choice ; set_terminal
-debug "test"
+debug "7"
 case $choice in
 
 I|i|info|INFO)
