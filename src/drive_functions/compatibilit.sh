@@ -13,7 +13,7 @@ set_terminal ; echo -e "
 
     External drive:                /.bitcoin
     
-    External drive mount point:    /media/$USER/parmanode/.bitcoin
+    External drive mounted    :    /media/$USER/parmanode/.bitcoin
                                        $green 
                                    The drive is called \"parmanode\" and is
                                    mounted to /media/$USER and you can access
@@ -28,8 +28,9 @@ set_terminal ; echo -e "
     drive - You also have to import the drive also from the tools menu.
 
     However, for internal drives, you can just copy data from another computer to
-    $HOME/.bitcoin (make sure Bitcoin is stopped) then install Bitcoin with Parmanode.
-    It will detect the data and promtp you to keep or discard it.
+    $HOME/.bitcoin (make sure Bitcoin is stopped) then install 
+    Bitcoin with Parmanode.  It will detect the data and promtp you to keep or 
+    discard it.
 
 ########################################################################################
 "
