@@ -1,7 +1,6 @@
 function menu_electrs {
 while true
 do
-debug "in menu electrs"
 
 if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
@@ -12,7 +11,7 @@ else
 fi
 
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
-
+debug "test"
 set_terminal_custom 50
 echo -e "
 ########################################################################################
