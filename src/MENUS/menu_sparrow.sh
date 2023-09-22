@@ -23,9 +23,9 @@ set_terminal ; echo -e "
 
          (tcp)     Connect Sparrow to Fulcrum via tcp (port 50001)
 
-         (ers)     Connect Sparrow to electrs via tcp (port 50005)
-
          (tor1)    Connect Sparrow via Tor (Fulcrum, port 7002)
+
+         (ers)     Connect Sparrow to electrs via tcp (port 50005)
 
          (tor2)    Connect Sparrow via Tor (electrs, port 7004) 
 
