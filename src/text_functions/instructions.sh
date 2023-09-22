@@ -8,35 +8,32 @@ if [[ ${message_instructions} != "1" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-                                    Instructions
+                               $cyan     Instructions$orange
 
-    You can navigate the Parmanode menu system by typing the letters corresponing to 
-    the choice you want to make, and hit <enter>. You can always go back up the 
-    menu \"tree\" by hitting \"p\" and <enter>. Similarly, you can quit at most
-    menus with \"q\" and <enter>. Anternatively, you can exit by holding <control>
-    and hitting \"c\".
+    1. The first thing you need to do to use Parmanode is to$green \"install\"$orange it 
+       (there's an option for that in the main menu - you can't miss it). 
 
-    ${bright_cyan}The first thing you need to do to use Parmanode is to \"install\" it (there's 
-    an option for that in the main menu - you can't miss it). ${orange}This will create 
-    the necessary directory structure on your system.
+    2. Add individual programs from the$green \"add\"$orange menu. You don't need to install them 
+       all.
 
-    Only then you will be able to add individual programs from the \"add\" menu.
+    3. Use programs from the$green \"use\"$orange menu. 
 
-    There are many programs available - you don't need to install them all.
-
-    To use any program you've installed, select \"use\" option from the main menu. 
-    For each program there are various functions you can select. These are included 
-    as ways for you to interact with the installed software in an easy way. 
+    4. Each program has its own menu nested under the \"use\" menu, are various 
+       functions are available for you to make it easier to interact with the program.
+       
+    5. If you update Parmanode (esiest way is from the menu) the programs Parmanode
+       has installed for you won't be changed. To get newer version of installed
+       programs, use Parmanode to uninstall the program, then re-install using 
+       Parmanode. The updated script will install the newer version for you.
 
 ########################################################################################
     
-To hide this message next time, type in \"Free Ross\" then <enter>.
+To hide this message next time, type in$pink \"Free Ross\"$orange then <enter>.
 
 To read about why you should run a node at all, (Parman's 6 reasons to run a node)
-type \"node\" and <enter>.
+type$pink \"node\"$orange and <enter>.
 
-
-To continue on to the main menu, just hit <enter>.
+To continue on to the main menu, just hit$cyan <enter>${orange}.
 "
 read choice
 case $choice in 
