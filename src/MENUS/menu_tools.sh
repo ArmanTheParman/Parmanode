@@ -41,6 +41,12 @@ case $choice in
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
         echo "Choices reset" ; sleep 0.6 ;;
+    h|H)
+        announce "To exit htop, hit$cyan q$orange"
+        if ! which htop >/dev/null ; then sudo apt install htop ; fi
+        htop
+        return 0
+        ;;
     p|P)
         return 0
         ;;
