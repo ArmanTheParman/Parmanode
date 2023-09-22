@@ -11,18 +11,17 @@ do
 echo -e "
 ########################################################################################
 
-           $cyan                 P  A  R  M  A  N  O  D  E    $orange
+           $cyan                  P  A  R  M  A  N  O  D  E    $orange
 
 ########################################################################################
 
-    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your computer 
-    with the option of additional related programs. 
-    
-    Everything is Free Open Source Software.
+    Welcome to PARMANODE, an easy AF way to install and run Bitcoin on your desktop
+    computer. Parmanode is Free Open Source Software (FOSS).
+
 
     Requirements:
 
-            1) Debian based Linux 
+            1) Debian based Linux computer
             
             2) An external OR internal drive (1 Tb recommended)
 
