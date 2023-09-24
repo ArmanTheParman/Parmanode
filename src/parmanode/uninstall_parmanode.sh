@@ -130,6 +130,9 @@ if [[ $OS == "Linux" ]] ; then
 #uninstall parmanode directories and config files contained within.
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
+#remove desktop icon file
+sudo rm ~/.local/share/applications/parmanode.desktop
+
 set_terminal ; echo "
 ########################################################################################
 
