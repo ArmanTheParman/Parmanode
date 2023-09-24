@@ -1,9 +1,17 @@
 function uninstall_electrum {
-set_terminal ; echo "Are you sure you want to uninstall Electrum? y or n. "
-echo ""
-read choice
-if [[ $choice == y ]] ; then true ; else return 1 ; fi
+set_terminal ; echo "
+########################################################################################
 
+                                 Uninstall Electrum 
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+if [[ $choice == y ]] ; then true ; else return 1 ; fi
 
 rm -rf $HOME/parmanode/electrum >/dev/null 2>&1
 installed_config_remove "electrum"
