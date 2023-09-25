@@ -3,7 +3,7 @@ function make_dot_desktop {
 echo "[Desktop Entry]
 Type=Application
 Name=Parmanode
-Exec=$HOME/Desktop/run_parmanode.sh
+Exec=$HOME/Desktop/run_parmanode.pn
 Icon=$HOME/.parmanode/icon.png
 Terminal=true" | sudo tee ~/.local/share/applications/parmanode.desktop >/dev/null
 
