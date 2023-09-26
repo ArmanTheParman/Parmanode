@@ -97,7 +97,7 @@ uninstall_btcrpcexplorer
 set_terminal
 fi
 set_terminal
-
+debug "all program checks done"
 if [[ $debug == 0 ]] ; then 
 echo "
 ########################################################################################
@@ -130,6 +130,9 @@ if [[ $OS == "Linux" ]] ; then
 #uninstall parmanode directories and config files contained within.
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
+
+
+
 set_terminal ; echo "
 ########################################################################################
 
@@ -146,7 +149,13 @@ set_terminal ; echo "
 ######################################################################################## 
 "
 read choice
-case $choice in y|Y) rm -rf $original_dir ;; esac
+case $choice in y|Y) 
+#remove desktop icon file
+rm $HOME/Desktop/run_parmanode*
+rm $HOME/Desktop/parmanode.desktop
+rm $HOME/.icons/PNicon*
+rm -rf $original_dir ;; 
+esac
 
 set_terminal
 echo "
@@ -156,6 +165,5 @@ echo "
 
 ########################################################################################
 "
-previous_menu
-return 0
+exit
 }
