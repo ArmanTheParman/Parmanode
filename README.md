@@ -11,8 +11,7 @@
 Parmanode is an automated installation wizard and menu for desktop computers, with the following software (list is growing). You don't have to install all of them! 
 
 Parmanode lets you select what you want to include in your set up:
-
-![Available programs](https://parmanode.com/wp-content/uploads/2023/09/programs.png)
+![Available programs](https://parmanode.com/wp-content/uploads/2023/09/a.png)
 
 Parmanode is designed for non-technical users giving them the ability to  download and verify Bitcoin related software, and sync using an external  or internal drive, and also have configuration options presented to them with automation. No manual configuration file editing will be required - Parmanode takes care of all that in the background.
 
