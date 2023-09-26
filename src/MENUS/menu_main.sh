@@ -5,7 +5,9 @@ set_terminal_bit_higher #custom function to resize the window
 unset uninstall
 if [[ -e $HOME/.parmanode/installed.conf ]] ; then
 if grep -q parmanode < $HOME/.parmanode/installed.conf ; then
-export uninstall="#    (uninstall)          Uninstall Parmanode ..........(Who'd do such a thing?)       #"
+export uninstall="#    (uninstall)          Uninstall Parmanode ..........(Who'd do such a thing?)       #
+#                                                                                      #"
+
 fi
 else
 unset uninstall
@@ -42,8 +44,7 @@ echo "#-------------------------------------------------------------------------
 #    (d)                  Donate ;)                                                    #
 #                                                                                      #"
 if [[ -n $uninstall ]] ; then echo "$uninstall" ; fi
-echo "#                                                                                      #
-#    (update)             Update Parmanode                                             #
+echo "#    (update)             Update Parmanode                                             #
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
