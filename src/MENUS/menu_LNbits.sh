@@ -10,7 +10,7 @@ while true ; do set_terminal ; echo -e "
 
                                or
 
-                               $IP:5000
+                               http://$IP:5000
 
       (start)          Start LNbits Docker container
 
