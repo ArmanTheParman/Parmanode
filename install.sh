@@ -29,7 +29,7 @@ mkdir -p ~/Desktop ~/.icons/
 cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
 echo "[Desktop Entry]
 Type=Application
-Exec=$HOME/parman_programs/parmanode/run_parmanode.sh
+Exec=gnome-terminal -- bash -c "$HOME/parman_programs/parmanode/run_parmanode.sh"
 Name=Parmanode
 Icon=$HOME/.icons/PNicon.png
 Terminal=true
@@ -39,7 +39,6 @@ sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
 
-Exec=gnome-terminal -- bash -c "$HOME/parman_programs/parmanode/run_parmanode.sh"
 
 
 
