@@ -2,6 +2,7 @@
 function set_lnd_password {
 
 while true ; do
+unset lndpassword lndpassword2
 set_terminal ; echo "
 ########################################################################################
 
