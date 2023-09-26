@@ -6,11 +6,13 @@ while true ; do set_terminal ; echo -e "
 
       The LNbits can be accessed in your browser at:
 
+
                                http://localhost:5000
 
                                or
 
                                http://$IP:5000
+
 
       (start)          Start LNbits Docker container
 
