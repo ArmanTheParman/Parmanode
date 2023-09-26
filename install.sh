@@ -17,6 +17,11 @@ sudo apt update -y
 sudo apt install git -y
 fi
 
+if ! which gnome-terminal >/dev/null ; then
+sudo apt update -y
+sudo apt install gnome-terminal -y
+fi
+
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
@@ -34,6 +39,7 @@ sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
 
+Exec=gnome-terminal -- bash -c "$HOME/parman_programs/parmanode/run_parmanode.sh"
 
 
 
