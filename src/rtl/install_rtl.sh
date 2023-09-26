@@ -34,7 +34,6 @@ rtl_password_changer
 
 run_rtl
 
-
 make_rtl_startup_script
 
 success "RTL" "being installed."

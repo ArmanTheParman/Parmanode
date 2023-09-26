@@ -17,8 +17,6 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-install_check "rtl" "uninstall" || { echo "Not installed. Skipping uninstall." ; enter_continue ; return 1 ; }
-
 please_wait
 
 docker stop rtl 2>/dev/null

@@ -230,10 +230,25 @@ btcrpcexplore_p="#                                      BTC RPC Explorer        
 #                                                                                      #"
 else
    #not installed
-btcrpcexplore_n="#                                      BTC RPC Explorer                                #
+btcrpcexplore_n="#                     (bre)      BTC RPC Explorer                                      #
 #                                                                                      #"
 fi
 
+#LNbits
+unset lnbits_i lnbits_p lnbits_n
+if grep -q "lnbits-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+lnbits_i="#                                      LNbits                                          #
+#                                                                                      #"
+elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+lnbits_p="#                                      LNbits                                          #
+#                                                                                      #"
+else
+   #not installed
+lnbits_n="#                            (lnb)         LNbits                                      #
+#                                                                                      #"
+fi
 
 while true
 do
@@ -260,7 +275,8 @@ if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
-if [[ -n $torserver_n  ]]      ; then echo  "$torserver_n"; fi
+if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
+if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -277,7 +293,8 @@ if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
-if [[ -n $torserver_i  ]]      ; then echo  "$torserver_i"; fi
+if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
+if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -295,6 +312,7 @@ if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
 if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
+if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -405,6 +423,7 @@ case $choice in
          fi
       fi
       ;;
+   
 
     q|Q|quit|QUIT)
         exit 0
