@@ -429,7 +429,6 @@ case $choice in
         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
         install_lnbits
         return 0
-        fi
       fi
       ;;
 
