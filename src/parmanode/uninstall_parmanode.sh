@@ -130,10 +130,7 @@ if [[ $OS == "Linux" ]] ; then
 #uninstall parmanode directories and config files contained within.
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
-#remove desktop icon file
-rm $HOME/Desktop/run_parmanode*
-rm $HOME/Desktop/parmanode.desktop
-rm $HOME/.icons/PNicon*
+
 
 
 set_terminal ; echo "
@@ -152,7 +149,13 @@ set_terminal ; echo "
 ######################################################################################## 
 "
 read choice
-case $choice in y|Y) rm -rf $original_dir ;; esac
+case $choice in y|Y) 
+#remove desktop icon file
+rm $HOME/Desktop/run_parmanode*
+rm $HOME/Desktop/parmanode.desktop
+rm $HOME/.icons/PNicon*
+rm -rf $original_dir ;; 
+esac
 
 set_terminal
 echo "
