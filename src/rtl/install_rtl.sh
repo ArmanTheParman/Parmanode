@@ -1,10 +1,12 @@
 function install_rtl {
+ut "code entered install rtl function"
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." && return 1 ; }
+ut "code; after docker check"
 
 set_terminal
 if [[ $debug != 1 ]] ; then
-lncli wallet accounts list >/dev/null 2>&1 || echo "
+lncli wallet accounts list >/dev/null 2>&1 || { echo "
 ########################################################################################
 
     RTL is software that connects to your LND wallet. Parmanode helps by configuring
@@ -15,13 +17,14 @@ lncli wallet accounts list >/dev/null 2>&1 || echo "
     Aborting installation. Please make a wallet and return to installing RTL.
 
 ########################################################################################
-" && enter_continue && return 1
+" && enter_continue && return 1 ; }
+ut "after LND wallet check"
 fi
 
 mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
 installed_config_add "rtl-start"
 make_rtl_config
-
+ut "before docker build"
 docker build -t rtl ./src/rtl || { log "rtl" "failed to build rtl image" && return 1 ; }
 docker run -d --name rtl \
                          --network="host" \
