@@ -2,14 +2,14 @@ function testing {
 
 
 #make xml file
-echo '<?xml version="1.0"?>
+echo '<?xml version="1.0" encoding="utf-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/x-dummy">
         <comment>Dummy MIME Type Example</comment>
         <icon name="/usr/share/icons/dummy_icon.png"/>
         <glob pattern="*.dummy"/>
     </mime-type>
-</mime-info>' | sudo tee /usr/share/mime/application/x-dummy.xml 
+</mime-info>' | sudo tee /usr/share/mime/packages/x-dummy.xml 
 
 sudo update-mime-database /usr/share/mime/
 
