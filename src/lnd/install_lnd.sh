@@ -1,5 +1,10 @@
 function install_lnd {
 set_terminal
+
+if [[ $debug != 1 ]] ; then
+grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+fi
+
 please_wait
 
 install_check "lnd" || return 1
