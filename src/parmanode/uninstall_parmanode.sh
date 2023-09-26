@@ -131,9 +131,9 @@ if [[ $OS == "Linux" ]] ; then
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
 #remove desktop icon file
-sudo rm ~/.local/share/applications/parmanode*
 rm $HOME/Desktop/run_parmanode*
-rm $HOME/.icons/pn_icon*
+rm $HOME/Desktop/parmanode.desktop
+rm $HOME/.icons/PNicon*
 
 
 set_terminal ; echo "

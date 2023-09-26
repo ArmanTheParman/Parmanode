@@ -11,12 +11,12 @@ mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
 mkdir -p ~/Desktop ~/.icons/
-cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/pn_icon.png
+cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
 echo "[Desktop Entry]
 Type=Application
 Exec=$HOME/parman_programs/parmanode/run_parmanode.sh
 Name=Parmanode
-Icon=$HOME/.icons/pn_icon.png
+Icon=$HOME/.icons/PNicon.png
 Terminal=true
 Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
