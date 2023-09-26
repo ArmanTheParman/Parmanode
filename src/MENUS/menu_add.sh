@@ -373,8 +373,11 @@ case $choice in
        fi
        ;;
    r|R|RTL|rtl|Rtl)
+      ut "code reached case point"
       if [[ -n $rtl_n ]] ; then
-      install_rtl
+      ut "code inside if -n rtl_n"
+      install_rtl || ut "install_rtl function returned non zert"
+      ut "after install rtl function"
       return 0
       fi
       ;;
