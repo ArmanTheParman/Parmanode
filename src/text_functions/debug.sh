@@ -30,3 +30,10 @@ return 0
 fi
 
 }
+
+function ut {
+if [[ $ut != 1 ]] ; then return 0 ; fi
+echo "{$1}"
+echo "debug point. Pausing here."
+enter_continue
+}
