@@ -2,10 +2,10 @@ function connect_wallet_info {
 while true
 do
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
                                     
-                                    Bitcoin Wallet Connection Info
+            $cyan                        Bitcoin Wallet Connection Info$orange
 
     To connect your wallet, you need to first wait for the Bitcoin blockchain to finish syncing. You can 
     inspect the debug.log file (access from Parmanode Bitcoin Core menu) to check its progress in real 

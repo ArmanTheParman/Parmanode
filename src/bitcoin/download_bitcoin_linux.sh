@@ -1,73 +1,30 @@
 function download_bitcoin_linux {
 cd $HOME/parmanode/bitcoin
 
-set_terminal_high
-echo "
+set_terminal
+echo -e "
 ########################################################################################
     
     The current version of Bitcoin Core that will be installed is 25.0
 
-    The pgp key that will be used to verify the SHA256 file list is:
-
-                Michael Ford: E777299FC265DD04793070EB944D35F9AC3DB76A 
-    
     The downloaded file will then be hased (SHA256) and compared to the hash result 
-    provided by Michael Ford (Bitcoin Developer).
+    provided by the signers.
     
-    You may wish to learn how to do this yourself...
+    You may wish to learn how to do this yourself.
 
             - The file containing the hashes can be found at 
               /home/$(whoami)/parmanode/bitcoin/SHA256SUMS. 
             - The corresponding signature of that file is called SHA256SUMS.asc
-            - You can then hash the bitcoin .tar.gz file using this command:
+            - You can then hash the bitcoin tar.gz file using this command:
                    
                    shasum -a 256 bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
 
             - After a few seconds you'll get a hash. Compare it to the one listed 
-              by Michael Ford.
-            
-
-
-    Hit <enter> to keep reading.
+              in the SHA256SUMS file.
 
 ########################################################################################
 "
-read ; set_terminal_high
-echo "
-########################################################################################
-    
-            - Next, if you don't feel like trusting Michael Ford is sufficiently 
-              safe, you can import the public keys of anyone else who has signed the 
-              file. I will add more signature verifications later.
-
-    What actually do these signers do?
-
-    They take the code, written in programming language, and compile it (convert it
-    to machine code, ie binary) then zip the result. This produces one file that they 
-    hash. If there is any tampering of the code, the hash produced will change. If many
-    people who read the code are providing the same hash, we can be confident sure 
-    there hasn't been any funny business between the time they check to when you got 
-    your hands on a copy.
-
-    They then digitally sign the document that contains the hash that they vouch for. 
-    The way digital signatures work is fascinating and worth learning about. You don't 
-    have to be a cryptogrphy PhD to get the gist of it. It is the basis of how Bitcoin
-    transactions work, and how nodes verify transactions.
-
-    For more information on PGP, I have detailed guides:
-
-    https://armantheparman.com/gpg-articles/
-
-########################################################################################
-
-Hit <enter> to continue." # don't change
-echo ""
-#    Do not use "enter_continue" here. See next lines for explanation.
-
-read #using custom function "enter_continue" here produced a strange error I don't 
-     #understand. Somehow the read command inside the function was reciving input, I
-     #think from the calling function, maybe, and the code proceeds to download (next
-     #line) without any user input to continue."
+enter_continue
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
@@ -98,7 +55,11 @@ set_terminal
 
 #gpg check
 echo " Please wait a moment for gpg verification..."
-gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A
+
+#keys from : https://github.com/bitcoin-core/guix.sigs/tree/main/builder-keys
+gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB944D35F9AC3DB76A >/dev/null 2>&1
+curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >/dev/null 2>&1
+curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >/dev/null 2>&1
 
     if gpg --verify SHA256SUMS.asc 2>&1 | grep "Good"  # it is vital for the "2>&1" to remain for this function to work
     then
