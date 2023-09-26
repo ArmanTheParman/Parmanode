@@ -8,7 +8,9 @@ while true ; do set_terminal ; echo -e "
 
                                http://localhost:5000
 
+                               or
 
+                               $IP:5000
 
       (start)          Start LNbits Docker container
 
