@@ -1,9 +1,9 @@
 function mentorship {
 
-set_terminal_bit_higher ; echo "
+set_terminal_bit_higher ; echo -e "
 ########################################################################################
 
-                                Mentorship with Parman
+                       $cyan         Mentorship with Parman$orange
                                 
                                 
     Need help with Bitcoin security, self-custody, and inheritance?

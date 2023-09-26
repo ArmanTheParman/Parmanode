@@ -2,11 +2,11 @@ function education {
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
  
 
-                              P A R M A N O D E - Education
+         $cyan                     P A R M A N O D E - Education$orange
 
                     
                     (w)        How to connect your wallet to the node
