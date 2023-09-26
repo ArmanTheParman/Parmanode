@@ -28,7 +28,7 @@ function t2 {
 
 mkdir -p ~/.icons/
 sudo cp pn_icon.png ~/.icons/pn.pn
-touch ~Desktop/run_parmanode-pn.sh
+touch ~/Desktop/run_parmanode-pn.sh
 
 
 }
