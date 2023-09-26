@@ -8,7 +8,7 @@ function stop_lnbits {
 docker stop lnbits
 }
 
-function refresh_lnbits {
+function restart_lnbits {
 stop_lnbits
 docker rm lnbits
 start_lnbits

@@ -34,8 +34,11 @@ echo "#                                          (docker)           Docker (part
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpaymenu=1              
 echo "#                                          (btcp)             BTCPay                   #
 #                                                                                      #"
-elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1                               
+elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
 echo "#                                          (btcp)             BTCPay (partial)         #
+#                                                                                      #" ; fi
+elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
+echo "#                                          (lnb)              Lnbits (partial)         #
 #                                                                                      #" ; fi
 #############################
 if [[ $OS != "Mac" ]] ; then
@@ -106,6 +109,12 @@ echo "#                                          (ers)              electrs     
 #                                                                                      #"
 elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
 echo "#                                          (ers)              electrs (partial)        #
+#                                                                                      #" ; fi
+if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
+echo "#                                          (lnb)              LNbits                   #
+#                                                                                      #"
+elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
+echo "#                                          (ers)              LNbits (partial)         #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -218,6 +227,12 @@ if [[ $btcrpcexplorermenu == 1 ]] ; then
 ers|ERS|Ers|electrs)
 if [[ $electrsmenu == 1 ]] ; then
 	uninstall_electrs
+	return
+	fi
+	;;
+lnb|LNB|Lnb)
+if [[ $lnbitsmenu == 1 ]] ; then
+	uninstall_lnbits	
 	return
 	fi
 	;;
