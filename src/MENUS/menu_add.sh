@@ -230,7 +230,7 @@ btcrpcexplorer_p="#                                      BTC RPC Explorer       
 #                                                                                      #"
 else
    #not installed
-btcrpcexplorer_n="#                     (bre)      BTC RPC Explorer                                      #
+btcrpcexplorer_n="#                            (bre)         BTC RPC Explorer                            #
 #                                                                                      #"
 fi
 
