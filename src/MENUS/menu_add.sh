@@ -246,7 +246,7 @@ lnbits_p="#                                      LNbits                         
 #                                                                                      #"
 else
    #not installed
-lnbits_n="#                            (lnb)         LNbits (soon)                               #
+lnbits_n="#                            (lnb)         LNbits                                      #
 #                                                                                      #"
 fi
 
