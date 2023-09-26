@@ -14,7 +14,7 @@ echo '<?xml version="1.0"?>
 sudo update-mime-database /usr/share/mime/
 
 mkdir -p ~/.icons/
-cp pn_icon.png /usr/share/icons/dummy_icon.png
+sudo cp pn_icon.png /usr/share/icons/dummy_icon.png
 touch ~/Desktop/d.dummy
 
 }
