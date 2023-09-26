@@ -23,3 +23,12 @@ function testing_delete {
 sudo rm /usr/share/mime/packages/*dummy* ~/.icons/*dummy* ~/Desktop/*dummy* /usr/share/icons/*dummy* /usr/share/mime/application/*dummy*
 
 }
+
+function t2 {
+
+mkdir -p ~/.icons/
+sudo cp pn_icon.png ~/.icons/pn.pn
+touch ~Desktop/run_parmanode-pn.sh
+
+
+}
