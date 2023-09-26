@@ -34,7 +34,7 @@ rtl_password_changer
 
 run_rtl
 
-make_rtl_startup_script
+make_rtl_service_file
 
 success "RTL" "being installed."
 installed_config_add "rtl-end"
