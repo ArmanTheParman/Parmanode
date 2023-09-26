@@ -47,3 +47,26 @@ touch ~/Desktop/run_parmanode-pn.sh
 
 
 }
+
+function t3 {
+mkdir -p ~/.icons/
+cp /home/parman/coding/parmanode/src/graphics/pn_icon.png /home/parman/.icons/pn_icon.png
+echo '[Desktop Entry]
+Type=Application
+Exec=/home/parman/Desktop/run_parmanode.pn
+Name=ParmaNode
+Icon=/home/parman/.icons/pn_icon.png
+Terminal=true
+Categories=Utility;Application;' | sudo tee /usr/share/applications/parmanode.desktop
+
+sudo chmod +x /usr/share/applications/parmanode.desktop
+
+}
+
+function undot3 {
+
+sudo rm ~/.icons/pn_icon.png
+sudo rm /usr/share/applications/parmanode.desktop
+
+
+}
