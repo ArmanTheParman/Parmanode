@@ -38,7 +38,7 @@ if [[ $OS == "Mac" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}re-connect$orange the drive you wish to use for Parmanode. Do not 
+    Now go ahead and ${cyan}connect$orange the drive you wish to use for Parmanode. Do not 
     connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.

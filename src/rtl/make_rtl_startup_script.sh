@@ -1,4 +1,4 @@
-function make_rtl_startup_script {
+function make_rtl_service_file {
 
 echo "#!/bin/bash
 docker start rtl
