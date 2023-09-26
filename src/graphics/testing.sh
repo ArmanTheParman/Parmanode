@@ -54,7 +54,7 @@ cp /home/parman/coding/parmanode/src/graphics/pn_icon.png /home/parman/.icons/pn
 echo '[Desktop Entry]
 Type=Application
 Exec=/home/parman/Desktop/run_parmanode.pn
-Name=ParmaNode
+Name=Parmanode
 Icon=/home/parman/.icons/pn_icon.png
 Terminal=true
 Categories=Utility;Application;' | sudo tee /usr/share/applications/parmanode.desktop
