@@ -1,20 +1,20 @@
 #!/bin/bash
 
-#Educational comments will be included.
+#Educational comments included.
+
 #The first line, including the # is treated specially. It means this is
 #a script, and invokes the bash program to run it. It must be the very first
 #character in a file followed by !, then the path to the terminal program.
 
-#checks if in debugging mode. Mainly for developing, not client usage
+#The following code checks if in debugging mode. Mainly for developing, not client usage
 #If debug is 1, then a debuging function becomes active, which pauses the
 #program wherever it appears. "export" keeps variable in global memory.
-
 if [[ $1 == "debug" || $1 == d ]] ; then export debug=1 
 elif [[ $1 == "debug2" || $1 == d2 ]] ; then export debug=2  
 else export debug=0 
 fi
 
-#save position of working directory. 
+#save position of working directory. "Export" makes the variable available everywhere.
 export original_dir=$(pwd) >/dev/null 2>&1
 
 #check script is being run from parmanode directory so relative paths work
@@ -32,7 +32,8 @@ read #this command takes any user keyboard input, waiting for <enter> to continu
 exit 0
 fi
 
-# source all the modules. Exclude executable scripts which aren't modules
+# source all the modules. Exclude executable scripts which aren't modules. Modules
+# are bits of codes saved elseshere. They are "sourced" to load the code into memory.
 
 	for file in ./src/**/*.sh ; do #for every file that ends in .sh, attach its
 	#name to the variable "file" then run the code below, looping.
@@ -43,6 +44,13 @@ fi
 		fi 
 
 	done #ends the loop
+
+# Config directory needs to be made
+if [[ ! -d $HOME/.parmanode ]] ; then
+mkdir -p $HOME/.parmanode >/dev/null 2>&1  
+fi
+#2>&1 means if there is a standard error output (2), 
+# send it to standard output (1), which is, in this case, to /dev/null.
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
 
@@ -60,9 +68,6 @@ which_os #use a search function to find functions, eg seach "which_os {". By inc
 
 which_computer_type
 
-# Config directory needs to be made
-mkdir $HOME/.parmanode >/dev/null 2>&1  #2>&1 means if there is a standard error output (2), 
-# send it to standard output (1), which is, in this case, to /dev/null.
 
 get_ip_address #a function to put the IP address of the computer in memory.
 
@@ -76,8 +81,14 @@ clean_exit
 # With no argument after the function, this will create a parmanode.conf file if it doesnt' exist.
 parmanode_conf_add
 
+# Make parmanode config file if it doesn't exist
+if [[ ! -f $HOME/.parmanode/parmanode.conf ]] ; then 
+	touch $HOME/.parmanode/parmanode.conf >/dev/null
+	debug "touch parmanode.conf"
+	fi
+
 # Load config variables
-if [[ -f $HOME/.parmanode/parmanode.conf ]] ; then source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 ; fi
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
 
 #if docker is set up on the machine, then it is detected by Parmanode
 #and added to the config file

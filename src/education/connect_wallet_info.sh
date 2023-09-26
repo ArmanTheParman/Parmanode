@@ -61,14 +61,13 @@ echo "
 
                                            SPARROW BITCOIN WALLET
 
-    Unfortunately, for now, this wallet needs to be on the same computer as the Parmanode software.
+    Unfortunately, for now, this wallet needs to be on the same computer as the Parmanode software if you
+    want Parmanode to magically connect it to your node.
      
     In the Sparrow Server settings, use 127.0.0.1 as the IP address and 8332 as the port (Parmanode has
     actualy autoconfigured it for you). 
-   
-    If you ever decided to install Fulcrum (an Electrum server) on your Parmanode, then Sparrow will NOT
-    be able to connect to that as I first though - wait for Electrum Desktop Wallet to be included with
-    Parmanode, and you can connect that.
+
+    For easy configuration, use the options in the Parmanode Sparrow menu to make a connection choice.
 
 ##############################################################################################################
 
