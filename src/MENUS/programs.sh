@@ -55,6 +55,9 @@ if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexp
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
                        echo "    (ers)        electrs 
                             " ; fi
+if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
+                       echo "    (lnb)        lnbits 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -93,6 +96,11 @@ lnd|LND|Lnd|L|l)
     if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
     if [[ $OS == "Mac" ]] ; then no_mac ; fi
     fi
+;;
+lnb|LNB|Lnb)
+   if [[ $lnbitsapp == 1 ]] ; then
+   menu_lnbits
+   fi
 ;;
 # mem|MEM|Mem)
 #    if [[ $mempoolapp == 1 ]] ; then

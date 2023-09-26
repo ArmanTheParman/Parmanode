@@ -14,6 +14,8 @@ elif [[ $1 == "debug2" || $1 == d2 ]] ; then export debug=2
 else export debug=0 
 fi
 
+if [[ $1 == "usertest" ]] ; then export ut=1 ; fi
+
 #save position of working directory. "Export" makes the variable available everywhere.
 export original_dir=$(pwd) >/dev/null 2>&1
 

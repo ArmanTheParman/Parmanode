@@ -121,12 +121,11 @@ lnd_n="#                            (lnd)         LND                           
 fi
 
 #RTL
-unset 
+unset rtl_i rtl_p rtl_n
 if grep -q "rtl-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 rtl_i="#                                      RTL Wallet                                      #
 #                                                                                      #"
-
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 rtl_p="#                                      RTL Wallet                                      #
@@ -222,18 +221,33 @@ fi
 unset btcrpcexplorer_i btcrpcexplorer_p btcrpcexplorer_n
 if grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-btcrpcexplore_i="#                                      BTC RPC Explorer                                #
+btcrpcexplorer_i="#                                      BTC RPC Explorer                                #
 #                                                                                      #"
 elif grep -q "btcrpcexplore-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-btcrpcexplore_p="#                                      BTC RPC Explorer                                #
+btcrpcexplorer_p="#                                      BTC RPC Explorer                                #
 #                                                                                      #"
 else
    #not installed
-btcrpcexplore_n="#                                      BTC RPC Explorer                                #
+btcrpcexplorer_n="#                            (bre)         BTC RPC Explorer                            #
 #                                                                                      #"
 fi
 
+#LNbits
+unset lnbits_i lnbits_p lnbits_n
+if grep -q "lnbits-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+lnbits_i="#                                      LNbits                                          #
+#                                                                                      #"
+elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+lnbits_p="#                                      LNbits                                          #
+#                                                                                      #"
+else
+   #not installed
+lnbits_n="#                            (lnb)         LNbits                                      #
+#                                                                                      #"
+fi
 
 while true
 do
@@ -260,7 +274,8 @@ if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
-if [[ -n $torserver_n  ]]      ; then echo  "$torserver_n"; fi
+if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
+if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -277,7 +292,8 @@ if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
-if [[ -n $torserver_i  ]]      ; then echo  "$torserver_i"; fi
+if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
+if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -295,6 +311,7 @@ if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
 if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
+if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -356,8 +373,11 @@ case $choice in
        fi
        ;;
    r|R|RTL|rtl|Rtl)
+      ut "code reached case point"
       if [[ -n $rtl_n ]] ; then
-      install_rtl
+      ut "code inside if -n rtl_n"
+      install_rtl || ut "install_rtl function returned non zert"
+      ut "after install rtl function"
       return 0
       fi
       ;;
@@ -403,6 +423,14 @@ case $choice in
          else
          no_mac ; return 0
          fi
+      fi
+      ;;
+
+   lnb|LNB|Lnb)
+      if [[ -n $lnbits_n ]] ; then
+        if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
+        install_lnbits
+        return 0
       fi
       ;;
 

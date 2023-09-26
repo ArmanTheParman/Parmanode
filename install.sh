@@ -17,19 +17,22 @@ sudo apt update -y
 sudo apt install git -y
 fi
 
+if [ "$(uname -s)" = "Linux" ]; then
 if ! which gnome-terminal >/dev/null ; then
 sudo apt update -y
 sudo apt install gnome-terminal -y
+fi
 fi
 
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
+if [ "$(uname -s)" = "Linux" ] ; then
 mkdir -p ~/Desktop ~/.icons/
 cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
 echo "[Desktop Entry]
 Type=Application
-Exec=gnome-terminal -- bash -c "$HOME/parman_programs/parmanode/run_parmanode.sh"
+Exec=gnome-terminal -- bash -c \"$HOME/parman_programs/parmanode/run_parmanode.sh\"
 Name=Parmanode
 Icon=$HOME/.icons/PNicon.png
 Terminal=true
@@ -37,8 +40,8 @@ Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
+else
+cd $HOME/Desktop
+curl -LO https://parmanode.com/run_parmanode.txt
+fi
 clear
-
-
-
-
