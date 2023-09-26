@@ -29,7 +29,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "epq" ; read choice
-case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 0 ;;
+case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
 "") break ;; *) invlid ;; esac ; done
 
 }

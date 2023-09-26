@@ -1,5 +1,4 @@
 function check_wallet_connected {
-
 #Make sure the wallet can connect to whatever server it is set up to connect to.
 
 unset running 

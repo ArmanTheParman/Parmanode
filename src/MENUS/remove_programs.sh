@@ -3,18 +3,6 @@ function remove_programs {
 # or as a partial (failed) installation, that can be removed. The menu variable is 
 # set to toggle the availability of the menu logic below, via if statements.
 
-if ! grep -q parmanode $HOME/.parmanode/installed.conf ; then 
-set_terminal ; echo -e "
-########################################################################################
-
-    Intsall Parmanode before trying to remove anyting... obviously!
-
-########################################################################################
-"
-enter_continue
-return 1 
-fi
-
 while true ; do
 set_terminal
 
