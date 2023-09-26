@@ -2,7 +2,7 @@ function testing {
 
 
 #make xml file
-echo '<?xml version="1.0" encoding="utf-8"?>
+echo '<?xml version="1.0"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/x-dummy">
         <comment>Dummy MIME Type Example</comment>
