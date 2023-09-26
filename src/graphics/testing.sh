@@ -9,7 +9,7 @@ echo '<?xml version="1.0"?>
         <icon name="dummy_icon"/>
         <glob pattern="dummyfile.dummy"/>
     </mime-type>
-</mime-info>' |sudo tee /usr/share/mime/packages/dummy-mime.xml 
+</mime-info>' | sudo tee /usr/share/mime/packages/dummy-mime.xml 
 
 sudo update-mime-database /usr/share/mime/
 
