@@ -40,5 +40,8 @@ Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
+else
+cd $HOME/Desktop
+curl -LO https://parmanode.com/run_parmanode.txt
 fi
 clear
