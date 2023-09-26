@@ -40,11 +40,5 @@ Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
-else
-echo "#!/bin/bash
-cd $HOME/parman_parograms/parmanode
-./run_parmanode" > $HOME/desktop/run_parmanode.sh 2>/dev/null
-sudo chmod +x $HOME/desktop/run_parmanode.sh 2>/dev/null
-sudo chown $USER:$USER $HOME/desktop/run_parmanode.sh 2>/dev/null
 fi
 clear
