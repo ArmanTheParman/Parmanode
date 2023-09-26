@@ -57,8 +57,10 @@ Exec=/home/parman/coding/parmanode/run_parmanode.sh
 Name=Parmanode
 Icon=/home/parman/.icons/pn_icon.png
 Terminal=true
+Path=/home/parman/coding/parmanode/
 Categories=Utility;Application;' | sudo tee /home/parman/Desktop/parmanode.desktop 
 sudo chmod +x /home/parman/Desktop/parmanode.desktop
+sudo chown $USER:$USER /home/parman/Desktop/parmanode.desktop
 
 }
 
