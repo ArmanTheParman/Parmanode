@@ -423,7 +423,15 @@ case $choice in
          fi
       fi
       ;;
-   
+
+   lnb|LNB|Lnb)
+      if [[ -n $lnbits_n ]] ; then
+        if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
+        install_lnbits
+        return 0
+        fi
+      fi
+      ;;
 
     q|Q|quit|QUIT)
         exit 0
