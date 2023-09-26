@@ -37,8 +37,11 @@ echo "#                                          (btcp)             BTCPay      
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
 echo "#                                          (btcp)             BTCPay (partial)         #
 #                                                                                      #" ; fi
-elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
-echo "#                                          (lnb)              Lnbits (partial)         #
+if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1              
+echo "#                                          (lnb)              LNbits                   #
+#                                                                                      #"
+elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbits=1
+echo "#                                          (lnb)              LNbits (partial)         #
 #                                                                                      #" ; fi
 #############################
 if [[ $OS != "Mac" ]] ; then
