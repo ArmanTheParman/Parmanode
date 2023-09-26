@@ -7,7 +7,7 @@ echo '<?xml version="1.0"?>
     <mime-type type="application/x-dummy">
         <comment>Dummy MIME Type Example</comment>
         <icon name="/usr/share/icons/dummy_icon.png"/>
-        <glob pattern="dummyfile.dummy"/>
+        <glob pattern="*.dummy"/>
     </mime-type>
 </mime-info>' | sudo tee /usr/share/mime/packages/x-dummy.xml 
 
@@ -15,7 +15,7 @@ sudo update-mime-database /usr/share/mime/
 
 mkdir -p ~/.icons/
 sudo cp pn_icon.png /usr/share/icons/dummy_icon.png
-touch ~/Desktop/d.dummy
+touch ~/Desktop/d.dummy #why does the icon association not work for this file?
 
 }
 function testing_delete {
