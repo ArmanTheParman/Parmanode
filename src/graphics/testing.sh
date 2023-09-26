@@ -9,7 +9,7 @@ echo '<?xml version="1.0"?>
         <icon name="/usr/share/icons/dummy_icon.png"/>
         <glob pattern="*.dummy"/>
     </mime-type>
-</mime-info>' | sudo tee /usr/share/mime/packages/x-dummy.xml 
+</mime-info>' | sudo tee /usr/share/mime/application/x-dummy.xml 
 
 sudo update-mime-database /usr/share/mime/
 
@@ -20,6 +20,6 @@ touch ~/Desktop/d.dummy #why does the icon association not work for this file?
 }
 function testing_delete {
 
-sudo rm /usr/share/mime/packages/*dummy* ~/.icons/*dummy* ~/Desktop/*dummy* /usr/share/icons/*dummy*
+sudo rm /usr/share/mime/packages/*dummy* ~/.icons/*dummy* ~/Desktop/*dummy* /usr/share/icons/*dummy* /usr/share/mime/application/*dummy*
 
 }
