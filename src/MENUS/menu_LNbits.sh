@@ -1,4 +1,4 @@
-function menu_rtl {
+function menu_lnbits {
 while true ; do set_terminal ; echo -e "
 ########################################################################################
                                 $cyan LNbits Menu     $orange 
