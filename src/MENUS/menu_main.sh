@@ -41,8 +41,8 @@ echo "#-------------------------------------------------------------------------
 #                                                                                      #
 #    (d)                  Donate ;)                                                    #
 #                                                                                      #"
-echo "$uninstall
-#                                                                                      #
+if [[ -n $uninstall ]] ; then echo "$uninstall" ; fi
+echo"#                                                                                      #
 #    (update)             Update Parmanode                                             #
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
