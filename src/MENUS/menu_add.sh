@@ -121,12 +121,11 @@ lnd_n="#                            (lnd)         LND                           
 fi
 
 #RTL
-unset 
+unset rtl_i rtl_p rtl_n
 if grep -q "rtl-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 rtl_i="#                                      RTL Wallet                                      #
 #                                                                                      #"
-
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
 rtl_p="#                                      RTL Wallet                                      #
