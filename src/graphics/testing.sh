@@ -53,20 +53,19 @@ mkdir -p ~/.icons/
 cp /home/parman/coding/parmanode/src/graphics/pn_icon.png /home/parman/.icons/pn_icon.png
 echo '[Desktop Entry]
 Type=Application
-Exec=/home/parman/Desktop/run_parmanode.pn
+Exec=/home/parman/coding/parmanode/run_parmanode.sh
 Name=Parmanode
 Icon=/home/parman/.icons/pn_icon.png
 Terminal=true
-Categories=Utility;Application;' | sudo tee /usr/share/applications/parmanode.desktop
-
-sudo chmod +x /usr/share/applications/parmanode.desktop
+Categories=Utility;Application;' | sudo tee /home/parman/Desktop/parmanode.desktop 
+sudo chmod +x /home/parman/Desktop/parmanode.desktop
 
 }
 
 function undot3 {
 
 sudo rm ~/.icons/pn_icon.png
-sudo rm /usr/share/applications/parmanode.desktop
+sudo rm /home/parman/Desktop/parmanode.desktop
 
 
 }
