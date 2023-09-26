@@ -17,6 +17,8 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
+configure_yourself || return 1
+
 please_wait
 
 docker stop lnbits 2>/dev/null
