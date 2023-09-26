@@ -5,8 +5,18 @@ return 0
 # IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE
 
 #!/bin/sh
+if [ -d $HOME/parman_programs/parmanode ] ; then
+clear
+echo "Parmanode directory already exists. Aborting."
+sleep 5
+exit
+fi
+
+if ! which git >/dev/null ; then
 sudo apt update -y 
 sudo apt install git -y
+fi
+
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
@@ -22,7 +32,7 @@ Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
-
+clear
 
 
 
