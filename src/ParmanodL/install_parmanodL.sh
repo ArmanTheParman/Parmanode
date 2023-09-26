@@ -10,8 +10,8 @@ enter_continue
 return 1
 fi
 
-
-
-
+# unzip the image:
+xz -vkd *.img.xz
+rm *.img.xz
 
 }
