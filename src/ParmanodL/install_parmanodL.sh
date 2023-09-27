@@ -59,6 +59,19 @@ sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 
 #getting error here, "around | - think I found it and fixed"
 sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; exit' 
+sudo chroot /mnt/raspi /bin/bash <<EOF
+echo "
+WELCOME TO...
+
+.______      ___      .______      .___  ___.      ___      .__   __.   ______    _______   __      
+|   _  \    /   \\     |   _  \\     |   \\/   |     /   \\     |  \\ |  |  /  __  \\  |       \\ |  |     
+|  |_)  |  /  ^  \\    |  |_)  |    |  \\  /  |    /  ^  \\    |   \\|  | |  |  |  | |  .--.  ||  |     
+|   ___/  /  /_\\  \\   |      /     |  |\\/|  |   /  /_\\  \\   |  . \`  | |  |  |  | |  |  |  ||  |     
+|  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  \`--'  | |  '--'  ||  \`----.
+| _|    /__/     \\__\\ | _| \`._____|__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
+" >> /etc/update-motd.d/10-uname
+EOF
+
 sudo chroot /mnt/raspi /bin/bash -c 'echo "
 
 WELCOME TO...
