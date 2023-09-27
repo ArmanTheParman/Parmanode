@@ -70,17 +70,17 @@ WELCOME TO...
 |  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  `--'  | |  '--'  ||  `----.
 | _|    /__/     \\__\\ | _| `._____||__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
 
-" | tee -a /etc/update-motd.d/10-uname ; echo " 
-if [ ! -e /.password_changed ] ; then echo "
+" | tee -a /etc/update-motd.d/10-uname ; exit'
+
+sudo chroot /mnt/raspi /bin/bash -c "echo \" 
+if [ \! -e /.password_changed ] ; then echo \"
 THE DEFAULT PASSWORD IS parmanodl (NOTE THE 'l')
 
 YOU MUST CHANGE THE PI'S PASSWORD TO CONTINUE
-"
+\"
 passwd parmanode && touch /.password_changed
 fi
-" | tee -a /etc/update-motd.d/10-uname ; echo " 
-printf \\033[0m\\n" | tee -a /etc/update-motd.d/10-uname ; echo "" > /usr/share/userconf-pi/sshd_banner ; exit'
-
+" | tee -a /etc/update-motd.d/10-uname ; exit'
 
 # umount evertying
 sudo umount /mnt/raspi/dev
@@ -100,7 +100,7 @@ dd if=$file of=/dev/sdb bs=4M status=progress
 sync
 }
 
-function detect_IP_Pi { 
+
 #Detect device connected
 sudo arp-scan -l 
 
