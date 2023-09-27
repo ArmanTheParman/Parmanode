@@ -41,19 +41,23 @@ sudo mount --bind /proc /mnt/raspi/proc
 
 function ParmanodL_chroot {
 
-sudo chroot /mnt/raspi /bin/bash -c ' groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; echo "parman:parmanode" | chpasswd ; systemctl enable ssh ; sudo systemctl disable piwiz ; exit '
+sudo chroot /mnt/raspi /bin/bash -c " groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ;\\
+echo "parman:parmanode" | chpasswd ; systemctl enable ssh ; apt purge piwiz -y ; echo "en_US.UTF-8 UTF-8" | \\
+tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; echo "Defaults lecture=never" >> /etc/sudoers ; exit " 
 
 # umount evertying
-sudo umount /dev/raspi/dev
-sudo umount /dev/raspi/sys
-sudo umount /dev/raspi/proc
-sudo umount /dev/raspi
+sudo umount /mnt/raspi/dev
+sudo umount /mnt/raspi/sys
+sudo umount /mnt/raspi/proc
+sudo umount /mnt/raspi
 
 #dd the drive
 # umount first
-# sudo umount /dev/sdb*
+sudo umount /dev/sdb*
 
-dd if=*.img of=/dev/sdb bs=4M status=progress
+# * doesn't work in dd command
+file=$(ls *.img)
+dd if=$file of=/dev/sdb bs=4M status=progress 
 sync
 
 #Detect device connected
@@ -75,30 +79,5 @@ sudo arp-scan -l
 # ECDSA host key for 192.168.0.159 has changed and you have requested strict checking.
 # Host key verification failed.
 
-}
-#!/bin/bash
-
-function remove_sudo_lecture { 
-# Check if the script is running as root
-if [ "$(id -u)" != "0" ]; then
-    echo "This script must be run as root."
-    exit 1
-fi
-
-# Check if the required setting is already in sudoers
-grep -q "^Defaults lecture=never" /etc/sudoers
-
-# $? is a special variable that holds the exit status of the last command executed
-if [ $? -eq 0 ]; then
-    echo "The sudo lecture is already turned off."
-else
-    # Append the setting to disable the lecture
-    echo "Defaults lecture=never" >> /etc/sudoers
-    echo "Sudo lecture has been turned off."
-fi
-}
-
-
-function make_gnome_background_black { 
-dconf write /org/gnome/terminal/legacy/profiles:/$(dconf list /org/gnome/terminal/legacy/profiles:/ | grep '^:[0-9a-f]*\./$')background-color "'rgb(0,0,0)'"
+# can search $HOME/.ssh/known_hosts for IP address and delete that line
 }
