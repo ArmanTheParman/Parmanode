@@ -41,37 +41,52 @@ sudo mount --bind /proc /mnt/raspi/proc
 
 function ParmanodL_chroot {
 
-sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ;\\
-echo \"parman:parmanodl\" | chpasswd ; systemctl enable ssh ; apt purge piwiz -y ; echo \"en_US.UTF-8 UTF-8\" | \\
-tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; echo \"Defaults lecture=never\" >> /etc/sudoers ;\\
-echo \"\" > /etc/motd ; \\
-printf '%s\n' \"
+#prep
+sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; \
+echo \"parman:parmanodl\" | chpasswd ; systemctl enable ssh ; apt purge piwiz -y ; echo \"en_US.UTF-8 UTF-8\" | \
+tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; echo \"Defaults lecture=never\" >> /etc/sudoers ; \
+echo \"\" > /etc/motd ; exit "
+
+#start orange colour in 10-uname script 
+#append baner code
+#append password change if statment
+#append colour reversion 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; \ 
+echo "
 
 WELCOME TO...
 
 .______      ___      .______      .___  ___.      ___      .__   __.   ______    _______   __      
-|   _  \    /   \     |   _  \     |   \/   |     /   \     |  \ |  |  /  __  \  |       \ |  |     
-|  |_)  |  /  ^  \    |  |_)  |    |  \  /  |    /  ^  \    |   \|  | |  |  |  | |  .--.  ||  |     
-|   ___/  /  /_\  \   |      /     |  |\/|  |   /  /_\  \   |  . `  | |  |  |  | |  |  |  ||  |     
-|  |     /  _____  \  |  |\  \----.|  |  |  |  /  _____  \  |  |\   | |  `--'  | |  '--'  ||  `----.
-| _|    /__/     \__\ | _| `._____||__|  |__| /__/     \__\ |__| \__|  \______/  |_______/ |_______|
+|   _  \    /   \\     |   _  \\     |   \\/   |     /   \\     |  \\ |  |  /  __  \\  |       \\ |  |     
+|  |_)  |  /  ^  \\    |  |_)  |    |  \\  /  |    /  ^  \\    |   \\|  | |  |  |  | |  .--.  ||  |     
+|   ___/  /  /_\\  \\   |      /     |  |\\/|  |   /  /_\\  \\   |  . `  | |  |  |  | |  |  |  ||  |     
+|  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  `--'  | |  '--'  ||  `----.
+| _|    /__/     \\__\\ | _| `._____||__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
 
+" | tee -a /etc/update-motd.d/10-uname ; \
+echo " 
+if [ ! -e /.password_changed ] ; then
+echo \"
+THE DEFAULT PASSWORD IS parmanodl (NOTE THE 'l')
 
-THE DEFAULT PASSWORD IS parmanodl (note the 'l')
+YOU MUST CHANGE THE PI'S PASSWORD TO CONTINUE\
+"
+passwd parmanode && touch /.password_changed
+fi
+" | tee -a /etc/update-motd.d/10-uname ; \
+echo " 
+printf \\033[0m\\n" | tee -a /etc/update-motd.d/10-uname ; \
+echo "" > /usr/share/userconf-pi/sshd_banner ; exit '
 
-IT'S BEST YOU CHANGE THE PASSWORD WITH THE COMMAND:
-
-sudo passwd parman
-
-Enjoy
-\" | tee /usr/share/userconf-pi/sshd_banner ; exit "
 
 # umount evertying
 sudo umount /mnt/raspi/dev
 sudo umount /mnt/raspi/sys
 sudo umount /mnt/raspi/proc
 sudo umount /mnt/raspi
+}
 
+function write_image {
 #dd the drive
 # umount first
 sudo umount /dev/sdb*
@@ -80,7 +95,9 @@ sudo umount /dev/sdb*
 file=$(ls *.img)
 dd if=$file of=/dev/sdb bs=4M status=progress 
 sync
+}
 
+function detect_IP_Pi { 
 #Detect device connected
 sudo arp-scan -l 
 
