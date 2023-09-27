@@ -100,12 +100,13 @@ sudo umount /dev/sdb*
 
 # * doesn't work in dd command
 file=$(ls *.img)
-dd if=$file of=/dev/sdb bs=4M status=progress 
+sudo dd if=$file of=/dev/sdb bs=4M status=progress 
 sync
 }
 
 
 #Detect device connected
+#may need to install arp-scan
 sudo arp-scan -l 
 
 
