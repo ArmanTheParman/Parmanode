@@ -96,7 +96,7 @@ sync
 
 #Detect device connected
 #may need to install arp-scan
-sudo arp-scan -l 
+#sudo arp-scan -l 
 
 
 # % ssh parman@192.168.0.159
@@ -115,7 +115,6 @@ sudo arp-scan -l
 # Host key verification failed.
 
 # can search $HOME/.ssh/known_hosts for IP address and delete that line
-}
 
 function set_keyboard {
 sudo raspi-config nonint do_configure_keyboard us
