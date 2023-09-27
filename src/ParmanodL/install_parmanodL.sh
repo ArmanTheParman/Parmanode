@@ -59,41 +59,30 @@ sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 
 #getting error here, "around | - think I found it and fixed"
 sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; exit' 
-sudo chroot /mnt/raspi /bin/bash <<EOF
-echo "
-WELCOME TO...
 
-.______      ___      .______      .___  ___.      ___      .__   __.   ______    _______   __      
-|   _  \    /   \\     |   _  \\     |   \\/   |     /   \\     |  \\ |  |  /  __  \\  |       \\ |  |     
-|  |_)  |  /  ^  \\    |  |_)  |    |  \\  /  |    /  ^  \\    |   \\|  | |  |  |  | |  .--.  ||  |     
-|   ___/  /  /_\\  \\   |      /     |  |\\/|  |   /  /_\\  \\   |  . \`  | |  |  |  | |  |  |  ||  |     
-|  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  \`--'  | |  '--'  ||  \`----.
-| _|    /__/     \\__\\ | _| \`._____|__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
-" >> /etc/update-motd.d/10-uname
-EOF
+echo 'WELCOME TO...
 
-sudo chroot /mnt/raspi /bin/bash -c 'echo "
+.______      ___      .______    .___  ___.      ___      .__   __.   ______    _______   __      
+|   _  \    /   \     |   _  \   |   \/   |     /   \     |  \ |  |  /  __  \  |   __  \ |  |     
+|  |_)  |  /  ^  \    |  |_)  |  |  \  /  |    /  ^  \    |   \|  | |  |  |  | |  T  |  ||  |     
+|   ___/  /  /_\  \   |      /   |  |\/|  |   /  /_\  \   |  `    | |  |  |  | |  |  |  ||  |     
+|  |     /  _____  \  |  |\  \   |  |  |  |  /  /   \  \  |  | `  | |  |__|  | |  |__|  ||  |____
+| _|    /__/     \__\ | _| `._\__|__|  |__| /__/     \__\ |__| \__|  \______/  |_______/ |_______|
 
-WELCOME TO...
 
-.______      ___      .______      .___  ___.      ___      .__   __.   ______    _______   __      
-|   _  \    /   \\     |   _  \\     |   \\/   |     /   \\     |  \\ |  |  /  __  \\  |       \\ |  |     
-|  |_)  |  /  ^  \\    |  |_)  |    |  \\  /  |    /  ^  \\    |   \\|  | |  |  |  | |  .--.  ||  |     
-|   ___/  /  /_\\  \\   |      /     |  |\\/|  |   /  /_\\  \\   |  . `  | |  |  |  | |  |  |  ||  |     
-|  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  `--'  | |  '--'  ||  `----.
-| _|    /__/     \\__\\ | _| `._____||__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
+if [ \! -e /.password_changed ] ; then 
 
-" | tee -a /etc/update-motd.d/10-uname ; exit'
+echo "THE DEFAULT PASSWORD IS parmanodl (NOTE IT ENDS IN l)."
+echo ""
+echo "YOU MUST CHANGE THE PI'"'"'S PASSWORD TO CONTINUE"
 
-sudo chroot /mnt/raspi /bin/bash -c "echo \" 
-if [ \! -e /.password_changed ] ; then echo \"
-THE DEFAULT PASSWORD IS parmanodl (NOTE THE 'l')
-
-YOU MUST CHANGE THE PI'S PASSWORD TO CONTINUE
-\"
 passwd parmanode && touch /.password_changed
 fi
-" | tee -a /etc/update-motd.d/10-uname ; exit'
+' > $HOME/parman_programs/ParmanodL/banner.txt
+
+sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
+
+sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt >> /etc/update-motd.d/10-uname ; exit'
 
 # umount evertying
 sudo umount /mnt/raspi/dev
