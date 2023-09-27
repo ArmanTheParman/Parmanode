@@ -83,6 +83,8 @@ fi
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
 
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt >> /etc/update-motd.d/10-uname ; exit'
+rm $HOME/parman_programs/ParmanodL/banner.txt
+sudo chroot /mnt/raspi /bin/bash -c 'rm /tmp/banner.txt'
 
 # umount evertying
 sudo umount /mnt/raspi/dev
