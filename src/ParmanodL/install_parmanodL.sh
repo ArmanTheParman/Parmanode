@@ -56,8 +56,10 @@ sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 #append baner code
 #append password change if statment
 #append colour reversion 
-sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; \ 
-echo "
+
+#getting error here, "around | - think I found it and fixed"
+sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; exit' 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "
 
 WELCOME TO...
 
@@ -68,20 +70,16 @@ WELCOME TO...
 |  |     /  _____  \\  |  |\\  \\----.|  |  |  |  /  _____  \\  |  |\\   | |  `--'  | |  '--'  ||  `----.
 | _|    /__/     \\__\\ | _| `._____||__|  |__| /__/     \\__\\ |__| \\__|  \\______/  |_______/ |_______|
 
-" | tee -a /etc/update-motd.d/10-uname ; \
-echo " 
-if [ ! -e /.password_changed ] ; then
-echo \"
+" | tee -a /etc/update-motd.d/10-uname ; echo " 
+if [ ! -e /.password_changed ] ; then echo "
 THE DEFAULT PASSWORD IS parmanodl (NOTE THE 'l')
 
-YOU MUST CHANGE THE PI'S PASSWORD TO CONTINUE\
+YOU MUST CHANGE THE PI'S PASSWORD TO CONTINUE
 "
 passwd parmanode && touch /.password_changed
 fi
-" | tee -a /etc/update-motd.d/10-uname ; \
-echo " 
-printf \\033[0m\\n" | tee -a /etc/update-motd.d/10-uname ; \
-echo "" > /usr/share/userconf-pi/sshd_banner ; exit '
+" | tee -a /etc/update-motd.d/10-uname ; echo " 
+printf \\033[0m\\n" | tee -a /etc/update-motd.d/10-uname ; echo "" > /usr/share/userconf-pi/sshd_banner ; exit'
 
 
 # umount evertying
