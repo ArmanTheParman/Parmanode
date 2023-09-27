@@ -1,3 +1,4 @@
+#remember to set terminal wider for ssh into parmanodL
 function ParmanodL_build {
 # HOW TO BUILD
 
@@ -51,14 +52,13 @@ sudo chroot /mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/sudoe
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/motd ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/lightdm.conf ; exit' 
 sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintMotd no" >> /etc/ssh/sshd_config ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 
-#start orange colour in 10-uname script 
-#append baner code
-#append password change if statment
-#append colour reversion 
 
-#getting error here, "around | - think I found it and fixed"
-sudo chroot /mnt/raspi /bin/bash -c 'echo "printf \"\\033[38;5;214m\"" | tee -a /etc/update-motd.d/10-uname ; exit' 
+
 
 echo 'WELCOME TO...
 
@@ -70,21 +70,10 @@ echo 'WELCOME TO...
 | _|    /__/     \__\ | _| `._\__|__|  |__| /__/     \__\ |__| \__|  \______/  |_______/ |_______|
 
 
-if [ \! -e /.password_changed ] ; then 
-
-echo "THE DEFAULT PASSWORD IS parmanodl (NOTE IT ENDS IN l)."
-echo ""
-echo "YOU MUST CHANGE THE PI'"'"'S PASSWORD TO CONTINUE"
-
-passwd parmanode && touch /.password_changed
-fi
 ' > $HOME/parman_programs/ParmanodL/banner.txt
-
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
-
-sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt >> /etc/update-motd.d/10-uname ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
 rm $HOME/parman_programs/ParmanodL/banner.txt
-sudo chroot /mnt/raspi /bin/bash -c 'rm /tmp/banner.txt'
 
 # umount evertying
 sudo umount /mnt/raspi/dev
@@ -126,4 +115,17 @@ sudo arp-scan -l
 # Host key verification failed.
 
 # can search $HOME/.ssh/known_hosts for IP address and delete that line
+}
+
+function set_keyboard {
+sudo raspi-config nonint do_configure_keyboard us
+}
+function timezone {
+sudo raspi-config nonint do_change_timezone Etc/UTC
+}
+function set_wifi_country {
+sudo raspi-config nonint do_wifi_country US
+}
+function set_locale {
+sudo raspi-config nonint do_change_locale en_US.UTF-8
 }
