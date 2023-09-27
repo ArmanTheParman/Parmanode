@@ -41,9 +41,30 @@ sudo mount --bind /proc /mnt/raspi/proc
 
 function ParmanodL_chroot {
 
-sudo chroot /mnt/raspi /bin/bash -c " groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ;\\
-echo "parman:parmanode" | chpasswd ; systemctl enable ssh ; apt purge piwiz -y ; echo "en_US.UTF-8 UTF-8" | \\
-tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; echo "Defaults lecture=never" >> /etc/sudoers ; exit " 
+sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ;\\
+echo \"parman:parmanodl\" | chpasswd ; systemctl enable ssh ; apt purge piwiz -y ; echo \"en_US.UTF-8 UTF-8\" | \\
+tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; echo \"Defaults lecture=never\" >> /etc/sudoers ;\\
+echo \"\" > /etc/motd ; \\
+printf '%s\n' \"
+
+WELCOME TO...
+
+.______      ___      .______      .___  ___.      ___      .__   __.   ______    _______   __      
+|   _  \    /   \     |   _  \     |   \/   |     /   \     |  \ |  |  /  __  \  |       \ |  |     
+|  |_)  |  /  ^  \    |  |_)  |    |  \  /  |    /  ^  \    |   \|  | |  |  |  | |  .--.  ||  |     
+|   ___/  /  /_\  \   |      /     |  |\/|  |   /  /_\  \   |  . `  | |  |  |  | |  |  |  ||  |     
+|  |     /  _____  \  |  |\  \----.|  |  |  |  /  _____  \  |  |\   | |  `--'  | |  '--'  ||  `----.
+| _|    /__/     \__\ | _| `._____||__|  |__| /__/     \__\ |__| \__|  \______/  |_______/ |_______|
+
+
+THE DEFAULT PASSWORD IS parmanodl (note the 'l')
+
+IT'S BEST YOU CHANGE THE PASSWORD WITH THE COMMAND:
+
+sudo passwd parman
+
+Enjoy
+\" | tee /usr/share/userconf-pi/sshd_banner ; exit "
 
 # umount evertying
 sudo umount /mnt/raspi/dev
