@@ -42,12 +42,15 @@ sudo mount --bind /proc /mnt/raspi/proc
 function ParmanodL_chroot {
 
 #prep
-sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; \
-echo \"parman:parmanodl\" | chpasswd ; systemctl enable ssh ; systemctl disable piwiz ; apt purge piwiz -y ; \
-echo \"en_US.UTF-8 UTF-8\" | tee -a /etc/locale.gen ; locale-gen ; update-locale LANG=en_US.UTF-8 ; \
-echo \"Defaults lecture=never\" >> /etc/sudoers ; echo \"\" > /etc/motd ; sed -i "/autologin-user=/d" \
-/etc/lightdm/lightdm.conf ; userdel rpi-first-boot-wizard ; exit "
-
+sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
+sudo chroot /mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
+sudo chroot /mnt/raspi /bin/bash -c "systemctl disable piwiz ; apt purge piwiz -y ; exit" 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "en_US.UTF-8 UTF-8" | tee -a /etc/locale.gen ; exit'
+sudo chroot /mnt/raspi /bin/bash -c "locale-gen ; update-locale LANG=en_US.UTF-8 ; exit " 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/sudoers ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/motd ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/lightdm.conf ; exit' 
+sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 
 #start orange colour in 10-uname script 
 #append baner code
