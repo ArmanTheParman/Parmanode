@@ -44,8 +44,8 @@ function ParmanodL_chroot {
 #prep
 sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
-sudo chroot /mnt/raspi /bin/bash -c "systemctl disable piwiz ; apt purge piwiz -y ; exit" 
-sudo chroot /mnt/raspi /bin/bash -c 'echo "en_US.UTF-8 UTF-8" | tee -a /etc/locale.gen ; exit'
+sudo chroot /mnt/raspi /bin/bash -c "apt purge piwiz -y ; exit" 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "en_US.UTF-8 UTF-8" | tee /etc/locale.gen ; exit'
 sudo chroot /mnt/raspi /bin/bash -c "locale-gen ; update-locale LANG=en_US.UTF-8 ; exit " 
 sudo chroot /mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/sudoers ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/motd ; exit'
