@@ -50,13 +50,13 @@ for file in ~/parman_programs/parmanode/src/**/*.sh ; do
 
 
 # Prepare working directoris
-if [[ $debug == false ]] ; then
 
 	mkdir -p $HOME/parman_programs/ParmanodL 
 	mkdir -p $HOME/.parmanode
 
 	#Rasbperry Pi OS, 64 bit, with Desktop.
 	cd $HOME/parman_programs/ParmanodL
+	if [ ! -e *raspios-bullseye-arm64.img.xz ] ; then
 	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64.img.xz
 
 	# Check integrity.
@@ -66,14 +66,14 @@ if [[ $debug == false ]] ; then
 			enter_continue
 			return 1
 		fi
+	fi
 
+	if [ ! -e *raspios-bullseye-arm64.img ] ; then
 	# Unzip the image:
 	xz -vkd *.img.xz
-
-fi
+	fi
 
 ParmanodL_mount
-set_keyboard ; set_wifi_country ; set_timezone ; set_locale
 ParmanodL_chroot
 read -p "pause here and check stuff"
 unmount_image
@@ -108,6 +108,8 @@ sudo mount --bind /proc /mnt/raspi/proc >/dev/null 2>&1
 }
 
 function ParmanodL_chroot {
+
+set_keyboard ; set_wifi_country ; set_timezone ; set_locale
 
 sudo chroot /mnt/raspi /bin/bash -c "apt update -y && apt upgrade -y ; exit "
 sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
