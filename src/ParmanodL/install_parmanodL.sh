@@ -26,7 +26,7 @@ clear ; echo "
 ########################################################################################
 "
 read && clear
-cd $HOME/parmanode_programs/parmanode && git pull && clear
+cd $HOME/parman_programs/parmanode && git pull && clear
 
 if [ ! -e $HOME/parman_programs/parmanode/do_not_delete_move_rename.txt ] ; then
 clear ; echo "failed to get Parmanode, aborting." ; sleep 2 ; exit ; fi
