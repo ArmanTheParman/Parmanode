@@ -109,7 +109,7 @@ sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
-sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'curl https://parmanode.com/install.sh | sh ; exit'
 
 echo '
 
