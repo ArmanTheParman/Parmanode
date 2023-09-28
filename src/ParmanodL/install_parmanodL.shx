@@ -1,10 +1,12 @@
-#remember to set terminal wider for ssh into parmanodL
 function ParmanodL_build {
+if [[ $1 == d ]] ; then export debug=true ; else export debug=false ; fi
+#remember to set terminal wider for ssh into parmanodL
 # HOW TO BUILD
-
 # Need a Raspi 64 bit, with 32GB microSD capacity
 
+
 # Prepare working directory
+if [[ $debug == false ]] ; then
 mkdir -p $HOME/parman_programs/ParmanodL 
 cd $HOME/parman_programs/ParmanodL
 
@@ -20,29 +22,37 @@ fi
 
 # Unzip the image:
 xz -vkd *.img.xz
+fi
+
+ParmanodL_mount
+Parmanodl_chroot
+set_keyboard ; set_wifi_country ; set_timezone ; set_locale
+unmount_image
+read -p "about to write. y or n" choice
+case $choice in y) write_image 
 }
+
+
 
 function ParmanodL_mount {
 # Caculate offset for image, needed for mount command later.
-start=$(sudo fdisk -l *.img | grep img2 | awk '{print $2'})
-start2=$(($start*512))
+start=$(sudo fdisk -l *.img | grep img2 | awk '{print $2'}) >/dev/null
+start2=$(($start*512)) >/dev/null
 
 # Make mountpoint
-sudo mkdir -p /mnt/raspi
+if [[ ! -e /mnt/raspi ]] ; then sudo mkdir -p /mnt/raspi ; fi
 
 # Mount
-sudo mount -v -o offset=$start2 -t ext4 *.img /mnt/raspi
+sudo mount -v -o offset=$start2 -t ext4 2*.img /mnt/raspi >/dev/null || { echo "failed mount" ; return 1 ; }
 
 # Bind file systems needed, just in case.
-sudo mount --bind /dev /mnt/raspi/dev
-sudo mount --bind /sys /mnt/raspi/sys
-sudo mount --bind /proc /mnt/raspi/proc
-
+sudo mount --bind /dev /mnt/raspi/dev >/dev/null 2>&1 
+sudo mount --bind /sys /mnt/raspi/sys >/dev/null 2>&1
+sudo mount --bind /proc /mnt/raspi/proc >/dev/null 2>&1
 }
 
 function ParmanodL_chroot {
 
-#prep
 sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
 sudo chroot /mnt/raspi /bin/bash -c "apt purge piwiz -y ; exit" 
@@ -56,11 +66,10 @@ sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintMotd no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
+echo '
 
-
-
-
-echo 'WELCOME TO...
+WELCOME TO...
 
 .______      ___      .______    .___  ___.      ___      .__   __.   ______    _______   __      
 |   _  \    /   \     |   _  \   |   \/   |     /   \     |  \ |  |  /  __  \  |   __  \ |  |     
@@ -74,7 +83,9 @@ echo 'WELCOME TO...
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
 rm $HOME/parman_programs/ParmanodL/banner.txt
+}
 
+function unmount_image {
 # umount evertying
 sudo umount /mnt/raspi/dev
 sudo umount /mnt/raspi/sys
@@ -85,7 +96,8 @@ sudo umount /mnt/raspi
 function write_image {
 #dd the drive
 # umount first
-sudo umount /dev/sdb*
+cd $HOME/parman_programs/ParmanodL
+sudo umount /dev/sdb* >/dev/null 2>&1
 
 # * doesn't work in dd command
 file=$(ls *.img)
@@ -119,7 +131,7 @@ sync
 function set_keyboard {
 sudo raspi-config nonint do_configure_keyboard us
 }
-function timezone {
+function set_timezone {
 sudo raspi-config nonint do_change_timezone Etc/UTC
 }
 function set_wifi_country {
