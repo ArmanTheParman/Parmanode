@@ -2,6 +2,21 @@ function ParmanodL_build {
 
 if [[ $1 == d ]] ; then export debug=true ; else export debug=false ; fi
 
+if [[ $(uname -s) != Linux ]] ; then 
+clear ; echo "
+    This script only works on a Raspberry Pi 64 bit."
+    enter_continue
+exit
+fi
+
+if [[ $(uname -m) == arm64 || $(uname -m) == aarch64 ]] ; then true ; else
+clear ; echo "
+    This script only works on a Raspberry Pi 64 bit."
+    enter_continue
+exit
+fi
+
+
 if [ ! -e $HOME/parman_programs/parmanode/do_not_delete_move_rename.txt ] ; then
 clear ; echo "
 ########################################################################################
@@ -41,6 +56,9 @@ for file in ~/parman_programs/parmanode/src/**/*.sh ; do
 		fi 
 
 	done
+
+
+ParmanodL_intro
 
 ################################################################################################################################
 
@@ -212,16 +230,17 @@ sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_wifi_country US'
 function set_locale {
 sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8'
 }
-function clear_known_hosts {
-sed -i '/parmanodl/d' $HOME/.ssh/known_hosts
-}
 
 function part2 {
-
+clear_known_hosts
 # put microSD in pi
 # wait
 # ssh parmanodl.local --> set locale#
 # creat script on desktop
+# need set password, then will get logged out.
 true
 
+}
+function clear_known_hosts {
+sed -i '/parmanodl/d' $HOME/.ssh/known_hosts
 }
