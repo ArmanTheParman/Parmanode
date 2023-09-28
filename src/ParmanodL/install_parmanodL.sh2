@@ -14,6 +14,7 @@ clear ; echo "
 " ; read choice ; case $choice in n) return 1 ;; esac
 curl https://parmanode.com/install.sh | sh
 counter=$((counter + 1))
+fi
 
 if [ ! -e $HOME/parman_programs/parmanode/do_not_delete_move_rename.txt ] ; then
 clear ; echo "failed to get Parmanode, aborting." ; sleep 2 ; exit ; fi
