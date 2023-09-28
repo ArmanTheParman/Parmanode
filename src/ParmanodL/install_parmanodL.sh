@@ -150,8 +150,9 @@ function ParmanodL_chroot {
 
 set_locale ; set_keyboard ; set_wifi_country ; set_timezone 
 
-sudo chroot /mnt/raspi /bin/bash -c "apt update -y && apt upgrade -y ; exit "
-sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
+sudo chroot /mnt/raspi /bin/bash -c "apt update -y && apt upgrade -y ; exit"
+sudo chroot /mnt/raspi /bin/bash -c "apt install vim -y ; exit" 
+sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit"
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
 sudo chroot /mnt/raspi /bin/bash -c "apt purge piwiz -y ; exit" 
@@ -194,7 +195,7 @@ TIPS:
 	  - First time use - the password needs to be changed, then it exits. Then come back.
       - Enjoy
 	
-	
+
 ' > $HOME/parman_programs/ParmanodL/banner.txt
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
