@@ -193,3 +193,13 @@ sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.
 function clear_known_hosts {
 sed -i '/parmanodl/d' $HOME/.ssh/known_hosts
 }
+
+function part2 {
+
+# put microSD in pi
+# wait
+# ssh parmanodl.local --> set locale
+# creat script on desktop
+
+
+}
