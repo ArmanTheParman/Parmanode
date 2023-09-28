@@ -214,6 +214,6 @@ function part2 {
 # wait
 # ssh parmanodl.local --> set locale#
 # creat script on desktop
-
+true
 
 }
