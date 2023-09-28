@@ -202,10 +202,11 @@ sudo cp /tmp/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
 rm /tmp/banner.txt
 
-echo '#!/bin/bash
+cat << 'EOF' > /tmp/menu
+#!/bin/bash
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode
-' | tee /tmp/menu 
+EOF
 
 sudo mv /tmp/menu /mnt/raspi/home/parman/menu
 sudo chroot /mnt/raspi /bin/bash -c 'chmod 755 /home/parman/menu ; exit'
