@@ -92,7 +92,7 @@ clear_known_hosts
 
 function ParmanodL_mount {
 # Caculate offset for image, needed for mount command later.
-start=$(sudo fdisk -l $HOME/parman_programs/ParmanodL/*.img | grep img2 | awk '{print $2'}) >/dev/null
+start=$(sudo fdisk -l $HOME/parman_programs/ParmanodL/2023-05-03-raspios-bullseye-arm64.img | grep img2 | awk '{print $2'}) >/dev/null
 start2=$(($start*512)) >/dev/null
 
 # Make mountpoint
