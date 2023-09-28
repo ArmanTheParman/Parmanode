@@ -238,11 +238,9 @@ function part2 {
 # put microSD in pi
 # wait
 # ssh parmanodl.local 
-# create run_parmanode script and pu in /usr/local/bin
-
-# creat script on desktop
 # need set password, then will get logged out.
 true
 }
 
-ParmanodL_build
+#RUN PROGRAM
+#ParmanodL_build
