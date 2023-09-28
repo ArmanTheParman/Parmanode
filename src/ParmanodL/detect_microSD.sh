@@ -22,16 +22,16 @@ clear ; echo "
 "
 read
 
-if [[ $OS == "Linux" ]] ; then 
+if [[ $(uname -s) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
     fi
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $(uname -s) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
 
-set_terminal ; echo -e "
+clear ; echo -e "
 ########################################################################################
 
     Now go ahead and connect the microSD card you wish to use. Do not connect any 
@@ -45,12 +45,12 @@ read
 clear
 sleep 2.5
 
-if [[ $OS == "Linux" ]] ; then
+if [[ $(uname -s) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
     fi
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $(uname -s) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
@@ -62,7 +62,7 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
         echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
-            if [[ $OS == "Linux" ]] ; then
+            if [[ $(uname -s) == "Linux" ]] ; then
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
@@ -70,7 +70,7 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
                 return 0
                 fi
             
-            if [[ $OS == "Mac" ]] ; then
+            if [[ $(uname -s) == "Darwin" ]] ; then
                 Ddiff=$(($(cat $HOME/.parmanode/after | wc -l)-$(cat $HOME/.parmanode/before |wc -l))) #visualstudo code shows last ) as an error but it's not.
                 export disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
