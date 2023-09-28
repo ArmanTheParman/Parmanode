@@ -16,6 +16,18 @@ curl https://parmanode.com/install.sh | sh
 counter=$((counter + 1))
 fi
 
+clear ; echo "
+########################################################################################
+
+    Parmanode will now update itself (Your installed programs won't be affected)
+
+	<enter> to continue
+
+########################################################################################
+"
+read && clear
+cd $HOME/parmanode_programs/parmanode && git pull && clear
+
 if [ ! -e $HOME/parman_programs/parmanode/do_not_delete_move_rename.txt ] ; then
 clear ; echo "failed to get Parmanode, aborting." ; sleep 2 ; exit ; fi
 
@@ -109,11 +121,13 @@ sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
-sudo chroot /mnt/raspi /bin/bash -c 'curl https://parmanode.com/install.sh | sh ; exit'
+cp -r $HOME/parman_programs/parmanode /mnt/raspi/
 sudo chroot /mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parmanode /home/parman/.parmanode ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "message_instructions=1" > /home/parman/.parmanode/hide_messages.conf' 
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-start" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-end" > /home/parman/.parmanode/installed.conf ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
+sudo chown -R parman:parman /mnt/raspi/home/parman
 
 
 echo '
@@ -198,7 +212,7 @@ function part2 {
 
 # put microSD in pi
 # wait
-# ssh parmanodl.local --> set locale
+# ssh parmanodl.local --> set locale#
 # creat script on desktop
 
 
