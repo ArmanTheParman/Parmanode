@@ -208,7 +208,7 @@ rm /tmp/banner.txt
 cat << 'EOF' > /tmp/menu
 #!/bin/bash
 cd /home/parman/parman_programs/parmanode/
-./run_parmanode
+./run_parmanode.sh
 EOF
 
 sudo mv /tmp/menu /mnt/raspi/home/parman/menu
