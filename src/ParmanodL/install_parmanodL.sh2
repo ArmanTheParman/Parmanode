@@ -108,6 +108,8 @@ sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
+
 echo '
 
 WELCOME TO...
@@ -171,14 +173,14 @@ sync
 # can search $HOME/.ssh/known_hosts for IP address and delete that line
 
 function set_keyboard {
-sudo raspi-config nonint do_configure_keyboard us
+sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_configure_keyboard us'
 }
 function set_timezone {
-sudo raspi-config nonint do_change_timezone Etc/UTC
+sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_timezone Etc/UTC'
 }
 function set_wifi_country {
-sudo raspi-config nonint do_wifi_country US
+sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_wifi_country US'
 }
 function set_locale {
-sudo raspi-config nonint do_change_locale en_US.UTF-8
+sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8'
 }
