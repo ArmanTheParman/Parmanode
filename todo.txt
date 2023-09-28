@@ -1,1 +1,2 @@
-# Make the drive selection when formating less reliant on the user.
+Auto update choice
+ParmanodL installation option
