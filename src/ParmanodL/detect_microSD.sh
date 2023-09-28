@@ -66,7 +66,6 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                debug "disk is $disk"
                 return 0
                 fi
             
@@ -82,7 +81,13 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
             break
     fi
 done
+
+if [[ $disk =~ ([^0-9]+) ]]; then
+    export disk="${BASH_REMATCH[1]}"
+fi
+echo "disk variable is $disk"
 }
+
 ########################################################################################
 
 function preperation {
