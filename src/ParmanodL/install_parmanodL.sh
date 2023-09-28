@@ -1,3 +1,8 @@
+# To build Parmanode, you can run this script on a 64 bit Pi 4
+# The microSD card of the BUILDING OS should be 32Gb+ or you'll get errors.
+# The target microSD can be 16Gb cards
+
+
 function ParmanodL_build {
 
 if [[ $1 == d ]] ; then export debug=true ; else export debug=false ; fi
@@ -57,7 +62,6 @@ for file in ~/parman_programs/parmanode/src/**/*.sh ; do
 
 	done
 
-
 ParmanodL_intro
 
 ################################################################################################################################
@@ -106,8 +110,22 @@ if [[ $debug == true ]] ; then
 else
     write_image 
 fi
-clear_known_hosts
 
+set_terminal ; echo "
+########################################################################################
+
+                                S U C C E S S !!
+
+    The microSD card should be ready to eject and put into your Pi4. Attach the Pi 4
+	to an internet connection with an ethernet cable, and then power it on.
+
+	The Parmanode software is installed on it. When you want to use it to run Bitcoin,
+	you'll need an external SSD hard drive - 1 terabyte is recommended.
+
+	Enjoy.						
+########################################################################################
+"
+enter_continue
 }
 
 function ParmanodL_mount {
@@ -171,6 +189,14 @@ WELCOME TO...
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
 rm $HOME/parman_programs/ParmanodL/banner.txt
+
+echo '#!/bin/bash
+cd /home/parman/parman_programs/parmanode/
+./run_parmanode
+' > /usr/local/bin/run_parmanode 
+sudo chroot /mnt/raspi /bin/bash -c 'chmod +x /usr/local/bin/run_parmanode ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'chown parman:parman /usr/local/bin/run_parmanode ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'cd /usr/local/bin/ ; cp run_parmanode menu ; exit'
 }
 
 function unmount_image {
@@ -194,29 +220,6 @@ sudo dd if=$file of=/dev/sdb bs=4M status=progress
 sync
 }
 
-
-#Detect device connected
-#may need to install arp-scan
-#sudo arp-scan -l 
-
-
-# % ssh parman@192.168.0.159
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-# Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-# It is also possible that a host key has just been changed.
-# The fingerprint for the ECDSA key sent by the remote host is
-# SHA256:x7waumHQska9XfttVKEfuDW9xgNObUWEcY2edlMEbSY.
-# Please contact your system administrator.
-# Add correct host key in /Users/ArmanK/.ssh/known_hosts to get rid of this message.
-# Offending ECDSA key in /Users/ArmanK/.ssh/known_hosts:1
-# ECDSA host key for 192.168.0.159 has changed and you have requested strict checking.
-# Host key verification failed.
-
-# can search $HOME/.ssh/known_hosts for IP address and delete that line
-
 function set_keyboard {
 sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_configure_keyboard us'
 }
@@ -231,15 +234,15 @@ sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.
 }
 
 function part2 {
-clear_known_hosts
+
 # put microSD in pi
 # wait
-# ssh parmanodl.local --> set locale#
+# ssh parmanodl.local 
+# create run_parmanode script and pu in /usr/local/bin
+
 # creat script on desktop
 # need set password, then will get logged out.
 true
+}
 
-}
-function clear_known_hosts {
-sed -i '/parmanodl/d' $HOME/.ssh/known_hosts
-}
+ParmanodL_build
