@@ -3,7 +3,7 @@ function ParmanodL_intro {
 set_terminal ; echo -e "
 ########################################################################################
 
-    $cyan                 P  A  R  M  A  N  O  D  L      O  S $orange
+    $cyan                   P  A  R  M  A  N  O  D  L     O  S $orange
 
     You are installing ParmanodL OS onto a microSD card, for use in a Raspberry Pi 4.
 

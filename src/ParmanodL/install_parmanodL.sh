@@ -184,7 +184,17 @@ WELCOME TO...
 |  |     /  _____  \  |  |\  \   |  |  |  |  /  /   \  \  |  | `  | |  |__|  | |  |__|  ||  |____
 | _|    /__/     \__\ | _| `._\__|__|  |__| /__/     \__\ |__| \__|  \______/  |_______/ |_______|
 
-
+TIPS:
+      - Widen the window if needed
+	  - "Parmanode" is the collections of scripts
+	  - "Parmanodl" is the device it runs on
+      - Type "menu" or "run_parmanode" to use the program
+	  - Keep Parmanode updated - use the menu options 
+	  - Updating only affects the scripts, not any program you already have installed.
+	  - First time use - the password needs to be changed, then it exits. Then come back.
+      - Enjoy
+	
+	
 ' > $HOME/parman_programs/ParmanodL/banner.txt
 sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
