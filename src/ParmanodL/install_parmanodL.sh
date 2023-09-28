@@ -75,6 +75,7 @@ fi
 ParmanodL_mount
 set_keyboard ; set_wifi_country ; set_timezone ; set_locale
 ParmanodL_chroot
+read -p "pause here and check stuff"
 unmount_image
 
 #Write image
@@ -116,18 +117,20 @@ sudo chroot /mnt/raspi /bin/bash -c "locale-gen ; update-locale LANG=en_US.UTF-8
 sudo chroot /mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/sudoers ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/motd ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/lightdm.conf ; exit' 
-sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard pi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
-cp -r $HOME/parman_programs/parmanode /mnt/raspi/
+sudo mkdir -p /mnt/raspi/home/parman/parman_programs/parmanode
+sudo cp -r $HOME/parman_programs/parmanode/* /mnt/raspi/home/parman/parman_programs/parmanode/
 sudo chroot /mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parmanode /home/parman/.parmanode ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "message_instructions=1" > /home/parman/.parmanode/hide_messages.conf' 
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-start" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-end" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
 sudo chown -R parman:parman /mnt/raspi/home/parman
+sudo chroot /mnt/raspi /bin/bash -c 'rm -rf /home/pi /home/rpi*
 
 
 echo '
