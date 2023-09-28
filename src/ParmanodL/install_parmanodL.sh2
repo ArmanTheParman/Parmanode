@@ -73,6 +73,7 @@ if [[ $debug == true ]] ; then
 else
     write_image 
 fi
+clear_known_hosts
 
 }
 
@@ -183,4 +184,7 @@ sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_wifi_country US'
 }
 function set_locale {
 sudo chroot /mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8'
+}
+function clear_known_hosts {
+sed -i '/parmanodl/d' $HOME/.ssh/known_hosts
 }
