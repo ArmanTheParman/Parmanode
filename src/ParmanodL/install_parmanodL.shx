@@ -29,10 +29,9 @@ Parmanodl_chroot
 set_keyboard ; set_wifi_country ; set_timezone ; set_locale
 unmount_image
 read -p "about to write. y or n" choice
-case $choice in y) write_image 
+case $choice in y) write_image ;;
+esac
 }
-
-
 
 function ParmanodL_mount {
 # Caculate offset for image, needed for mount command later.
