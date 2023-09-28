@@ -167,13 +167,11 @@ parmanode_conf_add "VCequivalent=$VCequivalent"
 }
 
 function check_chip {
-
 #Expected resulting options
     # x86_64, arm64, aarch64, armv6l, armv7l
 
+    export chip="$(uname -m)" >/dev/null 2>&1
 
-export chip="$(uname -m)" >/dev/null 2>&1
-
-parmanode_conf_add "chip=$chip"
+    parmanode_conf_add "chip=$chip"
 
 }
