@@ -34,7 +34,7 @@ if [[ $(uname -s) == "Darwin" ]] ; then
 clear ; echo -e "
 ########################################################################################
 
-    Now go ahead and connect the microSD card you wish to use. Do not connect any 
+    Now go ahead and CONNECT the microSD card you wish to use. Do not connect any 
     other drive. If a window pops up, a file explorer, you can safely close that.
 
     Hit <enter> once this is done.
@@ -66,7 +66,7 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                return 0
+                break
                 fi
             
             if [[ $(uname -s) == "Darwin" ]] ; then
@@ -75,7 +75,7 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                return 0
+                break
                 fi
 
             break
@@ -85,8 +85,8 @@ done
 if [[ $disk =~ ([^0-9]+) ]]; then
     export disk="${BASH_REMATCH[1]}"
 fi
+read -p "finished"
 echo "disk variable is $disk"
-}
 
 ########################################################################################
 
