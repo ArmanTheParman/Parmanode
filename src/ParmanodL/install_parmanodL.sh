@@ -71,6 +71,8 @@ for file in ~/parman_programs/parmanode/src/**/*.sh ; do
 	if [ ! -e 2023-05-03-raspios-bullseye-arm64.img ] ; then
 	# Unzip the image:
 	xz -vkd 2023-05-03-raspios-bullseye-arm64.img.xz
+	sleep 3
+	read -p "pause and check img file"
 	fi
 
 ParmanodL_mount
