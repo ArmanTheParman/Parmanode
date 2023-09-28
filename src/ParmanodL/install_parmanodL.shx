@@ -1,5 +1,7 @@
 function ParmanodL_build {
 if [[ $1 == d ]] ; then export debug=true ; else export debug=false ; fi
+source $HOME/parman_programs/parmanode/src/ParmanodL/detect_microSD.sh
+
 #remember to set terminal wider for ssh into parmanodL
 # HOW TO BUILD
 # Need a Raspi 64 bit, with 32GB microSD capacity
@@ -25,8 +27,9 @@ xz -vkd *.img.xz
 fi
 
 ParmanodL_mount
-Parmanodl_chroot
 set_keyboard ; set_wifi_country ; set_timezone ; set_locale
+Parmanodl_chroot
+
 unmount_image
 read -p "about to write. y or n" choice
 case $choice in y) write_image ;;
@@ -63,7 +66,6 @@ sudo chroot /mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/li
 sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
 sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config ; exit'
-sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintMotd no" >> /etc/ssh/sshd_config ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
 echo '
