@@ -197,18 +197,22 @@ TIPS:
       - Enjoy
 	
 
-' > $HOME/parman_programs/ParmanodL/banner.txt
-sudo cp $HOME/parman_programs/ParmanodL/banner.txt /mnt/raspi/tmp/banner.txt
+' > /tmp/banner.txt
+sudo cp /tmp/banner.txt /mnt/raspi/tmp/banner.txt
 sudo chroot /mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd ; exit'
-rm $HOME/parman_programs/ParmanodL/banner.txt
+rm /tmp/banner.txt
 
 echo '#!/bin/bash
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode
-' > /usr/local/bin/run_parmanode 
-sudo chroot /mnt/raspi /bin/bash -c 'chmod +x /usr/local/bin/run_parmanode ; exit'
-sudo chroot /mnt/raspi /bin/bash -c 'chown parman:parman /usr/local/bin/run_parmanode ; exit'
-sudo chroot /mnt/raspi /bin/bash -c 'cd /usr/local/bin/ ; cp run_parmanode menu ; exit'
+' | tee /tmp/menu 
+
+sudo mv /tmp/menu /mnt/raspi/home/parman/menu
+sudo chroot /mnt/raspi /bin/bash -c 'chmod 755 /home/parman/menu ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'chown root:root /home/parman/menu ; exit'
+sudo cp /mnt/raspi/home/parman/menu /mnt/raspi/home/parman/run_parmanode
+sudo chroot /mnt/raspi /bin/bash -c 'chown root:root /home/parman/run_parmanode ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'cd /home/parman ; mv menu /usr/local/bin/ ; mv run_parmanode /usr/local/bin/ ; exit'
 }
 
 function unmount_image {
