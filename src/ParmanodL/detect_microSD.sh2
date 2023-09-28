@@ -87,7 +87,7 @@ if [[ $disk =~ ([^0-9]+) ]]; then
 fi
 
 if [[ $debug == true ]] ; then
-read -p "finished. disk variable is $disk"
+read -p "finished. disk variable is $disk. Hit enter."
 fi
 
 }
