@@ -1,24 +1,20 @@
-#used by add_drive function.
+function detect_microSD {
+preparation 
 
-function detect_drive {
-
-set_terminal pink ; echo "
+clear ; echo "
 ########################################################################################
 
-    Please pay careful attention here, otherwise you could get drive errors.
+    Please pay careful attention here, otherwise you could get errors.
 
 ########################################################################################
 "
-enter_continue 
+echo "Hit <enter> to continue" ; read ; clear
 
 while true ; do
-set_terminal "pink" ; echo -e "
+clear ; echo "
 ########################################################################################
 
-    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
-    disconnect any of your other drives at this time.
-    
-    DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
+    Please make sure the microSD card you wish to use is DISCONNECTED. 
     
     Hit <enter> only once this is done.
 
@@ -38,15 +34,15 @@ if [[ $OS == "Mac" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}connect$orange the drive you wish to use for Parmanode. Do not 
-    connect any other drive.
+    Now go ahead and connect the microSD card you wish to use. Do not connect any 
+    other drive. If a window pops up, a file explorer, you can safely close that.
 
-    If a window pops up, a file explorer, you can safely close that.
+    Hit <enter> once this is done.
 
 ########################################################################################
 "
-enter_continue
-set_terminal
+read
+clear
 sleep 2.5
 
 if [[ $OS == "Linux" ]] ; then
@@ -62,7 +58,7 @@ disk_after=$(cat $HOME/.parmanode/after | grep . $HOME/.parmanode/after | tail -
 # grep . filters out empty lines
 disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tail -n1 )
 
-    if [[ "$disk_after" == "$disk_before" ]] ; then 
+   if [[ "$disk_after" == "$disk_before" ]] ; then 
         echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
@@ -86,4 +82,11 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
             break
     fi
 done
+}
+########################################################################################
+
+function preperation {
+
+if [[ ! -e $HOME/.parmanode ]] ; then mkdir $HOME/.parmanode ; fi >/dev/null 2>&1
+
 }
