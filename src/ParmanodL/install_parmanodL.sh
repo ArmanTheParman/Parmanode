@@ -152,7 +152,7 @@ sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-start" > /home/parman/.parm
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-end" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
 sudo cp -r $HOME/parman_programs/parmanode/* /mnt/raspi/home/parman/parman_programs/parmanode/
-sudo chroot /mnt/raspi /bin/bash -c
+sudo chroot /mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman ; exit'
 
 
 echo '
