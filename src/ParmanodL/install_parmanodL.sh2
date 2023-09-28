@@ -72,7 +72,7 @@ if [[ $debug == true ]] ; then
 	case $choice in y) write_image ;;
 	esac
 else
-    write_image ;;
+    write_image 
 fi
 
 }
