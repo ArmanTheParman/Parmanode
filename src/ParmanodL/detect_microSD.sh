@@ -87,7 +87,7 @@ if [[ $disk =~ ([^0-9]+) ]]; then
 fi
 read -p "finished"
 echo "disk variable is $disk"
-
+}
 ########################################################################################
 
 function preperation {
