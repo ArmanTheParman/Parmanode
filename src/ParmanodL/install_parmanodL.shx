@@ -110,6 +110,11 @@ sudo chroot /mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_con
 sudo chroot /mnt/raspi /bin/bash -c 'rfkill unblock wifi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'curl https://parmanode.com/install.sh | sh ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parmanode /home/parman/.parmanode ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "message_instructions=1" > /home/parman/.parmanode/hide_messages.conf' 
+sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-start" > /home/parman/.parmanode/installed.conf ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'echo "parmanode-end" > /home/parman/.parmanode/installed.conf ; exit'
+
 
 echo '
 

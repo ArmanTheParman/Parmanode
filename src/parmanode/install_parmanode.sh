@@ -40,9 +40,7 @@ make_home_parmanode  # creates the directory that holds all the apps' directorie
     installed_config_add "parmanode-end" # This syntax, -start and -end, helps identifiy installations
     #that have started vs installations that have completed.
 
-# Set variables
-    Linux_distro #gets the linux distro into a config file
-    check_chip #gets the chip type into config file
+
 
 set_terminal ; echo "
 ########################################################################################
