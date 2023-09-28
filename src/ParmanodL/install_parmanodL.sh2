@@ -17,7 +17,7 @@ clear ; echo "
 curl https://parmanode.com/install.sh | sh
 counter=$((counter + 1))
 else
-exit
+return 1
 fi
 done
 
