@@ -130,7 +130,7 @@ sudo mount --bind /proc /mnt/raspi/proc >/dev/null 2>&1
 function ParmanodL_chroot {
 
 
-set_keyboard ; set_wifi_country ; set_timezone ; set_locale
+set_locale ; set_keyboard ; set_wifi_country ; set_timezone 
 
 sudo chroot /mnt/raspi /bin/bash -c "apt update -y && apt upgrade -y ; exit "
 sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit "
