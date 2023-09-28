@@ -156,7 +156,8 @@ sudo chroot /mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman p
 sudo chroot /mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
 sudo chroot /mnt/raspi /bin/bash -c "apt purge piwiz -y ; exit" 
-sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard pi ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
+sudo chroot /mnt/raspi /bin/bash -c 'userdel pi ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'rm -rf /home/pi /home/rpi* ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/sudoers ; exit'
 sudo chroot /mnt/raspi /bin/bash -c 'echo "" > /etc/motd ; exit'
