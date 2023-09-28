@@ -85,8 +85,11 @@ done
 if [[ $disk =~ ([^0-9]+) ]]; then
     export disk="${BASH_REMATCH[1]}"
 fi
-read -p "finished"
-echo "disk variable is $disk"
+
+if [[ $debug == true ]] ; then
+read -p "finished. disk variable is $disk"
+fi
+
 }
 ########################################################################################
 
