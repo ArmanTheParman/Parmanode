@@ -1,4 +1,4 @@
-function detect_drive {
+function detect_microSD_pl {
 if [[ $1 == d ]] ; then export debug=true ; fi
 
 set_terminal pink ; echo "
