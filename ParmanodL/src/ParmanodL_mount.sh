@@ -1,3 +1,4 @@
+#Linux version
 function ParmanodL_mount {
 
 # Caculate offset for image, needed for mount command later.
