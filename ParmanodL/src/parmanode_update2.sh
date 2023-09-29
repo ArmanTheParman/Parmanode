@@ -10,7 +10,7 @@ clear ; echo "
 ########################################################################################
 "
 read && clear
-cd $HOME/parman_programs/parmanode && git pull && clear
+cd $HOME/parman_programs/parmanode && git pull && cd - && clear
 return 0
 fi
 return 1
