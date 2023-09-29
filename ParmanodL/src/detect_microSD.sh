@@ -1,6 +1,7 @@
-function detect_microSD {
-if [[ $1 = d ]] ; then export debug=true ; fi
-
+function detect_microSD_pl {
+    echo "test" ; read
+if [[ $1 == d ]] ; then export debug=true ; fi
+set -x
 clear ; echo "
 ########################################################################################
 
@@ -45,18 +46,18 @@ read
 clear
 sleep 2.5
 
-if [[ $(uname) == "Linux" ]] ; then
+if [[ $(uname -s) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
     fi
 
-if [[ $(uname) == "Darwin" ]] ; then
+if [[ $(uname -s) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
-disk_after=$(cat $HOME/.parmanode/after | grep . $HOME/.parmanode/after | tail -n1 ) 
+disk_after=$(grep . $HOME/.parmanode/after | tail -n1 ) 
 # grep . filters out empty lines
-disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tail -n1 )
+disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
 
    if [[ "$disk_after" == "$disk_before" ]] ; then 
         echo "No new drive detected. Try again. Hit <enter>."
