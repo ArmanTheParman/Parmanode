@@ -1,4 +1,5 @@
 function detect_microSD {
+if [[ $1 = d ]] ; then export debug=true ; fi
 
 clear ; echo "
 ########################################################################################
@@ -21,12 +22,12 @@ clear ; echo "
 "
 read
 
-if [[ $(uname -s) == "Linux" ]] ; then 
+if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
     fi
 
-if [[ $(uname -s) == "Darwin" ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
 
@@ -44,12 +45,12 @@ read
 clear
 sleep 2.5
 
-if [[ $(uname -s) == "Linux" ]] ; then
+if [[ $(uname) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
     fi
 
-if [[ $(uname -s) == "Darwin" ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
@@ -61,14 +62,14 @@ disk_before=$(cat $HOME/.parmanode/before | grep . $HOME/.parmanode/before | tai
         echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
-            if [[ $(uname -s) == "Linux" ]] ; then
+            if [[ $(uname) == "Linux" ]] ; then
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 break
                 fi
             
-            if [[ $(uname -s) == "Darwin" ]] ; then
+            if [[ $(uname) == "Darwin" ]] ; then
                 Ddiff=$(($(cat $HOME/.parmanode/after | wc -l)-$(cat $HOME/.parmanode/before |wc -l))) #visualstudo code shows last ) as an error but it's not.
                 export disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
@@ -86,7 +87,7 @@ if [[ $disk =~ ([^0-9]+) ]]; then
 fi
 
 if [[ $debug == true ]] ; then
-read -p "finished. disk variable is $disk. Hit enter."
+echo "Finished. disk variable is $disk. Hit enter."
+read  
 fi
-
 }
