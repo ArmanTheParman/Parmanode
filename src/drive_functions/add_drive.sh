@@ -1,4 +1,5 @@
 function add_drive {
+if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
 info_add_drive || return 1
 
