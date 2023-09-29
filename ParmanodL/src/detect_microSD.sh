@@ -1,6 +1,5 @@
 function detect_microSD_pl {
-if [[ $1 == d ]] ; then export debug=true ; fi
-
+if [[ $1 == d ]] ; then export debug=1 ; fi
 set_terminal pink ; echo "
 ########################################################################################
 
@@ -9,6 +8,7 @@ set_terminal pink ; echo "
 ########################################################################################
 "
 enter_continue 
+debug "starting"
 
 while true ; do
 set_terminal "pink" ; echo -e "
@@ -70,7 +70,7 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                return 0
+                break
                 fi
             
             if [[ $(uname) == "Darwin" ]] ; then
@@ -79,13 +79,13 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                return 0
+                break 
                 fi
 
             break
     fi
-    debug "disk is $disk"
-    if [[ $debug == true ]] ; then echo "disk is $disk" ; enter_continue ; fi
 done
+debug "disk is $disk"
+if [[ $debug == 1 ]] ; then echo "disk is $disk" ; enter_continue ; fi
 }
 #used by add_drive function.

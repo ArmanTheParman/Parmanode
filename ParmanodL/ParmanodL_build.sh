@@ -1,4 +1,6 @@
 # Building a ParmanodL for a Pi4 using a Pi4
+for file in ~/parman_programs/parmanode/ParmanodL/src/*.sh ; do source $file ; done
+source_parmanode
 
 function ParmanodL_build {
 

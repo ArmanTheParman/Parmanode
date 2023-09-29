@@ -71,7 +71,7 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                return 0
+                break 
                 fi
             
             if [[ $(uname) == "Darwin" ]] ; then
@@ -80,11 +80,11 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                return 0
+                break
                 fi
 
             break
     fi
-    debug "disk is $disk"
 done
+debug "disk is $disk"
 }
