@@ -1,8 +1,8 @@
 #Linux version
-function ParmanodL_mount {
-
+ParmanodL_mount () { 
+if [[ $(uname) == Linux ]] ; then
 # Caculate offset for image, needed for mount command later.
-start=$(sudo fdisk -l $HOME/parman_programs/ParmanodL/2023-05-03-raspios-bullseye-arm64.img | grep img2 | awk '{print $2'}) >/dev/null
+start=$(sudo fdisk -l $HOME/parman_programs/ParmanodL/2023-05-03-raspios-bullseye-arm64.img | grep img2 | awk '{print $2}') >/dev/null
 start2=$(($start*512)) >/dev/null
 
 # Make mountpoint
@@ -15,6 +15,7 @@ sudo mount -v -o offset=$start2 -t ext4 2*.img /mnt/raspi >/dev/null || { echo "
 sudo mount --bind /dev /mnt/raspi/dev >/dev/null 2>&1 
 sudo mount --bind /sys /mnt/raspi/sys >/dev/null 2>&1
 sudo mount --bind /proc /mnt/raspi/proc >/dev/null 2>&1
+fi
 }
 
 function ParmanodL_unmount {
