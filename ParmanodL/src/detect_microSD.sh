@@ -1,21 +1,23 @@
-function detect_microSD_pl {
-    echo "test" ; read
+function detect_drive {
 if [[ $1 == d ]] ; then export debug=true ; fi
-set -x
-clear ; echo "
+
+set_terminal pink ; echo "
 ########################################################################################
 
-    Please pay careful attention here, otherwise you could get errors.
+    Please pay careful attention here, otherwise you could get drive errors.
 
 ########################################################################################
 "
-echo "Hit <enter> to continue" ; read ; clear
+enter_continue 
 
 while true ; do
-clear ; echo "
+set_terminal "pink" ; echo -e "
 ########################################################################################
 
-    Please make sure the microSD card you wish to use is DISCONNECTED. 
+    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
+    disconnect any of your other drives at this time.
+    
+    DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
     
     Hit <enter> only once this is done.
 
@@ -32,26 +34,26 @@ if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
 
-clear ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and CONNECT the microSD card you wish to use. Do not connect any 
-    other drive. If a window pops up, a file explorer, you can safely close that.
+    Now go ahead and ${cyan}connect$orange the drive you wish to use for Parmanode. Do not 
+    connect any other drive.
 
-    Hit <enter> once this is done.
+    If a window pops up, a file explorer, you can safely close that.
 
 ########################################################################################
 "
-read
-clear
+enter_continue
+set_terminal
 sleep 2.5
 
-if [[ $(uname -s) == "Linux" ]] ; then
+if [[ $(uname) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
     fi
 
-if [[ $(uname -s) == "Darwin" ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
@@ -59,7 +61,7 @@ disk_after=$(grep . $HOME/.parmanode/after | tail -n1 )
 # grep . filters out empty lines
 disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
 
-   if [[ "$disk_after" == "$disk_before" ]] ; then 
+    if [[ "$disk_after" == "$disk_before" ]] ; then 
         echo "No new drive detected. Try again. Hit <enter>."
             read ; continue 
         else
@@ -67,7 +69,8 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 sed -i s/://g $HOME/.parmanode/after
                 export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                break
+                debug "disk is $disk"
+                return 0
                 fi
             
             if [[ $(uname) == "Darwin" ]] ; then
@@ -76,19 +79,13 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
                 echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
                 echo "disk=\"$disk\"" > $HOME/.parmanode/var
                 debug "disk is $disk"
-                break
+                return 0
                 fi
 
             break
     fi
+    debug "disk is $disk"
+    if [[ $debug == true ]] ; then echo "disk is $disk" ; enter_continue ; fi
 done
-
-if [[ $disk =~ ([^0-9]+) ]]; then
-    export disk="${BASH_REMATCH[1]}"
-fi
-
-if [[ $debug == true ]] ; then
-echo "Finished. disk variable is $disk. Hit enter."
-read  
-fi
 }
+#used by add_drive function.
