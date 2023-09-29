@@ -59,7 +59,8 @@ ParmanodL_directories
 
 # TO DO
 #download Parmanodl.img
-#detect MicroSD for Mac
+detect_microSD
+unmount_microSD
 #dd write to microSD, Mac
 #instructions to insert into Pi
 #new desktop icon "parmanode"
