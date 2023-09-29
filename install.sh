@@ -5,6 +5,27 @@ return 0
 # IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE
 
 #!/bin/sh
+
+if [ $(uname -s) == Darwin ] ; then
+clear
+echo "
+########################################################################################
+
+    The installation method is not yet available for Macs. Aborting.
+
+    For your convenience, instructions have been left on your desktop in a new text
+    file.
+
+    This message will self-destruct in 5 seconds.
+
+########################################################################################
+"
+sleep 5 
+cd $HOME/Desktop
+curl -LO https://parmanode.com/run_parmanode.txt
+exit
+fi
+
 if [ -d $HOME/parman_programs/parmanode ] ; then
 clear
 echo "Parmanode directory already exists. Aborting."
@@ -17,17 +38,14 @@ sudo apt update -y
 sudo apt install git -y
 fi
 
-if [ "$(uname -s)" = "Linux" ]; then
 if ! which gnome-terminal >/dev/null ; then
 sudo apt update -y
 sudo apt install gnome-terminal -y
-fi
 fi
 
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
-if [ "$(uname -s)" = "Linux" ] ; then
 mkdir -p ~/Desktop ~/.icons/
 cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
 echo "[Desktop Entry]
@@ -40,8 +58,4 @@ Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
-else
-cd $HOME/Desktop
-curl -LO https://parmanode.com/run_parmanode.txt
-fi
 clear
