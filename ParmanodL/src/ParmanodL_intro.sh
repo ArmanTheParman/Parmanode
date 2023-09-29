@@ -7,8 +7,13 @@ set_terminal ; echo -e "
 
     You are installing ParmanodL OS onto a microSD card, for use in a Raspberry Pi 4.
 
-    The entire process may take about 20 minutes. There are some prompts to respond to
-    so walking away and expecting it to be done when you get back will disappoint you.
+    You need to use a a 64bit ARM chip computer to do this, ie a Pi 4. Make sure you
+    have enough space free on the microSD to build this (around 10GB) or you'll get
+    confusing errors.
+
+    The target microSD (for the ParmanodL) can be as small as 16GB.
+
+    The entire process may take about 20 minutes. 
 
     For best probability of success, do not do too many other things with the computer
     as you build this.
