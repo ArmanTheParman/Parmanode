@@ -20,10 +20,10 @@ ParmanodL_mount
 ParmanodL_chroot ; debug "pause here and check stuff"
 ParmanodL_unmount
 Parmanodl_write 
-set_terminal ; echo "
+set_terminal_higher ; echo -e "
 ########################################################################################
 
-                                S U C C E S S !!
+                   $cyan             S U C C E S S !! $orange
 
     The microSD card should be ready to eject and put into your Pi4. Attach the Pi 4
 	to an internet connection with an ethernet cable, and then power it on.
@@ -43,13 +43,13 @@ set_terminal ; echo "
 
 	then try again.
 
-	The password for the ParmanodL is "parmanodl". You'll need to change it when you
-	first log in with SSH.
+	The password for the ParmanodL is "parmanodl"
 
 	Enjoy.						
 ########################################################################################
 "
 enter_continue
+set_terminal
 }
 
 function part2 {
