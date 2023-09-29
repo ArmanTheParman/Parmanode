@@ -17,7 +17,7 @@ cd $HOME/parman_programs/ParmanodL
 sudo umount ${disk}* >/dev/null 2>&1
 
 # * doesn't work in dd command
-file=$(ls *.img)
+file=$(ls 2*.img)
 sudo dd if=$file of=/dev/sdb bs=4M status=progress 
 sync
 }
