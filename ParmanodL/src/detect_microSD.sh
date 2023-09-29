@@ -1,5 +1,4 @@
 function detect_microSD {
-preparation 
 
 clear ; echo "
 ########################################################################################
@@ -89,12 +88,5 @@ fi
 if [[ $debug == true ]] ; then
 read -p "finished. disk variable is $disk. Hit enter."
 fi
-
-}
-########################################################################################
-
-function preperation {
-
-if [[ ! -e $HOME/.parmanode ]] ; then mkdir $HOME/.parmanode ; fi >/dev/null 2>&1
 
 }
