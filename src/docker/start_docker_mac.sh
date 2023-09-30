@@ -32,7 +32,7 @@ set_terminal_bit_higher "pink" ; echo "
 
 ########################################################################################
 
-    You can also request Parmanode to \"kill\" any Docker processes running in the 
+    You can also request to \"kill\" any Docker processes running in the 
     background that may be causing Docker not to start properly. Use this function
     at your own risk...
 

@@ -1,4 +1,4 @@
-function Parmanodl_write {
+function ParmanodL_write {
 #Write image
 if [[ $debug == true ]] ; then
 	read -p "about to write. y or n" choice
@@ -13,7 +13,7 @@ function write_image {
 #dd the drive
 # umount first
 detect_microSD #result will be in the form /dev/xxx with no number at the end and stored in disk variable
-cd $HOME/parman_programs/ParmanodL
+cd $HOME/ParmanodL
 sudo umount ${disk}* >/dev/null 2>&1
 
 # * doesn't work in dd command

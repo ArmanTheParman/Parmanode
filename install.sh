@@ -34,13 +34,13 @@ exit
 fi
 
 if ! which git >/dev/null ; then
-sudo apt update -y 
-sudo apt install git -y
+sudo apt-get update -y 
+sudo apt-get install git -y
 fi
 
 if ! which gnome-terminal >/dev/null ; then
-sudo apt update -y
-sudo apt install gnome-terminal -y
+sudo apt-get update -y
+sudo apt-get install gnome-terminal -y
 fi
 
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
