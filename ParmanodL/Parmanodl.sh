@@ -1,11 +1,11 @@
-# Script will exist at parmanode.com/parmanodel_PI64.sh
+# Script will exist at parmanode.com/parmanodel_Pi64.sh
 return 0
 
 function temporary_function {
 printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
 
 # User to type: 
-#        /bin/bash -c "$(curl -fsSL https://parmanode.com/parmanodl_PI64.sh)" 
+#        /bin/bash -c "$(curl -fsSL https://parmanode.com/parmanodl_Pi64.sh)" 
 
 # Mac Version
 
