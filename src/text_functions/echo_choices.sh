@@ -94,7 +94,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-if [[ $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
+if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 
 function errormessage {

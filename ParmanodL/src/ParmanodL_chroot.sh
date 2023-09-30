@@ -2,12 +2,12 @@ function ParmanodL_chroot {
 
 set_locale ; set_keyboard ; set_wifi_country ; set_timezone 
 
-sudo chroot /tmp/mnt/raspi /bin/bash -c "apt update -y && apt upgrade -y ; exit"
-sudo chroot /tmp/mnt/raspi /bin/bash -c "apt install vim -y ; exit" 
+sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y && apt-get upgrade -y ; exit"
+sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y ; exit" 
 sudo chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman ; exit"
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh ; exit'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman ; exit' 
-sudo chroot /tmp/mnt/raspi /bin/bash -c "apt purge piwiz -y ; exit" 
+sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get purge piwiz -y ; exit" 
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard ; exit'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'userdel pi ; exit'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'rm -rf /home/pi /home/rpi* ; exit'
@@ -23,8 +23,10 @@ sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "message_instructions=1" > /home/p
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanode-start" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanode-end" > /home/parman/.parmanode/installed.conf ; exit'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname ; exit'
-sudo cp -r $HOME/parman_programs/parmanode/. /tmp/mnt/raspi/home/parman/parman_programs/parmanode/
-sudo chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman ; exit'
+sudo chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y" ; exit'
+sudo chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git ; exit'
+#sudo cp -r $HOME/parman_programs/parmanode/. /tmp/mnt/raspi/home/parman/parman_programs/parmanode/
+sudo chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman ; exit' #necessary
 
 
 echo '

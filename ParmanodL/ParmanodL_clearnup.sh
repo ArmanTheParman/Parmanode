@@ -1,7 +1,7 @@
 function ParmanodL_cleanup {
 
-#new /mnt directory mad?
-
+sudo rm -rf /tmp/mnt
+sudo rm -rf $HOME/.parmanodl $HOME/ParmanodL
 
 return 0
 }

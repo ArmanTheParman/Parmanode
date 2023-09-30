@@ -1,24 +1,26 @@
 function get_PiOS {
 
-#Rasbperry Pi OS, 64 bit, with Desktop.
+# Get Rasbperry Pi OS, 64 bit, with Desktop.
 
-	cd $HOME/parman_programs/ParmanodL || { echo "failed to cd in get_PiOS" && exit ; }
+	cd $HOME/ParmanodL || { echo "failed to cd in get_PiOS" && sleep 3 ; exit ; }
 
-	if [ ! -e 2023-05-03-raspios-bullseye-arm64.img.xz ] ; then
-	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64.img.xz
-
-	# Check integrity.
-
-		if ! shasum -a 256 *.img.xz | grep e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa ; then
-			echo "sha256 failed. Aborting"
-			enter_continue
-			return 1
-		fi
+	if [ ! -e $zip ] ; then
+	please_wait
+	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/$zip || \
+	{ announce "Failed do download Pi OS image. Aborting." ; return 1 ; }
 	fi
 
-	if [ ! -e $(pwd)/2023-05-03-raspios-bullseye-arm64.img ] ; then
-	# Unzip the image:
-	xz -vkd 2023-05-03-raspios-bullseye-arm64.img.xz
-    debug "pause and check img"	
+# Check integrity.
+
+	if ! shasum -a 256 "$HOME/ParmanodL/$zip" | grep -q $hash ; then
+		announce "sha256 failed. Aborting" ; return 1
+    else
+	    echo "Sha256 success. Continuing" ; sleep 2  	
+	fi
+
+# Unzip file.
+
+	if [ ! -e $HOME/ParmanodL/$image ] ; then
+	xz -vkd $zip || { announce "Failed to unzip image file" ; return 1 ; }
 	fi
 }

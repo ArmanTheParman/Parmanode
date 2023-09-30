@@ -1,27 +1,15 @@
 # Building a ParmanodL for a Pi4 using a Pi4
-for file in ~/parman_programs/parmanode/ParmanodL/src/*.sh ; do source $file ; done
-source_parmanode
-
 function ParmanodL_build {
-
-# Debug toggle
-if [[ $1 == d ]] ; then export debug=true ; else export debug=false ; fi
-# set terminal
-printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
-# source modules
-for file in ~/parman_programs/parmanode/ParmanodL/src/*.sh ; do source $file ; done
 
 ParmanodL_intro
 Pi64_only || exit
-parmanode_update2 || get_parmanode || exit # also ensures git will be installed
-source_parmanode
-ParmanodL_directories
-
 get_PiOS
+
+
 ParmanodL_mount
 ParmanodL_chroot ; debug "pause here and check stuff"
 ParmanodL_unmount
-Parmanodl_write 
+ParmanodL_write 
 set_terminal_higher ; echo -e "
 ########################################################################################
 
