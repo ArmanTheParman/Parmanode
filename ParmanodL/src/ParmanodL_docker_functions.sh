@@ -2,7 +2,7 @@ function ParmanodL_docker_run {
 
 # Remove old ParmanodL containers in case of repeated installation
 
-    if docker ps -a | grep ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
+    if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
 
 # Start a Linux docker container as a daemon process
 

@@ -1,8 +1,8 @@
-function make_run_parmanodl {
+function make_Run_ParmanodL {
 
 # Make execution script
 
-cat << 'EOF' > $HOME/Desktop/run_parmanodl
+cat << 'EOF' > $HOME/Desktop/Run_ParmanodL
 #!/bin/bash
 
 printf '\033[8;38;88t'  
@@ -20,6 +20,6 @@ ssh-keyscan parmanodl.local >> ~/.ssh/known_hosts 2>/dev/null
 ssh parman@parmanodl.local
 EOF
 
-sudo chmod +x $HOME/Desktop/run_parmanodl
+sudo chmod +x $HOME/Desktop/Run_ParmanodL
 
 }
