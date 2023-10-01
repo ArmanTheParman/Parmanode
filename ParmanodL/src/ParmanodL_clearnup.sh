@@ -14,6 +14,27 @@ function ParmanodL_cleanup {
 
     sudo rm -rf /tmp/mnt
 
+# Remove Docker Option
+
+    if [[ $OS == Mac && $docker == downloaded ]] ; then
+    set_terminal ; echo "
+########################################################################################
+
+     Do you want to keep Docker?
+
+                      k)        Keep it
+
+                      d)        Damp it (delete)
+
+######################################################################################## 
+"
+read choice
+clear
+if [[ $choice == d ]] ; then untinstall_docker_mac ; fi
+fi
+
+# Remove ParmanodL directory (with image/zip files)
+
 while true ; do
 set_terminal ; echo "
 ########################################################################################

@@ -227,23 +227,8 @@ Please wait...
 
     rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
     
-# Remove Docker Option
+# Clean up the mess
 
-    if [[ $OS == Mac && $docker == downloaded ]] ; then
-    set_terminal ; echo "
-########################################################################################
-
-     Do you want to keep Docker?
-
-                      k)        Keep it
-
-                      d)        Damp it (delete)
-
-######################################################################################## 
-"
-read choice
-clear
-if [[ $choice == d ]] ; then untinstall_docker_mac ; fi
-fi
+    ParmanodL_cleanup
 
 # The End
