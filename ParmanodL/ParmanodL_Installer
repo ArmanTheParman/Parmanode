@@ -127,7 +127,7 @@
     get_PiOS || exit
 
 # Macs need docker functionality here
-
+    
     ParmanodL_docker_run || exit
     ParmanodL_docker_get_binaries || exit
 

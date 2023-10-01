@@ -1,5 +1,9 @@
 function ParmanodL_docker_run {
 
+# Remove old ParmanodL containers in case of repeated installation
+
+    if docker ps | grep ParmanodL ; then docker stop ParmanodL ; docker rm ParmanodL ; fi
+
 # Start a Linux docker container as a daemon process
 
     docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null || \
