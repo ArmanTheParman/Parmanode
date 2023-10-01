@@ -13,7 +13,7 @@ sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "Defaults lecture=never" >> /etc/s
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "" > /etc/motd'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/lightdm.conf' 
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config'
-sudo chroot /tmp/mnt/raspi /bin/bash -c 'rfkill unblock wifi'
+sudo chroot /tmp/mnt/raspi /bin/bash -c 'rfkill unblock wifi 2>/dev/null'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parmanode /home/parman/.parmanode'
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parman_programs/parmanode'

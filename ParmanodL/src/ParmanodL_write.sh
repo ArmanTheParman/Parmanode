@@ -8,7 +8,16 @@ sudo dd if="${image_path}" of="${disk}" bs=8000000 status=progress
 fi
 
 if [[ $OS == Mac ]] ; then
-echo "Flashing the drive with Parmanode OS, please wait..."
+clear
+echo "
+Flashing the drive with Parmanode OS. This can take a weirdly long
+time with no screen feedback, probably more than 10 minutes. 
+
+Let this be a lesson that you should have been using Linux :P
+
+Please wait...
+
+"
 sudo dd if="${image_path}" of="${disk}" bs=8000000 
 fi
 
