@@ -34,7 +34,7 @@
     Hit <enter> to continue
 
 ########################################################################################
-    " ; read
+    " ; read ; echo "" ; echo "    Please wait..."
 
 # Detect the OS
 
