@@ -1,6 +1,6 @@
 function ParmanodL_chroot_Linux {
 
-sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y && apt-get upgrade -y "
+sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get upgrade -y"
 sudo chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 sudo chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
