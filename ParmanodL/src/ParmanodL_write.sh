@@ -3,6 +3,6 @@ function ParmanodL_write {
 
 sudo umount ${disk}* >/dev/null 2>&1
 
-sudo dd if="$image_path" of="${disk}" bs=4M status=progress 
+sudo dd if="${image_path}" of="${disk}" bs=4194304 status=progress 
 sync
 }
