@@ -37,7 +37,8 @@
     Hit <enter> to continue
 
 ########################################################################################
-    " ; read ; echo "" ; echo "    Please wait..."
+    " ; read ; echo "" ; echo "Please wait...
+    "
 
 # Detect the OS
 
@@ -174,4 +175,8 @@
 
     ParmanodL_success
 
+# Remove temporary script
+
+    rm $HOME/Desktop/ParmanodL_Installer
+    
 # The End
