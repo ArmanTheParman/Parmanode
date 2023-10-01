@@ -1,6 +1,6 @@
 function ParmanodL_chroot_Mac {
-
-cat << 'EOS' > ~/ParmanodL/chroot_function.sh #document to be executed inside docker container.
+#document to be executed inside docker container.
+cat << 'EOS' > ~/ParmanodL/chroot_function.sh 
 #!/bin/bash
 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y && apt-get upgrade -y"
@@ -65,7 +65,8 @@ mv /tmp/menu /tmp/mnt/raspi/home/parman/menu
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/menu'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/menu'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman ; mv menu /usr/local/bin/ '
-EOS # ends heredoc
+EOS 
+
 sudo chmod +x ~/ParmanodL/chroot_function.sh
 
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
