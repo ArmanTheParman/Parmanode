@@ -3,7 +3,7 @@ function start_docker_mac {
 ( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
 || log "docker" "docker failed to nohup open -a" 
 
-set_terminal_bit_higher "pink" ; echo "
+set_terminal_bit_higher "pink" ; echo - e "
 ########################################################################################
 
                                 Docker is starting
@@ -22,16 +22,16 @@ set_terminal_bit_higher "pink" ; echo "
     Docker icon from the applications folder. If a Docker icon doesn't even exist in
     the Applications menu, something went wrong. Carefully place the computer in the
     bin and buy a new one, preferable Linux, not Mac, and not, God forbid, Windows.
-
+$cyan
 ########################################################################################
-
+########################################################################################
     Only hit <enter> once you're sure Docker is running in the background, otherwise 
     hit (q) to quit or (p) to return to the menu. Answer any pop-up questions, and
     wait to see \"Docker engine starting\", and when that's done, proceed by hitting
     <enter> here.
-
 ########################################################################################
-
+########################################################################################
+$orange
     You can also request to \"kill\" any Docker processes running in the 
     background that may be causing Docker not to start properly. Use this function
     at your own risk...
