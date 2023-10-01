@@ -244,6 +244,6 @@ Please wait...
 read choice
 clear
 if [[ $choice == d ]] ; then untinstall_docker_mac ; fi
-
+fi
 
 # The End
