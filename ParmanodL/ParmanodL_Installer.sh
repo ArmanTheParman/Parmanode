@@ -8,8 +8,8 @@
     
     export zip="2023-05-03-raspios-bullseye-arm64.img.xz"
     export image_file="2023-05-03-raspios-bullseye-arm64.img"
-        export image_path="$HOME/ParmanodL/$image_file" 
-        export image=$image_path
+    export image_path="$HOME/ParmanodL/$image_file" 
+    export image=$image_path
     export hash="e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa"
 
 # size 88 wide, and orange colour scheme
