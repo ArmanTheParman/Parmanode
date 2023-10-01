@@ -1,11 +1,10 @@
 function ParmanodL_directories {
-# Prepare working directories
+
+# Prepare directories
 
 	mkdir -p $HOME/ParmanodL 
-	mkdir -p $HOME/.parmanode
-	mkdir -p $HOME/.parmanodl
-	touch $HOME/.parmanodl/parmanodl.conf
-	touch $HOME/.parmanodl/installed.conf
-    if [[ $OS == Linux ]] ; then mkdir -p /tmp/mnt/raspi ; fi  
+	mkdir -p $HOME/.parmanode # Borrowing parmanode's config directory
 
+    if [[ $OS == Linux ]] ; then mkdir -p /tmp/mnt/raspi ; fi  		
+	            #not needed for mac because mount point will be inside docker container.
 }
