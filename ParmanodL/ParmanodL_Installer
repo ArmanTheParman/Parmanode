@@ -43,7 +43,9 @@
 # Detect the Machine
 
     if [[ $OS == Mac ]] ; then export machine=Mac ; fi
-    if sudo cat /proc/cpuinfo | grep "Raspberry Pi" ; then export machine=Pi ; fi
+    if [[ $OS == Linux ]] ; then
+        if sudo cat /proc/cpuinfo | grep "Raspberry Pi" ; then export machine=Pi ; fi
+    fi
     if [[ $machine != Mac && $machine != Pi ]] ; then export macine=other ; fi
 
 # Detect the chip
