@@ -4,8 +4,8 @@ function ParmanodL_directories {
 	mkdir -p $HOME/ParmanodL 
 	mkdir -p $HOME/.parmanode
 	mkdir -p $HOME/.parmanodl
-	touch -p $HOME/.parmanodl/parmanodl.conf
-	touch -p $HOME/.parmanodl/installed.conf
+	touch $HOME/.parmanodl/parmanodl.conf
+	touch $HOME/.parmanodl/installed.conf
     if [[ $OS == Linux ]] ; then mkdir -p /tmp/mnt/raspi ; fi  
 
 }
