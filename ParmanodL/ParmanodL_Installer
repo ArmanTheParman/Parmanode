@@ -98,7 +98,7 @@
           { announce "Unable to get parmanode scripts with git. Aborting." ; exit 1 ; }
     else
         cd $HOME/parman_programs/parmanode/
-        git pull
+        git pull >/dev/null
     fi
 
 # Source Parmanode & ParmanodL scripts to get needed functions
