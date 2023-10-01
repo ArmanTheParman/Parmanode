@@ -56,7 +56,7 @@ rm /tmp/banner.txt
 
 cat << 'EOF' > /tmp/menu
 #!/bin/bash
-oldPassword=$(cat /tmp/oldPassword) ; if sudo cat /etc/shadow | grep -q "$oldPassword" ; then sudo sed -i '/First/d' /etc/motd ; sudo sed -i '/oldPassword/d' /usr/local/bin/menu ; fi 
+oldPassword=$(cat /tmp/oldPassword 2>/dev/null) ; if sudo cat /etc/shadow | grep -q "$oldPassword" ; then sudo sed -i '/First/d' /etc/motd ; sudo sed -i '/oldPassword=/d' /usr/local/bin/menu ; fi 
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
