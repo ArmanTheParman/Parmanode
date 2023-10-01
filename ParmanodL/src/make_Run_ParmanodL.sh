@@ -1,6 +1,6 @@
 function make_Run_ParmanodL {
 
-# Make execution script
+# Make execution script (replaces if existing)
 
 cat << 'EOF' > $HOME/Desktop/Run_ParmanodL
 #!/bin/bash
