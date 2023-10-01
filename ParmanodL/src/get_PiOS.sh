@@ -20,7 +20,7 @@ function get_PiOS {
 
 # Unzip file.
 
-	if [ ! -e $HOME/ParmanodL/$image ] ; then
+	if [ ! -e $HOME/ParmanodL/$image_file ] ; then
 	xz -vkd $zip || { announce "Failed to unzip image file" ; return 1 ; }
 	fi
 }
