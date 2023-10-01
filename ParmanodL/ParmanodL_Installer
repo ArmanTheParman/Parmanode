@@ -26,10 +26,13 @@
 
     The target microSD can be as small as 16GB.
 
-    The entire process may take about 30 minutes. 
+    The entire process may take about 30 minutes. There will be ocassional promtps,
+    so be around the computer as you'll probably be asked for your computer password 
+    more than once. You'll also be asked to remove and insert the microSD card to 
+    assist with drive detection.
 
-    For best probability of success, do not do too many other things with the computer
-    as you build this.
+    For best probability of success, do not do resource intensive things with the 
+    computer as you build this.
 
     Hit <enter> to continue
 
