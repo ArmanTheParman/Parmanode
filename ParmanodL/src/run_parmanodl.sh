@@ -5,7 +5,7 @@ function make_Run_ParmanodL {
 cat << 'EOF' > $HOME/Desktop/Run_ParmanodL
 #!/bin/bash
 
-printf '\033[8;38;88t'  
+printf '\033[8;38;100t'  
 
 if [[ $(uname) == Darwin ]] ; then
     sed -i '' '/parmanodl.local/d' $HOME/.ssh/known_hosts >/dev/null
