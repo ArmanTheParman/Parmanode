@@ -15,7 +15,7 @@ cd $HOME/ParmanodL
 	if ! shasum -a 256 "$zip_path" | grep -q $hash_zip ; then
 		announce "sha256 failed. Aborting" ; return 1
     else
-	    echo "Sha256 success. Continuing" ; sleep 2  	
+	    echo "Sha256 of PiOS success. Continuing" 
 	fi
 
 # Unzip file.

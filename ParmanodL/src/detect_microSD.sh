@@ -90,4 +90,6 @@ debug "disk is $disk"
 if [[ $debug == 1 ]] ; then echo "disk is $disk" ; enter_continue ; fi
 
 if [ -z "$disk" ] ; then announce "Error getting microSD card device name. Aborting." ; return 1 ; fi
+
+log "parmanodl" "disk is $disk"
 }

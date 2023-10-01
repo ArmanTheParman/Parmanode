@@ -6,6 +6,7 @@ while true ; do
 
         if ! which docker >/dev/null 2>&1 ; then  #need to install docker and make sure it's running
             download_docker_mac 
+            log "parmanodl" "download_docker_mac done"
         fi
         
         if ! which docker >/dev/null ; then return 1 ; fi
