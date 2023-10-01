@@ -219,10 +219,6 @@ Please wait...
 
     make_Run_ParmanodL ; log "parmanodl" "finished make_run_parmanodL"
 
-# Success output
-
-    ParmanodL_success
-
 # Remove temporary script
 
     rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
@@ -230,5 +226,9 @@ Please wait...
 # Clean up the mess
 
     ParmanodL_cleanup
+
+# Success output
+
+    ParmanodL_success
 
 # The End
