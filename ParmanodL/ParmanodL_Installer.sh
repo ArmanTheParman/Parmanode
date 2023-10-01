@@ -133,4 +133,38 @@
 
 # Setup system locale
 
-    locale
+    set_locale
+
+# Modify the image with chroot
+
+    ParmanodL_chroot 
+
+# Debug - opportunity to pause and check
+
+    debug "Chroot finished. Pause to check."
+
+# Unmount the image and system directories
+
+    ParmanodL_unmount
+
+# Get microSD device name into disk variable - user input here
+
+    detect_microSD || exit
+
+# Write the image to microSD
+
+    ParmanodL_write || exit
+
+# Clean known hosts of parmanodl
+ 
+    clean_known_hosts
+
+# make run_parmanodl for desktop execution
+
+    make_run_parmanodl
+
+# Success output
+
+    ParmanodL_success
+
+# The End

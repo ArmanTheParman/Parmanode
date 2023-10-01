@@ -1,12 +1,13 @@
-function set_keyboard {
-sudo chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_configure_keyboard us'
-}
-function set_timezone {
-sudo chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_change_timezone Etc/UTC'
-}
-function set_wifi_country {
-sudo chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_wifi_country US'
-}
 function set_locale {
+
+if [[ $OS == Linux ]] ; then
 sudo chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8'
+fi
+
+if [[ $OS == Mac ]] ; then
+docker exec -it ParmanodL /bin/bash -c "chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8'"
+fi
+
 }
+
+
