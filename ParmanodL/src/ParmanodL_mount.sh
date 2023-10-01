@@ -11,13 +11,13 @@ function ParmanodL_mount {
       sudo mount --bind /proc /tmp/mnt/raspi/proc >/dev/null 2>&1
    fi
 
-
    if [[ $OS == Mac ]] ; then
-      docker exec -it ParmanodL /bin/bash -c "mkdir -p /tmp/mnt/raspi ; \
-                                              export image='/mnt/ParmanodL/$image_file' ; \
-                                              export startSector=$(sudo fdisk -l \$image | grep img2 | awk '{print \$2}') ; \
-                                              export byteOffset=$(($startSector*512)) ; \
-                                              mount -v -o offset=$byteOffset -t ext4 \$image /tmp/mnt/raspi ; \
+      docker exec -it -e image_file="${image_file}" ParmanodL /bin/bash -c "\
+                                              mkdir -p /tmp/mnt/raspi ; \
+                                              echo \"image_file is \$image_file\" ; \
+                                              export startSector=\$(fdisk -l /mnt/ParmanodL/\$image_file | grep Linux | awk '{print \$2}') ; \
+                                              export byteOffset=\$((\$startSector*512)) ; \
+                                              mount -v -o offset=\$byteOffset -t ext4 /mnt/ParmanodL/\$image_file /tmp/mnt/raspi ; \
                                               mount --bind /dev /tmp/mnt/raspi/dev >/dev/null 2>&1 ; \
                                               mount --bind /sys /tmp/mnt/raspi/sys >/dev/null 2>&1 ; \
                                               mount --bind /proc /tmp/mnt/raspi/proc >/dev/null 2>&1 " \
@@ -26,22 +26,3 @@ function ParmanodL_mount {
 
 }
 
-function ParmanodL_unmount {
-   
-# umount evertying
-
-   if [[ $OS == Linux ]] ; then
-      sudo umount /tmp/mnt/raspi/dev
-      sudo umount /tmp/mnt/raspi/sys
-      sudo umount /tmp/mnt/raspi/proc
-      sudo umount /tmp/mnt/raspi
-   fi
-
-   if [[ $OS == Mac ]] ; then
-      docker exec -it ParmanodL /bin/bash -c "sudo umount /tmp/mnt/raspi/dev ; \
-                                              sudo umount /tmp/mnt/raspi/sys ; \
-                                              sudo umount /tmp/mnt/raspi/proc ; \
-                                              sudo umount /tmp/mnt/raspi"
-   fi
-
-}                

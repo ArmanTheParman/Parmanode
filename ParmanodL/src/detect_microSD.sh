@@ -1,5 +1,6 @@
 function detect_microSD {
 if [[ $1 == d ]] ; then export debug=1 ; fi
+
 set_terminal pink ; echo "
 ########################################################################################
 
@@ -87,5 +88,6 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
 done
 debug "disk is $disk"
 if [[ $debug == 1 ]] ; then echo "disk is $disk" ; enter_continue ; fi
+
+if [ -z "$disk" ] ; then announce "Error getting microSD card device name. Aborting." ; return 1 ; fi
 }
-#used by add_drive function.
