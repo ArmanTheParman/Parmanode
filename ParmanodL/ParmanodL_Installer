@@ -124,28 +124,29 @@
 
 # Make necessary directories
 
-    ParmanodL_directories 
+    ParmanodL_directories ;  log "parmanodl" "directory function"
 
 # Get PiOS, verify, and extract
 
-    get_PiOS || exit
+    get_PiOS || { log "parmanodl" "failed at get_PiOS" ; exit ; }
 
 # Macs need docker functionality here
     
-    ParmanodL_docker_run || exit
-    ParmanodL_docker_get_binaries || exit
+    ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
+    ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
+    
 
 # Mount the image and dependent directories
 
-    ParmanodL_mount || exit
+    ParmanodL_mount || { log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
 
 # Setup system locale
 
-    set_locale
+    set_locale ; log "parmanodl" "reached set_local"
 
 # Modify the image with chroot
 
-    ParmanodL_chroot 
+    ParmanodL_chroot ; log "parmanodl" "finished ParmanodL_chroot"
 
 # Debug - opportunity to pause and check
 
@@ -153,23 +154,23 @@
 
 # Unmount the image and system directories
 
-    ParmanodL_unmount
+    ParmanodL_unmount ; log "parmanodl" "finished ParmanodL_unmount"
 
 # Get microSD device name into disk variable - user input here
 
-    detect_microSD || exit
+    detect_microSD || { log "parmanodl" "failed at detect_microSD" ; exit ; }
 
 # Write the image to microSD
 
-    ParmanodL_write || exit
+    ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
 
 # Clean known hosts of parmanodl
  
-    clean_known_hosts
+    clean_known_hosts ; log "parmanodl" "finished clean_known_hosts"
 
 # make run_parmanodl for desktop execution
 
-    make_run_parmanodl
+    make_Run_ParmanodL ; log "parmanodl" "finished make_run_parmanodL"
 
 # Success output
 
@@ -177,6 +178,6 @@
 
 # Remove temporary script
 
-    rm $HOME/Desktop/ParmanodL_Installer
+    rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
     
 # The End
