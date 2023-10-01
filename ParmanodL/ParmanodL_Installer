@@ -20,6 +20,7 @@
 
                        P  A  R  M  A  N  O  D  L     O  S 
 
+
     You are installing ParmanodL OS onto a microSD card, for use in a Raspberry Pi 4.
 
     The target microSD can be as small as 16GB.
@@ -70,7 +71,7 @@
 
         if ! which ssh ; then 
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew instal ssh ; fi
+            brew instal ssh 
         fi
     
     fi
