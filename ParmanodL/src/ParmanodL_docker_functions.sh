@@ -6,7 +6,7 @@ function ParmanodL_docker_run {
 
 # Start a Linux docker container as a daemon process
 
-    docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null || \
+    docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
         { announce "Couldn't start Docker container. Aborting." ; return 1 ; }
 }
 
