@@ -8,8 +8,8 @@
 printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
 
 cd $HOME/Desktop
-curl -LO https://parmanode.com/ParmanodL_Installer.sh
-sudo chmod +x install_ParmanodL.sh
+curl -LO https://parmanode.com/ParmanodL_Installer
+sudo chmod +x ParmanodL_Installer 
 
 clear ; echo "
 
@@ -18,5 +18,5 @@ clear ; echo "
     Double click it to run.
 
     "
-sleep 3.5 
+exit
 ########################################################################################
