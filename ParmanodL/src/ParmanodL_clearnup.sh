@@ -1,14 +1,14 @@
 function ParmanodL_cleanup {
 
+# unmount image
+
+    sudo umount -f ${disk}* >/dev/null 2>&1
+
 # stop and remove docker container
 
     if [[ $OS == Mac ]] ; then
         if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
     fi
-
-# unmount image
-
-    sudo umount -f ${disk}* >/dev/null 2>&1
 
 # Remove temporary directories
 
