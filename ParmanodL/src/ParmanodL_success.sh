@@ -3,8 +3,10 @@ function ParmanodL_success {
 set_terminal_higher ; echo -e "
 ########################################################################################
 
-                   $cyan             S U C C E S S !! $orange
-
+                                S U C C E S S !! 
+$pink
+    PLEASE READ THIS CAREFULLY...
+$orange 
 1   The microSD card should be ready to remove and put into your Pi. Attach the Pi
     to an internet connection with an ethernet cable, and then power it on.
 
@@ -32,6 +34,18 @@ $cyan
     Enjoy.						
 
 ########################################################################################
+"
+enter_continue
+set_terminal ; echo "
+########################################################################################
+
+     I'M SURE YOU DIDN'T READ THAT PROPERLY. NOTE, THE PASSWORD IS:
+         
+                parmanodl
+
+     NOT parmanode, but$cyan parmanodl.
+
+########################################################################################    
 "
 enter_continue
 set_terminal
