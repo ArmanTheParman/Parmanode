@@ -81,9 +81,9 @@
     if [[ $OS == Linux ]] ; then
         
         sudo apt-get update -y
-        if ! which vim ; sudo apt-get install vim -y ; fi
-        if ! which git ; sudo apt-get install git -y ; fi
-        if ! which ssh ; sudo apt-get install ssh -y ; fi
+        if ! which vim ; then sudo apt-get install vim -y ; fi
+        if ! which git ; then sudo apt-get install git -y ; fi
+        if ! which ssh ; then sudo apt-get install ssh -y ; fi
 
     fi
 
