@@ -26,17 +26,18 @@
 
     The target microSD can be as small as 16GB.
 
-    The entire process may take about 30 minutes. There will be ocassional promtps,
-    so be around the computer as you'll probably be asked for your computer password 
-    more than once. You'll also be asked to remove and insert the microSD card to 
-    assist with drive detection.
+    The entire process may take about 1 hour. There will be ocassional 
+    promtps/quesions.
 
-    For best probability of success, do not do resource intensive things with the 
-    computer as you build this.
+    You'll also be asked to remove/insert the microSD card to assist with drive 
+    detection.
 
-    Hit <enter> to continue
+    For best probability of success, do not do resource intensive things while the
+    computer is thinking. 
 
 ########################################################################################
+
+    Hit <enter> to continue
     " ; read
     
     if [[ $(uname) == Darwin ]] ; then clear ; echo "
@@ -57,9 +58,9 @@
                                Linux container to work with. You can uninstall it
                                later if you want.
        
-       Hit <enter> to continue
-
 ########################################################################################
+
+       Hit <enter> to continue
 "
 read ; clear ; echo "
 ########################################################################################
