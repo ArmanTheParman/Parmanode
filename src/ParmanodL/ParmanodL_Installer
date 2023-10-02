@@ -165,9 +165,6 @@ Please wait...
         fi 
 	done
 
-    for file in ~/parman_programs/parmanode/ParmanodL/src/*.sh ; do source $file ; done
-    for file in ~/parman_programs/parmanode/ParmanodL/src/**/*.sh ; do source $file ; done
-
 # Now that parmanode scripts have been sources, the code from here on can be tidier, 
 # as parmanode functions are available.
 
