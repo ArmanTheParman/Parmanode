@@ -18,21 +18,59 @@
     export hash_zip="e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa"
     export hash_image="962780be6bb41522532f26449f67524dc61038673833c079808da9ca2ad9a4f0"
 
-# size 88 wide, and orange colour scheme
+# Size 88 wide, and orange colour scheme
 
     printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
-    clear ; echo "
+
+# Intro
+
+   while true ; do
+   clear ; echo "
+########################################################################################
+
+   
+                       P  A  R  M  A  N  O  D  L     O  S 
+
+    This software will help you install Parmanodl OS onto an external drive or 
+    micro SD card which you can then use to install the OS onto a computer. You have 
+    choices:
+
+
+           P)      Install ParmanodL OS onto a Raspberry Pi (64 bit)
+
+                        -- based on Raspberry Pi OS
+
+     AVAILABLE SOON...
+
+           S)      Install ParmanodL OS onto a standard desktop/laptop computer.
+
+                       -- based on Linux Mint
+
+
+   Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
+   can do whatever you want including giving your software cool sounding names :P
+
+########################################################################################
+
+   Type P or S, then hit <enter>
+"
+read choice ; clear
+case $choice in P|p) export OS_choice=pi ; break ;; 
+S|s) echo "sorry, not yet available. soon. Hit <enter> to try again." ; read ; continue ;;           # # # # # # # export OS_choice=mint ;; 
+*) echo "Invalid choice. Hit <enter>, then try again." ; read ; continue ;;
+esac 
+done
+
+clear ; echo "
 ########################################################################################
 
                        P  A  R  M  A  N  O  D  L     O  S 
 
 
-    You are installing ParmanodL OS onto a microSD card, for use in a Raspberry Pi 4.
-
     The target microSD can be as small as 16GB.
 
-    The entire process may take about 1 hour. There will be ocassional 
-    promtps/quesions.
+    The entire process may take about 30 minutes to 1 hour depending on the speed of
+    the computer. There will be ocassional promtps/quesions so keep an eye out.
 
     You'll also be asked to remove/insert the microSD card to assist with drive 
     detection.
@@ -49,7 +87,8 @@
 ########################################################################################
 
 
-    For Mac OS, there are a few extra things that may need to be installed...
+    Becuase you're using a Mac, there are a few extra things that may need to be 
+    installed...
 
 
         1)    Docker     -     This will be installed for you if you don't have it
@@ -63,6 +102,7 @@
                                Linux container to work with. You can uninstall it
                                later if you want.
        
+
 ########################################################################################
 
        Hit <enter> to continue
@@ -82,9 +122,10 @@ read ; clear ; echo "
                                make the installation go smotther, it won't affect your
                                system in any negative way.
     
+########################################################################################
+
        Hit <enter> to continue
 
-########################################################################################
 "
 read 
 fi
@@ -163,10 +204,10 @@ Please wait...
 		if [[ $file != *"/postgres_script.sh" ]]; then
 	    source $file 
         fi 
-	done
+    done
 
-# Now that parmanode scripts have been sources, the code from here on can be tidier, 
-# as parmanode functions are available.
+# Now that parmanode scripts have been sourced, the code from here on can be tidier, 
+# as Parmanode functions are available.
 
 # Part 2 dependencies - Macs need Docker
 
@@ -176,11 +217,17 @@ Please wait...
 
     ParmanodL_directories ;  log "parmanodl" "directory function"
 
-# Get PiOS, verify, and extract
+# Get OS , verify, and extract
 
+    if [[ $OS_choice == pi ]] ; then
     get_PiOS || { log "parmanodl" "failed at get_PiOS" ; exit ; }
+    fi
 
-# Macs need docker functionality here
+    if [[ $OS_choice == mint ]] ; then
+    true
+    fi
+
+# Macs use Docker functionality here
     
     ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
     ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
