@@ -50,7 +50,7 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 
 
 if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
-enter_continue
+sleep 3
 set_terminal
 
 #gpg check
