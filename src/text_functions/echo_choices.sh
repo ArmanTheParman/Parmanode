@@ -9,6 +9,7 @@
     # errormessage
 
 function enter_continue {
+if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }
@@ -94,7 +95,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-if [[ $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
+if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 
 function errormessage {

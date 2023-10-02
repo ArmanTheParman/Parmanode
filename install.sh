@@ -2,8 +2,6 @@ return 0
 # This is the install script kept at
 # https://parmanode.com/install.sh - the URL is easier to remember and shorter than if keeping it on Github.
 
-# IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE
-
 #!/bin/sh
 
 if [ $(uname -s) == Darwin ] ; then
@@ -13,16 +11,8 @@ echo "
 
     The installation method is not yet available for Macs. Aborting.
 
-    For your convenience, instructions have been left on your desktop in a new text
-    file.
-
-    This message will self-destruct in 5 seconds.
-
 ########################################################################################
 "
-sleep 5 
-cd $HOME/Desktop
-curl -LO https://parmanode.com/run_parmanode.txt
 exit
 fi
 
@@ -34,13 +24,13 @@ exit
 fi
 
 if ! which git >/dev/null ; then
-sudo apt update -y 
-sudo apt install git -y
+sudo apt-get update -y 
+sudo apt-get install git -y
 fi
 
 if ! which gnome-terminal >/dev/null ; then
-sudo apt update -y
-sudo apt install gnome-terminal -y
+sudo apt-get update -y
+sudo apt-get install gnome-terminal -y
 fi
 
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
@@ -59,3 +49,4 @@ Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
+# IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE

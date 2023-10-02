@@ -54,7 +54,6 @@ if [[ $OS == "Linux" ]] ; then
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID "$disk" || return 1
         parmanode_conf_add "UUID=$UUID"
-
         write_to_fstab "$UUID"
 
         # Mounting... Make the mount directory, mount the drive, set the permissions,
@@ -64,7 +63,6 @@ if [[ $OS == "Linux" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
         sudo e2label $disk parmanode 2>&1 
 
-        parmanode_conf_add "UUID=$UUID"
         set_terminal
         echo "
 #######################################################################################
