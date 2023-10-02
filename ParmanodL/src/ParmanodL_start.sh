@@ -3,7 +3,7 @@ function ParmanodL_make_systemd_script {
 source $HOME/parman_programs/parmanode/src/source_parmanode.sh && source_parmanode
 }
 
-function detct_format_or_mount {
+function detect_format_or_mount {
 
 #Detect and Format SSD
 
@@ -17,7 +17,12 @@ function detct_format_or_mount {
 }
 
 function mount_sda {
+cd ~
+sudo mount -L parmanode /media/parman/parmanode
+}
 
-sudo mount
+function unmount_sda {
+cd ~ 
+sudo umount /media/parman/parmanode
 }
 
