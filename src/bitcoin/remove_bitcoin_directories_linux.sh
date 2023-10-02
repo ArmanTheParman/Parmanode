@@ -3,6 +3,8 @@ function remove_bitcoin_directories_linux {
 #Remove Parmanode/bitcoin directory (installation files)
 rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
 
+if [[ $installer == parmanodl ]] ; then return 0 ; fi 
+
 #check if data directory on external drive or internal drive
 source $HOME/.parmanode/parmanode.conf   # gets drive choice
 

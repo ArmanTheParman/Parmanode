@@ -9,6 +9,7 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
         while true ; do
+        if [[ $installer == parmanodl ]] ; then break ; fi #overwrites any existing conf file 
 	    set_terminal ; echo "
 ########################################################################################
 

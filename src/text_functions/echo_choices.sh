@@ -9,6 +9,7 @@
     # errormessage
 
 function enter_continue {
+if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }

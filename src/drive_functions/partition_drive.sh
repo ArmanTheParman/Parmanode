@@ -1,6 +1,9 @@
 function partition_drive {
 
-export disk_no_number="${disk%%[0-9]*}"
+if   [[ $1 == parmanodl ]] ; then 
+     export disk_no_number=sda 
+else export disk_no_number="${disk%%[0-9]*}"
+fi
 
 if [ ! -e "$disk_no_number" ] ; then #eg if /dev/sda doesn't exist
     set_terminal
@@ -24,6 +27,7 @@ EOF
 # to fdisk to the left of <<. Except the >/dev/null bit.
 # This will send g, enter, n, enter, 1, enter, enter, enter, & w to fdisk
 # automating the normally interactive job.
-
-echo "A new GPT partition table and a single partition have been created on $disk_no_number."
+if [[ -n $1 ]] ; then
+log "$1" "A new GPT partition table and a single partition have been created on $disk_no_number."
+fi
 }
