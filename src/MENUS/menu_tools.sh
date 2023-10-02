@@ -1,7 +1,4 @@
-function menu_tools 
-# add soon...
-#                 (z)     Flash a microSD card with Pi OS for ParmaZero
-#
+function menu_tools {
 
 while true ; do
 set_terminal
@@ -74,9 +71,6 @@ case $choice in
     q|Q|Quit|QUIT)
         exit 0
         ;;
-#    z|Z)
-#        install_ParmaZero
-#        ;;
     "")
         return 0 
         ;;
@@ -87,5 +81,4 @@ case $choice in
     esac
 done
 return 0
-
-
+}
