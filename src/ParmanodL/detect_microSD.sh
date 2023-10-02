@@ -1,5 +1,7 @@
 function detect_microSD {
-if [[ $1 == d ]] ; then export debug=1 ; fi
+if [ -z $1 ] ; then name=ParmanodL 
+else name=${1}
+fi
 
 set_terminal pink ; echo "
 ########################################################################################
@@ -15,7 +17,7 @@ while true ; do
 set_terminal "pink" ; echo -e "
 ########################################################################################
 
-    Please make sure the microSD card for ParmanodL is ${cyan}DISCONNECTED.$pink Do not 
+    Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
     
     Hit <enter> only once this is done.
@@ -36,7 +38,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}connect$orange the microSD you wish to use for Parmanode. Do not 
+    Now go ahead and ${cyan}connect$orange the microSD you wish to use for $name. Do not 
     connect any other drive/device.
 
     If a window pops up, a file explorer, you can safely close that.
