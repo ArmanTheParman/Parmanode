@@ -224,7 +224,7 @@ Please wait...
     fi
 
     if [[ $OS_choice == mint ]] ; then
-    true
+    get_Mint || { log "parmanodl" "failed at get_Mint" ; exit ; } 
     fi
 
 # Macs use Docker functionality here
