@@ -4,7 +4,7 @@ function ParmanodL_write {
 sudo umount -f ${disk}* >/dev/null 2>&1
 
 if [[ $OS == Linux ]] ; then
-sudo dd if="${image_path}" of="${disk}" bs=8000000 status=progress 
+sudo dd if="${image_path}" of="${disk}" bs=2000000 status=progress 
 fi
 
 if [[ $OS == Mac ]] ; then
@@ -18,7 +18,7 @@ Let this be a lesson that you should have been using Linux :P
 Please wait...
 
 "
-sudo dd if="${image_path}" of="${disk}" bs=8000000 
+sudo dd if="${image_path}" of="${disk}" bs=2000000 
 fi
 
 sync
