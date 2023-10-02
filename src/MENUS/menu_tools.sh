@@ -22,6 +22,8 @@ echo -e "
                 
                  (x)     Block data compatibility with other computers
 
+                 (z)     Flash a microSD card with Pi OS for ParmaZero
+
 
                  ... More soon
 
@@ -71,7 +73,9 @@ case $choice in
     q|Q|Quit|QUIT)
         exit 0
         ;;
-
+    z|Z)
+        install_ParmaZero
+        ;;
     "")
         return 0 
         ;;

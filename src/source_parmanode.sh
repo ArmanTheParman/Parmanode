@@ -9,12 +9,6 @@ for file in ~/parman_programs/parmanode/src/**/*.sh ; do
 		fi 
 
 	done
-
-
-for file in ~/parman_programs/parmanode/ParmanodL/src/*.sh ; do source $file ; done
-for file in ~/parman_programs/parmanode/ParmanodL/src/**/*.sh ; do source $file ; done
-
-
 else
 return 1
 fi
