@@ -31,5 +31,7 @@ unmount_microSD
 
 ParmaZero_write
 
-Success "ParmaZero" "being flashed to the microSD card."
+unmount_microSD
+
+success "ParmaZero" "being flashed to the microSD card."
 }
