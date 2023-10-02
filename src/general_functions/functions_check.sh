@@ -42,7 +42,7 @@ echo "
     If you can't get passed this checkpoint, you could try venturing into the world
     of learning to use the command line, and install sudo with the command:
 
-                                 apt install sudo
+                                 apt-get install sudo
 
     You will need to run this as the root user (no you can't run Parmanode as root).
 
@@ -166,7 +166,7 @@ choose "xpq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)
-    if [[ $OS == "Linux" ]] ; then sudo apt install curl -y ; break ; fi 
+    if [[ $OS == "Linux" ]] ; then sudo apt-get install curl -y ; break ; fi 
     if [[ $OS == "Mac" ]] ; then brew install curl ; break ; fi
     ;;
 

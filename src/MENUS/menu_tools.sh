@@ -55,7 +55,7 @@ case $choice in
 
         if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
 
-        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1 ; fi
+        if ! which htop ; then sudo apt-get install htop -y >/dev/null 2>&1 ; fi
 
         htop
 
@@ -71,7 +71,6 @@ case $choice in
     q|Q|Quit|QUIT)
         exit 0
         ;;
-
     "")
         return 0 
         ;;
@@ -83,4 +82,3 @@ case $choice in
 done
 return 0
 }
-

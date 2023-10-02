@@ -1,5 +1,8 @@
 function detect_microSD {
-if [[ $1 == d ]] ; then export debug=1 ; fi
+if [ -z $1 ] ; then name=ParmanodL 
+else name=${1}
+fi
+
 set_terminal pink ; echo "
 ########################################################################################
 
@@ -14,10 +17,8 @@ while true ; do
 set_terminal "pink" ; echo -e "
 ########################################################################################
 
-    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
+    Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
-    
-    DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
     
     Hit <enter> only once this is done.
 
@@ -37,8 +38,8 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}connect$orange the drive you wish to use for Parmanode. Do not 
-    connect any other drive.
+    Now go ahead and ${cyan}connect$orange the microSD you wish to use for $name. Do not 
+    connect any other drive/device.
 
     If a window pops up, a file explorer, you can safely close that.
 
@@ -87,5 +88,8 @@ disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
 done
 debug "disk is $disk"
 if [[ $debug == 1 ]] ; then echo "disk is $disk" ; enter_continue ; fi
+
+if [ -z "$disk" ] ; then announce "Error getting microSD card device name. Aborting." ; return 1 ; fi
+
+log "parmanodl" "disk is $disk"
 }
-#used by add_drive function.
