@@ -6,7 +6,7 @@ unset output enabled output2 t_enabled
 enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
 
 if [[ $enabled == true ]] ; then 
-output="     ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
+output="    ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
 
                    http://$IP:3003     (Note the port is 3003 not 3002)"
 fi

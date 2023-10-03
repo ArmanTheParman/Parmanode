@@ -1,3 +1,8 @@
 Auto update choice
 ParmanodL installation option
 install for bitbox app, linux only
+
+########################################################################################
+                                   reminders
+########################################################################################
+:set noincsearch
