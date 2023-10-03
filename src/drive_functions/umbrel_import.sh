@@ -69,7 +69,7 @@ export mount_point="/media/$USER/umbrel"
 fi
 
 #Mounting should be done.
-
+debug "umbrel should be mounted"
 
 # Move files
 
