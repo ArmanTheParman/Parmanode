@@ -82,8 +82,8 @@ sudo chown -R $USER:$USER $mount_point/.bitcoin
 sudo e2label $disk parmanode 2>&1
 
 # fstab configuration
-while true ; do
 if sudo cat /etc/fstab | grep parmanode ; then
+while true ; do
 set_terminal ; echo "
 ########################################################################################
 
@@ -110,6 +110,7 @@ break
 invalid ;;
 esac
 done
+fi
 
 # Done
 
