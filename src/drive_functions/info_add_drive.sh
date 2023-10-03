@@ -10,7 +10,7 @@ set_terminal ; echo -e "
    $cyan To bring in an external hard drive that contains Bitcoin blockchain data:$orange
     
       1. Make sure the path to the data is /.bitcoin on the drive - i.e. create a 
-         hidden directory called .bitoin at root directory of the drive, then move 
+         hidden directory called .bitcoin at root directory of the drive, then move 
          the data there.
 
       2. Continue with the this drive import function and follow the screen prompts

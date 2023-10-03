@@ -1,7 +1,7 @@
 #used by add_drive function.
 
 function detect_drive {
-
+unset disk
 set_terminal pink ; echo "
 ########################################################################################
 

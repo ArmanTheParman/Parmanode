@@ -33,6 +33,12 @@ echo -e "${yellow}Type your ${cyan}choice${yellow}, or ${cyan}(q)${yellow} to qu
 return 0
 fi
 
+if [[ $1 == "eq" ]]
+then
+echo -e "${yellow}Hit ${cyan}<enter>${yellow}, to continue, or ${cyan}(q)${yellow} to quit, then <enter>: $orange"
+return 0
+fi
+
 if [[ $1 == "x" ]]
 then
 echo -e "${yellow}Type your ${cyan}choice${yellow}, then <enter>: $orange"
