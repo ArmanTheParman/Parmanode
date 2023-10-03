@@ -4,17 +4,17 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                            UMBREL DRIVE IMPORT TOOL
+                             UMBREL DRIVE IMPORT TOOL
 $orange
     This program will convert your Umbrel external drive to a Parmanode drive,
     preserving any Bitcoin block data that you may have already sync'd up.
 
-    The ancillary Umbrel data will be preserved so you can use Parmanode to revert
-    the drive back, but no promises are made that it will work. Use reversion at
-    your own risk.
+    All the Umbrel data will be preserved so you can use Parmanode to revert the 
+    drive back, but no promises are made that it will work. Use the reversion function
+    at your own risk.
 $pink
-    It's safest to assume the Umbrel data will be lost${orange}. If you have funds in 
-    lightning, please make sure all relevant data is backed up.
+    It's safest to assume the non-bitcoin Umbrel data will be lost${orange}. If you 
+    have funds in lightning, please make sure all relevant data is backed up.
 
 ########################################################################################
 "
@@ -49,10 +49,11 @@ if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then
 export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
 mounted=true
 break
+
 else
 announce "Umbrel drive not detected. <enter> to try again."
-continue
 mounted=false
+continue
 fi
 done
 
