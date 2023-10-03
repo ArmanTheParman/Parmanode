@@ -24,10 +24,10 @@ if [ -d $HOME/.electrs_backup ] ; then
 
 while true ; do
     set_terminal
-    echo "
+    echo -e "
 ########################################################################################
 
-    A backup of electrs directory has been found in addition to the electrs
+    A$pink backup$orange of electrs directory has been found in addition to the electrs
     installation. 
     
     Keeping it can save you time compiling it all again if you choose to re-install it.
@@ -40,13 +40,14 @@ while true ; do
 "
     read choice
     case $choice in
-    y|Y) please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ;;
-    n|N) please_wait ; break ;;
+    y|Y) 
+    please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
+    n|N) 
+    please_wait ; break ;;
     *) invalid
     esac
 done
 fi
-
 
 electrs_nginx remove
 electrs_tor_remove
@@ -75,9 +76,14 @@ choose "xpq"
 read choice
 set_terminal
 case $choice in
-q|Q) quit 0 ;; p|P) return 1 ;;
-d|D) sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
-l|L) break ;;
+q|Q) 
+quit 0 ;; 
+p|P) 
+return 1 ;;
+d|D) 
+sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
+l|L) 
+break ;;
 b|B) 
 if [[ -d /media/$USER/parmanode/electrs_db_backup ]] ; then
     electrs_backup_exists #function defined below
