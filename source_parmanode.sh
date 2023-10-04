@@ -7,7 +7,6 @@ if [ -e $HOME/parman_programs/parmanode/src ] ; then
 			if [[ $file != *"/postgres_script.sh" ]]; then
 			source $file 
 			fi 
-
 	done
     return 0
 else
