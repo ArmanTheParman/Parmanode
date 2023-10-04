@@ -14,6 +14,8 @@ echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }
 
+function enter_return { enter_continue "$@" ; }
+
 function enter_exit {
 echo -e "${yellow}Hit ${cyan}<enter>${yellow} to exit.$orange" ; read
 return 0
