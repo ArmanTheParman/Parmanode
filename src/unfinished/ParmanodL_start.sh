@@ -5,7 +5,7 @@ export prune_value=0
 export OS=Linux
 export installer=parmanodl
 
-source $HOME/parman_programs/parmanode/src/source_parmanode.sh && source_parmanode
+source $HOME/parman_programs/parmanode/source_parmanode.sh && source_parmanode
 
 detect_format_or_mount
 
