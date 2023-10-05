@@ -5,26 +5,31 @@ if ! which nginx ; then install_nginx || { announce "Trying to first install Ngi
 "Aborting" ; } 
 fi
 
-unset electrs_compile && restore_elctrs #get electrs_compile true/false
+unset electrs_compile && restore_electrs #get electrs_compile true/false
 
 if [[ $electrs_compile == "false" ]] ; then 
-please_wait rm -rf $HOME/parmanode/electrs/ 
-mkdir $HOME/parmanode/electrs/ 
-cp -r $HOME/.electrs_backup/* $HOME/parmanode/electrs/
-installed_config_add "electrs-start"
-fi
 
+    please_wait rm -rf $HOME/parmanode/electrs/ 
+    mv $HOME/.electrs_backup $HOME/parmanode/electrs
 
-if [[ $electrs_compile == "true" ]] ; then
-preamble_install_electrs || return 1
-build_dependencies_electrs && log "electrs" "build_dependencies success" 
-download_electrs && log "electrs" "download_electrs success" ; debug "download electrs done"
-compile_electrs && log "electrs" "compile_electrs success" ; debug "build, download, compile... done"
+    installed_config_add "electrs-start"
+
+else #if [[ $electrs_compile == "true" ]] ; then
+
+    preamble_install_electrs || return 1
+
+    build_dependencies_electrs || return 1 
+            log "electrs" "build_dependencies finished" 
+    download_electrs && log "electrs" "download_electrs success" 
+            debug "download electrs done"
+    compile_electrs || return 1 
+            log "electrs" "compile_electrs done" ; debug "build, download, compile... done"
+
 fi
 
 #remove old certs (in case they were copied from backup), then make new certs
 rm $HOME/parmanode/electrs/*.pem  
-{ make_ssl_certificates "electrs" && debug "check certs error " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+{ make_ssl_certificates "electrs" && debug "check certs for errors " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 electrs_nginx add
 
 # check Bitcoin settings
@@ -38,17 +43,18 @@ check_rpc_bitcoin
 choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
 
 source $HOME/.parmanode/parmanode.conf >/dev/null
-debug "check ext drive directories before proceeding"
+
 if [[ $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == "external" ]] ; then 
     # format not needed
     # check if there is a backup electrs_db on the drive and restore it
-      restore_elctrs_drive # check export electrum_db_restore=true, and modify prepare_drive_electrs function later.
-      debug "restore variable - $electrs_db_restore"
+      restore_elctrs_drive #prepares drive based on existing backup and user choices
+      sudo chown -R $USER:$USER $original > /dev/null 2>&1
 else
-format_ext_drive "electrs" || return 1
+      format_ext_drive "electrs" || return 1
 fi
 
-prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } ; debug "prepare drive done"
+prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
+        debug "prepare drive done"
 
 
 #config
@@ -61,7 +67,7 @@ installed_config_add "electrs-end" ; debug "finished electrs install"
 success "electrs" "being installed"
 
 if [[ $electrs_compile == "true" ]] ; then
-backup_electrs
+    backup_electrs
 fi
 
 }
@@ -75,6 +81,7 @@ announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
 source $HOME/.cargo/env #or restart shell
+if ! cargo --version ; then announce "Installing cargo software failed. Aborting." ; return 1 ; fi
 debug "install cargo function end"
 }
 
@@ -86,6 +93,10 @@ function compile_electrs {
 set_terminal ; echo "   Compiling electrs..."
 please_wait ; echo ""
 cd $HOME/parmanode/electrs && cargo build --locked --release
+if [[  ! -e $HOME/parmanode/electrs/target/release/electrs ]] ; then
+    announce "Compiling seems to have failed. Aborting."
+    return 1
+fi
 }
 
 function check_pruning_off {

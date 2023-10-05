@@ -1,10 +1,9 @@
-# SOON...
-#                 (ub)    Convert an Umbrel external drive to Parmanode, without 
-#                         losing Bitcoin data. 
-                
-#                 (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
-
 function menu_tools {
+                #  (ub)    Convert an Umbrel external drive to Parmanode, without 
+                #          losing Bitcoin data. 
+                 
+                #  (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
+                
 
 while true ; do
 set_terminal
@@ -89,3 +88,4 @@ case $choice in
 done
 return 0
 }
+

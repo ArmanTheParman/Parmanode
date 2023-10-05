@@ -2,42 +2,173 @@
 
 function restore_elctrs_drive {
 
-[[ -d /media/$USER/parmanode/electrs_db_backup ]] && dirname=electrs_db_backup
-[[ -d /media/$USER/parmanode/electrs_db ]] && dirname=electrs_db #swaps dirname because this one is higher priority
-[[ $dirname == electrs_db_backup ]] && output="i)         Ignore it" #for formatting the next menu
+export original="/media/$USER/parmanode/electrs_db"
+export backup="/media/$USER/parmanode/electrs_db_backup"
+tempdir="/media/$USER/parmanode/electrs_db_temp"
+
+# Neither exist
+if [[ ! -e $backup && ! -e $original ]] ; then
+sudo  mkdir $original
+return 0
+fi
+
+# Only backup exists 
+if [[ -e $backup  && ! -e $original ]] ; then 
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode found the directory $dirname on the external drive. Do you want 
+    Parmanode found the directory$cyan electrs_db_backup$orange on the external drive. Do you want 
     to use this directory for this installation of electrs?
 
                 u)         Use it
 
                 del)       Delete it
-"
-echo -n "                $output"
-echo "
+
+                i)         Ignore it (makes a new database)
 
 ########################################################################################
 "
 choose "xpq" ; read choice
-case $choice in q|Q) quit 0 ;; p|P) return 1 ;;
-#if "use it" selected, that's the only case where a new electrum_db directory won't be created.
-#"ignore it" is only available if the directory is not called electrum_db, so it's all good.
-#The variable electrum_db_restore is needed for the function prepare_drive_electrs
+case $choice in 
+
 u|U)
-export electrs_db_restore="true" 
-if [[ ! $dirname == electrs_db ]] ; then 
-mv /media/$USER/parmanode/$dirname /media/$USER/parmanode/electrs_db
-fi
-break ;;
-del|Del|DEL) sudo rm -rf /media/$USER/parmanode/$dirname ; export electrs_db_restore="false" ; break ;;
-i|I) unset dirname ; electrs_db_restore="false" ; break ;;
-*) invalid
+mv $backup $original
+return 0 
+;;
+
+del|Del|DEL) 
+sudo rm -rf $backup
+sudo mkdir $original
+return 0 
+;;
+
+i|I) 
+sudo mkdir $original 
+return 0
+;;
+
+q|Q) quit 0 
+;; 
+
+p|P) 
+return 1 
+;;
+
+*) 
+invalid 
+;;
+
 esac
 done
+fi
 
+# Only original exists
+if [[ -e $original && ! -e $backup ]] ; then
 
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode found the directory$cyan electrs_db$orange on the external drive. Do you want 
+    to use this directory for this installation of electrs?
+
+                u)         Use it
+
+                del)       Delete it
+
+########################################################################################
+"
+choose "xpq" ; read choice
+case $choice in 
+
+u|U)
+return 0 
+;;
+
+del|Del|DEL) 
+sudo rm -rf $original 
+sudo mkdir $original
+return 0 
+;;
+
+q|Q) quit 0 
+;; 
+
+p|P) 
+return 1 
+;;
+
+*) 
+invalid 
+;;
+
+esac
+done
+fi
+
+# If both exist 
+if [[ -e $original && -e $backup ]] ; then
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode found BOTH the directories$cyan electrs_db$orange and$cyan electrs_db_backup$orange on the 
+    external drive. 
+    
+    What do you want to do?
+
+              o)         Use the original (electrs_db)
+ 
+              b)         Use the backup, electrs_db_backup , and delete the original
+
+              db)        Delete both and start fresh
+
+              s)         Use electrs_db_backup, but also back up the original 
+
+########################################################################################
+"
+choose "xpq" ; read choice
+case $choice in 
+
+o|O|original)
+return 0 
+;;
+
+b|B)
+please_wait
+sudo rm -rf $original
+sudo mv $backup $original
+return 0 
+;;
+
+db|DB|Db)
+sudo rm -rf $original 
+sudo rm -rf $backup 
+sudo mkdir $original 
+;;
+
+q|Q) 
+exit 
+;; 
+
+s|S)
+sudo mv $original $tempdir
+sudo mv $backup $original
+sudo mv $tempdir $backup
+;;
+
+p|P) 
+return 1 
+;;
+
+*) 
+invalid 
+;;
+
+esac
+done
+fi
 }

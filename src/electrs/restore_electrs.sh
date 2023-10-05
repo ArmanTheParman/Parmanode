@@ -1,12 +1,13 @@
-function restore_elctrs {
+function restore_electrs {
 
 if [ -d $HOME/.electrs_backup ] ; then
+
 while true ; do
 set_terminal
 echo "
 ########################################################################################
 
-    Parmanode has detected that you've previously compiled and backup up electrs.
+    Parmanode has detected that you've previously compiled and backuped up electrs.
 
     To save time, would you like to use that backup or comile electrs all over again.
 
@@ -31,6 +32,7 @@ export electrs_compile="true" && return 0 ;;
 *) invalid ;;
 esac
 done
+
 else
 export electrs_compile="true" 
 fi
