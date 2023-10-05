@@ -4,12 +4,16 @@ function make_bitcoin_conf {
 #Overrides any existing file named bitcoin.conf
 set_terminal
 
+file="$HOME/.bitcoin/bitcoin.conf"
+loop=do
+
+if [[ -n $1 && $1 == umbrel ]] ; then export prune=0 ; loop=break ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 
 if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
         while true ; do
-        if [[ $installer == parmanodl ]] ; then break ; fi #overwrites any existing conf file 
+        if [[ $installer == parmanodl || $loop=break ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
 	    set_terminal ; echo "
 ########################################################################################
 
@@ -53,7 +57,7 @@ rpcbind=0.0.0.0
 rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
-rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made"  
+rpcallowip=172.17.0.0/16" > "$file" && log "bitcoin" "bitcoin conf made"  
 
 apply_prune_bitcoin_conf # Here is where the prune choice is added to bitcoin.conf
 }
