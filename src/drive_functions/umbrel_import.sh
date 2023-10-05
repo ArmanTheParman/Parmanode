@@ -114,7 +114,7 @@ export mount_point="/media/$USER/umbrel"
 fi
 
 #Mounting should be done.
-if mountpoint /media/$USER/umbrel || $(sudo lsblk | grep umbrel | awk '{print $7}' | grep umbrel ) ; then
+if mountpoint /media/$USER/umbrel >/dev/null || $(sudo lsblk | grep umbrel | awk '{print $7}' | grep umbrel ) ; then
 mounted=true
 debug "umbrel should be mounted: mounted=$mounted"
 else
@@ -130,6 +130,7 @@ mv blocks chainstate indexes $mount_point/.bitcoin
 sudo chown -R $USER:$USER $mount_point/.bitcoin
 
 # Unmount Umbrel drive
+if [[ -z $mount_point ]] ; then export mount_point=$(lsblk | grep umbrel | grep -o /.*$) ; fi
 sudo umount $mount_point
 
 # Check if unmounted
