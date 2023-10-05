@@ -81,10 +81,9 @@ if ! which dmidecode ; then sudo apt-get install dmidecode ; fi
 
 biosDate=$(dmidecode -t bios | grep Date | cut -d / -f 3)
 
-if [[ $biosDate -lt 2017 ]] ; then 
-if [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -lt 2017 ]]; then 
+if [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -lt 2017 ]] ; then 
 export fast_computer=false
-elif [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -ge 2017 ]]; then
+elif [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -ge 2017 ]] ; then
 export fast_computer=true
 else
 
