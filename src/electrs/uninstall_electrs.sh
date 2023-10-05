@@ -56,7 +56,7 @@ sudo systemctl stop electrs.service >/dev/null
 sudo systemctl disable electrs.service >/dev/null
 sudo rm /etc/systemd/system/electrs.service >/dev/null
 
-if [[ $drive_electrs == "external" ]] ; then
+if [[ $drive_electrs == "external" && -e /media/$USER/parmanode/electrs_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################
