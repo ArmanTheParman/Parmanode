@@ -39,6 +39,8 @@ echo "
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
+      
+      (cd)       Change syncing drive internal vs external
 
       (c)        How to connect your wallet...........(Otherwise no point to this)
 
@@ -81,6 +83,10 @@ if [[ $OS == "Mac" ]] ; then
 stop_bitcoind 
 run_bitcoind "no_interruption"
 fi
+;;
+
+cd|CD|Cd)
+change_bitcoin_drive
 ;;
 
 c|C)
