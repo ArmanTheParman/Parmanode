@@ -97,7 +97,7 @@ elif [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then
 else
    announce "No Umbrel drive detected. Try again." 
    continue
-if 
+fi 
 
 done
 
