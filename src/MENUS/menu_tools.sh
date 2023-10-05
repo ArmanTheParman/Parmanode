@@ -1,4 +1,9 @@
 function menu_tools {
+                #  (ub)    Convert an Umbrel external drive to Parmanode, without 
+                #          losing Bitcoin data. 
+                 
+                #  (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
+                
 
 while true ; do
 set_terminal
@@ -20,12 +25,7 @@ echo -e "
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
 
-                 (ub)    Convert an Umbrel external drive to Parmanode, without 
-                         losing Bitcoin data. 
                  
-                 (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
-                
-
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -66,12 +66,12 @@ case $choice in
         add_drive 
         ;;
     
-    ub|UB|Ub)
-        umbrel_import 
-        ;;
-    ru|RU|Ru)
-        umbrel_import_reverse
-        ;;
+    # ub|UB|Ub)
+    #     umbrel_import 
+    #     ;;
+    # ru|RU|Ru)
+    #     umbrel_import_reverse
+    #     ;;
 
 
     q|Q|Quit|QUIT)
