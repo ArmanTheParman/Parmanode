@@ -22,13 +22,17 @@ fi
 
 if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
     set_terminal ; echo "
-    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin and either
+########################################################################################
+
+    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
     Fulcrum server or electrs server first. You could, instead modify the 
     configurtion file and point it to a Fulcrum or Electrum Server on this or 
     another machine.
 
-    Proceed anyway?   y  or  n"
-    
+    Proceed anyway?   y  or  n
+
+########################################################################################
+"
     read choice
 
     if [[ $choice != "y" ]] ; then return 1 ; fi
