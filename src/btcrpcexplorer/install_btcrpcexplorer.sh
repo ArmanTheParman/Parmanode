@@ -20,7 +20,7 @@ set_terminal ; echo -e "
 return 1
 fi
 
-if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-endd >/dev/null ; then 
+if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
     set_terminal ; echo "
     Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin and either
     Fulcrum server or electrs server first. You could, instead modify the 
