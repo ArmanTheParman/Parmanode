@@ -10,8 +10,8 @@ unset electrs_compile && restore_electrs #get electrs_compile true/false
 if [[ $electrs_compile == "false" ]] ; then 
 
     please_wait rm -rf $HOME/parmanode/electrs/ 
-    mkdir $HOME/parmanode/electrs/ 
-    cp -r $HOME/.electrs_backup/* $HOME/parmanode/electrs/
+    mv $HOME/.electrs_backup $HOME/parmanode/electrs
+
     installed_config_add "electrs-start"
 
 else #if [[ $electrs_compile == "true" ]] ; then
