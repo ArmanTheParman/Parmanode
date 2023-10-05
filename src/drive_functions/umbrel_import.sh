@@ -49,6 +49,23 @@ done
 # enter_continue ; return 1
 # fi
 
+set_terminal ; echo -e "
+########################################################################################
+
+    Please note that this action must be undertaken on the same computer that the
+    drive is destined to be used on - otherwise the import will be incomplete, and
+    you may get unexpected errors.
+
+                                a)          to abort
+                                
+                                <enter>     to continue
+
+########################################################################################
+"
+read choice
+if [[ $choice == a ]] ; then return 1 ; fi
+
+
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -59,9 +76,10 @@ set_terminal ; echo -e "
 "
 read 
 clear
+
 sync
 
-if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then
+if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted
 export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
 mounted=true
 break
@@ -73,7 +91,7 @@ continue
 fi
 done
 
-if [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then
+if [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then   # only one umbrel disk detected as CONNECTED
 unset disk 
 export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) 
 fi
@@ -90,10 +108,24 @@ debug "umbrel should be mounted"
 # Move files
 
 sudo mkdir -p $mount_point/.bitcoin
-sudo chown -$ $USER:$USER $mount_point/.bitcoin
 cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
 mv blocks chainstate indexes $mount_point/.bitcoin
 sudo chown -R $USER:$USER $mount_point/.bitcoin
+
+# Unmount Umbrel drive
+sudo umount $mount_point
+
+# Check if unmounted
+if mountpoint $mount_point ; then 
+announce "Couln't unmount Umbrel drive. Please try yourself, then hit <enter> when" \
+"you think it's done."
+fi
+
+if mountpoint $mount_point ; then
+sudo mv -r $mount_point/.bitcoin/* $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
+sudo rm -rf $mount_point/.bitcoin
+announce "Couldn't unmount to proceed. Changes reversed. Aborting."
+fi
 
 # label
 sudo e2label $disk parmanode 2>&1
@@ -105,8 +137,12 @@ set_terminal ; echo "
 ########################################################################################
 
     There already seems to be a Parmanode drive configured to auto-mount at system
-    boot. You can only have one at a time. Would you like to replace the old one with
-    the new drive from Umbrel?
+    boot. 
+    
+    You can only have one at a time. 
+    
+    Would you like to replace the old drive with the new drive from Umbrel for this
+    computer?
 
                           y        or        n
 
@@ -164,6 +200,8 @@ $pink
 $orange    
 ########################################################################################
 " ; enter_continue ; set_terminal
+# Stopping revision here and changing the Bitcoin menu so user can choose between internal
+# and external without needing to uninstall.
 fi
 
 if [[ -z $drive ]] ; then
