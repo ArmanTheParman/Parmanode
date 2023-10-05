@@ -131,6 +131,8 @@ sudo chown -R $USER:$USER $mount_point/.bitcoin
 
 # Unmount Umbrel drive
 if [[ -z $mount_point ]] ; then export mount_point=$(lsblk | grep umbrel | grep -o /.*$) ; fi
+debug "mountpoint before umounting is $mount_point; pwd is $(pwd)"
+cd $original_dir
 sudo umount $mount_point
 
 # Check if unmounted
