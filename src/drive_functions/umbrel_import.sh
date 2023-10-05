@@ -79,31 +79,48 @@ clear
 
 sync
 
-if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted
-export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
-mounted=true
-break
+if[[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted 
+
+    export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
+    mounted=true
+    break
+
+elif sudo lsblk | grep umbrel ; then
+    
+    announce "More than one umbrel drive detected. Aborting." ; return 1
+
+elif [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then
+
+    mounted=false
+    break
 
 else
-announce "Umbrel drive not detected. <enter> to try again."
-mounted=false
-continue
-fi
+   announce "No Umbrel drive detected. Try again." 
+   continue
+if 
+
 done
 
-if [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then   # only one umbrel disk detected as CONNECTED
 unset disk 
 export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) 
-fi
 
 if [[ $mounted == false ]] ; then 
 sudo mkdir -p /media/$USER/umbrel
-sudo mount $disk /media/$USER/umbrel
+sudo mount $disk /media/$USER/umbrel 
+if [ $? -ne 0 ] ; then
+sudo mount -L umbrel /media/$USER/umbrel
+fi
 export mount_point="/media/$USER/umbrel"
 fi
 
 #Mounting should be done.
-debug "umbrel should be mounted"
+if mountpoint /media/$USER/umbrel || $(sudo lsblk | grep umbrel | awk '{print $7}' | grep umbrel ) ; then
+mounted=true
+debug "umbrel should be mounted: mounted=$mounted"
+else
+announce "Couldn't mount. Aborting."
+return 1
+fi
 
 # Move files
 
