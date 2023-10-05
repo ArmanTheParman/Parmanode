@@ -68,7 +68,7 @@ q|Q) exit ;;
 a|A|p|P|n|N|NO|No) return 1 ;;
 i|I)
 add_drive
-if ! grep -q parmanode < /etc/fstab
+if ! grep -q parmanode < /etc/fstab ; then
 continue 
 fi
 return 0
