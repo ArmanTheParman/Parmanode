@@ -65,6 +65,23 @@ set_terminal ; echo -e "
 read choice
 if [[ $choice == a ]] ; then return 1 ; fi
 
+if mount | grep parmanode ; then
+set_terminal ; echo "
+########################################################################################
+    
+    This function will refuse to run if it detects a mounted Parmanode drive. Bad
+    things can happen. As you may have several processes running, Parmanode will not
+    attempt to automattically unmount your drive.
+
+    If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
+    Fulcrum) have been stopped, then$pink unmount$orange the drive, best to even disconnect it,
+    then come back to this function.
+
+########################################################################################
+"
+enter_continue ; return 1
+fi
+
 
 while true ; do
 set_terminal ; echo -e "
