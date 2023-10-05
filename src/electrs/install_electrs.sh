@@ -1,12 +1,20 @@
 function install_electrs {
 
-grep "bitcoin-end" "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" < "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
+"Aborting" ; } 
+fi
 
 unset electrs_compile && restore_elctrs #get electrs_compile true/false
 
-[[ $electrs_compile == "false" ]] && please_wait && rm -rf $HOME/parmanode/electrs/ && mkdir $HOME/parmanode/electrs/ \
-&& cp -r $HOME/.electrs_backup/* $HOME/parmanode/electrs/
+if [[ $electrs_compile == "false" ]] ; then 
+please_wait rm -rf $HOME/parmanode/electrs/ 
+mkdir $HOME/parmanode/electrs/ 
+cp -r $HOME/.electrs_backup/* $HOME/parmanode/electrs/
 installed_config_add "electrs-start"
+fi
+
+
 if [[ $electrs_compile == "true" ]] ; then
 preamble_install_electrs || return 1
 build_dependencies_electrs && log "electrs" "build_dependencies success" 
@@ -17,7 +25,6 @@ fi
 #remove old certs (in case they were copied from backup), then make new certs
 rm $HOME/parmanode/electrs/*.pem  
 { make_ssl_certificates "electrs" && debug "check certs error " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
-install_nginx #the function chethis is available first before attempting install.
 electrs_nginx add
 
 # check Bitcoin settings

@@ -4,15 +4,18 @@
 # Lots of backslashes as escape characters here so that the special characters are printed as is
 # rather than being interpreted.
 
+# This prevents Bitcoin from running if it's configured to sync to an external drive and the 
+# drive isn't mounted - otherwise it may start syncing to the internal drive.
+
 function make_mount_check_script {
 
 echo "#!/bin/bash
 
-source \$HOME/.parmanode/parmanode.conf 
+source \$HOME/.parmanode/parmanode.conf
 
 if [[ \$drive == \"internal\" ]] ; then exit 0 ; fi
 
-if [[ \$drive == \"external\" || \$drive_fulcrum == \"external\" ]] 
+if [[ \$drive == \"external\" || \$drive_fulcrum == \"external\" ]]
 then
             counter=0
 

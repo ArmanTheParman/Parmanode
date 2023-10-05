@@ -1,3 +1,9 @@
+# SOON...
+#                 (ub)    Convert an Umbrel external drive to Parmanode, without 
+#                         losing Bitcoin data. 
+                
+#                 (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
+
 function menu_tools {
 
 while true ; do
@@ -19,12 +25,8 @@ echo -e "
 
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
-                
-                 (x)     Block data compatibility with other computers
 
-
-                 ... More soon
-
+                 
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -55,7 +57,7 @@ case $choice in
 
         if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
 
-        if ! which htop ; then sudo apt install htop -y >/dev/null 2>&1 ; fi
+        if ! which htop ; then sudo apt-get install htop -y >/dev/null 2>&1 ; fi
 
         htop
 
@@ -65,13 +67,17 @@ case $choice in
         add_drive 
         ;;
     
-    x|X) compatibility
-        ;;
+    # ub|UB|Ub)
+    #     umbrel_import 
+    #     ;;
+    # ru|RU|Ru)
+    #     umbrel_import_reverse
+    #     ;;
+
 
     q|Q|Quit|QUIT)
         exit 0
         ;;
-
     "")
         return 0 
         ;;
@@ -83,4 +89,3 @@ case $choice in
 done
 return 0
 }
-

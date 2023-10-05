@@ -1,4 +1,5 @@
 function add_drive {
+if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
 info_add_drive || return 1
 
@@ -17,7 +18,7 @@ if [[ $OS == "Mac" ]] ; then
 
 ########################################################################################
 "
-enter_continue ; return 0;
+enter_continue ; return 0 ;
 fi
 
 if [[ $OS == "Linux" ]] ; then
@@ -63,7 +64,7 @@ fi
 if [[ $OS == "Linux" ]] ; then
 
 export $(sudo blkid -o export $disk) >/dev/null
-size=$(sudo lsblk $disk --noheadings | awk '{print $4'})
+size=$(sudo lsblk $disk --noheadings | awk '{print $4}')
 echo "size=\"$size\"" >> $HOME/.parmanode/var
 echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
 echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var

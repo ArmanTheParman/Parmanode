@@ -2,7 +2,7 @@ function menu_bitcoin_core {
 while true
 do
 set_terminal_custom "45"
-source ~/.parmanode/parmanode.conf >/dev/null
+source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
 if ! ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
