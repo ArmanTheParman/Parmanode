@@ -2,8 +2,8 @@
 
 function restore_elctrs_drive {
 
-original="/media/$USER/parmanode/electrs_db"
-backup="/media/$USER/parmanode/electrs_db_backup"
+export original="/media/$USER/parmanode/electrs_db"
+export backup="/media/$USER/parmanode/electrs_db_backup"
 tempdir="/media/$USER/parmanode/electrs_db_temp"
 
 # Neither exist
