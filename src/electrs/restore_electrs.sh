@@ -1,6 +1,7 @@
-function restore_elctrs {
+function restore_electrs {
 
 if [ -d $HOME/.electrs_backup ] ; then
+
 while true ; do
 set_terminal
 echo "
@@ -31,6 +32,7 @@ export electrs_compile="true" && return 0 ;;
 *) invalid ;;
 esac
 done
+
 else
 export electrs_compile="true" 
 fi

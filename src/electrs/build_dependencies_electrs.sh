@@ -26,12 +26,13 @@ fi
 fi
 
 # if old version of cargo, won't work
-if ! which cargo ; then install_cargo
+if ! which cargo ; then 
+    install_cargo || return 1
 else
     if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
     debug "will uninstall then reinstall cargo, because < 63 version"
     sudo apt-get purge cargo rustc -y
-    install_cargo
+    install_cargo || return 1
     fi
 fi
 }
