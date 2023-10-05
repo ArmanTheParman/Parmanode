@@ -88,7 +88,7 @@ export fast_computer=true
 else
 
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     Parmanode can configure BTC RPC Explorer to give you a better experience during
