@@ -10,22 +10,18 @@ set_terminal ; echo -e "
    $cyan To bring in an external hard drive that contains Bitcoin blockchain data:$orange
     
       1. Make sure the path to the data is /.bitcoin on the drive - i.e. create a 
-         hidden directory called .bitcoin at root directory of the drive, then move 
-         the data there.
+         hidden directory called .bitcoin at root directory of the drive (if one
+         doesn't already exist), then move the data there.
 
       2. Continue with the this drive import function and follow the screen prompts
          exactly.
-
-      3. Then install Bitcoin (uninstall first if you have it already) using 
-         Parmanode. You will be asked if you want and internal or external drive.
-         Choose external drive, then select to skip formatting when prompted.
-
-      4. Once the Bitcoin installation is finished, the program will be using
-         the newly imported drive to sync blocks. 
-
+      
+      3. Then from the Bitcoin menu, if you're currently syncing to the internal
+         drive, you need to select the swap internal/external optio
+    $pink     
     You shouldn't attach two Parmanode external drives to the computer simultaneously. 
     Unpredictable things can happen.
-
+$orange
 ########################################################################################
 "
 choose "epq" ; read choice
