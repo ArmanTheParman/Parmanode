@@ -9,7 +9,7 @@ $orange
     This program will revert your Parmanode external drive to an Umbrel drive,
     preserving Bitcoin block data. 
 
-    This only works if you previously used tthe Umbrel Drive Import Tool on this
+    This only works if you previously used the Umbrel Drive Import Tool on this
     drive.
 $pink
     Go ahead and connect the drive now.

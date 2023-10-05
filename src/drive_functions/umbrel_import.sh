@@ -169,9 +169,7 @@ fi
 
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
-                                  S U C C E S S ! !    
-$orange
+
     The drive data has been rearranged such that it can be used by Parmanode. It's
     label has been changed from umbrel to parmanode.
 
@@ -184,37 +182,29 @@ $orange
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-# Info
+#Conenct drive to Bitcoin Core
+unset drive 
+soucre $HOME/.parmanode/parmanode.conf
 
-unset drive ; soucre $HOME/.parmanode/parmanode.conf
 if [[ $drive == internal ]] ; then
-echo -e "
+set_terminal ; echo -e "
 ########################################################################################
-$pink
-    In order to use this drive with Parmanode, you need to uninstall Bitcoin using
-    Parmanode first. You can save any data on the internal drive that you've sync'd.
-    
-    Then, during the Bitcoin install process, you should choose \"external\" for the 
-    drive when prompted. DO NOT choose format. This will ensure the correct symlinks 
-    to the drive get set up. 
-$orange    
-########################################################################################
-" ; enter_continue ; set_terminal
-# Stopping revision here and changing the Bitcoin menu so user can choose between internal
-# and external without needing to uninstall.
+
+        Parmanode will now change the syncing directory from Internal to External.
+  
+        Hit <enter> to accept, or a to abort.
+
+        If you abort, you'l have to select to swap internal vs external from the
+        Parmanode Bitcoin menu.
+
+########################################################################################    
+"
+choose "xpq"
+case $choice in a|A|q|Q|P|p) return 1 ;; esac
+
+change_bitcoin_drive change
 fi
 
-if [[ -z $drive ]] ; then
-echo -e "
-########################################################################################
-
-    In order to user this drive imported form Umbrel, simply installed Bitcoin using
-    Parmanode, and select \"external\" drive when prompted. If asked, make sure you 
-    choose NOT to format.
-
-########################################################################################
-" ; enter_continue ; set_terminal
-fi
 
 if [[ $drive == external && $fstab_setting == wrong ]] ; then
 while true ; do
@@ -223,10 +213,10 @@ echo -e "
 
     When you replace the old Parmanode drive with this one, Bitcoin will sync up 
     with the data on this new drive. However, because you chose to not remove the
-    old auto-mount configuration for the old drive, when the system boots up, the
-    old drive will be expected and Bitcoin will fail to auto start.
+    old auto-mount configuration earlier for the old drive, when the system boots up, 
+    the old drive will be expected and Bitcoin will fail to auto start.
 
-    Last chance, remove the old auto-mount setting and use the current drive?
+    Remove the old auto-mount setting and use the current drive?
 
                     y          or          n 
 
@@ -254,8 +244,8 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Please note, if you wish to use this new Parmanode drive on a computer different
-    to this one, you should \"import\" it again so the auto-mount feature can be
-    configured.
+    to this one, you should \"import\" it from the menu so the auto-mount feature can 
+    be configured.
 
     Also if that computer is already syncing to an internal drive, then you'll need
     to uninstall Bitcoin (keep the block data if you want) and re-install with the
