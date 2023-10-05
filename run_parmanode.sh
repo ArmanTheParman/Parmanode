@@ -113,6 +113,10 @@ debug "Pausing here" #when debugging, I can check for error messages and syntax 
 # This sends a dummy https request to a non-existant file which triggers a counter on the server.
 curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null 2>&1 &
 
+# Set variables
+    Linux_distro #gets the linux distro into a config file
+    check_chip #gets the chip type into config file
+	
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi

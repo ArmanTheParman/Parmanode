@@ -1,1 +1,9 @@
-# Make the drive selection when formating less reliant on the user.
+Auto update choice
+ParmanodL installation option
+install for bitbox app, linux only
+convert from dd to dcfldd
+########################################################################################
+                                   reminders
+########################################################################################
+:set noincsearch
+

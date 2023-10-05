@@ -20,7 +20,7 @@ USER root
 RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
 
 # Install postgres and make databases
-RUN apt install postgresql-13 postgresql-contrib -y 
+RUN apt-get install postgresql-13 postgresql-contrib -y 
 USER postgres
 USER root
 RUN usermod -aG parman postgres 

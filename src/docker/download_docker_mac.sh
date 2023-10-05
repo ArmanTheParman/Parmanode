@@ -12,16 +12,13 @@ echo "
 
 if [ ! -f $HOME/parmanode/docker/Docker.dmg ] ; then 
 
-    mkdir $HOME/parmanode/docker/ && log "docker" "parmanode/docker directory made"
+    mkdir -p $HOME/parmanode/docker/ && log "docker" "parmanode/docker directory made"
 
     cd $HOME/parmanode/docker && curl -LO https://desktop.docker.com/mac/main/amd64/Docker.dmg \
     && log "docker" "Docker downloaded" \
     || { log "docker" "Docker mkdir and download failed." && \
     echo "Error downloading. Aborting." && enter_continue && return 1 ; }
-else
-    log "docker" "docker.dmg exists; skipped download."
 fi
-
 
 if [[ -f $HOME/parmanode/docker/Docker.dmg ]] ; then 
     hdiutil attach $HOME/parmanode/docker/Docker.dmg && \
