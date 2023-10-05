@@ -79,7 +79,7 @@ clear
 
 sync
 
-if[[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted 
+if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted 
 
     export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
     mounted=true
