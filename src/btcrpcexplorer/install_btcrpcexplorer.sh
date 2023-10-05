@@ -59,7 +59,7 @@ btcrpcexplorer_questions
 
 make_btcrpcexplorer_config
 
-make_btcrpcexplorer_service
+make_btcrpcexplorer_service ; debug "check service file made"
 
 
 success "BTC RPC Explorer" "being installed."
