@@ -1,7 +1,7 @@
 function menu_bitcoin_core {
 while true
 do
-set_terminal_custom "45"
+set_terminal_custom "50"
 source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
@@ -57,6 +57,8 @@ echo "
       (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
       
       (tor)      Tor menu options for Bitcoin
+
+      (add)       Add a drive from another Parmanode installation (import)
 
 
 ########################################################################################
@@ -191,6 +193,10 @@ continue
 tor|TOR|Tor)
 menu_tor_bitcoin
 continue
+;;
+
+add|ADD|Add)
+add_drive
 ;;
 
 

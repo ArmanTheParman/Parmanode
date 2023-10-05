@@ -4,6 +4,7 @@ if [[ $drive == external ]] ; then otherdrive=internal ; fi
 if [[ $drive == internal ]] ; then otherdrive=external ; fi
 
 while true ; do
+if [[ -z $1 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -22,6 +23,8 @@ $orange
 "
 choose "xpq"
 read choice ; set_terminal
+fi
+if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
 
 case $choice in
 q|Q) exit ;;
@@ -72,6 +75,7 @@ return 0
 ;;
 f|F)
 format_ext_drive justFormat
+
 return 0
 ;;
 *)
@@ -85,6 +89,9 @@ fi #ends if no parmanode in fstab
     make_backup_dot_bitcoin
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
     parmanode_conf_remove "drive=" && parmanode_conf_add "drive=external"
+    mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 && \
+            log "bitcoin" ".bitcoin dir made on ext drive" 
+    sudo chown -R $USER:$USER /media/$USER/parmanode/.bitcoin
 
 fi  #ends if $drive=internal
 
