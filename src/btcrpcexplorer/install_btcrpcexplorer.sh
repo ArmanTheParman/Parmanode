@@ -81,14 +81,14 @@ set_terminal
 echo "
 ########################################################################################
 
-    Parmanode can configure BTC RPC Explorer to give you a better experience.
+    Parmanode can configure BTC RPC Explorer to give you a better experience during
+    the installation.
 
-                Is your computer relatively fast?    y or n
-
-    If it's a year or two old, then it probably is fast enouth to choose yes.
+    Is your computer probably older than 5 years? $cyan   y  or  n $orange
 
 ########################################################################################
 "
+choose "x"
 read choice
 
 if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else fast_computer="false" ; fi
