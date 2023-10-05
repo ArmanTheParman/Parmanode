@@ -3,13 +3,13 @@ if [ -z $1 ] ; then name=ParmanodL
 else name=${1}
 fi
 
-set_terminal pink ; echo "
+set_terminal ; echo -e "$pink
 ########################################################################################
 
     Please pay careful attention here, otherwise you could get drive errors.
 
 ########################################################################################
-"
+$orange"
 enter_continue 
 debug "starting"
 

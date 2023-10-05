@@ -28,13 +28,13 @@ while true ; do
 ########################################################################################
 
     A$pink backup$orange of electrs directory has been found in addition to the electrs
-    installation. 
+    installation (${pink}$HOME/.electrs_backup$orange)
     
     Keeping it can save you time compiling it all again if you choose to re-install it.
+$pink 
+    Remove$orange that too? 
 
-    Remove that too? 
-
-                                 y    or    n ?
+                                 y    or    n  ?
 
 ######################################################################################## 
 "
