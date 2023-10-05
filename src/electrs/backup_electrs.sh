@@ -32,5 +32,5 @@ done
 function backup_electrs_do {
 please_wait
 rm -rf $HOME/.electrs_backup >/dev/null 2>&1
-mv $HOME/parmanode/electrs/ $HOME/.electrs_backup/
+cp -r $HOME/parmanode/electrs/ $HOME/.electrs_backup/
 }
