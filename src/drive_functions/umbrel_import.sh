@@ -33,6 +33,22 @@ read choice
 case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
 done
 
+# # Disconnect any parmanode drive
+# if sudo lsblk | grep parmanode ; then 
+# set_terminal ; echo -e "
+# ########################################################################################
+
+#     Please remove the parmanode drive. If you have Bitcoin syncing to it, you need to 
+#     stop it first before, and come back to this. If it's running, also stop Fulcrum
+#     and electrs. Then eject the drive.
+
+#     Exiting now, but come back and try again once the drive is disconnected.
+
+# ########################################################################################
+# "
+# enter_continue ; return 1
+# fi
+
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -69,7 +85,7 @@ export mount_point="/media/$USER/umbrel"
 fi
 
 #Mounting should be done.
-
+debug "umbrel should be mounted"
 
 # Move files
 

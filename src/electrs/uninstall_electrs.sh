@@ -52,11 +52,11 @@ fi
 electrs_nginx remove
 electrs_tor_remove
 
-sudo systemctl stop electrs.service >/dev/null
-sudo systemctl disable electrs.service >/dev/null
-sudo rm /etc/systemd/system/electrs.service >/dev/null
+sudo systemctl stop electrs.service >/dev/null 2>&1
+sudo systemctl disable electrs.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
 
-if [[ $drive_electrs == "external" ]] ; then
+if [[ $drive_electrs == "external" && -e /media/$USER/parmanode/electrs_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################

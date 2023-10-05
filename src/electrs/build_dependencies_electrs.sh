@@ -2,11 +2,10 @@ function build_dependencies_electrs {
 please_wait
 sudo apt-get update -y >/dev/null 2>&1
 
-if ! which clang ; then sudo apt-get install -y clang ; fi
+if ! which clang >/dev/null ; then sudo apt-get install -y clang ; fi
+if ! which cmake >/dev/null ; then sudo apt-get install -y cmake ; fi
 
-if ! which cmake ; then sudo apt-get install -y cmake ; fi
-
-if ! dpkg -l | grep build-essential ; then sudo apt-get install -y build-essential ; fi 
+if ! dpkg -l >/dev/null | grep build-essential ; then sudo apt-get install -y build-essential ; fi 
 
 # cargo install needed, but won't work if 64 bit system uses a 32 bit os,
 # like Raspian OS 32-bit (it supports 64 bit chips, but cargo won't work)
@@ -26,12 +25,13 @@ fi
 fi
 
 # if old version of cargo, won't work
-if ! which cargo ; then install_cargo
+if ! which cargo ; then 
+    install_cargo || return 1
 else
     if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
     debug "will uninstall then reinstall cargo, because < 63 version"
     sudo apt-get purge cargo rustc -y
-    install_cargo
+    install_cargo || return 1
     fi
 fi
 }
