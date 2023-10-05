@@ -137,7 +137,12 @@ sudo umount $mount_point
 
 # Check if unmounted
 if mountpoint $mount_point ; then 
-debug "supposted to be unmounted but its mounted."
+mount | grep umbrel
+debug "supposted to be unmounted but its mounted at $mountpoint.
+
+
+
+"
 announce "Couln't unmount Umbrel drive. Please try yourself, then hit <enter> when" \
 "you think it's done."
 fi
