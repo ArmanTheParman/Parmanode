@@ -3,24 +3,15 @@ while true ; do
 set_terminal ; echo -e " 
 ########################################################################################
 
-    Using a second drive for Parmanode is possible but the file systems must be
-    compatible. For example, you can't import a Parmanode drive used on a Mac to a 
-    Linux computer.
+      Parmanode drives are compatible across different computers, as long as they
+      are of the same files system (eg don't try to bring Parmanode drive from Linux
+      to a Mac system).
 
-   $cyan To bring in an external hard drive that contains Bitcoin blockchain data:$orange
-    
-      1. Make sure the path to the data is /.bitcoin on the drive - i.e. create a 
-         hidden directory called .bitcoin at root directory of the drive (if one
-         doesn't already exist), then move the data there.
-
-      2. Continue with the this drive import function and follow the screen prompts
-         exactly.
-      
-      3. Then from the Bitcoin menu, if you're currently syncing to the internal
-         drive, you need to select the swap internal/external optio
+      You shouldn't attach two Parmanode external drives to the computer 
+      simultaneously. Terrible things can happen.
     $pink     
-    You shouldn't attach two Parmanode external drives to the computer simultaneously. 
-    Unpredictable things can happen.
+      DISCONNECT YOUR REGULAR PARMANODE DRIVE NOW BEFORE ATTEMPTING TO IMPORT A 
+      NEW ONE.
 $orange
 ########################################################################################
 "
