@@ -79,7 +79,6 @@ safe_unmount_parmanode || return 1
 ;;
 *) invalid ;;
 esac
-fi
 done
 
 while sudo blkid | grep -q parmanode ; do
