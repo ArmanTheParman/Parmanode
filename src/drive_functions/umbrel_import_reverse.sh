@@ -107,7 +107,7 @@ debug "stat captured. 4 values... $U_username $U_groupname $U_userID $U_groupID"
 target="$mount_point/umbrel/app-data/bitcoin/data/bitcoin/"
 sudo chown -R $U_username:$U_groupname $mount_point/.bitcoin
 sudo chown -R $U_userID:$U_groupID $mount_point/.bitcoin
-debug "target=$targe"
+debug "target=$target"
 
 # Move files
 cd $mount_point/.bitcoin
@@ -121,6 +121,9 @@ debug "fstab line removed"
 # Label drive
 sudo e2label $disk umbrel 2>&1
 debug "drive label for $disk changed to umbrel?"
+
+sudo umount $mount_point
+debug "unmounted from mountpoint=$mount_point"
 
 success "The Umbrel Drive" "finished being recovered."
 
