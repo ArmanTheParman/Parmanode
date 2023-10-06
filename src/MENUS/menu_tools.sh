@@ -1,28 +1,28 @@
 function menu_tools {
-                
-                
 
 while true ; do
 set_terminal
 echo -e "
 ########################################################################################
- 
-                      $cyan          P A R M A N O D E - Tools   $orange
+  $cyan
+                               P A R M A N O D E - Tools   $orange
 
-                    
-                 (u)     Update computer (Linux or Mac)
 
                  (ip)    What's my computer's IP address?
 
-                 (d)     Delete your previous preference to hide certain Parmanode
-                            messages
-
-                 (h)     Check system resources with \"htop\" (installs if needed)
+                 (um)    Unmount your Parmanode external drive 
+                         (stops Bitcoin/Fulcrum/Electrs if running)
 
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
-
+                
+                 (d)     Delete your previous preference to hide certain Parmanode
+                         messages
                  
+                 (u)     Update computer (Linux or Mac)
+
+                 (h)     Check system resources with \"htop\" (installs if needed)
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -41,6 +41,9 @@ case $choice in
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
         echo "Choices reset" ; sleep 0.6 
+        ;;
+    um|UM|Um)
+        safe_unmount_parmanode
         ;;
 
     p|P)
@@ -62,9 +65,6 @@ case $choice in
     a|A|add|ADD|Add)
         add_drive 
         ;;
-    
-    
-
 
     q|Q|Quit|QUIT)
         exit 0

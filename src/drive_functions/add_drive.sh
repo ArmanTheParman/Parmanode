@@ -1,7 +1,7 @@
 function add_drive {
 if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
-info_add_drive || return 1
+info_add_drive || return 1 # warns about not connecting two drives at once
 
 detect_drive
 
