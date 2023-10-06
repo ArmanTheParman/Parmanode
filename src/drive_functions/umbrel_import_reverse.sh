@@ -60,12 +60,12 @@ echo -e "
 "
 enter_continue
 
-while ! sudo blkid | grep parmanode ; do
+while ! sudo blkid | grep -q parmanode ; do
 announce "It doesn't seem like the Parmanode drive is physically conected." \
 "Please try again"
 done
 
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
+export disk=$(sudo blkid | grep -q parmanode | cut -d : -f 1) 
 
 # Mount
 while ! mount | grep -q parmanode ; do
