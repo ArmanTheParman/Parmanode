@@ -50,6 +50,9 @@ case $choice in
 
     m|M|mount)
         mount_drive menu
+        if mount | grep -q parmanode ; then
+        announce "Drive mounted."
+        fi
         ;;
     p|P)
         return 0
