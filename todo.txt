@@ -1,12 +1,6 @@
 Auto update choice
 ParmanodL installation option
 install for bitbox app, linux only
-convert from dd to dcfldd
-mac bitcoin redo
-   - use QT
-   - use default locations for internal drive
-   - no symlink for external drive, put datadir=/Volumes/parmanode/.bitcoin
-   - test running/not running for macs in menus
 
 logoutput report send
 bre install fails for some - add more error reporst in logs, and npm install checks. Failure
