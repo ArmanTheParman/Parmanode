@@ -49,10 +49,10 @@ source $HOME/.parmanode/var
 if [[ $OS == "Mac" ]] ; then
 set_terminal
 diskutil info $disk
-echo "
+echo -e "
 ########################################################################################
 
-    Type yes if you think this is the correct drive to use, anything else to abort.
+    Type$cyan yes$orange if you think this is the correct drive to use, anything else to abort.
 
 ########################################################################################
 "
@@ -87,8 +87,8 @@ echo "
     Hit <enter> to continue
 ########################################################################################
 " ; read ; return 0 ; fi
-echo "
-    Type yes if you think this is correct, anything else to abort.
+echo -e "
+    Type$cyan yes$orange if you think this is correct, anything else to abort.
 
 ########################################################################################
 "
