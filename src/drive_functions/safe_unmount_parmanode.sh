@@ -36,6 +36,7 @@ Hit$cyan <enter>$orange to continue.
 read
 return 1
 else
+announce "Drive unmounted."
 return 0
 fi
 
