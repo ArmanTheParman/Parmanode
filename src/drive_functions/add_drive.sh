@@ -3,7 +3,6 @@ if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 
 
 info_add_drive || return 1 # safe unmount executed
 
-if [[ $1 == menu ]] ; then
 set_terminal ; echo -e "$pink
 ########################################################################################
 Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
