@@ -21,7 +21,7 @@ return 1
 fi
 
 if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
-    set_terminal ; echo "
+    set_terminal ; echo -e "
 ########################################################################################
 
     Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
