@@ -106,16 +106,19 @@ continue
 ;;
 
 log|LOG|Log)
-echo "
+log_counter
+if [[ $log_count -le 10 ]] ; then
+echo -e "
 ########################################################################################
     
     This will show the bitcoin debug.log file in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
 enter_continue
+fi
 set_terminal_wider
 tail -f $HOME/.bitcoin/debug.log &
 tail_PID=$!
