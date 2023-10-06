@@ -15,16 +15,16 @@ $orange
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-if lsblk -o Label | grep parmanode || lsblk -o Label | grep umbrel ; then
+if lsblk -o Label | grep -q parmanode || lsblk -o Label | grep -q umbrel ; then
 echo "Unmounting Parmanode drive first..."
 safe_unmount_parmanode || return 1
-sudo systemctl stop bitcoind.service fulcrum.service electrs.service
+sudo systemctl stop bitcoind.service fulcrum.service electrs.service >/dev/null
 sudo umount /media/$USER/parmanode 2>/dev/null
 sudo umount /media/$USER/umbrel 2>/dev/null
 sleep 2
 fi
 
-if ! mountpoint /media/$USER/parmanode ; then
+if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
 echo -e "
 ########################################################################################
 
