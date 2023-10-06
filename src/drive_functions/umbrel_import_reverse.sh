@@ -28,8 +28,8 @@ if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
 echo -e "
 ########################################################################################
 
-   Unmounting any Parmanode drive should have been successful. Please phsyically 
-   detact any Parmanode drive, or you're likely to get errors.
+   Unmounting any Parmanode drive should have been successful. Please phsyically $cyan
+   DISCONNECT$orange any Parmanode drive, or you're likely to get errors.
 
                     $cyan
                         <enter>$orange     to continue
@@ -60,7 +60,7 @@ enter_continue
 # Mount
 while true ; do
 
-if [[ $(sudo lsblk | grep parmanode | wc -l) == 1 ]] ; then
+if [[ $(sudo lsblk -o LABEL | grep parmanode | wc -l) == 1 ]] ; then
 export mount_point=$(lsblk | grep parmanode | grep -o /.*$)
 mounted=true
 break
