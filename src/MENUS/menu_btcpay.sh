@@ -50,6 +50,8 @@ if [[ $OS == "Linux" ]] ; then docker stop btcpay ; fi
 ;;
 
 log|Log|LOG)
+set_terminal ; log_counter
+if [[ $log_count -le 10 ]] ; then
 echo "
 ########################################################################################
     
@@ -60,6 +62,8 @@ echo "
 ########################################################################################
 "
 enter_continue
+fi
+
 set_terminal_wider
 tail -f $HOME/.btcpayserver/btcpay.log &
 tail_PID=$!
