@@ -203,7 +203,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The drive data has been rearranged such that it can be used by Parmanode. It's
-    label has been changed from umbrel to parmanode.
+    label has been changed from$cyan umbrel to parmanode${orange}.
 
     The data can no longer be used by Umbrel - if you reconnect now to Umbrel, it may
     get automatically formated. Be warned.
@@ -280,8 +280,9 @@ set_terminal ; echo -e "
     be configured.
 
     Also if that computer is already syncing to an internal drive, then you'll need
-    to uninstall Bitcoin (keep the block data if you want) and re-install with the
-    new drive.
+    to uninstall Bitcoin (keep the block data if you want) and re-install Bitcoin
+    Core, but this time select \"external\" drive and attach the drive you have just
+    prepared.
 
 ########################################################################################
 " ; enter_continue
