@@ -34,6 +34,12 @@ $pink
 "
 read
 
+if sudo lsblk -o LABEL | grep parmanode ; then
+announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
+"still physically connected to the computer. Aborting." 
+return 1
+fi
+
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before

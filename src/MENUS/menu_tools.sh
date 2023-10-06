@@ -8,22 +8,27 @@ echo -e "
                                P A R M A N O D E - Tools   $orange
 
 
-                 (ip)    What's my computer's IP address?
+              (ip)    What's my computer's IP address?
 
-                 (um)    Unmount your Parmanode external drive 
-                         (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
+              (um)    Unmount your Parmanode external drive 
+                      (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
+     
+              (ub)    Convert an$cyan Umbrel$orange external drive to Parmanode, without 
+                      losing Bitcoin data. 
 
-                 (m)     Mount the Parmanode drive - Linux only
+              (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
 
-                 (b)     Bring in a Parmanode drive from another installation, or
-                         add a new external drive to Parmanode
+              (b)     Bring in a Parmanode drive from another installation, or
+                      add a new external drive to Parmanode
+
+              (m)     Mount the Parmanode drive - Linux only
                 
-                 (d)     Delete your previous preference to hide certain Parmanode
-                         messages
+              (d)     Delete your previous preference to hide certain Parmanode
+                      messages
                  
-                 (u)     Update computer (Linux or Mac)
+              (u)     Update computer (Linux or Mac)
 
-                 (h)     Check system resources with \"htop\" (installs if needed)
+              (h)     Check system resources with \"htop\" (installs if needed)
 
 ########################################################################################
 "
@@ -69,6 +74,14 @@ case $choice in
         htop
 
         ;;
+
+    ub|UB|Ub)
+    umbrel_import 
+    ;;
+
+    ru|RU|Ru)
+    umbrel_import_reverse
+    ;;
 
     b|B|Bring|brin) 
         add_drive menu

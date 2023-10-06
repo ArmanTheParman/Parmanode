@@ -1,4 +1,17 @@
 function info_add_drive {
+
+if [[ $1 == menu ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+    Please note that if you are importing an Umbrel drive, this is not the function
+    to do that - it won't work.
+    
+    Hit$cyan <enter>$orange to continue, or$cyan a$orane to abort.
+########################################################################################
+" ; read choice ; set_terminal
+if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
+fi
+
 while true ; do
 set_terminal ; echo -e " 
 ########################################################################################
