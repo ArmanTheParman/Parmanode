@@ -122,36 +122,36 @@ while ! sudo mount | grep -q umbrel ; do
     while ! mountpoint /media/$USER/parmanode ; do
     mount $drive /media/$USER/parmanode
     sleep 2
-    export mount_point=$(sudo lsblk -o LABEL,MOUNTPOINTS | grep -q umbrel | awk '{print $2}')
 
 done
 
-# Move files
+export mount_point="/media/$USER/parmanode"
 
+# Move files
 sudo mkdir -p $mount_point/.bitcoin
-cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
-mv blocks chainstate indexes $mount_point/.bitcoin
+cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/  >/dev/null 2>&1
+mv blocks chainstate indexes $mount_point/.bitcoin >/dev/null 2>&1
 make_bitcoin_conf umbrel
-sudo mkdir $mount_point/electrs_db $mount_point/fulcrum_db
-sudo chown -R $USER:$USER $mount_point/.bitcoin
+sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$USER $mount_point/.bitcoin  >/dev/null 2>&1
 
 # Unmount Umbrel drive
+while mount | umbrel ; do
 cd $original_dir
+echo "Trying to unmount..."
 sudo umount $mount_point
-
-
-# if mountpoint $mount_point ; then
-# sudo mv -r $mount_point/.bitcoin/* $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
-# sudo rm -rf $mount_point/.bitcoin
-# announce "Couldn't unmount to proceed. Changes reversed. Aborting."
-# fi
+sleep 1
+done
 
 # label
-# sudo e2label $disk parmanode 2>&1
+while sudo lsblk -o LABEL | grep -q umbrel ; do
+echo "Changing the label to parmanode"
+sudo e2label $disk parmanode 2>&1
+sleep 1
+done
 
 # fstab configuration
-if sudo cat /etc/fstab | grep parmanode ; then
-while true ; do
+while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo "
 ########################################################################################
 
@@ -184,8 +184,7 @@ esac
 done
 fi
 
-# Done
-
+# Finished. Info.
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -202,10 +201,9 @@ set_terminal ; echo -e "
 " ; enter_continue ; set_terminal
 
 #Conenct drive to Bitcoin Core
-unset drive 
-soucre $HOME/.parmanode/parmanode.conf
-
-if [[ $drive == internal ]] ; then
+source $HOME/.parmanode/parmanode.conf
+while [[ $drive == internal ]] ;do
+source $HOME/.parmanode/parmanode.conf
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -220,11 +218,11 @@ set_terminal ; echo -e "
 "
 choose "xpq"
 case $choice in a|A|q|Q|P|p) return 1 ;; esac
-
 change_bitcoin_drive change
-fi
+source $HOME/.parmanode/parmanode.conf
+done
 
-
+# One more chance
 if [[ $drive == external && $fstab_setting == wrong ]] ; then
 while true ; do
 echo -e "
@@ -259,6 +257,8 @@ esac
 done
 fi
 
+#Info
+
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -266,11 +266,8 @@ set_terminal ; echo -e "
     to this one, you should \"import\" it from the menu so the auto-mount feature can 
     be configured.
 
-    Also if that computer is already syncing to an internal drive, then you'll need
-    to uninstall Bitcoin (keep the block data if you want) and re-install Bitcoin
-    Core, but this time select \"external\" drive and attach the drive you have just
-    prepared.
-
 ########################################################################################
 " ; enter_continue
+
+success "Umbrel Drive" "being imported to Parmanode."
 }
