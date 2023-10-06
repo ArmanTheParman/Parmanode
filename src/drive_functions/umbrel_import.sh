@@ -49,25 +49,55 @@ set_terminal ; echo -e "
 read choice
 if [[ $choice == a ]] ; then return 1 ; fi
 
-if mount | grep parmanode ; then
+while  mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
 ########################################################################################
     
-    This function will refuse to run if it detects a mounted Parmanode drive. Bad
+    This function will$cyan refuse to run$orange if it detects a mounted Parmanode drive. Bad
     things can happen. As you may have several processes running, Parmanode will not
     attempt to automattically unmount your drive.
 
     If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
-    Fulcrum) have been stopped, then$pink unmount$orange the drive, best to even disconnect it,
+    Fulcrum) have been stopped, then$pink unmount$orange the drive, then disconnect it,
     then come back to this function.
+
+    Do you want Parmanode to attempt to cleanly stop everything and unmount the 
+    drive for you?
+
+               y)       Yes please, how kind.
+
+               nah)     Nah ( = \"No\" in Straylian)
 
 ########################################################################################
 "
-enter_continue ; return 1
+choose "xpq" ; read choice ; set_terminal
+case $choice in
+p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
+q|Q) exit ;; 
+y|Y|Yes|yes|YES)
+safe_unmount_parmanode || return 1 
+;;
+*) invalid ;;
+esac
 fi
+done
+
+while sudo blkid | grep -q parmanode ; do
+set_terminal ; echo -e "
+########################################################################################
+
+            Please disconnect the Parmanode drive from the computer
+
+            Hit$cyan a$orange and then$cyan <enter>$orange to abort.
+
+########################################################################################
+"
+read choice
+case $choice in a|A) return 1 ;; esac
+done
 
 
-while true ; do
+while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -75,56 +105,26 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read 
-clear
-
-sync
-
-if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then    # only one umbrel disk detected as mounted 
-
-    export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
-    mounted=true
-    break
-
-elif sudo lsblk | grep umbrel ; then
-    
-    announce "More than one umbrel drive detected. Aborting." ; return 1
-
-elif [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then
-
-    mounted=false
-    break
-
-else
-   announce "No Umbrel drive detected. Try again." 
-   continue
-fi 
-
+read ; set_terminal ; sync
+#Get device name
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 done
 
-unset disk 
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) 
+#Mount
+while ! sudo mount | grep -q umbrel ; do
 
-if [[ $mounted == false ]] ; then 
-sudo mkdir -p /media/$USER/umbrel
-sudo mount $disk /media/$USER/umbrel 
-if [ $? -ne 0 ] ; then
-sudo mount -L umbrel /media/$USER/umbrel
-fi
-export mount_point="/media/$USER/umbrel"
-fi
+    if mountpoint /media/$USER/parmanode ; then
+    announce "There's a problem. The /media/$USER/parmanode directory is in use" \
+    "It needs to be used for mounting the Umbrel drive. Aborting."
+    return 1
+    fi
 
-#Mounting should be done.
-if mountpoint /media/$USER/umbrel >/dev/null || $(sudo lsblk | grep umbrel | awk '{print $7}' | grep umbrel ) ; then
-mounted=true
-debug "umbrel should be mounted: mounted=$mounted"
-else
-announce "Couldn't mount. Aborting."
-return 1
-fi
+    while ! mountpoint /media/$USER/parmanode ; do
+    mount $drive /media/$USER/parmanode
+    sleep 2
+    export mount_point=$(sudo lsblk -o LABEL,MOUNTPOINTS | grep -q umbrel | awk '{print $2}')
 
-
-export $mount_point
+done
 
 # Move files
 
@@ -136,31 +136,18 @@ sudo mkdir $mount_point/electrs_db $mount_point/fulcrum_db
 sudo chown -R $USER:$USER $mount_point/.bitcoin
 
 # Unmount Umbrel drive
-if [[ -z $mount_point ]] ; then export mount_point=$(lsblk | grep umbrel | grep -o /.*$) ; fi
-debug "mountpoint before umounting is $mount_point; pwd is $(pwd)"
 cd $original_dir
 sudo umount $mount_point
 
-# Check if unmounted
-if mountpoint $mount_point ; then 
-mount | grep umbrel
-debug "supposted to be unmounted but its mounted at $mountpoint.
 
-
-
-"
-announce "Couln't unmount Umbrel drive. Please try yourself, then hit <enter> when" \
-"you think it's done."
-fi
-
-if mountpoint $mount_point ; then
-sudo mv -r $mount_point/.bitcoin/* $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
-sudo rm -rf $mount_point/.bitcoin
-announce "Couldn't unmount to proceed. Changes reversed. Aborting."
-fi
+# if mountpoint $mount_point ; then
+# sudo mv -r $mount_point/.bitcoin/* $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
+# sudo rm -rf $mount_point/.bitcoin
+# announce "Couldn't unmount to proceed. Changes reversed. Aborting."
+# fi
 
 # label
-sudo e2label $disk parmanode 2>&1
+# sudo e2label $disk parmanode 2>&1
 
 # fstab configuration
 if sudo cat /etc/fstab | grep parmanode ; then
