@@ -20,6 +20,7 @@ export $mount_point=/media/$USER/parmanode
 while mount | parmanode ; do
 cd $original_dir
 echo "Trying to unmount Parmanode first..."
+sleep 1
 safe_unmount_parmanode || return 1
 sleep 1
 done
