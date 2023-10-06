@@ -57,7 +57,7 @@ echo "
       
       (tor)      Tor menu options for Bitcoin
 
-      (add)      Add a drive from another Parmanode installation (import)
+      (bring)    Bring a drive from another Parmanode installation (import)
       
       (ub)       Convert an Umbrel external drive to Parmanode, without 
                  losing Bitcoin data. 
@@ -202,7 +202,7 @@ menu_tor_bitcoin
 continue
 ;;
 
-add|ADD|Add)
+bring|BRING|Bring)
 add_drive
 ;;
 

@@ -1,7 +1,7 @@
 function add_drive {
 if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
-info_add_drive || return 1 # safe unmount executed
+info_add_drive $@ || return 1 # safe unmount executed
 
 set_terminal ; echo -e "$pink
 ########################################################################################
@@ -22,7 +22,7 @@ echo "The drive should be unmounted."
 echo "Remember to physically disconnect your regular Parmanode drive."
 enter_continue ; set_terminal
 
-detect_drive $@ #menu
+detect_drive $@ || return 1 #menu
 
 drive_details || return 1
 
