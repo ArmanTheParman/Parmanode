@@ -121,6 +121,7 @@ while ! sudo mount | grep -q umbrel ; do
     while ! mountpoint /media/$USER/parmanode ; do
     mount $drive /media/$USER/parmanode
     sleep 2
+    done
 
 done
 
