@@ -20,9 +20,9 @@ log "error" "searchstring, $searchstring, doesnt exist, using change_sting_mac f
 return 0
 fi
 
-if [[ $debug == 1 && $(grep $searchstring $inputfile | wc -l | awk '{print $1}') > 1 ]] ; then
-echo "Warning. More than 1 instance of search term found. Aborting." ; return 0 
-fi
+    # if [[ $debug == 1 && $(grep $searchstring $inputfile | wc -l | awk '{print $1}') > 1 ]] ; then
+    # echo "Warning. More than 1 instance of search term found. Aborting." ; return 0 
+    # fi
 
 if [[ $positionnewline == "after" ]] ; then
     sudo grep -m1 -B 100000 ${searchstring} ${inputfile} > /tmp/temp1.txt
