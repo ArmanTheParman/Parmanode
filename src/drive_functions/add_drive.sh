@@ -48,6 +48,10 @@ if [[ $OS == "Linux" ]] ; then
 
 sudo mount -a
 
+cd /media/$USER/parmanode/
+sudo mkdir .bitcoin fulcrum_db electrs_db
+sudo chown -R $USER:$USER .bitcoin fulcrum_db electrs_db
+
 set_terminal ; echo "
 ########################################################################################
 
