@@ -17,7 +17,9 @@ set_terminal ; echo -e "$cyan
 ########################################################################################
 " ; enter_continue
 safe_unmount_parmanode || return 1
-set_terminal ; echo "Remember to physically disconnect your regular Parmanode drive."
+set_terminal 
+echo "The drive should be unmounted."
+echo "Remember to physically disconnect your regular Parmanode drive."
 enter_continue ; set_terminal
 
 detect_drive $@ #menu
