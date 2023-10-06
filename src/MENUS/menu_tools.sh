@@ -50,6 +50,7 @@ case $choice in
 
     m|M|mount)
         safe_mount_parmanode menu
+        ;;
     p|P)
         return 0
         ;;
