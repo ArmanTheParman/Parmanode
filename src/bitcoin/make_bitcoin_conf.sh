@@ -57,7 +57,7 @@ rpcbind=0.0.0.0
 rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
-rpcallowip=172.17.0.0/16" > "$file" && log "bitcoin" "bitcoin conf made"  
+rpcallowip=172.17.0.0/16" | sudo tee "$file" > /dev/null && log "bitcoin" "bitcoin conf made"  
 
 apply_prune_bitcoin_conf # Here is where the prune choice is added to bitcoin.conf
 }

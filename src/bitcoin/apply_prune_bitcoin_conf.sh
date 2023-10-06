@@ -20,8 +20,8 @@ if [[ $prune_value == "0" ]] ; then
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "txindex=1"
 	delete_line "$HOME/.bitcoin/bitcoin.conf" "blockfilterindex=1"
 
-	echo "txindex=1" >> $HOME/.bitcoin/bitcoin.conf
-	echo "blockfilterindex=1" >> $HOME/.bitcoin/bitcoin.conf
+	echo "txindex=1" | sudo tee -a $HOME/.bitcoin/bitcoin.conf
+	echo "blockfilterindex=1" | sudo tee -a $HOME/.bitcoin/bitcoin.conf
 fi
 
 log "bitcoin" "end of apply_prune_bitcoin_conf function"
