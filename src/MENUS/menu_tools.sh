@@ -11,7 +11,9 @@ echo -e "
                  (ip)    What's my computer's IP address?
 
                  (um)    Unmount your Parmanode external drive 
-                         (stops Bitcoin/Fulcrum/Electrs if running)
+                         (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
+
+                 (m)     Mount the Parmanode drive - Linux only
 
                  (a)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
@@ -43,9 +45,11 @@ case $choice in
         echo "Choices reset" ; sleep 0.6 
         ;;
     um|UM|Um)
-        safe_unmount_parmanode menu
+        mount_drive menu
         ;;
 
+    m|M|mount)
+        safe_mount_parmanode menu
     p|P)
         return 0
         ;;
