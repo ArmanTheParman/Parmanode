@@ -14,10 +14,10 @@ $orange
 
 ########################################################################################
 " ; enter_continue ; set_terminal
-export $mount_point=/media/$USER/parmanode
+export mount_point=/media/$USER/parmanode
 
 # Unmount Parmanode drive
-while mount | parmanode ; do
+while mount | grep -q parmanode ; do
 cd $original_dir
 echo "Trying to unmount Parmanode first..."
 sleep 1
@@ -67,7 +67,7 @@ done
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
 
 # Mount
-while ! mount | grep parmanode ; do
+while ! mount | grep -q parmanode ; do
 echo "Mounting parmanode drive..."
 mount_drive menu
 done
