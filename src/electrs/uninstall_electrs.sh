@@ -27,17 +27,19 @@ while true ; do
     echo -e "
 ########################################################################################
 
-    A$pink backup$orange of electrs directory has been found in addition to the electrs
-    installation. 
+    A$pink backup$orange of electrs directory has been found in addition to the 
+    current electrs installation (${pink}$HOME/.electrs_backup$orange)
     
-    Keeping it can save you time compiling it all again if you choose to re-install it.
+    Keeping the backup can save you time compiling it all again if you choose to 
+    re-install electrs.
+$pink 
+    Remove$orange the backup too? 
 
-    Remove that too? 
-
-                                 y    or    n ?
+                                 y    or    n  ?
 
 ######################################################################################## 
 "
+    set_terminal
     read choice
     case $choice in
     y|Y) 
@@ -52,11 +54,11 @@ fi
 electrs_nginx remove
 electrs_tor_remove
 
-sudo systemctl stop electrs.service >/dev/null
-sudo systemctl disable electrs.service >/dev/null
-sudo rm /etc/systemd/system/electrs.service >/dev/null
+sudo systemctl stop electrs.service >/dev/null 2>&1
+sudo systemctl disable electrs.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
 
-if [[ $drive_electrs == "external" ]] ; then
+if [[ $drive_electrs == "external" && -e /media/$USER/parmanode/electrs_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################

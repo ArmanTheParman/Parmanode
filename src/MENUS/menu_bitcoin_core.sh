@@ -1,7 +1,7 @@
 function menu_bitcoin_core {
 while true
 do
-set_terminal_custom "45"
+set_terminal_custom "50"
 source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
@@ -12,7 +12,7 @@ if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1="                   Bitcoin is RUNNING -- see log menu for progress" 
+output1='                   Bitcoin is RUNNING -- see log menu for progress'
 
 output2="                         (Syncing to the $drive drive)"
 else
@@ -25,7 +25,6 @@ echo -e "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
-
 "
 echo "$output1"
 echo ""
@@ -39,6 +38,8 @@ echo "
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
+      
+      (cd)       Change syncing drive internal vs external
 
       (c)        How to connect your wallet...........(Otherwise no point to this)
 
@@ -55,6 +56,13 @@ echo "
       (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
       
       (tor)      Tor menu options for Bitcoin
+
+      (bring)    Bring a drive from another Parmanode installation (import)
+      
+      (ub)       Convert an Umbrel external drive to Parmanode, without 
+                 losing Bitcoin data. 
+                 
+      (ru)       Reverse an Umbrel-to-Parmanode conversion (ie back to Umbrel)
 
 
 ########################################################################################
@@ -83,6 +91,10 @@ run_bitcoind "no_interruption"
 fi
 ;;
 
+cd|CD|Cd)
+change_bitcoin_drive
+;;
+
 c|C)
 connect_wallet_info
 continue
@@ -94,16 +106,19 @@ continue
 ;;
 
 log|LOG|Log)
-echo "
+log_counter
+if [[ $log_count -le 10 ]] ; then
+echo -e "
 ########################################################################################
     
     This will show the bitcoin debug.log file in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
 enter_continue
+fi
 set_terminal_wider
 tail -f $HOME/.bitcoin/debug.log &
 tail_PID=$!
@@ -187,6 +202,17 @@ menu_tor_bitcoin
 continue
 ;;
 
+bring|BRING|Bring)
+add_drive
+;;
+
+ub|UB|Ub)
+umbrel_import 
+;;
+
+ru|RU|Ru)
+umbrel_import_reverse
+;;
 
 p|P)
 return 1

@@ -8,17 +8,31 @@
 function install_btcrpcexplorer {
 set_terminal
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-if [[ $chip != "x86_64" ]] ; then return 1 ; fi
+if [[ $(uname -m) != "x86_64" ]] ; then 
+set_terminal ; echo -e "
+########################################################################################
 
-if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-endd >/dev/null ; then 
-    set_terminal ; echo "
-    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin and either
+       For$cyan x86_64$orange machines only. Your machine is $(uname -m).
+       Please send a bug report if something is wrong.
+
+########################################################################################
+" ; enter_continue
+return 1
+fi
+
+if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
+    set_terminal ; echo -e "
+########################################################################################
+
+    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
     Fulcrum server or electrs server first. You could, instead modify the 
     configurtion file and point it to a Fulcrum or Electrum Server on this or 
     another machine.
 
-    Proceed anyway?   y  or  n"
-    
+    Proceed anyway?   y  or  n
+
+########################################################################################
+"
     read choice
 
     if [[ $choice != "y" ]] ; then return 1 ; fi
@@ -44,7 +58,7 @@ btcrpcexplorer_questions
 
 make_btcrpcexplorer_config
 
-make_btcrpcexplorer_service
+make_btcrpcexplorer_service ; debug "check service file made"
 
 
 success "BTC RPC Explorer" "being installed."
@@ -62,23 +76,32 @@ fi
 
 function btcrpcexplorer_questions {
 
+if ! which dmidecode ; then sudo apt-get install dmidecode ; fi
+
+biosDate=$(sudo dmidecode -t bios | grep Date | cut -d / -f 3)
+
+if [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -lt 2017 ]] ; then 
+export fast_computer=false
+elif [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -ge 2017 ]] ; then
+export fast_computer=true
+else
+
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
-    Parmanode can configure BTC RPC Explorer to give you a better experience.
+    Parmanode can configure BTC RPC Explorer to give you a better experience during
+    the installation.
 
-                Is your computer relatively fast?    y or n
-
-    If it's a year or two old, then it probably is fast enouth to choose yes.
+    Is your computer probably older than 6 years? $cyan   y  or  n $orange
 
 ########################################################################################
 "
+choose "x"
 read choice
 
 if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else fast_computer="false" ; fi
-
-
+fi
 }
 
 function make_btcrpcexplorer_config {
@@ -125,7 +148,7 @@ Restart=always
 RestartSec=30
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service >/dev/null 2>&1
 
-sudo systemctl enable btcrpcexplorer.service
+sudo systemctl enable btcrpcexplorer.service >/dev/null 2>&1
 }

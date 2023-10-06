@@ -8,17 +8,21 @@ if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 #quit if external drive set for either of the other programs that use this function
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
-debug2 "testing after bitcoin check"
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then return 0 ; fi
 
-format_warnings #skip_formatting variable set #DO NOT MOVE
-if [[ $skip_formatting == true ]] ; then return 0 ; fi
+if [[ $1 != justFormat ]] ; then
+    format_warnings #skip_formatting variable set #DO NOT MOVE
+    if [[ $skip_formatting == true ]] ; then return 0 ; fi
+fi
+
 #select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
-dd_wipe_drive  #failure here exits program 
+if [[ $1 != justFormat ]] ; then
+    dd_wipe_drive  #failure here exits program 
+fi
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
@@ -67,21 +71,10 @@ if [[ $OS == "Linux" ]] ; then
         echo "
 #######################################################################################
 
-    If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
-    and labelled as \"parmanode\".
+    If you saw no errors, then the new $disk drive has been prepared and is 
+    labelled as \"parmanode\".
     
-    The drive's UUID, for reference, is $UUID.
-
-    A drive's UUID (Universally Unique Identifier) is a unique identifier assigned 
-    to a storage device (like a hard drive, SSD, or USB drive) to distinguish it 
-    from other devices. 
-    
-    Stay calm: YOU DON'T HAVE TO REMEMBER IT OR WRITE IT DOWN.  
-               This is just information for you, you can ignore it.
-
-    The /etc/fstab file has been updated to include the UUID and the drive should 
-    automount on reboot. If you don't understand that, don't worry about it, just 
-    proceed.
+    The drive's UUID, for reference only, is $UUID.
 
 ########################################################################################
         "

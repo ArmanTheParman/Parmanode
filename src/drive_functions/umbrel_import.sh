@@ -33,7 +33,70 @@ read choice
 case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
 done
 
-while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Please note that this action must be undertaken on the same computer that the
+    drive is destined to be used on - otherwise the import will be incomplete, and
+    you may get unexpected errors.
+
+                                a)          to abort
+                                
+                                <enter>     to continue
+
+########################################################################################
+"
+read choice
+if [[ $choice == a ]] ; then return 1 ; fi
+
+while  mount | grep -q parmanode ; do 
+set_terminal ; echo -e "
+########################################################################################
+    
+    This function will$cyan refuse to run$orange if it detects a mounted Parmanode drive. Bad
+    things can happen. As you may have several processes running, Parmanode will not
+    attempt to automattically unmount your drive.
+
+    If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
+    Fulcrum) have been stopped, then$pink unmount$orange the drive, then disconnect it,
+    then come back to this function.
+
+    Do you want Parmanode to attempt to cleanly stop everything and unmount the 
+    drive for you?
+
+               y)       Yes please, how kind.
+
+               nah)     Nah ( = \"No\" in Straylian)
+
+########################################################################################
+"
+choose "xpq" ; read choice ; set_terminal
+case $choice in
+p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
+q|Q) exit ;; 
+y|Y|Yes|yes|YES)
+safe_unmount_parmanode || return 1 
+;;
+*) invalid ;;
+esac
+done
+
+while sudo blkid | grep -q parmanode ; do
+set_terminal ; echo -e "
+########################################################################################
+
+            Please disconnect the Parmanode drive from the computer
+
+            Hit$cyan a$orange and then$cyan <enter>$orange to abort.
+
+########################################################################################
+"
+read choice
+case $choice in a|A) return 1 ;; esac
+done
+
+
+while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -41,56 +104,64 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read 
-clear
-sync
-
-if [[ $(sudo lsblk | grep umbrel | wc -l) == 1 ]] ; then
-export mount_point=$(lsblk | grep umbrel | grep -o /.*$)
-mounted=true
-break
-
-else
-announce "Umbrel drive not detected. <enter> to try again."
-mounted=false
-continue
-fi
+read ; set_terminal ; sync
+#Get device name
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 done
 
-if [[ $(sudo blkid | grep umbrel | wc -l) == 1 ]] ; then
-unset disk 
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) 
-fi
+#Mount
+while ! sudo mount | grep -q umbrel ; do
 
-if [[ $mounted == false ]] ; then 
-sudo mkdir -p /media/$USER/umbrel
-sudo mount $disk /media/$USER/umbrel
-export mount_point="/media/$USER/umbrel"
-fi
+    if mountpoint /media/$USER/parmanode ; then
+    announce "There's a problem. The /media/$USER/parmanode directory is in use" \
+    "It needs to be used for mounting the Umbrel drive. Aborting."
+    return 1
+    fi
 
-#Mounting should be done.
+    while ! mountpoint /media/$USER/parmanode ; do
+    mount $drive /media/$USER/parmanode
+    sleep 2
+    done
 
+done
+
+export mount_point="/media/$USER/parmanode"
 
 # Move files
-
 sudo mkdir -p $mount_point/.bitcoin
-sudo chown -$ $USER:$USER $mount_point/.bitcoin
-cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
-mv blocks chainstate indexes $mount_point/.bitcoin
-sudo chown -R $USER:$USER $mount_point/.bitcoin
+cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/  >/dev/null 2>&1
+mv blocks chainstate indexes $mount_point/.bitcoin >/dev/null 2>&1
+make_bitcoin_conf umbrel
+sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$USER $mount_point/.bitcoin  >/dev/null 2>&1
+
+# Unmount Umbrel drive
+while mount | umbrel ; do
+cd $original_dir
+echo "Trying to unmount..."
+sudo umount $mount_point
+sleep 1
+done
 
 # label
+while sudo lsblk -o LABEL | grep -q umbrel ; do
+echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
+sleep 1
+done
 
 # fstab configuration
-if sudo cat /etc/fstab | grep parmanode ; then
-while true ; do
+while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo "
 ########################################################################################
 
     There already seems to be a Parmanode drive configured to auto-mount at system
-    boot. You can only have one at a time. Would you like to replace the old one with
-    the new drive from Umbrel?
+    boot. 
+    
+    You can only have one at a time. 
+    
+    Would you like to replace the old drive with the new drive from Umbrel for this
+    computer?
 
                           y        or        n
 
@@ -111,17 +182,13 @@ break
 invalid ;;
 esac
 done
-fi
 
-# Done
-
+# Finished. Info.
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
-                                  S U C C E S S ! !    
-$orange
+
     The drive data has been rearranged such that it can be used by Parmanode. It's
-    label has been changed from umbrel to parmanode.
+    label has been changed from$cyan umbrel to parmanode${orange}.
 
     The data can no longer be used by Umbrel - if you reconnect now to Umbrel, it may
     get automatically formated. Be warned.
@@ -132,36 +199,29 @@ $orange
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-# Info
-
-unset drive ; soucre $HOME/.parmanode/parmanode.conf
-if [[ $drive == internal ]] ; then
-echo -e "
-########################################################################################
-$pink
-    In order to use this drive with Parmanode, you need to uninstall Bitcoin using
-    Parmanode first. You can save any data on the internal drive that you've sync'd.
-    
-    Then, during the Bitcoin install process, you should choose \"external\" for the 
-    drive when prompted. DO NOT choose format. This will ensure the correct symlinks 
-    to the drive get set up. 
-$orange    
-########################################################################################
-" ; enter_continue ; set_terminal
-fi
-
-if [[ -z $drive ]] ; then
-echo -e "
+#Conenct drive to Bitcoin Core
+source $HOME/.parmanode/parmanode.conf
+while [[ $drive == internal ]] ; do
+source $HOME/.parmanode/parmanode.conf
+set_terminal ; echo -e "
 ########################################################################################
 
-    In order to user this drive imported form Umbrel, simply installed Bitcoin using
-    Parmanode, and select \"external\" drive when prompted. If asked, make sure you 
-    choose NOT to format.
+        Parmanode will now change the syncing directory from Internal to External.
+  
+        Hit <enter> to accept, or a to abort.
 
-########################################################################################
-" ; enter_continue ; set_terminal
-fi
+        If you abort, you'l have to select to swap internal vs external from the
+        Parmanode Bitcoin menu.
 
+########################################################################################    
+"
+choose "xpq"
+case $choice in a|A|q|Q|P|p) return 1 ;; esac
+change_bitcoin_drive change
+source $HOME/.parmanode/parmanode.conf
+done
+
+# One more chance
 if [[ $drive == external && $fstab_setting == wrong ]] ; then
 while true ; do
 echo -e "
@@ -169,10 +229,10 @@ echo -e "
 
     When you replace the old Parmanode drive with this one, Bitcoin will sync up 
     with the data on this new drive. However, because you chose to not remove the
-    old auto-mount configuration for the old drive, when the system boots up, the
-    old drive will be expected and Bitcoin will fail to auto start.
+    old auto-mount configuration earlier for the old drive, when the system boots up, 
+    the old drive will be expected and Bitcoin will fail to auto start.
 
-    Last chance, remove the old auto-mount setting and use the current drive?
+    Remove the old auto-mount setting and use the current drive?
 
                     y          or          n 
 
@@ -196,17 +256,17 @@ esac
 done
 fi
 
+#Info
+
 set_terminal ; echo -e "
 ########################################################################################
 
     Please note, if you wish to use this new Parmanode drive on a computer different
-    to this one, you should \"import\" it again so the auto-mount feature can be
-    configured.
-
-    Also if that computer is already syncing to an internal drive, then you'll need
-    to uninstall Bitcoin (keep the block data if you want) and re-install with the
-    new drive.
+    to this one, you should \"import\" it from the menu so the auto-mount feature can 
+    be configured.
 
 ########################################################################################
 " ; enter_continue
+
+success "Umbrel Drive" "being imported to Parmanode."
 }
