@@ -123,6 +123,9 @@ announce "Couldn't mount. Aborting."
 return 1
 fi
 
+
+export $mount_point
+
 # Move files
 
 sudo mkdir -p $mount_point/.bitcoin
