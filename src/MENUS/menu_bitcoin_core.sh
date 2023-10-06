@@ -62,7 +62,7 @@ echo "
       (ub)       Convert an Umbrel external drive to Parmanode, without 
                  losing Bitcoin data. 
                  
-      (ru)       Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
+      (ru)       Reverse an Umbrel-to-Parmanode conversion (ie back to Umbrel)
 
 
 ########################################################################################

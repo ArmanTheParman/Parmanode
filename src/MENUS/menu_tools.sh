@@ -16,7 +16,7 @@ echo -e "
               (ub)    Convert an$cyan Umbrel$orange external drive to Parmanode, without 
                       losing Bitcoin data. 
 
-              (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
+              (ru)    Reverse an Umbrel-to-Parmanode conversion (ie back to Umbrel)
 
               (b)     Bring in a Parmanode drive from another installation, or
                       add a new external drive to Parmanode
