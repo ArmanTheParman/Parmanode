@@ -45,11 +45,11 @@ case $choice in
         echo "Choices reset" ; sleep 0.6 
         ;;
     um|UM|Um)
-        mount_drive menu
+        safe_unmount_parmanode menu
         ;;
 
     m|M|mount)
-        safe_mount_parmanode menu
+        mount_drive menu
         ;;
     p|P)
         return 0
