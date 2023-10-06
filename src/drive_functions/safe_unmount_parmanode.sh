@@ -16,7 +16,7 @@ stop_electrs
 fi
 
 # unmount after everything stopped.
-sudo umount /media/$HOME/parmanode
+sudo umount /media/$USER/parmanode
 
 if mount | grep parmanode ; then
 echo -e "
