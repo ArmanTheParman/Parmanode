@@ -2,7 +2,7 @@ function safe_unmount_parmanode {
 if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
 if ! mount | grep parmanode ; then
-    if [[ -n $1 && $1 == menu ]] ; then
+    if [[ $1 == menu ]] ; then
     announce "Drive already seems to not be mounted."
     fi
 return 0
