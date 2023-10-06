@@ -60,26 +60,22 @@ enter_continue
 # Mount
 while true ; do
 
+mount_drive menu
+
 if [[ $(sudo lsblk -o LABEL | grep parmanode | wc -l) == 1 ]] ; then
 export mount_point=$(lsblk | grep parmanode | grep -o /.*$)
 mounted=true
 break
 else
 announce "Parmanode drive not detected. <enter> to try again."
-continue
 mounted=false
+continue
 fi
 done
 
 if [[ $(sudo blkid | grep parmanode | wc -l) == 1 ]] ; then
 unset disk 
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
-fi
-
-if [[ $mounted == false ]] ; then 
-sudo mkdir -p /media/$USER/parmanode
-sudo mount $disk /media/$USER/parmanode
-export mount_point="/media/$USER/parmanode"
 fi
 
 #check it's really an old Umbrel drive
