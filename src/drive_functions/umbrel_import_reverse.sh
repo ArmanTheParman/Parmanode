@@ -15,13 +15,16 @@ $orange
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-if lsblk -o Label | grep parmanode ; then
+if lsblk -o Label | grep parmanode || lsblk -o Label | grep umbrel ; then
 echo "Unmounting Parmanode drive first..."
 safe_unmount_parmanode || return 1
+sudo systemctl stop bitcoind.service fulcrum.service electrs.service
+sudo umount /media/$USER/parmanode 2>/dev/null
+sudo umount /media/$USER/umbrel 2>/devlnull
 sleep 2
 fi
 
-
+if ! mountpoint /media/$USER/parmanode ; then
 echo -e "
 ########################################################################################
 
@@ -35,6 +38,10 @@ echo -e "
 
 ######################################################################################## 
 " ; read choice ; case $choice in a|A) return 1 ;; esac
+else
+announce "couldn't unmount. aborting." ; return 1
+fi
+
 set_terminal
 
 # detect drive and make sure it really was an umbrel drive
