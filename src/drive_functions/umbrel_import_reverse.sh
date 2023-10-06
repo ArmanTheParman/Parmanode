@@ -15,15 +15,19 @@ $orange
 ########################################################################################
 " ; enter_continue ; set_terminal
 
+if lsblk -o Label | grep parmanode ; then
+echo "Unmounting Parmanode drive first..."
+safe_unmount_parmanode || return 1
+sleep 2
+fi
+
+
 echo -e "
 ########################################################################################
 
-    If you have a different Parmanode drive attached to the computer, it needs to
-    be disconnected first. 
+   Unmounting any Parmanode drive should have been successful. Please phsyically 
+   detact any Parmanode drive, or you're likely to get errors.
 
-    Go ahead and do that now and hit <enter>, but it is in use, abort this, use the
-    unmount option in Parmanode (or do it manually), then come back - hit $cyan a $orange
-    to abort.
                     $cyan
                         <enter>$orange     to continue
                     $cyan
