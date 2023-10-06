@@ -66,7 +66,7 @@ read choice
 if [[ $choice == a ]] ; then return 1 ; fi
 
 if mount | grep parmanode ; then
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
     
     This function will refuse to run if it detects a mounted Parmanode drive. Bad
