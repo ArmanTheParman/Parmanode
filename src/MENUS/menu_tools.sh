@@ -15,7 +15,7 @@ echo -e "
 
                  (m)     Mount the Parmanode drive - Linux only
 
-                 (a)     Bring in a Parmanode drive from another installation, or
+                 (b)     Bring in a Parmanode drive from another installation, or
                          add a new external drive to Parmanode
                 
                  (d)     Delete your previous preference to hide certain Parmanode
@@ -70,8 +70,8 @@ case $choice in
 
         ;;
 
-    a|A|add|ADD|Add)
-        add_drive 
+    b|B|Bring|brin) 
+        add_drive menu
         ;;
 
     q|Q|Quit|QUIT)

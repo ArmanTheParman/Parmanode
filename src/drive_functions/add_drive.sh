@@ -3,7 +3,25 @@ if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 
 
 info_add_drive || return 1 # safe unmount executed
 
-detect_drive
+if [[ $1 == menu ]] ; then
+set_terminal ; echo -e "$pink
+########################################################################################
+Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
+or else bad things will happen to your computer.$orange
+########################################################################################
+" ; enter_continue
+set_terminal ; echo -e "$cyan
+########################################################################################
+   Now Parmanode will safely unmount your regular Parmanode drive by stopping the
+   programs usinging then unmounting. YOU MUST PHYSICALLY DISCONNECT THE DRIVE
+   AFTER THIS IS DONE OR BAD THINGS WILL HAPPEN - NOT JOKING.
+########################################################################################
+" ; enter_continue
+safe_unmount_parmanode || return 1
+set_terminal ; echo "Remember to physically disconnect your regular Parmanode drive."
+enter_continue ; set_terminal
+
+detect_drive $@ #menu
 
 drive_details || return 1
 

@@ -3,7 +3,7 @@ if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
 if ! mount | grep parmanode ; then
     if [[ $1 == menu ]] ; then
-    announce "Drive already seems to not be mounted."
+    announce "Drive already seems to not be unmounted."
     fi
 return 0
 fi
