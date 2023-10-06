@@ -26,18 +26,45 @@ stop_lnd
 cd ~ ; cd $original_dir
 sudo umount /media/$USER/parmanode
 
+#TEST 1
 if mount | grep parmanode ; then
+
+while true ; do
 echo -e "
+########################################################################################
+    
+    Unable to unmount Parmanode drive. What would you like to do?
 
-Unable to unmount Parmanode drive. Aborting.
+             a)     Abort and try to unmount the drive yourself.
 
-Hit$cyan <enter>$orange to continue.
+             f)     Allow Parmanode to attempt to do a \"Force\" unmount.
+
+             s)     Send all your bitcoin to Parman :P
+
+########################################################################################                        
 "
-read
-return 1
+choose "xpq" ; read choice ; set_terminal
+case $choice in
+a|A|p|P) return 1 ;; q|Q) exit ;; 
+f|F) sudo umount -F /media/$USER/parmanode ; break ;; #exit test 1 
+s|S) set_terminal ; announce "Parman's great great grandchildren will thank you in advance." \
+"Donations here: https://armantheparman.com/donations" 
+continue
+;;
+*) invalid ;;
+esac
+done
 else
 announce "Drive unmounted."
 return 0
 fi
 
+# TEST 2
+if mount | grep parmanode ; then
+announce "Force unmount failed too. Sorry mate, I'm out of ideas."
+return 1
+else
+announce "Drive unmounted."
+return 0
+fi
 }
