@@ -32,7 +32,6 @@ installed_config_add "btcrpcexplorer-start"
 cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 cd btc-rpc-explorer
-
 sudo npm install -g btc-rpc-explorer
 
 installed_config_add "btcrpcexplorer-end"
