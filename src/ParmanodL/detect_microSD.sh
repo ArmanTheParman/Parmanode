@@ -3,13 +3,13 @@ if [ -z $1 ] ; then name=ParmanodL
 else name=${1}
 fi
 
-set_terminal pink ; echo "
+set_terminal ; echo -e "$pink
 ########################################################################################
 
     Please pay careful attention here, otherwise you could get drive errors.
 
 ########################################################################################
-"
+$orange"
 enter_continue 
 debug "starting"
 
@@ -38,7 +38,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}connect$orange the microSD you wish to use for $name. Do not 
+    Now go ahead and ${cyan}CONNECT$orange the microSD you wish to use for $name. Do not 
     connect any other drive/device.
 
     If a window pops up, a file explorer, you can safely close that.

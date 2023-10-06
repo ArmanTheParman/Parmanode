@@ -1,35 +1,38 @@
 function info_add_drive {
+
+if [[ $1 == menu ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+    Please note that if you are importing an Umbrel drive, this is not the function
+    to do that - it won't work.
+    
+    Hit$cyan <enter>$orange to continue, or$cyan a$orange to abort.
+########################################################################################
+" ; read choice ; set_terminal
+if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
+fi
+
 while true ; do
 set_terminal ; echo -e " 
 ########################################################################################
 
-    Using a second drive for Parmanode is possible but the file systems must be
-    compatible. For example, you can't import a Parmanode drive used on a Mac to a 
-    Linux computer.
+      Parmanode drives are compatible across different computers, as long as they
+      are of the same files system (eg don't try to bring Parmanode drive from Linux
+      to a Mac system).
 
-   $cyan To bring in an external hard drive that contains Bitcoin blockchain data:$orange
-    
-      1. Make sure the path to the data is /.bitcoin on the drive - i.e. create a 
-         hidden directory called .bitcoin at root directory of the drive, then move 
-         the data there.
-
-      2. Continue with the this drive import function and follow the screen prompts
-         exactly.
-
-      3. Then install Bitcoin (uninstall first if you have it already) using 
-         Parmanode. You will be asked if you want and internal or external drive.
-         Choose external drive, then select to skip formatting when prompted.
-
-      4. Once the Bitcoin installation is finished, the program will be using
-         the newly imported drive to sync blocks. 
-
-    You shouldn't attach two Parmanode external drives to the computer simultaneously. 
-    Unpredictable things can happen.
-
+      You shouldn't attach two Parmanode external drives to the computer 
+      simultaneously. Terrible things can happen.
+    $pink     
+      Parmanode will now check if a Parmanode drive is mounted, and if so will stop
+      all the services using it (eg Bitcoin, Fulcrum, or electrs) and then unmount
+      the drive.
+$orange
 ########################################################################################
 "
 choose "epq" ; read choice
 case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
 "") break ;; *) invlid ;; esac ; done
+
+safe_unmount_parmanode || return 1
 
 }
