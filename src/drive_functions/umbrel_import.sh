@@ -145,7 +145,7 @@ sudo mkdir -p $mount_point/.bitcoin
 cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/
 mv blocks chainstate indexes $mount_point/.bitcoin
 make_bitcoin_conf umbrel
-mkdir $mount_point/electrs_db $mount_point/fulcrum_db
+sudo mkdir $mount_point/electrs_db $mount_point/fulcrum_db
 sudo chown -R $USER:$USER $mount_point/.bitcoin
 
 # Unmount Umbrel drive
