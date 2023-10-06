@@ -11,11 +11,40 @@ $orange
 
     This only works if you previously used the Umbrel Drive Import Tool on this
     drive.
-$pink
-    Go ahead and connect the drive now.
-$orange
+
 ########################################################################################
 " ; enter_continue ; set_terminal
+
+echo -e "
+########################################################################################
+
+    If you have a different Parmanode drive attached to the computer, it needs to
+    be disconnected first. 
+
+    Go ahead and do that now and hit <enter>, but it is in use, abort this, use the
+    unmount option in Parmanode (or do it manually), then come back - hit $cyan a $orange
+    to abort.
+                    $cyan
+                        <enter>$orange     to continue
+                    $cyan
+                        a $orange          to abort
+
+######################################################################################## 
+" ; read choice ; case $choice in a|A) return 1 ;; esac
+set_terminal
+
+# detect drive and make sure it really was an umbrel drive
+echo -e "
+########################################################################################
+
+    Now go ahead and CONNECT the$cyan target Converted Umbrel-to-Parmanode $orange drive 
+    now, then hit <enter>.
+
+    ANY OTHER PARMANODE DRIVE MUST BE PHYSICALLY DISCONNCTED.
+
+########################################################################################
+"
+enter_continue
 
 # Mount
 while true ; do
@@ -40,6 +69,20 @@ if [[ $mounted == false ]] ; then
 sudo mkdir -p /media/$USER/parmanode
 sudo mount $disk /media/$USER/parmanode
 export mount_point="/media/$USER/parmanode"
+fi
+
+#check it's really an old Umbrel drive
+if [[ ! -e $mount_point/umbrel ]]  ; then
+set_terminal ; echo "
+########################################################################################
+
+    This drive does not appear to have ever been an Umbrel drive in the past.
+
+    Aborting.
+
+########################################################################################
+"
+enter_continue ; return 1
 fi
 
 # Capture username, group, and UID and GID
