@@ -1,4 +1,6 @@
 function uninstall_fulcrum_docker {
+if [[ $(uname) == Linux ]] ; then return 0 ; fi
+set_terminal
 while true ; do
 echo "
 ########################################################################################
@@ -49,8 +51,6 @@ log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been 
 return 0
 
 }
-
-
 
 function stop_and_remove_docker_containers_and_images_fulcrum {
 
