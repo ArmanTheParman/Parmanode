@@ -181,7 +181,6 @@ break
 invalid ;;
 esac
 done
-fi
 
 # Finished. Info.
 set_terminal ; echo -e "
