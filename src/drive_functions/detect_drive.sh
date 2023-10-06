@@ -19,7 +19,7 @@ set_terminal ; echo -e "$pink
     
     Me again, sorry...
 
-    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
+    Please make sure the drive you wish to$cyan add$orange to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time. 
     
     This is important to make sure
