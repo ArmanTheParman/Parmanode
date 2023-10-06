@@ -16,6 +16,7 @@ stop_electrs
 fi
 
 # unmount after everything stopped.
+cd ~ ; cd $original_dir
 sudo umount /media/$USER/parmanode
 
 if mount | grep parmanode ; then
