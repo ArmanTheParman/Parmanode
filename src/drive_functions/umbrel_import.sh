@@ -200,7 +200,7 @@ set_terminal ; echo -e "
 
 #Conenct drive to Bitcoin Core
 source $HOME/.parmanode/parmanode.conf
-while [[ $drive == internal ]] ;do
+while [[ $drive == internal ]] ; do
 source $HOME/.parmanode/parmanode.conf
 set_terminal ; echo -e "
 ########################################################################################
