@@ -89,7 +89,8 @@ echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
 echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
 echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
 
-echo "
+set_terminal
+echo -e "
 ########################################################################################
 
     DETAILS OF THE DRIVE ...

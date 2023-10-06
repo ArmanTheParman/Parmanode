@@ -12,7 +12,7 @@ if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1="                   Bitcoin is RUNNING -- see log menu for progress" 
+output1="                   Bitcoin is$cyan RUNNING$orange -- see log menu for progress" 
 
 output2="                         (Syncing to the $drive drive)"
 else
