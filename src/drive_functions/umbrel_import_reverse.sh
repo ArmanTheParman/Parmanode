@@ -112,6 +112,8 @@ debug "target=$target"
 # Move files
 cd $mount_point/.bitcoin
 mv blocks chainstate indexes "$target"
+sudo rm bitcoin.conf
+cd ~
 debug "moved files"
 
 # Remove fstab
