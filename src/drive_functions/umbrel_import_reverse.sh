@@ -20,7 +20,7 @@ echo "Unmounting Parmanode drive first..."
 safe_unmount_parmanode || return 1
 sudo systemctl stop bitcoind.service fulcrum.service electrs.service
 sudo umount /media/$USER/parmanode 2>/dev/null
-sudo umount /media/$USER/umbrel 2>/devlnull
+sudo umount /media/$USER/umbrel 2>/dev/null
 sleep 2
 fi
 

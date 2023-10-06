@@ -46,7 +46,8 @@ echo -e "
 choose "xpq" ; read choice ; set_terminal
 case $choice in
 a|A|p|P) return 1 ;; q|Q) exit ;; 
-f|F) sudo umount -F /media/$USER/parmanode ; break ;; #exit test 1 
+f|F) 
+sudo umount -F /media/$USER/parmanode ; break ;; #exit test 1 
 s|S) set_terminal ; announce "Parman's great great grandchildren will thank you in advance." \
 "Donations here: https://armantheparman.com/donations" 
 continue
