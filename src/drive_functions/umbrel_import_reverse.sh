@@ -14,22 +14,23 @@ $orange
 
 ########################################################################################
 " ; enter_continue ; set_terminal
+export $mount_point=/media/$USER/parmanode
 
-if lsblk -o Label | grep -q parmanode || lsblk -o Label | grep -q umbrel ; then
-echo "Unmounting Parmanode drive first..."
+# Unmount Parmanode drive
+while mount | parmanode ; do
+cd $original_dir
+echo "Trying to unmount Parmanode first..."
 safe_unmount_parmanode || return 1
-sudo systemctl stop bitcoind.service fulcrum.service electrs.service >/dev/null
-sudo umount /media/$USER/parmanode 2>/dev/null
-sudo umount /media/$USER/umbrel 2>/dev/null
-sleep 2
-fi
+sleep 1
+done
+
 
 if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
 echo -e "
 ########################################################################################
 
    Unmounting any Parmanode drive should have been successful. Please phsyically $cyan
-   DISCONNECT$orange any Parmanode drive, or you're likely to get errors.
+   DISCONNECT$orange ANY Parmanode drive, or you're likely to get errors.
 
                     $cyan
                         <enter>$orange     to continue
@@ -57,34 +58,23 @@ echo -e "
 "
 enter_continue
 
-# Mount
-while true ; do
-
-mount_drive menu
-debug "mount_drive end"
-if [[ $(sudo lsblk -o LABEL | grep parmanode | wc -l) == 1 ]] ; then
-export mount_point=$(lsblk | grep parmanode | grep -o /.*$)
-mounted=true
-debug "if lsblk grep parmanode l=1, mounted=$mounted, mount_point=$mount_point"
-break
-else
-debug "else"
-announce "Parmanode drive not detected. <enter> to try again."
-mounted=false
-continue
-fi
+while ! sudo blkid | grep parmanode ; do
+announce "It doesn't seem like the Parmanode drive is physically conected." \
+"Please try again"
 done
 
-if [[ $(sudo blkid | grep parmanode | wc -l) == 1 ]] ; then
-unset disk 
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
-debug "disk=$disk"
-fi
+
+# Mount
+while ! mount | grep parmanode ; do
+echo "Mounting parmanode drive..."
+mount_drive menu
+done
 
 #check it's really an old Umbrel drive
 if [[ ! -e $mount_point/umbrel ]]  ; then
 debug " $mount_point/umbrel"
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     This drive does not appear to have ever been an Umbrel drive in the past.
@@ -103,6 +93,7 @@ U_groupname=$(stat -c %G $mount_point/umbrel/LICENSE.md)
 U_userID=$(stat -c %u $mount_point/umbrel/LICENSE.md)
 U_groupID=$(stat -c %g $mount_point/umbrel/LICENSE.md)
 debug "stat captured. 4 values... $U_username $U_groupname $U_userID $U_groupID"
+
 # Set previous permissions
 target="$mount_point/umbrel/app-data/bitcoin/data/bitcoin/"
 sudo chown -R $U_username:$U_groupname $mount_point/.bitcoin
@@ -124,9 +115,9 @@ debug "fstab line removed"
 sudo e2label $disk umbrel 2>&1
 debug "drive label for $disk changed to umbrel?"
 
+# unmount drive again
 sudo umount $mount_point
 debug "unmounted from mountpoint=$mount_point"
 
 success "The Umbrel Drive" "finished being recovered."
-
 }
