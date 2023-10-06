@@ -1,26 +1,25 @@
-function download_bitcoin_linux {
+function download_bitcoin {
 cd $HOME/parmanode/bitcoin
 
 set_terminal
 echo -e "
 ########################################################################################
-    
+
+   $cyan 
     The current version of Bitcoin Core that will be installed is 25.0
+$orange
 
-    The downloaded file will then be hased (SHA256) and compared to the hash result 
-    provided by the signers.
+    Parmanode will verify by hashing the file for you (and gpg verification), but 
+    you may wish to learn how to do this yourself.
+
+    The downloaded files will be at:
     
-    You may wish to learn how to do this yourself.
+                      /home/$(whoami)/parmanode/bitcoin/
 
-            - The file containing the hashes can be found at 
-              /home/$(whoami)/parmanode/bitcoin/SHA256SUMS. 
-            - The corresponding signature of that file is called SHA256SUMS.asc
-            - You can then hash the bitcoin tar.gz file using this command:
-                   
-                   shasum -a 256 bitcoin-24.0.1-x86_64-linux-gnu.tar.gz
-
-            - After a few seconds you'll get a hash. Compare it to the one listed 
-              in the SHA256SUMS file.
+    To learn more about how:
+$pink
+                      https://armantheparman.com/gpg-articles 
+$orange
 
 ########################################################################################
 "
@@ -33,11 +32,11 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
-	    if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
+	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
 
-	    if [[ $chip == "aarch64" ]] ; then 				
+	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-aarch64-linux-gnu.tar.gz 
@@ -45,12 +44,28 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
             fi
 
-	    if [[ $chip == "x86_64" ]] ; then 
+ 	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
+
+         if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
+         #EDIT3 curl -LO http://parman.org/downloadable/bitcoin_Mac_ARM_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
+         curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm64-apple-darwin.dmg
+         fi
+
+        if [[ $chip == "x86_64" && $OS == Mac ]] ; then
+        #EDIT4 curl -LO http://parman.org/downloadable/bitcoin_Mac_x86-64_v24.0.1.tar || { echo " Download error. Aborting." ; enter_exit ; exit 1 ;}
+        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-apple-darwin.dmg
+        fi
 
 verify_bitcoin || return 1
 
 #unpack Bitcoin core:
+if [[ $OS == Mac ]] ; then
+hdiutil attach bitcoin*.dmg
+sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
+fi
+
+if [[ $OS == Linux ]] ; then
 set_terminal
 mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
 tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null 2>&1
@@ -68,5 +83,7 @@ rm $HOME/parmanode/bitcoin/bitcoin.conf
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin
+fi
+
 return 0     
 }

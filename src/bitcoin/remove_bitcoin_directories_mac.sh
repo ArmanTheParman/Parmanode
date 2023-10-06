@@ -27,17 +27,29 @@ echo "
 ########################################################################################
 "
 choose "xq" ; read choice 
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then log "bitcoin" "skip; not deleting .bitcoin on drive" ; break ; fi
-if [[ $choice == "d" ]] ; then log "bitcoin" "deleting .bitcoin on drive" 
-    cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
-    || { log "bitcoin" "error deleting .bitcoin dir"
-    debug "Error deleting .bitcoin directory. Continuing." ; } ;  break ; fi 
-    
-log "bitcoin" "if statements all skipped in rem_bit_dir function. unexpected. " && \
-invalid #if all above if statements not true, then invalid choice and loop.
+case $choice in
+
+q|Q|Quit|QUIT) 
+exit ;;
+
+s|S|skip|Skip|SKIP)
+log "bitcoin" "skip; not deleting .bitcoin on drive" 
+break 
+;;
+
+d|D|DELETE|Delete)
+log "bitcoin" "deleting .bitcoin on drive" 
+cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
+|| { log "bitcoin" "error deleting .bitcoin dir"
+debug "Error deleting .bitcoin directory. Continuing." ; } 
+break 
+;;
+
+*) invalid ;;
+esac
 done
 fi #end checking external drive for data directory
+
 
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink

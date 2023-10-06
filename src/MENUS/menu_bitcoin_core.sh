@@ -5,9 +5,14 @@ set_terminal_custom "50"
 source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
-if ! ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
-if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
-if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
+if [[ $OS == Mac ]] ; then
+    if pgrep Bitcoin-Q >/dev/null ; then running=true ; else running=false ; fi
+else
+    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
+    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
+    if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
+fi
+
 
 if [[ $running != false ]] ; then running=true ; fi
 
@@ -53,8 +58,6 @@ echo "
 
       (up)       Set, remove, or change RPC user/pass
 
-      (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
-      
       (tor)      Tor menu options for Bitcoin
 
       (bring)    Bring a drive from another Parmanode installation (import)
@@ -76,10 +79,14 @@ run_bitcoind
 ;;
 
 stop|STOP|Stop)
-while pgrep bitcoind ; do 
-stop_bitcoind 
-sleep 2
-done
+if [[ $OS == Linux ]] ; then
+    while pgrep bitcoind ; do 
+    stop_bitcoind 
+    sleep 2
+    done
+elif [[ $OS == Mac ]] ; then
+    stop_bitcoind
+fi
 
 ;;
 
@@ -189,11 +196,6 @@ continue
 
 up)
 set_rpc_authentication
-continue
-;;
-
-ai|AI|aI|Ai)
-rpcallowip_add
 continue
 ;;
 

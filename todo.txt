@@ -20,3 +20,6 @@ raspiblitz import
 ########################################################################################
 :set noincsearch
 
+Communicate with bitcoin-qt with curl, because not bitcoind is shipped. eg:
+curl --user yourname --data-binary '{"id":"t0", "method": "getinfo", "params": [] }' http://127.0.0.1:8332/
+
