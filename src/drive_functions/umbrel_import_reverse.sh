@@ -61,12 +61,14 @@ enter_continue
 while true ; do
 
 mount_drive menu
-
+debug "mount_drive end"
 if [[ $(sudo lsblk -o LABEL | grep parmanode | wc -l) == 1 ]] ; then
 export mount_point=$(lsblk | grep parmanode | grep -o /.*$)
 mounted=true
+debug "if lsblk grep parmanode l=1, mounted=$mounted, mount_point=$mount_point"
 break
 else
+debug "else"
 announce "Parmanode drive not detected. <enter> to try again."
 mounted=false
 continue
@@ -76,10 +78,12 @@ done
 if [[ $(sudo blkid | grep parmanode | wc -l) == 1 ]] ; then
 unset disk 
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
+debug "disk=$disk"
 fi
 
 #check it's really an old Umbrel drive
 if [[ ! -e $mount_point/umbrel ]]  ; then
+debug " $mount_point/umbrel"
 set_terminal ; echo "
 ########################################################################################
 
@@ -91,27 +95,32 @@ set_terminal ; echo "
 "
 enter_continue ; return 1
 fi
+debug "after mountpoint umbrel check, after if"
 
 # Capture username, group, and UID and GID
 U_username=$(stat -c %U $mount_point/umbrel/LICENSE.md)
 U_groupname=$(stat -c %G $mount_point/umbrel/LICENSE.md)
 U_userID=$(stat -c %u $mount_point/umbrel/LICENSE.md)
 U_groupID=$(stat -c %g $mount_point/umbrel/LICENSE.md)
-
+debug "stat captured. 4 values... $U_username $U_groupname $U_userID $U_groupID"
 # Set previous permissions
 target="$mount_point/umbrel/app-data/bitcoin/data/bitcoin/"
 sudo chown -R $U_username:$U_groupname $mount_point/.bitcoin
 sudo chown -R $U_userID:$U_groupID $mount_point/.bitcoin
+debug "target=$targe"
 
 # Move files
 cd $mount_point/.bitcoin
 mv blocks chainstate indexes "$target"
+debug "moved files"
 
 # Remove fstab
 delete_line "/etc/fstab" "parmanode"
+debug "fstab line removed"
 
 # Label drive
 sudo e2label $disk umbrel 2>&1
+debug "drive label for $disk changed to umbrel?"
 
 success "The Umbrel Drive" "finished being recovered."
 
