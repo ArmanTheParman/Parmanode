@@ -21,10 +21,13 @@ function make_bitcoin_directories {
             mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 && \ 
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
     fi
+
+
     if [[ $drive == "internal" ]] ; then 
             mkdir $HOME/.bitcoin >/dev/null 2>&1 && \
             log "bitcoin" ".bitcoin dir made on int drive" 
     fi
+
 
 #Symlinks 
     log "bitcoin" "set_dot_bitcoin_symlinks... " && \
