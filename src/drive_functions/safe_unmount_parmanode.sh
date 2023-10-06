@@ -1,5 +1,8 @@
 function safe_unmount_parmanode {
 if ! mount | grep parmanode ; then
+    if [[ -n $1 && $1 == menu ]] ; then
+    announce "Drive already seems to not be mounted."
+    fi
 return 0
 fi
 
@@ -14,6 +17,8 @@ fi
 if [[ $drive_electrs == external ]] ; then
 stop_electrs
 fi
+stop_lnd
+
 
 # unmount after everything stopped.
 cd ~ ; cd $original_dir
