@@ -43,7 +43,7 @@ case $choice in
         echo "Choices reset" ; sleep 0.6 
         ;;
     um|UM|Um)
-        safe_unmount_parmanode
+        safe_unmount_parmanode menu
         ;;
 
     p|P)
