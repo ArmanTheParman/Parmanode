@@ -27,11 +27,12 @@ done
 
 
 if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
+set_terminal
 echo -e "
 ########################################################################################
 
-   Unmounting any Parmanode drive should have been successful. Please phsyically $cyan
-   DISCONNECT$orange ANY Parmanode drive, or you're likely to get errors.
+   Unmounted Parmanode drive(s). Please phsyically $cyan DISCONNECT$orange ANY Parmanode 
+   drive, or you're likely to get errors and the computer might start to smell.
 
                     $cyan
                         <enter>$orange     to continue
