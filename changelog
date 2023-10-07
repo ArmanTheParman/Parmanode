@@ -1,7 +1,7 @@
 Version 3.8.1
     -Import an Umbrel drive to Parmanode (Linux only)
     -Various bug fixes
-    -Mac switch to Bitcoin QT version 25
+    -Mac switched to Bitcoin QT version 25
 Version 3.7.5
     -Electrum permission bug fix
 Version 3.7.4
