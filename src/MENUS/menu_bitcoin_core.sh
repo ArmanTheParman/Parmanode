@@ -64,6 +64,8 @@ echo -e "
       
       (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
 
+      (ru)       Revert a drive back to Umbrel from Parmanode
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -213,6 +215,9 @@ ub|UB|Ub)
 umbrel_import 
 ;;
 
+ru|RU|Ru)
+umbrel_revert
+;;
 
 p|P)
 return 1
