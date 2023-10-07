@@ -58,6 +58,8 @@ echo -e "
       
       (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
 
+      (ru)       Revert a drive back to Umbrel from Parmanode
+
       (o)        OTHER...
 
 ########################################################################################
@@ -212,6 +214,9 @@ o|O)
 bitcoin_other || return 1
 ;;
 
+ru|RU|Ru)
+umbrel_revert
+;;
 
 p|P)
 return 1

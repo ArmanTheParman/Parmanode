@@ -42,7 +42,7 @@ parmanode_conf_add "autoupdate=true"
 hide_messages_add "autoupdate" "1" 
 cat << 'EOF' > "$HOME/.parmanode/update_script.sh"
 #!/bin/bash
-cd $HOME/parman_programs/parmanode && git pull
+cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull
 EOF
 
 sudo chmod +x $HOME/.parmanode/update_script.sh
