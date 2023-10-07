@@ -41,6 +41,7 @@ make_home_parmanode  # creates the directory that holds all the apps' directorie
     #that have started vs installations that have completed.
 
 
+autoupdate
 
 set_terminal ; echo "
 ########################################################################################

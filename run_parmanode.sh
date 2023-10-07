@@ -116,6 +116,9 @@ curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null
 # Set variables
     Linux_distro #gets the linux distro into a config file
     check_chip #gets the chip type into config file
+
+#autoupdate question
+    if grep -q parmanode-end < $HOME/.parmanode/installed.conf ; then autoupdate ; fi	
 	
 #Begin program:
 	set_terminal # custom function for screen size and colour.
