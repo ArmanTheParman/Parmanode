@@ -38,8 +38,8 @@ q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
 parmanode_conf_add "autoupdate=true" 
-hide_messages_add "autoupdate" "1" ;;
-cat << EOF > $HOME/.parmanode/update_script.sh
+hide_messages_add "autoupdate" "1" 
+cat << 'EOF' > "$HOME/.parmanode/update_script.sh"
 #!/bin/bash
 cd $HOME/parman_programs/parmanode && git pull
 EOF
