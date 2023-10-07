@@ -101,9 +101,9 @@ debug "2c2 , disk is $disk"
 #Mount
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 export mount_point="/media/$USER/parmanode"
-sudo umount /media/$USER/parmanode*
-sudo umount $disk
-sudo mount $disk $mount_point
+sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+sudo umount $disk >/dev/null 2>&1
+sudo mount $disk $mount_point >/dev/null 2>&1
 
 debug "33"
 # Move files
