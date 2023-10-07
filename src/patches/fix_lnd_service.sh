@@ -1,4 +1,6 @@
-function fix_lnd_service {
+function fix_services {
+
+if [[ $(uname) == Darwin ]] ; then return 0 ; fi
 
 if grep -q "Wants=bitcoind.service" < /etc/systemd/system/lnd.service ; then
 
@@ -7,6 +9,5 @@ if grep -q "Wants=bitcoind.service" < /etc/systemd/system/lnd.service ; then
     swap_string "/etc/systemd/system/lnd.service" "Wants=bitcoind.service" "BindsTo=bitcoind.service" && \
     sudo systemctl daemon-reload >/dev/null 2>&1 
     if [[ $running == true ]] ; then sudo systemctl start lnd.service >/dev/null 2>&1 ; fi
-
 fi
 }
