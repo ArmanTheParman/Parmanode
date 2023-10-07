@@ -48,6 +48,7 @@ EOF
 sudo chmod +x $HOME/.parmanode/update_script.sh
 
 (crontab -l; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" >/dev/null 2>&1) 2>/dev/null | crontab -
+break
 ;;
 
 n|N)
