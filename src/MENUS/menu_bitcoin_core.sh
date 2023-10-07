@@ -62,11 +62,7 @@ echo "
 
       (bring)    Bring a drive from another Parmanode installation (import)
       
-      (ub)       Convert an Umbrel external drive to Parmanode, without 
-                 losing Bitcoin data. 
-                 
-      (ru)       Reverse an Umbrel-to-Parmanode conversion (ie back to Umbrel)
-
+      (ub)       Make an$cyan Umbrel$orange drive interchangable with Parmanode 
 
 ########################################################################################
 "
@@ -105,8 +101,9 @@ change_bitcoin_drive
 c|C)
 connect_wallet_info
 continue
-;;
-
+;;RU|Ru)
+    umbrel_import_reverse
+    ;;
 n|N)
 menu_bitcoin-cli
 continue
@@ -134,7 +131,9 @@ wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 set_terminal
 continue ;;
-
+RU|Ru)
+    umbrel_import_reverse
+    ;;
 
 bc|BC)
 echo "
@@ -163,7 +162,9 @@ echo "
     ever to experience data corruption and needed to resync the blockchain.
 
     It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
-    work correctly when it comes time to use the backed up data, and it's likely the 
+    work correctly when it comes time toRU|Ru)
+    umbrel_import_reverse
+    ;; use the backed up data, and it's likely the 
     directory will become corrupted. You have been warned.
 
     You can copy the entire bitcoin_data directory.
@@ -212,9 +213,6 @@ ub|UB|Ub)
 umbrel_import 
 ;;
 
-ru|RU|Ru)
-umbrel_import_reverse
-;;
 
 p|P)
 return 1
