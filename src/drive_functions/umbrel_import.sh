@@ -128,12 +128,18 @@ done
 export mount_point="/media/$USER/parmanode"
 
 # Move files
-sudo mkdir -p $mount_point/.bitcoin
-cd $mount_point/umbrel/app-data/bitcoin/data/bitcoin/  >/dev/null 2>&1
-mv blocks chainstate indexes $mount_point/.bitcoin >/dev/null 2>&1
+#sudo mkdir -p $mount_point/.bitcoin
+if [[ -d $mount_point/.bitcoin ]] ; sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
+else
+    sudo rm $mount_point/.bitcoin
+fi
+
+cd $mount_point/ && ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
+sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
+mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 make_bitcoin_conf umbrel
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
-sudo chown -R $USER:$USER $mount_point/.bitcoin  >/dev/null 2>&1
+sudo chown -R $USER:$USER $mount_point/.bitcoin  $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
 # Unmount Umbrel drive
 while mount | umbrel ; do

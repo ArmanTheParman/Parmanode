@@ -104,22 +104,23 @@ debug "target=$target"
 
 # Move files
 cd $mount_point/.bitcoin
-mv blocks chainstate indexes "$target"
-sudo rm bitcoin.conf
+sudo rm *.conf
+mv ./parmanode_backedup/*.conf ./
 cd ~
-debug "moved files"
+rm $mount_point/.bitcoin
+debug "deleted symlink and moved conf files"
 
 # Remove fstab
 delete_line "/etc/fstab" "parmanode"
 debug "fstab line removed"
 
-# Label drive
-sudo e2label $disk umbrel 2>&1
-debug "drive label for $disk changed to umbrel?"
-
 # unmount drive again
 sudo umount $mount_point
 debug "unmounted from mountpoint=$mount_point"
+
+# Label drive
+sudo e2label $disk umbrel 2>&1
+debug "drive label for $disk changed to umbrel?"
 
 success "The Umbrel Drive" "finished being recovered."
 }

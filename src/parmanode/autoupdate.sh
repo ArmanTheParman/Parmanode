@@ -11,10 +11,10 @@ set_terminal ; echo -e "
 $cyan
                         P A R M A N O D E : Auto-updates $orange
 
+    WOULD YOU LIKE THE PROGRAM TO STAY UP TO DATE WITHOUT YOUR INVOLVEMENT? 
+
     Parmanode is frequently improved, either with typos, or correcting smol bugs here
-    or there, and occasionally serious new features.
-$cyan
-    Would you like the program to stay up to date without your involvement?$orange It will
+    or there, and occasionally serious new features. With autoupdates, parmanode will 
     silently update itself at 3:30am and takes only a few seconds.
 
 
@@ -54,7 +54,9 @@ n|N)
 return 0 ;;
 
 nooo|NOOO|Nooo) 
-hide_messages_add "autoupdate" "1" ; return 0 ;;
+hide_messages_add "autoupdate" "1" ; return 0 
+return 0
+;;
 
 *) 
 invalid ;;
