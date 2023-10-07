@@ -118,7 +118,7 @@ debug "2d"
 
 done
 export mount_point="/media/$USER/parmanode"
-if ! mountpoint /media/$USER/parmanode ; then sudo umount $disk ; sudo mount $disk $mount_point ; fi
+if ! mountpoint -q /media/$USER/parmanode ; then sudo umount $disk ; sudo mount $disk $mount_point ; fi
 
 debug "33"
 # Move files
@@ -261,6 +261,12 @@ set_terminal ; echo -e "
 
 ########################################################################################
 " ; enter_continue
+
+sudo umount $disk
+if ! grep -q parmanode < /etc/fstab ; then 
+    export $(sudo blkid -o export $disk) >/dev/null
+    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+fi
 
 success "MyNode Drive" "being imported to Parmanode."
 }
