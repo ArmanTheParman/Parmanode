@@ -29,7 +29,7 @@ read choice
 case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
 done
 
-while  mount | grep -q parmanode ; do 
+while sudo mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
 ########################################################################################
     
@@ -59,14 +59,16 @@ safe_unmount_parmanode || return 1
 *) invalid ;;
 esac
 done
-
+debug "1"
 while sudo blkid | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
             Please disconnect the Parmanode drive from the computer.
 
-            Hit$cyan a$orange and then$cyan <enter>$orange to abort.
+            Hit a and then <enter> to abort.
+
+            Hit <enter> once disconnected.
 
 ########################################################################################
 "
@@ -74,8 +76,9 @@ read choice
 case $choice in a|A) return 1 ;; esac
 done
 
-
+debug "2"
 while ! sudo lsblk -o LABEL | grep -q umbrel ; do
+debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -84,36 +87,42 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read ; set_terminal ; sync
-#Get device name
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 done
+debug "2c"
+
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+debug "2c2 , disk is $disk"
 
 #Mount
 while ! sudo mount | grep -q umbrel ; do
-
-    if mountpoint /media/$USER/parmanode ; then
+debug "2d"
+    if mountpoint /media/$USER/parmanode ; then #tests the condition that the umbrel label drive not mounted, but target dir in use.
+    debug "2e"
     announce "There's a problem. The /media/$USER/parmanode directory is in use" \
     "It needs to be used for mounting the Umbrel drive. Aborting."
     return 1
     fi
 
     while ! mountpoint /media/$USER/parmanode ; do
-    mount $drive /media/$USER/parmanode
+    debug "2f"
+    sudo mount $disk /media/$USER/parmanode
     sleep 2
     done
+    break # now that the umbrel drive is mounted to the target, the loop needs to break.
 
 done
-
 export mount_point="/media/$USER/parmanode"
 
+debug "33"
 # Move files
 #sudo mkdir -p $mount_point/.bitcoin
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
-    sudo rm $mount_point/.bitcoin
+    sudo rm $mount_point/.bitcoin >/dev/null 2>&1
 fi
 
 cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
+debug "after symlink"
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo chown $USER:$USER $mount_point/.bitcoin
@@ -129,13 +138,17 @@ sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/
 # sleep 1
 # done
 
+#Get device name
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+debug "5b , disk is $disk"
+
 # label
 while sudo lsblk -o LABEL | grep -q umbrel ; do
 echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
 sleep 1
 done
-
+debug "6"
 # fstab configuration
 while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo "
@@ -154,7 +167,8 @@ set_terminal ; echo "
 ########################################################################################
 "
 choose "x" ; read choice
-case $choice in y|Y)
+case $choice in 
+y|Y)
 export $(sudo blkid -o export $disk) >/dev/null
 delete_line "/etc/fstab" "parmanode"
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
