@@ -108,7 +108,7 @@ debug "2d"
     return 1
     fi
 
-    while ! mountpoint /media/$USER/parmanode ; do
+    while ! mountpoint -q /media/$USER/parmanode ; do
     debug "2f"
     sudo mount $disk /media/$USER/parmanode
     sleep 2

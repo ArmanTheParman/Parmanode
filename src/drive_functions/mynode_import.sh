@@ -102,7 +102,7 @@ debug "2c2 , disk is $disk"
 #Mount
 while ! sudo mount | grep -q myNode ; do
 debug "2d"
-    if mountpoint /media/$USER/parmanode ; then
+    if mountpoint -q /media/$USER/parmanode ; then
     debug "2e"
     announce "There's a problem. The /media/$USER/parmanode directory is in use" \
     "It needs to be used for mounting the MyNode drive. Aborting."

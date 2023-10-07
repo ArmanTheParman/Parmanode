@@ -86,7 +86,7 @@ export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
 debug "2c2 , disk is $disk"
 
 #Mount
-    while ! mountpoint /media/$USER/parmanode ; do
+    while ! mountpoint -q /media/$USER/parmanode ; do
     debug "2f"
     sudo mount $disk /media/$USER/parmanode
     sleep 2
