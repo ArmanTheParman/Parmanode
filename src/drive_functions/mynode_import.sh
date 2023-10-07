@@ -83,7 +83,7 @@ case $choice in a|A) return 1 ;; esac
 done
 
 debug "2"
-while ! sudo lsblk -o LABEL | grep -q umbrel ; do
+while ! sudo lsblk -o LABEL | grep -q myNode ; do
 debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
@@ -105,7 +105,7 @@ debug "2d"
     if mountpoint /media/$USER/parmanode ; then
     debug "2e"
     announce "There's a problem. The /media/$USER/parmanode directory is in use" \
-    "It needs to be used for mounting the Umbrel drive. Aborting."
+    "It needs to be used for mounting the MyNode drive. Aborting."
     return 1
     fi
 
@@ -114,7 +114,7 @@ debug "2d"
     sudo mount $disk /media/$USER/parmanode
     sleep 2
     done
-    break # now that the umbrel drive is mounted to the target, the loop needs to break.
+    break # now that the myNode drive is mounted to the target, the loop needs to break.
 
 done
 export mount_point="/media/$USER/parmanode"
@@ -134,20 +134,14 @@ make_bitcoin_conf umbrel #dont change to mynode, it works as is
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
-# # Unmount Umbrel drive
-# while mount | umbrel ; do
-# cd $original_dir
-# echo "Trying to unmount..."
-# sudo umount $mount_point
-# sleep 1
-# done
+done
 
 #Get device name
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 debug "5b , disk is $disk"
 
 # label
-while sudo lsblk -o LABEL | grep -q umbrel ; do
+while sudo lsblk -o LABEL | grep -q myNode ; do
 echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
 sleep 1
@@ -163,7 +157,7 @@ set_terminal ; echo "
     
     You can only have one at a time. 
     
-    Would you like to replace the old drive with the new drive from Umbrel for this
+    Would you like to replace the old drive with the new drive from myNode for this
     computer?
 
                           y        or        n
@@ -192,9 +186,9 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The drive data has been adjusted such that it can be used by Parmanode. It's
-    label has been changed from$cyan umbrel to parmanode${orange}.
+    label has been changed from$cyan myNode to parmanode${orange}.
 
-    The drive can still be used by Umbrel - swap over at your leisure. 
+    The drive can still be used by MyNode - swap over at your leisure. 
 
 ########################################################################################
 " ; enter_continue ; set_terminal
@@ -268,5 +262,5 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue
 
-success "Umbrel Drive" "being imported to Parmanode."
+success "MyNode Drive" "being imported to Parmanode."
 }
