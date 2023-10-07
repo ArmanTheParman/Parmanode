@@ -126,6 +126,12 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue ; set_terminal
 
+sudo umount $disk
+export $(sudo blkid -o export $disk) >/dev/null
+if grep -q $UUID < /etc/fstab ; then
+delete_line "/etc/fstab" "$UUID"
+fi
+
 #Info
 success "Parmanode Drive" "being reverted to Umbrel." 
 }
