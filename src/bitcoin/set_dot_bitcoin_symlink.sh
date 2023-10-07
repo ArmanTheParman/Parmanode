@@ -29,12 +29,12 @@ if [[ $OS == "Linux" && $drive == "internal" ]] ; then
 return 0
 fi
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-                                 
+                                $cyan 
                                  Symlinks created
-
+$orange
     NOTHING TO DO, IT'S JUST FOR YOUR INFORMATION IN CASE YOU WANT IT.
 
 

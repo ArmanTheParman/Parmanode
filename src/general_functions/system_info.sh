@@ -114,15 +114,15 @@ if [[ $OS == "Mac" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.
 function IP_address {
 #IP variable is printed for the user.
 clear
-echo "
+echo -e "
 ########################################################################################
 
 
-    Your computer's IP address is:                                $IP
+    Your computer's IP address is:                   $cyan             $IP $orange
 
 
 
-    Your computer's "self" IP address should be:                  127.0.0.1
+    Your computer's \"self\" IP address should be:                  127.0.0.1
 
 
 

@@ -50,6 +50,8 @@ stop|STOP|Stop) stop_lnd ;;
 restart|RESTART|Restart) restart_lnd ;;
 
 log|LOG|Log)
+log_counter
+if [[ $log_count -le 10 ]] ; then
 echo "
 ########################################################################################
     
@@ -60,6 +62,7 @@ echo "
 ########################################################################################
 "
 enter_continue
+fi
 set_terminal_wider
 sudo journalctl -fxu lnd.service 
 journal_PID=$!

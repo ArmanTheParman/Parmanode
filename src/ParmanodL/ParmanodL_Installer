@@ -171,7 +171,12 @@ Please wait...
 
         if ! which ssh >/dev/null ; then 
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew instal ssh 
+            brew install ssh 
+        fi
+
+        if ! which gpg >/dev/null ; then 
+            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            brew install gpg 
         fi
     
     fi

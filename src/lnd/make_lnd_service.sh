@@ -2,7 +2,7 @@ function make_lnd_service {
 
 echo "[Unit]
 Description=LND Lightning Network Daemon
-Wants=bitcoind.service
+BindsTo=bitcoind.service
 After=bitcoind.service
 
 [Service]
@@ -11,7 +11,23 @@ After=bitcoind.service
 ###################
 ExecStart=/usr/local/bin/lnd
 ExecStop=/usr/local/bin/lncli stop
+cat << EOF > /tmp/bitcoin.conf
+server=1
+txindex=1
+blockfilterindex=1
+daemon=1
+rpcport=8332
 
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+
+whitelist=127.0.0.1
+rpcbind=0.0.0.0
+rpcallowip=127.0.0.1
+rpcallowip=10.0.0.0/8
+rpcallowip=192.168.0.0/16
+rpcallowip=172.17.0.0/16 
+EOF
 # Process management
 ####################
 Type=simple
