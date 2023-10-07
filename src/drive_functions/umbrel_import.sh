@@ -117,6 +117,7 @@ debug "2d"
 
 done
 export mount_point="/media/$USER/parmanode"
+if ! mountpoint /media/$USER/parmanode ; then sudo umount $disk ; sudo mount $disk $mount_point ; fi
 
 debug "33"
 # Move files
