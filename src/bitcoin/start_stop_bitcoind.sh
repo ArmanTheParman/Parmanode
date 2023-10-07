@@ -1,15 +1,15 @@
 function run_bitcoind {
 if [[ $OS == "Linux" ]] ; then 
 
-if [[ $1 == "no_interruption" ]] ; then
-sudo systemctl start bitcoind.service
-return 0
-fi
+                    if [[ $1 == "no_interruption" ]] ; then
+                    sudo systemctl start bitcoind.service
+                    return 0
+                    fi
 
 
         set_terminal
         echo "Bitcoin will start in a moment..."
-        mount_drive  
+        mount_drive
         set_terminal
 
         if grep -q "internal" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 # config file determines if bitcoin is running on an internal or external drive
