@@ -9,7 +9,7 @@ $orange
     This program will convert your Umbrel external drive to make it compatible with
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
-    Simply use this convert tool, and plug into any parmanode computer (ParmanodL), 
+    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL), 
     or plug it back into your Umbrel node - it'll still work.
 
 ########################################################################################
