@@ -58,7 +58,7 @@ hide_messages_add "autoupdate" "1" ; return 0 ;;
 
 *) 
 invalid ;;
-
 esac 
 done
+fi
 }
