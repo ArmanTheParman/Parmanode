@@ -53,7 +53,7 @@ esac
 done
 debug "1"
 
-while sudo lsblk -o NAME,MOUNTPOINT | grep -q parmanode ; do
+while sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
