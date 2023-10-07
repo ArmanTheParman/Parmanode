@@ -6,15 +6,11 @@ set_terminal ; echo -e "
 $cyan
                              UMBREL DRIVE IMPORT TOOL
 $orange
-    This program will convert your Umbrel external drive to a Parmanode drive,
-    preserving any Bitcoin block data that you may have already sync'd up.
+    This program will convert your Umbrel external drive to make it compatible with
+    Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
-    All the Umbrel data will be preserved so you can use Parmanode to revert the 
-    drive back, but no promises are made that it will work. Use the reversion function
-    at your own risk.
-$pink
-    It's safest to assume the non-bitcoin Umbrel data will be lost${orange}. If you 
-    have funds in lightning, please make sure all relevant data is backed up.
+    Simply use this convert tool, and plug into any parmanode computer (ParmanodL), 
+    or plug it back into your Umbrel node - it'll still work.
 
 ########################################################################################
 "
@@ -33,35 +29,18 @@ read choice
 case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
 done
 
-set_terminal ; echo -e "
-########################################################################################
-
-    Please note that this action must be undertaken on the same computer that the
-    drive is destined to be used on - otherwise the import will be incomplete, and
-    you may get unexpected errors.
-
-                                a)          to abort
-                                
-                                <enter>     to continue
-
-########################################################################################
-"
-read choice
-if [[ $choice == a ]] ; then return 1 ; fi
-
 while  mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
 ########################################################################################
     
-    This function will$cyan refuse to run$orange if it detects a mounted Parmanode drive. Bad
-    things can happen. As you may have several processes running, Parmanode will not
-    attempt to automattically unmount your drive.
+    This function will$cyan refuse to run$orange if it detects an existing mounted 
+    or even connected Parmanode drive. Bad things can happen. 
 
     If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
     Fulcrum) have been stopped, then$pink unmount$orange the drive, then disconnect it,
     then come back to this function.
 
-    Do you want Parmanode to attempt to cleanly stop everything and unmount the 
+    Or, do you want Parmanode to attempt to cleanly stop everything and unmount the 
     drive for you?
 
                y)       Yes please, how kind.
@@ -85,7 +64,7 @@ while sudo blkid | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-            Please disconnect the Parmanode drive from the computer
+            Please disconnect the Parmanode drive from the computer.
 
             Hit$cyan a$orange and then$cyan <enter>$orange to abort.
 
@@ -100,7 +79,7 @@ while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please insert the Umbrel drive you wish to import, then hit <enter>.
+    Please insert the Umbrel drive you wish to import, then hit$cyan <enter>.$orange
 
 ########################################################################################
 "
@@ -134,20 +113,21 @@ else
     sudo rm $mount_point/.bitcoin
 fi
 
-cd $mount_point/ && ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
+cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
-mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
+sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
+sudo chown $USER:$USER $mount_point/.bitcoin
 make_bitcoin_conf umbrel
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
-sudo chown -R $USER:$USER $mount_point/.bitcoin  $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
-# Unmount Umbrel drive
-while mount | umbrel ; do
-cd $original_dir
-echo "Trying to unmount..."
-sudo umount $mount_point
-sleep 1
-done
+# # Unmount Umbrel drive
+# while mount | umbrel ; do
+# cd $original_dir
+# echo "Trying to unmount..."
+# sudo umount $mount_point
+# sleep 1
+# done
 
 # label
 while sudo lsblk -o LABEL | grep -q umbrel ; do
@@ -193,14 +173,10 @@ done
 set_terminal ; echo -e "
 ########################################################################################
 
-    The drive data has been rearranged such that it can be used by Parmanode. It's
+    The drive data has been adjusted such that it can be used by Parmanode. It's
     label has been changed from$cyan umbrel to parmanode${orange}.
 
-    The data can no longer be used by Umbrel - if you reconnect now to Umbrel, it may
-    get automatically formated. Be warned.
-
-    If you want to reverse the changes and go back to Umbrel, you can do that from
-    the Parmanode Tools menu. Like I said before, no gaurantees.
+    The drive can still be used by Umbrel - swap over at your leisure. 
 
 ########################################################################################
 " ; enter_continue ; set_terminal

@@ -13,10 +13,7 @@ echo -e "
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
      
-              (ub)    Convert an$cyan Umbrel$orange external drive to Parmanode, without 
-                      losing Bitcoin data. 
-
-              (ru)    Reverse an Umbrel-to-Parmanode conversion (ie back to Umbrel)
+              (ub)    Make an$cyan Umbrel$orange drive interchangable with Parmanode 
 
               (b)     Bring in a Parmanode drive from another installation, or
                       add a new external drive to Parmanode
@@ -79,9 +76,6 @@ case $choice in
     umbrel_import 
     ;;
 
-    ru|RU|Ru)
-    umbrel_import_reverse
-    ;;
 
     b|B|Bring|brin) 
         add_drive menu
