@@ -134,7 +134,6 @@ make_bitcoin_conf umbrel #dont change to mynode, it works as is
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
-done
 
 #Get device name
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
