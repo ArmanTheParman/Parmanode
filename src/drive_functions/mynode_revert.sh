@@ -1,12 +1,12 @@
-function umbrel_revert {
+function mynode_revert {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                    DRIVE REVERT TOOL (Parmanode to Umbrel)
+                    DRIVE REVERT TOOL (Parmanode to MyNode)
 $orange
-    This program will revert your Parmanode external drive to back to Umbrel.
+    This program will revert your Parmanode external drive to back to MyNode.
     
 ########################################################################################
 "
@@ -101,7 +101,7 @@ debug "33"
 cd $mount_point/.bitcoin
 sudo rm ./*.conf 
 sudo mv ./parmanode_backedup/* ./
-sudo chown -R 1000:1000 $mount_point/.bitcoin
+sudo chown -R 1002:1002 $mount_point/.bitcoin
 
 #Get device name
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
@@ -109,8 +109,8 @@ debug "5b , disk is $disk"
 
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
-echo "Changing the label to umbrel"
-sudo e2label $disk umbrel 2>&1
+echo "Changing the label to myNode"
+sudo e2label $disk myNode 2>&1
 sleep 1
 done
 debug "6"
@@ -119,8 +119,8 @@ debug "6"
 set_terminal ; echo -e "
 ########################################################################################
 
-    The drive data has been adjusted such that it can be used again by Umbrel. It's
-    label has been changed from$cyan parmanode to umbrel${orange}.
+    The drive data has been adjusted such that it can be used again by MyNode. It's
+    label has been changed from$cyan parmanode to myNode${orange}.
 
     The drive can no longer be used by Parmanode (you'd have to convert it again).
 
@@ -128,5 +128,5 @@ set_terminal ; echo -e "
 " ; enter_continue ; set_terminal
 
 #Info
-success "Parmanode Drive" "being reverted to Umbrel." 
+success "Parmanode Drive" "being reverted to MyNode." 
 }

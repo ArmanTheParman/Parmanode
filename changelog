@@ -1,5 +1,5 @@
 Version 3.8.1
-    -Import an Umbrel drive to Parmanode (Linux only)
+    -Import an Umbrel or MyNode drive to Parmanode (Linux only)
     -Various bug fixes
     -Mac switched to Bitcoin QT version 25
     -Autoupdate question

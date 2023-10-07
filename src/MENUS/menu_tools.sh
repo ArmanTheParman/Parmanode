@@ -17,6 +17,10 @@ echo -e "
 
               (ru)    Revert a drive back to Umbrel from Parmanode
 
+              (mn)    Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
+
+              (rm)    Revert a drive back to MyNode from Parmanode 
+
               (b)     Bring in a Parmanode drive from another installation, or
                       add a new external drive to Parmanode
 
@@ -82,6 +86,13 @@ case $choice in
     umbrel_revert
     ;;
 
+mn|MN|Mn)
+mynode_import
+;;
+
+rm|RM|Rm)
+mynode_revert
+;;
 
     b|B|Bring|brin) 
         add_drive menu

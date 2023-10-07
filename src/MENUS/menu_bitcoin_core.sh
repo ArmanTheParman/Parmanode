@@ -60,6 +60,10 @@ echo -e "
 
       (ru)       Revert a drive back to Umbrel from Parmanode
 
+      (mn)       Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
+
+      (rm)       Revert a drive back to MyNode from Parmanode 
+
       (o)        OTHER...
 
 ########################################################################################
@@ -208,6 +212,14 @@ add_drive
 
 ub|UB|Ub)
 umbrel_import 
+;;
+
+mn|MN|Mn)
+mynode_import
+;;
+
+rm|RM|Rm)
+mynode_revert
 ;;
 
 o|O)
