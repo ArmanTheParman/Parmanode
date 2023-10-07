@@ -1,4 +1,6 @@
 function apply_prune_bitcoin_conf {
+file="$HOME/.bitcoin/bitcoin.conf"
+if [[ $1 == umbrel ]] ; then export prune=0 ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 
 #source prune value from parmanode.conf
 
@@ -10,18 +12,18 @@ if [[ -z ${prune_value} ]] ; then echo "Prune choice not detected. Needs to be s
 #cannot have prune 0 with txindex and blockfilterindex.
 
 if [[ $prune_value != "0" ]] ; then
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "txindex=1"
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "blockfilterindex=1"
-	echo "prune=$prune_value" >> $HOME/.bitcoin/bitcoin.conf 2>/dev/null
+	delete_line "$file" "txindex=1"
+	delete_line "$file" "blockfilterindex=1"
+	echo "prune=$prune_value" | sudo tee -a $file >/dev/null  
 fi
 
 if [[ $prune_value == "0" ]] ; then
 	#delete all first, in case of multiple occurrences.
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "txindex=1"
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "blockfilterindex=1"
+	delete_line "$file" "txindex=1"
+	delete_line "$file" "blockfilterindex=1"
 
-	echo "txindex=1" >> $HOME/.bitcoin/bitcoin.conf
-	echo "blockfilterindex=1" >> $HOME/.bitcoin/bitcoin.conf
+	echo "txindex=1" | sudo tee -a $file >/dev/null
+	echo "blockfilterindex=1" | sudo tee -a $file >/dev/null
 fi
 
 log "bitcoin" "end of apply_prune_bitcoin_conf function"

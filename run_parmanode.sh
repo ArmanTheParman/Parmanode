@@ -105,7 +105,7 @@ fi
 # fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
 # In older versions there was a field missing in fstab which caused a system crash if
 # the drive was physically disconnected during a reboot.
-fix_fstab
+fix_fstab ; fix_services 
 
 debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
@@ -116,6 +116,9 @@ curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null
 # Set variables
     Linux_distro #gets the linux distro into a config file
     check_chip #gets the chip type into config file
+
+#autoupdate question
+    if grep -q parmanode-end < $HOME/.parmanode/installed.conf ; then autoupdate ; fi	
 	
 #Begin program:
 	set_terminal # custom function for screen size and colour.

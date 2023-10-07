@@ -7,11 +7,11 @@ function prune_choice {
 while true
 do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
-                                     
+      $cyan                               
                                      PRUNING
-
+$orange
     Bitcoin core needs about 1Tb of free data, either on an external drive or 
     internal drive (500 Gb approx for the current blockchain, plus another 500 Gb for 
     future blocks).
@@ -23,8 +23,8 @@ echo "
     data to save space. You won't be able to use wallets with old coins very easily
     and rescanning the wallet may be required without you realising - and that is 
     SLOW.
-
-    Would you like to run Bitcoin as a pruned node? This will require about 4 Gb of 
+$cyan
+    Would you like to run Bitcoin as a pruned node?$orange This will require about 4 Gb of 
     space for the minimum prune value.
 
 
@@ -174,10 +174,10 @@ echo "
 ########################################################################################
 "
 else
-echo "
+echo -e "
 ########################################################################################
         
-                  The prune value will be set to $prune_value MB
+                  The prune value will be set to$cyan $prune_value$orange MB
 
                             a)     Accept
 

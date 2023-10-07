@@ -1,31 +1,32 @@
 function menu_tools {
-                #  (ub)    Convert an Umbrel external drive to Parmanode, without 
-                #          losing Bitcoin data. 
-                 
-                #  (ru)    Reverse an Umbrel conversion to Parmanode (ie back to Umbrel)
-                
 
 while true ; do
 set_terminal
 echo -e "
 ########################################################################################
- 
-                      $cyan          P A R M A N O D E - Tools   $orange
+  $cyan
+                               P A R M A N O D E - Tools   $orange
 
-                    
-                 (u)     Update computer (Linux or Mac)
 
-                 (ip)    What's my computer's IP address?
+              (ip)    What's my computer's IP address?
 
-                 (d)     Delete your previous preference to hide certain Parmanode
-                            messages
+              (um)    Unmount your Parmanode external drive 
+                      (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
+     
+              (ub)    Make an$cyan Umbrel$orange drive interchangable with Parmanode 
 
-                 (h)     Check system resources with \"htop\" (installs if needed)
+              (b)     Bring in a Parmanode drive from another installation, or
+                      add a new external drive to Parmanode
 
-                 (a)     Bring in a Parmanode drive from another installation, or
-                         add a new external drive to Parmanode
-
+              (m)     Mount the Parmanode drive - Linux only
+                
+              (d)     Delete your previous preference to hide certain Parmanode
+                      messages
                  
+              (u)     Update computer (Linux or Mac)
+
+              (h)     Check system resources with \"htop\" (installs if needed)
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -45,7 +46,16 @@ case $choice in
         rm $HOME/.parmanode/hide_messages.conf
         echo "Choices reset" ; sleep 0.6 
         ;;
+    um|UM|Um)
+        safe_unmount_parmanode menu
+        ;;
 
+    m|M|mount)
+        mount_drive menu
+        if mount | grep -q parmanode ; then
+        announce "Drive mounted."
+        fi
+        ;;
     p|P)
         return 0
         ;;
@@ -62,17 +72,14 @@ case $choice in
 
         ;;
 
-    a|A|add|ADD|Add)
-        add_drive 
-        ;;
-    
-    # ub|UB|Ub)
-    #     umbrel_import 
-    #     ;;
-    # ru|RU|Ru)
-    #     umbrel_import_reverse
-    #     ;;
+    ub|UB|Ub)
+    umbrel_import 
+    ;;
 
+
+    b|B|Bring|brin) 
+        add_drive menu
+        ;;
 
     q|Q|Quit|QUIT)
         exit 0

@@ -2,6 +2,7 @@
 
 function detect_drive {
 unset disk
+if [[ $1 != menu ]] ; then
 set_terminal pink ; echo "
 ########################################################################################
 
@@ -10,21 +11,32 @@ set_terminal pink ; echo "
 ########################################################################################
 "
 enter_continue 
+fi
 
 while true ; do
-set_terminal "pink" ; echo -e "
+set_terminal ; echo -e "$pink
 ########################################################################################
-
-    Please make sure the drive you wish to add to Parmanode is ${cyan}DISCONNECTED.$pink Do not 
-    disconnect any of your other drives at this time.
+    
+    Now, please make sure the drive you wish to$cyan add$orange to Parmanode is ${cyan}DISCONNECTED.$pink 
+    Do not disconnect any of your other drives at this time. 
+    
+    This is important to make sure
+    Parmanode can detect the change in the list of drives before and after the 
+    connection.
     
     DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
-    
+   $cyan 
     Hit <enter> only once this is done.
-
+$pink
 ########################################################################################
 "
 read
+
+if sudo lsblk -o LABEL | grep parmanode ; then
+announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
+"still physically connected to the computer. Aborting." 
+return 1
+fi
 
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
@@ -38,7 +50,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}connect$orange the drive you wish to use for Parmanode. Do not 
+    Now go ahead and ${cyan}CONNECT$orange the drive you wish to use for Parmanode. Do not 
     connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.

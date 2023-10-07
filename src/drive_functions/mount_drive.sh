@@ -1,7 +1,7 @@
 function mount_drive {
 
 if [[ $OS == "Mac" ]] ; then
-if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
+if [[ $1 == menu || $drive == "external" || $drive_fulcrum == "external" ]] ; then
     #if mounted, exit 
 	    if mount | grep "parmanode" >/dev/null 2>&1 ; then
 			return 0
@@ -19,10 +19,10 @@ fi
 ########################################################################################
 
 if [[ $OS == "Linux" ]] ; then
-if [[ $drive == "external" || $drive_fulcrum == "external" ]] ; then
+if [[ $1 == menu || $drive == "external" || $drive_fulcrum == "external" ]] ; then
 while true ; do
     #if mounted, exit 
-	    if mountpoint -q "/media/$(whoami)/parmanode" ; then
+	    if mountpoint -q "/media/$USER/parmanode" ; then
 			return 0
 			fi
 

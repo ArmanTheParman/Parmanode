@@ -102,6 +102,8 @@ continue
 ;;
 
 log|LOG|Log)
+set_terminal ; log_counter
+if [[ $log_count -le 15 ]] ; then
 echo "
 ########################################################################################
     
@@ -111,8 +113,10 @@ echo "
 
 ########################################################################################
 "
+enter_continue
+fi
+
 if [[ $OS == "Linux" ]] ; then
-    enter_continue
     set_terminal_wider
     journalctl -fexu electrs.service &
     tail_PID=$!

@@ -40,24 +40,19 @@ fi
 
 while true ; do set_terminal ; echo -e "
 ########################################################################################
+$cyan
+                      PARMANODE LOG AND CONFIGURATION FILES $orange
 
-$cyan                         Parmanode log and configuration files $orange
-
-                        bc)            bitcoin.conf
-                        bl)            bitcoin.log
-                        btcpc)         settings.conf (for BTCPay)
-                        btcpl)         btcpay.log
-                        fc)            fulcrum.conf
-                        fl)            fulcrum.log
-                        ic)            installed.conf                    
-                        nbxpc)         settings.conf (for NBXplorer)
-                        pc)            parmanode.conf
-                        pl)            parmanode.log
 
                         pa)            parmanode_all.log
 
-                        delete)        DELETE ALL LOGS (not conf)
+                        ic)            installed.conf                    
 
+                        pc)            parmanode.conf
+
+$pink
+                        delete)        DELETE ALL LOGS (not conf)
+$orange
 ########################################################################################
 "
 choose "xpq" ; read choice
@@ -65,16 +60,8 @@ case $choice in
 q|Q|Quit|QUIT|quit) exit 0 ;;
 p|P) return 1 ;;
 
-bc) less $HOME/.bitcoin/bitcoin.conf ;;
-bl) less $HOME/.parmanode/bitcoin.log ;;
-btcpc) less $HOME/.btcpayserver/Main/settings.config ;;
-btcpl) less $HOME/.parmanode/btcpay.log ;;
-fc) less $HOME/parmanode/fulcrum/fulcrum.conf ;;
-fl) less $HOME/.parmanode/fulcrum.log ;;
 ic) less $HOME/.parmanode/installed.conf ;;
-nbxpc) less $HOME/.nbxplorer/Main/settings.config ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
-pl) less $HOME/.parmanode/parmanode.log ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
 delete|DELETE|Delete) rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
 *) invalid ;;
