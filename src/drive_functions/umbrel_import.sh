@@ -101,7 +101,7 @@ debug "2c2 , disk is $disk"
 #Mount
 while ! sudo mount | grep -q umbrel ; do
 debug "2d"
-    if mountpoint /media/$USER/parmanode ; then #tests the condition that the umbrel label drive not mounted, but target dir in use.
+    if mountpoint -q /media/$USER/parmanode ; then #tests the condition that the umbrel label drive not mounted, but target dir in use.
     debug "2e"
     announce "There's a problem. The /media/$USER/parmanode directory is in use" \
     "It needs to be used for mounting the Umbrel drive. Aborting."
@@ -272,6 +272,12 @@ set_terminal ; echo -e "
 
 ########################################################################################
 " ; enter_continue
+
+sudo umount $disk
+if ! grep -q parmanode < /etc/fstab ; then 
+    export $(sudo blkid -o export $disk) >/dev/null
+    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+fi
 
 success "Umbrel Drive" "being imported to Parmanode."
 }
