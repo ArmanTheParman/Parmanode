@@ -28,10 +28,13 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
-/usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
-if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
-fi
+#EDIT8
+# /usr/local/bin/bitcoind -datadir=$HOME/.bitcoin/ -conf=$HOME/.bitcoin/bitcoin.conf
+# if [[ $1 != "no_interruption" ]] ; then enter_continue ; fi
+# fi
+open /Applications/Bitcoin-Qt.app
 return 0
+fi
 }
 
 function start_bitcoind {
@@ -63,23 +66,34 @@ fi
 fi
 
 if [[ $OS == "Mac" ]] ; then
-set_terminal 
-please_wait
-/usr/local/bin/bitcoin-cli stop 2> /tmp/bitcoinoutput.tmp
-if grep "28" < /tmp/bitcoinoutput.tmp ; then
-echo "
-    This might take longer than usual as Bitcoin is running a process 
-    that shouldn't be interrupted. Please wait. 
 
-    Trying every 5 seconds."
-sleep 1 ; echo 1
-sleep 1 ; echo 2
-sleep 1 ; echo 3
-sleep 1 ; echo 4
-sleep 1 ; echo 5
+    if [[ $1 == force ]] ; then killall Bitcoin-Qt ; fi
 
-stop_bitcoind
+    osascript -e 'tell application "Bitcoin-Qt" to quit' >/dev/null 2>&1
+    please_wait
+    # Wait until Bitcoin-Qt is no longer running
+    while pgrep "Bitcoin-Q" > /dev/null; do
+    sleep 1
+    done
 fi
-fi
-return 0
+
+#EDIT9
+# set_terminal 
+# please_wait
+# /usr/local/bin/bitcoin-cli stop 2> /tmp/bitcoinoutput.tmp
+# if grep "28" < /tmp/bitcoinoutput.tmp ; then
+# echo "
+#     This might take longer than usual as Bitcoin is running a process 
+#     that shouldn't be interrupted. Please wait. 
+
+#     Trying every 5 seconds."
+# sleep 1 ; echo 1
+# sleep 1 ; echo 2
+# sleep 1 ; echo 3
+# sleep 1 ; echo 4
+# sleep 1 ; echo 5
+
+# stop_bitcoind
+# fi
+# fi
 }

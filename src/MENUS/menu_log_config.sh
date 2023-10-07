@@ -45,9 +45,10 @@ $cyan
 
 
                         pa)            parmanode_all.log
+
                         ic)            installed.conf                    
+
                         pc)            parmanode.conf
-                        pl)            parmanode.log
 
 $pink
                         delete)        DELETE ALL LOGS (not conf)
@@ -61,7 +62,6 @@ p|P) return 1 ;;
 
 ic) less $HOME/.parmanode/installed.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
-pl) less $HOME/.parmanode/parmanode.log ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
 delete|DELETE|Delete) rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
 *) invalid ;;

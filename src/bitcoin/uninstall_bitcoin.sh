@@ -9,24 +9,15 @@ clear
 while true
 do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
-
+$cyan
                          Bitcoin Core will be uninstalled
+$orange
 
+    You will have the option to remove or keep the Bitcoin data directory.
 
-    This will give you the option to remove or keep the Bitcoin data directory if 
-    it exists on the internal or external drive.  If a symlink to the external drive 
-    exists, it will be delete. Configuration files related to Bitcoin will be deleted.  
-    Saved choices to the Parmanode configuration file will be deleted.  
-    
-    The Bitcoin service file will be deleted (for Linux users only).
-
-    If you choose to keep the Bitcoin data directory, Parmanode will not be able to 
-    connect to it because the symlinks would be delted. You need to install Bitcoin
-    again and choose to keep the data directory found.
-
-    UNINSTALL BITCOIN?
+    Are you sure, UNINSTALL BITCOIN?
 
 ########################################################################################
 

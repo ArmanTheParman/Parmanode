@@ -1,30 +1,35 @@
 function password_changer {
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 Password changer
 
-    Please enter an RPC username: (Do not use the characters: # \" or '
-    otherwise problems may arise.)
+$orange
+    Please enter an RPC username:     (Do not use the characters: # \" or ' otherwise 
+                                       problems may arise.)
 
-    Enter (p) to go back.
 
 ########################################################################################
 "
-read rpcuser
+choose "xpq" ; echo "" ; echo "" ; read rpcuser ; echo "
+"
 
     if [[ $rpcuser == "p" ]] ; then return 1 ; fi
 
     set_terminal
-    echo "Username set
+    echo -e "  The username$cyan $rpcuer ${orange}has been set
+
     "	
-    echo "Please enter an RPC password: (Do not use the characters: # \" or '"
-    echo "otherwise problems may arise.)
+    echo -e "Please enter an$cyan RPC password:$orange    (Do not use the characters: # \" or '"
+    echo "                                              otherwise problems may arise.)
+
         " 
     read rpcpassword
-    echo "Please repeat the password:
+    echo -e "
+         Please repeat the$cyan password:$orange
+
         "
     read rpcpassword2
 

@@ -21,7 +21,7 @@ return 1
 fi
 
 if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
-    set_terminal ; echo "
+    set_terminal ; echo -e "
 ########################################################################################
 
     Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
@@ -46,7 +46,6 @@ installed_config_add "btcrpcexplorer-start"
 cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 cd btc-rpc-explorer
-
 sudo npm install -g btc-rpc-explorer
 
 installed_config_add "btcrpcexplorer-end"
@@ -149,7 +148,7 @@ Restart=always
 RestartSec=30
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service >/dev/null 2>&1
 
-sudo systemctl enable btcrpcexplorer.service
+sudo systemctl enable btcrpcexplorer.service >/dev/null 2>&1
 }

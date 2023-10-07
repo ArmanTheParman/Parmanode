@@ -1,7 +1,9 @@
 function verify_bitcoin {
 cd $HOME/parmanode/bitcoin
 
-if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; exit 1 ; fi
+if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg_mac ; fi
+
+if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; return 1 ; fi
 sleep 3
 echo ""
 echo " Please wait a moment for gpg verification..."

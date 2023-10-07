@@ -20,8 +20,11 @@ fi
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
 unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
+
+if [[ $1 != Bitcoin ]] ; then #cancelling dd for bitcoin installation. To slow and not necessary.
 if [[ $1 != justFormat ]] ; then
     dd_wipe_drive  #failure here exits program 
+fi
 fi
 
 if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
