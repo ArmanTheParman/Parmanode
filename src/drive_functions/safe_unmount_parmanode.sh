@@ -19,7 +19,8 @@ fi
 if [[ $drive_electrs == external ]] ; then
 stop_electrs
 fi
-stop_lnd
+
+stop_lnd >/dev/null 2>&1
 
 
 # unmount after everything stopped.
