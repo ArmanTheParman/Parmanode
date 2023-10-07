@@ -27,11 +27,12 @@ done
 
 
 if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
+set_terminal
 echo -e "
 ########################################################################################
 
-   Unmounting any Parmanode drive should have been successful. Please phsyically $cyan
-   DISCONNECT$orange ANY Parmanode drive, or you're likely to get errors.
+   Unmounted Parmanode drive(s). Please phsyically $cyan DISCONNECT$orange ANY Parmanode 
+   drive, or you're likely to get errors and the computer might start to smell.
 
                     $cyan
                         <enter>$orange     to continue
@@ -59,12 +60,12 @@ echo -e "
 "
 enter_continue
 
-while ! sudo blkid | grep parmanode ; do
+while ! sudo blkid | grep -q parmanode ; do
 announce "It doesn't seem like the Parmanode drive is physically conected." \
 "Please try again"
 done
 
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
+export disk=$(sudo blkid | grep -q parmanode | cut -d : -f 1) 
 
 # Mount
 while ! mount | grep -q parmanode ; do

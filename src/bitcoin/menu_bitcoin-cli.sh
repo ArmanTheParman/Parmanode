@@ -1,5 +1,5 @@
 function menu_bitcoin-cli {
-
+if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 while true
 do
 set_terminal
