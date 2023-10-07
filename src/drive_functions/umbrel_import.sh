@@ -9,8 +9,13 @@ $orange
     This program will convert your Umbrel external drive to make it compatible with
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
-    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL), 
-    or plug it back into your Umbrel node - it'll still work.
+    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL). 
+    I say \"any\", but do know that if it's another ParmanodL, you still need to 
+    \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
+    option in the tools menu.
+
+    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, otherwise
+    the drive won't work properly.
 
 ########################################################################################
 "
@@ -121,11 +126,14 @@ else
     sudo rm $mount_point/.bitcoin >/dev/null 2>&1
 fi
 
+# The main changes...
+
 cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
+sudo chown -h .bitcoin
 debug "after symlink"
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
-sudo chown $USER:$USER $mount_point/.bitcoin
+sudo chown -R $USER:$USER $mount_point/.bitcoin
 make_bitcoin_conf umbrel
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
