@@ -129,7 +129,7 @@ export mount_point="/media/$USER/parmanode"
 
 # Move files
 #sudo mkdir -p $mount_point/.bitcoin
-if [[ -d $mount_point/.bitcoin ]] ; sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
+if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
     sudo rm $mount_point/.bitcoin
 fi

@@ -105,7 +105,7 @@ fi
 # fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
 # In older versions there was a field missing in fstab which caused a system crash if
 # the drive was physically disconnected during a reboot.
-fix_fstab
+fix_fstab ; fix_lnd_service
 
 debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
