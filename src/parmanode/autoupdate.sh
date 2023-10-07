@@ -54,7 +54,9 @@ n|N)
 return 0 ;;
 
 nooo|NOOO|Nooo) 
-hide_messages_add "autoupdate" "1" ; return 0 ;;
+hide_messages_add "autoupdate" "1" ; return 0 
+return 0
+;;
 
 *) 
 invalid ;;
