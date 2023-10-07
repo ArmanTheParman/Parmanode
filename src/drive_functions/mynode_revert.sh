@@ -82,17 +82,12 @@ read ; set_terminal ; sync
 done
 debug "2c"
 
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
-debug "2c2 , disk is $disk"
-
 #Mount
-    while ! mountpoint -q /media/$USER/parmanode ; do
-    debug "2f"
-    sudo mount $disk /media/$USER/parmanode
-    sleep 2
-    done
-
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
 export mount_point="/media/$USER/parmanode"
+sudo umount /media/$USER/parmanode*
+sudo umount $disk
+sudo mount $disk $mount_point
 
 debug "33"
 
