@@ -101,8 +101,7 @@ debug "33"
 cd $mount_point/.bitcoin
 sudo rm ./*.conf 
 sudo mv ./parmanode_backedup/* ./
-sudo chown -R 1000:1000 $mount_point/.bitcoin
-
+sudo chown -R 1000:1000 $mount_point/umbrel/app-data/bitcoin/data/bitcoin/ 
 #Get device name
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
 debug "5b , disk is $disk"
