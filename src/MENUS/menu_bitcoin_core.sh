@@ -17,11 +17,11 @@ fi
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1='                   Bitcoin is RUNNING -- see log menu for progress'
+output1="                   Bitcoin is$pink RUNNING$orange-- see log menu for progress"
 
 output2="                         (Syncing to the $drive drive)"
 else
-output1="                   Bitcoin is NOT running -- choose \"start\" to run"
+output1="                   Bitcoin is$pink NOT running$orange -- choose \"start\" to run"
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
@@ -31,11 +31,11 @@ echo -e "
                                  ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
 "
-echo "$output1"
+echo -e "$output1"
 echo ""
-echo "$output2"
+echo -e "$output2"
 echo ""
-echo "
+echo -e "
 
 
       (start)    Start Bitcoind............................................(Do it)
@@ -62,7 +62,7 @@ echo "
 
       (bring)    Bring a drive from another Parmanode installation (import)
       
-      (ub)       Make an$cyan Umbrel$orange drive interchangable with Parmanode 
+      (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
 
 ########################################################################################
 "
