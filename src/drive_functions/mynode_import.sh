@@ -96,29 +96,14 @@ read ; set_terminal ; sync
 done
 debug "2c"
 
-export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 debug "2c2 , disk is $disk"
 
 #Mount
-while ! sudo mount | grep -q myNode ; do
-debug "2d"
-    if mountpoint -q /media/$USER/parmanode ; then
-    debug "2e"
-    announce "There's a problem. The /media/$USER/parmanode directory is in use" \
-    "It needs to be used for mounting the MyNode drive. Aborting."
-    return 1
-    fi
-
-    while ! mountpoint /media/$USER/parmanode ; do
-    debug "2f"
-    sudo mount $disk /media/$USER/parmanode
-    sleep 2
-    done
-    break # now that the myNode drive is mounted to the target, the loop needs to break.
-
-done
+export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 export mount_point="/media/$USER/parmanode"
-if ! mountpoint -q /media/$USER/parmanode ; then sudo umount $disk ; sudo mount $disk $mount_point ; fi
+sudo umount /media/$USER/parmanode*
+sudo umount $disk
+sudo mount $disk $mount_point
 
 debug "33"
 # Move files
