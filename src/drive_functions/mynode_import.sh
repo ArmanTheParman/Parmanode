@@ -129,7 +129,7 @@ fi
 cd $mount_point/ && sudo ln -s ./mynode/bitcoin .bitcoin 
 sudo mkdir -p ./.bitcoin/parmanode_backedup/
 sudo mv ./.bitcoin/*.conf $mount_point/.bitcoin/parmanode_backedup/
-sudo chown -R $USER:$USER $mount_point/.bitcoin
+sudo chown -R $USER:$USER $mount_point/mynode/bitcoin
 make_bitcoin_conf umbrel #dont change to mynode, it works as is
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1

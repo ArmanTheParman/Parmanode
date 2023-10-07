@@ -99,9 +99,9 @@ debug "33"
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*.conf 
+sudo rm ./*conf 
 sudo mv ./parmanode_backedup/* ./
-sudo chown -R 1002:1002 $mount_point/.bitcoin
+sudo chown -R 1002:1002 $mount_point/mynode/bitcoin
 
 #Get device name
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
