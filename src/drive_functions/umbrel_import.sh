@@ -1,6 +1,6 @@
 function umbrel_import {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-
+cd
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -125,17 +125,6 @@ make_bitcoin_conf umbrel
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
-# # Unmount Umbrel drive
-# while mount | umbrel ; do
-# cd $original_dir
-# echo "Trying to unmount..."
-# sudo umount $mount_point
-# sleep 1
-# done
-
-#Get device name
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
-debug "5b , disk is $disk"
 
 # label
 while sudo lsblk -o LABEL | grep -q umbrel ; do

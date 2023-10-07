@@ -1,6 +1,6 @@
 function umbrel_revert {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-
+cd
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
