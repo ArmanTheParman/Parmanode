@@ -2,7 +2,7 @@ function fix_services {
 
 if [[ $(uname) == Darwin ]] ; then return 0 ; fi
 
-if grep -q "Wants=bitcoind.service" < /etc/systemd/system/lnd.service ; then
+if grep -q "Wants=bitcoind.service" < /etc/systemd/system/lnd.service >/dev/null 2>&1 ; then
 
     if sudo systemctl status lnd.service >/dev/null 2>&1 ; then running=true ; sudo systemctsl stop lnd.service >/dev/null 2>&1 ; fi
 
