@@ -67,7 +67,7 @@ read choice
 done
 
 debug "2"
-if sudo lsblk -o LABEL | grep -q parmanode ; announce "Parmanode drive still detectec. Aborting." ; return 1 ; fi 
+if sudo lsblk -o LABEL | grep -q parmanode ; then announce "Parmanode drive still detected. Aborting." ; return 1 ; fi 
 
 while ! sudo lsblk -o LABEL | grep -q parmanode ; do
 debug "2a"
