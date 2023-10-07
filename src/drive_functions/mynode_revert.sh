@@ -1,6 +1,6 @@
 function mynode_revert {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-
+cd 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -122,7 +122,9 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-sudo umount $disk
+sudo umount $disk >/dev/null 2>&1
+sudo umount /media/$USER/parmanode*
+
 export $(sudo blkid -o export $disk) >/dev/null
 if grep -q $UUID < /etc/fstab ; then
 delete_line "/etc/fstab" "$UUID"
