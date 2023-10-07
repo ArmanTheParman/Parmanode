@@ -9,8 +9,14 @@ $orange
     This program will convert your MyNode external drive to make it compatible with
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
-    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL), 
-    or plug it back into your MyNode node - it'll still work.
+    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL). 
+
+    I say \"any\", but do know that if it's another ParmanodL, you still need to 
+    \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
+    option in the tools menu.
+
+    If you wish to go back to MyNode, then use the \"Revert to MyNode\" tool, 
+    otherwise the drive won't work properly. 
 
 ########################################################################################
 "
@@ -90,13 +96,13 @@ read ; set_terminal ; sync
 done
 debug "2c"
 
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 debug "2c2 , disk is $disk"
 
 #Mount
-while ! sudo mount | grep -q umbrel ; do
+while ! sudo mount | grep -q myNode ; do
 debug "2d"
-    if mountpoint /media/$USER/parmanode ; then #tests the condition that the umbrel label drive not mounted, but target dir in use.
+    if mountpoint /media/$USER/parmanode ; then
     debug "2e"
     announce "There's a problem. The /media/$USER/parmanode directory is in use" \
     "It needs to be used for mounting the Umbrel drive. Aborting."
@@ -115,18 +121,16 @@ export mount_point="/media/$USER/parmanode"
 
 debug "33"
 # Move files
-#sudo mkdir -p $mount_point/.bitcoin
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
-    sudo rm $mount_point/.bitcoin >/dev/null 2>&1
+    sudo rm $mount_point/.bitcoin >/dev/null 2>&1 #must be a symlink to execute for code in this block.
 fi
 
-cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
-debug "after symlink"
-sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
-sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
-sudo chown $USER:$USER $mount_point/.bitcoin
-make_bitcoin_conf umbrel
+cd $mount_point/ && sudo ln -s ./mynode/bitcoin .bitcoin 
+sudo mkdir -p ./.bitcoin/parmanode_backedup/
+sudo mv ./.bitcoin/*.conf $mount_point/.bitcoin/parmanode_backedup/
+sudo chown -R $USER:$USER $mount_point/.bitcoin
+make_bitcoin_conf umbrel #dont change to mynode, it works as is
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
