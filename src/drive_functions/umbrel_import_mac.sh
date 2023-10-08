@@ -176,6 +176,9 @@ Please wait...
             # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
             # as Parmanode functions are available.
 
+# Need UID and GID
+
+    UIDGID
 
 # Part 2 dependencies - Macs need Docker
 
@@ -221,3 +224,4 @@ $orange
 choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
+umbrel_drive_mods_with_docker
