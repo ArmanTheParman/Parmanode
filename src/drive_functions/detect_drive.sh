@@ -1,6 +1,6 @@
 #used by add_drive function.
 function detect_drive {
-if [[ $1 == umbrelmac ]] ; then 
+#if [[ $1 == umbrelmac ]] ; then 
 unset disk
 if [[ $1 != menu ]] ; then
 set_terminal pink ; echo "
