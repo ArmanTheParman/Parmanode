@@ -25,7 +25,6 @@ EOF
 
 file="$HOME/.bitcoin/bitcoin.conf"
 loop=do
-
 if [[ $1 == umbrel ]] ; then export prune=0 ; loop=break ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 
 

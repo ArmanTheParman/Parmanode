@@ -16,7 +16,7 @@ if [[ $OS == "Linux" ]] ; then
             sudo umount $i >/dev/null 2>&1 
             done 
         # If the parmanode drive needs to be unmounted...
-        sudo umount /media/$USER/parmanode >/dev/null 2>&1
+        sudo umount /media/$USER/parmanode* >/dev/null 2>&1
         return 0
     fi
 

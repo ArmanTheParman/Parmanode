@@ -1,5 +1,5 @@
 function ParmanodL_docker_run {
-if [[ $uname == Linux ]] ; then return 0 ; fi
+if [[ $(uname) == Linux ]] ; then return 0 ; fi
 # Remove old ParmanodL containers in case of repeated installation
 
     if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
