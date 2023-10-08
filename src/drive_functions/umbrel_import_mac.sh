@@ -184,16 +184,16 @@ Please wait...
 
     ParmanodL_directories ;  log "parmanodl" "directory function"
 
-
-
-
-
 #GET UMBREL DISK ID...
     
     detect_drive menu umbrelmac
+    # $disk variable (drive ID) extracted
 
+#Mount
+export mount_point="/tmp/umbrel"
+sudo mkdir -p $mount_point >/dev/null 2>&1
 
-# Macs use Docker functionality here
+# Need Docker functionality here for mounting ext4 drives
     
     ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
     ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }

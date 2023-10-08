@@ -1,4 +1,5 @@
 #used by add_drive function.
+#use by umbrel_import_mac - $1 menu skips initial warning. $2 umbrelmac used for text customisation
 function detect_drive {
 unset disk
 if [[ $1 != menu ]] ; then
@@ -48,8 +49,8 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}CONNECT$orange the drive you wish to use for Parmanode. Do not 
-    connect any other drive.
+    Now go ahead and ${cyan}CONNECT$orange the $umbrel drive you wish to use for 
+    Parmanode. Do not connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
 
