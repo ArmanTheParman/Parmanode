@@ -1,6 +1,6 @@
 #used by add_drive function.
-
 function detect_drive {
+
 unset disk
 if [[ $1 != menu ]] ; then
 set_terminal pink ; echo "

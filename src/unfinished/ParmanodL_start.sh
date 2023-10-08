@@ -21,7 +21,7 @@ function detect_format_or_mount {
         fi
 
     else
-        if ! mountpoint /media/parman/parmanode ; then mount_sda ; fi
+        if ! mountpoint -q /media/parman/parmanode ; then mount_sda ; fi
     fi
 }
 

@@ -1,7 +1,7 @@
-function menu_bitcoin_core {
+function bitcoin_other {
 while true
 do
-set_terminal_custom "50"
+set_terminal
 source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
@@ -28,7 +28,7 @@ fi
 
 echo -e "
 ########################################################################################
-                                 ${cyan}Bitcoin Core Menu${orange}                               
+                            ${cyan}Bitcoin Core Menu - OTHER ${orange}                               
 ########################################################################################
 "
 echo -e "$output1"
@@ -38,33 +38,13 @@ echo ""
 echo -e "
 
 
-      (start)    Start Bitcoind............................................(Do it)
+      (cd)       Change syncing drive internal vs external
 
-      (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
+      (c)        How to connect your wallet...........(Otherwise no point to this)
 
-      (restart)  Restart Bitcoind
-      
-      (n)        Access Bitcoin node information ....................(bitcoin-cli)
-	    
-      (log)      Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
-
-      (bc)       Inspect and edit bitcoin.conf file 
-
-      (up)       Set, remove, or change RPC user/pass
-
-      (tor)      Tor menu options for Bitcoin
-
-      (bring)    Bring a drive from another Parmanode installation (import)
-      
-      (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
-
-      (ru)       Revert a drive back to Umbrel from Parmanode
-
-      (mn)       Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
-
-      (rm)       Revert a drive back to MyNode from Parmanode 
-
-      (o)        OTHER...
+      (dd)       Backup/Restore data directory.................(Instructions only)
+       
+      (r)        Errors? Try --reindex blockchain
 
 ########################################################################################
 "
@@ -72,83 +52,14 @@ choose "xpq" ; read choice ; set_terminal
 
 case $choice in
 
-start|START|Start)
-run_bitcoind
-;;
-
-stop|STOP|Stop)
-if [[ $OS == Linux ]] ; then
-    while pgrep bitcoind ; do 
-    stop_bitcoind 
-    sleep 2
-    done
-elif [[ $OS == Mac ]] ; then
-    stop_bitcoind
-fi
-
-;;
-
-restart|RESTART|Restart)
-if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
-if [[ $OS == "Mac" ]] ; then
-stop_bitcoind 
-run_bitcoind "no_interruption"
-fi
-;;
 
 cd|CD|Cd)
 change_bitcoin_drive
+return 0
 ;;
 
 c|C)
 connect_wallet_info
-continue
-;;
-
-n|N)
-menu_bitcoin-cli
-continue
-;;
-
-log|LOG|Log)
-log_counter
-if [[ $log_count -le 10 ]] ; then
-echo -e "
-########################################################################################
-    
-    This will show the bitcoin debug.log file in real time as it populates.
-    
-    You can hit$cyan <control>-c$orange to make it stop.
-
-########################################################################################
-"
-enter_continue
-fi
-set_terminal_wider
-tail -f $HOME/.bitcoin/debug.log &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
-continue ;;
-RU|Ru)
-    umbrel_import_reverse
-    ;;
-
-bc|BC)
-echo "
-########################################################################################
-    
-        This will run Nano text editor to edit bitcoin.conf. See the controls
-        at the bottom to save and exit. Be careful messing around with this file.
-
-	Any changes will only be applied once you restart Bitcoin.
-
-########################################################################################
-"
-enter_continue
-nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 
@@ -196,38 +107,9 @@ enter_continue
 continue
 ;;
 
-up)
-set_rpc_authentication
-continue
-;;
-
-tor|TOR|Tor)
-menu_tor_bitcoin
-continue
-;;
-
-bring|BRING|Bring)
-add_drive
-;;
-
-ub|UB|Ub)
-umbrel_import 
-;;
-
-mn|MN|Mn)
-mynode_import
-;;
-
-rm|RM|Rm)
-mynode_revert
-;;
-
-o|O)
-bitcoin_other || return 1
-;;
-
-ru|RU|Ru)
-umbrel_revert
+r|R|reindex)
+reindex_bitcoin
+return 0
 ;;
 
 p|P)

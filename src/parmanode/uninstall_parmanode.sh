@@ -116,9 +116,9 @@ fi
 if [[ $OS == "Linux" ]] ; then
 
         if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
-                umount /media/$(whoami)/parmanode > /dev/null 2>&1
+                umount /media/$HOME/parmanode* > /dev/null 2>&1
             else
-                sudo umount /media/$(whoami)/parmanode > /dev/null 2>&1
+                sudo umount /media/$HOME/parmanode* > /dev/null 2>&1
             fi
     fi
 

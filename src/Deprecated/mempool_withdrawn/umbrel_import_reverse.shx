@@ -26,7 +26,7 @@ sleep 1
 done
 
 
-if ! mountpoint /media/$USER/parmanode >/dev/null 2>&1 ; then
+if ! mountpoint -q /media/$USER/parmanode >/dev/null 2>&1 ; then
 set_terminal
 echo -e "
 ########################################################################################
