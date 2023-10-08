@@ -22,18 +22,6 @@ $orange
 choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
-while true ; do
-set_terminal ; echo -e "$pink
-########################################################################################
-
-    ARE YOU SURE YOU WANT TO CONTINUE?    y   or   n
-
-########################################################################################
-"
-read choice
-case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
-done
-
 while sudo mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
 ########################################################################################
@@ -64,7 +52,9 @@ safe_unmount_parmanode || return 1
 *) invalid ;;
 esac
 done
+
 debug "1"
+
 while sudo blkid | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -82,6 +72,7 @@ case $choice in a|A) return 1 ;; esac
 done
 
 debug "2"
+
 while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 debug "2a"
 set_terminal ; echo -e "
@@ -93,8 +84,10 @@ set_terminal ; echo -e "
 "
 read ; set_terminal ; sync
 done
+
 debug "2c"
 
+#Get disk ID
 export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 debug "2c2 , disk is $disk"
 
