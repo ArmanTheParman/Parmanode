@@ -1,6 +1,6 @@
 #used by add_drive function.
 function detect_drive {
-
+if [[ $1 == umbrelmac ]] ; then 
 unset disk
 if [[ $1 != menu ]] ; then
 set_terminal pink ; echo "
@@ -17,12 +17,11 @@ while true ; do
 set_terminal ; echo -e "$pink
 ########################################################################################
     
-    Now, please make sure the drive you wish to$cyan add$orange to Parmanode is ${cyan}DISCONNECTED.$pink 
-    Do not disconnect any of your other drives at this time. 
+    Now, please make sure the drive you wish to$cyan add$orange to Parmanode is 
+    ${cyan}DISCONNECTED.$pink Do not disconnect any of your other drives at this time. 
     
-    This is important to make sure
-    Parmanode can detect the change in the list of drives before and after the 
-    connection.
+    This is important to make sure the drive is detected in the list of drives before 
+    and after the connection.
     
     DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
    $cyan 

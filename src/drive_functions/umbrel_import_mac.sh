@@ -26,8 +26,9 @@ return 0
    
               P A R M A N O D E - Umbrel drive import tool for Macs.
 
-    This software will help you take an Umbrel external hard drive (Linux) and use 
-    a Mac to convert it so that it can be used with a Linux machine running Parmanode.
+    This script will use Parmanode software to take an Umbrel external hard drive 
+    (Linux) and use a Mac to convert it so that it can be used with a Linux machine 
+    running Parmanode.
 
     A simpler approach is to use that Linux machine running Parmanode to convert the
     drive, using tools available in Parmanode software, but there this is anyway...
