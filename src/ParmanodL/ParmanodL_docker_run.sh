@@ -7,7 +7,7 @@ if [[ $(uname) == Linux ]] ; then return 0 ; fi
 # Start a Linux docker container as a daemon process
 
 if [[ $log == "umbrel-drive" ]] ; then
-    docker run --privileged -d --device $disk:$disk -v /tmp/umbrel:/tmp/umbrel --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
+    docker run --privileged -d --device $disk:$disk -v $mount_point:$mount_point --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
         { announce "Couldn't start Docker container. Aborting." ; return 1 ; }
 else
     docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
