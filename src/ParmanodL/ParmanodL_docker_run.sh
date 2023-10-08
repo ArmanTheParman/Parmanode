@@ -6,8 +6,8 @@ if [[ $(uname) == Linux ]] ; then return 0 ; fi
 
 # Start a Linux docker container as a daemon process
 
-if [[ $1 == umbrelmac ]] ; then
-    docker run --privileged -d --device $disk:$disk -v $HOME/parman_programs:/volume --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
+if [[ $log == "umbrel-drive" ]] ; then
+    docker run --privileged -d --device $disk:$disk -v /tmp/umbrel:/tmp/umbrel --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
         { announce "Couldn't start Docker container. Aborting." ; return 1 ; }
 else
     docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
@@ -21,7 +21,7 @@ if [[ $uname == Linux ]] ; then return 0 ; fi
 
 # Get necessary binaries inside the container
 
-    docker exec ParmanodL /bin/bash -c 'apt-get update -y && apt-get install fdisk -y' || \
+    docker exec ParmanodL /bin/bash -c 'apt-get update -y && apt-get install sudo fdisk -y' || \
         { announce "Couldn't execute updates in Docker container. Aborting." ; return 1 ; }
 
 }

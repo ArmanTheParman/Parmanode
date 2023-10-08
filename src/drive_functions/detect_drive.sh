@@ -14,7 +14,7 @@ enter_continue
 fi
 
 while true ; do
-unset umbrel ; if [[ $2 == umbrelmac ]] ; then umbrel=Umbrel ;fi
+if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
 set_terminal ; echo -e "$pink
 ########################################################################################

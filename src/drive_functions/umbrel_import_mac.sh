@@ -12,7 +12,8 @@ return 0
     if [[ $1 == d ]] ; then export debug=1 ; else export debug=0; fi
 
 # Variables 
-    
+    export log="umbrel-drive" 
+    export mount_point="/tmp/umbrel"
 
 # Size 88 wide, and orange colour scheme
 
@@ -182,21 +183,19 @@ Please wait...
 
 # Make necessary directories
 
-    ParmanodL_directories ;  log "parmanodl" "directory function"
+    sudo mkdir -p /tmp/umbrel >/dev/null 2>&1
 
 #GET UMBREL DISK ID...
     
-    detect_drive menu umbrelmac
+    detect_drive menu 
     # $disk variable (drive ID) extracted
+    # drive can't be mounted, it's ext4, but should be connected.
 
 #Mount
-export mount_point="/tmp/umbrel"
-sudo mkdir -p $mount_point >/dev/null 2>&1
-
 # Need Docker functionality here for mounting ext4 drives
     
-    ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
-    ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
+    ParmanodL_docker_run umbrelmac || { log "$log" "failed at docker_run" ; exit ; }
+    ParmanodL_docker_get_binaries || { log "$log" "failed at docker_get_binaries" ; exit ; }
     
 # Template from umbrel_import.sh 
 ########################################################################################################################
@@ -222,64 +221,3 @@ $orange
 choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
-while sudo mount | grep -q parmanode ; do 
-set_terminal ; echo -e "
-########################################################################################
-    
-    This function will$cyan refuse to run$orange if it detects an existing mounted 
-    or even connected Parmanode drive. Bad things can happen. 
-
-    If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
-    Fulcrum) have been stopped, then$pink unmount$orange the drive, then disconnect it,
-    then come back to this function.
-
-    Or, do you want Parmanode to attempt to cleanly stop everything and unmount the 
-    drive for you?
-
-               y)       Yes please, how kind.
-
-               nah)     Nah ( = \"No\" in Straylian)
-
-########################################################################################
-"
-choose "xpq" ; read choice ; set_terminal
-case $choice in
-p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
-q|Q) exit ;; 
-y|Y|Yes|yes|YES)
-safe_unmount_parmanode || return 1 
-;;
-*) invalid ;;
-esac
-done
-
-while sudo blkid | grep -q parmanode ; do
-set_terminal ; echo -e "
-########################################################################################
-
-            Please disconnect any Parmanode drive from the computer.
-
-            Hit a and then <enter> to abort.
-
-            Hit <enter> once disconnected.
-
-########################################################################################
-"
-read choice
-case $choice in a|A) return 1 ;; esac
-done
-
-while ! sudo lsblk -o LABEL | grep -q umbrel ; do
-debug "2a"
-set_terminal ; echo -e "
-########################################################################################
-
-    Please insert the Umbrel drive you wish to import, then hit$cyan <enter>.$orange
-
-########################################################################################
-"
-read ; set_terminal ; sync
-done
-
-
-#Get disk ID
