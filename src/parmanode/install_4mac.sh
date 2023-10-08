@@ -3,50 +3,81 @@ return 0
 # https://parmanode.com/install_4mac.sh - the URL is easier to remember and shorter than if keeping it on Github.
 
 #!/bin/sh
+printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
 
-if [ $(uname -s) == Darwin ] ; then
+if [ -d $HOME/parman_programs/parmanode ] ; then
+clear
+#update parmanode if it exists...
+cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
+
+#make desktop clickable icon...
+if [ ! -e $HOME/Desktop/run_parmanode ] ; then
+cat > $HOME/Desktop/run_parmanode << 'EOF'
+#!/bin/bash
+cd $HOME/parman_programs/parmanode/
+./run_parmanode.sh
+EOF
+sudo chmod +x $HOME/Desktop/run_parmanode
+echo "New clickable desktop icon made."
+fi
+
+#no further changes needed.
+echo "Parmnode already downloaded."
+exit
+fi
+
+#Assuming not previously installed parmanode...
+
+    if ! which git ; then 
+
+        if ! which brew >/dev/null ; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+        if ! which brew >/dev/null ; then export warning=1 ; fi
+        fi
+
+        if ! which greadlink >/dev/null ; then
+            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install coreutils/greadlink. Aborting." ; sleep 4 ; exit ; fi
+            brew install coreutils
+        fi
+
+        if ! which ssh >/dev/null ; then 
+            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            brew install ssh 
+        fi
+
+        if ! which gpg >/dev/null ; then 
+            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            brew install gpg 
+        fi
+
+        brew install git
+    fi
+
+######################################################################################################################################################
+
+# Parmanode first time install most likely...
+
+mkdir -p $HOME/parman_programs >/dev/null 2>&1 
+cd $HOME/parman_programs
+git clone https://github.com/armantheparman/parmanode.git
+
+#make desktop clickable icon...
+if [ ! -e $HOME/Desktop/run_parmanode.command ] ; then
+cat > $HOME/Desktop/run_parmanode << 'EOF'
+#!/bin/bash
+cd $HOME/parman_programs/parmanode/
+./run_parmanode.sh
+EOF
+sudo chmod +x $HOME/parman_programs/run_parmanode.command >/dev/null 2>&1
 clear
 echo "
 ########################################################################################
 
-    The installation method is not yet available for Macs. Aborting.
+    There should be an icon on the desktop for you, \"run_parmanode\".
 
 ########################################################################################
 "
 exit
 fi
 
-if [ -d $HOME/parman_programs/parmanode ] ; then
-clear
-echo "Parmanode directory already exists. Aborting."
-sleep 5
-exit
-fi
 
-if ! which git >/dev/null ; then
-sudo apt-get update -y 
-sudo apt-get install git -y
-fi
-
-if ! which gnome-terminal >/dev/null ; then
-sudo apt-get update -y
-sudo apt-get install gnome-terminal -y
-fi
-
-mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
-git clone https://github.com/armantheparman/parmanode.git
-
-mkdir -p ~/Desktop ~/.icons/
-cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
-echo "[Desktop Entry]
-Type=Application
-Exec=gnome-terminal -- bash -c \"$HOME/parman_programs/parmanode/run_parmanode.sh\"
-Name=Parmanode
-Icon=$HOME/.icons/PNicon.png
-Terminal=true
-Path=$HOME/parman_programs/parmanode/
-Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
-sudo chmod +x $HOME/Desktop/parmanode.desktop
-sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
-clear
-# IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE
