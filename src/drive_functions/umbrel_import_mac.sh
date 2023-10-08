@@ -41,20 +41,11 @@ read choice ; clear
 clear ; echo "
 ########################################################################################
 
-                       P  A  R  M  A  N  O  D  L     O  S 
-
-
-    The target microSD can be as small as 16GB.
-
-    The entire process may take about 30 minutes to 1 hour depending on the speed of
-    the computer. There will be ocassional promtps/quesions so keep an eye out.
-
-    You'll also be asked to remove/insert the microSD card to assist with drive 
+    You'll also be asked to remove/insert the Umbrel drive to assist with drive 
     detection.
-
-    For best probability of success, do not do resource intensive things while the
-    computer is thinking. 
-
+$cyan
+            MAKE SURE TO BEGIN WITH, THE UMBREL DRIVE IS NOT CONNECTED.
+   $orange 
 ########################################################################################
 
     Hit <enter> to continue
@@ -67,15 +58,10 @@ clear ; echo "
     There are a few extra things that may need to be 
     installed if you don't have it ...
 
-        1)    Docker     -     This is a tricky installation to execute in an
-                               automated way. If the installation fails at the 
-                               Docker install, you could try to install it yourself, 
-                               then come back to this. The installation will be 
-                               detected. Docker is needed because the file system 
-                               that Umbrel is built from is Linux based and needs 
-                               to be mounted. Docker can give us a little temporary
-                               Linux container to work with. You can uninstall it
-                               later if you want.
+        1)    Docker     -     Needed because the file system that Umbrel is built 
+                               from is Linux based and it needs to be mounted. 
+                               Docker can give us a little temporary Linux container 
+                               to work with. You can uninstall it later if you want.
        
 
 ########################################################################################
@@ -89,7 +75,7 @@ read ; clear ; echo "
         2)    Homebrew   -     This is a package manager for Mac. It allows installtion
                                of programs using the command line only - pretty cool,
                                and necessary for this to work. If installation is
-                               needed, it will be taken care of, but does add possibly
+                               needed, it will be taken care of, but does take possibly
                                5 to 10 minutes extra to the whole process.
         
         3)   Bits and 
@@ -186,8 +172,9 @@ Please wait...
         fi 
     done
 
-# Now that parmanode scripts have been sourced, the code from here on can be tidier, 
-# as Parmanode functions are available.
+            # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
+            # as Parmanode functions are available.
+
 
 # Part 2 dependencies - Macs need Docker
 
@@ -198,9 +185,12 @@ Please wait...
     ParmanodL_directories ;  log "parmanodl" "directory function"
 
 
+
+
+
 #GET UMBREL DISK ID...
     
-    detect_drive umbrelmac
+    detect_drive menu umbrelmac
 
 
 # Macs use Docker functionality here
@@ -208,48 +198,88 @@ Please wait...
     ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
     ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
     
-# Mount the image and dependent directories
+# Template from umbrel_import.sh 
+########################################################################################################################
+cd
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                             UMBREL DRIVE IMPORT TOOL
+$orange
+    This program will convert your Umbrel external drive to make it compatible with
+    Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
-    ParmanodL_mount || { log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
+    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL). 
+    I say \"any\", but do know that if it's another ParmanodL, you still need to 
+    \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
+    option in the tools menu.
 
-# Modify the image with chroot
+    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, otherwise
+    the drive won't work properly.
 
-    ParmanodL_chroot ; log "parmanodl" "finished ParmanodL_chroot"
+########################################################################################
+"
+choose "eq" ; read choice
+case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
-# Debug - opportunity to pause and check
-
-    debug "Chroot finished. Pause to check."
-
-# Unmount the image and system directories
-
-    ParmanodL_unmount ; log "parmanodl" "finished ParmanodL_unmount"
-
-# Get microSD device name into disk variable - user input here
-
-    detect_microSD || { log "parmanodl" "failed at detect_microSD" ; exit ; }
-
-# Write the image to microSD
-
-    ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
-
-# Clean known hosts of parmanodl
- 
-    clean_known_hosts ; log "parmanodl" "finished clean_known_hosts"
-
-# make run_parmanodl for desktop execution
-
-    make_Run_ParmanodL ; log "parmanodl" "finished make_run_parmanodL"
-
-# Remove temporary script
-
-    rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
+while sudo mount | grep -q parmanode ; do 
+set_terminal ; echo -e "
+########################################################################################
     
-# Clean up the mess
+    This function will$cyan refuse to run$orange if it detects an existing mounted 
+    or even connected Parmanode drive. Bad things can happen. 
 
-    ParmanodL_cleanup
+    If you want to continue, make sure any programs syncing to the drive (Bitcoin, or
+    Fulcrum) have been stopped, then$pink unmount$orange the drive, then disconnect it,
+    then come back to this function.
 
-# Success output
+    Or, do you want Parmanode to attempt to cleanly stop everything and unmount the 
+    drive for you?
 
-    ParmanodL_success
+               y)       Yes please, how kind.
 
-# The End
+               nah)     Nah ( = \"No\" in Straylian)
+
+########################################################################################
+"
+choose "xpq" ; read choice ; set_terminal
+case $choice in
+p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
+q|Q) exit ;; 
+y|Y|Yes|yes|YES)
+safe_unmount_parmanode || return 1 
+;;
+*) invalid ;;
+esac
+done
+
+while sudo blkid | grep -q parmanode ; do
+set_terminal ; echo -e "
+########################################################################################
+
+            Please disconnect any Parmanode drive from the computer.
+
+            Hit a and then <enter> to abort.
+
+            Hit <enter> once disconnected.
+
+########################################################################################
+"
+read choice
+case $choice in a|A) return 1 ;; esac
+done
+
+while ! sudo lsblk -o LABEL | grep -q umbrel ; do
+debug "2a"
+set_terminal ; echo -e "
+########################################################################################
+
+    Please insert the Umbrel drive you wish to import, then hit$cyan <enter>.$orange
+
+########################################################################################
+"
+read ; set_terminal ; sync
+done
+
+
+#Get disk ID
