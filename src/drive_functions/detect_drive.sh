@@ -1,6 +1,5 @@
 #used by add_drive function.
 function detect_drive {
-if 
 
 unset disk
 if [[ $1 != menu ]] ; then
