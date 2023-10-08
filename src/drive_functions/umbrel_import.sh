@@ -109,7 +109,7 @@ fi
 # The main changes...
 
 cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/  .bitcoin 
-sudo chown -h .bitcoin
+sudo chown -h $USER:$USER $mount_point/.bitcoin
 debug "after symlink"
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
