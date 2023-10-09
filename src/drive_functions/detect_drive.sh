@@ -76,7 +76,7 @@ if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
-if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  ; then
+if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
     echo "No new drive detected. Try again. Hit <enter>."
     read ; continue 
 fi
@@ -84,13 +84,13 @@ fi
 echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
 if [[ $OS == Mac ]] ; then
-    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    export disk=$(diff -qU0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
+    export disk=$(diff -qy $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi

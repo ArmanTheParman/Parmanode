@@ -21,3 +21,5 @@ system-health-check
     - check symlinks
     - check drive health
     etc
+
+improve detectMicroSD function similar to detect_drive function using diff
