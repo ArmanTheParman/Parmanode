@@ -4,9 +4,10 @@ clearn up EDIT1-9
 logoutput report send
 bre install fails for some - add more error reporst in logs, and npm install checks. Failure
    at npm install is a risk.
-umbrel import
-mynode import
+umbrel import using mac
+mynode import using mac
 raspiblitz import
+sync Linux bitcoin drive using mac
 
 ########################################################################################
                                    reminders
