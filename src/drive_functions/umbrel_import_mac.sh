@@ -37,6 +37,7 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 # Need UID and GID
 
     UIDGID
+    debug "pUID is $pUID and pGID is $pGID"
 
 # Part 2 dependencies - Macs need Docker
 
@@ -44,13 +45,14 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
 # Make necessary directories
 
-    sudo mkdir -p /tmp/umbrel >/dev/null 2>&1
+    sudo mkdir -p $mount_point >/dev/null 2>&1
 
 #GET UMBREL DISK ID...
     
     detect_drive menu 
     # $disk variable (drive ID) extracted
     # drive can't be mounted, it's ext4, but should be connected.
+    debug "disk is $disk"
 
 #Mount
 # Need Docker functionality here for mounting ext4 drives
@@ -82,7 +84,7 @@ $orange
 choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
-umbrel_drive_mods_with_docker
+umbrel_drive_mods_with_docker || return 1
 
 #Clean-up
 ########################################################################################
