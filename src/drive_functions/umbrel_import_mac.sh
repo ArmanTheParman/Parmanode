@@ -49,7 +49,7 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
 #GET UMBREL DISK ID...
     
-    detect_drive menu 
+    detect_drive menu || return 1
     # $disk variable (drive ID) extracted
     # drive can't be mounted, it's ext4, but should be connected.
     debug "disk is $disk"
