@@ -1,45 +1,26 @@
-return 0
-########################################################################################
-# This file is to be kept at parmanode.com.
-# The install script will download it to the desktop and make it executable.
-# https://parmanode.com/umbrel_import.sh
-########################################################################################
-
-#!/bin/bash
-
-# Debug toggle
-
-    if [[ $1 == d ]] ; then export debug=1 ; else export debug=0; fi
-
+function umbrel_import_mac {
 # Variables 
     export log="umbrel-drive" 
     export mount_point="/tmp/umbrel"
-
-# Size 88 wide, and orange colour scheme
-
-    printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
-
-# Intro
-
-   clear ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-   
+  $cyan 
               P A R M A N O D E - Umbrel drive import tool for Macs.
+$orange
+    This program will convert your Linux Umbrel external drive to make it compatible 
+    with Parmanode (Linux), preserving any Bitcoin block data that you may have 
+    already sync'd up.
 
-    This script will use Parmanode software to take an Umbrel external hard drive 
-    (Linux) and use a Mac to convert it so that it can be used with a Linux machine 
-    running Parmanode.
-
-    A simpler approach is to use that Linux machine running Parmanode to convert the
-    drive, using tools available in Parmanode software, but there this is anyway...
+    Note, you can use this Mac to set it up, but the drive will not be available 
+    on the Mac for use with Parmanode (That feature is coming soon).
 
 ########################################################################################
-Hit <enter> to continue, <control>-c to quit.
 "
-read choice ; clear
+choose "epq" ; read choice
+case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
-clear ; echo "
+set_terminal ; echo "
 ########################################################################################
 
     You'll also be asked to remove/insert the Umbrel drive to assist with drive 
@@ -48,133 +29,10 @@ $cyan
             MAKE SURE TO BEGIN WITH, THE UMBREL DRIVE IS NOT CONNECTED.
    $orange 
 ########################################################################################
-
-    Hit <enter> to continue
-    " ; read
-    
-    if [[ $(uname) == Darwin ]] ; then clear ; echo "
-########################################################################################
-
-
-    There are a few extra things that may need to be 
-    installed if you don't have it ...
-
-        1)    Docker     -     Needed because the file system that Umbrel is built 
-                               from is Linux based and it needs to be mounted. 
-                               Docker can give us a little temporary Linux container 
-                               to work with. You can uninstall it later if you want.
-       
-
-########################################################################################
-
-       Hit <enter> to continue
 "
-read ; clear ; echo "
-########################################################################################
+choose "epq" ; read choice
+case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
-
-        2)    Homebrew   -     This is a package manager for Mac. It allows installtion
-                               of programs using the command line only - pretty cool,
-                               and necessary for this to work. If installation is
-                               needed, it will be taken care of, but does take possibly
-                               5 to 10 minutes extra to the whole process.
-        
-        3)   Bits and 
-             bobs        -     A few little tools here an there may also be added to
-                               make the installation go smotther, it won't affect your
-                               system in any negative way.
-    
-########################################################################################
-
-       Hit <enter> to continue
-
-"
-read 
-fi
-echo "
-Please wait...
-"
-
-# Detect the OS
-
-    if [[ $(uname) == Linux ]] ; then export OS=Linux ; fi
-    if [[ $(uname) == Darwin ]] ; then export OS=Mac ; fi
-
-# Detect the Machine
-
-    if [[ $OS == Mac ]] ; then export machine=Mac ; fi
-    if [[ $OS == Linux ]] ; then
-        if sudo cat /proc/cpuinfo | grep "Raspberry Pi" ; then export machine=Pi ; fi
-    fi
-    if [[ $machine != Mac && $machine != Pi ]] ; then export macine=other ; fi
-
-# Detect the chip
-
-    export chip=$(uname -m)
-
-#need to get part 1 dependencies
-
-    if [[ $OS = Mac ]] ; then 
-
-        if ! which brew >/dev/null ; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
-        if ! which brew >/dev/null ; then export warning=1 ; fi
-        fi
-
-        if ! which greadlink >/dev/null ; then
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install coreutils/greadlink. Aborting." ; sleep 4 ; exit ; fi
-            brew install coreutils
-        fi
-
-        if ! which git >/dev/null ; then
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew install git
-        fi
-
-        if ! which ssh >/dev/null ; then 
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew install ssh 
-        fi
-
-        if ! which gpg >/dev/null ; then 
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew install gpg 
-        fi
-    
-    fi
-
-    if [[ $OS == Linux ]] ; then
-        
-        sudo apt-get update -y
-        if ! which vim ; then sudo apt-get install vim -y ; fi
-        if ! which git ; then sudo apt-get install git -y ; fi
-        if ! which ssh ; then sudo apt-get install ssh -y ; fi
-
-    fi
-
-
-# Get Parmanode or update
-
-   if [ ! -e ~/parman_programs/parmanode/src ] ; then
-        mkdir -p ~/parman_programs
-        cd ~/parman_programs
-        git clone --depth 1 https://github.com/armantheparman/parmanode.git || \
-          { announce "Unable to get parmanode scripts with git. Aborting." ; exit 1 ; }
-    else
-        cd $HOME/parman_programs/parmanode/
-        git pull >/dev/null
-    fi
-
-# Source Parmanode & ParmanodL scripts to get needed functions
-
-    for file in ~/parman_programs/parmanode/src/**/*.sh ; do 
-		if [[ $file != *"/postgres_script.sh" ]]; then
-	    source $file 
-        fi 
-    done
-
-            # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
-            # as Parmanode functions are available.
 
 # Need UID and GID
 
@@ -225,3 +83,26 @@ choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
 umbrel_drive_mods_with_docker
+
+#Clean-up
+########################################################################################
+sudo rm -rf /tmp/umbrel
+########################################################################################
+########################################################################################
+
+# Finished. Info.
+set_terminal ; echo -e "
+########################################################################################
+         $cyan 
+                               S U C C E S S !!
+             $orange                  
+    The drive data has been adjusted such that it can be used by Parmanode. It's
+    label has been changed from$cyan umbrel to parmanode${orange}.
+
+    The drive can still be used by Umbrel - swap over at your leisure. 
+
+########################################################################################
+" ; enter_continue ; set_terminal
+
+success "Umbrel Drive" "being imported to Parmanode."
+}
