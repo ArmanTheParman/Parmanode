@@ -63,26 +63,6 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 # Template from umbrel_import.sh 
 ########################################################################################################################
 cd
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                             UMBREL DRIVE IMPORT TOOL
-$orange
-    This program will convert your Umbrel external drive to make it compatible with
-    Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
-
-    Simply use this convert tool, and plug into any Parmanode computer (ParmanodL). 
-    I say \"any\", but do know that if it's another ParmanodL, you still need to 
-    \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
-    option in the tools menu.
-
-    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, otherwise
-    the drive won't work properly.
-
-########################################################################################
-"
-choose "eq" ; read choice
-case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
 umbrel_drive_mods_with_docker || return 1
 

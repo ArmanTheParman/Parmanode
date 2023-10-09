@@ -10,6 +10,7 @@ if [[ $log == "umbrel-drive" ]] ; then
     docker run --privileged -d --device $disk:$disk -v $mount_point:$mount_point --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
         { announce "Couldn't start Docker container. Aborting." ; return 1 ; }
 else
+    debug "log is $log. in else docker run"
     docker run  --privileged -d -v $HOME/ParmanodL:/mnt/ParmanodL --name ParmanodL arm64v8/debian tail -f /dev/null >/dev/null 2>&1 || \
         { announce "Couldn't start Docker container. Aborting." ; return 1 ; }
 fi

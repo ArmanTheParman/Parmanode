@@ -60,7 +60,10 @@ set_terminal ; echo -e "
     Parmanode. Do not connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
-
+$cyan
+    If on a Mac, you get a drive error pop-up, click IGNORE before hitting <enter> 
+    here.
+    $orange
 ########################################################################################
 "
 enter_continue
@@ -84,13 +87,13 @@ fi
 echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
 if [[ $OS == Mac ]] ; then
-    export disk=$(diff -qU0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -qy $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
