@@ -1,6 +1,7 @@
 function log_counter {
 file="$HOME/.parmanode/log_counter.conf"
-source $file >/dev/null
+if [[ -f $file ]] ; then source $file >/dev/null
+fi
 
 if [[ -z $log_count ]] ; then
     echo "log_count=0" > $file 2>/dev/null
