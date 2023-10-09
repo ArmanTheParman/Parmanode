@@ -1,5 +1,5 @@
 function Macs_need_docker {
-if [[ -z $1 ]] ; then log=parmanodl ; fi
+if [[ -z $1 ]] ; then local log=parmanodl ; fi
 
 while true ; do
 

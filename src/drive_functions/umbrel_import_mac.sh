@@ -1,6 +1,6 @@
 function umbrel_import_mac {
 # Variables 
-    export log="umbrel-drive" 
+    export local log="umbrel-drive" 
     export mount_point="/tmp/umbrel"
 set_terminal ; echo -e "
 ########################################################################################
@@ -40,8 +40,10 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
     debug "pUID is $pUID and pGID is $pGID"
 
 # Part 2 dependencies - Macs need Docker
-
+debug "log is $log"
     Macs_need_docker || exit
+debug "after mcasneeddocker, log is $log"
+
 
 # Make necessary directories
 

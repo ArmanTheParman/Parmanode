@@ -21,8 +21,10 @@ function ParmanodL_docker_get_binaries {
 if [[ $uname == Linux ]] ; then return 0 ; fi
 
 # Get necessary binaries inside the container
+name=ParmanodL
+if [[ $log == "umbrel-drive" ]] ; then name=umbrel ; fi
 
-    docker exec ParmanodL /bin/bash -c 'apt-get update -y && apt-get install sudo fdisk -y' || \
+    docker exec $name /bin/bash -c 'apt-get update -y && apt-get install sudo fdisk -y' || \
         { announce "Couldn't execute updates in Docker container. Aborting." ; return 1 ; }
 
 }
