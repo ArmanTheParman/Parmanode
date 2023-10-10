@@ -1,0 +1,33 @@
+# Make Vagrantfile
+# Need to pass in variables...
+# Setup script included in config.vim.provision block
+
+return 0
+cat > ./Vagrantfile << EOF
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+config.vm.box = "debian/bullseye64"
+    config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"  # Set VM to have 2GB of RAM
+    vb.cpus = 2        # Set VM to use 2 CPUs
+    vb.customize ["modifyvm", :id, "--vram", "16"]
+    vb.name = "ParmanodeVM"
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbehci", "on"]
+    vb.customize ["modifyvm", :id, "--usbxhci", "on"]
+    vb.customize ["usbfilter", "add", "0", "--target", "Parmanode", "--name", "P_drive", "--vendorid", "$vendorID", "--productid", "$productID"]
+
+end
+
+#config.vbguest.auto_update = true
+
+config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y vim fdisk sudo 
+SHELL
+end
+
+EOF

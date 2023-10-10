@@ -1,3 +1,5 @@
+return 0
+#doesn't work - issues connecting ext4 drive to mac Docker.
 function umbrel_import_mac {
 # Variables 
     export local log="umbrel-drive" 
