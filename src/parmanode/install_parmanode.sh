@@ -50,8 +50,8 @@ set_terminal ; echo "
                                       				    
     Parmanode has been installed. 
     
-    You can now go to the \"add\" menu to install the prgrams you want, 
-    eg Bitcoin Core and many others.
+    You can now go to the \"add\" menu to install the programs you want, 
+    e.g. Bitcoin Core and many others.
 
 ########################################################################################
 "

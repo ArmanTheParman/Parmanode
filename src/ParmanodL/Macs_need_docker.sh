@@ -1,4 +1,5 @@
 function Macs_need_docker {
+if [[ -z $1 ]] ; then local log=parmanodl ; fi
 
 while true ; do
 
@@ -6,7 +7,7 @@ while true ; do
 
         if ! which docker >/dev/null 2>&1 ; then  #need to install docker and make sure it's running
             download_docker_mac && export docker=downloaded
-            log "parmanodl" "download_docker_mac done"
+            log "$log" "download_docker_mac done"
         fi
         
         if ! which docker >/dev/null ; then return 1 ; fi
