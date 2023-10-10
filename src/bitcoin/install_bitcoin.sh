@@ -72,12 +72,12 @@ please_wait && run_bitcoind
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
-    
+   $cyan 
                                     SUCCESS !!!
-
-    Bitcoin Core should have started syncing. Note is should also continue to sync 
+$orange
+    Bitcoin Core should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
     any time.
 

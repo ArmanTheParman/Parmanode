@@ -4,15 +4,8 @@ return 0
 
 #!/bin/sh
 
-if [ $(uname -s) == Darwin ] ; then
-clear
-echo "
-########################################################################################
-
-    The installation method is not yet available for Macs. Aborting.
-
-########################################################################################
-"
+if [ $(uname -s) = Darwin ] ; then
+curl https://parmanode.com/install_4mac.sh | sh
 exit
 fi
 
@@ -49,4 +42,3 @@ Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
-# IT IS NON FUNCTIONAL IN ITS CURRENT FORM HERE

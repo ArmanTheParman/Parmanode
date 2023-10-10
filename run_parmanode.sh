@@ -120,6 +120,11 @@ curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null
 #autoupdate question
     if grep -q parmanode-end < $HOME/.parmanode/installed.conf ; then autoupdate ; fi	
 	
+# TESTING SECTION ######################################################################
+
+if [[ $2 == u ]] ; then umbrel_import_mac ; fi
+
+########################################################################################
 #Begin program:
 	set_terminal # custom function for screen size and colour.
 	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
