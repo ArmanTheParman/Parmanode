@@ -1,7 +1,9 @@
+Version 3.8.4
+    -Ledger Live added
 Version 3.8.3
-    -BitBox App
+    -BitBox App added
 Version 3.8.2
-    -Trezor Suite
+    -Trezor Suite added
     -removed need to "insall" parmanode
     -motd added
 Version 3.8.1
