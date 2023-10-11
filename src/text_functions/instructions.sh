@@ -27,15 +27,11 @@ set_terminal ; echo -e "
     
 To hide this message next time, type in$pink \"Free Ross\"$orange then <enter>.
 
-To read about why you should run a node at all, (Parman's 6 reasons to run a node)
-type$pink \"node\"$orange and <enter>.
-
 To continue on to the main menu, just hit$cyan <enter>${orange}.
 "
 read choice
 case $choice in 
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ; set_terminal ;;
-node|NODE|Node) 6reasons_node ;;
 esac
 fi
 return 0
