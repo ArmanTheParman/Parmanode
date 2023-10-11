@@ -18,16 +18,16 @@ config.vm.box = "debian/bullseye64"
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ["modifyvm", :id, "--usbehci", "on"]
     vb.customize ["modifyvm", :id, "--usbxhci", "on"]
-    vb.customize ["usbfilter", "add", "0", "--target", "Parmanode", "--name", "P_drive", "--vendorid", "$vendorID", "--productid", "$productID"]
+    vb.customize ["usbfilter", "add", "0", "--target", "ParmanodeVM", "--name", "P_drive", "--vendorid", "$vendorID", "--productid", "$productID"]
 
 end
 
 #config.vbguest.auto_update = true
 
-config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y vim fdisk sudo 
-SHELL
+ config.vm.provision "shell", inline: <<-SHELL
+     apt-get update
+     apt-get install -y vim fdisk sudo 
+ SHELL
 end
 
 EOF
