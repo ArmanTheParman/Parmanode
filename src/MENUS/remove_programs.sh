@@ -271,7 +271,7 @@ if [[ $bitboxmenu == 1 ]] ; then
 	;;
 ll|LL|Ll)
 if [[ $ledgermenu == 1 ]] ; then
-    uninstal_ledger
+    uninstall_ledger
 	return
 	fi
 	;;

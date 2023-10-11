@@ -18,14 +18,16 @@ fi
 #Regular shasum --check not possible because Ledger fucked up the spacing in the SHA file
 #Resorting to manual checking.
 if [[ $OS == Mac ]] ; then
-sha_ledger_result=$(shasum -a 512 ledger*dmg)
+sha_ledger_result=$(shasum -a 512 ledger*dmg | awk '{print $1}')
 fi
+
 if [[ $OS == Linux ]] ; then
-sha_ledger_result=$(shasum -a 512 ledger*AppImage)
+sha_ledger_result=$(shasum -a 512 ledger*AppImage | awk '{print $1}')
 fi
 
 sha_check=$(grep .dmg < $shasum | awk '{print $1}') >/dev/null
-if [[ $sha_check == sha_ledger_result ]] ; then
+
+if [[ $sha_check == $sha_ledger_result ]] ; then
 announce "SHA512 test PASSED."
 else
 announce "SHA512 test FAILD. Aborting."
