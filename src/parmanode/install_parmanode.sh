@@ -9,7 +9,8 @@ make_dot_parmanode
 parmanode_conf_add
 
 # Update config files - make redundant later.
-    installed_config_add "parmanode-end" # This syntax, -start and -end, helps identifiy installations
+     installed_config_add "parmanode-start"
+     installed_config_add "parmanode-end" # This syntax, -start and -end, helps identifiy installations
     #that have started vs installations that have completed.
 
 # Load config variables
