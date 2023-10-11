@@ -5,8 +5,10 @@ set_terminal
 echo "
 ########################################################################################
 
-      It is strongly recommended that you update your operating system first (hit \"y\"
-      at the prompt to do so. Parmanode will do that for you now.)
+      
+      Before using Parmanode, it is strongly recommended that you update your 
+      operating system first (hit \"y\" at the prompt to do so. Parmanode will do 
+      that for you now.)
 
       If you have an old installation of \"Homebrew\", this really needs to be updated 
       or you're likely to run into errors.
