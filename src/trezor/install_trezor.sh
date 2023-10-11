@@ -1,5 +1,5 @@
 function install_trezor {  
-set_termianl
+set_terminal
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir && cd $trezorDir
 installed_conf_add "trezor-start"
