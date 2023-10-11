@@ -1,4 +1,5 @@
 function install_trezor {  
+set_termianl
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir && cd $trezorDir
 installed_conf_add "trezor-start"
@@ -8,6 +9,9 @@ curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Tre
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-mac-arm64.dmg.asc
 verify_trezor || return 1
 hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
+cd $trezorDir
+hditil detach *.dmg
+sudo rm -rf *.dmg
 fi
 
 if [[ $chip == x86_64 && $OS == Mac ]] ; then
@@ -15,6 +19,9 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-mac-x64.dmg.asc
 verify_trezor || return 1
 hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
+cd $trezorDir
+hditil detach *.dmg
+sudo rm -rf *.dmg
 fi
 
 if [[ $chip == x86_64 && $OS == Linux ]] ; then

@@ -56,7 +56,10 @@ if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
                        echo "    (ers)        electrs 
                             " ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
-                       echo "    (lnb)        lnbits 
+                       echo "    (lnb)        Lnbits 
+                            " ; fi
+if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
+                       echo "    (trz)        Trezor Suite 
                             " ; fi
 echo "                            
 #######################################################################################
@@ -152,7 +155,11 @@ ers|ERS|Ers)
    menu_electrs
    fi
    ;;
-
+trz|TRZ|Trz)
+   if [[ $trezorapp == 1 ]] ; then
+   menu_trezor
+   fi
+   ;;
 p)
    return 0
    ;;

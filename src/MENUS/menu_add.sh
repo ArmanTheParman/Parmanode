@@ -294,7 +294,7 @@ if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
 if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
 if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
-if [[ -n $trezor_n]]           ; then echo  "$trezor_n"; fi
+if [[ -n $trezor_n ]]           ; then echo  "$trezor_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -313,7 +313,7 @@ if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
 if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
-if [[ -n $trezor_i]]          ; then echo  "$trezor_i"; fi
+if [[ -n $trezor_i ]]          ; then echo  "$trezor_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -332,7 +332,7 @@ if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
 if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
-if [[ -n $trezor_p]]          ; then echo  "$trezor_p"; fi
+if [[ -n $trezor_p ]]          ; then echo  "$trezor_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
