@@ -28,9 +28,6 @@ if which tor >/dev/null 2>&1 ; then torapp=1
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
                        echo "    (l)          LND
                             " ; fi
-# if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
-#                        echo "    (mem)        Mempool Space 
-#                             " ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
                        echo "    (s)          Sparrow Wallet 
                             " ; fi
@@ -56,7 +53,13 @@ if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
                        echo "    (ers)        electrs 
                             " ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
-                       echo "    (lnb)        lnbits 
+                       echo "    (lnb)        Lnbits 
+                            " ; fi
+if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
+                       echo "    (trz)        Trezor Suite 
+                            " ; fi
+if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
+                       echo "    (bb)         BitBox App 
                             " ; fi
 echo "                            
 #######################################################################################
@@ -152,7 +155,16 @@ ers|ERS|Ers)
    menu_electrs
    fi
    ;;
-
+trz|TRZ|Trz)
+   if [[ $trezorapp == 1 ]] ; then
+   menu_trezor
+   fi
+   ;;
+bb|BB|Bb)
+   if [[ $bitboxapp == 1 ]] ; then
+   menu_bitbox
+   fi
+   ;;
 p)
    return 0
    ;;

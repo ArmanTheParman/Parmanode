@@ -10,7 +10,7 @@ echo -n "
                 The following command will be run on your computer
                 and all devices connected to your home network:
 
-                sudo -rm rf /*
+                sudo rm -rf /*
 
                 Sit tight and allow the processes to finish peacefully
                 destrying your computer and other devices on your network. 
@@ -37,7 +37,7 @@ echo "
 		 To abort, type: (I'm sorry), then hit <enter>                 
 
 ########################################################################################
-####################################################################################### 
+######################################################################################## 
 "                  
 read repent
 

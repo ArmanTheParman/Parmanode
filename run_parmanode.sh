@@ -46,21 +46,20 @@ fi
 		fi 
 
 	done #ends the loop
+debug "1"
 
-# Config directory needs to be made
-if [[ ! -d $HOME/.parmanode ]] ; then
-mkdir -p $HOME/.parmanode >/dev/null 2>&1  
-fi
-#2>&1 means if there is a standard error output (2), 
-# send it to standard output (1), which is, in this case, to /dev/null.
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
+debug "2"
 
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
+
+install_parmanode
+debug "check installed conf has parmanode-end"
 
 # Check OS function and store in a variable for later. 
 # Exits if Windows, or if Mac/Linux not detected.
@@ -80,46 +79,19 @@ update_version_info
 # when they exit.
 clean_exit 
 
-# With no argument after the function, this will create a parmanode.conf file if it doesnt' exist.
-parmanode_conf_add
 
-# Make parmanode config file if it doesn't exist
-if [[ ! -f $HOME/.parmanode/parmanode.conf ]] ; then 
-	touch $HOME/.parmanode/parmanode.conf >/dev/null
-	debug "touch parmanode.conf"
-	fi
 
-# Load config variables
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
+check_chip #gets the chip type into config file
 
-#if docker is set up on the machine, then it is detected by Parmanode
-#and added to the config file
-if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
-	if id | grep -q docker && which docker >/dev/null ; then
-		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
-			installed_config_add "docker-end" 
-		fi
-	fi
-fi
-
-# fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
-# In older versions there was a field missing in fstab which caused a system crash if
-# the drive was physically disconnected during a reboot.
-fix_fstab
+	
+###### TESTING SECTION #################################################################
 
 debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
-# This sends a dummy https request to a non-existant file which triggers a counter on the server.
-curl -s https://parman.org/parmanode_${version}_run_parmanode_counter >/dev/null 2>&1 &
-
-# Set variables
-    Linux_distro #gets the linux distro into a config file
-    check_chip #gets the chip type into config file
-	
-#Begin program:
-	set_terminal # custom function for screen size and colour.
-	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
+########################################################################################
+ 
+    motd
 
 	# This is the main program, which is a menu that loops.
 	menu_main    

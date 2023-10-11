@@ -15,11 +15,14 @@ time with no screen feedback, probably more than 10 minutes.
 
 Let this be a lesson that you should have been using Linux :P
 
+To get a status snapshot, you can hit <control> T, as many times
+as you like.
+
 Please wait...
 
 "
 sudo dd if="${image_path}" of="${disk}" bs=2000000 
 fi
-
+# will change to dcfldd soon
 sync
 }

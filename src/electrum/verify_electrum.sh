@@ -4,7 +4,7 @@ cd $HOME/parmanode/electrum
 
 gpg --import ./*Thomas*
 
-if [[ $computer_type == "Linux" ]] ; then
+if [[ $computer_type == "LinuxPC" ]] ; then
 if ! gpg --verify electrum*.asc electrum*.AppImage 2>&1 | grep "Good" ; then 
     echo "GPG verification failed. Aborting."
     log "electrum" "verification failed. Aborting."

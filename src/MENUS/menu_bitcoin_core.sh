@@ -1,22 +1,27 @@
 function menu_bitcoin_core {
 while true
 do
-set_terminal_custom "45"
-source ~/.parmanode/parmanode.conf >/dev/null
+set_terminal_custom "50"
+source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
 
 unset running output1 output2 
-if ! ps -x | grep bitcoind | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
-if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
-if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
+if [[ $OS == Mac ]] ; then
+    if pgrep Bitcoin-Q >/dev/null ; then running=true ; else running=false ; fi
+else
+    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
+    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
+    if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
+fi
+
 
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1="                   Bitcoin is RUNNING -- see log menu for progress" 
+output1="                   Bitcoin is$pink RUNNING$orange-- see log menu for progress"
 
 output2="                         (Syncing to the $drive drive)"
 else
-output1="                   Bitcoin is NOT running -- choose \"start\" to run"
+output1="                   Bitcoin is$pink NOT running$orange -- choose \"start\" to run"
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
@@ -25,13 +30,12 @@ echo -e "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
-
 "
-echo "$output1"
+echo -e "$output1"
 echo ""
-echo "$output2"
+echo -e "$output2"
 echo ""
-echo "
+echo -e "
 
 
       (start)    Start Bitcoind............................................(Do it)
@@ -39,23 +43,28 @@ echo "
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
-
-      (c)        How to connect your wallet...........(Otherwise no point to this)
-
+      
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
 	    
       (log)      Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
 
       (bc)       Inspect and edit bitcoin.conf file 
 
-      (dd)       Backup/Restore data directory.................(Instructions only)
-
       (up)       Set, remove, or change RPC user/pass
 
-      (ai)       Add rpcallowip values to bitcoin.conf........... (Advanced stuff)
-      
       (tor)      Tor menu options for Bitcoin
 
+      (bring)    Bring a drive from another Parmanode installation (import)
+      
+      (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
+
+      (ru)       Revert a drive back to Umbrel from Parmanode
+
+      (mn)       Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
+
+      (rm)       Revert a drive back to MyNode from Parmanode 
+
+      (o)        OTHER...
 
 ########################################################################################
 "
@@ -68,10 +77,14 @@ run_bitcoind
 ;;
 
 stop|STOP|Stop)
-while pgrep bitcoind ; do 
-stop_bitcoind 
-sleep 2
-done
+if [[ $OS == Linux ]] ; then
+    while pgrep bitcoind ; do 
+    stop_bitcoind 
+    sleep 2
+    done
+elif [[ $OS == Mac ]] ; then
+    stop_bitcoind
+fi
 
 ;;
 
@@ -81,6 +94,10 @@ if [[ $OS == "Mac" ]] ; then
 stop_bitcoind 
 run_bitcoind "no_interruption"
 fi
+;;
+
+cd|CD|Cd)
+change_bitcoin_drive
 ;;
 
 c|C)
@@ -94,16 +111,19 @@ continue
 ;;
 
 log|LOG|Log)
-echo "
+log_counter
+if [[ $log_count -le 10 ]] ; then
+echo -e "
 ########################################################################################
     
     This will show the bitcoin debug.log file in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
 enter_continue
+fi
 set_terminal_wider
 tail -f $HOME/.bitcoin/debug.log &
 tail_PID=$!
@@ -112,7 +132,9 @@ wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 set_terminal
 continue ;;
-
+RU|Ru)
+    umbrel_import_reverse
+    ;;
 
 bc|BC)
 echo "
@@ -141,7 +163,9 @@ echo "
     ever to experience data corruption and needed to resync the blockchain.
 
     It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
-    work correctly when it comes time to use the backed up data, and it's likely the 
+    work correctly when it comes time toRU|Ru)
+    umbrel_import_reverse
+    ;; use the backed up data, and it's likely the 
     directory will become corrupted. You have been warned.
 
     You can copy the entire bitcoin_data directory.
@@ -177,16 +201,34 @@ set_rpc_authentication
 continue
 ;;
 
-ai|AI|aI|Ai)
-rpcallowip_add
-continue
-;;
-
 tor|TOR|Tor)
 menu_tor_bitcoin
 continue
 ;;
 
+bring|BRING|Bring)
+add_drive
+;;
+
+ub|UB|Ub)
+umbrel_import 
+;;
+
+mn|MN|Mn)
+mynode_import
+;;
+
+rm|RM|Rm)
+mynode_revert
+;;
+
+o|O)
+bitcoin_other || return 1
+;;
+
+ru|RU|Ru)
+umbrel_revert
+;;
 
 p|P)
 return 1

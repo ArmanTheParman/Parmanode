@@ -99,17 +99,21 @@ continue
 ;;
 
 log|LOG|Log)
-echo "
+set_terminal
+log_counter
+if [[ $log_count -le 20 ]] ; then
+echo -e "
 ########################################################################################
     
     This will show the fulcrum log output in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
+enter_continue
+fi
 if [[ $OS == "Linux" ]] ; then
-    enter_continue
     set_terminal_wider
     journalctl -fexu fulcrum.service &
     tail_PID=$!
@@ -119,7 +123,6 @@ if [[ $OS == "Linux" ]] ; then
     set_terminal
 fi
 if [[ $OS == "Mac" ]] ; then
-    enter_continue
     set_terminal_wider
     docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
     echo ""

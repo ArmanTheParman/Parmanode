@@ -10,7 +10,8 @@ fi
 
 
 if [[ $1 = "add" ]] ; then 
-which nginx >/dev/null || { announce "Nginx not installed. Aborting." && return 1 ; } 
+which nginx >/dev/null || { log "electrs. 'which nginx' failed. Can't do ssl redirection" ; \
+announce "Test for Nginx Failed. Can't do SSL redirection. Proceed with Caution" ; return 1 ; }
 set_terminal
 [ ! -f $HOME/parmanode/electrs/cert.pem ] && { announce "Can't add SSL redirection using Nginx - no certificate found. Aborting." && return 1 ; }
 [ ! -f $HOME/parmanode/electrs/key.pem ] && { announce "Can't add SSL redirection using Nginx - no key found. Aborting." && return 1 ; } 

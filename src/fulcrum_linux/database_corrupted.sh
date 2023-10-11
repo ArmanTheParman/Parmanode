@@ -35,12 +35,12 @@ if [[ $drive_fulcrum == external ]] ; then
          sudo rm -rf /media/$USER/parmanode/fulcrum_db  
          sudo mkdir /media/$USER/parmanode/fulcrum_db
     else
-    rm -rf /Volumes/parmanode/fulcrum_db
-    sudo mkdir /Volumes/parmanode/fulcrum_db
+         rm -rf /Volumes/parmanode/fulcrum_db
+         sudo mkdir /Volumes/parmanode/fulcrum_db
     fi
 else
-rm -rf $HOME/parmanode/fulcrum_db
-mkdir $HOME/parmanode/fulcrum_db
+    rm -rf $HOME/parmanode/fulcrum_db
+    mkdir $HOME/parmanode/fulcrum_db
 fi
 break
 ;;

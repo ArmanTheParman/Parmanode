@@ -8,12 +8,7 @@ fi
 
 
 if [[ $drive_electrs == "external" ]] ; then
-       if [[ $electrs_db_restore == "false" ]] ; then
-       debug "making electrs db because restore is false"
-       mkdir -p /media/$USER/parmanode/electrs_db 
-       return 0
-       fi
+ return 0
+ # drive preparation done in "restor_electrs_drive" 
 fi  
-
-debug "end of prepare_drive_electrs"
 }

@@ -24,38 +24,41 @@ if [ -d $HOME/.electrs_backup ] ; then
 
 while true ; do
     set_terminal
-    echo "
+    echo -e "
 ########################################################################################
 
-    A backup of electrs directory has been found in addition to the electrs
-    installation. 
+    A$pink backup$orange of electrs directory has been found in addition to the 
+    current electrs installation (${pink}$HOME/.electrs_backup$orange)
     
-    Keeping it can save you time compiling it all again if you choose to re-install it.
+    Keeping the backup can save you time compiling it all again if you choose to 
+    re-install electrs.
+$pink 
+    Remove$orange the backup too? 
 
-    Remove that too? 
-
-                                 y    or    n ?
+                                 y    or    n  ?
 
 ######################################################################################## 
 "
+    set_terminal
     read choice
     case $choice in
-    y|Y) please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ;;
-    n|N) please_wait ; break ;;
+    y|Y) 
+    please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
+    n|N) 
+    please_wait ; break ;;
     *) invalid
     esac
 done
 fi
 
-
 electrs_nginx remove
 electrs_tor_remove
 
-sudo systemctl stop electrs.service >/dev/null
-sudo systemctl disable electrs.service >/dev/null
-sudo rm /etc/systemd/system/electrs.service >/dev/null
+sudo systemctl stop electrs.service >/dev/null 2>&1
+sudo systemctl disable electrs.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
 
-if [[ $drive_electrs == "external" ]] ; then
+if [[ $drive_electrs == "external" && -e /media/$USER/parmanode/electrs_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################
@@ -75,9 +78,14 @@ choose "xpq"
 read choice
 set_terminal
 case $choice in
-q|Q) quit 0 ;; p|P) return 1 ;;
-d|D) sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
-l|L) break ;;
+q|Q) 
+quit 0 ;; 
+p|P) 
+return 1 ;;
+d|D) 
+sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
+l|L) 
+break ;;
 b|B) 
 if [[ -d /media/$USER/parmanode/electrs_db_backup ]] ; then
     electrs_backup_exists #function defined below

@@ -27,22 +27,34 @@ echo "
 ########################################################################################
 "
 choose "xq" ; read choice 
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then log "bitcoin" "skip; not deleting .bitcoin on drive" ; break ; fi
-if [[ $choice == "d" ]] ; then log "bitcoin" "deleting .bitcoin on drive" 
-    cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
-    || { log "bitcoin" "error deleting .bitcoin dir"
-    debug "Error deleting .bitcoin directory. Continuing." ; } ;  break ; fi 
-    
-log "bitcoin" "if statements all skipped in rem_bit_dir function. unexpected. " && \
-invalid #if all above if statements not true, then invalid choice and loop.
+case $choice in
+
+q|Q|Quit|QUIT) 
+exit ;;
+
+s|S|skip|Skip|SKIP)
+log "bitcoin" "skip; not deleting .bitcoin on drive" 
+break 
+;;
+
+d|D|DELETE|Delete)
+log "bitcoin" "deleting .bitcoin on drive" 
+cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
+|| { log "bitcoin" "error deleting .bitcoin dir"
+debug "Error deleting .bitcoin directory. Continuing." ; } 
+break 
+;;
+
+*) invalid ;;
+esac
 done
 fi #end checking external drive for data directory
+
 
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:
@@ -55,28 +67,28 @@ set_terminal ; echo "
 
                             s)          skip     
 
-    If skipping, and you have chosen an external drive, it will be renamed to 
-    .bitcoin_backup0 in order to created a symlink to the external drive of the 
-    same name.               
+    If skipping it will be renamed to$cyan bitcoin_backup0$orange.
 
 ########################################################################################
 "
 choose "xq" ; read choice 
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "s" ]] ; then 
-            if [[ $drive == "external" ]] ; then 
-            log "bitcoin" "user chose to skip deleting internal .bitcoin drive. make backup executing." && \
-            make_backup_dot_bitcoin ; fi
-            break ; fi
-if [[ $choice == "d" ]] ; then 
+case $choice in
+q|Q|quit|QUIT) 
+exit 0 ;;
+s|S|SKIP|skip|Skip)
+    log "bitcoin" "user chose to skip deleting internal .bitcoin drive. make backup executing." && \
+    make_backup_dot_bitcoin 
+    break
+    ;;
+d|D|delete|Delete|DELETE)
     log "bitcoin" "user chose to delete internal .bitcoin dir"
     cd && rm -rf $HOME/.bitcoin ; debug1 "check output deleting" 
-    break ; fi 
-    
-invalid #if all above if statements not true, then invalid choice and loop.
+    break 
+    ;; 
+*) invalid ;;
+esac
 done
 fi #end checking internal drive for .bitcoin directory
-
 
 
 #Remove symlink to drive

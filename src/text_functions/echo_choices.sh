@@ -14,6 +14,8 @@ echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }
 
+function enter_return { enter_continue "$@" ; }
+
 function enter_exit {
 echo -e "${yellow}Hit ${cyan}<enter>${yellow} to exit.$orange" ; read
 return 0
@@ -30,6 +32,12 @@ fi
 if [[ $1 == "xq" ]]
 then
 echo -e "${yellow}Type your ${cyan}choice${yellow}, or ${cyan}(q)${yellow} to quit, then <enter>: $orange"
+return 0
+fi
+
+if [[ $1 == "eq" ]]
+then
+echo -e "${yellow}Hit ${cyan}<enter>${yellow}, to continue, or ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 return 0
 fi
 

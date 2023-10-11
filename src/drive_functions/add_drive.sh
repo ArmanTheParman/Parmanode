@@ -1,9 +1,28 @@
 function add_drive {
 if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
-info_add_drive || return 1
+info_add_drive $@ || return 1 # safe unmount executed
 
-detect_drive
+set_terminal ; echo -e "$pink
+########################################################################################
+Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
+or else bad things will happen to your computer.$orange
+########################################################################################
+" ; enter_continue
+set_terminal ; echo -e "$cyan
+########################################################################################
+   Now Parmanode will safely unmount your regular Parmanode drive by stopping the
+   programs usinging then unmounting. YOU MUST PHYSICALLY DISCONNECT THE DRIVE
+   AFTER THIS IS DONE OR BAD THINGS WILL HAPPEN - NOT JOKING.
+########################################################################################
+" ; enter_continue
+safe_unmount_parmanode || return 1
+set_terminal 
+echo "The drive should be unmounted."
+echo "Remember to physically disconnect your regular Parmanode drive."
+enter_continue ; set_terminal
+
+detect_drive $@ || return 1 #menu
 
 drive_details || return 1
 
@@ -29,6 +48,10 @@ if [[ $OS == "Linux" ]] ; then
 
 sudo mount -a
 
+cd /media/$USER/parmanode/
+sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
+sudo chown -R $USER:$USER .bitcoin fulcrum_db electrs_db
+
 set_terminal ; echo "
 ########################################################################################
 
@@ -49,10 +72,10 @@ source $HOME/.parmanode/var
 if [[ $OS == "Mac" ]] ; then
 set_terminal
 diskutil info $disk
-echo "
+echo -e "
 ########################################################################################
 
-    Type yes if you think this is the correct drive to use, anything else to abort.
+    Type$cyan yes$orange if you think this is the correct drive to use, anything else to abort.
 
 ########################################################################################
 "
@@ -70,7 +93,8 @@ echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
 echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
 echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
 
-echo "
+set_terminal
+echo -e "
 ########################################################################################
 
     DETAILS OF THE DRIVE ...
@@ -87,8 +111,8 @@ echo "
     Hit <enter> to continue
 ########################################################################################
 " ; read ; return 0 ; fi
-echo "
-    Type yes if you think this is correct, anything else to abort.
+echo -e "
+    Type$cyan yes$orange if you think this is correct, anything else to abort.
 
 ########################################################################################
 "

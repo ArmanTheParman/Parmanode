@@ -2,21 +2,22 @@ function install_bitcoin {
 
 set_terminal
 
-if [[ $OS == "Mac" ]] ; then
+#EDIT1
+# if [[ $OS == "Mac" ]] ; then
 
-        if ! grep -q "btc_dependencies" /home/.parmanode/installed.conf ; then
-        # A function followed by || means that if the function fails, the OR operator makes
-        # the following block run, otherwise it skips it.
-        bitcoin_dependencies || 
-                {
-                set_terminal
-                echo "Unable to install bitcoin dependencies. Aborting." 
-                echo "Sometimes repeating installing Bitcoin will work for this error." 
-                enter_continue 
-                return 1 
-                }
-        fi
-fi
+#         if ! grep -q "btc_dependencies" /home/.parmanode/installed.conf ; then
+#         # A function followed by || means that if the function fails, the OR operator makes
+#         # the following block run, otherwise it skips it.
+#         bitcoin_dependencies || 
+#                 {
+#                 set_terminal
+#                 echo "Unable to install bitcoin dependencies. Aborting." 
+#                 echo "Sometimes repeating installing Bitcoin will work for this error." 
+#                 enter_continue 
+#                 return 1 
+#                 }
+#         fi
+# fi
 
 choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
@@ -48,11 +49,10 @@ log "bitcoin" "make_bitcoin_directories function..."
             statement=$(ls -dlah /media/$(whoami)/parmanode) && \
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
+debug "a"
 
 # Download bitcoin software
-
-    if [[ $OS == "Linux" ]] ; then download_bitcoin_linux || return 1 ; fi
-    if [[ $OS == "Mac" ]] ; then download_bitcoin_mac || return 1 ; fi
+download_bitcoin || return 1
 
 #setup bitcoin.conf
 log "bitcoin" "make_bitcoin_conf function ..."
@@ -60,7 +60,8 @@ make_bitcoin_conf || return 1
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then
-make_mount_check_script ; fi
+    make_mount_check_script 
+fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" ]] ; then 
@@ -71,12 +72,12 @@ please_wait && run_bitcoind
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
-    
+   $cyan 
                                     SUCCESS !!!
-
-    Bitcoin Core should have started syncing. Note is should also continue to sync 
+$orange
+    Bitcoin Core should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
     any time.
 
@@ -95,6 +96,7 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
+#EDIT7
 echo "
 ########################################################################################
     
@@ -103,6 +105,9 @@ echo "
     Bitcoin Core can begin syncing once you select \"START\" from the Bitcoin menu
     found under the \"Run Parmanode\" menu. You can also watch it fly if you select
     to observe the log file (same menu).
+
+    Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
+    App icon in the Applications folder.
     
     For now, I have not created a service file to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 

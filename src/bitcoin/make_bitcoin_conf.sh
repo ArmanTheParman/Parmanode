@@ -4,12 +4,36 @@ function make_bitcoin_conf {
 #Overrides any existing file named bitcoin.conf
 set_terminal
 
+cat << EOF > /tmp/bitcoin.conf
+server=1
+txindex=1
+blockfilterindex=1
+daemon=1
+rpcport=8332
+
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+
+whitelist=127.0.0.1
+rpcbind=0.0.0.0
+rpcallowip=127.0.0.1
+rpcallowip=10.0.0.0/8
+rpcallowip=192.168.0.0/16
+rpcallowip=172.17.0.0/16 
+EOF
+
+
+file="$HOME/.bitcoin/bitcoin.conf"
+loop=do
+if [[ $1 == umbrel ]] ; then export prune=0 ; loop=break ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
+
+
 
 if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
         while true ; do
-        if [[ $installer == parmanodl ]] ; then break ; fi #overwrites any existing conf file 
+        if [[ $installer == parmanodl || $loop=break ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
 	    set_terminal ; echo "
 ########################################################################################
 
@@ -39,21 +63,7 @@ esac
 done
 fi
 
-echo "server=1
-txindex=1
-blockfilterindex=1
-daemon=1
-rpcport=8332
+sudo mv /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 
-zmqpubrawblock=tcp://127.0.0.1:28332
-zmqpubrawtx=tcp://127.0.0.1:28333
-
-whitelist=127.0.0.1
-rpcbind=0.0.0.0
-rpcallowip=127.0.0.1
-rpcallowip=10.0.0.0/8
-rpcallowip=192.168.0.0/16
-rpcallowip=172.17.0.0/16" > $HOME/.bitcoin/bitcoin.conf && log "bitcoin" "bitcoin conf made"  
-
-apply_prune_bitcoin_conf # Here is where the prune choice is added to bitcoin.conf
+apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
 }
