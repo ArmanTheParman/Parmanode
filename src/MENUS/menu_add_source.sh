@@ -213,6 +213,9 @@ else
 trezor_n="#                            (trz)         Trezor Suite                                #"
 fi
 
+#Bitbox
+unset bitbox_i bitbox_p bitbox_n
+
 if grep -q "bitbox-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 bitbox_i="#                                      BitBox                                          #"
@@ -222,5 +225,19 @@ bitbox_p="#                                      BitBox                         
 else
    #not installed
 bitbox_n="#                            (bb)          Bitbox                                      #"
+fi
+
+#Ledger
+unset ledger_i ledger_p ledger_n
+
+if grep -q "ledger-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+ledger_i="#                                      Ledger                                          #"
+elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+ledger_p="#                                      Ledger                                          #"
+else
+   #not installed
+ledger_n="#                            (ll)          Ledger                                      #"
 fi
 }

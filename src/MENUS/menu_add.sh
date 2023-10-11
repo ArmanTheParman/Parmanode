@@ -36,6 +36,7 @@ if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
 if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
 if [[ -n $trezor_n ]]           ; then echo  "$trezor_n"; fi
 if [[ -n $bitbox_n ]]           ; then echo  "$bitbox_n"; fi
+if [[ -n $ledger_n ]]           ; then echo  "$ledger_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -55,7 +56,7 @@ if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
 if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
 if [[ -n $trezor_i ]]          ; then echo  "$trezor_i"; fi
-if [[ -n $bitbox_i ]]          ; then echo  "$bitbox_i"; fi
+if [[ -n $ledger_i ]]          ; then echo  "$ledger_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -75,7 +76,7 @@ if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
 if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
 if [[ -n $trezor_p ]]          ; then echo  "$trezor_p"; fi
-if [[ -n $bitbox_p ]]          ; then echo  "$bitbox_p"; fi
+if [[ -n $ledger_p ]]          ; then echo  "$ledger_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -206,6 +207,13 @@ case $choice in
    bb|BB|Bb)
       if [[ -n $bitbox_n ]] ; then
       install_bitbox 
+      return 0
+      fi
+      ;;
+   
+   ll|LL|Ll)
+      if [[ -n $ledger_n ]] ; then
+      install_ledger
       return 0
       fi
       ;;

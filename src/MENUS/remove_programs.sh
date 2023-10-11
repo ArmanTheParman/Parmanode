@@ -129,7 +129,13 @@ if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
 echo "#                                          (bb)               BitBox                   #
 #                                                                                      #"
 elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
-echo "#                                          (bb)               Bitbox  (partial)         #
+echo "#                                          (bb)               Bitbox  (partial)        #
+#                                                                                      #" ; fi
+if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgermenu=1
+echo "#                                          (ll)               Ledger                   #
+#                                                                                      #"
+elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+echo "#                                          (ll)               Ledger  (partial)        #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -260,6 +266,12 @@ if [[ $trezormenu == 1 ]] ; then
 bb|BB|Bb)
 if [[ $bitboxmenu == 1 ]] ; then
     uninstall_bitbox
+	return
+	fi
+	;;
+ll|LL|Ll)
+if [[ $ledgermenu == 1 ]] ; then
+    uninstal_ledger
 	return
 	fi
 	;;
