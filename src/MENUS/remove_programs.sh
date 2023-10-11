@@ -134,7 +134,7 @@ echo "#                                          (bb)               Bitbox  (par
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgermenu=1
 echo "#                                          (ll)               Ledger                   #
 #                                                                                      #"
-elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
 echo "#                                          (ll)               Ledger  (partial)        #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
