@@ -1,5 +1,4 @@
 function autoupdate {
-if [[ $(uname) == Darwin ]] ; then return 0 ; fi
 
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
