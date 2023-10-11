@@ -125,6 +125,12 @@ echo "#                                          (trz)              Trezor Suite
 elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then trezormenu=1
 echo "#                                          (trz)              Trezor (partial)         #
 #                                                                                      #" ; fi
+if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+echo "#                                          (trz)              BitBox                   #
+#                                                                                      #"
+elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+echo "#                                          (bb)              Bitbox  (partial)         #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -248,6 +254,12 @@ if [[ $lnbitsmenu == 1 ]] ; then
 trz|TRZ|Trz)
 if [[ $trezormenu == 1 ]] ; then
 	uninstall_trezor
+	return
+	fi
+	;;
+bb|BB|Bb)
+if [[ $biboxmenu == 1 ]] ; then
+    uninstall_bitbox
 	return
 	fi
 	;;
