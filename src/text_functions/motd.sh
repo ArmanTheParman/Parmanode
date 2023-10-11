@@ -172,7 +172,7 @@ $cyan
 "
 enter_continue
 return 0
-fiif [[ $motd == template ]] ; then
+if [[ $motd == template ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -188,5 +188,41 @@ $cyan
 "
 enter_continue
 return 0
+if [[ $motd == template ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Bitcoin is stoppable by worldwide tyranny or human extinction.
+
+    If worldwide tyranny wins, we're fucked anyway, and you''ll be poor and \"happy\"
+    wheter you buy bitcoin or not. Bitcoin is the ONLY defense against this.
+
+    If someone was invading your country, you don't surrender because \"they might
+    win\", or \"winning isn't inevitable\". You defend yourself with what you have at
+    your disposal.
+
+    It's Bitcoin or tyranny - make your choice.
+
+######################################################################################## 
+"
+enter_continue
+return 0
+if [[ $motd == template ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Gold made possible, or caused, fiat. It certainly can't be the solution to it.
+
+    Bitcoin is here to clean up gold's mess.
+
+######################################################################################## 
+"
+enter_continue
+return 0
+
 fi
 
