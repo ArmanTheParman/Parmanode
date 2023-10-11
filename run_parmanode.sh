@@ -90,9 +90,6 @@ debug "Pausing here" #when debugging, I can check for error messages and syntax 
 
 ########################################################################################
 
-#Begin program:
-	set_terminal # custom function for screen size and colour.
-	if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 
 	# This is the main program, which is a menu that loops.
 	menu_main    

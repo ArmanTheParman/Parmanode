@@ -31,6 +31,14 @@ fi
 fix_fstab ; fix_services 
 
 
+########################################################################################
+#Intro
+########################################################################################
+set_terminal # custom function for screen size and colour.
+if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
+
+
+
 # a self explanatory custom function
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
