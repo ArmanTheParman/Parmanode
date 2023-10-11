@@ -55,14 +55,14 @@ echo -e "
       (tor)      Tor menu options for Bitcoin
 
       (bring)    Bring a drive from another Parmanode installation (import)
-      
-      (ub)       Make an${cyan} Umbrel${orange} drive interchangable with Parmanode 
 
-      (ru)       Revert a drive back to Umbrel from Parmanode
+      (ub)       Migrate an$cyan Umbrel$orange drive to Parmanode 
 
-      (mn)       Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
+      (ru)       Migrate a Parmanode drive back to Umbrel
 
-      (rm)       Revert a drive back to MyNode from Parmanode 
+      (mn)       Migrate a${cyan} MyNode${orange} drive to Parmanode 
+
+      (rm)       Migrate a Parmanode drive back to MyNode
 
       (o)        OTHER...
 
