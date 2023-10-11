@@ -30,12 +30,13 @@ fi
 # the drive was physically disconnected during a reboot.
 fix_fstab ; fix_services 
 
-autoupdate
 
 # a self explanatory custom function
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
+else
+autoupdate
 fi
 
 #Test for necessary functions
