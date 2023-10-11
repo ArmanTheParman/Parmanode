@@ -22,16 +22,13 @@ echo -e "
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
 ########################################################################################
-#                                                                                      #"
-if ! grep -q "parmanode" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then parmanodemain=1
-echo "#    (i)                  Install Parmanode          [DO THIS FIRST!!]                 #"
-else parmanodemain=0
-echo "#    (add)                Add more programs (Install menu)                             #
+#                                                                                      #
+#    (add)                Add more programs (Install menu)                             #
 #                                                                                      #
 #    (u)                  Use programs (Apps menu)........(Bitcoin, Sparrow, etc)      #
-#                                                                                      #" ; fi
+#                                                                                      #
 
-echo "#--------------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------#
 #                                                                                      #
 #    (remove)             Remove (uninstall) programs                                  #
 #                                                                                      #
