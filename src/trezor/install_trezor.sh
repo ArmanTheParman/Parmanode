@@ -10,7 +10,7 @@ curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Tre
 verify_trezor || return 1
 hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
 cd $trezorDir
-hditil detach *.dmg
+hdiutil detach /Volumes/"Trezor"* 
 sudo rm -rf *.dmg
 fi
 
@@ -20,7 +20,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 verify_trezor || return 1
 hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
 cd $trezorDir
-hditil detach *.dmg
+hdiutil detach /Volumes/"Trezor"* 
 sudo rm -rf *.dmg
 fi
 

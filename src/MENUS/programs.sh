@@ -61,6 +61,9 @@ if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
                        echo "    (bb)         BitBox App 
                             " ; fi
+if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgerapp=1
+                       echo "    (ll)         Ledger Live App 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -163,6 +166,11 @@ trz|TRZ|Trz)
 bb|BB|Bb)
    if [[ $bitboxapp == 1 ]] ; then
    menu_bitbox
+   fi
+   ;;
+ll|LL|Ll)
+   if [[ $ledgerapp == 1 ]] ; then
+   menu_ledger
    fi
    ;;
 p)
