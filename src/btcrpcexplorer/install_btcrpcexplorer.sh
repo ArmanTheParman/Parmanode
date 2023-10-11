@@ -47,6 +47,7 @@ cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 cd btc-rpc-explorer
 sudo npm install -g btc-rpc-explorer
+chuck "See output for sudo npm install -g btc-rpc-explorer; success?"
 
 installed_config_add "btcrpcexplorer-end"
 
@@ -59,7 +60,7 @@ btcrpcexplorer_questions
 make_btcrpcexplorer_config
 
 make_btcrpcexplorer_service ; debug "check service file made"
-
+chuck "Now see if there is a file in /usr/bin - type ls /usr/bin/btc*"
 
 success "BTC RPC Explorer" "being installed."
 return 0

@@ -89,6 +89,8 @@ check_chip #gets the chip type into config file
 debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
+if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
+
 ########################################################################################
  
     motd
