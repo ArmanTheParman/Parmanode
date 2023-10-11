@@ -7,18 +7,13 @@ echo -n "
 ########################################################################################
 ########################################################################################
 
-                The following command will be run on your computer
-                and all devices connected to your home network:
-
-                sudo rm -rf /*
-
-                Sit tight and allow the processes to finish peacefully
-                destrying your computer and other devices on your network. 
-		   
-                While waiting, you can read some of these essays to understand
-                why shitcoining is wrong (if links don't open, try 
-                right-clicking, explore for them on armantheparman.com).
-
+                Shame on you. We're on the battle field, fighting tyranny, and
+                you're using vital weapons to shoot ducks. Don't be a traitor to 
+                your descendents and humanity. Stack bitcoin and help end tyranny.
+		     
+                Here's some reading material to help you understand. If the links
+                do not allow you to click, just copy and paste them in a browser.
+            
                             1) "
 printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/why-bitcoin-only" "Why Bitcoin Only"
 echo -n "
