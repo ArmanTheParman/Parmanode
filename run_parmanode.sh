@@ -46,10 +46,11 @@ fi
 		fi 
 
 	done #ends the loop
-
+debug "1"
 
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
+debug "2"
 
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
