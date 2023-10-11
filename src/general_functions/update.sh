@@ -28,9 +28,6 @@ echo "
       It is strongly recommended that you update your operating system first (hit \"y\"
       at the prompt to do so. Parmanode will do that for you now.)
 
-      As it's running, do look at the output, especially near the start; if there is 
-      a recommendation to run a command related to \"git unshallow\", then do that.
-
 ########################################################################################
 
 Do that now? y or n :" ; read choice
