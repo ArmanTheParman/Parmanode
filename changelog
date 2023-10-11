@@ -1,5 +1,6 @@
 Version 3.8.2
     -removed need to "insall" parmanode
+    -motd added
 Version 3.8.1
     -Import an Umbrel or MyNode drive to Parmanode (Linux only)
     -Various bug fixes
