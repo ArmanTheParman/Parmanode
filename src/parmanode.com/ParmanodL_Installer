@@ -1,6 +1,7 @@
 ########################################################################################
 # This file is to be kept at parmanode.com.
 # The install script will download it to the desktop and make it executable.
+return 0
 ########################################################################################
 
 #!/bin/bash

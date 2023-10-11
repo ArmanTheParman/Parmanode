@@ -15,7 +15,7 @@ $cyan
     WOULD YOU LIKE THE PROGRAM TO STAY UP TO DATE WITHOUT YOUR INVOLVEMENT? 
 
     Parmanode is frequently improved, either with typos, or correcting smol bugs here
-    or there, and occasionally serious new features. With autoupdates, parmanode will 
+    or there, and occasionally serious new features. With autoupdates, Parmanode will 
     silently update itself at 3:30am and takes only a few seconds.
 
 
