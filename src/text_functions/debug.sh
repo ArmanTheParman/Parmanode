@@ -3,6 +3,16 @@
 # without my knowledge. Only the character "d" will allow th
 # code to contine.
 
+function chuck {
+    if [[ $chuck ==1 ]] ; then
+    echo "Debugging for chuck."
+    echo "$1"
+    enter_continue
+    return 0
+    fi
+}
+
+
 function debug {
 if [[ $debug == 1 ]] ; then
 echo "Debug point. Message:
