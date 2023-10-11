@@ -10,6 +10,7 @@ curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v4
 verify_bitbox || return 1
 unzip *.zip ; rm *.zip
 mv *.app /Applications/
+fi
 
 
 if [[ $chip == x86_64 && $OS == Linux ]] ; then
