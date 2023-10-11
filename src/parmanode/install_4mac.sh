@@ -17,7 +17,7 @@ cat > $HOME/Desktop/run_parmanode << 'EOF'
 cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
-sudo chmod +x $HOME/Desktop/run_parmanode
+sudo chmod +x $HOME/Desktop/run_parmanode*
 echo "New clickable desktop icon made."
 fi
 
