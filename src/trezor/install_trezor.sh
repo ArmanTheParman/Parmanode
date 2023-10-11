@@ -30,6 +30,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-linux-x86_64.AppImage.asc
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
+udev
 fi
 
 if [[ $computer_type == Pi && $chip == aarch64 ]] ; then
@@ -38,6 +39,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-linux-arm64.AppImage.asc
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
+udev
 fi
 
 installed_conf_add "trezor-end"

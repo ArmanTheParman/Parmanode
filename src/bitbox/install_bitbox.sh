@@ -19,6 +19,7 @@ curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v4
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v4.39.0/BitBox-4.39.0-x86_64.AppImage.asc
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
+udev
 fi
 
 if [[ $computer_type == Pi ]] ; then
