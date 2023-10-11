@@ -15,7 +15,7 @@ set_terminal
 if [[ $choice == "y" || $choice == "Y" ]] ; then true
     else 
     return 1
-    fi
+fi
 
 set_terminal
 
@@ -27,5 +27,4 @@ fi
 
 installed_conf_remove "bitbox"
 success "BitBox App" "being uninstalled."
-
 }
