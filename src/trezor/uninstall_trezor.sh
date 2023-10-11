@@ -2,7 +2,7 @@ function uninstall_trezor {
 set_terminal ; echo "
 ########################################################################################
 
-                                 Uninstall Sparrow 
+                                 Uninstall Trezor 
 
     Are you sure? (y) (n)
 
