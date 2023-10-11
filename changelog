@@ -1,3 +1,11 @@
+Version 3.8.4
+    -Ledger Live added
+Version 3.8.3
+    -BitBox App added
+Version 3.8.2
+    -Trezor Suite added
+    -removed need to "insall" parmanode
+    -motd added
 Version 3.8.1
     -Import an Umbrel or MyNode drive to Parmanode (Linux only)
     -Various bug fixes

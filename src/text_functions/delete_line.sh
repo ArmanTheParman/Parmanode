@@ -14,7 +14,7 @@ else
 return 1
 fi >/dev/null 2>&1
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
 	change_string_mac "$1" "$2" "null" "delete"
 	return 0
 fi		
