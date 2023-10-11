@@ -258,7 +258,7 @@ if [[ $trezormenu == 1 ]] ; then
 	fi
 	;;
 bb|BB|Bb)
-if [[ $biboxmenu == 1 ]] ; then
+if [[ $bitboxmenu == 1 ]] ; then
     uninstall_bitbox
 	return
 	fi
