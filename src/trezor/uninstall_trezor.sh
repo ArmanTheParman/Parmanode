@@ -17,6 +17,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
+set_terminal
 
 rm -rf $HOME/parmanode/trezor
 

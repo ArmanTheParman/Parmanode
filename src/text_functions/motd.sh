@@ -111,7 +111,7 @@ $cyan
     Law #4 : Buying bitcoin per se is not adoption. It also needs to be bought with 
              the intent of not selling until it becomes money.
     Law #5 : Given enough time, Bitcoiners will own virtually all the available Bitcoin
-    Law #6 : The lower the price is manipulated down, the faster rule 5 eventuates, 
+    Law #6 : The lower the price is manipulated down, the faster Law 5 eventuates, 
              leading to destruction of price suppression.
     Law #7 : The correct measure of adoption is the number and bitcoin-wealth of 
              Bitcoiners.
