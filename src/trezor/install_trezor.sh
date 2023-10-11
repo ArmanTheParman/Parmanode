@@ -1,6 +1,7 @@
 function install_trezor {  
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir && cd $trezorDir
+installed_conf_add "trezor-start"
 
 if [[ $chip == arm64 && $OS == Mac ]] ; then
 curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-mac-arm64.dmg
@@ -31,14 +32,10 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
 fi
+
+installed_conf_add "trezor-end"
+success "Trezor Suite" "being installed."
 }
 
 
 
-function verify_trezor {
-
-curl -L https://trezor.io/security/satoshilabs-2021-signing-key.asc | gpg --import
-
-if ! gpg --verify *.asc 2>&1 | grep "Good" ; then announce "gpg check failed. aborting." ; return 1 ; fi
-
-}

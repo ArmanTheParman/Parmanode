@@ -249,6 +249,24 @@ lnbits_n="#                            (lnb)         LNbits                     
 #                                                                                      #"
 fi
 
+#trezor
+unset trezor_i trezor_p trezor_n
+
+if grep -q "trezor-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+trezor_i="#                                      Trezor Suite                                    #
+#                                                                                      #"
+elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+trezor_p="#                                      Trezor Suite                                    #
+#                                                                                      #"
+else
+   #not installed
+trezor_n="#                            (trz)         Trezor Suite                                #
+#                                                                                      #"
+fi
+
+
 while true
 do
 set_terminal_higher
@@ -276,6 +294,7 @@ if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
 if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
 if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
+if [[ -n $trezor_n]]           ; then echo  "$trezor_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -294,6 +313,7 @@ if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
 if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
+if [[ -n $trezor_i]]          ; then echo  "$trezor_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -312,6 +332,7 @@ if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
 if [[ -n $torserver_p  ]]      ; then echo  "$torserver_p"; fi
 if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
+if [[ -n $trezor_p]]          ; then echo  "$trezor_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -431,6 +452,12 @@ case $choice in
         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
         install_lnbits
         return 0
+      fi
+      ;;
+   trz|TRZ|Trz)
+      if [[ -n $trezor_n ]] ; then
+      install_trezor
+      return 0
       fi
       ;;
 
