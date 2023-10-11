@@ -10,18 +10,15 @@ set_terminal ; echo -e "
 
                                $cyan     Instructions$orange
 
-    1. The first thing you need to do to use Parmanode is to$green \"install\"$orange it 
-       (there's an option for that in the main menu - you can't miss it). 
-
-    2. Add individual programs from the$green \"add\"$orange menu. You don't need to install them 
+    1. Add individual programs from the$green \"add\"$orange menu. You don't need to install them 
        all.
 
-    3. Use programs from the$green \"use\"$orange menu. 
+    2. Use programs from the$green \"use\"$orange menu. 
 
-    4. Each program has its$green own menu$orange nested under the \"use\" menu; various 
+    3. Each program has its$green own menu$orange nested under the \"use\" menu; various 
        functions are available for you to make it easier to interact with the program.
        
-    5. If you$green update$orange Parmanode (easiest way is from the menu) the programs Parmanode
+    4. If you$green update$orange Parmanode (easiest way is from the menu) the programs Parmanode
        has installed for you won't be changed. To get newer version of installed
        programs, use Parmanode to uninstall the program, then re-install using 
        Parmanode. The updated script will install the newer version for you.
