@@ -12,7 +12,7 @@ if [[ -z $1 ]] ; then return 0 ; fi
 # duplication
 parmanode_conf_remove "${1}"
 # now add it by appending (-a)
-echo "${1}" | tee -a $HOME/.parmanode/parmanode.conf 
+echo "${1}" | tee -a $HOME/.parmanode/parmanode.conf >/dev/null
 }
 
 ########################################################################################

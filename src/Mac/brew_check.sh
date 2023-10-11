@@ -2,10 +2,8 @@ function brew_check {
 
 if command -v brew >/dev/null 2>&1
     then
-    log "parmanode" "Brew is installed."
 	return 0
     else
-    log "parmanode" "Brew not yet installed."
 while true ; do
 set_terminal
 echo "

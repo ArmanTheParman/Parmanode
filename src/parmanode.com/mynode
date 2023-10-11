@@ -1,0 +1,46 @@
+#This script is kept at parmanode.com
+return 0
+
+cat > ~/Desktop/mynode << 'EOF'
+#!/bin/bash
+clear
+echo "You may or may not be asked for you computer's password first, before the MyNode one.
+"
+
+if  [[ ! -e ~/.ssh/.mynode ]] ; then
+
+    if [[ $(uname) == Darwin ]] ; then
+        sudo sed -i ''  /mynode.local/d ~/.ssh/known_hosts
+    elif [[ $(uname) == Linux ]] ; then
+        sudo sed -i  /mynode.local/d ~/.ssh/known_hosts
+    fi
+
+    sudo mkdir -p $HOME/.ssh
+    if [ ! -f ~/.ssh/id_rsa ] ; then ssh-keygen ; fi
+    ssh-copy-id admin@mynode.local 
+    sudo touch ~/.ssh/.mynode 
+fi
+
+echo "
+    Enter the MyNode password (leave blank if you have not yet set one): 
+"
+read PASSWORD
+
+if [[ -z $PASSWORD ]] ; then export PASSWORD=bolt ; fi 
+
+ssh admin@mynode.local "echo $PASSWORD | sudo -S tail -f /mnt/hdd/mynode/bitcoin/debug.log"
+EOF
+
+sudo chmod +x ~/Desktop/mynode
+
+clear
+echo "
+########################################################################################
+
+    An icon called \"mynode\" will appear soon on your Desktop. Double click it to 
+    see the progress of your MyNode downloading the blockchain.
+
+    Close it anytime, it won't affect the MyNode
+
+########################################################################################
+"
