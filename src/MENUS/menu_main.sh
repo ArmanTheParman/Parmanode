@@ -48,14 +48,10 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # it repeats because case is inside a while loop.
 
 add|Add| ADD)
-    if [[ $parmanodemain == 0 ]] ; then # with parmanodemain set to 0, it's possible to add programs
     menu_add_programs
-    fi
-    ;;
+    fi    ;;
 use|USE|Use|u|U)
-    if [[ $parmanodemain == 0 ]] ; then
     menu_programs 
-    fi 
     ;;
 remove|REMOVE)
     remove_programs ;;
