@@ -49,7 +49,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 
 add|Add| ADD)
     menu_add_programs
-    fi    ;;
+    ;;
 use|USE|Use|u|U)
     menu_programs 
     ;;
