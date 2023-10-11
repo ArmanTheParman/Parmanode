@@ -13,13 +13,13 @@ echo -e "
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
      
-              (ub)    Make an$cyan Umbrel$orange drive interchangable with Parmanode 
+              (ub)    Migrate an$cyan Umbrel$orange drive to Parmanode 
 
-              (ru)    Revert a drive back to Umbrel from Parmanode
+              (ru)    Migrate a Parmanode drive back to Umbrel
 
-              (mn)    Make a${cyan} MyNode${orange} drive interchangable with Parmanode 
+              (mn)    Migrate a${cyan} MyNode${orange} drive to Parmanode 
 
-              (rm)    Revert a drive back to MyNode from Parmanode 
+              (rm)    Migrate a Parmanode drive back to MyNode
 
               (b)     Bring in a Parmanode drive from another installation, or
                       add a new external drive to Parmanode
