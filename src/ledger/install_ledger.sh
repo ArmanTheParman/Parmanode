@@ -1,17 +1,34 @@
-function install_trezor {  
+function install_ledger {  
 set_terminal
-trezorDir=$HOME/parmanode/trezor
-mkdir $trezorDir && cd $trezorDir
-installed_conf_add "trezor-start"
+ledgerDir=$HOME/parmanode/ledger
+mkdir $ledgerDir && cd $ledgerDir
+installed_conf_add "ledger-start"
 
-if [[ $chip == arm64 && $OS == Mac ]] ; then
-curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-mac-arm64.dmg
-curl -LO    https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor-Suite-23.9.3-mac-arm64.dmg.asc
-verify_trezor || return 1
-hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
-cd $trezorDir
-hdiutil detach /Volumes/"Trezor"* 
+locationLinux=$(curl -I -L https://download.live.ledger.com/latest/linux 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r') 
+locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r')
+
+
+if [[ $OS == Mac ]] ; then
+curl -LO $locationMac 
+verify_ledger || return 1
+hdiutil attach *.dmg ; cd /Volumes/Ledger* ; sudo rm -rf /Applications/"Ledger Live"* ; cp -r *app /Applications
+cd $ledgerDir
+hdiutil detach /Volumes/"Ledger"* 
 sudo rm -rf *.dmg
+fi
+
+if [[ $OS == Linux ]] ; then
+curl -LO $locationLinux
+verify_ledger || return 1
+fi
+
+success "Ledger Live" "being installed."
+
+
+
+
+
+
 fi
 
 if [[ $chip == x86_64 && $OS == Mac ]] ; then
@@ -20,7 +37,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v23.9.3/Trezor
 verify_trezor || return 1
 hdiutil attach *.dmg ; cd /Volumes/Trezor* ; sudo rm -rf /Applications/"Trezor Suite" ; cp -r *app /Applications
 cd $trezorDir
-hdiutil detach /Volumes/"Trezor"* 
+hditil detach *.dmg
 sudo rm -rf *.dmg
 fi
 
