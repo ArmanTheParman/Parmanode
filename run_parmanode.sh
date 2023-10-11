@@ -90,7 +90,8 @@ debug "Pausing here" #when debugging, I can check for error messages and syntax 
 # before the screen is cleared.
 
 ########################################################################################
-
+ 
+    motd
 
 	# This is the main program, which is a menu that loops.
 	menu_main    
