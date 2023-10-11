@@ -119,6 +119,24 @@ echo "#                                          (lnb)              LNbits      
 elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
 echo "#                                          (ers)              LNbits (partial)         #
 #                                                                                      #" ; fi
+if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezormenu=1
+echo "#                                          (trz)              Trezor Suite             #
+#                                                                                      #"
+elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then trezormenu=1
+echo "#                                          (trz)              Trezor (partial)         #
+#                                                                                      #" ; fi
+if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+echo "#                                          (bb)               BitBox                   #
+#                                                                                      #"
+elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
+echo "#                                          (bb)               Bitbox  (partial)        #
+#                                                                                      #" ; fi
+if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgermenu=1
+echo "#                                          (ll)               Ledger                   #
+#                                                                                      #"
+elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
+echo "#                                          (ll)               Ledger  (partial)        #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -236,6 +254,24 @@ if [[ $electrsmenu == 1 ]] ; then
 lnb|LNB|Lnb)
 if [[ $lnbitsmenu == 1 ]] ; then
 	uninstall_lnbits	
+	return
+	fi
+	;;
+trz|TRZ|Trz)
+if [[ $trezormenu == 1 ]] ; then
+	uninstall_trezor
+	return
+	fi
+	;;
+bb|BB|Bb)
+if [[ $bitboxmenu == 1 ]] ; then
+    uninstall_bitbox
+	return
+	fi
+	;;
+ll|LL|Ll)
+if [[ $ledgermenu == 1 ]] ; then
+    uninstall_ledger
 	return
 	fi
 	;;

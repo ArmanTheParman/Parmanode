@@ -1,6 +1,6 @@
 function greadlink_check {
 
-if ! command -v greadlink ; then #checks if the command doesn't exist (! is "not")
+if ! command -v greadlink >/dev/null ; then #checks if the command doesn't exist (! is "not")
 get_greadlink
 if [ $? == 0 ] ; then installed_conf_add "greadlink" ; fi #adds to config if command above doesn't return an error
 else

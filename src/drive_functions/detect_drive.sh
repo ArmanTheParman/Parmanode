@@ -1,6 +1,6 @@
 #used by add_drive function.
+#use by umbrel_import_mac - $1 menu skips initial warning. $2 umbrelmac used for text customisation
 function detect_drive {
-
 unset disk
 if [[ $1 != menu ]] ; then
 set_terminal pink ; echo "
@@ -14,28 +14,34 @@ enter_continue
 fi
 
 while true ; do
+if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
+
 set_terminal ; echo -e "$pink
 ########################################################################################
     
-    Now, please make sure the drive you wish to$cyan add$orange to Parmanode is ${cyan}DISCONNECTED.$pink 
-    Do not disconnect any of your other drives at this time. 
+    Now, please make sure the $umbrel drive you wish to add to Parmanode is 
+    ${cyan}DISCONNECTED.$orange Do not disconnect any of your other drives at this time. 
     
-    This is important to make sure
-    Parmanode can detect the change in the list of drives before and after the 
-    connection.
-    
-    DO NOT JUST YANK OUT THE DRIVE - IF YOU CAN, IT'S BEST TO PROPERLY UNMOUNT IT.
+    This is important to make sure the drive is detected in the list of drives before 
+    and after the connection.
    $cyan 
     Hit <enter> only once this is done.
-$pink
+$orange
 ########################################################################################
 "
 read
-
-if sudo lsblk -o LABEL | grep parmanode ; then
-announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
-"still physically connected to the computer. Aborting." 
-return 1
+if [[ $(uname) == Linux ]] ; then
+    if sudo lsblk -o LABEL | grep parmanode ; then
+    announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
+    "still physically connected to the computer. Aborting." 
+    return 1
+    fi
+elif [[ $(uname) == Darwin ]] ; then
+    if diskutil list | grep parmanode ; then
+    announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
+    "still physically connected to the computer. Aborting." 
+    return 1
+    fi
 fi
 
 if [[ $(uname) == "Linux" ]] ; then 
@@ -50,11 +56,14 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}CONNECT$orange the drive you wish to use for Parmanode. Do not 
-    connect any other drive.
+    Now go ahead and ${cyan}CONNECT$orange the $umbrel drive you wish to use for 
+    Parmanode. Do not connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
-
+$cyan
+    Wait a few seconds if on a Mac, and if you get a drive error pop-up, click IGNORE 
+    before hitting <enter> here.
+    $orange
 ########################################################################################
 "
 enter_continue
@@ -70,33 +79,25 @@ if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
-disk_after=$(grep . $HOME/.parmanode/after | tail -n1 ) 
-# grep . filters out empty lines
-disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
+if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
+    echo "No new drive detected. Try again. Hit <enter>."
+    read ; continue 
+fi
 
-    if [[ "$disk_after" == "$disk_before" ]] ; then 
-        echo "No new drive detected. Try again. Hit <enter>."
-            read ; continue 
-        else
-            if [[ $(uname) == "Linux" ]] ; then
-                sed -i s/://g $HOME/.parmanode/after
-                export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
-                echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                debug "disk is $disk"
-                break 
-                fi
-            
-            if [[ $(uname) == "Darwin" ]] ; then
-                Ddiff=$(($(cat $HOME/.parmanode/after | wc -l)-$(cat $HOME/.parmanode/before |wc -l))) #visualstudo code shows last ) as an error but it's not.
-                export disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
-                echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
-                echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                debug "disk is $disk"
-                break
-                fi
+echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
-            break
-    fi
+if [[ $OS == Mac ]] ; then
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    break
+fi
+
+if [[ $OS == Linux ]] ; then
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    break
+fi
+    
 done
 debug "disk is $disk"
 }

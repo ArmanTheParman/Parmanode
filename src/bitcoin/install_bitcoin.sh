@@ -2,23 +2,6 @@ function install_bitcoin {
 
 set_terminal
 
-#EDIT1
-# if [[ $OS == "Mac" ]] ; then
-
-#         if ! grep -q "btc_dependencies" /home/.parmanode/installed.conf ; then
-#         # A function followed by || means that if the function fails, the OR operator makes
-#         # the following block run, otherwise it skips it.
-#         bitcoin_dependencies || 
-#                 {
-#                 set_terminal
-#                 echo "Unable to install bitcoin dependencies. Aborting." 
-#                 echo "Sometimes repeating installing Bitcoin will work for this error." 
-#                 enter_continue 
-#                 return 1 
-#                 }
-#         fi
-# fi
-
 choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
@@ -72,12 +55,12 @@ please_wait && run_bitcoind
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
-    
+   $cyan 
                                     SUCCESS !!!
-
-    Bitcoin Core should have started syncing. Note is should also continue to sync 
+$orange
+    Bitcoin Core should have started syncing. Note, it should also continue to sync 
     after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
     any time.
 
@@ -96,7 +79,6 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
-#EDIT7
 echo "
 ########################################################################################
     

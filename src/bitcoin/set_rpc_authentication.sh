@@ -50,6 +50,7 @@ case $choice in
 	            password_changer
 				 
 	            stop_bitcoind  
+				#
                 set_rpc_authentication_update_conf_edits #defined below
 
 				add_userpass_to_fulcrum 

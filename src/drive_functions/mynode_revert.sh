@@ -13,17 +13,6 @@ $orange
 choose "eq" ; read choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
-while true ; do
-set_terminal ; echo -e "$pink
-########################################################################################
-
-    ARE YOU SURE YOU WANT TO CONTINUE?    y   or   n
-
-########################################################################################
-"
-read choice
-case $choice in n|N) return 1 ;; y|Y) break ;; *) invalid ;; esac
-done
 
 while sudo mount | grep -q parmanode ; do 
 set_terminal ; echo -e "

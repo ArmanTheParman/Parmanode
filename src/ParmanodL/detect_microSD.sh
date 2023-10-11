@@ -42,7 +42,10 @@ set_terminal ; echo -e "
     connect any other drive/device.
 
     If a window pops up, a file explorer, you can safely close that.
-
+$cyan
+    Wait a few seconds if on a Mac, and if you get a drive error pop-up, click IGNORE 
+    before hitting <enter> here.
+    $orange
 ########################################################################################
 "
 enter_continue

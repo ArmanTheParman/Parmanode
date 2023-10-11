@@ -1,6 +1,7 @@
 ########################################################################################
 # This file is to be kept at parmanode.com.
 # The install script will download it to the desktop and make it executable.
+return 0
 ########################################################################################
 
 #!/bin/bash
@@ -91,16 +92,10 @@ clear ; echo "
     installed...
 
 
-        1)    Docker     -     This will be installed for you if you don't have it
-                               but it's a tricky installation to execute in an
-                               automated way. If ParmanodL installation fails at the 
-                               Docker install, you could try to install it yourself, 
-                               then come back to this. The installation will be 
-                               detected. Docker is needed because the Pi OS image
-                               that ParmanodL is build from is Linux based and needs 
-                               to be mounted. Docker can give us a little temporary
-                               Linux container to work with. You can uninstall it
-                               later if you want.
+        1)    Docker     -     Docker is needed because the Pi OS image that ParmanodL 
+                               is build from is Linux based and needs to be mounted. 
+                               Docker can give us a little temporary Linux container 
+                               to work with. You can uninstall it later if you want.
        
 
 ########################################################################################
@@ -114,7 +109,7 @@ read ; clear ; echo "
         2)    Homebrew   -     This is a package manager for Mac. It allows installtion
                                of programs using the command line only - pretty cool,
                                and necessary for this to work. If installation is
-                               needed, it will be taken care of, but does add possibly
+                               needed, it will be taken care of, but does take possibly
                                5 to 10 minutes extra to the whole process.
         
         3)   Bits and 
@@ -229,7 +224,7 @@ Please wait...
     fi
 
     if [[ $OS_choice == mint ]] ; then
-    true
+    get_Mint || { log "parmanodl" "failed at get_Mint" ; exit ; } 
     fi
 
 # Macs use Docker functionality here
