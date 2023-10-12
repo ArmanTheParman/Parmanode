@@ -114,8 +114,8 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-
-sudo umount $disk 
+sudo umount $disk >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* 2>&1
 announce "It's possible the drive icon might still be seen on the" \
 "desktop, and the label cour be inaccurate. Just unmount or reboot."
 
