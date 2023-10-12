@@ -27,7 +27,7 @@ if [[ $chip == "x86_64" ]] ; then
    cd bin
    sudo cp * /usr/bin
    sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
-
+chuck "pause here"
    return 0
 fi
 }
