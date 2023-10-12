@@ -107,7 +107,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The drive data has been adjusted such that it can be used again by RaspiBlitz. 
-    It's label has been changed from$cyan parmanode to BLOCKCHAIN${orange}.
+    It's label has been changed from parmanode to$cyan BLOCKCHAIN${orange}.
 
     The drive can no longer be used by Parmanode (you'd have to convert it again).
 
