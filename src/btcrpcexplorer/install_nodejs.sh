@@ -1,14 +1,24 @@
 function install_nodejs {
 
-if cat $HOME/.parmanode/installed.conf | grep -q "nodejs" ; then return 0 ; fi
-
-check_nodejs ; if [[ $nodejs_version == "new" ]] ; then installed_config_add "nodejs" ; return 0 ; fi
-
-mkdir $HOME/parmanode/nodejs
-cd $HOME/parmanode/nodejs
-
 if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux for now." ; return 1 ; fi
-if [[ $chip != "x86_64" ]] ; then
+
+#EDIT4
+#if cat $HOME/.parmanode/installed.conf | grep -q "nodejs" ; then return 0 ; fi
+
+#EDIT5
+check_nodejs 
+if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
+
+#EDIT3
+if [[ $nodejs_version == "new" ]] ; then 
+#installed_config_add "nodejs" ;
+return 0 
+fi
+
+#EDIT6 - changed != to == 
+if [[ $chip == "x86_64" ]] ; then
+   mkdir -p $HOME/parmanode/nodejs >/dev/null 2>&1
+   cd $HOME/parmanode/nodejs
    log "nodejs" "downloading nodejs"
    curl -LO  https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz
    tar -xvf node*
@@ -24,22 +34,26 @@ if [[ $chip != "x86_64" ]] ; then
    sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
    log "nodejs" "set permissions 755 to nodejs files"
 
-   installed_config_add "nodejs"
+#EDIT7
+#   installed_config_add "nodejs"
    return 0
 fi
 }
 
 function check_nodejs {
 
-if which node >/dev/null ; then export nodejs="true" ; else export nodejs="false" ; return ; fi
+#EDIT1
+#if which node >/dev/null ; then export nodejs="true" ; else export nodejs="false" ; return ; fi
 
 #extract nodejs version number, and return old vs new (needs to be 16+)
 nodejs_version=$(node --version | cut -d "." -f 1 | cut -d "v" -f 2)
+
 if [[ $nodejs_version -lt 16 ]] ; then 
     export nodejs_version="old"
 else 
     export nodejs_version="new"
-    installed_config_add "nodejs"
+    #EDIT2
+#    installed_config_add "nodejs"
 
 fi
 }
