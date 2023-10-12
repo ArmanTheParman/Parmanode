@@ -4,7 +4,7 @@ cd
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                             UMBREL DRIVE IMPORT TOOL
+                             UMBREL DRIVE MIGRATE TOOL
 $orange
     This program will convert your Umbrel external drive to make it compatible with
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
@@ -136,8 +136,8 @@ set_terminal ; echo "
     
     You can only have one at a time. 
     
-    Would you like to replace the old drive with the new drive from Umbrel for this
-    computer?
+    Would you like to replace the old Parmanode drive with the new drive from Umbrel 
+    for this computer?
 
                           y        or        n
 
