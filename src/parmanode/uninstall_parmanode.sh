@@ -131,7 +131,7 @@ if [[ $OS == "Linux" ]] ; then
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
 #remove crontab entries
-crontab -l | sed '/parmanode/d' | crontab -
+crontab -l | sed '/parmanode/d' | crontab - >/dev/null
 
 
 
