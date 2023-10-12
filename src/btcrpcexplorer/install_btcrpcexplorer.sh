@@ -38,6 +38,7 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then
     if [[ $choice != "y" ]] ; then return 1 ; fi
 fi
 
+ask_reinstall_nodejs
 
 install_nodejs || return 1
 
