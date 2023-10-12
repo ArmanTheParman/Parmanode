@@ -30,6 +30,7 @@ if [ -z $drive_ID ] ; then debug "no drive_ID" ; return 1 ; fi
         if [[ $(sudo blkid | grep parmanode | wc -l) == 1 ]] ; then 
         export UUID="$(sudo blkid | grep parmanode | cut -d " " -f 3 | cut -d \" -f 2)"
         debug "UUID in get_UUID is $UUID"
+        chuck "UUID is $UUID"
         fi
 
 return 0 
