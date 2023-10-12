@@ -244,7 +244,10 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue
 
-sudo umount $disk
+sudo umount $disk ||
+announce "Unable to unmount disk. You may see an innacruate label" \
+"representation of the desktop icon. Refresh by unmounting/rebooting."
+
 if ! grep -q parmanode < /etc/fstab ; then 
     export $(sudo blkid -o export $disk) >/dev/null
     echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
