@@ -241,9 +241,6 @@ cd
 sudo umount $disk >/dev/null 2>&1
 sudo umount /media/$USER/parmanode* 2>&1
 sudo umount /media/$USER/parmanode 2>&1
-debug "unmounted?"
-announce "It's possible the drive icon might still be seen on the" \
-"desktop, and the label cour be inaccurate. Just unmount or reboot."
 
 if ! grep -q parmanode < /etc/fstab ; then 
     export $(sudo blkid -o export $disk) >/dev/null
