@@ -114,6 +114,10 @@ set_terminal ; echo -e "
 sudo umount $disk >/dev/null 2>&1
 sudo umount /media/$USER/parmanode*
 
+sudo umount $disk 
+announce "It's possible the drive icon might still be seen on the" \
+"desktop, and the label cour be inaccurate. Just unmount or reboot."
+
 export $(sudo blkid -o export $disk) >/dev/null
 if grep -q $UUID < /etc/fstab ; then
 delete_line "/etc/fstab" "$UUID"

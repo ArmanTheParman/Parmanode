@@ -114,7 +114,10 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue ; set_terminal
 
-sudo umount $disk
+sudo umount $disk 
+announce "It's possible the drive icon might still be seen on the" \
+"desktop, and the label cour be inaccurate. Just unmount or reboot."
+
 export $(sudo blkid -o export $disk) >/dev/null
 if grep -q $UUID < /etc/fstab ; then
 delete_line "/etc/fstab" "$UUID"
