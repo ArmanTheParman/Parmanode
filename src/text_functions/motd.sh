@@ -334,4 +334,25 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+if [[ $motd == 14 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Don't stress that people aren't getting into Bitcoin early. By definition, not
+    all can. Only the early people can be early. Not everyone will accumulate a
+    meaningful amount - it's not possible because of the scarce supply; But precisely
+    because it is scarce, and the richest can't produce more (no proof-of-stake), the
+    distribution of coins will even out over time.
+
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
