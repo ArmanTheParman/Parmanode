@@ -16,7 +16,11 @@ $orange
 
     If you wish to go back to RaspiBlitz, then use the \"Revert to RaspiBlitz\" tool, otherwise
     the drive won't work properly.
-
+$pink
+    Lightning channels are not migrated. At present, it has not been tested if your
+    lighning channles are safe to leave. Either close your channels if you have them,
+    or don't use this tool. $orange
+    
 ########################################################################################
 "
 choose "eq" ; read choice
