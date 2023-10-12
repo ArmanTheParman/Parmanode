@@ -9,9 +9,9 @@ curl https://parmanode.com/install_4mac.sh | sh
 exit
 fi
 
-if [ -d $HOME/parman_programs/parmanode ] ; then
+if [ -d $HOME/parman_programs/parmanode/src ] ; then
 clear
-echo "Parmanode directory already exists. Aborting."
+echo "Parmanode seems to already be installed. Aborting" 
 sleep 5
 exit
 fi
