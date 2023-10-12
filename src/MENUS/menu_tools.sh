@@ -10,21 +10,12 @@ echo -e "
 
               (ip)    What's my computer's IP address?
 
+              (m)     Migrate/Revert an external drive.
+
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
-     
-              (ub)    Migrate an$cyan Umbrel$orange drive to Parmanode 
 
-              (ru)    Migrate a Parmanode drive back to Umbrel
-
-              (mn)    Migrate a${cyan} MyNode${orange} drive to Parmanode 
-
-              (rm)    Migrate a Parmanode drive back to MyNode
-
-              (b)     Bring in a Parmanode drive from another installation, or
-                      add a new external drive to Parmanode
-
-              (m)     Mount the Parmanode drive - Linux only
+              (mm)    Mount the Parmanode drive - Linux only
                 
               (d)     Delete your previous preference to hide certain Parmanode
                       messages
@@ -56,7 +47,7 @@ case $choice in
         safe_unmount_parmanode menu
         ;;
 
-    m|M|mount)
+    mm|MM|Mm|mount)
         mount_drive menu
         if mount | grep -q parmanode ; then
         announce "Drive mounted."
@@ -78,27 +69,11 @@ case $choice in
 
         ;;
 
-    ub|UB|Ub)
-    umbrel_import 
-    ;;
+      m|M)
+      menu_migrate
+      ;;
 
-    ru|RU|Ru)
-    umbrel_revert
-    ;;
-
-mn|MN|Mn)
-mynode_import
-;;
-
-rm|RM|Rm)
-mynode_revert
-;;
-
-    b|B|Bring|brin) 
-        add_drive menu
-        ;;
-
-    q|Q|Quit|QUIT)
+      q|Q|Quit|QUIT)
         exit 0
         ;;
     "")
