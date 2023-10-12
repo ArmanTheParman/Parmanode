@@ -18,7 +18,6 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#                            (w)           Wallet install menu                         #
 #                                                                                      #
 #$cyan Not yet installed... $orange                                                                #
 #                                                                                      #"
@@ -33,6 +32,9 @@ if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
 if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
 echo "#                                                                                      #
+#                                                                                      #
+#                            (w)           Wallet install menu                         #
+#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
