@@ -24,6 +24,8 @@ echo -e "
 
               (h)     Check system resources with \"htop\" (installs if needed)
 
+              (aa)    Turn on/off autoupdates
+
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
@@ -52,6 +54,9 @@ case $choice in
         if mount | grep -q parmanode ; then
         announce "Drive mounted."
         fi
+        ;;
+    aa|AA|Aa)
+        autoupdate_toggle
         ;;
     p|P)
         return 0
