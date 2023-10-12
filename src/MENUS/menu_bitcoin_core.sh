@@ -37,7 +37,6 @@ echo -e "$output2"
 echo ""
 echo -e "
 
-
       (start)    Start Bitcoind............................................(Do it)
 
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
