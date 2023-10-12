@@ -6,9 +6,9 @@ info_add_drive $@ || return 1 # safe unmount executed
 set_terminal ; echo -e "$pink
 ########################################################################################
 Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
-or else bad things will happen to your computer.$orange
+or else bad things will happen to your computer.
 ########################################################################################
-" ; enter_continue
+$orange" ; enter_continue
 set_terminal ; echo -e "$cyan
 ########################################################################################
    Now Parmanode will safely unmount your regular Parmanode drive by stopping the

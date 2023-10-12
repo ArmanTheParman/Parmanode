@@ -20,13 +20,13 @@ set_terminal ; echo -e "$pink
 ########################################################################################
     
     Now, please make sure the $umbrel drive you wish to add to Parmanode is 
-    ${cyan}DISCONNECTED.$orange Do not disconnect any of your other drives at this time. 
+    ${cyan}DISCONNECTED.$pink Do not disconnect any of your other drives at this time. 
     
     This is important to make sure the drive is detected in the list of drives before 
     and after the connection.
    $cyan 
     Hit <enter> only once this is done.
-$orange
+$pink
 ########################################################################################
 "
 read
