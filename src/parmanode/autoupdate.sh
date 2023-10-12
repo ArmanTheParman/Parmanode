@@ -1,5 +1,17 @@
 function autoupdate {
 
+if [[ $1 == on ]] ; then
+crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab -
+return 0
+fi
+if [[ $1 == off ]] ; then
+crontab -l | sed '/parmanode/d' | crontab -
+return 0
+fi
+
+
+
+
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
 fi
@@ -39,7 +51,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
-parmanode_conf_add "autoupdate=true" 
+parmanode_conf_add "autoupdate_version2=true" #crontab edit was faulty first time around.
 hide_messages_add "autoupdate" "1" 
 cat << 'EOF' > "$HOME/.parmanode/update_script.sh"
 #!/bin/bash
@@ -48,7 +60,7 @@ EOF
 
 sudo chmod +x $HOME/.parmanode/update_script.sh
 
-(crontab -l; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" >/dev/null 2>&1) 2>/dev/null | crontab -
+crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab -
 break
 ;;
 
@@ -65,4 +77,38 @@ invalid ;;
 esac 
 done
 fi
+}
+
+
+function autoupdate_toggle {
+
+while true ; do
+
+if crontab -l | grep -q parmanode ; then
+p="ON"
+else
+p="OFF"
+fi
+
+set_terminal ; echo -e "
+########################################################################################
+    $cyan 
+                              Parmanode Autoupdates
+$orange
+      Parmanode autoupdates are currently : $pink$p$orange
+                 
+                                (on)     Turn on
+                                (off)    Turn off
+
+########################################################################################
+"
+choose "xpq" ; read choice ; set_terminal
+case $choice in 
+q|Q) exit ;; 
+p|P) return 0 ;;
+on|On|ON) autoupdate on ; return 0 ;;
+off|OFF|Off) autoupdate off ; return 0 ;;
+*) invalid ;;
+esac
+done  
 }
