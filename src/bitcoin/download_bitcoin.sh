@@ -61,6 +61,7 @@ verify_bitcoin || return 1
 if [[ $OS == Mac ]] ; then
 hdiutil attach bitcoin*.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
+hdiutil detach /Volumes/Bitcoin*
 fi
 
 if [[ $OS == Linux ]] ; then
