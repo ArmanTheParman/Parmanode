@@ -31,7 +31,7 @@ if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
 if [[ -n $torserver_n ]]      ; then echo  "$torserver_n"; fi
-echo "#                                                                                      #
+echo -e "#                                                                                      #
 #                                                                                      #
 #                            (w)           Wallet install menu                         #
 #                                                                                      #
@@ -47,7 +47,7 @@ if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
-echo "#                                                                                      #
+echo -e "#                                                                                      #
 #$cyan Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo  "$bitcoin_p"; fi
