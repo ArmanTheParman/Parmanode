@@ -14,7 +14,8 @@ $orange
 
 ########################################################################################
 
-USERNAME: "
+USERNAME: 
+"
 read rpcuser ; echo "
 "
 
@@ -32,13 +33,15 @@ read rpcuser ; echo "
 
 ########################################################################################
 
-    PASSWORD: " 
+PASSWORD: 
+    " 
 
     read rpcpassword
     echo -e "
          Please repeat the$cyan password:$orange
 
-    PASSWORD: "
+PASSWORD: 
+    "
 
     read rpcpassword2
 
