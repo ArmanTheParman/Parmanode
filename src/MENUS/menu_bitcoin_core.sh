@@ -54,15 +54,7 @@ echo -e "
 
       (tor)      Tor menu options for Bitcoin
 
-      (bring)    Bring a drive from another Parmanode installation (import)
-
-      (ub)       Migrate an$cyan Umbrel$orange drive to Parmanode 
-
-      (ru)       Migrate a Parmanode drive back to Umbrel
-
-      (mn)       Migrate a${cyan} MyNode${orange} drive to Parmanode 
-
-      (rm)       Migrate a Parmanode drive back to MyNode
+      (m)        Migrate/Revert an external drive.
 
       (o)        OTHER...
 
@@ -206,30 +198,14 @@ menu_tor_bitcoin
 continue
 ;;
 
-bring|BRING|Bring)
-add_drive
-;;
-
-ub|UB|Ub)
-umbrel_import 
-;;
-
-mn|MN|Mn)
-mynode_import
-;;
-
-rm|RM|Rm)
-mynode_revert
+m|M|migrate|Migrate)
+menu_migrate
+continue
 ;;
 
 o|O)
 bitcoin_other || return 1
 ;;
-
-ru|RU|Ru)
-umbrel_revert
-;;
-
 p|P)
 return 1
 ;;
