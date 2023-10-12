@@ -109,7 +109,14 @@ set_terminal ; echo -e "
     The drive data has been adjusted such that it can be used again by RaspiBlitz. 
     It's label has been changed from parmanode to$cyan BLOCKCHAIN${orange}.
 
-    The drive can no longer be used by Parmanode (you'd have to convert it again).
+    When you boot up the RaspiBlitz on your Pi, it may struggle to restart and detect
+    the bitcoin data. If after 10 minutes, there isn't any suggestion it has restarted
+    to sync, then a restart should work, or, access the terminal and type:
+
+        sudo systemctl status bitcoind.service
+
+    Also note, the drive can no longer be used by Parmanode (you'd have to convert 
+    it again).
 
 ########################################################################################
 " ; enter_continue ; set_terminal
