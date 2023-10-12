@@ -17,6 +17,7 @@ if [[ $OS == "Linux" ]] ; then
             done 
         # If the parmanode drive needs to be unmounted...
         sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+        debug "umount function, exiting..."
         return 0
     fi
 
