@@ -90,6 +90,7 @@ debug "Pausing here" #when debugging, I can check for error messages and syntax 
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
+if [[ $2 == rn ]] ; then export reinstall_nodejs=1 ; fi
 
 ########################################################################################
  
