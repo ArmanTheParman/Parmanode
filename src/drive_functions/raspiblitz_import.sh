@@ -244,6 +244,7 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue
 
+cd
 sudo umount $disk >/dev/null 2>&1
 sudo umount /media/$USER/parmanode* 2>&1
 sudo umount /media/$USER/parmanode 2>&1
