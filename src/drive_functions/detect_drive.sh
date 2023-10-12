@@ -93,7 +93,7 @@ if [[ $OS == Mac ]] ; then
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1)
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
