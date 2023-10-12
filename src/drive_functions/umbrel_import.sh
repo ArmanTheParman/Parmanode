@@ -242,9 +242,9 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue
 
-sudo umount $disk ||
-announce "Unable to unmount disk. You may see an innacruate label" \
-"representation of the desktop icon. Refresh by unmounting/rebooting."
+sudo umount $disk 
+announce "It's possible the drive icon might still be seen on the" \
+"desktop, and the label cour be inaccurate. Just unmount or reboot."
 
 if ! grep -q parmanode < /etc/fstab ; then 
     export $(sudo blkid -o export $disk) >/dev/null
