@@ -8,11 +8,11 @@
 function install_btcrpcexplorer {
 set_terminal
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-if [[ $(uname -m) != "x86_64" ]] ; then 
+if [[ $chip != "x86_64" ]] ; then 
 set_terminal ; echo -e "
 ########################################################################################
 
-       For$cyan x86_64$orange machines only. Your machine is $(uname -m).
+       For$cyan x86_64$orange machines only. Your machine is $chip.
        Please send a bug report if something is wrong.
 
 ########################################################################################
@@ -37,7 +37,6 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then
 
     if [[ $choice != "y" ]] ; then return 1 ; fi
 fi
-
 
 install_nodejs || return 1
 
