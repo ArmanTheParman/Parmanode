@@ -32,7 +32,6 @@ log "bitcoin" "make_bitcoin_directories function..."
             statement=$(ls -dlah /media/$(whoami)/parmanode) && \
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
-debug "a"
 
 # Download bitcoin software
 download_bitcoin || return 1
