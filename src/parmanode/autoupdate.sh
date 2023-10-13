@@ -7,6 +7,7 @@ return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
+debug "no crontab output?"
 return 0
 fi
 
