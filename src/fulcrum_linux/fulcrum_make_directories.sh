@@ -6,8 +6,8 @@ function fulcrum_make_directories {
 
 #Make config directory for docker; useful now or later.
     mkdir $HOME/parmanode/fulcrum/config 2>&1
-# Make fulcrum_db on the internal or external drive
 
+# Make fulcrum_db on the internal or external drive
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
@@ -38,12 +38,9 @@ fi
 
 if [[ $drive_fulcrum == "internal" ]] ; then
     
-    { mkdir $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db made - internal" ; } || \
-    { debug "mkdir fulcrum_db on internal drive failed. Continue with caution." && return 1 ; } 
-    return 0
-    fi
+    mkdir $HOME/parmanode/fulcrum_db >/dev/null 2>&1
+    log "fulcrum" "fulcrum_db made - internal" 
+fi
 
-debug "fulcrum_make_directries failed to enter if statements"
-return 1
 }
 

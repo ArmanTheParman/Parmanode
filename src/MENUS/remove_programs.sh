@@ -137,6 +137,12 @@ echo "#                                          (ll)               Ledger      
 elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
 echo "#                                          (ll)               Ledger  (partial)        #
 #                                                                                      #" ; fi
+if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
+echo "#                                          (ps)               Parmashell               #
+#                                                                                      #"
+elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
+echo "#                                          (ps)               Parmashell  (partial)    #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -166,8 +172,8 @@ fi
 
 docker|Docker|DOCKER)
 if [[ $dockermenu == 1 ]] ; then
-if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; continue ; fi
-uninstall_docker_linux 
+if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; fi
+if [[ $OS == "Linux" ]] ; then uninstall_docker_linux ; fi
 return 0
 fi
 ;;
@@ -275,6 +281,13 @@ if [[ $ledgermenu == 1 ]] ; then
 	return
 	fi
 	;;
+ps|PS|Ps)
+if [[ $parmashellmenu == 1 ]] ; then
+uninstall_parmashell
+return
+fi
+;;
+
 p|P)
 	return 0
 	;;

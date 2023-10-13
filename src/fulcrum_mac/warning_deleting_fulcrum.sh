@@ -3,10 +3,10 @@ if [[ $debug == 1 ]] ; then return 0 ; fi
 set_terminal ; echo "
 ########################################################################################
 
-    WARNING: If you have a previous Fulcrum Docker container, this installation will 
-    delete it, and any Fulcrum images. We're starting fresh, too bad. If you want to 
-    preserve any old data, you should quit now, and back them up. If you don't know 
-    how... see internet  ;p
+    WARNING: If you have a previous Fulcrum Docker$cyan container$orange, this installation will 
+    delete it, and any Fulcrum images, but not the database.
+    
+    If you want to preserve any old data, you should quit now, and back them up.
 
                               <enter>    to continue
 

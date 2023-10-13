@@ -17,7 +17,6 @@ if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcallowip=127.0.0.1" >/dev/null 2>
 
     stop_bitcoind
     echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    debug "check rpc line added"
     run_bitcoind
 fi
 fi

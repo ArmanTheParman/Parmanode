@@ -12,7 +12,7 @@ if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to sta
 
         need_docker_for_btcpay || return 1  #docker="no" or docker="yes" set
 
-        if [[ $docker == "yes" ]] ; then download_docker_mac "btcpay" || return 1 ; fi 
+        if [[ $docker == "yes" ]] ; then install_docker_mac "btcpay" || return 1 ; fi 
 
     fi
 }

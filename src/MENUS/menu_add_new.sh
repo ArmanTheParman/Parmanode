@@ -1,0 +1,59 @@
+function menu_add_new {
+set_terminal
+
+while true
+do
+menu_add_source
+set_terminal_higher
+echo -e "
+########################################################################################
+#                                                                                      #
+#    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
+#                                                                                      #
+########################################################################################
+#                                                                                      #
+#                          n)           Node Software                                  #
+#                                                                                      #
+#                          w)           Wallet Software                                #
+#                                                                                      #
+#                          o)           Other Software                                 #
+#                                                                                      #
+########################################################################################
+"
+choose "xpq"
+
+read choice ; set_terminal
+
+case $choice in
+
+     n|N|node|Node)
+        menu_add_node
+        ;;
+
+    w|W|wallets|Wallets)
+        menu_add_wallets
+        ;;
+   
+    o|O|Other|OTHER)
+        menu_add_other
+        ;;
+
+    q|Q|quit|QUIT)
+        exit 0
+        ;;
+    p|P)
+        return 0 
+        ;;
+    *)
+        invalid
+        continue
+        ;;
+esac
+done
+
+return 0
+
+}
+
+
+ 
