@@ -4,7 +4,7 @@ cd
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                             UMBREL DRIVE IMPORT TOOL
+                             UMBREL DRIVE MIGRATE TOOL
 $orange
     This program will convert your Umbrel external drive to make it compatible with
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
@@ -16,6 +16,10 @@ $orange
 
     If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, otherwise
     the drive won't work properly.
+$pink
+    Lightning channels are not migrated. At present, it has not been tested if your
+    lighning channles are safe to leave. Either close your channels if you have them,
+    or don't use this tool. $orange
 
 ########################################################################################
 "
@@ -136,8 +140,8 @@ set_terminal ; echo "
     
     You can only have one at a time. 
     
-    Would you like to replace the old drive with the new drive from Umbrel for this
-    computer?
+    Would you like to replace the old Parmanode drive with the new drive from Umbrel 
+    for this computer?
 
                           y        or        n
 
@@ -242,7 +246,11 @@ set_terminal ; echo -e "
 ########################################################################################
 " ; enter_continue
 
-sudo umount $disk
+cd
+sudo umount $disk >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* 2>&1
+sudo umount /media/$USER/parmanode 2>&1
+
 if ! grep -q parmanode < /etc/fstab ; then 
     export $(sudo blkid -o export $disk) >/dev/null
     echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1

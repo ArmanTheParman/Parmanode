@@ -70,6 +70,7 @@ if [[ $OS == "Linux" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
         sudo e2label $disk parmanode 2>&1 
 
+        debug "label done"
         set_terminal
         echo "
 #######################################################################################

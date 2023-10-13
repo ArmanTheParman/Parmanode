@@ -8,15 +8,9 @@ sleep 2 # causes code to pause 2 seconds. Allows message to be seen without
 
 if [[ $OS == "Linux" ]] ; then
         
-        # if the $disk variable is set, typically during drive preparation,
-        # then this umount procedure will work and umount the correct drive.
-        # At other times, the variable is empty so nothing will be unmounted.
-        for i in $( sudo lsblk -nrpo NAME $disk )
-        do 
-            sudo umount $i >/dev/null 2>&1 
-            done 
-        # If the parmanode drive needs to be unmounted...
+        sudo umount $disk* >/dev/null 2>&1 
         sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+        debug "umount function, exiting..."
         return 0
     fi
 

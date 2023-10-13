@@ -48,6 +48,11 @@ else
 autoupdate
 fi
 
+fix_autoupdate
+
+# Send alert message if needed ; alert=true/false captured.
+curl -sf https://parmanode.com/alert | sh
+
 #Test for necessary functions
 sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github
