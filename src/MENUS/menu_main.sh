@@ -48,7 +48,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # it repeats because case is inside a while loop.
 
 add|Add| ADD)
-    menu_add_programs
+    menu_add_new
     ;;
 use|USE|Use|u|U)
     menu_programs 
