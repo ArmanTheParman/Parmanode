@@ -19,7 +19,7 @@ make_sparrow_config "$_connect"
 
 if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
 if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
-    cp -r /Volumes/Sparrow/Sparrow.app /Applications
+    sudo cp -r /Volumes/Sparrow/Sparrow.app /Applications
     diskutil unmountDisk /Volumes/Sparrow
     fi
 

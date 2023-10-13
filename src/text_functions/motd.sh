@@ -355,4 +355,27 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+if [[ $motd == 15 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    In 2023, with a hash rate of 420 million TH/s worldwide, the total amount of 
+    energy to produce just 1 bitcoin was 1 trillion Joules.
+
+    Meanwhile, the total number of Joules to produce 1 trillion USE was 5 Joules,
+    equivalent to charging your phone for less than 1 second.
+
+    Which is more valuable to exchange your labour for?
+ 
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }

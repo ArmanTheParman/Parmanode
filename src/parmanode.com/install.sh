@@ -42,3 +42,11 @@ Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop
 sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
+echo "
+########################################################################################
+
+    A desktop icon has been left for you. Double click it to run Parmanode, and 
+    make sure to choose 'Execute in terminal' if a pop-up window prompts you.
+
+########################################################################################
+"
