@@ -1,11 +1,11 @@
 function autoupdate {
 
 if [[ $1 == on ]] ; then
-crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null
+crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null ; clear
 return 0
 fi
 if [[ $1 == off ]] ; then
-crontab -l | sed '/parmanode/d' | crontab - >/dev/null
+crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
 return 0
 fi
 
@@ -60,7 +60,7 @@ EOF
 
 sudo chmod +x $HOME/.parmanode/update_script.sh
 
-crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null
+crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null ; clear
 break
 ;;
 
@@ -85,6 +85,7 @@ function autoupdate_toggle {
 while true ; do
 
 if crontab -l | grep -q parmanode ; then
+clear
 p="ON"
 else
 p="OFF"
