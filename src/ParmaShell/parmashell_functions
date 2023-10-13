@@ -1,5 +1,6 @@
-function a {
 export PATH="$PATH:$HOME/parman_programs/parmanode/src/ParmaShell"
+
+function a {
 
 clear 
 st
