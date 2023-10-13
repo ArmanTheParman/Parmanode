@@ -2,20 +2,13 @@ function install_nodejs {
 
 if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux for now." ; return 1 ; fi
 
-#EDIT4
-#if cat $HOME/.parmanode/installed.conf | grep -q "nodejs" ; then return 0 ; fi
-
-#EDIT5
 check_nodejs 
 if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 
-#EDIT3
 if [[ $nodejs_version == "new" ]] ; then 
-#installed_config_add "nodejs" ;
-return 0 
+if [[ $reinstall == 1 ]] ; then true ; else return 0 
 fi
 
-#EDIT6 - changed != to == 
 if [[ $chip == "x86_64" ]] ; then
    rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
    mkdir -p $HOME/parmanode/nodejs >/dev/null 2>&1
@@ -45,8 +38,6 @@ fi
 
 function check_nodejs {
 
-#EDIT1
-#if which node >/dev/null ; then export nodejs="true" ; else export nodejs="false" ; return ; fi
 
 #extract nodejs version number, and return old vs new (needs to be 16+)
 nodejs_version=$(node --version | cut -d "." -f 1 | cut -d "v" -f 2)
@@ -55,8 +46,5 @@ if [[ $nodejs_version -lt 16 ]] ; then
     export nodejs_version="old"
 else 
     export nodejs_version="new"
-    #EDIT2
-#    installed_config_add "nodejs"
-
 fi
 }
