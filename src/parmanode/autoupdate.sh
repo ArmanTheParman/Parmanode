@@ -1,4 +1,7 @@
 function autoupdate {
+
+########################################################################################
+#Used by autoupdate toggle function
 debug "in autoupdate"
 if [[ $1 == on ]] ; then
 echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
@@ -10,6 +13,7 @@ crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
 debug "no crontab output?"
 return 0
 fi
+########################################################################################
 
 
 
@@ -109,8 +113,10 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q) exit ;; 
 p|P) return 0 ;;
-on|On|ON) autoupdate on ; return 0 ;;
-off|OFF|Off) autoupdate off ; return 0 ;;
+on|On|ON) i
+autoupdate "on" ; return 0 ;;
+off|OFF|Off) 
+autoupdate "off" ; return 0 ;;
 *) invalid ;;
 esac
 done  
