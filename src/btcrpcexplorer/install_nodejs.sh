@@ -17,26 +17,27 @@ fi
 
 #EDIT6 - changed != to == 
 if [[ $chip == "x86_64" ]] ; then
+#   rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
    mkdir -p $HOME/parmanode/nodejs >/dev/null 2>&1
    cd $HOME/parmanode/nodejs
-   log "nodejs" "downloading nodejs"
-   curl -LO  https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz
+   curl -LO  https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz || { announce "failed to download nodejs. Aborting." ; return 1 ; }
    tar -xvf node*
+debug "pause here" ; chuck "pause here"
    rm *.xz
-   log "nodejs" "extracted nodejs and deleted original file"
-   
-   log "nodejs" "removing old node, npm, npx, and corepack"
    sudo rm /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack >/dev/null 2>&1
    cd node-v18*
    cd bin
    sudo cp * /usr/bin
-   log "nodejs" "copied nodejs bin files to /usr/bin"
-   sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
-   log "nodejs" "set permissions 755 to nodejs files"
+    # cd /usr/bin 
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm node
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npx 
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm corepack 
 
-#EDIT7
-#   installed_config_add "nodejs"
-   return 0
+sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
+debug "pause here" ; chuck "pause here"
+
+return 0
 fi
 }
 

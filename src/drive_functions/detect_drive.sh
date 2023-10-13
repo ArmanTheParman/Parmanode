@@ -20,13 +20,13 @@ set_terminal ; echo -e "$pink
 ########################################################################################
     
     Now, please make sure the $umbrel drive you wish to add to Parmanode is 
-    ${cyan}DISCONNECTED.$orange Do not disconnect any of your other drives at this time. 
+    ${cyan}DISCONNECTED.$pink Do not disconnect any of your other drives at this time. 
     
     This is important to make sure the drive is detected in the list of drives before 
     and after the connection.
    $cyan 
     Hit <enter> only once this is done.
-$orange
+$pink
 ########################################################################################
 "
 read
@@ -61,9 +61,12 @@ set_terminal ; echo -e "
 
     If a window pops up, a file explorer, you can safely close that.
 $cyan
-    Wait a few seconds if on a Mac, and if you get a drive error pop-up, click IGNORE 
+    Wait a few seconds, and if you get a drive error pop-up, click IGNORE 
     before hitting <enter> here.
     $orange
+    
+    GIVE THE COMPUTER A FEW SECONDS TO NOTICE THE DRIVE BEFORE HITTING ENTER
+
 ########################################################################################
 "
 enter_continue
@@ -93,7 +96,7 @@ if [[ $OS == Mac ]] ; then
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+')
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1)
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi

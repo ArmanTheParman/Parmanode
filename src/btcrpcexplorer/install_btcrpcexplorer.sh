@@ -52,13 +52,11 @@ installed_config_add "btcrpcexplorer-end"
 
 configure_btcrpcexplorer
 
-debug "configure done"
-
 btcrpcexplorer_questions
 
 make_btcrpcexplorer_config
 
-make_btcrpcexplorer_service ; debug "check service file made"
+make_btcrpcexplorer_service 
 chuck "Now see if there is a file in /usr/bin - type ls /usr/bin/btc*"
 
 success "BTC RPC Explorer" "being installed."

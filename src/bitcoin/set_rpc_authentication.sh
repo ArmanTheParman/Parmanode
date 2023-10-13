@@ -20,12 +20,12 @@ echo "
     Some software (eg Fulcrum or Electrum Server) requires the alternative way, 
     which is with a USERNAME and PASSWORD, rather than a cookie file. 
 	
-	For convenience, you can set a username and password here.
+    For convenience, you can set a username and password here.
 
-	Note, this password doesn't need to be incredibly secure, and do also bear in 
+    Note, this password doesn't need to be incredibly secure, and do also bear in 
     mind that it will be stored on the computer in clear text insie the bitcoin.conf
-	file and other configuration files. Therefore, don't use highly sensitive
-	passwords that you might use for other things.
+    file and other configuration files. Therefore, don't use highly sensitive
+    passwords that you might use for other things.
 
 
        (s)     Set the Bitcoin username and password (edits bitcoin.conf)
