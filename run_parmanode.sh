@@ -55,7 +55,7 @@ set_colours #just exports variables with colour settings to make it easier to co
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
-
+debug "before install_parmanode"
 install_parmanode
 
 # Check OS function and store in a variable for later. 
@@ -87,7 +87,7 @@ debug "Pausing here" #when debugging, I can check for error messages and syntax 
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
-if [[ $1 == rn ]] ; then export reinstall_nodejs=1 ; fi
+if [[ $2 == r ]] ; then export reinstall=1 ; fi
 
 ########################################################################################
  
