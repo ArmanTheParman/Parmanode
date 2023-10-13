@@ -46,11 +46,9 @@ fi
 		fi 
 
 	done #ends the loop
-debug "1"
 
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
-debug "2"
 
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
@@ -59,7 +57,6 @@ debug "2"
 test_directory_placement #you can go to this funciton and read the code, then come back.
 
 install_parmanode
-debug "check installed conf has parmanode-end"
 
 # Check OS function and store in a variable for later. 
 # Exits if Windows, or if Mac/Linux not detected.
@@ -95,6 +92,7 @@ if [[ $1 == rn ]] ; then export reinstall_nodejs=1 ; fi
 ########################################################################################
  
     motd
+	debug "after motd"
 
 	# This is the main program, which is a menu that loops.
 	menu_main    

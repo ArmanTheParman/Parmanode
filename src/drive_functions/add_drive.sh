@@ -6,9 +6,9 @@ info_add_drive $@ || return 1 # safe unmount executed
 set_terminal ; echo -e "$pink
 ########################################################################################
 Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
-or else bad things will happen to your computer.$orange
+or else bad things will happen to your computer.
 ########################################################################################
-" ; enter_continue
+$orange" ; enter_continue
 set_terminal ; echo -e "$cyan
 ########################################################################################
    Now Parmanode will safely unmount your regular Parmanode drive by stopping the
@@ -87,8 +87,6 @@ fi
 if [[ $OS == "Linux" ]] ; then
 
 export $(sudo blkid -o export $disk) >/dev/null
-size=$(sudo lsblk $disk --noheadings | awk '{print $4}')
-echo "size=\"$size\"" >> $HOME/.parmanode/var
 echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
 echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
 echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
@@ -102,8 +100,6 @@ echo -e "
         The label is $LABEL
 
         The UUID is ${UUID}
-
-        The drive size is $size
 
 "
 if [[ $1 == "after" ]] ; then
