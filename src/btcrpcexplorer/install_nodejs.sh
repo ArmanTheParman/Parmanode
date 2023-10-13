@@ -20,7 +20,7 @@ debug "pause here 1" ; chuck "pause here"
    sudo rm /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack >/dev/null 2>&1
    cd node-v18*
    cd bin
-# sudo cp * /usr/bin
+   sudo cp * /usr/bin
 
      cd /usr/bin 
      sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
@@ -30,7 +30,6 @@ debug "pause here 1" ; chuck "pause here"
 
 sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
 debug "pause here 2" ; chuck "pause here"
-read
 
 return 0
 fi
