@@ -47,7 +47,6 @@ git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 debug "clone done"
 cd btc-rpc-explorer
 sudo npm install -g btc-rpc-explorer
-chuck "See output for sudo npm install -g btc-rpc-explorer; success?"
 
 installed_config_add "btcrpcexplorer-end"
 

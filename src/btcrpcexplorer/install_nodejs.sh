@@ -4,14 +4,25 @@ if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux 
 
 check_nodejs ; if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 
+if [[ -d $HOME/parmanode/nodejs ]] ; then local nodejs_version=old ; fi
+
 if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then 
 
    rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
+   installed_config_remove "nodejs" >/dev/null 2>&1 
    sudo apt purge nodejs npm -y >/dev/null 2>&1
-   sudo apt autoremove -y >/dev/null/2>&1
+   sudo apt autoremove -y >/dev/null/ 2>&1
    sudo apt install nodejs
    return 0
+
 elif [[ $nodejs_version == "new" ]] ; then return 0 
+
+    check_nodejs
+    if [[ $nodejs_version == "old" || or $nodejs_version == "none" ]] ; then
+    announce "Couldn't get correct version of NodeJS. Version 16+ is needed. Aborting."
+    return 1
+    fi
+
 fi
 }
 
