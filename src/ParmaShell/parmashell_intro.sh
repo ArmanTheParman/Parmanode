@@ -1,6 +1,6 @@
 function parmashell_intro {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $green
                                Install ParmaShell

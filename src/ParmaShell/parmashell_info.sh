@@ -1,6 +1,6 @@
 function parmashell_info {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
                               ParmaShell Information
