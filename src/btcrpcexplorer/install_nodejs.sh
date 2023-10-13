@@ -20,7 +20,8 @@ debug "pause here 1" ; chuck "pause here"
    sudo rm /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack >/dev/null 2>&1
    cd node-v18*
    cd bin
-   sudo cp * /usr/bin
+
+#   sudo cp * /usr/bin
 
      cd /usr/bin 
      sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
