@@ -17,7 +17,7 @@ fi
 
 #EDIT6 - changed != to == 
 if [[ $chip == "x86_64" ]] ; then
-   rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
+#   rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
    mkdir -p $HOME/parmanode/nodejs >/dev/null 2>&1
    cd $HOME/parmanode/nodejs
    curl -LO  https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz || { announce "failed to download nodejs. Aborting." ; return 1 ; }
@@ -27,12 +27,12 @@ debug "pause here" ; chuck "pause here"
    sudo rm /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack >/dev/null 2>&1
    cd node-v18*
    cd bin
-#   sudo cp * /usr/bin
-cd /usr/bin 
-sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
-sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm node
-sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npx 
-sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm corepack 
+   sudo cp * /usr/bin
+    # cd /usr/bin 
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm node
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npx 
+    # sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm corepack 
 
 sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
 debug "pause here" ; chuck "pause here"
