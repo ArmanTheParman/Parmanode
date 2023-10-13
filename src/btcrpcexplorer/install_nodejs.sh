@@ -25,9 +25,9 @@ debug "pause here 1" ; chuck "pause here"
    cd bin
 
 #ADD to PATH
-cat > ~/.bashrc << EOF
+cat >> ~/.bashrc << EOF
 #Added by Parmanode, NPM install for BRE
-export PATH=\$PATH:/$breDir/bin
+export PATH=\$PATH:$breDir/bin
 EOF
 
 sudo chmod 755 -R $breDir/bin
