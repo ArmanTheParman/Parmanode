@@ -39,7 +39,6 @@ safe_unmount_parmanode || return 1
 *) invalid ;;
 esac
 done
-debug "1"
 
 while sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
@@ -54,11 +53,9 @@ set_terminal ; echo -e "
 read choice
 done
 
-debug "2"
 if sudo lsblk -o LABEL | grep -q parmanode ; then announce "Parmanode drive still detected. Aborting." ; return 1 ; fi 
 
 while ! sudo lsblk -o LABEL | grep -q parmanode ; do
-debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -68,10 +65,8 @@ set_terminal ; echo -e "
 "
 read ; set_terminal ; sync
 done
-debug "2c"
 
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
-debug "2c2 , disk is $disk"
 
 #Mount
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
@@ -82,7 +77,6 @@ sudo mount $disk $mount_point >/dev/null 2>&1
 
 
 
-debug "33"
 
 # The main changes...
 
@@ -92,7 +86,6 @@ sudo mv ./parmanode_backedup/* ./
 sudo chown -R 1000:1000 $mount_point/umbrel/app-data/bitcoin/data/bitcoin/ 
 #Get device name
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
-debug "5b , disk is $disk"
 
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
@@ -100,7 +93,6 @@ echo "Changing the label to umbrel"
 sudo e2label $disk umbrel 2>&1
 sleep 1
 done
-debug "6"
 # fstab configuration
 # Finished. Info.
 set_terminal ; echo -e "

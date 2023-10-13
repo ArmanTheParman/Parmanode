@@ -172,8 +172,8 @@ fi
 
 docker|Docker|DOCKER)
 if [[ $dockermenu == 1 ]] ; then
-if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; continue ; fi
-uninstall_docker_linux 
+if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; fi
+if [[ $OS == "Linux" ]] ; then uninstall_docker_linux ; fi
 return 0
 fi
 ;;

@@ -97,7 +97,6 @@ uninstall_btcrpcexplorer
 set_terminal
 fi
 set_terminal
-debug "all program checks done"
 if [[ $debug == 0 ]] ; then 
 echo "
 ########################################################################################

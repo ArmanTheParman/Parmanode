@@ -103,7 +103,7 @@ fi
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs
 
 parmanode_conf_remove "drive_electrs"
-installed_config_remove "electrs" ; debug "end of uninstall"
+installed_config_remove "electrs" 
 success "electrs" "being uninstalled."
 }
 

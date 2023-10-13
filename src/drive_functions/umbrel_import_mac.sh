@@ -39,12 +39,9 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 # Need UID and GID
 
     UIDGID
-    debug "pUID is $pUID and pGID is $pGID"
 
 # Part 2 dependencies - Macs need Docker
-debug "log is $log"
     Macs_need_docker || exit
-debug "after mcasneeddocker, log is $log"
 
 
 # Make necessary directories
@@ -56,7 +53,6 @@ debug "after mcasneeddocker, log is $log"
     detect_drive menu || return 1
     # $disk variable (drive ID) extracted
     # drive can't be mounted, it's ext4, but should be connected.
-    debug "disk is $disk"
 
 #Mount
 # Need Docker functionality here for mounting ext4 drives
