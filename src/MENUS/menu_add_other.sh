@@ -1,8 +1,6 @@
 function menu_add_other {
-
-menu_add_source
 while true
-
+menu_add_source
 do
 set_terminal
 echo -e "
@@ -49,12 +47,14 @@ case $choice in
      ;;
 
    d|D)
-       if [[ -n $docker_n ]] ; then
-        set_terminal
-        install_docker_parmanode_linux  
-        return 0
-        fi
-        ;; 
+     if [[ -n $docker_n ]] ; then
+     set_terminal
+     if [[ $OS == Linux ]] ; then install_docker_linux ; fi
+     if [[ $OS == Mac ]] ; then install_docker_mac ; fi
+     return 0
+     fi
+     ;; 
+
      t|T|tor|Tor)
        if [[ -n $tor_n ]] ; then
        install_tor 

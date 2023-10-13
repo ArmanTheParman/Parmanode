@@ -40,7 +40,6 @@ safe_unmount_parmanode || return 1
 *) invalid ;;
 esac
 done
-debug "1"
 
 while sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
@@ -55,11 +54,9 @@ set_terminal ; echo -e "
 read choice
 done
 
-debug "2"
 if sudo lsblk -o LABEL | grep -q parmanode ; then announce "Parmanode drive still detected. Aborting." ; return 1 ; fi 
 
 while ! sudo lsblk -o LABEL | grep -q parmanode ; do
-debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -69,7 +66,6 @@ set_terminal ; echo -e "
 "
 read ; set_terminal ; sync
 done
-debug "2c"
 
 #Mount
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
@@ -78,7 +74,6 @@ sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
 
-debug "33"
 
 # The main changes...
 
@@ -89,7 +84,6 @@ sudo chown -R 1002:1002 $mount_point/mynode/bitcoin
 
 #Get device name
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
-debug "5b , disk is $disk"
 
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
@@ -97,7 +91,6 @@ echo "Changing the label to myNode"
 sudo e2label $disk myNode 2>&1
 sleep 1
 done
-debug "6"
 # fstab configuration
 # Finished. Info.
 set_terminal ; echo -e "

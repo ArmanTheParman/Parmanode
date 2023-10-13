@@ -24,9 +24,18 @@ fi
 }
 
 function debug2 {
-
 if [[ $debug == 2 ]] ; then
 echo "${1}"
+log "debug2" "${1}"
+enter_continue
+return 0
+fi
+}
+
+function debug3 {
+if [[ $debug == 3 ]] ; then
+echo "${1}"
+log "debug3" "${1}"
 enter_continue
 return 0
 fi

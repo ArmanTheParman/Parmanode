@@ -5,14 +5,14 @@ function start_docker_mac {
 
 set_terminal_bit_higher "pink" ; echo - e "
 ########################################################################################
-
+$cyan
                                 Docker is starting
-                            
+$orange                       
     Docker should be loading; it sometimes could take a minute or so. There may be a
     graphical pop-up - make sure to accept the terms and conditions if that appears,
     otherwise Parmanode (& Docker) will not work. 
     
-    Once accepted, you can close the Docker window.
+    Once accepted,$cyan you can close the Docker window. $orange
 
     If after a few minutes Docker didn't open, TRY CLICKING THE DOCKER ICON FROM 
     THE APPLICATIONS FOLDER. 
@@ -21,10 +21,10 @@ set_terminal_bit_higher "pink" ; echo - e "
     wrong. Carefully place the computer in the bin and buy a new one, preferable 
     Linux, not Mac, and not, God forbid, Windows.
 
-$cyan
-                ###################################################
-                ONLY HIT <ENTER> ONCE YOU'RE SURE DOCKER IS RUNNING 
-                ###################################################
+$green
+               ####################################################
+                 HIT <ENTER> ONCE YOU CONFIRMED DOCKER IS RUNNING 
+               ####################################################
 $orange
 
 ########################################################################################

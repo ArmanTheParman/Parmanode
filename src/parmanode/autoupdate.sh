@@ -2,15 +2,12 @@ function autoupdate {
 
 ########################################################################################
 #Used by autoupdate toggle function
-debug "in autoupdate"
 if [[ $1 == on ]] ; then
 echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
-debug "why crontab output?"
 return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
-debug "no crontab output?"
 return 0
 fi
 ########################################################################################

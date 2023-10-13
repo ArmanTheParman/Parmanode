@@ -10,7 +10,9 @@
 #If debug is 1, then a debuging function becomes active, which pauses the
 #program wherever it appears. "export" keeps variable in global memory.
 if [[ $1 == "debug" || $1 == d ]] ; then export debug=1 
-elif [[ $1 == "debug2" || $1 == d2 ]] ; then export debug=2  
+elif [[ $1 == d2 ]] ; then export debug=2  
+elif [[ $1 == d3 ]] ; then export debug=3  
+elif [[ $1 == d4 ]] ; then export debug=4  
 else export debug=0 
 fi
 
@@ -55,7 +57,7 @@ set_colours #just exports variables with colour settings to make it easier to co
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
-debug "before install_parmanode"
+debug1 "before install_parmanode"
 install_parmanode
 
 # Check OS function and store in a variable for later. 
@@ -83,7 +85,7 @@ check_chip #gets the chip type into config file
 	
 ###### TESTING SECTION #################################################################
 
-debug "Pausing here" #when debugging, I can check for error messages and syntax errors
+debug1 "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
@@ -92,7 +94,6 @@ if [[ $2 == r ]] ; then export reinstall=1 ; fi
 ########################################################################################
  
     motd
-	debug "after motd"
 
 	# This is the main program, which is a menu that loops.
 	menu_main    

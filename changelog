@@ -1,6 +1,7 @@
 Version 3.9.0
     -Revamped menu
     -ParmaShell
+    -Docker separate install/uninstall for Macs
 Version 3.8.5
     -RaspiBlitz migration tool added
     -Fixed BTC-RPC-Explorer bug (NodeJS issues)

@@ -91,7 +91,7 @@ case $choice in
     d|D)
        if [[ -n $docker_n ]] ; then
         set_terminal
-        install_docker_parmanode_linux  
+        install_docker_linux  
         return 0
         fi
         ;;

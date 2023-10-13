@@ -11,7 +11,7 @@ fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function 
 
 install_docker_intro || return 1 ; log "docker" "installation abandoned" 
 
-if ! which docker >/dev/null 2>&1 ; then download_docker_mac || return 1 ; fi
+if ! which docker >/dev/null 2>&1 ; then install_docker_mac || return 1 ; fi
 
 #start docker if it is not running 
 if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
