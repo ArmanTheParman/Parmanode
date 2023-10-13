@@ -1,5 +1,5 @@
 function autoupdate {
-
+debug "in autoupdate"
 if [[ $1 == on ]] ; then
 echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
 debug "why crontab output?"
