@@ -11,25 +11,27 @@ fi
 
 if [[ $chip == "x86_64" ]] ; then
    rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
+   sudo apt purge nodejs npm -y >/dev/null 2>&1
    mkdir -p $HOME/parmanode/nodejs >/dev/null 2>&1
    cd $HOME/parmanode/nodejs
    curl -LO  https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz || { announce "failed to download nodejs. Aborting." ; return 1 ; }
+   breDir=$HOME/parmanode/nodejs/node-v18.17.1-linux-x64
    tar -xvf node*
 debug "pause here 1" ; chuck "pause here"
    rm *.xz
    sudo rm /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack >/dev/null 2>&1
+   #be aware of ~/.npm and ~/.npm-global directories when debugging
    cd node-v18*
    cd bin
 
-#   sudo cp * /usr/bin
+#ADD to PATH
+cat > ~/.bashrc << EOF
+#Added by Parmanode, NPM install for BRE
+export PATH=\$PATH:/$breDir/bin
+EOF
 
-     cd /usr/bin 
-     sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npm
-     sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm node
-     sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm npx 
-     sudo ln -s $HOME/parmanode/nodejs/node-v18*/bin/npm corepack 
+sudo chmod 755 -R $breDir/bin
 
-sudo chmod 755 /usr/bin/node /usr/bin/npm /usr/bin/npx /usr/bin/corepack
 debug "pause here 2" ; chuck "pause here"
 
 return 0
