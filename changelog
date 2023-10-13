@@ -1,5 +1,6 @@
 Version 3.8.5
     -RaspiBlitz migration tool added
+    -Fixed BTC-RPC-Explorer bug (NodeJS issues)
 Version 3.8.4
     -Ledger Live added
     -NodeJS bug fixed
