@@ -6,7 +6,7 @@ check_nodejs
 if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 
 if [[ $nodejs_version == "new" ]] ; then 
-if [[ $reinstall == 1 ]] ; then true ; else return 0 
+    if [[ $reinstall == 1 ]] ; then true ; else return 0 ; fi
 fi
 
 if [[ $chip == "x86_64" ]] ; then
