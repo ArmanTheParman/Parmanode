@@ -1,7 +1,9 @@
 function install_fulcrum_mac {
 set_terminal
-
-grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+" \
+"Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
 choose_and_prepare_drive_parmanode "Fulcrum" || return 1
 
@@ -9,9 +11,7 @@ format_ext_drive "Fulcrum" || return 1
 
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
-install_docker_intro || return 1 ; log "docker" "installation abandoned" 
-
-if ! which docker >/dev/null 2>&1 ; then download_docker_mac || return 1 ; fi
+if ! which docker >/dev/null 2>&1 ; then install_docker_mac || return 1 ; fi
 
 #start docker if it is not running 
 if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi

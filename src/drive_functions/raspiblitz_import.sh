@@ -57,7 +57,6 @@ safe_unmount_parmanode || return 1
 esac
 done
 
-debug "1"
 
 while sudo blkid | grep -q parmanode ; do
 set_terminal ; echo -e "
@@ -75,10 +74,8 @@ read choice
 case $choice in a|A) return 1 ;; esac
 done
 
-debug "2"
 
 while ! sudo lsblk -o LABEL | grep -q BLOCKCHAIN ; do
-debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -89,11 +86,9 @@ set_terminal ; echo -e "
 read ; set_terminal ; sync
 done
 
-debug "2c"
 
 #Get disk ID
 export disk=$(sudo blkid | grep BLOCKCHAIN | cut -d : -f 1) >/dev/null
-debug "2c2 , disk is $disk"
 
 #Mount
 export disk=$(sudo blkid | grep BLOCKCHAIN | cut -d : -f 1) >/dev/null
@@ -102,7 +97,6 @@ sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
 
-debug "33"
 # Move files
 
 #sudo mkdir -p $mount_point/.bitcoin
@@ -115,7 +109,6 @@ fi
 
 cd $mount_point/ && sudo ln -s ./bitcoin .bitcoin 
 sudo chown -h $USER:$USER $mount_point/.bitcoin #ownership of the symlink (-h)
-debug "after symlink"
 sudo mkdir -p $mount_point/bitcoin/parmanode_backedup/
 sudo mv $mount_point/bitcoin/*.conf $mount_point/bitcoin/parmanode_backedup/
 sudo chown -R $USER:$USER $mount_point/bitcoin
@@ -130,7 +123,6 @@ echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
 sleep 1
 done
-debug "6"
 
 # fstab configuration
 while grep -q parmanode < /etc/fstab ; do

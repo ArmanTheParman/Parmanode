@@ -60,7 +60,6 @@ modify_electrum_config fulcrumtcp
 ssl2|Ssl2|SSL2)
 check_electrs_ssl
 modify_electrum_config electrsssl
-debug "electrum bug1"
 ;;
 tcp2|TCP2)
 check_electrs_tcp

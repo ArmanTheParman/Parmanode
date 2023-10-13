@@ -64,6 +64,9 @@ if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgerapp=1
                        echo "    (ll)         Ledger Live App 
                             " ; fi
+if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp=1
+                       echo "    (ps)         Parmashell
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -171,6 +174,11 @@ bb|BB|Bb)
 ll|LL|Ll)
    if [[ $ledgerapp == 1 ]] ; then
    menu_ledger
+   fi
+   ;;
+ps|PS|Ps)
+   if [[ $parmashellapp == 1 ]] ; then
+   parmashell_info
    fi
    ;;
 p)

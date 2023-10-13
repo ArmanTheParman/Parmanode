@@ -40,13 +40,9 @@ if [[ $drive_fulcrum == "internal" ]] ; then
 
 rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcrum directory removed from int drive."
 
-debug "1"
 stop_and_remove_docker_containers_and_images_fulcrum
-debug "2"
 parmanode_conf_remove "drive_fulcrum"
-debug "3"
 installed_config_remove "fulcrum"
-debug "4"
 log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
 
 return 0

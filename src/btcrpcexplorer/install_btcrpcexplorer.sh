@@ -26,7 +26,7 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then
 
     Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
     Fulcrum server or electrs server first. You could, instead modify the 
-    configurtion file and point it to a Fulcrum or Electrum Server on this or 
+    configusrtion file and point it to a Fulcrum or Electrum Server on this or 
     another machine.
 
     Proceed anyway?   y  or  n
@@ -44,11 +44,10 @@ installed_config_add "btcrpcexplorer-start"
 
 cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
-debug "clone done"
+chuck "clone done"
 cd btc-rpc-explorer
 sudo npm install -g btc-rpc-explorer
-chuck "See output for sudo npm install -g btc-rpc-explorer; success?"
-
+chuck "npm install done - see which btc-rpc-explorer"
 installed_config_add "btcrpcexplorer-end"
 
 configure_btcrpcexplorer

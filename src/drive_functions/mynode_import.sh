@@ -57,7 +57,6 @@ safe_unmount_parmanode || return 1
 *) invalid ;;
 esac
 done
-debug "1"
 while sudo blkid | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -74,9 +73,7 @@ read choice
 case $choice in a|A) return 1 ;; esac
 done
 
-debug "2"
 while ! sudo lsblk -o LABEL | grep -q myNode ; do
-debug "2a"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -86,9 +83,6 @@ set_terminal ; echo -e "
 "
 read ; set_terminal ; sync
 done
-debug "2c"
-
-debug "2c2 , disk is $disk"
 
 #Mount
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
@@ -97,7 +91,6 @@ sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
 
-debug "33"
 # Move files
 
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
@@ -117,7 +110,6 @@ sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/
 
 #Get device name
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
-debug "5b , disk is $disk"
 
 # label
 while sudo lsblk -o LABEL | grep -q myNode ; do
@@ -125,7 +117,6 @@ echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
 sleep 1
 done
-debug "6"
 # fstab configuration
 while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo "

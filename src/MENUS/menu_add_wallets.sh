@@ -1,16 +1,16 @@
-function menu_wallets {
-
-menu_add_source
+function menu_add_wallets {
 while true
 
 do
+menu_add_source
 set_terminal_higher
 echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Wallet Menu $orange                #
+#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Wallet Install $orange             #
 #                                                                                      #
 ########################################################################################
+#                                                                                      #
 #                                                                                      #
 # Not yet installed...                                                                 #
 #                                                                                      #"

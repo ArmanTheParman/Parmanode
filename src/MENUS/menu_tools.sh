@@ -8,6 +8,8 @@ echo -e "
                                P A R M A N O D E - Tools   $orange
 
 
+              (ps)    ParmaShell info 
+
               (ip)    What's my computer's IP address?
 
               (m)     Migrate/Revert an external drive.
@@ -31,6 +33,11 @@ echo -e "
 choose "xpq" ; read choice ; set_terminal
 
 case $choice in
+
+    ps|PS|Ps)
+    parmashell_info
+    return 0
+    ;;
 
     u|U|up|UP|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi

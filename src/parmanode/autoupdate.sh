@@ -1,13 +1,16 @@
 function autoupdate {
 
+########################################################################################
+#Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
-crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null ; clear
+echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
 return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
 return 0
 fi
+########################################################################################
 
 
 
@@ -60,7 +63,7 @@ EOF
 
 sudo chmod +x $HOME/.parmanode/update_script.sh
 
-crontab -l ; echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | crontab - >/dev/null ; clear
+echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
 break
 ;;
 
@@ -107,8 +110,10 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q) exit ;; 
 p|P) return 0 ;;
-on|On|ON) autoupdate on ; return 0 ;;
-off|OFF|Off) autoupdate off ; return 0 ;;
+on|On|ON) i
+autoupdate "on" ; return 0 ;;
+off|OFF|Off) 
+autoupdate "off" ; return 0 ;;
 *) invalid ;;
 esac
 done  

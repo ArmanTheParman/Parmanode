@@ -16,7 +16,6 @@ fi
 
 #DOCKER
 unset docker_i docker_p docker_n
-if [[ $OS != "Mac" ]] ; then
 if grep -q "docker-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
 docker_i="#                                      Docker                                          #"
@@ -26,7 +25,6 @@ docker_p="#                                      Docker                         
 else
    #not installed
 docker_n="#                            (d)           Docker                                      #"
-fi
 fi
 
 #FULCRUM
@@ -108,7 +106,7 @@ rtl_n="#                            (r)           RTL Wallet                    
 fi
 
 #Electrum
-unset 
+unset electrum_p electrum_n electrum_i
 if grep -q "electrum-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 electrum_i="#                                      Electrum                                        #"
@@ -239,5 +237,19 @@ ledger_p="#                                      Ledger                         
 else
    #not installed
 ledger_n="#                            (ll)          Ledger                                      #"
+fi
+
+#Parmashell
+unset parmashell_i parmashell_p parmashell_n
+
+if grep -q "parmashell-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmashell_i="#                                      ParmaShell                                      #"
+elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmashell_p="#                                      ParmaShell                                      #"
+else
+   #not installed
+parmashell_n="#                            (ps)          ParmaShell                                  #"
 fi
 }
