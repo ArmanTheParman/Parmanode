@@ -240,4 +240,18 @@ else
    #not installed
 ledger_n="#                            (ll)          Ledger                                      #"
 fi
+
+#Parmashell
+unset parmashell_i parmashell_p parmashell_n
+
+if grep -q "parmashell-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmashell_i="#                                      ParmaShell                                      #"
+elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmashell_p="#                                      ParmaShell                                      #"
+else
+   #not installed
+parmashell_n="#                            (ps)          ParmaShell                                  #"
+fi
 }

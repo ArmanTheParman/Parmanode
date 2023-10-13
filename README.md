@@ -1,4 +1,4 @@
-# Parmanode 3.8.5
+# Parmanode 3.9.0
 
 ### Open Source, easy AF Bitcoin node for desktop computers
 

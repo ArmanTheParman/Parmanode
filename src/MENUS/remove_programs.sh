@@ -137,6 +137,12 @@ echo "#                                          (ll)               Ledger      
 elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
 echo "#                                          (ll)               Ledger  (partial)        #
 #                                                                                      #" ; fi
+if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
+echo "#                                          (ps)               Parmashell               #
+#                                                                                      #"
+elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
+echo "#                                          (ps)               Parmashell  (partial)    #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -275,6 +281,13 @@ if [[ $ledgermenu == 1 ]] ; then
 	return
 	fi
 	;;
+ps|PS|Ps)
+if [[ $parmashellmenu == 1 ]] ; then
+uninstall_parmashell
+return
+fi
+;;
+
 p|P)
 	return 0
 	;;
