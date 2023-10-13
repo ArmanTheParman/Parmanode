@@ -4,7 +4,7 @@ if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux 
 
 check_nodejs ; if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 
-if [[ $nodejs_version == "old" || $nodejs_version =="none" ]] ; then 
+if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then 
 
    rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
    sudo apt purge nodejs npm -y >/dev/null 2>&1
