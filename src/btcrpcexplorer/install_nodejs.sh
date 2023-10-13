@@ -29,6 +29,7 @@ cat >> ~/.bashrc << EOF
 #Added by Parmanode, NPM install for BRE
 export PATH=\$PATH:$breDir/bin
 EOF
+source ~/.bashrc
 
 sudo chmod 755 -R $breDir/bin
 
