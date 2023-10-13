@@ -18,7 +18,7 @@ if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then
 elif [[ $nodejs_version == "new" ]] ; then return 0 
 
     check_nodejs
-    if [[ $nodejs_version == "old" || or $nodejs_version == "none" ]] ; then
+    if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then
     announce "Couldn't get correct version of NodeJS. Version 16+ is needed. Aborting."
     return 1
     fi
