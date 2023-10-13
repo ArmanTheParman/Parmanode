@@ -12,7 +12,7 @@ if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then
    installed_config_remove "nodejs" >/dev/null 2>&1 
    sudo apt purge nodejs npm -y >/dev/null 2>&1
    sudo apt autoremove -y >/dev/null/ 2>&1
-   sudo apt install nodejs
+   sudo apt install nodejs npm
    return 0
 
 elif [[ $nodejs_version == "new" ]] ; then return 0 
