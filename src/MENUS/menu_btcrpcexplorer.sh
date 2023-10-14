@@ -1,4 +1,4 @@
-function menu_btcrpcexplorer {
+function menu_btc {
 while true
 do
 unset output enabled output2 t_enabled

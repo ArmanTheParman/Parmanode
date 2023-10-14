@@ -95,7 +95,7 @@ case $choice in
    bre|BRE|Bre)
        if [[ -n $btcrpcexplorer_n ]] ; then
          if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi 
-         install_btcrpcexplorer ; return 0 
+         install_btcrpcexplorer ; menu_bre ; menu_main ; return 0 
        fi
        ;;
    
