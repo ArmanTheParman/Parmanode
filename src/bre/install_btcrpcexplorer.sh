@@ -35,9 +35,9 @@ fi
 install_nodejs 16 || return 1
 update_npm 7 || return 1
 
-installed_config_add "btcrpcexplorer-start" 
 
 #download/clone and install bre using npm
+installed_config_add "btcrpcexplorer-start" 
 cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 chuck "clone done"
