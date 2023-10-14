@@ -43,6 +43,9 @@ sudo chmod +x $HOME/Desktop/parmanode.desktop
 sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
 clear
 echo "
+
+$HOME/run_parmanode/src/parmanode/add_rp_function.sh 
+
 ########################################################################################
 
     A desktop icon has been left for you. Double click it to run Parmanode, and 
