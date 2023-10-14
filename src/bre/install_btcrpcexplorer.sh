@@ -72,6 +72,7 @@ if cat $HOME/.parmanode/parmanode.conf | grep -q "btc_authentication" ; then ret
 fi
 }
 
+#delete this, copied to docker
 function btcrpcexplorer_questions {
 
 if ! which dmidecode ; then sudo apt-get install dmidecode ; fi
