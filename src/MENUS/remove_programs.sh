@@ -143,6 +143,12 @@ echo "#                                          (ps)               Parmashell  
 elif grep -q "parmashell-start" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
 echo "#                                          (ps)               Parmashell  (partial)    #
 #                                                                                      #" ; fi
+if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then bredockermenu=1
+echo "#                                          (ps)               BTC RPC Explorer (Docker)#
+#                                                                                      #"
+elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then bredockermenu=1
+echo "#                                          (ps)               BRE         (partial)    #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -248,6 +254,10 @@ if [[ $spectermenu == 1 ]] ; then
 bre|BRE|Bre)
 if [[ $btcrpcexplorermenu == 1 ]] ; then
     uninstall_btcrpcexplorer
+	return 0
+	fi
+if [[ $bredockermenu == 1 ]] ; then
+    bre_docker_uninstall
 	return 0
 	fi
 	;;

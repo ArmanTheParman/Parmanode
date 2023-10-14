@@ -171,7 +171,7 @@ else
 btcpTOR_n="#                            (btcpt)       BTCP over Tor (Darknet BTCPay)              #"
 fi
 
-#BTC RPC Explorer
+#BTC RPC Explorer (not Docker)
 unset btcrpcexplorer_i btcrpcexplorer_p btcrpcexplorer_n
 if grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
@@ -182,6 +182,19 @@ btcrpcexplorer_p="#                                      BTC RPC Explorer       
 else
    #not installed
 btcrpcexplorer_n="#                            (bre)         BTC RPC Explorer                            #"
+fi
+
+#BTC RPC Explorer (Docker)
+unset bre_i bre_p bre_n 
+if grep -q "bre-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+bre_i="#                                      BTC RPC Explorer (Docker)                             #"
+elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+bre_p="#                                      BTC RPC Explorer (Docker)                             #"
+else
+   #not installed
+bre_n="#                                  (bre)         BTC RPC Explorer (Docker)                   #"
 fi
 
 #LNbits
