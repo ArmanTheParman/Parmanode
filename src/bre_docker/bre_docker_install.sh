@@ -5,7 +5,7 @@ announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return
 
 if ! docker ps >/dev/null ; then announce "Need to install Docker first from Parmanode menu. Aborting." ; return 1 ; fi
 
-if ! grep -q fulcrum-end < $HOME/.parmanode/installed.conf || ! grep -q electrs-end < $HOME/.parmanode/installed.conf ; then
+if ! grep -q fulcrum-end < $HOME/.parmanode/installed.conf && ! grep -q electrs-end < $HOME/.parmanode/installed.conf ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -26,6 +26,7 @@ choose "xpq"
 read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; yolo) break ;; *) return 1 ;; esac
 done
+fi
 
 #intro
 bre_docker_intro
