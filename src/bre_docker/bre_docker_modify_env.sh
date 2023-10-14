@@ -2,7 +2,6 @@ function bre_docker_modify_env {
 local file="$HOME/parmanode/bre/.env"
 
 #computer speed question
-bre_computer_speed
 if [[ $fast_computer == no ]] ; then
 swap_string "$file" "BTCEXP_SLOW_DEVICE_MODE=false" "BTCEXP_SLOW_DEVICE_MODE=true"
 fi #else leave that configuration alone
