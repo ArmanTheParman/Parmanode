@@ -14,7 +14,6 @@ set_terminal_bit_higher ; echo -e "
     It is crucial to get your coins off the exchange (safely!), as the bare minimum, 
     but progressing beyond that is also important.
 
-
     This is a one-to-one mentorship course (not a group/class), at your own pace, 
     involving multiple video call meetings - it could take weeks, or if you want to 
     take your time, months.
@@ -35,9 +34,6 @@ set_terminal_bit_higher ; echo -e "
             How to remove KYC tainting of coins
             UTXO management
             Using the Lightning Network
-
-    Optional:
-
             Inheritance planning
 
 ########################################################################################
