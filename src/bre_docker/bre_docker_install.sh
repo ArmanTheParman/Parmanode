@@ -1,5 +1,32 @@
 function bre_docker_install {
 
+if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
+announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
+
+if ! docker ps >/dev/null ; then announce "Need to install Docker first from Parmanode menu. Aborting." ; return 1 ; fi
+
+if ! grep -q fulcrum-end < $HOME/.parmanode/installed.conf || ! grep -q electrs-end < $HOME/.parmanode/installed.conf ; then
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    You don't seem to have$cyan Fulcrum or electrs$orange installed. Parmanode will continue to 
+    install BTC RPC Explorer, but be warned, it may not connect automatically when you 
+    install one of these other programs later. You may need to configure the .env 
+    file yourself. To be on the safer side, install those other programs first, then 
+    come back.
+
+            yolo)                 Continue, whatever.
+
+            anything else)        Abort
+
+########################################################################################
+"
+choose "xpq"
+read choice ; set_terminal
+case $choice in q|Q) exit ;; p|P) return 1 ;; yolo) break ;; *) return 1 ;; esac
+done
+
 #intro
 bre_docker_intro
 
