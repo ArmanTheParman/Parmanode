@@ -66,6 +66,7 @@ if [[ $OS == "Mac" ]] ; then
     greadlink_check  # For macs, this function is needed for text manipulation functions I'll be making.
         
 fi
+add_rp_function
 }
 
 
