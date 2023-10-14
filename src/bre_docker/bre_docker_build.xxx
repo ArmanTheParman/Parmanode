@@ -1,0 +1,6 @@
+docker build -t bre --build-arg rpcuser=$rpcuser \
+                    --build-arg rpcpassword=$rpcpassword \
+                    --build-arg eserver=$eserver \
+                    --build-arg btc_authentication=$btc_authentication \
+                    --build-arg fast_computer=$fast_computer
+                     
