@@ -1,4 +1,4 @@
-function menu_btc {
+function menu_bre {
 while true
 do
 unset output enabled output2 t_enabled
