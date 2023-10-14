@@ -7,7 +7,7 @@ set_terminal_wide ; echo -e "
             
             Version:                $version          
 
-            Websites:               www.parmanode.com  (under construction) 
+            Websites:               www.parmanode.com 
                                     github.com/armantheparman/parmanode
 
             Developer:              Arman The Parman
