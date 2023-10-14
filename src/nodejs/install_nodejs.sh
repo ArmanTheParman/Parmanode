@@ -10,15 +10,17 @@ if [[ -d $HOME/parmanode/nodejs ]] ; then local nodejs_version=old ; fi
 if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then 
 
 #safety first
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+if [[ ! -e /etc/apt/keyrings/nodesource.gpg ]] ; then
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+fi
 
 #uninstall old versions of installations from parmanode
-rm -rf $HOME/parmanode/nodejs >/dev/null 2>&1
-installed_config_remove "nodejs" >/dev/null 2>&1 
+if [[ -e $HOME/parmanode/nodejs ]] ; then rm -rf $HOME/parmanode/nodejs ; fi
+installed_config_remove "nodejs" 
 #uninstall old version via package manager
-sudo apt purge nodejs npm -y >/dev/null 2>&1
-sudo apt autoremove -y >/dev/null/ 2>&1
+sudo apt purge nodejs npm -y
+sudo apt autoremove -y 
 
 #update repository list
 sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
