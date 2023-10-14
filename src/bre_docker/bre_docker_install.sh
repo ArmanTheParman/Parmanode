@@ -28,6 +28,8 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; yolo) break ;; *) return 1 ;; esac
 done
 fi
 
+if ! which nginx >/dev/null ; then install_nginx ; fi
+
 #intro
 bre_docker_intro
 
