@@ -3,9 +3,19 @@ while true
 do
 unset output enabled output2 t_enabled
 
-enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
+#Check if BRE is at local host or in docker container.
+if [[ $OS == Mac ]] ; then bre_docker_IP_get 
+    local localIP=$breIP 
+else 
+    local localIP="127.0.0.1"
+fi
 
-if [[ $enabled == true ]] ; then 
+#check if external connection is enabled
+unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
+
+#echo outputs for external connection
+unset output output2 output3
+if [[ $enabled == true && $OS = Linux ]] ; then 
 output="    ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
 
                    http://$IP:3003     (Note the port is 3003 not 3002)"
@@ -28,6 +38,7 @@ echo -e "
                                 ${cyan}BTC RPC EXPLORER${orange}
 ########################################################################################
 "
+if [[ $OS == Linux ]] ; then
 if sudo systemctl status btcrpcexplorer | grep "active (running)" >/dev/null 2>&1 ; then echo "
     BTC RPC EXPLORER IS RUNNING 
 "
@@ -35,6 +46,18 @@ else
 echo "
     BTC RPC EXPLORER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
+fi
+
+if [[ $OS == Mac ]] ; then
+if  docker ps | grep -q bre ; then echo "
+    BTC RPC EXPLORER DOCKER CONTAINER IS RUNNING 
+"
+else
+echo "
+    BTC RPC EXPLORER DOCKER CONTAINER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+fi
+
 echo "
                  (start)    Start BTC RPC EXPLORER
 
@@ -58,7 +81,7 @@ echo "
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 
-                   http://127.0.0.1:3002
+                   http://${localIP}:3002
                 
 $output $output2
 
@@ -71,28 +94,32 @@ q|Q|Quit|quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|START|Start)
-start_bre
+if [[ $OS == Linux ]] ; then start_bre ; fi
+if [[ $OS == Mac ]] ; then bre_docker_start ; fi
 ;;
 stop|Stop|STOP)
-stop_bre
+if [[ $OS == Linux ]] ; then stop_bre ; fi
+if [[ $OS == Mac ]] ; then bre_docker_stop ; fi
 ;;
 restart|Restart|RESTART)
-restart_bre
+if [[ $OS == Linux ]] ; then restart_bre ; fi
+if [[ $OS == Mac ]] ; then bre_docker_restart ; fi
 ;;
 e|E|enable|Enable|ENABLE)
-enable_access_bre
+if [[ $OS == Linux ]] ; then enable_access_bre ; fi
 ;;
 d|D|Disable|disable|DISABLE)
-disable_access_bre
+if [[ $OS == Linux ]] ; then disable_access_bre ; fi
 ;;
 t|T|TOR|tor|Tor)
-enable_bre_tor
+if [[ $OS == Linux ]] ; then enable_bre_tor ; fi
 ;;
 dt|DT|Dt|dT)
-disable_bre_tor
+if [[ $OS == Linux ]] ; then disable_bre_tor ; fi
 ;;
 c|C)
-set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ; enter_continue ;;
+if [[ $OS == Linux ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ; enter_continue ; fi 
+if [[ $OS == Mac ]] ; then set_terminal ; nano ~/parmanode/bre/.env ; enter_continue ; fi 
 esac
 done
 }
