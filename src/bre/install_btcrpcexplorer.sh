@@ -33,8 +33,8 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then
 fi
 
 install_nodejs 16 || return 1
-update_npm 7 || return 1
 
+update_npm 7 || return 1
 
 #download/clone and install bre using npm
 installed_config_add "btcrpcexplorer-start" 

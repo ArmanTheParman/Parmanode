@@ -252,4 +252,22 @@ else
    #not installed
 parmashell_n="#                            (ps)          ParmaShell                                  #"
 fi
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+#NodeJS
+unset nodejs_i nodejs_p_ nodejs_n 
+
+if grep -q "nodejs-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+nodejs_i="#                                      NodeJS                                          #"
+elif grep -q "nodejs-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+nodejs_p="#                                      NodeJS                                          #"
+else
+   #not installed
+nodejs_n="#                            (ps)          ParmaShell                                  #"
+fi
 }

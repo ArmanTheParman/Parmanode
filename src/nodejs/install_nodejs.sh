@@ -1,5 +1,4 @@
 function install_nodejs {
-debug2 "in install_nodejs"
 
 if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux for now." ; return 1 ; fi
 
@@ -18,34 +17,42 @@ fi
 #uninstall old versions of installations from parmanode
 if [[ -e $HOME/parmanode/nodejs ]] ; then rm -rf $HOME/parmanode/nodejs ; fi
 installed_config_remove "nodejs" 
+
 #uninstall old version via package manager
 sudo apt purge nodejs npm -y
 sudo apt autoremove -y 
 
 #update repository list
 sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
-debug2 "after deleting nodesource.list"
 NODE_MAJOR=18 #problems with version20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
 | sudo tee /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
 
 sudo apt-get update -y
-if [[ $debug != 2 ]] ; then
-announce "To proceed, the system must be upgraded with...
 
-    sudo apt-get -y upgrade
+set_terminal ; echo -e "
+########################################################################################
+    
+    To proceed, the system must be upgraded with...
+$green
+                            sudo apt-get -y upgrade
+$orange
+    Hit$cyan a$orange to abort.
 
+    Hit$cyan <enter>$orange alone to contine.
 
-    Hit <control>-c to abort."
+########################################################################################0
+"
+read choice
+case $choice in a|A) return 1 ;; esac
 
 sudo apt-get upgrade
-fi
-
 sudo apt-get install -y ca-certificates 
-sudo apt-get install -y nodejs #this also installs npm (need 7+)
 
-elif [[ $nodejs_version == "new" ]] ; then return 0 
+#this also installs npm (need 7+)
+sudo apt-get install -y nodejs && parmanode_conf_add "nodejs-start"
+elif [[ $nodejs_version == "new" ]] ; then parmanode_conf_add "nodejs-end" ; return 0 
 fi
 
 #Now repeat check after installtion, see if we have the right version
@@ -58,6 +65,7 @@ announce "Couldn't get correct version of NodeJS. Version 16+ is needed.
     Aborting."
 return 1
 else #If we do, code returns all good
+parmanode_conf_add "nodejs-end"
 return 0
 fi
 }
