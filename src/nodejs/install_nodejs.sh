@@ -1,4 +1,5 @@
 function install_nodejs {
+debug2 "in install_nodejs"
 
 if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux for now." ; return 1 ; fi
 
@@ -21,12 +22,14 @@ sudo apt autoremove -y >/dev/null/ 2>&1
 
 #update repository list
 sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
+debug2 "after deleting nodesource.list"
 NODE_MAJOR=18 #problems with version20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
 | sudo tee /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
 
 sudo apt-get update -y
+if [[ $debug != 2 ]] ; then
 announce "To proceed, the system must be upgraded with...
 
     sudo apt-get -y upgrade
@@ -35,6 +38,8 @@ announce "To proceed, the system must be upgraded with...
     Hit <control>-c to abort."
 
 sudo apt-get upgrade
+fi
+
 sudo apt-get install -y ca-certificates 
 sudo apt-get install -y nodejs #this also installs npm (need 7+)
 
