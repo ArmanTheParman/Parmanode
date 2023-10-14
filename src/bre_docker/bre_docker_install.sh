@@ -50,9 +50,10 @@ bre_docker_modify_env
 
 #install BRE inside container
 docker exec -it -u root /bin/bash -c 'npm install -g btc-rpc-explorer'
-
+debug3 "check npm install"
 #execute BTC-RPC-Explorer inside container
 bre_docker_start_bre
+debug3 "check bre_docker_start_bre"
 
 if ! docker ps | grep -q bre && docker exec -it /bin/bash -c 'bre ps -x | grep btc' ; then
 installed_config_add "bre-end"
