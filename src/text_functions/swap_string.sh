@@ -14,7 +14,11 @@ if [[ ! -f "$input_file" ]]; then
     enter_continue
     return 1
 fi
-#every ocurranced swapped
+
+#every ocurranced swapped - just some log info...
 echo "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
+
+#first \ might be redundant, but leaving it for now.
 sudo sed -i "\@$search_string@c\\$new_line" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
+
 }
