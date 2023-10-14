@@ -153,7 +153,7 @@ specter|SPECTER|Specter)
 
 bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 ]] ; then
-   menu_btcrpcexplorer 
+   menu_bre
    fi
    ;;
 ers|ERS|Ers)
