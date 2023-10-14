@@ -19,8 +19,6 @@ RUN mkdir -p /media /mnt /tmp
 WORKDIR /home/parman/parmanode
 RUN git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 
-WORKDIR /home/parman/parmanode/btc-rpc-explorer
-RUN npm install -g btc-rpc-explorer
 
 RUN echo "BTCEXP_SLOW_DEVICE_MODE=false"                     > /home/parman/parmanode/bre/.env
 RUN echo "BTCEXP_HOST=127.0.0.1"                            >> /home/parman/parmanode/bre/.env
@@ -35,4 +33,5 @@ RUN echo "BTCEXP_ELECTRUM_SERVERS=tcp://127.0.0.1:50001"    >> /home/parman/parm
 RUN echo "BTCEXP_NO_RATES=false"                            >> /home/parman/parmanode/bre/.env 
 
 
+WORKDIR /home/parman/parmanode/btc-rpc-explorer
 CMD tail -f /dev/null
