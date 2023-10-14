@@ -19,7 +19,6 @@ RUN mkdir -p /media /mnt /tmp
 WORKDIR /home/parman/parmanode
 RUN git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
 
-USER root
 WORKDIR /home/parman/parmanode/btc-rpc-explorer
 RUN npm install -g btc-rpc-explorer
 
