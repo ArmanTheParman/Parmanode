@@ -1,4 +1,4 @@
-function bre_docker_computerspeed {
+function bre_computer_speed {
 
 if ! which dmidecode ; then sudo apt-get install dmidecode ; fi
 
