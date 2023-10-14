@@ -24,6 +24,6 @@ echo -e "
 choose "x"
 read choice
 
-if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else fast_computer="false" ; fi
+if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else export fast_computer="false" ; fi
 fi
 }

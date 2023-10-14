@@ -1,9 +1,6 @@
 FROM node:latest
 
 #Default arguments: (if --build-arg missing)
-ARG rpcuser=parman
-ARG rpcpassword=hodl
-ARG eserver=tcp://127.0.0.1:50001
 
 RUN apt-get update
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
@@ -26,14 +23,13 @@ USER root
 WORKDIR /home/parman/parmanode/btc-rpc-explorer
 RUN npm install -g btc-rpc-explorer
 
-RUN echo "BTCEXP_SLOW_DEVICE_MODE=false"                > /home/parman/parmanode/bre/.env
-RUN echo "BTCEXP_BITCOIND_USER=$rpcuser"                >> /home/parman/parmanode/bre/.env 
-RUN echo "BTCEXP_BITCOIND_PASS=$rpcpassword"            >> /home/parman/parmanode/bre/.env  
-RUN echo "BTCEXP_BITCOIND_RPC_TIMEOUT=50000"            >> /home/parman/parmanode/bre/.env 
-RUN echo "BTCEXP=0.0.0.0"                               >> /home/parman/parmanode/bre/.env 
-RUN echo "BTCEXP_ADDRESS_API=electrumx"                 >> /home/parman/parmanode/bre/.env 
-RUN echo "BTCEXP_ELECTRUMX_SERVERS=$eserver"            >> /home/parman/parmanode/bre/.env 
-RUN echo "BTCEXP_NO_RATES=false"                        >> /home/parman/parmanode/bre/.env 
-
+RUN echo "BTCEXP_SLOW_DEVICE_MODE=false"                     > /home/parman/parmanode/bre/.env
+RUN echo "BTCEXP_BITCOIND_USER=parman"                      >> /home/parman/parmanode/bre/.env 
+RUN echo "BTCEXP_BITCOIND_PASS=hodl"                        >> /home/parman/parmanode/bre/.env  
+RUN echo "BTCEXP_BITCOIND_RPC_TIMEOUT=50000"                >> /home/parman/parmanode/bre/.env 
+RUN echo "BTCEXP=0.0.0.0"                                   >> /home/parman/parmanode/bre/.env 
+RUN echo "BTCEXP_ADDRESS_API=electrumx"                     >> /home/parman/parmanode/bre/.env 
+RUN echo "BTCEXP_ELECTRUMX_SERVERS=tcp://127.0.0.1:50001"   >> /home/parman/parmanode/bre/.env 
+RUN echo "BTCEXP_NO_RATES=false"                            >> /home/parman/parmanode/bre/.env 
 
 CMD tail -f /dev/null
