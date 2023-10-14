@@ -48,6 +48,9 @@ bre_docker_run
 #get necessary variables for config file and modify
 bre_docker_modify_env
 
+#install BRE inside container
+docker exec -it bre /bin/bash -c 'npm install -g btc-rpc-explorer'
+
 #execute BTC-RPC-Explorer inside container
 bre_docker_start_bre
 
