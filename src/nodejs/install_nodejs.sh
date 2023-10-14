@@ -20,6 +20,7 @@ sudo apt purge nodejs npm -y >/dev/null 2>&1
 sudo apt autoremove -y >/dev/null/ 2>&1
 
 #update repository list
+sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
 NODE_MAJOR=18 #problems with version20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
@@ -29,6 +30,7 @@ sudo apt-get update -y
 announce "To proceed, the system must be upgraded with...
 
     sudo apt-get -y upgrade
+
 
     Hit <control>-c to abort."
 
@@ -42,7 +44,11 @@ fi
 #Now repeat check after installtion, see if we have the right version
 check_nodejs
 if [[ $nodejs_version == "old" || $nodejs_version == "none" ]] ; then
-announce "Couldn't get correct version of NodeJS. Version 16+ is needed. Aborting."
+announce "Couldn't get correct version of NodeJS. Version 16+ is needed. 
+
+    You have version Major number: $nodejs_version. 
+    
+    Aborting."
 return 1
 else #If we do, code returns all good
 return 0
