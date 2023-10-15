@@ -62,6 +62,9 @@ remove|REMOVE)
     remove_programs ;;
 l|L) 
     menu_log_config ;;
+m|M)
+     mentorship
+     ;;
 e|E)
     education ;;
 t|T)
