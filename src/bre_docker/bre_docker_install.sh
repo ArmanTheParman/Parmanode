@@ -43,7 +43,7 @@ bre_docker_directories && installed_config_add "bre-start"
 bre_docker_build
 
 #docker run
-bre_docker_run
+bre_docker_run 
 
 #get necessary variables for config file and modify
 bre_docker_modify_env
