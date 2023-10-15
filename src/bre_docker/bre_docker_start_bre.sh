@@ -6,9 +6,7 @@ function bre_docker_start_bre {
 if docker ps >/dev/null 2>&1 ; then
 
     if docker ps | grep -q bre ; then
-        docker exec -it bre /bin/bash -c "cd /home/parman/parmanode/btc-rpc-explorer && \
-                                         export BTCEXP_CONFIG_PATH=/home/parman/bre/.env \
-                                         /usr/bin/btc-rpc-explorer" 
+        docker exec -it bre /bin/bash -c "btc-rpc-explorer" 
     fi
 
 else
