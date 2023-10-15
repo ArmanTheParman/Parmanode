@@ -47,6 +47,7 @@ bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
 
 #move config file to mounted volume (couldn't have been done any earlier)
 docker exec -it bre mv /home/parman/parmanode/.env /home/parman/parmanode/bre/ >/dev/null
+docker exec -it bre bash -c "ln -s ../bre/.env .env"
 
 #get necessary variables for config file and modify
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
