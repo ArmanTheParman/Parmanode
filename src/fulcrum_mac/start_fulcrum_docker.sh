@@ -12,6 +12,6 @@ fulrcum_docker_start_fulcrum
 }
 
 function fulrcum_docker_start_fulcrum {
-docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/fulcrum.conf \
+docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/config/fulcrum.conf \
     >>/home/parman/parmanode/fulcrum/fulcrum.log 2>&1"
 }
