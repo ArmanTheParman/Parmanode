@@ -21,6 +21,7 @@ fi
 
 #network connections
 if [[ $OS == Mac ]] ; then
+#need to double check these sed commands
 sed 's!127.0.0.1"!host.docker.internal"!' $file > $file-2 && mv $file-2 $file
   fulcrum_docker_IP_get
 sed s!tcp://127.0.0.1:50001!$fulcrumIP:50001! $file > $file-2 && mv $file-2 $file
