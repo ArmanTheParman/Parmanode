@@ -43,10 +43,13 @@ bre_docker_directories && installed_config_add "bre-start"
 bre_docker_build
 
 #docker run
-bre_docker_run 
+bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
+
+#move config file to mounted volume (couldn't have been done any earlier)
+docker exec -it bre mv /home/parman/parmanode/.env /home/parman/parmanode/bre/ >/dev/null
 
 #get necessary variables for config file and modify
-bre_docker_modify_env
+bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
 
 #install BRE inside container
 docker exec -it -u root /bin/bash -c 'npm install -g btc-rpc-explorer'
