@@ -54,13 +54,13 @@ docker exec -it bre bash -c "ln -s ../bre/.env .env"
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
 
 #install BRE inside container
-docker exec -it -u root /bin/bash -c 'npm install -g btc-rpc-explorer'
+docker exec -it -u root bre /bin/bash -c 'npm install -g btc-rpc-explorer'
 debug3 "check npm install"
 #execute BTC-RPC-Explorer inside container
 bre_docker_start_bre
 debug3 "check bre_docker_start_bre"
 
-if ! docker ps | grep -q bre && docker exec -it /bin/bash -c 'bre ps -x | grep btc' ; then
+if ! docker ps | grep -q bre && docker exec -it bre /bin/bash -c 'ps -x | grep btc | grep -v grep' ; then
 installed_config_add "bre-end"
 success "BTC RPC Explorer" "being installed"
 else
