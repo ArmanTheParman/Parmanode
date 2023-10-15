@@ -46,6 +46,7 @@ bre_docker_build
 bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
 
 #move config file to mounted volume (couldn't have been done any earlier)
+#and make symlink in expected location
 docker exec -it bre mv /home/parman/parmanode/.env /home/parman/parmanode/bre/ >/dev/null
 docker exec -it bre bash -c "ln -s ../bre/.env .env"
 
