@@ -55,6 +55,7 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
         curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-apple-darwin.dmg
         fi
 
+debug_user "test the downloaded files before verify function, then hit <enter>"
 verify_bitcoin || return 1
 
 #unpack Bitcoin core:
