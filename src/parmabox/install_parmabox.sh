@@ -1,6 +1,6 @@
 function install_parmabox {
 
-if ! which docker > dev/null ; then announce \
+if ! which docker > /dev/null ; then announce \
 "Please install Docker from the Parmanode install menu first."
 return 1
 fi
