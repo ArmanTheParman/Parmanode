@@ -6,4 +6,3 @@ RUN groupadd -r parman && useradd -m -g parman parman
 RUN chown -R parman:parman /home/parman 
 RUN echo 'parman:parmanode' | chpasswd
 RUN usermod -aG sudo parman
-RUN echo "ParmaBox" | tee /etc/hostname

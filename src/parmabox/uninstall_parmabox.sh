@@ -25,6 +25,7 @@ set_terminal ; echo -e "
         
         $HOME/parmanode/parmabox
     
+    
     ... as they will be deleted in the uninstall process.
 
 
