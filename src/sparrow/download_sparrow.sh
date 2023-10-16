@@ -13,7 +13,7 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 if [[ $OS == "Mac" ]] ; then
-    if [[ $chip == "aarch64" || $(uname -m) arm64 || $(uname -m) ARM64 ]] ; then
+    if [[ $chip == "aarch64" || $(uname -m) == arm64 || $(uname -m) == ARM64 ]] ; then
     curl -LO https://github.com/sparrowwallet/sparrow/releases/download/${sparrow_version}/Sparrow-${sparrow_version}-aarch64.dmg
     fi
     if [[ $chip == "x86_64" ]] ; then
