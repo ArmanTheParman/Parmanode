@@ -17,9 +17,11 @@ fi
 set_terminal ; echo -e "
 ########################################################################################
 
-    Do you want to install bare a bare bones ParmaBox (an Ubuntu Docker container) 
+    TL;DR - Hit$green <enter>$orange for default installation (recommended).
+
+    Do you want to install a bare bones ParmaBox (an Ubuntu Docker container) 
     without any configuration or menu options, that you'll manage yourself, use
-    yourself and clean up yourself?
+    yourself, and clean up yourself?
 
     This option is faster (Type$cyan boring$orange then$cyan <enter>$orange).
 
@@ -57,32 +59,9 @@ boring)
 docker run -d --name parmabox ubuntu tail -f /dev/null
 ;;
 *)
-docker run -d --name parmabox \
-           -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
-           -p 10000:10000 \
-           -p 8399:8332 \
-           -p 50051:50001 \
-           -p 11111:11111 \
-           ubuntu \
-           tail -f /dev/null
-
-docker exec -it parmabox bash \
-            -c "apt update -y ; apt install -y vim nano ssh sudo \
-                net-tools curl wget git procps gnupg tree htop ; \
-                groupadd -r parman && useradd -m -g parman parman ; \
-                chown -R parman:parman /home/parman ; \
-                echo 'parman:parmanode' | chpasswd ; \
-                usermod -aG sudo parman "
-
-docker exec -it -u parman parmabox bash \
-            -c "mkdir /home/parman/Desktop ; \
-                echo \"source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions\" | tee /home/parman/.bashrc ; \
-                curl https://parmanode.com/install.sh | sh ; 
-                mkdir /home/parman/.parmanode ;
-                echo \"parmashell-end\" | tee /home/parman/.parmanode/installed.conf"
-
-docker exec -it -u root parmabox bash \
-            -c "echo \"source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions\" | tee /root/.bashrc"
+parmabox_build
+parmabox_run
+parmabox_exec
 ;;
 esac
 
