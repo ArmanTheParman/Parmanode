@@ -1,4 +1,8 @@
 function menu_bitcoin_core {
+
+#for multiselection menus, need to exit if not installed
+if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf ; then return 1 ; fi
+
 while true
 do
 set_terminal_custom "50"

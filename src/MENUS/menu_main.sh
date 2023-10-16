@@ -78,6 +78,11 @@ update|UPDATE|Update)
     update_parmanode ;;
 ap|AP|Ap|aP)
     about ;;
+
+ub)
+menu_bitcoin_core
+;;
+
 q | Q | quit)
     exit 0 ;;
 *)
