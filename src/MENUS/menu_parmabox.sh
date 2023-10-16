@@ -20,14 +20,20 @@ function menu_parmabox {
 "
 choose "xpq" ; read choice ; set_terminal
 case $choice in 
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
-
-r|R) docker exec -it -u root parmabox /bin/bash ;;
-pm) docker exec -it -u parman parmabox /bin/bash ;;
-s) docker stop parmabox ;;
-rs) docker start parmanbox ;;
-u) docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" ;;
+q|Q|QUIT|Quit) 
+exit 0 ;;
+p|P) 
+return 1 ;;
+r|R) 
+docker exec -it -u root parmabox /bin/bash ;;
+pm) 
+docker exec -it -u parman parmabox /bin/bash ;;
+s) 
+docker stop parmabox ;;
+rs) 
+docker start parmabox ;;
+u) 
+docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" ;;
 *)
 invalid
 ;;
