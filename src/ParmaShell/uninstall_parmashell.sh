@@ -1,4 +1,21 @@
 function uninstall_parmashell {
+set_terminal ; echo "
+########################################################################################
+
+                                 Uninstall ParmaShell 
+
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "x" 
+read choice
+set_terminal
+
+if [[ $choice == "y" || $choice == "Y" ]] ; then true
+    else 
+    return 1
+    fi
 
 if [[ $OS == Mac ]] ; then rc=zshrc ; fi
 if [[ $OS == Linux ]] ; then rc=bashrc ; fi
