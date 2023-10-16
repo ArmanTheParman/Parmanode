@@ -1,9 +1,9 @@
-function uninstall_testbox {
+function uninstall_parmabox {
 
 set_terminal ; echo "
 ########################################################################################
 
-                                 Uninstall LND
+                                 Uninstall ParmaBox 
 
     Are you sure? (y) (n)
 
@@ -23,11 +23,12 @@ set_terminal ; echo -e "
 
     Before continuing, please make sure there are no important files in the direcotry:
         
-        $HOME/parmanode/testbox
+        $HOME/parmanode/parmabox
     
     ... as they will be deleted in the uninstall process.
 
-    Hit a to abort, or <enter> to continue.
+
+    Hit$cyan a$orange to abort, or$cyan <enter>$orange to continue.
 
 ########################################################################################
 "
@@ -36,14 +37,14 @@ if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
 
 if ! docker ps >/dev/null ; then announce \
 "Please make sure Docker is running before asking Parmanode to
-clean up the installed testbox."
+clean up the installed ParmaBox."
 return 1
 fi
 
-docker stop testbox
-docker rm testbox
+docker stop parmabox 
+docker rm parmabox 
 
-installed_config_remove "testbox"
-success "The Linux Docker Test Box" "being uninstalled"
+installed_config_remove "parmabox"
+success "The Linux Docker ParmaBox" "being uninstalled"
 
 }
