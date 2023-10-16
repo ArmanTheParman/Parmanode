@@ -15,6 +15,17 @@ if docker ps | grep -q parmabox ; then announce
 return 1
 fi
 
+set_termianl ; echo -e "
+########################################################################################
+
+    At some point during the install process, you will be asked for parman's password.
+
+    The password is$cyan \"parmanode\"$orange.
+
+########################################################################################
+"
+enter_continue
+
 mkdir $HOME/parmanode/parmabox
 installed_config_add "parmabox-start"
 
