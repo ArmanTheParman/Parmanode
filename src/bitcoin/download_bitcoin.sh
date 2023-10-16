@@ -56,7 +56,9 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
         fi
 
 debug_user "test the downloaded files before verify function, then hit <enter>"
-verify_bitcoin || return 1
+if [[ $VERIFY != off ]] ; then
+  verify_bitcoin || return 1
+fi
 
 #unpack Bitcoin core:
 if [[ $OS == Mac ]] ; then
