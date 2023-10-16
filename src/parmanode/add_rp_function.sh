@@ -3,7 +3,7 @@ if [[ $(uname) == Darwin ]] ; then rc=zshrc ; fi
 if [[ $(uname) == Linux ]] 
 then 
     rc=bashrc
-    if [[ ! e $HOME/.bashrc ]] ; then touch $HOME/.bashrc ; fi 
+    if [[ ! -e $HOME/.bashrc ]] ; then touch $HOME/.bashrc ; fi 
 fi
 
 if grep -q run_parmanode.sh < ~/.$rc ; then return 0 ; fi

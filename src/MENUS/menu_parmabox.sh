@@ -4,15 +4,17 @@ function menu_parmabox {
               $cyan              ParmaBox Menu            $orange                   
 ########################################################################################
 
-            r)           Log into the container as root     (type exit to return here)
 
-            pm)          Log into the container as parman   (type exit to return here)
+            r)         Log into the container as root     (type exit to return here)
 
-            s)           Stop the container
+            pm)        Log into the container as parman   (type exit to return here)
 
-            rs)          Restart the container
+            s)         Stop the container
 
-            u)           Run an update of the OS inside the container
+            rs)        Restart the container
+
+            u)         Run an update of the OS inside the container
+
 
 ########################################################################################
 "
