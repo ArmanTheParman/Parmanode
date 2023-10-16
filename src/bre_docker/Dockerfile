@@ -5,7 +5,7 @@ FROM node:latest
 RUN apt-get update
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
-RUN groupadd -r parman && useradd -m -g parman -u 1001 parman 
+RUN groupadd -r parman && useradd -m -g parman parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 RUN usermod -aG sudo parman
