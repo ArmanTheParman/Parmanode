@@ -11,6 +11,8 @@ mac_sparrow_headsup
 fi
 
 download_sparrow && installed_conf_add "sparrow-start"
+debug_user "check if files have been downloaded, esp shasum file.
+should be found in $HOME/parmanode/"
 verify_sparrow || return 1
 
 if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi

@@ -93,7 +93,7 @@ debug1 "Pausing here" #when debugging, I can check for error messages and syntax
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
 if [[ $2 == r ]] ; then export reinstall=1 ; fi
-if [[ $1 == user ]] ; then export user=debug
+if [[ $1 == user ]] ; then export user=debug ; fi
 ########################################################################################
  
     motd
