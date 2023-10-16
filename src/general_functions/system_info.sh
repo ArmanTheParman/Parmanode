@@ -175,3 +175,24 @@ function check_chip {
     parmanode_conf_add "chip=$chip"
 
 }
+
+function check_architecture {
+    if [[ $(uname) == Linux ]] ; then
+    architecture=$(lscpu | grep Architecture | awk '{print $2}')
+    if [[   $architecture == armv6l || \
+            $architecture == armv7l || \
+            $architecture == i386   || \
+            $architecture == i486   || \
+            $architecture == i586   || \
+            $architecture == i686   ]] ; then 
+announce \
+"This seems to be a 32-bit machine. Parmanode and most apps you
+install will not work properly, even if they install. Please run 
+this on a 64-bit machine. Bitcoin Core will work, but no promisses 
+with any other app you might want to install. Be warned." \
+" 
+Hit <control-c> to exit."
+
+fi
+fi
+}

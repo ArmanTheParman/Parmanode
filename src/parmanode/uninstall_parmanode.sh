@@ -1,4 +1,5 @@
 function uninstall_parmanode {
+local file="HOME/.parmanode/installed.conf"
 set_terminal
 echo "
 ########################################################################################
@@ -24,78 +25,85 @@ case $choice in
 
     esac
 
-if grep -q "bitcoin" $HOME/.parmanode/installed.conf #checks if bitcoin is installed in install config file.
+if grep -q "bitcoin" < $file #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
 set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
 
-if grep -q "fulcrum" $HOME/.parmanode/installed.conf
+if grep -q "fulcrum" < $file 
 then uninstall_fulcrum #both linux & mac, confirmations inside functions
 set_terminal
 fi
 
-if grep -q "btcpTOR" $HOME/.parmanode/installed.conf
+if grep -q "btcpTOR" < $file
 then 
         #linux condition not required becuase btcpTOR for mac non-existent.
         uninstall_btcpay_tor
         set_terminal
 fi
 
-if grep -q "btcpay" $HOME/.parmanode/installed.conf
+if grep -q "btcpay" < $file 
 then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal
 fi
 
-if grep -q "electrum" $HOME/.parmanode/installed.conf
+if grep -q "electrum" < $file 
 then
 uninstall_electrum
 set_terminal
 fi
 
-if grep -q "lnd" $HOME/.parmanode/installd.conf
+if grep -q "lnd" $file 
 then
 uninstall_lnd
 set_terminal
 fi
 
 
-if grep -q "rtl" $HOME/.parmanode/installd.conf
+if grep -q "rtl" < $file 
 then
 uninstall_rtl #Confirmation inside function
 set_terminal
 fi
 
-if grep -q "sparrow" $HOME/.parmanode/installd.conf
+if grep -q "sparrow" < $file 
 then
 uninstall_sparrow
 set_terminal
 fi
 
-if grep -q "tor-server" $HOME/.parmanode/installd.conf
+if grep -q "tor-server" <$file 
 then
 uninstall_tor_server
 set_terminal
 fi
 
-if grep -q "specter" $HOME/.parmanode/installed.conf
+if grep -q "specter" <$file 
 then
 uninstall_specter
 set_terminal
 fi
 
-if grep -q "electrs" $HOME/.parmanode/installed.conf
+if grep -q "electrs" <$file 
 then
 uninstall_elctrs
 set_terminal
 fi
 
-if grep -q "btcrpcexplorer" $HOME/.parmanode/installed.conf
+if grep -q "btcrpcexplorer" < $file
 then
 uninstall_btcrpcexplorer
 set_terminal
 fi
+
+if grep -q "parmanshell" < $file 
+then
+uninstall_parmanshell
+set_terminal
+fi
+
 set_terminal
 if [[ $debug == 0 ]] ; then 
 echo "
@@ -131,6 +139,13 @@ rm -rf $HOME/.parmanode >/dev/null 2>&1
 
 #remove crontab entries
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
+
+#remove bashrc/zshrc additions
+delete_line "$HOME/.bashrc" "Parmanode..." >/dev/null 2>&1
+delete_line "$HOME/.bashrc" "function rp {" >/dev/null 2>&1
+delete_line "$HOME/.zshrc" "Parmanode..." >/dev/null 2>&1
+delete_line "$HOME/.zshrc" "function rp {" >/dev/null 2>&1
+
 
 
 set_terminal ; echo "
