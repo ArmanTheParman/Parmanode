@@ -14,7 +14,24 @@ if docker ps | grep -q parmabox ; then announce
 "The parmabox container is already running."
 return 1
 fi
+set_terminal ; echo -e "
+########################################################################################
 
+    Do you want to install bare a bare bones ParmaBox (an Ubuntu Docker container) 
+    without any configuration or menu options, that you'll manage yourself, use
+    yourself and clean up yourself?
+
+    This option is faster (Type$cyan boring$orange then$cyan <enter>$orange).
+
+    Or, continue with the default ParmaBox with more features and configuration (Just
+    hit$cyan <enter>$orange)?
+
+########################################################################################
+"
+read choice ; set_terminal
+case $choice in 
+boring|Boring) local pbox=boring ;;
+*)
 set_termianl ; echo -e "
 ########################################################################################
 
@@ -27,10 +44,19 @@ set_termianl ; echo -e "
 enter_continue
 
 mkdir $HOME/parmanode/parmabox
+;;
+esac
+
+
 installed_config_add "parmabox-start"
 
 clear
 
+case $choice in 
+boring)
+docker run -d --name parmabox ubuntu tail -f /dev/null
+;;
+*)
 docker run -d --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -p 10000:10000 \
@@ -51,10 +77,12 @@ docker exec -it parmabox bash \
 docker exec -it -u parman parmabox bash \
             -c "mkdir /home/parman/Desktop ; \
                 curl https://parmanode.com/install.sh | sh" 
-
+;;
+esac
 
 installed_config_add "parmabox-end"
 success "Your Linux Docker ParmaBox" "being installed" 
+if [[ $choice != boring ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -74,4 +102,5 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+fi
 }
