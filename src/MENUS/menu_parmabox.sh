@@ -4,8 +4,13 @@ function menu_parmabox {
               $cyan              ParmaBox Menu            $orange                   
 ########################################################################################
 
+            r)           Log into the container as root
 
+            pm)           Log into the container as parman 
 
+            s)           Stop the container. 
+
+            rs)          Restart the container.
 
 ########################################################################################
 "
@@ -14,13 +19,10 @@ case $choice in
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
-start|Start|START|S|s)
-check_SSH || return 0
-please_wait ; echo "" ; echo "A Trezor Suite window should open soon."
-run_trezor
-enter_continue
-return 0 ;;
-
+r|R) docker exec -it -u root parmabox /bin/bash ;;
+pm) docker exec -it -u parman parmabox /bin/bash ;;
+s) docker stop parmabox ;;
+rs) docker start parmanbox ;;
 *)
 invalid
 ;;
