@@ -32,10 +32,12 @@ case $choice in
 
     w|W|wallets|Wallets)
         menu_add_wallets
+        return 0
         ;;
    
     o|O|Other|OTHER)
         menu_add_other
+        return 0
         ;;
 
     q|Q|quit|QUIT)
