@@ -149,6 +149,12 @@ echo "#                                    (bre)              BTC RPC Explorer (
 elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then bredockermenu=1
 echo "#                                    (bre)              BRE         (partial)          #
 #                                                                                      #" ; fi
+if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
+echo "#                                    (pbx)              ParmaBox                       #
+#                                                                                      #"
+elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
+echo "#                                    (pbx)              Parmabox    (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -294,6 +300,12 @@ if [[ $ledgermenu == 1 ]] ; then
 ps|PS|Ps)
 if [[ $parmashellmenu == 1 ]] ; then
 uninstall_parmashell
+return
+fi
+;;
+pbx|Pbx)
+if [[ $parmaboxmenu == 1 ]] ; then
+uninstall_parmabox
 return
 fi
 ;;
