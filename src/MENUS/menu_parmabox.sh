@@ -4,13 +4,15 @@ function menu_parmabox {
               $cyan              ParmaBox Menu            $orange                   
 ########################################################################################
 
-            r)           Log into the container as root
+            r)           Log into the container as root     (type exit to return here)
 
-            pm)           Log into the container as parman 
+            pm)          Log into the container as parman   (type exit to return here)
 
-            s)           Stop the container. 
+            s)           Stop the container
 
-            rs)          Restart the container.
+            rs)          Restart the container
+
+            u)           Run an update of the OS inside the container
 
 ########################################################################################
 "
@@ -23,6 +25,7 @@ r|R) docker exec -it -u root parmabox /bin/bash ;;
 pm) docker exec -it -u parman parmabox /bin/bash ;;
 s) docker stop parmabox ;;
 rs) docker start parmanbox ;;
+u) docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" ;;
 *)
 invalid
 ;;

@@ -291,6 +291,6 @@ elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then
 parmabox_p="#                                      ParmaBox                                           #"
 else
    #not installed
-parmabox_n="#                            (pbx)          Parmabox                                  #"
+parmabox_n="#                            (pbx)         Parmabox                                   #"
 fi
 }
