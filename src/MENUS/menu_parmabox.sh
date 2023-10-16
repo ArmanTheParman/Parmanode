@@ -15,6 +15,8 @@ function menu_parmabox {
 
             u)         Run an update of the OS inside the container
 
+            rf)        Refresh ParmaBox (starts over and includes new updates)
+
 
 ########################################################################################
 "
@@ -34,6 +36,9 @@ rs)
 docker start parmabox ;;
 u) 
 docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" ;;
+rf)
+parmabox_refresh
+;;
 *)
 invalid
 ;;
