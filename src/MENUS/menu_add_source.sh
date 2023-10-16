@@ -271,10 +271,10 @@ unset nodejs_i nodejs_p_ nodejs_n
 
 if grep -q "nodejs-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-nodejs_i="#                                      NodeJS                                          #"
+nodejs_i="#                                      NodeJS                                       #"
 elif grep -q "nodejs-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-nodejs_p="#                                      NodeJS                                          #"
+nodejs_p="#                                      NodeJS                                       #"
 else
    #not installed
 nodejs_n="#                            (njs)          NodeJS                                  #"
@@ -285,12 +285,12 @@ unset parmabox_n parmabox_i parmabox_p
 
 if grep -q "parmabox-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-parmabox_i="#                                      ParmaBox                                           #"
+parmabox_i="#                                      ParmaBox                                        #"
 elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-parmabox_p="#                                      ParmaBox                                           #"
+parmabox_p="#                                      ParmaBox                                        #"
 else
    #not installed
-parmabox_n="#                            (pbx)         Parmabox                                   #"
+parmabox_n="#                            (pbx)         Parmabox                                    #"
 fi
 }
