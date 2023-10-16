@@ -280,4 +280,17 @@ else
 nodejs_n="#                            (njs)          NodeJS                                  #"
 fi
 
+#Parmabox
+unset parmabox_n parmabox_i parmabox_p
+
+if grep -q "parmabox-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmabox_i="#                                      ParmaBox                                      #"
+elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmabox_p="#                                      ParmaBox                                      #"
+else
+   #not installed
+parmabox_n="#                            (njs)          Parmabox                             #"
+fi
 }
