@@ -43,6 +43,7 @@ fi
 
 docker stop parmabox 
 docker rm parmabox 
+rm -rf $HOME/parmanode/parmabox >/dev/null
 
 installed_config_remove "parmabox"
 success "The Linux Docker ParmaBox" "being uninstalled"

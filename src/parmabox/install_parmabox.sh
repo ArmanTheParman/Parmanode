@@ -32,7 +32,7 @@ read choice ; set_terminal
 case $choice in 
 boring|Boring) local pbox=boring ;;
 *)
-set_termianl ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
     At some point during the install process, you will be asked for parman's password.
@@ -43,7 +43,7 @@ set_termianl ; echo -e "
 "
 enter_continue
 
-mkdir $HOME/parmanode/parmabox
+mkdir $HOME/parmanode/parmabox >/dev/null
 ;;
 esac
 
@@ -76,7 +76,13 @@ docker exec -it parmabox bash \
 
 docker exec -it -u parman parmabox bash \
             -c "mkdir /home/parman/Desktop ; \
-                curl https://parmanode.com/install.sh | sh" 
+                echo \"source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions\" | tee /home/parman/.bashrc ; \
+                curl https://parmanode.com/install.sh | sh ; 
+                mkdir /home/parman/.parmanode ;
+                echo \"parmashell-end\" | tee /home/parman/.parmanode/installed.conf"
+
+docker exec -it -u root parmabox bash \
+            -c "echo \"source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions\" | tee /root/.bashrc"
 ;;
 esac
 
@@ -98,6 +104,9 @@ set_terminal ; echo -e "
     /home/parman/parman_programs/parmanode 
 
     - a little bit of ParmInception ;)
+
+    The ParmaShell software is installed to make the terminal experience a little 
+    nicer.
 
 ########################################################################################
 "
