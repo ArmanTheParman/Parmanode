@@ -108,8 +108,9 @@ case $choice in
        fi 
 
        if [[ -n $bre_n && $OS == "Mac" ]] ; then
-            bre_docker_install 
-            return 0
+            announce "Not yet available, but soon." ; return 0
+#            bre_docker_install 
+#            return 0
        fi
        ;;
    
