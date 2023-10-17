@@ -67,7 +67,7 @@ parmabox_exec
 esac
 
 installed_config_add "parmabox-end"
-success "Your Linux Docker ParmaBox" "being installed" 
+success "Your ParmaBox" "being installed" 
 if [[ $choice != boring ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
