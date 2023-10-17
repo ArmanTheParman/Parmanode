@@ -10,6 +10,8 @@ else
     F_tor="off"
 fi
 
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+
 set_terminal_custom 45
 echo -e "
 ########################################################################################
@@ -17,12 +19,24 @@ echo -e "
 ########################################################################################
 
 "
-if [[ $OS != "Mac" ]] ; then
-if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo "
-                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+if [[ $OS == "Linux" ]] ; then
+if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
+                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+
+                   Syncing to the $drive_fulcrum drive"
 else
 echo "
                    FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+fi
+if [[ $OS == "Mac" ]] ; then
+if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
+                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+
+                   Syncing to the $drive_fulcrum drive"
+else
+echo "
+                   FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
 fi
 fi
 
@@ -52,6 +66,7 @@ echo "
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
       (dc)       Fulcrum database corrupted?
+      
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum" >/dev/null ; echo "
