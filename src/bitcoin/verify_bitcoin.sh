@@ -1,6 +1,10 @@
 function verify_bitcoin {
 cd $HOME/parmanode/bitcoin
 
+# get Bitcoin Shasums
+curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
+
 if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg_mac ; fi
 
 if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; return 1 ; fi
