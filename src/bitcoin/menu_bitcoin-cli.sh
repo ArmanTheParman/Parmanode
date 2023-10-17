@@ -1,5 +1,4 @@
 function menu_bitcoin-cli {
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 while true
 do
 set_terminal
@@ -42,6 +41,8 @@ clear
 case $choice in
 
 v|V)
+if [[ $OS == Mac ]] ; then echo "see GUI." ; enter_continue ; continue ; fi
+
     set_terminal
     /usr/local/bin/bitcoin-cli -version
     echo "
@@ -50,6 +51,7 @@ Hit <enter> to go back to the menu."
     continue
     ;;
 gi)
+if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
     set_terminal
     /usr/local/bin/bitcoin-cli -getinfo
     echo "
@@ -58,6 +60,7 @@ Hit <enter> to go back to the menu."
     continue
     ;;
 ni)
+if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
     set_terminal
     /usr/local/bin/bitcoin-cli -netinfo
     echo "
@@ -66,44 +69,69 @@ Hit <enter> to go back to the menu."
     continue
     ;;
 gbh)  
+
+if [[ $OS == Mac ]] ; then
+set_terminal
+read -p "Enter the block number you want the hash of... " block
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbockhash $block", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
     set_terminal
     read -p "Enter the block number you want the hash of... " block
     /usr/local/bin/bitcoin-cli getblockhash $block
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    enter_continue
     continue
     ;;
 gbi)  
+
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
     set_terminal
     /usr/local/bin/bitcoin-cli getblockchaininfo
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    enter_continue
     continue
     ;;
+
 gdi)  
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdeploymentinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
+
     set_terminal
     /usr/local/bin/bitcoin-cli getdeploymentinfo
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    enter_continue
     continue
     ;;
 gd)  
+
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getdifficulty", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
+
     set_terminal
     /usr/local/bin/bitcoin-cli getdifficulty
-    echo "
-Hit <enter> to go back to the menu."
-    read
+    enter_continue
     continue
     ;;
 gmi)  
+
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
+
     set_terminal
     /usr/local/bin/bitcoin-cli getmempoolinfo
-    echo "
-Hit <enter> to go back to the menu."
-    read
+    enter_continue
     continue
     ;;
 gtosi)  
@@ -120,25 +148,33 @@ gtosi)
 "
 please_wait
 
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "gettxoutsetinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
     /usr/local/bin/bitcoin-cli gettxoutsetinfo
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    enter_continue
     set_terminal
     continue
     ;;
 
 gcc)
+if [[ $OS == Mac ]] ; then
+curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getconnectioncount", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+enter_continue
+continue
+fi
     set_terminal
     /usr/local/bin/bitcoin-cli getconnectioncount
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    enter_continue
     set_terminal
     continue
     ;;
 
 vm)  
+if [[ $OS == Mac ]] ; then no_mac ; fi
+
     set_terminal
     read -p "Please paste in the ADDRESS and hit <enter> :" address
     echo ""
