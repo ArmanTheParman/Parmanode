@@ -4,7 +4,6 @@ if ! docker ps >/dev/null ; then announce "Docker is not running." ; return 1 ; 
 please_wait
 docker stop parmabox
 docker rm parmabox
-docker rmi parmabox
 parmabox_build
 parmabox_run
 parmabox_exec
