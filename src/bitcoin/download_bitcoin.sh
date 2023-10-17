@@ -27,8 +27,7 @@ enter_continue
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
+
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
 
@@ -56,6 +55,18 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
         fi
 
 debug_user "test the downloaded files before verify function, then hit <enter>"
+if [[ ! -e ./bitcoin* ]] ; then 
+announce "The bitcoin program seems to have not downloaded as expected. Please report
+this to ma (Parman) via Telegram or email. I'll help you fix it." \
+"Before proceeding, it's worth taking a look at the directory:
+
+$HOME/parmanode/bitcoin
+
+... and see what's inside."
+fi
+
+
+
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
 fi
