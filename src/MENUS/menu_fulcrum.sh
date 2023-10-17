@@ -36,6 +36,8 @@ echo "
       (r)        Restart Fulcrum
 
       (c)        How to connect your Electrum wallet to Fulcrum
+
+      (bitcoin)  Choose which Bitcoin Core for Fulcrum to connect to
 	    
       (log)      Inspect Fulcrum logs
 
@@ -81,6 +83,12 @@ set_terminal
 echo "Stopping Fulcrum ..."
 if [[ $OS == "Linux" ]] ; then stop_fulcrum_linux ; fi
 if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
+set_terminal
+;;
+
+bitcoin|Bitcoin)
+set_terminal
+bitcoin_core_choice_fulcrum
 set_terminal
 ;;
 
@@ -139,7 +147,7 @@ echo "
         This will run Nano text editor to edit fulcrum.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	  Any changes will only be applied once you restart Fulcrum.
+	    Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "
@@ -154,7 +162,7 @@ echo "
         This will run Nano text editor to edit fulcrum.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	  Any changes will only be applied once you restart Fulcrum.
+	    Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "
