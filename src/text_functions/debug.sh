@@ -16,12 +16,8 @@ enter_continue
 return 0
 fi
 }
-	
-function debug1 {
-if [[ $debug == 1 ]] ; then
-debug "$1"
-fi
-}
+
+alias debug1 debug	
 
 function debug2 {
 if [[ $debug == 2 ]] ; then
@@ -50,6 +46,14 @@ return 0
 fi
 }
 
+function debug_fast {
+if [[ $fast== debug ]] ; then
+echo "${1}"
+enter_continue
+return 0
+fi
+
+}
 function ut {
 if [[ $ut != 1 ]] ; then return 0 ; fi
 echo "{$1}"

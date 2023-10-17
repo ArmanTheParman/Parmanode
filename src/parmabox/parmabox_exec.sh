@@ -7,6 +7,8 @@ docker exec -it -u parman parmabox bash \
                 mkdir /home/parman/.parmanode ; \
                 echo \"parmashell-end\" | tee /home/parman/.parmanode/installed.conf"
 
+debug_fast "pause"
+
 # Make bashrc better
 docker exec -it -u root parmabox bash -c "echo \"#Added by Parmanode...\" | tee -a /root/.bashrc /home/parman/.bashrc"
 docker exec -it -u root parmabox bash -c "echo \"function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }\" | tee -a /root/.bashrc /home/parman/.bashrc"
