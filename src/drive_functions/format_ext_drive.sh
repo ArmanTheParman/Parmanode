@@ -7,9 +7,15 @@ if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 
 #quit if external drive set for either of the other programs that use this function
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
-if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then return 0 ; fi
-if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then return 0 ; fi
+if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then \
+announce "Fulcrum or electrs is configured to use an external drive." \
+"Aborting format. Please start over." ; return 1 ; fi
+if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then \
+announce "Bitcoin or electrs is configured to use an external drive." \
+"Aborting format. Please start over." ; return 1 ; fi
+if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then \
+announce "Bitcoin or Fulcrum is configured to use an external drive." \
+"Aborting format. Please start over." ; return 1 ; fi
 
 if [[ $1 != justFormat ]] ; then
     format_warnings #skip_formatting variable set #DO NOT MOVE
@@ -23,7 +29,7 @@ unmount   #failure here exits program. Need drive not to be mounted in order to 
 
 if [[ $1 != Bitcoin ]] ; then #cancelling dd for bitcoin installation. To slow and not necessary.
 if [[ $1 != justFormat ]] ; then
-    dd_wipe_drive  #failure here exits program 
+    dd_wipe_drive  
 fi
 fi
 
@@ -31,12 +37,14 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
+        export disk_no_s=$(echo $disk | grep -oE 'disk[0-9]+') 
         set_terminal
+
         log "bitcoin" "eraseDisk $disk ..."
         if [[ $chip == "arm64" ]] ; then # arm chip computers have a different file system
-        diskutil eraseDisk APFS "parmanode" $disk || log "bitcoin" "failed to eraseDisk"
+        diskutil eraseDisk APFS "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"
         else
-        diskutil eraseDisk exFAT "parmanode" $disk || log "bitcoin" "failed to eraseDisk"   
+        diskutil eraseDisk exFAT "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"   
         fi
         set_terminal ; echo "
 #######################################################################################

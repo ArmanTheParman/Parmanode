@@ -28,6 +28,7 @@ case $choice in
 
      n|N|node|Node)
         menu_add_node
+        return 0
         ;;
 
     w|W|wallets|Wallets)

@@ -196,3 +196,29 @@ Hit <control-c> to exit."
 fi
 fi
 }
+
+function ensure_english {
+if [[ ! "$LANG" =~ ^en ]] ; then 
+export English=false
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode has detected you are using a non-English OS. Parmanode is not written
+    for other languages - if you continue, you're going to have a bad time.
+
+    Alternatively, you can change your operating system's language to English, then
+    you're going be ok.
+
+########################################################################################
+"
+choose "eq" ; read choice
+case $choice in q|Q) exit 0 ;;
+esac
+
+else
+
+export English=true
+
+fi
+}
+

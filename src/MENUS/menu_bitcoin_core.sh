@@ -138,7 +138,7 @@ echo "
         This will run Nano text editor to edit bitcoin.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	Any changes will only be applied once you restart Bitcoin.
+        Any changes will only be applied once you restart Bitcoin.
 
 ########################################################################################
 "
