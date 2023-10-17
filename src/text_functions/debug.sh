@@ -17,8 +17,6 @@ return 0
 fi
 }
 
-alias debug1 debug	
-
 function debug2 {
 if [[ $debug == 2 ]] ; then
 echo "${1}"
@@ -47,7 +45,7 @@ fi
 }
 
 function debug_fast {
-if [[ $fast== debug ]] ; then
+if [[ $fast == debug ]] ; then
 echo "${1}"
 enter_continue
 return 0

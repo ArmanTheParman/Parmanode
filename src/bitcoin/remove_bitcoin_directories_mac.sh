@@ -82,7 +82,7 @@ s|S|SKIP|skip|Skip)
     ;;
 d|D|delete|Delete|DELETE)
     log "bitcoin" "user chose to delete internal .bitcoin dir"
-    cd && rm -rf $HOME/.bitcoin ; debug1 "check output deleting" 
+    cd && rm -rf $HOME/.bitcoin 
     break 
     ;; 
 *) invalid ;;
