@@ -13,6 +13,8 @@ debug_fast "pause"
 docker exec -it -u root parmabox bash -c "echo \"#Added by Parmanode...\" | tee -a /root/.bashrc /home/parman/.bashrc"
 docker exec -it -u root parmabox bash -c "echo \"function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }\" | tee -a /root/.bashrc /home/parman/.bashrc"
 docker exec -it -u root parmabox bash -c "echo \"source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions\" | tee -a /root/.bashrc /home/parman/.bashrc"
+docker exec -it -u root parmabox bash -c "sed 's/#force_color_prompt=yes/force_color_prompt=yes/' /root/.bashrc"
+docker exec -it -u root parmabox bash -c "sed 's/#force_color_prompt=yes/force_color_prompt=yes/' /home/parman/.bashrc"
 
-
+debug_fast "pause2"
 }

@@ -60,7 +60,7 @@ set_colours #just exports variables with colour settings to make it easier to co
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
-debug1 "before install_parmanode"
+debug "before install_parmanode"
 install_parmanode
 
 # Check OS function and store in a variable for later. 
@@ -88,7 +88,7 @@ check_chip #gets the chip type into config file
 	
 ###### TESTING SECTION #################################################################
 
-debug1 "Pausing here" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
@@ -97,7 +97,7 @@ if [[ $1 == user ]] ; then export user=debug ; fi
 if [[ $1 == fast ]] ; then export fast=debug ; fi
 
 ########################################################################################
- 
+debug_fast "test first fast debug" 
     motd
 
 	# This is the main program, which is a menu that loops.
