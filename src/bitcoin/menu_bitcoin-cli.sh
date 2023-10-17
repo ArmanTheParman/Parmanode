@@ -70,13 +70,7 @@ Hit <enter> to go back to the menu."
     ;;
 gbh)  
 
-if [[ $OS == Mac ]] ; then
-set_terminal
-read -p "Enter the block number you want the hash of... " block
-curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbockhash $block", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
-enter_continue
-continue
-fi
+if [[ $OS == Mac ]] ; then no_mac ; fi
     set_terminal
     read -p "Enter the block number you want the hash of... " block
     /usr/local/bin/bitcoin-cli getblockhash $block
