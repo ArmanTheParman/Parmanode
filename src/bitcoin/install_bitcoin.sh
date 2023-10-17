@@ -1,5 +1,10 @@
 function install_bitcoin {
 
+if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 
+    but it's not going to run with default Parmanode settings - youll have
+    to tweak."
+fi
+
 set_terminal
 
 choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
