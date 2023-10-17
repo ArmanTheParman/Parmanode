@@ -42,7 +42,7 @@ echo -e "
 
      Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
 
-     Or to quit, either hit$green <control>-c, or type$green q$orange then$green <enter>$orange.
+     Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
 "
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
