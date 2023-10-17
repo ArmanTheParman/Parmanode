@@ -30,7 +30,6 @@ unmount   #failure here exits program. Need drive not to be mounted in order to 
 if [[ $1 != Bitcoin ]] ; then #cancelling dd for bitcoin installation. To slow and not necessary.
 if [[ $1 != justFormat ]] ; then
     dd_wipe_drive  
-    debug "1"
 fi
 fi
 
@@ -47,7 +46,6 @@ if [[ $OS == "Mac" ]] ; then
         else
         diskutil eraseDisk exFAT "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"   
         fi
-debug "4"
         set_terminal ; echo "
 #######################################################################################
 
