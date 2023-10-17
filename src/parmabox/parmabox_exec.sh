@@ -3,8 +3,8 @@ function parmabox_exec {
 # Install Parmanode in Parmabox, and ParmaShell
 docker exec -it -u parman parmabox bash \
             -c "mkdir /home/parman/Desktop ; \
-                curl https://parmanode.com/install.sh | sh ; 
-                mkdir /home/parman/.parmanode ;
+                curl https://parmanode.com/install.sh | sh ; \
+                mkdir /home/parman/.parmanode ; \
                 echo \"parmashell-end\" | tee /home/parman/.parmanode/installed.conf"
 
 # Make bashrc better

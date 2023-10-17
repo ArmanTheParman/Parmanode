@@ -1,7 +1,7 @@
 function parmabox_build  {
 cd $HOME/parman_programs/parmanode/src/parmabox
 
-if [[ debug == user ]] ; then
+if [[ debug == fast ]] ; then
 docker build -t parmabox .
 return 0
 fi
