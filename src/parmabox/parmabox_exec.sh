@@ -7,7 +7,7 @@ docker exec -it -u parman parmabox bash \
                 mkdir /home/parman/.parmanode ;
                 echo \"parmashell-end\" | tee /home/parman/.parmanode/installed.conf"
 
-docker cp $HOME/parman_programs/parmanode/src/parmabox/bashrc_from_Mint.txt parmabox /tmp/
+docker cp $HOME/parman_programs/parmanode/src/parmabox/bashrc_from_Mint.txt parmabox:/tmp/
 
 docker exec -it -u parman parmabox bash -c "cp /tmp/bashrc_from_Mint.txt /home/parman/.bashrc"
 
