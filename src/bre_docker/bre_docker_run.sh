@@ -10,6 +10,7 @@ fi
 if [[ $OS == Mac ]] ; then
 docker run -d --name bre \
      -v $HOME/parmanode/bre:/home/parman/parmanode/bre \
+     -p 3002:3002 \
      bre || return 1
 fi
 
