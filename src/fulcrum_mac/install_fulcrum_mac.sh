@@ -5,7 +5,7 @@ grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
-choose_and_prepare_drive_parmanode "Fulcrum" || return 1
+choose_and_prepare_drive_parmanode "Fulcrum" || return 1 #gets drive_fulcrum variable
 
 format_ext_drive "Fulcrum" || return 1
 
@@ -26,7 +26,10 @@ run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
   log "fulcrum" "Fulcrum docker run done."
 
-check_rpc_authentication_exists && log "fulcrum" "check rpc auth exists done"
+check_rpc_authentication_exists || announce "No bitcoin conf file found. You'll have to edit it yourself 
+    with a usernamd and password, matching to the Fulcrum config, to make
+    it all work. Otherwise, control-c to quit, get Bitcoin setup 
+    properly, then try installing Fulcrum again."
 
 add_IP_fulcrum_config_mac  
 

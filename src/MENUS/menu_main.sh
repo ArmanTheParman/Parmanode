@@ -12,33 +12,38 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (add)                Add more programs (Install menu)                             #
 #                                                                                      #
-#    (u)                  Use programs (Apps menu)........(Bitcoin, Sparrow, etc)      #
+#    (add)                Add more programs                                            #
 #                                                                                      #
-#    (remove)             Remove (uninstall) programs                                  #
+#    (u)                  Use programs                                                 #
+#                                                                                      #
+#    (remove)             Remove/uninstall programs                                    #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#    (l)                  See logs and configuration files                             #
+#    (t)                  Tools                                                        #
+#                                                                                      #
+#    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
 #    (e)                  Education                                                    #
 #                                                                                      #
-#    (t)                  Tools                                                        #
-#                                                                                      #
 #    (d)                  Donate ;)                                                    #
 #                                                                                      #
-#    (uninstall)          Uninstall Parmanode ..........(Who'd do such a thing?)       #
+#    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #
-#    (update)             Update Parmanode                                             #
+#    (update)             Update Parmanode  ........... (Improvements always coming)   #
+#                                                                                      #
+#    (l)                  See logs and config files                                    #
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
+#                                                                                      #
 ########################################################################################
-"
-choose "xq" # custom fuction to print a prompt. Different argumens give different messages
-# "xq" means add a prompt about choosing and one about how to quit.
 
+     Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
+
+     Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
+"
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 
@@ -57,6 +62,9 @@ remove|REMOVE)
     remove_programs ;;
 l|L) 
     menu_log_config ;;
+m|M)
+     mentorship
+     ;;
 e|E)
     education ;;
 t|T)
@@ -70,6 +78,11 @@ update|UPDATE|Update)
     update_parmanode ;;
 ap|AP|Ap|aP)
     about ;;
+
+ub)
+menu_bitcoin_core
+;;
+
 q | Q | quit)
     exit 0 ;;
 *)

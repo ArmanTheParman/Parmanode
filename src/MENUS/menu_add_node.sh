@@ -4,6 +4,14 @@ set_terminal
 while true
 do
 menu_add_source
+
+########################################################################################
+########################################################################################
+if [[ $OS == Mac ]] ; then unset btcrpcexplorer_n ; fi
+if [[ $OS == Linux ]] ; then unset bre_n ; fi
+########################################################################################
+########################################################################################
+
 set_terminal_higher
 echo -e "
 ########################################################################################
@@ -18,6 +26,7 @@ echo -e "
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
 if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
+if [[ -n $bre_n ]]              ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
@@ -28,6 +37,7 @@ echo -e "#                                                                      
 if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
+if [[ -n $bre_i ]]              ; then echo  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
@@ -38,6 +48,7 @@ echo -e "#                                                                      
 if [[ -n $bitcoin_p ]]         ; then echo  "$bitcoin_p"; fi
 if [[ -n $electrs_p ]]         ; then echo  "$electrs_p"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo  "$btcrpcexplorer_p"; fi
+if [[ -n $bre_p ]]              ; then echo  "$bre_p"; fi
 if [[ -n $lnd_p ]]             ; then echo  "$lnd_p"; fi
 if [[ -n $btcpay_p ]]          ; then echo  "$btcpay_p"; fi
 if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
@@ -48,7 +59,6 @@ echo "#                                                                         
 choose "xpq"
 
 read choice ; set_terminal
-
 case $choice in
 
     B|b|bitcoin|Bitcoin)
@@ -93,9 +103,13 @@ case $choice in
       ;;
 
    bre|BRE|Bre)
-       if [[ -n $btcrpcexplorer_n ]] ; then
-         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi 
-         install_btcrpcexplorer ; return 0 
+       if [[ -n $btcrpcexplorer_n && $OS == Linux ]] ; then
+            install_btcrpcexplorer ; menu_bre ; menu_main ; return 0 
+       fi 
+
+       if [[ -n $bre_n && $OS == "Mac" ]] ; then
+            bre_docker_install 
+            return 0
        fi
        ;;
    

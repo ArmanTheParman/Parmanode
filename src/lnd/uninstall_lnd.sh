@@ -1,7 +1,5 @@
 function uninstall_lnd {
 
-install_check "lnd" "uninstall" || return 1 
-
 set_terminal ; echo "
 ########################################################################################
 

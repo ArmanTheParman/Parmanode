@@ -16,6 +16,7 @@ if [[ -n $parmashell_n ]]      ; then echo  "$parmashell_n"; fi
 if [[ -n $docker_n ]]          ; then echo  "$docker_n"; fi
 if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $torserver_n ]]       ; then echo  "$torserver_n"; fi
+if [[ -n $parmabox_n ]]       ; then echo  "$parmabox_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -23,6 +24,7 @@ if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi
 if [[ -n $docker_i ]]          ; then echo  "$docker_i"; fi
 if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
+if [[ -n $parmabox_i ]]       ; then echo  "$parmabox_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -30,6 +32,7 @@ if [[ -n $parmashell_p ]]      ; then echo  "$parmashell_p"; fi
 if [[ -n $docker_p ]]          ; then echo  "$docker_p"; fi
 if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $torserver_p ]]       ; then echo  "$torserver_p"; fi
+if [[ -n $parmabox_p ]]       ; then echo  "$parmabox_p"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -67,6 +70,13 @@ case $choice in
       return 0
       fi
       ;;
+pbx|Pbx)
+      if [[ -n $parmabox_n ]] ; then
+      install_parmabox
+      return 0
+      fi
+      ;;
+
 
     q|Q|quit|QUIT)
         exit 0

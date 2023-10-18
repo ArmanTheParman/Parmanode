@@ -67,6 +67,9 @@ if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgerapp=1
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp=1
                        echo "    (ps)         Parmashell
                             " ; fi
+if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
+                       echo "    (pbx)        ParmaBox 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -153,7 +156,7 @@ specter|SPECTER|Specter)
 
 bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 ]] ; then
-   menu_btcrpcexplorer 
+   menu_bre
    fi
    ;;
 ers|ERS|Ers)
@@ -179,6 +182,11 @@ ll|LL|Ll)
 ps|PS|Ps)
    if [[ $parmashellapp == 1 ]] ; then
    parmashell_info
+   fi
+   ;;
+pbx|Pbx)
+   if [[ $parmaboxapp == 1 ]] ; then
+   menu_parmabox 
    fi
    ;;
 p)

@@ -1,3 +1,10 @@
+Version 3.10.0
+    -BTC RPC Explorer for Mac OS
+    -ParmaBox
+    -Problem with mac drive format fixed
+    -Test for English language
+    -M1/M2 Mac Sparrow bug fix
+    -more node info via cli/menu for Macs
 Version 3.9.0
     -Revamped menu
     -ParmaShell

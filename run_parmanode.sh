@@ -11,8 +11,11 @@
 #program wherever it appears. "export" keeps variable in global memory.
 if [[ $1 == "debug" || $1 == d ]] ; then export debug=1 
 elif [[ $1 == d2 ]] ; then export debug=2  
-elif [[ $1 == d3 ]] ; then export debug=3  
+elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
 elif [[ $1 == d4 ]] ; then export debug=4  
+elif [[ $1 == d5 ]] ; then export debug=5  
+elif [[ $1 == d6 ]] ; then export debug=6  
+elif [[ $1 == d7 ]] ; then export debug=7  
 else export debug=0 
 fi
 
@@ -57,7 +60,7 @@ set_colours #just exports variables with colour settings to make it easier to co
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
-debug1 "before install_parmanode"
+debug "before install_parmanode"
 install_parmanode
 
 # Check OS function and store in a variable for later. 
@@ -85,14 +88,16 @@ check_chip #gets the chip type into config file
 	
 ###### TESTING SECTION #################################################################
 
-debug1 "Pausing here" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
 if [[ $2 == r ]] ; then export reinstall=1 ; fi
+if [[ $1 == user ]] ; then export user=debug ; fi
+if [[ $1 == fast ]] ; then export fast=debug ; fi
 
 ########################################################################################
- 
+debug_fast "test first fast debug" 
     motd
 
 	# This is the main program, which is a menu that loops.
