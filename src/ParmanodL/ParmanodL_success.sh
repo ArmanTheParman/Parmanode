@@ -40,10 +40,10 @@ set_terminal ; echo "
 ########################################################################################
 
      I'M SURE YOU DIDN'T READ THAT PROPERLY. NOTE, THE PASSWORD IS:
-         
+$cyan         
                 parmanodl
-
-     NOT parmanode, but$cyan parmanodl.
+$orange
+     NOT parmanode, but parmanodl.
 
 ########################################################################################    
 "
