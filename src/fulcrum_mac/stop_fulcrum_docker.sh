@@ -1,15 +1,5 @@
 function stop_fulcrum_docker {
-
-PID=$(docker exec fulcrum pgrep -o "Fulcrum")   # -o means olderst command
-
-if [ -n "$PID" ] ; then
-   docker exec -d fulcrum kill -2 $PID 
-   enter_continue
-   else
-   read -p "Fulcrum was not running. Hit <enter> to continue."
-   return 1 
-fi 
-
+docker stop fulcrum
 return 0
 }
 

@@ -2,13 +2,15 @@ function menu_fulcrum {
 while true
 do
 
-if sudo cat /etc/tor/torrc | grep "fulcrum" >/dev/null 2>&1 ; then
-    if sudo cat /var/lib/tor/fulcrum-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+if sudo cat /etc/tor/torrc | grep -q "fulcrum" >/dev/null 2>&1 ; then
+    if sudo cat /var/lib/tor/fulcrum-service/hostname | grep -q "onion" >/dev/null 2>&1 ; then
     F_tor="on"
     fi
 else
     F_tor="off"
 fi
+
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 set_terminal_custom 45
 echo -e "
@@ -17,12 +19,24 @@ echo -e "
 ########################################################################################
 
 "
-if [[ $OS != "Mac" ]] ; then
-if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo "
-                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+if [[ $OS == "Linux" ]] ; then
+if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
+                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+
+                   Syncing to the $drive_fulcrum drive"
 else
 echo "
                    FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+fi
+fi
+if [[ $OS == "Mac" ]] ; then
+if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
+                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+
+                   Syncing to the $drive_fulcrum drive"
+else
+echo "
+                   FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
 fi
 fi
 
@@ -36,6 +50,8 @@ echo "
       (r)        Restart Fulcrum
 
       (c)        How to connect your Electrum wallet to Fulcrum
+
+      (bitcoin)  Choose which Bitcoin Core for Fulcrum to connect to
 	    
       (log)      Inspect Fulcrum logs
 
@@ -50,6 +66,7 @@ echo "
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
       (dc)       Fulcrum database corrupted?
+      
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum" >/dev/null ; echo "
@@ -78,8 +95,15 @@ set_terminal
 
 stop | STOP) 
 set_terminal
-if [[ $OS == "Linux" ]] ; then echo "Fulcrum stopping" ; stop_fulcrum_linux ; fi
-if [[ $OS == "Mac" ]] ; then echo "Stopping Fulcrum inside running container..." ; stop_fulcrum_docker ; fi
+echo "Stopping Fulcrum ..."
+if [[ $OS == "Linux" ]] ; then stop_fulcrum_linux ; fi
+if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
+set_terminal
+;;
+
+bitcoin|Bitcoin)
+set_terminal
+bitcoin_core_choice_fulcrum
 set_terminal
 ;;
 
@@ -138,7 +162,7 @@ echo "
         This will run Nano text editor to edit fulcrum.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	  Any changes will only be applied once you restart Fulcrum.
+	    Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "
@@ -153,7 +177,7 @@ echo "
         This will run Nano text editor to edit fulcrum.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-	  Any changes will only be applied once you restart Fulcrum.
+	    Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "
