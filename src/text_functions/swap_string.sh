@@ -15,11 +15,6 @@ if [[ ! -f "$input_file" ]]; then
     return 1
 fi
 
-if [[ $4 == Mac ]] ; then
-change_string_mac "$1" "$2" "$3"
-return 0
-fi
-
 #every ocurranced swapped - just some log info...
 echo "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
 
