@@ -27,7 +27,8 @@ $red    Parmanode$orange OS is a Linux operating system, modified with Parmanode
 ########################################################################################
 "
 read choice
-case $choice in n|N|no|NO) then return 1 ;; 
+case $choice in
+n|N|no|NO) return 1 ;; 
 y|Y|Yes|YES|yes) break ;;
 *) invalid
 esac
