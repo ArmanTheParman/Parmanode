@@ -5,7 +5,7 @@ echo "
   \"multiPass\": \"$rlt_password\",
   \"port\": \"3000\",
   \"defaultNodeIndex\": 1,
-  \"dbDirectoryPath\": \"$HOME/parmanode/rtl\",
+  \"dbDirectoryPath\": \"/home/parman/RTL\",
   \"SSO\": {
     \"rtlSSO\": 0,
     \"rtlCookiePath\": \"\",
@@ -17,8 +17,8 @@ echo "
       \"lnNode\": \"Node 1\",
       \"lnImplementation\": \"LND\",
       \"Authentication\": {
-       \"macaroonPath\": \"$HOME/.lnd/data/chain/bitcoin/mainnet\",
-        \"configPath\": \"$HOME/.lnd/lnd.conf\",
+       \"macaroonPath\": \"/home/parman/.lnd/data/chain/bitcoin/mainnet\",
+        \"configPath\": \"/home/parman/.lnd/lnd.conf\",
         \"swapMacaroonPath\": \"\",
         \"boltzMacaroonPath\": \"\"
       },
