@@ -3,8 +3,8 @@ local file="$HOME/parmanode/bre/.env"
 
 #computer speed question
 if [[ $fast_computer == no ]] ; then
-if [[ $OS == Mac   ]] ; then sed -i '' "/BTCEXP_SLOW_DEVICE_MODE=false/c\\BTCEXP_SLOW_DEVICE_MODE=true" $file ; fi
-if [[ $OS == Linux ]] ; then sed -i    "/BTCEXP_SLOW_DEVICE_MODE=false/c\\BTCEXP_SLOW_DEVICE_MODE=true" $file ; fi
+    if [[ $OS == Mac   ]] ; then sed -i '' "/BTCEXP_SLOW_DEVICE_MODE=false/c\\BTCEXP_SLOW_DEVICE_MODE=true" $file ; fi
+    if [[ $OS == Linux ]] ; then sed -i    "/BTCEXP_SLOW_DEVICE_MODE=false/c\\BTCEXP_SLOW_DEVICE_MODE=true" $file ; fi
 fi #else leave that configuration alone
 
 #Sort out connection security method
