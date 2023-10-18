@@ -40,6 +40,6 @@ return 0
 function set_rtl_password {
 new_password="$1"
 debug "password is $new_password"
-sed -i "s/multiPass/$new_password/" $HOME/parmanode/rtl/RTL-Config.json >$HOME/.parmanode/sed.log 2>&1
+sed -i "s/multiPass/$new_password/" $HOME/parmanode/rtl/RTL-Config.json 
 debug "changed password in RTL config?"
 }
