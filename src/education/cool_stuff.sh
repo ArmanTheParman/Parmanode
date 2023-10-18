@@ -20,7 +20,7 @@ $orange
         3) sshfs user@IP_address:/path/to/directory ~/Desktop/remote_directory
         
                 The above command has only 3 space-seperated elements, in order
-                ther are the sshfs command, the remote directory, and the host
+                there are the sshfs command, the remote directory, and the host
                 directory where you want to mount. (In this context, 'remote'
                 means other coputer, and host means the computer you're using).
 
