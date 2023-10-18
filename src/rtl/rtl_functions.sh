@@ -55,7 +55,7 @@ mv RTL-* RTL
 
 
 function install_rtl {
-cd $HOME/parmanode/RTL
+cd $HOME/parmanode/rtl
 npm install --omit=dev --legacy-peer-deps
 }
 
