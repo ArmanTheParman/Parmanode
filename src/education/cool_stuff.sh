@@ -1,6 +1,6 @@
 function cool_stuff {
 
-set_terminal_bit_higher ; echo -e "
+set_terminal ; echo -e "
 
 ########################################################################################
 $green
