@@ -10,9 +10,10 @@ lncli wallet accounts list >/dev/null 2>&1 || { echo "
 ########################################################################################
 
     RTL is software that connects to your LND wallet. Parmanode helps by configuring
-    the RTL software to point to the Parmanode LND wallet. It seems either that you
-    haven't made a LND wallet yet, or it is locked. A wallet is required BEFORE
-    installing RTL so that Parmanode can edit the configuration files for you.
+    the RTL software to point to the Parmanode LND wallet. It seems either LND is
+    not running, you haven't made a LND wallet yet, or it is locked. A wallet is 
+    required BEFORE installing RTL so that Parmanode can edit the configuration files 
+    for you.
 
     Aborting installation. Please make a wallet and return to installing RTL.
 
