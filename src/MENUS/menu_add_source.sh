@@ -175,13 +175,13 @@ fi
 unset btcrpcexplorer_i btcrpcexplorer_p btcrpcexplorer_n
 if grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-btcrpcexplorer_i="#                                      BTC RPC Explorer                                #"
+btcrpcexplorer_i="#                                      BTC RPC Explorer                                     #"
 elif grep -q "btcrpcexplore-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-btcrpcexplorer_p="#                                      BTC RPC Explorer                                #"
+btcrpcexplorer_p="#                                      BTC RPC Explorer                                     #"
 else
    #not installed
-btcrpcexplorer_n="#                            (bre)         BTC RPC Explorer                            #"
+btcrpcexplorer_n="#                            (bre)         BTC RPC Explorer                                 #"
 fi
 
 #BTC RPC Explorer (Docker)
