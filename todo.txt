@@ -1,25 +1,14 @@
 ParmanodL installation option
-install for bitbox app, linux only
+fulcrum stop function with docker stop, or internal - test.
 logoutput report send
 bre install fails for some - add more error reporst in logs, and npm install checks. Failure
    at npm install is a risk.
-umbrel import using mac
-mynode import using mac
-raspiblitz import
-sync Linux bitcoin drive using mac
-
-########################################################################################
-                                   reminders
-########################################################################################
-:set noincsearch
-
-Communicate with bitcoin-qt with curl, because not bitcoind is shipped. eg:
-curl --user yourname --data-binary '{"id":"t0", "method": "getinfo", "params": [] }' http://127.0.0.1:8332/
+sync Linux bitcoin drive using mac - seem insurmountable.
+:set noincsearch - for vsc
 
 system-health-check
     - log report document
     - check symlinks
     - check drive health
+    - $LANG
     etc
-
-improve detectMicroSD function similar to detect_drive function using diff
