@@ -111,3 +111,8 @@ echo ""
 echo "There has been an error. See log files for more info."
 enter_continue
 }
+
+function ecrm {
+echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue,$yellow or$green rm <enter>$yellow to return to the menu.$orange" ; read ecrm
+return 0
+}
