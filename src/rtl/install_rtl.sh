@@ -29,12 +29,13 @@ docker build -t rtl ./src/rtl || { log "rtl" "failed to build rtl image" && retu
 docker run -d --name rtl \
                          --network="host" \
                          -v $HOME/parmanode/rtl:/home/parman/RTL2 \
-			 -v $HOME/.lnd:/home/parman/.lnd \
+		            	 -v $HOME/.lnd:/home/parman/.lnd \
                          -v $HOME/.parmanode/:/home/parman/.parmanode \
                          rtl \
         || { log "rtl" "failed to run rtl image" && return 1 ; }
 
-mv $original_dir/src/rtl/RTL-Config.json $HOME/parmanode/rtl
+mv /tmp/RTL-Config.json $HOME/parmanode/rtl
+
 rtl_password_changer
 
 run_rtl || { log "rtl" "rtl failed to run" && return 1 ; }
