@@ -38,7 +38,7 @@ mv /tmp/RTL-Config.json $HOME/parmanode/rtl
 
 rtl_password_changer
 
-run_rtl || { log "rtl" "rtl failed to run" && return 1 ; }
+start_rtl || { log "rtl" "rtl failed to run" && return 1 ; }
 
 make_rtl_service_file && log "rtl" "rtl service file made"
 

@@ -26,7 +26,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
-run_rtl
+docker start rtl
 return 0 ;;
 
 stop|STOP|Stop)
