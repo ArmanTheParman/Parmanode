@@ -24,7 +24,7 @@ fi
 echo "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
 
 #be very careful modifying this...
-sudo sed -i "|$search_string|c\\$new_line" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
+sudo sed -i "/$search_string/c\\$new_line" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
 
 }
 alias string_swap='swap_string' 
