@@ -1,4 +1,4 @@
-function education {
+function menu_education {
 
 while true ; do
 set_terminal
@@ -16,6 +16,8 @@ echo -e "
                     (n)        Six reasons to run a node
 
                     (s)        Seperation of money and state
+
+                    (cs)       Cool stuff
 
             .... more soon
 
@@ -37,6 +39,9 @@ case $choice in
         ;;
     s|S)
         less_function "joinus"
+        ;;
+    cs|CS|Cs)
+        cool_stuff
         ;;
     p|P)
         return 0
