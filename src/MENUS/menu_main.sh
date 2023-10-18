@@ -66,7 +66,7 @@ m|M)
      mentorship
      ;;
 e|E)
-    education ;;
+    menu_education ;;
 t|T)
     menu_tools ;;
 d|D)
