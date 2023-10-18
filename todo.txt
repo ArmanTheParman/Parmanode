@@ -12,3 +12,4 @@ system-health-check
     - check drive health
     - $LANG
     etc
+deprecate swap string command
