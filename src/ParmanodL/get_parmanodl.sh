@@ -22,7 +22,7 @@ $red    Parmanode$orange OS is a Linux operating system, modified with Parmanode
     You can also hook up a moniter/mouse/keyboard to the Pi and use it as a full 
     desktop computer.
 
-    Proceed with installation?   $cyan  y   or   n$orange then <enter>
+    Proceed with installation?   $cyan  y   or   n$orange    then <enter>
 
 ########################################################################################
 "
