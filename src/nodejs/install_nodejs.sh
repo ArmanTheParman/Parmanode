@@ -51,8 +51,8 @@ sudo apt-get upgrade
 sudo apt-get install -y ca-certificates 
 
 #this also installs npm (need 7+)
-sudo apt-get install -y nodejs && parmanode_conf_add "nodejs-start"
-elif [[ $nodejs_version == "new" ]] ; then parmanode_conf_add "nodejs-end" ; return 0 
+sudo apt-get install -y nodejs && installed_conf_add "nodejs-start"
+elif [[ $nodejs_version == "new" ]] ; then installed_conf_add "nodejs-end" ; return 0 
 fi
 
 #Now repeat check after installtion, see if we have the right version
