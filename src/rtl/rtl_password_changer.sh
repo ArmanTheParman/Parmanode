@@ -40,6 +40,10 @@ return 0
 function set_rtl_password {
 new_password="$1"
 debug "password is $new_password"
-swap_string "$HOME/parmanode/rtl/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","
+swap_string "$HOME/parmanode/rtl/RTL-Config.json" \
+            "multiPass" \
+            "\"multiPass\": \"$new_password\"," \
+            "Mac"
+
 debug "changed password in RTL config?"
 }
