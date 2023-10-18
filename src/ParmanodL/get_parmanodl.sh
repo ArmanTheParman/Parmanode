@@ -36,6 +36,7 @@ done
 
 if ! which docker >/dev/null ; then install_docker || return 1 ; fi 
 
+debug "pre get parmanodl"
 get_parmanodl
 
 
