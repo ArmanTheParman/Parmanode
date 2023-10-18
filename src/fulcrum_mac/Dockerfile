@@ -27,7 +27,7 @@ RUN sha256sum --ignore-missing --check Fulcrum-1.9.1-x86_64-linux.tar.gz.sha256s
 #Check gpg sig
 USER root
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys D465135F97D0047E18E99DC321810A542031C02C
-RUN if { gpg --verify Fulcrum-1.9.1-x86_64-linux.tar.gz.asc 2>&1 | grep -q Good ; } ; then true; else exit 1 ; fi
+RUN if { gpg --verify --status-fd 1 Fulcrum-1.9.1-x86_64-linux.tar.gz.asc 2>&1 | grep -q GOOD ; } ; then true; else exit 1 ; fi
 
 #unpack fulcrum
 USER parman

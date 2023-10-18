@@ -1,30 +1,30 @@
-function install_nodejs {
+# function install_nodejs {
 
-if [[ $OS == "Mac" ]] ; then brew install node ; return 0 ; fi
+# if [[ $OS == "Mac" ]] ; then brew install node ; return 0 ; fi
 
-#Linux install:
+# #Linux install:
 
-Linux_distro #gets Linux=Debian, Ubuntu, or Unknown
+# Linux_distro #gets Linux=Debian, Ubuntu, or Unknown
 
-if [[ $OS == "Linux" ]] ; then
+# if [[ $OS == "Linux" ]] ; then
 
-	if [[ $Linux == "Debian" || $Linux == "Ubuntu" ]] ; then
+# 	if [[ $Linux == "Debian" || $Linux == "Ubuntu" ]] ; then
 
-		curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
-		apt-get install -y nodejs
-	else
-		set_terminal
-		echo "Only supported for Debian/Ubuntu based distributions"
-	fi
-fi
+# 		curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
+# 		apt-get install -y nodejs
+# 	else
+# 		set_terminal
+# 		echo "Only supported for Debian/Ubuntu based distributions"
+# 	fi
+# fi
 
-mkdir $HOME/.npm-global
-npm config set prefix '~/.npm-global'
-delete_line "npm-global"
-echo "export PATH=~/.npm-global/bin:\$PATH" >> $HOME/.profile
-source $HOME/.profile
+# mkdir $HOME/.npm-global
+# npm config set prefix '~/.npm-global'
+# delete_line "npm-global"
+# echo "export PATH=~/.npm-global/bin:\$PATH" >> $HOME/.profile
+# source $HOME/.profile
 
-}
+# }
 
 function download_rtl {
 

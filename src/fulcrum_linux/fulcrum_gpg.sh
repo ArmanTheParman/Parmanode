@@ -39,7 +39,7 @@ jdzE/g==
 -----END PGP PUBLIC KEY BLOCK-----" | gpg --import >/dev/null 2>&1 ; } || \
 { log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 ; }
 
-if gpg --verify $HOME/parmanode/fulcrum/Ful*asc $HOME/parmanode/fulcrum/Ful*.gz 2>&1 | grep -q "Good" 
+if gpg --verify --status-fd 1 $HOME/parmanode/fulcrum/Ful*asc $HOME/parmanode/fulcrum/Ful*.gz 2>&1 | grep -q "GOOD" 
     then 
         log "fulcrum" "gpg verification passed"
         return 0
