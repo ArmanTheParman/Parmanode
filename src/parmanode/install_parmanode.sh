@@ -69,6 +69,7 @@ fi
 ensure_english
 check_architecture
 add_rp_function
+correct_old_installation
 }
 
 
