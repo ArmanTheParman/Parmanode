@@ -2,7 +2,8 @@ function parmanodl_installer {
 if [[ $1 != install ]] ; then debug "in if" ; return 0 ; fi
 debug "parmanodl_installer"
 ########################################################################################
-# This file is to be kept at parmanode.com.
+# This contents of this file is to be kept at parmanode.com. It won't have a .sh 
+# extension
 # The install script will download it to the desktop and make it executable.
 # the #!/bin/bash line needs to be uncommented
 ########################################################################################
@@ -70,13 +71,11 @@ clear ; echo "
                        P  A  R  M  A  N  O  D  L     O  S 
 
 
-    The target microSD can be as small as 16GB.
-
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
 
-    You'll also be asked to remove/insert the microSD card to assist with drive 
-    detection.
+    You'll also be asked to remove/insert the microSD card (minimum 16GB) to assist 
+    with drive detection.
 
     For best probability of success, do not do resource intensive things while the
     computer is thinking. 
