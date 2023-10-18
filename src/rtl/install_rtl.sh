@@ -18,7 +18,7 @@ lncli wallet accounts list >/dev/null 2>&1 || { echo "
 
 ########################################################################################
 " && enter_continue && return 1 ; }
-ut "after LND wallet check"
+debug "after LND wallet check"
 fi
 
 mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
