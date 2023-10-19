@@ -70,6 +70,9 @@ if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
                        echo "    (pbx)        ParmaBox 
                             " ; fi
+if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
+                       echo "    (any)        AnyDesk 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -114,11 +117,6 @@ lnb|LNB|Lnb)
    menu_lnbits
    fi
 ;;
-# mem|MEM|Mem)
-#    if [[ $mempoolapp == 1 ]] ; then
-#    menu_mempool
-#    fi
-# ;;
 
 s|S|Sparrow|SPARROW|sparrow)
    if [[ $sparrowapp == 1 ]] ; then
@@ -187,6 +185,11 @@ ps|PS|Ps)
 pbx|Pbx)
    if [[ $parmaboxapp == 1 ]] ; then
    menu_parmabox 
+   fi
+   ;;
+any|ANY|Any)
+   if [[ $anydeskapp == 1 ]] ; then
+   menu_anydesk
    fi
    ;;
 p)

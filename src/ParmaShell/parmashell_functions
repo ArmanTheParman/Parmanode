@@ -28,4 +28,6 @@ function pl { pp ; cd ParmanodL ; a ; }
 function d { cd $HOME/Desktop && a ; }
 function dl { cd $HOME/Downloads && a ; }
 
+function dp { cd $HOME/.parmanode && a ; }
+
 
