@@ -1,11 +1,9 @@
 function parmanodl_installer {
-if [[ $1 != install ]] ; then debug "in if" ; return 0 ; fi
-debug "parmanodl_installer"
+if [[ $1 != install ]] ; then return 0 ; fi
 ########################################################################################
 # This contents of this file is to be kept at parmanode.com. It won't have a .sh 
 # extension
 # The install script will download it to the desktop and make it executable.
-# the #!/bin/bash line needs to be uncommented
 ########################################################################################
 
 #!/bin/bash
