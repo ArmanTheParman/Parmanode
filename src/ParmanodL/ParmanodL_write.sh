@@ -5,7 +5,7 @@ sudo umount -f ${disk}* >/dev/null 2>&1
 
 if [[ $OS == Linux ]] ; then
 please_wait
-sudo dd if="${image_path}" of="${disk}" bs=2000000 status=progress 
+sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 status=progress 
 fi
 
 if [[ $OS == Mac ]] ; then
@@ -22,7 +22,7 @@ as you like.
 Please wait...
 
 "
-sudo dd if="${image_path}" of="${disk}" bs=2000000 
+sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 
 fi
 # will change to dcfldd soon
 sync
