@@ -15,9 +15,9 @@ $red    Parmanode$orange OS is a Linux operating system, modified with Parmanode
     A large .img file (the operating system) will be downloaded, configured, and 
     flashd to microSD card (have it ready, minimum 16GB), for use in the Pi 4.
 
-    You will be able to connect to it via a program call SSH, which is a window into
-    the ParmanodL's terminal screen. There'll be an icon for that on the desktop, but
-    you can also access it from within this computer's Parmanode menu.
+    You will be able to connect to the Pi via a program call SSH, which is a window 
+    into the device's terminal screen. There'll be an icon for that on the desktop on
+    this computer.
 
     You can also hook up a moniter/mouse/keyboard to the Pi and use it as a full 
     desktop computer.
