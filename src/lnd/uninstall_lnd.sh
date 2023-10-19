@@ -6,9 +6,9 @@ $cyan
                                  Uninstall LND $orange
 
     Please note that if you are uninstalling to then install a newer version of
-    LND,$pink your data will will be deleted in the process$orange - please backup everything
+    LND,$pink your data will be deleted in the process$orange - please backup everything
     related to Lightning that's important to you. If you are unsure, it may be
-    better to know exactly what you're doing first.
+    better to learn exactly what you're doing first.
 
     Uninstall, are you sure? (y) (n)
 
