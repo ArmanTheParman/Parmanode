@@ -1,11 +1,11 @@
 function verify_lnd {
 #import Roasbeef's public key
-gpg --import $original_dir/src/lnd/roasbeef.pgp >/dev/null 2>&1
+gpg --import $original_dir/src/lnd/roasbeef.pgp 2>&1
 
 cd $HOME/parmanode/lnd
-
+debug "wait"
 #verify SHA256 output list file.
-if ! gpg --verify --status-fd 1 *.sig manifest*.txt >/dev/null 2>&1 | grep -q GOOD ; then
+if  ! gpg --verify --status-fd 1 *.sig manifest*.txt 2>&1 | grep -q GOOD ; then
     set_terminal
     echo "GPG verification failed. Unknown reason. Please report to Parman. Aborting."
     enter_continue

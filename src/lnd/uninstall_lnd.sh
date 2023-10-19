@@ -1,11 +1,16 @@
 function uninstall_lnd {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
+$cyan
+                                 Uninstall LND $orange
 
-                                 Uninstall LND
+    Please note that if you are uninstalling to then install a newer version of
+    LND,$pink your data will be deleted in the process$orange - please backup everything
+    related to Lightning that's important to you. If you are unsure, it may be
+    better to learn exactly what you're doing first.
 
-    Are you sure? (y) (n)
+    Uninstall, are you sure? (y) (n)
 
 ########################################################################################
 "
