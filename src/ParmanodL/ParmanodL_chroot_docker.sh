@@ -1,4 +1,4 @@
-function ParmanodL_chroot_Mac {
+function ParmanodL_chroot_docker {
 #document to be executed inside docker container.
 cat << 'EOS' > ~/ParmanodL/chroot_function.sh 
 #!/bin/bash
