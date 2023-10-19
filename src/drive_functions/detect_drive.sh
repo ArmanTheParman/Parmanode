@@ -56,7 +56,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}CONNECT$orange the $umbrel drive you wish to use for 
+    Now go ahead and ${pink}CONNECT$orange the $umbrel drive you wish to use for 
     Parmanode. Do not connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
