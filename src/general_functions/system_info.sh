@@ -204,10 +204,13 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has detected you are using a non-English OS. Parmanode is not written
-    for other languages - if you continue, you're going to have a bad time.
+    for other languages - if you continue, may have a bad time.
 
     Alternatively, you can change your operating system's language to English, then
     you're going be ok.
+
+    Gradually, Parmanode software will be imporved so that the language of the OS
+    will not be relevant.
 
 ########################################################################################
 "

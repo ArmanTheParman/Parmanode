@@ -57,10 +57,10 @@ git config pull.rebase false >/dev/null 2>&1
 if git pull | grep "Already up" ; then enter_continue ; return 0 ; fi
 # grep searches for a string that occurs only when there are no updates required.
 # otherwise, some update has happened...
-echo "
-
+echo -e "
+$pink
     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
-
+$orange
     "
 
 enter_continue

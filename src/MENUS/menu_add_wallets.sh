@@ -60,11 +60,8 @@ case $choice in
        fi
        ;;
    r|R|RTL|rtl|Rtl)
-      ut "code reached case point"
       if [[ -n $rtl_n ]] ; then
-      ut "code inside if -n rtl_n"
-      install_rtl || ut "install_rtl function returned non zert"
-      ut "after install rtl function"
+      install_rtl 
       return 0
       fi
       ;;

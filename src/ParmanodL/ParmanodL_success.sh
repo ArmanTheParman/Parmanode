@@ -3,7 +3,8 @@ function ParmanodL_success {
 set_terminal_higher ; echo -e "
 ########################################################################################
 
-                                S U C C E S S !! 
+                                  S U C C E S S !! 
+
 $pink
     PLEASE READ THIS CAREFULLY...
 $orange 
@@ -28,22 +29,22 @@ $orange
 6   The most user-friendly way is to double-click the run_parmanodl icon that has
     been placed on your desktop. This script ensures how to handle certain
     communication errors with SSH keys.
-$cyan
-7   The password for the ParmanodL is "parmanodl" $orange
+
+7   The password for the ParmanodL is$green "parmanodl" $orange
 
     Enjoy.						
 
 ########################################################################################
 "
 enter_continue
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
      I'M SURE YOU DIDN'T READ THAT PROPERLY. NOTE, THE PASSWORD IS:
-         
+$cyan         
                 parmanodl
-
-     NOT parmanode, but$cyan parmanodl.
+$orange
+     NOT parmanode, but parmanodl.
 
 ########################################################################################    
 "

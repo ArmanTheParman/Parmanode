@@ -2,32 +2,32 @@ function parmashell_info {
 
 set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                               ParmaShell Information
-                            
+
+$orange                         
     Here's some cool things you can do in terminal when ParmaShell is installed.
 
     - Keyboard shortcuts have been created with speed in mind. Start using them and
       soon you'll get faster.
-    - The default size of the screen is a bit bigger (programmable)
-    - The refreshed state will show the contents of the directory in colour, and the
+    - Refresh/clear the screen anytime with$green \"a\"$orange and <enter>
+    - The default size of the screen is a bit bigger 
+    - The contents of the directory is shown at the top, in colour, and the
       current working directory printed in full.
-    - Refresh anytime with \"a\"
-    - If its too cluttered with a refresh, just type \"st\" (set terminal), and 
-      the screen will be refreshed without the directory contents. It alse adjusts 
-      the screen size.
+    - If its too cluttered with a refresh, just type$cyan \"st\"$orange (set terminal), and 
+      the screen will be refreshed without the directory contents. 
 
-    - \"aa\" with print out \"ls -lah\" with a refreshed screen and contents printed
-      at the top
-    - \"..\" you'll already use but it will now refresh the screen and print the
-      directory contents.
-    - \"d\" changes directory to Desktop, and refreshes
-    - \"dl\" changes to Downloads directory, and refrehes
-    - \"pn\" changes to the parmanode script driectory
-    - \"pp\" changes to parman_programs directory
-    - \"hp\" stands for 'home parmanode' and changes to the parmanode apps directory
+    -$cyan \"aa\"$orange give a printout of \"ls -lah\" in colour and refreshes screen 
+    -$cyan \"..\"$orange an existing command but now combined with$cyan a$orange commande. You'll
+    -$cyan \"d\"$orange changes directory to Desktop, and refreshes
+    -$cyan \"dl\"$orange changes to Downloads directory, and refrehes
+    -$cyan \"pn\"$orange changes to the Parmanode script driectory
+    -$cyan \"pp\"$orange changes to parman_programs directory
+    -$cyan \"hp\"$orange stands for 'home parmanode' and changes to the parmanode apps directory
 
    This list will grow as I think of good ideas. Requests welcome. 
+
+########################################################################################
 "
 enter_continue
 }

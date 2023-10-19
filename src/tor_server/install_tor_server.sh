@@ -1,11 +1,15 @@
 function install_tor_server {
+
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+
+if ! which tor >/dev/null ; then install_tor ; fi
+
 if [[ -z $1 ]] ; then
     install="ts"
 else
     install="$1"
 fi
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 set_terminal
 

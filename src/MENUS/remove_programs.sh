@@ -102,7 +102,7 @@ elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=
 echo "                                     (specter)          Specter Wallet                 #
 #                                                                                      #" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo "#                                    (bre)              BTC RPC Explorer         #
+echo "#                                    (bre)              BTC RPC Explorer               #
 #                                                                                      #"
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
 echo "#                                    (bre)              BTCrpcEXP (partial)            #
