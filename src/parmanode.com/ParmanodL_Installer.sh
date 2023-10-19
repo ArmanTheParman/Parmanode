@@ -1,14 +1,14 @@
+function parmanodl_installer {
+if [[ $1 != install ]] ; then debug "in if" ; return 0 ; fi
+debug "parmanodl_installer"
 ########################################################################################
-# This file is to be kept at parmanode.com.
+# This contents of this file is to be kept at parmanode.com. It won't have a .sh 
+# extension
 # The install script will download it to the desktop and make it executable.
-return 0
+# the #!/bin/bash line needs to be uncommented
 ########################################################################################
 
 #!/bin/bash
-
-# Debug toggle
-
-    if [[ $1 == d ]] ; then export debug=1 ; else export debug=0; fi
 
 # Version specific info
     
@@ -26,6 +26,9 @@ return 0
 # Intro
 
    while true ; do
+
+   if [[ $1 == install ]] ; then break ; fi
+
    clear ; echo "
 ########################################################################################
 
@@ -68,13 +71,11 @@ clear ; echo "
                        P  A  R  M  A  N  O  D  L     O  S 
 
 
-    The target microSD can be as small as 16GB.
-
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
 
-    You'll also be asked to remove/insert the microSD card to assist with drive 
-    detection.
+    You'll also be asked to remove/insert the microSD card (minimum 16GB) to assist 
+    with drive detection.
 
     For best probability of success, do not do resource intensive things while the
     computer is thinking. 
@@ -84,7 +85,7 @@ clear ; echo "
     Hit <enter> to continue
     " ; read
     
-    if [[ $(uname) == Darwin ]] ; then clear ; echo "
+    if [[ $(uname) == Darwin && $1 != install ]] ; then clear ; echo "
 ########################################################################################
 
 
@@ -124,6 +125,9 @@ read ; clear ; echo "
 "
 read 
 fi
+
+if [[ $1 != install ]] ; then
+
 echo "
 Please wait...
 "
@@ -206,6 +210,8 @@ Please wait...
         fi 
     done
 
+fi # end if $1 != install
+
 # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
 # as Parmanode functions are available.
 
@@ -218,6 +224,8 @@ Please wait...
     ParmanodL_directories ;  log "parmanodl" "directory function"
 
 # Get OS , verify, and extract
+    
+    if [[ $1 == install ]] ; then OS_choice=pi ; fi
 
     if [[ $OS_choice == pi ]] ; then
     get_PiOS || { log "parmanodl" "failed at get_PiOS" ; exit ; }
@@ -235,7 +243,7 @@ Please wait...
 
 # Mount the image and dependent directories
 
-    ParmanodL_mount || { log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
+    ParmanodL_mount || { echo "failed to mount. Exiting." ; log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
 
 # Setup system locale
 
@@ -282,3 +290,4 @@ Please wait...
     ParmanodL_success
 
 # The End
+}

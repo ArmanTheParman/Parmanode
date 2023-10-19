@@ -1,6 +1,6 @@
 function install_nodejs {
 
-if [[ $OS == "Linux" ]] ; then true ; else announce "Sorry, only works on Linux for now." ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then if ! which node >/dev/null 2>&1 ; then brew install node ; fi ; return 0 ; fi    
 
 check_nodejs ; if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 

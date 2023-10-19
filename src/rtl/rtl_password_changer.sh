@@ -39,5 +39,9 @@ return 0
 
 function set_rtl_password {
 new_password="$1"
-swap_string "$HOME/parmanode/rtl/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","
+debug "password is $new_password"
+
+#sudo sed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," $HOME/parmanode/rtl/RTL-Config.json 
+swap_string "$HOME/parmanode/rtl/RTL-Config.json" "multiPass" "\"multiPass\": \"$new_password\","          
+debug "changed password in RTL config?"
 }

@@ -25,6 +25,8 @@ echo -e "
 #                                                                                      #
 #    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
+# $red   (pn)                 ParmanodL (new)                                           $orange   #
+#                                                                                      #
 #    (e)                  Education                                                    #
 #                                                                                      #
 #    (d)                  Donate ;)                                                    #
@@ -65,6 +67,9 @@ l|L)
 m|M)
      mentorship
      ;;
+pn|PN|Pn)
+    get_parmanodl
+    ;;
 e|E)
     menu_education ;;
 t|T)

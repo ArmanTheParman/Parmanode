@@ -54,18 +54,7 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
         curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-apple-darwin.dmg
         fi
 
-debug_user "test the downloaded files before verify function, then hit <enter>"
-if [[ ! -e ./bitcoin* ]] ; then 
-announce "The bitcoin program seems to have not downloaded as expected. Please report
-this to ma (Parman) via Telegram or email. I'll help you fix it." \
-"Before proceeding, it's worth taking a look at the directory:
-
-$HOME/parmanode/bitcoin
-
-... and see what's inside."
-fi
-
-
+debug_user "check bitcoin file exists"
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1

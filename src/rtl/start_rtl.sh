@@ -1,4 +1,4 @@
-function run_rtl {
+function start_rtl {
 if ! docker ps | grep rtl ; then
 please_wait
 docker start rtl

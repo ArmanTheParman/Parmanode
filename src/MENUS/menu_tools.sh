@@ -19,12 +19,12 @@ echo -e "
 
               (mm)    Mount the Parmanode drive - Linux only
                 
-              (d)     Delete your previous preference to hide certain Parmanode
+              (d)     Delete your previous preferences to hide certain Parmanode
                       messages
                  
               (u)     Update computer (Linux or Mac)
 
-              (h)     Check system resources with \"htop\" (installs if needed)
+              (h)     Check system resources with \"htop\" (installed if needed)
 
               (aa)    Turn on/off autoupdates
 

@@ -5,7 +5,7 @@ cd $HOME/parmanode/electrum
 gpg --import ./*Thomas*
 
 if [[ $computer_type == "LinuxPC" ]] ; then
-if ! gpg --verify electrum*.asc electrum*.AppImage 2>&1 | grep "Good" ; then 
+if ! gpg --verify --status-fd 1 electrum*.asc electrum*.AppImage 2>&1 | grep "GOOD" ; then 
     echo "GPG verification failed. Aborting."
     log "electrum" "verification failed. Aborting."
     enter_continue
@@ -14,7 +14,7 @@ if ! gpg --verify electrum*.asc electrum*.AppImage 2>&1 | grep "Good" ; then
     fi
 
 if [[ $computer_type == "Pi" ]] ; then
-if ! gpg --verify Electrum*.asc Electrum*.tar.gz 2>&1 | grep "Good" ; then
+if ! gpg --verify --status-fd 1 Electrum*.asc Electrum*.tar.gz 2>&1 | grep "GOOD" ; then
     echo "GPG verification failed. Aborting."
     log "electrum" "verification failed. Aborting."
     enter_continue
@@ -23,7 +23,7 @@ if ! gpg --verify Electrum*.asc Electrum*.tar.gz 2>&1 | grep "Good" ; then
     fi
 
 if [[ $OS == "Mac" ]] ; then
-if ! gpg --verify electrum*.asc electrum*.dmg 2>&1 | grep "Good" ; then 
+if ! gpg --verify --status-fd 1 electrum*.asc electrum*.dmg 2>&1 | grep "GOOD" ; then 
     echo "GPG verification failed. Aborting."
     log "electrum" "verification failed. Aborting."
     enter_continue
@@ -35,8 +35,7 @@ if ! gpg --verify electrum*.asc electrum*.dmg 2>&1 | grep "Good" ; then
 set_terminal ; echo "
 ########################################################################################
 
-    The Electrum download has been successfullty verified against the developer's 
-    pgp signature and public key.
+    The Electrum download has been successfullty verified with pgp
 
 ########################################################################################
 "

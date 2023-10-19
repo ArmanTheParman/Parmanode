@@ -9,14 +9,14 @@ while true ; do set_terminal ; echo -e "
                                http://localhost:3000
 
 
-
       (start)          Start RTL Docker container
 
       (stop)           Stop RTL Docker container
 
-      (pass)           Change RTL Password (requires manual restart)
-
       (restart)        Restart RTL Docker container
+
+
+      PASSWORD CHANGE - USE THE RTL GUI
 
 ########################################################################################
 "
@@ -26,7 +26,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 start|Start|START|S|s)
-run_rtl
+docker start rtl
 return 0 ;;
 
 stop|STOP|Stop)
