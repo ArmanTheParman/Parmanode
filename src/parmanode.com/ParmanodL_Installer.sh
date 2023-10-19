@@ -201,9 +201,20 @@ fi # end if $1 != install
 # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
 # as Parmanode functions are available.
 
-# Part 2 dependencies - Macs need Docker
+# Part 2 dependencies
 
-    Macs_need_docker || exit
+    if ! which docker > /dev/null 2>&1 ; then install_docker ; fi 
+    if ! docker ps > /dev/null 2>&1 ; then start_docker_mac || return 1 ; fi 
+
+# Part 3 dependencis
+    
+    #Linux needs qemu
+    if [[ $OS == Linux ]] ; then
+    sudo apt-get update
+    sudo apt-get install -y qemu binfmt-support qemu-user-static
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    fi
+
 
 # Make necessary directories
 
@@ -237,7 +248,7 @@ fi # end if $1 != install
 
 # Modify the image with chroot
 
-    ParmanodL_chroot ; log "parmanodl" "finished ParmanodL_chroot"
+    ParmanodL_chroot_docker ; log "parmanodl" "finished ParmanodL_chroot"
 
 # Debug - opportunity to pause and check
 
@@ -266,7 +277,7 @@ fi # end if $1 != install
 
 # Remove temporary script
 
-    rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
+    rm $HOME/Desktop/ParmanodL_Installer >/dev/null 2>&1 && log "parmanodl" "installer removed"
     
 # Clean up the mess
 

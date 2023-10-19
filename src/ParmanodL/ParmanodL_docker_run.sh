@@ -1,5 +1,4 @@
 function ParmanodL_docker_run {
-if [[ $(uname) == Linux ]] ; then return 0 ; fi
 # Remove old ParmanodL containers in case of repeated installation
 
     if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
@@ -7,7 +6,7 @@ if [[ $(uname) == Linux ]] ; then return 0 ; fi
 # Start a Linux docker container as a daemon process
 
 if [[ $log == "umbrel-drive" ]] ; then
-    debug "$disk , mp is $mount_point . INSIDE if log is umbrel-drive"
+    debug "$disk, mp is $mount_point . INSIDE if log is umbrel-drive"
     if [[ -e $mount_point ]] ; then debug "mountpoint exists" ; fi
 
     #docker run --privileged -d --device /dev/disk6s1:/dev/disk6s1 -v /tmp/:/tmp/ --name umbrel arm64v8/debian tail -f /dev/null >/dev/null 2>&1 
@@ -21,7 +20,6 @@ fi
 }
 
 function ParmanodL_docker_get_binaries {
-if [[ $(uname) == Linux ]] ; then return 0 ; fi
 
 # Get necessary binaries inside the container
 name=ParmanodL
