@@ -293,4 +293,18 @@ else
    #not installed
 parmabox_n="#                            (pbx)         Parmabox                                    #"
 fi
+
+#AnyDesk
+unset anydesk_i anydesk_p anydesk_n 
+
+if grep -q "anydesk-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+anydesk_i="#                                      AnyDesk                                         #"
+elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+anydesk_p="#                                      AnyDesk                                         #"
+else
+   #not installed
+anydesk_n="#                            (any)         AnyDesk                                     #"
+fi
 }
