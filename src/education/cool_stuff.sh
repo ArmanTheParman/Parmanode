@@ -13,12 +13,12 @@ $orange
     the file system of your Linux computer? Even if it's a drive connected to the 
     remote computer, you can connect it to your Linux.
 
-        1) Insall sshfs    (${cyan}sudo apt-get install sshfs$orange)
+        1) Insall sshfs    (sudo apt-get install sshfs)
 
         2) Create somethere on the Linux machine to mount, e.g.
-$cyan
+
                 mkdir ~/Desktop/remote_directory
-$orange        
+
         3)$cyan sshfs user@IP_address:/path/to/directory ~/Desktop/remote_directory $orange
         
                 The above command has only 3 space-seperated elements, in order
