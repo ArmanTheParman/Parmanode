@@ -23,7 +23,7 @@ if [[ $1 != install ]] ; then return 0 ; fi
 
 # Intro
 
-   while true ; do
+while true ; do
 
    if [[ $1 == install ]] ; then break ; fi
 
@@ -33,35 +33,23 @@ if [[ $1 != install ]] ; then return 0 ; fi
    
                        P  A  R  M  A  N  O  D  L     O  S 
 
+
     This software will help you install Parmanodl OS onto an external drive or 
-    micro SD card which you can then use to install the OS onto a computer. You have 
-    choices:
-
-
-           P)      Install ParmanodL OS onto a Raspberry Pi (64 bit)
-
-                        -- based on Raspberry Pi OS
-
-     AVAILABLE SOON...
-
-           S)      Install ParmanodL OS onto a standard desktop/laptop computer.
-
-                       -- based on Linux Mint
-
+    micro SD card which you can then use to install the OS onto a Pi4 computer. d
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
-   can do whatever you want including giving your software cool sounding names :P
+   can do whatever you want, including giving your software cool sounding names :P
+
 
 ########################################################################################
 
    Type P or S, then hit <enter>
 "
-read choice ; clear
-case $choice in P|p) export OS_choice=pi ; break ;; 
-S|s) echo "sorry, not yet available. soon. Hit <enter> to try again." ; read ; continue ;;           # # # # # # # export OS_choice=mint ;; 
-*) echo "Invalid choice. Hit <enter>, then try again." ; read ; continue ;;
-esac 
-done
+enter_continue
+read ; clear
+
+break ; done
+
 
 clear ; echo "
 ########################################################################################
@@ -266,6 +254,7 @@ fi # end if $1 != install
 # Write the image to microSD
 
     ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
+    debug "pause"
 
 # Clean known hosts of parmanodl
  

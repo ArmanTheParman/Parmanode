@@ -25,7 +25,7 @@ echo -e "
 #                                                                                      #
 #    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
-# $red   (pn)                 ParmanodL (new)                                           $orange   #
+# $red   (pn)                 ParmanodL (new, Mac only now, Linux soon)                 $orange   #
 #                                                                                      #
 #    (e)                  Education                                                    #
 #                                                                                      #
@@ -68,6 +68,7 @@ m|M)
      mentorship
      ;;
 pn|PN|Pn)
+    if [[ $OS == Linux ]] ; then continue ; fi
     get_parmanodl
     ;;
 e|E)

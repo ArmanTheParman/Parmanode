@@ -61,38 +61,34 @@ if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
-disk_after=$(grep . $HOME/.parmanode/after | tail -n1 ) 
-# grep . filters out empty lines
-disk_before=$(grep . $HOME/.parmanode/before | tail -n1 )
+if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
+    echo "No new drive detected. Try again. Hit <enter>."
+    read ; continue 
+fi
 
-    if [[ "$disk_after" == "$disk_before" ]] ; then 
-        echo "No new drive detected. Try again. Hit <enter>."
-            read ; continue 
-        else
-            if [[ $(uname) == "Linux" ]] ; then
-                sed -i s/://g $HOME/.parmanode/after
-                export disk=$(grep . $HOME/.parmanode/after | tail -n1 | awk '{print $1}')
-                echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                debug "disk is $disk"
-                break
-                fi
-            
-            if [[ $(uname) == "Darwin" ]] ; then
-                Ddiff=$(($(cat $HOME/.parmanode/after | wc -l)-$(cat $HOME/.parmanode/before |wc -l))) #visualstudo code shows last ) as an error but it's not.
-                export disk=$(grep . $HOME/.parmanode/after | tail -n $Ddiff | grep "dev" | awk '{print $1}')
-                echo "$(cat $HOME/.parmanode/after | tail -n $Ddiff)" > $HOME/.parmanode/difference
-                echo "disk=\"$disk\"" > $HOME/.parmanode/var
-                debug "disk is $disk"
-                break 
-                fi
+echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
-            break
-    fi
+if [[ $OS == Mac ]] ; then
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    break
+fi
+
+if [[ $OS == Linux ]] ; then
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1)
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    break
+fi
+    
 done
-debug "disk is $disk"
-if [[ $debug == 1 ]] ; then echo "disk is $disk" ; enter_continue ; fi
 
-if [ -z "$disk" ] ; then announce "Error getting microSD card device name. Aborting." ; return 1 ; fi
+if [[ $OS == Linux ]] ; then
+export disk_no_part=$(echo $disk | grep -oE '/dev/[^0-9]+')
+fi
 
-log "parmanodl" "disk is $disk"
+if [[ $OS == Mac ]] ; then
+export disk_no_part=$(echo $disk | grep -oE 'disk[0-9]+')
+fi
+
+debug "disk is $disk, disk_no_part is $disk_no_part"
 }
