@@ -46,7 +46,7 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choice "x" ; read choice 
+choose "x" ; read choice 
 
 case $choice in 
 y|Y|YES|yes|Yes) 
