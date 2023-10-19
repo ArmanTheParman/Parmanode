@@ -19,7 +19,7 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
 
 debug_user "pause here and report back."
 
-    if gpg --verify --status-fd 1 SHA256SUMS.asc >/dev/null 2>&1 | grep -q GOOD
+    if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -q GOOD
     then
         echo ""
         echo "GPG verification of the SHA256SUMS file passed. "
