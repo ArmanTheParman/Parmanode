@@ -7,6 +7,8 @@ $green
                                  C O O L  S T U F F    
 $orange
 
+    DON'T MESS AROUND WITH 'SCP' - AINT NOBODY GOT TIME FOR DAT...
+
     Did you know, you can mount a directory on any computer on your home network, to
     the file system of your Linux computer? Even if it's a drive connected to the 
     remote computer, you can connect it to your Linux.
