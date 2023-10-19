@@ -16,6 +16,9 @@ cd $HOME/ParmanodL
 		announce "sha256 failed. Aborting" ; return 1
     else
 	    echo "Sha256 of PiOS success. Continuing" 
+		sleep 2
+		clear
+		please_wait
 	fi
 
 # Unzip file.

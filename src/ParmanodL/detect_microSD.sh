@@ -38,7 +38,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${cyan}CONNECT$orange the microSD you wish to use for $name. Do not 
+    Now go ahead and ${pink}CONNECT$orange the microSD you wish to use for $name. Do not 
     connect any other drive/device.
 
     If a window pops up, a file explorer, you can safely close that.

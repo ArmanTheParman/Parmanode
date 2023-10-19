@@ -5,7 +5,8 @@ function ParmanodL_mount {
    if [[ $OS == Linux ]] ; then
       startSector=$(sudo fdisk -l $image_path | grep img2 | awk '{print $2}') >/dev/null
       byteOffset=$(($startSector*512)) >/dev/null
-      mount -v -o offset=$byteOffset -t ext4 $image_path /tmp/mnt/raspi || { announced "Failed to mount. Aborting." ; return 1 ; }
+      sudo mount -v -o offset=$byteOffset -t ext4 $image_path /tmp/mnt/raspi || { \
+      debug "mount failed." ; announce "Failed to mount. Aborting." ; return 1 ; }
       sudo mount --bind /dev /tmp/mnt/raspi/dev >/dev/null 2>&1 
       sudo mount --bind /sys /tmp/mnt/raspi/sys >/dev/null 2>&1
       sudo mount --bind /proc /tmp/mnt/raspi/proc >/dev/null 2>&1
@@ -21,7 +22,7 @@ function ParmanodL_mount {
                                               mount --bind /dev /tmp/mnt/raspi/dev >/dev/null 2>&1 ; \
                                               mount --bind /sys /tmp/mnt/raspi/sys >/dev/null 2>&1 ; \
                                               mount --bind /proc /tmp/mnt/raspi/proc >/dev/null 2>&1 " \
-                    || { announced "Failed to mount. Aborting." ; return 1 ; } 
+                    || { announce "Failed to mount. Aborting." ; return 1 ; } 
    fi
 
 }
