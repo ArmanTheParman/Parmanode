@@ -21,7 +21,7 @@ fi
 }
 
 function ParmanodL_docker_get_binaries {
-if [[ $uname == Linux ]] ; then return 0 ; fi
+if [[ $(uname) == Linux ]] ; then return 0 ; fi
 
 # Get necessary binaries inside the container
 name=ParmanodL
