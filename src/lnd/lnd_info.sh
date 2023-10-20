@@ -20,6 +20,9 @@ $orange
     zero for a little while, even if you've unlocked it, as the node searches for
     UTXOs in the wallet. Give it some time.
 
+    The node will auto-restart when the computer reboots, but it will fail unless
+    you set up auto-unlock for your wallet. You can do that in the Parmanode LND menu.
+
     Also, if the node is important to you, set up a UPS (Uninterrupted power supply).
     You can buy the on line, and the give your computer some power during a powerout
     and allow you to safely shut the computer down, avoiding data corruption.
