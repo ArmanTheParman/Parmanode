@@ -19,7 +19,9 @@ echo -e "
 
       (pw)             Password Change
 
+      (lnd)            Reinstall RTL to reconnect with LND (need if LND reset)
 
+      
 
       The RTL wallet can be accessed in your browser at:
 
@@ -55,6 +57,12 @@ pw|Pw|PW)
 rtl_password
 continue
 ;;
+
+lnd|LND|Lnd)
+reset_rtl_lnd
+continue
+;;
+
 *)
 invalid
 ;;
