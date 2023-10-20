@@ -32,6 +32,8 @@ echo "
 
       (create)         Create an LND wallet (or restore a wallet with seed)
 
+      (au)             Enable auto-unlock wallet (for easy restarts of LND)
+
       (ul)             Unlock Wallet
 
       (scb)            Static Channel Backup 
@@ -127,6 +129,11 @@ create|CREATE|Create) create_wallet ; lncli unlock ;;
 ul|UL|Ul|unlock|Unlock) 
 lncli unlock
 ;;
+
+au|AU|Au)
+lnd_wallet_unlock_password
+;;
+
 
 scb|SCB|Scb) scb ;;
 
