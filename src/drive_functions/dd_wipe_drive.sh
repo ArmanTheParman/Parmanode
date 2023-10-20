@@ -115,7 +115,10 @@ if [[ $OS == "Linux" ]] ; then
     # the yes command prints the string over and over, and given to the dd command
     # The wiping will involved 1 megabyte x 250 times (as per variables below) and the string will
     # be writting in the space. Wiping the entire drive like this takes too long.
-   
+    if echo $disk | grep -q dev ; then debug "In dd_wipe_drive, problem with disk variable, no 'dev' component. 
+        disk is $disk"  
+    fi
+    
     yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
 fi
 
