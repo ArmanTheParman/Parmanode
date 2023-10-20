@@ -2,8 +2,8 @@ function make_lnd_conf {
 source $HOME/.bitcoin/bitcoin.conf
 
 echo "[Application Options]
-tlsextraip=0.0.0.0
-tlsextradomain=0.0.0.0
+tlsextraip=$IP
+#tlsextradomain=0.0.0.0
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 readonlymacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon
