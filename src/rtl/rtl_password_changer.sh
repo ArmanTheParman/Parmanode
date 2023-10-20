@@ -1,3 +1,4 @@
+#Password can be set at the start but afterwards, need to use RTL GUI
 function rtl_password_changer {
 
 while true ; do

@@ -6,9 +6,9 @@ function ParmanodL_cleanup {
 
 # stop and remove docker container
 
-    if [[ $OS == Mac ]] ; then
+    # if [[ $OS == Mac ]] ; then
         if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
-    fi
+    # fi
 
 # Remove temporary directories
 
@@ -16,22 +16,22 @@ function ParmanodL_cleanup {
 
 # Remove Docker Option
 
-    if [[ $OS == Mac && $docker == downloaded ]] ; then
-    set_terminal ; echo "
-########################################################################################
+#     if [[ $OS == Mac && $docker == downloaded ]] ; then
+#     set_terminal ; echo "
+# ########################################################################################
 
-     Do you want to keep Docker?
+#      Do you want to keep Docker?
 
-                      k)        Keep it
+#                       k)        Keep it
 
-                      d)        Damp it (delete)
+#                       d)        Damp it (delete)
 
-######################################################################################## 
-"
-read choice
-clear
-if [[ $choice == d ]] ; then untinstall_docker_mac ; fi
-fi
+# ######################################################################################## 
+# "
+# read choice
+# clear
+# if [[ $choice == d ]] ; then untinstall_docker_mac ; fi
+# fi
 
 # Remove ParmanodL directory (with image/zip files)
 

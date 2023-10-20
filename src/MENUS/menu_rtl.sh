@@ -3,10 +3,12 @@ while true ; do set_terminal ; echo -e "
 ########################################################################################
                                  $cyan   RTL Menu     $orange 
 ########################################################################################
-
-      The RTL wallet can be accessed in your browser at:
-
-                               http://localhost:3000
+"
+if docker ps >/dev/null ; then echo -e "
+                                 RTL is RUNNING" ; fi
+if ! docker ps >/dev/null ; then echo -e "
+                                 RTL is NOT RUNNING" ; fi
+echo -e "      
 
 
       (start)          Start RTL Docker container
@@ -15,28 +17,50 @@ while true ; do set_terminal ; echo -e "
 
       (restart)        Restart RTL Docker container
 
+      (pw)             Password Change
 
-      PASSWORD CHANGE - USE THE RTL GUI
+      (lnd)            Reinstall RTL to reconnect with LND (need if LND reset)
+
+      
+
+      The RTL wallet can be accessed in your browser at:
+
+$green
+                               http://localhost:3000
+$orange
 
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
+
 p|P) return 1 ;;
 
 start|Start|START|S|s)
 docker start rtl
-return 0 ;;
+continue
+;;
 
 stop|STOP|Stop)
 docker stop rtl
-return 0 ;;
+continue
+;;
 
 restart|RESTART|Restart)
 docker stop rtl 
 docker start rtl
-return 0 
+continue
+;;
+
+pw|Pw|PW)
+rtl_password
+continue
+;;
+
+lnd|LND|Lnd)
+reset_rtl_lnd
+continue
 ;;
 
 *)

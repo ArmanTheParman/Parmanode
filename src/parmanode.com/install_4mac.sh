@@ -1,8 +1,15 @@
 return 0
+########################################################################################
 # This is the install script kept at
-# https://parmanode.com/install_4mac.sh - the URL is easier to remember and shorter than if keeping it on Github.
+# https://parmanode.com/install_4mac.sh - the URL is easier to remember and shorter 
+# than if keeping it on Github.
 
+# If you 
+
+
+########################################################################################
 #!/bin/sh
+
 printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
 
 if [ -d $HOME/parman_programs/parmanode ] ; then
@@ -74,6 +81,14 @@ echo "
 ########################################################################################
 
     There should be an icon on the desktop for you, \"run_parmanode\".
+
+    If you double click it, and your Mac is configured to open a text editor instead
+    of running the program, that can be overcome by typing this in terminal:
+
+
+                         $HOME/Desktop/run_parmanode
+
+    It's case sensitive.
 
 ########################################################################################
 "
