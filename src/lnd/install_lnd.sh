@@ -20,8 +20,6 @@ unpack_lnd
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1
 
 set_lnd_alias
-set_lnd_password
-
 
 make_lnd_conf
 
