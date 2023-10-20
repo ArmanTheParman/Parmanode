@@ -155,6 +155,12 @@ echo "#                                    (pbx)              ParmaBox          
 elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
 echo "#                                    (pbx)              Parmabox    (partial)          #
 #                                                                                      #" ; fi
+if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
+echo "#                                    (any)              AnyDesk                        #
+#                                                                                      #"
+elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
+echo "#                                    (any)              AnyDesk     (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -306,6 +312,12 @@ fi
 pbx|Pbx)
 if [[ $parmaboxmenu == 1 ]] ; then
 uninstall_parmabox
+return
+fi
+;;
+any|ANY|Any)
+if [[ $anydeskmenu == 1 ]] ; then
+uninstall_anydesk
 return
 fi
 ;;

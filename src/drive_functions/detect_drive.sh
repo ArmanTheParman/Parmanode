@@ -90,13 +90,13 @@ fi
 echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
 if [[ $OS == Mac ]] ; then
-    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1)
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi

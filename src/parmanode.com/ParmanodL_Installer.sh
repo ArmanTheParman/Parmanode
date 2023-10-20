@@ -1,11 +1,9 @@
 function parmanodl_installer {
-if [[ $1 != install ]] ; then debug "in if" ; return 0 ; fi
-debug "parmanodl_installer"
+if [[ $1 != install ]] ; then return 0 ; fi
 ########################################################################################
 # This contents of this file is to be kept at parmanode.com. It won't have a .sh 
 # extension
 # The install script will download it to the desktop and make it executable.
-# the #!/bin/bash line needs to be uncommented
 ########################################################################################
 
 #!/bin/bash
@@ -25,7 +23,7 @@ debug "parmanodl_installer"
 
 # Intro
 
-   while true ; do
+while true ; do
 
    if [[ $1 == install ]] ; then break ; fi
 
@@ -35,35 +33,23 @@ debug "parmanodl_installer"
    
                        P  A  R  M  A  N  O  D  L     O  S 
 
+
     This software will help you install Parmanodl OS onto an external drive or 
-    micro SD card which you can then use to install the OS onto a computer. You have 
-    choices:
-
-
-           P)      Install ParmanodL OS onto a Raspberry Pi (64 bit)
-
-                        -- based on Raspberry Pi OS
-
-     AVAILABLE SOON...
-
-           S)      Install ParmanodL OS onto a standard desktop/laptop computer.
-
-                       -- based on Linux Mint
-
+    micro SD card which you can then use to install the OS onto a Pi4 computer. d
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
-   can do whatever you want including giving your software cool sounding names :P
+   can do whatever you want, including giving your software cool sounding names :P
+
 
 ########################################################################################
 
    Type P or S, then hit <enter>
 "
-read choice ; clear
-case $choice in P|p) export OS_choice=pi ; break ;; 
-S|s) echo "sorry, not yet available. soon. Hit <enter> to try again." ; read ; continue ;;           # # # # # # # export OS_choice=mint ;; 
-*) echo "Invalid choice. Hit <enter>, then try again." ; read ; continue ;;
-esac 
-done
+enter_continue
+read ; clear
+
+break ; done
+
 
 clear ; echo "
 ########################################################################################
@@ -215,9 +201,20 @@ fi # end if $1 != install
 # Now that parmanode scripts have been sourced, the code from here on can be tidier, 
 # as Parmanode functions are available.
 
-# Part 2 dependencies - Macs need Docker
+# Part 2 dependencies
 
-    Macs_need_docker || exit
+    if ! which docker > /dev/null 2>&1 ; then install_docker ; fi 
+    if ! docker ps > /dev/null 2>&1 ; then start_docker_mac || return 1 ; fi 
+
+# Part 3 dependencis
+    
+    #Linux needs qemu
+    if [[ $OS == Linux ]] ; then
+    sudo apt-get update
+    sudo apt-get install -y qemu binfmt-support qemu-user-static
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    fi
+
 
 # Make necessary directories
 
@@ -251,7 +248,7 @@ fi # end if $1 != install
 
 # Modify the image with chroot
 
-    ParmanodL_chroot ; log "parmanodl" "finished ParmanodL_chroot"
+    ParmanodL_chroot_docker ; log "parmanodl" "finished ParmanodL_chroot"
 
 # Debug - opportunity to pause and check
 
@@ -268,6 +265,7 @@ fi # end if $1 != install
 # Write the image to microSD
 
     ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
+    debug "pause"
 
 # Clean known hosts of parmanodl
  
@@ -279,7 +277,7 @@ fi # end if $1 != install
 
 # Remove temporary script
 
-    rm $HOME/Desktop/ParmanodL_Installer && log "parmanodl" "installer removed"
+    rm $HOME/Desktop/ParmanodL_Installer >/dev/null 2>&1 && log "parmanodl" "installer removed"
     
 # Clean up the mess
 
@@ -290,4 +288,9 @@ fi # end if $1 != install
     ParmanodL_success
 
 # The End
+
+
+
+
+########################################################################################
 }

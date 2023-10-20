@@ -6,6 +6,7 @@
 
 return 0
 ########################################################################################
+
 #!/bin/bash
 printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
 
@@ -17,7 +18,13 @@ clear ; echo "
 
     There should be a file on your desktop now called ParmanodL_Installer.sh.
 
-    Double click it to run.
+    Double click it to run. If your computer opens a text editor instead, that's
+    a small problem. In that case, you'll have to run the file from the terminal
+    like this:
+
+        $HOME/desktop/ParmanodL_Installer
+
+    ... get the spelling right and it's case sensative.
 
     "
 exit
