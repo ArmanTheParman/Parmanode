@@ -4,19 +4,24 @@ if [ -d $HOME/.electrs_backup ] ; then
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
+$cyan
+    GREAT NEWS!
+$orange
+    Parmanode has detected that you've previously compiled and backed up electrs.
 
-    Parmanode has detected that you've previously compiled and backuped up electrs.
+    To save time, would you like to use that backup (yay), or compile electrs all 
+    over again (boo).
 
-    To save time, would you like to use that backup or comile electrs all over again.
+    If the backup is an old version, and you want a new version, you'll have to choose
+    to compile again now, of course. 
 
-    If that was an old version, you'll need to compile again instead, to get the new
-    version, of course. 
 
-                       u)    Use backup
+                            u)       Use backup
 
-                       c)    Compile again
+                            c)       Compile again
+
 
 ########################################################################################
 "

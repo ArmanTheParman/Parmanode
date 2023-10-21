@@ -21,7 +21,6 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 source $HOME/.parmanode/parmanode.conf
 
 if [ -d $HOME/.electrs_backup ] ; then 
-
 while true ; do
     set_terminal
     echo -e "
@@ -39,8 +38,8 @@ $pink
 
 ######################################################################################## 
 "
-    set_terminal
     read choice
+    set_terminal
     case $choice in
     y|Y) 
     please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
@@ -51,7 +50,7 @@ $pink
 done
 fi
 
-electrs_nginx remove
+electrs_nginx remove 
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
