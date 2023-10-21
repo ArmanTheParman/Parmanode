@@ -11,7 +11,7 @@ set_terminal ; echo "
     computer matches the username and password stored in fulcrum.conf on this computer.
 
     This instance of Parmanode has no access to the other computer, so it's up to you
-    to set it up there and make a note of it to use here. Parmande will help you 
+    to set it up there and make a note of it to use here. Parmanode will help you 
     put the username and password in fulcrum.conf on this computer.
 
                   <enter>    Set username and password in fulcrum.conf
