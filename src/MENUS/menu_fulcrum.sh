@@ -1,13 +1,16 @@
 function menu_fulcrum {
 while true
 do
+set_terminal
 
+if [[ $OS == Linux ]] ; then
 if sudo cat /etc/tor/torrc | grep -q "fulcrum" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/fulcrum-service/hostname | grep -q "onion" >/dev/null 2>&1 ; then
     F_tor="on"
     fi
 else
     F_tor="off"
+fi
 fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1

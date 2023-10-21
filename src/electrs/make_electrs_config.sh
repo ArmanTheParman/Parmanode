@@ -21,7 +21,7 @@ daemon_p2p_addr = \"127.0.0.1:8333\"
 db_dir = \"$db_dir\"
 network = \"bitcoin\"
 electrum_rpc_addr = \"127.0.0.1:50005\"
-log_filters = \"INFO\"
+log_filters = \"DEBUG\" # Options are ERROR, WARN, INFO, DEBUG, TRACE
 auth = \"$rpcuser:$rpcpassword\"
 " | tee $HOME/.electrs/config.toml >/dev/null
 
