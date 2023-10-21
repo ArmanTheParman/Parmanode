@@ -30,10 +30,7 @@ e | E)    #External drive setup
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
-        announce "Be aware that Fulcrum database frequently gets corrupted. I suspect" \
-        "    it may perform better on an internal drive. Continuing..."
         parmanode_conf_add "drive_fulcrum=external"
-        
 fi
 
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
