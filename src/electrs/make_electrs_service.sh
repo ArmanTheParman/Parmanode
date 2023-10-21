@@ -1,4 +1,5 @@
 function make_electrs_service {
+if [[ $OS == Mac ]] ; then return ; fi
 
 echo "
 [Unit]

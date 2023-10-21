@@ -6,23 +6,6 @@
 #a script, and invokes the bash program to run it. It must be the very first
 #character in a file followed by !, then the path to the terminal program.
 
-#The following code checks if in debugging mode. Mainly for developing, not client usage
-#If debug is 1, then a debuging function becomes active, which pauses the
-#program wherever it appears. "export" keeps variable in global memory.
-if [[ $1 == "debug" || $1 == d ]] ; then export debug=1 
-elif [[ $1 == d2 ]] ; then export debug=2  
-elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
-elif [[ $1 == d4 ]] ; then export debug=4  
-elif [[ $1 == d5 ]] ; then export debug=5  
-elif [[ $1 == d6 ]] ; then export debug=6  
-elif [[ $1 == d7 ]] ; then export debug=7  
-else export debug=0 
-fi
-
-if [[ $1 == "usertest" ]] ; then export ut=1 ; fi
-
-#save position of working directory. "Export" makes the variable available everywhere.
-export original_dir=$(pwd) >/dev/null 2>&1
 
 #check script is being run from parmanode directory so relative paths work
 #-f checks if a file exists in the working directory. If it doesn't, it 
@@ -52,6 +35,7 @@ fi
 
 	done #ends the loop
 
+parmanode_variables $@
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
 
@@ -100,7 +84,10 @@ if [[ $1 == fast ]] ; then export fast=debug ; fi
 debug_fast "test first fast debug" 
     motd
 
-	# This is the main program, which is a menu that loops.
-	menu_main    
+
+
+
+# This is the main program, which is a menu that loops.
+menu_main    
 
 exit 0

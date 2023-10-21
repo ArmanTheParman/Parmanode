@@ -1,14 +1,17 @@
 function menu_electrs {
-while true
-do
 
-if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
-    if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
-    E_tor="on"
+while true ; do
+
+if [[ $OS == Linux ]] ; then
+    if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
+        if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+        E_tor="on"
+        fi
+    else
+        E_tor="off"
     fi
-else
-    E_tor="off"
 fi
+
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 set_terminal_custom 50
 echo -e "
@@ -64,36 +67,22 @@ choose "xpq" ; read choice ; set_terminal
 case $choice in
 
 I|i|info|INFO)
-    info_electrs
-    break
-    ;;
+info_electrs
+break
+;;
 
 start | START)
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
-set_terminal
-please_wait
-echo "electrs starting.... "
-echo ""
-if [[ $OS == "Linux" ]] ; then start_electrs ; fi
-set_terminal
+start_electrs 
 ;;
 
 stop | STOP) 
-set_terminal
-if [[ $OS == "Linux" ]] ; then echo "electrs stopping" ; stop_electrs ; fi
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-set_terminal
+stop_electrs
+continue
 ;;
 
 r|R) 
-if [[ $OS == "Linux" ]] ; then 
 restart_electrs
-fi
-
-if [[ $OS == "Mac" ]] ; then
-no_mac
-return 1
-fi
+continue
 ;;
 
 c|C)
@@ -102,6 +91,7 @@ continue
 ;;
 
 log|LOG|Log)
+
 set_terminal ; log_counter
 if [[ $log_count -le 15 ]] ; then
 echo "
@@ -116,6 +106,17 @@ echo "
 enter_continue
 fi
 
+if [[ $OS == Mac ]] ; then
+    set_terminal_wider
+    tail -f $HOME/.parmanode/run_electrs.log &     
+    tail_PID=$!
+    trap 'kill $tail_PID' SIGINT #condition added to memory
+    wait $tail_PID # code waits here for user to control-c
+    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    set_terminal
+    continue
+fi
+
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
     journalctl -fexu electrs.service &
@@ -124,17 +125,11 @@ if [[ $OS == "Linux" ]] ; then
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
+    continue
 fi
-
-if [[ $OS == "Mac" ]] ; then
-no_mac
-return 1
-fi
-
-continue ;;
+;;
 
 ec|EC|Ec|eC)
-if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
     
@@ -147,12 +142,7 @@ echo "
 "
 enter_continue
 nano $HOME/.electrs/config.toml
-fi
-. 
-if [[ $OS == "Mac" ]] ; then
-no_mac ; return 1 
-fi
-
+ 
 continue
 ;;
 
@@ -170,10 +160,12 @@ exit 0
 ;;
 
 tor|TOR|Tor)
+if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 electrs_tor
 ;;
 
 torx|TORX|Torx)
+if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 electrs_tor_remove
 ;;
 

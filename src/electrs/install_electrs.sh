@@ -18,6 +18,8 @@ else #if [[ $electrs_compile == "true" ]] ; then
 
     preamble_install_electrs || return 1
 
+    set_terminal ; please_wait
+
     build_dependencies_electrs || return 1 
             log "electrs" "build_dependencies finished" 
     download_electrs && log "electrs" "download_electrs success" 
@@ -28,8 +30,9 @@ else #if [[ $electrs_compile == "true" ]] ; then
 fi
 
 #remove old certs (in case they were copied from backup), then make new certs
-rm $HOME/parmanode/electrs/*.pem  
+rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 { make_ssl_certificates "electrs" && debug "check certs for errors " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+
 electrs_nginx add
 
 # check Bitcoin settings
@@ -48,9 +51,10 @@ if [[ $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == 
     # format not needed
     # check if there is a backup electrs_db on the drive and restore it
       restore_elctrs_drive #prepares drive based on existing backup and user choices
-      sudo chown -R $USER:$USER $original > /dev/null 2>&1
+      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$USER $original > /dev/null 2>&1 ; fi
+                                                           # $original from function restore_electrs_drive
 else
-      format_ext_drive "electrs" || return 1
+      format_ext_drive "electrs" || return 
 fi
 
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
@@ -60,7 +64,7 @@ prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return
 #config
 make_electrs_config && log "electrs" "config done" ; debug "config done"
 
-make_electrs_service || log "electrs" "service file failed" ; debug "service file done"
+if [[ $OS == Linux ]] ; then make_electrs_service || log "electrs" "service file failed" ; debug "service file done" ; fi
 
 installed_config_add "electrs-end" ; debug "finished electrs install"
 
@@ -73,37 +77,6 @@ fi
 }
 
 ########################################################################################
-
-function install_cargo {
-
-announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" \
-"the installation"
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
-source $HOME/.cargo/env #or restart shell
-if ! cargo --version ; then announce "Installing cargo software failed. Aborting." ; return 1 ; fi
-debug "install cargo function end"
-}
-
-function download_electrs {
-cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs && installed_config_add "electrs-start"
-}
-
-function compile_electrs {
-set_terminal ; echo "   Compiling electrs..."
-please_wait ; echo ""
-cd $HOME/parmanode/electrs && cargo build --locked --release > /tmp/cargo_build.log
-if [[  ! -e $HOME/parmanode/electrs/target/release/electrs ]] ; then
-    if grep -q "perhaps you ran out of disk space" < /tmp/cargo_build.log ; then 
-        announce "Compiling seems to have failed. Aborting." \
-        "It might be because you ran out of disk space."
-        return 1
-    else
-        announce "Compiling seems to have failed. Aborting."
-        return 1
-    fi
-fi
-}
 
 function check_pruning_off {
     if [[ $prune -gt 0 ]] ; then
