@@ -52,13 +52,16 @@ done
 fi
 
 electrs_nginx remove
-electrs_tor_remove
 
+if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
+
+if [[ $OS == Linux ]] ; then
 sudo systemctl stop electrs.service >/dev/null 2>&1
 sudo systemctl disable electrs.service >/dev/null 2>&1
 sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
+fi
 
-if [[ $drive_electrs == "external" && -e /media/$USER/parmanode/electrs_db ]] ; then
+if [[ $drive_electrs == "external" && -e $parmanode_drive/electrs_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################
@@ -83,14 +86,14 @@ quit 0 ;;
 p|P) 
 return 1 ;;
 d|D) 
-sudo rm -rf /media/$USER/parmanode/electrs_db ; break ;;
+sudo rm -rf $parmanode_drive/electrs_db ; break ;;
 l|L) 
 break ;;
 b|B) 
-if [[ -d /media/$USER/parmanode/electrs_db_backup ]] ; then
+if [[ -d $parmanode_drive/electrs_db_backup ]] ; then
     electrs_backup_exists #function defined below
     else
-    sudo mv /media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup
+    sudo mv $parmanode_drive/electrs_db $parmanode_drive/electrs_db_backup
 fi
 break
 ;;
@@ -131,14 +134,14 @@ echo "
 choose "xpq"
 read choice
 case $choice in q|Q) quit ;; p|P) return 1 ;;
-d|D) rm -rf media/$USER/parmanode/electrs_db_backup ; break ;; 
+d|D) rm -rf $parmanode_drive/electrs_db_backup ; break ;; 
 2) 
-mv media/$USER/parmanode/electrs_db_backup media/$USER/parmanode/electrs_db_backup2
-mv media/$USER/parmanode/electrs_db /media/$USER/parmanode/electrs_db_backup 
+mv $parmanode_drive/electrs_db_backup $parmanode_drive/electrs_db_backup2
+mv $parmanode_drive/electrs_db $parmanode_drive/electrs_db_backup 
 ;;
 nah|Nah|NAH)
-rm -rf /media/$USER/parmanode/electrs_db
-rm -rf /media/$USER/parmanode/electrs_db_backup 
+rm -rf $parmanode_drive/electrs_db
+rm -rf $parmanode_drive/electrs_db_backup 
 ;;
 *) invalid ;;
 esac

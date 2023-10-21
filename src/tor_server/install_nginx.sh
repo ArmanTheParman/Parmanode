@@ -11,13 +11,15 @@ else
     return 1 ; fi
 fi
 
-sudo apt-get install nginx -y
+if [[ $OS == Linux ]] ; then sudo apt-get install nginx -y ; fi
+if [[ $OS == Mac ]] ; then brew install nginx ; fi
 installed_conf_add "nginx-end"
 return 0
 }
 
 function uninstall_nginx {
-sudo apt-get purge nginx
+if [[ $OS == Mac ]] ; then brew services stop nginx ; brew uninstall nginx ; fi
+if [[ $OS == Linux ]] ; then sudo systemctl stop nginx ; sudo apt-get purge nginx -y ; fi
 installed_config_remove "nginx"
 return 0
 }

@@ -1,10 +1,19 @@
 function make_electrs_config {
-mkdir -p $HOME/.electrs
+mkdir -p $HOME/.electrs >/dev/null 2>&1
+if [[ $OS == Linux ]] ; then
+    if [[ $drive_electrs == "external" ]] ; then 
+        db_dir="/media/$USER/parmanode/electrs_db"
+    else
+        db_dir="$HOME/parmanode/electrs/electrs_db"
+    fi
+fi
 
-if [[ $drive_electrs == "external" ]] ; then 
-    db_dir="/media/$USER/parmanode/electrs_db"
-else
-    db_dir="$HOME/parmanode/electrs/electrs_db"
+if [[ $OS == Mac ]] ; then
+    if [[ $drive_electrs == "external" ]] ; then 
+        db_dir="/Volumes/parmanode/electrs_db"
+    else
+        db_dir="$HOME/parmanode/electrs/electrs_db"
+    fi
 fi
 
 echo "daemon_rpc_addr = \"127.0.0.1:8332\"
