@@ -12,9 +12,9 @@ fi
 
 if [[ $1 = "remove" ]] ; then
     if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
-                                 sudo systemctl restart nginx >/dev/null ; fi
+                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
     if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
-                                 brew services restart nginx ; fi
+                                 brew services restart nginx >/dev/null 2>&1 ; fi
 return 0
 fi
 
@@ -42,7 +42,7 @@ stream {
         }
 }
 # Parmanode - flag electrs-END" | sudo tee -a $nginx_conf >/dev/null 2>&1
-if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null ; fi
-if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null ; fi
+if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
 fi
 }

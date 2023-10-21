@@ -1,6 +1,7 @@
 function menu_electrs {
 
 while true ; do
+set_terminal
 
 if [[ $OS == Linux ]] ; then
     if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
