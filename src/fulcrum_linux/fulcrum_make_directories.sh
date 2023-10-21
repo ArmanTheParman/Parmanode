@@ -12,14 +12,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
 
-set_terminal ; echo "
-########################################################################################
-
-               Please ensure the drive is connected, then hit <enter> 
-
-########################################################################################
-"
-enter_continue ; mount_drive && log "fulcrum" "Drive mounted."
+mount_drive && log "fulcrum" "Drive mounted."
 
 case $OS in
     Linux) 
