@@ -1,3 +1,6 @@
+# I have used the name bitcoind, but later introduced bitcoin-qt for macs, the name of the function
+# has been kept the same
+
 function run_bitcoind {
 if [[ $OS == "Linux" ]] ; then 
 
