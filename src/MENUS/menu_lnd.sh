@@ -21,6 +21,8 @@ echo "
       (stop)           Stop LND
 
       (restart)        Restart LND
+
+      (ex)             Expose your LND node to other nodes
 	    
       (log)            Inspect LND logs
 
@@ -134,10 +136,15 @@ au|AU|Au)
 lnd_wallet_unlock_password
 ;;
 
+ex|Ex|EX)
+expose_LND
+;;
 
-scb|SCB|Scb) scb ;;
+scb|SCB|Scb) 
+scb ;;
 
-delete|DELETE|Delete) delete_wallet ;;
+delete|DELETE|Delete) 
+delete_wallet ;;
 
 *) invalid ;;
 
