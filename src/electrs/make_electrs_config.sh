@@ -1,4 +1,6 @@
 function make_electrs_config {
+local file="$HOME/.electrs/config.toml"
+
 mkdir -p $HOME/.electrs >/dev/null 2>&1
 if [[ $OS == Linux ]] ; then
     if [[ $drive_electrs == "external" ]] ; then 
@@ -23,6 +25,6 @@ network = \"bitcoin\"
 electrum_rpc_addr = \"127.0.0.1:50005\"
 log_filters = \"INFO\" # Options are ERROR, WARN, INFO, DEBUG, TRACE
 auth = \"$rpcuser:$rpcpassword\"
-" | tee $HOME/.electrs/config.toml >/dev/null
+" | tee $file >/dev/null
 
 }
