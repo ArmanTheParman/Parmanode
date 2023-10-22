@@ -42,7 +42,7 @@ done
 
 password_changer || return 1
 
-edit_user_pass_fulcrum_docker $rpcuser $rpcpassword  || return 1 
+edit_user_pass_fulcrum_docker $rpcuser $rpcpassword remote || return 1 
 
 ssl_port_change_fulcrum || return 1 
 

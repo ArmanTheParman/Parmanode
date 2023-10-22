@@ -56,6 +56,7 @@ PASSWORD:
 
 done
 
+export rpcuser rpcpassword
 
 return 0
 }
