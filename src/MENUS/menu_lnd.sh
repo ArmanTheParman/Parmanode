@@ -1,8 +1,11 @@
 function menu_lnd {
+lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 while true ; do set_terminal_custom "45" ; echo -e "
 ########################################################################################
                                      ${cyan}LND Menu${orange}                               
 ########################################################################################
+    
+    LND Version: $lnd_version 
 
 "
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
@@ -37,6 +40,8 @@ echo "
       (au)             Enable auto-unlock wallet (for easy restarts of LND)
 
       (ul)             Unlock Wallet
+
+      (update)         Update LND to version 0.17.0
 
       (scb)            Static Channel Backup 
 
