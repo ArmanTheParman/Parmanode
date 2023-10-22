@@ -1,11 +1,9 @@
 function menu_lnd {
 lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
-while true ; do set_terminal_custom "49" ; echo -e "
+while true ; do set_terminal_custom "46" ; echo -e "
 ########################################################################################
-                                     ${cyan}LND Menu${orange}                               
+                                     ${cyan}LND Menu${orange} - v$lnd_version                               
 ########################################################################################
-    
-    LND Version: $lnd_version 
 
 "
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
