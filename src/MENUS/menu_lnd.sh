@@ -1,6 +1,6 @@
 function menu_lnd {
 lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
-while true ; do set_terminal_custom "45" ; echo -e "
+while true ; do set_terminal_custom "49" ; echo -e "
 ########################################################################################
                                      ${cyan}LND Menu${orange}                               
 ########################################################################################
