@@ -1,6 +1,6 @@
 function get_extIP {
 
-export extIP=$(curl http://whatismyip.akamai.com/ | grep .)
+export extIP=$(curl -fsSL http://whatismyip.akamai.com/ | grep .)
 
 
 
