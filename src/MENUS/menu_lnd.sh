@@ -146,6 +146,10 @@ expose_LND
 scb|SCB|Scb) 
 scb ;;
 
+update|UPDATE|Update)
+update_lnd
+;;
+
 delete|DELETE|Delete) 
 delete_wallet ;;
 
