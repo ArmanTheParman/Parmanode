@@ -1,9 +1,11 @@
 function make_lnd_conf {
 source $HOME/.bitcoin/bitcoin.conf
+get_extIP >/dev/null 2>&1
 
 echo "[Application Options]
 tlsextraip=$IP
 #tlsextradomain=0.0.0.0
+externalip=$extIP:9735
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 readonlymacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon
