@@ -9,18 +9,16 @@ Please make sure the drive you want to bring in is DISCONNECTED, before proceedi
 or else bad things will happen to your computer.
 ########################################################################################
 $orange" ; enter_continue
+
+safe_unmount_parmanode || return 1
+
 set_terminal ; echo -e "$cyan
 ########################################################################################
-   Now Parmanode will safely unmount your regular Parmanode drive by stopping the
-   programs usinging then unmounting. YOU MUST PHYSICALLY DISCONNECT THE DRIVE
-   AFTER THIS IS DONE OR BAD THINGS WILL HAPPEN - NOT JOKING.
+   Parmanode has safely unmount your regular Parmanode drive by stopping the
+   programs using it, then unmounting. YOU MUST PHYSICALLY DISCONNECT THE DRIVE
+   NOW OR BAD THINGS WILL HAPPEN - NOT JOKING.
 ########################################################################################
-" ; enter_continue
-safe_unmount_parmanode || return 1
-set_terminal 
-echo "The drive should be unmounted."
-echo "Remember to physically disconnect your regular Parmanode drive."
-enter_continue ; set_terminal
+" ; enter_continue ; set_terminal
 
 detect_drive $@ || return 1 #menu
 

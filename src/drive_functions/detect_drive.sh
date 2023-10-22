@@ -13,6 +13,7 @@ set_terminal pink ; echo "
 enter_continue 
 fi
 
+if [[ $1 != menu2 ]] ; then
 while true ; do
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
@@ -44,6 +45,10 @@ elif [[ $(uname) == Darwin ]] ; then
     fi
 fi
 
+fi #end != menu2
+
+#DETECT BEFORE AND AFTER...
+
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
@@ -52,6 +57,7 @@ if [[ $(uname) == "Linux" ]] ; then
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
+
 
 set_terminal ; echo -e "
 ########################################################################################
