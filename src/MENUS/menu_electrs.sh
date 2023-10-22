@@ -53,6 +53,8 @@ echo "
 
       (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor
 
+      (dc)       electrs database corrupted? -- Use this to start fresh.
+
 "
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
@@ -168,6 +170,10 @@ electrs_tor
 torx|TORX|Torx)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 electrs_tor_remove
+;;
+
+dc|DC|Dc)
+electrs_database_corrupted 
 ;;
 
 *)
