@@ -68,7 +68,7 @@ echo "
 
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
-      (dc)       Fulcrum database corrupted?
+      (dc)       Fulcrum database corrupted? -- Use this to start fresh.
       
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
