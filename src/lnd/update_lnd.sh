@@ -1,5 +1,5 @@
 function update_lnd {
-if [[ $lnd_version == "0.17.0" ]] ; announce "Already have version 0.17.0." ; return 1 ; fi
+if [[ $lnd_version == "0.17.0" ]] ; then announce "Already have version 0.17.0." ; return 1 ; fi
 
 while true ; do
 clear
