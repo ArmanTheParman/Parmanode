@@ -78,11 +78,11 @@ return 0
 
 function electrum_wallet_info {
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
-
+$cyan
                                        ELECTRUM DESKTOP WALLET
-
+$orange
     Note that a connection with Electrum Wallet is not possible until Fulcrum Server is installed.
 
     Once Fulcrum is installed (and synchronised), you can connect to it from your Electrum Wallet with the
@@ -93,6 +93,7 @@ echo "
         2) Uncheck \"Select server automatically\"
 	
         3) Type the IP address of the computer that runs Parmanode.
+        
                 You can find this by typing \"ifconfig | grep broadcast\" in your terminal window. 
                 You'll see it as one of the outputs. Typically something like 192.168.0.150
                 If you don't have ifconfig, you can install it, or use "ip a" as a replacement.
@@ -103,10 +104,17 @@ echo "
         5) If your wallet is not on the same computer as Parmanode, you need to type the IP address
            of the Parmanode computer in your wallet.
 
-        6) You also MUST type in the port. The default value is 50002. An example would look like:
+        6) You also MUST type in the port AND connection type. 
+           The default value is 50002:s
+           An example would look like:
 
-                                         127.0.0.1:50002
-    
+                                         127.0.0.1:50002:s
+
+        7) For TCP connections (not SSL), you'd use port 50001, and change the s to a t:
+
+                                         127.0.0.1:50001:t
+
+
     At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
     to 1, you should try to fix that (f).
 
