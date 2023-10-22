@@ -31,3 +31,4 @@ installed_conf_add "lnd-end"
 success "lnd" "being installed."
 return 0
 }
+
