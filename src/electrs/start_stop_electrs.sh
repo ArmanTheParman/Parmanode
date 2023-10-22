@@ -12,7 +12,7 @@ if [[ $OS == Mac ]] ; then
     if ! pgrep Bitcoin-Q >/dev/null ; then 
     announce "Please make sure Bitcoin is running or electrs can't start" 
     else
-    $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml > $HOME/.parmanode/run_electrs.log 2>&1 &
+    script -q /dev/null  $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml >> $HOME/.parmanode/run_electrs.log 2>&1 &
     fi
 fi
 }
