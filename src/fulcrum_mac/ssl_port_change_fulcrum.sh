@@ -29,11 +29,13 @@ p|P) return 1 ;;
 
 2) 
     edit_ssl_port_fulcrum_indocker 50002
+    break
 ;;
 
 yolo|YOLO|Yolo)
 
     edit_ssl_port_fulcrum_indocker 50003
+    break
 ;; 
 
 x|X) 
