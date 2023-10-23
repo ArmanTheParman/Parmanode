@@ -63,8 +63,6 @@ $pink
 $orange
     "
 
-unset -f menu_main
-
 enter_continue
 
 return 0 ;;
