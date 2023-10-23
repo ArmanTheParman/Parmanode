@@ -30,7 +30,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-add_drive menu2
+add_drive 
 ;;
 
 ub|UB|Ub)
