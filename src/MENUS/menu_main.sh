@@ -7,7 +7,7 @@ set_terminal_bit_higher #custom function to resize the window
 # of the code at the bottom.
 echo -e "
 ########################################################################################
-#  T                                                                                    #
+#                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
 ########################################################################################
