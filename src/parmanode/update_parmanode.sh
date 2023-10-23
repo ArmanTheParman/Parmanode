@@ -62,6 +62,10 @@ $pink
     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
 $orange
     "
+
+unset -f menu_main
+source $HOME/parman_programs/programs/src/MENU/menu_main.sh
+
 enter_continue
 
 return 0 ;;
