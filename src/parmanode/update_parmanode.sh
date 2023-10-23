@@ -64,7 +64,7 @@ $orange
     "
 
 unset -f menu_main
-source $HOME/parman_programs/programs/src/MENU/menu_main.sh
+source $HOME/parman_programs/parmanode/src/MENU/menu_main.sh
 
 enter_continue
 
