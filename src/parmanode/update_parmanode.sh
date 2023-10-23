@@ -66,7 +66,7 @@ if git pull | grep . ; then true ; fi #need git pull inside if to suppress promp
 #     "
 source $original_dir/source_parmanode.sh >/dev/null 2>&1
 source_parmanode
-
+source $HOME/parman_programs/parmanode/src/MENUS/menu_main.sh
 enter_continue
 
 return 0 ;;
