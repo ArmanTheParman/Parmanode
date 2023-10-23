@@ -13,8 +13,8 @@ set_terminal pink ; echo "
 enter_continue 
 fi
 
-if [[ $1 != menu2 ]] ; then
 while true ; do
+if [[ $1 != menu2 ]] ; then
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
 set_terminal ; echo -e "$pink
