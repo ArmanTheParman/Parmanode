@@ -83,10 +83,8 @@ if [[ $1 == fast ]] ; then export fast=debug ; fi
 
 ########################################################################################
 debug_fast "test first fast debug" 
-    motd
 
-
-
+motd
 
 # This is the main program, which is a menu that loops.
 menu_main    
