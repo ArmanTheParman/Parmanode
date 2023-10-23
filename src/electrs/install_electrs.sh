@@ -52,9 +52,8 @@ choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepar
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrs == "external" && $drive == "external") || \
-       $drive_electrs == "external" && $drive_fulcrum == "external") ]] ; then 
+      ($drive_electrs == "external" && $drive_fulcrum == "external") ]] ; then 
     # format not needed
- 
     # Get user to connect drive.
       pls_connect_drive || return 1 
 
