@@ -1,10 +1,10 @@
 function safe_unmount_parmanode {
 
-if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
+# if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
 if ! mount | grep parmanode ; then
     if [[ $1 == menu ]] ; then
-    announce "Drive already seems to not be unmounted."
+    announce "Drive already seems to not be mounted."
     fi
 return 0
 fi
@@ -28,7 +28,7 @@ stop_lnd >/dev/null 2>&1
 
 cd ~ ; cd $original_dir
 if [[ $OS == Linux ]] ; then sudo umount /media/$USER/parmanode* >/dev/null 2>&1 ; fi
-if [[ $OS == Mac ]] ; then diskutil unmountdisk /Volumes/parmanode >/dev/null    ; fi
+if [[ $OS == Mac ]] ; then diskutil unmountdisk /Volumes/parmanode* >/dev/null    ; fi
 
 #TEST 1
 if mount | grep parmanode ; then
