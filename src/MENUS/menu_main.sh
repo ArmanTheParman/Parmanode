@@ -80,7 +80,7 @@ uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
 update|UPDATE|Update)
-    update_parmanode
+    update_parmanode || continue
     if [[ $exit_loop == false ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)

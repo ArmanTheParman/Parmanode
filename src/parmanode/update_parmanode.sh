@@ -54,18 +54,14 @@ n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $original_dir
 git config pull.rebase false >/dev/null 2>&1
-if git pull | grep "Already up" ; then enter_continue ; return 0 ; fi
+if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 # grep searches for a string that occurs only when there are no updates required.
 # otherwise, some update has happened...
-echo -e "
-$pink
-    YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
-$orange
-    "
+success "Parmanode" "being updated"
 export exit_loop=false
-enter_continue
+return 0 
+;;
 
-return 0 ;;
 *)
 invalid ;;
 esac
