@@ -1,12 +1,13 @@
+# $1 = menu2 from menu_migrate
 function add_drive {
-if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
+#if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
 info_add_drive $@ || return 1 # safe unmount executed
 
 set_terminal ; echo -e "$pink
 ########################################################################################
-Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
-or else bad things will happen to your computer.
+Please make sure the drive you want to bring in is PHYSICALLY DISCONNECTED, before 
+proceeding or else really bad things will happen to your computer.
 ########################################################################################
 $orange" ; enter_continue
 

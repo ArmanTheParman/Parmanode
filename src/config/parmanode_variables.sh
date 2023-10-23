@@ -24,4 +24,9 @@ elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
 fi
 
+dp="$HOME/.parmanode"
+hp="$HOME/parmanode/"
+parmanode_conf="${dp}/parmanode.conf"
+installed_conf="${dp}/installed.conf"
+
 }

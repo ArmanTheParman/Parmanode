@@ -1,6 +1,8 @@
 function install_electrs {
 
-grep -q "bitcoin-end" < "$HOME/.parmanode/installed.conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+source $parmanode_conf >/dev/null 2>&1
+
+grep -q "bitcoin-end" < "$installed_conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; } 
 fi
@@ -20,16 +22,17 @@ else #if [[ $electrs_compile == "true" ]] ; then
     preamble_install_electrs || return 1
 
     set_terminal ; please_wait
-
-    build_dependencies_electrs || return 1 
-            log "electrs" "build_dependencies finished" 
+    if [[ $electrs_dependencies_mac == true ]] ; then electrs_ask_skip_dependencies ; fi
+    if [[ $electrs_skip_dependencies == false ]] ; then
+        build_dependencies_electrs || return 1 
+        parmanode_conf_add "electrs_dependencies_mac=true"
+    fi
     download_electrs && log "electrs" "download_electrs success" 
             debug "download electrs done"
     compile_electrs || return 1 
             log "electrs" "compile_electrs done" ; debug "build, download, compile... done"
 
 fi
-
 #remove old certs (in case they were copied from backup), then make new certs
 rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 { make_ssl_certificates "electrs" && debug "check certs for errors " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
