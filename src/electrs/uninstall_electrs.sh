@@ -20,6 +20,8 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 source $HOME/.parmanode/parmanode.conf
 
+# Uninstall binary backup
+
 if [ -d $HOME/.electrs_backup ] ; then 
 while true ; do
     set_terminal
@@ -60,7 +62,11 @@ sudo systemctl disable electrs.service >/dev/null 2>&1
 sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
 fi
 
-if [[ $drive_electrs == "external" && -e $parmanode_drive/electrs_db ]] ; then
+# Uninstall - electrs_db
+
+if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs_db" ; fi
+if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
+if [[ -e $e_db ]] ; then
 while true ; do
 set_terminal "pink" ; echo "
 ########################################################################################
@@ -85,14 +91,14 @@ quit 0 ;;
 p|P) 
 return 1 ;;
 d|D) 
-sudo rm -rf $parmanode_drive/electrs_db ; break ;;
+sudo rm -rf $e_db ; break ;;
 l|L) 
 break ;;
 b|B) 
-if [[ -d $parmanode_drive/electrs_db_backup ]] ; then
+if [[ -d ${e_db}_backup ]] ; then
     electrs_backup_exists #function defined below
     else
-    sudo mv $parmanode_drive/electrs_db $parmanode_drive/electrs_db_backup
+    sudo mv $e_db ${e_db}_backup
 fi
 break
 ;;
@@ -102,47 +108,12 @@ done
 debug "electrs_db choice executed"
 fi
 
-rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs
+# Uninstall electrs github
+
+mv $HOME/parmanode/electrs/electrs_db* $HOME/parmanode/                        >/dev/null 2>&1
+rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs" 
 success "electrs" "being uninstalled."
-}
-
-function electrs_backup_exists {
-while true ; do
-set_terminal "pink"
-echo "
-########################################################################################
-
-    You have chosen to backup electrs_db to electrs_db_backup, but a directory
-    with the name electrs_db_backup already exists. What would you like to do?
-
-            d)    Delete the old backup directory and back up the current
-                  electrs_db to electrs_db_backup
-            
-            2)    Move electrs_db_backup to electrs_db_backup2 and backup the 
-                  electrs_db directory as electrs_db_backup - note parmanode is not 
-                  configured to ever used the number 2 backup, you're on your own 
-                  here with this fancy stuff, sorry.
-
-            nah)  Changed my mind, delete the backups and the current electrs_db
-
-########################################################################################
-"
-choose "xpq"
-read choice
-case $choice in q|Q) quit ;; p|P) return 1 ;;
-d|D) rm -rf $parmanode_drive/electrs_db_backup ; break ;; 
-2) 
-mv $parmanode_drive/electrs_db_backup $parmanode_drive/electrs_db_backup2
-mv $parmanode_drive/electrs_db $parmanode_drive/electrs_db_backup 
-;;
-nah|Nah|NAH)
-rm -rf $parmanode_drive/electrs_db
-rm -rf $parmanode_drive/electrs_db_backup 
-;;
-*) invalid ;;
-esac
-done
 }

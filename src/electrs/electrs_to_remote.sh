@@ -4,9 +4,17 @@ set_terminal ; echo -e "
 ########################################################################################
 
     You're about to switch which Bitcoin Core instance electrs connects to. Parmanode
-    will help you with that. But be aware that if you do this, you may need to 
+    will help you with that. But be aware that if you do this, you$pink MAY$orange need to 
     delete the data that electrs has already sync'ed (if any). 
-
+    
+    My testing showed that the sync should transition smoothly. However on FULCRUM, 
+    which is a different type of electrum server, when performing this maneuver, 
+    the database gets corrupted. It's like being suspicious of a drug being toxic to
+    humans becuase it was toxic to rabbits. The worst case scenario is you lose a
+    couple of days resyncing the electrs data - you'll be fine ;)
+$green
+    In summary, there's a chance the database gets corrupted, but probably not. 
+$orange
     To delete the electrs database, you can do it manually, or use the Parmanode
     electrs menu option available . After that, start electrs, and it should 
     sync to the computer you've selected here.
@@ -39,9 +47,8 @@ case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invali
 done
 
 password_changer || return 1
-
 electrs_edit_user_pass $rpcuser $rpcpassword remote || return 1
-
+debug "after electrs_edit_user_pass"
 #ssl_port_change_fulcrum || return 1 
 #bitcoindIP_change_fulcrum || return 1 
 electrs_bitcoinIP_change || return 1
