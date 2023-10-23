@@ -1,12 +1,12 @@
 function menu_bitcoin_core {
 
 #for multiselection menus, need to exit if not installed
-if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf ; then return 1 ; fi
+if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 
 while true
 do
 set_terminal_custom "50"
-source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
+source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 
 unset running output1 output2 
 if [[ $OS == Mac ]] ; then
