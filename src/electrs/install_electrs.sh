@@ -2,7 +2,7 @@ function install_electrs {
 
 source $parmanode_conf >/dev/null 2>&1
 
-grep -q "bitcoin-end" < "$installed_conf" >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; } 
 fi
