@@ -62,7 +62,7 @@ $pink
     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
 $orange
     "
-
+export exit_loop=false
 enter_continue
 
 return 0 ;;
