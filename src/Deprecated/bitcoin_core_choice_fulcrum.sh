@@ -1,3 +1,5 @@
+#deprecated
+return 0
 function bitcoin_core_choice_fulcrum {
 
 set_terminal ; echo -e "

@@ -54,8 +54,6 @@ echo "
 
       (c)        How to connect your Electrum wallet to Fulcrum
 
-      (bitcoin)  Choose which Bitcoin Core for Fulcrum to connect to
-	    
       (log)      Inspect Fulcrum logs
 
       (fc)       Inspect and edit fulcrum.conf file 
@@ -104,11 +102,11 @@ if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
 set_terminal
 ;;
 
-bitcoin|Bitcoin)
-set_terminal
-bitcoin_core_choice_fulcrum
-set_terminal
-;;
+# bitcoin|Bitcoin)
+# set_terminal
+# bitcoin_core_choice_fulcrum
+# set_terminal
+# ;;
 
 r|R) 
 if [[ $OS == "Linux" ]] ; then 
