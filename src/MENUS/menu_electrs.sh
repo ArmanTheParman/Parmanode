@@ -17,7 +17,7 @@ electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                 ${cyan}Electrs $electrs_version Menu${orange} 
+                                ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
 if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
@@ -52,9 +52,10 @@ if [[ $OS == Linux ]] ; then echo -e "
       (tor)      Enable Tor connections to electrs-- electrs Tor Status : $E_tor
 
       (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor" ; else echo -e "
-      (dc)       electrs database corrupted? -- Use this to start fresh.
-
 " 
+echo -e "
+      (dc)       electrs database corrupted? -- Use this to start fresh.
+"
 fi
 
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
