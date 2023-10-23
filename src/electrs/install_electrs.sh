@@ -5,12 +5,13 @@ if ! which nginx ; then install_nginx || { announce "Trying to first install Ngi
 "Aborting" ; } 
 fi
 
-unset electrs_compile && restore_electrs #get electrs_compile true/false
+unset electrs_compile && restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
 
 if [[ $electrs_compile == "false" ]] ; then 
 
-    please_wait rm -rf $HOME/parmanode/electrs/ 
-    mv $HOME/.electrs_backup $HOME/parmanode/electrs
+    please_wait
+    rm -rf $HOME/parmanode/electrs/ 
+    cp -R $HOME/.electrs_backup $HOME/parmanode/electrs
 
     installed_config_add "electrs-start"
 

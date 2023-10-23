@@ -13,3 +13,6 @@ system-health-check
     - $LANG
     etc
 deprecate swap string command
+
+Get Parmanode to check for database corruptions
+

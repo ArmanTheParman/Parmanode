@@ -60,7 +60,7 @@ echo "
 
       (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
     
-      (wizard)   Connect this Fulcrum server to Bitcoin Core on a different computer
+      (remote)   Connect this Fulcrum server to Bitcoin Core on a different computer
     
       (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 
@@ -202,7 +202,7 @@ q|Q|Quit|QUIT)
 exit 0
 ;;
 
-wizard|Wizard|W|w)
+Remote|REMOTE|remote)
 if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
 if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
 enter_continue
