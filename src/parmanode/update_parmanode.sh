@@ -54,7 +54,7 @@ n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $original_dir
 git config pull.rebase false >/dev/null 2>&1
-git pull
+if git pull | grep . ; then true ; fi
 # Deleteing below...
 # if git pull | grep "Already up" ; then enter_continue ; return 0 ; fi
 # # grep searches for a string that occurs only when there are no updates required.
