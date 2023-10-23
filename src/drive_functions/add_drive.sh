@@ -20,7 +20,6 @@ set_terminal ; echo -e "$cyan
 " ; enter_continue ; set_terminal
 
 detect_drive $@ || return 1 #menu
-debug3 "2. disk is $disk"
 drive_details || return 1
 
 label_check || return 1 
@@ -68,7 +67,7 @@ function drive_details {
 if [[ $OS == "Mac" ]] ; then
 set_terminal
 diskutil info $disk
-debug3 "disk is $disk"
+debug "disk is $disk"
 fi
 
     
@@ -140,7 +139,6 @@ n|N|NO|No|no) return 1 ;;
 *) invalid ;;
 esac
 done
-debug3 "outside case"
 if [[ $OS == "Linux" ]] ; then
 
     if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
@@ -149,17 +147,13 @@ if [[ $OS == "Linux" ]] ; then
 
     drive_details "after" ; if [ $? == 1 ] ; then return 1 ; fi
     return 0
-    fi # end if Linux
+fi # end if Linux
 
 if [[ $OS == "Mac" ]] ; then
-debug3 "inside mac" 
 old_label=$(diskutil info $disk | grep "Volume Name:" | awk '{print $3}')
 diskutil rename "${old_label}" "parmanode"
-
 diskutil info $disk | grep -q "parmanode" || { announce "    There seems to be an error renaming the drive." && return 1 ; }
-debug3 "end of changing label"
 return 0
-
 fi # end if Mac
 }
 
