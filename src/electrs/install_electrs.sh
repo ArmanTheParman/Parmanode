@@ -51,8 +51,13 @@ choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepar
 
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if [[ $drive_electrs == "external" && $drive == "external" || $drive_fulcrum == "external" ]] ; then 
+if [[ ($drive_electrs == "external" && $drive == "external") || \
+       $drive_electrs == "external" && $drive_fulcrum == "external") ]] ; then 
     # format not needed
+ 
+    # Get user to connect drive.
+      pls_connect_drive || return 1 
+
     # check if there is a backup electrs_db on the drive and restore it
       restore_elctrs_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$USER $original > /dev/null 2>&1 ; fi
