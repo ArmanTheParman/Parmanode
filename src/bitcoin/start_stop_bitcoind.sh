@@ -31,7 +31,7 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
-open /Applications/Bitcoin-Qt.app
+open /Applications/Bitcoin-Qt.app >/dev/null 2>&1
 return 0
 fi
 }
