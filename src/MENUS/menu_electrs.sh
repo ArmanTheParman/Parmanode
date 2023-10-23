@@ -47,15 +47,16 @@ echo "
 
       (ec)       Inspect and edit config.toml file 
 
-      (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)
-    
+      (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)"
+if [[ $OS == Linux ]] ; then echo -e "
       (tor)      Enable Tor connections to electrs-- electrs Tor Status : $E_tor
 
-      (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor
-
+      (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor" ; else echo -e "
       (dc)       electrs database corrupted? -- Use this to start fresh.
 
-"
+" 
+fi
+
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo "
     Onion adress: $ONION_ADDR_ELECTRS:7004 
