@@ -64,7 +64,7 @@ if git pull | grep . ; then true ; fi #need git pull inside if to suppress promp
 #     YOU MUST EXIT PARMANODE AND RELAUNCH FOR THE UPDATE TO TAKE EFFECT
 # $orange
 #     "
-source $original_dir/source_parmanode.sh
+source $original_dir/source_parmanode.sh >/dev/null 2>&1
 source_parmanode
 
 enter_continue
