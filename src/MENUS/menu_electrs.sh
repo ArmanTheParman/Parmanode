@@ -41,7 +41,7 @@ echo "
 
       (r)        Restart electrs 
 
-      (bitcoin)  Choose which Bitcoin Core for Fulcrum to connect to
+      (wizard)  Choose which Bitcoin Core for Fulcrum to connect to
 
       (c)        How to connect your Electrum wallet to electrs 
 	    
@@ -92,9 +92,9 @@ restart_electrs
 continue
 ;;
 
-bitcoin|Bitcoin)
+wizard|Wizard|WIZARD)
 set_terminal
-bitcoin_core_choice_electrs
+electrs_to_remote
 set_terminal
 ;;
 
