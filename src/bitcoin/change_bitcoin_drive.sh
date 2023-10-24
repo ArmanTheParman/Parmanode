@@ -113,7 +113,7 @@ if [[ $OS == Mac && $drive == internal ]] ; then
     make_bitcoin_symlinks
     fi 
 
-    if [[ ! -d $HOME/.bitcoin &&    ! -L $HOME/.bitcoin ]] ; 
+    if [[ ! -d $HOME/.bitcoin &&    ! -L $HOME/.bitcoin ]] ; then
     make_bitcoin_symlinks
     fi
 
