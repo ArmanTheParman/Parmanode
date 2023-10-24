@@ -66,17 +66,12 @@ elif [[ $drive_electrs == exteranal ]] ; then
       format_ext_drive "electrs" || return 
 
 fi
-########################################################################################
 
-if [[ -e $hp/electrs_db ]] ; then
-restore_internal_electrs_db
-fi
-########################################################################################
-########################################################################################
-########################################################################################
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
         debug "prepare drive done"
 
+#if it exists, test inside function
+restore_internal_electrs_db || return 1
 
 #config
 make_electrs_config && log "electrs" "config done" ; debug "config done"
