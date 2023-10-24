@@ -99,6 +99,7 @@ if [[ -d ${e_db}_backup ]] ; then
     electrs_backup_exists #function defined below
     else
     sudo mv $e_db ${e_db}_backup
+    #if internal, moved to $HOME/parmanode/ later
 fi
 break
 ;;
@@ -110,7 +111,7 @@ fi
 
 # Uninstall electrs github
 
-mv $HOME/parmanode/electrs/electrs_db* $HOME/parmanode/                        >/dev/null 2>&1
+mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                        >/dev/null 2>&1
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
