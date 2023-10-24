@@ -105,7 +105,7 @@ if [[ "$positionnewline" == "delete" ]] ; then
     cat /tmp/temp1.txt | sudo tee $inputfile >/dev/null
 fi
 
-cd /tmp >/dev/null
+cd /tmp 
 rm temp1.txt temp2.txt temp3.txt temp4.txt >/dev/null 2>&1
-cd - >/dev/null
+cd $original_dir 
 }

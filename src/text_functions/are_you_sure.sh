@@ -1,3 +1,4 @@
+#should use... are_you_sure "extra text" || return 1
 function are_you_sure {
 while true ; do
 set_terminal ; echo -e "$red

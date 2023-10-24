@@ -44,6 +44,7 @@ $pink
     set_terminal
     case $choice in
     y|Y) 
+    are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
     please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
     n|N) 
     please_wait ; break ;;
@@ -78,7 +79,7 @@ set_terminal "pink" ; echo "
 
                 l)        Leave it there
 
-                b)        Back it up (just renames it)
+                b)        Back it up 
 
 ########################################################################################
 "

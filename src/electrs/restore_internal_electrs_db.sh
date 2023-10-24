@@ -8,13 +8,14 @@ set_terminal ; echo -e "
 
     Would you like to use the backup data directory... 
 
-    $hp/electrs_db_backup ?
+                 $hp/electrs_db_backup ?
 
-    y) yes please that's outrageously good
 
-    n) nah, leave it
+$red       y)$orange  Yes please that's outrageously good
 
-    d) nah, and get rid of it
+$red       n)$orange  Nah, leave it
+
+$red       d)$orange  Nah, and get rid of it
 
 ########################################################################################
 "
@@ -30,7 +31,10 @@ return 0
 ;;
 y|Y|YES|Yes|yes)
 please_wait
-mv $hp/electrs_db_backup $hp/electrs/electrs_db
+rm -rf $hp/electrs/electrs_db
+mv $hp/electrs_db_backup $hp/electrs/
+mv $hp/electrs/electrs_db_backup $hp/electrs/electrs_db
+return 0
 ;;
 *) invalid ;;
 esac
