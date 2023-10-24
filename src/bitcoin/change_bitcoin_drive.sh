@@ -47,7 +47,7 @@ if [[ $drive == external ]] ; then
     return 0
 fi
 
-if [[ $drive == internal ]] ; then
+if [[ $drive == internal && $OS == Linux ]] ; then
 
 while ! grep -q parmanode < /etc/fstab ; do
 
@@ -100,4 +100,27 @@ fi  #ends if $drive=internal
 invalid ;;
 esac # ends change it or leave it
 done
+
+
+
+if [[ $OS == Mac && $drive == internal ]] ; then
+
+    mount_drive || return 1
+    if [[ ! -d $parmanode_drive/.bitcoin ]] ; then mkdir $parmanode_drive/.bitcoin ; fi
+
+    if [[   -d $HOME/.bitcoin &&    ! -L $HOME/.bitcoin ]] ; then
+    make_backup_dot_bitcoin
+    make_bitcoin_symlinks
+    fi 
+
+    if [[ ! -d $HOME/.bitcoin &&    ! -L $HOME/.bitcoin ]] ; 
+    make_bitcoin_symlinks
+    fi
+
+    make_bitcoin_conf prune 0
+    announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
+        to the external drive."
+        
+fi
+
 }
