@@ -41,7 +41,7 @@ if [[ $drive == external ]] ; then
     rm $HOME/.bitcoin #deletes symlink to external drive
     parmanode_conf_remove "drive=" && parmanode_conf_add "drive=internal"
     mkdir $HOME/.bitcoin
-    make_bitcoin_conf
+    make_bitcoin_conf prune 0
     announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
         to the internal drive."
     return 0
@@ -89,7 +89,7 @@ done # ends while no parmanode in fstab
     mkdir $parmanode_drive/.bitcoin >/dev/null 2>&1 && \
             log "bitcoin" ".bitcoin dir made on ext drive" 
     sudo chown -R $USER:$USER $parmanode_drive/.bitcoin
-    make_bitcoin_conf
+    make_bitcoin_conf prune 0
     announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
         to the external drive."
     return 0
