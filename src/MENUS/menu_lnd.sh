@@ -129,7 +129,8 @@ set_lnd_password
 alias|ALIAS|Alias) 
 set_lnd_alias ;;
 
-create|CREATE|Create) create_wallet ; lncli unlock ;;
+create|CREATE|Create)
+create_wallet ; lncli unlock ;;
 
 ul|UL|Ul|unlock|Unlock) 
 lncli unlock
