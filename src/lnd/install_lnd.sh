@@ -23,6 +23,9 @@ set_lnd_alias
 
 make_lnd_conf
 
+#need a password.txt file to exist
+touch $HOME/.lnd/password.txt >/dev/null 2>&1
+
 #do last. Also runs LND
 make_lnd_service 
 
