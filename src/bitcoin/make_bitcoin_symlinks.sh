@@ -1,4 +1,4 @@
-function set_dot_bitcoin_symlink {
+function make_bitcoin_symlinks {
 set_terminal
 
 while true ; do
@@ -18,8 +18,8 @@ if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
-    cd $HOME/Library/Application\ Support/ ; rm -rf Bitcoin >/dev/null 2>&1 
-    cd $HOME ; rm -rf .bitcoin >/dev/null 2>&1 
+    cd $HOME/Library/Application\ Support/ >/dev/null 2>&1 && rm -rf Bitcoin >/dev/null 2>&1 
+    cd $HOME && rm -rf .bitcoin >/dev/null 2>&1 
     cd $HOME/Library/Application\ Support/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
     cd $HOME && ln -s /Volumes/parmanode/.bitcoin .bitcoin && break
     fi
@@ -40,17 +40,13 @@ $orange
 
     A symlink to the data directory has been created.
 
-        For Linux users with an external drive,
-        $HOME/.bitcoin points to
-        /media/$(whoami)/parmanode/.bitcoin
-
-        For Mac users with an external drive, 
-        $HOME/Library/Application Support/Bitcoin points to 
-        /Volumes/parmanode/.bitcoin
+        For external drives,
+            $HOME/.bitcoin points to
+            $parmanode_drive/.bitcoin
 
         For Mac users with an internal drive, 
-        $HOME/Library/Application Support/Bitcoin pionts to 
-        $HOME/.bitcoin
+           $HOME/Library/Application Support/Bitcoin, the default location, now pionts to 
+           $HOME/.bitcoin
 
 ########################################################################################
 "
