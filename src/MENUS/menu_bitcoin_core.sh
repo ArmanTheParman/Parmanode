@@ -219,7 +219,7 @@ continue
 ;;
 
 o|O)
-bitcoin_other || return 1
+menu_bitcoin_other || return 1
 ;;
 p|P)
 return 1

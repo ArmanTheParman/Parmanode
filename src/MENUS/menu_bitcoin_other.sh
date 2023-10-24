@@ -1,4 +1,4 @@
-function bitcoin_other {
+function menu_bitcoin_other {
 while true
 do
 set_terminal
