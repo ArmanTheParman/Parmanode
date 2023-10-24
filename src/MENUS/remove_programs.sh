@@ -120,7 +120,7 @@ elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
 echo "#                                    (ers)              LNbits (partial)               #
 #                                                                                      #" ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezormenu=1
-echo "                                     (trz)              Trezor Suite             #
+echo "#                                    (trz)              Trezor Suite                   #
 #                                                                                      #"
 elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then trezormenu=1
 echo "#                                    (trz)              Trezor (partial)               #

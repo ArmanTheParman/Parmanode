@@ -18,7 +18,7 @@ $orange
     to compile again now, of course. 
 
 
-                            u)       Use backup
+                            u)       Use backup of compiled software
 
                             c)       Compile again
 
