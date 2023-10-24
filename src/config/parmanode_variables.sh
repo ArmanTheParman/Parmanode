@@ -25,7 +25,10 @@ export parmanode_drive="/Volumes/parmanode"
 fi
 
 dp="$HOME/.parmanode"
-hp="$HOME/parmanode/"
+hp="$HOME/parmanode"
+pp="$HOME/parman_programs"
+pn="$pp/parmanode"
+
 parmanode_conf="${dp}/parmanode.conf"
 installed_conf="${dp}/installed.conf"
 
