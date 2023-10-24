@@ -61,10 +61,19 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
       restore_elctrs_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$USER $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
-else
-      format_ext_drive "electrs" || return 
-fi
+elif [[ $drive_electrs == exteranal ]] ; then
 
+      format_ext_drive "electrs" || return 
+
+fi
+########################################################################################
+
+if [[ -e $hp/electrs_db ]] ; then
+restore_internal_electrs_db
+fi
+########################################################################################
+########################################################################################
+########################################################################################
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
         debug "prepare drive done"
 
