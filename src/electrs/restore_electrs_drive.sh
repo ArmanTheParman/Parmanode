@@ -1,15 +1,10 @@
 #code reaches here if external drive selected and drive format not required.
 
 function restore_elctrs_drive {
-if [[ $OS == Linux ]] ; then
-export original="/media/$USER/parmanode/electrs_db"
-export backup="/media/$USER/parmanode/electrs_db_backup"
-tempdir="/media/$USER/parmanode/electrs_db_temp"
-elif [[ $OS == Mac ]] ; then
-export original="/Volumes/parmanode/electrs_db"
-export backup="/Volumes/parmanode/electrs_db_backup"
-tempdir="/Volumes/parmanode/electrs_db_temp"
-fi
+
+export original="$pamanode_drive/electrs_db"
+export backup="$parmanode_drive/electrs_db_backup"
+tempdir="$parmanode_drive/electrs_db_temp"
 
 
 # Neither exist
