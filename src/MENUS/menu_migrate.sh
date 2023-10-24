@@ -31,18 +31,22 @@ p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
 add_drive 
+offer_swap_to_external
 ;;
 
 ub|UB|Ub)
 umbrel_import 
+offer_swap_to_external
 ;;
 
 mn|MN|Mn)
 mynode_import
+offer_swap_to_external
 ;;
 
 rp|RP|Rp)
 raspiblitz_import
+offer_swap_to_external
 ;;
 
 eww|Eww|EWW)

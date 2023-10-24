@@ -15,9 +15,9 @@ $orange
     Would you like to change and sync data to the $otherdrive drive?
 
 
-                  c)       change         (doesn't delete data)
+                  c)       Change         (doesn't delete data)
 
-                  n)       no, leave it    
+                  n)       No, leave it    
  
 ########################################################################################
 "
