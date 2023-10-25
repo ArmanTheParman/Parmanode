@@ -15,9 +15,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpq ; read choice
+choose xpmq ; read choice
 case $choice in
 q|Q) quit ;;
+m) menu_main ;;
 p|P) return 1 ;;
 
 internal) 

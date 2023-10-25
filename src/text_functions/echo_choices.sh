@@ -23,9 +23,9 @@ return 0
 
 function choose {
 
-if [[ $1 == "xpq" ]]
+if [[ $1 == "xpmq" || $1 == "xpq" ]]
 then
-echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$cyan (q)$yellow to quit. 
+echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit. 
  Then <enter> : $orange"
 return 0
 fi

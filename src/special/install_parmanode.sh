@@ -72,8 +72,6 @@ check_architecture
 add_rp_function
 correct_old_installation
 parmanode1_fix
-main_loop_count new
-debug3 "main menu count called - new"
 }
 
 

@@ -87,6 +87,6 @@ debug_fast "test first fast debug"
 motd
 
 # This is the main program, which is a menu that loops.
-menu_main    
+main_loop_count new && menu_main zero    
 
 }
