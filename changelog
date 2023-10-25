@@ -1,4 +1,4 @@
-Version 3.13.1
+Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time
     -Import Parmanode drive function added for Mac
@@ -6,6 +6,8 @@ Version 3.13.1
     -Change bitcoin drive internal/external, code imporved
     -Change bitcoin drive internal/external, code added for Mac
     -LND: now wallet create happens at install + bug fix
+    -new menu option to jump to main menu. Not available everywhere yet
+     but will appear more in future versions.
 Version 3.12.0
     -electrs for Mac
     -LND external IP
