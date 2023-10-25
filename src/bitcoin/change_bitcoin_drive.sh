@@ -21,7 +21,7 @@ $orange
  
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice ; set_terminal
 fi
 if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
@@ -29,6 +29,7 @@ if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
 case $choice in
 q|Q) exit ;;
 p|P|n|N|NO|No) return 1 ;;
+m) menu_main ;;
 
 c|C)
  #change systemctl? No - because symlink
@@ -90,10 +91,11 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice ; set_terminal
 case $choice in
 q|Q) exit ;;
+m) menu_main ;;
 a|A|p|P|n|N|NO|No) return 1 ;;
 i|I)
 add_drive
