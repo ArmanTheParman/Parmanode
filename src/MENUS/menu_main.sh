@@ -45,9 +45,9 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 
-     Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
+ Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
 
-     Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
+ Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
 "
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
@@ -61,10 +61,10 @@ add|Add| ADD)
     menu_add_new
     ;;
 use|USE|Use|u|U)
-    menu_programs 
+    menu_use
     ;;
 remove|REMOVE)
-    remove_programs ;;
+    menu_remove ;;
 l|L) 
     menu_log_config ;;
 m|M)
@@ -91,6 +91,7 @@ ap|AP|Ap|aP)
 
 ub)
 menu_bitcoin_core
+return 0 #necessary for "m" function
 ;;
 
 q | Q | quit)

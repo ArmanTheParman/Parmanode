@@ -1,4 +1,4 @@
-function menu_programs {
+function menu_use {
 set_terminal
 while true
 do
@@ -76,11 +76,13 @@ if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
 echo "                            
 #######################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 
 case $choice in
+
+m) return 0 ;;
 
 b|B)
     if [[ $bitcoinapp == 1 ]] ; then

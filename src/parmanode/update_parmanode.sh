@@ -47,9 +47,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 
 case $choice in q|Q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
+m) return 0 ;;
 n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $original_dir
