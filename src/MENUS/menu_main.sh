@@ -84,7 +84,7 @@ uninstall_parmanode
 ;;
 update|UPDATE|Update)
     update_parmanode || continue
-    if [[ $exit_loop == false ]] ; then source $original_dir/source_parmanode.sh ; fi
+    if [[ $exit_loop == false ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)
     about ;;
