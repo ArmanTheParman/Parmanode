@@ -3,10 +3,18 @@ function choose_and_prepare_drive_parmanode {
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
+local text="   NOTE: 
+
+    If you wish to use a drive from a different installation, like Umbrel, Mynode
+    RaspiBlitz, or even a different ParmanodL, then please choose INTERNAL drive for
+    now, and later opt to migrate an external drive in (from the Bitcoin menu). After
+    that, choose to swap the internal/external drive choice from the Bitcoin menu.
+"
+
 while true
 do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     You have the option to use an external or internal hard drive for the $1
@@ -17,8 +25,10 @@ echo "
                            (e) - Use an EXTERNAL drive
 
                            (i) - Use an INTERNAL drive:
-
-########################################################################################
+"
+if [[ $1 == Bitcoin ]] ; then
+echo -e "$green" "$text" "$orange" ; fi 
+echo "########################################################################################
 "
 choose "xpq" #echo statment about above options, previous menu, or quit.
 
