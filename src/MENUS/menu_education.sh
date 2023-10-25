@@ -5,9 +5,9 @@ set_terminal
 echo -e "
 ########################################################################################
  
-
-         $cyan                     P A R M A N O D E - Education$orange
-
+$cyan
+                            P A R M A N O D E - Education
+$orange
                     
                     (w)        How to connect your wallet to the node
 
@@ -24,9 +24,12 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 
 case $choice in
+
+    m) return 0 ;;
+
     w|W)
         connect_wallet_info
         ;;

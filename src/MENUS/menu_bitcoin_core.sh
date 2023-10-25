@@ -75,9 +75,11 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
+
+m) return 0 ;;
 
 start|START|Start)
 run_bitcoind

@@ -1,4 +1,4 @@
-function remove_programs {
+function menu_remove {
 # another dynamic menu. Each program is listed either as available to be removed, 
 # or as a partial (failed) installation, that can be removed. The menu variable is 
 # set to toggle the availability of the menu logic below, via if statements.
@@ -164,10 +164,12 @@ echo "#                                    (any)              AnyDesk     (parti
 echo "#                                                                                      #
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice
 
 case $choice in
+
+m) return 0 ;;
 
 parmanode|PARMANODE|Parmanode)
 uninstall_parmanode

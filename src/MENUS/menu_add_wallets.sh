@@ -47,11 +47,13 @@ if [[ -n $ledger_p ]]          ; then echo  "$ledger_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 
 case $choice in
+
+    m) return 0 ;;
    
     s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then

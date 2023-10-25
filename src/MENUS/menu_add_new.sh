@@ -20,7 +20,7 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice ; set_terminal
 
@@ -30,6 +30,8 @@ case $choice in
         menu_add_node
         return 0
         ;;
+
+    m) return 0 ;;
 
     w|W|wallets|Wallets)
         menu_add_wallets
