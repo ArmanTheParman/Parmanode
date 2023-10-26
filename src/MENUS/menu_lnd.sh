@@ -1,8 +1,8 @@
 function menu_lnd {
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 while true ; do set_terminal_custom "48" ; echo -e "
-########################################################################################
-                                 ${cyan}LND Menu${orange} - v$lnd_version                               
+########################################################################################$cyan
+                              LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
@@ -23,29 +23,23 @@ echo "
 
       (restart)        Restart LND
 
-      (ex)             Expose your LND node to other nodes
-	    
       (log)            Inspect LND logs
 
       (conf)           Inspect and edit lnd.conf file 
 
       (password)       Change LND password 
        
-      (alias)          Change LND alias
-
       (create)         Create an LND wallet (or restore a wallet with seed)
-
-      (au)             Enable auto-unlock wallet (for easy restarts of LND)
 
       (ul)             Unlock Wallet
 
       (wb)             Wallet balance
 
-      (update)         Update LND to version 0.17.0
-
       (scb)            Static Channel Backup 
 
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
+
+      (m)              ... more options
 
 ########################################################################################
 "
@@ -127,23 +121,11 @@ enter_continue
 set_lnd_password
 ;;
 
-
-alias|ALIAS|Alias) 
-set_lnd_alias ;;
-
 create|CREATE|Create)
 create_wallet ; lncli unlock ;;
 
 ul|UL|Ul|unlock|Unlock) 
 lncli unlock
-;;
-
-au|AU|Au)
-lnd_wallet_unlock_password
-;;
-
-ex|Ex|EX)
-expose_LND
 ;;
 
 wb|WB)
@@ -154,10 +136,6 @@ enter_continue
 
 scb|SCB|Scb) 
 scb ;;
-
-update|UPDATE|Update)
-update_lnd
-;;
 
 delete|DELETE|Delete) 
 delete_wallet ;;
