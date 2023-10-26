@@ -28,7 +28,7 @@ echo "
         \"themeColor\": \"PURPLE\",
         \"channelBackupPath\": \"\",
         \"logLevel\": \"ERROR\",
-        \"lnServerUrl\": \"https://127.0.0.1:8080\",
+        \"lnServerUrl\": \"https://127.0.0.1:8090\",
         \"swapServerUrl\": \"https://127.0.0.1:8081\",
           \"boltzServerUrl\": \"https://127.0.0.1:9003\",
         \"fiatConversion\": false,
