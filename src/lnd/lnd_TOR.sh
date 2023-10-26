@@ -13,7 +13,7 @@ tor.streamisolation=true
 tor.v3=1
 tor.socks=9050  
 tor.control=9051 
-tor.dnx=soa.nodes.lightning.directory:53
+tor.dns=soa.nodes.lightning.directory:53
 tor.active=1
 ; activate split connectivity
 ; tor.skip-proxy-for-clearnet-targets=true
