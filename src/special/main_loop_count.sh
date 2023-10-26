@@ -1,5 +1,4 @@
 function main_loop_count {
-debug3 "in main loop count"
 
 local file="$dp/main_loop_count"
 
