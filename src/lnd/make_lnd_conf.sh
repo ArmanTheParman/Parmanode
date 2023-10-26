@@ -4,7 +4,7 @@ get_extIP >/dev/null 2>&1
 
 echo "[Application Options]
 tlsextraip=$IP
-#tlsextradomain=0.0.0.0
+; tlsextradomain=0.0.0.0
 externalip=$extIP:9735
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
@@ -38,10 +38,6 @@ bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
 
 
 [autopilot]
-
-[tor]
-tor.streamisolation=true
-tor.v3=true
 
 [watchtower]
 
