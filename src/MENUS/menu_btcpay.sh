@@ -1,7 +1,5 @@
 function menu_btcpay {
-debug3 ; clear
 while true ; do
-debug3 "in loop"
 set_terminal ; echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
@@ -13,14 +11,12 @@ set_terminal ; echo -e "
     
     Enter the following address to access: http://${IP}:23001
 "
-debug3 "after title"
 if docker ps | grep btcp >/dev/null 2>&1 ; then echo "
     BTCPay SERVER IS RUNNING -- SEE LOG MENU FOR PROGRESS "
 else
 echo "
     BTCPay SERVER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
-debug3 "after ifs"
 echo "
 
 ########################################################################################
@@ -107,6 +103,5 @@ invalid ;;
 esac  
 
 done
-debug3 "end"
 return 0
 }
