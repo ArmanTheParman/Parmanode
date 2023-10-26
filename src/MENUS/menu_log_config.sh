@@ -52,6 +52,8 @@ $cyan
 
 $pink
                         delete)        DELETE ALL LOGS (not conf)
+
+                        uh)            Unhide messages (you hid them with \"FREE ROSS\")
 $orange
 ########################################################################################
 "
@@ -63,7 +65,10 @@ p|P) return 1 ;;
 ic) less $HOME/.parmanode/installed.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
-delete|DELETE|Delete) rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
+delete|DELETE|Delete) 
+rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
+uh) rm $HOME/.parmanode/hide_messages.conf >/dev/null 2>&1
+;;
 *) invalid ;;
 esac
 done
