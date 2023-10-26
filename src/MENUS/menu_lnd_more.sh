@@ -4,7 +4,7 @@ export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/nu
 
 while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
-                              LND Menu${orange} - v$lnd_version                               
+                                LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
