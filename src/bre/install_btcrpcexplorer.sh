@@ -40,7 +40,6 @@ update_npm 7 || return 1
 installed_config_add "btcrpcexplorer-start" 
 cd $HOME/parmanode
 git clone --depth 1 https://github.com/janoside/btc-rpc-explorer.git
-chuck "clone done"
 cd btc-rpc-explorer
 sudo npm install -g btc-rpc-explorer
 chuck "npm install done - see which btc-rpc-explorer"

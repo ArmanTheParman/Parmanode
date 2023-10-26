@@ -21,13 +21,22 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode
 
 set_lnd_alias
 
+#password file, even if blank, needs to exists for lnd conf file to be valid
+touch $HOME/.lnd/password.txt
 make_lnd_conf
+
 
 #do last. Also runs LND
 make_lnd_service 
 
-installed_conf_add "lnd-end"
+#Make sure LND has started.
+start_LND_loop
 
+create_wallet
+lnd_wallet_unlock_password
+
+installed_conf_add "lnd-end"
 success "lnd" "being installed."
 return 0
 }
+

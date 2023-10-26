@@ -14,6 +14,7 @@ enter_continue
 fi
 
 while true ; do
+if [[ $1 != menu2 ]] ; then
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
 set_terminal ; echo -e "$pink
@@ -44,6 +45,10 @@ elif [[ $(uname) == Darwin ]] ; then
     fi
 fi
 
+fi #end != menu2
+
+#DETECT BEFORE AND AFTER...
+
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
@@ -52,6 +57,7 @@ if [[ $(uname) == "Linux" ]] ; then
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
     fi
+
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -83,11 +89,10 @@ if [[ $(uname) == "Darwin" ]] ; then
     fi
 
 if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
-    echo "No new drive detected. Try again. Hit <enter>."
+    echo "No new drive detected. DISCONNECT DRIVE and try again. Hit <enter>."
     read ; continue 
 fi
 
-echo "disk=\"$disk\"" > $HOME/.parmanode/var
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
@@ -102,5 +107,4 @@ if [[ $OS == Linux ]] ; then
 fi
     
 done
-debug "disk is $disk"
 }

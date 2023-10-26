@@ -1,25 +1,27 @@
 function lnd_info {
-    set_terminal ; echo "
+    set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                         Important info about using LND
+$orange
 
-    LND is a bit funny about starting up. If you stop LND, and try to immediately
-    restart it, it won't work. There is an intentional delay built in, and there is 
-    no warning about it. When you start LND, have a look at the log to make sure it 
-    works, and if not have another go in a minute or so.
+    You must create a wallet for Lightning to work. The seed is printed on the screen
+    when you create it - I know, that's insane, but that's the way it is for now.
 
-    Sometimes your wallet may not appear to be loading. It can just be that you need
-    to unlock it. Even though your password is saved and the configuration is such
-    that the wallet should unlock itself with the saved password, it doesn't always
-    happen. You can manually unlock the wallet from the parmanode menu.
+    Treat your LND wallet very differently to your main stack. It's a HOT wallet,
+    not as secure because your seed is exposed to an internet connected computer. LN
+    funds are for spending, not for keeping your life savings. Be warned.
+
+    Also, if you have channels open, you need to back them up with a channel backup
+    file - the seed is not enough. Learn more about this before opening channels
+    containing significant value.
 
     When you first restore a lightning wallet from seed, your balance will show
     zero for a little while, even if you've unlocked it, as the node searches for
     UTXOs in the wallet. Give it some time.
 
-    If your lightning node is important to you, make sure you regularly back up the
-    static channel backup file, particularly if you open a new channel.
+    The node will auto-restart when the computer reboots, but it will fail unless
+    you set up auto-unlock for your wallet. You can do that in the Parmanode LND menu.
 
     Also, if the node is important to you, set up a UPS (Uninterrupted power supply).
     You can buy the on line, and the give your computer some power during a powerout
@@ -29,9 +31,9 @@ function lnd_info {
     
         If you are having issues with LND, try uninstalling and reinstalling using
         Parmanode.
-
+$green
     TYPE c TO LEARN ABOUT CHANNEL BACKUPS, THEN <ENTER> OR JUST <ENTER> TO RETURN  
-
+$orange
 ########################################################################################
 "
 read choice

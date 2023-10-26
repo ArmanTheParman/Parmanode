@@ -30,8 +30,8 @@ function make_bitcoin_directories {
 
 
 #Symlinks 
-    log "bitcoin" "set_dot_bitcoin_symlinks... " && \
-    set_dot_bitcoin_symlink
+    log "bitcoin" "make_bitcoin_symlinks... " && \
+    make_bitcoin_symlinks
 
 return 0
 }

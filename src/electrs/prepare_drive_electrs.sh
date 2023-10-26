@@ -4,6 +4,7 @@ mkdir -p $HOME/.electrs
 
 if [[ $drive_electrs == "internal" ]] ; then
         mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+        #move backed up db directory here later if selected
 fi
 
 

@@ -37,7 +37,7 @@ if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not requi
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
-        export disk_no_s=$(echo $disk | grep -oE 'disk[0-9]+') 
+        export disk_no_s=$(echo $disk | grep -oE 'disk[0-9]+' | tr -d '[:space:]') 
         set_terminal
 
         log "bitcoin" "eraseDisk $disk ..."

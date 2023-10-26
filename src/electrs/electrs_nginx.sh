@@ -2,16 +2,23 @@
 function electrs_nginx {
 #certificates need www-data owner.
 
+if ! which nginx >/dev/null ; then install_nginx ; fi
+
+if [[ $OS == Mac ]] ; then
+nginx_conf="/usr/local/etc/nginx/nginx.conf"
+elif [[ $OS == Linux ]] ; then
+nginx_conf="/etc/nginx/nginx.conf"
+fi
+
 if [[ $1 = "remove" ]] ; then
-sudo sed -i "/electrs-START/,/electrs-END/d" /etc/nginx/nginx.conf >/dev/null
-sudo systemctl restart nginx >/dev/null
+    if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
+                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
+                                 brew services restart nginx >/dev/null 2>&1 ; fi
 return 0
 fi
 
-
 if [[ $1 = "add" ]] ; then 
-which nginx >/dev/null || { log "electrs. 'which nginx' failed. Can't do ssl redirection" ; \
-announce "Test for Nginx Failed. Can't do SSL redirection. Proceed with Caution" ; return 1 ; }
 set_terminal
 [ ! -f $HOME/parmanode/electrs/cert.pem ] && { announce "Can't add SSL redirection using Nginx - no certificate found. Aborting." && return 1 ; }
 [ ! -f $HOME/parmanode/electrs/key.pem ] && { announce "Can't add SSL redirection using Nginx - no key found. Aborting." && return 1 ; } 
@@ -34,10 +41,8 @@ stream {
                 ssl_prefer_server_ciphers on;
         }
 }
-# Parmanode - flag electrs-END" | sudo tee -a /etc/nginx/nginx.conf >/dev/null 2>&1
-sudo systemctl restart nginx >/dev/null
+# Parmanode - flag electrs-END" | sudo tee -a $nginx_conf >/dev/null 2>&1
+if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
 fi
-
-
-
 }

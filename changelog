@@ -1,3 +1,19 @@
+Version 3.14.0
+    -LND Tor and Tor/Clearnet hybrid enabled
+Version 3.13.2
+    -Update Parmanode without needing to restart
+    -Mac electrs, never need to repeat build dependencies, saves time
+    -Import Parmanode drive function added for Mac
+    -Detect corrupted bitcoin data; option to delete.
+    -Change bitcoin drive internal/external, code imporved
+    -Change bitcoin drive internal/external, code added for Mac
+    -LND: now wallet create happens at install + bug fix
+    -new menu option to jump to main menu. Not available everywhere yet
+     but will appear more in future versions.
+Version 3.12.0
+    -electrs for Mac
+    -LND external IP
+    -Users can update to LNDv0.17.0 from the LND menu
 Version 3.11.0
     -AnyDesk
 Version 3.10.1

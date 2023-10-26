@@ -26,10 +26,13 @@ $red    Parmanode$orange OS is a Linux operating system, modified with Parmanode
 
 ########################################################################################
 "
-read choice
+choose "xpmq" ; read choice ; clear
 case $choice in
+m) return 0 ;;
+p|P) return 0 ;;
 n|N|no|NO) return 1 ;; 
 y|Y|Yes|YES|yes) break ;;
+q|Q|Quit|QUIT) exit 0 ;;
 *) invalid
 esac
 done

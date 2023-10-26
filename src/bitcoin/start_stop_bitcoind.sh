@@ -1,3 +1,6 @@
+# I have used the name bitcoind, but later introduced bitcoin-qt for macs, the name of the function
+# has been kept the same
+
 function run_bitcoind {
 if [[ $OS == "Linux" ]] ; then 
 
@@ -28,7 +31,7 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
-open /Applications/Bitcoin-Qt.app
+open /Applications/Bitcoin-Qt.app >/dev/null 2>&1
 return 0
 fi
 }

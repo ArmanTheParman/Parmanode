@@ -1,8 +1,12 @@
 function make_ssl_certificates {
 
 set_terminal
-
+if [[ $OS == Linux ]] ; then
 if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; sudo apt-get install openssl -y ; fi
+elif [[ $OS == Mac ]] ; then
+if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; brew install openssl ; fi
+fi
+
 
 if [ -z $1 ] ; then cd $HOME/parmanode/fulcrum/ 
 elif [[ $1 == "electrs" ]] ; then cd $HOME/parmanode/electrs

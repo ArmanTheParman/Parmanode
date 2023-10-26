@@ -1,4 +1,7 @@
 function make_bitcoin_conf {
+
+if [[ $1 == prune ]] ; then export prune=$2 ; fi
+
 #Parmanode default config settings. Can be changed.
 #Create a bitcoin.conf file in data directory.
 #Overrides any existing file named bitcoin.conf

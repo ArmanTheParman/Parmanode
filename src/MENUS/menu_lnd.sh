@@ -1,7 +1,20 @@
 function menu_lnd {
-while true ; do set_terminal_custom "45" ; echo -e "
-########################################################################################
-                                     ${cyan}LND Menu${orange}                               
+while true ; do set_terminal_custom "48" 
+
+export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
+
+if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
+
+if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+then local torhybrid=Disabled 
+elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+then local torhybrid=Enabled
+else local torhybrid=Disabled 
+fi
+
+echo -e "
+########################################################################################$cyan
+                                LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
@@ -11,7 +24,7 @@ else
 echo "
                    LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
-echo "
+echo -e "
 
 
       (i)              Important info
@@ -21,24 +34,22 @@ echo "
       (stop)           Stop LND
 
       (restart)        Restart LND
-	    
+
       (log)            Inspect LND logs
 
       (conf)           Inspect and edit lnd.conf file 
 
       (password)       Change LND password 
        
-      (alias)          Change LND alias
-
-      (create)         Create an LND wallet (or restore a wallet with seed)
-
-      (au)             Enable auto-unlock wallet (for easy restarts of LND)
-
-      (ul)             Unlock Wallet
-
       (scb)            Static Channel Backup 
 
-      (delete)         Delete existing wallet and its files (macaroons, channel.db)
+      (tor)            Enable/disable TOR                     Currently: $cyan$lndtor$orange
+
+      (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
+
+      (w)              ... wallet options
+
+      (mm)             ... more options
 
 ########################################################################################
 "
@@ -50,6 +61,40 @@ i|I|info|Info) lnd_info ;;
 start|START|Start) start_lnd ;;
 stop|STOP|Stop) stop_lnd ;; 
 restart|RESTART|Restart) restart_lnd ;;
+
+tor)
+if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
+announce "Parmanode has detected an older version of Parmanode has created
+    your Lightninbg lnd.conf file. The Tor configuration adjustments may
+    not work because of this. It is recommended to reinstall LND using
+    Parmanode before attempting to enable Tor."
+continue
+fi
+
+if [[ $lndtor == Disabled ]] ; then
+lnd_enable_tor
+else
+lnd_disable_tor
+fi
+
+;;
+
+th)
+if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
+announce "Parmanode has detected an older version of Parmanode has created
+    your Lightninbg lnd.conf file. The Tor configuration adjustments may
+    not work because of this. It is recommended to reinstall LND using
+    Parmanode before attempting to enable Tor."
+continue
+fi
+
+if [[ $torhybrid == Disabled ]] ; then
+lnd_enable_hybrid
+else
+lnd_disable_hybrid
+fi
+
+;;
 
 log|LOG|Log)
 log_counter
@@ -76,15 +121,15 @@ set_terminal
 
 
 conf|CONF|Conf)
-echo "
+echo -e "
 ########################################################################################
     
         This will run Nano text editor to edit lnd.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-
+$green
 	  *** ANY CHANGES WILL ONLY BE APPLIED ONCE YOU RESTART LND ***
-
+$orange
 ########################################################################################
 "
 enter_continue
@@ -100,19 +145,18 @@ echo "
     are just as important. A password locks the wallet, whereas a passphrase 
     contributes to the entropy of the wallet.
 
-    If your intensions are to delete the wallet and start fresh, and create a new
+    If your intentions are to delete the wallet and start fresh, and create a new
     password, then delete the wallet first, then change the password, then create
     your new wallet.
 
     Note, deleting a wallet with bitcoin in it does not delete the bitcoin. You can
     recover the wallet as long as you have a copy of the seed phrase.
 
-    Also note that funds in lightning channels no longer are recoverable by the
-    seed phrase - those funds are in share 2 f 2 multisignature addresses, that are
+    Also note that$green funds in lightning channels NOT recoverable by the
+    seed phrase$orange - those funds are in share 2 f 2 multisignature addresses, that are
     returned to your wallet when the channel is closed. To keep access to those
     funds in a channel, you need to keep your lightning node running, or restore
-    your lightning node with bothe the seed AND the channel back up file. I'll 
-    add more on that in later editions of Parmanode. 
+    your lightning node with both the seed AND the channel back up file.
 
 ########################################################################################
 "
@@ -121,23 +165,15 @@ set_lnd_password
 ;;
 
 
-alias|ALIAS|Alias) 
-set_lnd_alias ;;
+scb|SCB|Scb) 
+scb ;;
 
-create|CREATE|Create) create_wallet ; lncli unlock ;;
-
-ul|UL|Ul|unlock|Unlock) 
-lncli unlock
+w)
+menu_lnd_wallet 
 ;;
 
-au|AU|Au)
-lnd_wallet_unlock_password
-;;
-
-
-scb|SCB|Scb) scb ;;
-
-delete|DELETE|Delete) delete_wallet ;;
+mm)
+menu_lnd_more ;;
 
 *) invalid ;;
 
