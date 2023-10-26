@@ -67,7 +67,7 @@ echo -e "
 
       (tor)      Tor menu options for Bitcoin
 
-      (m)        Migrate/Revert an external drive.
+      (mm)        Migrate/Revert an external drive.
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
@@ -215,7 +215,7 @@ menu_tor_bitcoin
 continue
 ;;
 
-m|M|migrate|Migrate)
+mm|MM|Mm|migrate|Migrate)
 menu_migrate
 continue
 ;;
