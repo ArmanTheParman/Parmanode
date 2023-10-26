@@ -40,6 +40,7 @@ log "debug4" "${1}"
 enter_continue
 return 0
 fi
+}
 
 }
 function debug_user {
