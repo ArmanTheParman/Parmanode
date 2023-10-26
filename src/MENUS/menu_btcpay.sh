@@ -26,14 +26,10 @@ echo -e "
              nl)           View NBXplorer log
 
 
-    Enter the following address to access: http://${IP}:23001     
 
-                                                                  from any computer
-                                                                  on the home network    
+    To access:     http://${IP}:23001$yellow     from any computer on home network    $orange
 
-                       OR                : http://localhost:23001 
-
-                                                                  form this computer
+    OR:            http://localhost:23001$yellow form this computer $orange
 
 
 ########################################################################################
