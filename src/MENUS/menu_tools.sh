@@ -30,10 +30,12 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-
+    
+    m) return ;;
+    
     ps|PS|Ps)
     parmashell_info
     return 0

@@ -40,11 +40,14 @@ if [[ -n $anydesk_p ]]       ; then echo  "$anydesk_p"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 
 case $choice in
+
+   m) return 0 ;; 
+
    ps|PS|Ps)
      if [[ -n $parmashell_n ]] ; then
      install_parmashell

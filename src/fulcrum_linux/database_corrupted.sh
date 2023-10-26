@@ -1,4 +1,4 @@
-function database_corrupted {
+function fulcrum_database_corrupted {
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -32,11 +32,11 @@ fi
 
 if [[ $drive_fulcrum == external ]] ; then 
     if [[ $OS == Linux ]] ; then 
-         sudo rm -rf /media/$USER/parmanode/fulcrum_db  
-         sudo mkdir /media/$USER/parmanode/fulcrum_db
+         sudo rm -rf $parmanode_drive/fulcrum_db  
+         sudo mkdir $parmanode_drive/fulcrum_db
     else
-         rm -rf /Volumes/parmanode/fulcrum_db
-         sudo mkdir /Volumes/parmanode/fulcrum_db
+         rm -rf $parmanode_drive/fulcrum_db
+         sudo mkdir $parmanode_drive/fulcrum_db
     fi
 else
     rm -rf $HOME/parmanode/fulcrum_db

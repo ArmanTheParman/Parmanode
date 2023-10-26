@@ -1,8 +1,10 @@
 function set_lnd_alias {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
+                              LIGHTNING NODE ALIAS
+$orange
     Please type in an alias for your LND node. It's a good idea not to give away
     personal information about yourself on the public network. For example, don't
     use your real name or Twitter handle. If you leave it blank, the node will be

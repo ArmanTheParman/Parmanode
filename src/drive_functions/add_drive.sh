@@ -1,29 +1,25 @@
 function add_drive {
-if [[ $(uname) == Darwin ]] ; then announce "Not available for Mac." ; return 1 ; fi
 
 info_add_drive $@ || return 1 # safe unmount executed
 
 set_terminal ; echo -e "$pink
 ########################################################################################
-Please make sure the drive you want to bring in is DISCONNECTED, before proceeding
-or else bad things will happen to your computer.
+    Please make sure the$green drive you want to bring in$pink is PHYSICALLY DISCONNECTED, 
+    before proceeding or else really bad things will happen to your computer.
 ########################################################################################
 $orange" ; enter_continue
+
+safe_unmount_parmanode || return 1
+
 set_terminal ; echo -e "$cyan
 ########################################################################################
-   Now Parmanode will safely unmount your regular Parmanode drive by stopping the
-   programs usinging then unmounting. YOU MUST PHYSICALLY DISCONNECT THE DRIVE
-   AFTER THIS IS DONE OR BAD THINGS WILL HAPPEN - NOT JOKING.
+   If it was connected, Parmanode has safely unmounted your$green regular$cyan Parmanode 
+   drive by stopping the programs using it, then unmounting. YOU MUST PHYSICALLY 
+   DISCONNECT THE DRIVE NOW OR BAD THINGS WILL HAPPEN - NOT JOKING.
 ########################################################################################
-" ; enter_continue
-safe_unmount_parmanode || return 1
-set_terminal 
-echo "The drive should be unmounted."
-echo "Remember to physically disconnect your regular Parmanode drive."
-enter_continue ; set_terminal
+" ; enter_continue ; set_terminal
 
 detect_drive $@ || return 1 #menu
-
 drive_details || return 1
 
 label_check || return 1 
@@ -67,29 +63,18 @@ fi #end if Linux
     
 
 function drive_details {
-source $HOME/.parmanode/var
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
 diskutil info $disk
-echo -e "
-########################################################################################
-
-    Type$cyan yes$orange if you think this is the correct drive to use, anything else to abort.
-
-########################################################################################
-"
-read choice ; 
-case $choice in yes|YES|Yes|y|Y) return 0 ;; *) return 1 ;; esac
+debug "disk is $disk"
 fi
 
     
 if [[ $OS == "Linux" ]] ; then
 
 export $(sudo blkid -o export $disk) >/dev/null
-echo "LABEL=\"$LABEL\"" >> $HOME/.parmanode/var
-echo "UUID=\"$UUID\"" >> $HOME/.parmanode/var
-echo "TYPE=\"$TYPE\"" >> $HOME/.parmanode/var
+export LABEL UUID TYPE  
 
 set_terminal
 echo -e "
@@ -119,7 +104,6 @@ fi #ends if Linux
 }
 
 function label_check {
-source $HOME/.parmanode/var
 
 if [[ $OS == "Mac" ]] ; then
     
@@ -155,7 +139,6 @@ n|N|NO|No|no) return 1 ;;
 *) invalid ;;
 esac
 done
-
 if [[ $OS == "Linux" ]] ; then
 
     if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
@@ -164,33 +147,13 @@ if [[ $OS == "Linux" ]] ; then
 
     drive_details "after" ; if [ $? == 1 ] ; then return 1 ; fi
     return 0
-    fi # end if Linux
+fi # end if Linux
 
 if [[ $OS == "Mac" ]] ; then
-    
-   cat $HOME/.parmanode/difference
-
-   echo "
-######################################################################################## 
-
-    Above are details about your drive. The Label is under the NAME column. Type it
-    in exactly below (case sensitive) then hit <enter>
-
-########################################################################################
-"
-read user_label 
-
-diskutil rename "${user_label}" "parmanode"
-
-set_terminal
-
-if diskutil info $disk >/dev/null | grep "parmanode" ; then
-    echo "    The label has been changed."
-    enter_continue
-    else
-    echo "    There seems to be an error renaming the drive." 
-    fi
-
+old_label=$(diskutil info $disk | grep "Volume Name:" | awk '{print $3}')
+diskutil rename "${old_label}" "parmanode"
+diskutil info $disk | grep -q "parmanode" || { announce "    There seems to be an error renaming the drive." && return 1 ; }
+return 0
 fi # end if Mac
 }
 

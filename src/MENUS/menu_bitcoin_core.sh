@@ -1,12 +1,22 @@
 function menu_bitcoin_core {
 
 #for multiselection menus, need to exit if not installed
-if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf ; then return 1 ; fi
+if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 
 while true
 do
+
+if tail -n 25 $HOME/.bitcoin/debug.log | grep -q "Corrupt" ; then
+announce "Parmanode has detected a potential serious error from the Bitcoin log.
+    You should take a look, and make a decision - I can't diagnose all potential
+    problems with this program. One option might be to re-index the chanin (do
+    look that up if needed), another may be to delete the data and start over - 
+    there's a Parmanode menu option for that."
+fi
+
+
 set_terminal_custom "50"
-source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
+source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 
 unset running output1 output2 
 if [[ $OS == Mac ]] ; then
@@ -59,13 +69,17 @@ echo -e "
 
       (m)        Migrate/Revert an external drive.
 
+      (delete)   Delete blockchain data and start over (eg if data corrupted)
+
       (o)        OTHER...
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
+
+m) return 0 ;;
 
 start|START|Start)
 run_bitcoind
@@ -207,9 +221,14 @@ continue
 ;;
 
 o|O)
-bitcoin_other || return 1
+menu_bitcoin_other || return 1
 ;;
 p|P)
+return 1
+;;
+
+delete|Delete|DELETE)
+delete_blockchain
 return 1
 ;;
 

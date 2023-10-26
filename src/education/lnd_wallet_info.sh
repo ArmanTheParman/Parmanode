@@ -2,17 +2,18 @@ function lnd_wallet_info {
 
 set_terminal ; echo -e "
 ########################################################################################
-
-             $cyan                  Lightning Wallet$orange
+$cyan
+                                  Lightning Wallet
+$orange
 
     Be aware, when you make a lightning wallet, you'll be given a 24 word mnemonic
-    "seed". It's important to know that this is not a BIP39 seed and cannot be 
+    "seed". It's important to know that this is$green not a BIP39 seed$orange and cannot be 
     recovered with a hardware wallet or software wallet like Electrum or Sparrow, 
     unless you do some "hardcore computerisation". It's possible, I've done it, but
     it creates a new set of problems, so don't go there.
 
     Lightning "seeds" are Aezeed standard seeds. They can be recovered with lightning
-    wallet software like LND, not regular wallets.
+    wallet software like LND - not regular wallets.
 
     Write down the seed, keep it safe, make a duplicate and keep the copies in
     different locations (the way you of course do with your regular bitcoin wallet
@@ -24,7 +25,7 @@ set_terminal ; echo -e "
     malware.
 
     Of interest is that LND wallets will use taproot addresses - they start with
-    bcqp.
+    bc1p.
 
 ########################################################################################
 "

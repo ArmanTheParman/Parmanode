@@ -1,8 +1,13 @@
 function dd_wipe_drive {
+
 #This function has been tempremental and creates too much delay in installation, so I've simplified.
 #The remainder of the code won't run. dd_bypass is at the end of the file.
+
+
 dd_bypass || return 1
 return 0
+
+if ! echo $disk | grep -Eo '^/dev/' ; then local disk="/dev/$disk" ; fi 
 
 ########################################################################################
 while true ; do
@@ -106,6 +111,9 @@ exit 1
 
 function dd_bypass {
 string="Parman loves you :) " #spread the love
+
+if ! echo $disk | grep -Eo '^/dev/' ; then local disk="/dev/$disk" ; fi 
+
 
 please_wait 
 

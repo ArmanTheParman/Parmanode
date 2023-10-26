@@ -1,4 +1,7 @@
 function menu_main {
+main_loop_count add
+debug3 "main loop count add, in menu_main"
+
 while true ; do
 set_terminal_bit_higher #custom function to resize the window
 
@@ -25,7 +28,7 @@ echo -e "
 #                                                                                      #
 #    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
-# $red   (pn)                 ParmanodL (new)                                           $orange   #
+#    (pn)                 ParmanodL                                                    #
 #                                                                                      #
 #    (e)                  Education                                                    #
 #                                                                                      #
@@ -42,9 +45,9 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 
-     Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
+ Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
 
-     Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
+ Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
 "
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
@@ -58,10 +61,10 @@ add|Add| ADD)
     menu_add_new
     ;;
 use|USE|Use|u|U)
-    menu_programs 
+    menu_use
     ;;
 remove|REMOVE)
-    remove_programs ;;
+    menu_remove ;;
 l|L) 
     menu_log_config ;;
 m|M)
@@ -80,12 +83,15 @@ uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
 update|UPDATE|Update)
-    update_parmanode ;;
+    update_parmanode || continue
+    if [[ $exit_loop == false ]] ; then return 0 ;fi
+;;
 ap|AP|Ap|aP)
     about ;;
 
 ub)
 menu_bitcoin_core
+return 0 #necessary for "m" function
 ;;
 
 q | Q | quit)

@@ -6,7 +6,7 @@ set_terminal ; echo "
     WARNING: If you have a previous Fulcrum Docker$cyan container$orange, this installation will 
     delete it, and any Fulcrum images, but not the database.
     
-    If you want to preserve any old data, you should quit now, and back them up.
+    If you want to preserve any old Docker data, you should quit now, and back them up.
 
                               <enter>    to continue
 

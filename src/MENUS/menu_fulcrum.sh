@@ -1,13 +1,16 @@
 function menu_fulcrum {
 while true
 do
+set_terminal
 
+if [[ $OS == Linux ]] ; then
 if sudo cat /etc/tor/torrc | grep -q "fulcrum" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/fulcrum-service/hostname | grep -q "onion" >/dev/null 2>&1 ; then
     F_tor="on"
     fi
 else
     F_tor="off"
+fi
 fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
@@ -51,21 +54,19 @@ echo "
 
       (c)        How to connect your Electrum wallet to Fulcrum
 
-      (bitcoin)  Choose which Bitcoin Core for Fulcrum to connect to
-	    
       (log)      Inspect Fulcrum logs
 
       (fc)       Inspect and edit fulcrum.conf file 
 
       (up)       Set/remove/change Bitcoin rpc user/pass (Fulcrum config file updates)
     
-      (wizard)   Connect this Fulcrum server to Bitcoin Core on a different computer
+      (remote)   Connect this Fulcrum server to Bitcoin Core on a different computer
     
       (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
-      (dc)       Fulcrum database corrupted?
+      (dc)       Fulcrum database corrupted? -- Use this to start fresh.
       
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
@@ -101,11 +102,11 @@ if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
 set_terminal
 ;;
 
-bitcoin|Bitcoin)
-set_terminal
-bitcoin_core_choice_fulcrum
-set_terminal
-;;
+# bitcoin|Bitcoin)
+# set_terminal
+# bitcoin_core_choice_fulcrum
+# set_terminal
+# ;;
 
 r|R) 
 if [[ $OS == "Linux" ]] ; then 
@@ -201,7 +202,7 @@ q|Q|Quit|QUIT)
 exit 0
 ;;
 
-wizard|Wizard|W|w)
+Remote|REMOTE|remote)
 if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
 if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
 enter_continue
@@ -217,7 +218,7 @@ fulcrum_tor_remove
 ;;
 
 dc|DC|Dc|dC)
-database_corrupted
+fulcrum_database_corrupted
 ;;
 
 *)

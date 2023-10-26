@@ -2,7 +2,7 @@ function menu_btcpay {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-                                 ${cyan}BTCPay Server Menu${yellow}
+                                 ${cyan}BTCPay Server Menu${$orange}
 ########################################################################################
 
 

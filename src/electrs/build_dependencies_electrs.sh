@@ -1,4 +1,6 @@
+# Linux, then Mac
 function build_dependencies_electrs {
+if [[ $OS == Linux ]] ; then
 please_wait
 sudo apt-get update -y >/dev/null 2>&1
 
@@ -33,5 +35,27 @@ else
     sudo apt-get purge cargo rustc -y
     install_cargo || return 1
     fi
+fi
+fi #end if Linux
+if [[ $OS == Mac ]] ; then
+brew update ; brew upgrade
+
+if ! which automake   > /dev/null 2>&1 ; then brew install automake   ; fi
+if ! which libtool    > /dev/null 2>&1 ; then brew install libtool    ; fi
+if ! which pkg-config > /dev/null 2>&1 ; then brew install pkg-config ; fi
+
+#installs rust (with cargo)
+if ! which cargo >/dev/null 2>&1 ; then brew install rust ; fi
+
+if ! which clang >/dev/null 2>&1 ; then brew install --cask clay ; fi
+
+if [[ ! -e /Library/Developer/CommandLineTools ]] ; then
+xcode-select --install
+# /Library/Developer/CommandLineTools (delete to uninstall build-essentials)
+fi
+
+if [[ $(cargo --version | cut -d . -f 2) -lt 63 ]] ; then
+brew upgrade rust
+fi
 fi
 }
