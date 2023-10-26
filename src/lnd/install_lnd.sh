@@ -37,6 +37,32 @@ lnd_wallet_unlock_password
 
 installed_conf_add "lnd-end"
 success "lnd" "being installed."
+
+while true ; do
+if grep -q "rtl-end" < $dp/installed.conf ; then
+set_terminal ; echo -e "
+########################################################################################
+    
+    Parmanode has detected that RTL is installed. It's not going to properly
+    connect to LND unless you uninstall and install again. This will allow
+    Parmanode to set up the configuration properly, now that LND is new.
+    
+    Reinstall RTL now?    $cyan y    or    n$orange 
+
+########################################################################################
+" 
+choose "xpq" ; read choice
+case $choice in
+q|Q) quit ;;
+n|N|NO|No|no|p|P) return 0 ;;
+y|Y|Yes|YES|yes)
+uninstall_rtl
+install_rtl
 return 0
+;;
+*) invalid
+esac
+done
+
 }
 
