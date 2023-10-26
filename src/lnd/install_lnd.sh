@@ -38,8 +38,8 @@ lnd_wallet_unlock_password
 installed_conf_add "lnd-end"
 success "lnd" "being installed."
 
-while true ; do
 if grep -q "rtl-end" < $dp/installed.conf ; then
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
@@ -62,8 +62,7 @@ return 0
 ;;
 *) invalid ;;
 esac
-fi
 done
-
+fi
 }
 
