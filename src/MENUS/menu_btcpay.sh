@@ -26,10 +26,14 @@ echo -e "
              nl)           View NBXplorer log
 
 
-    Enter the following address to access: http://${IP}:23001     from any computer
+    Enter the following address to access: http://${IP}:23001     
+
+                                                                  from any computer
                                                                   on the home network    
 
-                                      or : http://localhost:23001 form this computer
+                       OR                : http://localhost:23001 
+
+                                                                  form this computer
 
 
 ########################################################################################
