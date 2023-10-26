@@ -49,7 +49,7 @@ $sensitive
 $orange
     5) Make sure you get a green sucessful connection confirmation.
     
-    6) Do not forget to click 'SAVE'
+    6) Do not forget to click 'SAVE' down the bottom of the page.
 
 ########################################################################################
 "
