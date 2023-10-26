@@ -1,4 +1,5 @@
 function menu_btcpay {
+debug3
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
