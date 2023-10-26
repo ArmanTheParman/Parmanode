@@ -5,8 +5,9 @@ function menu_remove {
 
 while true ; do
 local num=$(cat $dp/installed.conf | wc -l >/dev/null)
+debug4 "num is $num"
 local num2=$(( 42 + (num/2 - 14) ))
-debug3 "num is $num and num2 is $num2"
+debug4 "num is $num and num2 is $num2"
 set_terminal_custom 42
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
