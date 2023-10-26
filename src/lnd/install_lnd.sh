@@ -60,7 +60,7 @@ uninstall_rtl
 install_rtl
 return 0
 ;;
-*) invalid
+*) invalid ;;
 esac
 done
 
