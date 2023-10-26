@@ -6,7 +6,7 @@ unset lndpassword lndpassword2
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                  LND wallet lock password
+                                LND wallet lock password
 $orange 
     To automatically unlock your wallet when LND restarts, please$green enter the password $orange
     you used when you created the wallet.
@@ -36,7 +36,9 @@ if [[ $lndpassword != $lndpassword2 ]] ; then
     echo "Passwords do not match. Try again."
     enter_continue ; continue
 else
-    echo "Auto-unlock enabled"
+    echo "Auto-unlock enabled. If you wish to modify what is saved, you can edit"
+    echo "The file $$HOME/.lnd/password.txt yourself anytime."
+    echo ""
     echo "$lndpassword" > $HOME/.lnd/password.txt 
     enter_continue
     break
