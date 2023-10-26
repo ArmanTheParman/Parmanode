@@ -27,9 +27,12 @@ echo -e "
 
 
 
-    To access:     http://${IP}:23001$yellow     from any computer on home network    $orange
 
-    OR:            http://localhost:23001$yellow form this computer $orange
+    To access:     http://${IP}:23001$yellow     
+                                              from any computer on home network    $orange
+
+    OR:            http://localhost:23001$yellow 
+                                              form this computer $orange
 
 
 ########################################################################################
