@@ -6,7 +6,7 @@ if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
 then local torhybrid=Disabled 
 elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
 then local torhybrid=Enabled
-else then local torhybrid=Disabled 
+else local torhybrid=Disabled 
 fi
 
 while true ; do set_terminal_custom "48" ; echo -e "
