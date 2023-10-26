@@ -2,6 +2,13 @@ function menu_lnd {
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
 
+if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+then local torhybrid=Disabled 
+elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+then local torhybrid=Enabled
+else then local torhybrid=Disabled 
+fi
+
 while true ; do set_terminal_custom "48" ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
@@ -33,7 +40,9 @@ echo -e "
        
       (scb)            Static Channel Backup 
 
-      (tor)            enable/disable TOR. Currently: $cyan$lndtor$orange
+      (tor)            Enable/disable TOR.                 Currently: $cyan$lndtor$orange
+
+      (th)             Enable/disable TOR/Clearnet hybrid. Currently: $cyan$torhybird$orange
 
       (w)              ... wallet options
 
