@@ -11,7 +11,7 @@ if docker ps >/dev/null ; then echo -e "
                                  RTL is RUNNING" ; fi
 if ! docker ps >/dev/null ; then echo -e "
                                  RTL is NOT RUNNING" ; fi
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e "$red
+if ! ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e "$red
                                  WARNING: LND is not running. RTL won't funciton.$orange" ; fi
 
 echo -e "      
