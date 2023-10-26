@@ -2,7 +2,7 @@ function menu_lnd {
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 while true ; do set_terminal_custom "48" ; echo -e "
 ########################################################################################$cyan
-                              LND Menu${orange} - v$lnd_version                               
+                                LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
