@@ -19,7 +19,7 @@ $orange
 
 ########################################################################################
 "
-choose "xpq" ; read choose
+choose "xpq" ; read choice
 case $choice in
 q|Q) quit ;; p|P) return 1 ;; a|A) return 1 ;;
 y|Y|yes) break ;;
