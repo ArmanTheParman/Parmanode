@@ -37,7 +37,7 @@ if [[ $lndpassword != $lndpassword2 ]] ; then
     enter_continue ; continue
 else
     echo "Auto-unlock enabled. If you wish to modify what is saved, you can edit"
-    echo "The file $$HOME/.lnd/password.txt yourself anytime."
+    echo "The file $HOME/.lnd/password.txt yourself anytime."
     echo ""
     echo "$lndpassword" > $HOME/.lnd/password.txt 
     enter_continue
