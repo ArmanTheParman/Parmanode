@@ -77,15 +77,15 @@ set_terminal
 
 
 conf|CONF|Conf)
-echo "
+echo -e "
 ########################################################################################
     
         This will run Nano text editor to edit lnd.conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-
+$green
 	  *** ANY CHANGES WILL ONLY BE APPLIED ONCE YOU RESTART LND ***
-
+$orange
 ########################################################################################
 "
 enter_continue
@@ -101,19 +101,18 @@ echo "
     are just as important. A password locks the wallet, whereas a passphrase 
     contributes to the entropy of the wallet.
 
-    If your intensions are to delete the wallet and start fresh, and create a new
+    If your intentions are to delete the wallet and start fresh, and create a new
     password, then delete the wallet first, then change the password, then create
     your new wallet.
 
     Note, deleting a wallet with bitcoin in it does not delete the bitcoin. You can
     recover the wallet as long as you have a copy of the seed phrase.
 
-    Also note that funds in lightning channels no longer are recoverable by the
-    seed phrase - those funds are in share 2 f 2 multisignature addresses, that are
+    Also note that$green funds in lightning channels NOT recoverable by the
+    seed phrase$orange - those funds are in share 2 f 2 multisignature addresses, that are
     returned to your wallet when the channel is closed. To keep access to those
     funds in a channel, you need to keep your lightning node running, or restore
-    your lightning node with bothe the seed AND the channel back up file. I'll 
-    add more on that in later editions of Parmanode. 
+    your lightning node with both the seed AND the channel back up file.
 
 ########################################################################################
 "
