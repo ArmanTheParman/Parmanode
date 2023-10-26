@@ -1,3 +1,5 @@
+Version 3.14.0
+    -LND Tor and Tor/Clearnet hybrid enabled
 Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time
