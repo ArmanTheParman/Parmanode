@@ -1,7 +1,4 @@
 function menu_main {
-main_loop_count add
-debug3 "main loop count add, in menu_main"
-
 while true ; do
 set_terminal_bit_higher #custom function to resize the window
 
