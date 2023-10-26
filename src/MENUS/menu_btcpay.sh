@@ -1,6 +1,6 @@
 function menu_btcpay {
 while true ; do
-set_terminal ; echo -e "
+set_terminal_custom 48 ; echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
 ########################################################################################
@@ -20,6 +20,8 @@ echo -e "
              start)        Start BTCPay (starts Docker container)
 
              stop)         Stop BTCPay (stops Docker container)
+
+             c)            Connect BTCPay to LND
 
              bc)           BTCPay config file
 
@@ -53,6 +55,10 @@ continue
 nc)
 nano $HOME/.nbxplorer/Main/settings.config
 continue
+;;
+
+c|C|Connect|connect)
+connect_btcpay_to_lnd
 ;;
 
 start|START|Start)
