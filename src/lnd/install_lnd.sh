@@ -62,6 +62,7 @@ return 0
 ;;
 *) invalid ;;
 esac
+fi
 done
 
 }
