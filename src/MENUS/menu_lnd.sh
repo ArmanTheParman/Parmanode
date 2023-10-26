@@ -68,6 +68,7 @@ announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
     not work because of this. It is recommended to reinstall LND using
     Parmanode before attempting to enable Tor."
+continue
 fi
 
 if [[ $lndtor == Disabled ]] ; then
@@ -84,6 +85,7 @@ announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
     not work because of this. It is recommended to reinstall LND using
     Parmanode before attempting to enable Tor."
+continue
 fi
 
 if [[ $torhybrid == Disabled ]] ; then
