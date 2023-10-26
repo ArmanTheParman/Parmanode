@@ -5,7 +5,7 @@ function menu_remove {
 
 while true ; do
 local num=$(cat $dp/installed.conf | wc -l)
-debug3 "num is $num"
+num=33
 local num2=$(( 42 + (num/2 - 14) ))
 debug3 "num is $num and num2 is $num2"
 set_terminal_custom 42
