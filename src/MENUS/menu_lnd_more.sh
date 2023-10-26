@@ -22,7 +22,7 @@ echo "
 
       (au)             Enable auto-unlock wallet (for easy restarts of LND)
 "
-if [[ $lnd_version != "v0.17.0" ]] ; then echo " 
+if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
       "
 fi
