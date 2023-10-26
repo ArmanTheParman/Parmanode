@@ -34,11 +34,11 @@ echo -e "
 #                                                                                      #
 #    (d)                  Donate ;)                                                    #
 #                                                                                      #
-#    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
+#    (l)                  See logs and config files                                    #
 #                                                                                      #
 #    (update)             Update Parmanode  ........... (Improvements always coming)   #
 #                                                                                      #
-#    (l)                  See logs and config files                                    #
+#    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
