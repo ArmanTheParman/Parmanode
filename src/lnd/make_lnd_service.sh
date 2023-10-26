@@ -66,9 +66,9 @@ MemoryDenyWriteExecute=true
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/lnd.service >/dev/null 2>&1
 
-sudo systemctl daemon-reload >/dev/null 2>&1
-sudo systemctl enable lnd >/dev/null 2>&1
-sudo systemctl start lnd >/dev/null 2>&1
+sudo systemctl daemon-reload      >/dev/null 2>&1
+sudo systemctl enable lnd.service >/dev/null 2>&1
+sudo systemctl start  lnd.service >/dev/null 2>&1
 
 return 0
 }
