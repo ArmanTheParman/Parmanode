@@ -63,7 +63,7 @@ stop|STOP|Stop) stop_lnd ;;
 restart|RESTART|Restart) restart_lnd ;;
 
 tor)
-if grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
+if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
 announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
     not work because of this. It is recommended to reinstall LND using
@@ -79,7 +79,7 @@ fi
 ;;
 
 th)
-if grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
+if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
 announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
     not work because of this. It is recommended to reinstall LND using
