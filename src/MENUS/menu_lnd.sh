@@ -59,6 +59,23 @@ start|START|Start) start_lnd ;;
 stop|STOP|Stop) stop_lnd ;; 
 restart|RESTART|Restart) restart_lnd ;;
 
+tor)
+if [[ $lndtor == Disabled ]] ; then
+lnd_enable_tor
+else
+lnd_disable_tor
+fi
+
+;;
+th)
+if [[ $torhybrid == Disabled ]] ; then
+lnd_enable_hybrid
+else
+lnd_disable_hybrid
+fi
+
+;;
+
 log|LOG|Log)
 log_counter
 if [[ $log_count -le 10 ]] ; then
