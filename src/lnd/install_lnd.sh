@@ -21,6 +21,8 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode
 
 set_lnd_alias
 
+#password file, even if blank, needs to exists for lnd conf file to be valid
+touch $HOME/.lnd/password.txt
 make_lnd_conf
 
 

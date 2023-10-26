@@ -2,8 +2,9 @@ function lnd_wallet_info {
 
 set_terminal ; echo -e "
 ########################################################################################
-
-             $cyan                  Lightning Wallet$orange
+$cyan
+                                  Lightning Wallet
+$orange
 
     Be aware, when you make a lightning wallet, you'll be given a 24 word mnemonic
     "seed". It's important to know that this is$green not a BIP39 seed$orange and cannot be 
