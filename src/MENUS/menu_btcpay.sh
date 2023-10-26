@@ -1,6 +1,6 @@
 function menu_btcpay {
 while true ; do
-set_terminal ; echo -e "
+set_terminal_custom 50 ; echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
 ########################################################################################
