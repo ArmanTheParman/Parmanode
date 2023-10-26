@@ -29,17 +29,11 @@ echo "
 
       (password)       Change LND password 
        
-      (create)         Create an LND wallet (or restore a wallet with seed)
-
-      (ul)             Unlock Wallet
-
-      (wb)             Wallet balance
-
       (scb)            Static Channel Backup 
 
-      (delete)         Delete existing wallet and its files (macaroons, channel.db)
+      (w)              ... wallet options
 
-      (mm)              ... more options
+      (mm)             ... more options
 
 ########################################################################################
 "
@@ -120,24 +114,13 @@ enter_continue
 set_lnd_password
 ;;
 
-create|CREATE|Create)
-create_wallet ; lncli unlock ;;
-
-ul|UL|Ul|unlock|Unlock) 
-lncli unlock
-;;
-
-wb|WB)
-set_terminal
-lncli walletbalance
-enter_continue
-;;
 
 scb|SCB|Scb) 
 scb ;;
 
-delete|DELETE|Delete) 
-delete_wallet ;;
+w)
+menu_lnd_wallet 
+;;
 
 mm)
 menu_lnd_more ;;
