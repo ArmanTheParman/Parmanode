@@ -7,30 +7,28 @@ echo -n "
 ########################################################################################
 ########################################################################################
 
-                Shame on you. We're on the battle field, fighting tyranny, and
-                you're using vital weapons to shoot ducks. Don't be a traitor to 
-                your descendents and humanity. Stack bitcoin and help end tyranny.
+             Shame on you. We're on the battle field, fighting tyranny, and
+             you're using vital weapons to shoot ducks. Don't be a traitor to 
+             your descendents and humanity. Stack bitcoin and help end tyranny.
 		     
-                Here's some reading material to help you understand. If the links
-                do not allow you to click, just copy and paste them in a browser.
-            
-                            1) "
-printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/why-bitcoin-only" "Why Bitcoin Only"
-echo -n "
-                            2) "
-printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/onemoney" "Why money tends towards one (with proof)"
-echo -n "
-                            3) "
-printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/joinus" "We are separating money and state - Join us."
-echo -n "
-                            4) "
-printf "\e]8;;%s\a%s\e]8;;\a" "http://www.armantheparman.com/fud" "Debunking Bitcoin FUD"
-echo "
+             Here's some reading material to help you understand...
 
-                 Have a nice day.
-                    
-		 To abort, type: (I'm sorry), then hit <enter>                 
 
+     1) Why Bitcoin Only           
+                                    - http://www.armantheparman.com/why-bitcoin-only 
+     2) Why money tends towards one
+                                    - http://www.armantheparman.com/onemoney
+
+     3) We are separating money and state - Join us
+                                    -  http://www.armantheparman.com/joinus
+     4) Debunking Bitcoin FUD
+                                    - http://www.armantheparman.com/fud
+
+    
+     Have a nice day.
+    $cyan                
+     To abort, type: (I'm sorry), then hit <enter>                 
+$orange
 ########################################################################################
 ######################################################################################## 
 "                  
@@ -43,6 +41,7 @@ if [[ $repent == "I'm sorry" ]] ; then
         echo "Please wait patiently for computer to destroy itself, mwahaha!"
         echo "Or, hit <enter> to have another go." 
         read 
+        set_terminal
         continue 
     fi
 
