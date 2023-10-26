@@ -20,7 +20,6 @@ listen=0.0.0.0:9735
 rpclisten=localhost:10009
 ; 8090 for RTL, 8080 for BTCPayserver
 restlisten=0.0.0.0:8080
-restlisten-0.0.0.0:8090
 maxpendingchannels=2
 wallet-unlock-password-file=$HOME/.lnd/password.txt
 wallet-unlock-allow-create=true
