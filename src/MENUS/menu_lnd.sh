@@ -42,7 +42,7 @@ echo -e "
 
       (tor)            Enable/disable TOR.                 Currently: $cyan$lndtor$orange
 
-      (th)             Enable/disable TOR/Clearnet hybrid. Currently: $cyan$torhybird$orange
+      (th)             Enable/disable TOR/Clearnet hybrid. Currently: $cyan$torhybrid$orange
 
       (w)              ... wallet options
 
