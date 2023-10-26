@@ -1,5 +1,7 @@
 function menu_lnd {
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
+if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
+
 while true ; do set_terminal_custom "48" ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
@@ -12,7 +14,7 @@ else
 echo "
                    LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
-echo "
+echo -e "
 
 
       (i)              Important info
@@ -30,6 +32,8 @@ echo "
       (password)       Change LND password 
        
       (scb)            Static Channel Backup 
+
+      (tor)            enable/disable TOR. Currently: $cyan$lndtor$orange
 
       (w)              ... wallet options
 

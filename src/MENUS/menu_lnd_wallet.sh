@@ -32,20 +32,25 @@ p|P) return 1 ;;
 
 
 create|CREATE|Create)
-create_wallet ; lncli unlock ;;
+create_wallet ; lncli unlock 
+return 0 ;;
 
 ul|UL|Ul|unlock|Unlock) 
 lncli unlock
+return 0
 ;;
 
 wb|WB)
 set_terminal
 lncli walletbalance
 enter_continue
+return 0
 ;;
 
 delete|DELETE|Delete) 
-delete_wallet ;;
+delete_wallet 
+return 0
+;;
 
 *) invalid
 ;;
