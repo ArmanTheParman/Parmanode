@@ -4,7 +4,7 @@ function menu_remove {
 # set to toggle the availability of the menu logic below, via if statements.
 
 while true ; do
-set_terminal_custom 50
+set_terminal_custom 55
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
