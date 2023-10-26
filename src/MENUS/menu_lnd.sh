@@ -39,7 +39,7 @@ echo "
 
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
 
-      (m)              ... more options
+      (mm)              ... more options
 
 ########################################################################################
 "
@@ -139,6 +139,9 @@ scb ;;
 
 delete|DELETE|Delete) 
 delete_wallet ;;
+
+mm)
+menu_lnd_more ;;
 
 *) invalid ;;
 
