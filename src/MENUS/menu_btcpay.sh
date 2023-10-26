@@ -5,21 +5,15 @@ set_terminal ; echo -e "
                                  ${cyan}BTCPay Server Menu${orange}
 ########################################################################################
 
-
-    The BTCPay server webpage is available to you via a browser on any device on this 
-    network. 
-    
-    Enter the following address to access: http://${IP}:23001
 "
 if docker ps | grep btcp >/dev/null 2>&1 ; then echo "
-    BTCPay SERVER IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+                  BTCPay SERVER IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo "
-    BTCPay SERVER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+                  BTCPay SERVER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo "
 
-########################################################################################
 
              pp)           BTC ParmanPay - Online payment app, worldwide access
 
@@ -31,7 +25,14 @@ echo "
 
              nl)           View NBXplorer log
 
-######################################################################################## 
+
+    Enter the following address to access: http://${IP}:23001     from any computer
+                                                                  on the home network    
+
+                                      or : http://localhost:23001 form this computer
+
+
+########################################################################################
 " 
 debug 3 "before choose"
 choose "xpq" ; read choice ; set_terminal
