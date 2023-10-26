@@ -1,7 +1,7 @@
 function menu_btcpay {
-debug3
+debug3 ; clear
 while true ; do
-debug 3 "in loop"
+debug3 "in loop"
 set_terminal ; echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${$orange}
