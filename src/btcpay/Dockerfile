@@ -36,9 +36,4 @@ RUN mkdir -p ~/.nbxplorer/Main
 RUN cd ~/parmanode && git clone --depth 1 https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
-EXPOSE 49392
-EXPOSE 8080
-EXPOSE 23001
-EXPOSE 80
-
 CMD tail -f /dev/null
