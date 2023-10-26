@@ -4,19 +4,21 @@ get_extIP >/dev/null
 
 set_terminal ; echo -e "
 ########################################################################################
-
+  
     You'll be able to find other nodes and make peer connections, and open channels,
     but in order for OTHER nodes to find you and make peer connections, you need to
-    expose your exteran IP. 
+    either run LND behind TOR (asy from Parmanode menu), or if using clearnet, expose 
+    your exteral IP (done manually, can be tricky). 
     
     Note, the internal IP address your router has given this computer (and all other
-    devices connected to the router on the home network) is something different and
-    not accessible from computers outside your home. 
+    devices connected to the router on the home network) is a totally different thing
+    to the external IP address. The internal IP is not accessible from computers 
+    outside your home. 
    
-    The external IP is the IP address OF THE ROUTER itself, where all internet 
+    The external IP is the IP address OF THE ROUTER itself, where all internet traffic 
     first goes to before reaching your computer. 
 
-    Parmanode has detect your external IP, it is 
+    Parmanode has detect your external IP - it is:
     
                                $extIP
     
