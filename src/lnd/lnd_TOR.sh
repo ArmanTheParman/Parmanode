@@ -23,7 +23,9 @@ tor.active=1
 
 swap_string "$file" "listen=0.0.0.0:9735" "listen=localhost"
 restart_lnd
+if [[ $1 == skipsuccess ]] ; then true ; else
 success "LND Tor enabling"
+fi
 }
 
 function lnd_disable_tor {
@@ -40,7 +42,7 @@ success "LND Tor diabling"
 
 function lnd_enable_hybrid {
 local file=$HOME/.lnd/lnd.conf
-lnd_enable_tor
+lnd_enable_tor skipsuccess
 
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preEnableHybrid >/dev/null 2>&1
 
