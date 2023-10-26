@@ -6,13 +6,13 @@ set_terminal ; echo -e "
 ########################################################################################
 
 "
-if docker ps | grep btcp >/dev/null 2>&1 ; then echo "
+if docker ps | grep btcp >/dev/null 2>&1 ; then echo -e "
                   BTCPay SERVER IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
-echo "
+echo -e "
                   BTCPay SERVER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
-echo "
+echo -e "
 
 
              pp)           BTC ParmanPay - Online payment app, worldwide access
