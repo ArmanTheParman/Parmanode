@@ -32,7 +32,7 @@ echo -e "
       The RTL wallet can be accessed in your browser at:
 
 $green
-                               http://localhost:3000
+                         http://localhost:3000
 $orange
 
 ########################################################################################
