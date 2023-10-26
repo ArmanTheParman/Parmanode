@@ -21,6 +21,10 @@ echo -e "
 
              stop)         Stop BTCPay (stops Docker container)
 
+             bc)           BTCPay config file
+
+             nc)           NBXplorer config file
+
              log)          View BTCPay Server log
 
              nl)           View NBXplorer log
@@ -40,6 +44,16 @@ echo -e "
 debug 3 "before choose"
 choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
+
+bc)
+nano $HOME/.btcpayserver/Main/settings.config
+continue
+;;
+
+nc)
+nano $HOME/.nbxplorer/Main/settings.config
+continue
+;;
 
 start|START|Start)
 if [[ $OS == "Linux" ]] ; then
