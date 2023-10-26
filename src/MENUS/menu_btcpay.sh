@@ -34,6 +34,7 @@ echo "
 
 ######################################################################################## 
 " 
+debug 3 "before choose"
 choose "xpq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
 
@@ -103,5 +104,6 @@ invalid ;;
 esac  
 
 done
+debug3 "end"
 return 0
 }
