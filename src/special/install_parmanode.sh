@@ -19,7 +19,6 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #if docker is set up on the machine, then it is detected by Parmanode
 #and added to the config file
 if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
-debug3 "docker"
 	if [[ $(uname) == Darwin ]] || (id | grep -q docker && which docker >/dev/null ) ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
 			installed_config_add "docker-end" 
@@ -72,6 +71,7 @@ check_architecture
 add_rp_function
 correct_old_installation
 parmanode1_fix
+git_dp
 }
 
 

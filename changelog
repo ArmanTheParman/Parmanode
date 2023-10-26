@@ -1,5 +1,7 @@
 Version 3.14.0
     -LND Tor and Tor/Clearnet hybrid enabled
+    -Config directory changed to git repository to enable version control and recovery
+    -RTL reinsall if new LND installation
 Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time

@@ -21,7 +21,4 @@ sudo systemctl start lnd.service >/dev/null
 sleep 3
 counter=$((counter + 1))
 done
-
-debug3 "Unable to start LND."
-
 }
