@@ -16,7 +16,7 @@ else
     sleep 2
 fi
 #Perform SHA256 to verify
-if ! sha256sum --ignore-missing --check man*.txt ; then
+if ! shasum -a 256 --ignore-missing --check man*.txt ; then
 set_terminal
 echo "SHA256 check failed. Unknown reason. Please report to Parman. Aborting."
 enter_continue
