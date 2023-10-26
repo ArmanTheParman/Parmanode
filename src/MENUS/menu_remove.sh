@@ -5,6 +5,10 @@ function menu_remove {
 
 while true ; do
 set_terminal
+unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
+unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
+unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
+unset anydeskmenu
 
 echo -e "
 ########################################################################################
@@ -36,12 +40,6 @@ echo "#                                    (btcp)             BTCPay            
 #                                                                                      #"
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
 echo "#                                    (btcp)             BTCPay (partial)               #
-#                                                                                      #" ; fi
-if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1              
-echo "#                                    (lnb)              LNbits                         #
-#                                                                                      #"
-elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbits=1
-echo "#                                    (lnb)              LNbits (partial)               #
 #                                                                                      #" ; fi
 #############################
 if [[ $OS != "Mac" ]] ; then
@@ -117,7 +115,7 @@ if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
 echo "#                                    (lnb)              LNbits                         #
 #                                                                                      #"
 elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
-echo "#                                    (ers)              LNbits (partial)               #
+echo "#                                    (lnb)              LNbits (partial)               #
 #                                                                                      #" ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezormenu=1
 echo "#                                    (trz)              Trezor Suite                   #
