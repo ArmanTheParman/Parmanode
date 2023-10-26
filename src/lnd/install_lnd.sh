@@ -27,6 +27,8 @@ make_lnd_conf
 #do last. Also runs LND
 make_lnd_service 
 
+sleep 5
+
 create_wallet
 lnd_wallet_unlock_password
 
