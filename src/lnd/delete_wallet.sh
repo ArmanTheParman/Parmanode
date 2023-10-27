@@ -1,10 +1,10 @@
 function delete_wallet {
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal "pink" ; echo -e "
 ########################################################################################
-
+$cyan
                                 Delete LND Walet?
-
+$orange
     Be careful, and be sure you want to do this. Make sure you have your seed phrase
     backed up (and tested). By that, I mean that if you have significant funds in
     the wallet, you should make sure that the wallet can be recovered on a different
@@ -13,7 +13,7 @@ set_terminal "pink" ; echo "
     check the addresses generated are correct, and then only then delete it. It 
     should be done offline so that there are not conflicts with the existing LND node.
 
-    If you type (delete) then <enter> ...
+    If you type$green (delete)$orange then <enter> ...
     
                        - the wallet file will be deleted
                        - the channel.db file will be deleted 
