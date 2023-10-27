@@ -38,7 +38,7 @@ if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
 
 if ! docker ps >/dev/null ; then announce \
 "Please make sure Docker is running before asking Parmanode to
-clean up the installed ParmaBox."
+    clean up the installed ParmaBox."
 return 1
 fi
 

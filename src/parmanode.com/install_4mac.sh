@@ -69,30 +69,26 @@ cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
 #make desktop clickable icon...
-if [ ! -e $HOME/Desktop/run_parmanode.command ] ; then
-cat > $HOME/Desktop/run_parmanode << 'EOF'
+cat > $HOME/Desktop/run_parmanode.sh << 'EOF'
 #!/bin/bash
 cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
-sudo chmod +x $HOME/parman_programs/run_parmanode.command >/dev/null 2>&1
+sudo chmod +x $HOME/Desktop/run_parmanode.sh >/dev/null 2>&1
 clear
 echo "
 ########################################################################################
 
-    There should be an icon on the desktop for you, \"run_parmanode\".
+    There should be an icon on the desktop for you, \"run_parmanode.sh\".
 
     If you double click it, and your Mac is configured to open a text editor instead
     of running the program, that can be overcome by typing this in terminal:
 
 
-                         $HOME/Desktop/run_parmanode
+                         $HOME/Desktop/run_parmanode.sh
 
     It's case sensitive.
 
 ########################################################################################
 "
 exit
-fi
-
-

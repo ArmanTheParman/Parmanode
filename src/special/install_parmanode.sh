@@ -72,6 +72,9 @@ add_rp_function
 correct_old_installation
 parmanode1_fix
 git_dp
+if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 }
+
+
 
 

@@ -11,14 +11,13 @@ echo "
 [Application Options]
 tlsextraip=$IP
 ; tlsextradomain=0.0.0.0
-externalip=$extIP:9735
+externalip=$extIP:$lnd_port
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 readonlymacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon
 invoicemacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/invoice.macaroon
 listen=0.0.0.0:9735
 rpclisten=localhost:10009
-; 8090 for RTL, 8080 for BTCPayserver
 restlisten=0.0.0.0:8080
 maxpendingchannels=2
 wallet-unlock-password-file=$HOME/.lnd/password.txt

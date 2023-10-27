@@ -19,6 +19,8 @@ echo "
       (ex)             Expose your LND node to other nodes
 
       (alias)          Change LND alias
+
+      (port)           Change port. Current port is $lnd_port [Feature not yet available ]
 "
 if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
@@ -29,7 +31,9 @@ echo "##########################################################################
 choose "xpq" ; read choice
 case $choice in
 q|Q) quit ;;
-p|P) return 1 ;;
+p|P) 
+clear
+please_wait ; return 1 ;;
 
 ex|Ex|EX)
 expose_LND
@@ -38,7 +42,9 @@ expose_LND
 alias|ALIAS|Alias) 
 set_lnd_alias ;;
 
-
+# port|Port)
+# change_lnd_port
+# ;;
 
 update|UPDATE|Update)
 update_lnd
