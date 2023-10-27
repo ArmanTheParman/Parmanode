@@ -25,10 +25,10 @@ echo -e "
 ########################################################################################
 
 "
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
+if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e "
                    LND IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
-echo "
+echo -e "
                    LND IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo -e "
