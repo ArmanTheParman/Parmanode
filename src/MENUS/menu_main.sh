@@ -91,6 +91,10 @@ menu_bitcoin_core
 return 0 #necessary for "m" function
 ;;
 
+ul|UL|Ul)
+menu_lnd
+;;
+
 q | Q | quit)
     exit 0 ;;
 *)
