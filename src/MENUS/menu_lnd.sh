@@ -3,8 +3,8 @@ while true ; do set_terminal_custom "48"
 
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 # To check if wallet is created/loaded
-if lncli walletbalance >/dev/null ; then wallet=UNLOCKED ; fi
-
+if lncli walletbalance >/dev/null 2>&1 ; then wallet=UNLOCKED ; fi
+debug3 after-wallet-balance
 
 # To print tor details in menu
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
