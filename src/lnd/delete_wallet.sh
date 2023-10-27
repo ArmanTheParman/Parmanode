@@ -35,9 +35,9 @@ break ;;
 esac
 done
 
-sudo systemctl stop lnd.service
+stop_lnd
 rm $HOME/.lnd/data/chain/bitcoin/mainnet/*
-echo "Wallet deleted, and LND stopped. Please restart again yourself when ready."
+start_lnd
 enter_continue
 return 0
 }
