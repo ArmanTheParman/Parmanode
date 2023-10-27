@@ -1,6 +1,8 @@
 function menu_lnd {
 while true ; do set_terminal_custom "52" 
 
+function lnd_menu_loop {
+
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 # To check if wallet is created/loaded
 unset wallet
@@ -11,13 +13,13 @@ wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange"
 fi
 
 # To print tor details in menu
-if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
+if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then lndtor=Enabled ; else lndtor=Disabled ; fi
 
 if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then local torhybrid=Disabled 
+then torhybrid=Disabled 
 elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then local torhybrid=Enabled
-else local torhybrid=Disabled 
+then torhybrid=Enabled
+else torhybrid=Disabled 
 fi
 
 #get onion address if it exists...
@@ -50,21 +52,21 @@ echo -e "
 
       (i)              Important info
 
-      (start)          Start LND 
+      (s)              Start LND 
 
-      (stop)           Stop LND
+      (st)             Stop LND
 
-      (restart)        Restart LND
+      (rs)             Restart LND
 
       (log)            Inspect LND logs
 
-      (conf)           Inspect and edit lnd.conf file 
+      (lc)             Inspect and edit lnd.conf file 
 
-      (password)       Change LND password 
+      (pw)             Change LND password 
        
       (scb)            Static Channel Backup 
 
-      (tor)            Enable/disable TOR                     Currently: $cyan$lndtor$orange
+      (t)              Enable/disable TOR                     Currently: $cyan$lndtor$orange
 
       (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
 
@@ -72,22 +74,27 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion
-$bright_magenta
-    The LND menu depends on LND log output which can takes some secondsto populate 
-    after a restart. Exiting and returning here will refresh and update info.$orange
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpq"
+}
+unset choice
+while [[ -z $choice ]] ; do 
+read -t 2.5 choice 
+lnd_menu_loop 
+done
+
+set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 i|I|info|Info) lnd_info ;;
-start|START|Start) start_lnd ;;
-stop|STOP|Stop) stop_lnd ;; 
-restart|RESTART|Restart) restart_lnd ;;
+s|S|start|START|Start) start_lnd ;;
+st|ST|St|stop|STOP|Stop) stop_lnd ;; 
+rs|RS|Rs|restart|RESTART|Restart) restart_lnd ;;
 
-tor)
+t|T|tor)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
 announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
@@ -98,12 +105,8 @@ fi
 
 if [[ $lndtor == Disabled ]] ; then
 lnd_enable_tor
-please_wait
-sleep 5
 else
 lnd_disable_tor
-please_wait
-sleep 3
 fi
 
 ;;
@@ -150,7 +153,7 @@ set_terminal
 ;;
 
 
-conf|CONF|Conf)
+lc|LC|conf|CONF|Conf)
 echo -e "
 ########################################################################################
     
@@ -165,7 +168,7 @@ $orange
 enter_continue
 nano $HOME/.lnd/lnd.conf ;;
 
-password|PASSWORD|Password)
+pw|Pw|PW|password|PASSWORD|Password)
 echo "
 ########################################################################################
 
