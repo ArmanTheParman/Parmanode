@@ -83,6 +83,8 @@ fi
 
 if [[ $lndtor == Disabled ]] ; then
 lnd_enable_tor
+please_wait
+sleep 5
 else
 lnd_disable_tor
 fi
