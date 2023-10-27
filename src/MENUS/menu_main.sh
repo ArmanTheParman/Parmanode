@@ -92,6 +92,7 @@ return 0 #necessary for "m" function
 ;;
 
 ul|UL|Ul)
+clear ; please_wait
 menu_lnd
 ;;
 
