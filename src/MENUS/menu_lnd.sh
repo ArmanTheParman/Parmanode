@@ -83,9 +83,10 @@ $bright_magenta
 choose "xpq"
 }
 unset choice
-lnd_menu_loop
-read choice &
-while [[ -z $choice ]] ; do lnd_menu_loop ; done
+while [[ -z $choice ]] ; do 
+read -t 0.5 choice 
+lnd_menu_loop 
+done
 
 set_terminal
 case $choice in 
