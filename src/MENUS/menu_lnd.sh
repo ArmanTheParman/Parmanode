@@ -21,7 +21,7 @@ LND onion URI:
 $(lncli getinfo | grep onion: | cut -d \" -f 2)
 "
 fi
-
+clear
 echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
