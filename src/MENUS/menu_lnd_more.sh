@@ -30,7 +30,8 @@ echo "##########################################################################
 "
 choose "xpq" ; read choice
 case $choice in
-q|Q) quit ;;
+q|Q) 
+quit ;;
 p|P) 
 clear
 please_wait ; return 1 ;;
