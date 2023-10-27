@@ -20,7 +20,7 @@ echo "
 
       (alias)          Change LND alias
 
-      (port)           Change port. Current port is $lnd_port
+      (port)           Change port. Current port is $lnd_port [ Not yet available ]
 "
 if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
@@ -40,9 +40,9 @@ expose_LND
 alias|ALIAS|Alias) 
 set_lnd_alias ;;
 
-port|Port)
-change_lnd_port
-;;
+# port|Port)
+# change_lnd_port
+# ;;
 
 update|UPDATE|Update)
 update_lnd
