@@ -5,6 +5,7 @@ Version 3.14.2 -- 27 October 2023
     -BTCPay connection to LND made easy
     -Node URI printed on LND page.
     -LND menu refreshes on loop for more accurate LND status
+    -Port Change option for LND, CLEARNET only
 Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time
