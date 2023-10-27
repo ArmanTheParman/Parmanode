@@ -13,13 +13,13 @@ wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange"
 fi
 
 # To print tor details in menu
-if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
+if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then lndtor=Enabled ; else lndtor=Disabled ; fi
 
 if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then local torhybrid=Disabled 
+then torhybrid=Disabled 
 elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then local torhybrid=Enabled
-else local torhybrid=Disabled 
+then torhybrid=Enabled
+else torhybrid=Disabled 
 fi
 
 #get onion address if it exists...
