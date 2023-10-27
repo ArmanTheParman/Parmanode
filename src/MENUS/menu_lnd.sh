@@ -13,7 +13,7 @@ else local torhybrid=Disabled
 fi
 
 unset lnd_onion
-if lncli getinfo | grep -q onion: ; then
+if lncli getinfo | grep -q onion: >/dev/null 2>&1 ; then
 lnd_onion="
 
 LND onion URI:
