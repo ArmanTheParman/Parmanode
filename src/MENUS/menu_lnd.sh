@@ -23,12 +23,22 @@ fi
 
 #get onion address if it exists...
 unset lnd_onion
-if lncli getinfo 2>/dev/null | grep -q onion: >/dev/null 2>&1 ; then
+lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
+if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
 LND onion URI:
 
-$(lncli getinfo | grep onion: | cut -d \" -f 2)
+$(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
+$orange"
+fi
+
+if $dp/lndinfo.log | grep 9735 | grep -v onion >/dev/null 2>&1 ; then 
+clearnetURI="
+$yellow
+Clearnet URI:
+
+$(cat $dp/lndinfo.log | grep 9735 | grep -v onion | cut -d \" -f 2)
 $orange"
 fi
 
@@ -72,7 +82,7 @@ echo -e "
       (w)              ... wallet options
 
       (mm)             ... more options
-$lnd_onion
+$lnd_onion $clearnetURI
 $red                                                              Refreshing every 5 seconds $orange
 ########################################################################################
 "
