@@ -32,7 +32,7 @@ choose "xpq"
 read choice
 case $choice in
 q|Q) 
-quit 0 ;;
+exit 0 ;;
 p|P) 
 clear
 please_wait ; return 1 ;;

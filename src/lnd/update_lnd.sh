@@ -17,7 +17,7 @@ echo -e "
 "
 choose "xpq" ; read choice
 
-case $choice in q|Q) quit ;; p|P|N|NO|No|n) return 1 ;;
+case $choice in q|Q) exit 0 ;; p|P|N|NO|No|n) return 1 ;;
 y|Y|Yes|YES) break ;;
 *) invalid ;;
 esac

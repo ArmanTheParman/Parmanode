@@ -21,7 +21,7 @@ $orange
 "
 choose "xpq" ; read choice
 case $choice in
-q|Q) quit ;; p|P) return 1 ;; a|A) return 1 ;;
+q|Q) exit 0 ;; p|P) return 1 ;; a|A) return 1 ;;
 y|Y|yes) break ;;
 *) invalid ;;
 esac

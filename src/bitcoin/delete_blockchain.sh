@@ -17,7 +17,7 @@ set_terminal ; echo -e "
 "
 choose xpq ; read choice
 case $choice in
-q|Q) quit ;;
+q|Q) exit 0 ;;
 p|P) return 1 ;;
 
 internal) 

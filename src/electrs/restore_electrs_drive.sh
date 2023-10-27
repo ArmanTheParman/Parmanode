@@ -50,7 +50,7 @@ sudo mkdir $original
 return 0
 ;;
 
-q|Q) quit 0 
+q|Q) exit 0 
 ;; 
 
 p|P) 
