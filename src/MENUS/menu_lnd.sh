@@ -2,6 +2,11 @@ function menu_lnd {
 while true ; do set_terminal_custom "48" 
 
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
+# To check if wallet is created/loaded
+if lncli walletbalance >/dev/null ; then wallet=UNLOCKED ; fi
+
+
+# To print tor details in menu
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
 
 if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
@@ -10,6 +15,8 @@ elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
 then local torhybrid=Enabled
 else local torhybrid=Disabled 
 fi
+
+#get onion address if it exists...
 unset lnd_onion
 if lncli getinfo 2>/dev/null | grep -q onion: >/dev/null 2>&1 ; then
 lnd_onion="
