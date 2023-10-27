@@ -37,7 +37,7 @@ sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/nu
 swap_string "$file" "listen=localhost" "listen=0.0.0.0:9735"
 restart_lnd
 
-success "LND Tor diabling"
+success "LND Tor disabling"
 }
 
 function lnd_enable_hybrid {
