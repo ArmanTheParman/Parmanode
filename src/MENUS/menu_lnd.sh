@@ -12,12 +12,14 @@ then local torhybrid=Enabled
 else local torhybrid=Disabled 
 fi
 
+if lncli getinfo | grep -q onion: ; then
 lnd_onion="
 
 LND onion URI:
 
 $(lncli getinfo | grep onion: | cut -d \" -f 2)
 "
+fi
 
 echo -e "
 ########################################################################################$cyan
