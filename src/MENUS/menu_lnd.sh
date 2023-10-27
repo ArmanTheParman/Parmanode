@@ -43,7 +43,7 @@ $(cat $dp/lndinfo.log | grep 9735 | grep -v onion | cut -d \" -f 2)
 $orange"
 fi
 
-set_terminal_custom 52 ; echo -e "
+set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
