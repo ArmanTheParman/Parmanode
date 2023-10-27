@@ -47,6 +47,7 @@ echo -e "
                         $wallet 
 
 
+
       (i)              Important info
 
       (start)          Start LND 
