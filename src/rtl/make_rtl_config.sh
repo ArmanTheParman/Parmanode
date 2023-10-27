@@ -37,4 +37,5 @@ echo "
     }
   ]
 }" > /tmp/RTL-Config.json 2>/dev/null
+debug "made config file"
 }
