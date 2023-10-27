@@ -3,6 +3,8 @@ Version 3.14.1
     -Config directory changed to git repository to enable version control and recovery
     -RTL reinsall if new LND installation
     -BTCPay connection to LND made easy
+    -Node URI printed on LND page.
+    -LND menu refreshes on loop for more accurate LND status
 Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time
