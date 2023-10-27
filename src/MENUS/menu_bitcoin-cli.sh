@@ -183,7 +183,7 @@ Hit <enter> to go back to the menu."
     read    
     continue
     ;;
-q|Q| exit 0 )
+q|Q|quit|Quit)
     set_terminal
     exit 0
     ;;
