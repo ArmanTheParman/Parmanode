@@ -72,7 +72,7 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion
-$red
+$blue
     The LND menu depends on LND log output which can take time after a restart. 
     Exiting and returning here will refresh and update info.$orange
 
