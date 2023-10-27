@@ -24,6 +24,7 @@ fi
 #get onion address if it exists...
 unset lnd_onion
 lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
+
 if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
@@ -33,7 +34,7 @@ $(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
 fi
 
-if $dp/lndinfo.log | grep 9735 | grep -v onion >/dev/null 2>&1 ; then 
+if cat $dp/lndinfo.log | grep 9735 | grep -v onion >/dev/null 2>&1 ; then 
 clearnetURI="
 $yellow
 Clearnet URI:
