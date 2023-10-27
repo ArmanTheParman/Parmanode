@@ -5,9 +5,9 @@ export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/nu
 # To check if wallet is created/loaded
 unset wallet
 if lncli walletbalance >/dev/null 2>&1 ; then 
-wallet="WALLET CREATED & UNOCKED =$green TRUE$orange" 
+wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
-wallet="WALLET CREATED & UNOCKED =$red FALSE$orange" 
+wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange" 
 fi
 
 # To print tor details in menu
@@ -45,6 +45,7 @@ echo -e "
 fi
 echo -e "
                         $wallet 
+
 
 
       (i)              Important info
