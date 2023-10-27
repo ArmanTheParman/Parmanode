@@ -2,7 +2,7 @@ function menu_lnd {
 while true ; do set_terminal_custom "52" 
 
 unset choice ; while [[ -z $choice ]] ; then
-
+debug3 inloop
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 # To check if wallet is created/loaded
 unset wallet
