@@ -29,10 +29,10 @@ echo -e "
 
 "
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
-                   LND IS RUNNING -- SEE LOG MENU FOR PROGRESS "
+                   LND IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo "
-                   LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+                   LND IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo -e "
 
