@@ -3,7 +3,6 @@ unset wallet
 
 
 function lnd_menu_loop {
-clear
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 
 # To check if wallet is created/loaded
 if lncli walletbalance >/dev/null 2>&1 ; then 
