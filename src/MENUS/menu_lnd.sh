@@ -28,7 +28,7 @@ lncli getinfo >/$dp/lndinfo.log 2>/dev/null
 if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
-LND onion URI:
+Tor Onion URI:
 
 $(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
