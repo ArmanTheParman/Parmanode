@@ -7,7 +7,7 @@ unset wallet
 if lncli walletbalance >/dev/null 2>&1 ; then 
 wallet="WALLET CREATED & UNOCKED =$green TRUE$orange" 
 else
-wallet="WALLET CREATED & UNOCKED =$red FALSE$orange" 
+wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange" 
 fi
 
 # To print tor details in menu
