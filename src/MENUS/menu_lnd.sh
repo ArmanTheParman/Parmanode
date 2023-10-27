@@ -1,6 +1,8 @@
 function menu_lnd {
 while true ; do set_terminal_custom "52" 
 
+unset choice ; while [[ -z $choice ]] ; then
+
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 # To check if wallet is created/loaded
 unset wallet
@@ -78,7 +80,9 @@ $bright_magenta
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpq" ; read choice 
+done
+set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
