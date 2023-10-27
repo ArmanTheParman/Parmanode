@@ -87,6 +87,8 @@ please_wait
 sleep 5
 else
 lnd_disable_tor
+please_wait
+sleep 3
 fi
 
 ;;
