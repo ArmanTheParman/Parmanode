@@ -2,7 +2,6 @@ function menu_lnd {
 while true ; do set_terminal_custom "48" 
 
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
-debug3 "after version"
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
 
 if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
@@ -11,9 +10,8 @@ elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
 then local torhybrid=Enabled
 else local torhybrid=Disabled 
 fi
-debug3 "before getinfo"
 unset lnd_onion
-if lncli getinfo | grep -q onion: >/dev/null 2>&1 ; then
+if lncli getinfo 2>/dev/null | grep -q onion: >/dev/null 2>&1 ; then
 lnd_onion="
 
 LND onion URI:
@@ -21,8 +19,6 @@ LND onion URI:
 $(lncli getinfo | grep onion: | cut -d \" -f 2)
 "
 fi
-debug3 "before clear"
-clear
 echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
