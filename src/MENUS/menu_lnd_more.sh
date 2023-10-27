@@ -20,7 +20,7 @@ echo "
 
       (alias)          Change LND alias
 
-      (port)           Change port. Current port is $lnd_port 
+      (port)           Change CLEARNET port. Current port is $lnd_port 
 "
 if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
