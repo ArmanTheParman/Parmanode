@@ -24,11 +24,11 @@ fi
 unset lnd_onion
 if lncli getinfo 2>/dev/null | grep -q onion: >/dev/null 2>&1 ; then
 lnd_onion="
-
+$bright_blue
 LND onion URI:
 
 $(lncli getinfo | grep onion: | cut -d \" -f 2)
-"
+$orange"
 fi
 
 clear ; echo -e "
