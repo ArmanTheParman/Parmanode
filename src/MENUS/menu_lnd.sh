@@ -74,7 +74,7 @@ echo -e "
 $lnd_onion
 $red
 The LND menu depends on LND log output which can take time after a restart. Exiting 
-and returning to the men will refresh and update menu info.$orange
+and returning here will refresh and update info.$orange
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal
