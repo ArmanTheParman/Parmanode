@@ -31,7 +31,7 @@ echo "##########################################################################
 choose "xpq" ; read choice
 case $choice in
 q|Q) quit ;;
-p|P) return 1 ;;
+p|P) please_wait ; return 1 ;;
 
 ex|Ex|EX)
 expose_LND
