@@ -73,7 +73,7 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion
-
+$red                                                              Refreshing every 4 seconds $orange
 ########################################################################################
 "
 choose "xpq"
@@ -81,7 +81,7 @@ choose "xpq"
 while true ; do # case loop
 unset choice
 while [[ -z $choice ]] ; do 
-read -t 2.5 choice 
+read -t 4 choice 
 lnd_menu_loop 
 done
 
