@@ -1,16 +1,15 @@
 function menu_lnd {
-while true ; do set_terminal_custom "52" 
+unset wallet
+
 
 function lnd_menu_loop {
-
-export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
+export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 
 # To check if wallet is created/loaded
-unset wallet
 if lncli walletbalance >/dev/null 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange" 
-fi
+fi 
 
 # To print tor details in menu
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then lndtor=Enabled ; else lndtor=Disabled ; fi
@@ -33,7 +32,7 @@ $(lncli getinfo | grep onion: | cut -d \" -f 2)
 $orange"
 fi
 
-clear ; echo -e "
+set_terminal_custom 52 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
@@ -74,14 +73,15 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion
-
+$red                                                              Refreshing every 4 seconds $orange
 ########################################################################################
 "
 choose "xpq"
 }
+while true ; do # case loop
 unset choice
 while [[ -z $choice ]] ; do 
-read -t 2.5 choice 
+read -t 4 choice 
 lnd_menu_loop 
 done
 
