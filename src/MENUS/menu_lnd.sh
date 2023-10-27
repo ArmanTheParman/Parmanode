@@ -12,6 +12,13 @@ then local torhybrid=Enabled
 else local torhybrid=Disabled 
 fi
 
+lnd_onion="
+
+LND onion URI:
+
+$(lncli getinfo | grep onion: | cut -d \" -f 2)
+"
+
 echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
@@ -50,7 +57,7 @@ echo -e "
       (w)              ... wallet options
 
       (mm)             ... more options
-
+$lnd_onion
 ########################################################################################
 "
 choose "xpq" ; read choice ; set_terminal

@@ -36,7 +36,7 @@ create_wallet
 lnd_wallet_unlock_password
 
 installed_conf_add "lnd-end"
-success "lnd" "being installed."
+success "LND" "being installed."
 
 if grep -q "rtl-end" < $dp/installed.conf ; then
 while true ; do
