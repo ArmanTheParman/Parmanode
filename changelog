@@ -1,4 +1,4 @@
-Version 3.14.1
+Version 3.14.2 -- 27 October 2023
     -LND Tor and Tor/Clearnet hybrid enabled
     -Config directory changed to git repository to enable version control and recovery
     -RTL reinsall if new LND installation
