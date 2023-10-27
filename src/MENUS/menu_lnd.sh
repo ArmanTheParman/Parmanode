@@ -73,8 +73,8 @@ echo -e "
       (mm)             ... more options
 $lnd_onion
 $bright_magenta
-    The LND menu depends on LND log output which can take time after a restart. 
-    Exiting and returning here will refresh and update info.$orange
+    The LND menu depends on LND log output which can takes some secondsto populate 
+    after a restart. Exiting and returning here will refresh and update info.$orange
 
 ########################################################################################
 "
