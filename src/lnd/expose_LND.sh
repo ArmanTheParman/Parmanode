@@ -55,8 +55,8 @@ $orange
     to add \"port forwarding\".
 
     Create a new IPv4 port forwarding rule; name it anything; choose TCP for the 
-    protocol; make the WAN and LAN port options 9735; and put the destination IP the
-    same as this computer's: $IP 
+    protocol; set the WAN and LAN port options to $lnd_port; and put the destination 
+    IP the same as this computer's: $IP 
 
     Then save, and restart LND. 
 

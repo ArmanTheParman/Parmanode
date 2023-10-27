@@ -11,7 +11,7 @@ echo "
 [Application Options]
 tlsextraip=$IP
 ; tlsextradomain=0.0.0.0
-externalip=$extIP:9735
+externalip=$extIP:$lnd_port
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
 readonlymacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/readonly.macaroon
