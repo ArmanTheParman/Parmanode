@@ -52,21 +52,21 @@ echo -e "
 
       (i)              Important info
 
-      (start)          Start LND 
+      (s)              Start LND 
 
-      (stop)           Stop LND
+      (st)             Stop LND
 
-      (restart)        Restart LND
+      (rs)             Restart LND
 
       (log)            Inspect LND logs
 
-      (conf)           Inspect and edit lnd.conf file 
+      (lc)             Inspect and edit lnd.conf file 
 
-      (password)       Change LND password 
+      (pw)             Change LND password 
        
       (scb)            Static Channel Backup 
 
-      (tor)            Enable/disable TOR                     Currently: $cyan$lndtor$orange
+      (t)              Enable/disable TOR                     Currently: $cyan$lndtor$orange
 
       (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
 
@@ -74,6 +74,7 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion
+
 ########################################################################################
 "
 choose "xpq"
@@ -89,11 +90,11 @@ case $choice in
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 i|I|info|Info) lnd_info ;;
-start|START|Start) start_lnd ;;
-stop|STOP|Stop) stop_lnd ;; 
-restart|RESTART|Restart) restart_lnd ;;
+s|S|start|START|Start) start_lnd ;;
+st|ST|St|stop|STOP|Stop) stop_lnd ;; 
+rs|RS|Rs|restart|RESTART|Restart) restart_lnd ;;
 
-tor)
+t|T|tor)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
 announce "Parmanode has detected an older version of Parmanode has created
     your Lightninbg lnd.conf file. The Tor configuration adjustments may
@@ -152,7 +153,7 @@ set_terminal
 ;;
 
 
-conf|CONF|Conf)
+lc|LC|conf|CONF|Conf)
 echo -e "
 ########################################################################################
     
@@ -167,7 +168,7 @@ $orange
 enter_continue
 nano $HOME/.lnd/lnd.conf ;;
 
-password|PASSWORD|Password)
+pw|Pw|PW|password|PASSWORD|Password)
 echo "
 ########################################################################################
 
