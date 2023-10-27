@@ -34,12 +34,12 @@ $(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
 fi
 
-if cat $dp/lndinfo.log | grep 9735 | grep -v onion >/dev/null 2>&1 ; then 
+if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
 clearnetURI="
 $yellow
 Clearnet URI:
 
-$(cat $dp/lndinfo.log | grep 9735 | grep -v onion | cut -d \" -f 2)
+$(cat $dp/lndinfo.log | grep 973 | grep -v onion | cut -d \" -f 2)
 $orange"
 fi
 
