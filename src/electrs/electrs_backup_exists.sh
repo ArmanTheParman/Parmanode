@@ -21,7 +21,7 @@ echo "
 "
 choose "xpq"
 read choice
-case $choice in q|Q) quit ;; p|P) return 1 ;;
+case $choice in q|Q) exit 0 ;; p|P) return 1 ;;
 d|D) rm -rf ${e_db}_backup ; break ;; 
 2) 
 mv ${e_db}_backup ${e_db}_backup2

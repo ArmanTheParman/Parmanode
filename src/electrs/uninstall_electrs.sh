@@ -88,7 +88,7 @@ read choice
 set_terminal
 case $choice in
 q|Q) 
-quit 0 ;; 
+exit 0 ;; 
 p|P) 
 return 1 ;;
 d|D) 

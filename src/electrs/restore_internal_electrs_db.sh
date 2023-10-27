@@ -21,7 +21,7 @@ $red       d)$orange  Nah, and get rid of it
 "
 choose "xpq" ; read choice
 case $choice in
-q|Q) quit ;;
+q|Q) exit 0 ;;
 p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 
