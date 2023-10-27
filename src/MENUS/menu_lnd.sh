@@ -6,13 +6,13 @@ function lnd_menu_loop {
 clear
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null &
 # To check if wallet is created/loaded
-{
+(
 if lncli walletbalance >/$dp/.wb.tmp 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange" 
 fi 
-} &
+) &
 
 # To print tor details in menu
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then lndtor=Enabled ; else lndtor=Disabled ; fi
