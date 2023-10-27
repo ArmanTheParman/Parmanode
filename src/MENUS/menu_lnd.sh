@@ -81,7 +81,9 @@ $bright_magenta
 ########################################################################################
 "
 choose "xpq" ; read choice 
+sleep 0.1
 done
+
 set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
