@@ -1,9 +1,11 @@
 function start_lnd {
     check_rpc_bitcoin
+    please_wait
     sudo systemctl start lnd.service 
 }
 
 function stop_lnd {
+    please_wait
     sudo systemctl stop lnd.service 
 }
 
