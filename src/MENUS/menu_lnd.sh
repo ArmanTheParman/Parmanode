@@ -23,16 +23,27 @@ fi
 
 #get onion address if it exists...
 unset lnd_onion
-if lncli getinfo 2>/dev/null | grep -q onion: >/dev/null 2>&1 ; then
+lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
+
+if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
 LND onion URI:
 
-$(lncli getinfo | grep onion: | cut -d \" -f 2)
+$(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
 fi
 
-set_terminal_custom 52 ; echo -e "
+if cat $dp/lndinfo.log | grep 9735 | grep -v onion >/dev/null 2>&1 ; then 
+clearnetURI="
+$yellow
+Clearnet URI:
+
+$(cat $dp/lndinfo.log | grep 9735 | grep -v onion | cut -d \" -f 2)
+$orange"
+fi
+
+set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
@@ -72,8 +83,8 @@ echo -e "
       (w)              ... wallet options
 
       (mm)             ... more options
-$lnd_onion
-$red                                                              Refreshing every 4 seconds $orange
+$lnd_onion $clearnetURI
+$red                                                              Refreshing every 5 seconds $orange
 ########################################################################################
 "
 choose "xpq"
@@ -81,7 +92,7 @@ choose "xpq"
 while true ; do # case loop
 unset choice
 while [[ -z $choice ]] ; do 
-read -t 4 choice 
+read -t 5 choice 
 lnd_menu_loop 
 done
 
