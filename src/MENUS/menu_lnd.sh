@@ -3,8 +3,12 @@ while true ; do set_terminal_custom "48"
 
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 # To check if wallet is created/loaded
-if lncli walletbalance >/dev/null 2>&1 ; then wallet=UNLOCKED ; fi
-debug3 after-wallet-balance
+unset wallet
+if lncli walletbalance >/dev/null 2>&1 ; then 
+wallet="WALLET CREATED & UNOCKED =$green TRUE$orange" 
+else
+wallet="WALLET CREATED & UNOCKED =$red FALSE$orange" 
+fi
 
 # To print tor details in menu
 if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then local lndtor=Enabled ; else local lndtor=Disabled ; fi
@@ -26,7 +30,8 @@ LND onion URI:
 $(lncli getinfo | grep onion: | cut -d \" -f 2)
 "
 fi
-echo -e "
+
+clear ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
@@ -39,6 +44,7 @@ echo -e "
                    LND IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo -e "
+                        $wallet 
 
 
       (i)              Important info
