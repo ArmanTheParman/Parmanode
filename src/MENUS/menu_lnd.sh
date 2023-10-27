@@ -84,7 +84,7 @@ choose "xpq"
 }
 unset choice
 while [[ -z $choice ]] ; do 
-read -t 0.5 choice 
+read -t 2.5 choice 
 lnd_menu_loop 
 done
 
