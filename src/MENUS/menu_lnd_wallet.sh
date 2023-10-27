@@ -19,6 +19,8 @@ echo -e "
 
       (wb)             Wallet balance
 
+      (au)             Enable auto-unlock wallet (for easy restarts of LND)
+
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
 
       (create)         Create an LND wallet (or restore a wallet with seed)
@@ -30,6 +32,9 @@ case $choice in
 q|Q) quit ;;
 p|P) return 1 ;;
 
+au|AU|Au)
+lnd_wallet_unlock_password
+;;
 
 create|CREATE|Create)
 create_wallet ; lncli unlock 
