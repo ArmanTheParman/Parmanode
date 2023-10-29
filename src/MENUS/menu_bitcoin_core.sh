@@ -35,7 +35,7 @@ output1="                   Bitcoin is$green RUNNING$orange-- see log menu for p
 
 output2="                         (Syncing to the $drive drive)"
 else
-output1="                   Bitcoin is$pink NOT running$orange -- choose \"start\" to run"
+output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
