@@ -33,7 +33,7 @@ clear ; echo "
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
     Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart Parmanode 
+              y)      do it (you'll need to then restart Parmanode) 
 
               n)      nah (ok, but parmanode won't run if you don't move it somewhere)
 
@@ -76,7 +76,7 @@ clear ; echo "
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
     Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart Parmanode 
+              y)      do it (you'll need to then restart Parmanode) 
 
               n)      nah (ok, but parmanode won't run if you don't move it somewhere)
 
