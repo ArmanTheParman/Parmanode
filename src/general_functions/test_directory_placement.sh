@@ -30,7 +30,7 @@ clear ; echo "
     Oh dear, you've downloaded the Parmanode software directly to your home directory. 
     This will cause a conflict for the Parmanode installation. 
     
-    Parmanode nees to live at $HOME/parman_programs/parmanode/ to run properly.
+    Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
     Do you want to have that set up now?
 
               y)      do it (you'll need to then restart Parmanode 
@@ -73,7 +73,7 @@ clear ; echo "
 	This won't do, because Parmanode needs to create a directory of that same name to
 	install the program, and doing so will wipe the program you're using now.
 
-    Parmanode nees to live at $HOME/parman_programs/parmanode/ to run properly.
+    Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
     Do you want to have that set up now?
 
               y)      do it (you'll need to then restart Parmanode 
