@@ -45,7 +45,8 @@ read choice
 case $choice in
 
 y|Y|Yes|YES|yes)
-announce "The directory $original_dir will be moved to $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
+announce "The directory $original_dir will be moved to 
+    $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
 cd ; mkdir -p parman_programs ; mv $original_dir $HOME/parman_programs/
 set_terminal
 exit 0 
@@ -85,7 +86,8 @@ clear ; echo "
 case $choice in
 
 y|Y|Yes|YES|yes)
-announce "The directory $original_dir will be moved to $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
+announce "The directory $original_dir will be moved to 
+    $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
 cd ; mkdir -p parman_programs ; mv $original_dir $HOME/parman_programs/set_terminal
 exit 0 
 ;;
