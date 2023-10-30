@@ -5,14 +5,11 @@ function update_version_info {
 export_latest_version
 export_local_version
 check_backwards_compatibility
-debug3 "in update version info"
 if [[ $version_incompatibility != 1 ]] ; then
     check_for_updates
-    debug3 "in version incompatibilty != 1"
 
         if [[ $old_version == 1 ]] ; then
             old_version_detected
-            debug3 " after old version detecte"
         fi
 fi
 }
@@ -43,7 +40,7 @@ set_terminal ; echo "
 choose "xq" ; read choice
 case $choice in
 N|no|NO|No|n) return 0 ;;
-y|Y|YES|Yes|yes) update_parmanode ;;
+y|Y|YES|Yes|yes) update_parmanode ; break ;;
 *) invalid ;;
 esac
 done
