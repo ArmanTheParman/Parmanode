@@ -50,6 +50,7 @@ done
 }
 
 function check_backwards_compatibility {
+debug3 "in cbc - LM = $latest_vMajor, vM = $vMajor"
 if [[ $latest_vMajor -lt $vMajor ]] ; then
 export version_incompatibility=1
 fi
