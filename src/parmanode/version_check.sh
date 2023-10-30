@@ -60,7 +60,7 @@ function export_latest_version {
 curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
 source /tmp/latest_version.txt && rm /tmp/latest_version.txt >/dev/null
 export latest_version="$version" >/dev/null
-export latext_vMajor="$vMajor" >/dev/null
+export latest_vMajor="$vMajor" >/dev/null
 export latest_vMinor="$vMinor" >/dev/null
 export latest_vPatch="$vPatch" >/dev/null
 }
