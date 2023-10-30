@@ -1,3 +1,5 @@
+Version 3.14.3
+    -Old version detection bug fixed
 Version 3.14.2 -- 27 October 2023
     -LND Tor and Tor/Clearnet hybrid enabled
     -Config directory changed to git repository to enable version control and recovery
