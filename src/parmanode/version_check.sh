@@ -8,9 +8,11 @@ check_backwards_compatibility
 debug3 "in update version info"
 if [[ $version_incompatibility != 1 ]] ; then
     check_for_updates
+    debug3 "in version incompatibilty != 1"
 
         if [[ $old_version == 1 ]] ; then
             old_version_detected
+            debug3 " after old version detecte"
         fi
 fi
 }
