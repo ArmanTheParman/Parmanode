@@ -1,7 +1,8 @@
 function menu_main {
 while true ; do
 set_terminal_bit_higher #custom function to resize the window
-
+source $original_dir/version.conf >/dev/null
+if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
@@ -9,7 +10,7 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
-#                                                                                      #
+#    Version:$red $version                                                                        $orange  $space #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
@@ -33,7 +34,7 @@ echo -e "
 #                                                                                      #
 #    (l)                  See logs and config files                                    #
 #                                                                                      #
-# $highlight   (update)             Update Parmanode  ........... (Improvements always coming)   #$orange
+#    (update)             Update Parmanode  ........... (Improvements always coming)   #
 #                                                                                      #
 #    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #
