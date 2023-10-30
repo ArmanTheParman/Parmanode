@@ -33,7 +33,7 @@ echo -e "
 #                                                                                      #
 #    (l)                  See logs and config files                                    #
 #                                                                                      #
-#    (update)             Update Parmanode  ........... (Improvements always coming)   #
+# $highlight   (update)             Update Parmanode  ........... (Improvements always coming)   #$orange
 #                                                                                      #
 #    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #

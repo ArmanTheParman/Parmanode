@@ -1,10 +1,11 @@
 function update_version_info {
-#called by run_parmanode
+#called by run_parmanode/do_loop
 
 #must be in this order
 export_latest_version
 export_local_version
 check_backwards_compatibility
+debug3 "in update version info"
 if [[ $version_incompatibility != 1 ]] ; then
     check_for_updates
 
@@ -47,7 +48,7 @@ done
 }
 
 function check_backwards_compatibility {
-if [[ $latest_vMajor < $vMajor ]] ; then
+if [[ $latest_vMajor -lt $vMajor ]] ; then
 export version_incompatibility=1
 fi
 }
@@ -62,6 +63,6 @@ export latest_vPatch="$vPatch" >/dev/null
 }
 
 function export_local_version {
-source ./version.conf
+source $original_dir/version.conf >/dev/null 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
 }
