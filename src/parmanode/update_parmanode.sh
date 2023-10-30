@@ -41,7 +41,7 @@ set_terminal ; echo -e "
 
                       $cyan           Update Parmanode  $orange
     
-    Parmanode will update itself by extracting the latest version from Github.com
+    Parmanode will update itself by extracting the latest version from GitHub.com
 
     Proceed?  (y) or (n)
 
