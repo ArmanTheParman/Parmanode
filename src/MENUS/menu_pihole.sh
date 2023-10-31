@@ -23,7 +23,7 @@ set_terminal ; echo -e "
 
 
     To access PiHole, navigate to$green $IP/admin/
-
+$orange
 ########################################################################################
 "
 

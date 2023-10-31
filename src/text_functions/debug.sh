@@ -33,6 +33,8 @@ log "debug3" "${1}"
 enter_continue
 return 0
 fi
+}
+
 function debug4 {
 if [[ $debug == 4 ]] ; then
 echo "${1}"
@@ -42,7 +44,7 @@ return 0
 fi
 }
 
-}
+
 function debug_user {
 if [[ $user == debug ]] ; then
 echo "${1}"
