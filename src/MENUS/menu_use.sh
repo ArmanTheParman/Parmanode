@@ -73,6 +73,9 @@ if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
                        echo "    (any)        AnyDesk 
                             " ; fi
+if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
+                       echo "    (pih)        PiHole 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -194,6 +197,11 @@ pbx|Pbx)
 any|ANY|Any)
    if [[ $anydeskapp == 1 ]] ; then
    menu_anydesk
+   fi
+   ;;
+pih|PiH|Pih)
+   if [[ $piholeapp == 1 ]] ; then
+   menu_pihole
    fi
    ;;
 p)

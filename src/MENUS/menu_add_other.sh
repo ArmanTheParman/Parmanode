@@ -18,6 +18,7 @@ if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $torserver_n ]]       ; then echo  "$torserver_n"; fi
 if [[ -n $parmabox_n ]]       ; then echo   "$parmabox_n"; fi
 if [[ -n $anydesk_n ]]       ; then echo   "$anydesk_n"; fi
+if [[ -n $pihole_n ]]       ; then echo   "$pihole_n"; fi
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -27,6 +28,7 @@ if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
 if [[ -n $parmabox_i ]]       ; then echo  "$parmabox_i"; fi
 if [[ -n $anydesk_i ]]       ; then echo  "$anydesk_i"; fi
+if [[ -n $pihole_i ]]       ; then echo  "$pihole_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -36,6 +38,7 @@ if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
 if [[ -n $torserver_p ]]       ; then echo  "$torserver_p"; fi
 if [[ -n $parmabox_p ]]       ; then echo  "$parmabox_p"; fi
 if [[ -n $anydesk_p ]]       ; then echo  "$anydesk_p"; fi
+if [[ -n $pihole_p ]]       ; then echo  "$pihole_p"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -85,6 +88,12 @@ pbx|Pbx)
 any|ANY|Any)
      if [[ -n $anydesk_n ]] ; then
      install_anydesk
+     return 0 
+     fi
+     ;;
+pih|PiH|Pih)
+     if [[ -n $pihole_n ]] ; then
+     install_pihole
      return 0 
      fi
      ;;
