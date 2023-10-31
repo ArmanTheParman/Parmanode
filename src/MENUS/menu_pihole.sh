@@ -35,6 +35,7 @@ p|P) return 1 ;;
 
 start|Start|START|S|s)
 start_pihole
+debug3 "start pihole debug"
 return 0 ;;
 
 stop|Stop|STOP)
