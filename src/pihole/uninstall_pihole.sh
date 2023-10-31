@@ -20,7 +20,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 cd $hp/pihole
 docker compose down
 cd
-rm -rf $hp/pihole
+sudo rm -rf $hp/pihole
 installed_conf_remove "pihole"
 success "PiHole" "being uninstalled"
 return 0
