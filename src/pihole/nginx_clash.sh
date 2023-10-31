@@ -79,7 +79,7 @@ set_terminal_high ; echo -e "
     Parmanode has found the following problemaitc line(s) in Nginx configuration
     file(s):
 "
-grep -rE '^\slisten.*80' /etc/nginx/*
+grep -rE '^\slisten.*\s+80\s+' /etc/nginx/*
 
 echo -e "
     The file name is in the left column, and the offending text found in that file is
