@@ -18,7 +18,7 @@ $orange
     randomly changing it for no apparant reason (it happens).
 
     Hit$pink a$orange to abort (you should perform this IP operation yourself and
-    come back to this installation) or $green y$orange to proceed.
+    come back to this installation) or$green y$orange to proceed.
 
 ########################################################################################
 "
