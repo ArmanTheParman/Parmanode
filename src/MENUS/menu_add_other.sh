@@ -32,13 +32,13 @@ if [[ -n $pihole_i ]]       ; then echo  "$pihole_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
-if [[ -n $parmashell_p ]]      ; then echo  "$parmashell_p"; fi 
-if [[ -n $docker_p ]]          ; then echo  "$docker_p"; fi
-if [[ -n $tor_p ]]             ; then echo  "$tor_p"; fi
-if [[ -n $torserver_p ]]       ; then echo  "$torserver_p"; fi
-if [[ -n $parmabox_p ]]       ; then echo  "$parmabox_p"; fi
-if [[ -n $anydesk_p ]]       ; then echo  "$anydesk_p"; fi
-if [[ -n $pihole_p ]]       ; then echo  "$pihole_p"; fi
+if [[ -n $parmashell_p ]]      ; then echo -e  "$pink$parmashell_p$orange"; fi 
+if [[ -n $docker_p ]]          ; then echo -e  "$pink$docker_p$orange"; fi
+if [[ -n $tor_p ]]             ; then echo  -e "$pink$tor_p$orange"; fi
+if [[ -n $torserver_p ]]       ; then echo  -e "$pink$torserver_p$orange"; fi
+if [[ -n $parmabox_p ]]       ; then echo  -e "$pink$parmabox_p$orange"; fi
+if [[ -n $anydesk_p ]]       ; then echo  -e "$pink$anydesk_p$orange"; fi
+if [[ -n $pihole_p ]]       ; then echo  -e "$pink$pihole_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
