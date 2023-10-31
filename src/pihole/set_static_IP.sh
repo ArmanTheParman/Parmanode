@@ -39,7 +39,7 @@ connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker
 sleep 2
 debug3 "connection count done. Count is $connection_count"
 debug "normal debug"
-if [[ $connction_count != 1 ]] ; then
+if [[ $connection_count != 1 ]] ; then
 announce "Parmanode was unable to make your IP address static. Please do
     this on your own if you wish to continue using PiHole, or you'll
     get errors."
