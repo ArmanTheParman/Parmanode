@@ -13,7 +13,7 @@ set_terminal ; echo -e "
     home network. This device's IP address is:
 $green
                $IP
-$orage    
+$orange    
     Parmanode will help to make this IP static - ie, it will prevent your router from
     randomly changing it for no apparant reason (it happens).
 
