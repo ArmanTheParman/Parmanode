@@ -22,7 +22,8 @@ $orange
 
 ########################################################################################
 "
-read -n1 choice
+choose "x"
+read choice
 
 case $choice in
 q|Q) exit ;;
@@ -35,7 +36,9 @@ esac
 done
 
 connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
+sleep 2
 debug3 "connection count done"
+debug "normal debug"
 if [[ $connction_count != 1 ]] ; then
 announce "Parmanode was unable to make your IP address static. Please do
     this on your own if you wish to continue using PiHole, or you'll
