@@ -34,9 +34,16 @@ invalid
 esac
 done
 
-router=$(ip route | grep default | awk '{print $3}')
-connection_name=$(sudo nmcli con show) >/dev/null 2>&1
+connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
+if [[ $connction_count != 1 ]] ; then
+announce "Parmanode was unable to make your IP address static. Please do
+    this on your own if you wish to continue using PiHole, or you'll
+    get errors."
+fi
 
+connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | cut -d : -f 1) 
+
+router=$(ip route | grep default | awk '{print $3}')
 sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >/dev/null 2>&1
 sudo nmcli con mod $connection_name ipv4.gateway $router >/dev/null 2>&1 
 sudo nmcli con mod $connection_name ipv4.dns "8.8.8.8" >/dev/null 2>&1
