@@ -73,8 +73,9 @@ cd pihole
 cp $pn/src/pihole/docker-compose.yaml ./
 
 docker compose up -d 
-installed_conf_add 
-debug3
+installed_conf_add "pihole-end"
+debug3 "test debug3"
+debug "pause here"
 success "PiHole" "being installed"
 set_terminal ; echo -e "
 ########################################################################################

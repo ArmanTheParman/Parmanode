@@ -10,7 +10,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Nginx is installed on your system - this can be a problem due to port conflicts, 
-    but currently it seems there are no conflict. 
+    but currently it seems$green there are no conflicts$orange. 
     
     Please make sure you do not configure Nginx to listen on port 80, which is
     typical for a web server, and in fact, even without a webserver, just by having
@@ -18,6 +18,7 @@ set_terminal ; echo -e "
     
     If there is a port clash, Nginx or PiHole won't work.
 $green
+
                        For now, it's all good, we can continue.
 $orange
 
