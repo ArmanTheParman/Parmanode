@@ -44,7 +44,10 @@ systemd-resolved_disable || return 1
 
 # Check it worked
 if sudo netstat -tulnp | grep ":80" >/dev/null 2>&1 ; then
-set_terminal ; echo -e "
+set_terminal 
+sudo netstat -tulnp | grep ":80"
+echo -e "
+
 ########################################################################################
 $red
     We have a problem.$orange Parmanode has detected that port 80 is still being used for

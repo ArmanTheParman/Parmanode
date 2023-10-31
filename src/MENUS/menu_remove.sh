@@ -12,7 +12,7 @@ set_terminal_custom $num
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
-unset anydeskmenu
+unset anydeskmenu piholemenu
 
 echo -e "
 ########################################################################################
@@ -162,6 +162,12 @@ echo "#                                    (any)              AnyDesk           
 #                                                                                      #"
 elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
 echo "#                                    (any)              AnyDesk     (partial)          #
+#                                                                                      #" ; fi
+if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholemenu=1
+echo "#                                    (pih)              PiHole                         #
+#                                                                                      #"
+elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then piholemenu=1
+echo "#                                    (pih)              PiHole      (partial)          #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -319,9 +325,17 @@ uninstall_parmabox
 return
 fi
 ;;
+
 any|ANY|Any)
 if [[ $anydeskmenu == 1 ]] ; then
 uninstall_anydesk
+return
+fi
+;;
+
+pih|Pih|PiH)
+if [[ $piholemenu == 1 ]] ; then
+uninstall_pihole
 return
 fi
 ;;
