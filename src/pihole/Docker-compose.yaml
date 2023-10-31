@@ -13,11 +13,11 @@ services:
     #   - "80:80/tcp"
     environment:
       TZ: 'America/Chicago'
-      WEBPASSWORD: 'parmanode'
+      WEBPASSWORD: 'neverseller'
     # Volumes store your data between container upgrades
     volumes:
-      - "$HOME/parmanode/etc-pihole:/etc/pihole"
-      - '$HOME/parmanode/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - "$HOME/parmanode/pihole/etc-pihole:/etc/pihole"
+      - '$HOME/parmanode/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
