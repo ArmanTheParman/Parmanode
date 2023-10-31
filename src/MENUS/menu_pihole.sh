@@ -35,12 +35,10 @@ p|P) return 1 ;;
 
 start|Start|START|S|s)
 start_pihole
-debug3 "start pihole debug"
-return 0 ;;
+;;
 
 stop|Stop|STOP)
-stop_pihole
-return 0 ;;
+stop_pihole ;;
 
 i|I|info|Info)
 info_pihole
