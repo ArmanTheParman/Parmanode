@@ -10,7 +10,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Nginx is installed on your system - this can be a problem due to port conflicts, 
-    but currently it seems there is no conflict. 
+    but currently it seems there are no conflict. 
     
     Please make sure you do not configure Nginx to listen on port 80, which is
     typical for a web server, and in fact, even without a webserver, just by having
