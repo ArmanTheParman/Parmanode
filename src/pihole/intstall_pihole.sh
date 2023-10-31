@@ -16,7 +16,7 @@ set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                DNS Servers and stuff
-
+$orange
     PiHole is software that acts as the gatekeeper to your internet traffic and lets
     you block/unblock specified sites, and also blocks adds. This works for any device
     connected on the same home network.
