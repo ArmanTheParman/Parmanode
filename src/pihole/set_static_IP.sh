@@ -37,7 +37,7 @@ done
 
 connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
 sleep 2
-debug3 "connection count done"
+debug3 "connection count done. Count is $connection_count"
 debug "normal debug"
 if [[ $connction_count != 1 ]] ; then
 announce "Parmanode was unable to make your IP address static. Please do
@@ -46,6 +46,7 @@ announce "Parmanode was unable to make your IP address static. Please do
 fi
 
 connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | cut -d : -f 1) 
+debug3 "connection name is $connection_name"
 
 router=$(ip route | grep default | awk '{print $3}')
 sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >/dev/null 2>&1
