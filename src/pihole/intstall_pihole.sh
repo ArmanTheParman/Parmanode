@@ -69,7 +69,7 @@ set_static_IP || return 1
 
 cd $hp
 mkdir pihole && installed_conf_add "pihole-start"
-cd pihole
+cd $hp/pihole
 cp $pn/src/pihole/docker-compose.yaml ./
 
 docker compose up -d 
