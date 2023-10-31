@@ -72,7 +72,9 @@ mkdir pihole && installed_conf_add "pihole-start"
 cd pihole
 cp $pn/src/pihole/docker-compose.yaml ./
 
-docker compose up -d && installed_conf_add && \
+docker compose up -d 
+installed_conf_add 
+debug3
 success "PiHole" "being installed"
 set_terminal ; echo -e "
 ########################################################################################
