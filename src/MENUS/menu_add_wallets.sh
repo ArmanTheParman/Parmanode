@@ -36,14 +36,14 @@ if [[ -n $ledger_i ]]          ; then echo  "$ledger_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
-if [[ -n $sparrow_p ]]         ; then echo  "$sparrow_p"; fi
-if [[ -n $electrum_p ]]        ; then echo  "$electrum_p"; fi
-if [[ -n $specter_p ]]         ; then echo  "$specter_p"; fi
-if [[ -n $rtl_p ]]             ; then echo  "$rtl_p"; fi
-if [[ -n $lnbits_p ]]          ; then echo  "$lnbits_p"; fi
-if [[ -n $trezor_p ]]          ; then echo  "$trezor_p"; fi
-if [[ -n $bitbox_p ]]          ; then echo  "$bitbox_p"; fi
-if [[ -n $ledger_p ]]          ; then echo  "$ledger_p"; fi
+if [[ -n $sparrow_p ]]         ; then echo -e "$pink$sparrow_p$orange"; fi
+if [[ -n $electrum_p ]]        ; then echo -e "$pink$electrum_p$orange"; fi
+if [[ -n $specter_p ]]         ; then echo -e "$pink$specter_p$orange"; fi
+if [[ -n $rtl_p ]]             ; then echo -e "$pink$rtl_p$orange"; fi
+if [[ -n $lnbits_p ]]          ; then echo -e "$pink$lnbits_p$orange"; fi
+if [[ -n $trezor_p ]]          ; then echo -e "$pink$trezor_p$orange"; fi
+if [[ -n $bitbox_p ]]          ; then echo -e "$pink$bitbox_p$orange"; fi
+if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
