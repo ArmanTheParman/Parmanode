@@ -3,7 +3,7 @@ function nginx_clash {
 
 if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
 
-fileNum=$(grep -rE '^\slisten.*80' /etc/nginx/* | wc -l )
+fileNum=$(grep -rE '^\slisten.*\s+80\s+' /etc/nginx/* | wc -l )
 
 if [[ $fileNum == 0 ]] ; then
 set_terminal ; echo -e "
