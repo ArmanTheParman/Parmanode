@@ -99,7 +99,10 @@ set_static_IP || return 1
 cd $hp
 mkdir pihole && installed_conf_add "pihole-start"
 cd $hp/pihole
+if [[ $OS == Mac ]] ; then cp "$pn/src/pihole/docker-compose(mac).yaml" ./docker-compose.yaml 
+else
 cp $pn/src/pihole/docker-compose.yaml ./
+fi
 
 if ! docker ps >/dev/null ; then
 if [[ $OS == Mac ]] ; then start_docker_mac ; fi
