@@ -35,6 +35,9 @@ invalid
 esac
 done
 
+if [[ $OS == Mac ]] ; then set_static_IP_mac && return 0 ; return 1
+else
+
 connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
 sleep 2
 debug3 "connection count done. Count is $connection_count"
@@ -55,5 +58,58 @@ sudo nmcli con mod $connection_name ipv4.dns "8.8.8.8" >/dev/null 2>&1
 sudo nmcli con mod $connection_name ipv4.method manual >/dev/null 2>&1
 
 sudo nmcli con up $connection_name
+return 0
+fi #end if not Mac
+}
+
+function set_static_IP_mac {
+
+interface=$(route get default | awk '/interface:/{print $2}')
+#eg en0
+
+SERVICE_NAME=$(networksetup -listallhardwareports | grep -n1 $interface | head -1 | cut -d : -f 2 | grep -oE '\S+.*$')
+#WiFi or Ethernet expected
+
+set_terminal
+echo -e "
+########################################################################################
+
+    Parmanode detected your network connection as $SERVICE_NAME
+    
+########################################################################################
+"
+enter_continue
+
+#Router IP
+ROUTER=$(netstat -nr | grep default | awk '{print $2}')
+
+set_terminal
+echo -e "
+########################################################################################
+
+    Parmanode detected your router is as $ROUTER
+
+########################################################################################
+"
+enter_continue
+
+#Subnet in dec
+SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >dev/null
+SUBNET_DEC=$(printf "%d.%d.%d.%d\n" $((16#${SUBNET_HEX:0:2})) $((16#${SUBNET_HEX:2:2})) $((16#${SUBNET_HEX:4:2})) $((16#${SUBNET_HEX:6:2})))
+set_terminal
+echo -e "
+########################################################################################
+
+    Parmanode detected your subnet mask as $SUBNET_DEC
+
+########################################################################################
+"
+enter_continue
+
+set_terminal
+echo -e "    Setting the IP, $IP, to static."
+
+networksetup -setmanual "$SERVICE_NAME" "$IP" "$SUBNET_DEC" "$ROUTER"
+sleep 2
 return 0
 }

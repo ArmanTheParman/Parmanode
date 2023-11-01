@@ -1,9 +1,10 @@
 function nginx_clash {
-
+if [[ $OS == Mac ]] ; then local nginxDir="/usr/local/etc/nginx" ; fi
+if [[ $OS == Linux ]] ; then local nginxDir="/etc/nginx" ; fi
 
 if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
 
-fileNum=$(grep -rE '^\slisten.*\s+80\s+' /etc/nginx/* | wc -l )
+fileNum=$(grep -rE '^\slisten.*\s+80\s+' $nginxDir/* | wc -l )
 
 if [[ $fileNum == 0 ]] ; then
 set_terminal ; echo -e "
@@ -55,18 +56,41 @@ set_terminal ; echo -e "
 choose "xpq" ; read choice
 case $choice in
 1)
+if [[ $OS == Linux ]] ; then
 sudo systemctl stop nginx
 sudo systemctl disable nginx
 sudo apt-get purge nginx
+fi
+if [[ $OS == Mac ]] ; then
+clear ; please_wait
+brew stop nginx 
+brew services uninstall nginx >/dev/null 2>&1
+rm -rf /usr/local/etc/nginx/
+rm -rf /usr/local/var/log/nginx/
+cd ; brew cleanup
+fi
+
 return 0 
 ;;
 2)    
+if [[ $OS == Linux ]] ; then
 sudo systemctl stop nginx
 sudo systemctl disable nginx
-if ps -x | grep nginx | grep -v grep >/dev/null 2>&1 ; then
-announce "Unable to stop Nginx. Aborting."
-return 1
+    if ps -x | grep nginx | grep -v grep >/dev/null 2>&1 ; then
+    announce "Unable to stop Nginx. Aborting."
+    return 1
+    fi
 fi
+
+if [[ $OS == Mac ]] ; then
+please_wait
+brew services stop nginx
+    if ps -x | grep nginx | grep -v grep >/dev/null 2>&1 ; then
+    announce "Unable to stop Nginx. Aborting."
+    return 1
+    fi
+fi
+
 announce "Do make sure to not run Nginx and PiHole at the same time or
     you will get port conflicts leading to errors."
 return 0
@@ -80,7 +104,7 @@ set_terminal_high ; echo -e "
     Parmanode has found the following problemaitc line(s) in Nginx configuration
     file(s):
 "
-grep -rE '^\slisten.*\s+80\s+' /etc/nginx/*
+grep -rE '^\slisten.*\s+80\s+' $nginxDir/*
 
 echo -e "
     The file name is in the left column, and the offending text found in that file is
