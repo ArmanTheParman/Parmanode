@@ -22,6 +22,7 @@ if [[ $latest_version != $version ]] ; then
 }
 
 function old_version_detected {
+if 
 while true ; do
 set_terminal ; echo "
 ########################################################################################
