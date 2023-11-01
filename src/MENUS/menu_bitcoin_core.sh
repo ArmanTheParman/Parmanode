@@ -79,7 +79,8 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
 
-m) return 0 ;;
+m) 
+back2main ;;
 
 start|START|Start)
 run_bitcoind

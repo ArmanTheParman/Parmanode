@@ -83,6 +83,12 @@ uninstall_parmanode
 ;;
 update|UPDATE|Update)
     update_parmanode || continue
+    if [[ $main_loop != 0 ]] ; then
+    set_terminal ; 
+    announce "You need to exit and reload Parmanode to use the new version of Parmanode."
+    continue
+    fi
+
     if [[ $exit_loop == false ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)
