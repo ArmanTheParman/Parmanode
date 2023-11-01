@@ -93,7 +93,6 @@ any|ANY|Any)
      ;;
 pih|PiH|Pih)
      if [[ -n $pihole_n ]] ; then
-     if [[ $OS == Mac ]] ; then no_mac ; return 0 ; fi
      install_pihole
      return 0 
      fi
