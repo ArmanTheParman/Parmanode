@@ -81,13 +81,13 @@ echo -e "
 enter_continue
 
 #Router IP
-ROUTER=$(netstat -nr | grep default | awk '{print $2}')
+ROUTER=$(route -n get default | grep gateway | cut -d : -f 2 | grep -oE '\S+.$')
 
 set_terminal
 echo -e "
 ########################################################################################
 
-    Parmanode detected your router is as $ROUTER
+    Parmanode detected your router is $ROUTER
 
 ########################################################################################
 "
