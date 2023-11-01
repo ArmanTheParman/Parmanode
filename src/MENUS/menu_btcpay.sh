@@ -46,9 +46,9 @@ echo -e "
 ########################################################################################
 " 
 debug 3 "before choose"
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
-
+m) back2main ;;
 bc)
 nano $HOME/.btcpayserver/Main/settings.config
 continue
