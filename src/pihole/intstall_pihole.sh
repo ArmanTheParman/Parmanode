@@ -101,6 +101,13 @@ mkdir pihole && installed_conf_add "pihole-start"
 cd $hp/pihole
 cp $pn/src/pihole/docker-compose.yaml ./
 
+if ! docker ps >/dev/null ; then
+if [[ $OS == Mac ]] ; then start_docker_mac ; fi
+fi
+if ! docker ps >/dev/null ; then
+announce "Docker needs to be running. Please start Docker before continuing."
+fi
+
 docker compose up -d 
 installed_conf_add "pihole-end"
 success "PiHole" "being installed"
