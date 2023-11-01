@@ -22,6 +22,7 @@ if [[ $latest_version != $version ]] ; then
 }
 
 function old_version_detected {
+if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
 while true ; do
 set_terminal ; echo "
 ########################################################################################
