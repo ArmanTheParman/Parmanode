@@ -40,11 +40,14 @@ enter_continue
 if ! which docker >/dev/null 2>&1 ; then install_docker || return 1 ; fi
 
 nginx_clash || return 1
-systemd-resolved_disable || return 1
+
+if [[ $OS == Linux ]] ; then systemd-resolved_disable || return 1 ; fi
 
 # Check it worked
-if sudo netstat -tulnp | grep ":80" >/dev/null 2>&1 ; then
+ 
 set_terminal 
+if [[ $OS == Linux ]] ; then
+if sudo netstat -tulnp | grep -q ":80" ; then
 sudo netstat -tulnp | grep ":80"
 echo -e "
 
@@ -62,7 +65,32 @@ $orange
 "
 enter_continue
 return 1
-fi #end if port 80 in use
+fi #end if port 80 in use, Linux
+
+if [[ $OS == Mac ]] ; then
+if sudo lsof -iTCP -sTCP:LISTEN -Pn | grep -q ':80 (LISTEN)' ; then
+set_terminal
+sudo lsof -iTCP -sTCP:LISTEN -Pn | grep ':80 (LISTEN)'
+echo -e "
+
+########################################################################################
+
+$red
+    We have a problem.$orange Parmanode has detected that port 80 is still being used for
+    some reason. The command that's failing is:
+$cyan
+
+                   sudo lsof -iTCP -sTCP:LISTEN -Pn | grep ':80 (LISTEN)'
+
+    ... which should be blank, but it's showing port 80 in use. You might have to try 
+    to resolve this yourself before attempting to install PiHole again.
+
+########################################################################################
+"
+enter_continue
+return 1
+fi #end if port 80 in use, Mac
+
 
 # Make IP address permanent
 set_static_IP || return 1
@@ -74,8 +102,6 @@ cp $pn/src/pihole/docker-compose.yaml ./
 
 docker compose up -d 
 installed_conf_add "pihole-end"
-debug3 "test debug3"
-debug "pause here"
 success "PiHole" "being installed"
 set_terminal ; echo -e "
 ########################################################################################
