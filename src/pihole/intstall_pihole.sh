@@ -65,7 +65,8 @@ $orange
 "
 enter_continue
 return 1
-fi #end if port 80 in use, Linux
+fi #end if port 80 in use
+fi #end if Linux
 
 if [[ $OS == Mac ]] ; then
 if sudo lsof -iTCP -sTCP:LISTEN -Pn | grep -q ':80 (LISTEN)' ; then
@@ -90,7 +91,7 @@ $cyan
 enter_continue
 return 1
 fi #end if port 80 in use, Mac
-
+fi #end if Mac
 
 # Make IP address permanent
 set_static_IP || return 1
