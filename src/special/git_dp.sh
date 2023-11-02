@@ -4,10 +4,11 @@ cd ${dp}
 git init >/dev/null 2>&1
 git add . >/dev/null 2>&1
 git commit -m "initial commit" >/dev/null 2>&1
+cd -
 else
-debug3 "in git_dp else"
+cd ${dp}
 git add . >/dev/null 2>&1
-git commit -m "$(date)" >/dev/null 2>&1
+git commit -m "auto-commit" >/dev/null 2>&1
+cd -
 fi
-debug3 "after git_dp if"
 }
