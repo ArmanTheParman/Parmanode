@@ -1,7 +1,7 @@
 function user_pass_check_exists {
 if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=" >/dev/null 2>&1 ; then
 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################    
 
     A Bitcoin username and password has not been set. Please do that through the
@@ -13,8 +13,9 @@ while true ; do set_terminal ; echo "
  
 ########################################################################################    
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
+m) back2main ;;
 now|Now|NOW|n|N) return 2 ;;
 l|L|later|LATER|Later) return 1 ;;
 *) invalid ;;

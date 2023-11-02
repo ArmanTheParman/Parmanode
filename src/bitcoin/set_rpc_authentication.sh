@@ -8,17 +8,16 @@ while true ; do
 set_terminal_bit_higher  
 
 if [[ -z $1 ]] ; then
-echo "
+echo -e "
 ########################################################################################
-
+$cyan
                            Bitcoin Core RPC Authentication
-
+$orange
     Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
-    Bitcoin Core. The default authentication method is with what's caled a COOKIE 
-    FILE Stored in the Bitcoin data directory. 
+    Bitcoin Core. 
 	
-    Some software (eg Fulcrum or Electrum Server) requires the alternative way, 
-    which is with a USERNAME and PASSWORD, rather than a cookie file. 
+	The default authentication method is with what's caled a COOKIE FILE Stored in 
+	the Bitcoin data directory. 
 	
     For convenience, you can set a username and password here.
 
@@ -27,25 +26,23 @@ echo "
     file and other configuration files. Therefore, don't use highly sensitive
     passwords that you might use for other things.
 
-
+$green
        (s)     Set the Bitcoin username and password (edits bitcoin.conf)
-
+$orange
        (L)     Leave Bitcoin username and password unchanged 
 
-       (c)     Use cookie ...(deletes from bitcoin.conf; Won't work with Fulcrum) 
-
-       (p)     Exit this menu (set username/pass from menu later)
-
+       (c)     Use cookie ...(deletes password from bitcoin.conf)
 
 ########################################################################################
 
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 else
 choice=$1
 fi
 
 case $choice in
+    m) back2main ;;
     s|S)
 	            password_changer
 				 

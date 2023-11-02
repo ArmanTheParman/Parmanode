@@ -37,12 +37,13 @@ $cyan
 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 set_terminal
 
         case $choice in
+        m) back2main ;;
 
         prune|Prune|PRUNE)
             log "bitcoin" "user chose to prune"
