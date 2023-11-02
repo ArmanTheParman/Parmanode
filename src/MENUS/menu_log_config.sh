@@ -40,6 +40,7 @@ q|Q) exit ;; p|P) return ;;
 m) back2main ;;
 *) invalid ;;
 esac
+done
 fi
 
 while true ; do set_terminal ; echo -e "
