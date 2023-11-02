@@ -11,7 +11,8 @@ function menu_log_config {
 # It's a bit ugly, and I'd do it better next time. To fix one day.
 ``
 if [[ $message_menu_log_config != "1" ]] ; then 
-set_terminal ; echo "
+while true ; do
+set_terminal ; echo -e "
 ########################################################################################
 
     Various log and configuration files are available to view. Parmanode will open
@@ -30,11 +31,14 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
-"Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ;;
+"Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ; break ;;
 # The above function results in a variable message_menu_log_config=1 set in a config file.
 # Which results in hiding the message next time, because of the if statement at the start.
+q|Q) exit ;; p|P) return ;; 
+m) back2main ;;
+*) invalid ;;
 esac
 fi
 
@@ -57,8 +61,9 @@ $pink
 $orange
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 q|Q|Quit|QUIT|quit) exit 0 ;;
 p|P) return 1 ;;
 

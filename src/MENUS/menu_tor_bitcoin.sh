@@ -41,8 +41,9 @@ else echo "#####################################################################
 "
 fi
 
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
+m) back2main ;;
 Q|q|quit|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 "1")

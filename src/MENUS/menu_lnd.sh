@@ -87,7 +87,7 @@ $lnd_onion $clearnetURI
 $red                                                              Refreshing every 5 seconds $orange
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 }
 while true ; do # case loop
 unset choice
@@ -98,6 +98,7 @@ done
 
 set_terminal
 case $choice in 
+m) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 i|I|info|Info) lnd_info ;;
