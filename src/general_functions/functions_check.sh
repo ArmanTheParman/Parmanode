@@ -162,8 +162,10 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
+choose "xpmq" ; read choice
+case $choice in 
+m) back2main ;;
+q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)
     if [[ $OS == "Linux" ]] ; then sudo apt-get install curl -y ; break ; fi 

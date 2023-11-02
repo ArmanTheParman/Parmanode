@@ -17,8 +17,9 @@ $green
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 q|Q) exit ;;
 p|P) return 1 ;;
 y|Y|YES|Yes|yes) 
