@@ -53,8 +53,9 @@ set_terminal ; echo -e "
                          
 ########################################################################################
 " 
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 1)
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop nginx

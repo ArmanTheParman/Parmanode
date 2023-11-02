@@ -15,9 +15,10 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 
 case $choice in q|Q) quit ;; p|P|N|NO|No|n) return 1 ;;
+m) back2main ;;
 y|Y|Yes|YES) break ;;
 *) invalid ;;
 esac

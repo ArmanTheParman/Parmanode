@@ -16,8 +16,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 q|Q) exit ;;
 p|P) return 1 ;;
 a|A) return 1 ;;

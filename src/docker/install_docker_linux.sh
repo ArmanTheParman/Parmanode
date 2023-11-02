@@ -2,11 +2,11 @@ function install_docker_linux {
 
 #Docker explainer
 while true ; do 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                      DOCKER
-    
+   $orange 
     Docker is a technology that allows software applications to be packaged and run 
     in a way that is more efficient and portable. With Docker, developers can create 
     "containers" that include all the necessary parts of an application, such as the 
@@ -18,16 +18,19 @@ set_terminal ; echo "
                 BTCPay Server
                 RTL Wallet
                 Fulcrum (on Macs)
+                PiHole
+                ParmaBox
 
     Install Docker?
 
-                y    or    n
+$green                y $orange   or $red   n
                 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice
 case $choice in
+m) back2main ;;
 q|Q) exit 0 ;;
 p|P) return 1 ;;
 n|N|NO|no|No) return 1 ;;
@@ -36,7 +39,7 @@ esac
 done
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
     
     Docker manuals recommend running an UNINSTALL command in case there are older
@@ -49,8 +52,9 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
+m) back2main ;;
 y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
@@ -78,10 +82,10 @@ log "docker" "Install success. Reboot needed."
 success "Docker" "installing."
 if ! id | grep docker ; then
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal "pink" ; echo -e "
 ######################################################################################## 
 ######################################################################################## 
-
+$orange
     In order for Docker to run properly, the computer must be restarted. It is safe
     to reboot the computer for the all the software Parmanode has installed. 
     
@@ -96,12 +100,13 @@ set_terminal "pink" ; echo "
     Reboot now?
 
                      y    or    n  
-
+$pink
 ######################################################################################## 
 ########################################################################################
-"
-choose "xpq" ; read choice  ; set_terminal
+$orange"
+choose "xpmq" ; read choice  ; set_terminal
 case $choice in
+m) back2main ;;
 q|Q) exit 0 ;;
 p|P) return 1 ;;
 no|NO|N|n|No) return 1 ;;

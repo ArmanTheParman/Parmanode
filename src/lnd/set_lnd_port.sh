@@ -26,8 +26,9 @@ $orange
 
 ########################################################################################    
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 q|Q) exit 0 ;; p|P) return 1 ;;
 1) parmanode_conf_remove "lnd_port" ; parmanode_conf_add "lnd_port=9735" ; export lnd_port=9735 ; break ;;
 2) parmanode_conf_remove "lnd_port" ; parmanode_conf_add "lnd_port=9736" ; export lnd_port=9736 ; break ;;

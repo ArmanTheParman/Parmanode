@@ -37,11 +37,11 @@ if [[ "$1" == "btcpay" ]] ; then
 
 else
 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 Install Docker
-    
+   $orange 
     Parmanode will now install Docker on your system. Currently this is not required
     if you will be using Parmanode for Bitcoin Core and Fulcrum alone. But for BTCpay 
     Server, and Mempool Space, you'll need Docker.
@@ -49,15 +49,16 @@ while true ; do set_terminal ; echo "
     You may wish to install Docker yourself, eg if this automatic install fails.  If 
     it previously failed, and you've been successful installing Docker yourself, nice
     job - just skip this automated Docker installation.
-
+$green
                            i)      Install Docker
-
+$orange
                            s)      Skip Docker Installation
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P|s|P) return 1 ;; 
+m) back2main ;;
 i|I|install|Install)
     log "docker" "docker install chosen"
     break ;;
@@ -67,10 +68,10 @@ done
 fi
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
     
-    Docker manuals recommend running an UNINSTALL command in case there are older
+    Docker manuals recommend running an$cyan UNINSTALL$orange command in case there are older
     versions on the system which might cause conflicts. Shall Parmanode do that for
     you now?
 
@@ -80,8 +81,9 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
+m) back2main ;;
 y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \

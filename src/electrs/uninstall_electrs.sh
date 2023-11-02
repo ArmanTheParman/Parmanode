@@ -83,10 +83,11 @@ set_terminal "pink" ; echo "
 
 ########################################################################################
 "
-choose "xpq"  
+choose "xpmq"  
 read choice
 set_terminal
 case $choice in
+m) back2main ;;
 q|Q) 
 quit 0 ;; 
 p|P) 
