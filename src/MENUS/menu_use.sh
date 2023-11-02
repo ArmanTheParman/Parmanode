@@ -84,8 +84,7 @@ choose "xpmq"
 read choice
 
 case $choice in
-
-m) return 0 ;;
+m) back2main ;;
 
 b|B)
     if [[ $bitcoinapp == 1 ]] ; then
