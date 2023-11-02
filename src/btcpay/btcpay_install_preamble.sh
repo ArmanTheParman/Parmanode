@@ -1,10 +1,10 @@
 function btcpay_install_preamble {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 Install BTCPay?
-
+$orange
     BTCPay Server is a self-hosted, open-source bitcoin payment processor. It will
     connect to your own Bitcoin Core node and LND node.
 
@@ -16,13 +16,14 @@ set_terminal ; echo "
 
     Proceed?
 
-              y      or      n
+     $green         y $orange     or  $red    n
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
+m) back2main ;;
 q|Q) exit 0 ;;
 p|P) return 1 ;;
 n|N|NO|No|no) return 1 ;;
