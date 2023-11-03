@@ -67,6 +67,7 @@ case $choice in
 y|Y|Yes|yes)
 sudo apt-get update -y 
 sudo apt-get upgrade -y 
+install_fuse noupdate #linux minmal installs my need to run AppImages
 ;;
 n|N|NO|No|no)
 break
