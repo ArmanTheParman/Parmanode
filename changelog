@@ -1,6 +1,7 @@
-Version 3.15.1
+Version 3.15.2
     -PiHole for Mac
     -Main menu loop improvements
+    -Need FUSE for minimal Linux isntalls to run AppImages
 Version 3.15.0
     -PiHole for Linux
     -BTCPay menu improvement
