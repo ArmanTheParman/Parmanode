@@ -74,4 +74,5 @@ break
 *) invalid ;;
 esac
 done
+fi
 }
