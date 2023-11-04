@@ -1,6 +1,6 @@
 function update_computer {
-    if [[ $debug ==1 ]] ; then return 0 ; fi
-    
+    if [[ $debug == 1 ]] ; then return 0 ; fi
+
 #update computer
 if [[ $(uname) == Darwin ]] ; then
 while true ; do
@@ -30,7 +30,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 "
 read choice
 
-case choice in
+case $choice in
 y|Y|YES|yes)
 if ! which brew >/dev/null ; then install_brew
 else
@@ -43,6 +43,7 @@ break
 n|N|NO|no)
 break
 ;;
+
 *) invalid ;;
 esac
 done
@@ -71,6 +72,7 @@ y|Y|Yes|yes)
 sudo apt-get update -y 
 sudo apt-get upgrade -y 
 install_fuse noupdate #linux minmal installs my need to run AppImages
+break
 ;;
 n|N|NO|No|no)
 break
