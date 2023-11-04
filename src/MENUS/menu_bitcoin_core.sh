@@ -224,8 +224,9 @@ continue
 o|O)
 menu_bitcoin_other || return 1
 ;;
+
 p|P)
-return 1
+return 0
 ;;
 
 delete|Delete|DELETE)

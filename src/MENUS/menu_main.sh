@@ -96,7 +96,6 @@ ap|AP|Ap|aP)
 
 ub)
 menu_bitcoin_core
-return 0 #necessary for "m" function
 ;;
 
 q | Q | quit)
