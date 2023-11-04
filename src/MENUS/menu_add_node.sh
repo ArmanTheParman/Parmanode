@@ -61,7 +61,7 @@ choose "xpmq"
 read choice ; set_terminal
 case $choice in
 
-    m) return 1 ;;
+    m) back2main ;; 
 
     B|b|bitcoin|Bitcoin)
         if [[ -n $bitcoin_n ]] ; then
@@ -126,7 +126,7 @@ case $choice in
         exit 0
         ;;
     p|P)
-        return 0 
+        menu_add_new 
         ;;
     *)
         invalid

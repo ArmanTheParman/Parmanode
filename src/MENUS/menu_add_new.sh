@@ -31,7 +31,7 @@ case $choice in
         return 0
         ;;
 
-    m) return 0 ;;
+    m) back2main ;; 
 
     w|W|wallets|Wallets)
         menu_add_wallets
@@ -47,7 +47,7 @@ case $choice in
         exit 0
         ;;
     p|P)
-        return 0 
+        back2main
         ;;
     *)
         invalid

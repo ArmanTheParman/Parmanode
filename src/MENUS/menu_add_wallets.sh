@@ -53,8 +53,8 @@ read choice
 
 case $choice in
 
-    m) return 0 ;;
-   
+    m) back2main ;;    
+    
     s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then
        install_sparrow
@@ -112,7 +112,7 @@ case $choice in
         exit 0
         ;;
     p|P)
-        return 0 
+        menu_add_new
         ;;
     *)
         invalid
