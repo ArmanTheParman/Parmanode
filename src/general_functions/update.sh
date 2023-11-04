@@ -1,4 +1,6 @@
 function update_computer {
+    if [[ $debug ==1 ]] ; then return 0 ; fi
+    
 #update computer
 if [[ $(uname) == Darwin ]] ; then
 while true ; do
@@ -35,6 +37,7 @@ else
 brew update
 brew upgrade
 fi
+break
 ;;
 
 n|N|NO|no)
