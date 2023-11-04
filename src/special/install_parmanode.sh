@@ -48,7 +48,11 @@ else
 autoupdate
 fi
 
+debug2 "after update computer"
+
 fix_autoupdate
+
+debug2 "after autoupdate"
 
 # Send alert message if needed ; alert=true/false captured.
 #curl -sf https://parmanode.com/alert | sh
@@ -66,6 +70,8 @@ if [[ $OS == "Mac" ]] ; then
     greadlink_check  # For macs, this function is needed for text manipulation functions I'll be making.
         
 fi
+debug2 "near the end"
+
 ensure_english
 check_architecture
 add_rp_function
