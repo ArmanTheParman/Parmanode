@@ -2,7 +2,7 @@ function menu_use {
 set_terminal
 while true
 do
-set_terminal_bit_higher
+set_terminal_custom 45
 echo -e "
 ########################################################################################
 
