@@ -94,9 +94,29 @@ update|UPDATE|Update)
 ap|AP|Ap|aP)
     about ;;
 
-ub)
-menu_bitcoin_core
-;;
+uany) menu_anydesk ;; 
+ub) menu_bitcoin_core ;; 
+ubb) menu_bitbox ;;
+ubre) menu_bre ;; 
+ubtcp) menu_btcpay ;;
+ue) menu_electrum ;;
+uers) menu_electrs ;;
+uf) menu_fulcrum ;;
+ul) menu_lnd ;; 
+ulnb) menu_lnbits ;;j
+ut) menu_tor ;;
+us) menu_sparrow ;;
+ur) menu_rtl ;;
+uts) menu_tor_server ;;
+ubtcpt) menu_btcpay_tor ;; 
+us) menu_specter ;;
+utrz) menu_trezor ;;
+ull) menu_ledger ;;
+ups) parmashell_info ;;
+upbx) menu_parmabox ;;
+upih) menu_pihole ;;
+
+
 
 q | Q | quit)
     exit 0 ;;
