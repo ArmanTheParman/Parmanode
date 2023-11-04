@@ -49,8 +49,8 @@ read choice
 
 case $choice in
 
-   m) return 0 ;; 
-
+    m) back2main ;; 
+    
    ps|PS|Ps)
      if [[ -n $parmashell_n ]] ; then
      install_parmashell
@@ -103,7 +103,7 @@ pih|PiH|Pih)
         exit 0
         ;;
     p|P)
-        return 0 
+        menu_add_new
         ;;
     *)
         invalid
