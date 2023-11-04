@@ -62,6 +62,7 @@ get_ip_address #a function to put the IP address of the computer in memory.
 # get version, and suggest user to update if old.
 
 update_version_info 
+if [[ $exit_loop == false ]] ; then return 0 ; fi
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
