@@ -36,9 +36,7 @@ fi
 
 	done #ends the loop
 
-if true ; then debug2 "wait" ; fi
-debug "pause!"
-parmanode_variables $@
+parmanode_variables $@ #CANNOT USE DEBUG FUNCTION BEFORE THIS"
 debug "waiting"
 set_colours #just exports variables with colour settings to make it easier to code with colours
 debug2 "after colours"
