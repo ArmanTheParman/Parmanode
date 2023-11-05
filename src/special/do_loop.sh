@@ -1,8 +1,6 @@
 #Called by run_parmanode
 
 function do_loop {
-	debug2 "wait1"
-	debug "wait 2"
 #Educational comments included.
 
 #The first line, including the # is treated specially. It means this is
