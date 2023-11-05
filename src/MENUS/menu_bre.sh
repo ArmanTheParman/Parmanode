@@ -92,8 +92,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
 m) back2main ;;
 q|Q|Quit|quit) exit 0 ;;
-p|P) return 1 ;;
-
+p|P) menu_use ;; 
 start|START|Start)
 if [[ $OS == Linux ]] ; then start_bre ; fi
 if [[ $OS == Mac ]] ; then bre_docker_start ; fi

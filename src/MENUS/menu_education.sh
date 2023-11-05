@@ -46,9 +46,9 @@ case $choice in
     cs|CS|Cs)
         cool_stuff
         ;;
-    p|P)
-        return 0
-        ;;
+
+    p|P) menu_use ;; 
+
     q|Q|Quit|QUIT)
         exit 0
         ;;
