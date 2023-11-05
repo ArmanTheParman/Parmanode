@@ -229,7 +229,7 @@ menu_bitcoin_other || return 1
 ;;
 
 p|P)
-return 0
+menu_use
 ;;
 
 delete|Delete|DELETE)

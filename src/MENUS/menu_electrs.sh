@@ -164,9 +164,7 @@ set_rpc_authentication
 continue
 ;;
 
-p|P)
-return 0
-;;
+p|P) menu_use ;; 
 
 q|Q|Quit|QUIT)
 exit 0
