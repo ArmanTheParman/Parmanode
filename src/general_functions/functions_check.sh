@@ -1,15 +1,21 @@
 function sudo_check {
 
 set_terminal
-if [[ $OS != "Mac" ]] ; then
-if command -v sudo && id | grep -q sudo >/dev/null 2>&1
-debug2 "in sudo check 2nd if"
-	then return 0 
+if [[ $OS == "Linux" ]] ; then
+    if command -v sudo >/dev/null ; then
+        if id | grep -q sudo >/dev/null 2>&1 ; then return 0 
+        fi
 	fi
-else
-if command -v sudo >/dev/null 2>&1 ; then return 0 ; fi
-debug2 "in sudo check else"
 fi
+
+if [[ $OS == "Mac" ]] ; then
+    if command -v sudo >/dev/null 2>&1 ; then return 0 
+    fi
+fi
+
+########################################################################################
+#If code reaches here, sudo not available...
+########################################################################################
 
 if [[ $OS == "Mac" ]] ; then
 echo "
@@ -29,7 +35,7 @@ echo "
 "
 enter_exit ; exit 1 #enter_exit is a basic custom printing command.
 fi
-debug2 "after testing sudo checkpoint if Mac"
+
 if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
@@ -51,7 +57,7 @@ echo "
 ########################################################################################
 "
 enter_exit ;
-exit 1
+exit 
 fi
 }
 
@@ -67,7 +73,6 @@ set_terminal
 	if command -v gpg >/dev/null 2>&1
 	then return 0 
 	fi
-debug2 "in gpg check first while loop"
 if [[ $OS == "Linux" ]] ; then
 
 while true ; do # while 2
@@ -108,7 +113,6 @@ fi #end if linux
 #still in while 1
 
 if [[ $OS == "Mac" ]] ; then
-debug2 "in OS Mac, before while 3. while 1 stil continues"
 while true ; do # while 3
 echo "
 ########################################################################################
@@ -136,7 +140,6 @@ echo "
 ########################################################################################
 "
 choose "xq"
-debug2 "in while 3 after text"
 read choice
 case $choice in
 g) install_gpg_mac ; break ;;
@@ -147,7 +150,6 @@ done #end while 3
 
 fi #end if Mac
 done #end while 1
-debug2 "after while 2"
 return 0
 }
 
