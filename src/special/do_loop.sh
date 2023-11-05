@@ -35,8 +35,6 @@ fi
 		fi 
 
 	done #ends the loop
-echo "one moment"
-sleep 2
 debug2 "wait"
 parmanode_variables $@
 debug "waiting"
