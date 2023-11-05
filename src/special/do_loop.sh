@@ -37,9 +37,9 @@ fi
 	done #ends the loop
 
 parmanode_variables $@ #CANNOT USE DEBUG FUNCTION BEFORE THIS"
-debug "waiting"
+
 set_colours #just exports variables with colour settings to make it easier to code with colours
-debug2 "after colours"
+
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
@@ -93,8 +93,6 @@ rm $HOME/.parmanode/.new_install
 else
 autoupdate
 fi
-
-debug2 "after update computer"
 
 fix_autoupdate
 
