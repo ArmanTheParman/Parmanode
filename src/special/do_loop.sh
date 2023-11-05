@@ -37,7 +37,7 @@ fi
 	done #ends the loop
 debug2 "wait"
 parmanode_variables $@
-
+debug "waiting"
 set_colours #just exports variables with colour settings to make it easier to code with colours
 
 # Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
