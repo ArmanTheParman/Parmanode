@@ -4,11 +4,11 @@ cd ${dp}
 git init >/dev/null 2>&1
 git add . >/dev/null 2>&1
 git commit -m "initial commit" >/dev/null 2>&1
-cd -
+cd - >/dev/null
 else
-cd ${dp}
+cd ${dp} >/dev/null
 git add . >/dev/null 2>&1
 git commit -m "auto-commit" >/dev/null 2>&1
-cd -
+cd - >/dev/null
 fi
 }
