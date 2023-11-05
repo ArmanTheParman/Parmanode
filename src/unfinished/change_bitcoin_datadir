@@ -2,7 +2,7 @@ function change_bitcoin_datadir {
 
 while true ; do
 
-source ~/.parmanode/parmaode.conf
+source ~/.parmanode/parmaode.conf >/dev/null 2>&1
 if [[ $drive == "external" ]] ; then swap_to="internal" ; fi
 if [[ $drive == "internal" ]] ; then swap_to="external" ; fi
 
