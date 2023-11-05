@@ -14,6 +14,9 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     there's a Parmanode menu option for that."
 fi
 
+if [[ $OS == Linux  && $debug == 1 ]] ; then
+blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight) &
+fi
 
 set_terminal_custom "50"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
