@@ -75,6 +75,7 @@ debug2 "near the end"
 ensure_english
 check_architecture
 add_rp_function
+debug2 "after add rp function"
 correct_old_installation
 parmanode1_fix
 git_dp
