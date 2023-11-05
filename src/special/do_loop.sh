@@ -35,7 +35,8 @@ fi
 		fi 
 
 	done #ends the loop
-debug2 "wait"
+
+if true ; then debug2 "wait" ; fi
 parmanode_variables $@
 debug "waiting"
 set_colours #just exports variables with colour settings to make it easier to code with colours
