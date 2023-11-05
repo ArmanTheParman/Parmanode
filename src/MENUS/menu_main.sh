@@ -42,7 +42,7 @@ echo -e "
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
 #                                                                                      #
-# $pink   NEW: combine u with next menu options. eg, try ub for bitcoin menu                #
+# $pink   NEW: combine u with next menu options. eg, try ub for bitcoin menu                #$orange
 ########################################################################################
 
  Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
