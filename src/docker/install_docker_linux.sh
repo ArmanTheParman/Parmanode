@@ -30,7 +30,7 @@ $green                y $orange   or $red   n
 choose "xpmq"
 read choice
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit 0 ;;
 p|P) return 1 ;;
 n|N|NO|no|No) return 1 ;;
@@ -54,7 +54,7 @@ set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
@@ -106,7 +106,7 @@ $pink
 $orange"
 choose "xpmq" ; read choice  ; set_terminal
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit 0 ;;
 p|P) return 1 ;;
 no|NO|N|n|No) return 1 ;;

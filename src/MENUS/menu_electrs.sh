@@ -72,7 +72,7 @@ else echo "
 fi
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 I|i|info|INFO)
 info_electrs
 break

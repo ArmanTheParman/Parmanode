@@ -118,8 +118,8 @@ r)
 menu_bitcoin_core
 ;;
 
-m) 
-back2main ;;
+m|M) back2main ;;
+
 
 start|START|Start)
 run_bitcoind

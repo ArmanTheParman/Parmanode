@@ -17,7 +17,7 @@ set_terminal ; echo -e "
 choose "xpmq" ; read choice
 case $choice in
 
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;;
 p|P) return 1 ;;
 n|N) return 0 ;;

@@ -172,7 +172,7 @@ set_terminal ; echo "
 "
 choose "xpmq" ; read choice
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)

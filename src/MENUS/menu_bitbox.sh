@@ -14,7 +14,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
-m) back2main ;;
+m|M) back2main ;;
 
 start|Start|START|S|s)
 check_SSH || return 0

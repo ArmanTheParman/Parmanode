@@ -23,7 +23,7 @@ choose "xpmq"
 read choice
 
 case $choice in q|Q) exit ;; p|P) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 d|D) rm -rf ${e_db}_backup ; break ;; 
 2) 
 mv ${e_db}_backup ${e_db}_backup2

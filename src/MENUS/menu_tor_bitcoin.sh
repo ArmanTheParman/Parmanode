@@ -43,7 +43,7 @@ fi
 
 choose "xpmq" ; read choice
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 Q|q|quit|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 "1")

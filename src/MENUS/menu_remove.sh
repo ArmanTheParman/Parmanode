@@ -177,7 +177,7 @@ read choice
 
 case $choice in
 
-m) back2main ;;
+m|M) back2main ;;
 
 parmanode|PARMANODE|Parmanode)
 uninstall_parmanode

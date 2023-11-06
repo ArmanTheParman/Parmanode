@@ -18,7 +18,7 @@ $orange
 "
 choose "xpmq" ; read choice
 case $choice in Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 y|Yes|Y|yes)
 docker="yes" && return 0 ;;
 n|N|No|NO|no)

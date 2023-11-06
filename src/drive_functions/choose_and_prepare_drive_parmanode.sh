@@ -66,7 +66,7 @@ i | I)
         return 0 
         ;;
 
-m) back2main ;;
+m|M) back2main ;;
 
 q|Q|quit|QUIT|Quit)
         exit 0

@@ -30,7 +30,7 @@ $orange
 
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 start|Start|START|S|s)

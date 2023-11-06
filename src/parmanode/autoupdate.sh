@@ -51,7 +51,7 @@ $cyan
 
 choose "xpmq" ; read choice ; set_terminal 
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
@@ -109,7 +109,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;; 
 p|P) return 0 ;;
 on|On|ON) i

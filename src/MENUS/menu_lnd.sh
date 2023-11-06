@@ -98,7 +98,7 @@ done
 
 set_terminal
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 i|I|info|Info) lnd_info ;;

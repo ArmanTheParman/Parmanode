@@ -58,7 +58,7 @@ $orange
 "
 choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P|s|P) return 1 ;; 
-m) back2main ;;
+m|M) back2main ;;
 i|I|install|Install)
     log "docker" "docker install chosen"
     break ;;
@@ -83,7 +83,7 @@ set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 y|Y|YES|yes|Yes)
     log "docker" "uninstall old Docker versions chosen"
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \

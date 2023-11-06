@@ -49,7 +49,7 @@ read choice
 
 case $choice in
 
-    m) back2main ;; 
+m|M) back2main ;;
     
    ps|PS|Ps)
      if [[ -n $parmashell_n ]] ; then

@@ -28,7 +28,7 @@ choose "xpmq" ; read choice
 
 case $choice in
 
-    m) back2main ;;
+m|M) back2main ;;
 
     w|W)
         connect_wallet_info

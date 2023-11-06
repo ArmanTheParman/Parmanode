@@ -15,7 +15,7 @@ set_terminal ; echo "
 choose "xpmq"
 read choice
 case $choice in
-    m) back2main ;;
+m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;;
     p|P|x|X) return 1 ;;
     *) return 0 ;;

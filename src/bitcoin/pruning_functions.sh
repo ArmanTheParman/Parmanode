@@ -43,7 +43,7 @@ read choice
 set_terminal
 
         case $choice in
-        m) back2main ;;
+        m|M) back2main ;;
 
         prune|Prune|PRUNE)
             log "bitcoin" "user chose to prune"
