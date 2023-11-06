@@ -33,7 +33,7 @@ echo "
 choose "xpmq" ; read choice
 
 case $choice in q|Q|QUIT|Quit) exit 1 ;; p|P) return 1 ;;
-    m) back2main ;;
+m|M) back2main ;;
     
     e|E) 
     if [[ $serverE == "fulcrum" ]] ; then export drive_fulcrum="external" ; break ; fi 

@@ -23,7 +23,7 @@ choose "xpmq"
 read choice
 
     case $choice in
-    m) back2main ;;
+m|M) back2main ;;
 
     a|A)        
         log "bitcoin" "user accepts previous drive choice."

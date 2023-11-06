@@ -90,7 +90,7 @@ $output $output2
 choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q|Quit|quit) exit 0 ;;
 p|P) menu_use ;; 
 start|START|Start)

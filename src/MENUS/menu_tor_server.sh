@@ -37,7 +37,7 @@ set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m) back2main ;;
+m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 rn|RN|Rn) sudo systemctl restart nginx.service  ;;

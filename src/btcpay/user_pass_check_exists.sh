@@ -15,7 +15,7 @@ while true ; do set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice
 case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 now|Now|NOW|n|N) return 2 ;;
 l|L|later|LATER|Later) return 1 ;;
 *) invalid ;;

@@ -33,7 +33,7 @@ set_terminal ; echo -e "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;; 
 y|Y|Yes|yes|YES)
 safe_unmount_parmanode || return 1 

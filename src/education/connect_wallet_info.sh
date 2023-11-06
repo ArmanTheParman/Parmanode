@@ -23,7 +23,7 @@ choose "xpmq"
 read choice
 set_terminal_wide
 case $choice in
-    m) back2main ;;
+m|M) back2main ;;
     s|S)
     sparrow_wallet_info
     ;;

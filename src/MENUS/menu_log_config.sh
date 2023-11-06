@@ -37,7 +37,7 @@ case $choice in
 # The above function results in a variable message_menu_log_config=1 set in a config file.
 # Which results in hiding the message next time, because of the if statement at the start.
 q|Q) exit ;; p|P) return ;; 
-m) back2main ;;
+m|M) back2main ;;
 *) invalid ;;
 esac
 done
@@ -64,7 +64,7 @@ $orange
 "
 choose "xpmq" ; read choice
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q|Quit|QUIT|quit) exit 0 ;;
 p|P) return 1 ;;
 

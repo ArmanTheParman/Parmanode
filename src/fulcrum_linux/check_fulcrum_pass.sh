@@ -20,7 +20,7 @@ set_terminal ; echo "
 
 choose "xpmq" ; read choice
 case $choice in q|Q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;; n|N|NO|No|no) return 1 ;;
-m) back2main ;;
+m|M) back2main ;;
 y|Y|YES|Yes|yes) set_rpc_authentication ; break ;; *) invalid ;; esac
 
 done # inner while loop

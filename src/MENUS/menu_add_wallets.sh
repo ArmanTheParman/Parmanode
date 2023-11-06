@@ -53,7 +53,7 @@ read choice
 
 case $choice in
 
-    m) back2main ;;    
+m|M) back2main ;;
     
     s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then

@@ -27,7 +27,7 @@ fi
 if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
 
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;;
 p|P|n|N|NO|No) return 1 ;;
 
@@ -94,7 +94,7 @@ set_terminal ; echo -e "
 choose "xpmq"
 read choice ; set_terminal
 case $choice in
-m) back2main ;;
+m|M) back2main ;;
 q|Q) exit ;;
 a|A|p|P|n|N|NO|No) return 1 ;;
 i|I)

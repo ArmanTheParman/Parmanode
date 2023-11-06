@@ -84,7 +84,7 @@ fi
 choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-m) back2main ;; 
+m|M) back2main ;;
 
 start | START)
 check_fulcrum_pass

@@ -57,7 +57,7 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 choose "xpmq" ; read choice
 
 case $choice in 
-    m) back2main ;;
+m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
     p|P) return 1 ;; 
     o|O) log "bitcoin" "conf overwrite" && break ;;

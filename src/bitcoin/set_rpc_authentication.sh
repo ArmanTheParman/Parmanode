@@ -42,7 +42,7 @@ choice=$1
 fi
 
 case $choice in
-    m) back2main ;;
+m|M) back2main ;;
     s|S)
 	            password_changer
 				 
