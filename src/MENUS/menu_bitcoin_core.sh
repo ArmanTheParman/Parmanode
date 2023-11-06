@@ -17,8 +17,9 @@ fi
 
 set_terminal_custom "52"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
+unset running output1 output2 highlight 
 
-height=$(tail -n200 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2) >/dev/null 2>&1
+height=$(tail -n200 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ') >/dev/null 2>&1
 #set $running_text
 if [[ -n $height ]] ; then
 running_text="-- height=$height"
@@ -30,8 +31,17 @@ running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
 else running_text="-- status ...type r to refresh, or see log" 
 fi
 
+if [[ -n $height ]] ; then
+    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=1.00' ; then
+    running_text="-- height=$height (fully sync'd)"
+    else
+    temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=0\.[0-9]+\s' | cut -d \. -f 2)
+    pc="${temp:0:2}.${temp:2:2}%"
+    running_text="-- height=$height ($pc)"
+    fi
+fi
 
-unset running output1 output2 highlight 
+
 if [[ $OS == Mac ]] ; then
     if pgrep Bitcoin-Q >/dev/null ; then running=true ; else running=false ; fi
 else
