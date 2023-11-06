@@ -31,4 +31,7 @@ installed_config_remove "sparrow"
 success "Sparrow" "being uninstalled."
 fi
 
+
+rm $dp/.sparrow_first_run >/dev/null 2>&1
+
 }
