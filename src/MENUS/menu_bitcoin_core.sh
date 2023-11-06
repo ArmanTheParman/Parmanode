@@ -14,9 +14,6 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     there's a Parmanode menu option for that."
 fi
 
-if [[ $OS == Linux ]] ; then
-blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
-fi
 
 set_terminal_custom "50"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
@@ -42,6 +39,11 @@ output1="                   Bitcoin is$red NOT running$orange -- choose \"start\
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
+
+if [[ $OS == Linux && $running == true ]] ; then
+blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
+fi
+
 
 echo -e "
 ########################################################################################
