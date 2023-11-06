@@ -41,7 +41,7 @@ else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
-$highlight="$green"
+$highlight="$cyan"
 fi                         
 
 # #This causes error output when bitcoin loading
@@ -71,15 +71,15 @@ echo -e "
       
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
 $highlight    
-      (log)      Bitcoin debug.log ...............(see details of bitcoin running)
-$orange
+      (log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
+
       (bc)       Inspect and edit bitcoin.conf file 
 
       (up)       Set, remove, or change RPC user/pass
 
       (tor)      Tor menu options for Bitcoin
 
-      (mm)        Migrate/Revert an external drive.
+      (mm)       Migrate/Revert an external drive.
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
