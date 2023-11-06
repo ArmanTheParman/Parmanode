@@ -26,7 +26,8 @@ elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo "Verification progress: .*$" ;
 running_text="$($HOME/.bitcoin/debug.log | grep -Eo "Verification progress: .*$")"
 elif tail -n2 $HOME/.bitcoin/debug.log | grep "thread start" ; then
 running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
-else running_text="status ...type r to refresh, or see log" 
+#elif ... Waiting 300 seconds before querying DNS seeds
+else running_text="-- status ...type r to refresh, or see log" 
 fi
 
 
