@@ -19,6 +19,7 @@ set_terminal_custom "52"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 
 height=$(cat $HOME/.bitcoin/debug.log | grep height | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2) >/dev/null 2>&1
+sleep 0.3
 if [[ -z $height ]] ; then height=" ...please wait and type r to refresh" ; fi
 
 unset running output1 output2 highlight 
