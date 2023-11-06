@@ -9,13 +9,13 @@ if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then \
 announce "Fulcrum or electrs is configured to use an external drive." \
-"Aborting format. Please start over." ; return 1 ; fi
+"Aborting format. Please start over." ; disregard_error || return 1 ; fi
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then \
 announce "Bitcoin or electrs is configured to use an external drive." \
-"Aborting format. Please start over." ; return 1 ; fi
+"Aborting format. Please start over." ; disregard_error || return 1 ; fi
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then \
 announce "Bitcoin or Fulcrum is configured to use an external drive." \
-"Aborting format. Please start over." ; return 1 ; fi
+"Aborting format. Please start over." ; disregard_error || return 1 ; fi
 
 if [[ $1 != justFormat ]] ; then
     format_warnings #skip_formatting variable set #DO NOT MOVE
