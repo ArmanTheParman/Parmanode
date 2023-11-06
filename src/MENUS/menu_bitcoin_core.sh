@@ -38,11 +38,11 @@ if [[ $running == true ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange -- height=$height"
 
 output2="                   Sync'ing to the $drive drive"
+highlight="$green"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
-highlight="$cyan"
 fi                         
 
 # #This causes error output when bitcoin loading
