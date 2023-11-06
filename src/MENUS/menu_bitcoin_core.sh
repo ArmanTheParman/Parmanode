@@ -15,8 +15,11 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
 fi
 
 
-set_terminal_custom "50"
+set_terminal_custom "52"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
+
+height=$(cat $HOME/.bitcoin/debug.log | grep height | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2) >/dev/null 2>&1
+if [[ -z $height ]] ; then height=" ...please wait and type r to refresh" ; fi
 
 unset running output1 output2 
 if [[ $OS == Mac ]] ; then
@@ -31,19 +34,20 @@ fi
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1="                   Bitcoin is$green RUNNING$orange-- see log menu for progress"
+output1="                   Bitcoin is$green RUNNING$orange -- height=$height"
 
-output2="                         (Syncing to the $drive drive)"
+output2="                   Sync'ing to the $drive drive"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
-output2="                         (Will sync to the $drive drive)"
+output2="                   Will sync to the $drive drive"
 fi                         
 
 # #This causes error output when bitcoin loading
 # if [[ $OS == Linux && $running == true ]] ; then
 # blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
 # fi
+
 
 
 echo -e "
@@ -81,9 +85,17 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq"
+echo -e "$red
+ Hit 'r' to refresh menu 
+ $orange"
+read choice
+set_terminal
 
 case $choice in
+r)
+menu_bitcoin_core
+;;
 
 m) 
 back2main ;;
