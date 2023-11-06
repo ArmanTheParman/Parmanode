@@ -20,15 +20,15 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo "
-                   ELECTRS IS RUNNING -- SEE LOG MENU FOR PROGRESS 
+if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo -e "
+                   ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 "
 else
-echo "
-                   ELECTRS IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+echo -e "
+                   ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 echo "
 
@@ -70,9 +70,9 @@ else echo "
 ########################################################################################
 "
 fi
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 case $choice in
-
+m) back2main ;;
 I|i|info|INFO)
 info_electrs
 break
@@ -164,9 +164,7 @@ set_rpc_authentication
 continue
 ;;
 
-p|P)
-return 0
-;;
+p|P) menu_use ;; 
 
 q|Q|Quit|QUIT)
 exit 0

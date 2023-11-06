@@ -26,7 +26,7 @@ echo -e "
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
 if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
-if [[ -n $bre_n ]]              ; then echo  "$bre_n"; fi
+if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
@@ -37,7 +37,7 @@ echo -e "#                                                                      
 if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
-if [[ -n $bre_i ]]              ; then echo  "$bre_i"; fi
+if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
@@ -45,14 +45,14 @@ if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 echo -e "#                                                                                      #
 #$cyan Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
-if [[ -n $bitcoin_p ]]         ; then echo  "$bitcoin_p"; fi
-if [[ -n $electrs_p ]]         ; then echo  "$electrs_p"; fi
-if [[ -n $btcrpcexplorer_p ]]  ; then echo  "$btcrpcexplorer_p"; fi
-if [[ -n $bre_p ]]              ; then echo  "$bre_p"; fi
-if [[ -n $lnd_p ]]             ; then echo  "$lnd_p"; fi
-if [[ -n $btcpay_p ]]          ; then echo  "$btcpay_p"; fi
-if [[ -n $fulcrum_p ]]         ; then echo  "$fulcrum_p"; fi
-if [[ -n $btcpTOR_p ]]         ; then echo  "$btcpTOR_p"; fi
+if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
+if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
+if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
+if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
+if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
+if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
+if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
+if [[ -n $btcpTOR_p ]]         ; then echo -e "$pink$btcpTOR_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -61,7 +61,7 @@ choose "xpmq"
 read choice ; set_terminal
 case $choice in
 
-    m) return 1 ;;
+    m) back2main ;; 
 
     B|b|bitcoin|Bitcoin)
         if [[ -n $bitcoin_n ]] ; then
@@ -126,7 +126,7 @@ case $choice in
         exit 0
         ;;
     p|P)
-        return 0 
+        menu_add_new 
         ;;
     *)
         invalid

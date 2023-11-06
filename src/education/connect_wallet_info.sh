@@ -19,10 +19,11 @@ echo -e "
 
 ##############################################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice
 set_terminal_wide
 case $choice in
+    m) back2main ;;
     s|S)
     sparrow_wallet_info
     ;;

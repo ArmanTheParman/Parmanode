@@ -27,9 +27,11 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
-q|Q) exit 0 ;;
+
+m) back2main ;;
+q|Q) exit ;;
 p|P) return 1 ;;
 
 au|AU|Au)

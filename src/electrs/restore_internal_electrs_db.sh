@@ -19,9 +19,11 @@ $red       d)$orange  Nah, and get rid of it
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
-q|Q) exit 0 ;;
+
+m) back2main ;;
+q|Q) exit ;;
 p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 

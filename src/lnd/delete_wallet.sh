@@ -24,8 +24,9 @@ $orange
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in
+m) back2main ;;
 Q|q|Quit|QUIT|quit) 
 exit 0 ;;
 p|P) return 1 ;;

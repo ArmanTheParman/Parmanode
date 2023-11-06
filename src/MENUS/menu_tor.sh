@@ -19,13 +19,13 @@ set_terminal ; echo -e "
   
 ######################################################################################## 
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
+m) back2main ;;
 Q|q|QUIT|Quit|quit) 
     exit 0 ;; 
 
-p|P) 
-    return 0 ;;
+p|P) menu_use ;; 
 
 start|START) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; return 0 ; fi

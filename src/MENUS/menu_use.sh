@@ -2,7 +2,7 @@ function menu_use {
 set_terminal
 while true
 do
-set_terminal_bit_higher
+set_terminal_custom 45
 echo -e "
 ########################################################################################
 
@@ -73,6 +73,9 @@ if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
                        echo "    (any)        AnyDesk 
                             " ; fi
+if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
+                       echo "    (pih)        PiHole 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -81,8 +84,7 @@ choose "xpmq"
 read choice
 
 case $choice in
-
-m) return 0 ;;
+m) back2main ;;
 
 b|B)
     if [[ $bitcoinapp == 1 ]] ; then
@@ -194,6 +196,11 @@ pbx|Pbx)
 any|ANY|Any)
    if [[ $anydeskapp == 1 ]] ; then
    menu_anydesk
+   fi
+   ;;
+pih|PiH|Pih)
+   if [[ $piholeapp == 1 ]] ; then
+   menu_pihole
    fi
    ;;
 p)

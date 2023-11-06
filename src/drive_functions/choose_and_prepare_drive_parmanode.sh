@@ -30,7 +30,7 @@ if [[ $1 == Bitcoin ]] ; then
 echo -e "$green" "$text" "$orange" ; fi 
 echo "########################################################################################
 "
-choose "xpq" #echo statment about above options, previous menu, or quit.
+choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
 
@@ -65,6 +65,8 @@ i | I)
 
         return 0 
         ;;
+
+m) back2main ;;
 
 q|Q|quit|QUIT|Quit)
         exit 0

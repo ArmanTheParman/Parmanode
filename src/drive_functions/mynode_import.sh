@@ -47,8 +47,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 case $choice in
+m) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
 q|Q) exit ;; 
 y|Y|Yes|yes|YES)
@@ -179,8 +180,8 @@ set_terminal ; echo -e "
 
 ########################################################################################    
 "
-choose "xpq"
-case $choice in a|A|q|Q|P|p) return 1 ;; esac
+choose "xpmq"
+case $choice in a|A|q|Q|P|p) return 1 ;; m) back2main ;; esac
 change_bitcoin_drive change
 source $HOME/.parmanode/parmanode.conf
 done

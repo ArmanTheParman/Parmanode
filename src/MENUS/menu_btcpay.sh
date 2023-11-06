@@ -21,6 +21,8 @@ echo -e "
 
              stop)         Stop BTCPay (stops Docker container)
 
+             restart)      Restart BTCPay (restarts Docker container)
+
              c)            Connect BTCPay to LND
 
              bc)           BTCPay config file
@@ -44,9 +46,10 @@ echo -e "
 ########################################################################################
 " 
 debug 3 "before choose"
-choose "xpq" ; read choice ; set_terminal
-case $choice in Q|q|QUIT|Quit|quit) exit 0 ;; p|P) return 0 ;;
-
+choose "xpmq" ; read choice ; set_terminal
+case $choice in Q|q|QUIT|Quit|quit) exit 0 ;;
+p|P) menu_use ;; 
+m) back2main ;;
 bc)
 nano $HOME/.btcpayserver/Main/settings.config
 continue
@@ -62,16 +65,15 @@ connect_btcpay_to_lnd
 ;;
 
 start|START|Start)
-if [[ $OS == "Linux" ]] ; then
-docker start btcpay
-startup_postgres && \
-run_nbxplorer && \
-run_btcpay
-fi
+start_btcpay
 ;;
 
 stop|STOP|Stop)
-if [[ $OS == "Linux" ]] ; then docker stop btcpay ; fi
+stop_btcpay
+;;
+
+restart|Restart)
+restart_btcpay
 ;;
 
 log|Log|LOG)

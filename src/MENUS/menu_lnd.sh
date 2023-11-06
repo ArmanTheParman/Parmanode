@@ -28,7 +28,7 @@ lncli getinfo >/$dp/lndinfo.log 2>/dev/null
 if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
-LND onion URI:
+Tor Onion URI:
 
 $(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
@@ -87,7 +87,7 @@ $lnd_onion $clearnetURI
 $red                                                              Refreshing every 5 seconds $orange
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 }
 while true ; do # case loop
 unset choice
@@ -98,8 +98,9 @@ done
 
 set_terminal
 case $choice in 
+m) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
+p|P) menu_use ;; 
 i|I|info|Info) lnd_info ;;
 s|S|start|START|Start) start_lnd ;;
 st|ST|St|stop|STOP|Stop) stop_lnd ;; 

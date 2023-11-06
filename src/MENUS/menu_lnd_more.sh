@@ -28,11 +28,11 @@ $red      (update)         Update LND to version 0.17.0 $orange
 fi
 echo "########################################################################################
 "
-choose "xpq" 
-read choice
+
+choose "xpmq" ; read choice
 case $choice in
-q|Q) 
-exit 0 ;;
+m) back2main ;;
+q|Q) exit ;;
 p|P) 
 clear
 please_wait ; return 1 ;;

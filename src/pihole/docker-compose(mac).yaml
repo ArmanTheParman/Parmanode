@@ -1,0 +1,22 @@
+version: "3"
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    #network_mode: "host"
+    ports:
+       - "53:53/tcp"
+       - "53:53/udp"
+       - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+       - "80:80/tcp"
+    environment:
+      TZ: 'America/Chicago'
+      WEBPASSWORD: 'neverseller'
+    # Volumes store your data between container upgrades
+    volumes:
+      - "$HOME/parmanode/pihole/etc-pihole:/etc/pihole"
+      - '$HOME/parmanode/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped

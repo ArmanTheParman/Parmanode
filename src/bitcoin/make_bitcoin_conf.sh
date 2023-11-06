@@ -37,10 +37,10 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
         while true ; do
         if [[ $installer == parmanodl || $loop=break ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
-	    set_terminal ; echo "
+	    set_terminal ; echo -e "
 ########################################################################################
 
-    A bitcoin.conf file already exists. You can keep the one you have, but be
+    A$cyan bitcoin.conf$orange file already exists. You can keep the one you have, but be
     aware if this file was not originally birthed by Parmanode, it may cause conflicts
     if there are unexpected settings. Your prune choice will still be added to it.
 
@@ -54,9 +54,10 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 
 case $choice in 
+    m) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
     p|P) return 1 ;; 
     o|O) log "bitcoin" "conf overwrite" && break ;;

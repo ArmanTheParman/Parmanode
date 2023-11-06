@@ -30,13 +30,12 @@ clear ; echo "
     Oh dear, you've downloaded the Parmanode software directly to your home directory. 
     This will cause a conflict for the Parmanode installation. 
     
-    Parmanode can move the directory that you got from GitHub to your Desktop. Make
-    Parmanode do that now?
+    Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
+    Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart parmanode from the Desktop)
+              y)      do it (you'll need to then restart Parmanode) 
 
               n)      nah (ok, but parmanode won't run if you don't move it somewhere)
-
 
     
 ########################################################################################
@@ -46,8 +45,9 @@ read choice
 case $choice in
 
 y|Y|Yes|YES|yes)
-announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit" 
-cd ; mv $original_dir $HOME/Desktop/
+announce "The directory $original_dir will be moved to 
+    $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
+cd ; mkdir -p parman_programs ; mv $original_dir $HOME/parman_programs/
 set_terminal
 exit 0 
 ;;
@@ -74,10 +74,10 @@ clear ; echo "
 	This won't do, because Parmanode needs to create a directory of that same name to
 	install the program, and doing so will wipe the program you're using now.
 
-    Parmanode can move the directory that you got from GitHub to your Desktop. Make
-    Parmanode do that now?
+    Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
+    Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart parmanode from the Desktop)
+              y)      do it (you'll need to then restart Parmanode) 
 
               n)      nah (ok, but parmanode won't run if you don't move it somewhere)
 
@@ -86,9 +86,9 @@ clear ; echo "
 case $choice in
 
 y|Y|Yes|YES|yes)
-announce "The directory $original_dir will be moved to $HOME/Desktop" "OK? Hit Control-C now to cancel and quit"
-cd ; mv $original_dir $HOME/Desktop/
-set_terminal
+announce "The directory $original_dir will be moved to 
+    $HOME/parman_programs/parmanode" "OK? Hit Control-C now to cancel and quit" 
+cd ; mkdir -p parman_programs ; mv $original_dir $HOME/parman_programs/set_terminal
 exit 0 
 ;;
 *)

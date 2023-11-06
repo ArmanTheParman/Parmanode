@@ -12,8 +12,10 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) clean_containers_fulcrum ; return 0  ;; esac 
+choose "xpmq" ; read choice
+case $choice in 
+m) back2main ;;
+q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; *) clean_containers_fulcrum ; return 0  ;; esac 
 return 0
 }
 
