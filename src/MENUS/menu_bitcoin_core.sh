@@ -42,7 +42,7 @@ else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
-$highlight='$cyan'
+highlight='$cyan'
 fi                         
 
 # #This causes error output when bitcoin loading
