@@ -8,7 +8,7 @@ $cyan
                   Would you like to disregard the error and push on?
 $orange
 
-           $green yolo) $orange       Yeah, disregard. What could go wrong?
+           $green yolo) $orange        Yeah, disregard. What could go wrong?
 
            $red  n) $orange          Abort
 
