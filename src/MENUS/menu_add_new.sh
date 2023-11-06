@@ -9,6 +9,8 @@ menu_add_source
 if [[ -z $bitcoin_n ]] ; then
 bitcoin_n="#                                                                                      #"
 menuaddnewbitcoin=fasle
+else
+bitcoin_n="#$green                          b)           Bitcoin Core                                  $orange #"
 fi
 
 set_terminal_higher
@@ -19,7 +21,7 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #"
-echo -e "$green${bitcoin_n}$orange
+echo -e "${bitcoin_n}
 #                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #
