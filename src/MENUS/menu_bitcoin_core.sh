@@ -21,7 +21,7 @@ source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 height=$(cat $HOME/.bitcoin/debug.log | grep height | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2) >/dev/null 2>&1
 if [[ -z $height ]] ; then height=" ...please wait and type r to refresh" ; fi
 
-unset running output1 output2 
+unset running output1 output2 highlight 
 if [[ $OS == Mac ]] ; then
     if pgrep Bitcoin-Q >/dev/null ; then running=true ; else running=false ; fi
 else
@@ -41,6 +41,7 @@ else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
+$highlight=$green
 fi                         
 
 # #This causes error output when bitcoin loading
@@ -53,7 +54,8 @@ fi
 echo -e "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
-########################################################################################
+###################o#####################################################################
+
 "
 echo -e "$output1"
 echo ""
@@ -68,9 +70,9 @@ echo -e "
       (restart)  Restart Bitcoind
       
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
-	    
-      (log)      Inspect Bitcoin debug.log file .....(Check if Bitcoin is running)
-
+$highlight    
+      (log)      Bitcoin debug.log ...............(see details of bitcoin running)
+$orange
       (bc)       Inspect and edit bitcoin.conf file 
 
       (up)       Set, remove, or change RPC user/pass
