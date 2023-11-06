@@ -38,7 +38,7 @@ read choice ; set_terminal
 case $choice in
 
      B|b|bitcoin|Bitcoin)
-        if [[ $menuaddnewbitcoin -ne false ]] ; then
+        if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 
         install_bitcoin
         return 0
