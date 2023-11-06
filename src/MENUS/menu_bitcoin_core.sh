@@ -40,9 +40,10 @@ output1="                   Bitcoin is$red NOT running$orange -- choose \"start\
 output2="                         (Will sync to the $drive drive)"
 fi                         
 
-if [[ $OS == Linux && $running == true ]] ; then
-blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
-fi
+# #This causes error output when bitcoin loading
+# if [[ $OS == Linux && $running == true ]] ; then
+# blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
+# fi
 
 
 echo -e "
