@@ -19,8 +19,16 @@ set_terminal_custom "52"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 
 height=$(tail -n200 $HOME/.bitcoin/debug.log | grep height | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2) >/dev/null 2>&1
-sleep 0.3
-if [[ -z $height ]] ; then height=" ...please wait and type r to refresh" ; fi
+#set $running_text
+if [[ -n $height ]] ; then
+running_text="-- height=$height"
+elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo "Verification progress: .*$" ; then
+running_text="$($HOME/.bitcoin/debug.log | grep -Eo "Verification progress: .*$")"
+elif tail -n2 $HOME/.bitcoin/debug.log | grep "thread start" ; then
+running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
+else running_text="status ...type r to refresh, or see log" 
+fi
+
 
 unset running output1 output2 highlight 
 if [[ $OS == Mac ]] ; then
@@ -35,7 +43,7 @@ fi
 if [[ $running != false ]] ; then running=true ; fi
 
 if [[ $running == true ]] ; then
-output1="                   Bitcoin is$green RUNNING$orange -- height=$height"
+output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
 highlight="$green"
@@ -49,7 +57,6 @@ fi
 # if [[ $OS == Linux && $running == true ]] ; then
 # blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
 # fi
-
 
 
 echo -e "
