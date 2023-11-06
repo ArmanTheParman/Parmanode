@@ -54,7 +54,7 @@ set_terminal ; echo -e "
 choose "xpmq" ; read choice
 case $choice in
 m) back2main ;;
-q|Q) quit ;;
+q|Q) exit ;;
 n|N|NO|No|no|p|P) return 0 ;;
 y|Y|Yes|YES|yes)
 uninstall_rtl

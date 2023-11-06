@@ -31,7 +31,7 @@ echo "##########################################################################
 choose "xpmq" ; read choice
 case $choice in
 m) back2main ;;
-q|Q) quit ;;
+q|Q) exit ;;
 p|P) 
 clear
 please_wait ; return 1 ;;

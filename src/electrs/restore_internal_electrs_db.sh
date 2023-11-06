@@ -22,7 +22,7 @@ $red       d)$orange  Nah, and get rid of it
 choose "xpmq" ; read choice
 case $choice in
 m) back2main ;;
-q|Q) quit ;;
+q|Q) exit ;;
 p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 
