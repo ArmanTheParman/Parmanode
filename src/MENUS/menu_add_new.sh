@@ -3,7 +3,14 @@ set_terminal
 
 while true
 do
+unset bitcoin_n menuaddnewbitcoin
 menu_add_source
+
+if [[ -z $bitcoin_n ]] ; then
+bitcoin_n="#                                                                                      #"
+menuaddnewbitcoin=fasle
+fi
+
 set_terminal_higher
 echo -e "
 ########################################################################################
@@ -11,12 +18,14 @@ echo -e "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
 ########################################################################################
+#                                                                                      #"
+echo -e "$green${bitcoin_n}$orange
 #                                                                                      #
-#                          n)           Node Software                                  #
+#                          n)           Node related software ...                      #
 #                                                                                      #
-#                          w)           Wallet Software                                #
+#                          w)           Wallet Software ...                            #
 #                                                                                      #
-#                          o)           Other Software                                 #
+#                          o)           Other Software ...                             #
 #                                                                                      #
 ########################################################################################
 "
@@ -26,6 +35,13 @@ read choice ; set_terminal
 
 case $choice in
 
+     B|b|bitcoin|Bitcoin)
+        if [[ $menuaddnewbitcoin -ne false ]] ; then
+        set_terminal 
+        install_bitcoin
+        return 0
+        fi
+        ;;
      n|N|node|Node)
         menu_add_node
         return 0
