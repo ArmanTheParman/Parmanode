@@ -19,9 +19,10 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 
 case $choice in 
+m) back2main ;;
 
 q|Q|QUIT|Quit) exit 0 ;; 
 

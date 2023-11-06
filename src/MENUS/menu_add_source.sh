@@ -307,4 +307,18 @@ else
    #not installed
 anydesk_n="#                            (any)         AnyDesk                                     #"
 fi
+
+#PiHole
+unset pihole_i pihole_p pihole_n 
+
+if grep -q "pihole-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+pihole_i="#                                      PiHole                                          #"
+elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+pihole_p="#                                      PiHole                                          #"
+else
+   #not installed
+pihole_n="#                            (pih)         PiHole                                      #"
+fi
 }

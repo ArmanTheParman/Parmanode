@@ -11,7 +11,7 @@ $orange
                     
                     (w)        How to connect your wallet to the node
 
-                    (m)        Bitcoin Mentorship Info
+                    (mm)        Bitcoin Mentorship Info
 
                     (n)        Six reasons to run a node
 
@@ -28,12 +28,12 @@ choose "xpmq" ; read choice
 
 case $choice in
 
-    m) return 0 ;;
+    m) back2main ;;
 
     w|W)
         connect_wallet_info
         ;;
-    m|M)
+    mm|MM|mM|Mm)
         mentorship
         ;;
     n|N|node|Node)
@@ -46,9 +46,9 @@ case $choice in
     cs|CS|Cs)
         cool_stuff
         ;;
-    p|P)
-        return 0
-        ;;
+
+    p|P) menu_use ;; 
+
     q|Q|Quit|QUIT)
         exit 0
         ;;

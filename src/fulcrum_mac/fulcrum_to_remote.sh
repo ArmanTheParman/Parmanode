@@ -36,8 +36,8 @@ $orange
 
 ########################################################################################
 "
-choose "xpq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac
+choose "xpmq" ; read choice
+case $choice in m) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac
 done
 
 password_changer || return 1

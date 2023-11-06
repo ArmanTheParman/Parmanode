@@ -34,8 +34,8 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
     
-    m) return ;;
-    
+    m) back2main ;; 
+
     ps|PS|Ps)
     parmashell_info
     return 0

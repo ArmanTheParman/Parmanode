@@ -5,7 +5,7 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! grep -q "btcpay-end" "$HOME/.parmanode/installed.conf" ; then
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     BTCPay does not seem to be installed with Parmanode. You have options:
@@ -16,11 +16,12 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 
 case $choice in
+m) back2main ;;
 q|Q|quit|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 I|i) install_btcpay_linux 

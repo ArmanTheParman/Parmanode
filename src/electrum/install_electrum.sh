@@ -28,6 +28,8 @@ set_permission_electrum #Linux only
 
 make_electrum_config
 
+install_fuse
+
 installed_conf_add "electrum-end"
 
 if [[ $OS == "Mac" ]] ; then

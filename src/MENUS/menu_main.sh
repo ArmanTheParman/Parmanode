@@ -1,7 +1,8 @@
 function menu_main {
 while true ; do
 set_terminal_bit_higher #custom function to resize the window
-
+source $original_dir/version.conf >/dev/null
+if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
@@ -10,6 +11,7 @@ echo -e "
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
+#    Version:$pink $version                                                               $orange  $space #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
@@ -39,12 +41,13 @@ echo -e "
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
-#                                                                                      #
 ########################################################################################
 
  Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
 
  Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
+
+$pink NEW: combine u with next menu options. eg, try ub for bitcoin menu     $orange 
 "
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
@@ -81,15 +84,40 @@ uninstall_parmanode
 ;;
 update|UPDATE|Update)
     update_parmanode || continue
+    if [[ $main_loop != 0 ]] ; then
+    set_terminal ; 
+    announce "You need to exit and reload Parmanode to use the new version of Parmanode."
+    continue
+    fi
+
     if [[ $exit_loop == false ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)
     about ;;
 
-ub)
-menu_bitcoin_core
-return 0 #necessary for "m" function
-;;
+uany) menu_anydesk ;; 
+ub) menu_bitcoin_core ;; 
+ubb) menu_bitbox ;;
+ubre) menu_bre ;; 
+ubtcp) menu_btcpay ;;
+ue) menu_electrum ;;
+uers) menu_electrs ;;
+uf) menu_fulcrum ;;
+ul) menu_lnd ;; 
+ulnb) menu_lnbits ;;
+ut) menu_tor ;;
+us) menu_sparrow ;;
+ur) menu_rtl ;;
+uts) menu_tor_server ;;
+ubtcpt) menu_btcpay_tor ;; 
+us) menu_specter ;;
+utrz) menu_trezor ;;
+ull) menu_ledger ;;
+ups) parmashell_info ;;
+upbx) menu_parmabox ;;
+upih) menu_pihole ;;
+
+
 
 ul|UL|Ul)
 clear ; please_wait

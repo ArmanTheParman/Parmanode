@@ -378,4 +378,24 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+if [[ $motd == 16 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   True Bitcoiners, the ones that stack because they want to opt out of slavery and 
+   monetary oppression, aren't planning to sell, so the price going down doesn't phase
+   them and doesn't make them want to be slaves. Wit a low enough price, and time, 
+   they will accumulate all the bitcoin. 
+ 
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }

@@ -47,10 +47,10 @@ echo -e "
 
 ########################################################################################                        
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-
+m) back2main ;;
 a|A|p|P) return 1 ;; q|Q) exit ;; 
 
 f|F) 

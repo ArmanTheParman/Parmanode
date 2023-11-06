@@ -1,5 +1,5 @@
 function update_version_info {
-#called by run_parmanode
+#called by run_parmanode/do_loop
 
 #must be in this order
 export_latest_version
@@ -22,6 +22,7 @@ if [[ $latest_version != $version ]] ; then
 }
 
 function old_version_detected {
+if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -40,14 +41,14 @@ set_terminal ; echo "
 choose "xq" ; read choice
 case $choice in
 N|no|NO|No|n) return 0 ;;
-y|Y|YES|Yes|yes) update_parmanode ;;
+y|Y|YES|Yes|yes) update_parmanode ; break ;;
 *) invalid ;;
 esac
 done
 }
 
 function check_backwards_compatibility {
-if [[ $latest_vMajor < $vMajor ]] ; then
+if [[ $latest_vMajor -lt $vMajor ]] ; then
 export version_incompatibility=1
 fi
 }
@@ -56,12 +57,12 @@ function export_latest_version {
 curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
 source /tmp/latest_version.txt && rm /tmp/latest_version.txt >/dev/null
 export latest_version="$version" >/dev/null
-export latext_vMajor="$vMajor" >/dev/null
+export latest_vMajor="$vMajor" >/dev/null
 export latest_vMinor="$vMinor" >/dev/null
 export latest_vPatch="$vPatch" >/dev/null
 }
 
 function export_local_version {
-source ./version.conf
+source $original_dir/version.conf >/dev/null 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
 }

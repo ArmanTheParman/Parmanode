@@ -24,8 +24,8 @@ $orange
     and rescanning the wallet may be required without you realising - and that is 
     SLOW.
 $cyan
-    Would you like to run Bitcoin as a pruned node?$orange This will require about 4 Gb of 
-    space for the minimum prune value.
+    Would you like to run Bitcoin as a pruned node (not recommended generally)? $orange 
+    This will require about 4 Gb of space for the minimum prune value.
 
 
                               prune)     I want to prune
@@ -37,12 +37,13 @@ $cyan
 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 
 read choice
 set_terminal
 
         case $choice in
+        m) back2main ;;
 
         prune|Prune|PRUNE)
             log "bitcoin" "user chose to prune"

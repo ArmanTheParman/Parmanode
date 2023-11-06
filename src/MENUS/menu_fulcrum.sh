@@ -81,9 +81,10 @@ get_onion_address_variable "fulcrum" >/dev/null ; echo "
 else echo "########################################################################################
 "
 fi
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
+m) back2main ;; 
 
 start | START)
 check_fulcrum_pass
@@ -194,9 +195,7 @@ set_rpc_authentication
 continue
 ;;
 
-p|P)
-return 0
-;;
+p|P) menu_use ;; 
 
 q|Q|Quit|QUIT)
 exit 0

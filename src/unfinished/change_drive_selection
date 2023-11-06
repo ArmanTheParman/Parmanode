@@ -19,10 +19,11 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq"
+choose "xpmq"
 read choice
 
     case $choice in
+    m) back2main ;;
 
     a|A)        
         log "bitcoin" "user accepts previous drive choice."

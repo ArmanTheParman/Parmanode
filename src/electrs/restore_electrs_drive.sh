@@ -31,8 +31,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
+
+m) back2main ;;
 
 u|U)
 mv $backup $original
@@ -81,9 +83,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
-
+m) back2main ;;
 u|U)
 return 0 
 ;;
@@ -131,9 +133,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
+choose "xpmq" ; read choice
 case $choice in 
-
+m) back2main ;;
 o|O|original)
 return 0 
 ;;

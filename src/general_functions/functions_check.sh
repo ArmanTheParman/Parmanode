@@ -1,13 +1,21 @@
 function sudo_check {
 
 set_terminal
-if [[ $OS != "Mac" ]] ; then
-if command -v sudo && id | grep sudo >/dev/null 2>&1
-	then return 0 
+if [[ $OS == "Linux" ]] ; then
+    if command -v sudo >/dev/null ; then
+        if id | grep -q sudo >/dev/null 2>&1 ; then return 0 
+        fi
 	fi
-else
-if command -v sudo >/dev/null 2>&1 ; then return 0 ; fi
 fi
+
+if [[ $OS == "Mac" ]] ; then
+    if command -v sudo >/dev/null 2>&1 ; then return 0 
+    fi
+fi
+
+########################################################################################
+#If code reaches here, sudo not available...
+########################################################################################
 
 if [[ $OS == "Mac" ]] ; then
 echo "
@@ -49,7 +57,7 @@ echo "
 ########################################################################################
 "
 enter_exit ;
-exit 1
+exit 
 fi
 }
 
@@ -65,7 +73,6 @@ set_terminal
 	if command -v gpg >/dev/null 2>&1
 	then return 0 
 	fi
-
 if [[ $OS == "Linux" ]] ; then
 
 while true ; do # while 2
@@ -134,10 +141,11 @@ echo "
 "
 choose "xq"
 read choice
-if [[ $choice == "g" ]] ; then install_gpg_mac ; break ; fi    #break out to while 1
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-invalid
-continue #cycle back through while 3
+case $choice in
+g) install_gpg_mac ; break ;;
+q) exit 0 ;;
+*) invalid ;;
+esac
 done #end while 3
 
 fi #end if Mac
@@ -162,8 +170,10 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "xpq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
+choose "xpmq" ; read choice
+case $choice in 
+m) back2main ;;
+q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; 
 
     i|I)
     if [[ $OS == "Linux" ]] ; then sudo apt-get install curl -y ; break ; fi 

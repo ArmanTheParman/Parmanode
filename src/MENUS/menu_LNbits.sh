@@ -22,11 +22,11 @@ while true ; do set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 case $choice in 
+m) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
-
+p|P) menu_use ;; 
 start|Start|START|S|s)
 start_lnbits
 return 0 ;;

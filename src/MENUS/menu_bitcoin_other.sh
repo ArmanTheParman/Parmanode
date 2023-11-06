@@ -48,10 +48,10 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpq" ; read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-
+m) back2main ;;
 
 cd|CD|Cd)
 change_bitcoin_drive

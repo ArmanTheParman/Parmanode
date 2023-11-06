@@ -3,7 +3,16 @@ set_terminal
 
 while true
 do
+unset bitcoin_n menuaddnewbitcoin
 menu_add_source
+
+if [[ -z $bitcoin_n ]] ; then
+bitcoin_n="#                                                                                      #"
+menuaddnewbitcoin=fasle
+else
+bitcoin_n="#$green                          b)           Bitcoin Core                                  $orange #"
+fi
+
 set_terminal_higher
 echo -e "
 ########################################################################################
@@ -11,12 +20,14 @@ echo -e "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
 ########################################################################################
+#                                                                                      #"
+echo -e "${bitcoin_n}
 #                                                                                      #
-#                          n)           Node Software                                  #
+#                          n)           Node related software ...                      #
 #                                                                                      #
-#                          w)           Wallet Software                                #
+#                          w)           Wallet Software ...                            #
 #                                                                                      #
-#                          o)           Other Software                                 #
+#                          o)           Other Software ...                             #
 #                                                                                      #
 ########################################################################################
 "
@@ -26,12 +37,19 @@ read choice ; set_terminal
 
 case $choice in
 
+     B|b|bitcoin|Bitcoin)
+        if [[ -z $menuaddnewbitcoin ]] ; then
+        set_terminal 
+        install_bitcoin
+        return 0
+        fi
+        ;;
      n|N|node|Node)
         menu_add_node
         return 0
         ;;
 
-    m) return 0 ;;
+    m) back2main ;; 
 
     w|W|wallets|Wallets)
         menu_add_wallets
@@ -47,7 +65,7 @@ case $choice in
         exit 0
         ;;
     p|P)
-        return 0 
+        back2main
         ;;
     *)
         invalid
