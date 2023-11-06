@@ -32,7 +32,7 @@ else running_text="-- status ...type r to refresh, or see log"
 fi
 
 if [[ -n $height ]] ; then
-    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=1.00' ; then
+    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=1.00' >/dev/null 2>&1 ; then
     running_text="-- height=$height (fully sync'd)"
     else
     temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=0\.[0-9]+\s' | cut -d \. -f 2)
