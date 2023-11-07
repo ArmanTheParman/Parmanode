@@ -18,8 +18,8 @@ clear
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
 
 #make desktop clickable icon...
-if [ ! -e $HOME/Desktop/run_parmanode ] ; then
-cat > $HOME/Desktop/run_parmanode << 'EOF'
+if [ ! -e $HOME/Desktop/run_parmanode.sh ] ; then
+cat > $HOME/Desktop/run_parmanode.sh << 'EOF'
 #!/bin/bash
 cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
@@ -60,9 +60,22 @@ fi
         brew install git
     fi
 
-######################################################################################################################################################
+#####################################################################################################
 
 # Parmanode first time install most likely...
+
+sudo -k
+if [[ ! -e /Library/Developer/CommandLineTools ]] ; then git --version ; fi 
+clear
+echo "
+########################################################################################
+    
+    Please make sure that any pop-up prompts to install developer tools have finished 
+    installing before continuing here.
+
+########################################################################################
+"
+sudo sleep 0.1
 
 mkdir -p $HOME/parman_programs >/dev/null 2>&1 
 cd $HOME/parman_programs
@@ -85,7 +98,7 @@ echo "
     of running the program, that can be overcome by typing this in terminal:
 
 
-                         $HOME/Desktop/run_parmanode.sh
+            $HOME/parman_programs_parmanode/run_parmanode.sh
 
     It's case sensitive.
 
