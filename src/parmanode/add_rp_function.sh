@@ -6,6 +6,8 @@ then
     if [[ ! -e $HOME/.bashrc ]] ; then touch $HOME/.bashrc ; fi 
 fi
 
+if [[ ! -e $HOME/.$rc ]] ; then touch $HOME/.$rc ; fi
+
 if grep -q run_parmanode.sh < ~/.$rc ; then return 0 ; fi
 
 if ! grep "#Added by Parmanode..." < $HOME/.$rc ; then
