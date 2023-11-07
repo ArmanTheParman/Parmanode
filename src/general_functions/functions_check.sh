@@ -133,8 +133,9 @@ echo "
     gpg is to exit Parmanode and install gpg yourself from gpgtools.org
 
 
-                        g)        Parmanode to install gpg (can take a while)
-                                  (Homebrew will be installed also)
+                        g)        Parmanode to install gpg 
+                                  (this can take a VERY LONG TIME if Homebrew is not
+                                   installed on your system yet.) 
                              
                         q)        Quit and install gpg yourself
 
@@ -146,7 +147,7 @@ read choice
 debug2 "after read choice"
 case $choice in
 g) 
-install_gpg_mac ; break ;;
+install_gpg_mac ; return 0 ;;
 q) 
 exit 0 ;;
 *) 
