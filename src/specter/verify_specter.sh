@@ -4,7 +4,12 @@ cd $HOME/parmanode/specter
 
 gpg --keyserver keyserver.ubuntu.com --recv-keys 36ed357ab24b915f
 
-if ! shasum -a 256 --check SHA256SUMS ; then echo "Checksum failed. Aborting." ; enter_continue ; return 1 
+if which sha256sum >/dev/null ; then 
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then echo "Checksum failed. Aborting." ; enter_continue ; return 1 
+else
+    if ! shasum --check SHA256SUMS | grep -q OK ; then echo "Checksum failed. Aborting." ; enter_continue ; return 1 
+fi 
+   
    else
    set_terminal
    echo "gpg and sha256 checks passed"
