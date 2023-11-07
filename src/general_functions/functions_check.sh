@@ -66,14 +66,15 @@ fi
 
 function gpg_check {
 
+if command -v gpg >/dev/null 2>&1
+	then return 0 
+fi
+
 while true ; do #while 1
 
 set_terminal
 
-	if command -v gpg >/dev/null 2>&1
-	then return 0 
-	fi
-if [[ $OS == "Linux" ]] ; then
+if [[ $(uname) == "Linux" ]] ; then #if 1
 
 while true ; do # while 2
 
@@ -108,11 +109,11 @@ read choice
             then exit 0 ; else invalid ; continue
             fi
 done #end while 2
-fi #end if linux
+fi #end if 1
 
 #still in while 1
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $(uname) == Darwin ]] ; then #if 2
 while true ; do # while 3
 echo "
 ########################################################################################
@@ -132,7 +133,8 @@ echo "
     gpg is to exit Parmanode and install gpg yourself from gpgtools.org
 
 
-                        g)        Parmanode to install gpg 
+                        g)        Parmanode to install gpg (can take a while)
+                                  (Homebrew will be installed also)
                              
                         q)        Quit and install gpg yourself
 
@@ -141,14 +143,28 @@ echo "
 "
 choose "xq"
 read choice
+debug2 "after read choice"
 case $choice in
-g) install_gpg_mac ; break ;;
-q) exit 0 ;;
-*) invalid ;;
+g) 
+install_gpg_mac ; break ;;
+q) 
+exit 0 ;;
+*) 
+invalid ;;
 esac
 done #end while 3
 
-fi #end if Mac
+fi #end if 2 
+
+clear
+echo "
+########################################################################################
+    Unexpecte error in gpg check function. Aborting. Please report to Parman.
+########################################################################################
+Hit <enter> to continue.
+"
+read
+exit
 done #end while 1
 return 0
 }
