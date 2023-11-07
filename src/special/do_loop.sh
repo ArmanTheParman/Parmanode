@@ -85,7 +85,6 @@ set_terminal # custom function for screen size and colour.
 if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 
 
-
 # a self explanatory custom function
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
@@ -94,19 +93,12 @@ else
 autoupdate
 fi
 
-fix_autoupdate
-
-debug2 "after autoupdate"
 
 # Send alert message if needed ; alert=true/false captured.
 #curl -sf https://parmanode.com/alert | sh
 
-#Test for necessary functions
-sudo_check # needed for preparing drives etc.
-gpg_check  # needed to download programs from github
-curl_check # needed to download things using the command prompt rather than a browser.
 
-if [[ $OS == "Mac" ]] ; then 
+if [[ $(uname) == "Darwin" ]] ; then 
 
 	brew_check  # brew needs to be installed for parmanode to work on macs
                 # if skipped, will ask each time parmanode is run
@@ -114,11 +106,16 @@ if [[ $OS == "Mac" ]] ; then
     greadlink_check  # For macs, this function is needed for text manipulation functions I'll be making.
         
 fi
+#Test for necessary functions
+sudo_check # needed for preparing drives etc.
+gpg_check  # needed to download programs from github
+curl_check # needed to download things using the command prompt rather than a browser.
 
 ensure_english
 check_architecture
 add_rp_function
 correct_old_installation
+fix_autoupdate
 parmanode1_fix
 git_dp
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
