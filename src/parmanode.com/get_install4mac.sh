@@ -1,4 +1,5 @@
 # To be stored at parmanode.com 
+return 0
 
 #!/bin/bash
 sudo -k
