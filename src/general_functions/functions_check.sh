@@ -133,7 +133,8 @@ echo "
     gpg is to exit Parmanode and install gpg yourself from gpgtools.org
 
 
-                        g)        Parmanode to install gpg 
+                        g)        Parmanode to install gpg (can take a while)
+                                  (Homebrew will be installed also)
                              
                         q)        Quit and install gpg yourself
 
