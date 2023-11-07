@@ -21,7 +21,7 @@ set_terminal ; echo "
                              Because you use Mac
 
     Parmanode needs a link reading function in the background which isn't available
-    Mac by default. Parmanode will now install this program which comes as a
+    in Mac by default. Parmanode will now install this program which comes as a
     package called \"core utils\". Sit back, it'll take 2 to 10 minutes. You might
     not get much progress feedback as it happens. You can hit control-t for some
     cryptic Mac output which indicates it's still working... Kind of like poking a
