@@ -112,8 +112,20 @@ if [[ $OS == "Mac" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.
 }
 
 function IP_address {
-#IP variable is printed for the user.
-clear
+#IP variable is printecan d for the user.
+if [[ $OS == Linux ]] ; then
+message="    You can actually change the hostname of this computer. Just edit the name 
+    in the file /etc/hostname. For example if you put 'parmanode' in there, just a 
+    single line of text, then you can access the computer with:
+       
+       ssh $USER@parmanode.local
+
+    Cool huh? I think it's cool."
+else
+unset message
+fi
+
+set_terminal_custom 46
 echo -e "
 ########################################################################################
 
@@ -121,14 +133,24 @@ echo -e "
     Your computer's IP address is:                   $cyan             $IP $orange
 
 
-
     Your computer's \"self\" IP address should be:                  127.0.0.1
 
 
-
     For reference, every computer's default self IP address is    127.0.0.1 
-                                                            or    localhost
+                                                            and   localhost
 
+
+    To access this computer from another computer ONE THE SAME NETWORK, you can type 
+    in the terminal of the other computer (not Windows):
+$green
+        ssh $USER@$IP
+$orange
+    ssh needs to be enabled on this system (it usually is be default).
+
+    If you really want to use Windows (eww) to access this computer by ssh, you'll
+    have to install a program called Putty on the Windows machine.
+
+$message
 
 ########################################################################################
 "
