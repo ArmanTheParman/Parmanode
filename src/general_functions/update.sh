@@ -32,12 +32,12 @@ read choice
 
 case $choice in
 y|Y|YES|yes)
-if ! which brew >/dev/null ; then install_brew ; break
+if ! which brew >/dev/null ; then install_homebrew ; break
 else
 brew update
 brew upgrade
-fi
 break
+fi
 ;;
 
 n|N|NO|no)
