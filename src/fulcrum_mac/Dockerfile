@@ -22,7 +22,7 @@ RUN wget https://github.com/cculianu/Fulcrum/releases/download/v1.9.1/Fulcrum-1.
 wget https://github.com/cculianu/Fulcrum/releases/download/v1.9.1/Fulcrum-1.9.1-x86_64-linux.tar.gz.sha256sum && \
 wget https://github.com/cculianu/Fulcrum/releases/download/v1.9.1/Fulcrum-1.9.1-x86_64-linux.tar.gz.asc
 
-RUN shasum -a 256 --check Fulcrum-1.9.1-x86_64-linux.tar.gz.sha256sum
+RUN sha256sum -a 256 --ignore-missing --check Fulcrum-1.9.1-x86_64-linux.tar.gz.sha256sum
 
 #Check gpg sig
 USER root

@@ -16,10 +16,22 @@ else
     sleep 2
 fi
 #Perform SHA256 to verify
-if ! shasum -a 256  --check man*.txt ; then
-set_terminal
-echo "SHA256 check failed. Unknown reason. Please report to Parman. Aborting."
-enter_continue
-return 1
+if which sha256sum >/dev/null ; then
+    if ! sha256sum --ignore-missing --check man*.txt ; then
+    set_terminal
+    echo "SHA256 check failed. Unknown reason. Please report to Parman. Aborting."
+    enter_continue
+    return 1
+    fi
+else
+    if ! shasum -a 256 --check man*.txt | grep OK ; then
+    set_terminal
+    echo "SHA256 check failed. Unknown reason. Please report to Parman. Aborting."
+    enter_continue
+    return 1
+    fi
 fi
+
+
+
 }   
