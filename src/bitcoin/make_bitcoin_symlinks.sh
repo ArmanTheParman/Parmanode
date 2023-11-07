@@ -39,16 +39,17 @@ set_terminal ; echo -e "
 $orange
     NOTHING TO DO, IT'S JUST FOR YOUR INFORMATION IN CASE YOU WANT IT.
 
-
     A symlink to the data directory has been created.
 
-        For external drives,
-            $HOME/.bitcoin points to
+    For external drives, $HOME/.bitcoin points to
+
             $parmanode_drive/.bitcoin
 
-        For Mac users with an internal drive, 
-           $HOME/Library/Application Support/Bitcoin, the default location, now pionts to 
-           $HOME/.bitcoin
+    For Mac users with an internal drive, 
+    $HOME/Library/Application Support/Bitcoin (the default location),
+    now pionts to:
+
+            $HOME/.bitcoin
 
 ########################################################################################
 "
