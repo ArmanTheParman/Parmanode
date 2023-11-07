@@ -8,7 +8,11 @@ curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc
 if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg_mac ; fi
 
 #ignore-missing option not available on shasum
-if ! shasum -a 256 --check SHA256SUMS | grep -q OK ; then debug "Checksum failed. Aborting." ; return 1 ; fi
+if which sha256sum >/dev/null ; then
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; return 1 ; fi
+else
+    if ! shasum -a 256 --check SHA256SUMS | grep -q OK ; then debug "Checksum failed. Aborting." ; return 1 ; fi
+fi
 
 sleep 3
 echo ""
