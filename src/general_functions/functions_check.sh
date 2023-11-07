@@ -74,7 +74,7 @@ while true ; do #while 1
 
 set_terminal
 
-if [[ $OS == "Linux" ]] ; then #if 1
+if [[ $(uname) == "Linux" ]] ; then #if 1
 
 while true ; do # while 2
 
@@ -113,9 +113,8 @@ fi #end if 1
 
 #still in while 1
 
-if [[ $OS == "Mac" ]] ; then #if 2
+if [[ $(uname) == Darwin ]] ; then #if 2
 while true ; do # while 3
-debug2 "in while 3"
 echo "
 ########################################################################################
 
@@ -155,6 +154,16 @@ esac
 done #end while 3
 
 fi #end if 2 
+
+clear
+echo "
+########################################################################################
+    Unexpecte error in gpg check function. Aborting. Please report to Parman.
+########################################################################################
+Hit <enter> to continue.
+"
+read
+exit
 done #end while 1
 return 0
 }
