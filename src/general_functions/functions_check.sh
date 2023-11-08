@@ -84,12 +84,10 @@ echo "
                             Testing \"gpg\" checkpoint
 
     Parmanode has tested if the \"gpg\" command is available on your computer and it
-    is not. The test failed. The program can not continue and will exit. gpg is 
-    necessary for certain commands that Parmanode will use, like verifying 
+    is not. 
+    
+    Gpg is necessary for certain commands that Parmanode will use, like verifying 
     signatures from developers who release their code. 
-
-    Why did this happen? You may be running a minimalist version of gnu-Linux, as gpg
-    is usually bundled together with Linux distributions.
 
     Parmanode can install gpg for you if you like:
 
