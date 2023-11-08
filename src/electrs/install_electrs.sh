@@ -4,7 +4,7 @@ source $parmanode_conf >/dev/null 2>&1
 
 grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
-"Aborting" ; } 
+"Aborting" ; return 1 ; } 
 fi
 
 if [[ $OS == Mac ]] ; then brew_check electrs || return 1 ; fi
