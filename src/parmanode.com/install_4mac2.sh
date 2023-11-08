@@ -34,6 +34,7 @@ cd $HOME/parman_programs/parmanode/
 You can delete this file once you've absorbed the information.
 EOF
 clear
+echo "See new text document on Desktop."
 fi
 
 #no further changes needed.
