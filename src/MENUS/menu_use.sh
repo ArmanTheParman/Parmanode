@@ -2,7 +2,7 @@ function menu_use {
 set_terminal
 while true
 do
-set_terminal_custom 45
+set_terminal_custom 48
 echo -e "
 ########################################################################################
 
@@ -77,6 +77,9 @@ if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
                        echo "    (pih)        PiHole 
                             " ; fi
 echo "                            
+
+    Add more programs from the 'Add' menu
+
 #######################################################################################
 "
 choose "xpmq"
