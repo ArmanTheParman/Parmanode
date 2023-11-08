@@ -31,6 +31,9 @@ cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
 <enter>
 
+NOTE: rp will not work in the window you used to install Parmanode.
+Close it, open a new one, and then rp will work.
+
 You can delete this file once you've absorbed the information.
 EOF
 clear
@@ -115,6 +118,9 @@ cd $HOME/parman_programs/parmanode/
 <enter>
 ./run_parmanode.sh
 <enter>
+
+NOTE: rp will not work in the window you used to install Parmanode.
+Close it, open a new one, and then rp will work.
 
 You can delete this file once you've absorbed the information.
 EOF
