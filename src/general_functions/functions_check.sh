@@ -116,20 +116,17 @@ while true ; do # while 3
 echo "
 ########################################################################################
 
-
                             Testing \"gpg\" checkpoint
 
-
     Parmanode has tested if the \"gpg\" command is available on your computer and it
-    is not. The test failed. The program can not continue and will exit. gpg is 
-    necessary for certain commands that Parmanode will use, like verifying 
+    is not. 
+    
+    Gpg is necessary for certain commands that Parmanode will use, like verifying 
     signatures from developers who release their code. 
 
-    If you want Parmanode to install it for you, then you can select that.
+    Parmanode can install gpg for you if you like:
 
-                        g)        Parmanode to install gpg 
-                             
-                        q)        Quit and install gpg yourself 
+                              (g)      Install gpg
 
 ########################################################################################
 "
