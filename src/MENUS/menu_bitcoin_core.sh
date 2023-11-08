@@ -71,7 +71,7 @@ fi
 # blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
 # fi
 
-
+clear
 echo -e "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
