@@ -1,6 +1,8 @@
 Version 3.16.1
     -Removed Apple file system formatting for better compatibility. Drives
        now format with exFAT, and can be imported to Linux.
+    -Fixed Docker installed detection bug
+    -Detected MacOS < v12.0, can't install Docker.
 Version 3.16.0
     -Removed requirement for Homebrew for Macs from the beginning, installed
        as required.
