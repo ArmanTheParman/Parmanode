@@ -62,13 +62,22 @@ sudo systemctl stop nginx
 sudo systemctl disable nginx
 sudo apt-get purge nginx
 fi
+
 if [[ $OS == Mac ]] ; then
-clear ; please_wait
-brew stop nginx 
-brew services uninstall nginx >/dev/null 2>&1
-rm -rf /usr/local/etc/nginx/
-rm -rf /usr/local/var/log/nginx/
-cd ; brew cleanup
+if which brew >/dev/null ; then
+    clear ; please_wait
+    brew stop nginx 
+    brew services uninstall nginx >/dev/null 2>&1
+    rm -rf /usr/local/etc/nginx/
+    rm -rf /usr/local/var/log/nginx/
+    cd ; brew cleanup
+else
+    set_terminal
+    announce "Parmanode detected that Nginx is not installed with Homebrew Package manager.
+    It cannot uninstall Nginx for you. Please do this yourself and try the installation
+    again. Aborting."
+    return 1
+fi
 fi
 
 return 0 

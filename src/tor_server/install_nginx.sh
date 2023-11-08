@@ -12,7 +12,12 @@ else
 fi
 
 if [[ $OS == Linux ]] ; then sudo apt-get install nginx -y ; fi
-if [[ $OS == Mac ]] ; then brew install nginx ; fi
+
+if [[ $OS == Mac ]] ; then 
+    brew_check Nginx || return 1
+    brew install nginx 
+ fi
+
 installed_conf_add "nginx-end"
 return 0
 }

@@ -97,11 +97,14 @@ fi
 # Send alert message if needed ; alert=true/false captured.
 #curl -sf https://parmanode.com/alert | sh
 
+########################################################################################
+#DEPRECATED...
+# if [[ $(uname) == "Darwin" ]] ; then 
+# 	brew_check  # brew needs to be installed for parmanode to work on macs
+#                 # if skipped, will ask each time parmanode is run
+# fi
+########################################################################################
 
-if [[ $(uname) == "Darwin" ]] ; then 
-	brew_check  # brew needs to be installed for parmanode to work on macs
-                # if skipped, will ask each time parmanode is run
-fi
 #Test for necessary functions
 sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github

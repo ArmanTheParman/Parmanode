@@ -12,6 +12,8 @@ elif [[ $1 == d7 ]] ; then export debug=7
 else export debug=0 
 fi
 
+if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export verify=skip ; fi
+
 #save position of working directory. "Export" makes the variable available everywhere.
 export original_dir=$(pwd) >/dev/null 2>&1
 

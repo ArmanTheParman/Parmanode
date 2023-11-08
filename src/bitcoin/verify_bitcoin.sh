@@ -1,11 +1,13 @@
 function verify_bitcoin {
+if [[ $verify == skip ]] ; then return 0 ; fi #skipverify argument set in parman_variables
+
 cd $HOME/parmanode/bitcoin
 
 # get Bitcoin Shasums
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
 
-if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg_mac ; fi
+if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >/dev/null ; then

@@ -1,6 +1,13 @@
 function install_nodejs {
 
-if [[ $OS == "Mac" ]] ; then if ! which node >/dev/null 2>&1 ; then brew install node ; fi ; return 0 ; fi    
+if [[ $OS == "Mac" ]] ; then 
+    if ! which node >/dev/null 2>&1 ; then 
+    brew_check NodeJS || return 1
+    brew install node 
+    else 
+    return 0 
+    fi
+fi    
 
 check_nodejs ; if [[ $reinstall_nodejs == 1 ]] ; then local nodejs_version=old ; fi
 

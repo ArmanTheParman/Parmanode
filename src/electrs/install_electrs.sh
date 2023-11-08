@@ -7,6 +7,8 @@ if ! which nginx ; then install_nginx || { announce "Trying to first install Ngi
 "Aborting" ; } 
 fi
 
+if [[ $OS == Mac ]] ; then brew_check electrs || return 1 ; fi
+
 unset electrs_compile && restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
 
 if [[ $electrs_compile == "false" ]] ; then 
