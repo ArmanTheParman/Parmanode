@@ -17,3 +17,5 @@ deprecate swap string command
 Get Parmanode to check for database corruptions
 
 dynamic DNS for externalip variable,and LND conf
+
+Tor server relay
