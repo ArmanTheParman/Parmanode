@@ -4,8 +4,6 @@ return 0
 # https://parmanode.com/install_4mac2.sh - the URL is easier to remember and shorter 
 # than if keeping it on Github.
 
-# If you 
-
 
 ########################################################################################
 #!/bin/sh
@@ -57,57 +55,31 @@ fi
 
 while true ; do #loop 1
 if xcode-select -p >/dev/null 2>&1 ; then break ; fi
-while true ; do #loop 2
-clear
-echo "
-########################################################################################
-
-    The 'Command Line Developer Tools' package is needed on your system. It can take 
-    a few minutes to install. 
-
-    Proceed?
-
-            y)    Yes please, I don't know what's going on but I'll Google it.
-
-            n)    Nah, abandon for no reason.
-
-########################################################################################        
-
-    Please make a choice, y or n, then hit <enter>
-
-"
-read choice
-clear
-case $choice in
-y) break ;;
-n) exit 0 ;;
-*) echo "Invalid choice. Hit <enter> to try again." ; continue ;;
-esac
-done #ends loop 2
 
 #Install cldts
 clear
+sudo -k
 echo "
 ########################################################################################
+   
+   Command Line Developer Tools is needed.
 
    There will be a pop up question which you'll need to respond to. The install
    estimate will initially say some HOURS, but ignore that, it's wrong.
 
-########################################################################################
+   Once Command Line Tools have successfully installed, enter your computer password,
+   then <enter> to continue.
 
-    Hit <enter> to continue
-"
-read
-
-xcode-select --install
-clear
-echo " Once Command Line Tools have successfully installed, hit <enter> to continue.
-
- ONLY THEN, and not before, or your computer will melt.
+   Hit <enter> ONLY after the pop up has finished installeding, and not before, or 
+   your computer will melt.
  
- If you want to abandon, you can hit <control> c."
-read
-break
+   If you want to abandon, you can hit <control> c now.
+
+####################################################################################### 
+"
+xcode-select --install
+
+sudo sleep 0.1break
 done #ends loop 1
 
 ########################################################################################
