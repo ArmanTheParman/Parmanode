@@ -127,18 +127,12 @@ echo "
     necessary for certain commands that Parmanode will use, like verifying 
     signatures from developers who release their code. 
 
-    If you want Parmanode to install it for you using \"brew\", then you can select
-    that. Note it takes a while if you don't already have brew installed. Parmanode 
-    will take care of installing brew if needed. Note that the quickest way to get 
-    gpg is to exit Parmanode and install gpg yourself from gpgtools.org
-
+    If you want Parmanode to install it for you, then you can select that.
+    will take care of installing brew if needed. Note that the quickest 
 
                         g)        Parmanode to install gpg 
-                                  (this can take a VERY LONG TIME if Homebrew is not
-                                   installed on your system yet.) 
                              
-                        q)        Quit and install gpg yourself
-
+                        q)        Quit and install gpg yourself 
 
 ########################################################################################
 "
@@ -147,7 +141,7 @@ read choice
 debug2 "after read choice"
 case $choice in
 g) 
-install_gpg_mac ; return 0 ;;
+gpg4mac ; return 0 ;;
 q) 
 exit 0 ;;
 *) 

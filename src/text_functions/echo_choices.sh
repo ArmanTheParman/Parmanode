@@ -96,8 +96,11 @@ return 0
 
 function please_wait { 
 set_terminal
+takes="some time"
+if [[ -n $1 ]] ; then takes="$1" ; fi
+
 echo -e "
- Please wait, this may take some time...
+ Please wait, this may take ${takes}...
 "
 return 0
 }
