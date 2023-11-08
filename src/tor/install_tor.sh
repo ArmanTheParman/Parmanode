@@ -20,13 +20,8 @@ set_terminal
 
 if [[ $OS == "Linux" ]] ; then sudo apt-get install tor -y ; enter_continue || errormessage && return 1 ; fi
 if [[ $OS == "Mac" ]] ; then
-    while ! command -v brew ; do
-        set_terminal ; echo "Homebrew needs to be installed. Do that now (y) (n)?"
-        read choice
-        case $choice in y|Y) install_homebrew ;; n|N) break ;; esac
-    done
-
-    brew install tor && brew services start tor || errormessage && return 1
+brew_check Tor || return 1
+brew install tor && brew services start tor || { log "tor" "failed at tor install && start tor" ; errormessage ; return 1 ; }
 fi
 
 set_terminal ; echo "

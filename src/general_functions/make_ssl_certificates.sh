@@ -1,5 +1,8 @@
 function make_ssl_certificates {
 
+#most likely is redundant...
+if [[ $OS == Mac ]] ; then brew_check openssl || return 1 ; fi
+
 set_terminal
 if [[ $OS == Linux ]] ; then
 if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; sudo apt-get install openssl -y ; fi

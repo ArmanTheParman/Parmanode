@@ -1,6 +1,7 @@
 function verify_ledger {
 
 if [[ $OS == Mac ]] ; then
+brew_check "Ledger Suite" || return 1
 if ! which openssl ; then brew install openssl ; fi
 fi
 

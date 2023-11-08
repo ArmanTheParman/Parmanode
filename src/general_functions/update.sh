@@ -3,6 +3,10 @@ function update_computer {
 
 #update computer
 if [[ $(uname) == Darwin ]] ; then
+return 0
+#Removing the need for Homebrew at the beginning. Users can choose to install it for
+#the packages that require it later.
+#the code below won't run, and I'll adust it later if needed.
 while true ; do
 set_terminal
 echo -e "
@@ -10,8 +14,8 @@ echo -e "
 $cyan
                                  UPDATE THE OS ?
 $orange   
-    Before using Parmanode, it is strongly recommended that you update your operating 
-    system first. 
+    Before using Parmanode, it is recommended that you update your operating 
+    system first.
 
     As it's running, do look at the output, especially near the start; if there is a 
     recommendation to run a command related to \"git unshallow\", then do that.

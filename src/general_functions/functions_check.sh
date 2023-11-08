@@ -128,7 +128,6 @@ echo "
     signatures from developers who release their code. 
 
     If you want Parmanode to install it for you, then you can select that.
-    will take care of installing brew if needed. Note that the quickest 
 
                         g)        Parmanode to install gpg 
                              
@@ -168,12 +167,15 @@ return 0
 function curl_check {
 if [[ -z $(command -v curl) ]] ; then
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    The program curl needs to be installed on your computer for Parmanode to work.
+    The program$cyan curl$orange needs to be installed on your computer for Parmanode to work.
     It's a small command line program that is used to download links from the 
-    internet.
+    internet. It's quite unusual that Parmanode hasn't been able to detect it as 
+    most Linux and Mac operating systems come with it. 
+    
+    On Macs, it requires$cyan Homebrew$orange to be installed first - that can take an hour or so.
     
                           i)          Install curl
 
@@ -188,7 +190,7 @@ q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
 
     i|I)
     if [[ $OS == "Linux" ]] ; then sudo apt-get install curl -y ; break ; fi 
-    if [[ $OS == "Mac" ]] ; then brew install curl ; break ; fi
+    if [[ $OS == "Mac" ]] ; then brew_check curl ; brew install curl ; break ; fi
     ;;
 
     *) invalid ;; 
@@ -197,14 +199,6 @@ done
 fi
 
 return 0
-}
-
-function git_check {
-if [[ $OS == "Linux" ]] ; then    # if the os is linux, then
-if ! which git ; then             # check that git doesn't exist, then
-sudo apt-get install git -y       # install git
-fi  
-fi
 }
 
 function check_for_python {

@@ -10,7 +10,7 @@ locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep
 
 if [[ $OS == Mac ]] ; then
 curl -LO $locationMac 
-verify_ledger || return 1
+if [[ $verify != skip ]] ; then verify_ledger || return 1 ; fi
 hdiutil attach *.dmg ; cd /Volumes/Ledger* ; sudo rm -rf /Applications/"Ledger Live"* ; cp -r *app /Applications
 cd $ledgerDir
 hdiutil detach /Volumes/"Ledger"* 
@@ -19,7 +19,7 @@ fi
 
 if [[ $OS == Linux ]] ; then
 curl -LO $locationLinux
-verify_ledger || return 1
+if [[ $verify != skip ]] ; then verify_ledger || return 1 ; fi
 sudo chmod +x *AppImage
 udev
 fi
