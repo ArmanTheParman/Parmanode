@@ -25,8 +25,7 @@ if [[ -n $height ]] ; then
 running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
 running_text="$($HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
-elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders' ; then
-running_text="Pre-synchronizing blockheaders"
+
 elif tail -n2 $HOME/.bitcoin/debug.log | grep "thread start" ; then
 running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
 #elif ... Waiting 300 seconds before querying DNS seeds
@@ -39,8 +38,13 @@ if [[ -n $height ]] ; then
     else
     temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'progress=0\.[0-9]+\s' | cut -d \. -f 2)
     pc="${temp:0:2}.${temp:2:2}%"
+    if [[ $pc == "00.00%" ]] ; then pc='' ; fi
     running_text="-- height=$height ($pc)"
     fi
+fi
+
+if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders' ; then
+running_text="Pre-synchronizing blockheaders"
 fi
 
 
