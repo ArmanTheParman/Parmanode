@@ -17,7 +17,7 @@ fi
 
 set_terminal_custom "52"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
-unset running output1 output2 highlight 
+unset running output1 output2 highlight height running_text
 
 height=$(tail -n200 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ') >/dev/null 2>&1
 #set $running_text
