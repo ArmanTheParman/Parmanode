@@ -27,5 +27,6 @@ curl -LO https://releases.gpgtools.com/GPG_Suite-2023.3.dmg
 hdiutil attach GPG*.dmg
 cd /Volumes/GPG*
 sudo installer -pkg Install.pkg -target /
+sleep 2
 hdiutil detach /Volumes/GPG*
 }
