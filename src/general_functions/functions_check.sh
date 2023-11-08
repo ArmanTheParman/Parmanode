@@ -135,7 +135,7 @@ read choice
 debug2 "after read choice"
 case $choice in
 g) 
-gpg4mac ; return 0 ;;
+install_gpg4mac ; return 0 ;;
 q) 
 exit 0 ;;
 *) 
