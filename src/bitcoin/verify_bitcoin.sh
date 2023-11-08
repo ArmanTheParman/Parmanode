@@ -7,13 +7,16 @@ cd $HOME/parmanode/bitcoin
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
 curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
 
-if ! which gpg  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
+if ! which gpg >/dev/null  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >/dev/null ; then
-    if ! sha256sum --ignore-missing --check SHA256SUMS ; then debug "Checksum failed. Aborting." ; return 1 ; fi
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum failed. Aborting." ; return 1 ; fi
 else
-    if ! shasum -a 256 --check SHA256SUMS | grep -q OK ; then debug "Checksum failed. Aborting." ; return 1 ; fi
+    rm /tmp/bitcoinsha256 >/dev/null 2>&1
+    shasum -a 256 --check SHA256SUMS >/tmp/bitcoinsha256 2&>1
+    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum failed. Aborting." ; return 1 ; fi
+    rm /tmp/bitcoinsha256 >/dev/null 2>&1
 fi
 
 sleep 3
