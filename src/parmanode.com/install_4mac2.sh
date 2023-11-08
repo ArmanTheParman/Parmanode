@@ -22,10 +22,13 @@ function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
 
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
 To run Parmanode, simply open the terminal and type:
+
 rp
 then <enter>
 
-Alternatively, you can manually type the 'rp' function...
+'rp' stands for 'run Parmanode'. Alternatively, you can manually type 
+out the 'rp' function...
+
 cd $HOME/parman_programs/parmanode/
 <enter>
 ./run_parmanode.sh
@@ -110,10 +113,13 @@ function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
 #make desktop clickable icon...
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
 To run Parmanode, simply open the terminal and type:
+
 rp
 then <enter>
 
-Alternatively, you can manually type the 'rp' function...
+'rp' stands for 'run Parmanode'. Alternatively, you can manually type 
+out the 'rp' function...
+
 cd $HOME/parman_programs/parmanode/
 <enter>
 ./run_parmanode.sh
