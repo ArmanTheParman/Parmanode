@@ -89,29 +89,38 @@ mkdir -p $HOME/parman_programs >/dev/null 2>&1
 cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
+echo "#Added by Parmanode...
+function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
+" | sudo tee -a $HOME/.zshrc
+
 #make desktop clickable icon...
-cat > $HOME/Desktop/run_parmanode.sh << 'EOF'
-#!/bin/bash
+cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
+To run Parmanode, simply open the terminal and type:
+rp
+then <enter>
+
+Alternatively, you can manually type the 'rp' function...
 cd $HOME/parman_programs/parmanode/
+<enter>
 ./run_parmanode.sh
+<enter>
+
+You can delete this file once you've absorbed the information.
 EOF
-sudo chmod +x $HOME/Desktop/run_parmanode.sh >/dev/null 2>&1
 clear
 echo "
 ########################################################################################
 
-    There should be an icon on the desktop for you, \"run_parmanode.sh\".
+    There should be an icon on the desktop for you, \"run_parmanode.txt\" which is
+    a text document reminding you about the following instructions on how to run 
+    Parmanode.
 
-    If you double click it, and your Mac is configured to open a text editor instead
-    of running the program, that can be overcome by typing this in Terminal:
+    Simply open a Terminal window and type:
 
+    rp
+    then <enter>
 
-            cd $HOME/parman_programs_parmanode       <enter>
-    then
-            ./run_parmanode.sh                       <enter> 
-
-
-    It's case sensitive.
+    Enjoy.
 
 ########################################################################################
 "
