@@ -4,6 +4,7 @@ Version 3.16.0
     -GPG for macs now installed via the dmg download instead of via homebrew,
        which is much faster.
     -Skip verify option added; useful for debugging
+    -Minimum required for MacOS set to v10.9
 Version 3.15.3 -- 7th November 2023
     -Menu improvements
     -Sparrow first connection workaround
