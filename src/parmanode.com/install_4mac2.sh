@@ -107,15 +107,16 @@ cd $HOME/parman_programs/parmanode/
 
 You can delete this file once you've absorbed the information.
 EOF
+source ~/.zshrc
 clear
 echo "
 ########################################################################################
 
     There should be an icon on the desktop for you, \"run_parmanode.txt\" which is
     a text document reminding you about the following instructions on how to run 
-    Parmanode.
+    Parmanode:
 
-    Simply open a Terminal window and type:
+    Simply open a new Terminal window (close this one first) and type:
 
     rp
     then <enter>
