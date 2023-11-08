@@ -34,6 +34,8 @@ export pn="$pp/parmanode"
 export parmanode_conf="${dp}/parmanode.conf"
 export installed_conf="${dp}/installed.conf"
 
+get_Mac_version #function to export Mac Version variables
+
 # A counter for the number of times main_menu has been 'Inceptioned'.
 # back2main function will add 1
 export main_loop=0

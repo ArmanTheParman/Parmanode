@@ -21,11 +21,11 @@ echo -e "
 
     Requirements:
 
-            1) Debian based Linux computer
+            1) Debian based Linux computer, or MacOS > 10.9
             
             2) An external OR internal drive (1 Tb recommended)
 
-            3) Users must not hold ANY shitcoins! Honesty system.
+            3) Users must not hold ANY shitcoins! (Honesty system)
 
 
     To report bugs:
