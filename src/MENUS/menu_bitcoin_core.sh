@@ -44,7 +44,7 @@ if [[ -n $height ]] ; then
 fi
 
 if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders' ; then
-running_text="Pre-synchronizing blockheaders"
+running_text="-- Pre-synchronizing blockheaders"
 fi
 
 
