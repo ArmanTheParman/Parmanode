@@ -1,7 +1,7 @@
 return 0
 ########################################################################################
 # This is the install script kept at
-# https://parmanode.com/install_4mac.sh - the URL is easier to remember and shorter 
+# https://parmanode.com/install_4mac2.sh - the URL is easier to remember and shorter 
 # than if keeping it on Github.
 
 # If you 
