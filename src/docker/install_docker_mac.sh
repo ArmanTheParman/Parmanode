@@ -1,5 +1,12 @@
 function install_docker_mac {
 #Downloads and installs for mac
+
+if [[ $MacOSVersion_major -lt 12 ]] ; then 
+announce "You need MacOS version 12.0 or greater to install Docker. Aborting."
+return 1
+fi
+
+
 please_wait
 echo "
 ########################################################################################
