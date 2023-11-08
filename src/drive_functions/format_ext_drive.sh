@@ -41,11 +41,7 @@ if [[ $OS == "Mac" ]] ; then
         set_terminal
 
         log "bitcoin" "eraseDisk $disk ..."
-        if [[ $chip == "arm64" ]] ; then # arm chip computers have a different file system
-        diskutil eraseDisk APFS "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"
-        else
         diskutil eraseDisk exFAT "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"   
-        fi
         set_terminal ; echo "
 #######################################################################################
 
