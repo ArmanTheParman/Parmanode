@@ -88,15 +88,14 @@ echo "
     
                                     SUCCESS !!!
 
-    Bitcoin Core can begin syncing once you select \"START\" from the Bitcoin menu
-    found under the \"Run Parmanode\" menu. You can also watch it fly if you select
-    to observe the log file (same menu).
+    Bitcoin Core should have started syncing.
 
     Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
     App icon in the Applications folder.
     
-    For now, I have not created a service file to automatically make Bitcoin Core 
+    For now, thre is no configuration to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
+    This feature is only available on Linux.
 
     Do remmember to manually restart Bitcoin should your Mac power off. 
 
