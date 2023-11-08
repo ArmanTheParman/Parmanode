@@ -99,12 +99,8 @@ fi
 
 
 if [[ $(uname) == "Darwin" ]] ; then 
-
 	brew_check  # brew needs to be installed for parmanode to work on macs
                 # if skipped, will ask each time parmanode is run
-
-    greadlink_check  # For macs, this function is needed for text manipulation functions I'll be making.
-        
 fi
 #Test for necessary functions
 sudo_check # needed for preparing drives etc.

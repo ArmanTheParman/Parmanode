@@ -1,5 +1,7 @@
 # To be kept at parmanode.com
+# Not finished...
 return 0
+
 
 ########################################################################################
 #!/bin/sh
@@ -37,8 +39,6 @@ if ! which brew >/dev/null 2>&1 ;      then installed_hb="[     ]"  ; else insta
 
 if ! which git >/dev/null 2>&1 ;       then installed_git="[     ]" ; else installed_git="[ yes ]" ; fi
 
-if ! which greadlink >/dev/null 2>&1 ; then installed_cu="[     ]"  ; else installed_cu="[ yes ]" ; fi 
-
 if ! which ssh >/dev/null 2>&1 ;       then installed_ssh="[     ]" ; else installed_ssh="[ yes ]" ; fi
 
 if ! which gpg >/dev/null 2>&1 ;       then installed_gpg="[     ]" ; else installed_gpg="[ yes ]" ; fi
@@ -57,8 +57,6 @@ echo "
     Command Line Developer Tools (for compiling software) .......... $installed_cldt
 
     Git (extracts software from GitHub) ............................ $installed_git
-
-    Coreutils (some extra basic Mac commands Parmanode uses) ....... $installed_cu
 
     SSH (for remote access to your node) ........................... $installed_ssh
 

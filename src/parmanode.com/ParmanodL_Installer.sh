@@ -144,11 +144,6 @@ Please wait...
         if ! which brew >/dev/null ; then export warning=1 ; fi
         fi
 
-        if ! which greadlink >/dev/null ; then
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install coreutils/greadlink. Aborting." ; sleep 4 ; exit ; fi
-            brew install coreutils
-        fi
-
         if ! which git >/dev/null ; then
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
             brew install git
