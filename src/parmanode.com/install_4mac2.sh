@@ -53,47 +53,65 @@ echo "
 "
 read
 exit 0
+fi
 
-########################################################################################
-
-#Assuming not previously installed parmanode...
-
-    if ! which git ; then 
-
-        if ! which brew >/dev/null ; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
-        if ! which brew >/dev/null ; then export warning=1 ; fi
-        fi
-
-        if ! which ssh >/dev/null ; then 
-            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew install ssh 
-        fi
-
-        if ! which gpg >/dev/null ; then 
-            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
-            brew install gpg 
-        fi
-
-        brew install git
-    fi
-
-#####################################################################################################
-
-# Parmanode first time install most likely...
-
-sudo -k
-if [[ ! -e /Library/Developer/CommandLineTools ]] ; then git --version ; fi 
+while true ; do #loop 1
+if xcode-select -p >/dev/null 2>&1 ; then break ; fi
+while true ; do #loop 2
 clear
 echo "
 ########################################################################################
-    
-    Please make sure that any pop-up prompts to install developer tools have finished 
-    installing before continuing here.
+
+    The 'Command Line Developer Tools' package is needed on your system. It can take 
+    a few minutes to install. 
+
+    Proceed?
+
+            y)    Yes please, I don't know what's going on but I'll Google it.
+
+            n)    Nah, abandon for no reason.
+
+########################################################################################        
+
+    Please make a choice, y or n, then hit <enter>
+
+"
+read choice
+clear
+case $choice in
+y) break ;;
+n) exit 0 ;;
+*) echo "Invalid choice. Hit <enter> to try again." ; continue ;;
+esac
+done #ends loop 2
+
+#Install cldts
+clear
+echo "
+########################################################################################
+
+   There will be a pop up question which you'll need to respond to. The install
+   estimate will initially say some HOURS, but ignore that, it's wrong.
 
 ########################################################################################
+
+    Hit <enter> to continue
 "
-sudo sleep 0.1
+read
+
+xcode-select --install
+clear
+echo " Once Command Line Tools have successfully installed, hit <enter> to continue.
+
+ ONLY THEN, and not before, or your computer will melt.
+ 
+ If you want to abandon, you can hit <control> c."
+read
+break
+done #ends loop 1
+
+########################################################################################
+#Installing Parmanode
 
 mkdir -p $HOME/parman_programs >/dev/null 2>&1 
 cd $HOME/parman_programs
@@ -113,10 +131,13 @@ echo "
     There should be an icon on the desktop for you, \"run_parmanode.sh\".
 
     If you double click it, and your Mac is configured to open a text editor instead
-    of running the program, that can be overcome by typing this in terminal:
+    of running the program, that can be overcome by typing this in Terminal:
 
 
-            $HOME/parman_programs_parmanode/run_parmanode.sh
+            cd $HOME/parman_programs_parmanode       <enter>
+    then
+            ./run_parmanode.sh                       <enter> 
+
 
     It's case sensitive.
 
