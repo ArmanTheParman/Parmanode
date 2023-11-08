@@ -227,6 +227,7 @@ menu_use
 ;;
 
 delete|Delete|DELETE)
+stop_bitcoind
 delete_blockchain
 return 1
 ;;
