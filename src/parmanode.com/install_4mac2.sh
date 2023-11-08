@@ -8,22 +8,32 @@ return 0
 ########################################################################################
 #!/bin/sh
 
-printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
-
 if [ -d $HOME/parman_programs/parmanode ] ; then
 clear
 #update parmanode if it exists...
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
 
-#make desktop clickable icon...
-if [ ! -e $HOME/Desktop/run_parmanode.sh ] ; then
-cat > $HOME/Desktop/run_parmanode.sh << 'EOF'
-#!/bin/bash
+#make desktop text document...
+if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
+
+echo "#Added by Parmanode...
+function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
+" | sudo tee -a $HOME/.zshrc
+
+cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
+To run Parmanode, simply open the terminal and type:
+rp
+then <enter>
+
+Alternatively, you can manually type the 'rp' function...
 cd $HOME/parman_programs/parmanode/
+<enter>
 ./run_parmanode.sh
+<enter>
+
+You can delete this file once you've absorbed the information.
 EOF
-sudo chmod +x $HOME/Desktop/run_parmanode*
-echo "New clickable desktop icon made."
+clear
 fi
 
 #no further changes needed.
@@ -107,7 +117,6 @@ cd $HOME/parman_programs/parmanode/
 
 You can delete this file once you've absorbed the information.
 EOF
-source ~/.zshrc
 clear
 echo "
 ########################################################################################
