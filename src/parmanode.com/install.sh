@@ -5,7 +5,7 @@ return 0
 #!/bin/sh
 
 if [ $(uname -s) = Darwin ] ; then
-curl https://parmanode.com/install_4mac.sh | sh
+curl https://parmanode.com/install_4mac2.sh | sh
 exit
 fi
 
