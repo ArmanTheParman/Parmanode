@@ -203,50 +203,6 @@ nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 
-dd|DD)
-echo "
-########################################################################################
-    
-                          BACKUP BITCOIN DATA DIRECTORY    
-
-    If you have a spare drive, it is a good idea to make a copy of the bitcoin data 
-    directory from time to time. This could save you waiting a long time if you were 
-    ever to experience data corruption and needed to resync the blockchain.
-
-    It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
-    work correctly when it comes time toRU|Ru)
-    umbrel_import_reverse
-    ;; use the backed up data, and it's likely the 
-    directory will become corrupted. You have been warned.
-
-    You can copy the entire bitcoin_data directory.
-
-    You could also just copy the chainstate directory, which is a lot smaller, and 
-    this could be all that you need should there be a chainstate error one day. This 
-    directory is smaller and it's more feasible to back it up frequently. I would 
-    suggest doing it every 100,000 blocks or so, in addition to having a full copy 
-    backed up if you have drive space somewhere.
-
-    To copy the data, use your usual computer skills to copy files. The directory is 
-    located either on the internal drive:
-
-                        $HOME/.bitcoin
-
-    or external drive:
-
-                LINUX :   /media/$(whoami)/parmanode/.bitcoin 
-                MAC   :   /Volumes/parmanode/.bitcoin
-
-    Note that if you have an external drive for Parmanode, the internal directory 
-    $HOME/.bitcoin is actually a symlink (shortcut) to the external 
-    directory.
-
-########################################################################################
-"
-enter_continue
-continue
-;;
-
 up)
 set_rpc_authentication
 continue
