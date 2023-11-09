@@ -28,11 +28,9 @@ else #if [[ $electrs_compile == "true" ]] ; then
     #variables from parmanode.conf
     if [[ $electrs_dependencies_mac == true ]] ; then electrs_ask_skip_dependencies ; fi
     if [[ $electrs_skip_dependencies == false || -z $electrs_skip_dependencies ]] ; then
-        debug "in esd false"
         build_dependencies_electrs || return 1 
         parmanode_conf_add "electrs_dependencies_mac=true"
     fi
-    debug "after esd ifs"
     enter_continue
     download_electrs && log "electrs" "download_electrs success" 
     compile_electrs || return 1 
