@@ -34,6 +34,9 @@ y|yes|YES|Yes|yeah|shit_yeah) break ;;
 *) invalid ;;
 esac ; done ; set_terminal
 fi
+
+########################################################################################
+
 if [[ $OS == Mac ]] ; then
 
 set_terminal 

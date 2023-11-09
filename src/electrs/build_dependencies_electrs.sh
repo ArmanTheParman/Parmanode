@@ -37,6 +37,7 @@ else
     fi
 fi
 fi #end if Linux
+
 if [[ $OS == Mac ]] ; then
 brew update ; brew upgrade
 

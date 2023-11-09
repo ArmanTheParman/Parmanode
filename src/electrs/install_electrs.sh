@@ -9,7 +9,8 @@ fi
 
 if [[ $OS == Mac ]] ; then brew_check electrs || return 1 ; fi
 
-unset electrs_compile && restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
+unset electrs_compile 
+restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
 
 if [[ $electrs_compile == "false" ]] ; then 
 
@@ -24,15 +25,15 @@ else #if [[ $electrs_compile == "true" ]] ; then
     preamble_install_electrs || return 1
 
     set_terminal ; please_wait
+    #variables from parmanode.conf
     if [[ $electrs_dependencies_mac == true ]] ; then electrs_ask_skip_dependencies ; fi
-    if [[ $electrs_skip_dependencies == false ]] ; then
+    if [[ $electrs_skip_dependencies == false || -z $electrs_skip_dependencies ]] ; then
         build_dependencies_electrs || return 1 
         parmanode_conf_add "electrs_dependencies_mac=true"
     fi
     download_electrs && log "electrs" "download_electrs success" 
-            debug "download electrs done"
     compile_electrs || return 1 
-            log "electrs" "compile_electrs done" ; debug "build, download, compile... done"
+            log "electrs" "compile_electrs done" 
 
 fi
 #remove old certs (in case they were copied from backup), then make new certs
