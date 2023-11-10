@@ -70,7 +70,7 @@ Hit <enter> to go back to the menu."
     ;;
 gbh)  
 
-if [[ $OS == Mac ]] ; then no_mac ; fi
+if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
     set_terminal
     read -p "Enter the block number you want the hash of... " block
     /usr/local/bin/bitcoin-cli getblockhash $block
