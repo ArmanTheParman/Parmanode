@@ -47,15 +47,7 @@ if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders'
 running_text="-- Pre-synchronizing blockheaders"
 fi
 
-
-if [[ $OS == Mac ]] ; then
-    if pgrep Bitcoin-Q >/dev/null ; then running=true ; else running=false ; fi
-else
-    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
-    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi 2>/dev/null
-    if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
-fi
-
+isbitcoinrunning
 
 if [[ $running != false ]] ; then running=true ; fi
 
