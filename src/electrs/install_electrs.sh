@@ -7,6 +7,13 @@ if ! which nginx ; then install_nginx || { announce "Trying to first install Ngi
 "Aborting" ; return 1 ; } 
 fi
 
+# check Bitcoin settings
+unset rpcuser rpcpassword prune server
+source $HOME/.bitcoin/bitcoin.conf >/dev/null
+check_pruning_off || return 1
+check_server_1 || return 1
+check_rpc_bitcoin
+
 if [[ $OS == Mac ]] ; then 
 if [[ $MacOSVersion_major -lt 12 ]] ; then
 announce "electrs has been tested successfully on newer versions of MacOS.
@@ -56,13 +63,6 @@ rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 { make_ssl_certificates "electrs" && debug "check certs for errors " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 electrs_nginx add
-
-# check Bitcoin settings
-unset rpcuser rpcpassword prune server
-source $HOME/.bitcoin/bitcoin.conf >/dev/null
-check_pruning_off || return 1
-check_server_1 || return 1
-check_rpc_bitcoin
 
 #prepare drives
 choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
