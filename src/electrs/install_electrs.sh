@@ -52,7 +52,6 @@ else #if [[ $electrs_compile == "true" ]] ; then
         build_dependencies_electrs || return 1 
         parmanode_conf_add "electrs_dependencies_mac=true"
     fi
-    enter_continue
     download_electrs && log "electrs" "download_electrs success" 
     compile_electrs || return 1 
             log "electrs" "compile_electrs done" 
