@@ -247,5 +247,11 @@ fi
 
 if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
+return 0
+fi
+
+if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo "Synchoronizing blockheaders" ; then
+export running_text="Synchronizing blockheaders"
+return 0
 fi
 }
