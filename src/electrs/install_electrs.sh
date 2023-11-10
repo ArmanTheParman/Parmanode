@@ -12,7 +12,40 @@ unset rpcuser rpcpassword prune server
 source $HOME/.bitcoin/bitcoin.conf >/dev/null
 check_pruning_off || return 1
 check_server_1 || return 1
+export dontstartbitcoin=true
 check_rpc_bitcoin
+unset dontstartbitcoin
+
+isbitcoinrunning
+if [[ $running == true ]] ; then
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+
+    Bitcoin needs to be stopped when electrs is being stalled. Shall Parmanode
+    stop it for you? 
+
+               y)       Stops Bitcoin Core for now
+
+               n)       Leave Bitcoin Core running, aborts electrs install
+
+########################################################################################  
+"
+choose "xpmq"
+read choice ; set_terminal
+case $choice in
+q|Q) exit ;;
+p|P) return 1 ;;
+n|N) return 1 ;;
+m|M) back2main ;; 
+y|Y) stop_bitcoind ; break ;;
+*) invalid ;;
+esac
+done
+fi #and if bitcoin running
+
+
 
 if [[ $OS == Mac ]] ; then 
 if [[ $MacOSVersion_major -lt 12 ]] ; then
