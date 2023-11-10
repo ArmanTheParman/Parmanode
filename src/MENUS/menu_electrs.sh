@@ -80,6 +80,7 @@ break
 
 start | START)
 start_electrs 
+sleep 2
 ;;
 
 stop | STOP) 
@@ -89,6 +90,7 @@ continue
 
 r|R) 
 restart_electrs
+sleep 2
 continue
 ;;
 
