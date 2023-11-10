@@ -21,8 +21,6 @@ if [[ ! -f $inputfile ]] ; then # if file doesn't exist
 return 1
 fi
 if ! grep -q "$searchstring" < "$inputfile" ; then
-debug2 "no $searchstring in inputfile: $inputfile "
-log "error" "searchstring, $searchstring, doesnt exist, using change_sting_mac for file $inputfile"
 return 0
 fi
 
