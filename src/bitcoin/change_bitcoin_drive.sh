@@ -5,6 +5,7 @@ if [[ $drive == internal ]] ; then otherdrive=external ; fi
 
 while true ; do
 if [[ -z $1 ]] ; then
+if [[ $1 != swap ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -23,6 +24,8 @@ $orange
 "
 choose "xpmq"
 read choice ; set_terminal
+else choice=c
+fi
 fi
 if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
 
