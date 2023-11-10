@@ -1,9 +1,3 @@
-ParmanodL installation option
-fulcrum stop function with docker stop, or internal - test.
-logoutput report send
-bre install fails for some - add more error reporst in logs, and npm install checks. Failure
-   at npm install is a risk.
-sync Linux bitcoin drive using mac - seem insurmountable.
 :set noincsearch - for vsc
 
 system-health-check
@@ -12,10 +6,14 @@ system-health-check
     - check drive health
     - $LANG
     etc
-deprecate swap string command
-
-Get Parmanode to check for database corruptions
 
 dynamic DNS for externalip variable,and LND conf
 
 Tor server relay
+
+########################################################################################
+For Version 4
+########################################################################################
+$HOME/parmanode will be changed to $HOME/parmanode_apps
+deprecate swap string command
+sync Linux bitcoin drive using mac - seems insurmountable.
