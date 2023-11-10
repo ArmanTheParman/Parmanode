@@ -1,4 +1,5 @@
 function start_electrs {
+waif4bitcoin || return 1
 
 please_wait
 if [[ $OS == Linux ]] ; then 
@@ -16,13 +17,13 @@ if [[ $OS == Mac ]] ; then
     fi
 fi
 }
-
+########################################################################################
 function stop_electrs {
 please_wait
 if [[ $OS == Linux ]] ; then sudo systemctl stop electrs.service ; fi
 if [[ $OS == Mac ]] ; then pkill -INT electrs ; fi
 }
-
+########################################################################################
 function restart_electrs {
 please_wait
 if [[ $OS == Linux ]] ; then sudo systemctl restart electrs.service ; fi 
