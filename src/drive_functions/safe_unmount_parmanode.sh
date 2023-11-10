@@ -6,6 +6,7 @@ if ! mount | grep parmanode ; then
     if [[ $1 == menu ]] ; then
     announce "Drive already seems to not be mounted."
     fi
+export wasntmounted=true
 return 0
 fi
 

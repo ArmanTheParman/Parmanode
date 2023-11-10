@@ -3,6 +3,7 @@
 function detect_drive {
 unset disk
 if [[ $1 != menu ]] ; then
+if ! echo $@ | grep -q brief ; then
 set_terminal pink ; echo "
 ########################################################################################
 
@@ -12,11 +13,13 @@ set_terminal pink ; echo "
 "
 enter_continue 
 fi
+fi
 
 while true ; do
 if [[ $1 != menu2 ]] ; then
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
+if ! echo $@ | grep -q brief ; then
 set_terminal ; echo -e "$pink
 ########################################################################################
     
@@ -31,6 +34,9 @@ $pink
 ########################################################################################
 "
 read
+fi
+
+
 if [[ $(uname) == Linux ]] ; then
     if sudo lsblk -o LABEL | grep parmanode ; then
     announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
