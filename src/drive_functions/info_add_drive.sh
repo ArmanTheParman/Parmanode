@@ -23,7 +23,7 @@ set_terminal ; echo -e "
 
       Parmanode drives are compatible across different computers, as long as they
       are of the same files system (eg don't try to bring Parmanode drive from Linux
-      to a Mac system).
+      to a Mac system - although the reverse is generally possible).
 
       You shouldn't attach two Parmanode external drives to the computer 
       simultaneously. Terrible things can happen.
