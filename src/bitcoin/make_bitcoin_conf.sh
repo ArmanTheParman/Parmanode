@@ -67,7 +67,7 @@ esac
 done
 fi
 
-sudo mv /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
-
+sudo cp /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+debug "conf file copied from tmp"
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
 }
