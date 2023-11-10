@@ -1,5 +1,5 @@
 function menu_log_config {
-
+unset message_menu_log_config
 # the "." below at the start of the line is another way to write "source"
 # source will "run" the file specified.
 # sourcing is necessary to see if the variable below is set, hiding the message.
@@ -74,7 +74,7 @@ pc) less $HOME/.parmanode/parmanode.conf ;;
 pa) less $HOME/.parmanode/parmanode_all.log ;;
 delete|DELETE|Delete) 
 rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
-uh) rm $HOME/.parmanode/hide_messages.conf >/dev/null 2>&1
+uh) rm $HOME/.parmanode/hide_messages.conf >/dev/null 2>&1 ; return 0 
 ;;
 *) invalid ;;
 esac
