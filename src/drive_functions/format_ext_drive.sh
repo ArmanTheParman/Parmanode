@@ -41,7 +41,13 @@ if [[ $OS == "Mac" ]] ; then
         set_terminal
 
         log "bitcoin" "eraseDisk $disk ..."
+
+        if [[ $MacOSVersion_major -gt 10 || ($MacOSVersion_major == 10 && $MacOSVersion_minor -gt 12 ) ]] ; then 
+        diskutil eraseDisk APFS "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"
+        else
         diskutil eraseDisk exFAT "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"   
+        fi
+
         set_terminal ; echo "
 #######################################################################################
 
