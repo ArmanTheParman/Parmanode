@@ -22,7 +22,7 @@ q|Q) exit ;;
 p|P) return 1 ;;
 n|N) return 0 ;;
 y|Y|YES|Yes|yes)
-change_bitcoin_drive
+change_bitcoin_drive swap #argument needed to skip question being asked a second time
 return 0 ;;
 *) invalid
 ;;
