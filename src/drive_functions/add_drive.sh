@@ -117,29 +117,6 @@ if [[ $OS == "Linux" ]] ; then
     return 0 ; fi
     fi
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    The drive you wish to use needs to have the label,$cyan \"parmanode\"$orange. Go ahead and 
-    have this changed now? (If there are errors here, you can rename the drive
-    yourself, and return to this program to \"add\" the drive as a Parmanode drive.)
-
-                        y)        Yes
-
-                        n)        No (aborts)
-
-########################################################################################
-"
-choose "xpmq" ; read choice
-set_terminal
-case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 0 ;;
-m|M) back2main ;;
-y|Y|Yes|Yes|yes) break ;;
-n|N|NO|No|no) return 1 ;;
-*) invalid ;;
-esac
-done
 if [[ $OS == "Linux" ]] ; then
 
     if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
