@@ -7,7 +7,21 @@ if ! which nginx ; then install_nginx || { announce "Trying to first install Ngi
 "Aborting" ; return 1 ; } 
 fi
 
-if [[ $OS == Mac ]] ; then brew_check electrs || return 1 ; fi
+if [[ $OS == Mac ]] ; then 
+if [[ $MacOSVersion_major -lt 12 ]] ; then
+announce "electrs has been tested successfully on newer versions of MacOS.
+    It fails with older versions. 
+
+    To use Bitoin Core with a wallet using this computer, either update
+    to a later version of MacOS (12+) or use Sparrow directly with
+    Bitcoin Core (it doesn't need electrs or Fulcrum).
+
+    Aborting.
+    "
+    return 1
+fi
+brew_check electrs || return 1 
+fi
 
 unset electrs_compile 
 restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
