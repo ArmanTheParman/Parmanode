@@ -38,6 +38,7 @@ case $choice in
 # Which results in hiding the message next time, because of the if statement at the start.
 q|Q) exit ;; p|P) return ;; 
 m|M) back2main ;;
+'') break ;;
 *) invalid ;;
 esac
 done
