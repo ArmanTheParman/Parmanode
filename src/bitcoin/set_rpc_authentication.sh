@@ -57,9 +57,11 @@ m|M) back2main ;;
 				export btc_authentication="user/pass" >/dev/null
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
 
+                if [[ ! $dontstartbitcoin == true ]] ; then #will run unless dontstartbitcoin=true
 				sleep 1 
 				echo "Starting Bitcoin"
 				run_bitcoind
+				fi
 
                 break
 		        ;;
@@ -76,8 +78,10 @@ m|M) back2main ;;
 				export btc_authentication="cookie"
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
 
+                if [[ ! $dontstartbitcoin == true ]] ; then #will run unless dontstartbitcoin=true
 				sleep 1
 				run_bitcoind 
+				fi
 				return 1 #important for testing if user/pass set
 		;;	
 
@@ -105,7 +109,9 @@ function set_rpc_authentication_update_conf_edits {
 
 set_terminal
 
+if [[ ! $dontstartbitcoin == true ]] ; then #will run unless dontstartbitcoin=true
 run_bitcoind
+fi
 
 }
 
