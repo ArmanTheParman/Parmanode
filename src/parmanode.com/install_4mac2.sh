@@ -16,9 +16,11 @@ cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >
 #make desktop text document...
 if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
 
+if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
 " | sudo tee -a $HOME/.zshrc
+fi
 
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
 To run Parmanode, simply open the terminal and type:
@@ -81,7 +83,8 @@ echo "
    
    Command Line Developer Tools is needed.
 
-   There will be a pop up question which you'll need to respond to. The install
+   There will be a pop up question which you'll need to respond to (It may actually
+   be minimised, so look at the task bar below if you don't see it). The install
    estimate will initially say some HOURS, but ignore that, it's wrong.
 
    Once Command Line Tools have successfully installed, enter your computer password,
@@ -106,9 +109,11 @@ mkdir -p $HOME/parman_programs >/dev/null 2>&1
 cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
+if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }
 " | sudo tee -a $HOME/.zshrc
+fi
 
 #make desktop clickable icon...
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
