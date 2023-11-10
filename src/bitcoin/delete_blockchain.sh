@@ -39,10 +39,11 @@ external)
 are_you_sure  "Delete external drive blockchain data?" || return 1
 mount_drive || return 1
 please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made)"
-rm -rf $parmanode_drive/.bitcoin/* ; success "Bitcoin data" "being deleted" && return 0 
+rm -rf $parmanode_drive/.bitcoin/* 
 sleep 2
 make_bitcoin_conf
-;;
+debug "check conf file"
+success "Bitcoin data" "being deleted" && return 0 ;;
 *)
 esac
 done
