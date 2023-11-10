@@ -69,6 +69,12 @@ $orange
     any time.
 
     You can also access Bitcoin functions from the Parmanode menu.
+
+$green
+    TIP:
+    Make sure you turn off power saving features, particularly features that put
+    the drive to sleep; Power saving is usually on by default for laptops.
+$orange
     
 
 ########################################################################################
