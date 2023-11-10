@@ -11,16 +11,17 @@ $orange" ; enter_continue
 
 safe_unmount_parmanode || return 1
 
+if [[ ! $wasntmounted == true ]] ; then
 set_terminal ; echo -e "$cyan
 ########################################################################################
-   If it was connected, Parmanode has safely unmounted your$green regular$cyan Parmanode 
-   drive by stopping the programs using it, then unmounting. YOU MUST PHYSICALLY 
-   DISCONNECT THE DRIVE NOW OR BAD THINGS WILL HAPPEN - NOT JOKING.
+   Parmanode has safely unmounted your$green regular$cyan Parmanode drive by stopping 
+   the programs using it, then unmounting. PLEASE MUST PHYSICALLY DISCONNECT THE DRIVE 
+   NOW OR BAD THINGS WILL HAPPEN - NOT JOKING.
 ########################################################################################
 " ; enter_continue ; set_terminal
+fi
 
-detect_drive $@ || return 1 #menu
-drive_details || return 1
+detect_drive $@ "brief" || return 1 #menu
 
 label_check || return 1 
 
@@ -60,49 +61,6 @@ return 0
 fi #end if Linux
 }
 
-    
-
-function drive_details {
-
-if [[ $OS == "Mac" ]] ; then
-set_terminal
-diskutil info $disk
-debug "disk is $disk"
-fi
-
-    
-if [[ $OS == "Linux" ]] ; then
-
-export $(sudo blkid -o export $disk) >/dev/null
-export LABEL UUID TYPE  
-
-set_terminal
-echo -e "
-########################################################################################
-
-    DETAILS OF THE DRIVE ...
-
-        The label is $LABEL
-
-        The UUID is ${UUID}
-
-"
-if [[ $1 == "after" ]] ; then
-echo "
-    Hit <enter> to continue
-########################################################################################
-" ; read ; return 0 ; fi
-echo -e "
-    Type$cyan yes$orange if you think this is correct, anything else to abort.
-
-########################################################################################
-"
-read choice
-case $choice in yes|YES|Yes|y|Y) return 0 ;; *) return 1 ;; esac
-fi #ends if Linux
-
-}
-
 function label_check {
 
 if [[ $OS == "Mac" ]] ; then
@@ -122,8 +80,6 @@ if [[ $OS == "Linux" ]] ; then
     if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
     else sudo e2label $disk parmanode >/dev/null 
     fi
-
-    drive_details "after" ; if [ $? == 1 ] ; then return 1 ; fi
     return 0
 fi # end if Linux
 
