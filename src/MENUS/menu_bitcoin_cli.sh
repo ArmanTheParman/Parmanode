@@ -1,4 +1,4 @@
-function menu_bitcoin-cli {
+function menu_bitcoin_cli {
 while true
 do
 set_terminal
