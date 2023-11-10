@@ -24,7 +24,7 @@ fi
 mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
 installed_config_add "rtl-start"
 make_rtl_config
-docker build -t rtl ./src/rtl || { log "rtl" "failed to build rtl image" && return 1 ; }
+docker build -t rtl $original_dir/src/rtl || { log "rtl" "failed to build rtl image" && return 1 ; }
 docker run -d --name rtl \
                          --network="host" \
                          -v $HOME/parmanode/rtl:/home/parman/RTL2 \

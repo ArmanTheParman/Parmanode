@@ -11,9 +11,12 @@ dynamic DNS for externalip variable,and LND conf
 
 Tor server relay
 
+Migrate a parmanode/other drive at the time of bitcoin install
+
 ########################################################################################
 For Version 4
 ########################################################################################
 $HOME/parmanode will be changed to $HOME/parmanode_apps
 deprecate swap string command
 sync Linux bitcoin drive using mac - seems insurmountable.
+auto-clear failed installs
