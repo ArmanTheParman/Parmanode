@@ -69,4 +69,5 @@ local file="$HOME/.lnd/lnd.conf"
 set_terminal
 rm $file
 make_lnd_conf
+restart_lnd
 }
