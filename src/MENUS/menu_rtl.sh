@@ -27,6 +27,8 @@ echo -e "
 
       (lnd)            Reinstall RTL to reconnect with LND (need if LND reset)
 
+      (t)              Enable RTL access over Tor
+
       
 
       The RTL wallet can be accessed in your browser at:
@@ -69,6 +71,10 @@ continue
 lnd|LND|Lnd)
 reset_rtl_lnd
 continue
+;;
+
+t|T|tor|Tor|TOR)
+enable_tor_rtl
 ;;
 
 *)
