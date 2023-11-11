@@ -29,12 +29,13 @@ lnd_onion="
 $bright_blue
 Tor Onion URI:
 
-$(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
-$orange"
+$(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2) $orange"
 fi
 
 if [[ $lndtor == "Enabled" && -z $lnd_onion ]] ; then
-lnd_onion="LND onion address can take a few minutes to appear when first enabled"
+lnd_onion="
+$bright_blue
+LND onion address can take a few minutes to appear when first enabled$orange"
 fi
 
 if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
