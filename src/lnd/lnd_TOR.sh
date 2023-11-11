@@ -21,7 +21,7 @@ tor.active=1
 ; Added by Parmanode (end)
 " | tee -a $file >/dev/null 2>&1
 
-swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost"
+swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost #Parmanode Tag1"
 restart_lnd
 if [[ $1 == skipsuccess ]] ; then true ; else
 success "LND Tor enabling"
@@ -34,7 +34,7 @@ local file=$HOME/.lnd/lnd.conf
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{print $1$2$3}')-preDisableTor >/dev/null 2>&1
 
 sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
-swap_string "$file" "listen=localhost" "listen=0.0.0.0:$lnd_port"
+swap_string "$file" "listen=localhost #Parmanode Tag1" "listen=0.0.0.0:$lnd_port"
 restart_lnd
 
 success "LND Tor disabling"
