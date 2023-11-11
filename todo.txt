@@ -13,6 +13,8 @@ Tor server relay
 
 Migrate a parmanode/other drive at the time of bitcoin install
 
+create pipe to detect successful wallet creation in LND (lncli create)
+
 ########################################################################################
 For Version 4
 ########################################################################################
