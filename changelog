@@ -1,3 +1,5 @@
+Version 3.16.2 -- 11th November
+    -LND Tor improvements
 Version 3.16.1 -- 9th November
     -Removed Apple file system formatting for better compatibility. Drives
        now format with exFAT, and can be imported to Linux.
