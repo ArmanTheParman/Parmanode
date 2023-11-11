@@ -21,7 +21,7 @@ else torhybrid=Disabled
 fi
 
 #get onion address if it exists...
-unset lnd_onion
+unset lnd_onion clearnetURI
 lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
 
 if grep -q onion: <$dp/lndinfo.log ; then
