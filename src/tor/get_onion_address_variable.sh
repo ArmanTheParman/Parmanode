@@ -19,4 +19,11 @@ if [[ $1 == "electrs" ]] ; then
 export ONION_ADDR_ELECTRS="$(sudo cat /var/lib/tor/$1-service/hostname)" 
 return 0
 fi
+
+if [[ $1 == "rtl" ]] ; then
+export ONION_ADDR_RTL="$(sudo cat /var/lib/tor/$1-service/hostname)" 
+return 0
+fi
+
+
 }

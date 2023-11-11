@@ -2,7 +2,19 @@ function menu_rtl {
 
 
 
-while true ; do set_terminal ; echo -e "
+while true ; do 
+unset tor_message ONION_ADDR_RTL
+
+if grep -q < $dp/parmanode.conf ; then
+get_onion_address_variable rtl
+tor_message="      RTL Onion Address:
+
+                   $ONION_ADDR_RTL
+                   "
+fi 
+
+set_terminal 
+echo -e "
 ########################################################################################
                                  $cyan   RTL Menu     $orange 
 ########################################################################################
@@ -27,15 +39,14 @@ echo -e "
 
       (lnd)            Reinstall RTL to reconnect with LND (need if LND reset)
 
-      (t)              Enable RTL access over Tor
+      (t)              Enable/Disable RTL access over Tor
 
       
 
       The RTL wallet can be accessed in your browser at:
-
 $green
-                         http://localhost:3000
-$orange
+                         http://localhost:3000 $orange
+$
 
 ########################################################################################
 "
@@ -74,7 +85,12 @@ continue
 ;;
 
 t|T|tor|Tor|TOR)
+if ! grep -q "rtl_tor" < $dp/parmanode.conf ; then
 enable_tor_rtl
+else
+disable_tor_rtl
+fi
+
 ;;
 
 *)
