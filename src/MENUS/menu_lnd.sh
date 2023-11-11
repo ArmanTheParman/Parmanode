@@ -81,6 +81,8 @@ echo -e "
 
       (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
 
+      (prv)            Enable/disable Private Mode (Fully Tor Only)
+
       (w)              ... wallet options
 
       (mm)             ... more options
@@ -140,6 +142,10 @@ lnd_disable_hybrid
 fi
 
 ;;
+prv|PRV|Prv)
+fully_tor_only
+;;
+
 
 log|LOG|Log)
 log_counter
@@ -230,5 +236,47 @@ esac ; done
 #option to turn tor on/off
 
 #lncli getinfo
+
+}
+
+
+function fully_tor_only {
+    set_terminal ; echo -e "
+########################################################################################
+
+    In order for your node to be Tor Only and fully private, you need to first 
+    make sure Tor is enabled and Tor/Clearnet Hybrid is disabled. This configuration
+    disallows your node from making any clearnet connections outbound, however, your
+    clearnet IP is still published and others can make clearnet connections to you.
+
+    To disable that and go Tor-Only, modifications to lnd.conf is necessary. Any
+    lines with 'tlsextraip' are commented out with a ';' at the start of the line.
+
+    Parmanode can do this for you, but reversing it, should you ever want to, is
+    up to you. Another way to reverse it is to uninstall/install LND.
+
+    Go ahead and let Parmanode make these changes?
+
+########################################################################################
+"
+# check tor enabled - or do it.
+# check hybrid off - or do it.
+# comment out tlsextrIP
+# comment out tlsextradomain
+
+local file=$HOME/.lnd/lnd.conf
+
+if [[ $lndtor == Disabled ]] ; then
+lnd_enable_tor
+fi
+if [[ ! $torhybrid == Disabled ]] ; then
+lnd_disable_hybrid
+fi
+
+sed -i '/^tlsextraip/s/^; /' $file
+sed -i '/^tlsextradomain/s/^; /' $file
+
+
+
 
 }
