@@ -30,6 +30,7 @@ sudo systemctl disable rtl.service
 sudo systemctl rm /etc/systemd/system/rtl.service
 
 installed_config_remove "rtl"
+disable_tor_rtl
 success "RTL" "being uninstalled."
 return 0
 }
