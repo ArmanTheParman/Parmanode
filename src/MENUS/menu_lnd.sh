@@ -253,8 +253,8 @@ if [[ ! $torhybrid == Disabled ]] ; then
 lnd_disable_hybrid
 fi
 
-sed -i '/^tlsextraip/s/^; /' $file
-sed -i '/^tlsextradomain/s/^; /' $file
+sed -i '/^tlsextraip/s/^;/' $file
+sed -i '/^tlsextradomain/s/^;/' $file
 restart_lnd
 
 }
