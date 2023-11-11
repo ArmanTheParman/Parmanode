@@ -18,6 +18,8 @@ echo "
 
       (ex)             Expose your LND node to other nodes
 
+      (reset)          Reset lnd.conf to default
+
       (alias)          Change LND alias
 
       (port)           Change CLEARNET port. Current port is $lnd_port 
@@ -52,8 +54,19 @@ update|UPDATE|Update)
 update_lnd
 ;;
 
+reset|RESET|Reset)
+reset_lnd_conf
+;;
+
 *)
 invalid ;;
 esac
 done
 } 
+
+function reset_lnd_conf {
+local file="$HOME/.lnd/lnd.conf"
+set_terminal
+rm $file
+make_lnd_conf
+}
