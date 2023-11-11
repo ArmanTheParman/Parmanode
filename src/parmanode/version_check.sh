@@ -65,4 +65,5 @@ export latest_vPatch="$vPatch" >/dev/null
 function export_local_version {
 source $original_dir/version.conf >/dev/null 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
+
 }
