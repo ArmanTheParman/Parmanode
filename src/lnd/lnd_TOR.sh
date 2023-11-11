@@ -21,7 +21,7 @@ tor.active=1
 ; Added by Parmanode (end)
 " | tee -a $file >/dev/null 2>&1
 
-swap_string "$file" "listen=0.0.0.0:9735" "listen=localhost"
+swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost"
 restart_lnd
 if [[ $1 == skipsuccess ]] ; then true ; else
 success "LND Tor enabling"
