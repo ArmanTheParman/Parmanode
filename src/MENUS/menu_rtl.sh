@@ -9,7 +9,7 @@ if grep -q "rtl_tor" < $dp/parmanode.conf ; then
 get_onion_address_variable rtl
 tor_message="      RTL Onion Address:
 
-                   $ONION_ADDR_RTL
+                   $ONION_ADDR_RTL:7005
                    "
 fi 
 
@@ -47,7 +47,7 @@ echo -e "
 $green
                          http://localhost:3000 $orange
 $bright_blue
-      $tor_message
+$tor_message $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
