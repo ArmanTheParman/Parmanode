@@ -46,8 +46,9 @@ lnd_enable_tor skipsuccess
 
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preEnableHybrid >/dev/null 2>&1
 
-swap_string $file "; tor.skip-proxy-for-clearnet-targets=true" "tor.skip-proxy-for-clearnet-targets=true"
+swap_string $file "; tor.skip-proxy-for-clearnet-targets=true" "tor.skip-proxy-for-clearnet-targets=true" #deletes comment
 swap_string $file "tor.streamisolation=true" "tor.streamisolation=false"
+# swap_string $file "; tlsextraip=$IP" "tlsextraip=$IP"
 
 restart_lnd
 success "LND hypbrid TOR/Clearnet mode" "being enabled"
@@ -61,6 +62,7 @@ cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preDisableHy
 
 swap_string $file "tor.skip-proxy-for-clearnet-targets=true" "; tor.skip-proxy-for-clearnet-targets=true"
 swap_string $file "tor.streamisolation=false" "tor.streamisolation=true"
+# swap_string $file "tlsextraip=$IP" "; tlsextraip=$IP"
 restart_lnd
 success "LND hypbrid TOR/Clearnet mode" "being disabled"
 }
