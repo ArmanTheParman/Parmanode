@@ -35,6 +35,7 @@ fi
 
 if [[ -n $lndtor && -z $lnd_onion ]] ; then
 lnd_onion="LND onion address can take a few minutes to appear when first enabled"
+fi
 
 if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
 clearnetURI="
