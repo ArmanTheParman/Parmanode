@@ -255,6 +255,7 @@ fi
 
 sed -i '/^tlsextraip/s/^/; /' $file
 sed -i '/^tlsextradomain/s/^/; /' $file
+sed -i '/^externalip/s/^/; /' $file
 restart_lnd
 
 }
