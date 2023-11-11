@@ -45,7 +45,8 @@ echo -e "
 
       The RTL wallet can be accessed in your browser at:
 $green
-                  http://localhost:3000 $orange
+                  http://localhost:3000 
+                  http://$IP:3000 $orange
 
 $tor_message
 ########################################################################################
