@@ -33,7 +33,7 @@ $(cat $dp/lndinfo.log | grep onion: | cut -d \" -f 2)
 $orange"
 fi
 
-if [[ -n $lndtor && -z $lnd_onion ]] ; then
+if [[ $lndtor == "Enabled" && -z $lnd_onion ]] ; then
 lnd_onion="LND onion address can take a few minutes to appear when first enabled"
 fi
 
