@@ -5,7 +5,7 @@ function menu_rtl {
 while true ; do 
 unset tor_message ONION_ADDR_RTL
 
-if grep -q < $dp/parmanode.conf ; then
+if grep -q "rtl_tor" < $dp/parmanode.conf ; then
 get_onion_address_variable rtl
 tor_message="      RTL Onion Address:
 
