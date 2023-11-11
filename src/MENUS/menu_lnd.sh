@@ -263,6 +263,16 @@ sed -i '/^tlsextradomain/s/^/; /' $file
 sed -i '/^externalip/s/^/; /' $file
 restart_lnd
 
-success "LND" "being made to run by Tor only"
-
+success "LND" "being made to run by Tor-only"
 }
+
+function reverse_fully_tor_only {
+
+local file=$HOME/.lnd/lnd.conf
+
+sed -i '/^; tlsextraip/s/^..//' $file
+# sed -i '/^; tlsextradomain/s/^..//' $file --- can't use this becaue it will enable the teplate IP address.
+sed -i '/^; externalip/s/^..//' $file
+
+restart_lnd
+success "LND" "having Tor-only reversed"
