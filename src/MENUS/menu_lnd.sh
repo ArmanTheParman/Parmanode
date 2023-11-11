@@ -179,6 +179,7 @@ $orange
 "
 enter_continue
 nano $HOME/.lnd/lnd.conf 
+please_wait
 continue ;;
 
 pw|Pw|PW|password|PASSWORD|Password)
