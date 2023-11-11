@@ -263,4 +263,6 @@ sed -i '/^tlsextradomain/s/^/; /' $file
 sed -i '/^externalip/s/^/; /' $file
 restart_lnd
 
+success "LND" "being made to run by Tor only"
+
 }
