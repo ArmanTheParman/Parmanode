@@ -146,7 +146,11 @@ fi
 
 ;;
 prv|PRV|Prv)
+if grep -qE '^externalip' < $HOME/.lnd/lnd.conf ; then
 fully_tor_only
+else
+reverse_fully_tor_only
+fi
 ;;
 
 
@@ -276,3 +280,4 @@ sed -i '/^; externalip/s/^..//' $file
 
 restart_lnd
 success "LND" "having Tor-only reversed"
+}
