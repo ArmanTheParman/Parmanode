@@ -42,9 +42,11 @@ RelayBandwidthBurst 300 KBytes
 #End Tor Relay Installation.
 " | sudo tee -a $file >/dev/null 2>&1
 
-#sudo apt-get install nyx
 
 sudo systemctl restart tor
+
+sudo apt-get install nyx -y
+
 installed_config_add "torrelay-end"
 success "Your Tor Relay" "being installed"
 }
