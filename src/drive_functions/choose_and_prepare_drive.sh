@@ -37,7 +37,6 @@ export drive="external" ; parmanode_conf_add "drive=external"
 return 0
 ;;
 
-;;
 
 e | E)    #External drive setup
 
