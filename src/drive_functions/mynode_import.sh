@@ -160,7 +160,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The drive data has been adjusted such that it can be used by Parmanode. It's
-    label has been changed from$cyan myNode to parmanode${orange}.
+    label has been changed from$cyan myNode$orange to$cyan parmanode${orange}.
 
     The drive can still be used by MyNode - swap over at your leisure. 
 

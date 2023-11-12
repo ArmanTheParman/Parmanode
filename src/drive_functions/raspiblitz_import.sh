@@ -165,7 +165,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The drive data has been adjusted such that it can be used by Parmanode. It's
-    label has been changed from$cyan BLOCKCHAIN to parmanode${orange}.
+    label has been changed from$cyan BLOCKCHAIN$orange to$cyan parmanode${orange}.
 
     The drive can still be used by RaspiBlitz - swap over at your leisure, but you do
     first need to use the Parmanode \"revert\" tool first.
