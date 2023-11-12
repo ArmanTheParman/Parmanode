@@ -31,6 +31,7 @@ function make_bitcoin_directories {
 
 #Symlinks 
     log "bitcoin" "make_bitcoin_symlinks... " && \
+    debug "pre make bitcoin symplinks"
     make_bitcoin_symlinks
 
 return 0
