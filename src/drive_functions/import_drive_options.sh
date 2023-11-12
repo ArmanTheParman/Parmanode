@@ -51,7 +51,7 @@ rp|Rb|RB)
 export importdrive=true
 raspiblitz_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
-if ! grep -q "parmanode" < /etc/fstab
+if ! grep -q "parmanode" < /etc/fstab ; then
         get_UUID "$disk" 
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
@@ -62,7 +62,7 @@ MY|My|my)
 export importdrive=true
 mynode_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
-if ! grep -q "parmanode" < /etc/fstab
+if ! grep -q "parmanode" < /etc/fstab ; then
         get_UUID "$disk" 
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
