@@ -14,8 +14,8 @@ $orange
     \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
     option in the tools menu.
 
-    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, otherwise
-    the drive won't work properly.
+    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, 
+    otherwise the drive won't work properly.
 $pink
     Lightning channels are not migrated. At present, it has not been tested if your
     lighning channles are safe to leave. Either close your channels if you have them,
