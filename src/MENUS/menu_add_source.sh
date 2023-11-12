@@ -321,4 +321,18 @@ else
    #not installed
 pihole_n="#                            (pih)         PiHole                                      #"
 fi
+
+#Torrelay
+unset torrelay_i torrelay_p torrelay_n 
+
+if grep -q "torrelay-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+torrelay_i="#                                      TorRelay                                        #"
+elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+torrelay_p="#                                      TorRelay                                        #"
+else
+   #not installed
+torrelay_n="#                            (trl)         TorRelay                                    #"
+fi
 }

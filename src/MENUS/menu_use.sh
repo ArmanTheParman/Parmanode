@@ -76,6 +76,9 @@ if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
 if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
                        echo "    (pih)        PiHole 
                             " ; fi
+if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
+                       echo "    (trl)        Tor Relay 
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
@@ -204,6 +207,11 @@ any|ANY|Any)
 pih|PiH|Pih)
    if [[ $piholeapp == 1 ]] ; then
    menu_pihole
+   fi
+   ;;
+trl|Trl|TRL)
+   if [[ $torrelayapp == 1 ]] ; then
+   menu_torrelay
    fi
    ;;
 p)
