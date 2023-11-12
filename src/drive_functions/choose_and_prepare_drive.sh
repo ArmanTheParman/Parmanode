@@ -3,7 +3,7 @@ function choose_and_prepare_drive {
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="                          (3) - Import an external drive
+local text="                           (3) - Import an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) 
 " 
 
