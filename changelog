@@ -1,3 +1,5 @@
+Version 3.17.0 -- November 12
+    -Tor Relay
 Version 3.16.2 -- 11th November
     -LND Tor improvements
     -RTL wallet accessible via Tor
