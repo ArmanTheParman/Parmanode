@@ -41,6 +41,8 @@ echo -e "
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
+#$green    NEW: Run a Tor Relay! See add --> other --> Tor Relay                         $orange    #
+#                                                                                      #
 ########################################################################################
 
  Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
