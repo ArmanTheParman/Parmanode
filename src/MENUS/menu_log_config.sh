@@ -56,11 +56,10 @@ $cyan
 
                         pc)            parmanode.conf
 
-$pink
                         delete)        DELETE ALL LOGS (not conf)
 
                         uh)            Unhide messages (you hid them with \"FREE ROSS\")
-$orange
+
 ########################################################################################
 "
 choose "xpmq" ; read choice

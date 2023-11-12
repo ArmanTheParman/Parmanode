@@ -32,6 +32,7 @@ read choice #user's choice stored in variable, choice
 
 case $choice in
 3)
+log "importdrive" "$1 install, choice to import drive"
 import_drive_options
 export drive="external" ; parmanode_conf_add "drive=external"
 return 0
