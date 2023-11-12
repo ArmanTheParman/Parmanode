@@ -1,5 +1,5 @@
 function uninstall_sparrow {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall Sparrow 

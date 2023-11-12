@@ -1,6 +1,6 @@
 function uninstall_torrelay {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall Tor Relay 
