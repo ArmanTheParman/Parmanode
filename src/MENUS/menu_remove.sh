@@ -169,6 +169,12 @@ echo "#                                    (pih)              PiHole            
 elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then piholemenu=1
 echo "#                                    (pih)              PiHole      (partial)          #
 #                                                                                      #" ; fi
+if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
+echo "#                                    (trl)              TorRelay                       #
+#                                                                                      #"
+elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
+echo "#                                    (trl)              TorRelay    (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -339,6 +345,14 @@ uninstall_pihole
 return
 fi
 ;;
+
+trl|Trl|TRL)
+if [[ $torrelaymenu == 1 ]] ; then
+uninstall_torrelay
+return
+fi
+;;
+
 
 p|P)
 	return 0
