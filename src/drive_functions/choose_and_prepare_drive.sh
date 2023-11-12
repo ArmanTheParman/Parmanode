@@ -3,13 +3,9 @@ function choose_and_prepare_drive {
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="   NOTE: 
-
-    If you wish to use a drive from a different installation, like Umbrel, Mynode
-    RaspiBlitz, or even a different ParmanodL, then please choose INTERNAL drive for
-    now, and later opt to migrate an external drive in (from the Bitcoin menu). After
-    that, choose to swap the internal/external drive choice from the Bitcoin menu.
-"
+local text="                          (3) - Import an external drive
+                                 (Parmanode, Umbrel, RaspiBlitz or MyNode) 
+" 
 
 while true
 do
@@ -24,7 +20,7 @@ echo -e "
 
                            (e) - Use an EXTERNAL drive
 
-                           (i) - Use an INTERNAL drive:
+                           (i) - Use an INTERNAL drive
 "
 if [[ $1 == Bitcoin ]] ; then
 echo -e "$green" "$text" "$orange" ; fi 
@@ -35,6 +31,14 @@ choose "xpmq" #echo statment about above options, previous menu, or quit.
 read choice #user's choice stored in variable, choice
 
 case $choice in
+3)
+import_drive_options
+export drive="external" ; parmanode_conf_add "drive=external"
+return 0
+;;
+
+;;
+
 e | E)    #External drive setup
 
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi

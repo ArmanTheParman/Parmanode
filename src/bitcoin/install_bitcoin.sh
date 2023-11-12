@@ -6,7 +6,7 @@ if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docke
 fi
 
 set_terminal
-
+unset importdrive
 choose_and_prepare_drive "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
@@ -32,18 +32,22 @@ log "bitcoin" "make_bitcoin_directories function..."
     # symlinks created (before Bitcoin core installed)
 
     #Just in case - even more redundancy, leaving it as it helped a lot once when debugging.
+            if [[ $importdrive != true ]] then
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
             sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 && \
             statement=$(ls -dlah /media/$(whoami)/parmanode) && \
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
+            fi
 
 # Download bitcoin software
 download_bitcoin || return 1
 
 #setup bitcoin.conf
+if [[ $importdrive != true ]] ; then
 log "bitcoin" "make_bitcoin_conf function ..."
 make_bitcoin_conf || return 1
+fi
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then

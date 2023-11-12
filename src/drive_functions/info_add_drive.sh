@@ -29,8 +29,7 @@ set_terminal ; echo -e "
       simultaneously. Terrible things can happen.
     $pink     
       Parmanode will now check if a Parmanode drive is mounted, and if so will stop
-      all the services using it (eg Bitcoin, Fulcrum, or electrs) and then unmount
-      the drive.
+      any programs using it and then unmount the drive.
 $orange
 ########################################################################################
 "
