@@ -39,6 +39,7 @@ return 0
 u|U)
 export importdrive=true
 export skip_formatting=true
+log "importdrive" "umbrel import"
 umbrel_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
 if ! grep -q "parmanode" < /etc/fstab ; then
@@ -51,6 +52,7 @@ return 0
 rb|Rb|RB)
 export importdrive=true
 export skip_formatting=true
+log "importdrive" "rpb import"
 raspiblitz_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
 if ! grep -q "parmanode" < /etc/fstab ; then
@@ -63,6 +65,7 @@ return 0
 MY|My|my)
 export importdrive=true
 export skip_formatting=true
+log "importdrive" "mynode import"
 mynode_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
 if ! grep -q "parmanode" < /etc/fstab ; then

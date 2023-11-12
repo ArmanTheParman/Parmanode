@@ -26,6 +26,7 @@ prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
 
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
+
     make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.

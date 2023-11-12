@@ -11,7 +11,7 @@ function make_bitcoin_directories {
     log "bitcoin" "mkdir /parmanode/bitcoin" && \
     installed_conf_add "bitcoin-start"     #First significant install "change" made to drive
 
-    if [[ $drive == "external" ]] ; then if [[ $importdrive == true ]] ; then return 0 ; fi
+    if [[ $drive == "external" && $importdrive != true ]] ; then 
     
         if [[ $OS == "Linux" ]] ; then
             mkdir /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 && \
@@ -31,7 +31,6 @@ function make_bitcoin_directories {
 
 #Symlinks 
     log "bitcoin" "make_bitcoin_symlinks... " && \
-    debug "pre make bitcoin symplinks"
     make_bitcoin_symlinks
 
 return 0
