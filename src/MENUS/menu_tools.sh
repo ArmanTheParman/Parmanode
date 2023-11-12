@@ -12,7 +12,7 @@ echo -e "
 
               (ip)    What's my computer's IP address?
 
-              (m)     Migrate/Revert an external drive.
+              (md)     Migrate/Revert an external drive.
 
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
@@ -83,7 +83,7 @@ m|M) back2main ;;
 
         ;;
 
-      m|M)
+      md|MD)
       menu_migrate
       ;;
 
