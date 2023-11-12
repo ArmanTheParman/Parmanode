@@ -22,7 +22,8 @@ q|Q) exit ;; q|P) return 1 ;;
 m|M) back2main ;;
 pp|Pp|PP)
 export importdrive=true
-add_drive 
+add_drive || return 1
+
 if [[ $OS == "Linux" ]] ; then
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
@@ -33,8 +34,43 @@ if [[ $OS == "Linux" ]] ; then
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
 fi
+return 0
 ;;
-
-
-
+u|U)
+export importdrive=true
+umbrel_import || return 1
+#if parmanode was in fstab, option already to replace with new drive done.
+if ! grep -q "parmanode" < /etc/fstab
+        get_UUID "$disk" 
+        parmanode_conf_add "UUID=$UUID"
+        write_to_fstab "$UUID"
+fi
+return 0
+;;
+rp|Rb|RB)
+export importdrive=true
+raspiblitz_import || return 1
+#if parmanode was in fstab, option already to replace with new drive done.
+if ! grep -q "parmanode" < /etc/fstab
+        get_UUID "$disk" 
+        parmanode_conf_add "UUID=$UUID"
+        write_to_fstab "$UUID"
+fi
+return 0
+;;
+MY|My|my)
+export importdrive=true
+mynode_import || return 1
+#if parmanode was in fstab, option already to replace with new drive done.
+if ! grep -q "parmanode" < /etc/fstab
+        get_UUID "$disk" 
+        parmanode_conf_add "UUID=$UUID"
+        write_to_fstab "$UUID"
+fi
+return 0
+;;
+*) invalid
+;;
+esac
+done
 }
