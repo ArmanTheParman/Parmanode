@@ -47,7 +47,7 @@ if ! grep -q "parmanode" < /etc/fstab ; then
 fi
 return 0
 ;;
-rp|Rb|RB)
+rb|Rb|RB)
 export importdrive=true
 raspiblitz_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
