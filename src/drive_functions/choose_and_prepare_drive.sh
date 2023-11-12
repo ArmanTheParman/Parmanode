@@ -23,7 +23,7 @@ echo -e "
                            (i) - Use an INTERNAL drive
 "
 if [[ $1 == Bitcoin ]] ; then
-echo -e "$green" "$text" "$orange" ; fi 
+echo -e "$text" ; fi 
 echo "########################################################################################
 "
 choose "xpmq" #echo statment about above options, previous menu, or quit.
