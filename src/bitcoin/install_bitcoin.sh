@@ -32,7 +32,7 @@ log "bitcoin" "make_bitcoin_directories function..."
     # symlinks created (before Bitcoin core installed)
 
     #Just in case - even more redundancy, leaving it as it helped a lot once when debugging.
-            if [[ $importdrive != true ]] then
+            if [[ $importdrive != true ]] ; then
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
             sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 && \
             statement=$(ls -dlah /media/$(whoami)/parmanode) && \
