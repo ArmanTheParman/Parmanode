@@ -5,7 +5,7 @@ grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
-choose_and_prepare_drive_parmanode "Fulcrum" || return 1 #gets drive_fulcrum variable
+choose_and_prepare_drive "Fulcrum" || return 1 #gets drive_fulcrum variable
 
 format_ext_drive "Fulcrum" || return 1
 

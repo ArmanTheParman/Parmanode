@@ -7,7 +7,7 @@ fi
 
 set_terminal
 
-choose_and_prepare_drive_parmanode "Bitcoin" # the argument "Bitcoin" is added as this function is also
+choose_and_prepare_drive "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
 

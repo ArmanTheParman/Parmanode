@@ -9,8 +9,6 @@ system-health-check
 
 dynamic DNS for externalip variable,and LND conf
 
-Tor server relay
-
 Migrate a parmanode/other drive at the time of bitcoin install
 
 create pipe to detect successful wallet creation in LND (lncli create)

@@ -97,7 +97,7 @@ rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 electrs_nginx add
 
 #prepare drives
-choose_and_prepare_drive_parmanode "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
 
 source $HOME/.parmanode/parmanode.conf >/dev/null
 

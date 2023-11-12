@@ -1,4 +1,4 @@
-function choose_and_prepare_drive_parmanode {
+function choose_and_prepare_drive {
 # Expect argument, either Bitcoin or Fulcrum or Electrs for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
