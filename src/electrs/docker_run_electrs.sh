@@ -4,7 +4,7 @@ if [[ $OS == Linux ]] ; then
 
 docker run -d --name electrs \
                           --network="host" \
-                          -v $HOME/parmanode/electrs:/home/parman/parmanode/electrs \
+                          -v $HOME/parmanode/electrs/electrs_db:/home/parman/parmanode/electrs/electrs_db \
                           -v $HOME/.electrs:/home/parman/.electrs \
                           electrs 
 fi 
