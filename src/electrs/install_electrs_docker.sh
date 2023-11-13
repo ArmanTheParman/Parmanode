@@ -94,10 +94,11 @@ make_electrs_config && log "electrs" "config done"
 
 debug "pre run electrs. check directories"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
+debug "2"
 docker_start_electrs || return 1
-
+debug "3"
 installed_config_add "electrsdkr-end"
-
+debug "4"
 success "electrs" "being installed"
 
 }
