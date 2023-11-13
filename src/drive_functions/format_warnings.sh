@@ -16,12 +16,6 @@ echo "
 			 
 	                      /media/$(whoami)/parmanode
 
-                          
-    The easiest way to configure a existing drive is to use...
-
-               main menu --> tools --> Bring in a Parmanode drive
-
-
 ########################################################################################
 "
 fi
