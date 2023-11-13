@@ -1,9 +1,12 @@
+#called inside an if block. Run only if a new install.
+
 function update_computer {
-    if [[ $debug == 1 ]] ; then return 0 ; fi
+if [[ $debug == 1 ]] ; then return 0 ; fi
 
 #update computer
 if [[ $(uname) == Darwin ]] ; then
 return 0
+
 #Removing the need for Homebrew at the beginning. Users can choose to install it for
 #the packages that require it later.
 #the code below won't run, and I'll adust it later if needed.
