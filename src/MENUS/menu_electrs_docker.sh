@@ -18,7 +18,7 @@ electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                ${cyan}Electrs $electrs_version Menu${orange}
+                                ${cyan}Electrs Menu $electrs_version ${orange}
 ########################################################################################
 "
 if docker ps | grep -q electrs >/dev/null 2>&1 ; then echo -e "
