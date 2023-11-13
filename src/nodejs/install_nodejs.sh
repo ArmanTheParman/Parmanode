@@ -41,20 +41,19 @@ sudo apt-get update -y
 set_terminal ; echo -e "
 ########################################################################################
     
-    To proceed, the system must be upgraded with...
-$green
-                            sudo apt-get -y upgrade
-$orange
+    To proceed, the system must be upgraded (might take a while if you haven't done
+    this for some time).
+
     Hit$cyan a$orange to abort.
 
-    Hit$cyan <enter>$orange alone to contine.
+    Hit$cyan <enter>$orange alone to continue.
 
 ########################################################################################0
 "
 read choice
 case $choice in a|A) return 1 ;; esac
 
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt-get install -y ca-certificates 
 
 #this also installs npm (need 7+)
