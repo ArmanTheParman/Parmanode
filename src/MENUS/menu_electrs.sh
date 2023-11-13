@@ -3,14 +3,14 @@ function menu_electrs {
 while true ; do
 set_terminal
 
-if [[ $OS == Linux ]] ; then
-    if sudo cat /etc/tor/torrc | grep "electrs" >/dev/null 2>&1 ; then
+if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
+    if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="on"
         fi
-    else
-        E_tor="off"
     fi
+else
+E_tor="off"
 fi
 
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
