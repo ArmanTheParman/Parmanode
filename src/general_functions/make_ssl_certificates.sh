@@ -13,6 +13,7 @@ fi
 
 if [ -z $1 ] ; then cd $HOME/parmanode/fulcrum/ 
 elif [[ $1 == "electrs" ]] ; then cd $HOME/parmanode/electrs
+debug "dir for ssl certs is $(pwd)"
 fi
 
 openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048
