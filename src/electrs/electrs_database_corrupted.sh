@@ -26,14 +26,17 @@ n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
 
+if grep -q electrsdkr < $dp/installed.conf ; then
+docker_stop_electrs
+else
 stop_electrs
+fi
 
 
 if [[ $drive_electrs == external ]] ; then 
          sudo rm -rf $parmanode_drive/electrs_db
          sudo mkdir $parmanode_drive/electrs_db
 else #drive internal
-debug "del dir"
          rm -rf $HOME/parmanode/electrs/electrs_db
          mkdir $HOME/parmanode/electrs/electrs_db
 fi

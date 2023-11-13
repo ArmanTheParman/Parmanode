@@ -95,8 +95,8 @@ restore_internal_electrs_db || return 1
 make_electrs_config && log "electrs" "config done" ; debug "config done"
 
 
-docker_run_electrs
-docker_start_electrs
+docker_run_electrs || return 1
+docker_start_electrs || return 1
 
 installed_config_add "electrsdkr-end"
 

@@ -13,7 +13,12 @@ if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
     fi
 
 sudo systemctl restart tor
+if grep -q electrsdkr < $dp/installed.conf ; then
+docker_stop_electrs
+docker_start_electrs
+else
 sudo systemctl restart electrs.service
+fi
 
 get_onion_address_variable "electrs" >/dev/null 2>&1
 
@@ -23,5 +28,4 @@ echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
 echo ""
 enter_continue
-
 }
