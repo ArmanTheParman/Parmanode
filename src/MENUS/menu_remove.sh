@@ -20,6 +20,7 @@ echo -e "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Remove Programs$orange                               #
 #                                                                                      #
 ########################################################################################
+#                                                                                      #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo "#                                    (bitcoin)          Bitcoin Core                   #
