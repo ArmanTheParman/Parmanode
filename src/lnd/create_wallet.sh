@@ -15,6 +15,7 @@ set_terminal
 lnd_wallet_info
 set_terminal
 echo -e "$cyan You will be asked to create a password - this is for your LND password, not passphrase.$orange
+(The keystrokes will not appear on your screen)
 "
 lncli create
 enter_continue
