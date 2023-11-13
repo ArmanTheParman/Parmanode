@@ -171,8 +171,8 @@ return 0
 
 function electrs_better_4pi {
 
-while true ; do
 if [[ $chip == "arm64" || $chip == "aarch64" || $chip == "armv6l" || $chip == "armv7l" ]] ; then
+while true ; do
 set_terminal
 echo -e "It's best for Raspberry Pi's to use electrs insteat of Fulcrum" \
 "Continue Fulcrum installation?     y     or     n"
@@ -183,8 +183,7 @@ y|Y) return 1 ;;
 n|N) return 0 ;;
 *) invalid ;;
 esac
-fi
-break
 done
+fi
 
 }
