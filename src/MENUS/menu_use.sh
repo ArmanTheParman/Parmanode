@@ -87,7 +87,10 @@ echo "
 "
 choose "xpmq"
 
-read choice
+if [[ -z $1 ]] ; then read choice 
+else
+choice=$1
+fi
 
 case $choice in
 m|M) back2main ;;
@@ -222,6 +225,7 @@ q | Q | quit)
    ;;
 *)
    invalid
+   if [[ -n $1 ]] ; then return 1 ; fi
    ;;
 esac
 
