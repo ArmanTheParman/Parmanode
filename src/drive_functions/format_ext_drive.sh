@@ -8,7 +8,7 @@ if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 
 
 #quit if external drive set for either of the other programs that use this function
-#parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
+#parentheses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then \
 announce "Fulcrum or electrs is configured to use an external drive." \
 "Aborting format. Please start over." ; disregard_error || return 1 ; fi
