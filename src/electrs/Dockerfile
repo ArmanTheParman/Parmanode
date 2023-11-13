@@ -1,7 +1,7 @@
 FROM rust:1.67
 
 RUN apt-get update -y
-RUN apt-get install -y sudo vim curl git
+RUN apt-get install -y sudo vim curl git clang cmake build-essential
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
