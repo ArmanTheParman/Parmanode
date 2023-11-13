@@ -82,6 +82,9 @@ if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
 if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
                        echo "    (trl)        Tor Relay 
                             " ; fi
+if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp=1
+                       echo "    (ersd)       electrs (Docker) 
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
@@ -239,6 +242,12 @@ pih|PiH|Pih)
 trl|Trl|TRL)
    if [[ $torrelayapp == 1 ]] ; then
    menu_torrelay
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+ersd|Ersd|ERSD)
+   if [[ $electrsdkrapp == 1 ]] ; then
+   menu_electrs 
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
