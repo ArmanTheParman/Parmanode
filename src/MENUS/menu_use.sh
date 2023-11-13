@@ -102,23 +102,27 @@ b|B)
     if [[ $bitcoinapp == 1 ]] ; then
     clear
     menu_bitcoin_core
+    if [[ -n $1 ]] ; then return 0 ; fi
     fi
     ;;
 f|F)
     if [[ $fulcrumapp == 1 ]] ; then
     menu_fulcrum
+    if [[ -n $1 ]] ; then return 0 ; fi
     fi
     ;;
 btcp|BTCP)
     if [[ $btcpayapp == 1 ]] ; then
-    if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
+    if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
     menu_btcpay
+    if [[ -n $1 ]] ; then return 0 ; fi
     fi
     ;;
 
 t|T)
     if [[ $torapp == 1 ]] ; then
     menu_tor
+    if [[ -n $1 ]] ; then return 0 ; fi
     fi
     ;;
 
@@ -128,96 +132,114 @@ lnd|LND|Lnd|L|l)
     please_wait
     if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
     if [[ $OS == "Mac" ]] ; then no_mac ; fi
+    if [[ -n $1 ]] ; then return 0 ; fi
     fi
 ;;
 lnb|LNB|Lnb)
    if [[ $lnbitsapp == 1 ]] ; then
    menu_lnbits
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
 ;;
 
 s|S|Sparrow|SPARROW|sparrow)
    if [[ $sparrowapp == 1 ]] ; then
    menu_sparrow
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 r|R|RTL|rtl|Rtl)
     if [[ $rtlapp == 1 ]] ; then
    menu_rtl
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 
 e|E|Electrum|electrum|ELECTRUM)
     if [[ $electrumapp == 1 ]] ; then
    menu_electrum
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 ts|TS|Ts)
 
    if [[ $torserverapp == 1 ]] ; then
    menu_tor_server
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 btcpt|BTCPT)
    if [[ $btcpTORapp == 1 ]] ; then
    menu_btcpay_tor
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 
 specter|SPECTER|Specter)
    if [[ $specterapp == 1 ]] ; then
    menu_specter
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 
 bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 ]] ; then
    menu_bre
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 ers|ERS|Ers)
    if [[ $electrsapp == 1 ]] ; then
    menu_electrs
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 trz|TRZ|Trz)
    if [[ $trezorapp == 1 ]] ; then
    menu_trezor
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 bb|BB|Bb)
    if [[ $bitboxapp == 1 ]] ; then
    menu_bitbox
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 ll|LL|Ll)
    if [[ $ledgerapp == 1 ]] ; then
    menu_ledger
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 ps|PS|Ps)
    if [[ $parmashellapp == 1 ]] ; then
    parmashell_info
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 pbx|Pbx)
    if [[ $parmaboxapp == 1 ]] ; then
    menu_parmabox 
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 any|ANY|Any)
    if [[ $anydeskapp == 1 ]] ; then
    menu_anydesk
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 pih|PiH|Pih)
    if [[ $piholeapp == 1 ]] ; then
    menu_pihole
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 trl|Trl|TRL)
    if [[ $torrelayapp == 1 ]] ; then
    menu_torrelay
+    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 p)
