@@ -14,12 +14,11 @@ else
 E_tor="${red}off${orange}"
 fi
 
-electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version)
-debug "electrs_version is $electrs_version"
+electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' )
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                ${cyan}Electrs $electrs_version Menu${orange} aaa
+                                ${cyan}Electrs $electrs_version Menu${orange}
 ########################################################################################
 "
 if docker ps | grep -q electrs >/dev/null 2>&1 ; then echo -e "
