@@ -130,12 +130,11 @@ m|M) back2main ;;
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
-      if grep -q "electrs-" < $dp/installed.conf ; then
-      announce "Must uninstall electrs (non-docker) first."
-      continue
-      fi
-
       if [[ -n $electrsdkr_n ]] ; then
+         if grep -q "electrs-" < $dp/installed.conf ; then
+         announce "Must uninstall electrs (non-docker) first."
+         continue
+         fi
          install_electrs_docker
          return 0
       fi
