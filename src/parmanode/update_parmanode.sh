@@ -60,6 +60,7 @@ if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 # otherwise, some update has happened...
 success "Parmanode" "being updated"
 export exit_loop=false
+debug2 "updated parmanode success, exit loop made false"
 return 0 
 ;;
 
