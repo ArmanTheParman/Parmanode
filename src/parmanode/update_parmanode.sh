@@ -58,9 +58,9 @@ git config pull.rebase false >/dev/null 2>&1
 if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 # grep searches for a string that occurs only when there are no updates required.
 # otherwise, some update has happened...
+debug2 "updated parmanode success, exit loop made false"
 success "Parmanode" "being updated"
 export exit_loop=false
-debug2 "updated parmanode success, exit loop made false"
 return 0 
 ;;
 
