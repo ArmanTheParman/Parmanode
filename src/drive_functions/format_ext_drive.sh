@@ -7,21 +7,26 @@ if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 
 
-#quit if external drive set for either of the other programs that use this function
-#parentheses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then \
-announce "Fulcrum or electrs is configured to use an external drive." \
-"Aborting format. Please start over." ; disregard_error || return 1 ; fi
-if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then \
-announce "Bitcoin or electrs is configured to use an external drive." \
-"Aborting format. Please start over." ; disregard_error || return 1 ; fi
-if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then \
-announce "Bitcoin or Fulcrum is configured to use an external drive." \
-"Aborting format. Please start over." ; disregard_error || return 1 ; fi
-
 if [[ $1 != justFormat ]] ; then
+
+#quit if external drive set for either of the other programs that use this function
+#parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
+if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then 
+skip_formatting=true
+fi
+if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then 
+skip_formatting=true
+fi
+if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then 
+skip_formatting=true
+fi
+
+if [[ $skip_formatting == true ]] ; then 
+    return 0 
+    else
     format_warnings #skip_formatting variable set #DO NOT MOVE
-    if [[ $skip_formatting == true ]] ; then return 0 ; fi
+fi
+
 fi
 
 #select_drive_ID || return 1 #gets $disk variable (exported)
