@@ -1,4 +1,5 @@
-function preamble_install_electrs {
+function preamble_install_electrs_docker {
+log "electrsdkr" "preamble install electrs docker"
 while true ; do
 set_terminal
 echo "
