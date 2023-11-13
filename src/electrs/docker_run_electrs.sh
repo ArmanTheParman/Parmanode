@@ -3,7 +3,7 @@ function docker_run_electrs {
 if [[ $OS == Linux ]] ; then
 
 docker run -d --name electrs \
-                          --netork="host" \
+                          --network="host" \
                           -v $HOME/parmanode/electrs:/home/parman/parmanode/electrs \
                           -v $HOME/.electrs:/home/parman/.electrs \
                           electrs 
