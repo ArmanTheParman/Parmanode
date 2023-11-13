@@ -2,6 +2,7 @@ function menu_use {
 set_terminal
 while true
 do
+if [[ -z $ ]] ; then
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -87,7 +88,7 @@ echo "
 "
 choose "xpmq"
 
-if [[ -z $1 ]] ; then read choice 
+read choice 
 else
 choice=$1
 fi
