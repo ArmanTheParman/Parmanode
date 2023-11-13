@@ -19,7 +19,7 @@ debug "electrs_version is $electrs_version"
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                ${cyan}Electrs $electrs_version Menu${orange} 
+                                ${cyan}Electrs $electrs_version Menu${orange} aaa
 ########################################################################################
 "
 if docker ps | grep -q electrs >/dev/null 2>&1 ; then echo -e "
