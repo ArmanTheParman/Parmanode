@@ -3,6 +3,7 @@ set_terminal
 while true
 do
 if [[ -z $1 ]] ; then
+unset choice
 set_terminal_custom 48
 echo -e "
 ########################################################################################
