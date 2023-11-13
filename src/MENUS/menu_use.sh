@@ -232,5 +232,6 @@ q | Q | quit)
    ;;
 esac
 
+if [[ -n $1 ]] ; then return 1 ; fi
 done
 }
