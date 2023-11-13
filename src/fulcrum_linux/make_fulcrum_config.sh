@@ -23,8 +23,10 @@ fi
     fi
 
 # make config file
+source $dp/parmanode.conf >/dev/null
+if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 echo "
-fast-sync = 1000
+fast-sync = $fastsync 
 datadir = $datadir
 bitcoind = 127.0.0.1:8332
 ssl = 0.0.0.0:50002

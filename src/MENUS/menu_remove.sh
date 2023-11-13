@@ -20,6 +20,7 @@ echo -e "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Remove Programs$orange                               #
 #                                                                                      #
 ########################################################################################
+#                                                                                      #
 #                                                                                      #"
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo "#                                    (bitcoin)          Bitcoin Core                   #
@@ -174,6 +175,12 @@ echo "#                                    (trl)              TorRelay          
 #                                                                                      #"
 elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
 echo "#                                    (trl)              TorRelay    (partial)          #
+#                                                                                      #" ; fi
+if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
+echo "#                                    (ersd)             Electrs Docker                 #
+#                                                                                      #"
+elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
+echo "#                                    (ersd)             Electrs Dkr (partial)          #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -349,6 +356,13 @@ fi
 trl|Trl|TRL)
 if [[ $torrelaymenu == 1 ]] ; then
 uninstall_torrelay
+return
+fi
+;;
+
+ersd|ERSD|Ersd)
+if [[ $electrsdkrmenu == 1 ]] ; then
+uninstall_electrs_docker
 return
 fi
 ;;

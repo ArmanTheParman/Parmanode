@@ -80,9 +80,9 @@ echo "
 
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
-
+$green
                    http://${localIP}:3002
-                
+$orange                
 $output $output2
 
 ########################################################################################

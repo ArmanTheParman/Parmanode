@@ -1,9 +1,9 @@
-function uninstall_electrs {
+function uninstall_electrs_docker {
 
 set_terminal ; echo "
 ########################################################################################
 
-                                 Uninstall electrs 
+                                 Uninstall electrs (Docker)
 
     Are you sure? (y) (n)
 
@@ -20,48 +20,13 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 source $HOME/.parmanode/parmanode.conf
 
-# Uninstall binary backup
-
-if [ -d $HOME/.electrs_backup ] ; then 
-while true ; do
-    set_terminal
-    echo -e "
-########################################################################################
-
-    A$pink backup$orange of electrs directory has been found in addition to the 
-    current electrs installation (${pink}$HOME/.electrs_backup$orange)
-    
-    Keeping the backup can save you time compiling it all again if you choose to 
-    re-install electrs.
-$pink 
-    REMOVE$orange the backup too? 
-
-                                 y    or    n  ?
-
-######################################################################################## 
-"
-    read choice
-    set_terminal
-    case $choice in
-    y|Y) 
-    are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
-    please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
-    n|N) 
-    please_wait ; break ;;
-    *) invalid
-    esac
-done
-fi
-
 electrs_nginx remove 
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
-if [[ $OS == Linux ]] ; then
-sudo systemctl stop electrs.service >/dev/null 2>&1
-sudo systemctl disable electrs.service >/dev/null 2>&1
-sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
-fi
+docker stop electrs
+docker rm electrs
+docker rmi electrs
 
 # Uninstall - electrs_db
 
@@ -117,6 +82,6 @@ mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                  
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
-installed_config_remove "electrs-" 
+installed_config_remove "electrsdkr" 
 success "electrs" "being uninstalled."
 }
