@@ -2,8 +2,9 @@ function menu_use {
 set_terminal
 while true
 do
-if [[ -z $1 ]] ; then
-unset choice
+unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
+unset torserverapp btcpTORapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
+unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -87,8 +88,8 @@ echo "
 
 #######################################################################################
 "
+if [[ -z $1 ]] ; then
 choose "xpmq"
-
 read choice 
 else
 choice=$1
