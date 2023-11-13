@@ -55,8 +55,6 @@ installed_config_add "electrsdkr-start"
 preamble_install_electrs_docker || return 1
 
     set_terminal ; please_wait
-    #variables from parmanode.conf
-
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
 
@@ -94,7 +92,7 @@ restore_internal_electrs_db || return 1
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
 
-
+debug "pre run electrs. check directories"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
 docker_start_electrs || return 1
 
