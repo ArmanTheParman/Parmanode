@@ -2,7 +2,7 @@ function menu_bitcoin_cli {
 while true
 do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
                                 BITCOIN COMMANDS MENU
@@ -35,10 +35,11 @@ echo "
 
 ########################################################################################
 "
-read -p "Type in your choice, (p) for previous, or (q) to quit, then <enter> : " choice
-
+choose "xpmq"
+read choice
 clear
 case $choice in
+m|M) back2main ;;
 
 v|V)
 if [[ $OS == Mac ]] ; then echo "see GUI." ; enter_continue ; continue ; fi
