@@ -243,7 +243,7 @@ trl|Trl|TRL)
    fi
    ;;
 p)
-   return 0
+   menu_main 
    ;;
 q | Q | quit)
    exit 0
