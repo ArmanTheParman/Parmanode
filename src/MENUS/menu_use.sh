@@ -2,7 +2,7 @@ function menu_use {
 set_terminal
 while true
 do
-if [[ -z $ ]] ; then
+if [[ -z $1 ]] ; then
 set_terminal_custom 48
 echo -e "
 ########################################################################################
