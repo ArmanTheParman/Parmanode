@@ -1,4 +1,5 @@
 function update_version_info {
+debug2 "in update_version_info"
 unset version_incompatibility latest_version version old_version 
 unset latest_vMajor vMajor latest_vMinor vMinor latest_vPatch vPatch
 
@@ -19,6 +20,7 @@ fi
 
 function check_for_updates {
 if [[ $latest_version != $version ]] ; then
+debug2 "check_for_updates: latest version $latest_version != version $version"
     export old_version=1
     return 0
     fi
@@ -63,10 +65,12 @@ export latest_version="$version" >/dev/null
 export latest_vMajor="$vMajor" >/dev/null
 export latest_vMinor="$vMinor" >/dev/null
 export latest_vPatch="$vPatch" >/dev/null
+debug2 "export latest version: $latest_version $latest_vMajor $latest_vMinor $latest_vPatch, $version $vMajor $vMinor $vPatch"
 }
 
 function export_local_version {
 source $original_dir/version.conf >/dev/null 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
+debug2 "export local version $version $vMajor $vMinor $vPatch"
 
 }
