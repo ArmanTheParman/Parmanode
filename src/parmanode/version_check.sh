@@ -9,9 +9,7 @@ export_latest_version
 export_local_version
 check_backwards_compatibility
 if [[ $version_incompatibility != 1 ]] ; then
-debug2 "pre check for updates inside if. debug is $debug"
     check_for_updates
-debug2 "post check for updates inside if - $latest_version , $version "
 
         if [[ $old_version == 1 ]] ; then
             old_version_detected
@@ -21,7 +19,6 @@ fi
 
 function check_for_updates {
 if [[ $latest_version != $version ]] ; then
-debug2 "latest version $latest_version not = version $version. ... $old_version"
     export old_version=1
     return 0
     fi
