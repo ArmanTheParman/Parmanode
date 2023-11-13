@@ -24,12 +24,12 @@ echo -e "
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
-                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+                   FULCRUM IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS
 
                    Syncing to the $drive_fulcrum drive"
 else
 echo "
-                   FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+                   FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 fi
 if [[ $OS == "Mac" ]] ; then
