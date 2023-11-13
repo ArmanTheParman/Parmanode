@@ -15,6 +15,7 @@ E_tor="${red}off${orange}"
 fi
 
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version)
+debug "electrs_version is $electrs_version"
 set_terminal_custom 50
 echo -e "
 ########################################################################################
