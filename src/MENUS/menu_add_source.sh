@@ -335,4 +335,18 @@ else
    #not installed
 torrelay_n="#                            (trl)         TorRelay                                    #"
 fi
+
+#Electrsdkr
+unset electrsdkr_i electrsdkr_p electrsdkr_n
+if grep -q "electrsdkr-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+electrsdkr_i="#                                      electrsdkr                                      #"
+elif grep -q "electrsdkr-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+electrsdkr_p="#                                      electrsdkr                                      #"
+else
+   #not installed
+electrsdkr_n="#                            (ersd)        electrsdkr                                     #"
+fi
+
 }
