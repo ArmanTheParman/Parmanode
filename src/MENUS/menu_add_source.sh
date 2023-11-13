@@ -340,13 +340,13 @@ fi
 unset electrsdkr_i electrsdkr_p electrsdkr_n
 if grep -q "electrsdkr-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
-electrsdkr_i="#                                      electrsdkr                                      #"
+electrsdkr_i="#                                      electrs (Docker)                                #"
 elif grep -q "electrsdkr-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-electrsdkr_p="#                                      electrsdkr                                      #"
+electrsdkr_p="#                                      electrs (Docker)                                #"
 else
    #not installed
-electrsdkr_n="#                            (ersd)        electrsdkr                                     #"
+electrsdkr_n="#                            (ersd)        electrs (Docker)                                #"
 fi
 
 }
