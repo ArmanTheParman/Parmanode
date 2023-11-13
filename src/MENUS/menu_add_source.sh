@@ -346,7 +346,7 @@ elif grep -q "electrsdkr-start" < $HOME/.parmanode/installed.conf ; then
 electrsdkr_p="#                                      electrs (Docker)                                #"
 else
    #not installed
-electrsdkr_n="#                            (ersd)        electrs (Docker)                                #"
+electrsdkr_n="#                            (ersd)        electrs (Docker)                            #"
 fi
 
 }
