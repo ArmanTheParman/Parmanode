@@ -54,9 +54,7 @@ echo "
       (dc)       electrs database corrupted? -- Use this to start fresh."
 
 if [[ $OS == Linux ]] ; then echo -e "
-      (tor)      Enable Tor connections to electrs-- electrs Tor Status : $E_tor
-
-      (torx)     Disable Tor connection to electrs -- electrs Tor Status : $E_tor" ; else echo -e "
+      (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 " 
 fi
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
@@ -174,12 +172,11 @@ exit 0
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
+if [[ $E_tor == off ]] ; then
 electrs_tor
-;;
-
-torx|TORX|Torx)
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
+else
 electrs_tor_remove
+fi
 ;;
 
 dc|DC|Dc)
