@@ -25,6 +25,7 @@ echo -e "
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
 if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
+#if [[ -n $electrsdkr_n ]]      ; then echo  "$electrsdkr_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
@@ -36,6 +37,7 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
+#if [[ -n $electrsdkr_i ]]      ; then echo  "$electrsdkr_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
 if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
@@ -47,6 +49,7 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
+#if [[ -n $electrsdkr_p ]]      ; then echo -e "$pink$electrsdkr_p$orange"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
@@ -116,8 +119,23 @@ m|M) back2main ;;
        ;;
    
    ers|ERS|Ers|electrs)
+      if grep -q "electrsdkr" < $dp/installed.conf ; then
+      announce "Must uninstall electrs (Docker) first."
+      continue
+      fi
+
       if [[ -n $electrs_n ]] ; then
          install_electrs
+         return 0
+      fi
+      ;;
+   ersd|ERSD|Ersd|electrsdocker)
+      if [[ -n $electrsdkr_n ]] ; then
+         if grep -q "electrs-" < $dp/installed.conf ; then
+         announce "Must uninstall electrs (non-docker) first."
+         continue
+         fi
+         install_electrs_docker
          return 0
       fi
       ;;

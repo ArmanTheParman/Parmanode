@@ -180,7 +180,7 @@ read choice
 
 case $choice in 
 y|Y) return 1 ;;
-n|N) return 0 ;;
+n|N) return 1 ;;
 *) invalid ;;
 esac
 done

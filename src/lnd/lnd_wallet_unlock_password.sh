@@ -9,7 +9,7 @@ $cyan
                                 LND wallet lock password
 $orange 
     To automatically unlock your wallet when LND restarts, please$green enter the password $orange
-    you used when you created the wallet.
+    you used when you created the wallet$green (recommended).$orange
 
     or$green <enter>$orange alone to go back.
 

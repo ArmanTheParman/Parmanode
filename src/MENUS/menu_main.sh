@@ -97,28 +97,27 @@ update|UPDATE|Update)
 ap|AP|Ap|aP)
     about ;;
 
-uany) menu_anydesk ;; 
-ub) menu_bitcoin_core ;; 
-ubb) menu_bitbox ;;
-ubre) menu_bre ;; 
-ubtcp) menu_btcpay ;;
-ue) menu_electrum ;;
-uers) menu_electrs ;;
-uf) menu_fulcrum ;;
-ul) menu_lnd ;; 
-ulnb) menu_lnbits ;;
-ut) menu_tor ;;
-us) menu_sparrow ;;
-ur) menu_rtl ;;
-uts) menu_tor_server ;;
-ubtcpt) menu_btcpay_tor ;; 
-us) menu_specter ;;
-utrz) menu_trezor ;;
-ull) menu_ledger ;;
-ups) parmashell_info ;;
-upbx) menu_parmabox ;;
-upih) menu_pihole ;;
-
+uany) menu_use any ;; 
+ub) menu_use b ;; 
+ubb) menu_use bb ;;
+ubre) menu_use bre ;; 
+ubtcp) menu_use btcp ;;
+ue) menu_use e ;;
+uers) menu_use ers ;;
+uf) menu_use f ;;
+ul) menu_use l ;; 
+ulnb) menu_use lnb ;;
+ut) menu_use t ;;
+us) menu_use s ;;
+ur) menu_use r ;;
+uts) menu_use ts ;;
+ubtcpt) menu_use btcpt ;; 
+us) menu_use s ;;
+utrz) menu_use trz ;;
+ull) menu_use ll ;;
+ups) menu_use ps ;;
+upbx) menu_use pbx ;;
+upih) menu_use pih ;;
 
 
 ul|UL|Ul)

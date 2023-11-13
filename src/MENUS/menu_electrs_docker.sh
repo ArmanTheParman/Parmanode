@@ -1,4 +1,4 @@
-function menu_electrs {
+function menu_electrs_docker {
 
 while true ; do
 set_terminal
@@ -14,14 +14,14 @@ else
 E_tor="${red}off${orange}"
 fi
 
-electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
+electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' )
 set_terminal_custom 50
 echo -e "
 ########################################################################################
-                                ${cyan}Electrs $electrs_version Menu${orange} 
+                                ${cyan}Electrs Menu $electrs_version ${orange}
 ########################################################################################
 "
-if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo -e "
+if docker ps | grep -q electrs >/dev/null 2>&1 ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
                          Sync'ing to the $drive_electrs drive
@@ -76,29 +76,31 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
 m|M) back2main ;;
 I|i|info|INFO)
-info_electrs
+info_electrs_docker
 break
 ;;
 
 start | START)
-start_electrs 
-sleep 2
+docker_start_electrs 
+continue
 ;;
 
 stop | STOP) 
-stop_electrs
+docker_stop_electrs
 continue
 ;;
 
 r|R) 
-restart_electrs
-sleep 2
+docker_stop_electrs
+docker_start_electrs
 continue
 ;;
 
 remote|REMOTE|Remote)
 set_terminal
 electrs_to_remote
+docker_stop_electrs
+docker_start_electrs
 set_terminal
 ;;
 
@@ -123,27 +125,15 @@ echo "
 enter_continue
 fi
 
-if [[ $OS == Mac ]] ; then
     set_terminal_wider
-    tail -f $HOME/.parmanode/run_electrs.log &     
+    docker exec -it electrs /bin/bash -c "tail -f $HOME/.parmanode/run_electrs.log" &     
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
     continue
-fi
 
-if [[ $OS == "Linux" ]] ; then
-    set_terminal_wider
-    journalctl -fexu electrs.service &
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
-    continue
-fi
 ;;
 
 ec|EC|Ec|eC)
