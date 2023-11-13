@@ -85,7 +85,7 @@ set_terminal
 
 case $choice in
 r)
-menu_bitcoin_core
+menu_bitcoin_core || return 1
 ;;
 
 m|M) back2main ;;
