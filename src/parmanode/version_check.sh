@@ -28,7 +28,7 @@ debug2 "latest version $latest_version not = version $version. ... $old_version"
 }
 
 function old_version_detected {
-if ! git status | grep "On branch" | grep master >/dev/null && [[ $debug != 2 ]] ; then debug2 "debug = $debug" ; return 0 ; fi
+if ! git status | grep "On branch" | grep master >/dev/null ; then ; return 0 ; fi
 while true ; do
 set_terminal ; echo "
 ########################################################################################
