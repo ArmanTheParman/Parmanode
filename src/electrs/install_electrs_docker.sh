@@ -58,9 +58,9 @@ preamble_install_electrs_docker || return 1
     #variables from parmanode.conf
 
 
-docker build -t electrs $original_dir/src/electrs/
+docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
 
-make_ssl_certificates
+make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
 # electrs_nginx add
 
 #prepare drives
