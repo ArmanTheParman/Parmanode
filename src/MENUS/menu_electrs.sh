@@ -58,7 +58,7 @@ if [[ $OS == Linux ]] ; then echo -e "
 " 
 fi
 if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "electrs" >/dev/null ; echo "
+get_onion_address_variable "electrs" >/dev/null ; echo -e "
     Onion adress:$bright_blue $ONION_ADDR_ELECTRS:7004 $orange
 
 
