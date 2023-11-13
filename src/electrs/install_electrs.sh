@@ -23,7 +23,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Bitcoin needs to be stopped when electrs is being stalled. Shall Parmanode
+    Bitcoin needs to be stopped when electrs is being installed. Shall Parmanode
     stop it for you? 
 
                y)       Stops Bitcoin Core for now
