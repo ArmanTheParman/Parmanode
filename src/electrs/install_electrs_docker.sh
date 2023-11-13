@@ -64,7 +64,7 @@ make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
 # electrs_nginx add
 
 #prepare drives
-choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+choose_and_prepare_drive "Electrs" && log "electrsdkr" "choose and prepare drive function borrowed"
 
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
@@ -92,10 +92,10 @@ restore_internal_electrs_db || return 1
 
 #config
 ########################################################################################
-make_electrs_config && log "electrs" "config done" ; debug "config done"
+make_electrs_config && log "electrs" "config done" 
 
 
-docker_run_electrs || return 1
+docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
 docker_start_electrs || return 1
 
 installed_config_add "electrsdkr-end"
