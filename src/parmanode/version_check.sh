@@ -1,4 +1,7 @@
 function update_version_info {
+unset version_incompatibility latest_version version old_version 
+unset latest_vMajor vMajor latest_vMinor vMinor latest_vPatch vPatch
+
 #called by run_parmanode/do_loop
 
 #must be in this order
@@ -6,7 +9,9 @@ export_latest_version
 export_local_version
 check_backwards_compatibility
 if [[ $version_incompatibility != 1 ]] ; then
+debug2 "pre check for updates inside if. debug is $debug"
     check_for_updates
+debug2 "post check for updates inside if - $latest_version , $version "
 
         if [[ $old_version == 1 ]] ; then
             old_version_detected
@@ -16,13 +21,14 @@ fi
 
 function check_for_updates {
 if [[ $latest_version != $version ]] ; then
+debug2 "latest version $latest_version not = version $version. ... $old_version"
     export old_version=1
     return 0
     fi
 }
 
 function old_version_detected {
-if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
+if ! git status | grep "On branch" | grep master >/dev/null && [[ $debug != 2 ]] ; then debug2 "debug = $debug" ; return 0 ; fi
 while true ; do
 set_terminal ; echo "
 ########################################################################################
@@ -54,7 +60,7 @@ fi
 }
 
 function export_latest_version {
-curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
+curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/smolbug/version.conf > /tmp/latest_version.txt
 source /tmp/latest_version.txt && rm /tmp/latest_version.txt >/dev/null
 export latest_version="$version" >/dev/null
 export latest_vMajor="$vMajor" >/dev/null
