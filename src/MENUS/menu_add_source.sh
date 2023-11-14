@@ -188,13 +188,13 @@ fi
 unset bre_i bre_p bre_n 
 if grep -q "bre-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-bre_i="#                                      BTC RPC Explorer (Docker)                        #"
+bre_i="#                                      BTC RPC Explorer (Docker)                       #"
 elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-bre_p="#                                      BTC RPC Explorer (Docker)                        #"
+bre_p="#                                      BTC RPC Explorer (Docker)                       #"
 else
    #not installed
-bre_n="#                            (bre)         BTC RPC Explorer (Docker)                    #"
+bre_n="#                            (bre)         BTC RPC Explorer (Docker)                   #"
 fi
 
 #LNbits
