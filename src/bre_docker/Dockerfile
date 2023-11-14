@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:20
 
 #Default arguments: (if --build-arg missing)
 
