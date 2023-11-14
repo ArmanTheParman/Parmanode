@@ -71,7 +71,7 @@ announce "Couldn't get correct version of NodeJS. Version 16+ is needed.
     Aborting."
 return 1
 else #If we do, code returns all good
-parmanode_conf_add "nodejs-end"
+installed_conf_add "nodejs-end"
 return 0
 fi
 }
