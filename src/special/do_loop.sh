@@ -120,7 +120,7 @@ correct_old_installation
 fix_autoupdate
 parmanode1_fix
 git_dp
-fix_nodejs_conf
+fix_parmanode_conf
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 # Check OS function and store in a variable for later. 
