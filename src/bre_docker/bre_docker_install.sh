@@ -29,7 +29,7 @@ debug "after docker execs"
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
 debug "after modify enf"
 #install BRE inside container
-docker exec -it -u root bre /bin/bash -c 'npm install -g btc-rpc-explorer'
+docker exec -d -u root bre /bin/bash -c 'npm install -g btc-rpc-explorer'
 debug "after npm install"
 #execute BTC-RPC-Explorer inside container
 bre_docker_start_bre || return 1
