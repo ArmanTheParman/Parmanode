@@ -18,7 +18,8 @@ unset output output2 output3
 if [[ $enabled == true && $OS = Linux ]] ; then 
 output="    ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
 
-                   http://$IP:3003     (Note the port is 3003 not 3002)"
+                   http://$IP:3003     (Note the port is 3003 not 3002)
+                   "
 fi
 
 if sudo cat /var/lib/tor/bre-service/hostname  2>&1 | grep -q onion ; then
@@ -27,7 +28,8 @@ output2="
         
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
 
-                   $ONION_ADDR_BRE:3004"
+                   $ONION_ADDR_BRE:3004
+                   "
 t_enabled="(currently: enabled)" 
 else
 t_enabled="(currently: disabled)"
@@ -84,8 +86,8 @@ echo -e "
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 $green
-                   http://${localIP}:3002
-$orange                
+                   http://${localIP}:3002 $orange                
+
 $output $output2
 ########################################################################################
 "
