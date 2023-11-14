@@ -112,6 +112,7 @@ sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github
 curl_check # needed to download things using the command prompt rather than a browser.
 
+#patches
 ensure_english
 check_architecture
 add_rp_function
@@ -119,6 +120,7 @@ correct_old_installation
 fix_autoupdate
 parmanode1_fix
 git_dp
+fix_nodejs_conf
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 # Check OS function and store in a variable for later. 
