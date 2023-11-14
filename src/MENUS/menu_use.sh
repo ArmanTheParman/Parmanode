@@ -53,7 +53,7 @@ if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexp
                        echo "    (bre)        BTC RPC Explorer 
                             " ; fi
 if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then breapp=1
-                       echo "    (bred)       BTC RPC Explorer (Docker)
+                       echo "    (bre)        BTC RPC Explorer (Docker)
                             " ; fi
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
                        echo "    (ers)        electrs 
@@ -189,17 +189,12 @@ specter|SPECTER|Specter)
    ;;
 
 bre|BRE|Bre)
-   if [[ $btcrpcexplorerapp == 1 ]] ; then
+   if [[ $btcrpcexplorerapp == 1 || $breapp ]] ; then
    menu_bre
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
-bred|BRED|Bred)
-   if [[ $breapp == 1 ]] ; then
-   menu_bre
-    if [[ -n $1 ]] ; then return 0 ; fi
-   fi
-   ;;
+
 ers|ERS|Ers)
    if [[ $electrsapp == 1 ]] ; then
    menu_electrs
