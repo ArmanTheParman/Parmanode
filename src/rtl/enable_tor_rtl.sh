@@ -12,7 +12,7 @@ if sudo grep "HiddenServicePort 7005 127.0.0.1:3000" \
     echo "HiddenServicePort 7005 127.0.0.1:3000" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-parmanode_conf_add "rtl_tor"
+parmanode_conf_add "rtl_tor=true"
 
 sudo systemctl restart tor
 }

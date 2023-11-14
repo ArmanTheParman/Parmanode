@@ -24,16 +24,18 @@ bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
 #and make symlink in expected location
 docker exec -it bre bash -c "mv /home/parman/parmanode/.env /home/parman/parmanode/bre/"
 docker exec -it bre bash -c "ln -s ../bre/.env .env"
-
+debug "after docker execs"
 #get necessary variables for config file and modify
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
-
+debug "after modify enf"
 #install BRE inside container
 docker exec -it -u root bre /bin/bash -c 'npm install -g btc-rpc-explorer'
+debug "after npm install"
 #execute BTC-RPC-Explorer inside container
-bre_docker_start_bre
+bre_docker_start_bre || return 1
+debug "after bre docker start"
 
-if ! docker ps | grep -q bre && docker exec -it bre /bin/bash -c 'ps -x | grep btc | grep -v grep' ; then
+if docker ps | grep -q bre && docker exec -it bre /bin/bash -c 'ps -x | grep btc | grep -v grep' ; then
 installed_config_add "bre-end"
 success "BTC RPC Explorer" "being installed"
 bre_warnings
