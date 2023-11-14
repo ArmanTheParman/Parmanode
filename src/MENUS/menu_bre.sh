@@ -44,7 +44,8 @@ if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >/dev/
 "
 else
 echo -e "
-    BTC RPC EXPLORER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
+    BTC RPC EXPLORER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
+    "
 fi
 fi
 
@@ -54,11 +55,13 @@ if  docker ps | grep -q bre ; then echo -e "
 "
 else
 echo -e "
-    BTC RPC EXPLORER DOCKER CONTAINER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
+    BTC RPC EXPLORER DOCKER CONTAINER IS NOT RUNNING -- CHOOSE \"start\" TO RUN
+    "
 fi
 fi
 
 echo -e "
+
                  (start)    Start BTC RPC EXPLORER
 
                  (stop)     Start BTC RPC EXPLORER
@@ -84,7 +87,6 @@ $green
                    http://${localIP}:3002
 $orange                
 $output $output2
-
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
