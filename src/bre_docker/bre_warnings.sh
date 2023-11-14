@@ -2,8 +2,8 @@ function bre_warnings {
 echo -e "
 ########################################################################################
 
-    Please make sure yourself that Bitcoin Core has finished syncing before assessing
-    if BRE is working or not.
+    Please make sure that Bitcoin Core has finished syncing before concluding if BRE 
+    is working or not.
 
 ########################################################################################
 "
