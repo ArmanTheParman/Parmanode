@@ -39,26 +39,26 @@ echo -e "
 ########################################################################################
 "
 if [[ $OS == Linux ]] ; then
-if sudo systemctl status btcrpcexplorer | grep "active (running)" >/dev/null 2>&1 ; then echo "
+if sudo systemctl status btcrpcexplorer | grep "active (running)" >/dev/null 2>&1 ; then echo -e "
     BTC RPC EXPLORER IS RUNNING 
 "
 else
-echo "
+echo -e "
     BTC RPC EXPLORER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
 fi
 
 if [[ $OS == Mac ]] ; then
-if  docker ps | grep -q bre ; then echo "
+if  docker ps | grep -q bre ; then echo -e "
     BTC RPC EXPLORER DOCKER CONTAINER IS RUNNING 
 "
 else
-echo "
+echo -e "
     BTC RPC EXPLORER DOCKER CONTAINER IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
 fi
 
-echo "
+echo -e "
                  (start)    Start BTC RPC EXPLORER
 
                  (stop)     Start BTC RPC EXPLORER
