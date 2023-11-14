@@ -4,7 +4,7 @@ do
 unset output enabled output2 t_enabled
 
 #Check if BRE is at local host or in docker container.
-if [[ $OS == Mac ]] ; then bre_docker_IP_get 
+if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_IP_get 
     local localIP=$breIP 
 else 
     local localIP="127.0.0.1"
