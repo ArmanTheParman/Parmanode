@@ -22,8 +22,8 @@ bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
 
 #move config file to mounted volume (couldn't have been done any earlier)
 #and make symlink in expected location
-docker exec -it bre bash -c "mv /home/parman/parmanode/.env /home/parman/parmanode/bre/"
-docker exec -it bre bash -c "ln -s ../bre/.env .env"
+docker exec -itu root bre bash -c "mv /home/parman/parmanode/.env /home/parman/parmanode/bre/"
+docker exec -itu root bre bash -c "ln -s ../bre/.env .env"
 debug "after docker execs"
 #get necessary variables for config file and modify
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
