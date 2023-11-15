@@ -30,9 +30,9 @@ output2="
                    $ONION_ADDR_BRE:3004
                    $orange
                    "
-t_enabled="(currently: enabled)" 
+t_enabled=true
 else
-t_enabled="(currently: disabled)"
+t_enabled=false
 fi
 set_terminal_high
 echo -e "
@@ -70,15 +70,10 @@ echo -e "
 
                  (restart)  Restart BTC RPC EXPLORER 
 
-                 (t)        Enable access via Tor $t_enabled
+                 (t)        Enable/Disable access via Tor (Linux Only)
 
-                 (dt)       Disable access via Tor $t_enabled
-
-                 (c)        Edit config file (can manually adjust settings, eg
-                                              point to an existing Electrum/Fulcrum
-                                              server. Remember to restart afte edits)
-
-
+                 (c)        Edit config file 
+                                             
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 $green
@@ -106,10 +101,11 @@ if [[ $computer_type == LinuxPC ]] ; then restart_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
 ;;
 t|T|TOR|tor|Tor)
-if [[ $OS == Linux ]] ; then enable_bre_tor ; fi
-;;
-dt|DT|Dt|dT)
-if [[ $OS == Linux ]] ; then disable_bre_tor ; fi
+if [[ $OS == Linux ]] ; then 
+   if [[ $t_enabled == false ]] ; then enable_bre_tor 
+   else disable_bre_tor
+   fi
+fi
 ;;
 c|C)
 if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
