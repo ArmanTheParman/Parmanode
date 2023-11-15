@@ -5,15 +5,13 @@ set_terminal ; echo -e "
 $green
                                  P A R M A N O D L
 $orange
-$cyan    ParmanodL$orange is a computer that runs Parmanode OS. 
-    
-$red    Parmanode$orange OS is a Linux operating system, modified with Parmanode software 
-    preconfigured.
+$cyan    ParmanodL$orange is a Raspberry Pi that runs Parmanode software preconfigured.
 
-    It runs on a Raspberry Pi 4.
+    INSTALLATION:
 
-    A large .img file (the operating system) will be downloaded, configured, and 
-    flashd to microSD card (have it ready, minimum 16GB), for use in the Pi 4.
+    An image file (.img) file which contains the operating system will be downloaded
+    on this computer, configured, and then flashd to a microSD card (have it ready, 
+    minimum 16GB), for use in the Raspberry Pi computer. 
 
     You will be able to connect to the Pi via a program call SSH, which is a window 
     into the device's terminal screen. There'll be an icon for that on the desktop on
