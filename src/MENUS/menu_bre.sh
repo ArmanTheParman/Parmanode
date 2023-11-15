@@ -1,14 +1,8 @@
 function menu_bre {
+set_terminal
 while true
 do
 unset output enabled output2 t_enabled
-
-#Check if BRE is at local host or in docker container.
-if [[ $OS == Mac ]] ; then bre_docker_IP_get 
-    local localIP=$breIP 
-else 
-    local localIP="127.0.0.1"
-fi
 
 #check if external connection is enabled
 unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
@@ -25,14 +19,14 @@ fi
 if sudo cat /var/lib/tor/bre-service/hostname  2>&1 | grep -q onion ; then
 get_onion_address_variable "bre" >/dev/null 2>&1
 output2=" 
-        
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
-
+                   $bright_blue
                    $ONION_ADDR_BRE:3004
+                   $orange
                    "
-t_enabled="(currently: enabled)" 
+t_enabled=true
 else
-t_enabled="(currently: disabled)"
+t_enabled=false
 fi
 set_terminal_high
 echo -e "
@@ -63,30 +57,22 @@ fi
 fi
 
 echo -e "
-
                  (start)    Start BTC RPC EXPLORER
 
                  (stop)     Start BTC RPC EXPLORER
 
                  (restart)  Restart BTC RPC EXPLORER 
 
-                 (e)        Enable access from other computers (via nginx)
+                 (t)        Enable/Disable access via Tor (Linux Only)
 
-                 (d)        Disable access from other computers (tcp)
-
-                 (t)        Enable access via Tor $t_enabled
-
-                 (dt)       Disable access via Tor $t_enabled
-
-                 (c)        Edit config file (can manually adjust settings, eg
-                                              point to an existing Electrum/Fulcrum
-                                              server. Remember to restart afte edits)
-
-
+                 (c)        Edit config file 
+                                             
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 $green
-                   http://${localIP}:3002 $orange                
+                   http://${IP}:3002     
+                   http://localhost:3002        -from this computer only
+                   http://127.0.0.1:3002        -from this computer only$orange                
 
 $output $output2
 ########################################################################################
@@ -109,21 +95,16 @@ restart|Restart|RESTART)
 if [[ $computer_type == LinuxPC ]] ; then restart_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
 ;;
-e|E|enable|Enable|ENABLE)
-if [[ $computer_type == LinuxPC ]] ; then enable_access_bre ; fi
-;;
-d|D|Disable|disable|DISABLE)
-if [[ $computer_type == LinuxPC ]] ; then disable_access_bre ; fi
-;;
 t|T|TOR|tor|Tor)
-if [[ $computer_type == LinuxPC ]] ; then enable_bre_tor ; fi
-;;
-dt|DT|Dt|dT)
-if [[ $computer_type == LinuxPC ]] ; then disable_bre_tor ; fi
+if [[ $OS == Linux ]] ; then 
+   if [[ $t_enabled == false ]] ; then enable_bre_tor 
+   else disable_bre_tor
+   fi
+fi
 ;;
 c|C)
-if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ; enter_continue ; fi 
-if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ; enter_continue ; fi 
+if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
+if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ;  fi 
 esac
 done
 }

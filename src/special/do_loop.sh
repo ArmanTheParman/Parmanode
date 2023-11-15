@@ -136,11 +136,8 @@ get_ip_address #a function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
 
-debug2 "in do_loop"
 update_version_info 
-debug "after update_version_info but before exit_loop test"
 if [[ $exit_loop == false ]] ; then return 0 ; fi
-debug2 "after update_version_info"
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.

@@ -110,13 +110,13 @@ fi
 # The main changes...
 
 cd $mount_point/ && sudo ln -s ./bitcoin .bitcoin 
-sudo chown -h $USER:$USER $mount_point/.bitcoin #ownership of the symlink (-h)
+sudo chown -h $USER:$(id -gn) $mount_point/.bitcoin #ownership of the symlink (-h)
 sudo mkdir -p $mount_point/bitcoin/parmanode_backedup/
 sudo mv $mount_point/bitcoin/*.conf $mount_point/bitcoin/parmanode_backedup/
-sudo chown -R $USER:$USER $mount_point/bitcoin
+sudo chown -R $USER:$(id -gn) $mount_point/bitcoin
 make_bitcoin_conf umbrel #leave umbrel argument as is.
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
-sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
 
 # label

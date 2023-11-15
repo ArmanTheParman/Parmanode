@@ -35,9 +35,12 @@ if [[ $drive_fulcrum == external ]] ; then
     if [[ $OS == Linux ]] ; then 
          sudo rm -rf $parmanode_drive/fulcrum_db  
          sudo mkdir $parmanode_drive/fulcrum_db
+         sudo chown -R $USER:$(id -gn) $parmanode_drive/fulcrum_db
+         debug "wait"
     else
          rm -rf $parmanode_drive/fulcrum_db
          sudo mkdir $parmanode_drive/fulcrum_db
+         sudo chown -R $USER:$(id -gn) $parmanode_drive/fulcrum_db
     fi
 else
     rm -rf $HOME/parmanode/fulcrum_db

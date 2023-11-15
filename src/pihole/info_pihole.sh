@@ -15,6 +15,10 @@ $magenta
     or get the PiHole back up and running quick smart, or change the DNS servers back
     to something like google (IP=8.8.8.8)
 
+    RECOMMENDATION - Use this device as a stand-alone Pi Hole. i.e. don't use Bitcoin
+    core on this machine, and other Parmanode assisted apps. It's better to get a
+    new machine, and put Parmanode-PiHole on that.
+
 ########################################################################################
 "
 enter_continue
