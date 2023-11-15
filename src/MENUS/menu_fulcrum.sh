@@ -47,6 +47,8 @@ if [[ $OS == "Mac" ]] ; then
 if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
 
+                   Status: $fulcrum_status
+                   Block : $fulcrum_sync
                    Syncing to the $drive_fulcrum drive"
 else
 echo "
@@ -244,7 +246,12 @@ return 0
 
 function menu_fulcrum_status {
 local file="/tmp/fulcrum.journal"
+
+if [[ $OS == Mac ]] ; then
+docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
+else
 journalctl -exu fulcrum.service > $file 2>&1
+fi
 
 if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
