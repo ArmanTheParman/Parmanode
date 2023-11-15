@@ -1,4 +1,5 @@
 function menu_bre {
+set_terminal
 while true
 do
 unset output enabled output2 t_enabled
