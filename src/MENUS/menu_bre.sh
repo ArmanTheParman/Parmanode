@@ -63,7 +63,6 @@ fi
 fi
 
 echo -e "
-
                  (start)    Start BTC RPC EXPLORER
 
                  (stop)     Start BTC RPC EXPLORER
