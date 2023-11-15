@@ -25,11 +25,3 @@ echo "server {
 
 sudo systemctl restart nginx 2>/dev/null || brew services restart nginx 2>dev/null
 }
-
-function disable_access_bre {
-
-sudo rm /etc/nginx/conf.d/btcrpcexplorer.conf 2>/dev/null || \
-sudo rm /usr/local/etc/nginx/conf.d/btcrpcexplorer.conf 2>/dev/null
-
-sudo systemctl restart nginx 2>/dev/null || brew services restart nginx 2>dev/null
-}
