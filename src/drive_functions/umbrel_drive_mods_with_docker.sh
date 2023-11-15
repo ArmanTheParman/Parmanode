@@ -23,7 +23,7 @@ make_bitcoin_conf "umbrel"  #(not umbrel-drive or $log, because overriding)
 docker exec -it umbrel /bin/bash
 
 docker exec -it umbrel /bin/bash -c "mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db" 
-docker exec -it umbrel /bin/bash -c "chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db"
+docker exec -it umbrel /bin/bash -c "chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db"
 docker exec -it umbrel /bin/bash -c "e2label $disk parmanode"
 
 

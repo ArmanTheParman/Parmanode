@@ -1,5 +1,5 @@
 function bre_docker_modify_env {
-local file="$HOME/parmanode/bre/.env"
+unset file && local file="$HOME/parmanode/bre/.env"
 
 #computer speed question
 if [[ $fast_computer == no ]] ; then
@@ -11,8 +11,7 @@ fi #else leave that configuration alone
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
-if [[ -z rpcuser || -z rpcpassword ]] ; then  
-
+if [[ -z $rpcuser || -z $rpcpassword ]] ; then  
     delete_line "$file" "BITCOIND_USER" 
     delete_line "$file" "BTCEXP_BITCOIND_PASS"
     echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" | tee -a $file >/dev/null 2>&1
@@ -27,6 +26,11 @@ else
     if [[ $OS == Linux ]] ; then
     sed -i "s/parman/$rpcuser/"     $file 
     sed -i "s/hodl/$rpcpassword/"   $file 
+    fi
+
+    if [[ $computer_type == Pi ]] ; then
+    sed -i "s/host.docker.internal/127.0.0.1/" $file >/dev/null 2>&1
+    debug "changing host.docker.internal to localhost"
     fi
 
 fi

@@ -38,7 +38,7 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
 
-/usr/local/bin/bitcoin-cli stop >/dev/null 2>&1 #binaries are in the same location, mac or linux
+stop_bitcoind
 
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux ; fi
