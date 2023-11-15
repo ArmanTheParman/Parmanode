@@ -96,7 +96,7 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
-r) menu_fulcrum_status ; refresh=true ;;
+r) please_wait ; menu_fulcrum_status ; refresh=true ;;
 
 start | START)
 check_fulcrum_pass
