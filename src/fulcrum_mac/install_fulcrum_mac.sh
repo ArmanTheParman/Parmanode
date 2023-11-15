@@ -26,7 +26,7 @@ build_fulcrum_docker || return 1 ; log "fulcrum" "Fulcrum docker build done."
 debug "build fulcrum docker done"
 run_fulcrum_docker
   if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
-debug "fulcrum" "Fulcrum docker run done."
+debug "Fulcrum docker run done."
 
 check_rpc_authentication_exists || announce "No bitcoin conf file found. You'll have to edit it yourself 
     with a usernamd and password, matching to the Fulcrum config, to make
