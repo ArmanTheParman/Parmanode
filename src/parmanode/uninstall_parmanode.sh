@@ -148,18 +148,17 @@ delete_line "$HOME/.zshrc" "function rp {" >/dev/null 2>&1
 
 
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Do you also wish to delete the Parmanode script directory, the one you downloaded
-    from GitHub?
+    Do you also wish to delete the Parmanode$cyan script directory$orange 
 
                                    y)    Yes
 
                                    n)    No
 
     If you choose yes, then this program will continue to run from computer memory, 
-    but you won't be able to start it up again unless you download it again.
+    but you won't be able to start it up again unless you install it again.
 
 ######################################################################################## 
 "
@@ -176,9 +175,8 @@ set_terminal
 echo "
 ########################################################################################
 
-                        Parmanode has been uninstalled
-
+                        Parmanode has been uninstalled       
+                                                                       $red Happy now? $orange
 ########################################################################################
 "
-exit
 }
