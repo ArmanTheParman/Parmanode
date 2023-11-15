@@ -11,7 +11,7 @@ $orange
     you'll have the option to delete the Parmanode script directory.
 
 ########################################################################################
-"a
+"
 choose "epq"
 read choice
 case $choice in
