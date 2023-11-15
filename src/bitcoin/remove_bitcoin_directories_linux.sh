@@ -1,12 +1,16 @@
 function remove_bitcoin_directories_linux {
+if [[ $1 == install ]] ; then
+leave_or_use="Use it"
+else
+leave_or_use="Leave it alone"
+fi
+
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 #Remove Parmanode/bitcoin directory (installation files)
 rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 
 
 if [[ $installer == parmanodl ]] ; then return 0 ; fi 
-
-#check if data directory on external drive or internal drive
-source $HOME/.parmanode/parmanode.conf   # gets drive choice
 
 #check external drive first - mounted and unmounted conditions.
 
@@ -15,34 +19,35 @@ while true ; do
     if [[ $skip_formatting = "true" ]] ; then export format="false" ; break ; fi
 set_terminal
 
-echo "
+echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the external drive. Would like 
     to delete that data or leave it?
+$red
+                            d)          Delete $orange
 
-                            d)          Delete
-
-                            l)          Leave it 
+                            L)          Leave it 
 
 ########################################################################################
 "
-choose "xq" ; read choice 
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "l" ]] ; then export format="false" ; break ; fi
-if [[ $choice == "d" ]] ; then 
-    please_wait
-    cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
-    || debug "Error deleting .bitcoin directory. Continuing." ;  break ; fi 
-    
-invalid #if all above if statements not true, then invalid choice and loop.
+choose "xpmq" ; read choice 
+case $choice in
+q|Q) exit ;;
+p|P) return 1 ;;
+m|M) back2main ;;
+l|L) export format="false" ; break ;;
+d|D) please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
+    || debug "Error deleting .bitcoin directory. Continuing." ;  break ;;
+*) invalid ;;
+esac
 done
 fi #end checking external drive for data directory
 
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:
@@ -53,11 +58,11 @@ set_terminal ; echo "
 
                             d)          Delete
 
-                            b)          Back-up then delete 
+                            b)          Create a back up 
 
-                            i)          Ignore and leave it
+                            3)          $leave_or_use
                                 
-    If backing up, the directory will be renamed to $HOME/.bitcoin_backup0 
+    Back up will be renamed to$cyan bitcoin_backup0$orange.
 
 ########################################################################################
 "
@@ -66,6 +71,8 @@ choose "xq" ; read choice
 case $choice in
 q|Q|quit|Quit|QUIT) 
     exit ;;
+3) 
+    break ;;
 b|B)
     make_backup_dot_bitcoin 
     break

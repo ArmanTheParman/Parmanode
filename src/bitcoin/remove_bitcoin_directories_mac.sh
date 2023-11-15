@@ -1,6 +1,10 @@
 function remove_bitcoin_directories_mac {
-
-source $HOME/.parmanode/parmanode.conf
+if [[ $1 == install ]] ; then
+leave_or_use="Use it"
+else
+leave_or_use="Leave it alone"
+fi
+source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 #Remove Parmanode/bitcoin directory (installation files)
 sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 \
@@ -10,22 +14,18 @@ sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 \
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1  # gets drive choice
 
 #check external drive first - mounted and unmounted conditions.
-if [[ $1 == install ]] ; then
-leave_or_use="Use it"
-else
-leave_or_use="Leave it alone"
-fi
+
 
 if [[ $drive == "external" && -d /Volumes/parmanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the external drive. 
     You have choices:
-
-                            d)          Delete
+$red
+                            d)          Delete $orange
 
                             L)          Leave it
 
