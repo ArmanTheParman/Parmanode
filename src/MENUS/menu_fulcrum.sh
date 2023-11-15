@@ -244,9 +244,9 @@ return 0
 
 function menu_fulcrum_status {
 local file="/tmp/fulcrum.journal"
-journalctl -exu fulcrum.service > $file
+journalctl -exu fulcrum.service > $file 2>&1
 
-if tail -n1 $file | grep 'Processed height:' ; then
+if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
 #fetches block number...
 export fulcrum_sync=$(journalctl -exu fulcrum.service | tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
@@ -255,7 +255,7 @@ rm $file
 return 0
 fi
 
-if tail -n20 /tmp/fulcrum.journal | grep "up-to-date" ; then
+if tail -n20 /tmp/fulcrum.journal | grep -q "up-to-date" ; then
 export fulcrum_status=up-to-date
 #fetches block number...
 export fulcrum_sync=$(tail -n20 /tmp/fulcrum.journal | grep "up-to-date" | \
