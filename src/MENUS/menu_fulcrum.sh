@@ -14,6 +14,8 @@ fi
 fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+#menu_bitcoin_core_status #fetches block height quicker than getblockchaininfo
+menu_fulcrum_status
 
 set_terminal_custom 45
 echo -e "
@@ -26,6 +28,8 @@ if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
                    FULCRUM IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS
 
+                   Status: $fulcrum_status
+                   Block : $fulcrum_sync
                    Syncing to the $drive_fulcrum drive"
 else
 echo -e "
@@ -230,5 +234,32 @@ return 0
 }
 
 
+function menu_fulcrum_status {
 
+local file="/tmp/fulcrum.journal"
+journalctl -exu fulcrum.service > $file
+
+if tail -n1 $file | grep 'Processed height:' ; then
+export fulcrum_status=syncing
+#fetches block number...
+export fulcrum_sync=$(journalctl -exu fulcrum.service | tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
+| grep -Eo 'Processed height:.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
+rm $file
+return 0
+fi
+
+if tail -n20 /tmp/fulcrum.journal | grep "up-to-date" ; then
+export fulcrum_status=up-to-date
+#fetches block number...
+export fulcrum_sync=$(tail -n20 /tmp/fulcrum.journal | grep "up-to-date" | \
+tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
+rm $file
+return 0
+fi
+
+fulcrum_status="See log for info"
+fulcrum_sync="?"
+rm $file
+return 0
+}
 
