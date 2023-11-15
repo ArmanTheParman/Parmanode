@@ -122,8 +122,8 @@ dt|DT|Dt|dT)
 if [[ $computer_type == LinuxPC ]] ; then disable_bre_tor ; fi
 ;;
 c|C)
-if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ; enter_continue ; fi 
-if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ; enter_continue ; fi 
+if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
+if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ;  fi 
 esac
 done
 }
