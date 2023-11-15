@@ -17,7 +17,7 @@ fi
 
 set_terminal_custom "52"
 
-menu_bitcoin_core_text
+menu_bitcoin_core_status
 
 isbitcoinrunning
 
@@ -217,7 +217,7 @@ done
 return 0
 }
 
-function menu_bitcoin_core_text {
+function menu_bitcoin_core_status {
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
