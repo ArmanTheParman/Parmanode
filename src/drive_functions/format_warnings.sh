@@ -11,11 +11,6 @@ echo "
 
                          (s)     Skip formatting
 
-
-    If skipping, make sure your drive is correctly configured, and mounts to: 
-			 
-	                      /media/$(whoami)/parmanode
-
 ########################################################################################
 "
 fi
@@ -28,8 +23,6 @@ echo "
                              (y)     Format drive
 
                              (s)     Skip formatting
-    
-    If skipping, make sure your drive is formatted and mounted.
     
 ########################################################################################
 
