@@ -3,6 +3,7 @@ Version 3.17.4
     -BTC RPC Explorer via Docker introduced (Pi and Mac)
     -option to use old internal drive bitcoin data when installing Bitcoin 
     -Fulcrum bug fixed
+    -Uninstall bug fixed
 Version 3.17.3
     -incorrect nodejs config entry fixed
 Version 3.17.2
