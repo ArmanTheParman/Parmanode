@@ -29,7 +29,7 @@ output2="
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
                    $bright_blue
                    $ONION_ADDR_BRE:3004
-
+                   $orange
                    "
 t_enabled="(currently: enabled)" 
 else
