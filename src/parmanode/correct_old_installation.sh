@@ -19,7 +19,7 @@ Terminal=true
 Path=$HOME/parman_programs/parmanode/
 Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
 sudo chmod +x $HOME/Desktop/parmanode.desktop
-sudo chown $USER:$USER $HOME/Desktop/parmanode.desktop
+sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 $HOME/run_parmanode/src/parmanode/add_rp_function.sh 
 fi
 

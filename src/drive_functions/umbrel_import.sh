@@ -109,13 +109,13 @@ fi
 # The main changes...
 
 cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/ .bitcoin 
-sudo chown -h $USER:$USER $mount_point/.bitcoin
+sudo chown -h $USER:$(id -gn) $mount_point/.bitcoin
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
-sudo chown -R $USER:$USER $mount_point/umbrel/app-data/bitcoin/data/bitcoin
+sudo chown -R $USER:$(id -gn) $mount_point/umbrel/app-data/bitcoin/data/bitcoin
 make_bitcoin_conf umbrel
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
-sudo chown -R $USER:$USER $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
 
 # label

@@ -60,7 +60,7 @@ if [[ $OS == "Linux" ]] ; then
     make_bitcoind_service_file
 fi
 
-sudo chown -R $USER:$USER $HOME/.bitcoin/ 
+sudo chown -R $USER: $HOME/.bitcoin/ 
 
 please_wait && run_bitcoind
 
