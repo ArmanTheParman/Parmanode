@@ -1,4 +1,5 @@
 function menu_fulcrum {
+unset refresh
 while true
 do
 set_terminal
@@ -15,7 +16,13 @@ fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #menu_bitcoin_core_status #fetches block height quicker than getblockchaininfo
+unset fulcrum_status fulcrum_sync 
+if [[ ! $refresh == true ]] ; then
+fulcrum_status="...Type r to refresh"
+fulcrum_status="...Type r to refresh"
+else
 menu_fulcrum_status
+fi
 
 set_terminal_custom 45
 echo -e "
@@ -54,7 +61,7 @@ echo "
 
       (stop)     Stop Fulcrum 
 
-      (r)        Restart Fulcrum
+      (restart)  Restart Fulcrum
 
       (c)        How to connect your Electrum wallet to Fulcrum
 
@@ -89,6 +96,7 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
+r) menu_fulcrum_status ; refresh=true ;;
 
 start | START)
 check_fulcrum_pass
@@ -113,7 +121,7 @@ set_terminal
 # set_terminal
 # ;;
 
-r|R) 
+restart|Rrestart) 
 if [[ $OS == "Linux" ]] ; then 
     sudo systemctl restart fulcrum.service
     fi
@@ -235,7 +243,6 @@ return 0
 
 
 function menu_fulcrum_status {
-
 local file="/tmp/fulcrum.journal"
 journalctl -exu fulcrum.service > $file
 
