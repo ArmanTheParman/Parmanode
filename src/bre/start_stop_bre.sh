@@ -40,6 +40,7 @@ if [[ $computer_type == Pi || $OS == Mac ]] ; then
 local file="$HOME/parmanode/bre/.env"
 else
 local file="$HOME/parmanode/btc-rpc-explorer/.env"
+fi
 
 if [[ $btc_auth == "cookie" ]] ; then
     delete_line "$file" "USER=" 
