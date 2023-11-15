@@ -1,14 +1,18 @@
 function start_bre {
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_start ; return 0 ; fi
+
 check_config_bre || return 1
 sudo systemctl start btcrpcexplorer.service >/dev/null
 }
 
 function stop_bre {
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_stop ; return 0 ; fi
 sudo systemctl stop btcrpcexplorer.service >/dev/null
 return 1
 }
 
 function restart_bre {
+if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_restart ; return 0 ; fi
 stop_bre ; start_bre
 }
 
