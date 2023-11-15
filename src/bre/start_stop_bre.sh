@@ -35,17 +35,23 @@ if [[ $btc_auth == "cookie" && $bre_auth == "cookie" ]] ; then return 0 ; fi #se
 if [[ $btc_auth == "user/pass" && $bre_auth == "user/pass" ]] ; then return 0 ; fi #settings match, can proceed
 
 # if code reaches here, changes need to be made.
+
+if [[ $computer_type == Pi || $OS == Mac ]] ; then
+local file="$HOME/parmanode/bre/.env"
+else
+local file="$HOME/parmanode/btc-rpc-explorer/.env"
+
 if [[ $btc_auth == "cookie" ]] ; then
-    delete_line "$HOME/parmanode/btc-rpc-explorer/.env" "USER=" 
-    delete_line "$HOME/parmanode/btc-rpc-explorer/.env" "PASS="
-    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" >> $HOME/parmanode/btc-rpc-explorer/.env 
+    delete_line "$file" "USER=" 
+    delete_line "$file" "PASS="
+    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" >> $file
     return 0
     fi
 
 if [[ $btc_auth == "user/pass" ]] ; then
-    delete_line "$HOME/parmanode/btc-rpc-explorer/.env" "COOKIE="
-    echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $HOME/parmanode/btc-rpc-explorer/.env 
-    echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $HOME/parmanode/btc-rpc-explorer/.env 
+    delete_line "$file" "COOKIE="
+    echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file 
+    echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file 
     return 0
     fi
 }
