@@ -1,5 +1,4 @@
 function intro {
-debug "before intro"
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
 fi
