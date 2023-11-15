@@ -70,7 +70,7 @@ echo -e "
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 $green
-                   http://${IP}:3002      -from other computers on home network
+                   http://${IP}:3002     
                    http://localhost:3002  -from this computer only
                    http://127.0.0.1:3002  -from this computer only$orange                
 
