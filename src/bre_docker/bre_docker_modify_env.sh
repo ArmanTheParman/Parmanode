@@ -1,5 +1,5 @@
 function bre_docker_modify_env {
-local file="$HOME/parmanode/bre/.env"
+unset file && local file="$HOME/parmanode/bre/.env"
 
 #computer speed question
 if [[ $fast_computer == no ]] ; then
