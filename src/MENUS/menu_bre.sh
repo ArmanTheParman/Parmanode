@@ -70,10 +70,6 @@ echo -e "
 
                  (restart)  Restart BTC RPC EXPLORER 
 
-                 (e)        Enable access from other computers (via nginx)
-
-                 (d)        Disable access from other computers (tcp)
-
                  (t)        Enable access via Tor $t_enabled
 
                  (dt)       Disable access via Tor $t_enabled
@@ -108,12 +104,6 @@ if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_stop ; fi
 restart|Restart|RESTART)
 if [[ $computer_type == LinuxPC ]] ; then restart_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
-;;
-e|E|enable|Enable|ENABLE)
-if [[ $computer_type == LinuxPC ]] ; then enable_access_bre ; fi
-;;
-d|D|Disable|disable|DISABLE)
-if [[ $computer_type == LinuxPC ]] ; then disable_access_bre ; fi
 ;;
 t|T|TOR|tor|Tor)
 if [[ $computer_type == LinuxPC ]] ; then enable_bre_tor ; fi
