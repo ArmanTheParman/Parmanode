@@ -27,7 +27,7 @@ get_onion_address_variable "bre" >/dev/null 2>&1
 output2=" 
         
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
-
+                   $bright_blue
                    $ONION_ADDR_BRE:3004
                    "
 t_enabled="(currently: enabled)" 
