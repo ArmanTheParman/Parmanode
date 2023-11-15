@@ -19,7 +19,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 unset fulcrum_status fulcrum_sync 
 if [[ ! $refresh == true ]] ; then
 fulcrum_status="...Type r to refresh"
-fulcrum_status="...Type r to refresh"
+fulcrum_sync="...Type r to refresh"
 else
 menu_fulcrum_status
 fi
