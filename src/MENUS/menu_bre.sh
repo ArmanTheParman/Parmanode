@@ -106,10 +106,10 @@ if [[ $computer_type == LinuxPC ]] ; then restart_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
 ;;
 t|T|TOR|tor|Tor)
-if [[ $computer_type == LinuxPC ]] ; then enable_bre_tor ; fi
+if [[ $OS == Linux ]] ; then enable_bre_tor ; fi
 ;;
 dt|DT|Dt|dT)
-if [[ $computer_type == LinuxPC ]] ; then disable_bre_tor ; fi
+if [[ $OS == Linux ]] ; then disable_bre_tor ; fi
 ;;
 c|C)
 if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
