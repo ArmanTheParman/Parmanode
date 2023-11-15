@@ -118,7 +118,7 @@ done # ends while no parmanode in fstab
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
     mkdir $parmanode_drive/.bitcoin >/dev/null 2>&1 && \
             log "bitcoin" ".bitcoin dir made on ext drive" 
-    sudo chown -R $USER:$USER $parmanode_drive/.bitcoin
+    sudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
     make_bitcoin_conf prune 0
     announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
     to the external drive."
