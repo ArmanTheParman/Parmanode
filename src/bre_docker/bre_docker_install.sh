@@ -34,6 +34,7 @@ debug "after npm install"
 #execute BTC-RPC-Explorer inside container
 bre_docker_start_bre || return 1
 debug "after bre docker start"
+enable_access_bre #enables access to bre from other computers (needs nginx)
 
 if docker ps | grep -q bre && docker exec -it bre /bin/bash -c 'ps -x | grep btc | grep -v grep' ; then
 installed_config_add "bre-end"
