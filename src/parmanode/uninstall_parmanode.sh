@@ -113,7 +113,7 @@ echo "
 ########################################################################################
 "
 choose "epq"
-exit_choice ; if [[ $? == 1 ]] ; then return 1 ; fi
+exit_choice || return 1
 unset choice
 fi
 
@@ -133,6 +133,7 @@ if [[ $OS == "Linux" ]] ; then
         disktultil unmount "parmanode"
 
         fi
+
 #uninstall parmanode directories and config files contained within.
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
