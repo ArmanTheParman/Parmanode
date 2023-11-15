@@ -1,10 +1,10 @@
 function enable_access_bre {
-
+unset file
 #check nginx installed
 if ! which nginx ; then install_nginx ; fi
 
 if [[ $OS == Mac ]] ; then
-local $file="/usr/local/etc/nginx/conf.d/btcrpcexplorer.conf"
+local $file="/usr/local/etc/nginx/btcrpcexplorer.conf"
 else
 local $file="/etc/nginx/conf.d/btcrpcexplorer.conf"
 fi
