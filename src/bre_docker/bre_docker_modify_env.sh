@@ -29,5 +29,10 @@ else
     sed -i "s/hodl/$rpcpassword/"   $file 
     fi
 
+    if [[ $computer_type == Pi ]] ; then
+    sed -i "s/host.docker.internal/127.0.0.1/" $file >/dev/null 2>&1
+    debug "changing host.docker.internal to localhost"
+    fi
+
 fi
 }
