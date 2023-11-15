@@ -11,7 +11,7 @@ fi #else leave that configuration alone
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
-if [[ -z rpcuser || -z rpcpassword ]] ; then  
+if [[ -z $rpcuser || -z $rpcpassword ]] ; then  
 
     delete_line "$file" "BITCOIND_USER" 
     delete_line "$file" "BTCEXP_BITCOIND_PASS"
