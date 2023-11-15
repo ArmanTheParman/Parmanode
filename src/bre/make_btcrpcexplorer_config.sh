@@ -1,5 +1,5 @@
 function make_btcrpcexplorer_config {
-local file="$HOME/parmanode/btc-rpc-explorer/.env"
+unset file && local file="$HOME/parmanode/btc-rpc-explorer/.env"
 source ~/.bitcoin/bitcoin.conf >/dev/null
 source ~/.parmanode/parmanode.conf >/dev/null
 eserver1="tcp://127.0.0.1:50001"
