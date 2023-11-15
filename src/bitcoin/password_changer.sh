@@ -3,14 +3,14 @@ function password_changer {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
-                                Password changer
 
-$orange
-    Please enter an RPC username.     
-    
+                           Bitcoin Username/Password
+
+$green
+    Please enter an RPC username     
+   $orange 
+
     (Do not use the characters: # \" or ' otherwise problems may arise.)
-
 
 ########################################################################################
 
