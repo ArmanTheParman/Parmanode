@@ -1,18 +1,17 @@
 function uninstall_parmanode {
 local file="$dp/installed.conf"
 set_terminal
-echo "
+echo -e "
 ########################################################################################
-
+$red
                                 Uninstall Parmanode
-
+$orange
     This will first give you the option to remove programs installed with Parmanode 
     before removing the Parmanode installation files and configuration files. Finally,
-    you'll have the option to delete the Parmanode script directory that was 
-    downloaded form GitHub.
+    you'll have the option to delete the Parmanode script directory.
 
 ########################################################################################
-"
+"a
 choose "epq"
 read choice
 case $choice in
