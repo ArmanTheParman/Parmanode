@@ -4,8 +4,6 @@ while true
 do
 unset output enabled output2 t_enabled
 
-local localIP="127.0.0.1"
-
 #check if external connection is enabled
 unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
 
@@ -72,7 +70,9 @@ echo -e "
 
     ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
 $green
-                   http://${localIP}:3002 $orange                
+                   http://${IP}:3002      -from other computers on home network
+                   http://localhost:3002  -from this computer only
+                   http://127.0.0.1:3002  -from this computer only$orange                
 
 $output $output2
 ########################################################################################
