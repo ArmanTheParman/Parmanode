@@ -32,7 +32,7 @@ check_rpc_authentication_exists || announce "No bitcoin conf file found. You'll 
     with a usernamd and password, matching to the Fulcrum config, to make
     it all work. Otherwise, control-c to quit, get Bitcoin setup 
     properly, then try installing Fulcrum again."
-if ! grep -q userpass < $HOME/.bitcoin/bitcoin.conf ; then
+if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then
 announce "Can't install without bitcoin user/pass set. Aborting."
 return 1
 fi
