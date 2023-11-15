@@ -1,5 +1,5 @@
 function uninstall_parmanode {
-local file="HOME/.parmanode/installed.conf"
+local file="$dp/installed.conf"
 set_terminal
 echo "
 ########################################################################################
