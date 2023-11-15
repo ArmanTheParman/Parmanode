@@ -21,7 +21,7 @@ if [[ $1 == "usertest" ]] ; then export ut=1 ; fi
 
 
 if [[ $(uname) == Linux ]] ; then
-export parmanode_drive="media/$USER/parmanode"
+export parmanode_drive="/media/$USER/parmanode"
 elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
 fi
