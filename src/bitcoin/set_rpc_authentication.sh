@@ -46,8 +46,10 @@ m|M) back2main ;;
     s|S)
 	            password_changer
 				 
+				if [[ $2 != install ]] ; then #no need to stop bitcoin if it hasn't been installed yet.
 	            stop_bitcoind  
-				#
+				fi
+
                 set_rpc_authentication_update_conf_edits #defined below
 
 				add_userpass_to_fulcrum 
