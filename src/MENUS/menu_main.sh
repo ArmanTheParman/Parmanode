@@ -11,7 +11,7 @@ echo -e "
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$green $version                                                               $orange  $space #
+#    Version:$pink $version                                                               $orange  $space #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
