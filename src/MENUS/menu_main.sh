@@ -1,4 +1,5 @@
 function menu_main {
+set_terminal
 while true ; do
 set_terminal_custom 50
 source $original_dir/version.conf >/dev/null
