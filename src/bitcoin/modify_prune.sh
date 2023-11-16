@@ -7,15 +7,16 @@ if [[ -z $prune_before ]] ; then prune_before=0 ; fi
 
 prune_choice #extracts prune_value=number
 debug "prune value is $prune_value ; before... $prune_before "
-if [[ $prune_value != 0 && ( $prune_before -lt $prune_value ) ]] || \
-[[ $prune_value == 0 && ( $prune_before -gt 0 ) ]] ; then
+if [[ $prune_value == 0 && ( $prune_before -gt 0 ) ]] ; then
 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    You have chosen to reduce pruning from the existing choice. 
-    This will trigger a re-indexing of the chain and can take a very long time. 
+    You have chosen to$cyan abandon pruning$orange from the existing choice (ie.
+    increasing the size of the stored data.)
+
+    This might trigger a re-indexing of the chain and can take a very long time. 
 
 $green                  c)     Continue
 
