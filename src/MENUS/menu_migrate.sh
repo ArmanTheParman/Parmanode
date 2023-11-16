@@ -32,7 +32,7 @@ p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
 add_drive 
-offer_swap_to_external
+offer_swap_to_external #runs only if drive=internal
 success "The drive" "being imported"
 ;;
 
