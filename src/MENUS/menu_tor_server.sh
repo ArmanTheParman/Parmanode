@@ -27,9 +27,9 @@ set_terminal ; echo -e "
             
              (on)            Turn on file indexing     [ Currently $status ]
 
-
+$bright_blue
   Onion address: ${server_onion}:7001
-
+$orange
   Server location: /tor-server/
 
 
