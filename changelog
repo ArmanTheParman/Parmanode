@@ -6,6 +6,7 @@ Version 3.17.5
     -drive import bug fixed
     -internal/external drive swap smol bug fixed
     -bitcoin prune modification available now
+    -electrs available before bitcoin sync complete
 Version 3.17.4
     -drive path bug fixed
     -BTC RPC Explorer via Docker introduced (Pi and Mac)
