@@ -100,6 +100,7 @@ choose "xpmq"
 function menu_lnd {
 set_terminal
 unset wallet
+please_wait
 
 while true ; do # case loop
 unset choice
