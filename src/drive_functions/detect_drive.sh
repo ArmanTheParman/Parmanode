@@ -118,7 +118,3 @@ done
 rm_after_before
 }
 
-function rm_after_before {
-rm $dp/after >/dev/null 2>&1
-rm $dp/before >/dev/null 2>&1
-}

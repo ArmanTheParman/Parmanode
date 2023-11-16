@@ -74,12 +74,6 @@ if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed
 	fi
 fi
 
-# fix fstab for older parmanode versions. This is a bug fix which will soon be obsolete.
-# In older versions there was a field missing in fstab which caused a system crash if
-# the drive was physically disconnected during a reboot.
-fix_fstab ; fix_services 
-
-
 ########################################################################################
 #Intro
 ########################################################################################
@@ -87,7 +81,8 @@ set_terminal # custom function for screen size and colour.
 if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 
 
-# a self explanatory custom function
+#If the new_install file exists (created at install) then offer to update computer.
+#then delete the file so it doesn't ask again. 
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
@@ -96,33 +91,23 @@ autoupdate
 fi
 
 
-# Send alert message if needed ; alert=true/false captured.
-#curl -sf https://parmanode.com/alert | sh
+#Health check
+parmanode1_fix
 
-########################################################################################
-#DEPRECATED...
-# if [[ $(uname) == "Darwin" ]] ; then 
-# 	brew_check  # brew needs to be installed for parmanode to work on macs
-#                 # if skipped, will ask each time parmanode is run
-# fi
-########################################################################################
-
-#Test for necessary functions
+#environment checks
+ensure_english
+check_architecture
 sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github
 curl_check # needed to download things using the command prompt rather than a browser.
 
 #patches
-ensure_english
-check_architecture
-add_rp_function
-correct_old_installation
-fix_autoupdate
-parmanode1_fix
+if [[ $patch != 1 ]] ; then patch_1 ; fi #ensures patch_1 only run once per installation
+                                         #should make startup faster
+
+
+#commit config directory state using git
 git_dp
-fix_parmanode_conf
-turn_off_spotlight
-if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 # Check OS function and store in a variable for later. 
 # Exits if Windows, or if Mac/Linux not detected.

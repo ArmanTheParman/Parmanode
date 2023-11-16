@@ -20,3 +20,8 @@ $HOME/parmanode will be changed to $HOME/parmanode_apps
 deprecate swap string command
 sync Linux bitcoin drive using mac - seems insurmountable.
 auto-clear failed installs
+
+
+
+# Send alert message if needed ; alert=true/false captured.
+#curl -sf https://parmanode.com/alert | sh
