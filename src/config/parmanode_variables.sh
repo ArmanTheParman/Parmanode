@@ -30,6 +30,7 @@ export dp="$HOME/.parmanode"
 export hp="$HOME/parmanode"
 export pp="$HOME/parman_programs"
 export pn="$pp/parmanode"
+export db="$HOME/.bitcoin"
 
 export parmanode_conf="${dp}/parmanode.conf"
 export installed_conf="${dp}/installed.conf"

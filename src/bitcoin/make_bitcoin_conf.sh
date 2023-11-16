@@ -1,6 +1,6 @@
 function make_bitcoin_conf {
 
-if [[ $1 == prune ]] ; then export prune=$2 ; fi
+if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
 
 #Parmanode default config settings. Can be changed.
 #Create a bitcoin.conf file in data directory.

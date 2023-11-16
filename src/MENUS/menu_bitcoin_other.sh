@@ -40,6 +40,8 @@ echo -e "
 
       (cd)       Change syncing drive internal vs external
 
+      (mp)       Modify Pruning
+
       (c)        How to connect your wallet...........(Otherwise no point to this)
 
       (dd)       Backup/Restore data directory.................(Instructions only)
@@ -56,6 +58,10 @@ m|M) back2main ;;
 cd|CD|Cd)
 change_bitcoin_drive
 return 0
+;;
+
+mp|MP)
+modify_prune
 ;;
 
 c|C)

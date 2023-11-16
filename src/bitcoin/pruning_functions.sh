@@ -29,13 +29,13 @@ $cyan
     This will require about 4 Gb of space for the minimum prune value.
 
 
-                              prune)     I want to prune
+                  $red            prune)     I want to prune
 
-                              s)         I enjoy shitcoining
+$orange                              s)         I enjoy shitcoining
 
-                              n)         No pruning
+$green                              n)         No pruning
 
-
+$orange
 ########################################################################################
 "
 choose "xpmq"
@@ -47,7 +47,6 @@ set_terminal
         m|M) back2main ;;
 
         prune|Prune|PRUNE)
-            log "bitcoin" "user chose to prune"
             set_the_prune           #function definition later in this file. "prune_value" variable gets set.
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
@@ -59,7 +58,6 @@ set_terminal
             ;;
         
         n|N|No|NO|no)
-            log "bitcoin" "user chose no pruning"
             export prune_value="0"
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
@@ -96,10 +94,10 @@ while true
 do
 set_terminal
    
-echo "
+echo -e "
 ########################################################################################
 
-    Enter a pruning value in megabytes (MB) between 550 and 50000. No commas, 
+    Enter a$cyan pruning value$orange in megabytes (MB) between 550 and 50000. No commas, 
     and no units.
 
 ########################################################################################
@@ -147,32 +145,32 @@ while true
 do
 set_terminal
 if [[ $prune_value == 0 ]] ; then 
-echo "
+echo -e "
 ########################################################################################
         
                           You have chosen not to prune
 
-                            a)      Accept
+ $green                           a)      Accept
 
-                            c)      Change
+$red                            c)      Change
 
-                            d)      Decline pruning
-
+$cyan                            d)      Decline pruning
+$orange
 ########################################################################################
 "
 elif [[ $prune_value -le 550 ]] ; then
-echo "
+echo -e "
 ########################################################################################
         
            The prune value will be set to the minimum value of 550 MB (although 
            several gigabytes of storage is still required - under 10Gb)
 
-                            a)     Accept
+ $green                           a)     Accept
 
-                            c)     Change
+$red                            c)     Change
 
-                            d)     Decline pruning
-
+$cyan                            d)     Decline pruning
+$orange
 ########################################################################################
 "
 else
@@ -181,12 +179,12 @@ echo -e "
         
                   The prune value will be set to$cyan $prune_value$orange MB
 
-                            a)     Accept
+$green                            a)     Accept
 
-                            c)     Change
+$red                            c)     Change
 
-                            d)     Decline pruning
-
+$cyan                            d)     Decline pruning
+$orange
 ########################################################################################
 "
 fi
