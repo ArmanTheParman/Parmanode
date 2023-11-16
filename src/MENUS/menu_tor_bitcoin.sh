@@ -51,8 +51,7 @@ p|P) return 1 ;;
 "2")
     bitcoin_tor "toronly" ; return 0 ;;
 "3")
-    bitcoin_tor "toronly" "onlyout" ; return 0 
-    true ;;
+    bitcoin_tor "toronly" "onlyout" ; return 0 ;;
 "4")
     bitcoin_tor_remove ; return 0 ;;
 *)
