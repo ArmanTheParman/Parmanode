@@ -1,7 +1,3 @@
-function menu_lnd {
-set_terminal
-unset wallet
-
 function lnd_menu_loop {
 set_terminal
 please_wait
@@ -97,12 +93,19 @@ $red                                                              Refreshing eve
 ########################################################################################
 "
 choose "xpmq"
-}
+} #function definition ends
+
+########################################################################################
+
+function menu_lnd {
+set_terminal
+unset wallet
+
 while true ; do # case loop
 unset choice
 while [[ -z $choice ]] ; do 
 read -t 5 choice 
-lnd_menu_loop 
+lnd_menu_loop # Calls menu function to loop
 done
 
 set_terminal
