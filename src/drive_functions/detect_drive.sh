@@ -4,18 +4,20 @@ function detect_drive {
 unset disk
 if [[ $1 != menu ]] ; then
 if ! echo $@ | grep -q brief ; then
-set_terminal pink ; echo "
+set_terminal ; echo -e "$pink
 ########################################################################################
 
     Please pay careful attention here, otherwise you could get drive errors.
 
 ########################################################################################
-"
+$orange"
 enter_continue 
 fi
 fi
 
 while true ; do
+rm_after_before
+
 if [[ $1 != menu2 ]] ; then
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
@@ -32,7 +34,7 @@ set_terminal ; echo -e "$pink
     Hit <enter> only once this is done.
 $pink
 ########################################################################################
-"
+$orange"
 read
 fi
 
@@ -102,15 +104,21 @@ fi
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
-    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
     export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
-    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
     
 done
+rm_after_before
+}
+
+function rm_after_before {
+rm $dp/after >/dev/null 2>&1
+rm $dp/before >/dev/null 2>&1
 }
