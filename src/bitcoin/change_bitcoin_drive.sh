@@ -4,8 +4,7 @@ if [[ $drive == external ]] ; then otherdrive=internal ; fi
 if [[ $drive == internal ]] ; then otherdrive=external ; fi
 
 while true ; do
-if [[ -z $1 ]] ; then
-if [[ $1 != swap ]] ; then
+if [[ -z $1 ]] ; then #zero argument, called by menu_bitcoin_other to swap drives
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -24,10 +23,14 @@ $orange
 "
 choose "xpmq"
 read choice ; set_terminal
-else choice=c
+else choice=c     # when $ is "swap" but never possible because -z $1 necessary to enter block
 fi
-fi
-if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
+
+# argument "change" is called by mynode/rpb/umbrel import functions. A bitcoin
+# drive argument may not be set. Set to "internal" to enter correct if blocks
+if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi 
+
+
 
 case $choice in
 m|M) back2main ;;
@@ -46,9 +49,8 @@ if [[ $drive == external ]] ; then
     parmanode_conf_remove "drive=" && parmanode_conf_add "drive=internal"
     source $dp/parmanode.conf >/dev/null 2>&1
     mkdir $HOME/.bitcoin
-    make_bitcoin_conf prune 0
-    announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
-    to the internal drive."
+    make_bitcoin_conf prune 0 #double check this
+    announce "Start Bitcoin manually to begin syncing."
     return 0
 fi
 
@@ -70,8 +72,7 @@ if [[ $OS == Mac && $drive == internal ]] ; then
     fi 
 
     make_bitcoin_conf prune 0
-    announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
-    to the external drive."
+    announce "Start Bitcoin manually to begin syncing."
     return 0
         
 fi
@@ -120,8 +121,7 @@ done # ends while no parmanode in fstab
             log "bitcoin" ".bitcoin dir made on ext drive" 
     sudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
     make_bitcoin_conf prune 0
-    announce "Bitcoin sync locations have been swapped. Choose start to begin syncing
-    to the external drive."
+    announce "Start Bitcoin manually to begin syncing."
     return 0
 
 fi  #ends if $drive=internal

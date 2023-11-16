@@ -115,10 +115,6 @@ run_bitcoind "no_interruption"
 fi
 ;;
 
-cd|CD|Cd)
-change_bitcoin_drive
-;;
-
 c|C)
 connect_wallet_info
 continue
