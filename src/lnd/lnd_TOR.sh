@@ -1,13 +1,19 @@
 function lnd_enable_tor {
-if [[ $1 != skipsuccess ]] ; then
 set_terminal
 echo "
 ########################################################################################
 
-   Please note that LND will only truly be "Tor-Only" if you also remove any clearnet
-   IP addresses from the lnd.conf file. If you see a clearnet address published
-   at the bottom of the LND menu, then LND is not actually running "Tor-Only".
+   Please not that whether LND is running by Tor-Only or as a hybrid Tor/Clearnet
+   ultimately is determined by the address types you see at the bottom of the LND
+   menu.
 
+   If there is a Tor address (onion) only, then LND is running Tor-only. If a clearnet
+   address only, then it's running clearnet only; and obviously if you see both, it
+   is running hybrid.
+$cyan
+   Please note that LND will only truly be "Tor-Only" if you also remove any clearnet
+   IP addresses from the lnd.conf file yourself.
+$orange
    Please also note that the Tor setting for Bitcoin must match the LND settings or
    else LND won't start/run.
 
@@ -18,7 +24,6 @@ echo "
 "
 enter_continue
 fi
-
 
 local file=$HOME/.lnd/lnd.conf
 
