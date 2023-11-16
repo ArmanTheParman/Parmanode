@@ -8,13 +8,14 @@ wallet="WALLET CREATED & UNLOCKED =$red FALSE$orange"
 fi 
 
 # To print tor details in menu
-if grep -q "tor.active=1" < $HOME/.lnd/lnd.conf >/dev/null 2>&1 ; then lndtor=Enabled ; else lndtor=Disabled ; fi
 
-if grep -q "; tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then torhybrid=Disabled 
-elif grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then torhybrid=Enabled
-else torhybrid=Disabled 
+if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+then 
+    lndtor=Disabled
+    torhybrid=Enabled
+else 
+    if ! grep -q "tor.active=1" ; then lndtor=Disabled ; else lndtor=Enabled ; fi
+    torhybrid=Disabled 
 fi
 
 #get onion address if it exists...
@@ -77,7 +78,7 @@ echo -e "
        
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR                     Currently: $cyan$lndtor$orange
+      (t)              Enable/disable TOR-only                Currently: $cyan$lndtor$orange
 
       (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
 
