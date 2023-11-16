@@ -1,5 +1,6 @@
 Version 3.17.5
     -Turn off Mac drive indexing
+    -clean up temp files (after, before)
 Version 3.17.4
     -drive path bug fixed
     -BTC RPC Explorer via Docker introduced (Pi and Mac)
