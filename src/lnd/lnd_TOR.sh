@@ -1,4 +1,25 @@
 function lnd_enable_tor {
+if [[ $1 != skipsuccess ]] ; then
+set_terminal
+echo "
+########################################################################################
+
+   Please note that LND will only truly be "Tor-Only" if you also remove any clearnet
+   IP addresses from the lnd.conf file. If you see a clearnet address published
+   at the bottom of the LND menu, then LND is not actually running "Tor-Only".
+
+   Please also note that the Tor setting for Bitcoin must match the LND settings or
+   else LND won't start/run.
+
+   Parmanode is not yet smart enough to do all of the above for you, but it will be 
+   one day.
+
+########################################################################################
+"
+enter_continue
+fi
+
+
 local file=$HOME/.lnd/lnd.conf
 
 if ! which tor >/dev/null ; then install_tor ; fi
