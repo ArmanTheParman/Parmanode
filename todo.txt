@@ -13,6 +13,8 @@ create pipe to detect successful wallet creation in LND (lncli create)
 
 make a general troubleshooting page
 
+check that no non-parmanode installations to avoid conflicts.
+
 ########################################################################################
 For Version 4
 ########################################################################################
