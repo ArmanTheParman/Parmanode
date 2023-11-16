@@ -81,6 +81,7 @@ if [[ $1 == "toronly" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "externalip="
+    debug "onion is $ONION_ADDR"
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "bind="
     echo "bind=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
