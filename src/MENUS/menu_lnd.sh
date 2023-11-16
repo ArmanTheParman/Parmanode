@@ -5,7 +5,7 @@ if lncli walletbalance >/dev/null 2>&1 ; then
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... sometimes just wait a 
-                                                         minute and it'll unlock$orange" 
+                                                              minute and it'll unlock$orange" 
 fi 
 
 # To print tor details in menu
