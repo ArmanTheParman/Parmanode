@@ -5,6 +5,13 @@ if ! which tor >/dev/null ; then install_tor ; fi
 
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{print $1$2$3}')-presableTor >/dev/null 2>&1
 
+#delete first to avoid duplication
+while grep -q "Added by Parmanode (start)" < $file ; do
+sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+count=$((1 + count))
+if [[ $count -gt 3 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
+done
+
 echo "
 ; Added by Parmanode (start)
 
@@ -16,7 +23,7 @@ tor.control=9051
 tor.dns=soa.nodes.lightning.directory:53
 tor.active=1
 ; activate split connectivity
-; tor.skip-proxy-for-clearnet-targets=true
+tor.skip-proxy-for-clearnet-targets=false
 
 ; Added by Parmanode (end)
 " | tee -a $file >/dev/null 2>&1
@@ -46,7 +53,7 @@ lnd_enable_tor skipsuccess
 
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preEnableHybrid >/dev/null 2>&1
 
-swap_string $file "; tor.skip-proxy-for-clearnet-targets=true" "tor.skip-proxy-for-clearnet-targets=true" #deletes comment
+swap_string $file "tor.skip-proxy-for-clearnet-targets=false" "tor.skip-proxy-for-clearnet-targets=true" 
 swap_string $file "tor.streamisolation=true" "tor.streamisolation=false"
 # swap_string $file "; tlsextraip=$IP" "tlsextraip=$IP"
 
