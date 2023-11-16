@@ -27,5 +27,6 @@ function d { cd $HOME/Desktop && a ; }
 function dl { cd $HOME/Downloads && a ; }
 function dp { cd $HOME/.parmanode && a ; }
 function h { cd & a ; }
+function b { cd $HOME/.bitcoin ; a ; }
 
 
