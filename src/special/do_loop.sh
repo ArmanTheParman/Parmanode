@@ -121,6 +121,7 @@ fix_autoupdate
 parmanode1_fix
 git_dp
 fix_parmanode_conf
+turn_off_spotlight
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 # Check OS function and store in a variable for later. 
