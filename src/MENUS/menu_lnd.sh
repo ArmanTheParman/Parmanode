@@ -105,8 +105,8 @@ please_wait
 while true ; do # case loop
 unset choice
 while [[ -z $choice ]] ; do 
-read -t 5 choice 
 lnd_menu_loop # Calls menu function to loop
+read -t 5 choice 
 done
 
 set_terminal
