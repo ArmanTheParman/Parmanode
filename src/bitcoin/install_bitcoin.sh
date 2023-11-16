@@ -19,7 +19,7 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
         && log "bitcoin" "redundant chown applied in install_bitcoin function" \
         || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
 
-prune_choice ; if [ $? == 1 ] ; then return 1 ; fi
+prune_choice || return 1 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf

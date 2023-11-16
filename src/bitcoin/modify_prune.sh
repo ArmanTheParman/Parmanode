@@ -1,14 +1,14 @@
 function modify_prune {
 #called from bitcoin menu
-unset prune
+unset prune prune_value 
 
 prune_before=$(cat $db/bitcoin.conf | grep prune= | cut -d = -f 2)
 if [[ -z $prune_before ]] ; then prune_before=0 ; fi
 
 prune_choice #extracts prune_value=number
-debug "prune choice is $prune_choice ; before... $prune_before "
-if [[ $prune_choice != 0 && $prune_before -lt $prune_choice ]] || \ 
-[[ $prune_choice == 0 && $prune_before -gt 0 ]] ; then
+debug "prune value is $prune_value ; before... $prune_before "
+if [[ $prune_value != 0 && $prune_before -lt $prune_value ]] || \ 
+[[ $prune_value == 0 && $prune_before -gt 0 ]] ; then
 
 while true ; do
 set_terminal ; echo -e "
