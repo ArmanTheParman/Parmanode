@@ -1,5 +1,5 @@
 function start_electrs {
-waif4bitcoin || return 1
+#waif4bitcoin || return 1
 
 please_wait
 if [[ $OS == Linux ]] ; then 
