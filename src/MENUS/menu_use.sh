@@ -136,9 +136,8 @@ lnd|LND|Lnd|L|l)
     if [[ $lndapp == 1 ]] ; then
     clear
     please_wait
-    debug "please wait, pre lnd"
-    if [[ $OS == "Linux" ]] ; then menu_lnd ; fi
-    if [[ $OS == "Mac" ]] ; then no_mac ; fi
+    if [[ $OS == "Linux" ]] ; then menu_lnd ; continue ; fi
+    if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
     if [[ -n $1 ]] ; then return 0 ; fi
     fi
 ;;
