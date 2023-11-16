@@ -33,6 +33,7 @@ p|P) return 1 ;;
 parmy|Parmy|PARMY)
 add_drive 
 offer_swap_to_external
+success "The drive" "being imported"
 ;;
 
 ub|UB|Ub)
