@@ -6,7 +6,7 @@ prune_before=$(cat $db/bitcoin.conf | grep prune= | cut -d = -f 2)
 if [[ -z $prune_before ]] ; then prune_before=0 ; fi
 
 prune_choice #extracts prune_value=number
-
+debug "prune choice is $prune_choice ; before... $prune_before "
 if [[ $prune_choice != 0 && $prune_before -lt $prune_choice ]] || \ 
 [[ $prune_choice == 0 && $prune_before -gt 0 ]] ; then
 

@@ -19,11 +19,10 @@ $orange
 
     If space is an issue, you can run a pruned node, but be aware it's unlikely you'll
     have an enjoyable experience. I recommend a pruned node only if it's your only
-    option, and you can start over with  an \"unpruned\" node as soon as you 
-    reasonably can. Pruned nodes still download the entire chain, but then discard the
-    data to save space. You won't be able to use wallets with old coins very easily
-    and rescanning the wallet may be required without you realising - and that is 
-    SLOW.
+    option, and you can start over with an \"unpruned\" node as soon as you reasonably 
+    can. Pruned nodes still download the entire chain, but then discard the data to 
+    save space. You won't be able to use wallets with old coins very easily and 
+    rescanning the wallet may be required without you realising - and that is SLOW.
 $cyan
     Would you like to run Bitcoin as a pruned node (not recommended generally)? $orange 
     This will require about 4 Gb of space for the minimum prune value.
