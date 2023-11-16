@@ -7,8 +7,8 @@ if [[ -z $prune_before ]] ; then prune_before=0 ; fi
 
 prune_choice #extracts prune_value=number
 debug "prune value is $prune_value ; before... $prune_before "
-if [[ $prune_value != 0 && $prune_before -lt $prune_value ]] || \ 
-[[ $prune_value == 0 && $prune_before -gt 0 ]] ; then
+if [[ $prune_value != 0 && ( $prune_before -lt $prune_value ) ]] || \ 
+[[ $prune_value == 0 && ( $prune_before -gt 0 ) ]] ; then
 
 while true ; do
 set_terminal ; echo -e "
