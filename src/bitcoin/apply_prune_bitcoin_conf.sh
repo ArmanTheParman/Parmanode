@@ -1,10 +1,12 @@
 function apply_prune_bitcoin_conf {
-file="$HOME/.bitcoin/bitcoin.conf"
+file="$db/bitcoin.conf"
 if [[ $1 == umbrel ]] ; then export prune=0 ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 
 #source prune value from parmanode.conf
 
+if [[ -z $prune ]] ; then
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+fi
 
 #check if prune_value set. If not, calls function to set it. 
 if [[ -z ${prune_value} ]] ; then echo "Prune choice not detected. Needs to be set." ; enter_continue ; prune_choice ; fi
