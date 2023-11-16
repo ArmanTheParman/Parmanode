@@ -97,10 +97,10 @@ return 0
 function please_wait { 
 set_terminal
 takes="some time"
-if [[ -n $1 ]] ; then takes="$1" ; fi
+if [[ -n $1 ]] ; then takes="$1" ; fi #changes $takes if needed
 
 echo -e "
- Please wait, this may take ${takes}...
+Please wait, this may take ${takes}...
 "
 return 0
 }
