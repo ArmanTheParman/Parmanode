@@ -11,10 +11,10 @@ set_terminal ; echo -e "$pink
 ########################################################################################
 $orange"
 enter_continue 
-debug "starting"
 
 while true ; do
-set_terminal "pink" ; echo -e "
+rm_after_before
+set_terminal echo -e "$pink
 ########################################################################################
 
     Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 
@@ -23,7 +23,7 @@ set_terminal "pink" ; echo -e "
     Hit <enter> only once this is done.
 
 ########################################################################################
-"
+$orange"
 read
 
 if [[ $(uname) == "Linux" ]] ; then 
@@ -68,13 +68,13 @@ fi
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
-    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
     export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
-    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
     
@@ -87,6 +87,8 @@ fi
 if [[ $OS == Mac ]] ; then
 export disk_no_part=$(echo $disk | grep -oE 'disk[0-9]+' | tr -d '[:space:]')
 fi
+
+rm_after_before
 
 debug "disk is $disk, disk_no_part is $disk_no_part"
 }
