@@ -6,6 +6,8 @@
     # IP_address
     # get_linux_version_codename 
     # check_chip
+    # check_architecture
+    # ensure_english
 
 function which_os {
 # This function just extracts and stores the operating system name

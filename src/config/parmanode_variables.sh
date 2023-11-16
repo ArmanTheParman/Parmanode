@@ -34,6 +34,8 @@ export pn="$pp/parmanode"
 export parmanode_conf="${dp}/parmanode.conf"
 export installed_conf="${dp}/installed.conf"
 
+if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
+
 get_Mac_version #function to export Mac Version variables
 
 # A counter for the number of times main_menu has been 'Inceptioned'.
