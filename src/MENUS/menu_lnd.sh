@@ -147,7 +147,7 @@ fi
 if [[ $torhybrid == Disabled ]] ; then
 lnd_enable_hybrid
 else
-lnd_disable_hybrid
+lnd_disable_tor
 fi
 
 ;;
