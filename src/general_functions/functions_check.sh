@@ -160,7 +160,7 @@ return 0
 
 
 function curl_check {
-if [[ -z $(command -v curl) ]] ; then
+if ! which curl >/dev/null 2>&1 ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
