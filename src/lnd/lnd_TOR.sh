@@ -1,6 +1,6 @@
 function lnd_enable_tor {
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
    Please not that whether LND is running by Tor-Only or as a hybrid Tor/Clearnet
