@@ -1,4 +1,6 @@
 Version 3.17.5
+    -Parmanode startup now 0.5 seconds faster (consolidated patch functions
+     which not only run once instead of every time)
     -Turn off Mac drive indexing
     -clean up temp files (after, before)
 Version 3.17.4
