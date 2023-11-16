@@ -65,8 +65,13 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
     sudo systemctl restart tor
     sudo systemctl restart bitcoind.service #enables tor address
     sudo systemctl stop bitcoind.service
-sleep 3
+unset $ONION_ADDR
+while [[ -z $ONION_ADDR ]] ; do
 get_onion_address_variable "bitcoin"
+sleep 1
+count=$((1 + count))
+if [[ $count -gt 12 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
+done
 
 if [[ $1 == "torandclearnet" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
