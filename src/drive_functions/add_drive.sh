@@ -23,8 +23,6 @@ fi
 
 detect_drive $@ "brief" || return 1 #menu
 
-label_check || return 1 
-
 if [[ $OS == "Mac" ]] ; then
     set_terminal
     echo "
@@ -59,35 +57,5 @@ set_terminal ; echo "
 enter_continue
 return 0
 fi #end if Linux
-}
-
-function label_check {
-
-if [[ $OS == "Mac" ]] ; then
-    
-    if cat $HOME/.parmanode/difference | grep "parmanode" ; then
-    return 0 ; fi
-    fi
-
-if [[ $OS == "Linux" ]] ; then
-
-    if [[ $LABEL == "parmanode" ]] ; then 
-    return 0 ; fi
-    fi
-
-if [[ $OS == "Linux" ]] ; then
-
-    if [[ $TYPE == "vfat" ]] ; then sudo fatlabel $disk parmanode 
-    else sudo e2label $disk parmanode >/dev/null 
-    fi
-    return 0
-fi # end if Linux
-
-if [[ $OS == "Mac" ]] ; then
-old_label=$(diskutil info $disk | grep "Volume Name:" | awk '{print $3}')
-diskutil rename "${old_label}" "parmanode"
-diskutil info $disk | grep -q "parmanode" || { announce "    There seems to be an error renaming the drive." && return 1 ; }
-return 0
-fi # end if Mac
 }
 
