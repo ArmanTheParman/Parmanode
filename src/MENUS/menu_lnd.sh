@@ -14,7 +14,7 @@ then
     lndtor=Disabled
     torhybrid=Enabled
 else 
-    if ! grep -q "tor.active=1" ; then lndtor=Disabled ; else lndtor=Enabled ; fi
+    if ! grep -q "tor.active=1" < $HOME/.lnd/lnd.conf ; then lndtor=Disabled ; else lndtor=Enabled ; fi
     torhybrid=Disabled 
 fi
 
