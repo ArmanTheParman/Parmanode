@@ -1,4 +1,5 @@
 function menu_lnd {
+set_terminal
 unset wallet
 
 function lnd_menu_loop {
