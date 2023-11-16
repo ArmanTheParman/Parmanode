@@ -65,7 +65,7 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
     sudo systemctl restart tor
     sudo systemctl restart bitcoind.service #enables tor address
     sudo systemctl stop bitcoind.service
-
+sleep 3
 get_onion_address_variable "bitcoin"
 
 if [[ $1 == "torandclearnet" ]] ; then
