@@ -1,7 +1,10 @@
 function get_onion_address_variable {
 
 if [[ $1 == "bitcoin" ]] ; then
-export ONION_ADDR="$(sudo cat /var/lib/tor/$1-service/hostname)" 
+export ONION_ADDR="$(sudo cat /var/lib/tor/${1}-service/hostname)" 
+sudo cat /var/lib/tor/${1}-service/hostname
+sudo cat /var/lib/tor/$1-service/hostname
+debug "look"
 return 0
 fi
 
