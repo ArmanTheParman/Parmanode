@@ -18,7 +18,8 @@ $orange
    else LND won't start/run.
 
    Parmanode is not yet smart enough to do all of the above for you, but it will be 
-   one day.
+   one day. Currently there is a 'prv' setting to make LND Tor-only, but it can
+   not reverse it for you. You'd have to do it manually by editing the lnd.con file.
 
 ########################################################################################
 "
