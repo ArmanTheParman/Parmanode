@@ -1,3 +1,5 @@
+Version 3.18.1
+    -Tor Browswer for Linux
 Version 3.18.0
     -PiApps available for Pi's (can access Tor Browser)
     -bitcoin tor status included in parmanode.conf
