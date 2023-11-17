@@ -42,7 +42,7 @@ echo -e "
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
-#$yellow    NEW: PiApps for Pi's -- Easy install for Tor Browser                          $orange    #
+#$bright_blue    NEW: PiApps for Pi's -- Easy install for Tor Browser                          $orange    #
 #                                                                                      #
 ########################################################################################
 
