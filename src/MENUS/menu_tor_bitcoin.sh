@@ -48,23 +48,19 @@ Q|q|quit|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" 
-    parmanode_conf_remove "bitcoin_tor_status="
-    parmanode_conf_add "bitcoin_tor_status=t&c"
+    check_bitcoin_tor_status #sets status in parmanode.conf
     return 0 ;;
 "2")
     bitcoin_tor "toronly" 
-    parmanode_conf_remove "bitcoin_tor_status="
-    parmanode_conf_add "bitcoin_tor_status=t"
+    check_bitcoin_tor_status
     return 0 ;;
 "3")
     bitcoin_tor "toronly" "onlyout" 
-    parmanode_conf_remove "bitcoin_tor_status="
-    parmanode_conf_add "bitcoin_tor_status=tonlyout"
+    check_bitcoin_tor_status
     return 0 ;;
 "4")
     bitcoin_tor_remove 
-    parmanode_conf_remove "bitcoin_tor_status="
-    parmanode_conf_add "bitcoin_tor_status=c"
+    check_bitcoin_tor_status
     return 0 ;;
 *)
     invalid ;;

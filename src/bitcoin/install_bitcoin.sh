@@ -67,6 +67,10 @@ export dontstartbitcoin
 set_rpc_authentication "s" "install"
 unset dontstartbitcoin
 
+#check stauts of tor - even this this is an install, import drive might cause
+#unexpected status
+check_tor_status
+
 please_wait && run_bitcoind
 
 set_terminal
