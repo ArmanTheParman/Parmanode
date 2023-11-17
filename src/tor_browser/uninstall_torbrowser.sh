@@ -17,8 +17,15 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
+if [[ $computer_type == LinuxPC ]] ; then
 rm -rf $hp/tor-browser
 rm $HOME/.local/share/applications/start-tor*
+fi
+
+if [[ $OS == Mac ]] ; then
+sudo rm -rf /Applications/Tor*app
+fi
+
 installed_conf_remove "torb"
 success "Tor Browser" "being uninstalled"
 }
