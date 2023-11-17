@@ -18,7 +18,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     fi
 
 rm -rf $hp/tor-browser
-rm $HOME/Desktop/start-tor-bro*
+rm $HOME/.local/share/applications/start-tor*
 installed_conf_remove "torb"
 success "Tor Browser" "being uninstalled"
 }
