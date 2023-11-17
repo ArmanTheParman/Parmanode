@@ -20,7 +20,7 @@ p|P) menu_use ;;
 
 start|START) 
 if [[ $OS == "Linux" ]] ; then 
-$hp/tor-browser/Browser/start-tor-browser.desktop
+$HOME/.local/share/applications/start-tor-browser.desktop
 fi
 ;;
 

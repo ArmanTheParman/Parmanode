@@ -20,10 +20,9 @@ rm tor-browser* #won't delete the director, no -rf
 
 cd tor-browser/
 sudo chmod +x start-tor-browser.desktop
-cp start-tor-b* $HOME/Desktop/
 
 installed_conf_add "torb-end"
 success "Tor Browser" "being installed"
-./start-tor-browser.desktop
+./start-tor-browser.desktop --register-app
 }
 
