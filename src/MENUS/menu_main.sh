@@ -12,7 +12,7 @@ echo -e "
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$pink $version                                                               $orange  $space #
+#    Version:$yellow $version                                                               $orange  $space #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
@@ -42,7 +42,7 @@ echo -e "
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
-#$green    NEW: Run a Tor Relay! See add --> other --> Tor Relay                         $orange    #
+#$yellow    NEW: PiApps for Pi's -- Easy install for Tor Browser                          $orange    #
 #                                                                                      #
 ########################################################################################
 

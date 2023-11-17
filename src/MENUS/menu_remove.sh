@@ -182,6 +182,12 @@ echo "#                                    (ersd)             Electrs Docker    
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
 echo "#                                    (ersd)             Electrs Dkr (partial)          #
 #                                                                                      #" ; fi
+if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
+echo "#                                    (piap)             PiApps                         #
+#                                                                                      #"
+elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then piappsmenu=1
+echo "#                                    (piap)             PiApps      (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -367,6 +373,12 @@ return
 fi
 ;;
 
+piap|PIAP)
+if [[ $piappsmenu == 1 ]] ; then
+uninstall_piapps
+return
+fi
+;;
 
 p|P)
 	return 0
