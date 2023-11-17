@@ -15,7 +15,7 @@ announce "GPG verification failed. Aborting."
 return 1 
 fi
 
-tar -xvf tor* 
+tar -xvf tor*.xz
 #rm tor-browser* #won't delete the director, no -rf
 
 cd tor-browser/Browser
