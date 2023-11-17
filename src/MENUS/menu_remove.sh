@@ -188,6 +188,12 @@ echo "#                                    (piap)             PiApps            
 elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then piappsmenu=1
 echo "#                                    (piap)             PiApps      (partial)          #
 #                                                                                      #" ; fi
+if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbmenu=1
+echo "#                                    (torb)             Tor Browser                    #
+#                                                                                      #"
+elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
+echo "#                                    (torb)             Tor Browse  (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -376,6 +382,13 @@ fi
 piap|PIAP)
 if [[ $piappsmenu == 1 ]] ; then
 uninstall_piapps
+return
+fi
+;;
+
+torb|Torb|TORB)
+if [[ $torbmenu == 1 ]] ; then
+uninstall_torbrowser
 return
 fi
 ;;

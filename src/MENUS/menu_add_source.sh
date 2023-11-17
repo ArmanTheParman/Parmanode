@@ -363,4 +363,19 @@ else
 piapps_n="#                            (piap)        PiApps                                      #"
 fi
 fi #end computer type = Pi
+
+#Tor Browswer
+if [[ $computer_type == LinuxPC ]] ; then
+unset torb_n torb_i torb_p 
+if grep -q "torb-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+torb_i="#                                      Tor Browser                                       #"
+elif grep -q "torb-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+torb_p="#                                      Tor Browser                                       #"
+else
+   #not installed
+torb_n="#                            (torb)        Tor Browser                                   #"
+fi
+fi #end computer type = Pi
 }

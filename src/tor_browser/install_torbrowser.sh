@@ -7,16 +7,20 @@ curl -LO https://github.com/TheTorProject/gettorbrowser/releases/download/linux6
 
 if gpg --verify --status-fd 1 tor*asc 2>&1 | grep -q GOOD ; then
 announce "GPG verification passed."
-esle
+else
 announce "GPG verification failed. Aborting."
 return 1 
 fi
 
 tar -xvf tor* 
+rm tor-browser* #won't delete the director, no -rf
+
 cd tor-browser/Browser
 sudo chmod +x start-tor-browser.desktop
+cp start-tor-b* $HOME/Desktop/
 
 installed_conf_add "torb-end"
 success "Tor Browser" "being installed"
 ./start-tor-browser.desktop
 }
+
