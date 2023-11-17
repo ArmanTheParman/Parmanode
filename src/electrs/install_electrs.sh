@@ -48,7 +48,7 @@ fi #and if bitcoin running
 
 
 if [[ $OS == Mac ]] ; then 
-if [[ $MacOSVersion_major -lt 12 ]] ; then
+minV=11 && if [[ $MacOSVersion_major -lt $minV ]] ; then
 announce "electrs has been tested successfully on newer versions of MacOS.
     It fails with older versions. 
 
