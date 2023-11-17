@@ -365,7 +365,7 @@ fi
 fi #end computer type = Pi
 
 #Tor Browswer
-if [[ $computer_type == LinuxPC ]] ; then
+if [[ $computer_type == LinuxPC || $OS == Mac ]] ; then
 unset torb_n torb_i torb_p 
 if grep -q "torb-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
@@ -377,5 +377,5 @@ else
    #not installed
 torb_n="#                            (torb)        Tor Browser                                 #"
 fi
-fi #end computer type = Pi
+fi #end computer type/OS
 }
