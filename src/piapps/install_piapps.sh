@@ -1,5 +1,6 @@
 function install_piapps {
 if [[ $computer_type != Pi ]] ; then return 1 ; fi
+clear
 cd $hp
 git clone --depth 1 https://github.com/Botspot/pi-apps
 installed_conf_add "piapps-start"
