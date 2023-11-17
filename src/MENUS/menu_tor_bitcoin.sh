@@ -47,15 +47,28 @@ m|M) back2main ;;
 Q|q|quit|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 "1")
-    bitcoin_tor "torandclearnet" ; return 0 ;;
+    bitcoin_tor "torandclearnet" 
+    parmanode_conf_remove "bitcoin_tor_status="
+    parmanode_conf_add "bitcoin_tor_status=t&c"
+    return 0 ;;
 "2")
-    bitcoin_tor "toronly" ; return 0 ;;
+    bitcoin_tor "toronly" 
+    parmanode_conf_remove "bitcoin_tor_status="
+    parmanode_conf_add "bitcoin_tor_status=t"
+    return 0 ;;
 "3")
-    bitcoin_tor "toronly" "onlyout" ; return 0 ;;
+    bitcoin_tor "toronly" "onlyout" 
+    parmanode_conf_remove "bitcoin_tor_status="
+    parmanode_conf_add "bitcoin_tor_status=tonlyout"
+    return 0 ;;
 "4")
-    bitcoin_tor_remove ; return 0 ;;
+    bitcoin_tor_remove 
+    parmanode_conf_remove "bitcoin_tor_status="
+    parmanode_conf_add "bitcoin_tor_status=c"
+    return 0 ;;
 *)
     invalid ;;
 esac
 done
 }
+
