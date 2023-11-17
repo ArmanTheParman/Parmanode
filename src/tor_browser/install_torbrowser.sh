@@ -35,6 +35,7 @@ fi
 if [[ $computer_type == LinuxPC ]] ; then
 tar -xvf tor*.xz
 rm tor-browser* #won't delete the directory, no -rf
+fi
 
 #"install"
 if [[ $computer_type == LinuxPC ]] ; then
