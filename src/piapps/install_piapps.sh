@@ -14,8 +14,8 @@ $cyan
                                      PiAPPS
 $orange
     Parmanode installed it for you, and can uninstall it should you choose, but there
-    is not need to use Parmanode when interacting with PiApps.                                
-
+    is not need to use Parmanode when interacting with PiApps.
+    
     To do so, for exmample to install the Tor Browser on your Pi, and other cool 
     stuff, you can directly interact with PiApps from the Pi menus or PiApp desktop 
     icon.
