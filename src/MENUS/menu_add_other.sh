@@ -21,6 +21,8 @@ if [[ -n $anydesk_n ]]         ; then echo  "$anydesk_n"; fi
 if [[ -n $pihole_n ]]          ; then echo  "$pihole_n"; fi
 if [[ -n $torrelay_n ]]        ; then echo  "$torrelay_n"; fi
 if [[ -n $piapps_n ]]          ; then echo  "$piapps_n"; fi
+if [[ -n $torb_n ]]          ; then echo  "$torb_n"; fi
+
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
@@ -32,6 +34,7 @@ if [[ -n $parmabox_i ]]        ; then echo  "$parmabox_i"; fi
 if [[ -n $anydesk_i ]]         ; then echo  "$anydesk_i"; fi
 if [[ -n $torrelay_i ]]        ; then echo  "$torrelay_i"; fi
 if [[ -n $piapps_i ]]          ; then echo  "$piapps_i"; fi
+if [[ -n $torb_i ]]          ; then echo  "$torb_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -43,7 +46,7 @@ if [[ -n $parmabox_p ]]        ; then echo  -e "$pink$parmabox_p$orange"; fi
 if [[ -n $anydesk_p ]]         ; then echo  -e "$pink$anydesk_p$orange"; fi
 if [[ -n $pihole_p ]]          ; then echo  -e "$pink$pihole_p$orange"; fi
 if [[ -n $torrelay_p ]]        ; then echo  -e "$pink$torrelay_p$orange"; fi #redundant, no partial install possible
-if [[ -n $piapps_p ]]          ; then echo  -e "$pink$piapps_p$orange"; fi
+if [[ -n $torb_p ]]          ; then echo  -e "$pink$torb_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -112,6 +115,12 @@ trl|TRL|Trl)
 piap|PIAP)
     if [[ -n $piapps_n ]] ; then
     install_piapps
+    return 0
+    fi
+    ;;
+torb|TORB)
+    if [[ -n $torb_n ]] ; then
+    install_torbrowser
     return 0
     fi
     ;;

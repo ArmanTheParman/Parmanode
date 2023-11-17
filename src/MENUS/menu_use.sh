@@ -88,6 +88,9 @@ if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp=1
                        echo "    (ersd)       electrs (Docker) 
                             " ; fi
+if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
+                       echo "    (torb)       Tor Browser
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
