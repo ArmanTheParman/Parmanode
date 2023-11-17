@@ -27,7 +27,7 @@ fi
 #extract
 if [[ $OS == Mac ]] ; then
 hdiutil attach tor*.dmg
-sudo mv /Volumes/Tor*.app /Applications
+sudo mv /Volumes/Tor*/Tor*.app /Applications
 hdiutil detach /Volumes/Tor*
 rm tor-bro*
 fi
