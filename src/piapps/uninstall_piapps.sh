@@ -17,6 +17,18 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
 fi
 
+clear
+echo -e "
+########################################################################################
+
+    Please be aware that uninstalling PiApps does not uninstall any programs it may
+    have installed for you.
+
+########################################################################################
+"
+enter_continue
+clear
+
 cd $hp/pi-apps
 ./uninstall
 cd $hp
