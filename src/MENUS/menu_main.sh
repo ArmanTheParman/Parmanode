@@ -13,6 +13,7 @@ echo -e "
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
 #    Version:$bright_blue $version                                                               $orange  $space #
+#                                                                                      #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
@@ -42,8 +43,6 @@ echo -e "
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
-#$bright_blue    NEW: PiApps for Pi's -- Allows easy install for Tor Browser                    $orange   #
-#                                                                                      #
 ########################################################################################
 
  Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
@@ -51,6 +50,7 @@ echo -e "
  Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
 
 $pink NEW: combine u with next menu options. eg, try ub for bitcoin menu     $orange 
+$bright_blue NEW: PiApps for Pi's -- Allows easy install for Tor Browser $orange
 "
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
