@@ -16,9 +16,9 @@ return 1
 fi
 
 tar -xvf tor*.xz
-#rm tor-browser* #won't delete the director, no -rf
+rm tor-browser* #won't delete the director, no -rf
 
-cd tor-browser/Browser
+cd tor-browser/
 sudo chmod +x start-tor-browser.desktop
 cp start-tor-b* $HOME/Desktop/
 
