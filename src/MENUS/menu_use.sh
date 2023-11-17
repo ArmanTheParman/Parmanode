@@ -258,6 +258,12 @@ ersd|Ersd|ERSD)
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
+torb|TORB|Torb)
+   if [[ $torbapp == 1 ]] ; then
+   menu_torbrowser
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
 p)
    menu_main 
    ;;
