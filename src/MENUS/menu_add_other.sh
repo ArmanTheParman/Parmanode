@@ -109,6 +109,12 @@ trl|TRL|Trl)
     return 0
     fi
     ;;
+piap|PIAP)
+    if [[ -n $piapps_n ]] ; then
+    install_piapps
+    return 0
+    fi
+    ;;
 
     q|Q|quit|QUIT)
         exit 0
