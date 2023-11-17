@@ -19,8 +19,14 @@ Q|q|QUIT|Quit|quit)
 p|P) menu_use ;; 
 
 start|START) 
-if [[ $OS == "Linux" ]] ; then 
+if [[ $computer_type == LinuxPC ]] ; then 
 $HOME/.local/share/applications/start-tor-browser.desktop
+return 0
+fi
+
+if [[ $OS == Mac ]] ; then
+open /Applications/"Tor Browser".app
+return 0
 fi
 ;;
 
