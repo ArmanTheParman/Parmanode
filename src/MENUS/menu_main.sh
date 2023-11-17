@@ -12,7 +12,7 @@ echo -e "
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$yellow $version                                                               $orange  $space #
+#    Version:$blue $version                                                               $orange  $space #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
