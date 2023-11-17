@@ -53,7 +53,7 @@ announce "electrs has been tested successfully on newer versions of MacOS.
     It fails with older versions. 
 
     To use Bitoin Core with a wallet using this computer, either update
-    to a later version of MacOS (12+) or use Sparrow directly with
+    to a later version of MacOS (11+) or use Sparrow directly with
     Bitcoin Core (it doesn't need electrs or Fulcrum).
 
     Aborting.
