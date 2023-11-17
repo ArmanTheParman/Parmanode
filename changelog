@@ -1,3 +1,6 @@
+Version 3.18.0
+    -PiApps available for Pi's (can access Tor Browser)
+    -bitcoin tor status included in parmanode.conf
 Version 3.17.5
     -Parmanode startup now 0.5 seconds faster (consolidated patch functions
      which not only run once instead of every time)
@@ -8,7 +11,6 @@ Version 3.17.5
     -bitcoin prune modification available now
     -electrs available before bitcoin sync complete
     -lightning TOR more robust
-    -bitcoin tor status included in parmanode.conf
 Version 3.17.4
     -drive path bug fixed
     -BTC RPC Explorer via Docker introduced (Pi and Mac)

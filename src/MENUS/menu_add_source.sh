@@ -349,4 +349,18 @@ else
 electrsdkr_n="#                            (ersd)        electrs (Docker)                            #"
 fi
 
+#piapps
+if [[ $computer_type == Pi ]] ; then
+unset piapps_i piapps_p piapps_n 
+if grep -q "piapps-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+piapps_i="#                                      PiApps                                          #"
+elif grep -q "piapps-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+piapps_p="#                                      PiApps                                          #"
+else
+   #not installed
+piapps_n="#                            (piap)        PiApps                                      #"
+fi
+fi #end computer type = Pi
 }
