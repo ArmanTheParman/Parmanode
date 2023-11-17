@@ -1,5 +1,5 @@
 function install_torbrowser {
-
+clear
 cd $hp
 curl -LO https://github.com/TheTorProject/gettorbrowser/releases/download/linux64-12.5.1/tor-browser-linux64-12.5.1_ALL.tar.xz
 installed_conf_add "torb-start"
