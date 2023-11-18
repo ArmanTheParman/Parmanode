@@ -12,12 +12,13 @@ elif [[ $1 == d7 ]] ; then export debug=7
 else export debug=0 
 fi
 
+#used for debugging
 if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export verify=skip ; fi
 
 #save position of working directory. "Export" makes the variable available everywhere.
 export original_dir=$(pwd) >/dev/null 2>&1
 
-if [[ $1 == "usertest" ]] ; then export ut=1 ; fi
+if [[ $1 == "usertest" || $1 == "ut" ]] ; then export ut=1 ; fi
 
 
 if [[ $(uname) == Linux ]] ; then
@@ -31,16 +32,19 @@ export hp="$HOME/parmanode"
 export pp="$HOME/parman_programs"
 export pn="$pp/parmanode"
 export db="$HOME/.bitcoin"
+export bc="$db/bitcoin.conf"
 
 export parmanode_conf="${dp}/parmanode.conf"
 export installed_conf="${dp}/installed.conf"
+export pc=$parmanode_conf
+export ic=$installed_conf
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 get_Mac_version #function to export Mac Version variables
 
 # A counter for the number of times main_menu has been 'Inceptioned'.
-# back2main function will add 1
+# back2main function will add 1. After a set value, user is warned to restart Parmanode.
 export main_loop=0
 
 }
