@@ -110,12 +110,14 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
 fi
    
 
-#patches
-if [[ -z $patch ]] ; then patch_1 ; fi   #patch=1 placed in parmanode.conf
-                                         #ensures patch_1 only run once per installation
-                                         #should make startup faster
+#patches ; each patch adds variable to parmanode.conf, sourced higher up
+case $patch in
+1) 
+patch_2 ;;
+*) 
+patch_1 ; patch_2 ;; 
+esac
 
-if [[ $patch == 1 ]] ; then patch_2 ; fi #patch=2 added to parmanode.conf
 
 
 get_ip_address #function to put the IP address of the computer in memory.
