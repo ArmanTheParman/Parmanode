@@ -4,7 +4,7 @@ if [[ $bashV_major -gt 4 ]] ; then
 export black="\033[30m"
 export red="\033[31m"
 export green="\033[32m"
-export yellow="\033[33m"
+export yellow="\033[1;33m"
 export blue="\033[34m"
 export magenta="\033[35m"
 export cyan="\033[36m"
@@ -12,6 +12,7 @@ export white="\033[37m"
 export reset="\033[0m"
 
 export orange="\033[38;2;255;145;0m"
+if [[ $(uname) == Darwin ]] ; then export orange="$yellow" ; fi
 export pink="\033[38;2;255;0;255m"
 
 export bright_black="\033[90m" ; export grey="\033[90m"
