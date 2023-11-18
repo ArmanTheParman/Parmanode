@@ -13,13 +13,10 @@ echo -e "
 $cyan
    Please note that LND will only truly be "Tor-Only" if you also remove any clearnet
    IP addresses from the lnd.conf file yourself.
-$orange
+$red
    Please also note that the Tor setting for Bitcoin must match the LND settings or
-   else LND won't start/run.
-
-   Parmanode is not yet smart enough to do all of the above for you, but it will be 
-   one day. Currently there is a 'prv' setting to make LND Tor-only, but it can
-   not reverse it for you. You'd have to do it manually by editing the lnd.con file.
+   else LND won't start/run. Parmanode will do this by modifying the bitcoin.conf
+   settings now.
 
 ########################################################################################
 "
@@ -55,7 +52,7 @@ tor.skip-proxy-for-clearnet-targets=false
 " | tee -a $file >/dev/null 2>&1
 
 swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost:$lnd_port"
-restart_lnd
+if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
 if [[ $1 == skipsuccess ]] ; then true ; else
 success "LND Tor enabling"
 fi
@@ -68,22 +65,25 @@ cp $file ${dp}/backup_files/lnd.conf$(date | awk '{print $1$2$3}')-preDisableTor
 
 sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
 swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port"
-restart_lnd
+if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
 
+restart_lnd
 success "LND Tor disabling"
 }
 
 function lnd_enable_hybrid {
 local file=$HOME/.lnd/lnd.conf
+norestartlnd=true
 lnd_enable_tor skipsuccess
+unset norestartlnd
 
 cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preEnableHybrid >/dev/null 2>&1
 
 swap_string $file "tor.skip-proxy-for-clearnet-targets=false" "tor.skip-proxy-for-clearnet-targets=true" 
 swap_string $file "tor.streamisolation=true" "tor.streamisolation=false"
-# swap_string $file "; tlsextraip=$IP" "tlsextraip=$IP"
 
-restart_lnd
+
+if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
 success "LND hypbrid TOR/Clearnet mode" "being enabled"
 
 }
@@ -95,7 +95,12 @@ cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preDisableHy
 
 swap_string $file "tor.skip-proxy-for-clearnet-targets=true" "; tor.skip-proxy-for-clearnet-targets=true"
 swap_string $file "tor.streamisolation=false" "tor.streamisolation=true"
-# swap_string $file "tlsextraip=$IP" "; tlsextraip=$IP"
-restart_lnd
+
+if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
+
+reverse_fully_tor_only skipsuccess
+
+if [[ $1 != skipsuccess ]] ; then
 success "LND hypbrid TOR/Clearnet mode" "being disabled"
-}
+fi
+fi}

@@ -9,13 +9,15 @@ wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... sometimes just wait a
 fi 
 
 # To print tor details in menu
+unset lndtor torhybrid
+if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf 
+    lndtor=Enabled
+fi
 
-if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
+if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
 then 
-    lndtor=Disabled
     torhybrid=Enabled
 else 
-    if ! grep -q "tor.active=1" < $HOME/.lnd/lnd.conf ; then lndtor=Disabled ; else lndtor=Enabled ; fi
     torhybrid=Disabled 
 fi
 
@@ -79,11 +81,9 @@ echo -e "
        
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR-only                Currently: $cyan$lndtor$orange
+      (t)              Enable/disable TOR                  Currently: $lndtor$orange
 
-      (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
-
-      (prv)            Enable/disable Private Mode (Fully Tor Only)
+      (th)             Allow/disallow Clearnet with Tor    Currently: $torhybrid$orange
 
       (w)              ... wallet options
 
@@ -121,34 +121,38 @@ rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
 
 t|T|tor)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected an older version of Parmanode has created
-    your Lightninbg lnd.conf file. The Tor configuration adjustments may
-    not work because of this. It is recommended to reinstall LND using
-    Parmanode before attempting to enable Tor."
+announce "Parmanode has detected irregularities in your lnd.conf file
+    possibly due to an older version of Parmanode having created it. 
+    
+    The Tor configuration adjustments may not work because of this. 
+    It is recommended to reinstall LND using Parmanode before attempting 
+    to enable Tor."
 continue
 fi
 
 if [[ $lndtor == Disabled ]] ; then
-lnd_enable_tor
+fully_tor_only #will restart lnd
 else
-lnd_disable_tor
+lnd_disable_tor #will restart lnd
 fi
 
 ;;
 
 th)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected an older version of Parmanode has created
-    your Lightninbg lnd.conf file. The Tor configuration adjustments may
-    not work because of this. It is recommended to reinstall LND using
-    Parmanode before attempting to enable Tor."
+announce "Parmanode has detected irregularities in your lnd.conf file
+    possibly due to an older version of Parmanode having created it. 
+    
+    The Tor configuration adjustments may not work because of this. 
+    It is recommended to reinstall LND using Parmanode before attempting 
+    to enable Tor."
 continue
 fi
 
 if [[ $torhybrid == Disabled ]] ; then
-lnd_enable_hybrid
+lnd_enable_hybrid #will restart lnd
 else
-lnd_disable_tor
+reverse_fully_tor_only #will restart lnd
 fi
 
 ;;
@@ -257,21 +261,27 @@ esac ; done
 function fully_tor_only {
 # check tor enabled - or do it.
 # check hybrid off - or do it.
-# comment out tlsextrIP
+# comment out tlsextrip
 # comment out tlsextradomain
+# comment out externalip 
 
 local file=$HOME/.lnd/lnd.conf
 
 if [[ $lndtor == Disabled ]] ; then
+   export norestartlnd=true 
 lnd_enable_tor
+   unset norestartlnd
 fi
 if [[ ! $torhybrid == Disabled ]] ; then
+   export norestartlnd=true
 lnd_disable_hybrid
+   unset norestartlnd
 fi
 
 sed -i '/^tlsextraip/s/^/; /' $file
 sed -i '/^tlsextradomain/s/^/; /' $file
 sed -i '/^externalip/s/^/; /' $file
+
 restart_lnd
 
 success "LND" "being made to run by Tor-only"
@@ -281,10 +291,37 @@ function reverse_fully_tor_only {
 
 local file=$HOME/.lnd/lnd.conf
 
+if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
 sed -i '/^; tlsextraip/s/^..//' $file
-# sed -i '/^; tlsextradomain/s/^..//' $file --- can't use this becaue it will enable the teplate IP address.
-sed -i '/^; externalip/s/^..//' $file
+else
+announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
 
+if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
+sed -i '/^; externalip/s/^..//' $file
+else
+announce "Unexpectedly found 'externalip' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
+
+delete_line "$file" "tlsextradomain=mydomain.com" 
+
+if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
+sed -i '/^; tlsextradomain/s/^..//' $file
+else
+announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
+
+if [[ $norestartlnd != true ]]
 restart_lnd
+fi
+
+if [[ $1 != skipsuccess ]] ;
 success "LND" "having Tor-only reversed"
+fi
 }
