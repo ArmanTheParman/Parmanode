@@ -297,6 +297,7 @@ local file=$HOME/.lnd/lnd.conf
 if grep -q tlsextraip < $file ; then
 if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
 sed -i '/^; tlsextraip/s/^..//' $file
+debug "after sed"
 else
 announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
     Abandoning automated modification to avoid errors."
