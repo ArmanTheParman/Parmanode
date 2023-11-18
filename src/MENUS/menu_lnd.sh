@@ -12,6 +12,8 @@ fi
 unset lndtor torhybrid
 if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
     lndtor=Enabled
+else
+    lndtor=Disabled
 fi
 
 if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
