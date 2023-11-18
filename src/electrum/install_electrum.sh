@@ -90,7 +90,7 @@ fi
 
 if [[ $computer_type == "LinuxPC" ]] ; then
 echo "installing udev rules..."
-udev "electrum"
+udev
 
 set_terminal ; echo "
 ########################################################################################
@@ -118,8 +118,11 @@ enter_continue
 fi
 
 if [[ $computer_type == "Pi" ]] ; then
-echo "installing udev rules..."
-udev
+
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
 
 set_terminal ; echo "
 ########################################################################################
