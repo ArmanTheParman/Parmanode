@@ -6,16 +6,6 @@
 # argument 2 - searchstring
 
 function delete_line {
-if [[ ! -d $dp/.backup_files ]] ; then mkdir $dp/.backup_files ; fi
-
-cp $1 $dp/.backup_files/$1$(date | awk '{print $1$2$3}') >/dev/null 2>&1
-
-#program exits if parmanode not "installed"- preventing the use of the function before installation 
-if grep -q parmanode-end < $HOME/.parmanode/installed.conf ; then 
-true
-else
-return 1
-fi >/dev/null 2>&1
 
 if [[ $(uname) == "Darwin" ]] ; then
 	change_string_mac "$1" "$2" "null" "delete"
