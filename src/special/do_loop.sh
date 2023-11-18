@@ -54,7 +54,7 @@ test_directory_placement #you can go to this funciton and read the code, then co
 set_terminal
 
 #drive structure
-if [[ ! -e $HOME/.parmanode/installed.conf ]] ; then touch $HOME/.parmanode/installed.conf ; fi
+touch $HOME/.parmanode/installed.conf 
 make_home_parmanode 
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
 parmanode_conf_add # With no argument after the function, this will create a 
