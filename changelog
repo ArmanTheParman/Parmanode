@@ -1,3 +1,7 @@
+Version 3.18.4  19 November
+    -Sparrow 1.8.0 available as an option, but not default
+    -Option to leave Fulcrum database when uninstalling
+    -Udev rules for wallets to be installed only once, saves time
 Version 3.18.3
     -Patch2; moved many repeating functions into a patch so it runs once 
      only, speeds up startup.
