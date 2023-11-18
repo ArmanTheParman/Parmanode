@@ -10,7 +10,7 @@ fi
 
 # To print tor details in menu
 unset lndtor torhybrid
-if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf 
+if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
     lndtor=Enabled
 fi
 
