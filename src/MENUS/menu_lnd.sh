@@ -15,7 +15,6 @@ if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
 else
     lndtor=Disabled
 fi
-debug "lndtor is $lndtor"
 
 if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
 then 
@@ -296,7 +295,7 @@ local file=$HOME/.lnd/lnd.conf
 
 if grep -q tlsextraip < $file ; then
 if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; tlsextraip/s/^..//' $file
+sed -i '/^tlsextraip/s/^; tlsextraip//' $file
 debug "after sed"
 else
 announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
@@ -308,7 +307,7 @@ fi
 
 if grep -q externalip < $file ; then
 if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; externalip/s/^..//' $file
+sed -i '/^externalip/s/^; externalip//' $file
 else
 announce "Unexpectedly found 'externalip' more than once in lnd.conf.
     Abandoning automated modification to avoid errors."
@@ -320,7 +319,7 @@ delete_line "$file" "tlsextradomain=mydomain.com"
 
 if grep -q tlsextradomain < $file ; then
 if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; tlsextradomain/s/^..//' $file
+sed -i '/^tlsextradomain/s/^; tlsextradomain//' $file
 else
 announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
     Abandoning automated modification to avoid errors."
