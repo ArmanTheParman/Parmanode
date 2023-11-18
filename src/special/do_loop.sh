@@ -99,6 +99,7 @@ parmanode1_fix
 
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
+   debug "in rpcount"
    #environment checks
    bash_check 
    ensure_english
@@ -132,7 +133,7 @@ check_chip #gets the chip type into config file
 	
 ###### TESTING SECTION #################################################################
 
-debug "Pausing here" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here. rp_count $rp_count" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
 if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
