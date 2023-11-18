@@ -9,7 +9,6 @@ fix_autoupdate
 add_rp_function
 correct_old_installation
 
-debug "ran patch_1"
 parmanode_conf_add "patch=1"
 }
 

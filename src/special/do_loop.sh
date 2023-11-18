@@ -51,23 +51,19 @@ test_directory_placement #you can go to this funciton and read the code, then co
 
 set_terminal
 
+#drive structure
 make_home_parmanode 
-make_dot_parmanode 
-
-# With no argument after the function, this will create a parmanode.conf file if it doesnt' exist.
-parmanode_conf_add
-
-# Update config files - make redundant later.
-     installed_config_add "parmanode-start"
-     installed_config_add "parmanode-end" # This syntax, -start and -end, helps identifiy installations
-    #that have started vs installations that have completed.
+make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
+parmanode_conf_add # With no argument after the function, this will create a 
+                   # parmanode.conf file if it doesnt' exist.
 
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
 
-#if docker is set up on the machine, then it is detected by Parmanode
-#and added to the config file
-if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
+# If docker is set up on the machine, then it is detected by Parmanode
+# and added to the config file
+# The block of code is added to the background to not delay start up
+( if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if ([[ $(uname) == Darwin ]] && ( which docker >/dev/null )) || \
 	( [[ $(uname) == Linux ]] && which docker >/dev/null && id | grep -q docker ) ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
@@ -75,7 +71,7 @@ if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed
 		fi
 	else installed_config_remove "docker"
 	fi
-fi
+fi ) &
 
 ########################################################################################
 #Intro
@@ -105,7 +101,8 @@ gpg_check  # needed to download programs from github
 curl_check # needed to download things using the command prompt rather than a browser.
 
 #patches
-if [[ $patch != 1 ]] ; then patch_1 ; fi #ensures patch_1 only run once per installation
+if [[ $patch != 1 ]] ; then patch_1 ; fi #patch=1 placed in parmanode.conf
+                                         #ensures patch_1 only run once per installation
                                          #should make startup faster
 
 
