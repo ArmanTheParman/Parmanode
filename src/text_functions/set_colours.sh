@@ -1,28 +1,28 @@
 function set_colours {
 #colours don't work on Mac in the way I've implemented this, so excluding.
 if [[ $(uname -s) == "Linux" ]] ; then
-export black="\e[30m"
-export red="\e[31m"
-export green="\e[32m"
-export yellow="\e[33m"
-export blue="\e[34m"
-export magenta="\e[35m"
-export cyan="\e[36m"
-export white="\e[37m"
-export reset="\e[0m"
+export black="\033[30m"
+export red="\033[31m"
+export green="\033[32m"
+export yellow="\033[33m"
+export blue="\033[34m"
+export magenta="\033[35m"
+export cyan="\033[36m"
+export white="\033[37m"
+export reset="\033[0m"
 
 export orange="\033[38;2;255;145;0m"
 export pink="\033[38;2;255;0;255m"
 
-export bright_black="\e[90m" ; export grey="\e[90m"
+export bright_black="\033[90m" ; export grey="\033[90m"
 
-export bright_red="\e[91m"
-export bright_green="\e[92m"
-export bright_yellow="\e[93m"
-export bright_blue="\e[94m"
-export bright_magenta="\e[95m"
-export bright_cyan="\e[96m"
-export bright_white="\e[97m"
+export bright_red="\033[91m"
+export bright_green="\033[92m"
+export bright_yellow="\033[93m"
+export bright_blue="\033[94m"
+export bright_magenta="\033[95m"
+export bright_cyan="\033[96m"
+export bright_white="\033[97m"
 colour_check
 fi
 
