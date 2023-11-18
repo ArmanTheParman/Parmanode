@@ -27,9 +27,9 @@ echo -e "
 #                                                                                      #
 #    (t)                  Tools                                                        #
 #                                                                                      #
-#    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
+#    (s)                  Settings                                                     #
 #                                                                                      #
-#    (pn)                 ParmanodL                                                    #
+#    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
 #    (e)                  Education                                                    #
 #                                                                                      #
@@ -74,13 +74,13 @@ l|L)
 m|M)
      mentorship
      ;;
-pn|PN|Pn)
-    get_parmanodl
-    ;;
+
 e|E)
     menu_education ;;
 t|T)
     menu_tools ;;
+s|S)
+    menu_settings ;;
 d|D)
     donations ;;
 uninstall|UNINSTALL)

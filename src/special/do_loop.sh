@@ -41,6 +41,8 @@ fi
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
+            #parmanode.conf later may override theme
+
 debug "print colours"
 
 # Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
