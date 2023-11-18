@@ -75,6 +75,9 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 	fi
 fi ) &
 
+#add to run count
+rp_count
+
 ########################################################################################
 #Intro
 ########################################################################################
@@ -96,6 +99,7 @@ fi
 parmanode1_fix
 
 #environment checks
+bash_check #prompts every 7 times parmanode is run
 ensure_english
 check_architecture
 sudo_check # needed for preparing drives etc.
