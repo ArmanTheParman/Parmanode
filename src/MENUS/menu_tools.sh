@@ -24,7 +24,7 @@ echo -e "
               (d)     Delete your previous preferences to hide certain Parmanode
                       messages
                  
-              (u)     Update computer
+              (u)     Update computer (apt-get for Linux, Homebrew for Macs)
 
               (h)     Check system resources with \"htop\" (installed if needed)
 
@@ -49,7 +49,12 @@ case $choice in
 
     u|U|up|UP|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi
-    if [[ $OS == "Mac" ]] ; then brew_check || continue ; brew update ; brew upgrade ; fi 
+    if [[ $OS == "Mac" ]] ; then 
+        please_wait 
+        brew_check || continue 
+        brew update ; brew upgrade 
+        if [[ $bashV_major -lt 5 ]] ; then brew install bash ; fi
+    fi
     ;;
 
     ip|IP|iP|Ip)
