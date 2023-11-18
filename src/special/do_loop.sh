@@ -117,7 +117,7 @@ if [[ -z $patch ]] ; then patch_1 ; fi   #patch=1 placed in parmanode.conf
 if [[ $patch == 1 ]] ; then patch_2 ; fi #patch=2 added to parmanode.conf
 
 
-get_ip_address #a function to put the IP address of the computer in memory.
+get_ip_address #function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
 
@@ -127,8 +127,6 @@ if [[ $exit_loop == false ]] ; then return 0 ; fi
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
 clean_exit 
-
-check_chip #gets the chip type into config file
 
 	
 ###### TESTING SECTION #################################################################
