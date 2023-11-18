@@ -19,7 +19,6 @@ start|Start|START|S|s)
 check_SSH || return 0
 please_wait ; echo "" ; echo "A Trezor Suite window should open soon."
 run_trezor 
-enter_continue
 return 0 ;;
 
 *)
