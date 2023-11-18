@@ -47,4 +47,6 @@ get_Mac_version #function to export Mac Version variables
 # back2main function will add 1. After a set value, user is warned to restart Parmanode.
 export main_loop=0
 
+#bash version
+export bashV_major=$(bash --version | head -n1 | cut -d \. -f 1 | grep -Eo '[0-9]+')
 }

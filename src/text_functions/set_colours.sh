@@ -1,6 +1,6 @@
 function set_colours {
-#colours don't work on Mac in the way I've implemented this, so excluding.
-if [[ $(uname -s) == "Linux" ]] ; then
+#colours don't work on Mac bash old version
+if [[ $bashV_major -gt 4 ]] ; then
 export black="\033[30m"
 export red="\033[31m"
 export green="\033[32m"
