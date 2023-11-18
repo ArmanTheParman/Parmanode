@@ -32,7 +32,7 @@ fi
 
 		if [[ $file != *"/postgres_script.sh" ]]; then #The if statement excludes one file
 	    source $file #"source" or also represented by "." means to run the code in the file.
-		#They doesn't need #!/bin/bash statements inside, because it is being called by 
+		#They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
 		# this program.  
 		fi 
 

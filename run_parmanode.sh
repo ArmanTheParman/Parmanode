@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Follow the program at $HOME/parman_programs/parmanode/src/special/do_loop.sh
 #This is where the code continues, and more educational material about how this
