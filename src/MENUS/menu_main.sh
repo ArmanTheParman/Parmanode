@@ -27,7 +27,7 @@ echo -e "
 #                                                                                      #
 #    (t)                  Tools                                                        #
 #                                                                                      #
-#    (s)                  Settings                                                     #
+#    (s)                  Settings  (change colour theme)                              #
 #                                                                                      #
 #    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
