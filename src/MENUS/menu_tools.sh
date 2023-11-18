@@ -93,6 +93,13 @@ case $choice in
         htop
 
         ;;
+    udev|UDEV)
+      if grep -q udev-end < $dp/installed.conf ; then
+      announce "udev already installed."
+      return 0
+      fi
+      udev
+      ;;
 
       md|MD)
       menu_migrate
