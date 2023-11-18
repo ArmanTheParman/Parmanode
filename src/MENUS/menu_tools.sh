@@ -8,11 +8,13 @@ echo -e "
                                P A R M A N O D E - Tools   $orange
 
 
+              (pn)    ParmanodL - Flash a mircoSD for a Raspberry Pi
+                                                                                      
               (ps)    ParmaShell info 
 
               (ip)    What's my computer's IP address?
 
-              (md)     Migrate/Revert an external drive.
+              (md)    Migrate/Revert an external drive.
 
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
@@ -34,7 +36,11 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
     
-m|M) back2main ;;
+    m|M) back2main ;;
+
+    pn|PN|Pn)
+    get_parmanodl
+    ;;
 
     ps|PS|Ps)
     parmashell_info
