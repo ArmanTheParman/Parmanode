@@ -26,8 +26,6 @@ local file=$HOME/.lnd/lnd.conf
 
 if ! which tor >/dev/null ; then install_tor ; fi
 
-cp $file ${dp}/backup_files/lnd.conf$(date | awk '{print $1$2$3}')-presableTor >/dev/null 2>&1
-
 #delete first to avoid duplication
 while grep -q "Added by Parmanode (start)" < $file ; do
 sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
