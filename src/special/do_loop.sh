@@ -1,5 +1,3 @@
-#Called by run_parmanode
-
 function do_loop {
 #Educational comments included.
 
@@ -18,7 +16,9 @@ The run_parmanode.sh script must be run from it's original directory. It
 cannot be moved relative to all the other files, but it can be run
 by calling it with a different script from elsewhere.
 
-Exiting. Hit <enter> to exit."
+Exiting. 
+
+Hit <enter> to exit."
 read #this command takes any user keyboard input, waiting for <enter> to continue.
 exit 0
 fi
@@ -26,21 +26,24 @@ fi
 # source all the modules. Exclude executable scripts which aren't modules. Modules
 # are bits of codes saved elseshere. They are "sourced" to load the code into memory.
 
-	for file in ./src/**/*.sh ; do #for every file that ends in .sh, attach its
-	#name to the variable "file" then run the code below, looping.
+	for file in ./src/**/*.sh ; do #for every file that ends in .sh, up to a directory
+	#length of 1, attach its name to the variable "file" then run the code below, 
+	#looping so each file gets sourced.
 
-		if [[ $file != *"/postgres_script.sh" ]]; then
+		if [[ $file != *"/postgres_script.sh" ]]; then #The if statement excludes one file
 	    source $file #"source" or also represented by "." means to run the code in the file.
-		#it doesn't need #!/bin/bash, because it is being called by this program.
+		#They doesn't need #!/bin/bash statements inside, because it is being called by 
+		# this program.  
 		fi 
 
 	done #ends the loop
 
-parmanode_variables $@ #CANNOT USE DEBUG FUNCTION BEFORE THIS"
+parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
 debug "check colours"
-# Make sure parmanode git directory is not place in $HOME directory, or it will be wiped
+
+# Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
