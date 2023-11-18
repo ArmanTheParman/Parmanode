@@ -94,34 +94,26 @@ else
 autoupdate
 fi
 
-
 #Health check
 parmanode1_fix
 
-#environment checks
-bash_check #prompts every 7 times parmanode is run
-ensure_english
-check_architecture
-sudo_check # needed for preparing drives etc.
-gpg_check  # needed to download programs from github
-curl_check # needed to download things using the command prompt rather than a browser.
+#prompts every 20 times parmanode is run (reducing load up time of Parmanode)
+if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
+   #environment checks
+   bash_check 
+   ensure_english
+   check_architecture 
+   #commit config directory state using git
+   git_dp &
+fi
+   
 
 #patches
-if [[ $patch != 1 ]] ; then patch_1 ; fi #patch=1 placed in parmanode.conf
+if [[ -z $patch ]] ; then patch_1 ; fi   #patch=1 placed in parmanode.conf
                                          #ensures patch_1 only run once per installation
                                          #should make startup faster
 
-
-#commit config directory state using git
-git_dp
-
-# Check OS function and store in a variable for later. 
-# Exits if Windows, or if Mac/Linux not detected.
-which_os #use a search function to find functions, eg seach "which_os {". By includding
-# the { in your search, you'll narrow down to where the function is defined, and exclude
-# the results where it is called on.
-
-which_computer_type
+if [[ $patch == 1 ]] ; then patch_2 ; fi #patch=2 added to parmanode.conf
 
 
 get_ip_address #a function to put the IP address of the computer in memory.
@@ -134,8 +126,6 @@ if [[ $exit_loop == false ]] ; then return 0 ; fi
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
 # when they exit.
 clean_exit 
-
-
 
 check_chip #gets the chip type into config file
 
@@ -156,6 +146,6 @@ debug_fast "test first fast debug"
 motd
 
 # This is the main program, which is a menu that loops.
-menu_main zero    
+menu_main
 
 }
