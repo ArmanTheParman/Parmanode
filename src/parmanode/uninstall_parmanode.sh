@@ -105,6 +105,8 @@ fi
 
 set_terminal
 if [[ $debug == 0 ]] ; then 
+while true ; do
+clear
 echo "
 ########################################################################################
 
@@ -113,7 +115,11 @@ echo "
 ########################################################################################
 "
 choose "epq"
-exit_choice || return 1
+read choice
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
+esac
+done
 unset choice
 fi
 
@@ -165,10 +171,15 @@ set_terminal ; echo -e "
 read choice
 case $choice in y|Y) 
 #remove desktop icon file
-rm $HOME/Desktop/run_parmanode*
-rm $HOME/Desktop/parmanode.desktop
+rm $HOME/Desktop/*un_parmanode* >dev/null
+rm $HOME/Desktop/*armanode* >/dev/null
+rm $HOME/Desktop/parmanode.desktop >/dev/null
+debug "delete desktop icon"
 rm $HOME/.icons/PNicon*
-rm -rf $original_dir ;; 
+debug "delete .icons"
+rm -rf $original_dir 
+debug "remove original dir"
+;;
 esac
 
 set_terminal
