@@ -55,8 +55,12 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     diskutil unmountDisk /Volumes/Sparrow
     fi
 
-if [[ $OS == "Linux" ]] ; then udev "sparrow" ; fi
-debug "Did udev function run?"
+if [[ $OS == "Linux" ]] ; then 
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
+fi
 
 add_localhost_to_bitcoinconf
 

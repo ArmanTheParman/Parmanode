@@ -55,7 +55,10 @@ verify_specter || return 1
 
 unpack_specter
 
-udev "specter"
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
 
 installed_conf_add "specter-end"
 

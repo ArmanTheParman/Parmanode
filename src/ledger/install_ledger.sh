@@ -21,7 +21,10 @@ if [[ $OS == Linux ]] ; then
 curl -LO $locationLinux
 if [[ $verify != skip ]] ; then verify_ledger || return 1 ; fi
 sudo chmod +x *AppImage
-udev
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
 fi
 
 installed_conf_add "ledger-end"
