@@ -43,7 +43,7 @@ parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
 
-debug "print colours"
+if [[ $debug == 1 ]] then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
 # Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
@@ -58,6 +58,7 @@ make_home_parmanode
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
 parmanode_conf_add # With no argument after the function, this will create a 
                    # parmanode.conf file if it doesnt' exist.
+if [[ ! -e $HOME/.parmanode/installed.conf ]] ; then touch $HOME/.parmanode/installed.conf ; fi
 
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
