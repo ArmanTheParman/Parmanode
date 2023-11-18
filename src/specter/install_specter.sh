@@ -41,6 +41,7 @@ yolo) break ;;
 *) invalid ;;
 esac
 done
+fi
 
 set_terminal
 install_check "specter" || return 1

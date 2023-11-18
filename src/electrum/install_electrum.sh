@@ -30,6 +30,7 @@ yolo) break ;;
 *) invalid ;;
 esac
 done
+fi
 
 
 set_terminal
