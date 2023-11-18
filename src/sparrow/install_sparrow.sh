@@ -34,6 +34,7 @@ yolo) break ;;
 *) invalid ;;
 esac
 done
+fi
 
 set_terminal
 if [[ $OS == "Mac" ]] ; then
