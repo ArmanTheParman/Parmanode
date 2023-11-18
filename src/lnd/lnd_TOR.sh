@@ -100,6 +100,8 @@ if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
 
 reverse_fully_tor_only skipsuccess
 
+restart_lnd
+
 if [[ $1 != skipsuccess ]] ; then
 success "LND hypbrid TOR/Clearnet mode" "being disabled"
 fi
