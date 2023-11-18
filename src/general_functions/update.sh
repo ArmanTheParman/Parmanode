@@ -26,10 +26,10 @@ $orange
     As it's running, do look at the output, especially near the start; if there is a 
     recommendation to run a command related to \"git unshallow\", then do that.
 
-    Do note that with Mac updates, long periods of time can pass where it looks like 
-    nothing is happening. You can get some sort of snapshot to show that progress is 
-    happening using <control>-t.  
-      
+    WARNING: This can take a really long time. It's ok if you skip now, but do 
+    make sure to come back to the \"tools\" menu, and select \"Update Computer\" when 
+    you have time.
+
 $green
                        y)      Update
 $red

@@ -1,20 +1,18 @@
 function brew_check {
 
-if command -v brew >/dev/null 2>&1
+if which brew >/dev/null 2>&1
     then
 	return 0
-    else
+else
+
 while true ; do
 set_terminal
-software="the software"
-if [[ -n $1 ]] ; then software="$1" ; fi
 echo -e "
 ########################################################################################
-$cyan
-                                     Homebrew
-$orange
-   In order for $software to work properly, Parmanode needs to install Homebrew 
-   on your computer.
+
+                                    Homebrew
+
+   Parmanode will install Homebrew on your computer...
 
    Homebrew is a package manager (a program that manages certain other programs' 
    installation and maintenance on your system via web servers where the software is 
@@ -24,7 +22,7 @@ $orange
    your system, but it is a real pain to download - it's going to take a while. Maybe
    even 30 minutes to an hour or so. Make sure your computer doesn't go into 
    hybernation during the process to save power. 
-   
+
                             i)    Install Homebrew 
 				
                             a)    Abort
