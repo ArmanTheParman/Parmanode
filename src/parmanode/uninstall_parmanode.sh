@@ -183,7 +183,7 @@ debug "remove original dir"
 esac
 
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
                         Parmanode has been uninstalled       
