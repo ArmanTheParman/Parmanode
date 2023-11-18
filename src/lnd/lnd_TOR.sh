@@ -17,7 +17,7 @@ $red
    Please also note that the Tor setting for Bitcoin must match the LND settings or
    else LND won't start/run. Parmanode will do this by modifying the bitcoin.conf
    settings now.
-
+$orange
 ########################################################################################
 "
 enter_continue
