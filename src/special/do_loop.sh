@@ -58,6 +58,7 @@ make_home_parmanode
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
 parmanode_conf_add # With no argument after the function, this will create a 
                    # parmanode.conf file if it doesnt' exist.
+if [[ ! -e $HOME/.parmanode/installed.conf ]] ; then touch $HOME/.parmanode/installed.conf ; fi
 
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
