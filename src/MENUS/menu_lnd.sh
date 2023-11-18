@@ -15,6 +15,7 @@ if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
 else
     lndtor=Disabled
 fi
+debug "lndtor is $lndtor"
 
 if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
 then 
