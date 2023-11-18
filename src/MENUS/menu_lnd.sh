@@ -85,7 +85,7 @@ echo -e "
 
       (t)              Enable/disable TOR                  Currently: $lndtor$orange
 
-      (th)             Allow/disallow Clearnet with Tor    Currently: $torhybrid$orange
+      (th)             Enable/disable Clearnet with Tor    Currently: $torhybrid$orange
 
       (w)              ... wallet options
 
