@@ -1,5 +1,4 @@
 function bash_check {
-if [[ $rp_count == 1 || $((rp_count % 7)) == 0 ]] ; then
 if which brew >/dev/null 2>&1 ; then
 if [[ $bashV_major -lt 5 ]] ; then
 
@@ -36,7 +35,6 @@ break
 ;;
 esac
 done
-fi
 fi 
 fi
 }

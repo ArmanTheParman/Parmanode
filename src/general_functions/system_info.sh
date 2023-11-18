@@ -209,6 +209,8 @@ function check_architecture {
             $architecture == i486   || \
             $architecture == i586   || \
             $architecture == i686   ]] ; then 
+parmanode_conf_add "architecture=$architecture"
+
 announce \
 "This seems to be a 32-bit machine. Parmanode and most apps you
 install will not work properly, even if they install. Please run 
