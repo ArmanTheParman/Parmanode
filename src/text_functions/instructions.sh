@@ -18,10 +18,8 @@ set_terminal ; echo -e "
     3. Each program has its$green own menu$orange nested under the \"use\" menu; various 
        functions are available for you to make it easier to interact with the program.
        
-    4. If you$green update$orange Parmanode (easiest way is from the menu) the programs Parmanode
-       has installed for you won't be changed. To get newer version of installed
-       programs, use Parmanode to uninstall the program, then re-install using 
-       Parmanode. The updated script will install the newer version for you.
+    4. You should reguarly$green update$orange Parmanode (the best way is from the Parmanode
+       menu). 
 
 ########################################################################################
     

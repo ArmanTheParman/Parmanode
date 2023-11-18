@@ -3,7 +3,8 @@ colour="$1"
 
 printf '\033[8;38;88t'   # sets terminal size
 
-echo -e "\033[38;2;255;145;0m" #Orange colour setting.
+echo -e "$orange" #Orange colour setting.
+
         
 if [[ $colour == "pink" ]] ; then echo -e "\033[38;2;255;0;255m" ; fi
 

@@ -20,18 +20,21 @@ $orange
     Before using Parmanode, it is recommended that you update your operating 
     system first.
 
+    One noticable advantage will be a colour text display when using Parmanode, 
+    instead of black & white only.
+
     As it's running, do look at the output, especially near the start; if there is a 
     recommendation to run a command related to \"git unshallow\", then do that.
-$cyan
+
     Do note that with Mac updates, long periods of time can pass where it looks like 
     nothing is happening. You can get some sort of snapshot to show that progress is 
     happening using <control>-t.  
-$orange
       
+$green
                        y)      Update
-
+$red
                        n)      Donchu dare ( that means no )
-
+$orange
 ########################################################################################$yellow
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 "
@@ -43,6 +46,7 @@ if ! which brew >/dev/null ; then install_homebrew ; break
 else
 brew update
 brew upgrade
+brew install bash
 break
 fi
 ;;
@@ -64,12 +68,13 @@ echo -e "
 $cyan
                                  UPDATE THE OS ?
 $orange 
-    It is strongly recommended that you$cyan update$orange your operating system first 
-
+    It is recommended that you$cyan update$orange your operating system, expecially if
+    you've never done that since installing. 
+$green
                        y)      Update
-
+$red
                        n)      Donchu dare ( that means no )
-
+$orange
 ########################################################################################$yellow
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 "
