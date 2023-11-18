@@ -317,11 +317,11 @@ announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
 return 1
 fi
 
-if [[ $norestartlnd != true ]]
+if [[ $norestartlnd != true ]] ; then
 restart_lnd
 fi
 
-if [[ $1 != skipsuccess ]] ;
+if [[ $1 != skipsuccess ]] ; then
 success "LND" "having Tor-only reversed"
 fi
 }
