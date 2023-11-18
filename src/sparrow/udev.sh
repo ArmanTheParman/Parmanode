@@ -32,6 +32,11 @@ cd /tmp
 curl -LO http://parman.org/downloadable/udev_aarch64
 sudo chmod +x /tmp/udev_aarch64
 sudo ./udev_aarch64 installudevrules
+
 success "UDEV rules for easy HWW connections" "being imported"
+
+
+installed_conf_add "udev-end"
+
 fi
 }
