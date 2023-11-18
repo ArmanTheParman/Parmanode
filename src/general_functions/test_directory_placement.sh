@@ -9,12 +9,13 @@ cd - >/dev/null # "cd - " means go back to the directory before, whatever it was
 # Note that = assigns values and == compares values
 # as in = says "make the left side equal the right side"
 # and == says check if the left side is the same as the right side
-if [[ $testing_dir == "$HOME" ]] ; then #if so then bad news. 
+if [[ $testing_dir == "$HOME" ]] ; then #if so then bad news, directory is in the wrong place. 
 # Also $HOME is going to be different for everyon's computer. On Linux, it is /home/username.
 # on Macs it's /Users/username/
 test_directory_placement_message #see below for function details
 fi
 
+#in case directory is nested and $HOME/parmanode is part of the path. Not ok.
 if pwd >/dev/null | grep "$HOME/parmanode" ; then #if the result of pwd (which will not 
 #be printed because of >/dev/null) when grep'ed (a search function) includes
 #"$HOME/parmanode", then do the function below
@@ -27,16 +28,13 @@ function test_directory_placement_message {
 clear ; echo "
 ########################################################################################
 
-    Oh dear, you've downloaded the Parmanode software directly to your home directory. 
-    This will cause a conflict for the Parmanode installation. 
-    
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
-    Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart Parmanode) 
+    Do you want to have that fixed now?
 
-              n)      nah (ok, but parmanode won't run if you don't move it somewhere)
+              y)      Do it (you'll need to then restart Parmanode) 
 
+              n)      Nah (ok, but Parmanode won't run)
     
 ########################################################################################
 "
@@ -71,15 +69,13 @@ clear ; echo "
     Oh dear, you've downloaded the Parmanode software in a subdirectory of
 	$HOME/parmanode 
 
-	This won't do, because Parmanode needs to create a directory of that same name to
-	install the program, and doing so will wipe the program you're using now.
-
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
+
     Do you want to have that set up now?
 
-              y)      do it (you'll need to then restart Parmanode) 
+              y)      Do it (you'll need to then restart Parmanode) 
 
-              n)      nah (ok, but parmanode won't run if you don't move it somewhere)
+              n)      Nah (ok, but Parmanode won't run)
 
 ########################################################################################
 "
