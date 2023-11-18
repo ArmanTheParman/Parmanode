@@ -28,6 +28,8 @@ echo -e "
 
               (h)     Check system resources with \"htop\" (installed if needed)
 
+              (udev)  Add udev rules for HWWs (only needed for Linux)
+
               (aa)    Turn on/off autoupdates
 
 ########################################################################################
