@@ -63,8 +63,9 @@ fi
 
 }
 function ut {
-if [[ $ut != 1 ]] ; then return 0 ; fi
+if [[ $ut == 1 ]] ; then 
 echo "{$1}"
 echo "debug point. Pausing here."
 enter_continue
+fi
 }
