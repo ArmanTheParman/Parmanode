@@ -119,7 +119,6 @@ patch_1 ; patch_2 ;;
 esac
 
 
-
 get_ip_address #function to put the IP address of the computer in memory.
 
 # get version, and suggest user to update if old.
