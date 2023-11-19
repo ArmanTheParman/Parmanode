@@ -52,6 +52,12 @@ $(cat $dp/lndinfo.log | grep 973 | grep -v onion | cut -d \" -f 2)
 $orange"
 fi
 
+if [[ $lndtor == Enabled ]] ; then
+colour1="$green" ; else colour1="$red" ; fi
+
+if [[ $torhybrid == Enabled ]] ; then
+colour2="$green" ; else colour2="$red" ; fi
+
 set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
