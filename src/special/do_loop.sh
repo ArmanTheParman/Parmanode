@@ -113,9 +113,13 @@ fi
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
-patch_2 ;;
+patch_2 ; patch_3 ;;
+2)
+patch_3 ;;
+3)
+true ;;
 *) 
-patch_1 ; patch_2 ;; 
+patch_1 ; patch_2 ; patch_3 ;; 
 esac
 
 
