@@ -81,9 +81,11 @@ p|P) return 1 ;;
 esac
 
 if [[ $choice == 1 || $choice == 2 || $choice == 3 || $choic3 == 4 ]] ; then
-if sudo systemctl status lnd.conf ; then
-   sudo systemctl restart lnd.conf & >/dev/null 2>&1
+    if sudo systemctl status lnd.conf ; then
+    sudo systemctl restart lnd.conf & >/dev/null 2>&1
+    fi
 fi
+
 done
 }
 
