@@ -2,6 +2,7 @@ Version 3.18.3
     -Patch2; moved many repeating functions into a patch so it runs once 
      only, speeds up startup.
     -LND log sometimes exits program after control-c. Fixed.
+    -Menu improvements
 Version 3.18.2
     -Tor Browser for Mac
 Version 3.18.1
