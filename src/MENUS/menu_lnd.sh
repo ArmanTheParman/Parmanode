@@ -133,12 +133,12 @@ continue
 fi
 
 if [[ $lndtor == Disabled ]] ; then
-fully_tor_only #will restart lnd
+lnd_tor only
 else
-lnd_disable_tor #will restart lnd
+lnd_tor off
 fi
-
 ;;
+
 
 th)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
@@ -152,9 +152,9 @@ continue
 fi
 
 if [[ $torhybrid == Disabled ]] ; then
-lnd_enable_hybrid #will restart lnd
+lnd_tor both
 else
-lnd_disable_hybrid
+lnd_tor only
 fi
 
 ;;
@@ -267,18 +267,7 @@ function fully_tor_only {
 # comment out tlsextradomain
 # comment out externalip 
 
-local file=$HOME/.lnd/lnd.conf
-
-if [[ $lndtor == Disabled ]] ; then
-   export norestartlnd=true 
-lnd_enable_tor
-   unset norestartlnd
-fi
-if [[ ! $torhybrid == Disabled ]] ; then
-   export norestartlnd=true
-lnd_disable_hybrid
-   unset norestartlnd
-fi
+lnd_tor only skipsuccess norestartlnd
 
 sed -i '/^tlsextraip/s/^/; /' $file
 sed -i '/^tlsextradomain/s/^/; /' $file

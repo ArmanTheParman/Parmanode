@@ -132,7 +132,6 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
-
 debug "Pausing here. rp_count $rp_count" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 

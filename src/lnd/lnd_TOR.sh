@@ -1,18 +1,29 @@
-function lnd_enable_tor {
-set_terminal
+function lnd_tor {
+# arguments: only, both, off
+if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
+local file=$HOME/.lnd/lnd.conf
+if ! which tor >/dev/null ; then install_tor ; fi
+
+function lnd_tor_message {
 echo -e "
 ########################################################################################
 
-   Please not that whether LND is running by Tor-Only or as a hybrid Tor/Clearnet
-   ultimately is determined by the address types you see at the bottom of the LND
-   menu.
+   Whether LND is running by Tor-Only or as a hybrid Tor/Clearnet ultimately is
+   determined by the URL types you see at the bottom of the LND menu.
 
-   If there is a Tor address (onion) only, then LND is running Tor-only. If a clearnet
-   address only, then it's running clearnet only; and obviously if you see both, it
-   is running hybrid.
+   If there is only a Tor URL (onion), then LND is running Tor-only. 
+   
+   If there is only a clearnet URL on the menu page, then LND is running on clearnet 
+   only. 
+
+   Obviously if you see both clearnet and onion addresses, it means LND is running as
+   a hybrid Tor and clearnet node.
 $cyan
-   Please note that LND will only truly be "Tor-Only" if you also remove any clearnet
-   IP addresses from the lnd.conf file yourself.
+   To ensure LND is running as Tor only (if that's your preference), you need to turn
+   Tor on, but also turn hybrid off. If Hybrid mode doesn't successfuly turn off, you
+   can manually edit the lnd.conf file and make sure none of the configuration options
+   are specifying external clearnet addresses. Anything with 'Listening' is not
+   included in this rquirement.
 $red
    Please also note that the Tor setting for Bitcoin must match the LND settings or
    else LND won't start/run. Parmanode will do this by modifying the bitcoin.conf
@@ -20,88 +31,72 @@ $red
 $orange
 ########################################################################################
 "
-enter_continue
+enter_abort || return 1
+}
 
-local file=$HOME/.lnd/lnd.conf
+ function delete_tor_lnd_conf { 
+   while grep -q "Added by Parmanode (start)" < $file ; do
+   sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+   count=$((1 + count))
+   if [[ $count -gt 3 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
+   done
+   }
 
-if ! which tor >/dev/null ; then install_tor ; fi
+   function add_tor_lnd_conf {
+   echo "; Added by Parmanode (start)
 
-#delete first to avoid duplication
-while grep -q "Added by Parmanode (start)" < $file ; do
-sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
-count=$((1 + count))
-if [[ $count -gt 3 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
-done
+   [tor]
+   tor.streamisolation=true
+   tor.v3=1
+   tor.socks=9050  
+   tor.control=9051 
+   tor.dns=soa.nodes.lightning.directory:53
+   tor.active=1
+   ; activate split connectivity
+   tor.skip-proxy-for-clearnet-targets=false
 
-echo "
-; Added by Parmanode (start)
+   ; Added by Parmanode (end)" | tee -a $file >/dev/null 2>&1
+   }
+########################################################################################
+#Begin
+########################################################################################
 
-[tor]
-tor.streamisolation=true
-tor.v3=1
-tor.socks=9050  
-tor.control=9051 
-tor.dns=soa.nodes.lightning.directory:53
-tor.active=1
-; activate split connectivity
-tor.skip-proxy-for-clearnet-targets=false
+if [[ $1 != off ]] ; then
+lnd_tor_message || return 1
+fi
+delete_tor_lnd_conf || return 1
 
-; Added by Parmanode (end)
-" | tee -a $file >/dev/null 2>&1
+case $1 in
 
+only)
+add_tor_lnd_conf
+#disable non-tor proxy traffic
 swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost:$lnd_port"
-if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
-if [[ $1 == skipsuccess ]] ; then true ; else
-success "LND Tor enabling"
-fi
-}
+;;
 
-function lnd_disable_tor {
-local file=$HOME/.lnd/lnd.conf
-
-cp $file ${dp}/backup_files/lnd.conf$(date | awk '{print $1$2$3}')-preDisableTor >/dev/null 2>&1
-
-sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+off)
 swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port"
-if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
+;;
 
-restart_lnd
-success "LND Tor disabling"
-}
-
-function lnd_enable_hybrid {
-local file=$HOME/.lnd/lnd.conf
-norestartlnd=true
-lnd_enable_tor skipsuccess
-unset norestartlnd
-
-cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preEnableHybrid >/dev/null 2>&1
-
-swap_string $file "tor.skip-proxy-for-clearnet-targets=false" "tor.skip-proxy-for-clearnet-targets=true" 
+both)
+add_tor_lnd_conf
+swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port"
 swap_string $file "tor.streamisolation=true" "tor.streamisolation=false"
+swap_string $file "tor.skip-proxy-for-clearnet-targets=false" "tor.skip-proxy-for-clearnet-targets=true" 
+;;
 
+*)
+announce "Small bug. Please report to Parman. Aborting."
+return 1
+;;
 
-if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
-success "LND hypbrid TOR/Clearnet mode" "being enabled"
+esac
 
-}
-
-function lnd_disable_hybrid {
-local file=$HOME/.lnd/lnd.conf
-
-cp $file ${dp}/backup_files/lnd.conf$(date | awk '{printe $1$2$3}')-preDisableHybrid >/dev/null 2>&1
-
-swap_string $file "tor.skip-proxy-for-clearnet-targets=true" "; tor.skip-proxy-for-clearnet-targets=true"
-swap_string $file "tor.streamisolation=false" "tor.streamisolation=true"
-
-if [[ $norestartlnd != true ]] ; then restart_lnd ; fi
-
-reverse_fully_tor_only skipsuccess
-
+if [[ $3 != norestartlnd ]] ; then
 restart_lnd
-
-if [[ $1 != skipsuccess ]] ; then
-success "LND hypbrid TOR/Clearnet mode" "being disabled"
 fi
 
+if [[ $2 != skipsuccess ]] ; then
+success "Adjusting LND Tor settings has"
+fi
 }

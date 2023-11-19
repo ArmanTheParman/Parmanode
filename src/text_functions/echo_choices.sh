@@ -14,6 +14,18 @@ echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
 return 0
 }
 
+function enter_abort {
+#how to use:    enter_abort || return 1
+while true ; do
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue,$orange or$red a$yellow to abort." ; read -n1 choice
+case $choice in
+a) return 1 ;;
+"") return 0 ;;
+*) invalid ;;
+esac
+done
+}
+
 function enter_return { enter_continue "$@" ; }
 
 function enter_exit {
