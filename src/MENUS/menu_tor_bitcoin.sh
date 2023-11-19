@@ -26,7 +26,6 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
      4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
                  - Generally faster and more reliable
-                
 "
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable bitcoin >/dev/null ; echo -e "
