@@ -7,7 +7,7 @@ if [[ -z $log_count ]] ; then
     echo "log_count=0" > $file 2>/dev/null
 else
     log_count=$((log_count + 1))
-    echo log_count=$log_count >> $file 2>/dev/null
+    echo log_count=$log_count > $file 2>/dev/null
 fi
 
 source $file >/dev/null ; export log_count=$log_count >/dev/null #exporting to use in parent function
