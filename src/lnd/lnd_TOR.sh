@@ -37,10 +37,12 @@ enter_abort || return 1
 }
 
  function delete_tor_lnd_conf { 
+   unset count
    while grep -q "Added by Parmanode (start)" < $file ; do
    sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
    count=$((1 + count))
-   if [[ $count -gt 3 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
+   sleep 0.5
+   if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
    done
    }
 
