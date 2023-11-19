@@ -47,7 +47,7 @@ if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then
 clearnetURI="
 $yellow
 Clearnet URI 
-Requires port forwading on your router; port $lnd_port to $IP
+Requires port forwading on your router; port $lnd_port to $IP:
 
 $(cat $dp/lndinfo.log | grep 973 | grep -v onion | cut -d \" -f 2)
 $orange"

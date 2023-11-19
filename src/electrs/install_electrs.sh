@@ -141,13 +141,21 @@ fi
 ########################################################################################
 
 function check_pruning_off {
-    if [[ $prune -gt 0 ]] ; then
-    announce "Note that Electrs won't work if Bitcoin is pruned. You'll have to" \
-    "completely start bitcoin sync again without pruning to use Electrs. Sorry."
-    return 1
-    else
-    return 0
-    fi
+if [[ $prune -gt 0 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+    Note that Electrs won't work if Bitcoin is pruned. You'll have to completely 
+    start bitcoin sync again without pruning to use Electrs. Sorry. If you think this 
+    is wrong and want to procete, type 'yolo' then <enter>. Otherwsie, just hit
+    <enter>
+########################################################################################
+"
+read choice
+if [[ $choice == yolo ]] ; then return 0 ; fi
+return 1
+else
+return 0
+fi
 }
 
 function check_server_1 {
