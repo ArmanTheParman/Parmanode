@@ -186,7 +186,7 @@ set_terminal ; echo -e "$pink
     again.
 $green
     Have a nice day.
-$orange
+$pink
 ########################################################################################
 "
 enter_continue
