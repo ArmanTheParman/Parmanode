@@ -51,8 +51,7 @@ echo -e "$orange
 
 $pink NEW: combine u with next menu options. eg, try ub for bitcoin menu     $orange 
 $bright_blue NEW: PiApps for Pi's -- Allows easy install for Tor Browser $orange
-$blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff
-"
+$blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 
