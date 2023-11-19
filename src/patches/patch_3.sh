@@ -12,7 +12,7 @@ if grep -q electrum-end < $dp/installed.conf || \
     fi
 
 #needed to fix a variable bug in lnd log trap
-parmanode_conf_add "lnd_logtrap_needs_ampersand=true"
+parmanode_conf_add "lndlogfirsttime=true"
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=3"
 fi
