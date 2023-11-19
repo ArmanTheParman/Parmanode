@@ -63,19 +63,19 @@ p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" 
     check_bitcoin_tor_status #sets status in parmanode.conf
-    return 0 ;;
+    break ;; 
 "2")
     bitcoin_tor "toronly" 
     check_bitcoin_tor_status
-    return 0 ;;
+    break ;;
 "3")
     bitcoin_tor "toronly" "onlyout" 
     check_bitcoin_tor_status
-    return 0 ;;
+    break ;;
 "4")
     bitcoin_tor_remove 
     check_bitcoin_tor_status
-    return 0 ;;
+    break ;;
 *)
     invalid ;;
 esac
