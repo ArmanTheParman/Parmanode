@@ -331,6 +331,7 @@ success "LND" "being made to run by Tor-only"
 
 function reverse_fully_tor_only {
 
+
 local file=$HOME/.lnd/lnd.conf
 
 if grep -q tlsextraip < $file ; then

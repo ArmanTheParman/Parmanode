@@ -17,5 +17,6 @@ fi
 parmanode_conf_add "lndlogfirsttime=true"
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=3"
+delete_line "$$HOME/.lnd/lnd.conf" "tlsextradomain=mydomain.com" >/dev/null 2>&1
 debug "patch 3 end"
 }
