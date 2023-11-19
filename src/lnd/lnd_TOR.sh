@@ -59,6 +59,19 @@ enter_abort || return 1
 
    ; Added by Parmanode (end)" | tee -a $file >/dev/null 2>&1
    }
+
+function uncomment_clearnet {
+sed -i '/^; tlsextraip/s/^..//' $file
+sed -i '/^; externalip/s/^..//' $file
+sed -i '/^; tlsextradomain/s/^..//' $file
+}
+
+function commentout_clearnet {
+sed -i '/^tlsextraip/s/^/; /' $file
+sed -i '/^tlsextradomain/s/^/; /' $file
+sed -i '/^externalip/s/^/; /' $file
+}
+
 ########################################################################################
 #Begin
 ########################################################################################
@@ -72,18 +85,27 @@ case $1 in
 
 only)
 add_tor_lnd_conf
-#disable non-tor proxy traffic
-swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost:$lnd_port"
+#disable non-tor proxy traffic ...
+swap_string "$file" "listen=0.0.0.0:$lnd_port" "listen=localhost:$lnd_port" 
+commentout_clearnet
 ;;
 
 off)
-swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port"
+#tor details removed higher up
+
+#listens from all ports
+swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port" 
+uncomment_clearnet
 ;;
 
 both)
 add_tor_lnd_conf
-swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port"
-swap_string $file "tor.streamisolation=true" "tor.streamisolation=false"
+
+#listens from all ports...
+swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port" 
+
+#opposite to tor-only, nonexistent when tor off...
+swap_string $file "tor.streamisolation=true" "tor.streamisolation=false" 
 swap_string $file "tor.skip-proxy-for-clearnet-targets=false" "tor.skip-proxy-for-clearnet-targets=true" 
 ;;
 
