@@ -23,15 +23,15 @@ Q|q|QUIT|Quit|quit)
 p|P) menu_use ;; 
 
 start|START) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; debug "look" ; return 0 ; fi
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; enter_continue ; return 0 ; fi
 if [[ $OS == "Mac" ]] ; then brew services start tor ; return 0 ; fi ;;
 
 stop|STOP) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; debug "look" ; return 0 ; fi
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; enter_continue ; return 0 ; fi
 if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi ;;
 
 status|STATUS) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; debug "look" ; return 0 ; fi
+if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; enter_continue ; return 0 ; fi
 if [[ $OS == "Mac" ]] ; then true
     if brew services list | grep tor | grep "started" >/dev/null 2>&1 ; then set_terminal ; echo "Tor is running"
     enter_continue
