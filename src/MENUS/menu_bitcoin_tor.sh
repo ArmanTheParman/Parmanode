@@ -25,8 +25,6 @@ set_terminal ; echo -e "
 
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
-                 
-
 
     1)    Allow Tor connections AND clearnet connections
                  - Helps you and the network overall
@@ -42,8 +40,8 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
                  - Generally faster and more reliable
 
 
-$bright_blue    Current Status: $status_print$orange
-"
+$bright_magenta    Current Status: $status_print$orange"
+
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable bitcoin >/dev/null ; echo -e "
 $bright_blue    Onion adress: $ONION_ADDR
