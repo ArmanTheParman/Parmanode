@@ -4,6 +4,8 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 local file=$HOME/.lnd/lnd.conf
 if ! which tor >/dev/null ; then install_tor ; fi
 
+#while stream isolation is enabled, the TOR proxy may not be skipped.
+
 function lnd_tor_message {
 echo -e "
 ########################################################################################

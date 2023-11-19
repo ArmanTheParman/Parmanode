@@ -38,7 +38,9 @@ fi
 if [[ $lndtor == "Enabled" && -z $lnd_onion ]] ; then
 lnd_onion="
 $bright_blue
-LND onion address can take a few minutes to appear when first enabled$orange"
+LND onion address can take a few minutes to appear when first enabled.
+Or much longer if Bitcoin hasn't finished sync'ing yet.$orange"
+
 fi
 
 if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
