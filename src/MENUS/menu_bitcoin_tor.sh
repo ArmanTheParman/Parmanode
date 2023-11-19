@@ -25,21 +25,24 @@ set_terminal ; echo -e "
 
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
-                 Current Status: $status_print
+                 
 
 
-     1)    Allow Tor connections AND clearnet connections
+    1)    Allow Tor connections AND clearnet connections
                  - Helps you and the network overall
 
-     2)    Force Tor only connections
+    2)    Force Tor only connections
                  - Extra private but only helps the Tor network of nodes
     
-     3)    Force Tor only OUTWARD connections
+    3)    Force Tor only OUTWARD connections
                  - Only helps yourself but most private of all options
                  - You can connect to tor nodes, they can't connect to you
 
-     4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
+    4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
                  - Generally faster and more reliable
+
+
+$bright_blue    Current Status: $status_print$orange
 "
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable bitcoin >/dev/null ; echo -e "
