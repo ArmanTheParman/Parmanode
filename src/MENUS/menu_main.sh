@@ -1,8 +1,7 @@
 function menu_main {
 set_terminal
-set_terminal_custom 50
 while true ; do
-tput clear
+set_terminal_custom 50
 source $original_dir/version.conf >/dev/null
 if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
