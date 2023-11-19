@@ -51,5 +51,4 @@ return 0
 function set_terminal_custom {
 set_terminal
 printf "\033[8;%s;88t" $1
-tput clear
 }
