@@ -4,8 +4,8 @@ export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/nu
 if lncli walletbalance >/dev/null 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
-wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... sometimes just wait a 
-                                                              minute and it'll unlock$orange" 
+wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... usually just wait a
+                                                              minute, and it'll unlock$orange" 
 fi 
 
 # To print tor details in menu
