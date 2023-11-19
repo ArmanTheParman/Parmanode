@@ -91,9 +91,9 @@ echo -e "
        
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR                  Currently: $lndtor$orange
+      (t)              Enable/disable TOR                  Currently: $colour1$lndtor$orange
 
-      (th)             Enable/disable Clearnet with Tor    Currently: $torhybrid$orange
+      (th)             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
 
       (w)              ... wallet options
 
