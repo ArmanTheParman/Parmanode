@@ -24,7 +24,7 @@ fi
 if [[ $skip_formatting == true ]] ; then 
     return 0 
     else
-    format_warnings #skip_formatting variable set #DO NOT MOVE
+    format_warnings || return 0 
 fi
 
 fi

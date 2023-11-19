@@ -69,7 +69,7 @@ $cyan
                                  UPDATE THE OS ?
 $orange 
     It is recommended that you$cyan update$orange your operating system, expecially if
-    you've never done that since installing. 
+    you've never done that since installing Linux. 
 $green
                        y)      Update
 $red

@@ -29,6 +29,21 @@ Fulcrum is not installed. No need to uninstall. Exiting.
 " && enter_continue && return 1
 fi
 
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+                What shall be done with the Fulcrum Database?
+$red
+                              d)     Delete
+$green
+                              l)     Leave it
+$orange
+########################################################################################
+"
+choose "x" ; read choice
+case $choice in
+d)
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
@@ -39,6 +54,11 @@ if [[ $drive_fulcrum == "external" ]] ; then
 if [[ $drive_fulcrum == "internal" ]] ; then
     rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
     fi
+;;
+l) break ;;
+*) invalid ;;
+esac
+done
 
 fulcrum_tor_remove
 

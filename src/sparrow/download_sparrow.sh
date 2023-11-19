@@ -1,6 +1,33 @@
 function download_sparrow {
 cd $HOME/parmanode
-sparrow_version="1.7.8"
+
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+    
+    Parmanode will download$cyan Sparrow Version 1.7.8$orange because it has been tested and 
+    works great with Parmanode.
+
+    Do you want to use a newer version that hasn't yet been tested? (Will be one day)
+$green
+                 d)       Default version 1.7.8 (recommended)
+$red
+                 yolo)    v 1.8.0, let's see what happens (reckless)
+$orange
+########################################################################################                
+"
+choose "xpmq" ; read choice
+case $choice in
+d) 
+sparrow_version="1.7.8" ;;
+yolo)
+sparrow_version="1.8.0" ;;
+*)
+invalid ;;
+esac
+done
+
 
 if [[ $OS == "Linux" ]] ; then
 

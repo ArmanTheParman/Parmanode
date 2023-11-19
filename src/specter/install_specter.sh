@@ -11,6 +11,38 @@ if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then
     fi
     fi
 
+if [[ -e $HOME/.specter ]] ; then
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+ 
+     It seems you either have Specter installed already, indepenently to Parmanode,
+     or you had a previous Specter installation that wasn't fully uninstalled.
+
+     This is indicated by the presence of the directory $HOME/.specter
+
+     You can go back and properly uninstall before proceeding, or proceed now anyway,
+     but be warned, there could be unexpected behaviour.
+     
+     You have options:
+$green
+                    a)        Abort, and maybe uninstall other Specter version
+$red    
+                    yolo)     Proceed with installation. Reckless!
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice 
+case $choice in
+q|Q) exit ;; q|P|a|A) return 1 ;;
+M|m) back2main ;;
+yolo) break ;;
+*) invalid ;;
+esac
+done
+fi
+
 set_terminal
 install_check "specter" || return 1
 
@@ -24,7 +56,10 @@ verify_specter || return 1
 
 unpack_specter
 
-udev "specter"
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
 
 installed_conf_add "specter-end"
 

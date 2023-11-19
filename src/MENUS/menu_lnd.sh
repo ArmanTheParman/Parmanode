@@ -4,18 +4,22 @@ export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/nu
 if lncli walletbalance >/dev/null 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
-wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... sometimes just wait a 
-                                                              minute and it'll unlock$orange" 
+wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... usually just wait a
+                                                              minute, and it'll unlock$orange" 
 fi 
 
 # To print tor details in menu
-
-if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf
-then 
+unset lndtor torhybrid
+if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
+    lndtor=Enabled
+else
     lndtor=Disabled
+fi
+
+if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
+then 
     torhybrid=Enabled
 else 
-    if ! grep -q "tor.active=1" < $HOME/.lnd/lnd.conf ; then lndtor=Disabled ; else lndtor=Enabled ; fi
     torhybrid=Disabled 
 fi
 
@@ -34,17 +38,25 @@ fi
 if [[ $lndtor == "Enabled" && -z $lnd_onion ]] ; then
 lnd_onion="
 $bright_blue
-LND onion address can take a few minutes to appear when first enabled$orange"
+LND onion address can take a few minutes to appear when first enabled.
+Or much longer if Bitcoin hasn't finished sync'ing yet.$orange"
+
 fi
 
 if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
 clearnetURI="
 $yellow
-Clearnet URI:
+Clearnet URI (requires port forwading on your router; port $lnd_port):
 
 $(cat $dp/lndinfo.log | grep 973 | grep -v onion | cut -d \" -f 2)
 $orange"
 fi
+
+if [[ $lndtor == Enabled ]] ; then
+colour1="$green" ; else colour1="$red" ; fi
+
+if [[ $torhybrid == Enabled ]] ; then
+colour2="$green" ; else colour2="$red" ; fi
 
 set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
@@ -79,11 +91,9 @@ echo -e "
        
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR-only                Currently: $cyan$lndtor$orange
+      (t)              Enable/disable TOR                  Currently: $colour1$lndtor$orange
 
-      (th)             Enable/disable TOR/Clearnet hybrid.    Currently: $cyan$torhybrid$orange
-
-      (prv)            Enable/disable Private Mode (Fully Tor Only)
+      (th)             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
 
       (w)              ... wallet options
 
@@ -121,34 +131,38 @@ rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
 
 t|T|tor)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected an older version of Parmanode has created
-    your Lightninbg lnd.conf file. The Tor configuration adjustments may
-    not work because of this. It is recommended to reinstall LND using
-    Parmanode before attempting to enable Tor."
+announce "Parmanode has detected irregularities in your lnd.conf file
+    possibly due to an older version of Parmanode having created it. 
+    
+    The Tor configuration adjustments may not work because of this. 
+    It is recommended to reinstall LND using Parmanode before attempting 
+    to enable Tor."
 continue
 fi
 
 if [[ $lndtor == Disabled ]] ; then
-lnd_enable_tor
+lnd_tor only
 else
-lnd_disable_tor
+lnd_tor off
 fi
-
 ;;
+
 
 th)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected an older version of Parmanode has created
-    your Lightninbg lnd.conf file. The Tor configuration adjustments may
-    not work because of this. It is recommended to reinstall LND using
-    Parmanode before attempting to enable Tor."
+announce "Parmanode has detected irregularities in your lnd.conf file
+    possibly due to an older version of Parmanode having created it. 
+    
+    The Tor configuration adjustments may not work because of this. 
+    It is recommended to reinstall LND using Parmanode before attempting 
+    to enable Tor."
 continue
 fi
 
 if [[ $torhybrid == Disabled ]] ; then
-lnd_enable_hybrid
+lnd_tor both
 else
-lnd_disable_tor
+lnd_tor only
 fi
 
 ;;
@@ -163,26 +177,69 @@ fi
 
 log|LOG|Log)
 log_counter
+#Added lndlogfirsttime=true to patch3
+if grep -q lndlogfirsttime < $dp/parmanode.conf ; then
+set_terminal ; echo -e "$pink
+########################################################################################
+
+    This function sometimes creates and error causing the Parmanode program to exit
+    back to terminal, or closes the terminal. To fix this, Parmanode will detect the 
+    behviour and if there is a failure, it will know and modify the code for your
+    next attempt, which should hopefully be successful. Just run Parmanode again
+    should it exit, it won't hurt it.
+   
+    There's a reasonable chance it will work anyway, and this prompt won't bother you
+    again.
+$green
+    Have a nice day.
+$pink
+########################################################################################
+"
+enter_continue
+delete_line "$dp/parmanode.conf" "lndlogfirsttime"
+fi
+
 if [[ $log_count -le 10 ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
     This will show the systemd output for LND in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
 enter_continue
 fi
+
+#There's a problem here. In some systems the "&" for putting a process in the background
+# causes control-c to quit to terminal, and in others it is NEEDED otherwise the process cant be terminated.
+#I will catch any success and set that for next time. It's a bit convoluted...
+
+source $dp/parmanode.conf >/dev/null 2>&1
+if [[ -z $lnd_logtrap_needs_ampersand ]] ; then #if no variable, add it, run commands, and when successful, remove it so it runs properly next time
+parmanode_conf_add "lnd_logtrap_needs_ampersand=true"
+set_terminal_wider
+sudo journalctl -fxu lnd.service 
+journal_PID=$!
+trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
+#complete exiting of the program with control-c. May adjust for all occurrances later.
+wait $journal_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+parmanode_conf_remove "lnd_logtrap_needs_ampersand"
+please_wait
+
+else # if there is a variable, then it must have failed last time because the commands didn't reach the removal of the variable. Run this instead.
+# This version has an ampersand
 set_terminal_wider
 sudo journalctl -fxu lnd.service &
 journal_PID=$!
-trap "kill $journal_PID" SIGINT #condition added to memory #changed to double quotes for a user experiencing
+trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
 #complete exiting of the program with control-c. May adjust for all occurrances later.
 wait $journal_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 please_wait
+fi
 ;;
 
 
@@ -257,21 +314,16 @@ esac ; done
 function fully_tor_only {
 # check tor enabled - or do it.
 # check hybrid off - or do it.
-# comment out tlsextrIP
+# comment out tlsextrip
 # comment out tlsextradomain
+# comment out externalip 
 
-local file=$HOME/.lnd/lnd.conf
-
-if [[ $lndtor == Disabled ]] ; then
-lnd_enable_tor
-fi
-if [[ ! $torhybrid == Disabled ]] ; then
-lnd_disable_hybrid
-fi
+lnd_tor only skipsuccess norestartlnd
 
 sed -i '/^tlsextraip/s/^/; /' $file
 sed -i '/^tlsextradomain/s/^/; /' $file
 sed -i '/^externalip/s/^/; /' $file
+
 restart_lnd
 
 success "LND" "being made to run by Tor-only"
@@ -279,12 +331,47 @@ success "LND" "being made to run by Tor-only"
 
 function reverse_fully_tor_only {
 
+
 local file=$HOME/.lnd/lnd.conf
 
+if grep -q tlsextraip < $file ; then
+if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
 sed -i '/^; tlsextraip/s/^..//' $file
-# sed -i '/^; tlsextradomain/s/^..//' $file --- can't use this becaue it will enable the teplate IP address.
-sed -i '/^; externalip/s/^..//' $file
+else
+announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
+fi
 
+
+if grep -q externalip < $file ; then
+if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
+sed -i '/^; externalip/s/^..//' $file
+else
+announce "Unexpectedly found 'externalip' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
+fi
+
+delete_line "$file" "tlsextradomain=mydomain.com" 
+
+if grep -q tlsextradomain < $file ; then
+if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
+sed -i '/^; tlsextradomain/s/^..//' $file
+else
+announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
+    Abandoning automated modification to avoid errors."
+return 1
+fi
+fi
+
+if [[ $norestartlnd != true ]] ; then
 restart_lnd
+fi
+
+if [[ $1 != skipsuccess ]] ; then
 success "LND" "having Tor-only reversed"
+fi
 }

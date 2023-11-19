@@ -23,6 +23,8 @@ export bright_blue="\033[94m"
 export bright_magenta="\033[95m"
 export bright_cyan="\033[96m"
 export bright_white="\033[97m"
+export blinkon="\033[5m"
+export blinkoff="\033[0m"
 colour_check
 fi
 

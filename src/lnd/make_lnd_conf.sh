@@ -10,7 +10,6 @@ echo "
 ;
 [Application Options]
 tlsextraip=$IP
-; tlsextradomain=mydomain.com
 externalip=$extIP:$lnd_port
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon

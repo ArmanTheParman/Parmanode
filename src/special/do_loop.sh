@@ -43,7 +43,7 @@ parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
 
-debug "print colours"
+if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
 # Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
 # out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
@@ -113,12 +113,15 @@ fi
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
-patch_2 ;;
+patch_2 ; patch_3 ;;
+2)
+patch_3 ;;
+3)
+true ;;
 *) 
-patch_1 ; patch_2 ;; 
+patch_1 ; patch_2 ; patch_3 ;; 
 esac
-
-
+debug "look"
 
 get_ip_address #function to put the IP address of the computer in memory.
 
@@ -133,7 +136,6 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
-
 debug "Pausing here. rp_count $rp_count" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 

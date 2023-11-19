@@ -22,6 +22,7 @@ if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
 if [[ -n $trezor_n ]]           ; then echo  "$trezor_n"; fi
 if [[ -n $bitbox_n ]]           ; then echo  "$bitbox_n"; fi
 if [[ -n $ledger_n ]]           ; then echo  "$ledger_n"; fi
+
 echo "#                                                                                      #
 # Installed...                                                                         #
 #                                                                                      #"
