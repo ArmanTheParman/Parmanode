@@ -121,7 +121,7 @@ true ;;
 *) 
 patch_1 ; patch_2 ; patch_3 ;; 
 esac
-
+debug "look"
 
 get_ip_address #function to put the IP address of the computer in memory.
 
