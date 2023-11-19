@@ -16,6 +16,7 @@ if grep -q electrum-end < $dp/installed.conf || \
 parmanode_conf_add "lndlogfirsttime=true"
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=3"
+debug "patch 3 end"
 fi
 
 }
