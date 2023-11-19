@@ -50,12 +50,12 @@ if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum
                    Block : $fulcrum_sync
                    Syncing to the $drive_fulcrum drive"
 else
-echo "
+echo -e "
                    FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
 fi
 fi
 
-echo "
+echo -e "
 
 
       (start)    Start Fulcrum 
@@ -82,13 +82,13 @@ echo "
       
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "fulcrum" >/dev/null ; echo "
+get_onion_address_variable "fulcrum" >/dev/null ; echo -e "
 
 $bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange
 
 ########################################################################################
 "
-else echo "########################################################################################
+else echo -e "########################################################################################
 "
 fi
 choose "xpmq" ; read choice ; set_terminal
