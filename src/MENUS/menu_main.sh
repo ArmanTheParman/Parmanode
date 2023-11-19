@@ -7,7 +7,7 @@ if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
-echo -e "
+echo -e "$orange
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
@@ -130,7 +130,7 @@ menu_lnd
 q | Q | quit)
     exit 0 ;;
 *)
-if [[ $debug == 1 ]] ; then continue ; fi
     invalid ;;
+
 esac ; done ; return 0
 }
