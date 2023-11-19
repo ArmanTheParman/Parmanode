@@ -35,7 +35,7 @@ if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
                    FULCRUM IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS
 
                             Status: $fulcrum_status
-                            Block : $fulcrum_sync
+                            Block : $fulcrum_sync  $reset
                             Syncing to the $drive_fulcrum drive"
 else
 echo -e "
