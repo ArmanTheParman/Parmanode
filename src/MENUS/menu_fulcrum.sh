@@ -38,7 +38,7 @@ if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
                             Block : $fulcrum_sync  $reset
                             Syncing to the $drive_fulcrum drive"
 else
-echo -e "
+echo -e "$orange
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 fi
