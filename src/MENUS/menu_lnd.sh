@@ -206,9 +206,9 @@ echo -e "
 enter_continue
 fi
 
-#There's a problem here. In some systems the & causes control-c to quit to terminal,
-#An in others it is needed otherwise the process cant be terminated.
-#I will catch any success and set that for next time.
+#There's a problem here. In some systems the "&" for putting a process in the background
+# causes control-c to quit to terminal, and in others it is NEEDED otherwise the process cant be terminated.
+#I will catch any success and set that for next time. It's a bit convoluted...
 
 source $dp/parmanode.conf >/dev/null 2>&1
 if [[ -z $lnd_logtrap_needs_ampersand ]] ; then #if no variable, add it, run commands, and when successful, remove it so it runs properly next time
@@ -222,6 +222,7 @@ wait $journal_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 parmanode_conf_remove "lnd_logtrap_needs_ampersand"
 please_wait
+
 else # if there is a variable, then it must have failed last time because the commands didn't reach the removal of the variable. Run this instead.
 # This version has an ampersand
 set_terminal_wider
