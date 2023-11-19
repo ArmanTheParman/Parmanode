@@ -17,7 +17,7 @@ return 0
 function enter_abort {
 #how to use:    enter_abort || return 1
 while true ; do
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue,$yellow or$red a$yellow to abort." ; read -n1 choice
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, or$red a$yellow to abort." ; read -n1 choice
 case $choice in
 a) return 1 ;;
 "") return 0 ;;
