@@ -31,7 +31,7 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable bitcoin >/dev/null ; echo "
 
-    Onion adress: $ONION_ADDR 
+    Onion adress: $ONION_ADDR
 
 
 
