@@ -26,7 +26,8 @@ set_terminal ; echo -e "
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
 
-    Option to change Bitcoin Tor Settings. If LND is running it will restart.
+    Option to change Bitcoin Tor Settings. LND may stop running and require some
+    thinking time (minutes) before you can succesfully manually restart it.
 
 
     1)    Allow Tor connections AND clearnet connections
@@ -79,12 +80,6 @@ p|P) return 1 ;;
 *)
     invalid ;;
 esac
-
-if [[ $choice == 1 || $choice == 2 || $choice == 3 || $choic3 == 4 ]] ; then
-    if sudo systemctl status lnd.service ; then
-    (sleep 3 ; sudo systemctl restart lnd.conf >/dev/null 2>&1 ) &
-    fi
-fi
 
 done
 }
