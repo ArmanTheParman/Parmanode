@@ -130,6 +130,7 @@ menu_lnd
 q | Q | quit)
     exit 0 ;;
 *)
+if [[ $debug == 1 ]] ; then continue ; fi
     invalid ;;
 esac ; done ; return 0
 }
