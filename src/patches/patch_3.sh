@@ -1,4 +1,5 @@
 function patch_3 {
+debug "patch 3"
 
 if grep -q electrum-end < $dp/installed.conf || \
    grep -q sparrow-end  < $dp/installed.conf || \
