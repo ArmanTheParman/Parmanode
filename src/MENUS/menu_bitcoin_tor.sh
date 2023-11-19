@@ -8,10 +8,24 @@ enter_continue
 fi
 
 while true ; do
+
+source $dp/parmanode.conf >/dev/null 2>&1 
+if [[ $bitcoin_tor_status == t ]] ; then
+local status_print="Tor enabled (option 1)"
+elif [[ $bitcoin_tor_status == c ]] ; then
+local status_print="Clearnet (option 4)"
+elif [[ $bitcoin_tor_status == tc ]] ; then
+local status_print="Clearnet & Tor (option 1)"
+elif [[ $bitcoin_tor_status == tonlyout ]] ; then
+local status_print="Strict Tor, only out (option 3)"
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
+
+                 Current Status: $status_print
 
 
      1)    Allow Tor connections AND clearnet connections
