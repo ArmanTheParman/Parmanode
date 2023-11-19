@@ -29,17 +29,16 @@ echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################
-
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
                    FULCRUM IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS
 
-                   Status: $fulcrum_status
-                   Block : $fulcrum_sync
-                   Syncing to the $drive_fulcrum drive"
+                            Status: $fulcrum_status
+                            Block : $fulcrum_sync  $reset
+                            Syncing to the $drive_fulcrum drive$orange"
 else
-echo -e "
+echo -e "$orange
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
 fi
@@ -47,16 +46,16 @@ if [[ $OS == "Mac" ]] ; then
 if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
 
-                   Status: $fulcrum_status
-                   Block : $fulcrum_sync
-                   Syncing to the $drive_fulcrum drive"
+                            Status: $fulcrum_status
+                            Block : $fulcrum_sync  $reset   
+                            Syncing to the $drive_fulcrum drive$orange"
 else
-echo "
+echo -e "
                    FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
 fi
 fi
 
-echo "
+echo -e "
 
 
       (start)    Start Fulcrum 
@@ -80,18 +79,14 @@ echo "
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
       (dc)       Fulcrum database corrupted? -- Use this to start fresh.
-      
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "fulcrum" >/dev/null ; echo "
-
-    Onion adress: $ONION_ADDR_FULCRUM:7002 
-
-
+get_onion_address_variable "fulcrum" >/dev/null ; echo -e "
+$bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange
 
 ########################################################################################
 "
-else echo "########################################################################################
+else echo -e "########################################################################################
 "
 fi
 choose "xpmq" ; read choice ; set_terminal

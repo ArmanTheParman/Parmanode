@@ -1,4 +1,4 @@
-function menu_tor_bitcoin {
+function menu_bitcoin_tor {
 
 if ! which tor >/dev/null 2>&1 ; then set_terminal
 echo "
@@ -8,33 +8,44 @@ enter_continue
 fi
 
 while true ; do
+
+source $dp/parmanode.conf >/dev/null 2>&1 
+if [[ $bitcoin_tor_status == t ]] ; then
+local status_print="Tor enabled (option 1)"
+elif [[ $bitcoin_tor_status == c ]] ; then
+local status_print="Clearnet (option 4)"
+elif [[ $bitcoin_tor_status == tc ]] ; then
+local status_print="Clearnet & Tor (option 1)"
+elif [[ $bitcoin_tor_status == tonlyout ]] ; then
+local status_print="Strict Tor, only out (option 3)"
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
 
-     1)    Allow Tor connections AND clearnet connections
+    1)    Allow Tor connections AND clearnet connections
                  - Helps you and the network overall
 
-     2)    Force Tor only connections
+    2)    Force Tor only connections
                  - Extra private but only helps the Tor network of nodes
     
-     3)    Force Tor only OUTWARD connections
+    3)    Force Tor only OUTWARD connections
                  - Only helps yourself but most private of all options
                  - You can connect to tor nodes, they can't connect to you
 
-     4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
+    4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
                  - Generally faster and more reliable
-                
-"
+
+
+$bright_magenta    Current Status: $status_print$orange"
+
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
-get_onion_address_variable >/dev/null ; echo "
-
-    Onion adress: $ONION_ADDR 
-
-
-
+get_onion_address_variable bitcoin >/dev/null ; echo -e "
+$bright_blue    Onion adress: $ONION_ADDR
+$orange
 ########################################################################################
 "
 else echo "########################################################################################
