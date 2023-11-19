@@ -175,7 +175,7 @@ continue
 ;;
 
 tor|TOR|Tor)
-menu_tor_bitcoin
+menu_bitcoin_tor
 continue
 ;;
 

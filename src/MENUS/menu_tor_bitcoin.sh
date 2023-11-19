@@ -1,4 +1,4 @@
-function menu_tor_bitcoin {
+function menu_bitcoin_tor {
 
 if ! which tor >/dev/null 2>&1 ; then set_terminal
 echo "
@@ -29,7 +29,7 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
                 
 "
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
-get_onion_address_variable >/dev/null ; echo "
+get_onion_address_variable bitcoin >/dev/null ; echo "
 
     Onion adress: $ONION_ADDR 
 
