@@ -5,7 +5,7 @@ open /Applications/"Trezor Suite.app"
 fi
 
 if [[ $OS == Linux ]] ; then
-~/parmanode/trezor/Trezor*AppImage &
+nohup ~/parmanode/trezor/Trezor*AppImage >/dev/null 2>&1
 fi
 
 }

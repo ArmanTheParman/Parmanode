@@ -44,14 +44,10 @@ e | E)    #External drive setup
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
-        parmanode_conf_add "drive_fulcrum=external"
-fi
+        parmanode_conf_add "drive_fulcrum=external" ; fi
 
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
-
-        parmanode_conf_add "drive_electrs=external"
-        
-fi
+        parmanode_conf_add "drive_electrs=external" ; fi
 
 
 return 0

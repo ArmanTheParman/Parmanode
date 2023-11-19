@@ -25,7 +25,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 sudo systemctl stop lnd.service
 sudo rm /etc/systemd/system/lnd.service
-rm -rf $HOME/parmanode/lnd $HOME/.lnd
+rm -rf $HOME/parmanode/lnd $HOME/.lnd ; debug "check .lnd removed"
 parmanode_conf_remove "lnd_port"
 installed_conf_remove "lnd"
 success "LND" "being uninstalled."

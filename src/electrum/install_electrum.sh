@@ -1,5 +1,38 @@
 function install_electrum {
 
+if [[ -e $HOME/.electrum ]] ; then
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+ 
+     It seems you either have Electrum installed already, indepenently to Parmanode,
+     or you had a previous Electrum installation that wasn't fully uninstalled.
+
+     This is indicated by the presence of the directory $HOME/.electrum
+
+     You can go back and properly uninstall before proceeding, or proceed now anyway,
+     but be warned, there could be unexpected behaviour.
+     
+     You have options:
+$green
+                    a)        Abort, and maybe uninstall other Electrum version
+$red    
+                    yolo)     Proceed with installation. Reckless!
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice 
+case $choice in
+q|Q) exit ;; q|P|a|A) return 1 ;;
+M|m) back2main ;;
+yolo) break ;;
+*) invalid ;;
+esac
+done
+fi
+
+
 set_terminal
 
 mac_electrum_headsup
@@ -58,7 +91,7 @@ fi
 
 if [[ $computer_type == "LinuxPC" ]] ; then
 echo "installing udev rules..."
-udev "electrum"
+udev
 
 set_terminal ; echo "
 ########################################################################################
@@ -86,8 +119,11 @@ enter_continue
 fi
 
 if [[ $computer_type == "Pi" ]] ; then
-echo "installing udev rules..."
-udev
+
+    if ! grep -q udev-end < $dp/installed.conf ; then
+    echo "installing udev rules..."
+    udev
+    fi
 
 set_terminal ; echo "
 ########################################################################################
