@@ -11,7 +11,7 @@ export cyan="\033[36m"
 export white="\033[37m"
 export reset="\033[0m"
 if [[ $debug == 1 ]] ; then
-export orange="\033[1m\[38;2;255;145;0m"
+export orange="\033[1m\033[38;2;255;145;0m"
 else
 export orange="\033[38;2;255;145;0m"
 fi
