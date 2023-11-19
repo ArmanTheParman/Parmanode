@@ -31,13 +31,13 @@ fi
 choose "xq" ; read choice
 case $choice in 
     s|S)
-        export skip_formatting="true"
-        return 0 ;;
+        export skip_formatting="true" #redundant now
+        return 1 ;;
     q|Q)
         exit 0 ;;
     y|Y)
-        export skip_formatting="false"
-        break ;; # proceed to format drive below
+        export skip_formatting="false" #redundant now
+        return 0 ;; 
     *)
         invalid ;;
     esac
