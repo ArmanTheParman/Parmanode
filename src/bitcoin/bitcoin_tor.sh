@@ -67,8 +67,9 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
     sudo systemctl stop bitcoind.service
 unset $ONION_ADDR
 while [[ -z $ONION_ADDR ]] ; do
+if [[ $count -gt 0 ]] ; then echo "will try up to 12 times while it thinks" ; fi
 get_onion_address_variable "bitcoin"
-sleep 1
+sleep 1.5
 count=$((1 + count))
 if [[ $count -gt 12 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
 done
