@@ -103,6 +103,7 @@ add_tor_lnd_conf
 
 #listens from all ports...
 swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port" 
+uncomment_clearnet
 
 #opposite to tor-only, nonexistent when tor off...
 swap_string $file "tor.streamisolation=true" "tor.streamisolation=false" 
