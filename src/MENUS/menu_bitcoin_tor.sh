@@ -11,7 +11,7 @@ while true ; do
 
 source $dp/parmanode.conf >/dev/null 2>&1 
 if [[ $bitcoin_tor_status == t ]] ; then
-local status_print="Tor enabled (option 1)"
+local status_print="Tor enabled (option 2)"
 elif [[ $bitcoin_tor_status == c ]] ; then
 local status_print="Clearnet (option 4)"
 elif [[ $bitcoin_tor_status == tc ]] ; then
