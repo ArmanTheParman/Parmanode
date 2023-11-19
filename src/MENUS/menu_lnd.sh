@@ -186,10 +186,10 @@ fi
 set_terminal_wider
 sudo journalctl -fxu lnd.service 
 journal_PID=$!
-trap "kill $journal_PID" SIGINT #condition added to memory #changed to double quotes for a user experiencing
+trap "kill $journal_PID" INT #condition added to memory #changed to double quotes for a user experiencing
 #complete exiting of the program with control-c. May adjust for all occurrances later.
 wait $journal_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+trap - INT # reset the trap so control-c works elsewhere.
 please_wait
 ;;
 
