@@ -36,7 +36,7 @@ if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset
-                            Syncing to the $drive_fulcrum drive"
+                            Syncing to the $drive_fulcrum drive$orange"
 else
 echo -e "$orange
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
@@ -47,8 +47,8 @@ if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
 
                             Status: $fulcrum_status
-                            Block : $fulcrum_sync
-                            Syncing to the $drive_fulcrum drive"
+                            Block : $fulcrum_sync  $reset   
+                            Syncing to the $drive_fulcrum drive$orange"
 else
 echo -e "
                    FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
