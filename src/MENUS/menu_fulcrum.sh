@@ -29,7 +29,6 @@ echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################
-
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
@@ -85,9 +84,7 @@ echo "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum" >/dev/null ; echo "
 
-    Onion adress: $ONION_ADDR_FULCRUM:7002 
-
-
+$bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange
 
 ########################################################################################
 "
