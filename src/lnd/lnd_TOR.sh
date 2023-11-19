@@ -11,26 +11,24 @@ echo -e "
 ########################################################################################
 
    Whether LND is running by Tor-Only or as a hybrid Tor/Clearnet ultimately is
-   determined by the URL types you see at the bottom of the LND menu.
+   determined by the$cyan Uniform Resource Identifier (URI)$orange types you see at the bottom
+   of the LND menu.
 
-   If there is only a Tor URL (onion), then LND is running Tor-only. 
+   If there is only a Tor URI (onion), then LND is running Tor-only. 
    
-   If there is only a clearnet URL on the menu page, then LND is running on clearnet 
+   If there is only a clearnet URI on the menu page, then LND is running on clearnet 
    only. 
 
-   Obviously if you see both clearnet and onion addresses, it means LND is running as
-   a hybrid Tor and clearnet node.
+   Obviously, if you see both clearnet and onion addresses, it means LND is running as
+   a hybrid Tor + clearnet node.
 $cyan
-   To ensure LND is running as Tor only (if that's your preference), you need to turn
-   Tor on, but also turn hybrid off. If Hybrid mode doesn't successfuly turn off, you
-   can manually edit the lnd.conf file and make sure none of the configuration options
-   are specifying external clearnet addresses. Anything with 'Listening' is not
-   included in this rquirement.
-$red
-   Please also note that the Tor setting for Bitcoin must match the LND settings or
-   else LND won't start/run. Parmanode will do this by modifying the bitcoin.conf
-   settings now.
-$orange
+   To ensure LND is running as Tor only$orange (if that's your preference), you need to turn
+   Tor on, but also turn hybrid off. If Hybrid mode doesn't successfuly turn off, (as
+   concluded by the presence of a clearnet URI in the menu screen) you can manually 
+   edit the lnd.conf file and make sure none of the configuration options are 
+   specifying external clearnet addresses. Any configuration directive iwth 'listening'
+   in the name is not included in this requirement.
+
 ########################################################################################
 "
 enter_abort || return 1
