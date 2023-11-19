@@ -171,18 +171,48 @@ fi
 
 log|LOG|Log)
 log_counter
+#Added lndlogfirsttime=true to patch3
+if grep -q lndlogfirsttime < $dp/parmanode.conf ; then
+set_terminal ; echo -e "$pink
+########################################################################################
+
+    This function sometimes creates and error causing the Parmanode program to exit
+    back to terminal, or closes the terminal. To fix this, Parmanode will detect the 
+    behviour and if there is a failure, it will know and modify the code for your
+    next attempt, which should hopefully be successful. Just run Parmanode again
+    should it exit, it won't hurt it.
+   
+    There's a reasonable chance it will work anyway, and this prompt won't bother you
+    again.
+$green
+    Have a nice day.
+$orange
+########################################################################################
+"
+enter_continue
+delete_line "$dp/parmanode.conf" "lndlogfirsttime"
+fi
+
 if [[ $log_count -le 10 ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
     This will show the systemd output for LND in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
 enter_continue
 fi
+
+#There's a problem here. In some systems the & causes control-c to quit to terminal,
+#An in others it is needed otherwise the process cant be terminated.
+#I will catch any success and set that for next time.
+
+source $dp/parmanode.conf >/dev/null 2>&1
+if [[ -z $lnd_logtrap_needs_ampersand ]] ; then #if no variable, add it, run commands, and when successful, remove it so it runs properly next time
+parmanode_conf_add "lnd_logtrap_needs_ampersand=true"
 set_terminal_wider
 sudo journalctl -fxu lnd.service 
 journal_PID=$!
@@ -190,7 +220,19 @@ trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to m
 #complete exiting of the program with control-c. May adjust for all occurrances later.
 wait $journal_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
+parmanode_conf_remove "lnd_logtrap_needs_ampersand"
 please_wait
+else # if there is a variable, then it must have failed last time because the commands didn't reach the removal of the variable. Run this instead.
+# This version has an ampersand
+set_terminal_wider
+sudo journalctl -fxu lnd.service &
+journal_PID=$!
+trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
+#complete exiting of the program with control-c. May adjust for all occurrances later.
+wait $journal_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+please_wait
+fi
 ;;
 
 
