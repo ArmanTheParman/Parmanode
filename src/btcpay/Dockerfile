@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
@@ -33,7 +33,7 @@ RUN cd ~/parmanode/NBXplorer && ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
-RUN cd ~/parmanode && git clone --depth 1 https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout v1.9.2 && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
 CMD tail -f /dev/null
