@@ -21,7 +21,7 @@ set_terminal ; echo -e "
 
              (sp)            Set permissions
 
-             (mm)             Move files to server directory
+             (mm)            Move files to server directory
             
              (off)           Turn off file indexing    [ Currently $status ]
             
