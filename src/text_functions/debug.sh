@@ -43,29 +43,3 @@ enter_continue
 return 0
 fi
 }
-
-
-function debug_user {
-if [[ $user == debug ]] ; then
-echo "${1}"
-log "debug_user" "${1}"
-enter_continue
-return 0
-fi
-}
-
-function debug_fast {
-if [[ $fast == debug ]] ; then
-echo "${1}"
-enter_continue
-return 0
-fi
-
-}
-function ut {
-if [[ $ut == 1 ]] ; then 
-echo "{$1}"
-echo "debug point. Pausing here."
-enter_continue
-fi
-}
