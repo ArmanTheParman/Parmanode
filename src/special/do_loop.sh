@@ -136,18 +136,11 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
-debug "Pausing here. rp_count $rp_count" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here." #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
-
-if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
-if [[ $2 == r ]] ; then export reinstall=1 ; fi
-if [[ $1 == user ]] ; then export user=debug ; fi
-if [[ $1 == fast ]] ; then export fast=debug ; fi
-if [[ $1 == fixdrivepermission ]] ; then sudo chown -R $USER:$(id -gn) $parmanode_drive/electrs_db/ ; fi
-
 ########################################################################################
-debug_fast "test first fast debug" 
 
+#message of the day
 motd
 
 # This is the main program, which is a menu that loops.
