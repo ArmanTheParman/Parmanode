@@ -2,7 +2,7 @@
 # User to type: 
 #        /bin/bash -c "$(curl -fsSL https://parmanode.com/get_parmanodl_installer)" 
 # or
-#        curl https://parmanode.com/get_parmanodel_installer | sh
+#        curl https://parmanode.com/get_parmanodl_installer | sh
 
 return 0
 ########################################################################################

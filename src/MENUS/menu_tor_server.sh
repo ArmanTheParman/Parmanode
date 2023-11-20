@@ -21,7 +21,7 @@ set_terminal ; echo -e "
 
              (sp)            Set permissions
 
-             (m)             Move files to server directory
+             (mm)            Move files to server directory
             
              (off)           Turn off file indexing    [ Currently $status ]
             
@@ -59,7 +59,7 @@ sudo chown -R www-data:www-data /tor-server
 sudo shopt -s dotglob ; sudo chmod -R 755 /tor-server/*
 ;;
 
-m|M)
+mm|MM)
 sudo chown -R www-data:www-data /tor-server-move
 sudo chmod -R 755 /tor-server-move/*
 sudo shopt -s dotglob ; sudo mv /tor-server-move/* /tor-server/
