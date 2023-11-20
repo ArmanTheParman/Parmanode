@@ -35,6 +35,9 @@ start_LND_loop
 create_wallet
 lnd_wallet_unlock_password
 
+#start git repository in .lnd directory to allow undo's
+cd $HOME/.lnd && git init >/dev/null 2>&1
+
 installed_conf_add "lnd-end"
 success "LND" "being installed."
 

@@ -1,8 +1,11 @@
 Version 3.18.5
+    -Patch #4
     -LND menu option to print macaroons and certthumprint to screen
     -BTCPay install broke due to some upgrades in other peoples' code. Reverted
      back to old stable version for now. 
+    -LND config directory made into a git repository to allow undos (important directory)
 Version 3.18.4  19 November
+    -Patch #3
     -LND Tor options - Tor only, clearnet only, hybrid; automatic switching
     -Sparrow 1.8.0 available as an option, but not default
     -Option to leave Fulcrum database when uninstalling
