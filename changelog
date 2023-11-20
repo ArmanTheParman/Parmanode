@@ -1,5 +1,6 @@
 Version 3.18.5
     -LND menu option to print macaroons and certthumprint to screen
+    -BTCPay server updated, need to use .NET 8.0 in dockerfile
 Version 3.18.4  19 November
     -LND Tor options - Tor only, clearnet only, hybrid; automatic switching
     -Sparrow 1.8.0 available as an option, but not default
