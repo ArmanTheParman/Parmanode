@@ -19,15 +19,15 @@ lnd_certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in $HOME/.lnd/tls
 set_terminal ; echo -e "
 ########################################################################################
 
-    The LND macaroon is:
+The LND macaroon is:
 $cyan
-    $lnd_macaroon
+$lnd_macaroon
 $orange
-    The certthumbprint is:
+The certthumbprint is:
 $green
-    $lnd_certthumbprint $orange
+$lnd_certthumbprint $orange
 
-    You can use this to set up BTC Pay server to connect to LND by the 'REST proxy'
+You can use this to set up BTC Pay server to connect to LND by the 'REST proxy'
 
 ########################################################################################
 "
