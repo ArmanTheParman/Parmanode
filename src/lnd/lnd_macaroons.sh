@@ -7,7 +7,7 @@ set_terminal ; echo -e "
     this is sensitive text and if not kept private, other people can control your
     LND node.
    $pink 
-    Close the curtains and stop the screen sharing.
+    Close the curtains and stop any screen sharing.
 $orange
 ########################################################################################
 "
