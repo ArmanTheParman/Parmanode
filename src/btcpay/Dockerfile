@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
@@ -28,8 +28,8 @@ USER parman
 COPY postgres_script.sh /home/parman/parmanode
 
 # install NBX
-RUN cd ~/parmanode && git clone --depth 1 https://github.com/dgarage/NBXplorer
-RUN cd ~/parmanode/NBXplorer && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
+RUN cd ~/parmanode/NBXplorer && git checkout v2.3.65 ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
