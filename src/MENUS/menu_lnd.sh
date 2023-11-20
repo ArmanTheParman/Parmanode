@@ -195,7 +195,7 @@ fi
 source $dp/parmanode.conf >/dev/null 2>&1
 
 set_terminal_wider
-( journalctl -fxu lnd.service ) &
+journalctl -fxu lnd.service &
 journal_PID=$!
 trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
 #complete exiting of the program with control-c. May adjust for all occurrances later.
