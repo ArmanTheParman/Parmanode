@@ -3,7 +3,16 @@ set_terminal
 
 config_warning "Trezor Suite" || return 1
 
-if [[ -d ]]
+if [[ $OS == Linux ]] ; then
+export configdir="$HOME/.config/@trezor/suite-desktop"
+elif [[ $OS == Mac ]] ; then
+export configdir="/Users/ArmanK/Library/Application Support/@trezor/suite-desktop"
+fi
+
+if [[ -d $configdir ]] ; then
+#if user chooses "d" for delete, return 0, and && exectued.
+confirm_remove_previous_config_trezor && rm -rf $configdir
+fi
 
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir 
@@ -60,3 +69,26 @@ success "Trezor Suite" "being installed."
 
 
 
+function confirm_remove_previous_config_trezor {
+while true ; do
+clear
+echo -e "
+########################################################################################
+
+    Parmanode has detected the presence of a Trezor configuration directory at
+$cyan
+        $configdir
+$orange
+    You have choices:
+$red
+                                d)      Delete it
+$orange
+                                n)      No touching!
+
+########################################################################################                
+"
+choose "xpmq" ; read choice
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; d|D) return 0 ;; n|N) return 1 ;; *) invalid ;; esac
+done
+}
