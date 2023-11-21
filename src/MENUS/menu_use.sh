@@ -41,7 +41,7 @@ if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
                        echo "    (e)          Electrum Wallet 
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo "    (tws)         Tor Web Server 
+                       echo "    (tws)        Tor Web Server 
                             " ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORapp=1
                        echo "    (btcpt)      BTCPay over Tor 
