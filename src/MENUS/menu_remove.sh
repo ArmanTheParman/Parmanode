@@ -6,7 +6,7 @@ function menu_remove {
 while true ; do
 local num=$(cat $dp/installed.conf | wc -l)
 local num=$(( 42 + (num/2 - 14) ))
-if [[ $num -lt 45 ]] ; then num=45 ; fi
+if [[ $num -lt 45 ]] ; then num=48 ; fi
 if [[ $num -gt 44 ]] ; then num=$(( (num -45)*2 + num )) ; fi
 if [[ $num -gt 66 ]] ; then num=66 ; fi
 set_terminal_custom $num 
