@@ -192,8 +192,6 @@ echo -e "
 enter_continue
 fi
 
-source $dp/parmanode.conf >/dev/null 2>&1
-
 set_terminal_wider
 journalctl -fxu lnd.service &
 journal_PID=$!
@@ -201,7 +199,6 @@ trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to m
 #complete exiting of the program with control-c. May adjust for all occurrances later.
 wait $journal_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
-parmanode_conf_remove "lnd_logtrap_needs_ampersand"
 please_wait
 
 ;;
