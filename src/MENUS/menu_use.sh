@@ -41,7 +41,7 @@ if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
                        echo "    (e)          Electrum Wallet 
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo "    (ts)         Tor Server 
+                       echo "    (tws)         Tor Web Server 
                             " ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORapp=1
                        echo "    (btcpt)      BTCPay over Tor 
@@ -170,10 +170,10 @@ e|E|Electrum|electrum|ELECTRUM)
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
-ts|TS|Ts)
+tws|TWS|Tws)
 
    if [[ $torserverapp == 1 ]] ; then
-   menu_tor_server
+   menu_tor_webserver
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;

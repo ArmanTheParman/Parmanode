@@ -84,7 +84,7 @@ done
 fi #end if own btcpay
 
 
-install_tor_server "btcpay"
+install_tor_webserver "btcpay"
 
 unset selfPort selfIP
 

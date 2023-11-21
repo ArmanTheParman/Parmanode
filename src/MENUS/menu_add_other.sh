@@ -81,9 +81,9 @@ m|M) back2main ;;
        return 0 
        fi
        ;;
- ts|TS|Ts)
+ tws|TWS|Tws)
       if [[ -n $torserver_n ]] ; then
-      install_tor_server
+      install_tor_webserver
       return 0
       fi
       ;;
