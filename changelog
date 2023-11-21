@@ -1,9 +1,10 @@
 Version 3.18.5
-    -Patch #4
+    -Patch #4 code, but not enabled yet
     -LND menu option to print macaroons and certthumprint to screen
     -BTCPay install broke due to some upgrades in other peoples' code. Reverted
      back to old stable version for now. 
     -LND config directory made into a git repository to allow undos (important directory)
+     Only for new installs or when patch 4 gets released.
     -Trezor install detects parallal installation configuration directory
 Version 3.18.4  19 November
     -Patch #3
