@@ -26,7 +26,7 @@ p|P) menu_use ;;
 
 start|START) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then brew services start tor ; && success "Tor" "starting" ; fi ;;
+if [[ $OS == "Mac" ]] ; then brew services start tor  && success "Tor" "starting" ; fi ;;
 
 stop|STOP) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; success "Tor" "stopping" ; return 0 ; fi
