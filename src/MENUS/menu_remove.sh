@@ -14,6 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
+debug "num $num is"
 
 echo -e "
 ########################################################################################
