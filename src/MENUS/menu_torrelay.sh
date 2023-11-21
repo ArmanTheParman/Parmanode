@@ -65,7 +65,7 @@ if [[ $OS == "Mac" ]] ; then true
 fi
 ;;
 
-restart|RESTART)
+r|R|restart|RESTART)
 if [[ $OS == "Linux" ]] ; then sudo systemctl restart tor ; success "Tor" "restarting" ; continue ; fi
 if [[ $OS == "Mac" ]] ; then brew services restart tor ; success "Tor" "restarting" ; continue ; fi
 ;;
