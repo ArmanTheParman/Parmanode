@@ -64,11 +64,11 @@ if ! which nginx >/dev/null 2>&1 ; then
     case $choice in y|Y|Yes|YES|yes) install_nginx ; return 0 ;; esac 
 fi
 
-if [[ -d /tor-server ]] ; then true ; else
+if [[ ! -d /tor-server ]] ; then 
     sudo mkdir /tor-server /tor-server-move
     sudo chown -R www-data:www-data /tor-server
     sudo chmod -R 755 /tor-server
-    sudo chown -R www-data:www-data /tor-server-move
+    sudo chown -R $USER:$(id -gn) /tor-server-move
     sudo chmod -R 755 /tor-server-move
 fi
 
