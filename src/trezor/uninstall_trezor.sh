@@ -42,16 +42,16 @@ echo -e "
 ########################################################################################
 
     Also delete the configuration directory? 
-            
+           $cyan 
            $1 
-
+$orange
     Warning - the configuration directory is shared between this installation and
     and other manual installations you may have done in parallel.
 $red
 
                             y)     Delete it
 $orange
-                            n)     No touching
+                            n)     No touching!
 
 ########################################################################################
 "
