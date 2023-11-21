@@ -2,7 +2,9 @@ function install_trezor {
 set_terminal
 
 config_warning "Trezor Suite" || return 1
-debug "pause"
+
+if [[ -d ]]
+
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir 
 cd $trezorDir
