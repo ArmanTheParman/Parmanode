@@ -1,4 +1,4 @@
-Version 3.18.5
+Version 3.18.5 (Nov 21, 2023)
     -Patch #4 code, but not enabled yet
     -LND menu option to print macaroons and certthumprint to screen
     -BTCPay install broke due to some upgrades in other peoples' code. Reverted
