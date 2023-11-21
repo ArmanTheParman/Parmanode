@@ -14,6 +14,8 @@ if [[ -d $configdir ]] ; then
 confirm_remove_previous_config_trezor && rm -rf $configdir
 fi
 
+clear
+
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir 
 cd $trezorDir
