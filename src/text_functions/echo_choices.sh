@@ -17,7 +17,7 @@ return 0
 function enter_abort {
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, or$red a$yellow to abort." 
 #use this in a loop...
-#read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; *) invalid ;; esac ; done
+#read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
 return 0
 }
 
