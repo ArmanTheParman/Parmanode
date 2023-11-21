@@ -75,7 +75,7 @@ fi
 
 if grep -q "tor-server" <$file 
 then
-uninstall_tor_server
+uninstall_tor_webserver
 set_terminal
 fi
 

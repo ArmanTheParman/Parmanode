@@ -1,4 +1,4 @@
-function install_tor_server {
+function install_tor_webserver {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
@@ -45,7 +45,6 @@ install_check "tor-server"
 if [[ $? == 1 ]] ; then return 1 ; fi
 
 log "tor-server" "Beginning tor-server install"
-curl -s https://parman.org/parmanode_${version}_install_tor_server_counter >/dev/null 2>&1 &
 installed_conf_add "tor-server-start"
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then

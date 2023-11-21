@@ -121,7 +121,7 @@ m|M) back2main ;;
     
    ts|TS|Ts)
       if [[ -n $torserver_n ]] ; then
-      install_tor_server
+      install_tor_webserver
       return 0
       fi
       ;;
