@@ -7,12 +7,13 @@ while true ; do
 local num=$(cat $dp/installed.conf | wc -l)
 local num=$(( 42 + (num/2 - 14) ))
 if [[ $num -lt 45 ]] ; then num=45 ; fi
+if [[ $num -gt 44 ]] ; then num=$(( (num -45)*2 + num ))
 if [[ $num -gt 66 ]] ; then num=66 ; fi
 set_terminal_custom $num 
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
-unset anydeskmenu piholemenu
+unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
 
 echo -e "
 ########################################################################################
