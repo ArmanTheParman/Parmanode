@@ -29,9 +29,9 @@ set_terminal ; echo -e "
 
 $bright_blue
   Onion address: ${server_onion}:7001
-$orange
+$cyan
   Server location: /tor-server/
-
+$orange
 
 ########################################################################################
 "
