@@ -14,5 +14,5 @@ echo -e "
 ########################################################################################
 "
 enter_abort 
-read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; *) invalid ;; esac ;; done
+read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; *) invalid ;; esac ; done
 }
