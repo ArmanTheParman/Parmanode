@@ -4,7 +4,7 @@ function menu_remove {
 # set to toggle the availability of the menu logic below, via if statements.
 
 while true ; do
-local num=$(cat $dp/installed.conf | wc -l)
+local num1=$(cat $dp/installed.conf | wc -l)
 local num=$(( 42 + ((num1)/2 - 14) ))
 if [[ $num -lt 45 ]] ; then num=46 ; fi
 if [[ $num -gt 46 ]] ; then num=$(( (num -46)*2 + num )) ; fi
