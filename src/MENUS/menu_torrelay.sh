@@ -7,6 +7,14 @@ while true ; do set_terminal ; echo -e "
 
                i)        Tor Relay Information
 
+               r)        Restart Tor
+
+               start)    Start Tor
+
+               stop)     Stop Tor
+
+               status)   Tor Status
+
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -35,6 +43,32 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 return 0 ;;
+
+start|START) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; continue ; fi
+if [[ $OS == "Mac" ]] ; then brew services start tor  && success "Tor" "starting" ; continue ;fi ;;
+
+stop|STOP) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; success "Tor" "stopping" ; continue ; fi
+if [[ $OS == "Mac" ]] ; then brew services stop tor ;  success "Tor" "stopping" ; continue ; fi ;;
+
+status|STATUS) 
+if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; enter_continue ; continue ; fi
+if [[ $OS == "Mac" ]] ; then true
+    if brew services list | grep tor | grep "started" >/dev/null 2>&1 ; then set_terminal ; echo "Tor is running"
+    enter_continue
+    else
+    set_terminal ; echo "Tor is not running"
+    enter_continue
+    continue
+    fi
+fi
+;;
+
+restart|RESTART)
+if [[ $OS == "Linux" ]] ; then sudo systemctl restart tor ; success "Tor" "restarting" ; continue ; fi
+if [[ $OS == "Mac" ]] ; then brew services restart tor ; success "Tor" "restarting" ; continue ; fi
+;;
 
 *)
 invalid
