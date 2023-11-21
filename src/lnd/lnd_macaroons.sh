@@ -1,4 +1,5 @@
 function lnd_macaroons {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -11,7 +12,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-enter_abort || return 1
+enter_abort 
+read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; *) invalid ;; esac ;; done
 
 lnd_macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 lnd_certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in $HOME/.lnd/tls.cert | sed -e 's/.*=//;s/://g')
