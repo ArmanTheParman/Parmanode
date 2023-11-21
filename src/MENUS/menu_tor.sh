@@ -11,7 +11,9 @@ set_terminal ; echo -e "
 
                        start)          Start Tor (normally starts automatically)
                                                                  $red - q to exit$orange
-  
+                       restart)        Restart Tor
+                                                                 $red - q to exit$orange
+
 ######################################################################################## 
 "
 choose "xpmq" ; read choice
@@ -23,12 +25,12 @@ Q|q|QUIT|Quit|quit)
 p|P) menu_use ;; 
 
 start|START) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; enter_continue ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then brew services start tor ; return 0 ; fi ;;
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services start tor ; && success "Tor" "starting" ; fi ;;
 
 stop|STOP) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; enter_continue ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi ;;
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; success "Tor" "stopping" ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services stop tor ;  success "Tor" "stopping" ; fi ;;
 
 status|STATUS) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; enter_continue ; return 0 ; fi
