@@ -1,5 +1,8 @@
 function install_trezor {  
 set_terminal
+
+config_warning "Trezor Suite"
+
 trezorDir=$HOME/parmanode/trezor
 mkdir $trezorDir && cd $trezorDir
 installed_conf_add "trezor-start"
