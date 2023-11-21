@@ -23,8 +23,8 @@ echo -e "
     If you want to do this, I recommend an anonymous email, in particular, don't 
     use one with your full name.
 
-    If you want to add an email, type in in and hit <enter>, or to skip, just hit
-    <enter>
+    If you want to add an email,$green type in in and hit <enter>,$orange or to skip, just hit
+$cyan    <enter>$orange
 
 ########################################################################################
 "
