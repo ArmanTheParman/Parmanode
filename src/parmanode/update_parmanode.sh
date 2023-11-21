@@ -1,6 +1,6 @@
 function update_parmanode {
 
-if [[ version_incompatibility == 1 ]] ; then #this variable is set in update_version_info 
+if [[ $version_incompatibility == 1 ]] ; then #this variable is set in update_version_info 
 # function. If 1, then the current version can't be updated.
 set_terminal ; echo "
 ########################################################################################
