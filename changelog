@@ -4,6 +4,7 @@ Version 3.18.5
     -BTCPay install broke due to some upgrades in other peoples' code. Reverted
      back to old stable version for now. 
     -LND config directory made into a git repository to allow undos (important directory)
+    -Trezor install detects parallal installation configuration directory
 Version 3.18.4  19 November
     -Patch #3
     -LND Tor options - Tor only, clearnet only, hybrid; automatic switching
