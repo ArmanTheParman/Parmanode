@@ -21,7 +21,7 @@ $orange
 
         3)$cyan sshfs user@IP_address:/path/to/directory ~/Desktop/remote_directory $orange
         
-                The above command has only 3 space-seperated elements, in order
+                The above command has only 3 space-separated elements, in order
                 there are the sshfs command, the remote directory, and the host
                 directory where you want to mount. (In this context, 'remote'
                 means other coputer, and host means the computer you're using).
