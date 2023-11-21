@@ -5,7 +5,7 @@ function menu_remove {
 
 while true ; do
 local num=$(cat $dp/installed.conf | wc -l)
-local num=$(( 42 + (num/2 - 14) ))
+local num=$(( 42 + (${num1}/2 - 14) ))
 if [[ $num -lt 45 ]] ; then num=46 ; fi
 if [[ $num -gt 46 ]] ; then num=$(( (num -46)*2 + num )) ; fi
 if [[ $num -gt 66 ]] ; then num=66 ; fi
@@ -14,7 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
-debug "num $num is"
+debug "num1 $num1 is num is $num"
 
 echo -e "
 ########################################################################################
