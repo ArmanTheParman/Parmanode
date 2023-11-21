@@ -5,11 +5,12 @@ clear
 echo -e "
 ########################################################################################
     
-    Please$pink be aware$orange, if you have or will install $1 separate 
-    to the Parmanode installation, both editions will work from the same configuration
+    Please$pink be aware$orange, if you have, or will, install $1 separate 
+    to the Parmanode installation, both editions will use the same configuration
     directory.
 
-    This might be good or bad, but you should be aware.
+    If you or Parmanode deletes the configuration directory during uninstalling, it
+    will affect the other.$green Parmanode will ask you first before deleting.$orange
 
 ########################################################################################
 "
