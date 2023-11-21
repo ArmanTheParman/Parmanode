@@ -36,6 +36,7 @@ fi
 
 # above checks done without exiting, update can proceed.
 while true ; do
+if [[ $1 != dontask ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -48,6 +49,9 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "xpmq" ; read choice
+else
+choice=y
+fi
 
 case $choice in q|Q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 M|m) return 0 ;;
