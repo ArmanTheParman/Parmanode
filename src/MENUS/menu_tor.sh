@@ -5,15 +5,16 @@ set_terminal ; echo -e "
 
                      $cyan                    TOR    $orange
 
-                       status)         Check if Tor is running   $red - q to exit$orange
 
-                       stop)           Stop Tor                  $red - q to exit$orange 
+                  status)         Check if Tor is running   
 
-                       start)          Start Tor (normally starts automatically)
-                                                                 $red - q to exit$orange
-                       restart)        Restart Tor
-                                                                 $red - q to exit$orange
+                  stop)           Stop Tor                  
 
+                  start)          Start Tor (normally starts automatically)
+                                                                 
+                  restart)        Restart Tor
+                                                                 
+                                                            $red - q to exit$orange
 ######################################################################################## 
 "
 choose "xpmq" ; read choice
