@@ -2,8 +2,11 @@ function install_electrs_docker {
 
 source $pc $ic >/dev/null 2>&1
 
-grep -q "electrs-" < $ic && announce "Can not install electrs Docker version if non-Docker version is
-    already installed. Aborting." && return 1
+grep -q "electrs-" < $ic && announce "Oops, you're trying to install a second instance of electrs.
+    It seems you alread have a non-Docker version of electrs installed 
+    on the system. Parmanode cannot install the Docker version of electrs 
+    if the Docker version is already installed. Bad things can happen. 
+    Aborting." && return 1   
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
