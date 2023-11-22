@@ -20,9 +20,9 @@ echo -e "
      
      You have options:
 $green
-                    a)        Abort, and maybe uninstall other Sparrow version
+                 a)        Abort
 $red    
-                    yolo)     Proceed with installation. Reckless!
+                 yolo)     Proceed with installation. Reckless!
 $orange
 ########################################################################################
 "
