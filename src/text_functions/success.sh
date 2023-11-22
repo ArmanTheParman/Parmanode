@@ -1,6 +1,5 @@
 function success {
-if [[ -z $2 ]] ; then has_finished="" ; fi
-
+if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" 
 set_terminal ; echo -e "
 ########################################################################################
 $green                                  
