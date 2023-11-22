@@ -34,7 +34,7 @@ if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs
 if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
-set_terminal echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
     Do you want to delete the electrs_db database directory, or leave it, or back
