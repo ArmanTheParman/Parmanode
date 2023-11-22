@@ -16,7 +16,7 @@ return 0
 fi
 
 if [[ $1 == "electrs" ]] ; then
-export ONION_ADDR_ELECTRS="$(sudo cat /var/lib/tor/$1-service/hostname)" 
+export ONION_ADDR_ELECTRS="$(sudo cat /var/lib/tor/$1-service/hostname)" 2>/dev/null
 return 0
 fi
 

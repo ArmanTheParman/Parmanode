@@ -69,7 +69,7 @@ fi
 if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null 
 if [[ -z $ONION_ADDR_ELECTRS ]] ; then
-echo -e "$bright_blur
+echo -e "$bright_blue
     Please wait then refresh for onion address$orange
 
 
