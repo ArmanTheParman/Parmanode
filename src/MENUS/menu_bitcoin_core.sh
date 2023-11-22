@@ -5,7 +5,7 @@ if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; t
 
 while true
 do
-
+unset start stop output1 output2 highlight 
 if tail -n 25 $HOME/.bitcoin/debug.log | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
@@ -67,7 +67,7 @@ $highlight
       (bc)       Inspect and edit bitcoin.conf file 
 
       (up)       Set, remove, or change RPC user/pass
-$brigh_blue
+$bright_blue
       (tor)$orange      Tor menu options for Bitcoin
 
       (mm)       Migrate/Revert an external drive.
