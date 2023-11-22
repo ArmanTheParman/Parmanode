@@ -54,9 +54,9 @@ echo -e "$output2"
 echo ""
 echo -e "
 $start
-      (start)    Start Bitcoind............................................(Do it)
+      (start)$orange    Start Bitcoind............................................(Do it)
 $stop
-      (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
+      (stop)$orange     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
       
