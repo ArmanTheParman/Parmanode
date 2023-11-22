@@ -3,6 +3,7 @@ function install_electrs {
 source $parmanode_conf >/dev/null 2>&1
 
 grep -q "bitcoin-end" < $dp/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; return 1 ; } 
 fi
@@ -23,12 +24,12 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Bitcoin needs to be stopped when electrs is being installed. Shall Parmanode
-    stop it for you? 
+    It's bes if Bitcoin is stopped when electrs is being installed to conserve
+    system resources for the compiling procedure. Shall Parmanode stop it for you? 
 
                y)       Stops Bitcoin Core for now
 
-               n)       Leave Bitcoin Core running, aborts electrs install
+               n)       Leave Bitcoin Core running
 
 ########################################################################################  
 "
@@ -37,7 +38,7 @@ read choice ; set_terminal
 case $choice in
 q|Q) exit ;;
 p|P) return 1 ;;
-n|N) return 1 ;;
+n|N) break ;;
 m|M) back2main ;; 
 y|Y) stop_bitcoind ; break ;;
 *) invalid ;;
@@ -96,9 +97,10 @@ rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 
 electrs_nginx add
 
-#prepare drives
+#prepare drives. #drive_electrs= variable set.
 choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
-
+ 
+#get drive variables for fulcrum and bitcoin
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrs == "external" && $drive == "external") || \
@@ -111,7 +113,7 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
       restore_elctrs_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
-elif [[ $drive_electrs == exteranal ]] ; then
+elif [[ $drive_electrs == external ]] ; then
 
       format_ext_drive "electrs" || return 
 

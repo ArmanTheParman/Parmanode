@@ -2,7 +2,7 @@ function install_electrs_docker {
 
 source $parmanode_conf >/dev/null 2>&1
 
-grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" < $dp/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; return 1 ; } 
@@ -19,44 +19,16 @@ export dontstartbitcoin=true
 check_rpc_bitcoin
 unset dontstartbitcoin
 
-isbitcoinrunning
-if [[ $running == true ]] ; then
-while true ; do
-set_terminal
-echo -e "
-########################################################################################
 
-    Bitcoin needs to be stopped when electrs is being installed. Shall Parmanode
-    stop it for you? 
-
-               y)       Stops Bitcoin Core for now
-
-               n)       Leave Bitcoin Core running, aborts electrs install
-
-########################################################################################  
-"
-choose "xpmq"
-read choice ; set_terminal
-case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-n|N) return 1 ;;
-m|M) back2main ;; 
-y|Y) stop_bitcoind ; break ;;
-*) invalid ;;
-esac
-done
-fi #and if bitcoin running
-
-
-installed_config_add "electrsdkr-start"
 
 
 preamble_install_electrs_docker || return 1
 
-    set_terminal ; please_wait
+set_terminal ; please_wait
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
+
+installed_config_add "electrsdkr-start"
 
 make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
 # electrs_nginx add

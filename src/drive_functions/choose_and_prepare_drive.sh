@@ -49,7 +49,6 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         parmanode_conf_add "drive_electrs=external" ; fi
 
-
 return 0
 ;;
 
