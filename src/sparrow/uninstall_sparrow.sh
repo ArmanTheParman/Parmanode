@@ -17,21 +17,18 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-if [[ $OS == "Linux" ]] ; then
+
 rm -rf $HOME/.sparrow
-rm -rf $HOME/parmanode/*parrow*
-installed_config_remove "sparrow"
-success "Sparrow" "being uninstalled."
-fi
+rm -rf $HOME/parmanode/*parrow* #redundant, folder doesn't exist yet, but will later.
 
 if [[ $OS == "Mac" ]] ; then
-rm -rf $HOME/parmanode/*arrow*
-rm -rf /Applications/*parrow*
-installed_config_remove "sparrow"
-success "Sparrow" "being uninstalled."
+sudo rm -rf /Applications/Sparrow.app
 fi
 
+installed_config_remove "sparrow"
+success "Sparrow" "being uninstalled."
+#clean up downloads
+rm -rf $hp/"*parrow-1."*
 
 rm $dp/.sparrow_first_run >/dev/null 2>&1
-
 }
