@@ -15,7 +15,19 @@ fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
-source $HOME/.bitcoin/bitcoin.conf >/dev/null
+if [[ -e $bc ]] ; then
+source $bc >/dev/null
+else
+clear
+echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
+supposed to sync to the external drive and it is not connected and mounted.
+Hit <enter> to try again once you connect the drive."
+fi
+if [[ ! -e $bc ]] ; then
+announce "Couldn't detect bitcoin.conf - Aborting."
+return 1 
+fi
+
 check_pruning_off || return 1
 check_server_1 || return 1
 export dontstartbitcoin=true
