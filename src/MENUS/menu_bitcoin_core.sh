@@ -27,11 +27,13 @@ if [[ $running == true ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
-highlight="$green"
+highlight="$reset"
+stop="$red"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
+start="green"
 fi                         
 
 # #This causes error output when bitcoin loading
@@ -51,9 +53,9 @@ echo ""
 echo -e "$output2"
 echo ""
 echo -e "
-
+$start
       (start)    Start Bitcoind............................................(Do it)
-
+$stop
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
@@ -65,8 +67,8 @@ $highlight
       (bc)       Inspect and edit bitcoin.conf file 
 
       (up)       Set, remove, or change RPC user/pass
-
-      (tor)      Tor menu options for Bitcoin
+$brigh_blue
+      (tor)$orange      Tor menu options for Bitcoin
 
       (mm)       Migrate/Revert an external drive.
 
