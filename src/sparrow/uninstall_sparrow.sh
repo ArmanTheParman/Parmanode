@@ -25,6 +25,7 @@ success "Sparrow" "being uninstalled."
 fi
 
 if [[ $OS == "Mac" ]] ; then
+rm -rf $HOME/.sparrow
 rm -rf $HOME/parmanode/*parrow*
 sudo rm -rf /Applications/Sparrow.app
 installed_config_remove "sparrow"
