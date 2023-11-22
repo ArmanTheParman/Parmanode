@@ -3,6 +3,7 @@ function menu_electrs {
 while true ; do
 set_terminal
 source $dp/parmanode.conf >/dev/null 2>&1
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs
 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
