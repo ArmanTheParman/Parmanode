@@ -94,7 +94,7 @@ echo -e "
 enter_continue
 
 #Subnet in dec
-SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >dev/null
+SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >/dev/null
 SUBNET_DEC=$(printf "%d.%d.%d.%d\n" $((16#${SUBNET_HEX:0:2})) $((16#${SUBNET_HEX:2:2})) $((16#${SUBNET_HEX:4:2})) $((16#${SUBNET_HEX:6:2})))
 set_terminal
 echo -e "

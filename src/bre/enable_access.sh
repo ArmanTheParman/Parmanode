@@ -23,5 +23,5 @@ echo "server {
     }
 }" | sudo tee $file  >/dev/null
 
-sudo systemctl restart nginx 2>/dev/null || brew services restart nginx 2>dev/null
+sudo systemctl restart nginx 2>/dev/null || brew services restart nginx 2>/dev/null
 }
