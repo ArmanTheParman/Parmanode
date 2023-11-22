@@ -1,8 +1,11 @@
 function install_electrs_docker {
 
-source $parmanode_conf >/dev/null 2>&1
+source $pc $ic >/dev/null 2>&1
 
-grep -q "bitcoin-end" < $dp/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "electrs-" < $ic && announce "Can not install electrs Docker version if non-Docker version is
+    already installed. Aborting." && return 1
+
+grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; return 1 ; } 
@@ -18,8 +21,6 @@ check_server_1 || return 1
 export dontstartbitcoin=true
 check_rpc_bitcoin
 unset dontstartbitcoin
-
-
 
 
 preamble_install_electrs_docker || return 1
