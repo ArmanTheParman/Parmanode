@@ -88,9 +88,16 @@ else echo "
 "
 fi #end if tor is true
 
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq"
+echo -e "$red
+ Hit 'r' to refresh menu 
+ $orange"
+ ead choice ; set_terminal
+
 case $choice in
 m|M) back2main ;;
+r) menu_electrs || return 1 ;;
+
 I|i|info|INFO)
 info_electrs
 break
