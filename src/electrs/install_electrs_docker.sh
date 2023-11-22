@@ -31,7 +31,7 @@ preamble_install_electrs_docker || return 1
 set_terminal ; please_wait
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
-
+debug "check build for errors"
 installed_config_add "electrsdkr-start"
 
 make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
@@ -73,7 +73,7 @@ make_electrs_config && log "electrs" "config done"
 
 debug "pre run electrs. check directories"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
-debug "2"
+debug "check electrs compiled"
 docker_start_electrs || return 1
 debug "3"
 installed_config_add "electrsdkr-end"
