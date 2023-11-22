@@ -3,25 +3,32 @@ function menu_electrs_docker {
 while true ; do
 set_terminal
 source $dp/parmanode.conf >/dev/null 2>&1
-
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+        if [[ -e /var/lib/tor/electrs-service ]] && \
+        sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
+        E_tor_logic=on
         fi
+    else
+        E_tor="${red}off${orange}"
+        E_tor_logic=off
     fi
-else
-E_tor="${red}off${orange}"
 fi
 
+if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
+fi
+
 set_terminal_custom 50
+
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs Menu $electrs_version ${orange}
 ########################################################################################
 "
-if docker ps | grep -q electrs >/dev/null 2>&1 ; then echo -e "
+if [[ -n $electrs_version ]] ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
                          Sync'ing to the $drive_electrs drive

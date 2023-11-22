@@ -3,8 +3,7 @@ function menu_electrs {
 while true ; do
 set_terminal
 source $dp/parmanode.conf >/dev/null 2>&1
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs
-
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version  
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/electrs-service ]] && \
@@ -14,13 +13,13 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         fi
     else
         E_tor="${red}off${orange}"
-        debug "in else $E_tor"
         E_tor_logic=off
     fi
 fi
-debug "etor is $E_tor"
-electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
+
+electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 set_terminal_custom 50
+
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs $electrs_version Menu${orange} 
