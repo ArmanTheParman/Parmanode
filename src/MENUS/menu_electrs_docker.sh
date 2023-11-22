@@ -14,7 +14,7 @@ else
 E_tor="${red}off${orange}"
 fi
 
-electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' )
+electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>dev/null )
 set_terminal_custom 50
 echo -e "
 ########################################################################################
