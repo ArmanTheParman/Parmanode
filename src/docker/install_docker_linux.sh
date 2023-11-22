@@ -13,13 +13,7 @@ $cyan
     code, operating system, and other dependencies. These containers are like mini
     virtual computers that run inside real computers.
 
-    Docker is required to run -
-
-                BTCPay Server
-                RTL Wallet
-                Fulcrum (on Macs)
-                PiHole
-                ParmaBox
+    Docker is required to run some Apps that Parmanode can install for you.
 
     Install Docker?
 
