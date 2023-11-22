@@ -15,7 +15,7 @@ fi
 fi
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
-#menu_bitcoin_core_status #fetches block height quicker than getblockchaininfo
+#menu_bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 if [[ ! $refresh == true ]] ; then
 fulcrum_status="...Type r to refresh"

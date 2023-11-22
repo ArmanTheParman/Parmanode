@@ -110,7 +110,7 @@ m|M) back2main ;;
 b|B)
     if [[ $bitcoinapp == 1 ]] ; then
     clear
-    menu_bitcoin_core
+    menu_bitcoin
     if [[ -n $1 ]] ; then return 0 ; fi
     fi
     ;;
