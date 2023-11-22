@@ -15,7 +15,7 @@ else
 E_tor="${red}off${orange}"
 E_tor_logic=off
 fi
-
+debug "etor is $E_tor"
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
 set_terminal_custom 50
 echo -e "
