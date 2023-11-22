@@ -28,16 +28,18 @@ while true ; do
     echo -e "
 ########################################################################################
 
-    A$pink backup$orange of electrs directory has been found in addition to the 
-    current electrs installation (${pink}$HOME/.electrs_backup$orange)
+    A$cyan backup$orange of electrs directory has been found in addition to the 
+    current electrs installation (${cyan}$HOME/.electrs_backup$orange)
     
     Keeping the backup can save you time compiling it all again if you choose to 
     re-install electrs.
-$pink 
-    REMOVE$orange the backup too? 
 
-                                 y    or    n  ?
-
+    REMOVE orange the backup too? 
+$red
+                        R)      Remove
+$green                        
+                        L)      Leave it
+$orange
 ######################################################################################## 
 "
     read choice
