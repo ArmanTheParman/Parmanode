@@ -221,7 +221,7 @@ return 0
 
 function waif4bitcoin {
 
-menu_bitcoin_core_status >/dev/null 2>&1
+menu_bitcoin_status >/dev/null 2>&1
 if ! echo $running_text | grep -q "fully"  ; then
 announce "Bitcoin needs to be fully synced and running first"
 return 1

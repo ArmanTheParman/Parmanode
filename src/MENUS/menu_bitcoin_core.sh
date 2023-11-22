@@ -1,4 +1,4 @@
-function menu_bitcoin_core {
+function menu_bitcoin {
 
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
@@ -17,7 +17,7 @@ fi
 
 set_terminal_custom "52"
 
-menu_bitcoin_core_status
+menu_bitcoin_status
 
 isbitcoinrunning
 
@@ -87,7 +87,7 @@ set_terminal
 
 case $choice in
 r)
-menu_bitcoin_core || return 1
+menu_bitcoin || return 1
 ;;
 
 m|M) back2main ;;
@@ -215,7 +215,7 @@ done
 return 0
 }
 
-function menu_bitcoin_core_status {
+function menu_bitcoin_status {
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
