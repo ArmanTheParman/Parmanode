@@ -17,7 +17,7 @@ $orange
 choose "xpmq" ; read choice
 case $choice in
 p|P) return 1 ;;
-q|Q exit ;;
+q|Q) exit ;;
 m|M) back2main ;; 
 d) 
 sparrow_version="1.7.8" ; break ;;
