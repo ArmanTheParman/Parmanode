@@ -55,8 +55,8 @@ echo ""
 echo -e "
 $start
       (start)$orange    Start Bitcoind............................................(Do it)
-$stop
-      (stop)$orange     Stop Bitcoind..................(One does not simply stop Bitcoin)
+
+      (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
       
@@ -68,9 +68,9 @@ $highlight
 
       (up)       Set, remove, or change RPC user/pass
 $bright_blue
-      (tor)$orange      Tor menu options for Bitcoin
+      (tor)$orange      Tor menu options for Bitcoin...
 
-      (mm)       Migrate/Revert an external drive.
+      (mm)       Migrate/Revert an external drive...
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
