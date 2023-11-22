@@ -88,10 +88,10 @@ elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummen
 echo "#                                    (e)                Electrum (partial)             #
 #                                                                                      #" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "#                                    (tws)               Tor Web Server                #
+echo "#                                    (tws)              Tor Web Server                 #
 #                                                                                      #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "#                                    (tws)               Tor Web Server (partial)      #
+echo "#                                    (tws)              Tor Web Server (partial)       #
 #                                                                                      #" ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
 echo "#                                    (btcpt)            Tor Server                     #
