@@ -127,10 +127,10 @@ m|M) back2main ;;
    ers|ERS|Ers|electrs)
       if [[ -n $electrs_n ]] ; then
 
-         if grep -q "electrsdkr" < $ic ; then
-         announce "Must uninstall electrs (Docker) first."
-         continue
-         fi
+         # if grep -q "electrsdkr" < $ic ; then
+         # announce "Must uninstall electrs (Docker) first."
+         # continue
+         # fi
 
          install_electrs
          return 0
@@ -139,10 +139,10 @@ m|M) back2main ;;
    ersd|ERSD|Ersd|electrsdocker)
       if [[ -n $electrsdkr_n ]] ; then
 
-         if grep -q "electrs-" < $ic ; then
-         announce "Must uninstall electrs (non-docker) first."
-         continue
-         fi
+         # if grep -q "electrs-" < $ic ; then
+         # announce "Must uninstall electrs (non-docker) first."
+         # continue
+         # fi
 
          install_electrs_docker
          return 0
