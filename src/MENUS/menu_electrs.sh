@@ -10,11 +10,11 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
         fi
+    else
+        E_tor="${red}off${orange}"
+        debug "in else $E_tor"
+        E_tor_logic=off
     fi
-else
-E_tor="${red}off${orange}"
-debug "in else $E_tor"
-E_tor_logic=off
 fi
 debug "etor is $E_tor"
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
