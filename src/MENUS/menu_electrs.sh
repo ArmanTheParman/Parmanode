@@ -13,6 +13,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 else
 E_tor="${red}off${orange}"
+debug "in else $E_tor"
 E_tor_logic=off
 fi
 debug "etor is $E_tor"
