@@ -7,9 +7,9 @@
 
 function debug {
 if [[ $debug == 1 ]] ; then
-echo "Debug point. Message:
+echo -e "Debug point. Message:
 "
-echo "$1
+echo -e "$1
 "
 log "debug" "${1}"
 enter_continue
@@ -19,7 +19,7 @@ fi
 
 function debug2 {
 if [[ $debug == 2 ]] ; then
-echo "${1}"
+echo -e "${1}"
 log "debug2" "${1}"
 enter_continue
 return 0
@@ -28,7 +28,7 @@ fi
 
 function debug3 {
 if [[ $debug == 3 ]] ; then
-echo "${1}"
+echo -e "${1}"
 log "debug3" "${1}"
 enter_continue
 return 0
@@ -37,7 +37,7 @@ fi
 
 function debug4 {
 if [[ $debug == 4 ]] ; then
-echo "${1}"
+echo -e "${1}"
 log "debug4" "${1}"
 enter_continue
 return 0
