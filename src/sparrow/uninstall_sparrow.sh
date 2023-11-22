@@ -25,12 +25,14 @@ success "Sparrow" "being uninstalled."
 fi
 
 if [[ $OS == "Mac" ]] ; then
-rm -rf $HOME/parmanode/*arrow*
-rm -rf /Applications/*parrow*
+rm -rf $HOME/parmanode/*parrow*
+sudo rm -rf /Applications/Sparrow.app
 installed_config_remove "sparrow"
 success "Sparrow" "being uninstalled."
 fi
 
+#clean up previous downloads
+rm -rf $hp/"*parrow-1."*
 
 rm $dp/.sparrow_first_run >/dev/null 2>&1
 
