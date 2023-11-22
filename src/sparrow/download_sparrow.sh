@@ -8,7 +8,7 @@ echo -e "
     
     Which version of Sparrow would you like to download? 
 $green
-                 d)       Default version 1.7.8 (test well and recommended)
+                 d)       Default version 1.7.8 (tested well and recommended)
 $red
                  yolo)    v1.8.0, let's see what happens (newer - reckless!)
 $orange
