@@ -6,28 +6,28 @@ set_terminal
 echo -e "
 ########################################################################################
     
-    Parmanode will download$cyan Sparrow Version 1.7.8$orange because it has been tested and 
-    works great with Parmanode.
-
-    Do you want to use a newer version that hasn't yet been tested? (Will be one day)
+    Which version of Sparrow would you like to download? 
 $green
-                 d)       Default version 1.7.8 (recommended)
+                 d)       Default version 1.7.8 (tested well and recommended)
 $red
-                 yolo)    v 1.8.0, let's see what happens (reckless)
+                 yolo)    v1.8.0, let's see what happens (newer - reckless!)
 $orange
 ########################################################################################                
 "
 choose "xpmq" ; read choice
 case $choice in
 d) 
-sparrow_version="1.7.8" ;;
+sparrow_version="1.7.8" ; break ;;
 yolo)
-sparrow_version="1.8.0" ;;
+sparrow_version="1.8.0" ; break ;;
 *)
 invalid ;;
 esac
 done
+clear
 
+#clean up previous downloads if any
+rm -rf $hp/"*parrow-1."*
 
 if [[ $OS == "Linux" ]] ; then
 
