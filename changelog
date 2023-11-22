@@ -1,5 +1,5 @@
 Version 3.18.7
-    -
+    -electrs external drive bug fixed
 Version 3.18.6
     -Sparrow install bug. New one introduced with new version, fixed.
     -Tor Server Move directory had incorrect ownership settings
