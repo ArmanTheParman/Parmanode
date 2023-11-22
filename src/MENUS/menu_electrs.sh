@@ -8,10 +8,12 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
+        E_tor_logic=on
         fi
     fi
 else
 E_tor="${red}off${orange}"
+E_tor_logic=off
 fi
 
 electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
@@ -61,7 +63,7 @@ if [[ $OS == Linux ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 " 
 fi
-if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
+if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null ; echo -e "
     Onion adress:$bright_blue $ONION_ADDR_ELECTRS:7004 $orange
 
@@ -176,7 +178,7 @@ exit 0
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-if [[ $E_tor == off ]] ; then
+if [[ $E_tor_logic == off ]] ; then
 electrs_tor
 else
 electrs_tor_remove
