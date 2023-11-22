@@ -47,7 +47,7 @@ if [[ $OS == Linux ]] ; then systemd-resolved_disable || return 1 ; fi
  
 set_terminal 
 if [[ $OS == Linux ]] ; then
-if sudo netstat -tulnp | grep -q ":80" ; then
+if sudo netstat -tulnp | grep -q ":80" | grep -v lighttpd ; then
 sudo netstat -tulnp | grep ":80"
 echo -e "
 
@@ -123,8 +123,11 @@ set_terminal ; echo -e "
 $cyan
     http://$IP/admin
 $orange
-    It's probably a good idea to change the password.
-
+    It's probably a good idea to change the password. To do that, you need to type the
+    following commmand in tge terminal:
+    $cyan
+                  sudo sudo pihole -a -p$red new_password
+$orange
 ########################################################################################
 "
 enter_continue
