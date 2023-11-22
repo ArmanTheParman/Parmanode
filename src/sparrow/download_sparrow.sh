@@ -27,6 +27,7 @@ sparrow_version="1.8.0" ; break ;;
 invalid ;;
 esac
 done
+clear
 
 
 if [[ $OS == "Linux" ]] ; then
