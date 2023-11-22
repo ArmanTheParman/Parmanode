@@ -53,6 +53,7 @@ echo -e "Please enter new password then hit <enter>. You will only be asked once
 "
 read piholepassword
 sudo pihole -a -p piholepassword >/dev/null 2>&1
+debug "look"
 success "Your PiHole password has been set" ;;
 *)
 invalid
