@@ -29,6 +29,8 @@ esac
 done
 clear
 
+#clean up previous downloads if any
+rm -rf $hp/"*parrow-1."*
 
 if [[ $OS == "Linux" ]] ; then
 
