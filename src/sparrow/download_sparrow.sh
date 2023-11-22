@@ -20,9 +20,9 @@ $orange
 choose "xpmq" ; read choice
 case $choice in
 d) 
-sparrow_version="1.7.8" ;;
+sparrow_version="1.7.8" ; break ;;
 yolo)
-sparrow_version="1.8.0" ;;
+sparrow_version="1.8.0" ; break ;;
 *)
 invalid ;;
 esac
