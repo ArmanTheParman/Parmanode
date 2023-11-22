@@ -67,16 +67,27 @@ if [[ $OS == Linux ]] ; then echo -e "
 " 
 fi
 if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "electrs" >/dev/null ; echo -e "
+get_onion_address_variable "electrs" >/dev/null 
+if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+echo -e "$bright_blur
+    Please wait then refresh for onion address$orange
+
+
+########################################################################################
+"
+else
+echo -e "
     Onion adress:$bright_blue $ONION_ADDR_ELECTRS:7004 $orange
 
 
 ########################################################################################
 "
+fi #end if no onion address
 else echo "
 ########################################################################################
 "
-fi
+fi #end if tor is true
+
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
 m|M) back2main ;;

@@ -13,6 +13,7 @@ if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
     fi
 
 sudo systemctl restart tor
+
 if grep -q electrsdkr < $dp/installed.conf ; then
 docker_stop_electrs
 docker_start_electrs
