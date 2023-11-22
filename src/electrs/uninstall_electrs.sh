@@ -45,12 +45,12 @@ $orange
     read choice
     set_terminal
     case $choice in
-    y|Y) 
+    R|r) 
     are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
     please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
-    n|N) 
+    L|l) 
     please_wait ; break ;;
-    *) invalid
+    *) invalid ;;
     esac
 done
 fi
