@@ -52,7 +52,7 @@ echo -e "Please enter new password then hit <enter>. You will only be asked once
 
 "
 read piholepassword
-docker exec -itu root pihole /bin/bash -c "pihole -a -p $piholepassword" 
+docker exec -it pihole /bin/bash -c "pihole -a -p $piholepassword" 
 debug "look"
 success "Your PiHole password has been set" ;;
 *)
