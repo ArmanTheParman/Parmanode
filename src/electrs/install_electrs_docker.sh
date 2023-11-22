@@ -76,7 +76,7 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
       restore_elctrs_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
-elif [[ $drive_electrs == exteranal ]] ; then
+elif [[ $drive_electrs == external ]] ; then
 
       format_ext_drive "electrs" || return 
 
