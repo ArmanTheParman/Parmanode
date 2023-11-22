@@ -6,6 +6,7 @@ Version 3.18.5 (Nov 21, 2023)
     -LND config directory made into a git repository to allow undos (important directory)
      Only for new installs or when patch 4 gets released.
     -Trezor install detects parallal installation configuration directory
+    -Electrs external drive bug fixed
 Version 3.18.4  19 November
     -Patch #3
     -LND Tor options - Tor only, clearnet only, hybrid; automatic switching
