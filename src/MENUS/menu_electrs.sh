@@ -91,7 +91,7 @@ choose "xpmq"
 echo -e "$red
  Hit 'r' to refresh menu 
  $orange"
- ead choice ; set_terminal
+read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
