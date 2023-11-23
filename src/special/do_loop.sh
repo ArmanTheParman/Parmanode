@@ -77,7 +77,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 fi ) &
 
 #add to run count
-rp_count
+rp_counter
 
 ########################################################################################
 #Intro
