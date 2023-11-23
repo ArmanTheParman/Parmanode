@@ -21,23 +21,23 @@ set_terminal ; echo -e "
 
 ----------------------------------------------------------------------------------------
 
-                          CONFIGURATION MODIFICATIONS
+                          CONNECTION OPTIONS 
                           
-         (d)       Connect Sparrow directly to Bitcoin Core via tcp (default)
+         (d)       To Bitcoin Core via tcp (default)
 
-         (ssl)     Connect Sparrow to Fulcrum via ssl (port 50002)
+         (ssl)     To Fulcrum via ssl (port 50002)
 
-         (tcp)     Connect Sparrow to Fulcrum via tcp (port 50001)
+         (tcp)     To Fulcrum via tcp (port 50001)
 
-         (tor1)    Connect Sparrow via Tor (Fulcrum, port 7002)
+         (tor1)    To Fulcrum via Tor (port 7002)
 
-         (ers)     Connect Sparrow to electrs via tcp (port 50005)
+         (ers)     To electrs via tcp (port 50005)
         
-          N/A      Connect Sparrow to electrs via SSL (Not available)
+          N/A      To electrs via SSL (Not available)
 
-         (tor2)    Connect Sparrow via Tor (electrs, port 7004) 
+         (tor2)    To electrs via Tor (port 7004) 
 
-         (rtor)    Connect to a remote Electrum/Fulcrum server (eg a friend's)
+         (rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
          
 ----------------------------------------------------------------------------------------
 
