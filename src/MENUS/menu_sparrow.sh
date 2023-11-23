@@ -2,9 +2,9 @@ function menu_sparrow {
 while true ; do 
 unset sversion
 if [[ $OS == Mac ]] ; then
-sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version)
+sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version | grep -Eo '[0-9].+$')
 else
-sversion=$($hp/Sparrow/bin/Sparrow --version)
+sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
 
 source $HOME/.parmanode/sparrow.connection >/dev/null
