@@ -1,11 +1,17 @@
 function menu_sparrow {
 while true ; do 
+unset sversion
+if [[ $OS == Mac ]] ; then
+sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version)
+else
+sversion=$($hp/Sparrow/bin/Sparrow --version)
+fi
 
 source $HOME/.parmanode/sparrow.connection >/dev/null
 
 set_terminal ; echo -e "
 ########################################################################################
-                   $cyan              Sparrow Menu                         $orange      
+             $cyan         Sparrow Menu -- Version $svsersion                  $orange      
 ########################################################################################
 
                       SPARROW CONNECTION TYPE: $connection
