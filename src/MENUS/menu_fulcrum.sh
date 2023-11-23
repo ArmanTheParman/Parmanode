@@ -40,10 +40,10 @@ if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
 else
 echo -e "$orange
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
-fi
-fi
+fi #end if ps -x
+fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
-if docker ps | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
+if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
 
                             Status: $fulcrum_status
@@ -243,7 +243,11 @@ function menu_fulcrum_status {
 local file="/tmp/fulcrum.journal"
 
 if [[ $OS == Mac ]] ; then
-docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
+    if docker ps >/dev/null ; then
+        docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
+    else
+       echo "Docker not running." > $file 
+    fi
 else
 journalctl -exu fulcrum.service > $file 2>&1
 fi
