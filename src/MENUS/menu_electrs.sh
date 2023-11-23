@@ -104,7 +104,7 @@ break
 
 start | START)
 start_electrs 
-sleep 2
+sleep 1
 ;;
 
 stop | STOP) 
