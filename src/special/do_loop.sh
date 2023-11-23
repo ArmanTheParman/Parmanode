@@ -113,14 +113,15 @@ fi
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
-patch_2 ; patch_3 ; patch 4 ;;
+patch_2 ; patch_3 ; patch_4 ;;
 2)
-patch_3 ; patch 4 ;;
+patch_3 ; patch_4 ;;
 3)
-patch 4 ;;
+patch_4 ;;
 *) 
-patch_1 ; patch_2 ; patch_3 ; patch 4 ;; 
+patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
+debug "look"
 
 get_ip_address #function to put the IP address of the computer in memory.
 
