@@ -11,7 +11,7 @@ source $HOME/.parmanode/sparrow.connection >/dev/null
 
 set_terminal ; echo -e "
 ########################################################################################
-                 $cyan         Sparrow Menu -- Version $sversion                  $orange      
+                  $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
 
                       SPARROW CONNECTION TYPE: $connection
