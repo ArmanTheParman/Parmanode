@@ -4,7 +4,7 @@ if cat $HOME/.parmanode/installed.conf | grep -q "nginx-end" ; then
     set_terminal
     log "parmanode" "Nginx already installed." ; return 1
 else
-    if which nginx ; then 
+    if which nginx >/dev/null 2>&1 ; then 
     set_terminal 
     log "parmanode" "Nginx already installed."
     installed_conf_add "nginx-end"     

@@ -46,9 +46,18 @@ fi
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-if  docker ps 2>/dev/null | grep -q bre ; then echo -e "
-        BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
-"
+if  docker ps 2>/dev/null | grep -q bre ; then 
+
+    if docker exec -itu root bre /bin/bash -c 'ps -a | grep "btc-rpc"' >/dev/null 2>&1 ; then
+    echo -e "
+
+            BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
+    "
+    else
+    echo -e "
+            BTC RPC EXPLORER DOCKER CONTAINER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
+        "
+    fi
 else
 echo -e "
         BTC RPC EXPLORER DOCKER CONTAINER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
@@ -59,7 +68,7 @@ fi
 echo -e "
                  (start)    Start BTC RPC EXPLORER
 
-                 (stop)     Start BTC RPC EXPLORER
+                 (stop)     Stop BTC RPC EXPLORER
 
                  (restart)  Restart BTC RPC EXPLORER 
 
