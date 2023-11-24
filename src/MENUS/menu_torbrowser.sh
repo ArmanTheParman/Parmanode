@@ -1,5 +1,4 @@
 function menu_torbrowser {
-while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
