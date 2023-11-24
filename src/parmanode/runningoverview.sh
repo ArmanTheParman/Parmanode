@@ -32,6 +32,7 @@ if [[ $OS == Linux ]] ; then
     if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=false"
     fi
+fi   
 #override...
     if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
     delete_line "$oc" "bitcoinrunning="
