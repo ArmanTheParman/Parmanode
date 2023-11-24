@@ -118,6 +118,8 @@ patch_2 ; patch_3 ; patch_4 ;;
 patch_3 ; patch_4 ;;
 3)
 patch_4 ;;
+4)
+true ;;
 *) 
 patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
