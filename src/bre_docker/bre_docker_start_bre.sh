@@ -11,9 +11,5 @@ if ! docker ps >/dev/null 2>&1 | grep -q bre ; then #is bre container running?
     docker start bre
 fi
 
-# # if ! docker exec -du parman bre /bin/bash -c "ps -xa | grep btc | grep -v grep" ; then 
-# fi
-     docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
-debug "look again"
-return 0
+docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
 }
