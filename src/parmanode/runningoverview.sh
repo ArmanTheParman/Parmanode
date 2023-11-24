@@ -1,12 +1,29 @@
 function runningoverview {
 isbitcoinrunning &
-islndrunning $
+pid=$!
+wait $pid
+islndrunning &
+pid=$!
+wait $pid
 isfulcrumrunning &
+pid=$!
+wait $pid
 iselectrsrunning &
+pid=$!
+wait $pid
 iselectrsdkrrunning &
+pid=$!
+wait $pid
 isbrerunning &
+pid=$!
+wait $pid
 isbtcpayrunning &
+pid=$!
+wait $pid
 isrtlrunning &
+pid=$!
+wait $pid
+sleep 10
 }
 
 
