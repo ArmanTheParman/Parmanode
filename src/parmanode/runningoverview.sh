@@ -1,3 +1,14 @@
+function runningoverview {
+isbitcoinrunning &
+islndrunning $
+isfulcrumrunning &
+iselectrsrunning &
+iselectrsdkrrunning &
+isbrerunning &
+isbtcpayrunning &
+isrtlrunning &
+}
+
 
 function isbitcoinrunning {
 unset running
