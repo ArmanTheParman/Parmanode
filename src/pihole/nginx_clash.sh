@@ -115,6 +115,8 @@ set_terminal_high ; echo -e "
     file(s):
 $cyan"
 grep -rE '^\slisten.*\s+80\s+' $nginxDir/*
+grep -rE '^\slisten.*:80\s+' $nginxDir/*
+
 
 echo -e "$orange
     The file name is in the left column, and the offending text found in that file is
