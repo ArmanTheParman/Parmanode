@@ -1,29 +1,19 @@
 function runningoverview {
-isbitcoinrunning &
-pid=$!
-wait $pid
-islndrunning &
-pid=$!
-wait $pid
-isfulcrumrunning &
-pid=$!
-wait $pid
-iselectrsrunning &
-pid=$!
-wait $pid
-iselectrsdkrrunning &
-pid=$!
-wait $pid
-isbrerunning &
-pid=$!
-wait $pid
-isbtcpayrunning &
-pid=$!
-wait $pid
-isrtlrunning &
-pid=$!
-wait $pid
+#The function is to be called with the & signal to run in the background
+#It sequentially calls other functions in a loop until it finds a signal to stop 
+while true ; do
+isbitcoinrunning 
+islndrunning 
+isfulcrumrunning 
+iselectrsrunning 
+iselectrsdkrrunning 
+isbrerunning 
+isbtcpayrunning 
+isrtlrunning 
+if grep -q runningoverview=stop < $ov ; then return 0 ; fi
+if ! ps aux | grep -q run_parmanode ; then return 0 ; fi
 sleep 10
+done
 }
 
 
@@ -57,10 +47,11 @@ fi
 
 function islndrunning {
 unset lndrunning
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e ; then
+if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
 overview_conf_add "lndrunning=true"
 else
 overview_conf_add "lndrunning=false"
+fi
 
 if lncli walletbalance >/dev/null 2>&1 ; then 
 overview_conf_add "lndwallet=locked"
@@ -94,7 +85,6 @@ if grep -q electrs- < $ic >/dev/null 2>&1 ; then
     overview_conf_add "export electrsrunning=false"
     fi
 fi #end if grep
-if grep -q electrsdkr < $ic >/dev/null 2>&1 ; then
 
 }
 function iselectrsdkrrunning {
