@@ -7,7 +7,7 @@ if ! docker ps >/dev/null 2>&1 && [[ $OS == Mac ]] ; then #is docker running?
  start_docker_mac 
 fi
 
-if ! docker ps >/dev/null/2>&1 | grep -q bre ; then #is bre container running?
+if ! docker ps >/dev/null 2>&1 | grep -q bre ; then #is bre container running?
     docker start bre
 fi
 
