@@ -8,7 +8,7 @@ if docker ps >/dev/null 2>&1 ; then
 
     if docker ps 2>/dev/null | grep -q bre ; then
     debug "before exec"
-        docker exec -d -u root bre /bin/bash -c "btc-rpc-explorer" 
+        docker exec -d -u parman bre /bin/bash -c "./btc-rpc-explorer" 
     debug "after exec"
     fi
     return 0
