@@ -2,7 +2,7 @@ function menu_bre {
 set_terminal
 while true
 do
-unset output enabled output2 t_enabled
+unset output enabled output2 t_enabled menubrerunning
 
 #check if external connection is enabled
 unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
@@ -49,6 +49,7 @@ if [[ $OS == Mac || $computer_type == Pi ]] ; then
 if  docker ps 2>/dev/null | grep -q bre ; then 
 
     if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
+    menubrerunning=true
     echo -e "
 
             BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
@@ -93,6 +94,7 @@ m|M) back2main ;;
 q|Q|Quit|quit) exit 0 ;;
 p|P) menu_use ;; 
 start|START|Start)
+if [[ $menubrerunning == true ]] ; then continue ; fi
 if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
 ;;
