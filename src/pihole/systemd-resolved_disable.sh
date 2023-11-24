@@ -1,7 +1,7 @@
 function systemd-resolved_disable {
 
 clear
-announce "Parmanode will now test if 'systemd-resoved' is off. You need to hit q to 
+announce "Parmanode will now test if 'systemd-resoved' is off. You need to hit$cyan q$orange to 
     keep going after a status printout appears"
 
 sudo systemctl status systemd-resolved.service || return 0 #this 0 is not a typo
