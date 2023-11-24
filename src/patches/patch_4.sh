@@ -3,7 +3,7 @@ debug "patch 4"
 
 if [[ -d $HOME/.lnd ]] ; then
 cd $HOME/.lnd && git init >/dev/null 2>&1
-cd -
+cd - >/dev/null 2>&1
 fi
 
 if [[ -e /tor-server-move ]] ; then
