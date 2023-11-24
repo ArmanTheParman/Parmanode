@@ -14,9 +14,9 @@ else
 fi
 
 
-if [[ $running != false ]] ; then running=true ; fi
+if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
-if [[ $running == true ]] ; then
+if [[ $bitcoinrunning == true ]] ; then
 output1="                   Bitcoin is$pink RUNNING$orange-- see log menu for progress"
 
 output2="                         (Syncing to the $drive drive)"
