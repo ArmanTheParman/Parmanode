@@ -77,7 +77,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 fi ) &
 
 #add to run count
-rp_count
+rp_counter
 
 ########################################################################################
 #Intro
@@ -113,13 +113,13 @@ fi
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
-patch_2 ; patch_3 ;;
+patch_2 ; patch_3 ; patch_4 ;;
 2)
-patch_3 ;;
+patch_3 ; patch_4 ;;
 3)
-true ;;
+patch_4 ;;
 *) 
-patch_1 ; patch_2 ; patch_3 ;; 
+patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
 debug "look"
 
@@ -136,17 +136,11 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
-debug "Pausing here. rp_count $rp_count" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here." #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
-
-if [[ $1 == chuck ]] ; then export chuck=1 >/dev/null ; fi
-if [[ $2 == r ]] ; then export reinstall=1 ; fi
-if [[ $1 == user ]] ; then export user=debug ; fi
-if [[ $1 == fast ]] ; then export fast=debug ; fi
-
 ########################################################################################
-debug_fast "test first fast debug" 
 
+#message of the day
 motd
 
 # This is the main program, which is a menu that loops.

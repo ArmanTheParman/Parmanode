@@ -19,6 +19,8 @@ set_terminal ; echo -e "
 
          (stop)                 Stop PiHole
 
+         (pp)                   Make new password for web interface login
+
          (i)                    Important information
 
 
@@ -44,6 +46,15 @@ i|I|info|Info)
 info_pihole
 return 0 ;;
 
+pp)
+clear
+echo -e "Please enter new password then hit <enter>. You will only be asked once.
+
+"
+read piholepassword
+docker exec -it pihole /bin/bash -c "pihole -a -p $piholepassword" 
+debug "look"
+success "Your PiHole password has been set" ;;
 *)
 invalid
 ;;

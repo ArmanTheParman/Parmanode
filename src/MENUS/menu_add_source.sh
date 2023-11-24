@@ -149,13 +149,13 @@ fi
 unset torserver_i torserver_p torserver_n
 if grep -q "tor-server-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-torserver_i="#                                      Tor Server                                      #"
+torserver_i="#                                      Tor Web Server                                  #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-torserver_p="#                                      Tor Server                                      #"
+torserver_p="#                                      Tor Web Server                                  #"
 else
    #not installed
-torserver_n="#                            (ts)          Tor Server (Darknet Server)                 #"
+torserver_n="#                            (tws)          Tor Web Server (Darknet Server)            #"
 fi
 
 #BTCPay Tor

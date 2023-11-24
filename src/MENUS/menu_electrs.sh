@@ -3,19 +3,23 @@ function menu_electrs {
 while true ; do
 set_terminal
 source $dp/parmanode.conf >/dev/null 2>&1
-
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version  
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+        if [[ -e /var/lib/tor/electrs-service ]] && \
+        sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
+        E_tor_logic=on
         fi
+    else
+        E_tor="${red}off${orange}"
+        E_tor_logic=off
     fi
-else
-E_tor="${red}off${orange}"
 fi
 
-electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version)
+electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 set_terminal_custom 50
+
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs $electrs_version Menu${orange} 
@@ -61,20 +65,38 @@ if [[ $OS == Linux ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 " 
 fi
-if grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "electrs" >/dev/null ; echo -e "
+if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+get_onion_address_variable "electrs" >/dev/null 
+if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+echo -e "$bright_blue
+    Please wait then refresh for onion address$orange
+
+
+########################################################################################
+"
+else
+echo -e "
     Onion adress:$bright_blue $ONION_ADDR_ELECTRS:7004 $orange
 
 
 ########################################################################################
 "
+fi #end if no onion address
 else echo "
 ########################################################################################
 "
-fi
-choose "xpmq" ; read choice ; set_terminal
+fi #end if tor is true
+
+choose "xpmq"
+echo -e "$red
+ Hit 'r' to refresh menu 
+ $orange"
+read choice ; set_terminal
+
 case $choice in
 m|M) back2main ;;
+r) menu_electrs || return 1 ;;
+
 I|i|info|INFO)
 info_electrs
 break
@@ -82,7 +104,7 @@ break
 
 start | START)
 start_electrs 
-sleep 2
+sleep 1
 ;;
 
 stop | STOP) 
@@ -176,7 +198,7 @@ exit 0
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-if [[ $E_tor == off ]] ; then
+if [[ $E_tor_logic == off ]] ; then
 electrs_tor
 else
 electrs_tor_remove
@@ -198,7 +220,7 @@ return 0
 
 function waif4bitcoin {
 
-menu_bitcoin_core_status >/dev/null 2>&1
+menu_bitcoin_status >/dev/null 2>&1
 if ! echo $running_text | grep -q "fully"  ; then
 announce "Bitcoin needs to be fully synced and running first"
 return 1

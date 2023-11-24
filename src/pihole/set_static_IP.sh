@@ -13,12 +13,14 @@ set_terminal ; echo -e "
     home network. This device's IP address is:
 $green
                $IP
-$orange    
-    Parmanode will help to make this IP static - ie, it will prevent your router from
+$green
+    Parmanode will help to make this IP static$orange - ie, it will prevent your router from
     randomly changing it for no apparant reason (it happens).
 
-    Hit$pink a$orange to abort (you should perform this IP operation yourself and
-    come back to this installation) or$green y$orange to proceed.
+    Hit$pink a$orange to abort (if so, you should perform this IP operation yourself 
+    and come back to this installation) 
+    
+    or$green y$orange to proceed.
 
 ########################################################################################
 "
@@ -37,7 +39,7 @@ done
 
 if [[ $OS == Mac ]] ; then set_static_IP_mac && return 0 ; return 1
 else
-
+sudo systemctl start NetworkManager
 connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
 sleep 2
 debug3 "connection count done. Count is $connection_count"
@@ -94,7 +96,7 @@ echo -e "
 enter_continue
 
 #Subnet in dec
-SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >dev/null
+SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >/dev/null
 SUBNET_DEC=$(printf "%d.%d.%d.%d\n" $((16#${SUBNET_HEX:0:2})) $((16#${SUBNET_HEX:2:2})) $((16#${SUBNET_HEX:4:2})) $((16#${SUBNET_HEX:6:2})))
 set_terminal
 echo -e "

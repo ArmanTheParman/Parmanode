@@ -1,2 +1,4 @@
 .DS_Store
+
+#Just in case the RTL config file that's used for real lands here (it happened once)
 ./src/rtl/RTL-Config.json

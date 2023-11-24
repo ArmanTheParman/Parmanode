@@ -1,11 +1,11 @@
-function menu_bitcoin_core {
+function menu_bitcoin {
 
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 
 while true
 do
-
+unset start stop output1 output2 highlight 
 if tail -n 25 $HOME/.bitcoin/debug.log | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
@@ -17,7 +17,7 @@ fi
 
 set_terminal_custom "52"
 
-menu_bitcoin_core_status
+menu_bitcoin_status
 
 isbitcoinrunning
 
@@ -27,11 +27,13 @@ if [[ $running == true ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
-highlight="$green"
+highlight="$reset"
+stop="$red"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
+start="$green"
 fi                         
 
 # #This causes error output when bitcoin loading
@@ -51,8 +53,8 @@ echo ""
 echo -e "$output2"
 echo ""
 echo -e "
-
-      (start)    Start Bitcoind............................................(Do it)
+$start
+      (start)$orange    Start Bitcoind............................................(Do it)
 
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
@@ -65,10 +67,10 @@ $highlight
       (bc)       Inspect and edit bitcoin.conf file 
 
       (up)       Set, remove, or change RPC user/pass
+$bright_blue
+      (tor)$orange      Tor menu options for Bitcoin...
 
-      (tor)      Tor menu options for Bitcoin
-
-      (mm)       Migrate/Revert an external drive.
+      (mm)       Migrate/Revert an external drive...
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
@@ -85,7 +87,7 @@ set_terminal
 
 case $choice in
 r)
-menu_bitcoin_core || return 1
+menu_bitcoin || return 1
 ;;
 
 m|M) back2main ;;
@@ -213,7 +215,7 @@ done
 return 0
 }
 
-function menu_bitcoin_core_status {
+function menu_bitcoin_status {
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 

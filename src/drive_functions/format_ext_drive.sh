@@ -84,10 +84,10 @@ if [[ $OS == "Linux" ]] ; then
 
         # Mounting... Make the mount directory, mount the drive, set the permissions,
         # and label drive (Last bit is redundant)
-        sudo mkdir /media/$(whoami)/parmanode 2>&1    
-        sudo mount $disk /media/$(whoami)/parmanode 2>&1 
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode 2>&1 
-        sudo e2label $disk parmanode 2>&1 
+        if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
+        sudo mount $disk $parmanode_drive 
+        sudo chown -R $USER:$(id -gn) $parmanode_drive 
+        sudo e2label $disk parmanode
 
         debug "label done"
         set_terminal

@@ -15,15 +15,10 @@ return 0
 }
 
 function enter_abort {
-#how to use:    enter_abort || return 1
-while true ; do
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, or$red a$yellow to abort." ; read -n1 choice
-case $choice in
-a) return 1 ;;
-"") return 0 ;;
-*) invalid ;;
-esac
-done
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, or$red a$yellow to abort.$orange" 
+#use this in a loop...
+#read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
+return 0
 }
 
 function enter_return { enter_continue "$@" ; }
@@ -121,11 +116,17 @@ function announce {
 set_terminal ; echo -e "
 ########################################################################################
 
-    $1
-    $2
+    $1"
+if [[ -z $2 ]] ; then
+echo "
+########################################################################################
+"
+else
+echo -e "    $2
 
 ########################################################################################
 "
+fi
 if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 

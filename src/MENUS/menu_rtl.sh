@@ -86,6 +86,7 @@ continue
 ;;
 
 t|T|tor|Tor|TOR)
+clear
 if ! grep -q "rtl_tor" < $dp/parmanode.conf ; then
 enable_tor_rtl
 else

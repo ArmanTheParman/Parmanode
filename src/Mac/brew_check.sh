@@ -44,7 +44,7 @@ install_homebrew && return 0
 
 set_terminal
 
-# announce takes 1 or 2 arguments and prints on a seperate line each with 
+# announce takes 1 or 2 arguments and prints on a separate line each with 
 # a nice border above and below. The \ at the end of the line continues the code
 # ont he second line as if there is no new line.
 # announce also includes an enter_continue command.

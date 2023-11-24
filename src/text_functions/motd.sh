@@ -16,21 +16,6 @@ echo "motd=$motdNum" | tee $motdfile >/dev/null 2>&1
 motd=$motdNum
 fi
 
-if [[ $motd == template ]] ; then
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                                 Message of the day $orange
-
-######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
-Hit$cyan <enter>$orange to continue.
-"
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-return 0
-fi
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -54,21 +39,20 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+
 if [[ $motd == 1 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
 
+   A #Bitcoin node is the ultimate way to say$red "Fuck off".$orange
 
-    GREED IS THE PATH TO THE DARK SIDE.
+   \"These are my rules; you can't change them. If your payment doesn't register on 
+   MY node, the invoice isn't paid.\"
 
-    Greed leads to trading, 
-
-    trading leads to shitcoins, 
-
-    shitcoins... leads to SUFFERING.
-
+   That's freaking powerful.
+ 
 ######################################################################################## 
 
 Type$yellow \"Free Ross\"$orange to disable Message of the day.
@@ -78,6 +62,7 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+
 if [[ $motd == 2 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -389,6 +374,31 @@ $cyan
    them and doesn't make them want to be slaves. Wit a low enough price, and time, 
    they will accumulate all the bitcoin. 
  
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 17 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    GREED IS THE PATH TO THE DARK SIDE.
+
+    Greed leads to trading, 
+
+    trading leads to shitcoins, 
+
+    shitcoins... leads to SUFFERING.
+
 ######################################################################################## 
 
 Type$yellow \"Free Ross\"$orange to disable Message of the day.

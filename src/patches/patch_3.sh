@@ -14,9 +14,8 @@ if grep -q electrum-end < $dp/installed.conf || \
 fi
 
 #needed to fix a variable bug in lnd log trap
-parmanode_conf_add "lndlogfirsttime=true"
+delete_line "$HOME/.lnd/lnd.conf" "mydomain.com" >/dev/null 2>&1
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=3"
-delete_line "$HOME/.lnd/lnd.conf" "mydomain.com" >/dev/null 2>&1
 debug "patch 3 end"
 }

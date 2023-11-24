@@ -5,13 +5,15 @@ set_terminal ; echo -e "
 
                      $cyan                    TOR    $orange
 
-                       status)         Check if Tor is running   $red - q to exit$orange
 
-                       stop)           Stop Tor                  $red - q to exit$orange 
+                  status)         Check if Tor is running   $red - q to exit$orange
 
-                       start)          Start Tor (normally starts automatically)
-                                                                 $red - q to exit$orange
-  
+                  stop)           Stop Tor                  
+
+                  start)          Start Tor (normally starts automatically)
+                                                                 
+                  restart)        Restart Tor
+                                                            
 ######################################################################################## 
 "
 choose "xpmq" ; read choice
@@ -23,12 +25,12 @@ Q|q|QUIT|Quit|quit)
 p|P) menu_use ;; 
 
 start|START) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl start tor ; enter_continue ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then brew services start tor ; return 0 ; fi ;;
+if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services start tor  && success "Tor" "starting" ; return 0 ;fi ;;
 
 stop|STOP) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; enter_continue ; return 0 ; fi
-if [[ $OS == "Mac" ]] ; then brew services stop tor ; return 0 ; fi ;;
+if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; success "Tor" "stopping" ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services stop tor ;  success "Tor" "stopping" ; return 0 ; fi ;;
 
 status|STATUS) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl status tor ; enter_continue ; return 0 ; fi
@@ -38,8 +40,14 @@ if [[ $OS == "Mac" ]] ; then true
     else
     set_terminal ; echo "Tor is not running"
     enter_continue
+    return 0
     fi
 fi
+;;
+
+restart|RESTART)
+if [[ $OS == "Linux" ]] ; then sudo systemctl restart tor ; success "Tor" "restarting" ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then brew services restart tor ; success "Tor" "restarting" ; return 0 ; fi
 ;;
 
 *)

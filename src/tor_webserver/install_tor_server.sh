@@ -1,4 +1,4 @@
-function install_tor_server {
+function install_tor_webserver {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
@@ -45,7 +45,6 @@ install_check "tor-server"
 if [[ $? == 1 ]] ; then return 1 ; fi
 
 log "tor-server" "Beginning tor-server install"
-curl -s https://parman.org/parmanode_${version}_install_tor_server_counter >/dev/null 2>&1 &
 installed_conf_add "tor-server-start"
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
@@ -64,11 +63,11 @@ if ! which nginx >/dev/null 2>&1 ; then
     case $choice in y|Y|Yes|YES|yes) install_nginx ; return 0 ;; esac 
 fi
 
-if [[ -d /tor-server ]] ; then true ; else
+if [[ ! -d /tor-server ]] ; then 
     sudo mkdir /tor-server /tor-server-move
     sudo chown -R www-data:www-data /tor-server
     sudo chmod -R 755 /tor-server
-    sudo chown -R www-data:www-data /tor-server-move
+    sudo chown -R $USER:$(id -gn) /tor-server-move
     sudo chmod -R 755 /tor-server-move
 fi
 

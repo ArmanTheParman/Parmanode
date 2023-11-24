@@ -17,11 +17,11 @@ $orange
     If the backup is an old version, and you want a new version, you'll have to choose
     to compile again now, of course. 
 
-
+$green
                             u)       Use backup of compiled software
-
+$red
                             c)       Compile again
-
+$orange
 
 ########################################################################################
 "

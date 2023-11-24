@@ -7,6 +7,7 @@ if ! which tor >/dev/null ; then install_tor ; fi
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
 function lnd_tor_message {
+while true ; do
 echo -e "
 ########################################################################################
 
@@ -31,7 +32,8 @@ $cyan
 
 ########################################################################################
 "
-enter_abort || return 1
+enter_abort 
+read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
 }
 
  function delete_tor_lnd_conf { 

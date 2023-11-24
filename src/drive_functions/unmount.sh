@@ -1,10 +1,6 @@
 function unmount {
 set_terminal
-echo " 
-Please wait a few seconds for the drive to unmount ... 
-"
-sleep 2 # causes code to pause 2 seconds. Allows message to be seen without
-        # need for user input (ie no enter_continue)
+please_wait
 
 if [[ $OS == "Linux" ]] ; then
         

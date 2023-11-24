@@ -1,10 +1,11 @@
 function success {
+if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" ; fi
 set_terminal ; echo -e "
 ########################################################################################
 $green                                  
                                   S U C C E S S  ! !
 $orange
-    $1 has finished $2
+    $1 $has_finished $2
 
 ########################################################################################
 "

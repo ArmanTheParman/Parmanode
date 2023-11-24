@@ -4,15 +4,16 @@ function menu_remove {
 # set to toggle the availability of the menu logic below, via if statements.
 
 while true ; do
-local num=$(cat $dp/installed.conf | wc -l)
-local num=$(( 42 + (num/2 - 14) ))
-if [[ $num -lt 45 ]] ; then num=45 ; fi
+local num1=$(cat $dp/installed.conf | wc -l)
+local num=$(( 42 + ((num1)/2 - 14) ))
+if [[ $num -lt 45 ]] ; then num=46 ; fi
 if [[ $num -gt 66 ]] ; then num=66 ; fi
-set_terminal_custom $num 
+set_terminal_custom $((num + 2))
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
-unset anydeskmenu piholemenu
+unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
+debug "num1 $num1 is num is $num"
 
 echo -e "
 ########################################################################################
@@ -87,10 +88,10 @@ elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummen
 echo "#                                    (e)                Electrum (partial)             #
 #                                                                                      #" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "#                                    (ts)               Tor Server                     #
+echo "#                                    (tws)              Tor Web Server                 #
 #                                                                                      #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo "#                                    (ts)               Tor Server (partial)           #
+echo "#                                    (tws)              Tor Web Server (partial)       #
 #                                                                                      #" ; fi
 if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
 echo "#                                    (btcpt)            Tor Server                     #
@@ -278,10 +279,10 @@ if [[ $electrummenu == 1 ]] ; then
 	return 0
 	fi
 	;;
-ts|TS|Ts)
+tws|TWS|Tws)
 if [[ $torservermenu == 1 ]] ; then
 	no_mac || return 1
-	uninstall_tor_server
+	uninstall_tor_webserver
 	return 0
 	fi
 	;;
