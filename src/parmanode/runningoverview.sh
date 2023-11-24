@@ -1,7 +1,7 @@
 function runningoverview {
 #The function is to be called with the & signal to run in the background
 #It sequentially calls other functions in a loop until it finds a signal to stop 
-if [[ ! -e $ov ]] ; then touch $ov ; fi
+if [[ ! -e $oc ]] ; then touch $oc ; fi
 
 while true ; do
 isbitcoinrunning 
@@ -12,7 +12,7 @@ isbitcoinrunning
 # isbrerunning 
 # isbtcpayrunning 
 # isrtlrunning 
-if grep -q runningoverview=stop < $ov ; then return 0 ; fi
+if grep -q runningoverview=stop < $oc ; then return 0 ; fi
 if ! ps aux | grep -q run_parmanode ; then return 0 ; fi
 #sleep 10
 break
