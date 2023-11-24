@@ -48,7 +48,7 @@ fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
 if  docker ps 2>/dev/null | grep -q bre ; then 
 
-    if docker exec -itu root bre /bin/bash -c 'ps -a | grep "btc-rpc"' >/dev/null 2>&1 ; then
+    if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' >/dev/null 2>&1 ; then
     echo -e "
 
             BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
