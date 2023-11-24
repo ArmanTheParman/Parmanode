@@ -4,9 +4,9 @@ unset file
 if ! which nginx ; then install_nginx ; fi
 
 if [[ $OS == Mac ]] ; then
-local $file="/usr/local/etc/nginx/btcrpcexplorer.conf"
+local file="/usr/local/etc/nginx/btcrpcexplorer.conf"
 else
-local $file="/etc/nginx/conf.d/btcrpcexplorer.conf"
+local file="/etc/nginx/conf.d/btcrpcexplorer.conf"
 fi
 
 

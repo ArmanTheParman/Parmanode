@@ -46,7 +46,7 @@ fi
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-if  docker ps | grep -q bre ; then echo -e "
+if  docker ps 2>/dev/null | grep -q bre ; then echo -e "
         BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
 "
 else
