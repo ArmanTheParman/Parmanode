@@ -18,6 +18,7 @@ echo -e "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
+#    (o)                  Overview/Status of programs                                  #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
