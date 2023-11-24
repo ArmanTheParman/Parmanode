@@ -38,6 +38,7 @@ export parmanode_conf="${dp}/parmanode.conf"
 export installed_conf="${dp}/installed.conf"
 export pc=$parmanode_conf
 export ic=$installed_conf
+export ov="$dp/overview.conf"
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
