@@ -18,7 +18,7 @@ echo -e "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of programs                                  #
+#    (o)                  Overview/Status of programs   $cyan(soon)  $orange                       #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
@@ -77,7 +77,8 @@ echo "announcements=off" | tee -a $hm
 fi
 ;;
 o|O)
-menu_overview 
+#menu_overview 
+true
 ;;
 
 add|Add| ADD)
