@@ -23,6 +23,8 @@ echo "
       (alias)          Change LND alias
 
       (port)           Change CLEARNET port. Current port is $lnd_port 
+
+      (mm)             Macaroon information (private and sensitive)
 "
 if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
@@ -56,6 +58,10 @@ update_lnd
 
 reset|RESET|Reset)
 reset_lnd_conf
+;;
+
+mm|MM|Mm)
+lnd_macaroons
 ;;
 
 *)

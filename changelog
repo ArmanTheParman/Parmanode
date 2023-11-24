@@ -1,4 +1,20 @@
+Version 3.18.7 (Nov 23, 2023)
+    -Electrs tor menu issues fixed
+    -pihole password changer
+Version 3.18.6
+    -Sparrow install bug. New one introduced with new version, fixed.
+    -Tor Server Move directory had incorrect ownership settings
+Version 3.18.5 (Nov 21, 2023)
+    -Patch #4 code, but not enabled yet
+    -LND menu option to print macaroons and certthumprint to screen
+    -BTCPay install broke due to some upgrades in other peoples' code. Reverted
+     back to old stable version for now. 
+    -LND config directory made into a git repository to allow undos (important directory)
+     Only for new installs or when patch 4 gets released.
+    -Trezor install detects parallal installation configuration directory
+    -Electrs external drive bug fixed
 Version 3.18.4  19 November
+    -Patch #3
     -LND Tor options - Tor only, clearnet only, hybrid; automatic switching
     -Sparrow 1.8.0 available as an option, but not default
     -Option to leave Fulcrum database when uninstalling

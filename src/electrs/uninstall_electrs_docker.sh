@@ -1,10 +1,10 @@
 function uninstall_electrs_docker {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
-                                 Uninstall electrs (Docker)
-
+$cyan
+                            Uninstall electrs (Docker)
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
@@ -18,7 +18,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-source $HOME/.parmanode/parmanode.conf
+source $pc
 
 electrs_nginx remove 
 
@@ -34,18 +34,18 @@ if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs
 if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Do you want to delete the electrs_db database directory, or leave it, or back
     it up as electrs_db_backup (remaining on the drive)?
-
+$red
                 d)        Delete
-
+$green
                 l)        Leave it there
-
+$reset
                 b)        Back it up 
-
+$orange
 ########################################################################################
 "
 choose "xpmq"  

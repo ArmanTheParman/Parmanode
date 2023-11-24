@@ -11,9 +11,10 @@ if ! openssl version >/dev/null 2>&1 ; then echo "Installing openssl..." ; brew 
 fi
 
 
-if [ -z $1 ] ; then cd $HOME/parmanode/fulcrum/ 
-elif [[ $1 == "electrs" ]] ; then cd $HOME/parmanode/electrs
-debug "dir for ssl certs is $(pwd)"
+if [ -z $1 ] ; then 
+   if [[ -e $hp/fulcrum ]] ; then cd $hp/fulcrum/ ; else cd $hp ; fi
+elif [[ $1 == "electrs" ]] ; then 
+   if [[ -e $hp/electrs ]] ; then cd $hp/electrs || announce "Can't enter electrs directory." ; else cd $hp ; fi
 fi
 
 openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048

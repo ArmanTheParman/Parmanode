@@ -3,8 +3,8 @@ function choose_and_prepare_drive {
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="                           (3) - Import an external drive
-                                 (Parmanode, Umbrel, RaspiBlitz or MyNode) 
+local text="$bright_blue                           (3) - Import an external drive
+                                 (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
 while true
@@ -17,10 +17,10 @@ echo -e "
     data.
 
     Please choose an option:
-
+$green
                            (e) - Use an EXTERNAL drive
-
-                           (i) - Use an INTERNAL drive
+$red
+                           (i) - Use an INTERNAL drive $orange
 "
 if [[ $1 == Bitcoin ]] ; then
 echo -e "$text" ; fi 
@@ -48,7 +48,6 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         parmanode_conf_add "drive_electrs=external" ; fi
-
 
 return 0
 ;;

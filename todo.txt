@@ -15,6 +15,8 @@ make a general troubleshooting page
 
 check that no non-parmanode installations to avoid conflicts.
 
+always check for typo >dev/null (should be >/dev/null), causes big problems
+
 ########################################################################################
 For Version 4
 ########################################################################################

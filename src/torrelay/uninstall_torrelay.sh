@@ -20,7 +20,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 local file="/etc/tor/torrc"
 
-sed -i '/#Tor Relay Installation.../,/#End Tor Relay Installation./d' $file
+sudo sed -i '/#Tor Relay Installation.../,/#End Tor Relay Installation./d' $file
 sudo apt-get purge nyx -y
 
 install_config_remove "torrelay"

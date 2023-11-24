@@ -1,4 +1,4 @@
-function menu_tor_server {
+function menu_tor_webserver {
 
 server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
 
@@ -7,7 +7,7 @@ while true ; do
 if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
 set_terminal ; echo -e "
 ########################################################################################
-        $cyan                 Tor Server (Darknet Server) Menu $orange
+        $cyan               Tor Web Server (Darknet Server) Menu $orange
 ########################################################################################
 
 
@@ -21,17 +21,18 @@ set_terminal ; echo -e "
 
              (sp)            Set permissions
 
-             (m)             Move files to server directory
+             (mm)            Move files to server directory
             
              (off)           Turn off file indexing    [ Currently $status ]
             
              (on)            Turn on file indexing     [ Currently $status ]
 
+
 $bright_blue
   Onion address: ${server_onion}:7001
-$orange
+$cyan
   Server location: /tor-server/
-
+$orange
 
 ########################################################################################
 "
@@ -59,7 +60,7 @@ sudo chown -R www-data:www-data /tor-server
 sudo shopt -s dotglob ; sudo chmod -R 755 /tor-server/*
 ;;
 
-m|M)
+mm|MM)
 sudo chown -R www-data:www-data /tor-server-move
 sudo chmod -R 755 /tor-server-move/*
 sudo shopt -s dotglob ; sudo mv /tor-server-move/* /tor-server/

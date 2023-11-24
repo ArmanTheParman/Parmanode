@@ -1,7 +1,7 @@
 function enable_tor_rtl {
-
+clear
 enable_tor_general || return 1
-
+clear
 if sudo grep "HiddenServiceDir /var/lib/tor/rtl-service/" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServiceDir /var/lib/tor/rtl-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -18,7 +18,7 @@ sudo systemctl restart tor
 }
 
 function disable_tor_rtl {
-
+clear
 file="/etc/tor/torrc"
 
 delete_line "$file" "rtl.service"

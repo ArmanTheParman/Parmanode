@@ -1,8 +1,14 @@
 function install_electrs_docker {
 
-source $parmanode_conf >/dev/null 2>&1
+source $pc $ic >/dev/null 2>&1
 
-grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "electrs-" < $ic && announce "Oops, you're trying to install a second instance of electrs.
+    It seems you alread have a non-Docker version of electrs installed 
+    on the system. Parmanode cannot install the Docker version of electrs 
+    if the Docker version is already installed. Bad things can happen. 
+    Aborting." && return 1   
+
+grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
 "Aborting" ; return 1 ; } 
@@ -12,51 +18,33 @@ grep -q "docker-end" < $dp/installed.conf || { announce "Please install Docker f
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
-source $HOME/.bitcoin/bitcoin.conf >/dev/null
+if [[ -e $bc ]] ; then
+source $bc >/dev/null
+else
+clear
+echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
+supposed to sync to the external drive and it is not connected and mounted.
+Hit <enter> to try again once you connect the drive."
+fi
+if [[ ! -e $bc ]] ; then
+announce "Couldn't detect bitcoin.conf - Aborting."
+return jb1 
+fi
+
 check_pruning_off || return 1
 check_server_1 || return 1
 export dontstartbitcoin=true
 check_rpc_bitcoin
 unset dontstartbitcoin
 
-isbitcoinrunning
-if [[ $running == true ]] ; then
-while true ; do
-set_terminal
-echo -e "
-########################################################################################
-
-    Bitcoin needs to be stopped when electrs is being installed. Shall Parmanode
-    stop it for you? 
-
-               y)       Stops Bitcoin Core for now
-
-               n)       Leave Bitcoin Core running, aborts electrs install
-
-########################################################################################  
-"
-choose "xpmq"
-read choice ; set_terminal
-case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-n|N) return 1 ;;
-m|M) back2main ;; 
-y|Y) stop_bitcoind ; break ;;
-*) invalid ;;
-esac
-done
-fi #and if bitcoin running
-
-
-installed_config_add "electrsdkr-start"
-
 
 preamble_install_electrs_docker || return 1
 
-    set_terminal ; please_wait
+set_terminal ; please_wait
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
+debug "check build for errors"
+installed_config_add "electrsdkr-start"
 
 make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
 # electrs_nginx add
@@ -76,9 +64,12 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
       restore_elctrs_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
-elif [[ $drive_electrs == exteranal ]] ; then
+elif [[ $drive_electrs == external ]] ; then
 
       format_ext_drive "electrs" || return 
+      #make directory electrs_db not needed because config file makes that hapen when electrs run
+      mkdir -p $pamranode_drive/electrs_db
+      debug "mkdir done"
 
 fi
 
@@ -94,7 +85,7 @@ make_electrs_config && log "electrs" "config done"
 
 debug "pre run electrs. check directories"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
-debug "2"
+debug "check electrs compiled"
 docker_start_electrs || return 1
 debug "3"
 installed_config_add "electrsdkr-end"

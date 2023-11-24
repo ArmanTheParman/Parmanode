@@ -1,4 +1,4 @@
-function uninstall_tor_server {
+function uninstall_tor_webserver {
     set_terminal ; echo "
 ########################################################################################
 

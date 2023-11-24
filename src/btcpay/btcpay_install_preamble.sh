@@ -17,7 +17,7 @@ $orange
     Proceed?
 
      $green         y $orange     or  $red    n
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal

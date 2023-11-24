@@ -28,27 +28,29 @@ while true ; do
     echo -e "
 ########################################################################################
 
-    A$pink backup$orange of electrs directory has been found in addition to the 
-    current electrs installation (${pink}$HOME/.electrs_backup$orange)
+    A$cyan backup$orange of electrs directory has been found in addition to the 
+    current electrs installation (${cyan}$HOME/.electrs_backup$orange)
     
     Keeping the backup can save you time compiling it all again if you choose to 
     re-install electrs.
-$pink 
-    REMOVE$orange the backup too? 
 
-                                 y    or    n  ?
-
+    REMOVE orange the backup too? 
+$red
+                        R)      Remove
+$green                        
+                        L)      Leave it
+$orange
 ######################################################################################## 
 "
     read choice
     set_terminal
     case $choice in
-    y|Y) 
+    R|r) 
     are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
     please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
-    n|N) 
+    L|l) 
     please_wait ; break ;;
-    *) invalid
+    *) invalid ;;
     esac
 done
 fi
@@ -69,7 +71,7 @@ if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs
 if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
-set_terminal "pink" ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Do you want to delete the electrs_db database directory, or leave it, or back
