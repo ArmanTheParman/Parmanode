@@ -14,6 +14,6 @@ fi
 # # if ! docker exec -du parman bre /bin/bash -c "ps -xa | grep btc | grep -v grep" ; then 
 # fi
      docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
-
+debug "look again"
 return 0
 }
