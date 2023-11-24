@@ -19,6 +19,8 @@ check for non-parmanode app installations to avoid conflicts.
 
 regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
+more testing for electrs install/uninstall, and directories left behind
+
 ########################################################################################
 For Version 4
 ########################################################################################
