@@ -80,7 +80,7 @@ fi ) &
 rp_counter
 
 #begin background status check loop
-#runningoverview & >/dev/null 2>&1
+runningoverview 
 
 ########################################################################################
 #Intro
