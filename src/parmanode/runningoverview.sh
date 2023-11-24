@@ -11,17 +11,14 @@ fi
 
 if [[ $OS == Linux ]] ; then
     if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
-    export running=false 
     export bitcoinrunning=false
     fi
 #override...
     if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
-    export running=false 
     export bitcoinrunning=false
     fi
 #override...
     if pgrep bitcoind >/dev/null 2>&1 ; then 
-    export running=true 
     export bitcoinrunning=true
     fi
 
