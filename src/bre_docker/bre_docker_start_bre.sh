@@ -2,24 +2,18 @@
 #starts the container, but this function start BRE inside an already
 #started container.
 function bre_docker_start_bre {
-counter=0
-while [[ $counter -lt 4 ]] ; do
-if docker ps >/dev/null 2>&1 ; then
 
-    if docker ps 2>/dev/null | grep -q bre ; then
-    debug "before exec"
-        docker exec -d -u parman bre /bin/bash -c "./btc-rpc-explorer" 
-    debug "after exec"
-    fi
-    return 0
-
-else
-   if [[ $OS == Mac ]] ; then start_docker_mac ; fi
-   counter=$((counter + 1))
-   continue
+if ! docker ps >/dev/null 2>&1 && [[ $OS == Mac ]] ; then #is docker running?
+ start_docker_mac 
 fi
-done
 
-announce "Docker isn't running. Aborting." 
-return 1
+if ! docker ps >/dev/null/2>&1 | grep -q bre ; then #is bre container running?
+    docker start bre
+fi
+
+if ! docker exec -du parman bre /bin/bash -c "ps -xa | grep btc" ; then 
+     docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
+fi
+
+return 0
 }
