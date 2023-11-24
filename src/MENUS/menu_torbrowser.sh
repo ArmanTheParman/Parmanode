@@ -20,7 +20,7 @@ p|P) menu_use ;;
 
 start|START) 
 if [[ $computer_type == LinuxPC ]] ; then 
-$HOME/.local/share/applications/start-tor-browser.desktop
+$hp/tor-browser/start-tor-browser.desktop
 return 0
 fi
 
