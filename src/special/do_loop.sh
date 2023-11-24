@@ -79,8 +79,6 @@ fi ) &
 #add to run count
 rp_counter
 
-#begin background status check loop
-runningoverview 
 
 ########################################################################################
 #Intro
