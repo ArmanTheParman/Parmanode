@@ -21,6 +21,7 @@ p|P) menu_use ;;
 start|START) 
 if [[ $computer_type == LinuxPC ]] ; then 
 $hp/tor-browser/s*
+debug "look"
 return 0
 fi
 
