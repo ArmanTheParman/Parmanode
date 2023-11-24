@@ -123,11 +123,9 @@ set_terminal ; echo -e "
 $cyan
     http://$IP/admin
 $orange
-    It's probably a good idea to change the password. To do that, you need to type the
-    following commmand in tge terminal:
-    $cyan
-                  sudo sudo pihole -a -p$red new_password
-$orange
+    It's probably a good idea to change the password. To do that, just select the 
+    option from the Parmanode-PiHole menu.
+
 ########################################################################################
 "
 enter_continue
