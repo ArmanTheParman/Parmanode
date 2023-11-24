@@ -171,7 +171,7 @@ set_terminal ; echo -e "
 read choice
 case $choice in y|Y) 
 #remove desktop icon file
-rm $HOME/Desktop/*un_parmanode* >dev/null
+rm $HOME/Desktop/*un_parmanode* >/dev/null
 rm $HOME/Desktop/*armanode* >/dev/null
 rm $HOME/Desktop/parmanode.desktop >/dev/null
 debug "delete desktop icon"
