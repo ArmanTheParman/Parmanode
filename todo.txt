@@ -21,6 +21,9 @@ regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
 more testing for electrs install/uninstall, and directories left behind
 
+more menu signals with option to dismiss forever - eg "bitcoind is not a typo. type
+OK1 and <enter> to dismiss forever
+
 ########################################################################################
 For Version 4
 ########################################################################################
