@@ -113,10 +113,10 @@ set_terminal_high ; echo -e "
 
     Parmanode has found the following problemaitc line(s) in Nginx configuration
     file(s):
-"
+$cyan"
 grep -rE '^\slisten.*\s+80\s+' $nginxDir/*
 
-echo -e "
+echo -e "$orange
     The file name is in the left column, and the offending text found in that file is
     on the same row in the right column.
 
@@ -132,9 +132,9 @@ echo -e "
     control-x, then y to agree to save, then <enter> to exit without changing the 
     filename.
 
-    Where you see$red '80'$orange to$green '50080'$orange. You may see the
-    number 80 in other simlar looking lines, if they start with a '#' then 
-    those lines are 'commeneted out' and are ignored, so no need to change them.
+    Where you see$red '80'$orange, change it to$green '50080'$orange. You may see the
+    number 80 in other simlar looking lines, but if those lines start with a '#',
+    then those lines are 'commeneted out' and are ignored, so no need to change them.
 
     You only need to find the pattern of text listed above and modify those.
 

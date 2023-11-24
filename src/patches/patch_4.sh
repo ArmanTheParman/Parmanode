@@ -12,5 +12,5 @@ fi
 
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=4"
-debug "patch 3 end"
+debug "patch 4 end"
 }
