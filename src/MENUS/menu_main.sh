@@ -76,6 +76,10 @@ delete_line "$hm" "announcements="
 echo "announcements=off" | tee -a $hm
 fi
 ;;
+o|O)
+menu_overview 
+;;
+
 add|Add| ADD)
     menu_add_new
     ;;

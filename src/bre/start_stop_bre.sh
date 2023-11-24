@@ -25,12 +25,9 @@ else
 local file="$HOME/parmanode/btc-rpc-explorer/.env"
 fi
 
-#btc_authentication in parmanode.conf is either "user/pass" or "cookie"
-
-if ! cat ~/.parmanode/parmanode.conf | grep -q btc_authentication ; then #if the setting doesn't exist 
-    announce "There is a fault with the parmanode configuration file" \
-    "No btc_authentication setting found. Aborting."
-    enter_continue
+if ! grep -q rpcuser= < $bc ; then #if the setting doesn't exist 
+    announce "There is a fault with the bitcoin.conf file" \
+    "No btc_authentication setting found. user/pass needs to be set. Aborting."
     return 1
 fi
 
