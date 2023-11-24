@@ -11,7 +11,7 @@ set_terminal ; echo -e "
 
     We are dealing with INTERNAL IPs which are private and viewable only on your
     home network. This device's IP address is:
-$green
+$bright_blue
                $IP
 $green
     Parmanode will help to make this IP static$orange - ie, it will prevent your router from
