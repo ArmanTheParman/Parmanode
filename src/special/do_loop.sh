@@ -109,7 +109,7 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    git_dp &
 fi
    
-
+debug "what is patch - $patch"
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
