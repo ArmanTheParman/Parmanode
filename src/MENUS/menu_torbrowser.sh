@@ -5,36 +5,14 @@ set_terminal ; echo -e "
 
                      $cyan              TOR Browser    $orange
 
+    To use Tor Browser
 
-                       start)          Start Tor Browser 
+       Linux:    Use the start menu, you'll find the Tor icon there. 
+    
+       Mac:      Run fromt the Mac OS Applications folder. 
 
 ######################################################################################## 
 "
-choose "xpmq" ; read choice
-case $choice in 
-m|M) back2main ;;
-Q|q|QUIT|Quit|quit) 
-    exit 0 ;; 
-
-p|P) menu_use ;; 
-
-start|START) 
-if [[ $computer_type == LinuxPC ]] ; then 
-$hp/tor-browser/s*
-debug "look"
-return 0
-fi
-
-if [[ $OS == Mac ]] ; then
-open /Applications/"Tor Browser.app"
-return 0
-fi
-;;
-
-*)
-invalid ;;
-esac  
-
-done
+enter_contiue
 return 0
 }
