@@ -1,5 +1,6 @@
 function bre_docker_start {
 check_config_bre || return 1
+debug "look"
 bre_docker_start_bre
 }
 

@@ -27,7 +27,7 @@ docker exec -itu root bre bash -c "ln -s ../bre/.env .env"
 debug "after docker execs"
 #get necessary variables for config file and modify
 bre_docker_modify_env #-- env file needs to have been moved to mounted volume before this
-debug "after modify enf"
+debug "after modify env"
 #install BRE inside container
 docker exec -it -u root bre /bin/bash -c 'npm install -g btc-rpc-explorer'
 debug "after npm install"

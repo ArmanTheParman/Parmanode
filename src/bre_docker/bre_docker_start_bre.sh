@@ -6,8 +6,10 @@ counter=0
 while [[ $counter -lt 4 ]] ; do
 if docker ps >/dev/null 2>&1 ; then
 
-    if docker ps | grep -q bre ; then
-        docker exec -d -u parman bre /bin/bash -c "btc-rpc-explorer" 
+    if docker ps 2>/dev/null | grep -q bre ; then
+    debug "before exec"
+        docker exec -d -u root bre /bin/bash -c "btc-rpc-explorer" 
+    debug "after exec"
     fi
     return 0
 
