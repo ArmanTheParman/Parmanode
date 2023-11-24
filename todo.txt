@@ -1,5 +1,7 @@
 :set noincsearch - for vsc
 
+Parmanode overview page for what's running
+
 system-health-check
     - log report document
     - check symlinks
@@ -13,9 +15,9 @@ create pipe to detect successful wallet creation in LND (lncli create)
 
 make a general troubleshooting page
 
-check that no non-parmanode installations to avoid conflicts.
+check for non-parmanode app installations to avoid conflicts.
 
-always check for typo >dev/null (should be >/dev/null), causes big problems
+regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
 ########################################################################################
 For Version 4
