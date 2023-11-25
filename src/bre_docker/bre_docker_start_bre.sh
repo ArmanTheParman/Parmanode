@@ -3,15 +3,13 @@
 #started container.
 function bre_docker_start_bre {
 
+if ! docker ps >/dev/null 2>&1 && [[ $OS == Mac ]] ; then #is docker running?
+ start_docker_mac 
+fi
 
-if docker ps >/dev/null 2>&1 ; then
+if ! docker ps >/dev/null 2>&1 | grep -q bre ; then #is bre container running?
+    docker start bre
+fi
 
-    if docker ps | grep -q bre ; then
-        docker exec -d -u parman bre /bin/bash -c "btc-rpc-explorer" 
-    fi
-
-else
-announce "Docker isn't running. Aborting." 
-return 1
-fi 
+docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
 }

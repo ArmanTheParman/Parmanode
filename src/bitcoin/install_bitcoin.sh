@@ -63,7 +63,7 @@ fi
 sudo chown -R $USER: $HOME/.bitcoin/ 
 
 #setting password. Managing behaviour of called function with variable and arguments.
-export dontstartbitcoin
+export dontstartbitcoin=true
 set_rpc_authentication "s" "install"
 unset dontstartbitcoin
 
