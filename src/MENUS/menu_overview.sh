@@ -58,10 +58,10 @@ else
 fi
 if grep -q bre-end < $ic ; then
     if [[ $brerunning == true ]] ; then
-    b5="${green}Y$orange                (bre)              ${green}Y$orange"
+    b5="${green}Y$orange                (brs)              ${green}Y$orange"
     menub5=true
     else
-    b5="${red}N$orange                (bre)              ${green}Y$orange"
+    b5="${red}N$orange                (brs)              ${green}Y$orange"
     menub5=false
     fi
 else
@@ -191,7 +191,7 @@ start_electrs
 sleep 1
 fi
 ;;
-bre) 
+brs) 
 if [[ $menub5 == true ]] ; then
 clear ; please_wait
 if [[ $computer_type == LinuxPC ]] ; then stop_bre ; fi
