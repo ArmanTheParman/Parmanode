@@ -35,7 +35,7 @@ check_rpc_bitcoin
 unset dontstartbitcoin
 
 isbitcoinrunning
-if [[ $running == true ]] ; then
+if [[ $bitcoinrunning == true ]] ; then
 while true ; do
 set_terminal
 echo -e "

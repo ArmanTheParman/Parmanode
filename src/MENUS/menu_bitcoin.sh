@@ -21,9 +21,9 @@ menu_bitcoin_status
 
 isbitcoinrunning
 
-if [[ $running != false ]] ; then running=true ; fi
+if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
-if [[ $running == true ]] ; then
+if [[ $bitcoinrunning == true ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
@@ -37,7 +37,7 @@ start="$green"
 fi                         
 
 # #This causes error output when bitcoin loading
-# if [[ $OS == Linux && $running == true ]] ; then
+# if [[ $OS == Linux && $bitcoinrunning == true ]] ; then
 # blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
 # fi
 

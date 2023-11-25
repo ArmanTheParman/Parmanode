@@ -1,9 +1,15 @@
 function menu_main {
 set_terminal
 while true ; do
-set_terminal_custom 50
+#if [[ ! $announcements == off ]] ; then export blinkon="\033[5m" ; else unset blinkon ; fi 
+
+#export blinkon="\033[5m"
+#export blinkoff="\033[0m"
+set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
-if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi
+source $hm
+if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi #in case version number is high, adjust menu border
+
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
 # of the code at the bottom.
@@ -16,6 +22,7 @@ echo -e "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
+#    (o)                  Overview/Status of programs   $red(new)          $orange                #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
@@ -41,17 +48,22 @@ echo -e "$orange
 #                                                                                      #
 #    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #
+#    (aa)                 Hide/Show Main menu announcements ... (Donchu dare!)         #
+#                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
 ########################################################################################
 
  Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
  Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
-
-
+"
+if [[ ! $announcements == off ]] ; then
+echo -e "
 $pink NEW: combine u with next menu options. eg, try ub for bitcoin menu     $orange 
 $bright_blue NEW: PiApps for Pi's -- Allows easy install for Tor Browser $orange
 $blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
+fi
+
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
 
@@ -59,6 +71,18 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # these end in a closing bracked, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
+aa)
+if [[ $announcements == off ]] ; then
+delete_line "$hm" "announcements="
+echo "announcements=on" | tee -a $hm 
+else
+delete_line "$hm" "announcements="
+echo "announcements=off" | tee -a $hm
+fi
+;;
+o|O)
+menu_overview 
+;;
 
 add|Add| ADD)
     menu_add_new
