@@ -1,6 +1,10 @@
 function menu_main {
 set_terminal
 while true ; do
+#if [[ ! $announcements == off ]] ; then export blinkon="\033[5m" ; else unset blinkon ; fi 
+
+#export blinkon="\033[5m"
+#export blinkoff="\033[0m"
 set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
 source $hm
@@ -18,7 +22,7 @@ echo -e "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of programs   $cyan(soon)  $orange                       #
+#    (o)                  Overview/Status of programs   $red(new)          $orange                #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
@@ -77,8 +81,7 @@ echo "announcements=off" | tee -a $hm
 fi
 ;;
 o|O)
-#menu_overview 
-true
+menu_overview 
 ;;
 
 add|Add| ADD)

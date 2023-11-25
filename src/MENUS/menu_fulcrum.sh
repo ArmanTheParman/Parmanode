@@ -99,7 +99,7 @@ start | START)
 check_fulcrum_pass
 set_terminal
 echo "Fulcrum starting..."
-if [[ $OS == "Linux" ]] ; then start_fulcrum_linux ; enter_continue ; fi
+if [[ $OS == "Linux" ]] ; then start_fulcrum_linux ; fi
 if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi 
 set_terminal
 ;;
