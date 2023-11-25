@@ -115,7 +115,11 @@ fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
     if  docker ps 2>/dev/null | grep -q bre ; then 
-    overview_conf_add "brerunning=true"
+        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
+        overview_conf_add "brerunning=true"
+        else
+        overview_conf_add "brerunning=false"
+        fi
     else
     overview_conf_add "brerunning=false"
     fi
