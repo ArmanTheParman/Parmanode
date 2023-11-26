@@ -26,8 +26,11 @@ local file="$HOME/parmanode/btc-rpc-explorer/.env"
 fi
 
 if ! grep -q rpcuser= < $bc >/dev/null 2>&1 ; then #if the setting doesn't exist 
-    announce "There is a fault with the bitcoin.conf file" \
-    "No btc_authentication setting found. user/pass needs to be set. Aborting."
+    announce "There is a fault with the bitcoin.conf file. It can happen if
+    the Bitcoin settings changed from when you originall installed BRE.
+
+    Please set a username and password from the Bitcoin menu, otherwise, BRE
+    won't work. Aborting for now."
     return 1
 fi
 if cat $file | grep COOKIE= ; then bre_auth=cookie ; fi
