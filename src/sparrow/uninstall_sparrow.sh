@@ -27,7 +27,7 @@ $cyan
     $HOME/.sparrow/
 $orange
 
-    This driectory includes you wallet files. 
+    This driectory includes your wallet files. 
     
     Note that if you have any non-Parmanode Sparrow installations, they share this same
     directory.
