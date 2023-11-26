@@ -1,9 +1,9 @@
 function uninstall_electrum {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall Electrum 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
@@ -18,7 +18,7 @@ installed_config_remove "electrum"
 if [[ $OS == "Mac" ]] ; then rm -rf /Applications/Electrum.app ; fi
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Do you also wish to delete the Electrum configuration directory and wallet files?
@@ -27,11 +27,11 @@ set_terminal ; echo "
     replace the application file(s); the configuration directory can be left alone
     and it will work with the newer version of Electrum)
 
-
+$red
                                   y)          Yes
-
+$green
                                   n)          No
-
+$orange
 ########################################################################################
 "
 choose "x" ; read choice
