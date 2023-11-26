@@ -11,7 +11,10 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
     problems with this program. One option might be to re-index the chanin (do
     look that up if needed), another may be to delete the data and start over - 
-    there's a Parmanode menu option for that."
+    there's a Parmanode menu option for that.
+    
+    A couple of times this happened to me, and the old 'turn it off and and again'
+    trick did the trick."
 fi
 
 
@@ -20,7 +23,8 @@ set_terminal_custom "52"
 menu_bitcoin_status
 
 isbitcoinrunning
-
+source $oc
+debug "$bitcoinrunning - status"
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
 if [[ $bitcoinrunning == true ]] ; then
