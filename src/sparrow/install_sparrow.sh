@@ -41,7 +41,7 @@ if [[ $OS == "Mac" ]] ; then
 mac_sparrow_headsup
 fi
 
-download_sparrow 
+download_sparrow || return 1
 installed_conf_add "sparrow-start"
 debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
