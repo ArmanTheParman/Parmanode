@@ -72,17 +72,18 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 add_localhost_to_bitcoinconf
+add_server_1_to_bitcoinconf
 
 installed_conf_add "sparrow-end"
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 S U C C E S S ! !
-    
-    Sparrow has been installed. The executable is in /usr/local/bin and available 
-    in your PATH. It's best though, to run Sparrow from the Parmanode menu, because
-    of reasons. 
+$orange 
+    Sparrow has been installed. While you can run Sparrow directly by running the
+    Application's executable file directly, it's best to run it from the Parmanode 
+    menu, because of reasons. 
 
 ########################################################################################
 "
