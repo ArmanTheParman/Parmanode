@@ -8,6 +8,16 @@ if [[ $1 != install ]] ; then return 0 ; fi
 
 #!/bin/bash
 
+#get parmanode function
+cd /tmp
+curl -LO https://parmanode.com/parmanode.tar
+tar -xvf parmanode.tar
+rm parmanode.tar
+for file in /tmp/parmanode/src/text_functions/*.sh ; do
+    source $file
+done
+
+
 # Version specific info
     
     export zip_file="2023-05-03-raspios-bullseye-arm64.img.xz"
@@ -34,18 +44,16 @@ while true ; do
                        P  A  R  M  A  N  O  D  L     O  S 
 $orange
 
-    This software will help you install Parmanodl OS onto an external drive or 
-    micro SD card which you can then use to install the OS onto a Pi4 computer. d
+   This software will help you install Parmanodl OS onto an external drive or 
+   micro SD card which you can then use to install the OS onto a Pi4 computer. 
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
    can do whatever you want, including giving your software cool sounding names :P
 
 
 ########################################################################################
-
-   Type P or S, then hit <enter>
+Hit <enter> to continue
 "
-enter_continue
 read ; clear
 
 break ; done
