@@ -242,7 +242,7 @@ fi # end if $1 != install
     
 
 # Mount the image and dependent directories
-
+    
     ParmanodL_mount || { echo "failed to mount. Exiting." ; log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
 
 # Setup system locale
