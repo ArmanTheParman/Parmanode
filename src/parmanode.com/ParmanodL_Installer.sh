@@ -51,11 +51,11 @@ read ; clear
 break ; done
 
 
-clear ; echo "
+clear ; echo -e "$orange
 ########################################################################################
-
+$cyan
                        P  A  R  M  A  N  O  D  L     O  S 
-
+$orange
 
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
@@ -68,7 +68,7 @@ clear ; echo "
 
 ########################################################################################
 
-    Hit <enter> to continue
+    Hit$green <enter>$orange to continue
     " ; read
     
     if [[ $(uname) == Darwin && $1 != install ]] ; then clear ; echo "
