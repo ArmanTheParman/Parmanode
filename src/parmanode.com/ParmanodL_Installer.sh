@@ -9,13 +9,13 @@ if [[ $1 != install ]] ; then return 0 ; fi
 #!/bin/bash
 
 #get parmanode function
-cd /tmp
-curl -LO https://parmanode.com/parmanode.tar
-tar -xvf parmanode.tar
-rm parmanode.tar
-for file in /tmp/parmanode/src/text_functions/*.sh ; do
-    source $file
-done
+# cd /tmp
+# curl -LO https://parmanode.com/parmanode.tar
+# tar -xvf parmanode.tar
+# rm parmanode.tar
+# for file in /tmp/parmanode/src/text_functions/*.sh ; do
+#     source $file
+# done
 
 
 # Version specific info
