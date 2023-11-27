@@ -1,4 +1,5 @@
 function detect_microSD {
+clear
 if [ -z $1 ] ; then name=ParmanodL 
 else name=${1}
 fi

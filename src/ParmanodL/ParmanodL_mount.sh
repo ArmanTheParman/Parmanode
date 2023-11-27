@@ -1,5 +1,5 @@
 function ParmanodL_mount { 
-
+clear
 # Caculate offset for image, needed for mount command later.
 
    # if [[ $OS == Linux ]] ; then
