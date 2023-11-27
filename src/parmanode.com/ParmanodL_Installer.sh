@@ -51,7 +51,7 @@ read ; clear
 break ; done
 
 
-clear ; echo -e "
+clear ; echo -e "$orange
 ########################################################################################
 $cyan
                        P  A  R  M  A  N  O  D  L     O  S 
