@@ -53,9 +53,9 @@ break ; done
 
 clear ; echo -e "
 ########################################################################################
-
+$cyan
                        P  A  R  M  A  N  O  D  L     O  S 
-
+$orange
 
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
