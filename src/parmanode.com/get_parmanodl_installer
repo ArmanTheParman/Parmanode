@@ -1,7 +1,6 @@
 # This file is to be kept at parmanode.com
 # User to type: 
-#        /bin/bash -c "$(curl -fsSL https://parmanode.com/get_parmanodl_installer)" 
-# or
+
 #        curl https://parmanode.com/get_parmanodl_installer | sh
 
 return 0
@@ -12,20 +11,34 @@ printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m"
 
 cd $HOME/Desktop
 curl -LO https://parmanode.com/ParmanodL_Installer
+clear
+echo "
+########################################################################################
+
+    Next, you may be asked for a password - this is the password you use to log in to 
+    the computer. It is necessary, to allow the creation of a new file with 
+    executable permissions.
+
+########################################################################################
+"
+sudo -k
 sudo chmod +x ParmanodL_Installer 
 
 clear ; echo "
+########################################################################################
 
-    There should be a file on your desktop now called ParmanodL_Installer.sh.
+    A new file has been created on your desktop called ParmanodL_Installer.sh
 
-    Double click it to run. If your computer opens a text editor instead, that's
-    a small problem. In that case, you'll have to run the file from the terminal
-    like this:
+    Double click it to run. 
+    
+    If your computer opens a text editor instead, that's a small problem. In that 
+    case, you'll have to run the file from the terminal app by typing this:
 
-        $HOME/desktop/ParmanodL_Installer
+            $HOME/desktop/ParmanodL_Installer
 
-    ... get the spelling right and it's case sensative.
+    ... make sure to get the spelling right (it's case sensative).
 
-    "
+########################################################################################
+"
 exit
 ########################################################################################
