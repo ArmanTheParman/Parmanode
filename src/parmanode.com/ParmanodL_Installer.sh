@@ -27,12 +27,12 @@ while true ; do
 
    if [[ $1 == install ]] ; then break ; fi
 
-   clear ; echo "
+   clear ; echo -e "$orange
 ########################################################################################
 
-   
+  $cyan 
                        P  A  R  M  A  N  O  D  L     O  S 
-
+$orange
 
     This software will help you install Parmanodl OS onto an external drive or 
     micro SD card which you can then use to install the OS onto a Pi4 computer. d
@@ -51,11 +51,11 @@ read ; clear
 break ; done
 
 
-clear ; echo -e "$orange
+clear ; echo -e "
 ########################################################################################
-$cyan
+
                        P  A  R  M  A  N  O  D  L     O  S 
-$orange
+
 
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
@@ -68,7 +68,7 @@ $orange
 
 ########################################################################################
 
-    Hit$green <enter>$orange to continue
+    Hit <enter> to continue
     " ; read
     
     if [[ $(uname) == Darwin && $1 != install ]] ; then clear ; echo "
