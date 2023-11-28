@@ -25,7 +25,7 @@ hdiutil attach qbittorren*.dmg
 sudo cp -r /Volumes/qBit*/qbit*.app /Applications
 hdituil detach /Volumes/qBit*
 elif [[ $OS == Linux ]] ; then
-sudo chmod +x bittorrent*.AppImage
+sudo chmod +x qbittorrent*.AppImage
 fi
 
 installed_conf_add "qbittorrent-end"
