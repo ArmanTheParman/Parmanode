@@ -378,4 +378,19 @@ else
 torb_n="#                            (torb)        Tor Browser                                 #"
 fi
 fi #end computer type/OS
+
+#QBittorrent
+if [[ $computer_type == LinuxPC || $OS == Mac ]] ; then
+unset qbittorrent_i qbittorrent_p qbittorrent_n
+if grep -q "qbittorrent-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+qbittorrent_i="#                               QBittorrent                                     #"
+elif grep -q "torb-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+torb_p="#                                      QBittorrent                                     #"
+else
+   #not installed
+torb_n="#                            (qbit)        QBittorrent                                 #"
+fi
+fi #end computer type/OS
 }
