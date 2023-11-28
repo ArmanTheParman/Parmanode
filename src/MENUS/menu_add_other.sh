@@ -21,7 +21,8 @@ if [[ -n $anydesk_n ]]         ; then echo  "$anydesk_n"; fi
 if [[ -n $pihole_n ]]          ; then echo  "$pihole_n"; fi
 if [[ -n $torrelay_n ]]        ; then echo  "$torrelay_n"; fi
 if [[ -n $piapps_n ]]          ; then echo  "$piapps_n"; fi
-if [[ -n $torb_n ]]          ; then echo  "$torb_n"; fi
+if [[ -n $torb_n ]]            ; then echo  "$torb_n"; fi
+if [[ -n $qbittorrent_n ]]     ; then echo  "$qbittorrent_n"; fi
 
 echo "#                                                                                      #
 # Installed...                                                                         #
@@ -34,7 +35,8 @@ if [[ -n $parmabox_i ]]        ; then echo  "$parmabox_i"; fi
 if [[ -n $anydesk_i ]]         ; then echo  "$anydesk_i"; fi
 if [[ -n $torrelay_i ]]        ; then echo  "$torrelay_i"; fi
 if [[ -n $piapps_i ]]          ; then echo  "$piapps_i"; fi
-if [[ -n $torb_i ]]          ; then echo  "$torb_i"; fi
+if [[ -n $torb_i ]]            ; then echo  "$torb_i"; fi
+if [[ -n $qbittorrent_i ]]     ; then echo  "$qbittorrent_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -46,7 +48,8 @@ if [[ -n $parmabox_p ]]        ; then echo  -e "$pink$parmabox_p$orange"; fi
 if [[ -n $anydesk_p ]]         ; then echo  -e "$pink$anydesk_p$orange"; fi
 if [[ -n $pihole_p ]]          ; then echo  -e "$pink$pihole_p$orange"; fi
 if [[ -n $torrelay_p ]]        ; then echo  -e "$pink$torrelay_p$orange"; fi #redundant, no partial install possible
-if [[ -n $torb_p ]]          ; then echo  -e "$pink$torb_p$orange"; fi
+if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
+if [[ -n $qbittorrent_p ]]            ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -121,6 +124,12 @@ piap|PIAP)
 torb|TORB)
     if [[ -n $torb_n ]] ; then
     install_torbrowser
+    return 0
+    fi
+    ;;
+qbit|Qbit)
+    if [[ -n $qbittorrent_n ]] ; then
+    install_qbittorrent
     return 0
     fi
     ;;

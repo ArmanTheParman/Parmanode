@@ -195,6 +195,12 @@ echo "#                                    (torb)             Tor Browser       
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
 echo "#                                    (torb)             Tor Browse  (partial)          #
 #                                                                                      #" ; fi
+if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentmenu=1
+echo "#                                    (qbit)             QBittorrent                    #
+#                                                                                      #"
+elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
+echo "#                                    (qbit)             QBittorrent (partial)          #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -390,6 +396,12 @@ fi
 torb|Torb|TORB)
 if [[ $torbmenu == 1 ]] ; then
 uninstall_torbrowser
+return
+fi
+;;
+qbit|Qbit)
+if [[ $qbittorrentmenu == 1 ]] ; then
+uninstall_qbittorrent
 return
 fi
 ;;

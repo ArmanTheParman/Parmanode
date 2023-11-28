@@ -91,6 +91,9 @@ if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
                        echo "    (torb)       Tor Browser
                             " ; fi
+if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
+                       echo "    (qbit)       QBittorrent 
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
@@ -261,6 +264,12 @@ ersd|Ersd|ERSD)
 torb|TORB|Torb)
    if [[ $torbapp == 1 ]] ; then
    menu_torbrowser
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+qbit|Qbit)
+   if [[ $qbittorrentapp == 1 ]] ; then
+   menu_qbittorrent
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
