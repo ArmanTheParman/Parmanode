@@ -5,7 +5,7 @@ open /Applications/qbittorrent.app
 fi
 
 if [[ $OS == Linux ]] ; then
-nohup $hp/qbittorrent/qbittorrent*AppImage >dev/null 2>&1 &
+nohup $hp/qbittorrent/qbittorrent*AppImage >/dev/null 2>&1 &
 fi
 
 if [[ $computer_type == Pi ]] ; then
