@@ -49,7 +49,7 @@ if [[ -n $anydesk_p ]]         ; then echo  -e "$pink$anydesk_p$orange"; fi
 if [[ -n $pihole_p ]]          ; then echo  -e "$pink$pihole_p$orange"; fi
 if [[ -n $torrelay_p ]]        ; then echo  -e "$pink$torrelay_p$orange"; fi #redundant, no partial install possible
 if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
-if [[ -n $qbittorrent_p ]]            ; then echo  -e "$pink$qbittorrent_p$orange"; fi
+if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################

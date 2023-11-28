@@ -155,7 +155,7 @@ elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then
 torserver_p="#                                      Tor Web Server                                  #"
 else
    #not installed
-torserver_n="#                            (tws)          Tor Web Server (Darknet Server)            #"
+torserver_n="#                            (tws)         Tor Web Server (Darknet Server)             #"
 fi
 
 #BTCPay Tor
@@ -385,12 +385,12 @@ unset qbittorrent_i qbittorrent_p qbittorrent_n
 if grep -q "qbittorrent-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
 qbittorrent_i="#                               QBittorrent                                     #"
-elif grep -q "torb-start" < $HOME/.parmanode/installed.conf ; then
+elif grep -q "qbittorrent-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-torb_p="#                                      QBittorrent                                     #"
+qbittorrent_p="#                                      QBittorrent                                     #"
 else
    #not installed
-torb_n="#                            (qbit)        QBittorrent                                 #"
+qbittorrent_n="#                            (qbit)        QBittorrent                                 #"
 fi
 fi #end computer type/OS
 }
