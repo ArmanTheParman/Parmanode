@@ -15,7 +15,7 @@ cd $hp/qbittorrent
 if [[ $OS == Mac ]] ; then
 curl -LO https://parmanode.com/qbittorrent-4.6.2.dmg
 elif [[ $OS == Linux ]] ; then
-curl -LO https://parmanode.com/bittorrent-4.6.2_x86_64.AppImage
+curl -LO https://parmanode.com/qbittorrent-4.6.2_x86_64.AppImage
 fi
 
 installed_conf_add "qbittorrent-start"
