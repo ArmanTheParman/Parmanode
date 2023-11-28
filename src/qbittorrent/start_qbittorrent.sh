@@ -12,5 +12,4 @@ if [[ $computer_type == Pi ]] ; then
 announce "Not supported for your OS, sorry." && return 1
 fi
 
-fi
 }
