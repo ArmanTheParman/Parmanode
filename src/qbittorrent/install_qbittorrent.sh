@@ -1,5 +1,5 @@
 function install_qbittorrent {
-
+clear
 if [[ $computer_type == Pi ]] ; then
 announce "Sorry, not available for Raspberry Pi or other Linux computers with
     ARM chips. Aborting" ; return 1 ; fi 
@@ -30,6 +30,22 @@ fi
 
 installed_conf_add "qbittorrent-end"
 success "QBittorrent" "being installed"
+
+if [[ $OS == Mac ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+
+    Mac OS is a bit protective, it will not allow you to run this program on default
+    settings. You need to first attempt to run it, fail, THEN, go to Mac settings; 
+    there you will find 'security & privacy' and within that, you need to select
+    'open anyway'.
+
+    You only need to do this once.
+
+########################################################################################
+"
+enter_continue
+fi
 
 }
 
