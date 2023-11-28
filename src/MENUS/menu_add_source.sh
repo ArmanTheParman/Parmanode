@@ -384,7 +384,7 @@ if [[ $computer_type == LinuxPC || $OS == Mac ]] ; then
 unset qbittorrent_i qbittorrent_p qbittorrent_n
 if grep -q "qbittorrent-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
-qbittorrent_i="#                               QBittorrent                                     #"
+qbittorrent_i="#                                      QBittorrent                                     #"
 elif grep -q "qbittorrent-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
 qbittorrent_p="#                                      QBittorrent                                     #"
