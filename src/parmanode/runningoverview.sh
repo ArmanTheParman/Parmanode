@@ -6,7 +6,6 @@ touch $oc
 
 isbitcoinrunning 
 islndrunning 
-debug "finished islndrunning"
 isfulcrumrunning 
 iselectrsrunning 
 iselectrsdkrrunning 
@@ -49,25 +48,17 @@ fi
 }
 
 function islndrunning {
-debug "a"
 unset lndrunning
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
-debug "b"
 overview_conf_add "lndrunning=true" "lndrunning="
-debug "c"
 else
 overview_conf_add "lndrunning=false" "lndrunning="
-debug "d"
 fi
 
 if lncli walletbalance >/dev/null 2>&1 ; then 
-debug "e"
-overview_conf_add "lndwallet=locked" "lndrunning="
-debug "f"
+overview_conf_add "lndwallet=locked" "lndwallet="
 else
-debug "g"
-overview_conf_add "lndwallet=unlocked" "lndrunning="
-debug "f"
+overview_conf_add "lndwallet=unlocked" "lndwallet="
 fi
 }
 
