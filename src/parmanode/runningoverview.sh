@@ -56,9 +56,9 @@ overview_conf_add "lndrunning=false" "lndrunning="
 fi
 
 if lncli walletbalance >/dev/null 2>&1 ; then 
-overview_conf_add "lndwallet=locked" "lndrunning="
+overview_conf_add "lndwallet=locked" "lndwallet="
 else
-overview_conf_add "lndwallet=unlocked" "lndrunning="
+overview_conf_add "lndwallet=unlocked" "lndwallet="
 fi
 }
 
