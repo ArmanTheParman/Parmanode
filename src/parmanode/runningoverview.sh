@@ -6,6 +6,7 @@ touch $oc
 
 isbitcoinrunning 
 islndrunning 
+debug "look islndrunning"
 isfulcrumrunning 
 iselectrsrunning 
 iselectrsdkrrunning 
@@ -51,6 +52,7 @@ function islndrunning {
 unset lndrunning
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
 overview_conf_add "lndrunning=true" "lndrunning="
+debug "minus 1"
 else
 overview_conf_add "lndrunning=false" "lndrunning="
 fi
