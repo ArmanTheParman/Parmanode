@@ -19,6 +19,8 @@ echo -e "
 
       (wb)             Wallet balance
 
+      (cb)             Channels' balance
+
       (au)             Enable auto-unlock wallet (for easy restarts of LND)
 
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
@@ -48,10 +50,7 @@ return 0
 ;;
 
 wb|WB)
-set_terminal
-lncli walletbalance
-enter_continue
-return 0
+wallet_balance
 ;;
 
 delete|DELETE|Delete) 
@@ -64,4 +63,37 @@ return 0
 esac
 done
 
+}
+
+
+function wallet_balance {
+set_terminal
+if [[ $lndrunning != true || $lndwallet =! unlocked ]] ; then 
+local_balance="Unknown, LND not running or wallet locked"
+remote_balance="Unknown, LND not running or wallet locked"
+fi
+lncli channelbalance > /tmp/.channelbalance
+local_balance=$(lncli channelbalance | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+remote_balance=$(lncli channelbalance | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+channel_size_total=$((local_balance + remote_balance))
+lncli walletbalance >/tmp/.walletbalance
+onchain_balance=$(lncli walletbalance | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                         i    Lightning Node Balance
+$orange
+    On chain balance:            $onchain_balance sats
+
+    Total local balance:         $local_balance sats     $green (Your money) $orange
+
+    Total remote balance:        $remote_balance sats     $red (Not your money)  $orange
+
+    Total of channel capcity:    $channel_size_total 
+
+########################################################################################
+"
+enter_continue
+return 0
 }
