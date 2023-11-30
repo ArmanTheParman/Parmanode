@@ -82,7 +82,7 @@ onchain_balance=$(lncli walletbalance | head -n2 | tail -n1 | cut -d \" -f 4) >/
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                         i    Lightning Node Balance
+                              Lightning Node Balance
 $orange
     On chain balance:            $onchain_balance sats
 
