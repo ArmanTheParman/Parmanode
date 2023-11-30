@@ -68,7 +68,7 @@ done
 
 function wallet_balance {
 set_terminal
-if [[ $lndrunning != "true" || $lndwallet =! "unlocked" ]] ; then 
+if [[ $lndrunning != "true" || $lndwallet != "unlocked" ]] ; then 
 local_balance="Unknown, LND not running or wallet locked"
 remote_balance="Unknown, LND not running or wallet locked"
 fi
