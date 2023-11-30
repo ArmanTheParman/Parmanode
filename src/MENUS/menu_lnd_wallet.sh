@@ -86,9 +86,9 @@ $cyan
 $orange
     On chain balance:            $onchain_balance sats
 
-    Total local balance:         $local_balance sats     $green (Your money) $orange
+    Total local balance:         $local_balance sats$green (Your money) $orange
 
-    Total remote balance:        $remote_balance sats     $red (Not your money)  $orange
+    Total remote balance:        $remote_balance sats$red (Not your money)  $orange
 
     Total of channel capcity:    $channel_size_total 
 
