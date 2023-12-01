@@ -150,9 +150,6 @@ clear ; please_wait
 menu_lnd
 ;;
 
-rsync)
-rsync ;;
-
 q | Q | quit)
     exit 0 ;;
 *)
