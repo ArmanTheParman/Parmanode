@@ -110,7 +110,7 @@ case $scenario in
 echo -e "
 ########################################################################################
 $orange
-    Ignore newer files in destination?$green (y)$orange or$red (n)$orange:
+    Ignore newer files in destination?$green (y)$orange or$red (n)$orange
 
 ########################################################################################
 "
@@ -121,7 +121,7 @@ clear
 echo -e "
 ########################################################################################
 
-    Delete unique files in the destination?$red (y)$orange or$green (n) : 
+    Delete unique files in the destination?$red (y)$orange or$green (n)$orange  
 
 ########################################################################################
 "
@@ -134,7 +134,7 @@ esac
 echo -e "
 ########################################################################################
     
-    Dry run?$green (y)$orange or$red (n)
+    Dry run?$green (y)$orange or$red (n)$orange
 
 ########################################################################################
 "
@@ -145,8 +145,11 @@ clear
 echo -e "
 ########################################################################################
     
-    Exclude hidden files in path root$green (r)$orange, root & subdirectories$bright_blue 
-    (s)$orange or none$red (n)$orange?
+    Exclude hidden files in the:
+
+         path root$green (r)$orange 
+         root & subdirectories$bright_blue (s)$orange 
+         none$red (n)$orange
 
 ########################################################################################
 "
@@ -157,7 +160,7 @@ read hidden
      else                           hidden=""
        fi
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
 
     The commands are ready. It includes the default options:
@@ -170,7 +173,9 @@ echo "
 
     You can remove any of these if you wish.
 
-    The proposed command for you to copy, paste, and execute is...
+
+$bright_blue
+    The proposed command for you to copy, paste, and execute is... $orange
 
 $green
 rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/ 
@@ -180,6 +185,7 @@ $orange
 $green
 rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
 $orange
+
 ##############################################################################################################
 "
 enter_continue
