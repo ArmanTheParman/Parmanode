@@ -173,6 +173,23 @@ read hidden
      elif [[ $hidden == s ]] ; then hidden="-exclude '.*'"
      else                           hidden=""
        fi
+
+case $scenario in
+1)
+command1="rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/"
+command2="
+    ...then the directories in reverse 
+    (otherwise unique files in the destination are not copied to the source)...
+$green
+    rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
+$orange"
+;;
+
+2)
+command1="rsync -rvarzP$update $del $dry $hidden --ignore-existing $source $destination/"
+;;
+esac
+
 set_terminal_wide
 echo -e "
 ##############################################################################################################
@@ -189,16 +206,9 @@ echo -e "
 
 
     The proposed command for you to copy, paste, and execute is... 
-
 $green
-    rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/ 
-$orange
-    ...then the directories in reverse 
-    (otherwise unique files in the destination are not copied to the source)...
-$green
-    rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
-$orange
-
+    $command1 $orange
+    $command2 
 ##############################################################################################################
 "
 enter_continue
