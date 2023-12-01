@@ -53,7 +53,7 @@ $green
         The destination directory does not exist, the source directory will be copied
         to the new location.
 
-    Which is it?  $green 1$orange or$green 2$orange ? 
+    Which is it?  $blue 1$orange or$blue 2$orange ? 
 ########################################################################################
 "
 choose "x"
