@@ -88,6 +88,7 @@ echo -e "
 read destination
 
 clear
+esac
 
 case $scenario in
 1)
@@ -168,7 +169,7 @@ $orange
 "
 enter_continue
 set_terminal
-return
+return 0
 }
 
 ### a '/' traliling slash specifies the contents of the directory.
