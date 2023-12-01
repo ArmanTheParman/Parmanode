@@ -16,9 +16,10 @@ $orange
     same computer. More features may be added later, or you can read the rsync manual
     and do it completely on your own without the help of Parmanode if you're keen and
     tech savvy.
+
 $green
-    The wizard will ask you questions, and then based on your answers provide you with
-    a command for you to copy and paste into the terminal.
+    This wizard will ask you questions, and then based on your answers provide you 
+    with a command for you to copy and paste into the terminal.
 $orange
 
 ########################################################################################
