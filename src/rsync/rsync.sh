@@ -79,15 +79,27 @@ read source
 case $scenario in
 1)
 echo -e "
+########################################################################################
+
     Now type in the full path where you want the directory to be synced to. The
-    contents of this directory will become the same as the source directory."
+    contents of this directory will become the same as the source directory.
+
+########################################################################################
+
+"
 read destination
 ;;
 
 2)
 echo -e "
+########################################################################################
+
     Now type in the full path where you want the directory to be copied to.
-    You shouldn't type in the name of the source directory, just where it's going."
+    You shouldn't type in the name of the source directory, just where it's going.
+
+########################################################################################
+
+"
 read destination
 
 clear
