@@ -73,7 +73,7 @@ clear
 echo -e "
 ########################################################################################
 
-    Type in the full path to the source directory (where files are to be copied FROM).
+    Type in the full path to the source directory (where files are to be copied$green FROM$orange).
     e.g. 
 $blue
 $example1
@@ -81,7 +81,7 @@ $orange
 ########################################################################################
 "
 read source
-check_for_validity $source || continue
+check_for_validity $source || { unset source ; continue ; }
 fi
 
 case $scenario in
@@ -89,7 +89,7 @@ case $scenario in
 echo -e "
 ########################################################################################
 
-    Now type in the full path where you want the directory to be synced to. The
+    Now type in the full path where you want the directory to be synced$green TO$orange. The
     contents of this directory will become the same as the source directory.
 
 ########################################################################################
@@ -97,6 +97,7 @@ echo -e "
 "
 read destination
 check_for_validity $destination || continue
+break
 ;;
 
 2)
@@ -111,9 +112,10 @@ echo -e "
 "
 read destination
 check_for_validity $destination || continue
-
 clear
+break
 esac
+done
 
 case $scenario in
 1)
@@ -206,7 +208,7 @@ return 0
 
 function check_for_validity {
 
-if ! echo "$1" | grep -oE ^/ ; then announce "directory must start with '/'" ; return 1 ; fi
-if echo "$1" | grep -oE /$ ; then announce "directory should not end with '/'" ; return 1 ; fi
-
+if ! echo "$1" | grep -oqE ^/ ; then announce "directory must start with '/'" ; clear ; return 1 ; fi
+if echo "$1" | grep -oqE /$ ; then announce "directory should not end with '/'" ; clear ; return 1 ; fi
+clear
 }
