@@ -1,7 +1,4 @@
 function rsync {
-announce "Temporarily down for maintenance. Will be ready later
-    today."
-return 1
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
