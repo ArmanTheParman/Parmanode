@@ -25,7 +25,7 @@ $orange
 ########################################################################################
 "
 enter_abort
-read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
+read choice ; case $choice in a|A) return 1 ;; "") break ;; esac ; done
 clear
 
 if [[ $OS == Mac ]] ; then
