@@ -43,13 +43,13 @@ while true ; do
 echo -e "
 ########################################################################################
 
-    This tool requires tweaking depending on if the destination directory exists
-    already. 
-    
-    Scenario 1)
+    There are two possible scenarios which must be chosen from:
+$green
+    Scenario 1) $orange
         The source and the destination directories already exist but the contents 
         may be a bit different.
-    Secenario 2)
+$green
+    Secenario 2) $orange
         The destination directory does not exist, the source directory will be copied
         to the new location.
 
