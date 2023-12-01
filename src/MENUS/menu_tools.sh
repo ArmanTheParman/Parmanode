@@ -32,7 +32,7 @@ echo -e "
 
               (aa)    Turn on/off autoupdates
 
-              (rs)    Parman's easy AF Rsync tool$green new $orange
+              (rs)    Parman's easy AF Rsync tool$red new $orange
 
 ########################################################################################
 "
