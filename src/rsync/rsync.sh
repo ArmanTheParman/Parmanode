@@ -43,7 +43,7 @@ while true ; do
 echo -e "
 ########################################################################################
 
-    There are two possible scenarios which must be chosen from:
+    There are two possible scenarios to be chosen from:
 $green
     Scenario 1) $orange
         The source and the destination directories already exist but the contents 
@@ -53,16 +53,22 @@ $green
         The destination directory does not exist, the source directory will be copied
         to the new location.
 
-    Which is it?  $blue 1$orange or$blue 2$orange ? 
+    Which is it? $blue 1$orange or$blue 2$orange ? 
+
 ########################################################################################
 "
 choose "x"
 read scenario
+
+
 case $scenario in
 1|2) break ;;
 *) invalid ;;
 esac ; done
 
+unset source
+while true ; do
+if [[ -z $source ]] ; then
 clear
 echo -e "
 ########################################################################################
@@ -75,6 +81,8 @@ $orange
 ########################################################################################
 "
 read source
+check_for_validity $source || continue
+fi
 
 case $scenario in
 1)
@@ -88,6 +96,7 @@ echo -e "
 
 "
 read destination
+check_for_validity $destination || continue
 ;;
 
 2)
@@ -101,6 +110,7 @@ echo -e "
 
 "
 read destination
+check_for_validity $destination || continue
 
 clear
 esac
@@ -166,7 +176,7 @@ echo -e "
     The commands are ready. It includes the default options:
 
     Verbose mode     (-v) 
-    Archive mode     (-a)  permissions, ownership, timestamps, + other attributes of the source files.
+    Archive mode     (-a)        permissions, ownership, timestamps, + other attributes of the source files.
     Recursive mode   (-r) 
     Compress mode    (-z) 
     Shoe progress    (-P) 
@@ -174,16 +184,15 @@ echo -e "
     You can remove any of these if you wish.
 
 
-$bright_blue
-    The proposed command for you to copy, paste, and execute is... $orange
+    The proposed command for you to copy, paste, and execute is... 
 
 $green
-rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/ 
+    rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/ 
 $orange
-...then the directories in reverse 
-(otherwise unique files in the destination are not copied to the source)...
+    ...then the directories in reverse 
+    (otherwise unique files in the destination are not copied to the source)...
 $green
-rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
+    rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
 $orange
 
 ##############################################################################################################
@@ -195,3 +204,9 @@ return 0
 
 ### a '/' traliling slash specifies the contents of the directory.
 
+function check_for_validity {
+
+if ! echo "$1" | grep -oE ^/ ; then announce "directory must start with '/'" ; return 1 ; fi
+if echo "$1" | grep -oE /$ ; then announce "directory should not end with '/'" ; return 1 ; fi
+
+}
