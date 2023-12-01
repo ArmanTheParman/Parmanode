@@ -69,8 +69,10 @@ echo -e "
 
     Type in the full path to the source directory (where files are to be copied FROM).
     e.g. 
-
+$blue
 $example1
+$orange
+########################################################################################
 "
 read source
 
