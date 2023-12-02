@@ -173,12 +173,12 @@ read hidden
 
 case $scenario in
 1)
-command1="rsync -rvarzP$update $del $dry $hidden --ignore-existing $source/ $destination/"
+command1="rsync -rvazP$update $del $dry $hidden --ignore-existing $source/ $destination/"
 command2="
     ...then the directories in reverse 
     (otherwise unique files in the destination are not copied to the source)...
 $green
-    rsync -rvarzP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
+    rsync -rvazP$update $del $dry $hidden --ignore-existing $destination/ $source/ 
 $orange"
 ;;
 
