@@ -32,5 +32,6 @@ case $choice in
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "instructions" "1" ; set_terminal ;;
 esac
 fi
+set_terminal
 return 0
 }
