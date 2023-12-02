@@ -91,7 +91,6 @@ $green
     Make sure you turn off power saving features, particularly features that put
     the drive to sleep; Power saving is usually on by default for laptops.
 $orange
-    
 
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
