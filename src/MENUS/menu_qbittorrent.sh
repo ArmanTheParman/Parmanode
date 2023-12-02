@@ -29,10 +29,13 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The torrent file has been downloaded to:
-
+$bright_blue
     $HOME/parman_programs/
-    
+$orange 
     You can open this with the qBittorrent program.
+
+    Once downloaded, please leave the Parmanode OS image file in place for seeding
+    to other who may wish to download.$green Sharing is caring.$orangw
 
 ########################################################################################
 "
