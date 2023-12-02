@@ -21,7 +21,7 @@ if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "extern
 skip_formatting=true
 fi
 
-if [[ $skip_formatting == true ]] ; then 
+if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then 
     return 0 
     else
     format_warnings || return 0 
