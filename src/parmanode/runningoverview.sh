@@ -35,8 +35,12 @@ if [[ $OS == Linux ]] ; then
     fi
    
 #override...
-    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
-    overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+    if [[ -e $HOME/.bitcoin/debug.log ]] ; then
+        if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
+        overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+        fi
+    else 
+        overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
     fi
 #override...
     if pgrep bitcoind >/dev/null 2>&1 ; then 
