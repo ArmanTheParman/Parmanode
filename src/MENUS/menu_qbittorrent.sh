@@ -5,7 +5,9 @@ set_terminal ; echo -e "
                                 QBittorrent Menu         $orange      
 ########################################################################################
 
-              s)                     Start
+              s)               Start
+
+              t)               Download Parman's ParmanodL OS Torrent file
 
 ########################################################################################
 "
@@ -19,6 +21,24 @@ s|S|start|Start|START|S|s)
 check_SSH || return 0
 start_qbittorrent || return 1
 return 0 ;;
+
+t)
+cd $HOME/parman_programs/
+curl -LO https://parmanode.com/ParmanodL.torrent
+set_terminal ; echo -e "
+########################################################################################
+
+    The torrent file has been downloaded to:
+
+    $HOME/parman_programs/
+    
+    You can open this with the qBittorrent program.
+
+########################################################################################
+"
+return 0
+
+;;
 
 *) invalid ;;
 
