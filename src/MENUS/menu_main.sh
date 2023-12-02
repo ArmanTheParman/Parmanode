@@ -143,6 +143,7 @@ ull) menu_use ll ;;
 ups) menu_use ps ;;
 upbx) menu_use pbx ;;
 upih) menu_use pih ;;
+uqbit) menu_use qbit ;;
 
 
 ul|UL|Ul)
