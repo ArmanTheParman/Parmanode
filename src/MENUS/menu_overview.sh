@@ -133,7 +133,6 @@ echo -e "
  Note: this is not a list of all apps available with Parmanode.        (${red}r$bright_blue to refresh)$orange
 
  If a program is installed, you have the choice to start/stop it.
-
 "
 
 choose "xpmq"
