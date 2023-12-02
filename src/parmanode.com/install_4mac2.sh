@@ -136,6 +136,10 @@ Close it, open a new one, and then rp will work.
 You can delete this file once you've absorbed the information.
 EOF
 clear
+
+echo "#Added by Parmanode..." | tee -a ~/.zshrc >/dev/null 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.zshrc >/dev/null 2>&1
+
 echo "
 ########################################################################################
 
