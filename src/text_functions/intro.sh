@@ -46,7 +46,6 @@ s|S) dirty_shitcoiner ; continue ;;
 q|Q|QUIT|Quit|quit) exit 0 ;;
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "intro" "1" ; set_terminal ; break ;;
 "") break ;;
-
-esac ; done ; fi ; return 0
+esac ; done ; fi ; set_terminal ; return 0
 }
 
