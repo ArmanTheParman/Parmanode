@@ -408,4 +408,55 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+if [[ $motd == 18 ]] ; then
+set_terminal_custom 55 ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    A rant for people who don't know why #Bitcoin 2.0 is not possible:
+
+    The first thing to understand is that money is made up of a counting unit 
+    (physical or digital), ie the "tech", and a network of people. You can't have one 
+    without the other - that's not money.
+
+    Any copy and/or improvement to bitcoin, which I accept is possible, does not 
+    copy the PEOPLE. Also, if there truly was some innovation that solved a problem 
+    Bitcoin hasn't, then Bitcoin can just copy the tech. If the tech is secret, then 
+    the new competitor can't become money, because open source is non negotiable. 
+    The group of people that are driving this revolution are doing so to replace the 
+    system, not copy it. Closed source (and all altcoins with their leaders), are 
+    more of the same thing.
+
+    Going back to what money is made of, units and people, Bitcoin isn't there yet;
+    not enough people use it (yet). But it is the leading contender of free market, 
+    open source, digital yet scarce money that cant be stopped/controlled.
+
+    Nothing comes close. And so, as Bitcoiners keep buying cheap bitcoin, and birthing 
+    new Bitcoiners, the revolution of money progresses, and the fulfilment of Bitcoin 
+    becoming money (universally accepted unit preferred as payment) becomes 
+    inevitable. Also, Bitcoiners will be holding all the available bitcoin, as
+    weak hands will sell to them as the price goes up or down.
+
+    It's either Bitcoin wins, worldwide tyranny wins, or humans go extinct. There 
+    are no other logical possibilities. (Except: AI kills humans and uses bitcoin,
+    but it would have to be a multiple competitve AIs, economising resources and 
+    trading like humans - I bet against it).
+
+    If you're not accumulating bitcoin because tyranny might win, 51% attack or 
+    whatever obscure attack is dreamed up, well fuck you, you pussy. Harden up and 
+    fight. It's not like your being asked to put your life on the line; just your 
+    wealth/savings. If you've got 0.0 btc shame on you.
+
+    Rand over. 
+
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
