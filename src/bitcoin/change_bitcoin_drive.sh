@@ -46,7 +46,8 @@ if [[ $drive == external ]] ; then
 
     # No backup, just leave drive as is.
     rm $HOME/.bitcoin #deletes symlink to external drive
-    parmanode_conf_remove "drive=" && parmanode_conf_add "drive=internal"
+    parmanode_conf_remove "drive=" 
+    parmanode_conf_add "drive=internal"
     source $dp/parmanode.conf >/dev/null 2>&1
     mkdir $HOME/.bitcoin
     make_bitcoin_conf prune 0 #double check this
@@ -60,7 +61,8 @@ if [[ $OS == Mac && $drive == internal ]] ; then
     mount_drive || return 1
     if [[ ! -d $parmanode_drive/.bitcoin ]] ; then mkdir $parmanode_drive/.bitcoin ; fi
 
-    parmanode_conf_remove "drive=" && parmanode_conf_add "drive=external"
+    parmanode_conf_remove "drive=" 
+    parmanode_conf_add "drive=external"
     source $dp/parmanode.conf >/dev/null 2>&1
     if [[ ! -d $HOME/.bitcoin    &&    ! -L $HOME/.bitcoin ]] ; then
     make_bitcoin_symlinks
@@ -113,7 +115,8 @@ esac #ends import parmanode drive options
 done # ends while no parmanode in fstab
 
 #Once initial internal and now parmanode in fstab...
-    parmanode_conf_remove "drive=" && parmanode_conf_add "drive=external"
+    parmanode_conf_remove "drive=" 
+    parmanode_conf_add "drive=external"
     source $dp/parmanode.conf >/dev/null 2>&1
     make_backup_dot_bitcoin
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
