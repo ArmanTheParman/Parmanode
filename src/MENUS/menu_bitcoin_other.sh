@@ -17,11 +17,11 @@ fi
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
 if [[ $bitcoinrunning == true ]] ; then
-output1="                   Bitcoin is$pink RUNNING$orange-- see log menu for progress"
+output1="                   Bitcoin is$green RUNNING$orange-- see log menu for progress"
 
 output2="                         (Syncing to the $drive drive)"
 else
-output1="                   Bitcoin is$pink NOT running$orange -- choose \"start\" to run"
+output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
@@ -162,9 +162,10 @@ set_terminal_custom 55 ; echo -e "
 
        3)   For Macs, the default location for Bitcoin's data on the internal drive
             is strange and long (even worse in Windows), and for simplicity, I've made 
-            it point to $HOME/.bitcoin on Macs. From there, if a Mac user chooses or
-            switches to the external drive, then $HOME/.bitcoin also becomes a symlink, 
-            pointing to the external drive. It's beautiful, right? I think it is.
+            it point to $HOME/.bitcoin on Macs. From there, if a Mac user 
+            chooses or switches to the external drive, then 
+            $HOME/.bitcoin also becomes a symlink, pointing to the 
+            external drive. It's beautiful, right? I think it is.
        
        3)   If you look for the .bitcoin directory, you woni't normally see it unless
             you know the tricks to show hidden files/directories (ask Google or 
