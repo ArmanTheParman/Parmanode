@@ -48,7 +48,7 @@ echo -e "
        
       (r)        Errors? Try --reindex blockchain...
 
-      (h)        Hack tips for troubleshooting.
+      (h)        Hack Parmanode; tips for troubleshooting.
 
 ########################################################################################
 "
