@@ -24,7 +24,6 @@ menu_bitcoin_status
 
 isbitcoinrunning
 source $oc
-debug "$bitcoinrunning - status"
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
 if [[ $bitcoinrunning == true ]] ; then
@@ -39,6 +38,8 @@ output1="                   Bitcoin is$red NOT running$orange -- choose \"start\
 output2="                   Will sync to the $drive drive"
 start="$green"
 fi                         
+
+if [[ -z $drive ]] ; then unset output2 ; fi
 
 # #This causes error output when bitcoin loading
 # if [[ $OS == Linux && $bitcoinrunning == true ]] ; then
