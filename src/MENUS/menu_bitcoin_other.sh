@@ -46,7 +46,7 @@ echo -e "
 
       (dd)       Backup/Restore data directory.................(Instructions only)
        
-      (r)        Errors? Try --reindex blockchain
+      (r)        Errors? Try --reindex blockchain...
 
 ########################################################################################
 "
