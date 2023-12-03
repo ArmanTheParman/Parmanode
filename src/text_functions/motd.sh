@@ -3,7 +3,7 @@ if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >/dev/null
 fi
 
-if [[ ${message_motd} == "1" ]] ; then return 0 ; fi
+if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
 
 motdfile="$HOME/.parmanode/.motd"
 if [[ ! -e $motdfile ]] ; then
@@ -15,6 +15,9 @@ motdNum=$((motd + 1))
 echo "motd=$motdNum" | tee $motdfile >/dev/null 2>&1
 motd=$motdNum
 fi
+
+#DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
+motd=$((motd % 19))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -460,3 +463,5 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 }
+
+#DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
