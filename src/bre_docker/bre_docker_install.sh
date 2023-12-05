@@ -11,7 +11,7 @@ bre_docker_intro
 #questions (for variables)
 bre_computer_speed
 
-#made directories
+#make directories
 bre_docker_directories && installed_config_add "bre-start"
 
 #docker build
