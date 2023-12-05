@@ -8,6 +8,16 @@ if [[ $1 != install ]] ; then return 0 ; fi
 
 #!/bin/bash
 
+#get parmanode function
+# cd /tmp
+# curl -LO https://parmanode.com/parmanode.tar
+# tar -xvf parmanode.tar
+# rm parmanode.tar
+# for file in /tmp/parmanode/src/text_functions/*.sh ; do
+#     source $file
+# done
+
+
 # Version specific info
     
     export zip_file="2023-05-03-raspios-bullseye-arm64.img.xz"
@@ -27,35 +37,33 @@ while true ; do
 
    if [[ $1 == install ]] ; then break ; fi
 
-   clear ; echo "
+   clear ; echo -e "$orange
 ########################################################################################
 
-   
+  $cyan 
                        P  A  R  M  A  N  O  D  L     O  S 
+$orange
 
-
-    This software will help you install Parmanodl OS onto an external drive or 
-    micro SD card which you can then use to install the OS onto a Pi4 computer. d
+   This software will help you install Parmanodl OS onto an external drive or 
+   micro SD card which you can then use to install the OS onto a Pi4 computer. 
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
    can do whatever you want, including giving your software cool sounding names :P
 
 
 ########################################################################################
-
-   Type P or S, then hit <enter>
+Hit <enter> to continue
 "
-enter_continue
 read ; clear
 
 break ; done
 
 
-clear ; echo "
+clear ; echo -e "$orange
 ########################################################################################
-
+$cyan
                        P  A  R  M  A  N  O  D  L     O  S 
-
+$orange
 
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
@@ -234,7 +242,7 @@ fi # end if $1 != install
     
 
 # Mount the image and dependent directories
-
+    
     ParmanodL_mount || { echo "failed to mount. Exiting." ; log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
 
 # Setup system locale

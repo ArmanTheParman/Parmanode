@@ -16,7 +16,7 @@ fi
 fi
 
 while true ; do
-rm_after_before
+
 
 if [[ $1 != menu2 ]] ; then
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi

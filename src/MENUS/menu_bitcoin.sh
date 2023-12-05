@@ -11,7 +11,10 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
     problems with this program. One option might be to re-index the chanin (do
     look that up if needed), another may be to delete the data and start over - 
-    there's a Parmanode menu option for that."
+    there's a Parmanode menu option for that.
+    
+    A couple of times this happened to me, and the old 'turn it off and and again'
+    trick did the trick."
 fi
 
 
@@ -20,10 +23,10 @@ set_terminal_custom "52"
 menu_bitcoin_status
 
 isbitcoinrunning
+source $oc
+if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
-if [[ $running != false ]] ; then running=true ; fi
-
-if [[ $running == true ]] ; then
+if [[ $bitcoinrunning == true ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
@@ -36,8 +39,10 @@ output2="                   Will sync to the $drive drive"
 start="$green"
 fi                         
 
+if [[ -z $drive ]] ; then unset output2 ; fi
+
 # #This causes error output when bitcoin loading
-# if [[ $OS == Linux && $running == true ]] ; then
+# if [[ $OS == Linux && $bitcoinrunning == true ]] ; then
 # blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
 # fi
 

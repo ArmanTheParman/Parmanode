@@ -35,6 +35,7 @@ case $choice in
 log "importdrive" "$1 install, choice to import drive"
 import_drive_options
 export drive="external" ; parmanode_conf_add "drive=external"
+export bitcoin_drive_import=true #used later to avoid format prompt.
 return 0
 ;;
 
