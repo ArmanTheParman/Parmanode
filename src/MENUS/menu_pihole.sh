@@ -49,7 +49,7 @@ i|I|info|Info)
 info_pihole
 return 0 ;;
 
-ub|UB|)
+ub|UB)
 enable_unbound ;;
 ubx|UBX)
 disable_unbound ;;
