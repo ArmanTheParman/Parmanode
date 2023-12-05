@@ -1,6 +1,7 @@
 function patch_5 {
 debug "patch 5"
 
+#tidying up files left in the wrong place from previous version's installation
 mv $hp/*arrow-1.* $hp/Sparrow >/dev/null 2>&1
 
 if [[ ! -e $hm ]] ; then touch $hm ; fi
