@@ -187,7 +187,7 @@ EOF
 debug "pause"
 sudo systemctl restart unbound >/dev/null 2>&1
 
-docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d/' /etc/pihole/setupVars.conf"
+docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
 debug "deleted?"
 docker exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=127.0.0.1#5335' >> '/etc/pihole/setupVars.conf' "
 success "Unbound DNS Resolver" "being configured"
@@ -198,7 +198,7 @@ function disable_unbound {
 sudo systemctl stop unbound
 sudo systemctl disable unbound
 
-docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d/' /etc/pihole/setupVars.conf"
+docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
 debug "deleted"
 docker exec -itu root pihole /bin/bash -c "echo 'PIHOLE_DNS_1=8.8.8.8' >> '/etc/pihole/setupVars.conf' "
 success "Unbound DNS Resolver" "being disabled"
