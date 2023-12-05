@@ -1,8 +1,9 @@
-Version 3.20.1
+Version 3.20.4
     -QBittorrent
     -Overview menu smol bug fixed
     -LND wallet ballance display improvements, includes channels now.
     -Parman's easy AF Rsync tool
+    -Unbound upstream DNS resolver for PiHole (Linux onlya)
 Version 3.19.1
     -Overview menu
     -Sparrow & Specter uninstall, option to preserve config directory
