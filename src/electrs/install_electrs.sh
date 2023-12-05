@@ -35,13 +35,13 @@ check_rpc_bitcoin
 unset dontstartbitcoin
 
 isbitcoinrunning
-if [[ $running == true ]] ; then
+if [[ $bitcoinrunning == true ]] ; then
 while true ; do
 set_terminal
 echo -e "
 ########################################################################################
 
-    It's bes if Bitcoin is stopped when electrs is being installed to conserve
+    It's best if Bitcoin is stopped when electrs is being installed to conserve
     system resources for the compiling procedure. Shall Parmanode stop it for you? 
 
                y)       Stops Bitcoin Core for now

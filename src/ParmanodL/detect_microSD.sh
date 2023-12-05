@@ -1,4 +1,5 @@
 function detect_microSD {
+clear
 if [ -z $1 ] ; then name=ParmanodL 
 else name=${1}
 fi
@@ -13,8 +14,8 @@ $orange"
 enter_continue 
 
 while true ; do
-rm_after_before
-set_terminal echo -e "$pink
+rm_after_before #just removes files
+set_terminal ; echo -e "$pink
 ########################################################################################
 
     Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 

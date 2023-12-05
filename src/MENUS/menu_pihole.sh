@@ -2,9 +2,9 @@ function menu_pihole {
 while true ; do 
 
 if docker ps | grep -q pihole ; then
-local running="Running"
+local piholerunning="Running"
 else
-local running="Not Running"
+local piholerunning="Not Running"
 fi
 
 set_terminal ; echo -e "
@@ -12,7 +12,7 @@ set_terminal ; echo -e "
                  $cyan               PiHole Menu            $orange                   
 ########################################################################################
 
-                          Your PiHole is$pink $running$orange
+                          Your PiHole is$pink $piholerunning$orange
 
 
          (start)                Start PiHole 

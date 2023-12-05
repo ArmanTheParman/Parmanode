@@ -11,18 +11,22 @@ echo -e "
 ########################################################################################
  
      It seems you either have Sparrow installed already, indepenently to Parmanode,
-     or you had a previous Sparrow installation that wasn't fully uninstalled.
+     or you had a previous Sparrow installation that wasn't fully uninstalled (eg
+     if the configuration directory was not deleted).
 
-     This is indicated by the presence of the directory $HOME/.sparrow
+     This is indicated by Parmanode detecting the presence of the directory:
+     
+     $HOME/.sparrow
 
-     You can go back and properly uninstall before proceeding, or proceed now anyway,
-     but be warned, there could be unexpected behaviour.
+     You can go back and fully uninstall (or manually delete the config directory) 
+     before proceeding, or proceed now anyway, but be warned, there could be 
+     unexpected behaviour.
      
      You have options:
 $green
                  a)        Abort
 $red    
-                 yolo)     Proceed with installation. Reckless!
+                 yolo)     Proceed with installation. (Reckless!)
 $orange
 ########################################################################################
 "
@@ -41,11 +45,14 @@ if [[ $OS == "Mac" ]] ; then
 mac_sparrow_headsup
 fi
 
-download_sparrow 
+download_sparrow || return 1
 installed_conf_add "sparrow-start"
 debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
+
+#move download files, tidy up
+mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 2>&1
 
 if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
 
@@ -65,17 +72,18 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 add_localhost_to_bitcoinconf
+add_server_1_to_bitcoinconf
 
 installed_conf_add "sparrow-end"
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 S U C C E S S ! !
-    
-    Sparrow has been installed. The executable is in /usr/local/bin and available 
-    in your PATH. It's best though, to run Sparrow from the Parmanode menu, because
-    of reasons. 
+$orange 
+    Sparrow has been installed. While you can run Sparrow directly by running the
+    Application's executable file directly, it's best to run it from the Parmanode 
+    menu, because of reasons. 
 
 ########################################################################################
 "

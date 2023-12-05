@@ -54,6 +54,7 @@ if [[ $drive_fulcrum == "external" ]] ; then
 if [[ $drive_fulcrum == "internal" ]] ; then
     rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
     fi
+break
 ;;
 l) break ;;
 *) invalid ;;

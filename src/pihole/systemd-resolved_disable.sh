@@ -1,6 +1,10 @@
 function systemd-resolved_disable {
 
-sudo systemctl status systemd-resolved.service || return 0
+clear
+announce "Parmanode will now test if 'systemd-resoved' is off. You need to hit$cyan q$orange to 
+    keep going after a status printout appears"
+
+sudo systemctl status systemd-resolved.service || return 0 #this 0 is not a typo
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

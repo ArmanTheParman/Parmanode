@@ -4,6 +4,7 @@ function menu_remove {
 # set to toggle the availability of the menu logic below, via if statements.
 
 while true ; do
+clear
 local num1=$(cat $dp/installed.conf | wc -l)
 local num=$(( 42 + ((num1)/2 - 14) ))
 if [[ $num -lt 45 ]] ; then num=46 ; fi
@@ -194,6 +195,12 @@ echo "#                                    (torb)             Tor Browser       
 #                                                                                      #"
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
 echo "#                                    (torb)             Tor Browse  (partial)          #
+#                                                                                      #" ; fi
+if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentmenu=1
+echo "#                                    (qbit)             QBittorrent                    #
+#                                                                                      #"
+elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
+echo "#                                    (qbit)             QBittorrent (partial)          #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -390,6 +397,13 @@ fi
 torb|Torb|TORB)
 if [[ $torbmenu == 1 ]] ; then
 uninstall_torbrowser
+return
+fi
+;;
+qbit|Qbit)
+if [[ $qbittorrentmenu == 1 ]] ; then
+uninstall_qbittorrent
+clear
 return
 fi
 ;;

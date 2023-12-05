@@ -28,7 +28,7 @@ rm -rf /Applications/"Trezor Suite"
 configdir="/Users/ArmanK/Library/Application Support/@trezor/suite-desktop"
 fi
 # && is necessary here as exit status of confirm function affects next command
-confirm_config_delete "$hp/trezor" && rm -rf $configdir
+confirm_config_delete "$configdir" && rm -rf $configdir
 
 installed_conf_remove "trezor"
 success "Trezor Suite" "being uninstalled."

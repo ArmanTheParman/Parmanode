@@ -1,9 +1,9 @@
 function uninstall_parmashell {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall ParmaShell 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################

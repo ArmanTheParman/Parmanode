@@ -25,21 +25,22 @@ else
 local file="$HOME/parmanode/btc-rpc-explorer/.env"
 fi
 
-#btc_authentication in parmanode.conf is either "user/pass" or "cookie"
+if ! grep -q rpcuser= < $bc >/dev/null 2>&1 ; then #if the setting doesn't exist 
+    announce "There is a fault with the bitcoin.conf file. It can happen if
+    the Bitcoin settings changed from when you originall installed BRE.
 
-if ! cat ~/.parmanode/parmanode.conf | grep -q btc_authentication ; then #if the setting doesn't exist 
-    announce "There is a fault with the parmanode configuration file" \
-    "No btc_authentication setting found. Aborting."
-    enter_continue
+    Please set a username and password from the Bitcoin menu, otherwise, BRE
+    won't work. Aborting for now."
     return 1
 fi
-
-btc_auth=$(cat ~/.parmanode/parmanode.conf | grep btc_authentication | cut -d = -f 2 ) #get value on right side of =
 if cat $file | grep COOKIE= ; then bre_auth=cookie ; fi
 if cat $file | grep USER= ; then bre_auth="user/pass" ; fi
 
-if [[ $btc_auth == "cookie" && $bre_auth == "cookie" ]] ; then return 0 ; fi #settings match, can proceed
-if [[ $btc_auth == "user/pass" && $bre_auth == "user/pass" ]] ; then return 0 ; fi #settings match, can proceed
+if grep -q "rpcuser" < $bc ; then
+ if [[ $bre_auth == "user/pass" ]] ; then return 0 ; fi #settings match, can proceed
+else
+ if [[ $bre_auth == "cookie" ]] ; then return 0 ; fi #settings match, can proceed
+fi
 
 # if code reaches here, changes need to be made.
 

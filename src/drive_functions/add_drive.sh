@@ -5,7 +5,7 @@ info_add_drive $@ || return 1 # safe unmount executed
 set_terminal ; echo -e "$pink
 ########################################################################################
     Please make sure the$green drive you want to bring in$pink is PHYSICALLY DISCONNECTED, 
-    before proceeding or else really bad things will happen to your computer.
+    i.e. detach the cable, before proceeding or you could get errors. 
 ########################################################################################
 $orange" ; enter_continue
 
@@ -15,8 +15,8 @@ if [[ ! $wasntmounted == true ]] ; then
 set_terminal ; echo -e "$cyan
 ########################################################################################
    Parmanode has safely unmounted your$green regular$cyan Parmanode drive by stopping 
-   the programs using it, then unmounting. PLEASE MUST PHYSICALLY DISCONNECT THE DRIVE 
-   NOW OR BAD THINGS WILL HAPPEN - NOT JOKING.
+   the programs using it, then unmounting. PLEASE PHYSICALLY DISCONNECT THE DRIVE 
+   NOW, ie detach the cable.
 ########################################################################################
 " ; enter_continue ; set_terminal
 fi

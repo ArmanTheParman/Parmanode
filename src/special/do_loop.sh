@@ -84,7 +84,8 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 fi ) &
 
 #add to run count
-rp_count
+rp_counter
+
 
 ########################################################################################
 #Intro
@@ -116,7 +117,6 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    git_dp &
 fi
    
-
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 case $patch in
 1) 
@@ -125,6 +125,8 @@ patch_2 ; patch_3 ; patch_4 ;;
 patch_3 ; patch_4 ;;
 3)
 patch_4 ;;
+4)
+true ;;
 *) 
 patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
