@@ -116,7 +116,7 @@ sudo systemctl start unbound
 fi
 
 
-sudo cat << EOF > /etc/unbound/unbound.conf.d/pi-hole.conf 
+sudo cat << EOF | sudo tee /etc/unbound/unbound.conf.d/pi-hole.conf 
 server:
     # If no logfile is specified, syslog is used
     # logfile: "/var/log/unbound/unbound.log"
