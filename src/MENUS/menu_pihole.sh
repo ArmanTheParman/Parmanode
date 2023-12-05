@@ -15,17 +15,17 @@ set_terminal ; echo -e "
                           Your PiHole is$pink $piholerunning$orange
 
 
-         (start)                Start PiHole 
+         (start)           Start PiHole 
 
-         (stop)                 Stop PiHole
+         (stop)            Stop PiHole
 
-         (pp)                   Make new password for web interface login
+         (pp)              Make new password for web interface login
 
-         (i)                    Important information
+         (i)               Important information
 
-         (ub)                   Enable Unbound (Personal upstream DNS server)
+         (ub)              Enable Unbound (Personal upstream DNS server, Linux only)
 
-         (ubx)                  Disable Unbound
+         (ubx)             Disable Unbound
 
     To access PiHole, navigate to$green $IP/admin/
 $orange
