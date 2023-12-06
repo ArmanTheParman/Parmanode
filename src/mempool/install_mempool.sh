@@ -10,7 +10,7 @@ source $bc
 if [[ $txindex != 1 ]] ; then announce "Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."
     read choice
-    if [[ $choice != yolo ]] ; return 1 ; fi
+    if [[ $choice != yolo ]] ; then return 1 ; fi
 fi
 
 if [[ $server != 1 ]] ; then announce "Sorry, server=1 needs to be in the bitcoin.conf file for Mempool to work.
