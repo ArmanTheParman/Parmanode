@@ -401,9 +401,9 @@ if grep -q "mempool-end" < $HOME/.parmanode/installed.conf ; then
 mempool_i="#                                      Mempool                                             #"
 elif grep -q "qbittorrent-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-qbittorrent_p="#                                      Mempool                                         #"
+mempool_p="#                                      Mempool                                         #"
 else
    #not installed
-qbittorrent_n="#                            (mem)         Mempool                                     #"
+mempool_n="#                            (mem)         Mempool                                     #"
 fi
 }
