@@ -28,6 +28,7 @@ set_terminal_custom 45 ; echo -e "
                                   Mempool Menu            $orange                   
 ########################################################################################
 
+
                           MEMPOOL BACKEND: $backend
 
 $running
