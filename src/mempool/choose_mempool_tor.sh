@@ -18,6 +18,18 @@ case $choice in
 n) return ;;
 esac
 clear
+
+if ! which tor 2>/dev/null ; then
+clear ; echo -e "
+########################################################################################
+    Please install Tor first. You can enable Mempool-Tor later.
+########################################################################################
+"
+enter_continue
+return 1
+fi
+
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "SOCKS5PROXY_ENABLED: \"true\""
+enable_mempool_tor
 
 }
