@@ -33,6 +33,9 @@ mempool_backend
 choose_mempool_LND
 choose_mempool_tor
 
+cd $hp/mempool/docker 
+docker-compose up &
+
 installed_conf_add "mempool-end"
 success "Mempool" "being installed"
 }
