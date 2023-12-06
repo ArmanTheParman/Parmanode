@@ -393,4 +393,18 @@ else
 qbittorrent_n="#                            (qbit)        QBittorrent                                 #"
 fi
 fi #end computer type/OS
+
+#Mempool
+unset mempool_i mempool_p mempool_n
+if grep -q "mempool-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+mempool_i="#                                      Mempool                                             #"
+elif grep -q "qbittorrent-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+qbittorrent_p="#                                      Mempool                                         #"
+else
+   #not installed
+qbittorrent_n="#                            (mem)         Mempool                                     #"
+fi
+fi #end computer type/OS
 }
