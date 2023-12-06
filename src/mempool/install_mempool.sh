@@ -15,6 +15,7 @@ installed_config_add "mempool-start"
 #set variables
 make_mempool_docker_compose
 cp /tmp/docker-compose.yml $file 
+rm /tmp/docker-compose.yml >/dev/null 2>&1
 mempool_backend
 choose_mempool_LND
 choose_mempool_tor

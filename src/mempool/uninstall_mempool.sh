@@ -17,6 +17,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-
+cd $hp/mempool/docker && docker-compose down
+cd $hp && rm -rf ./mempool/
+installed_config_remove "mempool-"
+success "Mempool" "being uninstalled"
 
 }
