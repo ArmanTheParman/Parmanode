@@ -138,9 +138,10 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-    My suggestion for the Sat symbol is the dollar sign in reverse (mirror left to
-    right) - The reverse $ looks like a 2, and the vertical line like a 1, which
-    gives us symbolism of 21.                               
+    My suggestion for the Sat symbol is the dollar sign but upside down.
+    It looks like a 2, and the vertical line like a 1, which gives us symbolism of 21.                               
+
+    Everytime someone writes that sats symbol, they are writing 2 and 1. Glorious.
 
     Bitcoin was designed to end central banking, so the reversing the $ sign is also 
     nice symbolism for the anit-dollar.
