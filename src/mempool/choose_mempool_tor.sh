@@ -29,7 +29,7 @@ enter_continue
 return 1
 fi
 
-swap_string "$file" "SOCKS5PROXY_ENABLED:" "SOCKS5PROXY_ENABLED: \"true\""
+swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"true\""
 enable_mempool_tor
 
 }
