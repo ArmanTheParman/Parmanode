@@ -72,6 +72,7 @@ stop_mempool
 ;;
 r|RESTART|restart|R)
 restart_mempool
+debug "restart done"
 ;;
 
 tor)
