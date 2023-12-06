@@ -94,6 +94,9 @@ if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
                        echo "    (qbit)       QBittorrent 
                             " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
+                       echo "    (mem)        Mempool 
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
@@ -270,6 +273,12 @@ torb|TORB|Torb)
 qbit|Qbit)
    if [[ $qbittorrentapp == 1 ]] ; then
    menu_qbittorrent
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+mem|MEM|Mem)
+   if [[ $mempoolapp == 1 ]] ; then
+   menu_mempool 
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
