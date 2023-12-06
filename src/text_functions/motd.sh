@@ -412,7 +412,7 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 if [[ $motd == 18 ]] ; then
-set_terminal_custom 55 ; echo -e "
+set_terminal_custom 52 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
