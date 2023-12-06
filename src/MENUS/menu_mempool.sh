@@ -60,6 +60,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
+
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
@@ -70,6 +71,7 @@ start_mempool
 stop|STOP|Stop)
 stop_mempool
 ;;
+
 r|RESTART|restart|R)
 restart_mempool
 debug "restart done"
