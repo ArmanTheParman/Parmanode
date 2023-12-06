@@ -1,6 +1,6 @@
 function menu_mempool {
 while true ; do 
-
+debug "in loop"
 if docker ps 2>/dev/null | grep -q mempool_web ; then
 running="              Mempool is$green Running$orange"
 else
