@@ -29,17 +29,17 @@ while true ; do
 
 set_terminal ; echo -e "
 ########################################################################################
+$cyan
+               To what would you like Mempool to connect to for its data?
+$orange
 
-    What would you like Mempool to connect to for its data?
+                    1)      Bitcoin Core
 
+                    2)      Electrs
 
-            1)      Bitcoin Core
-
-            2)      Electrs
-
-            3)      Fulcrum
-
-            4)      Manual (can put details of server on another machine)
+                    3)      Fulcrum
+    
+                    4)      Manual (can put details of server on another machine)
 
 ########################################################################################
 "
