@@ -10,6 +10,7 @@ if [[ -e /var/lib/tor/mempool-service ]] ; then
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool=true
+get_onion_address_variable "fulcrum" >/dev/null
 else
 tor_mempool=false
 tor_mempool_status="${red}disabled$orange"
@@ -43,6 +44,15 @@ $running
                   bk)            Change Bitcoin Backend     
 
                   conf)          View/Edit config (restart if changing)
+
+    Access Mempool:
+
+        http://127.0.0.1:8120
+        http://$IP:8120
+
+    Tor Access: $bright_blue    
+
+        Onion adress: $ONION_ADDR_FULCRUM:8280 $orange           
 
 ########################################################################################
 "
