@@ -374,8 +374,8 @@ $cyan
 
    True Bitcoiners, the ones that stack because they want to opt out of slavery and 
    monetary oppression, aren't planning to sell, so the price going down doesn't phase
-   them and doesn't make them want to be slaves. Wit a low enough price, and time, 
-   they will accumulate all the bitcoin. 
+   them and doesn't make them want to be slaves. With a low enough price, and with 
+   time, they will accumulate all the bitcoin. 
  
 ######################################################################################## 
 
