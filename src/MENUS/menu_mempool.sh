@@ -6,7 +6,7 @@ running="              Mempool is$green Running$orange"
 else
 running="              Mempool is$red Not Running$orange"
 fi
-
+debug "after docker check"
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status
 if [[ -e /var/lib/tor/mempool-service ]] ; then
 get_onion_address_variable mempool

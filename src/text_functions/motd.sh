@@ -398,9 +398,9 @@ $cyan
 
     Greed leads to trading, 
 
-    trading leads to shitcoins, 
+    Trading leads to shitcoins, 
 
-    shitcoins... leads to SUFFERING.
+    Shitcoins... leads to SUFFERING.
 
 ######################################################################################## 
 
