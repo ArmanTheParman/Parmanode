@@ -47,12 +47,12 @@ $running
 
     Access Mempool:
 $cyan
-      http://127.0.0.1:8120
-      http://$IP:8120
+    http://127.0.0.1:8120
+    http://$IP:8120
 $orange
     Tor Access: $bright_blue    
 
-      Onion adress: $ONION_ADDR_FULCRUM:8280 $orange           
+    Onion adress: $ONION_ADDR_FULCRUM:8280 $orange           
 
 ########################################################################################
 "
