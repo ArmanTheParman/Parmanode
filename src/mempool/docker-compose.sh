@@ -16,7 +16,7 @@ services:
     stop_grace_period: 1m
     command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
     ports:
-      - 80:8080
+      - 80:8180
   api:
     environment:
       MEMPOOL_BACKEND: "none" #or "electrum"
