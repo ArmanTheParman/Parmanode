@@ -82,7 +82,7 @@ disable_mempool_tor
 fi
 ;;
 
-bc)
+bk)
 mempool_backend
 ;;
 
