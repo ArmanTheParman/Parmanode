@@ -1,6 +1,8 @@
 function make_mempool_docker_compose {
+source $bc >/dev/null 2>&1
+file="/tmp/docker-compose.yml"
 
-cat << EOF | tee /tmp/docker-compose.yml
+cat << EOF | tee $file
 version: "3.7"
 
 services:
@@ -23,8 +25,11 @@ services:
       ELECTRUM_HOST: "host.docker.internal"
       ELECTRUM_PORT: "50005"
       ELECTRUM_TLS_ENABLED: "true"
-      CORE_RPC_USERNAME: "$rpcuser"
-      CORE_RPC_PASSWORD: "$rpcpass"
+EOF
+echo "      CORE_RPC_USERNAME: \"$rpcuser\"" | tee -a $file >/dev/null 2>&1
+echo "      CORE_RPC_PASSWORD: \"$rpcpassword\"" | tee -a $file >/dev/null 2>&1
+
+cat << EOF | tee -a $file >/dev/null 2>&1
       DATABASE_ENABLED: "true"
       DATABASE_HOST: "db"
       DATABASE_DATABASE: "mempool"
@@ -49,8 +54,12 @@ services:
       LIGHTNING_STATS_REFRESH_INTERVAL: 600
       LIGHTNING_GRAPH_REFRESH_INTERVAL: 600
       LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
-      LND_TLS_CERT_PATH: "$HOME/.lnd"
-      LND_MACAROON_PATH: "$HOME/.lnd/data/chain/bitcoin/mainnet"
+EOF
+
+echo "      LND_TLS_CERT_PATH: \"$HOME/.lnd\"" | tee -a $file >/dev/null 2>&1
+echo "      LND_MACAROON_PATH: \"$HOME/.lnd/data/chain/bitcoin/mainnet\"" | tee -a $file >/dev/null 2>&1
+
+cat << EOF | tee -a $file >/dev/null 2>&1
       LND_REST_API_URL: "https://localhost:8080"
       LND_TIMEOUT: 10000
 
@@ -73,3 +82,6 @@ services:
     stop_grace_period: 1m
     volumes:
       - ./mysql/data:/var/lib/mysql
+EOF
+
+}
