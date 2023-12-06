@@ -1,9 +1,9 @@
 function menu_mempool {
 while true ; do 
 if docker ps 2>/dev/null | grep -q mempool_web ; then
-running="                             MEMPOOL IS$green    Running$orange"
+running="                           MEMPOOL IS$green    Running$orange"
 else
-running="                             MEMPOOL IS$red    Not Running$orange"
+running="                           MEMPOOL IS$red    Not Running$orange"
 fi
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status
 if [[ -e /var/lib/tor/mempool-service ]] ; then
@@ -25,11 +25,11 @@ debug "after if backend"
 
 set_terminal_custom 45 ; echo -e "
 ########################################################################################$cyan
-                                  Mempool Menu            $orange                   
+                                    Mempool Menu            $orange                   
 ########################################################################################
 
 
-                          MEMPOOL BACKEND: $backend
+                        MEMPOOL BACKEND: $backend
 
 $running
 
