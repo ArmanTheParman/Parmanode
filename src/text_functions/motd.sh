@@ -247,7 +247,7 @@ $cyan
     Bitcoin is stoppable by worldwide tyranny or human extinction.
 
     If worldwide tyranny wins, we're fucked anyway, and you'll be poor and \"happy\"
-    wheter you buy bitcoin or not. Bitcoin is the ONLY defense against this.
+    whether you buy bitcoin or not. Bitcoin is the ONLY defense against this.
 
     If someone was invading your country, you don't surrender because \"they might
     win\", or \"winning isn't inevitable\". You defend yourself with what you have at
