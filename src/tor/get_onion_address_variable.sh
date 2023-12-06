@@ -29,6 +29,4 @@ if [[ $1 == "mempool" ]] ; then
 export ONION_ADDR_MEM="$(sudo cat /var/lib/tor/$1-service/hostname 2>/dev/null)"
 return 0
 fi
-
-
 }
