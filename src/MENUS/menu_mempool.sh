@@ -17,13 +17,23 @@ tor_mempool=false
 tor_mempool_status="${red}disabled$orange"
 fi
 
+#get backend variable
+if grep "MEMPOOL_BACKEND" | grep -q "none" ; then
+backend="${yellow}Bitcoin Core$orange"
+elif grep "MEMPOOL_BACKEND" | grep -q "electrum" ; then
+backend="${bright_blue}An Electrum or Fulcrum Server$orange"
+fi
+
 
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                   Mempool Menu            $orange                   
 ########################################################################################
 
+                       MEMPOOL BACKEND:  $backend
+
 $running
+
 
                   s)             Start
 
@@ -33,13 +43,7 @@ $running
 
                   tor)           Enable/Disable Tor.                      $tor_mempool_status
 
-                  bc)            Enable/Disable Bitcoin Core backend      $core_mempool_status 
-
-                  e)             Enable/Disable Electrs backend           $electrs_mempool_status
-
-                  f)             Enable/Disable Fulcrum backend           $fulcrum_mempool_status
-
-                  c)             Enable/Disable Custom backend            $custom_mempool_status
+                  bk)            Change Bitcoin Backend     
 
                   conf)          View/Edit config (restart if changing)
 
@@ -62,8 +66,12 @@ fi
 ;;
 
 bc)
+mempool_backend
+;;
 
-
+conf)
+nano $hp/mempool/docker/docker-compose.yml
+;;
 
 *)
 invalid

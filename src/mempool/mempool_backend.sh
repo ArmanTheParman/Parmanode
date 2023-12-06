@@ -18,6 +18,8 @@ $orange
 
                     5)      Any type of Electrum Server (another computer)
 
+                    x)      EXIT 
+
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -49,6 +51,10 @@ break
 5)
 remote_electrumserver_for_mempool
 break
+;;
+
+x)
+return 1
 ;;
 
 *) invalid ;;
