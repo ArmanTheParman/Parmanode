@@ -1,5 +1,4 @@
 function install_mempool {
-export file="$hp/mempool/docker/docker-compose.yml"
 
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
@@ -27,7 +26,7 @@ installed_config_add "mempool-start"
 
 #set variables
 make_mempool_docker_compose
-cp /tmp/docker-compose.yml $file 
+cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
 debug "/tmp/docker-compose.yml copied?"
 rm /tmp/docker-compose.yml >/dev/null 2>&1
 mempool_backend
