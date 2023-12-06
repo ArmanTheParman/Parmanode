@@ -144,6 +144,7 @@ ups) menu_use ps ;;
 upbx) menu_use pbx ;;
 upih) menu_use pih ;;
 uqbit) menu_use qbit ;;
+umem) menu_use mem ;;
 
 
 ul|UL|Ul)
