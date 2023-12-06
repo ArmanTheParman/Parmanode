@@ -1,9 +1,12 @@
+function make_mempool_docker_compose {
+
+cat << EOF | tee /tmp/docker-compose.yml
 version: "3.7"
 
 services:
   web:
     environment:
-      FRONTEND_HTTP_PORT: "8080"
+      FRONTEND_HTTP_PORT: "8180"
       BACKEND_MAINNET_HTTP_HOST: "api"
     image: mempool/frontend:latest
     user: "1000:1000"
@@ -18,7 +21,7 @@ services:
       CORE_RPC_HOST: "host.docker.internal"
       CORE_RPC_PORT: "8332"
       ELECTRUM_HOST: "host.docker.internal"
-      ELECTRUM_PORT: "50001"
+      ELECTRUM_PORT: "50005"
       ELECTRUM_TLS_ENABLED: "true"
       CORE_RPC_USERNAME: "$rpcuser"
       CORE_RPC_PASSWORD: "$rpcpass"
@@ -35,9 +38,9 @@ services:
       SECOND_CORE_RPC_TIMEOUT: ""
       SECOND_CORE_RPC_COOKIE: "false"
       SECOND_CORE_RPC_COOKIE_PATH: ""
-      SOCKS5PROXY_ENABLED: "" #for Tor - true/false
-      SOCKS5PROXY_HOST: ""
-      SOCKS5PROXY_PORT: ""
+      SOCKS5PROXY_ENABLED: "false"
+      SOCKS5PROXY_HOST: "127.0.0.1"
+      SOCKS5PROXY_PORT: "9050"
       SOCKS5PROXY_USERNAME: "" #leave blank
       SOCKS5PROXY_PASSWORD: "" #leave blank
       LIGHTNING_ENABLED: "false"
@@ -46,8 +49,8 @@ services:
       LIGHTNING_STATS_REFRESH_INTERVAL: 600
       LIGHTNING_GRAPH_REFRESH_INTERVAL: 600
       LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
-      LND_TLS_CERT_PATH: ""
-      LND_MACAROON_PATH: ""
+      LND_TLS_CERT_PATH: "$HOME/.lnd"
+      LND_MACAROON_PATH: "$HOME/.lnd/data/chain/bitcoin/mainnet"
       LND_REST_API_URL: "https://localhost:8080"
       LND_TIMEOUT: 10000
 
