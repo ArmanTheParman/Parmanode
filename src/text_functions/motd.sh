@@ -143,7 +143,7 @@ $cyan
 
     Everytime someone writes that sats symbol, they are writing 2 and 1. Glorious.
 
-    Bitcoin was designed to end central banking, so the reversing the $ sign is also 
+    Bitcoin was designed to end central banking, so flipping the $ sign is also 
     nice symbolism for the anit-dollar.
 
 ######################################################################################## 
