@@ -352,7 +352,7 @@ $cyan
     In 2023, with a hash rate of 420 million TH/s worldwide, the total amount of 
     energy to produce just 1 bitcoin was 1 trillion Joules.
 
-    Meanwhile, the total number of Joules to produce 1 trillion USE was 5 Joules,
+    Meanwhile, the total number of Joules to produce 1 trillion USD was 5 Joules,
     equivalent to charging your phone for less than 1 second.
 
     Which is more valuable to exchange your labour for?
