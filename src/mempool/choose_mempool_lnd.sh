@@ -5,9 +5,9 @@ set_terminal ; echo -e "
 
     Turn on connection to LND (does nothing if you haven't installed LND)?
 $green
-          y)      y stands for \"yes\"
+                                y)      Yes
 $red
-          n)      No
+                                n)      No
    $orange       
 ######################################################################################## 
 "
