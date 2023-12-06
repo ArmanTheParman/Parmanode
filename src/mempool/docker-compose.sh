@@ -2,7 +2,7 @@ function make_mempool_docker_compose {
 source $bc >/dev/null 2>&1
 file="/tmp/docker-compose.yml"
 
-cat << EOF | tee $file
+cat << EOF | tee $file >/dev/null 2>&1
 version: "3.7"
 
 services:
