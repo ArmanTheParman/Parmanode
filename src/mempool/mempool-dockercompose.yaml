@@ -32,6 +32,29 @@ services:
       DATABASE_USERNAME: "mempool"
       DATABASE_PASSWORD: "mempool"
       STATISTICS_ENABLED: "true"
+      SECOND_CORE_RPC_HOST: ""
+      SECOND_CORE_RPC_PORT: ""
+      SECOND_CORE_RPC_USERNAME: ""
+      SECOND_CORE_RPC_PASSWORD: ""
+      SECOND_CORE_RPC_TIMEOUT: ""
+      SECOND_CORE_RPC_COOKIE: "false"
+      SECOND_CORE_RPC_COOKIE_PATH: ""
+      SOCKS5PROXY_ENABLED: "" #for Tor - true/false
+      SOCKS5PROXY_HOST: ""
+      SOCKS5PROXY_PORT: ""
+      SOCKS5PROXY_USERNAME: "" #leave blank
+      SOCKS5PROXY_PASSWORD: "" #leave blank
+      LIGHTNING_ENABLED: "false"
+      LIGHTNING_BACKEND: "lnd"
+      LIGHTNING_TOPOLOGY_FOLDER: ""
+      LIGHTNING_STATS_REFRESH_INTERVAL: 600
+      LIGHTNING_GRAPH_REFRESH_INTERVAL: 600
+      LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
+      LND_TLS_CERT_PATH: ""
+      LND_MACAROON_PATH: ""
+      LND_REST_API_URL: "https://localhost:8080"
+      LND_TIMEOUT: 10000
+
     image: mempool/backend:latest
     user: "1000:1000"
     restart: on-failure
