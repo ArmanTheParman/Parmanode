@@ -2,10 +2,6 @@ version: "3.7"
 
 services:
   web:
-    api:
-    environment:
-      MEMPOOL_BACKEND: "electrum"
-
     environment:
       FRONTEND_HTTP_PORT: "8080"
       BACKEND_MAINNET_HTTP_HOST: "api"
