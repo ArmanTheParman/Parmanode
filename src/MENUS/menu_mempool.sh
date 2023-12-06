@@ -8,18 +8,16 @@ fi
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status
 if [[ -e /var/lib/tor/mempool-service ]] ; then
 get_onion_address_variable mempool
-debug "after goav"
 tor_mempool_status="${green}enabled$orange"
 tor_mempool=true
 else
 tor_mempool=false
 tor_mempool_status="${red}disabled$orange"
 fi
-debug "after if -e"
 #get backend variable
-if grep "MEMPOOL_BACKEND" | grep -q "none" ; then
+if grep "MEMPOOL_BACKEND" < $dp/mempool/docker/docker-compose.yml | grep -q "none" ; then
 backend="${yellow}Bitcoin Core$orange"
-elif grep "MEMPOOL_BACKEND" | grep -q "electrum" ; then
+elif grep "MEMPOOL_BACKEND" < $dp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
 backend="${bright_blue}An Electrum or Fulcrum Server$orange"
 fi
 debug "after if backend"
