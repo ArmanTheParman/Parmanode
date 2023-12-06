@@ -23,7 +23,7 @@ backend="${bright_blue}An Electrum or Fulcrum Server$orange"
 fi
 debug "after if backend"
 
-set_terminal ; echo -e "
+set_terminal_custom 45 ; echo -e "
 ########################################################################################$cyan
                                   Mempool Menu            $orange                   
 ########################################################################################
@@ -44,6 +44,7 @@ $running
                   bk)            Change Bitcoin Backend     
 
                   conf)          View/Edit config (restart if changing)
+
 
     Access Mempool:
 $cyan
