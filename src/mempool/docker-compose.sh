@@ -6,7 +6,7 @@ cat << EOF | tee $file
 version: "3.7"
 
 services:
-  web:
+  mempool_web:
     environment:
       FRONTEND_HTTP_PORT: "8180"
       BACKEND_MAINNET_HTTP_HOST: "api"

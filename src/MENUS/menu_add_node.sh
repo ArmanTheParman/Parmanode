@@ -27,6 +27,7 @@ if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
 if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
 if [[ -n $electrsdkr_n ]]      ; then echo  "$electrsdkr_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
+if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
@@ -39,6 +40,7 @@ if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
 if [[ -n $electrsdkr_i ]]      ; then echo  "$electrsdkr_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
+if [[ -n $mempool_i ]]         ; then echo  "$mempool_i"; fi
 if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
@@ -51,6 +53,7 @@ if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
 if [[ -n $electrsdkr_p ]]      ; then echo -e "$pink$electrsdkr_p$orange"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
+if [[ -n $mempool_p ]]         ; then echo  "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
@@ -149,6 +152,12 @@ m|M) back2main ;;
       fi
       ;;
 
+   mem|MEM|Mem) 
+      if [[ -n $mempool_n ]] ; then
+      install_mempool 
+      return 0
+      fi
+      ;;
     q|Q|quit|QUIT)
         exit 0
         ;;

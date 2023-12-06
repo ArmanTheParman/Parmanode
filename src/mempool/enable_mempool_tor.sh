@@ -1,4 +1,4 @@
-function enable_bre_tor {
+function enable_mempool_tor {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
@@ -35,19 +35,19 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
     fi
 
 # if there's this search string, that doesn't start with #, then...
-if sudo grep "HiddenServiceDir /var/lib/tor/bre-service/" \
+if sudo grep "HiddenServiceDir /var/lib/tor/mempool-service/" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServiceDir /var/lib/tor/bre-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServiceDir /var/lib/tor/mempool-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServicePort 3004 127.0.0.1:3002" \
+if sudo grep "HiddenServicePort 8280 127.0.0.1:8180" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 3004 127.0.0.1:3002" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 8280 127.0.0.1:8180" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 sudo systemctl restart tor
-restart_bre >/dev/null
-get_onion_address_variable "bre" >/dev/null 2>&1
+restart_mempool >/dev/null
+get_onion_address_variable "mempool" >/dev/null 2>&1
 clear
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
@@ -55,3 +55,14 @@ echo ""
 enter_continue
 }
 
+function disable_mempool_tor {
+sudo rm -rf /var/lib/tor/mempool-service >/dev/null 2>&1
+delete_line "/etc/tor/torrc" "mempool-service"
+delete_line "/etc/tor/torrc" "127.0.0.1:8180"
+sudo systemctl restart tor
+clear
+echo "    Changes have been made to torrc file"
+echo "    Tor has been restarted."
+echo ""
+enter_continue
+}
