@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 19))
+motd=$((motd % 20))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -453,6 +453,60 @@ $cyan
 
     Rand over. 
 
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 19 ]] ; then
+set_terminal_custom 60 ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+     Bitcoin is not meant to destroy banking.
+
+     The purpose of Bitcoin is to remove the control of money out of the hands of
+     rulers/CENTRAL_BANKERS. This problem has corrupted regular (retail/commercial)
+     banking - a vital service for a prosperous society.
+
+     Banking right now is a monopoly, protected by government regulation. When the 
+     power of governments decline, banking will become a FREE MARKET. anyone, but not
+     everyone, will be a banker.
+
+     Do you know who will be the bankers of the future? The Bitcoiners of TODAY (YOU).
+
+     The ones who know how to self-custody properly; they will be able to offer 
+     custodial services (as banks do now) to normies. They will also be able to 
+     connect debtors with creditors (what banks are truly needed for).
+
+     The competition to offer banking services will be fierce, and banking will become
+     cheap and of high quality. This is good for everyone.
+
+     Just like how a society with money allows specialisation with little risk to 
+     the individual, and not everyone needs to be their own dentist, baker, farmer etc
+     ... so too, they won't be their own banker.
+
+     For example, Unchained Capital or Casa can offer custodial/collaborative services
+     to anyone, well, so can I, and I do (KYC free).
+$bright_blue
+     https://armantheparman.com/parmanvault/ $orange        (link is not clickable)
+
+     Or, I teach people the skill of banking...
+$bright_blue
+     https://armantheparman.com/mentorship/  $orange        (link is not clickable)
+
+     I constantly hear people complaining about Bitcoin being too difficult to 
+     self-custody for normies, and things need to improve.
+$red
+     NO THEY DO NOT.
+$green     
+     Bitcoin is good enough NOW.
+$orange
 ######################################################################################## 
 
 Type$yellow \"Free Ross\"$orange to disable Message of the day.
