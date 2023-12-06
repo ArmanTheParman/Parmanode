@@ -18,6 +18,6 @@ n) return ;;
 esac
 clear
 
-swap_string "$file" "LIGHTNING_ENABLED:" "LIGHTNING_ENABLED: \"true\""
+swap_string "$file" "LIGHTNING_ENABLED:" "      LIGHTNING_ENABLED: \"true\""
 return 0
 }
