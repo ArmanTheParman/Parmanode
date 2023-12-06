@@ -1,5 +1,5 @@
 function mempool_backend {
-
+export file="$hp/mempool/docker/docker-compose.yml"
 while true ; do
 
 set_terminal ; echo -e "
