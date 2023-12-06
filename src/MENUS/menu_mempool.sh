@@ -55,6 +55,16 @@ m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 
+start|S|s|Start|START)
+start_mempool
+;;
+stop|STOP|Stop)
+stop_mempool
+;;
+r|RESTART|restart|R)
+restart_mempool
+;;
+
 tor)
 if [[ $mempool_tor == false ]] ; then
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "SOCKS5PROXY_ENABLED: \"true\""
