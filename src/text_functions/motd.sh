@@ -49,7 +49,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   A #Bitcoin node is the ultimate way to say$red "Fuck off".$orange
+   A Bitcoin node is the ultimate way to say$red "Fuck off".$orange
 
    \"These are my rules; you can't change them. If your payment doesn't register on 
    MY node, the invoice isn't paid.\"
@@ -311,7 +311,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   The more #bitcoin you get, the more right you're going to be when you're right.
+   The more bitcoin you get, the more right you're going to be when you're right.
 
 ######################################################################################## 
 
@@ -417,7 +417,7 @@ set_terminal_custom 55 ; echo -e "
 $cyan
                                  Message of the day $orange
 
-    A rant for people who don't know why #Bitcoin 2.0 is not possible:
+    A rant for people who don't know why Bitcoin 2.0 is not possible:
 
     The first thing to understand is that money is made up of a counting unit 
     (physical or digital), ie the "tech", and a network of people. You can't have one 
