@@ -406,5 +406,4 @@ else
    #not installed
 qbittorrent_n="#                            (mem)         Mempool                                     #"
 fi
-fi #end computer type/OS
 }
