@@ -1,18 +1,18 @@
 function uninstall_fulcrum_docker {
 if [[ $(uname) == Linux ]] ; then return 0 ; fi
-set_terminal
-while true ; do
-echo "
+set_terminal ; echo -e "
 ########################################################################################
+$cyan
+                                 Uninstall Fulcrum? 
+$orange
+    Are you sure? (y) (n)
 
-    This will uninstall Fulcrum only. (Not Docker) 
-
-########################################################################################        
+########################################################################################
 "
-choose "esq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; s|S) return 1 ;; 
-"") break ;;
-*) invalid ;; esac ; done 
+choose "x" 
+read choice
+set_terminal
+if [[ $choice == y ]] ; then true ; else return 1 ; fi
 
 #uninstall....
 please_wait
