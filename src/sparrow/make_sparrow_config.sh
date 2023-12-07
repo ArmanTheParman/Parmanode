@@ -44,9 +44,6 @@ get_onion_address_variable "fulcrum" >/dev/null
     fi
 swap_string "$HOME/.sparrow/config" "serverType" "  \"serverType\": \"ELECTRUM_SERVER\"," 
 
-# electrum server details needs to be writen immediately after "useLegacyCoreWallet"
-# the swap function finds that line, and writes two lines. The first line rewrites what exists and second line inserts the
-# needed line...
 swap_string "$HOME/.sparrow/config" "electrumServer" "  \"electrumServer\": \"tcp://$ONION_ADDR_FULCRUM:7002\","
 swap_string "$HOME/.sparrow/config" "useProxy" "   \"useProxy\": true,"
 echo "connection=FulcrumTOR" > $HOME/.parmanode/sparrow.connection
@@ -101,9 +98,6 @@ get_onion_address_variable "electrs" >/dev/null
     fi
 swap_string "$HOME/.sparrow/config" "serverType" "   \"serverType\": \"ELECTRUM_SERVER\"," 
 
-# electrum server details needs to be writen immediately after "useLegacyCoreWallet"
-# the swap function finds that line, and writes two lines. The first line rewrites what exists and second line inserts the
-# needed line...
 swap_string "$HOME/.sparrow/config" "electrumServer" "  \"electrumServer\": \"tcp://$ONION_ADDR_ELECTRS:7004\","
 swap_string "$HOME/.sparrow/config" "useProxy" "   \"useProxy\": true,"
 echo "connection=ElectrsTOR" > $HOME/.parmanode/sparrow.connection
