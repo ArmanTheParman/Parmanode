@@ -25,12 +25,12 @@
     "enumerateHwPeriod": 30,
     "hdCapture": true,
     "useZbar": true,
-    "serverType": "BITCOIN_CORE",
+    "serverType": "ELECTRUM_SERVER",
     "publicElectrumServer": "ssl://electrum.emzy.de:50002|electrum.emzy.de",
     "coreServer": "http://127.0.0.1:8332",
     "coreAuthType": "USERPASS",
-    "coreDataDir": "$HOME/.bitcoin",
-    "coreAuth": "$rpcuser:$rpcpassword",
+    "coreDataDir": "/Users/ArmanK/.bitcoin",
+    "coreAuth": "parman:hodldontsodl",
     "useLegacyCoreWallet": false,
     "electrumServer": "tcp://127.0.0.1:50005",
     "useProxy": false,
@@ -42,4 +42,4 @@
     "mempoolFullRbf": false,
     "appWidth": 1070.0,
     "appHeight": 798.0
-}
+  }%    
