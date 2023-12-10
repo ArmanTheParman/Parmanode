@@ -49,7 +49,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   A #Bitcoin node is the ultimate way to say$red "Fuck off".$orange
+   A Bitcoin node is the ultimate way to say$red "Fuck off".$orange
 
    \"These are my rules; you can't change them. If your payment doesn't register on 
    MY node, the invoice isn't paid.\"
@@ -98,9 +98,9 @@ $cyan
     Law #3 : Bitcoiners tend to create new Bitcoiners.
     Law #4 : Buying bitcoin per se is not adoption. It also needs to be bought with 
              the intent of not selling until it becomes money.
-    Law #5 : Given enough time, Bitcoiners will own virtually all the available Bitcoin
+    Law #5 : Given enough time, Bitcoiners will own virtually all the available bitcoin
     Law #6 : The lower the price is manipulated down, the faster Law 5 eventuates, 
-             leading to destruction of price suppression.
+             leading to destruction of any price suppression.
     Law #7 : The correct measure of adoption is the number and bitcoin-wealth of 
              Bitcoiners.
     Law #8 : Adoption only increases, and is independent to price.
@@ -138,11 +138,12 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-    My suggestion for the Sat symbol is the dollar sign in reverse (mirror left to
-    right) - The reverse $ looks like a 2, and the vertical line like a 1, which
-    gives us symbolism of 21.                               
+    My suggestion for the Sat symbol is the dollar sign but upside down.
+    It looks like a 2, and the vertical line like a 1, which gives us symbolism of 21.                               
 
-    Bitcoin was designed to end central banking, so the reversing the $ sign is also 
+    Everytime someone writes that sats symbol, they are writing 2 and 1. Glorious.
+
+    Bitcoin was designed to end central banking, so flipping the $ sign is also 
     nice symbolism for the anit-dollar.
 
 ######################################################################################## 
@@ -246,8 +247,8 @@ $cyan
 
     Bitcoin is stoppable by worldwide tyranny or human extinction.
 
-    If worldwide tyranny wins, we're fucked anyway, and you''ll be poor and \"happy\"
-    wheter you buy bitcoin or not. Bitcoin is the ONLY defense against this.
+    If worldwide tyranny wins, we're fucked anyway, and you'll be poor and \"happy\"
+    whether you buy bitcoin or not. Bitcoin is the ONLY defense against this.
 
     If someone was invading your country, you don't surrender because \"they might
     win\", or \"winning isn't inevitable\". You defend yourself with what you have at
@@ -311,7 +312,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   The more #bitcoin you get, the more right you're going to be when you're right.
+   The more bitcoin you get, the more right you're going to be when you're right.
 
 ######################################################################################## 
 
@@ -352,7 +353,7 @@ $cyan
     In 2023, with a hash rate of 420 million TH/s worldwide, the total amount of 
     energy to produce just 1 bitcoin was 1 trillion Joules.
 
-    Meanwhile, the total number of Joules to produce 1 trillion USE was 5 Joules,
+    Meanwhile, the total number of Joules to produce 1 trillion USD was 5 Joules,
     equivalent to charging your phone for less than 1 second.
 
     Which is more valuable to exchange your labour for?
@@ -374,8 +375,8 @@ $cyan
 
    True Bitcoiners, the ones that stack because they want to opt out of slavery and 
    monetary oppression, aren't planning to sell, so the price going down doesn't phase
-   them and doesn't make them want to be slaves. Wit a low enough price, and time, 
-   they will accumulate all the bitcoin. 
+   them and doesn't make them want to be slaves. With a low enough price, and with 
+   time, they will accumulate all the bitcoin. 
  
 ######################################################################################## 
 
@@ -398,9 +399,9 @@ $cyan
 
     Greed leads to trading, 
 
-    trading leads to shitcoins, 
+    Trading leads to shitcoins, 
 
-    shitcoins... leads to SUFFERING.
+    Shitcoins... leads to SUFFERING.
 
 ######################################################################################## 
 
@@ -412,12 +413,12 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 if [[ $motd == 18 ]] ; then
-set_terminal_custom 55 ; echo -e "
+set_terminal_custom 52 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
 
-    A rant for people who don't know why #Bitcoin 2.0 is not possible:
+    A rant for people who don't know why Bitcoin 2.0 is not possible:
 
     The first thing to understand is that money is made up of a counting unit 
     (physical or digital), ie the "tech", and a network of people. You can't have one 
@@ -463,7 +464,7 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 if [[ $motd == 19 ]] ; then
-set_terminal_custom 60 ; echo -e "
+set_terminal_custom 56 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
