@@ -57,7 +57,7 @@ sudo systemctl restart fulcrum.service
 
 get_onion_address_variable "fulcrum" >/dev/null 2>&1
 parmanode_conf_add "fulcrum_tor=true"
-
+clear
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
 echo ""

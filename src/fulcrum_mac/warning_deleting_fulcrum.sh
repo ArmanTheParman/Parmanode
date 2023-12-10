@@ -1,6 +1,6 @@
 function warning_deleting_fulcrum {
 if [[ $debug == 1 ]] ; then return 0 ; fi
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     WARNING: If you have a previous Fulcrum Docker$cyan container$orange, this installation will 
