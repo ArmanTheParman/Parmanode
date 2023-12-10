@@ -1,9 +1,10 @@
 # Basic code, the beginnings of a Bitcoin recovery tool and maybe a full blown wallet one day.
 # Code currently no accessible from Parmonde menus.
 
-import os, binascii, hashlib, unicodedata, hmac, ecdsa, struct, base58
+import binascii, hashlib, unicodedata, hmac, ecdsa, struct, base58
 from ecdsa.curves import SECP256k1
-from ecdsa.ecdsa import int_to_string, string_to_int
+from ecdsa.ecdsa import int_to_string
+#from ecdsa.ecdsa import string_to_int
 
 phrase = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" 
 
