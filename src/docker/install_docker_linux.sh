@@ -18,7 +18,7 @@ $cyan
     Install Docker?
 
 $green                y $orange   or $red   n
-                
+$orange                
 ########################################################################################
 "
 choose "xpmq"
