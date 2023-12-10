@@ -18,26 +18,6 @@ bin_seed = hashlib.pbkdf2_hmac("sha512", mnemonic, passphrase, 2048)
 print (bin_seed)
 print(binascii.hexlify(bin_seed[:64]))
 hex_seed = binascii.hexlify(bin_seed[:64])
-# Basic code, the beginnings of a Bitcoin recovery tool and maybe a full blown wallet one day.
-# Code currently no accessible from Parmonde menus.
-
-import os, binascii, hashlib, unicodedata, hmac, ecdsa, struct, base58
-from ecdsa.curves import SECP256k1
-from ecdsa.ecdsa import int_to_string, string_to_int
-
-phrase = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" 
-
-normalized_mnemonic = unicodedata.normalize("NFKD", phrase)
-password = "hello"
-normalized_passphrase = unicodedata.normalize("NFKD", password)
-passphrase = "mnemonic" + normalized_passphrase
-mnemonic = normalized_mnemonic.encode("utf-8")
-passphrase = passphrase.encode("utf-8")
-
-bin_seed = hashlib.pbkdf2_hmac("sha512", mnemonic, passphrase, 2048)
-print (bin_seed)
-print(binascii.hexlify(bin_seed[:64]))
-hex_seed = binascii.hexlify(bin_seed[:64])
 
 #hex to binary for the seed
 seed = binascii.unhexlify(hex_seed)
