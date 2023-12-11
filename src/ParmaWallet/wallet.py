@@ -6,18 +6,29 @@ from ecdsa.curves import SECP256k1
 from ecdsa.ecdsa import int_to_string
 #from ecdsa.ecdsa import string_to_int
 
-phrase = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" 
 
-normalized_mnemonic = unicodedata.normalize("NFKD", phrase)
-password = "hello"
-normalized_passphrase = unicodedata.normalize("NFKD", password)
+# user_passphase --> normalised_passphrase --> passphrase (string) --> passphrase (byte object)
+# mnemonic --> normalised_mnemonic --> mnemonic (byte opbject)
+
+#Start with a BIP39 Seed phrase
+mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" 
+normalized_mnemonic = unicodedata.normalize("NFKD", mnemonic)
+
+#Add an optional passphrase
+user_passphrase = "hello"
+normalized_passphrase = unicodedata.normalize("NFKD", user_passphrase)
+
+#if no passphrase, the passphrase will just be "mnemonic"
 passphrase = "mnemonic" + normalized_passphrase
 mnemonic = normalized_mnemonic.encode("utf-8")
+
+#passphrase is now a byte object, printing --> b'string'
 passphrase = passphrase.encode("utf-8")
 
-bin_seed = hashlib.pbkdf2_hmac("sha512", mnemonic, passphrase, 2048)
-print (bin_seed)
-print(binascii.hexlify(bin_seed[:64]))
+#make a BIP39 seed (512 bits, 64 hex characters)
+bin_seed = hashlib.pbkdf2_hmac("sha512", mnemonic, passphrase, 2048)  # makes a byte object
+print ("The bin_seed: " , bin_seed)
+print("The bin_seed in hex: " , binascii.hexlify(bin_seed[:64]))
 hex_seed = binascii.hexlify(bin_seed[:64])
 
 #hex to binary for the seed
