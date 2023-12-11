@@ -3,7 +3,7 @@
 
 import binascii, hashlib, unicodedata, hmac, ecdsa, struct, base58
 from PWfunctions import extract_chain_code, int_to_bytes, hmac_sha512, derive_hardened_child_key, serialize_extended_key, base58check_encode, \
-private_to_public, public_to_address
+private_to_public, public_to_address, extract_private_key_from_xprv
 
 from ecdsa.curves import SECP256k1
 from ecdsa.ecdsa import int_to_string
@@ -120,13 +120,12 @@ print("Extended Private Key (xprv):", xprv)
 
 ########################################################################################################################
 
-# child_private_key_bytes = xprv
+child_private_key_bytes = extract_private_key_from_xprv(xprv)
+# Convert private key to public key
+child_public_key = private_to_public(child_private_key_bytes)
 
-# # Convert private key to public key
-# child_public_key = private_to_public(child_private_key_bytes)
+# Convert public key to Bitcoin address
+child_address = public_to_address(child_public_key)
 
-# # Convert public key to Bitcoin address
-# child_address = public_to_address(child_public_key)
-
-# print("Child Public Key (hex):", child_public_key.hex())
-# print("Child Bitcoin Address:", child_address.decode())
+print("Child Public Key (hex):", child_public_key.hex())
+print("Child Bitcoin Address:", child_address.decode())

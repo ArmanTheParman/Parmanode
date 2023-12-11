@@ -68,3 +68,14 @@ def public_to_address(public_key, version_byte=b'\x00'):
     
     # Perform Base58Check encoding
     return base58.b58encode(payload + checksum)
+
+    
+########################################################################################################################
+
+def extract_private_key_from_xprv(xprv):
+    # Decode the xprv from Base58Check encoding
+    decoded_xprv = base58.b58decode_check(xprv)
+
+    # Extract the raw private key (skip the first 46 bytes: version (4) + depth (1) + parent fingerprint (4) + child number (4) + chain code (32) + padding (1))
+    raw_private_key = decoded_xprv[46:]
+    return raw_private_key
