@@ -1,6 +1,6 @@
-from ParmaWallet.classes.point import * 
-from ParmaWallet.classes.FieldElement import * 
-from ParmaWallet.classes.S256 import *
+from classes.point import * 
+from classes.FieldElement import * 
+from classes.S256 import *
 import copy, hashlib
 
 
