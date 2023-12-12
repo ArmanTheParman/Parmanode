@@ -1,8 +1,8 @@
-from ParmaWallet.classes.FieldElement import *
-from ParmaWallet.functions.old_functions import *
-from point import *
-from S256 import *
-import hashlib
+from classes.FieldElement import *
+from functions.old_functions import *
+#from point import *
+#from S256 import *
+#import hashlib
 from random import randint
 import hmac
 

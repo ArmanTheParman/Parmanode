@@ -1,6 +1,6 @@
-from FieldElement import * 
-from point import *
-#from S256 import * #I don't think I need this
+from classes.FieldElement import * 
+from classes.point import *
+from classes.S256 import * #I don't think I need this
 
 #This stays here as classes below are dependent.
 p=(2**256)-(2**32)-977

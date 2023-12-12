@@ -1,10 +1,10 @@
 import sys, copy
-from ParmaWallet.classes.FieldElement import *
-from ParmaWallet.classes.point import * 
-from ParmaWallet.functions.old_functions import *
-from ParmaWallet.classes.S256 import * 
-from ParmaWallet.functions.PW_signing import *
-from ParmaWallet.classes.privatekey import *
+from classes.FieldElement import *
+from classes.point import * 
+from functions.old_functions import *
+from classes.S256 import * 
+from functions.PW_signing import *
+from classes.privatekey import *
 
 
 Px=0x887387e452b8eacc4acfde10d9aaf7f6d9a0f975aabb10d006e4da568744d06c

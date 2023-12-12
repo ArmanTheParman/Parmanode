@@ -1,7 +1,7 @@
 import sys, copy
-from ParmaWallet.classes.FieldElement import FieldElement
-from ParmaWallet.classes.point import Point
-from ParmaWallet.functions.old_functions import Print_point, Find_order
+from classes.FieldElement import * 
+from classes.point import * 
+from functions.old_functions import *
 prime=223
 x=15
 y=86
