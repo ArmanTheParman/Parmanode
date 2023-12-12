@@ -1,5 +1,5 @@
 from ParmaWallet.classes import S256, FieldElement, point
-from ParmaWallet.functions import PW_functions
+from ParmaWallet.functions import old_functions
 import hashlib
 import hmac
 

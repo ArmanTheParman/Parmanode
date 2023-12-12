@@ -1,7 +1,7 @@
 import sys, copy
 from ParmaWallet.classes.FieldElement import *
 from ParmaWallet.classes.point import * 
-from ParmaWallet.functions.PW_functions import *
+from ParmaWallet.functions.old_functions import *
 from ParmaWallet.classes.S256 import * 
 from ParmaWallet.functions.PW_signing import *
 from ParmaWallet.classes.privatekey import *

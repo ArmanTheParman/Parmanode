@@ -1,9 +1,10 @@
 from ParmaWallet.classes.FieldElement import *
-from ParmaWallet.functions.PW_functions import *
-from ParmaWallet.classes.point import *
-from ParmaWallet.classes.S256 import *
+from ParmaWallet.functions.old_functions import *
+from point import *
+from S256 import *
 import hashlib
 from random import randint
+import hmac
 
 class PrivateKey:
     
@@ -15,7 +16,7 @@ class PrivateKey:
             return '{:x}'.format(self.secret).zfill(64)
 
     def sign(self, z):
-        k = randint(0,N)
+        k = randint(0,N)   #NEED TO CHANGE THIS
         r = (k*G).x.num
         k_inv = pow(k, N-2, N)
         s = (z + r*self.secret)*k_inv % N
@@ -25,7 +26,7 @@ class PrivateKey:
 
     def deterministic_k(self, z):
         k = b'\x00' * 32
-        v = b'\x01' *32
+        v = b'\x01' * 32
         if z > N:
             z -= N
         z_bytes = z.to_bytes(32, 'big')
@@ -36,7 +37,7 @@ class PrivateKey:
         k = hmac.new(k, v + b'\x01' + secret_bytes + z_bytes, s256).digest()
         v = hmac.new(k, v, s256).digest() 
 
-        while true:
+        while True:
             v = hmac.new(k, v, s256).digest() 
             candidate = int.from_bytes(v, 'big')
             if candidate >=1 and candidate < N:
