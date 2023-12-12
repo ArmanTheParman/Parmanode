@@ -85,6 +85,7 @@ class S256Point(Point):
                     + self.y.num.to_bytes(32, 'big')).hex()
         
         if compressed == "compressed":
+            #check if y is odd or even, has to be one or the other; this compresses the data.
             if self.x.num % 2 == 1 and format=="hex":  
                 return (b'\x03' + self.x.num.to_bytes(32, 'big')).hex()
             if self.x.num % 2 == 1 and format=="bytes":  
@@ -94,14 +95,17 @@ class S256Point(Point):
             if self.x.num % 2 == 0 and format=="bytes":  
                 return b'\x02' + self.x.num.to_bytes(32, 'big')
 
-    @classmethod
+    @classmethod #methods can be used without creating an object, or alternative methods to __init__
     def parse(self, sec_bytes):
         #returns Point object
         
-        if sec_bytes[0] == 0b00000100: #(4)
+        #take an uncompressed SEC byte object
+        if sec_bytes[0] == 0b00000100: # if first byte = 4, then uncompressed input
             x=int.from_bytes(sec_bytes[1:33], 'big')
             y=int.from_bytes(sec_bytes[33:65], 'big')
             return S256Point(x,y)
+       
+        #if compressed, code continues...
         
         x = S256Field(int.from_bytes(sec_bytes[1:], 'big'))
 
@@ -110,14 +114,14 @@ class S256Point(Point):
         y=right.sqrt() #this may return an odd or even number, both valid for the equation, but
                         #we need the odd one only.
         print(type(y))
-        if sec_bytes[0] == 3: #if y is odd 
-            if y.num % 2 == 0:
+        if sec_bytes[0] == 3: #if compressed y is odd 
+            if y.num % 2 == 0:    # y was created by sqrt, it could be odd or even and may need to be corrected for correct parsing.
                 new_y=S256Field(p-y.num)
                 return S256Point(x, new_y)
             else:
                 return S256Point(x,y)
-        else:
-            if y.num % 2 == 1:
+        else: # if compressed y is even
+            if y.num % 2 == 1: #it's odd so make it even
                 new_y=S256Field(p-y.num)
                 return S256Point(x, new_y)
             else:

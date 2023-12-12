@@ -1,4 +1,5 @@
 import hashlib
+import functions.PW_Base58 import *
 
 
 #usage - pass a byte object, encode the string to do so
