@@ -1,6 +1,9 @@
 from classes.FieldElement import * 
 from classes.point import *
 from classes.S256 import * #I don't think I need this
+from functions.PW_functions import *
+from functions.PW_Base58 import *
+from functions.PW_cryptofunctions import *
 
 #This stays here as classes below are dependent.
 p=(2**256)-(2**32)-977
@@ -94,6 +97,17 @@ class S256Point(Point):
                 return (b'\x02' + self.x.num.to_bytes(32, 'big')).hex()
             if self.x.num % 2 == 0 and format=="bytes":  
                 return b'\x02' + self.x.num.to_bytes(32, 'big')
+
+    def hash160(self, compressed="compressed"):
+        return hash160(self.sec(compressed))
+
+    def address(self, compressed="compressed", testnet=False):
+        h160 = self.hash160(compressed)
+        if testnet:
+            prefix = b'\x6f'
+        else:
+            prefix = b'\x00'
+        return base58check_encode(prefix + h160)
 
     @classmethod #methods can be used without creating an object, or alternative methods to __init__
     def parse(self, sec_bytes):
