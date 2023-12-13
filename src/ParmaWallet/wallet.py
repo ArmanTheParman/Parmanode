@@ -36,13 +36,14 @@ print ("The bin_seed: " , bin_seed)
 print("The bin_seed in hex: " , binascii.hexlify(bin_seed[:64]))
 hex_seed = binascii.hexlify(bin_seed[:64])
 
-#hex to binary for the BIP39 seed
+#hex to binary for the BIP39 keys
 seed = binascii.unhexlify(hex_seed)   #byte object
 
 #make I
 I = hmac.new(b"Bitcoin seed", seed, hashlib.sha512).digest()
 #left and right parts
 Il, Ir = I[:32], I[32:]
+
 #serialisation
 
 xpriv = binascii.unhexlify("0488ADE4") # codes for "xprv" string
