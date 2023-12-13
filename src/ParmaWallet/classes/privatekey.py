@@ -1,5 +1,6 @@
 from classes.FieldElement import *
 from functions.old_functions import *
+from functions.PW_Base58 import *
 #from point import *
 #from S256 import *
 #import hashlib
@@ -10,7 +11,7 @@ class PrivateKey:
     
     def __init__(self, secret):
         self.secret=int(secret)
-        self.point=secret*G
+        self.point=secret*G #the pubkey
 
     def hex(self):
             return '{:x}'.format(self.secret).zfill(64)
@@ -44,5 +45,16 @@ class PrivateKey:
                 return candidate
             k = hmac.new(k, v + b'\x00', s256).digest()
             v = hmac.new(k, v, s256).digest()
+    def wif(self, compressed="compressed", testnet=False):
+        secret_bytes = self.secret.to_bytes(32, 'big')
+        if testnet:
+            prefix = b'\xef'
+        else:
+            prefix = b'\x80'
+        if compressed=="compressed":
+            suffix = b'\x01'
+        else:
+            suffix = b''
+        return base58check_encode(prefix + secret_bytes + suffix)
             
         

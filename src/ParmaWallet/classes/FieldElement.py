@@ -11,7 +11,7 @@ class FieldElement:
     #String to print about self
 
     def __repr__(self):
-        return 'FieldElement_p{}(n{})'.format(self.prime, self.num)
+        return 'FieldElement_prime:{}(num:{})'.format(self.prime, self.num)
     
     #Overloaded operators
 

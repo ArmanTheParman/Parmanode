@@ -38,13 +38,13 @@ def derive_hardened_child_key(parent_priv_key, parent_chain_code, index):
 
 ########################################################################################################################
 
-def base58check_encode(payload):
+def base58check_encode2(payload):
     checksum = hashlib.sha256(hashlib.sha256(payload).digest()).digest()[:4]
     return base58.b58encode(payload + checksum)
 
 def serialize_extended_key(version, depth, parent_fingerprint, child_number, chain_code, private_key):
     extended_key = (version + depth + parent_fingerprint + child_number + chain_code + b'\x00' + private_key)
-    return base58check_encode(extended_key)
+    return base58check_encode2(extended_key)
 
 ########################################################################################################################
 
