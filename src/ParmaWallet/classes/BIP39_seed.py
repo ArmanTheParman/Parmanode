@@ -22,7 +22,7 @@ class BIP39seed:
         self.hex_seed = binascii.hexlify(self.byte_seed[:64])
         self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
 
-        #Now make the priv and pub keys...
+        #Now make the priv and pub keys (BIP32 starts here)...
         #make I
 
         I = hmac.new(b"Bitcoin seed", self.byte_seed, hashlib.sha512).digest()
