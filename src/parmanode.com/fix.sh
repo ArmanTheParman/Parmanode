@@ -7,5 +7,6 @@ return 0
 
 # start here...
 
+#!/bin/bash
 cd ~/parman_programs/parmanode
 git pull
