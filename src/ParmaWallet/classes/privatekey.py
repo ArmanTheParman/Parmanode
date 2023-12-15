@@ -10,8 +10,14 @@ import hmac
 class PrivateKey:
     
     def __init__(self, secret):
-        self.secret=int(secret)
+        
+        if isinstance(secret, int):
+            self.secret=secret
+        else:
+            self.secret=int(secret)
+
         self.point=secret*G #the pubkey
+        self.secret_bytes = self.secret.to_bytes(32, 'big')
 
     def hex(self):
             return '{:x}'.format(self.secret).zfill(64)
@@ -25,17 +31,17 @@ class PrivateKey:
             s= N - s
         return Signature(r, s)
 
-    def deterministic_k(self, z):
+    #important to generate a properly random k. This is determanistic also.
+    def deterministic_k(self, z): 
         k = b'\x00' * 32
         v = b'\x01' * 32
         if z > N:
             z -= N
         z_bytes = z.to_bytes(32, 'big')
-        secret_bytes = self.secret.to_bytes(32, 'big')
         s256 = hashlib.sha256
-        k = hmac.new(k, v + b'\x00' + secret_bytes + z_bytes, s256).digest()
+        k = hmac.new(k, v + b'\x00' + self.secret_bytes + z_bytes, s256).digest()
         v = hmac.new(k, v, s256).digest() 
-        k = hmac.new(k, v + b'\x01' + secret_bytes + z_bytes, s256).digest()
+        k = hmac.new(k, v + b'\x01' + self.secret_bytes + z_bytes, s256).digest()
         v = hmac.new(k, v, s256).digest() 
 
         while True:
@@ -45,8 +51,8 @@ class PrivateKey:
                 return candidate
             k = hmac.new(k, v + b'\x00', s256).digest()
             v = hmac.new(k, v, s256).digest()
+
     def wif(self, compressed="compressed", testnet=False):
-        secret_bytes = self.secret.to_bytes(32, 'big')
         if testnet:
             prefix = b'\xef'
         else:
@@ -55,6 +61,6 @@ class PrivateKey:
             suffix = b'\x01'
         else:
             suffix = b''
-        return base58check_encode(prefix + secret_bytes + suffix)
+        return base58check_encode(prefix + self.secret_bytes + suffix)
             
         
