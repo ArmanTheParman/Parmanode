@@ -9,6 +9,7 @@ from functions.PW_signing import *
 from functions.PW_Base58 import *
 from classes.privatekey import *
 from classes.S256 import * 
+from classes.S256 import N
 #from ecdsa.ecdsa import string_to_int
 
 
@@ -40,18 +41,27 @@ hex_seed = binascii.hexlify(bin_seed[:64])
 seed = binascii.unhexlify(hex_seed)   #byte object
 
 #make I
-I = hmac.new(b"Bitcoin seed", seed, hashlib.sha512).digest()
+I = hmac.new(b"Bitcoin seed", seed, hashlib.sha512).digest() #key=b"Bitcoin seed" data=seed
 #left and right parts
-Il, Ir = I[:32], I[32:]
+Il, Ir = I[:32], I[32:] #Il=master secret key, Ir=master chain code. [ 32 byte object ]
+
+if Il == 0 or ir > N:
+    raise ValueError("Key is invalid. It is not possible to make a key with this seed. \n" +\
+                      "This is actually incredible, keep this seed; 1 in 2 ^127 chance of finding it.")
 
 #serialisation
+# 1 byte, version prefix; 4 bytes for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
+# then 32 bytes for chaincode (yes it's on the "left"); 33 bytes for compressed pubkey, or if private
+# key, then 1 zero byte and then 32 bytes private key. = TOTAL 78 bytes
 
-xpriv = binascii.unhexlify("0488ADE4") # codes for "xprv" string
-xpub = binascii.unhexlify("0488B21E") # codes for "xpub" string
+xpriv = binascii.unhexlify("0488ADE4") # codes for "xprv" string (version prefix)
+xpub = binascii.unhexlify("0488B21E") # codes for "xpub" string (version prefix)
 depth = b"\x00" #the derivation depth is coded using 1 byte
 fp = b"\0\0\0\0"     # 4 bytes for the fingerprint of the parent's key, but zero if this is the master key
-index = 0
-child = struct.pack(">L", index)
+                     # hash 33 byte compressed pubkey, then ripemed160 hash, then take first 4 bytes.
+
+index = 0            # hardened keys start at 2^31, up to 2^32
+child = struct.pack(">L", index)   #use to_bytes instead later.
 chain = Ir
 secret = Il
 
