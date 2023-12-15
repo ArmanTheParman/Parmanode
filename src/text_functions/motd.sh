@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 21))
+motd=$((motd % 22))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -529,6 +529,32 @@ $cyan
     Why save in the the money others print for free?
 
     HAVE YOU NO DIGNITY??
+
+######################################################################################## 
+
+Type$yellow \"Free Ross\"$orange to disable Message of the day.
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 21 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   Why are ALL shitcoins scams?
+
+        1. Do you consider fiat money to be a scam?
+
+        If no, end of conversation, have fun staying poor.
+
+        2. Specifically what part of fiat do you consider makes it a scam? Not 
+        something undesirable, but specifically a SCAM.
+
+        3. Now look at your favourite shitcoin.
 
 ######################################################################################## 
 
