@@ -19,6 +19,9 @@ class PrivateKey:
         self.point=secret*G #the pubkey
         self.secret_bytes = self.secret.to_bytes(32, 'big')
 
+    def __repr__(self):
+        return 'Secret number of Private Key object is: {}'.format(self.secret)
+
     def hex(self):
             return '{:x}'.format(self.secret).zfill(64)
 
