@@ -7,17 +7,19 @@ from functions.PW_Base58 import *
 from random import randint
 import hmac
 
+
+# Private keys have scalar numbers, and they should be modulo N, not p.
 class PrivateKey:
     
     def __init__(self, secret):
         
         if isinstance(secret, int):
-            self.secret=secret
+            self.secret=secret % N
         else:
-            self.secret=int(secret)
+            self.secret=int(secret % N, 'big')
 
-        self.point=secret*G #the pubkey
-        self.secret_bytes = self.secret.to_bytes(32, 'big')
+        self.point = self.secret * G #the pubkey
+        self.secret_bytes = self.secret.to_bytes(32, 'big') #32 bytes should be enough because it can hold anything mod N
 
     def __repr__(self):
         return 'Secret number of Private Key object is: {}'.format(self.secret)
