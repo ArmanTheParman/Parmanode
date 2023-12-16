@@ -143,4 +143,47 @@ class BIP39seed:
         print("Child xpub is: ", self.child_xpub)
         
     
+    def make_d2_child(self):
+        #m/0h/1
+        d2_depth = 2
+        d2_index = 1
+        d2_hardened = False
+        while True:
+            I_d2 = hmac.new(self.child_chain_code, self.child_private_key_33b + int.to_bytes(d2_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
+            Il_d2, self.d2_chain_code = I_d2[:32], I_d2[32:]
+            d2_private_key = (int.from_bytes(Il_d2, 'big') + int.from_bytes(self.child_private_key_33b[1:], 'big')) % N  #arithmatic, not concatenation.
+            self.d2_private_key = PrivateKey(d2_private_key)
+
+            self.d2_private_key_33b = b'\0' + self.d2_private_key.secret_bytes
+            self.d2_public_key = self.d2_private_key.point.sec()
+            if int.from_bytes(Il_d2, 'big') > N or self.d2_private_key.secret == 0 :
+                print("Rare key, incrementing")
+                d2_index += 1 
+            else:
+                break
+
+        #Serialisation 
+        d2_depth = int.to_bytes(d2_depth, 1, 'big')
+        d2_index = int.to_bytes(d2_index, 4, 'big')
+
+        fp_from_parent = hash160(self.child_public_key)[:4]
+        raw_xprv = xprv_prefix + d2_depth + fp_from_parent + d2_index + self.d2_chain_code + self.d2_private_key_33b
+        raw_xpub = xpub_prefix + d2_depth + fp_from_parent + d2_index + self.d2_chain_code + self.d2_public_key
+
+        hashed_xprv = hashlib.sha256(raw_xprv).digest()
+        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+
+        hashed_xpub = hashlib.sha256(raw_xpub).digest()
+        hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
+
+        # Adding checksum to the end
+        raw_xprv += hashed_xprv[:4]
+        raw_xpub += hashed_xpub[:4]
+
+        # Convert bytes to base58 text
+        self.d2_xprv=PW_Base58.encode_base58(raw_xprv)
+        self.d2_xpub=PW_Base58.encode_base58(raw_xpub)
+
+        print("D2 xprv is: ", self.d2_xprv)
+        print("D2 xpub is: ", self.d2_xpub)
         

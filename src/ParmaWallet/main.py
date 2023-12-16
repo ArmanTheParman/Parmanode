@@ -8,3 +8,4 @@ import hmac, hashlib, ecdsa, os, unicodedata, binascii
 a = BIP39seed()
 # print(a)
 a.make_child_private_key()
+a.make_d2_child()
