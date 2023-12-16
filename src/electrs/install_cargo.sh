@@ -1,7 +1,7 @@
 function install_cargo {
 
-announce "You may soon see a prompt to install Cargo. Choose \"1\" to continue" \
-"the installation"
+announce "You may soon see a prompt to install Cargo. At that time, choose \"1\"" \
+"to continue the installation"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs/ | sh 
 source $HOME/.cargo/env #or restart shell
