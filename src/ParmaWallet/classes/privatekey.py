@@ -15,8 +15,8 @@ class PrivateKey:
         
         if isinstance(secret, int):
             self.secret=secret % N
-        else:
-            self.secret=int(secret % N, 'big')
+        else: #expecting bytes from an integer
+            self.secret=int.from_bytes(secret, 'big') % N
 
         self.point = self.secret * G #the pubkey
         self.secret_bytes = self.secret.to_bytes(32, 'big') #32 bytes should be enough because it can hold anything mod N
