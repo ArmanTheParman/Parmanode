@@ -5,6 +5,7 @@ from classes import PrivateKey
 from variables import * 
 from classes import N
 import base58
+from ecdsa import SECP256k1
 
 class BIP39seed:
     def __init__(self): 
@@ -29,16 +30,15 @@ class BIP39seed:
         # self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
        
         #override self.byte_seed for testing... 
-        self.byte_seed1 = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
+        self.byte_seed = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
         self.byte_seed2 = int.to_bytes(0xfffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542, 64, 'big')
         self.byte_seed3 = int.to_bytes(0x4b381541583be4423346c643850da4b320e46a87ae3d2a4e6da11eba819cd4acba45d239319ac14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be, 64, 'big')
 
         # CRUCIAL THAT THE CORRECT BYTE SIZE IS USED TO TAKE THE INTEGER.
         # From BIP32: Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
 
-        self.byte_seed = int.to_bytes(0x3ddd5602285899a946114506157c7997e5444528f3003f6134712147db19b678, 32, 'big')
+        self.byte_seed4 = int.to_bytes(0x3ddd5602285899a946114506157c7997e5444528f3003f6134712147db19b678, 32, 'big')
        
-        # print (self.byte_seed1, "\n", self.byte_seed2, "\n", self.byte_seed3, "\n", self.byte_seed ) 
         
         #Now make the priv and pub keys (BIP32 starts here)...
         #make I
@@ -48,19 +48,17 @@ class BIP39seed:
         Il, Ir = self.I[:32], self.I[32:] #Il=master secret key, Ir=master chain code. [ 32 byte object ]
         # x=binascii.hexlify(Ir)
         Il_int=int.from_bytes(Il, 'big')
-        print("Master secret key is: ", Il_int)
         if Il_int == 0 or Il_int > N:
             raise ValueError("Key is invalid. It is not possible to make a key with this seed. \n" +\
                             "This is actually incredible, keep this seed; 1 in 2 ^127 chance of finding it.") 
         
-        print ("xxxxx")
-        print (int.from_bytes(Il, 'big'))
         self.master_private_key = PrivateKey(Il_int)
         self.master_chain_code = Ir
-        self.master_public_key = ((self.master_private_key.point).sec())
+        self.master_public_key_full = (self.master_private_key.point)
+        self.master_public_key = (self.master_private_key.point.sec())
         self.master_priv_key_33b = b'\0' + Il
-        print("Master chain code is: ", int.from_bytes(self.master_chain_code, 'big'))
-                            
+
+
         #Extended Key Serialisation (no checksum yet)
         # 1 byte, version prefix; 4 bytes for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
         # then 32 bytes for chaincode (yes it's on the "left"); 33 bytes for compressed pubkey, or if private
@@ -69,9 +67,6 @@ class BIP39seed:
         self.depth = depth #from variables, but probably unecessary, it's just 4 bytes of zero
         raw_xprv = xprv_prefix + self.depth + fp + child + self.master_chain_code + self.master_priv_key_33b
         raw_xpub = xpub_prefix + self.depth + fp + child + self.master_chain_code + self.master_public_key
-        
-        print("raw xprv is: "  , encode_base58(raw_xprv))
-        # print("raw xpub is : " , encode_base58(raw_xpub))
 
         # Add checksum...
         # Double hash the raw key, and add the last 4 bytes of the result the raw key.
@@ -86,7 +81,6 @@ class BIP39seed:
         raw_xpub += hashed_xpub[:4]
 
         # Convert bytes to base58 text
-        print("before base58 xprv, after double hashing and checksum added", raw_xprv)
         self.xprv=PW_Base58.encode_base58(raw_xprv)
         self.xpub=PW_Base58.encode_base58(raw_xpub)
         # self.xprv=base58.b58encode(raw_xprv)
@@ -108,7 +102,6 @@ class BIP39seed:
             i = 2 ** 31 + account
         else:
             i = account
-        print("i is" , i)
         while True:
             I2 = hmac.new(self.master_chain_code, self.master_priv_key_33b + int.to_bytes(i , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
             Il2, self.child_chain_code = I2[:32], I2[32:]
@@ -116,7 +109,7 @@ class BIP39seed:
             self.child_private_key = PrivateKey(child_private_key)
             self.child_private_key_33b = b'\0' + self.child_private_key.secret_bytes
             self.child_public_key = self.child_private_key.point.sec()
-            if int.from_bytes(Il2, 'big') > N or self.child_private_key == 0 :
+            if int.from_bytes(Il2, 'big') > N or self.child_private_key.secret == 0 :
                 print("Rare key, incrementing")
                 i += 1 
             else:
@@ -124,10 +117,11 @@ class BIP39seed:
        
         #Serialisation 
         depth_child = int.to_bytes(int.from_bytes(self.depth , 'big') + 1, 1, 'big')
-        print("depth child is", depth_child)
-        index_child = int.to_bytes(account, 4, 'big')
+        print(depth_child)
+        index_child = int.to_bytes(i, 4, 'big')
 
-        fp_from_parent = hash160(hashlib.sha256(self.master_public_key).digest())[:4]
+        fp_from_parent = hash160(self.master_public_key)[:4]
+        print(fp_from_parent)
         raw_xprv = xprv_prefix + depth_child + fp_from_parent + index_child + self.child_chain_code + self.child_private_key_33b
         raw_xpub = xpub_prefix + depth_child + fp_from_parent + index_child + self.child_chain_code + self.child_public_key
 

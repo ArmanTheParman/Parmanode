@@ -89,13 +89,13 @@ class S256Point(Point):
         
         if compressed == "compressed":
             #check if y is odd or even, has to be one or the other; this compresses the data.
-            if self.x.num % 2 == 1 and format=="hex":  
+            if self.y.num % 2 == 1 and format=="hex":  
                 return (b'\x03' + self.x.num.to_bytes(32, 'big')).hex()
-            if self.x.num % 2 == 1 and format=="bytes":  
+            if self.y.num % 2 == 1 and format=="bytes":  
                 return b'\x03' + self.x.num.to_bytes(32, 'big')
-            if self.x.num % 2 == 0 and format=="hex":  
+            if self.y.num % 2 == 0 and format=="hex":  
                 return (b'\x02' + self.x.num.to_bytes(32, 'big')).hex()
-            if self.x.num % 2 == 0 and format=="bytes":  
+            if self.y.num % 2 == 0 and format=="bytes":  
                 return b'\x02' + self.x.num.to_bytes(32, 'big')
 
     def hash160(self, compressed="compressed"):
