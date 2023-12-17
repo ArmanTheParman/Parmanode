@@ -173,7 +173,7 @@ exit 0
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-if [[ $E_tor == off ]] ; then
+if [[ $E_tor_logic == off ]] ; then
 electrs_tor
 debug "after electrs_tor"
 else
