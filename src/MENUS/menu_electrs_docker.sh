@@ -17,7 +17,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
-if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version ; then
+if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
 fi
 
