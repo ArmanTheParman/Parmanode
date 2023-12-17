@@ -18,7 +18,7 @@ else
     b1="${red}N$orange                                   ${red}N$orange"
     menub1=false
 fi
-``
+
 if grep -q lnd-end < $ic ; then
     if [[ $lndrunning == true ]] ; then
     b2="${green}Y$orange                (ls)               ${green}Y$orange"
@@ -112,21 +112,21 @@ echo -e "
 ########################################################################################
 
 
-           Bitcoin             $b1
+        Bitcoin                $b1
 
-           LND                 $b2
+        LND                    $b2
 
-           Fulcrum             $b3
+        Fulcrum                $b3
 
-           Electrs             $b4
+        Electrs (non Docker)   $b4
 
-           BRE                 $b5
+        BRE                    $b5
 
-           BTCPay              $b6
+        BTCPay                 $b6
 
-           RTL                 $b7
+        RTL                    $b7
 
-           Electrs (docker)    $b8
+        Electrs (Docker)       $b8
 
 
 ########################################################################################$bright_blue
