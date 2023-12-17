@@ -2,6 +2,7 @@ function make_electrs_config {
 local file="$HOME/.electrs/config.toml"
 
 mkdir -p $HOME/.electrs >/dev/null 2>&1
+
 if [[ $OS == Linux ]] ; then
     if [[ $drive_electrs == "external" ]] ; then 
         db_dir="/media/$USER/parmanode/electrs_db"
@@ -16,6 +17,11 @@ if [[ $OS == Mac ]] ; then
     else
         db_dir="$HOME/parmanode/electrs/electrs_db"
     fi
+fi
+
+#This if block must come last
+if [[ $install_electrs_docker == true && $drive_electrs == external ]] ; then
+    db_dir="/electrs_db" #docker run command uses this path to volume mount.
 fi
 
 echo "daemon_rpc_addr = \"127.0.0.1:8332\"
