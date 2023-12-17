@@ -47,8 +47,6 @@ echo "
 
       (stop)     Stop electrs 
 
-      (r)        Restart electrs 
-
       (remote)   Choose which Bitcoin Core for electrs to connect to
 
       (c)        How to connect your Electrum wallet to electrs 
@@ -112,11 +110,12 @@ stop_electrs
 continue
 ;;
 
-r|R) 
-restart_electrs
-sleep 2
-continue
-;;
+# Very strange restart behavious. Removed for now.
+# r|R) 
+# restart_electrs
+# sleep 2
+# continue
+# ;;
 
 remote|REMOTE|Remote)
 set_terminal
