@@ -34,7 +34,7 @@ announce \
 return 1
 fi
 
-if ! grep -q "electrs-end" < $HOME/.parmanode/installed.conf ; then
+if ! grep -q "electrs-end" < $ic && ! grep -q "electrsdkr" < $ic ; then
 announce \
 "Please install electrs first."
 return 1 
