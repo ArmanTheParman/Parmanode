@@ -45,7 +45,7 @@ case $choice in
 s|S) dirty_shitcoiner ; continue ;;
 q|Q|QUIT|Quit|quit) exit 0 ;;
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "intro" "1" ; set_terminal ; break ;;
-*) break ;;
+*) break ;; #invalid won't work here, there'll be a never ending loop
 esac ; done ; fi ; set_terminal ; return 0
 }
 
