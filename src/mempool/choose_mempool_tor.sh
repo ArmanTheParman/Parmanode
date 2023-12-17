@@ -19,7 +19,7 @@ n) return ;;
 esac
 clear
 
-if ! which tor 2>/dev/null ; then
+if ! which tor >/dev/null 2>&1 ; then
 clear ; echo -e "
 ########################################################################################
     Please install Tor first. You can enable Mempool-Tor later.
