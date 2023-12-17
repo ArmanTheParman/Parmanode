@@ -120,13 +120,13 @@ echo -e "
 
         Electrs (non Docker)   $b4
 
+        Electrs (Docker)       $b8
+
         BRE                    $b5
 
         BTCPay                 $b6
 
         RTL                    $b7
-
-        Electrs (Docker)       $b8
 
 
 ########################################################################################$bright_blue
