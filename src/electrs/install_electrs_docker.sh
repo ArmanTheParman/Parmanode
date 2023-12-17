@@ -76,16 +76,18 @@ elif [[ $drive_electrs == external ]] ; then
 fi
 
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
-
+debug "pause after prepare_drive_electrs"
 #if it exists, test inside function
 restore_internal_electrs_db || return 1
 
 #config
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
-
+debug "pause after config"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
+debug "pause after run"
 docker_start_electrs || return 1
+debug "pause after start"
 installed_config_add "electrsdkr-end"
 unset install_electrs_docker
 success "electrs" "being installed"
