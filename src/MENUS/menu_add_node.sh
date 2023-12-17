@@ -80,7 +80,6 @@ m|M) back2main ;;
        if [[ -n $fulcrum_n ]] ; then
        set_terminal
        if [[ $OS == "Linux" ]] ; then 
-       electrs_better_4pi || continue 
        install_fulcrum && return 0 ; fi
        if [[ $OS == "Mac" ]] ; then install_fulcrum_mac && return 0 ; fi
        return 0 
