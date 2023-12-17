@@ -64,6 +64,7 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
 
     # check if there is a backup electrs_db on the drive and restore it
       restore_elctrs_drive #prepares drive based on existing backup and user choices
+      debug "after restore_electrs_drive"
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
 elif [[ $drive_electrs == external ]] ; then
