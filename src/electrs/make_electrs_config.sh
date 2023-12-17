@@ -21,7 +21,7 @@ fi
 
 #This if block must come last
 if [[ $install_electrs_docker == true && $drive_electrs == external ]] ; then
-    db_dir="/electrs_db" #docker run command uses this path to volume mount.
+    db_dir="/home/parman/electrs/electrs_db" #docker run command uses this path to volume mount.
 fi
 
 echo "daemon_rpc_addr = \"127.0.0.1:8332\"
