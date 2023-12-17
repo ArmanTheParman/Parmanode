@@ -2,7 +2,7 @@ function menu_electrs_docker {
 
 while true ; do
 set_terminal
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs 
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version
 source $dp/parmanode.conf >/dev/null 2>&1
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
