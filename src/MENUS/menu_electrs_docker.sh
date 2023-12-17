@@ -133,11 +133,11 @@ enter_continue
 fi
 
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f $HOME/.parmanode/run_electrs.log" &     
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    docker exec -it electrs /bin/bash -c "tail -f $HOME/.parmanode/run_electrs.log"      
+        # tail_PID=$!
+        # trap 'kill $tail_PID' SIGINT #condition added to memory
+        # wait $tail_PID # code waits here for user to control-c
+        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
     continue
 
