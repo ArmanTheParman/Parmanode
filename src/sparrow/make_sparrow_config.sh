@@ -6,14 +6,11 @@ if [[ ! -e $HOME/.sparrow ]] ; then mkdir $HOME/.sparrow >/dev/null 2>&1 ; fi
 rm $HOME/.sparrow/config >/dev/null 2>&1
 cp $original_dir/src/sparrow/config $HOME/.sparrow/config # copies template across
 
-debug "1 -check if config file moved to correct location"
-
 # These settings can be written every time regardless of connection type...
 swap_string "$HOME/.sparrow/config" "coreDataDir" "  \"coreDataDir\": \"$HOME/.bitcoin\","
 swap_string "$HOME/.sparrow/config" "coreAuth\":" "  \"coreAuth\": \"$rpcuser:$rpcpassword\","
 # serverType is BITCOIN_CORE on the template
 # coreAuthType is USERPASS on the template
-debug "2 - check config valid"
 
 echo "connection=Bitcoin_userpass" > $HOME/.parmanode/sparrow.connection
 
