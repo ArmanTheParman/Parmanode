@@ -1,6 +1,6 @@
 function sparrow_fulcrumtor {
 
-if ! which tor >/dev/null ; then
+if ! which tor >/dev/null 2>&1 >/dev/null ; then
 announce \
 "Please install Tor first"
 return 1
@@ -28,7 +28,7 @@ make_sparrow_config "fulcrumtor"
 
 function sparrow_electrstor {
 
-if ! which tor >/dev/null ; then
+if ! which tor >/dev/null 2>&1 ; then
 announce \
 "Please install Tor first"
 return 1
