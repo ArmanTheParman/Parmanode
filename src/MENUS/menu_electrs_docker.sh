@@ -175,6 +175,7 @@ tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor == off ]] ; then
 electrs_tor
+debug "after electrs_tor"
 else
 electrs_tor_remove
 fi
