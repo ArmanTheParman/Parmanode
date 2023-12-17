@@ -8,6 +8,8 @@ echo -e "
                                P A R M A N O D E - Tools   $orange
 
 
+              (ppp)   Connect to Parman's node...
+
               (pn)    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
               (ps)    ParmaShell info 
@@ -41,6 +43,11 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
     
     m|M) back2main ;;
+
+    ppp|PPP)
+
+    connect_to_parman
+    ;;
 
     pn|PN|Pn)
     get_parmanodl
@@ -128,3 +135,39 @@ done
 return 0
 }
 
+function connect_to_parman {
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                            CONNECT TO PARMAN'S NODE
+$orange
+    This is for emergency or testing purposes only. What's the point of having a node
+    if you're going to connect to someone else's?
+
+    Nevertheless, this option is available to you, just in case. I can't promise
+    100% up time, because someitmes shit happens. If for whatever reason, my connection
+    details change, it will be renewed in Parmanode when you update Parmanode.
+
+    I promise to not collect any data or spy on your transactions. I can confidently
+    make that promise because I don't even know how to do that. Your IP address will
+    be unknown because you're connecting over Tor anyway.
+    
+    You'll have to manually tweak your wallet settings and include the following
+    onion address to connect to my server:
+$green
+    cz2qg6n7oc2i5i4w7wprobvczwpgbf2ulaqiokl7le6ojyhvrx4ty3yd.onion:7002:t
+$orange
+    You must use the port number after the onion address or you can't connect.
+
+    For Electrum wallet, you must turn on your Tor proxy, and you must add the \":t\"
+    part of the the 7002 port. This specifies TCP over Tor. (:s, for SSL won't work.)
+
+    For Sparrow wallet, you must have SSL turned off, and you must have the Tor proxy
+    turned on.
+
+########################################################################################
+"
+enter_continue
+
+}
