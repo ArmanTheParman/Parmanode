@@ -16,7 +16,6 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         E_tor_logic=off
     fi
 fi
-debug "E_tor is: $Etor"
 
 if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
@@ -176,7 +175,6 @@ tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off ]] ; then
 electrs_tor
-debug "after electrs_tor"
 else
 electrs_tor_remove
 fi
