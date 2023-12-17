@@ -56,7 +56,7 @@ else
     b4="${red}N$orange                                   ${red}N$orange"
     menub4=false
 fi
-if grep -q btcrpcexplorer-end < $ic ; then
+if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     if [[ $brerunning == true ]] ; then
     b5="${green}Y$orange                (brs)              ${green}Y$orange"
     menub5=true
