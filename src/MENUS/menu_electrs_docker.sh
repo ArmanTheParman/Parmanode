@@ -133,7 +133,7 @@ enter_continue
 fi
 
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f /run_electrs.log"      
+    docker exec -it electrs /bin/bash -c "tail -f /home/parman/.electrs/run_electrs.log"      
         # tail_PID=$!
         # trap 'kill $tail_PID' SIGINT #condition added to memory
         # wait $tail_PID # code waits here for user to control-c

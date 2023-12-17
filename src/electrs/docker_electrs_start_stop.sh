@@ -3,7 +3,7 @@ if docker ps >/dev/null 2>&1 ; then
 
    if ! docker ps | grep electrs ; then docker start electrs ; fi
 
-docker exec -it electrs /bin/bash -c "/home/parman/parmanode/electrs/target/release/electrs --conf /home/parman/.electrs/config.toml >> /run_electrs.log 2>&1"
+docker exec -it electrs /bin/bash -c "/home/parman/parmanode/electrs/target/release/electrs --conf /home/parman/.electrs/config.toml >> /home/parman/.electrs/run_electrs.log 2>&1"
 return 0
 else
 announce "docker not running. Aborting." 
