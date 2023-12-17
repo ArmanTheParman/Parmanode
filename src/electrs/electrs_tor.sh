@@ -7,6 +7,8 @@ if sudo grep "HiddenServiceDir /var/lib/tor/electrs-service/" \
     echo "HiddenServiceDir /var/lib/tor/electrs-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "after hidden service echo"
+
 if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServicePort 7004 127.0.0.1:50005" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
