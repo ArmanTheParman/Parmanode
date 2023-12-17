@@ -15,7 +15,7 @@ if [[ $OS == Linux ]] ; then
     if [[ $drive_electrs == external ]] ; then
     docker run -d --name electrs \
                             --network="host" \
-                            -v $parmanode_drive/electrs_db:/electrs_db
+                            -v $parmanode_drive/electrs_db:/electrs_db \
                             -v $HOME/.electrs:/home/parman/.electrs \
                             electrs 
     fi
