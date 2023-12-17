@@ -40,7 +40,7 @@ echo -e "
 
     To hide this screen next time, type$pink \"Free Ross\"$orange then <enter>.
 "
-read choice
+read choice ; set_terminal
 case $choice in 
 s|S) dirty_shitcoiner ; continue ;;
 q|Q|QUIT|Quit|quit) exit 0 ;;
