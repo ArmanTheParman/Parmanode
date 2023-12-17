@@ -85,7 +85,7 @@ restore_internal_electrs_db || return 1
 make_electrs_config && log "electrs" "config done" 
 debug "pause after config"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
-docker exec -itu root electrs bash -c "chown -R /home/parman/electrs/"
+docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/electrs/"
 debug "pause after run and chown"
 docker_start_electrs || return 1
 debug "pause after start"
