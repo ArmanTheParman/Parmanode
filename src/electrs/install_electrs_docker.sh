@@ -86,7 +86,7 @@ make_electrs_config && log "electrs" "config done"
 debug "pause after config"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
 docker exec -itu root electrs bash -c "chown -R /home/parman/electrs/"
-debug "pause after run"
+debug "pause after run and chown"
 docker_start_electrs || return 1
 debug "pause after start"
 installed_config_add "electrsdkr-end"
