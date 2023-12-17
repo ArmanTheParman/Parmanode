@@ -3,7 +3,7 @@ function electrs_tor {
 enable_tor_general || return 1
 
 if sudo grep "HiddenServiceDir /var/lib/tor/electrs-service/" \
-    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
+    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; debug "true" ; else debug "else"
     echo "HiddenServiceDir /var/lib/tor/electrs-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
@@ -20,6 +20,7 @@ docker_start_electrs
 else
 sudo systemctl restart electrs.service
 fi
+debug "electrs restarted"
 
 get_onion_address_variable "electrs" >/dev/null 2>&1
 
