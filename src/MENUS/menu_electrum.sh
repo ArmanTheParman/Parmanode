@@ -25,7 +25,7 @@ set_terminal ; echo -e "
 
          (tcp2)  Connect to electrs via tcp (port 50005)
 
-         (ssl2)  Connect to electrs via tcp (port 50006)
+         (ssl2)  Connect to electrs via ssl (port 50006)
 
          (tor1)  Connect to Fulcrum via Tor 
 
