@@ -222,7 +222,7 @@ please_wait
 continue ;;
 
 pw|Pw|PW|password|PASSWORD|Password)
-echo "
+echo -e "
 ########################################################################################
 
     If you already have a lightning wallet loaded, changing your password will make 
