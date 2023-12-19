@@ -247,7 +247,7 @@ echo -e "
 ########################################################################################
 "
 enter_continue
-set_lnd_password
+lnd_wallet_unlock_password
 ;;
 
 
