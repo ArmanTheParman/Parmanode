@@ -83,7 +83,7 @@ class TxOut:
         '''Takes a byte stream and parses the tx_output at the start.
         Returns a TxOut object.'''    
 
-       amount = little_endian_to_int(s.read(8))
-       script_pubkey = Script.parse(s)
-       return cls(amount, script_pubkey)
+        amount = little_endian_to_int(s.read(8))
+        script_pubkey = Script.parse(s)
+        return cls(amount, script_pubkey)
 
