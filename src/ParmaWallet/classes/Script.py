@@ -1,4 +1,4 @@
-from ..Functions.PW_functions import *
+from functions.PW_functions import *
 
 class Script:
     def __init__(self, cmds=None):

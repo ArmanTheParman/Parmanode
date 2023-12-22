@@ -1,4 +1,4 @@
-from ..functions.PW_functions import *
+from functions.PW_functions import *
 from hashlib import * 
 from classes.Script import *
 from io import BytesIO
@@ -17,6 +17,7 @@ class TxOut:
         '''Returns the byte serialization of the transaction output'''
         result = int_to_little_endian(self.amount, 8)
         result += self.script_pubkey.serialize()
+        return result
     
     @classmethod
     def parse(cls, s):
