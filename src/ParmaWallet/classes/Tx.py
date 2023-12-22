@@ -78,6 +78,22 @@ class TxIn:
         result += self.script_sig.serialize()
         result += int_to_little_endian(self.sequence, 4)
         return result
+    
+    def fetch_tx(self, testnet=Fasle):
+        return TxFetcher.fetch(self.prev_tx.hex(), testnet=testnet)
+    
+    def value(self, testnet=False):
+        '''Get the output value by looking up the tx hash.
+        Returns the amount in satoshi.'''
+
+        tx = self.fetch_tx(testnet=testnet)
+        return tx.tx_outs[self.prev_index].amount
+    def script_pubkey(self, testnet=False):
+        '''Get the ScriptPubKe by looking up the tx hash.
+        Returns a Script object'''
+        tx = self.fetch_tx(testnet=testnet)
+        return tx.tx_outs[self.prev_index].script_pubkey
+        
 
     @classmethod        
     def parse(cls, s):
@@ -112,13 +128,13 @@ class TxFetcher:
     
     @classmethod
     def get_url(cls, testnet=False):
-        if testnet:
+        if testnet:   
             return 'http://testnet.preogrammingbitcoin.com'
         else:
             return 'http://mainnet.programmingbitcoin.com'
     @classmethod
     def fetch(cls, tx_id, testnet=False, fresh=False):
-        if fresh or (txid no in cls.cache):
+        if fresh or (txid not in cls.cache):
             url = '{}/tx/{}.hex'.format(cls.get_url(testnet), tx_id)
             response = requests.get(url)
             try:
@@ -126,6 +142,18 @@ class TxFetcher:
             except ValueError:
                 raise ValueError('unexpected response: {}'.format(response.text))
             if raw [4] == 0:
-                raw = raw
+                raw = raw[:4] + raw[6:]
+                tx = Tx.parse(BytesIO(raw), testnet=testnet)
+                tx.locktime = little_endian_to_int(raw[-4:])
+            else:
+                tx Tx.parse(BytesIO(raw), testnet=testnet)
+            if tx.id() != tx_id:
+                raise ValueError('not the same id: {} vs {}'.formate(tx.id(), tex_id))
+            cls.cache[tx_id] = tx
+        cls.cache[tx_id].testnet = testnet
+        return cls.cache[tx_id]
+    
+
+                
         
 
