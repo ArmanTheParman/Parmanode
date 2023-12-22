@@ -22,7 +22,8 @@ m|M) back2main ;;
 Q|q|QUIT|Quit|quit) 
     exit 0 ;; 
 
-p|P) menu_use ;; 
+p|P) 
+menu_use ;; 
 
 start|START) 
 if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; return 0 ; fi

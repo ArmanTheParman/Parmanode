@@ -27,6 +27,18 @@ class Tx:
     def hash(self):
         '''Binary hash of the legacy serialisation'''
         return hash256(self.serialize())[::-1]   #Fix later
+    
+    def serialize(self):
+        '''Returns the byte serialization of the transaction'''
+        result = int_to_little_endian(self.version, 4)
+        result += encode_varint(len(self.tx_ins))
+        for tx_in in self.tx_ins:
+            result += tx_in.serialize()
+        result += encode_varint(len(self.tx_outs))
+        for tx_out in self.tx_outs:
+            result += tx_out.serialize()
+        result += int_to_little_endian(self.locktime, 4)
+        return result
    
     @classmethod
     
@@ -59,6 +71,14 @@ class TxIn:
             self.prev_index,
         )
 
+    def serialize(self): 
+        '''Returns the byte serialisation of the transaction input'''
+        result = self.prev_tx[::-1]
+        result += int_to_little_endian(self.prev_index, 4)
+        result += self.script_sig.serialize()
+        result += int_to_little_endian(self.sequence, 4)
+        return result
+
     @classmethod        
     def parse(cls, s):
         '''Takes a byte strem and parses the tx_input at the start.
@@ -86,4 +106,26 @@ class TxOut:
         amount = little_endian_to_int(s.read(8))
         script_pubkey = Script.parse(s)
         return cls(amount, script_pubkey)
+
+class TxFetcher:
+    cache = {}
+    
+    @classmethod
+    def get_url(cls, testnet=False):
+        if testnet:
+            return 'http://testnet.preogrammingbitcoin.com'
+        else:
+            return 'http://mainnet.programmingbitcoin.com'
+    @classmethod
+    def fetch(cls, tx_id, testnet=False, fresh=False):
+        if fresh or (txid no in cls.cache):
+            url = '{}/tx/{}.hex'.format(cls.get_url(testnet), tx_id)
+            response = requests.get(url)
+            try:
+                raw = bytes.fromhex(response.text.strip())
+            except ValueError:
+                raise ValueError('unexpected response: {}'.format(response.text))
+            if raw [4] == 0:
+                raw = raw
+        
 
