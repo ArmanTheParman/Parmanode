@@ -34,7 +34,7 @@ class Script:
         
     @classmethod
     def parse(cls, s):
-        length = read_varints(s)
+        length = read_varint(s)
         cmds = [] 
         count = 0
         while count < length:
@@ -44,12 +44,13 @@ class Script:
             if current_byte >= 1 and current_byte <= 75:
                 n = current_byte
                 cmds.append(s.read(n))
+                count += n
             elif current_byte == 76:
-                data_length = little_endian_to_in(s.read(1))
+                data_length = little_endian_to_int(s.read(1))
                 cmds.append(s.read(data_length))
                 count += data_length + 1
             elif current_byte == 77:
-                data_length = little_endian_to_in(s.read(2))
+                data_length = little_endian_to_int(s.read(2))
                 cmds.append(s.read(data_length))
                 count += data_length + 2
                 count += n
