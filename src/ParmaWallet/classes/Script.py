@@ -32,6 +32,9 @@ class Script:
         total = len(result)
         return encode_varint(total) + result
         
+    def __add__(self, other):
+        return Script(self.cmds + other.cmds)
+
     @classmethod
     def parse(cls, s):
         length = read_varint(s)
