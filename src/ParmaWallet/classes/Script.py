@@ -1,8 +1,4 @@
 from functions.PW_functions import *
-from Song.ecc import *
-from Song.helper import *
-from Song.op import *
-from Song.tx import *
 
 class Script:
     def __init__(self, cmds=None):
