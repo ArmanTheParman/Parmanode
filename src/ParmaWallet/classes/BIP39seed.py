@@ -8,37 +8,42 @@ import base58
 from ecdsa import SECP256k1
 
 class BIP39seed:
-    def __init__(self): 
-        # mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
-        # if mnemonic == "":
-        #     mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about" 
+    def __init__(self, mnemonic=None, passphrase=None): 
+        if mnemonic = None:
+            self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
+        else:
+            self.mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
+       
+        if passphrase = None:
+            self.passphrase = ""
+        else:
+            self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
         
-        # passphrase = input("Enter a passphrase, <enter> for none \n: ")
-        # mnemonic = unicodedata.normalize("NFKD", mnemonic)
-        # passphrase = unicodedata.normalize("NFKD", passphrase)
+        self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
+        self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
 
-        # #Add "mnemonic" string. If passphrase empty, then it's just "mnemonic"
-        # passphrase = "mnemonic" + passphrase 
+        #Add "mnemonic" string. If passphrase empty, then it's just "mnemonic"
+        self.passphrase = "mnemonic" + self.passphrase 
 
-        # #encode the mnemonic_ssed and passphrase (byte object)
-        # self.mnemonic = mnemonic.encode("utf-8")
-        # self.passphrase = passphrase.encode("utf=8")
+        #encode the mnemonic_ssed and passphrase (byte object)
+        self.mnemonic = self.mnemonic.encode("utf-8")
+        self.passphrase = self.passphrase.encode("utf=8")
 
-        # #make a BIP39 seed (512 bits, 64 hex characters, byte object)
-        # self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
-        # self.hex_seed = binascii.hexlify(self.byte_seed[:64])
-        # self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
+        #make a BIP39 seed (512 bits, 64 hex characters, byte object)
+        self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
+        self.hex_seed = binascii.hexlify(self.byte_seed[:64])
+        self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
        
         #override self.byte_seed for testing... 
-        self.byte_seed = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
-        self.byte_seed2 = int.to_bytes(0xfffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542, 64, 'big')
-        self.byte_seed3 = int.to_bytes(0x4b381541583be4423346c643850da4b320e46a87ae3d2a4e6da11eba819cd4acba45d239319ac14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be, 64, 'big')
+        #self.byte_seed = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
+        #self.byte_seed2 = int.to_bytes(0xfffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542, 64, 'big')
+        #self.byte_seed3 = int.to_bytes(0x4b381541583be4423346c643850da4b320e46a87ae3d2a4e6da11eba819cd4acba45d239319ac14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be, 64, 'big')
+        #self.byte_seed4 = int.to_bytes(0x3ddd5602285899a946114506157c7997e5444528f3003f6134712147db19b678, 32, 'big')
 
         # CRUCIAL THAT THE CORRECT BYTE SIZE IS USED TO TAKE THE INTEGER.
         # From BIP32: Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
-
-        self.byte_seed4 = int.to_bytes(0x3ddd5602285899a946114506157c7997e5444528f3003f6134712147db19b678, 32, 'big')
-       
+        
+        #BIP39 spits out a 512 bit seed (because of sha512), to use in BIP32
         
         #Now make the priv and pub keys (BIP32 starts here)...
         #make I
@@ -60,11 +65,11 @@ class BIP39seed:
 
 
         #Extended Key Serialisation (no checksum yet)
-        # 1 byte, version prefix; 4 bytes for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
+        # 1 byte, version prefix; 1 byte for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
         # then 32 bytes for chaincode (yes it's on the "left"); 33 bytes for compressed pubkey, or if private
         # key, then 1 zero byte and then 32 bytes private key. = TOTAL 78 bytes
 
-        self.depth = depth #from variables, but probably unecessary, it's just 4 bytes of zero
+        self.depth = depth #from variables, but probably unecessary, it's just a zero byte
         raw_xprv = xprv_prefix + self.depth + fp + child + self.master_chain_code + self.master_priv_key_33b
         raw_xpub = xpub_prefix + self.depth + fp + child + self.master_chain_code + self.master_public_key
 
