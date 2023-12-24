@@ -8,13 +8,13 @@ import base58
 from ecdsa import SECP256k1
 
 class BIP39seed:
-    def __init__(self, mnemonic=None, passphrase=None): 
-        if mnemonic == None:
-            self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
-        else:
+    def __init__(self, passphrase=None, mnemonic=None): 
+        if mnemonic == "choose" :
             self.mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
+        else :
+            self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
        
-        if passphrase == None:
+        if passphrase == None or passphrase == "none" :
             self.passphrase = ""
         else:
             self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
@@ -149,17 +149,16 @@ class BIP39seed:
         
     
     def make_d2_child(self):
-        #m/0h/1
+        #m/49'/0'
         d2_depth = 2
-        d2_index = 1
+        d2_index = 2 ** 31
         # the hmac function for non hardened children is is different - the pub key is used, not private key.
-        d2_hardened = False
+        d2_hardened = True
         while True:
-            I_d2 = hmac.new(self.child_chain_code, self.child_public_key + int.to_bytes(d2_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
+            I_d2 = hmac.new(self.child_chain_code, self.child_private_key_33b + int.to_bytes(d2_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
             Il_d2, self.d2_chain_code = I_d2[:32], I_d2[32:]
             d2_private_key = (int.from_bytes(Il_d2, 'big') + int.from_bytes(self.child_private_key_33b[1:], 'big')) % N  #arithmatic, not concatenation.
             self.d2_private_key = PrivateKey(d2_private_key)
-
             self.d2_private_key_33b = b'\0' + self.d2_private_key.secret_bytes
             self.d2_public_key = self.d2_private_key.point.sec()
             if int.from_bytes(Il_d2, 'big') > N or self.d2_private_key.secret == 0 :
@@ -194,16 +193,15 @@ class BIP39seed:
         print("D2 xpub is: ", self.d2_xpub)
         
     def make_d3_child(self):
-        #Chain m/0H/1/2H
+        #Chain m/49'/0'/0'
         d3_depth = 3
-        d3_index = (2 + (2 ** 31))
+        d3_index = 2 ** 31
         d2_hardened = True
         while True:
             I_d3 = hmac.new(self.d2_chain_code, self.d2_private_key_33b + int.to_bytes(d3_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
             Il_d3, self.d3_chain_code = I_d3[:32], I_d3[32:]
             d3_private_key = (int.from_bytes(Il_d3, 'big') + int.from_bytes(self.d2_private_key_33b[1:], 'big')) % N  #arithmatic, not concatenation.
             self.d3_private_key = PrivateKey(d3_private_key)
-
             self.d3_private_key_33b = b'\0' + self.d3_private_key.secret_bytes
             self.d3_public_key = self.d3_private_key.point.sec()
             if int.from_bytes(Il_d3, 'big') > N or self.d3_private_key.secret == 0 :
@@ -236,4 +234,90 @@ class BIP39seed:
 
         print("D3 xprv is: ", self.d3_xprv)
         print("D3 xpub is: ", self.d3_xpub)
+
+    def make_d4_child(self):
+        #Chain m/49'/0'/0'/0
+        d4_depth = 4
+        d4_index = 0
+        d2_hardened = False
+        while True:
+            I_d4 = hmac.new(self.d3_chain_code, self.d3_public_key + int.to_bytes(d4_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
+            Il_d4, self.d4_chain_code = I_d4[:32], I_d4[32:]
+            d4_private_key = (int.from_bytes(Il_d4, 'big') + int.from_bytes(self.d3_private_key_33b[1:], 'big')) % N  #arithmatic, not concatenation.
+            self.d4_private_key = PrivateKey(d4_private_key)
+            self.d4_private_key_33b = b'\0' + self.d4_private_key.secret_bytes
+            self.d4_public_key = self.d4_private_key.point.sec()
+            if int.from_bytes(Il_d4, 'big') > N or self.d4_private_key.secret == 0 :
+                print("Rare key, incrementing")
+                d4_index += 1 
+            else:
+                break
+
+        #Serialisation 
+        d4_depth = int.to_bytes(d4_depth, 1, 'big')
+        d4_index = int.to_bytes(d4_index, 4, 'big')
+
+        fp_from_parent = hash160(self.d2_public_key)[:4]
+        raw_xprv = xprv_prefix + d4_depth + fp_from_parent + d4_index + self.d4_chain_code + self.d4_private_key_33b
+        raw_xpub = xpub_prefix + d4_depth + fp_from_parent + d4_index + self.d4_chain_code + self.d4_public_key
+
+        hashed_xprv = hashlib.sha256(raw_xprv).digest()
+        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+
+        hashed_xpub = hashlib.sha256(raw_xpub).digest()
+        hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
+
+        # Adding checksum to the end
+        raw_xprv += hashed_xprv[:4]
+        raw_xpub += hashed_xpub[:4]
+
+        # Convert bytes to base58 text
+        self.d4_xprv=PW_Base58.encode_base58(raw_xprv)
+        self.d4_xpub=PW_Base58.encode_base58(raw_xpub)
+
+        print("D4 xprv is: ", self.d4_xprv)
+        print("D4 xpub is: ", self.d4_xpub)
         
+    def make_d5_child(self):
+        #Chain m/49'/0'/0'/0/0
+        d5_depth = 5
+        d5_index = 0
+        d2_hardened = False
+        while True:
+            I_d5 = hmac.new(self.d4_chain_code, self.d4_public_key + int.to_bytes(d5_index , 4, 'big'), hashlib.sha512).digest()  # (key, data, hash alogrithm)
+            Il_d5, self.d5_chain_code = I_d5[:32], I_d5[32:]
+            d5_private_key = (int.from_bytes(Il_d5, 'big') + int.from_bytes(self.d5_private_key_33b[1:], 'big')) % N  #arithmatic, not concatenation.
+            self.d5_private_key = PrivateKey(d5_private_key)
+            self.d5_private_key_33b = b'\0' + self.d5_private_key.secret_bytes
+            self.d5_public_key = self.d5_private_key.point.sec()
+            if int.from_bytes(Il_d5, 'big') > N or self.d5_private_key.secret == 0 :
+                print("Rare key, incrementing")
+                d5_index += 1 
+            else:
+                break
+
+        #Serialisation 
+        d5_depth = int.to_bytes(d5_depth, 1, 'big')
+        d5_index = int.to_bytes(d5_index, 4, 'big')
+
+        fp_from_parent = hash160(self.d2_public_key)[:4]
+        raw_xprv = xprv_prefix + d5_depth + fp_from_parent + d5_index + self.d5_chain_code + self.d5_private_key_33b
+        raw_xpub = xpub_prefix + d5_depth + fp_from_parent + d5_index + self.d5_chain_code + self.d5_public_key
+
+        hashed_xprv = hashlib.sha256(raw_xprv).digest()
+        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+
+        hashed_xpub = hashlib.sha256(raw_xpub).digest()
+        hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
+
+        # Adding checksum to the end
+        raw_xprv += hashed_xprv[:4]
+        raw_xpub += hashed_xpub[:4]
+
+        # Convert bytes to base58 text
+        self.d5_xprv=PW_Base58.encode_base58(raw_xprv)
+        self.d5_xpub=PW_Base58.encode_base58(raw_xpub)
+
+        print("D5 xprv is: ", self.d5_xprv)
+        print("D5 xpub is: ", self.d5_xpub)
+             
