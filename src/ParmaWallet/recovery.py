@@ -14,3 +14,5 @@ pubkey_target = 0x024ee3afc0eb0abb9f8bfc2b67e394a44fdc97eabe08f0e3d88e1dd9c76371
 derivation_target = "m/84'/0'/0'/0/1"
 target_mnemonic = input("please type in seed seperated with spaces: ")
 passphrase_target = "a"
+
+a = BIP39seed()
