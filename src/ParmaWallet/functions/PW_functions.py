@@ -1,6 +1,7 @@
 import hashlib
 from functions.PW_Base58 import *
 from functions.PW_functions import *
+from classes.Script import *
 
 
 #usage - pass a byte object, encode the string to do so
@@ -48,4 +49,10 @@ def hash256(input):
     if not isinstance(input, bytes):
         raise TypeError
     return hashlib.sha256(input).digest()
+
+def p2pkh_script(h160):
+    '''Takes a hash160 and returns the p2pkh ScriptPubKey'''
+    return Script([0x76, 0xa9, h160, 0x88, 0xac])
+    
+
     
