@@ -9,12 +9,12 @@ from ecdsa import SECP256k1
 
 class BIP39seed:
     def __init__(self, mnemonic=None, passphrase=None): 
-        if mnemonic = None:
+        if mnemonic == None:
             self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
         else:
             self.mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
        
-        if passphrase = None:
+        if passphrase == None:
             self.passphrase = ""
         else:
             self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
@@ -101,7 +101,7 @@ class BIP39seed:
         "\nThe xprv is: {}".format(self.xprv) +\
         "\nThe xpub is: {}".format(self.xpub)
 
-    def make_child_private_key(self, account=0, hardened=True):
+    def make_child_private_key(self, account=49, hardened=True):  #depth is 1
         #for hardened child
         if hardened:
             i = 2 ** 31 + account
