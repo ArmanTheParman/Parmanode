@@ -15,5 +15,15 @@ from ecdsa import SECP256k1
 # target_mnemonic = input("please type in seed seperated with spaces: ")
 # passphrase_target = "a"
 
-a = BIP32_master_node("choose")
-print(a)
+a = BIP32_master_node()
+b = child_key(a, depth=1, account=49, hardened=True, serialize=True) #purpose
+c = child_key(b, depth=1, account=0, hardened=True, serialize=True) #coin
+d = child_key(c, depth=1, account=0, hardened=True, serialize=True) #account
+e = child_key(d, depth=1, account=0, hardened=False, serialize=True) #int/ext
+f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
+a.serialize()
+b.serialize()
+c.serialize()
+d.serialize()
+e.serialize()
+f.serialize()
