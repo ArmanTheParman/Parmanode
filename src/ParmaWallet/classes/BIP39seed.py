@@ -9,7 +9,7 @@ from ecdsa import SECP256k1
 
 class BIP39seed:
     def __init__(self, passphrase=None, mnemonic=None): 
-        if mnemonic == "choose" :
+        if mnemonic == "choose":
             self.mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
         else :
             self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
