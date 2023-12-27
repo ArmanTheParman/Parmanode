@@ -107,7 +107,7 @@ logdel)
 please_wait
 docker_stop_electrs
 docker start electrs >/dev/null 2>&1
-rm $logfile
+docker exec -it electrs bash -c "rm $logfile"
 docker_start_electrs
 ;;
 
