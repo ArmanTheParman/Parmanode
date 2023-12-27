@@ -18,12 +18,13 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
+#check it's running
 if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
 log_size=$(docker exec -it electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
 log_size=$(echo $log_size | tr -d '\r\n')
+if docker excc -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q electrs failed ; then unset electrs_version ; fi
 fi
-debug "$log_size"
 set_terminal_custom 50
 
 echo -e "
