@@ -33,7 +33,7 @@ if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
     THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
     $orange"
 fi
-if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile | grep -q "electrs failed" ; then echo -e "
+if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile | grep -q "electrs failed" >/dev/null 2>&1 ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
                          Sync'ing to the $drive_electrs drive
