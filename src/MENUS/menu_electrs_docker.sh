@@ -1,6 +1,7 @@
 function menu_electrs_docker {
 logfile="/home/parman/run_electrs.log"
 while true ; do
+unset log_size
 set_terminal
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version
 source $dp/parmanode.conf >/dev/null 2>&1
