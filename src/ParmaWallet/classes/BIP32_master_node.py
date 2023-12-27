@@ -147,7 +147,7 @@ class child_key:
                     break
         
             else: #For Watching Wallets
-                self.public_key = Il2 + parent.public_key 
+                self.public_key = Il2 + parent.public_key # This is point addition, not concatenation
                 break
         
        
