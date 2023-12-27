@@ -87,7 +87,7 @@ if [[ $OS == "Linux" ]] ; then
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
         sudo mount $disk $parmanode_drive 
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
-        sudo e2label $disk parmanode || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
 
         debug "label done"
         set_terminal
