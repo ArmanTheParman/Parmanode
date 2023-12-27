@@ -156,7 +156,7 @@ menu_lnd
 q | Q | quit)
     exit 0 ;;
 *)
-    invalid ;;
+    invalid ; clear ;;
 
 esac ; done ; return 0
 }

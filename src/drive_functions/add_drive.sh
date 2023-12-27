@@ -46,6 +46,7 @@ sudo mount -a
 cd /media/$USER/parmanode/
 sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
+debug "chown working?"
 
 set_terminal ; echo "
 ########################################################################################
