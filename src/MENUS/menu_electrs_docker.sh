@@ -104,6 +104,7 @@ continue
 ;;
 
 logdel)
+please_wait
 docker_stop_electrs
 docker start electrs >/dev/null 2>&1
 rm $logfile
