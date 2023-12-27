@@ -120,6 +120,13 @@ stop_electrs
 continue
 ;;
 
+logdel)
+please_wait
+stop_electrs
+rm $logfile
+start_electrs
+;;
+
 r|R) 
 restart_electrs
 sleep 2
