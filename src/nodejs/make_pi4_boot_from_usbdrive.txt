@@ -1,0 +1,9 @@
+Update the Firmware: 
+
+sudo apt update
+sudo apt full-upgrade
+sudo rpi-eeprom-update -d -a
+reboot
+
+sudo raspi-config
+Navigate to "Advanced Options" > "Boot Order" and select "USB Boot."

@@ -290,6 +290,7 @@ q | Q | quit)
    ;;
 *)
    invalid
+   clear
    if [[ -n $1 ]] ; then return 1 ; fi
    ;;
 esac

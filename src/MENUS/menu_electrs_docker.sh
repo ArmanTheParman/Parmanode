@@ -1,6 +1,7 @@
 function menu_electrs_docker {
-
+logfile="/home/parman/run_electrs.log"
 while true ; do
+unset log_size
 set_terminal
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version
 source $dp/parmanode.conf >/dev/null 2>&1
@@ -17,17 +18,25 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
+#check it's running
 if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
+log_size=$(docker exec -it electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
+log_size=$(echo $log_size | tr -d '\r\n')
+if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version ; fi
 fi
-
 set_terminal_custom 50
+debug "electrs version, $electrs_version"
 
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs Menu $electrs_version ${orange}
 ########################################################################################
 "
+if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
+    THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
+    $orange"
+fi
 if [[ -n $electrs_version ]] ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
@@ -97,6 +106,14 @@ docker_stop_electrs
 continue
 ;;
 
+logdel)
+please_wait
+docker_stop_electrs
+docker start electrs >/dev/null 2>&1
+docker exec -it electrs bash -c "rm $logfile"
+docker_start_electrs
+;;
+
 r|R) 
 docker_stop_electrs
 docker_start_electrs
@@ -133,7 +150,7 @@ enter_continue
 fi
 
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
+    docker exec -it electrs /bin/bash -c "tail -f $logfile"      
         # tail_PID=$!
         # trap 'kill $tail_PID' SIGINT #condition added to memory
         # wait $tail_PID # code waits here for user to control-c

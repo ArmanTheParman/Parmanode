@@ -1,6 +1,10 @@
 function menu_electrs {
+logfile=$HOME/.parmanode/run_electrs.log
 
 while true ; do
+unset log_size
+log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
+log_size=$(echo $log_size | tr -d '\r\n')
 set_terminal
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version  
@@ -25,7 +29,11 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if ps -x | grep electrs | grep conf >/dev/null 2>&1 ; then echo -e "
+if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
+    THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
+    $orange"
+fi
+if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
                          Sync'ing to the $drive_electrs drive
@@ -112,6 +120,13 @@ stop_electrs
 continue
 ;;
 
+logdel)
+please_wait
+stop_electrs
+rm $logfile
+start_electrs
+;;
+
 r|R) 
 restart_electrs
 sleep 2
@@ -147,7 +162,7 @@ fi
 
 if [[ $OS == Mac ]] ; then
     set_terminal_wider
-    tail -f $HOME/.parmanode/run_electrs.log &     
+    tail -f $logfile &     
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
