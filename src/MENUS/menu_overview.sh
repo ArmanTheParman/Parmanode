@@ -156,7 +156,7 @@ clear ; please_wait
 stop_bitcoin
 else
 clear ; please_wait
-run_bitcoin
+run_bitcoind
 fi
 ;;
 ls) 
