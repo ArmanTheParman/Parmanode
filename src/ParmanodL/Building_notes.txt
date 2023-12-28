@@ -6,7 +6,6 @@ That is inserted into the Pi, and booted.
 The Desktop log in GUI appears, user:parman password:parmanodl, it must be changed.
 sudo apt update
 sudo apt full-upgrade
-sudo apt fix-missing
 might be needed or prompted for: sudo apt-get update --fix-missing
 might be needed or prompted for: sudo apt-get autoremove
 optional: sudo apt install vim
