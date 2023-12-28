@@ -153,7 +153,7 @@ menu_overview
 bs) 
 if [[ $menub1 == true ]] ; then
 clear ; please_wait
-stop_bitcoin
+stop_bitcoind
 else
 clear ; please_wait
 run_bitcoind
