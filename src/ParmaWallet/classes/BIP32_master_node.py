@@ -11,7 +11,8 @@ from typing import Union
 
 class BIP32_master_node:
 
-    def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
+    def __init__(self, mnemonic: str, passphrase): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
+    #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byteseed=None\n")
 
         # if mnemonic == "choose":
@@ -46,11 +47,12 @@ class BIP32_master_node:
 #        self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
 
         #Add "mnemonic" string. If passphrase empty, then it's just "mnemonic"
-        self.passphrase = "mnemonic" + self.passphrase 
+        #self.passphrase = "mnemonic" + self.passphrase 
+        self.passphrase = b'mnemonic' + self.passphrase 
 
         #encode the mnemonic_ssed and passphrase (byte object)
         self.mnemonic = self.mnemonic.encode("utf-8")
-        self.passphrase = self.passphrase.encode("utf=8")
+        # self.passphrase = self.passphrase.encode("utf=8")
 
         #make a BIP39 seed (512 bits, 64 hex characters, byte object)
         self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
@@ -140,16 +142,14 @@ class child_key:
                 else:
                     break
 
-                if serialize == True:
-                    self.parent_public_key = parent.public_key 
-                    self.depth = depth
-                    self.i = i
-                    break
-        
             else: #For Watching Wallets
-                self.public_key = Il2 + parent.public_key # This is point addition, not concatenation
-                break
-        
+                        self.public_key = Il2 + parent.public_key # This is point addition, not concatenation
+                        break
+
+        if serialize == True:
+            self.parent_public_key = parent.public_key 
+            self.depth = depth
+            self.i = i
        
     def serialize (self):
         
