@@ -19,3 +19,10 @@ Install BRE
 Wait for Bitcoin to sync
 Install Sparrow or Electrum, and sync to electrs
 optional: ParmanodL wallpaper in ./parmanode/src/graphics/pn.png
+Copy instructions.txt to desktop and fill in password.
+CLEAN UP:
+    - reset parmanode usage count
+    - reset motd
+    - clear history from terminal, history -c, and rm ~/.bash_history
+    - clear /var/log/auth.log
+    - clear /var/log/syslog
