@@ -84,6 +84,7 @@ rp_counter
 #Intro
 ########################################################################################
 set_terminal # custom function for screen size and colour.
+# argument "m" sets skip_intro to true in parman_variables
 if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 
 
@@ -93,7 +94,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
-autoupdate
+[ $debug = menu ] || autoupdate
 fi
 
 #Health check
@@ -101,7 +102,6 @@ parmanode1_fix
 
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
-   debug "in rpcount"
    #environment checks
    bash_check 
    ensure_english
@@ -123,7 +123,6 @@ true ;;
 *) 
 patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
-debug "look"
 
 get_ip_address #function to put the IP address of the computer in memory.
 
@@ -143,7 +142,7 @@ debug "Pausing here." #when debugging, I can check for error messages and syntax
 ########################################################################################
 
 #message of the day
-motd
+[ $debug = menu ] || motd
 
 # This is the main program, which is a menu that loops.
 menu_main
