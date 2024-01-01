@@ -21,6 +21,7 @@ fi
 
 #This if block must come last
 if [[ $install_electrs_docker == true && $drive_electrs == external ]] ; then
+    debug "install_electrs_docker is true, drive_electrs is external, making /home/parman/electrs/electrs_db"
     export db_dir="/home/parman/electrs/electrs_db" #docker run command uses this path to volume mount.
 fi
 
