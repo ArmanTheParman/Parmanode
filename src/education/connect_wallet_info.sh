@@ -57,11 +57,11 @@ return 0
 
 function sparrow_wallet_info {
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
-
+$cyan
                                            SPARROW BITCOIN WALLET
-
+$orange
     Unfortunately, for now, this wallet needs to be on the same computer as the Parmanode software if you
     want Parmanode to magically connect it to your node.
      
