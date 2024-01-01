@@ -2,7 +2,7 @@
 
 function restore_elctrs_drive {
 
-export original="$pamanode_drive/electrs_db"
+export original="$parmanode_drive/electrs_db"
 export backup="$parmanode_drive/electrs_db_backup"
 tempdir="$parmanode_drive/electrs_db_temp"
 
