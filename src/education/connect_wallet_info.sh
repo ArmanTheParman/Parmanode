@@ -84,9 +84,13 @@ echo -e "
 $cyan
                                        ELECTRUM DESKTOP WALLET
 $orange
-    Note that a connection with Electrum Wallet is not possible until Fulcrum Server is installed.
-
-    Once Fulcrum is installed (and synchronised), you can connect to it from your Electrum Wallet with the
+    Note that a connection with Electrum Wallet is not possible until Fulcrum Server or electrs server
+    is installed.
+$green
+    Parmanode will connect your wallet to your sever automagically, but if you have Electrum installed 
+    without the help of Parmanode, this is the method...
+$orange
+    Once a server is installed (and synchronised), you can connect to it from your Electrum Wallet with the
     following steps:
 
         1) Go to Electrum Network settings (from menu or the circle on the bottom right)
@@ -98,15 +102,16 @@ $orange
                 You can find this by typing \"ifconfig | grep broadcast\" in your terminal window. 
                 You'll see it as one of the outputs. Typically something like 192.168.0.150
                 If you don't have ifconfig, you can install it, or use "ip a" as a replacement.
+                Parmanode will also tell you your IP address (see tools menu).
 
         4) If the wallet and Parmanode are on the same computer, you can type either
-            \"localhost\" or \"127.0.0.1\"
+            \"localhost\" or \"127.0.0.1\" for the IP address.
 	    
-        5) If your wallet is not on the same computer as Parmanode, you need to type the IP address
+        5) If your wallet is NOT on the same computer as Parmanode, you need to type the IP address
            of the Parmanode computer in your wallet.
 
         6) You also MUST type in the port AND connection type. 
-           The default value is 50002:s
+           The default value is 50002:s 
            An example would look like:
 
                                          127.0.0.1:50002:s
@@ -114,10 +119,14 @@ $orange
         7) For TCP connections (not SSL), you'd use port 50001, and change the s to a t:
 
                                          127.0.0.1:50001:t
-
+$green
+        Note that electrs installed via Parmanode has a different port (to avoid conflicts with Fulcrum). It
+        is 50005 for TCP, and 50006 for SSL.
 
     At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
-    to 1, you should try to fix that (f).
+    to 1, you should try to fix that (f). Parmanode will do that automatically if you use it to install
+    Electrum, but otherwise, you need to manually edit the Electrum config file, and change 
+    'onserver=false' to 'oneserver=true'
 
 ##############################################################################################################
 
