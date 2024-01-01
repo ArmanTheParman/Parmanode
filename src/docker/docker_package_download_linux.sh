@@ -9,7 +9,7 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update -y
 
 #modified instruction from official Docker guide to include Linuxmint conversion
-  sudo source /etc/os-releases
+  sudo source /etc/os-release
     if [[ $ID != "debian" ]] ; then parmanode_conf_add "ID=ubuntu" ; fi
   get_linux_version_codename 
 
