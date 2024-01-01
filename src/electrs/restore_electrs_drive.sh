@@ -37,7 +37,7 @@ case $choice in
 m|M) back2main ;;
 
 u|U)
-mv $backup $original
+sudo mv $backup $original
 return 0 
 ;;
 
