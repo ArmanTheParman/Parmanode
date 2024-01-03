@@ -9,6 +9,7 @@ sudo apt full-upgrade
 might be needed or prompted for: sudo apt-get update --fix-missing
 might be needed or prompted for: sudo apt-get autoremove
 optional: sudo apt install vim
+sudo systemctl start ssh
 Install Parmanode: curl https://github.com/armantheparman/parmanode.git
 run Parmanode...
 /home/$USER/parman_programs/parmanode/run_parmanode.sh
