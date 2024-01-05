@@ -8,7 +8,7 @@ while true ; do
 set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
 source $hm >/dev/null 2>&1
-if [[ $vPatch -gt 9 ]] ; then space="" ; else space =" " ; fi #in case version number is high, adjust menu border
+if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
 # if statements in the menu printout makes the menu dynamic, ie changes accoring to the
 # tests performed. Variables are set to assit logic in the menu choice excution part
