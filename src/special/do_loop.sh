@@ -66,7 +66,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 # If docker is set up on the machine, then it is detected by Parmanode
 # and added to the config file
 # The block of code is added to the background to not delay start up
-( if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
+if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if ([[ $(uname) == Darwin ]] && ( which docker >/dev/null )) || \
 	( [[ $(uname) == Linux ]] && which docker >/dev/null && id | grep -q docker ) ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
@@ -74,7 +74,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 		fi
 	else installed_config_remove "docker"
 	fi
-fi ) &
+fi
 
 #add to run count
 rp_counter
