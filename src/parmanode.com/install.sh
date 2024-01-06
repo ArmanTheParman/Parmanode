@@ -24,19 +24,18 @@ fi
 mkdir -p $HOME/parman_programs ; cd ; cd parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
-mkdir -p ~/Desktop ~/.icons/
-cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
-echo "[Desktop Entry]
-Type=Application
-Exec=x-terminal-emulator -- bash -c \"$HOME/parman_programs/parmanode/run_parmanode.sh\"
-Name=Parmanode
-Icon=$HOME/.icons/PNicon.png
-Terminal=true
-Path=$HOME/parman_programs/parmanode/
-Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
-sudo chmod +x $HOME/Desktop/parmanode.desktop
-sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
-$HOME/run_parmanode/src/parmanode/add_rp_function.sh 
+# mkdir -p ~/Desktop ~/.icons/
+# cp $HOME/parman_programs/parmanode/src/graphics/pn_icon.png $HOME/.icons/PNicon.png
+# echo "[Desktop Entry]
+# Type=Application
+# Exec=x-terminal-emulator -- bash -c \"$HOME/parman_programs/parmanode/run_parmanode.sh\"
+# Name=Parmanode
+# Icon=$HOME/.icons/PNicon.png
+# Terminal=true
+# Path=$HOME/parman_programs/parmanode/
+# Categories=Utility;Application;" | sudo tee $HOME/Desktop/parmanode.desktop 
+# sudo chmod +x $HOME/Desktop/parmanode.desktop
+# sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 clear
 
 echo "#Added by Parmanode..." | tee -a ~/.bashrc >/dev/null 2>&1
@@ -46,12 +45,8 @@ echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ;
 echo "
 ########################################################################################
 
-    A desktop icon has been left for you. Double click it to run Parmanode, and 
-    make sure to choose 'Execute in terminal' if a pop-up window prompts you.
-
-    If you're running a Pi, the desktop icon may not work. The backup method to run
-    (for all machine types) is to simply type 'rp' followed by <enter> in a NEW 
-    terminal window, from any directory.
+    To run Parmanode, open a NEW TERMINAL window, and type 'rp' (from any directory) 
+    followed by <enter>.
 
 ########################################################################################
 "
