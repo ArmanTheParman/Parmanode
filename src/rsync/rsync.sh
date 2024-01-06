@@ -197,7 +197,7 @@ echo -e "
     Archive mode     (-a)        permissions, ownership, timestamps, + other attributes of the source files.
     Recursive mode   (-r) 
     Compress mode    (-z) 
-    Shoe progress    (-P) 
+    Show progress    (-P) 
 
     You can remove any of these if you wish.
 
