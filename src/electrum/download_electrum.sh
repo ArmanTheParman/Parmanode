@@ -14,10 +14,10 @@ clear ; echo -e "
 ########################################################################################
 "
 read choice
-if [[ $choice == old ]] ; then $electrum_version="4.4.4" ; fi
+if [[ $choice == "old" ]] ; then $electrum_version="4.4.4" ; fi
 clear
 
-
+debug "version $electrum_version"
 
 if [[ $computer_type == "LinuxPC" ]] ; then
     curl -LO https://download.electrum.org/$electrum_version/electrum-${electrum_version}-x86_64.AppImage && \
