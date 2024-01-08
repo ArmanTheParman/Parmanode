@@ -128,6 +128,8 @@ echo "
 enter_continue
 fi
 
+
+unset importdrive
 set_terminal
 }
 
