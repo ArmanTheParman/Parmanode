@@ -14,7 +14,7 @@ clear ; echo -e "
 ########################################################################################
 "
 read choice
-if [[ $choice == "old" ]] ; then $electrum_version="4.4.4" ; debug "version1 $electrum_version"; fi
+if [[ $choice == "old" ]] ; then electrum_version="4.4.4" ; debug "version1 $electrum_version"; fi
 clear
 
 debug "version2 $electrum_version"
