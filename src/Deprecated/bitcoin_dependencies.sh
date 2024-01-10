@@ -15,13 +15,13 @@
 
 #                       Installing dependencies for Bitcoin Core
 
-#     Parmanode needs to install Bitcoin dependencie if you're going to install
+#     Parmanode needs to install Bitcoin dependencies if you're going to install
 #     Bitcoin Core using Parmanode. You can skip this but you may get errors. It may 
 #     take 5 to 10 minutes. If all this waiting is getting to you, let that be a lesson 
 #     that you should be using Linux! :(   Linux users running Parmanode would 
 #     already have begun syncing the blockchain by now, just saying. To learn Linux, a 
 #     great book to get started is \"The Command Line Book\" by William Shotts, 5th 
-#     internet eddition, free PDF.
+#     internet edition, free PDF.
 
 # 				<enter>    Install dependencies
 				
