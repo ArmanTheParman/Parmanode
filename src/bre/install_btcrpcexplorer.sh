@@ -20,7 +20,7 @@ if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then
 
     Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin$cyan and either$orange 
     Fulcrum server or electrs server first. You could, instead modify the 
-    configusrtion file and point it to a Fulcrum or Electrum Server on this or 
+    configuration file and point it to a Fulcrum or Electrum Server on this or 
     another machine.
 
     Proceed anyway?   y  or  n

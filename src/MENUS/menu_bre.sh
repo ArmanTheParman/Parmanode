@@ -78,7 +78,7 @@ echo -e "
                  (c)        Edit config file 
                                              
 
-    ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
+    ACCESS THE PROGRAM FROM YOUR BROWSER ON THE PARMANODE COMPUTER:
 $green
                    http://${IP}:3002     
                    http://localhost:3002        -from this computer only
