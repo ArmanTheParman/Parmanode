@@ -10,8 +10,8 @@ source $original_dir/version.conf >/dev/null
 source $hm >/dev/null 2>&1
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
-# if statements in the menu printout makes the menu dynamic, ie changes accoring to the
-# tests performed. Variables are set to assit logic in the menu choice excution part
+# if statements in the menu printout makes the menu dynamic, ie changes according to the
+# tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
 echo -e "$orange
 ########################################################################################
@@ -68,7 +68,7 @@ read choice #whatever the user chooses, it gets put into the choice variable use
 set_terminal
 
 case $choice in #the variable choice is tested through each of the case-choices below.
-# these end in a closing bracked, have some code, and end with a ;;
+# these end in a closing bracket, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
 aa)
