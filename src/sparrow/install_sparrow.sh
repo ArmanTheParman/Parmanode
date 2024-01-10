@@ -10,7 +10,7 @@ set_terminal
 echo -e "
 ########################################################################################
  
-     It seems you either have Sparrow installed already, indepenently to Parmanode,
+     It seems you either have Sparrow installed already, independently to Parmanode,
      or you had a previous Sparrow installation that wasn't fully uninstalled (eg
      if the configuration directory was not deleted).
 
