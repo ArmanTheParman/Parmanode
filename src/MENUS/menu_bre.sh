@@ -10,9 +10,9 @@ unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_acces
 #echo outputs for external connection
 unset output output2 output3
 if [[ $enabled == true && $computer_type = LinuxPC ]] ; then 
-output="    ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
+output="    ACCESS THE PROGRAM FROM$red OTHER$orange COMPUTERS ON THE NETWORK:
 
-                   http://$IP:3003     (Note the port is 3003 not 3002)
+$green                   http://$IP:3003     (Note the port is 3003 not 3002)$orange
                    "
 fi
 
