@@ -55,7 +55,7 @@ echo "
 
       (stop)     Stop electrs 
 
-      (r)        Restart electrs
+      (restart)  Restart electrs
 
       (remote)   Choose which Bitcoin Core for electrs to connect to
 
@@ -127,7 +127,7 @@ rm $logfile
 start_electrs
 ;;
 
-r|R) 
+restart|Restart)
 restart_electrs
 sleep 2
 continue

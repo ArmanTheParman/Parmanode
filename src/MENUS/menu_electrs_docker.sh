@@ -59,7 +59,7 @@ echo "
 
       (stop)     Stop electrs 
 
-      (r)        Restart electrs 
+      (restart)  Restart electrs 
 
       (remote)   Choose which Bitcoin Core for electrs to connect to
 
@@ -114,7 +114,7 @@ docker exec -it electrs bash -c "rm $logfile"
 docker_start_electrs
 ;;
 
-r|R) 
+restart|Restart)
 docker_stop_electrs
 docker_start_electrs
 continue
