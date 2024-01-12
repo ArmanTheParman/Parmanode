@@ -5,9 +5,9 @@ unset tor_message ONION_ADDR_RTL
 
 if grep -q "rtl_tor" < $dp/parmanode.conf ; then
 get_onion_address_variable rtl
-tor_message="     RTL Onion Address:$bright_blue
+tor_message="      RTL Onion Address:$bright_blue
 
-                  $ONION_ADDR_RTL:7005 $orange
+            $ONION_ADDR_RTL:7005 $orange
                   "
 fi 
 
@@ -46,8 +46,8 @@ echo -e "
 
       The RTL wallet can be accessed in your browser at:
 $green
-                  http://localhost:3000 
-                  http://$IP:3000 $orange
+                       http://localhost:3000 
+                       http://$IP:3000 $orange
 
 $tor_message
 ########################################################################################
