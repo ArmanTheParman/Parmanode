@@ -184,7 +184,7 @@ set_terminal_custom 55 ; echo -e "
             Linux machines. This is part of the 'import' process, so that the drive
             always mounts when you reboot the computer, and Bitcoin Core can
             start up properly.$red I strongly recommend you don't fiddle with this file
-         $orange   unless youo are a super expert, because it can brick your OS if you get
+         $orange   unless you are a super expert, because it can brick your OS if you get
             it wrong. 
 
 ########################################################################################
