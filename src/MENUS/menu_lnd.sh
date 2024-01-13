@@ -183,7 +183,7 @@ if [[ $log_count -le 10 ]] ; then
 echo -e "
 ########################################################################################
     
-    This will show the systemd output for LND in real time as it populates.
+    This will show the systemd output for LND in real-time as it populates.
     
     You can hit$cyan <control>-c$orange to make it stop.
 
@@ -238,11 +238,11 @@ echo -e "
     Note, deleting a wallet with bitcoin in it does not delete the bitcoin. You can
     recover the wallet as long as you have a copy of the seed phrase.
 
-    Also note that$green funds in lightning channels NOT recoverable by the
-    seed phrase$orange - those funds are in share 2 f 2 multisignature addresses, that are
+    Also note that$green funds in lightning channels are NOT recoverable by the
+    seed phrase$orange - those funds are shared in 2-of-2 multisignature addresses, that are
     returned to your wallet when the channel is closed. To keep access to those
     funds in a channel, you need to keep your lightning node running, or restore
-    your lightning node with both the seed AND the channel back up file.
+    your lightning node with both the seed AND the channel backup file.
 
 ########################################################################################
 "
