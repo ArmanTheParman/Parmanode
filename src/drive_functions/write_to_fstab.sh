@@ -1,17 +1,25 @@
 function write_to_fstab {
    UUID="$1"  
+
    if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
-        TYPE=$(blkid | grep $UUID | awk '{print $5}' | cut -d \" -f 2)
-        debug "TYPE detected, $TYPE"
-        echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab > /dev/null 
-        log "bitcoin" "fstab grep output for parmanode:" && \
-        grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
+   # exfat drives don't work in fstab and cause issues.
+   if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab because drive not ext4" ; return ; fi
+
+   TYPE=$(blkid | grep $UUID | awk '{print $5}' | cut -d \" -f 2)
+   debug "TYPE detected, $TYPE"
+   echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab > /dev/null 
+   log "bitcoin" "fstab grep output for parmanode:" && \
+   grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
 }
 
 function write_to_fstab2 {
-export $(sudo blkid -o export $disk) >/dev/null
 
-if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
-delete_line "/etc/fstab" "$UUID"
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 
+        export $(sudo blkid -o export $disk) >/dev/null
+        # exfat drives don't work in fstab and cause issues.
+        # This only happens if a user tries to import a non Parmanode drive as a an old parmanode drive.
+        if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab2 because drive not ext4" ; return ; fi
+
+        if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
+        delete_line "/etc/fstab" "$UUID"
+        echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 
 }
