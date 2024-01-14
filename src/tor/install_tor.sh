@@ -18,11 +18,12 @@ case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 
 set_terminal
 
-if [[ $OS == "Linux" ]] ; then { sudo apt-get install tor -y ; installed_config_add "tor-end" ; enter_continue ; return 0 ; } || errormessage && return 1 ; fi
+if [[ $OS == "Linux" ]] ; then { sudo apt-get install tor -y ; } || { errormessage && return 1 ; } 
+fi
 
 if [[ $OS == "Mac" ]] ; then
 brew_check Tor || return 1
-brew install tor && brew services start tor || { log "tor" "failed at tor install && start tor" ; errormessage ; return 1 ; }
+{ brew install tor && brew services start tor ; } || { log "tor" "failed at tor install && start tor" ; errormessage ; return 1 ; }
 fi
 
 set_terminal ; echo -e "
