@@ -18,9 +18,10 @@ export fast_computer=false
 elif [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -ge 2017 ]] ; then
 export fast_computer=true
 else
-bre_computer_speed_message
-read choice
-if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else export fast_computer="false" ; fi
+    if [[ $computer_type == Pi ]] ; then export fast_computer="yes" ; return ; fi
+    bre_computer_speed_message
+    read choice
+    if [[ $choice == "y" ]] ; then export fast_computer="yes" ; else export fast_computer="false" ; fi
 fi
 }
 
