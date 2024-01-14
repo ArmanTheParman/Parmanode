@@ -66,11 +66,11 @@ install_fuse
 installed_conf_add "electrum-end"
 
 if [[ $OS == "Mac" ]] ; then
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
-                                S U C C E S S ! !
-
+$green
+                                 S U C C E S S ! !
+$orange
     Electrum has been installed. The program is in your Applications folder, but 
     it's best to run Electrum through Parmanode as extra background work has gone 
     in to making sure you have a good connection to the server.
