@@ -144,7 +144,7 @@ read choice
 case $choice in
 q|Q) exit ;;
 p|P) return 1 ;;
-m|M) back2main ;;
+""|m|M) back2main ;;
 
 r)
 menu_overview
