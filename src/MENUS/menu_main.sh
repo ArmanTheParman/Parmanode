@@ -84,7 +84,7 @@ o|O)
 menu_overview 
 ;;
 
-add|Add| ADD)
+a|add|Add|ADD)
     menu_add_new
     ;;
 use|USE|Use|u|U)
@@ -106,10 +106,10 @@ s|S)
     menu_settings ;;
 d|D)
     donations ;;
-uninstall|UNINSTALL)
+un|uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
-update|UPDATE|Update)
+up|update|UPDATE|Update)
     update_parmanode || continue
     if [[ $main_loop != 0 ]] ; then
     set_terminal ; 
@@ -121,6 +121,11 @@ update|UPDATE|Update)
 ;;
 ap|AP|Ap|aP)
     about ;;
+
+addn) menu_add_node ;;
+addw) menu_add_wallets ;;
+addo) menu_add_other ;;
+
 
 uany) menu_use any ;; 
 ub) menu_use b ;; 
