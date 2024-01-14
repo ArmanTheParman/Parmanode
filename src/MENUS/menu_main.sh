@@ -18,11 +18,11 @@ echo -e "$orange
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$bright_blue $version                                                               $orange  $space #
+#    Version:$bright_blue $version                                                               $orange  $space#
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of programs   $red(new)          $orange                #
+#    (o)                  Overview/Status of programs                                  #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
