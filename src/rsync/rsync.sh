@@ -183,7 +183,7 @@ $orange"
 ;;
 
 2)
-command1="rsync -rvarzP$update $del $dry $hidden --ignore-existing $source $destination/"
+command1="rsync -rvazP$update $del $dry $hidden --ignore-existing $source $destination/"
 ;;
 esac
 
