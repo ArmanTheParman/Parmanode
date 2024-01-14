@@ -1,10 +1,10 @@
 function uninstall_tor {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall Tor
- 
+$orange 
     Parmanode will uninstall Tor from your system. Hit <enter> to proceed.
 
 ########################################################################################
@@ -29,6 +29,6 @@ rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
 
 installed_config_remove "tor-end"
 
-enter_continue
+success "Tor" "being uninstalled"
 return 0
 }
