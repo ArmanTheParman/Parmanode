@@ -104,11 +104,11 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 set_terminal
-echo "
+echo -e "
 ########################################################################################
-    
+$cyan 
                                     SUCCESS !!!
-
+$orange
     Bitcoin Core should have started syncing.
 
     Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
@@ -117,9 +117,9 @@ echo "
     For now, thre is no configuration to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
     This feature is only available on Linux.
-
+$green
     Do remmember to manually restart Bitcoin should your Mac power off. 
-
+$orange
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
     #Just in case
