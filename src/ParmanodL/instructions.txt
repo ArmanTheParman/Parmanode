@@ -12,9 +12,9 @@ network, as it was offline while being shipped.
 To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
 Terminal is run by clicking that black icon at the top.
 
-On Pi's, the terminal doesn't automatically resize, so please widen the 
+On Pi's, the Terminal doesn't automatically resize, so please widen the 
 screen and make it taller using the mouse so the text doesn't wrap 
-around and lok ugly.
+around and look ugly.
 
 The password for the computer is "       ". Please change it with the
 command "passwd parman" (use the Terminal).
@@ -29,14 +29,14 @@ then this computer's password.
 
 Notice, it is parmanodl.local, NOT parmanode.local.
 
-Parmanode will open up a Terminal window. Please resize it; make it
-a bit wider.
-
 INFO ONLY: The Bitcoin username is "parman", and the password is
 "     ". You could change it but there is no need; you don't even need
-to particularly remember it. This password is used by Bitcoin Core to 
-authenticate connections by other software to it. It is accessible to 
-view or change via the bitcoin.conf file (not recommended), or by the 
+to particularly remember it. This is different to the computer's
+password. 
+
+This Bitcoin password is used by Bitcoin Core to authenticate connections 
+by other software to it. It is accessible to view or change (not 
+recommended) via the bitcoin.conf file (not recommended), or by the 
 Parmanode-Use-Bitcoin menu.
 
 You can use Parmanode to install various wallets - Sparrow or Electrum,
