@@ -7,33 +7,34 @@ if cat $HOME/.electrum/config | grep "\"server" | grep "7004" >/dev/null ; then 
 
 set_terminal ; echo -e "
 ########################################################################################
-                                 ${cyan}Electrum Menu${orange}
+                                   ${cyan}Electrum Menu${orange}
 ########################################################################################
+$cyan
+                        ELECTRUM CONNECTION TYPE: $connection
+$orange
 
-                          ELECTRUM CONNECTION TYPE: $connection
-
-
-         (start)                 Start Electrum
+         start)  Start Electrum
+         
+         rf)     Refresh connection files (to troublshoot server connection)
 
 ----------------------------------------------------------------------------------------
-
+$cyan
                           CONFIGURATION MODIFICATIONS
+$orange
 
-         (ssl)   Connect to Fulcrum via ssl (port 50002)
+         ssl)   Connect to Fulcrum via ssl (port 50002)
 
-         (tcp)   Connect to Fulcrum via tcp (port 50001)
+         tcp)   Connect to Fulcrum via tcp (port 50001)
 
-         (tcp2)  Connect to electrs via tcp (port 50005)
+         tcp2)  Connect to electrs via tcp (port 50005)
 
-         (ssl2)  Connect to electrs via ssl (port 50006)
+         ssl2)  Connect to electrs via ssl (port 50006)
 
-         (tor1)  Connect to Fulcrum via Tor 
+         tor1)  Connect to Fulcrum via Tor 
 
-         (tor2)  Connect to electrs via Tor 
+         tor2)  Connect to electrs via Tor 
 
-         (ec)    View Electrum Config file
-
-         (r)     Refresh cach, certificates, sockets (to troublshoot server connection)
+         ec)    View Electrum Config file
 
 ########################################################################################
 "
@@ -75,18 +76,8 @@ ec|EC)
 nano $HOME/.electrum/config
 ;;
 
-r|R)
-set_terminal ; echo "
-########################################################################################
-
-    Please not that refreshing the cache, certificates and sockets may SOMETIMES 
-    cause a delay in Electrum connecting to the server. Do wait at least 30 seconds, 
-    even if the connection circle remains red, before giving up.
-
-########################################################################################
-"
-enter_continue
-refresh_electrum_certs_cache_sockets
+rf|RF)
+clear_dot_electrum
 ;;
 
 *)
