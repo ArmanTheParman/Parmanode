@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 22))
+motd=$((motd % 23))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -34,8 +34,6 @@ $cyan
 
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -58,8 +56,6 @@ $cyan
  
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -76,8 +72,6 @@ $cyan
     escapes from a central banker's basement.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -107,8 +101,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -124,8 +116,6 @@ $cyan
     grateful you can.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -148,8 +138,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -169,8 +157,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -187,8 +173,6 @@ $cyan
     against humanity. 
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -211,8 +195,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -231,8 +213,6 @@ $cyan
     i.e. ALL government money, and ALL altcoins (euphemism for shitcoins) and CBDCs.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -258,8 +238,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -276,8 +254,6 @@ $cyan
     Bitcoin is here to clean up gold's mess.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -299,8 +275,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -315,8 +289,6 @@ $cyan
    The more bitcoin you get, the more right you're going to be when you're right.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -336,8 +308,6 @@ $cyan
     distribution of coins will even out over time.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -360,8 +330,6 @@ $cyan
  
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -379,8 +347,6 @@ $cyan
    time, they will accumulate all the bitcoin. 
  
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -404,8 +370,6 @@ $cyan
     Shitcoins... leads to SUFFERING.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -455,8 +419,6 @@ $cyan
     Rand over. 
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -510,8 +472,6 @@ $green
 $orange
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -531,8 +491,6 @@ $cyan
     HAVE YOU NO DIGNITY??
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -558,7 +516,24 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 22 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+    
+
+    If you love a woman, do you measure her worth by what your ex girlfriend thinks 
+    of her?
+    
+    No. But this is the mindset of measuring your bitcoin value in USD.
+
+######################################################################################## 
 
 Hit$cyan <enter>$orange to continue.
 "
