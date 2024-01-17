@@ -95,6 +95,8 @@ export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 #Mount
 export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
 export mount_point="/media/$USER/parmanode"
+if [[ ! -d $mount_point ]] ; then sudo mkdir -p $mount_point ; debug "mountpoint made" ; fi
+
 sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
