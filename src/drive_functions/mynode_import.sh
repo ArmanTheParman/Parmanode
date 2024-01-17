@@ -1,4 +1,6 @@
 function mynode_import {
+debug "in mynode_import"
+
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 cd
 set_terminal ; echo -e "
@@ -94,13 +96,14 @@ export mount_point="/media/$USER/parmanode"
 sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
-
+debug "mynode - #mount; after umount and mount"
 # Move files
 
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
     sudo rm $mount_point/.bitcoin >/dev/null 2>&1 #must be a symlink to execute for code in this block.
 fi
+debug "after .bitcoin check exists"
 
 cd $mount_point/ && sudo ln -s ./mynode/bitcoin .bitcoin 
 sudo mkdir -p $mount_point/mynode/bitcoin/parmanode_backedup/
@@ -111,6 +114,7 @@ make_bitcoin_conf umbrel #dont change to mynode, it works as is
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
+debug "mynode - after chown"
 
 #Get device name
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
