@@ -93,6 +93,8 @@ done
 #Mount
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 export mount_point="/media/$USER/parmanode"
+if [[ ! -d $mount_point ]] ; then sudo mkdir -p $mount_point ; debug "mountpoint made" ; fi
+
 sudo umount /media/$USER/parmanode* >/dev/null 2>&1
 sudo umount $disk >/dev/null 2>&1
 sudo mount $disk $mount_point >/dev/null 2>&1
@@ -106,6 +108,8 @@ fi
 debug "after .bitcoin check exists"
 
 cd $mount_point/ && sudo ln -s ./mynode/bitcoin .bitcoin 
+debug "mynode after symlink"
+
 sudo mkdir -p $mount_point/mynode/bitcoin/parmanode_backedup/
 sudo chown -h $USER:$(id -gn) $mount_point/.bitcoin
 sudo mv ./.bitcoin/*.conf $mount_point/.bitcoin/parmanode_backedup/
