@@ -7,12 +7,13 @@ fi
 
 set_terminal
 unset importdrive
+debug "bitcoin - after unset importdrive"
 choose_and_prepare_drive "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
-
+debug "bitcoin - after choose and prepare drive"
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
-
+debug "bitcoin - after format ext drive"
 #Just in case (redundant permission setting)
     if [[ $OS == "Linux" && $drive == "external" ]] ; then
         sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
@@ -23,7 +24,7 @@ prune_choice || return 1
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
-
+debug "bitcoin - after prune_choice"
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
 
@@ -31,7 +32,7 @@ log "bitcoin" "make_bitcoin_directories function..."
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
-
+debug "bitcoin - after make_bitcoin_directories"
     #Just in case - even more redundancy, leaving it as it helped a lot once when debugging.
             if [[ $importdrive != true ]] ; then
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
@@ -40,6 +41,7 @@ log "bitcoin" "make_bitcoin_directories function..."
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
             fi
+debug "bitcoin - after import drive chown; before download bitcoin"
 
 # Download bitcoin software
 download_bitcoin || return 1
