@@ -41,8 +41,11 @@ debug "bitcoin - after make_bitcoin_directories"
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
             fi
-debug "bitcoin - after import drive chown; before download bitcoin"
+#choose version
+choose_bitcoin_version
+debug "choose_bitcoin_version done"
 
+debug "bitcoin - after import drive chown; before download bitcoin"
 # Download bitcoin software
 download_bitcoin || return 1
 
