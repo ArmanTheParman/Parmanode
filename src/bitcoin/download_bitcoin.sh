@@ -1,12 +1,13 @@
 function download_bitcoin {
-cd $HOME/parmanode/bitcoin
 
+cd $HOME/parmanode/bitcoin
+export version="26.0"
 set_terminal
 echo -e "
 ########################################################################################
 
    $cyan 
-    The current version of Bitcoin Core that will be installed is 25.0
+    The current version of Bitcoin Core that will be installed is $version
 $orange
 
     Parmanode will verify by hashing the file for you (and gpg verification), but 
@@ -33,25 +34,25 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
 
 	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-aarch64-linux-gnu.tar.gz 
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz 
             else
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
             fi
 
  	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz ; fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
-         curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm64-apple-darwin.dmg
+         curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg
          fi
 
         if [[ $chip == "x86_64" && $OS == Mac ]] ; then
-        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-apple-darwin.dmg
+        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg
         fi
 
 if [[ $VERIFY != off ]] ; then
