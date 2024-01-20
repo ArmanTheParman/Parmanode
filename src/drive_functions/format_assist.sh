@@ -13,7 +13,7 @@ $orange
     tool will assist you through it.
 
     The usual detection method asks you to remove then connect the target drive,
-    allowing Parmanode to measure the drive state in the two scenarious and record it
+    allowing Parmanode to measure the drive state in the two scenarios and record it
     in a text file. It then does a subtraction, then the remainder will be the details 
     of the drive. It's designed this way so that the user doesn't have to decide for 
     themselves what the drive is called, potentially introducing serious error.
@@ -52,6 +52,8 @@ $orange
                         8)  symlink to ext drive
                         9)  drive setting in parmanode.conf 
                         10) make bitcoin.conf 
+   
+   I will go through each in deatail and in order...
 
 ########################################################################################
 "
@@ -68,7 +70,7 @@ $orange
    the blkid command in order to refresh the state - I don't know why.
 $green
    You can open a new terminal window to do this as you read these instructions.
-$cyan
+$orange
    Determine which is your drive. The clues will be the drive size and the output
    changes as you connect and disconnect the drive.
 
@@ -95,8 +97,8 @@ echo -e "
 $green
              sudo umount -f /dev/sdb
 $orange
-    You may not need the '-f', force, directive, but it's there anyway. Note it says
-    'umount' not 'unmount'.             
+    You may not need the '-f'force directive, but it's there anyway. Note it says
+    'umount' not 'u${cyan}n${orange}mount'.             
 
     Only after the drive is unmounted can we perform fdisk operations...
 $green
@@ -104,8 +106,8 @@ $green
 $orange    
     Now hit$cyan 'm'$orange if you want to see options or$red q$orange to quit, but for simplicity, just
     follow along...
-$green
-    Hit g <enter> w <enter>
+
+    Hit$cyan g$orange <enter>$cyan w$orange <enter>
 $orange
     This will write a new partition to the drive and exit fdisk. All the data would now 
     be lost on the drive, but it still needs to be formatted.
@@ -168,21 +170,21 @@ set_terminal_wide ; echo -e "
 
 ##############################################################################################################
 $cyan
-                                        FSTAB (BE CAREFUL)
+                                          FSTAB (BE CAREFUL)
 $orange
     The next thing to do is to make an entry in /etc/fstab so that the drive mounts when the computer 
     reboots. Ths is not strictly necessary - sometimes the drive mounts anyway when you log in, but with
     the fstab entry, it will mount BEFORE you log in after a reboot. This is what you want if you need
     the computuer to continue syncing Bitcoin without your intervention in the event of an unexpected
     reboot.
-
+$red
     I DO NOT RECOMMEND YOU TO DO THIS MANUALLY, IT IS DANGEROUS; ANY ERRORS CAN MAKE YOUR COMPUTER 
     UNRESPONSIVE LIKE A BRICK. THIS IS FOR INFORMATIONAL PURPOSES ONLY. IT'S BEST THAT PARMANODE DOES THIS 
     FOR YOU AUTOMATICALLY WHEN YOU IMPORT.
-    
+$orange 
     You first need the UUID, extracted from the$cyan 'sudo blkid'$orange command. Then the following line needs to be 
     typed out exactly (replace \$UUID with the actual string of the UUID, and any spaces where they 
-    shouldn't be can break your computer; eg no space after that comma)
+    shouldn't be can break your computer; eg no space after that comma).
   $red  
     echo "UUID=\$UUID /media/$USER/parmanode ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab 
     $orange
@@ -203,11 +205,11 @@ $orange
     manually in order to mount th drive there. 
 $green
         sudo mkdir -p /media/$USER/parmanode 
-    
+$orange    
     You also need to make sure the mount point is 'owned' by the current user...
-
+$green
         sudo chown $USER -R /media/$USER/parmanode/
-
+$orange
 ########################################################################################
 "
 enter_continue
@@ -228,7 +230,7 @@ $orange
     
     If you detach and attach the drive, with the fstab file NOT correctly configured,
     AND, if the /media/$USER/parmanode/ directoiry exists, then the Linux auto-mount
-    plug n play feature will probably mount to /media/$USER/parmanode1 , causing
+    plug n play feature will probably mount to /media/$USER/parmanode${cyan}1$orange, causing
     pandamonium. If the fstab entry is correct, plug n play will mount to the correct
     location.
 
@@ -263,6 +265,8 @@ $green
          sudo mkdir /media/$USER/parmanode/.bitcoin    
 $cyan
 
+
+
                                    Make symlink
 $orange
     If the directory $HOME/.bitcoin exists, it needs to be moved (backed up) or
@@ -272,7 +276,7 @@ $orange
     the external drive...
 $green
         cd ~ && ln -s /media/$USER/parmanode/.bitcoin .bitcoin
-
+$orange
 ########################################################################################
 "
 enter_continue
@@ -289,7 +293,7 @@ $green
         cd ~/.parmanode
         nano .parmanode.conf
 $orange
-    This will open the nano text editory. If you see 'drive=internal', delete 
+    This will open the nano text editor. If you see 'drive=internal', delete 
     such a line. If you don't see 'drive=external' then add that line, and save and
     exit.
 
