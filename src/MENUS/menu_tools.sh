@@ -9,6 +9,8 @@ echo -e "
 
 
               (ppp)   Connect to Parman's node...
+            
+              (dfat)  Drive format assist tool
 
               (pn)    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
@@ -118,6 +120,10 @@ case $choice in
 
       rs|RS)
       rsync
+      ;;
+
+      dfat|DFAT)
+      format_assist
       ;;
 
       q|Q|Quit|QUIT)
