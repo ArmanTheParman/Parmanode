@@ -97,8 +97,17 @@ if [[ $(uname) == "Darwin" ]] ; then
     fi
 
 if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
-    echo "No new drive detected. DISCONNECT DRIVE and try again. Hit <enter>."
-    read ; continue 
+    echo -e "
+########################################################################################
+
+    No new drive detected.$red DISCONNECT DRIVE$orange and hit $green<enter>$orange try again. 
+
+    If you keep getting this error, try different ports, or try the assisted drive 
+    format function in the Parmanode --> Tools menu. 
+
+########################################################################################
+"
+read ; continue 
 fi
 
 
