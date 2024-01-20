@@ -106,7 +106,7 @@ sleep 5
 ./configure $options $gui
 debug "after configure"
 
-while true do
+while true ; do
 clear
 # j will be set to $(nproc) or user choice
 echo -e "
