@@ -8,6 +8,7 @@ function write_to_fstab {
    TYPE=$(blkid | grep $UUID | awk '{print $5}' | cut -d \" -f 2)
    debug "TYPE detected, $TYPE"
    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab > /dev/null 
+   debug "pause after fstab write"
    log "bitcoin" "fstab grep output for parmanode:" && \
    grep "parmanode" /etc/fstab >> $HOME/.parmanode/bitcoin.log     
 }
