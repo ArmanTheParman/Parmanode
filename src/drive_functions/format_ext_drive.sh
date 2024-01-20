@@ -1,4 +1,5 @@
 function format_ext_drive {
+debug "skip formatting variable = $skip_formatting"
 if [[ $skip_formatting == true ]] ; then 
 log "importdrive" "skipped formatting" ; return 0 ; fi
 #quit if internal drive chosen
