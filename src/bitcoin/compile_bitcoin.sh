@@ -8,7 +8,7 @@ rm -rf ./bitcoin
 
 git clone https://github.com/bitcoin/bitcoin.git 
 cd bitcoin
-git checkout bitcoin26.0
+git checkout v26.0
 debug "after clone"
 
 ./autogen.sh
