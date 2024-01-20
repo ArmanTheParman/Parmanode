@@ -5,8 +5,8 @@ pkg-config python3 patch bison autoconf libboost-all-dev -y
 debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
-#rm -rf ./bitcoin
-#git clone https://github.com/bitcoin/bitcoin.git 
+rm -rf ./bitcoin
+git clone https://github.com/bitcoin/bitcoin.git 
 cd bitcoin
 git checkout v26.0
 debug "after clone"
@@ -122,7 +122,7 @@ q|Q) exit ;; p|P|M|m) back2main ;;
 esac
 
 while true ; do
-clear
+set_terminal
 # j will be set to $(nproc) or user choice
 echo -e "
 ########################################################################################
@@ -141,7 +141,7 @@ $orange
 ########################################################################################
 "
 read choice
-if [[ $choice != o ]] ; then j=$(nproc) ; fi
+if [[ $choice != o ]] ; then j=$(nproc) ; break ; fi
 
 clear
 echo -e "
