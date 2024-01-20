@@ -3,7 +3,7 @@ function write_to_fstab {
 
    if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
    # exfat drives don't work in fstab and cause issues.
-   if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab because drive not ext4" ; return ; fi
+   if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab because drive not ext4. Is $TYPE" ; return ; fi
 
    TYPE=$(blkid | grep $UUID | awk '{print $5}' | cut -d \" -f 2)
    debug "TYPE detected, $TYPE"
