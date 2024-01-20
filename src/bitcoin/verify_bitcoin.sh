@@ -4,8 +4,8 @@ if [[ $verify == skip ]] ; then return 0 ; fi #skipverify argument set in parman
 cd $HOME/parmanode/bitcoin
 
 # get Bitcoin Shasums
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
 
 if ! which gpg >/dev/null  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
