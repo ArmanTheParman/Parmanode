@@ -36,11 +36,34 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; 
 esac
 
+clear
+echo -e "
+########################################################################################
+$cyan
+    There are a few things to do to manually 'import' the drive to Parmanode...
+$orange
+                        1)  Format drive to ext4
+                        2)  Fstab entry
+                        3)  Correct mount point
+                        4)  Mount point permissions
+                        5)  Mount the drive
+                        6)  UUID in parmanode.conf (optional)
+                        7)  Make .bitcoin directory
+                        8)  symlink to ext drive
+                        9)  drive setting in parmanode.conf 
+                        10) make bitcoin.conf 
+
+########################################################################################
+"
+enter_continue
+
 
 clear
 echo -e "
 ########################################################################################
-
+$cyan
+                              FORMATTING THE DRIVE
+$orange
    The commands $cyan 'lsblk'$orange and$cyan 'sudo blkid'$orange will list your drives.$cyan 'sudo'$orange is needed with
    the blkid command in order to refresh the state - I don't know why.
 $green
@@ -109,10 +132,12 @@ esac
 clear ; echo -e "
 ########################################################################################
 
-    The next thing to do is to format the drive. I suggest you do$cyan 'lsblk'$orange and 
-$cyan    'sudo blkid'$orange again, just to be sure there are no changes to the drive names.
+    The next thing to do is to format the drive to ext4 file system. 
 
-    Then, we can format the drive...
+    I suggest you do$cyan 'lsblk'$orange and $cyan 'sudo blkid'$orange again, just to be 
+    sure there are no changes to the drive names.
+
+    Then, format the drive...
 $green
     sudo mkfs.ext4 -F -L \"parmanode\" /dev/sdb
 $orange
@@ -142,7 +167,9 @@ esac
 set_terminal_wide ; echo -e "
 
 ##############################################################################################################
-
+$cyan
+                                        FSTAB (BE CAREFUL)
+$orange
     The next thing to do is to make an entry in /etc/fstab so that the drive mounts when the computer 
     reboots. Ths is not strictly necessary - sometimes the drive mounts anyway when you log in, but with
     the fstab entry, it will mount BEFORE you log in after a reboot. This is what you want if you need
@@ -167,24 +194,143 @@ set_terminal_wide ; echo -e "
 "
 enter_continue
 
+set_terminal ; echo -e "
+########################################################################################
+$cyan 
+                                    MOUNT POINT
+$orange
+    If the /media/$USER/parmanode/ directory doesn't exist, you need to create it
+    manually in order to mount th drive there. 
+$green
+        sudo mkdir -p /media/$USER/parmanode 
+    
+    You also need to make sure the mount point is 'owned' by the current user...
+
+        sudo chown $USER -R /media/$USER/parmanode/
+
+########################################################################################
+"
+enter_continue
+
 set_terminal
 echo -e "
 ########################################################################################
-
-    To trick Parmanode into accepting the drive without going through the import 
-    process, then next thing to do is to create a hidden directory in the drive's 
-    root directory.
-    
-    Mount the drive...
-
-        sudo mount /dev/sdb/ /media/$USER/parmanode/
-    
+$cyan 
+                                Mount the drive
+$orange
+$green
+    sudo mount /dev/sdb/ /media/$USER/parmanode/
+$orange 
     This mounts the drive to the correct location for Parmanode to function properly.
-    If the /media/$USER/parmanode/ directory doesn't exist, you need to create it
-    manually in order to mount it there, but if fstab will be mounting the drive, then
-    the parmanode directory does not need to exist.
+    
+    If you set up the fstab file correctly,$green 'sudo mount -a'$orange will mount the drive.
+    Rebooting will also do it. Otherwise, use the mount command above.
+    
+    If you detach and attach the drive, with the fstab file NOT correctly configured,
+    AND, if the /media/$USER/parmanode/ directoiry exists, then the Linux auto-mount
+    plug n play feature will probably mount to /media/$USER/parmanode1 , causing
+    pandamonium. If the fstab entry is correct, plug n play will mount to the correct
+    location.
 
+########################################################################################
+"
+enter_continue
 
+clear
+echo -e "
+########################################################################################
+$cyan
+                                    UUID
+$orange 
+    It's optional but you can add a line to the parmanode.conf file
 
+    UUID=
 
+    and fill in the UUID string.
+
+########################################################################################
+"
+enter_continue
+
+clear
+echo -e "
+########################################################################################
+$cyan
+                              Bitcoin Data Directory  
+$orange
+    Make a directory for the bitcoin data on the external drive
+$green
+         sudo mkdir /media/$USER/parmanode/.bitcoin    
+$cyan
+
+                                   Make symlink
+$orange
+    If the directory $HOME/.bitcoin exists, it needs to be moved (backed up) or
+    deleted.
+
+    Then create a symlink from the default data directory on the internal drive to 
+    the external drive...
+$green
+        cd ~ && ln -s /media/$USER/parmanode/.bitcoin .bitcoin
+
+########################################################################################
+"
+enter_continue
+
+clear
+echo -e "
+########################################################################################
+$cyan
+                        Parmanode.conf drive setting
+$orange
+    Finally, enter the external drive choice for bitcoin in the parmanode.conf
+    directory.
+$green
+        cd ~/.parmanode
+        nano .parmanode.conf
+$orange
+    This will open the nano text editory. If you see 'drive=internal', delete 
+    such a line. If you don't see 'drive=external' then add that line, and save and
+    exit.
+
+########################################################################################
+"
+enter_continue
+clear ; echo -e "
+########################################################################################
+$cyan
+                                bitcoin.conf 
+$orange
+    Finally, inside the external drive bitcoin data directory, create a file called
+    bitcoin.conf
+    
+    In it add these lines...
+$green
+        server=1
+        daemon=1
+        rpcport=8332
+        txindex=1
+        blockfilterindex=1
+
+        zmqpubrawblock=tcp://127.0.0.1:28332
+        zmqpubrawtx=tcp://127.0.0.1:28333
+
+        whitelist=127.0.0.1
+        rpcbind=0.0.0.0
+        rpcallowip=127.0.0.1
+        rpcallowip=10.0.0.0/8
+        rpcallowip=192.168.0.0/16
+        rpcallowip=172.17.0.0/16 
+        rpcallowip=172.21.0.0/16 
+        
+        rpcuser=parman
+        rpcpassword=parman
+$orange
+    You can change the username and password to anything you want.
+
+    Finally, you can start bitcoin from the Parmanode menu.
+
+########################################################################################
+"
+enter_continue
 }
