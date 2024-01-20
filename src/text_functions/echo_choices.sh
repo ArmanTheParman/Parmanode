@@ -37,6 +37,12 @@ echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)
 return 0
 fi
 
+if [[ $1 == "epmq" ]]
+then
+echo -e " ${yellow}Hit$cyan enter$yellow to continue, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit." 
+return 0
+fi
+
 if [[ $1 == "xpq" ]]
 then
 echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)$yellow for previous,$green (q)$yellow to quit. 
