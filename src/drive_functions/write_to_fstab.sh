@@ -1,6 +1,6 @@
 function write_to_fstab {
+   local $(sudo blkid -o export $disk) >/dev/null
    UUID="$1"  
-
    if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
    # exfat drives don't work in fstab and cause issues.
    if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab because drive not ext4. Is $TYPE" ; return ; fi
