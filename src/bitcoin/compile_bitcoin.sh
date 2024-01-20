@@ -1,6 +1,7 @@
 function compile_bitcoin {
 
-sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils pkg-config python3 patch bison autoconf -y
+sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils \
+pkg-config python3 patch bison autoconf libboost-all-dev -y
 debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
@@ -53,13 +54,13 @@ done
 
 while true ; do
 clear
-echo "
+echo -e "
 ########################################################################################
 
     Parmanode will be running the command...
-
+$green
       ./configure $options --with-gui=no
-
+$orange
     Hit$green hfsp$orange to change the final option to --with-gui=yes
 
 ########################################################################################
@@ -82,10 +83,10 @@ clear
 echo -e "
 ########################################################################################
 
-    The command that will be run is...
-
+    The command, now final, that will be run is...
+$green
     ./configure $options $gui
-
+$orange
 ########################################################################################
 "
 choose "epmq"
@@ -103,7 +104,22 @@ Please wait...
 sleep 5 
 
 ./configure $options $gui
-debug "after configure"
+
+echo -e "
+########################################################################################
+
+    If you saw no errors, hit <enter> to continue.
+
+    Otherwise exit, and correct the error yourself, or report to Parman via Telegram 
+    chat group for help.
+
+########################################################################################
+"
+choose "epmq"
+read choice
+case $choice in
+q|Q) exit ;; p|P|M|m) back2main ;;
+esac
 
 while true ; do
 clear
