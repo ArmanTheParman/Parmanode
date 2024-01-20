@@ -89,6 +89,7 @@ if [[ $OS == "Linux" ]] ; then
         get_UUID "$disk" || return 1
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
+        debug "after write_to_fstab"
 
         # Mounting... Make the mount directory, mount the drive, set the permissions,
         # and label drive (Last bit is redundant)
