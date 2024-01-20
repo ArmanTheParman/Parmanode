@@ -144,9 +144,9 @@ debug "Pausing here." #when debugging, I can check for error messages and syntax
 #message of the day
 [ $debug = menu ] || motd
 
-# if [[ $test == true ]] ; then
-# compile_bitcoin
-# fi
+if [[ $test == true ]] ; then
+compile_bitcoin
+fi
 debug "pause"
 
 # This is the main program, which is a menu that loops.
