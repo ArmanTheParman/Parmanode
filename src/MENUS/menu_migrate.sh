@@ -2,7 +2,7 @@ function menu_migrate {
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan                            
-                               Migrate Drive Menu            $orange                   
+                                Migrate Drive Menu            $orange                   
 
 ########################################################################################
 
