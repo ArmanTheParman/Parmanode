@@ -1,14 +1,14 @@
 function compile_bitcoin {
 
-sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils pkg-config python3 patch bison autoconf
+sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils pkg-config python3 patch bison autoconf -y
 debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 rm -rf ./bitcoin
-mkdir bitcoin
 
-git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
+git clone https://github.com/bitcoin/bitcoin.git 
 cd bitcoin
+git checkout bitcoin26.0
 debug "after clone"
 
 ./autogen.sh
