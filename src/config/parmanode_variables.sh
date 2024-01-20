@@ -9,7 +9,7 @@ elif [[ $1 == d4 ]] ; then export debug=4
 elif [[ $1 == d5 ]] ; then export debug=5  
 elif [[ $1 == d6 ]] ; then export debug=6  
 elif [[ $1 == d7 ]] ; then export debug=7  
-elif [[ $1 == m  ]] ; then export debug=menu ; export skip_intro=true ; fi
+elif [[ $1 == m  ]] ; then export debug=menu ; export skip_intro=true 
 else export debug=0 
 fi
 
