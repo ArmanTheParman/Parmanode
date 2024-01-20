@@ -4,9 +4,8 @@ sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdm
 debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
-rm -rf ./bitcoin
-
-git clone https://github.com/bitcoin/bitcoin.git 
+#rm -rf ./bitcoin
+#git clone https://github.com/bitcoin/bitcoin.git 
 cd bitcoin
 git checkout v26.0
 debug "after clone"
