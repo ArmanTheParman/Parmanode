@@ -1,5 +1,9 @@
 function compile_bitcoin {
 if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
+export GIT_AUTHOR_NAME="Temporary Parmanode"
+export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
+export GIT_COMMITTER_NAME="Parmanode Committer"
+export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 clear
 echo -e "{$pink}Upgradeing, and installing dependencies to compile bitcoin..."
 sleep 1
@@ -75,6 +79,10 @@ elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
     fi
 
 fi #end if compile true, and elif knotsbitcoin
+unset GIT_AUTHOR_NAME
+unset GIT_AUTHOR_EMAIL
+unset export GIT_COMMITTER_NAME
+unset export GIT_COMMITTER_EMAIL
 
 debug "after clone"
 
@@ -89,8 +97,8 @@ clear ; echo -e "
 $green
    ./configure --with-gui=no
 $orange
-   If you want to add any additional options, type them in, then hit <enter>,
-   otherwise, just hit <enter>
+   If you want to add any additional options,$cyan type them in, then hit <enter>$orange,
+   otherwise, just hit $cyan<enter>$orange
 
    If you really want the gui, you can change that option a bit later if you're not
    running Knots (GUI compile failed testing with Knots).
@@ -130,7 +138,7 @@ $green
       ./configure $options --with-gui=no
 $orange
     Hit$green hfsp$orange to change the final option to --with-gui=yes (not available
-    for Knots))
+    for Knots)
 
 ########################################################################################
 "
