@@ -12,7 +12,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get --fix-broken install -y
 sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils -y
-sudo apt-get pkg-config python3 patch bison autoconf libboost-all-dev autoconf -y
+sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev autoconf -y
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 
