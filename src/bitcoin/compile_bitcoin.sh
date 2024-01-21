@@ -131,8 +131,8 @@ $orange
 ########################################################################################
 "
 choose "xpmq"
-set_terminal
 read choice
+set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 hfsp|HFSP)
