@@ -5,7 +5,7 @@ export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
 export GIT_COMMITTER_NAME="Parmanode Committer"
 export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 clear
-echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin..."
+echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
 sleep 1
 
 sudo apt-get update -y
