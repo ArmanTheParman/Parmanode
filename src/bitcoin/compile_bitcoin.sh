@@ -150,7 +150,7 @@ set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 hfsp|HFSP)
-# if [[ $knotsbitcoin == true ]] ; then break ; fi
+# if [[ $knotsbitcoin == true ]] ; then break ; fi #comment can turn gui=yes for knots on or off
 export gui="--with-gui=yes"
 clear 
 sudo apt install -y qtcreator qtbase5-dev qt5-qmake 
