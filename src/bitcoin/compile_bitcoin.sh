@@ -68,7 +68,7 @@ git checkout $version
         debug "patch applied"
     fi
 
-fi #end level 2 if version choose
+fi #end level 2 if 
 
 elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
 
