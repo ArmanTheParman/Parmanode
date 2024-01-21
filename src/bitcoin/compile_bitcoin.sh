@@ -1,31 +1,64 @@
 function compile_bitcoin {
+if [[ $compile_bitcoin != true ]] ; then return 0 ; fi
+clear
+echo "installing dependencies to compile bitcoin..."
+sleep 1
 
 sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils \
 pkg-config python3 patch bison autoconf libboost-all-dev -y
-debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
-rm -rf ./bitcoin
-if [[ $test == true ]] ; then debug "test true"
 
-    if [[ -e $hp/bitcoin ]] ; then
-        debug "hp/b exists"
-        cd bitcoin
-        git pull
-        git checkout v26.0
-    else
-        debug "hp/b doesn't exist"
-        git clone https://github.com/bitcoin/bitcoin.git 
-        cd bitcoin
-        git checkout v26.0
+
+if [[ $compile_bitcoin == true ]] ; then
+sudo rm -rf $hp/bitcoin_github
+git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
+cd bitcoin_github
+
+if [[ $version == "choose" ]] ; then # nested level 2 if
+
+while true ; do
+clear ; echo -e "
+########################################################################################
+
+    Which version of Bitcoin Core do you want?
+
+
+                            25)    v25.0
+$green
+                            26)    v26.0 (latest reslease)
+$orange
+
+########################################################################################
+"
+choose "x" ; read choice
+case $choice in
+    25) 
+    export version="v25.0" ;;
+    26)
+    export version="v26.0" ;;
+    *)
+    invalid ;;
+esac
+done
+if [[ $version == "latest" ]] ; then export version="master" ; fi
+git checkout $version
+
+#apply ordinals patch
+    if [[ $ordinals_patch == true ]] ; then
+        curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
+        git apply filter-ordinal.patch
+        debug "patch applied"
     fi
 
-else
-    debug "test not true"
-    git clone https://github.com/bitcoin/bitcoin.git 
-    cd bitcoin
-    git checkout v26.0
-fi
+fi #end level 2 if version choose
+
+elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
+sudo rm -rf $hp/bitcoinknots_github
+git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github
+cd bitcoinknots_github
+git checkout $version ; debug "version for knots is $version"
+fi #end if compile true
 
 
 debug "after clone"
