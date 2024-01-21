@@ -105,8 +105,7 @@ $orange
    If you want to add any additional options,$cyan type them in, then hit <enter>$orange,
    otherwise, just hit $cyan<enter>$orange
 
-   If you really want the gui, you can change that option a bit later if you're not
-   running Knots (GUI compile failed testing with Knots).
+   If you really want the gui, you can change that option a bit later.
 
 ########################################################################################
 "
@@ -142,8 +141,7 @@ echo -e "
 $green
       ./configure $options --with-gui=no
 $orange
-    Hit$green hfsp$orange to change the final option to --with-gui=yes (not available
-    for Knots)
+    Hit$green hfsp$orange to change the final option to --with-gui=yes 
 
 ########################################################################################
 "
