@@ -6,16 +6,18 @@ debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 rm -rf ./bitcoin
-if [[ $test == true ]] ; then
-    debug "test true"
+if [[ $test == true ]] ; then debug "test true"
+
     if [[ -e $hp/bitcoin ]] ; then
+        debug "hp/b exists"
         cd bitcoin
         git pull
         git checkout v26.0
     else
-    git clone https://github.com/bitcoin/bitcoin.git 
-    cd bitcoin
-    git checkout v26.0
+        debug "hp/b doesn't exist"
+        git clone https://github.com/bitcoin/bitcoin.git 
+        cd bitcoin
+        git checkout v26.0
     fi
 
 else
