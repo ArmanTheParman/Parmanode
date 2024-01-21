@@ -32,8 +32,10 @@ read choice
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-1|25) export version="25.0" ; break ;;
-2|26) export version="26.0" ; break ;;
+1|25) 
+export version="25.0" ; export bitcoin_compile=false ; break ;;
+2|26) 
+export version="26.0" ; export bitcoin_compile=false ; break ;;
 3) 
 export bitcoin_compile=true ; export version=choose ; break ;;
 4)
