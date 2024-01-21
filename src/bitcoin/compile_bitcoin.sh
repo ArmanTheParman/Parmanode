@@ -10,7 +10,8 @@ pkg-config python3 patch bison autoconf libboost-all-dev -y
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 
 
-if [[ $compile_bitcoin == true ]] ; then
+if [[ $compile_bitcoin == "true" ]] ; then
+debug "in compile true"
 sudo rm -rf $hp/bitcoin_github
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
 cd bitcoin_github
