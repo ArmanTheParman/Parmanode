@@ -263,7 +263,7 @@ please_wait noclear
 
 sudo make -j $j check > $dp/bitcoin_compile_check.log
 
-echo -e "
+echo -e "$orange
 ########################################################################################
 
     Tests done. Hit $cyan<enter>$orange to continue on to the installation (copies binaries
