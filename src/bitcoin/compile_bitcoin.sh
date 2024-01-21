@@ -35,9 +35,9 @@ $orange
 choose "x" ; read choice
 case $choice in
     25) 
-    export version="v25.0" ;;
+    export version="v25.0" ; break ;;
     26)
-    export version="v26.0" ;;
+    export version="v26.0" ; break ;;
     *)
     invalid ;;
 esac
