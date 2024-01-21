@@ -1,13 +1,13 @@
 function compile_bitcoin {
 if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
+
+#to reduce errors on scrren, making temporary git variables...
 export GIT_AUTHOR_NAME="Temporary Parmanode"
 export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
 export GIT_COMMITTER_NAME="Parmanode Committer"
 export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 clear
 echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-sleep 1
-
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get --fix-broken install -y
