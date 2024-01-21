@@ -12,9 +12,19 @@ cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1
 
 if [[ $bitcoin_compile == "true" ]] ; then
 debug "in compile true"
-sudo rm -rf $hp/bitcoin_github
+
+if [[ -e $hp/bitcoin_github ]] ; then cd $hp/bitcoin_github && git pull 
+else
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
-cd bitcoin_github
+fi
+
+cd $hp/bitcoin_github
+
+
+
+
+
+
 
 if [[ $version == "choose" ]] ; then # nested level 2 if
 

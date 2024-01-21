@@ -1,4 +1,10 @@
 function choose_bitcoin_version {
+if [[ $OS == Mac ]] ; then
+export bitcoin_compile=false
+export version="26.0"
+return 0
+fi
+
 while true ; do
 clear ; echo -e "
 ########################################################################################
