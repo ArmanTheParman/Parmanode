@@ -259,6 +259,7 @@ $orange
 
 "
 enter_continue
+please_wait noclear
 
 sudo make -j $j check > $dp/bitcoin_compile_check.log
 
