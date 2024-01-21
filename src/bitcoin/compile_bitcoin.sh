@@ -247,12 +247,13 @@ debug "after make"
 set_terminal
 echo -e "
 ########################################################################################
-
-Running tests. Open a new terminal and type ...
+$cyan
+    Running tests.$orange Will only take a few minutes. 
+    To see the output in realtime, you can open a new terminal and type:
 $green
-tail -f ~/.parmanode/bitcoin_compile_check.log
+    tail -f ~/.parmanode/bitcoin_compile_check.log
 $orange
-... to see the output in real time. Then hit $cyan<control>-c$orange to stop it.
+    Then hit $cyan<control>-c$orange to stop it.
 
 ########################################################################################
 
