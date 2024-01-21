@@ -41,13 +41,16 @@ debug "bitcoin - after make_bitcoin_directories"
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
             fi
+            
 #choose version
 choose_bitcoin_version
 debug "choose_bitcoin_version done"
 
-debug "bitcoin - after import drive chown; before download bitcoin"
-# Download bitcoin software
+# Download bitcoin software & verify
+if [[ $bitcoin_compile = false ]] ; then
+debug "bitcoin - before download bitcoin"
 download_bitcoin || return 1
+fi
 
 #setup bitcoin.conf
 if [[ $importdrive != true ]] ; then
