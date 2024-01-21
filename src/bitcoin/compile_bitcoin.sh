@@ -1,5 +1,5 @@
 function compile_bitcoin {
-if [[ $compile_bitcoin == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
+if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
 clear
 echo "installing dependencies to compile bitcoin..."
 sleep 1
