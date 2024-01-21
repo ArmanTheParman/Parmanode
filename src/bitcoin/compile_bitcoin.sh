@@ -278,5 +278,13 @@ esac
 
 sudo make install
 debug "after make check && make install"
+if [[ $knotsbitcoin == true ]] ; then
+cp $hp/knotsbitcoin_github/src/bitcoind /usr/local/bin/ 2>/dev/null
+cp $hp/knotsbitcoin_github/src/bitcoin-cli /usr/local/bin/ 2>/dev/null
+cp $hp/knotsbitcoin_github/src/bitcoin-tx /usr/local/bin/ 2>/dev/null
+cp $hp/knotsbitcoin_github/src/bitcoin-util /usr/local/bin/ 2>/dev/null
+cp $hp/knotsbitcoin_github/src/bitcoin-qt /usr/local/bin/ 2>/dev/null
+fi
+
 success "bitcoin" "being compiled"
 }
