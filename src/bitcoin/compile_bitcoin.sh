@@ -22,12 +22,10 @@ git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
 cd $hp/bitcoin_github
 fi
 
-cd $hp/bitcoin_github
-
 if [[ $version == "choose" ]] ; then # nested level 2 if
 
 while true ; do
-clear ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
     Which version of Bitcoin Core do you want?
