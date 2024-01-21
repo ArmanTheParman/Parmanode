@@ -54,7 +54,10 @@ parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin=true ; export version="v25.1.knots20231115" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=byo"
-export byo_bitcoin=true ; break ;;
+clear ; echo "not available yet" ; sleep 3 
+continue
+# export byo_bitcoin=true ; break 
+;;
 7)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=latest ; break ;;
