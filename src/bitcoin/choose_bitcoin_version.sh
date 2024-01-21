@@ -6,7 +6,7 @@ return 0
 fi
 
 while true ; do
-clear ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
     THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
