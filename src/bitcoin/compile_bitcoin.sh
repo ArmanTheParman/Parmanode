@@ -87,7 +87,9 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 hfsp|HFSP)
 export gui="--with-gui=yes"
-clear ; sudo apt-get install qt5-default -y
+clear 
+sudo apt-get install qt5-default -y
+debug "after install qt5"
 break
 ;;
 *)
