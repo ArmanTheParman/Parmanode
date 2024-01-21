@@ -59,7 +59,7 @@ done
 if [[ $version == "latest" ]] ; then export version="master" ; fi
 git checkout $version
 
-#apply ordinals patch
+#apply ordinals patch to v25 or v26
     if [[ $ordinals_patch == "true" ]] ; then
         git checkout -b parmanode_ordinals_patch
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
