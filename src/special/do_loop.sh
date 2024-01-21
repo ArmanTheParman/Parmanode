@@ -137,17 +137,13 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
+
 debug "Pausing here." #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 ########################################################################################
 
 #message of the day
 [ $debug = menu ] || motd
-
-if [[ $test == true ]] ; then
-compile_bitcoin
-fi
-debug "pause"
 
 # This is the main program, which is a menu that loops.
 menu_main
