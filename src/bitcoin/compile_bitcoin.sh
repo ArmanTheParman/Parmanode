@@ -1,4 +1,5 @@
 function compile_bitcoin {
+#menu choices carried in by variables.
 set_terminal #clear
 if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
 
