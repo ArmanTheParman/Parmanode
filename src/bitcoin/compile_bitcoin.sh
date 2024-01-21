@@ -171,7 +171,7 @@ sleep 5
 echo -e "
 ########################################################################################
 
-    If you saw no errors, hit <enter> to continue.
+    If you saw no errors, hit $cyan<enter>$orange to continue.
 
     Otherwise exit, and correct the error yourself, or report to Parman via Telegram 
     chat group for help.
@@ -180,6 +180,7 @@ echo -e "
 "
 choose "epmq"
 read choice
+set_terminal
 case $choice in
 q|Q) exit ;; p|P|M|m) back2main ;;
 esac
@@ -215,7 +216,7 @@ echo -e "
 ########################################################################################
 "
 read j
-clear
+set_terminal
 echo -e "
 ########################################################################################
 
@@ -234,21 +235,39 @@ sleep 3
 make -j $j
 debug "after make"
 
-clear
-echo "
-Running tests. Open a new terminal and type 
-'tail -f ~/.parmanode/bitcoin_compile_check.log' to see the output in real time.
-"
-sudo make -j $j check > $dp/bitcoin_compile_check.log
+set_terminal
+echo -e "
+########################################################################################
 
-echo "
+Running tests. Open a new terminal and type ...
+$green
+tail -f ~/.parmanode/bitcoin_compile_check.log
+$orange
+... to see the output in real time. Then hit $cyan<control>-c$orange to stop it.
 
+########################################################################################
 
-Tests done. Hit <enter> to continue on to the installation (copies binaries
-to system wide directories).
 "
 enter_continue
 
+sudo make -j $j check > $dp/bitcoin_compile_check.log
+
+echo -e "
+########################################################################################
+    Tests done. Hit $cyan<enter>$orange to continue on to the installation (copies binaries
+    to system wide directories).
+
+    If you saw errors, hit$cyan x$orange to abandon the installation. You need to then 
+    uninstall the partial bitcoin installation before you can try again.
+
+    Note: If you selected ordinals patch, then some transaction tests failing would
+    be normal. Carry on.
+########################################################################################
+"
+choose "xpmq"
+read choice
+case $choice in
+q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 sudo make install
 debug "after make check && make install"
 
