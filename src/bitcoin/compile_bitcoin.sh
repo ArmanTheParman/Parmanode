@@ -255,14 +255,19 @@ sudo make -j $j check > $dp/bitcoin_compile_check.log
 
 echo -e "
 ########################################################################################
+
     Tests done. Hit $cyan<enter>$orange to continue on to the installation (copies binaries
     to system wide directories).
 
-    If you saw errors, hit$cyan x$orange to abandon the installation. You need to then 
-    uninstall the partial bitcoin installation before you can try again.
+    If you saw errors, hit$cyan x$orange to abandon the installation. You would need 
+    to then uninstall the partial bitcoin installation before you can try again.
 
     Note: If you selected ordinals patch, then some transaction tests failing would
     be normal. Carry on.
+
+    For Knots Bitcoin, if you see some bitcoin.ico error, it's probably safe to 
+    continue, it's just an icon file.
+
 ########################################################################################
 "
 choose "xpmq"
