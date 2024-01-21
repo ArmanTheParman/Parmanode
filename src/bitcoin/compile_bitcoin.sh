@@ -19,6 +19,7 @@ git stash ; git checkout master ; git branch -D parmanode_ordinals_patch 2>/dev/
 git pull 
 else
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
+cd $hp/bitcoin_github
 fi
 
 cd $hp/bitcoin_github
