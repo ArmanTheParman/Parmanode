@@ -1,7 +1,6 @@
 function download_bitcoin {
 
 cd $HOME/parmanode/bitcoin
-export version="26.0"
 set_terminal
 echo -e "
 ########################################################################################
