@@ -20,12 +20,6 @@ fi
 
 cd $hp/bitcoin_github
 
-
-
-
-
-
-
 if [[ $version == "choose" ]] ; then # nested level 2 if
 
 while true ; do
@@ -56,7 +50,7 @@ if [[ $version == "latest" ]] ; then export version="master" ; fi
 git checkout $version
 
 #apply ordinals patch
-    if [[ $ordinals_patch == true ]] ; then
+    if [[ $ordinals_patch == "true" ]] ; then
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
         git apply filter-ordinal.patch
         debug "patch applied"
@@ -65,12 +59,15 @@ git checkout $version
 fi #end level 2 if version choose
 
 elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
-sudo rm -rf $hp/bitcoinknots_github
-git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github
-cd bitcoinknots_github
-git checkout $version ; debug "version for knots is $version"
-fi #end if compile true
 
+    if [[ -e $hp/bitcoinknots_github ]] ; then 
+        cd $hp/bitcoinknots_github ; git checkout $version ; debug "after checkout knots version, $version"
+    else
+        cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
+        git checkout $version ; debug "version for knots is $version"
+    fi
+
+fi #end if compile true, and elif knotsbitcoin
 
 debug "after clone"
 
