@@ -282,6 +282,7 @@ echo -e "$orange
 "
 choose "xpmq"
 read choice
+clear
 case $choice in
 q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
