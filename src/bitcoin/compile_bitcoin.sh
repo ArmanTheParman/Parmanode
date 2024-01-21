@@ -90,7 +90,8 @@ $orange
    If you want to add any additional options, type them in, then hit <enter>,
    otherwise, just hit <enter>
 
-   If you really want the gui, you can change that option a bit later.
+   If you really want the gui, you can change that option a bit later if you're not
+   running Knots (GUI compile failed testing with Knots).
 
 ########################################################################################
 "
@@ -126,7 +127,8 @@ echo -e "
 $green
       ./configure $options --with-gui=no
 $orange
-    Hit$green hfsp$orange to change the final option to --with-gui=yes
+    Hit$green hfsp$orange to change the final option to --with-gui=yes (not available
+    for Knots))
 
 ########################################################################################
 "
@@ -136,6 +138,7 @@ set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 hfsp|HFSP)
+ if [[ $knotsbitcoin == true ]] ; then break ; fi
 export gui="--with-gui=yes"
 clear 
 sudo apt install -y qtcreator qtbase5-dev qt5-qmake 
