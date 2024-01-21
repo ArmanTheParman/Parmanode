@@ -51,7 +51,7 @@ compile_bitcoin
 debug "compile function done"
 
 # Download bitcoin software & verify
-if [[ $bitcoin_compile = false ]] ; then
+if [[ $bitcoin_compile == false ]] ; then
 debug "bitcoin - before download bitcoin"
 download_bitcoin || return 1
 fi
