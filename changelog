@@ -1,5 +1,8 @@
 Version 3.24.0
+    -Option to include filter-ordinals.patch by Luke Dashyr Jr
+    -Options to compile bitcoin
     -bitcoin v26.0 option
+    -Option to install Bitcoin Knots version of Bitcoin Core
     -assisted drive format tool
     -small bug fixes
 Version 3.23.1
