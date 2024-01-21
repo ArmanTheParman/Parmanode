@@ -144,7 +144,7 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq"
+choose "xpmq" #prints out a standard menu, then choice variable taken to case
 read choice
 set_terminal
 case $choice in
