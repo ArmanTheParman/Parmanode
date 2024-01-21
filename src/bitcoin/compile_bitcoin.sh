@@ -172,7 +172,7 @@ clear
 
 echo -e "
 Please wait...
-
+$(pwd)
 "
 sleep 5 
 
