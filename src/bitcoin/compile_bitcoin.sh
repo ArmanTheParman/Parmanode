@@ -152,7 +152,7 @@ break
 esac
 done
 clear
-echo -e "
+echo -e "$orange
 ########################################################################################
 
     The command, now final, that will be run is...
