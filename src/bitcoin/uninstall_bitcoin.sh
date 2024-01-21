@@ -56,6 +56,7 @@ parmanode_conf_remove "btc_authentication"
 parmanode_conf_remove "rpcuser"
 parmanode_conf_remove "rpcpassword"
 parmanode_conf_remove "UUID"
+parmanode_conf_remove "bitcoin_choice"
 debug "drive= from parmanode.conf should be removed"
 
 #Remove service file for Linux only
