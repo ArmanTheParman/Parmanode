@@ -41,10 +41,14 @@ debug "bitcoin - after make_bitcoin_directories"
             log "bitcoin" "bitcoin chown run again" && \ 
             log "bitcoin" "ownership statement: $statement" ; fi
             fi
-            
+
 #choose version
 choose_bitcoin_version
 debug "choose_bitcoin_version done"
+
+#compile bitcoin if chosen
+compile_bitcoin
+debug "compile function done"
 
 # Download bitcoin software & verify
 if [[ $bitcoin_compile = false ]] ; then
