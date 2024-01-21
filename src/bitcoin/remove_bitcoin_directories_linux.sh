@@ -51,9 +51,9 @@ set_terminal ; echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:
-    
+$cyan    
                             $HOME/.bitcoin
-
+$orange
     Would like to delete that data or leave it be (skip) ?
 
                             d)          Delete
