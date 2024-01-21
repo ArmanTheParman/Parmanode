@@ -7,21 +7,21 @@ $cyan
 $orange
 ########################################################################################
 $red
-          1)  v25.0 orange (Download and verify 'trusted' releases)
+       1)  v25.0 orange (Download and verify 'trusted' releases)
 $green
-          2)  v26.0 orange (Download and verify 'trusted' releases) - quickest method
+       2)  v26.0 orange (Download and verify 'trusted' releases) - quickest method
 $red
-          3)  Guided compile v25.0/v26.0 
+       3)  Guided compile v25.0/v26.0 
 $green
-          4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashr Jr)
+       4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashr Jr)
 $red
-          5)  Guided compile Knots Bitcoin (Luke Dashr Jr's version of Bitcoin Core,
-              which also has FILTER-ORDINALS patch) version v25.1.knots20231115
+       5)  Guided compile Knots Bitcoin (Luke Dashr Jr's version of Bitcoin Core,
+           which also has FILTER-ORDINALS patch) version v25.1.knots20231115
 $red
-          6)  BYO Bitcoin binary installation (imports to Parmanode) - not available yet
+       6)  BYO Bitcoin binary installation (imports to Parmanode) - not available yet
 $red
-          7)  Guided compile of most recent Github update, ie pre-release
-              (for testing only)
+       7)  Guided compile of most recent Github update, ie pre-release
+           (for testing only)
 $orange
 ########################################################################################   
 "
