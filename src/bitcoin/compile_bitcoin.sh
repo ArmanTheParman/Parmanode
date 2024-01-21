@@ -17,12 +17,12 @@ sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev au
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 
-
 if [[ $bitcoin_compile == "true" ]] ; then
-debug "in compile true"
+debug "in compile true" #pause to check screen ouput
 
 if [[ -e $hp/bitcoin_github ]] ; then 
 cd $hp/bitcoin_github 
+# start fresh from master, but not have to re-download every time I test
 git stash ; git checkout master ; git branch -D parmanode_ordinals_patch 2>/dev/null
 git pull 
 else
