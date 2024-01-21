@@ -1,7 +1,7 @@
 function compile_bitcoin {
 if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
 clear
-echo "installing dependencies to compile bitcoin..."
+echo -e "{$pink}Upgradeing, and installing dependencies to compile bitcoin..."
 sleep 1
 
 sudo apt-get update -y
