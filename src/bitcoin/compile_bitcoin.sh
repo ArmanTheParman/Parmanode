@@ -153,7 +153,7 @@ hfsp|HFSP)
 # if [[ $knotsbitcoin == true ]] ; then break ; fi #comment can turn gui=yes for knots on or off
 export gui="--with-gui=yes"
 clear 
-sudo apt install -y qtcreator qtbase5-dev qt5-qmake 
+sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake 
 debug "after install qt5"
 break
 ;;
