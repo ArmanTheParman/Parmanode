@@ -62,4 +62,10 @@ export bitcoin_compile=true ; export version=latest ; break ;;
 invalid ;;
 esac
 done
+
+if [[ $bitcoin_compile != "false" ]] ; then
+# $hp/bitcoin directory made earlier for downloading compiled bitcoin. Can delete.
+sudo rm -rf $hp/bitcoin >/dev/null 2>&1
+fi
+
 }
