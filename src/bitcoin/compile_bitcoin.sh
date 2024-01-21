@@ -193,7 +193,22 @@ sleep 3
 make -j $j
 debug "after make"
 
-make -j $j check && sudo make install
+clear
+echo "
+Running tests. Open a new terminal and type 
+'tail -f ~/.parmanode/bitcoin_compile_check.log' to see the output in real time.
+"
+sudo make -j $j check > $dp/bitcoin_compile_check.log
+
+echo "
+
+
+Tests done. Hit <enter> to continue on to the installation (copies binaries
+to system wide directories).
+"
+enter_continue
+
+sudo make install
 debug "after make check && make install"
 
 success "bitcoin" "being compiled"
