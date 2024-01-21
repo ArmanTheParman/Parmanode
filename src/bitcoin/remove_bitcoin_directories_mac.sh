@@ -63,9 +63,9 @@ set_terminal ; echo -e "
 ########################################################################################
 
     It appears there is a Bitcoin data directory on the internal drive at:
-    
+$cyan    
                             $HOME/.bitcoin
-
+$orange
     You have choices:
 
                             d)          Delete
