@@ -268,9 +268,9 @@ choose "xpmq"
 read choice
 case $choice in
 q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
+esac
+
 sudo make install
 debug "after make check && make install"
-
 success "bitcoin" "being compiled"
-
 }
