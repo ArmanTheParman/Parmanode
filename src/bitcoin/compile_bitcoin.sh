@@ -6,9 +6,25 @@ debug "after install dependencies"
 
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 rm -rf ./bitcoin
-git clone https://github.com/bitcoin/bitcoin.git 
-cd bitcoin
-git checkout v26.0
+if [[ $test == true ]] ; then
+
+    if [[ -e $hp/bitcoin ]] ; then
+        cd bitcoin
+        git pull
+        git checkout v26.0
+    else
+    git clone https://github.com/bitcoin/bitcoin.git 
+    cd bitcoin
+    git checkout v26.0
+    fi
+
+else
+    git clone https://github.com/bitcoin/bitcoin.git 
+    cd bitcoin
+    git checkout v26.0
+fi
+
+
 debug "after clone"
 
 ./autogen.sh
