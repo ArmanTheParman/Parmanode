@@ -13,9 +13,9 @@ $orange
     you may wish to learn how to do this yourself.
 
     The downloaded files will be at:
-    
+$pink    
                       /home/$(whoami)/parmanode/bitcoin/
-
+$orange
     To learn more about how:
 $pink
                       https://armantheparman.com/gpg-articles 
