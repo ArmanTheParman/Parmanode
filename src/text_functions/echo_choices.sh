@@ -39,7 +39,7 @@ fi
 
 if [[ $1 == "epmq" ]]
 then
-echo -e " ${yellow}Hit$cyan enter$yellow to continue, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit." 
+echo -e " ${yellow}Hit$cyan enter$yellow to continue, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit.$orange" 
 return 0
 fi
 
