@@ -7,7 +7,7 @@ debug "after install dependencies"
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 rm -rf ./bitcoin
 if [[ $test == true ]] ; then
-
+    debug "test true"
     if [[ -e $hp/bitcoin ]] ; then
         cd bitcoin
         git pull
@@ -19,6 +19,7 @@ if [[ $test == true ]] ; then
     fi
 
 else
+    debug "test not true"
     git clone https://github.com/bitcoin/bitcoin.git 
     cd bitcoin
     git checkout v26.0
