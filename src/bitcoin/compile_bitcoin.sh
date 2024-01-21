@@ -13,7 +13,10 @@ cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1
 if [[ $bitcoin_compile == "true" ]] ; then
 debug "in compile true"
 
-if [[ -e $hp/bitcoin_github ]] ; then cd $hp/bitcoin_github && git pull 
+if [[ -e $hp/bitcoin_github ]] ; then 
+cd $hp/bitcoin_github 
+git stash ; git checkout master ; git branch -D parmanode_ordinals_patch 2>/dev/null
+git pull 
 else
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
 fi
@@ -51,8 +54,10 @@ git checkout $version
 
 #apply ordinals patch
     if [[ $ordinals_patch == "true" ]] ; then
+        git checkout -b parmanode_ordinals_patch
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
         git apply filter-ordinals.patch
+        git add . ; git commit -m "ordinals patch applied"
         debug "patch applied"
     fi
 
