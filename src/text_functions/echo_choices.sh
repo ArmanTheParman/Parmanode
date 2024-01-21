@@ -108,7 +108,12 @@ return 0
 }
 
 function please_wait { 
+if [[ $1 == noclear ]] ; then
+true
+else
 set_terminal
+fi
+
 takes="some time"
 if [[ -n $1 ]] ; then takes="$1" ; fi #changes $takes if needed
 
