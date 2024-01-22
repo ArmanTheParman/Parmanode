@@ -47,8 +47,9 @@ sudo mount -a
 cd /media/$USER/parmanode/
 sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
 sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
+debug "chown parmanode drive"
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
-debug "chown working?"
+debug "chown parmanode directoreis"
 
 set_terminal ; echo "
 ########################################################################################
