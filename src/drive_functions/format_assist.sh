@@ -6,11 +6,9 @@ $cyan
                              Drive Format Assist Tool
 $orange
     Sometimes the automated functions in Parmanode won't work to format the drive, 
-    for one reason or another. 
-    
-    It's not necessarily a bug, it's just that some drives aren't going to be 
-    detected by the system as expected, so some manual intervention is required. This 
-    tool will assist you through it.
+    for one reason or another. Some drives aren't going to be detected by the 
+    system as expected, so some manual intervention is required. This tool will 
+    assist you through it.
 
     The usual detection method asks you to remove then connect the target drive,
     allowing Parmanode to measure the drive state in the two scenarios and record it
