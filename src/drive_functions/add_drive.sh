@@ -41,6 +41,7 @@ if [[ $OS == "Linux" ]] ; then
     
     write_to_fstab2
 
+sudo umount /media/$USER/parmanod* 
 sudo mount -a
 
 cd /media/$USER/parmanode/
