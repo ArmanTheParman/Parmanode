@@ -1,3 +1,5 @@
+Version 3.24.1
+    -Drive install bug fixed (symlink target ownership fixed)
 Version 3.24.0
     -Option to include filter-ordinals.patch by Luke Dashyr Jr
     -Options to compile bitcoin
