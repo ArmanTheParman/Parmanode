@@ -37,7 +37,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-    if [[ ! -d /media/$(whoami)/parmanode ]] ; then sudo mkdir -p /media/$(whoami)/parmanode ; fi
+    if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
     
     write_to_fstab2
 
@@ -46,6 +46,7 @@ sudo mount -a
 
 cd /media/$USER/parmanode/
 sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
+sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
 debug "chown working?"
 
