@@ -49,7 +49,11 @@ sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
 sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
 debug "chown parmanode drive"
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
-debug "chown parmanode directoreis"
+if [[ -L /media/$USER/parmanode/.bitcoin ]] ; then
+    if ! which readlink >/dev/null ; then sudo apt update -y && sudo apt install coreutils ; fi
+    sudo chown -R $USER:$(id -gn) $(readlink /media/$USER/parmanode/.bitcoin)
+fi
+debug "chown parmanode directories"
 
 set_terminal ; echo "
 ########################################################################################
