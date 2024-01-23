@@ -12,7 +12,7 @@ $green
     Do it again?
 
                   y)       Why not, I'm going to live forever, I have time                  
-    
+$orange    
                   n)       Time is Satoshis
 
 ########################################################################################
