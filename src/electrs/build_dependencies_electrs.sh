@@ -37,6 +37,7 @@ else
     fi
 fi
 fi #end if Linux
+debug "end if linux in build dependencies"
 
 if [[ $OS == Mac ]] ; then
 brew update ; brew upgrade
