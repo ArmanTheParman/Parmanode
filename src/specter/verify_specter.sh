@@ -11,7 +11,7 @@ else
 fi 
    
 set_terminal
-echo "gpg and sha256 checks passed"
+echo -e "gpg and sha256 checks$green passed$orange."
 sleep 1.5
 set_terminal
 return 0

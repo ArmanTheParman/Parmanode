@@ -41,7 +41,7 @@ jdzE/g==
 
 if gpg --verify --status-fd 1 $HOME/parmanode/fulcrum/Ful*asc $HOME/parmanode/fulcrum/Ful*.gz 2>&1 | grep -q "GOOD" 
     then 
-        log "fulcrum" "gpg verification passed"
+        log -e "fulcrum" "gpg verification$green passed$orange."
         return 0
     else
         log "fulcrum" "gpg verification failed"
