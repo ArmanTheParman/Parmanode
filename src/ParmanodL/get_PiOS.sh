@@ -24,11 +24,12 @@ cd $HOME/ParmanodL
 # Unzip file.
 
 	if [ ! -e "$image_path" ] ; then
-	xz -vkd $zip_path || { announce "Failed to unzip image file" ; return 1 ; }
+        	if ! which xz >/dev/null ; then announce "No xz program detected to unzip. Aborting." ; return 1 ; fi 
+        	xz -vkd $zip_path || { announce "Failed to unzip image file" ; return 1 ; }
 	else
-	   if ! shasum -a 256 $image_path | grep -q $hash_image ; then
-	   rm "$image_path"
-	   get_PiOS || return 1 #function calls itself, but this time faulty img file deleted.
-	   fi
+ 	        if ! shasum -a 256 $image_path | grep -q $hash_image ; then
+	            rm "$image_path"
+  	            get_PiOS || return 1 #function calls itself, but this time faulty img file deleted.
+                fi
 	fi
 }
