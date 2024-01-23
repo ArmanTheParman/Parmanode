@@ -1,4 +1,9 @@
 function install_wordpress {
+return 0
+#still a work in progress.
+
+
+
 set_terminal
 
 echo -e "$green Running apt update...$orange"
