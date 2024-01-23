@@ -4,8 +4,8 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has detected that you have previously started the electrs install 
-    process on the Mac and went through the long painful process of updating the 
-    computer, and building all the dependencies.
+    process and went through the long painful process of updating the computer, and 
+    building all the dependencies.
 
     You don't have to do that again, unless you want to.
 $green
