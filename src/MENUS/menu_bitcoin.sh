@@ -6,7 +6,7 @@ if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; t
 while true
 do
 unset start stop output1 output2 highlight 
-if tail -n 25 $HOME/.bitcoin/debug.log >dev/null | grep -q "Corrupt" ; then
+if tail -n 25 $HOME/.bitcoin/debug.log >/dev/null | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
     problems with this program. One option might be to re-index the chain (do
@@ -17,7 +17,7 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     trick did the trick."
 fi
 
-
+debug "before bitcoin set terminal"
 set_terminal_custom "52"
 
 menu_bitcoin_status
