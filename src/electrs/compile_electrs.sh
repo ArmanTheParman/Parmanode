@@ -8,6 +8,7 @@ if [[  ! -e $HOME/parmanode/electrs/target/release/electrs ]] ; then
         "It might be because you ran out of disk space."
         return 1
     else
+        debug "compiling failed"
         set_terminal ; echo -e "
 ########################################################################################
 $red
