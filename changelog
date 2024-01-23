@@ -1,3 +1,7 @@
+Version 3.25.0
+    -Wordpress
+    -Fixed unzip bug (xz) for ParmanodL installer - some systems don't have
+    it.
 Version 3.24.2
     -BitBox02 update, and verification bug fix
 Version 3.24.1

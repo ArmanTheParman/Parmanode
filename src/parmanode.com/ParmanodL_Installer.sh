@@ -1,8 +1,8 @@
 function parmanodl_installer {
 if [[ $1 != install ]] ; then return 0 ; fi
 ########################################################################################
-# This contents of this file is to be kept at parmanode.com. It won't have a .sh 
-# extension
+# The contents of this file is to be kept at parmanode.com. It is not meant to have a
+# .sh extension
 # The install script will download it to the desktop and make it executable.
 ########################################################################################
 
@@ -148,7 +148,7 @@ Please wait...
     if [[ $OS = Mac ]] ; then 
 
         if ! which brew >/dev/null ; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
         if ! which brew >/dev/null ; then export warning=1 ; fi
         fi
 
@@ -158,13 +158,17 @@ Please wait...
         fi
 
         if ! which ssh >/dev/null ; then 
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install ssh. Aborting." ; sleep 4 ; exit ; fi
             brew install ssh 
         fi
 
         if ! which gpg >/dev/null ; then 
-            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install gpg. Aborting." ; sleep 4 ; exit ; fi
             brew install gpg 
+        fi
+	if ! which xz >/dev/null ; then
+            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install xz. Aborting." ; sleep 4 ; exit ; fi
+            brew install xz
         fi
     
     fi
@@ -175,6 +179,7 @@ Please wait...
         if ! which vim ; then sudo apt-get install vim -y ; fi
         if ! which git ; then sudo apt-get install git -y ; fi
         if ! which ssh ; then sudo apt-get install ssh -y ; fi
+        if ! which xz-utils  ; then sudo apt-get install xz-utils -y ; fi
 
     fi
 
