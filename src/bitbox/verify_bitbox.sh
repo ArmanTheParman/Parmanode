@@ -6,7 +6,7 @@ if ! gpg --verify --status-fd 1 B*.asc  2>&1 | grep -q GOOD ; then
 announce "gpg verification failed. Aborting."
 return 1
 else
-announce "gpg verification PASSED."
+announce "gpg verification ${green}PASSED.$orange"
 fi
 
 }
