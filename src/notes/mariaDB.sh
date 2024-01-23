@@ -1,3 +1,4 @@
+return 0
 # MariaDB credentials
 set_terminal
 echo -e "
