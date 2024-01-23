@@ -1,4 +1,5 @@
 function electrs_ask_skip_dependencies {
+return 0 #function deprecated
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
