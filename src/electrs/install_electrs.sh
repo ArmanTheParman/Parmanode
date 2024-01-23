@@ -99,8 +99,8 @@ else #if [[ $electrs_compile == "true" ]] ; then
     set_terminal ; please_wait
     build_dependencies_electrs || return 1 
     download_electrs && log "electrs" "download_electrs success" 
-    compile_electrs || return 1 
-            log "electrs" "compile_electrs done" 
+    compile_electrs || { debug "compile failed." ; return 1 ; } 
+    log "electrs" "compile_electrs done" 
 
 fi
 #remove old certs (in case they were copied from backup), then make new certs
