@@ -83,7 +83,7 @@ fi
 
 unset electrs_compile 
 restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
-
+debug "pause before electrs_compile variable check"
 if [[ $electrs_compile == "false" ]] ; then 
 
     please_wait
@@ -97,7 +97,6 @@ else #if [[ $electrs_compile == "true" ]] ; then
     preamble_install_electrs || return 1
 
     set_terminal ; please_wait
-    #variables from parmanode.conf
     build_dependencies_electrs || return 1 
     fi
     download_electrs && log "electrs" "download_electrs success" 
