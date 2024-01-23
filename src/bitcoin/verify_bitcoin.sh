@@ -11,13 +11,13 @@ if ! which gpg >/dev/null  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >/dev/null ; then
-    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum failed. Aborting." \
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum$red failed$orange. Aborting." \
     "Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
 else
     rm /tmp/bitcoinsha256 >/dev/null 2>&1
     shasum -a 256 --check SHA256SUMS >/tmp/bitcoinsha256 2>&1
-    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum failed. Aborting." \
+    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
     "Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
     rm /tmp/bitcoinsha256 >/dev/null 2>&1
@@ -35,12 +35,12 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -q GOOD
     then
         echo ""
-        echo "GPG verification of the SHA256SUMS file passed. "
+        echo -e "GPG verification of the SHA256SUMS file$green passed$orange. "
         echo ""
         enter_continue
     else 
         echo ""
-        echo "GPG verification failed. Aborting." 
+        echo -e "GPG verification$red failed$orange. Aborting." 
         enter_continue
         return 1 
     fi

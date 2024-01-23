@@ -13,7 +13,7 @@ if ! openssl dgst -sha256 -verify $pem -signature $sig $shasum ; then
 announce "Verification failed. Aborting." 
 return 1
 else
-announce "Verification PASSED."
+announce "Verification$green PASSED$orange."
 fi
 
 #Regular shasum --check not possible because Ledger fucked up the spacing in the SHA file
