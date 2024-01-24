@@ -28,6 +28,9 @@ $red
 
        7)  Guided compile of most recent Github update, ie pre-release
            (for testing only)
+$green
+       8)  Read how to compile yourself, and import the installation to Parmanode. 
+           This will exit the installtion for now.
 $orange
 ########################################################################################   
 "
