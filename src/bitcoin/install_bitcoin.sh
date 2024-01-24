@@ -153,25 +153,3 @@ fi
 unset importdrive
 set_terminal
 }
-
-function install_failure {
-echo -e "
-${red}Something went wrong.$orange Pausing so you can read the screen for any errors.
-Hit$cyan <enter>$orange to continue."
-
-set_terminal
-echo -e "
-########################################################################################
-$red
-                                F A I L U R E   :(
-$orange
-    Parmanode has detected that the installation has failed. 
-
-    To try again, you'd need to uninstall this partial installation from the 'remove'
-    menu. This is found in the main menu.
-
-########################################################################################
-"
-enter_continue
-
-}
