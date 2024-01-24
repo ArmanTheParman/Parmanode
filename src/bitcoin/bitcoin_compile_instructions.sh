@@ -22,17 +22,20 @@ $green                   6)$orange        Run configure with desired options
 $green                   7)$orange        Run the make command
 $green                   8)$orange        Run make check
 $green                   9)$orange        Run make install
-$green                   10)$orange       Import the Bitcon to Parmanode
 
-$green                   p)$magenta        GO BACK TO THE PREVIOUS MENU
-
+$cyan
+    Once you have finished, hit$green <enter>$cyan to exit the installation. You can
+    then start over and choose to import the binary files you have made.
+$orange
 
 ########################################################################################
 "
 choose "xpmq"
 read choice
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;;
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
+"") 
+return 0 ;;
 1)
 set_terminal ;
 echo -e "
@@ -276,20 +279,7 @@ $orange
 "
 enter_continue
 ;;
-10)
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                            IMPORT BITCOIN TO PARMANODE                       
-$orange
-    Once the above steps have been completed successfully, go back to the previous
-    menu, the one that got you here, and choose the last option, to import Bitcoin
-    binaries to Parmanode.
 
-########################################################################################
-"
-enter_continue
-;;
 
 *)
 ;;

@@ -31,7 +31,7 @@ $red
 $red
        8)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
-       
+$green       
        9)  IMPORT binaries you have created yourself or previously downloaded without
            the help of the Parmanode install process.
 $orange
@@ -73,6 +73,12 @@ return 0
 ;;
 
 9)
+set_terminal ; echo -e "
+########################################################################################
+  Make sure the Bitcoin binary files have been placed in the /usr/local/bin/ directory
+########################################################################################
+"
+enter_continue 
 export bitcoin_compile=false
 export version=self
 ;;
