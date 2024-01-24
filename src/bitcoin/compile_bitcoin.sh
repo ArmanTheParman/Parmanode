@@ -143,6 +143,9 @@ $green
 $orange
     Hit$green hfsp$orange to change the final option to --with-gui=yes 
 
+    Note: You don't need the GUI, and Parmanode does not use it. It'll be faster
+    to not include it.
+
 ########################################################################################
 "
 choose "xpmq" #prints out a standard menu, then choice variable taken to case
@@ -302,5 +305,4 @@ esac
 
 sudo make install
 debug "after make check && make install"
-success "bitcoin" "being compiled"
 }

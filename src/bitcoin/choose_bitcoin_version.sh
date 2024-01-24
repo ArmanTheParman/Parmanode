@@ -28,9 +28,12 @@ $red
 
        7)  Guided compile of most recent Github update, ie pre-release
            (for testing only)
-$green
+$red
        8)  Read how to compile yourself, and import the installation to Parmanode. 
-           This will exit the installtion for now.
+           You can come back to this menu after selecting this. 
+       
+       9)  IMPORT binaries you have created yourself or previously downloaded without
+           the help of the Parmanode install process.
 $orange
 ########################################################################################   
 "
@@ -64,6 +67,15 @@ continue
 7)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=latest ; break ;;
+8)
+bitcoin_compile_instructions
+return 0
+;;
+
+9)
+import_bitcoin_to_parmanode
+;;
+
 *) 
 invalid ;;
 esac
@@ -75,3 +87,4 @@ sudo rm -rf $hp/bitcoin >/dev/null 2>&1
 fi
 
 }
+
