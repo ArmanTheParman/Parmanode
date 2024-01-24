@@ -86,6 +86,7 @@ check_tor_status
 please_wait && run_bitcoind
 
 set_terminal
+
 if [[ $OS == "Linux" ]] ; then
 
     if ! which bitcoind >/dev/null ; then
