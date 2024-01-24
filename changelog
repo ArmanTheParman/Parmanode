@@ -1,4 +1,6 @@
-Version 3.25.2
+Version 3.24.3
+    -Bitcoin compile education/instructions
+Version 3.24.2
     -Fixed unzip bug (xz) for ParmanodL installer - some systems don't have
     it.
     -BitBox02 update, and verification bug fix
