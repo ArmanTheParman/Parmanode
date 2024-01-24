@@ -81,6 +81,17 @@ set_terminal ; echo -e "
 enter_continue 
 export bitcoin_compile=false
 export version=self
+if ! which bitcoind >/dev/null ; then
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode could not detect bitcoind in /usr/local/bin. Aborting.
+
+########################################################################################
+"
+enter_continue
+return 1
+fi
 ;;
 
 *) 
