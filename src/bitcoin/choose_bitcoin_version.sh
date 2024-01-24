@@ -30,8 +30,8 @@ $red
        7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
 $green       
-       8)  IMPORT binaries you have created yourself or previously downloaded without
-           the help of the Parmanode install process.
+       8)  IMPORT binaries you have created yourself (or previously downloaded without
+           the help of the Parmanode install process).
 $orange
 ########################################################################################   
 "
