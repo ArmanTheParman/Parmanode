@@ -90,9 +90,10 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then
 
     if ! which bitcoind >/dev/null ; then
-        install_failure
+        install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
         debug "no binaries. install failure."
+        unset importdrive
         return 1 
     fi
 
