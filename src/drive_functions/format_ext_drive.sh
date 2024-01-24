@@ -122,14 +122,14 @@ while true ; do
 clear ; echo -e "
 ########################################################################################
 
-    Parmanode has detected that you previously have chosen an external drive for
+    Parmanode has detected that you previously have chosen this external drive for
     programs other than $1 
 
-    Please confirm if you really want to format the drive?
+    Please confirm if you want to format the drive?
 $red
             y)      Yes, format it. Format it good.
 $green
-            n)      Nooooo, I was wrong. Skip formating
+            n)      Nooooo. Skip formating
 $orange
             a)      Abort everything
 
