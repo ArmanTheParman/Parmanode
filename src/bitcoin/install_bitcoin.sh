@@ -43,7 +43,7 @@ debug "bitcoin - after make_bitcoin_directories"
             fi
 
 #choose version
-choose_bitcoin_version
+choose_bitcoin_version #no compile variable set for macs here.
 debug "choose_bitcoin_version done"
 
 #compile bitcoin if chosen
@@ -87,6 +87,14 @@ please_wait && run_bitcoind
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then
+
+    if ! which bitcoind >/dev/null ; then
+        install_failure
+        log "bitcoin" "no binaries. install failure."
+        debug "no binaries. install failure."
+        return 1 
+    fi
+
 echo -e "
 ########################################################################################
    $cyan 
@@ -145,3 +153,22 @@ unset importdrive
 set_terminal
 }
 
+function install_failure {
+echo -e "
+${red}Something went wrong.$orange Pausing so you can read the screen for any errors.
+Hit$cyan <enter>$orange to continue."
+
+set_terminal
+echo -e "
+########################################################################################
+
+    Parmanode has detected that the installation has failed. 
+
+    To try again, you'd need to uninstall this partial installation from the 'remove'
+    menu. This is found in the main menu.
+
+########################################################################################
+"
+enter_continue
+
+}
