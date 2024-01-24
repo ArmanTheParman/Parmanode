@@ -13,9 +13,9 @@ $cyan
 $orange
 ########################################################################################
 $red
-       1)  v25.0 $orange (Download and verify 'trusted' releases)
+       1)  v25.0 (Download and verify 'trusted' releases)
 $green
-       2)  v26.0 $orange (Download and verify 'trusted' releases) - quickest method
+       2)  v26.0 (Download and verify 'trusted' releases) - quickest method
 $red
        3)  Guided compile v25.0/v26.0 
 $green
