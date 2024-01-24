@@ -67,24 +67,18 @@ server {
 
     # Enable HSTS; max age in seconds; only if SSL on.
     add_header Strict-Transport-Security "max-age=315360000; includeSubDomains; preload";
+}
 
-
-
-   }
-
-   server {    
+server {    
     listen 80;
     server_name www.parmanode.com parmanode.com;
 
     location / {
         return 301 https://$host$request_uri;
-    }
+     }
 
-    # http to https rediretion
-    if ($host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
-    return 301 https://$host$request_uri;
-
-    }
-
-
+    # http to https rediretion - redundant because of location / block
+     # if ($host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
+     # return 301 https://$host$request_uri;
+     #}
 }
