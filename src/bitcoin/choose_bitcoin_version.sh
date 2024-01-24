@@ -91,6 +91,8 @@ set_terminal ; echo -e "
 "
 enter_continue
 return 1
+else
+return 0
 fi
 ;;
 
