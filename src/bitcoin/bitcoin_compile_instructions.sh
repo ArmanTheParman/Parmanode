@@ -35,7 +35,7 @@ read choice
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 "") 
-return 0 ;;
+return 1 ;;
 1)
 set_terminal ;
 echo -e "
