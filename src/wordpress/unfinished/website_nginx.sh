@@ -70,6 +70,21 @@ server {
 
 
 
+   }
+
+   server {    
+    listen 80;
+    server_name www.parmanode.com parmanode.com;
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+
+    # http to https rediretion
+    if ($host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
+    return 301 https://$host$request_uri;
+
+    }
 
 
 }
