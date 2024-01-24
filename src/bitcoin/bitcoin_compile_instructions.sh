@@ -153,7 +153,7 @@ $orange
     at the same time checkout to that branch.
 
     Then, download the patch. The following command is all on one line.
-$green
+$magenta
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/ filter-ordinals.patch 
 $orange
     Then, apply the patch...
