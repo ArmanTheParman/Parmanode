@@ -161,7 +161,9 @@ Hit$cyan <enter>$orange to continue."
 set_terminal
 echo -e "
 ########################################################################################
-
+$red
+                                F A I L U R E   :(
+$orange
     Parmanode has detected that the installation has failed. 
 
     To try again, you'd need to uninstall this partial installation from the 'remove'
