@@ -38,7 +38,8 @@ cd wordpress
 
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 
-Goes in nginx server conf ...
+# Goes in nginx server conf ...
+
 location /phpmyadmin {
     root /usr/share/;
     index index.php index.html index.htm;
