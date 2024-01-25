@@ -49,8 +49,8 @@ $running
 
     Access Mempool:
 $cyan
-    http://127.0.0.1:8120
-    http://$IP:8120
+    http://127.0.0.1:8180
+    http://$IP:8180
 $orange
     Tor Access: $bright_blue    
 
