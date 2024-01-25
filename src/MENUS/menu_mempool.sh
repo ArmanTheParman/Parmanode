@@ -44,7 +44,7 @@ $running
 
                   bk)            Change Bitcoin Backend     
 
-                  conf)          View/Edit config (restart if changing)
+                  conf)          View/Edit config $pink(restart if changing)$orange
 
 
     Access Mempool:
@@ -54,7 +54,7 @@ $cyan
 $orange
     Tor Access: $bright_blue    
 
-    Onion adress: $ONION_ADDR_FULCRUM:8280 $orange           
+    Onion adress: $ONION_ADDR_MEM:8280 $orange           
 
 ########################################################################################
 "
