@@ -122,7 +122,7 @@ set_terminal ; echo -e "
 $cyan
                                   ORDINALS PATCH
 $orange
-    The ordinals patch is a filter created by Bitcoin Core developer, Luck Dashyr Jr,
+    The ordinals patch is a filter created by Bitcoin Core developer, Luke Dashjr,
     in response to spam from ordinals and inscriptions. Read about it here:
 $magenta
     https://bitcoinnews.com/adoption/bitoin-developer-proposes-patch-bitcoin-ordinals/

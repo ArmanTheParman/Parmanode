@@ -8,7 +8,7 @@ Version 3.24.2
 Version 3.24.1
     -Drive install bug fixed (symlink target ownership fixed)
 Version 3.24.0
-    -Option to include filter-ordinals.patch by Luke Dashyr Jr
+    -Option to include filter-ordinals.patch by Luke Dashjr
     -Options to compile bitcoin
     -bitcoin v26.0 option
     -Option to install Bitcoin Knots version of Bitcoin Core
