@@ -138,7 +138,7 @@ clean_exit
 	
 ###### TESTING SECTION #################################################################
 
-debug "Pausing here." #when debugging, I can check for error messages and syntax errors
+debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 ########################################################################################
 
