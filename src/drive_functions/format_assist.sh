@@ -28,10 +28,10 @@ $orange
 
 ########################################################################################
 "
-choose "epq"
+choose "emq"
 read choice
 case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; 
+q|Q) exit 0 ;; m|M) back2main ;; 
 esac
 
 clear
@@ -55,7 +55,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 
 clear
@@ -84,7 +88,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 clear
 echo -e "
@@ -112,7 +120,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 clear
 echo -e "
 ########################################################################################
@@ -124,10 +136,10 @@ echo -e "
 
 ########################################################################################
 "
-choose "epq"
+choose "emq"
 read choice
 case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; 
+q|Q) exit 0 ;; m|M) back2main ;; 
 esac
 clear ; echo -e "
 ########################################################################################
@@ -148,7 +160,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 clear
 echo -e "
 ########################################################################################
@@ -158,10 +174,10 @@ echo -e "
 
 ########################################################################################
 "
-choose "epq"
+choose "emq"
 read choice
 case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; 
+q|Q) exit 0 ;; m|M) back2main ;; 
 esac
 
 set_terminal_wide ; echo -e "
@@ -192,7 +208,11 @@ $orange
 
 ##############################################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -210,7 +230,11 @@ $green
 $orange
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 set_terminal
 echo -e "
@@ -234,7 +258,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 clear
 echo -e "
@@ -250,7 +278,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 clear
 echo -e "
@@ -277,7 +309,11 @@ $green
 $orange
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 
 clear
 echo -e "
@@ -297,7 +333,11 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 clear ; echo -e "
 ########################################################################################
 $cyan
@@ -334,5 +374,9 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+choose "emq"
+read choice
+case $choice in
+q|Q) exit 0 ;; m|M) back2main ;; 
+esac
 }
