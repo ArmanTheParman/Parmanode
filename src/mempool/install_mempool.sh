@@ -30,8 +30,8 @@ cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
 debug "/tmp/docker-compose.yml copied?"
 rm /tmp/docker-compose.yml >/dev/null 2>&1
 mempool_backend
-choose_mempool_LND
-choose_mempool_tor
+#choose_mempool_LND
+#choose_mempool_tor
 
 cd $hp/mempool/docker 
 docker-compose up -d
