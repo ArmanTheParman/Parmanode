@@ -41,7 +41,9 @@ lnd_wallet_unlock_password
 ;;
 
 create|CREATE|Create)
-create_wallet ; lncli unlock 
+create_wallet && lnd_wallet_unlock_password 
+#might be redundant...
+lncli unlock 2>/dev/null
 return 0 ;;
 
 ul|UL|Ul|unlock|Unlock) 
@@ -54,7 +56,7 @@ wallet_balance
 ;;
 
 delete|DELETE|Delete) 
-delete_wallet 
+delete_wallet_lnd
 return 0
 ;;
 
