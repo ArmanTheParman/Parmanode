@@ -154,16 +154,8 @@ m|M) back2main ;;
    mem|MEM|Mem) 
       if [[ -n $mempool_n ]] ; then
 
-         if [[ $test != true ]] ; then
-         announce "Mempool is not quite ready to be used. More work is needed to get it" \
-         "syncing properly. Stay tuned. Aborting for now."
-         continue
-         fi
-         
-         if [[ $test == true ]] ; then
          install_mempool 
          return 0
-         fi
 
       fi
       ;;
