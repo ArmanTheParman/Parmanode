@@ -32,7 +32,8 @@ make_lnd_service
 #Make sure LND has started.
 start_LND_loop
 
-create_wallet && lnd_wallet_unlock_password
+create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
+# password file and needs new wallet to do so.
 
 #start git repository in .lnd directory to allow undo's
 cd $HOME/.lnd && git init >/dev/null 2>&1

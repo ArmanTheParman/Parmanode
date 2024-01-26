@@ -41,7 +41,9 @@ lnd_wallet_unlock_password
 ;;
 
 create|CREATE|Create)
-create_wallet && lnd_wallet_unlock_password 
+create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
+# password file and needs new wallet to do so.
+
 #might be redundant...
 lncli unlock 2>/dev/null
 return 0 ;;
