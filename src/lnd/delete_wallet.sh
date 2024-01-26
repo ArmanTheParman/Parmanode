@@ -35,8 +35,6 @@ break ;;
 *) invalid ;;
 esac
 done
-#make sure LND is running...
-lnd_wallet_unlock_password
 
 stop_lnd
 rm $HOME/.lnd/data/chain/bitcoin/mainnet/*
