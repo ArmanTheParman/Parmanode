@@ -1,4 +1,4 @@
-function delete_wallet {
+function delete_wallet_lnd {
 while true ; do
 set_terminal "pink" ; echo -e "
 ########################################################################################
@@ -35,6 +35,8 @@ break ;;
 *) invalid ;;
 esac
 done
+#make sure LND is running...
+lnd_wallet_unlock_password
 
 stop_lnd
 rm $HOME/.lnd/data/chain/bitcoin/mainnet/*
