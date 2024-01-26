@@ -21,7 +21,6 @@ backend="${yellow}Bitcoin Core$orange"
 elif grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
 backend="${bright_blue}An Electrum or Fulcrum Server$orange"
 fi
-debug "after if backend"
 
 set_terminal_custom 45 ; echo -e "
 ########################################################################################$cyan
@@ -67,7 +66,6 @@ p|P) menu_use ;;
 
 start|S|s|Start|START)
 start_mempool
-debug "after start_mempool"
 ;;
 stop|STOP|Stop)
 stop_mempool
@@ -75,7 +73,6 @@ stop_mempool
 
 r|RESTART|restart|R)
 restart_mempool
-debug "restart done"
 ;;
 
 tor)
