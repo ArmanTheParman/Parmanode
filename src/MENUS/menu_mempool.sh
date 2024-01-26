@@ -76,6 +76,7 @@ restart_mempool
 ;;
 
 tor)
+file="$hp/mempool/docker/docker-compose.yml"
 if [[ $mempool_tor == false ]] ; then
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"true\""
 debug "check swap"
@@ -85,6 +86,7 @@ swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"false\"
 debug "check swap"
 disable_mempool_tor
 fi
+unset file
 ;;
 
 bk)
