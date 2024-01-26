@@ -5,6 +5,10 @@ file="/tmp/docker-compose.yml"
 cat << EOF | tee $file >/dev/null 2>&1
 version: "3.7"
 
+networks:
+    PM_network:
+      driver: bridge
+
 services:
   mempool_web:
     environment:
