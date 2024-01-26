@@ -1,7 +1,7 @@
 function choose_bitcoin_version {
 if [[ $OS == Mac ]] ; then
 export bitcoin_compile=false
-export version="26.0"
+export version="25.0"
 return 0
 fi
 
