@@ -153,7 +153,7 @@ m|M) back2main ;;
 
    mem|MEM|Mem) 
       if [[ -n $mempool_n ]] ; then
-
+         if [[ $OS == Mac ]] ; then no_mac ; return 0 ; fi
          install_mempool 
          return 0
 
