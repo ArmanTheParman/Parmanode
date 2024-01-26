@@ -67,6 +67,7 @@ p|P) menu_use ;;
 
 start|S|s|Start|START)
 start_mempool
+debug "start_mempool done"
 ;;
 stop|STOP|Stop)
 stop_mempool
