@@ -4,6 +4,7 @@ docker ps >/dev/null 2>&1 || announce "Docker not running. Aborting." && return 
 
 cd $hp/mempool/docker
 docker-compose up -d 
+debug "end start_mempool function"
 }
 
 function stop_mempool {
