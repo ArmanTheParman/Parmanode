@@ -78,9 +78,11 @@ restart_mempool
 tor)
 if [[ $mempool_tor == false ]] ; then
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"true\""
+debug "check swap"
 enable_mempool_tor
 else
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"false\""
+debug "check swap"
 disable_mempool_tor
 fi
 ;;
