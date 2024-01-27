@@ -6,6 +6,11 @@ if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docke
 fi
 
 set_terminal
+
+#choose version
+choose_bitcoin_version || return 1 #no compile variable set for macs here.
+debug "choose_bitcoin_version done"
+
 unset importdrive
 debug "bitcoin - after unset importdrive"
 choose_and_prepare_drive "Bitcoin" # the argument "Bitcoin" is added as this function is also
@@ -42,9 +47,7 @@ debug "bitcoin - after make_bitcoin_directories"
             log "bitcoin" "ownership statement: $statement" ; fi
             fi
 
-#choose version
-choose_bitcoin_version
-debug "choose_bitcoin_version done"
+
 
 #compile bitcoin if chosen
 compile_bitcoin
@@ -86,7 +89,17 @@ check_tor_status
 please_wait && run_bitcoind
 
 set_terminal
+
 if [[ $OS == "Linux" ]] ; then
+
+    if ! which bitcoind >/dev/null ; then
+        install_failure "Bitcoin"
+        log "bitcoin" "no binaries. install failure."
+        debug "no binaries. install failure."
+        unset importdrive
+        return 1 
+    fi
+
 echo -e "
 ########################################################################################
    $cyan 
@@ -140,8 +153,6 @@ $orange
 enter_continue
 fi
 
-
 unset importdrive
 set_terminal
 }
-

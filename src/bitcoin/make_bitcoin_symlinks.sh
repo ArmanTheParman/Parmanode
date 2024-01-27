@@ -40,15 +40,15 @@ $orange
     A symlink to the data directory has been created.
 
     For external drives, $HOME/.bitcoin points to
-
+$green
             $parmanode_drive/.bitcoin
-
+$orange
     For Mac users with an internal drive, 
     $HOME/Library/Application Support/Bitcoin (the default location),
     now pionts to:
-
+$green
             $HOME/.bitcoin
-
+$orange
 ########################################################################################
 "
 enter_continue

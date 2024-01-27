@@ -173,9 +173,9 @@ swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"none\""
 }
 function choose_electrs_for_mempool {
 swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50005\"" #redundant as 50005 is the default in the template
+swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50006\"" 
 }
 function choose_fulcrum_for_mempool {
 swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50001\""
+swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50002\""
 }

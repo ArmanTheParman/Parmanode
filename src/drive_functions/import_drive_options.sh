@@ -6,7 +6,7 @@ set_terminal ; echo -e "
     Please chosse the type of external drive you wish to use for Parmanode:
 
 
-                      pp)  Parmanode drive from another installation
+                      pp)  Parmanode drive from another or previous installation
 
                       u)   Umbrel drive
 
