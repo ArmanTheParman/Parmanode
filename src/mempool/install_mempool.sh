@@ -1,5 +1,19 @@
 function install_mempool {
 
+if [[ $computer_type == Pi ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+
+    Not available yet for the Raspberry Pi. It works on x86_64 machines, but not
+    ARM chips. I'm going to work on it and hopefully get it working soon. For now,
+    you can use BTC RPC Explorer.
+
+########################################################################################
+"
+enter_continue
+return 1
+fi
+
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 
