@@ -2,6 +2,14 @@ function make_mempool_docker_compose {
 source $bc >/dev/null 2>&1
 file="/tmp/docker-compose.yml"
 
+if [[ $OS == Linux ]] ; then
+  mariadb_data="./data"
+  mysql_data="./mysql_data"
+elif [[ $OS == Mac ]] ; then
+  mariadb_data="mariadb_data"
+  mysql_data="mysql_data"
+fi
+
 cat << EOF | tee $file >/dev/null 2>&1
 version: "3.7"
 
@@ -75,7 +83,7 @@ cat << EOF | tee -a $file >/dev/null 2>&1
     stop_grace_period: 1m
     command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
     volumes:
-      - ./data:/backend/cache
+      - $mariadb_data:/backend/cache
     networks:
       - PM_network
   db:
@@ -89,7 +97,7 @@ cat << EOF | tee -a $file >/dev/null 2>&1
     restart: on-failure
     stop_grace_period: 1m
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - $mysql_data:/var/lib/mysql
     networks:
       - PM_network
 EOF
