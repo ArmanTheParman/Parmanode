@@ -54,7 +54,7 @@ verify_sparrow || return 1
 
 #move download files, tidy up
 
-mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 2>&1
+mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 
 debug "move sparrow files"
 
 if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
