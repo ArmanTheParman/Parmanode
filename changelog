@@ -1,3 +1,6 @@
+Version 3.25.1
+    -patch_5 applied
+    -Mempool but in Docker fixed
 Version 3.25.0
     -Mempool is back, baby
     -Smol bug when creating new LND wallet fixed

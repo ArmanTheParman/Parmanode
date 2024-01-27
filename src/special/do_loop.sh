@@ -109,20 +109,8 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #commit config directory state using git
    git_dp &
 fi
-   
-#patches ; each patch adds variable to parmanode.conf, sourced higher up
-case $patch in
-1) 
-patch_2 ; patch_3 ; patch_4 ;;
-2)
-patch_3 ; patch_4 ;;
-3)
-patch_4 ;;
-4)
-true ;;
-*) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
-esac
+
+apply_patches  
 
 # get version, and suggest user to update if old.
 
