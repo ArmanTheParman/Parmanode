@@ -22,6 +22,8 @@ fi
 
 cd $hp
 git clone --depth 1 https://github.com/mempool/mempool.git
+#make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
+sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
 installed_config_add "mempool-start"
 
 #set variables
