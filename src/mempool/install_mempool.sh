@@ -49,14 +49,14 @@ if [[ $string == 172 ]] ; then #would be unusualy for it not to be 172
     string2="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 2)"
     target="172.$string2.0.0/16"
     if ! grep "$target" < $bc >/dev/null 2>&1 ; then
-    echo "$target" | sudo tee -a $bc >/dev/null 2>&1
-    sudo systemctl restart bitcoind.service
+    echo rpcallowip"$target" | sudo tee -a $bc >/dev/null 2>&1
+    sudo systemctl restart bitcoind.service >/dev/null 2>&1
     restart_mempool
     fi
 else
     #even if the gateway does not start with 172, add it to bitcoin.conf
     stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
-    echo "$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
+    echo rpcallowip"$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
     sudo systemctl restart bitcoind.service
     restart_mempool
 fi
