@@ -62,6 +62,7 @@ case $choice in
 
     u|U|up|UP|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi
+        sleep 1.5
         success "Your computer" "being updated"
     if [[ $OS == "Mac" ]] ; then 
         please_wait 
