@@ -62,10 +62,12 @@ case $choice in
 
     u|U|up|UP|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi
+        success "Your computer" "being updated"
     if [[ $OS == "Mac" ]] ; then 
         please_wait 
         brew_check || continue 
         brew update ; brew upgrade 
+        success "Your Mac" "being updated"
         if [[ $bashV_major -lt 5 ]] ; then brew install bash ; fi
     fi
     ;;
