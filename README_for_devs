@@ -10,7 +10,7 @@ inefficient order.
 
 ARGUMENTS  
                     If you add "debug" as an argument to ./run_parmanode.sh, useful
-                    things lik skipping over some code, or activating debug stopping
+                    things like skipping over some code, or activating debug stopping
                     points with messages happens.
                     
 FREQUENTLY USED CUSTOM FUNCTIONS
