@@ -2,9 +2,10 @@ function install_mempool {
 
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
+delete_line $bc "rpcallowip=172"
 
-if ! grep -q "rpcallowip=172.18.0.0/16" < $bc >/dev/null 2>&1 ; then
-echo "rpcallowip=172.18.0.0/16" | tee sudo -a $bc >/dev/null 2>&1 ;
+if ! grep -q "rpcallowip=172.0.0.0/8" < $bc >/dev/null 2>&1 ; then
+echo "rpcallowip=172.0.0.0/8" | tee sudo -a $bc >/dev/null 2>&1 ;
 fi
 
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
