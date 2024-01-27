@@ -6,27 +6,27 @@ return 0
 
 set_terminal
 
-echo -e "$green Running apt update...$orange"
+echo -e "$green Running apt update...$orange" ; sleep 1
 sudo apt update -y
 
 if ! which nginx >/dev/null ; then
-echo -e "$green Installing Nginx ...$orange"
+echo -e "$green Installing Nginx ...$orange" ; sleep 1
 install_nginx
 fi
 
-echo -e "$green Installing php and MariaDB and other stuff ...$orange"
+echo -e "$green Installing php and MariaDB and other stuff ...$orange" ; sleep 1
 sudo apt-get install php-cli mariadb-server -y
 
 
 
-echo -e "$green Recommended MYSQL secure installtion settings ...$orange"
+echo -e "$green Recommended MYSQL secure installtion settings ...$orange" ; sleep 1
 sudo mysql_secure_installation 
 
-echo -e "$green Enabling autostart on bootup ...$orange"
+echo -e "$green Enabling autostart on bootup ...$orange" ; sleep 1
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 
-echo -e "$green Setting up directory structure...$orange"
+echo -e "$green Setting up directory structure...$orange" ; sleep 1
 cd $hp
 mkdir wordpresstemp
 cd wordpresstemp
