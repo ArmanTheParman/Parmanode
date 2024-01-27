@@ -1,13 +1,17 @@
 Version 3.25.0
-    -Wordpress
+    -Mempool is back, baby
+    -Smol bug when creating new LND wallet fixed
+Version 3.24.3
+    -Import own Bitcoin binaries to Parmanode installation.
+    -Bitcoin compile education/instructions
+Version 3.24.2
     -Fixed unzip bug (xz) for ParmanodL installer - some systems don't have
     it.
-Version 3.24.2
     -BitBox02 update, and verification bug fix
 Version 3.24.1
     -Drive install bug fixed (symlink target ownership fixed)
 Version 3.24.0
-    -Option to include filter-ordinals.patch by Luke Dashyr Jr
+    -Option to include filter-ordinals.patch by Luke Dashjr
     -Options to compile bitcoin
     -bitcoin v26.0 option
     -Option to install Bitcoin Knots version of Bitcoin Core

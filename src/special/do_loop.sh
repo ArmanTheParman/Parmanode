@@ -124,8 +124,6 @@ true ;;
 patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
 esac
 
-get_ip_address #function to put the IP address of the computer in memory.
-
 # get version, and suggest user to update if old.
 
 update_version_info 
@@ -138,7 +136,7 @@ clean_exit
 	
 ###### TESTING SECTION #################################################################
 
-debug "Pausing here." #when debugging, I can check for error messages and syntax errors
+debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 ########################################################################################
 

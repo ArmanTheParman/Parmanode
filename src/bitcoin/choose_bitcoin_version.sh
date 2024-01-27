@@ -1,7 +1,7 @@
 function choose_bitcoin_version {
 if [[ $OS == Mac ]] ; then
 export bitcoin_compile=false
-export version="26.0"
+export version="25.0"
 return 0
 fi
 
@@ -13,21 +13,25 @@ $cyan
 $orange
 ########################################################################################
 $red
-       1)  v25.0 orange (Download and verify 'trusted' releases)
+       1)  v25.0 (Download and verify 'trusted' releases)
 $green
-       2)  v26.0 orange (Download and verify 'trusted' releases) - quickest method
+       2)  v26.0 (Download and verify 'trusted' releases) - quickest method
 $red
        3)  Guided compile v25.0/v26.0 
 $green
-       4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashr Jr)
+       4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
 $red
-       5)  Guided compile Knots Bitcoin (Luke Dashr Jr's version of Bitcoin Core,
-           which also has FILTER-ORDINALS patch) version v25.1.knots20231115
+       5)  Guided compile Knots Bitcoin (Luke Dashjr's version of Bitcoin Core,
+           which also FILTERS ORDINALS/INSCRIPTIONS), version v25.1.knots20231115
 $red
-       6)  BYO Bitcoin binary installation (imports to Parmanode) - not available yet
-
-       7)  Guided compile of most recent Github update, ie pre-release
+       6)  Guided compile of most recent Github update, ie pre-release
            (for testing only)
+$red
+       7)  Read how to compile yourself, and import the installation to Parmanode. 
+           You can come back to this menu after selecting this. 
+$green       
+       8)  IMPORT binaries you have created yourself (or previously downloaded without
+           the help of the Parmanode install process).
 $orange
 ########################################################################################   
 "
@@ -53,14 +57,37 @@ export bitcoin_compile=true ; export version=choose ; export ordinals_patch=true
 parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin=true ; export version="v25.1.knots20231115" ; break ;;
 6)
-parmanode_conf_add "bitcoin_choice=byo"
-clear ; echo "not available yet" ; sleep 3 
-continue
-# export byo_bitcoin=true ; break 
-;;
-7)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=latest ; break ;;
+7)
+bitcoin_compile_instructions
+return 0
+;;
+
+8)
+set_terminal ; echo -e "
+########################################################################################
+  Make sure the Bitcoin binary files have been placed in the /usr/local/bin/ directory
+########################################################################################
+"
+enter_continue 
+export bitcoin_compile=false
+export version=self
+if ! which bitcoind >/dev/null ; then
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode could not detect bitcoind in /usr/local/bin. Aborting.
+
+########################################################################################
+"
+enter_continue
+return 1
+else
+return 0
+fi
+;;
+
 *) 
 invalid ;;
 esac
@@ -72,3 +99,4 @@ sudo rm -rf $hp/bitcoin >/dev/null 2>&1
 fi
 
 }
+

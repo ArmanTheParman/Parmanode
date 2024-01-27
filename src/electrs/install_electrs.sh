@@ -83,7 +83,7 @@ fi
 
 unset electrs_compile 
 restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
-
+debug "pause before electrs_compile variable check"
 if [[ $electrs_compile == "false" ]] ; then 
 
     please_wait
@@ -97,15 +97,10 @@ else #if [[ $electrs_compile == "true" ]] ; then
     preamble_install_electrs || return 1
 
     set_terminal ; please_wait
-    #variables from parmanode.conf
-    if [[ $electrs_dependencies_mac == true ]] ; then electrs_ask_skip_dependencies ; fi
-    if [[ $electrs_skip_dependencies == false || -z $electrs_skip_dependencies ]] ; then
-        build_dependencies_electrs || return 1 
-        parmanode_conf_add "electrs_dependencies_mac=true"
-    fi
+    build_dependencies_electrs || return 1 
     download_electrs && log "electrs" "download_electrs success" 
-    compile_electrs || return 1 
-            log "electrs" "compile_electrs done" 
+    compile_electrs || return 1
+    log "electrs" "compile_electrs done" 
 
 fi
 #remove old certs (in case they were copied from backup), then make new certs

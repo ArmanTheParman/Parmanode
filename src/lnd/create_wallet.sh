@@ -14,11 +14,11 @@ fi
 set_terminal
 lnd_wallet_info
 set_terminal
-echo -e "$cyan You will be asked to create a password - this is for your LND password, not passphrase.$orange
+echo -e "$cyan You will be asked to create a password - this is for your LND password, NOT passphrase.$orange
 (The keystrokes will not appear on your screen)
 "
-echo -e "$reset"
+echo -e "$reset" #resets colour
 lncli create
-echo -e "$orange"
+echo -e "$orange" #colour goes back to Parmanode's default
 enter_continue
 }
