@@ -22,7 +22,8 @@ $green
        4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
 $red
        5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin, Core) 
-           version v25.1.knots20231115)
+           version v25.1.knots20231115) - syncs faster; bugfixes missing in Core; and
+           power user options / tools.
 $red
        6)  Guided compile of most recent Github update, ie pre-release
            (for testing only)
