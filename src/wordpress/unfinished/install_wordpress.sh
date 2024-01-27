@@ -28,6 +28,11 @@ sudo systemctl start mariadb
 
 echo -e "$green Setting up directory structure...$orange" ; sleep 1
 cd $hp
+
+if [[ -e $hp/wordpress ]] ; then
+wordpress_exists
+fi
+
 mkdir wordpresstemp
 cd wordpresstemp
 curl -LO https://wordpress.org/latest.zip
@@ -60,13 +65,11 @@ sudo systemctl restart nginx
 #Once everything is set up, you can access phpMyAdmin through your web browser by navigating to http://your_server_ip/phpmyadmin.
 
 
-    }
 }
 
+function install_phpmyadmin {
+# will have pop ups user needs to respond to 
+sudo apt install phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json php-curl php-xml php-intl php-bcmath php-imagick -y
+#sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 }
 
-
-
-install phpmyadmin
-# will have pop ups user needs to respons to 
-sudo apt install phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json php-curl -y
