@@ -2,7 +2,9 @@ function install_wordpress {
 return 0
 #still a work in progress.
 
-
+#1 - Update system
+#2 - Install Nginx
+#3 - Install MariaDB & PHP
 
 set_terminal
 
@@ -15,7 +17,9 @@ install_nginx
 fi
 
 echo -e "$green Installing php and MariaDB and other stuff ...$orange" ; sleep 1
-sudo apt-get install php-cli mariadb-server -y
+sudo apt-get install mariadb-server -y
+sudo apt install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
+php-curl php-xml php-intl php-bcmath php-imagick -y
 
 
 
@@ -69,7 +73,6 @@ sudo systemctl restart nginx
 
 function install_phpmyadmin {
 # will have pop ups user needs to respond to 
-sudo apt install phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json php-curl php-xml php-intl php-bcmath php-imagick -y
 #sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 }
 
