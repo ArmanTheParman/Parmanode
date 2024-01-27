@@ -9,7 +9,7 @@ fi
 
 
 #### For Linux ####
-if ! which dmidecode ; then sudo apt-get install dmidecode ; fi
+if ! which dmidecode >/dev/null 2>&1 ; then sudo apt-get install dmidecode ; fi
 
 biosDate=$(sudo dmidecode -t bios | grep Date | cut -d / -f 3)
 
