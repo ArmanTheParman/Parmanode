@@ -1,6 +1,6 @@
 function install_mempool {
 
-if [[ $computer_type == Pi ]] ; then
+if [[ $test != true && $computer_type == Pi ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
