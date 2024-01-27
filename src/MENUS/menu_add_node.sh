@@ -153,12 +153,10 @@ m|M) back2main ;;
 
    mem|MEM|Mem) 
       if [[ -n $mempool_n ]] ; then
-      announce "Mempool is not quite ready to be used. More work is needed to get it" \
-      "syncing properly. Stay tuned. Aborting for now."
-      continue
+         if [[ $OS == Mac ]] ; then no_mac ; return 0 ; fi
+         install_mempool 
+         return 0
 
-#      install_mempool 
-#      return 0
       fi
       ;;
     q|Q|quit|QUIT)

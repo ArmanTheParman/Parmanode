@@ -45,6 +45,8 @@ if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.
 
 get_Mac_version #function to export Mac Version variables
 
+get_ip_address #function to put the IP address of the computer in memory.
+
 # A counter for the number of times main_menu has been 'Inceptioned'.
 # back2main function will add 1. After a set value, user is warned to restart Parmanode.
 export main_loop=0
