@@ -69,9 +69,12 @@ break
 ;;
 
 n|N)
-return 0 ;;
+delete_line "/etc/crontab" "parmanode" >/dev/null 2>&1
+return 0 
+;;
 
 nooo|NOOO|Nooo) 
+delete_line "/etc/crontab" "parmanode" >/dev/null 2>&1
 hide_messages_add "autoupdate" "1" ; return 0 
 return 0
 ;;
