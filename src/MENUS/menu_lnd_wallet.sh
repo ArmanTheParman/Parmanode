@@ -57,6 +57,10 @@ wb|WB)
 wallet_balance
 ;;
 
+cb|CB)
+channel_balance
+;;
+
 delete|DELETE|Delete) 
 delete_wallet_lnd
 return 0
@@ -86,7 +90,7 @@ onchain_balance=$(lncli walletbalance | head -n2 | tail -n1 | cut -d \" -f 4) >/
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                              Lightning Node Balance
+                              Lightning Node Wallet Balance
 $orange
     On chain balance:            $onchain_balance sats
 
@@ -101,3 +105,45 @@ $orange
 enter_continue
 return 0
 }
+
+function channel_balance {
+set_terminal
+if [[ $lndrunning != "true" || $lndwallet != "unlocked" ]] ; then 
+local_balance="Unknown, LND not running or wallet locked"
+remote_balance="Unknown, LND not running or wallet locked"
+fi
+lncli channelbalance > /tmp/.channelbalance
+balance=$(lncli channelbalance | grep -n1 "balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+pending_open_balance=$(lncli channelbalance | grep -n1 "pending_open_balance" | head -n3 | tail -n3 | cut -d \" -f 4) >/dev/null 2>&1
+local_balance=$(lncli channelbalance | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+remote_balance=$(lncli channelbalance | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+unsettled_local_balance=$(lncli channelbalance | grep -n1 "unsettled_local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+unsettled_remote_balance=$(lncli channelbalance | grep -n1 "unsettled_remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+pending_open_local_balance=$(lncli channelbalance | grep -n1 "pending_open_local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+pending_open_remote_balance==$(lncli channelbalance | grep -n1 "pending_open_remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+channel_size_total=$((local_balance + remote_balance))
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                              Lightning Node Channel Balance
+$orange
+    Balance:                     $balance sats
+    Pending open balance:        $pending_open_balance sats
+    Local balance:               $local_balance sats
+
+    Remote balance:              $remote_balance sats
+
+    Unsettled local balance:     $unsettled_local_balance sats
+    Unsettled_remote_balance:    $unsettled_remote_balance sats
+
+    Pending open local balance:  $pending_open_local_balance sats
+    Pending open remote balance: $pending_open_remote_balance sats
+
+########################################################################################
+"
+enter_continue
+return 0
+
+}
+
