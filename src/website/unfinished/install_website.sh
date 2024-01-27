@@ -21,8 +21,9 @@ success "Your Website" "being configured"
 
 
 
-
+function phpmyadmin_in_nginx {
 # Goes in nginx server conf ...
+install_nginx #aborts if already installed.
 
 location /phpmyadmin {
     root /usr/share/;
@@ -37,7 +38,6 @@ location /phpmyadmin {
 
 sudo systemctl restart nginx
 #Once everything is set up, you can access phpMyAdmin through your web browser by navigating to http://your_server_ip/phpmyadmin.
-
 
 }
 
