@@ -52,11 +52,6 @@ debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
 
-#move download files, tidy up
-
-mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 
-debug "move sparrow files"
-
 if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
 
 make_sparrow_config "$_connect"
@@ -73,6 +68,9 @@ if [[ $OS == "Linux" ]] ; then
     udev
     fi
 fi
+
+#move download files, tidy up
+mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 
 
 add_localhost_to_bitcoinconf
 add_server_1_to_bitcoinconf
