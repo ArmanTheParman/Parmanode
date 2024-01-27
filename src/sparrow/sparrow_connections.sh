@@ -20,7 +20,7 @@ fi
 
 
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config "fulcrumtor"
@@ -48,7 +48,7 @@ fi
 
 
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config "electrstor"
@@ -56,7 +56,7 @@ make_sparrow_config "electrstor"
 
 function sparrow_fulcrumtcp {
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config "fulcrumtcp"
@@ -65,14 +65,14 @@ make_sparrow_config "fulcrumtcp"
 function sparrow_electrs {
 
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config "electrstcp"
 }
 function sparrow_fulcrumssl {
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config "fulcrumssl"
@@ -80,7 +80,7 @@ make_sparrow_config "fulcrumssl"
 
 function sparrow_core {
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut it down before proceeding."
 enter_continue
 rm $HOME/.sparrow/config
 make_sparrow_config
