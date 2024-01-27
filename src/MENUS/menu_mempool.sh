@@ -6,6 +6,7 @@ else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status
+debug "after unset"
 if [[ -e /var/lib/tor/mempool-service ]] ; then
 debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
