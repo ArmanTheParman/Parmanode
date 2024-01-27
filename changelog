@@ -1,3 +1,6 @@
+Version 3.25.0
+    -Mempool is back, baby
+    -Smol bug when creating new LND wallet fixed
 Version 3.24.3
     -Import own Bitcoin binaries to Parmanode installation.
     -Bitcoin compile education/instructions

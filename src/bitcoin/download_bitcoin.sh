@@ -1,6 +1,7 @@
 function download_bitcoin {
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
+debug "in download bitcoin, version = $version"
 
 cd $HOME/parmanode/bitcoin
 set_terminal

@@ -45,7 +45,7 @@ set_terminal ; echo -e "
 
                             25)    v25.0
 $green
-                            26)    v26.0 (latest reslease)
+                            26)    v26.0 
 $orange
 
 ########################################################################################
@@ -141,7 +141,7 @@ echo -e "
 $green
       ./configure $options --with-gui=no
 $orange
-    Hit$green hfsp$orange to change the final option to --with-gui=yes 
+    Type$green hfsp$orange to change the final option to --with-gui=yes 
 
     Note: You don't need the GUI, and Parmanode does not use it. It'll be faster
     to not include it.

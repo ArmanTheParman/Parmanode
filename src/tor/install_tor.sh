@@ -5,8 +5,8 @@ set_terminal ; echo -e "
 $cyan
                                    Install Tor
 $orange    
-    Parmanode will install Tor daemon (not browser). It runs in the background allowing
-    you to access the Tor network.
+    Parmanode will install Tor daemon (not browser). It runs in the background 
+    allowing you to access the Tor network.
 
 ########################################################################################    
 "

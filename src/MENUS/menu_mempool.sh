@@ -6,7 +6,9 @@ else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status
-if [[ -e /var/lib/tor/mempool-service ]] ; then
+debug "after unset"
+if sudo test -e /var/lib/tor/mempool-service ; then
+debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool=true
@@ -21,7 +23,6 @@ backend="${yellow}Bitcoin Core$orange"
 elif grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
 backend="${bright_blue}An Electrum or Fulcrum Server$orange"
 fi
-debug "after if backend"
 
 set_terminal_custom 45 ; echo -e "
 ########################################################################################$cyan
@@ -44,17 +45,17 @@ $running
 
                   bk)            Change Bitcoin Backend     
 
-                  conf)          View/Edit config (restart if changing)
+                  conf)          View/Edit config $pink(restart if changing)$orange
 
 
     Access Mempool:
 $cyan
-    http://127.0.0.1:8120
-    http://$IP:8120
+    http://127.0.0.1:8180
+    http://$IP:8180
 $orange
     Tor Access: $bright_blue    
 
-    Onion adress: $ONION_ADDR_FULCRUM:8280 $orange           
+    Onion adress: $ONION_ADDR_MEM:8280 $orange           
 
 ########################################################################################
 "
@@ -74,17 +75,20 @@ stop_mempool
 
 r|RESTART|restart|R)
 restart_mempool
-debug "restart done"
 ;;
 
 tor)
-if [[ $mempool_tor == false ]] ; then
-swap_string "$file" "SOCKS5PROXY_ENABLED:" "SOCKS5PROXY_ENABLED: \"true\""
+file="$hp/mempool/docker/docker-compose.yml"
+if [[ $tor_mempool == false ]] ; then
+swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"true\""
+debug "check swap should be true"
 enable_mempool_tor
 else
-swap_string "$file" "SOCKS5PROXY_ENABLED:" "SOCKS5PROXY_ENABLED: \"false\""
+swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"false\""
+debug "check swap should be false"
 disable_mempool_tor
 fi
+unset file
 ;;
 
 bk)

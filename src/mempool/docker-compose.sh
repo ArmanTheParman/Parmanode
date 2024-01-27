@@ -5,6 +5,10 @@ file="/tmp/docker-compose.yml"
 cat << EOF | tee $file >/dev/null 2>&1
 version: "3.7"
 
+networks:
+    PM_network:
+      driver: bridge
+
 services:
   mempool_web:
     environment:
@@ -17,13 +21,15 @@ services:
     command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
     ports:
       - 8180:8180
+    networks:
+      - PM_network
   api:
     environment:
       MEMPOOL_BACKEND: "none" #or "electrum"
-      CORE_RPC_HOST: "host.docker.internal"
+      CORE_RPC_HOST: "$IP"
       CORE_RPC_PORT: "8332"
-      ELECTRUM_HOST: "host.docker.internal"
-      ELECTRUM_PORT: "50005"
+      ELECTRUM_HOST: "$IP"
+      ELECTRUM_PORT: "50006"
       ELECTRUM_TLS_ENABLED: "true"
 EOF
 echo "      CORE_RPC_USERNAME: \"$rpcuser\"" | tee -a $file >/dev/null 2>&1
@@ -70,6 +76,8 @@ cat << EOF | tee -a $file >/dev/null 2>&1
     command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
     volumes:
       - ./data:/backend/cache
+    networks:
+      - PM_network
   db:
     environment:
       MYSQL_DATABASE: "mempool"
@@ -82,6 +90,8 @@ cat << EOF | tee -a $file >/dev/null 2>&1
     stop_grace_period: 1m
     volumes:
       - ./mysql/data:/var/lib/mysql
+    networks:
+      - PM_network
 EOF
 
 }

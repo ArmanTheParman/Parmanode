@@ -18,7 +18,8 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     fi
 
 cd $hp/mempool/docker && docker-compose down
-cd $hp && rm -rf ./mempool/
+#need sudo, some dirs have container permissions
+cd $hp && sudo rm -rf ./mempool/
 sudo rm -rf /var/lib/tor/mempool-service >/dev/null 2>&1
 delete_line "/etc/tor/torrc" "mempool-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:8180"

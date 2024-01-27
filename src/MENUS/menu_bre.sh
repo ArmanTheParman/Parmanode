@@ -21,7 +21,7 @@ get_onion_address_variable "bre" >/dev/null 2>&1
 output2=" 
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
                    $bright_blue
-                   $ONION_ADDR_BRE:3004
+            $ONION_ADDR_BRE:3004
                    $orange
                    "
 t_enabled=true
@@ -80,9 +80,9 @@ echo -e "
 
     ACCESS THE PROGRAM FROM YOUR BROWSER ON THE PARMANODE COMPUTER:
 $green
-                   http://${IP}:3002     
-                   http://localhost:3002        -from this computer only
-                   http://127.0.0.1:3002        -from this computer only$orange                
+            http://${IP}:3002     
+            http://localhost:3002        -from this computer only
+            http://127.0.0.1:3002        -from this computer only$orange                
 
 $output $output2
 ########################################################################################
