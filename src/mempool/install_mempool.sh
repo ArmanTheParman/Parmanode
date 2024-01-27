@@ -22,6 +22,7 @@ fi
 
 cd $hp
 git clone --depth 1 https://github.com/mempool/mempool.git
+install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
 sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
 installed_config_add "mempool-start"
@@ -40,10 +41,13 @@ docker-compose up -d
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
+debug "string is $string"
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
     stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
     echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
-    sudo systemctl restart bitcoind.service
+    if [[ $OS == Linux ]] ; then sudo systemctl restart bitcoind.service 
+    elif [[ $OS == Mac ]] ; then stop_bitcoind ; start_bitcoind 
+    fi
     restart_mempool
 fi
 
