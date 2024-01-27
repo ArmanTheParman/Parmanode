@@ -3,7 +3,7 @@ function uninstall_wordpress {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall Wordpress?
+                                 Uninstall Website ?
 $orange
     Are you sure? (y) (n)
 
@@ -17,6 +17,10 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     else 
     return 1
     fi
+
+
+sudo apt-get remove mariadb-server -y
+
 
 while true ; do
 set_terminal ; echo -e "
