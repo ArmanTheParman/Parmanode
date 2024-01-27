@@ -61,9 +61,13 @@ case $choice in
     ;;
 
     u|U|up|UP|update|UPDATE|Update)
-    if [[ $OS == "Linux" ]] ; then sudo apt-get update -y && sudo apt-get upgrade -y ; fi
+    if [[ $OS == "Linux" ]] ; then 
+        sudo apt-get update -y && sudo apt-get upgrade -y 
+        sudo apt-get --fix-broken install
+        sudo apt-get autoremove
         enter_continue
         success "Your computer" "being updated"
+    fi
     if [[ $OS == "Mac" ]] ; then 
         please_wait 
         brew_check || continue 
