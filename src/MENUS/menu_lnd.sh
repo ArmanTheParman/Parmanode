@@ -43,14 +43,16 @@ Or much longer if Bitcoin hasn't finished sync'ing yet.$orange"
 
 fi
 
-if cat $dp/lndinfo.log | grep 973 | grep -v onion >/dev/null 2>&1 ; then 
+if cat $dp/lndinfo.log | grep :973 | grep -v onion >/dev/null 2>&1 ; then 
 clearnetURI="
 $yellow
-Clearnet URI 
-Requires port forwading on your router; port $lnd_port to $IP:
+Clearnet URI:
 
 $(cat $dp/lndinfo.log | grep :973 | grep -v onion | cut -d \" -f 2)
-$orange"
+$orange
+Parmanode will not set up or detect port forwarding (allows others to connect to you)
+To set it up, forward port $lnd_port to IP: $IP
+"
 fi
 
 if [[ $lndtor == Enabled ]] ; then
