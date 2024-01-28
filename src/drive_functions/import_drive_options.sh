@@ -3,7 +3,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please chosse the type of external drive you wish to use for Parmanode:
+    Please choose the type of external drive you wish to use for Parmanode:
 
 
                       pp)  Parmanode drive from another or previous installation
