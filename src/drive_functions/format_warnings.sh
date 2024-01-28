@@ -2,10 +2,10 @@ function format_warnings {
 while true ; do
 set_terminal
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
-
-    YOU ARE ABOUT TO FORMAT THE DRIVE! All data on the drive will be erased.
+$red
+    YOU ARE ABOUT TO FORMAT THE DRIVE!$orange All data on the drive will be erased.
 
                          (y)     Format drive
 
@@ -15,10 +15,10 @@ echo "
 "
 fi
 if [[ $OS == "Mac" ]] ; then
-echo "
+echo -e "
 ########################################################################################
-
-    YOU ARE ABOUT TO FORMAT THE DRIVE! All data on the drive will be erased.
+$red
+    YOU ARE ABOUT TO FORMAT THE DRIVE!$orange All data on the drive will be erased.
 
                              (y)     Format drive
 

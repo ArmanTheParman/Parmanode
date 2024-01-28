@@ -2,23 +2,6 @@ function remove_parmanode_fstab {
 delete_line "/etc/fstab" "parmanode"
 }
 
-
-
-# function remove_fstab_entry {
-# #delete fstab entry of the disk immediately before wiping
-# remove_UUID_fstab "$disk" 
-# }
-
-function remove_UUID_fstab {
-
-drive_ID="$1"
-
-get_UUID "${drive_ID}"
-if [ -z $UUID ] ; then debug "No UUID, 2" ; return 1 ; fi
-    
-return 0
-}
-
 function get_UUID {
 
 if ! lsblk -o LABEL | grep -q parmanode ; then
