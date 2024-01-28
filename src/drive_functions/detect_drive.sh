@@ -111,7 +111,7 @@ $orange
 "
 read choice
 rm_after_before
-case $choic in a) back2main ;; esac
+case $choice in a) back2main ;; esac
 continue 
 fi
 
