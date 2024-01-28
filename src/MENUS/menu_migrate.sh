@@ -8,6 +8,7 @@ $cyan
 
 
       (parmy)    Migrate a drive from another Parmanode installation 
+                 or bring in a brand new drive
 
       (ub)       Migrate an Umbrel drive to Parmanode 
 
