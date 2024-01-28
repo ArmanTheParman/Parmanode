@@ -57,8 +57,18 @@ offer_swap_to_external #runs only if drive=internal
 ;;
 
 new)
+export newmigrate=true
+export drive=external && parmanode_conf_add "drive=external"
 format_ext_drive
-offer_swap_to_external #runs only if drive=internal
+stop_bitcoind 
+prune_choice || return 1 
+make_bitcoin_directories
+make_bitcoin_conf || return 1
+sudo chown -R $USER: $HOME/.bitcoin/ 
+set_rpc_authentication "s" "install"
+please_wait && run_bitcoind
+unset newmigrate drive
+success "The new drive" "being imported"
 ;;
 
 ub|UB|Ub)
