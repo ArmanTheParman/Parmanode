@@ -117,6 +117,8 @@ return 0
 
 
 function confirm_format {
+#return 1 necessary because function failure sets skip_formatting variable to true in calling  function
+if [[ $importdrive == true ]] ; then return 1 ; fi
 
 while true ; do
 clear ; echo -e "
