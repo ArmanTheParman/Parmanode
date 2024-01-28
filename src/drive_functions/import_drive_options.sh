@@ -71,7 +71,7 @@ log "importdrive" "mynode import"
 mynode_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
 if ! grep -q "parmanode" < /etc/fstab ; then
-        get_UUID "$disk" 
+        get_UUID 
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
 fi
