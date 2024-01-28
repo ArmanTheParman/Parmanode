@@ -114,11 +114,9 @@ if [[ $(uname) == "Darwin" ]] ; then
 if { [[ $OS == Linux ]] && \ 
      diff -q $dp/before $dp/after >/dev/null 2>&1 && \
      diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 } || \
-\
    { [[ $OS == Mac ]] && \
-     diff -q $$dp/before $dp/after 2>&1 } ;
-then
-   echo -e "
+     diff -q $$dp/before $dp/after 2>&1 } ; then
+echo -e "
 ########################################################################################
 
     No new drive detected.$red DISCONNECT DRIVE$orange and hit $green<enter>$orange try again. 
