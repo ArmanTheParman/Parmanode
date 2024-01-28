@@ -136,20 +136,21 @@ fi
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
-    if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
 
 if [[ $OS == Linux ]] ; then
     if diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
+      debug "disk blkid diff is $disk"
     else
       export disk="/dev/$(diff -y $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
       debug "disk lsblk diff is $disk"
     fi
 
-
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
+    
     break
 fi
     
