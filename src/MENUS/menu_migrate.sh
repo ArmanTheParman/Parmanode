@@ -31,9 +31,26 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-add_drive || return 1
+
+set_terminal ; echo -e "
+########################################################################################
+    Please$green connect$orange the Parmanode drive, wait a couple of seconds, then hit$green <enter>$orange
+########################################################################################
+"
+enter_continue
+
+if ! lsblk -o LABEL | grep -q parmanode ; then
+set_terminal ; echo -e "
+########################################################################################
+    There does not seem to be a drive with a Parmanode Label connected. Aborting.
+########################################################################################
+"
+enter_continue
+return 1
+fi
+
+add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
 success "The drive" "being imported"
-#get_UUID || return 1 # checks 1 and only one parmanode drive is connected and gets UUID variable, or return 1
 offer_swap_to_external #runs only if drive=internal
 ;;
 
