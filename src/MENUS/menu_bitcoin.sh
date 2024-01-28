@@ -79,6 +79,8 @@ $bright_blue
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
+      (update)   Update Bitcoin wizard
+
       (o)        OTHER...
 
 ########################################################################################
@@ -188,6 +190,11 @@ continue
 
 mm|MM|Mm|migrate|Migrate)
 menu_migrate
+continue
+;;
+
+update|Update|UPDATE)
+update_bitcoin
 continue
 ;;
 
