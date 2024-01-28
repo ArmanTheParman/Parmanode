@@ -32,9 +32,9 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-add_drive 
-offer_swap_to_external #runs only if drive=internal
+add_drive || return 1
 success "The drive" "being imported"
+offer_swap_to_external #runs only if drive=internal
 ;;
 
 ub|UB|Ub)
