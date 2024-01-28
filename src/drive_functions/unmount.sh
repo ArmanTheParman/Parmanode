@@ -6,7 +6,7 @@ if [[ $OS == "Linux" ]] ; then
         
         sudo umount $disk* >/dev/null 2>&1 
         sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-        debug "umount function, exiting..."
+        debug "umount function, end"
         return 0
     fi
 

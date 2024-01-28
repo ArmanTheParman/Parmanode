@@ -4,7 +4,7 @@ if   [[ $1 == parmanodl ]] ; then
      export disk_no_number=sda 
 else export disk_no_number="${disk%%[0-9]*}"
 fi
-debug "in partition, disk no number is $disk_no_number"
+debug "in partition, disk excluding number is $disk_no_number"
 if [ ! -e "$disk_no_number" ] ; then #eg if /dev/sda doesn't exist
     set_terminal
     echo "Drive $disk does not exist. Exiting."

@@ -83,6 +83,7 @@ if [[ $OS == "Linux" ]] ; then
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" $disk 
+        sudo blkid >/dev/null ; sleep 1 #need to refresh
         debug "pause. after format. check label made."
 
         #Extract the *NEW* UUID of the disk and write to config file.
