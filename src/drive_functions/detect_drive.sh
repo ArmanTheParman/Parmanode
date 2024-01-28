@@ -104,10 +104,14 @@ if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; the
 
     If you keep getting this error, try different ports, or try the assisted drive 
     format function in the Parmanode --> Tools menu. 
-
+$green
+    To abort, hit a and <enter> 
+$orange
 ########################################################################################
 "
-read ; continue 
+read choice
+case $choic in a) back2main ;; esac
+continue 
 fi
 
 
