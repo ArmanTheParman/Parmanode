@@ -31,15 +31,10 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-#add_drive || return 1
-#detect_if_parmanode_drive
-#success "The drive" "being imported"
-remove_parmanode_fstab
-
-get_UUID || return 1 # checks 1 and only one parmanode drive is connected and gets UUID variable, or return 1
-                 
+add_drive || return 1
+success "The drive" "being imported"
+#get_UUID || return 1 # checks 1 and only one parmanode drive is connected and gets UUID variable, or return 1
 offer_swap_to_external #runs only if drive=internal
-unset disk
 ;;
 
 ub|UB|Ub)
@@ -75,25 +70,4 @@ invalid
 
 esac
 done
-}
-
-function detect_if_parmanode_drive {
-
-if ! lsblk -o LABEL $disk | grep -q parmanode >/dev/null 
-then
-set_terminal ; echo -e "
-########################################################################################
-
-    Parmanode has detected that the drive you are importing is not already a 
-    Parmanode drive.
-
-    Would you like to ...
-
-            new)   Set it up as a new Parmanode drive (will FORMAT)
-
-            keep)  Keep the data, label the drive as Parmanode, and manually
-                   make 
-
-
-
 }
