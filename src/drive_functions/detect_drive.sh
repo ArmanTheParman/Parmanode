@@ -111,7 +111,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 ########################################################################################
 # check for difference between before and after
 
-if { [[ $OS == Linux ]] && \ 
+if { [[ $OS == Linux ]] && \
      diff -q $dp/before $dp/after >/dev/null 2>&1 && \
      diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 } || \
    { [[ $OS == Mac ]] && \
