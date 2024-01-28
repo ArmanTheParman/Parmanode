@@ -71,7 +71,6 @@ if [[ $(uname) == "Linux" ]] ; then
 
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
-    before_file="$dp/before"
     fi
 
 
@@ -107,14 +106,17 @@ if [[ $(uname) == "Linux" ]] ; then
 
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
-    after_file="$dp/after"
     fi
 
 ########################################################################################
 # check for difference between before and after
 
-if diff -q $dp/before $dp/after >/dev/null 2>&1 && \
-   diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 
+if { [[ $OS == Linux ]] && \ 
+     diff -q $dp/before $dp/after >/dev/null 2>&1 && \
+     diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 } || \
+\
+   { [[ $OS == Mac ]] && \
+     diff -q $$dp/before $dp/after 2>&1 } 
 then
    echo -e "
 ########################################################################################
@@ -134,17 +136,6 @@ case $choice in a) back2main ;; esac
 continue 
 fi
 
-
-if diff -q $dp/before $dp/after >/dev/null 2>&1 ; then useblkid=true ; fi
-
-if [[ $useblkid != true ]] && \
-    ! diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 
-then
-    uselsblk=true
-fi
-
-debug "useblkid $useblkid , uselsblk $uselsblk"
-
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
@@ -152,7 +143,14 @@ if [[ $OS == Mac ]] ; then
 fi
 
 if [[ $OS == Linux ]] ; then
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
+    if diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
+      export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
+    else
+      export disk="/dev/$(diff -y $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
+      debug "disk lsblk diff is $disk"
+    fi
+
+
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
