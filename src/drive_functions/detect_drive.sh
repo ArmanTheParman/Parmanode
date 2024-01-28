@@ -145,7 +145,8 @@ if [[ $OS == Linux ]] ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
       debug "disk blkid diff is $disk"
     else
-      export disk="/dev/$(diff -y $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
+      # -y, side by side format not used
+      export disk="/dev/$(diff $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
       debug "disk lsblk diff is $disk"
     fi
 
