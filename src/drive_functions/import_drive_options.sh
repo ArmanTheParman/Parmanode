@@ -30,8 +30,8 @@ if [[ $OS == "Linux" ]] ; then
         remove_parmanode_fstab
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" 
         sudo e2label $disk parmanode || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        get_UUID #gets UUID of parmanode label drive
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
 fi

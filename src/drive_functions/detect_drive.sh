@@ -1,4 +1,4 @@
-#used by add_drive function.
+#used by add_drive function --> detect_drive --> back to add_drive
 #use by umbrel_import_mac - $1 menu skips initial warning. $2 umbrelmac used for text customisation
 function detect_drive {
 unset disk
