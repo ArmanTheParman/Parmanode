@@ -59,7 +59,6 @@ offer_swap_to_external #runs only if drive=internal
 new)
 format_ext_drive
 offer_swap_to_external #runs only if drive=internal
-if ! grep "drive=" <$pc >/dev/null 2>&1 ; then
 ;;
 
 ub|UB|Ub)
