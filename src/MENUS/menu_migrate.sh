@@ -42,7 +42,7 @@ enter_continue
 if ! lsblk -o LABEL | grep -q parmanode ; then
 set_terminal ; echo -e "
 ########################################################################################
-    There does not seem to be a drive with a Parmanode Label connected. Aborting.
+    There does not seem to be a drive with a$cyan parmanode$orange Label connected. Aborting.
 ########################################################################################
 "
 enter_continue
