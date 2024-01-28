@@ -18,7 +18,7 @@ set_terminal ; echo -e "
     This is what you do....
 
         1)   Uninstall Bitcoin from the Parmanode menu.$red Make sure to choose NOT
-             to delete your blockchain data, unless you want to start over. 
+             to delete your blockchain data, unless you want to start over.$orange
 
         2)   Stop any services that are communicating with Bitcoin (electrs, Fulcrum
              LND etc)
