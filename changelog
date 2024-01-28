@@ -3,6 +3,7 @@ Version 3.25.1
     -Mempool but in Docker fixed
     -Mempool for Mac as well
     -How to update bitcoin
+    -Import a fresh drive to Parmanode
 Version 3.25.0
     -Mempool is back, baby
     -Smol bug when creating new LND wallet fixed
