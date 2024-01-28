@@ -9,6 +9,8 @@ $cyan
 
       (parmy)    Migrate a drive from another Parmanode installation 
 
+      (new)      Bring in new drive (will be formatted)
+
       (ub)       Migrate an Umbrel drive to Parmanode 
 
       (mn)       Migrate a MyNode drive to Parmanode 
@@ -52,6 +54,12 @@ fi
 add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
 success "The drive" "being imported"
 offer_swap_to_external #runs only if drive=internal
+;;
+
+new)
+format_ext_drive
+offer_swap_to_external #runs only if drive=internal
+if ! grep "drive=" <$pc >/dev/null 2>&1 ; then
 ;;
 
 ub|UB|Ub)
