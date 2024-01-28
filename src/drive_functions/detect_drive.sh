@@ -60,6 +60,7 @@ fi #end != menu2
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
+    sudo lsblk > $dp/before_lsblk
     fi
 
 if [[ $(uname) == "Darwin" ]] ; then
@@ -90,6 +91,7 @@ sleep 2.5
 if [[ $(uname) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
+    sudo lsblk > $dp/after_lsblk
     fi
 
 if [[ $(uname) == "Darwin" ]] ; then
