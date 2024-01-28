@@ -37,7 +37,7 @@ set_terminal ; echo -e "
         6)   Run Bitcoin.
 
         7)   Sit back and relax as we take down the legacy financial system and the
-             the evil leaches that are running it (Do not call them 'elite').
+             the evil leeches that are running it (Do not call them 'elite').
 
 ########################################################################################
 "
