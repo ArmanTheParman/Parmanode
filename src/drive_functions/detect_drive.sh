@@ -110,6 +110,7 @@ $orange
 ########################################################################################
 "
 read choice
+rm_after_before
 case $choic in a) back2main ;; esac
 continue 
 fi
