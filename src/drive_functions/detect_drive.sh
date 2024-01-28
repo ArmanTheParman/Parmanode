@@ -56,7 +56,13 @@ fi
 fi #end != menu2
 
 #DETECT BEFORE AND AFTER...
+#For some drives blkid detects a difference.
+#For other drives only lsblk detects a difference.
+#Making a before and after file, but two different ones to check for blkid and lsblk differnces.
+#Extra coplication - mac has its own detection; diskutil list.
 
+########################################################################################
+#BEFORE STATE CAPTURE...
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/before
@@ -65,6 +71,7 @@ if [[ $(uname) == "Linux" ]] ; then
 
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/before
+    before_file="$dp/before"
     fi
 
 
@@ -88,6 +95,10 @@ enter_continue
 set_terminal
 sleep 2.5
 
+
+########################################################################################
+#AFTER STATE CAPTURE...
+
 if [[ $(uname) == "Linux" ]] ; then
     sudo blkid -g >/dev/null
     sudo blkid > $HOME/.parmanode/after
@@ -96,10 +107,16 @@ if [[ $(uname) == "Linux" ]] ; then
 
 if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
+    after_file="$dp/after"
     fi
 
-if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
-    echo -e "
+########################################################################################
+# check for difference between before and after
+
+if diff -q $dp/before $dp/after >/dev/null 2>&1 && \
+   diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 
+then
+   echo -e "
 ########################################################################################
 
     No new drive detected.$red DISCONNECT DRIVE$orange and hit $green<enter>$orange try again. 
@@ -117,6 +134,16 @@ case $choice in a) back2main ;; esac
 continue 
 fi
 
+
+if diff -q $dp/before $dp/after >/dev/null 2>&1 ; then useblkid=true ; fi
+
+if [[ $useblkid != true ]] && \
+    ! diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 
+then
+    uselsblk=true
+fi
+
+debug "useblkid $useblkid , uselsblk $uselsblk"
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
