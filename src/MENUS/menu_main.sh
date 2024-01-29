@@ -155,8 +155,7 @@ uersd) menu_use ersd ;;
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
 debug "before nodejs"
-get_nodejs_and_npm 18
-debu "after nodesjs"
+get-nodejs_and_npm 18 x
 ;;
 
 
