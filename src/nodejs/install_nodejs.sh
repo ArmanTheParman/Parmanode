@@ -31,7 +31,12 @@ sudo apt autoremove -y
 
 #update repository list
 sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
+if [[ -z $1 ]] ; then
 NODE_MAJOR=18 #problems with version20
+else
+NODE_MAJOR="$1"
+fi
+
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
 | sudo tee /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
