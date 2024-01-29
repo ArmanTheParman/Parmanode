@@ -153,6 +153,10 @@ umem) menu_use mem ;;
 uersd) menu_use ersd ;;
 
 
+"rf npm"|"rf nodejs"|"rf get-nodejs_and_npm"
+
+
+
 ul|UL|Ul)
 clear ; please_wait
 menu_lnd
