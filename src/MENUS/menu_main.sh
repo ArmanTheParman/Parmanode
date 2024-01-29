@@ -153,7 +153,7 @@ umem) menu_use mem ;;
 uersd) menu_use ersd ;;
 
 
-"rf npm"|"rf nodejs"|"rf get_nodejs_and_npm")
+"rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
 get-nodejs_and_npm
 ;;
 
