@@ -115,36 +115,6 @@ fi
 
 cb_json=$(lncli channelbalance)
 
-
-#     "balance": "0",
-#     "pending_open_balance": "0",
-#     "local_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     },
-#     "remote_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     },
-#     "unsettled_local_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     },
-#     "unsettled_remote_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     },
-#     "pending_open_local_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     },
-#     "pending_open_remote_balance": {
-#         "sat": "0",
-#         "msat": "0"
-#     }
-
-
-
 # Parse specific values
 balance=$(echo "$cb_json" | jq -r '.balance')
 pending_open_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_balance')
@@ -161,17 +131,6 @@ pending_open_local_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_local_ba
 pending_open_local_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.msat')
 pending_open_remote_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.sat')
 pending_open_remote_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.msat')
-
-
-# balance=$(lncli channelbalance | grep -n1 "balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# pending_open_balance=$(lncli channelbalance | grep -n1 "pending_open_balance" | head -n3 | tail -n3 | cut -d \" -f 4) >/dev/null 2>&1
-# local_balance=$(lncli channelbalance | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# remote_balance=$(lncli channelbalance | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# unsettled_local_balance=$(lncli channelbalance | grep -n1 "unsettled_local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# unsettled_remote_balance=$(lncli channelbalance | grep -n1 "unsettled_remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# pending_open_local_balance=$(lncli channelbalance | grep -n1 "pending_open_local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# pending_open_remote_balance==$(lncli channelbalance | grep -n1 "pending_open_remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-# channel_size_total=$((local_balance + remote_balance))
 
 set_terminal ; echo -e "
 ########################################################################################
