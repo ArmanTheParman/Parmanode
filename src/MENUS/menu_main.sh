@@ -155,7 +155,7 @@ uersd) menu_use ersd ;;
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
 debug "before nodejs"
-get_nodejs_and_npm 18 x
+get_nodejs_and_npm 20 x
 sudo npm install -g npm
 ;;
 
