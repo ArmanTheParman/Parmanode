@@ -49,7 +49,7 @@ set_terminal ; echo -e "
     To proceed, the system must be upgraded (might take a while if you haven't done
     this for some time).
 
-    Hit$cyan a$orange to abort.
+    Hit$red a$orange to abort.
 
     Hit$cyan <enter>$orange alone to continue.
 
