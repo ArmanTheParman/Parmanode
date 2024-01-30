@@ -48,6 +48,7 @@ if sudo grep "HiddenServicePort 3004 127.0.0.1:3002" \
 sudo systemctl restart tor
 restart_bre >/dev/null
 get_onion_address_variable "bre" >/dev/null 2>&1
+clear
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
 echo ""

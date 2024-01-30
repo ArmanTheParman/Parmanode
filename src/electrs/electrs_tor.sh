@@ -3,9 +3,11 @@ function electrs_tor {
 enable_tor_general || return 1
 
 if sudo grep "HiddenServiceDir /var/lib/tor/electrs-service/" \
-    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
+    /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; debug "true" ; else debug "else"
     echo "HiddenServiceDir /var/lib/tor/electrs-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
+
+debug "after hidden service echo"
 
 if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
@@ -20,11 +22,12 @@ docker_start_electrs
 else
 sudo systemctl restart electrs.service
 fi
+debug "electrs restarted"
 
 get_onion_address_variable "electrs" >/dev/null 2>&1
 
 parmanode_conf_add "electrs_tor=true"
-
+clear
 echo "    Changes have been made to torrc file"
 echo "    Tor has been restarted."
 echo ""

@@ -1,21 +1,24 @@
 function download_bitcoin {
-cd $HOME/parmanode/bitcoin
+# version == self means user has chosen to import own binaries.
+if [[ $version == self ]] ; then return 0 ; fi
+debug "in download bitcoin, version = $version"
 
+cd $HOME/parmanode/bitcoin
 set_terminal
 echo -e "
 ########################################################################################
 
    $cyan 
-    The current version of Bitcoin Core that will be installed is 25.0
+    The current version of Bitcoin Core that will be installed is $version
 $orange
 
     Parmanode will verify by hashing the file for you (and gpg verification), but 
     you may wish to learn how to do this yourself.
 
     The downloaded files will be at:
-    
+$pink    
                       /home/$(whoami)/parmanode/bitcoin/
-
+$orange
     To learn more about how:
 $pink
                       https://armantheparman.com/gpg-articles 
@@ -33,28 +36,26 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
 
 	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-aarch64-linux-gnu.tar.gz 
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz 
             else
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz ; fi
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
             fi
 
  	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz ; fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
-         curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm64-apple-darwin.dmg
+         curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg
          fi
 
         if [[ $chip == "x86_64" && $OS == Mac ]] ; then
-        curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-apple-darwin.dmg
+        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg
         fi
-
-debug_user "check bitcoin file exists"
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1

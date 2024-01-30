@@ -9,17 +9,17 @@ elif [[ $1 == d4 ]] ; then export debug=4
 elif [[ $1 == d5 ]] ; then export debug=5  
 elif [[ $1 == d6 ]] ; then export debug=6  
 elif [[ $1 == d7 ]] ; then export debug=7  
+elif [[ $1 == m  ]] ; then export debug=menu ; export skip_intro=true 
 else export debug=0 
 fi
+
+if [[ $1 == test || $2 == test ]] ; then export test=true ; fi
 
 #used for debugging
 if [[ $1 == skipverify || $2 == skipverify || $3 == skipverify ]] ; then export verify=skip ; fi
 
 #save position of working directory. "Export" makes the variable available everywhere.
 export original_dir=$(pwd) >/dev/null 2>&1
-
-if [[ $1 == "usertest" || $1 == "ut" ]] ; then export ut=1 ; fi
-
 
 if [[ $(uname) == Linux ]] ; then
 export parmanode_drive="/media/$USER/parmanode"
@@ -44,6 +44,8 @@ export hm="$dp/hide_messages.conf"
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
 get_Mac_version #function to export Mac Version variables
+
+get_ip_address #function to put the IP address of the computer in memory.
 
 # A counter for the number of times main_menu has been 'Inceptioned'.
 # back2main function will add 1. After a set value, user is warned to restart Parmanode.

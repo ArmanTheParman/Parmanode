@@ -8,21 +8,21 @@ while true ; do
 set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
 source $hm >/dev/null 2>&1
-if [[ $vPatch -gt 9 ]] ; then space="" else space =" " ; fi #in case version number is high, adjust menu border
+if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
-# if statements in the menu printout makes the menu dynamic, ie changes accoring to the
-# tests performed. Variables are set to assit logic in the menu choice excution part
+# if statements in the menu printout makes the menu dynamic, ie changes according to the
+# tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
 echo -e "$orange
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$bright_blue $version                                                               $orange  $space #
+#    Version:$bright_blue $version                                                               $orange  $space#
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of programs   $red(new)          $orange                #
+#    (o)                  Overview/Status of programs                                  #
 #                                                                                      #
 #    (add)                Add more programs                                            #
 #                                                                                      #
@@ -68,7 +68,7 @@ read choice #whatever the user chooses, it gets put into the choice variable use
 set_terminal
 
 case $choice in #the variable choice is tested through each of the case-choices below.
-# these end in a closing bracked, have some code, and end with a ;;
+# these end in a closing bracket, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
 aa)
@@ -84,7 +84,7 @@ o|O)
 menu_overview 
 ;;
 
-add|Add| ADD)
+a|add|Add|ADD)
     menu_add_new
     ;;
 use|USE|Use|u|U)
@@ -106,10 +106,10 @@ s|S)
     menu_settings ;;
 d|D)
     donations ;;
-uninstall|UNINSTALL)
+un|uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
-update|UPDATE|Update)
+up|update|UPDATE|Update)
     update_parmanode || continue
     if [[ $main_loop != 0 ]] ; then
     set_terminal ; 
@@ -121,6 +121,11 @@ update|UPDATE|Update)
 ;;
 ap|AP|Ap|aP)
     about ;;
+
+addn) menu_add_node ;;
+addw) menu_add_wallets ;;
+addo) menu_add_other ;;
+
 
 uany) menu_use any ;; 
 ub) menu_use b ;; 
@@ -144,6 +149,16 @@ ups) menu_use ps ;;
 upbx) menu_use pbx ;;
 upih) menu_use pih ;;
 uqbit) menu_use qbit ;;
+umem) menu_use mem ;;
+uersd) menu_use ersd ;;
+
+
+"rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
+debug "before nodejs"
+get_nodejs_and_npm 20 x
+sudo npm install -g npm
+;;
+
 
 
 ul|UL|Ul)
@@ -154,7 +169,7 @@ menu_lnd
 q | Q | quit)
     exit 0 ;;
 *)
-    invalid ;;
+    invalid ; clear ;;
 
 esac ; done ; return 0
 }

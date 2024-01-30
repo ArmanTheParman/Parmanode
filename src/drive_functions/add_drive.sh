@@ -37,20 +37,30 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-    if [[ ! -d /media/$(whoami)/parmanode ]] ; then sudo mkdir -p /media/$(whoami)/parmanode ; fi
+    if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
     
     write_to_fstab2
 
+sudo umount /media/$USER/parmanod* 
 sudo mount -a
 
 cd /media/$USER/parmanode/
+#change later and check this a mountpoint first
 sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
+debug "made .bitcoin, fulcrum and electrs dirs on the drive"
+sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
+debug "chown parmanode drive"
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
+if [[ -L /media/$USER/parmanode/.bitcoin ]] ; then
+    if ! which readlink >/dev/null ; then sudo apt update -y && sudo apt install coreutils ; fi
+    sudo chown -R $USER:$(id -gn) $(readlink /media/$USER/parmanode/.bitcoin)
+fi
+debug "chown parmanode directories"
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    If you saw no errors, your drive should now be mounted.
+    If you saw no errors, your drive should now be$green mounted$orange.
 
 ########################################################################################
 "

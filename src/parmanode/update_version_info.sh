@@ -1,5 +1,4 @@
 function update_version_info {
-debug2 "in update_version_info"
 unset version_incompatibility latest_version version old_version 
 unset latest_vMajor vMajor latest_vMinor vMinor latest_vPatch vPatch
 

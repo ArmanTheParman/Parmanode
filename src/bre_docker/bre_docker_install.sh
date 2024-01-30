@@ -11,14 +11,14 @@ bre_docker_intro
 #questions (for variables)
 bre_computer_speed
 
-#made directories
+#make directories
 bre_docker_directories && installed_config_add "bre-start"
 
 #docker build
 bre_docker_build
 
 #docker run
-bre_docker_run || { announce "docker run failed. aborting." ; return 1 ; }
+bre_docker_run || { announce "docker run$red failed$orange. aborting." ; return 1 ; }
 
 #move config file to mounted volume (couldn't have been done any earlier)
 #and make symlink in expected location

@@ -1,33 +1,7 @@
 function download_sparrow {
 cd $HOME/parmanode
 
-while true ; do
-set_terminal
-echo -e "
-########################################################################################
-    
-    Which version of Sparrow would you like to download? 
-$green
-                 d)       Default version 1.7.8 (tested well and recommended)
-$red
-                 yolo)    v1.8.0, let's see what happens (newer - reckless!)
-$orange
-########################################################################################                
-"
-choose "xpmq" ; read choice
-case $choice in
-p|P) return 1 ;;
-q|Q) exit ;;
-m|M) back2main ;; 
-d) 
-sparrow_version="1.7.8" ; break ;;
-yolo)
-sparrow_version="1.8.0" ; break ;;
-*)
-invalid ;;
-esac
-done
-clear
+sparrow_version="1.8.1"
 
 #clean up previous downloads if any
 rm -rf $hp/"*parrow-1."*

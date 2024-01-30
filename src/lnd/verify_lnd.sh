@@ -12,7 +12,7 @@ if  ! gpg --verify --status-fd 1 *.sig manifest*.txt 2>&1 | grep -q GOOD ; then
     return 1
 else
     set_terminal
-    echo "GPG verification passed."
+    echo -e "GPG verification$green passed$orange."
     sleep 2
 fi
 #Perform SHA256 to verify

@@ -3,10 +3,10 @@ function preamble_install_electrs {
 if [[ $OS == Linux ]] ; then
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
     
-    Parmanode will now install ELECTRS on your system.
+    Parmanode will now install$cyan ELECTRS$orange on your system.
 
     Please note, you may be prompted to install cargo, a necessary program to compile
     electrs from source code. If you see an option to choose 1, 2, or 3, you need to
@@ -20,11 +20,11 @@ echo "
     This might take 10 to 30 minutes, depending on the speed of your computer.
 
     PROCEED?
-
+$green
                         y)      Yes please, this is amazing
-
-                        n)      Nah mate
-    
+$red
+                        n)      Nah mate 
+$orange
 ########################################################################################
 "
 read choice

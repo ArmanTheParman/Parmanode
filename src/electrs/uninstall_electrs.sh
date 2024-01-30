@@ -34,7 +34,7 @@ while true ; do
     Keeping the backup can save you time compiling it all again if you choose to 
     re-install electrs.
 
-    REMOVE orange the backup too? 
+    REMOVE the backup too? 
 $red
                         R)      Remove
 $green                        

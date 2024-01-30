@@ -18,9 +18,9 @@ curl -s https://openpgpkey.torproject.org/.well-known/openpgpkey/torproject.org/
 
 #verify signature
 if gpg --verify --status-fd 1 tor*asc 2>&1 | grep -q GOOD ; then
-announce "GPG verification passed."
+announce "GPG verification$green passed$orange."
 else
-announce "GPG verification failed. Aborting."
+announce "GPG verification$red failed$orange. Aborting."
 return 1 
 fi
 

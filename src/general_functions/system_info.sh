@@ -105,8 +105,8 @@ fi
 }
 
 function get_ip_address {
-if [[ $OS == "Linux" ]] ; then export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
-if [[ $OS == "Mac" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
+if [[ $(uname) == "Linux" ]] ; then export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
+if [[ $(uname) == "Darwin" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 # Through a series of searches (grep), the results being passed by the | symbol to the right and being
 # searched on again, the results are narrowed down.
 # awk is used to print out a field (like selecting a column in an excel row), and cut

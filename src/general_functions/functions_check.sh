@@ -37,7 +37,7 @@ enter_exit ; exit 1 #enter_exit is a basic custom printing command.
 fi
 
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
 
                             Testing \"sudo\" checkpoint
@@ -49,9 +49,9 @@ echo "
 
     If you can't get passed this checkpoint, you could try venturing into the world
     of learning to use the command line, and install sudo with the command:
-
+$cyan
                                  apt-get install sudo
-
+$orange
     You will need to run this as the root user (no you can't run Parmanode as root).
 
 ########################################################################################

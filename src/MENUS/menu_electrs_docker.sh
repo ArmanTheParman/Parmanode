@@ -1,12 +1,13 @@
 function menu_electrs_docker {
-
+logfile="/home/parman/run_electrs.log"
 while true ; do
+unset log_size
 set_terminal
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version
 source $dp/parmanode.conf >/dev/null 2>&1
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if [[ -e /var/lib/tor/electrs-service ]] && \
+        if sudo test -e /var/lib/tor/electrs-service  && \
         sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
@@ -17,21 +18,29 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
-if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version ; then
+#check it's running
+if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
 electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
+log_size=$(docker exec -it electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
+log_size=$(echo $log_size | tr -d '\r\n')
+if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version ; fi
 fi
-
 set_terminal_custom 50
+debug "electrs version, $electrs_version"
 
 echo -e "
 ########################################################################################
                                 ${cyan}Electrs Menu $electrs_version ${orange}
 ########################################################################################
 "
+if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
+    THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
+    $orange"
+fi
 if [[ -n $electrs_version ]] ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
-                         Sync'ing to the $drive_electrs drive
+                         Sync'ing to the $cyan$drive_electrs$orange drive
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 "
@@ -39,7 +48,7 @@ else
 echo -e "
                    ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
-                         Will sync to the $drive_electrs drive"
+                         Will sync to the $cyan$drive_electrs$orange drive"
 fi
 echo "
 
@@ -50,7 +59,7 @@ echo "
 
       (stop)     Stop electrs 
 
-      (r)        Restart electrs 
+      (restart)  Restart electrs 
 
       (remote)   Choose which Bitcoin Core for electrs to connect to
 
@@ -97,7 +106,15 @@ docker_stop_electrs
 continue
 ;;
 
-r|R) 
+logdel)
+please_wait
+docker_stop_electrs
+docker start electrs >/dev/null 2>&1
+docker exec -it electrs bash -c "rm $logfile"
+docker_start_electrs
+;;
+
+restart|Restart)
 docker_stop_electrs
 docker_start_electrs
 continue
@@ -133,11 +150,11 @@ enter_continue
 fi
 
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f $HOME/.parmanode/run_electrs.log" &     
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    docker exec -it electrs /bin/bash -c "tail -f $logfile"      
+        # tail_PID=$!
+        # trap 'kill $tail_PID' SIGINT #condition added to memory
+        # wait $tail_PID # code waits here for user to control-c
+        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
     continue
 
@@ -173,7 +190,7 @@ exit 0
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-if [[ $E_tor == off ]] ; then
+if [[ $E_tor_logic == off ]] ; then
 electrs_tor
 else
 electrs_tor_remove

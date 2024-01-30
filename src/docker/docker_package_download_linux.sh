@@ -9,7 +9,7 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update -y
 
 #modified instruction from official Docker guide to include Linuxmint conversion
-  sudo source /etc/os-releases
+  sudo source /etc/os-release
     if [[ $ID != "debian" ]] ; then parmanode_conf_add "ID=ubuntu" ; fi
   get_linux_version_codename 
 
@@ -29,7 +29,7 @@ sudo apt-get update -y
 
 installed_config_add "docker-start" 
 counter=0 ; while [[ $counter -le 1 ]] ; do
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin -y 
+sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
 exit_status=$?
 if [ $exit_status != 0 ] ; then
 echo ""

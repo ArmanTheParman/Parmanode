@@ -102,8 +102,8 @@ if [[ $OS == "Mac" ]] ; then
 
 # if it ran successfully, code exits.    
 
-echo " 
-Wiping the drive failed for some reason. Aborting.
+echo -e " 
+Wiping the drive$red failed$orange for some reason. Aborting.
 "
 enter_continue
 exit 1

@@ -4,6 +4,12 @@ set_terminal ; echo "
 ########################################################################################
 
     Raspberry Pi issues:
+        
+        Electrs will install on a Raspberry Pi, but after the long wait syncing, I
+        experienced great difficulty connecting wallets to the server, either on
+        the same device or from a different device - be warned. It is probaby better
+        that for Raspberry Pi, you install the Docker version of Electrs, which I 
+        found to work well.
 
         It is possible that when you inspect the log file, you'll see electrs starting
         and then terminating, and after some time starting again and failing again.

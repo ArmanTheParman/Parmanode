@@ -18,7 +18,7 @@ else
     b1="${red}N$orange                                   ${red}N$orange"
     menub1=false
 fi
-``
+
 if grep -q lnd-end < $ic ; then
     if [[ $lndrunning == true ]] ; then
     b2="${green}Y$orange                (ls)               ${green}Y$orange"
@@ -56,7 +56,7 @@ else
     b4="${red}N$orange                                   ${red}N$orange"
     menub4=false
 fi
-if grep -q btcrpcexplorer-end < $ic ; then
+if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     if [[ $brerunning == true ]] ; then
     b5="${green}Y$orange                (brs)              ${green}Y$orange"
     menub5=true
@@ -112,21 +112,21 @@ echo -e "
 ########################################################################################
 
 
-           Bitcoin             $b1
+        Bitcoin                $b1
 
-           LND                 $b2
+        LND                    $b2
 
-           Fulcrum             $b3
+        Fulcrum                $b3
 
-           Electrs             $b4
+        Electrs (non Docker)   $b4
 
-           BRE                 $b5
+        Electrs (Docker)       $b8
 
-           BTCPay              $b6
+        BRE                    $b5
 
-           RTL                 $b7
+        BTCPay                 $b6
 
-           Electrs (docker)    $b8
+        RTL                    $b7
 
 
 ########################################################################################$bright_blue
@@ -144,7 +144,7 @@ read choice
 case $choice in
 q|Q) exit ;;
 p|P) return 1 ;;
-m|M) back2main ;;
+""|m|M) back2main ;;
 
 r)
 menu_overview
@@ -153,10 +153,10 @@ menu_overview
 bs) 
 if [[ $menub1 == true ]] ; then
 clear ; please_wait
-stop_bitcoin
+stop_bitcoind
 else
 clear ; please_wait
-run_bitcoin
+run_bitcoind
 fi
 ;;
 ls) 

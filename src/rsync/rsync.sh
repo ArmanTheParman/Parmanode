@@ -1,4 +1,5 @@
 function rsync {
+unset source destination
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -183,7 +184,7 @@ $orange"
 ;;
 
 2)
-command1="rsync -rvarzP$update $del $dry $hidden --ignore-existing $source $destination/"
+command1="rsync -rvazP$update $del $dry $hidden --ignore-existing $source $destination/"
 ;;
 esac
 
@@ -197,7 +198,7 @@ echo -e "
     Archive mode     (-a)        permissions, ownership, timestamps, + other attributes of the source files.
     Recursive mode   (-r) 
     Compress mode    (-z) 
-    Shoe progress    (-P) 
+    Show progress    (-P) 
 
     You can remove any of these if you wish.
 
@@ -206,6 +207,17 @@ echo -e "
 $green
     $command1 $orange
     $command2 
+
+$pink
+    EXTRA INFO: 
+        - If the source directory is actually a symlink, then add -L to the list of options in
+          the provided command.
+        - If the destination directory is a remote computer, you can add '-e ssh' after the options and
+          then add username@IP_address: before the destination directory. Right after the ':' add a '/'
+          and type out the full path.
+        - add --progress for extra information as it does it's thing.
+        - add --checksum if you want each file's data to be checked for exactness (slower)
+$orange
 ##############################################################################################################
 "
 enter_continue

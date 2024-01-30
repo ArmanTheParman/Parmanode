@@ -6,10 +6,10 @@ if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; t
 while true
 do
 unset start stop output1 output2 highlight 
-if tail -n 25 $HOME/.bitcoin/debug.log | grep -q "Corrupt" ; then
+if tail -n 25 $HOME/.bitcoin/debug.log >/dev/null | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
-    problems with this program. One option might be to re-index the chanin (do
+    problems with this program. One option might be to re-index the chain (do
     look that up if needed), another may be to delete the data and start over - 
     there's a Parmanode menu option for that.
     
@@ -17,7 +17,7 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     trick did the trick."
 fi
 
-
+debug "before bitcoin set terminal"
 set_terminal_custom "52"
 
 menu_bitcoin_status
@@ -78,6 +78,8 @@ $bright_blue
       (mm)       Migrate/Revert an external drive...
 
       (delete)   Delete blockchain data and start over (eg if data corrupted)
+
+      (update)   Update Bitcoin wizard
 
       (o)        OTHER...
 
@@ -140,7 +142,7 @@ if [[ $log_count -le 10 ]] ; then
 echo -e "
 ########################################################################################
     
-    This will show the bitcoin debug.log file in real time as it populates.
+    This will show the bitcoin debug.log file in real-time as it populates.
     
     You can hit$cyan <control>-c$orange to make it stop.
 
@@ -188,6 +190,11 @@ continue
 
 mm|MM|Mm|migrate|Migrate)
 menu_migrate
+continue
+;;
+
+update|Update|UPDATE)
+update_bitcoin
 continue
 ;;
 

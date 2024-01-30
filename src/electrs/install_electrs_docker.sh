@@ -1,4 +1,6 @@
 function install_electrs_docker {
+unset install_electrs_docker
+export install_electrs_docker=true # used later to fork make config code.
 
 source $pc $ic >/dev/null 2>&1
 
@@ -62,6 +64,7 @@ if [[ ($drive_electrs == "external" && $drive == "external") || \
 
     # check if there is a backup electrs_db on the drive and restore it
       restore_elctrs_drive #prepares drive based on existing backup and user choices
+      debug "after restore_electrs_drive"
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
 elif [[ $drive_electrs == external ]] ; then
@@ -69,27 +72,25 @@ elif [[ $drive_electrs == external ]] ; then
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
       mkdir -p $pamranode_drive/electrs_db
-      debug "mkdir done"
 
 fi
 
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
-debug "prepare drive done"
-
+debug "pause after prepare_drive_electrs"
 #if it exists, test inside function
 restore_internal_electrs_db || return 1
 
 #config
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
-
-debug "pre run electrs. check directories"
+debug "pause after config"
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
-debug "check electrs compiled"
+docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/electrs/"
+debug "pause after run and chown"
 docker_start_electrs || return 1
-debug "3"
+debug "pause after start"
 installed_config_add "electrsdkr-end"
-debug "4"
+unset install_electrs_docker
 success "electrs" "being installed"
 
 }

@@ -4,11 +4,11 @@ installed_from="$1"
 
 if [[ "$1" == "menu" ]] ; then
 #Docker explainer
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                      DOCKER
-    
+$orange 
     Docker is a technology that allows software applications to be packaged and run 
     in a way that is more efficient and portable. With Docker, developers can create 
     "containers" that include all the necessary parts of an application, such as the 
@@ -82,6 +82,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "xpmq" ; read choice
+clear
 case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
 m|M) back2main ;;
 y|Y|YES|yes|Yes)

@@ -3,10 +3,10 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please chosse the type of external drive you wish to use for Parmanode:
+    Please choose the type of external drive you wish to use for Parmanode:
 
 
-                      pp)  Parmanode drive from another installation
+                      pp)  Parmanode drive from another or previous installation
 
                       u)   Umbrel drive
 
@@ -30,7 +30,8 @@ if [[ $OS == "Linux" ]] ; then
         remove_parmanode_fstab
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" 
+        sudo e2label $disk parmanode || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        get_UUID #gets UUID of parmanode label drive
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
 fi
@@ -46,6 +47,7 @@ if ! grep -q "parmanode" < /etc/fstab ; then
         get_UUID "$disk" 
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
+        
 fi
 return 0
 ;;
@@ -69,7 +71,7 @@ log "importdrive" "mynode import"
 mynode_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
 if ! grep -q "parmanode" < /etc/fstab ; then
-        get_UUID "$disk" 
+        get_UUID 
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
 fi

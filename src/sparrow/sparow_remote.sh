@@ -1,6 +1,6 @@
 function sparrow_remote {
 set_terminal
-echo "Make sure Sparrow has been shut down before proceeding."
+echo "If Sparrow is running, make sure to shut down before proceeding."
 enter_continue
 
 while true ; do

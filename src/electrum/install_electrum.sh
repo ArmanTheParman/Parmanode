@@ -66,13 +66,13 @@ install_fuse
 installed_conf_add "electrum-end"
 
 if [[ $OS == "Mac" ]] ; then
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
-                                S U C C E S S ! !
-
-    Electrum has been installed. The program is in your Applications folder, but 
-    it's best to run Electrum through Parmanode as extra background work has gone 
+$green
+                                 S U C C E S S ! !
+$orange
+    Electrum has been installed. The program is in your Applications folder, but  $green
+    it's best to run Electrum through Parmanode$orange as extra background work has gone 
     in to making sure you have a good connection to the server.
 
     Do be patient when loading the wallet - it can take 30 seconds to a minute for it
@@ -93,14 +93,14 @@ if [[ $computer_type == "LinuxPC" ]] ; then
 echo "installing udev rules..."
 udev
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 S U C C E S S ! !
-    
+$orange 
     Electrum has been installed. The AppImage is in $HOME/parmanode/electrum. 
-    
-    It's best to run Electrum through Parmanode as extra background work has gone 
+$pink    
+    It's best to run Electrum through Parmanode$orange as extra background work has gone 
     in to making sure you have a good connection to the server.
 
     Do be patient when loading the wallet - it can take 30 seconds to a minute for it
@@ -125,20 +125,14 @@ if [[ $computer_type == "Pi" ]] ; then
     udev
     fi
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 S U C C E S S ! !
-    
-    Electrum has been installed. The Program files are in:
-
-        $HOME/parmanode/electrum 
-
-    Although you can open Electrum manually with the text command:
-
-        $HOME/parmanode/electrum/run_electrum 
-
-    ...it's best to run Electrum through Parmanode as extra background work has gone 
+$orange
+    Electrum has been installed. 
+$pink
+    It's best to run Electrum through Parmanode$orange as extra background work has gone 
     in to making sure you have a good connection to the Electrs or Fulcrum server.
 
     Do be patient when loading the wallet - it can take 30 seconds to a minute for it
@@ -160,7 +154,7 @@ fi
 
 function mac_electrum_headsup {
 if [[ $OS == "Mac" ]] ; then
-set_terminal ; echo " 
+set_terminal ; echo -e " 
 ########################################################################################
 
     Dear Mac user, Parmanode will download Electrum for you, verify it, and move the
