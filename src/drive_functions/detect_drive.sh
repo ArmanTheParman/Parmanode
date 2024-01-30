@@ -145,9 +145,12 @@ if [[ $OS == Linux ]] ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
       debug "disk blkid diff is $disk"
     else
-      # -y, side by side format not used
-      export disk="/dev/$(diff $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
+      get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
+      export disk="/dev/$(cat $dp/.unique_line | awk '{print $1}' | tr -d '[:space:]')"
       debug "disk lsblk diff is $disk"
+      # deprecated as it gives unexpected results...
+      # export disk="/dev/$(diff $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
+      # debug "disk lsblk diff is $disk"
     fi
 
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
