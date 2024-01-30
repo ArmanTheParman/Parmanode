@@ -1,7 +1,5 @@
 function safetypatch1 {
 
-#run in background for speed...
-(
 if curl -s https://github.com/ArmanTheParman/Parmanode/blob/master/src/patches/safetypatch.sh | grep -q "safetypatchsignal=true" ; then
 cd $HOME/parman_programs/
 mv parmanode parmanode_backup && \
@@ -10,13 +8,12 @@ clear
 echo "
 ########################################################################################
 ########################################################################################
-    Emergency Patch initialised. Please close Terminal and star Parmanode again.
+    Emergency Patch initialised. Please close Terminal and start Parmanode again.
 ########################################################################################
 ########################################################################################
 sleep 3
 "
 fi
-) &
 
 return 0
 
