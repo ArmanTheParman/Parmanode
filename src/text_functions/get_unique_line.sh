@@ -4,8 +4,20 @@ function get_unique_line {
 # Returns single unique line in file 2.
 # Returns error if file 2 not 1 line longer than file 1.
 
+
 length_1=$(cat "$1" | wc -l)
 length_2=$(cat "$2" | wc -l)
+
+debug " In get_unique_line. Variables:
+
+   1 - $1
+   2 - $2
+
+   length_1 - $length_2
+   length_2 - $length_2
+
+"
+
 
 if [[ $((length_2 - length_1)) != 1 ]] ; then
 debug "file 2 is not one line longer than file 1"
@@ -17,6 +29,8 @@ if grep -q "$(head -n $i "$2")" < "$1" ; then
 continue
 else
 debug "unique line is $(head -n $1 $2)"
+echo "Drive name detected is...$(head -n $1 $2)"
+sleep 2
 echo "$(head -n $i $2)" > $dp/.unique_line
 break
 fi
