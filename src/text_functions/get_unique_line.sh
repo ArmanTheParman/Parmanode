@@ -26,7 +26,8 @@ fi
 
 for i in $(seq 1 $length_2) ; do
 debug "line 28, i is $i"
-if grep -q "$(head -n $i "$2")" < "$1" ; then
+#spacing is sometimes different, so better to check awk1
+if grep -q "$(head -n $i "$2" | awk '{print $1}')" < "$1" ; then
 continue
 else
 debug "line 32, i is $i"
