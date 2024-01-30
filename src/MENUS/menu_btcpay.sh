@@ -82,7 +82,7 @@ if [[ $log_count -le 10 ]] ; then
 echo "
 ########################################################################################
     
-    This will show the BTCpay log file in real time as it populates.
+    This will show the BTCpay log file in real-time as it populates.
     
     You can hit <control>-c to make it stop.
 

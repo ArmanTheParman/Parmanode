@@ -73,7 +73,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 # If docker is set up on the machine, then it is detected by Parmanode
 # and added to the config file
 # The block of code is added to the background to not delay start up
-( if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
+if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
 	if ([[ $(uname) == Darwin ]] && ( which docker >/dev/null )) || \
 	( [[ $(uname) == Linux ]] && which docker >/dev/null && id | grep -q docker ) ; then
 		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
@@ -81,7 +81,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 		fi
 	else installed_config_remove "docker"
 	fi
-fi ) &
+fi
 
 #add to run count
 rp_counter
@@ -91,6 +91,7 @@ rp_counter
 #Intro
 ########################################################################################
 set_terminal # custom function for screen size and colour.
+# argument "m" sets skip_intro to true in parman_variables
 if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 
 
@@ -100,7 +101,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
-autoupdate
+[ $debug = menu ] || autoupdate
 fi
 
 #Health check
@@ -108,7 +109,6 @@ parmanode1_fix
 
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
-   debug "in rpcount"
    #environment checks
    bash_check 
    ensure_english
@@ -116,23 +116,8 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #commit config directory state using git
    git_dp &
 fi
-   
-#patches ; each patch adds variable to parmanode.conf, sourced higher up
-case $patch in
-1) 
-patch_2 ; patch_3 ; patch_4 ;;
-2)
-patch_3 ; patch_4 ;;
-3)
-patch_4 ;;
-4)
-true ;;
-*) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ;; 
-esac
-debug "look"
 
-get_ip_address #function to put the IP address of the computer in memory.
+apply_patches  
 
 # get version, and suggest user to update if old.
 
@@ -145,12 +130,13 @@ clean_exit
 
 	
 ###### TESTING SECTION #################################################################
-debug "Pausing here." #when debugging, I can check for error messages and syntax errors
+
+debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 ########################################################################################
 
 #message of the day
-motd
+[ $debug = menu ] || motd
 
 # This is the main program, which is a menu that loops.
 menu_main

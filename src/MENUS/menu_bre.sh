@@ -10,9 +10,9 @@ unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_acces
 #echo outputs for external connection
 unset output output2 output3
 if [[ $enabled == true && $computer_type = LinuxPC ]] ; then 
-output="    ACCESS THE PROGRAM FROM OTHER COMPUTERS ON THE NETWORK:
+output="    ACCESS THE PROGRAM FROM$red OTHER$orange COMPUTERS ON THE NETWORK:
 
-                   http://$IP:3003     (Note the port is 3003 not 3002)
+$green                   http://$IP:3003     (Note the port is 3003 not 3002)$orange
                    "
 fi
 
@@ -21,7 +21,7 @@ get_onion_address_variable "bre" >/dev/null 2>&1
 output2=" 
     ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
                    $bright_blue
-                   $ONION_ADDR_BRE:3004
+            $ONION_ADDR_BRE:3004
                    $orange
                    "
 t_enabled=true
@@ -78,11 +78,11 @@ echo -e "
                  (c)        Edit config file 
                                              
 
-    ACCESS THE PROGRAM FROM YOUR BROWSWER ON THE PARMANODE COMPUTER:
+    ACCESS THE PROGRAM FROM YOUR BROWSER ON THE PARMANODE COMPUTER:
 $green
-                   http://${IP}:3002     
-                   http://localhost:3002        -from this computer only
-                   http://127.0.0.1:3002        -from this computer only$orange                
+            http://${IP}:3002     
+            http://localhost:3002        -from this computer only
+            http://127.0.0.1:3002        -from this computer only$orange                
 
 $output $output2
 ########################################################################################

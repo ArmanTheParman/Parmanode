@@ -18,7 +18,7 @@ $cyan
     Install Docker?
 
 $green                y $orange   or $red   n
-                
+$orange                
 ########################################################################################
 "
 choose "xpmq"
@@ -32,36 +32,11 @@ y|Y|YES|Yes|yes) break ;;
 esac
 done
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-    
-    Docker manuals recommend running an UNINSTALL command in case there are older
-    versions on the system which might cause conflicts. Shall Parmanode do that for
-    you now?
-
-                 y)     Yes, please, I'll have 2 of those thanks, doc
-                 
-                 n)     Nah, skip it, I'll risk it
-
-########################################################################################
-"
-choose "xpmq" ; read choice
-case $choice in q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
-m|M) back2main ;;
-y|Y|YES|yes|Yes)
-    log "docker" "uninstall old Docker versions chosen"
+# Docker recommends uninstall first...
     sudo apt-get purge docker docker-engine docker.io containerd runc docker-ce \
     docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     docker-ce-rootless-extras -y
     installed_conf_remove "docker"
-    break ;;
-
-n|N|NO|No)
-    log "docker" "skipping uninstall of old Docker versions" ; break ;;
-*) invalid ;;
-esac
-done
 
 # download_docker_linux
 log "docker" "docker auto install linux ..." 
@@ -93,7 +68,7 @@ $orange
 
     Reboot now?
 
-                     y    or    n  
+                   $green  y $orange   or  $red  n$orange 
 $pink
 ######################################################################################## 
 ########################################################################################

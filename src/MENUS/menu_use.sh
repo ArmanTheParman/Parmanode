@@ -9,7 +9,7 @@ set_terminal_custom 48
 echo -e "
 ########################################################################################
 
-     P A R M A N O D E --> Main Menu --> ${cyan}\"Apps\"$orange                               
+     P A R M A N O D E --> Main Menu --> ${cyan}USE$orange                               
 
 ########################################################################################          
 
@@ -93,6 +93,9 @@ if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
                             " ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
                        echo "    (qbit)       QBittorrent 
+                            " ; fi
+if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
+                       echo "    (mem)        Mempool 
                             " ; fi
 echo "                            
 
@@ -273,6 +276,12 @@ qbit|Qbit)
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
+mem|MEM|Mem)
+   if [[ $mempoolapp == 1 ]] ; then
+   menu_mempool 
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
 p)
    menu_main 
    ;;
@@ -281,6 +290,7 @@ q | Q | quit)
    ;;
 *)
    invalid
+   clear
    if [[ -n $1 ]] ; then return 1 ; fi
    ;;
 esac

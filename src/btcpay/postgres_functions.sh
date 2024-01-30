@@ -65,7 +65,7 @@ done
 
 log "btcpay" "failed to start btcpay database"
 set_terminal
-echo "Docker was unable to start the btcpay postgress database. Installation has failed."
+echo -e "Docker was unable to start the btcpay postgress database. Installation has$red failed$orange."
 enter_continue
 return 1
 }

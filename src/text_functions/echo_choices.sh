@@ -37,6 +37,18 @@ echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)
 return 0
 fi
 
+if [[ $1 == "emq" ]]
+then
+echo -e " ${yellow}Hit$cyan enter$yellow to continue, or:$red (m)$yellow for main,$green (q)$yellow to quit.$orange" 
+return 0
+fi
+
+if [[ $1 == "epmq" ]]
+then
+echo -e " ${yellow}Hit$cyan enter$yellow to continue, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit.$orange" 
+return 0
+fi
+
 if [[ $1 == "xpq" ]]
 then
 echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)$yellow for previous,$green (q)$yellow to quit. 
@@ -101,8 +113,16 @@ echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to go back to the previous menu.$
 return 0
 }
 
+function please_wait_no_clear { 
+echo -e "
+Please wait, this may take some time ...
+"
+return 0
+}
+
 function please_wait { 
 set_terminal
+
 takes="some time"
 if [[ -n $1 ]] ; then takes="$1" ; fi #changes $takes if needed
 

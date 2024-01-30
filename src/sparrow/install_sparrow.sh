@@ -10,7 +10,7 @@ set_terminal
 echo -e "
 ########################################################################################
  
-     It seems you either have Sparrow installed already, indepenently to Parmanode,
+     It seems you either have Sparrow installed already, independently to Parmanode,
      or you had a previous Sparrow installation that wasn't fully uninstalled (eg
      if the configuration directory was not deleted).
 
@@ -45,14 +45,12 @@ if [[ $OS == "Mac" ]] ; then
 mac_sparrow_headsup
 fi
 
+please_wait
 download_sparrow || return 1
 installed_conf_add "sparrow-start"
 debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
-
-#move download files, tidy up
-mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 2>&1
 
 if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
 
@@ -70,6 +68,9 @@ if [[ $OS == "Linux" ]] ; then
     udev
     fi
 fi
+
+#move download files, tidy up
+mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 
 
 add_localhost_to_bitcoinconf
 add_server_1_to_bitcoinconf

@@ -4,7 +4,6 @@
 
 function prune_choice {
 if [[ $importdrive == true ]] ; then return 0 ; fi
-
 while true
 do
 set_terminal

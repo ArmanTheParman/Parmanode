@@ -1,0 +1,30 @@
+BASIC PARMANODL PROCEDURE FOR A PI4
+
+ParmanodL on a Pi4 can be built by first creating the image file, ParmanodL.img
+This is then flashed to a microSD.
+That is inserted into the Pi, and booted.
+The Desktop log in GUI appears, user:parman password:parmanodl, it must be changed.
+sudo apt update
+sudo apt full-upgrade
+might be needed or prompted for: sudo apt-get update --fix-missing
+might be needed or prompted for: sudo apt-get autoremove
+optional: sudo apt install vim
+sudo systemctl start ssh
+Install Parmanode: curl https://github.com/armantheparman/parmanode.git
+run Parmanode...
+/home/$USER/parman_programs/parmanode/run_parmanode.sh
+Install ParmaShell with Parmanode (very conventient)
+Install Bitcoin, and choose option 1 to format drive when promted.
+Install electrs (Docker or direct)
+Install BRE
+Install PiApps and us it to install Tor
+Wait for Bitcoin to sync
+Install Sparrow or Electrum, and sync to electrs
+optional: ParmanodL wallpaper in ./parmanode/src/graphics/pn.png
+Copy instructions.txt to desktop and fill in password.
+CLEAN UP:
+    - reset parmanode usage count
+    - reset motd
+    - clear history from terminal, history -c, and rm ~/.bash_history
+    - clear /var/log/auth.log
+    - clear /var/log/syslog

@@ -3,8 +3,10 @@ function make_bitcoin_directories {
 
 # Remove bitcoin directories if they exist. If nothing exists there will
 # be no user input required.
-    if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install ; fi #function adjusted for parmanodl usage
-    if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install ; fi 
+    if [[ $newmigrate != true ]] ; then
+        if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install ; fi #function adjusted for parmanodl usage
+        if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install ; fi 
+    fi
 
 #make_parmanode_bitcoin_directory             
     mkdir -p $HOME/parmanode/bitcoin > /dev/null 2>&1

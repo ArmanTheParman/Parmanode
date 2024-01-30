@@ -1,8 +1,49 @@
-Version 3.20.1
+Version 3.25.2
+    -Import a fresh drive to Parmanode, use with existing Bitcoin installation
+Version 3.25.1
+    -patch_5 applied
+    -Mempool but in Docker fixed
+    -Mempool for Mac as well
+    -How to update bitcoin
+Version 3.25.0
+    -Mempool is back, baby
+    -Smol bug when creating new LND wallet fixed
+Version 3.24.3
+    -Import own Bitcoin binaries to Parmanode installation.
+    -Bitcoin compile education/instructions
+Version 3.24.2
+    -Fixed unzip bug (xz) for ParmanodL installer - some systems don't have
+    it.
+    -BitBox02 update, and verification bug fix
+Version 3.24.1
+    -Drive install bug fixed (symlink target ownership fixed)
+Version 3.24.0
+    -Option to include filter-ordinals.patch by Luke Dashjr
+    -Options to compile bitcoin
+    -bitcoin v26.0 option
+    -Option to install Bitcoin Knots version of Bitcoin Core
+    -assisted drive format tool
+    -small bug fixes
+Version 3.23.1
+    -Some little things
+Version 3.23.0
+    -Electrum 4.4.6
+    -Docker for M1/2 macs
+Version 3.22.0
+    -Highly variable and nuisance start up screen bug removed.
+Version 3.21.3
+    -Sparrow 1.8.1
+    -Sparrow config editor in menu
+    -option to connect to Parman's Tor node
+    -fixed bug with docker electrs for ext drives
+Version 3.21.2
+    -Mempool code, but not available yet. Sync issues.
+Version 3.20.4
     -QBittorrent
     -Overview menu smol bug fixed
     -LND wallet ballance display improvements, includes channels now.
     -Parman's easy AF Rsync tool
+    -Unbound upstream DNS resolver for PiHole (Linux onlya)
 Version 3.19.1
     -Overview menu
     -Sparrow & Specter uninstall, option to preserve config directory

@@ -4,18 +4,22 @@ if [[ $verify == skip ]] ; then return 0 ; fi #skipverify argument set in parman
 cd $HOME/parmanode/bitcoin
 
 # get Bitcoin Shasums
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS 
-curl -LO https://bitcoincore.org/bin/bitcoin-core-25.0/SHA256SUMS.asc 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS 
+curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/SHA256SUMS.asc 
 
 if ! which gpg >/dev/null  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 
 #ignore-missing option not available on shasum
 if which sha256sum >/dev/null ; then
-    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum failed. Aborting." ; return 1 ; fi
+    if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum$red failed$orange. Aborting." \
+    "Sometimes this happens for unexplainable reasons. 
+    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
 else
     rm /tmp/bitcoinsha256 >/dev/null 2>&1
     shasum -a 256 --check SHA256SUMS >/tmp/bitcoinsha256 2>&1
-    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum failed. Aborting." ; return 1 ; fi
+    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
+    "Sometimes this happens for unexplainable reasons. 
+    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
     rm /tmp/bitcoinsha256 >/dev/null 2>&1
 fi
 
@@ -28,17 +32,15 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >/dev/null 2>&1
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >/dev/null 2>&1
 
-debug_user "pause here and report back."
-
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -q GOOD
     then
         echo ""
-        echo "GPG verification of the SHA256SUMS file passed. "
+        echo -e "GPG verification of the SHA256SUMS file$green passed$orange. "
         echo ""
         enter_continue
     else 
         echo ""
-        echo "GPG verification failed. Aborting." 
+        echo -e "GPG verification$red failed$orange. Aborting." 
         enter_continue
         return 1 
     fi

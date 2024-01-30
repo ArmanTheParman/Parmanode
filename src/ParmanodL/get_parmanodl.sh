@@ -36,7 +36,5 @@ esac
 done
 
 if ! which docker >/dev/null ; then install_docker || return 1 ; fi 
-debug "pre isntaller"
 parmanodl_installer install
-debug "post installer"
 }

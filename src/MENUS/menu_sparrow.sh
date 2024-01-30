@@ -41,6 +41,8 @@ set_terminal ; echo -e "
          
 ----------------------------------------------------------------------------------------
 
+         (sc)      View/Edit Sparrow config file (use with care)
+
          (t)       Troubleshooting
 
 ########################################################################################
@@ -85,6 +87,29 @@ sparrow_remote
 
 ers|ERS|Ers)
 sparrow_electrs
+;;
+
+sc|SC|Sc)
+echo -e "
+########################################################################################
+    
+        This will run Nano text editor to edit 
+$cyan 
+        $HOME/.sparrow/config
+$orange    
+        See the controls at the bottom to save and exit. Be careful messing around 
+        with this file.
+
+        Any changes will only be applied once you restart Bitcoin.
+$green
+        Note, every time you change the sparrow connection type from the Parmanode
+        menu, the config file will be replaced/refeshed.
+$orange
+########################################################################################
+"
+enter_continue
+nano $HOME/.sparrow/config
+continue
 ;;
 
 t|T)

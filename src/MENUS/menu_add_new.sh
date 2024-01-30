@@ -8,7 +8,7 @@ menu_add_source
 
 if [[ -z $bitcoin_n ]] ; then
 bitcoin_n="#                                                                                      #"
-menuaddnewbitcoin=fasle
+menuaddnewbitcoin=false
 else
 bitcoin_n="#$green                          b)           Bitcoin Core                                  $orange #"
 fi

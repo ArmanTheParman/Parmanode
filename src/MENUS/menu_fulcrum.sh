@@ -43,7 +43,7 @@ echo -e "$orange
 fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
-if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo "
+if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -e "
                    FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
 
                             Status: $fulcrum_status

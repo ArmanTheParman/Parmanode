@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 19))
+motd=$((motd % 23))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -35,8 +35,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -49,7 +47,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   A #Bitcoin node is the ultimate way to say$red "Fuck off".$orange
+   A Bitcoin node is the ultimate way to say$red "Fuck off".$orange
 
    \"These are my rules; you can't change them. If your payment doesn't register on 
    MY node, the invoice isn't paid.\"
@@ -57,8 +55,6 @@ $cyan
    That's freaking powerful.
  
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -76,8 +72,6 @@ $cyan
     escapes from a central banker's basement.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -98,16 +92,14 @@ $cyan
     Law #3 : Bitcoiners tend to create new Bitcoiners.
     Law #4 : Buying bitcoin per se is not adoption. It also needs to be bought with 
              the intent of not selling until it becomes money.
-    Law #5 : Given enough time, Bitcoiners will own virtually all the available Bitcoin
+    Law #5 : Given enough time, Bitcoiners will own virtually all the available bitcoin
     Law #6 : The lower the price is manipulated down, the faster Law 5 eventuates, 
-             leading to destruction of price suppression.
+             leading to destruction of any price suppression.
     Law #7 : The correct measure of adoption is the number and bitcoin-wealth of 
              Bitcoiners.
     Law #8 : Adoption only increases, and is independent to price.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -125,8 +117,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -138,16 +128,15 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-    My suggestion for the Sat symbol is the dollar sign in reverse (mirror left to
-    right) - The reverse $ looks like a 2, and the vertical line like a 1, which
-    gives us symbolism of 21.                               
+    My suggestion for the Sat symbol is the dollar sign but upside down.
+    It looks like a 2, and the vertical line like a 1, which gives us symbolism of 21.                               
 
-    Bitcoin was designed to end central banking, so the reversing the $ sign is also 
+    Everytime someone writes that sats symbol, they are writing 2 and 1. Glorious.
+
+    Bitcoin was designed to end central banking, so flipping the $ sign is also 
     nice symbolism for the anit-dollar.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -168,8 +157,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -186,8 +173,6 @@ $cyan
     against humanity. 
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -210,8 +195,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -231,8 +214,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -246,8 +227,8 @@ $cyan
 
     Bitcoin is stoppable by worldwide tyranny or human extinction.
 
-    If worldwide tyranny wins, we're fucked anyway, and you''ll be poor and \"happy\"
-    wheter you buy bitcoin or not. Bitcoin is the ONLY defense against this.
+    If worldwide tyranny wins, we're fucked anyway, and you'll be poor and \"happy\"
+    whether you buy bitcoin or not. Bitcoin is the ONLY defense against this.
 
     If someone was invading your country, you don't surrender because \"they might
     win\", or \"winning isn't inevitable\". You defend yourself with what you have at
@@ -256,8 +237,6 @@ $cyan
     It's Bitcoin or tyranny - make your choice.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -275,8 +254,6 @@ $cyan
     Bitcoin is here to clean up gold's mess.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -298,8 +275,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -311,11 +286,9 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   The more #bitcoin you get, the more right you're going to be when you're right.
+   The more bitcoin you get, the more right you're going to be when you're right.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -336,8 +309,6 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
-
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
@@ -352,14 +323,12 @@ $cyan
     In 2023, with a hash rate of 420 million TH/s worldwide, the total amount of 
     energy to produce just 1 bitcoin was 1 trillion Joules.
 
-    Meanwhile, the total number of Joules to produce 1 trillion USE was 5 Joules,
+    Meanwhile, the total number of Joules to produce 1 trillion USD was 5 Joules,
     equivalent to charging your phone for less than 1 second.
 
     Which is more valuable to exchange your labour for?
  
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -374,12 +343,10 @@ $cyan
 
    True Bitcoiners, the ones that stack because they want to opt out of slavery and 
    monetary oppression, aren't planning to sell, so the price going down doesn't phase
-   them and doesn't make them want to be slaves. Wit a low enough price, and time, 
-   they will accumulate all the bitcoin. 
+   them and doesn't make them want to be slaves. With a low enough price, and with 
+   time, they will accumulate all the bitcoin. 
  
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -398,13 +365,11 @@ $cyan
 
     Greed leads to trading, 
 
-    trading leads to shitcoins, 
+    Trading leads to shitcoins, 
 
-    shitcoins... leads to SUFFERING.
+    Shitcoins... leads to SUFFERING.
 
 ######################################################################################## 
-
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -412,12 +377,12 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 if [[ $motd == 18 ]] ; then
-set_terminal_custom 55 ; echo -e "
+set_terminal_custom 52 ; echo -e "
 ########################################################################################
 $cyan
                                  Message of the day $orange
 
-    A rant for people who don't know why #Bitcoin 2.0 is not possible:
+    A rant for people who don't know why Bitcoin 2.0 is not possible:
 
     The first thing to understand is that money is made up of a counting unit 
     (physical or digital), ie the "tech", and a network of people. You can't have one 
@@ -455,7 +420,120 @@ $cyan
 
 ######################################################################################## 
 
-Type$yellow \"Free Ross\"$orange to disable Message of the day.
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 19 ]] ; then
+set_terminal_custom 56 ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+     Bitcoin is not meant to destroy banking.
+
+     The purpose of Bitcoin is to remove the control of money out of the hands of
+     rulers/CENTRAL_BANKERS. This problem has corrupted regular (retail/commercial)
+     banking - a vital service for a prosperous society.
+
+     Banking right now is a monopoly, protected by government regulation. When the 
+     power of governments decline, banking will become a FREE MARKET. anyone, but not
+     everyone, will be a banker.
+
+     Do you know who will be the bankers of the future? The Bitcoiners of TODAY (YOU).
+
+     The ones who know how to self-custody properly; they will be able to offer 
+     custodial services (as banks do now) to normies. They will also be able to 
+     connect debtors with creditors (what banks are truly needed for).
+
+     The competition to offer banking services will be fierce, and banking will become
+     cheap and of high quality. This is good for everyone.
+
+     Just like how a society with money allows specialisation with little risk to 
+     the individual, and not everyone needs to be their own dentist, baker, farmer etc
+     ... so too, they won't be their own banker.
+
+     For example, Unchained Capital or Casa can offer custodial/collaborative services
+     to anyone, well, so can I, and I do (KYC free).
+$bright_blue
+     https://armantheparman.com/parmanvault/ $orange        (link is not clickable)
+
+     Or, I teach people the skill of banking...
+$bright_blue
+     https://armantheparman.com/mentorship/  $orange        (link is not clickable)
+
+     I constantly hear people complaining about Bitcoin being too difficult to 
+     self-custody for normies, and things need to improve.
+$red
+     NO THEY DO NOT.
+$green     
+     Bitcoin is good enough NOW.
+$orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 20 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    As long as Bitcoin has a conversion price from dollars, I will continue to move 
+    dollars into Bitcoin at ALL prices.
+
+    Why save in the the money others print for free?
+
+    HAVE YOU NO DIGNITY??
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 21 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   Why are ALL shitcoins scams?
+
+        1. Do you consider fiat money to be a scam?
+
+        If no, end of conversation, have fun staying poor.
+
+        2. Specifically what part of fiat do you consider makes it a scam? Not 
+        something undesirable, but specifically a SCAM.
+
+        3. Now look at your favourite shitcoin.
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 22 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+    
+
+    If you love a woman, do you measure her worth by what your ex girlfriend thinks 
+    of her?
+    
+    No. But this is the mindset of measuring your bitcoin value in USD.
+
+######################################################################################## 
 
 Hit$cyan <enter>$orange to continue.
 "
@@ -465,3 +543,4 @@ fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
+

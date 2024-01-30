@@ -7,7 +7,7 @@ echo -e "
 
     This can take a while, sometimes with very litte feedback during the process. 
 
-    Hitting control-t while its thinking might give some status update. 
+    Hitting control-t while it's thinking might give some status update. 
     Please just wait.
 
 ########################################################################################    
