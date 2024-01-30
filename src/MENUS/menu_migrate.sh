@@ -54,6 +54,7 @@ fi
 add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
 success "The drive" "being imported"
 offer_swap_to_external #runs only if drive=internal
+return 0
 ;;
 
 new)
@@ -69,6 +70,7 @@ set_rpc_authentication "s" "install"
 please_wait && run_bitcoind
 unset newmigrate drive
 success "The new drive" "being imported"
+return 0
 ;;
 
 ub|UB|Ub)
