@@ -25,12 +25,15 @@ return 1
 fi
 
 for i in $(seq 1 $length_2) ; do
+debug "line 28, i is $i"
 if grep -q "$(head -n $i "$2")" < "$1" ; then
 continue
 else
+debug "line 32, i is $i"
 debug "unique line is $(head -n $i $2)"
 echo "Drive name detected is...$(head -n $1 $2)"
 sleep 2
+debug "line 36, i is $i"
 echo "$(head -n $i $2)" > $dp/.unique_line
 break
 fi
