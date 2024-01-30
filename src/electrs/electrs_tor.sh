@@ -15,6 +15,7 @@ if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
     echo "HiddenServicePort 7004 127.0.0.1:50005" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "line 18, before restart tor"
 sudo systemctl restart tor
 
 if grep -q electrsdkr < $dp/installed.conf ; then
