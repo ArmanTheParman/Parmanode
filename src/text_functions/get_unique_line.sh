@@ -1,4 +1,5 @@
 function get_unique_line {
+file="$dp/.unique_line"
 # $1 file 1
 # $2 file 2
 # Returns single unique line in file 2.
@@ -36,7 +37,8 @@ debug "unique line is $(sed -n ${i}p $2)"
 echo "Drive name detected is...$(sed -n ${i}p $2)"
 sleep 2
 debug "line 36, i is $i"
-echo "$(sed -n ${i} $2)" > $dp/.unique_line
+echo "$(sed -n ${i}p $2)" > $file
+unset file
 break
 fi
 done
