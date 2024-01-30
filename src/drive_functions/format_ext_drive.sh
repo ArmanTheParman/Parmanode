@@ -47,8 +47,6 @@ if [[ $1 != justFormat ]] ; then
 fi
 fi
 
-if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
-
 
 
 #Format the drive
@@ -77,6 +75,10 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 if [[ $OS == "Linux" ]] ; then
+
+        partition_drive 
+        debug "after partition drive"
+
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
         remove_parmanode_fstab
