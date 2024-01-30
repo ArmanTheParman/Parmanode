@@ -192,6 +192,7 @@ tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off ]] ; then
 electrs_tor
+debug "line 195, meun docker electrs, in E_tor_logic"
 else
 electrs_tor_remove
 fi
