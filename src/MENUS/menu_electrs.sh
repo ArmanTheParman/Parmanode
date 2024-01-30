@@ -212,10 +212,11 @@ exit 0
 ;;
 
 tor|TOR|Tor)
+debug "line 215, before ifs"
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off ]] ; then
 electrs_tor
-debug "line 218, menu, in E_tor_logic"
+debug "line 219, menu, in E_tor_logic"
 else
 electrs_tor_remove
 fi
