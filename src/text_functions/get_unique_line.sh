@@ -13,7 +13,7 @@ debug " In get_unique_line. Variables:
    1 - $1
    2 - $2
 
-   length_1 - $length_2
+   length_1 - $length_1
    length_2 - $length_2
 
 "
