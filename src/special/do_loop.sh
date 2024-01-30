@@ -13,8 +13,8 @@ function do_loop {
 source $HOME/parman_programs/parmanode/src/patches/safetypatch.sh >/dev/null 2>&1
 #optional emergency patches in case an update breaks the program and updates
 #can't be made to fix. By de
-safetypatch1
-safetypatch2
+#safetypatch1
+#safetypatch2
 
 if [ -f do_not_delete_move_rename.txt ] ; then true ; else
 clear
