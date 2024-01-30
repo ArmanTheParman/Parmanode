@@ -28,6 +28,7 @@ for i in $(seq 1 $length_2) ; do
 debug "line 28, i is $i"
 #spacing is sometimes different, so better to check awk1
 if grep -q "$(head -n $i "$2" | awk '{print $1}')" < "$1" ; then
+debug "output of echo" && echo "$(head -n $i "$2" | awk '{print $1}')" && read "hit enter"
 continue
 else
 debug "line 32, i is $i"
