@@ -28,7 +28,7 @@ for i in $(seq 1 $length_2) ; do
 if grep -q "$(head -n $i "$2")" < "$1" ; then
 continue
 else
-debug "unique line is $(head -n $1 $2)"
+debug "unique line is $(head -n $i $2)"
 echo "Drive name detected is...$(head -n $1 $2)"
 sleep 2
 echo "$(head -n $i $2)" > $dp/.unique_line
