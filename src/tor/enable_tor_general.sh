@@ -2,6 +2,7 @@ function enable_tor_general {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
+debug "line 5, in enable_tor_general, after if ! which tor"
 
 if [[ ! -f /etc/tor/torrc ]] ; then
 set_terminal ; echo "
