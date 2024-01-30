@@ -32,11 +32,11 @@ debug "output of echo" && echo "$(sed -n ${i}p "$2" | awk '{print $1}')" && echo
 continue
 else
 debug "line 32, i is $i"
-debug "unique line is $(head -n $i $2)"
-echo "Drive name detected is...$(head -n $1 $2)"
+debug "unique line is $(sed -n ${i}p $2)"
+echo "Drive name detected is...$(sed -n ${1}p $2)"
 sleep 2
 debug "line 36, i is $i"
-echo "$(head -n $i $2)" > $dp/.unique_line
+echo "$(sed -n ${i} $2)" > $dp/.unique_line
 break
 fi
 done
