@@ -25,7 +25,7 @@ p|P) return 1 ;;
 internal) 
 are_you_sure "Delete internal drive blockchain data?" || return 1 
 if [[ ! -L $HOME/.bitocin ]] ; then 
-please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made)"
+please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
 rm -rf $HOME/.bitcoin/*
 sleep 2
 make_bitcoin_conf
@@ -38,7 +38,7 @@ fi
 external) 
 are_you_sure  "Delete external drive blockchain data?" || return 1
 mount_drive || return 1
-please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made)"
+please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
 rm -rf $parmanode_drive/.bitcoin/* 
 sleep 2
 make_bitcoin_conf

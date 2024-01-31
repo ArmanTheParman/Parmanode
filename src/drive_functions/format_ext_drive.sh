@@ -37,18 +37,15 @@ fi
 
 fi
 
-#select_drive_ID || return 1 #gets $disk variable (exported)
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
-unmount   #failure here exits program. Need drive not to be mounted in order to wipe and format.
+unmount   #Need drive not to be mounted in order to wipe and format.
 
 if [[ $1 != Bitcoin ]] ; then #cancelling dd for bitcoin installation. To slow and not necessary.
 if [[ $1 != justFormat ]] ; then
     dd_wipe_drive  
 fi
 fi
-
-if [[ $OS == "Linux" ]] ; then partition_drive ; fi   # Partition step not required for Mac
 
 
 
@@ -78,15 +75,21 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 if [[ $OS == "Linux" ]] ; then
+
+        partition_drive 
+        debug "after partition drive"
+
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
         remove_parmanode_fstab
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" $disk 
+        sudo blkid >/dev/null ; sleep 1 #need to refresh
+        debug "pause. after format. check label made."
 
         #Extract the *NEW* UUID of the disk and write to config file.
-        get_UUID "$disk" || return 1
+        get_UUID || return 1
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
         debug "after write_to_fstab"
@@ -117,6 +120,8 @@ return 0
 
 
 function confirm_format {
+#return 1 necessary because function failure sets skip_formatting variable to true in calling  function
+if [[ $importdrive == true ]] ; then return 1 ; fi
 
 while true ; do
 clear ; echo -e "

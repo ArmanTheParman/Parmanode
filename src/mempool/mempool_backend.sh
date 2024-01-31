@@ -30,27 +30,28 @@ m|M) back2main ;;
 
 1)
 choose_bitcoin_for_mempool
+restart_mempool
 break
 ;;
 
 2)
 choose_electrs_for_mempool
-break
+brearestart_mempoolk
 ;;
 
 3)
 choose_fulcrum_for_mempool
-break
+brearestart_mempoolk
 ;;
 
 4)
 remote_bitcoin_for_mempool
-break
+brearestart_mempoolk
 ;;
 
 5)
 remote_electrumserver_for_mempool
-break
+brearestart_mempoolk
 ;;
 
 x)
