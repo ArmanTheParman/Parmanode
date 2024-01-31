@@ -19,7 +19,7 @@ $orange
 $pink    
                       /home/$(whoami)/parmanode/bitcoin/
 $orange
-    To learn more about how:
+    To learn more about how to verify yourself:
 $pink
                       https://armantheparman.com/gpg-articles 
 $orange
