@@ -1,4 +1,6 @@
 function compile_bitcoin {
+if [[ $version == self ]] ; then return 0 ; fi
+
 #menu choices carried in by variables.
 set_terminal #clear
 if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi

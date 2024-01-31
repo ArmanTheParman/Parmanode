@@ -1,4 +1,4 @@
-function import_bitcoin {
+function import_bitcoin_install {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 while true ; do
@@ -119,19 +119,29 @@ read choice ; clear
 case $choice in
 1)
 export importbitcoindrive=external_new 
-export drive=external 
+export drive=external  && parmanode_conf_add "drive=external"
 export justFormat=true
-parmanode_conf_add "drive=external"
-format_ext_drive "Bitcoin" #is the drive mounted here?
-prune_choice || return 1
-make_bitcoin_directories
+export version=self
+install_bitcoin || return 1
+#format_ext_drive "Bitcoin" #is the drive mounted here?
+#prune_choice || return 1
+#make_bitcoin_directories
+#make_bitcoin_conf
+#make_mount_check_script
+#make_bitcoind_service_file
 ;;
 
 2)
 importbitcoindrive=internal_new 
-export drive=internal 
-parmanode_conf_add "drive=internal"
+export drive=internal && parmanode_conf_add "drive=internal"
+export version=self
+install_bitcoin || return 1
 ;;
+########################################################################################
+########################################################################################
+# UP TO HERE...
+########################################################################################
+########################################################################################
 3)
 importbitcoindrive=external_existing 
 export drive=external 

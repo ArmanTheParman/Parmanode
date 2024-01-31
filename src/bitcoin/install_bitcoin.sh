@@ -57,8 +57,8 @@ fi
 
 #setup bitcoin.conf
 if [[ $importdrive != true ]] ; then
-log "bitcoin" "make_bitcoin_conf function ..."
-make_bitcoin_conf || return 1
+    log "bitcoin" "make_bitcoin_conf function ..."
+    make_bitcoin_conf || return 1
 fi
 
 #make a script that service file will use
@@ -74,9 +74,7 @@ fi
 sudo chown -R $USER: $HOME/.bitcoin/ 
 
 #setting password. Managing behaviour of called function with variable and arguments.
-export dontstartbitcoin=true
-set_rpc_authentication "s" "install"
-unset dontstartbitcoin
+export dontstartbitcoin=true && set_rpc_authentication "s" "install" && unset dontstartbitcoin
 
 please_wait && run_bitcoind
 
@@ -113,7 +111,7 @@ $orange
 " && installed_conf_add "bitcoin-end"
 
 #Just in case - what? again? Anyway, I'll leave it.
-    sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1
+sudo chown -R $USER:$USER $dp >/dev/null 2>&1
 
 enter_continue
 fi
