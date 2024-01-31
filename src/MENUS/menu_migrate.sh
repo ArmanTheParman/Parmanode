@@ -26,8 +26,10 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
-case $choice in 
+choose "xpmq"
+read migratechoice; set_terminal
+
+case $migratechoice in 
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
@@ -59,6 +61,7 @@ return 0
 
 new)
 export newmigrate=true
+export justFormat=true
 export drive=external && parmanode_conf_add "drive=external"
 format_ext_drive
 stop_bitcoind 

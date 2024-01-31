@@ -92,6 +92,8 @@ esac
 done
 fi
 
+
+unset drive
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -100,7 +102,7 @@ set_terminal ; echo -e "
 
     Do you want...
 
-        1)    Start fresh with an external drive
+        1)    Start fresh with an external drive$red (formats drive)
 
         2)    Start fresh with an internal drive
 
@@ -116,17 +118,47 @@ choose "xpmq"
 read choice ; clear
 case $choice in
 1)
-export importbitcoindrive=external_new ;;
+export importbitcoindrive=external_new 
+export drive=external 
+export justFormat=true
+parmanode_conf_add "drive=external"
+format_ext_drive "Bitcoin" #is the drive mounted here?
+prune_choice || return 1
+make_bitcoin_directories
+;;
+
 2)
-importbitcoindrive=internal_new ;;
+importbitcoindrive=internal_new 
+export drive=internal 
+parmanode_conf_add "drive=internal"
+;;
 3)
-importbitcoindrive=external_existing ;;
+importbitcoindrive=external_existing 
+export drive=external 
+parmanode_conf_add "drive=external"
+;;
 4)
-importbitcoindrive=internal_existing ;;
+importbitcoindrive=internal_existing 
+export drive=internal ;
+parmanode_conf_add "drive=internal"
+;;
 5)
-importbitcoindrive=external_parmanode ;;
+importbitcoindrive=external_parmanode 
+export drive=external 
+parmanode_conf_add "drive=external"
+;;
 *)
 invlalid ;;
 esac
 done
+
+export import_bitcoin=true #delete everywhere if not needed.
+export version=self
+    #when running install_bitcoin...
+    #skips choose_bitcoin_version
+    #skips choose_and_prepare_drive
+    #skips format_ext_drive - do this in case 1 above
+    #skips download_bitcoin, because version=self
+
+install_bitcoin
 

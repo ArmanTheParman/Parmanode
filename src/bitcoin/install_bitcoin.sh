@@ -9,21 +9,27 @@ set_terminal
 
 #choose version
 choose_bitcoin_version || return 1 #no compile variable set for macs here.
-debug "choose_bitcoin_version done"
 
 unset importdrive
-debug "bitcoin - after unset importdrive"
+
 choose_and_prepare_drive "Bitcoin" # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
-debug "bitcoin - after choose and prepare drive"
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
-debug "bitcoin - after format ext drive"
+
 #Just in case (redundant permission setting)
-    if [[ $OS == "Linux" && $drive == "external" ]] ; then
-        sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1 \
-        && log "bitcoin" "redundant chown applied in install_bitcoin function" \
-        || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
+    while true ; do 
+
+        if [[ $import_bitcoin == true ]] ; then break ; fi
+
+            if [[ $OS == "Linux" && $drive == "external" ]] ; then
+                sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1 \
+                && log "bitcoin" "redundant chown applied in install_bitcoin function" \
+                || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
+            break
+            fi
+    break
+    done
 
 prune_choice || return 1 
     # set $prune_value. Doing this now as it is related to 
@@ -33,21 +39,11 @@ debug "bitcoin - after prune_choice"
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
 
-    make_bitcoin_directories 
+make_bitcoin_directories 
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
 debug "bitcoin - after make_bitcoin_directories"
-    #Just in case - even more redundancy, leaving it as it helped a lot once when debugging.
-            if [[ $importdrive != true ]] ; then
-            if [[ $OS == "Linux" && $drive == "external" ]] ; then
-            sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 && \
-            statement=$(ls -dlah /media/$(whoami)/parmanode) && \
-            log "bitcoin" "bitcoin chown run again" && \ 
-            log "bitcoin" "ownership statement: $statement" ; fi
-            fi
-
-
 
 #compile bitcoin if chosen
 compile_bitcoin

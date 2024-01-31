@@ -1,4 +1,6 @@
 function format_ext_drive {
+if [[ $import_bitcoin == true ]] ; then return 0 ; fi
+
 debug "skip formatting variable = $skip_formatting"
 if [[ $skip_formatting == true ]] ; then 
 log "importdrive" "skipped formatting" ; return 0 ; fi
@@ -10,7 +12,7 @@ debug "passed internal drive choice"
 
 
 #Check if external drive selected for other programs, and warn user.
-if [[ $1 != justFormat ]] ; then
+if [[ $justFormat != true ]] ; then
 debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
@@ -36,6 +38,8 @@ if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then
 fi
 
 fi
+unset justFormat
+
 
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 
@@ -98,6 +102,7 @@ if [[ $OS == "Linux" ]] ; then
         # and label drive (Last bit is redundant)
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
         sudo mount $disk $parmanode_drive 
+        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
 
