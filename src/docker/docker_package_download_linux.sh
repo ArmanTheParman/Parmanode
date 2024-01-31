@@ -12,6 +12,7 @@ sudo apt-get update -y
   sudo source /etc/os-release
     if [[ $ID != "debian" ]] ; then parmanode_conf_add "ID=ubuntu" ; fi
   get_linux_version_codename 
+    
 
   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
   "$(echo "$VCequivalent")" stable" | \
@@ -55,9 +56,26 @@ if [ $exit_status != 0 ] ; then
                       echo "Waiting ..."
                       sleep 30 ; echo " 30 .. 29 ......."
                       sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
-                      || echo "" && announce "Docker install failed." && export docker_package_install_fail=1 && return 1 ; fi
+                      || { echo -e "
+########################################################################################                      
+
+    Docker install failed. Sometimes it's because you are using a very New versino
+    of Linux, and Docker has not organised itself to have a package named after your
+    new Linux version. It's fixable - please let Parman know, to get it somethine
+    done, OR, you can try to manually install Docker yourself - Parmanode will 
+    detect that it's been updated.
+
+########################################################################################
+"
+enter_continue && clear
+export docker_package_install_fail=1 
+return 1
+} 
+
+
+                fi
 fi
 
-
 sudo usermod -aG docker $USER && log "docker" "exit status of usermod is $?"
+
 }
