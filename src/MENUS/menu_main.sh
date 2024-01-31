@@ -153,6 +153,14 @@ umem) menu_use mem ;;
 uersd) menu_use ersd ;;
 
 
+"rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
+debug "before nodejs"
+get_nodejs_and_npm 20 x
+sudo npm install -g npm
+;;
+
+
+
 ul|UL|Ul)
 clear ; please_wait
 menu_lnd

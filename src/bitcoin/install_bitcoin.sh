@@ -21,7 +21,7 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
 debug "bitcoin - after format ext drive"
 #Just in case (redundant permission setting)
     if [[ $OS == "Linux" && $drive == "external" ]] ; then
-        sudo chown -R $(whoami):$(whoami) /media/$(whoami)/parmanode >/dev/null 2>&1 \
+        sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1 \
         && log "bitcoin" "redundant chown applied in install_bitcoin function" \
         || log "bitcoin" "unable to execute chown in intstall_bitcoin function" ; fi
 
@@ -81,10 +81,6 @@ sudo chown -R $USER: $HOME/.bitcoin/
 export dontstartbitcoin=true
 set_rpc_authentication "s" "install"
 unset dontstartbitcoin
-
-#check stauts of tor - even this this is an install, import drive might cause
-#unexpected status
-check_tor_status
 
 please_wait && run_bitcoind
 
