@@ -120,7 +120,7 @@ choose "xpmq"
 read choice ; clear
 case $choice in
 1)
-export importbitcoindrive=external_new 
+# Some variables to control how functions branch, esp install_bitcoin and children.
 export drive=external  && parmanode_conf_add "drive=external"
 export justFormat=true
 export version=self
@@ -134,87 +134,166 @@ install_bitcoin || return 1
 ;;
 
 2)
-importbitcoindrive=internal_new 
 export drive=internal && parmanode_conf_add "drive=internal"
 export version=self
 install_bitcoin || return 1
+;;
+
+3)
+export version=self
+export drive=external 
+parmanode_conf_add "drive=external"
+export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
+export skip_fomratting=true
+add_drive || return 1 # imports drive and makes directories if they don't exist.
+#need to find the bitcoin directory
+dir_not_found #?
+#need to decide about bitcoin conf
+replace_bitcoin_conf || return 1
+message_move #move files before continuing
+
+#functions needed from install_bitcoin:
+#make_mount_check_script
+#make_bitcoind_service_file
+#set_rpc_authentication (if rpcuser not set)
+install_bitcoin
+;;
+
+4)
+export version=self
+export drive=internal ;
+parmanode_conf_add "drive=internal"
+export bitcoin_drive_import=true 
+#need to decide about bitcoin conf
+replace_bitcoin_conf || return 1
+message_move #move files before continuing
+
+#functions needed from install_bitcoin:
+#make_mount_check_script
+#make_bitcoind_service_file
+#set_rpc_authentication (if rpcuser not set)
+install_bitcoin
 ;;
 ########################################################################################
 ########################################################################################
 # UP TO HERE...
 ########################################################################################
 ########################################################################################
-3)
+5)
 export version=self
-importbitcoindrive=external_existing 
 export drive=external 
 parmanode_conf_add "drive=external"
-export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
-export skip_fomratting=true
+export bitcoin_drive_import=true 
+menu_migrate parmy || return 1 # drive is detected, fstab added, directories made if non existant.
 #need to find the bitcoin directory
-add_drive || return 1 # imports drive and makes directories if they don't exist.
-bitcoin_dir_not_found #?
-
-#need to decide about bitcoin conf
+dir_not_found #?
 
 #functions needed from install_bitcoin:
-make_mount_check_script
-make_bitcoind_service_file
-
-;;
-4)
-importbitcoindrive=internal_existing 
-export drive=internal ;
-parmanode_conf_add "drive=internal"
-;;
-5)
-importbitcoindrive=external_parmanode 
-export drive=external 
-parmanode_conf_add "drive=external"
+#make_mount_check_script
+#make_bitcoind_service_file
+#set_rpc_authentication (if rpcuser not set)
+install_bitcoin
 ;;
 *)
 invlalid ;;
 esac
 done
-
-export import_bitcoin=true #delete everywhere if not needed.
-export version=self
-    #when running install_bitcoin...
-    #skips choose_bitcoin_version
-    #skips choose_and_prepare_drive
-    #skips format_ext_drive - do this in case 1 above
-    #skips download_bitcoin, because version=self
-
-install_bitcoin
-
 }
 
 
-function bitcoin_dir_not_found {
+function dir_not_found {
+
+if [[ $drive == external ]] ; then ############### for tracking nested if... can't indent because echo statements
+default="$parmanode_drive/.bitcoin"
+
 if ! grep -q "electrs" <$dp/.temp ; then
-text1="The same is true for $d "
-fi
-if ! grep -q "fulcrum" <$dp/.temp ; then
-text2=" "
+text1="
+    ${cyan}The same is true for $paranode_drive/electrs_db$orange"
 fi
 
-if ! grep -q "bitcoin" < $dp/.temp ; then #this means mkdir didn't fail, and .bitcoin dir doesn't exist initially
+if ! grep -q "fulcrum" <$dp/.temp ; then
+text2="
+    ${cyan}The same is true for $paranode_drive/fulcrum_db$orange"
+fi
+
+elif [[ $drive == internal ]] ; then ###############
+default="$HOME/.bitcoin"
+else ###############
+announce "an error has occured. No drive variable found. Caution. Control-c
+    to quit."
+return 1
+fi ###############
+
+
+
+if ! grep -q "bitcoin" < $dp/.temp ; then #this means mkdir didn't fail, and .bitcoin dir didn't exist initially
 
 set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode didn't detect a Bitcoin data directory in its default location:
 $cyan
-        $parmanode_drive/.bitcoin
+        $default
 $orange
     Notice the '.' which means it's a hidden directory. Parmanode has created this
     directory for you but it is empty. If you want Parmanode to sync Bitcoin data
     on top of the data you already have, then WHILE BITCOIN IS STOPPED, copy your
     existing data to the above location, then start bitcoin from the Parmanode
     Bitcoin menu.
-
+    $text1
+    $text2
 ########################################################################################
 "
 enter_continue
 fi
+}
+
+function replace_bitcoin_conf {
+#expecting only to be called if export_bitcoin_drive=true
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    It is recommended that you use the Parmanode bitcoin.conf file, but you can
+    decline and use your own, just make sure it lives in the .bitcoin data directory
+    before you start bitcoin.
+
+    You have choices...
+$green
+            1)    Use Parmanode's bitcoin.conf (recommended)
+$orange 
+            2)    Use your own shitty bitcoin.conf file, see if I care
+
+########################################################################################
+"
+choose "xpmq" ; read choice ; clear
+case $choice in
+1)
+#turn off switch and back on
+unset bitcoin_drive_import && prune_choice && export bitcoin_drive_import=true
+#turn off switch and back on
+unset bitcoin_drive_import && make_bitcoin_conf && export bitcoin_drive_import=true
+;;
+2)
+break
+;;
+*)
+invalid
+;;
+esac
+done
+}
+
+function message_move {
+set_terminal ; echo -e "
+########################################################################################
+    
+    If your own Bitcoin data needs to be moved to the target directory on the drive
+    please, make sure you have done that before proceeding. Just leave this window
+    open, open a new one and do the work needed, then come back and continue.
+
+########################################################################################
+"
+enter_continue
 }

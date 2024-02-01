@@ -1,4 +1,5 @@
 function menu_migrate {
+if [[ -z $1 ]] ; then # if an option passed, then no need to print menu
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan                            
@@ -27,7 +28,11 @@ $cyan
 ########################################################################################
 "
 choose "xpmq"
-read migratechoice; set_terminal
+read migratechoice
+else
+migratechoice="$1"
+set_terminal
+fi
 
 case $migratechoice in 
 m|M) back2main ;;
@@ -46,11 +51,13 @@ enter_continue
 if ! lsblk -o LABEL | grep -q parmanode ; then
 set_terminal ; echo -e "
 ########################################################################################
-    There does not seem to be a drive with a$cyan parmanode$orange Label connected. Aborting.
+    This does not seem to be a drive with a$cyan parmanode$orange Label. Aborting.
 ########################################################################################
 "
 enter_continue
 return 1
+else
+echo -e "${green}Parmanode drive detected...$orange" ; sleep 1
 fi
 
 add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
