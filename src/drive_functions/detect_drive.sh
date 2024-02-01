@@ -2,7 +2,7 @@
 #use by umbrel_import_mac - $1 menu skips initial warning. $2 umbrelmac used for text customisation
 function detect_drive {
 unset disk
-
+if [[ $1 == menu ]] ; then
 if ! echo $@ | grep -q brief ; then
 set_terminal ; echo -e "$pink
 ########################################################################################
@@ -12,6 +12,7 @@ set_terminal ; echo -e "$pink
 ########################################################################################
 $orange"
 enter_continue 
+fi
 fi
 
 while true ; do
