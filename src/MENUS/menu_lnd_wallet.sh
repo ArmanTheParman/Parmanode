@@ -113,24 +113,52 @@ local_balance="Unknown, LND not running or wallet locked"
 remote_balance="Unknown, LND not running or wallet locked"
 fi
 
+# cb_json=$(lncli channelbalance)
+
+# # Parse specific values
+# balance=$(echo "$cb_json" | jq -r '.balance')
+# pending_open_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_balance')
+# pending_open_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_balance')
+# local_balance_sat=$(echo "$cb_json" | jq -r '.local_balance.sat')
+# local_balance_msat=$(echo "$cb_json" | jq -r '.local_balance.msat')
+# remote_balance_sat=$(echo "$cb_json" | jq -r '.remote_balance.sat')
+# remote_balance_msat=$(echo "$cb_json" | jq -r '.remote_balance.msat')
+# unsettled_local_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.sat')
+# unsettled_local_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.msat')
+# unsettled_remote_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.sat')
+# unsettled_remote_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.msat')
+# pending_open_local_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.sat')
+# pending_open_local_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.msat')
+# pending_open_remote_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.sat')
+# pending_open_remote_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.msat')
+
+
+# Function to extract a specific value from JSON
+extract_value_cb() {
+    local key="$1"
+    local json="$2"
+    echo "$json" | jq -r ".$key"
+}
+
+# Run lncli channelbalance and capture the JSON output
 cb_json=$(lncli channelbalance)
 
 # Parse specific values
-balance=$(echo "$cb_json" | jq -r '.balance')
-pending_open_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_balance')
-pending_open_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_balance')
-local_balance_sat=$(echo "$cb_json" | jq -r '.local_balance.sat')
-local_balance_msat=$(echo "$cb_json" | jq -r '.local_balance.msat')
-remote_balance_sat=$(echo "$cb_json" | jq -r '.remote_balance.sat')
-remote_balance_msat=$(echo "$cb_json" | jq -r '.remote_balance.msat')
-unsettled_local_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.sat')
-unsettled_local_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.msat')
-unsettled_remote_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.sat')
-unsettled_remote_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.msat')
-pending_open_local_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.sat')
-pending_open_local_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.msat')
-pending_open_remote_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.sat')
-pending_open_remote_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.msat')
+balance=$(extract_value_cb 'balance' "$cb_json")
+pending_open_balance_sat=$(extract_value_cb 'pending_open_balance' "$cb_json")
+pending_open_balance_msat=$(extract_value_cb 'pending_open_balance' "$cb_json")
+local_balance_sat=$(extract_value_cb 'local_balance.sat' "$cb_json")
+local_balance_msat=$(extract_value_cb 'local_balance.msat' "$cb_json")
+remote_balance_sat=$(extract_value_cb 'remote_balance.sat' "$cb_json")
+remote_balance_msat=$(extract_value_cb 'remote_balance.msat' "$cb_json")
+unsettled_local_balance_sat=$(extract_value_cb 'unsettled_local_balance.sat' "$cb_json")
+unsettled_local_balance_msat=$(extract_value_cb 'unsettled_local_balance.msat' "$cb_json")
+unsettled_remote_balance_sat=$(extract_value_cb 'unsettled_remote_balance.sat' "$cb_json")
+unsettled_remote_balance_msat=$(extract_value_cb 'unsettled_remote_balance.msat' "$cb_json")
+pending_open_local_balance_sat=$(extract_value_cb 'pending_open_local_balance.sat' "$cb_json")
+pending_open_local_balance_msat=$(extract_value_cb 'pending_open_local_balance.msat' "$cb_json")
+pending_open_remote_balance_sat=$(extract_value_cb 'pending_open_remote_balance.sat' "$cb_json")
+pending_open_remote_balance_msat=$(extract_value_cb 'pending_open_remote_balance.msat' "$cb_json")
 
 set_terminal ; echo -e "
 ########################################################################################
