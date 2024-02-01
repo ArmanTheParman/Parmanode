@@ -16,7 +16,7 @@ function make_bitcoin_directories {
     
         if [[ $OS == "Linux" ]] ; then
             mkdir /media/$USER/parmanode/.bitcoin >/dev/null 2>&1 && \
-            sudo chown -R $USER:$(id -gn) $dp >/dev/null 2>&1 \
+            sudo chown -R $USER:$(id -gn) $parmanode_drive >/dev/null 2>&1 \
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
 
         if [[ $OS == "Mac" ]] ; then

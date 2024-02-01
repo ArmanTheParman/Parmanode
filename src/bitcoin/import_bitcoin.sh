@@ -151,8 +151,11 @@ export drive=external
 parmanode_conf_add "drive=external"
 export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
 export skip_fomratting=true
-#need to decide about bitcoin conf
 #need to find the bitcoin directory
+add_drive || return 1 # imports drive and makes directories if they don't exist.
+bitcoin_dir_not_found #?
+
+#need to decide about bitcoin conf
 
 #functions needed from install_bitcoin:
 make_mount_check_script
@@ -183,5 +186,35 @@ export version=self
     #skips download_bitcoin, because version=self
 
 install_bitcoin
+
+}
+
+
+function bitcoin_dir_not_found {
+if ! grep -q "electrs" <$dp/.temp ; then
+text1="The same is true for $d "
+fi
+if ! grep -q "fulcrum" <$dp/.temp ; then
+text2=" "
+fi
+
+if ! grep -q "bitcoin" < $dp/.temp ; then #this means mkdir didn't fail, and .bitcoin dir doesn't exist initially
+
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode didn't detect a Bitcoin data directory in its default location:
+$cyan
+        $parmanode_drive/.bitcoin
+$orange
+    Notice the '.' which means it's a hidden directory. Parmanode has created this
+    directory for you but it is empty. If you want Parmanode to sync Bitcoin data
+    on top of the data you already have, then WHILE BITCOIN IS STOPPED, copy your
+    existing data to the above location, then start bitcoin from the Parmanode
+    Bitcoin menu.
+
+########################################################################################
+"
+enter_continue
 
 }

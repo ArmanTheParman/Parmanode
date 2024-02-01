@@ -111,7 +111,7 @@ $orange
 " && installed_conf_add "bitcoin-end"
 
 #Just in case - what? again? Anyway, I'll leave it.
-sudo chown -R $USER:$USER $dp >/dev/null 2>&1
+sudo chown -R $USER:$USER $parmanode_drive>/dev/null 2>&1
 
 enter_continue
 fi
