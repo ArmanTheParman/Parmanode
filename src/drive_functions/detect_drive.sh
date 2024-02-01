@@ -38,19 +38,21 @@ $orange"
 read
 fi
 
-
+while true ; do
 if [[ $(uname) == Linux ]] ; then
     if sudo lsblk -o LABEL | grep parmanode ; then
     announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
-    "still physically connected to the computer. Aborting." 
-    return 1
-    fi
+    "physically connected to the computer. Please remove it and try again.
+    hit$cyan control-c to quit.$orange" 
+    continue 
+    else break ; fi 
 elif [[ $(uname) == Darwin ]] ; then
     if diskutil list | grep parmanode ; then
     announce "Sorry, but Parmanode detects that a drive with a label parmanode is" \
-    "still physically connected to the computer. Aborting." 
-    return 1
-    fi
+    "physically connected to the computer. Please remove it and try again.
+    hit$cyan control-c to quit.$orange" 
+    continue 
+    else ; break ; fi 
 fi
 
 #DETECT BEFORE AND AFTER...
