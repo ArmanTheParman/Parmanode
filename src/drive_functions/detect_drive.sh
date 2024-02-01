@@ -55,6 +55,8 @@ elif [[ $(uname) == Darwin ]] ; then
     else ; break ; fi 
 fi
 
+fi #end ! menu2
+
 #DETECT BEFORE AND AFTER...
 #For some drives blkid detects a difference.
 #For other drives only lsblk detects a difference.
