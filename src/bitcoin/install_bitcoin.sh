@@ -20,7 +20,7 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
 #Just in case (redundant permission setting)
     while true ; do 
 
-        if [[ $import_bitcoin == true ]] ; then break ; fi
+        if [[ $version == self ]] ; then break ; fi
 
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
                 sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1 \
@@ -39,14 +39,14 @@ debug "bitcoin - after prune_choice"
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
 
-make_bitcoin_directories 
+make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
 debug "bitcoin - after make_bitcoin_directories"
 
 #compile bitcoin if chosen
-compile_bitcoin
+compile_bitcoin || return 1
 debug "compile function done"
 
 # Download bitcoin software & verify
