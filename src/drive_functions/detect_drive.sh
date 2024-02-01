@@ -52,8 +52,9 @@ elif [[ $(uname) == Darwin ]] ; then
     "physically connected to the computer. Please remove it and try again.
     hit$cyan control-c to quit.$orange" 
     continue 
-    else ; break ; fi 
+    else break ; fi 
 fi
+done
 
 fi #end ! menu2
 
