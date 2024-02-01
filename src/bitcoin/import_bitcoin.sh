@@ -143,9 +143,19 @@ install_bitcoin || return 1
 ########################################################################################
 ########################################################################################
 3)
+export version=self
 importbitcoindrive=external_existing 
 export drive=external 
 parmanode_conf_add "drive=external"
+export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
+export skip_fomratting=true
+#need to decide about bitcoin conf
+#need to find the bitcoin directory
+
+#functions needed from install_bitcoin:
+make_mount_check_script
+make_bitcoind_service_file
+
 ;;
 4)
 importbitcoindrive=internal_existing 

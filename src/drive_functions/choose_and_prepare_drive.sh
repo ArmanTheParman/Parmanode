@@ -1,5 +1,4 @@
 function choose_and_prepare_drive {
-if [[ $import_bitcoin == true ]] ; then return 0 ; fi        
 if [[ $version == self ]] ; then return 0 ; fi
 # Expect argument, either Bitcoin or Fulcrum or Electrs for $1
 # chooses between internal and external drive

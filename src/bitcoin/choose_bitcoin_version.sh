@@ -1,5 +1,5 @@
 function choose_bitcoin_version {
-if [[ $import_bitcoin == true ]] ; then return 0 ; fi
+if [[ $version == self ]] ; then return 0 ; fi
 
 if [[ $OS == Mac ]] ; then
 export bitcoin_compile=false

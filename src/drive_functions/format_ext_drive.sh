@@ -1,9 +1,7 @@
 function format_ext_drive {
-if [[ $import_bitcoin == true ]] ; then return 0 ; fi
-
 debug "skip formatting variable = $skip_formatting"
-if [[ $skip_formatting == true ]] ; then 
-log "importdrive" "skipped formatting" ; return 0 ; fi
+if [[ $skip_formatting == true ]] ; then return 0 ; fi
+
 #quit if internal drive chosen
 if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi

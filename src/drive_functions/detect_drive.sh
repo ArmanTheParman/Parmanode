@@ -2,7 +2,7 @@
 #use by umbrel_import_mac - $1 menu skips initial warning. $2 umbrelmac used for text customisation
 function detect_drive {
 unset disk
-if [[ $1 != menu ]] ; then
+
 if ! echo $@ | grep -q brief ; then
 set_terminal ; echo -e "$pink
 ########################################################################################
@@ -52,8 +52,6 @@ elif [[ $(uname) == Darwin ]] ; then
     return 1
     fi
 fi
-
-fi #end != menu2
 
 #DETECT BEFORE AND AFTER...
 #For some drives blkid detects a difference.
