@@ -18,7 +18,7 @@ fi
 while true ; do
 
 
-if [[ $1 != menu2 ]] ; then
+if [[ $1 != menu2 ]] ; then #probably can remove this, now redundant.
 if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
 
 if ! echo $@ | grep -q brief ; then
