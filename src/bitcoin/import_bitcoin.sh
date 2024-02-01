@@ -66,6 +66,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
 done
 else
+
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -182,3 +184,4 @@ export version=self
 
 install_bitcoin
 
+}

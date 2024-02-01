@@ -13,7 +13,6 @@ set_terminal ; echo -e "$pink
 $orange"
 enter_continue 
 fi
-fi
 
 while true ; do
 
