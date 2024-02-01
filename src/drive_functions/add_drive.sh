@@ -39,14 +39,14 @@ if [[ $OS == "Linux" ]] ; then
 
     if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
     
-    write_to_fstab2
+write_to_fstab2
 
 sudo umount /media/$USER/parmanod* 
 sudo mount -a
 
 cd /media/$USER/parmanode/
 #change later and check this a mountpoint first
-sudo mkdir .bitcoin fulcrum_db electrs_db >/dev/null 2>&1
+sudo mkdir .bitcoin fulcrum_db electrs_db > $dp/.temp 2>&1
 debug "made .bitcoin, fulcrum and electrs dirs on the drive"
 sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
 debug "chown parmanode drive"
