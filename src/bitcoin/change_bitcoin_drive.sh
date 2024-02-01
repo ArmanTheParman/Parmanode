@@ -107,7 +107,7 @@ i|I)
 add_drive
 ;;
 f|F)
-format_ext_drive justFormat
+export justFormat=true && format_ext_drive 
 ;;
 *)
 invalid ;;

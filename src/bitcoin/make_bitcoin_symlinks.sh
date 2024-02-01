@@ -4,7 +4,7 @@ set_terminal
 while true ; do
 
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
-    break
+    return 0 
     #no symlink needed
     fi
 
@@ -24,10 +24,6 @@ if [[ $OS == "Mac" && $drive == "external" ]] ; then
     cd $HOME && ln -s $parmanode_drive/.bitcoin .bitcoin && break
     fi
 done
-
-if [[ $OS == "Linux" && $drive == "internal" ]] ; then
-return 0
-fi
 
 set_terminal ; echo -e "
 ########################################################################################

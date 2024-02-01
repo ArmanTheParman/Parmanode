@@ -1,4 +1,6 @@
 function remove_bitcoin_directories_linux {
+if [[ $bitcoin_dirve_import=true ]] ; then return 0 ; fi
+
 if [[ $1 == install ]] ; then
 leave_or_use="Use it"
 else
@@ -14,9 +16,9 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
 #check external drive first - mounted and unmounted conditions.
 
-if [[ $drive == "external" && -d /media/$(whoami)/parmanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
+if [[ $drive == "external" && -d $drive_parnanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
-    if [[ $skip_formatting = "true" ]] ; then export format="false" ; break ; fi
+
 set_terminal
 
 echo -e "
@@ -36,16 +38,22 @@ case $choice in
 q|Q) exit ;;
 p|P) return 1 ;;
 m|M) back2main ;;
-l|L) export format="false" ; break ;;
-d|D) please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
+l|L) 
+#shouldn't need skip_formatting beccause format function was earlier, but just in case...
+export skip_fomratting=true ; break ;;
+
+d|D) 
+please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing." ;  break ;;
-*) invalid ;;
+
+*) 
+invalid ;;
 esac
 done
 fi #end checking external drive for data directory
 
 #check internal drive for data directory existance 
-if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
+if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, AND not a symlink
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -100,7 +108,5 @@ fi #end checking internal drive for .bitcoin directory
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
 
-
-unset skip_formatting format
 return 0
 }

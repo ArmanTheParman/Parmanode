@@ -1,4 +1,5 @@
 function make_bitcoin_conf {
+if [[ $bitcoin_drive_import=true ]] ; then return 0 ; fi
 
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
 
