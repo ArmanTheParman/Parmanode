@@ -40,16 +40,34 @@ cd $hp/mempool/docker
 docker-compose up -d
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
+if docker ps >/dev/null 2>&1 ; then
+
 string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
 debug "string is $string"
+
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
+
     stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
-    echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
+
+    if [[ -n $stringIP ]] ; then
+      cp $bc $dp/backup_bitcoin.conf 
+      echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
+    fi
+    
     if [[ $OS == Linux ]] ; then sudo systemctl restart bitcoind.service 
     elif [[ $OS == Mac ]] ; then stop_bitcoind ; start_bitcoind 
     fi
+
+    announce "An unusual IP address for the Docker Gateway was detected 
+    (doesn't start with 172) and was addeed to bitcoin.conf as
+    rpcallowip=DockerIP/16. There is a chance this could cause errors.
+    A backup of bitcoin.conf has been saved to 
+    $dp/backup_bitcoin.conf just in case you need to go back to it.
+    Call Parman for help if you have issues (Telegram or Twitter).
+    "
     restart_mempool
-fi
+
+fi ; fi #end if docker ps
 
 installed_conf_add "mempool-end"
 success "Mempool" "being installed"
