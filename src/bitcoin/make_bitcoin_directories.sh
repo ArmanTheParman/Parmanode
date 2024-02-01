@@ -26,7 +26,7 @@ function make_bitcoin_directories {
 
 
     if [[ $drive == "internal" ]] ; then 
-            mkdir -p $HOME/.bitcoin >/dev/null 2>&1 && \
+            mkdir -p $HOME/.bitcoin >$dp/.temp 2>&1 && \
             log "bitcoin" ".bitcoin dir made on int drive" 
     fi
 

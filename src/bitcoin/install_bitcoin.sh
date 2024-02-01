@@ -74,7 +74,13 @@ fi
 sudo chown -R $USER: $HOME/.bitcoin/ 
 
 #setting password. Managing behaviour of called function with variable and arguments.
+unset skip
+if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip=true ; else skip=false ; fi
+case $skip in
+false)
 export dontstartbitcoin=true && set_rpc_authentication "s" "install" && unset dontstartbitcoin
+;;
+esac
 
 please_wait && run_bitcoind
 
