@@ -138,7 +138,7 @@ $cyan
 $orange
 
    Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
-   may have researched yourself and would like to include, then hit$green<enter>$orange
+   may have researched yourself and would like to include, then hit$green <enter>$orange
 
 ########################################################################################
 "
