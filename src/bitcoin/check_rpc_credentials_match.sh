@@ -298,7 +298,7 @@ y)
 unset file && local file="$hp/mempool/docker/docker-compose.yml"
 stop_mempool
 swap_string "$file" "CORE_RPC_USERNAME" "      CORE_RPC_USERNAME: \"$rpcuser\"" #docker compose file, indentation is criticial
-delete_line "$file" "CORE_RPC_PASSWORD" "      CORE_RPC_PASSWORD: \"$rpcpassword\"" 
+swap_string "$file" "CORE_RPC_PASSWORD" "      CORE_RPC_PASSWORD: \"$rpcpassword\"" 
 start_mempool
 break
 ;;
