@@ -185,6 +185,7 @@ export version=self
 export drive=external 
 parmanode_conf_add "drive=external"
 export bitcoin_drive_import=true 
+export skip_formatting=true
 menu_migrate parmy || return 1 # drive is detected, fstab added, directories made if non existant.
 #need to find the bitcoin directory
 dir_not_found #?
