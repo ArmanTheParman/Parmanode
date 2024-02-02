@@ -3,7 +3,7 @@ function measure_rpc_global {
 #bitcoin
 if [[ -e $bc ]] ; then 
 source $bc 
-echo "bitcoin_rpc_global=\"bitcoin rpcuser=$rpcuser rpcpassword=$rpcpassword\"" > $dp/.global
+echo "bitcoin=\"bitcoin rpcuser=$rpcuser rpcpassword=$rpcpassword\"" > $dp/.global
 unset rpcuser rpcpassword
 fi
 
