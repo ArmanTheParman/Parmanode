@@ -51,10 +51,6 @@ m|M) back2main ;;
 				fi
 
                 set_rpc_authentication_update_conf_edits #defined below
-
-				add_userpass_to_fulcrum 
-				#(extracted from bitcoin.conf)	
-				#checks if fulcrum installed, otherwise returns
 				
 				export btc_authentication="user/pass" >/dev/null
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
@@ -69,7 +65,6 @@ m|M) back2main ;;
 		        ;;
 		
 	l|L) 
-				add_userpass_to_fulcrum
 				break
 				;;
 	c)
@@ -97,6 +92,10 @@ m|M) back2main ;;
 esac
 
 done
+
+
+
+
 return 0
 }
 

@@ -1,72 +1,57 @@
-function measure_rpc_global {
 
-#bitcoin
+function source_rpc_global {
+
+#Bitcoin
 if [[ -e $bc ]] ; then 
 source $bc 
-echo "bitcoin rpcuser=$rpcuser rpcpassword=$rpcpassword" > $dp/.global
-unset rpcuser rpcpassword
 fi
 
 #BRE (non docker)
 if [[ -e $HOME/parmanode/btc-rpc-explorer/.env ]] ; then
-rpcuser=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
-rpcpassword=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
-echo "BRE rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
+export BRE_rpcuser=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
+export BRE_rpcpassword=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
 fi
 
 #BRE (docker)
 if [[ -e $HOME/parmanode/bre/.env ]] ; then
-rpcuser=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
-rpcpassword=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
-echo "BREdocker rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
+export BREdocker_rpcuser=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
+export BREdocker_rpcpassword=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
 fi
 
 #LND
 if [[ -e $HOME/.lnd/lnd.conf ]] ; then
-rpcuser=$(cat $HOME/.lnd/lnd.conf | grep "bitcoind.rpcuser" | cut -d = -f 2)
-rpcpassword=$(cat $HOME/.lnd/lnd.conf | grep "bitcoind.rpcpass" | cut -d = -f 2)
-echo "LND rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+export LND_rpcuser=$(cat $HOME/.lnd/lnd.conf | grep "bitcoind.rpcuser" | cut -d = -f 2)
+export LND_rpcpassword=$(cat $HOME/.lnd/lnd.conf | grep "bitcoind.rpcpass" | cut -d = -f 2)
 fi
 
 #NBXplorer
 if [[  -e $HOME/.nbxplorer/Main/settings.config ]] ; then
-rpcuser=$(cat $HOME/.nbxplorer/Main/settings.config | grep "btc.rpc.user" | cut -d = -f 2)
-rpcpassword=$(cat $HOME/.nbxplorer/Main/settings.config | grep "btc.rpc.password" | cut -d = -f 2)
-echo "nbxplorer rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+export nbxplorer_rpcuser=$(cat $HOME/.nbxplorer/Main/settings.config | grep "btc.rpc.user" | cut -d = -f 2)
+export nbxplorer_rpcpassword=$(cat $HOME/.nbxplorer/Main/settings.config | grep "btc.rpc.password" | cut -d = -f 2)
 fi
 
 #electrs
-if [[ -e $HOME/.electrs ]] ; then
-rpcuser=$(cat $HOME/.electrs/config.toml | grep -Eo '^auth.*$' | cut -d : -f 1 | cut -d \" -f 2)
-rpcpassword=$(cat $HOME/.electrs/config.toml | grep -Eo '^auth.*$' | cut -d : -f 2 | cut -d \" -f 1)
-echo "electrs rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+if [[ -e $HOME/.electrs/config.toml ]] ; then
+export electrs_rpcuser=$(cat $HOME/.electrs/config.toml | grep -Eo '^auth.*$' | cut -d : -f 1 | cut -d \" -f 2)
+export electrs_rpcpassword=$(cat $HOME/.electrs/config.toml | grep -Eo '^auth.*$' | cut -d : -f 2 | cut -d \" -f 1)
 fi
 
 #fulcrum
 if [[ -e $hp/fulcrum/fulcrum.conf ]] ; then
-rpcuser=$(cat $hp/fulcrum/fulcrum.conf | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
-rpcpassword=$(cat $hp/fulcrum/fulcrum.conf | grep rpcpassword | cut -d = -f 2 | tr -d '[:space:]' )
-echo "fulcrum rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+export fulcrum_rpcuser=$(cat $hp/fulcrum/fulcrum.conf | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
+export fulcrum_rpcpassword=$(cat $hp/fulcrum/fulcrum.conf | grep rpcpassword | cut -d = -f 2 | tr -d '[:space:]' )
 fi
 
 #mempool
 if [[ -e $hp/mempool/docker/docker-compose.yml ]] ; then 
-rpcuser=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_USERNAME | cut -d \" -f 2 | tr -d \" )
-rpcpassword=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_PASSWORD | cut -d \" -f 2 | tr -d \" )
-echo "mempool rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+export mempool_rpcuser=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_USERNAME | cut -d \" -f 2 | tr -d \" )
+export mempool_rpcpassword=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_PASSWORD | cut -d \" -f 2 | tr -d \" )
 fi
 
 #sparrow
 if [[ -e ~/.sparrow/config ]] ; then
-rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | tr -d '"[:space:]' )
-rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | tr -d '"[:space:],' )
-echo "sparrow rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
-unset rpcuser rpcpassword
+export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | tr -d '"[:space:]' )
+export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | tr -d '"[:space:],' )
 fi
 
 }
