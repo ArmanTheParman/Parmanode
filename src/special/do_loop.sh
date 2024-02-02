@@ -136,6 +136,7 @@ debug "Pausing here. IP: $IP" #when debugging, I can check for error messages an
 
 if [[ $test == true ]] ; then
 measure_rpc_global
+debug "after measure rpc global"
 fi
 
 ########################################################################################
