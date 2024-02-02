@@ -10,15 +10,10 @@ if [[ -z $bitcoin_n ]] ; then
 bitcoin_new="#                                                                                      #"
 menuaddnewbitcoin=false
 else
-bitcoin_new="#$green                          b)           Bitcoin Core                                  $orange #
-#                                                                                      #"
-fi
-
-if [[ -z $bitcoin_n ]] ; then
-bitcoin_self="#                                                                                      #"
-menuaddnewbitcoin=false
-else
-bitcoin_self="#$bright_blue                          bs)          Import own Bitcoin Core binaries              $orange #
+bitcoin_new="#                                                                                      #
+#$green                          b)           Bitcoin Core                                  $orange #
+#                                                                                      #
+#$bright_blue                          bs)          Import own Bitcoin Core binaries              $orange #
 #                                                                                      #"
 fi
 
@@ -29,9 +24,7 @@ echo -e "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
 ########################################################################################
-#                                                                                      #"
-echo -e "${bitcoin_new}
-${bitcoin_self}
+echo -e "${bitcoin_new}"
 #                          n)           Node related software ...                      #
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
