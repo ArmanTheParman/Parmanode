@@ -109,10 +109,10 @@ if [[ $OS == "Linux" ]] ; then
         echo "
 #######################################################################################
 
-    If you saw no errors, then the new $disk drive has been prepared and is 
+    If you saw no errors, then the new $green$disk$orange drive has been prepared and is 
     labelled as \"parmanode\".
     
-    The drive's UUID, for reference only, is $UUID.
+    The drive's UUID, for reference only, is $green$UUID$orange.
 
 ########################################################################################
         "

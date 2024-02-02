@@ -104,7 +104,7 @@ m|M) back2main ;;
 q|Q) exit ;;
 a|A|p|P|n|N|NO|No) return 1 ;;
 i|I)
-add_drive
+export make_label=parmanode && add_drive
 ;;
 f|F)
 export justFormat=true && format_ext_drive 

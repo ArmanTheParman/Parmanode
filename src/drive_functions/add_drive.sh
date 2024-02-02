@@ -9,6 +9,7 @@ $cyan
 $orange
     Please make sure the drive you want to bring in is$pink PHYSICALLY DISCONNECTED$orange, 
     i.e. detach the cable, before proceeding or you could get errors. 
+
 ########################################################################################
 $orange" ; enter_continue
 
@@ -25,6 +26,7 @@ set_terminal ; echo -e "$cyan
 fi
 
 detect_drive $@ "brief" || return 1 #menu
+#drive should be mounted at this point.
 
 if [[ $OS == "Mac" ]] ; then
     set_terminal
@@ -38,15 +40,57 @@ if [[ $OS == "Mac" ]] ; then
 enter_continue ; return 0 ;
 fi
 
-if [[ $OS == "Linux" ]] ; then
+if [[ $OS == "Linux" ]] ; then make_linux_parmanode_drive ; return 0 ; fi
 
-    if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
+}
+
+function make_linux_parmanode_drive {
+
+if [[ $OS != Linux ]] ; then return 1 ; fi
+
+########################################################################################
+
+#drive should be mounted
+#$disk variable should be in environment, format /dev/xxxn  ie with or without a number, n.
+#Function called by add drive
+#environment label $make_label expected
+
+debug "test disk variable into make_linux_parmanode_drive, is...
+    $disk
+    If there is a partition number, that should not be removed
+    shold be in the format /dev/diskn
+
+    "
+########################################################################################
+
+if [[ $make_label == "parmanode" ]] ; then
+        sudo umount $disk* 2>/dev/null ; sudo umount $parmanode_drive 2>/dev/null
+        sudo umount /media/$USER/parmanod* 2>/dev/null
+        sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
+        sudo mount $disk $parmanode_drive 
+        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
+        sudo chown -R $USER:$(id -gn) $parmanode_drive 
+        debug "label done"
+        set_terminal
+else
+        debug "warning, make_label is $make_label"
+        sudo umount $disk* 2>/dev/null ; sudo umount $parmanode_drive 2>/dev/null
+        sudo umount /media/$USER/parmanod* 2>/dev/null
+        if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
+        sudo mount $disk $parmanode_drive 
+        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
+        sudo chown -R $USER:$(id -gn) $parmanode_drive 
+fi
+
     
-write_to_fstab2
-
-sudo umount /media/$USER/parmanod* 
+write_to_fstab2 ; debug "fstab done"
+clear
+echo "Testing fstab mount..." ; sleep 2
+sudo umount $parmanode_drive
 sudo mount -a
 
+if mountpoint $parmanode_drive >/dev/null 2>&1 ; then
 cd /media/$USER/parmanode/
 #change later and check this a mountpoint first
 sudo mkdir .bitcoin fulcrum_db electrs_db > $dp/.temp 2>&1
@@ -54,6 +98,8 @@ debug "made .bitcoin, fulcrum and electrs dirs on the drive"
 sudo chown $USER:$(id -gn) /media/$USER/parmanode # no -R in case it's another Node package drive that has been imported.
 debug "chown parmanode drive"
 sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
+fi
+
 if [[ -L /media/$USER/parmanode/.bitcoin ]] ; then
     if ! which readlink >/dev/null ; then sudo apt update -y && sudo apt install coreutils ; fi
     sudo chown -R $USER:$(id -gn) $(readlink /media/$USER/parmanode/.bitcoin)
@@ -69,6 +115,5 @@ set_terminal ; echo -e "
 "
 enter_continue
 return 0
-fi #end if Linux
 }
 
