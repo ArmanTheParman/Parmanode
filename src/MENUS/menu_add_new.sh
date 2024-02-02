@@ -56,10 +56,12 @@ B|b|bitcoin|Bitcoin)
 
 bs|BS|Bs|bS)
         if [[ -z $menuaddnewbitcoin ]] ; then
+        debug "59"
         set_terminal 
         import_bitcoin
         return 0
         fi
+        debug "64"
         ;;
 
 n|N|node|Node)
