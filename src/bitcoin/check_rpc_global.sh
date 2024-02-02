@@ -40,7 +40,7 @@ unset rpcuser rpcpassword
 fi
 
 #mempool
-if [[ -e $hp/mempool/docker/docker-commpose.yml ]] ; then 
+if [[ -e $hp/mempool/docker/docker-compose.yml ]] ; then 
 rpcuser=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_USERNAME | cut -d \" -f 2 | tr -d \" )
 rpcpassword=$(cat $hp/mempool/docker/docker-compose.yml | grep CORE_RPC_PASSWORD | cut -d \" -f 2 | tr -d \" )
 echo "mempool=\"mempool rpcuser=$rpcuser rpcpassword=$rpcpassword\"" >> $dp/.global
