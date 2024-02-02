@@ -9,19 +9,22 @@ if [[ $OS == "Linux" && $drive == "internal" ]] ; then
     fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
-    cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin  && break  #symlink can be made withouterrors even if target doesn't exist yet
+    cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin  
+    break  #symlink can be made withouterrors even if target doesn't exist yet
     fi
 
 if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     cd $HOME/Library/"Application Support"/ ; rm -rf  Bitcoin
-    cd $HOME/Library/"Application Support"/ && ln -s $HOME/.bitcoin Bitcoin && break
+    cd $HOME/Library/"Application Support"/ && ln -s $HOME/.bitcoin Bitcoin 
+    break
     fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
     cd $HOME/Library/Application\ Support/ >/dev/null 2>&1 && rm -rf Bitcoin >/dev/null 2>&1 
     cd $HOME && rm -rf .bitcoin >/dev/null 2>&1 
     cd $HOME/Library/Application\ Support/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
-    cd $HOME && ln -s $parmanode_drive/.bitcoin .bitcoin && break
+    cd $HOME && ln -s $parmanode_drive/.bitcoin .bitcoin 
+    break
     fi
 done
 
