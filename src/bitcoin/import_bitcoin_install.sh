@@ -8,8 +8,8 @@ $cyan
                                IMPORT BITCOIN TOOL
 
 $orange
-    If you already have Bitcoin installed on your system, you can simply bring it
-    in so Parmanode can recognise it.
+    With this tool, if you already have Bitcoin installed on your system, you can 
+    simply bring it in so Parmanode can recognise it.
 
 ########################################################################################
 "
@@ -29,8 +29,8 @@ set_terminal ; echo -e "
         bitcoin-cli stop
        $orange 
 
-    Hit$pink <enter>$orange to continue (it dosn't matter if bitcoin is not actually 
-    running right now).
+    Hit$pink <enter>$orange to continue (it dosn't matter if bitcoin is not actually running 
+    right now).
 
 ########################################################################################
 "
@@ -104,7 +104,7 @@ set_terminal ; echo -e "
 
     Do you want...
 
-        1)    Start fresh with an external drive$red (formats drive)
+        1)    Start fresh with an external drive$red (formats drive)$orange
 
         2)    Start fresh with an internal drive
 
@@ -119,12 +119,14 @@ set_terminal ; echo -e "
 choose "xpmq"
 read choice ; clear
 case $choice in
+q|Q) exit 0 ;; p|P|m|M) back2main ;;
 1)
 # Some variables to control how functions branch, esp install_bitcoin and children.
 export drive=external  && parmanode_conf_add "drive=external"
 export justFormat=true
 export version=self
 install_bitcoin || return 1
+break
 #format_ext_drive "Bitcoin" #is the drive mounted here?
 #prune_choice || return 1
 #make_bitcoin_directories
@@ -137,6 +139,7 @@ install_bitcoin || return 1
 export drive=internal && parmanode_conf_add "drive=internal"
 export version=self
 install_bitcoin || return 1
+break
 ;;
 
 3)
@@ -157,6 +160,7 @@ message_move #move files before continuing
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin
+break
 ;;
 
 4)
@@ -173,6 +177,7 @@ message_move #move files before continuing
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin
+break
 ;;
 5)
 export version=self
@@ -188,6 +193,7 @@ dir_not_found #?
 #make_bitcoind_service_file
 #set_rpc_authentication (if rpcuser not set)
 install_bitcoin
+break
 ;;
 *)
 invlalid ;;

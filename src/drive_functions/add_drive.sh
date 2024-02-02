@@ -4,6 +4,9 @@ info_add_drive $@ || return 1 # safe unmount executed
 
 set_terminal ; echo -e "$pink
 ########################################################################################
+
+                      Automatic drive detection procedure ...
+
     Please make sure the$green drive you want to bring in$pink is PHYSICALLY DISCONNECTED, 
     i.e. detach the cable, before proceeding or you could get errors. 
 ########################################################################################
