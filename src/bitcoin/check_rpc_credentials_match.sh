@@ -238,6 +238,40 @@ esac
 done
 fi
 
+if [[ -n $sparrow_rpcuser ]] && [[ $sparrow_rpcuser != $rpcuser || $sparrow_rpcpassword != $rpcpassword ]] ; then
+program="${cyan}Sparrow Wallet$orange"
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+    
+    The urser/password credentials for $program do not match your Bitcoin
+    configuration. 
+
+    Would you like Parmanode to fix that up for you? If so, $program will 
+    be restarted.
+$green
+                      y)    Yes thanks, how good is that?
+$orange
+                      n)    Nah, I know what I'm doing and I'll manage it.
+                    
+########################################################################################
+"
+choose "xmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P|M|m) back2main ;;
+y)
+unset file && local file="$HOME/.sparrow/config"
+set_terminal ; echo "Please ensure Sparrow has been shut down before continuing." ; enter_continue
+swap_string "$file" "coreAuth\"" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
+break
+;;
+n)
+break ;;
+*)
+invalid ;;
+esac 
+done
+fi
 
 if [[ -n $mempool_rpcuser ]] && [[ $mempool_rpcuser != $rpcuser || $mempool_rpcpassword != $rpcpassword ]] ; then
 program="${cyan}Mempool Space$orange"
@@ -276,38 +310,4 @@ esac
 done
 fi
 
-if [[ -n $sparrow_rpcuser ]] && [[ $sparrow_rpcuser != $rpcuser || $sparrow_rpcpassword != $rpcpassword ]] ; then
-program="${cyan}Sparrow Wallet$orange"
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-    
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
-
-    Would you like Parmanode to fix that up for you? If so, $program will 
-    be restarted.
-$green
-                      y)    Yes thanks, how good is that?
-$orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
-                    
-########################################################################################
-"
-choose "xmq" ; read choice ; set_terminal
-case $choice in
-q|Q) exit 0 ;; p|P|M|m) back2main ;;
-y)
-unset file && local file="$HOME/.sparrow/config"
-set_terminal ; echo "Please ensure Sparrow has been shut down before continuing." ; enter_continue
-swap_string "$file" "coreAuth\"" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
-break
-;;
-n)
-break ;;
-*)
-invalid ;;
-esac 
-done
-fi
 }
