@@ -16,8 +16,8 @@ fi
 
 #BRE (docker)
 if [[ -e $HOME/parmanode/bre/.env ]] ; then
-rpcuser=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
-rpcpassword=$(cat $HOME/parmanode/btc-rpc-explorer/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
+rpcuser=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_USER | cut -d = -f 2)
+rpcpassword=$(cat $HOME/parmanode/bre/.env | grep BTCEXP_BITCOIND_PASS | cut -d = -f 2)
 echo "BREdocker rpcuser=$rpcuser rpcpassword=$rpcpassword" >> $dp/.global
 fi
 
