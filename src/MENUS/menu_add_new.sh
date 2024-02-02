@@ -30,6 +30,8 @@ echo -e "
 #                                                                                      #"
 echo -e "${bitcoin_n}
 #                                                                                      #
+echo -e "${bitcoin_self}
+#                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
