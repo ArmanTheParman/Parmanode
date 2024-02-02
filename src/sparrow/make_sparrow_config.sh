@@ -7,8 +7,8 @@ rm $HOME/.sparrow/config >/dev/null 2>&1
 cp $original_dir/src/sparrow/config $HOME/.sparrow/config # copies template across
 
 # These settings can be written every time regardless of connection type...
-swap_string "$HOME/.sparrow/config" "coreDataDir" "  \"coreDataDir\": \"$HOME/.bitcoin\","
-swap_string "$HOME/.sparrow/config" "coreAuth\":" "  \"coreAuth\": \"$rpcuser:$rpcpassword\","
+swap_string "$HOME/.sparrow/config" "coreDataDir" "    \"coreDataDir\": \"$HOME/.bitcoin\","
+swap_string "$HOME/.sparrow/config" "coreAuth\":" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
 # serverType is BITCOIN_CORE on the template
 # coreAuthType is USERPASS on the template
 
