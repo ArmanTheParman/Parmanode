@@ -23,8 +23,8 @@ echo -e "
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
-########################################################################################
-echo -e "${bitcoin_new}"
+########################################################################################"
+echo -e "${bitcoin_new}
 #                          n)           Node related software ...                      #
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
