@@ -1,4 +1,7 @@
 function bre_docker_modify_env {
+#docker dir for env uses bre, but non docker uses btc-rpc-explorer dir - backwards, and should
+#be changed in a future version.
+
 unset file && local file="$HOME/parmanode/bre/.env"
 
 #computer speed question
