@@ -58,7 +58,7 @@ bs|BS|Bs|bS)
         if [[ -z $menuaddnewbitcoin ]] ; then
         debug "59"
         set_terminal 
-        import_bitcoin
+        import_bitcoin_install
         return 0
         fi
         debug "64"
