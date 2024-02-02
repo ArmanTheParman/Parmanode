@@ -1,3 +1,6 @@
+Version 3.25.4
+    -Coordinated rpc/password for bitcoin.conf for all other apps that use it.
+    -Streamlined Fulcrum install code a little
 Version 3.25.3
     -Import an existing Bitcoin Core insallation (binaries) to Parmanode
 Version 3.25.2
