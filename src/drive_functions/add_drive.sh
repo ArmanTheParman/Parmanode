@@ -1,4 +1,9 @@
 function add_drive {
+########################################################################################
+#not complete; adding potential arguments passed to add_drive:
+   # make_label=parmanode (environment)
+
+########################################################################################
 
 info_add_drive $@ || return 1 # safe unmount executed
 
