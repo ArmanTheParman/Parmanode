@@ -64,7 +64,7 @@ if [[ $OS == "Mac" ]] ; then
         diskutil eraseDisk exFAT "parmanode" /dev/$disk_no_s || log "bitcoin" "failed to eraseDisk"   
         fi
 
-        set_terminal ; echo "
+        set_terminal ; echo -e "
 #######################################################################################
 
     If you saw no errors, then the $disk drive has been wiped, formatted, mounted, 
@@ -106,7 +106,7 @@ if [[ $OS == "Linux" ]] ; then
 
         debug "label done"
         set_terminal
-        echo "
+        echo -e "
 #######################################################################################
 
     If you saw no errors, then the new $green$disk$orange drive has been prepared and is 
