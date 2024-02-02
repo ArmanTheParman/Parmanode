@@ -40,7 +40,7 @@ p|P) return 1 ;;
 m|M) back2main ;;
 l|L) 
 #shouldn't need skip_formatting beccause format function was earlier, but just in case...
-export skip_fomratting=true ; break ;;
+export skip_formatting=true ; break ;;
 
 d|D) 
 please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
