@@ -24,8 +24,6 @@ log "fulcrum" "files installed"
 
 make_ssl_certificates || return 1 ; log "fulcrum" "make_ssl exited." 
 
-check_fulcrum_pass
-
 make_fulcrum_service_file
 start_fulcrum_linux
 fulcrum_success_install

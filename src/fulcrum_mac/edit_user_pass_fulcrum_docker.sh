@@ -6,10 +6,7 @@ source $HOME/.bitcoin/bitcoin.conf
 fi
 
 delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
-
 delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
-
 echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
-
 echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
 }

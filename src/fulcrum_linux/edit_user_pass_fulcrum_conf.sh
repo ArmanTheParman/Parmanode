@@ -1,5 +1,5 @@
 function edit_user_pass_fulcrum_conf {
-
+#should work for docker and non-docker
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 
