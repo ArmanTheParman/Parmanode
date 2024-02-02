@@ -18,7 +18,7 @@ echo -e "
 
               (ip)    What's my computer's IP address?
 
-              (md)    Migrate/Revert an external drive.
+              (md)    Import/Migrate/Revert an external drive.
 
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only

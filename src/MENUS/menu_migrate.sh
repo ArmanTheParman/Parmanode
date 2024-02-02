@@ -9,9 +9,9 @@ $cyan
 ########################################################################################
 
 
-      (parmy)    Migrate a drive from another Parmanode installation 
+      (parmy)    Import a drive from another Parmanode installation 
 
-      (new)      Bring in new drive (will be formatted)
+      (new)      Make a new external Parmanode drive (will be formatted)
 
       (ub)       Migrate an Umbrel drive to Parmanode 
 
