@@ -298,9 +298,9 @@ choose "xmq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
-unset file && local file="~/.sparrow/config"
+unset file && local file="$HOME/.sparrow/config"
 set_terminal ; echo "Please ensure Sparrow has been shut down before continuing." ; enter_continue
-swap_string "$file" "coreAuth\"" "  \"coreAuth\": \"$rpcuser:$rpcpassword\","
+swap_string "$file" "coreAuth\"" "    \"coreAuth\": \"$rpcuser:$rpcpassword\","
 break
 ;;
 n)
