@@ -22,6 +22,7 @@ q|Q) exit ;; q|P) return 1 ;;
 m|M) back2main ;;
 pp|Pp|PP)
 export importdrive=true
+export make_label=dont
 add_drive || return 1
 
 if [[ $OS == "Linux" ]] ; then
@@ -34,6 +35,9 @@ if [[ $OS == "Linux" ]] ; then
         get_UUID #gets UUID of parmanode label drive
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
+        sudo mount $disk $parmanode_drive 
+        sudo chown -R $USER:$(id -gn) $parmanode_drive 
+
 fi
 return 0
 ;;

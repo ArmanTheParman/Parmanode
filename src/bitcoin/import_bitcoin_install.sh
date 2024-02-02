@@ -148,6 +148,7 @@ export drive=external
 parmanode_conf_add "drive=external"
 export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
 export skip_fomratting=true
+export make_label=parmanode
 add_drive || return 1 # imports drive and makes directories if they don't exist.
 #need to find the bitcoin directory
 dir_not_found #?
