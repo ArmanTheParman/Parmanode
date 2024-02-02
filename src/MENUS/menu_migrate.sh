@@ -41,26 +41,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-
-set_terminal ; echo -e "
-########################################################################################
-    Please$green connect$orange the Parmanode drive, wait a couple of seconds, then hit$green <enter>$orange
-########################################################################################
-"
-enter_continue
-
-if ! lsblk -o LABEL | grep -q parmanode ; then
-set_terminal ; echo -e "
-########################################################################################
-    This does not seem to be a drive with a$cyan parmanode$orange Label. Aborting.
-########################################################################################
-"
-enter_continue
-return 1
-else
-echo -e "${green}Parmanode drive detected...$orange" ; sleep 1
-fi
-
+export check_if_parmanode_drive=true # read by detect_drive (which is called by add_drive)
 add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
 success "The drive" "being imported"
 offer_swap_to_external #runs only if drive=internal
