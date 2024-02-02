@@ -19,7 +19,7 @@ echo -e "
 
     Please choose an option:
 $green
-                           (e) - Use an EXTERNAL drive (formats)
+                           (e) - Use an EXTERNAL drive (choice to format)
 $red
                            (i) - Use an INTERNAL drive $orange
 "
