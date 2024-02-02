@@ -97,17 +97,48 @@ debug "after clone"
 debug "after autogen"
 
 while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Bitcoin can be compiled with or without a Graphical User Interfact (GUI).
+
+    Parmanode does not use a GUI, as it is itself the interface between you and the
+    node's functions - this is partly what Parmanode is for.
+
+    If you want a GUI, you can opt for that, but you might get unpredictable behaviour
+    as I have not designed Parmanode for this to be used in parallel.
+
+    You have choices...
+$green
+              1)   Compile Bitcoin WITHOUT a GUI (recommended, and faster) 
+$red
+              2)   Compile bitcoin WITH a GUI
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice
+case $choice in
+q|Q) exit 0 ;; p|P|M|m) back2main ;;
+1) gui=no ; break ;;
+2) gui=yes ; 
+sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake 
+break ;;
+*) invalid ;;
+esac
+done
+
+
+while true ; do
 clear ; echo -e "
 ########################################################################################
 
    The configure command that will be run is the following: 
-$green
-   ./configure --with-gui=no
+$cyan
+   ./configure --with-gui=$gui
 $orange
-   If you want to add any additional options,$cyan type them in, then hit <enter>$orange,
-   otherwise, just hit $cyan<enter>$orange
 
-   If you really want the gui, you can change that option a bit later.
+   Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
+   may have researched yourself and would like to include, then hit$green<enter>$orange
 
 ########################################################################################
 "
@@ -134,66 +165,9 @@ echo -e "
 esac
 done
 
-while true ; do
 set_terminal
-echo -e "
-########################################################################################
 
-    Parmanode will be running the command...
-$green
-      ./configure $options --with-gui=no
-$orange
-    Type$pink hfsp$orange to change the final option to --with-gui=yes 
-
-    Note: You don't need the GUI, and Parmanode does not use it. It'll be faster
-    to not include it.
-
-########################################################################################
-"
-choose "xpmq" #prints out a standard menu, then choice variable taken to case
-read choice
-set_terminal
-case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-hfsp|HFSP)
-# if [[ $knotsbitcoin == true ]] ; then break ; fi #comment can turn gui=yes for knots on or off
-export gui="--with-gui=yes"
-clear 
-sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake 
-debug "after install qt5"
-break
-;;
-*)
-export gui="--with-gui=no"
-break
-;;
-esac
-done
-set_terminal
-echo -e "$orange
-########################################################################################
-
-    The command, now final, that will be run is...
-$green
-    ./configure $options $gui
-$orange
-########################################################################################
-"
-choose "epmq"
-read choice 
-case $choice in
-q|Q) exit 0 ;; p|P|m|M) back2main ;;
-esac
-clear
-
-
-echo -e "
-Please wait...
-$(pwd)
-"
-sleep 5 
-
-./configure $options $gui
+./configure $options --with-gui=$gui
 
 echo -e "
 ########################################################################################
