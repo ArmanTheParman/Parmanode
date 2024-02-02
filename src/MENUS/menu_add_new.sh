@@ -30,7 +30,7 @@ echo -e "
 #                                                                                      #"
 echo -e "${bitcoin_n}
 #                                                                                      #
-#${bitcoin_n}
+${bitcoin_self}
 #                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #
