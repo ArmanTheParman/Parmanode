@@ -27,11 +27,11 @@ $orange
     passwords that you might use for other things.
 
 $green
-       (s)     Set the Bitcoin username and password (edits bitcoin.conf)
+       (s)     Set the Bitcoin username and password (edits bitcoin.conf for you)
 $orange
        (L)     Leave Bitcoin username and password unchanged 
-
-       (c)     Use cookie ...(deletes password from bitcoin.conf)
+$red
+       (c)     Use cookie ...(deletes password from bitcoin.conf) - DON'T
 
 ########################################################################################
 
@@ -92,10 +92,7 @@ m|M) back2main ;;
 esac
 
 done
-
-
-
-
+check_rpc_credentials_match
 return 0
 }
 
@@ -120,20 +117,9 @@ function add_userpass_to_fulcrum {
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
-	if cat $HOME/.parmanode/installed.conf | grep -q "fulcrum-end" ; then
-		true
-	else
-		return 1
-	fi
-
-	if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; return 0 ; fi
-
-	if [[ $OS == "Linux" ]] ; then
-					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
-					delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
-					echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
-					echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
-					return 0
-					fi
+delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser" 2>/dev/null
+delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword" 2>/dev/null
+echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf 2>/dev/null
+echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf 2>/dev/null
 
 }

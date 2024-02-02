@@ -4,19 +4,18 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 # make config file
 if which bitcoind >/dev/null 2>&1 ; then
     if [[ -z $rpcuser ]] ; then #from parmanode.conf 
-        set_rpc_authentication 
+        announce "In the next screen, you need to select a username/password for Bitcoin
+        connections, otherwise Fulcrum won't autoconnect with Parmanode."
+        set_rpc_authentication || { announce "Error setting rps user/pass. Aborting Fulcrum installation." ; return 1 ; }
         set_terminal
-        if [ $? != 0 ] ; then set_terminal ; echo "Error setting rps user/pass. Aborting installation." ; enter_continue ; return 1 ; fi
     fi
 fi
 
 # set datadir variable
 
-    if [[ $drive_fulcrum == "external" && $OS == "Linux" ]] ; then
-    datadir="/media/$(whoami)/parmanode/fulcrum_db" ; fi
-
-    if [[ $drive_fulcrum == "external" && $OS == "Mac" ]] ; then
-    datadir="/Volumes/parmanode/fulcrum_db" ; fi
+    if [[ $drive_fulcrum == "external" ]] ; then #works Linux and Mac
+    datadir="$drive/parmanode/fulcrum_db" 
+    fi
 
     if [[ $drive_fulcrum == "internal" ]] ; then
     datadir="$HOME/parmanode/fulcrum_db"

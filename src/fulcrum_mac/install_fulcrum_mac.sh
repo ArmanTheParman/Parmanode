@@ -18,26 +18,14 @@ if ! which docker >/dev/null 2>&1 ; then install_docker_mac || return 1 ; fi
 #start docker if it is not running 
 if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
-warning_deleting_fulcrum
-  if [[ $? == 1 ]] ; then log "fulcrum" "warning message, abort" ; return 1 ; fi
-  log "fulcrum" "warning message reached, continue."
+warning_deleting_fulcrum || { log "fulcrum" "warning message, abort" ; return 1 ; }
 
-build_fulcrum_docker || return 1 ; log "fulcrum" "Fulcrum docker build done."
-debug "build fulcrum docker done"
-run_fulcrum_docker
-  if [[ $? == 1 ]] ; then log "fulcrum" "run_fulcrum_docker returned 1" ; return 1 ; fi
-debug "Fulcrum docker run done."
+build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
 
-check_rpc_authentication_exists || announce "No bitcoin conf file found. You'll have to edit it yourself 
-    with a usernamd and password, matching to the Fulcrum config, to make
-    it all work. Otherwise, control-c to quit, get Bitcoin setup 
-    properly, then try installing Fulcrum again."
-if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then
-announce "Can't install without bitcoin user/pass set. Aborting."
-return 1
-fi
+run_fulcrum_docker || { announce "Docker run failed. Aborting." ; return 1 ; }
 
-debug "check rpc auth exists"
+check_rpc_authentication_exists || { announce "Failed to set rpc authentication details from bitcoin.conf" ; return 1 ; }
+
 add_IP_fulcrum_config_mac  
 
 installed_config_add "fulcrum-end"
@@ -46,6 +34,7 @@ installed_config_add "fulcrum-end"
 if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
 start_fulcrum_docker
+
 fulcrum_success_install
 
 return 0
