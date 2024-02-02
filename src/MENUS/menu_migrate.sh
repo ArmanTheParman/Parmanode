@@ -1,6 +1,7 @@
 function menu_migrate {
+while true ; do 
 if [[ -z $1 ]] ; then # if an option passed, then no need to print menu
-while true ; do set_terminal ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan                            
                                 Migrate Drive Menu            $orange                   
