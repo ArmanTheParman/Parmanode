@@ -1,3 +1,5 @@
+Version 3.25.3
+    -Import an existing Bitcoin Core insallation (binaries) to Parmanode
 Version 3.25.2
     -Import a fresh drive to Parmanode, use with existing Bitcoin installation
 Version 3.25.1
