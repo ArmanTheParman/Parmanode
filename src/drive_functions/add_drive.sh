@@ -58,7 +58,7 @@ if [[ $OS != Linux ]] ; then return 1 ; fi
 debug "test disk variable into make_linux_parmanode_drive, is...
     $disk
     If there is a partition number, that should not be removed
-    shold be in the format /dev/diskn
+    should be in the format /dev/diskn
 
     "
 ########################################################################################
