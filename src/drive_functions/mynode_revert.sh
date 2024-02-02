@@ -110,7 +110,8 @@ sudo umount $disk >/dev/null 2>&1
 sudo umount /media/$USER/parmanode* 2>&1
 sudo umount /media/$USER/parmanode 2>&1
 
-export $(sudo blkid -o export $disk) >/dev/null
+# can't export everything, need grep, becuase if Label has spaces, causes error.
+export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
 if grep -q $UUID < /etc/fstab ; then
 delete_line "/etc/fstab" "$UUID"
 fi

@@ -146,7 +146,9 @@ set_terminal ; echo "
 choose "x" ; read choice
 case $choice in 
 y|Y)
-export $(sudo blkid -o export $disk) >/dev/null
+# can't export everything, need grep, becuase if Label has spaces, causes error.
+export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
+export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
 delete_line "/etc/fstab" "parmanode"
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 break
@@ -221,7 +223,9 @@ echo -e "
 choose "x" ; read choice
 set_terminal
 case $choice in y|Y)
-export $(sudo blkid -o export $disk) >/dev/null
+# can't export everything, need grep, becuase if Label has spaces, causes error.
+export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
+export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
 delete_line "/etc/fstab" "parmanode"
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 break
@@ -254,7 +258,9 @@ sudo umount /media/$USER/parmanode* 2>&1
 sudo umount /media/$USER/parmanode 2>&1
 
 if ! grep -q parmanode < /etc/fstab ; then 
-    export $(sudo blkid -o export $disk) >/dev/null
+    # can't export everything, need grep, becuase if Label has spaces, causes error.
+    export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
+    export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
     echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 fi
 
