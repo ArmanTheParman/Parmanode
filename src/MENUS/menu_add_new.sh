@@ -13,6 +13,13 @@ else
 bitcoin_n="#$green                          b)           Bitcoin Core                                  $orange #"
 fi
 
+if [[ -z $bitcoin_n ]] ; then
+bitcoin_self="#                                                                                      #"
+menuaddnewbitcoin=false
+else
+bitcoin_self="#$bright_blue                          bs)          Import own Bitcoin Core                       $orange #"
+fi
+
 set_terminal_higher
 echo -e "
 ########################################################################################
@@ -37,14 +44,23 @@ read choice ; set_terminal
 
 case $choice in
 
-     B|b|bitcoin|Bitcoin)
+B|b|bitcoin|Bitcoin)
         if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 
         install_bitcoin
         return 0
         fi
         ;;
-     n|N|node|Node)
+
+bs|BS|Bs|bS)
+        if [[ -z $menuaddnewbitcoin ]] ; then
+        set_terminal 
+        import_bitcoin
+        return 0
+        fi
+        ;;
+
+n|N|node|Node)
         menu_add_node
         return 0
         ;;
