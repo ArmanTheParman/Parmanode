@@ -9,7 +9,7 @@ $cyan
 ########################################################################################
 
 
-      (parmy)    Import a drive from another Parmanode installation 
+      (parmy)    Import a Parmanode drive to use with Parmanode 
 
       (new)      Make a new external Parmanode drive (will be formatted)
 
