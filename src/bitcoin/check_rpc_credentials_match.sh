@@ -39,6 +39,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 if [[ -n $BRE_rpcuser ]] && [[ $BRE_rpcuser != $rpcuser || $BRE_rpcpassword != $rpcpassword ]] ; then
 program="BTC RPC Explorer"
@@ -77,6 +78,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 
 if [[ -n $LND_rpcuser ]] && [[ $LND_rpcuser != $rpcuser || $LND_rpcpassword != $rpcpassword ]] ; then
@@ -116,6 +118,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 
 if [[ -n $nbxplorer_rpcuser ]] && [[ $nbxplorer_rpcuser != $rpcuser || $nbxplorer_rpcpassword != $rpcpassword ]] ; then
@@ -155,6 +158,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 if [[ -n $electrs_rpcuser ]] && [[ $electrs_rpcuser != $rpcuser || $electrs_rpcpassword != $rpcpassword ]] ; then
 program="electrs"
@@ -193,6 +197,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 if [[ -n $fulcrum_rpcuser ]] && [[ $fulcrum_rpcuser != $rpcuser || $fulcrum_rpcpassword != $rpcpassword ]] ; then
 program="Fulcrum"
@@ -231,6 +236,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 
 if [[ -n $mempool_rpcuser ]] && [[ $mempool_rpcuser != $rpcuser || $mempool_rpcpassword != $rpcpassword ]] ; then
@@ -268,6 +274,7 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 
 if [[ -n $sparrow_rpcuser ]] && [[ $sparrow_rpcuser != $rpcuser || $sparrow_rpcpassword != $rpcpassword ]] ; then
 program="Sparrow Wallet"
@@ -302,4 +309,5 @@ break ;;
 invalid ;;
 esac 
 done
+fi
 }
