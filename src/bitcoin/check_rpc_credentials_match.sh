@@ -3,7 +3,7 @@ function check_rpc_credentials_match {
 source_rpc_global
 
 if [[ -n $BREdocker_rpcuser ]] && [[ $BREdocker_rpcuser != $rpcuser || $BREdocker_rpcpassword != $rpcpassword ]] ; then
-program="BTC RPC Explorer (Docker)"
+program="${cyan}BTC RPC Explorer (Docker)$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -42,7 +42,7 @@ done
 fi
 
 if [[ -n $BRE_rpcuser ]] && [[ $BRE_rpcuser != $rpcuser || $BRE_rpcpassword != $rpcpassword ]] ; then
-program="BTC RPC Explorer"
+program="${cyan}BTC RPC Explorer$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -82,7 +82,7 @@ fi
 
 
 if [[ -n $LND_rpcuser ]] && [[ $LND_rpcuser != $rpcuser || $LND_rpcpassword != $rpcpassword ]] ; then
-program="LND"
+program="${cyan}LND$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -122,7 +122,7 @@ fi
 
 
 if [[ -n $nbxplorer_rpcuser ]] && [[ $nbxplorer_rpcuser != $rpcuser || $nbxplorer_rpcpassword != $rpcpassword ]] ; then
-program="BTCPay Server"
+program="${cyan}BTCPay Server$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -161,7 +161,7 @@ done
 fi
 
 if [[ -n $electrs_rpcuser ]] && [[ $electrs_rpcuser != $rpcuser || $electrs_rpcpassword != $rpcpassword ]] ; then
-program="electrs"
+program="${cyan}electrs$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -200,7 +200,7 @@ done
 fi
 
 if [[ -n $fulcrum_rpcuser ]] && [[ $fulcrum_rpcuser != $rpcuser || $fulcrum_rpcpassword != $rpcpassword ]] ; then
-program="Fulcrum"
+program="${cyan}Fulcrum$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -240,7 +240,7 @@ fi
 
 
 if [[ -n $mempool_rpcuser ]] && [[ $mempool_rpcuser != $rpcuser || $mempool_rpcpassword != $rpcpassword ]] ; then
-program="Mempool Space"
+program="${cyan}Mempool Space$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -277,7 +277,7 @@ done
 fi
 
 if [[ -n $sparrow_rpcuser ]] && [[ $sparrow_rpcuser != $rpcuser || $sparrow_rpcpassword != $rpcpassword ]] ; then
-program="Sparrow Wallet"
+program="${cyan}Sparrow Wallet$orange"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

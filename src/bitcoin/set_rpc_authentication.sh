@@ -32,7 +32,7 @@ $orange
        (L)     Leave Bitcoin username and password unchanged 
 $red
        (c)     Use cookie ...(deletes password from bitcoin.conf) - DON'T
-
+$orange
 ########################################################################################
 
 "
