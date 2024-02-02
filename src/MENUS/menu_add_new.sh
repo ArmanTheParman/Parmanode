@@ -17,7 +17,7 @@ if [[ -z $bitcoin_n ]] ; then
 bitcoin_self="#                                                                                      #"
 menuaddnewbitcoin=false
 else
-bitcoin_self="#$bright_blue                          bs)          Import own Bitcoin Core                       $orange #"
+bitcoin_self="#$bright_blue                          bs)          Import own Bitcoin Core binaries              $orange #"
 fi
 
 set_terminal_higher
