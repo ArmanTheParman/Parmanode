@@ -30,6 +30,13 @@ return 0
 
 function choose {
 
+if [[ $1 == "xmq" ]]
+then
+echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$red (m)$yellow for main,$green (q)$yellow to quit. 
+ Then <enter> : $orange"
+return 0
+fi
+
 if [[ $1 == "xpmq" ]]
 then
 echo -e " ${yellow}Type your$cyan choice$yellow from above options, or:$cyan (p)$yellow for previous,$red (m)$yellow for main,$green (q)$yellow to quit. 

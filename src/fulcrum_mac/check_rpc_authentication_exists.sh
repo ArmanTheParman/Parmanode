@@ -6,10 +6,13 @@ unset rpcuser && unset rpcpassword
 source $HOME/.bitcoin/bitcoin.conf
 
 if [[ -z $rpcuser || -z $rpcpassword ]] ; then
-set_rpc_authentication
+announce "A Bitcoin username and pasword needs to be set in bitcoin.conf"
+clear
+set_rpc_authentication s fulcrum
+add_userpass_to_fulcrum
 else
 
-if [[ $OS == "Mac" ]] ; then edit_user_pass_fulcrum_docker ; fi
+edit_user_pass_fulcrum_docker #works on non-docker too.
 
 fi
 return 0
