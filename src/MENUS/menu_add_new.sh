@@ -7,10 +7,10 @@ unset bitcoin_n menuaddnewbitcoin
 menu_add_source
 
 if [[ -z $bitcoin_n ]] ; then
-bitcoin_n="#                                                                                      #"
+bitcoin_new="#                                                                                      #"
 menuaddnewbitcoin=false
 else
-bitcoin_n="#$green                          b)           Bitcoin Core                                  $orange #"
+bitcoin_new="#$green                          b)           Bitcoin Core                                  $orange #"
 fi
 
 if [[ -z $bitcoin_n ]] ; then
@@ -28,7 +28,7 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #"
-echo -e "${bitcoin_n}
+echo -e "${bitcoin_new}
 #                                                                                      #
 ${bitcoin_self}
 #                                                                                      #
