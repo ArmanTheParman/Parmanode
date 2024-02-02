@@ -2,12 +2,12 @@ function add_drive {
 
 info_add_drive $@ || return 1 # safe unmount executed
 
-set_terminal ; echo -e "$pink
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                       Automatic drive detection procedure ...
-
-    Please make sure the$green drive you want to bring in$pink is PHYSICALLY DISCONNECTED, 
+$orange
+    Please make sure the drive you want to bring in is$pink PHYSICALLY DISCONNECTED$orange, 
     i.e. detach the cable, before proceeding or you could get errors. 
 ########################################################################################
 $orange" ; enter_continue

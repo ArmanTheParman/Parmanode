@@ -24,7 +24,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode will stop bitcoin running with the command:
+    Parmanode will stop bitcoin running (if it's running) with the command:
    $green 
         bitcoin-cli stop
        $orange 
@@ -275,6 +275,7 @@ case $choice in
 unset bitcoin_drive_import && prune_choice && export bitcoin_drive_import=true
 #turn off switch and back on
 unset bitcoin_drive_import && make_bitcoin_conf && export bitcoin_drive_import=true
+break
 ;;
 2)
 break
