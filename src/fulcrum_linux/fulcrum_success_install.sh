@@ -1,10 +1,10 @@
 function fulcrum_success_install {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-    
+   $cyan 
                                     SUCCESS !!!
-
+$orange
     Fulcrum will begin running, but won't actually start syncing until Bitcoin has
     made some progress syncing itself.
 

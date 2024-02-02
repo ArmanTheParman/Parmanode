@@ -3,15 +3,15 @@ set_terminal
 
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-choose_and_prepare_drive "Fulcrum"
+choose_and_prepare_drive "Fulcrum" ; clear
 
-format_ext_drive "Fulcrum" || return 1
+format_ext_drive "Fulcrum" || return 1 ; clear
 
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
 make_fulcrum_config || return 1 ; log "fulcrum" "make config fucntion exited." 
 
-download_fulcrum || return 1 ; log "fulcrum" "Download exited." 
+download_fulcrum || return 1 ; log "fulcrum" "Download exited."  ; clear
 
 fulcrum_gpg || return 1 ; log "fulcrum" "gpg exited." 
 
