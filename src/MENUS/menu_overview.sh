@@ -138,15 +138,15 @@ else
     menub9=false
 fi
 
-1m=${yellow}1m$orange
-2m=${yellow}2m$orange
-3m=${yellow}3m$orange
-4m=${yellow}4m$orange
-5m=${yellow}5m$orange
-6m=${yellow}6m$orange
-7m=${yellow}7m$orange
-8m=${yellow}8m$orange
-9m=${yellow}9m$orange
+m1=${yellow}1m$orange
+m2=${yellow}2m$orange
+m3=${yellow}3m$orange
+m4=${yellow}4m$orange
+m5=${yellow}5m$orange
+m6=${yellow}6m$orange
+m7=${yellow}7m$orange
+m8=${yellow}8m$orange
+m9=${yellow}9m$orange
 
 set_terminal_wide #(110)
 echo -e "
@@ -155,23 +155,23 @@ echo -e "
 ##############################################################################################################
 
 
-  $1m)    Bitcoin                $r1               1s               $i1 
+  $m1)    Bitcoin                $r1               1s               $i1 
 
-  $2m)    LND                    $r2               2s               $i2
+  $m2)    LND                    $r2               2s               $i2
 
-  $3m)    Fulcrum                $r3               3s               $i3
+  $m3)    Fulcrum                $r3               3s               $i3
 
-  $4m)    Electrs (non Docker)   $r4               4s               $i4
+  $m4)    Electrs (non Docker)   $r4               4s               $i4
 
-  $5m)    Electrs (Docker)       $r8               5s               $i8
+  $m5)    Electrs (Docker)       $r8               5s               $i8
 
-  $6m)    BRE                    $r5               6s               $i5
+  $m6)    BRE                    $r5               6s               $i5
 
-  $7m)    BTCPay                 $r6               7s               $i6
+  $m7)    BTCPay                 $r6               7s               $i6
 
-  $8m)    RTL                    $r7               8s               $i7
+  $m8)    RTL                    $r7               8s               $i7
 
-  $9m)    Mempool                $r9               9s               $i9
+  $m9)    Mempool                $r9               9s               $i9
 
 
 ########################################################################################$bright_blue
