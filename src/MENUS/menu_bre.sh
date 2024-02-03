@@ -2,19 +2,7 @@ function menu_bre {
 set_terminal
 while true
 do
-unset output enabled output2 t_enabled menubrerunning
-
-#check if external connection is enabled
-unset enabled && enabled=$(cat $HOME/.parmanode/parmanode.conf | grep "bre_access" | cut -d = -f 2)
-
-#echo outputs for external connection
-unset output output2 output3
-if [[ $enabled == true && $computer_type = LinuxPC ]] ; then 
-output="    ACCESS THE PROGRAM FROM$red OTHER$orange COMPUTERS ON THE NETWORK:
-
-$green                   http://$IP:3003     (Note the port is 3003 not 3002)$orange
-                   "
-fi
+unset output output2 output3 t_enabled menubrerunning 
 
 if sudo cat /var/lib/tor/bre-service/hostname  2>&1 | grep -q onion ; then
 get_onion_address_variable "bre" >/dev/null 2>&1
