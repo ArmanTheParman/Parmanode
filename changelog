@@ -1,3 +1,5 @@
+Version 3.25.5
+    -Menu overview revamped
 Version 3.25.4
     -Coordinated rpc/password for bitcoin.conf for all other apps that use it.
     -Streamlined Fulcrum install code a little
