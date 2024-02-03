@@ -10,11 +10,10 @@ might be needed or prompted for: sudo apt-get update --fix-missing
 might be needed or prompted for: sudo apt-get autoremove
 optional: sudo apt install vim
 sudo systemctl start ssh
-Install Parmanode: curl https://github.com/armantheparman/parmanode.git
 run Parmanode...
 /home/$USER/parman_programs/parmanode/run_parmanode.sh
 Install ParmaShell with Parmanode (very conventient)
-Install Bitcoin, and choose option 1 to format drive when promted.
+Install Bitcoin, and choose option 1 to format drive when prompted.
 Install electrs (Docker or direct)
 Install BRE
 Install PiApps and us it to install Tor
