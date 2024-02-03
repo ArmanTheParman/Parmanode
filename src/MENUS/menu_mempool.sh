@@ -5,7 +5,7 @@ running="                           MEMPOOL IS$green    Running$orange"
 else
 running="                           MEMPOOL IS$red    Not Running$orange"
 fi
-unset ONION_ADDR_MEM tor_mempool tor_mempool_status
+unset ONION_ADDR_MEM tor_mempool tor_mempool_status output_tor
 debug "after unset"
 if sudo test -e /var/lib/tor/mempool-service ; then
 debug "var lib tor mempool-service if exists"
@@ -13,10 +13,17 @@ get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool=true
 get_onion_address_variable "fulcrum" >/dev/null
+output_tor=" Tor Access: $bright_blue    
+
+    Onion adress: $ONION_ADDR_MEM:8280 $orange   " 
 else
 tor_mempool=false
 tor_mempool_status="${red}disabled$orange"
+unset output_tor
 fi
+
+
+
 #get backend variable
 if grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "none" ; then
 backend="${yellow}Bitcoin Core$orange"
@@ -51,11 +58,9 @@ $running
     Access Mempool:
 $cyan
     http://127.0.0.1:8180
-    http://$IP:8180
-$orange
-    Tor Access: $bright_blue    
+    http://$IP:8180 $orange
 
-    Onion adress: $ONION_ADDR_MEM:8280 $orange           
+$output_tor
 
 ########################################################################################
 "
