@@ -206,7 +206,7 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
       ${red}r to refresh${orange}              |
                                 |
 ########################################################################################################
-$bright_blue Note: this is not a list of all apps available with Parmanode.                          
+$bright_blue Note: this is intentionally not a complete list of all apps available with Parmanode.
 "
 
 choose "xpmq"
