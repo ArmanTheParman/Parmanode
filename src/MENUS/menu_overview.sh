@@ -175,13 +175,13 @@ echo -e "
 
        Electrs (non Docker )    $m4              $r4                 $s4              $i4
 
-       Electrs (Docker)         $m5              $r5                 $s5              $i5
+       BRE                      $m5              $r5                 $s5              $i5
 
-       BRE                      $m6              $r6                 $s6              $i6
+       BTCPay                   $m6              $r6                 $s6              $i6
 
-       BTCPay                   $m7              $r7                 $s7              $i7
+       RTL                      $m7              $r7                 $s7              $i7
 
-       RTL                      $m8              $r8                 $s8              $i8
+       Electrs (Docker)         $m8              $r8                 $s8              $i8
 
        Mempool                  $m9              $r9                 $s9              $i9
 
