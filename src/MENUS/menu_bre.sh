@@ -1,4 +1,4 @@
-function menu_bre {
+function menu_bre_loop {
 set_terminal
 while true
 do
@@ -79,7 +79,17 @@ $green
 $output $output2
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq"
+}
+function menu_bre { 
+set_terminal
+while true ; do
+unset choice
+
+    while [[ -z $choice ]] ; do
+    menu_bre_loop
+    read -t 5 choice
+    done
 
 case $choice in
 m|M) back2main ;;
