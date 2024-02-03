@@ -105,8 +105,6 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.lnd/lnd.conf"
 stop_lnd
-delete_line "$file" "bitcoind.rpcpass"
-delete_line "$file" "bitcoind.rpcuser"
 swap_string "$file" "bitcoind.rpcpass" "bitcoind.rpcpass=$rpcpassword"
 swap_string "$file" "bitcoind.rpcuser" "bitcoind.rpcuser=$rpcuser"
 start_lnd
@@ -147,8 +145,8 @@ unset file && local file="$HOME/.nbxplorer/Main/settings.config"
 stop_btcpay
 delete_line "$file" "btc.rpc.user"
 delete_line "$file" "btc.rpc.password"
-echo "btc.rpc.user=$rpcuser" >> $file
-echo "btc.rpc.password=$rpcpassword" >> $file
+swap_string "$file" "btc.rpc.user" "btc.rpc.user=$rpcuser"
+swap_string "$file" "btc.rpc.password" "btc.rpc.password=$rpcpassword"
 start_btcpay
 break
 ;;
