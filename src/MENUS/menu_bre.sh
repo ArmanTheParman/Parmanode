@@ -66,9 +66,9 @@ echo -e "
                  (c)        Edit config file 
                                              
 
-    ACCESS THE PROGRAM FROM YOUR BROWSER ON THE PARMANODE COMPUTER:
+    ACCESS THE PROGRAM FROM YOUR BROWSER ON COMPUTERS WITHIN THE HOME NETWORK:
 $green
-            http://${IP}:3003    $pink -Note the different port, 3003, not 3002  $green
+            http://${IP}:${pink}3003 $green 
             http://localhost:3002    $white    -from this computer only          $green
             http://127.0.0.1:3002    $white    -from this computer only $orange
 
