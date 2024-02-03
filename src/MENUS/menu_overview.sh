@@ -167,7 +167,7 @@ echo -e "
 ##############################################################################################################
 
 
-       Bitcoin                  $m1              $r1                 $s1              $i1 
+       Bitcoin                  $m1              $r1                 $s1              $i1       
 
        LND                      $m2              $r2                 $s2              $i2
 
@@ -175,18 +175,18 @@ echo -e "
 
        Electrs (non Docker )    $m4              $r4                 $s4              $i4
 
-       Electrs (Docker)         $m5              $r8                 $s5              $i8
- 
-       BRE                      $m6              $r5                 $s6              $i5
+       Electrs (Docker)         $m5              $r5                 $s5              $i5
 
-       BTCPay                   $m7              $r6                 $s7              $i6
+       BRE                      $m6              $r6                 $s6              $i6
 
-       RTL                      $m8              $r7                 $s8              $i7
+       BTCPay                   $m7              $r7                 $s7              $i7
+
+       RTL                      $m8              $r8                 $s8              $i8
 
        Mempool                  $m9              $r9                 $s9              $i9
 
 ##############################################################################################################$bright_blue
- Note: this is not a list of all apps available with Parmanode.                        (${red}r$bright_blue to refresh)$orange
+ Note: this is not a list of all apps available with Parmanode.                             (${red}r$bright_blue to refresh)$orange
 "
 
 choose "xpmq"
