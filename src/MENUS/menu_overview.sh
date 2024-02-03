@@ -37,7 +37,7 @@ if grep -q bitcoin-end < $ic ; then
     menub1=false
     fi
 else
-    i1="${red}   N$orange"
+    i1="${red}    N$orange"
     r1="${red}N$orange"
     menub1=false
     unset m1 s1 r1
@@ -53,7 +53,7 @@ if grep -q lnd-end < $ic ; then
     menub2=false
     fi
 else
-    i2="${red}   N$orange"
+    i2="${red}    N$orange"
     r2="${red}N$orange"
     menub2=false
     unset m2 s2 r2
@@ -69,7 +69,7 @@ if grep -q fulcrum-end < $ic ; then
     menub3=false
     fi
 else
-    i3="${red}   N$orange"
+    i3="${red}    N$orange"
     r3="${red}N$orange"
     menub3=false
     unset m3 s3 r3
@@ -84,7 +84,7 @@ if grep -q electrs-end < $ic ; then
     menub4=false
     fi
 else
-    i4="${red}   N$orange"
+    i4="${red}    N$orange"
     r4="${red}N$orange"
     menub4=false
     unset m4 s4 r4
@@ -99,7 +99,7 @@ if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     menub5=false
     fi
 else
-    i5="${red}   N$orange"
+    i5="${red}    N$orange"
     r5="${red}N$orange"
     menub5=false
     unset m5 s5 r5
@@ -114,7 +114,7 @@ if grep -q btcpay-end < $ic ; then
     menub6=false
     fi
 else
-    i6="${red}   N$orange"
+    i6="${red}    N$orange"
     r6="${red}N$orange"
     menub6=false
     unset m6 s6 r6
@@ -129,7 +129,7 @@ if grep -q rtl-end < $ic ; then
     menub7=false
     fi
 else
-    i7="${red}   N$orange"
+    i7="${red}    N$orange"
     r7="${red}N$orange"
     menub7=false
     unset m7 s7 r7
@@ -145,7 +145,7 @@ if grep -q electrsdkr-end < $ic ; then
     menub8=false
     fi
 else
-    i8="${red}   N$orange"
+    i8="${red}    N$orange"
     r8="${red}N$orange"
     menub8=false
     unset m8 s8 r8
@@ -161,7 +161,7 @@ if grep -q mempool-end < $ic ; then
     menub9=false
     fi
 else
-    i9="${red}   N$orange"
+    i9="${red}    N$orange"
     r9="${red}N$orange"
     menub9=false
     unset m9 s9 r9
