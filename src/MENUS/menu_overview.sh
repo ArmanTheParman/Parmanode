@@ -7,6 +7,26 @@ source $oc >/dev/null 2>&1
 debug "line 7"
 set_terminal
 
+m1="${white}m1$orange"
+m2="${white}m2$orange"
+m3="${white}m3$orange"
+m4="${white}m4$orange"
+m5="${white}m5$orange"
+m6="${white}m6$orange"
+m7="${white}m7$orange"
+m8="${white}m8$orange"
+m9="${white}m9$orange"
+
+s1="${white}s1$orange"
+s2="${white}s2$orange"
+s3="${white}s3$orange"
+s4="${white}s4$orange"
+s5="${white}s5$orange"
+s6="${white}s6$orange"
+s7="${white}s7$orange"
+s8="${white}s8$orange"
+s9="${white}s9$orange"
+
 if grep -q bitcoin-end < $ic ; then
     i1="${green}Y$orange"
     if [[ $bitcoinrunning == true ]] ; then
@@ -138,25 +158,10 @@ else
     menub9=false
 fi
 
-m1="${white}m1$orange"
-m2="${white}m2$orange"
-m3="${white}m3$orange"
-m4="${white}m4$orange"
-m5="${white}m5$orange"
-m6="${white}m6$orange"
-m7="${white}m7$orange"
-m8="${white}m8$orange"
-m9="${white}m9$orange"
+for n in $(seq 1 9) ; do
+if [[ $menub$n == false ]] ; then unset m$n s$n r$n ; fi
+done
 
-s1="${white}s1$orange"
-s2="${white}s2$orange"
-s3="${white}s3$orange"
-s4="${white}s4$orange"
-s5="${white}s5$orange"
-s6="${white}s6$orange"
-s7="${white}s7$orange"
-s8="${white}s8$orange"
-s9="${white}s9$orange"
 
 x="$orange|$bright_blue"
 
