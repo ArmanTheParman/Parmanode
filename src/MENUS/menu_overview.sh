@@ -138,15 +138,27 @@ else
     menub9=false
 fi
 
-m1=${yellow}1m$orange
-m2=${yellow}2m$orange
-m3=${yellow}3m$orange
-m4=${yellow}4m$orange
-m5=${yellow}5m$orange
-m6=${yellow}6m$orange
-m7=${yellow}7m$orange
-m8=${yellow}8m$orange
-m9=${yellow}9m$orange
+m1="${yellow}1m$orange"
+m2="${yellow}2m$orange"
+m3="${yellow}3m$orange"
+m4="${yellow}4m$orange"
+m5="${yellow}5m$orange"
+m6="${yellow}6m$orange"
+m7="${yellow}7m$orange"
+m8="${yellow}8m$orange"
+m9="${yellow}9m$orange"
+
+s1="${yellow}s1$orange"
+s2="${yellow}s2$orange"
+s3="${yellow}s3$orange"
+s4="${yellow}s4$orange"
+s5="${yellow}s5$orange"
+s6="${yellow}s6$orange"
+s7="${yellow}s7$orange"
+s8="${yellow}s8$orange"
+s9="${yellow}s9$orange"
+
+
 
 set_terminal_wide #(110)
 echo -e "
@@ -155,23 +167,23 @@ echo -e "
 ##############################################################################################################
 
 
-  $m1)    Bitcoin                $r1               1s               $i1 
+  $m1     Bitcoin                $r1               $s1              $i1 
 
-  $m2)    LND                    $r2               2s               $i2
+  $m2     LND                    $r2               $s2              $i2
 
-  $m3)    Fulcrum                $r3               3s               $i3
+  $m3     Fulcrum                $r3               $s3              $i3
 
-  $m4)    Electrs (non Docker)   $r4               4s               $i4
+  $m4     Electrs (non Docker)   $r4               $s4              $i4
 
-  $m5)    Electrs (Docker)       $r8               5s               $i8
+  $m5     Electrs (Docker)       $r8               $s5              $i8
 
-  $m6)    BRE                    $r5               6s               $i5
+  $m6     BRE                    $r5               $s6              $i5
 
-  $m7)    BTCPay                 $r6               7s               $i6
+  $m7     BTCPay                 $r6               $s7              $i6
 
-  $m8)    RTL                    $r7               8s               $i7
+  $m8     RTL                    $r7               $s8              $i7
 
-  $m9)    Mempool                $r9               9s               $i9
+  $m9     Mempool                $r9               $s9              $i9
 
 
 ########################################################################################$bright_blue
