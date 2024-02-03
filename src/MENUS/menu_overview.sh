@@ -163,27 +163,27 @@ s9="${yellow}s9$orange"
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-         PROGRAM             RUNNING          START/STOP        INSTALLED   $orange
+       PROGRAM              GO TO MENU        RUNNING         START/STOP      INSTALLED   $orange
 ##############################################################################################################
 
 
-  $m1     Bitcoin                $r1               $s1              $i1 
+       Bitcoin                 $m1              $r1             $s1              $i1 
 
-  $m2     LND                    $r2               $s2              $i2
+       LND                     $m2              $r2             $s2              $i2
 
-  $m3     Fulcrum                $r3               $s3              $i3
+       Fulcrum                 $m3              $r3             $s3              $i3
 
-  $m4     Electrs (non Docker)   $r4               $s4              $i4
+       Electrs (non Docker)    $m4              $r4             $s4              $i4
 
-  $m5     Electrs (Docker)       $r8               $s5              $i8
+       Electrs (Docker)        $m5              $r8             $s5              $i8
 
-  $m6     BRE                    $r5               $s6              $i5
+       BRE                     $m6              $r5             $s6              $i5
 
-  $m7     BTCPay                 $r6               $s7              $i6
+       BTCPay                  $m7              $r6             $s7              $i6
 
-  $m8     RTL                    $r7               $s8              $i7
+       RTL                     $m8              $r7             $s8              $i7
 
-  $m9     Mempool                $r9               $s9              $i9
+       Mempool                 $m9              $r9             $s9              $i9
 
 
 ########################################################################################$bright_blue
