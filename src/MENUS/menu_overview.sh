@@ -8,119 +8,145 @@ debug "line 7"
 set_terminal
 
 if grep -q bitcoin-end < $ic ; then
+    i1="${green}Y$orange"
     if [[ $bitcoinrunning == true ]] ; then
-    b1="${green}Y$orange                (bs)               ${green}Y$orange"
+    r1="${green}Y$orange"
     menub1=true
     else
-    b1="${red}N$orange                (bs)               ${green}Y$orange"
+    r1="${red}N$orange"
     menub1=false
     fi
 else
-    b1="${red}N$orange                                   ${red}N$orange"
+    i1="${red}N$orange"
+    r1="${red}N$orange"
     menub1=false
 fi
 
 if grep -q lnd-end < $ic ; then
+    i2="${green}Y$orange"
     if [[ $lndrunning == true ]] ; then
-    b2="${green}Y$orange                (ls)               ${green}Y$orange"
+    r2="${green}Y$orange"
     menub2=true
     else
-    b2="${red}N$orange                (ls)               ${green}Y$orange"
+    r2="${red}N$orange"
     menub2=false
     fi
 else
-    b2="${red}N$orange                                   ${red}N$orange"
+    i2="${red}N$orange"
+    r2="${red}N$orange"
     menub2=false
 fi
 
 if grep -q fulcrum-end < $ic ; then
+    i3="${green}Y$orange"
     if [[ $fulcrumrunning == true ]] ; then
-    b3="${green}Y$orange                (fs)               ${green}Y$orange"
+    r3="${green}Y$orange"
     menub3=true
     else
-    b3="${red}N$orange                (fs)               ${green}Y$orange"
+    r3="${red}N$orange"
     menub3=false
     fi
 else
-    b3="${red}N$orange                                   ${red}N$orange"
+    i3="${red}N$orange"
+    r3="${red}N$orange"
     menub3=false
 fi 
 if grep -q electrs-end < $ic ; then
+    i4="${green}Y$orange"
     if [[ $electrsrunning == true ]] ; then
-    b4="${green}Y$orange                (es)               ${green}Y$orange"
+    r4="${green}Y$orange"
     menub4=true
     else
-    b4="${red}N$orange                (es)               ${green}Y$orange"
+    r4="${red}N$orange"
     menub4=false
     fi
 else
-    b4="${red}N$orange                                   ${red}N$orange"
+    i4="${red}N$orange"
+    r4="${red}N$orange"
     menub4=false
 fi
 if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
+    i5="${green}Y$orange"
     if [[ $brerunning == true ]] ; then
-    b5="${green}Y$orange                (brs)              ${green}Y$orange"
+    r5="${green}Y$orange"
     menub5=true
     else
-    b5="${red}N$orange                (brs)              ${green}Y$orange"
+    r5="${red}N$orange"
     menub5=false
     fi
 else
-    b5="${red}N$orange                                   ${red}N$orange"
+    i5="${red}N$orange"
+    r5="${red}N$orange"
     menub5=false
 fi
 if grep -q btcpay-end < $ic ; then
+    i6="${green}Y$orange"
     if [[ $btcpayrunning == true ]] ; then
-    b6="${green}Y$orange                (bps)              ${green}Y$orange"
+    r6="${green}Y$orange"
     menub6=true
     else
-    b6="${red}N$orange                (bps)              ${green}Y$orange"
+    r6="${red}N$orange"
     menub6=false
     fi
 else
-    b6="${red}N$orange                                   ${red}N$orange"
+    i6="${red}N$orange"
+    r6="${red}N$orange"
     menub6=false
 fi
 if grep -q rtl-end < $ic ; then
+    i7="${green}Y$orange"
     if [[ $rtlrunning == true ]] ; then
-    b7="${green}Y$orange                (rs)               ${green}Y$orange"
+    r7="${green}Y$orange"
     menub7=true
     else
-    b7="${red}N$orange                (rs)               ${green}Y$orange"
+    r7="${red}N$orange"
     menub7=false
     fi
 else
-    b7="${red}N$orange                                   ${red}N$orange"
+    i7="${red}N$orange"
+    r7="${red}N$orange"
     menub7=false
 fi
 
 if grep -q electrsdkr-end < $ic ; then
+    i8="${green}Y$orange"
     if [[ $electrsdkrrunning == true ]] ; then
-    b8="${green}Y$orange                (ed)               ${green}Y$orange"
+    r8="${green}Y$orange"
     menub8=true
     else
-    b8="${red}N$orange                (ed)               ${green}Y$orange"
+    r8="${red}N$orange"
     menub8=false
     fi
 else
-    b8="${red}N$orange                                   ${red}N$orange"
+    i8="${red}N$orange"
+    r8="${red}N$orange"
     menub8=false
 fi
 
 if grep -q mempool-end < $ic ; then
+    i9="${green}Y$orange"
     if [[ $mempoolrunning == true ]] ; then
-    b9="${green}Y$orange                (mem)              ${green}Y$orange"
+    r9="${green}Y$orange"
     menub9=true
     else
-    b9="${red}N$orange                (mem)              ${green}Y$orange"
+    r9="${red}N$orange"
     menub9=false
     fi
 else
-    b9="${red}N$orange                                   ${red}N$orange"
+    i9="${red}N$orange"
+    r9="${red}N$orange"
     menub9=false
 fi
 
-
+1m=${yellow}1m$orange
+2m=${yellow}2m$orange
+3m=${yellow}3m$orange
+4m=${yellow}4m$orange
+5m=${yellow}5m$orange
+6m=${yellow}6m$orange
+7m=${yellow}7m$orange
+8m=${yellow}8m$orange
+9m=${yellow}9m$orange
 
 set_terminal_wide #(110)
 echo -e "
@@ -129,23 +155,23 @@ echo -e "
 ##############################################################################################################
 
 
-  1)    Bitcoin                $b1
+  $1m)    Bitcoin                $r1               1s               $i1 
 
-  2)    LND                    $b2
+  $2m)    LND                    $r2               2s               $i2
 
-  3)    Fulcrum                $b3
+  $3m)    Fulcrum                $r3               3s               $i3
 
-  4)    Electrs (non Docker)   $b4
+  $4m)    Electrs (non Docker)   $r4               4s               $i4
 
-  5)    Electrs (Docker)       $b8
+  $5m)    Electrs (Docker)       $r8               5s               $i8
 
-  6)    BRE                    $b5
+  $6m)    BRE                    $r5               6s               $i5
 
-  7)    BTCPay                 $b6
+  $7m)    BTCPay                 $r6               7s               $i6
 
-  8)    RTL                    $b7
+  $8m)    RTL                    $r7               8s               $i7
 
-  9)    Mempool                $b9
+  $9m)    Mempool                $r9               9s               $i9
 
 
 ########################################################################################$bright_blue
