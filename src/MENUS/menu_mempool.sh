@@ -15,7 +15,7 @@ tor_mempool=true
 get_onion_address_variable "fulcrum" >/dev/null
 output_tor=" Tor Access: $bright_blue    
 
-    Onion adress: $ONION_ADDR_MEM:8280 $orange   " 
+    $ONION_ADDR_MEM:8280 $orange   " 
 else
 tor_mempool=false
 tor_mempool_status="${red}disabled$orange"
