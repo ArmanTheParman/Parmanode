@@ -6,7 +6,7 @@ git clone --depth 1 https://github.com/Botspot/pi-apps
 installed_conf_add "piapps-start"
 cd pi-apps
 ./install
-installed_conf_add "piassps-end"
+installed_conf_add "piapps-end"
 success "PiApps" "being installed"
 echo -e "
 ########################################################################################
