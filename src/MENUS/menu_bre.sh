@@ -2,7 +2,7 @@ function menu_bre {
 set_terminal
 while true
 do
-unset output output2 output3 t_enabled menubrerunning 
+unset output output2 output3 t_enabled menubrerunning torstatus
 
 if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion ; then
 get_onion_address_variable "bre" 
@@ -13,7 +13,9 @@ output2="
                    $orange
                    "
 t_enabled=true
+torstatus="${green}Enabled$orange"
 else
+torstatus="${red}Disabled$orange"
 t_enabled=false
 fi
 set_terminal_high
@@ -61,7 +63,7 @@ echo -e "
 
                  (restart)  Restart BTC RPC EXPLORER 
 
-                 (t)        Enable/Disable access via Tor (Linux Only)
+                 (t)        Enable/Disable access via Tor (Linux Only)  $torstatus
 
                  (c)        Edit config file 
                                              
