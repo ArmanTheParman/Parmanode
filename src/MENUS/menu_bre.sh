@@ -1,7 +1,5 @@
 function menu_bre_loop {
 set_terminal
-while true
-do
 unset output output2 output3 t_enabled menubrerunning torstatusD torstatusE
 
 if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion ; then
@@ -122,6 +120,5 @@ c|C)
 if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ;  fi 
 esac
-done
 }
 
