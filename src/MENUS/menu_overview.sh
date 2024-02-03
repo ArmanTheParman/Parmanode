@@ -108,14 +108,14 @@ fi
 
 if grep -q mempool-end < $ic ; then
     if [[ $mempoolrunning == true ]] ; then
-    b8="${green}Y$orange                (mem)              ${green}Y$orange"
+    b9="${green}Y$orange                (mem)              ${green}Y$orange"
     menu9=true
     else
     b9="${red}N$orange                (mem)              ${green}Y$orange"
     menub9=false
     fi
 else
-    b8="${red}N$orange                                   ${red}N$orange"
+    b9="${red}N$orange                                   ${red}N$orange"
     menub9=false
 fi
 
