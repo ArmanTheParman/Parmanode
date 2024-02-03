@@ -214,18 +214,17 @@ r)
 menu_overview
 ;;
 
-$m1) 
-menu_bitcoin ;;
-$m2) menu_lnd     ;;
-$m3) menu_fulcrum ;;
-$m4) menu_electrs ;;
-$m5) menu_bre     ;;
-$m6) menu_btcpay  ;;
-$m7) menu_rtl     ;;
-$m8) menu_electrs_docker ;;
-$m9) menu_mempool ;;
+m1) menu_bitcoin ;;
+m2) menu_lnd     ;;
+m3) menu_fulcrum ;;
+m4) menu_electrs ;;
+m5) menu_bre     ;;
+m6) menu_btcpay  ;;
+m7) menu_rtl     ;;
+m8) menu_electrs_docker ;;
+m9) menu_mempool ;;
 
-$s1) 
+s1) 
 if [[ $menub1 == true ]] ; then
 clear ; please_wait
 stop_bitcoind
@@ -234,7 +233,7 @@ clear ; please_wait
 run_bitcoind
 fi
 ;;
-$s2) 
+s2) 
 if [[ $menub2 == true ]] ; then
 clear ; please_wait
 stop_lnd
@@ -243,7 +242,7 @@ clear ; please_wait
 start_lnd
 fi
 ;;
-$s3) 
+s3) 
 if [[ $menub3 == true ]] ; then
 set_terminal
 echo "Fulcrum stopping..."
@@ -259,7 +258,7 @@ if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi
 set_terminal
 fi
 ;;
-$s4) 
+s4) 
 if [[ $menub4 == true ]] ; then
 clear ; please_wait
 stop_electrs
@@ -269,7 +268,7 @@ start_electrs
 sleep 1
 fi
 ;;
-$s5) 
+s5) 
 if [[ $menub5 == true ]] ; then
 clear ; please_wait
 if [[ $computer_type == LinuxPC ]] ; then stop_bre ; fi
@@ -280,7 +279,7 @@ if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
 fi
 ;;
-$s6) 
+s6) 
 if [[ $menub6 == true ]] ; then
 clear ; please_wait
 stop_btcpay
@@ -289,7 +288,7 @@ clear ; please_wait
 start_btcpay
 fi
 ;;
-$s7) 
+s7) 
 if [[ $menub7 == true ]] ; then
 clear ; please_wait
 docker stop rtl
@@ -298,7 +297,7 @@ clear ; please_wait
 docker start rtl
 fi
 ;;
-$s8) 
+s8) 
 if [[ $menub8 == true ]] ; then
 clear ; please_wait
 docker_stop_electrs
@@ -308,7 +307,7 @@ docker_start_electrs
 fi
 ;;
 
-$s9)
+s9)
 if [[ $menub9 == true ]] ; then
 clear ; please_wait
 stop_mempool
