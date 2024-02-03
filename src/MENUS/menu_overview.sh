@@ -159,7 +159,7 @@ else
 fi
 
 for n in $(seq 1 9) ; do
-if [[ $menub$n == false ]] ; then unset m$n s$n r$n ; fi
+if [[ $menub$n == false ]] ; then unset "m$n" "s$n" "r$n" ; fi
 done
 
 
