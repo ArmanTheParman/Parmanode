@@ -163,7 +163,7 @@ s9="${white}s9$orange"
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-       PROGRAM              GO TO MENU          RUNNING         START/STOP        INSTALLED   $orange
+       PROGRAM              GO TO MENU         RUNNING          START/STOP        INSTALLED   $orange
 ##############################################################################################################
 
 
