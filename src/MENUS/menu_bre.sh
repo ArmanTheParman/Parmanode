@@ -1,15 +1,14 @@
 function menu_bre_loop {
 set_terminal
-unset output output2 output3 t_enabled menubrerunning torstatusD torstatusE
+unset output t_enabled menubrerunning torstatusD torstatusE
 
 if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion ; then
 get_onion_address_variable "bre" 
-output2=" 
+output=" 
     ACCESS VIA TOR FROM ANYWHERE IN THE WORLD USING THE FOLLOWING ONION ADDRESS:
                    $bright_blue
             $ONION_ADDR_BRE:3004
-                   $orange
-                   "
+                   $orange"
 t_enabled=true
 torstatusE="${green}Enabled$orange"
 else
@@ -74,8 +73,8 @@ $green
             http://localhost:3002    $white    -from this computer only          $green
             http://127.0.0.1:3002    $white    -from this computer only $orange
 
-$output $output2
-                                               $red Screen refreshing every 5 seconds $orange
+$output
+                                                      $red Screen refreshing every 5 seconds $orange
 ########################################################################################
 "
 choose "xpmq"
