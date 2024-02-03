@@ -163,27 +163,27 @@ s9="${white}s9$orange"
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-       PROGRAM              GO TO MENU         RUNNING         START/STOP        INSTALLED   $orange
+       PROGRAM              GO TO MENU          RUNNING         START/STOP        INSTALLED   $orange
 ##############################################################################################################
 
 
-       Bitcoin                  $m1               $r1                 $s1                $i1       
+       Bitcoin                  $m1                $r1                 $s1                $i1       
 
-       LND                      $m2               $r2                 $s2                $i2
+       LND                      $m2                $r2                 $s2                $i2
 
-       Fulcrum                  $m3               $r3                 $s3                $i3
+       Fulcrum                  $m3                $r3                 $s3                $i3
 
-       Electrs (non Docker )    $m4               $r4                 $s4                $i4
+       Electrs (non Docker )    $m4                $r4                 $s4                $i4
 
-       BRE                      $m5               $r5                 $s5                $i5
+       BRE                      $m5                $r5                 $s5                $i5
 
-       BTCPay                   $m6               $r6                 $s6                $i6
+       BTCPay                   $m6                $r6                 $s6                $i6
 
-       RTL                      $m7               $r7                 $s7                $i7
+       RTL                      $m7                $r7                 $s7                $i7
 
-       Electrs (Docker)         $m8               $r8                 $s8                $i8
+       Electrs (Docker)         $m8                $r8                 $s8                $i8
 
-       Mempool                  $m9               $r9                 $s9                $i9
+       Mempool                  $m9                $r9                 $s9                $i9
 
 ##############################################################################################################$bright_blue
  Note: this is not a list of all apps available with Parmanode.                             (${red}r$bright_blue to refresh)$orange
