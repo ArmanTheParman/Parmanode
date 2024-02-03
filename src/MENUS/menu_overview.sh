@@ -214,7 +214,8 @@ r)
 menu_overview
 ;;
 
-$m1) menu_bitcoin ;;
+$m1) 
+menu_bitcoin ;;
 $m2) menu_lnd     ;;
 $m3) menu_fulcrum ;;
 $m4) menu_electrs ;;
