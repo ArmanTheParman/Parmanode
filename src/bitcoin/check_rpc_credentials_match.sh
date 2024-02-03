@@ -105,10 +105,10 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.lnd/lnd.conf"
 stop_lnd
-delete_line "$file" "bitcoind.rpcuser"
 delete_line "$file" "bitcoind.rpcpass"
-echo "bitcoind.rpcpass=$rpcpassword" >> $file
-echo "bitcoind.rpcuser=$rpcuser" >> $file
+delete_line "$file" "bitcoind.rpcuser"
+swap_string "$file" "bitcoind.rpcpass" "bitcoind.rpcpass=$rpcpassword"
+swap_string "$file" "bitcoind.rpcuser" "bitcoind.rpcuser=$rpcuser"
 start_lnd
 break
 ;;
