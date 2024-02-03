@@ -26,10 +26,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/parmanode/bre/.env"
 bre_docker_stop
-delete_line "$file" "BTCEXP_BITCOIND_USER"
-delete_line "$file" "BTCEXP_BITCOIND_PASS"
-echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file
-echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file
+swap_string "$file" "BTCEXP_BITCOIND_USER" "BTCEXP_BITCOIND_USER=$rpcuser"
+swap_string "$file" "BTCEXP_BITCOIND_PASS" "BTCEXP_BITCOIND_PASS=$rpcpassword"
 bre_docker_start
 break
 ;;
@@ -65,10 +63,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/parmanode/btc-rpc-explorer/.env"
 stop_bre
-delete_line "$file" "BTCEXP_BITCOIND_USER"
-delete_line "$file" "BTCEXP_BITCOIND_PASS"
-echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file
-echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file
+swap_string "$file" "BTCEXP_BITCOIND_USER" "BTCEXP_BITCOIND_USER=$rpcuser" 
+swap_string "$file" "BTCEXP_BITCOIND_PASS" "BTCEXP_BITCOIND_PASS=$rpcpassword"
 restart_bre
 break
 ;;
@@ -143,9 +139,7 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.nbxplorer/Main/settings.config"
 stop_btcpay
-delete_line "$file" "btc.rpc.user"
-delete_line "$file" "btc.rpc.password"
-swap_string "$file" "btc.rpc.user" "btc.rpc.user=$rpcuser"
+swap_string "$file" "btc.rpc.user"     "btc.rpc.user=$rpcuser"
 swap_string "$file" "btc.rpc.password" "btc.rpc.password=$rpcpassword"
 start_btcpay
 break
@@ -183,8 +177,7 @@ y)
 unset file && local file="$HOME/.electrs/config.toml"
 if grep -q "electrs-end" < $ic ; then stop_electrs ; fi
 if grep -q "electrsdkr-end" < $ic ; then stop_electrs ; fi
-delete_line "$file" "auth"
-echo "auth = \"$rpcuser:$rpcpassword\"" >> $file
+swap_string "$file" "auth" "auth = \"$rpcuser:$rpcpassword\""
 if grep -q "electrs-end" < $ic ; then start_electrs ; fi
 if grep -q "electrsdkr-end" <$ic ; then docker_start_electrs ; fi
 break
@@ -221,10 +214,8 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$hp/fulcrum/fulcrum.conf"
 stop_fulcrum
-delete_line "$file" "rpcuser"
-delete_line "$file" "rpcpassword"
-echo "rpcuser = $rpcuser" >> $file
-echo "rpcpassword = $rpcpassword" >> $file
+swap_string "$file" "rpcuser" "rpcuser = $rpcuser"
+swap_string "$file" "rpcpassword" "rpcpassword = $rpcpassword"
 start_fulcrum
 break
 ;;
