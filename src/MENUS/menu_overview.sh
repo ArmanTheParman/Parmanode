@@ -203,7 +203,7 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
       Mempool                   |                $m9                $r9                $s9
                                 |
                                 |
-      ${red}r${bright_blue} to refresh${orange}              |
+      ${red}r to refresh${orange}              |
                                 |
 ########################################################################################################
 $bright_blue Note: this is not a list of all apps available with Parmanode.                          
