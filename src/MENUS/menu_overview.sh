@@ -40,6 +40,7 @@ else
     i1="${red}N$orange"
     r1="${red}N$orange"
     menub1=false
+    unset m1 s1 r1
 fi
 
 if grep -q lnd-end < $ic ; then
@@ -55,6 +56,7 @@ else
     i2="${red}N$orange"
     r2="${red}N$orange"
     menub2=false
+    unset m2 s2 r2
 fi
 
 if grep -q fulcrum-end < $ic ; then
@@ -70,6 +72,7 @@ else
     i3="${red}N$orange"
     r3="${red}N$orange"
     menub3=false
+    unset m3 s3 r3
 fi 
 if grep -q electrs-end < $ic ; then
     i4="${green}Y$orange"
@@ -84,6 +87,7 @@ else
     i4="${red}N$orange"
     r4="${red}N$orange"
     menub4=false
+    unset m4 s4 r4
 fi
 if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     i5="${green}Y$orange"
@@ -98,6 +102,7 @@ else
     i5="${red}N$orange"
     r5="${red}N$orange"
     menub5=false
+    unset m5 s5 r5
 fi
 if grep -q btcpay-end < $ic ; then
     i6="${green}Y$orange"
@@ -112,6 +117,7 @@ else
     i6="${red}N$orange"
     r6="${red}N$orange"
     menub6=false
+    unset m6 s6 r6
 fi
 if grep -q rtl-end < $ic ; then
     i7="${green}Y$orange"
@@ -126,6 +132,7 @@ else
     i7="${red}N$orange"
     r7="${red}N$orange"
     menub7=false
+    unset m7 s7 r7
 fi
 
 if grep -q electrsdkr-end < $ic ; then
@@ -141,6 +148,7 @@ else
     i8="${red}N$orange"
     r8="${red}N$orange"
     menub8=false
+    unset m8 s8 r8
 fi
 
 if grep -q mempool-end < $ic ; then
@@ -156,17 +164,9 @@ else
     i9="${red}N$orange"
     r9="${red}N$orange"
     menub9=false
+    unset m9 s9 r9
 fi
 
-if [[ $menub1 == false ]] ; then unset m1 s1 r1 ; fi
-if [[ $menub2 == false ]] ; then unset m2 s2 r2 ; fi
-if [[ $menub3 == false ]] ; then unset m3 s3 r3 ; fi
-if [[ $menub4 == false ]] ; then unset m4 s4 r4 ; fi
-if [[ $menub5 == false ]] ; then unset m5 s5 r5 ; fi
-if [[ $menub6 == false ]] ; then unset m6 s6 r6 ; fi
-if [[ $menub7 == false ]] ; then unset m7 s7 r7 ; fi
-if [[ $menub8 == false ]] ; then unset m8 s8 r8 ; fi
-if [[ $menub9 == false ]] ; then unset m9 s9 r9 ; fi
 
 x="$orange|$bright_blue"
 
