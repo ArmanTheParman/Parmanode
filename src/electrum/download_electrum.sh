@@ -9,7 +9,7 @@ clear ; echo -e "
     Parmanode will download version $electrum_version for you.
 
     If you prefer my favourite version,$cyan v4.4.4$orange, then type 'old' then <enter>, 
-    otherwise anything else and <enter> to have the later version.
+    otherwise anything else and$green <enter>$orange to have the later version.
 
 ########################################################################################
 "
