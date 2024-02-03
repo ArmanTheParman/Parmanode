@@ -167,10 +167,10 @@ if [[ $menub2 == false ]] ; then unset m2 s2 r2 ; fi
 if [[ $menub3 == false ]] ; then unset m3 s3 r3 ; fi
 if [[ $menub4 == false ]] ; then unset m4 s4 r4 ; fi
 if [[ $menub5 == false ]] ; then unset m5 s5 r5 ; fi
-if [[ $menub1 == false ]] ; then unset m6 s6 r6 ; fi
-if [[ $menub1 == false ]] ; then unset m7 s7 r7 ; fi
-if [[ $menub1 == false ]] ; then unset m8 s8 r8 ; fi
-if [[ $menub1 == false ]] ; then unset m9 s9 r9 ; fi
+if [[ $menub6 == false ]] ; then unset m6 s6 r6 ; fi
+if [[ $menub7 == false ]] ; then unset m7 s7 r7 ; fi
+if [[ $menub8 == false ]] ; then unset m8 s8 r8 ; fi
+if [[ $menub9 == false ]] ; then unset m9 s9 r9 ; fi
 
 x="$orange|$bright_blue"
 
