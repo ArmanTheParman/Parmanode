@@ -65,6 +65,8 @@ echo -e "
                  (td)       Disable access via Tor (Linux Only)  $torstatusE
 
                  (c)        Edit config file 
+
+                 (log)      View log file (journalctl)
                                              
 
     ACCESS THE PROGRAM FROM YOUR BROWSER ON COMPUTERS WITHIN THE HOME NETWORK:
@@ -121,6 +123,40 @@ fi
 c|C)
 if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rpc-explorer/.env ;  fi 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ;  fi 
+;;
+
+log|LOG|Log)
+
+if [[ $OS == Mac ]] ; then
+    no_mac
+    continue
+fi
+
+set_terminal ; log_counter
+if [[ $log_count -le 15 ]] ; then
+echo "
+########################################################################################
+    
+    This will show the bre journalctl output in real time as it populates.
+    
+    You can hit <control>-c to make it stop.
+
+########################################################################################
+"
+enter_continue
+fi
+
+if [[ $OS == "Linux" ]] ; then
+    set_terminal_wider
+    journalctl -fexu btcrpcexplorer.service &
+    tail_PID=$!
+    trap 'kill $tail_PID' SIGINT #condition added to memory
+    wait $tail_PID # code waits here for user to control-c
+    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    set_terminal
+    continue
+fi
+;;
 esac
 done
 }
