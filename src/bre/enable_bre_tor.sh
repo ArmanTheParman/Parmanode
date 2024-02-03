@@ -48,11 +48,17 @@ if sudo grep "HiddenServicePort 3004 127.0.0.1:3002" \
 
 sudo systemctl restart tor
 restart_bre 
-get_onion_address_variable "bre" >/dev/null 2>&1
+get_onion_address_variable "bre" 
 clear
-echo "    Changes have been made to torrc file"
-echo "    Tor has been restarted."
-echo ""
+echo -e "
+########################################################################################
+
+    Changes have been made to the torrc file to create/enable a hidden service
+    for BRE. Please give it a few moments to work - initially, it may still appear
+    disabled, but give it a minute.
+
+########################################################################################
+"
 enter_continue
 }
 
