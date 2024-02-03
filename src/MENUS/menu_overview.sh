@@ -158,10 +158,6 @@ else
     menub9=false
 fi
 
-for n in $(seq 1 9) ; do
-if [[ $menub$n == false ]] ; then unset "m$n" "s$n" "r$n" ; fi
-done
-
 if [[ $menub1 == false ]] ; then unset m1 s1 r1 ; fi
 if [[ $menub2 == false ]] ; then unset m2 s2 r2 ; fi
 if [[ $menub3 == false ]] ; then unset m3 s3 r3 ; fi
