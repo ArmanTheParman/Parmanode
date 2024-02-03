@@ -96,7 +96,7 @@ if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_restart ; fi
 ;;
 t|T|TOR|tor|Tor)
 if [[ $OS == Linux ]] ; then 
-   if [[ $t_enabled == false ]] ; then enable_bre_tor 
+   if [[ $t_enabled == false ]] ; then enable_bre_tor ; debug "after enable bre tor"
    else disable_bre_tor
    fi
 fi
