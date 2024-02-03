@@ -7,7 +7,7 @@ unset output output2 output3 t_enabled menubrerunning
 if sudo cat /var/lib/tor/bre-service/hostname  2>&1 | grep -q onion ; then
 get_onion_address_variable "bre" >/dev/null 2>&1
 output2=" 
-    ACCESS VIA TOR FROM THE FOLLOWING ONION ADDRESS
+    ACCESS VIA TOR FROM ANYWHERE IN THE WORLD USING THE FOLLOWING ONION ADDRESS:
                    $bright_blue
             $ONION_ADDR_BRE:3004
                    $orange
