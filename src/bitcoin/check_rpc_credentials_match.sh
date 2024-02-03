@@ -186,7 +186,7 @@ unset file && local file="$HOME/.electrs/config.toml"
 if grep -q "electrs-end" < $ic ; then stop_electrs ; fi
 if grep -q "electrsdkr-end" < $ic ; then stop_electrs ; fi
 delete_line "$file" "auth"
-echo "auth = $rpcuser:$rpcpassword" >> $file
+echo "auth = \"$rpcuser:$rpcpassword\"" >> $file
 if grep -q "electrs-end" < $ic ; then start_electrs ; fi
 if grep -q "electrsdkr-end" <$ic ; then docker_start_electrs ; fi
 break
