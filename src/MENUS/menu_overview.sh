@@ -138,52 +138,52 @@ else
     menub9=false
 fi
 
-m1="${yellow}1m$orange"
-m2="${yellow}2m$orange"
-m3="${yellow}3m$orange"
-m4="${yellow}4m$orange"
-m5="${yellow}5m$orange"
-m6="${yellow}6m$orange"
-m7="${yellow}7m$orange"
-m8="${yellow}8m$orange"
-m9="${yellow}9m$orange"
+m1="${white}1m$orange"
+m2="${white}2m$orange"
+m3="${white}3m$orange"
+m4="${white}4m$orange"
+m5="${white}5m$orange"
+m6="${white}6m$orange"
+m7="${white}7m$orange"
+m8="${white}8m$orange"
+m9="${white}9m$orange"
 
-s1="${yellow}s1$orange"
-s2="${yellow}s2$orange"
-s3="${yellow}s3$orange"
-s4="${yellow}s4$orange"
-s5="${yellow}s5$orange"
-s6="${yellow}s6$orange"
-s7="${yellow}s7$orange"
-s8="${yellow}s8$orange"
-s9="${yellow}s9$orange"
+s1="${white}s1$orange"
+s2="${white}s2$orange"
+s3="${white}s3$orange"
+s4="${white}s4$orange"
+s5="${white}s5$orange"
+s6="${white}s6$orange"
+s7="${white}s7$orange"
+s8="${white}s8$orange"
+s9="${white}s9$orange"
 
 
 
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-       PROGRAM              GO TO MENU        RUNNING         START/STOP      INSTALLED   $orange
+       PROGRAM              GO TO MENU         RUNNING         START/STOP        INSTALLED   $orange
 ##############################################################################################################
 
 
-       Bitcoin                  $m1              $r1                 $s1              $i1       
+       Bitcoin                  $m1               $r1                 $s1                $i1       
 
-       LND                      $m2              $r2                 $s2              $i2
+       LND                      $m2               $r2                 $s2                $i2
 
-       Fulcrum                  $m3              $r3                 $s3              $i3
+       Fulcrum                  $m3               $r3                 $s3                $i3
 
-       Electrs (non Docker )    $m4              $r4                 $s4              $i4
+       Electrs (non Docker )    $m4               $r4                 $s4                $i4
 
-       BRE                      $m5              $r5                 $s5              $i5
+       BRE                      $m5               $r5                 $s5                $i5
 
-       BTCPay                   $m6              $r6                 $s6              $i6
+       BTCPay                   $m6               $r6                 $s6                $i6
 
-       RTL                      $m7              $r7                 $s7              $i7
+       RTL                      $m7               $r7                 $s7                $i7
 
-       Electrs (Docker)         $m8              $r8                 $s8              $i8
+       Electrs (Docker)         $m8               $r8                 $s8                $i8
 
-       Mempool                  $m9              $r9                 $s9              $i9
+       Mempool                  $m9               $r9                 $s9                $i9
 
 ##############################################################################################################$bright_blue
  Note: this is not a list of all apps available with Parmanode.                             (${red}r$bright_blue to refresh)$orange
