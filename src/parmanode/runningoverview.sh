@@ -12,6 +12,7 @@ iselectrsdkrrunning
 isbrerunning 
 isbtcpayrunning 
 isrtlrunning 
+ismempoolrunning
 }
 
 
@@ -148,6 +149,14 @@ overview_conf_add "rtlrunning=true" "rtlrunning="
 else 
 overview_conf_add "rtlrunning=false" "rtlrunning="
 fi
+
+function ismempoolrunning {
+if docker ps 2>/dev/null | grep -q mempool ; then
+overview_conf_add "mempoolrunning=true" "mempoolrunning="
+else
+overview_conf_add "mempoolrunning=false" "mempoolrunning="
+fi
+}
 
 }
 
