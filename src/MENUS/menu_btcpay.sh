@@ -48,7 +48,9 @@ echo -e "
 debug 3 "before choose"
 choose "xpmq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;;
-p|P) menu_use ;; 
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 m|M) back2main ;;
 bc)
 nano $HOME/.btcpayserver/Main/settings.config

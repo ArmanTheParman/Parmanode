@@ -126,7 +126,9 @@ set_terminal
 case $choice in 
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 i|I|info|Info) lnd_info ; continue ;;
 s|S|start|START|Start) start_lnd  ; continue ;;
 st|ST|St|stop|STOP|Stop) stop_lnd ; continue ;; 

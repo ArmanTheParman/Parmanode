@@ -203,6 +203,7 @@ menu_bitcoin_other || return 1
 ;;
 
 p|P)
+if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use
 ;;
 
