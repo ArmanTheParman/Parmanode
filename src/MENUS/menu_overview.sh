@@ -180,27 +180,27 @@ x="${orange}|$bright_blue"
 set_terminal_wide #(110)
 echo -e "
 ########################################################################################################
-$bright_blue           PROGRAM              $x          GO TO MENU         RUNNING          START/STOP        ${orange}
+$bright_blue           PROGRAM              $x            GO TO MENU         RUNNING          START/STOP        ${orange}
 ########################################################################################################
                                 |
                                 |
-      Bitcoin                   |              $m1                $r1                $s1
+      Bitcoin                   |                $m1                $r1                $s1
                                 |
-      LND                       |              $m2                $r2                $s2
+      LND                       |                $m2                $r2                $s2
                                 |
-      Fulcrum                   |              $m3                $r3                $s3
+      Fulcrum                   |                $m3                $r3                $s3
                                 |
-      Electrs (non Docker)      |              $m4                $r4                $s4
+      Electrs (non Docker)      |                $m4                $r4                $s4
                                 |
-      BRE                       |              $m5                $r5                $s5
+      BRE                       |                $m5                $r5                $s5
                                 |
-      BTCPay                    |              $m6                $r6                $s6
+      BTCPay                    |                $m6                $r6                $s6
                                 |
-      RTL                       |              $m7                $r7                $s7
+      RTL                       |                $m7                $r7                $s7
                                 |
-      Electrs (Docker)          |              $m8                $r8                $s8
+      Electrs (Docker)          |                $m8                $r8                $s8
                                 |
-      Mempool                   |              $m9                $r9                $s9
+      Mempool                   |                $m9                $r9                $s9
                                 |
                                 |
       ${red}r${bright_blue} to refresh${orange}              |
