@@ -68,9 +68,9 @@ echo -e "
 
     ACCESS THE PROGRAM FROM YOUR BROWSER ON THE PARMANODE COMPUTER:
 $green
-            http://${IP}:3003   -$pink -Note the different port, 3003, not 3002  $green
-            http://localhost:3002    $reset    -from this computer only                 $green
-            http://127.0.0.1:3002    $reset    -from this computer only$orange          $green      
+            http://${IP}:3003    $pink -Note the different port, 3003, not 3002  $green
+            http://localhost:3002    $reset    -from this computer only          $green
+            http://127.0.0.1:3002    $reset    -from this computer only $orange
 
 $output $output2
 ########################################################################################
