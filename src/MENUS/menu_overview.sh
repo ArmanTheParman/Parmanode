@@ -158,12 +158,12 @@ s7="${white}s7$orange"
 s8="${white}s8$orange"
 s9="${white}s9$orange"
 
-
+x="$orange|$bright_blue"
 
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-          PROGRAM            |    GO TO MENU         RUNNING          START/STOP        INSTALLED   $orange
+          PROGRAM            $x    GO TO MENU         RUNNING          START/STOP        INSTALLED   $orange
 ##############################################################################################################
                              |  
                              |     
