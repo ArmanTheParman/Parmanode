@@ -138,15 +138,15 @@ else
     menub9=false
 fi
 
-m1="${white}1m$orange"
-m2="${white}2m$orange"
-m3="${white}3m$orange"
-m4="${white}4m$orange"
-m5="${white}5m$orange"
-m6="${white}6m$orange"
-m7="${white}7m$orange"
-m8="${white}8m$orange"
-m9="${white}9m$orange"
+m1="${white}m1$orange"
+m2="${white}m2$orange"
+m3="${white}m3$orange"
+m4="${white}m4$orange"
+m5="${white}m5$orange"
+m6="${white}m6$orange"
+m7="${white}m7$orange"
+m8="${white}m8$orange"
+m9="${white}m9$orange"
 
 s1="${white}s1$orange"
 s2="${white}s2$orange"
@@ -163,7 +163,7 @@ x="$orange|$bright_blue"
 set_terminal_wide #(110)
 echo -e "
 ##############################################################################################################$bright_blue
-          PROGRAM            $x    GO TO MENU         RUNNING          START/STOP        INSTALLED   $orange
+           PROGRAM           $x    GO TO MENU         RUNNING          START/STOP        INSTALLED   $orange
 ##############################################################################################################
                              |  
                              |     
