@@ -1,6 +1,9 @@
 function apply_patches {
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 #patch=n
+
+temp_patch
+
 case $patch in
 1) 
 patch_2 ; patch_3 ; patch_4 ; patch_5 ;;
