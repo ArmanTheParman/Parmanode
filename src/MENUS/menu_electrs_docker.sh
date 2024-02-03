@@ -182,7 +182,9 @@ set_rpc_authentication
 continue
 ;;
 
-p|P) menu_use ;; 
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 
 q|Q|Quit|QUIT)
 exit 0

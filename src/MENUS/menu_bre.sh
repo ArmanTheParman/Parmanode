@@ -92,7 +92,9 @@ unset choice
 case $choice in
 m|M) back2main ;;
 q|Q|Quit|quit) exit 0 ;;
-p|P) menu_use ;; 
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 start|START|Start)
 if [[ $menubrerunning == true ]] ; then continue ; fi
 if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi

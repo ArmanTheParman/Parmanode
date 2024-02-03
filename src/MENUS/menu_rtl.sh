@@ -58,7 +58,9 @@ m|M) back2main ;;
 
 q|Q|QUIT|Quit) exit 0 ;;
 
-p|P) menu_use ;; 
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 
 start|Start|START|S|s)
 docker start rtl
