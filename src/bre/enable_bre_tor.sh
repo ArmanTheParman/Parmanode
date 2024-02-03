@@ -2,7 +2,7 @@ function enable_bre_tor {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-if [[ ! -f /etc/tor/torrc ]] ; then
+if ! sudo test -e /etc/tor/torrc ; then
 set_terminal ; echo "
 ########################################################################################
     /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
@@ -12,7 +12,7 @@ set_terminal ; echo "
 enter_continue ; return 1 ;
 fi
 please_wait
-sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
+sudo usermod -aG debian-tor $USER >/dev/null 2>&1
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
@@ -46,7 +46,7 @@ if sudo grep "HiddenServicePort 3004 127.0.0.1:3002" \
     fi
 
 sudo systemctl restart tor
-restart_bre >/dev/null
+restart_bre 
 get_onion_address_variable "bre" >/dev/null 2>&1
 clear
 echo "    Changes have been made to torrc file"

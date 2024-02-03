@@ -27,8 +27,8 @@ fi
 
 if [[ $1 == "mempool" ]] ; then
 export ONION_ADDR_MEM="$(sudo cat /var/lib/tor/$1-service/hostname 2>/dev/null)"
-debug "in $ 1 mempool"
 return 0
+
 debug "finished get onion address variable"
 fi
 }
