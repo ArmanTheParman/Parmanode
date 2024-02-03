@@ -4,6 +4,7 @@ set_terminal
 please_wait
 runningoverview 
 source $oc >/dev/null 2>&1
+debug "line 7"
 set_terminal
 
 if grep -q bitcoin-end < $ic ; then
@@ -255,6 +256,7 @@ mem)
 if [[ $menub9 == true ]] ; then
 clear ; please_wait
 stop_mempool
+debug "after stop mempool"
 else
 start_mempool
 fi
