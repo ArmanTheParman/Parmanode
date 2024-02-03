@@ -97,7 +97,7 @@ fi
 if grep -q electrsdkr-end < $ic ; then
     if [[ $electrsdkrrunning == true ]] ; then
     b8="${green}Y$orange                (ed)               ${green}Y$orange"
-    menu8=true
+    menub8=true
     else
     b8="${red}N$orange                (ed)               ${green}Y$orange"
     menub8=false
@@ -110,7 +110,7 @@ fi
 if grep -q mempool-end < $ic ; then
     if [[ $mempoolrunning == true ]] ; then
     b9="${green}Y$orange                (mem)              ${green}Y$orange"
-    menu9=true
+    menub9=true
     else
     b9="${red}N$orange                (mem)              ${green}Y$orange"
     menub9=false
