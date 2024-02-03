@@ -122,30 +122,30 @@ fi
 
 
 
-
+set_terminal_wide #(110)
 echo -e "
-########################################################################################
-   $bright_blue        PROGRAM          RUNNING          START/STOP        INSTALLED   $orange
-########################################################################################
+##############################################################################################################$bright_blue
+         PROGRAM             RUNNING          START/STOP        INSTALLED   $orange
+##############################################################################################################
 
 
-        Bitcoin                $b1
+  1)    Bitcoin                $b1
 
-        LND                    $b2
+  2)    LND                    $b2
 
-        Fulcrum                $b3
+  3)    Fulcrum                $b3
 
-        Electrs (non Docker)   $b4
+  4)    Electrs (non Docker)   $b4
 
-        Electrs (Docker)       $b8
+  5)    Electrs (Docker)       $b8
 
-        BRE                    $b5
+  6)    BRE                    $b5
 
-        BTCPay                 $b6
+  7)    BTCPay                 $b6
 
-        RTL                    $b7
+  8)    RTL                    $b7
 
-        Mempool                $b9
+  9)    Mempool                $b9
 
 
 ########################################################################################$bright_blue
