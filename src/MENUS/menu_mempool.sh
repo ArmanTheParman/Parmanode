@@ -42,6 +42,7 @@ set_terminal_custom 45 ; echo -e "
 $running
 
 
+
                   s)             Start
 
                   stop)          Stop
@@ -61,7 +62,6 @@ $cyan
     http://$IP:8180 $orange
 
 $output_tor
-
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
