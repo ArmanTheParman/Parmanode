@@ -13,7 +13,7 @@ enter_continue ; return 1 ;
 fi
 please_wait
 
-if ! id > grep -q "debian-tor" ; then sudo usermod -aG debian-tor $USER >/dev/null 2>&1 ; fi
+if ! id | grep -q "debian-tor" ; then sudo usermod -aG debian-tor $USER >/dev/null 2>&1 ; fi
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
