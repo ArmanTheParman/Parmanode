@@ -254,7 +254,7 @@ fi
 mem)
 if [[ $menub9 == true ]] ; then
 clear ; please_wait
-stop_memool
+sstop_mempool
 else
 start_mempool
 fi
