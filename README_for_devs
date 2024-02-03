@@ -4,13 +4,13 @@
 Thank you, you lovely open source developers for contriubiting and reviewing the 
 Parmanode code.
 
-This document is to help quickly uderstand how the code works in a convenient place
+This document is to help quickly understand how the code works in a convenient place
 rather than littered in hard-to-find places which you may end up reading but in an
 inefficient order.
 
 ARGUMENTS  
                     If you add "debug" as an argument to ./run_parmanode.sh, useful
-                    things lik skipping over some code, or activating debug stopping
+                    things like skipping over some code, or activating debug stopping
                     points with messages happens.
                     
 FREQUENTLY USED CUSTOM FUNCTIONS

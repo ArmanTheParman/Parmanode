@@ -57,6 +57,10 @@ wb|WB)
 wallet_balance
 ;;
 
+cb|CB)
+channel_balance
+;;
+
 delete|DELETE|Delete) 
 delete_wallet_lnd
 return 0
@@ -86,7 +90,7 @@ onchain_balance=$(lncli walletbalance | head -n2 | tail -n1 | cut -d \" -f 4) >/
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                              Lightning Node Balance
+                              Lightning Node Wallet Balance
 $orange
     On chain balance:            $onchain_balance sats
 
@@ -101,3 +105,82 @@ $orange
 enter_continue
 return 0
 }
+
+function channel_balance {
+set_terminal
+if [[ $lndrunning != "true" || $lndwallet != "unlocked" ]] ; then 
+local_balance="Unknown, LND not running or wallet locked"
+remote_balance="Unknown, LND not running or wallet locked"
+fi
+
+# cb_json=$(lncli channelbalance)
+
+# # Parse specific values
+# balance=$(echo "$cb_json" | jq -r '.balance')
+# pending_open_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_balance')
+# pending_open_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_balance')
+# local_balance_sat=$(echo "$cb_json" | jq -r '.local_balance.sat')
+# local_balance_msat=$(echo "$cb_json" | jq -r '.local_balance.msat')
+# remote_balance_sat=$(echo "$cb_json" | jq -r '.remote_balance.sat')
+# remote_balance_msat=$(echo "$cb_json" | jq -r '.remote_balance.msat')
+# unsettled_local_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.sat')
+# unsettled_local_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_local_balance.msat')
+# unsettled_remote_balance_sat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.sat')
+# unsettled_remote_balance_msat=$(echo "$cb_json" | jq -r '.unsettled_remote_balance.msat')
+# pending_open_local_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.sat')
+# pending_open_local_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_local_balance.msat')
+# pending_open_remote_balance_sat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.sat')
+# pending_open_remote_balance_msat=$(echo "$cb_json" | jq -r '.pending_open_remote_balance.msat')
+
+
+# Function to extract a specific value from JSON
+extract_value_cb() {
+    local key="$1"
+    local json="$2"
+    echo "$json" | jq -r ".$key"
+}
+
+# Run lncli channelbalance and capture the JSON output
+cb_json=$(lncli channelbalance)
+
+# Parse specific values
+balance=$(extract_value_cb 'balance' "$cb_json")
+pending_open_balance_sat=$(extract_value_cb 'pending_open_balance' "$cb_json")
+pending_open_balance_msat=$(extract_value_cb 'pending_open_balance' "$cb_json")
+local_balance_sat=$(extract_value_cb 'local_balance.sat' "$cb_json")
+local_balance_msat=$(extract_value_cb 'local_balance.msat' "$cb_json")
+remote_balance_sat=$(extract_value_cb 'remote_balance.sat' "$cb_json")
+remote_balance_msat=$(extract_value_cb 'remote_balance.msat' "$cb_json")
+unsettled_local_balance_sat=$(extract_value_cb 'unsettled_local_balance.sat' "$cb_json")
+unsettled_local_balance_msat=$(extract_value_cb 'unsettled_local_balance.msat' "$cb_json")
+unsettled_remote_balance_sat=$(extract_value_cb 'unsettled_remote_balance.sat' "$cb_json")
+unsettled_remote_balance_msat=$(extract_value_cb 'unsettled_remote_balance.msat' "$cb_json")
+pending_open_local_balance_sat=$(extract_value_cb 'pending_open_local_balance.sat' "$cb_json")
+pending_open_local_balance_msat=$(extract_value_cb 'pending_open_local_balance.msat' "$cb_json")
+pending_open_remote_balance_sat=$(extract_value_cb 'pending_open_remote_balance.sat' "$cb_json")
+pending_open_remote_balance_msat=$(extract_value_cb 'pending_open_remote_balance.msat' "$cb_json")
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                              Lightning Node Channel Balance
+$orange
+    Balance:                     $balance sats
+    Pending open balance:        $pending_open_balance_sat sats
+
+    Local balance:               $local_balance_sat sats ($local_balance_msat msats)
+    Remote balance:              $remote_balance_sat sats ($remote_balance_msat msats)
+
+    Unsettled local balance:     $unsettled_local_balance_sat sats ($unsettled_local_balance_msat msats)
+    Unsettled_remote_balance:    $unsettled_remote_balance_sat sats ($unsettled_remote_balance_msat msats)
+
+    Pending open local balance:  $pending_open_local_balance_sat sats ($pending_open_local_balance_msat msats)
+    Pending open remote balance: $pending_open_remote_balance_sat sats ($pending_open_remote_balance_msat msats)
+
+########################################################################################
+"
+enter_continue
+#return 0
+
+}
+

@@ -166,9 +166,15 @@ Please wait...
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install gpg. Aborting." ; sleep 4 ; exit ; fi
             brew install gpg 
         fi
-	if ! which xz >/dev/null ; then
+
+	    if ! which xz >/dev/null ; then
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install xz. Aborting." ; sleep 4 ; exit ; fi
             brew install xz
+        fi
+
+        if ! which jq >/dev/null ; then
+            if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install jq. Aborting." ; sleep 4 ; exit ; fi
+            brew install jq
         fi
     
     fi
@@ -180,6 +186,7 @@ Please wait...
         if ! which git ; then sudo apt-get install git -y ; fi
         if ! which ssh ; then sudo apt-get install ssh -y ; fi
         if ! which xz-utils  ; then sudo apt-get install xz-utils -y ; fi
+        if ! command -v jq &> /dev/null; then sudo apt-get install jq ; fi
 
     fi
 
