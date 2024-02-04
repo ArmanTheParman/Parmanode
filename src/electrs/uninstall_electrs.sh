@@ -74,15 +74,15 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Do you want to delete the electrs_db database directory, or leave it, or back
+    Do you want to delete the$cyan electrs_db database directory$orange, or leave it, or back
     it up as electrs_db_backup (remaining on the drive)?
-
+$red
                 d)        Delete
-
+$green
                 l)        Leave it there
-
+$white
                 b)        Back it up 
-
+$orange
 ########################################################################################
 "
 choose "xpmq"  
