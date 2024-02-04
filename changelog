@@ -2,6 +2,7 @@ Version 3.25.5
     -Menu overview revamped
     -BTC RPC Exploerer log in menu
     -LN channel balance output - contribution by cmyk
+    -Added Parman's Electrum Guide
 Version 3.25.4
     -Coordinated rpc/password for bitcoin.conf for all other apps that use it.
     -Streamlined Fulcrum install code a little
