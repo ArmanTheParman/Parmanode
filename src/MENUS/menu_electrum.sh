@@ -13,9 +13,9 @@ $cyan
                         ELECTRUM CONNECTION TYPE: $connection
 $orange
 
-         start)  Start Electrum (opens in its own window)
+            start)    Start Electrum (opens in its own window)
          
-         rf)     Refresh connection files (to troublshoot server connection)
+            rf)       Refresh connection files (to troublshoot server connection)
 
 ----------------------------------------------------------------------------------------
 $cyan
