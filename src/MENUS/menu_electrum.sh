@@ -35,7 +35,9 @@ $orange
          tor2)  Connect to electrs via Tor 
 
          ec)    View Electrum Config file
-
+$bright_blue
+         eg)    Parman's Electrum Guide
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -78,6 +80,10 @@ nano $HOME/.electrum/config
 
 rf|RF)
 clear_dot_electrum
+;;
+
+eg|EG)
+parmans_electrum_guide
 ;;
 
 *)
