@@ -6,8 +6,8 @@ if ! which openssl ; then brew install openssl ; fi
 fi
 
 pem=$HOME/parman_programs/parmanode/src/ledger/ledgerlive.pem
-sig=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-2.69.0.sha512sum.sig
-shasum=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-2.69.0.sha512sum
+sig=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-2.75.0.sha512sum.sig
+shasum=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-2.75.0.sha512sum
 
 if ! openssl dgst -sha256 -verify $pem -signature $sig $shasum ; then
 announce "Verification failed. Aborting." 
