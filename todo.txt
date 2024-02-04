@@ -1,6 +1,3 @@
-:set noincsearch - for vsc
-
-Parmanode overview page for what's running
 
 system-health-check
     - log report document
@@ -15,11 +12,7 @@ create pipe to detect successful wallet creation in LND (lncli create)
 
 make a general troubleshooting page
 
-check for non-parmanode app installations to avoid conflicts.
-
 regularly check for typo >dev/null (should be >/dev/null), causes big problems
-
-more testing for electrs install/uninstall, and directories left behind
 
 more menu signals with option to dismiss forever - eg "bitcoind is not a typo. type
 OK1 and <enter> to dismiss forever
@@ -28,11 +21,13 @@ OK1 and <enter> to dismiss forever
 For Version 4
 ########################################################################################
 $HOME/parmanode will be changed to $HOME/parmanode_apps
-deprecate swap string command
+deprecate swap string command - maybe
+more jq usage
 sync Linux bitcoin drive using mac - seems insurmountable.
 auto-clear failed installs
 
 
-
 # Send alert message if needed ; alert=true/false captured.
 #curl -sf https://parmanode.com/alert | sh
+
+#Remove temp patch in March.
