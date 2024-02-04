@@ -1,11 +1,19 @@
 function install_ledger {  
 set_terminal
+warning_ledger
 ledgerDir=$HOME/parmanode/ledger
 mkdir $ledgerDir >/dev/null 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"
 
-locationLinux=$(curl -I -L https://download.live.ledger.com/latest/linux 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r') 
-locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r')
+#Notes: grep -i does case insensitive search
+
+#for newer version...
+#locationLinux=$(curl -I -L https://download.live.ledger.com/latest/linux 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r') 
+locationLinux="https://download.live.ledger.com/ledger-live-desktop-2.75.0-linux-x86_64.AppImage"
+
+#for newer version...
+#locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r')
+locationMac="https://download.live.ledger.com/ledger-live-desktop-2.75.0-mac.dmg"
 
 
 if [[ $OS == Mac ]] ; then
@@ -30,6 +38,3 @@ fi
 installed_conf_add "ledger-end"
 success "Ledger Live" "being installed."
 }
-
-
-

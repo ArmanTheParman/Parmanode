@@ -31,3 +31,9 @@ auto-clear failed installs
 #curl -sf https://parmanode.com/alert | sh
 
 #Remove temp patch in March.
+
+
+REGULAR MANUAL UPDATES:
+Ledger Live
+Sparrow
+Electrum
