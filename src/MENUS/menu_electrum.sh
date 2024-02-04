@@ -2,8 +2,8 @@ function menu_electrum {
 while true ; do 
 
 source $HOME/.parmanode/electrum.connection >/dev/null 2>&1
-if cat $HOME/.electrum/config | grep "\"server" | grep "7002" >/dev/null ; then connection=fulcrumTOR ; fi
-if cat $HOME/.electrum/config | grep "\"server" | grep "7004" >/dev/null ; then connection=electrsTOR ; fi
+if cat $HOME/.electrum/config | grep "\"server" | grep "7002" >/dev/null ; then connection=${green}fulcrumTOR ; fi
+if cat $HOME/.electrum/config | grep "\"server" | grep "7004" >/dev/null ; then connection=${green}electrsTOR ; fi
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -13,31 +13,31 @@ $cyan
                         ELECTRUM CONNECTION TYPE: $connection
 $orange
 
-         start)  Start Electrum
+         start)  Start Electrum (opens in its own window)
          
          rf)     Refresh connection files (to troublshoot server connection)
 
 ----------------------------------------------------------------------------------------
 $cyan
-                          CONFIGURATION MODIFICATIONS
+                           CONFIGURATION MODIFICATIONS
 $orange
 
-         ssl)   Connect to Fulcrum via ssl (port 50002)
+            fs)       Connect to Fulcrum via SSL (port 50002)
 
-         tcp)   Connect to Fulcrum via tcp (port 50001)
+            ft)       Connect to Fulcrum via TCP (port 50001)
 
-         tcp2)  Connect to electrs via tcp (port 50005)
+            et)       Connect to electrs via TCP (port 50005)
 
-         ssl2)  Connect to electrs via ssl (port 50006)
+            es)       Connect to electrs via SSL (port 50006)
 
-         tor1)  Connect to Fulcrum via Tor 
+            ftor)     Connect to Fulcrum via Tor 
 
-         tor2)  Connect to electrs via Tor 
+            etor)     Connect to electrs via Tor 
 
-         ec)    View Electrum Config file
-$bright_blue
-         eg)    Parman's Electrum Guide
-$orange
+            ec)       View Electrum Config file
+    $bright_blue
+            eg)       Parman's Electrum Guide
+    $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -52,26 +52,26 @@ run_electrum
 enter_continue
 return 0 ;;
 
-ssl|Ssl|SSL)
+fs|FS)
 check_fulcrum_ssl
 modify_electrum_config fulcrumssl
 ;;
-tcp|TCP)
+ft|FT|Ft|Ft)
 check_fulcrum_tcp
 modify_electrum_config fulcrumtcp
 ;;
-ssl2|Ssl2|SSL2)
+es|ES|Es)
 check_electrs_ssl
 modify_electrum_config electrsssl
 ;;
-tcp2|TCP2)
+et|ET|Et)
 check_electrs_tcp
 modify_electrum_config electrstcp 
 ;;
-tor1|TOR1)
+ftor|FTOR|Ftor)
 enable_electrum_tor "fulcrum" 
 ;;
-tor2|TOR2)
+etor|ETOR|Etor)
 enable_electrum_tor "electrs"
 ;;
 ec|EC) 
