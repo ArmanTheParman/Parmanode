@@ -1,12 +1,14 @@
 function menu_tools {
 
 while true ; do
-set_terminal
+set_terminal_high
 echo -e "
 ########################################################################################
   $cyan
                                P A R M A N O D E - Tools   $orange
 
+
+              (cc)    Upgrade ColdCard firmware wizard             
 
               (ppp)   Connect to Parman's node...
             
@@ -45,6 +47,10 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
     
     m|M) back2main ;;
+
+    cc)
+    colcard_firmware
+    ;;
 
     ppp|PPP)
 
