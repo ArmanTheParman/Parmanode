@@ -139,6 +139,11 @@ measure_rpc_global
 debug "after measure rpc global"
 fi
 
+if [[ $fix == true ]] ; then
+fix || { echo "exiting ..." ; sleep 2 ; exit ; }
+exit
+fi
+
 ########################################################################################
 
 #message of the day
