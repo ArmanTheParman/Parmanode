@@ -15,11 +15,11 @@ run Parmanode...
 Install ParmaShell with Parmanode (very conventient)
 Install Bitcoin, and choose option 1 to format drive when prompted.
 Install electrs (Docker or direct)
-Install BRE
+Install Mempool
 Install PiApps and us it to install Tor
 Wait for Bitcoin to sync
 Install Sparrow or Electrum, and sync to electrs
-optional: ParmanodL wallpaper in ./parmanode/src/graphics/pn.png
+Optional: ParmanodL wallpaper in ./parmanode/src/graphics/pn.png
 Copy instructions.txt to desktop and fill in password.
 CLEAN UP:
     - reset parmanode usage count
@@ -27,3 +27,5 @@ CLEAN UP:
     - clear history from terminal, history -c, and rm ~/.bash_history
     - clear /var/log/auth.log
     - clear /var/log/syslog
+Make run_parmanode.sh icon on desktop
+
