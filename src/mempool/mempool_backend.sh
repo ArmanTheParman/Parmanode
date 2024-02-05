@@ -36,22 +36,26 @@ break
 
 2)
 choose_electrs_for_mempool
-brearestart_mempoolk
+restart_mempool
+break
 ;;
 
 3)
 choose_fulcrum_for_mempool
-brearestart_mempoolk
+restart_mempool
+break
 ;;
 
 4)
 remote_bitcoin_for_mempool
-brearestart_mempoolk
+restart_mempool
+break
 ;;
 
 5)
 remote_electrumserver_for_mempool
-brearestart_mempoolk
+restart_mempool
+break
 ;;
 
 x)
