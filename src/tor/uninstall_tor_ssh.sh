@@ -1,9 +1,9 @@
-function uninstall_ssh_tor {
+function uninstall_tor_ssh {
 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall SSH Tor
+                                 Uninstall Tor SSH
 $orange
     Are you sure? (y) (n)
 
@@ -42,6 +42,29 @@ y)
 file="$HOME/.ssh/config"
 delete_line "$file" "HOST *.onion"
 delete_line "$file" "ProxyCommand nc -x localhost:9050"
+;;
+esac
+
+set_terminal ; echo -e "
+########################################################################################
+
+    There's really no need, but if you do have a need, you can delete the onion 
+    address of this server, so that if you install the Tor SSH server again, a new
+    onion address will be made. 
+
+$cyan    What actually happens is /var/lib/tor/ssh-service$orange directory gets deleted.
+
+    Delete it?    $red y) yes
+$green
+                       n) nah, no need
+                       $orange
+
+########################################################################################
+"
+read choice
+case $choice in
+y)
+sudo rm -rf /var/lib/tor/ssh-service/
 ;;
 esac
 
