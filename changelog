@@ -1,3 +1,5 @@
+Version 3.27.0
+    -SSH Tor server added (Linux only)
 Version 3.26.0
     -Coldcard firmware wizard
     -Fixed ParmanodL installer for Mac
