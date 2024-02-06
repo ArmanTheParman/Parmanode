@@ -53,7 +53,7 @@ fi
 
 echo "HiddenServiceDir /var/lib/tor/ssh-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-installed_conf_add "sshtor-start"
+installed_conf_add "torssh-start"
 sudo systemctl restart tor ssh
 
 if [[ ! -d $HOME/.ssh ]] ; then sudo mkdir $HOME/.ssh ; fi
@@ -132,7 +132,7 @@ $bright_blue
 ########################################################################################
 "
 enter_continue
-installed_conf_add "sshtor-end"
+installed_conf_add "torssh-end"
 success "SSH Tor service" "being installed"
 }
 
