@@ -1,22 +1,4 @@
-function parmanodl_installer {
-if [[ $1 != install ]] ; then return 0 ; fi
-########################################################################################
-# The contents of this file is to be kept at parmanode.com. It is not meant to have a
-# .sh extension
-# The install script will download it to the desktop and make it executable.
-########################################################################################
-
 #!/bin/bash
-
-#get parmanode function
-# cd /tmp
-# curl -LO https://parmanode.com/parmanode.tar
-# tar -xvf parmanode.tar
-# rm parmanode.tar
-# for file in /tmp/parmanode/src/text_functions/*.sh ; do
-#     source $file
-# done
-
 
 # Version specific info
     
@@ -26,7 +8,8 @@ if [[ $1 != install ]] ; then return 0 ; fi
     export image_path="$HOME/ParmanodL/$image_file" 
     export hash_zip="e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa"
     export hash_image="962780be6bb41522532f26449f67524dc61038673833c079808da9ca2ad9a4f0"
-
+    export mnt="$HOME/mnt"
+    
 # Size 88 wide, and orange colour scheme
 
     printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
