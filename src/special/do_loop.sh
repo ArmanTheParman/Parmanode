@@ -145,10 +145,10 @@ echo "install i or uninsall u"
 read choice
 case $choice in
 i)
-install_tor_ssh
+install_torssh
 ;;
 u)
-uninstall_tor_ssh
+uninstall_torssh
 ;;
 esac
 exit

@@ -1,4 +1,4 @@
-function uninstall_tor_ssh {
+function uninstall_torssh {
 
 set_terminal ; echo -e "
 ########################################################################################
