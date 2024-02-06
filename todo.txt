@@ -37,3 +37,4 @@ REGULAR MANUAL UPDATES:
 Ledger Live
 Sparrow
 Electrum
+Watch out for Linux Mint upgrades - it breaks Docker installation
