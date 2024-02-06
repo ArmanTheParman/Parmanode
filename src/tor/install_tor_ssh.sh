@@ -66,14 +66,25 @@ Host *.onion
 	ProxyCommand nc -x localhost:9050 -X 5 %h %p
 EOF
 fi
-please_wait
-echo ""
-echo "    A Tor service is being created.
-echo "    If you are waiting longer than 2 minutes, something has gone wrong."
-echo "    In that case please hit control-c to abort and report the but to Parman"
-echo "    You might also just try uninstalling the partial installation and try
-echo "    again."
-echo ""
+clear
+echo -e "
+########################################################################################
+
+    Please wait...
+$cyan
+    A Tor service is being created.
+$orange
+    If you are waiting longer than$red 2 minutes$orange, something has gone wrong.
+
+    In that case please hit$cyan control-c$orange to abort and report the but to Parman. You might
+    also want to just try uninstalling the partial installation and try again. There's
+    a chance that could work just fine.
+
+########################################################################################
+"
+enter_continue
+
+
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
