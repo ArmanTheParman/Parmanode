@@ -66,16 +66,22 @@ Host *.onion
 	ProxyCommand nc -x localhost:9050 -X 5 %h %p
 EOF
 fi
-
+please_wait
+echo ""
+echo "    If you are waiting longer than 30 seconds, something has gone wrong."
+echo "    In that case please hit control-c to abort and report the but to Parman"
+echo ""
+while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
-
+sleep 2
+done
 debug "done"
 
 set_terminal_high ; echo -e "
 ########################################################################################
 
-    Parmanode has set up a$cyan Tor SSH service$orange on this machine. This is the 'HOST'. The
-    other computer that connect to it is the 'CLIENT'. 
+    Parmanode has set up a$cyan Tor SSH service$orange on this machine. This is the$pink 'HOST'$orange. The
+    other computer that connect to it is the$pink 'CLIENT'$orange. 
     
     The client needs to route its SSH traffic through it's own Tor proxy. To do that 
     you need to add the following lines to the file $HOME/.ssh/config 
@@ -91,7 +97,7 @@ $orange
     again slowly.
 
     On the CLIENT, after modifying the config file, restart the SSH service. For 
-    a Linux, do this:
+    a Linux machine, do this:
 $green
     sudo systemctl restart ssh $orange
      
