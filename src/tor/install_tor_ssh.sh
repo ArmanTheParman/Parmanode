@@ -74,7 +74,7 @@ echo ""
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
-ONION_ADDR_SSH="$(sudo cat /var/lib/tor/$1-service/hostname)"
+ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname)"
 debug "onion address is... $ONION_ADDR_SSH"
 sleep 0.3
 done
