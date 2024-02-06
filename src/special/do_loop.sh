@@ -148,7 +148,7 @@ i)
 install_tor_ssh
 ;;
 u)
-uninstall_ssh_tor
+uninstall_tor_ssh
 ;;
 esac
 exit

@@ -4,7 +4,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-    Installation of an SSH Tor server.
+    Installation of an Tor SSH server.
 $orange
     This wizard will help you set up an SSH Tor server on this machine, and give info
     about how to route traffic through Tor on the other machine that will be
