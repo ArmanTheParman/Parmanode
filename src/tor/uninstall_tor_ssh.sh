@@ -58,7 +58,8 @@ set_terminal ; echo -e "
 
     What actually happens is$cyan /var/lib/tor/ssh-service$orange directory gets deleted.
 
-    Delete it?    $red y) yes
+    Delete it?    $red 
+                      y) yes
 $green
                        n) nah, no need
                        $orange
