@@ -51,7 +51,7 @@ if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 fi
 
-echo "HiddenServiceDir /var/lib/tor/ssh-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServiceDir /var/lib/tor/ssh-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 installed_conf_add "sshtor-start"
 sudo systemctl restart tor ssh
@@ -88,9 +88,9 @@ enter_continue
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
-ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname)"
-debug "onion address is... $ONION_ADDR_SSH"
-sleep 0.3
+#ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname)"
+#debug "onion address is... $ONION_ADDR_SSH"
+sleep 2
 done
 debug "done"
 
