@@ -14,28 +14,28 @@ set_terminal ; echo -e "
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
 
-                      SPARROW CONNECTION TYPE: $connection
+                      SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-         (start)                 Start Sparrow 
+   $green      (start) $orange                Start Sparrow 
 
 ----------------------------------------------------------------------------------------
-
-                          CONNECTION OPTIONS 
+$cyan
+                          CONNECTION OPTIONS  $orange
                           
-         (d)       To Bitcoin Core via tcp (default)
+         (d)       Bitcoin Core via tcp (default)
 
-         (ssl)     To Fulcrum via ssl (port 50002)
+         (fs)      Fulcrum via ssl (port 50002)
 
-         (tcp)     To Fulcrum via tcp (port 50001)
+         (ft)      Fulcrum via tcp (port 50001)
 
-         (tor1)    To Fulcrum via Tor (port 7002)
+         (ftor)    Fulcrum via Tor (port 7002)
 
-         (ers)     To electrs via tcp (port 50005)
+         (et)      electrs via tcp (port 50005)
         
-          N/A      To electrs via SSL (Not available)
+          N/A      electrs via SSL (Not available)
 
-         (tor2)    To electrs via Tor (port 7004) 
+         (etor)    electrs via Tor (port 7004) 
 
          (rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
          
@@ -62,22 +62,22 @@ d|D)
 sparrow_core
 ;;
 
-tor1|Tor1|TOR1)
+ftor)
 no_mac || return 1
 sparrow_fulcrumtor
 ;;
 
-tor2|Tor2|TOR2)
+etor)
 no_mac || return 1
 sparrow_electrstor
 ;;
 
-ssl|Ssl|SSL)
+fs)
 no_mac || return 1
 sparrow_fulcrumssl
 ;;
 
-tcp|TCP|Tcp)
+ft)
 sparrow_fulcrumtcp
 ;;
 
@@ -85,7 +85,7 @@ rtor|Rtor|RTOR)
 sparrow_remote
 ;;
 
-ers|ERS|Ers)
+et)
 sparrow_electrs
 ;;
 
