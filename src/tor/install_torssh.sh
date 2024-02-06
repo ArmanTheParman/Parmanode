@@ -1,4 +1,5 @@
-function install_tor_ssh {
+function install_torssh {
+if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 while true ; do
 set_terminal ; echo -e "
@@ -121,7 +122,7 @@ $green
 
     Then you can ssh into this machine from the client, as follows:
 $bright_blue
-    ssh username_of_host@$ONION_ADDR_SSH $orange
+    ssh $USER@$ONION_ADDR_SSH $orange
     
     You can get this address again later from the SSH Tor menu.
 

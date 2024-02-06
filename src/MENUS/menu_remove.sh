@@ -202,6 +202,12 @@ echo "#                                    (qbit)             QBittorrent       
 elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
 echo "#                                    (qbit)             QBittorrent (partial)          #
 #                                                                                      #" ; fi
+if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshmenu=1
+echo "#                                    (tssh)             Tor SSH                        #
+#                                                                                      #"
+elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
+echo "#                                    (tssh)             Tor SSH (partial)              #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -403,6 +409,14 @@ fi
 qbit|Qbit)
 if [[ $qbittorrentmenu == 1 ]] ; then
 uninstall_qbittorrent
+clear
+return
+fi
+;;
+
+tssh)
+if [[ $torsshmenu == 1 ]] ; then
+uninstall_torssh
 clear
 return
 fi

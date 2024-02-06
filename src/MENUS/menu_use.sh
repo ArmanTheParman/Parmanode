@@ -97,6 +97,9 @@ if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrenta
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
                        echo "    (mem)        Mempool 
                             " ; fi
+if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
+                       echo "    (tssh)       Tor SSH 
+                            " ; fi
 echo "                            
 
     Add more programs from the 'Add' menu
@@ -279,6 +282,12 @@ qbit|Qbit)
 mem|MEM|Mem)
    if [[ $mempoolapp == 1 ]] ; then
    menu_mempool 
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+tssh)
+   if [[ $torsshapp == 1 ]] ; then
+   menu_torssh
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
