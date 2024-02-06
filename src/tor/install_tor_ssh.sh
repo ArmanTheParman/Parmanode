@@ -13,7 +13,7 @@ $orange
     The benefit is that you can SSH between the two computers even if they are not on
     the same home private network. ie you can access your computer when away from 
     home, as long as you make a note of the onion address (keep it private), and
-    knowt he username and password to log in.
+    know he username and password to log in.
 
     Do you want to proceed? $green
 
