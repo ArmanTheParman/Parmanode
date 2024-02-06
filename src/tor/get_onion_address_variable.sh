@@ -1,4 +1,5 @@
 function get_onion_address_variable {
+debug "in goav"
 
 if [[ $1 == "bitcoin" ]] ; then
 export ONION_ADDR="$(sudo cat /var/lib/tor/bitcoin-service/hostname 2>/dev/null)"
