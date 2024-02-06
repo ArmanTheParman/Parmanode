@@ -412,7 +412,7 @@ unset torssh-i torssh-p torsshn
 if grep -q "torssh-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
 torssh_i="#                                      Tor SSH Server                                  #"
-elif grep -q "mempool-start" < $HOME/.parmanode/installed.conf ; then
+elif grep -q "torssh-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
 torssh_p="#                                      Tor SSH Server                                  #"
 else
