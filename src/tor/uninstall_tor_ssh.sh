@@ -73,6 +73,6 @@ sudo rm -rf /var/lib/tor/ssh-service/
 ;;
 esac
 
-installed_conf_remove "sshtor"
+installed_conf_remove "torssh"
 success "SSH Tor" "being uninstalled"
 }
