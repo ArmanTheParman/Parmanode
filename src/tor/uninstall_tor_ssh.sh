@@ -56,7 +56,7 @@ set_terminal ; echo -e "
     address of this server, so that if you install the Tor SSH server again, a new
     onion address will be made. 
 
-$cyan    What actually happens is /var/lib/tor/ssh-service$orange directory gets deleted.
+    What actually happens is$cyan /var/lib/tor/ssh-service$orange directory gets deleted.
 
     Delete it?    $red y) yes
 $green
