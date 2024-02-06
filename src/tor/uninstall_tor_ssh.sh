@@ -19,7 +19,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 fi
 
 file="/etc/tor/torrc"
-delete_line "$file" "HiddenServiceDir /var/lib/tor/ssh-server/"
+delete_line "$file" "HiddenServiceDir /var/lib/tor/ssh-service"
 delete_line "$file" "HiddenServicePort 22 127.0.0.1:22" 
 
 sudo systemctl restart tor ssh
