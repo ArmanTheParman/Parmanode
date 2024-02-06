@@ -145,7 +145,7 @@ echo "install i or uninsall u"
 read choice
 case $choice in
 i)
-install_ssh_tor
+install_tor_ssh
 ;;
 u)
 uninstall_ssh_tor
