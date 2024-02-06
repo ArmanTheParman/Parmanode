@@ -89,6 +89,7 @@ enter_continue
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
 sleep 1 
+echo $ONION_ADDR_SSH
 done
 
 set_terminal_high ; echo -e "
