@@ -52,7 +52,7 @@ fi
 set_terminal ; echo -e "
 ########################################################################################
 
-    There's really no need, but if you do have a need, you can delete the onion 
+    There's usually no need, but if you do have a need, you can delete the onion 
     address of this server, so that if you install the Tor SSH server again, a new
     onion address will be made. 
 
