@@ -29,6 +29,11 @@ if [[ $1 == "mempool" ]] ; then
 export ONION_ADDR_MEM="$(sudo cat /var/lib/tor/$1-service/hostname 2>/dev/null)"
 return 0
 
+if [[ $1 == "ssh" ]] ; then
+export ONION_ADDR_SSH="$(sudo cat /var/lib/tor/$1-service/hostname 2>/dev/null)"
+return 0
+fi
+
 debug "finished get onion address variable"
 fi
 }
