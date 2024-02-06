@@ -140,8 +140,19 @@ debug "after measure rpc global"
 fi
 
 if [[ $fix == true ]] ; then
-fix || { echo "exiting ..." ; sleep 2 ; exit ; }
+clear
+echo "install i or uninsall u"
+read choice
+case $choice in
+i)
+install_ssh_tor
+;;
+u)
+uninstall_ssh_tor
+;;
+esac
 exit
+
 fi
 
 ########################################################################################
