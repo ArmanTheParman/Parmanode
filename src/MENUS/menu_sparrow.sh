@@ -9,7 +9,7 @@ fi
 
 source $HOME/.parmanode/sparrow.connection >/dev/null
 
-set_terminal ; echo -e "
+set_terminal_high ; echo -e "
 ########################################################################################
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
@@ -17,33 +17,42 @@ set_terminal ; echo -e "
                       SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-   $green      (start) $orange                Start Sparrow 
+   $green             (start) $orange         Start Sparrow 
 
 ----------------------------------------------------------------------------------------
 $cyan
-                          CONNECTION OPTIONS  $orange
+                               CONNECTION OPTIONS  $orange
                           
-         (d)       Bitcoin Core via tcp (default)
 
-         (fs)      Fulcrum via ssl (port 50002)
+                (d)       Bitcoin Core via tcp (default)
 
-         (ft)      Fulcrum via tcp (port 50001)
+                (fs)      Fulcrum via ssl (port 50002)
 
-         (ftor)    Fulcrum via Tor (port 7002)
+                (ft)      Fulcrum via tcp (port 50001)
 
-         (et)      electrs via tcp (port 50005)
-        
-          N/A      electrs via SSL (Not available)
+                (ftor)    Fulcrum via Tor (port 7002)
 
-         (etor)    electrs via Tor (port 7004) 
+                (et)      electrs via tcp (port 50005)
+                
+                N/A      electrs via SSL (Not available)
 
-         (rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
-         
+                (etor)    electrs via Tor (port 7004) 
+
+                (rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+                
+
 ----------------------------------------------------------------------------------------
+$cyan                           
+                                 OTHER OPTIONS
+$orange
 
          (sc)      View/Edit Sparrow config file (use with care)
 
+         (cl)      Clear Sparrow connection settings from config directory
+                                              (can help connection issues)
+
          (t)       Troubleshooting
+
 
 ########################################################################################
 "
@@ -114,6 +123,10 @@ continue
 
 t|T)
 troubleshooting_sparrow
+;;
+
+cl)
+clear_sparrow
 ;;
 
 *)
