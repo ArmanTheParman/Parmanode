@@ -24,6 +24,9 @@ delete_line "$file" "HiddenServicePort 22 127.0.0.1:22"
 
 sudo systemctl restart tor ssh
 
+
+if ! grep -q "sshtor-end" < $ic ; then #in case tor service made but install was partial
+# then don't delete the service, making it could have been the delay and cause for failure.
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -44,6 +47,7 @@ delete_line "$file" "HOST *.onion"
 delete_line "$file" "ProxyCommand nc -x localhost:9050"
 ;;
 esac
+fi
 
 set_terminal ; echo -e "
 ########################################################################################

@@ -68,8 +68,11 @@ EOF
 fi
 please_wait
 echo ""
-echo "    If you are waiting longer than 30 seconds, something has gone wrong."
+echo "    A Tor service is being created.
+echo "    If you are waiting longer than 2 minutes, something has gone wrong."
 echo "    In that case please hit control-c to abort and report the but to Parman"
+echo "    You might also just try uninstalling the partial installation and try
+echo "    again."
 echo ""
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
