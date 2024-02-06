@@ -38,7 +38,7 @@ echo -e "$orange
 #                                                                                      #
 #    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
-#    (e)                  Education                                                    #
+#    (e)                  Education (Lotsa stuff)                                      #
 #                                                                                      #
 #    (d)                  Donate ;)                                                    #
 #                                                                                      #
@@ -59,8 +59,8 @@ echo -e "$orange
 "
 if [[ ! $announcements == off ]] ; then
 echo -e "
-$pink NEW: combine u with next menu options. eg, try ub for bitcoin menu     $orange 
-$bright_blue NEW: PiApps for Pi's -- Allows easy install for Tor Browser $orange
+$pink Tip: combine u with the next menu options. eg, try ub for bitcoin menu     $orange 
+$bright_blue NEW: ColdCard Firmware install Wizard. See Tools menu. $orange
 $blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
