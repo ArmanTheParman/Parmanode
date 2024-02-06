@@ -1,7 +1,6 @@
-#!/bin/bash
+#Changes here should also be made to ParmanodL_Installer script.
 
-#CHANGES HERE SHOULD ALSO BE MADE TO ParmanodL_Installer function
-
+function ParmanodL_Installer {
 # Version specific info
     
     export zip_file="2023-05-03-raspios-bullseye-arm64.img.xz"
@@ -293,3 +292,4 @@ fi # end if $1 != install
 
 
 ########################################################################################
+}
