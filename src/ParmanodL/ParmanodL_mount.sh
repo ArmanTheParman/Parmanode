@@ -17,7 +17,7 @@ clear
                                               mkdir -p /tmp/mnt/raspi ; \
                                               echo \"image_file is \$image_file\" ; \
                                               export startSector=\$(fdisk -l /mnt/ParmanodL/\$image_file | grep Linux | awk '{print \$2}') ; \
-                                              export byteOffset=\$((\$startSector\*512)) ; \
+                                              export byteOffset=\$((\$startSector*512)) ; \
                                               mount -v -o offset=\$byteOffset -t ext4 /mnt/ParmanodL/\$image_file /tmp/mnt/raspi ; \
                                               mount --bind /dev /tmp/mnt/raspi/dev >/dev/null 2>&1 ; \
                                               mount --bind /sys /tmp/mnt/raspi/sys >/dev/null 2>&1 ; \
