@@ -61,6 +61,7 @@ if [[ ! $announcements == off ]] ; then
 echo -e "
 $pink Tip: combine u with the next menu options. eg, try ub for bitcoin menu     $orange 
 $bright_blue NEW: ColdCard Firmware install Wizard. See Tools menu. $orange
+$pink NEW: Overview menu revamped and more functional. $orange
 $blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
