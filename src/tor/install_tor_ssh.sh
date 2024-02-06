@@ -91,6 +91,7 @@ get_onion_address_variable ssh
 #ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname)"
 #debug "onion address is... $ONION_ADDR_SSH"
 sleep 2
+echo "$ONION_ADDR_SSH"
 done
 debug "done"
 
