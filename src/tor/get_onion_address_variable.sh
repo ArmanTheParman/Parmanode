@@ -15,17 +15,17 @@ if [[ $1 == "bre" ]] ; then
 export ONION_ADDR_BRE="$(sudo cat /var/lib/tor/bre-service/hostname 2>/dev/null)" 
 return 0
 fi
-debug "18"
+debug "18, 1 is still $1"
 if [[ $1 == "electrs" ]] ; then
 export ONION_ADDR_ELECTRS="$(sudo cat /var/lib/tor/electrs-service/hostname 2>/dev/null)" 
 return 0
 fi
-
+debug "23"
 if [[ $1 == "rtl" ]] ; then
 export ONION_ADDR_RTL="$(sudo cat /var/lib/tor/rtl-service/hostname 2>/dev/null)"
 return 0
 fi
-
+debug "28"
 if [[ $1 == "mempool" ]] ; then
 export ONION_ADDR_MEM="$(sudo cat /var/lib/tor/mempool-service/hostname 2>/dev/null)"
 return 0
