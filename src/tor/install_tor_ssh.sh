@@ -71,9 +71,12 @@ echo ""
 echo "    If you are waiting longer than 30 seconds, something has gone wrong."
 echo "    In that case please hit control-c to abort and report the but to Parman"
 echo ""
+
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
-sleep 2
+ONION_ADDR_SSH="$(sudo cat /var/lib/tor/$1-service/hostname)"
+debug "onion address is... $ONION_ADDR_SSH"
+sleep 0.3
 done
 debug "done"
 
@@ -107,6 +110,8 @@ $green
     Then you can ssh into this machine from the client, as follows:
 $bright_blue
     ssh username_of_host@$ONION_ADDR_SSH $orange
+    
+    You can get this address again later from the SSH Tor menu.
 
     Please be aware that ssh over Tor is slow and annoying, but it's sometimes nice
     to have available if there is nothing else to access your computer from outside
