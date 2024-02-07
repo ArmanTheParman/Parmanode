@@ -78,6 +78,18 @@ else
    #not installed
 electrs_n="#                            (ers)         electrs                                     #"
 fi
+#Electrs2
+unset electrs2_i electrs2_p electrs2_n
+if grep -q "electrs2-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+electrs2_i="#                                      electrs                                         #"
+elif grep -q "electrs2-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+electrs2_p="#                                      electrs                                         #"
+else
+   #not installed
+electrs2_n="#                            (ers)         electrs                                     #"
+fi
 
 #LND
 unset lnd_i lnd_p lnd_n
@@ -347,6 +359,18 @@ electrsdkr_p="#                                      electrs (Docker)           
 else
    #not installed
 electrsdkr_n="#                            (ersd)        electrs (Docker)                            #"
+fi
+#Electrsdkr2
+unset electrsdkr2_i electrsdkr2_p electrsdkr2_n
+if grep -q "electrsdkr2-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+electrsdkr2_i="#                                      electrs (Docker)                                #"
+elif grep -q "electrsdkr2-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+electrsdkr2_p="#                                      electrs (Docker)                                #"
+else
+   #not installed
+electrsdkr2_n="#                            (ersd)        electrs (Docker)                            #"
 fi
 
 #piapps

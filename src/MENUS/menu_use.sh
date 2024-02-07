@@ -58,6 +58,9 @@ if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then breapp=1
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
                        echo "    (ers)        electrs 
                             " ; fi
+if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2app=1
+                       echo "    (ers)        electrs 
+                            " ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
                        echo "    (lnb)        Lnbits 
                             " ; fi
@@ -86,6 +89,9 @@ if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
                        echo "    (trl)        Tor Relay 
                             " ; fi
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp=1
+                       echo "    (ersd)       electrs (Docker) 
+                            " ; fi
+if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2app=1
                        echo "    (ersd)       electrs (Docker) 
                             " ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
@@ -208,7 +214,7 @@ bre|BRE|Bre)
    ;;
 
 ers|ERS|Ers)
-   if [[ $electrsapp == 1 ]] ; then
+   if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
@@ -262,7 +268,7 @@ trl|Trl|TRL)
    fi
    ;;
 ersd|Ersd|ERSD)
-   if [[ $electrsdkrapp == 1 ]] ; then
+   if [[ $electrsdkrapp == 1 || $electrsdkr2app == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
