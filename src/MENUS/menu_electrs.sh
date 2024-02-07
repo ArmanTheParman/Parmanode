@@ -376,5 +376,9 @@ elif [[ $bsync == false ]] ; then
         fi 
     fi
 
+    if [[ -z $electrs_sync ]] ; then
+        export electrs_sync="SEE LOGS$orange"
+    fi
+
 fi
 }
