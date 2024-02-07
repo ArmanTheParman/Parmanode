@@ -29,4 +29,15 @@ fi
 if [[ $OS == "Mac" ]] ; then 
 open /Applications/Sparrow.app
 fi
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+   Sparrow$orange will open in a moment in it's own window. You can continue to use
+   Parmanode as normal, or minimise it. 
+
+########################################################################################
+"
+enter_continue
+
 }
