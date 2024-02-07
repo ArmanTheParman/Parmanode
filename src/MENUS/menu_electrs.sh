@@ -1,4 +1,5 @@
 function menu_electrs {
+debug "2"
 logfile=$HOME/.parmanode/run_electrs.log 
 
 if grep -q "electrsdkr" < $ic ; then
