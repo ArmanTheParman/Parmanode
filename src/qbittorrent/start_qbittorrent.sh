@@ -11,5 +11,14 @@ fi
 if [[ $computer_type == Pi ]] ; then
 announce "Not supported for your OS, sorry." && return 1
 fi
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+   qBittorrent$orange will open in a moment in it's own window. You can continue to use
+   Parmanode as normal, or minimise it. 
+
+########################################################################################
+"
+enter_continue
 
 }
