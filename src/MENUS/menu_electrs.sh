@@ -77,8 +77,9 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
       STATUS:    $green $electrs_sync ($cyan$drive_electrs$orange drive)
 
       CONNECT:    127.0.0.1:50005:t    $yellow (From this computer only)$orange
-                  127.0.0.1:50006:s    $yellow bright_blue (From this computer only)$orange 
-                  $IP:50006:s          $yellow bright_blue \e[G\e[41G(From any home network computer)$orange"
+                  127.0.0.1:50006:s    $yellow (From this computer only)$orange 
+                  $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
+                  "
       if [[ -z $ONION_ADDR_ELECTRS ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       else
