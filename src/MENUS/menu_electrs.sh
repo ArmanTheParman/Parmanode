@@ -282,6 +282,7 @@ elif [[ $bsync == false ]] ; then
     #in case an unexpected non-number string
     if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
     export electrs_sync="SEE LOGS"
+    echo "$electrs_sync" | tee -a electrs.log 
     fi
 
 fi
