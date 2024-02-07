@@ -1,7 +1,7 @@
 function menu_electrs {
 logfile=$HOME/.parmanode/run_electrs.log 
 
-if grep -q "electrsdkr" < $ic ; then
+if grep -q "electrsdkr2" < $ic ; then
     electrsis=docker
     docker exec electrs cat /home/parman/run_electrs.log > $logfile
 else
@@ -47,7 +47,7 @@ fi
 if [[ $electrsis == docker ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
         electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
-        log_size=$(docker exec -it electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
+        log_size=$(docker exec electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
         fi
@@ -74,7 +74,7 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
+if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
     $orange"
 fi
@@ -247,13 +247,13 @@ echo "
 enter_continue
 fi
 if [[ $electrsis == docker ]] ; then 
-
+    debug "in if electrsisdocker == docker, LOG"
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f $logfile"      
-        # tail_PID=$!
-        # trap 'kill $tail_PID' SIGINT #condition added to memory
-        # wait $tail_PID # code waits here for user to control-c
-        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    docker exec -it electrs /bin/bash -c "tail -f $/home/parman/run_electrs.log"      
+        tail_PID=$!
+        trap 'kill $tail_PID' SIGINT #condition added to memory
+        wait $tail_PID # code waits here for user to control-c
+        trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
  
  else
@@ -343,18 +343,9 @@ return 0
 fi
 
 #get bitcoin block number
-if [[ $OS == Linux ]] ; then
 source $bc
 curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
 gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
-#gbci=$(bitcoin-cli getblockchaininfo)
-elif [[ $OS == Mac ]] ; then
-source $bc
-curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
-gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
-fi
-
-
 
 #bitcoin finished?
 bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
@@ -362,11 +353,13 @@ bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 if [[ $bsync == true ]] ; then
 
     export electrs_sync="Bitcoin still sync'ing"
+    debug "still sycing"
 
 elif [[ $bsync == false ]] ; then
-
+    debug "ibd done"
     #fetches block number...
     export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]')
+    debug "$electrs_sync electrs sync"
 
     #in case an unexpected non-number string, printout, otherwise check if full synced.
     if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then

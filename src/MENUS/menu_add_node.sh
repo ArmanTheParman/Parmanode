@@ -25,7 +25,9 @@ echo -e "
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
 if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
+if [[ -n $electrs2_n ]]         ; then echo  "$electrs2_n"; fi
 if [[ -n $electrsdkr_n ]]      ; then echo  "$electrsdkr_n"; fi
+if [[ -n $electrsdkr2_n ]]      ; then echo  "$electrsdkr2_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
@@ -127,24 +129,14 @@ m|M) back2main ;;
        ;;
    
    ers|ERS|Ers|electrs)
-      if [[ -n $electrs_n ]] ; then
-
-         # if grep -q "electrsdkr" < $ic ; then
-         # announce "Must uninstall electrs (Docker) first."
-         # continue
-         # fi
+      if [[ -n $electrs_n && -n $electrs2_n ]] ; then
 
          install_electrs
          return 0
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
-      if [[ -n $electrsdkr_n ]] ; then
-
-         # if grep -q "electrs-" < $ic ; then
-         # announce "Must uninstall electrs (non-docker) first."
-         # continue
-         # fi
+      if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
 
          install_electrs_docker
          return 0
