@@ -39,6 +39,7 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
                          Sync'ing to the $drive_electrs drive
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
+$bright_blue      127 IP from this computer only$orange
 "
 else
 echo -e "
