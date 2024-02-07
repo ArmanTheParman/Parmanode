@@ -2,6 +2,7 @@ function menu_fulcrum {
 unset refresh
 while true
 do
+get_fulcrum_status
 set_terminal
 
 if [[ $OS == Linux ]] ; then
@@ -32,7 +33,7 @@ echo -e "
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
-                   FULCRUM IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS
+                   FULCRUM IS$green RUNNING$orange - STATUS: $status 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset
@@ -276,5 +277,27 @@ fulcrum_status="See log for info"
 fulcrum_sync="?"
 rm $file
 return 0
+}
+
+function get_fulcrum_status {
+#example string to search in...
+#Feb 07 16:39:55 parman Fulcrum[3507595]: [2024-02-07 16:39:55.650] <Controller> Processed height: 370000, 44.6%, 2.03 blocks/sec, 1532.1 txs/sec, 6126.9 addrs/sec
+
+if [[ $OS == Linux ]] ; then
+journalctl -fexu fulcrum.service > /tmp/fulcrum_status 
+elif [[ $OS == Mac ]] ; then
+docker exec fulcrum cat /home/parman/parmanode/fulcrum/fulcrum.log > /tmp/fulcrum_status 
+fi
+
+status="$(tail -n 5 /tmp/fulcrum_status | grep "<Controller>" | grep "Processed height:" | grep "blocks/sec")"
+
+export status="$(echo $status | cut -d % -f 1 | grep -Eo '.{9}$' | cut -d , -f 2 | tr -d '[[:space:]]')"
+
+if [[ -z $status ]] ; then
+export status="check logs"
+else
+export status="${status}%"
+fi
+
 }
 
