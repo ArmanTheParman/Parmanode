@@ -33,7 +33,7 @@ echo -e "
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
-                   FULCRUM IS$green RUNNING$orange - STATUS: $status 
+                   FULCRUM IS$green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset
