@@ -363,9 +363,9 @@ elif [[ $bsync == false ]] ; then
         bblock=$(echo $gbci | jq -r ".blocks")    
 
         if [[ $bblock == $electrs_sync ]] ; then
-        export electrs_sync="Block $electrs_sync Fully sync'd"
+        export electrs_sync="Block $electrs_sync ${pink}Fully sync'd$orange"
         else
-        export electrs_sync="Up to $electrs_sync , sync'ing to block $bblock" 
+        export electrs_sync="Up to $electrs_sync $orange, sync'ing to block $bblock" 
         fi 
     fi
 
