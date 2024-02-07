@@ -355,7 +355,7 @@ elif [[ $bsync == false ]] ; then
     if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
 
         echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
-        export electrs_sync="SEE LOGS"
+        export electrs_sync="SEE LOGS$orange"
 
     else 
 
