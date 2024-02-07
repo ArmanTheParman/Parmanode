@@ -70,7 +70,7 @@ elif [[ $drive_electrs == external ]] ; then
 
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
-      mkdir -p $pamranode_drive/electrs_db
+      mkdir -p $parmanode_drive/electrs_db
 
 fi
 debug "before prepare_dirve_electrs"
