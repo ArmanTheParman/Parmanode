@@ -337,12 +337,12 @@ fi
 if [[ $OS == Linux ]] ; then
 source $bc
 curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
-gbci=$(cat /tmp/result | jq '.result')
+gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
 #gbci=$(bitcoin-cli getblockchaininfo)
 elif [[ $OS == Mac ]] ; then
 source $bc
 curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
-gbci=$(cat /tmp/result | jq '.result')
+gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
 fi
 
 
@@ -363,7 +363,7 @@ elif [[ $bsync == false ]] ; then
     if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
 
         echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
-        export electrs_sync="SEE LOGS$orange"
+        export electrs_sync="Wait...$orange"
 
     else 
 
@@ -377,7 +377,7 @@ elif [[ $bsync == false ]] ; then
     fi
 
     if [[ -z $electrs_sync ]] ; then
-        export electrs_sync="SEE LOGS$orange"
+        export electrs_sync="Wait...$orange"
     fi
 
 fi
