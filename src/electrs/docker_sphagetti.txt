@@ -1,0 +1,93 @@
+########################################################################################
+Mac + Docker
+########################################################################################
+volume mounts, internal and external ...
+ -v $HOME/parmanode/electrs_db:/home/parman/parmanode/electrs_db \
+ -v $HOME/.electrs:/home/parman/.electrs \    # for the config file
+
+log in container
+  /home/parman/run_electrs.log
+  written to host --> logfile=$HOME/.parmanode/run_electrs.log 
+
+
+Electrs DB on external drive = "$parmanode_drive/electrs_db"
+
+config dir
+ mkdir -p $HOME/.electrs
+
+internal drive
+      mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+
+########################################################################################
+Linux + Docker
+########################################################################################
+volume mount, internal drive
+  -v $HOME/parmanode/electrs/electrs_db:/home/parman/parmanode/electrs/electrs_db \
+                            -v $HOME/.electrs:/home/parman/.electrs \   # for the config file
+volume mount, external drive
+  -v $parmanode_drive/electrs_db:/home/parman/electrs/electrs_db \
+                            -v $HOME/.electrs:/home/parman/.electrs \   # for the config file
+log in container
+  /home/parman/run_electrs.log
+  written to host --> logfile=$HOME/.parmanode/run_electrs.log 
+
+Electrs DB on external drive = "$parmanode_drive/electrs_db"
+
+config dir
+ mkdir -p $HOME/.electrs
+
+internal drive
+      mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+
+########################################################################################
+Mac no Docker
+########################################################################################
+compile directory
+  $HOME/.electrs_backup
+
+internal drive
+      mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+
+Electrs DB on external drive = "$parmanode_drive/electrs_db"
+
+logfile directly written to by daemon, >> $HOME/.parmanode/run_electrs.log
+
+
+config dir
+ mkdir -p $HOME/.electrs
+
+########################################################################################
+Linux no Docker
+########################################################################################
+compile directory
+  $HOME/.electrs_backup
+
+internal drive
+      mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+
+Electrs DB on external drive = "$parmanode_drive/electrs_db"
+
+config dir
+ mkdir -p $HOME/.electrs
+
+log file written to by journalctl when menu loads, journalctl -exu electrs.service > $logfile 
+   and journalctl -fexu follow command if log) menu option chosen.
+
+
+
+########################################################################################
+########################################################################################
+external drive path
+log file path
+volume mounts
+Database directory internal
+Database directory external.
+########################################################################################
+
+Electrs DB on external drive = "$parmanode_drive/electrs_db"
+export backup="$parmanode_drive/electrs_db_backup"
+
+########################################################################################
+Internal drive, docker
+$HOME/parmanode/electrs/electrs_db
+or ... $hp/electrs/electrs_db

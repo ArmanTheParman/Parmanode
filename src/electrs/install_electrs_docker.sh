@@ -37,8 +37,6 @@ export dontstartbitcoin=true
 check_rpc_bitcoin
 unset dontstartbitcoin
 
-debug "40"
-
 preamble_install_electrs_docker || return 1
 
 set_terminal ; please_wait
@@ -71,6 +69,7 @@ elif [[ $drive_electrs == external ]] ; then
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
       mkdir -p $parmanode_drive/electrs_db
+      sudo chown -R $USER $parmanode_drive/electrs_db >/dev/null 2>&1
 
 fi
 debug "before prepare_dirve_electrs"
