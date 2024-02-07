@@ -1,13 +1,19 @@
 function menu_electrs {
+
 logfile=$HOME/.parmanode/run_electrs.log
 
 while true ; do
-unset log_size
+unset log_size electrs_sync
+menu_electrs_status
+
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
+
 set_terminal
+
 source $dp/parmanode.conf >/dev/null 2>&1
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version  
+unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
+
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/electrs-service ]] && \
@@ -37,6 +43,7 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
                          Sync'ing to the $drive_electrs drive
+                         STATUS:$green $electrs_sync
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 $bright_blue      127 IP from this computer only$orange
@@ -250,3 +257,32 @@ fi
 }
 
 
+function menu_electrs_status {
+
+if ! which jq >/dev/null 2>&1 ; then
+export electrs_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
+return 0
+fi
+
+#get bitcoin block number
+gbci=$(bitcoin-cli getblockchaininfo)
+
+#bitcoin finished?
+bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
+
+if [[ $bsync == true ]] ; then
+
+    export electrs_sync="Bitcoin still sync'ing"
+
+elif [[ $bsync == false ]] ; then
+
+    #fetches block number...
+    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]')
+
+    #in case an unexpected non-number string
+    if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
+    export electrs_sync="SEE LOGS"
+    fi
+
+fi
+}
