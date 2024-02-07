@@ -1,6 +1,5 @@
 function run_electrum {
 
-please_wait
 
 if [[ $computer_type == "LinuxPC" ]] ; then
 nohup $HOME/parmanode/electrum/electrum*AppImage >/dev/null 2>&1 &
@@ -14,6 +13,17 @@ fi
 if [[ $OS == "Mac" ]] ; then
 open /Applications/Electrum.app
 fi
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+   Electrum$orange will open in a moment in it's own window. You can continue to use
+   Parmanode as normal, or minimise it. 
+
+########################################################################################
+"
+enter_continue
+
 
 }
 
