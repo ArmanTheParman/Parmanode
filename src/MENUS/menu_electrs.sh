@@ -54,6 +54,10 @@ else
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 fi
 
+if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+get_onion_address_variable "electrs" >/dev/null 
+if
+
 set_terminal_custom 50
 
 echo -e "
@@ -74,8 +78,12 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
 
       CONNECT:    127.0.0.1:50005:t    $bright_blue (From this computer only)$orange
                   127.0.0.1:50006:s    $bright_blue (From this computer only)$orange 
-                  $IP:50006:s          $bright_blue \e[G\e[41G(From any home network computer)$orange
-"
+                  $IP:50006:s          $bright_blue \e[G\e[41G(From any home network computer)$orange"
+      if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+         echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
+      else
+         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004 $orange"
+      fi
 else
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
@@ -127,27 +135,9 @@ if [[ $OS == Linux ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 " 
 fi
-if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "electrs" >/dev/null 
-if [[ -z $ONION_ADDR_ELECTRS ]] ; then
-echo -e "$bright_blue
-    Please wait then refresh for onion address$orange
-
-
-########################################################################################
-"
-else
 echo -e "
-    Onion adress:$bright_blue $ONION_ADDR_ELECTRS:7004 $orange
-
-
 ########################################################################################
 "
-fi #end if no onion address
-else echo "
-########################################################################################
-"
-fi #end if tor is true
 
 choose "xpmq"
 echo -e "$red
