@@ -334,7 +334,18 @@ return 0
 fi
 
 #get bitcoin block number
-gbci=$(bitcoin-cli getblockchaininfo)
+if [[ $OS == Linux ]] ; then
+source $bc
+curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
+gbci=$(cat /tmp/result | jq '.result')
+#gbci=$(bitcoin-cli getblockchaininfo)
+elif [[ $OS == Mac ]] ; then
+source $bc
+curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
+gbci=$(cat /tmp/result | jq '.result')
+fi
+
+
 
 #bitcoin finished?
 bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
