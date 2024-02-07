@@ -9,7 +9,7 @@ rm -rf $HOME/parman_programs/set_terminal
 fi
 
 if [[ -f $bc ]] ; then
-delete_line $bc "rpcallowip=172.17"
+delete_line $bc "rpcallowip=172"
 echo "rpcallowip=172.0.0.0/8" | sudo tee -a $bc >/dev/null 2>&1
 fi
 

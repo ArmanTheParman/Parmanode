@@ -43,7 +43,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
-#check it's running
+#Get version
 if [[ $electrsis == docker ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
         electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
@@ -53,7 +53,6 @@ if [[ $electrsis == docker ]] ; then
         fi
     fi
 else #electrsis nondocker
-        #if a variable is found, it's running.
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 fi
 
@@ -103,7 +102,7 @@ echo -e "
 fi #end electrs running or not
 
 else #electrs is docker
-if [[ -n $electrs_version ]] ; then echo -e "
+if docker exec electrs bash -c "ps -x | grep electrs | grep -q conf && ! tail -n 10 $logfile | grep -q 'electrs failed'" >/dev/null 2>&1 ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($cyan$drive_electrs$orange drive)
@@ -249,11 +248,11 @@ fi
 if [[ $electrsis == docker ]] ; then 
     debug "in if electrsisdocker == docker, LOG"
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f $/home/parman/run_electrs.log"      
-        tail_PID=$!
-        trap 'kill $tail_PID' SIGINT #condition added to memory
-        wait $tail_PID # code waits here for user to control-c
-        trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
+        # tail_PID=$!
+        # trap 'kill $tail_PID' SIGINT #condition added to memory
+        # wait $tail_PID # code waits here for user to control-c
+        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
  
  else
