@@ -1,5 +1,4 @@
 function menu_electrs {
-debug "2"
 logfile=$HOME/.parmanode/run_electrs.log 
 
 if grep -q "electrsdkr" < $ic ; then
@@ -24,7 +23,6 @@ if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
-debug "before set_terminal"
 set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
@@ -354,10 +352,19 @@ elif [[ $bsync == false ]] ; then
     #fetches block number...
     export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]')
 
-    #in case an unexpected non-number string
+    #in case an unexpected non-number string, printout, otherwise check if full synced.
     if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
-    echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
-    export electrs_sync="SEE LOGS"
+
+        echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
+        export electrs_sync="SEE LOGS"
+
+    else 
+
+        bblock=$(echo $gbci | jq -r ".blocks")    
+
+        if [[ $bblock == $electrs_sync ]] ; then
+        export electrs_sync="$electrs_sync Fully sync'd"
+        fi
     fi
 
 fi
