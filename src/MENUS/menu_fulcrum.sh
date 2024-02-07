@@ -59,6 +59,7 @@ fi
 echo -e "
 
         127.0.0.1:50001:t    or    127.0.0.1:50002:s    or    $IP:50002:s
+   $bright_blue     (127 IP from this computer only)R$orange
 
 
 
