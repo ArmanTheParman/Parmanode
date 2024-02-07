@@ -33,7 +33,7 @@ echo -e "
 "
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
-                               FULCRUM IS$green RUNNING$orange 
+                                 FULCRUM IS$green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset
@@ -45,7 +45,7 @@ fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
 if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -e "
-                               FULCRUM IS $green RUNNING$orange 
+                                 FULCRUM IS $green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset   
