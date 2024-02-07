@@ -91,6 +91,6 @@ docker_start_electrs || return 1
 debug "pause after start"
 installed_config_add "electrsdkr-end"
 unset install_electrs_docker
-success "electrs" "being installed"
+success "electrs in Docker" "being installed"
 
 }
