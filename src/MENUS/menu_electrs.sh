@@ -72,9 +72,9 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
 
       STATUS:    $green $electrs_sync ($cyan$drive_electrs$orange drive)
 
-      CONNECT:    127.0.0.1:50005:t    or $bright_blue (From this computer only)$orange
-                  127.0.0.1:50006:s    or $bright_blue (From this computer only)$orange
-                  $IP:50006:s
+      CONNECT:    127.0.0.1:50005:t    $bright_blue (From this computer only)$orange
+                  127.0.0.1:50006:s    $bright_blue (From this computer only)$orange 
+                  $IP:50006:s          $bright_blue (From any home network computer)$orange
 "
 else
 echo -e "
