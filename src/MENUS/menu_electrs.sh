@@ -70,8 +70,7 @@ if [[ $electrsis == nondocker ]] ; then
 if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
-                         Sync'ing to the $drive_electrs drive
-                         STATUS:$green $electrs_sync
+                         STATUS:$green $electrs_sync ($drive_electrs drive)
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 $bright_blue      127 IP from this computer only$orange
