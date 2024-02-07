@@ -45,18 +45,21 @@ fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
 if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -e "
-                   FULCRUM IS RUNNING -- SEE LOG MENU FOR PROGRESS
+                   FULCRUM IS $green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset   
                             Syncing to the $drive_fulcrum drive$orange"
 else
 echo -e "
-                   FULCRUM IS NOT RUNNING -- CHOOSE \"start\" TO RUN" 
+                   FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN" 
 fi
 fi
 
 echo -e "
+
+             127.0.0.1:50001:t    or    127.0.0.1:50002:s    or    $IP:50002:s
+
 
 
       (start)    Start Fulcrum 
