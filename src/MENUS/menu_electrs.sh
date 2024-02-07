@@ -74,7 +74,7 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
 
       CONNECT:    127.0.0.1:50005:t    $bright_blue (From this computer only)$orange
                   127.0.0.1:50006:s    $bright_blue (From this computer only)$orange 
-                  $IP:50006:s          $bright_blue \e[G\e[40G(From any home network computer)$orange
+                  $IP:50006:s          $bright_blue \e[G\e[41G(From any home network computer)$orange
 "
 else
 echo -e "
