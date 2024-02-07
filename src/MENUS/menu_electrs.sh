@@ -1,6 +1,6 @@
 function menu_electrs {
 
-logfile=$HOME/.parmanode/run_electrs.log
+if [[ $OS == Mac ]] ; then logfile=$HOME/.parmanode/run_electrs.log ; fi
 
 while true ; do
 unset log_size electrs_sync
