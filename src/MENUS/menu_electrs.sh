@@ -56,7 +56,7 @@ fi
 
 if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null 
-if
+fi
 
 set_terminal_custom 50
 
@@ -84,12 +84,13 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
       else
          echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004 $orange"
       fi
-else
+else #electrs running or not
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
       Will sync to the $cyan$drive_electrs$orange drive"
-fi
+fi #end electrs running or not
+
 else #electrs is docker
 if [[ -n $electrs_version ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
@@ -107,7 +108,7 @@ echo -e "
 
                    Will sync to the $cyan$drive_electrs$orange drive"
 fi
-fi #end electrsis
+fi #end electrsis docker
 echo "
 
 
