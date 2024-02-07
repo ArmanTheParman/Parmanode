@@ -23,7 +23,7 @@ if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
-
+debug "before set_terminal"
 set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
