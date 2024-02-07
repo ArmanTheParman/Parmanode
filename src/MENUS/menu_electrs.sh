@@ -85,7 +85,8 @@ else #electrs is docker
 if [[ -n $electrs_version ]] ; then echo -e "
                    ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
-                         Sync'ing to the $cyan$drive_electrs$orange drive
+                   Sync'ing to the $cyan$drive_electrs$orange drive
+
 
       127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
 "
@@ -93,7 +94,7 @@ else
 echo -e "
                    ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
-                         Will sync to the $cyan$drive_electrs$orange drive"
+                   Will sync to the $cyan$drive_electrs$orange drive"
 fi
 fi #end electrsis
 echo "
