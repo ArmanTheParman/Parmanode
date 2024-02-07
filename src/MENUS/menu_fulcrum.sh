@@ -2,7 +2,7 @@ function menu_fulcrum {
 unset refresh
 while true
 do
-get_fulcrum_status
+#get_fulcrum_status
 set_terminal
 
 if [[ $OS == Linux ]] ; then
