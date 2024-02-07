@@ -52,7 +52,7 @@ if [[ $electrsis == docker ]] ; then
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version ; fi
     fi
-elif
+else
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 fi
 
