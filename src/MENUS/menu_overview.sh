@@ -231,7 +231,7 @@ m4) menu_electrs overview ;;
 m5) menu_bre     overview ;;
 m6) menu_btcpay  overview ;;
 m7) menu_rtl     overview ;;
-m8) menu_electrs_docker overview ;;
+m8) menu_electrs overview ;;
 m9) menu_mempool overview ;;
 
 s1) 
