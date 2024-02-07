@@ -14,7 +14,6 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
-debug "num1 $num1 is num is $num"
 
 echo -e "
 ########################################################################################
@@ -184,10 +183,10 @@ echo "#                                    (ersd)             Electrs Docker    
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
 echo "#                                    (ersd)             Electrs Dkr (partial)          #
 #                                                                                      #" ; fi
-if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdk2rmenu=1
+if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
 echo "#                                    (ersd)             Electrs Docker                 #
 #                                                                                      #"
-elif grep -q "electrsdk2r-start" $HOME/.parmanode/installed.conf ; then electrsdk2rmenu=1
+elif grep -q "electrsdkr2-start" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
 echo "#                                    (ersd)             Electrs Dkr (partial)          #
 #                                                                                      #" ; fi
 if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
@@ -408,7 +407,8 @@ if [[ $electrsdkrmenu == 1 ]] ; then
 uninstall_electrs_docker
 return
 fi
-if [[ $electrsdkrmenu == 2 ]] ; then
+if [[ $electrsdkr2menu == 1 ]] ; then
+debug "in 2"
 uninstall_electrs_docker2
 return
 fi

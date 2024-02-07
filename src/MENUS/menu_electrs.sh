@@ -28,7 +28,7 @@ set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
-menu_electrs_status # get elecyrs_sync variable (block number)
+#menu_electrs_status # get elecyrs_sync variable (block number)
 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
@@ -335,6 +335,7 @@ return 0
 
 
 function menu_electrs_status {
+please_wait
 
 if ! which jq >/dev/null 2>&1 ; then
 export electrs_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
@@ -357,11 +358,11 @@ if [[ $bsync == true ]] ; then
 elif [[ $bsync == false ]] ; then
     debug "ibd done"
     #fetches block number...
-    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]')
+    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]' >/dev/null)
     debug "$electrs_sync electrs sync"
 
     #in case an unexpected non-number string, printout, otherwise check if full synced.
-    if ! echo $electrs_sync | grep -E '^[0-9]+$' ; then
+    if ! echo $electrs_sync | grep -qE '^[0-9]+$' >/dev/null ; then
 
         echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
         export electrs_sync="Wait...$orange"
@@ -380,6 +381,6 @@ elif [[ $bsync == false ]] ; then
     if [[ -z $electrs_sync ]] ; then
         export electrs_sync="Wait...$orange"
     fi
-
+debug "end sync"
 fi
 }
