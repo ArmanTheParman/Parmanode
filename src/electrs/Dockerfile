@@ -11,7 +11,7 @@ RUN echo 'parman:parmanode' | chpasswd
 USER parman
 
 RUN mkdir -p /home/parman/parmanode
-RUN cd $HOME/parmanode/ && git clone --depth 1 https://github.com/romanz/electrs
-RUN cd $HOME/parmanode/electrs && cargo build --locked --release
+RUN cd /home/parman/parmanode && git clone --depth 1 https://github.com/romanz/electrs
+RUN cd /home/parman/parmanode/electrs && cargo build --locked --release
 
 CMD tail -f /dev/null
