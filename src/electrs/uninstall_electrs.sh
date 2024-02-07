@@ -76,6 +76,9 @@ set_terminal ; echo -e "
 
     Do you want to delete the$cyan electrs_db database directory$orange, or leave it, or back
     it up as electrs_db_backup (remaining on the drive)?
+$cyan
+                          $e_db 
+
 $red
                 d)        Delete
 $green

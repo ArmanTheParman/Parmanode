@@ -90,7 +90,7 @@ if [[ $electrs_compile == "false" ]] ; then
     rm -rf $HOME/parmanode/electrs/ 
     cp -R $HOME/.electrs_backup $HOME/parmanode/electrs
 
-    installed_config_add "electrs-start"
+    installed_config_add "electrs2-start"
 
 else #if [[ $electrs_compile == "true" ]] ; then
 
@@ -143,7 +143,7 @@ make_electrs_config && log "electrs" "config done" ; debug "config done"
 
 if [[ $OS == Linux ]] ; then make_electrs_service || log "electrs" "service file failed" ; debug "service file done" ; fi
 
-installed_config_add "electrs-end" ; debug "finished electrs install"
+installed_config_add "electrs2-end" ; debug "finished electrs install"
 
 success "electrs" "being installed"
 
