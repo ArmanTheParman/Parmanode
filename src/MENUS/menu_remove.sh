@@ -184,6 +184,12 @@ echo "#                                    (ersd)             Electrs Docker    
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
 echo "#                                    (ersd)             Electrs Dkr (partial)          #
 #                                                                                      #" ; fi
+if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdk2rmenu=1
+echo "#                                    (ersd)             Electrs Docker                 #
+#                                                                                      #"
+elif grep -q "electrsdk2r-start" $HOME/.parmanode/installed.conf ; then electrsdk2rmenu=1
+echo "#                                    (ersd)             Electrs Dkr (partial)          #
+#                                                                                      #" ; fi
 if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
 echo "#                                    (piap)             PiApps                         #
 #                                                                                      #"
@@ -207,6 +213,12 @@ echo "#                                    (tssh)             Tor SSH           
 #                                                                                      #"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo "#                                    (tssh)             Tor SSH (partial)              #
+#                                                                                      #" ; fi
+if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2menu=1
+echo "#                                    (ers)              electrs                        #
+#                                                                                      #"
+elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
+echo "#                                    (ers)              electrs (partial)              #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -327,6 +339,11 @@ if [[ $electrsmenu == 1 ]] ; then
 	uninstall_electrs
 	return
 	fi
+	
+if [[ $electrs2menu == 1 ]] ; then
+	uninstall_electrs2
+	return
+	fi
 	;;
 lnb|LNB|Lnb)
 if [[ $lnbitsmenu == 1 ]] ; then
@@ -389,6 +406,10 @@ fi
 ersd|ERSD|Ersd)
 if [[ $electrsdkrmenu == 1 ]] ; then
 uninstall_electrs_docker
+return
+fi
+if [[ $electrsdkrmenu == 2 ]] ; then
+uninstall_electrs_docker2
 return
 fi
 ;;

@@ -1,4 +1,4 @@
-function uninstall_electrs_docker {
+function uninstall_electrs_docker2 {
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -31,7 +31,7 @@ docker rmi electrs
 # Uninstall - electrs_db
 
 if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs_db" ; fi
-if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
+if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/.electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
 set_terminal ; echo -e "
@@ -85,6 +85,6 @@ mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                  
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
-installed_config_remove "electrsdkr" 
+installed_config_remove "electrsdkr2" 
 success "electrs" "being uninstalled."
 }

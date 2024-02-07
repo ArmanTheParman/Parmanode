@@ -1,10 +1,10 @@
-function uninstall_electrs_docker {
+function uninstall_electrs {
 
-set_terminal ; echo -e "
+set_terminal ; echo "
 ########################################################################################
-$cyan
-                            Uninstall electrs (Docker)
-$orange
+
+                                 Uninstall electrs 
+
     Are you sure? (y) (n)
 
 ########################################################################################
@@ -18,20 +18,57 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-source $pc
+source $HOME/.parmanode/parmanode.conf
+
+# Uninstall binary backup
+
+if [ -d $HOME/.electrs_backup ] ; then 
+while true ; do
+    set_terminal
+    echo -e "
+########################################################################################
+
+    A$cyan backup$orange of electrs directory has been found in addition to the 
+    current electrs installation (${cyan}$HOME/.electrs_backup$orange)
+    
+    Keeping the backup can save you time compiling it all again if you choose to 
+    re-install electrs.
+
+    REMOVE the backup too? 
+$red
+                        R)      Remove
+$green                        
+                        L)      Leave it
+$orange
+######################################################################################## 
+"
+    read choice
+    set_terminal
+    case $choice in
+    R|r) 
+    are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
+    please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
+    L|l) 
+    please_wait ; break ;;
+    *) invalid ;;
+    esac
+done
+fi
 
 electrs_nginx remove 
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
-docker stop electrs
-docker rm electrs
-docker rmi electrs
+if [[ $OS == Linux ]] ; then
+sudo systemctl stop electrs.service >/dev/null 2>&1
+sudo systemctl disable electrs.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
+fi
 
 # Uninstall - electrs_db
 
 if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs_db" ; fi
-if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
+if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/.electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
 set_terminal ; echo -e "
@@ -85,6 +122,6 @@ mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                  
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
-installed_config_remove "electrsdkr" 
+installed_config_remove "electrs2-" 
 success "electrs" "being uninstalled."
 }

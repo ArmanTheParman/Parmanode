@@ -1,4 +1,4 @@
-function start_electrs {
+function start_electrs { #non-docker function
 
 please_wait
 if [[ $OS == Linux ]] ; then 

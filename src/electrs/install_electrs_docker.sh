@@ -43,7 +43,7 @@ set_terminal ; please_wait
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
 debug "check build for errors"
-installed_config_add "electrsdkr-start"
+installed_config_add "electrsdkr2-start"
 
 make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
 # electrs_nginx add
@@ -88,7 +88,7 @@ docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parma
 debug "pause after run and chown"
 docker_start_electrs || return 1
 debug "pause after start"
-installed_config_add "electrsdkr-end"
+installed_config_add "electrsdkr2-end"
 unset install_electrs_docker
 success "electrs in Docker" "being installed"
 
