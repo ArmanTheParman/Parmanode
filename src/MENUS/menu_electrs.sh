@@ -4,7 +4,6 @@ logfile=$HOME/.parmanode/run_electrs.log
 
 while true ; do
 unset log_size electrs_sync
-menu_electrs_status
 
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
@@ -13,6 +12,7 @@ set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
+menu_electrs_status
 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
