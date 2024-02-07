@@ -13,6 +13,7 @@ else
     true #do nothing, sturctured so for readability.
     fi
 fi
+debug "electrs is $electrsis. logfile is $logfile"
 
 while true ; do
 unset log_size 
@@ -57,6 +58,12 @@ fi
 if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "electrs" >/dev/null 
 fi
+
+debug "electrs_version is $electrs_version
+log size is $log_size
+electrsis is $electrsis
+electrs_sync is $electrs_sync
+"
 
 set_terminal_custom 50
 
