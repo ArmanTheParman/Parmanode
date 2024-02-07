@@ -263,7 +263,7 @@ trl|Trl|TRL)
    ;;
 ersd|Ersd|ERSD)
    if [[ $electrsdkrapp == 1 ]] ; then
-   menu_electrs_docker
+   menu_electrs
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;

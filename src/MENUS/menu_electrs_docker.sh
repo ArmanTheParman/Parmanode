@@ -1,30 +1,11 @@
 function menu_electrs_docker {
-logfile="/home/parman/run_electrs.log"
-while true ; do
-unset log_size
-set_terminal
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version
-source $dp/parmanode.conf >/dev/null 2>&1
-if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
-    if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if sudo test -e /var/lib/tor/electrs-service  && \
-        sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
-        E_tor="${green}on${orange}"
-        E_tor_logic=on
-        fi
-    else
-        E_tor="${red}off${orange}"
-        E_tor_logic=off
-    fi
-fi
 
-#check it's running
-if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
-electrs_version=$(docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
-log_size=$(docker exec -it electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
-log_size=$(echo $log_size | tr -d '\r\n')
-if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version ; fi
-fi
+
+logfile="/home/parman/run_electrs.log"
+
+
+
+
 set_terminal_custom 50
 debug "electrs version, $electrs_version"
 
@@ -37,19 +18,7 @@ if [[ $log_size -gt 100000000 ]] ; then echo -e "$red
     THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
     $orange"
 fi
-if [[ -n $electrs_version ]] ; then echo -e "
-                   ELECTRS IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS 
 
-                         Sync'ing to the $cyan$drive_electrs$orange drive
-
-      127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
-"
-else
-echo -e "
-                   ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
-
-                         Will sync to the $cyan$drive_electrs$orange drive"
-fi
 echo "
 
 
@@ -174,7 +143,6 @@ echo "
 enter_continue
 nano $HOME/.electrs/config.toml
  
-continue
 ;;
 
 up|UP|Up|uP)
@@ -194,7 +162,6 @@ tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off ]] ; then
 electrs_tor
-debug "line 195, meun docker electrs, in E_tor_logic"
 else
 electrs_tor_remove
 fi
@@ -211,16 +178,6 @@ esac
 done
 
 return 0
-}
-
-function waif4bitcoin {
-
-menu_bitcoin_status >/dev/null 2>&1
-if ! echo $running_text | grep -q "fully"  ; then
-announce "Bitcoin needs to be fully synced and running first"
-return 1
-fi
-
 }
 
 
