@@ -13,7 +13,7 @@ set_terminal_custom $((num + 2))
 unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu mempoolmenu 
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
-unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu
+unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
 
 echo -e "
 ########################################################################################
