@@ -32,10 +32,10 @@ if ! gpg --verify --status-fd 1 electrum*.asc electrum*.dmg 2>&1 | grep "GOOD" ;
     fi
 
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    The Electrum download has been successfullty verified with pgp
+    The Electrum download has been verified with pgp$green successfully$orange
 
 ########################################################################################
 "

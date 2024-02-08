@@ -67,13 +67,13 @@ Host *.onion
 	ProxyCommand nc -x localhost:9050 -X 5 %h %p
 EOF
 fi
-clear
+set_terminal
 echo -e "
 ########################################################################################
 
     Please wait...
 $cyan
-    A Tor service is being created.
+    A Tor service wil be created.
 $orange
     If you are waiting longer than$red 2 minutes$orange, something has gone wrong.
 
@@ -83,9 +83,6 @@ $orange
 
 ########################################################################################
 "
-enter_continue
-
-
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
