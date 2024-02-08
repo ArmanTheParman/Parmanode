@@ -9,9 +9,9 @@ while true ; do
 set_terminal
 echo -e "
 ########################################################################################
-
+$cyan
                                     Homebrew
-
+$orange
    Parmanode will install Homebrew on your computer...
 
    Homebrew is a package manager (a program that manages certain other programs' 
@@ -43,11 +43,6 @@ log "parmanode" "Installing homebrew..."
 install_homebrew && return 0
 
 set_terminal
-
-# announce takes 1 or 2 arguments and prints on a separate line each with 
-# a nice border above and below. The \ at the end of the line continues the code
-# ont he second line as if there is no new line.
-# announce also includes an enter_continue command.
 
 # the log function creates a file named argument 1 followed by log. Eg, below,
 # the file will be parmanode.log. It will append argument two to the log file 

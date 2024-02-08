@@ -3,7 +3,7 @@ clear
 echo -e "
 ########################################################################################
 
-    Installing Homebrew package manager for Mac. 
+    Installing$cyan Homebrew$orange package manager for Mac. 
 
     This can take a while, sometimes with very litte feedback during the process. 
 
