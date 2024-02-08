@@ -10,8 +10,8 @@ set_terminal ; echo -e "
                                    ${cyan}Electrum Menu${orange}
 ########################################################################################
 $cyan
-                        ELECTRUM CONNECTION TYPE: $connection
-$orange
+                        ELECTRUM CONNECTION TYPE: $green$connection$orange
+
 
             start)    Start Electrum (opens in its own window)
          
