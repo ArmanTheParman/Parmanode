@@ -2,8 +2,8 @@ function mentorship {
 
 set_terminal_bit_higher ; echo -e "
 ########################################################################################
-
-                       $cyan         Mentorship with Parman$orange
+$cyan
+                           Mentorship with Parman$orange
                                 
                                 
     Need help with Bitcoin security, self-custody, and inheritance?
