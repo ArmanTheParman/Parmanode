@@ -10,7 +10,7 @@
 
 function enter_continue {
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read enter_cont ; export enter_cont
 return 0
 }
 
