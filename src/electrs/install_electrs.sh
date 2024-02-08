@@ -1,5 +1,5 @@
 function install_electrs {
-
+export install_electrs_docker=false
 source $pc $ic >/dev/null 2>&1
 
 grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second instance of electrs.
