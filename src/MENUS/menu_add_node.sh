@@ -24,9 +24,7 @@ echo -e "
 #$cyan Not yet installed... $orange                                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
-if [[ -n $electrs_n ]]         ; then echo  "$electrs_n"; fi
 if [[ -n $electrs2_n ]]         ; then echo  "$electrs2_n"; fi
-if [[ -n $electrsdkr_n ]]      ; then echo  "$electrsdkr_n"; fi
 if [[ -n $electrsdkr2_n ]]      ; then echo  "$electrsdkr2_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
