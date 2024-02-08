@@ -1,4 +1,10 @@
 function install_electrs_docker {
+# Docker container runs with tor daemon for CMD
+# Starting electrs and nginx happens with a function call after container started.
+# Data is synced to /electrs_db inside container.
+# External drive sync is volume mounted directly to external drive
+# Internal drive sync is mounted to $HOME/.electrs
+
 unset install_electrs_docker
 export install_electrs_docker=true # used later to fork make config code.
 
@@ -47,12 +53,9 @@ docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker bu
 debug "check build for errors"
 installed_config_add "electrsdkr2-start"
 
-make_ssl_certificates ; log "electrsdkr" "make ssl certs done"
-# electrs_nginx add
 
 #prepare drives
 choose_and_prepare_drive "Electrs" && log "electrsdkr" "choose and prepare drive function borrowed"
-debug "after build"
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrs == "external" && $drive == "external") || \
@@ -84,11 +87,21 @@ debug "after restore internal electrs db"
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
 debug "pause after config"
+
+#Start the container
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
 debug "after docker run electrs"
+
+#Set permissions
 docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parmanode/electrs/"
 debug "pause after run and chown"
-docker_start_electrs || return 1
+
+#Nginx
+make_ssl_certificates electrsdkr
+electrs_nginx electrsdkr
+
+#Run electrs and Nginx in the container
+docker_start_electrs || return 1 
 debug "pause after start"
 
 installed_config_add "electrsdkr2-end"
