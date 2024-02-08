@@ -23,7 +23,6 @@ set_terminal_custom "52"
 menu_bitcoin_status
 debug2 "24"
 isbitcoinrunning
-debug2 "26"
 source $oc
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
@@ -230,12 +229,13 @@ return 0
 }
 
 function menu_bitcoin_status {
-debug 2 "232"
+debug2 "232"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
 export height=$(tail -n200 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ') >/dev/null 2>&1
 #set $running_text
+debug2 "after export height, height is $height"
 if [[ -n $height ]] ; then
 export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
