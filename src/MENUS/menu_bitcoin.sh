@@ -21,8 +21,9 @@ debug2 "before bitcoin set terminal"
 set_terminal_custom "52"
 
 menu_bitcoin_status
-
+debug2 "24"
 isbitcoinrunning
+debug2 "26"
 source $oc
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
 
@@ -229,6 +230,7 @@ return 0
 }
 
 function menu_bitcoin_status {
+debug 2 "232"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
@@ -238,13 +240,13 @@ if [[ -n $height ]] ; then
 export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
 export running_text="$($HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
-debug3
+debug2 "242"
 elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" ; then
 export running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
 #elif ... Waiting 300 seconds before querying DNS seeds
 else export running_text="-- status ...type r to refresh, or see log" 
 fi
-debug3
+debug2 a"248"
 if [[ -n $height ]] ; then
     if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
     export running_text="-- height=$height (fully sync'd)"
@@ -255,12 +257,12 @@ if [[ -n $height ]] ; then
     export running_text="-- height=$height ($pc)"
     fi
 fi
-debug3
+debug2 "259"
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
 return 0
 fi
-debug3
+debug2 "264"
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
 return 0
