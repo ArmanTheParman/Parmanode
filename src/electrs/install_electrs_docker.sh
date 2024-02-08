@@ -90,6 +90,7 @@ docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parma
 debug "pause after run and chown"
 docker_start_electrs || return 1
 debug "pause after start"
+
 installed_config_add "electrsdkr2-end"
 unset install_electrs_docker
 success "electrs in Docker" "being installed"
