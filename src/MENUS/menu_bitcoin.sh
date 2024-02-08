@@ -2,7 +2,7 @@ function menu_bitcoin {
 
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
-
+debug2 "pause 5"
 while true
 do
 unset start stop output1 output2 highlight 
@@ -17,7 +17,7 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     trick did the trick."
 fi
 
-debug "before bitcoin set terminal"
+debug2 "before bitcoin set terminal"
 set_terminal_custom "52"
 
 menu_bitcoin_status
@@ -239,14 +239,14 @@ export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
 export running_text="$($HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
 
-elif tail -n2 $HOME/.bitcoin/debug.log | grep "thread start" ; then
+elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" ; then
 export running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')"
 #elif ... Waiting 300 seconds before querying DNS seeds
 else export running_text="-- status ...type r to refresh, or see log" 
 fi
 
 if [[ -n $height ]] ; then
-    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -E 'progress=1.00' >/dev/null 2>&1 ; then
+    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
     export running_text="-- height=$height (fully sync'd)"
     else
     temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'progress=0\.[0-9]+\s' | cut -d \. -f 2)
@@ -256,12 +256,12 @@ if [[ -n $height ]] ; then
     fi
 fi
 
-if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Pre-synchronizing blockheaders' ; then
+if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
 return 0
 fi
 
-if tail -n1 $HOME/.bitcoin/debug.log | grep -Eo "Synchoronizing blockheaders" ; then
+if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
 return 0
 fi
