@@ -19,7 +19,6 @@ start|Start|START|S|s)
 check_SSH || return 0
 please_wait ; echo "" ; echo "A Ledger Live window should open soon."
 run_ledger
-enter_continue
 return 0 ;;
 
 *)
