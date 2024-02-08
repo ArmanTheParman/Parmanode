@@ -1,5 +1,5 @@
 function uninstall_ledger {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                Uninstall Ledger Live 
