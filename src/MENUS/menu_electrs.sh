@@ -29,18 +29,28 @@ source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
 menu_electrs_status # get elecyrs_sync variable (block number)
 
-if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
+#Tor status
+if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/electrs-service ]] && \
         sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
         fi
+
+        if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+        get_onion_address_variable "electrs" >/dev/null 
+        fi
     else
         E_tor="${red}off${orange}"
         E_tor_logic=off
     fi
 fi
+
+if [[ $electrsis == docker ]] ; then
+        ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
+fi
+
 
 #Get version
 if [[ $electrsis == docker ]] ; then
@@ -55,9 +65,7 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
 fi
 
-if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "electrs" >/dev/null 
-fi
+
 
 debug "electrs_version is $electrs_version
 log size is $log_size
@@ -81,16 +89,16 @@ if [[ $electrsis == nondocker ]] ; then
 if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($cyan$drive_electrs$orange drive)
+      STATUS:     $green$electrs_sync$orange ($pink$drive_electrs$orange drive)
 
-      CONNECT:    127.0.0.1:50005:t    $yellow (From this computer only)$orange
-                  127.0.0.1:50006:s    $yellow (From this computer only)$orange 
-                  $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
+      CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
+              $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
+              $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
                   "
       if [[ -z $ONION_ADDR_ELECTRS ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       else
-         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004 $orange
+         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
 else #electrs running or not
@@ -109,13 +117,14 @@ fi
 if docker exec electrs bash -c "ps -x" 2>/dev/null | grep electrs | grep -q conf && ! tail -n 7 $logfile | grep -q 'electrs failed' ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($cyan$drive_electrs$orange drive)
+      STATUS:     $green$electrs_sync$orange ($pink$drive_electrs$orange drive)
 
-      CONNECT:
-
-      127.0.0.1:50005:t    or    127.0.0.1:50006:s    or    $IP:50006:s
-$bright_blue      127 IP from this computer only$orange
-"
+      CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
+              $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
+              $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
+                  "
+         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
+         $yellow \e[G\e[41G(From any computer in the world)$orange"
 else
 echo -e "
                    ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
@@ -146,7 +155,7 @@ echo "
 
       (dc)       electrs database corrupted? -- Use this to start fresh."
 
-if [[ $OS == Linux ]] ; then echo -e "
+if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 " 
 fi
