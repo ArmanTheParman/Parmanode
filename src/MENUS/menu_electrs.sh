@@ -13,7 +13,6 @@ else
     true #do nothing, sturctured so for readability.
     fi
 fi
-debug "electrs is $electrsis. logfile is $logfile"
 
 while true ; do
 unset log_size 
@@ -28,7 +27,7 @@ set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
-#menu_electrs_status # get elecyrs_sync variable (block number)
+menu_electrs_status # get elecyrs_sync variable (block number)
 
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
@@ -102,7 +101,7 @@ echo -e "
 fi #end electrs running or not
 
 else #electrs is docker
-if docker exec electrs bash -c "ps -x" | grep electrs | grep -q conf && ! tail -n 10 $logfile | grep -q 'electrs failed' ; then echo -e "
+if docker exec electrs bash -c "ps -x" | grep electrs | grep -q conf && ! tail -n 7 $logfile | grep -q 'electrs failed' ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($cyan$drive_electrs$orange drive)
@@ -246,7 +245,6 @@ echo "
 enter_continue
 fi
 if [[ $electrsis == docker ]] ; then 
-    debug "in if electrsisdocker == docker, LOG"
     set_terminal_wider
     docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
         # tail_PID=$!
@@ -311,7 +309,6 @@ exit 0
 ;;
 
 tor|TOR|Tor)
-debug "line 215, before ifs"
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off || -z $E_tor_logic ]] ; then
 electrs_tor
@@ -353,22 +350,19 @@ bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 if [[ $bsync == true ]] ; then
 
     export electrs_sync="Bitcoin still sync'ing"
-    debug "still sycing"
 
 elif [[ $bsync == false ]] ; then
-    debug "ibd done"
     #fetches block number...
-    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]' >/dev/null)
-    debug "$electrs_sync electrs sync"
+    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
 
     #in case an unexpected non-number string, printout, otherwise check if full synced.
     if ! echo $electrs_sync | grep -qE '^[0-9]+$' >/dev/null ; then
 
-        echo "electrs sync: $electrs_sync" | tee -a $dp/electrs.log 
+        debug "electrs sync: $electrs_sync, line 361" 
         export electrs_sync="Wait...$orange"
 
     else 
-
+        debug "electrs sync: $electrs_sync, line 3365" 
         bblock=$(echo $gbci | jq -r ".blocks")    
 
         if [[ $bblock == $electrs_sync ]] ; then
@@ -381,6 +375,5 @@ elif [[ $bsync == false ]] ; then
     if [[ -z $electrs_sync ]] ; then
         export electrs_sync="Wait...$orange"
     fi
-debug "end sync"
 fi
 }
