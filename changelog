@@ -1,6 +1,7 @@
 Version 3.28.1
     -jq patch
     -Tor for Mac docker electrs
+    -smol bugs
 Version 3.28.0
     -Electrs docker and nondocker refactoring, Mac & Linux
 Version 3.27.0
