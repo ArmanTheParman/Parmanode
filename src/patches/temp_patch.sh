@@ -27,7 +27,7 @@ $orange
 choose "xq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) previous ;; n|N) break ;;
-yes)
+y|yes)
 if [[ $OS == Mac ]] && ! which brew >/dev/null ; then
 announce "To install jq, Parmanode needs to install HomeBrew first. You can abandon
     this in the next screen, and next time install jq your self if you want."
