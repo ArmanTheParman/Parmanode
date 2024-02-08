@@ -20,7 +20,6 @@ start|Start|START|S|s)
 check_SSH || return 0
 please_wait ; echo "" ; echo "A BitBox App window should open soon."
 run_bitbox
-enter_continue
 return 0 ;;
 
 *)

@@ -49,7 +49,6 @@ start|Start|START|S|s)
 check_SSH || return 0
 check_wallet_connected "Electrum"
 run_electrum
-enter_continue
 return 0 ;;
 
 fs|FS)
