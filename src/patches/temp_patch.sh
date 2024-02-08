@@ -12,7 +12,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has detected that you have electrs installed, and due to some
-    recent electrs menu improvements, you need to install jq to make it display nice.
+    recent electrs menu improvements, you need to install$cyan jq$orange to make it display nice.
     
     Do that now?
 $green
