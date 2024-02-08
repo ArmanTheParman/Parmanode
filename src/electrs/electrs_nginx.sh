@@ -48,10 +48,11 @@ stream {
                 ssl_prefer_server_ciphers on;
         }
 }
-# Parmanode - flag electrs-END" | sudo tee -a /tmp/nginx_conf >/dev/null 2>&1
+# Parmanode - flag electrs-END" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
 
 if [[ $1 == electrsdkr ]] ; then
-cat /tmp/nginx_conf | docker exec -iu root electrs tee -a $nginx_conf >/dev/null 2>&1
+cat /tmp/nginx_conf | docker exec -iu root electrs bash -c "tee -a $nginx_conf >/dev/null 2>&1"
+debug "after cat | docker tee"
 return 0
 fi
 
