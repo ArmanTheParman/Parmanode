@@ -20,8 +20,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 source $pc
 
-electrs_nginx remove 
-
+#might not be needed. Review when refactoring.
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
 docker stop electrs

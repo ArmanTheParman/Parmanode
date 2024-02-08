@@ -5,6 +5,7 @@ function electrs_nginx {
 if [[ $1 = "remove" ]] ; then
     if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
                                  sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+    #redundant, and, causing errors; should never run. 
     if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
                                  brew services restart nginx >/dev/null 2>&1 ; fi
 return 0
@@ -51,6 +52,7 @@ stream {
 # Parmanode - flag electrs-END" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
 
 if [[ $1 == electrsdkr ]] ; then
+debug "before cat | docker tee"
 cat /tmp/nginx_conf | docker exec -iu root electrs bash -c "tee -a $nginx_conf >/dev/null 2>&1"
 debug "after cat | docker tee"
 return 0

@@ -12,10 +12,6 @@ source $pc $ic >/dev/null 2>&1
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
-"Aborting" ; return 1 ; } 
-fi
-
 grep -q "docker-end" < $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
 
 if [[ $OS == Mac ]] ; then announce "Please make sure docker is running at least in the background, or
