@@ -102,7 +102,7 @@ echo -e "
 fi #end electrs running or not
 
 else #electrs is docker
-if docker exec electrs bash -c "ps -x | grep electrs | grep -q conf && ! tail -n 10 $logfile | grep -q 'electrs failed'" >/dev/null 2>&1 ; then echo -e "
+if docker exec electrs bash -c "ps -x" | grep electrs | grep -q conf && ! tail -n 10 $logfile | grep -q 'electrs failed' ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($cyan$drive_electrs$orange drive)
