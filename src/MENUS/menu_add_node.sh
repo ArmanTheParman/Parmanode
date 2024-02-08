@@ -139,6 +139,7 @@ m|M) back2main ;;
          install_electrs_docker
          return 0
       fi
+      debug "no if"
       ;;
 
    mem|MEM|Mem) 
