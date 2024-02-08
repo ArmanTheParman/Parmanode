@@ -1,0 +1,6 @@
+ControlPort 9051
+CookieAuthentication 1
+CookieAuthFileGroupReadable 1
+DataDirectoryGroupReadable 1
+HiddenServiceDir /var/lib/tor/electrs-service/
+HiddenServicePort 7004 127.0.0.1:50005

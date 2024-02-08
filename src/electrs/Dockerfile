@@ -14,4 +14,9 @@ RUN mkdir -p /home/parman/parmanode
 RUN cd /home/parman/parmanode && git clone --depth 1 https://github.com/romanz/electrs
 RUN cd /home/parman/parmanode/electrs && cargo build --locked --release
 
-CMD tail -f /dev/null
+USER root
+RUN apt-get install nginx -y
+RUN apt-get update --fix-missing
+RUN apt-get install tor -y
+COPY Dockerfile_torrc /etc/tor/torrc
+CMD tor
