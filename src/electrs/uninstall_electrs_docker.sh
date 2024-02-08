@@ -20,7 +20,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 source $pc
 
+if ! grep -q electrsdkr < $ic >/dev/null 2>&1 || ! grep -q electrsdkr2 <$ic >/dev/null 2>&1 ; then
 electrs_nginx remove 
+fi
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
