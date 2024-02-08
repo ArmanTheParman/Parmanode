@@ -2,7 +2,6 @@ function menu_bitcoin {
 
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
-debug2 "pause 5"
 while true
 do
 unset start stop output1 output2 highlight 
@@ -17,11 +16,9 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     trick did the trick."
 fi
 
-debug2 "before bitcoin set terminal"
 set_terminal_custom "52"
 
 menu_bitcoin_status
-debug2 "24"
 isbitcoinrunning
 source $oc
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
@@ -229,29 +226,23 @@ return 0
 }
 
 function menu_bitcoin_status {
-debug2 "232"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' >/dev/null 2>&1)" 
 #set $running_text
-debug2 "after export height, height is $height"
 
 if [[ -n $height ]] ; then
 export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
 export running_text="$($HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
 elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" >/dev/null 2>&1 ; then
-debug2 "244"
 export 
 running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
-debug2 "247"
 #elif ... Waiting 300 seconds before querying DNS seeds
 else 
-debug2 "250505050"
 export running_text="-- status ...type r to refresh, or see log"
 fi
-debug2 "252"
 if [[ -n $height ]] ; then
     if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
     export running_text="-- height=$height (fully sync'd)"
@@ -262,12 +253,10 @@ if [[ -n $height ]] ; then
     export running_text="-- height=$height ($pc)"
     fi
 fi
-debug2 "259"
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
 return 0
 fi
-debug2 "264"
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
 return 0
