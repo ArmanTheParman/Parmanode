@@ -1,4 +1,4 @@
-function uninstall_electrs {
+function uninstall_electrs2 {
 
 set_terminal ; echo "
 ########################################################################################
