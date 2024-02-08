@@ -233,7 +233,7 @@ debug2 "232"
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
-export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' >/dev/null 2>&1)" 
+export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' >/dev/null 2>&1)" 
 #set $running_text
 debug2 "after export height, height is $height"
 
