@@ -28,16 +28,18 @@ debug2 "check_for_updates: latest version $latest_version != version $version"
 function old_version_detected {
 if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    The version of Parmanode you are running is not up to date. Would you like to
+    The version of Parmanode you are running is$red not up to date$orange. Would you like to
     update Parmanode now? 
-
+$green
                 y)         Yes
-                
+     $orange           
                 n)         No 
-    
+$pink
+                on)        Turn on auto-updates
+$orange 
     The apps you have already installed will not be changed.
 
 ########################################################################################
@@ -46,6 +48,9 @@ choose "xq" ; read choice
 case $choice in
 N|no|NO|No|n) return 0 ;;
 y|Y|YES|Yes|yes) update_parmanode dontask ; return 0 ;;
+on)
+autoupdate on
+;;
 *) invalid ;;
 esac
 done
