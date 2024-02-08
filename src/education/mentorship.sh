@@ -37,78 +37,95 @@ set_terminal_bit_higher ; echo -e "
             Inheritance planning
 
 ########################################################################################
-" ; enter_continue ; clear ; set_terminal_bit_higher ; echo "                       
+"
+choose "epmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
+esac
+
+set_terminal ; echo -e "
 ########################################################################################
 
-Reference #1: Identity is hidden for privacy, but available on request, on a 
-case-by-case basis.
+    Reference #1: Identity is hidden for privacy, but available on request, on a 
+    case-by-case basis.
 
-Subject: Re: Reference for Parman (BTC mentorship program)
+    Subject: Re: Reference for Parman (BTC mentorship program)
 
-Hi ZZZZ,
+    Hi ZZZZ,
 
-Thank you for your email. A few months ago I completed my mentorship with Parman. 
-I already had a relatively high level of knowledge both in theory and in practice, 
-but I had reached the maximum I could learn by myself and I realised that I needed a 
-more complete, structural approach with particular focus on privacy and security.
+    Thank you for your email. A few months ago I completed my mentorship with Parman. 
+    I already had a relatively high level of knowledge both in theory and in practice, 
+    but I had reached the maximum I could learn by myself and I realised that I needed a 
+    more complete, structural approach with particular focus on privacy and security.
 
-Parman’s site was by far the best one I ever found, therefore I did not hesitate 
-one moment to apply for a mentorship. It turned out to be the money best spent in 
-years. Thanks to Parman I learned everything I needed to and more. Parman is an 
-absolutely great teacher (being myself a university professor, I know something 
-about it): he’s patient, focused on the essential, he manages to make complicated 
-things very simple. In addition, he’s an extremely kind person. His in-depth 
-technical knowledge about Bitcoin and his privacy/security standards in how to use 
-Bitcoin are, I believe, the maximum that you can get on the market. Therefore, my 
-answer to your first question is that I was extremely happy with his services.
+    Parman’s site was by far the best one I ever found, therefore I did not hesitate 
+    one moment to apply for a mentorship. It turned out to be the money best spent in 
+    years. Thanks to Parman I learned everything I needed to and more. Parman is an 
+    absolutely great teacher (being myself a university professor, I know something 
+    about it): he’s patient, focused on the essential, he manages to make complicated 
+    things very simple. In addition, he’s an extremely kind person. His in-depth 
+    technical knowledge about Bitcoin and his privacy/security standards in how to use 
+    Bitcoin are, I believe, the maximum that you can get on the market. Therefore, my 
+    answer to your first question is that I was extremely happy with his services.
 
-The Zoom sessions worked great for me because they were flexible (which was exactly 
-what I needed): they lasted the time needed for the topic discussed (no more and 
-no less); we fixed the appointments when we were both available. Without this 
-flexibility I probably would not have managed to complete the mentorship and 
-certainly I would have enjoyed it much less. The membership process lasted 
-approximately two months, give or take (more intense at the beginning, spontaneously 
-less intense towards the end)…. My level of privacy and security (and therefore my 
-confidence) in my use of Bitcoin increased enormously after this mentorship: even 
-more than I expected. I warmly recommend him.
+    The Zoom sessions worked great for me because they were flexible (which was exactly 
+    what I needed): they lasted the time needed for the topic discussed (no more and 
+    no less); we fixed the appointments when we were both available. Without this 
+    flexibility I probably would not have managed to complete the mentorship and 
+    certainly I would have enjoyed it much less. The membership process lasted 
+    approximately two months, give or take (more intense at the beginning, spontaneously 
+    less intense towards the end)…. My level of privacy and security (and therefore my 
+    confidence) in my use of Bitcoin increased enormously after this mentorship: even 
+    more than I expected. I warmly recommend him.
 
-Kind regards,
+    Kind regards,
 
-YYYY
+    YYYY
 
 ########################################################################################
 "
-enter_continue ; clear ; set_terminal_bit_higher ; echo "
+choose "epmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
+esac
+
+set_terminal ; echo -e "
 ########################################################################################
 
-Reference #2: Identity is hidden for privacy, but available on request, on a 
-case-by-case basis.
+    Reference #2: Identity is hidden for privacy, but available on request, on a 
+    case-by-case basis.
 
-Subject: Reference for Parman (BTC Mentorship Program)
+    Subject: Reference for Parman (BTC Mentorship Program)
 
-Hi ZZZZ,
+    Hi ZZZZ,
 
-Glad to answer your questions regarding our experience with Parman. We had a unique 
-situation that Parman helped navigate us through. He was very patient and kind as he 
-helped us secure our bitcoin and he gave us sound advice on how to proceed with our 
-situation. The Zoom sessions were easy, no problems. I can’t really answer your 
-questions on how long the mentorship program took as our situation was unique, 
-although we are going to send our son through his mentorship program this summer. 
-Parman was very careful with our private information, often reminding us not to 
-reveal too much.
+    Glad to answer your questions regarding our experience with Parman. We had a 
+    unique situation that Parman helped navigate us through. He was very patient and 
+    kind as he helped us secure our bitcoin and he gave us sound advice on how to 
+    proceed with our situation. The Zoom sessions were easy, no problems. I can’t 
+    really answer your questions on how long the mentorship program took as our 
+    situation was unique, although we are going to send our son through his 
+    mentorship program this summer. Parman was very careful with our private 
+    information, often reminding us not to reveal too much.
 
-All that being said, I can wholeheartedly recommend Parman’s mentorship program. 
-He is a rare man of intellect and integrity. He is also very patient and 
-understanding. We had a great experience and learned quite a bit.
+    All that being said, I can wholeheartedly recommend Parman’s mentorship program. 
+    He is a rare man of intellect and integrity. He is also very patient and 
+    understanding. We had a great experience and learned quite a bit.
 
-Hope this helps, if I can answer any more questions, let me know.
+    Hope this helps, if I can answer any more questions, let me know.
 
-Kind regards,
+    Kind regards,
 
-WWWW
+    WWWW
 
 ########################################################################################                                
-" ; enter_continue ; clear ; set_terminal ; echo "
+"
+choose "epmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
+esac
+
+set_terminal ; echo -e "
 ########################################################################################                            
 
                         Contact Arman The Parman for more info:
