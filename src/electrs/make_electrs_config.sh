@@ -29,6 +29,5 @@ auth = \"$rpcuser:$rpcpassword\"
 if [[ $install_electrs_docker == true && $OS == Mac ]] ; then #mac has funny networking.
 swap_string "$file" "daemon_rpc_addr" "daemon_rpc_addr = \"host.docker.internal:8332\""
 swap_string "$file" "daemon_p2p_addr" "daemon_p2p_addr = \"host.docker.internal:8333\""
-swap_string "$file" "electrum_rpc_addr" "electrum_rpc_addr = \"host.docker.internal:50005\""
 fi
 }
