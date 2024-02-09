@@ -78,7 +78,7 @@ return 0
 }
 
 function electrum_wallet_info {
-set_terminal_wide
+set_terminal_big
 echo -e "
 ##############################################################################################################
 $cyan
@@ -123,10 +123,10 @@ $green
         Note that electrs installed via Parmanode has a different port (to avoid conflicts with Fulcrum). It
         is 50005 for TCP, and 50006 for SSL.
 
-    At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
-    to 1, you should try to fix that (f). Parmanode will do that automatically if you use it to install
-    Electrum, but otherwise, you need to manually edit the Electrum config file, and change 
-    'onserver=false' to 'oneserver=true'
+        At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
+        to 1, you should try to fix that (f). Parmanode will do that automatically if you use it to install
+        Electrum, but otherwise, you need to manually edit the Electrum config file, and change 
+        'onserver=false' to 'oneserver=true'
 
 ##############################################################################################################
 
@@ -141,11 +141,11 @@ return 0
 
 function electrum_one_server {
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
-
+$cyan
                                   Connect Electrum to One Server Only
-
+$orange
     Unfortunately, this is harder than it needs to be.
 
     You MUST open a Wallet in Electrum at least once. Even a dummy/discardable wallet will do. This will
@@ -168,11 +168,11 @@ return 0
 
 function specter_wallet_info {
 set_terminal_wide
-echo "
+echo -e "
 ##############################################################################################################
-                        
+    $cyan                  
                                         Specter Desktop Wallet:
-
+$orange
     Newer versions of Specter now allow you to connect not only to Bitcoin Core directly, but to an 
     Electrum (Fulcrum) server as well. 
     
