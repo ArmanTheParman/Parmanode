@@ -277,7 +277,6 @@ if [[ $OS == Mac ]] ; then
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
-    menu_electrs #this is so the status refreshes 
 fi
 
 if [[ $OS == "Linux" ]] ; then
@@ -291,6 +290,7 @@ if [[ $OS == "Linux" ]] ; then
     menu_electrs #this is so the status refreshes 
 fi
 fi # end electrsis
+menu_electrs #this is so the status refreshes 
 ;;
 
 ec|EC|Ec|eC)
