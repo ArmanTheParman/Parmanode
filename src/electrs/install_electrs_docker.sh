@@ -80,7 +80,8 @@ debug "before prepare_dirve_electrs"
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
 debug "pause after prepare_drive_electrs"
 #if it exists, test inside function
-restore_internal_electrs_db || return 1
+restore_internal_electrs_db || return 1 ; if [[ $drive_electrs == internal ]] && [[ ! -d $HOME/.electrs_db ]] ; then mkdir $HOME/.electrs_bd ; fi
+
 debug "after restore internal electrs db"
 #config
 ########################################################################################

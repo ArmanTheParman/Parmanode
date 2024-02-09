@@ -1,5 +1,15 @@
 function restore_internal_electrs_db {
 
+
+########################################################################################
+########################################################################################
+########################################################################################
+if [[ -e $HOME/.electrs_db_backup ]] ; then
+restore_internal_electrs_db2
+fi
+
+
+
 if [[ ! -e $hp/electrs_db_backup ]] ; then return 0 ; fi
 
 while true ; do
@@ -41,7 +51,7 @@ set_terminal ; echo -e "
 
      a)    Abort, Abort ! 
 
-     b)    Do it anyway, I don't care if I lose what's in $HOME/lelectrs_db
+     b)    Do it anyway, I don't care if I lose what's in $HOME/electrs_db
     
      c)    Abandon the move and just use whats in $HOME/.electrs_db
 
