@@ -62,6 +62,8 @@ return 0
 *) invalid ;;
 esac
 done
+else
+mv $hp/electrs/electrs_db $HOME/
 fi
 ;;
 
