@@ -122,12 +122,12 @@ if docker exec electrs bash -c "ps -x" 2>/dev/null | grep electrs | grep -q conf
       CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
-                  "
-         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
-         $yellow \e[G\e[41G(From any computer in the world)$orange       
 
       DOCKER TOR ONLY:$bright_blue 
-                  This computer has Tor in a container, port 9060 (not 9050)$orange"
+                  This computer has Tor in a container, port 9060 (not 9050)$orange
+                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
+         $yellow \e[G\e[41G(From any computer in the world)$orange      " 
+
 else
 echo -e "
                    ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
