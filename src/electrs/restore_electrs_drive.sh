@@ -22,13 +22,13 @@ set_terminal ; echo -e "
 
     Parmanode found the directory$cyan electrs_db_backup$orange on the external drive. Do you want 
     to use this directory for this installation of electrs?
-
+$green
                 u)         Use it
-
+$red
                 del)       Delete it
-
+$white
                 i)         Ignore it (makes a new database)
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -76,11 +76,11 @@ set_terminal ; echo -e "
 
     Parmanode found the directory$cyan electrs_db$orange on the external drive. Do you want 
     to use this directory for this installation of electrs?
-
+$green
                 u)         Use it
-
+$red
                 del)       Delete it
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
