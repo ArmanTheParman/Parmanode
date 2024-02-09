@@ -9,8 +9,7 @@ grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second 
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-if ! which nginx ; then install_nginx || { announce "Trying to first install Nginx, something went wrong." \
-"Aborting" ; return 1 ; } 
+if ! which nginx ; then install_nginx 
 fi
 
 # check Bitcoin settings
