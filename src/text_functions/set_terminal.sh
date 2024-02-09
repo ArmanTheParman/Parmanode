@@ -22,6 +22,14 @@ printf '\033[8;38;110t'
 return 0
 }
 
+function set_terminal_big {
+
+set_terminal
+printf '\033[8;50;110t'
+
+return 0
+}
+
 function set_terminal_wider {
 
 set_terminal

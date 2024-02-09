@@ -1,10 +1,10 @@
 function uninstall_electrs {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall electrs 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
