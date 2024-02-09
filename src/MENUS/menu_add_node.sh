@@ -3,8 +3,6 @@ set_terminal
 
 while true
 do
-type install_electrs_docker
-debug "before menu add source"
 menu_add_source
 
 ########################################################################################
@@ -136,12 +134,12 @@ m|M) back2main ;;
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
-      source $original_dir/src/electrs/install_electrs_docker.sh
-      type install_electrs_docker
-      debug "before if"
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
-      debug "in if"
+      debug "before install electrs docker"
          install_electrs_docker
+type install_electrs_docker
+debug "before menu add source"
+
          return 0
       fi
       debug "no if"
