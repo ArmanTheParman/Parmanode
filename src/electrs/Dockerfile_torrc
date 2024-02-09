@@ -1,4 +1,5 @@
-ControlPort 9051
+SocksPort 9060
+ControlPort 9061
 CookieAuthentication 1
 CookieAuthFileGroupReadable 1
 DataDirectoryGroupReadable 1
