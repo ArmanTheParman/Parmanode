@@ -142,7 +142,7 @@ m|M) back2main ;;
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
       debug "in if"
          install_electrs_docker
-      debug "afgter ied"
+      debug "after ied"
          return 0
       fi
       debug "no if"
