@@ -23,20 +23,20 @@ set_terminal ; echo -e "
         2)   Stop any services that are communicating with Bitcoin (electrs, Fulcrum
              LND etc)
 
-        2)   Make sure you have the latest version of Parmanode (choose update from
+        3)   Make sure you have the latest version of Parmanode (choose update from
              the main menu).
 
-        3)   Install Bitcoin again (main menu -> add -> bitcoin)
+        4)   Install Bitcoin again (main menu -> add -> bitcoin)
 
-        4)   If you are syncing to the external drive, When prompted for a drive, 
+        5)   If you are syncing to the external drive, When prompted for a drive, 
              choose option 3, 'import previous parmanode drive'.
 
-        5)   Continue the installtion - you'll be given options for which version
+        6)   Continue the installtion - you'll be given options for which version
              you want.
             
-        6)   Run Bitcoin.
+        7)   Run Bitcoin.
 
-        7)   Sit back and relax as we take down the legacy financial system and the
+        8)   Sit back and relax as we take down the legacy financial system and the
              the evil leeches that are running it (Do not call them 'elite').
 
 ########################################################################################
