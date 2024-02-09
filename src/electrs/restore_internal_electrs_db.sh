@@ -1,4 +1,4 @@
-function restore_internal_electrs_db3 {
+function restore_internal_electrs_db {
 
 $file="$hp/electrs/electrs_db"
 $file2="$hp/electrs_db_backup"
