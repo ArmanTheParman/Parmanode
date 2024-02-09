@@ -3,7 +3,7 @@ local file="$HOME/.electrs/config.toml"
 
 mkdir -p $HOME/.electrs >/dev/null 2>&1
 
-if [[ $install_electrs_docker == false ]] ; then
+if [[ $install_electrs_docker_variable == false ]] ; then
 
     if [[ $drive_electrs == external ]] 
     then
