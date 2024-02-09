@@ -1,4 +1,6 @@
 function install_electrs_docker {
+debug "in install_electrs_docker"
+
 # Docker container runs with tor daemon for CMD
 # Starting electrs and nginx happens with a function call after container started.
 # Data is synced to /electrs_db inside container.
