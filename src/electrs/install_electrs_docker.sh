@@ -1,6 +1,6 @@
 function install_electrs_docker {
 type install_electrs_docker
-debug "before check server 1"
+debug "just in ied"
 
 # Docker container runs with tor daemon for CMD
 # Starting electrs and nginx happens with a function call after container started.
@@ -8,8 +8,8 @@ debug "before check server 1"
 # External drive sync is volume mounted directly to external drive
 # Internal drive sync is mounted to $HOME/.electrs
 
-unset install_electrs_docker
-export install_electrs_docker=true # used later to fork make config code.
+unset install_electrs_docker_variable
+export install_electrs_docker_variable=true # used later to fork make config code.
 
 source $pc $ic >/dev/null 2>&1
 
@@ -104,7 +104,7 @@ docker_start_electrs || return 1
 debug "pause after start"
 
 installed_config_add "electrsdkr2-end"
-unset install_electrs_docker
+unset install_electrs_docker_variable
 success "electrs in Docker" "being installed"
 
 }
