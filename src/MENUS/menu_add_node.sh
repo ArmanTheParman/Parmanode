@@ -4,7 +4,11 @@ set_terminal
 while true
 do
 menu_add_source
-
+debug "electrs2_n $electrs2_n
+electrs_n $electrs_n
+electrsdkr2_n, $electrsdkr2_n
+electrsdkr_n, $electrsdkr_n
+"
 ########################################################################################
 ########################################################################################
 if [[ $OS == Mac || $computer_type == Pi ]] ; then unset btcrpcexplorer_n ; fi
