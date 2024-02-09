@@ -1,31 +1,36 @@
-function restore_internal_electrs_db {
+function restore_internal_electrs_db3 {
 
+$file="$hp/electrs/electrs_db"
+$file2="$hp/electrs_db_backup"
+$file3="$HOME/.electrs_db_backup"
+unset found message
 
-########################################################################################
-########################################################################################
-########################################################################################
-if [[ -e $HOME/.electrs_db_backup ]] ; then
-restore_internal_electrs_db2
-fi
+for file in $file $file2 $file3 ; do
+if [[ ! -e $file ]] ; then continue ; else 
 
+    if [[ -n $found ]] ; then
+message="$pink 
+    Another backup directory has been found. $orange
+"
+    fi
+found=true 
+fi 
 
-
-if [[ ! -e $hp/electrs_db_backup ]] ; then return 0 ; fi
 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-
+    $message
     Would you like to use the backup data directory... 
+$cyan
+                 $file ?
 
-                 $hp/electrs_db_backup ?
 
+$pink       y)$orange  Yes please that's outrageously good
 
-$red       y)$orange  Yes please that's outrageously good
+$pink       n)$orange  Nah, leave it
 
-$red       n)$orange  Nah, leave it
-
-$red       d)$orange  Nah, and get rid of it
+$pink       d)$orange  Nah, and get rid of it
 
 ########################################################################################
 "
@@ -38,7 +43,7 @@ p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 
 please_wait 
-rm -rf $hp/electrs_db_backup
+rm -rf $file 
 return 0
 ;;
 y|Y|YES|Yes|yes)
@@ -46,24 +51,28 @@ if [[ -d $HOME/.electrs_db ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-    Parmanode was about to move the backed up database directory to  $cyan
-    $HOME/.electrs_db$orange but that directory already exists.
+    Parmanode was about to move the backed up database directory 
 
-     a)    Abort, Abort ! 
-
-     b)    Do it anyway, I don't care if I lose what's in $HOME/electrs_db
+    $yello$file$orange 
     
-     c)    Abandon the move and just use whats in $HOME/.electrs_db
+       to  $cyan
 
+    $HOME/.electrs_db$orange but that directory already exists.
+$red
+     a)    Abort, Abort ! 
+$pink
+     b)    Do it anyway, I don't care if I lose what's in $HOME/.electrs_db
+$green    
+     c)    Abandon the move and just use whats in $HOME/.electrs_db
+$orange
 ########################################################################################    
 " ; choose "xpmq" ; read choice ; clear
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M|a) back2main ;;
 b)
 please_wait
-rm -rf $hp/electrs/electrs_db #remnant after refactoring, delete later.
 rm -rf $HOME/.electrs_db
-mv $hp/electrs_db_backup $HOME/.electrs_db 
+mv $file $HOME/.electrs_db 
 return 0
 ;;
 c)
@@ -73,12 +82,12 @@ return 0
 esac
 done
 else
-mv $hp/electrs/electrs_db $HOME/
+   mv $file $HOME/
 fi
 ;;
 
 *) invalid ;;
 esac
-done
-
+done #end while
+done #end for
 }
