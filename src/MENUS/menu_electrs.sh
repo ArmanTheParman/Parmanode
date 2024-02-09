@@ -98,7 +98,9 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
       if [[ -z $ONION_ADDR_ELECTRS ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       else
-         echo -e "                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
+         echo -e "
+      TOR:$bright_blue 
+                          $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
 else #electrs running or not
