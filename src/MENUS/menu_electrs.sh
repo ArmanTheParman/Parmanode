@@ -89,7 +89,7 @@ if [[ $electrsis == nondocker ]] ; then
 if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($pink$drive_electrs$orange drive)
+      STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
 
       CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
@@ -117,7 +117,7 @@ fi
 if docker exec electrs bash -c "ps -x" 2>/dev/null | grep electrs | grep -q conf && ! tail -n 7 $logfile | grep -q 'electrs failed' ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($pink$drive_electrs$orange drive)
+      STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
 
       CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
