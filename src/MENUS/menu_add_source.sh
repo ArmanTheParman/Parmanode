@@ -443,7 +443,4 @@ else
    #not installed
 torssh_n="#                            (tssh)        Tor SSH Server                              #"
 fi
-
-type install_electrs_docker
-debug "check, in menu_add_source"
 }

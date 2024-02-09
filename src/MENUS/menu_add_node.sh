@@ -3,6 +3,8 @@ set_terminal
 
 while true
 do
+type install_electrs_docker
+debug "before menu add source"
 menu_add_source
 
 ########################################################################################
