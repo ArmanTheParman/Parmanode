@@ -138,8 +138,9 @@ m|M) back2main ;;
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
+      debug "before if"
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
-
+      debug "in if"
          install_electrs_docker
          return 0
       fi
