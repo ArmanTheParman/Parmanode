@@ -4,11 +4,7 @@ set_terminal
 while true
 do
 menu_add_source
-debug "electrs2_n $electrs2_n
-electrs_n $electrs_n
-electrsdkr2_n, $electrsdkr2_n
-electrsdkr_n, $electrsdkr_n
-"
+
 ########################################################################################
 ########################################################################################
 if [[ $OS == Mac || $computer_type == Pi ]] ; then unset btcrpcexplorer_n ; fi
@@ -138,13 +134,12 @@ m|M) back2main ;;
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
-      debug "before if, pwd=$(pwd)"
       source $original_dir/src/electrs/install_electrs_docker.sh
-      debug "after source"
+      type install_electrs_docker
+      debug "before if"
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
       debug "in if"
          install_electrs_docker
-      debug "after ied"
          return 0
       fi
       debug "no if"
