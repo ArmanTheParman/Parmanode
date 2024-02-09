@@ -137,8 +137,6 @@ m|M) back2main ;;
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
       debug "before install electrs docker"
          install_electrs_docker
-type install_electrs_docker
-debug "after install electrs docker"
 
          return 0
       fi

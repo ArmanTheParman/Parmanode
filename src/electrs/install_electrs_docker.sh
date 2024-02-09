@@ -38,6 +38,8 @@ fi
 install_jq
 
 check_pruning_off || return 1
+type install_electrs_docker
+debug "before check server 1"
 check_server_1 || return 1
 export dontstartbitcoin=true
 check_rpc_bitcoin
