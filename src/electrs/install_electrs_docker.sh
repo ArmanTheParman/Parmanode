@@ -1,5 +1,6 @@
 function install_electrs_docker {
-debug "in install_electrs_docker"
+type install_electrs_docker
+debug "before check server 1"
 
 # Docker container runs with tor daemon for CMD
 # Starting electrs and nginx happens with a function call after container started.
@@ -38,8 +39,6 @@ fi
 install_jq
 
 check_pruning_off || return 1
-type install_electrs_docker
-debug "before check server 1"
 check_server_1 || return 1
 export dontstartbitcoin=true
 check_rpc_bitcoin
