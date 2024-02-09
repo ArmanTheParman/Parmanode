@@ -7,7 +7,7 @@ while true ; do
 #export blinkoff="\033[0m"
 set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
-source $hm >/dev/null 2>&1
+source $hm >/dev/null 2>&1 #hide messages
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
