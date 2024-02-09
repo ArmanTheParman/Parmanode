@@ -138,7 +138,7 @@ m|M) back2main ;;
       debug "before install electrs docker"
          install_electrs_docker
 type install_electrs_docker
-debug "before menu add source"
+debug "after install electrs docker"
 
          return 0
       fi
