@@ -139,6 +139,8 @@ m|M) back2main ;;
       ;;
    ersd|ERSD|Ersd|electrsdocker)
       debug "before if, pwd=$(pwd)"
+      source $original_dir/src/electrs/install_electrs_docker.sh
+      debug "after source"
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
       debug "in if"
          install_electrs_docker
