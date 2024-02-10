@@ -1,6 +1,6 @@
 function make_bitcoin_conf {
-debug "in make bitcoin conf"
-if [[ $bitcoin_drive_import=true ]] ; then debug "returning" ; return 0 ; fi
+debug "in make bitcoin conf. bdi= $bitcoin_drive"
+if [[ $bitcoin_drive_import == true ]] ; then debug "returning" ; return 0 ; fi
 debug "after if bitcoin drive import, must be false
 $bitcoin_drive_import
 "
