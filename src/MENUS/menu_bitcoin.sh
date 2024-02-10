@@ -18,7 +18,7 @@ fi
 
 set_terminal_custom "52"
 
-menu_bitcoin_status #get running text variable.
+bitcoin_status #get running text variable.
 isbitcoinrunning
 source $oc
 if [[ $bitcoinrunning != false ]] ; then running=true ; fi
@@ -225,7 +225,7 @@ done
 return 0
 }
 
-function menu_bitcoin_status {
+function bitcoin_status {
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
@@ -241,6 +241,7 @@ unset running output1 output2 highlight height running_text
 
 
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' >/dev/null 2>&1)" 
+debug "height is $height"
 #set $running_text
 
 if [[ -n $height ]] ; then
@@ -254,6 +255,10 @@ running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
 else 
 export running_text="-- status ...type r to refresh, or see log"
 fi
+debug "after first if
+running text - $running_text
+height - $height"
+
 if [[ -n $height ]] ; then
     if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
     export running_text="-- height=$height (fully sync'd)"
@@ -264,12 +269,23 @@ if [[ -n $height ]] ; then
     export running_text="-- height=$height ($pc)"
     fi
 fi
+
+debug "after 2nd if
+height is $height
+temp is $temp
+pc is $pc
+height is $height
+"
+
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
+debug "running_text is $running_text"
 return 0
 fi
+
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
+debug "$running_text"
 return 0
 fi
 }
