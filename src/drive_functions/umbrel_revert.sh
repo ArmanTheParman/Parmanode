@@ -60,7 +60,7 @@ while ! sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now insert the Parmanode drive you wish to revert, then hit$cyan <enter>.$orange
+    Now$pink insert$orange the Parmanode drive you wish to revert, then hit$green <enter>.$orange
 
 ########################################################################################
 "
