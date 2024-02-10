@@ -111,15 +111,24 @@ fi
 # The main changes...
 
 cd $mount_point/ && sudo ln -s ./umbrel/app-data/bitcoin/data/bitcoin/ .bitcoin 
+debug "line 113 done; mount point is $mount_point"
 sudo chown -h $USER:$(id -gn) $mount_point/.bitcoin
+debug "chown"
 sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
+debug "mkdir parmanode_backedup"
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
+debug "moving to backedup"
 sudo chown -R $USER:$(id -gn) $mount_point/umbrel/app-data/bitcoin/data/bitcoin
+debug "chown"
 make_bitcoin_conf umbrel
+
 debug "after make_bitcoin_conf umbrel
-Bitcoin drive import = $bitcoin_drive_import"
+Bitcoin drive import = $bitcoin_drive_import
+"
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+debug "mkdir electrs_db and fulcrum_db"
 sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+debug "chown for electrs and fulcrum"
 
 
 # label
@@ -128,6 +137,7 @@ echo "Changing the label to parmanode"
 sudo e2label $disk parmanode 2>&1
 sleep 1
 done
+deub "label done"
 # fstab configuration
 while grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo -e "
@@ -153,6 +163,7 @@ export $(sudo blkid -o export $disk | grep TYPE) >/dev/null
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
 delete_line "/etc/fstab" "parmanode"
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+debug "fstab done"
 break
 ;;
 n|N)
@@ -258,12 +269,14 @@ cd
 sudo umount $disk >/dev/null 2>&1
 sudo umount /media/$USER/parmanode* 2>&1
 sudo umount /media/$USER/parmanode 2>&1
+debug "unmounts done"
 
 if ! grep -q parmanode < /etc/fstab ; then 
     # can't export everything, need grep, becuase if Label has spaces, causes error.
     export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
     export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
-    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+    echo "UUID=$UUID $parmanode_drive $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+    debug "after echo UUID..."
 fi
 
 success "Umbrel Drive" "being imported to Parmanode."
