@@ -106,10 +106,10 @@ if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
                        echo "    (tssh)       Tor SSH 
                             " ; fi
+if grep -q "public-pool-end" $HOME/.parmanode/installed.conf ; then public-poolapp=1
+                       echo "    (pool)       Tor SSH 
+                            " ; fi
 echo "                            
-
-    Add more programs from the 'Add' menu
-
 #######################################################################################
 "
 if [[ -z $1 ]] ; then
