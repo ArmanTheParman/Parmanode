@@ -1,4 +1,5 @@
 function make_bitcoin_conf {
+debug "in make bitcoin conf"
 if [[ $bitcoin_drive_import=true ]] ; then return 0 ; fi
 
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
@@ -26,6 +27,7 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 EOF
 
+debug "check bitcoin conf in /tmp made"
 
 file="$HOME/.bitcoin/bitcoin.conf"
 loop=do
