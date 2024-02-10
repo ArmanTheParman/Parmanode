@@ -141,7 +141,7 @@ set_terminal ; echo "
     Would you like to replace the old Parmanode drive with the new drive from 
     RaspiBlitz for this computer?
 
-                          y        or        n
+                        $green  y $orange       or  $red      n $orange
 
 ########################################################################################
 "
