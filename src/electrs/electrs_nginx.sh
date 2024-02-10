@@ -2,14 +2,6 @@
 function electrs_nginx {
 #certificates need www-data owner.
 
-if [[ $1 = "remove" ]] ; then
-    if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
-                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
-    #redundant, and, causing errors; should never run. 
-    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
-                                 brew services restart nginx >/dev/null 2>&1 ; fi
-return 0
-fi
 
 if [[ $1 == electrsdkr ]] ; then
 nginx_conf=/etc/nginx/nginx.conf
@@ -61,4 +53,16 @@ fi
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
 fi
+
+#needs to be at the end
+if [[ $1 = "remove" ]] ; then
+    if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
+                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+    #redundant, and, causing errors; should never run. 
+    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
+                                 brew services restart nginx >/dev/null 2>&1 ; fi
+return 0
+fi
+
+
 }

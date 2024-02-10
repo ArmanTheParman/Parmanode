@@ -137,7 +137,9 @@ prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return
         debug "prepare drive done"
 
 #if it exists, test inside function
+if [[ $drive_electrs == internal ]] ; then
 restore_internal_electrs_db || return 1
+fi
 
 #config
 make_electrs_config && log "electrs" "config done" ; debug "config done"

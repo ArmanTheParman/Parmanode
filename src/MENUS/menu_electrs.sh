@@ -62,7 +62,7 @@ if [[ $electrsis == docker ]] ; then
         fi
     fi
 else #electrsis nondocker
-        electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version >2/dev/null)
+        electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>/dev/null)
 fi
 
 

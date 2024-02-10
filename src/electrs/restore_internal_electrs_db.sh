@@ -1,8 +1,8 @@
 function restore_internal_electrs_db {
 
-$file="$hp/electrs/electrs_db"
-$file2="$hp/electrs_db_backup"
-$file3="$HOME/.electrs_db_backup"
+file="$hp/electrs/electrs_db"
+file2="$hp/electrs_db_backup"
+file3="$HOME/.electrs_db_backup"
 unset found message
 
 for file in $file $file2 $file3 ; do
