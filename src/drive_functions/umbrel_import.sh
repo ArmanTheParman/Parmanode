@@ -259,7 +259,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Please note, if you wish to use this new Parmanode drive on a computer different
-    to this one, you should \"import\" it from the menu so the auto-mount feature can 
+    to this one, you should$cyan \"import\"$orange it from the menu so the auto-mount feature can 
     be configured.
 
 ########################################################################################
@@ -276,7 +276,11 @@ if ! grep -q parmanode < /etc/fstab ; then
     export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
     export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
     echo "UUID=$UUID $parmanode_drive $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
-    debug "after echo UUID..."
+    debug "after echo UUID...
+    TYPE, $TYPE
+    UUID, $UUID
+    fstab...
+    $(sudo cat /etc/fstab)"
 fi
 
 success "Umbrel Drive" "being imported to Parmanode."
