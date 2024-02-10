@@ -240,7 +240,7 @@ unset running output1 output2 highlight height running_text
 
 
 
-export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' >/dev/null 2>&1)" 
+export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ' 
 debug "height is $height"
 #set $running_text
 
