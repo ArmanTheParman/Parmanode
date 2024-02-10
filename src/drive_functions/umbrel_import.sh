@@ -40,11 +40,11 @@ set_terminal ; echo -e "
 
     Or, do you want Parmanode to attempt to cleanly stop everything and unmount the 
     drive for you?
-
+$green
                y)       Yes please, how kind.
-
+$red
                nah)     Nah ( = \"No\" in Straylian)
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -81,7 +81,7 @@ while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please insert the Umbrel drive you wish to import, then hit$cyan <enter>.$orange
+    Please insert the$cyan Umbrel drive$orange you wish to import, then hit$green <enter>.$orange
 
 ########################################################################################
 "
@@ -116,6 +116,8 @@ sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backed
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo chown -R $USER:$(id -gn) $mount_point/umbrel/app-data/bitcoin/data/bitcoin
 make_bitcoin_conf umbrel
+debug "after make_bitcoin_conf umbrel
+Bitcoin drive import = $bitcoin_drive_import"
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 

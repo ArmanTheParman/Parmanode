@@ -22,11 +22,11 @@ set_terminal ; echo -e "
 
     Do you want Parmanode to attempt to cleanly stop everything and unmount the 
     drive for you?
-
+$green
                y)       Yes please, how kind.
-
+$red
                nah)     Nah ( = \"No\" in Straylian)
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -45,9 +45,9 @@ while sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-            Please disconnect all Parmanode drives from the computer.
+            Please$pink physically disconnect$orange all Parmanode drives from the computer.
 
-            Hit <enter> once disconnected.
+            Hit$green <enter>$orange once disconnected.
 
 ########################################################################################
 "
@@ -60,7 +60,7 @@ while ! sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now insert the Parmanode drive you wish to revert, then hit$cyan <enter>.$orange
+    Now$pink insert$orange the Parmanode drive you wish to revert, then hit$green <enter>.$orange
 
 ########################################################################################
 "
@@ -82,7 +82,7 @@ sudo mount $disk $mount_point >/dev/null 2>&1
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*.conf 
+sudo rm ./*.conf >/dev/null
 sudo mv ./parmanode_backedup/* ./
 sudo chown -R 1000:1000 $mount_point/umbrel/app-data/bitcoin/data/bitcoin/ 
 #Get device name
