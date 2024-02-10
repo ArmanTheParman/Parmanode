@@ -116,6 +116,8 @@ sudo mkdir -p $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backed
 sudo mv $mount_point/umbrel/app-data/bitcoin/data/bitcoin/*.conf $mount_point/umbrel/app-data/bitcoin/data/bitcoin/parmanode_backedup/
 sudo chown -R $USER:$(id -gn) $mount_point/umbrel/app-data/bitcoin/data/bitcoin
 make_bitcoin_conf umbrel
+debug "after make_bitcoin_conf umbrel
+Bitcoin drive import = $bitcoin_drive_import"
 sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
 
