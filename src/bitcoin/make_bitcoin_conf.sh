@@ -1,7 +1,9 @@
 function make_bitcoin_conf {
 debug "in make bitcoin conf"
-if [[ $bitcoin_drive_import=true ]] ; then return 0 ; fi
-
+if [[ $bitcoin_drive_import=true ]] ; then debug "returning" ; return 0 ; fi
+debug "after if bitcoin drive import, must be false
+$bitcoin_drive_import
+"
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
 
 #Parmanode default config settings. Can be changed.
