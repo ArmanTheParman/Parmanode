@@ -69,10 +69,10 @@ set_terminal ; echo -e "
             Hit$red a$orange and then$green <enter>$orange to abort.
 
             Hit $green<enter>$orange once physically$pink disconnected$orange.
-            
+
 ########################################################################################
 "
-read choice
+read choiPlease disconnect the Parmanode drivece
 case $choice in a|A) return 1 ;; esac
 done
 
