@@ -237,9 +237,6 @@ unset running output1 output2 highlight height running_text
 # #bitcoin finished?
 # bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 
-
-
-
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ')" 
 #set $running_text
 
