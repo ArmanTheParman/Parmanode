@@ -241,7 +241,6 @@ unset running output1 output2 highlight height running_text
 
 
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep -a height= | tail -n1 | grep -aEo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ')" 
-debug "height is $height"
 #set $running_text
 
 if [[ -n $height ]] ; then
@@ -255,9 +254,6 @@ running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
 else 
 export running_text="-- status ...type r to refresh, or see log"
 fi
-debug "after first if
-running text - $running_text
-height - $height"
 
 if [[ -n $height ]] ; then
     if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
@@ -270,22 +266,13 @@ if [[ -n $height ]] ; then
     fi
 fi
 
-debug "after 2nd if
-height is $height
-temp is $temp
-pc is $pc
-height is $height
-"
-
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo 'Pre-synchronizing blockheaders' ; then
 export running_text="-- Pre-synchronizing blockheaders"
-debug "running_text is $running_text"
 return 0
 fi
 
 if tail -n1 $HOME/.bitcoin/debug.log | grep -qEo "Synchoronizing blockheaders" ; then
 export running_text="Synchronizing blockheaders"
-debug "$running_text"
 return 0
 fi
 }
