@@ -81,7 +81,7 @@ while ! sudo lsblk -o LABEL | grep -q umbrel ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please insert the Umbrel drive you wish to import, then hit$cyan <enter>.$orange
+    Please insert the$cyan Umbrel drive$orange you wish to import, then hit$green <enter>.$orange
 
 ########################################################################################
 "
