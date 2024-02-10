@@ -46,9 +46,9 @@ while sudo lsblk -o LABEL | grep -q parmanode ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-            Please disconnect all Parmanode drives from the computer.
+            Please$pink physically disconnect$orange all Parmanode drives from the computer.
 
-            Hit <enter> once disconnected.
+            Hit$green <enter>$orange once disconnected.
 
 ########################################################################################
 "
