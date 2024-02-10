@@ -82,7 +82,7 @@ sudo mount $disk $mount_point >/dev/null 2>&1
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*.conf >/dev/null
+sudo rm ./*.conf >/dev/null 2>&1
 sudo mv ./parmanode_backedup/* ./
 sudo chown -R 1000:1000 $mount_point/umbrel/app-data/bitcoin/data/bitcoin/ 
 #Get device name
