@@ -139,7 +139,7 @@ set_terminal ; echo "
     
     You can only have one at a time. 
     
-    Would you like to replace the old Parmanode drive with the new drive from myNode 
+    Would you like to$cyan replace the old Parmanode drive$orange with the new drive from myNode 
     for this computer?
 
                         $green  y $orange       or  $red      n $orange
@@ -218,7 +218,7 @@ echo -e "
 
     Remove the old auto-mount setting and use the current drive?
 
-                    y          or          n 
+              $green      y$orange          or$red          n  $orange
 
 ########################################################################################
 "

@@ -148,7 +148,7 @@ set_terminal ; echo -e "
     
     You can only have one at a time. 
     
-    Would you like to replace the old Parmanode drive with the new drive from Umbrel 
+    Would you like to$cyan replace the old Parmanode drive$orange with the new drive from Umbrel 
     for this computer?
 
                         $green  y $orange       or  $red      n $orange
@@ -229,7 +229,7 @@ echo -e "
 
     Remove the old auto-mount setting and use the current drive?
 
-                    y          or          n 
+     $green               y  i$orange        or     i$red     n $orange
 
 ########################################################################################
 "
