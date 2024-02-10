@@ -96,6 +96,7 @@ sleep 1
 done
 # fstab configuration
 # Finished. Info.
+debug "after label chang"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -120,5 +121,6 @@ delete_line "/etc/fstab" "$UUID"
 fi
 
 #Info
+debug "before success"
 success "Parmanode Drive" "being reverted to Umbrel." 
 }
