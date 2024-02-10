@@ -50,6 +50,7 @@ N|no|NO|No|n) return 0 ;;
 y|Y|YES|Yes|yes) update_parmanode dontask ; return 0 ;;
 on)
 autoupdate on
+break
 ;;
 *) invalid ;;
 esac
