@@ -66,10 +66,10 @@ set_terminal ; echo -e "
 
             Please disconnect the Parmanode drive from the computer.
 
-            Hit a and then <enter> to abort.
+            Hit$red a$orange and then$green <enter>$orange to abort.
 
-            Hit <enter> once physically disconnected.
-
+            Hit $green<enter>$orange once physically$pink disconnected$orange.
+            
 ########################################################################################
 "
 read choice
