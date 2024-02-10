@@ -79,7 +79,7 @@ sudo mount $disk $mount_point >/dev/null 2>&1
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*conf 
+sudo rm ./*conf >/dev/null 2>&1
 sudo mv ./parmanode_backedup/* ./
 sudo chown -R 1002:1002 $mount_point/mynode/bitcoin
 
