@@ -43,11 +43,11 @@ set_terminal ; echo -e "
 
     Or, do you want Parmanode to attempt to cleanly stop everything and unmount the 
     drive for you?
-
+$green
                y)       Yes please, how kind.
-
+$red 
                nah)     Nah ( = \"No\" in Straylian)
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
