@@ -1,4 +1,4 @@
-function menu_public-pool {
+function menu_public_pool {
 
 while true ; do 
 set_terminal ; echo -e "
@@ -6,7 +6,7 @@ set_terminal ; echo -e "
                                  Public Pool Menu     $orange 
 ########################################################################################
 "
-if docker ps | grep -q public-pool ; then echo -e "
+if docker ps | grep -q public_pool ; then echo -e "
                              Public Pool is $greenRUNNING$orange" 
 else 
 echo -e "
@@ -38,18 +38,18 @@ if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 
 start|Start|START|S|s)
-start_public-pool
+start_public_pool
 continue
 ;;
 
 stop|STOP|Stop)
-stop_public-pool
+stop_public_pool
 continue
 ;;
 
 restart|RESTART|Restart)
-stop_public-pool
-start_public-pool
+stop_public_pool
+start_public_pool
 continue
 ;;
 

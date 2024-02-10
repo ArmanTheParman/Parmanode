@@ -14,7 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public-poolmenu
+unset public_poolmenu
 
 echo -e "
 ########################################################################################
@@ -220,10 +220,10 @@ echo "#                                    (ers)              electrs           
 elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
 echo "#                                    (ers)              electrs (partial)              #
 #                                                                                      #" ; fi
-if grep -q "public-pool-end" $HOME/.parmanode/installed.conf ; then public-poolmenu=1
+if grep -q "public_pool_end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo "#                                    (pool)             Public Pool                    #
 #                                                                                      #"
-elif grep -q "public-pool-start" $HOME/.parmanode/installed.conf ; then public-poolmenu=1
+elif grep -q "public_pool_start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo "#                                    (pool)             Public Pool (partial)          #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
@@ -451,8 +451,8 @@ fi
 ;;
 
 pool)
-if [[ ${public-poolmenu} == 1 ]] ; then
-uninstall_public-pool
+if [[ $public_poolmenu == 1 ]] ; then
+uninstall_public_pool
 clear
 return
 fi

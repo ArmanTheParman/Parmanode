@@ -444,17 +444,17 @@ else
 torssh_n="#                            (tssh)        Tor SSH Server                              #"
 fi
 
-#public-pool
-unset public-pool_i public-pool_p public-pool_n
-if grep -q "public-pool-end" < $HOME/.parmanode/installed.conf ; then 
+#public_pool
+unset public_pool_i public_pool_p public_pool_n
+if grep -q "public_pool-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
-public-pool_i="#                                      Public Pool                                 #"
-elif grep -q "public-pool-start" < $HOME/.parmanode/installed.conf ; then
+public_pool_i="#                                      Public Pool                                     #"
+elif grep -q "public_pool-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-public-pool_p="#                                      Public Pool                                 #"
+public_pool_p="#                                      Public Pool                                     #"
 else
    #not installed
-public-pool_n="#                            (pool)    Public Pool                                 #"
+public_pool_n="#                            (pool)        Public Pool                                 #"
 fi
 
 }

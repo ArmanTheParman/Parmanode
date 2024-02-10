@@ -106,8 +106,8 @@ if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
                        echo "    (tssh)       Tor SSH 
                             " ; fi
-if grep -q "public-pool-end" $HOME/.parmanode/installed.conf ; then public-poolapp=1
-                       echo "    (pool)       Tor SSH 
+if grep -q "public_pool_end" $HOME/.parmanode/installed.conf ; then public_poolapp=1
+                       echo "    (pool)       Public Pool 
                             " ; fi
 echo "                            
 #######################################################################################
@@ -294,6 +294,12 @@ mem|MEM|Mem)
 tssh)
    if [[ $torsshapp == 1 ]] ; then
    menu_torssh
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+pool)
+   if [[ $public_poolapp == 1 ]] ; then
+   menu_public_pool
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;

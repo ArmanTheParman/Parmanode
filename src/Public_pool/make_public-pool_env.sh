@@ -1,4 +1,4 @@
-function make_public-pool_env {
+function make_public_pool_env {
 source $bc
 
 if [[ $OS == Mac ]] ; then 
@@ -7,7 +7,7 @@ else
 IPurl=$IP
 fi
 
-cat << EOF | tee $hp/public-pool/.env >/dev/null
+cat << EOF | tee $hp/public_pool/.env >/dev/null
 BITCOIN_RPC_URL=http://$IPurl
 BITCOIN_RPC_USER=$rpcuser
 BITCOIN_RPC_PASSWORD=$rpcpass
