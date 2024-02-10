@@ -81,7 +81,7 @@ while ! sudo lsblk -o LABEL | grep -q BLOCKCHAIN ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please insert the$cyan RaspiBlitz$orange drive you wish to import, then hit$cyan <enter>.$orange
+    Please insert the$cyan RaspiBlitz$orange drive you wish to import, then hit$green <enter>.$orange
 
 ########################################################################################
 "
