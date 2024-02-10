@@ -1,6 +1,6 @@
 function make_bitcoin_conf {
 debug "in make bitcoin conf. bdi= $bitcoin_drive"
-if [[ $bitcoin_drive_import == true ]] ; then debug "returning" ; return 0 ; fi
+if [[ $bitcoin_drive_import ==true ]] ; then debug "returning" ; return 0 ; fi
 debug "after if bitcoin drive import, must be false
 $bitcoin_drive_import
 "
@@ -33,7 +33,7 @@ debug "check bitcoin conf in /tmp made"
 
 file="$HOME/.bitcoin/bitcoin.conf"
 loop=do
-if [[ $1 == umbrel ]] ; then export prune=0 ; loop=break ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
+if [[ $1 == umbrel ]] ; then export prune=0 ; loop="break" ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 
 
 
@@ -41,7 +41,7 @@ if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
         while true ; do
-        if [[ $installer == parmanodl || $loop=break ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
+        if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
 	    set_terminal ; echo -e "
 ########################################################################################
 

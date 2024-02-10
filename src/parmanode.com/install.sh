@@ -4,7 +4,7 @@ return 0
 
 #!/bin/sh
 
-if [ $(uname -s) = Darwin ] ; then
+if [ $(uname -s) = Darwin ] ; then #important to leave a single '=' for sh
 curl https://parmanode.com/install_4mac2.sh | sh
 exit
 fi
