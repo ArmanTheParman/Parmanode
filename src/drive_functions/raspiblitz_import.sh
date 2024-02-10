@@ -256,8 +256,8 @@ set_terminal ; echo -e "
 
 cd
 sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* 2>&1
-sudo umount /media/$USER/parmanode 2>&1
+sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+sudo umount /media/$USER/parmanode >/dev/null 2>&1
 
 if ! grep -q parmanode < /etc/fstab ; then 
     # can't export everything, need grep, becuase if Label has spaces, causes error.
