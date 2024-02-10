@@ -7,7 +7,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 if docker ps | grep -q public_pool ; then echo -e "
-                             Public Pool is $greenRUNNING$orange" 
+                             Public Pool is ${green}RUNNING$orange" 
 else 
 echo -e "
                            Public Pool is$red NOT RUNNING$orange" 
@@ -23,13 +23,18 @@ echo -e "
 
       The user interfact can be access from your browser at:
 $cyan
-                       http://localhost:5050  $orange Note 127.0.0.1:5050 won't work
+                       http://localhost:5050  $red Note 127.0.0.1:5050 won't work$orange
+$pink
+                       ZMQ data available at port 5000 (not 3000) $orange
+
+$bright_blue                       TOR coming soon $orange
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m|M) back2main ;;
+m|M) bacq
+k2main ;;
 
 q|Q|QUIT|Quit) exit 0 ;;
 

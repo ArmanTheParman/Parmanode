@@ -21,8 +21,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 stop_public_pool
 docker rm public_pool public_pool_ui
-delete_line $bc "zmqpubrawblock=tcp://*:5000" >dev/null 2>&1
+delete_line $bc "zmqpubrawblock=tcp://*:5000" >/dev/null 2>&1
 cd
-rm -rf public_pool public_pool_ui >/dev/null 2>&1
+rm -rf $hp/public_pool $hp/public_pool_ui >/dev/null 2>&1
+debug "after rm"
 installed_conf_remove "public_pool"
 }

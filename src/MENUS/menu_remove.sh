@@ -220,10 +220,10 @@ echo "#                                    (ers)              electrs           
 elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
 echo "#                                    (ers)              electrs (partial)              #
 #                                                                                      #" ; fi
-if grep -q "public_pool_end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
+if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo "#                                    (pool)             Public Pool                    #
 #                                                                                      #"
-elif grep -q "public_pool_start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
+elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo "#                                    (pool)             Public Pool (partial)          #
 #                                                                                      #" ; fi
 echo "#                                                                                      #
