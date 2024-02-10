@@ -33,6 +33,7 @@ if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
+if [[ -n ${public-pool_n} ]]         ; then echo  "${public-pool_n}"; fi
 echo -e "#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -46,6 +47,7 @@ if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
+if [[ -n ${public-pool_i} ]]   ; then echo  "${public-pool_i}"; fi
 echo -e "#                                                                                      #
 #$cyan Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
@@ -59,6 +61,7 @@ if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo -e "$pink$btcpTOR_p$orange"; fi
+if [[ -n ${public-pool_i} ]]   ; then echo -e "$pink${public-pool_i}$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -135,12 +138,15 @@ m|M) back2main ;;
       ;;
    ersd|ERSD|Ersd|electrsdocker)
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
-      debug "before install electrs docker"
          install_electrs_docker
-
          return 0
       fi
-      debug "no if"
+      ;;
+   pool|Pool|POOL) 
+      if [[ -n ${public-pool_n} ]] ; then
+         install_public-pool
+         return 0
+      fi
       ;;
 
    mem|MEM|Mem) 

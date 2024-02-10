@@ -432,7 +432,7 @@ mempool_n="#                            (mem)         Mempool (Docker)          
 fi
 
 #torssh
-unset torssh-i torssh-p torsshn 
+unset torssh_i torssh_p torssh_n 
 if grep -q "torssh-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
 torssh_i="#                                      Tor SSH Server                                  #"
@@ -443,4 +443,18 @@ else
    #not installed
 torssh_n="#                            (tssh)        Tor SSH Server                              #"
 fi
+
+#public-pool
+unset public-pool_i public-pool_p public-pool_n
+if grep -q "public-pool-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+public-pool_i="#                                      Public Pool                                 #"
+elif grep -q "public-pool-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+public-pool_p="#                                      Public Pool                                 #"
+else
+   #not installed
+public-pool_n="#                            (pool)    Public Pool                                 #"
+fi
+
 }
