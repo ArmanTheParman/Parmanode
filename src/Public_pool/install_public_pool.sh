@@ -18,11 +18,19 @@ make_public_pool_env ; debug "made env"
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
 
 #start container
-docker build -t public_pool . ; debug "build done"
 if [[ $OS == Linux ]] ; then
-docker run -d --name public_pool --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+
+    if [[ $computer_type == Pi ]] ; then
+    docker run -d --name public_pool --network=host -v $hp/public_pool/.env:/.env parmanthe/public_pool:parmanode ; debug "run pool done"
+    else
+    docker build -t public_pool . ; debug "build done"
+    docker run -d --name public_pool --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    fi
+
 elif [[ $OS == Mac ]] ; then
-docker run -d --name public_pool -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+
+    docker run -d --name public_pool -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+
 fi
 
 
