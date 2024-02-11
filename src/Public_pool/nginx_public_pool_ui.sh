@@ -4,19 +4,21 @@ function nginx_public_pool_ui {
 if [[ $OS == Mac ]] ; then
 nginx_conf="/usr/local/etc/nginx/nginx.conf"
 nginx_root="/usr/local/etc/nginx/"
+conf_file="$nginx_root/public_pool_ui.conf"
 ssl_cert="$hp/public_pool_ui/cert.pem" 
 ssk_key="$hp/public_pool_ui/key.pem" 
 
 elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
 nginx_root="/etc/nginx/"
+conf_file="$nginx_root/conf.d/public_pool_ui.conf"
 ssl_cert="$hp/public_pool_ui/cert.pem" 
 ssl_key="$hp/public_pool_ui/key.pem" 
 fi
 
 #needs to be after variables set
 if [[ $1 = "remove" ]] ; then
-    sudo rm /$nginx_root/conf.d/public_pool_ui.conf >/dev/null 2>&1
+    sudo rm "$conf_file" >/dev/null 2>&1
 
 else #install
 
@@ -48,7 +50,7 @@ $comment_out        ssl_session_cache shared:SSL:1m;
             proxy_pass http://localhost:5050;
         }
 }
-" | sudo tee $nginx_root/conf.d/public_pool_ui.conf >/dev/null 2>&1
+" | sudo tee $conf_file >/dev/null 2>&1
 fi #not remove
 
 
