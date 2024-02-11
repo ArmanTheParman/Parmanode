@@ -4,7 +4,10 @@ if ! which docker >/dev/null 2>&1 ; then install_docker_linux ; fi
 
 cd $hp
 
+if [[ $computer_type != Pi ]] ; then #Pi's can't build this image, it will be pulled.
 git clone --depth 1 https://github.com/benjamin-wilson/public-pool.git public_pool
+fi
+
 git clone --depth 1 https://github.com/benjamin-wilson/public-pool-ui.git public_pool_ui
 installed_conf_add "public_pool-start"
 
