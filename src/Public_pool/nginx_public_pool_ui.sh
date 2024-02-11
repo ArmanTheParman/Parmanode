@@ -10,7 +10,7 @@ elif [[ $OS == Linux ]] ; then
     if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$hp/public_pool_ui/cert.pem" 
-ssk_key="$hp/public_pool_ui/key.pem" 
+ssl_key="$hp/public_pool_ui/key.pem" 
 fi
 
 echo "# Parmanode - flag public_pool_ui-START
