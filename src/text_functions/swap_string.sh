@@ -1,7 +1,6 @@
 # $1 file name 
 # $2 search string 
 # $3 change whole line to
-# $4 a way to add a backslash, expecting 'backslash'; added to end of newline
 alias string_swap='swap_string' >/dev/null
 
 function swap_string {
@@ -14,13 +13,7 @@ fi
 input_file="$1"
 search_string="$2"
 new_line="$3"
-if [[ $4 == bs ]] ; then
-newline="$3\\\\\\\\"
 
-debug "4 is $4
-newline is ; $newline"
-
-fi
 
 if [[ ! -f "$input_file" ]]; then
     echo -e "Error: $input_file does not exist."
