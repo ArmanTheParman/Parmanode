@@ -16,6 +16,10 @@ search_string="$2"
 new_line="$3"
 if [[ $4 == bs ]] ; then
 newline="$3\\\\"
+
+debug "4 is $4
+newline is ; $newline"
+
 fi
 
 if [[ ! -f "$input_file" ]]; then
