@@ -6,7 +6,7 @@ nginx_conf="/usr/local/etc/nginx/nginx.conf"
 nginx_root="/usr/local/etc/nginx/"
 conf_file="$nginx_root/public_pool_ui.conf"
 ssl_cert="$hp/public_pool_ui/cert.pem" 
-ssk_key="$hp/public_pool_ui/key.pem" 
+ssl_key="$hp/public_pool_ui/key.pem" 
 
 elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
