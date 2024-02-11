@@ -1,5 +1,13 @@
 function install_public_pool {
 
+if [[ $OS == Mac ]] ; then
+    if ! which python3 ; then
+        if ! which brew >/dev/null 2>&1 ; install_homebrew 
+        fi
+    brew install python3
+    fi
+fi
+
 if ! which docker >/dev/null 2>&1 ; then install_docker_linux ; fi
 if ! which nginx >/dev/null 2>&1 ; then install_nginx ; fi
 cd $hp
