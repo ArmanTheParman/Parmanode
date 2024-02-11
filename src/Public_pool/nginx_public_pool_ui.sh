@@ -25,7 +25,7 @@ if ! which nginx >/dev/null ; then install_nginx ; fi
 
 
 # If ssl_session_cache exists, can't duplicate
-if grep -qr "ssl_session_cache" < $nginx_root ; then 
+if grep -qr "ssl_session_cache" < ${nginx_root}* ; then 
 comment_out="#"
 else
 comment_out=''
