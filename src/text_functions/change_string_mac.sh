@@ -11,16 +11,11 @@ inpute file: $1
 search string: $2
 newline: $3
 positionnewline: $4
-bs? $5
 "
 inputfile="$1"
 searchstring="$2"
 newline="$3"
 positionnewline="$4" #("before" or "after" or "swap" or "delete")
-#$5 signals with bs for a backslash at end of newline
-if [[ $5 == bs ]] ; then
-newline="$3\\\\" #I think 4 are needed because it resolves twice whenever newline is called, once here and once there.
-fi
 
 if [[ ! -f $inputfile ]] ; then # if file doesn't exist
 return 1

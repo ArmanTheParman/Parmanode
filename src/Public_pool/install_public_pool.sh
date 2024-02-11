@@ -55,8 +55,27 @@ fi
 
 
 function fix_Dockerfile_pool_ARM {
-
+file="$hp/public_pool/Dockerfile"
 cd $hp/public_pool
-swap_string "$hp/public_pool/Dockerfile" "python3" "python3 ca-certificates cmake curl " "bs"  #bs adds a backslash
+swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
+python_edit_add_backslash
+
 debug "after swap_string"
+}
+
+
+function python_edit_add_backslash {
+search_string="cmake curl"
+input_file="$hp/public_pool/Dockerfile"
+
+python3 - <<END
+with open("$input_file", 'r') as file:
+    lines = file.readlines()
+
+with open("$input_file", 'w') as file:
+    for line in lines:
+        if "$search_string" in line:
+            line = line.rstrip('\\n') + '\\\\n'
+        file.write(line)
+END
 }
