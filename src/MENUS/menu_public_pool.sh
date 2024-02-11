@@ -32,6 +32,8 @@ $pink
 
 $bright_blue                       TOR coming soon $orange
 
+$pink
+IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
