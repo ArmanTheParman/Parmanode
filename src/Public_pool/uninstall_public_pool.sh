@@ -27,5 +27,6 @@ rm -rf $hp/public_pool $hp/public_pool_ui >/dev/null 2>&1
 debug "after rm"
 nginx_public_pool remove
 installed_conf_remove "public_pool"
+debug "before end"
 success "Public Pool" "being uninstalled"
 }
