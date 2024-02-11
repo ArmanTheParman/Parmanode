@@ -15,11 +15,11 @@ cd $hp/public_pool
 make_public_pool_env ; debug "made env"
 # Add ZMQ connection to bitcoin.conf
 # Parmanode uses port 3000 for RTL, so can't use that for pool.
-echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
+echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 
 #Fix dependencies
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
-    fix_Dockerfile_pool_ARM #ARM build failes unless extra dependencies installed
+    fix_Dockerfile_pool_ARM ; debug "fix arm done" #ARM build failes unless extra dependencies installed
 fi
 
 #start container
@@ -39,9 +39,9 @@ fi
 ########################################################################################
 cd $hp/public_pool_ui
 docker build -t public_pool_ui . ; debug "build done"
-docker run -d --name public_pool_ui -p 5050:80 public_pool_ui
+docker run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
 
-make_ssl_certificates "public_pool_ui"
+make_ssl_certificates "public_pool_ui" ; debug "certs done"
 
 if docker ps | grep "public_pool" | grep -q "public_pool_ui" ; then
 success "Public Pool" "being installed"
