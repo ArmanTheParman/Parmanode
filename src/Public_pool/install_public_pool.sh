@@ -53,6 +53,7 @@ if docker ps -a | grep -q "public_pool" ; then
 docker rm public_pool public_pool_ui
 fi
 
+enable_tor_general
 
 cd $hp
 
