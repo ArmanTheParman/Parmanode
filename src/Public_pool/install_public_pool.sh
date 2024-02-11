@@ -17,7 +17,7 @@ make_public_pool_env ; debug "made env"
 # Parmanode uses port 3000 for RTL, so can't use that for pool.
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 
-#Fix dependencies
+#Fix dependencies, apparantly not available in ARM versions
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
     local file=$hp/public_pool/Dockerfile
     swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
@@ -26,15 +26,16 @@ if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
     unset file
 fi
 
+# build image
+docker build -t public_pool . ; debug "build done"
+echo -e "${pink}Pausing, you can check if the first build went ok.$orange"
+enter_continue
+
 #start container
 if [[ $OS == Linux ]] ; then
-    docker build -t public_pool . ; debug "build done"
     docker run -d --name public_pool --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
-
 elif [[ $OS == Mac ]] ; then
-
     docker run -d --name public_pool -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
-
 fi
 
 
@@ -43,6 +44,8 @@ fi
 ########################################################################################
 cd $hp/public_pool_ui
 docker build -t public_pool_ui . ; debug "build done"
+echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
+enter_continue
 docker run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
 
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
