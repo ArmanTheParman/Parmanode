@@ -15,7 +15,7 @@ input_file="$1"
 search_string="$2"
 new_line="$3"
 if [[ $4 == bs ]] ; then
-newline="$3\\\\\\"
+newline="$3\\\\"
 fi
 
 if [[ ! -f "$input_file" ]]; then
