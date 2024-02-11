@@ -19,7 +19,7 @@ fi
 #needs to be after variables set
 if [[ $1 = "remove" ]] ; then
     sudo rm "$conf_file" >/dev/null 2>&1
-
+    delete_line "$nginx_conf" "public_pool_ui.conf" #will apply only to Macs anyway.
 else #install
 
 #might need to install nginx
@@ -52,8 +52,13 @@ $comment_out        ssl_session_cache shared:SSL:1m;
         }
 }
 " | sudo tee $conf_file >/dev/null 2>&1
-fi #not remove
 
+    if [[ $OS == Mac ]] ; then
+    swap_string $nginx_conf "http {" "http {
+        include   public_pool_ui.conf;"
+    fi
+
+fi #not remove ends
 
 
 #restart
