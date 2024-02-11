@@ -2,9 +2,13 @@ function install_public_pool {
 
 if [[ $OS == Mac ]] ; then
     if ! which python3 ; then
-        if ! which brew >/dev/null 2>&1 ; install_homebrew 
+        if ! which brew >/dev/null 2>&1 ; then install_homebrew 
         fi
     brew install python3
+    fi
+elif [[ $OS Linux ]] ; then
+    if ! which python3 ; then
+        sudo apt-get update -y && sudo apt-get install python3 -y
     fi
 fi
 
