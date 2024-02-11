@@ -40,7 +40,8 @@ m|M) bacq
 k2main ;;
 
 q|Q|QUIT|Quit) exit 0 ;;
-m|M) back2main ;;
+m|M) 
+back2main ;;
 p|P) return 1 ;;
 
 p|P) 
