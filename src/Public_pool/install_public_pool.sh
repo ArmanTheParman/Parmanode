@@ -62,6 +62,12 @@ docker run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
 
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
 
+########################################################################################
+# configure and restart nginx last
+########################################################################################
+nginx_public_pool_ui
+
+#check for success
 if docker ps | grep "public_pool" | grep -q "public_pool_ui" ; then
 success "Public Pool" "being installed"
 installed_conf_add "public_pool-end"
