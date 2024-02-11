@@ -19,11 +19,11 @@ echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 
 #Fix dependencies
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
-#    fix_Dockerfile_pool_ARM ; debug "fix arm done" #ARM build failes unless extra dependencies installed
-    true
+    local file=$hp/public_pool
+    swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
+    python3 $pp/parmanode/src/public_pool/add_backslash_pool_Dockerfile.py ; debug "fix arm done" #ARM build failes unless extra dependencies installed
+    unset file
 fi
-debug "fix docker file after if, done? ctype= $computer_type ; 
-$(uname -m)"
 
 #start container
 if [[ $OS == Linux ]] ; then
@@ -52,16 +52,6 @@ installed_conf_add "public_pool-end"
 else
 announce "Something went wrong"
 fi
-}
-
-
-function fix_Dockerfile_pool_ARM {
-file="$/public_pool/Dockerfile"
-cd $hp/public_pool
-swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
-python3 $original_dir/src/Public_pool/python_edit_add_backslash.py
-
-debug "after swap_string"
 }
 
 
