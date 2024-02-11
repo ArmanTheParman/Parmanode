@@ -10,7 +10,7 @@ fi
 cat << EOF | tee $hp/public_pool/.env >/dev/null
 BITCOIN_RPC_URL=http://$IPurl
 BITCOIN_RPC_USER=$rpcuser
-BITCOIN_RPC_PASSWORD=$rpcpass
+BITCOIN_RPC_PASSWORD=$rpcpassword
 BITCOIN_RPC_PORT=8332
 BITCOIN_RPC_TIMEOUT=10000
 BITCOIN_ZMQ_HOST="tcp://$IPurl:5000"
