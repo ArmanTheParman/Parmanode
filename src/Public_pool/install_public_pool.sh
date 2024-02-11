@@ -16,7 +16,7 @@ if ! which docker >/dev/null 2>&1 ; then install_docker_linux ; fi
 if ! which nginx >/dev/null 2>&1 ; then install_nginx ; fi
 cd $hp
 
-check_port_conflicts public_pool
+check_port_conflicts_public_pool
 
 git clone --depth 1 https://github.com/benjamin-wilson/public-pool.git public_pool
 git clone --depth 1 https://github.com/benjamin-wilson/public-pool-ui.git public_pool_ui

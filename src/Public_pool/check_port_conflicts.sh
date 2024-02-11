@@ -1,4 +1,4 @@
-function check_port_conflicts {
+function check_port_conflicts_public_pool {
 
 if [[ $OS == Linux ]] ; then
     if ! which netstat >/dev/null ; then sudo apt-get update -y && sudo apt-get install net-tools ; fi
