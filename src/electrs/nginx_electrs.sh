@@ -1,14 +1,10 @@
 #installs or uninstalls based on function argument
-function electrs_nginx {
+function nginx_electrs {
 #certificates need www-data owner.
 
 
-if [[ $1 == electrsdkr ]] ; then
-nginx_conf=/etc/nginx/nginx.conf
-ssl_cert="/home/parman/parmanode/electrs/cert.pem"
-ssl_key="/home/parman/parmanode/electrs/key.pem"
-
-elif [[ $OS == Mac ]] ; then
+#order of if's matter
+if [[ $OS == Mac ]] ; then
     if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/usr/local/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrs/cert.pem" 
@@ -19,6 +15,11 @@ elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrs/cert.pem" 
 ssk_key="$HOME/parmanode/electrs/key.pem"
+
+elif [[ $1 == electrsdkr ]] ; then #must be last
+nginx_conf=/etc/nginx/nginx.conf
+ssl_cert="/home/parman/parmanode/electrs/cert.pem" #absolute path, used within container.
+ssl_key="/home/parman/parmanode/electrs/key.pem"
 fi
 
 if [[ $1 = "add" || $1 == electrsdkr ]] ; then 

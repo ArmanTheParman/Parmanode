@@ -98,7 +98,7 @@ debug "pause after run and chown"
 
 #Nginx
 make_ssl_certificates electrsdkr
-electrs_nginx electrsdkr
+nginx_electrs electrsdkr
 
 #Run electrs and Nginx in the container
 docker_start_electrs || return 1 
