@@ -23,7 +23,10 @@ echo -e "
 
       The user interfact can be access from your browser at:
 $cyan
-                       http://localhost:5050  $red Note 127.0.0.1:5050 won't work$orange
+                       http://localhost:505${red}0$cyan  
+                       http://127.0.0.1:505${red}1$cyan
+                       https://127.0.0.1:505${red}2$cyan
+                       https://$IP:505${red}2$cyan
 $pink
                        ZMQ data available at port 5000 (not 3000) $orange
 

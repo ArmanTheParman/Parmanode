@@ -1,19 +1,59 @@
 function install_public_pool {
 
 if [[ $OS == Mac ]] ; then
+    if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 >/dev/null ; then
         if ! which brew >/dev/null ; then install_homebrew 
         fi
     brew install python3
     fi
 elif [[ $OS == Linux ]] ; then
+    if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 ; then
         sudo apt-get update -y && sudo apt-get install python3 -y
     fi
 fi
 
-if ! which docker >/dev/null 2>&1 ; then install_docker_linux ; fi
 if ! which nginx >/dev/null 2>&1 ; then install_nginx ; fi
+
+#check Docker running, esp Mac
+if ! docker ps >/dev/null 2>&1 ; then echo -e "
+########################################################################################
+
+    Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
+    <enter>$orange to continue.
+
+########################################################################################
+"
+choose "emq"
+read choice ; case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
+set_terminal
+if ! docker ps >/dev/null 2>&1 ; then echo -e "
+########################################################################################
+
+    Docker is still$red not running$orange. 
+
+    It can take a while to be in a 'ready state' even though you started it. Try
+    again later. 
+    
+    Aborting. 
+
+########################################################################################
+"
+enter_continue
+return 1
+fi
+fi
+
+if docker ps | grep -q "public_pool" ; then
+docker stop public_pool public_pool_ui
+fi
+
+if docker ps -a | grep -q "public_pool" ; then
+docker rm public_pool public_pool_ui
+fi
+
+
 cd $hp
 
 check_port_conflicts_public_pool
