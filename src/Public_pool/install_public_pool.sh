@@ -56,5 +56,4 @@ function fix_Dockerfile_pool_ARM {
 
 cd $hp/public_pool
 swap_string "$hp/public_pool/Dockerfile" "python3" "python3 ca-certificates cmake curl " "bs"  #bs adds a backslash
-
 }
