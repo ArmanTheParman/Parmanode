@@ -55,7 +55,7 @@ fi
 
 
 function fix_Dockerfile_pool_ARM {
-file="$hp/public_pool/Dockerfile"
+file="$/public_pool/Dockerfile"
 cd $hp/public_pool
 swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
 python3 $original_dir/src/Public_pool/python_edit_add_backslash.py
