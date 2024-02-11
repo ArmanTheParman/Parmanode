@@ -33,7 +33,7 @@ if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
-#if [[ -n $public_pool_n ]]         ; then echo  "$public_pool_n"; fi
+if [[ -n $public_pool_n ]]         ; then echo  "$public_pool_n"; fi
 echo -e "#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -146,12 +146,12 @@ m|M) back2main ;;
          return 0
       fi
       ;;
-#   pool|Pool|POOL) 
-#      if [[ -n $public_pool_n ]] ; then
-#         install_public_pool
-#         return 0
-#      fi
-#      ;;
+  pool|Pool|POOL) 
+     if [[ -n $public_pool_n ]] ; then
+        install_public_pool
+        return 0
+     fi
+     ;;
 
    mem|MEM|Mem) 
       if [[ -n $mempool_n ]] ; then
