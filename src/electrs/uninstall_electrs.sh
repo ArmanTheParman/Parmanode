@@ -55,7 +55,7 @@ $orange
 done
 fi
 
-electrs_nginx remove 
+nginx_electrs remove
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
 
