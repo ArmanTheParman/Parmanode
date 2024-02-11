@@ -35,4 +35,14 @@ stream {
 }
 # Parmanode - flag public_pool_ui-END" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
 
+#needs to be at the end
+if [[ $1 = "remove" ]] ; then
+    if [[ $OS == Linux ]] ; then sudo sed -i "/public_pool_ui-START/,/public_pool_ui-END/d" $nginx_conf >/dev/null 
+                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
+    #redundant, and, causing errors; should never run. 
+    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
+                                 brew services restart nginx >/dev/null 2>&1 ; fi
+return 0
+fi
+
 }
