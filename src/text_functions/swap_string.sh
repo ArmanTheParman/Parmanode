@@ -16,6 +16,7 @@ search_string="$2"
 new_line="$3"
 if [[ $4 == bs ]] ; then
 newline="$3\\\\"
+fi
 
 if [[ ! -f "$input_file" ]]; then
     echo -e "Error: $input_file does not exist."
