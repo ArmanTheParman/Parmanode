@@ -19,7 +19,8 @@ echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 
 #Fix dependencies
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
-    fix_Dockerfile_pool_ARM ; debug "fix arm done" #ARM build failes unless extra dependencies installed
+#    fix_Dockerfile_pool_ARM ; debug "fix arm done" #ARM build failes unless extra dependencies installed
+    true
 fi
 debug "fix docker file after if, done? ctype= $computer_type ; 
 $(uname -m)"
