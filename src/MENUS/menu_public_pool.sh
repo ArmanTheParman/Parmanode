@@ -36,12 +36,8 @@ $bright_blue                       TOR coming soon $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m|M) bacq
-k2main ;;
-
+m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
-m|M) 
-back2main ;;
 p|P) return 1 ;;
 
 p|P) 
