@@ -24,7 +24,7 @@ echo -e "
 #$cyan Not yet installed... $orange                                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
-if [[ -n $electrs2_n ]]         ; then echo  "$electrs2_n"; fi
+if [[ -n $electrs2_n && -n $electrs_n ]]       ; then echo  "$electrs2_n"; fi
 if [[ -n $electrsdkr2_n ]]      ; then echo  "$electrsdkr2_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
@@ -39,7 +39,9 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
+if [[ -n $electrs2_i ]]         ; then echo  "$electrs2_i"; fi
 if [[ -n $electrsdkr_i ]]      ; then echo  "$electrsdkr_i"; fi
+if [[ -n $electrsdkr2_i ]]      ; then echo  "$electrsdkr2_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
 if [[ -n $mempool_i ]]         ; then echo  "$mempool_i"; fi
 if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
@@ -53,7 +55,9 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
+if [[ -n $electrs2_p ]]         ; then echo -e "$pink$electrs2_p$orange"; fi
 if [[ -n $electrsdkr_p ]]      ; then echo -e "$pink$electrsdkr_p$orange"; fi
+if [[ -n $electrsdkr2_p ]]      ; then echo -e "$pink$electrsdkr2_p$orange"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
 if [[ -n $mempool_p ]]         ; then echo  "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
