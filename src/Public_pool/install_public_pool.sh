@@ -76,6 +76,6 @@ with open("$input_file", 'w') as file:
     for line in lines:
         if "$search_string" in line:
             line = line.rstrip() + '\\'
-        file.write(line)
+        file.write(line + '\n')
 END
 }
