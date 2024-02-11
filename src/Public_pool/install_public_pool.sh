@@ -6,7 +6,7 @@ if [[ $OS == Mac ]] ; then
         fi
     brew install python3
     fi
-elif [[ $OS Linux ]] ; then
+elif [[ $OS == Linux ]] ; then
     if ! which python3 ; then
         sudo apt-get update -y && sudo apt-get install python3 -y
     fi
