@@ -96,7 +96,19 @@ if [[ $OS == "Linux" ]] ; then
         return 1 
     fi
 
-echo -e "
+if [[ -e $hp/bitcoin_github ]] ; then echo -e "
+########################################################################################
+    Delete$cyan $hp/bitcoin_github directory (it can get big), 
+    you can save space.
+
+             $green y$orange     or    $red no $orange
+
+########################################################################################
+"
+read choice ; case $choice in y) rm -rf $hp/bitcoin_github ;; esac
+fi
+
+set_terminal ; echo -e "
 ########################################################################################
    $cyan 
                                     SUCCESS !!!
