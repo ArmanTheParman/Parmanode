@@ -26,4 +26,5 @@ cd
 rm -rf $hp/public_pool $hp/public_pool_ui >/dev/null 2>&1
 debug "after rm"
 installed_conf_remove "public_pool"
+success "Public Pool" "being uninstalled"
 }
