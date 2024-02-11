@@ -21,6 +21,8 @@ echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
     fix_Dockerfile_pool_ARM ; debug "fix arm done" #ARM build failes unless extra dependencies installed
 fi
+debug "fix docker file after if, done? ctype= $computer_type ; 
+$(uname -m)"
 
 #start container
 if [[ $OS == Linux ]] ; then
@@ -56,4 +58,5 @@ function fix_Dockerfile_pool_ARM {
 
 cd $hp/public_pool
 swap_string "$hp/public_pool/Dockerfile" "python3" "python3 ca-certificates cmake curl " "bs"  #bs adds a backslash
+debug "after swap_string"
 }
