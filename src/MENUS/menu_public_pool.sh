@@ -6,7 +6,7 @@ set_terminal ; echo -e "
                                  Public Pool Menu     $orange 
 ########################################################################################
 "
-if docker ps >/dev/null 2>&1 | grep -q public_pool ; then echo -e "
+if docker ps 2>/dev/null | grep -q public_pool ; then echo -e "
                              Public Pool is ${green}RUNNING$orange" 
 else 
 echo -e "
