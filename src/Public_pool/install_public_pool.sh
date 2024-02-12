@@ -75,10 +75,12 @@ echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
 #Fix dependencies, apparantly not available in ARM versions
 if uname -m | grep -q arm || [[ $computer_type == Pi ]] ; then
     local file=$hp/public_pool/Dockerfile
-    swap_string "$file" "python3" "python3 ca-certificates cmake curl " 
+    if ! grep -q "cmake" < $file ; then
+    swap_string "$file" "python3" "python3 ca-certificates cmake " 
     #need function to check for an install python here.
     python3 $pp/parmanode/src/public_pool/add_backslash_pool_Dockerfile.py ; debug "fix arm done" #ARM build failes unless extra dependencies installed
     unset file
+    fi
 fi
 
 # build image

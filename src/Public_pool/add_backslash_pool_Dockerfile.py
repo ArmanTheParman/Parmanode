@@ -3,7 +3,7 @@ import os
 home = os.environ['HOME']
 input_file = os.path.join(home, 'parmanode', 'public_pool', 'Dockerfile')
 print(input_file)
-search_string="cmake curl"
+search_string="cmake "
 with open(input_file, 'r') as file:
     lines = file.readlines()
 
