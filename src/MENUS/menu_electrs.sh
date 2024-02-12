@@ -117,8 +117,7 @@ if docker exec electrs bash -c "ps -x" 2>/dev/null | grep electrs | grep -q conf
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
 
-      DOCKER TOR ONLY:$bright_blue 
-                  This computer has Tor in a container, use proxy port 9060 (not 9050)$orange
+      DOCKER TOR ONLY:
                  $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange      " 
 
@@ -171,12 +170,7 @@ m|M) back2main ;;
 r) menu_electrs || return 1 ;;
 
 I|i|info|INFO)
-if [[ $electrsis == docker ]] ; then 
-info_electrs_docker
-else
 info_electrs
-fi
-break
 ;;
 
 start | START)
