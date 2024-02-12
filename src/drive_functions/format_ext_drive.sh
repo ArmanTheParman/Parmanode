@@ -15,14 +15,17 @@ debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then 
+debug "confirm format, if, #1"
 confirm_format "Bitcoin" || skip_formatting=true
 fi
 
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then 
+debug "confirm format, if, #2"
 confirm_format "Fulcrum" || skip_formatting=true
 fi
 
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then 
+debug "confirm format, if, #3"
 confirm_format "electrs" || skip_formatting=true
 fi
 
@@ -32,23 +35,29 @@ skip formatting is = $skip_formatting"
 if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then 
     return 0 
     else
-    format_warnings || return 0 
-fi
+    format_warnings #skip_formatting can be changed here
 
-if [[ $install_bitcoin_variable == true && $skip_formatting == true ]] ; then
-    if [[ $OS == Mac ]] ; then
-        if ! diskutil list | grep -q parmanode ; then 
-        driveproblem=true
+    if [[ $install_bitcoin_variable == true && $skip_formatting == true ]] ; then
+        if [[ $OS == Mac ]] ; then
+            if ! diskutil list | grep -q parmanode ; then 
+            driveproblem=true
+            fi
+        elif [[ $OS == Linux ]] ; then
+            if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
+            driveproblem=true
+            fi
         fi
-    elif [[ $OS == Linux ]] ; then
-        if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
-        driveproblem=true
+        if [[ $driveproblem == true ]] ; then
+            unset driveproblem
+            non_parmanode_drive_warning "Bitcoin" || return 1 #quit installtion
+            return 0 #if skip formatting, and drive not parmanode, continue on with installation even though problems.
         fi
     fi
-    if [[ $driveproblem == true ]] ; then
-        unset driveproblem
-        non_parmanode_drive_warning "Bitcoin" || return 1
+    # Skipping formatting, and a parmanode drive exists.
+    if [[ $skip_formatting == true ]] ; then
+    return 0
     fi
+    # Skip formatting  must be false - carry on with format...
 fi
 
 
