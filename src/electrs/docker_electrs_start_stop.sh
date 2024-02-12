@@ -15,19 +15,17 @@ docker exec -d electrs /bin/bash -c "/home/parman/parmanode/electrs/target/relea
 debug "before nginx daemon"
 docker exec -du root electrs nginx -g 'daemon off;'
 debug "after nginx daemon"
-return 0
-else
-announce "docker not running. Aborting." 
-return 1 
-fi
 }
 
 function docker_stop_electrs {
-if docker ps >/dev/null 2>&1 ; then
-docker stop electrs
-return 0
-else
-announce "docker not running." 
+if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+########################################################################################$red
+                              Docker is not running. $orange
+########################################################################################
+"
+enter_continue
 return 1
 fi
+
+docker stop electrs
 }
