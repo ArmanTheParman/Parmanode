@@ -65,14 +65,6 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>/dev/null)
 fi
 
-
-
-debug "electrs_version is $electrs_version
-log size is $log_size
-electrsis is $electrsis
-electrs_sync is $electrs_sync
-"
-
 set_terminal_custom 50
 
 echo -e "
@@ -373,15 +365,12 @@ if [[ $bsync == true ]] ; then
 elif [[ $bsync == false ]] ; then
     #fetches block number...
     export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
-debug2 "electrs_sync is $electrs_sync"
     #in case an unexpected non-number string, printout, otherwise check if full synced.
     if ! echo $electrs_sync | grep -qE '^[0-9]+$' >/dev/null ; then
 
-        debug "electrs sync: $electrs_sync, line 361" 
         export electrs_sync="Wait...$orange"
 
     else 
-        debug "electrs sync: $electrs_sync, line 3365" 
         bblock=$(echo $gbci | jq -r ".blocks")    
 
         if [[ $bblock == $electrs_sync ]] ; then
