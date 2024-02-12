@@ -1,4 +1,5 @@
 function install_public_pool {
+set_terminal 
 
 if [[ $OS == Mac ]] ; then
     if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
@@ -53,7 +54,7 @@ if docker ps -a | grep -q "public_pool" ; then
 docker rm public_pool public_pool_ui
 fi
 
-enable_tor_general
+enable_tor_general #returns if mac
 
 cd $hp
 
