@@ -19,7 +19,7 @@ echo -e "
 
     This might take 10 to 30 minutes, depending on the speed of your computer.
     
-    It might go faster if this is not your computer's fist time 
+    It should be much faster if this is not your computer's fist time 
     (installing electrs ;P).
 
     PROCEED?
