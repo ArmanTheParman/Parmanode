@@ -199,7 +199,7 @@ $red
                          y)   Yeah, I know what I'm doing
 $green 
                          n)   No, abort.
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
