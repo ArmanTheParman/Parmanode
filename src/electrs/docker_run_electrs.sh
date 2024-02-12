@@ -28,6 +28,7 @@ if [[ $OS == Mac ]] ; then
         docker run -d --name electrs \
                                 -p 50005:50005 \
                                 -p 50006:50006 \
+                                -p 9060:9060 \
                                 -v $HOME/.electrs_db:/electrs_db \
                                 -v $HOME/.electrs:/home/parman/.electrs \
                                 electrs
@@ -37,6 +38,7 @@ if [[ $OS == Mac ]] ; then
         docker run -d --name electrs \
                                 -p 50005:50005 \
                                 -p 50006:50006 \
+                                -p 9060:9060 \
                                 -v $parmanode_drive/electrs_db:/electrs_db \
                                 -v $HOME/.electrs:/home/parman/.electrs \
                                 electrs
