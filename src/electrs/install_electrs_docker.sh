@@ -17,8 +17,13 @@ grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting.
 
 grep -q "docker-end" < $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
 
-if [[ $OS == Mac ]] ; then announce "Please make sure docker is running at least in the background, or
-    installation is likely to fail."
+if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+########################################################################################$red
+                              Docker is not running. $orange
+########################################################################################
+"
+enter_continue
+return 1
 fi
 
 # check Bitcoin settings
