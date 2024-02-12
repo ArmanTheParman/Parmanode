@@ -1,6 +1,4 @@
 function install_electrs_docker {
-type install_electrs_docker
-debug "just in ied"
 
 # Docker container runs with tor daemon for CMD
 # Starting electrs and nginx happens with a function call after container started.
