@@ -34,7 +34,7 @@ skip formatting is = $skip_formatting"
 
 if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then 
     return 0 
-    else
+else
     format_warnings #skip_formatting can be changed here
 
     if [[ $install_bitcoin_variable == true && $skip_formatting == true ]] ; then
