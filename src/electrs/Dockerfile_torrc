@@ -1,7 +1,7 @@
-SocksPort 9060
+SocksPort 0.0.0.0:9060
 ControlPort 9061
 CookieAuthentication 1
 CookieAuthFileGroupReadable 1
 DataDirectoryGroupReadable 1
 HiddenServiceDir /var/lib/tor/electrs-service/
-HiddenServicePort 7004 127.0.0.1:50005
+HiddenServicePort 7004 0.0.0.0:50005
