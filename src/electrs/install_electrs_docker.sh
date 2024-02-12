@@ -52,7 +52,9 @@ preamble_install_electrs_docker || return 1
 set_terminal ; please_wait
 
 docker build -t electrs $original_dir/src/electrs/ ; log "electrsdkr" "docker build done"
-debug "check build for errors"
+echo -e " $red
+Pausing here; you can see if the build failed or not."
+enter_continue
 installed_config_add "electrsdkr2-start"
 
 
