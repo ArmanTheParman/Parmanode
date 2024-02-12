@@ -1,11 +1,11 @@
 function menu_overview {
 while true ; do
 clear
-unset m1 m2 m3 m4 m5 m6 m7 m8 m9
-unset s1 s2 s3 s4 s5 s6 s7 s8 s9
-unset i1 i2 i3 i4 i5 i6 i7 i8 i9
-unset r1 r2 r3 r4 r5 r6 r7 r8 r9
-unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9
+unset m1 m2 m3 m4 m5 m6 m7 m8 m9 m10
+unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10
+unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10
+unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10
+unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10
 
 set_terminal
 please_wait
@@ -174,6 +174,21 @@ else
     unset m9 s9 r9
 fi
 
+if grep -q public_pool-end < $ic ; then
+    i10="${green}Y${orange}"
+    if [[ $publicpoolrunning == true ]] ; then
+    r10="${green}Y${orange}"
+    menub10=true
+    else
+    r10="${red}N${orange}"
+    menub10=false
+    fi
+else
+    i10="${red}     N${orange}"
+    r10="${red}N${orange}"
+    menub10=false
+    unset m10 s10 r10
+fi
 
 x="${orange}|$bright_blue"
 
@@ -202,6 +217,7 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
                                 |
       Mempool                   |                $m9                $r9                $s9
                                 |
+      Public Pool               |                $m10                $r10                $s10
                                 |
       ${red}r to refresh${orange}              |
                                 |

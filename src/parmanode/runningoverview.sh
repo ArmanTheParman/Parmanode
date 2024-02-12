@@ -13,6 +13,23 @@ isbrerunning
 isbtcpayrunning 
 isrtlrunning 
 ismempoolrunning
+ispublicpoolrunning
+}
+
+function ispublicpoolrunning {
+while true ; do
+if ! docker ps >/dev/null 2>&1 ; then
+export publicpoolrunning=false
+overview_conf_add "publicpoolrunning=false" "publicpoolrunning="
+break
+fi
+
+if docker ps 2>/dev/null | grep -qE 'public_pool[^_]' ; then
+overview_conf_add "publicpoolrunning=true" "publicpoolrunning="
+export publicpoolruuning=true 
+fi
+break
+done
 }
 
 
