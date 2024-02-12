@@ -35,7 +35,25 @@ if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then
     format_warnings || return 0 
 fi
 
+if [[ $install_bitcoin_variable == true && $skip_formatting == true ]] ; then
+    if [[ $OS == Mac ]] ; then
+        if ! diskutil list | grep -q parmanode ; then 
+        driveproblem=true
+        fi
+    elif [[ $OS == Linux ]] ; then
+        if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
+        driveproblem=true
+        fi
+    fi
+    if [[ $driveproblem == true ]] ; then
+        unset driveproblem
+        non_parmanode_drive_warning "Bitcoin" || return 1
+    fi
 fi
+
+
+
+fi #end not justFormat
 unset justFormat
 
 
@@ -152,4 +170,34 @@ n|N) return 1 ;;
 *) invalid ;;
 esac
 done
+}
+
+
+function non_parmanode_drive_warning {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    You have selected an internal drive for $1 and then to not format a drive.
+
+    Parmanode has not detected any Parmanode configured drive connected to the
+    computer. If you proceed, Bitcoin will be installed, but it won't be able to
+    start. You can still go head and 'import' a parmanode drive later, or choose
+    to bring in a new drive later from the Parmanode Bitcoin menu.
+
+    Keep going with installation?
+$red
+                         y)   Yeah, I know what I'm doing
+$green 
+                         n)   No, abort.
+
+########################################################################################
+"
+choose "xpmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; n|N|No|NO|p|P|a|A) return 1 ;; m|M) back2main ;; y|Y|yes|YES) break ;;
+*) invalid ;;
+esac
+done
+
 }
