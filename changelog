@@ -2,6 +2,7 @@ Version 3.29.1
     -Public Pool
     -Mining subcatagory install menu
     -Some electrs minor fixes
+    -Docker for electrs comes with Tor server at 9060
 Version 3.28.2
     -drive import bugs fixed
 Version 3.28.1
