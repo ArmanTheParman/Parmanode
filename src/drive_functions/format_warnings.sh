@@ -4,26 +4,26 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then
 echo -e "
 ########################################################################################
-$red
-    YOU ARE ABOUT TO FORMAT THE DRIVE!$orange All data on the drive will be erased.
+    
+    YOU ARE ABOUT TO$red FORMAT THE DRIVE!$orange All data on the drive will be erased.
 
                          (y)     Format drive
-
+$green
                          (s)     Skip formatting
-
+$orange
 ########################################################################################
 "
 fi
 if [[ $OS == "Mac" ]] ; then
 echo -e "
 ########################################################################################
-$red
-    YOU ARE ABOUT TO FORMAT THE DRIVE!$orange All data on the drive will be erased.
+
+    YOU ARE ABOUT TO$red FORMAT THE DRIVE!$orange All data on the drive will be erased.
 
                              (y)     Format drive
-
+$green
                              (s)     Skip formatting
-    
+   $orange 
 ########################################################################################
 
 "
