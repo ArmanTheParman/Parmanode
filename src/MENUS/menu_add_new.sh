@@ -29,6 +29,8 @@ echo -e "${bitcoin_new}
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
 #                                                                                      #
+#                          mm)          Mining Software ...                            #
+#                                                                                      #
 #                          o)           Other Software ...                             #
 #                                                                                      #
 ########################################################################################
@@ -57,6 +59,11 @@ bs|BS|Bs|bS)
 
 n|N|node|Node)
         menu_add_node
+        return 0
+        ;;
+
+mm|MM|Mm|mM)
+        menu_add_mining
         return 0
         ;;
 
