@@ -28,15 +28,16 @@ $orange
 $cyan
     Tor:
 $orange
-        Connecting over Tor allows you to connect from anywayer. It's not about privacy
+        Connecting over Tor allows you to connect from anywhere. It's not about privacy
         per se, because when you connect to your own node, only you will know about it.
         Your network communication is not leaked to the internet.
 
-        If running electrs in Docker, there is a Tor server that Parmanode has added
-        for you. To access it, use port 9060. If you ahve Tor on your system, you 
-        would use port 9050 for a daemon (backgroun Tor) and 9150 if using Tor browser
-        as the Tor engine. Later, I'll make a seperate Tor container, but the port will
-        remain as 9060.
+        If running electrs in Docker, there is a Tor server inside that Parmanode 
+        has added for you. If you have Tor on your system, you would use port 9050 
+        for a daemon (backgroun Tor) and 9150 if using Tor browser as the Tor engine. 
+
+        It's better though, to use Parmanode wallets and it'll fiddle with the
+        settings to connect via Tor - just select what you want in the menus.
 
 ########################################################################################
 "

@@ -19,4 +19,5 @@ RUN apt-get install nginx -y
 RUN apt-get update --fix-missing
 RUN apt-get install tor -y
 COPY Dockerfile_torrc /etc/tor/torrc
+COPY Dockerfile_torsocks.conf /etc/tor/torsocks.conf
 CMD tor
