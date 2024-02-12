@@ -1,4 +1,5 @@
 function install_bitcoin {
+export install_bitcoin_variable=true #don't use same name as function!
 
 if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 
     but it's not going to run with default Parmanode settings - youll have
@@ -162,6 +163,6 @@ $orange
 enter_continue
 fi
 
-unset importdrive
+unset importdrive install_bitcoin_variable
 set_terminal
 }
