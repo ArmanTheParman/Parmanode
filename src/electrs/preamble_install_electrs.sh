@@ -18,6 +18,9 @@ echo -e "
     of course free to read the code yourself to be sure. 
 
     This might take 10 to 30 minutes, depending on the speed of your computer.
+    
+    It might go faster if this is not your computer's fist time 
+    (installing electrs ;P).
 
     PROCEED?
 $green
