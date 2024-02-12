@@ -10,6 +10,9 @@ echo -e "
     The electrs code will be downloaded inside the container, then compiled. This 
     might take 10 to 30 minutes, depending on the speed of your computer.
 
+    It might go faster if this is not your computer's fist time 
+    (installing electrs ;P).
+
     PROCEED?
 $green
                         y)      Yes please, this is amazing
