@@ -3,8 +3,7 @@ function menu_public_pool {
 while true ; do 
 unset status_tor_text status_tor ONION_ADDR_PP
 
-if [[ -e /var/lib/tor/public_pool-service ]] && \
-sudo cat /etc/tor/torrc | grep -q localhost:5050 ; then
+if sudo cat /etc/tor/torrc | grep -q localhost:5050 ; then
       get_onion_address_variable "public_pool"
       status_tor_text="${green}Enabled$orange"
       status_tor=enabled
@@ -91,6 +90,8 @@ newtor)
 sudo rm -rf /var/lib/tor/public_pool-service
 debug "rm tor dir"
 sudo systemctl restart tor
+announce "You need to wait about 30 seconds to a minute for the onion
+    address to appear. Just refresh the menu after a while."
 ;;
 
 *)
