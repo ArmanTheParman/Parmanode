@@ -39,14 +39,14 @@ echo -e "
 
       The user interfact can be access from your browser at:
 $cyan
-                       http://localhost:505${red}0$cyan  
-                       http://127.0.0.1:505${red}1$cyan
-                       https://127.0.0.1:505${red}2$cyan
-                       https://$IP:505${red}2$cyan
+                   http://localhost:505${red}0$cyan  
+                   http://127.0.0.1:505${red}1$cyan
+                   https://127.0.0.1:505${red}2$cyan
+                   https://$IP:505${red}2$cyan
 $pink
-                       ZMQ data available at port 5000 (not 3000) $orange
+                   ZMQ data available at port 5000 (not 3000) $orange
 
-      Tor Access:$bright_blue      $ONION_ADDR_PP $orange
+      Tor Access:$bright_blue  $ONION_ADDR_PP:5055 $orange
 $cyan
   IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
