@@ -29,9 +29,11 @@ debug "electrs restarted"
 get_onion_address_variable "electrs" >/dev/null 2>&1
 
 parmanode_conf_add "electrs_tor=true"
-clear
-echo "    Changes have been made to torrc file"
-echo "    Tor has been restarted."
-echo ""
+
+set_terminal ; echo -e "
+########################################################################################
+    FYI, changes have been made to torrc file, and Tor has been restarted.
+########################################################################################
+"
 enter_continue
 }

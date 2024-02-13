@@ -38,5 +38,4 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-# add extra lines, then restart nginx, with calling function
 }
