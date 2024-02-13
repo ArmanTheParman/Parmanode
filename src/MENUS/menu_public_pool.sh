@@ -2,7 +2,7 @@ function menu_public_pool {
 
 while true ; do 
 
-if [[ -e $dp/tor/public_pool-tor ]]
+if [[ -e $dp/tor/public_pool-tor ]] ; then
 get_onion_address "public_pool"
 status_tor="${green}Enabled$orange"
 else
