@@ -36,7 +36,7 @@ return 0
 fi
 
 if [[ $1 == "public_pool" ]] ; then
-export ONION_ADDR_PP="$(sudo cat $dp/tor/public_pool-service/hostname 2>/dev/null)" 
+export ONION_ADDR_PP="$(sudo cat /var/lib/tor/public_pool-service/hostname 2>/dev/null)" 
 return 0
 fi
 }
