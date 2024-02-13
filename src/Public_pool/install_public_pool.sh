@@ -10,7 +10,7 @@ if [[ $OS == Mac ]] ; then
     fi
 elif [[ $OS == Linux ]] ; then
     if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
-    if ! which python3 ; then
+    if ! which python3 >/dev/null ; then
         sudo apt-get update -y && sudo apt-get install python3 -y
     fi
 fi
@@ -78,6 +78,7 @@ local file=$hp/public_pool/Dockerfile
 #delete any Dockerfile in repo and replace with Parmanode's fork.
 if [[ -e $file ]] ; then rm $file ; fi
 cp $pp/parmanode/src/public_pool/Dockerfile $file
+debug "cp"
 unset file
 
 # build image
