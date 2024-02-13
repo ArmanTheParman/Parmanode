@@ -1,0 +1,2 @@
+hidden services are at /var/lib/tor
+From version 3.29.0, I will start moving services and new services to $dp/
