@@ -1,12 +1,15 @@
 function menu_public_pool {
 
 while true ; do 
+unset status_tor_text status_tor
 
 if [[ -e $dp/tor/public_pool-tor ]] ; then
 get_onion_address "public_pool"
-status_tor="${green}Enabled$orange"
+status_tor_text="${green}Enabled$orange"
+status_tor=enabled
 else
-status_tor="${red}Disabled$orange"
+status_tor_text="${red}Disabled$orange"
+status_tor=disabled
 fi
 
 
@@ -30,6 +33,8 @@ echo -e "
       (restart)        Restart containers
 
       (tor)            Enable/Disable Tor       $status_tor
+
+      (newtor)         Refresh onion address
 
 
       The user interfact can be access from your browser at:
@@ -71,6 +76,19 @@ restart|RESTART|Restart)
 stop_public_pool
 start_public_pool
 continue
+;;
+
+tor)
+if [[ $status_tor == disabled ]] ; then
+enable_tor_public_pool
+else
+disable_tor_public_pool
+fi
+;;
+
+newtor)
+sudo rm -rf $dp/tor/public_pool
+sudo systemctl restart tor
 ;;
 
 *)
