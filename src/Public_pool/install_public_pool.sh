@@ -77,7 +77,7 @@ local file=$hp/public_pool/Dockerfile
 
 #delete any Dockerfile in repo and replace with Parmanode's fork.
 if [[ -e $file ]] ; then rm $file ; fi
-cp $pp/parmanode/src/public_pool/Dockerfile $file
+cp $pp/parmanode/src/public_pool/Dockerfile $file 2>/dev/null
 debug "cp"
 unset file
 

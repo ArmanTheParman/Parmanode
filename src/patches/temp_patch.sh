@@ -1,5 +1,9 @@
 function temp_patch {
 
+if [[ -d $pp/parmanode/src/Public_pool ]] ; then
+mv $pp/parmanode/src/Public_pool $pp/parmanode/src/public_pool >/dev/null 2>&1
+fi
+
 swap_string "$ic" "piassps-end" "piapps-end"
 if [[ -f $bc ]] ; then
 delete_line $bc "rpcallowip=172"
