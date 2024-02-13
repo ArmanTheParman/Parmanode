@@ -30,8 +30,13 @@ export ONION_ADDR_MEM="$(sudo cat /var/lib/tor/mempool-service/hostname 2>/dev/n
 return 0
 fi
 
-if [[ $1 == ssh ]] ; then
+if [[ $1 == "ssh " ]] ; then
 export ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname 2>/dev/null)" 
+return 0
+fi
+
+if [[ $1 == "public_pool" ]] ; then
+export ONION_ADDR_PP="$(sudo cat $dp/tor/public_pool-service/hostname 2>/dev/null)" 
 return 0
 fi
 }
