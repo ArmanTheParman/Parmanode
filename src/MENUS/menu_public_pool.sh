@@ -7,6 +7,7 @@ if sudo cat /etc/tor/torrc | grep -q 127.0.0.1:5052 ; then
       get_onion_address_variable "public_pool"
       status_tor_text="${green}Enabled$orange"
       status_tor=enabled
+      tor_URL="      https://$ONION_ADDR_PP:5055 $orange"
 else
       status_tor_text="${red}Disabled$orange"
       status_tor=disabled
@@ -47,7 +48,7 @@ $pink
                    ZMQ data available at port 5000 (not 3000) $orange
 
       Tor Access (SSL):$bright_blue  
-      https://$ONION_ADDR_PP:5055 $orange
+$tor_URL
 $cyan
   IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
