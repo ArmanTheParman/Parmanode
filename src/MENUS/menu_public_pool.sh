@@ -3,7 +3,7 @@ function menu_public_pool {
 while true ; do 
 unset status_tor_text status_tor ONION_ADDR_PP
 
-if sudo cat /etc/tor/torrc | grep -q localhost:5050 ; then
+if sudo cat /etc/tor/torrc | grep -q 127.0.0.1:5052 
       get_onion_address_variable "public_pool"
       status_tor_text="${green}Enabled$orange"
       status_tor=enabled

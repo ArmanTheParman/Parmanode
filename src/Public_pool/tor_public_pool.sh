@@ -8,7 +8,7 @@ if sudo grep "HiddenServiceDir /var/lib/tor/public_pool-service/" \
     echo "HiddenServiceDir /var/lib/tor/public_pool-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServicePort 5055 localhost:5050" \
+if sudo grep "HiddenServicePort 5055 127.0.0.1:5052" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServicePort 5055 127.0.0.1:5052" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
@@ -29,7 +29,7 @@ function disable_tor_public_pool {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 file="/etc/tor/torrc"
 delete_line "$file" "public_pool"
-delete_line "$file" "localhost:5050"
+delete_line "$file" "127.0.0.1:5052"
 sudo systemctl restart tor
 success "Public Pool Tor" "being disabled"
 }
