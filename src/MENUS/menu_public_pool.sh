@@ -32,7 +32,7 @@ echo -e "
 
       (restart)        Restart containers
 
-      (tor)            Enable/Disable Tor       $status_tor
+      (tor)            Enable/Disable Tor       $status_tor_text
 
       (newtor)         Refresh onion address
 
