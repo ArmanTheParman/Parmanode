@@ -90,8 +90,8 @@ newtor)
 sudo rm -rf /var/lib/tor/public_pool-service
 debug "rm tor dir"
 sudo systemctl restart tor
-announce "You need to wait about 30 seconds to a minute for the onion
-    address to appear. Just refresh the menu after a while."
+announce "You need to wait about 30 seconds to a minute for the onion address to appear.
+    Just refresh the menu after a while."
 ;;
 
 *)
