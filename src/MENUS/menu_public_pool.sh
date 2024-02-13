@@ -1,6 +1,15 @@
 function menu_public_pool {
 
 while true ; do 
+
+if [[ -e $dp/tor/public_pool-tor ]]
+get_onion_address "public_pool"
+status_tor="${green}Enabled$orange"
+else
+status_tor="${red}Disabled$orange"
+fi
+
+
 set_terminal ; echo -e "
 ########################################################################################$cyan
                                  Public Pool Menu     $orange 
@@ -20,6 +29,8 @@ echo -e "
 
       (restart)        Restart containers
 
+      (tor)            Enable/Disable Tor       $status_tor
+
 
       The user interfact can be access from your browser at:
 $cyan
@@ -34,13 +45,14 @@ $pink
 $cyan
 IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
+${red}r to refresh
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
-
+r) menu_public_pool ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 

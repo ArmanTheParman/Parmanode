@@ -20,11 +20,11 @@ set_terminal ; echo -e "
     
     Do that now?
 $green
-                           y)    go for it
+                           y)        Go for it
 $red
-                           n)    no
+                           n)        No
 $bright_blue
-                           nooo) No and never ask again
+                           nooo)     No and never ask again
 $orange 
 ########################################################################################
 "
