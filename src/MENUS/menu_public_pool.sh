@@ -4,7 +4,7 @@ while true ; do
 unset status_tor_text status_tor
 
 if [[ -e /var/lib/tor/public_pool-service ]] ; then
-get_onion_address_variable "public_pool"
+get_onion_address_variable "public_pool" && debug "onion addr: $ONION_ADDR_PP"
 status_tor_text="${green}Enabled$orange"
 status_tor=enabled
 else
