@@ -27,7 +27,7 @@ enter_continue
 
 function disable_tor_public_pool {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-file="/etc/torrc"
+file="/etc/tor/torrc"
 delete_line "$file" "public_pool"
 delete_line "$file" "localhost:5050"
 sudo systemctl restart tor
