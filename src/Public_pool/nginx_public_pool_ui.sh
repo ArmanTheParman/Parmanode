@@ -26,15 +26,6 @@ else #install
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
 
-# If ssl_session_cache exists, can't duplicate
-if grep -qrE '^[^#]*session_cache' ./ < "$nginx_root" ; then
-
-comment_out="#"
-else
-comment_out=''
-fi
-
-
 echo -en "
 server {
         listen 5052 ssl;
@@ -42,7 +33,6 @@ server {
 
         ssl_certificate $ssl_cert; 
         ssl_certificate_key $ssl_key; 
-$comment_out        ssl_session_cache shared:SSL:1m;
         ssl_session_timeout 4h;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
         ssl_prefer_server_ciphers on;
