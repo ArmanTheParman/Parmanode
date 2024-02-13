@@ -251,6 +251,7 @@ m6) menu_btcpay  overview ;;
 m7) menu_rtl     overview ;;
 m8) menu_electrs overview ;;
 m9) menu_mempool overview ;;
+m10) menu_public_pool overview ;;
 
 s1) 
 if [[ $menub1 == true ]] ; then
@@ -339,9 +340,17 @@ s9)
 if [[ $menub9 == true ]] ; then
 clear ; please_wait
 stop_mempool
-debug "after stop mempool"
 else
 start_mempool
+fi
+;;
+
+s10)
+if [[ $menub10 == true ]] ; then
+clear ; please_wait
+stop_public_pool
+else
+start_public_pool
 fi
 
 esac
