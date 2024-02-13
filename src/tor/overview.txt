@@ -1,2 +1,6 @@
 hidden services are at /var/lib/tor
+tor for mac is installed with homebrew
 From version 3.29.0, I will start moving services and new services to $dp/
+electrs docker container has a seperate tor instance at port 9060. I don't think I'll 
+continue doing it that way for other programs. This methode ensure tor is running and
+removes the need for tor system configuration
