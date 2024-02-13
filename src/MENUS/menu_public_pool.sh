@@ -3,7 +3,7 @@ function menu_public_pool {
 while true ; do 
 unset status_tor_text status_tor
 
-if [[ -e /var/lib/tor/public_pool-tor ]] ; then
+if [[ -e /var/lib/tor/public_pool-service ]] ; then
 get_onion_address "public_pool"
 status_tor_text="${green}Enabled$orange"
 status_tor=enabled
