@@ -30,8 +30,7 @@ $cyan
 $pink
                        ZMQ data available at port 5000 (not 3000) $orange
 
-$bright_blue                       TOR coming soon $orange
-
+      Tor Access:$bright_blue      $ONION_ADDR_PP $orange
 $cyan
 IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
