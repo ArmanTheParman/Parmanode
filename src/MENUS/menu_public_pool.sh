@@ -46,7 +46,8 @@ $cyan
 $pink
                    ZMQ data available at port 5000 (not 3000) $orange
 
-      Tor Access:$bright_blue  $ONION_ADDR_PP:5055 $orange
+      Tor Access (SSL):$bright_blue  
+      https://$ONION_ADDR_PP:5055 $orange
 $cyan
   IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
