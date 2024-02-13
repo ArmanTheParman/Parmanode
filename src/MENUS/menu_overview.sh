@@ -219,7 +219,7 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
                                 |
       Mempool                   |                $m9                $r9                $s9
                                 |
-      Public Pool               |                $m10                $r10              $s10
+      Public Pool               |                $m10                $r10                $s10
                                 |
       ${red}r to refresh${orange}              |
                                 |
