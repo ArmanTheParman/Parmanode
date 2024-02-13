@@ -168,7 +168,7 @@ overview_conf_add "rtlrunning=false" "rtlrunning="
 fi
 
 function ismempoolrunning {
-if docker ps 2>/dev/null | grep -q mempool ; then
+if docker ps 2>/dev/null | grep -q mempool_web ; then
 overview_conf_add "mempoolrunning=true" "mempoolrunning="
 else
 overview_conf_add "mempoolrunning=false" "mempoolrunning="
