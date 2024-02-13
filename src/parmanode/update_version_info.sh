@@ -26,8 +26,17 @@ debug2 "check_for_updates: latest version $latest_version != version $version"
 }
 
 function old_version_detected {
+countversion=0
 if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
 while true ; do
+if [[ $countversion -gt 0 ]] ; then announce "If you're stuck in a loop, check 'git status' in the
+    Parmanode directory. If you've been editing files, that can cause issues. Just delete
+    the Parmanode directory and clone it form github again:
+
+    cd $HOME/parman_programs && git clone --depth 1 https://github.com/armantheparman/parmanode.git
+    "
+fi
+countversion=$((countversion + 1))
 set_terminal ; echo -e "
 ########################################################################################
 
