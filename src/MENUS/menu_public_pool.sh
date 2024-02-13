@@ -4,7 +4,7 @@ while true ; do
 unset status_tor_text status_tor
 
 if [[ -e /var/lib/tor/public_pool-service ]] ; then
-get_onion_address_variable "public_pool" && debug "onion addr: $ONION_ADDR_PP"
+get_onion_address_variable "public_pool"
 status_tor_text="${green}Enabled$orange"
 status_tor=enabled
 else
@@ -48,7 +48,7 @@ $pink
 
       Tor Access:$bright_blue      $ONION_ADDR_PP $orange
 $cyan
-IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
+  IF YOU CAN'T CONNECT TO BITCOIN RPC MAKE SURE IT'S RUNNING THEN RESTART PUBLIC POOL$orange
 ########################################################################################
 ${red}r to refresh
 "
