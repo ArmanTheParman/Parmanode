@@ -88,7 +88,8 @@ fi
 ;;
 
 newtor)
-sudo rm -rf /var/lib/tor/public_pool
+sudo rm -rf /var/lib/tor/public_pool-service
+debug "rm tor dir"
 sudo systemctl restart tor
 ;;
 
