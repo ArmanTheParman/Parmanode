@@ -10,7 +10,7 @@ if sudo grep "HiddenServiceDir /var/lib/tor/public_pool-service/" \
 
 if sudo grep "HiddenServicePort 5055 localhost:5050" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 5055 localhost:5050" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 5055 127.0.0.1:5052" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 sudo systemctl restart tor
