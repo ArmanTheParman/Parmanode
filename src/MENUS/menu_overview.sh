@@ -341,7 +341,7 @@ if [[ $menub9 == true ]] ; then
 clear ; please_wait
 stop_mempool
 else
-start_mempool
+clear ; start_mempool
 fi
 ;;
 
@@ -350,7 +350,7 @@ if [[ $menub10 == true ]] ; then
 clear ; please_wait
 stop_public_pool
 else
-start_public_pool
+clear ; start_public_pool
 fi
 
 esac
