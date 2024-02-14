@@ -82,7 +82,10 @@ read choice
 case $choice in
 y|Y|Yes|yes)
 sudo apt-get update -y 
-sudo apt-get upgrade -y 
+sudo apt-get full-upgrade -y 
+sudo apt-get autoremove -y
+sudo apt-get --fix-missing install -y
+sudo apt-get install jq -y
 install_fuse noupdate #linux minmal installs my need to run AppImages
 break
 ;;
