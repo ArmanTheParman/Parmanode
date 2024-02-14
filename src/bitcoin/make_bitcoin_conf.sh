@@ -29,10 +29,12 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 EOF
 
+if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
 IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
 IP2="$(echo "$IP" | cut -d \. -f 2 2>/dev/null)"
 IP1and2="$IP1.$IP2." 
 echo rpcallowip="${IP1and2}0.0/16" | tee -a /tmp/bitcoin.conf >/dev/null 2>&1
+fi
 
 debug "check bitcoin conf in /tmp made"
 
