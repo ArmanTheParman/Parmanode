@@ -6,7 +6,7 @@ if cat $HOME/.parmanode/installed.conf | grep -q "nginx-end" ; then
 else
     if which nginx >/dev/null 2>&1 ; then 
     set_terminal 
-    log "parmanode" "Nginx already installed."
+    log "parmanode" "Nginx already installed. (if which nginx)"
     installed_conf_add "nginx-end"     
     return 1 ; fi
 fi
@@ -18,7 +18,7 @@ if [[ $OS == Mac ]] ; then
     brew install nginx 
  fi
 
-installed_conf_add "nginx-end"
+if which nginx >/dev/null ; then installed_conf_add "nginx-end" ; fi
 return 0
 }
 
