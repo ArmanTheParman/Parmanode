@@ -1,12 +1,14 @@
 function temp_patch {
 
 #in case someone has a funky IP address. Will add to bitcoin install, so this is not needed for very long here.
-IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)"
+if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
+IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
 IP2="$(echo "$IP" | cut -d \. -f 2 2>/dev/null)"
-IP1and2="$IP1.$IP2."
-
-if ! grep -q "rpcallowip=$IP1and2" < $bc ; then echo rpcallowip="${IP1and2}0.0/16" | tee -a $bc >/dev/null 2>&1
+IP1and2="$IP1.$IP2." 
+    if ! grep -q "rpcallowip=$IP1and2" < $bc ; then echo rpcallowip="${IP1and2}0.0/16" | tee -a $bc >/dev/null 2>&1
+    fi
 fi
+
 
 if grep -q ":5000" < $bc ; then
 delete_line $bc "zmqpubrawblock=tcp://\*:5000" >/dev/null 2>&1
