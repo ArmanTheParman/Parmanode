@@ -46,7 +46,7 @@ if ! which brew >/dev/null ; then install_homebrew ; break
 else
 brew update
 brew upgrade
-brew install bash netcat
+brew install bash netcat jq
 break
 fi
 ;;
