@@ -1,5 +1,6 @@
 Version 3.30.0
     -added jq and cmake to update_computer function, and cleanup commands
+    -readme update
 Version 3.29.2
     -Public Pool has Tor
 Version 3.29.1

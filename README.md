@@ -155,7 +155,8 @@ Make sure you don't just trust the comments inside the torrent file with its pri
 
 Then flash the image to a microSD card using Balena Etcher, then stick it in the Pi and switch it on. Access the Pi as a traditional desktop computer, or via ssh with
 
-    ssh parman@parmanodl.locl      (user=parman, password=parmanodl)
+    ssh parman@parmanodl.locl      
+    user=parman ; password=parmanodl
 
 Pay attention to the password. When you log in for the first time, you'll be forced to change the password. The way the software behavious is odd, be warned. If using a graphical user interface (ie attached monitor and keyboard/mouse to the Pi), you'll be asked for the default password (parmanodl). You will then be told to make a new password - BUT WITHOUT EXPLANATION, IT'S ACTUALLY WAITING FOR THE SAME DEFAULT PASSWORD FIRST. After that, you put a new password,  then repeat it to confirm. Sorry about that, blame the developers of Raspberry Pi OS, that bit is mostly out of my control. 
 
