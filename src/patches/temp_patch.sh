@@ -15,7 +15,7 @@ delete_line $bc "zmqpubrawblock=tcp://\*:5000" >/dev/null 2>&1
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
 fi
 
-
+#strange behaviour with capitalisation changing frequently.
 if [[ -d $pp/parmanode/src/Public_pool ]] ; then
 mv $pp/parmanode/src/Public_pool $pp/parmanode/src/public_pool >/dev/null 2>&1
 fi

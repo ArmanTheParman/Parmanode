@@ -8,7 +8,10 @@ else
     set_terminal 
     log "parmanode" "Nginx already installed. (if which nginx)"
     installed_conf_add "nginx-end"     
-    return 1 ; fi
+    return 1 
+    else
+    installed_conf_remove "nginx-"
+    fi
 fi
 
 if [[ $OS == Linux ]] ; then sudo apt-get install nginx -y ; fi
