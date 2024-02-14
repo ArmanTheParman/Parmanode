@@ -46,7 +46,7 @@ if ! which brew >/dev/null ; then install_homebrew ; break
 else
 brew update
 brew upgrade
-brew install bash
+brew install bash netcat
 break
 fi
 ;;
@@ -85,7 +85,7 @@ sudo apt-get update -y
 sudo apt-get full-upgrade -y 
 sudo apt-get autoremove -y
 sudo apt-get --fix-missing install -y
-sudo apt-get install jq -y
+sudo apt-get install jq netcat -y
 install_fuse noupdate #linux minmal installs my need to run AppImages
 break
 ;;
