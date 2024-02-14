@@ -36,7 +36,7 @@ echo -e "$orange
 #                                                                                      #
 #    (s)                  Settings  (change colour theme)                              #
 #                                                                                      #
-#    (m)                  Bitcoin Mentorship Info  .... (Study with Parman)            #
+#    (mm)                 Bitcoin Mentorship Info  .... (Study with Parman)            #
 #                                                                                      #
 #    (e)                  Education (Lotsa stuff)                                      #
 #                                                                                      #
@@ -94,7 +94,7 @@ remove|REMOVE)
     menu_remove ;;
 l|L) 
     menu_log_config ;;
-m|M)
+mm|MM)
      mentorship
      ;;
 
