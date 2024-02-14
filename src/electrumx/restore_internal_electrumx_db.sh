@@ -77,5 +77,5 @@ fi
 *) invalid ;;
 esac
 done #end while
-done #end for
+fi
 }
