@@ -5,27 +5,42 @@ function nginx_electrs {
 
 #order of if's matter
 if [[ $OS == Mac ]] ; then
-    if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/usr/local/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrs/cert.pem" 
 ssk_key="$HOME/parmanode/electrs/key.pem"
+nginx_electrs_conf="/usr/local/etc/nginx/electrs.conf"
+
 
 elif [[ $OS == Linux ]] ; then
-    if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrs/cert.pem" 
 ssk_key="$HOME/parmanode/electrs/key.pem"
-
-elif [[ $1 == electrsdkr ]] ; then #must be last
-nginx_conf=/etc/nginx/nginx.conf
-ssl_cert="/home/parman/parmanode/electrs/cert.pem" #absolute path, used within container.
-ssl_key="/home/parman/parmanode/electrs/key.pem"
+nginx_electrs_conf="/etc/nginx/conf.d/electrs.conf"
 fi
 
-if [[ $1 = "add" || $1 == electrsdkr ]] ; then 
+# made redundant
+# elif [[ $1 == electrsdkr ]] ; then #must be last
+# nginx_conf=/etc/nginx/nginx.conf
+# ssl_cert="/home/parman/parmanode/electrs/cert.pem" #absolute path, used within container.
+# ssl_key="/home/parman/parmanode/electrs/key.pem"
+# fi
+if [[ $1 = "remove" ]] ; then
+install_gsed #checks and installs or returns
+sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
+delete_line "$nginx_conf" "electrs.conf" 2>/dev/nul
+sudo rm /etc/nginx/conf.d/electrs.conf 2>/dev/null
 
-echo "# Parmanode - flag electrs-START
-stream {
+else #add
+
+#might need to install nginx
+if ! which nginx >/dev/null ; then install_nginx ; fi
+
+if [[ $OS == Mac ]] ; then 
+swap_string "$nginx_conf" "http {" "http {
+        include electrs.conf;"
+fi
+
+echo "stream {
         upstream electrs {
                 server 127.0.0.1:50005;
         }
@@ -41,29 +56,10 @@ stream {
                 ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
                 ssl_prefer_server_ciphers on;
         }
-}
-# Parmanode - flag electrs-END" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
-
-if [[ $1 == electrsdkr ]] ; then
-debug "before cat | docker tee"
-cat /tmp/nginx_conf | docker exec -iu root electrs bash -c "tee -a $nginx_conf >/dev/null 2>&1"
-debug "after cat | docker tee"
-return 0
+}" | sudo tee $nginx_electrs_conf >/dev/null 2>&1
 fi
 
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
 fi
-
-#needs to be at the end
-if [[ $1 = "remove" ]] ; then
-    if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null 
-                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
-    #redundant, and, causing errors; should never run. 
-    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null
-                                 brew services restart nginx >/dev/null 2>&1 ; fi
-return 0
-fi
-
-
 }
