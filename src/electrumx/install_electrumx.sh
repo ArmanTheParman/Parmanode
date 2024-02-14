@@ -80,7 +80,7 @@ choose_and_prepare_drive electrumx || return 1
 
 make_electrumx_directories || return 1
 
-{ make_ssl_certificates "electrs" && debug "check certs for errors " ; } \
+{ make_ssl_certificates "electrumx" && debug "check certs for errors " ; } \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 nginx_electrumx add
@@ -88,7 +88,7 @@ nginx_electrumx add
 #prepare drives. #drive_electrumx= variable set.
 { choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 
  
-#get drive variables for fulcrum, bitcoin, and electrs
+#get drive variables for others: fulcrum, bitcoin, and electrs
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrumx == "external" && $drive == "external") || \
@@ -98,19 +98,19 @@ if [[ ($drive_electrumx == "external" && $drive == "external") || \
     # Get user to connect drive.
       pls_connect_drive || return 1 
 
-    # check if there is a backup electrs_db on the drive and restore it
+    # check if there is a backup electrumx_db on the drive and restore it
       restore_elctrumx_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
-                                                           # $original from function restore_electrs_drive
+                                                           # $original from function restore_electrumx_drive
 elif [[ $drive_electrumx == external ]] ; then
 
       format_ext_drive "electrumx" || return 1
-      #make directory electrs_db not needed because config file makes that hapen when electrs run
+      #make directory electrumx_db not needed because config file makes that hapen when electrumx run
       mkdir -p $parmanode_drive/electrumx_db >/dev/null
       sudo chown -R $USER $parmanode_drive/electrumx_db >/dev/null
 fi
 
-prepare_drive_electrumx || { debug "prepare_drive_electrs failed" ; return 1 ; } 
+prepare_drive_electrumx || { debug "prepare_drive_electrumx failed" ; return 1 ; } 
 
 #if dir exists, test inside function
 if [[ $drive_electrumx == internal ]] ; then
