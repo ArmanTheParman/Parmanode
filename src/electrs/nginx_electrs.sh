@@ -30,7 +30,7 @@ install_gsed #checks and installs or returns
 #gsed works mac, and alias to sed for linux
 sudo gsed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
 delete_line "$nginx_conf" "electrs.conf" 2>/dev/null
-sudo rm /etc/nginx/conf.d/electrs.conf 2>/dev/null
+sudo rm $nginx_electrs_conf 2>/dev/null
 
 else #add
 

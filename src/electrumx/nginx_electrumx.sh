@@ -20,12 +20,15 @@ fi
 if [[ $1 = "remove" ]] ; then
 install_gsed #redundant for now
 delete_line "$nginx_conf" "electrumx.conf" 2>/dev/null
-sudo rm /etc/nginx/conf.d/electrs.conf 2>/dev/null
+sudo rm $nginx_electrumx_conf 2>/dev/null
 
 else #add
 
 #might need to install nginx
 if ! which nginx >/dev/null ; then install_nginx ; fi
+
+swap_string "$nginx_conf" "http {" "http {
+        include electrumx.conf;"
 
 echo -e "stream {
         upstream electrumx {
