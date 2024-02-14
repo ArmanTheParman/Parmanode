@@ -9,8 +9,7 @@ grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second 
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-if ! which nginx ; then install_nginx 
-fi
+if ! which nginx ; then install_nginx ; fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -27,7 +26,7 @@ announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
 fi
 
-install_jq
+if ! which jq >/dev/null ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1
@@ -113,11 +112,12 @@ nginx_electrs add
 #prepare drives. #drive_electrs= variable set.
 choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
  
-#get drive variables for fulcrum and bitcoin
+#get drive variables for fulcrum, electrumx, and bitcoin
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrs == "external" && $drive == "external") || \
-      ($drive_electrs == "external" && $drive_fulcrum == "external") ]] ; then 
+      ($drive_electrs == "external" && $drive_fulcrum == "external") || \
+      ($drive_electrs == "external" && $drive_electrumx == "external") ]] ; then 
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 
@@ -162,10 +162,10 @@ function check_pruning_off {
 if [[ $prune -gt 0 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
-    Note that Electrs won't work if Bitcoin is pruned. You'll have to completely 
-    start bitcoin sync again without pruning to use Electrs. Sorry. If you think this 
-    is wrong and want to procete, type 'yolo' then <enter>. Otherwsie, just hit
-    <enter>
+    Note that Electrum Server won't work if Bitcoin is pruned. You'll have to 
+    completely start bitcoin sync again without pruning to use Electrs. Sorry. If you 
+    think this is wrong and want to procete, type 'yolo' then <enter>. Otherwsie, just 
+    hit $green<enter>$orange
 ########################################################################################
 "
 read choice
@@ -180,7 +180,8 @@ function check_server_1 {
 if [[ $server -ne 1 ]] ; then 
 debug "Hit s to skip server=1 check." && if [[ $enter_cont == s ]] ; then return 0 ; fi
 announce "\"server=1\" needs to be included in the bitcoin.conf file." \
-"Please do that and try again. Aborting." 
+"Please do that, restart Bitcoin, and try again. Note, this will
+resync the index which will take a long time. Aborting." 
 return 1 
 fi
 }

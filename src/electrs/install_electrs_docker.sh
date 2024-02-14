@@ -24,6 +24,8 @@ enter_continue
 return 1
 fi
 
+if ! which nginx ; then install_nginx ; fi
+
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
 if [[ -e $bc ]] ; then
@@ -39,7 +41,7 @@ announce "Couldn't detect bitcoin.conf - Aborting."
 return jb1 
 fi
 
-install_jq
+if ! which jq >/dev/null ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1

@@ -51,6 +51,11 @@ if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
 if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
         parmanode_conf_add "drive_electrs=external" ; fi
 
+if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="external"
+        parmanode_conf_add "drive_electrumx=external" ; fi
+
+
+
 return 0
 ;;
 
@@ -63,7 +68,8 @@ i | I)
         if [[ $1 == "Electrs" ]] ; then export drive_electrs="internal" 
                parmanode_conf_add "drive_electrs=internal"
                fi
-
+        if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="internal"
+                parmanode_conf_add "drive_electrumx=internal" ; fi
         return 0 
         ;;
 
