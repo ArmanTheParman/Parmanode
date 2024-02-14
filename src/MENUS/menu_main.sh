@@ -22,13 +22,13 @@ echo -e "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of programs                                  #
+#    (o)                  Overview/Status of Programs                                  #
 #                                                                                      #
-#    (add)                Add more programs                                            #
+#    (add)                Add more Programs                                            #
 #                                                                                      #
-#    (u)                  Use programs                                                 #
+#    (u)                  Use Programs                                                 #
 #                                                                                      #
-#    (remove)             Remove/uninstall programs                                    #
+#    (remove)             Remove/Uninstall Programs                                    #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
@@ -48,7 +48,7 @@ echo -e "$orange
 #                                                                                      #
 #    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
 #                                                                                      #
-#    (aa)                 Hide/Show Main menu announcements ... (Donchu dare!)         #
+#    (aa)                 Hide/Show Main Menu announcements ... (Donchu dare!)         #
 #                                                                                      #
 #    (ap)                 About Parmanode                                              #
 #                                                                                      #
