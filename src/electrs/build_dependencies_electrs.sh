@@ -1,6 +1,7 @@
 # Linux, then Mac
 function build_dependencies_electrs {
 if [[ $OS == Linux ]] ; then
+debug "in build dependencies, if linux"
 please_wait
 sudo apt-get update -y >/dev/null 2>&1
 
