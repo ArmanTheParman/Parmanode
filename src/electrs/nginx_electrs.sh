@@ -24,10 +24,12 @@ fi
 # ssl_cert="/home/parman/parmanode/electrs/cert.pem" #absolute path, used within container.
 # ssl_key="/home/parman/parmanode/electrs/key.pem"
 # fi
+
 if [[ $1 = "remove" ]] ; then
 install_gsed #checks and installs or returns
-sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
-delete_line "$nginx_conf" "electrs.conf" 2>/dev/nul
+#gsed works mac, and alias to sed for linux
+sudo gsed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
+delete_line "$nginx_conf" "electrs.conf" 2>/dev/null
 sudo rm /etc/nginx/conf.d/electrs.conf 2>/dev/null
 
 else #add

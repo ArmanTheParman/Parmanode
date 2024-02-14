@@ -5,24 +5,27 @@ function nginx_electrumx {
 
 #order of if's matter ; Mac, redundant for now
 if [[ $OS == Mac ]] ; then
-    if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/usr/local/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrumx/cert.pem" 
 ssk_key="$HOME/parmanode/electrumx/key.pem"
+nginx_electrumx_conf="/usr/local/etc/nginx/electrumx.conf"
 
 elif [[ $OS == Linux ]] ; then
-    if ! which nginx >/dev/null ; then install_nginx ; fi
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrumx/cert.pem" 
 ssk_key="$HOME/parmanode/electrumx/key.pem"
-
-elif [[ $1 == electrumxdkr ]] ; then #must be last #electrumxdkr non-existent now.
-nginx_conf=/etc/nginx/nginx.conf
-ssl_cert="/home/parman/parmanode/electrumx/cert.pem" #absolute path, used within container.
-ssl_key="/home/parman/parmanode/electrumx/key.pem"
+nginx_electrumx_conf="/etc/nginx/conf.d/electrumx.conf"
 fi
 
-if [[ $1 = "add" || $1 == electrumxdkr ]] ; then 
+if [[ $1 = "remove" ]] ; then
+install_gsed #redundant for now
+delete_line "$nginx_conf" "electrumx.conf" 2>/dev/null
+sudo rm /etc/nginx/conf.d/electrs.conf 2>/dev/null
+
+else #add
+
+#might need to install nginx
+if ! which nginx >/dev/null ; then install_nginx ; fi
 
 echo -e " 
 stream {
@@ -42,26 +45,8 @@ stream {
         }
 }" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
 
-if [[ $1 == electrumxdkr ]] ; then
-debug "before cat | docker tee"
-cat /tmp/nginx_conf | docker exec -iu root electrumx bash -c "tee -a $nginx_conf >/dev/null 2>&1"
-debug "after cat | docker tee"
-return 0
-fi
-
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
 fi
-
-#needs to be at the end
-if [[ $1 = "remove" ]] ; then
-    if [[ $OS == Linux ]] ; then sudo sed -i "/electrumx-START/,/electrumx-END/d" $nginx_conf >/dev/null 
-                                 sudo systemctl restart nginx >/dev/null 2>&1 ; fi
-    #redundant, and, causing errors; should never run. 
-    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrumx-START/,/electrxum-END/d" $nginx_conf >/dev/null
-                                 brew services restart nginx >/dev/null 2>&1 ; fi
-return 0
-fi
-
 
 }
