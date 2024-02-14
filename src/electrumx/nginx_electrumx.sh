@@ -14,7 +14,7 @@ elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrumx/cert.pem" 
 ssk_key="$HOME/parmanode/electrumx/key.pem"
-nginx_electrumx_conf="/etc/nginx/conf.d/electrumx.conf"
+nginx_electrumx_conf="/etc/nginx/electrumx.conf"
 fi
 
 if [[ $1 = "remove" ]] ; then
@@ -27,18 +27,21 @@ else #add
 #might need to install nginx
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
-echo -e "server {
+echo -e "stream {
+        upstream electrumx {
+                server 127.0.0.1:50007;
+        }
+
+        server {
                 listen 50008 ssl;
+                proxy_pass electrumx;
 
                 ssl_certificate $ssl_cert; 
                 ssl_certificate_key $ssl_key; 
                 ssl_session_timeout 4h;
                 ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
                 ssl_prefer_server_ciphers on;
-                
-                location / {
-                        proxy_pass http://127.0.0.1:50007;
-                }
+        }
 }" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
 fi
 
