@@ -133,6 +133,7 @@ clean_exit
 debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
 # before the screen is cleared.
 
+
 if [[ $test == true ]] ; then
 measure_rpc_global
 debug "after measure rpc global"
@@ -151,7 +152,6 @@ uninstall_torssh
 ;;
 esac
 exit
-
 fi
 
 ########################################################################################
