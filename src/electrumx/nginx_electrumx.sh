@@ -44,9 +44,9 @@ stream {
                 ssl_prefer_server_ciphers on;
         }
 }" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
+fi
 
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
-fi
 
 }

@@ -63,5 +63,5 @@ fi
 
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
-fi
+
 }
