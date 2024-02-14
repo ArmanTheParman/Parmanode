@@ -12,7 +12,6 @@ RUN apt-get update \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3 \
         build-essential \
-        libzmq3-dev \
         cmake \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
