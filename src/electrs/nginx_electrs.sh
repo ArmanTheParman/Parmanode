@@ -38,7 +38,7 @@ else #add
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
 swap_string "$nginx_conf" "http {" "http {
-        include electrs.conf;"
+        include electrs.conf\;"
 
 echo "stream {
         upstream electrs {
