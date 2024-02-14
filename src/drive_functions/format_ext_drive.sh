@@ -6,6 +6,7 @@ if [[ $skip_formatting == true ]] ; then return 0 ; fi
 if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "electrumx" && $drive_electrumx == "internal" ]] ; then return 0 ; fi
 debug "passed internal drive choice"
 
 
@@ -14,23 +15,23 @@ if [[ $justFormat != true ]] ; then
 debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then 
-debug "confirm format, if, #1"
+if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
 confirm_format "Bitcoin" || skip_formatting=true
 fi
 
-if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" ) ]] ; then 
-debug "confirm format, if, #2"
+if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
 confirm_format "Fulcrum" || skip_formatting=true
 fi
 
-if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" ) ]] ; then 
-debug "confirm format, if, #3"
+if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" || $drive_electrumx == "external" ) ]] ; then 
 confirm_format "electrs" || skip_formatting=true
 fi
 
-debug "check external drive selected for other programs done.
-skip formatting is = $skip_formatting"
+if [[ ( $1 == "electrumx" && $drive_electrumx == "external" ) && ( $drive == "exteranl" || $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then
+confirm_format "electrumx" || skip_formatting=true
+fi
+
+
 
 if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then 
     return 0 

@@ -4,8 +4,8 @@ if mount | grep -q parmanode ; then return 0 ; fi
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected that you already have a parmanode drive prepared for
-    one of the three programs (Bitcoin, electrs, Fulcrum).
+    Parmanode has detected that you already have a Parmanode drive prepared for
+    one of the four programs (Bitcoin, electrs, Fulcrum, Electrum X).
 
     Please attach the drive now and hit$cyan <enter>$orange once done, 
     
