@@ -17,10 +17,10 @@ $5
 newfile=/tmp/string.txt
 
 # Find how many lines in the file have the string; remove whitespace
-search_lines=$(cat $file | grep $string | wc -l | tr -d ' ')
+search_lines=$(sudo cat $file | grep $string | wc -l | tr -d ' ')
 
 # Find how big is the document (lines)
-file_lines=$(cat $1 | wc -l | tr -d ' ')
+file_lines=$(sudo cat $1 | wc -l | tr -d ' ')
 
 # Function is designed for one instance of string found; ward otherwise
 if [[ $search_lines -gt 1 && $silent != silent ]] ; then
