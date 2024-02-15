@@ -13,6 +13,9 @@ else
     true #do nothing, sturctured so for readability.
     fi
 fi
+
+debug "electrsis, $electrsis"
+
 while true ; do
 unset log_size 
 
@@ -45,7 +48,7 @@ else
     fi
 fi
 
-
+debug "runnind, running, $runningd, $running"
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
