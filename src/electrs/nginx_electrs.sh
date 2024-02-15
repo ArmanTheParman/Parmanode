@@ -37,7 +37,7 @@ else #add
 #might need to install nginx
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
-parmased $nginx_conf "http {" "    include electrs.conf;" "after" "silent"
+parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
 
 echo "stream {
         upstream electrs {
