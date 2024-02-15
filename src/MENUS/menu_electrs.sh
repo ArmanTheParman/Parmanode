@@ -48,7 +48,8 @@ fi
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
-menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $running == true ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+fi
 
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker ]] ; then
