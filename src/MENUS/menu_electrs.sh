@@ -1,7 +1,7 @@
 function menu_electrs {
 logfile=$HOME/.parmanode/run_electrs.log 
 
-if grep -q "electrsdkr2" < $ic ; then
+if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
     electrsis=docker
     docker exec electrs cat /home/parman/run_electrs.log > $logfile
 else
