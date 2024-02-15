@@ -22,6 +22,7 @@ if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
+debug "before set terminal"
 set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
@@ -50,7 +51,7 @@ if [[ $electrsis == docker ]] ; then
         ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
 fi
 
-
+debug "before get version"
 #Get version
 if [[ $electrsis == docker ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
@@ -63,7 +64,7 @@ if [[ $electrsis == docker ]] ; then
 else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>/dev/null)
 fi
-
+debug "before next clear"
 set_terminal_custom 50
 
 echo -e "
