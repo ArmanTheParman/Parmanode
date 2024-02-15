@@ -152,6 +152,7 @@ uqbit) menu_use qbit ;;
 umem) menu_use mem ;;
 uersd) menu_use ersd ;;
 upool) menu_use pool ;;
+ex) menu_use ex ;;
 
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")

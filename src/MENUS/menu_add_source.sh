@@ -457,4 +457,16 @@ else
 public_pool_n="#                            (pool)        Public Pool                                 #"
 fi
 
+#Electrumx
+unset electrumx_i electrux_p electrumx_n
+if grep -q "electrumx-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+electrumx_i="#                                      Electrum X                                        #"
+elif grep -q "electrumx-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+electrumx_p="#                                      Electrum X                                        #"
+else
+   #not installed
+electrumx_n="#                            (ex)          Electrum X                                    #"
+fi
 }

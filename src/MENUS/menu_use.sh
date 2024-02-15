@@ -109,6 +109,9 @@ if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolapp=1
                        echo "    (pool)       Public Pool 
                             " ; fi
+if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
+                       echo "    (ex)         Electrum X 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -300,6 +303,13 @@ tssh)
 pool)
    if [[ $public_poolapp == 1 ]] ; then
    menu_public_pool
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+
+ex)
+   if [[ $electrumxapp == 1 ]] ; then
+   menu_electrumx
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;

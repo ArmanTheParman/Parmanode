@@ -10,7 +10,6 @@ ssl_cert="$HOME/parmanode/electrs/cert.pem"
 ssk_key="$HOME/parmanode/electrs/key.pem"
 nginx_electrs_conf="/usr/local/etc/nginx/electrs.conf"
 
-
 elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
 ssl_cert="$HOME/parmanode/electrs/cert.pem" 
