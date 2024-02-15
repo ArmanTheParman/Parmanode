@@ -167,6 +167,9 @@ clear ; please_wait
 menu_lnd
 ;;
 
+debugon) export debug=1 ;;
+debugoff) export debug=0 ;;
+
 q | Q | quit)
     exit 0 ;;
 *)
