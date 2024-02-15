@@ -36,16 +36,16 @@ while true ; do
 
     REMOVE the backup too? 
 $red
-                        R)      Remove
+                        remove)    Remove
 $green                        
-                        L)      Leave it
+                        L)         Leave it
 $orange
 ######################################################################################## 
 "
     read choice
     set_terminal
     case $choice in
-    R|r) 
+    remove)
     are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
     please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
     L|l) 
@@ -80,7 +80,7 @@ $cyan
                           $e_db 
 
 $red
-                d)        Delete
+                delete)   Delete
 $green
                 l)        Leave it there
 $white
@@ -97,7 +97,7 @@ q|Q)
 exit 0 ;; 
 p|P) 
 return 1 ;;
-d|D) 
+delete) 
 sudo rm -rf $e_db ; break ;;
 l|L) 
 break ;;
