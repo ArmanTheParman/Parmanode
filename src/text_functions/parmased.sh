@@ -17,7 +17,9 @@ $5
 newfile=/tmp/string.txt
 
 # Find how many lines in the file have the string; remove whitespace
-search_lines=$(sudo cat $file | grep $string | wc -l | tr -d ' ')
+search_lines=$(sudo cat $file | grep "$string" | wc -l | tr -d ' ')
+
+debug "after first grep"
 
 # Find how big is the document (lines)
 file_lines=$(sudo cat $1 | wc -l | tr -d ' ')
@@ -47,7 +49,7 @@ esac
 fi
 
 #get the line_number of the search (document counts starts at line 1 not zero)
-line_number=$(cat $file | grep -n $string | head -n 1 | cut -d : -f 1 | tr -d ' ')
+line_number=$(cat $file | grep -n "$string" | head -n 1 | cut -d : -f 1 | tr -d ' ')
 
 
 # For "after" placement - insert a new line after the string is found.
@@ -67,6 +69,6 @@ if [[ $placement == "after" ]] ; then
     sudo mv $newfile $1
 fi
 
-debug "parmansed finished"
+debug "parmased finished"
 
 }
