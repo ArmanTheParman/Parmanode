@@ -18,7 +18,7 @@ if [[ $chip == x86_64 && $OS == Linux ]] ; then
 rm *AppImage >/dev/null 2>&1
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage.asc
-verify_trezor || return 1
+verify_bitbox || return 1
 sudo chmod +x ./*AppImage
 
     if ! grep -q udev-end < $dp/installed.conf ; then
