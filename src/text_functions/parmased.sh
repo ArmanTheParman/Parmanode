@@ -5,6 +5,15 @@ new_string="$3"
 placement="$4a"
 silent="$5"
 
+debug " 1 2 3 4 5
+$1
+$2
+$3
+$4
+$5
+"
+
+
 newfile=/tmp/string.txt
 
 # Find how many lines in the file have the string; remove whitespace
