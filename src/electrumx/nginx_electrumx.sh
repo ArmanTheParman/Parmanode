@@ -27,8 +27,7 @@ else #add
 #might need to install nginx
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
-swap_string "$nginx_conf" "http {" "http {
-        include electrumx.conf;"
+parmased $nginx_conf "http {" "    include electrumx.conf;" "after" "silent"
 
 echo -e "stream {
         upstream electrumx {
