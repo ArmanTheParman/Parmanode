@@ -7,7 +7,6 @@ if [[ $drive_electrumx == "internal" ]] ; then
         #move backed up db directory here later if selected
 fi
 
-
 if [[ $drive_electrumx == "external" ]] ; then
  return 0
 fi  

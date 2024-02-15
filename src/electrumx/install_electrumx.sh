@@ -76,8 +76,6 @@ cd $hp/electrumx && pip3 install .[rocksdb,ujson] || { debug "'pip3 install .' f
 
 choose_and_prepare_drive electrumx || { debug "choose and prepare drive failed." ; return 1 ; }
 
-make_electrumx_directories || { debug "make electrumx directories failed." ; return 1 ; }
-
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
