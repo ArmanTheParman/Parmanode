@@ -57,7 +57,7 @@ fi
 
 nginx_electrs remove
 
-if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
+if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop electrs.service >/dev/null 2>&1
