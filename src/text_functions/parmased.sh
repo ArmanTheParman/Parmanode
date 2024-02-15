@@ -51,7 +51,7 @@ if [[ $placement == "after" ]] ; then
 
     #add the rest
     remaining_lines=$((file_lines - line_number))
-    tail -n $remaining_lines $file | sudo tee -a $newfile 
+    tail -n $remaining_lines $file | sudo tee -a $newfile >/dev/null 2>&1
 
     #rename
     sudo mv $newfile $1
