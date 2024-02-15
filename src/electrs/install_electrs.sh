@@ -88,7 +88,7 @@ if [[ $electrs_compile == "false" ]] ; then
     please_wait
     echo -e "$pink copying/moving files...$orange"
     rm -rf $HOME/parmanode/electrs/ 
-    cp -R $HOME/.electrs_backup $HOME/parmanode/electrs
+    cp -Rv $HOME/.electrs_backup $HOME/parmanode/electrs
 
     installed_config_add "electrs2-start"
 
