@@ -14,7 +14,7 @@ fi
 
 source $pc $ic >/dev/null 2>&1
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
-if ! which nginx ; then install_nginx 
+if ! which nginx >/dev/null ; then install_nginx 
 fi
 
 # check Bitcoin settings
