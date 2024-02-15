@@ -2,7 +2,7 @@ function parmased {
 file="$1"
 string="$2"
 new_string="$3"
-placement="$4a"
+placement="$4"
 silent="$5"
 
 debug " 1 2 3 4 5
