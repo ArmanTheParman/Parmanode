@@ -1,13 +1,13 @@
-function menu_electrs {
-logfile=$HOME/.parmanode/run_electrs.log 
+function menu_electrumx {
+logfile=$HOME/.parmanode/run_electrumx.log 
 
-if grep -q "electrsdkr2" < $ic ; then
-    electrsis=docker
-    docker exec electrs cat /home/parman/run_electrs.log > $logfile
+if grep -q "electrumxdkr2" < $ic ; then
+    electrumxis=docker
+    docker exec electrumx cat /home/parman/run_electrumx.log > $logfile
 else
-    electrsis=nondocker
+    electrumxis=nondocker
     if [[ $OS == Linux ]] ; then
-       journalctl -exu electrs.service > $logfile 2>&1
+       journalctl -exu electrumx.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
     true #do nothing, sturctured so for readability.
@@ -18,17 +18,17 @@ unset log_size
 
 #no need to check log size only if log is from journalctl output, otherwise
 #log file is growing from a process output with '>>'
-if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then 
+if ! [[ $OS == Linux && $electrumxis == nondocker ]] ; then 
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
 debug "before set terminal"
 set_terminal
 
-#is electrs running variable
+#is electrumx running variable
 unset running runningd
-if [[ $electrsis == nondocker ]] ; then
-    if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then 
+if [[ $electrumxis == nondocker ]] ; then
+    if ps -x | grep electrumx | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrumx failed"  ; then 
     runningd=nondocker
     running=true
     else
@@ -36,7 +36,7 @@ if [[ $electrsis == nondocker ]] ; then
     running=false
     fi
 else 
-    if ! docker ps | grep -q electrs ; then
+    if ! docker ps | grep -q electrumx ; then
     runningd=docker
     running=true
     else
@@ -48,22 +48,22 @@ fi
 
 
 source $dp/parmanode.conf >/dev/null 2>&1
-unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
-if [[ $running == true ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
+if [[ $running == true ]] ; then menu_electrumx_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
-if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker ]] ; then
+if [[ $OS == Linux && -e /etc/tor/torrc && $electrumxis == nondocker ]] ; then
 debug "in tor status"
-    if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if [[ -e /var/lib/tor/electrs-service ]] && \
-        sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+    if sudo cat /etc/tor/torrc | grep -q "electrumx" >/dev/null 2>&1 ; then
+        if [[ -e /var/lib/tor/electrumx-service ]] && \
+        sudo cat /var/lib/tor/electrumx-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
         fi
-debug "in if cat torrc grep electrs"
-        if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
-        get_onion_address_variable "electrs" >/dev/null 
+debug "in if cat torrc grep electrumx"
+        if grep -q "electrumx_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+        get_onion_address_variable "electrumx" >/dev/null 
         fi
     else
         E_tor="${red}off${orange}"
@@ -71,29 +71,29 @@ debug "in if cat torrc grep electrs"
     fi
 fi
 
-if [[ $electrsis == docker ]] ; then
-        ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
+if [[ $electrumxis == docker ]] ; then
+        ONION_ADDR_ELECTRUMX=$(docker exec -u root electrumx cat /var/lib/tor/electrumx-service/hostname)
 fi
 
 debug "before get version"
 #Get version
-if [[ $electrsis == docker ]] ; then
-    if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
-        electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
-        log_size=$(docker exec electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
+if [[ $electrumxis == docker ]] ; then
+    if docker exec electrumx /home/parman/parmanode/electrumx/target/release/electrumx --version >/dev/null 2>&1 ; then
+        electrumx_version=$(docker exec electrumx /home/parman/parmanode/electrumx/target/release/electrumx --version | tr -d '\r' 2>/dev/null )
+        log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
         log_size=$(echo $log_size | tr -d '\r\n')
-        if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
+        if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
     fi
-else #electrsis nondocker
-        electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>/dev/null)
+else #electrumxis nondocker
+        electrumx_version=$($HOME/parmanode/electrumx/target/release/electrumx --version 2>/dev/null)
 fi
 debug "before next clear"
 set_terminal_custom 50
 
 echo -e "
 ########################################################################################
-                                ${cyan}Electrs $electrs_version Menu${orange} 
+                                ${cyan}Electrum X $electrumx_version Menu${orange} 
 ########################################################################################
 "
 if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
@@ -101,83 +101,83 @@ if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     $orange"
 fi
 
-if [[ $electrsis == nondocker && $running == true ]] ; then
+if [[ $electrumxis == nondocker && $running == true ]] ; then
 echo -e "
-      ELECTRS IS:$green RUNNING$orange
+      ELECTRUM X IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
+      STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
 
       CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
                   "
-      if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+      if [[ -z $ONION_ADDR_ELECTRUMX ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       else
          echo -e "
       TOR:$bright_blue 
-                  $ONION_ADDR_ELECTRS:7004:t $orange
+                  $ONION_ADDR_ELECTRUMX:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == nondocker && $running == false ]] ; then
+elif [[ $electrumxis == nondocker && $running == false ]] ; then
 echo -e "
-      ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
+      ELECTRUMX IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
-      Will sync to the $cyan$drive_electrs$orange drive"
-fi #end electrs running or not
+      Will sync to the $cyan$drive_electrumx$orange drive"
+fi #end electrumx running or not
 
-if [[ $electrsis == docker ]] ; then
+if [[ $electrumxis == docker ]] ; then
 
-if ! docker ps | grep -q electrs ; then echo -e "
+if ! docker ps | grep -q electrumx ; then echo -e "
 $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
 if [[ $running == true ]] ; then echo -e "
-      ELECTRS IS:$green RUNNING$orange
+      ELECTRUMX IS:$green RUNNING$orange
 
-      STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
+      STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
 
       CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
 
       DOCKER TOR ONLY:
-                 $bright_blue $ONION_ADDR_ELECTRS:7004:t $orange
+                 $bright_blue $ONION_ADDR_ELECTRUMX:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange      " 
 
 else
 echo -e "
-                   ELECTRS IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
+                   ELECTRUMX IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
-                   Will sync to the $cyan$drive_electrs$orange drive"
+                   Will sync to the $cyan$drive_electrumx$orange drive"
 fi
-fi #end electrsis docker
+fi #end electrumxis docker
 echo "
 
 
       (i)        Important info / Troubleshooting
 
-      (start)    Start electrs 
+      (start)    Start Electrum X 
 
-      (stop)     Stop electrs 
+      (stop)     Stop Electrum X
 
-      (restart)  Restart electrs
+      (restart)  Restart Electrum X
 
-      (remote)   Choose which Bitcoin Core for electrs to connect to
+      (remote)   Choose which Bitcoin Core for Electrum X to connect to
 
-      (c)        How to connect your Electrum wallet to electrs 
+      (c)        How to connect your Electrum wallet to Electrum X
 	    
-      (log)      Inspect electrs logs
+      (log)      Inspect Electrum X logs
 
       (ec)       Inspect and edit config.toml file 
 
-      (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)
+      (up)       Set/remove/change Bitcoin rpc user/pass (Electrum X config file updates)
 
-      (dc)       electrs database corrupted? -- Use this to start fresh."
+      (dc)       Electrum X database corrupted? -- Use this to start fresh."
 
-if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "
-      (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
+if [[ $OS == Linux && $electrumxis == nondocker ]] ; then echo -e "
+      (tor)      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
 " 
 fi
 echo -e "
@@ -192,64 +192,64 @@ read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
-r) menu_electrs || return 1 ;;
+r) menu_electrumx || return 1 ;;
 
 I|i|info|INFO)
-info_electrs
+infoelectrumx_
 ;;
 
 start | START)
-if [[ $electrsis == docker ]] ; then 
-docker_start_electrs
+if [[ $electrumxis == docker ]] ; then 
+docker_startelectrumx_
 else
-start_electrs 
+start_electrumx 
 sleep 1
 fi
 ;;
 
 stop | STOP) 
-if [[ $electrsis == docker ]] ; then 
-docker_stop_electrs
+if [[ $electrumxis == docker ]] ; then 
+docker_stopelectrumx_
 else
-stop_electrs
+stopelectrumx_
 fi
 ;;
 
 logdel)
 please_wait
-if [[ $electrsis == docker ]] ; then
-docker_stop_electrs #stops electrs container
-docker start electrs >/dev/null 2>&1 #starts container
-docker exec electrs bash -c "rm $logfile"
-docker_start_electrs #starts electrs inside running container
+if [[ $electrumxis == docker ]] ; then
+docker_stop_electrumx #stops electrumx container
+docker start electrumx >/dev/null 2>&1 #starts container
+docker exec electrumx bash -c "rm $logfile"
+docker_start_electrumx #starts electrumx inside running container
 else
-stop_electrs
+stopelectrumx_
 rm $logfile
-start_electrs
+startelectrumx_
 fi
 ;;
 
 restart|Restart)
-if [[ $electrsis == docker ]] ; then
-docker_stop_electrs
-docker_start_electrs
+if [[ $electrumxis == docker ]] ; then
+docker_stopelectrumx_
+docker_startelectrumx_
 else
-restart_electrs
+restartelectrumx_
 sleep 2
 fi
 ;;
 
 remote|REMOTE|Remote)
-if [[ $electrsis == docker ]] ; then
+if [[ $electrumxis == docker ]] ; then
 set_terminal
-electrs_to_remote
-docker_stop_electrs
-docker_start_electrs
+electrumx_to_remote
+docker_stopelectrumx_
+docker_startelectrumx_
 set_terminal
 else
 set_terminal
-electrs_to_remote
-restart_electrs
+electrumx_to_remote
+restartelectrumx_
 set_terminal
 fi
 ;;
@@ -266,7 +266,7 @@ if [[ $log_count -le 15 ]] ; then
 echo "
 ########################################################################################
     
-    This will show the electrs log output in real time as it populates.
+    This will show the Electrum X log output in real time as it populates.
     
     You can hit <control>-c to make it stop.
 
@@ -274,9 +274,9 @@ echo "
 "
 enter_continue
 fi
-if [[ $electrsis == docker ]] ; then 
+if [[ $electrumxis == docker ]] ; then 
     set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
+    docker exec -it electrumx /bin/bash -c "tail -f /home/parman/run_electrumx.log"      
         # tail_PID=$!
         # trap 'kill $tail_PID' SIGINT #condition added to memory
         # wait $tail_PID # code waits here for user to control-c
@@ -297,16 +297,16 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    journalctl -fexu electrs.service &
+    journalctl -fexu electrumx.service &
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
-    menu_electrs #this is so the status refreshes 
+    menu_electrumx #this is so the status refreshes 
 fi
-fi # end electrsis
-menu_electrs #this is so the status refreshes 
+fi # end electrumxis
+menu_electrumx #this is so the status refreshes 
 ;;
 
 ec|EC|Ec|eC)
@@ -316,12 +316,12 @@ echo "
         This will run Nano text editor to edit config.toml. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
-        Any changes will only be applied once you restart electrs.
+        Any changes will only be applied once you restart Electrum X.
 
 ########################################################################################
 "
 enter_continue
-nano $HOME/.electrs/config.toml
+nano $HOME/.electrumx/config.toml
  
 ;;
 
@@ -341,14 +341,14 @@ exit 0
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off || -z $E_tor_logic ]] ; then
-electrs_tor
+electrumx_tor
 else
-electrs_tor_remove
+electrumx_tor_remove
 fi
 ;;
 
 dc|DC|Dc)
-electrs_database_corrupted 
+electrumx_database_corrupted 
 ;;
 
 *)
@@ -361,11 +361,11 @@ return 0
 }
 
 
-function menu_electrs_status {
+function menu_electrumx_status {
 please_wait
 
 if ! which jq >/dev/null 2>&1 ; then
-export electrs_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
+export electrumx_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
 return 0
 fi
 
@@ -379,28 +379,28 @@ bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 
 if [[ $bsync == true ]] ; then
 
-    export electrs_sync="Bitcoin still sync'ing"
+    export electrumx_sync="Bitcoin still sync'ing"
 
 elif [[ $bsync == false ]] ; then
     #fetches block number...
-    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
+    export electrumx_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
     #in case an unexpected non-number string, printout, otherwise check if full synced.
-    if ! echo $electrs_sync | grep -qE '^[0-9]+$' >/dev/null ; then
+    if ! echo $electrumx_sync | grep -qE '^[0-9]+$' >/dev/null ; then
 
-        export electrs_sync="Wait...$orange"
+        export electrumx_sync="Wait...$orange"
 
     else 
         bblock=$(echo $gbci | jq -r ".blocks")    
 
-        if [[ $bblock == $electrs_sync ]] ; then
-        export electrs_sync="Block $electrs_sync ${pink}Fully sync'd$orange"
+        if [[ $bblock == $electrumx_sync ]] ; then
+        export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
         else
-        export electrs_sync="Up to $electrs_sync $orange, sync'ing to block $bblock" 
+        export electrumx_sync="Up to $electrumx_sync $orange, sync'ing to block $bblock" 
         fi 
     fi
 
-    if [[ -z $electrs_sync ]] ; then
-        export electrs_sync="Wait...$orange"
+    if [[ -z $electrumx_sync ]] ; then
+        export electrumx_sync="Wait...$orange"
     fi
 fi
 }

@@ -226,6 +226,12 @@ echo "#                                    (pool)             Public Pool       
 elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo "#                                    (pool)             Public Pool (partial)          #
 #                                                                                      #" ; fi
+if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
+echo "#                                    (ex)               Electrum X                     #
+#                                                                                      #"
+elif grep -q "electrumx-start" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
+echo "#                                    (ex)               Electrum X (partial)           #
+#                                                                                      #" ; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -453,6 +459,14 @@ fi
 pool)
 if [[ $public_poolmenu == 1 ]] ; then
 uninstall_public_pool
+clear
+return
+fi
+;;
+
+ex)
+if [[ $electrumxmenu == 1 ]] ; then
+uninstall_electrumx
 clear
 return
 fi
