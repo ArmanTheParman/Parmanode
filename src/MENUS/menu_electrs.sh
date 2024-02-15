@@ -32,23 +32,19 @@ set_terminal
 unset running runningd
 if [[ $electrsis == nondocker ]] ; then
     if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then 
-    runningd=nondocker
     running=true
     else
-    runningd=falsenondocker
     running=false
     fi
 else 
-    if ! docker ps | grep -q electrs ; then
-    runningd=docker
+    if docker ps | grep -q electrs ; then
     running=true
     else
-    runningd=falsedocker
     running=false
     fi
 fi
 
-debug "runnind, running, $runningd, $running"
+debug "runnind, running, $running"
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
