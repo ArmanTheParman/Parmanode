@@ -1,4 +1,4 @@
-function electrumx_dependencis {
+function electrumx_dependencies {
 if ! which python3 >/dev/null ; then sudo apt-get update -y && sudo apt-get install python3 
 fi
 
