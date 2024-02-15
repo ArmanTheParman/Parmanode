@@ -83,11 +83,19 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 read choice
 case $choice in
 y|Y|Yes|yes)
-sudo apt-get update -y 
-sudo apt-get full-upgrade -y 
-sudo apt-get autoremove -y
+local file="/tmp/update_computer.txt"
+sudo apt-get update -y | tee -a $file
+if grep -q "--fix-broken" < $file ; then
+sudo apt-get --fix-broken
+fi
+if grep -q "--fix-missing" < $file ; then
 sudo apt-get --fix-missing install -y
-sudo apt-get install jq netcat -y
+fi
+if grep -q "autoremove" < $file ; then
+sudo apt-get autoremove -y
+fi
+sudo apt-get full-upgrade -y | tee ${file}2
+sudo apt-get install jq netcat vim -y
 install_fuse noupdate #linux minmal installs my need to run AppImages
 break
 ;;
