@@ -75,7 +75,6 @@ break
 *) invalid ;;
 esac
 done
-debug "electrs_db choice executed"
 fi
 
 # Uninstall electrs github
