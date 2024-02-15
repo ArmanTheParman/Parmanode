@@ -18,9 +18,9 @@ $orange
     to compile again now, of course. 
 
 $green
-                            u)       Use backup of compiled software
+                      u)             Use backup of compiled software
 $red
-                            c)       Compile again
+                      compile)       Compile again
 $orange
 
 ########################################################################################
@@ -33,7 +33,7 @@ q|Q) exit 0 ;;
 p|P) return 1 ;;
 u|U|use|Use) 
 export electrs_compile="false" && return 0 ;;
-c|C|compile) 
+compile) 
 export electrs_compile="true" && return 0 ;;
 *) invalid ;;
 esac
