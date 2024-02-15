@@ -155,6 +155,10 @@ esac
 exit
 fi
 
+nginx_conf="/etc/nginx/nginx.conf"
+parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
+debug "done"
+exit
 ########################################################################################
 
 #message of the day
