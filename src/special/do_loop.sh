@@ -136,8 +136,7 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 
 
 if [[ $test == true ]] ; then
-measure_rpc_global
-debug "after measure rpc global"
+true
 fi
 
 if [[ $fix == true ]] ; then
@@ -155,12 +154,6 @@ esac
 exit
 fi
 
-nginx_conf="/etc/nginx/nginx.conf"
-parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
-debug "done"
-sudo cp /etc/nginx/nginx.conf_backup /etc/nginx/nginx.conf
-debug "copy done"
-exit
 ########################################################################################
 
 #message of the day
