@@ -40,6 +40,8 @@ if ! which nginx >/dev/null ; then install_nginx ; fi
 swap_string "$nginx_conf" "http {" "http {
         include electrs.conf\;"
 
+parmased $nginx_conf "http {" "    include electrs.conf;" "after" "silent"
+
 echo "stream {
         upstream electrs {
                 server 127.0.0.1:50005;
