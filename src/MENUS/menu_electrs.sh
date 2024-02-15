@@ -46,8 +46,8 @@ fi
 
 debug "runnind, running, $running"
 
-source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
+source $dp/parmanode.conf >/dev/null 2>&1
 if [[ $running == true ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
