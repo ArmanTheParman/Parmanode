@@ -39,4 +39,9 @@ if [[ $1 == "public_pool" ]] ; then
 export ONION_ADDR_PP="$(sudo cat /var/lib/tor/public_pool-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+if [[ $1 == "electrumx" ]] ; then
+export ONION_ADDR_ELECTRUMX="$(sudo cat /var/lib/tor/electrumx-service/hostname 2>/dev/null)" 
+return 0
+fi
 }
