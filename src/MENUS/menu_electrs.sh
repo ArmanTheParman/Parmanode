@@ -42,6 +42,7 @@ else
     else
     runningd=falsedocker
     running=false
+    fi
 fi
 
 
@@ -132,7 +133,6 @@ $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
-
 if [[ $running == true ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -152,7 +152,6 @@ echo -e "
 
                    Will sync to the $cyan$drive_electrs$orange drive"
 fi
-
 fi #end electrsis docker
 echo "
 
