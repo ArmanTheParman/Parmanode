@@ -119,7 +119,7 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == nondocker && running == false ]] ; then
+elif [[ $electrsis == nondocker && $running == false ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
