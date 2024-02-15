@@ -1,7 +1,10 @@
-function menu_electrumx {
+function menu_electrumx_backup {
+return 0
+#code template for docker version and Mac version entered but not yet functional
+
 logfile=$HOME/.parmanode/run_electrumx.log 
 
-if grep -q "electrumxdkr2" < $ic ; then
+if grep -q "electrumxdkr" < $ic ; then
     electrumxis=docker
     docker exec electrumx cat /home/parman/run_electrumx.log > $logfile
 else
@@ -22,7 +25,6 @@ if ! [[ $OS == Linux && $electrumxis == nondocker ]] ; then
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
-debug "before set terminal"
 set_terminal
 
 #is electrumx running variable
@@ -44,8 +46,6 @@ else
     running=false
     fi
 fi
-
-
 
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
@@ -86,6 +86,7 @@ if [[ $electrumxis == docker ]] ; then
         fi
     fi
 else #electrumxis nondocker
+     #check
         electrumx_version=$($HOME/parmanode/electrumx/target/release/electrumx --version 2>/dev/null)
 fi
 debug "before next clear"
