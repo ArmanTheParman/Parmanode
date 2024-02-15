@@ -83,10 +83,10 @@ fi
 
 unset electrs_compile 
 restore_electrs #get electrs_compile true/false. If no backup found, electrs_compile=true is set
-debug "pause before electrs_compile variable check"
 if [[ $electrs_compile == "false" ]] ; then 
 
     please_wait
+    echo -e "$pink copying/moving files...$orange"
     rm -rf $HOME/parmanode/electrs/ 
     cp -R $HOME/.electrs_backup $HOME/parmanode/electrs
 
@@ -105,7 +105,7 @@ else #if [[ $electrs_compile == "true" ]] ; then
 fi
 #remove old certs (in case they were copied from backup), then make new certs
 rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
-{ make_ssl_certificates "electrs" && debug "check certs for errors " ; } || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
+make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
 nginx_electrs add
 

@@ -80,7 +80,7 @@ choose_and_prepare_drive electrumx || return 1
 
 make_electrumx_directories || return 1
 
-{ make_ssl_certificates "electrumx" && debug "check certs for errors " ; } \
+make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 nginx_electrumx add
