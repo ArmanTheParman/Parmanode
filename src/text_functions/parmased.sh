@@ -23,6 +23,7 @@ debug "after first grep"
 
 # Find how big is the document (lines)
 file_lines=$(sudo cat $1 | wc -l | tr -d ' ')
+debug "file_lines, $file_lines"
 
 # Function is designed for one instance of string found; ward otherwise
 if [[ $search_lines -gt 1 && $silent != silent ]] ; then
@@ -50,23 +51,26 @@ fi
 
 #get the line_number of the search (document counts starts at line 1 not zero)
 line_number=$(cat $file | grep -n "$string" | head -n 1 | cut -d : -f 1 | tr -d ' ')
-
+debug "line_number, $line_number"
 
 # For "after" placement - insert a new line after the string is found.
 if [[ $placement == "after" ]] ; then
 
     #Write a new file up to and including the search string.
     head -n $line_number $file | sudo tee $newfile >/dev/null 2>&1
-
+debug "part 1 written"
     #print the new string to add
     echo "$new_string" | sudo tee -a $newfile >/dev/null 2>&1
+debug "string written"
 
     #add the rest
     remaining_lines=$((file_lines - line_number))
     tail -n $remaining_lines | sudo tee -a $newfile >/dev/null 2>&1
+debug "remainder written"
 
     #rename
     sudo mv $newfile $1
+debug "moved"
 fi
 
 debug "parmased finished"
