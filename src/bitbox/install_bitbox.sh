@@ -3,7 +3,7 @@ set_terminal
 bitboxDir=$HOME/parmanode/bitbox
 mkdir $bitboxDir && cd $bitboxDir
 installed_conf_add "bitbox-start"
-version="4.40.0"
+version="4.41.0"
 
 if [[ $OS == Mac ]] ; then #it's for x86_64, but M1/M2 macs will run it but not so efficiently
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip
