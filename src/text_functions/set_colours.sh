@@ -26,7 +26,7 @@ export bright_white="\033[97m"
 export blinkon="\033[5m"
 export blinkoff="\033[0m"
 colour_check
-echo "$orange"
+echo -e "$orange"
 fi
 
 }
