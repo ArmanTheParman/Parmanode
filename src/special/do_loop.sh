@@ -131,6 +131,7 @@ clean_exit
 ###### TESTING SECTION #################################################################
 
 debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
+if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
 
 
