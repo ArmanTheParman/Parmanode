@@ -11,6 +11,8 @@
 function enter_continue {
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange" ; read enter_cont ; export enter_cont
+if [[ $enter_cont == debugon ]] ; then export debug=1 ; fi
+if [[ $enter_cont == debugoff ]] ; then unset debug ; fi
 return 0
 }
 
