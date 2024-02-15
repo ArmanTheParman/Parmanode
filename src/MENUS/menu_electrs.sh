@@ -25,6 +25,27 @@ fi
 debug "before set terminal"
 set_terminal
 
+#is electrs running variable
+unset running runningd
+if [[ $electrsis == nondocker ]] ; then
+    if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then 
+    runningd=nondocker
+    running=true
+    else
+    runningd=falsenondocker
+    running=false
+    fi
+else 
+    if ! docker ps | grep -q electrs ; then
+    runningd=docker
+    running=true
+    else
+    runningd=falsedocker
+    running=false
+fi
+
+
+
 source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrselectrs_version electrs_sync 
 menu_electrs_status # get elecyrs_sync variable (block number)
@@ -78,8 +99,8 @@ if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     $orange"
 fi
 
-if [[ $electrsis == nondocker ]] ; then
-if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then echo -e "
+if [[ $electrsis == nondocker && $running == true ]] ; then
+echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
@@ -96,20 +117,21 @@ if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-else #electrs running or not
+elif [[ $electrsis == nondocker && running == false ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
       Will sync to the $cyan$drive_electrs$orange drive"
 fi #end electrs running or not
 
-else #electrs is docker
+elif [[ $electrsis == docker ]] ; then
+
 if ! docker ps | grep -q electrs ; then echo -e "
 $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
-if docker exec electrs bash -c "ps -x" 2>/dev/null | grep electrs | grep -q conf && ! tail -n 7 $logfile | grep -q 'electrs failed' ; then echo -e "
+if [[ $running == true ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
