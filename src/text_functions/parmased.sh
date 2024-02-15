@@ -47,7 +47,7 @@ esac
 fi
 
 #get the line_number of the search (document counts starts at line 1 not zero)
-line_number=$(cat $1 | grep -nq $2 | cut -d : -f 1 | tr -d ' ')
+line_number=$(cat $file | grep -n $string | head -n 1 | cut -d : -f 1 | tr -d ' ')
 
 
 # For "after" placement - insert a new line after the string is found.
