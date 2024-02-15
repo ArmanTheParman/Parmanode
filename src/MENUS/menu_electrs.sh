@@ -13,7 +13,7 @@ else
     true #do nothing, sturctured so for readability.
     fi
 fi
-
+debug "before loop"
 while true ; do
 unset log_size 
 
@@ -23,6 +23,7 @@ if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then
 log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
 log_size=$(echo $log_size | tr -d '\r\n')
 fi
+debug "before clear'
 set_terminal
 
 source $dp/parmanode.conf >/dev/null 2>&1
