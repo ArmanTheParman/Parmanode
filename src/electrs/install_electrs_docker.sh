@@ -24,7 +24,7 @@ enter_continue
 return 1
 fi
 
-if ! which nginx ; then install_nginx ; fi
+if ! which nginx >/dev/null ; then install_nginx ; fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
