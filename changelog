@@ -1,9 +1,11 @@
 Version 3.30.0
     -ELECTRUM X
     -Moved ssl certs for electrum docker to the host
+    -Fixed nginx issue with electrs
     -added jq and cmake to update_computer function, and cleanup commands
     -readme update
     -gsed, to solve mac incompatibility with sed commands
+    -new parmased function (for development only)
 Version 3.29.2
     -Public Pool has Tor
 Version 3.29.1
