@@ -27,19 +27,15 @@ echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
 supposed to sync to the external drive and it is not connected and mounted.
 Hit <enter> to try again once you connect the drive."
 fi
-
 if [[ ! -e $bc ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
 fi
-
 check_pruning_off || return 1
 check_server_1 || return 1
 export dontstartbitcoin=true
 check_rpc_bitcoin
 unset dontstartbitcoin
-
-
 isbitcoinrunning
 if [[ $bitcoinrunning == true ]] ; then
 while true ; do
@@ -72,18 +68,20 @@ fi #and if bitcoin running
 
 electrumx_dependencies || { debug "dependencies failed" ; return 1 ; }
 
+#download source code form github
 download_electrumx || { debug "download failed" ; return 1 ; }
 
-cd $hp/electrumx && pip3 insall .[rocksdb,ujson] || { debug "'pip3 install .' failed." ; return 1 ; }
+#install
+cd $hp/electrumx && pip3 install .[rocksdb,ujson] || { debug "'pip3 install .' failed." ; return 1 ; }
 
-choose_and_prepare_drive electrumx || return 1
+choose_and_prepare_drive electrumx || { debug "choose and prepare drive failed." ; return 1 ; }
 
-make_electrumx_directories || return 1
+make_electrumx_directories || { debug "make electrumx directories failed." ; return 1 ; }
 
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
-nginx_electrumx add
+nginx_electrumx add || { debug "nginx_electrumx failed" ; return 1 ; }
 
 #prepare drives. #drive_electrumx= variable set.
 { choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 
@@ -99,7 +97,7 @@ if [[ ($drive_electrumx == "external" && $drive == "external") || \
       pls_connect_drive || return 1 
 
     # check if there is a backup electrumx_db on the drive and restore it
-      restore_elctrumx_drive #prepares drive based on existing backup and user choices
+      restore_electrumx_drive #prepares drive based on existing backup and user choices
       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
                                                            # $original from function restore_electrumx_drive
 elif [[ $drive_electrumx == external ]] ; then
