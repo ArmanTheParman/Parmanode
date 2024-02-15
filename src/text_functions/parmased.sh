@@ -67,8 +67,8 @@ debug "string written"
     remaining_lines=$((file_lines - line_number))
 debug "remaining_lines, $remaining_lines"
 
-    tail -n $remaining_lines | sudo tee -a $newfile 
-    
+    tail -n $remaining_lines $file | sudo tee -a $newfile 
+
 debug "remainder written"
 
     #rename
