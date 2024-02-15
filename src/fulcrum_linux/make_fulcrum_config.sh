@@ -14,7 +14,7 @@ fi
 # set datadir variable
 
     if [[ $drive_fulcrum == "external" ]] ; then #works Linux and Mac
-    datadir="$drive/parmanode/fulcrum_db" 
+    datadir="$parmanode_drive/fulcrum_db" 
     fi
 
     if [[ $drive_fulcrum == "internal" ]] ; then
