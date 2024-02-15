@@ -158,6 +158,8 @@ fi
 nginx_conf="/etc/nginx/nginx.conf"
 parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
 debug "done"
+sudo cp /etc/nginx/nginx.conf_backup /etc/nginx/nginx.conf
+debug "copy done"
 exit
 ########################################################################################
 
