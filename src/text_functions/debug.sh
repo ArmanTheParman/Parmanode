@@ -12,7 +12,7 @@ echo -e "Debug point. Message:
 echo -e "$1
 "
 log "debug" "${1}"
-enter_continue
+unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
 fi
@@ -22,7 +22,7 @@ function debug2 {
 if [[ $debug == 2 ]] ; then
 echo -e "${1}"
 log "debug2" "${1}"
-enter_continue
+unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
 fi
@@ -32,7 +32,7 @@ function debug3 {
 if [[ $debug == 3 ]] ; then
 echo -e "${1}"
 log "debug3" "${1}"
-enter_continue
+unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
 fi
@@ -42,7 +42,7 @@ function debug4 {
 if [[ $debug == 4 ]] ; then
 echo -e "${1}"
 log "debug4" "${1}"
-enter_continue
+unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
 fi
