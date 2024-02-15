@@ -22,6 +22,7 @@ if [[ $1 != uninstall ]] ; then
     docker_start_electrumx
     else
     sudo systemctl start electrumx.service
+    fi
 
 fi
 
