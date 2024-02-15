@@ -7,7 +7,7 @@ if grep -q "electrsdkr2" < $ic ; then
 else
     electrsis=nondocker
     if [[ $OS == Linux ]] ; then
-       journalctl -exu electrs.service > $logfile 
+       journalctl -exu electrs.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
     true #do nothing, sturctured so for readability.
