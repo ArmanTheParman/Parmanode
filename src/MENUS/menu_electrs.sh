@@ -31,6 +31,7 @@ menu_electrs_status # get elecyrs_sync variable (block number)
 
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker ]] ; then
+debug "in tor status"
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/electrs-service ]] && \
         sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
