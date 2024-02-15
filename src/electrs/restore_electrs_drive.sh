@@ -1,6 +1,6 @@
 #code reaches here if external drive selected and drive format not required.
 
-function restore_elctrs_drive {
+function restore_electrs_drive {
 
 export original="$parmanode_drive/electrs_db"
 export backup="$parmanode_drive/electrs_db_backup"

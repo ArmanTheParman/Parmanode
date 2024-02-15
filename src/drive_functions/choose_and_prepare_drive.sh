@@ -54,9 +54,8 @@ if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
 if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="external"
         parmanode_conf_add "drive_electrumx=external" ; fi
 
-
-
 return 0
+
 ;;
 
 i | I)

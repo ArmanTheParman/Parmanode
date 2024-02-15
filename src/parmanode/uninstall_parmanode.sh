@@ -87,7 +87,7 @@ fi
 
 if grep -q "electrs" <$file 
 then
-uninstall_elctrs
+uninstall_electrs
 set_terminal
 fi
 

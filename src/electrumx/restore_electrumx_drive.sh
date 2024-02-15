@@ -1,5 +1,5 @@
 #code reaches here if external drive selected and drive format not required.
-function restore_elctrumx_drive {
+function restore_electrumx_drive {
 
 export original="$parmanode_drive/electrumx_db"
 export backup="$parmanode_drive/electrumx_db_backup"
