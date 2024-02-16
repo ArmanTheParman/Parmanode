@@ -10,6 +10,7 @@ FROM node:18.16.1-bookworm-slim AS build
 RUN apt-get update \
     && apt-get upgrade -y
 
+# extra installs necessary for ARM computers to be able to compile
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3 \
         build-essential \
@@ -44,11 +45,10 @@ WORKDIR /public-pool
 
 COPY --from=build /build .
 
- # Install stuff
+ # Install Tor
  RUN apt-get update \
      && apt-get install -y --no-install-recommends \
          tor \
-         vim \
      && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/usr/local/bin/node", "dist/main" "tor"]
