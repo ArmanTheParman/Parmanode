@@ -3,7 +3,7 @@ update_computer silent
 sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken --no-install-recommends fakeroot python3 python3-pip python3-dev \
 build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev \
-rocksdb-tools
+rocksdb-tools librocksdb-6.11
 python3 -m pip install --upgrade pip 
 
 #recommended in docs, but there's no need unless building applications...
