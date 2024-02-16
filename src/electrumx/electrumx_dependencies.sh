@@ -12,7 +12,7 @@ source parmanenv/bin/activate
 cd $hp/electrumx
 pip install plyvel
 python -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
-announce "about to exit" && exit #exits virtual env
+deactivate #exits virtual env
 
 
 #recommended in docs, but there's no need unless building applications...
