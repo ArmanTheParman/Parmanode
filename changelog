@@ -6,8 +6,9 @@ Version 3.30.0
     -readme update
     -gsed, to solve mac incompatibility with sed commands
     -new parmased function (for development only)
-Version 3.29.2
+Version 3.29.3
     -Public Pool has Tor
+    -Smol bug in Public Pool fixed
 Version 3.29.1
     -Public Pool
     -Mining subcatagory install menu
