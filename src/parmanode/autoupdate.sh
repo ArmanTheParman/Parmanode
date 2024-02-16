@@ -103,7 +103,7 @@ set_terminal ; echo -e "
     $cyan 
                               Parmanode Autoupdates
 $orange
-      Parmanode autoupdates are currently : $pink$p$orange
+      Parmanode autoupdates are currently : $pink $p $orange
                  
                                 (on)     Turn on
                                 (off)    Turn off
@@ -115,7 +115,7 @@ case $choice in
 m|M) back2main ;;
 q|Q) exit ;; 
 p|P) return 0 ;;
-on|On|ON) i
+on|On|ON)
 autoupdate "on" ; return 0 ;;
 off|OFF|Off) 
 autoupdate "off" ; return 0 ;;
