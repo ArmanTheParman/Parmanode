@@ -11,3 +11,12 @@ rocksdb-tools librocksdb5.17
 # python-rocksdb installed with setup.py script (pip3 install .)
 
 }
+
+function compile_rocksdb {
+cd $hp
+git clone --depth 1 https://github.com/facebook/rocksdb.git && cd rocksdb
+mkdir build && cd build
+cmake ..
+make
+sudo make install INSTALL_PATH=/usr
+}
