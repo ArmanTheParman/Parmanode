@@ -8,6 +8,7 @@ return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
+sudo cat /etc/crontab | sed '/parmanode/d' | tee -a /etc/crontab >/dev/null 2>&1
 return 0
 fi
 ########################################################################################
