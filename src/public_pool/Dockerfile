@@ -14,7 +14,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3 \
         build-essential \
         cmake \
-        make \
         ca-certificates \
         curl \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
