@@ -44,7 +44,7 @@ echo -e "stream {
                 ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
                 ssl_prefer_server_ciphers on;
         }
-}" | sudo tee /tmp/nginx_conf >/dev/null 2>&1
+}" | sudo tee $nginx_electrumx_conf >/dev/null 2>&1
 fi
 
 if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
