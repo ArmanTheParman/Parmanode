@@ -15,7 +15,8 @@ $orange
     - The contents of the directory is shown at the top, in colour, and the
       current working directory printed in full.
     - If its too cluttered with a refresh, just type$cyan \"st\"$orange (set terminal), and 
-      the screen will be refreshed without the directory contents. 
+      the screen will be refreshed without the directory contents (doesn't seem to 
+      work on Pis').
 
     -$cyan \"aa\"$orange give a printout of \"ls -lah\" in colour and refreshes screen 
     -$cyan \"..\"$orange an existing command but now combined with$cyan a$orange command. You'll
