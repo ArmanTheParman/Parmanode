@@ -1,9 +1,8 @@
 #called inside an if block. Run only if a new install.
 
 function update_computer {
-if [[ $debug == 1 ]] ; then return 0 ; fi
+# $1 silent
 
-#update computer
 if [[ $(uname) == Darwin ]] ; then
 return 0
 
@@ -62,6 +61,7 @@ done
 fi # end if mac
 
 if [[ $(uname) == Linux ]] ; then
+if [[ $1 != silent ]] ; then
 while true ; do
 set_terminal
 echo -e "
@@ -81,6 +81,10 @@ $orange
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 "
 read choice
+else
+choice=y
+fi
+
 case $choice in
 y|Y|Yes|yes)
 local file="/tmp/update_computer.txt"
