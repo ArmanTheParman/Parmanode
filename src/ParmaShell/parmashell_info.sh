@@ -30,8 +30,8 @@ $orange
 
    This list will grow as I think of good ideas. Requests welcome. 
 
-   See file $pn/src/ParmaShell/parmashell_functions for function
-   definitions and names.
+   To see the code, where you'll find all the function definitions and names, see
+   $yellow$pn/src/ParmaShell/parmashell_functions for function
 
 ########################################################################################
 "
