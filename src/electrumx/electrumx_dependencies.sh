@@ -1,6 +1,6 @@
 function electrumx_dependencies {
 update_computer silent
-sudo apt-get remove -y libdpkg-perl
+sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken fakeroot python3 python3-pip python3-dev build-essential librocksdb-dev \
 --no-install-recommends libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev
 
