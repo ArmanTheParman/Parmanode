@@ -8,6 +8,7 @@ return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
+sudo cat /etc/crontab | sed '/parmanode/d' | tee -a /etc/crontab >/dev/null 2>&1
 return 0
 fi
 ########################################################################################
@@ -91,7 +92,7 @@ function autoupdate_toggle {
 
 while true ; do
 
-if crontab -l | grep -q parmanode ; then
+if crontab -l | grep -q parmanode || grep -q "parmanode" < /etc/crontab 2>&1 ; then
 clear
 p="ON"
 else
