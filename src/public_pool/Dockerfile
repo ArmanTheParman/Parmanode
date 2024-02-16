@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3 \
         build-essential \
         cmake \
+        curl \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /build
@@ -29,12 +30,6 @@ RUN npm i && npm run build
 
 FROM node:18.16.1-bookworm-slim
 
-# Install stuff
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        tor \
-        vim \
-    && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose ports for Stratum and Bitcoin RPC
 EXPOSE 3333 3334 
@@ -47,4 +42,11 @@ WORKDIR /public-pool
 
 COPY --from=build /build .
 
-CMD ["/usr/local/bin/node", "dist/main", "tor"]
+ # Install stuff
+ RUN apt-get update \
+     && apt-get install -y --no-install-recommends \
+         tor \
+         vim \
+     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+CMD ["/usr/local/bin/node", "dist/main" "tor"]

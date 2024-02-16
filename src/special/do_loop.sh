@@ -140,6 +140,10 @@ true
 fi
 
 if [[ $fix == true ]] ; then
+delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "fulcrum_db"
+echo "datadir = $parmanode_drive/fulcrum_db" | tee -a $HOME/parmanode/fulcrum/fulcrum.conf 
+success "Fulcrum database has been fixed. Restart Fulcrum. Exiting."
+exit
 clear
 echo "install i or uninsall u"
 read choice

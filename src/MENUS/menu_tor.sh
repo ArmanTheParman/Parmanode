@@ -6,7 +6,7 @@ set_terminal ; echo -e "
                      $cyan                    TOR    $orange
 
 
-                  status)         Check if Tor is running   $red - q to exit$orange
+                  status)         Check if Tor is running  
 
                   stop)           Stop Tor                  
 
