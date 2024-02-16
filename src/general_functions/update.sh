@@ -61,8 +61,8 @@ done
 fi # end if mac
 
 if [[ $(uname) == Linux ]] ; then
-if [[ $1 != silent ]] ; then
 while true ; do
+if [[ $1 != silent ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
