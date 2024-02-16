@@ -1,8 +1,7 @@
 function electrumx_dependencies {
-if ! which python3 >/dev/null ; then sudo apt-get update -y && sudo apt-get install python3 python3-pip
-fi
-if ! which pip3 >/dev/null ; then sudo apt-get update -y && sudo apt-get -y install python3-pip
-fi
+sudo apt-get update -y
+sudo apt-get install -y librocksdb-dev python3 python3-pip python3-dev
+
 #recommended in docs, but there's no need unless building applications...
 #pip3 install aiohttp -y
 
