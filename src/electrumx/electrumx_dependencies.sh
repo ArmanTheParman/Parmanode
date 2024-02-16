@@ -5,7 +5,15 @@ sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot py
 build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev \
 rocksdb-tools librocksdb-6.11
 sudo python3 -m pip install --upgrade pip 
-sudo pip3 install aiohttp
+
+#virtual env install
+{ virtualenv parmanenv
+source parmanenv/bin/activate
+cd $hp/electrumx
+pip install plyvel
+python -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
+exit #exits virtual env
+
 
 #recommended in docs, but there's no need unless building applications...
 #pip3 install aiohttp -y
