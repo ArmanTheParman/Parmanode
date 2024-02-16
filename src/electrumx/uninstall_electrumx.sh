@@ -30,6 +30,6 @@ fi
 sudo rm -rf $hp/electrumx
 pip3 uninstall electrumx
 parmanode_conf_remove "drive_electrumx"
-installed_conf_remove "electrumx="
+installed_conf_remove "electrumx-"
 success "Electrum X" "being uninstalled"
 }
