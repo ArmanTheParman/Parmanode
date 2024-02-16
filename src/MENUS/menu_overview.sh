@@ -83,7 +83,7 @@ else
     menub3=false
     unset m3 s3 r3
 fi 
-if grep -q electrs-end < $ic ; then
+if grep -q electrs-end < $ic || grep -q electrs2-end ; then
     i4="${green}Y${orange}"
     if [[ $electrsrunning == true ]] ; then
     r4="${green}Y${orange}"
@@ -144,7 +144,7 @@ else
     unset m7 s7 r7
 fi
 
-if grep -q electrsdkr-end < $ic ; then
+if grep -q electrsdkr-end < $ic || grep -q electrsdkr2-end < $ic ; then
     i8="${green}Y${orange}"
     if [[ $electrsdkrrunning == true ]] ; then
     r8="${green}Y${orange}"
