@@ -29,12 +29,12 @@ RUN npm i && npm run build
 
 FROM node:18.16.1-bookworm-slim
 
-# Install stuff
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        tor \
-        vim \
-    && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# # Install stuff
+# RUN apt-get update \
+#     && apt-get install -y --no-install-recommends \
+#         tor \
+#         vim \
+#     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose ports for Stratum and Bitcoin RPC
 EXPOSE 3333 3334 
