@@ -50,7 +50,8 @@ echo -e "$orange
 #                                                                                      #
 #    (aa)                 Hide/Show Main Menu announcements ... (Donchu dare!)         #
 #                                                                                      #
-#    (ap)                 About Parmanode                                              #
+#    (ap)                 About Parmanode $yellow(Please join us in the Telegram chat        $orange #
+#$yellow                                          you're missing out)                        $orange #
 #                                                                                      #
 ########################################################################################
 
