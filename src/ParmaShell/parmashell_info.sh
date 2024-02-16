@@ -18,7 +18,7 @@ $orange
       the screen will be refreshed without the directory contents. 
 
     -$cyan \"aa\"$orange give a printout of \"ls -lah\" in colour and refreshes screen 
-    -$cyan \"..\"$orange an existing command but now combined with$cyan a$orange commande. You'll
+    -$cyan \"..\"$orange an existing command but now combined with$cyan a$orange command. You'll
     -$cyan \"d\"$orange  changes directory to Desktop, and refreshes
     -$cyan \"dl\"$orange changes to Downloads directory, and refrehes
     -$cyan \"pn\"$orange changes to the Parmanode script driectory
