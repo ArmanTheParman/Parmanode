@@ -12,14 +12,13 @@ if sudo grep "HiddenServicePort 7006 127.0.0.1:50007" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServicePort 7006 127.0.0.1:50007" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
-
-if grep -q electrumxdkr < $dp/installed.conf ; then
+if grep -q electrumxdkr < $ic ; then
 docker_stop_electrumx
 docker_start_electrumx
 else
+echo "restarting electrumx..."
 sudo systemctl restart electrumx.service
 fi
-debug "systemctl restart done"
 
 get_onion_address_variable "electrumx" 
 
