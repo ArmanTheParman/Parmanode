@@ -63,7 +63,7 @@ debug "in tor status"
         fi
 debug "in if cat torrc grep electrs"
         if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
-        get_onion_address_variable "electrs" >/dev/null 
+        get_onion_address_variable "electrs" 
         fi
     else
         E_tor="${red}off${orange}"

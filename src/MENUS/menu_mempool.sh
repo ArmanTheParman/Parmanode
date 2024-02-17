@@ -12,7 +12,7 @@ debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool=true
-get_onion_address_variable "fulcrum" >/dev/null
+get_onion_address_variable "fulcrum" 
 output_tor=" Tor Access: $bright_blue    
 
     $ONION_ADDR_MEM:8280 $orange   

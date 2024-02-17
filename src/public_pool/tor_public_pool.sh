@@ -15,7 +15,7 @@ if sudo grep "HiddenServicePort 5055 127.0.0.1:5052" \
 
 sudo systemctl restart tor
 
-get_onion_address_variable "public_pool" >/dev/null 2>&1
+get_onion_address_variable "public_pool"
 
 set_terminal ; echo -e "
 ########################################################################################
