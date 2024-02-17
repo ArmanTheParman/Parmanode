@@ -78,16 +78,14 @@ fi
 debug "before get version"
 #Get version
 if [[ $electrumxis == docker ]] ; then
-    if docker exec electrumx /home/parman/parmanode/electrumx/target/release/electrumx --version >/dev/null 2>&1 ; then
-        electrumx_version=$(docker exec electrumx /home/parman/parmanode/electrumx/target/release/electrumx --version | tr -d '\r' 2>/dev/null )
+        electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]'")
         log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
     fi
 else #electrumxis nondocker
-     #check
-        electrumx_version=$($HOME/parmanode/electrumx/target/release/electrumx --version 2>/dev/null)
+        electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]' )
 fi
 debug "before next clear"
 set_terminal_custom 50
