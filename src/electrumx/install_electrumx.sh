@@ -79,7 +79,7 @@ choose_and_prepare_drive electrumx || { debug "choose and prepare drive failed."
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
-nginx_electrumx add || { debug "nginx_electrumx failed" ; return 1 ; }
+nginx_stream electrumx install || { debug "nginx_stream failed" ; return 1 ; }
 
 #prepare drives. #drive_electrumx= variable set.
 { choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 

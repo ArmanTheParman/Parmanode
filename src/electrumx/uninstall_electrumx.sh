@@ -17,7 +17,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-nginx_electrumx remove
+nginx_stream electrumx remove
 
 electrumx_tor_remove uninstall
 
