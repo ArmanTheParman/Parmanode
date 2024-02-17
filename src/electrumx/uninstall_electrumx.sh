@@ -22,9 +22,9 @@ nginx_electrumx remove
 electrumx_tor_remove uninstall
 
 if [[ $OS == Linux ]] ; then
-sudo systemctl stop electrs.service >/dev/null 2>&1
-sudo systemctl disable electrs.service >/dev/null 2>&1
-sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
+sudo systemctl stop electrumx.service >/dev/null 2>&1
+sudo systemctl disable electrumx.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/electrumx.service >/dev/null 2>&1
 fi
 
 sudo rm -rf $hp/electrumx
