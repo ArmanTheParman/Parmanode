@@ -199,7 +199,7 @@ stop | STOP)
 if [[ $electrumxis == docker ]] ; then 
 docker_stopelectrumx
 else
-stopelectrumx
+stop_electrumx
 fi
 ;;
 
