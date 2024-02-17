@@ -6,6 +6,7 @@ Version 3.30.0
     -readme update
     -gsed, to solve mac incompatibility with sed commands
     -new parmased function (for development only)
+    -option to connect to 1 of 2 Parman's nodes over Tor
 Version 3.29.3
     -Public Pool has Tor
     -Smol bug in Public Pool fixed
