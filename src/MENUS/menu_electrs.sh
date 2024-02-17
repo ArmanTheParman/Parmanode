@@ -157,10 +157,10 @@ echo "
 
 
       (i)        Important info / Troubleshooting
-
-      (start)    Start electrs 
-
-      (stop)     Stop electrs 
+$green
+      (start)   $orange Start electrs 
+$red
+      (stop) $red    Stop electrs 
 
       (restart)  Restart electrs
 

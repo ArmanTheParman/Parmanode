@@ -61,10 +61,10 @@ echo -e "
    $bright_blue     127 IP from this computer only$orange
 
 
-
-      (start)    Start Fulcrum 
-
-      (stop)     Stop Fulcrum 
+$green
+      (start)   $orange Start Fulcrum 
+$red
+      (stop)  $orange   Stop Fulcrum 
 
       (restart)  Restart Fulcrum
 
