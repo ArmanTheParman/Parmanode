@@ -1,0 +1,8 @@
+#find wlan0 name
+ip link
+ip link show
+
+#turn on interface
+sudo ip link set wlan0 up
+
+
