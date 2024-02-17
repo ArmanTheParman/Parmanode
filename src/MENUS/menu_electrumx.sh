@@ -108,9 +108,9 @@ echo -e "
 
       STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
 
-      CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
-              $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
-              $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
+      CONNECT:$cyan    127.0.0.1:50007:t    $yellow (From this computer only)$orange
+              $cyan    127.0.0.1:50008:s    $yellow (From this computer only)$orange 
+              $cyan    $IP:50008:s          $yellow \e[G\e[41G(From any home network computer)$orange
                   "
       if [[ -z $ONION_ADDR_ELECTRUMX ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
@@ -139,9 +139,9 @@ if [[ $running == true ]] ; then echo -e "
 
       STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
 
-      CONNECT:$cyan    127.0.0.1:50005:t    $yellow (From this computer only)$orange
-              $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
-              $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
+      CONNECT:$cyan    127.0.0.1:50007:t    $yellow (From this computer only)$orange
+              $cyan    127.0.0.1:50008:s    $yellow (From this computer only)$orange 
+              $cyan    $IP:50008:s          $yellow \e[G\e[41G(From any home network computer)$orange
 
       DOCKER TOR ONLY:
                  $bright_blue $ONION_ADDR_ELECTRUMX:7006:t $orange
