@@ -68,7 +68,7 @@ fi
 # Uninstall - electrs_db
 
 if [[ $drive_electrs == external ]] ; then export e_db="$parmanode_drive/electrs_db" ; fi
-if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/parmanode/electrs/electrs_db" ; fi
+if [[ $drive_electrs == internal ]] ; then export e_db="$HOME/.electrs_db" ; fi
 if [[ -e $e_db ]] ; then
 while true ; do
 set_terminal ; echo -e "
@@ -116,8 +116,9 @@ done
 fi
 
 # Uninstall electrs github
-
+if [[ -e $hp/electrs/electrs_db ]] ; then
 mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                        >/dev/null 2>&1
+fi
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
