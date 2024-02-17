@@ -31,7 +31,9 @@ $orange
 "
 choose "xpmq" ; read choice 
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; a|A|m|M) back2main ;;
-c) break ;;
+c) 
+faulty_nginx_conf=true
+break ;;
 *) invalid ;;
 esac
 done
@@ -69,24 +71,19 @@ if ! grep -q "include stream.conf;" < $nginx_conf ; then
 echo "include stream.conf;" | sudo tee -a $nginx_conf
 fi
 
-#check nginx still runs, if not revert to backup
+#check nginx still runs (only if it was fine to begin with), if not revert to backup
+if [[ ! $faulty_nginx_conf == true ]] ; then
 sudo nginx -t || sudo mv ${nginx_conf}_backup $nginx_conf && \
 {  announce "Something went wrong with the nginx conf setup. The file
-   has been restored to the original. Aborting." && sudo rm $streamfile
+   has been restored to the original. Aborting." && sudo rm $streamfile && \
+   sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1
    return 1
 }
+fi
 
 }
 
 function remove_old_electrs_stream_from_nginxconf {
-
-if grep -q "# Parmanode - flag electrs-START" < $nginx_conf ; then
-
-    if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-    if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-fi
-
-
-
-
+if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
 }
