@@ -44,8 +44,7 @@ server {
 " | sudo tee $conf_file >/dev/null 2>&1
 
     if [[ $OS == Mac ]] ; then
-    swap_string $nginx_conf "http {" "http {
-        include   public_pool_ui.conf;"
+    parmased "$nginx_conf" "http {" "    include $conf_file;" "after" "silent"
     fi
 
 fi #not remove ends

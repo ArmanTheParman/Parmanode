@@ -1,4 +1,4 @@
-function menu_electrumx_backup {
+function menu_electrumx {
 return 0
 #code template for docker version and Mac version entered but not yet functional
 
@@ -10,6 +10,7 @@ if grep -q "electrumxdkr" < $ic ; then
 else
     electrumxis=nondocker
     if [[ $OS == Linux ]] ; then
+       #-fexu will be used for log, but still need to get a log file snapshot
        journalctl -exu electrumx.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
@@ -47,8 +48,8 @@ else
     fi
 fi
 
-source $dp/parmanode.conf >/dev/null 2>&1
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
+source $dp/parmanode.conf >/dev/null 2>&1
 if [[ $running == true ]] ; then menu_electrumx_status # get elecyrs_sync variable (block number)
 fi
 
@@ -144,7 +145,7 @@ if [[ $running == true ]] ; then echo -e "
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
 
       DOCKER TOR ONLY:
-                 $bright_blue $ONION_ADDR_ELECTRUMX:7004:t $orange
+                 $bright_blue $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange      " 
 
 else
@@ -156,24 +157,18 @@ fi
 fi #end electrumxis docker
 echo "
 
-
-      (i)        Important info / Troubleshooting
-
-      (start)    Start Electrum X 
-
-      (stop)     Stop Electrum X
+$green
+      (start)$orange    Start Electrum X 
+$red
+      (stop)$orange     Stop Electrum X
 
       (restart)  Restart Electrum X
 
       (remote)   Choose which Bitcoin Core for Electrum X to connect to
 
-      (c)        How to connect your Electrum wallet to Electrum X
-	    
       (log)      Inspect Electrum X logs
 
-      (ec)       Inspect and edit config.toml file 
-
-      (up)       Set/remove/change Bitcoin rpc user/pass (Electrum X config file updates)
+      (ec)       Inspect and edit config file 
 
       (dc)       Electrum X database corrupted? -- Use this to start fresh."
 
@@ -194,10 +189,6 @@ read choice ; set_terminal
 case $choice in
 m|M) back2main ;;
 r) menu_electrumx || return 1 ;;
-
-I|i|info|INFO)
-infoelectrumx_
-;;
 
 start | START)
 if [[ $electrumxis == docker ]] ; then 
@@ -384,21 +375,16 @@ if [[ $bsync == true ]] ; then
 
 elif [[ $bsync == false ]] ; then
     #fetches block number...
-    export electrumx_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
-    #in case an unexpected non-number string, printout, otherwise check if full synced.
-    if ! echo $electrumx_sync | grep -qE '^[0-9]+$' >/dev/null ; then
+    export electrumx_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
+     grep -Eo '^[0-9]+') >/dev/null
 
-        export electrumx_sync="Wait...$orange"
+    bblock=$(echo $gbci | jq -r ".blocks")    
 
-    else 
-        bblock=$(echo $gbci | jq -r ".blocks")    
-
-        if [[ $bblock == $electrumx_sync ]] ; then
-        export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
-        else
-        export electrumx_sync="Up to $electrumx_sync $orange, sync'ing to block $bblock" 
-        fi 
-    fi
+    if [[ $bblock == $electrumx_sync ]] ; then
+    export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
+    else
+    export electrumx_sync="Up to $electrumx_sync $orange, sync'ing to block $bblock" 
+    fi 
 
     if [[ -z $electrumx_sync ]] ; then
         export electrumx_sync="Wait...$orange"

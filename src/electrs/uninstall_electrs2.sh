@@ -69,7 +69,9 @@ fi
 remove_electrs_db 
 
 # Uninstall electrs github
+if [[ -e $hp/electrs/electrs_db ]] ; then
 mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/                        >/dev/null 2>&1
+fi
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
 parmanode_conf_remove "drive_electrs"
