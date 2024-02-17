@@ -153,7 +153,7 @@ echo -e "
                    Will sync to the $cyan$drive_electrs$orange drive"
 fi
 fi #end electrsis docker
-echo "
+echo -e "
 
 
       (i)        Important info / Troubleshooting
