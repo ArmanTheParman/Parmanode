@@ -7,8 +7,8 @@ After=network.target
 
 [Service]
 EnvironmentFile=$hp/electrumx/electrumx.conf
-ExecStart=/usr/local/bin/electrumx_server
-ExecStop=/usr/local/bin/electrumx_rpc -p 8000 stop
+ExecStart=$HOME/.local/bin/electrumx_server
+ExecStop=$HOME/.local/bin/electrumx_rpc -p 8000 stop
 User=$USER
 LimitNOFILE=8192
 TimeoutStopSec=30min
