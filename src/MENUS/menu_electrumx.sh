@@ -1,5 +1,4 @@
 function menu_electrumx {
-return 0
 #code template for docker version and Mac version entered but not yet functional
 
 logfile=$HOME/.parmanode/run_electrumx.log 
