@@ -1,6 +1,6 @@
 function restore_internal_electrs_db {
 
-file="$hp/electrs/electrs_db"
+file="$hp/electrs/electrs_db" #this is the old internal location, necessary to leave for this function.
 file2="$hp/electrs_db_backup"
 file3="$HOME/.electrs_db_backup"
 unset found message

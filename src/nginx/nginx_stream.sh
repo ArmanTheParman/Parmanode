@@ -65,6 +65,9 @@ if [[ $instruction == remove ]] ; then
 unset upstream_$service server_$service
 fi
 
+#for now, it might be that electrumx might need a nginx setting, might delete this later.
+unset upstream_electrumx server_electrumx
+
 debug "Variables from stream.conf...
 1 - upstream electrs
 $upstream_electrs

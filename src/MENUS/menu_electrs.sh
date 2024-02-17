@@ -7,6 +7,7 @@ if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
 else
     electrsis=nondocker
     if [[ $OS == Linux ]] ; then
+       #-fexu will be used for log, but still need to get a log file snapshot
        journalctl -exu electrs.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
@@ -169,9 +170,7 @@ echo "
 	    
       (log)      Inspect electrs logs
 
-      (ec)       Inspect and edit config.toml file 
-
-      (up)       Set/remove/change Bitcoin rpc user/pass (electrs config file updates)
+      (ec)       Inspect and edit config file 
 
       (dc)       electrs database corrupted? -- Use this to start fresh."
 
@@ -322,11 +321,6 @@ echo "
 enter_continue
 nano $HOME/.electrs/config.toml
  
-;;
-
-up|UP|Up|uP)
-set_rpc_authentication
-continue
 ;;
 
 p|P)

@@ -16,12 +16,13 @@ config dir
  mkdir -p $HOME/.electrs
 
 internal drive
-      mkdir -p $HOME/parmanode/electrs/electrs_db && return 0
+      mkdir -p $HOME/electrs_db && return 0
 
 ########################################################################################
 Linux + Docker
 ########################################################################################
-volume mount, internal drive
+volume mount, internal drive #### internal drive has changed to $HOME/.electrs_db
+
   -v $HOME/parmanode/electrs/electrs_db:/home/parman/parmanode/electrs/electrs_db \
                             -v $HOME/.electrs:/home/parman/.electrs \   # for the config file
 volume mount, external drive

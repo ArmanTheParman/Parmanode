@@ -8,7 +8,7 @@ After=network.target
 [Service]
 EnvironmentFile=$hp/electrumx/electrumx.conf
 ExecStart=$HOME/.local/bin/electrumx_server
-ExecStop=$HOME/.local/bin/electrumx_rpc -p 8000 stop
+ExecStop=$HOME/.local/bin/electrumx_rpc -p 8000 stop  #8000 is the default for plain rpc port for administrative comminucation
 User=$USER
 LimitNOFILE=8192
 TimeoutStopSec=30min
