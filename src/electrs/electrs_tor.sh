@@ -26,7 +26,7 @@ sudo systemctl restart electrs.service
 fi
 debug "electrs restarted"
 
-get_onion_address_variable "electrs" >/dev/null 2>&1
+get_onion_address_variable "electrs" 
 
 parmanode_conf_add "electrs_tor=true"
 

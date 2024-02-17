@@ -30,7 +30,7 @@ echo "connection=Bitcoin_userpass" > $HOME/.parmanode/sparrow.connection
 if [[ $1 == "fulcrumtor" ]] ; then
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 unset $ONION_ADDR_FULCRUM
-get_onion_address_variable "fulcrum" >/dev/null
+get_onion_address_variable "fulcrum" 
 
     if [[ -z $ONION_ADDR_FULCRUM ]] ; then
     set_terminal
@@ -84,7 +84,7 @@ fi
 if [[ $1 == "electrstor" ]] ; then
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 unset $ONION_ADDR_ELECTRS
-get_onion_address_variable "electrs" >/dev/null
+get_onion_address_variable "electrs"
 
     if [[ -z $ONION_ADDR_ELECTRS ]] ; then
     set_terminal
