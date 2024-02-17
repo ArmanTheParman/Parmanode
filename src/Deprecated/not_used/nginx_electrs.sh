@@ -1,5 +1,8 @@
 #installs or uninstalls based on function argument
 function nginx_electrs {
+echo "deprecated"
+sleep 5
+exit 0
 #certificates need www-data owner.
 
 
