@@ -154,7 +154,7 @@ echo -e "
                    Will sync to the $cyan$drive_electrumx$orange drive"
 fi
 fi #end electrumxis docker
-echo "
+echo -e "
 
 $green
       (start)$orange    Start Electrum X 
