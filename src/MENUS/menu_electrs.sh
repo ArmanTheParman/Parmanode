@@ -160,7 +160,7 @@ echo -e "
 $green
       (start)   $orange Start electrs 
 $red
-      (stop) $red    Stop electrs 
+      (stop) $orange    Stop electrs 
 
       (restart)  Restart electrs
 
