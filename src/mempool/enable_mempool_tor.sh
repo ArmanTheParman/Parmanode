@@ -47,7 +47,7 @@ if sudo grep "HiddenServicePort 8280 127.0.0.1:8180" \
 
 sudo systemctl restart tor
 restart_mempool >/dev/null
-get_onion_address_variable "mempool" >/dev/null 2>&1
+get_onion_address_variable "mempool" 
 set_terminal ; echo -e "
 ########################################################################################
     FYI, changes have been made to torrc file, and Tor has been restarted.

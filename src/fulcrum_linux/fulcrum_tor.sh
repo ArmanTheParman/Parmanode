@@ -55,7 +55,7 @@ if sudo grep "HiddenServicePort 7002 127.0.0.1:50001" \
 sudo systemctl restart tor
 sudo systemctl restart fulcrum.service
 
-get_onion_address_variable "fulcrum" >/dev/null 2>&1
+get_onion_address_variable "fulcrum" 
 parmanode_conf_add "fulcrum_tor=true"
 set_terminal ; echo -e "
 ########################################################################################
