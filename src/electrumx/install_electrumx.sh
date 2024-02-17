@@ -115,6 +115,7 @@ fi
 
 make_electrumx_conf || { debug "make electrumx conf failed." ; return 1 ; }
 make_electrumx_service || { debug "make electrumx service failed." ; return 1 ; }
+electrumx_banner
 installed_config_add "electrumx-end"  
 success "Electrum X" "being installed."
 }

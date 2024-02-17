@@ -31,14 +31,13 @@ else
 stop_electrs
 fi
 
-
 if [[ $drive_electrs == external ]] ; then 
          sudo rm -rf $parmanode_drive/electrs_db
          sudo mkdir $parmanode_drive/electrs_db
          sudo chown -R $USER $parmanode_drive/electrs_db
 else #drive internal
-         rm -rf $HOME/parmanode/electrs/electrs_db
-         mkdir $HOME/parmanode/electrs/electrs_db
+         rm -rf $HOME/.electrs_db
+         mkdir  $HOME/.electrs_db
 fi
 
 break
