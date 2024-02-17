@@ -188,7 +188,7 @@ r) menu_electrumx || return 1 ;;
 
 start | START)
 if [[ $electrumxis == docker ]] ; then 
-docker_startelectrumx
+docker_start_electrumx
 else
 start_electrumx 
 sleep 1
@@ -197,7 +197,7 @@ fi
 
 stop | STOP) 
 if [[ $electrumxis == docker ]] ; then 
-docker_stopelectrumx
+docker_stop_electrumx
 else
 stop_electrumx
 fi
@@ -211,18 +211,18 @@ docker start electrumx >/dev/null 2>&1 #starts container
 docker exec electrumx bash -c "rm $logfile"
 docker_start_electrumx #starts electrumx inside running container
 else
-stopelectrumx
+stop_electrumx
 rm $logfile
-startelectrumx
+start_electrumx
 fi
 ;;
 
 restart|Restart)
 if [[ $electrumxis == docker ]] ; then
-docker_stopelectrumx
-docker_startelectrumx
+docker_stop_electrumx
+docker_start_electrumx
 else
-restartelectrumx
+restart_electrumx
 sleep 2
 fi
 ;;
@@ -231,13 +231,13 @@ remote|REMOTE|Remote)
 if [[ $electrumxis == docker ]] ; then
 set_terminal
 electrumx_to_remote
-docker_stopelectrumx
-docker_startelectrumx
+docker_stop_electrumx
+docker_start_electrumx
 set_terminal
 else
 set_terminal
 electrumx_to_remote
-restartelectrumx
+restart_electrumx
 set_terminal
 fi
 ;;
