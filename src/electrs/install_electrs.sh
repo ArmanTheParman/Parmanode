@@ -108,7 +108,7 @@ fi
 rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
-nginx_electrs add
+nginx_stream install
 
 #prepare drives. #drive_electrs= variable set.
 choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
