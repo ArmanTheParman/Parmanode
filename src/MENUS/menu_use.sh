@@ -310,6 +310,7 @@ pool)
 ex)
    if [[ $electrumxapp == 1 ]] ; then
    menu_electrumx
+   debug "after menu_electrumx"
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
