@@ -61,10 +61,10 @@ echo -e "
    $bright_blue     127 IP from this computer only$orange
 
 
-
-      (start)    Start Fulcrum 
-
-      (stop)     Stop Fulcrum 
+$green
+      (start)   $orange Start Fulcrum 
+$red
+      (stop)  $orange   Stop Fulcrum 
 
       (restart)  Restart Fulcrum
 
@@ -85,7 +85,8 @@ echo -e "
       (dc)       Fulcrum database corrupted? -- Use this to start fresh.
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
-get_onion_address_variable "fulcrum" >/dev/null ; echo -e "
+get_onion_address_variable "fulcrum"
+echo -e "
 $bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange
 
 ########################################################################################

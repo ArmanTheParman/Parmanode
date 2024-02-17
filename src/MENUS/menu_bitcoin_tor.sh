@@ -47,7 +47,8 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
 $bright_magenta    Current Status: $status_print$orange"
 
 if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
-get_onion_address_variable bitcoin >/dev/null ; echo -e "
+get_onion_address_variable bitcoin 
+echo -e "
 $bright_blue    Onion adress: $ONION_ADDR
 $orange
 ########################################################################################
