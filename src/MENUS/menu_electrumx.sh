@@ -1,4 +1,4 @@
-function menu_electrumx_backup {
+function menu_electrumx {
 return 0
 #code template for docker version and Mac version entered but not yet functional
 
