@@ -155,14 +155,14 @@ fi
 fi #end electrsis docker
 echo -e "
 
-
-      (i)        Important info / Troubleshooting
 $green
       (start)   $orange Start electrs 
 $red
       (stop) $orange    Stop electrs 
 
       (restart)  Restart electrs
+
+      (i)        Important info / Troubleshooting
 
       (remote)   Choose which Bitcoin Core for electrs to connect to
 
