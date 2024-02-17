@@ -83,7 +83,6 @@ if [[ $electrumxis == docker ]] ; then
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
-    fi
 else #electrumxis nondocker
         electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]' )
 fi
