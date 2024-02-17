@@ -30,7 +30,7 @@ set_terminal
 #is electrumx running variable
 unset running runningd
 if [[ $electrumxis == nondocker ]] ; then
-    if ps -x | grep electrumx | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrumx failed"  ; then 
+    if ps -x | grep electrumx | grep -v grep >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrumx failed"  ; then 
     runningd=nondocker
     running=true
     else
