@@ -1,6 +1,7 @@
 function menu_electrs {
 logfile=$HOME/.parmanode/run_electrs.log 
 
+if [[ $1 != fast ]] ; then
 if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
     electrsis=docker
     docker exec electrs cat /home/parman/run_electrs.log > $logfile
@@ -13,6 +14,7 @@ else
     # Background process is writing continuously to $logfile.
     true #do nothing, sturctured so for readability.
     fi
+fi
 fi
 
 debug "electrsis, $electrsis"
@@ -49,11 +51,11 @@ debug "runnind, running, $running"
 
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
 source $dp/parmanode.conf >/dev/null 2>&1
-if [[ $running == true ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $running == true && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
-if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker ]] ; then
+if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] ; then
 debug "in tor status"
     if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/electrs-service ]] && \
@@ -71,13 +73,13 @@ debug "in if cat torrc grep electrs"
     fi
 fi
 
-if [[ $electrsis == docker ]] ; then
+if [[ $electrsis == docker && $1 != fast ]] ; then
         ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
 fi
 
 debug "before get version"
 #Get version
-if [[ $electrsis == docker ]] ; then
+if [[ $electrsis == docker && $1 != fast ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
         electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
         log_size=$(docker exec electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
