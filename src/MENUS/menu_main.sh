@@ -63,7 +63,7 @@ echo -e "
 Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 
 $cyan                   NEW: ELECTRUM X NOW AVAILABLE, OH YEAH! $orange
-$blinkon$red            WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
+$blinkon$red                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
 read choice #whatever the user chooses, it gets put into the choice variable used below.
