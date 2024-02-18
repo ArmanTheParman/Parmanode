@@ -4,7 +4,6 @@ curl -s http://parman.org/downloadable/counter/parmanode_${version}_uninstall_bt
 
 delete_line "/etc/tor/torrc" "btcpayTOR"
 delete_line "/etc/tor/torrc" "7003"
-sudo rm -rf /var/lib/tor/btcpayTOR-server/ >/dev/null 2>&1
 
 sudo systemctl restart tor
 
