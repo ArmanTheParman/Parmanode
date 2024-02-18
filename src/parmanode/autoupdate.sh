@@ -66,17 +66,17 @@ EOF
 
 sudo chmod +x $HOME/.parmanode/update_script.sh
 
-echo "30 3 * * *  [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
+autoupdate on
 break
 ;;
 
 n|N)
-delete_line "/etc/crontab" "parmanode" >/dev/null 2>&1
+autoupdate off
 return 0 
 ;;
 
 nooo|NOOO|Nooo) 
-delete_line "/etc/crontab" "parmanode" >/dev/null 2>&1
+autoupdate off
 hide_messages_add "autoupdate" "1" ; return 0 
 return 0
 ;;
