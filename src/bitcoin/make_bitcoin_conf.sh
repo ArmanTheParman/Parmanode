@@ -14,6 +14,8 @@ set_terminal
 cat << EOF > /tmp/bitcoin.conf
 server=1
 txindex=1
+rest=1
+rpcservertimeout=120
 blockfilterindex=1
 daemon=1
 rpcport=8332
