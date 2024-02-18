@@ -111,8 +111,7 @@ echo -e "
       CONNECT:$cyan    127.0.0.1:50007:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50008:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50008:s          $yellow \e[G\e[41G(From any home network computer)$orange
-                                            $yellow \e[G\e[41G(Electrum X must finish sync before connecting)$orange
-                  "
+                                            $yellow \e[G\e[41G(Electrum X must finish sync before connecting)$orange"
       if [[ -z $ONION_ADDR_ELECTRUMX ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
       else
@@ -135,7 +134,7 @@ $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
-if [[ $running == true ]] ; then echo -e "
+if [[ $running == true ]] ; then echo -en "
       ELECTRUMX IS:$green RUNNING$orange
 
       STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
@@ -143,19 +142,21 @@ if [[ $running == true ]] ; then echo -e "
       CONNECT:$cyan    127.0.0.1:50007:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50008:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50008:s          $yellow \e[G\e[41G(From any home network computer)$orange
+
                                             $yellow \e[G\e[41G(Electrum X must finish sync before connecting)$orange
+
       DOCKER TOR ONLY:
                  $bright_blue $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange      " 
 
 else
-echo -e "
+echo -en "
                    ELECTRUMX IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
                    Will sync to the $cyan$drive_electrumx$orange drive"
 fi
 fi #end electrumxis docker
-echo -e "
+echo -en "
 
 $green
       (start)$orange    Start Electrum X 
