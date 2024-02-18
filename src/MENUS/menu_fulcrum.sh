@@ -82,6 +82,8 @@ $red
 
       (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 
+      (newtor)   Refresh Tor address
+
       (dc)       Fulcrum database corrupted? -- Use this to start fresh.
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
@@ -230,6 +232,13 @@ fulcrum_tor
 
 torx|TORX|Torx)
 fulcrum_tor_remove
+;;
+
+newtor)
+sudo rm -rf /var/lib/tor/fulcrum-service
+sudo systemctl restart tor
+announce "You need to wait about 30 seconds to a minute for the onion address to appear.
+    Just refresh the menu after a while."
 ;;
 
 dc|DC|Dc|dC)
