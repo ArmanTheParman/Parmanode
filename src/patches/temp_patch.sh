@@ -1,5 +1,14 @@
 function temp_patch {
 
+#recommended by electrum X docs
+if ! grep -Eq '^rest=' < $bc ; then
+echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+fi
+
+if ! grep -q "rpcservertimeout" < $bc ; then
+echo "rpcservertimeout" | sudo tee -a $bc >/dev/null 2>&1
+fi
+
 #in case someone has a funky IP address. Will add to bitcoin install, so this is not needed for very long here.
 if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
 IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
@@ -9,7 +18,7 @@ IP1and2="$IP1.$IP2."
     fi
 fi
 
-
+#There was a bug restulting in multiple same lines. This will fix it.
 if grep -q ":5000" < $bc ; then
 delete_line $bc ":5000" >/dev/null 2>&1
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
