@@ -65,3 +65,12 @@ if [[ $(uname) == Linux ]] ; then
 alias gsed=sed
 fi
 }
+
+function print_parmanode_variables {
+
+echo debug $debug fix $fix test $test bash $bash
+echo original dir $original_dir
+echo parmanode dirve $parmanode_drive
+echo bashV_major $bashV_major
+
+}
