@@ -5,6 +5,12 @@ if ! grep -Eq '^rest=' < $bc ; then
 echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
 fi
 
+#erroneous entry
+if grep -Eq '^rpcservertimout$' ; then
+delete_line $bc "rpcservertimeout"
+fi
+
+#recommended by electrumX docs
 if ! grep -q "rpcservertimeout=" < $bc ; then
 echo "rpcservertimeout" | sudo tee -a $bc >/dev/null 2>&1
 fi
