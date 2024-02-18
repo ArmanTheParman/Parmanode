@@ -371,7 +371,7 @@ if [[ $bsync == true ]] ; then
 
 elif [[ $bsync == false ]] ; then
     #fetches block number...
-    export electrumx_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
+    export electrumx_sync=$(tail -n20 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
      grep -Eo '^[0-9]+') >/dev/null
 
     bblock=$(echo $gbci | jq -r ".blocks")    
