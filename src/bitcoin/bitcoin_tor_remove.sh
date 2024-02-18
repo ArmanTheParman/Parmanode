@@ -11,7 +11,6 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onion"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
-sudo rm -rf /var/lib/tor/bitcoin*
 rm $HOME/.bitcoin/*onion*
 if which bitcoind ; then run_bitcoind ; fi
 

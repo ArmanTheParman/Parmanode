@@ -57,7 +57,6 @@ enter_continue
 }
 
 function disable_mempool_tor {
-sudo rm -rf /var/lib/tor/mempool-service >/dev/null 2>&1
 delete_line "/etc/tor/torrc" "mempool-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:8180"
 sudo systemctl restart tor
