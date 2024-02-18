@@ -114,7 +114,7 @@ echo -e "
       else
          echo -e "
       TOR:$bright_blue 
-                  $ONION_ADDR_ELECTRUMX:7004:t $orange
+                  $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
 elif [[ $electrumxis == nondocker && $running == false ]] ; then
@@ -188,7 +188,7 @@ r) menu_electrumx || return 1 ;;
 
 start | START)
 if [[ $electrumxis == docker ]] ; then 
-docker_startelectrumx
+docker_start_electrumx
 else
 start_electrumx 
 sleep 1
@@ -197,7 +197,7 @@ fi
 
 stop | STOP) 
 if [[ $electrumxis == docker ]] ; then 
-docker_stopelectrumx
+docker_stop_electrumx
 else
 stop_electrumx
 fi
@@ -211,18 +211,18 @@ docker start electrumx >/dev/null 2>&1 #starts container
 docker exec electrumx bash -c "rm $logfile"
 docker_start_electrumx #starts electrumx inside running container
 else
-stopelectrumx
+stop_electrumx
 rm $logfile
-startelectrumx
+start_electrumx
 fi
 ;;
 
 restart|Restart)
 if [[ $electrumxis == docker ]] ; then
-docker_stopelectrumx
-docker_startelectrumx
+docker_stop_electrumx
+docker_start_electrumx
 else
-restartelectrumx
+restart_electrumx
 sleep 2
 fi
 ;;
@@ -231,13 +231,13 @@ remote|REMOTE|Remote)
 if [[ $electrumxis == docker ]] ; then
 set_terminal
 electrumx_to_remote
-docker_stopelectrumx
-docker_startelectrumx
+docker_stop_electrumx
+docker_start_electrumx
 set_terminal
 else
 set_terminal
 electrumx_to_remote
-restartelectrumx
+restart_electrumx
 set_terminal
 fi
 ;;
@@ -375,11 +375,11 @@ elif [[ $bsync == false ]] ; then
      grep -Eo '^[0-9]+') >/dev/null
 
     bblock=$(echo $gbci | jq -r ".blocks")    
-
+debug "bblock is - $bblock ; electrumx_sync is $electrumx_sync"
     if [[ $bblock == $electrumx_sync ]] ; then
     export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
     else
-    export electrumx_sync="Up to $electrumx_sync $orange, sync'ing to block $bblock" 
+    export electrumx_sync="Up to $electrumx_sync $orange - sync'ing to block $bblock" 
     fi 
 
     if [[ -z $electrumx_sync ]] ; then

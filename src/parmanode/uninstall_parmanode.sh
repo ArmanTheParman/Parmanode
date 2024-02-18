@@ -144,9 +144,7 @@ if [[ $OS == "Linux" ]] ; then
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
 #remove crontab entries
-crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
-sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee /tmp/crontab >/dev/null 2>&1 
-sudo mv /tmp/crontab /etc/crontab >/dev/null 2>&1
+autoupdate off
 
 #remove bashrc/zshrc additions
 delete_line "$HOME/.bashrc" "Parmanode..." >/dev/null 2>&1
