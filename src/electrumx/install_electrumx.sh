@@ -74,15 +74,13 @@ download_electrumx || { debug "download failed" ; return 1 ; }
 #install
 cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1 ; }
 
-choose_and_prepare_drive electrumx || { debug "choose and prepare drive failed." ; return 1 ; }
+#prepare drives. #drive_electrumx= variable set.
+{ choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 
 
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 nginx_stream electrumx install || { debug "nginx_stream failed" ; }
-
-#prepare drives. #drive_electrumx= variable set.
-{ choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 
  
 #get drive variables for others: fulcrum, bitcoin, and electrs
 source $HOME/.parmanode/parmanode.conf >/dev/null
