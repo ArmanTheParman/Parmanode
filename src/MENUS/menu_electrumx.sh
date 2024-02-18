@@ -309,7 +309,7 @@ echo "
 ########################################################################################
 "
 enter_continue
-nano $HOME/.electrumx/config.toml
+nano $hp/electrumx/electrumx.conf
  
 ;;
 
