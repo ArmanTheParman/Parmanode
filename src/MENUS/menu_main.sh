@@ -13,7 +13,7 @@ if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version nu
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
-echo -e "$orange
+echo -en "$orange
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
@@ -40,7 +40,7 @@ echo -e "$orange
 #                                                                                      #
 #    (e)                  Education (Lotsa stuff)                                      #
 #                                                                                      #
-#    (d)                  Donate ;)                                                    #
+#    (d)                  Donate  ... do it                                            #
 #                                                                                      #
 #    (l)                  See logs and config files                                    #
 #                                                                                      #
@@ -60,8 +60,8 @@ echo -e "$orange
 "
 if [[ ! $announcements == off ]] ; then
 echo -e "
-$pink Tip: combine u with the next menu options. eg, try ub for bitcoin menu     $orange 
-$bright_blue NEW: ColdCard Firmware install Wizard. See Tools menu. $orange
+Tip: combine u with the next menu options. eg, try ub for bitcoin menu
+$bright_blue NEW: ELECTRUM X NOW AVAILABLE, OH YEAH! $orange
 $blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
