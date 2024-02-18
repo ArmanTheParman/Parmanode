@@ -222,6 +222,13 @@ ers|ERS|Ers)
     if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
+
+ersf|ERSf|Ersf)
+   if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
+   menu_electrs fast
+    if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
 trz|TRZ|Trz)
    if [[ $trezorapp == 1 ]] ; then
    menu_trezor
