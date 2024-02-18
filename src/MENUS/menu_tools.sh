@@ -177,7 +177,7 @@ $orange
     following onion addresses to connect to one of my servers:
 $green
     cz2qg6n7oc2i5i4w7wprobvczwpgbf2ulaqiokl7le6ojyhvrx4ty3yd.onion:700${red}2$green:t
-    e6woamauwrki77ii4g2zswslptvm3prolbkjogbeqwiasxamhrzmjgad.onion:700${red}4$green:t
+    ail3y746ukjgowb2l4izovsh2tzyre4ohxii7rwes3j5ggx6pc3cvdid.onion.onion:700${red}4$green:t
 
 $orange
     You must use the port number after the onion address or you can't connect.

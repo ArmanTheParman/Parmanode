@@ -1,11 +1,11 @@
 function menu_overview {
 while true ; do
 clear
-unset m1 m2 m3 m4 m5 m6 m7 m8 m9 m10
-unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10
-unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10
-unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10
-unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10
+unset m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11
+unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11
+unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11
+unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11
+unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10 menub11
 
 set_terminal
 please_wait
@@ -24,6 +24,7 @@ m7="${white}m7${orange}"
 m8="${white}m8${orange}"
 m9="${white}m9${orange}"
 m10="${white}m10${orange}"
+m11="${white}m10${orange}"
 
 s1="${white}s1${orange}"
 s2="${white}s2${orange}"
@@ -35,6 +36,7 @@ s7="${white}s7${orange}"
 s8="${white}s8${orange}"
 s9="${white}s9${orange}"
 s10="${white}s10${orange}"
+s11="${white}s10${orange}"
 
 if grep -q bitcoin-end < $ic ; then
     i1="    ${green}Y${orange}"
@@ -192,6 +194,22 @@ else
     unset m10 s10 r10
 fi
 
+if grep -q electrumx-end < $ic ; then
+    i11="${green}Y${orange}"
+    if [[ $electrumxrunning == true ]] ; then
+    r11="${green}Y${orange}"
+    menub11=true
+    else
+    r11="${red}N${orange}"
+    menub11=false
+    fi
+else
+    i11="${red}     N${orange}"
+    r11="${red}N${orange}"
+    menub11=false
+    unset m11 s11 r11
+fi
+
 x="${orange}|$bright_blue"
 
 set_terminal_wide #(110)
@@ -220,6 +238,8 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
       Mempool                   |                $m9                $r9                $s9
                                 |
       Public Pool               |                $m10               $r10                $s10
+                                |
+      Electrum X                |                $m11               $r11                $s11
                                 |
       ${red}r to refresh${orange}              |
                                 |
@@ -252,6 +272,7 @@ m7) menu_rtl     overview ;;
 m8) menu_electrs overview ;;
 m9) menu_mempool overview ;;
 m10) menu_public_pool overview ;;
+m11) menu_electrumx overview ;;
 
 s1) 
 if [[ $menub1 == true ]] ; then
@@ -352,6 +373,16 @@ stop_public_pool
 else
 clear ; start_public_pool
 fi
+;;
+
+s11)
+if [[ $menub11 == true ]] ; then
+clear ; please_wait
+stop_electrumx
+else
+clear ; start_electrumx
+fi
+;;
 
 esac
 done
