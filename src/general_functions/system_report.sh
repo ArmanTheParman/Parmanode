@@ -20,10 +20,10 @@ echor "$(git log | head -n30)"
 
 #parmanode.conf
 echor "#PARMNODE CONF"
-echo "$(cat $HOME/.parmanode/parmanode.conf)"
+echor "$(cat $HOME/.parmanode/parmanode.conf)"
 
 #system info
-echo "#SYSTEM INFO"
+echor "#SYSTEM INFO"
 echor "$(id)"
 echor "$(uname) , $(uname -m)"
 echor "$(env)"
@@ -40,18 +40,23 @@ echor "#which..."
 echor "$(which nginx npm tor bitcoin-cli docker brew curl jq)"
 
 #prinout of $dp
-echo "#DOT PARMANODE"
+echor "#DOT PARMANODE"
 cd $HOME/.parmanode
 echor "#printout of $dp"
 for file in * .* ; do
     echor "FILE: $file \n $(cat $file) \n" 
 done
+#HOME PARMANODE CONTENTS
+cd $HOME/parmanode
+echor "#HOME PARMANODE CONTENTS"
+ls -lah ./* >$report
+
 
 #nginx
 echor "#NGINX" 
 echor "$(sudo nginx -t)"
-cd /etc/nginx && echo "$(pwd ; ls -m)"
-cd /etc/nginx/conf.d && echo "$(pwd ; ls -m)"
+cd /etc/nginx && echor "$(pwd ; ls -m)"
+cd /etc/nginx/conf.d && echor "$(pwd ; ls -m)"
 echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
 echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
 
