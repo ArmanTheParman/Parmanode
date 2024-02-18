@@ -140,6 +140,13 @@ true
 fi
 
 if [[ $fix == true ]] ; then
+
+if grep -q ":5000" < $bc ; then
+delete_line $bc "zmqpubrawblock=tcp://*:5000"
+echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
+fi
+exit
+
 delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "fulcrum_db"
 echo "datadir = $parmanode_drive/fulcrum_db" | tee -a $HOME/parmanode/fulcrum/fulcrum.conf 
 success "Fulcrum database has been fixed. Restart Fulcrum. Exiting."
