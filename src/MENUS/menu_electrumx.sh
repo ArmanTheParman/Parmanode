@@ -143,7 +143,8 @@ if [[ $running == true ]] ; then echo -e "
       CONNECT:$cyan    127.0.0.1:50007:t    $yellow (From this computer only)$orange
               $cyan    127.0.0.1:50008:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50008:s          $yellow \e[G\e[41G(From any home network computer)$orange
-
+                                            $yellow \e[G\e[41G(Electrum X must finish sync before connecting)$orange
+                  "
       DOCKER TOR ONLY:
                  $bright_blue $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange      " 
