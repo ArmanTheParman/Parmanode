@@ -72,7 +72,7 @@ electrumx_dependencies || { debug "dependencies failed" ; return 1 ; }
 download_electrumx || { debug "download failed" ; return 1 ; }
 
 #install
-cd $hp/electrumx && pip install . || { debug "'pip install .failed." ; return 1 ; }
+cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1 ; }
 
 choose_and_prepare_drive electrumx || { debug "choose and prepare drive failed." ; return 1 ; }
 
