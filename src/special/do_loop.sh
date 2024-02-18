@@ -142,7 +142,7 @@ fi
 if [[ $fix == true ]] ; then
 
 if grep -q ":5000" < $bc ; then
-delete_line $bc 'zmqpubrawblock=tcp://*:5000'
+delete_line $bc ':5000'
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
 fi
 exit
