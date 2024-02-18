@@ -60,6 +60,9 @@ debug "in tor status"
         sudo cat /var/lib/tor/electrumx-service/hostname | grep "onion" >/dev/null 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
+        else
+        E_tor="${yellow}wait${orange}"
+        E_tor_logic=on
         fi
 debug "in if cat torrc grep electrumx"
         if grep -q "electrumx_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
