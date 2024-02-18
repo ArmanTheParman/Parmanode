@@ -173,6 +173,8 @@ $red
 
 if [[ $OS == Linux && $electrumxis == nondocker ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
+
+      (newtor)   Refresh Tor address
 " 
 fi
 echo -e "
@@ -338,8 +340,11 @@ electrumx_tor_remove
 fi
 ;;
 
-dc|DC|Dc)
-electrumx_database_corrupted 
+newtor)
+sudo rm -rf /var/lib/tor/electrumx-service
+sudo systemctl restart tor
+announce "You need to wait about 30 seconds to a minute for the onion address to appear.
+    Just refresh the menu after a while."
 ;;
 
 *)
