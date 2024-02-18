@@ -114,7 +114,7 @@ echo -e "
       else
          echo -e "
       TOR:$bright_blue 
-                  $ONION_ADDR_ELECTRUMX:7004:t $orange
+                  $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
 elif [[ $electrumxis == nondocker && $running == false ]] ; then
@@ -375,11 +375,11 @@ elif [[ $bsync == false ]] ; then
      grep -Eo '^[0-9]+') >/dev/null
 
     bblock=$(echo $gbci | jq -r ".blocks")    
-
+debug "bblock is - $bblock ; electrumx_sync is $electrumx_sync"
     if [[ $bblock == $electrumx_sync ]] ; then
     export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
     else
-    export electrumx_sync="Up to $electrumx_sync $orange, sync'ing to block $bblock" 
+    export electrumx_sync="Up to $electrumx_sync $orange - sync'ing to block $bblock" 
     fi 
 
     if [[ -z $electrumx_sync ]] ; then
