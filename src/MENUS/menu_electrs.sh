@@ -176,6 +176,8 @@ $red
 
 if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "
       (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
+      
+      (newtor)   Refresh Tor address
 " 
 fi
 echo -e "
@@ -338,6 +340,13 @@ electrs_tor
 else
 electrs_tor_remove
 fi
+;;
+
+newtor)
+sudo rm -rf /var/lib/tor/electrs-service
+sudo systemctl restart tor
+announce "You need to wait about 30 seconds to a minute for the onion address to appear.
+    Just refresh the menu after a while."
 ;;
 
 dc|DC|Dc)
