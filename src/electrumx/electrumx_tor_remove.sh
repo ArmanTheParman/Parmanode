@@ -7,7 +7,6 @@ please_wait
 delete_line "/etc/tor/torrc" "electrumx-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:50007"
 
-sudo rm -rf /var/lib/tor/electrumx-service
 sudo systemctl restart tor
 
 set_terminal
