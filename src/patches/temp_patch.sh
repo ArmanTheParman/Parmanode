@@ -6,7 +6,7 @@ echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
 fi
 
 #erroneous entry
-if grep -Eq '^rpcservertimout$' ; then
+if grep -Eq '^rpcservertimout$' < $bc ; then
 delete_line $bc "rpcservertimeout"
 fi
 
