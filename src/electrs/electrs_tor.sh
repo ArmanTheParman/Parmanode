@@ -18,14 +18,6 @@ if sudo grep "HiddenServicePort 7004 127.0.0.1:50005" \
 debug "line 18, before restart tor"
 sudo systemctl restart tor
 
-if grep -q electrsdkr < $dp/installed.conf ; then
-docker_stop_electrs
-docker_start_electrs
-else
-sudo systemctl restart electrs.service
-fi
-debug "electrs restarted"
-
 get_onion_address_variable "electrs" 
 
 parmanode_conf_add "electrs_tor=true"
