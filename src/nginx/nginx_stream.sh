@@ -114,11 +114,11 @@ fi
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == true ]] ; then
 sudo nginx -t || sudo mv ${nginx_conf}_backup $nginx_conf && \
-{  announce "Something went wrong with the nginx conf setup. The file
-   has been restored to the original. Aborting." && sudo rm $streamfile && \
-   sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
-   sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
-   return 1
+{   announce "Something went wrong with the nginx conf setup. The file
+    has been restored to the original." && sudo rm $streamfile && \
+    sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
+    sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
+    return 1
 }
 fi
 
