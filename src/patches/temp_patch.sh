@@ -5,8 +5,8 @@ if ! grep -Eq '^rest=' < $bc ; then
 echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
 fi
 
-if ! grep -q "rpcservertimeout" < $bc ; then
-echo "rpcservertimeout=120" | sudo tee -a $bc >/dev/null 2>&1
+if ! grep -q "rpcservertimeout=" < $bc ; then
+echo "rpcservertimeout" | sudo tee -a $bc >/dev/null 2>&1
 fi
 
 #in case someone has a funky IP address. Will add to bitcoin install, so this is not needed for very long here.
