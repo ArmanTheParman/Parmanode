@@ -16,7 +16,7 @@ if [[ $1 == bash ]] ; then export bash=1 ; fi
 
 if [[ $1 == m  ]] ; then export debug=menu ; export skip_intro=true ; fi
 if [[ $1 == fix ]] ; then export fix=true ; fi
-
+if [[ $1 == report ]] ; then export report=true ; fi
 if [[ $1 == test || $2 == test ]] ; then export test=true ; fi
 
 #used for debugging
