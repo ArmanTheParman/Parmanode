@@ -61,7 +61,7 @@ echo -en "$orange
 if [[ ! $announcements == off ]] ; then
 echo -e "
 Tip: combine u with the next menu options. eg, try ub for bitcoin menu
-$bright_blue NEW: ELECTRUM X NOW AVAILABLE, OH YEAH! $orange
+$cyan NEW: ELECTRUM X NOW AVAILABLE, OH YEAH! $orange
 $blinkon$red WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
