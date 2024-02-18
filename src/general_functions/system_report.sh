@@ -1,6 +1,6 @@
 
 function get_system_report {
-
+return 0
 function echor {
 echo -e "$1" >> "$report" 2>&1
 }
