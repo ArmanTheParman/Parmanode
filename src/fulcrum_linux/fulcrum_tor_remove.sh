@@ -7,7 +7,6 @@ please_wait
 delete_line "/etc/tor/torrc" "fulcrum-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:50001"
 
-sudo rm -rf /var/lib/tor/fulcrum*
 sudo systemctl restart tor
 sudo systemctl restart fulcrum.service
 
