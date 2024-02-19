@@ -53,7 +53,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
-set_teminal
+set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;;
 "") break ;;
