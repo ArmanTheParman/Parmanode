@@ -18,6 +18,7 @@ nginx_conf="/etc/nginx/nginx.conf"
 streamfile="/etc/nginx/stream.conf"
 fi
 
+if [[ $1 != remove ]] ; then
 sudo nginx -t >/dev/null 2>&1 || \
  while true ; do 
 echo -e "
@@ -44,6 +45,7 @@ break ;;
 *) invalid ;;
 esac
 done
+fi
 
 #create a back up in case it breaks
 sudo cp $nginx_conf ${nginx_conf}_backup >/dev/null 2>&1
