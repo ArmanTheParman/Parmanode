@@ -49,7 +49,7 @@ done
 #HOME PARMANODE CONTENTS
 cd $HOME/parmanode
 echor "#HOME PARMANODE CONTENTS"
-ls -lah ./* >$report
+ls -lah ./* >>$report
 
 
 #nginx
