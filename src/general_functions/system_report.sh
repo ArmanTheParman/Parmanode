@@ -37,7 +37,7 @@ function delete_private {
 if [[ $omit == true ]] ; then
 cat $report | sed /rpcuser/d | sed /rpcpass/d | sed /auth = /d | sed /btc.rpc.user=/d | sed /btc.rpc.password=/d | \
  sed /alias=/d | sed /bitcoind.rpc/d | sed /DAEMON_URL =/d | sed /CORE_RPC_USERNAME/d | sed /CORE_RPC_PASSWORD/d | \
- sed /BITCOIN_RPC_PASSWORD/d | sed /BITCOIN_RPC_USER/d | sed /multiPass/d > /tmp/tempreport && mv /tmp/tmpreport $report
+ sed /BITCOIN_RPC_PASSWORD/d | sed /BITCOIN_RPC_USER/d | sed /multiPass/d > /tmp/tempreport && mv /tmp/tempreport $report
 fi
 }
 
