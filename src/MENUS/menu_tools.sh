@@ -39,12 +39,17 @@ echo -e "
               (aa)    Turn on/off autoupdates
 
               (rs)    Parman's easy AF Rsync tool$red new $orange
-
+$red
+         ...  (next)  More options 
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
+    next)
+    menu_toos2
+    ;;
     
     m|M) back2main ;;
 
