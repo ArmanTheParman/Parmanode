@@ -1,4 +1,4 @@
-function get_system_report {
+function system_report {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
