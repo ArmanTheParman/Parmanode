@@ -1,11 +1,11 @@
 function temp_patch {
 
 #stream directive now in "stream.conf"
-if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then
-if grep -q "include electrs.conf;" < /etc/nginx/nginx.conf ; then
-delete_line "include electrs.conf"
-fi
-fi
+# if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then
+# if grep -q "include electrs.conf;" < /etc/nginx/nginx.conf ; then
+# delete_line "include electrs.conf"
+# fi
+# fi
 
 # I have notice duplicates of this script in crontab, could be a result of hitting
 # control-c during start up before a password request. This block keeps it clean.
