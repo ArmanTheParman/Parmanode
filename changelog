@@ -6,6 +6,7 @@ Version 3.30.2
     -temp dir added for parmashell
     -update check bug fixed
     -tool to refresh script directory
+    -bitcoin user/pass default
 Version 3.30.0
     -ELECTRUM X
     -Moved ssl certs for electrum docker to the host
