@@ -190,6 +190,7 @@ echor "#EXTRA STUFF"
 echor "$(cat /etc/cpuinfo)"
 
 delete_private
+debug "pause"
 mv $report $HOME/Desktop/
 
 set_terminal ; echo -e "
