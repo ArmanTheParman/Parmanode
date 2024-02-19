@@ -1,5 +1,12 @@
 function temp_patch {
 
+# I have notice duplicates of this script in crontab, could be a result of hitting
+# control-c during start up before a password request. This block keeps it clean.
+if [[ $(grep "parmanode/update_script.sh" < /etc/crontab | wc -l) -gt 1 ]] ; then
+autoupdate off
+autoupdate on
+fi
+
 #recommended by electrum X docs
 if ! grep -Eq '^rest=' < $bc ; then
 echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
