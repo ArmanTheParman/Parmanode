@@ -40,14 +40,14 @@ echo -e "
 
               (rs)    Parman's easy AF Rsync tool new
 $green
-         ...  (next)  More options 
+         ...  (n)     More options 
 $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
-    next)
+    n|next)
     menu_tools2
     ;;
     
