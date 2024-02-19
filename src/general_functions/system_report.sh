@@ -35,7 +35,9 @@ report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $rep
 
 function delete_private {
 if [[ $omit == true ]] ; then
+debug "pause before sed"
 cat $report | gsed '/rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+debug "pause after sed"
 mv /tmp/tempreport $report
 fi
 }
