@@ -1,4 +1,4 @@
-function menu_tools {
+function menu_tools2 {
 
 while true ; do
 set_terminal_high
