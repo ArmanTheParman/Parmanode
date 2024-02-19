@@ -9,6 +9,8 @@ echo -e "
 
 
               (curl)      Test bitcoin curl/rpc command (for troubleshooting)
+
+              (sr)        System report (for getting troubleshooting help)
 $orange
 ########################################################################################
 "
@@ -20,6 +22,11 @@ q|Q) exit ;;  m|M) back2main ;; p|P) return 0 ;;
 
 curl)
 bitcoin_curl
+return 0
+;;
+
+sr)
+system_report
 return 0
 ;;
 
