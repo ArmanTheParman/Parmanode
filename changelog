@@ -4,6 +4,7 @@ Version 3.30.2
     -expanded tools menu
     -bitcoin curl tool
     -temp dir added for parmashell
+    -update check bug fixed
 Version 3.30.0
     -ELECTRUM X
     -Moved ssl certs for electrum docker to the host
