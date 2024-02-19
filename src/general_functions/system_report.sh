@@ -172,6 +172,7 @@ echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
 #PUBLICPOOL
 echor "public pool env \n $(cat $hp/public_pool/.env)"
 
+if [[ $omit == false ]] ; then
 #HOSTNAME/TOR
 echor "#BRE TOR"
 sudo cat /var/lib/tor/bre-service/hostname
@@ -189,6 +190,8 @@ echor "#BTCPAY TOR"
 echor "$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
 echor "#BITCOIN TOR"
 echor "$(sudo cat /var/lib/tor/bitcoin-service/hostname)"
+fi
+
 
 #EXTRA STUFF
 echor "#EXTRA STUFF"
