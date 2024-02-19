@@ -115,7 +115,12 @@ fi
 if [[ ! $faulty_nginx_conf == true ]] ; then
 sudo nginx -t || sudo mv ${nginx_conf}_backup $nginx_conf && \
 {   announce "Something went wrong with the nginx conf setup. The file
-    has been restored to the original." && sudo rm $streamfile && \
+    has been restored to the original. Have a look at the error, next screen, and 
+    report to Parman. Also the erroneous file has been saved to
+    /tmp/nginx.conf_error ...
+    
+    " && sudo nginx -t && echo "" && enter_continue && sudo rm $streamfile && \
+    sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
     sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
     sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
     return 1
@@ -123,7 +128,6 @@ sudo nginx -t || sudo mv ${nginx_conf}_backup $nginx_conf && \
 fi
 
 }
-
 function remove_old_electrs_stream_from_nginxconf {
 if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
 if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
