@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 23))
+motd=$((motd % 24))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -540,6 +540,34 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+
+if [[ $motd == 23 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+    
+
+    There is no virtue in being obedient to rulers.
+
+    Language is important: Don't call the 'president', or 'prime minister', or 'king',
+    your 'leader'.
+
+    No, they are your$red RULER$orange.
+
+    They don't lead, they rule; they leech.
+
+    Fuck 'em. Long live shit. Rebel with Bitcoin.
+    
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
