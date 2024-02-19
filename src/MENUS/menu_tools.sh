@@ -48,7 +48,7 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
     next)
-    menu_toos2
+    menu_tools2
     ;;
     
     m|M) back2main ;;
