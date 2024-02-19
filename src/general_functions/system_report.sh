@@ -85,7 +85,9 @@ echor "#DOT PARMANODE"
 cd $HOME/.parmanode
 echor "#printout of $dp"
 for file in * .* ; do
+    if [[ -f $file ]] ; then
     echor "FILE: $file \n $(cat $file) \n" 
+    fi
 done
 #HOME PARMANODE CONTENTS
 cd $HOME/parmanode
