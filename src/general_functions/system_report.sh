@@ -31,7 +31,7 @@ esac
 done
 
 
-report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $report
+report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > /tmp/tempreport && mv /tmp/tempreport $report
 
 function delete_private {
 if [[ $omit == true ]] ; then
