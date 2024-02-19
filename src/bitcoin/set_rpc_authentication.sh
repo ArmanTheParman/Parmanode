@@ -15,17 +15,16 @@ $cyan
 $orange
     Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
     Bitcoin Core. 
-
-	So that no random software connects to Bitcoin Core, a username/password 
-	autentication challenge is introduced. Note, this password doesn't need to be 
-	incredibly secure, and do also bear in mind that it will be stored on the 
-	computer in$pink clear text$orange(i.e. unencrypted) inside the bitcoin.conf
+    So that no random software connects to Bitcoin Core, a username/password 
+    autentication challenge is introduced. Note, this password doesn't need to be 
+    incredibly secure, and do also bear in mind that it will be stored on the 
+    computer in$pink clear text$orange (i.e. unencrypted) inside the bitcoin.conf
     file and other configuration files. Therefore, don't use highly sensitive
     passwords that you might use for other things.
 
     If you decide to change the default username/password (parman/parman), then
-	make sure you$pink$blinkon do not use any symbols$blinkoff$orange, as some of them are interpreted by the 
-	computer as commands rather than plain text.
+    make sure you$pink$blinkon do not use any symbols$blinkoff$orange, as some of 
+    them are interpreted by the computer as commands rather than plain text.
 
 $green
        (s)     Set the Bitcoin username and password (edits bitcoin.conf for you)
