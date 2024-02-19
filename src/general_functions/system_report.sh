@@ -78,6 +78,7 @@ echor "
 echor "#PROGRAMS"
 echor "#which..." 
 echor "$(which nginx npm tor bitcoin-cli docker brew curl jq)"
+debug "pause"
 
 #prinout of $dp
 echor "#DOT PARMANODE"
