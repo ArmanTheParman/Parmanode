@@ -145,7 +145,7 @@ echor "nbxplorer \n $(cat $HOME/.nbxplorer/Main/settings.config)"
 
 #ELECTRS
 echor "electrs config \n $(cat $HOME/.electrs/config.toml)"
-
+echor "ELECTRS_STREAM_FILE \n $(cat /tmp/nginx.conf_error)"
 #ELECTRUMX
 echor "elecrrumx config \n $(cat $HOME/parmanode/electrumx/electrumx.conf)"
 
