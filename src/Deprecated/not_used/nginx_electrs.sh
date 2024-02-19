@@ -40,7 +40,7 @@ else #add
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
 #parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
-echo "include electrs.conf;" | tee -a $nginx_conf >/dev/null 2>&1
+echo "include electrs.conf;" | sudo tee -a $nginx_conf >/dev/null 2>&1
 
 echo "stream {
         upstream electrs {
