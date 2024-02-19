@@ -115,18 +115,19 @@ fi
 
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == true ]] ; then
-sudo nginx -t || sudo mv ${nginx_conf}_backup $nginx_conf && \
-{   announce "Something went wrong with the nginx conf setup. The file
+
+    sudo nginx -t || {  sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
+                        sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
+                        sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1 && \
+    announce "Something went wrong with the nginx conf setup. The file
     has been restored to the original. Have a look at the error, next screen, and 
-    report to Parman. Also the erroneous file has been saved to
-    /tmp/nginx.conf_error ...
+    report to Parman. Also the erroneous file has been saved to $cyan
+    /tmp/nginx.conf_error ... $orange
     
     " && sudo nginx -t && echo "" && enter_continue && sudo rm $streamfile && \
-    sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
-    sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
-    sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
     return 1
-}
+    }
+
 fi
 
 }
