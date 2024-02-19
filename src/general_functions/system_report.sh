@@ -126,6 +126,9 @@ echor "getblockchaininfo \n bitcoin-cli getblockchaininfo"
 echor "space taken by bitcoin data dir"
 echor "$(cd $HOME/.bitcoin ; du -sh)"
 echor "rpc curl bitcoin, 127.0.0.1 then $IP \n"
+echo "Bitcoin curl test...
+
+"
 echor "$(curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332)"
 echor "$(curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://$IP:8332)"
 
