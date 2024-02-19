@@ -52,13 +52,15 @@ echor "#HOME PARMANODE CONTENTS"
 ls -lah ./* >>$report
 
 
-#nginx
+#NGINX
 echor "#NGINX" 
 echor "$(sudo nginx -t)"
 cd /etc/nginx && echor "$(pwd ; ls -m)"
 cd /etc/nginx/conf.d && echor "$(pwd ; ls -m)"
 echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
 echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
+echor "Nginx error file..."
+echor "$(cat /tmp/nginx.conf_error)"
 
 
 echor "#HOME PARMANODE"
