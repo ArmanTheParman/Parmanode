@@ -83,8 +83,8 @@ $bright_blue
 ########################################################################################
 "
 choose "xpmq"
-echo -e "$red
- Hit 'r' to refresh menu 
+echo -e "$red$blinkon
+ Hit 'r' to refresh menu $blinkoff
  $orange"
 read choice
 set_terminal
