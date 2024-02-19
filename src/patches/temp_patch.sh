@@ -1,6 +1,6 @@
 function temp_patch {
 
-stream directive now in "stream.conf"
+#stream directive now in "stream.conf"
 if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then
 if grep -q "include electrs.conf;" < /etc/nginx/nginx.conf ; then
 delete_line "include electrs.conf"
