@@ -36,6 +36,14 @@ output2="                   Will sync to the $drive drive"
 start="$green"
 fi                         
 
+if [[ $OS == Linux && $bitcoinrunning == false ]] ; then
+output3="$green      (qtstart)$orange  Start Bitcoin Qt"
+fi
+
+if [[ $OS == Linux && $bitcoinrunning == true && ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
+output3="$red      (qtstop)$orange   Stop Bitcoin Qt
+fi
+
 if [[ -z $drive ]] ; then unset output2 ; fi
 
 # #This causes error output when bitcoin loading
@@ -54,7 +62,7 @@ echo -e "$output1"
 echo ""
 echo -e "$output2"
 echo ""
-echo -e "
+echo -ne "
 $start
       (start)$orange    Start Bitcoind............................................(Do it)
 
