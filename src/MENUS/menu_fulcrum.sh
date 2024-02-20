@@ -31,7 +31,7 @@ else
 menu_fulcrum_status
 fi
 
-set_terminal_custom 45
+set_terminal_custom 47
 echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
