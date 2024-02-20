@@ -39,7 +39,7 @@ clear ; echo -e "
 ########################################################################################
 
     If you have a Mac with a newer M1/M2 chip, you might run in to problems with
-    the standard Electrum chip. If this has happened, or you don't want to take
+    the standard Electrum install. If this has happened, or you don't want to take
     any chances, you can select to install the 'python' version instead. It works
     the same, you just won'g get a Mac executable in your Applications directory.
 
