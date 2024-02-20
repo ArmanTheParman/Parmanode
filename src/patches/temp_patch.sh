@@ -16,8 +16,9 @@ autoupdate on
 fi
 
 #recommended by electrum X docs
-if ! grep -Eq '^rest=' < $bc ; then
-echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+#seemed to break things, reversing
+if grep -Eq '^rest=' < $bc ; then
+delete_line $bc "rest="
 fi
 
 #erroneous entry
