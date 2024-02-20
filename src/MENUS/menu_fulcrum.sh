@@ -1,5 +1,7 @@
 function menu_fulcrum {
 unset refresh
+unset isbitcoinrunning_fulcrum
+
 while true
 do
 set_terminal
