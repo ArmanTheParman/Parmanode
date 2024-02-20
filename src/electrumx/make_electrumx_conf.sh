@@ -33,7 +33,8 @@ PEER_ANNOUNCE = on
 DAEMON_URL = http://$rpcuser:$rpcpassword@127.0.0.1:8332/
 
 # don't shitcon, remember the Parmanode policy, there's only 1 rule!
-COIN = Bitcoin  
+# Bitcoin alone stops syncing at the segwit fork, bloody shitcoin developers!
+COIN = BitcoinSegwit  
 
 " | tee $hp/electrumx/electrumx.conf >/dev/null 2>&1
 }

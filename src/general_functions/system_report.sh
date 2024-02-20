@@ -32,13 +32,13 @@ done
 
 
 report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $report
-
+BTCEXP_BITCOIND
 function delete_private {
 if [[ $omit == true ]] ; then
     if [[ $OS == Mac ]] ; then
-    cat $report | gsed '/rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+    cat $report | gsed '/BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
     elif [[ $OS == Linux ]] ; then
-    cat $report | sed '/rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+    cat $report | sed '/BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
     fi
 debug "pause after sed"
 mv /tmp/tempreport $report
@@ -107,7 +107,7 @@ cd /etc/nginx && echor "$(pwd ; ls -m)"
 cd /etc/nginx/conf.d && echor "$(pwd ; ls -m)"
 echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
 echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
-echor "Nginx error file..."
+echor "NGINX ERROR FILE..."
 echor "$(cat /tmp/nginx.conf_error)"
 
 
@@ -116,15 +116,12 @@ cd $HOME/parmanode
 echor "$(ls -m)"
 
 
-echor "#BITCOIN STUFF"
-cd $HOME/.bitcoin
-echor "$(ls)"
-echor "$(cat bitcoin.conf)"
-echor "$(du -sh)"
-
 #BITCOIN
-echor "#BITCOIN"
+echor "#BITCOIN STUFF"
 source $HOME/.bitcoin/bitcoin.conf
+cd $HOME/.bitcoin
+echor "$(du -sh)"
+echor "$(ls)"
 echor "bitcoin.conf \n $(cat $HOME/.bitcoin/bitcoin.conf)"
 echor "debug.log \n $(cat $HOME/.bitcoin/debug.log | tail -n200 ) \n "
 echor "getblockchaininfo \n bitcoin-cli getblockchaininfo"
@@ -196,6 +193,8 @@ fi
 #EXTRA STUFF
 echor "#EXTRA STUFF"
 echor "$(cat /etc/cpuinfo)"
+echor "#netstat
+$(cat netstat -tuln)"
 
 delete_private
 debug "pause"
