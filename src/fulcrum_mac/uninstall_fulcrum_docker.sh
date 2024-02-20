@@ -40,6 +40,7 @@ if [[ $drive_fulcrum == "internal" ]] ; then
 
 rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1
 
+bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
 stop_and_remove_docker_containers_and_images_fulcrum
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"

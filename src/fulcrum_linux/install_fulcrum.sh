@@ -13,6 +13,8 @@ fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function 
 
 make_fulcrum_config || return 1 ; log "fulcrum" "make config fucntion exited." 
 
+bitcoin_conf_add 'zmqpubhashblock=tcp://0.0.0.0:8433'
+
 download_fulcrum || return 1 ; log "fulcrum" "Download exited."  ; clear
 
 verify_fulcrum || return 1 ; log "fulcrum" "gpg exited." 
