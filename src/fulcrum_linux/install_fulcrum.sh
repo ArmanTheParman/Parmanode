@@ -13,20 +13,19 @@ make_fulcrum_config || return 1 ; log "fulcrum" "make config fucntion exited."
 
 download_fulcrum || return 1 ; log "fulcrum" "Download exited."  ; clear
 
-fulcrum_gpg || return 1 ; log "fulcrum" "gpg exited." 
+verify_fulcrum || return 1 ; log "fulcrum" "gpg exited." 
 
-extract_fulcrum_tar || return 1 ; log "fulcrum" "Download exited." 
+extract_fulcrum || return 1 ; log "fulcrum" "Download exited." 
 
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/fulcrum/Ful*/Ful* && \
-rm $HOME/parmanode/fulcrum/Ful*/Ful* || \
-{ log "fulcrum" "failed to move/install files" ; debug "failed to move/install fulcrum files" ; return 1 ; }
-log "fulcrum" "files installed"
+fulcrum_install_files || return 1 ; log "fulcrum" "fulcrum_install_files failed."
 
 make_ssl_certificates || return 1 ; log "fulcrum" "make_ssl exited." 
 
 make_fulcrum_service_file
-start_fulcrum_linux
-fulcrum_success_install
 
-return 0
+installed_config_add "fulcrum-end" && log "fulcrum" "install finished"
+
+start_fulcrum_linux
+
+success "Fulcrum" "being installed"
 }

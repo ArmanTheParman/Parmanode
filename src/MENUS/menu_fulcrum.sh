@@ -178,9 +178,9 @@ echo "
 ########################################################################################
     
         This will run Nano text editor to edit fulcrum.conf. See the controls
-        at the bottom to save and exit. Be careful messing around with this file.
+        at the bottom to save and exit.$red Be careful messing around with this file. $orange
 
-	    Any changes will only be applied once you restart Fulcrum.
+        Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "
@@ -189,13 +189,13 @@ nano $HOME/parmanode/fulcrum/fulcrum.conf
 fi
 
 if [[ $OS == "Mac" ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
         This will run Nano text editor to edit fulcrum.conf. See the controls
-        at the bottom to save and exit. Be careful messing around with this file.
+        at the bottom to save and exit.$red Be careful messing around with this file. $orange
 
-	    Any changes will only be applied once you restart Fulcrum.
+        Any changes will only be applied once you restart Fulcrum.
 
 ########################################################################################
 "

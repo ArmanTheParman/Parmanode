@@ -1,6 +1,6 @@
 function fulcrum_database_corrupted {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Have you noticed from the log menu that Fulcrum's database is corrupted? This
@@ -8,12 +8,12 @@ set_terminal ; echo "
 
     If this has happened, you need to stop Fulcrum, delete the database, and restart
     Fulcrum - it's unfortunate, but it means starting over. An alternative is to use
-    electrs server instead.
+    electrs or Electrum X server instead.
 
     Do you want Parmanode to clean it up and start Fulcrum over for you?
-
+$green
                         y)      Yes, do it, I can't be bothered
-
+$orange
                         n)      No, leave it, I'll try to figure it out myself
 
 ######################################################################################## 
@@ -43,8 +43,10 @@ if [[ $drive_fulcrum == external ]] ; then
          sudo chown -R $USER:$(id -gn) $parmanode_drive/fulcrum_db
     fi
 else
-    rm -rf $HOME/parmanode/fulcrum_db
-    mkdir $HOME/parmanode/fulcrum_db
+    rm -rf $HOME/.fulcrum_db
+    rm -rf $HOME/parmanode/fulcrum_db #old location of database (previous versions)
+    swap_string "$HOME/parmanode/fulcrum/fulcrum.conf" "datadir =" "datadir = $HOME/.fulcrum_db"
+    mkdir $HOME/.fulcrum_db
 fi
 break
 ;;

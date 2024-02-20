@@ -1,5 +1,5 @@
 function download_fulcrum {
-local version="1.9.1"
+local version="1.9.8"
 cd $HOME/parmanode/fulcrum || { debug "Failed to change into fulcrum directory. Aborting" ; return 1 ; }
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
