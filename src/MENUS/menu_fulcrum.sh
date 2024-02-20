@@ -1,6 +1,6 @@
 function menu_fulcrum {
 unset refresh
-unset isbitcoinrunning_fulcrum
+
 
 while true
 do
@@ -10,8 +10,7 @@ isbitcoinrunning
 if [[ $bitcoinrunning == true ]] ; then
 unset isbitcoinrunning_fulcrum
 else
-#isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
-unset is bitcoinrunning_fulcrum
+isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
 fi
 
 if [[ $OS == Linux ]] ; then
