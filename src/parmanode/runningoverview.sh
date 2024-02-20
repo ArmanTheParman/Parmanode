@@ -67,7 +67,7 @@ if [[ $OS == Linux ]] ; then
     fi
     
     #finally
-    if pgrep bitcoind >/dev/null 2>&1 ; then 
+    if pgrep bitcoin >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
     export bitcoinrunning=true
     return 0
