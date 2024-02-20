@@ -1,5 +1,6 @@
 function download_fulcrum {
 local version="1.9.8"
+cd $hp/fulcrum
 
 if [[ $OS == "Linux" ]] ; then
 
