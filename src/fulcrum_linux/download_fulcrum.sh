@@ -10,6 +10,6 @@ if [[ $OS == "Linux" ]] ; then
         fi
 fi
 #get shasums and signature
-curl -LO https://github.com/cculianu/Fulcrum/releases/download/v$version/Fulcrum-$version-shasums.txt && \
-curl -LO https://github.com/cculianu/Fulcrum/releases/download/v$version/Fulcrum-$version-shasums.txt.asc && \
+curl -LO https://github.com/cculianu/Fulcrum/releases/download/v$version/Fulcrum-$version-shasums.txt 
+curl -LO https://github.com/cculianu/Fulcrum/releases/download/v$version/Fulcrum-$version-shasums.txt.asc 
 }
