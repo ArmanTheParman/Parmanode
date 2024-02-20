@@ -7,6 +7,8 @@ choose_and_prepare_drive "Fulcrum" ; clear
 
 format_ext_drive "Fulcrum" || return 1 ; clear
 
+move_old_fulcrum_db 
+
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
 make_fulcrum_config || return 1 ; log "fulcrum" "make config fucntion exited." 
