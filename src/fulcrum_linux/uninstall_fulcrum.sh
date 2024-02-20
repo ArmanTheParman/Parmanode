@@ -64,8 +64,9 @@ l) break ;;
 esac
 done
 
+debug "pause before tor remove"
 fulcrum_tor_remove
-
+debug "pause after tor remove"
 rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcrum direcctory removed from int drive."
 
 sudo rm /usr/local/bin/Fulcrum* 2>/dev/null && log "fulcrum" "Fulcrum binary deleted from /usr/local/bin."
