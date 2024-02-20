@@ -41,7 +41,7 @@ output3="$green      (qtstart)$orange  Start Bitcoin Qt"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == true && ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
-output3="$red      (qtstop)$orange   Stop Bitcoin Qt
+output3="$red      (qtstop)$orange   Stop Bitcoin Qt"
 fi
 
 if [[ -z $drive ]] ; then unset output2 ; fi
