@@ -2,7 +2,7 @@ function verify_fulcrum {
 
 cd $hp/fulcrum
 
-shasum -a 256 --check SHA256SUMS >/tmp/FulcrumSHA256 2>&1
+shasum -a 256 --check Fulcrum*shasums.txt >/tmp/FulcrumSHA256 2>&1
 
 if ! grep -q OK < /tmp/FulcrumSHA256 ; then 
 
