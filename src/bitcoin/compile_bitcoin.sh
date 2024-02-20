@@ -134,7 +134,7 @@ clear ; echo -e "
 
    The configure command that will be run is the following: 
 $cyan
-   ./configure --with-gui=$gui
+   ./configure --with-gui=$gui --enable-wallet
 $orange
 
    Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
@@ -167,7 +167,7 @@ done
 
 set_terminal
 
-./configure $options --with-gui=$gui
+./configure --with-gui=$gui --enable-wallet $options
 
 echo -e "
 ########################################################################################
