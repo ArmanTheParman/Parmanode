@@ -48,7 +48,7 @@ fi
 
 if [[ $OS == Linux ]] ; then
 
-    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
+    if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
     export bitcoinrunning=false
     return 0
