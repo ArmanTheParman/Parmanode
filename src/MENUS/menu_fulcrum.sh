@@ -8,7 +8,8 @@ isbitcoinrunning
 if [[ $bitcoinrunning == true ]] ; then
 unset isbitcoinrunning_fulcrum
 else
-isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
+#isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
+unset is bitcoinrunning_fulcrum
 fi
 
 if [[ $OS == Linux ]] ; then
