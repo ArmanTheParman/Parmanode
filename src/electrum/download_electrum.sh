@@ -59,6 +59,7 @@ break
 ;;
 
 2)
+export python_install=true
 curl -LO https://download.electrum.org/${electrum_version}/Electrum-${electrum_version}.tar.gz
 curl -LO https://download.electrum.org/${electrum_version}/Electrum-${electrum_version}.tar.gz.asc
 curl -LO https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/ThomasV.asc 
