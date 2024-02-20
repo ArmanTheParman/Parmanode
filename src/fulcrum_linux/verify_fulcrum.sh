@@ -11,7 +11,7 @@ if ! grep -q OK < /tmp/FulcrumSHA256 ; then
     Sometimes this happens for unexplainable reasons.  Try uninstalling the partial 
     Fulcrum installation and install again." 
 
-    rm /tmp/Fulcrum SHA256 >/dev/null 2>&1
+    rm /tmp/FulcrumSHA256 >/dev/null 2>&1
     return 1 
 fi
 
