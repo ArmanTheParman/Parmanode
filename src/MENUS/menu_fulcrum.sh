@@ -8,7 +8,7 @@ isbitcoinrunning
 if [[ $bitcoinrunning == true ]] ; then
 unset isbitcoinrunning_fulcrum
 else
-isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange}"
+isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
 fi
 
 if [[ $OS == Linux ]] ; then
@@ -52,7 +52,7 @@ fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
 if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -en "
-                                 $isbitoinrunning_fulcrum
+                                 $isbitcoinrunning_fulcrum
                                  FULCRUM IS $green RUNNING$orange 
 
                             Status: $fulcrum_status
