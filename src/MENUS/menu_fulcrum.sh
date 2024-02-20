@@ -25,8 +25,8 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 if [[ ! $refresh == true ]] ; then
-fulcrum_status="...Type r to refresh"
-fulcrum_sync="...Type r to refresh"
+fulcrum_status="Type$red r$orange to refresh"
+fulcrum_sync="Type$red r$orange to refresh"
 else
 menu_fulcrum_status
 fi
@@ -38,12 +38,16 @@ echo -e "
 ########################################################################################"
 if [[ $OS == "Linux" ]] ; then
 if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -en "
-                                 $isbitcoinrunning_fulcrum 
-                                 FULCRUM IS$green RUNNING$orange 
+      FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
+      STATUS     :   $fulcrum_status
+      BLOCK      :   $fulcrum_sync
+      DRIVE      :   $drive_fulcrum $orange
 
-                            Status: $fulcrum_status
-                            Block : $fulcrum_sync  $reset
-                            Syncing to the $drive_fulcrum drive$orange"
+
+      CONNECT  $cyan    127.0.0.1:50001:t    $yellow (From this computer only)$orange
+               $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
+               $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
+                  "
 else
 echo -en "$orange
                    $isbitcoinrunning_fulcrum 
@@ -52,12 +56,17 @@ fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
 if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -en "
-                                 $isbitcoinrunning_fulcrum
-                                 FULCRUM IS $green RUNNING$orange 
 
-                            Status: $fulcrum_status
-                            Block : $fulcrum_sync  $reset   
-                            Syncing to the $drive_fulcrum drive$orange"
+      FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
+      STATUS     :   $fulcrum_status
+      BLOCK      :   $fulcrum_sync
+      DRIVE      :   $drive_fulcrum $orange
+
+
+      CONNECT  $cyan    127.0.0.1:50001:t    $yellow (From this computer only)$orange
+               $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
+               $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
+                  "
 else
 echo -ne "
                    $isbitcoinrunning_fulcrum
@@ -66,11 +75,6 @@ fi
 fi
 
 echo -e "
-
-        127.0.0.1:50001:t    or    127.0.0.1:50002:s    or    $IP:50002:s
-   $bright_blue     127 IP from this computer only$orange
-
-
 $green
       (start)   $orange Start Fulcrum 
 $red
