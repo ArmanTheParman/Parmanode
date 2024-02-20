@@ -73,5 +73,5 @@ sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null && log "fulcrum" "servic
 
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
-log "fulcrum" "uninstall completed." && { set_terminal ; echo "Fulcrum has been uninstalled." ; enter_continue ; return 0 ; }
+success "Fulcrum" "being uninstalled"
 }
