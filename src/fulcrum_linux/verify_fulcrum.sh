@@ -15,7 +15,7 @@ if ! grep -q OK < /tmp/FulcrumSHA256 ; then
     return 1 
 fi
 
-rm /tmp/Fulcrum SHA256 >/dev/null 2>&1
+rm /tmp/FulcrumSHA256 >/dev/null 2>&1
 
 echo '-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5
