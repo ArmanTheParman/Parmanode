@@ -4,7 +4,7 @@ while true ; do
 if [[ -d $HOME/parmanode/fulcrum_db ]] ; then
 
     #first check move destination exists, if it's small, get rid of it 
-    if [[ -d $HOME/.fulcrum_db && $(du -s $HOME/.fulcrum_db | grep -Eo '[0-9]+') -lt 1000 ]] ; then
+    if [[ -d $HOME/.fulcrum_db && $(du -s $HOME/.fulcrum_db | grep -Eo '[0-9]+') -lt 50 ]] ; then
 
         rm -rf $HOME/.fulcrum_db
 
