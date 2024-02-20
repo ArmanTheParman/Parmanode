@@ -4,6 +4,13 @@ while true
 do
 set_terminal
 
+isbitcoinrunning
+if [[ $bitcoinrunning == true ]] ; then
+unset isbitcoinrunning_fulcrum
+else
+isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange}"
+fi
+
 if [[ $OS == Linux ]] ; then
 if sudo cat /etc/tor/torrc | grep -q "fulcrum" >/dev/null 2>&1 ; then
     if sudo cat /var/lib/tor/fulcrum-service/hostname | grep -q "onion" >/dev/null 2>&1 ; then
@@ -28,29 +35,32 @@ set_terminal_custom 45
 echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
-########################################################################################
-"
+########################################################################################"
 if [[ $OS == "Linux" ]] ; then
-if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -e "
+if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -en "
+                                 $isbitcoinrunning_fulcrum 
                                  FULCRUM IS$green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset
                             Syncing to the $drive_fulcrum drive$orange"
 else
-echo -e "$orange
+echo -en "$orange
+                   $isbitcoinrunning_fulcrum 
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
-if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -e "
+if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -en "
+                                 $isbitoinrunning_fulcrum
                                  FULCRUM IS $green RUNNING$orange 
 
                             Status: $fulcrum_status
                             Block : $fulcrum_sync  $reset   
                             Syncing to the $drive_fulcrum drive$orange"
 else
-echo -e "
+echo -ne "
+                   $isbitcoinrunning_fulcrum
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN" 
 fi
 fi

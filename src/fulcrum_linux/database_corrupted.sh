@@ -6,7 +6,7 @@ set_terminal ; echo -e "
     Have you noticed from the log menu that Fulcrum's database is corrupted? This
     sometimes happens seemingly for no reason. It's sensitive; kind of ridiculous.
 
-    If this has happened, you need to stop Fulcrum, delete the database, and restart
+    To fix it, you need to stop Fulcrum, delete the database, and restart
     Fulcrum - it's unfortunate, but it means starting over. An alternative is to use
     electrs or Electrum X server instead.
 
