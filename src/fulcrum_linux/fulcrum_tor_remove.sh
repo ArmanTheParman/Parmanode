@@ -9,7 +9,7 @@ delete_line "/etc/tor/torrc" "127.0.0.1:50001"
 
 sudo systemctl restart tor
 sudo systemctl restart fulcrum.service
-
+debug "before set terminal, fulcrum tor remove"
 set_terminal
 parmanode_conf_remove "fulcrum_tor"
 return 0
