@@ -40,7 +40,7 @@ if [[ $OS == Linux && $bitcoinrunning == false ]] ; then
 output3="$green      (qtstart)$orange  Start Bitcoin Qt"
 fi
 
-if [[ $OS == Linux && $bitcoinrunning == true && ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
+if [[ $OS == Linux && $bitcoinrunning == true ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
 output3="$red      (qtstop)$orange   Stop Bitcoin Qt"
 fi
 
