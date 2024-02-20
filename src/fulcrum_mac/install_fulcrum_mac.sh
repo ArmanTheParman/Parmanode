@@ -38,7 +38,5 @@ if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
 start_fulcrum_docker
 
-fulcrum_success_install
-
-return 0
+success "Fulcrum" "being installed"
 }
