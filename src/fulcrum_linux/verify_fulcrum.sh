@@ -1,4 +1,4 @@
-function fulcrum_gpg {
+function verify_fulcrum {
 
 { echo "-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5

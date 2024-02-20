@@ -34,16 +34,17 @@ set_terminal ; echo -e "
 ########################################################################################
 
                 What shall be done with the Fulcrum Database?
+
 $red
-                              d)     Delete
+                              delete)     Delete
 $green
-                              l)     Leave it
+                              l)          Leave it
 $orange
 ########################################################################################
 "
 choose "x" ; read choice
 case $choice in
-d)
+delete)
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; echo "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
@@ -52,6 +53,8 @@ if [[ $drive_fulcrum == "external" ]] ; then
     fi
 
 if [[ $drive_fulcrum == "internal" ]] ; then
+    rm -rf $HOME/.fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
+    #old location of internal db...
     rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 && log "fulcrum" "fulcrum_db removed from int drive."
     fi
 break

@@ -1,3 +1,4 @@
+#marked for deletion
 function fulcrum_success_install {
 
 set_terminal ; echo -e "
