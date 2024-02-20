@@ -27,6 +27,8 @@ build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; retur
 
 run_fulcrum_docker || { announce "Docker run failed. Aborting." ; return 1 ; }
 
+bitcoin_conf_add 'zmqpubhashblock=tcp://0.0.0.0:8433'
+
 check_rpc_authentication_exists || { announce "Failed to set rpc authentication details from bitcoin.conf" ; return 1 ; }
 
 add_IP_fulcrum_config_mac  

@@ -73,6 +73,7 @@ sudo rm /usr/local/bin/Fulcrum* 2>/dev/null && log "fulcrum" "Fulcrum binary del
 sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null && log "fulcrum" "service file deteleted."
 debug "pause"
 
+bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
 success "Fulcrum" "being uninstalled"
