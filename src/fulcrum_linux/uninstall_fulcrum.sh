@@ -70,6 +70,7 @@ rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 && log "fulcrum" "parmanode/fulcr
 
 sudo rm /usr/local/bin/Fulcrum* 2>/dev/null && log "fulcrum" "Fulcrum binary deleted from /usr/local/bin."
 sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null && log "fulcrum" "service file deteleted."
+debug "pause"
 
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
