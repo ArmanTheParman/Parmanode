@@ -7,7 +7,14 @@ fi
 if [[ $OS == Mac ]] ; then
 pip3 install pyqt5 cryptography
 brew_check || return 1
-brew install secp256k1
+brew install autoconf automake libtool
+cd $hp/electrum
+git clone https://github.com/bitcoin-core/secp256k1.git
+cd secp256k1
+./autogen.sh
+./configure
+make
+sudo make install
 fi
 
 }

@@ -44,12 +44,14 @@ fi
 make_electrum_directories
 installed_conf_add "electrum-start"
 
-download_electrum #Mac users choose if python install here 
+download_electrum #Mac users choose if python install here , but disabled after unable to get Electrum
+                  #to recognise libsecp256k1 on Mac, even after installing and adding to PATH.
 
 if [[ $python_install == true ]] ; then
     check_for_python || { announce "Your system doesn't have python3, aborting installation." ; return 1 ; } 
     electrum_dependencies ||  { announce "Something went wrong. Aborting Electrum installation." ; return 1 ; } 
     extract_electrum  || { announce "Something went wrong. Aborting Electrum installation." ; return 1 ; } 
+    parmanode_conf_add "electrum_python=true" # for when running electrum
 fi
 
 verify_electrum || return 1
