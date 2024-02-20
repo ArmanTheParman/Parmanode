@@ -1,5 +1,6 @@
 Version 3.30.3
     -Newer version of Fulcrum 1.9.8
+    -Refactor, fulcrum_db new location
 Version 3.30.2
     -small bitcoin conf patch
     -system report feature
