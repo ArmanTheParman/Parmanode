@@ -4,7 +4,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
 
-        docker_volume_mount="/Volumes/parmanode/fulcrum_db"
+        docker_volume_mount="$parmanode_drive/fulcrum_db"
 
         while true ; do
                 if ! mount | grep parmanode >/dev/null 2>&1 ; then
@@ -19,10 +19,8 @@ if [[ $drive_fulcrum == "external" ]] ; then
 fi
 
 if [[ $drive_fulcrum == "internal" ]] ; then
-    docker_volume_mount="$HOME/parmanode/fulcrum_db"
+    docker_volume_mount="$HOME/.fulcrum_db"
     fi
-
-log "fulcrum" "Docker Volume Mount set at $docker_volume_mount"
 
 
 please_wait

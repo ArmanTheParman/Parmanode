@@ -8,7 +8,6 @@ installed_config_add "fulcrum-start"
 mkdir $HOME/parmanode/fulcrum/config 2>&1
 
 
-
 #External drive DB directory
 if [[ $drive_fulcrum == "external" ]] ; then
 mount_drive && log "fulcrum" "Drive mounted."

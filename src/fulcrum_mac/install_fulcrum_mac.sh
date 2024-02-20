@@ -1,24 +1,27 @@
-function install_fulcrum_mac {
+function install_fulcrum_docker {
+if [[ $OS == Linux ]] ; then announce "Docker version is not for Fulcrum. Aborting." ; return 1 ; fi
+
 set_terminal
 grep -q "bitcoin-end" $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
+#start docker if it is not running 
+if ! docker ps >/dev/null 2>&1 ; then 
+announce "Please make sure Docker is running, then try again. Aborting."
+return 1
+fi
 
+#remove old container, just in case
+docker stop fulcrum >/dev/null 2>&1 
+docker rm fulcrum >/dev/null 2>&1 
 
 choose_and_prepare_drive "Fulcrum" || return 1 #gets drive_fulcrum variable
 
 format_ext_drive "Fulcrum" || return 1
 
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
-
-if ! which docker >/dev/null 2>&1 ; then install_docker_mac || return 1 ; fi
-
-#start docker if it is not running 
-if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
-
-warning_deleting_fulcrum || { log "fulcrum" "warning message, abort" ; return 1 ; }
 
 build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
 
