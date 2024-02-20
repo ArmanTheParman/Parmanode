@@ -47,8 +47,6 @@ installed_config_remove "fulcrum"
 log "fulcrum" "uninstall completed." 
 
 success "Fulcrum" "being uninstalled"
-return 0
-
 }
 
 function stop_and_remove_docker_containers_and_images_fulcrum {
