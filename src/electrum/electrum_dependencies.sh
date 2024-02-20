@@ -7,7 +7,7 @@ fi
 if [[ $OS == Mac ]] ; then
 pip3 install pyqt5 cryptography
 brew_check || return 1
-brew install libsecp256k1
+brew install secp256k1
 fi
 
 }
