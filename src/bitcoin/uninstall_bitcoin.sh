@@ -16,9 +16,9 @@ $cyan
 $orange
 
     You will have the option to remove or keep the Bitcoin data directory.
-
+$red
     Are you sure, UNINSTALL BITCOIN?
-
+$orange
 ########################################################################################
 
 Choose (y) or (n) then <enter>.
@@ -63,14 +63,6 @@ debug "drive= from parmanode.conf should be removed"
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
-echo "
-########################################################################################
-
-                  Bitcoin Core has been successfully uninstalled
-
-########################################################################################
-"
-enter_continue
-
+success "Bitcoin" "being uninstalled"
 return 0
 }
