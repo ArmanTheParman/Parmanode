@@ -50,19 +50,23 @@ if [[ $OS == Linux ]] ; then
 
     if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+    export bitcoinrunning=false
     fi
    
 #override...
     if [[ -e $HOME/.bitcoin/debug.log ]] ; then
         if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
         overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+        export bitcoinrunning=false
         fi
     else 
         overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+        export bitcoinrunning=false
     fi
 #override...
     if pgrep bitcoind >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
+    export bitcoinrunning=true
     fi
 
     return 0
