@@ -23,6 +23,8 @@ format_ext_drive "Fulcrum" || return 1
 
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
+make_ssl_certificates
+
 build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
 
 run_fulcrum_docker || { announce "Docker run failed. Aborting." ; return 1 ; }
