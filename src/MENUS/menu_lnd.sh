@@ -117,6 +117,7 @@ i|I|info|Info) lnd_info ; continue ;;
 s|S|start|START|Start) start_lnd  ; continue ;;
 st|ST|St|stop|STOP|Stop) stop_lnd ; continue ;; 
 rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
+r|R) menu_lnd ;;
 
 t|T|tor)
 if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
