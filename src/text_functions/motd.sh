@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 25))
+motd=$((motd % 26))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -583,6 +583,31 @@ $cyan
     -- Anonymous Parman Padawan, you know who you are ;) 
 
 
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 25 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    
+    There are 8 billion people on a massive ship that's sinking, and 21 million 
+    lifeboats.
+
+    There's room for everyone, but ppl have to share.
+
+    At 52k, you can book an entire lifeboat to yourself, and survive the catastrophe 
+    in luxury. 🤣
+
+    Also, you can get some lifeboats for loved ones.
+ 
 ######################################################################################## 
 
 Hit$cyan <enter>$orange to continue.
