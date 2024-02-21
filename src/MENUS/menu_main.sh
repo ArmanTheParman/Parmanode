@@ -1,10 +1,12 @@
 function menu_main {
 set_terminal
 while true ; do
-#if [[ ! $announcements == off ]] ; then export blinkon="\033[5m" ; else unset blinkon ; fi 
 
-#export blinkon="\033[5m"
-#export blinkoff="\033[0m"
+branch="$(git status | head -n1 | awk '{print $3}')"
+if [[ $branch != master ]] ; then
+output_branch="${pink}WARNING: You are on the $branch branch, no master.$orange                                                                  #"
+fi
+
 set_terminal_custom 51
 source $original_dir/version.conf >/dev/null
 source $hm >/dev/null 2>&1 #hide messages
@@ -18,7 +20,7 @@ echo -en "$orange
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$bright_blue $version                                                               $orange  $space#
+#    Version:$bright_blue $version     $output_branch                                                          $orange  $space#
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
