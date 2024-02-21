@@ -14,6 +14,8 @@ echo "
                    LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
 fi
 echo -e "
+
+
       (pw)             Change LND password 
 
       (ul)             Unlock Wallet
@@ -30,7 +32,7 @@ echo -e "
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
 case $choice in
 
 m|M) back2main ;;
