@@ -22,7 +22,7 @@ echo -en "$orange
 #                                                                                      #
 #    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
 #                                                                                      #
-#    Version:$bright_blue $version     $output_branch                                                     
+#    Version:$bright_blue $version     $output_branch
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
