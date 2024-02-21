@@ -13,6 +13,8 @@ echo -e "
               (rf)        Refresh Parmanode script directory              
 
               (sr)        System report (for getting troubleshooting help)
+
+              (ww)        Wireless driver install (rtl8812au)
 $orange
 ########################################################################################
 "
@@ -35,6 +37,10 @@ return 0
 sr)
 system_report
 return 0
+;;
+
+ww)
+wireless_driver_install
 ;;
 
 *)
