@@ -1,6 +1,6 @@
 function menu_electrumx {
 #code template for docker version and Mac version entered but not yet functional
-
+unset refresh
 logfile=$HOME/.parmanode/run_electrumx.log 
 
 if grep -q "electrumxdkr" < $ic ; then
@@ -49,7 +49,13 @@ fi
 
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
 source $dp/parmanode.conf >/dev/null 2>&1
-if [[ $running == true ]] ; then menu_electrumx_status # get elecyrs_sync variable (block number)
+
+if [[ $refresh == true ]] ; then
+    if [[ $running == true ]] ; then 
+        menu_electrumx_status # get elecyrs_sync variable (block number)
+    fi
+else
+    electrumx_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 fi
 
 #Tor status
@@ -192,7 +198,12 @@ read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
-r) menu_electrumx || return 1 ;;
+
+r) 
+please_wait
+refresh=true
+menu_electrumx || return 1 
+;;
 
 start | START)
 if [[ $electrumxis == docker ]] ; then 

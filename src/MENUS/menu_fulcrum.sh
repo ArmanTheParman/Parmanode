@@ -26,6 +26,7 @@ fi
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
+#done this way so first load of menu is fast
 if [[ ! $refresh == true ]] ; then
 fulcrum_status="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 fulcrum_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
