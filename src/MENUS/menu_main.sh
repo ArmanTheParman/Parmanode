@@ -4,7 +4,7 @@ while true ; do
 
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master ]] ; then
-output_branch="${pink}WARNING: You are on the $branch branch, no master.$orange                                                                  #"
+output_branch="${pink}WARNING: You are on the $branch branch, not master.$orange                                 #"
 fi
 
 set_terminal_custom 51
