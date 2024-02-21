@@ -117,7 +117,7 @@ fi
 
 #make desktop clickable icon...
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
-To run Parmanode, simply open the terminal and type:
+To run Parmanode, simply open a new Terminal window and type:
 
 rp
 then <enter>
@@ -131,14 +131,14 @@ cd $HOME/parman_programs/parmanode/
 <enter>
 
 NOTE: rp will not work in the window you used to install Parmanode.
-Close it, open a new one, and then rp will work.
+Close it, open a NEW one, and then rp will work.
 
 You can delete this file once you've absorbed the information.
 EOF
 clear
 
-echo "#Added by Parmanode..." | tee -a ~/.zshrc >/dev/null 2>&1
-echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.zshrc >/dev/null 2>&1
+echo "#Added by Parmanode..." | tee -a $HOME/.zshrc >/dev/null 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a $HOME/.zshrc >/dev/null 2>&1
 
 echo "
 ########################################################################################

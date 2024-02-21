@@ -1,11 +1,11 @@
 return 0
+# not live
+
+
 ########################################################################################
 # This is the install script kept at
 # https://parmanode.com/install_4mac.sh - the URL is easier to remember and shorter 
 # than if keeping it on Github.
-
-# If you 
-
 
 ########################################################################################
 #!/bin/sh
