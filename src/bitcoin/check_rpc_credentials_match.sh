@@ -299,4 +299,76 @@ esac
 done
 fi
 
+if [[ -n $public_pool_rpcuser ]] && [[ $public_pool_rpcuser != $rpcuser || $public_pool_rpcpassword != $rpcpassword ]] ; then
+program="${cyan}Public Pool$orange"
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+    
+    The urser/password credentials for $program do not match your Bitcoin
+    configuration. 
+
+    Would you like Parmanode to fix that up for you? If so, $program will be
+    restarted.
+$green
+                      y)    Yes thanks, how good is that?
+$orange
+                      n)    Nah, I know what I'm doing and I'll manage it.
+                    
+########################################################################################
+"
+choose "xmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P|M|m) back2main ;;
+y)
+unset file && local file="$hp/public_pool/.env"
+stop_public_pool
+swap_string "$file" "BITCOIN_RPC_USER=" "BITCOIN_RPC_USER=$rpcuser"
+swap_string "$file" "BITCOIN_RPC_PASSWORD=" "BITCOIN_RPC_PASSWORD=$rpcpassword"
+start_public_pool
+break
+;;
+n)
+break ;;
+*)
+invalid ;;
+esac 
+done
+fi
+
+if [[ -n $electrumx_rpcuser ]] && [[ $electrumx_rpcuser != $rpcuser || $electrumx_rpcpassword != $rpcpassword ]] ; then
+program="${cyan}Electrum X$orange"
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+    
+    The urser/password credentials for $program do not match your Bitcoin
+    configuration. 
+
+    Would you like Parmanode to fix that up for you? If so, $program will be
+    restarted.
+$green
+                      y)    Yes thanks, how good is that?
+$orange
+                      n)    Nah, I know what I'm doing and I'll manage it.
+                    
+########################################################################################
+"
+choose "xmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P|M|m) back2main ;;
+y)
+unset file && local file="$hp/electrumx/electrumx.conf"
+stop_electrumx
+swap_string "$file" "DAEMON_URL" "DAEMON_URL = http = http://$rpcuser:$rpcpassword@127.0.0.1:8332/"
+start_electrumx
+break
+;;
+n)
+break ;;
+*)
+invalid ;;
+esac 
+done
+fi
 }

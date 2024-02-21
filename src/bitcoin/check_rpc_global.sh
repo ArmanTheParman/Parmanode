@@ -54,4 +54,18 @@ export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 
 export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | tr -d '"[:space:],' )
 fi
 
+#public_pool
+if [[ -e $hp/public_pool/.env ]] ; then
+source $hp/public_pool/.env
+export public_pool_rpcuser="$BITCOIN_RPC_USER"
+export public_pool_rpcpassword="$BITCOIN_RPC_PASSWORD"
+fi
+
+#ElectrumX
+if [[ -e $hp/electrumx/electrumx.conf ]] ; then
+export electrumx_rpcuser="$(cat $hp/electrumx/electrumx.conf | grep DAEMON_URL | cut -d : -f 2 | cur -d / -f 3)"
+export electrumx_rpcpassword="$(cat $hp/electrumx/electrumx.conf | grep DAEMON_URL | cut -d : -f 3 | cur -d @ -f 1)"
+fi
+
+
 }
