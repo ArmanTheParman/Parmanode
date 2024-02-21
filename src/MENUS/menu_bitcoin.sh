@@ -215,6 +215,9 @@ qtstart)
 if [[ -n $output3 && $bitcoinrunning == false ]] ; then
 run_bitcoinqt
 fi
+;;
+
+qtstop)
 if [[ -n $output3 && $bitcoinrunning == true ]] ; then
 stop_bitcoinqt
 fi
