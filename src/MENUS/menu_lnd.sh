@@ -1,4 +1,5 @@
-function lnd_menu_loop {
+function lnd_menu {
+while true ; do
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 
 # To check if wallet is created/loaded
 if lncli walletbalance >/dev/null 2>&1 ; then 
@@ -102,27 +103,10 @@ echo -e "
 
       (mm)             ... more options
 $lnd_onion $clearnetURI
-$red                                                              Refreshing every 5 seconds $orange
+$red $blinkon                                                      r to refresh $blinkoff$orange       
 ########################################################################################
 "
-choose "xpmq"
-} #function definition ends
-
-########################################################################################
-
-function menu_lnd {
-set_terminal
-unset wallet
-please_wait
-
-while true ; do # case loop
-unset choice
-while [[ -z $choice ]] ; do 
-lnd_menu_loop # Calls menu function to loop
-read -t 5 choice 
-done
-
-set_terminal
+choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
