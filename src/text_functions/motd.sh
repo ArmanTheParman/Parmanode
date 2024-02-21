@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 24))
+motd=$((motd % 25))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -568,6 +568,28 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 
+if [[ $motd == 24 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Seriously, being a part of spreading adoption & securing the newirk may be one of
+    the most significant things I can do with my life. I ad no bloody idea, I only
+    wanted some freedom money, dammit.
+    
+
+    -- Anonymous Parman Padawan, you know who you are ;) 
+
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
