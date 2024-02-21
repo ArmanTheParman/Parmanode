@@ -27,8 +27,8 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 if [[ ! $refresh == true ]] ; then
-fulcrum_status="Type$red r$orange to refresh"
-fulcrum_sync="Type$red r$orange to refresh"
+fulcrum_status="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
+fulcrum_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 else
 menu_fulcrum_status
 fi
