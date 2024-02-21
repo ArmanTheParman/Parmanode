@@ -37,11 +37,15 @@ start="$green"
 fi                         
 
 if [[ $OS == Linux && $bitcoinrunning == false ]] ; then
-output3="$green      (qtstart)$orange  Start Bitcoin Qt"
+output3="
+$green      (qtstart)$orange  Start Bitcoin Qt
+"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == true ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
-output3="$red      (qtstop)$orange   Stop Bitcoin Qt"
+output3="
+$red      (qtstop)$orange   Stop Bitcoin Qt
+"
 fi
 
 if [[ -z $drive ]] ; then unset output2 ; fi
@@ -52,7 +56,7 @@ if [[ -z $drive ]] ; then unset output2 ; fi
 # fi
 
 clear
-echo -e "
+echo -en "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
@@ -85,7 +89,7 @@ $bright_blue
       (delete)   Delete blockchain data and start over (eg if data corrupted)
 
       (update)   Update Bitcoin wizard
-
+$output3
       (o)        OTHER...
 
 ########################################################################################
