@@ -1,5 +1,6 @@
 
 function parmanode_refresh {
+if [[ $donotask != true ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -16,6 +17,10 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+else
+choice=rf
+fi
+
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;;
 a|A) return 1 ;;
@@ -23,7 +28,8 @@ rf)
 cd $HOME/parman_programs && rm -rf ./parmanode
 git clone https://github.com/armantheparman/parmanode.git
 success "The Parmanode script directory has been refreshed"
-announce "Please quit and restart Parmanode to see changes take effect."
+announce "Parmanode will quit now so the changes take effect."
+exit 0
 ;;
 *)
 invalid
