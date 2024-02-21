@@ -1,7 +1,14 @@
 export PATH="$PATH:$HOME/parman_programs/parmanode/src/ParmaShell"
 
-function a {
+#Parmanode drive shortcut
+if [[ $(uname) == Linux ]] ; then
+function pd { cd /media/$USER/parmanode ; a ; }
+elif [[ $(uname) == Darwin ]] ; then
+function pd { cd /Volumes/parmanode/ ; a ; }
+fi
 
+#Clear screen, resize, and print list shorcut
+function a {
 clear 
 st
 tput setaf 5 #sets colour
@@ -16,6 +23,7 @@ tput sgr0
 echo ""
 }
 
+#Othe shortcuts
 function aa { a "lah" ; }
 function st { clear ; printf '\e[8;40;140t' ; }
 function .. { cd .. ; a ; }
@@ -29,4 +37,3 @@ function dp { cd $HOME/.parmanode && a ; }
 function h { cd && a ; }
 function b { cd $HOME/.bitcoin ; a ; }
 function t { cd /tmp ; a ; }
-
