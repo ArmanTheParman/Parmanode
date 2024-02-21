@@ -39,7 +39,7 @@ else
     echo "Auto-unlock enabled. If you wish to modify what is saved, you can edit"
     echo "The file $HOME/.lnd/password.txt yourself anytime."
     echo ""
-    echo "$lndpassword" > $HOME/.lnd/password.txt 
+    echo "$lndpassword" | tee -a $HOME/.lnd/password.txt >/dev/null
     enter_continue
     break
 fi
