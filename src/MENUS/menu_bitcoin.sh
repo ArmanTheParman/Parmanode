@@ -211,6 +211,15 @@ o|O)
 menu_bitcoin_other || return 1
 ;;
 
+qtstart)
+if [[ -n $output3 && $bitcoinrunning == false ]] ; then
+run_bitcoinqt
+fi
+if [[ -n $output3 && $bitcoinrunning == true ]] ; then
+stop_bitcoinqt
+fi
+;;
+
 p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use
