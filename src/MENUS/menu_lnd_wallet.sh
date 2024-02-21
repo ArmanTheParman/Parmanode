@@ -30,6 +30,7 @@ echo -e "
 
       (create)         Create an LND wallet (or restore a wallet with seed)
 
+
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
