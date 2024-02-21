@@ -55,7 +55,7 @@ if [[ $refresh == true ]] ; then
         menu_electrumx_status # get elecyrs_sync variable (block number)
     fi
 else
-    electrumx_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
+    electrumx_sync="${blinkon}${orange}Type$red r$orange to refresh${blinkoff}$orange"
 fi
 
 #Tor status
