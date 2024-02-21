@@ -1,5 +1,6 @@
 Version 3.30.4
     -Added Bitcoin QT start option in Bitcoin menu
+    -Added pd function to ParmaShell
 Version 3.30.3
     -Newer version of Fulcrum 1.9.8
     -Refactor, fulcrum_db new location
