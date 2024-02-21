@@ -191,7 +191,7 @@ continue ;;
 
 fc|FC|Fc|fC)
 if [[ $OS == "Linux" ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
         This will run Nano text editor to edit fulcrum.conf. See the controls
