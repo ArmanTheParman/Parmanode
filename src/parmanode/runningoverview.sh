@@ -18,15 +18,16 @@ ispublicpoolrunning
 
 function ispublicpoolrunning {
 while true ; do
+
 if ! docker ps >/dev/null 2>&1 ; then
 export publicpoolrunning=false
 overview_conf_add "publicpoolrunning=false" "publicpoolrunning="
 break
 fi
 
-if docker ps 2>/dev/null | grep -qE 'public_pool[^_]' ; then
+if docker ps | grep -q 'public_pool' ; then
 overview_conf_add "publicpoolrunning=true" "publicpoolrunning="
-export publicpoolruuning=true 
+export publicpoolrunning=true 
 fi
 break
 done
