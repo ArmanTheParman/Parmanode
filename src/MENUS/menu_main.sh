@@ -179,7 +179,7 @@ export debug=1 ;;
 debugoff) 
 export debug=0 ;;
 
-q | Q | quit)
+q|Q|quit|exit)
     exit 0 ;;
 *)
     invalid ; clear ;;
