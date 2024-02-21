@@ -1,11 +1,5 @@
-function stop_fulcrum_docker {
-docker_stop_fulcrum
-docker stop fulcrum
-return 0
-}
-
-
 function docker_stop_fulcrum {
+#stops fulcrum inside container, doesn't stop the container.
 
 PID=$(docker exec fulcrum pgrep -o "Fulcrum")   # -o means olderst command
 
