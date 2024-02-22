@@ -23,7 +23,7 @@ tput sgr0
 echo ""
 }
 
-#Othe shortcuts
+#Other shortcuts
 function aa { a "lah" ; }
 function st { clear ; printf '\e[8;40;140t' ; }
 function .. { cd .. ; a ; }
