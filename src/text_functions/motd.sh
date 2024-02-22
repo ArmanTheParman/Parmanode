@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 26))
+motd=$((motd % 27))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -615,7 +615,32 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+
+if [[ $motd == 26 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Bitcoin math made simple:
+
+    Everyone who has bitcoin wants more bitcoin.
+
+    Everyone who doesn't have bitcoin will one day buy/earn bitcoin, and then they'll 
+    want more bitcoin.
+
+    The number of bitcoin available is fixed.
+
+    So, Bitcoin goes up in value for as long as humans exist.
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-
