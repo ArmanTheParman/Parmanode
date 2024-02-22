@@ -14,6 +14,8 @@ isbtcpayrunning
 isrtlrunning 
 ismempoolrunning
 ispublicpoolrunning
+iselectrumxrunning
+
 }
 
 function ispublicpoolrunning {
@@ -181,6 +183,15 @@ overview_conf_add "mempoolrunning=true" "mempoolrunning="
 else
 overview_conf_add "mempoolrunning=false" "mempoolrunning="
 fi
+}
+
+function iselectrumxrunning {
+if pgrep electrumx >/dev/null 2>&1 ; then
+overview_conf_add "electrumxrunning=true" "electrumxrunning="
+else
+overview_conf_add "electrumxrunning=false" "electrumxrunning="
+fi
+
 }
 
 }
