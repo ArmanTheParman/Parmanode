@@ -17,18 +17,22 @@ fi
 
 #recommended by electrum X docs
 #seemed to break things, reversing
-if grep -Eq '^rest=' < $bc ; then
-delete_line $bc "rest="
-fi
+if [[ -e $bc ]] ; then
 
-#erroneous entry
-if grep -Eq '^rpcservertimeout$' < $bc ; then
-delete_line $bc "rpcservertimeout"
-fi
+    if grep -Eq '^rest=' < $bc ; then
+    delete_line $bc "rest="
+    fi
 
-#recommended by electrumX docs
-if ! grep -q "rpcservertimeout=" < $bc ; then
-echo "rpcservertimeout=120" | sudo tee -a $bc >/dev/null 2>&1
+    #erroneous entry
+    if grep -Eq '^rpcservertimeout$' < $bc ; then
+    delete_line $bc "rpcservertimeout"
+    fi
+
+    #recommended by electrumX docs
+    if ! grep -q "rpcservertimeout=" < $bc ; then
+    echo "rpcservertimeout=120" | sudo tee -a $bc >/dev/null 2>&1
+    fi
+
 fi
 
 #in case someone has a funky IP address. Will add to bitcoin install, so this is not needed for very long here.
@@ -36,7 +40,7 @@ if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | g
 IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
 IP2="$(echo "$IP" | cut -d \. -f 2 2>/dev/null)"
 IP1and2="$IP1.$IP2." 
-    if ! grep -q "rpcallowip=$IP1and2" < $bc ; then echo rpcallowip="${IP1and2}0.0/16" | tee -a $bc >/dev/null 2>&1
+    if [[ -e $bc ]] && ! grep -q "rpcallowip=$IP1and2" < $bc ; then echo rpcallowip="${IP1and2}0.0/16" | tee -a $bc >/dev/null 2>&1
     fi
 fi
 
