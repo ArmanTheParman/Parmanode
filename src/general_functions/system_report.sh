@@ -35,6 +35,9 @@ report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $rep
 BTCEXP_BITCOIND
 function delete_private {
 if [[ $omit == true ]] ; then
+    rm $dp/sed.log >/dev/null
+    rm $dp/debug.log >/uev/null
+    rm $dp/change_string* >/dev/null
     if [[ $OS == Mac ]] ; then
     cat $report | gsed '/BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
     elif [[ $OS == Linux ]] ; then
