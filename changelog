@@ -2,6 +2,7 @@ Version 3.30.5
     -Parmanode refresh bug fixed
     -rtl wireless driver install option
     -added virtualenv dependency install for electrumx
+    -Parmashell added by default
 Version 3.30.4
     -Added Bitcoin QT start option in Bitcoin menu
     -Added pd function to ParmaShell
