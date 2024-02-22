@@ -12,6 +12,8 @@ set_terminal ; echo -e "
 enter_continue ; return 1
 fi
 
+preamble electrumx
+
 source $pc $ic >/dev/null 2>&1
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 if ! which nginx >/dev/null ; then install_nginx 
