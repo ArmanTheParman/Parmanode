@@ -10,10 +10,10 @@ debug "virtual env version... $(virtualenv --version)"
 #virtual env install
 { virtualenv parmanenv
 source parmanenv/bin/activate
+debug "virtual environment set? ... $VIRTUAL_ENV"
 cd $hp/electrumx
 pip install plyvel
 python -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
-debug "virtual environment set? ... $VIRTUAL_ENV"
 deactivate #exits virtual env
 debug "after deactivate command"
 
