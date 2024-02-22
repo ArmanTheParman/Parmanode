@@ -27,6 +27,8 @@ a|A) return 1 ;;
 rf)
 cd $HOME/parman_programs && rm -rf ./parmanode
 git clone https://github.com/armantheparman/parmanode.git
+pn
+git config pull.rebase false >/dev/null 2>&1
 success "The Parmanode script directory has been refreshed"
 announce "Parmanode will quit now so the changes take effect."
 exit 0
