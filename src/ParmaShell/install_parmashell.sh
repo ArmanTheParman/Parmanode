@@ -7,11 +7,11 @@ fi
 if [[ $OS == Mac ]] ; then rc=zshrc ; fi
 if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
-cp ~/.$rc ~/.${rc}_parmanodebackup
+cp ~/.$rc ~/.${rc}_parmanodebackup >/dev/null 2>&1
 
 #Do not change echo statements
 if ! grep -q "Added by Parmanode below, safe to delete" < ~/.$rc ; then
-echo "#Added by Parmanode below, safe to delete..." | sudo tee -a ~/.$rc >/dev/null
+echo "#Added by Parmanode below, safe to delete..." | sudo tee -a ~/.$rc >/dev/null >/dev/null
 echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a ~/.$rc >/dev/null
 echo "#Added by Parmanode above, safe to delete..." | sudo tee -a ~/.$rc >/dev/null
 else
