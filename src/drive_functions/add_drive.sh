@@ -79,13 +79,13 @@ if [[ $make_label == "parmanode" ]] ; then
         debug "label done"
         set_terminal
 else
-        debug "warning, make_label is $make_label"
         sudo umount $disk* 2>/dev/null ; sudo umount $parmanode_drive 2>/dev/null
         sudo umount /media/$USER/parmanod* 2>/dev/null
         if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
         sudo mount $disk $parmanode_drive 
         if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
+        debug "2, label done"
 fi
 
     
