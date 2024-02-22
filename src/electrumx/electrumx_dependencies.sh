@@ -6,7 +6,7 @@ build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev
 rocksdb-tools librocksdb-6.11
 sudo python3 -m pip install --upgrade pip 
 sudo pip3 install virtual env
-debug "virtual env version... $(virtualenv --version)
+debug "virtual env version... $(virtualenv --version)"
 #virtual env install
 { virtualenv parmanenv
 source parmanenv/bin/activate
