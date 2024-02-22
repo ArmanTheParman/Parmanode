@@ -45,7 +45,7 @@ IP1and2="$IP1.$IP2."
 fi
 
 #There was a bug restulting in multiple same lines. This will fix it.
-if grep -q ":5000" < $bc ; then
+if [[ -e $bc ]] && grep -q ":5000" < $bc ; then
 delete_line $bc ":5000" >/dev/null 2>&1
 echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
 fi
