@@ -143,17 +143,17 @@ restore_internal_electrs_db || return 1
 fi
 
 #config
-make_electrs_config && log "electrs" "config done" ; debug "config done"
+make_electrs_config ; debug "config done"
 
-if [[ $OS == Linux ]] ; then make_electrs_service || log "electrs" "service file failed" ; debug "service file done" ; fi
+if [[ $OS == Linux ]] ; then make_electrs_service ; debug "service file done" ; fi
 
 installed_config_add "electrs2-end" ; debug "finished electrs install"
-
-success "electrs" "being installed"
 
 if [[ $electrs_compile == "true" ]] ; then
     backup_electrs
 fi
+
+success "electrs" "being installed"
 
 }
 
