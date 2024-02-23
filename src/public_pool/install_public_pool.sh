@@ -98,6 +98,7 @@ fi
 # Next public_pool_ui
 ########################################################################################
 cd $hp/public_pool_ui
+
 docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
