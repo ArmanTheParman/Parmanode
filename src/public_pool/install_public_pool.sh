@@ -98,7 +98,8 @@ fi
 # Next public_pool_ui
 ########################################################################################
 cd $hp/public_pool_ui
-
+sudo rm $hp/public_pool_ui/src/environments/*
+sudo cp $pp/parmanode/src/public_pool/environment* $hp/public_pool_ui/src/environments/
 docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
