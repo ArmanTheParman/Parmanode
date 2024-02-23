@@ -25,7 +25,7 @@ $red
            which which is identical between systems, reduces chances of installation
            failure.
         
-        3) Install Fulcrum instead of electrs
+        3) Install Fulcrum or Electrum X instead of electrs
 
         4) Put computer in the bin (I've been tempted).
 $green
