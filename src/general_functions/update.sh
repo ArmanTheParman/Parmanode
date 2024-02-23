@@ -88,7 +88,7 @@ fi
 case $choice in
 y|Y|Yes|yes)
 local file="/tmp/update_computer.txt"
-sudo apt-get update -y | tee -a $file
+sudo apt-get update -y | tee $file
 if grep -q "--fix-broken" < $file ; then
 sudo apt-get --fix-broken
 fi
@@ -100,7 +100,7 @@ sudo apt-get autoremove -y
 fi
 sudo apt-get full-upgrade -y 
 sudo apt-get install jq netcat vim net-tools -y
-install_fuse noupdate #linux minmal installs my need to run AppImages
+install_fuse noupdate #linux minmal installs may need this to run AppImages
 break
 ;;
 n|N|NO|No|no)
