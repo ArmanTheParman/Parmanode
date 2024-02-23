@@ -4,7 +4,7 @@ if [[ $OS == Linux ]] ; then
 debug "in build dependencies, if linux"
 please_wait
 sudo apt-get update -y >/dev/null 2>&1
-
+sudo apt-get --fix-broken install -y 2>&1
 if ! which jq >/dev/null ; then sudo apt-get install -y jq ; fi
 if ! which clang >/dev/null ; then sudo apt-get install -y clang ; fi
 if ! which cmake >/dev/null ; then sudo apt-get install -y cmake ; fi
