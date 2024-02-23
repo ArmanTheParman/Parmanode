@@ -19,7 +19,7 @@ sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdm
 sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev autoconf -y
 sudo apt-get install imagemagick -y
 sudo apt-get install librsvg2-bin -y
-sudo apt-get install libdb5.3-dev libdb++-dev #berkley db stuff
+sudo apt-get install libdb5.3-dev libdb++-dev -y #berkley db stuff
 
 #for later when mac is supported
 if [[ $OS == Mac ]] ; then
