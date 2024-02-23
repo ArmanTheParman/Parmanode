@@ -55,7 +55,7 @@ $orange
 done
 fi
 
-nginx_stream remove
+nginx_stream electrs remove
 
 if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
