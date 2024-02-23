@@ -6,12 +6,15 @@
 
 
 function debug {
+if [[ $2 != silent ]] ; then
+log "debug" "${1}"
+fi
+
 if [[ $debug == 1 ]] ; then
 echo -e "Debug point. Message:
 "
 echo -e "$1
 "
-log "debug" "${1}"
 unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
