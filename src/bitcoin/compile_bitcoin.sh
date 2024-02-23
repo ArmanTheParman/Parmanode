@@ -21,6 +21,7 @@ sudo apt-get install imagemagick -y
 sudo apt-get install librsvg2-bin -y
 sudo apt-get install libdb5.3-dev libdb++-dev -y #berkley db stuff
 sudo apt-get install libzmq3-dev libqrencode-dev libsqlite3-dev -y
+sudo apt-get install libevent-dev -y
 
 #for later when mac is supported
 if [[ $OS == Mac ]] ; then
@@ -116,7 +117,7 @@ set_terminal ; echo -e "
     You have choices...
 $green
               1)   Compile Bitcoin WITHOUT a GUI (recommended, and faster) 
-$red
+$cyan
               2)   Compile bitcoin WITH a GUI
 $orange
 ########################################################################################
@@ -126,7 +127,7 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 1) gui=no ; break ;;
 2) gui=yes ; 
-sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake 
+sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qt5-default
 break ;;
 *) invalid ;;
 esac
@@ -138,6 +139,7 @@ clear ; echo -e "
 ########################################################################################
 
    The configure command that will be run is the following: 
+
 $cyan
    ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils
 $orange
