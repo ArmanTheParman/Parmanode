@@ -48,7 +48,7 @@ parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
-debug "printed colours"
+debug "printed colours" "silent"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
 # Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
@@ -133,7 +133,7 @@ clean_exit
 	
 ###### TESTING SECTION #################################################################
 
-debug "Pausing here. IP: $IP" #when debugging, I can check for error messages and syntax errors
+debug "Pausing here. IP: $IP" "silent" #when debugging, I can check for error messages and syntax errors
 if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
 
