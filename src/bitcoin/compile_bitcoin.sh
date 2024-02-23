@@ -20,6 +20,7 @@ sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev au
 sudo apt-get install imagemagick -y
 sudo apt-get install librsvg2-bin -y
 sudo apt-get install libdb5.3-dev libdb++-dev -y #berkley db stuff
+sudo apt-get install libzmq3-dev libqrencode-dev libsqlite3-dev -y
 
 #for later when mac is supported
 if [[ $OS == Mac ]] ; then
@@ -138,7 +139,7 @@ clear ; echo -e "
 
    The configure command that will be run is the following: 
 $cyan
-   ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb
+   ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils
 $orange
 
    Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
@@ -171,7 +172,7 @@ done
 
 set_terminal
 
-./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb $options
+./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options
 
 echo -e "
 ########################################################################################
