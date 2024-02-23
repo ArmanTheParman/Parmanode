@@ -109,11 +109,8 @@ set_terminal ; echo -e "
 
     Bitcoin can be compiled with or without a Graphical User Interfact (GUI).
 
-    Parmanode does not use a GUI, as it is itself the interface between you and the
+    Parmanode does not need a GUI, as it is itself the interface between you and the
     node's functions - this is partly what Parmanode is for.
-
-    If you want a GUI, you can opt for that, but you might get unpredictable behaviour
-    as I have not designed Parmanode for this to be used in parallel.
 
     You have choices...
 $green
