@@ -45,7 +45,7 @@ if [[ $1 == umbrel ]] ; then export prune=0 ; loop="break" ; file="$mount_point/
 
 
 
-if [[ -f $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
+if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 	then 
 
         while true ; do
