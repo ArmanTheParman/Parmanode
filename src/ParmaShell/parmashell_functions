@@ -38,3 +38,14 @@ function h { cd && a ; }
 function b { cd $HOME/.bitcoin ; a ; }
 function t { cd /tmp ; a ; }
 function sd { cd /etc/systemd/system/ ; a ; }
+
+if [[ $(uname) == Darwin ]] ; then
+function ng { cd /urs/local/etc/nginx ; a ; }
+function ngc { cd usr/local/etc/nginx/conf.d ; a ; }
+else
+function ng { cd /etc/nginx ; a ; }
+function ngc { cd /etc/nginx/conf.d ; a ; }
+function et { cd /etc/tor ; a ; }
+function vlt { cd /var/lib/tor ; a ; }
+fi
+
