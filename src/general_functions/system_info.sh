@@ -187,8 +187,8 @@ elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VC
 elif [[ -n $UBUNTU_CODENAME ]] ; then VCequivalent="$UBUNTU_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 elif [[ -n $DEBIAN_CODENAME ]] ; then VCequivalent="$DEBIAN_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 
-else
-    else VCequivalent=$VC
+else VCequivalent=$VC
+
 fi
 parmanode_conf_add "VCequivalent=$VCequivalent"
 
