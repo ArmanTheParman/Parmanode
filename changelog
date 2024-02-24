@@ -1,3 +1,5 @@
+Version 3.30.6
+    -Added support for Linux Mint Debian Edition (LMDE)
 Version 3.30.5
     -Parmanode refresh bug fixed
     -rtl wireless driver install option
