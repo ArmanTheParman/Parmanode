@@ -183,6 +183,7 @@ elif [[ $VC == "elsie" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "V
 
 elif [[ $VC == "victoria" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"  
 elif [[ $VC == "virginia" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"j
+elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VCequivalent=$VCequivalent"j
 
 else
 VCequivalent=$VC
