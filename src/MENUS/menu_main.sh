@@ -3,7 +3,7 @@ set_terminal
 while true ; do
 
 branch="$(git status | head -n1 | awk '{print $3}')"
-if [[ $branch != master ]] ; then
+if [[ $branch != master && -n $branch ]] ; then
 output_branch="${pink}WARNING: You are on the $branch branch.                        $orange"
 else
 output_branch="                                                             $orange#"

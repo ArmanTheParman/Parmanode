@@ -56,7 +56,7 @@ mv $pp/parmanode/src/Public_pool $pp/parmanode/src/public_pool >/dev/null 2>&1
 fi
 
 swap_string "$ic" "piassps-end" "piapps-end"
-if [[ -f $bc ]] ; then
+if [[ -e $bc ]] ; then
 delete_line $bc "rpcallowip=172"
 echo "rpcallowip=172.0.0.0/8" | sudo tee -a $bc >/dev/null 2>&1
 fi
