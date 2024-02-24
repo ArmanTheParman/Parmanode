@@ -57,10 +57,8 @@ download_bitcoin || return 1
 fi
 
 #setup bitcoin.conf
-if [[ $importdrive != true ]] ; then
-    log "bitcoin" "make_bitcoin_conf function ..."
+    debug "make_bitcoin_conf function ..."
     make_bitcoin_conf || return 1
-fi
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then
@@ -99,7 +97,7 @@ if [[ $OS == "Linux" ]] ; then
 
 if [[ -e $hp/bitcoin_github ]] ; then echo -e "
 ########################################################################################
-    Delete$cyan $hp/bitcoin_github directory (it can get big), 
+    Delete$cyan $hp/bitcoin_github$orange directory (it can get big), 
     you can save space.
 
              $green y$orange     or    $red no $orange
