@@ -1,9 +1,6 @@
 function make_bitcoin_conf {
 debug "in make bitcoin conf. bdi= $bitcoin_drive"
-if [[ $bitcoin_drive_import == true ]] ; then debug "returning" ; return 0 ; fi
-debug "after if bitcoin drive import, must be false
-$bitcoin_drive_import
-"
+
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
 
 #Parmanode default config settings. Can be changed.
@@ -55,9 +52,10 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
     A$cyan bitcoin.conf$orange file already exists. You can keep the one you have, but be
     aware if this file was not originally birthed by Parmanode, it may cause conflicts
-    if there are unexpected settings. Your prune choice will still be added to it.
+    if there are unexpected settings. Your prune choice will still be added to it if
+    you made one.
 
-    It's safest to discard the old copy, but the choice is yours.
+    It's probably safest to discard the old copy, but the choice is yours...
 
                            o)           overwrite
 
