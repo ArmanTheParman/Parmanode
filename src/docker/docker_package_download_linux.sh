@@ -9,10 +9,11 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update -y
 
 #modified instruction from official Docker guide to include Linuxmint conversion
-  sudo source /etc/os-release
 
-  get_linux_version_codename 
+get_linux_version_codename 
   
+sudo source /etc/os-release
+
   #url ID value tweaking...
   if [[ $NAME == LMDE ]] ; then
       ID=debian #for docker url
@@ -25,17 +26,17 @@ sudo apt-get update -y
       parmanode_conf_add "ID=ubuntu"
   fi
 
+debug "ID is $ID"
+
   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
   "$(echo "$VCequivalent")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 #fix ubuntu label to debian if needed:
-   source /etc/os-release
+   debug "2nd, ID is $ID"
    if [[ $ID == "debian" ]] ; then 
        sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >/dev/null 2>&1
    fi
-
-
 
 sudo apt-get update -y
 
