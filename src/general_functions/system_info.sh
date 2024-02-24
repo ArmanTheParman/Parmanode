@@ -182,11 +182,13 @@ elif [[ $VC == "elsie" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "V
 #new 
 
 elif [[ $VC == "victoria" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"  
-elif [[ $VC == "virginia" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"j
-elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VCequivalent=$VCequivalent"j
+elif [[ $VC == "virginia" ]] ; then VCequivalent="jammy" ; parmanode_conf_add "VCequivalent=$VCequivalent"
+elif [[ $VC == "faye" ]] ; then VCequivalent="bullseye" ; parmanode_conf_add "VCequivalent=$VCequivalent"
+elif [[ -n $UBUNTU_CODENAME ]] ; then VCequivalent="$UBUNTU_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
+elif [[ -n $DEBIAN_CODENAME ]] ; then VCequivalent="$DEBIAN_CODENAME" ; parmanode_conf_add "VCequivalent=$VCequivalent"
 
 else
-VCequivalent=$VC
+    else VCequivalent=$VC
 fi
 parmanode_conf_add "VCequivalent=$VCequivalent"
 
