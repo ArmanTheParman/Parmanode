@@ -57,10 +57,8 @@ download_bitcoin || return 1
 fi
 
 #setup bitcoin.conf
-if [[ $importdrive != true ]] ; then
-    log "bitcoin" "make_bitcoin_conf function ..."
+    debug "make_bitcoin_conf function ..."
     make_bitcoin_conf || return 1
-fi
 
 #make a script that service file will use
 if [[ $OS == "Linux" ]] ; then
