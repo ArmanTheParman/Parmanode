@@ -116,7 +116,7 @@ if [[ $OS == "Mac" ]] ; then
 fi
 }
 function iselectrsrunning {
-if grep -q electrs- < $ic >/dev/null 2>&1 ; then
+if grep -q electrs- < $ic >/dev/null 2>&1 || grep -q electrs2 - <$ic >/dev/null 2>&1 ; then
     if ps -x | grep electrs | grep -q conf >/dev/null 2>&1 ; then 
     overview_conf_add "electrsrunning=true" "electrsrunning="
     else
