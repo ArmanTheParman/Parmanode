@@ -35,7 +35,7 @@ debug "ID is $ID"
 #fix ubuntu label to debian if needed:
    debug "2nd, ID is $ID"
    if [[ $ID == "debian" ]] ; then 
-       sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >$dp/sed.log 2>&1
+       sudo sed -i 's/ubuntu/debian/g' /etc/apt/sources.list.d/docker.list >> $dp/sed.log 2>&1
    fi
 
 sudo apt-get update -y
