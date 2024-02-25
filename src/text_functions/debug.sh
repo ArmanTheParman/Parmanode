@@ -6,8 +6,7 @@
 
 
 function debug {
-echo "$1" | tee -a $dp/.debug.log
-
+echo "$1" | tee -a $dp/.debug.log >/dev/null 2>&1
 if [[ $debug == 1 ]] ; then
 echo -e "Debug point. Message:
 "
@@ -20,7 +19,7 @@ fi
 }
 
 function debug2 {
-echo "$1" | tee -a $dp/.debug2.log
+echo "$1" | tee -a $dp/.debug2.log >/dev/null 2>&1
 if [[ $debug == 2 ]] ; then
 echo -e "${1}"
 unset enter_cont ; enter_continue ; export enter_cont
@@ -29,7 +28,7 @@ fi
 }
 
 function debug3 {
-echo "$1" | tee -a $dp/.debug3.log
+echo "$1" | tee -a $dp/.debug3.log >/dev/null 2>&1
 if [[ $debug == 3 ]] ; then
 echo -e "${1}"
 unset enter_cont ; enter_continue ; export enter_cont
