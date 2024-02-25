@@ -88,7 +88,7 @@ esac
 done
 
 while true ; do
-
+if [[ $OS == Mac ]] ; then break ; fi
 set_terminal
 echo -e "
 ########################################################################################
