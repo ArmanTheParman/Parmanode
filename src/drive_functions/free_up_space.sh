@@ -41,7 +41,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case choice in
+case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo rm -rf $dp/*.log ; rm -rf $dp/.*.log
@@ -67,7 +67,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case choice in
+case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 if ! docker ps >/dev/null 2>&1 ; then
@@ -101,7 +101,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case choice in
+case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo rm $HOME/.local/share/Trash/*
@@ -127,7 +127,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case choice in
+case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo rm -rf /tmp/*
@@ -154,7 +154,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case choice in
+case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo apt-get update -y
