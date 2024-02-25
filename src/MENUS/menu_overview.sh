@@ -6,6 +6,8 @@ unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11
 unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11
 unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11
 unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10 menub11
+unset bitcoininstalled lndinstalled fulcruminstalled electrsinstalled breinstalled btcpayinstalled
+unset rtlinstalled electrsdkrinstalled mempoolinstalled publicpoolinstalled electrumxinstalled
 
 set_terminal
 please_wait
@@ -40,6 +42,7 @@ s11="${white}s10${orange}"
 
 if grep -q bitcoin-end < $ic ; then
     i1="    ${green}Y${orange}"
+    bitcoininstalled=true
     if [[ $bitcoinrunning == true ]] ; then
     r1="${green}Y${orange}"
     menub1=true
@@ -56,6 +59,7 @@ fi
 
 if grep -q lnd-end < $ic ; then
     i2="${green}Y${orange}"
+    lndinstalled=true
     if [[ $lndrunning == true ]] ; then
     r2="${green}Y${orange}"
     menub2=true
@@ -72,6 +76,7 @@ fi
 
 if grep -q fulcrum-end < $ic ; then
     i3="${green}Y${orange}"
+    fulcruminstalled=true
     if [[ $fulcrumrunning == true ]] ; then
     r3="${green}Y${orange}"
     menub3=true
@@ -87,6 +92,7 @@ else
 fi 
 if grep -q electrs-end < $ic || grep -q electrs2-end < $ic ; then
     i4="${green}Y${orange}"
+    electrsinstalled=true
     if [[ $electrsrunning == true ]] ; then
     r4="${green}Y${orange}"
     menub4=true
@@ -102,6 +108,7 @@ else
 fi
 if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     i5="${green}Y${orange}"
+    breinstalled=true
     if [[ $brerunning == true ]] ; then
     r5="${green}Y${orange}"
     menub5=true
@@ -117,6 +124,7 @@ else
 fi
 if grep -q btcpay-end < $ic ; then
     i6="${green}Y${orange}"
+    btcpayinstalled=true
     if [[ $btcpayrunning == true ]] ; then
     r6="${green}Y${orange}"
     menub6=true
@@ -132,6 +140,7 @@ else
 fi
 if grep -q rtl-end < $ic ; then
     i7="${green}Y${orange}"
+    rtlinstalled=true
     if [[ $rtlrunning == true ]] ; then
     r7="${green}Y${orange}"
     menub7=true
@@ -148,6 +157,7 @@ fi
 
 if grep -q electrsdkr-end < $ic || grep -q electrsdkr2-end < $ic ; then
     i8="${green}Y${orange}"
+    electrsdkrinstalled=true
     if [[ $electrsdkrrunning == true ]] ; then
     r8="${green}Y${orange}"
     menub8=true
@@ -164,6 +174,7 @@ fi
 
 if grep -q mempool-end < $ic ; then
     i9="${green}Y${orange}"
+    mempoolinstalled=true
     if [[ $mempoolrunning == true ]] ; then
     r9="${green}Y${orange}"
     menub9=true
@@ -180,6 +191,7 @@ fi
 
 if grep -q public_pool-end < $ic ; then
     i10="${green}Y${orange}"
+    publicpoolinstalled=true
     if [[ $publicpoolrunning == true ]] ; then
     r10="${green}Y${orange}"
     menub10=true
@@ -196,6 +208,7 @@ fi
 
 if grep -q electrumx-end < $ic ; then
     i11="${green}Y${orange}"
+    electrumxinstalled=true
     if [[ $electrumxrunning == true ]] ; then
     r11="${green}Y${orange}"
     menub11=true
@@ -263,69 +276,69 @@ menu_overview
 ;;
 
 m1) 
-#if [[ $bitcoinrunning == true ]] ; then
+if [[ $bitcoininstalled == true ]] ; then
 menu_bitcoin overview 
-#fi
+fi
 ;; # argument changes behaviour of "p" menu choice
 
 m2) 
-#if [[ $lndrunning == true ]] ; then
+if [[ $lndinstalled == true ]] ; then
 menu_lnd overview 
-#fi
+fi
 ;;
 
 m3) 
-#if [[ $fulcrumrunning == true ]] ; then
+if [[ $fulcruminstalled == true ]] ; then
 menu_fulcrum overview 
-#fi
+fi
 ;;
 
 m4) 
-#if [[ $electrsrunning == true ]] ; then
+if [[ $electrsinstalled == true ]] ; then
 menu_electrs overview 
-#fi
+fi
 ;;
 
 m5) 
-#if [[ $brerunning == true ]] ; then
+if [[ $breinstalled == true ]] ; then
 menu_bre     overview 
-#fi
+fi
 ;;
 
 m6) 
-#if [[ $btcpayrunning == true ]] ; then
+if [[ $btcpayinstalled == true ]] ; then
 menu_btcpay  overview 
-#fi
+fi
 ;;
 
 m7) 
-#if [[ $rtlrunning == true ]] ; then
+if [[ $rtlinstalled == true ]] ; then
 menu_rtl     overview 
-#fi
+fi
 ;;
 
 m8) 
-#if [[ $electrsdkrrunning == true ]] ; then
+if [[ $electrsdkrinstalled == true ]] ; then
 menu_electrs overview 
-#fi
+fi
 ;;
 
 m9) 
-#if [[ $mempoolrunning == true ]] ; then
+if [[ $mempoolinstalled == true ]] ; then
 menu_mempool overview 
-#fi
+fi
 ;;
 
 m10) 
-#if [[ $publicpoolrunning == true ]] ; then
+if [[ $publicpoolinstalled == true ]] ; then
 menu_public_pool overview 
-#fi
+fi
 ;;
 
 m11) 
-#if [[ $electrumxrunning == true ]] ; then
+if [[ $electrumxinstalled == true ]] ; then
 menu_electrumx overview 
-#fi
+fi
 ;;
 
 s1) 
