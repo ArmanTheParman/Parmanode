@@ -6,9 +6,7 @@
 
 
 function debug {
-if [[ $2 != silent ]] ; then
-log "debug" "${1}"
-fi
+echo "$1" | tee -a $dp/.debug.log
 
 if [[ $debug == 1 ]] ; then
 echo -e "Debug point. Message:
@@ -16,37 +14,26 @@ echo -e "Debug point. Message:
 echo -e "$1
 "
 unset enter_cont ; enter_continue ; export enter_cont
-if [[ $enter_cont == q ]] ; then exit 0 ; fi
+if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
 return 0
 fi
 }
 
 function debug2 {
+echo "$1" | tee -a $dp/.debug2.log
 if [[ $debug == 2 ]] ; then
 echo -e "${1}"
-log "debug2" "${1}"
 unset enter_cont ; enter_continue ; export enter_cont
-if [[ $enter_cont == q ]] ; then exit 0 ; fi
-return 0
+if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
 fi
 }
 
 function debug3 {
+echo "$1" | tee -a $dp/.debug3.log
 if [[ $debug == 3 ]] ; then
 echo -e "${1}"
-log "debug3" "${1}"
 unset enter_cont ; enter_continue ; export enter_cont
-if [[ $enter_cont == q ]] ; then exit 0 ; fi
-return 0
-fi
-}
 
-function debug4 {
-if [[ $debug == 4 ]] ; then
-echo -e "${1}"
-log "debug4" "${1}"
-unset enter_cont ; enter_continue ; export enter_cont
-if [[ $enter_cont == q ]] ; then exit 0 ; fi
 return 0
 fi
 }
