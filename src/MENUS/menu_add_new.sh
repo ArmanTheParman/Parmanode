@@ -1,6 +1,9 @@
 function menu_add_new {
 set_terminal
 
+check_disk_space
+
+
 while true
 do
 unset bitcoin_n menuaddnewbitcoin
