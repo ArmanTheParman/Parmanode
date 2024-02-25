@@ -262,17 +262,71 @@ r)
 menu_overview
 ;;
 
-m1) menu_bitcoin overview ;; # argument changes behaviour of "p" menu choice
-m2) menu_lnd     overview ;;
-m3) menu_fulcrum overview ;;
-m4) menu_electrs overview ;;
-m5) menu_bre     overview ;;
-m6) menu_btcpay  overview ;;
-m7) menu_rtl     overview ;;
-m8) menu_electrs overview ;;
-m9) menu_mempool overview ;;
-m10) menu_public_pool overview ;;
-m11) menu_electrumx overview ;;
+m1) 
+if [[ $menub1 == true ]] ; then
+menu_bitcoin overview 
+fi
+;; # argument changes behaviour of "p" menu choice
+
+m2) 
+if [[ $menub2 == true ]] ; then
+menu_lnd overview 
+fi
+;;
+
+m3) 
+if [[ $menub3 == true ]] ; then
+menu_fulcrum overview 
+fi
+;;
+
+m4) 
+if [[ $menub4 == true ]] ; then
+menu_electrs overview 
+fi
+;;
+
+m5) 
+if [[ $menub5 == true ]] ; then
+menu_bre     overview 
+fi
+;;
+
+m6) 
+if [[ $menub6 == true ]] ; then
+menu_btcpay  overview 
+fi
+;;
+
+m7) 
+if [[ $menub7 == true ]] ; then
+menu_rtl     overview 
+fi
+;;
+
+m8) 
+if [[ $menub8 == true ]] ; then
+menu_electrs overview 
+fi
+;;
+
+m9) 
+if [[ $menub9 == true ]] ; then
+menu_mempool overview 
+fi
+;;
+
+m10) 
+if [[ $menub10 == true ]] ; then
+menu_public_pool overview 
+fi
+;;
+
+m11) 
+if [[ $menub11 == true ]] ; then
+menu_electrumx overview 
+fi
+;;
 
 s1) 
 if [[ $menub1 == true ]] ; then
