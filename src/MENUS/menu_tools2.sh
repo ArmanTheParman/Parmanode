@@ -15,6 +15,8 @@ echo -e "
               (sr)        System report (for getting troubleshooting help)
 
               (ww)        Wireless driver install (rtl8812au)
+
+              (fs)        Free up some space
 $orange
 ########################################################################################
 "
@@ -43,6 +45,10 @@ ww)
 wireless_driver_install
 ;;
 
+fs)
+free_up_space
+;;
+
 *)
 invalid 
 ;;
@@ -50,5 +56,3 @@ esac
 done
 return 0
 }
-
-
