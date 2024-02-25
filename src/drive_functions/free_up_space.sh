@@ -75,10 +75,9 @@ set_terminal ; echo "Please run Docker and hit enter to try again." ; enter_cont
   if ! docker ps >/dev/null 2>&1 ; then
   set_terminal ; echo "Docker not running, skipping." ; enter_continue ; break
   fi
-else
+fi
 docker system prune
 break
-fi
 ;;
 
 *)
