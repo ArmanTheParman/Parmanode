@@ -263,69 +263,69 @@ menu_overview
 ;;
 
 m1) 
-if [[ $bitcoinrunning == true ]] ; then
+#if [[ $bitcoinrunning == true ]] ; then
 menu_bitcoin overview 
-fi
+#fi
 ;; # argument changes behaviour of "p" menu choice
 
 m2) 
-if [[ $lndrunning == true ]] ; then
+#if [[ $lndrunning == true ]] ; then
 menu_lnd overview 
-fi
+#fi
 ;;
 
 m3) 
-if [[ $fulcrumrunning == true ]] ; then
+#if [[ $fulcrumrunning == true ]] ; then
 menu_fulcrum overview 
-fi
+#fi
 ;;
 
 m4) 
-if [[ $electrsrunning == true ]] ; then
+#if [[ $electrsrunning == true ]] ; then
 menu_electrs overview 
-fi
+#fi
 ;;
 
 m5) 
-if [[ $brerunning == true ]] ; then
+#if [[ $brerunning == true ]] ; then
 menu_bre     overview 
-fi
+#fi
 ;;
 
 m6) 
-if [[ $btcpayrunning == true ]] ; then
+#if [[ $btcpayrunning == true ]] ; then
 menu_btcpay  overview 
-fi
+#fi
 ;;
 
 m7) 
-if [[ $rtlrunning == true ]] ; then
+#if [[ $rtlrunning == true ]] ; then
 menu_rtl     overview 
-fi
+#fi
 ;;
 
 m8) 
-if [[ $electrsdkrrunning == true ]] ; then
+#if [[ $electrsdkrrunning == true ]] ; then
 menu_electrs overview 
-fi
+#fi
 ;;
 
 m9) 
-if [[ $mempoolrunning == true ]] ; then
+#if [[ $mempoolrunning == true ]] ; then
 menu_mempool overview 
-fi
+#fi
 ;;
 
 m10) 
-if [[ $publicpoolrunning == true ]] ; then
+#if [[ $publicpoolrunning == true ]] ; then
 menu_public_pool overview 
-fi
+#fi
 ;;
 
 m11) 
-if [[ $electrumxrunning == true ]] ; then
+#if [[ $electrumxrunning == true ]] ; then
 menu_electrumx overview 
-fi
+#fi
 ;;
 
 s1) 
