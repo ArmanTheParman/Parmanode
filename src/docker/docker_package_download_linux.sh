@@ -12,7 +12,7 @@ sudo apt-get update -y
 
 get_linux_version_codename 
   
-sudo source /etc/os-release
+sudo source /etc/os-release && debug "&& debug, ID is $ID after source os-release"
 
   #url ID value tweaking...
   if [[ $NAME == LMDE ]] ; then

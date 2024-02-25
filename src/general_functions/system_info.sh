@@ -190,6 +190,7 @@ elif [[ -n $DEBIAN_CODENAME ]] ; then VCequivalent="$DEBIAN_CODENAME" ; parmanod
 else VCequivalent=$VC
 
 fi
+debug "in get_linux_version_codename, VCequivalent is $VCequivalent"
 parmanode_conf_add "VCequivalent=$VCequivalent"
 
 }
