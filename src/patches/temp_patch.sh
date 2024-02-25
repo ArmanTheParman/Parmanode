@@ -16,6 +16,11 @@ autoupdate on
 fi
 
 if [[ -e $bc ]] ; then
+    
+    if grep -q "electrumx-end" < $ic && ! grep -q "rest=1" < $bc ; then
+    echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+    fi
+
 
     #erroneous entry
     if grep -Eq '^rpcservertimeout$' < $bc ; then
