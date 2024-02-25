@@ -2,12 +2,13 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
+ARG parmanID=1000
 
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
 #Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u 1001 parman 
+RUN groupadd -r parman && useradd -m -g parman -u $parmanID parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 
