@@ -1,12 +1,12 @@
 function uninstall_btcpay {
 if [[ $debug != 1 ]] ; then 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                               Uninstall BTCPay Server
- 
-    Parmanode will uninstall BTCPay from your system (Not Docker). Are you sure you
-    want to continue?
+$orange 
+    Parmanode will uninstall BTCPay from your system. Are you sure you want to 
+    continue?
 
                                 y)    Yes
 
