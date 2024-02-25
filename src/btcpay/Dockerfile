@@ -33,11 +33,11 @@ COPY postgres_script.sh /home/parman/parmanode
 
 # install NBX
 RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer
-RUN cd ~/parmanode/NBXplorer && git checkout v2.3.65 ./build.sh
+RUN cd ~/parmanode/NBXplorer && git checkout v2.5.0 ./build.sh
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
-RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout v1.9.2 && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout v1.12.5 && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
 CMD tail -f /dev/null

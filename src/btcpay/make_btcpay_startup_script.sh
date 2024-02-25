@@ -35,7 +35,7 @@ Group=$(whoami)
 Restart=on-failure
 RestartSec=10
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcpay.service 2>/dev/null
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcpay.service >/dev/null 2>&1
 
 
 
