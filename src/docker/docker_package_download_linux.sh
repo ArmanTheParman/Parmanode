@@ -22,8 +22,8 @@ sudo source /etc/os-release
       ID=ubuntu
       parmanode_conf_add "ID=ubuntu"
   else
-      ID=ubuntu
-      parmanode_conf_add "ID=ubuntu"
+      ID=$ID
+      parmanode_conf_add "ID=$ID"
   fi
 
 debug "ID is $ID"
