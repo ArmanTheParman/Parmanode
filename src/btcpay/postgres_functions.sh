@@ -43,6 +43,11 @@ postgres_database_creation
 #get container to write to a log file the status of the database. Log is in a mounted volume
 #accessible by host.
 
+#debuggin
+docker exec -it -u postgres btcpay psql -l 
+enter_continue
+######
+
 docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp 2>&1
 debug "after btcpay psql -l"
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
@@ -76,8 +81,8 @@ return 1
 function postgres_database_creation {
 log "btcpay" "in postgres_database_creation"
 sleep 1
-docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh"
+docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" >/dev/null 2>&1
 sleep 2
-docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
+docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >dev/null 2>&1
 debug "after postgres script and database creation"
 }
