@@ -35,6 +35,7 @@ log "btcpay" "in postgres_intermission"
 
 counter=0
 while [ $counter -le 45 ] ; do
+debug "begin loop"
 postgres_database_creation
 
 #check if database created before prceeding.
@@ -43,6 +44,7 @@ postgres_database_creation
 #accessible by host.
 
 docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp
+debug "after btcpay psql -l"
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
 rm /tmp/postgres* >/dev/null 2>&1
 return 0 
