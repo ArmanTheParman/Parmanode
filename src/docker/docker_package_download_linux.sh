@@ -19,6 +19,7 @@ sudo source /etc/os-release
       ID=debian #for docker url
       parmanode_conf_add "ID=debian"
   elif [[ $ID == linuxmint ]] ; then 
+      debug "ID, 1.5, in linux mint. ID=$ID"
       ID=ubuntu
       parmanode_conf_add "ID=ubuntu"
   else
