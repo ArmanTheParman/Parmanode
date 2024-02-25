@@ -73,7 +73,7 @@ y|Y)
 if ! docker ps >/dev/null 2>&1 ; then
 set_terminal ; echo "Please run Docker and hit enter to try again." ; enter_continue 
   if ! docker ps >/dev/null 2>&1 ; then
-  set_terminal ; echo "Docker not running, skipping." ; break
+  set_terminal ; echo "Docker not running, skipping." ; enter_continue ; break
   fi
 else
 docker system prune
@@ -87,7 +87,9 @@ invalid
 esac
 done
 
-while [[ $OS == Linux ]] ; do
+while true ; do
+if [[ $OS == Mac ]] ; break ; fi
+
 set_terminal
 echo -e "
 ########################################################################################
