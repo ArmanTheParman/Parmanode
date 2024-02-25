@@ -4,11 +4,13 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Paramanode might be responsible for adding extra load on the internal drive due
-    to growing log files and such.
+    Over time, the internal drive can get clogged up with unnecessary data.
 
+    The installed programs' log files can keep growing, and so can Parmanode's log
+    files, and various other things.
+$cyan
     This is an interactive clean up tool.
-
+$orange
     Proceed?
 $green
                               y)          Yes
