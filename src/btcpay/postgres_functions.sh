@@ -44,7 +44,7 @@ postgres_database_creation
 #accessible by host.
 debug "wait here"
 
-if docker exec -itu postgres btcpay bash -c "PAGER='' ; psql -l" | grep -q btcpayserver ; then
+if docker exec -itu postgres btcpay /bin/bash -c "psql -l --no-psqlrc -P pager=off" | grep -q btcpayserver ; then
 return 0
 fi
 
