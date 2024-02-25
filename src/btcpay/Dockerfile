@@ -29,6 +29,7 @@ USER root
 RUN usermod -aG parman postgres 
 USER parman
 COPY postgres_script.sh /home/parman/parmanode
+#RUN chown postgres:parman /home/parman/parmanode/postgres_script.sh
 
 # install NBX
 RUN cd ~/parmanode && git clone https://github.com/dgarage/NBXplorer

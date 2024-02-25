@@ -78,5 +78,5 @@ docker exec -d -u postgres btcpay /bin/bash -c \
 "/home/parman/parmanode/postgres_script.sh ; \
 createdb -O parman btcpayserver ; \
 createdb -O parman nbxplorer" 
-
+debug "after postgress script and database creation"
 }
