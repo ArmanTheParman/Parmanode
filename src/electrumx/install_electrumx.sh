@@ -116,6 +116,7 @@ fi
 #Electrum X docs say this is needed
 if ! grep -q "rest=1" < $bc ; then
 echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+fi
 
 make_electrumx_conf || { debug "make electrumx conf failed." ; return 1 ; }
 make_electrumx_service || { debug "make electrumx service failed." ; return 1 ; }
