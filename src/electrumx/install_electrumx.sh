@@ -113,9 +113,14 @@ if [[ $drive_electrumx == internal ]] ; then
 restore_internal_electrumx_db || { debug " restore_internal_electrumx_db failed" ; return 1 ; }
 fi
 
+#Electrum X docs say this is needed
+if ! grep -q "rest=1" < $bc ; then
+echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+
 make_electrumx_conf || { debug "make electrumx conf failed." ; return 1 ; }
 make_electrumx_service || { debug "make electrumx service failed." ; return 1 ; }
 electrumx_banner
 installed_config_add "electrumx-end"  
-success "Electrum X" "being installed."
+success "Electrum X has been installed. Please restart Bitcoin once for 
+    Electrum X to work properly."
 }
