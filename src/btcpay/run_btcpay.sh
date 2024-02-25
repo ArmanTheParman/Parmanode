@@ -16,11 +16,11 @@ count=$((count + 1))
 fi
 done
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     BTCPay Server lives inside the BTCPay Docker container. Parmanode couldn't get 
-    the container to run, so BTCPay Server isn't running.
+    the container to run, so$red BTCPay Server isn't running$orange.
 
 ########################################################################################
 "
