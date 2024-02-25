@@ -7,7 +7,7 @@ RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
 #Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
+RUN groupadd -r parman && useradd -m -g parman -u 1001 parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 
