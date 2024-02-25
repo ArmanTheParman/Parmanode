@@ -43,12 +43,7 @@ postgres_database_creation
 #get container to write to a log file the status of the database. Log is in a mounted volume
 #accessible by host.
 
-#debuggin
-docker exec -it -u postgres btcpay psql -l 
-enter_continue
-######
-
-docker exec -it -u postgres btcpay psql -l > /tmp/postgres$counter.tmp 2>&1
+docker exec -it -u postgres btcpay psql -l | tee /tmp/postgres$counter.tmp > $dp/btcpay.log 2>&1
 debug "after btcpay psql -l"
 if grep -q btcpayserver < /tmp/postgres$counter.tmp ; then
 rm /tmp/postgres* >/dev/null 2>&1
