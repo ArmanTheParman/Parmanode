@@ -22,6 +22,7 @@ btcpay_config || return 1 ; log "btcpay" "entering btcpay_config..."
 nbxplorer_config || return 1 ; log "btcpay" "entering nbxplorer_config..."
 
 build_btcpay || return 1 ; log "btcpay" "entering build_btcpay..."
+pause "check build went ok"
 
 run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
 
