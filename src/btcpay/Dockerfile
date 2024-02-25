@@ -1,5 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/New_York
+
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
 
@@ -20,7 +23,7 @@ USER root
 RUN apt-get update -y && apt-get install apt-transport-https -y && apt-get update -y 
 
 # Install postgres and make databases
-RUN apt-get install postgresql-13 postgresql-contrib -y 
+RUN apt-get install postgresql postgresql-contrib -y 
 USER postgres
 USER root
 RUN usermod -aG parman postgres 
