@@ -1,6 +1,7 @@
 function menu_btcpay {
 while true ; do
-set_terminal_custom 48 ; echo -e "
+set_terminal_custom 48 
+echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
 ########################################################################################
@@ -81,7 +82,7 @@ restart_btcpay
 log|Log|LOG)
 set_terminal ; log_counter
 if [[ $log_count -le 10 ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
     This will show the BTCpay log file in real-time as it populates.
@@ -100,7 +101,8 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 set_terminal
-continue ;;
+continue 
+;;
 
 nl|NL|Nl)
 echo "
