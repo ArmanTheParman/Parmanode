@@ -15,13 +15,7 @@ autoupdate off
 autoupdate on
 fi
 
-#recommended by electrum X docs
-#seemed to break things, reversing
 if [[ -e $bc ]] ; then
-
-    if grep -Eq '^rest=' < $bc ; then
-    delete_line $bc "rest="
-    fi
 
     #erroneous entry
     if grep -Eq '^rpcservertimeout$' < $bc ; then
