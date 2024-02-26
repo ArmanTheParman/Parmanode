@@ -119,8 +119,8 @@ if [[ $OS == Linux ]] ; then
 message="    You can actually change the hostname of this computer. Just edit the name 
     in the file /etc/hostname. For example if you put 'parmanode' in there, just a 
     single line of text, then you can access the computer with:
-       
-       ssh $USER@parmanode.local
+$cyan
+       ssh $USER@parmanode.local $orange
 
     Cool huh? I think it's cool."
 else
@@ -155,6 +155,7 @@ $orange
     have to install a program called Putty on the Windows machine.
 $bright_blue
     The EXTERNAL IP for your router (Your Home's IP not just this device):
+
 $green                                                                   $external_IP  $orange
 
 $message
