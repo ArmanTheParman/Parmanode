@@ -141,6 +141,8 @@ done
 
 while true ; do
 if [[ $OS == Mac ]] ; then break ; fi
+if which boabab >/dev/null 2>&1 ; then break ; fi
+
 set_terminal
 echo -e "
 ########################################################################################
@@ -159,8 +161,8 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo apt-get update -y
-sudo apt-get --fix-broken install
-sudo apt-get install baobab
+sudo apt-get --fix-broken install -y
+sudo apt-get install baobab -y
 success "Baobab has been installed. Just type 'baobab' in the terminal to run it.
     Of course, it won't work if you are using Parmanode through SSH."
 break
