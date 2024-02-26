@@ -25,7 +25,7 @@ echo "
 
       (mm)             Macaroon information (private and sensitive)
 "
-if [[ $lnd_version != "v0.17.0" ]] ; then echo -e " 
+if [[ $lnd_version != "0.17.0" ]] ; then echo -e " 
 $red      (update)         Update LND to version 0.17.0 $orange
       "
 fi
