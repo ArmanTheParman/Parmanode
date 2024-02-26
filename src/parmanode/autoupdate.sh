@@ -1,5 +1,7 @@
 function autoupdate {
 
+check_disk_space
+
 ########################################################################################
 #Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
