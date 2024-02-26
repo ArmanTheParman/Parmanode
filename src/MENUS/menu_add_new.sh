@@ -36,6 +36,8 @@ echo -e "${bitcoin_new}
 #                                                                                      #
 #                          o)           Other Software ...                             #
 #                                                                                      #
+#                          cool)        Cool stuff ...                                 #
+#                                                                                      #
 ########################################################################################
 "
 choose "xpmq"
@@ -82,6 +84,11 @@ m|M) back2main ;;
         return 0
         ;;
 
+cool|COOL|c)
+        menu_coolstuff
+        return 0
+        ;;
+
     q|Q|quit|QUIT)
         exit 0
         ;;
@@ -99,5 +106,3 @@ return 0
 
 }
 
-
- 
