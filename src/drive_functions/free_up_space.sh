@@ -58,7 +58,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Delete unused Docker containers/images etc?
+    Delete unused Docker containers/images etc? $bright_blue (This can be slow)$orange
 $green
     y)        yes
 $red
