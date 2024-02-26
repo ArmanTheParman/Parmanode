@@ -1,5 +1,12 @@
 function temp_patch {
 
+#because of version2 of electrs install, small bug introduced in the
+#install detection. This fixes it.
+if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
+delete_line "$ic" "electrs-start"
+parmanode_conf_add "electrs2-start"
+fi
+
 #stream directive now in "stream.conf"
 if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then
 if grep -q "include electrs.conf;" < /etc/nginx/nginx.conf ; then
