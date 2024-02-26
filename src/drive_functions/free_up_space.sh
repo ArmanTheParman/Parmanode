@@ -148,7 +148,7 @@ echo -e "
 ########################################################################################
 
    Install a graphical program to help you search for large unneccesary files?
-   It's called Baobab? 
+   It's called Baobab. 
 $green
     y)        yes
 $red
