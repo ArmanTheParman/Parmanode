@@ -127,6 +127,8 @@ else
 unset message
 fi
 
+external_IP=$(curl ifconfig.me)
+
 set_terminal_custom 46
 echo -e "
 ########################################################################################
@@ -151,6 +153,9 @@ $orange
 
     If you really want to use Windows (eww) to access this computer by ssh, you'll
     have to install a program called Putty on the Windows machine.
+$bright_blue
+    The EXTERNAL IP for your router (Your Home's IP not just this device):
+$green                                                                   $external_IP  $orange
 
 $message
 
