@@ -17,6 +17,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
+#leave here for old installations. Electrum x new installs don't use nginx
 nginx_stream electrumx remove
 
 electrumx_tor_remove uninstall

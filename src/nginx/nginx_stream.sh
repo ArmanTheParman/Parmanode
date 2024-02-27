@@ -1,7 +1,7 @@
 function nginx_stream {
 # if [[ -z $1 ]] ; then announce "no 1st argument to stream. aborting" ; return 1 ; fi
 
-service="$1" #expecting electrs or electrumx
+service="$1" #expecting electrs or public_pool
 instruction=$"2" #expecting install or remove
 
 
@@ -17,6 +17,9 @@ nginx_conf="/etc/nginx/nginx.conf"
 #ssk_key="$hp/$service/key.pem"
 streamfile="/etc/nginx/stream.conf"
 fi
+
+#will eventuall become redundant, to clean up old version configuration
+remove_old_electrs_stream_from_nginxconf
 
 if [[ $1 != remove ]] ; then
 sudo nginx -t >/dev/null 2>&1 || \
@@ -55,30 +58,18 @@ sudo cp $nginx_conf ${nginx_conf}_backup >/dev/null 2>&1
 source $pp/parmanode/src/nginx/stream.conf >/dev/null 2>&1
 
 #unset what is not installed
-if ! grep -q "electrs" < $ic && ! grep -q "electrsdkr" ; then
+if ! grep -q "electrs-end" < $ic && ! grep -q "electrs2-end" < $ic && ! grep -q "electrsdkr" ; then
 unset upstream_electrs server_electrs
 fi
-if ! grep -q "electrumx" < $ic ; then
-unset upstream_electrumx server_electrumx
+
+if ! grep -q "public_pool-end" < $ic ; then
+unset upstream_public_pool server_public_pool
 fi
 
 #unset what is to be deleted
 if [[ $instruction == remove ]] ; then
 unset upstream_$service server_$service
 fi
-
-#for now, it might be that electrumx might need a nginx setting, might delete this later.
-unset upstream_electrumx server_electrumx
-
-debug "Variables from stream.conf...
-1 - upstream electrs
-$upstream_electrs
-2 - upstream electrumx
-$upstream_electrumx
-3 - server electrs
-$server_electrs
-4 - server electrumx
-$server_electrumx"
 
 #make a backup of the streamfile first
 if [[ -e $streamfile ]] ; then
@@ -94,16 +85,15 @@ echo -en "
 
 stream {
 $upstream_electrs
-$upstream_electrumx
 $server_electrs
-$server_electrumx
+$upstream_public_pool
+$server_public_pool
 }" | sudo tee $streamfile >/dev/null 2>&1 
 
-#will eventuall become redundant, to clean up old version configuration
-remove_old_electrs_stream_from_nginxconf
-
+######################################################################################## Very ipmortant
+``
 #if no services installed, remove any include directive from nginx.conf
-if [[ -z $upstream_electrs && -z $upstream_electrumx ]] ; then
+if [[ -z $upstream_electrs && -z $upstream_public_pool ]] ; then
    delete_line "$nginx_conf" "stream.conf"
 else
 #include stream file in nginx.conf
@@ -112,6 +102,7 @@ else
    echo "include stream.conf;" | sudo tee -a $nginx_conf
    fi
 fi
+########################################################################################
 
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == true ]] ; then

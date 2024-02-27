@@ -25,7 +25,6 @@ else #install
 #might need to install nginx
 if ! which nginx >/dev/null ; then install_nginx ; fi
 
-
 echo -en "
 server {
         listen 5052 ssl;
