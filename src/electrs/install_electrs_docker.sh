@@ -105,7 +105,7 @@ debug "pause after run and chown"
 
 #Nginx
 make_ssl_certificates electrsdkr
-nginx_stream install 
+nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; }
 
 #Run electrs and Nginx in the container
 docker_start_electrs || return 1 

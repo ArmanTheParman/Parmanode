@@ -16,8 +16,6 @@ preamble electrumx
 
 source $pc $ic >/dev/null 2>&1
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
-if ! which nginx >/dev/null ; then install_nginx 
-fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -82,8 +80,6 @@ cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
-nginx_stream electrumx install || { debug "nginx_stream failed" ; }
- 
 #get drive variables for others: fulcrum, bitcoin, and electrs
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
