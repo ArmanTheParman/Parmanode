@@ -53,7 +53,9 @@ fi
 #There was a bug restulting in multiple same lines. This will fix it.
 if [[ -e $bc ]] && grep -q ":5000" < $bc ; then
 delete_line $bc ":5000" >/dev/null 2>&1
-echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null
+fi
+if [[ -e $bc ]] && grep -q ":3000" < $bc ; then
+delete_line $bc ":3000" >/dev/null 2>&1
 fi
 
 #strange behaviour with capitalisation changing frequently.
