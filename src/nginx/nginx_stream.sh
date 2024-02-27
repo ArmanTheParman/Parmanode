@@ -58,12 +58,16 @@ sudo cp $nginx_conf ${nginx_conf}_backup >/dev/null 2>&1
 source $pp/parmanode/src/nginx/stream.conf >/dev/null 2>&1
 
 #unset what is not installed
+if [[ $1 != electrs ]] ; then
 if ! grep -q "electrs-end" < $ic && ! grep -q "electrs2-end" < $ic && ! grep -q "electrsdkr" ; then
 unset upstream_electrs server_electrs
 fi
+fi
 
+if [[ $1 != public_pool ]] ; then
 if ! grep -q "public_pool-end" < $ic ; then
 unset upstream_public_pool server_public_pool
+fi
 fi
 
 #unset what is to be deleted
