@@ -13,7 +13,7 @@ return 1
 fi
 
 #start container
-if ! docker ps >/dev/null 2>&1 | grep -q bre ; then #is bre container running?
+if ! docker ps 2>&1 | grep -q bre ; then #is bre container running?
     docker start bre
 fi
 #start program

@@ -32,7 +32,7 @@ clear
 cd $hp/pi-apps
 ./uninstall
 cd $hp
-rm -rf $hp/pi-apps 2>&1
+rm -rf $hp/pi-apps >/dev/null 2>&1
 installed_conf_remove "piapps-"
 success "PiApps" "being uninstalled"
 }

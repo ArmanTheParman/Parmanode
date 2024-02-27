@@ -96,7 +96,7 @@ function autoupdate_toggle {
 
 while true ; do
 
-if crontab -l | grep -q parmanode || grep -q "parmanode" < /etc/crontab 2>&1 ; then
+if crontab -l | grep -q parmanode || grep -q "parmanode" < /etc/crontab ; then
 clear
 p="ON"
 else

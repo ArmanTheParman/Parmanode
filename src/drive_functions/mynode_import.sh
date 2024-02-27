@@ -126,7 +126,7 @@ export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
 # label
 while sudo lsblk -o LABEL | grep -q myNode ; do
 echo "Changing the label to parmanode"
-sudo e2label $disk parmanode 2>&1
+sudo e2label $disk parmanode >/dev/null 2>&1
 sleep 1
 done
 # fstab configuration
