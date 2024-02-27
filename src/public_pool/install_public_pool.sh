@@ -107,7 +107,6 @@ docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
 docker run -d --name public_pool_ui -p 5050:80 -p 3333:3333 -p 3334:3334 -p 3335:3335 public_pool_ui ; debug "run done"
-fi
 
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
 
