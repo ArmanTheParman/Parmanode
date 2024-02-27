@@ -11,13 +11,12 @@ set_terminal
 cat << EOF > /tmp/bitcoin.conf
 server=1
 txindex=1
-rpcservertimeout=120
-blockfilterindex=1
 daemon=1
+blockfilterindex=1
 rpcport=8332
 
-zmqpubrawblock=tcp://127.0.0.1:28332
-zmqpubrawtx=tcp://127.0.0.1:28333
+zmqpubrawblock=tcp://*:28332
+zmqpubrawtx=tcp://*:28333
 
 whitelist=127.0.0.1
 rpcbind=0.0.0.0
@@ -25,6 +24,8 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
+
+rpcservertimeout=120
 EOF
 
 if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 

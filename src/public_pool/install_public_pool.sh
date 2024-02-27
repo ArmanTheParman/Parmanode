@@ -71,7 +71,9 @@ make_public_pool_env ; debug "made env"
 
 # Add ZMQ connection to bitcoin.conf
 # Parmanode uses port 3000 for RTL, so can't use that for pool.
-echo "zmqpubrawblock=tcp://*:5000" | tee -a $bc >/dev/null ; debug "$bc edited"
+if [[ -e $bc ]] ; then delete_line "$bc" ":28332"
+echo "zmqpubrawblock=tcp://*:28332" | tee -a $bc >/dev/null ; debug "$bc edited"
+fi
 
 #Set Dockerfile
 local file=$hp/public_pool/Dockerfile

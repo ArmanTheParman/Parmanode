@@ -44,8 +44,6 @@ $cyan
                    http://127.0.0.1:505${red}1$cyan
                    https://127.0.0.1:505${red}2$cyan
                    https://$IP:505${red}2$cyan
-$pink
-                   ZMQ data available at port 5000 (not 3000) $orange
 
       Tor Access (SSL):$bright_blue  
 $tor_URL
