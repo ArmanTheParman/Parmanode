@@ -3,7 +3,7 @@ TEMPLATE FOR PARMANODL
 Thank you for buying/using Parmanode.
 
 To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
-Terminal is run by clicking that black icon at the top.
+Terminal is run by clicking that black icon on the taskbar.
 
 On Pi's, the Terminal doesn't automatically resize, so please widen the 
 screen and make it taller using the mouse so the text doesn't wrap 

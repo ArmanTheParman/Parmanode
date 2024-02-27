@@ -13,7 +13,7 @@ $orange
     the file system of your Linux computer? Even if it's a drive connected to the 
     remote computer, you can connect it to your Linux.
 
-        1) Insall sshfs    (sudo apt-get install sshfs)
+        1) Install sshfs    (sudo apt-get install sshfs)
 
         2) Create somethere on the Linux machine to mount, e.g.
 
@@ -57,9 +57,9 @@ $orange
     of your chair.
 
     type:
-
+$cyan
         ssh usernam@IP_address
-    
+   $orange 
     Then you'll have to put the password for that username to access the computer.
 
     Then you should be in.
