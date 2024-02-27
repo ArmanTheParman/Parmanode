@@ -124,7 +124,7 @@ sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/
 # label
 while sudo lsblk -o LABEL | grep -q BLOCKCHAIN ; do
 echo "Changing the label to parmanode"
-sudo e2label $disk parmanode 2>&1
+sudo e2label $disk parmanode >/dev/null 2>&1
 sleep 1
 done
 

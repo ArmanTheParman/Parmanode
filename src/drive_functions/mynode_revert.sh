@@ -106,9 +106,9 @@ set_terminal ; echo -e "
 " ; enter_continue ; set_terminal
 
 cd
-sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* 2>&1
-sudo umount /media/$USER/parmanode 2>&1
+sudo umount $disk >/dev/null >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+sudo umount /media/$USER/parmanode >/dev/null 2>&1
 
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 

@@ -79,8 +79,8 @@ done
 
 #$prune_value set earlier when function called (see function below)
 
-parmanode_conf_remove "prune_value=" 2>&1 
-parmanode_conf_add "prune_value=$prune_value" >/dev/null 2>&1
+parmanode_conf_remove "prune_value="
+parmanode_conf_add "prune_value=$prune_value" 
 # Prune choice gets added to bitcoin.conf elsewhere in the code
 }
 

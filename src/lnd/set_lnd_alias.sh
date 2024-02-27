@@ -42,6 +42,6 @@ done
 
 if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
 delete_line "$HOME/.lnd/lnd.conf" "alias="
-echo "alias=$alias" >> $HOME/.lnd/lnd.conf 2>&1
+echo "alias=$alias" >> $HOME/.lnd/lnd.conf
 fi
 }

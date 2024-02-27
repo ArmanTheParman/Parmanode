@@ -91,7 +91,7 @@ export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
 echo "Changing the label to BLOCKCHAIN"
-sudo e2label $disk BLOCKCHAIN 2>&1
+sudo e2label $disk BLOCKCHAIN >/dev/null 2>&1
 sleep 1
 done
 # fstab configuration
@@ -116,11 +116,11 @@ set_terminal ; echo -e "
 
 cd
 sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* 2>&1
-sudo umount /media/$USER/parmanode 2>&1
+sudo umount /media/$USER/parmanode* >/dev/null 2>&1
+sudo umount /media/$USER/parmanode >/dev/null 2>&1
 
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep UUID) >/dev/null 2>&1
 if grep -q $UUID < /etc/fstab ; then
 delete_line "/etc/fstab" "$UUID"
 fi
