@@ -35,7 +35,7 @@ FROM node:18.16.1-bookworm-slim
 
 
 # Expose ports for Stratum and Bitcoin RPC
-EXPOSE 3333 3334 
+EXPOSE 3333 3334 8332
 
 WORKDIR /public-pool
 
@@ -51,4 +51,4 @@ COPY --from=build /build .
          tor \
      && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["/usr/local/bin/node", "dist/main" "tor"]
+CMD ["/usr/local/bin/node", "dist/main", "tor"]
