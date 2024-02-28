@@ -27,8 +27,10 @@ fi
 #if ! which nginx >/dev/null ; then install_nginx ; fi
 #trying socat instead
 if [[ $OS == Linux ]] ; then
-if ! which socat >/dev/null | then sudo apt-get update -y ; sudo apt install socat -y ; fi
-elif [[ $OS == Mac ]] ; then brew_check || return 1 ; brew install socat 
+    if ! which socat >/dev/null | then sudo apt-get update -y ; sudo apt install socat -y ; fi
+elif [[ $OS == Mac ]] ; then 
+    brew_check || return 1 
+    brew install socat 
 fi
 
 
@@ -42,6 +44,7 @@ echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
 supposed to sync to the external drive and it is not connected and mounted.
 Hit <enter> to try again once you connect the drive."
 fi
+
 if [[ ! -e $bc ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
 return jb1 
