@@ -84,6 +84,7 @@ fi
 
 rm -rf $HOME/parmanode/electrs && rm -rf $HOME/.electrs                        >/dev/null 2>&1
 
+rm $dp/*socat_electrs.sh >/dev/null
 parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrsdkr" 
 success "electrs" "being uninstalled."

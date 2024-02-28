@@ -21,7 +21,7 @@ then
 
             while [[ \$counter -le 5 ]] ; do   #Checking if it's mounted, up to 5 times, 1 second each, then exit...
 
-                mount_point=\"/media/$(whoami)/parmanode\"
+                mount_point=\"/media/$USER/parmanode\"
 
                     if [ -n \"\$mount_point\" ] && mountpoint -q \"\$mount_point\" 
                     then 
