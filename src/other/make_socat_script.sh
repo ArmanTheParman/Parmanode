@@ -12,7 +12,7 @@ echo \"\$!\" > $dp/.socat2
 #stop script (run by service file)
 echo "#!/bin/bash
 kill -9 \$(cat $dp/.socat1)
-kill -9 \$(cat $dp/.socat1)
+kill -9 \$(cat $dp/.socat2)
 " | tee $dp/stop_socat_electrs.sh >/dev/null
 
 # make executable:
