@@ -8,8 +8,8 @@ After=bitcoind.service
 
 [Service]
 WorkingDirectory=/home/$USER/parmanode/electrs
-ExecStartPre=$dp/start_socat_script.sh
-ExecStop=$dp/stop_socat_script.sh
+ExecStartPre=$dp/start_socat_electrs.sh
+ExecStop=$dp/stop_socat_electrs.sh
 ExecStart=/home/$USER/parmanode/electrs/target/release/electrs --conf /home/$USER/.electrs/config.toml
 User=$USER
 Group=$(id -ng)

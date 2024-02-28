@@ -15,6 +15,7 @@ if [[ $OS == Linux ]] ; then
 if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
 elif [[ $OS == Mac ]] ; then brew_check || return 1 ; brew install socat 
 fi
+make_socat_script electrs
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
