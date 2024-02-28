@@ -1,7 +1,7 @@
 function nginx_stream {
 # if [[ -z $1 ]] ; then announce "no 1st argument to stream. aborting" ; return 1 ; fi
 
-service="$1" #expecting electrs or public_pool
+service="$1" #expecting electrs or public_pool --- public_pool removed from this for now, but uninstall left.
 instruction=$"2" #expecting install or remove
 
 
@@ -26,7 +26,9 @@ sudo nginx -t >/dev/null 2>&1 || \
  while true ; do 
 echo -e "
 ########################################################################################
+$red
    Something is wrong with the nginx configuration file(s). 
+$orange
    Before making any changes, Parmanode tested the configuration with the command $cyan
        sudo nginx -t $orange
    ... and the test failed. This means that Nginx won't run as the file stands before
@@ -117,8 +119,9 @@ if [[ ! $faulty_nginx_conf == true ]] ; then
     announce "Something went wrong with the nginx conf setup. The file
     has been restored to the original. The erroneous file has been saved to $cyan
     /tmp/nginx.conf_error.$orange Please report error to Parman.
-    
-    " && return 1
+
+    Continuing, but Nginx configuration not optimal.
+    " 
     }
 
 fi
