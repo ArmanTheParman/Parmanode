@@ -185,7 +185,7 @@ q|Q|Quit|QUIT) exit 0 ;; p|P) return 1 ;;
 
     i|I)
     if [[ $OS == "Linux" ]] ; then sudo apt-get install curl -y ; break ; fi 
-    if [[ $OS == "Mac" ]] ; then brew_check curl ; brew install curl ; break ; fi
+    if [[ $OS == "Mac" ]] ; then brew_check || return 1 ; brew install curl ; break ; fi
     ;;
 
     *) invalid ;; 

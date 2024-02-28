@@ -9,7 +9,12 @@ grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second 
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-if ! which nginx >/dev/null ; then install_nginx ; fi
+#if ! which nginx >/dev/null ; then install_nginx ; fi
+#trying socat instead
+if [[ $OS == Linux ]] ; then
+if ! which socat >/dev/null | then sudo apt-get update -y ; sudo apt install socat -y ; fi
+elif [[ $OS == Mac ]] ; then brew_check || return 1 ; brew install socat 
+fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -108,7 +113,8 @@ fi
 rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
-nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; } #must be after certificates made or install will fail
+#trying socat instead
+#nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; } #must be after certificates made or install will fail
 
 #prepare drives. #drive_electrs= variable set.
 choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
