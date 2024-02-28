@@ -107,7 +107,7 @@ sudo cp $pp/parmanode/src/public_pool/environment* $hp/public_pool_ui/src/enviro
 docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
-docker run -d --name public_pool_ui -p 5050:80  -p 3344:3334 -p 3343:3333 public_pool_ui ; debug "run done"
+docker run -d --name public_pool_ui -p 5050:80  -p 3334:3334 -p 3333:3333 public_pool_ui ; debug "run done"
 echo "pausing to determine if run command worked."
 enter_continue
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
