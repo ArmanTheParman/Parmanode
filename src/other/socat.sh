@@ -6,5 +6,6 @@ socat OPENSSL-LISTEN:50006,reuseaddr,fork,cert=$hp/electrs/cert.pem,key=key.pem,
 
 socat TCP-LISTEN:50055,reuseaddr,fork TCP:127.0.0.1:50005
 
+fi
 
 }
