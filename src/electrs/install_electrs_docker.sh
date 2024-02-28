@@ -32,7 +32,7 @@ elif [[ $OS == Mac ]] ; then
     brew_check || return 1 
     brew install socat 
 fi
-
+make_socat_script electrs
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
