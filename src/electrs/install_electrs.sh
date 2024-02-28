@@ -12,7 +12,7 @@ grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting.
 #if ! which nginx >/dev/null ; then install_nginx ; fi
 #trying socat instead
 if [[ $OS == Linux ]] ; then
-if ! which socat >/dev/null | then sudo apt-get update -y ; sudo apt install socat -y ; fi
+if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
 elif [[ $OS == Mac ]] ; then brew_check || return 1 ; brew install socat 
 fi
 
