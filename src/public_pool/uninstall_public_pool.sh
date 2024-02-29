@@ -50,7 +50,7 @@ stop_public_pool >/dev/null 2>&1
 docker rm public_pool public_pool_ui ; debug "containers stopped and removed"
 cd
 rm -rf $hp/public_pool $hp/public_pool_ui >/dev/null 2>&1
-rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui
+rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui >/dev/null 2>&1
 debug "after rm"
 nginx_public_pool_ui remove
 nginx_stream public_pool remove
