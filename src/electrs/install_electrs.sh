@@ -106,7 +106,7 @@ else #if [[ $electrs_compile == "true" ]] ; then
     set_terminal ; please_wait
     build_dependencies_electrs || return 1 
     download_electrs && log "electrs" "download_electrs success" 
-    compile_electrs || return 1
+    { compile_electrs && backup_electrs_do ; } || return 1
     log "electrs" "compile_electrs done" 
 
 fi
@@ -156,9 +156,10 @@ if [[ $OS == Linux ]] ; then make_electrs_service ; debug "service file done" ; 
 
 installed_config_add "electrs2-end" ; debug "finished electrs install"
 
-if [[ $electrs_compile == "true" ]] ; then
-    backup_electrs
-fi
+# just automatically backing up right after compile, no need to ask.
+# if [[ $electrs_compile == "true" ]] ; then
+#     backup_electrs
+# fi
 
 success "electrs" "being installed"
 

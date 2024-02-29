@@ -1,3 +1,4 @@
+#will just skip this to backup_electrs_do
 function backup_electrs {
 while true ; do
 
