@@ -1,4 +1,18 @@
 function nginx_clash {
+
+if [[ $1 == public_pool_ui ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+
+    There is an Nginx error. Public_Pool needs Nginx to configure SSL traffic to 
+    your machine, but there is a port 80 conflict. Aborting.
+
+########################################################################################
+"
+return 1
+fi
+
+
 if [[ $OS == Mac ]] ; then local nginxDir="/usr/local/etc/nginx" ; fi
 if [[ $OS == Linux ]] ; then local nginxDir="/etc/nginx" ; fi
 
@@ -17,7 +31,7 @@ set_terminal ; echo -e "
     typical for a web server, and in fact, even without a webserver, just by having
     Nginx installed, it's typical for it to be listening on port 80.
     
-    If there is a port clash, Nginx or PiHole won't work.
+    If there is a port clash, Nginx won't work.
 $green
 
                        For now, it's all good, we can continue.
@@ -36,7 +50,7 @@ set_terminal ; echo -e "
     Parmanode has detected that NGINX is installed on your system. Nginx usually 
     listens on PORT 80 by default (the regualy http internet traffic port).
 
-    Unfortunately, PiHole needs that port and it can't be changed. 
+    Unfortunately, $1 needs that port and it can't be changed. 
 
     You have options.
 
@@ -49,7 +63,7 @@ set_terminal ; echo -e "
                               listening directive to 50080, freeing up port 80
 
                          4)$red   Abort$orange, maybe you'll make the Nginx changes yourself,
-                              later, and maybe try installing PiHole later.
+                              later, and maybe try installing $1 later.
                          
 ########################################################################################
 " 
@@ -101,7 +115,7 @@ brew services stop nginx
     fi
 fi
 
-announce "Do make sure to not run Nginx and PiHole at the same time or
+announce "Do make sure to not run Nginx and $1 at the same time or
     you will get port conflicts leading to errors."
 return 0
 ;;
@@ -140,8 +154,8 @@ echo -e "$orange
 
     You only need to find the pattern of text listed above and modify those.
 
-    When done, if you've been successful, running the PiHole installation again
-    will bypass this prompt.
+    When done, if you've been successful, running the $ installation 
+    again will bypass this prompt.
 $pink
     You must restart Nginx for the changes to take effect.
 $orange

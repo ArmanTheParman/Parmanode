@@ -1,4 +1,9 @@
 function install_public_pool {
+if grep -q "pihole" < $ic >/dev/null ; then
+announce "Can't install Public Pool and PiHole on the same system. Aborting."
+return 1
+fi
+
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi #for now
 set_terminal 
 
@@ -18,6 +23,17 @@ fi
 
 if ! which nginx >/dev/null 2>&1 ; then delete_line "$ic" "nginx-" ; install_nginx ; debug "nginx1?" ; fi
 #nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
+
+#check for port 80 clash
+if sudo netstat -tulnp | grep :80 | grep -q nginx ; then
+sudo rm -rf /etc/nginx/sites-enabled/default >/dev/null 2>&1
+sudo systemctl restart nginx >/dev/null 2>&1
+fi
+
+if sudo netstat -tulnp | grep :80 | grep -q nginx ; then
+nginx_clash
+return 1
+fi
 
 #check Docker running, esp Mac
 if ! docker ps >/dev/null 2>&1 ; then echo -e "
