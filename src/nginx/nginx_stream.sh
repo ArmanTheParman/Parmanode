@@ -1,6 +1,8 @@
 function nginx_stream {
 # if [[ -z $1 ]] ; then announce "no 1st argument to stream. aborting" ; return 1 ; fi
 
+if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
+
 service="$1" #expecting electrs or public_pool
 instruction=$"2" #expecting install or remove
 
