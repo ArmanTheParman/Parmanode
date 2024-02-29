@@ -1,5 +1,11 @@
 function install_pihole {
 
+if grep -q "public_pool" < $ic >/dev/null ; then
+announce "Can't install PiHole and Public_Pool on the same system. Aborting."
+return 1
+fi
+
+
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -39,7 +45,7 @@ enter_continue
 # Install Docker
 if ! which docker >/dev/null 2>&1 ; then install_docker || return 1 ; fi
 
-nginx_clash || return 1
+nginx_clash PiHole || return 1
 
 if [[ $OS == Linux ]] ; then systemd-resolved_disable || return 1 ; fi
 
