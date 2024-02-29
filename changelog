@@ -1,3 +1,6 @@
+Version 3.32.3
+    -Electrs SSL connection way better with socat instead of nginx
+    -Electrs SSL certificate improved
 Version 3.32.2
     -Public pool stratum port fix
 Version 3.32.1
