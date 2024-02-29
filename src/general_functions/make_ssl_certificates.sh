@@ -26,7 +26,7 @@ else
     cd $hp/${1}
 fi
 
-openssl req -newkey rsa:2048 -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=127.0.0.1/ST/emailAddress=/" >/dev/null 2>&1
+openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=127.0.0.1/ST/emailAddress=/" >/dev/null 2>&1
 
 }
 
