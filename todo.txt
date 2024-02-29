@@ -1,3 +1,5 @@
+Convert all nginx usage to socat, as much as possible - inconsistant nginx
+installations across Linux systems causing issues, paritularly the stream module.
 
 use "#check" as markers to come back to
 Baobab - drive space GUI
