@@ -89,12 +89,13 @@ fi
 if [[ ! $faulty_nginx_conf == true ]] ; then
 
     sudo nginx -t || { echo "" 
-    echo "Something went wrong with the nginx conf setup. The file
+    echo -e "Something went wrong with the nginx conf setup. The file
     has been restored to the original. The erroneous file will be saved to $cyan
     /tmp/nginx.conf_error after you hit <enter>.$orange Please report error to Parman.
 
     Continuing, but Nginx configuration not optimal.
     " 
+    enter_continue
     sudo cp ${nginx_conf} /tmp/nginx.conf_error 
     sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 
     sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
