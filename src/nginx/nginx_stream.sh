@@ -22,34 +22,7 @@ fi
 remove_old_electrs_stream_from_nginxconf
 
 if [[ $1 != remove ]] ; then
-sudo nginx -t >/dev/null 2>&1 || \
- while true ; do 
-echo -e "
-########################################################################################
-$red
-   Something is wrong with the nginx configuration file(s). 
-$orange
-   Before making any changes, Parmanode tested the configuration with the command $cyan
-       sudo nginx -t $orange
-   ... and the test failed. This means that Nginx won't run as the file stands before
-   any changes are made.
-
-   What would you like to do?...
-$red
-                            c)    Continue  (Proceed with caution)
-$green
-                            a)    Abort
-$orange
-########################################################################################
-"
-choose "xpmq" ; read choice 
-case $choice in q|Q) exit 0 ;; p|P) return 1 ;; a|A|m|M) back2main ;;
-c) 
-faulty_nginx_conf=true
-break ;;
-*) invalid ;;
-esac
-done
+sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf=true
 fi
 
 #create a back up in case it breaks
