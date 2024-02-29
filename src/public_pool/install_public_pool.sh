@@ -1,4 +1,5 @@
 function install_public_pool {
+if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi #for now
 set_terminal 
 
 if [[ $OS == Mac ]] ; then
