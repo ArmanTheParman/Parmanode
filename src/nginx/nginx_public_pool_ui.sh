@@ -37,7 +37,7 @@ server {
         ssl_prefer_server_ciphers on;
         
         location / {
-            proxy_pass http://localhost:5050;
+            proxy_pass http://localhost:80;
         }
 }
 " | sudo tee $conf_file >/dev/null 2>&1
