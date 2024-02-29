@@ -1,0 +1,20 @@
+function make_socat_service_listen {
+echo "[Unit]
+Description=Socat SSL to TCP Forwarding Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat OPENSSL-LISTEN:50006,reuseaddr,fork,cert=$hp/electrs/cert.pem,key=$hp/electrs/key.pem,verify=0 TCP:127.0.0.1:50055
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+}" | sudo tee /etc/systemd/system/socat_listen.service >/dev/null 2>&1
+
+sudo systemctl daemon-reload
+sudo systemctl enable socat_listen.service
+sudo systemctl start socat_listen.service
+}
