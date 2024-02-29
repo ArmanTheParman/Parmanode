@@ -1,5 +1,5 @@
 function make_socat_script {
-
+true
 # if [[ $1 == electrs ]] ; then
 # #start script (run by service file)
 # echo "#!/bin/bash
