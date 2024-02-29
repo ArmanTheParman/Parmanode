@@ -108,13 +108,13 @@ docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
 docker run -d --name public_pool_ui -p 5050:80 -p 3343:3333 public_pool_ui ; debug "run done"
+make_socat_script "public_pool_ui"
 $dp/start_socat_public_pool_ui.sh  # starts socat and captures process ID
 debug "pause"
 
 echo "pausing to determine if run command worked."
 enter_continue
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
-make_socat_script "public_pool_ui"
 
 ########################################################################################
 # configure and restart nginx last
