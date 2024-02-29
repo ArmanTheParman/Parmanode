@@ -26,7 +26,13 @@ else
     cd $hp/${1}
 fi
 
-openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=127.0.0.1/ST/emailAddress=/" >/dev/null 2>&1
+#for populating the open ssl key command
+if [[ $1 == public_pool_ui ]] ; then local address="localhost"
+else
+local address="127.0.0.1"
+fi
+
+openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=$address/ST/emailAddress=/" >/dev/null 2>&1
 
 }
 
