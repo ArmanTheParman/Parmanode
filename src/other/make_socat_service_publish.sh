@@ -15,7 +15,7 @@ WantedBy=multi-user.target
 }" | sudo tee /etc/systemd/system/socat_publish.service >/dev/null 2>&1
 
 
-sudo systemctl daemon-reload
-sudo systemctl enable socat_publish.service
-sudo systemctl start socat_publish.service
+sudo systemctl daemon-reload >/dev/null 2>&1
+sudo systemctl enable socat_publish.service >/dev/null 2>&1
+sudo systemctl start socat_publish.service >/dev/null 2>&1
 }
