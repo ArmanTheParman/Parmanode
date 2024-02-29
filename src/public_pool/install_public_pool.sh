@@ -18,7 +18,7 @@ fi
 
 if ! which nginx >/dev/null 2>&1 ; then install_nginx ; fi
 
-# nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
+nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
 
 #check Docker running, esp Mac
 if ! docker ps >/dev/null 2>&1 ; then echo -e "
@@ -112,8 +112,8 @@ enter_continue
 docker run -d --name public_pool_ui --network=host public_pool_ui ; debug "run done"
 #certs before socat
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
-make_socat_script "public_pool_ui"
-$dp/start_socat_public_pool_ui.sh  # starts socat and captures process ID
+# make_socat_script "public_pool_ui"
+# $dp/start_socat_public_pool_ui.sh  # starts socat and captures process ID
 debug "pause"
 
 echo "pausing to determine if run command worked."
