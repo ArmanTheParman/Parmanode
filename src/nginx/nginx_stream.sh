@@ -101,6 +101,6 @@ fi
 
 }
 function remove_old_electrs_stream_from_nginxconf {
-if [[ $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-if [[ $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
 }
