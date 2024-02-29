@@ -27,7 +27,7 @@ else
 fi
 
 #for populating the open ssl key command
-if [[ $1 == public_pool_ui ]] ; then local address="127.0.0.1"
+if [[ $1 == public_pool_ui ]] ; then local address="localhost"
 else
 local address="127.0.0.1"
 fi
