@@ -16,8 +16,7 @@ elif [[ $OS == Linux ]] ; then
     fi
 fi
 
-if ! which nginx >/dev/null 2>&1 ; then install_nginx ; debug "nginx1?" ; fi
-debug "nginx2?"
+if ! which nginx >/dev/null 2>&1 ; then delete_line "$ic" "nginx-" ; install_nginx ; debug "nginx1?" ; fi
 
 nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
 
