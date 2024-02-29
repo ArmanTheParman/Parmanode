@@ -25,8 +25,8 @@ if [[ $1 == public_pool_ui ]] ; then
 echo "#!/bin/bash
 socat OPENSSL-LISTEN:5052,reuseaddr,fork,cert=$hp/public_pool_ui/cert.pem,key=$hp/public_pool_ui/key.pem,verify=0 TCP:127.0.0.1:5062 >> $dp/socat.log 2>&1 &
 echo \"\$!\" > $dp/.socat1_public_pool_ui
-socat TCP-LISTEN:5062,reuseaddr,fork TCP:127.0.0.1:80 >> $dp/socat.log 2>&1 &
 
+socat TCP-LISTEN:5062,reuseaddr,fork TCP:127.0.0.1:80 >> $dp/socat.log 2>&1 &
 echo \"\$!\" > $dp/.socat2_public_pool_ui
 " | tee $dp/start_socat_public_pool_ui.sh >/dev/null
 
@@ -34,6 +34,7 @@ echo \"\$!\" > $dp/.socat2_public_pool_ui
 echo "#!/bin/bash
 kill -9 \$(cat $dp/.socat1_public_pool_ui)
 kill -9 \$(cat $dp/.socat2_public_pool_ui)
+rm $dp/.socat*_public_pool_ui*
 " | tee $dp/stop_socat_public_pool_ui.sh >/dev/null
 
 # make executable:
