@@ -26,8 +26,7 @@ else
     cd $hp/${1}
 fi
 
-openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:2048 >/dev/null
-openssl req -newkey -x509 -key key.pem -out cert.pem -days 36500 -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=/" >/dev/null 2>&1
+openssl req -newkey rsa:2048 -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=127.0.0.1/ST/emailAddress=/" >/dev/null 2>&1
 
 }
 
