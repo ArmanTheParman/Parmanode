@@ -14,7 +14,7 @@ KillMode=process
 WantedBy=multi-user.target
 }" | sudo tee /etc/systemd/system/socat_listen.service >/dev/null 2>&1
 
-sudo systemctl daemon-reload
-sudo systemctl enable socat_listen.service
-sudo systemctl start socat_listen.service
+sudo systemctl daemon-reload >/dev/null 2>&1
+sudo systemctl enable socat_listen.service >/dev/null 2>&1
+sudo systemctl start socat_listen.service >/dev/null 2>&1
 }
