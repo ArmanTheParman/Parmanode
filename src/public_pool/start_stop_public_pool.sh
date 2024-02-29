@@ -1,6 +1,6 @@
 function stop_public_pool {
 docker stop public_pool public_pool_ui
-stop_socat_public_pool_ui
+#stop_socat_public_pool_ui
 }
 
 function start_public_pool {
@@ -13,5 +13,5 @@ enter_continue
 return 1
 fi
 docker start public_pool public_pool_ui
-start_socat_public_pool_ui
+#start_socat_public_pool_ui
 }

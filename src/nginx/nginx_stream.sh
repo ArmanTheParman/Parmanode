@@ -10,13 +10,13 @@ instruction=$"2" #expecting install or remove
 if [[ $OS == Mac ]] ; then
 nginx_conf="/usr/local/etc/nginx/nginx.conf"
 #ssl_cert="$hp/$service/cert.pem" 
-#ssk_key="$hp/$service/key.pem"
+#ssl_key="$hp/$service/key.pem"
 streamfile="/usr/local/etc/nginx/stream.conf"
 
 elif [[ $OS == Linux ]] ; then
 nginx_conf="/etc/nginx/nginx.conf"
 #ssl_cert="$hp/$service/cert.pem" 
-#ssk_key="$hp/$service/key.pem"
+#ssl_key="$hp/$service/key.pem"
 streamfile="/etc/nginx/stream.conf"
 fi
 
