@@ -111,6 +111,7 @@ docker run -d --name public_pool_ui -p 5050:80 -p 3343:3333 public_pool_ui ; deb
 echo "pausing to determine if run command worked."
 enter_continue
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
+make_socat_script "public_pool_ui"
 
 ########################################################################################
 # configure and restart nginx last
