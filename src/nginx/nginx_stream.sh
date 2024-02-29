@@ -97,7 +97,7 @@ if [[ ! $faulty_nginx_conf == true ]] ; then
     sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
     sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
     sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1 
-    }
+    ; }
 
 fi
 
