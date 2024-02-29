@@ -93,11 +93,9 @@ if [[ ! $faulty_nginx_conf == true ]] ; then
     /tmp/nginx.conf_error after you hit <enter>.$orange Please report error to Parman.
 
     Continuing, but Nginx configuration not optimal.
-    " 
-    sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
+    " ; sudo cp ${nginx_conf} /tmp/nginx.conf_error && \
     sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 && \
-    sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1 
-    ; }
+    sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1 ; }
 
 fi
 
