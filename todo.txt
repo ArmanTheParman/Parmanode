@@ -1,7 +1,4 @@
-Convert all nginx usage to socat, as much as possible - inconsistant nginx
-installations across Linux systems causing issues, paritularly the stream module.
-
-use "#check" as markers to come back to
+Use "#check" as markers to come back to
 Baobab - drive space GUI
 
 system-health-check
@@ -21,6 +18,8 @@ regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
 more menu signals with option to dismiss forever - eg "bitcoind is not a typo. type
 OK1 and <enter> to dismiss forever
+
+Satsale
 
 ########################################################################################
 For Version 4
