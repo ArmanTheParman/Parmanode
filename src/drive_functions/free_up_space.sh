@@ -58,7 +58,8 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Delete unused Docker containers/images etc? $bright_blue (This can be slow)$orange
+    Delete unused Docker containers/images etc? $bright_blue (This can be very slow,
+    potentially several minutes).$orange
 $green
     y)        yes
 $red
@@ -172,6 +173,7 @@ invalid
 ;;
 esac
 done
-
-success "Here ends the internal disk cleanup tool"
+space_left_h=$(df -h | grep -E '\/$' | awk '{print $4}' | tr -d \r)
+success "Here ends the internal disk cleanup tool. Parmanode
+    detects that you have $space_left_h available on the internal disk."
 }
