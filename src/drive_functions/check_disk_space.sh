@@ -29,7 +29,7 @@ $orange
     work over SSH by the way. On Linux, get it with:
 $cyan
     sudo apt-get install baobab $orange
-
+ 
 ########################################################################################
 "
 enter_continue
