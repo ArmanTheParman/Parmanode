@@ -1,5 +1,8 @@
 function mod_thub_env {
 
+master_password_thub || return 1
+thub_lnd
+
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -61,5 +64,6 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+
 
 }

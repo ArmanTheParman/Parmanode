@@ -46,16 +46,11 @@ git clone --depth 1 https://github.com/apotdevin/thunderhub.git
 cd thunderhub
 
 make_thub_env || return 1
-master_password_thub || return 1
 
+build_thub || return 1 
 
-
-# #docker install
-# docker pull apotdevin/thunderhub:$version
-# docker run --rm -d -p $thub_port:3000/tcp apotdevin/thunderhub:$version
-
-
+run_thub_docker || return 1
 installed_conf_add "thunderhub-start"
-
+success "Thunderhub has finished being installed"
 }
 

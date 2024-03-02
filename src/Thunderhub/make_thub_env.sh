@@ -85,8 +85,8 @@ DANGEROUS_NO_SSO_AUTH=true
 # -----------
 # SSL Config
 # -----------
-PUBLIC_URL='app.example.com'
-SSL_PORT=8080
-SSL_SAVE=true
+# PUBLIC_URL='app.example.com'
+SSL_PORT=2900
+# SSL_SAVE=true
 " | tee $hp/thunderhub/.env.local >/dev/null 2>&1
 }
