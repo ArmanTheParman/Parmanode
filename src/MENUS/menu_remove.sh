@@ -14,7 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public_poolmenu
+unset public_poolmenu electrumxmenu thunderhubmenu
 
 echo -e "
 ########################################################################################
@@ -317,7 +317,7 @@ if [[ $rtlmenu == 1 ]] ; then
 	;;
 th)
 if [[ $thunderhubmenu == 1 ]] ; then
-    uninstall_thunderhub
+    uninstall_thub
 	return 0
 	fi
 	;;

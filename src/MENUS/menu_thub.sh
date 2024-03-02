@@ -1,4 +1,4 @@
-function menu_thunderhub {
+function menu_thub {
 source $pc >/dev/null
 while true ; do set_terminal ; echo -e "
 ########################################################################################
@@ -23,10 +23,10 @@ m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 start|Start|START|S|s)
-start_thunderhub 
+start_thub
 ;;
 stop)
-stop_thunderhub
+stop_thub
 ;;
 *)
 invalid
