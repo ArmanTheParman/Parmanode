@@ -21,6 +21,7 @@ while true ; do
 { netstat -tuln | grep -q :2997 && break ; } || export thub_port="2996"
 { netstat -tuln | grep -q :2996 && break ; } || export thub_port="2995"
 announce "Unable to find a free port between 2995 and 2999 inclusive. Aborting." && return 1
+parmanode_conf_add "thub_port=$thub_port"
 done
 
 #make sure bitcoin installed
@@ -44,7 +45,7 @@ fi
 cd $hp
 git clone --depth 1 https://github.com/apotdevin/thunderhub.git
 cd thunderhub
-installed_conf_add "thunderhub-end"
+installed_conf_add "thunderhub-start"
 
 make_thub_env || return 1
 build_thub || return 1 

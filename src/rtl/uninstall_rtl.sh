@@ -1,9 +1,9 @@
 function uninstall_rtl {
 set_terminal ; echo "
 ########################################################################################
-
+$cyan
                                  Uninstall RTL 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
@@ -19,9 +19,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 please_wait
 
-docker stop rtl 2>/dev/null
-docker rm rtl 2>/dev/null
-docker rmi rtl 2>/dev/null
+docker stop rtl
+docker rm rtl 
+docker rmi rtl 
 sudo rm -rf $HOME/parmanode/rtl >/dev/null 2>&1
 sudo rm ./src/rtl/RTL-Config.json >/dev/null 2>&1
 
