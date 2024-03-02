@@ -1,4 +1,7 @@
 function install_thunderhub {
+
+#NOT FINISHED. NEED TO DO ACCOUNTS
+
 set_terminal
 export version="v0.13.30"
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
