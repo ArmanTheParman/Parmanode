@@ -1,5 +1,5 @@
 function uninstall_thub {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall Thunderhub 

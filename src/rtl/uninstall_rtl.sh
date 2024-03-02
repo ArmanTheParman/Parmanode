@@ -1,5 +1,5 @@
 function uninstall_rtl {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall RTL 
