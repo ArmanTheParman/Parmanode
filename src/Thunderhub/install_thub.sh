@@ -16,10 +16,10 @@ enter_continue
 
 #check port with netstat -tulnp
 while true ; do
-netstat -tuln | grep -q :2999  && export thub_port="2998" && break
-netstat -tuln | grep -q :2998  && export thub_port="2997" && break 
-netstat -tuln | grep -q :2997  && export thub_port="2996" && break  
-netstat -tuln | grep -q :2996  && export thub_port="2995" && break
+netstat -tuln | grep -q :2999 || export thub_port="2998" && break
+netstat -tuln | grep -q :2998 || export thub_port="2997" && break 
+netstat -tuln | grep -q :2997 || export thub_port="2996" && break  
+netstat -tuln | grep -q :2996 || export thub_port="2995" && break
 announce "Unable to find a free port between 2995 and 2999 inclusive. Aborting." && return 1
 done
 parmanode_conf_add "thub_port=$thub_port"
