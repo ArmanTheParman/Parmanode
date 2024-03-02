@@ -50,18 +50,17 @@ done
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please note, Thunderhub will allow connections from computers without cookie
-    authentication, which is not considered best security practice - It's fine for
-    your own home network, that's secure, but if you were to expose the wallet to
-    the internet, eg access via a domain, open ports on your router etc, then this
-    method is suboptimal. 
-    
-    I may incorporate cookie authentication options later, but for now this will be 
-    perfectly sufficient and private for most people. If you have the skills you can 
-    modify the settings yourself insted of waiting for me.
+    Please note, because Thunderhub will allow connections from computers without 
+    cookie authentication, it's best to$red not expose the wallet to the internet,$orange eg 
+    access via a domain, open ports on your router etc, as password authentication
+    is not the most secure method.
+
+    If you do want to do that, you should enable cookie authentication. Parmanode does
+    not support that yet, but you can configure it yourself if you know what you're 
+    doing.
 
 ########################################################################################
 "
-
+enter_continue
 
 }
