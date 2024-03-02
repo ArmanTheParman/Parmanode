@@ -7,7 +7,7 @@ export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file 
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode will help yo uinstall$cyan Thunderhub$orange and ask you some questions to 
+    Parmanode will help you install$cyan Thunderhub$orange and ask you some questions to 
     configure it.
 
 ########################################################################################
@@ -16,13 +16,13 @@ enter_continue
 
 #check port with netstat -tulnp
 while true ; do
-{ netstat -tuln | grep -q :2999 && break ; } || export thub_port="2998"
-{ netstat -tuln | grep -q :2998 && break ; } || export thub_port="2997"
-{ netstat -tuln | grep -q :2997 && break ; } || export thub_port="2996"
-{ netstat -tuln | grep -q :2996 && break ; } || export thub_port="2995"
+netstat -tuln | grep -q :2999  && export thub_port="2998" && break
+netstat -tuln | grep -q :2998  && export thub_port="2997" && break 
+netstat -tuln | grep -q :2997  && export thub_port="2996" && break  
+netstat -tuln | grep -q :2996  && export thub_port="2995" && break
 announce "Unable to find a free port between 2995 and 2999 inclusive. Aborting." && return 1
-parmanode_conf_add "thub_port=$thub_port"
 done
+parmanode_conf_add "thub_port=$thub_port"
 
 #make sure bitcoin installed
 if ! grep -q "bitcoin-end" < $ic >/dev/null 2>&1 ; then
