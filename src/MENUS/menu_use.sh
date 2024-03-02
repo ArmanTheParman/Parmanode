@@ -5,6 +5,8 @@ do
 unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp btcpTORapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
+unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
+unset electrumxapp thunderhubapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -324,7 +326,8 @@ ex)
    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
-th) if [[ $thunderhubapp == 1 ]] ; then
+th) 
+   if [[ $thunderhubapp == 1 ]] ; then
    menu_thub
    if [[ -n $1 ]] ; then return 0 ; fi
    fi
