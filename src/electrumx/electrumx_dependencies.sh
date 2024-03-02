@@ -13,7 +13,7 @@ source parmanenv/bin/activate
 debug "virtual environment set? ... $VIRTUAL_ENV"
 cd $hp/electrumx
 pip install plyvel
-python -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
+python3 -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
 deactivate #exits virtual env
 debug "after deactivate command"
 
