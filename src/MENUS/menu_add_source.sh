@@ -474,12 +474,12 @@ fi
 unset thunderhub_i thunderhub_p thunderhub_n
 if grep -q "thunderhub-end" < $HOME/.parmanode/installed.conf ; then 
    #installed
-thunderhub_i="#                                      Thunderhub                                     #"
+thunderhub_i="#                                      Thunderhub                                      #"
 elif grep -q "thunderhub-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-thunderhub_p="#                                      Thunderhub                                     #"
+thunderhub_p="#                                      Thunderhub                                      #"
 else
    #not installed
-thunderhub_n="#                            (th)          Thunderhub                                 #"
+thunderhub_n="#                            (th)          Thunderhub                                  #"
 fi
 }
