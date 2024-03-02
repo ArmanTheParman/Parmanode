@@ -1,11 +1,16 @@
-# Notice - If you use the .env template file and don't want it to be replaced after an update please duplicate and rename to .env.local
-# https://docs.thunderhub.io/setup
+#https://docs.thunderhub.io/setup#server-accounts
+#Makes the file and expands out variables
+#mod_thub_env changes the file as needed
+
+function make_thub_env {
+echo -e "# Info : https://docs.thunderhub.io/setup
 
 # -----------
 # Server Configs
 # -----------
+
 # LOG_LEVEL = 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly' # Default: 'info'
-LOG_LEVEL='info'
+# LOG_LEVEL='info'
 # Can change loging output type:
 # LOG_JSON=true
 # Can make everything go through tor:
@@ -20,6 +25,9 @@ MEMPOOL_URL='https://mempool.space'
 # -----------
 # Interface Configs
 # -----------
+
+# THEME = 'dark' | 'light' | 'night' # Default: 'dark'
+# # # # # # # # # CURRENCY = 'sat' | 'btc' | 'fiat' # Default: 'sat'
 THEME='dark'
 CURRENCY='sat'
 
@@ -53,8 +61,8 @@ NO_VERSION_CHECK=true
 # -----------
 # Account Configs
 # -----------
-ACCOUNT_CONFIG_PATH="$HOME/.thunderhub/account_1.yaml"
-MASTER_PASSWORD_OVERRIDE="$thunderhub_master_password"
+ACCOUNT_CONFIG_PATH='$HOME/.thunderhub/account_1.yaml'
+MASTER_PASSWORD_OVERRIDE='password'
 # YML_ENV_1=''
 # YML_ENV_2=''
 # YML_ENV_3=''
@@ -80,3 +88,5 @@ DANGEROUS_NO_SSO_AUTH=true
 PUBLIC_URL='app.example.com'
 SSL_PORT=8080
 SSL_SAVE=true
+" | tee $hp/thunderhub/.env.local >/dev/null 2>&1
+}
