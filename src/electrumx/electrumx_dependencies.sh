@@ -1,9 +1,9 @@
 function electrumx_dependencies {
-update_computer silent || paus
+update_computer silent
 sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot python3 python3-pip python3-dev \
 build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev \
-rocksdb-tools librocksdb-6.11 | tee -a $dp/electrumx.log
+rocksdb-tools librocksdb-6.11 | tee -a $dp/electrumx2.log
 sudo python3 -m pip install --upgrade pip | tee -a $dp/electrumx.log
 sudo pip3 install virtual env | tee -a $dp/electrumx.log
 debug "virtual env version... $(virtualenv --version)" 
