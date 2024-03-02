@@ -1,6 +1,8 @@
 function install_thunderhub {
 export version="v0.13.30"
 export thub_port="2999"
+export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
+
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -57,10 +59,3 @@ installed_conf_add "thunderhub-start"
 
 }
 
-# function thub_lnd_connection {
-
-# grep -E '^rpclisten=' | grep -Eo ':
-
-# rpclisten=localhost:10009
-# rpclisten=localhost:10009
-# }
