@@ -57,10 +57,10 @@ installed_conf_add "thunderhub-start"
 
 }
 
-function thub_lnd_connection {
+# function thub_lnd_connection {
 
-grep -E '^rpclisten=' | grep -Eo ':
+# grep -E '^rpclisten=' | grep -Eo ':
 
-rpclisten=localhost:10009
-rpclisten=localhost:10009
-}
+# rpclisten=localhost:10009
+# rpclisten=localhost:10009
+# }
