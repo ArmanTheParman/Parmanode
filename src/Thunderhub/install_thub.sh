@@ -2,7 +2,6 @@ function install_thunderhub {
 export version="v0.13.30"
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 
-
 #check port with netstat -tulnp
 while true ; do
 export thub_port="2999"
