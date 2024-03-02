@@ -5,7 +5,7 @@ sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot py
 sudo apt-get install -y build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev | tee -a $dp/electrumx.log 
 sudo apt-get install -y rocksdb-tools librocksdb6.11 | tee -a $dp/electrumx.log
 sudo python3 -m pip install --upgrade pip | tee -a $dp/electrumx.log
-sudo pip3 install virtual env | tee -a $dp/electrumx.log
+sudo pip3 install virtualenv | tee -a $dp/electrumx.log
 debug "virtual env version... $(virtualenv --version)" 
 #virtual env install
 
