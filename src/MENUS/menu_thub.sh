@@ -13,7 +13,7 @@ while true ; do set_terminal ; echo -e "
 
     Connection URL:
 $cyan
-    http://127.0.01:$thub_port 
+    http://127.0.0.1:$thub_port 
 $orange
 ########################################################################################
 "
