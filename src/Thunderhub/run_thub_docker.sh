@@ -1,5 +1,5 @@
 function run_thub_docker {
-docker run --rm -d -p --name thunderhub $thub_port:3000/tcp thunderhub || runfailed=true
+docker run --rm -d --name thunderhub -p $thub_port:3000/tcp thunderhub || runfailed=true
 echo "pausing to see if run command successful"
 enter_continue
 if [[ $runfailed == true ]] ; then 
