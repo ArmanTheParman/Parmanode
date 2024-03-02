@@ -159,7 +159,7 @@ umem) menu_use mem ;;
 uersd) menu_use ersd ;;
 upool) menu_use pool ;;
 uex) menu_use ex ;;
-th) menu_use th ;;
+uth) menu_use th ;;
 
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
