@@ -138,12 +138,11 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
 
 
-if [[ $test == true ]] ; then
+if [[ $test == 1 ]] ; then
 true
 fi
 
-if [[ $fix == true ]] ; then
-
+if [[ $fix == 1 ]] ; then
 announce "no fixes available presently. Exiting."
 exit
 fi

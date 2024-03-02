@@ -8,15 +8,15 @@ sudo python3 -m pip install --upgrade pip
 sudo pip3 install virtual env
 debug "virtual env version... $(virtualenv --version)"
 #virtual env install
+
 { virtualenv parmanenv
 source parmanenv/bin/activate
 debug "virtual environment set? ... $VIRTUAL_ENV"
 cd $hp/electrumx
 pip install plyvel
-python -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
+python3 -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
 deactivate #exits virtual env
 debug "after deactivate command"
-
 
 #recommended in docs, but there's no need unless building applications...
 #pip3 install aiohttp -y
