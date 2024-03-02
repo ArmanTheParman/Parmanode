@@ -1,7 +1,7 @@
 function build_thub {
 cd $hp/thunderhub
 docker build -t thunderhub . | tee -a $dp/thunderhub.log || buildfailed=true
-echo "Pausing to check docker biuld"
+echo "Pausing to check docker build"
 enter_continue
 if [[ $buildfailed == true ]] ; then 
 announce "Something went wrong. Aborting."
