@@ -1,5 +1,4 @@
 function mod_thub_env {
-file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 
 while true ; do
 set_terminal ; echo -e "
