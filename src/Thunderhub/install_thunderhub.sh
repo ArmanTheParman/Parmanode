@@ -1,4 +1,8 @@
 function install_thunderhub {
+export version="v0.13.30"
+export thub_port="2999"
+#check port with netstat -tulnp
+
 
 #make sure bitcoin installed
 #make sure lightning running
@@ -8,10 +12,9 @@ if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first."
  #git clone --depth 1 https://github.com/apotdevin/thunderhub.git
 
 #docker install
-docker pull apotdevin/thunderhub:v0.13.30
-docker run --rm -d -p 2999:3000/tcp apotdevin/thunderhub:v0.5.5
+docker pull apotdevin/thunderhub:$version
+docker run --rm -d -p $thub_port:3000/tcp apotdevin/thunderhub:$version
 
-#https://docs.thunderhub.io/setup#server-accounts
 
 installed_conf_add "thunderhub-start"
 
