@@ -3,7 +3,9 @@ cd $hp/thunderhub
 docker build -t thunderhub . | tee -a $dp/thunderhub.log || buildfailed=true
 echo "Pausing to check docker biuld"
 enter_continue
-if [[ $buildfailed == true ]] ; then unset buildfailed ; return 1 ; fi
+if [[ $buildfailed == true ]] ; then 
+announce "Something went wrong. Aborting."
+unset buildfailed ; return 1 ; fi
 }
     
     
