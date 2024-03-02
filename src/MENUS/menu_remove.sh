@@ -232,6 +232,12 @@ echo -e "#                                    (ex)               Electrum X     
 elif grep -q "electrumx-start" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
 echo -e "#                                    (ex)               Electrum X $red$blinkon(partial)$blinkoff$orange           #
 #                                                                                      #" ; fi
+if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
+echo -e "#                                    (th)               Thunderhub                     #
+#                                                                                      #"
+elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
+echo -e "#                                    (th)               Thunderhub $red$blinkon(partial)$blinkoff$orange           #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -306,6 +312,12 @@ if [[ $sparrowmenu == 1 ]] ; then
 R|r|RTL|rtl|Rtl)
 if [[ $rtlmenu == 1 ]] ; then
 	uninstall_rtl
+	return 0
+	fi
+	;;
+th)
+if [[ $thunderhubmenu == 1 ]] ; then
+    uninstall_thunderhub
 	return 0
 	fi
 	;;

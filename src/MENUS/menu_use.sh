@@ -112,6 +112,9 @@ if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poola
 if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
                        echo "    (ex)         Electrum X 
                             " ; fi
+if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp=1
+                       echo "    (th)         Thunderhub 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -318,7 +321,12 @@ ex)
    if [[ $electrumxapp == 1 ]] ; then
    menu_electrumx
    debug "after menu_electrumx"
-    if [[ -n $1 ]] ; then return 0 ; fi
+   if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+th) if [[ $thunderhubapp == 1 ]] ; then
+   menu_thunderhub
+   if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
 p)
