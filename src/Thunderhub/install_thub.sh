@@ -44,13 +44,13 @@ fi
 cd $hp
 git clone --depth 1 https://github.com/apotdevin/thunderhub.git
 cd thunderhub
+installed_conf_add "thunderhub-end"
 
 make_thub_env || return 1
-
 build_thub || return 1 
-
 run_thub_docker || return 1
-installed_conf_add "thunderhub-start"
+
+installed_conf_add "thunderhub-end"
 success "Thunderhub has finished being installed"
 }
 
