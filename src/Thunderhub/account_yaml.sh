@@ -1,5 +1,5 @@
 function make_thunderhub_account {
-
+true
 }
 ## Account template
 
