@@ -37,18 +37,24 @@ CURRENCY='sat'
 # -----------
 # Privacy Configs
 # -----------
+# Prices and Fees ThunderHub fetches fiat prices from Blockchain.com api, and bitcoin
+# on chain fees from Earn.com's api.
+# LnMarkets ThunderHub can connect to the LnMarkets API. 
+# ThunderHub shows you links for quick viewing of nodes by public key on 1ml.com, 
+# and for viewing onchain transactions on Blockchain.com.
 # Defaults are true, true, false, false, false
+
 # FETCH_PRICES=false
 # FETCH_FEES=false
 # DISABLE_LINKS=true
 # DISABLE_LNMARKETS=true
-# NO_VERSION_CHECK=true
+NO_VERSION_CHECK=true
 
 # -----------
 # Account Configs
 # -----------
-ACCOUNT_CONFIG_PATH='/path/to/config/thubConfig.yaml'
-MASTER_PASSWORD_OVERRIDE='secretPasswordForAllAccounts'
+ACCOUNT_CONFIG_PATH="$HOME/.thunderhub/account_1.yaml"
+MASTER_PASSWORD_OVERRIDE="$thunderhub_master_password"
 # YML_ENV_1=''
 # YML_ENV_2=''
 # YML_ENV_3=''
