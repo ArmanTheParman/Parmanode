@@ -3,17 +3,17 @@ update_computer silent || paus
 sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot python3 python3-pip python3-dev \
 build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev \
-rocksdb-tools librocksdb-6.11
-sudo python3 -m pip install --upgrade pip 
-sudo pip3 install virtual env
-debug "virtual env version... $(virtualenv --version)"
+rocksdb-tools librocksdb-6.11 | tee $dp/electrumx.log
+sudo python3 -m pip install --upgrade pip | tee $dp/electrumx.log
+sudo pip3 install virtual env | tee $dp/electrumx.log
+debug "virtual env version... $(virtualenv --version)" 
 #virtual env install
 
 { virtualenv parmanenv
 source parmanenv/bin/activate
 debug "virtual environment set? ... $VIRTUAL_ENV"
 cd $hp/electrumx
-pip install plyvel
+pip install plyvel | tee $dp/electrumx.log
 python3 -c 'import plyvel' || { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
 deactivate #exits virtual env
 debug "after deactivate command"

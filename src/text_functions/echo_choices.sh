@@ -85,7 +85,8 @@ fi
 
 if [[ $1 == "epq" ]]
 then
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue, ${cyan}(p)${yellow} for previous, ${cyan}(q)${yellow} to quit, then <enter>: $orange"
+if [[ -z $2 ]] ; then CONTINUE="continue" ; fi
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to $2, ${cyan}(p)${yellow} for previous, ${cyan}(q)${yellow} to quit, then <enter>: $orange"
 # while true ; do 
 # case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; esac ; done
 return 0
