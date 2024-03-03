@@ -82,7 +82,7 @@ DANGEROUS_NO_SSO_AUTH=true
 # SSL Config
 # -----------
 # PUBLIC_URL='app.example.com'
-SSL_PORT=2900
+# SSL_PORT=2900
 # SSL_SAVE=true
 " | tee $file >/dev/null 2>&1
 }
