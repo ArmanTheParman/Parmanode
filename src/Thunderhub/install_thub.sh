@@ -38,6 +38,9 @@ fi
 cd $hp
 git clone --depth 1 https://github.com/apotdevin/thunderhub.git
 cd thunderhub
+echo "pausing"
+enter_continue
+rm *.env
 installed_conf_add "thunderhub-start"
 
 make_thub_env || return 1
