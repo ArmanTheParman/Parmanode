@@ -1,92 +1,69 @@
-#https://docs.thunderhub.io/setup#server-accounts
-#Makes the file and expands out variables
-#mod_thub_env changes the file as needed
-
 function make_thub_env {
-echo -e "# Info : https://docs.thunderhub.io/setup
+copy_thub_env || return 1
+master_password_thub || return 1
+thub_lnd
 
-# -----------
-# Server Configs
-# -----------
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
 
-# LOG_LEVEL = 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly' # Default: 'info'
-# LOG_LEVEL='info'
-# Can change loging output type:
-# LOG_JSON=true
-# Can make everything go through tor:
-# TOR_PROXY_SERVER=socks://127.0.0.1:9050
-# DISABLE_TWOFA=true
+    You want the dark theme right? Right??
+$green
+                          d)       dark, obviously
+$red
+                          soy)     I'm a light theme maxi
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;; d|D) break ;;
+soy) 
+swap_string "$file" "THEME='dark'" "THEME='light'" 
+break ;;
+*) invalid ;;
+esac
+done
 
-# -----------
-# URLs
-# -----------
-MEMPOOL_URL='https://mempool.space'
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
 
-# -----------
-# Interface Configs
-# -----------
+    Run over Tor?
+$green
+                              y)       yes $bright_blue    (will set to proxy 127.0.0.1:9050)
+$red
+                              n)       no
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; n|N) break ;;
+y)
+if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
+swap_string "$file" "TOR_PROXY_SERVER=" "TOR_PROXY_SERVER=socks://127.0.0.1:9050"
+;;
+*)
+invalid ;;
+esac
+done
 
-# THEME = 'dark' | 'light' | 'night' # Default: 'dark'
-# # # # # # # # # CURRENCY = 'sat' | 'btc' | 'fiat' # Default: 'sat'
-THEME='dark'
-CURRENCY='sat'
+set_terminal ; echo -e "
+########################################################################################
 
-# -----------
-# Subscription Configs
-# -----------
-# DISABLE_ALL_SUBS=true
-# DISABLE_INVOICE_SUB=true
-# DISABLE_PAYMENT_SUB=true
-# DISABLE_FORWARD_SUB=true
-# DISABLE_FORWARD_REQUESTS_SUB=true
-# DISABLE_CHANNEL_SUB=true
-# DISABLE_BACKUP_SUB=true
+    Please note, because Thunderhub will allow connections from computers without 
+    cookie authentication, it's best to$red not expose the wallet to the internet,$orange eg 
+    access via a domain, open ports on your router etc, as password authentication
+    is not the most secure method.
 
-# -----------
-# Privacy Configs
-# -----------
-# Prices and Fees ThunderHub fetches fiat prices from Blockchain.com api, and bitcoin
-# on chain fees from Earn.com's api.
-# LnMarkets ThunderHub can connect to the LnMarkets API. 
-# ThunderHub shows you links for quick viewing of nodes by public key on 1ml.com, 
-# and for viewing onchain transactions on Blockchain.com.
-# Defaults are true, true, false, false, false
+    If you do want to do that, you should enable cookie authentication. Parmanode does
+    not support that yet, but you can configure it yourself if you know what you're 
+    doing.
 
-# FETCH_PRICES=false
-# FETCH_FEES=false
-# DISABLE_LINKS=true
-# DISABLE_LNMARKETS=true
-NO_VERSION_CHECK=true
+########################################################################################
+"
+enter_continue
 
-# -----------
-# Account Configs
-# -----------
-ACCOUNT_CONFIG_PATH='$HOME/.thunderhub/account_1.yaml'
-MASTER_PASSWORD_OVERRIDE='password'
-# YML_ENV_1=''
-# YML_ENV_2=''
-# YML_ENV_3=''
-# YML_ENV_4=''
 
-# -----------
-# SSO Account Configs
-# -----------
-# If using cookie auth, need to access like this:
-# http://localhost:3000/sso?token=[COOKIE], and put cookie contents in square brackets. 
-# Useful for public (non local network) configurations.
-# Otherwise, omit cookie, and enable Dangerous_no_sso_auth=true
-# COOKIE_PATH='/path/to/cookie/.cookie'
-SSO_SERVER_URL='127.0.0.1:10009'
-SSO_CERT_PATH='/path/to/certificate/tls.cert'
-SSO_MACAROON_PATH='/path/to/folder/containing/macaroons'
-DANGEROUS_NO_SSO_AUTH=true
-# LOGOUT_URL='http://thunderhub.io'
-
-# -----------
-# SSL Config
-# -----------
-# PUBLIC_URL='app.example.com'
-SSL_PORT=2900
-# SSL_SAVE=true
-" | tee $hp/thunderhub/.env.local >/dev/null 2>&1
 }

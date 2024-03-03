@@ -1,6 +1,16 @@
+#https://docs.thunderhub.io/setup#server-accounts
+
 function make_thunderhub_account {
-true
+echo -e "
+accounts:
+  - name: 'Account 1'
+    serverUrl: '127.0.0.1:$lnd__rpc_port'
+    macaroonPath: '/$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon'
+    certificatePath: '/$HOME/.lnd/tls.cert'
+    password: '$password'                        
 }
+"
+
 ## Account template
 
 # masterPassword: 'password' # Default password unless defined in account
