@@ -8,8 +8,7 @@ accounts:
     macaroonPath: '/$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon'
     certificatePath: '/$HOME/.lnd/tls.cert'
     password: '$password'                        
-}
-"
+}" | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
 }
 
 ## Account template
