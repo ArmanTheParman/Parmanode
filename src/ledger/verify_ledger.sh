@@ -20,18 +20,18 @@ fi
 #Resorting to manual checking.
 if [[ $OS == Mac ]] ; then
 sha_ledger_result=$(shasum -a 512 ledger*dmg | awk '{print $1}')
+sha_check=$(grep '.dmg' < $shasum | awk '{print $1}') >/dev/null
 fi
 
 if [[ $OS == Linux ]] ; then
 sha_ledger_result=$(shasum -a 512 ledger*AppImage | awk '{print $1}')
+sha_check=$(grep 'AppImage' < $shasum | awk '{print $1}') >/dev/null
 fi
 
-sha_check=$(grep .dmg < $shasum | awk '{print $1}') >/dev/null
-
 if [[ $sha_check == $sha_ledger_result ]] ; then
-announce "SHA512 test PASSED."
+announce "SHA512 test$green PASSED$orange."
 else
-announce "SHA512 test FAILD. Aborting."
+announce "SHA512 test$red FAILD. Aborting$orange."
 return 1
 fi
 
