@@ -58,7 +58,7 @@ NO_VERSION_CHECK=true
 # -----------
 # Account Configs
 # -----------
-ACCOUNT_CONFIG_PATH='$HOME/.thunderhub/account_1.yaml'
+ACCOUNT_CONFIG_PATH='$hp/thunderhub/account_1.yaml'
 MASTER_PASSWORD_OVERRIDE='password'
 # YML_ENV_1=''
 # YML_ENV_2=''
