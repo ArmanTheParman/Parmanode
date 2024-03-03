@@ -6,7 +6,7 @@ echo -e "# Info : https://docs.thunderhub.io/setup
 # -----------
 
 # LOG_LEVEL = 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly' # Default: 'info'
-# LOG_LEVEL='info'
+# LOG_LEVEL='debug'
 # Can change loging output type:
 # LOG_JSON=true
 # Can make everything go through tor:
