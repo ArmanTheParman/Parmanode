@@ -5,8 +5,8 @@ echo -e "
 accounts:
   - name: 'Account 1'
     serverUrl: '127.0.0.1:$lnd__rpc_port'
-    macaroonPath: '/$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon'
-    certificatePath: '/$HOME/.lnd/tls.cert'
+    macaroonPath: '$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon'
+    certificatePath: '$HOME/.lnd/tls.cert'
     password: '$password'                        
 }" | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
 }
