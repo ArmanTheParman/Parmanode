@@ -26,7 +26,7 @@ m7="${white}m7${orange}"
 m8="${white}m8${orange}"
 m9="${white}m9${orange}"
 m10="${white}m10${orange}"
-m11="${white}m10${orange}"
+m11="${white}m11${orange}"
 
 s1="${white}s1${orange}"
 s2="${white}s2${orange}"
@@ -38,7 +38,7 @@ s7="${white}s7${orange}"
 s8="${white}s8${orange}"
 s9="${white}s9${orange}"
 s10="${white}s10${orange}"
-s11="${white}s10${orange}"
+s11="${white}s110${orange}"
 
 if grep -q bitcoin-end < $ic ; then
     i1="    ${green}Y${orange}"
