@@ -37,4 +37,5 @@ done
 fi
 done
 swap_string "$file" "MASTER_PASSWORD_OVERRIDE='password'" "MASTER_PASSWORD_OVERRIDE='$password'" 
+set_terminal
 }
