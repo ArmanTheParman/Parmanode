@@ -10,6 +10,7 @@ accounts:
     password: '$password'                        
 }
 "
+}
 
 ## Account template
 
