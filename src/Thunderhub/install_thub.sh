@@ -41,7 +41,7 @@ cd thunderhub
 installed_conf_add "thunderhub-start"
 
 make_thub_env || return 1
-#make_thunderhub_account || return 1
+make_thunderhub_account || return 1
 build_thub || return 1 
 run_thub_docker || return 1
 
