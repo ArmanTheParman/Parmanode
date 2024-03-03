@@ -4,7 +4,7 @@ function make_thunderhub_account {
 echo -e "
 accounts:
   - name: 'Account 1'
-    serverUrl: '127.0.0.1:$lnd__rpc_port'
+    serverUrl: '127.0.0.1:$lnd_rpc_port'
     macaroonPath: '$HOME/.lnd/data/chain/bitcoin/mainnet'
     certificatePath: '$HOME/.lnd/tls.cert'
     password: '$password'                        
