@@ -4,7 +4,7 @@ function install_thunderhub {
 
 set_terminal
 export version="v0.13.30"
-export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
+export file=$hp/thunderhub/.env #adding '.local' prevents overriding file when updating.
 
 #check port with netstat -tulnp
 while true ; do
@@ -46,7 +46,7 @@ make_thunderhub_account || return 1
 build_thub || return 1 
 run_thub_docker || return 1
 
-unset file password password2
+unset version file password password2
 
 installed_conf_add "thunderhub-end"
 success "Thunderhub has finished being installed"
