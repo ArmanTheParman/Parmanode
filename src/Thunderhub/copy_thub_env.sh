@@ -1,4 +1,3 @@
-
 function copy_thub_env {
 echo -e "# Info : https://docs.thunderhub.io/setup
 
@@ -85,5 +84,5 @@ DANGEROUS_NO_SSO_AUTH=true
 # PUBLIC_URL='app.example.com'
 SSL_PORT=2900
 # SSL_SAVE=true
-" | tee $hp/thunderhub/.env.local >/dev/null 2>&1
+" | tee $file >/dev/null 2>&1
 }
