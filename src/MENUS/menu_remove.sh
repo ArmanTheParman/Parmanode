@@ -242,7 +242,10 @@ echo -e "#                                                                      
 ########################################################################################
 "
 choose "xpmq"
+if [[ $1 == th ]] ; then choice=th
+else
 read choice
+fi
 
 case $choice in
 
