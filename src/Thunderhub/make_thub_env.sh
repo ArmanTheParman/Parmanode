@@ -43,6 +43,7 @@ q|Q) exit ;; p|P) return 1 ;; n|N) break ;;
 y)
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 swap_string "$file" "TOR_PROXY_SERVER=" "TOR_PROXY_SERVER=socks://127.0.0.1:9050"
+break
 ;;
 *)
 invalid ;;
