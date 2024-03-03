@@ -41,8 +41,11 @@ echo -e "${bitcoin_new}
 ########################################################################################
 "
 choose "xpmq"
-
-read choice ; set_terminal
+if [[ $1 == wth ]] ; then choice=wth
+else
+read choice 
+fi
+set_terminal
 
 case $choice in
 
@@ -74,12 +77,15 @@ mm|MM|Mm|mM)
 
 m|M) back2main ;;
 
-    w|W|wallets|Wallets)
+w|W|wallets|Wallets)
         menu_add_wallets
         return 0
         ;;
-   
-    o|O|Other|OTHER)
+wth)
+        menu_add_wallets th
+        return 0 
+        ;;
+o|O|Other|OTHER)
         menu_add_other
         return 0
         ;;

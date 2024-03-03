@@ -160,7 +160,7 @@ uersd) menu_use ersd ;;
 upool) menu_use pool ;;
 uex) menu_use ex ;;
 uth) menu_use th ;;
-dr) menu_remove th ;;
+dr) menu_remove th ; menu_add_new wth ;;
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
 debug "before nodejs"

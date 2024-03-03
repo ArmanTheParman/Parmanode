@@ -52,8 +52,10 @@ echo "#                                                                         
 ########################################################################################
 "
 choose "xpmq"
-
+if [[ $1 == wt ]] ; then choice=th 
+else
 read choice
+fi
 
 case $choice in
 
