@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 27))
+motd=$((motd % 28))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -641,6 +641,38 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+if [[ $motd == 27 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    You've backed up your Bitcoin mnemonic seed phrase properly, right? You are 
+    SURE??
+
+    Here's a hypothetical TEST ...
+
+    Factory reset your hardware wallet, and restore it from seed.
+
+    Nervous?
+
+    Then your procedure wasn't good enough.
+
+    You MUST be confident in your backups such that you can wipe or lose the HWW device, 
+    and not panic about restoring it safely.
+
+    Ideally, you should have practiced restoring, from whatever system you used to back 
+    up, BEFORE loading up the thing with your life savings.
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
+
