@@ -39,7 +39,7 @@ else
     echo "Auto-unlock enabled. If you wish to modify what is saved, you can edit"
     echo "The file $HOME/.lnd/password.txt yourself anytime."
     echo ""
-    echo "$lndpassword" | sudo tee -a $HOME/.lnd/password.txt >/dev/null #careful with permissions, need sudo
+    echo "$lndpassword" | sudo tee $HOME/.lnd/password.txt >/dev/null #careful with permissions, need sudo
     enter_continue
     break
 fi
