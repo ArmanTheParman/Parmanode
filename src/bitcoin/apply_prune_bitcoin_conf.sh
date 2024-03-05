@@ -9,7 +9,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 fi
 
 #check if prune_value set. If not, calls function to set it. 
-if [[ -z ${prune_value} ]] ; then echo "Prune choice not detected. Needs to be set." ; enter_continue ; prune_choice ; fi
+if [[ -z ${prune_value} ]] ; then prune_choice ; fi
 
 #cannot have prune 0 with txindex and blockfilterindex.
 

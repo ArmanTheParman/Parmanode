@@ -1,4 +1,5 @@
 function menu_migrate {
+unset check_if_parmanode_drive newmigrate justFormat importdrive bitcoin_drive_import
 while true ; do 
 if [[ -z $1 ]] ; then # if an option passed, then no need to print menu
 set_terminal ; echo -e "
