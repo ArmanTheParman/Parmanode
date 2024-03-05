@@ -41,6 +41,7 @@ if sudo cat /etc/crontab | grep -q parmanode ; then
 au_message="$pink
                 on)        Turn on auto-updates
 $orange"
+fi
 set_terminal ; echo -en "
 ########################################################################################
 
