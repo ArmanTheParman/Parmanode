@@ -20,53 +20,51 @@ if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version nu
 echo -en "$orange
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> ${cyan}Main Menu$orange                                                   #
+#    P A R M A N O D E --> ${bright_blue}Main Menu$orange                                                   #
 #                                                                                      #
 #    Version:$bright_blue $version     $output_branch
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#    (o)                  Overview/Status of Programs                                  #
+#$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
-#    (add)                Add more Programs                                            #
+#$cyan    (add)    $orange            Add more Programs                                            #
 #                                                                                      #
-#    (u)                  Use Programs                                                 #
+#$cyan    (u)            $orange      Use Programs                                                 #
 #                                                                                      #
-#    (remove)             Remove/Uninstall Programs                                    #
+#$cyan    (remove)     $orange        Remove/Uninstall Programs                                    #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#    (t)                  Tools                                                        #
+#$cyan    (t)        $orange          Tools                                                        #
 #                                                                                      #
-#    (s)                  Settings  (change colour theme)                              #
+#$cyan    (s)              $orange    Settings                                                     #
 #                                                                                      #
-#    (mm)                 Bitcoin Mentorship Info  .... (Study with Parman)            #
+#$cyan    (mm)$orange                 Mentorship with Parman - Info                                #
 #                                                                                      #
-#    (e)                  Education (Lotsa stuff)                                      #
+#$cyan    (e)       $orange           Education                                                    #
 #                                                                                      #
-#    (d)                  Donate  ... do it                                            #
+#$cyan    (d)             $orange     Donate                                                       #
 #                                                                                      #
-#    (l)                  See logs and config files                                    #
+#$cyan    (l) $orange                 See logs and config files                                    #
 #                                                                                      #
-#    (update)             Update Parmanode  ........... (Improvements always coming)   #
+#$cyan    (update)  $orange           Update Parmanode                                             #
 #                                                                                      #
-#    (uninstall)          Uninstall Parmanode  ........ (Who'd do such a thing?)       #
+#$cyan    (uninstall)     $orange     Uninstall Parmanode                                          #
 #                                                                                      #
-#    (aa)                 Hide/Show Main Menu announcements ... (Donchu dare!)         #
+#$cyan    (aa)      $orange           Hide/Show Main Menu announcements                            #
 #                                                                                      #
-#    (ap)                 About Parmanode $yellow(Please join us in the Telegram chat,       $orange #
-#$yellow                                          you're missing out)                        $orange #
+#$cyan    (ap)$orange                 About Parmanode                                              #
 #                                                                                      #
 ########################################################################################
 
- Type your$green choice$orange without the brackets, and hit$green <enter>$orange 
- Or to quit, either hit$green <control>-c$orange, or type$green q$orange then$green <enter>$orange.
+ Type your$cyan choice$orange without the brackets, and hit$green <enter>$orange 
+ Or to quit, either hit$green <control>-c$orange, or type$cyan q$orange then$green <enter>$orange.
 "
 if [[ ! $announcements == off ]] ; then
 echo -e "
  Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 
-$cyan                   NEW: ELECTRUM X NOW AVAILABLE, OH YEAH! $orange
 $blinkon$red                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
 fi
 
