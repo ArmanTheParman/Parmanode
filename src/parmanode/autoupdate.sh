@@ -111,6 +111,7 @@ $orange
       Parmanode autoupdates are currently : $pink $p $orange
                  
                                 (on)     Turn on
+
                                 (off)    Turn off
 
 ########################################################################################
