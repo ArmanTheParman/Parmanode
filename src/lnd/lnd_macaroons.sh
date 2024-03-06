@@ -36,6 +36,11 @@ $bright_blue
 type=lnd-rest;server=https://$IP:$rest/;macaroon=$lnd_macaroon;certthumbprint=$lnd_certthumbprint;allowinsecure=true
 $orange
 
+The above configuration may need some adjustment depending on your specific setup, eg
+instead of the internal IP, you may have a domain name, or the local host IP. You 
+may also omit the 'allowinstecure=true' setting and see if your connection works
+without it.
+
 ########################################################################################
 "
 enter_continue
