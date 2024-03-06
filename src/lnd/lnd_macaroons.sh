@@ -33,7 +33,7 @@ $lnd_certthumbprint $orange
 
 You can use this to set up BTC Pay server to connect to LND by the 'REST proxy':
 $bright_blue
-type=lnd-rest;server=https://$IP:$rest/;macaroon=$cayn$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true
+type=lnd-rest;server=https://$IP:$rest/;macaroon=$cyan$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true
 $orange
 
 The above configuration may need some adjustment depending on your specific setup, eg
