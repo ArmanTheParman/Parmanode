@@ -2,7 +2,7 @@ function bre_docker_uninstall {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall BRE 
+                            Uninstall BTC RPC Explorer 
 $orange
     Are you sure? (y) (n)
 

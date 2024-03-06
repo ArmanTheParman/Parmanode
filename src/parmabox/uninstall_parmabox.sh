@@ -1,10 +1,10 @@
 function uninstall_parmabox {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall ParmaBox 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################

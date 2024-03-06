@@ -1,4 +1,16 @@
 function untinstall_docker_mac {
+while true ; do set_terminal ; echo "
+########################################################################################
+$cyan
+                      Docker will be removed from your system
+$orange
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "epq" ; read choice
+case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P|n|N|no) return 1 ;; y) break ;; *) invalid ;; esac 
+done
 
 # Stop Docker Desktop and daemon
 osascript -e 'quit app "Docker"'

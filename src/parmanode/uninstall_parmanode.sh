@@ -7,9 +7,16 @@ $red
                                 Uninstall Parmanode
 $orange
     This will first give you the option to remove programs installed with Parmanode 
-    before removing the Parmanode installation files and configuration files. Finally,
-    you'll have the option to delete the Parmanode script directory.
+    before removing the Parmanode installation files and configuration files. 
+    
+    Finally, you'll have the option to delete the Parmanode script directory.
 
+    Continue?
+$red
+                        y)        Get rid of it
+$green
+                        n)        Nah, go back
+$orange
 ########################################################################################
 "
 choose "epq"
