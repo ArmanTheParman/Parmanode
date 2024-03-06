@@ -1,4 +1,6 @@
 function lnd_macaroons {
+
+rest=$(cat $HOME/.lnd/lnd.conf | grep -E '^restlisten=' | cut -d : -f 2)
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -29,7 +31,10 @@ The certthumbprint is:
 $green
 $lnd_certthumbprint $orange
 
-You can use this to set up BTC Pay server to connect to LND by the 'REST proxy'
+You can use this to set up BTC Pay server to connect to LND by the 'REST proxy':
+$cyan
+type=lnd-rest;server=https://$IP:$rest/;macaroon=$lnd_macaroon;certthumbprint=$lnd_certthumbprint;allowinsecure=true
+$orange
 
 ########################################################################################
 "
