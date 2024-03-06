@@ -5,12 +5,7 @@ while true ; do set_terminal ; echo -e "
 $cyan
                               Uninstall BTCPay Server
 $orange 
-    Parmanode will uninstall BTCPay from your system. Are you sure you want to 
-    continue?
-
-                                y)    Yes
-
-                                n)    No
+    Are you sure? (y) (n)
 
 ########################################################################################
 "

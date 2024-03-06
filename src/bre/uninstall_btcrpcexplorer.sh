@@ -1,10 +1,10 @@
 function uninstall_btcrpcexplorer {
     
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
-                                 Uninstall BTC RPC Explorer
-
+$cyan
+                             Uninstall BTC RPC Explorer
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################

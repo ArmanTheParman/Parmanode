@@ -1,9 +1,9 @@
 function uninstall_lnbits {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall LNbits 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
