@@ -1,9 +1,9 @@
 function uninstall_bitbox {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                  Uninstall BitBox 
-
+$orange
     Are you sure? (y) (n)
 
 ########################################################################################
