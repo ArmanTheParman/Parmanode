@@ -16,9 +16,9 @@ set_terminal ; echo -e "
 
     Continue? $green
 
-              y)          Yeah, this great. Why is it free?    (... IDK, I'm crazy)
+            y)          Yeah, this is great. Why is it free?   $orange (... IDK, I'm crazy)
 $red              
-              n)          Nah, maybe later, too good to be true.
+            n)          Nah, maybe later, too good to be true.
 $orange
 ########################################################################################
 "
