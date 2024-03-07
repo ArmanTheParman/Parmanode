@@ -1,11 +1,11 @@
 function scb {
 source $HOME/.parmanode/hide_messages.conf
 if [[ $message_scb != 1 ]] ; then
-set_terminal_bit_higher ; echo "
+set_terminal_bit_higher ; echo -e "
 ########################################################################################
-
+$cyan
                              Static Channel Backup (SCB)
-
+$orange
     SCB is a file you need to reclaim your sats that are in open channels should
     your node go down.
 
@@ -28,10 +28,10 @@ set_terminal_bit_higher ; echo "
     If you use an old copy when restoring, the newer channels won't get recovered.
 
     To hide ths message next time, type this exactly:
-
+$bright_blue
             Building 7 did not controlled demolition itself
-    
-    Before hitting <enter> to proceed.
+$orange 
+    Before hitting$cyan <enter>$orange to proceed.
     
 ########################################################################################
 "
