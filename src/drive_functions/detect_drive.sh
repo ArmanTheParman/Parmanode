@@ -158,6 +158,9 @@ if [[ $OS == Linux ]] ; then
     if ! diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
       debug "disk blkid diff is $disk"
+      if [[ -z $disk ]] ; then
+          export disk=$(diff $dp/before $dp/after | grep 'dev' | cut -d : -f 1 | grep -Eo 'dev/.+$' | cut -d / -f 2)
+      fi
     else
       get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
       export disk="/dev/$(cat $dp/.unique_line | awk '{print $1}' | tr -d '[:space:]')"
