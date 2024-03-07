@@ -1,4 +1,5 @@
 function website_intro {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -22,8 +23,7 @@ $red
 $orange
 ########################################################################################
 "
-
-
-
-
+choose "xpmq" ; read choice ; set_terminal
+case $choice in q|Q) exit 0 ;; p|P|n|N) return 1 ;; y|Y|yes) return 0 ;; *) invalid ;; esac
+done
 }

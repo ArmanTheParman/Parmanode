@@ -2,7 +2,7 @@ function install_website {
 return 0
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
-set_terminal ; website_intro
+website_intro || return 1
 
 website_update_system # runs apt-get
 install_nginx
