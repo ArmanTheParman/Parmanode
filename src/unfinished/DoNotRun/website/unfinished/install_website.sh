@@ -4,9 +4,9 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 set_terminal
 
-website_update_system
+website_update_system # runs apt-get
 install_nginx
-install_MariaDB 
+install_MariaDB && installed_conf_add "website-start" # a MYSQL database
 install_PHP 
 mysql_security_wizard
 make_website_directories #user names the directory
@@ -15,10 +15,11 @@ make_website_symlinks
 #set permissions
 #create database
 
+installed_conf_add "website-end"
 # FINISHED ########################################################################################
 success "Your Website" "being configured"
 ########################################################################################
-
+}
 
 
 function phpmyadmin_in_nginx {
@@ -92,29 +93,47 @@ debug "wordpress downloaded and extracted to $websitedir"
 }
 
 function website_update_system {
-echo -e "$green Running apt update...$orange" ; sleep 1
-sudo apt update -y
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+    Updating the OS with apt-get, OK?
+$green
+                              y)           Yes
+$red 
+                              n)           No
+
+########################################################################################
+" ; choose "xpmq" ; read choice ; set_terminal
+case $choice in q|Q) quit 0 ;; n|N|NO|no|p|P) return 1 ;; y|Y) break ;; *) invlid ;; esac 
+done
+
+echo -e "$green Running apt-get update...$orange" ; sleep 1
+sudo apt-get update -y
+echo -e "green Running apt-get upgrade"
+sudo apt-get upgrade -y
 }
 
 function install_MariaDB {
-if grep "mariadb-end" < $ic >/dev/null 2>&1 ; return 1 ; fi
+if grep "mariadb-end" < $ic >/dev/null 2>&1 ; return 0 ; fi
 clear
 echo -e "$green Installing php and MariaDB $orange" ; sleep 1
-sudo apt-get install mariadb-server -y && installed_conf_add "mariadb-end" 
+sudo apt-get -y --fix-broken --no-install-recommends install mariadb-server && installed_conf_add "mariadb-end" 
 echo -e "$green Enabling autostart on bootup ...$orange" ; sleep 1
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 }
 
 function install_PHP {
-if grep "php-end" <$ic >/dev/null 2>&1 ; return 1 ; fi
+if grep "php-end" <$ic >/dev/null 2>&1 ; return 0 ; fi
 clear
-sudo apt install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
-php-curl php-xml php-intl php-bcmath php-imagick -y && installed_conf_add "php-end"
+sudo apt-get -y --fix-broken --no-install-recommends install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
+php-curl php-xml php-intl php-bcmath php-imagick && installed_conf_add "php-end"
 }
 
 function mysql_security_wizard {
 echo -e "$green Recommended MYSQL secure installtion settings ...$orange" ; sleep 1
+echo ""
 sudo mysql_secure_installation 
 }
 
