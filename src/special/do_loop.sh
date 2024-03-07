@@ -147,7 +147,7 @@ announce "no fixes available presently. Exiting."
 exit
 fi
 
-if [[ $bash ==1 ]] ; then bash ; exit ; fi
+if [[ $bash == 1 ]] ; then bash ; exit ; fi
 
 ########################################################################################
 
