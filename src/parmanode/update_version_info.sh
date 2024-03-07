@@ -37,7 +37,12 @@ if [[ $countversion -gt 0 ]] ; then announce "If you're stuck in a loop, check '
     "
 fi
 countversion=$((countversion + 1))
-set_terminal ; echo -e "
+if sudo cat /etc/crontab | grep -q parmanode ; then
+au_message="$pink
+                on)        Turn on auto-updates
+$orange"
+fi
+set_terminal ; echo -en "
 ########################################################################################
 
     The version of Parmanode you are running is$red not up to date$orange. Would you like to
@@ -46,9 +51,7 @@ $green
                 y)         Yes
      $orange           
                 n)         No 
-$pink
-                on)        Turn on auto-updates
-$orange 
+$au_message
     The apps you have already installed will not be changed.
 
 ########################################################################################

@@ -3,7 +3,7 @@ if [[ $(uname) == Linux ]] ; then return 0 ; fi
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall Fulcrum? 
+                                 Uninstall Fulcrum 
 $orange
     Are you sure? (y) (n)
 

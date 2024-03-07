@@ -2,7 +2,7 @@ function uninstall_electrumx {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                               Uninstall Electrum X?
+                               Uninstall Electrum X
 $orange
     Are you sure? (y) (n)
 
