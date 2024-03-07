@@ -8,12 +8,18 @@ website_update_system # runs apt-get
 install_nginx
 install_MariaDB && installed_conf_add "website-start" # a MYSQL database
 install_PHP 
-mysql_security_wizard
-make_website_directories #user names the directory
+make_website_directories # $hp/website - decided against user generated directory name
 download_wordpress #installs to new website directory
 make_website_symlinks
+
 #set permissions
+sudo chown -R www-data:www-data /var/www/website
+
 #create database
+create_website_database
+mysql_security_wizard
+
+
 
 installed_conf_add "website-end"
 # FINISHED ########################################################################################
@@ -22,20 +28,53 @@ success "Your Website" "being configured"
 }
 
 
-function phpmyadmin_in_nginx {
+function phpmyadmin {
+sudo apt-get install phpmyadmin -y
+
 # Goes in nginx server conf ...
+
 install_nginx #aborts if already installed.
 
-location /phpmyadmin {
-    root /usr/share/;
-    index index.php index.html index.htm;
-    location ~ ^/phpmyadmin/(.+\.php)$ {
-        try_files $uri =404;
+echo "
+server {
+    listen 80;
+    server_name your_server_domain_or_IP;  # Replace with your domain name or IP address
+    
+    location /phpmyadmin {
         root /usr/share/;
-        fastcgi_pass unix:/var/run/php/php7.x-fpm.sock; # Adjust the PHP version
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include /etc/nginx/fastcgi_params;
+        index index.php index.html index.htm;
+
+        location ~ ^/phpmyadmin/(.+\.php)$ {
+            try_files $uri =404;
+            root /usr/share/;
+            fastcgi_pass unix:/var/run/php/php7.x-fpm.sock; # Adjust the PHP version
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include /etc/nginx/fastcgi_params;
+        }
+
+        location ~* ^/phpmyadmin/(.+\.php)$ {
+            try_files $uri =404;
+            fastcgi_pass unix:/var/run/php/php7.x-fpm.sock; # Adjust based on your PHP version
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_index index.php;
+        }
+
+        location ~* ^/phpmyadmin/(.+\.(?:css|js|jpg|jpeg|gif|png|ico|svg|woff|woff2|ttf))$ {
+            root /usr/share/;
+        }
+    }
+
+    # Deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    location ~ /\.ht {
+        deny all;
+    }
+}
+          include /etc/nginx/fastcgi_params;
+}
+" | sudo tee /etc/nginx/conf.d    
 
 sudo systemctl restart nginx
 #Once everything is set up, you can access phpMyAdmin through your web browser by navigating to http://your_server_ip/phpmyadmin.
@@ -45,51 +84,17 @@ sudo systemctl restart nginx
 
 function make_website_directories {
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-    
-    What name would you like to give to the directory that keeps your website's 
-    files?$cyan This is NOT the title of your website$orange and only you'll see it
-    in your directory structure as...
-$green
-            $hp/parmanode/websites/my_website_example   
-$orange
-    Go ahead and type the name of the directory at the prompt, then hit$cyan <enter>$orange
-$pink
-    Use only lowercase letters and no spaces.
-$orange
-########################################################################################
-"
-read websitename 
-if
-if [[ ! $websitename =~ ^[a-z]+$ ]]; then
-clear 
-echo "Name should inlcude only characters a to z. Please try again."
-continue
-else
-    if [[ ${#websitename} -gt 19 ]] ; then
-    clear
-    echo "Please keep the length below 20 characters"
-    continue
-    fi
-break
+if [[ ! -d $hp/website ]] ; then
+mkdir $hp/website >/dev/null 2>&1
 fi
-done
-
-export websitename
-echo "$websitename" >> $dp/websites.conf 
-export websitedir="$hp/websites/$websitename"
-mkdir -p $websitedir
-
 }
 
 function download_wordpress { 
-cd $websitedir
+cd $hp/website/ >/dev/null 2>&1
 curl -LO https://wordpress.org/latest.zip
 echo -e "$green Unzipping wordpress download...$orange" ; sleep 1
 unzip *.zip && rm -rf *.zip
-debug "wordpress downloaded and extracted to $websitedir"
+debug "wordpress downloaded and extracted to $hp/website/"
 }
 
 function website_update_system {
@@ -138,35 +143,13 @@ sudo mysql_secure_installation
 }
 
 function make_website_symlinks {
-if [[ ! -d /var/www ]] ; then
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
+if [[ ! -d /var/www/website ]] ; then
+sudo mkdir -p /var/www/website >/dev/null 2>&1
+fi
 
-    Parmanode is expecting the directory$cyan /var/www/ to exist$orange.
-
-    I don't know why it wouldn't be there - Nginx should have made it if it doesn't
-    exist. Parmanode WAS going to place a symlink with your website directory's
-    name at /var/www, like this:$cyan /var/www/$websitename
-
-    You have options:
-$green
-                       a)       Abort and try to fix this
-$red
-                       yolo)    Whatever, keep going with the install
-$orange
-########################################################################################
-"
-choose "xpmq" ; read choice
-case $choice in
-q|Q) exit 0 ;; p|P|M|m|a|A) back2main ;;
-yolo)
-break ;;
-*)
-invalid ;;
-esac
-done
-sudo ln -s $websitedir /var/www/$websitename || debug "failed symlink at /var/www/$websitename"
+if [[ ! -e $hp/website ]] ; then
+sudo ln -s $hp/website /var/www/website || debug "failed symlink at /var/www/website"
+fi
 }
 
 function install_phpmyadmin {
@@ -174,3 +157,45 @@ function install_phpmyadmin {
 #sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 }
 
+function create_website_database {
+set_terminal
+
+echo -e "
+########################################################################################
+    Please choose a$cyan username$orange for your website's database. 
+    It's best to not include any symbols.
+########################################################################################
+
+"
+read username 
+set_terminal
+
+while true ; do
+echo -e "
+########################################################################################
+    Please choose a$cyan password$orange for your website's database. 
+    It's best to not include any symbols.
+########################################################################################
+
+"
+read password ; set_terminal ; echo -e "
+########################################################################################
+    Please repeat the$cyan password${orange}.
+########################################################################################
+
+"
+read password2 ; set_terminal
+if [[ $password != $password2 ]] ; then
+echo -e "Passwords don't match. Hit$cyan <enter>$orange to try again."
+continue
+fi    
+break
+done
+
+sudo mysql -u root -p
+CREATE DATABASE website;
+CREATE USER "$username"@'localhost' IDENTIFIED BY "$password";
+GRANT ALL PRIVILEGES ON website.* TO "$username"@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+}

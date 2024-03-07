@@ -37,6 +37,7 @@ $orange
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; l|L) break ;;
 delete) 
 sudo rm -rf $hp/website >/dev/null 2>&1
+sudo rm -rf /var/www/website/ >/dev/null 2>&1
 ;;
 *) invalid ;;
 esac
@@ -44,7 +45,7 @@ done
 
 installed_conf_remove "website-end"
 
-sudo apt-get remove mariadb-server -y
+sudo apt-get remove mariadb-client mariadb-client-core-* mariadb-client-* mariadb-server-core-* mariadb-common -y
 
 while true ; do
 set_terminal ; echo -e "
