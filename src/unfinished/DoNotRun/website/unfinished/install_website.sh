@@ -5,6 +5,7 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 website_intro || return 1
 
 #Domain name questions
+website_domain || return 1
 
 website_update_system # runs apt-get
 install_certbot
