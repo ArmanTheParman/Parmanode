@@ -22,9 +22,12 @@ $cyan                 t)$orange           Tell me how ...
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; 
-n|N|No|no|hfsp|HFSP) 
+n|N|No|no) 
 export domain="$IP"
 return 0
+;;
+e|E)
+export domain="$external_IP"
 ;;
 y|Y)
 export domain_choice=true
