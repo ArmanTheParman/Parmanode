@@ -89,16 +89,22 @@ case $choice in
 y|Y|Yes|yes)
 local file="/tmp/update_computer.txt"
 sudo apt-get update -y | tee $file
-if grep -q "--fix-broken" < $file ; then
-sudo apt-get --fix-broken
+if grep -q "--fix-broken install" < $file ; then
+sudo apt-get --fix-broken install -y
 fi
-if grep -q "--fix-missing" < $file ; then
+if grep -q "--fix-missing install" < $file ; then
 sudo apt-get --fix-missing install -y
+fi
+if grep -q "--fix-missing remove" < $file ; then
+sudo apt-get --fix-missing remove -y
+fi
+if grep -q "--fix-missing upgrade" < $file ; then
+sudo apt-get --fix-missing upgrade -y
 fi
 if grep -q "autoremove" < $file ; then
 sudo apt-get autoremove -y
 fi
-sudo apt-get full-upgrade -y 
+sudo apt-get upgrade -y 
 sudo apt-get install jq netcat vim net-tools -y
 install_fuse noupdate #linux minmal installs may need this to run AppImages
 break
