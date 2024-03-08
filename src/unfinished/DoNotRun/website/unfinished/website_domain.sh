@@ -10,17 +10,19 @@ $orange
 
     Do you have a domain name to use with this website?
 
-$cyan                     n)$orange           No, just use my local IP address 
+$cyan                 n)$orange           No, just use my internal IP address 
 
-$cyan                     y)$orange           Yes
+$cyan                 e)$orange           No, just use my external IP address 
 
-$cyan                     t)$orange           Tell me how ...
+$cyan                 y)$orange           Yes, and configure it
+
+$cyan                 t)$orange           Tell me how ...
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; 
-n|N|No|no) 
+n|N|No|no|hfsp|HFSP) 
 export domain="$IP"
 return 0
 ;;
