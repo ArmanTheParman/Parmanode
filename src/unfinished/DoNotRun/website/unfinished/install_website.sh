@@ -4,7 +4,10 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 website_intro || return 1
 
+#Domain name questions
+
 website_update_system # runs apt-get
+install_certbot
 install_nginx
 install_MariaDB && installed_conf_add "website-start" # a MYSQL database
 install_PHP 
@@ -198,4 +201,8 @@ CREATE USER "$username"@'localhost' IDENTIFIED BY "$password";
 GRANT ALL PRIVILEGES ON website.* TO "$username"@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
+}
+
+function install_certbot {
+sudo apt-get -y --fix-broken --no-install-recommends install certbot python3-certbot-nginx -y
 }
