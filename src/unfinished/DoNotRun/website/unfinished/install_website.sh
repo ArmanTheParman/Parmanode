@@ -9,6 +9,7 @@ website_domain || return 1
 
 website_update_system # runs apt-get
 install_certbot
+make_certbot_ssl
 install_nginx
 install_MariaDB && installed_conf_add "website-start" # a MYSQL database
 install_PHP 
@@ -207,3 +208,6 @@ EXIT;
 function install_certbot {
 sudo apt-get -y --fix-broken --no-install-recommends install certbot python3-certbot-nginx -y
 }
+
+
+#function make_certbot_ssl
