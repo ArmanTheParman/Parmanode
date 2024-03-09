@@ -4,27 +4,60 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 website_intro || return 1
 
+debug "after intro"
+
 #Domain name questions
 website_domain || return 1
 
+debug "after domain"
+
 website_update_system # runs apt-get
+
+debug "after update"
+
 install_certbot
+
+debug "after certbot"
+
 make_certbot_ssl
+
+debug "after ssl make"
+
 install_nginx
+
+debug "after nginx"
+
 install_MariaDB && installed_conf_add "website-start" # a MYSQL database
+
+debug "after maridb and installed conf"
+
 install_PHP 
+
+debug "after php install"
+
 make_website_directories # $hp/website - decided against user generated directory name
+
+debug "after make dir"
+
 download_wordpress #installs to new website directory
+
+debug "after dl wordpress"
+
 make_website_symlinks
 
+debug "after symlinks"
+
 #set permissions
-sudo chown -R www-data:www-data /var/www/website
+sudo chown -R $USER:www-data /var/www/website
+find /var/www/website -type d -exec chmod 755 {} \;
+find /var/www/website -type f -exec chmod 644 {} \;
+debug "after permissions"
 
 #create database
 create_website_database
+debug "after create database"
 mysql_security_wizard
-
-
+debug "after security wizard"
 
 installed_conf_add "website-end"
 # FINISHED ########################################################################################
