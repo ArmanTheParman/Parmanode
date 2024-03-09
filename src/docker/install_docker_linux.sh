@@ -56,7 +56,7 @@ set_terminal "pink" ; echo -e "
 ######################################################################################## 
 $orange
     In order for Docker to run properly, the computer must be restarted. It is safe
-    to reboot the computer for the all the software Parmanode has installed. 
+    to reboot the computer for all the software Parmanode has installed. 
     
     Eg, for Bitcoin Core, if it is syncing, a reboot will not harm it - it knows how 
     to shut down safely, and should restart on its own when the computer boots up.
