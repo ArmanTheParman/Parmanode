@@ -189,6 +189,7 @@ fi
 }
 
 function install_phpmyadmin {
+true
 # will have pop ups user needs to respond to 
 #sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 }
