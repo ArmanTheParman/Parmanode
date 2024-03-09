@@ -5,7 +5,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                   Domain Name
+                                    Domain Name
 $orange
 
     Do you have a domain name to use with this website?
@@ -63,9 +63,9 @@ case $choice in q|Q) exit 0 ;; p|P) return 1 ;;
 ;;
 *)
 set_terminal ; echo -e "
-You have chosen$cyan $domain
+You have chosen$cyan $domain $orange
 
-y and <enter> to accept, and anything else to try again.
+${green} y$orange and$cyan <enter>$orange to accept, and anything else to try again.
 
 "
 read accept ; if [[ $accept == "" ]] ; then export domain ; break ; else continue ; fi
@@ -81,9 +81,9 @@ set_terminal ; echo -e "
 
     Would you like your domain with a 'www' prefix to also be accessible to visitors?
 
-    y)     yes
+                                ${green}y)$orange       yes
 
-    n)     no
+                                ${red}n)$orange       no
 
 ########################################################################################
 " ; choose "xpmq" ; read choice ; set_terminal
@@ -101,10 +101,7 @@ invalid
 ;;
 esac
 done
-
 fi
-
-
 
 
 
