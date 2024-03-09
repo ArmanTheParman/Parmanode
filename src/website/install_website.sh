@@ -17,11 +17,13 @@ install_certbot
 
 debug "after certbot"
 
-make_certbot_ssl
+make_certbot_ssl #not finished
 
 debug "after ssl make"
 
-install_nginx
+#can now check ports? #or, check if nginx is freshly installed.
+check_ports_website || return 1 #if port 80 or 443 in use, then abort.
+install_nginx 
 
 debug "after nginx"
 
@@ -243,3 +245,35 @@ sudo apt-get -y --fix-broken --no-install-recommends install certbot python3-cer
 
 
 #function make_certbot_ssl
+
+function check_ports_website {
+
+if sudo netstat -tuln | grep -q :80  ; then
+echo -e "
+########################################################################################
+    
+    It looks like port 80 is already being used by this computer. This port is the 
+    standard port for TCP internet traffic.
+
+    Parmanode is not smart enough, yet, to install a website on funky ports. Aborting.
+
+########################################################################################
+" 
+enter_continue
+return 1
+fi
+if sudo netstat -tuln | grep -q :443  ; then
+echo -e "
+########################################################################################
+    
+    It looks like port 443 is already being used by this computer. This port is the 
+    standard port for SSL internet traffic.
+
+    Parmanode is not smart enough, yet, to install a website on funky ports. Aborting.
+
+########################################################################################
+" 
+enter_continue
+return 1
+fi
+}
