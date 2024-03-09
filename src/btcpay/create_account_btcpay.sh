@@ -5,7 +5,7 @@ while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                                BTCPay admin account
+                                BTCPay Admin Account
     
     Would you like to create a BTCPay admin account?
 
