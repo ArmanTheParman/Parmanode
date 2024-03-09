@@ -35,7 +35,8 @@ break
 ;;
 t|T)
 export domain_choice=how
-break
+#give info then exit
+return 1
 ;;
 *)
 invalid
@@ -43,13 +44,13 @@ invalid
 esac
 done
 
-if [[ $domain == yes ]] ; then
+if [[ $domain == true ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please type in your domain name, eg $cyan
-
+    Please type in your domain name, eg 
+$cyan
         example.com
 $orange    
     then$green <enter>$orange. If you have a 'www' prefix, you don't need to type that in here.

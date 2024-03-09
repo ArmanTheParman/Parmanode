@@ -1,4 +1,10 @@
+function make_website_nginx {
 #Bash variables must be resolved...
+
+#expected variables in session
+# www=true/false
+# domain=internalIP/externalIP/damain_name
+
 
 local site_name="_"
 local site_1="website1"
@@ -81,4 +87,5 @@ server {
      # if ($host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
      # return 301 https://$host$request_uri;
      #}
+}
 }
