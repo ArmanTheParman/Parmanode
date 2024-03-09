@@ -156,7 +156,7 @@ sudo apt-get upgrade -y
 }
 
 function install_MariaDB {
-if grep "mariadb-end" < $ic >/dev/null 2>&1 ; return 0 ; fi
+if grep "mariadb-end" < $ic >/dev/null 2>&1 ; then return 0 ; fi
 clear
 echo -e "$green Installing php and MariaDB $orange" ; sleep 1
 sudo apt-get -y --fix-broken --no-install-recommends install mariadb-server && installed_conf_add "mariadb-end" 

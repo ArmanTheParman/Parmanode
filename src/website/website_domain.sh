@@ -43,7 +43,7 @@ invalid
 esac
 done
 
-if [[ $domain == yes ]] ;; then
+if [[ $domain == yes ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
