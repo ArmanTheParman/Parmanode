@@ -166,7 +166,7 @@ sudo systemctl start mariadb
 }
 
 function install_PHP {
-if grep "php-end" <$ic >/dev/null 2>&1 ; return 0 ; fi
+if grep "php-end" <$ic >/dev/null 2>&1 ; then return 0 ; fi
 clear
 sudo apt-get -y --fix-broken --no-install-recommends install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
 php-curl php-xml php-intl php-bcmath php-imagick && installed_conf_add "php-end"

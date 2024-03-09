@@ -73,6 +73,7 @@ break
 ;;
 esac
 done
+fi
 
 if ! echo $domain | grep -qE '^www.' ; then
 while true ; do
