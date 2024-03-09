@@ -18,7 +18,7 @@ $orange
     THE APPLICATIONS FOLDER. 
     
     If a Docker icon doesn't even exist in the Applications menu, something went 
-    wrong. Carefully place the computer in the bin and buy a new one, preferable 
+    wrong. Carefully place the computer in the bin and buy a new one, preferably 
     Linux, not Mac, and not, God forbid, Windows.
 
 $green
