@@ -1,3 +1,6 @@
+# get it working first, http only, configure nginx, then get user
+# to open port 80 and 443 and to ssl cert + challenge
+
 function install_website {
 return 0
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
@@ -17,13 +20,13 @@ install_certbot
 
 debug "after certbot"
 
-make_certbot_ssl #not finished
+#make_certbot_ssl #not finished
 
 debug "after ssl make"
 
 #can now check ports? #or, check if nginx is freshly installed.
 check_ports_website || return 1 #if port 80 or 443 in use, then abort.
-install_nginx 
+install_nginx  # then need to adjust config files
 
 debug "after nginx"
 
@@ -244,11 +247,11 @@ sudo apt-get -y --fix-broken --no-install-recommends install certbot python3-cer
 }
 
 
-#function make_certbot_ssl
+#function make_certbot_ssl #need domain name variable before doing this.
 
 function check_ports_website {
 
-if sudo netstat -tuln | grep -q :80  ; then
+if sudo netstat -tulnp | grep -q :80  ; then
 echo -e "
 ########################################################################################
     
@@ -262,7 +265,7 @@ echo -e "
 enter_continue
 return 1
 fi
-if sudo netstat -tuln | grep -q :443  ; then
+if sudo netstat -tulnp | grep -q :443  ; then
 echo -e "
 ########################################################################################
     
