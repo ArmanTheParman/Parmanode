@@ -4,7 +4,7 @@ if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=" >/dev/null 2>&1 ; then
 while true ; do set_terminal ; echo -e "
 ########################################################################################    
 
-    A Bitcoin username and password has not been set. Please do that through the
+    A Bitcoin username and password have not been set. Please do that through the
     Parmanode Bitcoin menu and come back and attempt to install BTCpay Server again.
 
                            now)   Or, do it now

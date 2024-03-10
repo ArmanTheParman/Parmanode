@@ -10,7 +10,7 @@ $orange
     system as expected, so some manual intervention is required. This tool will 
     assist you through it.
 
-    The usual detection method asks you to remove then connect the target drive,
+    The usual detection method asks you to remove, then connect the target drive,
     allowing Parmanode to measure the drive state in the two scenarios and record it
     in a text file. It then does a subtraction, then the remainder will be the details 
     of the drive. It's designed this way so that the user doesn't have to decide for 
@@ -19,7 +19,7 @@ $orange
     If that's not working for you, let's do it manually...
 
     If you're using a Mac, the easiest way is to open Disk Utility, and use that 
-    program to format the drive. Search on line for guidance if it's not intuitive
+    program to format the drive. Search online for guidance if it's not intuitive
     enough, or ask for help in the Parmanode Telegram chat. Myself or another user will
     help you. After that, \"import the drive\" as a Parmanode drive. That option is
     in the tools-->migrate menu.
@@ -51,7 +51,7 @@ $orange
                         9)  drive setting in parmanode.conf 
                         10) make bitcoin.conf 
    
-   I will go through each in deatail and in order...
+   I will go through each in detail and in order...
 
 ########################################################################################
 "
@@ -369,7 +369,7 @@ $green
 $orange
     You can change the username and password to anything you want.
 
-    Finally, you can start bitcoin from the Parmanode menu.
+    Finally, you can start Bitcoin from the Parmanode menu.
 
 ########################################################################################
 "
