@@ -17,6 +17,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
+read
 sudo systemctl stop $drive_programs >/dev/null 2>&1
 sudo umount $dp >/dev/null 2>&1
 sudo umount /media/$USER/parmanode1 >/dev/null 2>&1
@@ -27,7 +28,8 @@ set_terminal ; echo -e "
     hit$cyan <enter>$orange to continue...
 
 ########################################################################################
-"
+" 
+read
 sudo rm -rf /media/$USER/parmanode* >/dev/null 2>&1
 sudo mkdir /media/$USER/parmanode >/dev/null 2>&1
 sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1
