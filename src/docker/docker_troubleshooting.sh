@@ -5,7 +5,7 @@ while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-                               Docker Troublshooting
+                               Docker Troubleshooting
 
     Parmanode tried to add your username to the docker group, but it will 
     require you to log out of the session you're in and return.

@@ -72,9 +72,9 @@ if [ $exit_status != 0 ] ; then
                       || { echo -e "
 ########################################################################################                      
 
-    Docker install failed. Sometimes it's because you are using a very New versino
+    Docker install failed. Sometimes it's because you are using a very new version
     of Linux, and Docker has not organised itself to have a package named after your
-    new Linux version. It's fixable - please let Parman know, to get it somethine
+    new Linux version. It's fixable - please let Parman know, to get it
     done, OR, you can try to manually install Docker yourself - Parmanode will 
     detect that it's been updated.
 
