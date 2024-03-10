@@ -21,6 +21,7 @@ Install PiApps and us it to install Tor
 
 Wait for Bitcoin to sync
 Install Sparrow or Electrum, and sync to electrs
+make Bitcoin onion
 
 ParmanodL wallpaper in ./parmanode/src/graphics/pn.png
 Copy instructions.txt to desktop and fill in password.
