@@ -81,6 +81,7 @@ $output
                                                      $red hit r to refresh $orange
 ########################################################################################
 "
+read choice
 choose "xpmq" ; set_terminal
 case $choice in
 m|M) back2main ;;
