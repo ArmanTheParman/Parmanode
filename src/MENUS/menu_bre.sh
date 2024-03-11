@@ -1,5 +1,7 @@
 function menu_bre {
 set_terminal
+while true ; do
+set_terminal
 unset output t_enabled menubrerunning torstatusD torstatusE
 
 if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion ; then
