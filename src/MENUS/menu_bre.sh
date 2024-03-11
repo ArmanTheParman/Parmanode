@@ -76,7 +76,7 @@ $green
             http://127.0.0.1:3002    $white    -from this computer only $orange
 
 $output
-                                                     $red Screen refreshing every 5 seconds$orange
+                                                     $red hit r to refresh $orange
 ########################################################################################
 "
 choose "xpmq" ; set_terminal
