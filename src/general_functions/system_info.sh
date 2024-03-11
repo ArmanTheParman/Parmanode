@@ -127,7 +127,7 @@ else
 unset message
 fi
 
-external_IP=$(curl ifconfig.me)
+export external_IP=$(curl ifconfig.me)
 
 set_terminal_custom 46
 echo -e "

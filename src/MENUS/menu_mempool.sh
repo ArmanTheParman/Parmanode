@@ -50,11 +50,12 @@ $running
 
                   r)             Restart
 
-                  tor)           Enable/Disable Tor.                      $tor_mempool_status
+                  tor)           Enable/Disable Tor.        $tor_mempool_status
 
                   bk)            Change Bitcoin Backend     
 
-                  conf)          View/Edit config $pink(restart if changing)$orange
+                  conf)          View/Edit config           $pink(restart if changing)$orange
+
 
 
     Access Mempool:

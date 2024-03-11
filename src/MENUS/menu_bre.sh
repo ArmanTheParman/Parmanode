@@ -1,4 +1,4 @@
-function menu_bre_loop {
+function menu_bre {
 set_terminal
 unset output t_enabled menubrerunning torstatusD torstatusE
 
@@ -76,24 +76,14 @@ $green
             http://127.0.0.1:3002    $white    -from this computer only $orange
 
 $output
-                                                     $red Screen refreshing every 5 seconds$orange
+                                                     $red hit r to refresh $orange
 ########################################################################################
 "
-choose "xpmq"
-}
-function menu_bre { 
-set_terminal
-while true ; do
-unset choice
-
-    while [[ -z $choice ]] ; do
-    menu_bre_loop
-    read -t 5 choice
-    done
-
+choose "xpmq" ; set_terminal
 case $choice in
 m|M) back2main ;;
 q|Q|Quit|quit) exit 0 ;;
+r|R) contine ;; 
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 

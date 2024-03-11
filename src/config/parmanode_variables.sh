@@ -44,6 +44,7 @@ export pc=$parmanode_conf
 export ic=$installed_conf
 export oc="$dp/overview.conf"
 export hm="$dp/hide_messages.conf"
+export drive_programs="bitcoind fulcrum electrs electrumx"
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 
