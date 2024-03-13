@@ -60,7 +60,8 @@ $orange
 choose "xpmq"
 read domain ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;;
-"") continue
+"") 
+continue
 ;;
 *)
 set_terminal ; echo -e "
@@ -76,7 +77,7 @@ esac
 done
 fi
 
-if ! echo $domain | grep -qE '^www.' ; then
+if ! echo $domain | grep -qE '^www\.' ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -104,7 +105,5 @@ invalid
 esac
 done
 fi
-
-
 
 }

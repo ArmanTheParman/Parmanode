@@ -105,7 +105,7 @@ if grep -q "autoremove" < $file ; then
 sudo apt-get autoremove -y
 fi
 sudo apt-get upgrade -y 
-sudo apt-get install jq netcat vim net-tools -y
+sudo apt-get install jq netcat vim net-tools -y && echo "sudo apt-get install jq netcat vim net-tools -y ; done" >> $dp/.temp 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
 break
 ;;
