@@ -1,5 +1,5 @@
 function website_domain {
-unset domain
+unset domain site_name
 
 while true ; do
 set_terminal ; echo -e "
@@ -32,6 +32,7 @@ export domain="$external_IP"
 y|Y)
 export domain_choice=true
 break
+# will get domain=string and www=true/false
 ;;
 t|T)
 export domain_choice=how

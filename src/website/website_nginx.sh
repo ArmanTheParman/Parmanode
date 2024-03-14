@@ -5,15 +5,21 @@ function make_website_nginx {
 # www=true/false
 # domain=internalIP/externalIP/damain_name
 
+if [[ $domain_choice == true ]] ; then
+local server_name="    server_name $domain;"
+else
+unset server_name
+fi
 
-local site_name="_"
-local site_1="website1"
+local site_1="website"
 local port_1="8001"
 
+#change to heredoc...
+echo -ne ' 
 server {
 
     listen $port_1;
-    server_name $site_name;
+    $server_name
     root $hp/wordpress/$site_1;
     index index.html index.htm index.php;
     #client_max_body_size 200M; #default upload size is 1M
@@ -88,4 +94,5 @@ server {
      # return 301 https://$host$request_uri;
      #}
 }
+'
 }
