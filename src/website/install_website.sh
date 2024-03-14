@@ -61,9 +61,10 @@ find $hp/website -type d -exec chmod 755 {} \;
 find $hp/website -type f -exec chmod 644 {} \;
 debug "after permissions"
 
+mysql_security_wizard || debug "failed after security wizard"
+
 #create database
 create_website_database || debug "failed - after create database"
-mysql_security_wizard || debug "failed after security wizard"
 
 #make_certbot_ssl #not finished
 
@@ -75,7 +76,9 @@ success "Your Website" "being configured"
 
 
 function phpmyadmin {
-sudo apt-get install phpmyadmin -y
+
+#redundant...
+#sudo apt-get install phpmyadmin -y
 
 # Goes in nginx server conf ...
 
@@ -205,7 +208,7 @@ php-curl php-xml php-intl php-bcmath php-imagick || debug "failed apt-get instal
 
 function mysql_security_wizard {
 #run wizard with expect script...
-sudo $pp/parmanode/src/website/wont_source/website_expect_wizrd.sh
+sudo $pp/parmanode/src/website/wont_source/website_expect_wizrd.sh >/dev/null
 }
 
 function make_website_symlinks {
