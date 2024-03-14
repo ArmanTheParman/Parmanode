@@ -5,9 +5,6 @@ spawn sudo mysql_secure_installation
 expect "Enter current password"
 send "\r"
 
-expect "Press y|Y for Yes, any other key for No:"
-send "n\r"
-
 expect "unix_socket"
 send "n\r"
 
