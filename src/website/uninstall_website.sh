@@ -45,7 +45,7 @@ done
 
 installed_conf_remove "website-end"
 
-sudo apt-get remove mariadb-client mariadb-client-core-* mariadb-client-* mariadb-server-core-* mariadb-common -y
+sudo apt-get remove mariadb-client mariadb-client-core mariadb-server-core mariadb-common -y
 
 while true ; do
 set_terminal ; echo -e "

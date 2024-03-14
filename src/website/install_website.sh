@@ -16,6 +16,7 @@ website_update_system # runs apt-get
 debug "after update"
 
 install_certbot
+install_expect # needed for non interactive wizard later
 
 debug "after certbot"
 
@@ -172,7 +173,7 @@ function install_MariaDB {
 if ! which mariadb >/dev/null 2>&1 ; then return 0 ; fi
 clear
 echo -e "$green Installing php and MariaDB $orange" ; sleep 1
-sudo apt-get -y --fix-broken --no-install-recommends install mariadb-server && installed_conf_add "mariadb-end" 
+sudo apt-get -y --fix-broken --no-install-recommends install mariadb-server 
 echo -e "$green Enabling autostart on bootup ...$orange" ; sleep 1
 sudo systemctl enable mariadb >/dev/null
 sudo systemctl start mariadb >/dev/null
@@ -203,9 +204,8 @@ php-curl php-xml php-intl php-bcmath php-imagick || debug "failed apt-get instal
 }
 
 function mysql_security_wizard {
-echo -e "$green Recommended MYSQL secure installtion settings ...$orange" ; sleep 1
-echo ""
-sudo mysql_secure_installation 
+#run wizard with expect script...
+sudo $pp/parmanode/src/website/wont_source/website_expect_wizrd.sh
 }
 
 function make_website_symlinks {
@@ -324,4 +324,8 @@ return 0
 else #silent removal because nginx just installed, no risk of removing wanted configuration files
 sudo rm/etc/nginx/sites-enabled/default >/dev/null 2>&1
 fi
+}
+
+function install_expect {
+sudo apt-get -y --fix-broken --no-install-recommends install expect
 }
