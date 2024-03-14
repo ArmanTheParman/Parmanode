@@ -1,7 +1,5 @@
 #!/usr/bin/expect
 
-set timeout 25 
-
 spawn sudo mysql_secure_installation
 
 expect "Enter current password"
