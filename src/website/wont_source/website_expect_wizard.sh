@@ -4,22 +4,28 @@ set timeout 25
 
 spawn sudo mysql_secure_installation
 
+expect "Enter current password"
+send "\r"
+
 expect "Press y|Y for Yes, any other key for No:"
 send "n\r"
 
-expect "Change the password for root ? ((Press y|Y for Yes, any other key for No) :"
+expect "unix_socket"
 send "n\r"
 
-expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
+expect "root password?"
+send "n\r"
+
+expect "Remove anonymous"
 send "y\r"
 
-expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
+expect "Disallow root login"
 send "y\r"
 
-expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
+expect "Remove test database"
 send "y\r"
 
-expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
+expect "Reload privilege tables"
 send "y\r"
 
 expect eof

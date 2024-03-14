@@ -45,7 +45,33 @@ done
 
 installed_conf_remove "website-end"
 
-sudo apt-get remove mariadb-client mariadb-client-core mariadb-server-core mariadb-common -y
+sudo apt-get purge mariadb-client mariadb-client-core mariadb-server-core mariadb-common -y
+
+while true ; do
+set_terminal ; echo -y "
+########################################################################################
+
+     Remove all MariaDB/MySQL databases too?
+
+                                    y)   yes
+
+                                    n)   no
+
+########################################################################################
+"
+choose "x" ; read choice
+case $choice in
+y)
+sudo rm -rf /var/lib/mysql
+;;
+n)
+break
+;;
+*)
+invalid
+;;
+esac
+done
 
 while true ; do
 set_terminal ; echo -e "
