@@ -4,32 +4,39 @@ function make_website_nginx {
 #expected variables in session
 # www=true/false
 # domain=internalIP/externalIP/damain_name
+file="/etc/nginx/conf.d/website.conf"
+sudo rm -rf $file
+local site_1="website"
 
 if [[ $domain_choice == true ]] ; then
 local server_name="    server_name $domain;"
+cat << EOF | sudo tee -a $file >/dev/null 2>&1
+server {
+    listen 80;
+    server_name _;
+    location / { return 403 'That server is not available'; }
+}
+
+EOF
 else
 unset server_name
 fi
 
-local site_1="website"
-local port_1="8001"
-
 #change to heredoc...
-echo -ne ' 
+cat << EOF | sudo tee -a $file >/dev/null 2>&1
 server {
 
-    listen $port_1;
+    listen 80 default_server;
     $server_name
     root $hp/wordpress/$site_1;
     index index.html index.htm index.php;
-    #client_max_body_size 200M; #default upload size is 1M
+    client_max_body_size 200M; #default upload size is 1M
     #ssl_certificate /path;
     #ssl_certificate_key /path;
     #include /path;
 
-
     location / {
-        try_files $uri $uri/ /index.php?$args;
+        try_files \$uri \$uri/ /index.php?\$args;
     }
 
     #block access to sensitive files 
@@ -49,6 +56,7 @@ server {
         log_not_found off;
         access_log off;
     }
+
     #max cache, improves client performance. Search is case insensitive
     location ~* \.(css|gif|ico|jpeg|jpg|js|png)$ {
         expires max;
@@ -80,19 +88,23 @@ server {
     # Enable HSTS; max age in seconds; only if SSL on.
     add_header Strict-Transport-Security "max-age=315360000; includeSubDomains; preload";
 }
+EOF
 
+return 0
+#for later...
+echo "
 server {    
     listen 80;
-    server_name www.parmanode.com parmanode.com;
+    \$server_name 
 
     location / {
-        return 301 https://$host$request_uri;
+        return 301 https://\$host\$request_uri;
      }
 
     # http to https rediretion - redundant because of location / block
-     # if ($host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
-     # return 301 https://$host$request_uri;
+     # if (\$host ~* (^parmanode\.com$|^www\.parmanode\.com$) {
+     # return 301 https://\$host\$request_uri;
      #}
 }
-'
+"
 }
