@@ -7,7 +7,7 @@ fi
 source $bc
 
 echo "DB_DIRECTORY = $electrumx_db
-SERVICES = tcp://:50007,ssl://:50008,rpc://:8000
+SERVICES = tcp://0.0.0.0:50007,ssl://0.0.0.0:50008,rpc://0.0.0.0:8000
 SSL_CERTFILE = $hp/electrumx/cert.pem
 SSL_KEYFILE = $hp/electrumx/key.pem
 
