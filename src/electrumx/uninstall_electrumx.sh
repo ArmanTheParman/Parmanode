@@ -10,31 +10,37 @@ $orange
 "
 choose "x" 
 read choice
-set_terminal
+clear
 
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
-if [[ $test == 1 ]] ; then echo 1 ; enter_continue ; fi
+while true ; do
+if [[ $choice == "y" || $choice == "Y" ]] ; then 
+   debug "0.0"
+   break 
+else 
+   debug "0.5"
+   return 1
+fi
+done
+
+debug "1"
 #leave here for old installations. Electrum x new installs don't use nginx
 nginx_stream electrumx remove
-if [[ $test == 1 ]] ; then echo 2 ; enter_continue ; fi
+debug "2"
 
 electrumx_tor_remove uninstall || log electrumx "electrumx_tor_remove return 1"
-if [[ $test == 1 ]] ; then echo 3 ; enter_continue ; fi
+debug "3"
 
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop electrumx.service >/dev/null 2>&1
 sudo systemctl disable electrumx.service >/dev/null 2>&1
 sudo rm /etc/systemd/system/electrumx.service >/dev/null 2>&1
 fi
-if [[ $test == 1 ]] ; then echo 4 ; enter_continue ; fi
+debug "4"
 
 sudo rm -rf $hp/electrumx
 pip3 uninstall electrumx || log electrumx "pip3 uninstall electrumx fail"
 if [[ $test == 1 ]] ; then echo 5 ; enter_continue ; fi
-debug "/usr/local/bin/elecrumx* removed?"
+debug "5"
 sudo rm -rf $HOME/.local/bin/electrumx* >/dev/null 2>&1
 parmanode_conf_remove "drive_electrumx"
 installed_conf_remove "electrumx-"
