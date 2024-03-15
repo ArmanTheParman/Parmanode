@@ -23,7 +23,7 @@ fi
 #will eventuall become redundant, to clean up old version configuration
 remove_old_electrs_stream_from_nginxconf
 
-if [[ $1 != remove ]] ; then
+if [[ $2 != remove ]] ; then
 sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf=true
 fi
 
