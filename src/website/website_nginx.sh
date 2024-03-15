@@ -6,7 +6,6 @@ function make_website_nginx {
 # domain=internalIP/externalIP/damain_name
 file="/etc/nginx/conf.d/website.conf"
 sudo rm -rf $file
-local site_1="website"
 
 if [[ $domain_choice == true ]] ; then
 local server_name="    server_name $domain;"
@@ -28,7 +27,7 @@ server {
 
     listen 80 default_server;
     $server_name
-    root $hp/wordpress/$site_1;
+    root /var/www/website;
     index index.html index.htm index.php;
     client_max_body_size 200M; #default upload size is 1M
     #ssl_certificate /path;

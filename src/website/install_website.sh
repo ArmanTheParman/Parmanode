@@ -56,9 +56,9 @@ make_website_symlinks #may be redundant
 debug "after symlinks"
 
 #set permissions
-sudo chown -R $USER:www-data /var/www/website
-find $hp/website -type d -exec chmod 755 {} \;
-find $hp/website -type f -exec chmod 644 {} \;
+sudo chown -R www-data:www-data /var/www/website
+find /var/www/website -type d -exec chmod 755 {} \;
+find /var/www/website -type f -exec chmod 644 {} \;
 debug "after permissions"
 
 mysql_security_wizard || debug "failed after security wizard"
@@ -79,18 +79,17 @@ function make_website_directories {
 if [[ ! -d /var/www/website ]] ; then
 sudo mkdir -p /var/www/website >/dev/null 2>&1
 fi
-
-if [[ ! -d $hp/website ]] ; then
-mkdir $hp/webservers >/dev/null 2>&1
-fi
 }
 
 function download_wordpress { 
-cd $hp/websservers/ >/dev/null 2>&1
+cd /var/www/website/ >/dev/null 2>&1
 curl -LO https://wordpress.org/latest.zip
 echo -e "$green Unzipping wordpress download...$orange" ; sleep 1
 unzip *.zip && rm -rf *.zip
-mv wordpress website >/dev/null 2>&1
+cd /var/www/website/wordpress
+mv * .. >/dev/null 2>&1
+cd ..
+rm -rf wordpress latest.zip
 debug "wordpress downloaded and extracted"
 }
 
