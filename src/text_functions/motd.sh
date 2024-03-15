@@ -575,7 +575,7 @@ $cyan
                                  Message of the day $orange
 
 
-    Seriously, being a part of spreading adoption & securing the newirk may be one of
+    Seriously, being a part of spreading adoption & securing the network may be one of
     the most significant things I can do with my life. I ad no bloody idea, I only
     wanted some freedom money, dammit.
     
