@@ -1,6 +1,7 @@
 function install_PHP {
 set_terminal ; echo -e "
 ########################################################################################
+
     Parmanode will install phpMyAdmin, and some other php tools. You might be asked
     during the installation about auto configuration for a web server, with the 
     choices:
@@ -15,6 +16,9 @@ $cyan
 $pink
     Decline this option by choosing <No> !
 $orange
+    If you already have phpMyAdmin installed, none of this applies, you won't get
+    any such prompts.
+
 ########################################################################################
 "
 enter_continue
