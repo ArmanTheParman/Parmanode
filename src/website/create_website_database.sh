@@ -31,6 +31,8 @@ fi
 break
 done
 
-sudo mysql -u root -p -e "CREATE DATABASE website; CREATE USER "$username"@'localhost' IDENTIFIED BY "$password"; \
-GRANT ALL PRIVILEGES ON website.* TO "$username"@'localhost'; FLUSH PRIVILEGES; EXIT;"
+sudo mysql -u root -p -e "CREATE DATABASE website; EXIT;"
+sudo mysql -u root -p -e "CREATE USER \"$username\"@'localhost' IDENTIFIED BY \"$password\"; EXIT;"
+sudo mysql -u root -p -e "GRANT ALL PRIVILEGES ON website.* TO \"$username\"@'localhost'; EXIT;"
+sudo mysql -u root -p -e "FLUSH PRIVILEGES; EXIT;"
 }
