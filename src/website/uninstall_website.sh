@@ -57,19 +57,19 @@ set_terminal ; echo -e "
 
      Remove all MariaDB/MySQL databases too?
 
-                                    y)   yes
+                                   $cyan y)$orange   yes
 
-                                    n)   no
+                                   $cyan n)$orange   no
 
 ########################################################################################
 "
 choose "x" ; read choice
 case $choice in
-y)
+y|yes)
 sudo rm -rf /var/lib/mysql
 break
 ;;
-n)
+n|no)
 break
 ;;
 *)

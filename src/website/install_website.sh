@@ -80,13 +80,14 @@ success "Your Website" "being configured"
 
 function make_website_directories {
 if [[ ! -d /var/www/website ]] ; then
+set_terminal
 sudo mkdir -p /var/www/website >/dev/null 2>&1
 fi
 }
 
 function mysql_security_wizard {
 #run wizard with expect script...
-sudo $pp/parmanode/src/website/wont_source/website_expect_wizard.sh >/dev/null
+sudo $pp/parmanode/src/website/wont_source/website_expect_wizard.sh 
 }
 
 function make_website_symlinks {

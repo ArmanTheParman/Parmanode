@@ -21,7 +21,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; set_terminal
 sudo apt-get -y --fix-broken --no-install-recommends install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
 php-curl php-xml php-intl php-bcmath php-imagick || debug "failed apt-get install php command"
 }
