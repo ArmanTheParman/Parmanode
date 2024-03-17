@@ -5,7 +5,7 @@ echo -e "$green Unzipping wordpress download...$orange" ; sleep 1
 sudo unzip *.zip && rm -rf *.zip
 cd /var/www/website/wordpress
 sudo mv * .. >/dev/null 2>&1
-cd ..
-sudo rm -rf wordpress latest.zip
+cd $pp/parmanode 
+sudo rm -rf /var/www/website/latest.zip
 debug "wordpress downloaded and extracted"
 }
