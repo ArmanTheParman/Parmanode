@@ -16,6 +16,7 @@ website_update_system # runs apt-get
 debug "after update"
 
 install_certbot
+
 install_expect # needed for non interactive wizard later
 
 debug "after certbot"
@@ -67,6 +68,8 @@ mysql_security_wizard || debug "failed after security wizard"
 create_website_database || debug "failed - after create database"
 
 #make_certbot_ssl #not finished
+
+make_website_nginx && sudo systemctl restart nginx >/dev/null 2>&1
 
 installed_conf_add "website-end"
 # FINISHED ########################################################################################

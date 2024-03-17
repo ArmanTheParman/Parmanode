@@ -4,28 +4,20 @@ function make_website_nginx {
 #expected variables in session
 # www=true/false
 # domain=internalIP/externalIP/damain_name
+
 file="/etc/nginx/conf.d/website.conf"
 sudo rm -rf $file
 
 if [[ $domain_choice == true ]] ; then
 local server_name="    server_name $domain;"
-cat << EOF | sudo tee -a $file >/dev/null 2>&1
-server {
-    listen 80;
-    server_name _;
-    location / { return 403 'That server is not available'; }
-}
-
-EOF
 else
 unset server_name
 fi
 
-#change to heredoc...
 cat << EOF | sudo tee -a $file >/dev/null 2>&1
 server {
 
-    listen 80 default_server;
+    listen 80;
     $server_name
     root /var/www/website;
     index index.html index.htm index.php;
@@ -90,7 +82,7 @@ server {
 EOF
 
 return 0
-#for later...
+#for later when ssl set up ...
 echo "
 server {    
     listen 80;
