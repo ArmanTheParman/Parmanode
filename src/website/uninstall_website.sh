@@ -1,4 +1,4 @@
-function uninstall_wordpress {
+function uninstall_website {
 
 set_terminal ; echo -e "
 ########################################################################################
