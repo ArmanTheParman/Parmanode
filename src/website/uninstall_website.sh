@@ -37,6 +37,7 @@ $orange
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; l|L) break ;;
 delete) 
 sudo rm -rf /var/www/website >/dev/null 2>&1
+break
 ;;
 *) invalid ;;
 esac
