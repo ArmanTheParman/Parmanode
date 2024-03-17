@@ -99,6 +99,6 @@ invalid
 esac
 done
 
-
-
+installed_conf_remove "website"
+success "The website has been uninstalled"
 }
