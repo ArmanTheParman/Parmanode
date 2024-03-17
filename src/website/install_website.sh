@@ -58,8 +58,8 @@ debug "after symlinks"
 
 #set permissions
 sudo chown -R www-data:www-data /var/www/website
-find /var/www/website -type d -exec chmod 755 {} \; >/dev/null 2>&2
-find /var/www/website -type f -exec chmod 644 {} \; >/dev/null 2>&2
+sudo find /var/www/website -type d -exec chmod 755 {} \; >/dev/null 2>&2
+sudo find /var/www/website -type f -exec chmod 644 {} \; >/dev/null 2>&2
 debug "after permissions"
 
 mysql_security_wizard || debug "failed after security wizard"
