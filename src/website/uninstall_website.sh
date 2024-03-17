@@ -93,10 +93,10 @@ $orange
 choose "xpmq" ; read choice
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
-y)
+y|yes)
 rm -rf $hp/phpmyadmin ; break
 ;;
-n)
+n|no)
 break
 ;;
 *)

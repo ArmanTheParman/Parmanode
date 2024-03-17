@@ -86,7 +86,7 @@ fi
 
 function mysql_security_wizard {
 #run wizard with expect script...
-sudo $pp/parmanode/src/website/wont_source/website_expect_wizrd.sh >/dev/null
+sudo $pp/parmanode/src/website/wont_source/website_expect_wizard.sh >/dev/null
 }
 
 function make_website_symlinks {
