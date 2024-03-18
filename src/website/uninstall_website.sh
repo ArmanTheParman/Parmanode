@@ -50,37 +50,6 @@ sudo apt-get purge mariadb-client mariadb-client-core mariadb-server-core mariad
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-     
-     The MariaDB uninstallation script may have asked if you want to delete the
-     database as well, but I don't trust that their procedure won't change; This may
-     be redundant, sorry about that...
-
-     Remove all MariaDB/MySQL databases too?
-
-                                   $cyan y)$orange   yes
-
-                                   $cyan n)$orange   no
-
-########################################################################################
-"
-choose "x" ; read choice
-case $choice in
-y|yes)
-sudo rm -rf /var/lib/mysql
-break
-;;
-n|no)
-break
-;;
-*)
-invalid
-;;
-esac
-done
-
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
 
     Delete any existing phpmyadmin directory?
    $green

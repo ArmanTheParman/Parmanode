@@ -30,6 +30,13 @@ server {
         try_files \$uri \$uri/ /index.php?\$args;
     }
 
+    location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/var/run/php/php-fpm.sock;  # Adjust to match your PHP-FPM socket path
+    fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+    include fastcgi_params;
+    }
+
     #block access to sensitive files 
     location ~* /\.ht {
         deny all;
