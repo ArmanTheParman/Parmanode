@@ -15,10 +15,12 @@ $orange
     Port:                     80
     SSL port:                 $website_ssl_port 
     Tor:                      $website_tor
-$cyan
-    i)                       $orange INFO $cyan
-    tor)                     $orange Tor enable/disable     $web_tor_status_print    $cyan
-    ssl)                     $orange SSL enable/disable     $web_ssl_status_print    $cyan
+----------------------------------------------------------------------------------------
+                                                                                $cyan
+          i)            $orange INFO                                            $cyan
+       open)            $orange Instructions to open ports on router            $cyan
+        tor)            $orange Tor enable/disable     $web_tor_status_print    $cyan
+        ssl)            $orange SSL enable/disable     $web_ssl_status_print    $cyan
 
 $orange
 ########################################################################################
@@ -39,6 +41,4 @@ website_ssl_toggle
 invalid ;;
 esac
 done
-
-
 }
