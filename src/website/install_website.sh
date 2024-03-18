@@ -15,6 +15,13 @@ website_update_system # runs apt-get
 
 debug "after update"
 
+if [[ -e /var/www/website ]] ; then
+announce "
+    A website already exists at /var/www/website. Please delete it or move it and
+    try again. Aborting."
+return 1
+fi
+
 install_certbot
 
 install_expect # needed for non interactive wizard later
@@ -72,9 +79,16 @@ create_website_database || debug "failed - after create database"
 make_website_nginx && sudo systemctl restart nginx >/dev/null 2>&1
 
 installed_conf_add "website-end"
-# FINISHED ########################################################################################
-success "Your Website" "being configured"
-########################################################################################
+
+success "Your Website has finished being configured.
+
+    To set up WordPress, go to $cyan$domain/myphpadmin$orange
+    and fill in the details requested. You'll need the database name (\"website\") and
+    the username ($username) and password you chose during this installation. If 
+    you forgot the password, it's been stored in
+$cyan
+    $pc$orange
+"
 }
 
 

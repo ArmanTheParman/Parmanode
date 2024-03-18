@@ -74,6 +74,9 @@ invalid
 esac
 done
 
+parmanode_conf_remove "domain"
+parmanode_conf_remove "www"
+parmanode_conf_remove "website"
 installed_conf_remove "website"
 success "The website has been uninstalled"
 }

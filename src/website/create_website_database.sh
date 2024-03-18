@@ -30,6 +30,7 @@ continue
 fi    
 break
 done
-
+parmanode_conf_add "website_database_user=$username"
+parmanode_conf_add "website_database_password=$password"
 sudo mysql -u root -p -e "CREATE DATABASE website; CREATE USER \"$username\"@'localhost' IDENTIFIED BY \"$password\"; GRANT ALL PRIVILEGES ON website.* TO \"$username\"@'localhost'; FLUSH PRIVILEGES;"
 }
