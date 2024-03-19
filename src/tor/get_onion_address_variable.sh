@@ -44,4 +44,9 @@ if [[ $1 == "electrumx" ]] ; then
 export ONION_ADDR_ELECTRUMX="$(sudo cat /var/lib/tor/electrumx-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+if [[ $1 == "website" ]] ; then
+export ONION_ADDR_WEBSITE="$(sudo cat /var/lib/tor/website-service/hostname 2>/dev/null)" 
+return 0
+fi
 }

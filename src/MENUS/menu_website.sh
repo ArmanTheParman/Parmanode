@@ -1,7 +1,30 @@
 function menu_website {
-source $pc >/dev/null 2>&1
 
 while true ; do
+unset website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic
+get_onion_address_variable website
+source $pc >/dev/null 2>&1
+
+#Tor status
+if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
+
+    if sudo cat /etc/tor/torrc | grep -q "website" >/dev/null 2>&1 ; then
+        if [[ -e /var/lib/tor/website-service ]] && \
+        sudo cat /var/lib/tor/website-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+        W_tor="${green}on${orange}"
+        W_tor_logic=on
+        fi
+
+        if grep -q "website_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+        get_onion_address_variable "website" 
+        fi
+    else
+        W_tor="${red}off${orange}"
+        W_tor_logic=off
+    fi
+fi
+
+
 set_terminal ; echo -ne "
 ########################################################################################
 $cyan
@@ -14,6 +37,7 @@ $orange
     Wordpress login:          http://$domain/wp-admin
     Port:                     80
     SSL port:                 $website_ssl_port 
+    Tor Status:               $W_tor
     Tor:                      $website_tor
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
@@ -32,7 +56,12 @@ i)
 website_info
 ;;
 tor)
-website_tor_toggle
+if [[ $W_tor_logic == on ]] ; then 
+website_tor_remove
+else
+website_tor_add
+fi
+
 ;;
 ssl)
 website_ssl_toggle
