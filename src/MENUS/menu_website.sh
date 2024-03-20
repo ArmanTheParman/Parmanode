@@ -115,6 +115,8 @@ fi
 sudo cp /etc/nginx/conf.d/website.conf /etc/nginx/conf.d/website.conf_backup >/dev/null 2>&1
 #
 # Run cerbot
+certbot --nginx -d $domain || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
+#
 #
 # Restart nginx
 #
