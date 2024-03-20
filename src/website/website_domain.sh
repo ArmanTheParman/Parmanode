@@ -24,11 +24,13 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; 
 n|N|No|no) 
 export domain="$IP"
+parmanode_conf_remove "domain="
 parmanode_conf_add "domain=\"$IP\""
 return 0
 ;;
 e|E)
 export domain="$external_IP"
+parmanode_conf_remove "domain="
 parmanode_conf_add "domain=\"$external_IP\""
 return 0
 ;;
@@ -108,7 +110,8 @@ invalid
 ;;
 esac
 done
-
+parmanode_conf_remove "domain="
+parmanode_conf_remove "www="
 parmanode_conf_add "domain=\"$domain\""
 parmanode_conf_add "www=$www"
 fi
