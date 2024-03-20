@@ -28,7 +28,7 @@ echo -e "
 
 ########################################################################################
 "
-read repeat
+read repeat ; set_terminal
 if [[ $repeat == $MARIADB_PASS ]] ; then break ; else
 set_terminal
 echo -e "

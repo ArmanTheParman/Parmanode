@@ -22,7 +22,7 @@ read rtl_pass
     echo "Please repeat the password:
         "
     read rtl_pass2 
-
+    set_terminal
     if [[ $rtl_pass != $rtl_pass2 ]] ; then
             echo "Passwords do not match. Try again.
             "
