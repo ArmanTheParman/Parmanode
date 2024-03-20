@@ -27,7 +27,7 @@ $orange
     Parmanode has detected that the $1 installation has failed. 
 
     To try again, you'd need to uninstall this partial installation from the 'remove'
-    menu. 'Remove'is found in the main menu.
+    menu. 'Remove' is found in the main menu.
 
 ########################################################################################
 "
