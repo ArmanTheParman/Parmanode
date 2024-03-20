@@ -1,7 +1,8 @@
 function menu_website {
+ip_address get #fetches external_IP variable without printed menu
 
 while true ; do
-unset website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic
+unset website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic domain add_domain_name_option
 get_onion_address_variable website
 source $pc >/dev/null 2>&1
 
@@ -24,7 +25,6 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     fi
 fi
 
-
 set_terminal ; echo -ne "
 ########################################################################################
 $cyan
@@ -39,11 +39,13 @@ $orange
     SSL port:                 $website_ssl_port 
     Tor Status:               $W_tor
     Tor:                      $website_tor
+
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
           i)            $orange INFO                                            $cyan
        open)            $orange Instructions to open ports on router            $cyan
         tor)            $orange Tor enable/disable     $web_tor_status_print    $cyan
+        dom)            $orange Change domain                                   $cyan
         ssl)            $orange SSL enable/disable     $web_ssl_status_print    $cyan
 
 $orange
@@ -61,13 +63,69 @@ website_tor_remove
 else
 website_tor_add
 fi
+;;
 
+dom)
+website_domain
 ;;
+
 ssl)
-website_ssl_toggle
+if [[ $website_ssl == true ]] ; then
+website_ssl_off
+else
+website_ssl_on
+fi
 ;;
+
 *)
 invalid ;;
 esac
 done
+}
+
+function website_ssl_on {
+
+if ! nmap -p 80 $external_IP | grep 80 | grep -q open ; then
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Please be aware that for this to work, you must have$pink port 80$orange opened on your
+    router and forwarded to this machine, otherwise the certificate generation
+    process will fail.
+    
+    To continue, type$cyan free ross$orange and$cyan <enter>$orange otherwise just hit$red <enter>$orange to
+    abort this.
+
+########################################################################################
+"
+choose "x" ; read choice ; set_terminal 
+case $choice in
+"free ross" | "Free Ross" | "free Ross" | "free Ross" | "freeross")
+break
+;;
+*)
+return 1
+;;
+esac
+done
+fi
+
+#
+#
+#
+#
+#
+#
+
+parmanode_conf_add "website_ssl=true"
+success "SSL has been turned on for your website"
+}
+
+
+
+
+function website_ssl_off {
+parmanode_conf_remove "website_ssl="
+success "SSL has been turned off for your website"
 }
