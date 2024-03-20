@@ -111,12 +111,21 @@ esac
 done
 fi
 
+# Before using certbot, backup website.conf
+sudo cp /etc/nginx/conf.d/website.conf /etc/nginx/conf.d/website.conf_backup >/dev/null 2>&1
+#
+# Run cerbot
+#
+# Restart nginx
 #
 #
 #
 #
 #
 #
+#
+#
+
 
 parmanode_conf_add "website_ssl=true"
 success "SSL has been turned on for your website"
