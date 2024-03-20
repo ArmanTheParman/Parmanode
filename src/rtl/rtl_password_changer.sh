@@ -4,13 +4,13 @@ function rtl_password_changer {
 while true ; do
 set_terminal ; echo "
 ########################################################################################
-
+$cyan
                                 RTL password set/change
-
+$orangw
     Please type a in a password for RTL. (Do not use the characters: # \" or '
     otherwise problems may arise.)
     
-    Type p then <enter> to go back.
+    To go back instead, type$cyan p$orange then$cyan <enter>$orange.
 
 ########################################################################################
 "
