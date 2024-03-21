@@ -113,6 +113,7 @@ done
 parmanode_conf_remove "domain="
 parmanode_conf_remove "www="
 parmanode_conf_add "domain=\"$domain\""
+parmanode_conf_add "domain_name=\"$domain\""
 parmanode_conf_add "www=$www"
 fi
 
