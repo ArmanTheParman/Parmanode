@@ -2,9 +2,17 @@ function menu_website {
 ip_address get #fetches external_IP variable without printed menu
 
 while true ; do
-unset website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic domain add_domain_name_option
+unset website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic domain add_domain_name_option domain_name domain_name_text
 get_onion_address_variable website
 source $pc >/dev/null 2>&1
+
+#SSL status
+if [[ $website_ssl == true ]] ; then
+web_ssl_status_print="$green ON$orange"
+website_ssl_port="443 (https)"
+else
+web_ssl_status_print="$red OFF$orange"
+fi
 
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
@@ -12,7 +20,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "website" >/dev/null 2>&1 ; then
         if [[ -e /var/lib/tor/website-service ]] && \
         sudo cat /var/lib/tor/website-service/hostname | grep "onion" >/dev/null 2>&1 ; then
-        W_tor="${green}on${orange}"
+        W_tor="${green}ON${orange}"
         W_tor_logic=on
         fi
 
@@ -20,9 +28,13 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         get_onion_address_variable "website" 
         fi
     else
-        W_tor="${red}off${orange}"
+        W_tor="${red}OFF${orange}"
         W_tor_logic=off
     fi
+fi
+
+if [[ -n $domain_name ]] ; then
+domain_name_text="    Domain Name:              $domain_name"
 fi
 
 set_terminal ; echo -ne "
@@ -33,6 +45,7 @@ $orange
     Website data location:    /var/www/website
     Data file permissions:    user=www-data ; group=www-data
     Nginx configuration:      /etc/nginx/conf.d/website.conf
+$domain_name_text
     To initialise:            http://$domain/myphpadmin
     Wordpress login:          http://$domain/wp-admin
     Port:                     80
@@ -44,9 +57,9 @@ $orange
                                                                                 $cyan
           i)            $orange INFO                                            $cyan
        open)            $orange Instructions to open ports on router            $cyan
-        tor)            $orange Tor enable/disable     $web_tor_status_print    $cyan
-        dom)            $orange Change domain                                   $cyan
-        ssl)            $orange SSL enable/disable     $web_ssl_status_print    $cyan
+        tor)            $orange Tor enable/disable     $W_tor                   $cyan
+        dom)            $orange Add/Change domain name                          $cyan
+        ssl)            $orange SSL enable             $web_ssl_status_print    $cyan
 
 $orange
 ########################################################################################
@@ -71,9 +84,14 @@ website_domain
 
 ssl)
 if [[ $website_ssl == true ]] ; then
-website_ssl_off
+    continue
 else
-website_ssl_on
+    if [[ -z $domain_name ]] ; then
+    announce "Please add a domain name first." 
+    continue
+    fi
+
+    website_ssl_on
 fi
 ;;
 
@@ -115,28 +133,9 @@ fi
 sudo cp /etc/nginx/conf.d/website.conf /etc/nginx/conf.d/website.conf_backup >/dev/null 2>&1
 #
 # Run cerbot
-certbot --nginx -d $domain || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
-#
-#
-# Restart nginx
-#
-#
-#
-#
-#
-#
-#
-#
-
+# Port 80 needs to be open. 
+certbot --nginx -d $domain_name || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
 
 parmanode_conf_add "website_ssl=true"
 success "SSL has been turned on for your website"
-}
-
-
-
-
-function website_ssl_off {
-parmanode_conf_remove "website_ssl="
-success "SSL has been turned off for your website"
 }
