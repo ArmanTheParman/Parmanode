@@ -28,7 +28,7 @@ $orange
     find where your excess data is. Then you can decide if it's deletable. It won't
     work over SSH by the way. On Linux, get it with:
 $cyan
-    sudo apt-get install baobab $orange
+        sudo apt-get install baobab $orange
  
 ########################################################################################
 "
