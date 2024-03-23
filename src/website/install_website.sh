@@ -59,10 +59,6 @@ download_wordpress #installs to new website directory
 
 debug "after dl wordpress"
 
-make_website_symlinks #may be redundant
-
-debug "after symlinks"
-
 #set permissions
 sudo chown -R www-data:www-data /var/www/website
 sudo find /var/www/website -type d -exec chmod 755 {} \; >/dev/null 2>&2
@@ -104,12 +100,6 @@ function mysql_security_wizard {
 please_wait
 sudo $pp/parmanode/src/website/wont_source/website_expect_wizard.sh 
 }
-
-function make_website_symlinks {
-#might be redundant, but just in case some other peoples' code points to the /var/www/ location
-sudo ln -s $hp/website /var/www/website || debug "failed symlink at /var/www/website"
-}
-
 
 
 function install_certbot {
