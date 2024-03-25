@@ -56,7 +56,6 @@ $domain_name_text
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
           i)            $orange INFO                                            $cyan
-       open)            $orange Instructions to open ports on router            $cyan
         tor)            $orange Tor enable/disable     $W_tor                   $cyan
         dom)            $orange Add/Change domain name                          $cyan
         ssl)            $orange SSL enable             $web_ssl_status_print    $cyan
@@ -70,6 +69,11 @@ q|Q) exit 0 ;; p|P) return 1 ;;
 i)
 website_info
 ;;
+
+open)
+port_instructions
+;;
+
 tor)
 if [[ $W_tor_logic == on ]] ; then 
 website_tor_remove
