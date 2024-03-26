@@ -3,7 +3,7 @@ function uninstall_website {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall Website ?
+                                 Uninstall Website?
 $orange
     Are you sure? (y) (n)
 
