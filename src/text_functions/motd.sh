@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 31 ))
+motd=$((motd % 32 ))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -745,6 +745,24 @@ $cyan
     CYPHYERPUNKS WRITE CODE (DOCUMENTARY) $cyan
     https://www.youtube.com/watch?v=9vM0oIEhMag
 $orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 31 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    
+    Sure, thinking is great, but the government will just ban it.
+
+    
 ######################################################################################## 
 
 Hit$cyan <enter>$orange to continue.
