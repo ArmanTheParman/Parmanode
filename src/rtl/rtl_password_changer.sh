@@ -2,7 +2,7 @@
 function rtl_password_changer {
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                 RTL password set/change
