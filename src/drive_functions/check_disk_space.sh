@@ -26,7 +26,7 @@ $cyan
 $orange
     You should also clear the package manager cache with:
 $cyan
-        sudo apt-get clearn
+        sudo apt-get clean
 $orange
     Another thing you could do is use the program 'baobab' which is a GUI tool to
     find where your excess data is. Then you can decide if it's deletable. It won't
