@@ -6,7 +6,7 @@ set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                 RTL password set/change
-$orangw
+$orange
     Please type a in a password for RTL. (Do not use the characters: # \" or '
     otherwise problems may arise.)
     
