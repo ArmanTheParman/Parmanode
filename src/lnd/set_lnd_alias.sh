@@ -34,11 +34,13 @@ alias=$alias_choice
 echo "Your alias will be $alias"
 fi
 
-echo "
-Hit <enter> to accept or (x) to try again."
+echo -e "
+Hit$cyan <enter>$orange to accept or $red(x)$orange to try again."
 read choice
 if [[ $choice == "" ]] ; then break ; else continue ; fi
 done
+
+please_wait
 
 if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
 delete_line "$HOME/.lnd/lnd.conf" "alias="
