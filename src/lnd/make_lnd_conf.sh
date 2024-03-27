@@ -13,7 +13,7 @@ echo "
 
 [Application Options]
 
-tlsextraip=$IP
+tlsextraip=0.0.0.0
 externalip=$extIP:$lnd_port
 tlsautorefresh=true
 adminmacaroonpath=~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
