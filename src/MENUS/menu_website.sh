@@ -56,6 +56,7 @@ $domain_name_text
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
           i)            $orange INFO                                            $cyan
+        max)            $orange How up increase upload file size                $cyan
         tor)            $orange Tor enable/disable     $W_tor                   $cyan
         dom)            $orange Add/Change domain name                          $cyan
         ssl)            $orange SSL enable             $web_ssl_status_print    $cyan
@@ -97,6 +98,10 @@ else
 
     website_ssl_on
 fi
+;;
+
+max)
+max_upload_file_size_info
 ;;
 
 *)
@@ -142,4 +147,44 @@ certbot --nginx -d $domain_name || { echo -e "\nSomething went wrong" ; enter_co
 
 parmanode_conf_add "website_ssl=true"
 success "SSL has been turned on for your website"
+}
+
+function max_upload_file_size_info {
+set_terminal ; echo -e "
+########################################################################################
+
+    Google it.
+
+########################################################################################
+"
+enter_coninue
+set_terminal ; echo -e "
+########################################################################################
+
+    Just kidding!
+
+    You need to edit the php.ini file. There are more than one of these, you go 
+    need to edit the correct one. It should be in...
+$cyan
+        /etc/php/${red}7.4$cyan/fpm/php.ini
+$orange
+    Obviously, if a new version comes out, you need to change$red 7.4$orange to the 
+    right number.
+
+    Then in the file edit the values of: $cyan
+        
+        post_max_size=
+$orange& $cyan
+        upload_max_filesize= $orange
+    
+    Then save the file and restart php... $cyan
+
+        sudo systemctl restart php7.4-fpm.service $orange
+
+    In case the file name changes type up to php7 and then hit <tab> to autocomplete.
+
+########################################################################################
+" ; enter_coninue
+
+return 0
 }
