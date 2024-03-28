@@ -169,7 +169,8 @@ $cyan
         /etc/php/${red}7.4$cyan/fpm/php.ini
 $orange
     Obviously, if a new version comes out, you need to change$red 7.4$orange to the 
-    right number.
+    right number. Also, make sure you are in the fpm subdirectory no cli, as there is
+    a php.ini file in there as well, but it's not the one you need.
 
     Then in the file edit the values of: $cyan
         
