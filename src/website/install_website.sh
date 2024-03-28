@@ -56,8 +56,10 @@ make_website_directories # $hp/website - decided against user generated director
 debug "after make dir"
 
 download_wordpress #installs to new website directory
-
 debug "after dl wordpress"
+
+#make php info page
+echo "<?php phpinfo(); ?>" | sudo tee /var/www/website/info.php >/dev/null 2>&1
 
 #set permissions
 sudo chown -R www-data:www-data /var/www/website
