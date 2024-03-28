@@ -48,6 +48,7 @@ $orange
 $domain_name_text
     To initialise:            http://$domain/myphpadmin
     Wordpress login:          http://$domain/wp-admin
+    Info Page:                http://$domain/info.php
     Port:                     80
     SSL port:                 $website_ssl_port 
     Tor Status:               $W_tor
@@ -55,7 +56,7 @@ $domain_name_text
 
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
-          i)            $orange INFO                                            $cyan
+          i)            $orange Educational info                                $cyan
         max)            $orange How up increase upload file size                $cyan
         tor)            $orange Tor enable/disable     $W_tor                   $cyan
         dom)            $orange Add/Change domain name                          $cyan
