@@ -127,7 +127,9 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 1) gui=no ; break ;;
 2) gui=yes ; 
-sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qt5-default
+sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qttools5-dev-tools 
+sudo apt-get install -y qt5-default 2>/dev/null
+sudo apt-get install -y qtchooser
 break ;;
 *) invalid ;;
 esac

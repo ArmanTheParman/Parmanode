@@ -49,7 +49,7 @@ echo "
                                     Install Error
 
     Parmanode cannot be re-installed unless fully uninstalled first (there may be 
-    remnants which an proper uninstall will clearn up). Try running 
+    remnants which an proper uninstall will clean up). Try running 
     uninstall-parmanode from the menu, once more, even if you've done it (it's quick
     and won't hurt anything). If that desn't work, I'd apprciate feedback and I'll 
     help fix it.

@@ -2,15 +2,15 @@
 function rtl_password_changer {
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 RTL password set/change
-
+$orange
     Please type a in a password for RTL. (Do not use the characters: # \" or '
     otherwise problems may arise.)
     
-    Type p then <enter> to go back.
+    To go back instead, type$cyan p$orange then$cyan <enter>$orange.
 
 ########################################################################################
 "
@@ -22,7 +22,7 @@ read rtl_pass
     echo "Please repeat the password:
         "
     read rtl_pass2 
-
+    set_terminal
     if [[ $rtl_pass != $rtl_pass2 ]] ; then
             echo "Passwords do not match. Try again.
             "

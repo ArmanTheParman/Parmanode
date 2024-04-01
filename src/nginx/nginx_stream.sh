@@ -4,7 +4,7 @@ function nginx_stream {
 if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
 
 service="$1" #expecting electrs or public_pool
-instruction=$"2" #expecting install or remove
+instruction="$2" #expecting install or remove
 
 
 if [[ $OS == Mac ]] ; then

@@ -140,6 +140,9 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 
 if [[ $test == 1 ]] ; then
 true
+uninstall_website
+install_website
+debug "after install_website"
 fi
 
 if [[ $fix == 1 ]] ; then

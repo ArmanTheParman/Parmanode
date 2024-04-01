@@ -6,7 +6,7 @@ btcpay_onion="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
 
 set_terminal ; echo -e "
 ########################################################################################
-                               ${cyan}BTCPay over Tor Menu${orangej} 
+                         $cyan BTCPay over Tor Menu$orange 
 ########################################################################################
 
     To access your BTCPay Server over Tor, you need to enter the onion address below

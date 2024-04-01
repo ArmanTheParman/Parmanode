@@ -114,7 +114,16 @@ if [[ $(uname) == "Darwin" ]] ; then export IP=$( ifconfig | grep "inet " | grep
 }
 
 function IP_address {
-#IP variable is printecan d for the user.
+
+export external_IP=$(curl ifconfig.me)
+parmanode_conf_remove "external_IP"
+parmanode_conf_add "external_IP=$external_IP"
+
+if [[ $1 == get ]] ; then
+return 0
+fi
+
+#IP variable is printed for the user.
 if [[ $OS == Linux ]] ; then
 message="    You can actually change the hostname of this computer. Just edit the name 
     in the file /etc/hostname. For example if you put 'parmanode' in there, just a 
@@ -127,7 +136,7 @@ else
 unset message
 fi
 
-export external_IP=$(curl ifconfig.me)
+
 
 set_terminal_custom 46
 echo -e "

@@ -24,11 +24,15 @@ $orange
 $cyan
         $HOME/.local/share/Trash
 $orange
+    You should also clear the package manager cache with:
+$cyan
+        sudo apt-get clean
+$orange
     Another thing you could do is use the program 'baobab' which is a GUI tool to
     find where your excess data is. Then you can decide if it's deletable. It won't
     work over SSH by the way. On Linux, get it with:
 $cyan
-    sudo apt-get install baobab $orange
+        sudo apt-get install baobab $orange
  
 ########################################################################################
 "

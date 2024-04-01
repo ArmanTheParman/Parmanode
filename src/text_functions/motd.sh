@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 28))
+motd=$((motd % 32 ))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -672,6 +672,105 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
+
+if [[ $motd == 28 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   I love fiat money because it steals from me, and that makes me work harder and 
+   spend faster, which helps the economy.
+
+   Bitcoin is bad because people will save for the future, never spend and we'll all 
+   starve. 
+   
+   (sarcasm, ok?)
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 29 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Selling bitcoin at the blow off top is like selling your lifeboat to get a better 
+    seat on the Titanic. Don't be dumb.
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 30 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    When Satoshi solved the problem of digital money that 'requires no 3rd party', he 
+    was talking about getting rid of the CENTRAL BANKS that keep a ledger to avoid 
+    double spending, not retail banking and self custody. A central bank which 
+    prevents digital double spending and allows payments across space without the 
+    need of a physical P2P item is a problem, not because it holds our wealth like a 
+    retail bank does, but because we have to TRUST it as it has power over the entire 
+    money supply and can create it out of thin air. What would people with the ability 
+    to print money have? UNLIMITED POWER. Power to pillage all the resources of the 
+    world, corrupt/own politicians, control the education system (many schools follow 
+    the UN curriculum now), own the media, the universities, the publishers, the 
+    science, and control what you think. They own economics schools, and make you 
+    brainwashed into believing that their theft of 2% inflation is GOOD FOR YOU!!
+
+    THAT is what unlimited power allows. That is what the cypherpunks were fighting 
+    against. And they finished the job with the culmination of Bitcoin finally - 
+    the last iteration of money they were trying to create. The one that finally 
+    worked was the one that could not be stopped. Self custody and 3rd parties have 
+    nothing to do with the desire for "electronic cash with no 3rd party". 
+    
+    For Satoshis's sake, don't be a BCasher, and study this, so you don't fall for 
+    their tricks when they misrepresent what Satoshi meant.
+
+    BCashers, GFY.
+
+    CYPHYERPUNKS WRITE CODE (DOCUMENTARY) $cyan
+    https://www.youtube.com/watch?v=9vM0oIEhMag
+$orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 31 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    
+    Sure, thinking is great, but the government will just ban it.
+
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1

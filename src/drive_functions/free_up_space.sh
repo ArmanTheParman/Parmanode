@@ -141,6 +141,32 @@ esac
 done
 
 while true ; do
+set_terminal
+echo -e "
+########################################################################################
+
+    Clear the APT package manager cache? (recommended)
+$green
+    y)        yes
+$red
+    n)        no
+$orange
+########################################################################################
+"
+choose "xpmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+y|Y)
+sudo apt-get clean
+break
+;;
+*)
+invalid
+;;
+esac
+done
+
+while true ; do
 if [[ $OS == Mac ]] ; then break ; fi
 if which boabab >/dev/null 2>&1 ; then break ; fi
 
