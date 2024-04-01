@@ -69,7 +69,7 @@ set_terminal ; echo -e "
     You can install and see, and when it is fixed in a future update, you'll need to
     uninstall this instance and re-install to get the working version.
 
-    Hit$cyan<enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
+    Hit$cyan <enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
 
 ########################################################################################
 "
