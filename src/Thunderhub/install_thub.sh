@@ -1,6 +1,6 @@
 function install_thunderhub {
 
-#NOT FINISHED. NEED TO DO ACCOUNTS
+not_finished_thunderhub
 
 set_terminal
 export version="v0.13.30"
@@ -52,3 +52,30 @@ installed_conf_add "thunderhub-end"
 success "Thunderhub has finished being installed"
 }
 
+function not_finished_thunderhub {
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Please not the Thunderhub does not yet work with Parmanode.
+
+    It will install, but there remains a glitch - the account created is not
+    recognised by the web GUI.
+
+    I'm allowing it to be installed so that some interested users may tinker and find
+    the problem.
+
+    You can install and see, and when it is fixed in a future update, you'll need to
+    uninstall this instance and re-install to get the working version.
+
+    Hit$cyan<enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
+
+########################################################################################
+"
+read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P|x) return 1 ;; "") return 0 ;; *) invalid ;; esac
+done
+
+}
