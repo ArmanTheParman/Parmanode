@@ -1,4 +1,8 @@
 function install_nas {
+return 0
+
+
+# Just taking notes at this stage.
 set_terminal
 
 #Make a new user for better security
