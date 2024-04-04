@@ -40,7 +40,7 @@ sudo systemctl restart nfs-kernel-server
 # UUID=your-raid-uuid /mnt/raid1 ext4 defaults,nofail 0 2
 # Check status
 # sudo mdadm --detail /dev/md0
-
+# Important to wait for rsync to status in the report to reach 100% before using it
 
 
 

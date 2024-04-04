@@ -105,7 +105,8 @@ echo -e "
 ########################################################################################
 
     Now type in the full path where you want the directory to be copied to.
-    You shouldn't type in the name of the source directory, just where it's going.
+    You shouldn't type in the name of the directory being copied, just where it's 
+    going.
 
 ########################################################################################
 
