@@ -218,6 +218,10 @@ $pink
           and type out the full path.
         - add --progress for extra information as it does it's thing.
         - add --checksum if you want each file's data to be checked for exactness (slower)
+        - Other options if you get permission errors: $white
+               --no-o   $orange (don't change ownership in destination)
+               --no-p   $orange (don't change permissions in destination)
+               --no-g   $orange (don't change group in destination)
 $orange
 ##############################################################################################################
 "
