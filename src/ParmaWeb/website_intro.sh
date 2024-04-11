@@ -11,10 +11,12 @@ $orange
     Although Parmanode is Free Open Source Software, ParmaWeb is an add-on and is
 $red    not free$orange. You are free to try it, read the code, learn from it, but to USE it, 
     the conditions are that you pay$green 75,000 sats$orange (once), using this donation 
-    page (honesty system):
+    page:
 $bright_blue
         https://armantheparman.com/donations
 $orange
+    It's ok, I'm not going to hunt you down if you don't pay; honesty system.
+
     FYI, WordPress Servers are also known as LAMP or LEMP servers, and they're damn
     hard to install... I've made it easy for you though.
 
