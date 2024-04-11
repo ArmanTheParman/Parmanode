@@ -105,7 +105,13 @@ echo -e "
 ########################################################################################
 
     Now type in the full path where you want the directory to be copied to.
-    You shouldn't type in the name of the source directory, just where it's going.
+    You shouldn't type in the name of the directory being copied, just where it's going.
+
+    Other options to consider if you get permission errors: $white
+
+               --no-o   $orange (don't change ownership in destination) $white
+               --no-p   $orange (don't change permissions in destination) $white
+               --no-g   $orange (don't change group in destination)
 
 ########################################################################################
 

@@ -166,16 +166,18 @@ invalid
 esac
 done
 
-while true ; do
+########################################################################################
+# exit if mac from here on
 if [[ $OS == Mac ]] ; then break ; fi
-if which boabab >/dev/null 2>&1 ; then break ; fi
+########################################################################################
 
+while true ; do
 set_terminal
 echo -e "
 ########################################################################################
 
-   Install a graphical program to help you search for large unneccesary files?
-   It's called Baobab. 
+   Install a text (ncdu) and graphical program (baobab) to help you search for large 
+   unneccesary files?
 $green
     y)        yes
 $red
@@ -189,7 +191,7 @@ q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|Y)
 sudo apt-get update -y
 sudo apt-get --fix-broken install -y
-sudo apt-get install baobab -y
+sudo apt-get install baobab ncdu -y
 success "Baobab has been installed. Just type 'baobab' in the terminal to run it.
     Of course, it won't work if you are using Parmanode through SSH."
 break
@@ -199,6 +201,37 @@ invalid
 ;;
 esac
 done
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Linux machines store log files with systemd - they can get pretty massive.
+
+    Would you like Parmanode to clean the log files up a bit, and change settings
+    to keep the files form getting too big in the future?
+                                    
+
+                                    y)$green yes
+
+                                    n)$red no
+
+
+########################################################################################
+"
+read choice ; set_terminal 
+case $choice in
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+y|yes)
+swap_string "/etc/systemd/journald.conf" "SystemMaxUse" "SystemMaxUse=500M"
+swap_string "/etc/systemd/journald.conf" "MaxRetentionSec" "MaxRetentionSec=30days"
+sudo systemctl restart systemd-journald
+break
+;;
+*) invalid
+esac
+done
+
 space_left_h=$(df -h | grep -E '\/$' | awk '{print $4}' | tr -d \r)
 success "Here ends the internal disk cleanup tool. Parmanode
     detects that you have $space_left_h available on the internal disk."

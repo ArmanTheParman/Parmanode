@@ -24,6 +24,7 @@ if [[ -n $piapps_n ]]          ; then echo  "$piapps_n"; fi
 if [[ -n $torb_n ]]            ; then echo  "$torb_n"; fi
 if [[ -n $qbittorrent_n ]]     ; then echo  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo  "$torssh_n"; fi
+if [[ -n $website_n ]]          ; then echo  "$website_n"; fi
 
 echo "#                                                                                      #
 # Installed...                                                                         #
@@ -39,6 +40,7 @@ if [[ -n $piapps_i ]]          ; then echo  "$piapps_i"; fi
 if [[ -n $torb_i ]]            ; then echo  "$torb_i"; fi
 if [[ -n $qbittorrent_i ]]     ; then echo  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo  "$torssh_i"; fi
+if [[ -n $website_i ]]          ; then echo  "$website_i"; fi
 echo "#                                                                                      #
 # Failed installs (need to uninstall)...                                               #
 #                                                                                      #"
@@ -53,6 +55,7 @@ if [[ -n $torrelay_p ]]        ; then echo  -e "$pink$torrelay_p$orange"; fi #re
 if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
 if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
+if [[ -n $website_p ]]            ; then echo  -e "$pink$website_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -139,6 +142,12 @@ qbit|Qbit)
 tssh)
     if [[ -n $torssh_n ]] ; then
     install_torssh
+    return 0
+    fi
+    ;;
+ws)
+    if [[ -n $website_n ]] ; then
+    install_website
     return 0
     fi
     ;;

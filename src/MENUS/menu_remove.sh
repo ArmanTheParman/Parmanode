@@ -238,6 +238,12 @@ echo -e "#                                    (th)               Thunderhub     
 elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
 echo -e "#                                    (th)               Thunderhub $red$blinkon(partial)$blinkoff$orange           #
 #                                                                                      #" ; fi
+if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
+echo -e "#                                    (ws)               WordPress Website              #
+#                                                                                      #"
+elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
+echo -e "#                                    (ws)               WordPress Website $red$blinkon(partial)$blinkoff$orange    #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -482,6 +488,14 @@ fi
 ex)
 if [[ $electrumxmenu == 1 ]] ; then
 uninstall_electrumx
+clear
+return
+fi
+;;
+
+ws)
+if [[ $websitemenu == 1 ]] ; then
+uninstall_website
 clear
 return
 fi

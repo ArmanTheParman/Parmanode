@@ -114,10 +114,17 @@ if [[ $(uname) == "Darwin" ]] ; then export IP=$( ifconfig | grep "inet " | grep
 }
 
 function IP_address {
-
-export external_IP=$(curl ifconfig.me)
+count=0
+while [[ $count -lt 3 ]] ; do 
+export external_IP=$(curl -s ifconfig.me)
+count=$((count+1))
 parmanode_conf_remove "external_IP"
 parmanode_conf_add "external_IP=$external_IP"
+source $pc || { sleep 2 ; continue ; }
+break
+done
+
+source $pc || { parmanode_conf_remove "external_IP" ; }
 
 if [[ $1 == get ]] ; then
 return 0

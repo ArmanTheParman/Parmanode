@@ -483,4 +483,18 @@ else
 thunderhub_n="#                            (th)          Thunderhub                                  #"
 fi
 
+#website
+unset website_i website_p website_n
+if [[ $test == 1 ]] ; then
+if grep -q "website-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+website_i="#                                      WordPress Website                               #"
+elif grep -q "website-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+website_p="#                                      WordPress Website                               #"
+else
+   #not installed
+website_n="#                            (ws)          Wordpress Website                           #"
+fi
+fi
 }

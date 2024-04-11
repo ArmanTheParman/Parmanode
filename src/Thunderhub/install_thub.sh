@@ -58,7 +58,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please not the Thunderhub does not yet work with Parmanode.
+    Please note that Thunderhub does not yet work with Parmanode.
 
     It will install, but there remains a glitch - the account created is not
     recognised by the web GUI.
@@ -69,7 +69,7 @@ set_terminal ; echo -e "
     You can install and see, and when it is fixed in a future update, you'll need to
     uninstall this instance and re-install to get the working version.
 
-    Hit$cyan<enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
+    Hit$cyan <enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
 
 ########################################################################################
 "

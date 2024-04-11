@@ -117,6 +117,9 @@ if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp=1
                        echo "    (th)         Thunderhub 
                             " ; fi
+if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
+                       echo "    (ws)         WordPress Website 
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -329,6 +332,12 @@ ex)
 th) 
    if [[ $thunderhubapp == 1 ]] ; then
    menu_thub
+   if [[ -n $1 ]] ; then return 0 ; fi
+   fi
+   ;;
+ws) 
+   if [[ $websiteapp == 1 ]] ; then
+   menu_website
    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
