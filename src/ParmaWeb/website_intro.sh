@@ -23,10 +23,11 @@ $orange
     LAMP is similar, except Apache is used instead of Nginx.
     
     The above programs will be installed for you if they are not yet already, ports
-    will be configured, and the wordpress.org software will be installed. You can then
-    log in to Wordpress on your computer, and make edits to your website.
+    will be configured, the database will be set up, and the wordpress.org software 
+    will be installed. You can then log in to Wordpress on your computer, and make 
+    edits to your website (info will be in the Parmanode menu).
 
-    You also have menu option to connect a domain name, set up SSL certificates for
+    You also have menu options to connect a domain name, set up SSL certificates for
     https access, backup the database to a file, and generate access over 
     Tor (Darkweb). There is also educational material available in the menu.
 
