@@ -60,6 +60,8 @@ $tor_menu
         To initialise:            http://$domain_name/myphpadmin
         Wordpress login:          http://$domain_name/wp-admin
         Info Page:                http://$domain_name/info.php
+        Database's name:          website
+        Database username:        parmanode
 
 ----------------------------------------------------------------------------------------
 $yellow
