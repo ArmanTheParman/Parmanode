@@ -6,7 +6,7 @@ check_disk_space
 
 while true
 do
-unset bitcoin_n menuaddnewbitcoin
+unset bitcoin_n menuaddnewbitcoin wordpress_available
 menu_add_source
 
 if [[ -z $bitcoin_n ]] ; then
@@ -20,14 +20,23 @@ bitcoin_new="#                                                                  
 #                                                                                      #"
 fi
 
+if ! grep "website-" < $ic ; then
+wordpress_available="#$bright_blue                          ws)          WordPress Server (ParmaWeb) $green$blinkon NEW!$blinkoff $orange             #
+#                                                                                      #"
+else
+unset wordpress_available
+wordpress_available="#                                                                                      #"
+fi
+
 set_terminal_higher
-echo -e "
+echo -en "
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
 ########################################################################################"
-echo -e "${bitcoin_new}
+echo -en "${bitcoin_new}
+#                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
@@ -38,6 +47,7 @@ echo -e "${bitcoin_new}
 #                                                                                      #
 #                          cool)        Cool stuff ...                                 #
 #                                                                                      #
+$wordpress_available
 ########################################################################################
 "
 choose "xpmq"
