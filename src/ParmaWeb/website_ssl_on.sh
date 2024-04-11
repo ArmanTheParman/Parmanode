@@ -5,8 +5,8 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please be aware that for this to work, you must have$pink port 80$orange opened on your
-    router and forwarded to this machine, otherwise the certificate generation
+    Please be aware that for this to work, you must have$pink port 80 and 443$orange opened 
+    on your router and forwarded to this machine, otherwise the certificate generation
     process will fail.
     
     To continue, type$cyan free ross$orange and hit$cyan <enter>$orange otherwise just hit$red <enter>$orange 
