@@ -1,5 +1,6 @@
 Version 3.33.0
     -ParmaWeb add-on
+    -MOTD additions
 Version 3.32.7
     -Thunderhub test version for now
     -Drive cleanup tool imporved - clear systemd
