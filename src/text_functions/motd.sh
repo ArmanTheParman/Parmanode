@@ -771,7 +771,161 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 
+if [[ $motd == 32 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   The 'ohfuckening' is when Bitcoin is suddenly in such huge demand, it's not 
+   available on exchanges, and no one knows what price it is because there isn't one. 
+
+   Oh fuck, indeed, slave. 
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 33 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    You may think you 'own' your house, but if your country gets invaded, your new 
+    ruler may not see it your way. 
+
+    With Bitcoin, your ownership claim is independent to your ruler.
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 34 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Under a bitcoin standard, those who do the most for the world get the most back, 
+    measured and stored as #ƨats.
+
+    Currently, those who exploit the world best get most of the dollars.
+    
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 35 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    People don't realise "democracy" is just a socially acceptable form of tyranny, 
+    and it's marching relentlessly to towards outright overt tyranny.
+
+    Government ALWAYS gets bigger and more powerful. The individual always loses 
+    power... Until revolution. Join us. 
+$bright_blue
+    https://armantheparman.com/joinus
+   $orange 
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 36 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   'Democracy' has become synonymous with 'freedom'.
+
+    It is anything but that.
+
+    'Anarchy', literally, 'no rulers', is actually synonymous with 'freedom', but has 
+    become incorrectly synonymous with 'chaos'.
+
+    You've all been scammed into tyranny. Just take a look at your tax rate. Did you 
+    get to vote who taxes you so I guess you're free right? 
+
+    If you actually are looking for a system for society that is based on ethical 
+    principles and logic, you need to study libertarianism, the backbone of which is 
+    the upholding of the 'non-aggression principle'.
+
+    Libertarianism is not actually a political system it is a 'leave me the fuck 
+    alone' system.
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 37 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+            Bitcoin price psychology...
+
+            \$35,000  - stack it like it's hot
+            \$69,000  - we're back baby
+            \$74,000  - ok we're going to moon 
+            \$70,000  - this is bad
+            \$69,000  - this is bad, REAL bad 
+            \$74,000  - promising but I don't trust it
+            \$71,500  - Fuck, I knew it
+            \$69,000  - Oh well, see you in 4 years
+            \$110,000 - suspicious 
+            \$998,000 - that escalated quickly
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+if [[ $motd == 38 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Listening to 10,000 hours of podcasts of people talking about how they got into 
+    Bitcoin and their price predictions is not research.
+
+    Research here ... $green
+           
+    https://armantheparman.com $orange
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
+
 
