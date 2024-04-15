@@ -105,6 +105,11 @@ cool|COOL|c)
         return 0
         ;;
 
+ws)
+        install_website
+        return 0
+        ;;
+
     q|Q|quit|QUIT)
         exit 0
         ;;
