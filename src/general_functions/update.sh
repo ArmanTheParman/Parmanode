@@ -16,8 +16,10 @@ echo -e "
 $cyan
                                  UPDATE THE OS ?
 $orange   
-    Before using Parmanode, it is strongly recommended that you update your run this 
-    update function first. It will update your operating system and add few tools that
+    Before using Parmanode, it is strongly recommended that you update your system 
+    first. 
+    
+    This function will update your operating system and add few tools that
     Parmanode uses to function smoothly. 
 
     One noticable advantage will be a colour text display when using Parmanode, 
@@ -69,9 +71,9 @@ echo -e "
 $cyan
                                  UPDATE THE OS ?
 $orange 
-    Before using Parmanode, it is strongly recommended that you update your run this 
-    update function first. It will update your operating system and add few tools that
-    Parmanode uses to function smoothly. 
+    Before using Parmanode, it is strongly recommended that you update your OS first. 
+    This function will update your operating system and add few tools that Parmanode 
+    uses to function smoothly. 
 $green
                        y)      Update
 $red
