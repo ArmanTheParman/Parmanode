@@ -15,13 +15,14 @@ echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$ora
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get --fix-broken install -y
-sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils -y
-sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev autoconf -y
+sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils build-essential autotools-dev -y
+sudo apt-get install pcreated kg-config python3 patch bison autoconf libboost-all-dev autoconf -y
 sudo apt-get install imagemagick -y
 sudo apt-get install librsvg2-bin -y
-sudo apt-get install libdb5.3-dev libdb++-dev -y #berkley db stuff
+sudo apt-get install libdb-dev libdb++-dev -y #berkley db stuff
 sudo apt-get install libzmq3-dev libqrencode-dev libsqlite3-dev -y
-sudo apt-get install libevent-dev -y
+sudo apt-get install libevent-dev libssl-dev libminiupnpc-dev -y
+sudo apt-get install libprotobuf-dev protobuf-compiler -y
 
 #for later when mac is supported
 if [[ $OS == Mac ]] ; then
@@ -127,9 +128,9 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 1) gui=no ; break ;;
 2) gui=yes ; 
-sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qttools5-dev-tools 
+sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qttools5-dev-tools qttools5-dev
 sudo apt-get install -y qt5-default 2>/dev/null
-sudo apt-get install -y qtchooser
+sudo apt-get install -y qtchooser libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev libqt5widgets5 
 break ;;
 *) invalid ;;
 esac
