@@ -36,5 +36,6 @@ esac
 done
 
 if ! which docker >/dev/null ; then install_docker || return 1 ; fi 
-parmanodl_installer install
+ParmanodL_Installer install
+debug "pause 5"
 }
