@@ -1,15 +1,16 @@
 function ParmanodL_write {
 # dd the image to microSD 
 
-sudo umount -f ${disk}* || sudo umount -f /dev/${disk}* 
-debug "after umount"
 
 if [[ $OS == Linux ]] ; then
+sudo umount -f ${disk}* || sudo umount -f /dev/${disk}* 
+debug "after umount"
 please_wait
 sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 status=progress 
 fi
 
 if [[ $OS == Mac ]] ; then
+sudo diskutil unmountDisk /dev/${disk} || sudo diskutil unmountDisk force /dev/${disk}
 clear
 echo "
 Flashing the drive with Parmanode OS. This can take a weirdly long

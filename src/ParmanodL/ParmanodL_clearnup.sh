@@ -14,6 +14,9 @@ function ParmanodL_cleanup {
 
     sudo rm -rf /tmp/mnt
 
+# Remove script file
+    rm ~/ParmanodL/chroot_function.sh 2>/dev/null
+
 
 while true ; do
 set_terminal ; echo "
