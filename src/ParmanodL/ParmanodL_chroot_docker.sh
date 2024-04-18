@@ -3,7 +3,7 @@ function ParmanodL_chroot_docker {
 cat << 'EOS' > ~/ParmanodL/chroot_function.sh 
 #!/bin/bash
 
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get upgrade -y" 
+chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
@@ -41,7 +41,7 @@ WELCOME TO YOUR ...
  |   ___/  /  /_\  \   |      /  |  |\/|  |   /  /_\  \   |  `    | |  |  |  | |  |  |  | |  |     
  |  |     /  _____  \  |  |\  \  |  |  |  |  /  /   \  \  |  | `  | |  |__|  | |  |__|  | |  |____
  | _|    /__/     \__\ | _| `._\ |__|  |__| /__/     \__\ |__| \__|  \______/  |_______/  |_______|
-                                                                                             v2.0.0                                                                                 
+                                                                                             v3.0.0                                                                                 
 
 ... computer, running pre-installed Parmanode software.
 
