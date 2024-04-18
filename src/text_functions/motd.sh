@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 32 ))
+motd=$((motd % 40 ))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -916,6 +916,27 @@ $cyan
     Research here ... $green
            
     https://armantheparman.com $orange
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 39 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    If you self-custody your #bitcoin, you would have heard 'don't memorise' - that's 
+    fine, but you still need to rely on memory to know where your seed is stored, 
+    what your HWW pin is, how many wallets you have etc. 
+
+    If you trust your heirs, you can get them to share this burden while you're 
+    still alive
 
 ######################################################################################## 
 
