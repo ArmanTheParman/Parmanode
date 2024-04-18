@@ -36,8 +36,8 @@ $orange
    can do whatever you want, including giving your software cool sounding names :P
 
 
-########################################################################################
-Hit <enter> to continue
+########################################################################################$cyan
+Hit <enter> to continue$orange
 "
 read ; clear
 
@@ -59,9 +59,8 @@ $orange
     For best probability of success, do not do resource intensive things while the
     computer is thinking. 
 
-########################################################################################
-
-    Hit <enter> to continue
+########################################################################################$cyan
+Hit <enter> to continue$orange
     " ; read
     
     if [[ $(uname) == Darwin && $1 != install ]] ; then clear ; echo "
