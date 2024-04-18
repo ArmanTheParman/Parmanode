@@ -86,7 +86,7 @@ export disk_no_part=$(echo $disk | grep -oE '/dev/[^0-9]+' | tr -d '[:space:]')
 fi
 
 if [[ $OS == Mac ]] ; then
-export disk_no_part=$(echo $disk | grep -oE 'disk[0-9]+' | tr -d '[:space:]')
+export disk_no_part=/dev/$(echo $disk | grep -oE 'disk[0-9]+' | tr -d '[:space:]')
 fi
 
 rm_after_before

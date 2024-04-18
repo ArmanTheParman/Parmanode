@@ -268,11 +268,13 @@ fi # end if $1 != install
 
 # Clean known hosts of parmanodl
  
-    clean_known_hosts ; log "parmanodl" "finished clean_known_hosts"
+    clean_known_hosts && log "parmanodl" "finished clean_known_hosts"
+    debug "pause2"
 
 # make run_parmanodl for desktop execution
 
-    make_Run_ParmanodL ; log "parmanodl" "finished make_run_parmanodL"
+    make_Run_ParmanodL && log "parmanodl" "finished make_run_parmanodL"
+    debug "pause3"
 
 # Remove temporary script
 
