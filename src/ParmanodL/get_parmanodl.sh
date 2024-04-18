@@ -31,7 +31,7 @@ p|P) return 0 ;;
 n|N|no|NO) return 1 ;; 
 y|Y|Yes|YES|yes) break ;;
 q|Q|Quit|QUIT) exit 0 ;;
-*) invalid
+*) invalid ;;
 esac
 done
 
