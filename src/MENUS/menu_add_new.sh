@@ -34,8 +34,8 @@ echo -en "
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
-########################################################################################"
-echo -en "${bitcoin_new}
+########################################################################################" ; echo ""
+echo -en "${bitcoin_new}" ; echo -en "
 #                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #

@@ -36,7 +36,7 @@ sudo systemctl restart nfs-kernel-server
 
 # sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda /dev/sdb
 # sudo mkfs.ext4 /dev/md0
-# for fstab
+# for fstab...
 # UUID=your-raid-uuid /mnt/raid1 ext4 defaults,nofail 0 2
 # Check status
 # sudo mdadm --detail /dev/md0
