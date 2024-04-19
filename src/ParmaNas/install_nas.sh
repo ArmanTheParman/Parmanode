@@ -10,20 +10,25 @@ set_terminal
 sudo adduser nasuser
 sudo usermod -aG sudo nasuser
 
+########################################################################################
 # Set up NFS (file sharing protocol)
+########################################################################################
 sudo apt install nfs-kernel-server -y
 
 # set up export directory
 
 # copy to /etc/exports
 # /srv/nfs/share1 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=$uid,anongid=$gid)
+# or
 # /srv/nfs/share2 192.168.0.100(ro,sync,no_subtree_check)
 
 # apply changes to table.
 sudo exportfs -arv
 sudo systemctl restart nfs-kernel-server
 
+########################################################################################
 # mount on the client side
+########################################################################################
 # resvport selects a port lowever than 1024, an admin port
 # sudo mount -t nfs -o resvport,rw $IP:/mounted_directory /preverred_mount_point
 
@@ -31,7 +36,9 @@ sudo systemctl restart nfs-kernel-server
 # 192.168.3.1:/nas /mountpoint nfs rw,nolockd,resvport,hard,bg,intr,rw,tcp,rsize=65536,wsize=65536
 
 
+########################################################################################
 # RAID
+########################################################################################
 # sudo apt install mdadm
 
 # sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda /dev/sdb
