@@ -13,9 +13,23 @@ choose "xpmq" ;
 read drive_number ; set_terminal
 case $drive_number in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+0|1)
+announce "Cannot be zero or one. You chose $drive_number" 
+continue
+;;
+*)
+if grep -qE '[a-zA-Z]' <<< $drive_number ||\
+ ! grep -qE '^[0-9]+$' <<< $drive_number ; then
+announce "Numbers only. Hit <enter> to try again."
+continue
+fi
+break 
+;;
 esac
-echo "$drive_number" | grep -qE '[0-9]+' || { announce "Numbers only. Hit enter first, then try again." ; continue ; }
-echo "$drive_number" | grep -qE '^(0|1)$' || { announce "Cannot be zero or one. You chose $drive_number" ; continue ; }
+done
+
+
+
 
 set_terminal ; echo -e "
 ########################################################################################
