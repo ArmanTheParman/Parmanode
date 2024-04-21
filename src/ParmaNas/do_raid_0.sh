@@ -14,7 +14,7 @@ drive_count_do=0
 #times it's looped (number of drives added),
 #then populates a file to make a list of the raid drive dev names...
 
-while [[ $drive_count_do -lt $drive_count ]] ; then
+while [[ $drive_count_do -lt $drive_count ]] ; do
 detect_raid_drive || return 1
 echo "$drive_count_do $disk" >> $dp/raid_list.conf
 debug "drive count do is: $drive_count_do
