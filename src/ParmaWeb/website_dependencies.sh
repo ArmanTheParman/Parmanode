@@ -1,5 +1,5 @@
 function website_dependencies {
-if ! which unzip >/dev/null 2>&1 ; the sudo apt install unzip -y ; fi
+if ! which unzip >/dev/null 2>&1 ; then the sudo apt install unzip -y ; fi
 install_nginx
 install_PHP 
 install_expect
