@@ -10,7 +10,7 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-# Not yet installed...                                                                 #
+#$green Not yet installed...$orange                                                                 #
 #                                                                                      #"
 if [[ -n $parmashell_n ]]      ; then echo  "$parmashell_n"; fi 
 if [[ -n $docker_n ]]          ; then echo  "$docker_n"; fi
@@ -26,8 +26,8 @@ if [[ -n $qbittorrent_n ]]     ; then echo  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo  "$torssh_n"; fi
 if [[ -n $website_n ]]          ; then echo  "$website_n"; fi
 
-echo "#                                                                                      #
-# Installed...                                                                         #
+echo -e "#                                                                                      #
+#$green Installed...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
 if [[ -n $docker_i ]]          ; then echo  "$docker_i"; fi
@@ -41,8 +41,8 @@ if [[ -n $torb_i ]]            ; then echo  "$torb_i"; fi
 if [[ -n $qbittorrent_i ]]     ; then echo  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo  "$torssh_i"; fi
 if [[ -n $website_i ]]          ; then echo  "$website_i"; fi
-echo "#                                                                                      #
-# Failed installs (need to uninstall)...                                               #
+echo -e "#                                                                                      #
+#$green Failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $docker_p ]]          ; then echo  -e "$pink$docker_p$orange"; fi

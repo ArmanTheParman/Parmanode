@@ -47,6 +47,8 @@ echo -en "${bitcoin_new}" ; echo -en "
 #                                                                                      #
 #                          cool)        Cool stuff ...                                 #
 #                                                                                      #
+#                          e)           Extras ...                                     #
+#                                                                                      #
 $wordpress_available
 ########################################################################################
 "
@@ -104,7 +106,9 @@ cool|COOL|c)
         menu_coolstuff
         return 0
         ;;
-
+e|E)
+        menu_add_extras
+        ;;
 ws)
         install_website
         return 0
