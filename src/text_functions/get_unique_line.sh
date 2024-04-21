@@ -1,4 +1,8 @@
 function get_unique_line {
+debug "in get_unique_line
+$1
+$2"
+
 file="$dp/.unique_line"
 # $1 file 1
 # $2 file 2
@@ -9,13 +13,13 @@ file="$dp/.unique_line"
 length_1=$(cat "$1" | wc -l)
 length_2=$(cat "$2" | wc -l)
 
-if [[ $((length_2 - length_1)) != 1 ]] ; then
+if [[ $((length_2 - length_1)) != 1 || $((length_2 - length_1)) != 2 ]] ; then
 return 1
 fi
 
 for i in $(seq 1 $length_2) ; do
 #spacing is sometimes different, so better to check awk1
-if grep -q "$(sed -n ${i}p $2 | awk '{print $1}')" < "$1" ; then
+if grep -q "$(sed -n ${i}p $2 | awk '{print $1}')" < "$1" ; then #checks if first feild on line is found in file 2
 continue
 else
 echo "Drive name detected is...$(sed -n ${i}p $2)"
