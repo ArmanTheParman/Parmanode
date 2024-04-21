@@ -43,8 +43,9 @@ set_terminal ; echo -e "
     Type$cyan x$orange and$cyan <enter>$orange to try again.
 
 ########################################################################################
-" ; read choice ; set_termianl 
+" ; choose "xpmq" ; read choice ; set_termianl 
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "") break ;;
 x) continue ;;
 *) continue ;;
