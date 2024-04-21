@@ -44,10 +44,10 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0)
-do_raid_0
+do_raid_0 || return 1
 ;;
 1)
-do_raid_1
+do_raid_1 || return 1
 ;;
 *)
 invalid
