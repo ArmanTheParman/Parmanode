@@ -10,8 +10,8 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read drive_number ; set_terminal
-echo "$drive_number" | grep -qE '[0-9]+' || { announce "Numbers only. Try again." ; continue ; }
-echo "$drive_number" | grep -qE '^(0|1)$' || { announce "Cannot be zero or one." ; continue ; }
+echo "$drive_number" | grep -qE '[0-9]+' || { announce "Numbers only. Hit enter first, then try again." ; continue ; }
+echo "$drive_number" | grep -qE '^(0|1)$' || { announce "Cannot be zero or one. You chose $drive_number" ; continue ; }
 
 set_terminal ; echo -e "
 ########################################################################################
