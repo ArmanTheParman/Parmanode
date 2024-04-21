@@ -20,15 +20,18 @@ fi
 for i in $(seq 1 $length_2) ; do
 #spacing is sometimes different, so better to check awk1
 if grep -q "$(sed -n ${i}p $2 | awk '{print $1}')" < "$1" ; then #checks if first feild on line is found in file 2
+debug "no line found"
 continue
 else
 echo "Drive name detected is...$(sed -n ${i}p $2)"
 sleep 2
 echo "$(sed -n ${i}p $2)" > $file
-debug "$(cat $file)"
-unset file
+debug "line found"
 break
 fi
 done
+
+debug "$(cat $file)"
+unset file
 
 }
