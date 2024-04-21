@@ -86,7 +86,13 @@ success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID/$oran
 
     You can check the details of the RAID with the command: $cyan
 
-    sudo mdadm --detail /dev/md${md_num}
+        sudo mdadm --detail /dev/md${md_num}
+$orange
+    To see your connected devices and device names you can do any of ...$cyan
+
+        df -h   
+        lsblk
+        blkik 
 $orange
     Enjoy."
 
