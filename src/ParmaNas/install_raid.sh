@@ -1,14 +1,19 @@
 function install_raid {
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal_custom 48 ; echo -e "
 ########################################################################################
 $cyan
                                   R   A   I   D
 $orange
+    THIS SOFTWARE IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
+    IT (YOU DECIDE WHAT IS 'USE') THEN PLEASE CONTRIBUTE 15,000 SATS - CHEAP AF.      
+
+        https://armantheparman.com/donations
+
     RAID stands for Redundant Array of Independent Disks. There are various types, 
-    each with their advantages and disadvantages. Parmanode offers to help you setup
-    either RAID-0 or RAID-1
+    each with their advantages and disadvantages. This Parmanode add-on offers 
+    to help you setup either RAID-0 or RAID-1
 $green
     RAID-0 $orange
     This allows you to have two dives connected which act as one single drive.
