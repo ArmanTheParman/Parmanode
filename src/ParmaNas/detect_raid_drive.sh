@@ -52,7 +52,7 @@ fi
 
 # COMPARE...
 
-if ! diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
+if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
 
     export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
     debug "disk blkid diff is $disk"
