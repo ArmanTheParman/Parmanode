@@ -13,9 +13,9 @@ drive_count_do=0
 #detects drive in /dev/sdx format, and counts the number of
 #times it's looped (number of drives added),
 #then populates a file to make a list of the raid drive dev names...
-
+debug "drive_number=$drive_number drive_count_do=$drive_count_do"
 rm $dp/raid_list.conf >/dev/null 2>&1
-while [[ $drive_count_do -lt $drive_count ]] ; do
+while [[ $drive_count_do -lt $drive_number ]] ; do
 detect_raid_drive || return 1
 echo "$disk" >> $dp/raid_list.conf
 debug "drive count do is: $drive_count_do
@@ -53,7 +53,7 @@ done < $dp/raid_list.conf
 #RAID...
 set_terminal ; echo -e "${green}Preparing RAID ...$orange" ; sleep 1.5
 echo ""
-echo "$drive_count drives will be formed into a RAID."
+echo "$drive_number drives will be formed into a RAID."
 enter_or_quit 
 echo ""
 
@@ -72,7 +72,7 @@ announce "too many raid drives exist '/dev/md0,md1,md2' ; Parmanode is too nervo
 return 1
 fi
 
-sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_count $device_list
+sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 
 if [[ ! -e /media/$USER/RAID ]] ; then
     sudo mkdir -p /media/$USER/RAID 2>/dev/null
