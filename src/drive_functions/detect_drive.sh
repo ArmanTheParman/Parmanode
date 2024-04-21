@@ -65,10 +65,9 @@ fi #end ! menu2
 #Extra coplication - mac has its own detection; diskutil list.
 
 ########################################################################################
-#BEFORE STATE CAPTURE...
+#BEFORE STATE, CAPTURE...
 if [[ $(uname) == "Linux" ]] ; then 
-    sudo blkid -g >/dev/null
-    sudo blkid > $HOME/.parmanode/before
+    sudo blkid -g > $dp/before
     sudo lsblk > $dp/before_lsblk
     fi
 
@@ -110,11 +109,10 @@ echo -e "${green}Parmanode drive detected...$orange" ; sleep 1
 fi
 
 ########################################################################################
-#AFTER STATE CAPTURE...
+#AFTER STATE, CAPTURE...
 
 if [[ $(uname) == "Linux" ]] ; then
-    sudo blkid -g >/dev/null
-    sudo blkid > $HOME/.parmanode/after
+    sudo blkid -g > $dp/after
     sudo lsblk > $dp/after_lsblk
     fi
 
