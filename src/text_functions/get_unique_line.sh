@@ -25,6 +25,7 @@ else
 echo "Drive name detected is...$(sed -n ${i}p $2)"
 sleep 2
 echo "$(sed -n ${i}p $2)" > $file
+debug "$(cat $file)"
 unset file
 break
 fi
