@@ -28,7 +28,7 @@ $green
     only be able to store the capacity of the smaller drive.
 $green
     RAID-2 to 6 and 10 $orange
-    Look it up. Internet.
+    Look it up. Internet. Parmanode does not support these types for now.
 $cyan
     YOU HAVE CHOICES... $orange
 
