@@ -47,7 +47,8 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "") break ;;
 x) continue ;;
-*) continue ;;
+*) 
+invalid ;;
 esac
 done
 
