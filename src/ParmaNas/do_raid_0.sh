@@ -82,7 +82,14 @@ fi
 sudo mount /dev/md${md_num} /media/$USER/RAID || { announce "Parmanode couldn't mount your RAID. Please try yourself." ; return 1 ; }
 sudo chown -R $USER:$USER /media/$USER/RAID >/dev/null 2>&1
 
-success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID/$orange"
+success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID/$orange
+
+    You can check the details of the RAID with the command: $cyan
+
+    sudo mdadm --detail /dev/md${md_num}
+$orange
+    Enjoy."
+
 }
 
 function get_device_list {
