@@ -13,7 +13,7 @@ file="$dp/.unique_line"
 length_1=$(cat "$1" | wc -l)
 length_2=$(cat "$2" | wc -l)
 
-if [[ $((length_2 - length_1)) != 1 || $((length_2 - length_1)) != 2 ]] ; then
+if [[ $((length_2 - length_1)) != 1 && $((length_2 - length_1)) != 2 ]] ; then
 return 1
 fi
 
