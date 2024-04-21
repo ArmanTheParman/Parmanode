@@ -86,10 +86,11 @@ set_terminal ; echo -e "
 
     The drive detected is: $green$disk$orange
 
+$pink
     $(lsblk $disk)
 
     $(blkid $disk)
-
+$orange
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal

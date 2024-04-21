@@ -17,7 +17,7 @@ return 0
 }
 
 function enter_or_quit {
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange, or $red q$yellow to quit.$orange" 
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$yellow, or $red q$yellow to quit.$orange" 
 read enter_cont ; export enter_cont
 if [[ $enter_cont == debugon ]] ; then export debug=1 ; fi
 if [[ $enter_cont == debugoff ]] ; then export debug=0 ; fi

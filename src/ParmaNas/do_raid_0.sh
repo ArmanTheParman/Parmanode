@@ -59,18 +59,19 @@ echo ""
 
 get_device_list
 
-debug "device list string: $device_list"
-if ! lsblk | grep "/dev/md0" ; then
-md_num=0
-elif ! lsblk | grep "/dev/md1" ; then
-md_num=1
-elif ! lsblk | grep "/dev/md2" ; then
-md_num=2
-else
-announce "too many raid drives exist '/dev/md0,md1,md2' ; Parmanode is too nervous to continue.
-    Maybe unmount the other 3 RAID drives and try again."
+if sudo mdadm --detail --scan >/dev/null 2>&1 ; then
+announce "You need to unmount any pre-existing RAID drives or this procedure will fail.
+    I'll wait. After unmounting, you can carry on."
+fi
+
+if sudo mdadm --detail --scan >/dev/null 2>&1 ; then
+announce "A RAID drive still exists/mounted. Aborting."
 return 1
 fi
+
+debug "device list string: $device_list"
+
+md_num=0
 
 sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 
