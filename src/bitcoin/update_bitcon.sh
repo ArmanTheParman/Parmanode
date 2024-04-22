@@ -28,10 +28,10 @@ set_terminal ; echo -e "
 
         4)   Install Bitcoin again (main menu -> add -> bitcoin)
 
-        5)   If you are syncing to the external drive, When prompted for a drive, 
+        5)   If you are syncing to the external drive, when prompted for a drive, 
              choose option 3, 'import previous parmanode drive'.
 
-        6)   Continue the installtion - you'll be given options for which version
+        6)   Continue the installation - you'll be given options for which version
              you want.
             
         7)   Run Bitcoin.
