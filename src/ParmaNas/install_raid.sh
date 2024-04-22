@@ -9,7 +9,7 @@ $cyan
                                   R   A   I   D
 $orange
     THIS SOFTWARE ADD-ON IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
-    IT (YOU DECIDE WHAT IS 'USE') THEN PLEASE CONTRIBUTE$green 15,000 SATS $orange- CHEAP AF.      
+    IT (YOU DECIDE WHAT IS 'USE') THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange- CHEAP AF.      
 $bright_blue
         https://armantheparman.com/donations
 $orange
