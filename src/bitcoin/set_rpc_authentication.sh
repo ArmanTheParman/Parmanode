@@ -16,7 +16,7 @@ $orange
     Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
     Bitcoin Core. 
     So that no random software connects to Bitcoin Core, a username/password 
-    autentication challenge is introduced. Note, this password doesn't need to be 
+    authentication challenge is introduced. Note, this password doesn't need to be 
     incredibly secure, and do also bear in mind that it will be stored on the 
     computer in$pink clear text$orange (i.e. unencrypted) inside the bitcoin.conf
     file and other configuration files. Therefore, don't use highly sensitive
