@@ -22,7 +22,7 @@ echo -e "
    If you need a terminal window, you can open a new one; you can even run Parmanode
    on that concurrently.
 
-   When it's done, bitcoin will stop and start over to run in the background.
+   When it's done, Bitcoin will stop and start over to run in the background.
 
 ########################################################################################
 "
