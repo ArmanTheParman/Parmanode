@@ -147,7 +147,7 @@ continue
 fi
 
 if [[ $OS == Mac ]] ; then
-    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$| tr -d '[:space:]') 
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | grep -Eo 'dev/disk.+' | cut -d ' ' -f1) 
     if [[ -z $disk ]] ; then announce "Error detecting drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi

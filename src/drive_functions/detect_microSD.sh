@@ -68,7 +68,7 @@ if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; the
 fi
 
 if [[ $OS == Mac ]] ; then
-    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | tail -n2 | grep -Eo disk.+$)
+    export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | grep -Eo 'dev/disk.+' | cut -d ' ' -f1) 
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; rm_after_before ; return 1 ; fi
     break
 fi
