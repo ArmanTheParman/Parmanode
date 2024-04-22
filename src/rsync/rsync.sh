@@ -158,7 +158,7 @@ echo -e "
 "
 choose "x"
 read dry
-if [[ $dry == "y" ]] ; then dry="--dry-run" ; else dry="" ; fi
+if [[ $dry == "y" ]] ; then dry="--dry-run -i" ; else dry="" ; fi
 clear
 echo -e "
 ########################################################################################
@@ -205,6 +205,15 @@ echo -e "
     Recursive mode   (-r) 
     Compress mode    (-z) 
     Show progress    (-P) 
+    Show difference  (-i)        
+    
+    Other options you can add...
+
+               --no-o   $orange (don't change ownership in destination) $white
+               --no-p   $orange (don't change permissions in destination) $white
+               --no-g   $orange (don't change group in destination) $white
+               --checksum   $orange (check each file's data for exact sameness - slower)   
+
 
     You can remove any of these if you wish.
 
@@ -221,8 +230,6 @@ $pink
         - If the destination directory is a remote computer, you can add '-e ssh' after the options and
           then add username@IP_address: before the destination directory. Right after the ':' add a '/'
           and type out the full path.
-        - add --progress for extra information as it does it's thing.
-        - add --checksum if you want each file's data to be checked for exactness (slower)
 $orange
 ##############################################################################################################
 "
