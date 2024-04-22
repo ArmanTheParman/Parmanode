@@ -3,12 +3,12 @@
 function ParmanodL_Installer {
 # Version specific info
     
-    export zip_file="2023-05-03-raspios-bullseye-arm64.img.xz"
+    export zip_file="2024-03-15-raspios-bookworm-arm64.img.xz"
     export zip_path="$HOME/ParmanodL/$zip_file"
-    export image_file="2023-05-03-raspios-bullseye-arm64.img"
+    export image_file="2024-03-15-raspios-bookworm-arm64.img"
     export image_path="$HOME/ParmanodL/$image_file" 
-    export hash_zip="e7c0c89db32d457298fbe93195e9d11e3e6b4eb9e0683a7beb1598ea39a0a7aa"
-    export hash_image="962780be6bb41522532f26449f67524dc61038673833c079808da9ca2ad9a4f0"
+    export hash_zip="7e53a46aab92051d523d7283c080532bebb52ce86758629bf1951be9b4b0560f"
+    export hash_image="94fc4b66d87c9e2742092aba689e0f326ebdaedb4a1dcdbf0c5182c034809c16"
     export mnt="$HOME/mnt"
     
 # Size 88 wide, and orange colour scheme

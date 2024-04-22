@@ -6,8 +6,8 @@ cd $HOME/ParmanodL
 
 	if [ ! -e $zip_path ] ; then
 	please_wait
-	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2023-05-03/$zip_file || \
-	{ announce "Failed do download Pi OS image. Aborting." ; return 1 ; }
+	curl -LO https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2024-03-15/$zip_file || \
+	{ announce "Failed to download Pi OS image. Aborting." ; return 1 ; }
 	fi
 
 # Check integrity.
