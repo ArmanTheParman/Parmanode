@@ -12,7 +12,7 @@ echo -e "
 #                                                                                      #
 #$green Tools...$orange                                                                             #
 #                                                                                      #
-#                 (rr)          RAID (join drives together)                            #
+#                              (rr)          RAID (join drives together)                            #
 #                                                                                      #
 #$green Programs not yet installed...$orange                                                        #
 #                                                                                      #"
