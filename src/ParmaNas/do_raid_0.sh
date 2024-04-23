@@ -99,7 +99,8 @@ debug "device list string: $device_list"
 md_num=0
 check_raid_exists || return 1
 sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_number $device_list
-debug "pause after create raid"
+debug "pause after create raid
+$device_list"
 
 if [[ ! -e /media/$USER/RAID ]] ; then
     sudo mkdir -p /media/$USER/RAID 2>/dev/null
