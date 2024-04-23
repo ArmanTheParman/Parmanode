@@ -47,7 +47,10 @@ while read device ; do
 set_terminal ; echo -e "${green}Preparing $device ...$orange" ; sleep 1.5
 #partition...
 debug "in loop, device is $device"
-disk=$device && partition_drive
+sudo fdisk "$device" <<EOF >/dev/null
+g
+w
+EOF
 #format...
 sudo mkfs.ext4 $device
 done < $dp/raid_list.conf
@@ -94,8 +97,9 @@ fi
 debug "device list string: $device_list"
 
 md_num=0
-
+check_raid_exists || return 1
 sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_number $device_list
+debug "pause after create raid"
 
 if [[ ! -e /media/$USER/RAID ]] ; then
     sudo mkdir -p /media/$USER/RAID 2>/dev/null
@@ -135,3 +139,5 @@ while IFS= read -r line; do
     device_list+="$line "
 done < "$dp/raid_list.conf"
 }
+
+
