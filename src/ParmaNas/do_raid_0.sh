@@ -108,6 +108,7 @@ fi
 
 #Format the array
 sudo umount $device_list
+sudo umount /media/$USER/RAID
 sudo mkfs.ext4 /dev/md0
 
 #Mount it
