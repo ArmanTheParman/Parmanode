@@ -78,8 +78,10 @@ $orange
 ########################################################################################
 "
 read choice
-if [[ $choice != wrong ]] ; then
-return 1
+
+    if [[ $choice != wrong ]] ; then
+    return 1
+    fi
 fi
 
 debug "device list string: $device_list"
