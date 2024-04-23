@@ -69,12 +69,19 @@ fi
 if lsblk | grep -q md0 >/dev/null 2>&1 ; then
 set_terminal ; echo -e "
 ########################################################################################
-    A RAID drive still seems to exist based on a search command:
+
+    A current RAID drive still seems to exist based on a search command:
 $cyan
     lsblk | grep md0
 $orange
-    If I'm wrong, type 'wrong' and <enter> to continue.
+    You can have more than one RAID system going.
+
+    It could be the drive you're preparing was once a RAID drive, which is fine.
+
+    If I'm wrong, type$cyan 'wrong'$orange and$cyan <enter>$orange to continue.
+
     Otherwise, aborting.
+
 ########################################################################################
 "
 read choice
