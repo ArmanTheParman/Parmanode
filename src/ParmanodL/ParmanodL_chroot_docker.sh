@@ -63,10 +63,42 @@ cd /home/parman/parman_programs/parmanode/
 EOF
 
 cat << 'EOF' > /home/parman/Desktop/instructions.txt
-Please type rp from the terminal to run Parmanode.
-Please read Parmanode messages carefully, and it should then be easy to use.
+To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
+Terminal is run by clicking that black icon on the taskbar.
+
+On Pi's, the Terminal doesn't automatically resize, so please widen the 
+screen and make it taller using the mouse so the text doesn't wrap 
+around and look ugly.
+
+Read everything presented to you on the screen, take your time, and
+it'll be easy.
+
+If you use an external drive, sometimes, you'll get a 'not mounted' error when 
+starting Bitcoin.  Make sure the drive is connected and you see its icon 
+on the desktop. If not, unplug and replug it in. It should mount.
+
+To access Parmanode from another computer on the network, type:
+
+ssh parman@parmanodl.local
+
+then the Pi's password. Notice, it is parmanodl.local, NOT parmanode.local.
+
+If that doesn't work, you'll need the computer's IP address, which can
+be a bit tricky to find. One way is to look it up on your router's
+page, then do the command like this (example number shown):
+
+ssh parman@192.168.0.100
+
+Another way to find it is to run Parmanode, go to the tools menu and
+choose ip.
+
+You can use Parmanode to install various wallets - Sparrow or Electrum,
+or Specter are the recommended ones. There others are for hardware
+wallets, included to help you migrate yourself away from them (not
+necessary but recommended).
+
 Buy more Bitcoin.
-If this is awesome, sned sats.
+If Parmanode is awesome, sned sats :)
 Enjoy.
 EOF
 

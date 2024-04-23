@@ -36,6 +36,9 @@ page, then do the command like this (example number shown):
 
 ssh parman@192.168.0.100
 
+Another way to find it is to run Parmanode, go to the tools menu and
+choose ip.
+
 You can use Parmanode to install various wallets - Sparrow or Electrum,
 or Specter are the recommended ones. There others are for hardware
 wallets, included to help you migrate yourself away from them (not

@@ -31,7 +31,12 @@ $orange
     communication errors with SSH keys.
 
 7   The password for the ParmanodL is$green "parmanodl" $orange
-
+$pink
+8   When you first use ParmanodL, you'll be prompted to change the password. It's
+    straightforward if you SSH into it, but if you use a graphical interface, you'll
+    be presented with the login screen. It's counterintuitve but you have to type the
+    'parmanodl' password twice before entering the new password twice. 
+$orange
     Enjoy.						
 
 ########################################################################################
