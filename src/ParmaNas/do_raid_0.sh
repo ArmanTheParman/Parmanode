@@ -9,17 +9,18 @@ sudo apt-get update -y
 sudo apt-get install mdadm -y
 fi
 
-get_raid_drive_count || return 1   #gets $drive_count
+get_raid_drive_count || return 1   #gets selected $drive_count
 drive_count_do=0
 
 #detects drive in /dev/sdx format, and counts the number of
 #times it's looped (number of drives added),
 #then populates a file to make a list of the raid drive dev names...
 debug "drive_number=$drive_number drive_count_do=$drive_count_do"
-rm $dp/raid_list.conf >/dev/null 2>&1
+rm $dp/device_list.conf >/dev/null 2>&1
+
 while [[ $drive_count_do -lt $drive_number ]] ; do
 detect_raid_drive || return 1
-echo "$disk" >> $dp/raid_list.conf
+echo "$disk" >> $dp/device_list.conf
 debug "drive count do is: $drive_count_do
 disk is $disk"
 done
@@ -53,7 +54,7 @@ w
 EOF
 #format...
 sudo mkfs.ext4 $device
-done < $dp/raid_list.conf
+done < $dp/device_list.conf
 
 #RAID...
 set_terminal ; echo -e "${green}Preparing RAID ...$orange" ; sleep 1.5
@@ -62,42 +63,21 @@ echo "$drive_number drives will be formed into a RAID."
 enter_or_quit 
 echo ""
 
-get_device_list
+#fetch /dev/... list
+get_device_list 
 
-if lsblk | grep -q md0 >/dev/null 2>&1 ; then
-announce "You need to unmount any pre-existing RAID drives or this procedure will fail.
-    I'll wait. After unmounting, you can carry on."
-fi
-
-if lsblk | grep -q md0 >/dev/null 2>&1 ; then
-set_terminal ; echo -e "
-########################################################################################
-
-    A current RAID drive still seems to exist based on a search command:
-$cyan
-    lsblk | grep md0
-$orange
-    You can have more than one RAID system going.
-
-    It could be the drive you're preparing was once a RAID drive, which is fine.
-
-    If I'm wrong, type$cyan 'wrong'$orange and$cyan <enter>$orange to continue.
-
-    Otherwise, aborting.
-
-########################################################################################
-"
-read choice
-
-    if [[ $choice != wrong ]] ; then
-    return 1
-    fi
-fi
+#stop running raids
+stop_raids || return 1
 
 debug "device list string: $device_list"
 
+#set variable based on running raids. If non running, md_num will be 0
 md_num=0
-check_raid_exists || return 1
+for i in $(sudo mdadm --detail --scan) ; do
+echo $i | awk '{print $2}' | grep -q "md${md_num}" && md_num=$((md_num + 1))
+done
+debug "md_num is $md_num"
+
 sudo umount $device_list >/dev/null
 sudo umount /media/$USER/RAID >/dev/null
 sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_number $device_list
@@ -105,44 +85,30 @@ debug "pause after create raid
 $device_list"
 
 if [[ ! -e /media/$USER/RAID ]] ; then
-    sudo mkdir -p /media/$USER/RAID 2>/dev/null
-    sudo chown -R $USER:$USER /media/$USER/RAID >/dev/null 2>&1
+    sudo mkdir -p /media/$USER/RAID${md_num} 2>/dev/null
+    sudo chown -R $USER:$USER /media/$USER/RAID${md_num} >/dev/null 2>&1
 fi
 
 #Format the array
 sudo umount $device_list >/dev/null
-sudo umount /media/$USER/RAID >/dev/null
-sudo mkfs.ext4 /dev/md0
+sudo umount /media/$USER/RAID${md_num} >/dev/null
+sudo mkfs.ext4 /dev/md${md_num}
 
 #Mount it
-sudo mount /dev/md${md_num} /media/$USER/RAID || { announce "Parmanode couldn't mount your RAID. Please try yourself." ; return 1 ; }
-sudo chown -R $USER:$USER /media/$USER/RAID >/dev/null 2>&1
+sudo mount /dev/md${md_num} /media/$USER/RAID${md_num} || { announce "Parmanode couldn't mount your RAID. Please try yourself." ; return 1 ; }
+sudo chown -R $USER:$USER /media/$USER/RAID${md_num} >/dev/null 2>&1
 
-success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID/$orange
+installed_conf "/dev/md${md_num}"
 
-    You can check the details of the RAID with the command: $cyan
+success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID${md_num}/$orange
 
-        sudo mdadm --detail /dev/md${md_num}
-$orange
-    To see your connected devices and device names you can do any of ...$cyan
+To see your connected devices and device names you can do any of ...$cyan
 
         df -h   
         lsblk
         blkik 
 $orange
     Enjoy."
-
-}
-
-function get_device_list {
-# Initialize an empty string to hold the device names
-device_list=""
-
-# Read each line in the raid_list.conf file
-while IFS= read -r line; do
-    # Append each device name to the string
-    device_list+="$line "
-done < "$dp/raid_list.conf"
 }
 
 

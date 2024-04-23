@@ -4,10 +4,12 @@ function detect_raid_drive {
     sudo blkid -g > $dp/before
     sudo lsblk > $dp/before_lsblk
 
+#increments at the end of the function. This function is called in a loop
+if [[ $drive_count_do == 0 ]] ; then 
 set_terminal ; echo -e "
 ########################################################################################
 
-    Go ahead and ${pink}CONNECT$orange a RAID drive you wish to use.
+    Go ahead and ${pink}CONNECT$orange the first drive you wish to use for RAID.
 
     If a window pops up, a file explorer, you can safely close that.
 $cyan
@@ -20,6 +22,24 @@ $cyan
 ########################################################################################
 "
 enter_continue
+else
+set_terminal ; echo -e "
+########################################################################################
+
+    Go ahead and ${pink}CONNECT$orange the next RAID drive you wish to add.
+
+    If a window pops up, a file explorer, you can safely close that.
+$cyan
+    Wait a few seconds, and if you get a drive error pop-up, click IGNORE 
+    before hitting <enter> here.
+    $orange
+    
+    GIVE THE COMPUTER A FEW SECONDS TO NOTICE THE DRIVE BEFORE HITTING ENTER
+
+########################################################################################
+"
+enter_continue
+fi
 set_terminal
 sleep 2.5
 
