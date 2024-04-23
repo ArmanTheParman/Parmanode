@@ -36,7 +36,6 @@ echo -en "
 #                                                                                      #
 ########################################################################################" ; echo ""
 echo -en "${bitcoin_new}" ; echo -en "
-#                                                                                      #
 #                          n)           Node related software ...                      #
 #                                                                                      #
 #                          w)           Wallet Software ...                            #
