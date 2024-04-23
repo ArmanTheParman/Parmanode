@@ -281,7 +281,7 @@ fi # end if $1 != install
 # Remove temporary script
 
     rm $HOME/Desktop/ParmanodL_Installer >/dev/null 2>&1 && log "parmanodl" "installer removed"
-    
+
 # Clean up the mess
 
     ParmanodL_cleanup

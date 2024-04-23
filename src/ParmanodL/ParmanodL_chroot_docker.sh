@@ -62,6 +62,14 @@ cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
 
+cat << 'EOF' > /home/parman/Desktop/instructions.txt
+Please type rp from the terminal to run Parmanode.
+Please read Parmanode messages carefully, and it should then be easy to use.
+Buy more Bitcoin.
+If this is awesome, sned sats.
+Enjoy.
+EOF
+
 mv /tmp/rp /tmp/mnt/raspi/home/parman/rp
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
