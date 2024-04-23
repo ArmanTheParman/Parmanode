@@ -95,6 +95,10 @@ if [[ ! -e /media/$USER/RAID ]] ; then
     sudo chown -R $USER:$USER /media/$USER/RAID >/dev/null 2>&1
 fi
 
+#Format the array
+sudo mkfs.ext4 /dev/md0
+
+#Mount it
 sudo mount /dev/md${md_num} /media/$USER/RAID || { announce "Parmanode couldn't mount your RAID. Please try yourself." ; return 1 ; }
 sudo chown -R $USER:$USER /media/$USER/RAID >/dev/null 2>&1
 
