@@ -95,6 +95,8 @@ debug "device list string: $device_list"
 
 md_num=0
 check_raid_exists || return 1
+sudo umount $device_list
+sudo umount /media/$USER/RAID
 sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 
 if [[ ! -e /media/$USER/RAID ]] ; then
