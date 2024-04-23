@@ -16,10 +16,6 @@ fi
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
 sudo fdisk "$disk_no_number" <<EOF >/dev/null 
 g
-n
-1
-
-
 w
 EOF
 
