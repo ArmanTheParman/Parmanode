@@ -95,8 +95,8 @@ debug "device list string: $device_list"
 
 md_num=0
 check_raid_exists || return 1
-sudo umount $device_list
-sudo umount /media/$USER/RAID
+sudo umount $device_list >/dev/null
+sudo umount /media/$USER/RAID >/dev/null
 sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 
 if [[ ! -e /media/$USER/RAID ]] ; then
@@ -105,8 +105,8 @@ if [[ ! -e /media/$USER/RAID ]] ; then
 fi
 
 #Format the array
-sudo umount $device_list
-sudo umount /media/$USER/RAID
+sudo umount $device_list >/dev/null
+sudo umount /media/$USER/RAID >/dev/null
 sudo mkfs.ext4 /dev/md0
 
 #Mount it
