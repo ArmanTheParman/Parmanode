@@ -1,4 +1,5 @@
 #Changes here should also be made to ParmanodL_Installer script.
+#Do not move this file from this path, get_parmanodl_installer dependent on it.
 
 function ParmanodL_Installer {
 # Version specific info
@@ -290,9 +291,4 @@ fi # end if $1 != install
     ParmanodL_success
 
 # The End
-
-
-
-
-########################################################################################
 }

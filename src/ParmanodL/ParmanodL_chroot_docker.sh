@@ -45,7 +45,7 @@ WELCOME TO YOUR ...
 
 ... computer, running pre-installed Parmanode software.
 
-Type "menu" to use the program.
+Type rp to use the program (Stands for 'run parmanode').
 
 First time use - the password needs to be changed, then it exits. Then come back.
 	
@@ -55,17 +55,17 @@ cp /tmp/banner.txt /tmp/mnt/raspi/tmp/banner.txt
 chroot /tmp/mnt/raspi /bin/bash -c 'cat /tmp/banner.txt > /etc/motd'
 rm /tmp/banner.txt
 
-cat << 'EOF' > /tmp/menu
+cat << 'EOF' > /tmp/rp
 #!/bin/bash
-oldPassword=$(cat /tmp/oldPassword 2>/dev/null) ; if sudo cat /etc/shadow | grep -q "$oldPassword" ; then sudo sed -i '/First/d' /etc/motd ; sudo sed -i '/oldPassword=/d' /usr/local/bin/menu ; fi 
+oldPassword=$(cat /tmp/oldPassword 2>/dev/null) ; if sudo cat /etc/shadow | grep -q "$oldPassword" ; then sudo sed -i '/First/d' /etc/motd ; sudo sed -i '/oldPassword=/d' /usr/local/bin/rp ; fi 
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
 
-mv /tmp/menu /tmp/mnt/raspi/home/parman/menu
-chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/menu'
-chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/menu'
-chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman ; mv menu /usr/local/bin/ '
+mv /tmp/rp /tmp/mnt/raspi/home/parman/rp
+chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/rp'
+chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
+chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman ; mv rp /usr/local/bin/ '
 EOS
 
 sudo chmod +x ~/ParmanodL/chroot_function.sh
