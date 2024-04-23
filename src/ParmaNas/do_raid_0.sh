@@ -3,6 +3,8 @@ function do_raid_0 {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 if ! which mdadm ; then
+set_terminal
+echo -e "${green}Just gotta install mdadm...$orange"
 sudo apt-get update -y
 sudo apt-get install mdadm -y
 fi
@@ -59,13 +61,24 @@ echo ""
 
 get_device_list
 
-if sudo mdadm --detail --scan >/dev/null 2>&1 ; then
+if lsblk | grep -q md0 >/dev/null 2>&1 ; then
 announce "You need to unmount any pre-existing RAID drives or this procedure will fail.
     I'll wait. After unmounting, you can carry on."
 fi
 
-if sudo mdadm --detail --scan >/dev/null 2>&1 ; then
-announce "A RAID drive still exists/mounted. Aborting."
+if lsblk | grep -q md0 >/dev/null 2>&1 ; then
+set_terminal ; echo -e "
+########################################################################################
+    A RAID drive still seems to exist based on a search command:
+$cyan
+    lsblk | grep md0
+$orange
+    If I'm wrong, type 'wrong' and <enter> to continue.
+    Otherwise, aborting.
+########################################################################################
+"
+read choice
+if [[ $choice != wrong ]] ; then
 return 1
 fi
 

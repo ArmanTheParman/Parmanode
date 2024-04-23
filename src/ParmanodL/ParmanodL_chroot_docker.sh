@@ -77,6 +77,10 @@ If you use an external drive, sometimes, you'll get a 'not mounted' error when
 starting Bitcoin.  Make sure the drive is connected and you see its icon 
 on the desktop. If not, unplug and replug it in. It should mount.
 
+To adjust your settings, like keyboard layout, run:
+
+sudo raspi-config
+
 To access Parmanode from another computer on the network, type:
 
 ssh parman@parmanodl.local
