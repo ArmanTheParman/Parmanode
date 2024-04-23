@@ -12,7 +12,7 @@ echo -e "
 #                                                                                      #
 #$green Tools...$orange                                                                             #
 #                                                                                      #
-#                 (rr)          RAID (join drives together) $pink coming soon      $orange         #
+#                 (rr)          RAID (join drives together)                            #
 #                                                                                      #
 #$green Programs not yet installed...$orange                                                        #
 #                                                                                      #"
@@ -39,7 +39,7 @@ case $choice in
 m|M) back2main ;;
 
 rr)
-    if [[ $debug == 1 ]] ; then install_raid ; fi
+    install_raid 
     return 0
     ;; 
 ws)
