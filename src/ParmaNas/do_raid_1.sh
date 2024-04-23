@@ -1,4 +1,4 @@
-function do_raid_0 {
+function do_raid_1 {
 
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
@@ -95,7 +95,7 @@ debug "device list string: $device_list"
 
 md_num=0
 
-sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_number $device_list
+sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 
 if [[ ! -e /media/$USER/RAID ]] ; then
     sudo mkdir -p /media/$USER/RAID 2>/dev/null
