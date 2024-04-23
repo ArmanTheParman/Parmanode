@@ -36,7 +36,7 @@ $orange
 
 
 ########################################################################################
-Hit <enter> to continue
+Hit$cyan <enter>$orange to continue
 "
 read ; clear
 
@@ -60,8 +60,8 @@ $orange
 
 ########################################################################################
 
-    Hit <enter> to continue
-    " ; read
+Hit$cyan <enter>$orange to continue
+    " ; read ; please_wait
     
     if [[ $(uname) == Darwin && $1 != install ]] ; then clear ; echo "
 ########################################################################################
@@ -220,7 +220,8 @@ fi # end if $1 != install
     ParmanodL_directories ;  log "parmanodl" "directory function"
 
 # Get OS , verify, and extract
-    
+    please_wait
+
     export OS_choice=pi  #might add other options later.
 
     if [[ $OS_choice == pi ]] ; then
