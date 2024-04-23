@@ -103,6 +103,7 @@ if [[ ! -e /media/$USER/RAID ]] ; then
 fi
 
 #Format the array
+sudo umount $device_list
 sudo mkfs.ext4 /dev/md0
 
 #Mount it
