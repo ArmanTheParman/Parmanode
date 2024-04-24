@@ -48,7 +48,7 @@ do_raid_0 || return 1
 ;;
 1)
 debug "start 1)"
-#do_raid_1 || return 1
+do_raid_1 || return 1
 debug "end 1)"
 ;;
 *)
