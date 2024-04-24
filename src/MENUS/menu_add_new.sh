@@ -107,6 +107,7 @@ cool|COOL|c)
         ;;
 e|E)
         menu_add_extras
+        return 0
         ;;
 ws)
         install_website

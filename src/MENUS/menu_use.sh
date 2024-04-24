@@ -19,7 +19,7 @@ echo -e "
 Installed...
 
 "
-if grep -q "/dev/md" $ic || [[ $arg1 == raid ]] ; then raidapp=1
+if grep -q "/dev/md" $ic ; then raidapp=1
                        echo "    (rr)         RAID 
                             " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1

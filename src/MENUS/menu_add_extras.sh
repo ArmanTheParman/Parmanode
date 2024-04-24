@@ -12,7 +12,7 @@ echo -e "
 #                                                                                      #
 #$green Tools...$orange                                                                             #
 #                                                                                      #
-#                            (rr)          RAID (join drives together) coming soon     #
+#                            (rr)          RAID (join drives together)                 #
 #                                                                                      #
 #$green Programs not yet installed...$orange                                                        #
 #                                                                                      #"
@@ -39,11 +39,7 @@ case $choice in
 m|M) back2main ;;
 
 rr)
-    if [[ $arg1 == raid ]] ; then
     install_raid 
-    else
-    announce "Not available yet; soon" 
-    fi
     return 0
     ;; 
 ws)
