@@ -47,7 +47,9 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 do_raid_0 || return 1
 ;;
 1)
+debug "start 1)"
 do_raid_1 || return 1
+debug "end 1)"
 ;;
 *)
 invalid
