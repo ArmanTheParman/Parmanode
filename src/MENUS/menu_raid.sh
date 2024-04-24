@@ -37,6 +37,7 @@ enter_continue
 lc)
 set_terminal
 blkid | grep /dev/md | cat
+enter_continue
 ;;
 
 dt)
