@@ -12,8 +12,12 @@ elif [[ $1 == d7 ]] ; then export debug=7
 else export debug=0 
 fi
 
-if [[ $1 == bash ]] ; then export bash=1 ; fi
+# So args are univerally available
+export arg1=$1
+export arg2=$2
+export arg3=$3
 
+if [[ $1 == bash ]] ; then export bash=1 ; fi
 if [[ $1 == m  ]] ; then export debug=menu ; export skip_intro=true ; fi
 if [[ $1 == fix ]] ; then export fix=1; fi
 if [[ $1 == report ]] ; then export report=true ; fi
