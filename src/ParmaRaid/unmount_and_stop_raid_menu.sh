@@ -4,14 +4,14 @@ set_terminal ; echo "
 ########################################################################################
 
     You can select which RAIDs to act on in the next screen...
+$green
+                             u)$orange     Unmount $green
 
-                             u)     Unmount 
+                             s) $orange    Stop RAID (also unmounts)$green 
 
-                             s)     Stop RAID (also unmounts) 
+                             a)  $orange   Assemble RAID (opposite to stop RAID)$green
 
-                             a)     Assemble RAID (opposite to stop RAID)
-
-                             mm)    Mount RAID (mounts all connected)
+                             mm) $orange   Mount RAID (mounts all connected)
 
 ########################################################################################
 "

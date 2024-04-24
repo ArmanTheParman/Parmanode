@@ -5,13 +5,13 @@ set_terminal ; echo -e "
                                 R A I D - menu$orange
 ########################################################################################
 $green
+                          dt)$orange         Inspect RAID details$green
+
                           lr)$orange         List running RAIDs$green
 
                           lm)$orange         List mounted RAIDs$green
 
                           lc)$orange         List physically connected RAID drives$green
-
-                          dt)$orange         Inspect RAID details$green
 
                           ums)$orange        Unmount/Mount/Stop menu ...$green
 
