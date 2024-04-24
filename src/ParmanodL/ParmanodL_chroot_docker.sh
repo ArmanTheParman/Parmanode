@@ -29,7 +29,9 @@ chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 chroot /tmp/mnt/raspi /bin/bash -c 'cat /etc/shadow | grep parman > /tmp/oldPassword'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary
-
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/desktop_bg=/c\\desktop_bg=#000000' /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper_mode=/c\\wallpaper_mode=fit' /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper=/c\\wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
 
 echo '
 
