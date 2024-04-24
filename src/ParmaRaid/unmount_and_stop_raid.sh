@@ -1,9 +1,9 @@
-function unmount_and_stop_raid {
+function unmount_and_stop_raid_menu {
 while true ; do
 set_terminal ; echo "
 ########################################################################################
 
-    Parmanode can unmount the RAID drive and stop the RAID process too.
+    You can select which RAIDs to act on in the next screen...
 
                              u)     Unmount 
 
@@ -11,7 +11,7 @@ set_terminal ; echo "
 
                              a)     Assemble RAID (opposite to stop RAID)
 
-                             mm)    Mount RAID
+                             mm)    Mount RAID (mounts all connected)
 
 ########################################################################################
 "
