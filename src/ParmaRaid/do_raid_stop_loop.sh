@@ -6,7 +6,7 @@ fi
 
 set_terminal
 
-for i in $(sudo mdadm --detail --scan) ; do
+for i in $(sudo mdadm --detail --scan | awk '{print $2}') ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -21,9 +21,8 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) continue ;;
 y)
-this_device=$(echo $1 | awk '{print $2}')
-sudo umount $this_device >/dev/null
-sudo mdadm --stop $this_device && installed_conf_remove "$this_device" \
+sudo umount $i >/dev/null
+sudo mdadm --stop $i && installed_conf_remove "$i" \
 && success "RAID process stopped"
 unset this_device
 continue 
