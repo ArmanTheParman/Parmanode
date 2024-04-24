@@ -4,8 +4,8 @@ echo "
 Mount too?  $green y $red n $orange
 
 "
-choose x ; set_terminal 
-if [[ $choose == x ]] ; then
+choose x ; read choice ; set_terminal 
+if [[ $choice == x ]] ; then
 mount_RAID || return 1
 fi
 
