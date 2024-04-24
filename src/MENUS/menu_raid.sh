@@ -9,11 +9,11 @@ $green
 
                           lm)$orange         List mounted RAIDs$green
 
-                          lc)$orange         List physically connected RAID drives
+                          lc)$orange         List physically connected RAID drives$green
 
                           dt)$orange         Inspect RAID details$green
 
-                          ums)$orange        Unmount/Mount/Stop menu ...
+                          ums)$orange        Unmount/Mount/Stop menu ...$green
 
                           i)$orange          info about RAIDs
 
