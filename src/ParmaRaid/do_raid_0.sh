@@ -9,6 +9,9 @@ sudo apt-get update -y
 sudo apt-get install mdadm -y
 fi
 
+#stop running raids
+stop_raids || return 1
+
 get_raid_drive_count || return 1   #gets selected $drive_count
 drive_count_do=0
 
@@ -65,9 +68,6 @@ echo ""
 
 #fetch /dev/... list
 get_device_list 
-
-#stop running raids
-stop_raids || return 1
 
 debug "device list string: $device_list"
 
