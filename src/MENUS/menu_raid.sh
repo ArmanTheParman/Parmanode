@@ -1,4 +1,4 @@
-function men_raid {
+function menu_raid {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################$cyan
