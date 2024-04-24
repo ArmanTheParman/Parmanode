@@ -109,5 +109,4 @@ success "The RAID drive was created. Manage from the$green use --> raid$orange m
     WAIT FOR IT TO FINISH BEFORE USING THE DRIVE. 
 
     THE SYNC STATUS CAN BE SEEN IN THE 'DETAILS' MENU."
-"
 }
