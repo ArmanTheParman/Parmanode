@@ -26,11 +26,11 @@ s)
 do_RAID_stop_loop
 continue
 ;;
-*)
-invalid
-;;
 mm)
 mount_RAID
+;;
+*)
+invalid
 ;;
 esac
 done
