@@ -9,8 +9,8 @@ $cyan
                                   R   A   I   D
 $orange
     THIS SOFTWARE ADD-ON IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
-    IT (YOU DECIDE WHAT IS 'USE') THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange- CHEAP AF.      
-    You can give more if you think it is deserved ;)
+    IT (YOU DECIDE WHAT 'USE' MEANS), THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange if
+    you can afford it. << You could give more if you think it is deserved >>
 $bright_blue
         https://armantheparman.com/donations
 $orange
