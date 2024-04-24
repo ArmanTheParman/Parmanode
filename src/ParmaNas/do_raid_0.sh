@@ -84,7 +84,7 @@ sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_n
 debug "pause after create raid
 $device_list"
 
-if [[ ! -e /media/$USER/RAID ]] ; then
+if [[ ! -e /media/$USER/RAID${md_num} ]] ; then
     sudo mkdir -p /media/$USER/RAID${md_num} 2>/dev/null
     sudo chown -R $USER:$USER /media/$USER/RAID${md_num} >/dev/null 2>&1
 fi
