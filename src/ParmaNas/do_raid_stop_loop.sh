@@ -26,7 +26,7 @@ sudo umount $this_device
 sudo mdadm --stop $this_device && installed_conf_remove "$this_device" \
 && success "RAID process stopped"
 unset this_device
-continue ;;
+continue 
 ;;
 *)
 continue ;;
