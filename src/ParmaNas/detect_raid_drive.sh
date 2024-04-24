@@ -1,5 +1,7 @@
 function detect_raid_drive {
 
+while true ; do
+
 #BEFORE STATE, CAPTURE...
     sudo blkid -g > $dp/before
     sudo lsblk > $dp/before_lsblk
@@ -42,8 +44,6 @@ enter_continue
 fi
 set_terminal
 sleep 2.5
-
-while true ; do
 
 #AFTER STATE, CAPTURE...
     sudo blkid -g > $dp/after
