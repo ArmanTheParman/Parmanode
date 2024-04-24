@@ -10,6 +10,7 @@ local text="$bright_blue                           (3) - Import an external driv
 
 while true
 do
+unset raid
 set_terminal
 echo -e "
 ########################################################################################
@@ -19,9 +20,11 @@ echo -e "
 
     Please choose an option:
 $green
-                           (e) - Use an EXTERNAL drive (choice to format)
+                (e)     Use an EXTERNAL drive (choice to format) 
 $red
-                           (i) - Use an INTERNAL drive $orange
+                (i)     Use an INTERNAL drive 
+$pink
+                (aa)    Use an EXTERNAL drive RAID array $orange
 "
 if [[ $1 == Bitcoin ]] ; then
 echo -e "$text" ; fi 
@@ -31,6 +34,7 @@ choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
 
+if [[ $choice == aa ]] ; then choice=e ; export raid=true ; fi
 case $choice in
 3)
 log "importdrive" "$1 install, choice to import drive"

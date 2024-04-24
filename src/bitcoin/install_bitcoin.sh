@@ -161,6 +161,6 @@ $orange
 enter_continue
 fi
 
-unset importdrive install_bitcoin_variable
+unset importdrive install_bitcoin_variable raid
 set_terminal
 }

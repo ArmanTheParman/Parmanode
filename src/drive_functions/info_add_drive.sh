@@ -34,7 +34,7 @@ $orange
 "
 choose "epq" ; read choice
 case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
-"") break ;; *) invlid ;; esac ; done
+"") break ;; *) invalid ;; esac ; done
 
 safe_unmount_parmanode $@ || return 1
 

@@ -66,18 +66,23 @@ fi
 fi #end not justFormat
 unset justFormat
 
-
+if [[ $raid != true ]] ; then
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
+else
+announce "Please make sure the RAID drive you want to use is mounted now.
+    Open a new terminal to do that if you need, and$pink ONLY proceed here
+    once it is mounted, or you'll get errors."
+confirm_raid_device || return 1
+fi
 
-unmount   #Need drive not to be mounted in order to wipe and format.
+unmount   # Need drive not to be mounted in order to wipe and format.
+          # Should unmount RAID too
 
 if [[ $1 != Bitcoin ]] ; then #cancelling dd for bitcoin installation. To slow and not necessary.
 if [[ $1 != justFormat ]] ; then
     dd_wipe_drive  
 fi
 fi
-
-
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
@@ -106,8 +111,9 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-        partition_drive 
+        if [[ $raid != true ]] ; then partition_drive 
         debug "after partition drive"
+        fi
 
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
