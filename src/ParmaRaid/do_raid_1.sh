@@ -1,4 +1,4 @@
-function do_raid_0 {
+function do_raid_1 {
 
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
@@ -80,7 +80,7 @@ debug "md_num is $md_num"
 
 sudo umount $device_list >/dev/null
 sudo umount /media/$USER/RAID >/dev/null
-sudo mdadm --create --verbose /dev/md${md_num} --level=0 --raid-devices=$drive_number $device_list
+sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
 debug "pause after create raid
 $device_list"
 
@@ -100,7 +100,14 @@ sudo chown -R $USER:$USER /media/$USER/RAID${md_num} >/dev/null 2>&1
 
 installed_conf_add "/dev/md${md_num}"
 
-success "The RAID drive was created. Manage from the$green use --> raid$orange menu."
+success "The RAID drive was created. Manage from the$green use --> raid$orange menu.
+
+    PLEASE NOTE FOR RAID1 TYPE ARRAYS, THE DRIVES WILL SYNC EVEN THOUGH THEY START EMPTY
+    AND THE PROCESS CAN BE VERY SLOW, EVEN DAYS, ESPECIALLY IF THE DRIVES ARE THROUGH
+    USB 2.0. 
+    
+    WAIT FOR IT TO FINISH BEFORE USING THE DRIVE. 
+
+    THE SYNC STATUS CAN BE SEEN IN THE 'DETAILS' MENU."
+"
 }
-
-
