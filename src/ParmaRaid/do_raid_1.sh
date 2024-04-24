@@ -9,6 +9,8 @@ sudo apt-get update -y
 sudo apt-get install mdadm -y
 fi
 
+bitcoin_raid_info
+
 #stop running raids
 stop_raids || return 1
 
