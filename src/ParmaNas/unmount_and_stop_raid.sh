@@ -17,7 +17,7 @@ set_terminal ; echo "
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 u)
 do_RAID_unmount_loop
 continue
