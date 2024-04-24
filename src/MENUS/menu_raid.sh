@@ -44,7 +44,7 @@ dt)
 set_terminal
 device=$(sudo mdadm --detail --scan | awk '{print $2}') #space seperated list
 for i in $device ; do
-sudo mdadm --detail --$i
+sudo mdadm --detail $i
 enter_continue
 done
 ;;
