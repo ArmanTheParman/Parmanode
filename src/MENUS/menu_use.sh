@@ -137,6 +137,14 @@ fi
 case $choice in
 m|M) back2main ;;
 
+rr)
+    if [[ $raidapp == 1 ]] ; then
+    clear
+    menu_raid
+    if [[ -n $1 ]] ; then return 0 ; fi
+    fi
+    ;;
+
 b|B)
     if [[ $bitcoinapp == 1 ]] ; then
     clear
