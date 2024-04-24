@@ -10,6 +10,7 @@ $cyan
 $orange
     THIS SOFTWARE ADD-ON IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
     IT (YOU DECIDE WHAT IS 'USE') THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange- CHEAP AF.      
+    You can give more if you think it is deserved ;)
 $bright_blue
         https://armantheparman.com/donations
 $orange
@@ -19,6 +20,8 @@ $orange
 $green
     RAID-0 $orange
     This allows you to have two dives connected which act as one single drive.
+    Handy if you have multiple small drives that can all contribute towards storage
+    for a Bitcoin node.
 $green
     RAID-1 $orange
     This allows you to have two drives that mirror each other, allowing for

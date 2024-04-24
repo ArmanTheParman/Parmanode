@@ -71,7 +71,7 @@ detect_drive || return 1 #alternative (better) way to get $disk variable, and ex
 else
 announce "Please make sure the RAID drive you want to use is mounted now.
     Open a new terminal to do that if you need, and$pink ONLY proceed here
-    once it is mounted, or you'll get errors."
+    once it is mounted, or you'll get errors.$orange"
 confirm_raid_device || return 1
 fi
 
