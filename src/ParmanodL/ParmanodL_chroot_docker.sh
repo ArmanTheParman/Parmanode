@@ -50,6 +50,8 @@ WELCOME TO YOUR ...
 Type rp to use the program (Stands for 'run parmanode').
 
 First time use - the password needs to be changed, then it exits. Then come back.
+
+Please widen the screen manually if it doesn't ajust automatically.
 	
 
 ' > /tmp/banner.txt
