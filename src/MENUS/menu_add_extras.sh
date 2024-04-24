@@ -39,7 +39,7 @@ case $choice in
 m|M) back2main ;;
 
 rr)
-    if [[ $debug == 1 ]] ; then
+    if [[ $arg1 == raid ]] ; then
     install_raid 
     fi
     return 0
