@@ -41,6 +41,8 @@ m|M) back2main ;;
 rr)
     if [[ $arg1 == raid ]] ; then
     install_raid 
+    else
+    announce "Not available yet; soon" 
     fi
     return 0
     ;; 
