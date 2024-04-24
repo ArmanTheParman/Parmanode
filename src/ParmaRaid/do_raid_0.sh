@@ -98,7 +98,7 @@ sudo mkfs.ext4 /dev/md${md_num}
 sudo mount /dev/md${md_num} /media/$USER/RAID${md_num} || { announce "Parmanode couldn't mount your RAID. Please try yourself." ; return 1 ; }
 sudo chown -R $USER:$USER /media/$USER/RAID${md_num} >/dev/null 2>&1
 
-installed_conf "/dev/md${md_num}"
+installed_conf_add "/dev/md${md_num}"
 
 success "The RAID drive was created, and mounted to$cyan /media/$USER/RAID${md_num}/$orange
 
