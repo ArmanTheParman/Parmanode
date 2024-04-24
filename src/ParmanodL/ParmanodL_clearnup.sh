@@ -33,7 +33,7 @@ choose "x" ; read choice
 
 case $choice in 
 y|Y|YES|yes|Yes) 
-   rm -rf $HOME/ParmanodL 
+   rm $HOME/ParmanodL/*
    return 0
    ;;
 n|N|No|NO|no)

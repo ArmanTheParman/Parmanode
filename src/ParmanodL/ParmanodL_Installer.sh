@@ -266,6 +266,9 @@ fi # end if $1 != install
 # Write the image to microSD
 
     ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
+
+# Rename image file
+    mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-v3.0.0.img
     debug "pause"
 
 # Clean known hosts of parmanodl

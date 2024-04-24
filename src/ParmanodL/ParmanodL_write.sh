@@ -40,7 +40,15 @@ $orange
 Options
     $cyan <enter>$orange to continue (everything seems to have worked)
     $cyan r$orange then$cyan <enter>$orange to repeat the 'dd' command 
-    $cyan x$orange then$cyan <enter>$orange to abort"
+    $cyan x$orange then$cyan <enter>$orange to abort
+
+    If you abort, you can try to flash the image file yourself using a
+    tool like Balena Etcher. Get it from $pink
+    https://etcher.balena.io/ $orange
+    The file you need to flash has been saved. Find it here $pink
+    $HOME/ParmanodL/
+    $orange"
+    
 read choice ; set_terminal
 case $choice in
 r) ParmanodL_write ;;
