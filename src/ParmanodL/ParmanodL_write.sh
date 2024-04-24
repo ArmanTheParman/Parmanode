@@ -31,8 +31,12 @@ sync
 
 echo -e "
 If there was an error, this is a chance to do stuff in a different
-terminal to fix it, then try again.
-
+terminal to fix it, then try again. On Macs, it might be that the
+unmount function failed, or the drive remounted automatically. 
+Unfortunately, right-click ejecting causes problems - do this instead: 
+$yellow
+    diskutil unmountDisk $disk_no_part
+$orange
 Options
     $cyan <enter>$orange to continue (everything seems to have worked)
     $cyan r$orange then$cyan <enter>$orange to repeat the 'dd' command 
