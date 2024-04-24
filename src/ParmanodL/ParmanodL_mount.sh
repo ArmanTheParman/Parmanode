@@ -15,7 +15,7 @@ clear
 #   if [[ $OS == Mac ]] ; then
       docker exec -it -e image_file="${image_file}" ParmanodL /bin/bash -c "\
                                               mkdir -p /tmp/mnt/raspi ; \
-                                              echo \"image_file is \$image_file\" ; \
+                                              echo \"using image \$image_file\" ; \
                                               export startSector=\$(fdisk -l /mnt/ParmanodL/\$image_file | grep Linux | awk '{print \$2}') ; \
                                               export byteOffset=\$((\$startSector*512)) ; \
                                               mount -v -o offset=\$byteOffset -t ext4 /mnt/ParmanodL/\$image_file /tmp/mnt/raspi ; \
