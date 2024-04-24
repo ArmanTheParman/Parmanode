@@ -1,6 +1,6 @@
 function unmount_and_stop_raid_menu {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     You can select which RAIDs to act on in the next screen...
