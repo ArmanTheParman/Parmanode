@@ -17,7 +17,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) continue ;;
 y)
-sudo umount $(echo $i | awk '{print $1}') && success "RAID unmounted"
+sudo umount $(echo $i | awk '{print $1}') >/dev/null && success "RAID unmounted"
 ;;
 *)
 continue ;;

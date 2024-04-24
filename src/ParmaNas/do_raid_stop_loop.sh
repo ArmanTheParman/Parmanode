@@ -22,7 +22,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) continue ;;
 y)
 this_device=$(echo $1 | awk '{print $2}')
-sudo umount $this_device 
+sudo umount $this_device >/dev/null
 sudo mdadm --stop $this_device && installed_conf_remove "$this_device" \
 && success "RAID process stopped"
 unset this_device
