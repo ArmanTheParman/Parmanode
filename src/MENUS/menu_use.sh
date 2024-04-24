@@ -2,11 +2,12 @@ function menu_use {
 set_terminal
 while true
 do
+unset raidapp
 unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp btcpTORapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
-unset electrumxapp thunderhubapp
+unset electrumxapp thunderhubapp websiteapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -18,6 +19,9 @@ echo -e "
 Installed...
 
 "
+if grep -q "/dev/md" $ic || [[ $arg1 == raid ]] ; then raidapp=1
+                       echo "    (rr)         RAID 
+                            " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
                        echo "    (b)          Bitcoin Core
                             " ; fi
