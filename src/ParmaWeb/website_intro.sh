@@ -10,8 +10,8 @@ $orange
 
     Although Parmanode is Free Open Source Software, ParmaWeb is an add-on and is
 $red    not free$orange. You are free to try it, read the code, learn from it, but to USE it, 
-    the conditions are that you pay$green 75,000 sats$orange (once), using this donation 
-    page:
+    the conditions are that you pay$green 75,000 sats$orange (once), if you can afford it, 
+    using this donation page:
 $bright_blue
         https://armantheparman.com/donations
 $orange
