@@ -9,7 +9,7 @@ $green
 
                              s) $orange    Stop RAID (also unmounts)$green 
 
-                             a)  $orange   Assemble RAID (opposite to stop RAID)$green
+                             aa)  $orange   Assemble RAID (opposite to stop RAID)$green
 
                              mm) $orange   Mount RAID (mounts all connected)
 
@@ -26,6 +26,10 @@ s)
 do_RAID_stop_loop
 continue
 ;;
+aa)
+assemble_RAID
+;;
+
 mm)
 mount_RAID
 ;;
