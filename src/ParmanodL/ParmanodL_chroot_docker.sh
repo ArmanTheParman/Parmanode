@@ -66,11 +66,11 @@ cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
 
-cat << 'EOF' > /home/parman/Desktop/instructions.txt
+cat << 'EOFF' > /home/parman/Desktop/instructions.txt
 To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
 Terminal is run by clicking that black icon on the taskbar.
 
-On Pi's, the Terminal doesn't automatically resize, so please widen the 
+On the Pi, the Terminal doesn't automatically resize, so please widen the 
 screen and make it taller using the mouse so the text doesn't wrap 
 around and look ugly.
 
@@ -108,7 +108,7 @@ necessary but recommended).
 Buy more Bitcoin.
 If Parmanode is awesome, sned sats :)
 Enjoy.
-EOF
+EOFF
 
 mv /tmp/rp /tmp/mnt/raspi/home/parman/rp
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/rp'

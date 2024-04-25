@@ -21,6 +21,7 @@ clear
                                               mount -v -o offset=\$byteOffset -t ext4 /mnt/ParmanodL/\$image_file /tmp/mnt/raspi ; \
                                               mount --bind /dev /tmp/mnt/raspi/dev >/dev/null 2>&1 ; \
                                               mount --bind /sys /tmp/mnt/raspi/sys >/dev/null 2>&1 ; \
+                                              mount -t devpts devpts /tmp/mnt/raspi/dev/pts >/dev/null 2>&1 ; \
                                               mount --bind /proc /tmp/mnt/raspi/proc >/dev/null 2>&1 " \
                     || { echo "Failed to mount. Aborting. Hit <enter>" ; read ; return 1 ; } 
 #   fi
