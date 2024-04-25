@@ -66,12 +66,14 @@ function uncomment_clearnet {
 sed -i '/^; tlsextraip/s/^..//' $file
 sed -i '/^; externalip/s/^..//' $file
 sed -i '/^; tlsextradomain/s/^..//' $file
+sed -i '/^; externalhosts/s/^..//' $file
 }
 
 function commentout_clearnet {
 sed -i '/^tlsextraip/s/^/; /' $file
 sed -i '/^tlsextradomain/s/^/; /' $file
 sed -i '/^externalip/s/^/; /' $file
+sed -i '/^externalhosts/s/^/; /' $file
 }
 
 ########################################################################################
@@ -124,6 +126,6 @@ restart_lnd
 fi
 
 if [[ $2 != skipsuccess ]] ; then
-success "Adjusting LND Tor settings has"
+success "Adjusting LND Tor settings done."
 fi
 }
