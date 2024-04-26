@@ -10,7 +10,8 @@ sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 status=progress
 fi
 
 if [[ $OS == Mac ]] ; then
-sudo diskutil unmountDisk /dev/${disk} || sudo diskutil unmountDisk force /dev/${disk}
+sudo diskutil unmountDisk /dev/${disk} 2>> $dp/parmanodl.log || sudo diskutil unmountDisk force /dev/${disk} 2>> $dp/parmanodl.log 
+debug "after unmount"
 clear
 echo "
 Flashing the drive with Parmanode OS. This can take a weirdly long
@@ -24,7 +25,7 @@ as you like.
 Please wait...
 
 "
-sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 
+sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 2>> $dp/parmanodl.log 
 fi
 # will change to dcfldd soon
 sync
