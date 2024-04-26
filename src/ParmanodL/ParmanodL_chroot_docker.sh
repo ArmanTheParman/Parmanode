@@ -81,7 +81,7 @@ cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
 
-cat << 'EOFF' > /home/parman/Desktop/instructions.txt
+cat << 'EOFF' > /tmp/instructions.txt
 To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
 Terminal is run by clicking that black icon on the taskbar.
 
@@ -127,11 +127,19 @@ EOFF
 
 mv /tmp/rp /tmp/mnt/raspi/home/parman/rp
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/rp'
-chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
+chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman ; mv rp /usr/local/bin/ '
+chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/Desktop'
+chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/instructions.txt /home/parman/Desktop/instructions.txt'
+chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/instructions.txt'
+
 EOS
 
 sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 debug "pause and check chroot"
 }
+
+
+# had this before...
+# chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
