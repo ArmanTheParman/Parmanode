@@ -42,9 +42,10 @@ chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 chroot /tmp/mnt/raspi /bin/bash -c 'cat /etc/shadow | grep parman > /tmp/oldPassword'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi/'
+chroot /tmp/mnt/raspi /bin/bash -c "pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png"
+chroot /tmp/mnt/raspi /bin/bash -c "pcmanfm --wallpaper-mode fit"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
 
 echo '
 
@@ -60,11 +61,11 @@ WELCOME TO YOUR ...
 
 ... computer, running pre-installed Parmanode software.
 
-Type rp to use the program (Stands for 'run parmanode').
+Type rp to use the program (Stands for "run parmanode").
 
 First time use - the password needs to be changed, then it exits. Then come back.
 
-Please widen the screen manually if it doesn't ajust automatically.
+Please widen the screen manually if it does not ajust automatically.
 	
 
 ' > /tmp/banner.txt
