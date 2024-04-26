@@ -18,7 +18,6 @@ $apt_text
 EOS
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
