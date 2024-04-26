@@ -10,7 +10,7 @@ sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 status=progress
 fi
 
 if [[ $OS == Mac ]] ; then
-sudo diskutil unmountDisk /dev/${disk} 2>> $dp/parmanodl.log || sudo diskutil unmountDisk force /dev/${disk} 2>> $dp/parmanodl.log 
+sudo diskutil unmountDisk /${disk} 2>> $dp/parmanodl.log || sudo diskutil unmountDisk force /${disk} 2>> $dp/parmanodl.log 
 debug "after unmount"
 clear
 echo "
