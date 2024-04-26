@@ -1,4 +1,5 @@
 function ParmanodL_chroot_docker {
+#if modifying banner, don't use ', it will break the echo command.
 #document to be executed inside docker container.
 if [[ $debug == 1 ]] ; then
 apt_text="
