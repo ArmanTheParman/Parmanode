@@ -11,6 +11,7 @@ apt_text="
 #!/bin/bash
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
 "
+fi
 
 cat << EOS > ~/ParmanodL/chroot_function.sh 
 $apt_text
