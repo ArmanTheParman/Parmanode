@@ -4,12 +4,12 @@ function ParmanodL_chroot_docker {
 if [[ $debug == 1 ]] ; then
 apt_text="
 #!/bin/bash
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y "
+chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
 "
 else
 apt_text="
 #!/bin/bash
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
+chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y' 
 "
 fi
 
