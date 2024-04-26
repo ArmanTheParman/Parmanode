@@ -1,7 +1,7 @@
 function download_sparrow {
 cd $HOME/parmanode
 
-sparrow_version="1.8.1"
+sparrow_version="1.9.0"
 
 #clean up previous downloads if any
 rm -rf $hp/"*parrow-1."*
