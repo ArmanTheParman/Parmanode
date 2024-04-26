@@ -1,8 +1,21 @@
 function ParmanodL_chroot_docker {
 #document to be executed inside docker container.
-cat << 'EOS' > ~/ParmanodL/chroot_function.sh 
+if [[ $debug == 1 ]] ; then
+apt_text="
 #!/bin/bash
+chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y "
+"
+else
+apt_text="
+#!/bin/bash
+chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
+"
 
+cat << EOS > ~/ParmanodL/chroot_function.sh 
+$apt_text
+EOS
+
+cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get update -y ; apt-get full-upgrade -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
