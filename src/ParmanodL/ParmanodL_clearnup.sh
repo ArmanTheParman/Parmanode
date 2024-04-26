@@ -15,7 +15,7 @@ function ParmanodL_cleanup {
     sudo rm -rf /tmp/mnt
 
 # Remove script file
-    rm ~/ParmanodL/chroot_function.sh 2>/dev/null
+    mv ~/ParmanodL/chroot_function.sh /tmp/"chroot_function_$(date)" 2>/dev/null
 
 
 while true ; do
