@@ -156,11 +156,11 @@ sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
 
+EOS
+
 sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 debug "pause and check chroot"
-
-EOS
 }
 
 
