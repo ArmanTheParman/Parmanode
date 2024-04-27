@@ -6,7 +6,9 @@
 
 
 function debug {
+echo $(date) | tee -a $dp/debug.log >/dev/null 2>&1
 echo "$1" | tee -a $dp/debug.log >/dev/null 2>&1
+echo "##############################" | tee -a $dp/debug.log >/dev/null 2>&1
 if [[ $debug == 1 ]] ; then
 echo -e "Debug point. Message:
 "
