@@ -140,6 +140,9 @@ cat << 'EOFFF' >/tmp/first_run.sh
 pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png >/dev/null 2>&1
 pcmanfm --wallpaper-mode fit >/dev/null 2>&1
 sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf >/dev/null 2>&1
+#always get latest version of parmanode
+cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull
+cd
 
 rm /home/parman/first_run.sh >/dev/null 2>&1
 sudo sed -i "/first_run.sh/d" ~/.profile >/dev/null 2>&1
