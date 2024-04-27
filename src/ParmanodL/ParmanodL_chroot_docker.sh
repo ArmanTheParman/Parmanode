@@ -48,10 +48,10 @@ chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 chroot /tmp/mnt/raspi /bin/bash -c 'cat /etc/shadow | grep parman > /tmp/oldPassword'
-chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper-mode fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+#chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
+#chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+#chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper-mode fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+#chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
 
@@ -151,13 +151,30 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
-EOS
+cat << 'EOFFF' >/tmp/first_run.sh
+pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics.pn.png
+pcmanfm --wallpaper-mode fit
+sed -i "/desktop_bg=/c\\desktop_bg=#000000" "/home/parman/parman_programs/parmanode/src/graphics.pn.png" >/dev/null 2>&1
+rm /home/parman/first_run.sh >/dev/null
+EOFFF
+
+sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
+chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
+chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
 
 sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 debug "pause and check chroot"
+
+EOF
 }
 
 
 # had this before...
 # chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
+
+function first_run_ParmanodL {
+
+
+
+}
