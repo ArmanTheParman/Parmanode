@@ -166,15 +166,9 @@ sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 debug "pause and check chroot"
 
-EOF
+EOS
 }
 
 
 # had this before...
 # chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
-
-function first_run_ParmanodL {
-
-
-
-}
