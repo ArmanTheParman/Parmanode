@@ -25,11 +25,11 @@ sudo cp "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup"
 debug "concatenation: $HOME/.$rc" 
 
 #sed method compaitble with both mac and linux...
-sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.$rc2" 2>&1 \
-&& sudo mv "$HOME/.$rc2" "$HOME/.$rc"
+sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
+&& sudo mv "$HOME/.$rc{2}" "$HOME/.$rc"
 
-sudo sed '/ParmaShell/d' "$HOME/.$rc" > "$HOME/.$rc2" 2>&1 \
-&& sudo mv "$HOME/.$rc2" "$HOME/.$rc"
+sudo sed '/ParmaShell/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
+&& sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
 
 debug "adjusted bashrc / zshrc; rc is $rc"
 installed_config_remove "parmashell"
