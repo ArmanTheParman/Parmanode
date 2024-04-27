@@ -29,7 +29,7 @@ sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' ~/.$rc > ~/.$r
 sudo sed '/ParmaShell/d' ~/.$rc > ~/.$rc2 2>&1 \
 && mv ~/.$rc2 ~/.$rc
 
-debug "adjusted bashrc / zshrc"
+debug "adjusted bashrc / zshrc; rc is $rc"
 installed_config_remove "parmashell"
 success "ParmaShell" "being uninstalled."
 }
