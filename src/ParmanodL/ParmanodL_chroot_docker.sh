@@ -147,9 +147,9 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
 cat << 'EOFFF' >/tmp/first_run.sh
-pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics.pn.png
+pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png
 pcmanfm --wallpaper-mode fit
-sed -i "/desktop_bg=/c\\desktop_bg=#000000" "/home/parman/parman_programs/parmanode/src/graphics.pn.png" >/dev/null 2>&1
+sed -i "/desktop_bg=/c\\desktop_bg=#000000" >/dev/null 2>&1
 rm /home/parman/first_run.sh >/dev/null
 EOFFF
 
