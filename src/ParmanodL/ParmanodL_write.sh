@@ -39,7 +39,7 @@ $yellow
     diskutil unmountDisk $disk_no_part
 $orange
 Options
-    $cyan <enter>$orange to continue (everything seems to have worked)
+    $green<enter> to continue (everything seems to have worked)$orange
     $cyan r$orange then$cyan <enter>$orange to repeat the 'dd' command 
     $cyan x$orange then$cyan <enter>$orange to abort
 
