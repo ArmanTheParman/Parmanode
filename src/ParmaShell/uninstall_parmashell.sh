@@ -26,7 +26,7 @@ debug "concatenation: $HOME/.$rc"
 
 #sed method compaitble with both mac and linux...
 sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
-&& sudo mv "$HOME/.$rc{2}" "$HOME/.$rc"
+&& sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
 
 sudo sed '/ParmaShell/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
 && sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
