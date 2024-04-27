@@ -5,7 +5,9 @@ fi
 
 cd $HOME/ParmanodL
 
-if shasum -a 256 $image_file | grep -q $hash_image ; then return 0 ; fi
+if [[ -e $image_file ]] ; then
+    if shasum -a 256 $image_file | grep -q $hash_image ; then return 0 ; fi
+fi
 
 # Get Rasbperry Pi OS, 64 bit, with Desktop.
 

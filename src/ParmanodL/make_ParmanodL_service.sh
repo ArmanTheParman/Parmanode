@@ -16,11 +16,11 @@ Group=parman
 
 [Install]
 WantedBy=multi-user.target
-"| sudo tee /etc/system/systemd/parmanodl_gui.service >/dev/null 2>&1
+" | tee /etc/systemd/system/parmanodl_gui.service >/dev/null 2>&1
 
 cp /home/parman/parman_programs/parmanode/src/ParmanodL/parmanodl_gui /home/parman/.parmanode/parmanodl_gui
-chown -R parman:parman /home/parman/.parmanode
-chmod +x /home/parman/.parmanode/parmanodl_gui
+chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/.parmanode'
+chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/.parmanode/parmanodl_gui'
 
 systemctl enable parmanodl_gui.service >/dev/null 2>&1
 EOS
