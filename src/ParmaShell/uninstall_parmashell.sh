@@ -20,7 +20,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 if [[ $OS == Mac ]] ; then rc=zshrc ; fi
 if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
-cp "$HOEM/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup"
+cp "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup"
 
 #sed method compaitble with both mac and linux...
 sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.$rc2" 2>&1 \
