@@ -2,22 +2,19 @@ function ParmanodL_chroot_docker {
 #if modifying banner, don't use ', it will break the echo command.
 #document to be executed inside docker container.
 if [[ $debug == 1 ]] ; then
-apt_text="
-#!/bin/bash
+apt_text="#!/bin/bash
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
 "
 else
-apt_text="
-#!/bin/bash
+apt_text="#!/bin/bash
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y' 
 "
 fi
 
 if [[ $arg2 == fast ]] ; then
-true
-#cat << EOS > ~/ParmanodL/chroot_function.sh 
-#$apt_text
-#EOS
+cat << EOS > ~/ParmanodL/chroot_function.sh 
+#!/bin/bash
+EOS
 else
 cat << EOS > ~/ParmanodL/chroot_function.sh 
 $apt_text
