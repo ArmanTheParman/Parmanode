@@ -30,11 +30,16 @@ fi
 # will change to dcfldd soon
 sync
 
+if [[ $OS == Mac ]] ; then
 echo -e "
-If there was an error, this is a chance to do stuff in a different
-terminal to fix it, then try again. On Macs, it might be that the
-unmount function failed, or the drive remounted automatically. 
-Unfortunately, right-click ejecting causes problems - do this instead: 
+########################################################################################
+    Have a look above and check...
+
+    If there was an error, this is a chance to do stuff in a different terminal window
+    to fix it, then try again. It might be that the unmount function failed, (drive
+    needs to bu unmounted in order to flash to it) or the drive remounted 
+    automatically. Unfortunately, right-click ejecting causes problems - do this 
+    instead: 
 $yellow
     diskutil unmountDisk $disk_no_part
 $orange
@@ -48,7 +53,9 @@ Options
     https://etcher.balena.io/ $orange
     The file you need to flash has been saved. Find it here $pink
     $HOME/ParmanodL/
-    $orange"
+    $orange
+########################################################################################
+"
     
 read choice ; set_terminal
 case $choice in
@@ -56,4 +63,6 @@ r) ParmanodL_write ;;
 x) return 1 ;;
 *) return 0 ;;
 esac
+fi
+
 }

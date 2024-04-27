@@ -18,7 +18,7 @@ else
 return 1
 fi
 
-installed_config_add "parmashell-end"
+installed_config_add "parmashell-end" >/dev/null
 if [[ $1 != silent ]] ; then
 success "ParmaShell" "being installed"
 announce "You may need to reload terminal to see the changes."
