@@ -138,14 +138,16 @@ chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
 cat << 'EOFFF' >/tmp/first_run.sh
 #!/bin/bash
+#order matters
 pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png >/dev/null 2>&1
-pcmanfm --wallpaper-mode fit >/dev/null 2>&1
+sleep 2
 sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf >/dev/null 2>&1
+pcmanfm --wallpaper-mode fit >/dev/null 2>&1
 #always get latest version of parmanode
 cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull
 cd
 #####rm /home/parman/first_run.sh >/dev/null 2>&1
-sudo sed -i "/first_run.sh/d" ~/.profile >/dev/null 2>&1
+sudo sed -i "/first_run.sh/d" ~/.bashrc >/dev/null 2>&1
 clear
 exit
 EOFFF
@@ -158,7 +160,11 @@ chroot /tmp/mnt/raspi /bin/bash -c "echo '/home/parman/first_run.sh' | tee -a /h
 EOS
 
 sudo chmod +x ~/ParmanodL/chroot_function.sh
+make_ParmanodL_service #add to chroot_functions.sh
+
+#run chroot functions
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
+
 debug "pause and check chroot"
 }
 
