@@ -139,6 +139,7 @@ chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/'
 EOS
 
 make_ParmanodL_service #add to chroot_functions.sh
+sync_chroot
 
 #run chroot functions
 sudo chmod +x ~/ParmanodL/chroot_function.sh
@@ -150,3 +151,9 @@ debug "pause and check chroot"
 
 # had this before...
 # chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
+
+function sync_chroot {
+cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
+chroot /tmp/mnt/raspi /bin/bash -c 'sync'
+EOS
+}

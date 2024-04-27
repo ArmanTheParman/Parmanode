@@ -234,10 +234,8 @@ fi # end if $1 != install
     fi
 
 # Macs use Docker functionality here
-    
     ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
     ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
-    
 
 # Mount the image and dependent directories
     
