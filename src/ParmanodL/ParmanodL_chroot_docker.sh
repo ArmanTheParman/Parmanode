@@ -134,7 +134,7 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/ins
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
-chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
+chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/'
 
 EOS
 
