@@ -42,8 +42,9 @@ chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 chroot /tmp/mnt/raspi /bin/bash -c 'cat /etc/shadow | grep parman > /tmp/oldPassword'
-chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary
-chroot /tmp/mnt/raspi /bin/bash -c "su - parman -c 'pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png'"
+chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
+chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
+chroot /tmp/mnt/raspi /bin/bash -c "su - parman -c 'echo --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png'"
 chroot /tmp/mnt/raspi /bin/bash -c "su - parman -c 'pcmanfm --wallpaper-mode fit'"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
 
@@ -81,8 +82,17 @@ cd /home/parman/parman_programs/parmanode/
 EOF
 
 cat << 'EOFF' > /tmp/instructions.txt
+
+If you haven't already, please change your password from 'parmanodl'
+to something else. You can use this command in Terminal (Terminal is
+run by clicking that black icon on the taskbar):
+
+    sudo passwd parman
+
+(sudo means 'superuser do', 'passwd' is the command, and 'parman' is
+the username that is having its password changed)
+
 To run Parmanode, you can type 'rp' in the Terminal then <enter>. 
-Terminal is run by clicking that black icon on the taskbar.
 
 On the Pi, the Terminal doesn't automatically resize, so please widen the 
 screen and make it taller using the mouse so the text doesn't wrap 
