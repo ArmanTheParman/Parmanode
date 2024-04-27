@@ -136,17 +136,12 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
-sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
-chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
-chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
-chroot /tmp/mnt/raspi /bin/bash -c "echo '/home/parman/first_run.sh' | tee -a /home/parman/.bashrc" >/dev/null
-
 EOS
 
-sudo chmod +x ~/ParmanodL/chroot_function.sh
 make_ParmanodL_service #add to chroot_functions.sh
 
 #run chroot functions
+sudo chmod +x ~/ParmanodL/chroot_function.sh
 docker exec -it ParmanodL /bin/bash -c '/mnt/ParmanodL/chroot_function.sh'
 
 debug "pause and check chroot"
