@@ -136,22 +136,6 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
-cat << 'EOFFF' >/tmp/first_run.sh
-#!/bin/bash
-#order matters
-pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png >/dev/null 2>&1
-sleep 2
-sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf >/dev/null 2>&1
-pcmanfm --wallpaper-mode fit >/dev/null 2>&1
-#always get latest version of parmanode
-cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull
-cd
-#####rm /home/parman/first_run.sh >/dev/null 2>&1
-sudo sed -i "/first_run.sh/d" ~/.bashrc >/dev/null 2>&1
-clear
-exit
-EOFFF
-
 sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
