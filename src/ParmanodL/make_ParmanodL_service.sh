@@ -1,7 +1,7 @@
 function make_ParmanodL_service {
 
 #available in container at /mnt/ParmanodL
-cp /home/parman/parman_programs/parmanode/src/ParmanodL/parmanodl_gui $HOME/ParmanodL/parmanodl_gui
+cp $HOME/parman_programs/parmanode/src/ParmanodL/parmanodl_gui $HOME/ParmanodL/parmanodl_gui
 
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
