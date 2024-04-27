@@ -17,6 +17,7 @@ if [[ $arg2 == fast ]] ; then
 #cat << EOS > ~/ParmanodL/chroot_function.sh 
 #$apt_text
 #EOS
+true
 else
 cat << EOS > ~/ParmanodL/chroot_function.sh 
 $apt_text
