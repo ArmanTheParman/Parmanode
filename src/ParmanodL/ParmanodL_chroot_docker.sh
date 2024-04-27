@@ -14,6 +14,7 @@ chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y'
 fi
 
 if [[ $arg2 == fast ]] ; then
+true
 #cat << EOS > ~/ParmanodL/chroot_function.sh 
 #$apt_text
 #EOS
@@ -24,10 +25,10 @@ EOS
 fi
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-#chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
+#####chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
-chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
+#####chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get purge piwiz -y" 
 chroot /tmp/mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard'
 chroot /tmp/mnt/raspi /bin/bash -c 'userdel pi'
@@ -47,11 +48,10 @@ chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/127.0.1.1/d' /etc/hosts"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/hosts'
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
-chroot /tmp/mnt/raspi /bin/bash -c 'cat /etc/shadow | grep parman > /tmp/oldPassword'
-#chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
-#chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-#chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper-mode fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-#chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+####chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
+####chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+####chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper-mode fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+####chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
 
@@ -71,8 +71,6 @@ WELCOME TO YOUR ...
 
 Type rp to use the program (Stands for "run parmanode").
 
-First time use - the password needs to be changed, then it exits. Then come back.
-
 Please widen the screen manually if it does not ajust automatically.
 	
 
@@ -83,7 +81,6 @@ rm /tmp/banner.txt
 
 cat << 'EOF' > /tmp/rp
 #!/bin/bash
-oldPassword=$(cat /tmp/oldPassword 2>/dev/null) ; if sudo cat /etc/shadow | grep -q "$oldPassword" ; then sudo sed -i '/First/d' /etc/motd ; sudo sed -i '/oldPassword=/d' /usr/local/bin/rp ; fi 
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
