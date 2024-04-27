@@ -147,15 +147,19 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
 cat << 'EOFFF' >/tmp/first_run.sh
-pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png
-pcmanfm --wallpaper-mode fit
-sed -i "/desktop_bg=/c\\desktop_bg=#000000" >/dev/null 2>&1
-rm /home/parman/first_run.sh >/dev/null
+pcmanfm --set-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png >/dev/null 2>&1
+pcmanfm --wallpaper-mode fit >/dev/null 2>&1
+sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf >/dev/null 2>&1
+
+rm /home/parman/first_run.sh >/dev/null 2>&1
+sudo sed -i "/first_run.sh/d" ~/.profile >/dev/null 2>&1
+
 EOFFF
 
 sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
+chroot /tmp/mnt/raspi /bin/bash -c "echo '/home/parman/first_run.sh' | tee -a /home/parman/.profile " >/dev/null
 
 EOS
 
