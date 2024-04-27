@@ -22,7 +22,8 @@ if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
 cp ~/.$rc ~/.${rc}_uninstall_parmanodebackup
 
-sudo sed '/Added by Parmanode/d' ~/.$rc > ~/.$rc2 2>&1 \
+#sed method compaitble with both mac and linux...
+sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' ~/.$rc > ~/.$rc2 2>&1 \
 && mv ~/.$rc2 ~/.$rc
 
 sudo sed '/ParmaShell/d' ~/.$rc > ~/.$rc2 2>&1 \
