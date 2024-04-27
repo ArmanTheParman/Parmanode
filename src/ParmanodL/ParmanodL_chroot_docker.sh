@@ -81,6 +81,8 @@ oldPassword=$(cat /tmp/oldPassword 2>/dev/null) ; if sudo cat /etc/shadow | grep
 cd /home/parman/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
+cp /tmp/rp /tmp/mnt/raspi/tmp/rp
+rm /tmp/rp
 
 cat << 'EOFF' > /tmp/instructions.txt
 
@@ -135,13 +137,13 @@ If Parmanode is awesome, sned sats :)
 Enjoy.
 EOFF
 
-mv /tmp/rp /tmp/mnt/raspi/home/parman/rp
-chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /home/parman/rp'
-chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/rp'
-chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman ; mv rp /usr/local/bin/ '
-chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/Desktop'
-chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/instructions.txt /home/parman/Desktop/instructions.txt'
+sudo mv /tmp/instructions /tmp/mnt/raspi/home/parman/Desktop/instructions.txt
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/instructions.txt'
+
+
+chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
+chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
+chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/ '
 
 EOS
 
