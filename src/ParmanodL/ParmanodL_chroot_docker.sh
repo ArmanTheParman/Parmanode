@@ -13,12 +13,18 @@ chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y'
 "
 fi
 
+if [[ $arg2 == fast ]] ; then
+#cat << EOS > ~/ParmanodL/chroot_function.sh 
+#$apt_text
+#EOS
+else
 cat << EOS > ~/ParmanodL/chroot_function.sh 
 $apt_text
 EOS
+fi
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
+#chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
 chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
@@ -137,7 +143,7 @@ If Parmanode is awesome, sned sats :)
 Enjoy.
 EOFF
 
-sudo mv /tmp/instructions /tmp/mnt/raspi/home/parman/Desktop/instructions.txt
+sudo mv /tmp/instructions.txt /tmp/mnt/raspi/home/parman/Desktop/instructions.txt
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/instructions.txt'
 
 
