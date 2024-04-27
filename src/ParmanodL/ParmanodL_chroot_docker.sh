@@ -11,16 +11,6 @@ apt_text="#!/bin/bash
 "
 fi
 
-if [[ $arg2 == fast ]] ; then
-cat << EOS > ~/ParmanodL/chroot_function.sh 
-#!/bin/bash
-EOS
-else
-cat << EOS > ~/ParmanodL/chroot_function.sh 
-$apt_text
-EOS
-fi
-
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
 #####chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
