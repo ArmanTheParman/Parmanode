@@ -144,7 +144,7 @@ sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi
 #always get latest version of parmanode
 cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull
 cd
-rm /home/parman/first_run.sh >/dev/null 2>&1
+#####rm /home/parman/first_run.sh >/dev/null 2>&1
 sudo sed -i "/first_run.sh/d" ~/.profile >/dev/null 2>&1
 clear
 exit
@@ -153,7 +153,7 @@ EOFFF
 sudo mv /tmp/first_run.sh /tmp/mnt/raspi/home/parman/first_run.sh
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman/first_run.sh'
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/first_run.sh'
-chroot /tmp/mnt/raspi /bin/bash -c "echo '/home/parman/first_run.sh' | tee -a /home/parman/.profile " >/dev/null
+chroot /tmp/mnt/raspi /bin/bash -c "echo '/home/parman/first_run.sh' | tee -a /home/parman/.bashrc" >/dev/null
 
 EOS
 
