@@ -20,14 +20,14 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 if [[ $OS == Mac ]] ; then rc=zshrc ; fi
 if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
-cp ~/.$rc ~/.${rc}_uninstall_parmanodebackup
+cp "~/.$rc" "~/.${rc}_uninstall_parmanodebackup"
 
 #sed method compaitble with both mac and linux...
-sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' ~/.$rc > ~/.$rc2 2>&1 \
-&& mv ~/.$rc2 ~/.$rc
+sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "~/.$rc" > "~/.$rc2" 2>&1 \
+&& mv "~/.$rc2" "~/.$rc"
 
-sudo sed '/ParmaShell/d' ~/.$rc > ~/.$rc2 2>&1 \
-&& mv ~/.$rc2 ~/.$rc
+sudo sed '/ParmaShell/d' "~/.$rc" > "~/.$rc2" 2>&1 \
+&& mv "~/.$rc2" "~/.$rc"
 
 debug "adjusted bashrc / zshrc; rc is $rc"
 installed_config_remove "parmashell"
