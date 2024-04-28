@@ -16,9 +16,16 @@ EOS
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
+
+# It looks egocentric, but having a consistent username makes everything in the code easier, and
+# once I started doing this, it's very hard to undo.
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
-#####chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
+
+# Forces the user to change password at the start, but the UI is clunky
+# Also, adding this affects what I want to do with the ssh welcome screen
+## chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
+
 chroot /tmp/mnt/raspi /bin/bash -c "apt-get purge piwiz -y" 
 chroot /tmp/mnt/raspi /bin/bash -c 'userdel rpi-first-boot-wizard'
 chroot /tmp/mnt/raspi /bin/bash -c 'userdel pi'
@@ -29,16 +36,21 @@ chroot /tmp/mnt/raspi /bin/bash -c 'sed -i "/autologin-user=/d" /etc/lightdm/lig
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "PrintLastLog no" >> /etc/ssh/sshd_config'
 chroot /tmp/mnt/raspi /bin/bash -c 'rfkill unblock wifi 2>/dev/null'
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "" > /etc/ssh/sshd_config.d/rename_user.conf'
+
 chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parmanode /home/parman/.parmanode'
 chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/parman_programs/parmanode'
 chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/Desktop'
 chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /media/parman/parmanode ; chown -R parman:parman /media/parman'
-chroot /tmp/mnt/raspi /bin/bash -c 'echo "message_instructions=1" > /home/parman/.parmanode/hide_messages.conf'
+chroot /tmp/mnt/raspi /bin/bash -c 'touch /home/parman/.parmanode/.new_install' #this ensures first run functions is entered when run_parmanode.sh is exectued.
+
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname'
 chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/127.0.1.1/d' /etc/hosts"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/hosts'
+
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
+
+# Make it pretty...
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
