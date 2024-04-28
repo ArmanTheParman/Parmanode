@@ -10,6 +10,14 @@ sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 status=progress
 fi
 
 if [[ $OS == Mac ]] ; then
+clear
+echo "The drive will now be flashed with the image file."
+enter_continue
+case $enter_cont in
+1) bs=1000000 ;; 3) bs=3000000 ;; 4) bs=4000000 ;; 5) bs=5000000 ;;
+*) bs=2000000
+esac
+
 sudo diskutil unmountDisk "/${disk}" 2>> $dp/parmanodl.log || sudo diskutil unmountDisk force "/${disk}" 2>> $dp/parmanodl.log 
 debug "after unmount"
 clear
@@ -25,9 +33,10 @@ as you like.
 Please wait...
 
 "
-sudo dd if="${image_path}" of="${disk_no_part}" bs=2000000 | tee -a $dp/parmanodl.log 
+sudo dd if="${image_path}" of="${disk_no_part}" bs=$bs | tee -a $dp/parmanodl.log 
+unset bs
 fi
-# will change to dcfldd soon
+# will change to dcfldd at some point 
 sync
 
 if [[ $OS == Mac ]] ; then
