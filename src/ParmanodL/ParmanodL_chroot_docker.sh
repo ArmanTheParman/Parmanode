@@ -1,18 +1,21 @@
 function ParmanodL_chroot_docker {
 #if modifying banner, don't use ', it will break the echo command.
 #document to be executed inside docker container.
-if [[ $debug == 1 ]] ; then
+if [[ $arg2 == fast ]] ; then
 apt_text="#!/bin/bash
-#chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
+chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y'
 "
 else
 apt_text="#!/bin/bash
-#chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y' 
+chroot /tmp/mnt/raspi /bin/bash -c 'apt-get update -y ; apt-get full-upgrade -y' 
 "
 fi
+cat << EOS >> ~/ParmanodL/chroot_function.sh 
+$apt_text
+EOS
 
 cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-#####chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
+chroot /tmp/mnt/raspi /bin/bash -c "apt-get install vim -y" 
 chroot /tmp/mnt/raspi /bin/bash -c "groupadd -r parman ; useradd -m -g parman parman ; usermod -aG sudo parman"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parman:parmanodl" | chpasswd ; systemctl enable ssh'
 #####chroot /tmp/mnt/raspi /bin/bash -c 'chage -d 0 parman' 
@@ -36,10 +39,12 @@ chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/127.0.1.1/d' /etc/hosts"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/hosts'
 chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
-####chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/.config/pcmanfm/LXDE-pi'
-####chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-####chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper-mode fit' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
-####chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
 
@@ -136,10 +141,8 @@ chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /tmp/rp'
 chroot /tmp/mnt/raspi /bin/bash -c 'mv /tmp/rp /usr/local/bin/'
 
+chroot /tmp/mnt/raspi /bin/bash -c 'sync'
 EOS
-
-make_ParmanodL_service #add to chroot_functions.sh
-sync_chroot
 
 #run chroot functions
 sudo chmod +x ~/ParmanodL/chroot_function.sh
@@ -151,9 +154,3 @@ debug "pause and check chroot"
 
 # had this before...
 # chroot /tmp/mnt/raspi /bin/bash -c 'chown root:root /home/parman/rp'
-
-function sync_chroot {
-cat << 'EOS' >> ~/ParmanodL/chroot_function.sh 
-chroot /tmp/mnt/raspi /bin/bash -c 'sync'
-EOS
-}

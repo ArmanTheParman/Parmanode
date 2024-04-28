@@ -1,0 +1,19 @@
+########################################################################################
+/etc/xdg/autostart
+########################################################################################
+Directory where [Desktop Entry] files are kept; similar to systemd service files
+for foreground programs, loaded when desktop environment loaded.
+
+
+########################################################################################
+system settings for desktop env
+########################################################################################
+/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf
+background - full black, no transparency, wallpaper disables, =000000FF0000
+
+
+########################################################################################
+Images for desktop wallpapers
+########################################################################################
+/usr/share/rpd-wallpaper/fisherman.jpg is the default
+########################################################################################

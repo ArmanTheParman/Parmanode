@@ -1,7 +1,4 @@
 function get_PiOS {
-if [[ $arg2 = fast ]] ; then
-return 0 
-fi
 
 cd $HOME/ParmanodL
 

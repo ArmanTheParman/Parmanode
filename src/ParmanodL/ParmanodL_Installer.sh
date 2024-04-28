@@ -130,7 +130,7 @@ Please wait...
 
 #need to get part 1 dependencies
 
-    if [[ $OS == Mac && $arg2 != fast ]] ; then 
+    if [[ $OS == Mac ]] ; then 
 
         if ! which brew >/dev/null ; then
              /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
