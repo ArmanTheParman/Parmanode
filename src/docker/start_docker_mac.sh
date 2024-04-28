@@ -3,10 +3,12 @@ function start_docker_mac {
 ( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
 || log "docker" "docker failed to nohup open -a" 
 
-set_terminal_bit_higher "pink" ; echo -e "
+while true ; do
+if docker ps >/dev/null 2>&1  ; then return 0 ; fi
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                Docker is starting
+                                Docker is starting...
 $orange                       
     Docker should be loading; it sometimes could take a minute or so. There may be a
     graphical pop-up - make sure to accept the terms and conditions if that appears,
@@ -30,6 +32,10 @@ $orange
 ########################################################################################
 "
 choose "epq" ; read choice
-case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) set_terminal ; return 1 ;; 
-	*) set_terminal ; return 0 ;; esac
+case $choice in 
+Q|q|Quit|QUIT) exit 0 ;; 
+p|P) set_terminal ; return 1 ;; 
+*) set_terminal ; continue ;; 
+esac 
+done
 }
