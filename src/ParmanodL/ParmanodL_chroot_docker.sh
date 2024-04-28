@@ -74,7 +74,7 @@ WELCOME TO YOUR ...
 
 ... computer, running pre-installed Parmanode software.
 
-Type rp to use the program (Stands for "run parmanode").
+Type rp to use the program (stands for "run parmanode").
 
 Please widen the screen manually if it does not ajust automatically.
 	

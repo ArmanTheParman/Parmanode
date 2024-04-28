@@ -6,7 +6,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
         The$cyan user ID (UID)$orange and the$cyan group ID (GID)$orange needs to be set for the $umbrel
-        files and directories on the target drive, so your PamanodL Linux comuper can
+        files and directories on the target drive, so your ParmanodL Linux comuper can
         read/write to them.
 
         Typically, if the Linux machine has only one user, the UID and GID will each
