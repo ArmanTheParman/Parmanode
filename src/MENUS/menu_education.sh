@@ -17,7 +17,7 @@ $orange
 
                     (n)        Six reasons to run a node
 
-                    (s)        Seperation of money and state
+                    (s)        Separation of money and state
 
                     (cs)       Cool stuff
 

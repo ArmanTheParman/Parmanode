@@ -16,7 +16,7 @@ class BIP32_master_node:
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byteseed=None\n")
 
         # if mnemonic == "choose":
-        #     self.mnemonic = input("Enter a mnemonic seed, 12 words, seperated by a space: \n: ")
+        #     self.mnemonic = input("Enter a mnemonic seed, 12 words, separated by a space: \n: ")
         #     self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
         #     print("Warning: The mnemonic seed has not been checked for BIP39 compliance (eg valid words or checksum)\n")
         # elif mnemonic == "abandon":
