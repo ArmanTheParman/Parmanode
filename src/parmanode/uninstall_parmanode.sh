@@ -164,11 +164,6 @@ delete_line "$HOME/.zshrc" "function rp {" >/dev/null 2>&1
 delete_line "$HOME/.zshrc" "safe to delete" >/dev/null 2>&1
 delete_line "$HOME/.zshrc" "parmashell_functions" >/dev/null 2>&1
 
-#remove parmanode_gui 
-sudo systemctl stop parmanodl_gui.service >/dev/null 2>&1
-sudo systemctl disable parmanodl_gui.service >/dev/null 2>&1
-sudo rm /etc/systemd/system/parmanodl_gui.service >/dev/null 2>&1
-
 set_terminal ; echo -e "
 ########################################################################################
 

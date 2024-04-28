@@ -100,10 +100,19 @@ if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
+
+	# If Parmanode has never run before, make sure to get latest version of Parmanode
+	cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull && needs_restart=true >/dev/null 2>&1
+
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
 [ $debug = menu ] || autoupdate
+fi
+
+if [[ $needs_restart == true ]] ; then
+announce "An update to Parmanode was made to the latest version. Please restart Parmanode."
+exit
 fi
 
 #Health check

@@ -7,13 +7,6 @@ if [[ -e /home/parman/.parmanode/parmanode.conf ]] ; then
 if grep -q "rp_count" < /home/parman/.parmanode/parmanode.conf ; then exit ; fi
 fi
 
-pcmanfm --dset-wallpaper /home/parman/parman_programs/parmanode/src/graphics/pn.png >/dev/null 2>&1
-sleep 1
-pcmanfm --wallpaper-mode fit >/dev/null 2>&1
-sed -i "/desktop_bg=/c\\desktop_bg=#000000" /home/parman/.config/pcmanfm/LXDE-pi/desktop-items-0.conf >/dev/null 2>&1
-pcmanfm --desktop-off
-sleep 2.5
-pcmanfm --desktop
 #always get latest version of parmanode
 cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull >/dev/null 2>&1
 
