@@ -43,6 +43,13 @@ chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /home/parman/Desktop'
 chroot /tmp/mnt/raspi /bin/bash -c 'mkdir -p /media/parman/parmanode ; chown -R parman:parman /media/parman'
 chroot /tmp/mnt/raspi /bin/bash -c 'touch /home/parman/.parmanode/.new_install' #this ensures first run functions is entered when run_parmanode.sh is exectued.
 
+#parmashell
+chroot /tmp/mnt/raspi /bin/bash -c "echo '#Added by Parmanode below, safe to delete...' | tee -a /home/parman/.bashrc"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /home/parman/.bashrc"
+chroot /tmp/mnt/raspi /bin/bash -c "echo '#Added by Parmanode above, safe to delete...' | tee -a /home/parman/.bashrc"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'parmashell-end' | tee -a /home/parman/.parmanode/installed.conf'
+
+#hostname
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname'
 chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/127.0.1.1/d' /etc/hosts"
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "127.0.1.1    parmanodl" | tee -a /etc/hosts'
@@ -55,8 +62,14 @@ chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+
+# Keyboard Layout defaul to US
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/XKBLAYOUT/d' /etc/default/keyboard"
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'XKBLAYOUT=\"us\"' | tee -a /etc/default/keyboard"
+
+
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
 
@@ -148,6 +161,17 @@ EOFF
 
 sudo mv /tmp/instructions.txt /tmp/mnt/raspi/home/parman/Desktop/instructions.txt
 chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/instructions.txt'
+
+
+cat << 'EOP' > /tmp/password_changer.sh
+#!/bin/bash
+sudo passwd $USER
+EOP
+
+sudo mv /tmp/password_changer.sh /tmp/mnt/raspi/home/parman/Desktop/password_changer.sh
+chroot /tmp/mnt/raspi /bin/bash -c 'chown parman:parman /home/parman/Desktop/password_changer.sh'
+chroot /tmp/mnt/raspi /bin/bash -c 'chmod +x /home/parman/Desktop/password_changer.sh'
+
 
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chmod 755 /tmp/rp'
