@@ -31,7 +31,6 @@ public_key_hash=hash160(f.serialize)
 witness_program = convertbits(public_key_hash, 8, 5)
 print(witness_program)
 
-print ("pubkey :" , public_key )
 # Generate a SegWit address using bech32 encoding
 address = bech32_encode('bc', [0] + witness_program)
 print("Address: " + address)
