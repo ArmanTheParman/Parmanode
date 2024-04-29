@@ -47,7 +47,7 @@ chroot /tmp/mnt/raspi /bin/bash -c 'touch /home/parman/.parmanode/.new_install' 
 chroot /tmp/mnt/raspi /bin/bash -c "echo '#Added by Parmanode below, safe to delete...' | tee -a /home/parman/.bashrc"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /home/parman/.bashrc"
 chroot /tmp/mnt/raspi /bin/bash -c "echo '#Added by Parmanode above, safe to delete...' | tee -a /home/parman/.bashrc"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'parmashell-end' | tee -a /home/parman/.parmanode/installed.conf'
+chroot /tmp/mnt/raspi /bin/bash -c "echo 'parmashell-end' | tee -a /home/parman/.parmanode/installed.conf"
 
 #hostname
 chroot /tmp/mnt/raspi /bin/bash -c 'echo "parmanodl" > /etc/hostname'
