@@ -18,16 +18,13 @@ charlist = ( b'a', b'b', b'c', b'c', b'd', b'e', b'f', b'g', b'h', b'i', b'j', b
 mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
 passphrase = b''
 a = BIP32_master_node(mnemonic, passphrase)
-b = child_key(a, depth=1, account=84, hardened=True, serialize=True) #purpose
-c = child_key(b, depth=1, account=0, hardened=True, serialize=True) #coin
-d = child_key(c, depth=1, account=0, hardened=True, serialize=True) #account
-e = child_key(d, depth=1, account=0, hardened=False, serialize=True) #int/ext
+b = child_key(a, depth=1, account=84, hardened=True, serialize=False) #purpose
+c = child_key(b, depth=1, account=0, hardened=True, serialize=False) #coin
+d = child_key(c, depth=1, account=0, hardened=True, serialize=False) #account
+e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
 public_key = f.serialize() #returns bytes
-
-print("xxxxxxxxx")
-print(public_key)
 public_key_hash=hash160(public_key)
 # Convert public key to witness program format
 witness_program = convertbits(public_key_hash, 8, 5)
