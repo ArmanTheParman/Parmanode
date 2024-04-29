@@ -3,15 +3,20 @@
 
 function ParmanodL_Installer {
 # Version specific info
-    
+if [[ $1 != mint ]] ; then   
     export zip_file="2024-03-15-raspios-bookworm-arm64.img.xz"
     export zip_path="$HOME/ParmanodL/$zip_file"
     export image_file="2024-03-15-raspios-bookworm-arm64.img"
-    export image_path="$HOME/ParmanodL/$image_file" 
     export hash_zip="7e53a46aab92051d523d7283c080532bebb52ce86758629bf1951be9b4b0560f"
     export hash_image="94fc4b66d87c9e2742092aba689e0f326ebdaedb4a1dcdbf0c5182c034809c16"
+else
+    export install=mint
+    export image_file="linuxmint-21.3-cinnamon-64bit.iso"
+    export hash_image="5aa24abbc616807ab754a6a3b586f24460b0c213b6cacb0bf8b9a80b65013ecc"
+fi
+    export image_path="$HOME/ParmanodL/$image_file" 
     export mnt="$HOME/mnt"
-    
+
 # Size 88 wide, and orange colour scheme
 
     printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m" 
@@ -20,7 +25,7 @@ function ParmanodL_Installer {
 
 while true ; do
 
-   if [[ $1 == install ]] ; then break ; fi
+   if [[ $1 == install || $1 == mint ]] ; then break ; fi
 
    clear ; echo -e "$orange
 ########################################################################################
@@ -29,8 +34,35 @@ while true ; do
                        P  A  R  M  A  N  O  D  L     O  S 
 $orange
 
-   This software will help you install Parmanodl OS onto an external drive or 
-   micro SD card which you can then use to install the OS onto a Pi4 computer. 
+   This software will help you install Parmanodl OS (Raspberry Pi OS) onto an 
+   external drive or micro SD card which you can then use to install the OS onto a 
+   Pi4 computer. 
+
+   Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
+   can do whatever you want, including giving your software cool sounding names :P
+
+
+########################################################################################
+Hit$cyan <enter>$orange to continue
+"
+read ; clear
+
+break ; done
+
+while true ; do
+
+   if [[ $1 != mint ]] ; then break ; fi
+
+   clear ; echo -e "$orange
+########################################################################################
+
+  $cyan 
+                       P  A  R  M  A  N  O  D  L     O  S 
+$orange
+
+   This software will help you install Parmanodl OS (Linux Mint) onto an external 
+   drive or micro SD card which you can then use to install the OS onto a 64-bit 
+   computer of your choice.
 
    Yes, strictly speaking, ParmanodL isn't its own OS, but when you write code, you
    can do whatever you want, including giving your software cool sounding names :P
@@ -53,8 +85,8 @@ $orange
     The entire process may take about 30 minutes to 1 hour depending on the speed of
     the computer. There will be ocassional promtps/quesions so keep an eye out.
 
-    You'll also be asked to remove/insert the microSD card (minimum 16GB) to assist 
-    with drive detection.
+    You'll also be asked to remove/insert a microSD card (minimum 16GB) or drive to 
+    assist with detection.
 
     For best probability of success, do not do resource intensive things while the
     computer is thinking. 
@@ -151,7 +183,7 @@ Please wait...
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install gpg. Aborting." ; sleep 4 ; exit ; fi
             brew install gpg 
         fi
-
+        
 	    if ! which xz >/dev/null ; then
             if [[ $warning == 1 ]] ; then echo "problem with homebrew, needed to install xz. Aborting." ; sleep 4 ; exit ; fi
             brew install xz
@@ -222,8 +254,12 @@ fi # end if $1 != install
 
 # Get OS , verify, and extract
     please_wait
-
-    export OS_choice=pi  #might add other options later.
+    
+    if [[ $1 == mint ]] ; then
+        export OS_choice=mint
+    else
+        export OS_choice=pi  
+    fi
 
     if [[ $OS_choice == pi ]] ; then
     get_PiOS || { log "parmanodl" "failed at get_PiOS" ; exit ; }
