@@ -1,15 +1,22 @@
+import os
 from classes import *
 from functions import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
 
+########################################################################################
+#iteration function
+########################################################################################
+
+
+
+
 
 
 ########################################################################################
 ########################################################################################
 
-charlist = ( b'a', b'b', b'c', b'c', b'd', b'e', b'f', b'g', b'h', b'i', b'j', b'k', b'l', b'm', b'n', b'o', b'p', b'q', b'r', b's', b't', b'u', b'v', b'w', b'x', b'y', b'z')
-mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
+mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon " + w22 + w23 + wcheck
 passphrase = b''
 a = BIP32_master_node(mnemonic, passphrase)
 b = child_key(a, depth=1, account=84, hardened=True, serialize=False) #purpose
