@@ -58,6 +58,12 @@ chroot /tmp/mnt/raspi /bin/bash -c 'apt-get install git -y'
 chroot /tmp/mnt/raspi /bin/bash -c 'cd /home/parman/parman_programs/ ; git clone https://github.com/armantheparman/parmanode.git'
 
 # Make it pretty...
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/desktop_bg=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/desktop_bg=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper_mode=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/wallpaper_mode=/d' /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'desktop_bg=#000000' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs/parmanode/src/graphics/pn.png' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
