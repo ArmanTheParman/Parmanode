@@ -24,8 +24,9 @@ d = child_key(c, depth=1, account=0, hardened=True, serialize=False) #account
 e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
-public_key = f.serialize() #returns bytes
-public_key_hash=hash160(public_key)
+# hashx2 the public key (bytes)
+public_key_hash=hash160(f.serialize) 
+
 # Convert public key to witness program format
 witness_program = convertbits(public_key_hash, 8, 5)
 print(witness_program)
