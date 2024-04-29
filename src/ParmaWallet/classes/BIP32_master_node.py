@@ -174,4 +174,4 @@ class child_key:
         self.xprv=PW_Base58.encode_base58(raw_xprv)
         self.xpub=PW_Base58.encode_base58(raw_xpub)
 
-        print(self.public_key)
+        print(self.public_key.hex())
