@@ -21,12 +21,16 @@ d = child_key(c, depth=1, account=0, hardened=True, serialize=True) #account
 e = child_key(d, depth=1, account=0, hardened=False, serialize=True) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
-f.serialize()
+public_key = f.serialize()
 
 
-########################################################################################
-# Example usage:
-########################################################################################
-public_key = b'\x030\xd5O\xd0\xddB\nn_\x8d6$\xf5\xf3H,\xae5\x0fy\xd5\xf0u;\xf5\xbe\xef\x9c-\x91\xaf<'
-bech32_address = pubkey_to_bech32(public_key)
-print(bech32_address)
+import os
+from bech32 import bech32_encode, convertbits
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+
+# Convert public key to witness program format
+witness_program = convertbits(public_key[1:], 8, 5)
+
+# Generate a SegWit address using bech32 encoding
+address = bech32_encode('bc', [0] + witness_program)
+print("Address: " + address)

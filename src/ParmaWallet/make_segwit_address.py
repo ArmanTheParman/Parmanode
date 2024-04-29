@@ -25,9 +25,3 @@ from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Co
 #     return bech32.bech32_encode(hrp, [version] + five_bit_r)
 
     
-# Convert public key to witness program format
-witness_program = convertbits(public_key[1:], 8, 5)
-
-# Generate a SegWit address using bech32 encoding
-address = bech32_encode('bc', [0] + witness_program)
-print("Address: " + address)
