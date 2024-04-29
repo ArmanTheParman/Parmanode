@@ -2,6 +2,12 @@ import hashlib
 from functions.PW_Base58 import *
 from functions.PW_functions import *
 from classes.Script import *
+import os
+from classes import *
+from functions import *
+from variables import * 
+from bech32 import bech32_encode, convertbits
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 
 #usage - pass a byte object, encode the string to do so
@@ -54,5 +60,16 @@ def p2pkh_script(h160):
     '''Takes a hash160 and returns the p2pkh ScriptPubKey'''
     return Script([0x76, 0xa9, h160, 0x88, 0xac])
     
+#takes a pubkey object
+def make_segwit_address(the_pubkey):
+    
+    # hashx2 the public key (bytes)
+    public_key_hash=hash160(the_pubkey) 
 
+    # Convert public key to witness program format
+    witness_program = convertbits(public_key_hash, 8, 5)
+
+    # Generate a SegWit address using bech32 encoding
+    address = bech32_encode('bc', [0] + witness_program)
+    print("Address: " + address)
     

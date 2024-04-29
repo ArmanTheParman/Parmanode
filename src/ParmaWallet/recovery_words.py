@@ -2,13 +2,7 @@ from classes import *
 from functions import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
-from classes import *
-from functions import *
-from variables import * 
 
-import os
-from bech32 import bech32_encode, convertbits
-from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 
 ########################################################################################
@@ -24,12 +18,5 @@ d = child_key(c, depth=1, account=0, hardened=True, serialize=False) #account
 e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
-# hashx2 the public key (bytes)
-public_key_hash=hash160(f.serialize()) 
 
-# Convert public key to witness program format
-witness_program = convertbits(public_key_hash, 8, 5)
-
-# Generate a SegWit address using bech32 encoding
-address = bech32_encode('bc', [0] + witness_program)
-print("Address: " + address)
+make_segwit_address(f.serialise())
