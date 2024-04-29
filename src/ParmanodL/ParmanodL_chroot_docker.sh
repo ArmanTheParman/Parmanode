@@ -71,11 +71,15 @@ chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper=/home/parman/parman_programs
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
 chroot /tmp/mnt/raspi /bin/bash -c "echo 'wallpaper_mode=fit' | tee -a /etc/xdg/pcmanfm/LXDE-pi/desktop-items-1.conf"
 
-# Keyboard Layout defaul to US
-chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/XKBLAYOUT/d' /etc/default/keyboard"
-chroot /tmp/mnt/raspi /bin/bash -c "echo 'XKBLAYOUT=\"us\"' | tee -a /etc/default/keyboard"
+## Keyboard Layout defaul to US
+#chroot /tmp/mnt/raspi /bin/bash -c "sed -i '/XKBLAYOUT/d' /etc/default/keyboard"
+#chroot /tmp/mnt/raspi /bin/bash -c "echo 'XKBLAYOUT=\"us\"' | tee -a /etc/default/keyboard"
 
-
+# Locale
+chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_change_locale en_US.UTF-8' 
+chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_wifi_country US'
+chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_change_timezone Etc/UTC'
+chroot /tmp/mnt/raspi /bin/bash -c 'raspi-config nonint do_configure_keyboard us'
 
 chroot /tmp/mnt/raspi /bin/bash -c 'chown -R parman:parman /home/parman' #necessary, and needed nearly last
 

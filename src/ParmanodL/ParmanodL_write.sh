@@ -22,7 +22,7 @@ sudo diskutil unmountDisk "/${disk}" 2>> $dp/parmanodl.log || sudo diskutil unmo
 debug "after unmount"
 clear
 echo "
-Flashing the drive with Parmanode OS. This can take a weirdly long
+Flashing the drive with the image file. This can take a weirdly long
 time with no screen feedback, probably more than 10 minutes. 
 
 Let this be a lesson that you should have been using Linux :P

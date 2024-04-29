@@ -262,24 +262,20 @@ fi # end if $1 != install
     fi
 
     if [[ $OS_choice == pi ]] ; then
-    get_PiOS || { log "parmanodl" "failed at get_PiOS" ; exit ; }
+    get_PiOS || { announce "failed at get_PiOS" ; exit ; }
     fi
 
     if [[ $OS_choice == mint ]] ; then
-    get_Mint || { log "parmanodl" "failed at get_Mint" ; exit ; } 
+    get_Mint || { announce "failed at get_Mint" ; exit ; } 
     fi
 
 # Macs use Docker functionality here
-    ParmanodL_docker_run || { log "parmanodl" "failed at docker_run" ; exit ; }
-    ParmanodL_docker_get_binaries || { log "parmanodl" "failed at docker_get_binaries" ; exit ; }
+    ParmanodL_docker_run || { announce "failed at docker_run" ; exit ; }
+    ParmanodL_docker_get_binaries || { announce "failed at docker_get_binaries" ; exit ; }
 
 # Mount the image and dependent directories
     
-    ParmanodL_mount || { echo "failed to mount. Exiting." ; log "parmanodl" "failed at ParmanodL_mount" ; exit ; }
-
-# Setup system locale
-
-    set_locale ; log "parmanodl" "reached set_local"
+    ParmanodL_mount || { announce "failed to mount. Exiting." ; exit ; }
 
 # Modify the image with chroot
 
@@ -302,8 +298,12 @@ fi # end if $1 != install
     ParmanodL_write || { log "parmanodl" "failed at ParmanodL_write" ; exit ; }
 
 # Rename image file
-    mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-v3.0.0.img
+    if [[ $OS_choice == pi ]] ; then
+    mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-PI-v3.0.0.img
     debug "pause"
+    elif [[ $OS_choice == mint ]] ; then
+    mv $image_file $HOME/ParmanodL/ParmanodL-MINT-v3.0.0.iso
+    fi
 
 # Clean known hosts of parmanodl
  
