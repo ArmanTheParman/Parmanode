@@ -58,7 +58,7 @@ installed_conf_add "torssh-start"
 sudo systemctl restart tor ssh
 
 if [[ ! -d $HOME/.ssh ]] ; then sudo mkdir $HOME/.ssh ; fi
-if [[ ! -f $HOME/.ssh/config ]] ; then touch $HOME/.ssh/config ; fi
+if [[ ! -f $HOME/.ssh/config ]] ; then sudo touch $HOME/.ssh/config ; fi
 
 
 if ! grep -q "Host *.onion" < $HOME/.ssh/config ; then
