@@ -24,10 +24,11 @@ d = child_key(c, depth=1, account=0, hardened=True, serialize=True) #account
 e = child_key(d, depth=1, account=0, hardened=False, serialize=True) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
-public_key = f.serialize()
+public_key = f.public_key
 print("xxxxxxxxx")
+print(public_key)
 # Convert public key to witness program format
-witness_program = convertbits(f.serialize()[1:], 8, 5)
+witness_program = convertbits(public_key[1:], 8, 5)
 
 print ("pubkey :" , public_key )
 # Generate a SegWit address using bech32 encoding
