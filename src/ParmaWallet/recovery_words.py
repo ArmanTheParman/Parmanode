@@ -6,6 +6,9 @@ from classes import *
 from functions import *
 from variables import * 
 
+import os
+from bech32 import bech32_encode, convertbits
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 
 ########################################################################################
@@ -23,14 +26,10 @@ f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
 public_key = f.serialize()
 
-
-import os
-from bech32 import bech32_encode, convertbits
-from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
-
 # Convert public key to witness program format
 witness_program = convertbits(public_key[1:], 8, 5)
 
+print ("pubkey" : public_key )
 # Generate a SegWit address using bech32 encoding
 address = bech32_encode('bc', [0] + witness_program)
 print("Address: " + address)
