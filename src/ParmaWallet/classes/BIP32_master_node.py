@@ -109,7 +109,7 @@ class BIP32_master_node:
         # self.xpub=base58.b58encode(raw_xpub)
         
         print("xprv is: " , self.xprv)
-        print("xpub is: " , self.xpub)
+        print("xpub is: " , self.xpubjj)
 
     def __repr__(self):
         return "Need to serialize to get output in Hex" 
@@ -174,4 +174,4 @@ class child_key:
         self.xprv=PW_Base58.encode_base58(raw_xprv)
         self.xpub=PW_Base58.encode_base58(raw_xpub)
 
-#       print(self.public_key)
+        print(self.public_key)
