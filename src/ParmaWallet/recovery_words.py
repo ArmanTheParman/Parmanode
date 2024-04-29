@@ -24,7 +24,7 @@ d = child_key(c, depth=1, account=0, hardened=True, serialize=True) #account
 e = child_key(d, depth=1, account=0, hardened=False, serialize=True) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
-public_key = f.serialize()
+public_key = f.serialize() #returns bytes
 
 print("xxxxxxxxx")
 print(public_key)
