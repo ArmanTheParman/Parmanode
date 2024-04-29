@@ -175,3 +175,5 @@ class child_key:
         self.xpub=PW_Base58.encode_base58(raw_xpub)
 
         print(self.public_key.hex())
+
+        return self.public_key
