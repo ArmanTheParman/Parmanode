@@ -30,7 +30,7 @@ print("xxxxxxxxx")
 print(public_key)
 public_key_hash=hash160(public_key)
 # Convert public key to witness program format
-witness_program = convertbits(public_key_hash[1:], 8, 5)
+witness_program = convertbits(public_key_hash, 8, 5)
 print(witness_program)
 
 print ("pubkey :" , public_key )
