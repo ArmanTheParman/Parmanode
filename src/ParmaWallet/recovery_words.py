@@ -19,4 +19,4 @@ e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
 f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
 
-make_segwit_address(f.serialise())
+make_segwit_address(f.serialize())
