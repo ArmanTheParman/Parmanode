@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 40 ))
+motd=$((motd % 41))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -937,6 +937,26 @@ $cyan
 
     If you trust your heirs, you can get them to share this burden while you're 
     still alive
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+
+if [[ $motd == 40 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Sending your kid to a government school, and avoiding homeschooling, mainly 
+    because you are worried they won't fit in with society, is like sending your kid 
+    to join a gang because you are worried they might not fit in in jail.
+
+    Fuck society. 
 
 ######################################################################################## 
 
