@@ -38,7 +38,7 @@ known_string = "000000000001111111111100000000000" #placeholder
 #             hash256(test_string)[:1]
 i = '000010111'
 i = int(i)
-j = '1111i110'
+j = '11111110'
 j = int(j)
 k = '011'      
 k = int(k)
