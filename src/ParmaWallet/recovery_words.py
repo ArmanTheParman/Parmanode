@@ -40,7 +40,8 @@ for i in range(0, 1):
             mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
             complete_string = known_string + ' ' + mnemonic_end_string
             test_pubkey=get_all_child_keys('f', mnemonic=complete_string)
-            pubkey_to_bech32(test_pubkey)
+            print(type(test_pubkey))
+            #pubkey_to_bech32(test_pubkey)
             
 
 ########################################################################################
