@@ -23,7 +23,7 @@ valid_combinations = []
 
 with open(file_store , "a") as file:  # Open in append mode to add to the file
 
-    for i in range(0, 1):
+    for i in range(0, 2048):
         for j in range (0, 2048):
             for k in range (0, 8): 
                 test_string = known_string_bin_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
