@@ -38,8 +38,8 @@ known_string = 21 * "00000000000"
 known_string_int = int(known_string)
 valid_combinations = []
 
-for i in range(0, 2048):
-    for j in range (0, 2048):
+for i in range(0, 2):
+    for j in range (0, 2):
         for k in range (0, 8): 
             test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
             test_string_int = int(test_string, 2)
@@ -54,6 +54,8 @@ for i in range(0, 2048):
             final_word_val = k * 256 + hashval_int
             print( 'last 3 indexes' , i , j, final_word_val)
 #            input ('<enter>')
+            valid_combinations=valid_combinations.append(i, j, final_word_val)
+print(valid_combinations)
 
 ########################################################################################
 ########################################################################################
