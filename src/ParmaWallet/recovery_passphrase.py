@@ -51,7 +51,7 @@ for i in range(0, 2048):
             hashval_string = bin(hashval_int)[2:].zfill(8)
             print ("hashval_string", hashval_string)
             print ('ijk' , i , j, k)
-            input (<enter>)
+            input ('<enter>')
 
 ########################################################################################
 ########################################################################################
