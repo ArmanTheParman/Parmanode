@@ -1,5 +1,6 @@
 import os
 from classes import *
+from classes import BIP32_master_node 
 from functions import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
