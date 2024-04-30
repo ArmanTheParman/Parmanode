@@ -45,15 +45,15 @@ for i in range(0, 2048):
             test_string_int = int(test_string, 2)
             test_string_bytes = test_string_int.to_bytes(32, 'big')
             hashbyte = hash256(test_string_bytes)[:1]
-            print("hashbyte", hashbyte)
+#            print("hashbyte", hashbyte)
             hashval_int = int.from_bytes(hashbyte, 'big')
-            print("hashval_int", hashval_int)
+#            print("hashval_int", hashval_int)
             hashval_string = bin(hashval_int)[2:].zfill(8)
-            print ("hashval_string", hashval_string)
-            print ('ijk' , i , j, k)
+#            print ("hashval_string", hashval_string)
+#            print ('ijk' , i , j, k)
             final_word_val = k * 256 + hashval_int
             print( 'last 3 indexes' , i , j, final_word_val)
-            input ('<enter>')
+#            input ('<enter>')
 
 ########################################################################################
 ########################################################################################
