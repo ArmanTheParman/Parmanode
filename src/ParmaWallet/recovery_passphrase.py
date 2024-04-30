@@ -36,7 +36,7 @@ with open (file_path, 'r') as file:
     seedlist = file.readlines()
 
 def word_look_up(value):
-    return seedlist[value]
+    return seedlist[value].strip()
 
 target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
 #target_string_int = int(target_string)
