@@ -27,40 +27,66 @@ from variables import *
 #                             f = child_key(e, depth=1, account=0, hardened=False, serialize=False) #address
 # xxx=BIP32_master_node()
 
-Test_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
+########################################################################################
+########################################################################################
+########################################################################################
+
+target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
+target_string_int = int(test_string)
+
 known_string = 21 * "00000000000"
+known_string_int = int(known_string)
 
-# for i in range(0, 2048):
-#     for j in range (0, 2048):
-#         for k in range (0, 8): 
-#             test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
-#             test_string = int(test_string, 2)
-#             test_string = test_string.to_bytes(32, 'big')
-#             hash256(test_string)[:1]
-i = '00000000000'
-i = int(i)
-j = '00000000000'
-j = int(j)
-k = '0000000'      
-k = int(k)
-test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
-test_string_int = int(test_string, 2)
-test_string_bytes = test_string_int.to_bytes(32, 'big')
-hashbyte = hash256(test_string_bytes)[:1]
-print("hashbyte", hashbyte)
-hashval_int = int.from_bytes(hashbyte, 'big')
-print("hashval_int", hashval_int)
-hashval_string = bin(hashval_int)[2:].zfill(8)
-print ("hashval_string", hashval_string)
+for i in range(0, 2048):
+    for j in range (0, 2048):
+        for k in range (0, 8): 
+            test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+            test_string_int = int(test_string, 2)
+            test_string_bytes = test_string_int.to_bytes(32, 'big')
+            hashbyte = hash256(test_string_bytes)[:1]
+            print("hashbyte", hashbyte)
+            hashval_int = int.from_bytes(hashbyte, 'big')
+            print("hashval_int", hashval_int)
+            hashval_string = bin(hashval_int)[2:].zfill(8)
+            print ("hashval_string", hashval_string)
 
-real_string_prefix_string = test_string + "00000000"
-print("rsps", real_string_prefix_string)
-real_string_prefix_int = int(real_string_prefix_string)
-print("rspi", real_string_prefix_int)
-real_string_total_tocheck = real_string_prefix_int + hashval_int
-print("rsttc", real_string_total_tocheck)
-real_string_total = bin(real_string_total_tocheck)[2:].zfill(264)
-print("rst", real_string_total)
+            real_string_prefix_string = test_string + "00000000"
+            print("rsps", real_string_prefix_string)
+            real_string_prefix_int = int(real_string_prefix_string)
+            print("rspi", real_string_prefix_int)
+            real_string_total_tocheck = real_string_prefix_int + hashval_int
+            print("rsttc", real_string_total_tocheck)
+            real_string_total = bin(real_string_total_tocheck)[2:].zfill(264)
+            print("rst", real_string_total)
+
+
+########################################################################################
+########################################################################################
+########################################################################################
+# i = '00000000000'
+# i = int(i)
+# j = '00000000000'
+# j = int(j)
+# k = '0000000'      
+# k = int(k)
+# test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+# test_string_int = int(test_string, 2)
+# test_string_bytes = test_string_int.to_bytes(32, 'big')
+# hashbyte = hash256(test_string_bytes)[:1]
+# print("hashbyte", hashbyte)
+# hashval_int = int.from_bytes(hashbyte, 'big')
+# print("hashval_int", hashval_int)
+# hashval_string = bin(hashval_int)[2:].zfill(8)
+# print ("hashval_string", hashval_string)
+
+# real_string_prefix_string = test_string + "00000000"
+# print("rsps", real_string_prefix_string)
+# real_string_prefix_int = int(real_string_prefix_string)
+# print("rspi", real_string_prefix_int)
+# real_string_total_tocheck = real_string_prefix_int + hashval_int
+# print("rsttc", real_string_total_tocheck)
+# real_string_total = bin(real_string_total_tocheck)[2:].zfill(264)
+# print("rst", real_string_total)
 
 
 
