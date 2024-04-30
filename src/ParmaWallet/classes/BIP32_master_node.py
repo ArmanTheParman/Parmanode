@@ -42,8 +42,10 @@ class BIP32_master_node:
                 print("Warning, mnemonic provided will be discarded as byte_seed provided.")
             if not isinstance (byte_seed, bytes):
                 raise TypeError("byte_seed should be bytes object")
+            input("pause")
             if len(byte_seed) not in (16, 32, 64): 
                 ValueError("Byte needs to be length 16, 32, or 64") 
+            input("pause2")
             self.byte_seed = byte_seed 
         
         if byte_seed is None: 
