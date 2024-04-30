@@ -55,7 +55,7 @@ for i in range(0, 2):
             print( 'last 3 indexes' , i , j, final_word_val)
             valid_combination = (i, j, final_word_val)
 #            input ('<enter>')
-            valid_combinations=valid_combinations.append(i, j, final_word_val)
+            valid_combinations=valid_combinations.append(valid_combination)
 print(valid_combinations)
 
 ########################################################################################
