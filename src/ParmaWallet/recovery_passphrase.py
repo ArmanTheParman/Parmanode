@@ -40,9 +40,10 @@ def word_look_up(value):
 
 target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
 #target_string_int = int(target_string)
+known_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon" 
 
-known_string = 21 * "00000000000"
-known_string_int = int(known_string)
+known_string_bin_string = 21 * "00000000000"
+known_string_int = int(known_string_bin_string)
 valid_combinations = []
 
 for i in range(0, 1):
@@ -62,7 +63,8 @@ for i in range(0, 1):
 #            print( 'last 3 indexes' , i , j, final_word_val)
 
             mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
-            print(mnemonic_end_string)
+            complete_string = known_string + ' ' + mnemonic_end_string
+            print(complete_string)
 
             #valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
             
