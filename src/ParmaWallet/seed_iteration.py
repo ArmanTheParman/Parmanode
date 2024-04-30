@@ -26,6 +26,7 @@ def get_binary_seed(decimal_array):
         binseed=binseed+i
     
     print(binseed)
+    return binseed
 
 
 
@@ -53,4 +54,5 @@ def get_binary_seed(decimal_array):
 
 ########################################################################################
 
-get_binary_seed([1,2,3])
+x=get_binary_seed([1,2,3])
+print(x)
