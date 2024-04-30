@@ -21,7 +21,7 @@ known_string_bin_string = 21 * "00000000000"
 known_string_int = int(known_string_bin_string)
 valid_combinations = []
 
-with open(file_store , "a") as file:  # Open in append mode to add to the file
+with open(file_store , "w") as file:  # truncates any existing file and starts over
 
     for i in range(0, 2048):
         for j in range (0, 2048):
@@ -49,7 +49,7 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
                 file.write(address + "\n")  # Convert result to string and append a newline
                 if address == 'bc1qfmqe4296g04eaczsns22exhqhmlvdx57xzx8tw':
                     print("words found, i j k:" , mnemonic_end_string)
-                    input("<enter> to stop program and clear screan")
+                    input("<enter> to stop program")
                     exit()
  
 ########################################################################################
