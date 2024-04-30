@@ -26,8 +26,9 @@ class BIP32_master_node:
             self.passphrase = ""
         elif mnemonic is None:
             print("No Mnemonic set")
-            # byte_seed = 128 * '0' + '0011'
-            # byte_seed = b'byte_seed'
+            byte_seed = 128 * '0' + '0011'
+            byte_seed = int(byte_seed, 2)
+            byte_seed = byte_seed.to_bytes(32, 'big')
         else: 
             self.mnemonic = mnemonic
             self.passphrase = passphrase
@@ -46,7 +47,7 @@ class BIP32_master_node:
         
         if byte_seed is None: 
 
-        #Remove for speed...
+            #Remove for speed...
             #self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
             #self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
 
@@ -57,10 +58,10 @@ class BIP32_master_node:
             self.mnemonic = self.mnemonic.encode("utf-8")
             # self.passphrase = self.passphrase.encode("utf=8")
 
-        #make a BIP39 seed (512 bits, 64 hex characters, byte object)
-        self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
-        self.hex_seed = binascii.hexlify(self.byte_seed[:64])
-        self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
+            #make a BIP39 seed (512 bits, 64 hex characters, byte object)
+            self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
+            self.hex_seed = binascii.hexlify(self.byte_seed[:64])
+            self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
         
             #BIP39 spits out a 512 bit seed (because of sha512), to use in BIP32
        
