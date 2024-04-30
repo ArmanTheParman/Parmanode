@@ -63,7 +63,7 @@ def get_seed_checksum(bin_seed):
 ########################################################################################
 
 bin_seed = get_binary_seed(decimal_array)
-get_seed_checksum(bin_seed)
+print(get_seed_checksum(bin_seed))
 
 
 
