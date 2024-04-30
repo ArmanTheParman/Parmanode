@@ -115,8 +115,8 @@ class BIP32_master_node:
         print("xprv is: " , self.xprv)
         print("xpub is: " , self.xpub)
 
-    def __repr__(self):
-        return self.private_key
+#    def __repr__(self):
+#        return self.private_key
 
 class child_key:
     def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=False, PK=False, address=False ): #account is also the "index"
