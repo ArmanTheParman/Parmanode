@@ -6,8 +6,9 @@ import base58
 from ecdsa import SECP256k1
 
 import os
-from bech32 import bech32_encode, convertbits
+#from bech32 import bech32_encode, convertbits
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from bitcoinlib.encoding import bech32_encode, convertbits
 
 
 def pubkey_to_bech32(pubkey, version=0, hrp='bc'):
