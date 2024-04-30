@@ -26,7 +26,7 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
     for i in range(0, 1):
         for j in range (0, 2048):
             for k in range (0, 2048): 
-                mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
+                mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(k)
                 print(mnemonic_end_string)
                 complete_string = known_string + ' ' + mnemonic_end_string
                 test_keypair=get_all_child_keys('f', mnemonic=complete_string)
