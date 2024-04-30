@@ -18,7 +18,7 @@ y = int(x)
 def seed_checksum(decimal_array):
     result = []
     for i in decimal_array:
-        result.append(bin(i)[2:])
+        result.append(bin(i)[2:].zfill(2))
     print(result)
     
     binseed=''
