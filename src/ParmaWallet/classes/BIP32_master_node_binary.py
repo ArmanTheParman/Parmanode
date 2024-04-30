@@ -9,7 +9,7 @@ from ecdsa import SECP256k1
 from typing import Union
 
 
-class BIP32_master_node:
+class BIP32_master_node_binary:
 
     def __init__(self, byte_seed): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
     #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
