@@ -57,7 +57,7 @@ class BIP32_master_node:
 
             ### make byte objects...
             #Add "mnemonic" string. If passphrase empty, then the result is just "mnemonic" bytes in ascii
-            self.passphrase = b'mnemonic' + self.passphrase 
+            self.passphrase = 'mnemonic' + self.passphrase 
             #encode the mnemonic and passphrase (byte object)
             self.mnemonic = self.mnemonic.encode("utf-8")
             # self.passphrase = self.passphrase.encode("utf=8")
