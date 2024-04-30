@@ -60,7 +60,7 @@ class BIP32_master_node:
             self.passphrase = 'mnemonic' + self.passphrase 
             #encode the mnemonic and passphrase (byte object)
             self.mnemonic = self.mnemonic.encode("utf-8")
-            # self.passphrase = self.passphrase.encode("utf=8")
+            self.passphrase = self.passphrase.encode("utf=8")
 
             #make a BIP39 seed (512 bits, 64 hex characters, byte object)
             self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
