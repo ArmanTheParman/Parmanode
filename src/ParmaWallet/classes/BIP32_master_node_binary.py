@@ -26,7 +26,8 @@ class BIP32_master_node_binary:
 
         if not isinstance (self.byte_seed, bytes):
             raise TypeError("byte_seed should be bytes object")
-
+         
+        print(self.byte_seed)
         input("pause")
         
         if len(self.byte_seed) not in (16, 32, 64): 
@@ -42,6 +43,7 @@ class BIP32_master_node_binary:
         Il, Ir = self.I[:32], self.I[32:] #Il=master secret key, Ir=master chain code. [ 32 byte object ]
         # x=binascii.hexlify(Ir)
         Il_int=int.from_bytes(Il, 'big')
+        input("pause3")
         if Il_int == 0 or Il_int > N:
             raise ValueError("Key is invalid. It is not possible to make a key with this seed. \n" +\
                             "This is actually incredible, keep this seed; 1 in 2 ^127 chance of finding it.") 
@@ -51,6 +53,7 @@ class BIP32_master_node_binary:
         self.public_key_full = (self.private_key.point)
         self.public_key = (self.private_key.point.sec())
         self.private_key_33b = b'\0' + Il
+        input("pause4")
 
     def serialize(self):
         #Extended Key Serialisation (no checksum yet)
@@ -80,6 +83,7 @@ class BIP32_master_node_binary:
         # self.xprv=base58.b58encode(raw_xprv)
         # self.xpub=base58.b58encode(raw_xpub)
         
+        print("In serialize") 
         print("xprv is: " , self.xprv)
         print("xpub is: " , self.xpub)
 
