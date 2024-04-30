@@ -46,7 +46,9 @@ test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k
 test_string = int(test_string, 2)
 test_string = test_string.to_bytes(32, 'big')
 hashbyte = hash256(test_string)[:1]
+print(hashbyte)
 hashval = int.from_bytes(hashbyte, 'big')
+print(hashval)
 hashval = bin(hashval)[2:6]
 print (hashval)
 
