@@ -6,11 +6,15 @@ from classes import *
 from functions import *
 from variables import * 
 
-aa = BIP32_master_node_binary(byte_seed='00001')
+""
+aa = BIP32_master_node_binary(byte_seed="0100001010010010101011100101110101111001010100101100101110000110101101011000001000100000000000110010100011011010001011001111010010111010011101111000100111111110010101110000010111001010000010001101001001100101011111011011001001101110000000001011011100101111")
+print("back in recover.py")
 aa.serialize()
 exit
 
-# charlist = ( b'a', b'b', b'c', b'c', b'd', b'e', b'f', b'g', b'h', b'i', b'j', b'k', b'l', b'm', b'n', b'o', b'p', b'q', b'r', b's', b't', b'u', b'v', b'w', b'x', b'y', b'z')
+
+
+#charlist = ( b'a', b'b', b'c', b'c', b'd', b'e', b'f', b'g', b'h', b'i', b'j', b'k', b'l', b'm', b'n', b'o', b'p', b'q', b'r', b's', b't', b'u', b'v', b'w', b'x', b'y', b'z')
 # mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
 # for ii in charlist:
 #     for jj in charlist:
