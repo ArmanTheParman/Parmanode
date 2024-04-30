@@ -51,5 +51,6 @@ for i in range(0, 1):
 print ("xxxxxx")
 x=int(0x03c5db199831f23a3a1575518c8e9e948bfd495481aac442dec64b447ee76bd6fa)
 x=x.to_bytes(33, 'big')
-print(pubkey_to_bech32(x))
+x=hash256(x)
+print(pubkey_to_bech32_custom(x))
 #hash256(x)
