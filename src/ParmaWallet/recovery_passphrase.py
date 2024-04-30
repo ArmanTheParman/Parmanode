@@ -40,8 +40,8 @@ valid_combinations = []
 
 for i in range(0, 2048):
     for j in range (0, 2048):
-        for k in range (0, 8): 
-            test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+        for k in range (0, 3): 
+            test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(333)
             test_string_int = int(test_string, 2)
             test_string_bytes = test_string_int.to_bytes(32, 'big')
             hashbyte = hash256(test_string_bytes)[:1]
@@ -60,9 +60,9 @@ for i in range(0, 2048):
 # i = int(i)
 # j = '00000000000'
 # j = int(j)
-# k = '0000000'      
+# k = '000'      
 # k = int(k)
-# test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+# test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
 # test_string_int = int(test_string, 2)
 # test_string_bytes = test_string_int.to_bytes(32, 'big')
 # hashbyte = hash256(test_string_bytes)[:1]
