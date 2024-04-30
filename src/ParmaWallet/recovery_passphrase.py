@@ -53,6 +53,7 @@ for i in range(0, 2):
 #            print ('ijk' , i , j, k)
             final_word_val = k * 256 + hashval_int
             print( 'last 3 indexes' , i , j, final_word_val)
+            valid_combination = (i, j, final_word_val)
 #            input ('<enter>')
             valid_combinations=valid_combinations.append(i, j, final_word_val)
 print(valid_combinations)
