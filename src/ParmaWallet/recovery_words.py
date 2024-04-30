@@ -21,7 +21,7 @@ known_string_bin_string = 21 * "00000000000"
 known_string_int = int(known_string_bin_string)
 valid_combinations = []
 
-with open(filename, "a") as file:  # Open in append mode to add to the file
+with open(file_path, "a") as file:  # Open in append mode to add to the file
 
     for i in range(0, 1):
         for j in range (0, 1):
