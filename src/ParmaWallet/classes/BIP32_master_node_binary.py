@@ -33,8 +33,6 @@ class BIP32_master_node_binary:
 
         input("pause2")
         
-        if byte_seed is None: 
-        
         #Make the priv and pub keys
 
         #make I
