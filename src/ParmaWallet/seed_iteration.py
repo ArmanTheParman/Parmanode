@@ -20,6 +20,12 @@ def seed_checksum(decimal_array):
     for i in decimal_array:
         result.append(bin(i)[2:])
     print(result)
+    
+    binseed=''
+    for i in result:
+        binseed=binseed+i
+    
+    print(binseed)
 
 
 
