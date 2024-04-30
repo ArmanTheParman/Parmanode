@@ -32,6 +32,7 @@ class BIP32_master_node:
         else: 
             self.mnemonic = mnemonic
             self.passphrase = passphrase
+            byte_seed = int(byte_seed, 2)
             self.byte_seed = byte_seed.to_bytes(32, 'big') #this is for 24 word seeq equivalent
 
         self.mnemonic = mnemonic
