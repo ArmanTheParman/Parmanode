@@ -60,8 +60,11 @@ for i in range(0, 1):
 #            print ('ijk' , i , j, k)
             final_word_val = k * 256 + hashval_int
 #            print( 'last 3 indexes' , i , j, final_word_val)
-            valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
-            print(valid_combination)
+
+            print(word_look_up(i), word_look_up(j), word_look_up(final_word_val))
+
+            #valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
+            
 #            input ('<enter>')
 
 ########################################################################################
