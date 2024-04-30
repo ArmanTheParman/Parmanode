@@ -4,7 +4,7 @@ from functions import *
 from variables import * 
 import base58
 from ecdsa import SECP256k1
-
+#
 import os
 import bech32
 import binascii
