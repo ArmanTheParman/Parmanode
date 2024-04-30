@@ -56,8 +56,10 @@ set_terminal ; echo -e "
 
 
                             25)    v25.0
+
+                            26)    v26.0
 $green
-                            26)    v26.0 
+                            27)    v27.0 
 $orange
 
 ########################################################################################
@@ -67,6 +69,8 @@ case $choice in
     25) 
     export version="v25.0" ; break ;;
     26)
+    export version="v26.0" ; break ;;
+    27)
     export version="v26.0" ; break ;;
     *)
     invalid ;;

@@ -14,25 +14,27 @@ $cyan
     THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
 $orange
 ########################################################################################
-$red
-       1)  v25.0 (Download and verify 'trusted' releases)
 $green
-       2)  v26.0 (Download and verify 'trusted' releases) - quickest method
-$red
-       3)  Guided compile v25.0/v26.0 
-$green
+       0)  v27.0 (Download and verify 'trusted' releases)
+$orange
+       1)  v26.0 (Download and verify 'trusted' releases)
+
+       2)  v25.0 (Download and verify 'trusted' releases) 
+
+       3)  Guided compile v25.0/v26.0/v27.0
+$bright_blue
        4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
-$red
+
        5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core;
-           version v25.1.knots20231115) - syncs faster; bug fixes missing in Core; and
+           version 26.1.knots20240325) - syncs faster; bug fixes missing in Core; and
            power user options / tools.
-$red
-       6)  Guided compile of most recent Github update, ie pre-release
+$orange
+       6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
-$red
+
        7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
-$green       
+
        8)  IMPORT binaries you have compiled yourself (or previously downloaded without
            the help of the Parmanode install process). 'Binaries' refers to the 
            executable files, eg bitcoind and bitcoin-qt, not the blockchain.
@@ -45,12 +47,15 @@ read choice
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-1|25) 
+0|27)
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="25.0" ; export bitcoin_compile=false ; break ;;
-2|26) 
+export version="27.0" ; export bitcoin_compile=false ; break ;;
+1|26) 
 parmanode_conf_add "bitcoin_choice=precompiled"
 export version="26.0" ; export bitcoin_compile=false ; break ;;
+2|25) 
+parmanode_conf_add "bitcoin_choice=precompiled"
+export version="25.0" ; export bitcoin_compile=false ; break ;;
 3) 
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=choose ; break ;;
@@ -59,7 +64,7 @@ parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=choose ; export ordinals_patch=true ; break ;;
 5)
 parmanode_conf_add "bitcoin_choice=knots"
-export knotsbitcoin=true ; export version="v25.1.knots20231115" ; break ;;
+export knotsbitcoin=true ; export version="26.1.knots20240325" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=latest ; break ;;
