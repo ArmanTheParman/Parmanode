@@ -47,7 +47,7 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
                 address=pubkey_to_bech32_custom(test_keypair.public_key)
                 print(address)
                 file.write(address + "\n")  # Convert result to string and append a newline
-                if address == 'bc1qfmqe4296g04eaczsns22exhqhmlvdx57xzx8tw'
+                if address == 'bc1qfmqe4296g04eaczsns22exhqhmlvdx57xzx8tw':
                     input("words found, i j k:" , mnemonic_end_string)
  
 ########################################################################################
