@@ -1,5 +1,5 @@
 import unicodedata, hashlib, binascii, hmac
-from classes import *
+#from classes import *
 #from functions import *
 from variables import * 
 import base58
