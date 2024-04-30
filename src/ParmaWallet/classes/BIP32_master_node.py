@@ -11,7 +11,7 @@ from typing import Union
 
 class BIP32_master_node:
 
-    def __init__(self, mnemonic: str, passphrase): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
+    def __init__(self, mnemonic: str=None, passphrase: str=None): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
     #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
 
