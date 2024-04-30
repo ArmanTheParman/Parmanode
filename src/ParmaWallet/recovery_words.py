@@ -8,7 +8,7 @@ import unicodedata, hashlib, binascii, hmac
 #iteration function
 ########################################################################################
 
-def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str=None):
+def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str=''):
 
     a = BIP32_master_node(mnemonic, passphrase)
     b = child_key(a, depth=1, account=84, hardened=True, serialize=False) #purpose
