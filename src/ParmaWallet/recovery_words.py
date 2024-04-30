@@ -35,4 +35,6 @@ def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str=''):
 
 # make_segwit_address(f.serialize())
 target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
-get_all_child_keys('f', mnemonic=target_string )
+key=get_all_child_keys('f', mnemonic=target_string)
+input('<enter>')
+print(key)
