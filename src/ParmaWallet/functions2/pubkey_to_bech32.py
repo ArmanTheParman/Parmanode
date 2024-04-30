@@ -6,6 +6,8 @@ import base58
 from ecdsa import SECP256k1
 
 import os
+import bech32
+import binascii
 from bech32 import *
 from bip_utils import *
 from bitcoinlib import *
