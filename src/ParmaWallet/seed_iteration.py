@@ -41,5 +41,5 @@ b1=int('111000',2)
 for i in range(7):
     b1+=1
     print(bin(b1)[2:])
-    b3=b1.to_bytes(10, 'big')
+    b3=b1.to_bytes(1, 'big')
     print(hash256(b3))
