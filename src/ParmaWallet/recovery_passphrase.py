@@ -6,14 +6,6 @@ from classes import *
 from functions import *
 from variables import * 
 
-""
-aa = BIP32_master_node_binary(byte_seed="010000101001001010101110010111010111100101010010110010111000011010110101100000100010000000000011001010001101101000101100111101001011101001110111100010011111111001010111000001011100101000001000110100100110010101111101101100100110111000000000101101110010111100000110")
-print("back in recover.py")
-aa.serialize()
-exit
-
-
-
 #charlist = ( b'a', b'b', b'c', b'c', b'd', b'e', b'f', b'g', b'h', b'i', b'j', b'k', b'l', b'm', b'n', b'o', b'p', b'q', b'r', b's', b't', b'u', b'v', b'w', b'x', b'y', b'z')
 # mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
 # for ii in charlist:
@@ -34,3 +26,24 @@ exit
 #                             e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
 #                             f = child_key(e, depth=1, account=0, hardened=False, serialize=False) #address
 # xxx=BIP32_master_node()
+
+known_string = "000000000001111111111100000000000" #placeholder
+
+# for i in range(0, 2048):
+#     for j in range (0, 2048):
+#         for k in range (0, 8): 
+#             test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+#             test_string = int(test_string, 2)
+#             test_string = test_string.to_bytes(32, 'big')
+#             hash256(test_string)[:1]
+i='0011'
+j='1111'
+k='0101'      
+test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
+test_string = int(test_string, 2)
+test_string = test_string.to_bytes(32, 'big')
+hash256(test_string)[:1]       
+       
+       
+       
+        
