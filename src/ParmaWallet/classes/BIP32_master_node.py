@@ -13,46 +13,49 @@ class BIP32_master_node:
 
     def __init__(self, mnemonic: str, passphrase): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
     #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
-        # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byteseed=None\n")
+        # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
 
-        # if mnemonic == "choose":
-        #     self.mnemonic = input("Enter a mnemonic seed, 12 words, separated by a space: \n: ")
-        #     self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
-        #     print("Warning: The mnemonic seed has not been checked for BIP39 compliance (eg valid words or checksum)\n")
-        # elif mnemonic == "abandon":
-        #     print("mnemonic=None, so smallest BIP39 seed in use. Warning, it is not secure.")
-        #     print("To use a custom mnemonic, enter 'choose' as an argument\n")
-        #     self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
-        #     self.passphrase = ""
-        # elif mnemonic is None:
-        #     raise TypeError("No Mnemonic set")
-        # else: 
-        #     self.mnemonic = mnemonic
-        #     self.passphrase = passphrase
+        if mnemonic == "choose":
+            self.mnemonic = input("Enter a mnemonic seed, 12 words, separated by a space: \n: ")
+            self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
+            print("Warning: The mnemonic seed has not been checked for BIP39 compliance (eg valid words or checksum)\n")
+        elif mnemonic == "abandon":
+            print("mnemonic=None, so smallest BIP39 seed in use. Warning, it is not secure.")
+            print("To use a custom mnemonic, enter 'choose' as an argument\n")
+            self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
+            self.passphrase = ""
+        elif mnemonic is None:
+            print("No Mnemonic set")
+            # byte_seed = 128 * '0' + '0011'
+            # byte_seed = b'byte_seed'
+        else: 
+            self.mnemonic = mnemonic
+            self.passphrase = passphrase
 
         self.mnemonic = mnemonic
         self.passphrase = passphrase
 
-        # if not byteseed is None:
-        #     if not mnemonic is None:
-        #         print("Warning, mnemonic provided will be discarded as byteseed provided.")
-        #     if not isinstance (byteseed, bytes):
-        #         raise TypeError("byteseed should be bytes object")
-        #     if len(byteseed) not in (16, 32, 64): 
-        #         ValueError("Byte needs to be length 16, 32, or 64") 
-        #     self.byte_seed = byteseed 
+        if not byte_seed is None:
+            if not mnemonic is None:
+                print("Warning, mnemonic provided will be discarded as byte_seed provided.")
+            if not isinstance (byte_seed, bytes):
+                raise TypeError("byte_seed should be bytes object")
+            if len(byte_seed) not in (16, 32, 64): 
+                ValueError("Byte needs to be length 16, 32, or 64") 
+            self.byte_seed = byte_seed 
         
-    #if byteseed is None: 
-#        self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
-#        self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
+        if byte_seed is None: 
 
-        #Add "mnemonic" string. If passphrase empty, then it's just "mnemonic"
-        #self.passphrase = "mnemonic" + self.passphrase 
-        self.passphrase = b'mnemonic' + self.passphrase 
+        #Remove for speed...
+            #self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
+            #self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
 
-        #encode the mnemonic_ssed and passphrase (byte object)
-        self.mnemonic = self.mnemonic.encode("utf-8")
-        # self.passphrase = self.passphrase.encode("utf=8")
+            ### make byte objects...
+            #Add "mnemonic" string. If passphrase empty, then the result is just "mnemonic" bytes in ascii
+            self.passphrase = b'mnemonic' + self.passphrase 
+            #encode the mnemonic and passphrase (byte object)
+            self.mnemonic = self.mnemonic.encode("utf-8")
+            # self.passphrase = self.passphrase.encode("utf=8")
 
         #make a BIP39 seed (512 bits, 64 hex characters, byte object)
         self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
