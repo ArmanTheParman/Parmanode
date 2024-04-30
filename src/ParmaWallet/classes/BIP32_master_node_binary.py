@@ -11,11 +11,11 @@ from typing import Union
 
 class BIP32_master_node_binary:
 
-    def __init__(self, byte_seed): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
-    #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
-        # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
+    def __init__(self, byte_seed): 
+        input( 'byte_seed is', byte_seed)
 
         if byte_seed is None:
+            input ('none if block triggerred')
             self.byte_seed = 128*'0'+'0011'
             self.byte_seed = int(self.byte_seed, 2)
             self.byte_seed = self.byte_seed.to_bytes(32, 'big') #this is for 24 word seeq equivalent
