@@ -52,7 +52,7 @@ for i in range(0, 2048):
             print ("hashval_string", hashval_string)
             print ('ijk' , i , j, k)
             final_word_val = k * 256 + hashval_int
-            print (final_word_val)
+            print( 'last 3 indexes' , i , j, final_word_val)
             input ('<enter>')
 
 ########################################################################################
