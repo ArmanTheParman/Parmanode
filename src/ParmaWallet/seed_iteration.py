@@ -15,10 +15,10 @@ x = (bin(index)[2:].zfill(11))
 y = int(x)
 
 
-def seed_checksum(decimal_array):
+def get_binary_seed(decimal_array):
     result = []
     for i in decimal_array:
-        result.append(bin(i)[2:].zfill(2))
+        result.append(bin(i)[2:].zfill(11))
     print(result)
     
     binseed=''
@@ -53,4 +53,4 @@ def seed_checksum(decimal_array):
 
 ########################################################################################
 
-seed_checksum([1,2,3])
+get_binary_seed([1,2,3])
