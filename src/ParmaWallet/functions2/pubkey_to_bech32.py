@@ -1,6 +1,6 @@
 import unicodedata, hashlib, binascii, hmac
-#from classes import *
-#from functions import *
+from classes import *
+from functions import *
 from variables import * 
 import base58
 from ecdsa import SECP256k1
