@@ -55,5 +55,15 @@ decimal_array = [1,2,3,4,50]
 
 ########################################################################################
 
-binary_seed=get_binary_seed(decimal_array)
-print(binary_seed)
+def get_seed_checksum(bin_seed):
+    binteger=int(bin_seed,2)
+    x=binteger.to_bytes(32, 'big')
+    return sha256(x)
+
+########################################################################################
+
+bin_seed = get_binary_seed(decimal_array)
+get_seed_checksum(bin_seed)
+
+
+
