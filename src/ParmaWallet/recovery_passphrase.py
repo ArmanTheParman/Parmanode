@@ -37,12 +37,15 @@ known_string = "000000000001111111111100000000000" #placeholder
 #             test_string = test_string.to_bytes(32, 'big')
 #             hash256(test_string)[:1]
 i = '0011'
+i = int(i)
 j = '1111'
+j = int(j)
 k = '0101'      
+k = int(k)
 test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
 test_string = int(test_string, 2)
-    # test_string = test_string.to_bytes(32, 'big')
-    # hash256(test_string)[:1]       
+test_string = test_string.to_bytes(32, 'big')
+hash256(test_string)[:1]       
        
        
        
