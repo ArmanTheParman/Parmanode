@@ -33,7 +33,16 @@ def convertbits_custom(data, frombits, tobits, pad=True):
         ret.append((acc << (tobits - bits)) & maxv)
     return ret
 
-def pubkey_to_bech32(pubkey, version=0, hrp='bc'):
+def pubkey_to_bech32_custom(pubkey, version=0, hrp='bc'):
+    # Convert to Bech32 address
+    pubkey_hashed=hash160(pubkey)
+    # 0 is the witness version for "bc1" addresses (for version 0 SegWit addresses)
+    five_bit_r = convertbits_custom(pubkey_hashed, 8, 5)
+    return bech32.bech32_encode(hrp, [version] + five_bit_r)
+
+########################################################################################
+
+def pubkey_to_bech32_old (pubkey, version=0, hrp='bc'):
     # Compute the SHA-256 hash of the public key
     sha_pubkey = sha256(pubkey).digest()
     
@@ -45,10 +54,16 @@ def pubkey_to_bech32(pubkey, version=0, hrp='bc'):
     five_bit_r = convertbits_custom(ripemd_pubkey, 8, 5)
     return bech32.bech32_encode(hrp, [version] + five_bit_r)
 
-def pubkey_to_bech32_custom(pubkey, version=0, hrp='bc'):
-    # Convert to Bech32 address
-    pubkey_hashed=hash160(pubkey)
-    # 0 is the witness version for "bc1" addresses (for version 0 SegWit addresses)
-    five_bit_r = convertbits_custom(pubkey_hashed, 8, 5)
-    return bech32.bech32_encode(hrp, [version] + five_bit_r)
+#takes a pubkey object
+def pubkey_to_bech32_original(the_pubkey):
+    
+    # hashx2 the public key (bytes)
+    public_key_hash=hash160(the_pubkey) 
+
+    # Convert public key to witness program format
+    witness_program = convertbits(public_key_hash, 8, 5)
+
+    # Generate a SegWit address using bech32 encoding
+    address = bech32_encode('bc', [0] + witness_program)
+    print("Address: " + address)
     
