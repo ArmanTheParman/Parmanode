@@ -40,12 +40,14 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
     #            print( 'last 3 indexes' , i , j, final_word_val)
 
                 mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
-                print(mnemonic_end_string)
+#                print(mnemonic_end_string)
                 complete_string = known_string + ' ' + mnemonic_end_string
                 test_keypair=get_all_child_keys('f', mnemonic=complete_string)
     #            print(len(test_keypair.public_key), type(test_keypair.public_key))
                 address=pubkey_to_bech32_custom(test_keypair.public_key)
-#                file.write(address + "\n")  # Convert result to string and append a newline
+                print(address)
+                file.write(address + "\n")  # Convert result to string and append a newline
+                #if address == 
  
 ########################################################################################
 
