@@ -44,21 +44,21 @@ for i in range(0, 2048):
             test_string_int = int(test_string, 2)
             test_string_bytes = test_string_int.to_bytes(32, 'big')
             hashbyte = hash256(test_string_bytes)[:1]
-            print("hashbyte", hashbyte)
+#            print("hashbyte", hashbyte)
             hashval_int = int.from_bytes(hashbyte, 'big')
-            print("hashval_int", hashval_int)
+#            print("hashval_int", hashval_int)
             hashval_string = bin(hashval_int)[2:].zfill(8)
-            print ("hashval_string", hashval_string)
+#            print ("hashval_string", hashval_string)
 
             real_string_prefix_string = test_string + "00000000"
-            print("rsps", real_string_prefix_string)
+#            print("rsps", real_string_prefix_string)
             real_string_prefix_int = int(real_string_prefix_string)
-            print("rspi", real_string_prefix_int)
+#            print("rspi", real_string_prefix_int)
             real_string_total_tocheck = real_string_prefix_int + hashval_int
-            print("rsttc", real_string_total_tocheck)
+#            print("rsttc", real_string_total_tocheck)
             real_string_total = bin(real_string_total_tocheck)[2:].zfill(264)
-            print("rst", real_string_total)
-
+#            print("rst", real_string_total)
+            print(i, j, k)
 
 ########################################################################################
 ########################################################################################
