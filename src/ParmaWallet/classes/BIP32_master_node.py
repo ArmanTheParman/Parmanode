@@ -24,7 +24,7 @@ class BIP32_master_node:
             print("To use a custom mnemonic, enter 'choose' as an argument\n")
             self.mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"  
             self.passphrase = ""
-        elif mnemonic is None:
+        elif mnemonic is None and byte_seed is None:
             print("No Mnemonic set")
             byte_seed = 128*'0'+'0011'
             byte_seed = int(byte_seed, 2)
@@ -32,6 +32,7 @@ class BIP32_master_node:
         else: 
             self.mnemonic = mnemonic
             self.passphrase = passphrase
+            self.byte_seed = byte_seed
 
         self.mnemonic = mnemonic
         self.passphrase = passphrase
