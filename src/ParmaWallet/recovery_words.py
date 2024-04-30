@@ -45,7 +45,7 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
                 test_keypair=get_all_child_keys('f', mnemonic=complete_string)
     #            print(len(test_keypair.public_key), type(test_keypair.public_key))
                 address=pubkey_to_bech32_custom(test_keypair.public_key)
-                file.write(address + "\n")  # Convert result to string and append a newline
+#                file.write(address + "\n")  # Convert result to string and append a newline
  
 ########################################################################################
 
