@@ -49,7 +49,7 @@ hashbyte = hash256(test_string)[:1]
 print(hashbyte)
 hashval = int.from_bytes(hashbyte, 'big')
 print(hashval)
-hashval = bin(hashval)[2:6]
+hashval = bin(hashval)[2:].zfill(8)[:4]
 print (hashval)
 
 
