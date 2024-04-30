@@ -32,7 +32,7 @@ from variables import *
 ########################################################################################
 
 target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
-target_string_int = int(target_string)
+#target_string_int = int(target_string)
 
 known_string = 21 * "00000000000"
 known_string_int = int(known_string)
