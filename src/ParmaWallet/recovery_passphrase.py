@@ -61,7 +61,7 @@ for i in range(0, 1):
             final_word_val = k * 256 + hashval_int
 #            print( 'last 3 indexes' , i , j, final_word_val)
 
-            mnemonic_end_string = word_look_up(i) + word_look_up(j) + word_look_up(final_word_val)
+            mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
             print(mnemonic_end_string)
 
             #valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
