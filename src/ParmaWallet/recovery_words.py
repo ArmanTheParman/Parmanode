@@ -41,7 +41,7 @@ for i in range(0, 1):
             complete_string = known_string + ' ' + mnemonic_end_string
             test_keypair=get_all_child_keys('f', mnemonic=complete_string)
             print(type(test_keypair.public_key))
-            #pubkey_to_bech32(test_pubkey)
+            pubkey_to_bech32(test_keypair.public_key)
             
 
 ########################################################################################
