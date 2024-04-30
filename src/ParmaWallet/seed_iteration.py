@@ -36,7 +36,7 @@ def get_binary_seed(decimal_array):
 # da.append(0)
 # da.append(2047)
 
-# decimal_array = [1,2,3,4]
+decimal_array = [1,2,3,4]
 # binary_array = [b'00000000001', b'002']
 
 # print( b'01' + b'01')
@@ -55,4 +55,5 @@ def get_binary_seed(decimal_array):
 
 ########################################################################################
 
-print(get_binary_seed([1,2,3]))
+binary_seed=get_binary_seed(decimal_array)
+print(binary_seed)
