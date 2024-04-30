@@ -28,11 +28,11 @@ class BIP32_master_node:
             print("No Mnemonic set")
             byte_seed = 128*'0'+'0011'
             byte_seed = int(byte_seed, 2)
-            byte_seed = byte_seed.to_bytes(32, 'big')
+            byte_seed = byte_seed.to_bytes(32, 'big') #this is for 24 word seeq equivalent
         else: 
             self.mnemonic = mnemonic
             self.passphrase = passphrase
-            self.byte_seed = byte_seed
+            self.byte_seed = byte_seed.to_bytes(32, 'big') #this is for 24 word seeq equivalent
 
         self.mnemonic = mnemonic
         self.passphrase = passphrase
