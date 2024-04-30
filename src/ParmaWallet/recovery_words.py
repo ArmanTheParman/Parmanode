@@ -41,7 +41,7 @@ for i in range(0, 1):
             print(mnemonic_end_string)
             complete_string = known_string + ' ' + mnemonic_end_string
             test_keypair=get_all_child_keys('f', mnemonic=complete_string)
-            print(test_keypair.public_key, type(test_keypair.public_key))
+            print(test_keypair.public_key.hex(), type(test_keypair.public_key))
             address=pubkey_to_bech32_custom(test_keypair.public_key)
             print(address)
             
