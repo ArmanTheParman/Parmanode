@@ -44,14 +44,14 @@ j = int(j)
 k = '0000000'      
 k = int(k)
 test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(7)
-test_string = int(test_string, 2)
-test_string = test_string.to_bytes(32, 'big')
-hashbyte = hash256(test_string)[:1]
+test_string_int = int(test_string, 2)
+test_string_bytes = test_string_int.to_bytes(32, 'big')
+hashbyte = hash256(test_string_bytes)[:1]
 print(hashbyte)
-hashval = int.from_bytes(hashbyte, 'big')
-print(hashval)
-hashval = bin(hashval)[2:].zfill(8)[:4]
-print (hashval)
+hashval_int = int.from_bytes(hashbyte, 'big')
+print(hashval_int)
+hashval_string = bin(hashval_int)[2:].zfill(8)
+print (hashval_string)
 
 
        
