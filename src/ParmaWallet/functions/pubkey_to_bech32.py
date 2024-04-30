@@ -1,9 +1,7 @@
 import unicodedata, hashlib, binascii, hmac
 from classes import *
-from functions import *
-from classes import PrivateKey
+#from functions import *
 from variables import * 
-from classes import N
 import base58
 from ecdsa import SECP256k1
 
