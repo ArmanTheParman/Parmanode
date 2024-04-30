@@ -50,7 +50,7 @@ with open(file_store , "a") as file:  # Open in append mode to add to the file
                 if address == 'bc1qfmqe4296g04eaczsns22exhqhmlvdx57xzx8tw':
                     print("words found, i j k:" , mnemonic_end_string)
                     input("<enter> to stop program and clear screan")
-                    exit 
+                    break 
  
 ########################################################################################
 
