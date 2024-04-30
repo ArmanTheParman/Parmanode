@@ -6,7 +6,7 @@ from classes import *
 from functions import *
 from variables import * 
 
-aa = BIP32_master_node()
+aa = BIP32_master_node(byte_seed='00001')
 aa.serialize()
 exit
 
