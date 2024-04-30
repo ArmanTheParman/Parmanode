@@ -58,7 +58,7 @@ decimal_array = [1,2,3,4,50]
 def get_seed_checksum(bin_seed):
     binteger=int(bin_seed,2)
     x=binteger.to_bytes(32, 'big')
-    return sha256(x)
+    return hash256(x)
 
 ########################################################################################
 
