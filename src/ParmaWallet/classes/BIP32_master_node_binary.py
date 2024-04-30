@@ -12,7 +12,8 @@ from typing import Union
 class BIP32_master_node_binary:
 
     def __init__(self, byte_seed): 
-        input( 'byte_seed is', byte_seed)
+        print(byte_seed)
+        input( 'byte_seed is')
 
         if byte_seed is None:
             input ('none if block triggerred')
