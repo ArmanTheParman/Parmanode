@@ -30,6 +30,13 @@ from variables import *
 ########################################################################################
 ########################################################################################
 ########################################################################################
+file_path = './english.txt'
+
+with open (file_path, 'r') as file:
+    seedlist = file.readlines()
+
+def word_look_up(value):
+    return seedlist[value]
 
 target_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
 #target_string_int = int(target_string)
@@ -52,21 +59,14 @@ for i in range(0, 0):
 #            print ("hashval_string", hashval_string)
 #            print ('ijk' , i , j, k)
             final_word_val = k * 256 + hashval_int
-            print( 'last 3 indexes' , i , j, final_word_val)
-            valid_combination = [i, j, final_word_val]
+#            print( 'last 3 indexes' , i , j, final_word_val)
+            valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
 #            input ('<enter>')
 
 ########################################################################################
 
-file_path = './english.txt'
 
-with open (file_path, 'r') as file:
-    seedlist = file.readlines()
-
-def word_look_up(value):
-    print(seedlist[value])
     
-word_look_up(420)
 
 ########################################################################################
 ########################################################################################
