@@ -49,7 +49,7 @@ valid_combinations = []
 for i in range(0, 1):
     for j in range (0, 1):
         for k in range (0, 8): 
-            test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
+            test_string = known_string_bin_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
             test_string_int = int(test_string, 2)
             test_string_bytes = test_string_int.to_bytes(32, 'big')
             hashbyte = hash256(test_string_bytes)[:1]
@@ -63,7 +63,7 @@ for i in range(0, 1):
 #            print( 'last 3 indexes' , i , j, final_word_val)
 
             mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
-            complete_string = known_string + ' ' + mnemonic_end_string
+            complete_string = known_string_bin_string + ' ' + mnemonic_end_string
             print(complete_string)
 
             #valid_combination = [word_look_up(i), word_look_up(j), word_look_up(final_word_val)]
