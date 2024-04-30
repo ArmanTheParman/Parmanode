@@ -42,4 +42,4 @@ for i in range(7):
     b1+=1
     print(bin(b1)[2:])
     b3=b1.to_bytes(10, 'big')
-    hash256(b3).digest()
+    print(hash256(b3))
