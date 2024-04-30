@@ -45,8 +45,9 @@ def pubkey_to_bech32(pubkey, version=0, hrp='bc'):
     five_bit_r = convertbits_custom(ripemd_pubkey, 8, 5)
     return bech32.bech32_encode(hrp, [version] + five_bit_r)
 
-def pubkey_to_bech32_custom(pubkey_hashed, version=0, hrp='bc'):
+def pubkey_to_bech32_custom(pubkey, version=0, hrp='bc'):
     # Convert to Bech32 address
+    pubkey_hashed=hash160(pubkey)
     # 0 is the witness version for "bc1" addresses (for version 0 SegWit addresses)
     five_bit_r = convertbits_custom(pubkey_hashed, 8, 5)
     return bech32.bech32_encode(hrp, [version] + five_bit_r)
