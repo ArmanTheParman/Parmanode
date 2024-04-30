@@ -70,6 +70,7 @@ class BIP32_master_node:
 
         #make I
         self.I = hmac.new(b"Bitcoin seed", self.byte_seed, hashlib.sha512).digest() #key=b"Bitcoin seed" data=seed
+        print(self.I)
         #left and right parts
         Il, Ir = self.I[:32], self.I[32:] #Il=master secret key, Ir=master chain code. [ 32 byte object ]
         # x=binascii.hexlify(Ir)
