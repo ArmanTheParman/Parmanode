@@ -64,7 +64,7 @@ with open (file_path, 'r') as file:
     seedlist = file.readlines()
 
 def word_look_up(value):
-    print(seedlis[value])
+    print(seedlist[value])
     
 word_look_up(0)
 
