@@ -59,6 +59,8 @@ real_string_prefix_int = int(real_string_prefix_string)
 print("rspi", real_string_prefix_int)
 real_string_total_tocheck = real_string_prefix_int + hashval_int
 print("rsttc", real_string_total_tocheck)
+real_string_total = real_string_total_tocheck.zfill(264)
+print("rst", real_string_total)
 
 
        
