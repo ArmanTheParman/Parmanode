@@ -27,7 +27,8 @@ from variables import *
 #                             f = child_key(e, depth=1, account=0, hardened=False, serialize=False) #address
 # xxx=BIP32_master_node()
 
-known_string = "000000000001111111111100000000000" #placeholder
+Test_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon art"
+known_string = 21 * "00000000000"
 
 # for i in range(0, 2048):
 #     for j in range (0, 2048):
