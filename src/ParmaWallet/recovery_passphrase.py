@@ -38,8 +38,8 @@ known_string = 21 * "00000000000"
 known_string_int = int(known_string)
 valid_combinations = []
 
-for i in range(0, 2):
-    for j in range (0, 2):
+for i in range(0, 0):
+    for j in range (0, 0):
         for k in range (0, 8): 
             test_string = known_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
             test_string_int = int(test_string, 2)
@@ -55,8 +55,18 @@ for i in range(0, 2):
             print( 'last 3 indexes' , i , j, final_word_val)
             valid_combination = [i, j, final_word_val]
 #            input ('<enter>')
-            valid_combinations.append(valid_combination)
-print(valid_combinations)
+
+########################################################################################
+
+file_path = './english.txt'
+
+with open (file_path, 'r') as file:
+    seedlist = file.readlines()
+
+def word_look_up(value):
+    print(seedlis[value])
+    
+word_look_up(0)
 
 ########################################################################################
 ########################################################################################
