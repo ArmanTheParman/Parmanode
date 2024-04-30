@@ -61,7 +61,7 @@ def p2pkh_script(h160):
     return Script([0x76, 0xa9, h160, 0x88, 0xac])
     
 #takes a pubkey object
-def make_segwit_address(the_pubkey):
+def pubkey_to_bech32(the_pubkey):
     
     # hashx2 the public key (bytes)
     public_key_hash=hash160(the_pubkey) 
