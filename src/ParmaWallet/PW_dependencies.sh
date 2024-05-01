@@ -17,4 +17,5 @@ swap_string "$opensslconf" "# activate = 1" "activate = 1
 
 [legacy sect]
 activate = 1"
+debug "pause"
 }
