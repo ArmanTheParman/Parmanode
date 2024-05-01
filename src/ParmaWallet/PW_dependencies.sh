@@ -7,8 +7,8 @@ fi
 
 opensslconf="$(openssl info -configdir)/openssl.cnf"
 
-if [[ -e ${opensslconf}_backuip ]] ; then
-sudo cp ${opensslconf}_backup $opensslconf  #restors original
+if [[ -e ${opensslconf}_backup ]] ; then
+sudo cp ${opensslconf}_backup $opensslconf  #restores original
 fi
 
 sudo cp $opensslconf ${opensslconf}_backup #backs up original
