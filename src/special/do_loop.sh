@@ -150,6 +150,7 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 
 if [[ $test == 1 ]] ; then
 true
+PW_dependencies skip
 fi
 
 if [[ $fix == 1 ]] ; then
@@ -160,9 +161,6 @@ fi
 if [[ $bash == 1 ]] ; then bash ; exit ; fi
 
 ########################################################################################
-if [[ $arg1 == pw ]] ; then
-PW_dependencies skip
-fi
 ########################################################################################
 
 #message of the day
