@@ -8,6 +8,7 @@ from functions import *
 from variables import * 
 from bech32 import bech32_encode, convertbits
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from functions.openssl_ripemd160 import *
 
 
 #usage - pass a byte object, encode the string to do so
