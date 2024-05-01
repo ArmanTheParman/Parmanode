@@ -16,9 +16,11 @@ known_string_int = int(known_string_bin_string)
 
 
 def dosearch(file_store: str, i0: int=0, i1: int=2048, j0: int=0, j1: int=2048):
-    file_path = "./english.txt"
+
+    file_path = "/home/parman/parman_programs/parmanode/src/ParmaWallet/english.txt"
     with open (file_path, 'r') as file:
         seedlist = file.readlines()
+
     with open(file_store , "w") as file:  # truncates any existing file and starts over
 
         for i in range(i0, i1):
