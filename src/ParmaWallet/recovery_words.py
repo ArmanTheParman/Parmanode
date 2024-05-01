@@ -51,8 +51,6 @@ def dosearch(file_store: str, i0: int=0, i1: int=2048, j0: int=0, j1: int=2048):
                     file.write(address + "\n")  # Convert result to string and append a newline
                     if address == 'bc1qfmqe4296g04eaczsns22exhqhmlvdx57xzx8tw':
                         print("words found, i j k:" , mnemonic_end_string)
-                        input("<enter> to stop program")
-                        exit()
     
 ########################################################################################
 
