@@ -16,10 +16,10 @@ def worker2():
 def worker3(): 
     dosearch("/home/parman/Desktop/resultworker3.txt", 2, 3)   
 
-process1 = multiprocessing.Process(target=worker1)
-process1.start()  # Start the process
-process2 = multiprocessing.Process(target=worker2)
-process2.start()  # Start the process
+# process1 = multiprocessing.Process(target=worker1)
+# process1.start()  # Start the process
+# process2 = multiprocessing.Process(target=worker2)
+# process2.start()  # Start the process
 process3 = multiprocessing.Process(target=worker3)
 process3.start()  # Start the process
 
