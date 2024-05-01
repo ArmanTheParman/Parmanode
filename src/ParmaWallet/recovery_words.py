@@ -20,7 +20,7 @@ with open (file_path, 'r') as file:
     seedlist = file.readlines()
 
 def dosearch():
-
+    print("in do search")
     with open(file_store , "w") as file:  # truncates any existing file and starts over
 
         for i in range(0, 2048):
@@ -56,3 +56,4 @@ def dosearch():
 
 ########################################################################################
 dosearch
+print("after do search")
