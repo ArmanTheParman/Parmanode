@@ -6,5 +6,8 @@ from functions2 import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
 from recovery_words import *
- 
-dosearch()   
+
+def worker1(): 
+    dosearch(0, 200)   
+
+worker1()
