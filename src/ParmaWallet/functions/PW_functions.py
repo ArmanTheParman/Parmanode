@@ -8,7 +8,6 @@ from functions import *
 from variables import * 
 from bech32 import bech32_encode, convertbits
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
-from functions.openssl_ripemd160 import *
 
 
 #usage - pass a byte object, encode the string to do so
@@ -16,8 +15,8 @@ from functions.openssl_ripemd160 import *
 
 def hash160(so):
     #sha256 followed by ripemd160
-#    return hashlib.new('ripemd160', hashlib.sha256(so).digest()).digest()   #old way, maybe slower
-    return hash_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
+    return hashlib.new('ripemd160', hashlib.sha256(so).digest()).digest()   #maybe slower
+#    return hash_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
 def read_varint(s):
     '''read_varint reads a variable integer from a stream'''
     i = s.read(1)[0] # byte object returned with read, and value extraced with [0]
