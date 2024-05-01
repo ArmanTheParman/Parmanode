@@ -16,7 +16,7 @@ from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Co
 def hash160(so):
     #sha256 followed by ripemd160
 #    return hashlib.new('ripemd160', hashlib.sha256(so).digest()).digest()   #old way, maybe slower
-    return openssl_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
+    return hash_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
 def read_varint(s):
     '''read_varint reads a variable integer from a stream'''
     i = s.read(1)[0] # byte object returned with read, and value extraced with [0]
