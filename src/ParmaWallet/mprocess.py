@@ -8,13 +8,13 @@ import unicodedata, hashlib, binascii, hmac
 from recovery_words import *
 
 def worker1(): 
-    dosearch("/home/parman/Desktop/resultworker1.txt" 0, 1)   
+    dosearch("/home/parman/Desktop/resultworker1.txt", 0, 1)   
 
 def worker2(): 
-    dosearch("/home/parman/Desktop/resultworker2.txt" 1, 2)   
+    dosearch("/home/parman/Desktop/resultworker2.txt", 1, 2)   
 
 def worker3(): 
-    dosearch("/home/parman/Desktop/resultworker3.txt" 2, 3)   
+    dosearch("/home/parman/Desktop/resultworker3.txt", 2, 3)   
 
 process1 = multiprocessing.Process(target=worker1)
 process1.start()  # Start the process
