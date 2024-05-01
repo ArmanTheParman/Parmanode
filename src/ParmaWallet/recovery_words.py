@@ -7,8 +7,7 @@ import unicodedata, hashlib, binascii, hmac
 
 ########################################################################################
 
-def word_look_up(value):
-    return seedlist[value].strip()
+
 
 known_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon" 
 known_string_bin_string = 21 * "00000000000"
@@ -16,6 +15,9 @@ known_string_int = int(known_string_bin_string)
 
 
 def dosearch(file_store: str, i0: int=0, i1: int=2048, j0: int=0, j1: int=2048):
+
+    def word_look_up(value):
+        return seedlist[value].strip()
 
     file_path = "/home/parman/parman_programs/parmanode/src/ParmaWallet/english.txt"
     with open (file_path, 'r') as file:
