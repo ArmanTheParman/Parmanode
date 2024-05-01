@@ -17,10 +17,20 @@ from Crypto.Hash import SHA256, RIPEMD160
 #eg "hello".encode('utf-8')
 
 def hash160(so):
-    #sha256 followed by ripemd160
-#    return hashlib.new('ripemd160', hashlib.sha256(so).digest()).digest()   #maybe slower
-#    return hash_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
-    return RIPEMD160.new(hashlib.sha256(so).digest()).digest()   #maybe slower
+#sha256 followed by ripemd160
+
+# various versions of RIPEMD works on different systems. Need to pick one.
+
+#1    return hashlib.new('ripemd160', hashlib.sha256(so).digest()).digest()   #maybe slower, w
+
+        # from cryptography.hazmat.primitives import hashes
+        # from cryptography.hazmat.backends import default_backend
+        # from cryptography.hazmat.primitives import hashes
+#2    return hash_ripemd160(hashlib.sha256(so).digest()).digest()           #depends on openssl
+
+#3
+    return RIPEMD160.new(hashlib.sha256(so).digest()).digest()   #maybe slowerest?
+
 def read_varint(s):
     '''read_varint reads a variable integer from a stream'''
     i = s.read(1)[0] # byte object returned with read, and value extraced with [0]
