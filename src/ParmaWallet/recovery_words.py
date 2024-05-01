@@ -19,11 +19,11 @@ known_string_int = int(known_string_bin_string)
 with open (file_path, 'r') as file:
     seedlist = file.readlines()
 
-def dosearch():
+def dosearch(i0: int=0, i1: int=2048, j0: int=0, j1: int=2048):
     with open(file_store , "w") as file:  # truncates any existing file and starts over
 
-        for i in range(0, 2048):
-            for j in range (0, 2048):
+        for i in range(i0, i1):
+            for j in range (j0, j1):
                 for k in range (0, 8): 
                     test_string = known_string_bin_string + bin(i)[2:].zfill(11) + bin(j)[2:].zfill(11) + bin(k)[2:].zfill(3)
                     test_string_int = int(test_string, 2)
