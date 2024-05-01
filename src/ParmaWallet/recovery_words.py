@@ -7,21 +7,19 @@ import unicodedata, hashlib, binascii, hmac
 
 ########################################################################################
 
+def word_look_up(value):
+    return seedlist[value].strip()
+
+file_path = './english.txt'
+file_store = '/home/parman/Desktop/file_store.txt'
+known_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon" 
+known_string_bin_string = 21 * "00000000000"
+known_string_int = int(known_string_bin_string)
+
+with open (file_path, 'r') as file:
+    seedlist = file.readlines()
+
 def dosearch():
-
-    file_path = './english.txt'
-    file_store = '/home/parman/Desktop/file_store.txt'
-    with open (file_path, 'r') as file:
-        seedlist = file.readlines()
-
-    def word_look_up(value):
-        return seedlist[value].strip()
-
-    known_string = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon" 
-
-    known_string_bin_string = 21 * "00000000000"
-    known_string_int = int(known_string_bin_string)
-    valid_combinations = []
 
     with open(file_store , "w") as file:  # truncates any existing file and starts over
 
