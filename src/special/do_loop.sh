@@ -152,7 +152,7 @@ if [[ $test == 1 ]] ; then
 true
 PW_dependencies skip
 fi
-
+debug "test is $test"
 if [[ $fix == 1 ]] ; then
 announce "no fixes available presently. Exiting."
 exit
