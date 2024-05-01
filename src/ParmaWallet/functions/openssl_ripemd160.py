@@ -4,7 +4,7 @@ import ctypes.util
 # Load the OpenSSL library
 libcrypto = ctypes.CDLL(ctypes.util.find_library('crypto'))
 
-class RIPEMD160:
+class hash_ripemd160:
     class EVP_MD_CTX(ctypes.Structure):
         pass
 
