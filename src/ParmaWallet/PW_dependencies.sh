@@ -2,7 +2,7 @@ function PW_dependencies {
 debug "pause before skip"
 if [[ $1 != skip ]] ; then
 sudo apt-get install libgmp-dev #?cargo, not sure
-sudo pip3 install bitcoinlib base48 bech32
+sudo pip3 install bitcoinlib base48 bech32 cryptography
 fi
 debug "pause after skip"
 opensslconf="$(openssl info -configdir)/openssl.cnf"

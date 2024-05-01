@@ -2,6 +2,11 @@ import base58, hmac, hashlib, ecdsa, os
 from ecdsa.curves import SECP256k1
 from ecdsa.ecdsa import int_to_string
 
+# for ripemd...
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes
+
 def extract_chain_code(xprv):
     # Decode the xprv from Base58Check encoding
     decoded_xprv = base58.b58decode_check(xprv)
@@ -79,3 +84,24 @@ def extract_private_key_from_xprv(xprv):
     # Extract the raw private key (skip the first 46 bytes: version (4) + depth (1) + parent fingerprint (4) + child number (4) + chain code (32) + padding (1))
     raw_private_key = decoded_xprv[46:]
     return raw_private_key
+
+########################################################################################
+
+def openssl_ripemd160(data):
+    # Create a digest object
+    digest = hashes.Hash(hashes.RIPEMD160(), backend=default_backend())
+    
+    # Encoding the data to bytes if necessary
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    
+    # Adding data to hash
+    digest.update(data)
+    
+    # Finalize the hash and return the digest
+    return digest.finalize()
+
+# Example usage
+    # input_data = "Hello, world!"
+    # hashed_data = openssl_ripemd160(input_data)
+    # print("RIPEMD-160 Hash:", hashed_data.hex())
