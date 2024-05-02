@@ -4,7 +4,7 @@ if [[ $version == self ]] ; then return 0 ; fi
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="$bright_blue                           (3) - Import an external drive
+local text="$bright_blue                (3) - Import an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
