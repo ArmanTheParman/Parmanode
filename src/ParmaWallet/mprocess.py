@@ -109,3 +109,11 @@ process15.start()
 #     dosearch(1800, 2000)   
 # def worker1(): 
 #     dosearch(2000, 2048)   
+
+########################################################################################
+
+#number of cores...
+#nproc
+
+#threads per core...
+#lscpu | grep -i "thread(s) per core"

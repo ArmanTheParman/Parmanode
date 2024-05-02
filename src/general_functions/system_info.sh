@@ -251,7 +251,7 @@ fi
 }
 
 function ensure_english {
-if [[ ! "$LANG" =~ ^en ]] ; then 
+if [[ ! "$LANG" =~ ^en && ! -e /.dockerenv ]] ; then 
 export English=false
 set_terminal ; echo -e "
 ########################################################################################
