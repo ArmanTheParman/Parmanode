@@ -22,7 +22,6 @@ RUN mkdir -p /home/parman/parman_programs/
 WORKDIR /home/parman/parman_programs/
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
 RUN . ./parmanode/source_parmanode.sh
-RUN . /home/parman/parman_programs/parmanode/src/ParmaWallet/fix_openssl_ripemd160.sh 
 RUN fix_openssl_repemd160
 
 WORKDIR /home/parman
