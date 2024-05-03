@@ -32,6 +32,7 @@ fi
 
 if [[ $1 == "ssh" ]] ; then
 export ONION_ADDR_SSH="$(sudo cat /var/lib/tor/ssh-service/hostname 2>/dev/null)" 
+debug "$ONION_ADDR_SSH, hit <enter>"
 return 0
 fi
 
