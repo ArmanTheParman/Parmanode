@@ -3,8 +3,13 @@
 FROM debian:latest
 RUN apt-get update -y
 RUN apt-get install -y vim nano libgmp-dev python3 pip openssl git python3-bitcoinlib python3-base58
-RUN pip3 install bitcoinlib base58 bech32 cryptography pycryptodome
-RUN pip3 install pycryptodome bech32 cryptography bip_utils bitcoinlib base58 --break-system-packages
+RUN pip3 install bech32 --break-system-packages
+RUN pip3 install base58 --break-system-packages
+RUN pip3 install bip_utils --break-system-packages
+RUN pip3 install bitcoinlib --break-system-packages
+RUN pip3 install cryptography --break-system-packages
+RUN pip3 install pycryptodome --break-system-packages
+RUN pip3 install base58 --break-system-packages
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
