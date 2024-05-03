@@ -2,7 +2,7 @@
 
 FROM debian:latest
 RUN apt-get update -y
-RUN apt-get install -y vim nano libgmp-dev python3 pip openssl git python3-bitcoinlib python3-base58
+RUN apt-get install -y sudo vim nano libgmp-dev python3 pip openssl git python3-bitcoinlib python3-base58
 RUN pip3 install bech32 --break-system-packages
 RUN pip3 install base58 --break-system-packages
 RUN pip3 install bip_utils --break-system-packages
