@@ -22,7 +22,7 @@ RUN mkdir -p /home/parman/parman_programs/
 WORKDIR /home/parman/parman_programs/
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
 RUN . ./parmanode/source_parmanode.sh
-RUN fix_openssl_repemd160
+#RUN fix_openssl_repemd160
 
 WORKDIR /home/parman
 RUN git clone --depth 1 https://github.com/3rdIteration/btcrecover.git
