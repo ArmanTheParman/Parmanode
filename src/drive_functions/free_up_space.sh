@@ -212,7 +212,7 @@ set_terminal ; echo -e "
     to keep the files form getting too big in the future?
                                     
 
-                                    y)$green yes
+                                    y)$green yes $orange
 
                                     n)$red no
 
