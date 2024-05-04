@@ -122,7 +122,7 @@ $orange
 $green
         Note that electrs installed via Parmanode has a different port (to avoid conflicts with Fulcrum). It
         is 50005 for TCP, and 50006 for SSL.
-
+$orange
         At the top of the network settings window, you will see \"connected to x nodes\". If x is not equal
         to 1, you should try to fix that (f). Parmanode will do that automatically if you use it to install
         Electrum, but otherwise, you need to manually edit the Electrum config file, and change 
@@ -130,7 +130,7 @@ $green
 
 ##############################################################################################################
 
-Type (f) for instructions to connect to only one server, or hit <enter> alone to return.
+Type$cyan (f)$orange for instructions to connect to only one server, or hit$cyan <enter>$orange alone to return.
 
 "
 read choice
