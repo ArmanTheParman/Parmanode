@@ -93,10 +93,9 @@ fi #end level 2 if
 elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
 
     if [[ -e $hp/bitcoinknots_github ]] ; then 
-        cd $hp/bitcoinknots_github ; git checkout $version ; debug "after checkout knots version, $version"
+        cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull ; debug "after checkout knots version, $version"
     else
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
-        git checkout $version ; debug "version for knots is $version"
     fi
 
 fi #end if compile true, and elif knotsbitcoin

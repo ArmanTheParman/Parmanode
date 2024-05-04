@@ -25,9 +25,8 @@ $orange
 $bright_blue
        4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
 
-       5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core;
-           version 26.1.knots20240325) - syncs faster; bug fixes missing in Core; and
-           power user options / tools.
+       5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core) - 
+           syncs faster; bug fixes missing in Core; and power user options / tools.
 $orange
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
@@ -64,7 +63,7 @@ parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=choose ; export ordinals_patch=true ; break ;;
 5)
 parmanode_conf_add "bitcoin_choice=knots"
-export knotsbitcoin=true ; export version="26.1.knots20240325" ; break ;;
+export knotsbitcoin=true ; export version="26.x-knots" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile=true ; export version=latest ; break ;;
