@@ -9,6 +9,7 @@ accounts:
     certificatePath: $HOME/.lnd/tls.cert
     password: $password                        
 }" | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
+sudo chown 0:0 $hp/thunderhub/account_1.yaml
 }
 
 ## Account template

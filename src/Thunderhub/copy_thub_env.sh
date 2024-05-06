@@ -85,4 +85,5 @@ DANGEROUS_NO_SSO_AUTH=true
 # SSL_PORT=2900
 # SSL_SAVE=true
 " | tee $file >/dev/null 2>&1
+sudo chown 0:0 $file
 }
