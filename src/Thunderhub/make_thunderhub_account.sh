@@ -3,9 +3,9 @@
 function make_thunderhub_account {
 echo -e "
 accounts:
-  - name: Account 1
+  - name: Parmanode LND Account 1
     serverUrl: 127.0.0.1:$lnd_rpc_port
-    macaroonPath: $HOME/.lnd/data/chain/bitcoin/mainnet
+    macaroonPath: $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
     certificatePath: $HOME/.lnd/tls.cert
     password: $password                        
 }" | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
