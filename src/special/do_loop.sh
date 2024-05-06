@@ -150,9 +150,14 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 
 if [[ $test == 1 ]] ; then
 true
-PW_dependencies skip
+	if [[ $arg2 == remove ]] ; then 
+	uninstall_thub
+	else
+	install_thunderhub
+	fi
 fi
-debug "test is $test"
+
+
 if [[ $fix == 1 ]] ; then
 announce "no fixes available presently. Exiting."
 exit
