@@ -1,12 +1,15 @@
 #https://docs.thunderhub.io/setup#server-accounts
 
 function make_thunderhub_account {
+
+cert=$(xxd -p -c 256 $HOME/.lnd/tls.cert | tr -d '\n')
+
 echo -e "
 accounts:
   - name: Parmanode LND Account 1
     serverUrl: 127.0.0.1:$lnd_rpc_port
-    macaroonPath: $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
-    certificatePath: $HOME/.lnd/tls.cert
+    macaroon: $(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') 
+    certificate: $cert
     password: $password                        
 }
 " | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
