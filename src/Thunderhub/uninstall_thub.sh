@@ -17,7 +17,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-docker stop thunderhub 
+docker stop thunderhub ; docker rm thunderhub 
 rm -rf $hp/thunderhub
 parmanode_conf_remove "thub_port"
 installed_config_remove "thunderhub"
