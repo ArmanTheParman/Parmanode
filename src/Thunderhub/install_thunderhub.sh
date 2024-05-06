@@ -1,7 +1,5 @@
 function install_thunderhub {
 
-not_finished_thunderhub
-
 set_terminal
 export version="v0.13.30"
 # export file=$hp/thunderhub/.env 
