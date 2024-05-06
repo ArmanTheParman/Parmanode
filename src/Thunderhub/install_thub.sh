@@ -4,7 +4,8 @@ not_finished_thunderhub
 
 set_terminal
 export version="v0.13.30"
-export file=$hp/thunderhub/.env #adding '.local' prevents overriding file when updating.
+# export file=$hp/thunderhub/.env 
+export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 
 #check port with netstat -tulnp
 while true ; do
