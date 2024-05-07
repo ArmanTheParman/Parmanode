@@ -1,4 +1,4 @@
-FROM debian 
+FROM debian:latest 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
        wget gnupg sudo procps curl git vim nano ca-certificates iproute2 tor \
@@ -30,6 +30,8 @@ RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndvers
 RUN if { gpg --verify --status-fd 1 *sig *txt 2>&1 | grep -q GOOD ; } ; then true ; else exit 1 ; fi
 RUN if { shasum -a 256 --ignore-missing --check man*txt 2>/dev/null | grep -q OK ; } ; then true ; else exit ; fi
 
+
+WORKDIR /home/parman/.lnd
 CMD tail -f /dev/null 
 
 # Volumes

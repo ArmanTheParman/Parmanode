@@ -14,6 +14,6 @@ docker run -d --name lnd \
            lnd
 fi
 
-docker exec -d lnd tor
+lnd_docker_start
 
 }
