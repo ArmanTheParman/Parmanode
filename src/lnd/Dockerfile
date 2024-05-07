@@ -22,7 +22,7 @@ RUN echo "computer_type=LinuxPC" | tee -a /home/parman/.parmanode/parmanode.conf
 WORKDIR /home/parman/parman_programs/
 #need to keep this updated
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
-WORKDIR /home/parman/
+WORKDIR /home/parman/parman_programs/parmanode/
 
 CMD tail -f /dev/null 
 

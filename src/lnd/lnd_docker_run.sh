@@ -7,7 +7,6 @@ docker run -d --name lnd \
            lnd
 fi
 
-docker exec -
-
+docker exec -it lnd ./run_parmanode.sh
 
 }
