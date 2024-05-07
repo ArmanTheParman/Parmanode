@@ -25,3 +25,7 @@ RUN git clone --depth 1 https://github.com/armantheparman/parmanode
 WORKDIR /home/parman/
 
 CMD tail -f /dev/null 
+
+# Volumes
+# $HOME/.bitcoin/bitcoin.conf
+# $HOME/.lnd
