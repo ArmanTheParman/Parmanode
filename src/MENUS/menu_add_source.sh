@@ -495,4 +495,17 @@ else
    #not installed
 website_n="#                            (ws)          Wordpress Website (ParmaWeb)                #"
 fi
+
+#lnddocker
+unset lnddocker_i lnddocker_p lnddocker_n
+if grep -q "lnddocker-end" < $HOME/.parmanode/installed.conf ; then
+   #installed
+lnddocker_i="#                                      LND (Docker)                                   #"
+elif grep -q "lnddocker-start" < $HOME/.parmanode/installed.conf ; then
+   #partially installed
+lnddocker_p="#                                        Lnd (Docker)                                   #"
+else
+   #not installed
+ldndocker_n="#                            (ld)        Lnd (Docker)                                   #"
+fi
 }

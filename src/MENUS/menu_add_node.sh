@@ -31,6 +31,7 @@ if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
+if [[ -n $lnddocker_n ]]       ; then echo  "$lnddocker_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
@@ -47,6 +48,7 @@ if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
 if [[ -n $mempool_i ]]         ; then echo  "$mempool_i"; fi
 if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
 if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
+if [[ -n $lnddocker_i ]]       ; then echo  "$lnddocker_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
@@ -63,6 +65,7 @@ if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; f
 if [[ -n $mempool_p ]]         ; then echo  "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
+if [[ -n $lnddocker_p ]]       ; then echo  "$pink$lnddocker_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo -e "$pink$btcpTOR_p$orange"; fi
@@ -104,12 +107,20 @@ m|M) back2main ;;
     
     lnd|LND|Lnd)
        if [[ -n $lnd_n ]] ; then
+         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
        if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
        if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
        fi
        ;;
+
+    ld|LD|Ld)
+       if [[ -n $lnddocker_n ]] ; then
+         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND non-docker. Aborting." ; continue ; fi
+       install_lnd_docker
+       fi
+       ;;
     
-   btcpt|BTCPT)
+    btcpt|BTCPT)
       if [[ -n $btcpTOR_n ]] ; then
       install_btcpay_tor
       return 0

@@ -14,7 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public_poolmenu electrumxmenu thunderhubmenu
+unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu
 
 echo -e "
 ########################################################################################
@@ -244,6 +244,12 @@ echo -e "#                                    (ws)               WordPress Websi
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
 echo -e "#                                    (ws)               WordPress Website $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
+if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
+echo -e "#                                    (ld)               LND (Docker)                   #
+#                                                                                      #"
+elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
+echo -e "#                                    (ld)               LND (Docker)      $red$blinkon(partial)$blinkoff$orange    #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -302,6 +308,13 @@ fi
 lnd|LND|Lnd)
 if [[ $lndmenu == 1 ]] ; then
 if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
+fi
+;;
+
+ld|LD|Ld)
+if [[ $lnddockermenu == 1 ]] ; then
+uninstall_lnd_docker 
+return 0 
 fi
 ;;
 
