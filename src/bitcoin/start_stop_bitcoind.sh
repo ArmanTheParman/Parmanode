@@ -31,6 +31,12 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
+        if grep -q "drive=external" < $pc ; then
+                if ! mount | grep -q /Volumes/parmanode ; then
+                announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
+                return 1
+                fi
+        fi
 run_bitcoinqt
 fi
 }
