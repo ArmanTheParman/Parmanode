@@ -1,18 +1,16 @@
 function install_lnd {
 set_terminal
 
-if [[ $debug != 1 ]] ; then
-grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
-fi
+export lndversion="v0.17.3-beta"
 
-please_wait
+grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 install_check "lnd" || return 1
 
-if [[ ! -e /.dockerenv ]] ; then
-make_lnd_directories && \
+please_wait
+
+make_lnd_directories || return 1
 installed_config_add "lnd-start" 
-fi
 
 download_lnd
 

@@ -4,7 +4,6 @@ if [[ $OS != "Linux" ]] ; then return 1 ; fi
  
 rm -rf $HOME/parmanode/lnd/*
 
-lndversion="v0.17.3-beta"
 
 #get signatures and SHA256 file
 cd $HOME/parmanode/lnd
