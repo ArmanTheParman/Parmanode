@@ -32,7 +32,11 @@ make_lnd_conf
 if [[ ! -e /.dockerenv ]] ; then make_lnd_service  ; fi
 
 #Make sure LND has started.
+if [[ ! -e /.dockerenv ]] ; then
 start_LND_loop
+else
+/usr/local/bin/lnd & > /home/parman/.lndlog 2>&1
+fi
 
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
 # password file and needs new wallet to do so.
