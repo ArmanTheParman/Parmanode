@@ -1,5 +1,5 @@
 function update_lnd {
-if [[ $lnd_version == "0.17.0" ]] ; then announce "Already have version 0.17.0." ; return 1 ; fi
+if [[ $lnd_version == "0.17.3" ]] ; then announce "Already have version 0.17.3" ; return 1 ; fi
 
 while true ; do
 clear
@@ -7,7 +7,7 @@ echo -e "
 ########################################################################################
 
     The LND binary files will be moved to a backup location, and new LND binary files
-    from version 0.17.0 will be installed.
+    from version 0.17.3 will be installed.
 
     Your LND data will not be affected.
 
