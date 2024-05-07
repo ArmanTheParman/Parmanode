@@ -9,7 +9,7 @@ please_wait
 
 install_check "lnd" || return 1
 
-if [[ ! -e /.dockerenv ]]
+if [[ ! -e /.dockerenv ]] ; then
 make_lnd_directories && \
 installed_config_add "lnd-start" 
 fi
