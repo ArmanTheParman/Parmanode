@@ -1,5 +1,8 @@
 function make_lnd_conf {
+file="$HOME/.lnd/lnd.conf"
+
 source $HOME/.bitcoin/bitcoin.conf
+
 get_extIP >/dev/null 2>&1
 
 echo "
@@ -126,6 +129,10 @@ rpcmiddleware.enable=true
 [routing]
 
 [sweeper]
-" | tee $HOME/.lnd/lnd.conf >/dev/null 2>&1
+" | tee $file >/dev/null 2>&1
 
+if [[ -e /.dockerenv ]] ; then
+swap_string "$file" "bitcoind.zmqpubrawblock=" "bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332"
+swap_string "$file" "bitcoind.zmqpubrawtx=" "bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333"
+fi
 } 

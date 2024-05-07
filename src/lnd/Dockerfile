@@ -27,5 +27,5 @@ WORKDIR /home/parman/
 CMD tail -f /dev/null 
 
 # Volumes
-# $HOME/.bitcoin/bitcoin.conf
+# $HOME/.bitcoin/
 # $HOME/.lnd
