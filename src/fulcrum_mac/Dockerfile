@@ -5,6 +5,7 @@ RUN apt-get install -y wget gnupg sudo procps curl git
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
 RUN chown -R parman:parman /home/parman/
+RUN usermod -aG sudo parman 
 RUN echo 'parman:parmanode' | chpasswd
 
 USER parman

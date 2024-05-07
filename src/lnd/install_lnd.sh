@@ -9,8 +9,10 @@ please_wait
 
 install_check "lnd" || return 1
 
+if [[ ! -e /.dockerenv ]]
 make_lnd_directories && \
 installed_config_add "lnd-start" 
+fi
 
 download_lnd
 
@@ -27,7 +29,7 @@ make_lnd_conf
 
 
 #do last. Also runs LND
-make_lnd_service 
+if [[ ! -e /.dockerenv ]] ; then make_lnd_service  ; fi
 
 #Make sure LND has started.
 start_LND_loop
