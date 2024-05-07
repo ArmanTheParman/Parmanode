@@ -1,5 +1,4 @@
-function uninstall_lnd {
-
+function uninstall_lnd_docker {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -25,11 +24,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-sudo systemctl stop lnd.service
-sudo rm /etc/systemd/system/lnd.service
-rm -rf $HOME/parmanode/lnd $HOME/.lnd ; debug "check .lnd removed"
-parmanode_conf_remove "lnd_port"
-installed_conf_remove "lnd"
-success "LND" "being uninstalled."
-return 0
+lnd_docker_stop silent
+docker rm lnd
+rm -rf $hp/lnd $HOME/.lnd/
+installed_conf_remove "lnddocker"
+success "LND Docker has finished being uninstalled"
 }

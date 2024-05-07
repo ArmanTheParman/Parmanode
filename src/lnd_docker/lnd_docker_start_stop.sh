@@ -8,8 +8,9 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 enter_continue
 return 1
 fi
-docker start lnd && \
-docker exec -d lnd /bin/bash -c "tor & lnd /usr/local/bin/lnd >> /home/parman/parmanode/lnd/lnd.log &"
+docker start lnd 
+docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd >> /home/parman/parmanode/lnd/lnd.log &" || return 1
+docker exec -d lnd tor
 }
 
 function lnd_docker_stop {
@@ -19,8 +20,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
                               Docker is not running. $orange
 ########################################################################################
 "
-enter_continue
-return 1
+if [[ $1 != silent ]] ; then enter_continue ; return 1 ; esle true ; fi
 fi
 
 if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
@@ -28,9 +28,9 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
                         The LND container is not running. $orange
 ########################################################################################
 "
-enter_continue
-return 1
+if [[ $1 != silent ]] ; then enter_continue ; return 1 ; esle true ; fi
 fi 
+
 docker stop lnd
 #docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd stop >> /home/parman/parmanode/lnd/lnd.log &"
 }

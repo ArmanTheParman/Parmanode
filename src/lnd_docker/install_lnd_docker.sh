@@ -23,39 +23,50 @@ build_lnd_docker || return 1
 lnd_docker_run || return 1
 debug "after docker run and start"
 
+#password file, even if blank, needs to exists for lnd conf file to be valid
+touch $HOME/.lnd/password.txt  
+make_lnd_conf 
+
+lnd_docker_start || { announce "Couldn't start lnd, aborting." ; return 1 ; }
+debug "check lnd started in container"
+
+create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
+# password file and needs new wallet to do so.
+
+#start git repository in .lnd directory to allow undo's
+cd $HOME/.lnd && git init >/dev/null 2>&1
+
 installed_config_add "lnddocker-end"
 
 success "LND Docker" "being installed"
 unset install
-}
 
-function uninstall_lnd_docker {
+if grep -q "rtl-end" < $dp/installed.conf ; then
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
-                                 Uninstall LND $orange
-
-    Please note that if you are uninstalling to then install a newer version of
-    LND,$pink your data will be deleted in the process$orange - please backup everything
-    related to Lightning that's important to you. If you are unsure, it may be
-    better to learn exactly what you're doing first.
-
-    Uninstall, are you sure? (y) (n)
+    
+    Parmanode has detected that RTL is installed. It's not going to properly
+    connect to LND unless you uninstall and install again. This will allow
+    Parmanode to set up the configuration properly, now that LND is new.
+    
+    Reinstall RTL now?    $cyan y    or    n$orange 
 
 ########################################################################################
-"
-choose "x" 
-read choice
-set_terminal
+" 
+choose "xpmq" ; read choice
+case $choice in
 
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
-
-lnd_docker_stop
-docker rm lnd
-rm -rf $hp/lnd $HOME/.lnd/
-installed_conf_remove "lnddocker"
-success "LND Docker has finished being uninstalled"
+m|M) back2main ;;
+q|Q) exit ;;
+n|N|NO|No|no|p|P) return 0 ;;
+y|Y|Yes|YES|yes)
+uninstall_rtl
+install_rtl
+return 0
+;;
+*) invalid ;;
+esac
+done
+fi
 }

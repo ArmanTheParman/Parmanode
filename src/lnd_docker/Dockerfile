@@ -27,8 +27,16 @@ RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndvers
 RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndversion}/lnd-linux-${chip_4lnd}-${lndversion}.tar.gz
 
 #Verify zips...
-RUN if gpg --verify --status-fd 1 *sig *txt 2>&1 | grep -q GOOD ; then true ; else exit 1 ; fi
+RUN curl https://raw.githubusercontent.com/lightningnetwork/lnd/master/scripts/keys/roasbeef.asc | gpg --import
+RUN if gpg --verify --status-fd 1 *.sig *.txt 2>&1 | grep GOOD ; then true ; else exit 1 ; fi
 RUN if shasum -a 256 --ignore-missing --check man*txt 2>/dev/null | grep -q OK ; then true ; else exit 1 ; fi
+
+#unpack
+RUN tar -xvf *gz
+USER root
+RUN mv ./lnd*/* /usr/local/bin
+USER parman
+RUN touch /home/parman/.lnd/password.txt
 
 WORKDIR /home/parman/.lnd
 CMD tail -f /dev/null 
