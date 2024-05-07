@@ -27,9 +27,8 @@ RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndvers
 RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndversion}/lnd-linux-${chip_4lnd}-${lndversion}.tar.gz
 
 #Verify zips...
-RUN if { gpg --verify --status-fd 1 *sig *txt 2>&1 | grep -q GOOD ; } ; then true ; else exit 1 ; fi
-RUN if { shasum -a 256 --ignore-missing --check man*txt 2>/dev/null | grep -q OK ; } ; then true ; else exit ; fi
-
+RUN if gpg --verify --status-fd 1 *sig *txt 2>&1 | grep -q GOOD ; then true ; else exit 1 ; fi
+RUN if shasum -a 256 --ignore-missing --check man*txt 2>/dev/null | grep -q OK ; then true ; else exit 1 ; fi
 
 WORKDIR /home/parman/.lnd
 CMD tail -f /dev/null 

@@ -1,4 +1,7 @@
 function make_lnd_directories {
+
+rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
+
 if [[ -d $HOME/.lnd ]] ; then
 while true ; do
 set_terminal ; echo -e "
@@ -19,13 +22,11 @@ case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; 
 d|D)
 rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
-rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
 break
 ;;
 b|B)
 mv $HOME/.lnd $HOME/.lnd_backup 
 mkdir $HOME/.lnd >/dev/null 2>&1
-rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
 break
 ;;
 *)
@@ -33,6 +34,7 @@ invalid
 ;;
 esac 
 done
+fi
 }
 
 
