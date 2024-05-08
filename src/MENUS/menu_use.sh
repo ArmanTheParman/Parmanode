@@ -7,7 +7,7 @@ unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumap
 unset torserverapp btcpTORapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
-unset electrumxapp thunderhubapp websiteapp
+unset electrumxapp thunderhubapp websiteapp lnddockerapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -124,6 +124,9 @@ if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
                        echo "    (ws)         WordPress Website 
                             " ; fi
+if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
+                       echo "    (ld)         LND (Docker)
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -179,6 +182,14 @@ lnd|LND|Lnd|L|l)
     please_wait
     if [[ $OS == "Linux" ]] ; then menu_lnd ; continue ; fi
     if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
+    if [[ -n $1 ]] ; then return 0 ; fi
+    fi
+;;
+ld|LD|Ld|lD)
+    if [[ $lnddockerapp == 1 ]] ; then
+    clear
+    please_wait
+    menu_lnd
     if [[ -n $1 ]] ; then return 0 ; fi
     fi
 ;;

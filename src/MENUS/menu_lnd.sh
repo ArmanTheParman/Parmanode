@@ -1,8 +1,20 @@
 function menu_lnd {
 while true ; do
-export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 
+
+unset lnd_version lnddockermenu
+
+if docker inspect lnd >/dev/null 2>&1 ; then
+export lnddockermenu=true
+fi
+
+if [[ -z $lnddockermenu ]] ; then #non docker
+export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+else #docker
+export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+fi
+
 # To check if wallet is created/loaded
-if lncli walletbalance >/dev/null 2>&1 ; then 
+if lncli walletbalance >/dev/null 2>&1 || docker exec lnd lncli walletbalance >/dev/null 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... usually just wait a
@@ -26,7 +38,12 @@ fi
 
 #get onion address if it exists...
 unset lnd_onion clearnetURI
+
+if [[ -z $lnddockermenu ]] ; then 
 lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
+else
+docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>/dev/null
+fi
 
 if grep -q onion: <$dp/lndinfo.log ; then
 lnd_onion="
@@ -63,13 +80,30 @@ colour1="$green" ; else colour1="$red" ; fi
 if [[ $torhybrid == Enabled ]] ; then
 colour2="$green" ; else colour2="$red" ; fi
 
+if [[ -z $lnddockermenu ]] ; then
+
+    if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
+    lndrunning=true
+    else 
+    lndrunning=false
+    fi
+
+else #docker
+
+    if docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
+    lndrunning=true
+    else 
+    lndrunning=false
+    fi
+fi
+
 set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e "
+if [[ $lndrunning == true ]] ;  then echo -e "
                    LND IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo -e "
@@ -119,16 +153,6 @@ rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
 r|R) menu_lnd ;;
 
 t|T|tor)
-if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected irregularities in your lnd.conf file
-    possibly due to an older version of Parmanode having created it. 
-    
-    The Tor configuration adjustments may not work because of this. 
-    It is recommended to reinstall LND using Parmanode before attempting 
-    to enable Tor."
-continue
-fi
-
 if [[ $lndtor == Disabled ]] ; then
 lnd_tor only
 else
@@ -138,16 +162,6 @@ fi
 
 
 th)
-if ! grep -q "message added by Parmanode" < $HOME/.lnd/lnd.conf ; then
-announce "Parmanode has detected irregularities in your lnd.conf file
-    possibly due to an older version of Parmanode having created it. 
-    
-    The Tor configuration adjustments may not work because of this. 
-    It is recommended to reinstall LND using Parmanode before attempting 
-    to enable Tor."
-continue
-fi
-
 if [[ $torhybrid == Disabled ]] ; then
 lnd_tor both
 else
@@ -181,8 +195,14 @@ enter_continue
 fi
 
 set_terminal_wider
+if grep -q "lnd-" < $ic ; then
 journalctl -fxu lnd.service &
 journal_PID=$!
+elif grep -q "lnddocker-" < $ic ; then
+tail -f $hp/lnd/lnd.log &
+journal_PID=$!
+fi
+
 trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
 #complete exiting of the program with control-c. May adjust for all occurrances later.
 wait $journal_PID # code waits here for user to control-c

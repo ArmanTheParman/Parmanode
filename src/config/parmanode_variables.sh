@@ -63,8 +63,10 @@ export main_loop=0
 #bash version
 export bashV_major=$(bash --version | head -n1 | cut -d \. -f 1 | grep -Eo '[0-9]+')
 
-#for gnu-sed on macs
+#for gnu-sed on macs - seems to not be necessary - note it only works withing Parmanode,
+#it wont' work in the normal terminal.
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
 #so that gsed command for macs works on linux.
 if [[ $(uname) == Linux ]] ; then
 alias gsed=sed

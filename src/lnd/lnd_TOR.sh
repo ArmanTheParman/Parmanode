@@ -1,8 +1,8 @@
 function lnd_tor {
 # arguments: only, both, off
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 local file=$HOME/.lnd/lnd.conf
-if ! which tor >/dev/null ; then install_tor ; fi
+
+if ! grep "lnddocker" < $ic && ! which tor >/dev/null ; then install_tor ; fi
 
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
@@ -12,22 +12,24 @@ echo -e "
 ########################################################################################
 
    Whether LND is running by Tor-Only or as a hybrid Tor/Clearnet ultimately is
-   determined by the$cyan Uniform Resource Identifier (URI)$orange types you see at the bottom
+   reveald by the$cyan Uniform Resource Identifier (URI)$orange types you see at the bottom
    of the LND menu.
 
-   If there is only a Tor URI (onion), then LND is running Tor-only. 
+$bright_blue
+       If there is only a Tor URI (onion), then LND is running Tor-only. 
    
-   If there is only a clearnet URI on the menu page, then LND is running on clearnet 
-   only. 
+       If there is only a clearnet URI on the menu page, then LND is running on 
+       clearnet only. 
 
-   Obviously, if you see both clearnet and onion addresses, it means LND is running as
-   a hybrid Tor + clearnet node.
+       If you see both clearnet and onion addresses, it means LND is running as
+       a hybrid Tor + clearnet node.
+
 $cyan
    To ensure LND is running as Tor only$orange (if that's your preference), you need to turn
-   Tor on, but also turn hybrid off. If Hybrid mode doesn't successfuly turn off, (as
-   concluded by the presence of a clearnet URI in the menu screen) you can manually 
-   edit the lnd.conf file and make sure none of the configuration options are 
-   specifying external clearnet addresses. Any configuration directive iwth 'listening'
+   Tor mode on, but also turn hybrid mode off. If Hybrid mode doesn't successfuly turn 
+   off, (as concluded by the presence of a clearnet URI in the menu screen) you can 
+   manually edit the lnd.conf file and make sure none of the configuration options are 
+   specifying external clearnet addresses. Any configuration directive with 'listening'
    in the name is not included in this requirement.
 
 ########################################################################################
@@ -38,8 +40,8 @@ read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
 
  function delete_tor_lnd_conf { 
    unset count
-   while grep -q "Added by Parmanode (start)" < $file ; do
-   sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+   while grep -q "Added by Parmanode (start)" < $file ; do #while loop removes multiple occurrences 
+   gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
    count=$((1 + count))
    sleep 0.5
    if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
@@ -63,17 +65,17 @@ read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
    }
 
 function uncomment_clearnet {
-sed -i '/^; tlsextraip/s/^..//' $file
-sed -i '/^; externalip/s/^..//' $file
-sed -i '/^; tlsextradomain/s/^..//' $file
-sed -i '/^; externalhosts/s/^..//' $file
+gsed -i '/^; tlsextraip/s/^..//' $file
+gsed -i '/^; externalip/s/^..//' $file
+gsed -i '/^; tlsextradomain/s/^..//' $file
+gsed -i '/^; externalhosts/s/^..//' $file
 }
 
 function commentout_clearnet {
-sed -i '/^tlsextraip/s/^/; /' $file
-sed -i '/^tlsextradomain/s/^/; /' $file
-sed -i '/^externalip/s/^/; /' $file
-sed -i '/^externalhosts/s/^/; /' $file
+gsed -i '/^tlsextraip/s/^/; /' $file
+gsed -i '/^tlsextradomain/s/^/; /' $file
+gsed -i '/^externalip/s/^/; /' $file
+gsed -i '/^externalhosts/s/^/; /' $file
 }
 
 ########################################################################################
@@ -97,7 +99,7 @@ commentout_clearnet
 off)
 #tor details removed higher up
 
-#listens from all ports
+#listens from all IPs
 swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port" 
 uncomment_clearnet
 ;;
@@ -105,7 +107,7 @@ uncomment_clearnet
 both)
 add_tor_lnd_conf
 
-#listens from all ports...
+#listens from all IPs...
 swap_string "$file" "listen=localhost:$lnd_port" "listen=0.0.0.0:$lnd_port" 
 uncomment_clearnet
 

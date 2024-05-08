@@ -56,7 +56,7 @@ done
 sudo rm /etc/systemd/system/lnd.service
 rm -rf $HOME/parmanode/lnd 
 parmanode_conf_remove "lnd_port"
-installed_conf_remove "lnd"
+installed_conf_remove "lnd-"
 success "LND" "being uninstalled."
 return 0
 }

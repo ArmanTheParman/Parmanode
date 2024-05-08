@@ -14,6 +14,8 @@ fi
 please_wait
 
 installed_config_add "lnddocker-start" 
+parmanode_conf_add "lnd_port=9735"
+
 make_lnd_directories || { debug "make_lnd_directories failed" ; return 1 ; }
 
 

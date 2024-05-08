@@ -54,5 +54,6 @@ esac
 done
 
 installed_conf_remove "lnddocker"
+parmanode_conf_remove "lnd_port"
 success "LND Docker has finished being uninstalled"
 }
