@@ -26,6 +26,8 @@ lnd_docker_run || { debug "lnd_docker_run failed" ; return 1 ; }
 
 debug "after docker run and start"
 
+docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >/dev/null 2>&1
+
 #password file, even if blank, needs to exists for lnd conf file to be valid
 if [[ $reusedotlnd != true ]] ; then
 touch $HOME/.lnd/password.txt  

@@ -2,7 +2,7 @@ function lnd_tor {
 # arguments: only, both, off
 local file=$HOME/.lnd/lnd.conf
 
-if ! grep "lnddocker" < $ic && ! which tor >/dev/null ; then install_tor ; fi
+if ! grep -q "lnddocker" < $ic && ! which tor >/dev/null ; then install_tor ; fi
 
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
@@ -35,7 +35,9 @@ $cyan
 ########################################################################################
 "
 enter_abort 
-read choice ; case $choice in a|A) return 1 ;; "") return 0 ;; esac ; done
+read choice ; case $choice in a|A) return 1 ;; 
+"") 
+set_terminal ; please_wait ; return 0 ;; esac ; done
 }
 
  function delete_tor_lnd_conf { 

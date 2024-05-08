@@ -35,7 +35,7 @@ stop_lnd
 cp $HOME/.lnd/lnd.conf $HOME/.lnd/lnd.conf_backup
 delete_line "$HOME/.lnd/lnd.conf" "wallet-unlock" #deletes 2 lines
 start_lnd
-lncli changepassword >2>&1 || docker exec -it lnd lncli changepassword
+lncli changepassword 2>&1 || docker exec -it lnd lncli changepassword
 stop_lnd
 cp $HOME/.lnd/lnd.conf_backup $HOME/.lnd/lnd.conf
 start_lnd

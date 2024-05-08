@@ -130,6 +130,7 @@ if grep -r "lnd-" < $ic ; then
 lncli walletbalance >/tmp/.walletbalance
 elif grep -r "lnddocker-" < $ic ; then
 docker exec lnd lncli walletbalance >/tmp/.walletbalance
+fi
 wbfile=/tmp/.walletbalance
 
 onchain_balance=$(echo $wbfile | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
