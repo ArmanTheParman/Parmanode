@@ -7,11 +7,13 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    The .lnd directory exists on your computer. You have options:
+    The$cyan ~/.lnd/$orange directory exists on your computer. You have options:
 $red
-                       d)    Delete it and start fresh
-$green
-                       b)    Back it up to .lnd_backup
+                       1)    Delete it and start fresh
+$bright_blue
+                       2)    Back it up to .lnd_backup (other backups overwritten!)
+$green                       
+                       3)    Use it
 $orange
                        a)    Abort
 
@@ -20,13 +22,20 @@ $orange
 choose xpmq ; read choice ; set_terminal ; 
 case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; 
-d|D)
+1)
 rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
 break
 ;;
-b|B)
+2)
 mv $HOME/.lnd $HOME/.lnd_backup 
 mkdir $HOME/.lnd >/dev/null 2>&1
+break
+;;
+3)
+announce "Note that if this$cyan ~/.lnd/$orange directory was not created by Parmanode, 
+    you could experience technical issues I can't predict.$red<control>-c$orange 
+    can abort now."
+export reusedotlnd=true
 break
 ;;
 *)

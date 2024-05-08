@@ -1,7 +1,7 @@
 FROM debian:latest 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-       wget gnupg sudo procps curl git vim nano ca-certificates iproute2 tor nginx \
+       wget gnupg sudo procps curl git vim nano ca-certificates iproute2 tor nginx-full \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Make users and groups and directories

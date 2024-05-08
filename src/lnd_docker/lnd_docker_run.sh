@@ -7,6 +7,7 @@ docker run -d --name lnd \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
            -p 9735:9735 \
            -p 8080:8080 \
+           -p 10009:10010 \
            lnd
 fi
 }
@@ -18,3 +19,4 @@ fi
 
 ###
 ## port 10009 managed via nginx
+## port 8332 needed too, but can't "bind"

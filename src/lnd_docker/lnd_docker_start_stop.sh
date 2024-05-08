@@ -9,7 +9,13 @@ enter_continue
 return 1
 fi
 docker start lnd 
-docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd >> /home/parman/parmanode/lnd/lnd.log" || return 1
+docker exec -du root lnd /bin/bash -c "tor > /home/parman/parmanode/lnd/tor.log 2>&1" || return 1
+sleep 2
+docker exec -du root lnd /bin/bash -c "nginx > /home/parman/parmanode/lnd/nginx.log 2>&1" || return 1
+debug "after nginx"
+sleep 3
+docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd > /home/parman/parmanode/lnd/lnd.log 2>&1" || return 1
+debug "after lnd start"
 #do later
 #docker exec -d lnd tor
 }
