@@ -1,5 +1,9 @@
 function make_rtl_config {
-
+if [[ $OS != Mac ]] ; then
+localhostaddr="127.0.0.1"
+else
+localhostaddr=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
+fi
 echo "  
 {
   \"multiPass\": \"$rlt_password\",
@@ -28,9 +32,9 @@ echo "
         \"themeColor\": \"PURPLE\",
         \"channelBackupPath\": \"\",
         \"logLevel\": \"ERROR\",
-        \"lnServerUrl\": \"https://127.0.0.1:8080\",
-        \"swapServerUrl\": \"https://127.0.0.1:8081\",
-          \"boltzServerUrl\": \"https://127.0.0.1:9003\",
+        \"lnServerUrl\": \"https://$localhostaddr:8080\",
+        \"swapServerUrl\": \"https://$localhostaddr:8081\",
+          \"boltzServerUrl\": \"https://$localhostaddr:9003\",
         \"fiatConversion\": false,
         \"unannouncedChannels\": false
       }

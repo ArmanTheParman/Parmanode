@@ -8,13 +8,13 @@ set_terminal ; echo -e "
 
     This does not affect LND node or your funds in anyway
 
-    Continue?     y   or    n
+    Continue?$green     y   $orange or $red    n $orange
 
 ########################################################################################
 "
-choose "epq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
 case $choice in
-Q|q) exit ;;
+Q|q) exit ;; m|M) back2main ;;
 n|N|NO|no|p|P) return 1 ;;
 y|Y|yes|Yes|YES)
 break
@@ -22,7 +22,6 @@ break
 *) invalid ;;
 esac
 done
-
 uninstall_rtl
 install_rtl
 }

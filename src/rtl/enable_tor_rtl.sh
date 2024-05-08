@@ -1,4 +1,6 @@
 function enable_tor_rtl {
+if [[ $OS == Mac ]] ; then announce "Tor feature not availalbe for Mac yet." ; return 1 ; fi
+
 clear
 enable_tor_general || return 1
 clear
@@ -18,6 +20,7 @@ sudo systemctl restart tor
 }
 
 function disable_tor_rtl {
+if [[ $OS == Mac ]] ; then return 1 ; fi
 clear
 file="/etc/tor/torrc"
 

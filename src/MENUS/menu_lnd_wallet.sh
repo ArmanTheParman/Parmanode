@@ -122,8 +122,8 @@ docker exec lnd lncli channelbalance > /tmp/.channelbalance
 fi
 cbfile=/tmp/.channelbalance
 
-local_balance=$(echo $cbfile | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-remote_balance=$(echo $cbfile | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+local_balance=$(cat "$cbfile" | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+remote_balance=$(cat "$cbfile" | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 channel_size_total=$((local_balance + remote_balance))
 
 if grep -r "lnd-" < $ic ; then
@@ -133,7 +133,7 @@ docker exec lnd lncli walletbalance >/tmp/.walletbalance
 fi
 wbfile=/tmp/.walletbalance
 
-onchain_balance=$(echo $wbfile | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+onchain_balance=$(cat "$wbfile" | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 
 set_terminal ; echo -e "
 ########################################################################################

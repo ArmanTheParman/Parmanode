@@ -1,6 +1,6 @@
 function menu_lnd {
 while true ; do
-
+set_terminal
 unset lnd_version lnddockermenu
 
 if docker inspect lnd >/dev/null 2>&1 ; then

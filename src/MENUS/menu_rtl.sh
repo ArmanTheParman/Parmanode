@@ -18,13 +18,13 @@ echo -e "
 ########################################################################################
 "
 if docker ps | grep -q rtl ; then echo -e "
-                                 RTL is RUNNING" 
+                                 RTL is$green RUNNING$orange" 
 else 
 echo -e "
-                                 RTL is NOT RUNNING" 
+                                 RTL is$red RUNNING$orange"
 fi
 
-if ! ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo -e "$red
+if ! ps -x | grep lnd | grep bin >/dev/null 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
                 WARNING: LND is not running. RTL won't funciton.$orange" ; fi
 
 echo -e "      
@@ -63,7 +63,7 @@ if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 
 start|Start|START|S|s)
-docker start rtl
+start_rtl
 continue
 ;;
 
@@ -74,7 +74,7 @@ continue
 
 restart|RESTART|Restart)
 docker stop rtl 
-docker start rtl
+start_rtl
 continue
 ;;
 
