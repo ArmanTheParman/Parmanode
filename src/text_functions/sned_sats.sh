@@ -10,6 +10,10 @@ $red$blinkon
 
 
 
+
+
+
+
                                       ,sats.sats,
                                       SSSSSSSSSSS
                                       'YaaaaaaaY'
@@ -21,8 +25,13 @@ $orange
 
 
 
-Don't forget to join the other Parmanode users on Telegram 
-https://t.me/parmanode
+
+
+
+$bright_blue
+    Don't forget to join the other Parmanode users on Telegram 
+    https://t.me/parmanode
+$orange
 ########################################################################################
 "
 enter_continue
