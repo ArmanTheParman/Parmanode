@@ -14,7 +14,7 @@ fi
 please_wait
 
 installed_config_add "lnddocker-start" 
-make_lnd_directories || debug "make_lnd_directories failed" && return 1
+make_lnd_directories || { debug "make_lnd_directories failed" && return 1 ; }
 
 
 #apply variables first
