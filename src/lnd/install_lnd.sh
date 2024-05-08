@@ -18,12 +18,13 @@ verify_lnd || return 1
 unpack_lnd
 
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1
-
+if [[ $reusedotlnd != true ]] ; then
 set_lnd_port
-set_lnd_alias
 #password file, even if blank, needs to exists for lnd conf file to be valid
 touch $HOME/.lnd/password.txt
 make_lnd_conf
+set_lnd_alias #needs to have lnd conf existing
+fi
 
 
 #do last. Also runs LND
@@ -32,11 +33,13 @@ make_lnd_service
 #Make sure LND has started.
 start_LND_loop
 
+if [[ $reusedotlnd != true ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
 # password file and needs new wallet to do so.
 
 #start git repository in .lnd directory to allow undo's
 cd $HOME/.lnd && git init >/dev/null 2>&1
+fi
 
 installed_conf_add "lnd-end"
 success "LND" "being installed."

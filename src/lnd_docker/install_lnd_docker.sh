@@ -27,6 +27,7 @@ debug "after docker run and start"
 if [[ $reusedotlnd != true ]] ; then
 touch $HOME/.lnd/password.txt  
 make_lnd_conf 
+set_lnd_alias #needs to have lnd conf existing
 fi
 
 lnd_docker_start || { announce "Couldn't start lnd, aborting." ; return 1 ; }
