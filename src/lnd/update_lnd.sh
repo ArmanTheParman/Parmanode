@@ -1,44 +1,21 @@
 function update_lnd {
-if [[ $lnd_version == "0.17.0" ]] ; then announce "Already have version 0.17.0." ; return 1 ; fi
-
-while true ; do
 clear
 echo -e "
 ########################################################################################
+   $green 
+    Updating LND is easy.
+$orange
+    Simply uninstall LND, and when prompted, select to NOT DELETE the ~/.lnd/ 
+    directory. 
 
-    The LND binary files will be moved to a backup location, and new LND binary files
-    from version 0.17.0 will be installed.
-
-    Your LND data will not be affected.
-
-    Continue?    y    or    n
-
+    Then, making sure you have the latest version of Parmanode, install LND. 
+$bright_blue
+    If Parmanode does not supply the version you want, please don't mess around
+    yourself, unpredictable things can happen; It's not worth it, just make a request
+    to me. I gotchyor back.
+$orange
 ########################################################################################
 "
-choose "xpmq" ; read choice
-
-
-case $choice in q|Q) exit ;; p|P|N|NO|No|n) return 1 ;;
-m|M) back2main ;;
-y|Y|Yes|YES) break ;;
-*) invalid ;;
-esac
-done
-
-stop_lnd
-
-cd $HOME/parmanode/lnd
-rm -rf ./*
-cd $HOME/parmanode
-
-download_lnd
-verify_lnd || return 1
-unpack_lnd
-
-sudo mkdir $HOME/parmanode/lnd_old_binaries >/dev/null 2>&1
-sudo mv /usr/local/bin/lnd-* $HOME/parmanode/lnd_old_binaries >/dev/null 2>&1
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1
-
-success "LND" "being updated"
-start_lnd
+enter_continue
+return 0
 }

@@ -36,7 +36,8 @@ $bright_blue
 type=lnd-rest;server=https://$IP:$rest/;macaroon=$cyan$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true
 $orange
 
-The above configuration may need some adjustment depending on your specific setup, eg
+$pink$blinkon
+The above configuration may need some adjustment depending on your specific setup${blinkoff}$orange, eg
 instead of the internal IP, you may have a domain name, or the local host IP. You 
 may also omit the 'allowinstecure=true' setting and see if your connection works
 without it.

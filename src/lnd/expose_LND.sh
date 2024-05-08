@@ -1,33 +1,39 @@
 function expose_LND {
+if grep -r "lnddocker-" < $ic ; then
+text="
+    Additionally, for those who run LND inside a Docker container, the IP of the 
+    container is different to the IP of the comptuer it runs on.
+    "
+else
+unset text
+fi
 
 get_extIP >/dev/null
 
 set_terminal ; echo -e "
 ########################################################################################
   
-    You'll be able to find other nodes and make peer connections, and open channels,
-    but in order for OTHER nodes to find you and make peer connections, you need to
-    either run LND behind TOR (asy from Parmanode menu), or if using clearnet, expose 
+    In order for OTHER nodes to find you and make peer connections, you need to
+    either run LND behind TOR (easy from Parmanode menu), or if using clearnet, expose 
     your exteral IP (done manually, can be tricky). 
     
-    Note, the internal IP address your router has given this computer (and all other
-    devices connected to the router on the home network) is a totally different thing
+    Note, the internal IP address (assigned by the router) is a totally different thing
     to the external IP address. The internal IP is not accessible from computers 
     outside your home. 
-   
+    $text 
     The external IP is the IP address OF THE ROUTER itself, where all internet traffic 
     first goes to before reaching your computer. 
 
-    Parmanode has detect your external IP - it is:
+    Parmanode detects your external IP - it is:
     
                                $extIP
     
     ... and it has been entered into the lnd configuration file. But unless you tell 
     the router to allow traffic from the internet to access your node, other nodes 
     won't be able to find you.
-
+$green
     Here's how ...
-
+$orange
 ########################################################################################
 "
 enter_continue
@@ -57,6 +63,9 @@ $orange
     Create a new IPv4 port forwarding rule; name it anything; choose TCP for the 
     protocol; set the WAN and LAN port options to $lnd_port; and put the destination 
     IP the same as this computer's: $IP 
+
+    If using LND with Docker, the instructions are identical - Don't put the Docker
+    container's IP, put the IP of the computer.
 
     Then save, and restart LND. 
 
