@@ -1,19 +1,22 @@
 function lnd_docker_run {
-
-text="-v $HOME/.bitcoin:/home/parman/.bitcoin"
-
 #break out of loop only if .bitcoin exists or if selected
 while true ; do
+text="-v $HOME/.bitcoin:/home/parman/.bitcoin"
 
 if [[ ! -e $HOME/.bitcoin ]] ; then 
+if grep -q "drive=external" < $pc ; then
+menutext="
+    The$cyan ~/.bitcoin$orange data directory could not be detected. Perhaps the drive is 
+    not connected or mounted?"
+else
+menutext="
+    There was a problem mounting $HOME/.bitcoin to the Docker container.
+    "
+fi
 
-set_terminal ; echo -e "
+set_terminal ; echo -en "
 ########################################################################################
-
-    The$cyan ~/.bitcoin$orange data directory could not be detected. If it should
-    be on an external drive, then ~/.bitcoin would be a symlink to the drive. 
-$yellow
-    Perhaps the drive is not connected or mounted?
+$menutext
 $orange
     Would you like to let Parmanode continue and$red not volume mount$orange this directory to the
     LND container? It could cause unexpected behaviour, but you know what you're
@@ -23,7 +26,7 @@ $red
 $orange
                      2)    Abort
 $green
-                     3)    Let me fix some thing and let Parmanode test again 
+                     3)    Let me fix some thing and let Parmanode try again 
 $orange
 ########################################################################################
 "
@@ -56,6 +59,7 @@ docker run -d --name lnd \
            -p 10009:10010 \
            lnd
 fi
+unset menutext text
 }
 
 ### Not needed because using host.docker.internal in lnd.conf
