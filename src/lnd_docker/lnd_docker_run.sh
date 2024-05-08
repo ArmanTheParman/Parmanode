@@ -6,10 +6,15 @@ docker run -d --name lnd \
            -v $HOME/.lnd:/home/parman/.lnd \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
            -p 9735:9735 \
-           -p 10009:10009 \
            -p 8080:8080 \
-           -p 28332:28332 \
-           -p 28333:28333 \
            lnd
 fi
 }
+
+
+### Not needed because using host.docker.internal in lnd.conf
+#           -p 28332:28332 \
+#           -p 28333:28333 \
+
+###
+## port 10009 managed via nginx

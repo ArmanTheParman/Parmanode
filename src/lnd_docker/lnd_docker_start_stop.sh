@@ -10,7 +10,8 @@ return 1
 fi
 docker start lnd 
 docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd >> /home/parman/parmanode/lnd/lnd.log" || return 1
-docker exec -d lnd tor
+#do later
+#docker exec -d lnd tor
 }
 
 function lnd_docker_stop {
