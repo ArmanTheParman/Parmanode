@@ -1,6 +1,7 @@
 function install_anydesk {
 
 set_terminal
+sned_sats
 anydeskDir=$HOME/parmanode/anydesk
 mkdir $anydeskDir && cd $anydeskDir
 installed_conf_add "anydesk-start"

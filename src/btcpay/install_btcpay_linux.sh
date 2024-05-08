@@ -4,8 +4,10 @@ grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Please inst
 grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
-btcpay_install_preamble || return 1
 
+sned_sats
+
+btcpay_install_preamble || return 1
 set_terminal
 while true ; do user_pass_check_exists 
     return_status=$?

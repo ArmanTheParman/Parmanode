@@ -6,6 +6,7 @@
 function install_sparrow {
 if [[ -e $HOME/.sparrow ]] ; then
 while true ; do
+sned_sats
 set_terminal
 echo -e "
 ########################################################################################

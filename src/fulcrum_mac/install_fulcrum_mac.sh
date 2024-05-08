@@ -1,6 +1,6 @@
 function install_fulcrum_docker {
 if [[ $OS == Linux ]] ; then announce "Docker version is not for Fulcrum. Aborting." ; return 1 ; fi
-
+sned_sats
 set_terminal
 grep -q "bitcoin-end" $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.

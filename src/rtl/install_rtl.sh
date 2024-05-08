@@ -3,6 +3,8 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
+sned_sats
+
 #start docker if it is not running 
 if ! docker ps >/dev/null 2>&1 ; then 
 announce "Please make sure Docker is running, then try again. Aborting."

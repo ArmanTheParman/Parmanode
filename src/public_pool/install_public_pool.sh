@@ -6,7 +6,7 @@ fi
 
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi #for now
 set_terminal 
-
+sned_sats
 if [[ $OS == Mac ]] ; then
     if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
     if ! which python3 >/dev/null ; then

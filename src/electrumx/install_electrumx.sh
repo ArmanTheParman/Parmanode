@@ -1,7 +1,7 @@
 function install_electrumx {
 
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-
+sned_sats
 if [[ $computer_type == Pi ]] ; then
 set_terminal ; echo -e "
 ########################################################################################

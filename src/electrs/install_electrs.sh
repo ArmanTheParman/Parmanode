@@ -9,6 +9,8 @@ grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second 
 
 grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
+sned_sats
+
 #if ! which nginx >/dev/null ; then install_nginx ; fi
 #trying socat instead
 if [[ $OS == Linux ]] ; then

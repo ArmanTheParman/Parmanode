@@ -1,5 +1,6 @@
 function install_lnd {
 set_terminal
+sned_sats
 
 export lndversion="v0.17.3-beta"
 

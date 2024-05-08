@@ -10,7 +10,7 @@ if [[ $(uname -m) == "aarch64" || $(uname -m) == "armv7l" ]] ; then
     return 1
     fi
     fi
-
+sned_sats
 if [[ -e $HOME/.specter ]] ; then
 while true ; do
 set_terminal

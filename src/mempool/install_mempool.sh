@@ -4,7 +4,7 @@ if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
-
+sned_sats
 source $bc
 if [[ $txindex != 1 ]] ; then announce "Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."

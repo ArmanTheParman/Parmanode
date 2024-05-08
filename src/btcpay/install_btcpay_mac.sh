@@ -4,6 +4,7 @@ grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Mus
 set_terminal
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
 {
+    sned_sats
     # Install checks...
     install_check "btcpay"
         if [ $? == 1 ] ; then return 1 ; fi

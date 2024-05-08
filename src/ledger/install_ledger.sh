@@ -1,6 +1,7 @@
 function install_ledger {  
 set_terminal
 warning_ledger
+sned_sats
 ledgerDir=$HOME/parmanode/ledger
 mkdir $ledgerDir >/dev/null 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"

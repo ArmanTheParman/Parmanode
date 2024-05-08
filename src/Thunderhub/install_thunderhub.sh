@@ -4,7 +4,7 @@ set_terminal
 export version="v0.13.30"
 # export file=$hp/thunderhub/.env 
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
-
+sned_sats
 #check port with netstat -tulnp
 while true ; do
 netstat -tuln | grep -q :2999 || { export thub_port="2999" && break ; }
