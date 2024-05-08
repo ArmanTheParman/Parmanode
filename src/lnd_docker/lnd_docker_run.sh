@@ -1,52 +1,59 @@
 function lnd_docker_run {
-#break out of loop only if .bitcoin exists or if selected
-while true ; do
-text="-v $HOME/.bitcoin:/home/parman/.bitcoin"
 
-if [[ ! -e $HOME/.bitcoin ]] ; then 
-if grep -q "drive=external" < $pc ; then
-menutext="
-    The$cyan ~/.bitcoin$orange data directory could not be detected. Perhaps the drive is 
-    not connected or mounted?"
-else
-menutext="
-    There was a problem mounting $HOME/.bitcoin to the Docker container.
-    "
-fi
-
-set_terminal ; echo -en "
-########################################################################################
-$menutext
-$orange
-    Would you like to let Parmanode continue and$red not volume mount$orange this directory to the
-    LND container? It could cause unexpected behaviour, but it might be fine.
-    Honestly, IDK what it's for - it was not possible to find out why LND even needs 
-    access to this directory because it gets its block info from RPC calls to Bitcoin. 
-
-$red
-                     1)    Continue, I got this. (Skip mounting .bitcoin)
-$orange
-                     2)    Abort
-$green
-                     3)    Let me fix some thing and let Parmanode try again 
-$orange
-########################################################################################
-"
-choose xpmq ; read choice ; set_terminal
-case $choice in
-q|Q) exit ;; p|P|2|a) return 1 ;;
-1)
+#Leaving comented out text here for info. No longer need to mount bitcoin directory
+#because I learned it's not needed if using RPC/zmq instead
+#active code at the end
+#$text variable empty, so I'll leave it for later just in case
 unset text
-break
-;;
-3)
-continue ;;
-*) 
-invalid ; continue ;;
-esac
-fi
-break
-done
+
+#break out of loop only if .bitcoin exists or if selected
+# while true ; do
+# text="-v $HOME/.bitcoin:/home/parman/.bitcoin"
+
+# if [[ ! -e $HOME/.bitcoin ]] ; then 
+# if grep -q "drive=external" < $pc ; then
+# menutext="
+#     The$cyan ~/.bitcoin$orange data directory could not be detected. Perhaps the drive is 
+#     not connected or mounted?"
+# else
+# menutext="
+#     There was a problem mounting $HOME/.bitcoin to the Docker container.
+#     "
+# fi
+
+# set_terminal ; echo -en "
+# ########################################################################################
+# $menutext
+# $orange
+#     Would you like to let Parmanode continue and$red not volume mount$orange this directory to the
+#     LND container? It could cause unexpected behaviour, but it might be fine.
+#     Honestly, IDK what it's for - it was not possible to find out why LND even needs 
+#     access to this directory because it gets its block info from RPC calls to Bitcoin. 
+
+# $red
+#                      1)    Continue, I got this. (Skip mounting .bitcoin)
+# $orange
+#                      2)    Abort
+# $green
+#                      3)    Let me fix some thing and let Parmanode try again 
+# $orange
+# ########################################################################################
+# "
+# choose xpmq ; read choice ; set_terminal
+# case $choice in
+# q|Q) exit ;; p|P|2|a) return 1 ;;
+# 1)
+# unset text
+# break
+# ;;
+# 3)
+# continue ;;
+# *) 
+# invalid ; continue ;;
+# esac
+# fi
+# break
+# done
 
 #$text will be empty if user chooses #3 and .bitcoin doesn't exists,
 #othersie it will mount .bitcoin

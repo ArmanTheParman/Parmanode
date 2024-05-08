@@ -39,6 +39,8 @@ debug "check lnd started in container"
 if [[ $reusedotlnd != true ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
                                              # password file and needs new wallet to do so.
+gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
+gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 #start git repository in .lnd directory to allow undo's
 cd $HOME/.lnd && git init >/dev/null 2>&1
 fi

@@ -52,7 +52,7 @@ set_terminal
 announce "${cyan}You will be asked to create a password - this is for your LND password, 
     NOT passphrase.$orange 
 
-    (The keystrokes will not appear on your screen)
+    (The keystrokes will not appear on your screen, just keep typing)
 
     The password needs to be 8 characters or more or LND won't accept it and you'll
     get errors.

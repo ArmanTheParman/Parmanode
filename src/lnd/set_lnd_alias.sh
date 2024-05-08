@@ -43,7 +43,6 @@ done
 please_wait
 
 if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
-delete_line "$HOME/.lnd/lnd.conf" "alias="
-echo "alias=$alias" >> $HOME/.lnd/lnd.conf
+swap_string "$HOME/.lnd/lnd.conf" "alias=" "alias=$alias"
 fi
 }

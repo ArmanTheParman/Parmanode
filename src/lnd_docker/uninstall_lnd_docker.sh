@@ -31,13 +31,12 @@ q|Q) exit ;; a|A|p|P) return 1 ;;
 if ! echo "$choice" | grep -qE '1|2|3' ; then invalid ; continue ; fi
 lnd_docker_stop silent
 docker rm lnd
-break
 ;;
 esac
 
 case $choice in
 1)
-rm -rf $hp/lnd $HOME/.lnd/
+sudo rm -rf $HOME/.lnd/
 break
 ;;
 2)
@@ -52,6 +51,8 @@ invalid
 ;;
 esac
 done
+
+rm -rf $hp/lnd
 
 installed_conf_remove "lnddocker"
 parmanode_conf_remove "lnd_port"

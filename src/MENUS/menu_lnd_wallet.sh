@@ -1,30 +1,20 @@
 function menu_lnd_wallet {
-export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null
 
 while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
-"
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then echo "
-                   LND IS RUNNING -- SEE LOG MENU FOR PROGRESS "
-else
-echo "
-                   LND IS NOT RUNNING -- CHOOSE \"start\" TO RUN"
-fi
-echo -e "
 
-
-      (pw)             Change LND password 
+      (pw)             Change LND wallet password 
+      
+      (ep)             Edit password.txt which auto-unlocks wallet
 
       (ul)             Unlock Wallet
 
       (wb)             Wallet balance
 
       (cb)             Channels' balance
-
-      (au)             Enable auto-unlock wallet (for easy restarts of LND)
 
       (delete)         Delete existing wallet and its files (macaroons, channel.db)
 
@@ -41,36 +31,45 @@ q|Q) exit ;;
 p|P) return 1 ;;
 
 pw|Pw|PW|password|PASSWORD|Password)
+lnd_password_change
+return 0
+;;
+
+ep|EP)
+while true ; do
 echo -e "
 ########################################################################################
+    
+        This will run Nano text editor to edit$cyan password.txt$orange
 
-    If you already have a lightning wallet loaded, changing your password will make 
-    you lose access to it. Not a disaster, you just have to change the password back 
-    to the original. Even though passwords in this context are not passphrases, they 
-    are just as important. A password locks the wallet, whereas a passphrase 
-    contributes to the entropy of the wallet.
+        This file is used by LND to unlock your wallet whenever it starts up. This is
+        not a place to add a new password, you're supposed to put the 'right' 
+        password here, othewise your wallet stays locked when LND starts, and you'll
+        have to manually unlock it.
 
-    If your intentions are to delete the wallet and start fresh, and create a new
-    password, then delete the wallet first, then change the password, then create
-    your new wallet.
+        In the next screen, add your password on the first line. Do not add any other 
+        text or new lines.  Then save and exit. Follow the menu prompts at the 
+        bottom of the text editor screen.
 
-    Note, deleting a wallet with bitcoin in it does not delete the bitcoin. You can
-    recover the wallet as long as you have a copy of the seed phrase.
-
-    Also note that$green funds in lightning channels are NOT recoverable by the
-    seed phrase$orange - those funds are shared in 2-of-2 multisignature addresses, that are
-    returned to your wallet when the channel is closed. To keep access to those
-    funds in a channel, you need to keep your lightning node running, or restore
-    your lightning node with both the seed AND the channel backup file.
+$red
+                                x)     to abort
+$green
+                            enter)     to continue
+$orange
 
 ########################################################################################
 "
-enter_continue
-lnd_wallet_unlock_password
-;;
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P|x) return 1 ;;
+"") break ;;
+*) invalid ;;
+esac
+done
 
-au|AU|Au)
-lnd_wallet_unlock_password
+nano $HOME/.lnd/password.txt
+set_terminal ; please_wait
+return 0
 ;;
 
 create|CREATE|Create)
@@ -78,11 +77,13 @@ create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary 
 # password file and needs new wallet to do so.
 
 #might be redundant...
-lncli unlock 2>/dev/null
+lncli unlock 2>/dev/null || docker exec lnd lncli unlock 2>/dev/null
+
 return 0 ;;
 
 ul|UL|Ul|unlock|Unlock) 
-lncli unlock
+if grep -r "lnd-" < $ic ; then lncli unlock ; fi
+if grep -r "lnddocker-" < $ic ; then docker exec lnd lncli unlock ; fi
 return 0
 ;;
 
@@ -113,12 +114,25 @@ if [[ $lndrunning != "true" || $lndwallet != "unlocked" ]] ; then
 local_balance="Unknown, LND not running or wallet locked"
 remote_balance="Unknown, LND not running or wallet locked"
 fi
+
+if grep -r "lnd-" < $ic ; then
 lncli channelbalance > /tmp/.channelbalance
-local_balance=$(lncli channelbalance | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-remote_balance=$(lncli channelbalance | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+elif grep -r "lnddocker-" < $ic ; then
+docker exec lnd lncli channelbalance > /tmp/.channelbalance
+fi
+cbfile=/tmp/.channelbalance
+
+local_balance=$(echo $cbfile | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+remote_balance=$(echo $cbfile | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 channel_size_total=$((local_balance + remote_balance))
+
+if grep -r "lnd-" < $ic ; then
 lncli walletbalance >/tmp/.walletbalance
-onchain_balance=$(lncli walletbalance | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+elif grep -r "lnddocker-" < $ic ; then
+docker exec lnd lncli walletbalance >/tmp/.walletbalance
+wbfile=/tmp/.walletbalance
+
+onchain_balance=$(echo $wbfile | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -136,6 +150,7 @@ $orange
 ########################################################################################
 "
 enter_continue
+sudo rm $wbfile $cbfile >/dev/null 2>&1
 return 0
 }
 
@@ -154,7 +169,11 @@ extract_value_cb() {
 }
 
 # Run lncli channelbalance and capture the JSON output
+if grep -r "lnd-" < $ic ; then 
 cb_json=$(lncli channelbalance)
+elif grep -r "lnddocker-" < $ic ; then
+cb_json=$(docker exec lnd lncli channelbalance)
+fi
 
 # Parse specific values
 balance=$(extract_value_cb 'balance' "$cb_json")

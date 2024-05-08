@@ -8,10 +8,16 @@ set_terminal ; echo -e "
 $cyan
                                 LND wallet lock password
 $orange 
-    To automatically unlock your wallet whenever LND restarts, please$green enter the 
-    password$orange you used when you created the wallet$green (recommended).$orange
+    To automatically unlock your wallet whenever LND restarts, please$green enter
+    exactly the same password$orange you used earlier when you created the wallet $orange
+    
+    If you don't, that's fine, you just have to manually unlock the wallet ever time
+    LND starts.
 
-    or$green <enter>$orange alone to go back.
+    $green
+        Type password and hit <enter> $orange
+    or 
+        Hit $cyan<enter>$orange alone to go back.
 
 ########################################################################################
 
@@ -21,7 +27,7 @@ read lndpassword
 echo "
 
 
-    Please repeat the password:
+Please repeat the password:
 
 "
 read lndpassword2
@@ -36,11 +42,25 @@ if [[ $lndpassword != $lndpassword2 ]] ; then
     echo "Passwords do not match. Try again."
     enter_continue ; continue
 else
-    echo "Auto-unlock enabled. If you wish to modify what is saved, you can edit"
-    echo "The file $HOME/.lnd/password.txt yourself anytime."
-    echo ""
-    echo "$lndpassword" | sudo tee $HOME/.lnd/password.txt >/dev/null #careful with permissions, need sudo
-    enter_continue
+set_terminal ; echo -e "
+########################################################################################
+    
+    Auto-unlock enabled. You can change the password anytime using the Parmanode LND
+    menu, or you can actually edit the text file$cyan $HOME/.lnd/password.txt$orange 
+    yourself anytime.
+
+    But do understand that this is$red not where you wallet password is set.$orange It's more
+    like a key which is the same as the wallet password, allowing the computer to
+    access it, read it and enter the password to unlock your wallet on your behalf.
+    
+    If you entered a password that doesn't match your wallet's locking password,
+    then the wallet is not going to be unlocked.
+
+########################################################################################
+"
+enter_continue
+
+    echo "$lndpassword" | sudo tee $HOME/.lnd/password.txt >/dev/null 
     break
 fi
 

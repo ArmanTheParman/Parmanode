@@ -32,8 +32,8 @@ listen=0.0.0.0:9735
 rpclisten=localhost:10009
 restlisten=0.0.0.0:8080
 maxpendingchannels=2
-wallet-unlock-password-file=$customHOME/.lnd/password.txt
-wallet-unlock-allow-create=true
+; wallet-unlock-password-file=$customHOME/.lnd/password.txt
+; wallet-unlock-allow-create=true
 minchansize=200000
 alias=$alias
 
@@ -46,12 +46,17 @@ bitcoin.basefee=5000
 bitcoin.feerate=50
 
 [Bitcoind]
-bitcoind.dir=~/.bitcoin
-bitcoind.config=~/.bitcoin/bitcoin.conf
+
+; these two settings not needed if using rpc and zmq
+; bitcoind.dir=~/.bitcoin 
+; bitcoind.config=~/.bitcoin/bitcoin.conf
+
 bitcoind.rpcuser=$rpcuser
 bitcoind.rpcpass=$rpcpassword
 bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
 bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+
+; default here can be changed...
 ; bitcoind.rpchost=localhost
 
 
