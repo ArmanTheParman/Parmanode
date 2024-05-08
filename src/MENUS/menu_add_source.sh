@@ -506,6 +506,6 @@ elif grep -q "lnddocker-start" < $HOME/.parmanode/installed.conf ; then
 lnddocker_p="#                                      Lnd (Docker)                                    #"
 else
    #not installed
-lnddocker_n="#                            (ld)          Lnd (Docker)                                #"
+lnddocker_n="#                            (ld)          Lnd (Docker) - Mac or Linux                 #"
 fi
 }
