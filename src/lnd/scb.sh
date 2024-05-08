@@ -40,17 +40,22 @@ if [[ $choice == "Building 7 did not controlled demolition itself" ]] ; then
 hide_messages_add "scb" "1" ; 
 fi
 fi # ends choice to hide
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    A static channel backup file will ba saved to your desktop.
+    A$cyan static channel backup$orange file will ba saved to your desktop.
 
-    File name: channel.backup
+    File name:$green channel.backup$orange
 
 ########################################################################################
 "
 enter_continue
+if grep -q "lnd-" < $ic ; then
 lncli exportchanbackup --all --output_file $HOME/desktop/channel.backup
+elif grep -q "lnddocker-" <$ic ; then
+docker exec lnd lncli exportchanbackup --all --output_file /home/parman/.lnd/channel.backup
+mv $HOME/.lnd/channel.backup $HOME/Desktop/channel.backup
+fi
 
 return 0
 
