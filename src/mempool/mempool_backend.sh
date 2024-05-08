@@ -7,8 +7,8 @@ set_terminal ; echo -e "
 $cyan
                To what would you like Mempool to connect to for its data?
 $orange
-
-                    1)      Bitcoin Core (on this computer)
+$green
+                    1)      Bitcoin Core (on this computer - recommended) $orange
 
                     2)      Electrs (on this computer)
 
@@ -17,9 +17,9 @@ $orange
                     4)      Bitcoin Core (another computer)
 
                     5)      Any type of Electrum Server (another computer)
-
+$red
                     x)      EXIT 
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
