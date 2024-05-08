@@ -14,13 +14,14 @@ fi
 please_wait
 
 installed_config_add "lnddocker-start" 
-make_lnd_directories || { debug "make_lnd_directories failed" && return 1 ; }
+make_lnd_directories || { debug "make_lnd_directories failed" ; return 1 ; }
 
 
 #apply variables first
-modify_lnd_dockerfile || return 1
-build_lnd_docker || return 1
-lnd_docker_run || return 1
+modify_lnd_dockerfile || { debug "modify_lnd_dockerfile failed" ; return 1 ; }
+build_lnd_docker || { debug "build_lnd_docker failed" ; return 1 ; }
+lnd_docker_run || { debug "lnd_docker_run failed" ; return 1 ; }
+
 debug "after docker run and start"
 
 #password file, even if blank, needs to exists for lnd conf file to be valid
