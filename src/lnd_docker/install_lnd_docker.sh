@@ -42,7 +42,7 @@ fi
 installed_config_add "lnddocker-end"
 
 success "LND Docker" "being installed"
-unset install
+unset install reusedotlnd
 
 if grep -q "rtl-end" < $dp/installed.conf ; then
 while true ; do

@@ -33,8 +33,8 @@ break
 ;;
 3)
 announce "Note that if this$cyan ~/.lnd/$orange directory was not created by Parmanode, 
-    you could experience technical issues I can't predict.$red<control>-c$orange 
-    can abort now."
+    you could experience technical issues that I can't predict.$red
+    <control>-c$orange can abort now."
 export reusedotlnd=true
 break
 ;;
