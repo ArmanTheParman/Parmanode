@@ -19,8 +19,10 @@ set_terminal ; echo -en "
 $menutext
 $orange
     Would you like to let Parmanode continue and$red not volume mount$orange this directory to the
-    LND container? It could cause unexpected behaviour, but you know what you're
-    doing right?
+    LND container? It could cause unexpected behaviour, but it might be fine.
+    Honestly, IDK what it's for - it was not possible to find out why LND even needs 
+    access to this directory because it gets its block info from RPC calls to Bitcoin. 
+
 $red
                      1)    Continue, I got this. (Skip mounting .bitcoin)
 $orange
