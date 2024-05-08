@@ -1,4 +1,6 @@
 function make_lnd_directories {
+debug "failing on purpose..."
+return 1
 
 rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
 
