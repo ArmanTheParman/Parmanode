@@ -52,6 +52,8 @@ bitcoind.rpcuser=$rpcuser
 bitcoind.rpcpass=$rpcpassword
 bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
 bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+; bitcoind.rpchost=localhost
+
 
 [autopilot]
 
