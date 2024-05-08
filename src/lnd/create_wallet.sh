@@ -49,7 +49,7 @@ set_terminal
 lnd_wallet_info
 set_terminal
 
-announce "$cyan You will be asked to create a password - this is for your LND password, 
+announce "${cyan}You will be asked to create a password - this is for your LND password, 
     NOT passphrase.$orange 
 
     (The keystrokes will not appear on your screen)

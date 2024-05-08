@@ -45,7 +45,6 @@ bitcoin.defaultchanconfs=3
 bitcoin.basefee=5000
 bitcoin.feerate=50
 
-
 [Bitcoind]
 bitcoind.dir=~/.bitcoin
 bitcoind.config=~/.bitcoin/bitcoin.conf
@@ -53,7 +52,6 @@ bitcoind.rpcuser=$rpcuser
 bitcoind.rpcpass=$rpcpassword
 bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
 bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
-
 
 [autopilot]
 
@@ -140,5 +138,6 @@ rpcmiddleware.enable=true
 if [[ $install == lnddocker ]] ; then
 swap_string "$file" "bitcoind.zmqpubrawblock=" "bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332"
 swap_string "$file" "bitcoind.zmqpubrawtx=" "bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333"
+
 fi
 } 
