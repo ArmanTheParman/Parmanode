@@ -1,7 +1,7 @@
 function menu_lnd {
 while true ; do
 set_terminal
-unset lnd_version lnddockermenu
+unset lnd_version lnddockermenu dkrmenu lndtor torhybrid
 
 if docker inspect lnd >/dev/null 2>&1 ; then
 export lnddockermenu=true
@@ -11,6 +11,12 @@ if [[ -z $lnddockermenu ]] ; then #non docker
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 else #docker
 export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+dkrmenu="
+      (dks)            Start Docker container (and LND)
+
+      (dkst)           Stop Docker container (and LND)
+"
+inside_docker="(within running Docker container)"
 fi
 
 # To check if wallet is created/loaded
@@ -116,12 +122,12 @@ echo -e "
 
       (i)              Important info
 
-      (s)              Start LND 
+      (s)   $cyan           Start LND $orange$inside_docker 
 
-      (st)             Stop LND
+      (st)  $cyan           Stop LND $orange$inside_docker 
 
-      (rs)             Restart LND
-
+      (rs)             Restart LND $inside_docker
+$dkrmenu
       (log)            Inspect LND logs
 
       (lc)             Inspect and edit lnd.conf file 
