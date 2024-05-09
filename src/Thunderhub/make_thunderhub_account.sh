@@ -9,7 +9,7 @@ masterPassword: $password
 accounts: 
   - name: Parmanode LND Account 1
     serverUrl: $LNDIP:$lnd_rpc_port
-    macaroonPath: /home/parman/.lnd/data/chain/bitcoin/admin.macaroon
+    macaroonPath: /home/parman/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
     certificatePath: /home/parman/.lnd/tls.cert
 " | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
 sudo chown 0:0 $hp/thunderhub/account_1.yaml
