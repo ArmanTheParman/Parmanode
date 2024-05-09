@@ -54,6 +54,9 @@ $green
 $au_message
     The apps you have already installed will not be changed.
 
+
+$latest_version
+$version
 ########################################################################################
 "
 choose "xq" ; read choice
@@ -78,6 +81,8 @@ fi
 }
 
 function export_latest_version {
+unset latest_version
+rm /tmp/latest_version.txt 2>/dev/null
 curl -sL https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
 source /tmp/latest_version.txt && rm /tmp/latest_version.txt >/dev/null
 export latest_version="$version" >/dev/null
