@@ -1,0 +1,14 @@
+# I have notice duplicates of this script in crontab, could be a result of hitting
+# control-c during start up before a password request. This block keeps it clean.
+if [[ $(grep "parmanode/update_script.sh" < /etc/crontab | wc -l) -gt 1 ]] ; then
+autoupdate off
+autoupdate on
+fi
+
+#There was a bug restulting in multiple same lines. This will fix it.
+if [[ -e $bc ]] && grep -q ":5000" < $bc ; then
+delete_line $bc ":5000" >/dev/null 2>&1
+fi
+if [[ -e $bc ]] && grep -q ":3000" < $bc ; then
+delete_line $bc ":3000" >/dev/null 2>&1
+fi
