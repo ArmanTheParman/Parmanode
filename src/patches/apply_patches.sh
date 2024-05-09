@@ -15,7 +15,7 @@ patch_4 ; patch_5 ; patch_6 ;;
 4)
 patch_5 ; patch_6 ;;
 5)
-; patch_6 ;;
+patch_6 ;;
 6)
 return 0 ;;
 *) 
