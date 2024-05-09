@@ -101,7 +101,7 @@ rm /tmp/banner.txt
 cat << 'EOF' > /tmp/rp
 #!/bin/bash
 cd /home/parman/parman_programs/parmanode/ >/dev/null
-./run_parmanode.sh
+./run_parmanode.sh $@
 EOF
 
 cp /tmp/rp /tmp/mnt/raspi/tmp/rp
