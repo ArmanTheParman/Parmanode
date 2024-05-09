@@ -48,17 +48,17 @@ CURRENCY='sat'
 # and for viewing onchain transactions on Blockchain.com.
 # Defaults are true, true, false, false, false
 
-# FETCH_PRICES=false
-# FETCH_FEES=false
-# DISABLE_LINKS=true
-# DISABLE_LNMARKETS=true
+FETCH_PRICES=false
+FETCH_FEES=false
+DISABLE_LINKS=true
+DISABLE_LNMARKETS=true
 NO_VERSION_CHECK=true
 
 # -----------
 # Account Configs
 # -----------
 ACCOUNT_CONFIG_PATH='/app/account_1.yaml'
-MASTER_PASSWORD_OVERRIDE='password'
+# MASTER_PASSWORD_OVERRIDE='password'
 # YML_ENV_1=''
 # YML_ENV_2=''
 # YML_ENV_3=''
@@ -75,7 +75,7 @@ MASTER_PASSWORD_OVERRIDE='password'
 # SSO_SERVER_URL='127.0.0.1:10009'
 # SSO_CERT_PATH='/path/to/certificate/tls.cert'
 # SSO_MACAROON_PATH='/path/to/folder/containing/macaroons'
-DANGEROUS_NO_SSO_AUTH=true
+# DANGEROUS_NO_SSO_AUTH=true
 # LOGOUT_URL='http://thunderhub.io'
 
 # -----------
