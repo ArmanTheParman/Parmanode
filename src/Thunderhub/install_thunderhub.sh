@@ -1,10 +1,31 @@
 function install_thunderhub {
 
+### Needs to check for xxd ***
+if ! which xxd >/dev/null 2>&1 ; then 
+if [[ $OS == Linux ]] ; then
+set_terminal ; echo -e "$green
+Installing dependecies...
+
+xxd
+"
+sleep 1
+sudo apt-get update -y && sudo apt-get install xxd -y 
+fi
+
+if [[ $OS == Mac ]] ; then announce "Mac needs xxd to be installed to continue. Please
+    do that somehow. Usually installing command line tools is sufficient, and Parmanode
+    would have attempted to do this when you first installed Parmanode. Contact the 
+    internet or Parman for help to install xxd. Aborting."
+return 1 
+fi
+##############################
+
 set_terminal
 export version="v0.13.30"
 # export file=$hp/thunderhub/.env 
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 sned_sats
+
 #check port with netstat -tulnp
 while true ; do
 netstat -tuln | grep -q :2999 || { export thub_port="2999" && break ; }
