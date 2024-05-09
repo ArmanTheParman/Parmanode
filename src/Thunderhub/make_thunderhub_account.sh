@@ -8,7 +8,7 @@ echo -e "
 masterPassword: $password
 accounts: $macaroon
   - name: Parmanode LND Account 1
-    serverUrl: 127.0.0.1:$lnd_rpc_port
+    serverUrl: host.docker.internal:$lnd_rpc_port
     macaroon: $(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') 
     certificate: $cert
 " | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
