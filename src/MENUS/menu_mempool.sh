@@ -1,7 +1,9 @@
 function menu_mempool {
 while true ; do 
 set_terminal
-if docker ps 2>/dev/null | grep -q mempool_web ; then
+if docker ps 2>/dev/null | grep -q mempool_web && \
+   docker ps 2>/dev/null | grep -q mempool/backend && \
+   docker ps 2>/dev/null | grep maria | grep -q docker-db ; then
 running="                           MEMPOOL IS$green    Running$orange"
 else
 running="                           MEMPOOL IS$red    Not Running$orange"
