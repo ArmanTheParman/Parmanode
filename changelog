@@ -1,5 +1,6 @@
 Version 3.36.1
     -Mempool Mac docker compose compatibility fixed
+    -Patch6
 Version 3.36.0
     -LND for Mac
     -RTL for Mac
