@@ -5,6 +5,7 @@ function make_thunderhub_account {
 cert=$(xxd -p -c 256 $HOME/.lnd/tls.cert | tr -d '\n')
 
 echo -e "
+masterPassword: $password
 accounts:
   - name: Parmanode LND Account 1
     serverUrl: 127.0.0.1:$lnd_rpc_port
