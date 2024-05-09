@@ -18,6 +18,8 @@ if [[ $OS == Mac ]] ; then announce "Mac needs xxd to be installed to continue. 
     internet or Parman for help to install xxd. Aborting."
 return 1 
 fi
+fi #end if no xxd
+
 ##############################
 
 set_terminal
