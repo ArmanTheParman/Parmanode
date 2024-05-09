@@ -57,7 +57,7 @@ else
     unset m1 s1 r1
 fi
 
-if grep -q lnd-end < $ic ; then
+if grep -q lnd-end < $ic || grep -q lnddocker-end <$ic ; then
     i2="${green}Y${orange}"
     lndinstalled=true
     if [[ $lndrunning == true ]] ; then

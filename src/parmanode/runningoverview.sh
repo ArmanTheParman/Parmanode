@@ -82,7 +82,7 @@ fi
 function islndrunning {
 unset lndrunning
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 || \
-   docker exec lnd pgrep lnd ; then
+   docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
 export lndrunning=true
 overview_conf_add "lndrunning=true" "lndrunning="
 else
