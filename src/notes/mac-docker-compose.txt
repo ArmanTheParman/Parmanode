@@ -1,0 +1,4 @@
+Mac Docker works differently in many ways.
+
+You need a seperate Volumes: field in yaml file
+--network=host is disallowed causing much headache for me
