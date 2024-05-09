@@ -44,7 +44,7 @@ $green
 $orange
     For Mac users with an internal drive, 
     $HOME/Library/Application Support/Bitcoin (the default location),
-    now pionts to:
+    now points to:
 $green
             $HOME/.bitcoin
 $orange
