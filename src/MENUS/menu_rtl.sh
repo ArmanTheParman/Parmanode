@@ -21,7 +21,7 @@ if docker ps | grep -q rtl ; then echo -e "
                                  RTL is$green RUNNING$orange" 
 else 
 echo -e "
-                                 RTL is$red RUNNING$orange"
+                                 RTL is$red NOT RUNNING$orange"
 fi
 
 if ! ps -x | grep lnd | grep bin >/dev/null 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
