@@ -5,6 +5,6 @@ docker start thunderhub
 }
 
 function stop_thunderhub {
-pleas_wait
+please_wait
 docker stop thunderhub
 }
