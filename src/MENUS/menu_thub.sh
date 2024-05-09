@@ -36,11 +36,9 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 start|Start|START|S|s)
 start_thunderhub
-return 0
 ;;
 stop)
 stop_thunderhub
-return 0
 ;;
 *)
 invalid
