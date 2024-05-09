@@ -1,10 +1,20 @@
 function menu_thub {
+
+while true ; do
+
 source $pc >/dev/null
-while true ; do set_terminal ; echo -e "
+
+if docker ps 2>/dev/null | grep -q thunderhub ; then
+running="                           Thunderhub is$green    Running$orange"
+else
+running="                           Thunderhub is$red    Not Running$orange"
+fi
+set_terminal ; echo -en "
 ########################################################################################
                $cyan                Thunderhub Menu            $orange                   
 ########################################################################################
 
+$running
 
                     (start)               Start Thunderhub 
 
