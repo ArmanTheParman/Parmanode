@@ -5,9 +5,11 @@ while true ; do
 source $pc >/dev/null
 
 if docker ps 2>/dev/null | grep -q thunderhub ; then
-running="                           Thunderhub is$green    Running$orange"
+running="                           Thunderhub is$green    Running$orange
+"
 else
-running="                           Thunderhub is$red    Not Running$orange"
+running="                           Thunderhub is$red    Not Running$orange
+"
 fi
 set_terminal ; echo -en "
 ########################################################################################
@@ -33,11 +35,11 @@ m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 start|Start|START|S|s)
-start_thub
+start_thunderhub
 return 0
 ;;
 stop)
-stop_thub
+stop_thunderhub
 return 0
 ;;
 *)
