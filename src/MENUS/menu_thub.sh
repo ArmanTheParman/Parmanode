@@ -10,7 +10,6 @@ while true ; do set_terminal ; echo -e "
 
                     (stop)                Stop Thunderhub
 
-
     Connection URL:
 $cyan
     http://127.0.0.1:$thub_port 
@@ -25,9 +24,11 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 start|Start|START|S|s)
 start_thub
+return 0
 ;;
 stop)
 stop_thub
+return 0
 ;;
 *)
 invalid
