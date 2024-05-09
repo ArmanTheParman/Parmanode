@@ -3,10 +3,10 @@
 function make_thunderhub_account {
 
 cert=$(xxd -p -c 256 $HOME/.lnd/tls.cert | tr -d '\n')
-
+macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 echo -e "
 masterPassword: $password
-accounts:
+accounts: $macaroon
   - name: Parmanode LND Account 1
     serverUrl: 127.0.0.1:$lnd_rpc_port
     macaroon: $(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') 
