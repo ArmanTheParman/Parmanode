@@ -6,7 +6,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    It's best for Raspberry Pi's to use electrs insteat of Fulcrum
+    It's best for Raspberry Pi's to use electrs instead of Fulcrum
 
     Continue Fulcrum installation?     
 
