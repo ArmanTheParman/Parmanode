@@ -37,7 +37,7 @@ mempool_backend
 #choose_mempool_tor
 
 cd $hp/mempool/docker 
-docker-compose up -d
+docker-compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 if docker ps >/dev/null 2>&1 ; then
@@ -46,6 +46,11 @@ string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print 
 debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
+
+        if ! docker network inspect docker_PM_netowrk >/dev/null 2>&1 ; then 
+        announce "some problem with starting the container. Aborting. Please let Parman know to fix."
+        return 1
+        fi
 
     stringIP="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" )"
 
@@ -69,7 +74,14 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
 fi ; fi #end if docker ps
 
-installed_conf_add "mempool-end"
-filter_notice
-success "Mempool" "being installed"
+if docker ps | grep -q mempool ; then
+    installed_conf_add "mempool-end"
+    filter_notice
+    success "Mempool" "being installed"
+else
+announce "There was some problem with the installation. 
+    You might need to uninstall and try again.
+    Please let Parman know to fix."
+return 1
+fi
 }

@@ -101,5 +101,9 @@ cat << EOF | tee -a $file >/dev/null 2>&1
     networks:
       - PM_network
 EOF
-
+if [[ $OS == Mac ]] ; then
+echo "volumes:
+  mariadb_data:
+  mysql_data:" | sudo tee -a $file >/dev/null 2>&1
+fi
 }
