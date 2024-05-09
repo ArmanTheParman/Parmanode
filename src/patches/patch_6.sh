@@ -1,5 +1,5 @@
 function patch_6 {
-debug "patch 5"
+debug "patch 6"
 
 if [[ -e /usr/local/bin/rp ]] ; then
 delete_line "/usr/local/bin/rp" "run_parmanode" 
