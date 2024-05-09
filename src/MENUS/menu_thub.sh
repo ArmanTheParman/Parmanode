@@ -22,6 +22,8 @@ $running
 
                     (stop)                Stop Thunderhub
 
+                    (restart)             Must I tell you what this does?
+
     Connection URL:
 $cyan
     http://127.0.0.1:$thub_port 
@@ -39,6 +41,10 @@ start_thunderhub
 ;;
 stop)
 stop_thunderhub
+;;
+restart)
+stop_thunderhub
+start_thunderhub
 ;;
 *)
 invalid

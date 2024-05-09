@@ -6,10 +6,10 @@ cert=$(xxd -p -c 256 $HOME/.lnd/tls.cert | tr -d '\n')
 macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 echo -e "
 masterPassword: $password
-accounts: $macaroon
+accounts: 
   - name: Parmanode LND Account 1
     serverUrl: $LNDIP:$lnd_rpc_port
-    macaroon: $(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') 
+    macaroon:  $macaroon
     certificate: $cert
 " | tee $hp/thunderhub/account_1.yaml >/dev/null 2>&1
 sudo chown 0:0 $hp/thunderhub/account_1.yaml

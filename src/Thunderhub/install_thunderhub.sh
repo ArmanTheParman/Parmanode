@@ -31,7 +31,7 @@ sned_sats
 if [[ $OS == Mac ]] ; then
 LNDIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 else
-LNDIP=IP
+LNDIP=$IP
 fi
 
 #check port with netstat -tulnp
