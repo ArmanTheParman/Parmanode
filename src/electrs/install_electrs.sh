@@ -29,7 +29,7 @@ if [[ -e $bc ]] ; then
 source $bc >/dev/null
 else
 clear
-echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
+echo "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
 supposed to sync to the external drive and it is not connected and mounted.
 Hit <enter> to try again once you connect the drive."
 fi
@@ -56,7 +56,7 @@ echo -e "
     It's advisable if Bitcoin is stopped when electrs is being installed to conserve
     system resources for the compiling procedure. Shall Parmanode stop it for you? 
 
-               y)       Stops Bitcoin Core for now
+               y)       Stop Bitcoin Core for now
 
                n)       Leave Bitcoin Core running
 
@@ -179,7 +179,7 @@ set_terminal ; echo -e "
 ########################################################################################
     Note that Electrum Server won't work if Bitcoin is pruned. You'll have to 
     completely start bitcoin sync again without pruning to use Electrs. Sorry. If you 
-    think this is wrong and want to procete, type 'yolo' then <enter>. Otherwsie, just 
+    think this is wrong and want to proceed, type 'yolo' then <enter>. Otherwise, just 
     hit $green<enter>$orange
 ########################################################################################
 "
