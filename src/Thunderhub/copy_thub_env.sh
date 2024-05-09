@@ -10,7 +10,7 @@ LOG_LEVEL='debug'
 # Can change loging output type:
 # LOG_JSON=true
 # Can make everything go through tor:
-# TOR_PROXY_SERVER=socks://host.docker.internal:9050
+# TOR_PROXY_SERVER=socks://$LNDIP:9050
 # DISABLE_TWOFA=true
 
 # -----------
@@ -72,7 +72,7 @@ ACCOUNT_CONFIG_PATH='/app/account_1.yaml'
 # Useful for public (non local network) configurations.
 # Otherwise, omit cookie, and enable Dangerous_no_sso_auth=true
 # COOKIE_PATH='/path/to/cookie/.cookie'
-# SSO_SERVER_URL='host.docker.internal:10009'
+# SSO_SERVER_URL='$LNDIP:10009'
 # SSO_CERT_PATH='/path/to/certificate/tls.cert'
 # SSO_MACAROON_PATH='/path/to/folder/containing/macaroons'
 # DANGEROUS_NO_SSO_AUTH=true

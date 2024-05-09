@@ -27,6 +27,12 @@ export version="v0.13.30"
 # export file=$hp/thunderhub/.env 
 export file=$hp/thunderhub/.env.local #adding '.local' prevents overriding file when updating.
 sned_sats
+##### LND IP
+if [[ $OS == Mac ]] ; then
+LNDIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
+else
+LNDIP=IP
+fi
 
 #check port with netstat -tulnp
 while true ; do
