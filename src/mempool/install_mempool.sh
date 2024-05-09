@@ -37,7 +37,7 @@ mempool_backend
 #choose_mempool_tor
 
 cd $hp/mempool/docker 
-docker-compose up -d || debug "compose up didn't work"
+docker compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
 if docker ps >/dev/null 2>&1 ; then

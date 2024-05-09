@@ -17,7 +17,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-cd $hp/mempool/docker && docker-compose down
+cd $hp/mempool/docker && docker compose down
 #need sudo, some dirs have container permissions
 cd $hp && sudo rm -rf ./mempool/
 delete_line "/etc/tor/torrc" "mempool-service"
