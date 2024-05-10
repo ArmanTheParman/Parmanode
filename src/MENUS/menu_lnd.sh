@@ -94,7 +94,7 @@ colour1="$green" ; else colour1="$red" ; fi
 if [[ $torhybrid == Enabled ]] ; then
 colour2="$green" ; else colour2="$red" ; fi
 
-if [[ -z $lnddockermenu ]] ; then
+if [[ $lnddockermenu == "false" ]] ; then
 
     if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
     lndrunning="true"
