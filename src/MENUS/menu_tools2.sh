@@ -10,6 +10,8 @@ echo -e "
 
               (curl)      Test bitcoin curl/rpc command (for troubleshooting)
 
+              (grpcurl)   RPC call test to LND
+
               (rf)        Refresh Parmanode script directory              
 
               (sr)        System report (for getting troubleshooting help)
@@ -17,6 +19,7 @@ echo -e "
               (ww)        Wireless driver install (rtl8812au)
 
               (fs)        Free up some space
+
 $orange
 ########################################################################################
 "
@@ -29,6 +32,10 @@ q|Q) exit ;;  m|M) back2main ;; p|P) return 0 ;;
 curl)
 bitcoin_curl
 return 0
+;;
+
+grpcrul)
+grpccurl_call
 ;;
 
 rf)
