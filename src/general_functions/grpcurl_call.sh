@@ -54,7 +54,7 @@ if ! which grpcurl >/dev/null ; then
         fi
         clear
         echo -e "${green}Installing grpcurl...$orange"
-        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest | tee /tmp/gocheck
+        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/gocheck 
         if cat /tmp/gocheck | grep -q "module requires Go 1.19" ; then
             sudo rm -rf /usr/local/go >/dev/null 2>&1
             sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
