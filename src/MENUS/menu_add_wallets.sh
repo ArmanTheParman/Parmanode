@@ -64,57 +64,57 @@ m|M) back2main ;;
     s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then
        install_sparrow
-       return 0
+       back2main 
        fi
        ;;
    r|R|RTL|rtl|Rtl)
       if [[ -n $rtl_n ]] ; then
       install_rtl 
-      return 0
+      back2main 
       fi
       ;;
    th)
       if [[ -n $thunderhub_n ]] ; then
       install_thunderhub
-      return 0
+      back2main
       fi
       ;;
    e|E|electrum|Electrum|ELECTRUM)
       if [[ -n $electrum_n ]] ; then
       install_electrum
-      return 0
+      back2main 
       fi
       ;;
    specter|Specter|SPECTER)
       if [[ -n $specter_n ]] ; then
       install_specter
-      return 0
+      back2main 
       fi
       ;;
    lnb|LNB|Lnb)
       if [[ -n $lnbits_n ]] ; then
         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
         install_lnbits
-        return 0
+        back2main 
       fi
       ;;
    trz|TRZ|Trz)
       if [[ -n $trezor_n ]] ; then
       install_trezor
-      return 0
+      back2main 
       fi
       ;;
    bb|BB|Bb)
       if [[ -n $bitbox_n ]] ; then
       install_bitbox 
-      return 0
+      back2main 
       fi
       ;;
    
    ll|LL|Ll)
       if [[ -n $ledger_n ]] ; then
       install_ledger
-      return 0
+      back2main 
       fi
       ;;
 
