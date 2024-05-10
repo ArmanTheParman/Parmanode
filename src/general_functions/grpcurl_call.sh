@@ -46,6 +46,8 @@ if ! which grpcurl >/dev/null ; then
     else
         clear
         echo -e "${green}Installing grpcurl...$orange"
+        sudo apt update -y
+        sudo apt install golang-go -y
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
     fi
 fi
