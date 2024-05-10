@@ -38,6 +38,9 @@ read curlIP
 set_terminal
 case $curlIP in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
+"")
+curlIP="127.0.0.1"
+;;
 esac
  
 set_terminal ; echo -e "
@@ -45,7 +48,7 @@ set_terminal ; echo -e "
 $cyan
     Please enter the macaroon path $orange
 
-    <enter> alone for default ($HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)
+    <enter> alone for default (\$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)
 
 ########################################################################################
 "
@@ -53,6 +56,9 @@ read macaroonpath
 set_terminal
 case $macaroonpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
+"")
+macaroonpath="$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon"
+;;
 esac
 
 set_terminal ; echo -e "
@@ -60,7 +66,7 @@ set_terminal ; echo -e "
 $cyan
     Please enter the tls certificat path $orange
 
-    <enter> alone for default ($HOME/.lnd/tls.cert)
+    <enter> alone for default (\$HOME/.lnd/tls.cert)
 
 ########################################################################################
 "
@@ -68,13 +74,15 @@ read tlscertpath
 set_terminal
 case $tlscertpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
+"")
+tlscertpath="$HOME/.lnd/tls.cert"
 esac
 
-grpcurl -cacert $HOME/.lnd/tls.cert \
+grpcurl -cacert $tlscertpath \
     -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
-    -rpc-header "macaroon: $(xxd -ps -u -c 1000 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)" \
+    -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
     127.0.0.1:10009 lnrpc.Lightning/GetInfo \
 && rm -rf /tmp/go 2>/dev/null
 
