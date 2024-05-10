@@ -54,6 +54,7 @@ if ! which grpcurl >/dev/null ; then
         clear
         echo -e "${green}Installing grpcurl...$orange"
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+        echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
     fi
 fi
 }
