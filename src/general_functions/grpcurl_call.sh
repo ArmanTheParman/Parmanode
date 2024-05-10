@@ -64,5 +64,6 @@ function get_lightning_proto {
 if [[ ! -e $HOME/parmanode/lnd/lightning.proto ]] ; then
 cd $HOME/parmanode/lnd/
 curl -LO https://raw.githubusercontent.com/lightningnetwork/lnd/4a9ab6e538e4c69a6cd5e91f1ce1752d9c360c90/lnrpc/lightning.proto
+fi
 return 0
 }
