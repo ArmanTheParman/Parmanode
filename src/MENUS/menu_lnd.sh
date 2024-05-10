@@ -6,11 +6,11 @@ unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 if docker inspect lnd >/dev/null 2>&1 ; then
 export lnddockermenu=true
 else
-unset lndockermenu
+export lndockermenu=false
 fi
 
 debug "container lnd"
-if [[ -z $lnddockermenu ]] ; then #non docker
+if [[ $lnddockermenu == false ]] ; then #non docker
 debug "in lndockermenu if"
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 unset dkrmenu inside_docker
