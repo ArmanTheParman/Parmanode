@@ -24,21 +24,3 @@ break ;;
 *) invalid ;;
 esac
 done
-
-set_terminal ; echo -e "
-########################################################################################
-
-    Please note, because Thunderhub will allow connections from computers without 
-    cookie authentication, it's best to$red not expose the wallet to the internet,$orange eg 
-    access via a domain, open ports on your router etc, as password authentication
-    is not the most secure method.
-
-    If you do want to do that, you should enable cookie authentication. Parmanode does
-    not support that yet, but you can configure it yourself if you know what you're 
-    doing.
-
-########################################################################################
-"
-enter_continue
-set_terminal
-}
