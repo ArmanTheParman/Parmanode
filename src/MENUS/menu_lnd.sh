@@ -9,9 +9,11 @@ fi
 
 debug "container lnd"
 if [[ -z $lnddockermenu ]] ; then #non docker
+debug "in lndockermenu if"
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 unset dkrmenu inside_docker
 else #docker
+debug "in lndockermenu else"
 export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 dkrmenu="
       (dks)            Start Docker container (and LND)
