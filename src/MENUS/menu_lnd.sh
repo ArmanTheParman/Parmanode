@@ -3,7 +3,7 @@ while true ; do
 set_terminal
 unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 
-if docker ps >/dev/null 2>&1 | grep lnd ; then
+if docker ps | grep -q lnd ; then
 debug "in if docker inspect, true"
 export lnddockermenu="true"
 else
