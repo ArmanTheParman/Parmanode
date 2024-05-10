@@ -55,11 +55,16 @@ if ! which grpcurl >/dev/null ; then
         clear
         echo -e "${green}Installing grpcurl...$orange"
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/gocheck 
-        if cat /tmp/gocheck | grep -q "module requires Go 1.19" ; then
-            sudo rm -rf /usr/local/go >/dev/null 2>&1
-            sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
-            sudo rm -rf /usr/bin/go >/dev/null 2>&1
-            go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2> tee /tmp/gocheck
+        # if cat /tmp/gocheck | grep -q "module requires Go 1.19" ; then
+        #     sudo rm -rf /usr/local/go >/dev/null 2>&1
+        #     sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
+        #     sudo rm -rf /usr/bin/go >/dev/null 2>&1
+        #     # mkdir /tmp/go ; cd /tmp/go
+        #     # curl -LO https://dl.google.com/go/go1.20.2.linux-amd64.tar.gz
+        #     # sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
+        #     # rm go*tar.gz
+        # fi
+
         fi
         echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
         source $HOME/.bashrc >/dev/null
