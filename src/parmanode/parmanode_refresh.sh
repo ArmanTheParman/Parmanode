@@ -25,9 +25,12 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;;
 a|A) return 1 ;;
 rf)
-cd $HOME/parman_programs && rm -rf ./parmanode
-git clone https://github.com/armantheparman/parmanode.git
-pn
+cd $HOME
+git clone https://github.com/armantheparman/parmanode.git parmanode_temp
+cat ./parmanode_temp/do_not_delete_move_rename.txt 2>/dev/null || { echo "Some problem with the download. Aborting. You might wnat to try again later." ; enter_continue ; return 1 ; }
+rm -rf $HOME/parman_programs/parmanode >/dev/null 2>&1
+mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >/dev/null 2>&1
+cd $pn
 git config pull.rebase false >/dev/null 2>&1
 success "The Parmanode script directory has been refreshed"
 announce "Parmanode will quit now so the changes take effect."
