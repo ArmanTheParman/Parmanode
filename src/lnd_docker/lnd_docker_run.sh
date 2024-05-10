@@ -59,15 +59,28 @@ unset text
 #othersie it will mount .bitcoin
 # port 10009 on the host to send traffic to lnd. 10010 on the container side to avoid port conflic.
 # 10010 redicrected to 10009 inside container with reverse proxy stream
+if [[ $OS == Mac ]] ; then
 if ! docker ps | grep -q lnd ; then
 docker run -d --name lnd \
            -v $HOME/.lnd:/home/parman/.lnd $text \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
            -p 9735:9735 \
            -p 8080:8080 \
-           -p 10009:10010 \
+           -p 10010:10010 \
            lnd
 fi
+else
+if ! docker ps | grep -q lnd ; then
+docker run -d --name lnd \
+           -v $HOME/.lnd:/home/parman/.lnd $text \
+           -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
+           --network=host \
+           lnd
+fi
+fi
+
+
+
 unset menutext text
 }
 
