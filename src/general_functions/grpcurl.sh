@@ -11,6 +11,7 @@ if ! which grpcurl >/dev/null ; then
         echo -e "${green}Installing grpcurl...$orange"
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
     fi
+fi
 
     grpcurl -plaintext \
     -import-path $hp/lnd/lnrpc/ \
