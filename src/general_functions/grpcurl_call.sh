@@ -66,8 +66,10 @@ if ! which grpcurl >/dev/null ; then
         # fi
 
         # fi
-        echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
-        source $HOME/.bashrc >/dev/null
+        if ! sudo cat $HOME/.bashrc | grep -q "go/bin" ; then
+            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+            source $HOME/.bashrc >/dev/null
+        fi
     fi
 fi
 }
