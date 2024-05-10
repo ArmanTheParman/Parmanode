@@ -26,6 +26,7 @@ esac
 done
 
 install_grpcurl
+get_lightning_proto
 enter_continue
     grpcurl -plaintext \
     -import-path $HOME/parmanode/lnd/lnrpc/ \
@@ -57,4 +58,11 @@ if ! which grpcurl >/dev/null ; then
         echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
     fi
 fi
+}
+
+function get_lightning_proto {
+if [[ ! -e $HOME/parmanode/lnd/lightning.proto ]] ; then
+cd $HOME/parmanode/lnd/
+curl -LO https://raw.githubusercontent.com/lightningnetwork/lnd/4a9ab6e538e4c69a6cd5e91f1ce1752d9c360c90/lnrpc/lightning.proto
+return 0
 }
