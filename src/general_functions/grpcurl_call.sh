@@ -57,6 +57,8 @@ if ! which grpcurl >/dev/null ; then
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest | tee /tmp/gocheck
         if cat /tmp/gocheck | grep -q "module requires Go 1.19" ; then
             sudo rm -rf /usr/local/go >/dev/null 2>&1
+            sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
+            sudo rm -rf /usr/bin/go >/dev/null 2>&1
             go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest | tee /tmp/gocheck
         fi
         echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
