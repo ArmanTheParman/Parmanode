@@ -143,7 +143,7 @@ $dkrmenu
 
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR                  Currently: $colour1$lndtor$orange
+      (t)              Enable/disable TOR $pink(Macs too!)$orange      Currently: $colour1$lndtor$orange
 
       (th)             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
 
