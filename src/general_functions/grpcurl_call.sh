@@ -28,7 +28,7 @@ done
 install_grpcurl
 get_lightning_proto
 enter_continue
-    grpcurl -cacert $HOME/.lnd/tls.cert \
+    $HOME/go/bin/grpcurl -cacert $HOME/.lnd/tls.cert \
     -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
