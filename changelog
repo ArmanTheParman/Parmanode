@@ -1,3 +1,5 @@
+Version 3.36.4
+    -LND install bug fixed
 Version 3.36.3
     -Mac LND patch (nginx stream file)
 Version 3.36.2
