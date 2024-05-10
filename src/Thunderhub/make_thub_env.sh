@@ -24,3 +24,4 @@ break ;;
 *) invalid ;;
 esac
 done
+}
