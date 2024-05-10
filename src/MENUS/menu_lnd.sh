@@ -1,6 +1,7 @@
 function menu_lnd {
 while true ; do
 set_terminal
+please_wait
 unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 
 if docker ps | grep -q lnd ; then
