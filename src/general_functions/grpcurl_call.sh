@@ -92,7 +92,7 @@ q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 tlscertpath="$HOME/.lnd/tls.cert"
 esac
 
-grpcurl -cacert $tlscertpath \
+$HOME/go/bin/grpcurl -cacert $tlscertpath \
     -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
