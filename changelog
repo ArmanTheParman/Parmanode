@@ -1,4 +1,6 @@
-Version 3.36.1
+Version 3.36.3
+    -Mac LND patch (nginx stream file)
+Version 3.36.2
     -grpcurl tool added
     -Patch6
 Version 3.36.1
