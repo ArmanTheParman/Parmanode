@@ -6,10 +6,11 @@ unset chip_4lnd
 cp $pn/src/lnd_docker/Dockerfile $file >/dev/null
 cp $pn/src/nginx/stream_lnd.conf $hp/lnd/ >/dev/null
  
-if [[ $chip == x86_64 ]] ; then chip_4lnd=amd64 ; fi
-if [[ $chip == arm64  ]] ; then chip_4lnd=arm64 ; fi
-if [[ $chip == armv6l ]] ; then chip_4lnd=armv6 ; fi
-if [[ $chip == armv7l ]] ; then chip_4lnd=armv7 ; fi
+if [[ $chip == x86_64  ]] ; then chip_4lnd=amd64 ; fi
+if [[ $chip == arm64   ]] ; then chip_4lnd=arm64 ; fi
+if [[ $chip == armv6l  ]] ; then chip_4lnd=armv6 ; fi
+if [[ $chip == armv7l  ]] ; then chip_4lnd=armv7 ; fi
+if [[ $chip == aarch64 ]] ; then chip_4lnd=arm64 ; fi
 
 if [[ -z $chip_4lnd ]] ; then
 while true ; do
