@@ -1,9 +1,17 @@
 function menu_thub {
 
+
 while true ; do
 
 source $pc >/dev/null
 get_onion_address_variable thunderhub
+
+if [[ $OS == Mac ]] ; then 
+tornotwithmac=""
+else
+$bright_blue    http://$ONION_ADDR_THUB:2050 $orange
+fi
+
 if docker ps 2>/dev/null | grep -q thunderhub ; then
 running="                           Thunderhub is$green    Running$orange
 "
@@ -28,7 +36,7 @@ $running
 $cyan
     http://127.0.0.1:$thub_port 
     http://$IP:$thub_port
-$bright_blue    http://$ONION_ADDR_THUB:2050 $orange
+$tornotwithmac
 $orange
 ########################################################################################
 "
