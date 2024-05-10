@@ -55,8 +55,8 @@ $au_message
     The apps you have already installed will not be changed.
 
 
-$latest_version
-$version
+Latest: $latest_version
+Newest: $version
 ########################################################################################
 "
 choose "xq" ; read choice
