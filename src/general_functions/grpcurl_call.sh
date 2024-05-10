@@ -74,8 +74,9 @@ if ! which grpcurl >/dev/null ; then
         /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck2
         if ! sudo cat $HOME/.bashrc | grep -q "$HOME/go/bin" ; then
             clear
-            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | tee -a $HOME/.bashrc >/dev/null 2>&1
             source $HOME/.bashrc >/dev/null
+            alias gprcurl=$HOME/go/bin/grpcurl
         fi
 
 
