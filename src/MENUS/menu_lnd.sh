@@ -7,8 +7,10 @@ if docker inspect lnd >/dev/null 2>&1 ; then
 export lnddockermenu=true
 fi
 
+debug "container lnd"
 if [[ -z $lnddockermenu ]] ; then #non docker
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+unset dkrmenu inside_docker
 else #docker
 export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 dkrmenu="
