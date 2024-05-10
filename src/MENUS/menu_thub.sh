@@ -3,7 +3,7 @@ function menu_thub {
 while true ; do
 
 source $pc >/dev/null
-
+get_onion_address thunderhub
 if docker ps 2>/dev/null | grep -q thunderhub ; then
 running="                           Thunderhub is$green    Running$orange
 "
@@ -28,7 +28,7 @@ $running
 $cyan
     http://127.0.0.1:$thub_port 
     http://$IP:$thub_port
-    http://$ONION_ADDR_THUB:2050
+$bright_blue    http://$ONION_ADDR_THUB:2050 $orange
 $orange
 ########################################################################################
 "
