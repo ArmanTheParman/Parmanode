@@ -8,7 +8,7 @@ debug "in if docker inspect, true"
 export lnddockermenu="true"
 else
 debug "in if docker inspect, false"
-export lndockermenu="false"
+export lnddockermenu="false"
 fi
 
 debug "container lnd"
