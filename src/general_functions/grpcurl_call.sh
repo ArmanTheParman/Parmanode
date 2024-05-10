@@ -31,7 +31,7 @@ get_lightning_proto
 
 set_terminal ; echo -e "
 ########################################################################################
-$cyan        Please enter the IP address (<enter> alone for 127.0.0.1, x to return)
+$cyan        Please enter the IP address (<enter> alone for 127.0.0.1, x to return) $orange
 ########################################################################################
 "
 read curlIP
