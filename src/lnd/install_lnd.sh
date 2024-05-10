@@ -10,7 +10,7 @@ install_check "lnd" || return 1
 
 please_wait
 
-make_lnd_directories || return 1
+make_lnd_directories || return 1                ; debug "after make lnd dir"
 installed_config_add "lnd-start" 
 
 download_lnd
@@ -38,7 +38,7 @@ create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary 
 gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
 gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 # password file and needs new wallet to do so.
-
+debug "after gsed"
 #start git repository in .lnd directory to allow undo's
 cd $HOME/.lnd && git init >/dev/null 2>&1
 fi
