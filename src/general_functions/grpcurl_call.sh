@@ -106,7 +106,7 @@ return 0
 
 
 function install_grpcurl {
-if ! which grpcurl >/dev/null ; then
+if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
 
     if [[ $OS == Mac ]] ; then 
         clear
