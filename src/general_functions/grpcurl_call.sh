@@ -36,7 +36,7 @@ $cyan        Please enter the IP address (<enter> alone for 127.0.0.1, x to retu
 "
 read curlIP
 set_terminal
-case $choice in
+case $curlIP in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 esac
  
@@ -51,7 +51,7 @@ $cyan
 "
 read macaroonpath 
 set_terminal
-case $choice in
+case $macaroonpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 esac
 
@@ -66,7 +66,7 @@ $cyan
 "
 read tlscertpath 
 set_terminal
-case $choice in
+case $tlscertpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 esac
 
