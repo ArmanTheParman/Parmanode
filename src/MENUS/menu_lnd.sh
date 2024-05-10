@@ -4,8 +4,10 @@ set_terminal
 unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 
 if docker inspect lnd >/dev/null 2>&1 ; then
+debug "in if docker inspect, true"
 export lnddockermenu=true
 else
+debug "in if docker inspect, false"
 export lndockermenu=false
 fi
 
