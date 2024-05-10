@@ -60,7 +60,7 @@ if ! which grpcurl >/dev/null ; then
             rm go*tar.gz
             if ! sudo cat $HOME/.bashrc | grep -q "/usr/local/go" ; then
                 clear
-                echo "export PATH=\"\$PATH:/usr/local/go" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+                echo "export PATH=\"\$PATH:/usr/local/go\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
                 source $HOME/.bashrc >/dev/null
             fi
         fi
