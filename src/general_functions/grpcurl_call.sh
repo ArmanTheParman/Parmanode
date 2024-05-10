@@ -33,7 +33,7 @@ enter_continue
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)" \
-    localhost:10009 lnrpc.Lightning/GetInfo
+    127.0.0.1:10009 lnrpc.Lightning/GetInfo
 enter_continue
 }
 
