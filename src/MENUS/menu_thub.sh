@@ -28,7 +28,7 @@ $running
 $cyan
     http://127.0.0.1:$thub_port 
     http://$IP:$thub_port
-    $THUB_ONION_ADDR
+    http://$ONION_ADDR_THUB:2050
 $orange
 ########################################################################################
 "

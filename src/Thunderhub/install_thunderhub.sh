@@ -74,7 +74,7 @@ make_thub_env || return 1
 make_thunderhub_account || return 1
 build_thub || return 1 
 run_thub_docker || return 1
-
+enable_tor_thunderhub
 unset version file password password2
 
 installed_conf_add "thunderhub-end"
