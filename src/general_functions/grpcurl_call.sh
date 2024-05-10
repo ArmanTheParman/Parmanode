@@ -55,12 +55,13 @@ if ! which grpcurl >/dev/null ; then
             sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
             sudo rm -rf /usr/bin/go >/dev/null 2>&1
             sudo rm -rf /tmp/go ; mkdir /tmp/go ; cd /tmp/go    
+            if [[ ! -e /tmp/go/go*tar.gz ]] ; then
             curl -LO https://dl.google.com/go/go1.20.2.linux-amd64.tar.gz
+            fi
             sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
-            rm go*tar.gz
-            if ! sudo cat $HOME/.bashrc | grep -q "/usr/local/go" ; then
+            if ! sudo cat $HOME/.bashrc | grep -q "/usr/local/go/bin" ; then
                 clear
-                echo "export PATH=\"\$PATH:/usr/local/go\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+                echo "export PATH=\"\$PATH:/usr/local/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
                 source $HOME/.bashrc >/dev/null
             fi
         fi
