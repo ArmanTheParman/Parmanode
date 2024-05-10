@@ -26,7 +26,7 @@ esac
 done
 
 install_grpcurl
-
+enter_continue
     grpcurl -plaintext \
     -import-path $HOME/parmanode/lnd/lnrpc/ \
     -proto lightning.proto \
