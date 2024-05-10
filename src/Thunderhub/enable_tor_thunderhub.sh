@@ -1,5 +1,5 @@
 function enable_tor_thunderhub {
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == Mac ]] ; then return 0 ; fi
 source $pc
 
 enable_tor_general || return 1
