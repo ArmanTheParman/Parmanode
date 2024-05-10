@@ -32,8 +32,10 @@ mkdir $HOME/.lnd >/dev/null 2>&1
 break
 ;;
 3)
-announce "Note that if this$cyan ~/.lnd/$orange directory was not created by Parmanode, 
-    you could experience technical issues that I can't predict.$red
+announce "Note that if this$cyan ~/.lnd/$orange directory that you're 'importing' 
+    was not created by Parmanode, you could experience technical issues that 
+    I can't predict.$red
+
     <control>-c$orange can abort now."
 export reusedotlnd=true
 break
