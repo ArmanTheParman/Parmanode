@@ -4,11 +4,11 @@ function menu_thub {
 while true ; do
 
 source $pc >/dev/null
-get_onion_address_variable thunderhub
 
 if [[ $OS == Mac ]] ; then 
 tornotwithmac=""
 else
+get_onion_address_variable thunderhub
 $bright_blue    http://$ONION_ADDR_THUB:2050 $orange
 fi
 
