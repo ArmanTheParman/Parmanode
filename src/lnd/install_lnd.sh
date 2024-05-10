@@ -22,8 +22,8 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode
 if [[ $reusedotlnd != true ]] ; then
 set_lnd_port
 #password file, even if blank, needs to exists for lnd conf file to be valid
-if [[ ! -e $HOME/.lnd ]] ; then mkdir $HOME/.lnd ; sudo chown $USER:$USER $HOME/.lnd >/dev/null ; fi
-debug "after mkdir .lnd"
+# if [[ ! -e $HOME/.lnd ]] ; then mkdir $HOME/.lnd ; sudo chown $USER:$USER $HOME/.lnd >/dev/null ; fi
+# debug "after mkdir .lnd"
 if [[ ! -e $HOME/.lnd/password.txt ]] ; then sudo touch $HOME/.lnd/password.txt ; fi
 make_lnd_conf
 set_lnd_alias #needs to have lnd conf existing

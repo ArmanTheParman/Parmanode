@@ -43,6 +43,8 @@ invalid
 ;;
 esac 
 done
+else
+mkdir $HOME/.lnd >/dev/null 2>&1
 fi
 }
 
