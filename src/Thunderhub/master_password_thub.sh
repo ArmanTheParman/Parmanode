@@ -21,7 +21,6 @@ read password2 ; clear
 if [[ $password == $password2 ]] ; then break 
 else
 
-while true ; do
 set_terminal echo -e "
 ########################################################################################
     
@@ -33,7 +32,6 @@ choose "epq" "try again" ; read choice
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; *) continue ;; 
 esac 
-done
 fi
 done
 #swap_string "$file" "MASTER_PASSWORD_OVERRIDE='password'" "MASTER_PASSWORD_OVERRIDE='$password'" 
