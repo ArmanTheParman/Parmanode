@@ -1,0 +1,7 @@
+substitute string
+sed -i 's/oldstring/newstring/g' file
+g is optional (global)
+ends in /, after newstring
+
+replace whole line if string found...
+sed -i '/search/c\new string' file
