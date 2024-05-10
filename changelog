@@ -1,6 +1,8 @@
 Version 3.36.1
-    -Mempool Mac docker compose compatibility fixed
+    -grpcurl tool added
     -Patch6
+Version 3.36.1
+    -Mempool Mac docker compose compatibility fixed
 Version 3.36.0
     -LND for Mac
     -RTL for Mac
