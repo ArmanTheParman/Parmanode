@@ -29,7 +29,7 @@ install_grpcurl
 get_lightning_proto
 enter_continue
     grpcurl -plaintext \
-    -import-path $HOME/parmanode/lnd/lnrpc/ \
+    -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)" \
