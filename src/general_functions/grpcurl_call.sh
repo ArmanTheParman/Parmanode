@@ -39,7 +39,7 @@ set_terminal
 case $curlIP in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 "")
-curlIP="127.0.0.1"
+export curlIP="127.0.0.1"
 ;;
 esac
 
@@ -48,7 +48,7 @@ set_terminal ; echo -e "
 $cyan        Please enter the gRPC port ($green<enter>$cyan alone for 10009 default) $orange
 ########################################################################################
 "
-read curlIP
+read gRPCport 
 set_terminal
 case $gRPCport in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
