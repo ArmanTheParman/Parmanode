@@ -72,6 +72,11 @@ if ! which grpcurl >/dev/null ; then
         echo -e "${green}Installing grpcurl...$orange"
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck ||
         /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck2
+        if ! sudo cat $HOME/.bashrc | grep -q "$HOME/go/bin" ; then
+            clear
+            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+            source $HOME/.bashrc >/dev/null
+        fi
 
 
     fi #if os end
