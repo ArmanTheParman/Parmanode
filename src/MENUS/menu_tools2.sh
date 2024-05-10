@@ -10,7 +10,7 @@ echo -e "
 
               (curl)      Test bitcoin curl/rpc command (for troubleshooting)
 
-              (grpcurl)   RPC call test to LND
+              (gc)        RPC call test to LND (grpcurl)
 
               (rf)        Refresh Parmanode script directory              
 
@@ -34,7 +34,7 @@ bitcoin_curl
 return 0
 ;;
 
-grpcurl)
+gc)
 grpccurl_call
 ;;
 
