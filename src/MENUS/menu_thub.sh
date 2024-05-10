@@ -3,7 +3,7 @@ function menu_thub {
 while true ; do
 
 source $pc >/dev/null
-get_onion_address thunderhub
+get_onion_address_variable thunderhub
 if docker ps 2>/dev/null | grep -q thunderhub ; then
 running="                           Thunderhub is$green    Running$orange
 "
