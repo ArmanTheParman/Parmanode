@@ -97,17 +97,17 @@ colour2="$green" ; else colour2="$red" ; fi
 if [[ -z $lnddockermenu ]] ; then
 
     if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
-    lndrunning=true
+    lndrunning="true"
     else 
-    lndrunning=false
+    lndrunning="false"
     fi
 
 else #docker
 
     if docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
-    lndrunning=true
+    lndrunning="true"
     else 
-    lndrunning=false
+    lndrunning="false"
     fi
 fi
 
@@ -117,7 +117,7 @@ set_terminal_custom 55 ; echo -e "
 ########################################################################################
 
 "
-if [[ $lndrunning == true ]] ;  then echo -e "
+if [[ $lndrunning == "true" ]] ;  then echo -e "
                    LND IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo -e "
