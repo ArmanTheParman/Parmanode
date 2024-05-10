@@ -34,7 +34,7 @@ bitcoin_curl
 return 0
 ;;
 
-grpcrul)
+grpcurl)
 grpccurl_call
 ;;
 
