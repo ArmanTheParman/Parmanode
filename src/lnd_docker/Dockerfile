@@ -1,11 +1,12 @@
 FROM debian:latest 
+ARG parmanID=1000
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
        wget gnupg sudo procps curl git vim nano ca-certificates iproute2 tor nginx-full \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Make users and groups and directories
-RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
+RUN groupadd -r parman && useradd -m -g parman -u $parmanID parman 
 RUN chown -R parman:parman /home/parman/
 RUN usermod -aG sudo parman 
 RUN echo 'parman:parmanode' | chpasswd
