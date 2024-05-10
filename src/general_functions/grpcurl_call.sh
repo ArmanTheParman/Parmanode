@@ -33,7 +33,8 @@ enter_continue
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)" \
-    127.0.0.1:10009 lnrpc.Lightning/GetInfo
+    127.0.0.1:10009 lnrpc.Lightning/GetInfo \
+&& rm -rf /tmp/go 2>/dev/null
 enter_continue
 }
 
@@ -69,7 +70,9 @@ if ! which grpcurl >/dev/null ; then
         #install grpcurl
         clear
         echo -e "${green}Installing grpcurl...$orange"
-        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck
+        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck ||
+        /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck2
+
 
     fi #if os end
 fi
