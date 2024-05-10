@@ -14,7 +14,7 @@ $orange
     If you don't, that's fine, you just have to manually unlock the wallet ever time
     LND starts.
 
-    $green
+    $pink
         Type password and hit <enter> $orange
     or 
         Hit $cyan<enter>$orange alone to go back.
