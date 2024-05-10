@@ -59,7 +59,7 @@ if ! which grpcurl >/dev/null ; then
             sudo rm -rf /usr/local/go >/dev/null 2>&1
             sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
             sudo rm -rf /usr/bin/go >/dev/null 2>&1
-            go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest | tee /tmp/gocheck
+            go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2> tee /tmp/gocheck
         fi
         echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
         source $HOME/.bashrc >/dev/null
