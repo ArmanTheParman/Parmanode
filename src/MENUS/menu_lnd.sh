@@ -53,7 +53,7 @@ fi
 #get onion address if it exists...
 unset lnd_onion clearnetURI
 
-if [[ -z $lnddockermenu ]] ; then 
+if [[ $lnddockermenu == "false" ]] ; then 
 lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
 else
 docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>/dev/null
