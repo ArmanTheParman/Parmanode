@@ -31,7 +31,7 @@ get_lightning_proto
 
 set_terminal ; echo -e "
 ########################################################################################
-$cyan        Please enter the IP address (<enter> alone for 127.0.0.1, x to return) $orange
+$cyan        Please enter the IP address ($green<enter>$cyan alone for 127.0.0.1, x to return) $orange
 ########################################################################################
 "
 read curlIP
@@ -42,13 +42,27 @@ q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 curlIP="127.0.0.1"
 ;;
 esac
- 
+
+set_terminal ; echo -e "
+########################################################################################
+$cyan        Please enter the gRPC port ($green<enter>$cyan alone for 10009 default) $orange
+########################################################################################
+"
+read curlIP
+set_terminal
+case $gRPCport in
+q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
+"")
+gRPCport=10009
+;;
+esac 
+
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
     Please enter the macaroon path $orange
 
-    <enter> alone for default (\$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)
+    $green<enter>$orange alone for default (\$HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon)
 
 ########################################################################################
 "
@@ -66,7 +80,7 @@ set_terminal ; echo -e "
 $cyan
     Please enter the tls certificat path $orange
 
-    <enter> alone for default (\$HOME/.lnd/tls.cert)
+$cyan    <enter>$orange alone for default (\$HOME/.lnd/tls.cert)
 
 ########################################################################################
 "
@@ -83,7 +97,7 @@ grpcurl -cacert $tlscertpath \
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
-    127.0.0.1:10009 lnrpc.Lightning/GetInfo \
+    $curlIP:$gRPCport lnrpc.Lightning/GetInfo \
 && rm -rf /tmp/go 2>/dev/null
 
 enter_continue
