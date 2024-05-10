@@ -16,6 +16,7 @@ installed_config_add "lnd-start"
 download_lnd
 
 verify_lnd || return 1
+echo -e "${green}Please wait, unzipping files...$orange"
 unpack_lnd
 
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1

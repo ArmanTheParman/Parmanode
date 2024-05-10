@@ -32,7 +32,7 @@ function restart_lnd {
 
 function start_LND_loop {
 
-if grep -q "lnd-" ; then
+if grep -q "lnd-" < $ic ; then
 local counter=0
 while [[ $counter -lt 6 ]] ; do
 if sudo systemctl status >/dev/null ; then return 0 
