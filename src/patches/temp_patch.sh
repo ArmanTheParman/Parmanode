@@ -1,8 +1,8 @@
 function temp_patch {
 
 if docker ps | grep -q lnd >/dev/null && \
-docker exec lnd cat /etc/nginx/stream.conf | grep -q host.docker.internal:10009 ; then
-docker exec lnd sed -i 's/host.docker.internal:10009/127.0.0.1:10009;/' /etc/nginx/stream.conf
+docker exec -u root lnd cat /etc/nginx/stream.conf | grep -q host.docker.internal:10009 ; then
+docker exec -u root lnd sed -i 's/host.docker.internal:10009/127.0.0.1:10009;/' /etc/nginx/stream.conf
 docker exec -u root lnd nginx -s reload
 fi
 
