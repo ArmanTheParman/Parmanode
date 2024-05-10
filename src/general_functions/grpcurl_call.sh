@@ -65,7 +65,7 @@ if ! which grpcurl >/dev/null ; then
         #     # rm go*tar.gz
         # fi
 
-        fi
+        # fi
         echo "export PATH=\"\$PATH:$HOME/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
         source $HOME/.bashrc >/dev/null
     fi
