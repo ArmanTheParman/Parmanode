@@ -10,7 +10,7 @@ LOG_LEVEL='debug'
 # Can change loging output type:
 # LOG_JSON=true
 # Can make everything go through tor:
-# TOR_PROXY_SERVER=socks://$LNDIP:9050
+TOR_PROXY_SERVER=socks://host.docker.internal:9050
 # DISABLE_TWOFA=true
 
 # -----------

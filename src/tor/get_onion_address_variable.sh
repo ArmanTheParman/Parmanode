@@ -50,4 +50,9 @@ if [[ $1 == "website" ]] ; then
 export ONION_ADDR_WEBSITE="$(sudo cat /var/lib/tor/website-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+if [[ $1 == "thunderhub" ]] ; then
+export ONION_ADDR_THUB="$(sudo cat /var/lib/tor/website-service/hostname 2>/dev/null)" 
+return 0
+fi
 }

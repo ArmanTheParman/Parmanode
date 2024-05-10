@@ -25,32 +25,6 @@ break ;;
 esac
 done
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    Run over Tor?
-$green
-                              y)       yes $bright_blue    (will set to proxy 127.0.0.1:9050)
-$red
-                              n)       no
-$orange
-########################################################################################
-"
-choose "xpmq" ; read choice
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; n|N) break ;;
-y)
-if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-swap_string "$file" "TOR_PROXY_SERVER=" "TOR_PROXY_SERVER=socks://127.0.0.1:9050
-PORT=3010"
-break
-;;
-*)
-invalid ;;
-esac
-done
-
 set_terminal ; echo -e "
 ########################################################################################
 
