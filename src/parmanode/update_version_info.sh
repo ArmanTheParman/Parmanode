@@ -83,7 +83,7 @@ fi
 function export_latest_version {
 unset latest_version
 rm /tmp/latest_version.txt 2>/dev/null
-curl -sL https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
+curl -sL -H 'Cache-Control: no-cache, no-store, must-revalidate' https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > /tmp/latest_version.txt
 source /tmp/latest_version.txt && rm /tmp/latest_version.txt >/dev/null
 export latest_version="$version" >/dev/null
 export latest_vMajor="$vMajor" >/dev/null
