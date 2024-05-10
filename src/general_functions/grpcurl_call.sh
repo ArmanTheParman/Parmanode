@@ -45,9 +45,13 @@ if ! which grpcurl >/dev/null ; then
         brew install grpccurl 
     else
         clear
+        if ! which go >dev/null ; then
+            echo -e "${green}Installing go language...$orange"
+            sudo apt update -y
+            sudo apt install golang-go -y
+        fi
+        clear
         echo -e "${green}Installing grpcurl...$orange"
-        sudo apt update -y
-        sudo apt install golang-go -y
         go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
     fi
 fi
