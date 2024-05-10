@@ -5,7 +5,7 @@ source $HOME/.bitcoin/bitcoin.conf
 
 get_extIP >/dev/null 2>&1
 
-if grep -q "lnddocker" < $ic ; then
+if grep -q "lnddocker" < $ic || [[ $install == lnddocker ]] ; then
 customHOME=/home/parman
 else
 customHOME=$HOME
@@ -142,7 +142,7 @@ rpcmiddleware.enable=true
 [sweeper]
 " | tee $file >/dev/null 2>&1
 
-if [[ $install == lnddocker ]] ; then
+if [[ $install == lnddocker ]] && [[ $OS == Mac ]] ; then
 swap_string "$file" "bitcoind.zmqpubrawblock=" "bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332"
 swap_string "$file" "bitcoind.zmqpubrawtx=" "bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333"
 
