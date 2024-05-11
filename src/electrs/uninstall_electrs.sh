@@ -28,8 +28,8 @@ while true ; do
     echo -e "
 ########################################################################################
 
-    A$cyan backup$orange of electrs directory has been found in addition to the 
-    current electrs installation (${cyan}$HOME/.electrs_backup$orange)
+    A$cyan backup$orange of electrs program directory has been found in addition to 
+    the current electrs installation (${cyan}$HOME/.electrs_backup$orange)
     
     Keeping the backup can save you time compiling it all again if you choose to 
     re-install electrs.
