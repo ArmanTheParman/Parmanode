@@ -92,13 +92,23 @@ q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 tlscertpath="$HOME/.lnd/tls.cert"
 esac
 
+if [[ $OS == Linux ]] ; then
 $HOME/go/bin/grpcurl -cacert $tlscertpath \
     -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
-    $curlIP:$gRPCport lnrpc.Lightning/GetInfo \
-&& rm -rf /tmp/go 2>/dev/null
+    $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
+else
+$HOME/go/bin/grpcurl -cacert $tlscertpath \
+    -import-path $HOME/parmanode/lnd/ \
+    -proto lightning.proto \
+    -d '{}' \
+    -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
+    $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
+fi
+
+if [[ $debug != 1 ]] ; then rm -rf /tmp/go 2>/dev/null ; fi
 
 enter_continue
 return 0
