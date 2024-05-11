@@ -1,11 +1,5 @@
 function temp_patch {
 
-if docker ps 2>/dev/null | grep -q lnd >/dev/null && \
-docker exec -u root lnd cat /etc/nginx/stream.conf | grep -q host.docker.internal:10009 ; then
-docker exec -u root lnd sed -i 's/host.docker.internal:10009;/127.0.0.1:10009;/' /etc/nginx/stream.conf >/dev/null 2>&1
-docker exec -u root lnd nginx -s reload >/dev/null 2>&1
-fi
-
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
