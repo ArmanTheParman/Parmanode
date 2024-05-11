@@ -19,7 +19,7 @@ LNDIP=$IP
 return 0
 fi
 
-if ! docker ps ; then return 1 ; fi
+if ! docker ps >/dev/null 2>&1 ; then return 1 ; fi
 
 if docker ps | grep -q lnd ; then
 
