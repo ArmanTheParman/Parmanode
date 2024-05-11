@@ -31,7 +31,6 @@ fi
 if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi 
 
 
-
 case $choice in
 m|M) back2main ;;
 q|Q) exit ;;

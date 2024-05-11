@@ -21,7 +21,7 @@ $orange
 "
 choose xpmq ; read choice ; set_terminal ; 
 case $choice in
-q|Q) exit ;; p|P|a|A) return 1 ;; 
+q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
 1)
 rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
 break

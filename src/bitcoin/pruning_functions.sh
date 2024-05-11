@@ -42,7 +42,7 @@ read choice
 set_terminal
 
         case $choice in
-        m|M) back2main ;;
+        q|Q) exit ;; m|M) back2main ;; p|P) return 1 ;;
 
         prune|Prune|PRUNE)
             set_the_prune           #function definition later in this file. "prune_value" variable gets set.
@@ -60,12 +60,6 @@ set_terminal
             break                   #break goes out of loop, and on to writing prune value to parmanode.conf
             ;;
             
-        p|P)
-            return 1
-            ;;
-        q|Q|quit|QUIT)
-            exit 0
-            ;;
         *)
             invalid
             continue

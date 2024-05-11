@@ -61,7 +61,7 @@ $orange
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|x) return 1 ;;
+q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 "") break ;;
 *) invalid ;;
 esac

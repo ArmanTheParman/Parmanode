@@ -16,7 +16,7 @@ $green        pt)$orange       Parman's Tor server
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in 
-q|Q) exit ;; p|P) return 1 ;;
+q|Q) exit ;; p|P) return 1 ;; back2main ;;
 t)
 cp $pn/src/ParmanodL/ParmanodL-PI-v3.0.0.torrent $HOME/Downloads/
 announce "

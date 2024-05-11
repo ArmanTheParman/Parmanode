@@ -272,6 +272,7 @@ $orange
 "
 choose "xpmq" ; read choice ; clear
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 #turn off switch and back on
 unset bitcoin_drive_import && prune_choice && export bitcoin_drive_import=true

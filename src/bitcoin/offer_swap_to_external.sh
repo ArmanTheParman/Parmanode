@@ -8,9 +8,9 @@ set_terminal ; echo -e "
     Bitcoin is currently configured to sync to the internal drive. Would you like
     to run the wizard to swap to the external drive?
 
-            y)       nice
+                                y)       nice
 
-            n)       go away
+                                n)       go away
 
 ########################################################################################      
 "

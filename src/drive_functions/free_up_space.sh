@@ -42,7 +42,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 sudo rm -rf $dp/*.log ; rm -rf $dp/.*.log
 break
@@ -69,7 +69,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 if ! docker ps >/dev/null 2>&1 ; then
 set_terminal ; echo "Please run Docker and hit enter to try again." ; enter_continue 
@@ -103,7 +103,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 sudo rm $HOME/.local/share/Trash/*
 break
@@ -129,7 +129,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 sudo rm -rf /tmp/*
 break
@@ -155,7 +155,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 sudo apt-get clean
 break
@@ -187,7 +187,7 @@ $orange
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
+q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
 sudo apt-get update -y
 sudo apt-get --fix-broken install -y

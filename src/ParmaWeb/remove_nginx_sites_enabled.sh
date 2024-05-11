@@ -21,7 +21,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case $choice in q|Q) exit 0 ;; p|P|A|a) return 1 ;; "") break ;; *) invalid ;; 
+case $choice in q|Q) exit 0 ;; p|P|A|a) return 1 ;; "") break ;; m|M) back2main ;; *) invalid ;; 
 esac
 done
 sudo rm /etc/nginx/sites-enabled/default

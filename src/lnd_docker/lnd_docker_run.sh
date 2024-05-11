@@ -39,7 +39,7 @@ unset text
 # $orange
 # ########################################################################################
 # "
-# choose xpmq ; read choice ; set_terminal
+# choose xpmq ; read choice ; set_terminal ; back2main ;;
 # case $choice in
 # q|Q) exit ;; p|P|2|a) return 1 ;;
 # 1)

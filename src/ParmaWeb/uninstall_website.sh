@@ -34,7 +34,7 @@ $green
 $orange
 ########################################################################################
 " ; choose "xpmq" ; read choice ; set_terminal
-case $choice in q|Q) exit 0 ;; p|P) return 1 ;; l|L) break ;;
+case $choice in q|Q) exit 0 ;; p|P) return 1 ;; l|L) break ;; m|M) back2main ;;
 delete) 
 sudo rm -rf /var/www/website >/dev/null 2>&1
 break
