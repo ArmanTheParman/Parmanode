@@ -1,4 +1,4 @@
-function menu_thub {
+function menu_thunderhub {
 
 
 while true ; do

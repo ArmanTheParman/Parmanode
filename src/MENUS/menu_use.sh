@@ -354,7 +354,7 @@ ex)
    ;;
 th) 
    if [[ $thunderhubapp == 1 ]] ; then
-   menu_thub
+   menu_thunderhub
    if [[ -n $1 ]] ; then return 0 ; fi
    fi
    ;;
