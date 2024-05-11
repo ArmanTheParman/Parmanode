@@ -1,10 +1,13 @@
 function menu_lnd_more {
+source $pc
+menuDockerIP="$bright_blue                 IP address of LND (Docker Contaier) = $LNDIP$orange"
 
-while true ; do set_terminal ; echo -e "
+while true ; do set_terminal ; echo -en "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
+$menuDockerIP
 
       (ex)             Expose your LND node to other nodes
 

@@ -1,24 +1,20 @@
 function menu_lnd {
 while true ; do
 set_terminal
+
 please_wait
 unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 
 if docker ps | grep -q lnd ; then
-debug "in if docker inspect, true"
 export lnddockermenu="true"
 else
-debug "in if docker inspect, false"
 export lnddockermenu="false"
 fi
 
-debug "container lnd"
 if [[ $lnddockermenu == "false" ]] ; then #non docker
-debug "in lndockermenu if"
 export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 unset dkrmenu inside_docker
-else #docker
-debug "in lndockermenu else, $lndockermenu"
+elif [[ $lnddockermenu == "true" ]] ; then
 export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
 dkrmenu="
       (dks)            Start Docker container (and LND)
@@ -118,15 +114,15 @@ set_terminal_custom 55 ; echo -e "
 ########################################################################################
 
 "
-if [[ $lndrunning == "true" ]] ;  then echo -e "
+if [[ $lndrunning == "true" ]] ;  then echo -ne "
                    LND IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
-echo -e "
+echo -en "
                    LND IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
-echo -e "
+echo -ne "
                         $wallet 
-
+$menuDockerIP
 
 
       (i)              Important info

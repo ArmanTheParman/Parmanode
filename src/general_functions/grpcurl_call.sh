@@ -28,28 +28,51 @@ done
 install_grpcurl
 
 get_lightning_proto
-
+source $pc
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
-    Please enter the IP address ($green<enter>$cyan alone for 127.0.0.1, x to return) $orange
 
-    If LND is in a Docker container, you need the container IP.
+    Please choose the IP address 
     
+$green            1)$orange         127.0.0.1 (best for Docker LND, trust me)
+
+$green            2)$orange         $LNDIP -- Parmanode detected IP address for LND
+
+$green            3)$orange         $IP -- Parmanode detected IP of the computer
+
+$green            OR$orange         Just type in any IP and hit$cyan<enter>$orange
+
 ########################################################################################
 "
+choose xpmq
 read curlIP
 set_terminal
 case $curlIP in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
-"")
+1)
 export curlIP="127.0.0.1"
+;;
+2)
+export curlIP=$LNDIP
+;;
+3)
+export curlIP=$IP
 ;;
 esac
 
 set_terminal ; echo -e "
 ########################################################################################
+
 $cyan        Please enter the gRPC port ($green<enter>$cyan alone for 10009 default) $orange
+             
+             If connecting to Docker containers, traffic from 127.0.0.1 enters the
+             container via port 10010, then redirects to 10009 inside, so use
+             10010 here.
+
+             Docker on Mac is different to Docker on Linux. On Mac, traffic to the
+             Container's IP directly with port 10009 is blocked. I haven't yet checked
+             on Linux. Let me know if you do.
+
 ########################################################################################
 "
 read gRPCport 
