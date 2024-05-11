@@ -25,7 +25,7 @@ if docker ps | grep -q lnd ; then
 
     LNDIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' lnd)
 
-    if ! echo $LNDIP | grep -E '^[0-9]' ; then #double check LNDIP starts with a number rather than error message
+    if ! echo $LNDIP | grep -qE '^[0-9]' ; then #double check LNDIP starts with a number rather than error message
        unset LNDIP
        return 1
     else 
