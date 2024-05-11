@@ -77,7 +77,7 @@ set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|2) return 1 ;; 1) break ;; back2main ;; *) invalid ;;
+q|Q) exit ;; p|P|2) return 1 ;; 1) break ;; m|M) back2main ;; *) invalid ;;
 esac
 done
 fi

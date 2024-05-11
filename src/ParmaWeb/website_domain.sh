@@ -23,7 +23,7 @@ $cyan                 r)$orange           ${red}Remove my domain$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case $choice in q|Q) exit 0 ;; p|P) return 1 ;; back2main ;; 
+case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 n|N|No|no) 
 export domain="$IP"
 parmanode_conf_remove "domain="
