@@ -1,5 +1,9 @@
 function temp_patch {
 
+#remove in June
+store_LND_container_IP
+
+
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.

@@ -44,6 +44,9 @@ debug "after gsed"
 cd $HOME/.lnd && git init >/dev/null 2>&1
 fi
 
+store_LND_container_IP
+
+
 installed_conf_add "lnd-end"
 success "LND" "being installed."
 

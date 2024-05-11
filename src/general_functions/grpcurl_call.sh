@@ -31,7 +31,11 @@ get_lightning_proto
 
 set_terminal ; echo -e "
 ########################################################################################
-$cyan        Please enter the IP address ($green<enter>$cyan alone for 127.0.0.1, x to return) $orange
+$cyan
+    Please enter the IP address ($green<enter>$cyan alone for 127.0.0.1, x to return) $orange
+
+    If LND is in a Docker container, you need the container IP.
+    
 ########################################################################################
 "
 read curlIP
