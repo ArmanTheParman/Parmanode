@@ -100,7 +100,7 @@ $HOME/go/bin/grpcurl -cacert $tlscertpath \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
     $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
 else
-$HOME/go/bin/grpcurl -cacert $tlscertpath \
+grpcurl -cacert $tlscertpath \
     -import-path $HOME/parmanode/lnd/ \
     -proto lightning.proto \
     -d '{}' \
