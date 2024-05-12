@@ -5,6 +5,7 @@ RUN apt-get update -y && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
                sudo vim nano libgmp-dev python3 pip openssl \
                git python3-bitcoinlib python3-base58 \
+               python3-tk \
         && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip3 install bech32 --break-system-packages
@@ -15,8 +16,7 @@ RUN pip3 install cryptography --break-system-packages
 RUN pip3 install pycryptodome --break-system-packages
 RUN pip3 install base58 --break-system-packages
 
-# For btcrecover ...
-RUN apt-get install -y python3-tk
+# For btcrecover ... 
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
