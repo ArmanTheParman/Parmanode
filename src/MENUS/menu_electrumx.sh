@@ -181,6 +181,7 @@ $red
       (dc)       Electrum X database corrupted? -- Use this to start fresh."
 
 if [[ $OS == Linux && $electrumxis == nondocker ]] ; then echo -e "
+
       (tor)      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
 
       (newtor)   Refresh Tor address
