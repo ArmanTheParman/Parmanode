@@ -5,13 +5,14 @@ get_onion_address_variable ssh
 while true ; do 
 set_terminal ; echo -e "
 ########################################################################################
-        $cyan               SSH Tor Server Menu $orange
+        $cyan                    SSH Tor Server Menu $orange
 ########################################################################################
 
    SSH Command to access this computer:
 $bright_blue
    $USER@$ONION_ADDR_SSH
 $orange
+
                         (rt)            Restart Tor
 
                         (rs)            Restart SSH Service
