@@ -1,5 +1,6 @@
-#Builds a container to run cryptography functions
+# Builds a container to run cryptography functions
 # For btcrecover ... includes python3-tk
+# All cpu cores from the host are available unless limited by a docker run command options: --cpus n, where n is a number
 
 FROM debian:latest
 RUN apt-get update -y && apt-get upgrade -y
