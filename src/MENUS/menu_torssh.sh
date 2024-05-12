@@ -10,8 +10,9 @@ set_terminal ; echo -e "
 
    SSH Command to access this computer:
 $bright_blue
-   ssh $USER@$ONION_ADDR_SSH $pink $blinkon 
+   ssh $USER@$ONION_ADDR_SSH $red $blinkon 
    Keep this onion address private, it's access to your computer. $blinkoff $orange
+
    The only thing defending your home network after this onion address is your
    probably weak computer login password.
 
