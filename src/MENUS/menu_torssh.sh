@@ -18,14 +18,12 @@ $orange
 
    Host *.onion
    ProxyCommand ncat --proxy 127.0.0.1:9050 --proxy-type socks5 %h %p
-
-
-
 $orange
+   Expect the interaction to be very slow.
 
-                        (rt)            Restart Tor
+$green                        (rt)$orange            Restart Tor
 
-                        (rs)            Restart SSH Service
+$green                        (rs)$orange            Restart SSH Service
 
 ########################################################################################
 "
