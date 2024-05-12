@@ -21,9 +21,13 @@ $orange
 $orange
    Expect the interaction to be very slow.
 
+
+
 $green                        (rt)$orange            Restart Tor
 
 $green                        (rs)$orange            Restart SSH Service
+
+
 
 ########################################################################################
 "
