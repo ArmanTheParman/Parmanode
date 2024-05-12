@@ -11,6 +11,11 @@ set_terminal ; echo -e "
    SSH Command to access this computer:
 $bright_blue
    ssh $USER@$ONION_ADDR_SSH
+$blinkon
+   Keep this onion address private, it's access to your computer. $blinkoff
+   The only thing defending your home network after this onion address is your
+   probably weak computer login password.
+
 $orange   
    The client computer accessing here needs to have this directive in ~/.ssh/config 
    and make sure ncat is installed on the system. If the config file doesn't exist,
