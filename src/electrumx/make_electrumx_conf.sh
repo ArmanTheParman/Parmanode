@@ -11,7 +11,7 @@ SERVICES = tcp://0.0.0.0:50007,ssl://0.0.0.0:50008,rpc://0.0.0.0:8000
 SSL_CERTFILE = $hp/electrumx/cert.pem
 SSL_KEYFILE = $hp/electrumx/key.pem
 
-# options for LOG are debug, info, warning, and error 
+# options are - debug, info, warning, and error 
 LOG_LEVEL = info 
 ANON_LOGS = do_not_track,motherfucker
 LOG_SESSIONS = 0
