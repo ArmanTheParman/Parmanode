@@ -11,6 +11,15 @@ set_terminal ; echo -e "
    SSH Command to access this computer:
 $bright_blue
    ssh $USER@$ONION_ADDR_SSH
+$orange   
+   The client computer accessing here needs to have this directive in ~/.ssh/config 
+   and make sure ncat is installed on the system... $cyan
+
+   Host *.onion
+   ProxyCommand ncat --proxy 127.0.0.1:9050 --proxy-type socks5 %h %p
+
+
+
 $orange
 
                         (rt)            Restart Tor
