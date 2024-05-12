@@ -1,4 +1,5 @@
 #Builds a container to run cryptography functions
+# For btcrecover ... includes python3-tk
 
 FROM debian:latest
 RUN apt-get update -y && apt-get upgrade -y
@@ -16,7 +17,6 @@ RUN pip3 install cryptography --break-system-packages
 RUN pip3 install pycryptodome --break-system-packages
 RUN pip3 install base58 --break-system-packages
 
-# For btcrecover ... 
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
