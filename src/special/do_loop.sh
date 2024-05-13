@@ -164,10 +164,10 @@ exit
 fi
 
 if [[ $bash == 1 && $OS == Linux ]] ; then 
-bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
+#bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
+bash --rcfile $pn/src/tools/rcfile
 exit 
 elif [[ $bash == 1 && $OS == Mac ]] ; then
-bash --rcfile $pn/src/tools/rcfile
 exit 
 fi
 
