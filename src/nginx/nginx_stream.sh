@@ -20,9 +20,6 @@ nginx_conf="/etc/nginx/nginx.conf"
 streamfile="/etc/nginx/stream.conf"
 fi
 
-#will eventuall become redundant, to clean up old version configuration
-remove_old_electrs_stream_from_nginxconf
-
 if [[ $2 != remove ]] ; then
 sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf=true
 fi
@@ -104,7 +101,8 @@ if [[ ! $faulty_nginx_conf == true ]] ; then
 fi
 
 }
-function remove_old_electrs_stream_from_nginxconf {
-if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-}
+# now redundant...
+# function remove_old_electrs_stream_from_nginxconf {
+# if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+# if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+# }
