@@ -151,9 +151,11 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 if [[ $test == 1 ]] ; then
 true
 	if [[ $arg2 == remove ]] ; then 
-	uninstall_thub
 	else
-	install_thunderhub
+	install_btcrecover
+	echo "hit enter"
+	read
+	exit
 	fi
 fi
 
