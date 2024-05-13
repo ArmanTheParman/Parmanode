@@ -7,7 +7,7 @@ RUN apt-get update -y && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
                sudo vim nano libgmp-dev python3 pip openssl \
                git python3-bitcoinlib python3-base58 \
-               python3-tk \
+               python3-tk build-essential libssl-dev \
         && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip3 install bech32 --break-system-packages
