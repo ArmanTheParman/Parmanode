@@ -163,7 +163,13 @@ announce "no fixes available presently. Exiting."
 exit
 fi
 
-if [[ $bash == 1 ]] ; then bash ; exit ; fi
+if [[ $bash == 1 && $OS == Linux ]] ; then 
+bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
+exit 
+elif [[ $bash == 1 && $OS == Mac ]] ; then
+bash --rcfile $pn/src/tools/rcfile
+exit 
+fi
 
 ########################################################################################
 ########################################################################################

@@ -1,6 +1,6 @@
 #docker network create --internal no-internet
 #docker run --network no-internet <image>
-function btcrecover_install {
+function install_btcrecover {
 
 docker build -t btcrecover $pn/src/btcrecover
 
