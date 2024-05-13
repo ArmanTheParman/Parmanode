@@ -153,6 +153,7 @@ true
 	if [[ $arg2 == remove ]] ; then 
 	true
 	else
+	cd $pn/src/btcrecover
 	install_btcrecover
 	echo "hit enter"
 	read
