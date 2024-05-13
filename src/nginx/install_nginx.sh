@@ -14,7 +14,6 @@ else
     fi
 fi
 
-if [[ $OS == Linux ]] ; then sudo apt-get install nginx -y ; fi
 
 if [[ $OS == Mac ]] ; then 
     brew_check Nginx || return 1
