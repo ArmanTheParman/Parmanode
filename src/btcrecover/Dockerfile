@@ -5,9 +5,10 @@
 FROM debian:latest
 RUN apt-get update -y && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-               sudo vim nano libgmp-dev python3 python3-dev pip openssl \
+               sudo vim nano libgmp-dev python3 python3-dev python3-pip openssl \
                git python3-bitcoinlib python3-base58 \
                python3-tk build-essential libssl-dev\
+               locales \
         && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip3 install bech32 --break-system-packages
@@ -30,6 +31,16 @@ RUN mkdir -p /home/parman/parman_programs/
 WORKDIR /home/parman/parman_programs/
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+USER root
+RUN sed -i '/en_US.UTF-8/s/^#//g' /etc/locale.gen
+RUN locale-gen 
+#RUN locale-gen en_US.UTF-8
+
+USER parman
 WORKDIR /home/parman
 RUN git clone --depth 1 https://github.com/3rdIteration/btcrecover.git
 CMD tail -f /dev/null 
