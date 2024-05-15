@@ -28,7 +28,7 @@ podman build --pull -t nostr-rs-relay .
 mkdir $HOME/.nostr_data
 podman unshare chown 100:100 $HOME/.nostr_data
 
-podman run -it --rm -p 7000:8080 \
+podman run -it --rm -p 7080:8080 \
   --user=100:100 \
   -v $HOME/.nostr_data:/usr/src/app/db:Z \
   -v $(pwd)/config.toml:/usr/src/app/config.toml:ro \
