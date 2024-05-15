@@ -124,7 +124,7 @@ make_ssl_certificates "electrs" || announce "SSL certificate generation failed. 
 #nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; } #must be after certificates made or install will fail
 
 #prepare drives. #drive_electrs= variable set.
-choose_and_prepare_drive "Electrs" && log "electrs" "choose and prepare drive function borrowed"
+choose_and_prepare_drive "Electrs" || return 1
  
 #get drive variables for fulcrum, electrumx, and bitcoin
 source $HOME/.parmanode/parmanode.conf >/dev/null

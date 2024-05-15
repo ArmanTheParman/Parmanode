@@ -74,7 +74,7 @@ installed_config_add "electrsdkr2-start"
 
 
 #prepare drives
-choose_and_prepare_drive "Electrs" && log "electrsdkr" "choose and prepare drive function borrowed"
+choose_and_prepare_drive "Electrs" || return 1
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
 if [[ ($drive_electrs == "external" && $drive == "external") || \
