@@ -15,22 +15,37 @@ git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 cd nostrrelay
 docker build --pull -t nostr-rs-relay .
 mkdir $HOME/.nostr_data
-docker unshare chown 100:100 $HOME/.nostr_data
 
 docker run -it --rm -p 7080:8080 \
-  --user=100:100 \
-  -v $HOME/.nostr_data:/usr/src/app/db:Z \
-  -v $(pwd)/config.toml:/usr/src/app/config.toml:ro \
-  --name nostr-relay nostr-rs-relay:latest
+  -v $HOME/.nostr_data:/usr/src/app/db \
+  -v $HOME/parmanode/nostrrelay/config.toml:/usr/src/app/config.toml:ro \
+  --name nostrrelay nostr-rs-relay:latest
 
-# ro,Z for some Linux distro's but Parmanode does not support non Debian based.
 }
 
 
 function edit_nostrrelay_config {
 
-nproc # get number of cores and set max connection to same number of cores
-max_conn=$(nproc) 
+add_nostr_domain relay_url = "wss://nostr.example.com/"
+set_terminal ; echo -e " 
+########################################################################################
+
+                                 Domain Name (URL)
+
+    To what domain name will users connect to? Note the domain needs an SSL 
+    certificate and a reverse proxy set up to your Nostr Realy Docker container.
+$cyan    
+    Hit$green <enter>$cyan alone to leave this for now (eg if you're testing)
+    
+    or
+
+    Type in your domain name and hit$green <enter>$cyan (don't include http/https/ws/wss etc)
+$orange
+########################################################################################
+"
+
+
+max_conn=$(nproc) # get number of cores and set max connection to same number of cores
 
 # Terms of service, generic from config file.
 cat << 'EOF' >> ./config.toml

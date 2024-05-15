@@ -1,6 +1,6 @@
 function menu_main {
-set_terminal
 while true ; do
+set_terminal
 
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then

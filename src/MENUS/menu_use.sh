@@ -144,7 +144,7 @@ rr)
     if [[ $raidapp == 1 ]] ; then
     clear
     menu_raid
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
     ;;
 
@@ -152,27 +152,27 @@ b|B)
     if [[ $bitcoinapp == 1 ]] ; then
     clear
     menu_bitcoin
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
     ;;
 f|F)
     if [[ $fulcrumapp == 1 ]] ; then
     menu_fulcrum
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
     ;;
 btcp|BTCP)
     if [[ $btcpayapp == 1 ]] ; then
-    if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+    if [[ $OS == "Mac" ]] ; then no_mac ; clear ; return 1 ; fi
     menu_btcpay
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
     ;;
 
 t|T)
     if [[ $torapp == 1 ]] ; then
     menu_tor
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
     ;;
 
@@ -182,7 +182,7 @@ lnd|LND|Lnd|L|l)
     please_wait
     if [[ $OS == "Linux" ]] ; then menu_lnd ; continue ; fi
     if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
 ;;
 ld|LD|Ld|lD)
@@ -190,158 +190,158 @@ ld|LD|Ld|lD)
     clear
     please_wait
     menu_lnd
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi
 ;;
 lnb|LNB|Lnb)
    if [[ $lnbitsapp == 1 ]] ; then
    menu_lnbits
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
 ;;
 
 s|S|Sparrow|SPARROW|sparrow)
    if [[ $sparrowapp == 1 ]] ; then
    menu_sparrow
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 r|R|RTL|rtl|Rtl)
     if [[ $rtlapp == 1 ]] ; then
    menu_rtl
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
 e|E|Electrum|electrum|ELECTRUM)
     if [[ $electrumapp == 1 ]] ; then
    menu_electrum
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 tws|TWS|Tws)
 
    if [[ $torserverapp == 1 ]] ; then
    menu_tor_webserver
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 btcpt|BTCPT)
    if [[ $btcpTORapp == 1 ]] ; then
    menu_btcpay_tor
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
 specter|SPECTER|Specter)
    if [[ $specterapp == 1 ]] ; then
    menu_specter
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
 bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 || $breapp ]] ; then
    menu_bre
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
 ers|ERS|Ers)
    if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
    menu_electrs
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
 ersf|ERSf|Ersf)
    if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
    menu_electrs fast
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 trz|TRZ|Trz)
    if [[ $trezorapp == 1 ]] ; then
    menu_trezor
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 bb|BB|Bb)
    if [[ $bitboxapp == 1 ]] ; then
    menu_bitbox
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 ll|LL|Ll)
    if [[ $ledgerapp == 1 ]] ; then
    menu_ledger
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 ps|PS|Ps)
    if [[ $parmashellapp == 1 ]] ; then
    parmashell_info
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 pbx|Pbx)
    if [[ $parmaboxapp == 1 ]] ; then
    menu_parmabox 
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 any|ANY|Any)
    if [[ $anydeskapp == 1 ]] ; then
    menu_anydesk
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 pih|PiH|Pih)
    if [[ $piholeapp == 1 ]] ; then
    menu_pihole
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 trl|Trl|TRL)
    if [[ $torrelayapp == 1 ]] ; then
    menu_torrelay
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 ersd|Ersd|ERSD)
    if [[ $electrsdkrapp == 1 || $electrsdkr2app == 1 ]] ; then
    menu_electrs
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 torb|TORB|Torb)
    if [[ $torbapp == 1 ]] ; then
    menu_torbrowser
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 qbit|Qbit)
    if [[ $qbittorrentapp == 1 ]] ; then
    menu_qbittorrent
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 mem|MEM|Mem)
    if [[ $mempoolapp == 1 ]] ; then
    menu_mempool 
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 tssh)
    if [[ $torsshapp == 1 ]] ; then
    menu_torssh
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 pool)
    if [[ $public_poolapp == 1 ]] ; then
    menu_public_pool
-    if [[ -n $1 ]] ; then return 0 ; fi
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
@@ -349,19 +349,19 @@ ex)
    if [[ $electrumxapp == 1 ]] ; then
    menu_electrumx
    debug "after menu_electrumx"
-   if [[ -n $1 ]] ; then return 0 ; fi
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 th) 
    if [[ $thunderhubapp == 1 ]] ; then
    menu_thunderhub
-   if [[ -n $1 ]] ; then return 0 ; fi
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 ws) 
    if [[ $websiteapp == 1 ]] ; then
    menu_website
-   if [[ -n $1 ]] ; then return 0 ; fi
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 p)
@@ -373,10 +373,10 @@ q | Q | quit)
 *)
    invalid
    clear
-   if [[ -n $1 ]] ; then return 1 ; fi
+   if [[ -n $1 ]] ; then clear ; return 1 ; fi
    ;;
 esac
 
-if [[ -n $1 ]] ; then return 1 ; fi
+if [[ -n $1 ]] ; then clear ; return 1 ; fi
 done
 }

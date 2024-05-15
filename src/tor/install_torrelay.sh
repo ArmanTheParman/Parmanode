@@ -33,7 +33,7 @@ clear
 if [[ -z $email ]] ; then ContactInfo='#ContactInfo your@email.com' ; else ContactInfo="ContactInfo $email" ; fi
 
 echo "#Tor Relay Installation...
-ORPort $relayport
+ORPort $relayport              #'other relay' port
 Nickname ParmanodeRelay
 $ContactInfo
 ExitRelay 0
