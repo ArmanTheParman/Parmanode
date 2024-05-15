@@ -1,23 +1,34 @@
-function install_nostrrelay {
+function install_nostrrelay_podman {
+#For mac version minimum is Mac OS 13 to run podman
+
 #docs
 #https://www.purplerelay.com/how-to-run-a-nostr-relay-a-step-by-step-guide/
 #https://usenostr.org/relay
 #https://nostr.how/en/relays
 
-grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
-" \
-"Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
+if ! which podman >/dev/null 2>&1 ; then
 
-sned_sats
+    if [[ $OS == Mac ]] ; then
+        brew install podman
+    else 
+        sudo apt-get install podman
+    fi
+    #--------------------------#
+    if ! which podman >/dev/null 2>&1 ; then
+    announce "Something went wrong, couldn't install Podman it seems. Aborting."
+    return 1
+    fi
+
+fi
 
 cd $hp
 git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 cd nostrrelay
-docker build --pull -t nostr-rs-relay .
+podman build --pull -t nostr-rs-relay .
 mkdir $HOME/.nostr_data
-docker unshare chown 100:100 $HOME/.nostr_data
+podman unshare chown 100:100 $HOME/.nostr_data
 
-docker run -it --rm -p 7080:8080 \
+podman run -it --rm -p 7000:8080 \
   --user=100:100 \
   -v $HOME/.nostr_data:/usr/src/app/db:Z \
   -v $(pwd)/config.toml:/usr/src/app/config.toml:ro \
