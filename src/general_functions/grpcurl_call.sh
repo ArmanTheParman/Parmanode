@@ -121,14 +121,14 @@ esac
 
 if [[ $OS == Linux ]] ; then
 $HOME/go/bin/grpcurl -cacert $tlscertpath \
-    -import-path $HOME/parmanode/lnd/ \
+    -import-path $HOME/parmanode/ \
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
     $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
 else
 grpcurl -cacert $tlscertpath \
-    -import-path $HOME/parmanode/lnd/ \
+    -import-path $HOME/parmanode/ \
     -proto lightning.proto \
     -d '{}' \
     -rpc-header "macaroon: $(xxd -ps -u -c 1000 $macaroonpath)" \
@@ -188,8 +188,8 @@ fi
 }
 
 function get_lightning_proto {
-if [[ ! -e $HOME/parmanode/lnd/lightning.proto ]] ; then
-cd $HOME/parmanode/lnd/
+if [[ ! -e $HOME/parmanode/lightning.proto ]] ; then
+cd $HOME/parmanode/
 curl -LO https://raw.githubusercontent.com/lightningnetwork/lnd/4a9ab6e538e4c69a6cd5e91f1ce1752d9c360c90/lnrpc/lightning.proto
 fi
 return 0
