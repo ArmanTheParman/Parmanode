@@ -1,6 +1,6 @@
 function run_rtl_docker {
 
-if [[ $OS == Mac ]] ; then ports="-p 3000:3000" ; else "--network=host" ; fi
+if [[ $OS == Mac ]] ; then ports="-p 3000:3000" ; else ports="--network=host" ; fi
 
 docker run -d --name rtl $ports \
                          -v $HOME/parmanode/rtl:/home/parman/RTL2 \
