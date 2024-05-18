@@ -12,16 +12,19 @@ else
     else
     installed_conf_remove "nginx-"
     fi
+
+    if [[ $OS == Mac ]] ; then 
+        brew_check Nginx || return 1
+        brew install nginx 
+    else
+        sudo apt-get update -y && sudo apt-get install nginx-full -y 
+    fi
+
 fi
-
-
-if [[ $OS == Mac ]] ; then 
-    brew_check Nginx || return 1
-    brew install nginx 
- fi
 
 if which nginx >/dev/null ; then installed_conf_add "nginx-end" ; fi
 return 0
+
 }
 
 function uninstall_nginx {
