@@ -12,6 +12,8 @@ echo -e "
 
               (gc)        RPC call test to LND (grpcurl)
 
+              (rest)      REST protocol test to LND (info only)
+
               (rf)        Refresh Parmanode script directory              
 
               (sr)        System report (for getting troubleshooting help)
@@ -54,6 +56,10 @@ wireless_driver_install
 
 fs)
 free_up_space
+;;
+
+rest)
+rest_protocol_test
 ;;
 
 *)
