@@ -12,6 +12,7 @@ sned_sats
 
 cd $hp
 git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
+edit_nostrrelay_config
 cd nostrrelay
 docker build --pull -t nostr-rs-relay .
 mkdir $HOME/.nostr_data
@@ -20,18 +21,16 @@ docker run -it --rm -p 7080:8080 \
   -v $HOME/.nostr_data:/usr/src/app/db \
   -v $HOME/parmanode/nostrrelay/config.toml:/usr/src/app/config.toml:ro \
   --name nostrrelay nostr-rs-relay:latest
-
 }
 
 
 function edit_nostrrelay_config {
-
-add_nostr_domain relay_url = "wss://nostr.example.com/"
+while true ; do
 set_terminal ; echo -e " 
 ########################################################################################
-
+$green
                                  Domain Name (URL)
-
+$orange
     To what domain name will users connect to? Note the domain needs an SSL 
     certificate and a reverse proxy set up to your Nostr Realy Docker container.
 $cyan    
@@ -43,36 +42,41 @@ $cyan
 $orange
 ########################################################################################
 "
+choose xpmq ; read domain ; set_terminal
+case $domain in
+q|Q) exit ;; p|P) return 1 ;;
+*)
+if ! echo $domain | grep -E '\.' ; then announce "Domain format not right" ; continue ; fi
+export nostr_domain=$domain
+add_nostr_domain "relay_url = \"wss://$nostr_domain/\""
+;;
+esac
+done
 
 
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+    Add your unique server name... 
+$orange
+########################################################################################
+"
+choose xpmq ; read relay_name ; set_terminal
+case $relay_name in
+q|Q) exit ;; p|P) return 1 ;;
+*)
+relay_name
+set_terminal
+;;
+esac
+
+
+file="$hp/nostrrelay/config.toml"
 max_conn=$(nproc) # get number of cores and set max connection to same number of cores
+swap_string $file "max_conn =" "max_conn = $max_conn"
+swap_string $file "relay_url =" "relay_url = \"wss://$nostr_domain\""
+swap_string $file "name =" "name = \"$relay_name\""
+swap_string $file "description =" "description = \"A nostr relay build with Parmanode\""
 
-# Terms of service, generic from config file.
-cat << 'EOF' >> ./config.toml
-terms_message = """
-This service (and supporting services) are provided "as is", without warranty of any kind, express or implied.
-
-By using this service, you agree:
-* Not to engage in spam or abuse the relay service
-* Not to disseminate illegal content
-* That requests to delete content cannot be guaranteed
-* To use the service in compliance with all applicable laws
-* To grant necessary rights to your content for unlimited time
-* To be of legal age and have capacity to use this service
-* That the service may be terminated at any time without notice
-* That the content you publish may be removed at any time without notice
-* To have your IP address collected to detect abuse or misuse
-* To cooperate with the relay to combat abuse or misuse
-* You may be exposed to content that you might find triggering or distasteful
-* The relay operator is not liable for content produced by users of the relay
-"""
-EOF
-
-
-#relay_url = "wss://nostr.example.com/"
-#name = "nostr-rs-relay"
-#description = "A newly created nostr-rs-relay.\n\nCustomize this with your own info."
-
-
-
+return 0
 }
