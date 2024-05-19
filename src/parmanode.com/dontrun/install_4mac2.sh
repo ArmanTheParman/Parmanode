@@ -19,7 +19,7 @@ if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
 if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
-" | sudo tee -a $HOME/.zshrc
+" | sudo tee -a $HOME/.zshrc >/dev/null 2>&1
 fi
 
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
@@ -112,7 +112,7 @@ git clone https://github.com/armantheparman/parmanode.git
 if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
-" | sudo tee -a $HOME/.zshrc
+" | sudo tee -a $HOME/.zshrc >/dev/null 2>&1
 fi
 
 #make desktop clickable icon...

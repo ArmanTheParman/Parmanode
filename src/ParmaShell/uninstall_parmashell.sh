@@ -22,8 +22,6 @@ if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
 sudo cp "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup"
 
-debug "concatenation: $HOME/.$rc" 
-
 #sed method compaitble with both mac and linux...
 sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
 && sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
