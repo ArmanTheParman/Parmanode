@@ -513,12 +513,12 @@ fi
 unset nginx_i nginx_p nginx_n
 if grep -q "nginx-end" < $HOME/.parmanode/installed.conf ; then
    #installed
-nginx_i="#                                          Nginx                                    #"
+nginx_i="#                                      Nginx                                           #"
 elif grep -q "nginx-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-nginx_p="#                                          Nginx                                    #"
+nginx_p="#                                      Nginx                                           #"
 else
    #not installed
-nginx_n="#                            (ng)          Nginx                                     #"
+nginx_n="#                            (ng)          Nginx                                       #"
 fi
 }
