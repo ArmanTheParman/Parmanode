@@ -8,7 +8,6 @@ The Desktop log in GUI appears, user:parman password:parmanodl, it must be chang
 sudo apt update
 sudo apt full-upgrade
 might be needed or prompted for: sudo apt-get update --fix-missing
-might be needed or prompted for: sudo apt-get autoremove
 optional: sudo apt install vim
 sudo systemctl start ssh
 

@@ -27,7 +27,6 @@ installed_config_remove "nodejs"
 
 #uninstall old version via package manager
 sudo apt purge nodejs npm -y
-sudo apt autoremove -y 
 
 #update repository list
 sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1

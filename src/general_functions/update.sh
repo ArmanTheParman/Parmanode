@@ -103,9 +103,6 @@ fi
 if grep -q "--fix-missing upgrade" < $file ; then
 sudo apt-get --fix-missing upgrade -y
 fi
-if grep -q "autoremove" < $file ; then
-sudo apt-get autoremove -y
-fi
 sudo apt-get upgrade -y 
 sudo apt-get install jq netcat vim net-tools unzip -y && echo "sudo apt-get install jq netcat vim net-tools unzip -y ; done" >> $dp/.temp 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages

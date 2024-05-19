@@ -67,7 +67,6 @@ sudo apt-get purge 'php-mysql' 'php7.*-mysql' -y
 break
 done
 
-sudo apt-get autoremove -y
 sudo apt-get autoclean -y
 
 while true ; do

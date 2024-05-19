@@ -50,12 +50,10 @@ $green
 
         sudo apt-get upgrade
 $orange
-    Someimtes in the output, you might see a recommendation to do one of the following 
-    commands which you should do...
+    Someimtes in the output, you might see a recommendation to run this command, 
+    which you can do if you want ...
 $green
         sudo apt-get --fix-broken install 
-
-        sudo apt-get autoremove 
 $orange
 ########################################################################################       
 "
