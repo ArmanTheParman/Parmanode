@@ -250,6 +250,9 @@ echo -e "#                                    (ld)               LND (Docker)   
 elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
 echo -e "#                                    (ld)               LND (Docker)      $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
+if grep -q "nginx-end" $HOME/.parmanode/installed.conf ; then nginxmenu=1
+echo -e "#                                    (ng)               Nginx                          #
+#                                                                                      #"
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#                                    (ng)               Nginx      $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
