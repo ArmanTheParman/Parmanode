@@ -25,7 +25,7 @@ if [[ -n $torb_n ]]            ; then echo  "$torb_n"; fi
 if [[ -n $qbittorrent_n ]]     ; then echo  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo  "$torssh_n"; fi
 if [[ -n $website_n ]]         ; then echo  "$website_n"; fi
-if [[ -n $nginx_n]]            ; then echo  "$nginx_n"; fi
+if [[ -n $nginx_n ]]            ; then echo  "$nginx_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
@@ -42,7 +42,7 @@ if [[ -n $torb_i ]]            ; then echo  "$torb_i"; fi
 if [[ -n $qbittorrent_i ]]     ; then echo  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo  "$torssh_i"; fi
 if [[ -n $website_i ]]         ; then echo  "$website_i"; fi
-if [[ -n $nginx_i]]            ; then echo  "$nginx_i"; fi
+if [[ -n $nginx_i ]]            ; then echo  "$nginx_i"; fi
 echo -e "#                                                                                      #
 #$green Failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
@@ -58,7 +58,7 @@ if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
 if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
-if [[ -n $nginx_p]]            ; then echo  -e "$pink$nginx_p$orange"; fi
+if [[ -n $nginx_p ]]            ; then echo  -e "$pink$nginx_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
