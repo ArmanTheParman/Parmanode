@@ -63,8 +63,8 @@ set_terminal ; cd /etc/nginx/conf.d ; ls ; echo -e "
 set_terminal ; echo -e "n for nano editor, v for vim, <enter> alone to go back" ; read editor 
     case $editor in
     "") continue ;;
-    n) sudo nano /etc/nginx/$filename ;;
-    v) sudo vim /etc/nginx/$filename ;;
+    n) sudo nano /etc/nginx/conf.d/$filename ;;
+    v) sudo vim /etc/nginx/conf.d/$filename ;;
     esac
 ;;
 
