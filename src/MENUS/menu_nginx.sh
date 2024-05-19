@@ -38,7 +38,7 @@ sudo systemctl restart nginx
 ;;
 
 conf)
-set_terminal ; echo -e "n for nano editor, v for vim, <enter> alone to go back" ; read editor 
+set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor 
 
     case $editor in
     "") continue ;;
@@ -48,8 +48,7 @@ set_terminal ; echo -e "n for nano editor, v for vim, <enter> alone to go back" 
 ;;
 
 st)
-set_terminal ; echo -e "n for nano editor, v for vim, <enter> alone to go back" ; read editor 
-    case $editor in
+set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor     case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/stream.conf ;;
     v) sudo vim /etc/nginx/stream.conf ;;
@@ -60,8 +59,7 @@ cd)
 set_terminal ; cd /etc/nginx/conf.d ; ls ; echo -e "
     Which file would you like to edit? Type the file name in full, then <enter>"
     read filename
-set_terminal ; echo -e "n for nano editor, v for vim, <enter> alone to go back" ; read editor 
-    case $editor in
+set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor     case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/conf.d/$filename ;;
     v) sudo vim /etc/nginx/conf.d/$filename ;;
