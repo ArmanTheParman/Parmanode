@@ -364,6 +364,13 @@ ws)
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
+######Hidden Menu########
+ng)
+  if which nginx >/dev/null 2>&1 ; then
+  menu_nginx
+  fi
+  ;;
+##########################
 p)
    menu_main 
    ;;
