@@ -1,6 +1,7 @@
 Version 3.36.5
     -Nginx added installation options, not just in background
     -remove 'autoremove'; possibly causing cinnamon bug on Mint systems
+    -Mac Bitcoin v27.0
 Version 3.36.4
     -LND install bug fixed.
     -Thunderhub over Tor now.

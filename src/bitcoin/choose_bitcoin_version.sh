@@ -3,7 +3,7 @@ if [[ $version == self ]] ; then return 0 ; fi
 
 if [[ $OS == Mac ]] ; then
 export bitcoin_compile=false
-export version="25.0"
+export version="27.0"
 return 0
 fi
 
