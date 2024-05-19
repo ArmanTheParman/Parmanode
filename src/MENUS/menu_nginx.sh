@@ -49,6 +49,7 @@ set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim
 
 st)
 set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor     case $editor in
+    case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/stream.conf ;;
     v) sudo vim /etc/nginx/stream.conf ;;
@@ -60,6 +61,7 @@ set_terminal ; cd /etc/nginx/conf.d ; ls ; echo -e "
     Which file would you like to edit? Type the file name in full, then <enter>"
     read filename
 set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor     case $editor in
+    case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/conf.d/$filename ;;
     v) sudo vim /etc/nginx/conf.d/$filename ;;
