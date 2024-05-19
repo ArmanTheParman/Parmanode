@@ -254,7 +254,7 @@ if grep -q "nginx-end" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#                                    (ng)               Nginx                          #
 #                                                                                      #"
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
-echo -e "#                                    (ng)               Nginx      $red$blinkon(partial)$blinkoff$orange    #
+echo -e "#                                    (ng)               Nginx             $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
