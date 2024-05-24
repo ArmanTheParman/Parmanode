@@ -6,17 +6,17 @@ set_terminal ; echo -e "
 $cyan
                              Reverse Proxy - STEP 1
 $orange
-    Here's how to do this, and why.
+    Here's how to do this, and why...
 
     Firstly, if this relay is on your home computer, you don't want to expose its
-    IP address - that's reveals your location; no good.
+    IP address - that reveals your location; no good.
 
-    Secondly, if this relay is on a VPS (virtual private server), then its location/IP
+    Secondly, if this relay is on a VPS (Virtual Private Server), then its location/IP
     is not that relevant, it's more about pointing a domain name to the right IP
     address - you want to use a domain NAME, not an ugly IP number that no one will
     remember or recognise.
 
-    I recommend signign up to CloudFlare, then "add a site" to the account, and follow
+    I recommend signign up to$cyan CloudFlare$orange, then "add a site" to the account, and follow
     their instructions. Then set up an 'A' name under the DNS tab:
 
 $green        Type:          A
