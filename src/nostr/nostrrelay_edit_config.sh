@@ -52,7 +52,7 @@ esac
 set_terminal ; echo -e "
 ########################################################################################
 
-    You chose: $relay_name
+    You chose:$green $relay_name$orange
 
     Hit$cyan <enter> alone$orange to accept or anything else to try again.
 
