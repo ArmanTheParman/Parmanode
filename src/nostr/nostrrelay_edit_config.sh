@@ -10,13 +10,13 @@ $green
 $orange
     To what domain name will users connect to? Note the domain needs an SSL 
     certificate and a reverse proxy set up to your Nostr Realy Docker container.
-$cyan    
-    Hit$green <enter>$cyan alone to leave this for now (eg if you're testing)
+
+    Hit$green <enter> alone$cyan to leave this for now (eg if you're testing)
     
     or
 
-    Type in your domain name and hit$green <enter>$cyan (don't include http/https/ws/wss etc)
-$orange
+    Type in your domain name and hit$green <enter>$orange (don't include http/https/ws/wss etc)
+
 ########################################################################################
 "
 choose xpmq ; read domain ; set_terminal
