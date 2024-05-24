@@ -25,6 +25,7 @@ nostrrelay_reverse_proxy_info
 
 nostrrelay_directory
 
+echo -e "${green}Building Docker image..."
 nostrrelay_build
 
 nostrrelay_run

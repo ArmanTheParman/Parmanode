@@ -39,12 +39,12 @@ $cyan
                              Reverse Proxy - STEP 2
 $orange
    The next important decision is deciding if you are going to open a port on your
-   server. For VPS, the ports will be open by default, move on. But for home servers,
-   you would have to make a choice.
+   server. For a VPS, the ports will be open by default. But for home servers, you 
+   will have to make a choice.
 
    A)    You CAN open ports on the router, both 80 (http) and 443 (https) will 
          be needed, but opening ports can be danagerous as it allows attackers outside 
-         the home network access to your ports. If your passwords are not stong 
+         the home network access to your ports. If your passwords are not strong 
          (or if you don't have any), they can get access to your computer, but 
          not just your computer, your whole network, as the computer is connected 
          to all the others in the home via the router.
@@ -52,8 +52,8 @@ $orange
          If you choose this path, log in to your router page and forward the ports to
          the relay computer. Use the internet to learn how this is done. You then
          need to enable SSL traffic (https) by creating a certificate from a 
-         certificate authority - use Let's Encrypt free service. Parmanode can do that
-         for you from the menu.
+         certificate authority - use Let's Encrypt free service. Parmanode will be
+         able to do that for you from the menu (coming soon).
 
    B)    Create an auto SSH tunnel from a different computer with open ports, eg a
          VPS. This requires some computer wizardy. Parmanode may have such a feature
@@ -62,5 +62,6 @@ $orange
 ########################################################################################
 "
 enter_continue
+set_terminal
 return
 }
