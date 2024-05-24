@@ -11,7 +11,7 @@ $orange
     To what domain name will users connect to? Note the domain needs an SSL 
     certificate and a reverse proxy set up to your Nostr Realy Docker container.
 
-    Hit$green <enter> alone$cyan to leave this for now (eg if you're testing)
+    Hit$green <enter> alone$orange to leave this for now (eg if you're testing)
     
     or
 
