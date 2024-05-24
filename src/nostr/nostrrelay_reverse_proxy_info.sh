@@ -19,11 +19,11 @@ $orange
     I recommend signign up to$cyan CloudFlare$orange, then "add a site" to the account, and follow
     their instructions. Then set up an 'A' name under the DNS tab:
 
-$green        Type:          A
-$green        Name:          @
-$green        Content:       IP address
-$green        Proxy Status:  On or Off (DNS only) 
-$green        TTL:           2 min
+$green        Type:          $orange A
+$green        Name:          $orange @
+$green        Content:       $orange IP address
+$green        Proxy Status:  $orange On or Off (DNS only) 
+$green        TTL:           $orange 2 min
 
     If you turn Proxy Status off, then you don't hide the IP, but it's useful if you
     want to SSH into the computer using the domain name. If you turn proxy on, you have
