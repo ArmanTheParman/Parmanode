@@ -26,11 +26,13 @@ q|Q) exit ;; p|P) return 1 ;;
 if ! echo $domain | grep -E '\.' ; then announce "Domain format not right" ; continue ; fi
 export nostr_domain=$domain
 add_nostr_domain "relay_url = \"wss://$nostr_domain/\""
+break
 ;;
 esac
 done
 ########################################################################################
 
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -47,7 +49,21 @@ set_terminal
 ;;
 esac
 
+set_terminal ; echo -e "
 ########################################################################################
+
+    You chose: $relay_name
+
+    Hit$cyan <enter> alone$orange to accept or anything else to try again.
+
+########################################################################################
+"
+read choice
+case $choice in
+"") break ;;
+*) continue ;;
+esac
+done
 
 file="$hp/nostrrelay/config.toml"
 max_conn=$(nproc) # get number of cores and set max connection to same number of cores
