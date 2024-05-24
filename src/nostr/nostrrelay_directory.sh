@@ -4,8 +4,8 @@ if [[ -e $HOME/.nostr_data ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-
-    $HOME/.nostr_data already exists. What is to be done?
+$cyan
+    $HOME/.nostr_data$orange already exists. What is to be done?
 
         1)    Delete the data and start over
 
