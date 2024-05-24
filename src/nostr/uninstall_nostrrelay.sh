@@ -4,8 +4,14 @@ set_terminal ; echo -e "
 $cyan
                                Uninstall Nostr Relay 
 $orange
-    Are you sure? (y) (n)
+    Are you sure? 
 
+                    y)    Yes, uninstall
+
+                    n)    Nah, abort
+$red
+                    rem)  Yes, and remove the data directory too.
+$orange
 ########################################################################################
 "
 choose "x" 
