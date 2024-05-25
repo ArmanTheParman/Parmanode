@@ -40,7 +40,7 @@ $tor_menu
 
         Local IP & Port           $IP:7080    (routed to Docker container)
 
-        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay) 
+        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay):8080 
 
 $yellow
         Nostr data location:      $HOME/.nostr_data
