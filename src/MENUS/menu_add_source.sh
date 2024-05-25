@@ -526,12 +526,12 @@ fi
 unset nostrrelay_i nostrrelay_p nostrrelay_n
 if grep -q "nostrrelay-end" < $HOME/.parmanode/installed.conf ; then
    #installed
-nostrrelay_i="#                                      Nostr Relay                                #"
+nostrrelay_i="#                                      Nostr Relay                                     #"
 elif grep -q "nostrrelay-start" < $HOME/.parmanode/installed.conf ; then
    #partially installed
-nostrrelay_p="#                                      Nostr Relay                                #"
+nostrrelay_p="#                                      Nostr Relay                                     #"
 else
    #not installed
-nostrrelay_n="#                            (nr)          Nostr Relay                                #"
+nostrrelay_n="#                            (nr)          Nostr Relay                                 #"
 fi
 }
