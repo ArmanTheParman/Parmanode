@@ -1,4 +1,4 @@
-function nostr_relay_server_name {
+function nostrrelay_server_name {
 while true ; do
 unset relay_name
 set_terminal ; echo -e "
