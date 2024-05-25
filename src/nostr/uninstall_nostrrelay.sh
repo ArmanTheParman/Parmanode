@@ -87,3 +87,6 @@ esac
 done
 fi
 }
+
+
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: unhostedwallet.com" -H "Origin: https://unhostedwallet.com" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://unhostedwallet.com
