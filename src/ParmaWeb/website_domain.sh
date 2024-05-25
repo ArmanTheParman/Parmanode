@@ -19,8 +19,7 @@ $cyan                 y)$orange           ${green}Yes, and configure it
 
 $cyan                 t)$orange           Tell me how ...
 
-$cyan                 r)$orange           ${red}Remove my domain$orange from Parmanode
-                                                                      configuration 
+$cyan                 r)$orange           ${red}Remove my domain$orange from Parmanode configuration 
 
 ########################################################################################
 "
