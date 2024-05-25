@@ -128,7 +128,7 @@ if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
                        echo "    (ld)         LND (Docker)
                             " ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp=1
-                       echo "    (ns)         Nostr Relay
+                       echo "    (nr)         Nostr Relay
                             " ; fi
 echo "                            
 #######################################################################################
