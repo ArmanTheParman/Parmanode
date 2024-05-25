@@ -53,7 +53,7 @@ nostrrelay_reverse_proxy_info
 
 nostrrelay_directories || return 1
 
-make_website_nginx 
+make_website_nginx nostr
 
 sudo systemctl restart nginx >/dev/null 2>&1
 
