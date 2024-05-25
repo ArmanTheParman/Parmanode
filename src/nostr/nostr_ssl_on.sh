@@ -35,5 +35,3 @@ sudo systemctl restart nginx
 
 success "SSL has been turned on"
 }
-
-target_line=$(cat /etc/nginx/conf.d/$domain_name.conf | grep -n "try_files" | cut -d : -f 1)
