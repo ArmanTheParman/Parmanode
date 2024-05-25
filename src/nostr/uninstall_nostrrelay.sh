@@ -57,7 +57,7 @@ success "Nostr Relay has been uninstalled"
 
 function double_check_website_not_installed {
 
-if which mariadb >/dev/null || which mysql >dev/null ; then 
+if which mariadb >/dev/null || which mysql >/dev/null ; then 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
