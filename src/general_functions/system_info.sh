@@ -252,7 +252,7 @@ fi
 
 function ensure_english {
 if [[ ! "$LANG" =~ ^en && ! -e /.dockerenv ]] ; then 
-export English=false
+export English="false"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -273,7 +273,7 @@ esac
 
 else
 
-export English=true
+export English="true"
 
 fi
 }

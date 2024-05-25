@@ -1,5 +1,5 @@
 function install_electrs {
-export install_electrs_docker_variable=false
+export install_electrs_docker_variable="false"
 source $pc $ic >/dev/null 2>&1
 
 grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second instance of electrs.
@@ -42,12 +42,12 @@ if ! which jq >/dev/null ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1
-export dontstartbitcoin=true
+export dontstartbitcoin="true"
 check_rpc_bitcoin
 unset dontstartbitcoin
 
 isbitcoinrunning
-if [[ $bitcoinrunning == true ]] ; then
+if [[ $bitcoinrunning == "true" ]] ; then
 while true ; do
 set_terminal
 echo -e "

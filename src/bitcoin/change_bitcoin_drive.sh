@@ -106,7 +106,7 @@ i|I)
 export make_label=parmanode && add_drive || return 1
 ;;
 f|F)
-export justFormat=true && format_ext_drive 
+export justFormat="true" && format_ext_drive 
 ;;
 *)
 invalid ;;

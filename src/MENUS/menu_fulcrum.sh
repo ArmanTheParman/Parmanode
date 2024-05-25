@@ -7,7 +7,7 @@ do
 set_terminal
 
 isbitcoinrunning
-if [[ $bitcoinrunning == true ]] ; then
+if [[ $bitcoinrunning == "true" ]] ; then
 unset isbitcoinrunning_fulcrum
 else
 isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
@@ -27,7 +27,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 #done this way so first load of menu is fast
-if [[ ! $refresh == true ]] ; then
+if [[ ! $refresh == "true" ]] ; then
 fulcrum_status="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 fulcrum_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 else
@@ -117,7 +117,7 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
-r) please_wait ; menu_fulcrum_status ; refresh=true ;;
+r) please_wait ; menu_fulcrum_status ; refresh="true" ;;
 
 start | START)
 check_fulcrum_pass

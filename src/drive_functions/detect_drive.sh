@@ -96,7 +96,7 @@ enter_continue
 set_terminal
 sleep 2.5
 
-if [[ $check_if_parmanode_drive == true ]] && ! lsblk -o LABEL | grep -q parmanode ; then
+if [[ $check_if_parmanode_drive == "true" ]] && ! lsblk -o LABEL | grep -q parmanode ; then
 set_terminal ; echo -e "
 ########################################################################################
     This does not seem to be a drive with a$cyan parmanode$orange Label. Aborting.

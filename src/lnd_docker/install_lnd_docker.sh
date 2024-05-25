@@ -29,7 +29,7 @@ debug "after docker run and start"
 docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >/dev/null 2>&1
 
 #password file, even if blank, needs to exists for lnd conf file to be valid
-if [[ $reusedotlnd != true ]] ; then
+if [[ $reusedotlnd != "true" ]] ; then
 touch $HOME/.lnd/password.txt  
 make_lnd_conf 
 set_lnd_alias #needs to have lnd conf existing
@@ -38,7 +38,7 @@ fi
 lnd_docker_start || { announce "Couldn't start lnd, aborting." ; return 1 ; }
 debug "check lnd started in container"
 
-if [[ $reusedotlnd != true ]] ; then
+if [[ $reusedotlnd != "true" ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
                                              # password file and needs new wallet to do so.
 gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf

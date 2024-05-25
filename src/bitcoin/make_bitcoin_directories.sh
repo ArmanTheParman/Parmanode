@@ -3,7 +3,7 @@ function make_bitcoin_directories {
 
 # Remove bitcoin directories if they exist, they will be created again new. 
 # If nothing exists there will be no user input required.
-    if [[ $newmigrate != true ]] ; then
+    if [[ $newmigrate != "true" ]] ; then
         if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install || return 1; fi #function adjusted for parmanodl usage
         if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install || return 1 ; fi 
     fi
@@ -12,7 +12,7 @@ function make_bitcoin_directories {
     mkdir -p $HOME/parmanode/bitcoin > /dev/null 2>&1
     installed_conf_add "bitcoin-start"     #First significant install "change" made to drive
 
-    if [[ $drive == "external" && $importdrive != true ]] ; then 
+    if [[ $drive == "external" && $importdrive != "true" ]] ; then 
     
         if [[ $OS == "Linux" ]] ; then
             mkdir /media/$USER/parmanode/.bitcoin >/dev/null 2>&1 && \

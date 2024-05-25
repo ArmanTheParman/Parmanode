@@ -11,6 +11,7 @@ $orange
     Do you have a domain name to use? 
 
 $cyan                 n)$orange           No, just use my internal IP address 
+                                          (for local use only)
 
 $cyan                 e)$orange           No, just use my external IP address 
 
@@ -107,11 +108,11 @@ set_terminal ; echo -e "
 " ; choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|NO|No|no)
-export www=false
+export www="false"
 break
 ;;
 y|Y|Yes|yes)
-export www=true
+export www="true"
 break
 ;;
 *)
@@ -128,11 +129,12 @@ parmanode_conf_add "domain_name=\"$domain\""
 parmanode_conf_add "www=$www"
 
 source $pc
+
 if [[ -n $domain_name && -e /etc/nginx/conf.d/website.conf ]] ; then
     local file="/etc/nginx/conf.d/$domain_name.conf"
     sudo mv /etc/nginx/conf.d/website.conf $file >/dev/null 2>&1
 
-    if [[ $www == true ]] ; then www_name="www.$domain_name" ; fi
+    if [[ $www == "true" ]] ; then www_name="www.$domain_name" ; fi
         
     local server_name="    server_name $domain_name $www_name;"
     swap_string "$file" "#put server___name" "$server_name"

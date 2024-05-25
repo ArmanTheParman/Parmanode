@@ -7,7 +7,7 @@ function install_electrs_docker {
 # Internal drive sync is mounted to $HOME/.electrs
 
 unset install_electrs_docker_variable
-export install_electrs_docker_variable=true # used later to fork make config code.
+export install_electrs_docker_variable="true" # used later to fork make config code.
 
 source $pc $ic >/dev/null 2>&1
 
@@ -58,7 +58,7 @@ if ! which jq >/dev/null ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1
-export dontstartbitcoin=true
+export dontstartbitcoin="true"
 check_rpc_bitcoin
 unset dontstartbitcoin
 

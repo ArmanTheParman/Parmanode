@@ -1,6 +1,6 @@
 function format_ext_drive {
 debug "skip formatting variable = $skip_formatting"
-if [[ $skip_formatting == true ]] ; then return 0 ; fi
+if [[ $skip_formatting == "true" ]] ; then return 0 ; fi
 
 #quit if internal drive chosen
 if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
@@ -11,51 +11,51 @@ debug "passed internal drive choice"
 
 
 #Check if external drive selected for other programs, and warn user.
-if [[ $justFormat != true ]] ; then
+if [[ $justFormat != "true" ]] ; then
 debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
 if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
-confirm_format "Bitcoin" || skip_formatting=true
+confirm_format "Bitcoin" || skip_formatting="true"
 fi
 
 if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
-confirm_format "Fulcrum" || skip_formatting=true
+confirm_format "Fulcrum" || skip_formatting="true"
 fi
 
 if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" || $drive_electrumx == "external" ) ]] ; then 
-confirm_format "electrs" || skip_formatting=true
+confirm_format "electrs" || skip_formatting="true"
 fi
 
 if [[ ( $1 == "electrumx" && $drive_electrumx == "external" ) && ( $drive == "exteranl" || $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then
-confirm_format "electrumx" || skip_formatting=true
+confirm_format "electrumx" || skip_formatting="true"
 fi
 
 
 
-if [[ $skip_formatting == true || $bitcoin_drive_import == true ]] ; then 
+if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then 
     return 0 
 else
     format_warnings #skip_formatting can be changed here
 
-    if [[ $install_bitcoin_variable == true && $skip_formatting == true ]] ; then
+    if [[ $install_bitcoin_variable == "true" && $skip_formatting == "true" ]] ; then
         if [[ $OS == Mac ]] ; then
             if ! diskutil list | grep -q parmanode ; then 
-            driveproblem=true
+            driveproblem="true"
             fi
         elif [[ $OS == Linux ]] ; then
             if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
-            driveproblem=true
+            driveproblem="true"
             fi
         fi
-        if [[ $driveproblem == true ]] ; then
+        if [[ $driveproblem == "true" ]] ; then
             unset driveproblem
             non_parmanode_drive_warning "Bitcoin" || return 1 #quit installtion
             return 0 #if skip formatting, and drive not parmanode, continue on with installation even though problems.
         fi
     fi
     # Skipping formatting, and a parmanode drive exists.
-    if [[ $skip_formatting == true ]] ; then
+    if [[ $skip_formatting == "true" ]] ; then
     return 0
     fi
     # Skip formatting  must be false - carry on with format...
@@ -66,7 +66,7 @@ fi
 fi #end not justFormat
 unset justFormat
 
-if [[ $raid != true ]] ; then
+if [[ $raid != "true" ]] ; then
 detect_drive || return 1 #alternative (better) way to get $disk variable, and exported.
 else
 announce "Please make sure the RAID drive you want to use is mounted now.
@@ -111,7 +111,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
 
-        if [[ $raid != true ]] ; then partition_drive 
+        if [[ $raid != "true" ]] ; then partition_drive 
         debug "after partition drive"
         fi
 
@@ -158,7 +158,7 @@ return 0
 
 function confirm_format {
 #return 1 necessary because function failure sets skip_formatting variable to true in calling  function
-if [[ $importdrive == true ]] ; then return 1 ; fi
+if [[ $importdrive == "true" ]] ; then return 1 ; fi
 
 while true ; do
 clear ; echo -e "

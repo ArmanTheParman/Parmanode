@@ -7,7 +7,7 @@ get_onion_address_variable website
 source $pc >/dev/null 2>&1
 
 #SSL status
-if [[ $website_ssl == true ]] ; then
+if [[ $website_ssl == "true" ]] ; then
 web_ssl_status_print="${green}ON$orange"
 website_ssl_port="443"
 else
@@ -41,7 +41,7 @@ domain_name_text="
 "
 fi
 
-if [[ -n ONION_ADDR_WEBSITE ]] ; then
+if [[ -n $ONION_ADDR_WEBSITE ]] ; then
 tor_menu="        $bright_blue$ONION_ADDR_WEBSITE $orange
 "
 else
@@ -111,7 +111,7 @@ website_domain
 ;;
 
 ssl)
-if [[ $website_ssl == true ]] ; then
+if [[ $website_ssl == "true" ]] ; then
     remove_ssl_website 
 else
     if [[ -z $domain_name ]] ; then

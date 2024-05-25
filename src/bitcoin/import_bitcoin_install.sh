@@ -123,7 +123,7 @@ q|Q) exit 0 ;; p|P|m|M) back2main ;;
 1)
 # Some variables to control how functions branch, esp install_bitcoin and children.
 export drive=external  && parmanode_conf_add "drive=external"
-export justFormat=true
+export justFormat="true"
 export version=self
 install_bitcoin || return 1
 break
@@ -146,8 +146,8 @@ break
 export version=self
 export drive=external 
 parmanode_conf_add "drive=external"
-export bitcoin_drive_import=true #borrowed variable, can't use importdrive (variable gets unset)
-export skip_formatting=true
+export bitcoin_drive_import="true" #borrowed variable, can't use importdrive (variable gets unset)
+export skip_formatting="true"
 export make_label=parmanode
 add_drive || return 1 # imports drive and makes directories if they don't exist.
 #need to find the bitcoin directory
@@ -168,7 +168,7 @@ break
 export version=self
 export drive=internal ;
 parmanode_conf_add "drive=internal"
-export bitcoin_drive_import=true 
+export bitcoin_drive_import="true" 
 #need to decide about bitcoin conf
 replace_bitcoin_conf || return 1
 message_move #move files before continuing
@@ -184,8 +184,8 @@ break
 export version=self
 export drive=external 
 parmanode_conf_add "drive=external"
-export bitcoin_drive_import=true 
-export skip_formatting=true
+export bitcoin_drive_import="true" 
+export skip_formatting="true"
 menu_migrate parmy || return 1 # drive is detected, fstab added, directories made if non existant.
 #need to find the bitcoin directory
 dir_not_found #?
@@ -275,9 +275,9 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 #turn off switch and back on
-unset bitcoin_drive_import && prune_choice && export bitcoin_drive_import=true
+unset bitcoin_drive_import && prune_choice && export bitcoin_drive_import="true"
 #turn off switch and back on
-unset bitcoin_drive_import && make_bitcoin_conf && export bitcoin_drive_import=true
+unset bitcoin_drive_import && make_bitcoin_conf && export bitcoin_drive_import="true"
 break
 ;;
 2)

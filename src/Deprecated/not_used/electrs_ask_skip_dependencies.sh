@@ -24,10 +24,10 @@ m|M) back2main ;;
 q|Q) exit ;;
 p|P) return 1 ;;
 y|Y|YES|Yes|yes) 
-export electrs_skip_dependencies=false
+export electrs_skip_dependencies="false"
 break ;;
 n|NO|no|No|N) 
-export electrs_skip_dependencies=true
+export electrs_skip_dependencies="true"
 break ;;
 *) invalid ;;
 esac

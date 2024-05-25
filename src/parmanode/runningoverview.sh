@@ -22,14 +22,14 @@ function ispublicpoolrunning {
 while true ; do
 
 if ! docker ps >/dev/null 2>&1 ; then
-export publicpoolrunning=false
+export publicpoolrunning="false"
 overview_conf_add "publicpoolrunning=false" "publicpoolrunning="
 break
 fi
 
 if docker ps | grep -q 'public_pool' ; then
 overview_conf_add "publicpoolrunning=true" "publicpoolrunning="
-export publicpoolrunning=true 
+export publicpoolrunning="true" 
 fi
 break
 done
@@ -41,10 +41,10 @@ unset bitcoinrunning
 if [[ $OS == Mac ]] ; then
     if pgrep Bitcoin-Q >/dev/null ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
-    export bitcoinrunning=true
+    export bitcoinrunning="true"
     else 
     overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
-    export bitcoinrunning=false
+    export bitcoinrunning="false"
     fi
     return 0
 fi
@@ -53,26 +53,26 @@ if [[ $OS == Linux ]] ; then
 
     if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
-    export bitcoinrunning=false
+    export bitcoinrunning="false"
     return 0
     fi
    
     if [[ -e $HOME/.bitcoin/debug.log ]] ; then
         if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then 
         overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
-        export bitcoinrunning=false
+        export bitcoinrunning="false"
         return 0
         fi
     else #no debug file, then bitcoin not running
         overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
-        export bitcoinrunning=false
+        export bitcoinrunning="false"
         return 0
     fi
     
     #finally
     if pgrep bitcoin >/dev/null 2>&1 ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
-    export bitcoinrunning=true
+    export bitcoinrunning="true"
     return 0
     fi
 
@@ -83,10 +83,10 @@ function islndrunning {
 unset lndrunning
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 || \
    docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
-export lndrunning=true
+export lndrunning="true"
 overview_conf_add "lndrunning=true" "lndrunning="
 else
-export lndrunning=false
+export lndrunning="false"
 overview_conf_add "lndrunning=false" "lndrunning="
 fi
 

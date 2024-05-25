@@ -21,7 +21,7 @@ streamfile="/etc/nginx/stream.conf"
 fi
 
 if [[ $2 != remove ]] ; then
-sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf=true
+sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf="true"
 fi
 
 #create a back up in case it breaks
@@ -83,7 +83,7 @@ fi
 ########################################################################################
 
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
-if [[ ! $faulty_nginx_conf == true ]] ; then
+if [[ ! $faulty_nginx_conf == "true" ]] ; then
 
     sudo nginx -t || { echo "" 
     echo -e "Something went wrong with the nginx conf setup. The file

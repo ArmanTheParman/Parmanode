@@ -1,5 +1,5 @@
 function install_bitcoin {
-export install_bitcoin_variable=true #don't use same name as function!
+export install_bitcoin_variable="true" #don't use same name as function!
 
 if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 
     but it's not going to run with default Parmanode settings - youll have
@@ -51,7 +51,7 @@ compile_bitcoin || return 1
 debug "compile function done"
 
 # Download bitcoin software & verify
-if [[ $bitcoin_compile == false ]] ; then
+if [[ $bitcoin_compile == "false" ]] ; then
 debug "bitcoin - before download bitcoin"
 download_bitcoin || return 1
 fi
@@ -74,10 +74,10 @@ sudo chown -R $USER: $HOME/.bitcoin/
 
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
-if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip=true ; else skip=false ; fi
+if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
 case $skip in
-false)
-export dontstartbitcoin=true && set_rpc_authentication "s" "install" && unset dontstartbitcoin
+"false")
+export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset dontstartbitcoin
 ;;
 esac
 

@@ -4,10 +4,10 @@ docker run -d --name thunderhub -p $thub_port:3000/tcp \
                                      -v $hp/thunderhub/.env.local:/app/.env.local \
                                      -v $HOME/.lnd/data/chain/bitcoin/mainnet/:/home/parman/.lnd/data/chain/bitcoin/mainnet/ \
                                      -v $HOME/.lnd/tls.cert:/home/parman/.lnd/tls.cert \
-                                     thunderhub || runfailed=true
+                                     thunderhub || runfailed="true"
 echo "pausing to see if run command successful"
 enter_continue
-if [[ $runfailed == true ]] ; then 
+if [[ $runfailed == "true" ]] ; then 
 announce "Something went wrong. Aborting."
 unset runfailed ; return 1 ; fi
 }

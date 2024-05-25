@@ -51,7 +51,7 @@ set_terminal ; echo -e "
 "
 choose "xpmq" ; read choice
 else
-export donotask=true && parmanode_refresh
+export donotask="true" && parmanode_refresh
 fi
 
 case $choice in q|Q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
@@ -64,7 +64,7 @@ if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 # grep searches for a string that occurs only when there are no updates required.
 # otherwise, some update has happened...
 success "Parmanode" "being updated"
-export exit_loop=false
+export exit_loop="false"
 return 0 
 ;;
 

@@ -44,10 +44,10 @@ if [[ ! -f /etc/systemd/system/lnd.service ]] ; then return ; fi
 
 if grep -q "Wants=bitcoind.service" < /etc/systemd/system/lnd.service ; then
 
-    if sudo systemctl status lnd.service >/dev/null 2>&1 ; then patch_lndrunning=true ; sudo systemctsl stop lnd.service >/dev/null 2>&1 ; fi
+    if sudo systemctl status lnd.service >/dev/null 2>&1 ; then patch_lndrunning="true" ; sudo systemctsl stop lnd.service >/dev/null 2>&1 ; fi
     swap_string "/etc/systemd/system/lnd.service" "Wants=bitcoind.service" "BindsTo=bitcoind.service" && \
     sudo systemctl daemon-reload >/dev/null 2>&1 
-    if [[ $patch_lndrunning == true ]] ; then sudo systemctl start lnd.service >/dev/null 2>&1 ; fi
+    if [[ $patch_lndrunning == "true" ]] ; then sudo systemctl start lnd.service >/dev/null 2>&1 ; fi
 
 fi
 }
@@ -72,7 +72,7 @@ fi
 function fix_autoupdate {
 
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
-if [[ $autoupdate == true ]] ; then
+if [[ $autoupdate == "true" ]] ; then
 autoupdate on
 parmanode_conf_remove "autoupdate="
 fi

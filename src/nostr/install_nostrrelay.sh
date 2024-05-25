@@ -21,9 +21,9 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 
 sned_sats
 
-#Domain name questions
-website_domain 
+install_tor silent
 installed_conf_add "nostrrelay-start"
+nostr_tor_add
 
 website_update_system # runs apt-get
 
@@ -46,12 +46,12 @@ git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 #################################
 # configure settings...
 #################################
-nostrrelay_edit_config
+nostrrelay_edit_config || return 1
 nostrrelay_reverse_proxy_info
 
 #################################
 
-nostrrelay_directories
+nostrrelay_directories || return 1
 
 make_website_nginx && sudo systemctl restart nginx >/dev/null 2>&1
 

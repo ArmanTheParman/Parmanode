@@ -21,10 +21,10 @@ if [[ $prune_value == "0" || -z $prune_value ]] ; then
 
 	echo "txindex=1" | sudo tee -a $file >/dev/null
 	echo "blockfilterindex=1" | sudo tee -a $file >/dev/null
-	skipnext=true
+	skipnext="true"
 fi
 
-if [[ $prune_value != "0" && $skipnext != true ]] ; then
+if [[ $prune_value != "0" && $skipnext != "true" ]] ; then
 	delete_line "$file" "txindex=1"
 	delete_line "$file" "blockfilterindex=1"
 	delete_line "$file" "prune="

@@ -7,7 +7,7 @@ sudo rm -rf $file
 
 if [[ -n $domain || -n $domain_name ]] ; then
 
-    if [[ $www == true ]] ; then www_name="www.$domain_name"
+    if [[ $www == "true" ]] ; then www_name="www.$domain_name"
     local server_name="server_name $domain_name $www_name;"
     fi
 

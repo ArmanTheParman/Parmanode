@@ -1,85 +1,19 @@
 function nostrrelay_edit_config {
-#set domain name
-#set server name
 
-while true ; do
-set_terminal ; echo -e " 
-########################################################################################
-$green
-                                 Domain Name (URL)
-$orange
-    To what domain name will users connect to? Note the domain needs an SSL 
-    certificate and a reverse proxy set up to your Nostr Realy Docker container.
+#Domain name questions
+website_domain || return 1
 
-    Hit$green <enter> alone$orange to leave this for now (eg if you're testing)
-    
-    or
+nostrrelay_server_name || return 1
 
-    Type in your domain name and hit$green <enter>$orange (don't include http/https/ws/wss etc)
-
-########################################################################################
-"
-choose xpmq ; read domain ; set_terminal
-case $domain in
-q|Q) exit ;; p|P) return 1 ;;
-*)
-if ! echo $domain | grep -E '\.' ; then announce "Domain format not right" ; continue ; fi
-export nostr_domain=$domain
-add_nostr_domain "relay_url = \"wss://$nostr_domain/\""
-;;
-esac
-set_terminal ; echo -e "
-########################################################################################
-
-    You chose:$green $domain$orange
-
-    Hit$cyan <enter> alone$orange to accept or anything else to try again.
-
-########################################################################################
-"
-read choice
-case $choice in
-"") break ;;
-*) continue ;;
-esac
-done
-########################################################################################
-
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-    Add your unique server name... 
-$orange
-########################################################################################
-"
-choose xpmq ; read relay_name ; set_terminal
-case $relay_name in
-q|Q) exit ;; p|P) return 1 ;;
-*)
-relay_name
-set_terminal
-;;
-esac
-
-set_terminal ; echo -e "
-########################################################################################
-
-    You chose:$green $relay_name$orange
-
-    Hit$cyan <enter> alone$orange to accept or anything else to try again.
-
-########################################################################################
-"
-read choice
-case $choice in
-"") break ;;
-*) continue ;;
-esac
-done
+if [[ -n $domain_name ]] ; then
+nostr_domain=$domain_name
+elif [[ -n $domain ]] ; then
+nostr_domain=$domain
+fi
 
 file="$hp/nostrrelay/config.toml"
 max_conn=$(nproc) # get number of cores and set max connection to same number of cores
+
 swap_string $file "max_conn =" "max_conn = $max_conn"
 swap_string $file "relay_url =" "relay_url = \"wss://$nostr_domain\""
 swap_string $file "name =" "name = \"$relay_name\""

@@ -20,7 +20,7 @@ $orange" ; enter_continue
 
 safe_unmount_parmanode || return 1
 
-if [[ ! $wasntmounted == true ]] ; then
+if [[ ! $wasntmounted == "true" ]] ; then
 set_terminal ; echo -e "$cyan
 ########################################################################################
    Parmanode has safely unmounted your$green regular$cyan Parmanode drive by stopping 

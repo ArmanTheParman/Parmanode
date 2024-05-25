@@ -30,7 +30,7 @@ sudo rm /etc/nginx/conf.d/$domain_name.conf
 make_website_nginx
 
 sudo certbot delete --cert-name $domain_name --nginx
-if [[ $www == true ]] ; then 
+if [[ $www == "true" ]] ; then 
 sudo certbot delete --cert-name "www.$domain_name" --nginx
 fi
 sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue

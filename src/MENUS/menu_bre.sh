@@ -11,11 +11,11 @@ output="
                    $bright_blue
             $ONION_ADDR_BRE:3004
                    $orange"
-t_enabled=true
+t_enabled="true"
 torstatusE="${green}Enabled$orange"
 else
 torstatusD="${red}Disabled$orange"
-t_enabled=false
+t_enabled="false"
 fi
 set_terminal_high
 echo -e "
@@ -38,7 +38,7 @@ if [[ $OS == Mac || $computer_type == Pi ]] ; then
 if  docker ps 2>/dev/null | grep -q bre ; then 
 
     if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
-    menubrerunning=true
+    menubrerunning="true"
     echo -e "
 
             BTC RPC EXPLORER DOCKER CONTAINER IS$green RUNNING$orange
@@ -92,7 +92,7 @@ p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 start|START|Start)
-if [[ $menubrerunning == true ]] ; then continue ; fi
+if [[ $menubrerunning == "true" ]] ; then continue ; fi
 if [[ $computer_type == LinuxPC ]] ; then start_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
 ;;

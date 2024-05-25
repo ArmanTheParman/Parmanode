@@ -146,8 +146,8 @@ echo -e "
 choose "x"
 read eprotocol
 case $eprotocol in
-1) eprotocol=true ; break ;;
-2) eprotocol=false ; break ;;
+1) eprotocol="true" ; break ;;
+2) eprotocol="false" ; break ;;
 *) invalid ;;
 esac
 done

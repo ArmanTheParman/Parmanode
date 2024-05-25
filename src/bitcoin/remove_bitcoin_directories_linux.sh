@@ -1,5 +1,5 @@
 function remove_bitcoin_directories_linux {
-if [[ $bitcoin_dirve_import == true ]] ; then return 0 ; fi
+if [[ $bitcoin_dirve_import == "true" ]] ; then return 0 ; fi
 
 if [[ $1 == install ]] ; then
 leave_or_use="Use it"
@@ -40,7 +40,7 @@ p|P) return 1 ;;
 m|M) back2main ;;
 l|L) 
 #shouldn't need skip_formatting beccause format function was earlier, but just in case...
-export skip_formatting=true ; break ;;
+export skip_formatting="true" ; break ;;
 
 d|D) 
 please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \

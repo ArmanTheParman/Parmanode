@@ -13,7 +13,7 @@ message="$pink
     Another backup directory has been found. $orange
 "
     fi
-found=true 
+found="true" 
 fi 
 
 

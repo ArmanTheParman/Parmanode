@@ -5,7 +5,7 @@ website_intro || return 1
 no_mac || { announce "If there is demand for Macs, it's up to you to let me know and I'll get on to it." ; return 1 ; }
 
 #Domain name questions
-website_domain 
+website_domain || return 1
 website_update_system # runs apt-get
 
 if [[ -e /var/www/website ]] ; then

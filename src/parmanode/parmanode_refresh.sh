@@ -1,7 +1,7 @@
 
 function parmanode_refresh {
 while true ; do
-if [[ $donotask != true ]] ; then
+if [[ $donotask != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 

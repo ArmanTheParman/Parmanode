@@ -2,11 +2,11 @@ function check_wallet_connected {
 #Make sure the wallet can connect to whatever server it is set up to connect to.
 
 unset running 
-if ! ps -x | grep bitcoin | grep "bitcoin.conf" >/dev/null 2>&1 ; then running=false ; fi
-if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running=false ; fi
-if pgrep bitcoind >/dev/null 2>&1 ; then running=true ; fi
-if [[ $bitcoinrunning != false ]] ; then running=true ; fi
-if [[ $bitcoinrunning == false ]] ; then announce "Bitcoin is not running, don't expect $1 to be connected." ; return 0 ; fi
+if ! ps -x | grep bitcoin | grep "bitcoin.conf" >/dev/null 2>&1 ; then running="false" ; fi
+if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running="false" ; fi
+if pgrep bitcoind >/dev/null 2>&1 ; then running="true" ; fi
+if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
+if [[ $bitcoinrunning == "false" ]] ; then announce "Bitcoin is not running, don't expect $1 to be connected." ; return 0 ; fi
 
 
 if [[ $connection == Bitcoin_userpass ]] ; then

@@ -42,7 +42,7 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
-export check_if_parmanode_drive=true # read by detect_drive (which is called by add_drive)
+export check_if_parmanode_drive="true" # read by detect_drive (which is called by add_drive)
 add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
 success "The drive" "being imported"
 offer_swap_to_external #runs only if drive=internal
@@ -50,8 +50,8 @@ return 0
 ;;
 
 new)
-export newmigrate=true
-export justFormat=true
+export newmigrate="true"
+export justFormat="true"
 export drive=external && parmanode_conf_add "drive=external"
 format_ext_drive
 stop_bitcoind 

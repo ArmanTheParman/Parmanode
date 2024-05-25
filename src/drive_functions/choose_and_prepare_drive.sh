@@ -34,13 +34,13 @@ choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
 
-if [[ $choice == aa ]] ; then choice=e ; export raid=true ; fi
+if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
 case $choice in
 3)
 log "importdrive" "$1 install, choice to import drive"
 import_drive_options || return 1
 export drive="external" ; parmanode_conf_add "drive=external"
-export bitcoin_drive_import=true #used later to avoid format prompt.
+export bitcoin_drive_import="true" #used later to avoid format prompt.
 return 0
 ;;
 

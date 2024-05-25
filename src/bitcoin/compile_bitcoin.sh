@@ -90,7 +90,7 @@ git checkout $version
 
 fi #end level 2 if 
 
-elif [[ $knotsbitcoin == true ]] ; then  #compile bitcoin not true
+elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
 
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull ; debug "after checkout knots version, $version"

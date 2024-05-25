@@ -33,11 +33,11 @@ return 1
 fi
 check_pruning_off || return 1
 check_server_1 || return 1
-export dontstartbitcoin=true
+export dontstartbitcoin="true"
 check_rpc_bitcoin
 unset dontstartbitcoin
 isbitcoinrunning
-if [[ $bitcoinrunning == true ]] ; then
+if [[ $bitcoinrunning == "true" ]] ; then
 while true ; do
 set_terminal
 echo -e "

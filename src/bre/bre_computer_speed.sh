@@ -14,9 +14,9 @@ if ! which dmidecode >/dev/null 2>&1 ; then sudo apt-get install dmidecode ; fi
 biosDate=$(sudo dmidecode -t bios | grep Date | cut -d / -f 3)
 
 if [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -lt 2017 ]] ; then 
-export fast_computer=false
+export fast_computer="false"
 elif [[ -n "$biosDate" && "$biosDate" =~ ^[0-9]{4}$ && $biosDate -ge 2017 ]] ; then
-export fast_computer=true
+export fast_computer="true"
 else
     if [[ $computer_type == Pi ]] ; then export fast_computer="yes" ; return ; fi
     bre_computer_speed_message

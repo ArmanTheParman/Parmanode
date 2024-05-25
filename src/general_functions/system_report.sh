@@ -23,10 +23,10 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 o) 
-export omit=true ; break ;;
+export omit="true" ; break ;;
 
 i)
-export omit=false ; break ;;
+export omit="false" ; break ;;
 esac
 done
 
@@ -34,7 +34,7 @@ done
 report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $report
 BTCEXP_BITCOIND
 function delete_private {
-if [[ $omit == true ]] ; then
+if [[ $omit == "true" ]] ; then
     rm $dp/sed.log >/dev/null
     rm $dp/debug.log >/uev/null
     rm $dp/change_string* >/dev/null
@@ -172,7 +172,7 @@ echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
 #PUBLICPOOL
 echor "public pool env \n $(cat $hp/public_pool/.env)"
 
-if [[ $omit == false ]] ; then
+if [[ $omit == "false" ]] ; then
 #HOSTNAME/TOR
 echor "#BRE TOR"
 sudo cat /var/lib/tor/bre-service/hostname

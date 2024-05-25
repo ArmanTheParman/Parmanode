@@ -32,26 +32,26 @@ unset running runningd
 if [[ $electrumxis == nondocker ]] ; then
     if ps -x | grep electrumx | grep -v grep >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrumx failed"  ; then 
     runningd=nondocker
-    running=true
+    running="true"
     else
     runningd=falsenondocker
-    running=false
+    running="false"
     fi
 else 
     if ! docker ps | grep -q electrumx ; then
     runningd=docker
-    running=true
+    running="true"
     else
     runningd=falsedocker
-    running=false
+    running="false"
     fi
 fi
 
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
 source $dp/parmanode.conf >/dev/null 2>&1
 
-if [[ $refresh == true ]] ; then
-    if [[ $running == true ]] ; then 
+if [[ $refresh == "true" ]] ; then
+    if [[ $running == "true" ]] ; then 
         menu_electrumx_status # get elecyrs_sync variable (block number)
     fi
 else
@@ -108,7 +108,7 @@ if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     $orange"
 fi
 
-if [[ $electrumxis == nondocker && $running == true ]] ; then
+if [[ $electrumxis == nondocker && $running == "true" ]] ; then
 echo -en "
       ELECTRUM X IS:$green RUNNING$orange
 
@@ -127,7 +127,7 @@ echo -en "
                   $ONION_ADDR_ELECTRUMX:7006:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrumxis == nondocker && $running == false ]] ; then
+elif [[ $electrumxis == nondocker && $running == "false" ]] ; then
 echo -en "
       ELECTRUMX IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
@@ -141,7 +141,7 @@ $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
-if [[ $running == true ]] ; then echo -en "
+if [[ $running == "true" ]] ; then echo -en "
       ELECTRUMX IS:$green RUNNING$orange
 
       STATUS:     $green$electrumx_sync$orange ($drive_electrumx drive)
@@ -202,7 +202,7 @@ m|M) back2main ;;
 
 r) 
 please_wait
-refresh=true
+refresh="true"
 menu_electrumx || return 1 
 ;;
 
@@ -388,11 +388,11 @@ gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
 #bitcoin finished?
 bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 
-if [[ $bsync == true ]] ; then
+if [[ $bsync == "true" ]] ; then
 
     export electrumx_sync="Bitcoin still sync'ing"
 
-elif [[ $bsync == false ]] ; then
+elif [[ $bsync == "false" ]] ; then
     #fetches block number...
     export electrumx_sync=$(tail -n20 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
      grep -Eo '^[0-9]+') >/dev/null

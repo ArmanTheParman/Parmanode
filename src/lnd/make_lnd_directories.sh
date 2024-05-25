@@ -37,7 +37,7 @@ announce "Note that if this$cyan ~/.lnd/$orange directory that you're 'importing
     I can't predict.$red
 
     <control>-c$orange can abort now."
-export reusedotlnd=true
+export reusedotlnd="true"
 break
 ;;
 *)

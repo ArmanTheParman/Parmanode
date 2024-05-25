@@ -1,5 +1,29 @@
 function install_tor {
 
+if which tor >/dev/null 2>&1 ; then installed_config_add "tor-end" ; return 0 ; fi
+
+if [[ $1 == silent ]] ; then
+
+    if [[ $OS == "Linux" ]] ; then 
+    sudo apt-get install tor -y  
+    fi
+
+    if [[ $OS == "Mac" ]] ; then
+    brew_check Tor || return 1
+    brew install tor && brew services start tor 
+    fi
+
+    if which tor >/dev/null ; then 
+        installed_conf_add "tor-end"
+        return 0 
+    else 
+        installed_conf_remove "tor"
+        return 1 
+    fi
+
+fi
+
+
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -11,8 +35,6 @@ $orange
 ########################################################################################    
 "
 choose "epq" ; read choice
-
-if which tor >/dev/null 2>&1 ; then installed_config_add "tor-end" ; return 0 ; fi
 
 case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 

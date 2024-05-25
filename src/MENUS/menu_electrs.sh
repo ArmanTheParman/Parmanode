@@ -35,15 +35,15 @@ set_terminal
 unset running runningd
 if [[ $electrsis == nondocker ]] ; then
     if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then 
-    running=true
+    running="true"
     else
-    running=false
+    running="false"
     fi
 else 
     if docker ps | grep -q electrs ; then
-    running=true
+    running="true"
     else
-    running=false
+    running="false"
     fi
 fi
 
@@ -51,7 +51,7 @@ debug "runnind, running, $running"
 
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
 source $dp/parmanode.conf >/dev/null 2>&1
-if [[ $running == true && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $running == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
@@ -103,7 +103,7 @@ if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
     $orange"
 fi
 
-if [[ $electrsis == nondocker && $running == true ]] ; then
+if [[ $electrsis == nondocker && $running == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -121,7 +121,7 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == nondocker && $running == false ]] ; then
+elif [[ $electrsis == nondocker && $running == "false" ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
@@ -135,7 +135,7 @@ $red $blinkon
                    DOCKER CONTAINER IS NOT RUNNING
 $blinkoff$orange"
 fi
-if [[ $running == true ]] ; then echo -e "
+if [[ $running == "true" ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
@@ -381,11 +381,11 @@ gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
 #bitcoin finished?
 bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
 
-if [[ $bsync == true ]] ; then
+if [[ $bsync == "true" ]] ; then
 
     export electrs_sync="Bitcoin still sync'ing"
 
-elif [[ $bsync == false ]] ; then
+elif [[ $bsync == "false" ]] ; then
     #fetches block number...
     export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
     #in case an unexpected non-number string, printout, otherwise check if full synced.

@@ -318,7 +318,7 @@ return 1
 fi
 fi
 
-if [[ $norestartlnd != true ]] ; then
+if [[ $norestartlnd != "true" ]] ; then
 restart_lnd
 fi
 

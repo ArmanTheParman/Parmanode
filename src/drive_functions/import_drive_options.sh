@@ -21,7 +21,7 @@ case $choice in
 q|Q) exit ;; q|P) return 1 ;;
 m|M) back2main ;;
 pp|Pp|PP)
-export importdrive=true
+export importdrive="true"
 export make_label=dont
 add_drive || return 1
 
@@ -42,8 +42,8 @@ fi
 return 0
 ;;
 u|U)
-export importdrive=true
-export skip_formatting=true
+export importdrive="true"
+export skip_formatting="true"
 log "importdrive" "umbrel import"
 umbrel_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
@@ -56,8 +56,8 @@ fi
 return 0
 ;;
 rb|Rb|RB)
-export importdrive=true
-export skip_formatting=true
+export importdrive="true"
+export skip_formatting="true"
 log "importdrive" "rpb import"
 raspiblitz_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.
@@ -69,8 +69,8 @@ fi
 return 0
 ;;
 MY|My|my)
-export importdrive=true
-export skip_formatting=true
+export importdrive="true"
+export skip_formatting="true"
 log "importdrive" "mynode import"
 mynode_import || return 1
 #if parmanode was in fstab, option already to replace with new drive done.

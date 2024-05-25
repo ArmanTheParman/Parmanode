@@ -14,14 +14,14 @@ if sudo test -e /var/lib/tor/mempool-service ; then
 debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
-tor_mempool=true
+tor_mempool="true"
 get_onion_address_variable "fulcrum" 
 output_tor=" Tor Access: $bright_blue    
 
     $ONION_ADDR_MEM:8280 $orange   
     " 
 else
-tor_mempool=false
+tor_mempool="false"
 tor_mempool_status="${red}disabled$orange"
 unset output_tor
 fi
@@ -91,7 +91,7 @@ restart_mempool
 
 tor)
 file="$hp/mempool/docker/docker-compose.yml"
-if [[ $tor_mempool == false ]] ; then
+if [[ $tor_mempool == "false" ]] ; then
 swap_string "$file" "SOCKS5PROXY_ENABLED:" "      SOCKS5PROXY_ENABLED: \"true\""
 debug "check swap should be true"
 enable_mempool_tor

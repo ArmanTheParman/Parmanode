@@ -21,9 +21,9 @@ set_terminal_custom "52"
 bitcoin_status #get running text variable.
 isbitcoinrunning
 source $oc
-if [[ $bitcoinrunning != false ]] ; then running=true ; fi
+if [[ $bitcoinrunning != false ]] ; then running="true" ; fi
 
-if [[ $bitcoinrunning == true ]] ; then
+if [[ $bitcoinrunning == "true" ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 
 output2="                   Sync'ing to the $drive drive"
@@ -42,18 +42,13 @@ $green      (qtstart)$orange  Start Bitcoin Qt
 "
 fi
 
-if [[ $OS == Linux && $bitcoinrunning == true ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
+if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
 output3="
 $red      (qtstop)$orange   Stop Bitcoin Qt
 "
 fi
 
 if [[ -z $drive ]] ; then unset output2 ; fi
-
-# #This causes error output when bitcoin loading
-# if [[ $OS == Linux && $bitcoinrunning == true ]] ; then
-# blockheight=$(bitcoin-cli getblockchaininfo | grep blocks | grep -Eo '[0-9]*' > $dp/blockheight 2>/dev/null) &
-# fi
 
 clear
 echo -en "
@@ -218,7 +213,7 @@ fi
 ;;
 
 qtstop)
-if [[ -n $output3 && $bitcoinrunning == true ]] ; then
+if [[ -n $output3 && $bitcoinrunning == "true" ]] ; then
 stop_bitcoinqt
 fi
 ;;

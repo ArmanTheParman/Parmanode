@@ -20,7 +20,7 @@ echo -e "${green}Please wait, unzipping files...$orange"
 unpack_lnd
 
 sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1
-if [[ $reusedotlnd != true ]] ; then
+if [[ $reusedotlnd != "true" ]] ; then
 set_lnd_port
 if [[ ! -e $HOME/.lnd/password.txt ]] ; then sudo touch $HOME/.lnd/password.txt ; fi
 make_lnd_conf
@@ -34,7 +34,7 @@ make_lnd_service
 #Make sure LND has started.
 start_LND_loop
 
-if [[ $reusedotlnd != true ]] ; then
+if [[ $reusedotlnd != "true" ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
 gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
 gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf

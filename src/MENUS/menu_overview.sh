@@ -42,184 +42,184 @@ s11="${white}s110${orange}"
 
 if grep -q bitcoin-end < $ic ; then
     i1="    ${green}Y${orange}"
-    bitcoininstalled=true
-    if [[ $bitcoinrunning == true ]] ; then
+    bitcoininstalled="true"
+    if [[ $bitcoinrunning == "true" ]] ; then
     r1="${green}Y${orange}"
-    menub1=true
+    menub1="true"
     else
     r1="${red}N${orange}"
-    menub1=false
+    menub1="false"
     fi
 else
     i1="${red}     N${orange}"
     r1="${red}N${orange}"
-    menub1=false
+    menub1="false"
     unset m1 s1 r1
 fi
 
 if grep -q lnd-end < $ic || grep -q lnddocker-end <$ic ; then
     i2="${green}Y${orange}"
-    lndinstalled=true
-    if [[ $lndrunning == true ]] ; then
+    lndinstalled="true"
+    if [[ $lndrunning == "true" ]] ; then
     r2="${green}Y${orange}"
-    menub2=true
+    menub2="true"
     else
     r2="${red}N${orange}"
-    menub2=false
+    menub2="false"
     fi
 else
     i2="${red}     N${orange}"
     r2="${red}N${orange}"
-    menub2=false
+    menub2="false"
     unset m2 s2 r2
 fi
 
 if grep -q fulcrum-end < $ic ; then
     i3="${green}Y${orange}"
-    fulcruminstalled=true
-    if [[ $fulcrumrunning == true ]] ; then
+    fulcruminstalled="true"
+    if [[ $fulcrumrunning == "true" ]] ; then
     r3="${green}Y${orange}"
-    menub3=true
+    menub3="true"
     else
     r3="${red}N${orange}"
-    menub3=false
+    menub3="false"
     fi
 else
     i3="${red}     N${orange}"
     r3="${red}N${orange}"
-    menub3=false
+    menub3="false"
     unset m3 s3 r3
 fi 
 if grep -q electrs-end < $ic || grep -q electrs2-end < $ic ; then
     i4="${green}Y${orange}"
-    electrsinstalled=true
-    if [[ $electrsrunning == true ]] ; then
+    electrsinstalled="true"
+    if [[ $electrsrunning == "true" ]] ; then
     r4="${green}Y${orange}"
-    menub4=true
+    menub4="true"
     else
     r4="${red}N${orange}"
-    menub4=false
+    menub4="false"
     fi
 else
     i4="${red}     N${orange}"
     r4="${red}N${orange}"
-    menub4=false
+    menub4="false"
     unset m4 s4 r4
 fi
 if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
     i5="${green}Y${orange}"
-    breinstalled=true
-    if [[ $brerunning == true ]] ; then
+    breinstalled="true"
+    if [[ $brerunning == "true" ]] ; then
     r5="${green}Y${orange}"
-    menub5=true
+    menub5="true"
     else
     r5="${red}N${orange}"
-    menub5=false
+    menub5="false"
     fi
 else
     i5="${red}     N${orange}"
     r5="${red}N${orange}"
-    menub5=false
+    menub5="false"
     unset m5 s5 r5
 fi
 if grep -q btcpay-end < $ic ; then
     i6="${green}Y${orange}"
-    btcpayinstalled=true
-    if [[ $btcpayrunning == true ]] ; then
+    btcpayinstalled="true"
+    if [[ $btcpayrunning == "true" ]] ; then
     r6="${green}Y${orange}"
-    menub6=true
+    menub6="true"
     else
     r6="${red}N${orange}"
-    menub6=false
+    menub6="false"
     fi
 else
     i6="${red}     N${orange}"
     r6="${red}N${orange}"
-    menub6=false
+    menub6="false"
     unset m6 s6 r6
 fi
 if grep -q rtl-end < $ic ; then
     i7="${green}Y${orange}"
-    rtlinstalled=true
-    if [[ $rtlrunning == true ]] ; then
+    rtlinstalled="true"
+    if [[ $rtlrunning == "true" ]] ; then
     r7="${green}Y${orange}"
-    menub7=true
+    menub7="true"
     else
     r7="${red}N${orange}"
-    menub7=false
+    menub7="false"
     fi
 else
     i7="${red}     N${orange}"
     r7="${red}N${orange}"
-    menub7=false
+    menub7="false"
     unset m7 s7 r7
 fi
 
 if grep -q electrsdkr-end < $ic || grep -q electrsdkr2-end < $ic ; then
     i8="${green}Y${orange}"
-    electrsdkrinstalled=true
-    if [[ $electrsdkrrunning == true ]] ; then
+    electrsdkrinstalled="true"
+    if [[ $electrsdkrrunning == "true" ]] ; then
     r8="${green}Y${orange}"
-    menub8=true
+    menub8="true"
     else
     r8="${red}N${orange}"
-    menub8=false
+    menub8="false"
     fi
 else
     i8="${red}     N${orange}"
     r8="${red}N${orange}"
-    menub8=false
+    menub8="false"
     unset m8 s8 r8
 fi
 
 if grep -q mempool-end < $ic ; then
     i9="${green}Y${orange}"
-    mempoolinstalled=true
-    if [[ $mempoolrunning == true ]] ; then
+    mempoolinstalled="true"
+    if [[ $mempoolrunning == "true" ]] ; then
     r9="${green}Y${orange}"
-    menub9=true
+    menub9="true"
     else
     r9="${red}N${orange}"
-    menub9=false
+    menub9="false"
     fi
 else
     i9="${red}     N${orange}"
     r9="${red}N${orange}"
-    menub9=false
+    menub9="false"
     unset m9 s9 r9
 fi
 
 if grep -q public_pool-end < $ic ; then
     i10="${green}Y${orange}"
-    publicpoolinstalled=true
-    if [[ $publicpoolrunning == true ]] ; then
+    publicpoolinstalled="true"
+    if [[ $publicpoolrunning == "true" ]] ; then
     r10="${green}Y${orange}"
-    menub10=true
+    menub10="true"
     else
     r10="${red}N${orange}"
-    menub10=false
+    menub10="false"
     fi
 else
     i10="${red}     N${orange}"
     r10="${red}N${orange}"
-    menub10=false
+    menub10="false"
     unset m10 s10 r10
 fi
 
 if grep -q electrumx-end < $ic ; then
     i11="${green}Y${orange}"
-    electrumxinstalled=true
-    if [[ $electrumxrunning == true ]] ; then
+    electrumxinstalled="true"
+    if [[ $electrumxrunning == "true" ]] ; then
     r11="${green}Y${orange}"
-    menub11=true
+    menub11="true"
     else
     r11="${red}N${orange}"
-    menub11=false
+    menub11="false"
     fi
 else
     i11="${red}     N${orange}"
     r11="${red}N${orange}"
-    menub11=false
+    menub11="false"
     unset m11 s11 r11
 fi
 
@@ -276,73 +276,73 @@ menu_overview
 ;;
 
 m1) 
-if [[ $bitcoininstalled == true ]] ; then
+if [[ $bitcoininstalled == "true" ]] ; then
 menu_bitcoin overview 
 fi
 ;; # argument changes behaviour of "p" menu choice
 
 m2) 
-if [[ $lndinstalled == true ]] ; then
+if [[ $lndinstalled == "true" ]] ; then
 menu_lnd overview 
 fi
 ;;
 
 m3) 
-if [[ $fulcruminstalled == true ]] ; then
+if [[ $fulcruminstalled == "true" ]] ; then
 menu_fulcrum overview 
 fi
 ;;
 
 m4) 
-if [[ $electrsinstalled == true ]] ; then
+if [[ $electrsinstalled == "true" ]] ; then
 menu_electrs overview 
 fi
 ;;
 
 m5) 
-if [[ $breinstalled == true ]] ; then
+if [[ $breinstalled == "true" ]] ; then
 menu_bre     overview 
 fi
 ;;
 
 m6) 
-if [[ $btcpayinstalled == true ]] ; then
+if [[ $btcpayinstalled == "true" ]] ; then
 menu_btcpay  overview 
 fi
 ;;
 
 m7) 
-if [[ $rtlinstalled == true ]] ; then
+if [[ $rtlinstalled == "true" ]] ; then
 menu_rtl     overview 
 fi
 ;;
 
 m8) 
-if [[ $electrsdkrinstalled == true ]] ; then
+if [[ $electrsdkrinstalled == "true" ]] ; then
 menu_electrs overview 
 fi
 ;;
 
 m9) 
-if [[ $mempoolinstalled == true ]] ; then
+if [[ $mempoolinstalled == "true" ]] ; then
 menu_mempool overview 
 fi
 ;;
 
 m10) 
-if [[ $publicpoolinstalled == true ]] ; then
+if [[ $publicpoolinstalled == "true" ]] ; then
 menu_public_pool overview 
 fi
 ;;
 
 m11) 
-if [[ $electrumxinstalled == true ]] ; then
+if [[ $electrumxinstalled == "true" ]] ; then
 menu_electrumx overview 
 fi
 ;;
 
 s1) 
-if [[ $menub1 == true ]] ; then
+if [[ $menub1 == "true" ]] ; then
 clear ; please_wait
 stop_bitcoind
 else
@@ -351,7 +351,7 @@ run_bitcoind
 fi
 ;;
 s2) 
-if [[ $menub2 == true ]] ; then
+if [[ $menub2 == "true" ]] ; then
 clear ; please_wait
 stop_lnd
 else
@@ -360,7 +360,7 @@ start_lnd
 fi
 ;;
 s3) 
-if [[ $menub3 == true ]] ; then
+if [[ $menub3 == "true" ]] ; then
 set_terminal
 echo "Fulcrum stopping..."
 if [[ $OS == "Linux" ]] ; then stop_fulcrum_linux ; fi
@@ -376,7 +376,7 @@ set_terminal
 fi
 ;;
 s4) 
-if [[ $menub4 == true ]] ; then
+if [[ $menub4 == "true" ]] ; then
 clear ; please_wait
 stop_electrs
 else
@@ -386,7 +386,7 @@ sleep 1
 fi
 ;;
 s5) 
-if [[ $menub5 == true ]] ; then
+if [[ $menub5 == "true" ]] ; then
 clear ; please_wait
 if [[ $computer_type == LinuxPC ]] ; then stop_bre ; fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_stop ; fi
@@ -397,7 +397,7 @@ if [[ $OS == Mac || $computer_type == Pi ]] ; then bre_docker_start ; fi
 fi
 ;;
 s6) 
-if [[ $menub6 == true ]] ; then
+if [[ $menub6 == "true" ]] ; then
 clear ; please_wait
 stop_btcpay
 else
@@ -406,7 +406,7 @@ start_btcpay
 fi
 ;;
 s7) 
-if [[ $menub7 == true ]] ; then
+if [[ $menub7 == "true" ]] ; then
 clear ; please_wait
 docker stop rtl
 else
@@ -415,7 +415,7 @@ docker start rtl
 fi
 ;;
 s8) 
-if [[ $menub8 == true ]] ; then
+if [[ $menub8 == "true" ]] ; then
 clear ; please_wait
 docker_stop_electrs
 else
@@ -425,7 +425,7 @@ fi
 ;;
 
 s9)
-if [[ $menub9 == true ]] ; then
+if [[ $menub9 == "true" ]] ; then
 clear ; please_wait
 stop_mempool
 else
@@ -434,7 +434,7 @@ fi
 ;;
 
 s10)
-if [[ $menub10 == true ]] ; then
+if [[ $menub10 == "true" ]] ; then
 clear ; please_wait
 stop_public_pool
 else
@@ -443,7 +443,7 @@ fi
 ;;
 
 s11)
-if [[ $menub11 == true ]] ; then
+if [[ $menub11 == "true" ]] ; then
 clear ; please_wait
 stop_electrumx
 else
