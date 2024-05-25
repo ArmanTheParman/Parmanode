@@ -126,7 +126,7 @@ fi
 parmanode_conf_remove "domain_name="
 parmanode_conf_remove "domain="
 parmanode_conf_remove "www="
-parmanode_conf_add "domain_name=\"$domain\""
+parmanode_conf_add "domain_name=$domain"
 parmanode_conf_add "www=$www"
 
 source $pc
