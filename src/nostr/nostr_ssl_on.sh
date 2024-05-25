@@ -43,6 +43,7 @@ swap_string "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"upgrade\";
 "
+debug "after swapstring nginx"
 
 sudo systemctl restart nginx
 
