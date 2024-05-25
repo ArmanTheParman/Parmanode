@@ -127,6 +127,9 @@ if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
                        echo "    (ld)         LND (Docker)
                             " ; fi
+if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp=1
+                       echo "    (ns)         Nostr Relay
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -361,6 +364,12 @@ th)
 ws) 
    if [[ $websiteapp == 1 ]] ; then
    menu_website
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   fi
+   ;;
+ns) 
+   if [[ $nostrrelayapp == 1 ]] ; then
+   menu_nostr
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;

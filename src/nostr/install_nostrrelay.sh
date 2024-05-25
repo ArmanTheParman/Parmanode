@@ -53,7 +53,9 @@ nostrrelay_reverse_proxy_info
 
 nostrrelay_directories || return 1
 
-make_website_nginx && sudo systemctl restart nginx >/dev/null 2>&1
+make_website_nginx 
+
+sudo systemctl restart nginx >/dev/null 2>&1
 
 echo -e "${green}Building Docker image..."
 nostrrelay_build

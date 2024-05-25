@@ -14,7 +14,7 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu
+unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu
 
 echo -e "
 ########################################################################################
@@ -255,6 +255,12 @@ echo -e "#                                    (ng)               Nginx          
 #                                                                                      #"
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#                                    (ng)               Nginx             $red$blinkon(partial)$blinkoff$orange    #
+#                                                                                      #" ; fi
+if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
+echo -e "#                                    (ng)               Nostr Relay                    #
+#                                                                                      #"
+elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
+echo -e "#                                    (ns)               Nostr Relay       $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
@@ -525,6 +531,13 @@ if [[ $nginxmenu == 1 ]] ; then
 uninstall_nginx_warning || return
 uninstall_nginx
 clear
+return
+fi
+;;
+
+ns)
+if [[ $nostrrelaymenu == 1 ]] ; then
+uninstall_nostrrelay 
 return
 fi
 ;;

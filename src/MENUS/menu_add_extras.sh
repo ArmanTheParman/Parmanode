@@ -17,15 +17,18 @@ echo -e "
 #$green Programs not yet installed...$orange                                                        #
 #                                                                                      #"
 if [[ -n $website_n ]]          ; then echo  "$website_n"; fi
+if [[ -n $nostrrelay_n ]]          ; then echo  "$nostrrelay_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $website_i ]]          ; then echo  "$website_i"; fi
+if [[ -n $nostrrelay_i ]]          ; then echo  "$nostrrelay_i"; fi
 echo -e "#                                                                                      #
 #$green Failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
 if [[ -n $website_p ]]            ; then echo  -e "$pink$website_p$orange"; fi
+if [[ -n $nostrrelay_p ]]            ; then echo  -e "$pink$nostrrelay_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -48,17 +51,23 @@ ws)
     return 0
     fi
     ;;
+ns)
+    if [[ -n $nostrrelay_n ]] ; then
+    install_nostrrelay
+    return 0
+    fi
+    ;;
 
-    q|Q|quit|QUIT)
-        exit 0
-        ;;
-    p|P)
-        menu_add_new
-        ;;
-    *)
-        invalid
-        continue
-        ;;
+q|Q|quit|QUIT)
+    exit 0
+    ;;
+p|P)
+    menu_add_new
+    ;;
+*)
+    invalid
+    continue
+    ;;
 esac
 done
 
