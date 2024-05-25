@@ -121,7 +121,7 @@ up|update|UPDATE|Update)
     continue
     fi
 
-    if [[ $exit_loop == false ]] ; then return 0 ;fi
+    if [[ $exit_loop == "false" ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)
     about ;;

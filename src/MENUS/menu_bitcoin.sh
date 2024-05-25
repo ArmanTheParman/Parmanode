@@ -21,7 +21,7 @@ set_terminal_custom "52"
 bitcoin_status #get running text variable.
 isbitcoinrunning
 source $oc
-if [[ $bitcoinrunning != false ]] ; then running="true" ; fi
+if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 
 if [[ $bitcoinrunning == "true" ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
@@ -36,7 +36,7 @@ output2="                   Will sync to the $drive drive"
 start="$green"
 fi                         
 
-if [[ $OS == Linux && $bitcoinrunning == false ]] ; then
+if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
 output3="
 $green      (qtstart)$orange  Start Bitcoin Qt
 "
@@ -207,7 +207,7 @@ menu_bitcoin_other || return 1
 ;;
 
 qtstart)
-if [[ -n $output3 && $bitcoinrunning == false ]] ; then
+if [[ -n $output3 && $bitcoinrunning == "false" ]] ; then
 run_bitcoinqt
 fi
 ;;
