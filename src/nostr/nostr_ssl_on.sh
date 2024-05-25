@@ -31,7 +31,7 @@ source $pc
 sudo certbot --nginx -d $domain_name || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
 parmanode_conf_add "nostr_ssl=\"true\""
 
-swap_string "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
+change_string_mac "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
     proxy_pass http://localhost:7080;
     proxy_set_header Host \$host;
     proxy_set_header X-Real-IP \$remote_addr;
@@ -42,7 +42,7 @@ swap_string "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"upgrade\";
-"
+" "swap"
 
 debug "after swapstring nginx"
 
@@ -50,3 +50,5 @@ sudo systemctl restart nginx
 
 success "SSL has been turned on"
 }
+
+target_line=$(cat /etc/nginx/conf.d/$domain_name.conf | grep -n "try_files" | cut -d : -f 1)
