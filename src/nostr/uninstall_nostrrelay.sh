@@ -52,6 +52,7 @@ sudo systemctl restart nginx >/dev/null 2>&1
 nostr_tor_remove
 parmanode_conf_remove "domain"
 parmanode_conf_remove "www" 
+parmanode_conf_remove "nostr_ssl"
 installed_conf_remove "nostrrelay"
 success "Nostr Relay has been uninstalled"
 }
