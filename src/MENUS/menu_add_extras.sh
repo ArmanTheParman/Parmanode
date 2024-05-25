@@ -51,7 +51,7 @@ ws)
     return 0
     fi
     ;;
-ns)
+nr)
     if [[ -n $nostrrelay_n ]] ; then
     install_nostrrelay
     return 0
