@@ -41,7 +41,7 @@ swap_string "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
     # WebSocket support
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
-    proxy_set_header Connection \"upgrade\";
+    proxy_set_header Connection \\"upgrade\\";
 "
 debug "after swapstring nginx"
 
