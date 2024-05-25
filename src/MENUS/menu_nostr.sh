@@ -21,7 +21,7 @@ domain_name_text="
 fi
 
 if [[ -n $ONION_ADDR_NOSTR ]] ; then
-tor_menu="        $bright_blue$ONION_ADDR_NOSTR $orange
+tor_menu="        $bright_blue$ONION_ADDR_NOSTR${green}:7081 $orange
 "
 else
 unset tor_menu
