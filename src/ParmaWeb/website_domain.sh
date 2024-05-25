@@ -104,7 +104,8 @@ set_terminal ; echo -e "
                                 ${red}n)$orange       no
 
 ########################################################################################
-" ; choose "xpmq" ; read choice ; set_terminal
+" 
+choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|NO|No|no)
 export www="false"
@@ -112,6 +113,7 @@ break
 ;;
 y|Y|Yes|yes)
 export www="true"
+debug "export www"
 break
 ;;
 *)
@@ -128,6 +130,7 @@ parmanode_conf_add "domain_name=\"$domain\""
 parmanode_conf_add "www=$www"
 
 source $pc
+debug "source pc"
 
 if [[ -n $domain_name && -e /etc/nginx/conf.d/website.conf ]] ; then
     local file="/etc/nginx/conf.d/$domain_name.conf"
@@ -139,4 +142,5 @@ if [[ -n $domain_name && -e /etc/nginx/conf.d/website.conf ]] ; then
     swap_string "$file" "#put server___name" "$server_name"
     sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
 fi
+debug "end of website domain function"
 }

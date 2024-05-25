@@ -2,7 +2,7 @@ function nostrrelay_edit_config {
 
 #Domain name questions
 website_domain || return 1
-
+debug "after website_domain"
 nostrrelay_server_name || return 1
 
 if [[ -n $domain_name ]] ; then
