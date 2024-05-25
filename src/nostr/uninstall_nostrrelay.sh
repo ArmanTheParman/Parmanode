@@ -44,6 +44,7 @@ sudo rm -rf /var/www/website
 fi
 
 sudo rm -rf /etc/nginx/conf.d/website* >/dev/null 2>&1
+sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >/dev/null 2>&1
 sudo rm -rf /etc/letsencrypt/live/$domain_name >/dev/null 2>&1
 sudo rm -rf /etc/letsencrypt/live/www.$domain_name >/dev/null 2>&1
 sudo systemctl restart nginx >/dev/null 2>&1

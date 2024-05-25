@@ -31,7 +31,7 @@ source $pc
 sudo certbot --nginx -d $domain_name || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
 parmanode_conf_add "nostr_ssl=\"true\""
 
-swap_string "/etc/nginx/conf.d/website.conf" "try_files" "
+swap_string "/etc/nginx/conf.d/$domain_name.conf" "try_files" "
     proxy_pass http://localhost:7080;
     proxy_set_header Host \$host;
     proxy_set_header X-Real-IP \$remote_addr;
