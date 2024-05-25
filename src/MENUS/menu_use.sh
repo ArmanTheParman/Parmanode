@@ -367,7 +367,7 @@ ws)
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
-ns) 
+nr) 
    if [[ $nostrrelayapp == 1 ]] ; then
    menu_nostr
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
