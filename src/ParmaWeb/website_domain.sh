@@ -8,7 +8,7 @@ $cyan
                                     Domain Name
 $orange
 
-    Do you have a domain name to use with this website?
+    Do you have a domain name to use? 
 
 $cyan                 n)$orange           No, just use my internal IP address 
 
@@ -18,7 +18,8 @@ $cyan                 y)$orange           ${green}Yes, and configure it
 
 $cyan                 t)$orange           Tell me how ...
 
-$cyan                 r)$orange           ${red}Remove my domain$orange
+$cyan                 r)$orange           ${red}Remove my domain$orange from Parmanode
+                                                                      configuration 
 
 ########################################################################################
 "

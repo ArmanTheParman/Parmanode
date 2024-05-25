@@ -6,12 +6,11 @@ no_mac || { announce "If there is demand for Macs, it's up to you to let me know
 
 #Domain name questions
 website_domain 
-
 website_update_system # runs apt-get
 
 if [[ -e /var/www/website ]] ; then
 announce "
-    A website already exists at /var/www/website. Please delete it or move it and
+    The directory /var/www/website already exits. Please delete it or move it and
     try again. Aborting."
 return 1
 fi

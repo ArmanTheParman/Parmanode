@@ -21,11 +21,12 @@ $orange
        (that's an internal IP). Or if you're using a VPN, put the VPN's IP address. 
        For the proxy status, I like to set it to 'DNS only', that way I can SSH into
        my computer via the domain name rather than the IP address, otherwise the proxy
-       disturbs the connection.
+       disturbs the connection. On the other hand, enabling the proxy hides your
+       computer's IP address from the world.
 
-    5) You need to wait a bit, may some hours, for the redirect to work. Then when you
-       navigate to your domain name, it will be redirected to your computer's external
-       IP address.
+    5) You need to wait a bit, maybe some hours, for the redirect to work. Then when 
+       you navigate to your domain name, it will be redirected to your computer's 
+       external IP address.
 
     6) Enjoy.
 

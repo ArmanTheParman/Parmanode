@@ -35,6 +35,8 @@ docker rm nostrrelay
 
 rm -rf $hp/nostrrelay 2>/dev/null
 
+parmanode_conf_remove "domain"
+parmanode_conf_remove "www" 
 installed_conf_remove "nostrrelay"
 success "Nostr Relay has been uninstalled"
 }

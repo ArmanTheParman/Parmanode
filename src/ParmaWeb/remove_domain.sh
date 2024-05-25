@@ -5,7 +5,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    You currently have a domain associated with your webserver, $domain_name
+    You currently have a domain associated with your server, $domain_name
 
     Do you want to remove it?
 
