@@ -257,7 +257,7 @@ elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#                                    (ng)               Nginx             $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#                                    (ng)               Nostr Relay                    #
+echo -e "#                                    (nr)               Nostr Relay                    #
 #                                                                                      #"
 elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
 echo -e "#                                    (nr)               Nostr Relay       $red$blinkon(partial)$blinkoff$orange    #
