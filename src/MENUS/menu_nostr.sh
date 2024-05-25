@@ -45,7 +45,6 @@ $yellow
         TCP Port (http):          ${green}80$yellow
         SSL port (https):         ${green}$nostr_ssl_port $yellow
 
-
                  ssl)            $yellow Enable SSL $nostr_ssl_status_print   $cyan
 $orange
 ########################################################################################
