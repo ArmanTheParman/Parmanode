@@ -34,7 +34,6 @@ set_terminal_custom 45 ; echo -ne "
 
 ########################################################################################
         $domain_name_text
-
         Relay Name: $green$relay_name$orange
 
 $tor_menu                      
@@ -47,8 +46,7 @@ $yellow
         SSL port (https):         ${green}$nostr_ssl_port $yellow
 
 
-
-        ssl)   $orange Enable SSL $nostr_ssl_status_print   $cyan
+                 ssl)   $yellow Enable SSL $nostr_ssl_status_print   $cyan
 $orange
 ########################################################################################
 "
