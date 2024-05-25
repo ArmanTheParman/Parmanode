@@ -42,14 +42,14 @@ $tor_menu
 
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay):8080 
 
-$yellow
+$orange
         Nostr data location:      $HOME/.nostr_data
         Nginx configuration:      /etc/nginx/conf.d/website.conf
 
-        TCP Port (http):          ${green}80$yellow
-        SSL port (https):         ${green}$nostr_ssl_port $yellow
+        TCP Port (http):          ${green}80$orange
+        SSL port (https):         ${green}$nostr_ssl_port $orange
 
-        ssl)                     $yellow Enable SSL $nostr_ssl_status_print   $cyan
+        ssl)                     $orange Enable SSL $nostr_ssl_status_print   $cyan
 $orange
 ########################################################################################
 "
