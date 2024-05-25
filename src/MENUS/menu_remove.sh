@@ -260,7 +260,7 @@ if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymen
 echo -e "#                                    (ng)               Nostr Relay                    #
 #                                                                                      #"
 elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#                                    (ns)               Nostr Relay       $red$blinkon(partial)$blinkoff$orange    #
+echo -e "#                                    (nr)               Nostr Relay       $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
@@ -535,7 +535,7 @@ return
 fi
 ;;
 
-ns)
+nr)
 if [[ $nostrrelaymenu == 1 ]] ; then
 uninstall_nostrrelay 
 return
