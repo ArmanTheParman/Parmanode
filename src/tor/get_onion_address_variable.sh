@@ -55,4 +55,9 @@ if [[ $1 == "thunderhub" ]] ; then
 export ONION_ADDR_THUB="$(sudo cat /var/lib/tor/thunderhub-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+if [[ $1 == "nostr" ]] ; then
+export ONION_ADDR_NOSTR="$(sudo cat /var/lib/tor/nostr-service/hostname 2>/dev/null)" 
+return 0
+fi
 }
