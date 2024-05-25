@@ -13,7 +13,7 @@ set_terminal ; echo -e "
 $red
                       removenginx)    Remove Nginx
 $green
-                     kk a)              Abort
+                      a)              Abort
 $orange
 ########################################################################################
 "
