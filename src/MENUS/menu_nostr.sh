@@ -74,8 +74,8 @@ enter_continue
 test)
 #curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name &
 curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name &
-enter_continue
 curl_PID=$!
+enter_continue
 trap 'kill $curl_PID' SIGINT #condition added to memory
 wait $curl_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
