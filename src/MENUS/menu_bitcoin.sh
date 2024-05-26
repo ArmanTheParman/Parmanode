@@ -48,7 +48,7 @@ $red      (qtstop)$orange   Stop Bitcoin Qt
 "
 fi
 
-output4="                   Bitcoin Data Usage: $(du -sh $HOME/.bitcoin)"
+output4="                   Bitcoin Data Usage: $(du -sh $HOME/.bitcoin | cut -f1)"
 
 if [[ -z $drive ]] ; then unset output2 ; fi
 
