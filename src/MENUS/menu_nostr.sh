@@ -53,6 +53,8 @@ $orange
 
         log)                      View Docker logs
         
+        test)                     Send a test connection
+        
         $ssl_menu 
 
 $tor_menu                      $orange
