@@ -28,7 +28,7 @@ fi
 
 if [[ -n $domain_name ]] ; then
 domain_name_text="
-        Domain Name:             $bright_mangeta $domain_name$orange"
+        Domain Name:             $bright_magenta $domain_name$orange"
 fi
 
 if [[ -n $ONION_ADDR_NOSTR ]] ; then
