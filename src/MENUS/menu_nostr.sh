@@ -38,7 +38,7 @@ else
 unset tor_menu
 fi
 
-set_terminal_custom 45 ; echo -ne "
+set_terminal_custom 48 ; echo -ne "
 ########################################################################################$cyan
 
                                 N O S T R  RELAY$orange
