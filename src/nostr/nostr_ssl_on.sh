@@ -1,6 +1,7 @@
-function nostr_ssl_on {
+function nostrrelay_ssl_on {
 
-if ! nmap -p 80 $external_IP | grep 80 | grep -q open ; then
+if [[ $1 != install ]] && \
+! nmap -p 80 $external_IP | grep 80 | grep -q open ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -33,5 +34,10 @@ parmanode_conf_add "nostr_ssl=\"true\""
 
 sudo systemctl restart nginx
 
+if [[ $1 != install ]] ; then
 success "SSL has been turned on"
+else
+set_terminal ; echo -e "${green}SSL certificate success."
+sleep 1
+fi
 }

@@ -10,9 +10,13 @@ source $pc >/dev/null 2>&1
 if [[ $nostr_ssl == "true" ]] ; then
 nostr_ssl_status_print="${green}ON$orange"
 nostr_ssl_port="443"
+ssl_menu="ssl)                     $orange $nostr_ssl_status_print"
 else
 nostr_ssl_status_print="${red}OFF$orange"
+ssl_menu="ssl)                     $orange Enable SSL $nostr_ssl_status_print"
 fi
+
+
 
 if [[ -n $domain_name ]] ; then
 domain_name_text="
@@ -45,11 +49,8 @@ $tor_menu
 $orange
         Nostr data location:      $HOME/.nostr_data
         Nginx configuration:      /etc/nginx/conf.d/website.conf
-
-        TCP Port (http):          ${green}80$orange
-        SSL port (https):         ${green}$nostr_ssl_port $orange
-
-        ssl)                     $orange Enable SSL $nostr_ssl_status_print   $cyan
+        
+        $ssl_menu 
 $orange
 ########################################################################################
 "
@@ -65,7 +66,7 @@ announce "SSL already enabled"
 continue
 fi
 
-nostr_ssl_on
+nostrrelay_ssl_on
 ;;
 
 *)

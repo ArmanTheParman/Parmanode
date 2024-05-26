@@ -22,8 +22,8 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 sned_sats
 
 install_tor silent
-installed_conf_add "nostrrelay-start"
 nostr_tor_add
+installed_conf_add "nostrrelay-start"
 
 website_update_system # runs apt-get
 
@@ -48,6 +48,7 @@ git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 #################################
 nostrrelay_edit_config || return 1
 nostrrelay_reverse_proxy_info
+check_ready_for_ssl && nostrrelay_ssl_on install
 
 #################################
 
