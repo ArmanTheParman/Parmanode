@@ -59,7 +59,7 @@ $orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
-$pink
+$bright_magenta
                                    **********************
 $orange
 
