@@ -59,6 +59,8 @@ $running_nostr_menu
 $tor_menu                      $orange
         Nostr data location:      $HOME/.nostr_data
 
+        Data usage:               $(du -sh $HOME/.nostr_data | cut -f1)
+
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
 
@@ -84,6 +86,13 @@ choose "xpmq" ; read choice ; set_terminal_custom 45
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 i)
+;;
+
+start)
+start_nostrrelay
+;;
+stop)
+stop_nostrrelay
 ;;
 conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
