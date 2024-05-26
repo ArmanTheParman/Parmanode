@@ -60,7 +60,7 @@ $orange
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
 $bright_magenta
-                                   **********************
+                                  **********************
 $orange
 
 $cyan        s)$orange                        Start Nostr (starts Docker container) 
