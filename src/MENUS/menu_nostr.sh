@@ -55,8 +55,8 @@ $running_nostr_menu
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
 
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
+
 $tor_menu                      $orange
-$orange
         Nostr data location:      $HOME/.nostr_data
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
