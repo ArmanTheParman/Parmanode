@@ -59,7 +59,7 @@ $orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
-
+########################################################################################
 
 $cyan        s)$orange                        Start Nostr (starts Docker container) 
 
