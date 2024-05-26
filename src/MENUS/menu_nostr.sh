@@ -47,7 +47,7 @@ set_terminal_custom 45 ; echo -ne "
 $orange
         Nostr data location:      $HOME/.nostr_data
 
-        Nginx configuration:      /etc/nginx/conf.d/website.conf
+        Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
         
         $ssl_menu 
 
