@@ -72,12 +72,8 @@ docker logs nostrrelay
 enter_continue
 ;;
 test)
-#curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name &
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name &
-curl_PID=$!
-trap 'kill $curl_PID' SIGINT #condition added to memory
-wait $curl_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+nostr_curl_test
+
 ;;
 ssl)
 if [[ $nostr_ssl == "true" ]] ; then
@@ -92,4 +88,53 @@ nostrrelay_ssl_on
 invalid ;;
 esac
 done
+}
+
+function nostr_curl_test {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    A 'curl' test will be sent to the server. If you get no output, something is
+    wrong. See last output from the menu below. If you do see an ouput, then you're
+    probably connected, and you can hit$cyan <control>-c$orange to exit.
+
+$cyan            http)$orange    send a connection request over http (unencrypted)
+
+$cyan            https)$orange   send a connection request over SSL
+
+$cyan            error)$orange   see last output (could be error or success)
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;;
+http)
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name >>$dp/.nostr_curl_test.log &
+curl_PID=$!
+trap 'kill $curl_PID' SIGINT #condition added to memory
+wait $curl_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+break
+;;
+https)
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name >>$dp/.nostr_curl_test.log &
+curl_PID=$!
+trap 'kill $curl_PID' SIGINT #condition added to memory
+wait $curl_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+break
+;;
+error)
+nano $dp/.nostr_curl_text.log
+break
+;;
+*)
+invalid
+;;
+esac
+done
+
+
 }
