@@ -10,7 +10,7 @@ source $pc >/dev/null 2>&1
 if [[ $nostr_ssl == "true" ]] ; then
 nostr_ssl_status_print="${green}ON$orange"
 nostr_ssl_port="443"
-ssl_menu="ssl)                     $orange $nostr_ssl_status_print"
+ssl_menu="${cyan}ssl)$orange                     $orange $nostr_ssl_status_print"
 else
 nostr_ssl_status_print="${red}OFF$orange"
 ssl_menu="ssl)                     $orange Enable SSL $nostr_ssl_status_print"
@@ -49,11 +49,11 @@ $orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
-        conf)                     View/edit nginx conf (be careful)
+$cyan        conf)$orange                     View/edit nginx conf (be careful)
 
-        log)                      View Docker logs
+$cyan        log)$orange                      View Docker logs
         
-        test)                     Send a test connection
+$cyan        test)$orange                     Send a test connection
         
         $ssl_menu 
 
