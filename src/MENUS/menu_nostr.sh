@@ -45,6 +45,7 @@ set_terminal_custom 45 ; echo -ne "
 
 ########################################################################################
 
+
 $running_nostr_menu
 
         $domain_name_text
