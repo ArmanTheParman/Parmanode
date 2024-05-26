@@ -52,10 +52,10 @@ $running_nostr_menu
         Relay Name:               $relay_name
         $domain_name_text
 
-$tor_menu                      $orange
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
 
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
+$tor_menu                      $orange
 $orange
         Nostr data location:      $HOME/.nostr_data
 
