@@ -48,6 +48,8 @@ $orange
         Nostr data location:      $HOME/.nostr_data
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
+
+        conf)                     View/edit nginx conf (be careful)
         
         $ssl_menu 
 
@@ -59,6 +61,9 @@ choose "xpmq" ; read choice ; set_terminal_custom 45
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 i)
+;;
+conf)
+sudo nano /etc/nginx/conf.d/$domain_name.conf
 ;;
 
 ssl)
