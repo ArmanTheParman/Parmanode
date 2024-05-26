@@ -38,9 +38,8 @@ set_terminal_custom 45 ; echo -ne "
 
 ########################################################################################
         $domain_name_text
-        Relay Name: $green$relay_name$orange
-
 $tor_menu                      
+        Relay Name:               $green$relay_name$orange
 
         Local IP & Port           $IP${green}:7080$orange    (routed to Docker container)
 
