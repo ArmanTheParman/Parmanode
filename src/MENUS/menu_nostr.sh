@@ -51,7 +51,7 @@ $running_nostr_menu
 
         Relay Name:               $relay_name
 
-        Local IP & Port           $IP${yellow}:7080$yellow    (routed to Docker container)
+        Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
 
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
 $orange
