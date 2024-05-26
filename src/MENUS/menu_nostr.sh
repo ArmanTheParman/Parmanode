@@ -32,7 +32,7 @@ domain_name_text="
 fi
 
 if [[ -n $ONION_ADDR_NOSTR ]] ; then
-tor_menu="        $bright_blue$ONION_ADDR_NOSTR${green}:7081 $orange
+tor_menu="        $bright_blue$ONION_ADDR_NOSTR${yellow}:7081 $orange
 "
 else
 unset tor_menu
@@ -51,9 +51,9 @@ $running_nostr_menu
 
         Relay Name:               $relay_name
 
-        Local IP & Port           $IP${green}:7080$orange    (routed to Docker container)
+        Local IP & Port           $IP${yellow}:7080$yellow    (routed to Docker container)
 
-        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${green}:8080 $orange
+        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
 $orange
         Nostr data location:      $HOME/.nostr_data
 
