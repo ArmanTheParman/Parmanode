@@ -102,9 +102,9 @@ $cyan          http)$orange       send a connection request over http (unencrypt
 
 $cyan          https)$orange      send a connection request over SSL
 
-$cyan          e1)$orange         use this to see http error output
+$cyan          e1)$orange         only use this to see http error output
 
-$cyan          e2)$orange         use this to see https error output
+$cyan          e2)$orange         only use this to see https error output
 
 ########################################################################################
 "
