@@ -36,6 +36,7 @@ set_terminal_custom 45 ; echo -ne "
                                 N O S T R  RELAY$orange
 
 ########################################################################################
+
         $domain_name_text
 
         Relay Name:               $relay_name
@@ -51,6 +52,7 @@ $orange
         $ssl_menu 
 
 $tor_menu                      $orange
+
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal_custom 45
