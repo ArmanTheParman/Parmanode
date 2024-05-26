@@ -7,7 +7,7 @@ get_onion_address_variable nostr
 source $pc >/dev/null 2>&1
 
 #running status
-if docker | grep -q nostrrelay ; then 
+if docker ps | grep -q nostrrelay ; then 
 running_nostr_menu="                                 NOSTR IS$green RUNNING$orange"
 else
 running_nostr_menu="                               NOSTR IS$red NOT RUNNING$orange"
