@@ -48,8 +48,8 @@ set_terminal_custom 48 ; echo -ne "
 
 $running_nostr_menu
 
-        Relay Name:               $relay_name
 
+        Relay Name:               $relay_name
         $domain_name_text
 
 $tor_menu                      $orange
