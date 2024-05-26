@@ -51,7 +51,6 @@ $running_nostr_menu
         $domain_name_text
 
 $tor_menu                      $orange
-
         Relay Name:               $relay_name
 
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
