@@ -59,6 +59,14 @@ $orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
+$pink
+                                   **********************
+$orange
+
+$cyan        s)$orange                        Start Nostr (starts Docker container) 
+
+$cyan        stop)$orange                     Stop Nostr 
+
 $cyan        conf)$orange                     View/edit nginx conf (be careful)
 
 $cyan        log)$orange                      View Docker logs
