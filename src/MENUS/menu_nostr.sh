@@ -8,9 +8,9 @@ source $pc >/dev/null 2>&1
 
 #running status
 if docker ps | grep -q nostrrelay ; then 
-running_nostr_menu="                                 NOSTR IS$green RUNNING$orange"
+running_nostr_menu="                                NOSTR IS$green RUNNING$orange"
 else
-running_nostr_menu="                               NOSTR IS$red NOT RUNNING$orange"
+running_nostr_menu="                              NOSTR IS$red NOT RUNNING$orange"
 fi
 
 
