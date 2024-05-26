@@ -60,6 +60,7 @@ $orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
+$tor_menu                      $orange
 
 ########################################################################################
 
@@ -75,8 +76,6 @@ $cyan        log)$orange                      View Docker logs
 $cyan        test)$orange                     Send a test connection
         
         $ssl_menu 
-
-$tor_menu                      $orange
 
 ########################################################################################
 "
