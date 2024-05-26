@@ -98,11 +98,13 @@ set_terminal ; echo -e "
     wrong. See last output from the menu below. If you do see an ouput, then you're
     probably connected, and you can hit$cyan <control>-c$orange to exit.
 
-$cyan            http)$orange    send a connection request over http (unencrypted)
+$cyan          http)$orange       send a connection request over http (unencrypted)
 
-$cyan            https)$orange   send a connection request over SSL
+$cyan          https)$orange      send a connection request over SSL
 
-$cyan            error)$orange   see last output (could be error or success)
+$cyan          e1)$orange         use this to see http error output
+
+$cyan          e2)$orange         use this to see https error output
 
 ########################################################################################
 "
@@ -125,8 +127,14 @@ wait $curl_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 break
 ;;
-error)
-nano $dp/.nostr_curl_text.log
+e1)
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name -o $dp/.nostr_curl_test.log
+enter_continue
+break
+;;
+e2)
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name -o $dp/.nostr_curl_test.log 
+enter_continue
 break
 ;;
 *)
