@@ -50,7 +50,7 @@ write_to_fstab "$UUID"
 function label_parmanode_sda {
 mount_sda
 sudo e2label $disk parmanode >/dev/null 2>&1 
-sudo partprobe
+sudo partprobe 2>/dev/null
 }
 
 function detect_bitcoin_installation {

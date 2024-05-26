@@ -83,7 +83,7 @@ make_ssl_certificates "electrumx" \
 #get drive variables
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if grep "=external" | grep -vq "electrumx" < $pc >/dev/null 2>&1 ; then #don'g grep 'external' alone, too ambiguous
+if grep "=external" < $pc | grep -vq "electrumx" ; then #don'g grep 'external' alone, too ambiguous
     # format not needed 
     # Get user to connect drive.
       pls_connect_drive || return 1 

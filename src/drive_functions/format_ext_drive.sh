@@ -16,23 +16,27 @@ if [[ $justFormat != "true" ]] ; then
 debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ ( $1 == "Bitcoin" && $drive == "external" ) && ( $drive_fulcrum == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
+if [[ $1 == "Bitcoin" ]] && grep "=external" < $pc | grep -qv "drive=" ; then
 confirm_format "Bitcoin" || skip_formatting="true"
 fi
 
-if [[ ( $1 == "Fulcrum" && $drive_fulcrum == "external" ) && ( $drive == "external" || $drive_electrs == "external" || $drive_electrumx == "external" ) ]] ; then 
+if [[ $1 == "Fulcrum" ]] && grep "=external" <$pc | grep -qv "fulcrum" ; then
 confirm_format "Fulcrum" || skip_formatting="true"
 fi
 
-if [[ ( $1 == "electrs" && $drive_electrs == "external" ) && ( $drive == "external" || $drive_fulcrum == "external" || $drive_electrumx == "external" ) ]] ; then 
+if [[ $1 == "electrs" ]] && grep "=external" <$pc | grep -qv "electrs" ; then
 confirm_format "electrs" || skip_formatting="true"
 fi
 
-if [[ ( $1 == "electrumx" && $drive_electrumx == "external" ) && ( $drive == "exteranl" || $drive_fulcrum == "external" || $drive_electrs == "external" ) ]] ; then
-confirm_format "electrumx" || skip_formatting="true"
+if [[ $1 == "electrumx" ]] && grep "=external" <$pc | grep -qv "electrumx" ; then
+confirm_format "electrs" || skip_formatting="true"
 fi
 
+if [[ $1 == "nostr" ]] && grep "=external" <$pc | grep -qv "nostr" ; then
+confirm_format "nostr" || skip_formatting="true"
+fi
 
+########################################################################################
 
 if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then 
     return 0 
@@ -45,6 +49,7 @@ else
             driveproblem="true"
             fi
         elif [[ $OS == Linux ]] ; then
+            sudo partprobe
             if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
             driveproblem="true"
             fi
@@ -138,7 +143,7 @@ if [[ $OS == "Linux" ]] ; then
         if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
-        sudo partprobe
+        sudo partprobe 2>/dev/null
 
         debug "label done"
         set_terminal
