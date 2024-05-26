@@ -2,9 +2,17 @@ function menu_nostr {
 IP_address get #fetches external_IP variable without printed menu
 
 while true ; do
-unset nostr_ssl ONION_ADDR_NOSTR domain domain_name domain_name_text 
+unset nostr_ssl ONION_ADDR_NOSTR domain domain_name domain_name_text running_nostr_menu
 get_onion_address_variable nostr 
 source $pc >/dev/null 2>&1
+
+#running status
+if docker | grep -q nostrrelay ; then 
+running_nostr_menu="                                 NOSTR IS$green RUNNING$orange"
+else
+running_nostr_menu="                               NOSTR IS$red NOT RUNNING$orange"
+fi
+
 
 #SSL status
 if [[ $nostr_ssl == "true" ]] ; then
@@ -36,6 +44,8 @@ set_terminal_custom 45 ; echo -ne "
                                 N O S T R  RELAY$orange
 
 ########################################################################################
+
+$running_nostr_menu
 
         $domain_name_text
 
