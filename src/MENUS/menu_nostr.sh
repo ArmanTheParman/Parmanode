@@ -20,8 +20,7 @@ fi
 
 if [[ -n $domain_name ]] ; then
 domain_name_text="
-        Domain Name:             $cyan $domain_name$orange
-"
+        Domain Name:             $green $domain_name$orange"
 fi
 
 if [[ -n $ONION_ADDR_NOSTR ]] ; then
