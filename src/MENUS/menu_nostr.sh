@@ -71,6 +71,10 @@ log)
 docker logs nostrrelay
 enter_continue
 ;;
+test)
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name
+enter_continue
+;;
 ssl)
 if [[ $nostr_ssl == "true" ]] ; then
 announce "SSL already enabled"
