@@ -93,6 +93,7 @@ while sudo lsblk -o LABEL | grep -q parmanode ; do
 echo "Changing the label to BLOCKCHAIN"
 sudo e2label $disk BLOCKCHAIN >/dev/null 2>&1
 sleep 1
+sudo partprobe
 done
 # fstab configuration
 # Finished. Info.

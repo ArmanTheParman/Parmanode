@@ -50,7 +50,6 @@ fi
 
 output4="                   Bitcoin Data Usage: $(du -sh $HOME/.bitcoin)"
 
-
 if [[ -z $drive ]] ; then unset output2 ; fi
 
 set_terminal_custom "52"

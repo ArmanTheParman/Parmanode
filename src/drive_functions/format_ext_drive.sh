@@ -137,6 +137,7 @@ if [[ $OS == "Linux" ]] ; then
         if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        sudo partprobe
 
         debug "label done"
         set_terminal

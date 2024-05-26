@@ -91,6 +91,7 @@ while sudo lsblk -o LABEL | grep -q parmanode ; do
 echo "Changing the label to myNode"
 sudo e2label $disk myNode 2>&1
 sleep 1
+sudo partprobe
 done
 # fstab configuration
 # Finished. Info.
