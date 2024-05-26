@@ -42,12 +42,12 @@ set_terminal_custom 45 ; echo -ne "
 
 $tor_menu                      
 
-        Local IP & Port           $IP${green}:7080    (routed to Docker container)
+        Local IP & Port           $IP${green}:7080$orange    (routed to Docker container)
 
-        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${green}:8080 
-
+        Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${green}:8080 $orange
 $orange
         Nostr data location:      $HOME/.nostr_data
+
         Nginx configuration:      /etc/nginx/conf.d/website.conf
         
         $ssl_menu 
