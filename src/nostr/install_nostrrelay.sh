@@ -20,7 +20,12 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
 sned_sats
+########################################################################################
+#drive choices
+########################################################################################
 
+
+########################################################################################
 install_tor silent
 nostr_tor_add
 installed_conf_add "nostrrelay-start"

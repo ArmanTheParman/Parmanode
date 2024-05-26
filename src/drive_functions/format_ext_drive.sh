@@ -7,6 +7,7 @@ if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "Fulcrum" && $drive_fulcrum == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "electrs" && $drive_electrs == "internal" ]] ; then return 0 ; fi
 if [[ $1 == "electrumx" && $drive_electrumx == "internal" ]] ; then return 0 ; fi
+if [[ $1 == "nostr" && $drive_nostr== "internal" ]] ; then return 0 ; fi
 debug "passed internal drive choice"
 
 

@@ -1,6 +1,6 @@
 function choose_and_prepare_drive {
 if [[ $version == self ]] ; then return 0 ; fi
-# Expect argument, either Bitcoin or Fulcrum or Electrs for $1
+# Expect argument, either Bitcoin or Fulcrum or Electrs or Electrumx or nostr for $1
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
@@ -26,7 +26,7 @@ $red
 $pink
                 (aa)    Use an EXTERNAL drive RAID array $orange
 "
-if [[ $1 == Bitcoin ]] ; then
+if [[ $1 == Bitcoin || $1 == nostr ]] ; then
 echo -e "$text" ; fi 
 echo "########################################################################################
 "
@@ -58,6 +58,9 @@ if [[ $1 == "Electrs" ]] ; then export drive_electrs="external"
 if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="external"
         parmanode_conf_add "drive_electrumx=external" ; fi
 
+if [[ $1 == "nostr" ]] ; then export drive_nostr="external"
+        parmanode_conf_add "drive_nostr=external" ; fi
+
 return 0
 
 ;;
@@ -73,6 +76,10 @@ i | I)
                fi
         if [[ $1 == "Electrumx" ]] ; then export drive_electrumx="internal"
                 parmanode_conf_add "drive_electrumx=internal" ; fi
+
+        if [[ $1 == "nostr" ]] ; then export drive_nostr="internal"
+                parmanode_conf_add "drive_nostr=internal" ; fi
+
         return 0 
         ;;
 

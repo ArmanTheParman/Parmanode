@@ -80,13 +80,11 @@ cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
-#get drive variables for others: fulcrum, bitcoin, and electrs
+#get drive variables
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if [[ ($drive_electrumx == "external" && $drive == "external") || \
-      ($drive_electrumx == "external" && $drive_fulcrum == "external") || \
-      ($drive_electrumx == "external" && $drive_electrs == "external") ]] ; then 
-    # format not needed
+if grep "=external" | grep -vq "electrumx" < $pc >/dev/null 2>&1 ; then #don'g grep 'external' alone, too ambiguous
+    # format not needed 
     # Get user to connect drive.
       pls_connect_drive || return 1 
 

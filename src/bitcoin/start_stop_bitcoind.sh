@@ -12,7 +12,7 @@ if [[ $OS == "Linux" ]] ; then
 
         set_terminal
         echo "Bitcoin will start in a moment..."
-        mount_drive
+        if grep -q "drive=external" < $pc >/dev/null ; then mount_drive ; fi
         set_terminal
 
         if grep -q "internal" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 # config file determines if bitcoin is running on an internal or external drive

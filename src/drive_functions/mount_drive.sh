@@ -1,7 +1,7 @@
 function mount_drive {
+# removed the need for arguments to this function
 
 if [[ $OS == "Mac" ]] ; then
-if [[ $1 == menu || $drive == "external" || $drive_fulcrum == "external" ]] ; then
     #if mounted, exit 
 	    if mount | grep "parmanode" >/dev/null 2>&1 ; then
 			return 0
@@ -14,12 +14,10 @@ if [[ $1 == menu || $drive == "external" || $drive_fulcrum == "external" ]] ; th
 		return 0
 		
 fi
-fi
 
 ########################################################################################
 
 if [[ $OS == "Linux" ]] ; then
-if [[ $1 == menu || $drive == "external" || $drive_fulcrum == "external" ]] ; then
 while true ; do
     #if mounted, exit 
 	    if mountpoint -q "/media/$USER/parmanode" ; then
@@ -44,6 +42,5 @@ while true ; do
 		echo "Drive not mounted. <enter> to try again. Hit (q) to abort."
 		read choice ; if [[ $choice == "q" ]] ; then return 1 ; fi
 done
-fi
 fi
 }
