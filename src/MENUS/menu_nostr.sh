@@ -50,6 +50,8 @@ $orange
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
         conf)                     View/edit nginx conf (be careful)
+
+        log)                      View Docker logs
         
         $ssl_menu 
 
@@ -65,7 +67,10 @@ i)
 conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
 ;;
-
+log)
+docker logs nostrrelay
+enter_continue
+;;
 ssl)
 if [[ $nostr_ssl == "true" ]] ; then
 announce "SSL already enabled"
