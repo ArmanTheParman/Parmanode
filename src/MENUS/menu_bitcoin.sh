@@ -16,7 +16,7 @@ announce "Parmanode has detected a potential serious error from the Bitcoin log.
     trick did the trick."
 fi
 
-set_terminal_custom "52"
+clear
 
 bitcoin_status #get running text variable.
 isbitcoinrunning
@@ -48,18 +48,25 @@ $red      (qtstop)$orange   Stop Bitcoin Qt
 "
 fi
 
+output4="                   Bitcoin Data Usage: $(du -sh $HOME/.bitcoin)"
+
+
 if [[ -z $drive ]] ; then unset output2 ; fi
 
-clear
+set_terminal_custom "52"
+
 echo -en "
 ########################################################################################
                                  ${cyan}Bitcoin Core Menu${orange}                               
 ########################################################################################
 
+
 "
 echo -e "$output1"
 echo ""
 echo -e "$output2"
+echo ""
+echo -e "$output4"
 echo ""
 echo -ne "
 $start
@@ -68,7 +75,7 @@ $start
       (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
 
       (restart)  Restart Bitcoind
-      
+
       (n)        Access Bitcoin node information ....................(bitcoin-cli)
 $highlight    
       (log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
@@ -86,6 +93,7 @@ $bright_blue
       (update)   Update Bitcoin wizard
 $output3
       (o)        OTHER...
+
 
 ########################################################################################
 "
