@@ -54,8 +54,8 @@ You entered: $green $drive_nostr_custom_data $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-a) break ;; x) continue ;; esac
+choose xpmq ; read choice ; case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; a) break ;; x) continue ;; esac
+esac
 done
 
 parmanode_conf_add "drive_nostr_custom_data=$drive_nostr_custom_data"
