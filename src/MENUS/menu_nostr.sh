@@ -68,7 +68,7 @@ $running_nostr_menu
 $tor_menu                      $orange
         Nostr data location:      $nostr_data_location
 
-        Data usage:               $(du -sh $nostr_data_location | cut -f1)
+        Data usage:               $green$(du -sh $nostr_data_location | cut -f1)$orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
