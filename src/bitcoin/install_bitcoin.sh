@@ -1,4 +1,5 @@
 function install_bitcoin {
+export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
 if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 

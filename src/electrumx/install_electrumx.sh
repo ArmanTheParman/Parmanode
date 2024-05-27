@@ -1,4 +1,5 @@
 function install_electrumx {
+export install=electrumx
 
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 sned_sats

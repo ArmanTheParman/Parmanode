@@ -75,10 +75,9 @@ installed_config_add "electrsdkr2-start"
 
 #prepare drives
 choose_and_prepare_drive "Electrs" || return 1
-source $HOME/.parmanode/parmanode.conf >/dev/null
+source $pc >/dev/null
 
-if [[ ($drive_electrs == "external" && $drive == "external") || \
-      ($drive_electrs == "external" && $drive_fulcrum == "external") ]] ; then 
+if [[ $drive_electrs == external ]] && grep "=external" < $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 
@@ -100,7 +99,9 @@ debug "before prepare_dirve_electrs"
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
 debug "pause after prepare_drive_electrs"
 #if it exists, test inside function
-restore_internal_electrs_db || return 1 ; if [[ $drive_electrs == internal ]] && [[ ! -d $HOME/.electrs_db ]] ; then mkdir $HOME/.electrs_bd ; fi
+if [[ $drive_electrs == internal ]] ; then
+restore_internal_electrs_db || return 1 
+fi
 
 debug "after restore internal electrs db"
 #config

@@ -129,9 +129,7 @@ choose_and_prepare_drive "Electrs" || return 1
 #get drive variables for fulcrum, electrumx, and bitcoin
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if [[ ($drive_electrs == "external" && $drive == "external") || \
-      ($drive_electrs == "external" && $drive_fulcrum == "external") || \
-      ($drive_electrs == "external" && $drive_electrumx == "external") ]] ; then 
+if [[ $drive_electrs == external ]] && grep "=external" < $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 
