@@ -34,7 +34,11 @@ if [[ $drive_nostr == external ]] && grep "=external" < $pc | grep -vq "nostr" ;
 
 elif [[ $drive_nostr == external ]] ; then
 
-      format_ext_drive "nostr" || return 
+      format_ext_drive "nostr" || return  1
+
+elif [[ $drive_nostr == custom ]] ; then
+
+      add_custom_drive
 fi
 
 restore_nostr_data_backup #info only

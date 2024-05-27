@@ -8,6 +8,8 @@ local text="$bright_blue                (3) - IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
+local text_nostr="                (4) - BYO eg an additional external drive" 
+
 while true
 do
 unset raid
@@ -28,6 +30,8 @@ $pink
 "
 if [[ $1 == Bitcoin || $1 == nostr ]] ; then
 echo -e "$text" ; fi 
+if [[ $1 == nostr ]] ; then
+echo -e "$text_nostr" ; fi
 echo "########################################################################################
 "
 choose "xpmq" #echo statment about above options, previous menu, or quit.
@@ -44,7 +48,11 @@ export bitcoin_drive_import="true" #used later to avoid format prompt.
 return 0
 ;;
 
-
+4)
+export drive_nostr=custom
+parmanode_conf_add "drive_nostr=custom"
+return 0
+;;
 e | E)    #External drive setup
 
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
