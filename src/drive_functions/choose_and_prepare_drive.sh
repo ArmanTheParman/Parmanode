@@ -8,7 +8,8 @@ local text="$bright_blue                (3) - IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
-local text_nostr="                (4) - BYO eg an additional external drive" 
+local text_nostr="$yellow                (4) - BYO eg an additional external drive$orange
+" 
 
 while true
 do
