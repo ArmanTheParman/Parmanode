@@ -28,7 +28,7 @@ y)
 break
 ;;
 rem)
-rem=true
+rem="true"
 break
 ;;
 esac
