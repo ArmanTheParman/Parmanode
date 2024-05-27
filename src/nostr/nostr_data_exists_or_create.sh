@@ -29,7 +29,7 @@ $cyan
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 rm -rf $file
 mkdir $file
