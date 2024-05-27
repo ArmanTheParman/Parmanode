@@ -8,6 +8,7 @@ file=$HOME/.nostr_data
 fi
 
 if [[ -e $file ]] ; then
+debug "file is $file"
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
