@@ -24,6 +24,12 @@ nostr_ssl_status_print="${red}OFF$orange"
 ssl_menu="ssl)                     $orange Enable SSL $nostr_ssl_status_print"
 fi
 
+#data location
+if grep -q "drive_nostr=external" ; then
+nostr_data_location="$pd/nostr_data"
+else
+nostr_data_location="$HOME/.nostr_data"
+fi
 
 
 if [[ -n $domain_name ]] ; then
@@ -57,7 +63,7 @@ $running_nostr_menu
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
 
 $tor_menu                      $orange
-        Nostr data location:      $HOME/.nostr_data
+        Nostr data location:      $nostr_data_location
 
         Data usage:               $(du -sh $HOME/.nostr_data | cut -f1)
 
