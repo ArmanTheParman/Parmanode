@@ -1,4 +1,6 @@
 function check_ready_for_ssl {
+if [[ -z $domain_name ]] ; then return 0 ; fi
+
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
