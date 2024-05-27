@@ -85,7 +85,7 @@ $cyan        conf)$orange                     View/edit nginx conf (be careful)
 $cyan        log)$orange                      View Docker logs
         
 $cyan        test)$orange                     Send a test connection
-        
+
         $ssl_menu 
 
 
@@ -133,9 +133,18 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
+
     A 'curl' test will be sent to the server. If you get no output, something is
     wrong. See last output from the menu below. If you do see an ouput, then you're
     probably connected, and you can hit$cyan <control>-c$orange to exit.
+
+
+
+    You can also enter your relay's domain here to test it:
+$green
+                               https://nostrrr.com/ $orange
+
+
 
 $cyan          http)$orange       send a connection request over http (unencrypted)
 
@@ -144,6 +153,7 @@ $cyan          https)$orange      send a connection request over SSL
 $cyan          e1)$orange         only use this to see http error output
 
 $cyan          e2)$orange         only use this to see https error output
+
 
 ########################################################################################
 "
