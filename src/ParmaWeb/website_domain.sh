@@ -46,7 +46,7 @@ break
 ;;
 t|T)
 get_a_domain
-return 1
+return 0
 ;; 
 r)
 remove_domain
