@@ -25,7 +25,7 @@ ssl_menu="ssl)                     $orange Enable SSL $nostr_ssl_status_print"
 fi
 
 #data location
-if grep -q "drive_nostr=external" ; then
+if grep -q "drive_nostr=external" < $pc ; then
 nostr_data_location="$pd/nostr_data"
 else
 nostr_data_location="$HOME/.nostr_data"
