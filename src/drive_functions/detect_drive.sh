@@ -162,7 +162,7 @@ if [[ $OS == Linux ]] ; then
       fi
     else
       get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
-      export disk="/dev/$(cat $dp/.unique_line | | awk '{print $1}' | grep -oE '[a-z]+.*')"
+      export disk="/dev/$(cat $dp/.unique_line | awk '{print $1}' | grep -oE '[a-z]+.*')"
       debug "disk lsblk diff is $disk"
       #deprecated as it gives unexpected results...
       # export disk="/dev/$(diff $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
