@@ -82,6 +82,8 @@ $cyan        stop)$orange                     Stop Nostr
 
 $cyan        conf)$orange                     View/edit nginx conf (be careful)
 
+$cyan        toml)$orange                     View/edit config.toml file
+
 $cyan        log)$orange                      View Docker logs
         
 $cyan        test)$orange                     Send a test connection
@@ -105,6 +107,9 @@ stop_nostrrelay
 ;;
 conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
+;;
+toml)
+nano $HOME/parmanode/nostrrelay/config.toml
 ;;
 log)
 docker logs nostrrelay
