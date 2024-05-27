@@ -98,7 +98,7 @@ if grep -q "--fix-missing install" < $file ; then
 sudo apt-get --fix-missing install -y
 fi
 if grep -q "--fix-missing remove" < $file ; then
-sudo apt-get --fix-missing remove -y
+sudo apt-get install -f -y
 fi
 if grep -q "--fix-missing upgrade" < $file ; then
 sudo apt-get --fix-missing upgrade -y
