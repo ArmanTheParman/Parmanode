@@ -140,9 +140,7 @@ set_terminal ; echo -e "
 
 
 
-    You can also enter your relay's domain here to test it:
-$green
-                               https://nostrrr.com/ $orange
+    You can also enter your relay's domain here to test it: $green https://nostrrr.com/ $orange
 
 
 
