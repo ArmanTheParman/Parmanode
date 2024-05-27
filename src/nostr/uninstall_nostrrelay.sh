@@ -62,7 +62,7 @@ source $pc
 if [[ $rem == "true" ]] ; then
     if [[ $drive_nostr == custom ]] ; then rm -rf $drive_nostr_custom_data
     elif [[ $drive_nostr == external ]] ; then rm -rf $pd/nostr_data 
-    elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_dat
+    elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_data
     fi
 fi
 
