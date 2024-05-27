@@ -94,7 +94,7 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 i)
 ;;
 
-start)
+s|start)
 start_nostrrelay
 ;;
 stop)
