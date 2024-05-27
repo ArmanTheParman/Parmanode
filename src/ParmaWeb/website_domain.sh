@@ -46,11 +46,11 @@ break
 ;;
 t|T)
 get_a_domain
-return 0
+continue
 ;; 
 r)
 remove_domain
-return 0
+continue
 ;;
 
 *)
