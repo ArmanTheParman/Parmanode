@@ -30,7 +30,7 @@ if [[ $drive_nostr == external ]] ; then
 nostr_data_location="$pd/nostr_data"
 elif [[ $drive_nostr == internal ]] ; then 
 nostr_data_location="$HOME/.nostr_data"
-elif [[ $drive_nostr == custrom ]] ; then 
+elif [[ $drive_nostr == custom ]] ; then 
 nostr_data_location="$drive_nostr_custom_data"
 fi
 
