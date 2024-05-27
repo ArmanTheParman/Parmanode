@@ -1,10 +1,13 @@
 function nostr_data_exists_or_create {
 #internal or external
+unset file
 
 if [[ $drive_nostr == external ]] ; then
 file=$pd/nostr_data
 elif [[ $drive_nostr == internal ]] ; then
 file=$HOME/.nostr_data
+elif [[ $drive_nostr == custom ]] ; then
+file=$drive_nostr_custom_data
 fi
 
 if [[ -e $file ]] ; then

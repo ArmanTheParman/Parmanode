@@ -58,8 +58,9 @@ sudo rm -rf /etc/letsencrypt/live/$domain_name >/dev/null 2>&1
 sudo rm -rf /etc/letsencrypt/live/www.$domain_name >/dev/null 2>&1
 sudo systemctl restart nginx >/dev/null 2>&1
 
+source $pc
 if [[ $rem == "true" ]] ; then
-    if [[ -n $drive_nostr_custom_data ]] ; then rm -rf $drive_nostr_custom_data
+    if [[ $drive_nostr == custom ]] ; then rm -rf $drive_nostr_custom_data
     elif [[ $drive_nostr == external ]] ; then rm -rf $pd/nostr_data 
     elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_dat
     fi
