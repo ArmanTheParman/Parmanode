@@ -32,5 +32,9 @@ invalid
 ;;
 esac
 done
+else
+set_terminal
+echo "${green}No domain to remove...$orange"
+sleep 1.5
 fi
 }
