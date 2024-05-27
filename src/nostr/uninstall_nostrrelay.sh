@@ -70,6 +70,7 @@ nostr_tor_remove
 parmanode_conf_remove "domain"
 parmanode_conf_remove "www" 
 parmanode_conf_remove "nostr"
+parmanode_conf_remove "relay"
 installed_conf_remove "nostr"
 success "Nostr Relay has been uninstalled"
 }
