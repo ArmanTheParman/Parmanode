@@ -8,6 +8,7 @@ elif [[ $drive_nostr == internal ]] ; then
 file=$HOME/.nostr_data
 elif [[ $drive_nostr == custom ]] ; then
 file=$drive_nostr_custom_data
+return 0
 fi
 
 if [[ -e $file ]] ; then
