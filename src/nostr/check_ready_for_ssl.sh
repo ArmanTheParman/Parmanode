@@ -1,5 +1,5 @@
 function check_ready_for_ssl {
-if [[ -z $domain_name ]] ; then return 0 ; fi
+if [[ -z $domain_name ]] ; then return 1 ; fi #return 1 necessary, not 0
 
 while true ; do
 set_terminal ; echo -e "
