@@ -532,6 +532,6 @@ elif grep -q "nostrrelay-start" < $HOME/.parmanode/installed.conf ; then
 nostrrelay_p="#                                      Nostr Relay                                     #"
 else
    #not installed
-nostrrelay_n="#                            (nr)          Nostr Relay (coming soon)                   #"
+nostrrelay_n="#                            (nr)          Nostr Relay                                 #"
 fi
 }

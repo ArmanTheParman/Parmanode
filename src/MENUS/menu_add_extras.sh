@@ -53,7 +53,6 @@ ws)
     ;;
 nr)
     if [[ -n $nostrrelay_n ]] ; then
-    # announce "coming soon" ; return 0
     install_nostrrelay
     return 0
     fi
