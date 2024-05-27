@@ -1,4 +1,5 @@
 function uninstall_nostrrelay {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -19,11 +20,19 @@ $orange
 choose "x" 
 read choice
 set_terminal
-
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
+case $choice in
+n)
+return 1
+;;
+y)
+break
+;;
+rem)
+rem=true
+break
+;;
+esac
+done
 
 set_terminal
 
@@ -49,11 +58,17 @@ sudo rm -rf /etc/letsencrypt/live/$domain_name >/dev/null 2>&1
 sudo rm -rf /etc/letsencrypt/live/www.$domain_name >/dev/null 2>&1
 sudo systemctl restart nginx >/dev/null 2>&1
 
+if [[ $rem == "true" ]] ; then
+    if [[ -n $drive_nostr_custom_data ]] ; then rm -rf $drive_nostr_custom_data
+    elif [[ $drive_nostr == external ]] ; then rm -rf $pd/nostr_data 
+    elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_dat
+    fi
+fi
+
 nostr_tor_remove
 parmanode_conf_remove "domain"
 parmanode_conf_remove "www" 
-parmanode_conf_remove "nostr_ssl"
-installed_conf_remove "nostrrelay"
+parmanode_conf_remove "nostr"
 success "Nostr Relay has been uninstalled"
 }
 
@@ -71,9 +86,9 @@ $orange
        WERE \"LYING 'N' TRICKIN' THE CODE\", BAD THINGS CAN HAPPEN.
 
 
-                        c)     continue, it's fine
+                        c)     Continue, it's fine
 
-                        a)     abort
+                        a)     Abort
 
 ########################################################################################
 "
