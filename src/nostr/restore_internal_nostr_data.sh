@@ -1,6 +1,6 @@
 function restore_nostr_data_backup {
 
-if ls -d $HOME/.nostr_data_backup* || ls -d $pd/nostr_data_backup ; then
+if ls -d $HOME/.nostr_data_backup* || ls -d $pd/nostr_data_backup >/dev/null 2>&1 ; then
 
 set_terminal ; echo -e "
 ########################################################################################
