@@ -8,12 +8,15 @@ file="$dp/.unique_line"
 # $2 file 2
 # Returns single unique line in file 2.
 # Returns error if file 2 not 1 line longer than file 1.
+# If there are 3 or more unique lines, or none, returns error
+# If there are 2 unique lines, the second is returned
 
 
 length_1=$(cat "$1" | wc -l)
 length_2=$(cat "$2" | wc -l)
 
 if [[ $((length_2 - length_1)) != 1 && $((length_2 - length_1)) != 2 ]] ; then
+debug "error, no unique lines or >2 unique lines"
 return 1
 fi
 
