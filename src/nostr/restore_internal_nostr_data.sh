@@ -1,46 +1,29 @@
-function restore_internal_nostr_data {
+function restore_nostr_data_backup {
 
-file=$HOME/.nostr_data_backup
+if ls -d $HOME/.nostr_data_backup* || ls -d $pd/nostr_data_backup ; then
 
-while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Would you like to use the backup data directory... 
+    Parmanode has found an old backup nostr relay directory. If you wish to use this,
+    then continue with the installation, and when finished, stop the relay, move
+    the backup directory to the target location, then restart the relay.
+
+
+                            Internal Drive Location:
+$cyan         
+    $HOME/.nostr_relay
+$orange
+                            External Drive Location:
 $cyan
+    $pd/nostr_relay
+$orange        
 
-                 $file ?
-
-
-$pink       y)$orange  Yes please that's outrageously good
-
-$pink       n)$orange  Nah, leave it
-
-$pink       d)$orange  Nah, and get rid of it
+    Do note the differences between the two, there is no '.' in the External drive
+    path
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
-case $choice in
-
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) return 1 ;;
-
-y|Y|YES|Yes|yes)
-mv $file $HOME/.nostr_data
-return 0
-;;
-
-n|N|nah) return 0 ;;
-
-d|D|delete) 
-please_wait 
-rm -rf $file 
-return 0
-;;
-
-*) invalid ;;
-esac
-done #end while
+enter_continue
+fi
 }

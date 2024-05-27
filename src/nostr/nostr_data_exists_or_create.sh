@@ -1,17 +1,24 @@
-function nostrrelay_directories {
+function nostr_data_exists_or_create {
+#internal or external
 
-if [[ -e $HOME/.nostr_data ]] ; then
+if [[ $nostr_data == external ]] ; then
+file=$pd/nostr_data
+elif [[ $nostr_data == internal ]] ; then
+file=$HOME/.nostr_data
+fi
+
+if [[ -e $file ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-    $HOME/.nostr_data$orange already exists. What is to be done?
+    $file$orange already exists. What is to be done?
 
         1)    Delete the data and start over
 
         2)    Use the data
 
-        3)    Back up the data to $HOME/.nostr_data_backup_$(date +'%Y-%m-%d')
+        3)    Back up the data to ${file}_bakup_$(date +'%Y-%m-%d')
               and start over
 
 ########################################################################################
@@ -20,16 +27,16 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 1)
-rm -rf $HOME/.nostr_data
-mkdir $HOME/.nostr_data
+rm -rf $file
+mkdir $file
 break
 ;;
 2)
 break
 ;;
 3)
-mv $HOME/.nostr_data $HOME/.nostr_data_backup_$(date +'%Y-%m-%d')
-mkdir $HOME/.nostr_data
+mv $file ${file}_backup_$(date +'%Y-%m-%d')
+mkdir $file
 break
 ;;
 *)
@@ -38,7 +45,7 @@ invalid
 esac
 done
 else
-mkdir $HOME/.nostr_data
+mkdir $file
 fi
 
 }

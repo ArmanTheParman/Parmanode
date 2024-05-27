@@ -1,4 +1,6 @@
 function restore_internal_electrs_db {
+#offers to restore an internal drive backup if found
+
 
 file="$hp/electrs/electrs_db" #this is the old internal location, necessary to leave for this function.
 file2="$hp/electrs_db_backup"

@@ -32,25 +32,14 @@ if [[ $drive_nostr == external ]] && grep "=external" < $pc | grep -vq "nostr" ;
     # Get user to connect drive.
       pls_connect_drive || return 1 
 
-    # check if there is a backup nostr_data on the drive and restore it
-      restore_nostr_drive #prepares drive based on existing backup and user choices
-      debug "after restore_nostr_drive"
-      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
-                                                           # $original from function restore_nostr_drive
 elif [[ $drive_nostr == external ]] ; then
 
       format_ext_drive "nostr" || return 
-      #make directory nostr_data not needed because config file makes that hapen when nostrrelay run
-      mkdir -p $parmanode_drive/nostr_data
-      sudo chown -R $USER $parmanode_drive/nostr_data >/dev/null 2>&1
-
 fi
 
-prepare_drive_nostr || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
+restore_nostr_data_backup #info only
 
-if [[ $drive_nostr == internal ]] ; then
-restore_internal_nostr_data || return 1 
-fi
+nostr_data_exists_or_create
 
 ########################################################################################
 install_tor silent
@@ -84,7 +73,6 @@ check_ready_for_ssl && nostrrelay_ssl_on install
 
 #################################
 
-nostrrelay_directories || return 1
 nostr_website_directory
 
 make_website_nginx nostr
