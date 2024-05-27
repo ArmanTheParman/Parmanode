@@ -69,13 +69,14 @@ git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 #################################
 nostrrelay_edit_config || return 1
 nostrrelay_reverse_proxy_info
-check_ready_for_ssl && nostrrelay_ssl_on install
 
 #################################
 
 nostr_website_directory
 
 make_website_nginx nostr
+
+check_ready_for_ssl && nostrrelay_ssl_on install
 
 sudo systemctl restart nginx >/dev/null 2>&1
 
