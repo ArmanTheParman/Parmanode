@@ -13,12 +13,11 @@ echo -e "
 ########################################################################################
 $cyan
                          Bitcoin Core will be uninstalled
-$orange
-
-    You will have the option to remove or keep the Bitcoin data directory.
 $red
     Are you sure, UNINSTALL BITCOIN?
 $orange
+    (The Bitcoin data directory will not be deleted)
+
 ########################################################################################
 
 Choose (y) or (n) then <enter>.
