@@ -58,7 +58,7 @@ set_terminal_custom 48 ; echo -ne "
 $running_nostr_menu
 
 
-        Relay Name:               $relay_name
+        Relay Name:               $bright_magenta$relay_name$orange
         $domain_name_text
 
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
