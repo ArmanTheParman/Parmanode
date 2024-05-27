@@ -43,7 +43,7 @@ choose xpmq ; read drive_nostr_custom_data ; set_terminal
 case $drive_nostr_custom_data in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)
-set_termianl ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
 You entered: $green $drive_nostr_custom_data $orange
