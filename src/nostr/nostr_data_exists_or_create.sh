@@ -1,9 +1,9 @@
 function nostr_data_exists_or_create {
 #internal or external
 
-if [[ $nostr_drive == external ]] ; then
+if [[ $drive_nostr == external ]] ; then
 file=$pd/nostr_data
-elif [[ $nostr_drive == internal ]] ; then
+elif [[ $drive_nostr == internal ]] ; then
 file=$HOME/.nostr_data
 fi
 

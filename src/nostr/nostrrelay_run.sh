@@ -1,8 +1,8 @@
 function nostrrelay_run {
 
-if [[ $nostr_drive == internal ]] ; then
+if [[ $drive_nostr == internal ]] ; then
 nostr_data=$HOME/.nostr_data
-elif [[ $nostr_drive == external ]] ; then
+elif [[ $drive_nostr == external ]] ; then
 nostr_data=$pd/nostr_data
 else
 announce "error. no variable for drive set. Aborting."
