@@ -29,6 +29,7 @@ break
 ;;
 rem)
 rem="true"
+debug "rem true choice. rem is $rem"
 break
 ;;
 esac
@@ -65,6 +66,7 @@ if [[ $rem == "true" ]] ; then
     elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_data
     fi
 fi
+debug "after rem true if"
 
 nostr_tor_remove
 parmanode_conf_remove "domain"
