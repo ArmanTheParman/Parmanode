@@ -34,6 +34,7 @@ export parmanode_drive="/media/$USER/parmanode"
 elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
 fi
+export pd=$parmanode_drive
 
 export dp="$HOME/.parmanode"
 export hp="$HOME/parmanode"
