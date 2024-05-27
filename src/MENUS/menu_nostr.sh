@@ -25,10 +25,13 @@ ssl_menu="ssl)                     $orange Enable SSL $nostr_ssl_status_print"
 fi
 
 #data location
-if grep -q "drive_nostr=external" < $pc ; then
+source $pc
+if [[ $drive_nostr == external ]] ; then 
 nostr_data_location="$pd/nostr_data"
-else
+elif [[ $drive_nostr == internal ]] ; then 
 nostr_data_location="$HOME/.nostr_data"
+elif [[ $drive_nostr == custrom ]] ; then 
+nostr_data_location="$drive_nostr_custom_data"
 fi
 
 
@@ -65,7 +68,7 @@ $running_nostr_menu
 $tor_menu                      $orange
         Nostr data location:      $nostr_data_location
 
-        Data usage:               $(du -sh $HOME/.nostr_data | cut -f1)
+        Data usage:               $(du -sh $nostr_data_location | cut -f1)
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
