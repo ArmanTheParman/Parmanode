@@ -25,7 +25,7 @@ else
 echo "Drive name detected is...$(sed -n ${i}p $2)"
 sleep 2
 echo "$(sed -n ${i}p $2)" > $file
-break
+#break #removing break makes sure the final line is stored if there is more than one.
 fi
 done
 unset file

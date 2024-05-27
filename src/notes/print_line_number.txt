@@ -1,0 +1,3 @@
+sed -n 5p $file
+
+prints line 5
