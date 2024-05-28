@@ -4,9 +4,11 @@ sned_sats
 
 export lndversion="v0.17.3-beta"
 
-grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+bitcoin_choice_with_lnd
 
-install_check "lnd" || return 1
+if [[ $bitcoin_choice_with_lnd == local ]] ; then
+grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+fi
 
 please_wait
 
@@ -80,3 +82,35 @@ done
 fi
 }
 
+
+function bitcoin_choice_with_lnd {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    You have a choice to use a local installation of Bitcoin (bitcoind) to use with 
+    LND, or you can choose to connect to one not running on this particular machine.
+$green
+                local)$orange     Bitoind on local machine
+$bright_blue
+                remote)$orange    Bitcoind 
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;;
+local)
+export bitcoin_location=local
+break
+;;
+remote)
+export bitcoin_location=remote
+break
+;;
+*)
+invalid
+;;
+esac
+done
+}

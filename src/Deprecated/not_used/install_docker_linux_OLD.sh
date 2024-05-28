@@ -19,22 +19,11 @@ $orange
 "
 enter_continue
 
-install_check "docker" ; if [ $? == 1 ] ; then return 1 ; fi
-
 fi   
 
 
 if [[ "$1" == "btcpay" ]] ; then
-
-    install_check "docker" "continue" 
-    if [ $? == 1 ] ; then 
-    set_terminal ; echo "Docker is already installed. Skipping its installation."
-    sleep 1
-    log "btcpay" "Docker already installed. Skipping its installation. Continue with BTCPay install."
-    return 0 ; fi #The point is to exit without error
-
-    log "btcpay" "install docker from btcpay install"
-
+true
 else
 
 while true ; do set_terminal ; echo -e "

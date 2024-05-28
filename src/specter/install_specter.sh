@@ -44,7 +44,6 @@ done
 fi
 
 set_terminal
-install_check "specter" || return 1
 
 specter_mac_warning || return 1 
 

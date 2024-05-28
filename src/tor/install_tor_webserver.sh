@@ -40,9 +40,6 @@ if which apache2 ; then
     if [[ $choice != "yolo" ]] ; then return 1 ; fi
 fi
 
-if [[ $install == "ts" ]] ; then
-install_check "tor-server"
-if [[ $? == 1 ]] ; then return 1 ; fi
 
 log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
@@ -94,9 +91,6 @@ fi # end if install = ts
 
 
 if [[ $install == "btcpay" ]] ; then
-
-install_check "btcpTOR"
-if [[ $? == "1" ]] ; then return 1 ; fi
 
 log "btcpTOR" "Beginning btcpTOR install"
 curl -s http://parman.org/parmanode_${version}_btcpaytor_install_counter >/dev/null 2>&1 &

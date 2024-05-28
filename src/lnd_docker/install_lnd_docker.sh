@@ -4,12 +4,6 @@ export install=lnddocker
 export lndversion="v0.17.3-beta"
 
 grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
-install_check "lnd" || { announce "LND seems to already be installed. Aborting" ; return 1 ; }
-install_check "lnddocker" || { announce "LND seems to already be installed. Aborting" ; return 1 ; }
-if docker ps | grep -q lnd ; then
-announce "LND in Docker seems to be running. Aborting Installation."
-return 1 
-fi
 
 please_wait
 
