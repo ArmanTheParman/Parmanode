@@ -1,3 +1,6 @@
+Version 3.37.1
+    -LND 0.17.5
+    -removed redundant function; 'install_check'
 Version 3.37.0
     -Nostr RS Relay
 Version 3.36.5
