@@ -3,7 +3,7 @@ set_terminal
 sned_sats
 
 unset remote_user remote_pass ipcore
-
+if grep -q "litd" < $ic ; then announce "Can't install LND if you have LITD" ; return 1 ; fi
 export lndversion="v0.17.5-beta"
 
 bitcoin_choice_with_lnd || return 1
