@@ -13,7 +13,7 @@ fi
 
 if [[ -z $ipcore ]] ; then ipcore="127.0.0.1"
 else
-    if [[ -n $remote_user]] && [[ -n $remote_pass ]] ; then
+    if [[ -n $remote_user ]] && [[ -n $remote_pass ]] ; then
         rpcuser=$remote_user
         rpcpass=$remote_pass
     else
