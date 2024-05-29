@@ -18,7 +18,7 @@ set_terminal ; echo -e "
 
                               or $bright_blue
 
-    https://$ONION_ADDR_LITTERMINAL:7007                            
+    https://$ONION_ADDR_LITTERMINAL:7007                            $orange
 
 
 ########################################################################################
