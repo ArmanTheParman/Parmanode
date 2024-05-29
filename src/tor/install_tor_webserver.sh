@@ -87,8 +87,6 @@ log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
 success "A Tor server" "being installed."
 
-fi # end if install = ts
-
 
 if [[ $install == "btcpay" ]] ; then
 
