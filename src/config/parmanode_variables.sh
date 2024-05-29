@@ -72,6 +72,8 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 if [[ $(uname) == Linux ]] ; then
 alias gsed=sed
 fi
+# Enable alias expansion in non-interactive shells
+shopt -s expand_aliases
 }
 
 function print_parmanode_variables {
