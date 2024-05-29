@@ -41,8 +41,13 @@ if [[ $choice == "" ]] ; then break ; else continue ; fi
 done
 
 please_wait
-
-if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
-swap_string "$HOME/.lnd/lnd.conf" "alias=" "alias=$alias"
+if [[ $install == litd ]] ; then
+    if [[ -f $HOME/.lit/lit.conf ]] ; then 
+    swap_string "$HOME/.lit/lit.conf" "alias=" "lnd.alias=$alias"
+    fi
+else
+    if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
+    swap_string "$HOME/.lnd/lnd.conf" "alias=" "alias=$alias"
+    fi
 fi
 }
