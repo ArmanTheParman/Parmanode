@@ -23,7 +23,8 @@ fi
 
 echo "
 lnd-mode=integrated
-; uipassword=<a random password of your choosing>
+uipassword=<xxx>
+
 lnd.tlsextraip=0.0.0.0
 lnd.externalip=$extIP:$lnd_port
 lnd.tlsautorefresh=true
