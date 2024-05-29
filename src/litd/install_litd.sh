@@ -7,8 +7,8 @@ unset remote_user remote_pass ipcore
 
 export litdversion="v0.12.5-alpha"
 
-bitcoin_choice_with_lnd || return 1
- if [[ $bitcoin_choice_with_lnd == local ]] ; then
+bitcoin_choice_with_litd || return 1
+ if [[ $bitcoin_choice_with_litd == local ]] ; then
  grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
  fi
 

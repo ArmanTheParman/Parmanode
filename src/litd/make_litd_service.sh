@@ -1,5 +1,7 @@
 function make_litd_service {
+
 debug "1.  binds, after, $binds, $after"
+
 if [[ $bitcoin_choice_with_litd == remote ]] ; then
     unset binds after
 else
