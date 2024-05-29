@@ -43,7 +43,11 @@ set_terminal ; please_wait ; return 0 ;; esac ; done
  function delete_tor_lnd_conf { 
    unset count
    while grep -q "Added by Parmanode (start)" < $file ; do #while loop removes multiple occurrences 
+   if [[ $OS == Mac ]] ; then
    gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+   else
+   sed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+   fi
    count=$((1 + count))
    sleep 0.5
    if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
@@ -67,17 +71,31 @@ set_terminal ; please_wait ; return 0 ;; esac ; done
    }
 
 function uncomment_clearnet {
+if [[ $OS == Mac ]] ; then
 gsed -i '/^; tlsextraip/s/^..//' $file
 gsed -i '/^; externalip/s/^..//' $file
 gsed -i '/^; tlsextradomain/s/^..//' $file
 gsed -i '/^; externalhosts/s/^..//' $file
+else
+sed -i '/^; tlsextraip/s/^..//' $file
+sed -i '/^; externalip/s/^..//' $file
+sed -i '/^; tlsextradomain/s/^..//' $file
+sed -i '/^; externalhosts/s/^..//' $file
+fi
 }
 
 function commentout_clearnet {
+if [[ $OS == Mac ]] ; then
 gsed -i '/^tlsextraip/s/^/; /' $file
 gsed -i '/^tlsextradomain/s/^/; /' $file
 gsed -i '/^externalip/s/^/; /' $file
 gsed -i '/^externalhosts/s/^/; /' $file
+else
+sed -i '/^tlsextraip/s/^/; /' $file
+sed -i '/^tlsextradomain/s/^/; /' $file
+sed -i '/^externalip/s/^/; /' $file
+sed -i '/^externalhosts/s/^/; /' $file
+fi
 }
 
 ########################################################################################
