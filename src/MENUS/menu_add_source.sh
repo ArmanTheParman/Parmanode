@@ -545,6 +545,6 @@ elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then
 litd_p="#                                      LITD                                            #"
 else
    #not installed
-litd_n="#                            (litd)        LITD                                       #"
+litd_n="#                            (litd)        LITD   (Lightning terminal, pool, loop)     #"
 fi
 }
