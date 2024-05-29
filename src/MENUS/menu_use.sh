@@ -131,7 +131,8 @@ if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp
                        echo "    (nr)         Nostr Relay
                             " ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
-                       echo "    (litd)       LITD"
+                       echo "    (litd)       LITD
+                       "
                        echo "    (lt)         Lightning Terminal
                             " ; fi
 echo "                            
