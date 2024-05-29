@@ -24,7 +24,6 @@ fi
 echo "
 lnd-mode=integrated
 uipassword=<xxx>
-litrpc.listen=0.0.0.0:8033
 
 lnd.tlsextraip=0.0.0.0
 lnd.externalip=$extIP:$lnd_port

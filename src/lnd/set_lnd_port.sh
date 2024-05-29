@@ -46,5 +46,5 @@ q|Q) exit 0 ;; p|P) return 1 ;;
 *) invalid
 esac
 done
-
+debug "after lnd port"
 }

@@ -52,6 +52,8 @@ invalid
 esac
 done
 
+cd /usr/local/bin && sudo rm frcli  litcli  litd  lncli  loop  pool  tapcli
+
 sudo rm /etc/nginx/conf.d/litd.conf
 rm $HOME/.lnd #removes symlink to .lit
 sudo rm /etc/systemd/system/litd.service
