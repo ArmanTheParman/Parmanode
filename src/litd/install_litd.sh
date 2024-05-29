@@ -5,6 +5,8 @@ sned_sats
 
 unset remote_user remote_pass ipcore
 
+if grep -q "lnd-" < $ic ; then announce "cant have both LND and LITD"; return 1 ; fi
+
 export litdversion="v0.12.5-alpha"
 
 if ! which nginx >/dev/null 2>&1 ; then install_nginx 
