@@ -54,7 +54,7 @@ echo -e "
 $red
                                 x)     to abort
 $green
-                            enter)     to continue
+                            <enter>    to continue
 $orange
 
 ########################################################################################
