@@ -8,6 +8,7 @@ else
 fi
 
 debug "binds, after, $binds, $after"
+debug "$bitcoin_choice_with_litd"
 
 echo "[Unit]
 Description=lit Daemon
