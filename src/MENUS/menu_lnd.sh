@@ -129,7 +129,7 @@ $menuDockerIP
 
       (s)   $cyan           Start LND $orange$inside_docker 
 
-      (st)  $cyan           Stop LND $orange$inside_docker 
+      (stop)  $cyan         Stop LND $orange$inside_docker 
 
       (rs)             Restart LND $inside_docker
 $dkrmenu
@@ -159,7 +159,7 @@ if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 i|I|info|Info) lnd_info ; continue ;;
 s|S|start|START|Start) start_lnd  ; continue ;;
-st|ST|St|stop|STOP|Stop) stop_lnd ; continue ;; 
+stop|STOP|Stop) stop_lnd ; continue ;; 
 rs|RS|Rs|restart|RESTART|Restart) restart_lnd ; continue ;;
 r|R) menu_lnd ;;
 

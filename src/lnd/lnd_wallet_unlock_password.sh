@@ -17,6 +17,8 @@ $orange
     $pink
         Type password$orange and hit $cyan<enter> $orange
 
+        Or,$cyan <enter>$orange alone to decline auto-unlock feature.
+
 ########################################################################################
 "
 choose xpmq ; read lndpassword  ; set_terminal
