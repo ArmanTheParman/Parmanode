@@ -13,11 +13,11 @@ set_terminal ; echo -e "
 
                            https://localhost:${green}8443$orange
 
-                                            or
+                                      or
 
                            https://$IP:${yellow}8033$orange
 
-                                            or $bright_blue
+                                      or $bright_blue
 
     https://$ONION_ADDR_LITTERMINAL:7007                            $orange
 
