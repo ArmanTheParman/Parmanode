@@ -159,6 +159,8 @@ upool) menu_use pool ;;
 uex) menu_use ex ;;
 uth) menu_use th ;;
 unr) menu_use nr ;;
+ulitd) menu_use litd ;;
+ult) menu_use lt ;;
 dr) menu_remove th ; menu_add_new wth ;;
 
 
