@@ -534,4 +534,17 @@ else
    #not installed
 nostrrelay_n="#                            (nr)          Nostr Relay                                 #"
 fi
+
+#litd
+unset litd_ litd_p litd_n
+if grep -q "litd-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+litd_i="#                                      LITD                                            #"
+elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+litd_p="#                                      LITD                                            #"
+else
+   #not installed
+litd_n="#                            (litd)         LITD                                       #"
+fi
 }

@@ -37,7 +37,7 @@ esac
 done
 
 stop_lnd
-rm $HOME/.lnd/data/chain/bitcoin/mainnet/*
+rm $HOME/.lnd/data/chain/bitcoin/mainnet/* #litd uses symlink
 start_lnd
 enter_continue
 return 0

@@ -1,4 +1,16 @@
 function menu_lnd {
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then 
+lndlitd="true" 
+LND=LITD
+lndconf=lit.conf
+macs=""
+else 
+lndlitd="false" 
+LND=LND
+lndconf=lnd.conf
+macs="(Macs too!)"
+fi
+
 while true ; do
 set_terminal
 
@@ -34,7 +46,7 @@ fi
 
 # To print tor details in menu
 unset lndtor torhybrid
-if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then
+if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then #works because of lnd to litd symlink
     lndtor=Enabled
 else
     lndtor=Disabled
@@ -93,7 +105,8 @@ colour2="$green" ; else colour2="$red" ; fi
 
 if [[ $lnddockermenu == "false" ]] ; then
 
-    if ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
+    if ps -x | grep litd | grep bin >/dev/null 2>&1 \\
+    || ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
     lndrunning="true"
     else 
     lndrunning="false"
@@ -110,7 +123,7 @@ fi
 
 set_terminal_custom 55 ; echo -e "
 ########################################################################################$cyan
-                                LND Menu${orange} - v$lnd_version                               
+                                $LND Menu${orange} - v$lnd_version                               
 ########################################################################################
 
 "
@@ -127,19 +140,19 @@ $menuDockerIP
 
       (i)              Important info
 
-      (s)   $cyan           Start LND $orange$inside_docker 
+      (s)   $cyan           Start $LND $orange$inside_docker 
 
-      (stop)  $cyan         Stop LND $orange$inside_docker 
+      (stop)  $cyan         Stop $LND $orange$inside_docker 
 
-      (rs)             Restart LND $inside_docker
+      (rs)             Restart $LND $inside_docker
 $dkrmenu
       (log)            Inspect LND logs
 
-      (lc)             Inspect and edit lnd.conf file 
+      (lc)             Inspect and edit $lndconf file 
 
       (scb)            Static Channel Backup 
 
-      (t)              Enable/disable TOR $pink(Macs too!)$orange      Currently: $colour1$lndtor$orange
+      (t)              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
 
       (th)             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
 
@@ -181,7 +194,8 @@ fi
 
 ;;
 prv|PRV|Prv)
-if grep -qE '^externalip' < $HOME/.lnd/lnd.conf ; then
+if grep -qE '^lnd.externalip' < $HOME/.lit/lit.conf \
+|| grep -qE '^externalip' < $HOME/.lnd/lnd.conf ; then
 fully_tor_only
 else
 reverse_fully_tor_only
@@ -209,6 +223,9 @@ set_terminal_wider
 if grep -q "lnd-" < $ic ; then
 journalctl -fxu lnd.service &
 journal_PID=$!
+elif grep -q "litd" <$ic ; then
+journalctl -fxu litd.service &
+journal_PID=$!
 elif grep -q "lnddocker-" < $ic ; then
 tail -f $hp/lnd/lnd.log &
 journal_PID=$!
@@ -224,21 +241,33 @@ please_wait
 
 
 lc|LC|conf|CONF|Conf)
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+menu_lnd_lit_conf="litd.conf"
+rL=LITD
+open_conf="$HOME/.lit/lit.conf"
+else
+menu_lnd_lit_conf="lnd.conf"
+rL=LND
+open_conf="$HOEM/.lnd/lnd.conf"
+fi
+
 echo -e "
 ########################################################################################
     
-        This will run Nano text editor to edit lnd.conf. See the controls
+        This will run Nano text editor to edit $menu_lnd_lit_conf. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
 $green
-	  *** ANY CHANGES WILL ONLY BE APPLIED ONCE YOU RESTART LND ***
+	  *** ANY CHANGES WILL ONLY BE APPLIED ONCE YOU RESTART $rL ***
 $orange
 ########################################################################################
 "
 enter_continue
-nano $HOME/.lnd/lnd.conf 
+nano $open_conf
 please_wait
-continue ;;
+unset menu_lnd_lit_conf rL open_conf
+continue 
+;;
 
 
 scb|SCB|Scb) 
@@ -269,11 +298,35 @@ function fully_tor_only {
 # comment out tlsextradomain
 # comment out externalip 
 
+export file=$HOME/.lnd/lnd.conf
+
 lnd_tor only skipsuccess norestartlnd
 
-sed -i '/^tlsextraip/s/^/; /' $file
-sed -i '/^tlsextradomain/s/^/; /' $file
-sed -i '/^externalip/s/^/; /' $file
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+
+    if [[ $OS == Mac ]] ; then
+    gsed -i '/^lnd.tlsextraip/s/^/; /' $file
+    gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
+    gsed -i '/^lnd.externalip/s/^/; /' $file
+    else
+    sed -i '/^lnd.tlsextraip/s/^/; /' $file
+    sed -i '/^lnd.tlsextradomain/s/^/; /' $file
+    sed -i '/^lnd.externalip/s/^/; /' $file
+    fi
+
+else
+
+    if [[ $OS == Mac ]] ; then
+    gsed -i '/^tlsextraip/s/^/; /' $file
+    gsed -i '/^tlsextradomain/s/^/; /' $file
+    gsed -i '/^externalip/s/^/; /' $file
+    else
+    sed -i '/^tlsextraip/s/^/; /' $file
+    sed -i '/^tlsextradomain/s/^/; /' $file
+    sed -i '/^externalip/s/^/; /' $file
+    fi
+
+fi
 
 restart_lnd
 
@@ -283,40 +336,79 @@ success "LND" "being made to run by Tor-only"
 function reverse_fully_tor_only {
 
 
-local file=$HOME/.lnd/lnd.conf
+export file=$HOME/.lnd/lnd.conf
 
-if grep -q tlsextraip < $file ; then
-if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; tlsextraip/s/^..//' $file
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+
+    if grep -q lnd.tlsextraip < $file ; then
+    if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; lnd.tlsextraip/s/^..//' $file
+    else
+    announce "Unexpectedly found 'lnd.tlsextraip' more than once in lit.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
+
+    if grep -q lnd.externalip < $file ; then
+    if [[ $(cat $file | grep lnd.externalip | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; lnd.externalip/s/^..//' $file
+    else
+    announce "Unexpectedly found 'lnd.externalip' more than once in lit.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
+    
+    delete_line "$file" "lnd.tlsextradomain=mydomain.com" 
+
+    if grep -q lnd.tlsextradomain < $file ; then
+    if [[ $(cat $file | grep lnd.tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; lnd.tlsextradomain/s/^..//' $file
+    else
+    announce "Unexpectedly found 'lnd.tlsextradomain' more than once in lit.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
+
+
 else
-announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
-    Abandoning automated modification to avoid errors."
-return 1
-fi
-fi
 
+    if grep -q tlsextraip < $file ; then
+    if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; tlsextraip/s/^..//' $file
+    else
+    announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
 
-if grep -q externalip < $file ; then
-if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; externalip/s/^..//' $file
-else
-announce "Unexpectedly found 'externalip' more than once in lnd.conf.
-    Abandoning automated modification to avoid errors."
-return 1
-fi
-fi
+    if grep -q externalip < $file ; then
+    if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; externalip/s/^..//' $file
+    else
+    announce "Unexpectedly found 'externalip' more than once in lnd.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
 
-delete_line "$file" "tlsextradomain=mydomain.com" 
+    delete_line "$file" "tlsextradomain=mydomain.com" 
 
-if grep -q tlsextradomain < $file ; then
-if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
-sed -i '/^; tlsextradomain/s/^..//' $file
-else
-announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
-    Abandoning automated modification to avoid errors."
-return 1
-fi
-fi
+    if grep -q tlsextradomain < $file ; then
+    if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
+    sed -i '/^; tlsextradomain/s/^..//' $file
+    else
+    announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
+        Abandoning automated modification to avoid errors."
+    return 1
+    fi
+    fi
+
+fi #end litd
+
 
 if [[ $norestartlnd != "true" ]] ; then
 restart_lnd

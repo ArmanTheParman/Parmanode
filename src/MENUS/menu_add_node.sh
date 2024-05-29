@@ -35,6 +35,7 @@ if [[ -n $lnddocker_n ]]       ; then echo  "$lnddocker_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
+if [[ -n $litd_n ]]             ; then echo  "$litd_n"; fi
 echo -e "#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -52,6 +53,7 @@ if [[ -n $lnddocker_i ]]       ; then echo  "$lnddocker_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
 if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
+if [[ -n $litd_i ]]             ; then echo  "$litd_i"; fi
 echo -e "#                                                                                      #
 #$cyan Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
@@ -69,6 +71,7 @@ if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
 if [[ -n $btcpTOR_p ]]         ; then echo -e "$pink$btcpTOR_p$orange"; fi
+if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -113,6 +116,7 @@ m|M) back2main ;;
        fi
        ;;
 
+    
     ld|LD|Ld)
        if [[ -n $lnddocker_n ]] ; then
          if [[ -z $lnd_n ]] ; then announce "Can't have this with LND non-docker. Aborting." ; continue ; fi
@@ -169,6 +173,16 @@ m|M) back2main ;;
 
       fi
       ;;
+
+    lnd|LND|Lnd)
+       if [[ -n $litd_n ]] ; then
+         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
+         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND. Aborting." ; continue ; fi
+       if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
+       if [[ $OS == "Linux" ]] ; then install_litd ; return 0 ; fi 
+       fi
+       ;;
+
     q|Q|quit|QUIT)
         exit 0
         ;;

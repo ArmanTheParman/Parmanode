@@ -256,11 +256,11 @@ echo -e "#                                    (ng)               Nginx          
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#                                    (ng)               Nginx             $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
-if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#                                    (nr)               Nostr Relay                    #
+if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdmenu=1
+echo -e "#                                    (litd)             LIDT                           #
 #                                                                                      #"
-elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#                                    (nr)               Nostr Relay       $red$blinkon(partial)$blinkoff$orange    #
+elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
+echo -e "#                                    (litd)             LITD              $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
@@ -538,6 +538,13 @@ fi
 nr)
 if [[ $nostrrelaymenu == 1 ]] ; then
 uninstall_nostrrelay 
+return
+fi
+;;
+
+litd)
+if [[ $litdmenu == 1 ]] ; then
+uninstall_litd
 return
 fi
 ;;

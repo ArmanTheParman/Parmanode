@@ -4,6 +4,7 @@ function start_litd {
     check_rpc_bitcoin
     please_wait
     sudo systemctl start litd.service 
+    return 0
     fi 
 
     if grep -q "litddocker-" < $ic ; then
@@ -15,6 +16,7 @@ function stop_litd {
     please_wait
     if grep -q "litd-" < $ic ; then
     sudo systemctl stop litd.service 
+    return 0
     fi
     if grep -q "litddocker-" $ic ; then
     litd_docker_stop
@@ -25,6 +27,7 @@ function restart_litd {
     if grep -q "litd-" < $ic ; then
     check_rpc_bitcoin
     sudo systemctl restart litd.service 
+    return 0
     fi
     if grep -q "litddocker-" < $ic ; then
     litd_docker_stop

@@ -14,16 +14,17 @@ bitcoin_choice_with_lnd || return 1
 
 please_wait
 
+make_litd_directories || return 1     ;    installed_config_add "litd-start" 
+
 #Make symlink .lnd to .lit
 if [[ -e $HOME/.lnd ]] ; then
 announce "Can't proceed if $HOME/.lnd exists due to reasons. Please move this directory and try again."
 return 1
 else
 ln -s $HOME/.lit $HOME/.lnd >/dev/null 2>&1
+ln -s $HOME/.lit/lit.conf $HOME/.lnd/lnd.conf >/dev/null 2>&1
 fi
-installed_config_add "litd-start" 
 
-make_litd_directories || return 1 
 
 download_litd
 

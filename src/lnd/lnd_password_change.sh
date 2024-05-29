@@ -32,12 +32,32 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
 done
 stop_lnd
-cp $HOME/.lnd/lnd.conf $HOME/.lnd/lnd.conf_backup
-delete_line "$HOME/.lnd/lnd.conf" "wallet-unlock" #deletes 2 lines
+if grep -q "litd" < $ic >dev/null 2>&1 ; then
+
+    cp $HOME/.lit/lit.conf $HOME/.lit/lit.conf_backup
+    delete_line "$HOME/.lit/lit.conf" "wallet-unlock" #deletes 2 lines
+
+else
+
+    cp $HOME/.lnd/lnd.conf $HOME/.lnd/lnd.conf_backup
+    delete_line "$HOME/.lnd/lnd.conf" "wallet-unlock" #deletes 2 lines
+
+fi
 start_lnd
+
 lncli changepassword 2>&1 || docker exec -it lnd lncli changepassword
 stop_lnd
-cp $HOME/.lnd/lnd.conf_backup $HOME/.lnd/lnd.conf
+
+if grep -q "litd" < $ic >dev/null 2>&1 ; then
+
+    cp $HOME/.lit/lit.conf_backup $HOME/.lit/lit.conf
+
+else
+
+    cp $HOME/.lnd/lnd.conf_backup $HOME/.lnd/lnd.conf
+
+fi
+
 start_lnd
 success "The password has been changed"
 announce "${blinkon}IMPORTANT!!${blinkoff}$orange
