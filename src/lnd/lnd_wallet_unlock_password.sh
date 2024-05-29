@@ -15,19 +15,24 @@ $orange
     LND starts.
 
     $pink
-        Type password and hit <enter> $orange
-    or 
-        Hit $cyan<enter>$orange alone to go back.
+        Type password$orange and hit $cyan<enter> $orange
 
 ########################################################################################
-
 "
-read lndpassword 
-    if [[ -z $lndpassword  ]] ; then return 1 ; fi
-echo "
+choose xpmq ; read lndpassword  ; set_terminal
+case $lndpassword in
+q|Q) exit ;; p|P) return 1 ;;  m|M) back2main ;;
+"")
+return
+;;
+esac
 
+echo -e "
+########################################################################################
+$cyan
+Please repeat the password...
 
-Please repeat the password:
+########################################################################################
 
 "
 read lndpassword2
