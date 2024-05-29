@@ -37,7 +37,7 @@ esac
 
 case $choice in
 1)
-rm -rf $hp/lnd $HOME/.lnd/
+sudo rm -rf $hp/lnd $HOME/.lnd/
 break
 ;;
 2)
