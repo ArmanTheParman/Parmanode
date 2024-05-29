@@ -11,11 +11,11 @@ set_terminal ; echo -e "
       The Lightning Terminal can be accessed in your browser at:
 
 
-                           https://localhost:${green}8443
+                           https://localhost:${green}8443$orange
 
                                or
 
-                           https://$IP:${yellow}8033
+                           https://$IP:${yellow}8033$orange
 
                               or $bright_blue
 
