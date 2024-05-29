@@ -24,8 +24,7 @@ $orange
     private keys on a computer connected to the internet, potentially exposed to
     malware.
 
-    Of interest is that LND wallets will use taproot addresses - they start with
-    bc1p.
+    Of interest - LND wallets will use taproot addresses ; they start with bc1p.
 
 ########################################################################################
 "
