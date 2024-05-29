@@ -1,5 +1,9 @@
 function check_rpc_bitcoin {
 unset rpcuser
+
+source $pc
+if [[ $bitcoin_choice_with_lnd == remote ]] ; then return 0 ; fi
+
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 if [ -z $rpcuser ] ; then
 set_terminal ; echo -e "

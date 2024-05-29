@@ -58,6 +58,9 @@ fi
 
 store_LND_container_IP
 
+if [[ $bitcoin_choice_with_lnd == remote ]] ; then
+parmanode_conf_add "bitcoin_choice_with_lnd=remote"
+fi
 
 installed_conf_add "lnd-end"
 success "LND" "being installed."

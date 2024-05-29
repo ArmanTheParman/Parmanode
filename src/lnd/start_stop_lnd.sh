@@ -1,9 +1,11 @@
 function start_lnd {
+    
     if grep -q "lnd-" < $ic ; then
     check_rpc_bitcoin
     please_wait
     sudo systemctl start lnd.service 
     fi 
+
     if grep -q "lnddocker-" < $ic ; then
     lnd_docker_start
     fi
