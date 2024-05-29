@@ -1,5 +1,5 @@
-Version 3.37.2
-    -LitD (with Lightning terminal, pool etc)
+Version 3.38.0
+    -LitD (with Lightning terminal, pool, loop, etc)
 Version 3.37.1
     -LND 0.17.5
     -LND can connect to remote Bitcoin now
