@@ -7,6 +7,7 @@ set_terminal ; echo -e "
                                Lightning Terminal Menu     $orange 
 ########################################################################################
 
+
       The Lightning Terminal can be accessed in your browser at:
 
 
