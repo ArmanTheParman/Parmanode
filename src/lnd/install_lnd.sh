@@ -95,7 +95,7 @@ set_terminal ; echo -e "
 $green
                 local)$orange     Bitoind on local machine
 $bright_blue
-                remote)$orange    Bitcoind 
+                remote)$orange    Bitcoind on another machine
 
 ########################################################################################
 "
