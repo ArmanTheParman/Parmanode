@@ -130,6 +130,9 @@ if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp=1
                        echo "    (nr)         Nostr Relay
                             " ; fi
+if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
+                       echo "    (litd)       LITD
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -370,6 +373,12 @@ ws)
 nr) 
    if [[ $nostrrelayapp == 1 ]] ; then
    menu_nostr
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   fi
+   ;;
+litd) 
+   if [[ $litdapp == 1 ]] ; then
+   menu_lnd
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
