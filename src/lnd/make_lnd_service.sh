@@ -3,8 +3,8 @@ function make_lnd_service {
 if [[ $bitcoin_choice_with_lnd == remote ]] ; then
     unset binds after
 else
-    binds="Description=LND Lightning Network Daemon"
-    after="BindsTo=bitcoind.service"
+    binds="BindsTo=bitcoind.service"
+    after="After=bitcoind.service"
 fi
 
 echo "[Unit]
