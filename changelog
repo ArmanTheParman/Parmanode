@@ -1,5 +1,6 @@
 Version 3.37.1
     -LND 0.17.5
+    -LND can connect to remote Bitcoin now
     -removed redundant function; 'install_check'
 Version 3.37.0
     -Nostr RS Relay
