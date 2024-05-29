@@ -116,11 +116,11 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 local)
-export bitcoin_location=local
+export bitcoin_choice_with_lnd=local
 break
 ;;
 remote)
-export bitcoin_location=remote
+export bitcoin_choice_with_lnd=remote
 set_remote_bitcoin_ip || return 1
 break
 ;;
