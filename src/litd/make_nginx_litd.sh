@@ -18,5 +18,6 @@ echo "server {
     }
 }" | sudo tee $file >/dev/null 2>&1
 
+sudo systemctl restart nginx
 
 }

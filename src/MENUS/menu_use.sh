@@ -132,6 +132,7 @@ if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp
                             " ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
                        echo "    (litd)       LITD
+                                 (lt)         Lightning Terminal
                             " ; fi
 echo "                            
 #######################################################################################
@@ -382,6 +383,12 @@ litd)
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
+lt)
+   if [[ $litdapp == 1 ]] ; then
+   menu_litterminal
+   fi
+   ;;
+
 ######Hidden Menu########
 ng)
   if which nginx >/dev/null 2>&1 ; then

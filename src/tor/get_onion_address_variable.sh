@@ -60,4 +60,9 @@ if [[ $1 == "nostr" ]] ; then
 export ONION_ADDR_NOSTR="$(sudo cat /var/lib/tor/nostr-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+if [[ $1 == "litterminal" ]] ; then
+export ONION_ADDR_LITTERMINAL="$(sudo cat /var/lib/tor/litterminal-service/hostname 2>/dev/null)" 
+return 0
+fi
 }

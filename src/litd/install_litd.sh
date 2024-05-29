@@ -31,7 +31,6 @@ ln -s $HOME/.lit $HOME/.lnd >/dev/null 2>&1
 ln -s $HOME/.lit/lit.conf $HOME/.lnd/lnd.conf >/dev/null 2>&1
 fi
 
-make_nginx_litd
 
 download_litd
 
@@ -80,6 +79,9 @@ store_LND_container_IP #lnd not litd
 if [[ $bitcoin_choice_with_litd == remote ]] ; then
 parmanode_conf_add "bitcoin_choice_with_litd=remote"
 fi
+
+enable_tor_litterminal
+make_nginx_litd
 
 installed_conf_add "litd-end"
 success "LITD" "being installed."

@@ -24,7 +24,7 @@ if [[ $OS == Mac ]] ; then return 1 ; fi
 clear
 file="/etc/tor/torrc"
 
-delete_line "$file" "rtl.service"
+delete_line "$file" "rtl-service"
 delete_line "$file" "7005 127"
 parmanode_conf_remove "rtl_tor"
 sudo systemctl restart tor
