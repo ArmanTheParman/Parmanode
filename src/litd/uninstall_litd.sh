@@ -52,6 +52,7 @@ invalid
 esac
 done
 
+sudo rm /etc/nginx/conf.d/litd.conf
 rm $HOME/.lnd #removes symlink to .lit
 sudo rm /etc/systemd/system/litd.service
 rm -rf $HOME/parmanode/litd 

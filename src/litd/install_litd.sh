@@ -7,6 +7,12 @@ unset remote_user remote_pass ipcore
 
 export litdversion="v0.12.5-alpha"
 
+if ! which nginx >/dev/null 2>&1 ; then install_nginx 
+sudo rm /etc/nginx/sites-available/*
+sudo rm /etc/nginx/sites-enabled/*
+sudo systemctl restart nginx >/dev/null 2>&1
+fi
+
 bitcoin_choice_with_litd || return 1
  if [[ $bitcoin_choice_with_litd == local ]] ; then
  grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
@@ -25,6 +31,7 @@ ln -s $HOME/.lit $HOME/.lnd >/dev/null 2>&1
 ln -s $HOME/.lit/lit.conf $HOME/.lnd/lnd.conf >/dev/null 2>&1
 fi
 
+make_nginx_litd
 
 download_litd
 
