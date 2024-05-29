@@ -38,22 +38,26 @@ $orange
 
 "
 read lndpassword2
-
+debug "here1, $lndpassword2"
 set_terminal
 #delete file, create file, later populate file.
-if grep -q "lnd" <$ic >/dev/null 2>&1 ; then
+if grep -q "lnd" < $ic >/dev/null 2>&1 ; then
 rm $HOME/.lnd/password.txt >/dev/null 2>&1
 touch $HOME/.lnd/password.txt && chmod 600 $HOME/.lnd/password.txt
-elif grep -q "litd" <$ic >/dev/null 2>&1 ; then
+elif grep -q "litd" < $ic >/dev/null 2>&1 ; then
+debug "here2"
 rm $HOME/.lit/password.txt >/dev/null 2>&1
 touch $HOME/.lit/password.txt && chmod 600 $HOME/.lit/password.txt
+debug "here3"
 fi
 
+debug "password.txt $(cat $HOME/.lit/password.txt)"
 
 if [[ $lndpassword != $lndpassword2 ]] ; then
     echo "Passwords do not match. Try again."
     enter_continue ; continue
 else
+debug "here 4"
 set_terminal ; echo -e "
 ########################################################################################
     
