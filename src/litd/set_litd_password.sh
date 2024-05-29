@@ -1,6 +1,5 @@
 function set_litd_password {
 
-while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
