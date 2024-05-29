@@ -187,10 +187,10 @@ set_terminal ; echo -e "
 
         rpcpassword:  $remote_pass
 $green
-$pink $blinkon
+$blinkon
     Please make sure the following lines are in the bitcoin.conf file of the remote
     Bitcoin installation, or you'll get errors: $blinkoff
-
+$pink
                         zmqpubrawblock=tcp://*:28332
                         zmqpubrawtx=tcp://*:28333 
 $orange
