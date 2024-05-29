@@ -105,8 +105,8 @@ colour2="$green" ; else colour2="$red" ; fi
 
 if [[ $lnddockermenu == "false" ]] ; then
 
-    if ps -x | grep litd | grep bin >/dev/null 2>&1 \\
-    || ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
+    if ps -x | grep litd | grep bin >/dev/null 2>&1 ||\
+    ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
     lndrunning="true"
     else 
     lndrunning="false"
