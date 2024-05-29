@@ -31,11 +31,11 @@ if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
 if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
 if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
 if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
+if [[ -n $litd_n ]]             ; then echo  "$litd_n"; fi
 if [[ -n $lnddocker_n ]]       ; then echo  "$lnddocker_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
 if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
-if [[ -n $litd_n ]]             ; then echo  "$litd_n"; fi
 echo -e "#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -174,7 +174,7 @@ m|M) back2main ;;
       fi
       ;;
 
-    lnd|LND|Lnd)
+   litd|LITD) 
        if [[ -n $litd_n ]] ; then
          if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
          if [[ -z $lnd_n ]] ; then announce "Can't have this with LND. Aborting." ; continue ; fi
