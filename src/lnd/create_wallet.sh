@@ -33,7 +33,7 @@ else #end docker
 
 
 if ! sudo systemctl status lnd.service >/dev/null ; then
-    set_terminal ; echo "LND is not running. Start LND first."
+    set_terminal ; echo -e "LND is not running.$red Can't create wallet.$orange Start LND first."
     enter_continue ; return 1 ; 
 fi
 
