@@ -5,7 +5,7 @@ source $pc
 return 0
 fi
 
-if grep -q "lnd-" < $pc ; then 
+if grep -q "lnd-" < $pc || grep -q "litd" < $pc ; then 
 LNDIP=$IP
 
     if ! echo $LNDIP | grep -E '^[0-9]' ; then #double check LNDIP starts with a number rather than error message

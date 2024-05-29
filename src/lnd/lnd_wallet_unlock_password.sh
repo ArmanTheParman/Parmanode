@@ -41,8 +41,13 @@ read lndpassword2
 
 set_terminal
 #delete file, create file, later populate file.
+if grep -q "lnd" <$ic >/dev/null 2>&1 ; then
 rm $HOME/.lnd/password.txt >/dev/null 2>&1
 touch $HOME/.lnd/password.txt && chmod 600 $HOME/.lnd/password.txt
+elif grep -q "litd" <$ic >/dev/null 2>&1 ; then
+rm $HOME/.lit/password.txt >/dev/null 2>&1
+touch $HOME/.lit/password.txt && chmod 600 $HOME/.lit/password.txt
+fi
 
 
 if [[ $lndpassword != $lndpassword2 ]] ; then
