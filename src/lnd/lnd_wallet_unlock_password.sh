@@ -41,7 +41,7 @@ read lndpassword2
 
 set_terminal
 #delete file, create file, later populate file.
-rm $SHOME/.lnd/password.txt >/dev/null 2>&1
+rm $HOME/.lnd/password.txt >/dev/null 2>&1
 touch $HOME/.lnd/password.txt && chmod 600 $HOME/.lnd/password.txt
 
 
