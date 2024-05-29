@@ -63,7 +63,6 @@ gsed -i '/^; lnd.wallet-unlock-allow-create/s/^..//' $HOME/.lit/lit.conf
 fi
 
 # password file and needs new wallet to do so.
-debug "after gsed"
 #start git repository in .lit directory to allow undo's
 cd $HOME/.lit && git init >/dev/null 2>&1
 fi

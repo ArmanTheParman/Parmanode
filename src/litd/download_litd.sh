@@ -1,5 +1,4 @@
 function download_litd {
-debug "in download_litd"
 if [[ $OS != "Linux" ]] ; then return 1 ; fi
  
 rm -rf $HOME/parmanode/litd/*
