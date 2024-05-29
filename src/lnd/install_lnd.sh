@@ -180,18 +180,19 @@ set_terminal ; echo -e "
 
     These are your entries...
 
+
         IP address:   $ipcore
 
         rpcuser:      $remote_user
 
         rpcpassword:  $remote_pass
 $green
-
-    Please make sure the following lines are in the bitcoin.conf file of the remote
-    Bitcoin installation, or you'll get errors:
 $pink $blinkon
+    Please make sure the following lines are in the bitcoin.conf file of the remote
+    Bitcoin installation, or you'll get errors: $blinkoff
+
                         zmqpubrawblock=tcp://*:28332
-                        zmqpubrawtx=tcp://*:28333 $blinkoff
+                        zmqpubrawtx=tcp://*:28333 
 $orange
     Hit$green <enter>$orange to accept, or$red x-<enter>$orange to try again.
 
