@@ -2,7 +2,7 @@ function menu_litterminal {
 
 get_onion_address_variable litterminal
 
-while true ; do set_terminal ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################$cyan
                                Lightning Terminal Menu     $orange 
 ########################################################################################
