@@ -1,4 +1,4 @@
-function make_lit_service {
+function make_litd_service {
 
 if [[ $bitcoin_choice_with_litd == remote ]] ; then
     unset binds after
