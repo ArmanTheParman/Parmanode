@@ -7,6 +7,8 @@ else
     after="After=bitcoind.service"
 fi
 
+debug "binds, after, $binds, $after"
+
 echo "[Unit]
 Description=lit Daemon
 $binds
