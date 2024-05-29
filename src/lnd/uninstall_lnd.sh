@@ -31,7 +31,6 @@ q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 *)
 if ! echo "$choice" | grep -qE '1|2|3' ; then invalid ; continue ; fi
 sudo systemctl stop lnd.service
-break
 ;;
 esac
 
