@@ -1,5 +1,5 @@
 
-nohup curl -s -H "Cache-Control: no-cache" -H "Pragma: no-cache" https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
+curl -s -H "Cache-Control: no-cache" -H "Pragma: no-cache" https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
 
 if grep -qn2 "true" < $HOME/.parmanode/.patch ; then
 
