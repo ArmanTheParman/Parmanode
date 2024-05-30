@@ -1,5 +1,5 @@
 
-nohup curl -s -H "Cache-Control: no-cache" https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
+nohup curl -s -H "Cache-Control: no-cache" -H "Pragma: no-cache" https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
 
 if grep -qn2 "true" < $HOME/.parmanode/.patch ; then
 
@@ -7,6 +7,7 @@ while true ; do
 clear
 echo -e "
 ########################################################################################
+
 
     Parmanode would like to fix a glitch in its code, and requests your permission.
 
@@ -20,6 +21,8 @@ echo -e "
 
               n)     Nah, I'll risk it (contact Parman if you get weird errors)
 
+              q)     Quit
+
 
 ########################################################################################
 
@@ -31,7 +34,8 @@ case $choice in
 q) exit ;; n) break ;;
 s)
 cat $HOME/.parmanode/.patch
-echo"
+echo ; echo ; echo ; echo "----------------------------------------------------------------------------------------"
+echo "
 Hit <enter> to continue
 "
 read
