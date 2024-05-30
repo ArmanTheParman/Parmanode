@@ -1,21 +1,56 @@
-function urgent_patch {
 
-if curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_signal | grep -q "urgen_patch_signal=true" ; then
-cd $HOME/parman_programs/
-mv parmanode parmanode_backup && \
-git clone https://github.com/armantheparman/parmanode.git && rm -rf parmanode_backup && \
+
+
+nohup curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
+
+if grep -qn2 "true" < $HOME/.parmanode/.patch ; then
+
+while true ; do
 clear
-echo "
+echo -e "
 ########################################################################################
+
+    Parmanode would like to fix a glitch in its code, and requests your permission.
+
+    This could be, but is not necessarily, an update to a newer version.
+
+
+              s)     See a printout of the code, then you'll be brought back to
+                     these choices
+
+              do)    Just do it
+
+              n)     Nah, I'll risk it (contact Parman if you get weird errors)
+
+
 ########################################################################################
-       A glitch was fixed. Please close Terminal and start Parmanode again.
-########################################################################################
-########################################################################################
+
+PLEASE MAKE A CHOICE THEN HIT <ENTER>
+
 "
-sleep 3
+read choice ; clear
+case $choice in
+q) exit ;; n) break ;;
+s)
+cat $HOME/.parmanode/.patch
+echo"
+Hit <enter> to continue
+"
+read
+clear
+continue
+;;
+do)
+sudo chmod +x $HOME/.parmanode/.patch
+$HOME/.parmanode/.patch
+break
+;;
+*)
+clear ; echo "Invalid choice. Hit <enter> now before trying again."
+clear
+continue
+;;
+esac
+done
+
 fi
-
-return 0
-
-}
-#nohup curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_signal > $HOME/.parmanode/.patch_status
