@@ -18,3 +18,4 @@ fi
 return 0
 
 }
+#nohup curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_signal > $HOME/.parmanode/patch_status
