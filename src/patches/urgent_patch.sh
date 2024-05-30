@@ -1,6 +1,6 @@
 function urgent_patch {
 
-if curl -s https://github.com/ArmanTheParman/Parmanode/blob/master/src/patches/urgent_patch_signal | grep -q "urgen_patch_signal=true" ; then
+if curl -s https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_signal | grep -q "urgen_patch_signal=true" ; then
 cd $HOME/parman_programs/
 mv parmanode parmanode_backup && \
 git clone https://github.com/armantheparman/parmanode.git && rm -rf parmanode_backup && \
