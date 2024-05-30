@@ -2,13 +2,19 @@ function update_parmanode {
 
 if [[ $version_incompatibility == 1 ]] ; then #this variable is set in update_version_info 
 # function. If 1, then the current version can't be updated.
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected that your version of Parmanode is not backwards compatible
+    Parmanode has detected a problem - two possibilites.
+   $cyan 
+    1)$orange You may have a very old version of Parmanode that is not backwards compatible 
     with the latest version. To get the new version, you should uninstall Parmanode.
     You would also need to uninstall all the apps Parmanode installed for you to 
     be sure of no conflicts. Alternatively, continue to use this current version.
+$cyan
+    2)$orange If your version is not that old (> version 3), then it's possilbe there's 
+    some glitch in the code - it's probably my fault. Please contact me by Telegram
+    or email or Twitter to report.
 
 ########################################################################################
 "
@@ -29,6 +35,9 @@ set_terminal ; echo "
     version before downloading the new. Apologies for not forseeing this issue and 
     preventing it.
 
+    If the detection is mistaken, there's probably some glitch. Please contact me by
+    Telegram or email or Twitter to report.
+
 ########################################################################################
 "
 enter_continue ; return 1 
@@ -45,7 +54,7 @@ set_terminal ; echo -e "
     
     Parmanode will update itself by extracting the latest version from GitHub.com
 
-    Proceed?  (y) or (n)
+    Proceed?$green  (y)$orange or (n)
 
 ########################################################################################
 "
