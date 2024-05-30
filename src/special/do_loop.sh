@@ -9,12 +9,6 @@ function do_loop {
 #-f checks if a file exists in the working directory. If it doesn't, it 
 #means the run_parmanode.sh file is not in the correct location.
 
-source $HOME/parman_programs/parmanode/src/patches/safetypatch.sh >/dev/null 2>&1
-#optional emergency patches in case an update breaks the program and updates
-#can't be made to fix. By de
-#safetypatch1
-#safetypatch2
-
 if [ -f do_not_delete_move_rename.txt ] ; then true ; else
 clear
 echo "

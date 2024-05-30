@@ -1,6 +1,6 @@
-function safetypatch1 {
+function urgent_patch {
 
-if curl -s https://github.com/ArmanTheParman/Parmanode/blob/master/src/patches/safetypatch.sh | grep -q "safetypatchsignal=true" ; then
+if curl -s https://github.com/ArmanTheParman/Parmanode/blob/master/src/patches/urgent_patch_signal | grep -q "urgen_patch_signal=true" ; then
 cd $HOME/parman_programs/
 mv parmanode parmanode_backup && \
 git clone https://github.com/armantheparman/parmanode.git && rm -rf parmanode_backup && \
@@ -18,9 +18,3 @@ fi
 return 0
 
 }
-
-function safetypatch2 {
-return 0
-}
-
-#safetypatchsignal=false
