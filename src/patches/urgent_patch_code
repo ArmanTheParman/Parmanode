@@ -1,4 +1,4 @@
 #!/bin/bash
-false
+true
 echo "test. Hit enter"
 read
