@@ -6,5 +6,6 @@ echo "mounting $i ..."
 sleep 1
 sudo mkdir $(/media/$USER/RAID$(echo $i | grep -oE '[0-9]+')) >/dev/null
 sudo mount $i /media/$USER/RAID$(echo $i | grep -oE '[0-9]+') #mounts /dev/md[num] to /media/$USER/RAID[num]
+debug "pause"a
 done
 }
