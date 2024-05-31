@@ -208,7 +208,7 @@ echo -e "
     Show difference  (-i)        
     
     Other options you can add...
-
+$white
                --no-o   $orange (don't change ownership in destination) $white
                --no-p   $orange (don't change permissions in destination) $white
                --no-g   $orange (don't change group in destination) $white
