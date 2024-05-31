@@ -1,4 +1,6 @@
 function assemble_RAID {
+sudo partprobe
+
 sudo mdadm --assemble --scan
 echo  -e "
 Mount too?  $green y $red n $orange

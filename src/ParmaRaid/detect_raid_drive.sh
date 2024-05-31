@@ -1,7 +1,7 @@
 function detect_raid_drive {
 
 while true ; do
-
+sudo partprobe
 #BEFORE STATE, CAPTURE...
     sudo blkid -g > $dp/before
     sudo lsblk > $dp/before_lsblk

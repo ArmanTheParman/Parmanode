@@ -1,4 +1,5 @@
 function do_RAID_stop_loop {
+sudo partprobe
 if [[ $(sudo mdadm --detail --scan | wc -l) == 0 ]] ; then
 announce "No RAID processes detected"
 return 1

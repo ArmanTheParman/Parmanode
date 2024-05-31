@@ -1,5 +1,6 @@
 function unmount_and_stop_raid_menu {
 while true ; do
+sudo partprobe
 set_terminal ; echo -e "
 ########################################################################################
 

@@ -1,5 +1,5 @@
 function do_RAID_unmount_loop {
-
+sudo partprobe
 mount | grep -q '/dev/md' || { announce "No RAIDs mounted" ; return 1 ; }
 
 for i in $(mount | grep '/dev/md' | awk '{print $1}') ; do
