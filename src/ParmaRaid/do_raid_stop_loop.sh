@@ -24,7 +24,8 @@ n) continue ;;
 y)
 sudo umount $i >/dev/null
 sudo mdadm --stop $i && installed_conf_remove "$i" \
-&& debug "should be stopped. i is $i" \
+&& debug "should be stopped. i is $i. lsblk...
+$(sudo partprobe ; lsblk)" \
 && success "RAID process stopped"
 unset this_device
 sudo partprobe
