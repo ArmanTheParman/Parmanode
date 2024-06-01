@@ -13,7 +13,8 @@ if [[ $txindex != 1 ]] ; then clear ; echo "
     if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
 fi
 
-if [[ $server != 1 ]] ; then announce "Sorry, server=1 needs to be in the bitcoin.conf file for Mempool to work.
+if [[ $server != 1 ]] ; then clear ; echo "
+    Sorry, server=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."
     read choice
     if [[ $choice != yolo ]] ; then return 1 ; fi
