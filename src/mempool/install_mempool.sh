@@ -1,7 +1,16 @@
 function install_mempool {
+if [[ $arg1 == bibbi ]] ; then
+echo "debug point 1. Hit enter to continue."
+read
+fi
 
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
+
+if [[ $arg1 == bibbi ]] ; then
+echo "debug point 2. Hit enter to continue."
+read
+fi
 
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
 sned_sats

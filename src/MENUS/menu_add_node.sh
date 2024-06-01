@@ -167,8 +167,23 @@ m|M) back2main ;;
       fi
       ;;
    mem|MEM|Mem) 
+if [[ $arg1 == bibbi ]] ; then
+echo "debug point -1. Hit enter to continue."
+read
+fi
       if [[ -n $mempool_n ]] ; then
+
+if [[ $arg1 == bibbi ]] ; then
+echo "debug point 0. Hit enter to continue."
+read
+fi
          install_mempool 
+
+if [[ $arg1 == bibbi ]] ; then
+echo "debug point 3. Hit enter to continue."
+read
+fi
+
          return 0
 
       fi
