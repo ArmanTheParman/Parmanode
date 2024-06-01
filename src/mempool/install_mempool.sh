@@ -17,7 +17,7 @@ if [[ $server != 1 ]] ; then announce "Sorry, server=1 needs to be in the bitcoi
     read choice
     if [[ $choice != yolo ]] ; then return 1 ; fi
 fi
-
+debug "pause1"
 # INTRO
 
 cd $hp
@@ -26,7 +26,7 @@ install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
 sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
 installed_config_add "mempool-start"
-
+debug "pause2"
 #set variables
 make_mempool_docker_compose
 cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
