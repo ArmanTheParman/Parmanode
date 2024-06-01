@@ -6,11 +6,10 @@ announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
 sned_sats
 source $bc
-if [[ $txindex != 1 ]] ; then announce "Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
+if [[ $txindex != 1 ]] ; then clear ; echo "
+    Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."
-    debug "test"
     read choice
-    debug "test 2"
     if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
 fi
 
