@@ -76,7 +76,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
 bbb)
-export mem_dubug="true"
+export mem_dubug="t"
 announce "mempool debugging turned on"
 ;;
 aa)

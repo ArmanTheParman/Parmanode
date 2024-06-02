@@ -167,7 +167,7 @@ m|M) back2main ;;
       fi
       ;;
    mem|MEM|Mem) 
-if [[ $mem_debug == "true" ]] ; then
+if [[ $mem_debug == "t" ]] ; then
 echo "debug point -1. Hit enter to continue."
 read
 else
@@ -175,13 +175,13 @@ announce "mem_debug is... $mem_debug"
 fi
       if [[ -n $mempool_n ]] ; then
 
-if [[ $mem_debug == "true" ]] ; then
+if [[ $mem_debug == "t" ]] ; then
 echo "debug point 0. Hit enter to continue."
 read
 fi
          install_mempool 
 
-if [[ $mem_debug == "true" ]] ; then
+if [[ $mem_debug == "t" ]] ; then
 echo "debug point 3. Hit enter to continue."
 read
 fi
