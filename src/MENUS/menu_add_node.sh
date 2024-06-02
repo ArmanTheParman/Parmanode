@@ -178,7 +178,8 @@ read
 fi
          install_mempool 
 
-if [[ $mem_debug == "true" ]] ; thenecho "debug point 3. Hit enter to continue."
+if [[ $mem_debug == "true" ]] ; then
+echo "debug point 3. Hit enter to continue."
 read
 fi
 
