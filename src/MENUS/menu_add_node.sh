@@ -170,6 +170,8 @@ m|M) back2main ;;
 if [[ $mem_debug == "true" ]] ; then
 echo "debug point -1. Hit enter to continue."
 read
+else
+announce "mem_debug is... $mem_debug"
 fi
       if [[ -n $mempool_n ]] ; then
 
