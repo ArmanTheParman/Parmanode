@@ -1,5 +1,5 @@
 function install_mempool {
-if [[ $mem_debug == true ]] ; then
+if [[ $mem_debug == "true" ]] ; then
 echo "debug point 1. Hit enter to continue."
 read
 fi
@@ -7,8 +7,7 @@ fi
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 
-if [[ $mem_debug == true ]] ; then
-echo "debug point 2. Hit enter to continue."
+if [[ $mem_debug == "true" ]] ; thenecho "debug point 2. Hit enter to continue."
 read
 fi
 
