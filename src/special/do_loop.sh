@@ -50,6 +50,7 @@ debug "printed colours" "silent"
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 test_directory_placement #you can go to this funciton and read the code, then come back.
+test_standard_install
 
 set_terminal
 
