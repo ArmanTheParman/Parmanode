@@ -248,7 +248,7 @@ open_conf="$HOME/.lit/lit.conf"
 else
 menu_lnd_lit_conf="lnd.conf"
 rL=LND
-open_conf="$HOEM/.lnd/lnd.conf"
+open_conf="$HOME/.lnd/lnd.conf"
 fi
 
 echo -e "
