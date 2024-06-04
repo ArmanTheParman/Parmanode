@@ -29,6 +29,7 @@ echo "
 ; available in the menus work properly. Modify at your own risk.
 ;
 ; exteranlhosts & externalip is what LND advertises for connections with domain or IP
+;
 ; tlsextradomain anbd tls extraip are used to specify additional domains 
 ; that should be included in the TLS certificate's SAN (Subject Alternative Name) 
 ; field.
