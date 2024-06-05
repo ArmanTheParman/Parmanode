@@ -66,9 +66,15 @@ export ONION_ADDR_LITTERMINAL="$(sudo cat /var/lib/tor/litterminal-service/hostn
 return 0
 fi
 
-#in progres... to replace btcpay-TOR installation
 if [[ $1 == "btcpay" ]] ; then
-export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpay-service/hostname 2>/dev/null)" 
+
+    if [[ -e /var/lib/tor/btcpay-service ]] ; then
+    export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpay-service/hostname 2>/dev/null)" 
+    elif [[ -e /var/lib/tor/btcpayTOR-server ]] ; then
+    export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname 2>/dev/null)" 
+    fi
+
 return 0
 fi
+
 }

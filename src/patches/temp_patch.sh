@@ -1,8 +1,7 @@
 function temp_patch {
 
-#remove in June
-store_LND_container_IP
-
+#remove in October
+installed_conf_remove "btcpTOR"
 
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the

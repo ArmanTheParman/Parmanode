@@ -94,12 +94,6 @@ echo -e "#                                    (tws)              Tor Web Server 
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
 echo -e "#                                    (tws)              Tor Web Server $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
-if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
-echo -e "#                                    (btcpt)            Tor Server                     #
-#                                                                                      #"
-elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then btcpTORmenu=1
-echo -e "#                                    (btcpt)            Tor Server $red$blinkon(partial)$blinkoff$orange           #
-#                                                                                      #" ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
 echo -e "#                                    (specter)          Specter Wallet                 #
 #                                                                                      #"
@@ -375,13 +369,7 @@ if [[ $torservermenu == 1 ]] ; then
 	return 0
 	fi
 	;;
-btcpt|BTCPT)
-if [[ $btcpTORmenu == 1 ]] ; then
-	no_mac || return 1
-	uninstall_btcpay_tor
-	return 0
-	fi
-    ;;
+
 specter|SPECTER|Specter)
 if [[ $spectermenu == 1 ]] ; then
     uninstall_specter

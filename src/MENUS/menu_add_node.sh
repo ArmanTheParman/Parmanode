@@ -35,7 +35,6 @@ if [[ -n $litd_n ]]             ; then echo  "$litd_n"; fi
 if [[ -n $lnddocker_n ]]       ; then echo  "$lnddocker_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
-if [[ -n $btcpTOR_n ]]         ; then echo  "$btcpTOR_n"; fi
 echo -e "#                                                                                      #
 #$cyan Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -52,7 +51,6 @@ if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
 if [[ -n $lnddocker_i ]]       ; then echo  "$lnddocker_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
-if [[ -n $btcpTOR_i ]]         ; then echo  "$btcpTOR_i"; fi
 if [[ -n $litd_i ]]             ; then echo  "$litd_i"; fi
 echo -e "#                                                                                      #
 #$cyan Failed installs (need to uninstall)...                                         $orange      #
@@ -70,7 +68,6 @@ if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
-if [[ -n $btcpTOR_p ]]         ; then echo -e "$pink$btcpTOR_p$orange"; fi
 if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -124,13 +121,6 @@ m|M) back2main ;;
        fi
        ;;
     
-    btcpt|BTCPT)
-      if [[ -n $btcpTOR_n ]] ; then
-      install_btcpay_tor
-      return 0
-      fi
-      ;;
-
    bre|BRE|Bre)
        if [[ $computer_type == Pi ]] ; then
           bre_docker_install

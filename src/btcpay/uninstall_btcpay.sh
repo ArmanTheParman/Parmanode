@@ -32,6 +32,7 @@ echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.
 sudo systemctl stop btcpay.service
 sudo systemctl disable btcpay.service
 sudo rm /etc/systemd/system/btcpay.service
+disable_tor_btcpay
 
 installed_config_remove "btcpay"
 log "btcpay" "Uninstalled"

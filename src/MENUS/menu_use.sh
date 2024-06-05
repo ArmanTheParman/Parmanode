@@ -4,7 +4,7 @@ while true
 do
 unset raidapp
 unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
-unset torserverapp btcpTORapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
+unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp
@@ -48,9 +48,6 @@ if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
                        echo "    (tws)        Tor Web Server 
-                            " ; fi
-if grep -q "btcpTOR-end" $HOME/.parmanode/installed.conf ; then btcpTORapp=1
-                       echo "    (btcpt)      BTCPay over Tor 
                             " ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
                        echo "    (specter)    Specter Wallet 
@@ -231,12 +228,6 @@ tws|TWS|Tws)
 
    if [[ $torserverapp == 1 ]] ; then
    menu_tor_webserver
-    if [[ -n $1 ]] ; then clear ; return 0 ; fi
-   fi
-   ;;
-btcpt|BTCPT)
-   if [[ $btcpTORapp == 1 ]] ; then
-   menu_btcpay_tor
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;

@@ -15,7 +15,9 @@ while true ; do user_pass_check_exists
     if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
     if [ $return_status == 0 ] ; then break ; fi 
     done
-    
+
+install_tor
+
 make_btcpay_directories || return 1 ; log "btcpay" "entering make_btcpay_directories..."
 
 btcpay_config || return 1 ; log "btcpay" "entering btcpay_config..."
@@ -37,6 +39,8 @@ run_nbxplorer || return 1 ; log "btcpay" "entering run_nbxplorer.."
 
 sleep 4
 run_btcpay || return 1 ; log "btcpay" "entering run_btcpay..."
+
+if which tor >/dev/null 2>&1 ; then enable_tor_btcpay ; fi
 
 installed_config_add "btcpay-end"
 

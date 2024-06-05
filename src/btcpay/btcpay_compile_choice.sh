@@ -4,7 +4,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                  Build Choice
+                                    Build Choice
 $orange
     Parmanode can either build the Docker image from source (from a Dockerfile), or it can
     pull (download) a pre-made image. Building it is slower but less trust involved. 

@@ -5,9 +5,6 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! which tor >/dev/null ; then install_tor ; fi
 
 
-########################################################################################
-if [[ $install != "btcpay" ]] ; then     
-
 set_terminal
 
 if ! which tor >/dev/null 2>&1 ; then 
@@ -83,32 +80,6 @@ sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; ente
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
 success "A Tor server" "being installed."
-return 0
-fi
-########################################################################################
-
-if [[ $install == "btcpay" ]] ; then
-
-log "btcpTOR" "Beginning btcpTOR install"
-curl -s http://parman.org/parmanode_${version}_btcpaytor_install_counter >/dev/null 2>&1 &
-installed_conf_add "btcpTOR-start"
-
-if [ -z $selfIP ] ; then
-echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 7003 127.0.0.1:23001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-else
-echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 7003 $selfIP:$selfPort" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-fi
-
-
-installed_conf_add "btcpTOR-end"
-
-success "BTCPay over Tor" "being installed."
-sudo systemctl restart tor
-
-fi # end if install=btcpay
-
 return 0
 }
 

@@ -170,19 +170,6 @@ else
 torserver_n="#                            (tws)         Tor Web Server (Darknet Server)             #"
 fi
 
-#BTCPay Tor
-unset btcpTOR_i btcpTOR_p btcpTOR_n
-if grep -q "btcpTOR-end" < $HOME/.parmanode/installed.conf ; then 
-  #installed
-btcpTOR_i="#                                      BTCP over Tor (Darknet BTCPay)                  #"
-elif grep -q "btcpTOR-start" $HOME/.parmanode/installed.conf ; then 
-   #partially installed
-btcpTOR_p="#                                      BTCP over Tor (Darknet BTCPay)                  #"
-else
-   #not installed
-btcpTOR_n="#                            (btcpt)       BTCP over Tor (Darknet BTCPay)              #"
-fi
-
 #BTC RPC Explorer (not Docker)
 unset btcrpcexplorer_i btcrpcexplorer_p btcrpcexplorer_n
 if grep -q "btcrpcexplorer-end" < $HOME/.parmanode/installed.conf ; then 

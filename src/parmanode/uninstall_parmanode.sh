@@ -43,13 +43,6 @@ then uninstall_fulcrum #both linux & mac, confirmations inside functions
 set_terminal
 fi
 
-if grep -q "btcpTOR" < $file
-then 
-        #linux condition not required becuase btcpTOR for mac non-existent.
-        uninstall_btcpay_tor
-        set_terminal
-fi
-
 if grep -q "btcpay" < $file 
 then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal

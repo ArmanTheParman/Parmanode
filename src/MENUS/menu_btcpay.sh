@@ -1,6 +1,15 @@
 function menu_btcpay {
 while true ; do
 set_terminal_custom 48 
+unset menu_tor
+
+if which tor >/dev/null 2>&1 ; then get_onion_address_variable btcpay ; fi
+
+if [[ $OS == Linux ]] ; then
+menu_tor="    TOR:
+        http://$ONION_ADDR_BTCPAY:7003"
+fi
+
 echo -e "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
@@ -36,13 +45,13 @@ echo -e "
 
 
 
+    To access:     
 
-    To access:     http://${IP}:23001$yellow     
-                                              from any computer on home network    $orange
+        http://${IP}:23001$yellow           from any computer on home network    $orange
 
-    OR:            http://localhost:23001$yellow 
-                                              form this computer $orange
+        http://localhost:23001$yellow       form this computer $orange
 
+$tor_menu
 
 ########################################################################################
 " 

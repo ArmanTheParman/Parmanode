@@ -1,4 +1,3 @@
-#in progres... to replace btcpay-TOR installation
 function enable_tor_btcpay {
 if [[ $OS == Mac ]] ; then announce "Tor feature not availalbe for Mac yet." ; return 1 ; fi
 
@@ -10,9 +9,9 @@ if sudo grep "HiddenServiceDir /var/lib/tor/btcpay-service/" \
     echo "HiddenServiceDir /var/lib/tor/btcpay-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServicePort 7008 127.0.0.1:23001" \
+if sudo grep "HiddenServicePort 7003 127.0.0.1:23001" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 7008 127.0.0.1:23001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 7003 127.0.0.1:23001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
 sudo systemctl restart tor
@@ -24,7 +23,7 @@ clear
 file="/etc/tor/torrc"
 
 delete_line "$file" "btcpay-service"
-delete_line "$file" "7008 127"
+delete_line "$file" "7003 127"
 sudo systemctl restart tor
 
 }
