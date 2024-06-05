@@ -34,6 +34,7 @@ esac
 done
 fi # end if btcpay not installed with parmanode
 
+########################################################################################
 if [[ $own_btcpay == 1 ]] ; then
 
 while true ; do
@@ -83,7 +84,7 @@ break
 done
 
 fi #end if own btcpay
-
+########################################################################################
 
 install_tor_webserver "btcpay"
 
