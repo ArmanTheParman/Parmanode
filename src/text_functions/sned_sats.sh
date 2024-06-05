@@ -5,7 +5,7 @@ echo -ne "
 
     Isn't this awesome? And it's$green FREE$orange.
 
-    I'm not an OG, so if you love this, please send some of that love to Parman :)
+    If you love this, please send some of that love to Parman :)
 $red$blinkon
 
 
