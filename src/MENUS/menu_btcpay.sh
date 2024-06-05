@@ -141,6 +141,14 @@ pp|PP|Pp|pP)
 btcparmanpay
 ;;
 
+tor)
+if [[ -n $enable_tor_menu ]] ; then
+enable_tor_btcpay
+success "BTC Pay over Tor enabled"
+continue
+fi
+;;
+
 *)
 invalid ;;
 esac  
