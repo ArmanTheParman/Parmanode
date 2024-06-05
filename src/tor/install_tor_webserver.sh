@@ -101,11 +101,11 @@ echo "HiddenServiceDir /var/lib/tor/btcpayTOR-server/" | sudo tee -a /etc/tor/to
 echo "HiddenServicePort 7003 $selfIP:$selfPort" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 fi
 
-sudo systemctl restart tor
 
 installed_conf_add "btcpTOR-end"
 
 success "BTCPay over Tor" "being installed."
+sudo systemctl restart tor
 
 fi # end if install=btcpay
 
