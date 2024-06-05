@@ -1,5 +1,5 @@
 function uninstall_tor_webserver {
-    set_terminal ; echo "
+    set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall Tor Server 

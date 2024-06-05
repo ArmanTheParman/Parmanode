@@ -21,14 +21,15 @@ choose "xpmq"
 read choice
 
 case $choice in
-m|M) back2main ;;
-q|Q|quit|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
-I|i) install_btcpay_linux 
-     ;;
-u|U) export own_btcpay=1
-     break ;;
-*) invalid ;;
+q|Q|quit|QUIT|Quit) exit ;; m|M) back2main ;; p|P) return 1 ;;
+I|i) 
+install_btcpay_linux 
+;;
+u|U) 
+export own_btcpay=1
+break ;;
+*) 
+invalid ;;
 esac
 done
 fi # end if btcpay not installed with parmanode
@@ -37,7 +38,7 @@ if [[ $own_btcpay == 1 ]] ; then
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     Please enter the IP address of your BTCPay installation. Just IP, not the port.

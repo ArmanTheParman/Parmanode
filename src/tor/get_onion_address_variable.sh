@@ -65,4 +65,10 @@ if [[ $1 == "litterminal" ]] ; then
 export ONION_ADDR_LITTERMINAL="$(sudo cat /var/lib/tor/litterminal-service/hostname 2>/dev/null)" 
 return 0
 fi
+
+#in progres... to replace btcpay-TOR installation
+if [[ $1 == "btcpay" ]] ; then
+export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpay-service/hostname 2>/dev/null)" 
+return 0
+fi
 }

@@ -1,0 +1,26 @@
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+
+$orange
+
+
+
+$orange
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
+xxx)
+
+break
+;;
+
+*)
+invalid
+;;
+esac
+done
