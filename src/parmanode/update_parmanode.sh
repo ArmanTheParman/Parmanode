@@ -54,7 +54,7 @@ set_terminal ; echo -e "
     
     Parmanode will update itself by extracting the latest version from GitHub.com
 
-    Proceed?$green  (y)$orange or (n)
+    Proceed?$green  (y)$orange or $red(n)$orange
 
 ########################################################################################
 "
