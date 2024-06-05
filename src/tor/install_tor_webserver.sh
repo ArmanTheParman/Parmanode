@@ -4,12 +4,9 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if ! which tor >/dev/null ; then install_tor ; fi
 
-if [[ -z $1 ]] ; then
-    install="ts"
-else
-    install="$1"
-fi
 
+########################################################################################
+if [[ $install != "btcpay" ]] ; then     
 
 set_terminal
 
@@ -86,7 +83,9 @@ sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; ente
 log "tor-server" "finished install"
 installed_conf_add "tor-server-end"
 success "A Tor server" "being installed."
-
+return 0
+fi
+########################################################################################
 
 if [[ $install == "btcpay" ]] ; then
 
