@@ -1,7 +1,7 @@
 function menu_btcpay {
 while true ; do
 set_terminal_custom 48 
-unset menu_tor enable_tor_menu tor_on
+unset menu_tor enable_tor_menu tor_on findbtcp
 
 if which tor >/dev/null && [[ $OS == Linux ]] ; then 
 get_onion_address_variable btcpay 
@@ -9,7 +9,9 @@ menu_tor="    TOR: $bright_blue
         http://$ONION_ADDR_BTCPAY:7003$orange"
 fi
 
-if which tor >/dev/null && [[ ! -e /var/lib/tor/btcp* ]] && [[ $OS != Mac ]] ; then
+findbtcp=$(sudo find /var/lib/tor/ -name 'btcp*') >/dev/null 2>&1
+
+if which tor >/dev/null && [[ -n $findbtcp ]] && [[ $OS != Mac ]] ; then
 enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 unset menu_tor
 fi
