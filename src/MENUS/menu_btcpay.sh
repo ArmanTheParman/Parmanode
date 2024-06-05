@@ -3,13 +3,13 @@ while true ; do
 set_terminal_custom 48 
 unset menu_tor enable_tor_menu tor_on
 
-if which tor >/dev/null 2>&1 && [[ $OS == Linux ]] ; then 
+if which tor >/dev/null && [[ $OS == Linux ]] ; then 
 get_onion_address_variable btcpay 
 menu_tor="    TOR: $bright_blue
         http://$ONION_ADDR_BTCPAY:7003$orange"
 fi
 
-if which tor && [[ ! -e /var/lib/tor/btcp* ]] && [[ $OS != Mac ]] ; then
+if which tor >/dev/null && [[ ! -e /var/lib/tor/btcp* ]] && [[ $OS != Mac ]] ; then
 enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 unset menu_tor
 fi
