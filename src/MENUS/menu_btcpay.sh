@@ -51,9 +51,11 @@ $enable_tor_menu
 
     To access:     
 
-        http://${IP}:23001$yellow           from any computer on home network    $orange
+        http://${IP}:23001$yellow           
+        from any computer on home network    $orange
 
-        http://localhost:23001$yellow       form this computer $orange
+        http://localhost:23001$yellow       
+        from this computer $orange
 
 $menu_tor
 
