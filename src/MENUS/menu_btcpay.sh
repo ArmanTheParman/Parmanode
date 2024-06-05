@@ -1,13 +1,17 @@
 function menu_btcpay {
 while true ; do
 set_terminal_custom 48 
-unset menu_tor
+unset menu_tor enable_tor_menu tor_on
 
-if which tor >/dev/null 2>&1 ; then get_onion_address_variable btcpay ; fi
-
-if [[ $OS == Linux ]] ; then
+if which tor >/dev/null 2>&1 && [[ $OS == Linux ]] ; then 
+get_onion_address_variable btcpay 
 menu_tor="    TOR:
         http://$ONION_ADDR_BTCPAY:7003"
+fi
+
+if which tor && [[ ! -e /var/lib/tor/btcp* ]] && [[ $OS != Mac ]] ; then
+enable_tor_menu="             tor)          Enable Tor"
+unset menu_tor
 fi
 
 echo -e "
@@ -43,7 +47,7 @@ echo -e "
 
              nl)           View NBXplorer log
 
-
+$enable_tor_menu
 
     To access:     
 
@@ -51,7 +55,7 @@ echo -e "
 
         http://localhost:23001$yellow       form this computer $orange
 
-$tor_menu
+$menu_tor
 
 ########################################################################################
 " 
