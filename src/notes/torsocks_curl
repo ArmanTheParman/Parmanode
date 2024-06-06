@@ -1,1 +1,2 @@
-torsocks curl http://xxxxx6zouioqp6kb6xxxxxEXAMPLExxxxx7edlju.onion:7008
+torsocks curl http://target.onion:7008
+nohup socat TCP4-LISTEN:8080,fork SOCKS4A:localhost:target.onion:7008,socksport=9050 &
