@@ -39,7 +39,7 @@ fi
 	done #ends the loop
 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
-
+debug "x is, $x"
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme
 debug "printed colours" "silent"

@@ -4,8 +4,10 @@ echo "debug point 1. Hit enter to continue."
 read
 fi
 
+if [[ -z $test ]] ; then
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
+fi
 
 if [[ $mem_debug == "t" ]] ; then
 echo "debug point 2. Hit enter to continue."
