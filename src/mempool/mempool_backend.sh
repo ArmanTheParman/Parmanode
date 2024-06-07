@@ -111,8 +111,8 @@ echo -e "
 "
 read pass
 
-swap_string "$file" "CORE_RPC_USERNAME:" "      CORE_RPC_USERNAME: \"$user\""
-swap_string "$file" "CORE_RPC_PASSWORD:" "      CORE_RPC_PASSWORD: \"$pass\""
+swap_string "$file" " CORE_RPC_USERNAME:" "      CORE_RPC_USERNAME: \"$user\"" #space before 'core' necessary to exclude second_core_rpc_username
+swap_string "$file" " CORE_RPC_PASSWORD:" "      CORE_RPC_PASSWORD: \"$pass\""
 }
 
 function remote_electrumserver_for_mempool {
