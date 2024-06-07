@@ -62,7 +62,7 @@ if [[ -n $electrsdkr_p ]]      ; then echo -e "$pink$electrsdkr_p$orange"; fi
 if [[ -n $electrsdkr2_p ]]     ; then echo -e "$pink$electrsdkr2_p$orange"; fi
 if [[ -n $electrumx_p ]]       ; then echo -e "$electrumx_p"; fi
 if [[ -n $btcrpcexplorer_p ]]  ; then echo -e "$pink$btcrpcexplorer_p$orange"; fi
-if [[ -n $mempool_p ]]         ; then echo -e"$mempool_p"; fi
+if [[ -n $mempool_p ]]         ; then echo -e "$mempool_p"; fi
 if [[ -n $bre_p ]]             ; then echo -e "$pink$bre_p$orange"; fi
 if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
