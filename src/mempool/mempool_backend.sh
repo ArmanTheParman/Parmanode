@@ -117,7 +117,7 @@ swap_string "$file" ' CORE_RPC_PASSWORD:' "      CORE_RPC_PASSWORD: \"$pass\""
 
 function remote_electrumserver_for_mempool {
 
-swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"electrum\""
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\""
 
 clear
 echo -e "
@@ -167,20 +167,20 @@ echo -e "
 read eport
 clear
 
-swap_string "$file" "ELECTRUM_HOST:" "      ELECTRUM_HOST: \"$eIP\""
-swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"$eport\""
-swap_string "$file" "ELECTRUM_TLS_ENABLED:" "      ELECTRUM_TLS_ENABLED: \"$eprotocol\""
+swap_string "$file" ' ELECTRUM_HOST:' "      ELECTRUM_HOST: \"$eIP\""
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"$eport\""
+swap_string "$file" ' ELECTRUM_TLS_ENABLED:' "      ELECTRUM_TLS_ENABLED: \"$eprotocol\""
 
 }
 
 function choose_bitcoin_for_mempool {
-swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"none\""
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"none\""
 }
 function choose_electrs_for_mempool {
-swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50006\"" 
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50006\"" 
 }
 function choose_fulcrum_for_mempool {
-swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" "ELECTRUM_PORT:" "      ELECTRUM_PORT: \"50002\""
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50002\""
 }
