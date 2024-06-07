@@ -72,8 +72,8 @@ function remote_bitcoin_for_mempool {
 clear ; echo -e "
 ########################################################################################
 
-    Please type in the IP address of the Bitcoin Core instance you want to use, then
-    hit <enter>
+    Please type in the$cyan IP address$orange of the Bitcoin Core instance you want to use, then
+    hit$green <enter>$orange
 
 ########################################################################################
 "
