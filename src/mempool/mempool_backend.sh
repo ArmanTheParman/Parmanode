@@ -79,8 +79,8 @@ clear ; echo -e "
 "
 read ipcore
 
-swap_string "$file" "MEMPOOL_BACKEND:" "      MEMPOOL_BACKEND: \"none\""
-swap_string "$file" "CORE_RPC_HOST:" "      CORE_RPC_HOST: \"$ipcore\""
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"none\""
+swap_string "$file" ' CORE_RPC_HOST:' "      CORE_RPC_HOST: \"$ipcore\""
 
 clear ; echo -e "
 ########################################################################################    
