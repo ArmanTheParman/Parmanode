@@ -81,8 +81,8 @@ clear
 echo -e "
 ########################################################################################
 
-   Now type in the rpcpassword (found in the corresponding bitcoin.conf file) then
-   hit$cyan <enter> $orange
+   Now type in the$cyan rpcpassword$orange (found in the corresponding bitcoin.conf file) then
+   hit$green <enter> $orange
 
 ########################################################################################
 "
