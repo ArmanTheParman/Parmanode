@@ -79,7 +79,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     8. Create a systemd service file on the host computer. This is what will make the 
-       SSH connection. Fill in the correct values inside the < >.
+       SSH connection. Fill in the correct values inside the < >, then remove the <>'s.
 $cyan
        filename: /etc/systemd/system/autossh-tunnel.service
 
