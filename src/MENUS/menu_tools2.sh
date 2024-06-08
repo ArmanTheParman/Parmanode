@@ -65,7 +65,7 @@ rest_protocol_test
 ;;
 
 as)
-setup_autossh
+autossh_setup
 ;;
 
 *)

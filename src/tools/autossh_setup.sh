@@ -1,4 +1,4 @@
-function setup_autossh {
+function auto_setup {
 
 while true ; do
 set_terminal ; echo -e "
