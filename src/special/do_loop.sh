@@ -103,7 +103,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
-[ $debug = menu ] || autoupdate
+[[ $debug == menu ]] || autoupdate
 fi
 
 if [[ $needs_restart == "true" ]] ; then
@@ -173,7 +173,7 @@ fi
 ########################################################################################
 
 #message of the day
-[ $debug = menu ] || motd
+[[ $debug == menu ]] || motd
 
 # This is the main program, which is a menu that loops.
 menu_main
