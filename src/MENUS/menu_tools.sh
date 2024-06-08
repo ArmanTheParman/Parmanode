@@ -5,7 +5,7 @@ set_terminal_high
 echo -e "
 ########################################################################################
   $cyan
-                               P A R M A N O D E - Tools   $orange
+                                  TOOLS - PAGE 1  $orange
 
 
               (cc)    Upgrade ColdCard firmware wizard             

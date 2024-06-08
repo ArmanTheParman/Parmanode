@@ -5,7 +5,7 @@ set_terminal_high
 echo -e "
 ########################################################################################
   $cyan
-                               P A R M A N O D E - Tools   $orange
+                                   TOOLS - PAGE 2  $orange
 
 
               (curl)      Test bitcoin curl/rpc command (for troubleshooting)
@@ -21,6 +21,8 @@ echo -e "
               (ww)        Wireless driver install (rtl8812au)
 
               (fs)        Free up some space
+
+              (as)        AutoSSH reverse proxy tunnel guide
 
 $orange
 ########################################################################################
@@ -60,6 +62,10 @@ free_up_space
 
 rest)
 rest_protocol_test
+;;
+
+as)
+setup_autossh
 ;;
 
 *)

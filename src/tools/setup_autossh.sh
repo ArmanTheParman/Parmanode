@@ -8,7 +8,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -25,7 +25,7 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -36,26 +36,26 @@ set_terminal ; echo -e "
     3. Decide on a port number for the host and VPS (they need to be different, eg
        9000 and 9001)
 
-    4. Gather the IP address of each computer (The external IP not internal).
+    4. Gather the IP address of each computer (the external IP not internal).
 
     5. If required, buy a Domain Name and point it to the VPS IP using CloudFlare
        or similar. Do not enable a proxy at the CloudFlare end.
 
-    6. Copy the id of the VPS to the host computer. Run this from the host:
+    6. Copy the ID of the VPS to the host computer. Run this from the host:
     $cyan
                    ssh-copy-id root@<put_the_vps_ip_address_here> 
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal_wide ; echo -e "
 ########################################################################################
 
-    7. Then, add these to the end of file$cyan /etc/ssh/sshd_config$orange on the vps, or 
+    7. Then, add these to the end of file$cyan /etc/ssh/sshd_config$orange on the VPS, or 
        find these lines and adjust them as needed.
 $green
                             RSAAuthentication yes 
@@ -70,7 +70,7 @@ $cyan
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -92,7 +92,7 @@ $green
   User=root
   Group=root
   Environment="AUTOSSH_GATETIME=0"
-  ExecStart=/usr/bin/autossh -C -M 0 -v -N -o "ServerAliveInterval=60" -R <vps_port>:localhost:<host_port> root@<vps_ip>
+  ExecStart=/usr/bin/autossh -C -M 0 -v -N -o "ServerAliveInterval=60" -R <VPS_port>:localhost:<host_port> root@<VPS_ip>
   StandardOutput=journal
 
   [Install]
@@ -107,7 +107,7 @@ $orange
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -121,7 +121,7 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -135,7 +135,7 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 }
