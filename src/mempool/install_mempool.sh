@@ -4,14 +4,17 @@ echo "debug point 1. Hit enter to continue."
 read
 fi
 
+if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
+else
+    if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
+fi
+
 choose_mempool_backend
 
 if [[ $mbackend == 1 ]] ; then
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 fi
-
-if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
 
 sned_sats
 source $bc
