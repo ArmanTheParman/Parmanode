@@ -14,19 +14,7 @@ if [[ $OS == "Linux" ]] ; then
         echo "Bitcoin will start in a moment..."
         if grep -q "drive=external" < $pc >/dev/null ; then mount_drive ; fi
         set_terminal
-
-        if grep -q "internal" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 # config file determines if bitcoin is running on an internal or external drive
-        then    
-                sudo systemctl start bitcoind.service 
-                return 0
-        fi
-
-
-
-        if grep -q "external" $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 #config file determines if bitcoin is running on an internal or external drive
-        then
         sudo systemctl start bitcoind.service 
-        fi
 fi                 
 
 

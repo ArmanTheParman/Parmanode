@@ -4,33 +4,32 @@ echo "debug point 1. Hit enter to continue."
 read
 fi
 
-if [[ -z $no_bitcoin ]] ; then
+choose_mempool_backend
+
+if [[ $mbackend == 1 ]] ; then
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 fi
 
-if [[ $mem_debug == "t" ]] ; then
-echo "debug point 2. Hit enter to continue."
-read
-fi
-
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi
+
 sned_sats
 source $bc
-if [[ $txindex != 1 ]] ; then clear ; echo "
+
+if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo "
     Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."
     read choice
     if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
 fi
 
-if [[ $server != 1 ]] ; then clear ; echo "
+if [[ $mbackend == 1 && $server != 1 ]] ; then clear ; echo "
     Sorry, server=1 needs to be in the bitcoin.conf file for Mempool to work.
     Type 'yolo' and <enter> to ignore warning, otherwise aborting."
     read choice
     if [[ $choice != yolo ]] ; then return 1 ; fi
 fi
-debug "pause1"
+
 # INTRO
 
 cd $hp
@@ -46,8 +45,6 @@ cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
 debug "/tmp/docker-compose.yml copied?"
 rm /tmp/docker-compose.yml >/dev/null 2>&1
 mempool_backend
-#choose_mempool_LND
-#choose_mempool_tor
 
 cd $hp/mempool/docker 
 docker compose up -d || debug "compose up didn't work"

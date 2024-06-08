@@ -1,32 +1,8 @@
 function mempool_backend {
 export file="$hp/mempool/docker/docker-compose.yml"
-while true ; do
 
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-               To what would you like Mempool to connect to for its data?
-$orange
-$green
-                    1)      Bitcoin Core (on this computer - recommended) $orange
-
-                    2)      Electrs (on this computer)
-
-                    3)      Fulcrum (on this computer)
-    
-                    4)      Bitcoin Core (another computer)
-
-                    5)      Any type of Electrum Server (another computer)
-$red
-                    x)      EXIT 
-$orange
-########################################################################################
-"
-choose "xpmq" ; read choice ; set_terminal
-case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-m|M) back2main ;;
+debug "mbackend is $mbackend"
+case $mbackend in
 
 1)
 choose_bitcoin_for_mempool
@@ -57,15 +33,8 @@ remote_electrumserver_for_mempool
 restart_mempool
 break
 ;;
-
-x)
-return 1
-;;
-
-*) invalid ;;
 esac
-done
-return 0
+
 }
 
 function remote_bitcoin_for_mempool {
