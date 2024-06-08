@@ -58,3 +58,12 @@ installed_config_add "nextcloud-end"
 success "NextCloud has finished being installed"
 
 }
+
+
+function uninstall_nextcloud {
+
+docker stop nextcloud-aio-mastercontainer
+docker rm nextcloud-aio-mastercontainer
+docker volume rm nextcloud_aio_mastercontainer
+success "NextCloud has been uninstalled"
+}
