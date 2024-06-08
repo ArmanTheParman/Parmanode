@@ -33,7 +33,7 @@ if [[ $mbackend == 1 && $server != 1 ]] ; then clear ; echo "
     if [[ $choice != yolo ]] ; then return 1 ; fi
 fi
 
-# INTRO
+# INTRO 
 
 cd $hp
 git clone https://github.com/mempool/mempool.git
