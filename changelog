@@ -1,5 +1,6 @@
 Version 3.38.2
     -added autossh tool/guide
+    -mempool improved bitcoin running check
 Version 3.38.1
     -BTCPayTOR moved from an installation to part of btcpay menu 
 Version 3.38.0
