@@ -60,7 +60,7 @@ set_terminal_wide ; echo -e "
         extra security features:
         $cyan
    
-command=\"echo 'meaningless command to restrict all other commands'\",no-pty,no-agen-forwarding,no-X11-forwarding,permitopen=\"localhost:9000\" ssh-rsa AAAB3... root@home_computer
+command=\"true\",no-pty,no-agent-forwarding,no-port-forwarding,no-X11-forwarding,no-user-rc,permitopen=\"localhost:9000\" ssh-rsa AAAB3... root@home_computer
 
 $orange
 ########################################################################################
