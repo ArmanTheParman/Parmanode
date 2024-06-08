@@ -4,7 +4,7 @@ function install_nextcloud {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 # Need Docker
-if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu. Aborting." ; return 1
+if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu. Aborting." ; return 1 ; fi
 
 # Need port 80 free
 if sudo netstat -tulnp | grep :80 ; then
@@ -13,6 +13,7 @@ if [[ $enter_cont == yolo ]] ; then
 true
 else
 return 1
+fi
 fi
 
 # Need 8443 free
@@ -23,6 +24,7 @@ true
 else
 return 1
 fi
+fi
 
 # Need 8020 free
 if sudo netstat -tulnp | grep :8020 ; then
@@ -31,6 +33,7 @@ if [[ $enter_cont == yolo ]] ; then
 true
 else
 return 1
+fi
 fi
 
 # --name nextcloud-aio-mastercontainer This is the name of the container. 
