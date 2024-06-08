@@ -42,6 +42,7 @@ fi
 # Means that the container should always get started with the Docker daemon. 
 
 sudo docker run \
+-d \
 --init \
 --sig-proxy=false \
 --name nextcloud-aio-mastercontainer \
