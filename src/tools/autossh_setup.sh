@@ -44,6 +44,24 @@ set_terminal ; echo -e "
     6. Copy the ID of the VPS to the host computer. Run this from the host:
     $cyan
                    ssh-copy-id root@<put_the_vps_ip_address_here> 
+
+       This will copy the public key to the VPS computer's authorized_keys file.
+$orange
+########################################################################################
+"
+choose epmq ; read choice ; set_terminal
+case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
+done
+while true ; do
+set_terminal_wide ; echo -e "
+########################################################################################
+    
+    6b. OPTIONAL: You can edit the authorized_keys files manually to include some
+        extra security features:
+        $cyan
+   
+command=\"echo 'meaningless command to restrict all other commands'\",no-pty,no-agen-forwarding,no-X11-forwarding,permitopen=\"localhost:9000\" ssh-rsa AAAB3... root@home_computer
+
 $orange
 ########################################################################################
 "
@@ -107,6 +125,9 @@ $orange
 $orange
 ########################################################################################
 "
+# M 0 - disables autossh monitoring port
+# -N Do not execute remote commands
+# -i path_to_private key; if not using default
 choose epmq ; read choice ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
