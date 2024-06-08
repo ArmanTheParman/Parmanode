@@ -44,9 +44,9 @@ set_terminal ; echo -e "
     6. Copy the ID of the VPS to the host computer. Run this from the host:
     $cyan
                    ssh-copy-id root@<put_the_vps_ip_address_here> 
-
-       This will copy the public key to the VPS computer's authorized_keys file.
 $orange
+       This will copy the public key to the VPS computer's authorized_keys file.
+
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal
