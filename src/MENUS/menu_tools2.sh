@@ -24,6 +24,8 @@ echo -e "
 
               (as)        AutoSSH reverse proxy tunnel guide
 
+              (de)        Drive encryption - info
+
 $orange
 ########################################################################################
 "
@@ -66,6 +68,10 @@ rest_protocol_test
 
 as)
 autossh_setup
+;;
+
+de)
+drive_encryption
 ;;
 
 *)
