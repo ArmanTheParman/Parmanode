@@ -1,0 +1,1 @@
+--restart always This is the "restart policy". always means that the container should always get started with the Docker daemon.
