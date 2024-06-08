@@ -65,6 +65,7 @@ function uninstall_nextcloud {
 docker stop nextcloud-aio-mastercontainer
 docker rm nextcloud-aio-mastercontainer
 docker volume rm nextcloud_aio_mastercontainer
+docker system prune -a --volumes
 installed_config_remove "nextcloud"
 success "NextCloud has been uninstalled"
 }
