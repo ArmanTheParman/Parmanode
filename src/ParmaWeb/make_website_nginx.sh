@@ -28,7 +28,7 @@ server {
     $server_name
     root /var/www/website;
     index index.html index.htm index.php;
-    client_max_body_size 200M; #default upload size is 1M
+    client_max_body_size 0; #default upload size is 1M, '0' means unlimited. 
 
     location / {
         try_files \$uri \$uri/ /index.php?\$args;
