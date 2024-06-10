@@ -22,6 +22,8 @@ set_terminal ; echo -en "
 
                       stop)        Stop NextCloud Docker container
 
+                      list)        List files/directories in data directory
+
 
     ACCESS: $green
             https://$IP:8020    $orange
@@ -54,6 +56,11 @@ stop)
 docker stop nextcloud
 ;;
 
+list)
+sudo su -
+ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
+exit
+;;
 
 *)
 invalid
