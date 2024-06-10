@@ -57,9 +57,9 @@ docker stop nextcloud
 ;;
 
 list)
-sudo su -
-ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
-exit
+#sudo su -
+#ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
+#exit
 ;;
 
 *)
