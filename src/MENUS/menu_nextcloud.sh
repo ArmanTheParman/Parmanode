@@ -37,7 +37,10 @@ p|P) menu_use ;;
 
 pass)
 set_terminal
-sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json
+sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json || \
+{ announce "No password found. It is created only once you access the server setup page
+    the very first time around." ; continue ; }
+
 enter_continue
 ;;
 
