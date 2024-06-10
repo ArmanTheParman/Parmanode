@@ -523,7 +523,7 @@ nostrrelay_n="#                            (nr)          Nostr Relay            
 fi
 
 #litd
-unset litd_ litd_p litd_n
+unset litd_i litd_p litd_n
 if grep -q "litd-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
 litd_i="#                                      LITD                                            #"
@@ -533,5 +533,18 @@ litd_p="#                                      LITD                             
 else
    #not installed
 litd_n="#                            (litd)        LITD (Lightning terminal, pool, loop)       #"
+fi
+
+#nextcloud
+unset nextcloud_i nextcloud_p next_cloud_n
+if grep -q "nextcloud-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+nextcloud_i="#                                      NextCloud                                            #"
+elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+nextcloud_p="#                                      NextCloud                                            #"
+else
+   #not installed
+nextcloud_n="#                            (next)        NextCloud                                        #"
 fi
 }
