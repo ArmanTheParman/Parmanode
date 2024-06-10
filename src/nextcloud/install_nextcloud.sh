@@ -55,6 +55,7 @@ sudo docker run \
 nextcloud/all-in-one:latest
 
 installed_config_add "nextcloud-end"
+debug "pause"
 success "NextCloud has finished being installed"
 
 }
