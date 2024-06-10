@@ -7,7 +7,7 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu. Aborting." ; return 1 ; fi
 
 # Need port 80 free
-if sudo netstat -tulnp | grep :80 ; then
+if sudo netstat -tulnp | grep -E ':80\s' ; then
 announce "It seems that port 80 is already in use. Type$cyan yolo$orange to ignore, otherwise aborting."
 if [[ $enter_cont == yolo ]] ; then
 true
