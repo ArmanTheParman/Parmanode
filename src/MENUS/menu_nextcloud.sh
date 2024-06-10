@@ -26,6 +26,9 @@ set_terminal ; echo -en "
     ACCESS: $green
             https://$IP:8020    $orange
 
+    DATA: $bright_blue
+           /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/${pink}admin$bright_blue/files
+           (use sudo su -, to access from terminal)
 
 ########################################################################################
 "
