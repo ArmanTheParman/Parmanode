@@ -51,6 +51,8 @@ return 1
 fi
 fi
 
+nextcloud_intro #asking for some sats
+
 # --name nextcloud-aio-mastercontainer This is the name of the container. 
 # This line is not allowed to be changed, since mastercontainer updates would fail.
 # --restart always This is the "restart policy". 
