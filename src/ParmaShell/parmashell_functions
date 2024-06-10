@@ -50,5 +50,6 @@ function et { cd /etc/tor ; a ; }
 function vlt { cd /var/lib/tor ; a ; }
 function www { cd /var/www/ ; a ; }
 function sd { cd /etc/systemd/system ; a ; }
+function rn { sudo systemctl restart nginx.service ; }
 fi
 
