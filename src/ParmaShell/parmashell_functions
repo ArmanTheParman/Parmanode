@@ -41,8 +41,8 @@ function sd { cd /etc/systemd/system/ ; a ; }
 function gp { pn ; git pull ; a ; }
 
 if [[ $(uname) == Darwin ]] ; then
-function ng { cd /urs/local/etc/nginx ; a ; }
-function ngc { cd /usr/local/etc/nginx/conf.d ; a ; }
+function en { cd /urs/local/etc/nginx ; a ; }
+function enc { cd /usr/local/etc/nginx/conf.d ; a ; }
 else
 function en { cd /etc/nginx ; a ; }
 function enc { cd /etc/nginx/conf.d/ ; a ; }
