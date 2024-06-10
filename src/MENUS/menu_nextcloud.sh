@@ -15,7 +15,13 @@ set_terminal ; echo -en "
 
     Nextcloud is:    $nextcloud_running
 
+
                       pass)        Show setup password
+
+                      start)       Start NextCloud Docker container
+
+                      stop)        Stop NextCloud Docker container
+
 
     ACCESS: $green
             https://$IP:8020    $orange
@@ -34,6 +40,14 @@ set_terminal
 sudo docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json
 enter_continue
 ;;
+
+start)
+docker start nextcloud
+;;
+stop)
+docker stop nextcloud
+;;
+
 
 *)
 invalid
