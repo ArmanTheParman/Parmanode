@@ -165,6 +165,7 @@ uth) menu_use th ;;
 unr) menu_use nr ;;
 ulitd) menu_use litd ;;
 ult) menu_use lt ;;
+unext) menu_use next ;;
 dr) menu_remove th ; menu_add_new wth ;;
 
 
