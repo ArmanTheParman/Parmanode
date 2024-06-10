@@ -42,7 +42,7 @@ function gp { pn ; git pull ; a ; }
 
 if [[ $(uname) == Darwin ]] ; then
 function ng { cd /urs/local/etc/nginx ; a ; }
-function ngc { cd usr/local/etc/nginx/conf.d ; a ; }
+function ngc { cd /usr/local/etc/nginx/conf.d ; a ; }
 else
 function ng { cd /etc/nginx ; a ; }
 function enc { cd /etc/nginx/conf.d/ ; a ; }
