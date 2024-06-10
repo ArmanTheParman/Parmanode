@@ -266,7 +266,7 @@ echo -e "#                                    (litd)             LITD           
 if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
 echo -e "#                                    (next)             NextCloud                      #
 #                                                                                      #"
-elif grep -q "next-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
+elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
 echo -e "#                                    (next)             NextCloud              $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
