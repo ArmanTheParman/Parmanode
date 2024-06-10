@@ -9,7 +9,7 @@ set_terminal ; echo -e "
     Nextcloud is:    $nextcloud_running
 
     ACCESS: $green
-            http://$IP:8020
+            http://$IP:8020    $orange
 
 
 
