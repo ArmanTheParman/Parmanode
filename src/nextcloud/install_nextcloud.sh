@@ -3,6 +3,8 @@ function install_nextcloud {
 # No macs
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
+sned_sats
+
 # Need Docker
 if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu. Aborting." ; return 1 ; fi
 
