@@ -1,6 +1,13 @@
 function menu_nextcloud {
 
 while true ; do 
+unset nextcloud_running
+if docker ps | grep -q nextcloud ; then
+nextcloud_running="${green}RUNNING$orange"
+else
+nextcloud_running="${red}NOT RUNNING$orange"
+fi
+
 set_terminal ; echo -en "
 ########################################################################################$cyan
                                 N E X T C L O U D $orange
