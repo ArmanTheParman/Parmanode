@@ -8,7 +8,7 @@ if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first f
 
 # Need port 80 free
 if sudo netstat -tulnp | grep :80 ; then
-announce "It seems that port 80 is already in use. Type$cyan yolo$orange to ignore this, otherwise aborting."
+announce "It seems that port 80 is already in use. Type$cyan yolo$orange to ignore, otherwise aborting."
 if [[ $enter_cont == yolo ]] ; then
 true
 else
