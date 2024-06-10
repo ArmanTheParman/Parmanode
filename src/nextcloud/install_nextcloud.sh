@@ -1,10 +1,5 @@
 function install_nextcloud {
 
-if [[ $debug != 1 ]]; then
-announce "not released yet. soon."
-return 1 
-fi
-
 # No macs
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
