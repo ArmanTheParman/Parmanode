@@ -1,7 +1,7 @@
 function uninstall_nextcloud {
 
-docker stop nextcloud-aio-mastercontainer
-docker rm nextcloud-aio-mastercontainer
+docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
+docker rm $(docker images | grep nextcloud | awk '{print $3}')
 docker volume rm nextcloud_aio_mastercontainer
 sudo docker network rm nextcloud-aio
 sudo rm /var/lib/docker/volumes/metadata.db
