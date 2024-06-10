@@ -14,7 +14,8 @@ unset bitcoinmenu fulcrummenu dockermenu btcpaymenu lnbitsmenu tormenu lndmenu m
 unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcrpcexplorermenu
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
-unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu
+unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
+unset nextcloudmenu
 
 echo -e "
 ########################################################################################
@@ -261,6 +262,12 @@ echo -e "#                                    (litd)             LIDT           
 #                                                                                      #"
 elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
 echo -e "#                                    (litd)             LITD              $red$blinkon(partial)$blinkoff$orange    #
+#                                                                                      #" ; fi
+if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
+echo -e "#                                    (next)             NextCloud                      #
+#                                                                                      #"
+elif grep -q "next-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
+echo -e "#                                    (next)             NextCloud              $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
@@ -539,6 +546,13 @@ fi
 litd)
 if [[ $litdmenu == 1 ]] ; then
 uninstall_litd
+return
+fi
+;;
+
+next)
+if [[ $nextcloudmenu == 1 ]] ; then
+uninstall_nextcloud
 return
 fi
 ;;

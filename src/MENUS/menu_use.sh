@@ -132,6 +132,9 @@ if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
                        "
                        echo "    (lt)         Lightning Terminal
                             " ; fi
+if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
+                       echo "    (next)       NextCloud
+                            " ; fi
 echo "                            
 #######################################################################################
 "
@@ -378,6 +381,12 @@ litd)
 lt)
    if [[ $litdapp == 1 ]] ; then
    menu_litterminal
+   fi
+   ;;
+next) 
+   if [[ $nextcloudapp == 1 ]] ; then
+   menu_nextcloud
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
 
