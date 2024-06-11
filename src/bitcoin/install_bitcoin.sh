@@ -56,7 +56,7 @@ fi
 
 #setup bitcoin.conf
     make_bitcoin_conf || return 1
-debug "b0"
+debug "b0 , OS $OS, df, $dockerfile"
 #make a script that service file will use
 if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then
     debug "wrong1"
