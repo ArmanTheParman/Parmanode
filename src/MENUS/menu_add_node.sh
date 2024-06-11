@@ -100,9 +100,12 @@ m|M) back2main ;;
        if [[ -n $btcpay_n ]] ; then
        if [[ $OS == "Linux" ]] ; then 
        install_btcpay_linux ; return 0 ; fi
-       if [[ $OS == "Mac" ]] ; then 
+       if [[ $OS == "Mac" && $debug == 1 ]] ; then 
        install_btcpay_mac ; unset dockerfile #important
-       return 0  ; fi
+       return 0  
+       else
+       no_mac ; return 1
+       fi
        fi
        ;;
     
