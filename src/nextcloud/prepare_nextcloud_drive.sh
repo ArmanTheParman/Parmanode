@@ -70,7 +70,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
 
-    You entered: $nextclouddir
+    You entered: $cyan$nextclouddir$orange
 
 
                                 y) to accept
