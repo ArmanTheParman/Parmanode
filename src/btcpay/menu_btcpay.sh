@@ -64,7 +64,6 @@ $menu_tor
 
 ########################################################################################
 " 
-debug 3 "before choose"
 choose "xpmq" ; read choice ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;;
 p|P) 
