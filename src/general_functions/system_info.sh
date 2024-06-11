@@ -28,7 +28,6 @@ if [[ "$(uname)" == "Linux" ]]
 then
     export OS="Linux"
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
-    debug "in uname linux"
     return 0
 fi
 

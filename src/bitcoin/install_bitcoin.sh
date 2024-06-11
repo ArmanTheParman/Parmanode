@@ -71,10 +71,9 @@ fi
 
 if [[ $dockerfile != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
-debug "b1"
 else
 sudo chown -R parman: $HOME/.bitcoin/
-debug "b2"
+debug "b1&2"
 fi
 debug "b3"
 if [[ $dockerfile != "true" ]] ; then
