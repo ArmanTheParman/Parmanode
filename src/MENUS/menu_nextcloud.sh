@@ -30,7 +30,7 @@ set_terminal ; echo -en "
 
     DATA: $bright_blue
            /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/${pink}admin$bright_blue/files
-           (use sudo su -, to access from terminal)
+$orange           (use sudo su -, to access from terminal)
 
 ########################################################################################
 "
