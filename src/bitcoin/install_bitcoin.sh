@@ -46,7 +46,6 @@ make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
-debug "bitcoin - after make_bitcoin_directories"
 
 #compile bitcoin if chosen
 compile_bitcoin || return 1
@@ -59,7 +58,6 @@ download_bitcoin || return 1
 fi
 
 #setup bitcoin.conf
-    debug "make_bitcoin_conf function ..."
     make_bitcoin_conf || return 1
 
 #make a script that service file will use
@@ -74,22 +72,25 @@ fi
 
 if [[ $dockerfile != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
+debug "b1"
 else
 sudo chown -R parman: $HOME/.bitcoin/
+debug "b2"
 fi
-
+debug "b3"
 if [[ $dockerfile != "true" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
+debug "b4"
 if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
 case $skip in
 "false")
 export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset dontstartbitcoin
 ;;
 esac
-
+debug "b5"
 if [[ $dockerfile == "true" ]] ; then echo "pausing xxx" ; enter_continue ; fi
-
+debug "b6"
 please_wait && run_bitcoind
 
 else

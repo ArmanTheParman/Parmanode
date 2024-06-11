@@ -8,7 +8,6 @@ if [[ -z $prune ]] ; then
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 fi
 
-debug "after source pc"
 
 #check if prune_value set. If not, calls function to set it. 
 if [[ -z ${prune_value} ]] ; then prune_choice ; fi
@@ -25,14 +24,12 @@ if [[ $prune_value == "0" || -z $prune_value ]] ; then
 	echo "blockfilterindex=1" | sudo tee -a $file >/dev/null
 	skipnext="true"
 fi
-debug "bbb"
 if [[ $prune_value != "0" && $skipnext != "true" ]] ; then
 	delete_line "$file" "txindex=1"
 	delete_line "$file" "blockfilterindex=1"
 	delete_line "$file" "prune="
 	echo "prune=$prune_value" | sudo tee -a $file >/dev/null  
 fi
-debug "ccc"
 log "bitcoin" "end of apply_prune_bitcoin_conf function"
 return 0
 }
