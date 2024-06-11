@@ -2,6 +2,7 @@ function menu_nextcloud {
 
 while true ; do 
 unset nextcloud_running
+source $pc
 if docker ps | grep -q nextcloud ; then
 nextcloud_running="${green}RUNNING$orange"
 else
@@ -32,7 +33,7 @@ set_terminal ; echo -en "
             https://$IP:8020    $orange
 
     DATA: $bright_blue
-           /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/${pink}admin$bright_blue/files
+           $nextcloud_dir
 $orange           (use sudo su -, to access from terminal)
 
 ########################################################################################
