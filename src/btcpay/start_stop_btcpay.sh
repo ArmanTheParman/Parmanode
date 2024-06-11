@@ -16,7 +16,8 @@ function stop_btcpay {
     set_terminal
     please_wait
     fi
-if [[ $OS == "Linux" ]] ; then docker stop btcpay ; fi
+
+docker stop btcpay 
 }
 
 function restart_btcpay {
