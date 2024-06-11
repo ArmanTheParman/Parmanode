@@ -20,11 +20,12 @@ $cyan
         2)    Stop the containers (use Parmanode menu)
         3)    Prepare your external drive
         4)    Move the above directory to your external drive, with its subdiretory 
-              structure and permissions in tact.
+              structure and permissions in tact (this moves all docker volumes you
+              may be running, but that's probably fine).
         5)    Create a simlink from the now missing path to the new location. The
               command for this is...
 $cyan
-    sudo ln -s$green <full path to target directory>$cyan <full path to where the link lives>
+    sudo ln -s$green <full path to target directory>$cyan /var/lib/docker/volumes
 $orange
         6)    Restart the container
         7)    Test the container started properly, add some data, and see if it
