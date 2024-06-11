@@ -50,7 +50,6 @@ debug "printed colours" "silent"
 # Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
 # I'll fix this one day.
 
-if [[ $dockerfile == "true" ]] ; then install_bitcoin ; exit ; fi
 
 test_directory_placement #you can go to this funciton and read the code, then come back.
 test_standard_install
@@ -92,12 +91,13 @@ install_parmashell silent
 ########################################################################################
 set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
-if [[ $skip_intro != "true" ]] ; then intro ; instructions ; fi
+if [[ $skip_intro != "true" && $dockerfile != "true" ]] ; then intro ; instructions ; fi
 
 
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
+if [[ $dockerfile != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
@@ -113,6 +113,7 @@ if [[ $needs_restart == "true" ]] ; then
 announce "An update to Parmanode was made to the latest version. Please restart Parmanode."
 exit
 fi
+fi #end dockerfile
 
 #Health check
 parmanode1_fix
@@ -127,11 +128,12 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    git_dp &
 fi
 
-apply_patches  
+[[ $dockerfile == "true" ]] || apply_patches  
 
 # get version, and suggest user to update if old.
 
-update_version_info 
+[[ $dockerfile == "true" ]] || update_version_info 
+
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
@@ -178,6 +180,8 @@ fi
 
 ########################################################################################
 ########################################################################################
+
+if [[ $dockerfile == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 [[ $debug == menu ]] || motd
