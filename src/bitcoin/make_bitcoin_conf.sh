@@ -90,4 +90,5 @@ debug "after copy tmp to bc"
 sudo chown -R $USER:$(id -gn) $file
 debug "conf file copied from tmp"
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
+debug "after apply prune bitcoin conf"
 }
