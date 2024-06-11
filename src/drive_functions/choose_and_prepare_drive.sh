@@ -38,7 +38,7 @@ echo "##########################################################################
 choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
-fi
+
 else
 choice=i #btcpay dockerfile chooses internal drive
 fi
