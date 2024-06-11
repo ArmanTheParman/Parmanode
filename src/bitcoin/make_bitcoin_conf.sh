@@ -13,7 +13,8 @@ txindex=1
 daemon=1
 blockfilterindex=1
 rpcport=8332
-
+rpcuser=parman
+rpcpassword=parman
 zmqpubrawblock=tcp://*:28332
 zmqpubrawtx=tcp://*:28333
 

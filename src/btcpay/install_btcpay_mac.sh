@@ -97,7 +97,4 @@ docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanod
 docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && dockerfile="true" ./run_parmanode.sh d"
 
-#docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
-debug "after install bitcoin"
-
 }
