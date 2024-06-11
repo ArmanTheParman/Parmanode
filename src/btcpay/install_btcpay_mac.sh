@@ -31,6 +31,8 @@ fi
     return 1
     fi
 
+choose_btcpay_version
+
 while true ; do user_pass_check_exists 
     return_status=$?
     if [ $return_status == 1 ] ; then return 1 ; fi

@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 ARG parmanID=1000
+ARG btcpay_version="v1.12.5"
 
 RUN apt-get update -y
 RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
