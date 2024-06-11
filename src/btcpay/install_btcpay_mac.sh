@@ -61,19 +61,17 @@ run_btcpay_docker
     if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering start_postgress..."
-startup_postgres "install" \
-&& log "btcpay" "startup postgress function completed" \
-|| log "btcpay" "startup postgress function failed" && return 1
+{ startup_postgres "install" \
+&& log "btcpay" "startup postgress function completed" ; }\
+|| { log "btcpay" "startup postgress function failed" && return 1 ; }
 
 sleep 4
 log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log
-    if [ $? == 1 ] ; then return 1 ; fi
+run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log || return 1
 
 sleep 4
 log "btcpay" "entering run_btcpay..."
-run_btcpay
-    if [ $? == 1 ] ; then return 1 ; fi
+run_btcpay || return 1
 
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
