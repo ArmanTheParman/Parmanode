@@ -1,13 +1,14 @@
 function menu_overview {
 while true ; do
 clear
-unset m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11
-unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11
-unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11
-unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11
-unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10 menub11
+unset m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12
+unset s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12
+unset i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11 i12
+unset r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12
+unset menub1 menub2 menub3 menub4 menub5 menub6 menub7 menub8 menub9 menub10 menub11 munub12
 unset bitcoininstalled lndinstalled fulcruminstalled electrsinstalled breinstalled btcpayinstalled
 unset rtlinstalled electrsdkrinstalled mempoolinstalled publicpoolinstalled electrumxinstalled
+unset thunderhubinstalled
 
 set_terminal
 please_wait
@@ -27,6 +28,7 @@ m8="${white}m8${orange}"
 m9="${white}m9${orange}"
 m10="${white}m10${orange}"
 m11="${white}m11${orange}"
+m12="${white}m12${orange}"
 
 s1="${white}s1${orange}"
 s2="${white}s2${orange}"
@@ -38,7 +40,8 @@ s7="${white}s7${orange}"
 s8="${white}s8${orange}"
 s9="${white}s9${orange}"
 s10="${white}s10${orange}"
-s11="${white}s110${orange}"
+s11="${white}s11${orange}"
+s12="${white}s12${orange}"
 
 if grep -q bitcoin-end < $ic ; then
     i1="    ${green}Y${orange}"
@@ -223,6 +226,23 @@ else
     unset m11 s11 r11
 fi
 
+if grep -q thunderhub-end < $ic ; then
+    i12="${green}Y${orange}"
+    thunderhubinstalled="true"
+    if [[ $thunderhubrunning == "true" ]] ; then
+    r12="${green}Y${orange}"
+    menub12="true"
+    else
+    r12="${red}N${orange}"
+    menub12="false"
+    fi
+else
+    i12="${red}     N${orange}"
+    r12="${red}N${orange}"
+    menub12="false"
+    unset m12 s12 r12
+fi
+
 x="${orange}|$bright_blue"
 
 set_terminal_wide #(110)
@@ -253,6 +273,8 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
       Public Pool               |                $m10               $r10                $s10
                                 |
       Electrum X                |                $m11               $r11                $s11
+                                |
+      Thunderhub                |                $m12               $r12                $s12
                                 |
       ${red}r to refresh${orange}              |
                                 |
@@ -338,6 +360,12 @@ fi
 m11) 
 if [[ $electrumxinstalled == "true" ]] ; then
 menu_electrumx overview 
+fi
+;;
+
+m12) 
+if [[ $thunderhubinstalled == "true" ]] ; then
+menu_thunderhub overview 
 fi
 ;;
 
@@ -451,6 +479,14 @@ clear ; start_electrumx
 fi
 ;;
 
+s11)
+if [[ $menub12 == "true" ]] ; then
+clear ; please_wait
+stop_thunderhub
+else
+clear ; start_thunderhub
+fi
+;;
 esac
 done
 

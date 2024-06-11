@@ -15,7 +15,7 @@ isrtlrunning
 ismempoolrunning
 ispublicpoolrunning
 iselectrumxrunning
-
+isthunderhubrunning
 }
 
 function ispublicpoolrunning {
@@ -209,4 +209,11 @@ fi
 }
 
 }
+function isthunderhubrunning {
+if docker ps 2>/dev/null | grep -q thunderhub ; then
+overview_conf_add "thunderhubrunning=true" "thunderhubrunning="
+else
+overview_conf_add "thunderhubrunning=false" "thunderhubrunning="
+fi
 
+}
