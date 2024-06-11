@@ -3,6 +3,8 @@
 # Much of the text is from the sample service file from Bitcoin Core developers.
 
 function make_bitcoind_service_file {
+debug "in mbsf"
+if [[ $dockerfile == "true" ]] ; then return 0 ; fi
 
 echo "[Unit]
 Description=Bitcoin daemon
