@@ -82,6 +82,7 @@ fi
 function islndrunning {
 unset lndrunning
 if ps -x | grep lnd | grep bin >/dev/null 2>&1 || \
+   ps -x | grep litd | grep bin >/dev/null 2>&1 || \
    docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
 export lndrunning="true"
 overview_conf_add "lndrunning=true" "lndrunning="
@@ -90,13 +91,25 @@ export lndrunning="false"
 overview_conf_add "lndrunning=false" "lndrunning="
 fi
 
-if lncli walletbalance >/dev/null 2>&1 ; then 
-export lndwallet=locked
-overview_conf_add "lndwallet=locked" "lndwallet="
+if ! grep -q "lnddocker" < $ic ; then 
+
+    if lncli walletbalance >/dev/null 2>&1 ; then 
+    export lndwallet=unlocked
+    overview_conf_add "lndwallet=unlocked" "lndwallet="
+    else
+    export lndwallet=locked
+    overview_conf_add "lndwallet=locked" "lndwallet="
+    fi
 else
-export lndwallet=unlocked
-overview_conf_add "lndwallet=unlocked" "lndwallet="
+    if docker exec lnd lncli walletbalance >/dev/null 2>&1 ; then 
+    export lndwallet=unlocked
+    overview_conf_add "lndwallet=unlocked" "lndwallet="
+    else
+    export lndwallet=locked
+    overview_conf_add "lndwallet=locked" "lndwallet="
+    fi
 fi
+
 }
 
 function isfulcrumrunning {

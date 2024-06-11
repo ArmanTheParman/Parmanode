@@ -234,13 +234,13 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
                                 |
       Bitcoin                   |                $m1                $r1                $s1
                                 |
-      LND                       |                $m2                $r2                $s2
+      LND/LITD                  |                $m2                $r2                $s2
                                 |
       Fulcrum                   |                $m3                $r3                $s3
                                 |
       Electrs (non Docker)      |                $m4                $r4                $s4
                                 |
-      BRE                       |                $m5                $r5                $s5
+      BTC RPC Explorer (BRE)    |                $m5                $r5                $s5
                                 |
       BTCPay                    |                $m6                $r6                $s6
                                 |
