@@ -7,7 +7,6 @@ if [[ $OS == "Linux" ]] ; then
     fi
 fi
 
-debug "after docker start btcpay command"
 if [[ $OS == "Linux" ]] ; then
 startup_postgres && run_nbxplorer && run_btcpay
 elif [[ $OS == "Mac" ]] ; then

@@ -1,6 +1,8 @@
 function nbxplorer_config {
-    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcuser=") >/dev/null 2>&1
-    source <(cat $HOME/.bitcoin/bitcoin.conf | grep "rpcpassword=") >/dev/null 2>&1
+
+source $bc >/dev/null
+
+if [[ $dockerfile == "true" ]] ; then rpcuser=parman ; rpcpassword=parman ; fi
 
 echo "
 btc.rpc.user=${rpcuser}
