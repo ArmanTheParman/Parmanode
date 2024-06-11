@@ -245,7 +245,7 @@ fi
 
 x="${orange}|$bright_blue"
 
-set_terminal_wide #(110)
+set_terminal_wide 42 #(110)
 echo -en "
 ########################################################################################################
 $bright_blue           PROGRAM              $x            GO TO MENU         RUNNING          START/STOP        ${orange}

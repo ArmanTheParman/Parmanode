@@ -15,9 +15,9 @@ return 0
 }
 
 function set_terminal_wide {
-
+if [[ -n $1 ]] ; then val="$1" ; else val=38 ; fi
 set_terminal
-printf '\033[8;38;110t'
+printf '\033[8;%s;110t' $val
 
 return 0
 }
