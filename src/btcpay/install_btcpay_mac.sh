@@ -81,14 +81,20 @@ set_terminal ; echo -e "
 
     Parmanode will now install Bitcoin Core inside the BTC Pay docker container.
 
-    It will sync with the existing data directory on your drive.$red It is important
-    not to attempt to run a second instance of Bitcoin on your machine, otherwise
-    the existing data is likely to get corrupted.$orange
+    It will sync with the existing data directory on your drive.$red 
+    
+    It is important not to attempt to run a second instance of Bitcoin on your 
+    machine, otherwise the existing data is likely to get corrupted.$orange
 
 ########################################################################################
 "
 enter_continue
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && export dockerfile="true" && ./run_parmanode.sh"
+announce "Please note you may be promped for a password to the 'parman' Docker user." \
+"The password is$green parmanode$orange"
+
+please_wait
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_progrms/parmanode && git pull"
+docker exec -itu parman bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 debug "after install bitcoin"
 
 }

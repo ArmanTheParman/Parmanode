@@ -41,6 +41,8 @@ choose "xpmq"
 read choice
 else
 choice=no
+echo "pruning xxx"
+enter_continue
 fi
 
 set_terminal

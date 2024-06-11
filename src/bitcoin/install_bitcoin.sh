@@ -88,6 +88,8 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
+if [[ $dockerfile == "true" ]] ; then echo "pausing xxx" ; enter_continue ; fi
+
 please_wait && run_bitcoind
 
 else

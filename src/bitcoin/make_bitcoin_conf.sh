@@ -70,6 +70,8 @@ if [[ $dockerfile != "true" ]] ; then
 choose "xpmq" ; read choice
 else
 choice=o
+echo "choice 0 for make bitcoin conf xxx"
+enter_continue
 fi
 
 case $choice in 

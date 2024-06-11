@@ -6,7 +6,7 @@ ARG parmanID=1000
 ARG btcpay_version="v1.12.5"
 
 RUN apt-get update -y
-RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect
+RUN apt-get install -y wget gnupg sudo procps vim nano systemd curl git expect iproute2
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u $parmanID parman 

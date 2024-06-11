@@ -47,6 +47,8 @@ unset bitcoin_compile version ordinals_patch knotsbitcoin byo_bitcoin
 read choice
 else
 choice="27" #btcpaydockerfile choice
+echo "bitcoin choice 27 xxx"
+enter_continue
 fi
 
 case $choice in

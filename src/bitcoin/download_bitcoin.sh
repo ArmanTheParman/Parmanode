@@ -28,6 +28,9 @@ $orange
 ########################################################################################
 "
 enter_continue
+else
+echo "verify details xxx"
+enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
