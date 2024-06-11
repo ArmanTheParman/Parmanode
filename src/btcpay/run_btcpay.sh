@@ -1,7 +1,7 @@
 function run_btcpay {
 count=0
 while [ $count -le 1 ] ; do
-
+debug "count is $count"
 if docker ps | grep btcpay ; then   
 { docker exec -d -u parman btcpay /bin/bash -c \
 "/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project \"\\
@@ -11,6 +11,7 @@ if docker ps | grep btcpay ; then
 #docker exec -d -u parman btcpay /bin/bash -c "$HOME/parmanode/btcpayserver/run.sh" && \
 
 else
+debug "startign docker btcpay"
 docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
 count=$((count + 1))
 fi
