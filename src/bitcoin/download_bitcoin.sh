@@ -4,6 +4,7 @@ if [[ $version == self ]] ; then return 0 ; fi
 debug "in download bitcoin, version = $version"
 
 cd $HOME/parmanode/bitcoin
+if [[ $dockerfile != "true" ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
@@ -27,6 +28,7 @@ $orange
 ########################################################################################
 "
 enter_continue
+fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 

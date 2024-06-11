@@ -1,8 +1,9 @@
 function install_bitcoin {
+#dockerfile=true if installing from btcpay Dockerfile
 export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
-if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 
+if [[ -e /.dockerenv && $dockerfile != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, 
     but it's not going to run with default Parmanode settings - you'll have
     to tweak."
 fi
@@ -62,17 +63,22 @@ fi
     make_bitcoin_conf || return 1
 
 #make a script that service file will use
-if [[ $OS == "Linux" ]] ; then
+if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then
     make_mount_check_script 
 fi
 
 #make service file - this allows automatic start up after a reboot
-if [[ $OS == "Linux" ]] ; then 
+if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then 
     make_bitcoind_service_file
 fi
 
+if [[ $dockerfile != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
+else
+sudo chown -R parman: $HOME/.bitcoin/
+fi
 
+if [[ $dockerfile != "true" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
 if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
@@ -83,6 +89,11 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 esac
 
 please_wait && run_bitcoind
+
+else
+success "Bitcoin installed in Docker Container with BTC Pay" 
+return 0
+fi #end no dockerfile
 
 set_terminal
 

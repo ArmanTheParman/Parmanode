@@ -48,6 +48,7 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
         while true ; do
         if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
+if [[ $dockerfile != "true" ]] ; then
 	    set_terminal ; echo -e "
 ########################################################################################
 
@@ -67,6 +68,9 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 ########################################################################################
 "
 choose "xpmq" ; read choice
+else
+choice=o
+fi
 
 case $choice in 
 m|M) back2main ;;

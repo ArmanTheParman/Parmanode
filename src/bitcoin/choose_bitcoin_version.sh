@@ -8,6 +8,8 @@ return 0
 fi
 
 while true ; do
+
+if [[ $dockerfile != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -43,6 +45,9 @@ $orange
 choose "xpmq" 
 unset bitcoin_compile version ordinals_patch knotsbitcoin byo_bitcoin
 read choice
+else
+choice="27" #btcpaydockerfile choice
+fi
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;

@@ -11,9 +11,9 @@ local text="$bright_blue                (3) - IMPORT an external drive
 local text_nostr="$yellow                (4) - BYO eg an additional external drive$orange
 " 
 
-while true
-do
+while true ; do
 unset raid
+if [[ $dockerfile != "true" ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
@@ -38,6 +38,10 @@ echo "##########################################################################
 choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
+fi
+else
+choice=i #btcpay dockerfile chooses internal drive
+fi
 
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
 case $choice in

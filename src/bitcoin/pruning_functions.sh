@@ -4,9 +4,9 @@
 
 function prune_choice {
 if [[ $importdrive == "true" || $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
-while true
-do
+while true ; do
 set_terminal
+if [[ $dockerfile != "true" ]] ; then
 echo -e "
 ########################################################################################
       $cyan                               
@@ -39,6 +39,10 @@ $orange
 choose "xpmq"
 
 read choice
+else
+choice=no
+fi
+
 set_terminal
 
         case $choice in
