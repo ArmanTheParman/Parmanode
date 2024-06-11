@@ -1,6 +1,6 @@
 function run_btcpay {
 count=0
-while [ $count -le 1 ] ; do
+while [[ $count -le 1 ]] ; do
 
 if docker ps | grep btcpay ; then   
 docker exec -d -u parman btcpay /bin/bash -c \
