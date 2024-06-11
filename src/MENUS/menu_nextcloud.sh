@@ -62,7 +62,7 @@ docker stop nextcloud
 list)
 set_terminal
 sudo ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
-enter_cont
+enter_continue
 ;;
 
 refresh)
