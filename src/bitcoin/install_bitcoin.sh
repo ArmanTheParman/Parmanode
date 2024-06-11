@@ -3,7 +3,7 @@ export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
 if [[ -e /.dockerenv ]] ; then announce "Bitcoin can be installed inside a Docker container, 
-    but it's not going to run with default Parmanode settings - youll have
+    but it's not going to run with default Parmanode settings - you'll have
     to tweak."
 fi
 
