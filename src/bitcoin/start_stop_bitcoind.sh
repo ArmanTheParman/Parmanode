@@ -61,3 +61,11 @@ if [[ $OS == "Mac" ]] ; then
 stop_bitcoinqt
 fi
 }
+
+function start_bitcoin_docker {
+docker exec -itu parman btcpay bitcoind
+}
+
+function stop_bitcoin_docker {
+docker exec -itu parman btcpahy bitcoin-cli stop
+}

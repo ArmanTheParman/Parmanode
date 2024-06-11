@@ -1,8 +1,11 @@
 function install_btcpay_mac {
+export dockerfile="true"
 
 if [[ $debug != 1 ]] ; then
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 fi
+
+btcpay_mac_explanation
 
 set_terminal
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
@@ -75,8 +78,34 @@ run_btcpay || return 1
 
 debug "after run_btcpay"
 
+
+stop_btcpay
+install_bitcoin_btcpay_mac
+
+start_btcpay
+
+debug "started btcpay"
+
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
 log "btcpay" "Btcpay install success"
 return 0
+}
+
+
+function install_bitcoin_btcpay_mac {
+
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode will now install Bitcoin Core inside the BTC Pay docker container.
+
+    It will sync with the existing data directory on your drive. It is important
+    not to attempt to run a second instance of Bitcoin on your machine, otherwise
+    the existing data is likely to get corrupted.
+
+########################################################################################
+"
+enter_continue
+install_bitcoin
 }

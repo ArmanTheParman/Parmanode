@@ -9,9 +9,11 @@ fi
 
 docker start btcpay
 debug "after docker start btcpay command"
-startup_postgres && \
-run_nbxplorer && \
-run_btcpay
+if [[ $OS == "Linux" ]] ; then
+startup_postgres && run_nbxplorer && run_btcpay
+else
+start_bitcoin_docker && startup_postgres && run_nbxplorer && run_btcpay
+fi
 
 }
 
