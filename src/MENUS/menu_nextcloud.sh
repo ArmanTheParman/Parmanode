@@ -23,8 +23,6 @@ set_terminal ; echo -en "
 
                       stop)        Stop NextCloud Docker container
 
-                      list)        List files/directories in data directory
-
                       refresh)     Refresh info after any manual file changes
                                    - Restarts container as well
 
@@ -57,12 +55,6 @@ docker start nextcloud
 ;;
 stop)
 docker stop nextcloud
-;;
-
-list)
-set_terminal
-sudo ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
-enter_continue
 ;;
 
 refresh)
