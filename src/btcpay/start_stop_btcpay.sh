@@ -12,7 +12,7 @@ debug "after docker start btcpay command"
 startup_postgres && \
 run_nbxplorer && \
 run_btcpay
-fi
+
 }
 
 function stop_btcpay {
