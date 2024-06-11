@@ -28,9 +28,9 @@ $cyan
     sudo ln -s$green <full path to target directory>$cyan /var/lib/docker/volumes
 $orange
         6)    Restart the container
-        7)    Test the container started properly, add some data, and see if it
-              has successfully been stored on the external drive before putting
-              crucial files in there.        
+        7)    Test the container started properly, add some data using NextCloud GUI, 
+              and see if it has successfully been stored on the external drive before 
+              putting crucial files in there.        
 
 ########################################################################################
 "
