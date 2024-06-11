@@ -16,9 +16,6 @@ docker run -d -u parman \
            -p 49393:49392 \
            -p 23001:23001 \
            -p 24445:24445 \
-           -p 8332:8332 \
-           -p 8080:8080 \
-           -p 8090:8090 \
            btcpay >/dev/null
 
 log "docker" "after docker run"
