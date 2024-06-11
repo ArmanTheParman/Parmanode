@@ -1,15 +1,6 @@
 function temp_patch {
 
 #remove in October
-if grep -q "nextcloud-end" < $ic ; then
-if ! grep -q "drive_nextcloud" < $pc ; then
-parmanode_conf_add "drive_nextcloud=default"
-parmanode_conf_add "nextcloud_dir=/var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/"
-fi
-fi
-
-
-#remove in October
 installed_conf_remove "btcpTOR"
 
 #remove in 2025
