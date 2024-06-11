@@ -41,18 +41,21 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz 
+         fi
 
 	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz 
             else
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz ; fi
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz 
             fi
+         fi
 
  	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz ; fi
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  
+         fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
          curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg
@@ -61,6 +64,8 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
         if [[ $chip == "x86_64" && $OS == Mac ]] ; then
         curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg
         fi
+
+debug "check downloaded"
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
