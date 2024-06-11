@@ -69,6 +69,7 @@ sudo docker run \
 --name nextcloud-aio-mastercontainer \
 --restart always \
 --publish 80:80 \
+--publish 443:443 \
 --publish 8020:8080 \
 --publish 8443:8443 \
 --volume $nextcloud_volume:/mnt/docker-aio-config \
