@@ -24,6 +24,9 @@ set_terminal ; echo -en "
 
                       list)        List files/directories in data directory
 
+                      refresh)     Refresh info after any manual file changes
+                                   - Restarts container as well
+
 
     ACCESS: $green
             https://$IP:8020    $orange
@@ -60,6 +63,14 @@ list)
 set_terminal
 sudo ls /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/admin/files/
 enter_cont
+;;
+
+refresh)
+please_wait
+docker stop nextcloud-aio-nextcloud
+docker start nextcloud-aio-nextcloud
+docker exec -itu www-data nextcloud-aio-nextcloud bash -c "cd /var/www/html ; php occ files:scan --all"
+enter_continue
 ;;
 
 *)
