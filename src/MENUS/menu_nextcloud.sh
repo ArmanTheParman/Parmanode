@@ -34,8 +34,7 @@ set_terminal ; echo -en "
 
     DATA: $bright_blue
            $nextcloud_dir
-$orange           (use sudo su -, to access from terminal)
-
+$orange   
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
