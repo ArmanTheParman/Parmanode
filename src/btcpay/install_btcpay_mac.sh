@@ -1,5 +1,8 @@
 function install_btcpay_mac {
+
+if [[ $debug != ]] ; then
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+fi
 
 set_terminal
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
@@ -23,22 +26,16 @@ if [[ $OS == "Mac" ]] ; then
     if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 fi
 
-
-    if ! command -v bitcoin-cli >/dev/null 2>&1 ; then
-    set_terminal
-    echo "Bitcoin doesn't seem to be installed. Please do that first before installing BTCPay Server."
-    enter_continue
-    return 1
-    fi
-
 choose_btcpay_version || return 1
 
+if [[ $debug != 1 ]] ; then
 while true ; do user_pass_check_exists 
     return_status=$?
     if [ $return_status == 1 ] ; then return 1 ; fi
     if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
     if [ $return_status == 0 ] ; then break ; fi 
     done
+fi
     
 log "btcpay" "entering make_btcpay_directories..."
 make_btcpay_directories 
