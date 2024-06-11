@@ -89,7 +89,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
-announce "Please note you may be promped for a password to the 'parman' Docker user." \
+announce "Please note you may be prompted for a password to the 'parman' Docker user." \
 "The password is$green parmanode$orange"
 
 please_wait
