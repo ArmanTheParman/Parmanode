@@ -180,7 +180,10 @@ fi
 
 ########################################################################################
 ########################################################################################
-debug "$OS $chip"
+debug "$OS $chip - check os and chip"
+debug "2nd
+$(uname -m)
+"
 if [[ $dockerfile == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
