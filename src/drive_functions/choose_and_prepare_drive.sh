@@ -41,7 +41,6 @@ read choice #user's choice stored in variable, choice
 
 else
 choice=i #btcpay dockerfile chooses internal drive
-enter_continue
 fi
 
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
