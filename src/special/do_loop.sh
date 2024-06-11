@@ -128,7 +128,7 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    git_dp &
 fi
 
-[[ $dockerfile == "true" ]] || apply_patches  
+apply_patches  
 
 # get version, and suggest user to update if old.
 
