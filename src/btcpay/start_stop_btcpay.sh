@@ -11,7 +11,7 @@ docker start btcpay
 debug "after docker start btcpay command"
 if [[ $OS == "Linux" ]] ; then
 startup_postgres && run_nbxplorer && run_btcpay
-elif [[ $OS == "mac" ]] ; then
+elif [[ $OS == "Mac" ]] ; then
 start_bitcoin_docker && startup_postgres && run_nbxplorer && run_btcpay
 fi
 
