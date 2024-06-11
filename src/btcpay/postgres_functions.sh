@@ -29,7 +29,7 @@ fi
 
 
 function postgres_intermission {
-rm /tmp/postgres*
+rm /tmp/postgres* 2>/dev/null
 set_terminal
 log "btcpay" "in postgres_intermission"
 
