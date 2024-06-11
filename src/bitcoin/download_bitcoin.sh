@@ -27,8 +27,6 @@ $orange
 ########################################################################################
 "
 enter_continue
-else
-enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."

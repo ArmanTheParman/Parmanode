@@ -50,20 +50,19 @@ make_bitcoin_directories || return 1
 compile_bitcoin || return 1
 
 # Download bitcoin software & verify
+debug "b4 download bitcoin"
 if [[ $bitcoin_compile == "false" ]] ; then
 download_bitcoin || return 1
 fi
 
 #setup bitcoin.conf
-    make_bitcoin_conf || return 1
-debug "b0 , OS $OS, df, $dockerfile"
+make_bitcoin_conf || return 1
 #make a script that service file will use
 if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then
     debug "wrong1"
     make_mount_check_script 
     debug "wrong2"
 fi
-debug "b0.5"
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then 
     make_bitcoind_service_file
@@ -71,15 +70,11 @@ fi
 
 if [[ $dockerfile != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
-else
-sudo chown -R parman: $HOME/.bitcoin/
-debug "b1&2"
 fi
-debug "b3"
+
 if [[ $dockerfile != "true" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
-debug "b4"
 if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
 case $skip in
 "false")
