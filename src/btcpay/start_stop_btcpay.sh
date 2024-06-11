@@ -1,10 +1,14 @@
 function start_btcpay {
+    
 if [[ $OS == "Linux" ]] ; then
     if [[ $1 != pw ]] ; then #use pw with restart_btcpay to no repeat "please wait"
     set_terminal
     please_wait
     fi
+fi
+
 docker start btcpay
+debug "after docker start btcpay command"
 startup_postgres && \
 run_nbxplorer && \
 run_btcpay

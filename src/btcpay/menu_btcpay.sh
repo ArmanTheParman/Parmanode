@@ -85,6 +85,7 @@ connect_btcpay_to_lnd
 ;;
 
 start|START|Start)
+debug "entering start_btcpay"
 start_btcpay
 ;;
 
