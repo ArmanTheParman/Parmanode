@@ -3,7 +3,7 @@ function make_bitcoin_directories {
 
 # Remove bitcoin directories if they exist, they will be created again new. 
 # If nothing exists there will be no user input required.
-    if [[ $newmigrate != "true" ]] ; then
+    if [[ $newmigrate != "true" && $dockerfile != "true" ]] ; then
         if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install || return 1; fi #function adjusted for parmanodl usage
         if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install || return 1 ; fi 
     fi
@@ -24,12 +24,14 @@ function make_bitcoin_directories {
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
     fi
 
+debug "after extdrive and not importdrive"
 
     if [[ $drive == "internal" ]] ; then 
             mkdir -p $HOME/.bitcoin >$dp/.temp 2>&1 && \
             log "bitcoin" ".bitcoin dir made on int drive" 
     fi
 
+debug "after mkdir .bitcoin"
 
 #Symlinks 
     log "bitcoin" "make_bitcoin_symlinks... " && \
