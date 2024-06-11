@@ -14,6 +14,7 @@ btcpay_install_preamble || return 1
 
 choose_btcpay_version || return 1
 
+if [[ $debug != 1 ]] ; then
 set_terminal
 while true ; do user_pass_check_exists 
     return_status=$?
@@ -21,6 +22,7 @@ while true ; do user_pass_check_exists
     if [ $return_status == 2 ] ; then set_rpc_authentication ; break ; fi
     if [ $return_status == 0 ] ; then break ; fi 
     done
+fi
 
 install_tor
 
