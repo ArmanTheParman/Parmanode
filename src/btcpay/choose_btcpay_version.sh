@@ -31,6 +31,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 s)
 export btcpay_version_choice="v1.12.5"
+break
 ;;
 yolo)
 export btcpay_version_choice=master
