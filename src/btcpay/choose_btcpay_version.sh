@@ -29,10 +29,10 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 s)
-break
+export btcpay_version_choice="v1.12.5"
 ;;
 yolo)
-btcpay_version_choice=master
+export btcpay_version_choice=master
 break
 ;;
 *)

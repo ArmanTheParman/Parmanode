@@ -39,7 +39,7 @@ RUN cd ~/parmanode/NBXplorer && git checkout v2.5.0 && chown -R parman ./* ; ./b
 RUN mkdir -p ~/.nbxplorer/Main
 
 #install BTCpayserver
-RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout v1.12.5 && ./build.sh
+RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout $btcpay_version && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
 CMD tail -f /dev/null
