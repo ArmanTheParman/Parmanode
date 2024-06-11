@@ -1,5 +1,4 @@
 function make_bitcoin_conf {
-debug "in make bitcoin conf. bdi= $bitcoin_drive"
 
 if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune" "[0-9].*"
 
@@ -35,8 +34,6 @@ IP1and2="$IP1.$IP2."
 echo rpcallowip="${IP1and2}0.0/16" | tee -a /tmp/bitcoin.conf >/dev/null 2>&1
 fi
 
-debug "check bitcoin conf in /tmp made"
-
 file="$HOME/.bitcoin/bitcoin.conf"
 loop=do
 if [[ $1 == umbrel ]] ; then export prune=0 ; loop="break" ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
@@ -70,8 +67,6 @@ if [[ $dockerfile != "true" ]] ; then
 choose "xpmq" ; read choice
 else
 choice=o
-echo "choice 0 for make bitcoin conf xxx"
-enter_continue
 fi
 
 case $choice in 
@@ -88,5 +83,4 @@ fi
 sudo cp /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 sudo chown -R $USER:$(id -gn) $file
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
-debug "after apply prune bitcoin conf"
 }

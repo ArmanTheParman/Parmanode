@@ -56,12 +56,14 @@ fi
 
 #setup bitcoin.conf
     make_bitcoin_conf || return 1
-
+debug "b0"
 #make a script that service file will use
 if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then
+    debug "wrong1"
     make_mount_check_script 
+    debug "wrong2"
 fi
-
+debug "b0.5"
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then 
     make_bitcoind_service_file
