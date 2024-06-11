@@ -50,7 +50,7 @@ $cyan
     Or, maybe like this if it's on the internal drive, your choice:
 $cyan
        $HOME/NextCloud_data/
-    
+$orange    
     Please make sure the directory you choose already exists or installation will
     fail. You can open a new terminal window to sort this out now, and come back
     to this installation wizard.
