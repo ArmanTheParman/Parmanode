@@ -24,14 +24,12 @@ function make_bitcoin_directories {
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
     fi
 
-debug "after extdrive and not importdrive"
 
     if [[ $drive == "internal" ]] ; then 
             mkdir -p $HOME/.bitcoin >$dp/.temp 2>&1 && \
             log "bitcoin" ".bitcoin dir made on int drive" 
     fi
 
-debug "after mkdir .bitcoin"
 
 #Symlinks 
     log "bitcoin" "make_bitcoin_symlinks... " && \

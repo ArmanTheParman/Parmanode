@@ -38,7 +38,6 @@ prune_choice || return 1
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
-debug "bitcoin - after prune_choice"
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
 
@@ -49,11 +48,9 @@ make_bitcoin_directories || return 1
 
 #compile bitcoin if chosen
 compile_bitcoin || return 1
-debug "compile function done"
 
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
-debug "bitcoin - before download bitcoin"
 download_bitcoin || return 1
 fi
 
@@ -89,8 +86,6 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 debug "b5"
-if [[ $dockerfile == "true" ]] ; then echo "pausing xxx" ; enter_continue ; fi
-debug "b6"
 please_wait && run_bitcoind
 
 else

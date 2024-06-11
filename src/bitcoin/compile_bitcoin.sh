@@ -3,7 +3,7 @@ if [[ $version == self ]] ; then return 0 ; fi
 
 #menu choices carried in by variables.
 set_terminal #clear
-if [[ $bitcoin_compile == "false" ]] ; then debug "exiting compile function" ; return 0 ; fi
+if [[ $bitcoin_compile == "false" ]] ; then return 0 ; fi
 
 #to reduce errors on scrren, making temporary git variables...
 export GIT_AUTHOR_NAME="Temporary Parmanode"

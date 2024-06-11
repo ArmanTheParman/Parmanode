@@ -1,7 +1,6 @@
 function download_bitcoin {
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
-debug "in download bitcoin, version = $version"
 
 cd $HOME/parmanode/bitcoin
 if [[ $dockerfile != "true" ]] ; then
@@ -29,12 +28,10 @@ $orange
 "
 enter_continue
 else
-echo "verify details xxx"
 enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-debug "$chip , chip; OS is $OS" 
 
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
@@ -64,8 +61,6 @@ debug "$chip , chip; OS is $OS"
         if [[ $chip == "x86_64" && $OS == Mac ]] ; then
         curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg
         fi
-
-debug "check downloaded"
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1

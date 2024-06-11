@@ -41,7 +41,6 @@ read choice #user's choice stored in variable, choice
 
 else
 choice=i #btcpay dockerfile chooses internal drive
-echo "choose and prepare drive xxx"
 enter_continue
 fi
 
