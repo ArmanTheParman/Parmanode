@@ -73,6 +73,8 @@ sleep 4
 log "btcpay" "entering run_btcpay..."
 run_btcpay || return 1
 
+debug "after run_btcpay"
+
 installed_config_add "btcpay-end"
 success "BTCPay Server" "being installed."
 log "btcpay" "Btcpay install success"
