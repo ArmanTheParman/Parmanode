@@ -11,8 +11,7 @@ $orange
     Please be aware that if this is the first time installing BTCPay on this computer,
     it make take a while as it compiles from source within a Docker Container. If you
     have installed it before, this installation will used cached files so it is 
-    likely to be a lot faster. To remove the cache files from the computer, the 
-    easiest way is to uninstall Docker.
+    likely to be a lot faster. 
 
     Proceed?
 

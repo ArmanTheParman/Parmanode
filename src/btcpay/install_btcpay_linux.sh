@@ -8,6 +8,9 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 sned_sats
 
 btcpay_install_preamble || return 1
+
+choose_btcpay_version || return 1
+
 set_terminal
 while true ; do user_pass_check_exists 
     return_status=$?

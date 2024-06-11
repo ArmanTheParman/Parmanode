@@ -31,7 +31,7 @@ fi
     return 1
     fi
 
-choose_btcpay_version
+choose_btcpay_version || return 1
 
 while true ; do user_pass_check_exists 
     return_status=$?
