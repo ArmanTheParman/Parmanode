@@ -34,7 +34,7 @@ enter_continue
 fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
-if [[ $dockerfile == "true" ]] ; then echo "$chip , chip; OS is $OS" ; fi
+debug "$chip , chip; OS is $OS" 
 
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
