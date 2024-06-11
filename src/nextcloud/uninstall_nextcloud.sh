@@ -11,6 +11,7 @@ sudo docker network rm nextcloud-aio 2>/dev/null
 #sudo rm /var/lib/docker/volumes/metadata.db >/dev/null 2>&1
 #docker system prune -a --volumes
 installed_config_remove "nextcloud"
+parmanode_conf_remove "nextcloud"
 debug "pause"
 success "NextCloud has been uninstalled"
 }

@@ -48,10 +48,19 @@ return 1
 fi
 fi
 
+prepare_nextcloud_drive || return 1
+
 # --name nextcloud-aio-mastercontainer This is the name of the container. 
 # This line is not allowed to be changed, since mastercontainer updates would fail.
 # --restart always This is the "restart policy". 
 # Means that the container should always get started with the Docker daemon. 
+
+if [[ $drive_nextcloud == default ]] ; then
+debug "default drive"
+nextcloud_volume=nextcloud_aio_mastercontainer
+else
+nextcloud_volume=$nextcloud_dir
+fi
 
 sudo docker run \
 -d \
@@ -62,7 +71,7 @@ sudo docker run \
 --publish 80:80 \
 --publish 8020:8080 \
 --publish 8443:8443 \
---volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
+--volume $nextcloud_volume:/mnt/docker-aio-config \
 --volume /var/run/docker.sock:/var/run/docker.sock:ro \
 nextcloud/all-in-one:latest
 
