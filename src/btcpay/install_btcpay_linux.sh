@@ -1,6 +1,9 @@
 function install_btcpay_linux {
 
+if [[ $debug != 1 ]] ; then
 grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Please install Bitcoin first. Aborting." && return 1 ; }
+fi
+
 grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
