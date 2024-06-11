@@ -29,7 +29,7 @@ fi
 fi
 
 # Need 8443 free
-if sudo netstat -tulnp | grep :8443 ; then
+if sudo netstat -tulnp | grep -E ':8443\s' ; then
 announce "It seems that port 8443 is already in use. Type$cyan yolo$orange to ignore this, otherwise aborting."
 if [[ $enter_cont == yolo ]] ; then
 true
