@@ -5,7 +5,7 @@ if [[ $debug != 1 ]] ; then
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 fi
 
-btcpay_mac_explanation
+btcpay_mac_remove_bitcoin || return 1
 
 set_terminal
 if [[ "$1" != "resume" ]] ; then #btcpay-half flag triggers run_parmanode to start this function with "resume" flag
@@ -31,6 +31,7 @@ fi
 
 choose_btcpay_version || return 1
 
+if [[ $dockerfile != "true" ]] ; then
 if [[ $debug != 1 ]] ; then
 while true ; do user_pass_check_exists 
     return_status=$?
@@ -39,47 +40,27 @@ while true ; do user_pass_check_exists
     if [ $return_status == 0 ] ; then break ; fi 
     done
 fi
+fi
     
 log "btcpay" "entering make_btcpay_directories..."
-make_btcpay_directories 
+make_btcpay_directories  || return 1
     # installed config modifications done
     # .btcpayserver and .nbxplorer
-    if [ $? == 1 ] ; then return 1 ; fi
 
 log "btcpay" "entering btcpay_config..."
-btcpay_config
-    if [ $? == 1 ] ; then return 1 ; fi
+btcpay_config || return 1
 
 log "btcpay" "entering nbxplorer_config..."
-nbxplorer_config
-    if [ $? == 1 ] ; then return 1 ; fi
-
+nbxplorer_config || return 1
 
 log "btcpay" "entering build_btcpay..."
-build_btcpay 
-    if [ $? == 1 ] ; then return 1 ; fi
+build_btcpay || return 1
 
 log "btcpay" "entering run_btcpay_docker..."
-run_btcpay_docker
-    if [ $? == 1 ] ; then return 1 ; fi
-
-log "btcpay" "entering start_postgress..."
-{ startup_postgres "install" \
-&& log "btcpay" "startup postgress function completed" ; }\
-|| { log "btcpay" "startup postgress function failed" && return 1 ; }
+run_btcpay_docker || return 1
 
 sleep 4
-log "btcpay" "entering run_nbxplorer.."
-run_nbxplorer >> $HOME/parmanode/nbx_extra_log.log || return 1
 
-sleep 4
-log "btcpay" "entering run_btcpay..."
-run_btcpay || return 1
-
-debug "after run_btcpay"
-
-
-stop_btcpay
 install_bitcoin_btcpay_mac
 
 start_btcpay
@@ -107,5 +88,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
-install_bitcoin
+docker exec -itu parman btcpay bash -c "source /home/parman/parman_programs/parmanode/source_parmanode.sh && dockerfile="true" install_bitcoin"
+debug "after install bitcoin"
+
 }

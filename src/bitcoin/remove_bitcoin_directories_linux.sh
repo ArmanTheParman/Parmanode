@@ -18,7 +18,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
 if [[ $drive == "external" && -d $pd/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
-
+if [[ $dockerfile != "true" ]] ; then
 set_terminal
 
 echo -e "
@@ -34,6 +34,10 @@ $red
 ########################################################################################
 "
 choose "xpmq" ; read choice 
+else
+choice=l
+fi
+
 case $choice in
 q|Q) exit ;;
 p|P) return 1 ;;
@@ -55,6 +59,7 @@ fi #end checking external drive for data directory
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, AND not a symlink
 while true ; do
+if [[ $dockerfile != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -75,6 +80,9 @@ $orange
 ########################################################################################
 "
 choose "xq" ; read choice 
+else
+choice=3
+fi
 
 case $choice in
 q|Q|quit|Quit|QUIT) 
@@ -106,7 +114,8 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 #Remove symlink to drive
-if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
-
+if [[ $dockerfile != "true" ]] ; then
+    if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
+fi
 return 0
 }

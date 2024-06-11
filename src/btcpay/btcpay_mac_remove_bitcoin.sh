@@ -1,5 +1,5 @@
-function btcpay_mac_explanation {
-
+function btcpay_mac_remove_bitcoin {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -7,12 +7,10 @@ set_terminal ; echo -e "
     fault, it's Apple's fault.
 
     1)$pink  Bitcoin needs to be uninstalled on the machine$orange, but the data directories that
-        Parmanode set up need to remain in place. In a new Terminal window, 
-        run Parmanode, and$pink$blinkon uninstall Bitcoin$blinkoff$orange. When prompted, do not delete any of
-        the data directories, and do not delete symplinks.
+        Parmanode set up need to remain in place. 
 
     2)  The BTCPay container will be built, and the data directory on the inside of
-        container will be mounted (attached) to the existing data directory, wheter
+        container will be mounted (attached) to the existing data directory, whether
         that's on the Mac's internal drive or an attached external drive (make sure
         any external drive remains attached an mounted during this process)
 
@@ -20,12 +18,23 @@ set_terminal ; echo -e "
 
     4)  BTCPay server can then be run
 
-$cyan
-    
-    When you have read this carefully and uninstalled Bitcoin as described, hit
-    <enter>
+
+$green
+                      u)    Uninstall Bitcoin (termporarily)    
 $orange
+
 ########################################################################################
 "
-enter_continue
+choose xpmq ; read choice ; set_terminal
+case $choice in
+quit|Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+u)
+uninstall_bitcoin
+break
+;;
+*)
+invalid
+;;
+esac
+done
 }

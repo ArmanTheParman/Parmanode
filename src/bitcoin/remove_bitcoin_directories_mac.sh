@@ -18,6 +18,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1  # gets drive choice
 
 if [[ $drive == "external" && -d /Volumes/parmanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
+if [[ $dockerfile != 1 ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
@@ -32,6 +33,10 @@ $red
 ########################################################################################
 "
 choose "xq" ; read choice 
+else
+choice=l
+fi
+
 case $choice in
 
 q|Q|Quit|QUIT) 
@@ -59,6 +64,7 @@ fi #end checking external drive for data directory
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
+if [[ $dockerfile != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -81,6 +87,10 @@ $orange
 ########################################################################################
 "
 choose "xq" ; read choice 
+else
+choice=3
+fi
+
 case $choice in
 q|Q|quit|QUIT) 
 exit 0 ;;
@@ -101,6 +111,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 while true ; do
+if [[ $dockerfile != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -114,13 +125,18 @@ $green
 $orange
 ######################################################################################## 
 "
-choose x ; read choice ; set_terminal
+choose x ; read choice ;
+else
+choice=l
+fi
+
+set_terminal
 case $choice in
 l)
 break
 ;;
-d)
 
+d)
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 
     rm $HOME/.bitcoin && \

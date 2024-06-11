@@ -18,6 +18,9 @@ USER parman
 
 RUN mkdir -p /home/parman/parmanode
 RUN mkdir -p /home/parman/Downloads
+RUN mkdir -p /home/parman/parman_programs
+RUN cd /home/parman/parman_programs && git clone https://github.com/armantheparman/parmanode.git
+RUN cd /home/parman/ && mkdir .parmanode && cd .parmanode && touch installed.conf && touch parmanode.conf
 
 #BTCpay download
 RUN cd /home/parman/Downloads && wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb

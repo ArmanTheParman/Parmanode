@@ -6,6 +6,7 @@
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
 clear
+if [[ $dockerfile != "true" ]] ; then
 while true
 do
 set_terminal
@@ -36,6 +37,7 @@ case $choice in
 esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
+fi
 
 stop_bitcoind
 
