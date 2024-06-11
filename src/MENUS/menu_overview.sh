@@ -15,7 +15,7 @@ please_wait
 runningoverview 
 source $oc >/dev/null 2>&1
 debug "line 7"
-set_terminal
+set_terminal_custom 48
 
 m1="${white}m1${orange}"
 m2="${white}m2${orange}"
