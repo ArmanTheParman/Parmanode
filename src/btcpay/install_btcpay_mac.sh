@@ -93,7 +93,7 @@ announce "Please note you may be prompted for a password to the 'parman' Docker 
 "The password is$green parmanode$orange"
 
 please_wait
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_progrms/parmanode && git pull"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_progarms/parmanode && git pull"
 docker exec -itu parman bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 debug "after install bitcoin"
 
