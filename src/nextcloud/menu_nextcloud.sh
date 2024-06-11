@@ -25,7 +25,8 @@ set_terminal ; echo -en "
 
                       refresh)     Refresh info after any manual file changes
                                    - Restarts container as well
-
+                      
+                      data)        Information about data storage and backups
 
     ACCESS: $green
             https://$IP:8020    $orange
@@ -63,6 +64,10 @@ docker stop nextcloud-aio-nextcloud
 docker start nextcloud-aio-nextcloud
 docker exec -itu www-data nextcloud-aio-nextcloud bash -c "cd /var/www/html ; php occ files:scan --all"
 enter_continue
+;;
+
+data)
+nextcloud_storage_info
 ;;
 
 *)

@@ -1,6 +1,6 @@
 function nextcloud_storage_info {
 
-set_terminal ; echo -e "
+set_terminal_high ; echo -e "
 ########################################################################################
 
     I tried really hard to make it easy to give you options to choose where to 
@@ -16,7 +16,7 @@ $cyan
     I suggest that if you want to store NextCloud data on an external drive, it's 
     safest to adjust settings yourself. This is generally how...
 
-        1)    Continue with NextCloud install
+        1)    Install NextCloud with Parmanode
         2)    Stop the containers (use Parmanode menu)
         3)    Prepare your external drive
         4)    Move the above directory to your external drive, with its subdiretory 
@@ -31,7 +31,11 @@ $orange
         7)    Test the container started properly, add some data using NextCloud GUI, 
               and see if it has successfully been stored on the external drive before 
               putting crucial files in there.        
-
+$green
+    Finally, to keep your data safe, you might want to have a second copy. See
+    the Rsync help tool in Parmanode menu, to synchronise your data storage to a
+    backup drive.
+$orange
 ########################################################################################
 "
 enter_continue
