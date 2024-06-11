@@ -100,9 +100,9 @@ set_terminal ; echo -e "
 
     Parmanode will now install Bitcoin Core inside the BTC Pay docker container.
 
-    It will sync with the existing data directory on your drive. It is important
+    It will sync with the existing data directory on your drive.$red It is important
     not to attempt to run a second instance of Bitcoin on your machine, otherwise
-    the existing data is likely to get corrupted.
+    the existing data is likely to get corrupted.$orange
 
 ########################################################################################
 "
