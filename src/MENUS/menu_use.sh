@@ -171,7 +171,6 @@ f|F)
     ;;
 btcp|BTCP)
     if [[ $btcpayapp == 1 ]] ; then
-    if [[ $OS == "Mac" ]] ; then no_mac ; clear ; return 1 ; fi
     menu_btcpay
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
     fi

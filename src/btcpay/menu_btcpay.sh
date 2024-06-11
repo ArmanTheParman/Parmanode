@@ -10,7 +10,7 @@ menu_tor="    TOR: $bright_blue
         "
 fi
 
-findbtcp=$(sudo find /var/lib/tor/ -name 'btcp*') >/dev/null 2>&1
+findbtcp=$(sudo find /var/lib/tor/ -name 'btcp*' 2>/dev/null) >/dev/null 2>&1 || unset findbtcp
 
 if which tor >/dev/null && [[ -z $findbtcp ]] && [[ $OS != Mac ]] ; then
 enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
