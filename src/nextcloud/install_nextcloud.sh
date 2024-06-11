@@ -56,8 +56,9 @@ prepare_nextcloud_drive || return 1
 # Means that the container should always get started with the Docker daemon. 
 
 if [[ $drive_nextcloud == default ]] ; then
+true
 else
-
+sudo ln -s $nextcloud_dir /var/lib/docker/volumes/nextcloud_aio_nextcloud_data
 fi
 
 sudo docker run \
