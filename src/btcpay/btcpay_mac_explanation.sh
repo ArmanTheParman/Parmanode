@@ -6,9 +6,9 @@ set_terminal ; echo -e "
     To make BTCPay Server work on Macs, some weird workarounds are needed. Not my 
     fault, it's Apple's fault.
 
-    1)  Bitcoin needs to be uninstalled on the machine, but the data directories that
-        Parmanode set up need to remain in place. In a new terminal window, 
-        run Parmanode, and uninstall Bitcoin. When prompted, do not delete any of
+    1)$pink  Bitcoin needs to be uninstalled on the machine$orange, but the data directories that
+        Parmanode set up need to remain in place. In a new Terminal window, 
+        run Parmanode, and$pink$blinkon uninstall Bitcoin$blinkoff$orange. When prompted, do not delete any of
         the data directories, and do not delete symplinks.
 
     2)  The BTCPay container will be built, and the data directory on the inside of
