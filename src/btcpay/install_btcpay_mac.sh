@@ -88,7 +88,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
-docker exec -itu parman btcpay bash -c "source /home/parman/parman_programs/parmanode/source_parmanode.sh && dockerfile="true" install_bitcoin"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && export dockerfile="true" && ./run_parmanode.sh"
 debug "after install bitcoin"
 
 }
