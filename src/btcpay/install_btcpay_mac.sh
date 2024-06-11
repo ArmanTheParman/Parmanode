@@ -1,6 +1,6 @@
 function install_btcpay_mac {
 
-if [[ $debug != ]] ; then
+if [[ $debug != 1 ]] ; then
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 fi
 
