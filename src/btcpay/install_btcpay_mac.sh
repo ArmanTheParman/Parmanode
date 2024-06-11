@@ -94,7 +94,7 @@ announce "Please note you may be prompted for a password to the 'parman' Docker 
 
 please_wait
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && dockerfile="true" && ./run_parmanode.sh d"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && dockerfile="true" ./run_parmanode.sh d"
 
 #docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 debug "after install bitcoin"
