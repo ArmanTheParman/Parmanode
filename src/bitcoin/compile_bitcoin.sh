@@ -34,7 +34,6 @@ fi
 cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
 
 if [[ $bitcoin_compile == "true" ]] ; then
-debug "in compile true" #pause to check screen ouput
 
 if [[ -e $hp/bitcoin_github ]] ; then 
 cd $hp/bitcoin_github 

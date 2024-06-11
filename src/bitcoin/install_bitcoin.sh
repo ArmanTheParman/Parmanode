@@ -34,19 +34,23 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
     break
     done
 
+debug "before prune choice"
 prune_choice || return 1 
+debug "after prune choice"
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
 # The log call here helps determine if the function reached here in case troubleshooting later.
 log "bitcoin" "make_bitcoin_directories function..."
 
+debug "b4 make b dir"
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
     # installed entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
 
 #compile bitcoin if chosen
+debug "b4 compile"
 compile_bitcoin || return 1
 
 # Download bitcoin software & verify
