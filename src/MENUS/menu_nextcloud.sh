@@ -31,7 +31,7 @@ set_terminal ; echo -en "
             https://$IP:8020    $orange
 
     DATA: $bright_blue
-           $nextcloud_dir
+           /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/
 $orange   
 ########################################################################################
 "
