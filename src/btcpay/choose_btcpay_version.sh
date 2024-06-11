@@ -22,6 +22,7 @@ $green
 $red
                     yolo)    Lates version on the BTCPay GitHub master branch
 $orange
+                    hfsp)    Manually enter the version you want
 
 ########################################################################################
 "
@@ -33,6 +34,19 @@ export btcpay_version_choice="v1.12.5"
 ;;
 yolo)
 export btcpay_version_choice=master
+break
+;;
+hfsp)
+set_terminal ; echo -e "
+########################################################################################
+
+    Please type the version you want in the format v.x.xx.x
+
+    Parmanode is not going to check the validy or for typos so type carefully.
+
+########################################################################################
+"
+read btcpay_version_choice
 break
 ;;
 *)
