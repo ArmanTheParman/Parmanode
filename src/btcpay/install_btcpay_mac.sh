@@ -66,7 +66,7 @@ run_btcpay || return 1
 
 docker exec -itu root btcpay apt-get install tor -y
 
-#start_btcpay
+start_btcpay # makes sure all programs started
 debug "started btcpay"
 
 installed_config_add "btcpay-end"

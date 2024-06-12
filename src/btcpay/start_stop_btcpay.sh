@@ -10,7 +10,7 @@ fi
 if [[ $OS == "Linux" ]] ; then
 startup_postgres && run_nbxplorer && run_btcpay
 elif [[ $OS == "Mac" ]] ; then
-start_bitcoin_docker && startup_postgres && run_nbxplorer && run_btcpay
+start_bitcoin_docker && startup_postgres && run_nbxplorer && run_btcpay && run_btcpay_tor
 fi
 
 }
@@ -29,4 +29,8 @@ set_terminal
 please_wait
 stop_btcpay pw
 start_btcpay pw
+}
+
+function run_btcpay_tor {
+docker exec -du root btcpay tor
 }
