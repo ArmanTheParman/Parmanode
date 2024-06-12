@@ -64,8 +64,9 @@ sudo systemctl disable btcpay.service >/dev/null 2>&1
 sudo rm /etc/systemd/system/btcpay.service >/dev/null 2>&1
 disable_tor_btcpay #return 1 if mac
 
-if [[ $combo == "btcpay_first" ]] ; then
 installed_config_remove "btcpay"
+
+if [[ $combo == "btcpay_first" ]] ; then
 uninstall_bitcoin combo
 #then come back here to exit
 installed_config_remove "btccombo"
@@ -77,13 +78,12 @@ fi
 
 #regular single uninstall
 if [[ -z $combo ]] ; then
-installed_config_remove "btcpay"
 success "BTCPay Server has been uninstalled"
 return 0
 fi
 
 #uninstall returns to uninstall_bitcoin function
-if [[ $combo == "true" ]] ; then Bitcoin Core and BTCPay Server will be un
+if [[ $combo == "true" ]] ; then 
 return 0
 fi
 
