@@ -61,12 +61,12 @@ fi
 gi)
 if [[ $combomenu == "true" ]] ; then
 set_terminal
-docker exec btcpay bitcoin-cli -getinfoenter_continue
+docker exec btcpay bitcoin-cli -getinfo
 enter_continue
 continue
 elif [[ $OS == Linux ]] ; then
 set_terminal
-/usr/local/bin/bitcoin-cli -getinfoenter_continue
+/usr/local/bin/bitcoin-cli -getinfo
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
