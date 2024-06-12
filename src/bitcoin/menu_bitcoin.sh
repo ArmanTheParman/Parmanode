@@ -141,7 +141,7 @@ continue
 ;;
 
 n|N)
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
+if ! grep -q "btccombo" < $ic && [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 
 menu_bitcoin_cli
 continue

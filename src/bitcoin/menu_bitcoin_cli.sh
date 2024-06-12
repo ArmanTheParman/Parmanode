@@ -1,4 +1,7 @@
 function menu_bitcoin_cli {
+
+if grep -q "btccombo" < $ic ; then combomenu="true" ; else unset combomenu ; fi
+
 while true
 do
 set_terminal
@@ -42,42 +45,67 @@ case $choice in
 m|M) back2main ;;
 
 v|V)
-if [[ $OS == Mac ]] ; then echo "see GUI." ; enter_continue ; continue ; fi
+if [[ $combomenu == "true" ]] ; then
+set_terminal
+docker exec btcpay bitcoin-cli --version
+enter_continue
+continue
+elif [[ $OS == Linux ]] ; then
+set_terminal
+/usr/local/bin/bitcoin-cli -version
+enter_continue
+continue
+fi
+;;
 
-    set_terminal
-    /usr/local/bin/bitcoin-cli -version
-    echo "
-Hit <enter> to go back to the menu."
-    read
-    continue
-    ;;
 gi)
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-    set_terminal
-    /usr/local/bin/bitcoin-cli -getinfo
-    echo "
-Hit <enter> to go back to the menu."
-    read    
-    continue
-    ;;
-ni)
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-    set_terminal
-    /usr/local/bin/bitcoin-cli -netinfo
-    echo "
-Hit <enter> to go back to the menu."
-    read    
-    continue
-    ;;
-gbh)  
+if [[ $combomenu == "true" ]] ; then
+set_terminal
+docker exec btcpay bitcoin-cli -getinfoenter_continue
+enter_continue
+continue
+elif [[ $OS == Linux ]] ; then
+set_terminal
+/usr/local/bin/bitcoin-cli -getinfoenter_continue
+continue
+elif [[ $OS == Mac ]] ; then no_mac ; continue 
+else announce "some error - Linux nor Mac detected." ; continue
+fi
+;;
 
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
-    set_terminal
-    read -p "Enter the block number you want the hash of... " block
-    /usr/local/bin/bitcoin-cli getblockhash $block
-    enter_continue
-    continue
-    ;;
+ni)
+if [[ $combomenu == "true" ]] ; then
+set_terminal
+docker exec btcpay bitcoin-cli -netinfo
+enter_continue
+continue
+else
+set_terminal
+/usr/local/bin/bitcoin-cli -netinfo
+continue
+elif [[ $OS == Mac ]] ; then no_mac ; continue 
+else announce "some error - Linux nor Mac detected." ; continue
+fi
+;;
+gbh)  
+set_terminal
+echo "Enter the block number you want the hash of... " 
+read block ; set_terminal
+
+if [[ $combomenu == "true" ]] ; then
+set_terminal
+docker exec btcpay bitcoin-cli getblockhash $block
+enter_continue
+continue
+elif [[ $OS == Linux ]] ; then
+set_terminal
+/usr/local/bin/bitcoin-cli getblockhash $block
+continue
+elif [[ $OS == Mac ]] ; then no_mac ; continue 
+else announce "some error - Linux nor Mac detected." ; continue
+fi
+;;   
+
 gbi)  
 
 if [[ $OS == Mac ]] ; then
@@ -168,8 +196,20 @@ fi
     ;;
 
 vm)  
-if [[ $OS == Mac ]] ; then no_mac ; fi
+if [[ $combomenu == "true" ]] ; then
 
+    set_terminal
+    echo "Please paste in the ADDRESS and hit <enter> :" ; read address
+    echo ""
+    echo "Please paste in the SIGNATURE text and hit <enter> :" ; read signature
+    echo ""
+    echo "Please paste in the MESSAGE TEXT and hit <enter> : " ; read message
+    echo ""
+    echo ""
+    docker exec btcpay bitcoin-cli verifymessage "$address" "$signature" "$message" 
+    enter_continue
+    continue
+elif [[ $OS == Linux ]] ; then
     set_terminal
     read -p "Please paste in the ADDRESS and hit <enter> :" address
     echo ""
@@ -178,12 +218,13 @@ if [[ $OS == Mac ]] ; then no_mac ; fi
     read -p "Please paste in the MESSAGE TEXT and hit <enter> : " message
     echo ""
     echo ""
-   /usr/local/bin/bitcoin-cli verifymessage "$address" "$signature" "$message" 
-    echo "
-Hit <enter> to go back to the menu."
-    read    
+    /usr/local/bin/bitcoin-cli verifymessage "$address" "$signature" "$message" 
+    enter_continue
     continue
-    ;;
+elif [[ $OS == Mac ]] ; then no_mac ; continue 
+else announce "some error - Linux nor Mac detected." ; continue
+fi
+;;
 q|Q|quit|Quit)
     set_terminal
     exit 0

@@ -47,6 +47,7 @@ if grep -q "btccombo" < $ic ; then
         overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
         export bitcoinrunning="false"
     fi
+return 0
 fi
 
 if [[ $OS == Mac ]] ; then

@@ -2,6 +2,13 @@
 # has been kept the same
 
 function run_bitcoind {
+
+#needs to be first...
+if grep -q btccombo < $ic ; then
+docker exec -d btcpay bitcoind
+return 0
+fi
+
 if [[ $OS == "Linux" ]] ; then 
 
                     if [[ $1 == "no_interruption" ]] ; then
@@ -36,6 +43,12 @@ run_bitcoind $@
 ########################################################################################################################
 
 function stop_bitcoind {
+
+#needs to be first...
+if grep -q btccombo < $ic ; then
+docker exec btcpay bitcoin-cli stop 
+return 0
+fi
 
 if [[ $OS == "Linux" ]] ; then 
 set_terminal 
