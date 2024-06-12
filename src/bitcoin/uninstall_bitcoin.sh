@@ -106,7 +106,7 @@ parmanode_conf_remove "bitcoin_choice"
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
-if [[ $combo != "true" && != "btcpay_first" ]] ; then
+if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 success "Bitcoin" "being uninstalled"
 return 0
 fi
