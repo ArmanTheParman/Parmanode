@@ -50,5 +50,8 @@ install_bitcoin #btcpay_combo unset at the end of function
 install_btcpay_mac_child
 
 unset btcdockerchoice btcpay_combo
+
+if ! docker exec btcpay ps | grep -q bitcoind ; then docker exec btcpay bitcoind ; fi
+
 success "Both BTCPay and Bitcoin have been installed"
 }
