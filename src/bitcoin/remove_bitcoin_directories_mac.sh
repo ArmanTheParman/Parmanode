@@ -18,7 +18,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1  # gets drive choice
 
 if [[ $drive == "external" && -d /Volumes/parmanode/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
-if [[ $dockerfile != 1 ]] ; then
+if [[ $btcpayinstallsbitcoin != 1 ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
@@ -64,7 +64,7 @@ fi #end checking external drive for data directory
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, and not a symlink
 while true ; do
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -111,7 +111,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 while true ; do
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 

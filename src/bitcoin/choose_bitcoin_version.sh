@@ -9,7 +9,7 @@ fi
 
 while true ; do
 
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -46,7 +46,7 @@ choose "xpmq"
 unset bitcoin_compile version ordinals_patch knotsbitcoin byo_bitcoin
 read choice
 else
-choice="0" #btcpaydockerfile choice
+choice="0" #btcpayinstallsbitcoin choice
 fi
 
 case $choice in

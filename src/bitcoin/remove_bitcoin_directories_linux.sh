@@ -18,7 +18,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
 if [[ $drive == "external" && -d $pd/.bitcoin ]] ; then #drive would have to be mounted to be true 
 while true ; do
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
 
 echo -e "
@@ -59,7 +59,7 @@ fi #end checking external drive for data directory
 #check internal drive for data directory existance 
 if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, AND not a symlink
 while true ; do
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -114,7 +114,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 #Remove symlink to drive
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
     if [[ -L "$HOME/.bitcoin" ]] ; then rm $HOME/.bitcoin ; fi      #symlink deleted if it exists
 fi
 return 0

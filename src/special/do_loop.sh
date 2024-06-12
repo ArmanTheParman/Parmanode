@@ -91,13 +91,13 @@ install_parmashell silent
 ########################################################################################
 set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
-if [[ $skip_intro != "true" && $dockerfile != "true" ]] ; then intro ; instructions ; fi
+if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 
 
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
@@ -113,7 +113,7 @@ if [[ $needs_restart == "true" ]] ; then
 announce "An update to Parmanode was made to the latest version. Please restart Parmanode."
 exit
 fi
-fi #end dockerfile
+fi #end btcpayinstallsbitcoin
 
 #Health check
 parmanode1_fix
@@ -132,7 +132,7 @@ apply_patches
 
 # get version, and suggest user to update if old.
 
-[[ $dockerfile == "true" ]] || update_version_info 
+[[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
 
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 
@@ -180,7 +180,7 @@ fi
 
 ########################################################################################
 ########################################################################################
-if [[ $dockerfile == "true" ]] ; then install_bitcoin ; exit ; fi
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 [[ $debug == menu ]] || motd

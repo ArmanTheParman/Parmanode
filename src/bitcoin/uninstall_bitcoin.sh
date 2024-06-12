@@ -6,7 +6,7 @@
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
 clear
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 while true
 do
 set_terminal

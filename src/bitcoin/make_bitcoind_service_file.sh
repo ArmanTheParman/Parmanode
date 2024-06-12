@@ -4,7 +4,7 @@
 
 function make_bitcoind_service_file {
 debug "in mbsf"
-if [[ $dockerfile == "true" ]] ; then return 0 ; fi
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
 echo "[Unit]
 Description=Bitcoin daemon

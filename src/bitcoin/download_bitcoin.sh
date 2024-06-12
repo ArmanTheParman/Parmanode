@@ -3,7 +3,7 @@ function download_bitcoin {
 if [[ $version == self ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
 echo -e "
 ########################################################################################

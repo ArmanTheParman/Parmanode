@@ -1,9 +1,15 @@
 function install_bitcoin {
-#dockerfile=true if installing from btcpay Dockerfile
+# if installing bitcoin from btcpay install, then using btcpayinstallsbitcoin="true"
+# if installing bitcoin and btcpay together in docker, then using btcdockerchoice="yes"
+
+if [[ $OS == Mac ]] ; then get_btcdockerchoice ; fi #get btcdockerchoice=yes or no
+
+#btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
+
 export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
-if [[ -e /.dockerenv && $dockerfile != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, 
+if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, 
     but it's not going to run with default Parmanode settings - you'll have
     to tweak."
 fi
@@ -57,19 +63,19 @@ fi
 #setup bitcoin.conf
 make_bitcoin_conf || return 1
 #make a script that service file will use
-if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then
+if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then
     make_mount_check_script 
 fi
 #make service file - this allows automatic start up after a reboot
-if [[ $OS == "Linux" && $dockerfile != "true" ]] ; then 
+if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
 fi
 
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
 fi
 
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
 if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
@@ -86,7 +92,7 @@ echo ""
 echo -e "${green}Bitcoin has finished being installed in Docker Container with BTC Pay..." 
 sleep 4
 return 0
-fi #end no dockerfile
+fi #end no btcpayinstallsbitcoin
 
 set_terminal
 

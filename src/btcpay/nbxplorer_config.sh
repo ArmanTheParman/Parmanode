@@ -2,7 +2,7 @@ function nbxplorer_config {
 
 source $bc >/dev/null
 
-if [[ $dockerfile == "true" ]] ; then rpcuser=parman ; rpcpassword=parman ; fi
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then rpcuser=parman ; rpcpassword=parman ; fi
 
 echo "
 btc.rpc.user=${rpcuser}

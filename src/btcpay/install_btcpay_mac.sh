@@ -1,5 +1,5 @@
 function install_btcpay_mac {
-export dockerfile="true"
+export btcpayinstallsbitcoin="true"
 
 if [[ $debug != 1 ]] ; then
 grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
@@ -31,7 +31,7 @@ fi
 
 choose_btcpay_version || return 1
 
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ $debug != 1 ]] ; then
 while true ; do user_pass_check_exists 
     return_status=$?
@@ -98,6 +98,6 @@ please_wait
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 if [[ $debug == 1 ]] ; then btcpaydebug=d ; else unset btcpaydebug ; fi
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && dockerfile="true" ./run_parmanode.sh $btcpaydebug"
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin="true" ./run_parmanode.sh $btcpaydebug"
 
 }

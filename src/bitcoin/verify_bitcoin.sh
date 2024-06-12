@@ -37,7 +37,7 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
         echo ""
         echo -e "GPG verification of the SHA256SUMS file$green passed$orange. "
         echo ""
-        [[ $dockerfile == "true" ]] || enter_continue
+        [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue
     else 
         echo ""
         echo -e "GPG verification$red failed$orange. Aborting." 

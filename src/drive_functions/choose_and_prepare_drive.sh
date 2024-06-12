@@ -13,7 +13,7 @@ local text_nostr="$yellow                (4) - BYO eg an additional external dri
 
 while true ; do
 unset raid
-if [[ $dockerfile != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
 echo -e "
 ########################################################################################
@@ -40,7 +40,7 @@ choose "xpmq" #echo statment about above options, previous menu, or quit.
 read choice #user's choice stored in variable, choice
 
 else
-choice=i #btcpay dockerfile chooses internal drive
+choice=i #btcpayinstallsbitcoin internal drive
 fi
 
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi

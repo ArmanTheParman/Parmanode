@@ -3,7 +3,7 @@ set_terminal
 
 while true ; do
 
-if [[ $dockerfile == "true" ]] ; then return 0 ; fi
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
 if [[ $OS == "Linux" && $drive == "internal" ]] ; then
     return 0 
