@@ -1,5 +1,5 @@
 function uninstall_btcpay {
-if [[ $debug != 1 ]] ; then 
+if [[ $OS == Linux ]] ; then
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -16,8 +16,30 @@ p|P|N|n|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes) break ;;
 *) invalid ;;
 esac
-done ; fi
+done 
+elif [[ $OS = Mac ]] ; then
+while true ; do set_terminal ; echo -e "
+########################################################################################
+$cyan
+                              Uninstall BTCPay Server
+$orange
+    This will also uninstall$red Bitcoin$orange within the BTC container. You'll need to
+    install Bitcoin on your Mac again if you want it. The Bitcoin data will not be
+    deleted.                               
 
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "epq" ; read choice ; 
+case $choice in 
+Q|q|Quit|QUIT) exit 0 ;;
+p|P|N|n|No|NO|no) return 1 ;; 
+y|Y|Yes|YES|yes) break ;;
+*) invalid ;;
+esac
+done 
+fi
 
 # stop containers, delete containers, delete images
 please_wait
