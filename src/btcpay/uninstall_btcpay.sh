@@ -1,5 +1,4 @@
 function uninstall_btcpay {
-if [[ $1 != "combo" ]] ; then combo="true" ; fi
 
 if ! grep -q "btccombo-end" < $ic ; then
 while true ; do set_terminal ; echo -e "
@@ -22,6 +21,7 @@ done
 
 else
 
+if [[ $1 != "combo" ]] ; then
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -46,6 +46,8 @@ export combo=btcpay_first
 *) invalid ;;
 esac
 done 
+fi
+
 fi
 
 # stop containers, delete containers, delete images
