@@ -35,8 +35,8 @@ docker stop btcpay
 function restart_btcpay {
 set_terminal
 please_wait
-stop_btcpay pw
-start_btcpay pw
+stop_btcpay pw || log "debug" "stop_btcpay pw error"
+start_btcpay pw || log "debug" "start_btcpay pw error"
 }
 
 function run_btcpay_tor {
