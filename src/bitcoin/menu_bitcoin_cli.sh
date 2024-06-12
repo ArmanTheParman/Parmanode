@@ -79,7 +79,7 @@ set_terminal
 docker exec btcpay bitcoin-cli -netinfo
 enter_continue
 continue
-else
+elif [[ $OS == Linux ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -netinfo
 continue
