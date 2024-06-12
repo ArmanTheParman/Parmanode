@@ -28,9 +28,16 @@ echo -e "
 "
 enter_continue
 clear
+if grep -q "btccombo" < $ic ; then
+docker exec btcpay bitcoind --reindex
+docker exec btcpay bitcoin-cli stop
+doecker exec -d btcpay bitcoind 
+elif [[ $OS == Linux ]] ; then
 sudo bitcoind --reindex
-bitcoin-cli stop
+stop_bitcoind
 start_bitcoind
+fi
+
 fi
 
 }

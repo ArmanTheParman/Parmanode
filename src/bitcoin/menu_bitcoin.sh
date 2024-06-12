@@ -1,5 +1,10 @@
 function menu_bitcoin {
 
+if grep -q "btccombo" < $ic ; then
+dockerbitcoinmenu="                        Bitcoin in Docker Container "
+fi
+
+
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 while true
@@ -56,7 +61,8 @@ set_terminal_custom "52"
 
 echo -en "
 ########################################################################################
-                                 ${cyan}Bitcoin Core Menu${orange}                               
+                                ${cyan}Bitcoin Core Menu${orange}                               
+$dockerbitcoinmenu
 ########################################################################################
 
 

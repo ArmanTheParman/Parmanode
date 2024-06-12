@@ -1,9 +1,11 @@
 function update_bitcoin {
 
-if [[ $OS == Mac ]] ; then
-local version="${green}Bitcoin for Mac OS, please see GUI for version$orange"
+if grep -q "btccombo" < $ic ; then
+local version="$(docker exec btcpay bitcoin-cli --version | head -n 1)"
 elif [[ $OS == Linux ]] ; then
-local version="$(bitcoin-cli --version | head -n 1)"
+local version="$(/usr/local/bin/bitcoin-cli --version | head -n 1)"
+elif [[ $OS == Mac ]] ; then
+local version="${green}Bitcoin for Mac OS, please see GUI for version$orange"
 fi
 
 set_terminal ; echo -e "
