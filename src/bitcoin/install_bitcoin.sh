@@ -2,7 +2,22 @@ function install_bitcoin {
 # if installing bitcoin from btcpay install, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker, then using btcdockerchoice="yes"
 
-if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice ; fi #get btcdockerchoice=yes or no
+if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice || return 1 ; fi #get btcdockerchoice=yes or no
+
+if [[ $btcdockerchoice == "yes" ]] ; then
+
+    #make sure docker installed
+    grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+    " \
+    "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
+
+    #start docker if it is not running 
+    if ! docker ps >/dev/null 2>&1 ; then 
+    announce "Please make sure Docker is running, then try again. Aborting."
+    return 1
+    fi
+
+fi #end btcdockerchoice
 
 #btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
 
@@ -67,11 +82,6 @@ if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != 
     make_mount_check_script 
 fi
 
-########################################################################################
-########################################################################################
-########################################################################################
-########################################################################################
-
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
@@ -81,7 +91,7 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
 fi
 
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
 if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
@@ -97,8 +107,19 @@ else
 echo ""
 echo -e "${green}Bitcoin has finished being installed in Docker Container with BTC Pay..." 
 sleep 4
-return 0
 fi #end no btcpayinstallsbitcoin
+
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+#end internal docker installation here
+unset btcpayinstallsbitcoin
+return 0
+fi
+
+if [[ $btcdockerchoice == "yes" ]] ; then
+unset btcdockerchoice
+install_btcpay_mac_child || return 1
+return 0
+fi
 
 set_terminal
 
@@ -172,9 +193,7 @@ $green
 $orange
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
-    #Just in case
-            sudo chown -R $(whoami):staff /media/$(whoami)/parmanode >/dev/null 2>&1
-
+  
 enter_continue
 fi
 

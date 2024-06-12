@@ -98,14 +98,16 @@ m|M) back2main ;;
    
     btcp|BTCP|Btcp)
        if [[ -n $btcpay_n ]] ; then
-       if [[ $OS == "Linux" ]] ; then 
-       install_btcpay_linux ; return 0 ; fi
-       if [[ $OS == "Mac" && $debug == 1 ]] ; then 
-       install_btcpay_mac ; unset btcpayinstallsbitcoin #important
-       return 0  
-       else
-       no_mac ; return 1
-       fi
+
+         if [[ $OS == "Linux" ]] ; then 
+         install_btcpay_linux ; return 0 
+         fi
+
+         if [[ $OS == "Mac" ]] ; then 
+         unset btcpayinstallsbitcoin #important
+         no_mac ; return 1
+         fi
+
        fi
        ;;
     

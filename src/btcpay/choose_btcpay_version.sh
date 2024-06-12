@@ -1,6 +1,7 @@
 function choose_btcpay_version {
 unset btcpay_version_choice
 while true ; do
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -27,6 +28,10 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+else
+choice=s
+fi
+
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 s)
