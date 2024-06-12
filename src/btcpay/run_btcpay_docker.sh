@@ -14,6 +14,8 @@ docker run -d -u parman \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            -v $HOME/.bitcoin:/home/parman/.bitcoin \
+           -p 8333:8333 \
+           -p 8332:8332 \
            -p 49393:49392 \
            -p 23001:23001 \
            btcpay >/dev/null
