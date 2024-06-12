@@ -5,9 +5,11 @@
 #delete bitcoin from install.conf
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
-if grep -q "btccombo-end" < $ic ; then set -- "combo" "combo" ; fi #set syntax... set -- value_for_$1 value_for$2 etc
+if grep -q "btccombo-end" < $ic ; then export combo="true" ; fi 
+
 clear
-if [[ $btcpayinstallsbitcoin != "true" && $1 != "combo" ]] ; then
+
+if [[ $combo != "true" ]] ; then
 while true
 do
 set_terminal
@@ -40,13 +42,14 @@ done
 #Break point. Proceed to uninstall Bitcoin Core.
 fi
 
+if [[ $combo == "true" ]] ; then
 while true
 do
 set_terminal
 echo -e "
 ########################################################################################
-$cyan
-               Both Bitcoin Core and BTCPay Server will be uninstalled 
+
+               Both$cyan Bitcoin Core$orange and$green BTCPay Server$orange will be uninstalled 
 $red
     Are you sure?
 $orange
@@ -70,12 +73,16 @@ case $choice in
 esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
+fi
 
 stop_bitcoind
 
 #remove bitcoin directories and symlinks
-if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux ; fi
-if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac ; fi
+if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
+fi
+
+if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac 
+fi
 
 # Remove binaries
 sudo rm /usr/local/bin/bitcoin* 2>/dev/null
@@ -95,14 +102,17 @@ parmanode_conf_remove "bitcoin_choice"
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
-if [[ $1 != "combo" ]] ; then
+if [[ $combo != "true" ]] ; then
 success "Bitcoin" "being uninstalled"
-fi
-
-if [[ $2 == "combo" ]] ; then
-uninsall_btcpay combo
-success "Bitcoin and BTCPay have been uninsalled"
-fi
-
 return 0
+fi
+
+if [[ $combo == "true" ]] ; then
+uninsall_btcpay combo
+#then come back there to finish
+success "Bitcoin and BTCPay have been uninsalled"
+unset combo
+return 0
+fi
+
 }
