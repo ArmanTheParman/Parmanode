@@ -38,15 +38,13 @@ pause "check build went ok"
 
 run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
 
-log "btcpay" "entering start_postgress..."
 startup_postgres "install" || return 1 
-log "btcpay" "exited start_progress"
 
 sleep 4
-run_nbxplorer || return 1 ; log "btcpay" "entering run_nbxplorer.."
+run_nbxplorer || return 1
 
 sleep 4
-run_btcpay || return 1 ; log "btcpay" "entering run_btcpay..."
+run_btcpay || return 1 
 
 if which tor >/dev/null 2>&1 ; then enable_tor_btcpay ; fi
 

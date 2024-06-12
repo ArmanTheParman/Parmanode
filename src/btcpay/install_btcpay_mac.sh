@@ -42,29 +42,31 @@ while true ; do user_pass_check_exists
 fi
 fi
     
-log "btcpay" "entering make_btcpay_directories..."
 make_btcpay_directories  || return 1
     # installed config modifications done
     # .btcpayserver and .nbxplorer
 
-log "btcpay" "entering btcpay_config..."
 btcpay_config || return 1
 
-log "btcpay" "entering nbxplorer_config..."
 nbxplorer_config || return 1
 
-log "btcpay" "entering build_btcpay..."
 build_btcpay || return 1
 
-log "btcpay" "entering run_btcpay_docker..."
 run_btcpay_docker || return 1
-
-sleep 4
 
 install_bitcoin_btcpay_mac
 
-start_btcpay
+startup_postgres "install" || return 1 
 
+sleep 4
+run_nbxplorer || return 1
+
+sleep 4
+run_btcpay || return 1 
+
+docker exec -itu root btcpay apt-get install tor -y
+
+#start_btcpay
 debug "started btcpay"
 
 installed_config_add "btcpay-end"
