@@ -1,7 +1,7 @@
 function menu_bitcoin {
 
 if grep -q "btccombo" < $ic ; then
-dockerbitcoinmenu=" $pink                         Bitcoin in Docker Container $orange"
+dockerbitcoinmenu=" $pink                 Bitcoin in Docker Container with BTCPay Server $orange"
 fi
 
 
