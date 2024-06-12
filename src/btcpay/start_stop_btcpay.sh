@@ -8,17 +8,17 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 if [[ $OS == "Linux" ]] ; then
-startup_postgres || log "debug" "startup_postregs error" 
-run_nbxplorer || log "debug" "run_nbxplorer error" 
-run_btcpay  || log "debug" "run_btcpay error"
+startup_postgres 
+run_nbxplorer
+run_btcpay  
 elif [[ $OS == "Mac" ]] ; then
-start_bitcoin_docker || log "debug" "start_bitcoin_docker error"
-startup_postgres || log "debug" "startup_postregs error"
+start_bitcoin_docker 
+startup_postgres 
 sleep 2 
-run_nbxplorer || log "debug" "run_nbxplorer error"
+run_nbxplorer 
 sleep 2 
-run_btcpay  || log "debug" "run_btcpay error"
-run_btcpay_tor | log "debug" "run_btcpay_tor error"
+run_btcpay 
+run_btcpay_tor 
 fi
 
 }
