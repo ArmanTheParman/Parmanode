@@ -1,4 +1,8 @@
 function download_bitcoin {
+
+#not required for installation/setup of system outsite docker.
+if [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
+
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
 

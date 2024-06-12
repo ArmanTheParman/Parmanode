@@ -62,6 +62,7 @@ unset text
 if [[ $OS == Mac ]] ; then
 if ! docker ps | grep -q lnd ; then
 docker run -d --name lnd \
+           --restart unless-stopped \
            -v $HOME/.lnd:/home/parman/.lnd $text \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
            -p 9735:9735 \
@@ -72,6 +73,7 @@ fi
 else
 if ! docker ps | grep -q lnd ; then
 docker run -d --name lnd \
+           --restart unless-stopped \
            -v $HOME/.lnd:/home/parman/.lnd $text \
            -v $HOME/parmanode/lnd:/home/parman/parmanode/lnd \
            --network=host \

@@ -26,6 +26,7 @@ if [[ $drive_fulcrum == "internal" ]] ; then
 please_wait
 docker run -d --name fulcrum \
                 -v ${docker_volume_mount}:/home/parman/parmanode/fulcrum_db \
+                --restart unless-stopped \
                 -p 50001:50001 \
                 -p 50002:50002 \
                 -p 50003:50003 \

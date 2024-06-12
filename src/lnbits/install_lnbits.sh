@@ -16,7 +16,13 @@ cd lnbits
 docker build -t lnbitsdocker/lnbits-legend .
 cp .env.example .env
 mkdir data
-docker run --detach --publish 5000:5000 --name lnbits --volume ${PWD}/.env:/app/.env --volume ${PWD}/data/:/app/data lnbitsdocker/lnbits-legend \
+docker run --detach \
+           --restart unless-stopped \
+           --publish 5000:5000 \
+           --name lnbits \
+           --volume ${PWD}/.env:/app/.env \
+           --volume ${PWD}/data/:/app/data \
+           lnbitsdocker/lnbits-legend \
 || { debug "failed to run lnbits image" && return 1 ; }
 
 success "LNbits" "being installed."

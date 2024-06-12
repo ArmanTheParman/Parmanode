@@ -6,6 +6,7 @@ if [[ $OS == Linux ]] ; then
     if [[ $drive_electrs == internal ]] ; then
     docker run -d --name electrs \
                             --network="host" \
+                            --restart unless-stopped \
                             -v $HOME/.electrs_db:/electrs_db \
                             -v $HOME/.electrs:/home/parman/.electrs \
                             electrs 
@@ -15,6 +16,7 @@ if [[ $OS == Linux ]] ; then
     if [[ $drive_electrs == external ]] ; then
     docker run -d --name electrs \
                             --network="host" \
+                            --restart unless-stopped \
                             -v $parmanode_drive/electrs_db:/electrs_db \
                             -v $HOME/.electrs:/home/parman/.electrs \
                             electrs 
@@ -27,6 +29,7 @@ if [[ $OS == Mac ]] ; then
     if [[ $drive_electrs == internal ]] ; then 
         docker run -d --name electrs \
                                 -p 50005:50005 \
+                                --restart unless-stopped \
                                 -p 50006:50006 \
                                 -p 9060:9060 \
                                 -v $HOME/.electrs_db:/electrs_db \
@@ -37,6 +40,7 @@ if [[ $OS == Mac ]] ; then
     if [[ $drive_electrs == external ]] ; then 
         docker run -d --name electrs \
                                 -p 50005:50005 \
+                                 --restart unless-stopped \
                                 -p 50006:50006 \
                                 -p 9060:9060 \
                                 -v $parmanode_drive/electrs_db:/electrs_db \

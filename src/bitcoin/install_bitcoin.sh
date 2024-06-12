@@ -2,7 +2,7 @@ function install_bitcoin {
 # if installing bitcoin from btcpay install, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker, then using btcdockerchoice="yes"
 
-if [[ $OS == Mac ]] ; then get_btcdockerchoice ; fi #get btcdockerchoice=yes or no
+if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice ; fi #get btcdockerchoice=yes or no
 
 #btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
 
@@ -17,7 +17,7 @@ fi
 set_terminal
 
 #choose version
-choose_bitcoin_version || return 1 #no compile variable set for macs here.
+choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
 unset importdrive
 
@@ -63,9 +63,15 @@ fi
 #setup bitcoin.conf
 make_bitcoin_conf || return 1
 #make a script that service file will use
-if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
     make_mount_check_script 
 fi
+
+########################################################################################
+########################################################################################
+########################################################################################
+########################################################################################
+
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file

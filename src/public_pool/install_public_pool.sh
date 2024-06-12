@@ -108,9 +108,9 @@ enter_continue
 
 #start container
 if [[ $OS == Linux ]] ; then
-    docker run -d --name public_pool --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    docker run -d --name public_pool --restart --unless-stopped --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 elif [[ $OS == Mac ]] ; then
-    docker run -d --name public_pool -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    docker run -d --name public_pool --restart --unless-stopped -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 fi
 
 
@@ -124,7 +124,7 @@ docker build -t public_pool_ui . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the second build went ok.$orange"
 enter_continue
 #docker run -d --name public_pool_ui -p 5050:80 public_pool_ui ; debug "run done"
-docker run -d --name public_pool_ui --network=host public_pool_ui ; debug "run done"
+docker run -d --restart unless-stopped --name public_pool_ui --network=host public_pool_ui ; debug "run done"
 #certs before socat
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
 # make_socat_script "public_pool_ui"

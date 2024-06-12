@@ -1,7 +1,8 @@
 function choose_bitcoin_version {
 if [[ $version == self ]] ; then return 0 ; fi
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == Mac || $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false"
 export version="27.0"
 return 0
@@ -9,7 +10,6 @@ fi
 
 while true ; do
 
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -45,9 +45,6 @@ $orange
 choose "xpmq" 
 unset bitcoin_compile version ordinals_patch knotsbitcoin byo_bitcoin
 read choice
-else
-choice="0" #btcpayinstallsbitcoin choice
-fi
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;

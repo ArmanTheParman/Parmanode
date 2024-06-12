@@ -2,6 +2,7 @@ function run_btcpay_docker {
 if [[ $OS == "Linux" ]] ; then
 docker run -d -u parman \
            --name btcpay \
+           --restart unless-stopped \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
@@ -11,6 +12,7 @@ fi
 if [[ $OS == "Mac" ]] ; then
 docker run -d -u parman \
            --name btcpay \
+           --restart unless-stopped \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            -v $HOME/.bitcoin:/home/parman/.bitcoin \
