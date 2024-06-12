@@ -108,7 +108,7 @@ return 0
 fi
 
 if [[ $combo == "true" ]] ; then
-uninsall_btcpay combo
+uninstall_btcpay combo
 #then come back there to finish
 success "Bitcoin and BTCPay have been uninsalled"
 unset combo
@@ -116,3 +116,4 @@ return 0
 fi
 
 }
+a
