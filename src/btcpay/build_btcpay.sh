@@ -4,9 +4,6 @@ function build_btcpay {
 
 thisID=$(id -u) 
 
-debug "version choice: $btcpay_version_choice"
+docker build --build-arg parmanID=$thisID --build-arg btcpay_version=$btcpay_version_choice -t btcpay $original_dir/src/btcpay  || return 1
 
-docker build --build-arg parmanID=$thisID --build-arg btcpay_version=$btcpay_version_choice -t btcpay $original_dir/src/btcpay && \
-    log "btcpay" "build success" && return 0 || log "btcpay" "build failure" && enter_continue \
-    return 1
 }
