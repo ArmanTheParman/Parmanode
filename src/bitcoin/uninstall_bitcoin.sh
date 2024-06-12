@@ -5,11 +5,15 @@
 #delete bitcoin from install.conf
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
+if [[ $1 != btcpay_first ]]; then 
 if grep -q "btccombo-end" < $ic ; then export combo="true" ; fi 
+else
+combo=btcpay_first
+fi
 
 clear
 
-if [[ $combo != "true" ]] ; then
+if [[ $combo != "true" && != "btcpay_first" ]] ; then
 while true
 do
 set_terminal
@@ -102,7 +106,7 @@ parmanode_conf_remove "bitcoin_choice"
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
-if [[ $combo != "true" ]] ; then
+if [[ $combo != "true" && != "btcpay_first" ]] ; then
 success "Bitcoin" "being uninstalled"
 return 0
 fi
@@ -113,6 +117,10 @@ uninstall_btcpay combo
 installed_config_remove "btccombo"
 success "Bitcoin and BTCPay have been uninsalled"
 unset combo
+return 0
+fi
+
+if [[ $combo == "btcpay_first" ]] ; then
 return 0
 fi
 

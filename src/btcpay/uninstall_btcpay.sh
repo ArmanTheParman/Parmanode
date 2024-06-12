@@ -67,7 +67,7 @@ disable_tor_btcpay #return 1 if mac
 installed_config_remove "btcpay"
 
 if [[ $combo == "btcpay_first" ]] ; then
-uninstall_bitcoin combo
+uninstall_bitcoin btcpay_first
 #then come back here to exit
 installed_config_remove "btccombo"
 success "Bitcoin and BTCPay have been uninstalled"
