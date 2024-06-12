@@ -82,7 +82,8 @@ debug "b5"
 please_wait && run_bitcoind
 
 else
-success "Bitcoin installed in Docker Container with BTC Pay" 
+echo -e "${green}Bitcoin finished being installed in Docker Container with BTC Pay..." 
+sleep 2
 return 0
 fi #end no dockerfile
 
