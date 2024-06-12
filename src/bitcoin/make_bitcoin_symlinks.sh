@@ -30,6 +30,7 @@ if [[ $OS == "Mac" && $drive == "external" ]] ; then
     fi
 done
 
+if [[ $btcdockerchoice != "yes" && $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -53,6 +54,8 @@ $orange
 ########################################################################################
 "
 enter_continue
+fi #end btcdockerchoice
+
 set_terminal
 return 0
 }

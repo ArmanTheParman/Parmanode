@@ -94,7 +94,8 @@ fi
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
-if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" ; fi
+if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" 
+fi
 case $skip in
 "false")
 export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset dontstartbitcoin
@@ -103,13 +104,9 @@ esac
 debug "b5"
 please_wait && run_bitcoind
 
-else
-echo ""
-echo -e "${green}Bitcoin has finished being installed in Docker Container with BTC Pay..." 
-sleep 4
-fi #end no btcpayinstallsbitcoin
+fi
 
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then
 #end internal docker installation here
 unset btcpayinstallsbitcoin
 return 0
@@ -118,6 +115,7 @@ fi
 if [[ $btcdockerchoice == "yes" ]] ; then
 unset btcdockerchoice
 install_btcpay_mac_child || return 1
+success "BTCPay and Bitcoin has been installed in a Docker Container."
 return 0
 fi
 

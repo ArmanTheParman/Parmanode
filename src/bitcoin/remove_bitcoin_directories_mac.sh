@@ -28,7 +28,7 @@ echo -e "
 $red
                             d)          Delete $orange
 
-                            L)          Leave it
+                            l)          Leave it
 
 ########################################################################################
 "
@@ -111,7 +111,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 while true ; do
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 

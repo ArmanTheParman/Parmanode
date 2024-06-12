@@ -46,8 +46,10 @@ if [[ -e $HOME/.bitcoin/bitcoin.conf ]] # if a bitcoin.conf file exists
 
         while true ; do
         if [[ $installer == parmanodl || $loop == "break" ]] ; then export prune=0 ; break ; fi #overwrites any existing conf file 
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
-	    set_terminal ; echo -e "
+
+if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
+
+set_terminal ; echo -e "
 ########################################################################################
 
     A$cyan bitcoin.conf$orange file already exists. You can keep the one you have, but be
@@ -74,7 +76,7 @@ case $choice in
 m|M) back2main ;;
     q|Q|QUIT|Quit|quit) exit 0 ;; 
     p|P) return 1 ;; 
-    o|O) log "bitcoin" "conf overwrite" && break ;;
+    o|O) break ;;
     yolo|YOLO|Yolo) apply_prune_bitcoin_conf ; return 0 ;; 
     *) invalid ;; 
 esac 
