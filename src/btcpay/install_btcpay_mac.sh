@@ -45,7 +45,10 @@ esac
 done
 fi
 
-
+export btcpay_combo="true"
+install_bitcoin #btcpay_combo unset at the end of function 
 install_btcpay_mac_child
+
+unset btcdockerchoice btcpay_combo
 success "Both BTCPay and Bitcoin have been installed"
 }

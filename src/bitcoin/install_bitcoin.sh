@@ -1,8 +1,12 @@
 function install_bitcoin {
-# if installing bitcoin from btcpay install, then using btcpayinstallsbitcoin="true"
-# if installing bitcoin and btcpay together in docker, then using btcdockerchoice="yes"
+# if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
+# if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
 
-if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice || return 1 ; fi #get btcdockerchoice=yes or no
+if [[ $btcpay_combo == "true" ]] ; then
+export btcdockerchoice="yes"
+else
+    if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice || return 1 ; fi #get btcdockerchoice=yes or no
+fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then
 
@@ -59,8 +63,6 @@ prune_choice || return 1
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
     # Use variable later for setting bitcoin.conf
-# The log call here helps determine if the function reached here in case troubleshooting later.
-log "bitcoin" "make_bitcoin_directories function..."
 
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
@@ -101,21 +103,22 @@ case $skip in
 export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset dontstartbitcoin
 ;;
 esac
-debug "b5"
+
 please_wait && run_bitcoind
+fi #end not btcpainstallsbitcoin
 
-fi
-
-if [[ $btcpayinstallsbitcoin == "true" ]] ; then
+if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $btcpay_combo == "true" ]] ; then
 #end internal docker installation here
-unset btcpayinstallsbitcoin
+#end btcpay then bitcoin install here
+unset btcpayinstallsbitcoin btcpay_combo
 return 0
 fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then
 unset btcdockerchoice
 install_btcpay_mac_child || return 1
-success "BTCPay and Bitcoin has been installed in a Docker Container."
+success "Bitcoin and BTCPay Server has been installed in a Docker Container."
+#end bitcoin then btcpay install here
 return 0
 fi
 

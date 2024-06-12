@@ -3,7 +3,7 @@ function make_bitcoin_directories {
 
 # Remove bitcoin directories if they exist, they will be created again new. 
 # If nothing exists there will be no user input required.
-    if [[ $newmigrate != "true" && $btcpayinstallsbitcoin != "true" ]] ; then
+    if [[ $newmigrate != "true" && $btcpayinstallsbitcoin != "true" ]] || [[ $bitcpay_combo == "true" ]] ; then
         if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install || return 1 ; fi #function adjusted for parmanodl usage
         if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install || return 1 ; fi 
     fi

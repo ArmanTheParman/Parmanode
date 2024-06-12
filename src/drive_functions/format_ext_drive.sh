@@ -169,7 +169,7 @@ if [[ $importdrive == "true" ]] ; then return 1 ; fi
 if [[ $btcdockerchoice == "yes" ]] ; then return 1 #skips formatting 
 fi 
 
-if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 1 #skips formatting
+if [[ $btcpayinstallsbitcoin == "true" && $btcpay_combo != "true" ]] ; then return 1 #skips formatting
 fi
 
 while true ; do

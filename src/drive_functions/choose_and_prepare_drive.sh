@@ -13,7 +13,7 @@ local text_nostr="$yellow               (add) - BYO eg an additional external dr
 
 while true ; do
 unset raid
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" || $btcpay_combo == "true" ]] ; then
 set_terminal
 echo -e "
 ########################################################################################

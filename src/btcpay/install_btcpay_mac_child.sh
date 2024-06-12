@@ -20,7 +20,7 @@ build_btcpay || return 1
 
 run_btcpay_docker || return 1
 
-install_bitcoin_btcpay_mac || announce "Error in installing Bitcoin inside Docker container. Continuing with warning."
+install_bitcoin_inside_docker|| announce "Error in installing Bitcoin inside Docker container. Continuing with warning."
 
 startup_postgres "install" || return 1 
 
@@ -42,7 +42,7 @@ return 0
 }
 
 
-function install_bitcoin_btcpay_mac {
+function install_bitcoin_inside_docker {
 
 set_terminal ; echo -e "
 ########################################################################################
