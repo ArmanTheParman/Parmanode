@@ -49,7 +49,7 @@ done
 fi
 
 fi
-
+debug "1 $combo"
 # stop containers, delete containers, delete images
 please_wait
 echo "Stopping containers..." && docker stop btcpay 
@@ -65,23 +65,25 @@ sudo rm /etc/systemd/system/btcpay.service >/dev/null 2>&1
 disable_tor_btcpay #return 1 if mac
 
 installed_config_remove "btcpay"
-
+debug "2 $combo"
 if [[ $combo == "btcpay_first" ]] ; then
+debug "3 $combo"
 uninstall_bitcoin btcpay_first
+debug "4"
 #then come back here to exit
 installed_config_remove "btccombo"
 success "Bitcoin and BTCPay have been uninstalled"
 unset combo
 return 0
 fi
-
+debug "5 $combo"
 
 #regular single uninstall
 if [[ -z $combo ]] ; then
 success "BTCPay Server has been uninstalled"
 return 0
 fi
-
+debug "6"
 #uninstall returns to uninstall_bitcoin function
 if [[ $combo == "true" ]] ; then 
 return 0
