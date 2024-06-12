@@ -40,10 +40,10 @@ case $choice in
 Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 
 y|Y|Yes|YES|yes) 
-break
 echo setting combo...
 sleep 2
 export combo="btcpay_first"
+break
 ;;
 *) invalid ;;
 esac
