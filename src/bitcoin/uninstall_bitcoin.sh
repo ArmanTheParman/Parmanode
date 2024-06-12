@@ -46,7 +46,7 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-               Bott Bitcoin Core and BTCPay Server will be uninstalled 
+               Both Bitcoin Core and BTCPay Server will be uninstalled 
 $red
     Are you sure?
 $orange
@@ -70,7 +70,6 @@ case $choice in
 esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
-fi
 
 stop_bitcoind
 
