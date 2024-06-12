@@ -13,7 +13,7 @@ fi
 
 clear
 
-if [[ $combo != "true" && != "btcpay_first" ]] ; then
+if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
 while true
 do
 set_terminal
