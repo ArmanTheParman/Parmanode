@@ -1,4 +1,5 @@
 function menu_bitcoin_cli {
+source $bc
 
 if grep -q "btccombo" < $ic ; then combomenu="true" ; else unset combomenu ; fi
 
