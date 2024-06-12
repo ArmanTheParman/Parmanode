@@ -3,12 +3,11 @@ count=0
 while [[ $count -le 1 ]] ; do
 debug "count is $count"
 if docker ps | grep btcpay ; then   
-{ docker exec -du parman btcpay /bin/bash -c \
+docker exec -du parman btcpay /bin/bash -c \
 "/usr/bin/dotnet run --no-launch-profile --no-build -c Release --project \"\\
 /home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\" -- \$@ \\
->/home/parman/.btcpayserver/btcpay.log" \
-&& log "btcpay" "btcpay started" && return 0 ; } || { log "btcpay" "failed to start btcpay" && return 1 ; }  
-
+>/home/parman/.btcpayserver/btcpay.log" || return 1 
+return 0
 else
 debug "starting docker btcpay"
 docker start btcpay || log "btcpay" "failed to start btcpay docker container"     
