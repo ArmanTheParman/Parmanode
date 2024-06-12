@@ -105,7 +105,7 @@ m|M) back2main ;;
 
          if [[ $OS == "Mac" ]] ; then 
          unset btcpayinstallsbitcoin #important
-         install_btcpay_mac
+         install_btcpay_mac || return 1
          return 0
          fi
 

@@ -15,7 +15,7 @@ $orange
 
     Proceed?
 
-     $green         y $orange     or  $red    n
+     $green                            y $orange     or  $red    n
 $orange
 ########################################################################################
 "
