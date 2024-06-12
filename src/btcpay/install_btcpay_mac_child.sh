@@ -37,7 +37,7 @@ debug "started btcpay"
 
 installed_config_add "btcpay-end"
 installed_config_add "bitcoin-end"
-success "BTCPay Server" "being installed."
+installed_config_add "btccombo-end"
 return 0
 }
 

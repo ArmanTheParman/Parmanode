@@ -166,6 +166,12 @@ function confirm_format {
 #return 1 necessary because function failure sets skip_formatting variable to true in calling  function
 if [[ $importdrive == "true" ]] ; then return 1 ; fi
 
+if [[ $btcdockerchoice == "yes" ]] ; then return 1 #skips formatting 
+fi 
+
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 1 #skips formatting
+fi
+
 while true ; do
 clear ; echo -e "
 ########################################################################################

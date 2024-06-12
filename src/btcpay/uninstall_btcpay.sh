@@ -1,5 +1,6 @@
 function uninstall_btcpay {
-if [[ $OS == Linux ]] ; then
+if [[ $1 != "combo" ]] ; then
+if ! grep -q "btccombo-end" < $ic ; then
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -17,7 +18,9 @@ y|Y|Yes|YES|yes) break ;;
 *) invalid ;;
 esac
 done 
-elif [[ $OS = Mac ]] ; then
+
+else
+
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -35,29 +38,45 @@ choose "epq" ; read choice ;
 case $choice in 
 Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 
-y|Y|Yes|YES|yes) break ;;
+y|Y|Yes|YES|yes) 
+break
+;;
 *) invalid ;;
 esac
 done 
 fi
+fi #end $1 != combo
 
 # stop containers, delete containers, delete images
 please_wait
-echo "Stopping containers..." && docker stop btcpay || log "btcpay" "failed to stop btcpay. May not be running."
-echo "Removing containers..." && sleep 0.5 && docker rm btcpay || log "btcpay" "failed to remove btcpay docker container. May not exist."
-echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay || log "btcpay" "failed to remove btcpay image. May not exist" 
+echo "Stopping containers..." && docker stop btcpay 
+echo "Removing containers..." && sleep 0.5 && docker rm btcpay 
+echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay |
 #remove directories
-echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer \
-|| log "btcpay" "failed to delete .btcpayserver and .nbxplorer"
+echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer 
 
 #remove service files
-sudo systemctl stop btcpay.service
-sudo systemctl disable btcpay.service
-sudo rm /etc/systemd/system/btcpay.service
-disable_tor_btcpay
+sudo systemctl stop btcpay.service >/dev/null 2>&1
+sudo systemctl disable btcpay.service >/dev/null 2>&1
+sudo rm /etc/systemd/system/btcpay.service >/dev/null 2>&1
+disable_tor_btcpay #return 1 if mac
+
+if ! grep -q "btccombo-end" < $ic ; then
 
 installed_config_remove "btcpay"
-log "btcpay" "Uninstalled"
-success "BTCPay Server" "being uninstalled."
+
+    if [[ $1 == "combo" ]] ; then 
+      return 0 
+    else
+      success "BTCPay Server" "being uninstalled."
+    fi
+
+else
+uninstall_bitcon combo #configs managed here
+installed_config_remove "btcpay"
+installed_config_remove "btccombo"
+success "Bitcoin and BTCPay have been uninstalled"
+fi
+
 return 0
 }

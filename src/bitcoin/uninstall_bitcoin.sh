@@ -5,8 +5,9 @@
 #delete bitcoin from install.conf
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
+if grep -q "btccombo-end" < $ic ; then set -- "combo" "combo" ; fi #set syntax... set -- value_for_$1 value_for$2 etc
 clear
-if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+if [[ $btcpayinstallsbitcoin != "true" && $1 != "combo" ]] ; then
 while true
 do
 set_terminal
@@ -16,6 +17,38 @@ $cyan
                          Bitcoin Core will be uninstalled
 $red
     Are you sure, UNINSTALL BITCOIN?
+$orange
+    (The Bitcoin data directory will not be deleted)
+
+########################################################################################
+
+Choose (y) or (n) then <enter>.
+"
+read choice
+
+case $choice in
+    y|Y)
+        break ;;
+    n|N)
+        return 0 ;;
+    q|Q|Quit|quit)
+        exit 0 ;;
+    *)
+        invalid ;;
+esac
+done
+#Break point. Proceed to uninstall Bitcoin Core.
+fi
+
+while true
+do
+set_terminal
+echo -e "
+########################################################################################
+$cyan
+               Bott Bitcoin Core and BTCPay Server will be uninstalled 
+$red
+    Are you sure?
 $orange
     (The Bitcoin data directory will not be deleted)
 
@@ -58,12 +91,19 @@ parmanode_conf_remove "rpcuser"
 parmanode_conf_remove "rpcpassword"
 parmanode_conf_remove "UUID"
 parmanode_conf_remove "bitcoin_choice"
-debug "drive= from parmanode.conf should be removed"
 
 #Remove service file for Linux only
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
 set_terminal
+if [[ $1 != "combo" ]] ; then
 success "Bitcoin" "being uninstalled"
+fi
+
+if [[ $2 == "combo" ]] ; then
+uninsall_btcpay combo
+success "Bitcoin and BTCPay have been uninsalled"
+fi
+
 return 0
 }
