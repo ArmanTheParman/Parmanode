@@ -4,11 +4,11 @@ if [[ $version == self ]] ; then return 0 ; fi
 # chooses between internal and external drive
 # Should have called the function "choose_and_prepare_drive, without "parmanode" - fix later"
 
-local text="$bright_blue                (3) - IMPORT an external drive
+local text="$bright_blue                (ext) - IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
-local text_nostr="$yellow                (4) - BYO eg an additional external drive$orange
+local text_nostr="$yellow               (add) - BYO eg an additional external drive$orange
 " 
 
 while true ; do
@@ -45,7 +45,7 @@ fi
 
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
 case $choice in
-3)
+ext)
 log "importdrive" "$1 install, choice to import drive"
 import_drive_options || return 1
 export drive="external" ; parmanode_conf_add "drive=external"
@@ -53,7 +53,7 @@ export bitcoin_drive_import="true" #used later to avoid format prompt.
 return 0
 ;;
 
-4)
+add)
 export drive_nostr=custom
 parmanode_conf_add "drive_nostr=custom"
 return 0

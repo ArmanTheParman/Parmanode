@@ -16,7 +16,7 @@ if which tor >/dev/null && [[ -z $findbtcp ]] && [[ $OS != Mac ]] ; then
 enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 unset menu_tor
 fi
-
+clear
 echo -en "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}

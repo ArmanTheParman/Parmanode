@@ -38,6 +38,17 @@ done
 
 function isbitcoinrunning {
 unset bitcoinrunning
+
+if grep -q "btccombo" < $ic ; then
+    if docker exec btcpay ps | grep -q bitcoind ; then
+        overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
+        export bitcoinrunning="true"
+    else 
+        overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
+        export bitcoinrunning="false"
+    fi
+fi
+
 if [[ $OS == Mac ]] ; then
     if pgrep Bitcoin-Q >/dev/null ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
