@@ -41,7 +41,9 @@ Q|q|Quit|QUIT) exit 0 ;;
 p|P|N|n|No|NO|no) return 1 ;; 
 y|Y|Yes|YES|yes) 
 break
-export combo=btcpay_first
+echo setting combo...
+sleep 2
+export combo="btcpay_first"
 ;;
 *) invalid ;;
 esac
