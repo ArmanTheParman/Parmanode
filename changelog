@@ -1,3 +1,5 @@
+Version 3.40.0
+    -BTCPay for Mac available; combines Bitcoin in same docker container. Much refactoring done.
 Version 3.39.1
     -BTCPay - user can choose yolo and install untested newer versions
 Version 3.39.0
