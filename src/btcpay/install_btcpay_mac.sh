@@ -55,5 +55,6 @@ if ! docker exec btcpay ps | grep -q bitcoind ; then docker exec btcpay bitcoind
 
 installed_config_add "bitcoin-end"
 installed_config_add "btcpay-end"
+installed_config_add "btccombo-end"
 success "Both BTCPay and Bitcoin have been installed"
 }
