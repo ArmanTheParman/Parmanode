@@ -41,10 +41,10 @@ run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
 startup_postgres "install" || return 1 
 
 sleep 4
-run_nbxplorer || return 1
+start_nbxplorer_indocker || return 1
 
 sleep 4
-run_btcpay || return 1 
+start_btcpay_indocker || return 1 
 
 if which tor >/dev/null 2>&1 ; then enable_tor_btcpay ; fi
 

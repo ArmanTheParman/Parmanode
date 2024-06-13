@@ -25,14 +25,14 @@ install_bitcoin_inside_docker|| announce "Error in installing Bitcoin inside Doc
 startup_postgres "install" || return 1 
 
 sleep 4
-run_nbxplorer || return 1
+start_nbxplorer_indocker || return 1
 
 sleep 4
-run_btcpay || return 1 
+start_btcpay_indocker || return 1 
 
 docker exec -itu root btcpay apt-get install tor -y
 
-start_btcpay # makes sure all programs started
+start_btcpay_all_programs 
 debug "started btcpay"
 
 installed_config_add "btcpay-end"

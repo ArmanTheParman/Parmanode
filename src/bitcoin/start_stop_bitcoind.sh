@@ -75,7 +75,7 @@ stop_bitcoinqt
 fi
 }
 
-function start_bitcoin_docker {
+function start_bitcoin_indocker {
 docker exec -itu parman btcpay bitcoind
 }
 

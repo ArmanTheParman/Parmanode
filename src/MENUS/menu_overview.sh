@@ -430,7 +430,7 @@ clear ; please_wait
 stop_btcpay
 else
 clear ; please_wait
-start_btcpay
+start_btcpay_all_programs
 fi
 ;;
 s7) 

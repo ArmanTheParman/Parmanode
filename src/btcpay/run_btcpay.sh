@@ -1,4 +1,4 @@
-function run_btcpay {
+function start_btcpay_indocker {
 count=0
 while [[ $count -le 1 ]] ; do
 debug "count is $count"

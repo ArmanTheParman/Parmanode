@@ -141,7 +141,7 @@ unset file && local file="$HOME/.nbxplorer/Main/settings.config"
 stop_btcpay
 swap_string "$file" "btc.rpc.user"     "btc.rpc.user=$rpcuser"
 swap_string "$file" "btc.rpc.password" "btc.rpc.password=$rpcpassword"
-start_btcpay
+start_btcpay_all_programs
 break
 ;;
 n)
