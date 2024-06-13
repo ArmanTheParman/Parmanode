@@ -3,6 +3,15 @@ function start_btcpay_all_programs {
 clear
 please_wait 
 
+if ! docker ps >/dev/null 2>&1 ; then
+announce "Docker not running! Please start it."
+return 1
+fi
+
+if ! docker ps >/dev/null 2>&1 | grep -q "btcpay" ; then
+start_btcpay_docker
+fi
+
 if [[ $OS == "Mac" ]] ; then
     start_bitcoin_indocker 
     start_btcpay_tor_indocker 
@@ -14,6 +23,14 @@ start_nbxplorer_indocker
 sleep 2 
 start_btcpay_indocker 
 
+}
+
+function start_btcpay {
+docker exec start btcpay
+}
+
+function start_btcpay_docker {
+start_btcpay
 }
 
 function stop_btcpay {
