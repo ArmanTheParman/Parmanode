@@ -9,4 +9,6 @@ return 0
 
 #!/bin/bash
 cd ~/parman_programs/parmanode
+if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
+if ! git config --global user.name ; then git config --global user.name Parman ; fi
 git pull

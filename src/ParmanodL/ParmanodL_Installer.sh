@@ -210,6 +210,9 @@ Please wait...
 
 # Get Parmanode or update
 
+if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
+if ! git config --global user.name ; then git config --global user.name Parman ; fi
+
    if [ ! -e ~/parman_programs/parmanode/src ] ; then
         mkdir -p ~/parman_programs
         cd ~/parman_programs

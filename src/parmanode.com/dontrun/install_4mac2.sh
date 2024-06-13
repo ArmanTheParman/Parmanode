@@ -11,6 +11,8 @@ return 0
 if [ -d $HOME/parman_programs/parmanode ] ; then
 clear
 #update parmanode if it exists...
+if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
+if ! git config --global user.name ; then git config --global user.name Parman ; fi
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
 
 #make desktop text document...

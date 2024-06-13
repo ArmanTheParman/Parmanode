@@ -11,6 +11,8 @@ printf '\033[8;38;88t' && echo -e "\033[38;2;255;145;0m"
 if [ -d $HOME/parman_programs/parmanode ] ; then
 clear
 #update parmanode if it exists...
+if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
+if ! git config --global user.name ; then git config --global user.name Parman ; fi
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
 
 #make desktop clickable icon...
