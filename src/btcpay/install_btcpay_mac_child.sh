@@ -22,7 +22,7 @@ run_btcpay_docker || return 1
 
 install_bitcoin_inside_docker|| announce "Error in installing Bitcoin inside Docker container. Continuing with warning."
 
-start_postgres_btcpay_indocker || return 1 
+initialise_postgres_btcpay || return 1 
 
 sleep 4
 start_nbxplorer_indocker || return 1
@@ -31,7 +31,6 @@ sleep 4
 start_btcpay_indocker || return 1 
 
 docker exec -itu root btcpay apt-get install tor -y
-debug "1"
 
 start_btcpay_all_programs 
 debug "started btcpay"
@@ -55,11 +54,14 @@ set_terminal ; echo -e "
     It is important not to attempt to run a second instance of Bitcoin on your 
     machine, otherwise the existing data is likely to get corrupted.$orange
 
+    Just in case you get a prompt, the user inside the container is 'parman' and the
+    password for the user is 'parmanode'.
+
 ########################################################################################
 "
 enter_continue
-announce "Please note you MAY be prompted for a password to the 'parman' Docker user." \
-"The password is$green$blinkon parmanode$blinkoff$orange"
+#announce "Please note you MAY be prompted for a password to the 'parman' Docker user." \
+#"The password is$green$blinkon parmanode$blinkoff$orange"
 
 please_wait
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"

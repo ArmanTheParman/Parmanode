@@ -42,8 +42,6 @@ else
 sudo systemctl start NetworkManager
 connection_count=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | wc -l)
 sleep 2
-debug3 "connection count done. Count is $connection_count"
-debug "normal debug"
 if [[ $connection_count != 1 ]] ; then
 announce "Parmanode was unable to make your IP address static. Please do
     this on your own if you wish to continue using PiHole, or you'll
