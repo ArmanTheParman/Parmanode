@@ -48,6 +48,11 @@ esac
 done 
 fi
 
+if ! docker ps >/dev/null 2>&1 ; then
+announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
+return 1
+fi
+
 fi
 # stop containers, delete containers, delete images
 please_wait

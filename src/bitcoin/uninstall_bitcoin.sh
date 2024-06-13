@@ -77,6 +77,12 @@ case $choice in
 esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
+
+if ! docker ps >/dev/null 2>&1 ; then
+announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
+return 1
+fi
+
 fi
 
 stop_bitcoind
