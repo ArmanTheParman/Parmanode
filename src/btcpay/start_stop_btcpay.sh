@@ -1,42 +1,30 @@
 function start_btcpay_all_programs {
-    
-if [[ $OS == "Linux" ]] ; then
-    if [[ $1 != pw ]] ; then #use pw with start_btcpay_all_programs to no repeat "please wait"
-    set_terminal
-    please_wait
-    fi
+
+clear
+please_wait 
+
+if [[ $OS == "Mac" ]] ; then
+    start_bitcoin_indocker 
+    start_btcpay_tor_indocker 
 fi
 
-if [[ $OS == "Linux" ]] ; then
-startup_postgres 
-start_nbxplorer_indocker
-start_btcpay_indocker  
-elif [[ $OS == "Mac" ]] ; then
-start_bitcoin_indocker 
-startup_postgres 
+start_postgres_btcpay_indocker 
 sleep 2 
 start_nbxplorer_indocker
 sleep 2 
 start_btcpay_indocker 
-start_btcpay_tor_indocker 
-fi
 
 }
 
 function stop_btcpay {
-    if [[ $1 != pw ]] ; then
-    set_terminal
-    please_wait
-    fi
-
+set_terminal
+please_wait
 docker stop btcpay 
 }
 
 function restart_btcpay {
-set_terminal
-please_wait
-stop_btcpay pw || log "debug" "stop_btcpay pw error"
-start_btcpay_all_programs pw || log "debug" "start_btcpay_all_programs pw error"
+stop_btcpay  
+start_btcpay_all_programs ||  announce "error in restarting all btcpay container programs"
 }
 
 function start_btcpay_tor_indocker {

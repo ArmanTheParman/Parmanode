@@ -38,7 +38,7 @@ pause "check build went ok"
 
 run_btcpay_docker || return 1 ; log "btcpay" "entering run_btcpay_docker..."
 
-startup_postgres "install" || return 1 
+initialise_postgres_btcpay || return 1 
 
 sleep 4
 start_nbxplorer_indocker || return 1
