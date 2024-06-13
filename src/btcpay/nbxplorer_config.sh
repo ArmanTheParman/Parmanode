@@ -19,6 +19,5 @@ postgres=User ID=parman;Password=NietShitcoin;Host=$localhost;Port=5432;Database
 " | tee $HOME/.nbxplorer/Main/settings.config >/dev/null 2>&1 
 
 }
-
 #Changed from localhost to 127.0.0.1
 #postgres=User ID=parman;Password=NietShitcoin;Host=localhost;Port=5432;Database=nbxplorer;
