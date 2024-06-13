@@ -26,7 +26,7 @@ start_btcpay_indocker
 }
 
 function start_btcpay {
-docker exec start btcpay
+docker start btcpay
 }
 
 function start_btcpay_docker {
