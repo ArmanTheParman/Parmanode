@@ -54,12 +54,10 @@ return 1
 
 
 function postgres_database_creation_commands {
-log "btcpay" "in postgres_database_creation"
 sleep 1
 docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" >/dev/null 2>&1
 sleep 2
 docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
-debug "after postgres script and database creation"
 }
 
 

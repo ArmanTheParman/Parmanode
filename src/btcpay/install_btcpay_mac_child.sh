@@ -30,7 +30,7 @@ start_nbxplorer_indocker || return 1
 sleep 4
 start_btcpay_indocker || return 1 
 
-docker exec -itu root btcpay apt-get install tor -y
+docker exec -itu root btcpay bash -c "apt-get install tor -y"
 
 start_btcpay_all_programs 
 debug "started btcpay"
@@ -70,5 +70,5 @@ onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' | grep -Eo '[a-
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu parman btcpay bash -c "echo 'parmanode' | sudo -S true ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin="true" ./run_parmanode.sh" || return 1
-
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout master"
 }
