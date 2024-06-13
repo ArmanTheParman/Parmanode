@@ -1,8 +1,3 @@
-function start_postgres_btcpay_indocker {
-docker exec -d -u root btcpay /bin/bash -c "service postgresql start" ||  announce "failed to start postgress in docker"
-}
-
-
 function  initialise_postgres_btcpay {
 # start postgress, create parman database user with script, create 2 databases.
 

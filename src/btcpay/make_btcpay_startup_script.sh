@@ -1,4 +1,4 @@
-function make_btcpay_startup_script {
+function make_btcpay_service_file {
 
 echo "#!/bin/bash
 

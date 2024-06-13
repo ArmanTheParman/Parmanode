@@ -51,7 +51,7 @@ if which tor >/dev/null 2>&1 ; then enable_tor_btcpay ; fi
 installed_config_add "btcpay-end"
 
 mkdir $HOME/parmanode/startup_scripts/ >/dev/null 2>&1
-make_btcpay_startup_script
+make_btcpay_service_file
 success "BTCPay Server" "being installed."
 log "btcpay" "Btcpay install success"
 return 0
