@@ -27,9 +27,9 @@ echo -e "
     You have choices:
 $red
                             d)          Delete $orange
-
+$green
                             l)          Leave it
-
+$orange
 ########################################################################################
 "
 choose "xq" ; read choice 
