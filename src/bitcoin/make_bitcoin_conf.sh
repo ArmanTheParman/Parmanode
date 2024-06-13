@@ -58,13 +58,13 @@ set_terminal ; echo -e "
     you made one.
 
     It's probably safest to discard the old copy, but the choice is yours...
-
+$green
                            o)           overwrite
-
+$orange
                            yolo)        keep the one you have
-
+$red
                            a)           abort installation
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice

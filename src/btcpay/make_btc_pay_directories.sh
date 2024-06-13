@@ -1,34 +1,96 @@
 function make_btcpay_directories {
 
-#delete existing; check with user.
-
 if [ -d $HOME/.btcpayserver ] ; then 
-    set_terminal
-    echo ""
-    echo "As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
-    echo "the existance of $HOME/.btcpayserver was checked for. It does exists, which"
-    echo "is unexpected. Deleting..."
 
-    choose "qc" ; read choice ; case $choice in q|Q) return 0 ;; esac
-    rm -rf $HOME/.btcpayserver 
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    $HOME/.btcpayserver, a configuration directory for BTCPay server currently
+    exists on the system.
+
+    You have choices...
+           
+            d)    Delete it and start fresh
+
+            m)    Move it to$cyan $HOME/.btcpayserver_backup
+
+            l)    Leave it (the config file will be overwritten)
+
+            a)    Abort installation
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
+
+d)
+    sudo rm -rf $HOME/.btcpayserver 
+    ;;
+    
+m)
+    mv $HOME/.btcpayserver $HOME/.btcpayserver_backup
     installed_config_remove "btcpay-end"
-    fi
+break
+;;
+l)
+break
+;;
+*)
+invalid
+;;
+esac
+done
+
+
+fi
 
 if [ -d $HOME/.nbxplorer ] ; then 
-    set_terminal
-    echo ""
-    echo "As a precaution, even thought BTCPay server is not fully installed using Parmanode,"
-    echo "the existance of $HOME/.nbxplorer was checked for. It does exists, which"
-    echo "is unexpected. Deleting..."
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
 
-    choose "qc" ; read choice ; case $choice in q|Q) return 0 ;; esac
-    rm -rf $HOME/.nbxplorer
+    $HOME/.nbxplorer, a configuration directory for BTCPay server currently
+    exists on the system.
+
+    You have choices...
+
+            d)    Delete it and start fresh
+
+            m)    Move it to$cyan $HOME/.nbxplorer_backup
+
+            l)    Leave it (the config file will be overwritten)
+
+            a)    Abort installation
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
+
+d)
+    sudo rm -rf $HOME/.nbxplorer 
+    ;;
+    
+m)
+    mv $HOME/.nbxplorer $HOME/.nbxplorer_backup
     installed_config_remove "btcpay-end"
-    fi
-
-mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main && \
-  log "btcpay" ".btcpayserver mkdir success" && \
-  installed_config_add "btcpay-start" && \
-  return 0 \
-  || return 1 && log "btcpay" "mkdir .bitpayserver & .nbxploerer failed"
+break
+;;
+l)
+break
+;;
+*)
+invalid
+;;
+esac
+done
+fi
+########################################################################################
+mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main 
+installed_config_add "btcpay-start"
+return 0 
 }
+
