@@ -107,7 +107,7 @@ parmanode_conf_remove "rpcuser"
 parmanode_conf_remove "rpcpassword"
 parmanode_conf_remove "UUID"
 parmanode_conf_remove "bitcoin_choice"
-
+debug "1"
 #Remove service file for Linux only
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 

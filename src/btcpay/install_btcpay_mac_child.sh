@@ -57,8 +57,8 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
-announce "Please note you may be prompted for a password to the 'parman' Docker user." \
-"The password is$green parmanode$orange"
+announce "Please note you MAY be prompted for a password to the 'parman' Docker user." \
+"The password is$green$blinkon parmanode$blinkoff$orange"
 
 please_wait
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
@@ -66,6 +66,6 @@ docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' | grep -Eo '[a-z:A-Z:0-9].+')
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin="true" ./run_parmanode.sh" || return 1
+docker exec -itu parman btcpay bash -c "echo 'parmanode' | sudo -S true ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin="true" ./run_parmanode.sh" || return 1
 
 }
