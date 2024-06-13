@@ -118,7 +118,7 @@ set_terminal ; echo -e "
     Do you want to remove the custom symlinks that Parmanode created? Most of the
     time it's fine to remove them, unless you are following instructions where
     leaving them is required.
-
+$red
                                 d)     delete
 $green
                                 l)     leave them
