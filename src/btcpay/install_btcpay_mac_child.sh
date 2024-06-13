@@ -22,7 +22,7 @@ run_btcpay_docker || return 1
 
 install_bitcoin_inside_docker|| announce "Error in installing Bitcoin inside Docker container. Continuing with warning."
 
-startup_postgres "install" || return 1 
+start_postgres_btcpay_indocker || return 1 
 
 sleep 4
 start_nbxplorer_indocker || return 1
@@ -31,6 +31,7 @@ sleep 4
 start_btcpay_indocker || return 1 
 
 docker exec -itu root btcpay apt-get install tor -y
+debug "1"
 
 start_btcpay_all_programs 
 debug "started btcpay"
