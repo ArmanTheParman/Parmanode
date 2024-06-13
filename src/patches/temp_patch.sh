@@ -1,5 +1,8 @@
 function temp_patch {
 
+#put in next patch
+set_github_config
+
 #remove in October
 installed_conf_remove "btcpTOR"
 

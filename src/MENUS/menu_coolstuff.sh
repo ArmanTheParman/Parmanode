@@ -58,6 +58,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 1) 
+set_github_config
 cd $hp/parman_books
 git pull && success "The parman_books directory has been updated" && return 0
 enter_continue
@@ -109,6 +110,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 1) 
+set_github_config
 cd $hp/other_books
 git pull && success "The other_books directory has been updated" && return 0
 enter_continue

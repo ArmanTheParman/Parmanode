@@ -38,6 +38,7 @@ if [[ $bitcoin_compile == "true" ]] ; then
 if [[ -e $hp/bitcoin_github ]] ; then 
 cd $hp/bitcoin_github 
 # start fresh from master, but not have to re-download every time I test
+set_github_config
 git stash ; git checkout master ; git branch -D parmanode_ordinals_patch 2>/dev/null
 git pull 
 else
@@ -90,7 +91,7 @@ git checkout $version
 fi #end level 2 if 
 
 elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
-
+set_github_config
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull ; debug "after checkout knots version, $version"
     else

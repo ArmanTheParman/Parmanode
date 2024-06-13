@@ -64,7 +64,8 @@ enter_continue
 #"The password is$green$blinkon parmanode$blinkoff$orange"
 
 please_wait
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
+docker exec -itu parman btcpay bash -c "if ! git config --global user.name ; then git config --global user.name Parman ; fi"
+docker exec -itu parman btcpay bash -c "if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi"
 docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' | grep -Eo '[a-z:A-Z:0-9].+')
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
