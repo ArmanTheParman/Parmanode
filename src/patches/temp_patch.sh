@@ -13,7 +13,6 @@ if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
 delete_line "$ic" "electrs-start"
 parmanode_conf_add "electrs2-start"
 fi
-
 #remove in 2025
 #stream directive now in "stream.conf"
 if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then

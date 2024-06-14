@@ -82,7 +82,6 @@ fi
 #add to run count
 rp_counter
 
-
 #Add Parmashell
 install_parmashell silent
 
@@ -129,7 +128,6 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
 fi
 
 apply_patches  
-
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
@@ -140,7 +138,6 @@ if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 # when they exit.
 clean_exit 
 
-	
 ###### TESTING SECTION #################################################################
 
 debug "Pausing here. IP: $IP" "silent" #when debugging, I can check for error messages and syntax errors
@@ -158,7 +155,6 @@ if [[ $test == 1 ]] ; then
 announce "exiting"
 exit
 fi
-
 
 if [[ $fix == 1 ]] ; then
 announce "no fixes available presently. Exiting."
