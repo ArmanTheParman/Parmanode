@@ -13,8 +13,36 @@ start_btcpay_docker
 fi
 
 if [[ $OS == "Mac" ]] ; then
+while true ; do
+    clear ; echo -e "
+########################################################################################
+
+    Start Bitcoin in the container too? You can also individually manage Bitcoin
+    start/stop from the Bitcoin menu.
+
+                        y)        Yes
+
+                        n)        No
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+y) 
     start_bitcoin_indocker 
     start_btcpay_tor_indocker 
+    break
+;;
+n)
+break
+;;
+*) 
+invalid
+;;
+esac
+done
+
 fi
 
 start_postgres_btcpay_indocker 
