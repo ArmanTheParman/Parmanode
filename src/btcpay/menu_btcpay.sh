@@ -1,5 +1,10 @@
 function menu_btcpay {
 while true ; do
+
+if grep -q "btccombo" < $ic ; then
+menu_bitcoin menu_btcpay #gets variables output1 
+fi
+
 set_terminal_custom 48 
 unset menu_tor enable_tor_menu tor_on findbtcp
 
@@ -29,6 +34,10 @@ else
 echo -e "
                   BTCPay SERVER IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
 fi
+
+echo -ne "
+$output1" 
+
 echo -e "
 
 
