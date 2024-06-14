@@ -3,7 +3,7 @@ while true ; do
 
 menu_bitcoin menu_btcpay #gets variables output1 
 
-set_terminal_custom 50 
+set_terminal_custom 51 
 unset menu_tor enable_tor_menu tor_on findbtcp
 
 if which tor >/dev/null && [[ $OS == Linux ]] ; then 
@@ -24,6 +24,7 @@ echo -en "
 ########################################################################################
                                  ${cyan}BTCPay Server Menu${orange}
 ########################################################################################
+
 
 "
 if docker ps | grep btcp >/dev/null 2>&1 ; then echo -e "
