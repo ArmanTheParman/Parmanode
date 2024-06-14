@@ -3,7 +3,7 @@ while true ; do
 
 menu_bitcoin menu_btcpay #gets variables output1 
 
-set_terminal_custom 48 
+set_terminal_custom 50 
 unset menu_tor enable_tor_menu tor_on findbtcp
 
 if which tor >/dev/null && [[ $OS == Linux ]] ; then 
