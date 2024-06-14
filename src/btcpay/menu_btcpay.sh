@@ -57,6 +57,10 @@ echo -e "
 
              nl)           View NBXplorer log
 
+             sb)           Start Bitcoin
+
+             stp)          Stop Bitcoin
+
 $enable_tor_menu
 
     To access:     
@@ -158,6 +162,14 @@ enable_tor_btcpay
 success "BTC Pay over Tor enabled"
 continue
 fi
+;;
+
+sb)
+start_bitcoind
+;;
+
+stp)
+stop_bitcoind
 ;;
 
 *)
