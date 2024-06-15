@@ -80,6 +80,8 @@ $cyan        s)$orange                        Start Nostr (starts Docker contain
 
 $cyan        stop)$orange                     Stop Nostr 
 
+$cyan        rs)$orange                       Restart Nostr
+
 $cyan        conf)$orange                     View/edit nginx conf (be careful)
 
 $cyan        toml)$orange                     View/edit config.toml file
@@ -104,6 +106,10 @@ start_nostrrelay
 ;;
 stop)
 stop_nostrrelay
+;;
+rs)
+stop_nostrrelay
+start_nostrrelay
 ;;
 conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
