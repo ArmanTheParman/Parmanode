@@ -52,15 +52,15 @@ enter_continue
 ;;
 
 start)
-docker start nextcloud
+docker start nextcloud-aio-mastercontainer
 ;;
 stop)
-docker stop nextcloud
+docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
 ;;
 
 refresh)
 please_wait
-docker stop nextcloud-aio-nextcloud
+docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
 docker start nextcloud-aio-nextcloud
 docker exec -itu www-data nextcloud-aio-nextcloud bash -c "cd /var/www/html ; php occ files:scan --all"
 enter_continue
