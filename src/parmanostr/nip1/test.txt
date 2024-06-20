@@ -1,0 +1,9 @@
+{
+  "id": "45affd6aef03d67f59336f6a0aaafc48c3b89cde2fdea27802266b2d358ab07f",
+  "pubkey": "fad6540c8f2fd2a16a25d0d82dd95d3bad7890d435d1690848a0a77d2883a447",
+  "created_at": 1718421481,
+  "kind": 1,
+  "tags": [],
+  "content": "\"Tax is ok, I'm happy to pay tax\".\n\n=\n\n\"I think people getting raped is ok, I like sex\".",
+  "sig": "8de8b46aaf3cd2586a19b28672d9bc906c71256f5b28a7e07c63fbe6f27c8a66eed878f9315dd5996b5a2ee52fe5f241a5869d586b1abecd0bd46a3078ba67bb"
+}
