@@ -63,10 +63,10 @@ class BIP32_master_node:
             self.hex_seed = binascii.hexlify(self.byte_seed[:64])
             self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
         
-            # CRUCIAL THAT THE CORRECT BYTE SIZE IS USED TO TAKE THE INTEGER.
-            # From BIP32: Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
         
-            #override previous self.byte_seed, if testing... 
+            ## For testing, uncomment will override previously formatted self.byte_seed.
+            ## CRUCIAL THAT THE CORRECT BYTE SIZE IS USED TO TAKE THE INTEGER.
+            ## From BIP32: Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
             #self.byte_seed = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
             #self.byte_seed2 = int.to_bytes(0xfffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542, 64, 'big')
             #self.byte_seed3 = int.to_bytes(0x4b381541583be4423346c643850da4b320e46a87ae3d2a4e6da11eba819cd4acba45d239319ac14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be, 64, 'big')
@@ -123,6 +123,12 @@ class BIP32_master_node:
 
 #    def __repr__(self):
 #        return self.private_key
+    def __repr__(self):
+        return "BIP32_master_node object" + \
+        "\nThe bin_seed: {}".format(self.byte_seed) + \
+        "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64])) + \
+        "\nThe xprv is: {}".format(self.xprv) +\
+        "\nThe xpub is: {}".format(self.xpub)
 
 class child_key:
     def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=True, PK=False): #account is also the "index"
