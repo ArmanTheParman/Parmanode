@@ -37,7 +37,7 @@ fi
 
 
 # remove later...
-if [[ $debug !=1 ]] ; then
+if [[ $debug != 1 ]] ; then
 docker stop btcrecover && docker rm btcrecover
 fi
 
