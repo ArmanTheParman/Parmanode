@@ -6,7 +6,8 @@ import os
 from classes import *
 from functions import *
 from variables import * 
-from bech32 import bech32_encode, convertbits
+import bech32
+#from bech32 import bech32_encode, convertbits
 from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 #ripemd160

@@ -15,6 +15,7 @@ class BIP32_master_node:
     #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
 
+
         if mnemonic == "choose":
             self.mnemonic = input("Enter a mnemonic seed, 12 words, separated by a space: \n: ")
             self.passphrase = input("Enter a passphrase, <enter> for none \n: ")
@@ -32,43 +33,44 @@ class BIP32_master_node:
         else: 
             self.mnemonic = mnemonic
             self.passphrase = passphrase
-#            self.byte_seed = int(byte_seed, 2)
-#            self.byte_seed = self.byte_seed.to_bytes(32, 'big') #this is for 24 word seeq equivalent
 
-        self.mnemonic = mnemonic
-        self.passphrase = passphrase
 
         if not byte_seed is None:
             if not mnemonic is None:
                 print("Warning, mnemonic provided will be discarded as byte_seed provided.")
             if not isinstance (self.byte_seed, bytes):
                 raise TypeError("byte_seed should be bytes object")
-            input("pause")
             if len(self.byte_seed) not in (16, 32, 64): 
                 ValueError("Byte needs to be length 16, 32, or 64") 
-            input("pause2")
             self.byte_seed = byte_seed 
         
         if byte_seed is None: 
-
-            #Remove for speed...
-            #self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
-            #self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
+            #Can remove for speed...
+            self.mnemonic = unicodedata.normalize("NFKD", self.mnemonic)
+            self.passphrase = unicodedata.normalize("NFKD", self.passphrase)
 
             ### make byte objects...
-            #Add "mnemonic" string. If passphrase empty, then the result is just "mnemonic" bytes in ascii
+            #Add the string, "mnemonic". If the passphrase empty, then the result is just "mnemonic" bytes in ascii
             self.passphrase = 'mnemonic' + self.passphrase 
-            #encode the mnemonic and passphrase (byte object)
-            self.mnemonic = self.mnemonic.encode("utf-8")
-            self.passphrase = self.passphrase.encode("utf=8")
 
+            #Encode the mnemonic and passphrase (to a byte object)
+            self.mnemonic = self.mnemonic.encode("utf-8")
+            self.passphrase = self.passphrase.encode("utf-8")
+
+            #BIP39 makes a 512 bit seed (because of sha512), to use in BIP32
             #make a BIP39 seed (512 bits, 64 hex characters, byte object)
             self.byte_seed = hashlib.pbkdf2_hmac("sha512", self.mnemonic, self.passphrase, 2048)  
             self.hex_seed = binascii.hexlify(self.byte_seed[:64])
             self.hexstring_seed = binascii.hexlify(self.byte_seed[:64]).decode()
         
-            #BIP39 spits out a 512 bit seed (because of sha512), to use in BIP32
-       
+            # CRUCIAL THAT THE CORRECT BYTE SIZE IS USED TO TAKE THE INTEGER.
+            # From BIP32: Generate a seed byte sequence S of a chosen length (between 128 and 512 bits; 256 bits is advised) from a (P)RNG.
+        
+            #override previous self.byte_seed, if testing... 
+            #self.byte_seed = int.to_bytes(0x000102030405060708090a0b0c0d0e0f, 16, 'big')
+            #self.byte_seed2 = int.to_bytes(0xfffcf9f6f3f0edeae7e4e1dedbd8d5d2cfccc9c6c3c0bdbab7b4b1aeaba8a5a29f9c999693908d8a8784817e7b7875726f6c696663605d5a5754514e4b484542, 64, 'big')
+            #self.byte_seed3 = int.to_bytes(0x4b381541583be4423346c643850da4b320e46a87ae3d2a4e6da11eba819cd4acba45d239319ac14f863b8d5ab5a0d0c64d2e8a1e7d1457df2e5a3c51c73235be, 64, 'big')
+            #self.byte_seed4 = int.to_bytes(0x3ddd5602285899a946114506157c7997e5444528f3003f6134712147db19b678, 32, 'big') 
         
         #Make the priv and pub keys
 

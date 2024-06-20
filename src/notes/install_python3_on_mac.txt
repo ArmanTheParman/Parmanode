@@ -1,0 +1,2 @@
+When brew install python not working,
+brew install python@3.12
