@@ -123,7 +123,7 @@ class BIP32_master_node:
 #        return self.private_key
 
 class child_key:
-    def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=False, PK=False, address=False ): #account is also the "index"
+    def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=True, PK=False): #account is also the "index"
     
         if hardened:
             i = 2 ** 31 + account
