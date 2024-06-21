@@ -90,6 +90,7 @@ class BIP32_master_node:
         self.public_key = (self.private_key.point.sec())
         self.private_key_33b = b'\0' + Il
 
+        self.xprv = None
         if serialize == True:
             self.serialize()
 
