@@ -1,2 +1,2 @@
-from .Event import *
+from .Eventclass import *
 from .Request import *
