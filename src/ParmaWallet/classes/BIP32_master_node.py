@@ -11,8 +11,8 @@ from typing import Union
 
 class BIP32_master_node:
 
-    def __init__(self, mnemonic: str=None, passphrase: str="", byte_seed: str=None, serialize=True): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
-    #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
+    def __init__(self, mnemonic: str=None, passphrase: str="", byte_seed: str=None, serialize=True): #Depth=0, Derivation path is m (not m/0)
+    #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0)
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
 
 
@@ -131,15 +131,15 @@ class BIP32_master_node:
             "\nThe BIP32 root key has not been serialized\n"
 
 class Child_key:
-    def __init__(self, parent: Union[BIP32_master_node, 'Child_key'], depth=1, account=0, hardened=True, serialize=True, PubK_only=False): 
-        # Depth is the position in the derivation path, account is also the "index" and value of the position
+    def __init__(self, parent: Union[BIP32_master_node, 'Child_key'], depth=1, index=0, hardened=True, serialize=True, PubK_only=False): 
+        # Depth is the position in the derivation path 
         # The 'parent' object is passed and it's variables are accessed with 'parent.variable', and child variables are manually constructed, not auto-inherited.
 
         if hardened:
-            i = 2 ** 31 + account
+            i = 2 ** 31 + index 
             self.h_text = "True"
         else:
-            i = account
+            i = index
             self.h_text = "False"
 
         while True:
@@ -167,7 +167,7 @@ class Child_key:
                         break
         self.PubK_only = PubK_only
         self.xprv = None
-        self.index = account
+        self.index = index
         if serialize == True:
             self.parent_public_key = parent.public_key 
             self.depth = depth
