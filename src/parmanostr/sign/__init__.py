@@ -1,1 +1,1 @@
-from schnorr import *
+from .schnorr import *
