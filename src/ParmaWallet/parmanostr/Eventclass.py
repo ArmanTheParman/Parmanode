@@ -1,5 +1,4 @@
-import json
-import hashlib
+import json, os, hashlib
 from functions import schnorr_sign
 class Event:
     def __init__(self, id=None, pubkey=None, created_at=None, kind=None, tags=None, content=None, sig=None, sec=None): #note: tags is a mutable object and re-called each time the contructor is used. So, should not directly set it.
