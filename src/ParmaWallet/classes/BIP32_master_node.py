@@ -167,6 +167,7 @@ class Child_key:
                         break
         self.PubK_only = PubK_only
         self.xprv = None
+        self.index = account
         if serialize == True:
             self.parent_public_key = parent.public_key 
             self.depth = depth
