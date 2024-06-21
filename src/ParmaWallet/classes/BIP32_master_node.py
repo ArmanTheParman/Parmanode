@@ -118,11 +118,16 @@ class BIP32_master_node:
         #self.xpub=base58.b58encode(raw_xpub)
         
     def __repr__(self):
-        return "BIP32_master_node object" + '\n' + \
-        "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
-        "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \
-        "\nThe BIP32 root key is: {}".format(self.xprv) + '\n'
-    
+        if self.xprv is not None:
+            return "BIP32_master_node object" + '\n' + \
+            "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
+            "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \
+            "\nThe BIP32 root key is: {}".format(self.xprv) + '\n'
+        else:
+            return "BIP32_master_node object" | '\n' + \
+            "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
+            "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \ 
+            "\nThe BIP32 root key has not been serialized\n"
 
 class child_key:
     def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=True, PK=False): #account is also the "index"
@@ -160,7 +165,13 @@ class child_key:
             self.parent_public_key = parent.public_key 
             self.depth = depth
             self.i = i
-       
+
+    def __repr__(self):
+        return "BIP32_master_node object" + '\n' + \
+        "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
+        "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \
+        "\nThe BIP32 root key is: {}".format(self.xprv) + '\n'   
+
     def serialize (self):
         #Extended Key Serialisation (no checksum yet)
         # 1 byte, version prefix; 1 byte for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
