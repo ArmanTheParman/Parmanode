@@ -15,19 +15,22 @@ class Event:
         self.id = hashlib.sha256(self.json_bytes).hexdigest() #<32-bytes lowercase hex-encoded sha256 of the serialized event data>, use ""
         self.id_bytes = hashlib.sha256(self.json_bytes).digest()
 
-
         if sec is not None and isinstance(sec, bytes):
             self.sig = schnorr_sign(msg=self.id_bytes, seckey=sec, aux_rand=os.urandom(32)).hex()
+        
+        self.data_final= json.dumps([self.id,self.pubkey,self.created_at,self.kind,self.tags,self.content,self.sig], ensure_ascii=False, separators=(',',':'))
+        
 
     def __repr__(self):
-        return "{\n" \
-        + "    " + f"\"id\"={self.id},"                 + "\n"  \
-        + "    " + f"\"pubkey\"={self.pubkey},"         + "\n"  \
-        + "    " + f"\"created_at\"={self.created_at}," + "\n"  \
-        + "    " + f"\"kind\"={self.kind},"             + "\n"  \
-        + "    " + f"\"tags\"={self.tags},"             + "\n"  \
-        + "    " + f"\"content\"={self.content},"       + "\n"  \
-        + "    " + f"\"sig\"={self.sig}"                + '\n' + "}"
+        return f"{self.data_final}"
+        #return "{\n" \
+        # + "    " + f"\"id\"={self.id},"                 + "\n"  \
+        # + "    " + f"\"pubkey\"={self.pubkey},"         + "\n"  \
+        # + "    " + f"\"created_at\"={self.created_at}," + "\n"  \
+        # + "    " + f"\"kind\"={self.kind},"             + "\n"  \
+        # + "    " + f"\"tags\"={self.tags},"             + "\n"  \
+        # + "    " + f"\"content\"={self.content},"       + "\n"  \
+        # + "    " + f"\"sig\"={self.sig}"                + '\n' + "}"
 
     def serialise (self):
         print ("["+str(self.id)+"]")
