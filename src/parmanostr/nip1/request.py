@@ -1,5 +1,6 @@
 class Request:
     def __init__(self, subscription_id=None, filter=None):
+        a = True
 
 
 
