@@ -118,7 +118,7 @@ class BIP32_master_node:
         #self.xpub=base58.b58encode(raw_xpub)
         
     def __repr__(self):
-        return "BIP32_master_node object" + \
+        return "BIP32_master_node object" + '\n' + \
         "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
         "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \
         "\nThe BIP32 root key is: {}".format(self.xprv)
