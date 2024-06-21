@@ -165,7 +165,7 @@ class Child_key:
             else: #For Watching Wallets
                         self.public_key = Il2 + parent.public_key # This is point addition, not concatenation
                         break
-        
+        self.PubK_only = PubK_only
         self.xprv = None
         if serialize == True:
             self.parent_public_key = parent.public_key 
