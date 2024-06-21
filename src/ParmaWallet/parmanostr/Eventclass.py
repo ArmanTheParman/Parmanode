@@ -18,7 +18,7 @@ class Event:
         if sec is not None and isinstance(sec, bytes):
             self.sig = schnorr_sign(msg=self.id_bytes, seckey=sec, aux_rand=os.urandom(32)).hex()
         
-        self.data_final= json.dumps([self.id,self.pubkey,self.created_at,self.kind,self.tags,self.content,self.sig], ensure_ascii=False, separators=(',',':'))
+        self.data_final= json.dumps([self.id,self.pubkey,self.created_at,self.kind,self.tags,self.content,self.sig], ensure_ascii=False, indent=4)
         
 
     def __repr__(self):
