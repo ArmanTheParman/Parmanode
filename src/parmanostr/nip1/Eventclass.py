@@ -20,7 +20,7 @@ class Event:
         
     def __repr__(self):
         print (type(self))
-        return f"{{\n  \"id\"={self.id}, \"pubkey\"={self.pubkey}, \"created_at\"={self.created_at}, \"kind\"={self.kind}, \"tags\"={self.tags}, \"content\"={self.content}, \"sig\"={self.sig}" + '\n' + \
+        return f"{{\n  \"id\"={self.id}, \"pubkey\"={self.pubkey}, \"created_at\"={self.created_at}, \"kind\"={self.kind}, \"tags\"={self.tags}, \"content\"={self.content}, \"sig\"={self.sig}" + '\n' + "}}" + \
         "The json string..." + f"{self.json_string}"
 
     def serialise (self):
