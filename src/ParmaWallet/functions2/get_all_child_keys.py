@@ -8,11 +8,11 @@ import unicodedata, hashlib, binascii, hmac
 def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str=''):
 
     a = BIP32_master_node(mnemonic, passphrase)
-    b = child_key(a, depth=1, account=84, hardened=True, serialize=False) #purpose
-    c = child_key(b, depth=1, account=0, hardened=True, serialize=False) #coin
-    d = child_key(c, depth=1, account=0, hardened=True, serialize=False) #account
-    e = child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
-    f = child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
+    b = Child_key(a, depth=1, account=84, hardened=True, serialize=False) #purpose
+    c = Child_key(b, depth=1, account=0, hardened=True, serialize=False) #coin
+    d = Child_key(c, depth=1, account=0, hardened=True, serialize=False) #account
+    e = Child_key(d, depth=1, account=0, hardened=False, serialize=False) #int/ext
+    f = Child_key(e, depth=1, account=0, hardened=False, serialize=True) #address
 
     if depth == 'a':
         return a
