@@ -16,8 +16,6 @@ class Event:
         self.json_bytes = self.json_string.encode('utf-8')
         self.id = hashlib.sha256(self.json_bytes).hexdigest() #<32-bytes lowercase hex-encoded sha256 of the serialized event data>, use ""
 
-
-        
     def __repr__(self):
         return "{\n" \
         + "    " + f"\"id\"={self.id},"                 + "\n"  \
