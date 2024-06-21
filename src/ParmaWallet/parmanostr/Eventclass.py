@@ -13,7 +13,7 @@ class Event:
         self.json_string = json.dumps(self.data, ensure_ascii=False, separators=(',', ':'))
         self.json_bytes = self.json_string.encode('utf-8')
         self.id = hashlib.sha256(self.json_bytes).hexdigest() #<32-bytes lowercase hex-encoded sha256 of the serialized event data>, use ""
-        self.id_bytes = hashlib.sha256(self.json_bytes)
+        self.id_bytes = hashlib.sha256(self.json_bytes).digest()
 
 
         if sec is not None and isinstance(sec, bytes):
