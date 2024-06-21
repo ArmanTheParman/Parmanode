@@ -94,44 +94,35 @@ class BIP32_master_node:
             self.serialize()
 
     def serialize(self):
-        #Extended Key Serialisation (no checksum yet)
-        # 1 byte, version prefix; 1 byte for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
-        # then 32 bytes for chaincode (yes it's on the "left"); 33 bytes for compressed pubkey, or if private
-        # key, then 1 zero byte and then 32 bytes private key. = TOTAL 78 bytes
 
-        self.depth = depth #from variables, but probably unecessary, it's just a zero byte
+        self.depth = b"\x00" #depth of 0 is the m level of the derivation path.
         raw_xprv = xprv_prefix + self.depth + fp + child + self.chain_code + self.private_key_33b
-        raw_xpub = xpub_prefix + self.depth + fp + child + self.chain_code + self.public_key
+        #raw_xpub = xpub_prefix + self.depth + fp + child + self.chain_code + self.public_key
 
         # Add checksum...
         # Double hash the raw key, and add the last 4 bytes of the result the raw key.
         hashed_xprv = hashlib.sha256(raw_xprv).digest()
-        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+        #hashed_xprv = hashlib.sha256(hashed_xprv).digest()
 
         hashed_xpub = hashlib.sha256(raw_xpub).digest()
-        hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
+        #hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
 
         # Adding checksum to the end
         raw_xprv += hashed_xprv[:4]
-        raw_xpub += hashed_xpub[:4]
+        #raw_xpub += hashed_xpub[:4]
 
         # Convert bytes to base58 text
         self.xprv=PW_Base58.encode_base58(raw_xprv)
-        self.xpub=PW_Base58.encode_base58(raw_xpub)
-        # self.xprv=base58.b58encode(raw_xprv)
-        # self.xpub=base58.b58encode(raw_xpub)
+        #self.xpub=PW_Base58.encode_base58(raw_xpub)
+        #self.xprv=base58.b58encode(raw_xprv)
+        #self.xpub=base58.b58encode(raw_xpub)
         
-        print("xprv is: " , self.xprv)
-        print("xpub is: " , self.xpub)
-
-#    def __repr__(self):
-#        return self.private_key
     def __repr__(self):
         return "BIP32_master_node object" + \
         "\nThe bin_seed: {}".format(self.byte_seed) + \
         "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64])) + \
-        "\nThe xprv is: {}".format(self.xprv) +\
-        "\nThe xpub is: {}".format(self.xpub)
+        "\nThe BIP32 root key is: {}".format(self.xprv)
+    
 
 class child_key:
     def __init__(self, parent: Union[BIP32_master_node, 'child_key'], depth=1, account=0, hardened=True, serialize=True, PK=False): #account is also the "index"
@@ -171,7 +162,11 @@ class child_key:
             self.i = i
        
     def serialize (self):
-        
+        #Extended Key Serialisation (no checksum yet)
+        # 1 byte, version prefix; 1 byte for depth; 4 bytes for parent PUB KEY (always pub) fingerprint; 
+        # then 32 bytes for chaincode (yes it's on the "left"); 33 bytes for compressed pubkey, or if private
+        # key, then 1 zero byte and then 32 bytes private key. = TOTAL 78 bytes 
+
         depth_child = int.to_bytes(self.depth, 1, 'big')
         index_child = int.to_bytes(self.i, 4, 'big')
         fp_from_parent = hash160(self.parent_public_key)[:4]
