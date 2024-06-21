@@ -176,7 +176,7 @@ class Child_key:
 
     def __repr__(self):
         return "BIP32_Child_key object" + '\n' + \
-        "\nThe Index is: {}".format(self.index_child) + '\n' + \
+        "\nThe Index is: {}".format(self.index) + '\n' + \
         "\nHardened: {}".format(self.h_text) + '\n' + \
         "\nThe xprv is: {}".format(self.xprv) + '\n' + \
         "\nThe xpub is: {}".format(self.xpub) + '\n'   
