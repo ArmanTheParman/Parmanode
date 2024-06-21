@@ -1,5 +1,5 @@
-from nip1 import event 
-from nip1 import request
+from nip1 import Event 
+from nip1 import Request
 
 a=Event()
 
