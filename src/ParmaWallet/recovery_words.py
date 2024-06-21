@@ -44,7 +44,7 @@ def dosearch(file_store: str, i0: int=0, i1: int=2048, j0: int=0, j1: int=2048):
                         mnemonic_end_string = word_look_up(i) + ' ' + word_look_up(j) + ' ' + word_look_up(final_word_val)
         #                print(mnemonic_end_string)
                         complete_string = known_string + ' ' + mnemonic_end_string
-                        test_keypair=get_all_child_keys('f', mnemonic=complete_string)
+                        test_keypair=derive_keys('f', mnemonic=complete_string)
             #            print(len(test_keypair.public_key), type(test_keypair.public_key))
                         address=pubkey_to_bech32_custom(test_keypair.public_key)
                         print(address)

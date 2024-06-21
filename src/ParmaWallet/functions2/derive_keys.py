@@ -5,7 +5,7 @@ from functions import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
 
-def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str='', purpose=44, coin=0, account=0, change=0, address=0):
+def derive_keys(depth: str='address', mnemonic: str=None, passphrase: str='', purpose=44, coin=0, account=0, change=0, address=0):
 
     a = BIP32_master_node(mnemonic, passphrase)
     b = Child_key(a, depth=1, index=purpose, hardened=True, serialize=False)
@@ -14,15 +14,15 @@ def get_all_child_keys(depth: str='f', mnemonic: str=None, passphrase: str='', p
     e = Child_key(d, depth=1, index=change, hardened=False, serialize=False) 
     f = Child_key(e, depth=1, index=address, hardened=False, serialize=True) 
 
-    if depth == 'a':
+    if depth == 'm':
         return a
-    if depth == 'b':
+    if depth == 'purpose':
         return b
-    if depth == 'c':
+    if depth == 'coin':
         return c
-    if depth == 'd':
+    if depth == 'account':
         return d
-    if depth == 'e':
+    if depth == 'change':
         return e
-    if depth == 'f':
+    if depth == 'address':
         return f
