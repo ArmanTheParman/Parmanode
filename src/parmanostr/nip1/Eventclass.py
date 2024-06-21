@@ -19,8 +19,9 @@ class Event:
 
         
     def __repr__(self):
-        return f"{{\n  \"id\"={self.id}, \"pubkey\"={self.pubkey}, \"created_at\"={self.created_at}, \"kind\"={self.kind}, \"tags\"={self.tags}, \"content\"={self.content}, \"sig\"={self.sig}"
-
+        return f"{{\n  \"id\"={self.id}, \"pubkey\"={self.pubkey}, \"created_at\"={self.created_at}, \"kind\"={self.kind}, \"tags\"={self.tags}, \"content\"={self.content}, \"sig\"={self.sig}" + \
+        f"{self.json_string}"
+        
     def serialise (self):
         print ("["+str(self.id)+"]")
 
