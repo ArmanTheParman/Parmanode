@@ -17,7 +17,7 @@ class Event:
 
 
         if sec is not None and isinstance(sec, bytes):
-            self.sig = schnorr_sign(msg=self.id_bytes, seckey=sec, aux_rand=os.urandom(32))
+            self.sig = schnorr_sign(msg=self.id_bytes, seckey=sec, aux_rand=os.urandom(32)).hex()
 
     def __repr__(self):
         return "{\n" \
