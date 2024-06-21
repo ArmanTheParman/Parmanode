@@ -126,7 +126,7 @@ class BIP32_master_node:
         else:
             return "BIP32_master_node object" | '\n' + \
             "\nThe bin_seed: {}".format(self.byte_seed) + '\n' + \
-            "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \ 
+            "\nThe bin_seed in hex: {}".format(binascii.hexlify(self.byte_seed[:64]).decode('utf-8')) + '\n' + \
             "\nThe BIP32 root key has not been serialized\n"
 
 class child_key:
