@@ -132,12 +132,15 @@ class BIP32_master_node:
 
 class Child_key:
     def __init__(self, parent: Union[BIP32_master_node, 'Child_key'], depth=1, account=0, hardened=True, serialize=True, PubK_only=False): 
-        # depth is the position in the derivation path, account is also the "index" and value of the position
-    
+        # Depth is the position in the derivation path, account is also the "index" and value of the position
+        # The 'parent' object is passed and it's variables are accessed with 'parent.variable', and child variables are manually constructed, not auto-inherited.
+
         if hardened:
             i = 2 ** 31 + account
+            self.h_text = "True"
         else:
             i = account
+            self.h_text = "False"
 
         while True:
             if hardened:
@@ -162,15 +165,21 @@ class Child_key:
             else: #For Watching Wallets
                         self.public_key = Il2 + parent.public_key # This is point addition, not concatenation
                         break
-
+        
+        self.xprv = None
         if serialize == True:
             self.parent_public_key = parent.public_key 
             self.depth = depth
             self.i = i
+            self.serialize()
 
     def __repr__(self):
         return "BIP32_Child_key object" + '\n' + \
-        "\nThe BIP32 root key is: {}".format(self.xprv) + '\n'   
+        "\nThe Depth is: {}".format(self.depth_child) + '\n' + \
+        "\nThe Index is: {}".format(self.index_child) + '\n' + \
+        "\nHardened: {}".format(self.h_text) + '\n' + \
+        "\nThe xprv is: {}".format(self.xprv) + '\n' + \
+        "\nThe xpub is: {}".format(self.xpub) + '\n'   
 
     def serialize (self):
         #Extended Key Serialisation (no checksum yet)
@@ -182,23 +191,26 @@ class Child_key:
         index_child = int.to_bytes(self.i, 4, 'big')
         fp_from_parent = hash160(self.parent_public_key)[:4]
         
-        raw_xprv = xprv_prefix + depth_child + fp_from_parent + index_child + self.chain_code + self.private_key_33b
+        if self.PubK_only == False: 
+            raw_xprv = xprv_prefix + depth_child + fp_from_parent + index_child + self.chain_code + self.private_key_33b
         raw_xpub = xpub_prefix + depth_child + fp_from_parent + index_child + self.chain_code + self.public_key
 
-        hashed_xprv = hashlib.sha256(raw_xprv).digest()
-        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+        if self.PubK_only == False: 
+            hashed_xprv = hashlib.sha256(raw_xprv).digest()
+            hashed_xprv = hashlib.sha256(hashed_xprv).digest()
 
         hashed_xpub = hashlib.sha256(raw_xpub).digest()
         hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
 
         # Adding checksum to the end
-        raw_xprv += hashed_xprv[:4]
+        if self.PubK_only == False: 
+            raw_xprv += hashed_xprv[:4]
         raw_xpub += hashed_xpub[:4]
 
         # Convert bytes to base58 text
-        self.xprv=PW_Base58.encode_base58(raw_xprv)
+        if self.PubK_only == False: 
+            self.xprv=PW_Base58.encode_base58(raw_xprv)
         self.xpub=PW_Base58.encode_base58(raw_xpub)
 
         print(self.public_key.hex())
-
         return self.public_key
