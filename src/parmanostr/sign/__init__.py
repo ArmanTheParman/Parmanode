@@ -1,1 +1,1 @@
-from .sign import *
+from schnorr import *
