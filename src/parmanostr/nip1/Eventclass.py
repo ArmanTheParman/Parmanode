@@ -1,6 +1,6 @@
 import json
 import hashlib
-
+from ../ParmaWallet/shnorr import *
 
 class Event:
     def __init__(self, id=None, pubkey=None, created_at=None, kind=None, tags=None, content=None, sig=None, nsec=None): #note: tags is a mutable object and re-called each time the contructor is used. So, should not directly set it.
@@ -32,8 +32,6 @@ class Event:
     def serialise (self):
         print ("["+str(self.id)+"]")
 
-  
-#e=Event(pubkey="fad6540c8f2fd2a16a25d0d82dd95d3bad7890d435d1690848a0a77d2883a447", created_at=1718421481, kind=1, content="\"Tax is ok, I'm happy to pay tax\".\n\n=\n\n\"I think people getting raped is ok, I like sex\".")
-#e.serialise()
+
 
   
