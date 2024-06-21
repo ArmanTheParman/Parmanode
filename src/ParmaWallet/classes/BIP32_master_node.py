@@ -102,9 +102,9 @@ class BIP32_master_node:
         # Add checksum...
         # Double hash the raw key, and add the last 4 bytes of the result the raw key.
         hashed_xprv = hashlib.sha256(raw_xprv).digest()
-        #hashed_xprv = hashlib.sha256(hashed_xprv).digest()
+        hashed_xprv = hashlib.sha256(hashed_xprv).digest()
 
-        hashed_xpub = hashlib.sha256(raw_xpub).digest()
+        #hashed_xpub = hashlib.sha256(raw_xpub).digest()
         #hashed_xpub = hashlib.sha256(hashed_xpub).digest() 
 
         # Adding checksum to the end
