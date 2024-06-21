@@ -11,7 +11,7 @@ from typing import Union
 
 class BIP32_master_node:
 
-    def __init__(self, mnemonic: str=None, passphrase: str="", byte_seed: str=None): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
+    def __init__(self, mnemonic: str=None, passphrase: str="", byte_seed: str=None, serialize=True): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
     #def __init__(self, mnemonic: str, passphrase: str): #Depth=0, Derivation path is m (not m/0), so "index" meaningless at this level.
         # print("\nBIP32_master_node function called. Default arguments are mnemonic=None, passphrase="", byte_seed=None\n")
 
@@ -89,6 +89,9 @@ class BIP32_master_node:
         self.public_key_full = (self.private_key.point)
         self.public_key = (self.private_key.point.sec())
         self.private_key_33b = b'\0' + Il
+
+        if serialize == True:
+            self.serialize()
 
     def serialize(self):
         #Extended Key Serialisation (no checksum yet)
