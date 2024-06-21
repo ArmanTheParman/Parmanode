@@ -20,13 +20,13 @@ class Event:
         
     def __repr__(self):
         return "{\n" \
-        + "    " + f"\"id\"={self.id}," \
-        + "    " + f"\"pubkey\"={self.pubkey}," \
-        + "    " + f"\"created_at\"={self.created_at}," \
-        + "    " + f"\"kind\"={self.kind}," \
-        + "    " + f"\"tags\"={self.tags}," \
-        + "    " + f"\"content\"={self.content}," \
-        + "    " + f"\"sig\"={self.sig}" + '\n' + "}"
+        + "    " + f"\"id\"={self.id},"                 + "\n" + \
+        + "    " + f"\"pubkey\"={self.pubkey},"         + "\n" + \
+        + "    " + f"\"created_at\"={self.created_at}," + "\n" + \
+        + "    " + f"\"kind\"={self.kind},"             + "\n" + \
+        + "    " + f"\"tags\"={self.tags},"             + "\n" + \
+        + "    " + f"\"content\"={self.content},"       + "\n" + \
+        + "    " + f"\"sig\"={self.sig}"                + '\n' + "}"
 
     def serialise (self):
         print ("["+str(self.id)+"]")
