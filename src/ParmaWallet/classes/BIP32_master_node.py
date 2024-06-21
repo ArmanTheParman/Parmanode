@@ -180,6 +180,8 @@ class Child_key:
         "\nHardened: {}".format(self.h_text) + '\n' + \
         "\nThe xprv is: {}".format(self.xprv) + '\n' + \
         "\nThe xpub is: {}".format(self.xpub) + '\n'   
+        "\nThe pubkey is: {}".format(self.public_key.hex()) + '\n'   
+        "\nThe privkey is: {}".format(self.private_key_key.hex()) + '\n'   
 
     def serialize (self):
         #Extended Key Serialisation (no checksum yet)
