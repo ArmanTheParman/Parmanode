@@ -4,7 +4,7 @@ from functions import *
 from functions2 import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
-from parmanostr import *
+from nostr import *
 
 test_mnemonic="mother antique cheap vanish lift excuse execute horse pause vacuum own slam"
 test_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=test_mnemonic) #NIP6
