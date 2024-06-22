@@ -174,5 +174,8 @@ function install_fuse {
 if [[ $1 != noupdate ]] ; then
 sudo apt-get update -y
 fi
-sudo apt-get install fuse libfuse2 -y
+
+if ! dpkg -l | grep -q libfuse ; then
+sudo apt-get install fuse3 libfuse2 -y
+fi
 }

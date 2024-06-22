@@ -89,22 +89,8 @@ fi
 
 case $choice in
 y|Y|Yes|yes)
-local file="/tmp/update_computer.txt"
-sudo apt-get update -y | tee $file
-if grep -q "--fix-broken install" < $file ; then
-sudo apt-get --fix-broken install -y
-fi
-if grep -q "--fix-missing install" < $file ; then
-sudo apt-get --fix-missing install -y
-fi
-if grep -q "--fix-missing remove" < $file ; then
-sudo apt-get install -f -y
-fi
-if grep -q "--fix-missing upgrade" < $file ; then
-sudo apt-get --fix-missing upgrade -y
-fi
 sudo apt-get upgrade -y 
-sudo apt-get install jq netcat vim net-tools unzip -y && echo "sudo apt-get install jq netcat vim net-tools unzip -y ; done" >> $dp/.temp 2>&1
+sudo apt-get install jq netcat vim net-tools unzip -y 
 install_fuse noupdate #linux minmal installs may need this to run AppImages
 break
 ;;
