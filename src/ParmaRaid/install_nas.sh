@@ -49,6 +49,13 @@ sudo systemctl restart nfs-kernel-server
 # sudo mdadm --detail /dev/md0
 # Important to wait for rsync to status in the report to reach 100% before using it
 
+########################################################################################
+##For windows nfs
+##sudo apt-get update
+##sudo apt-get install nfs-kernel-server
+########################################################################################
+
+
 
 
 }
