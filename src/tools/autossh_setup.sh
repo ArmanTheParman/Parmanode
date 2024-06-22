@@ -76,7 +76,6 @@ set_terminal_wide ; echo -e "
     7. Then, add these to the end of file$cyan /etc/ssh/sshd_config$orange on the VPS, or 
        find these lines and adjust them as needed.
 $green
-                            RSAAuthentication yes 
                             PubkeyAuthentication yes 
                             GatewayPorts yes 
                             AllowTcpForwarding yes 
