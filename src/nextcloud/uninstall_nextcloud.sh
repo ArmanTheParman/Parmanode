@@ -21,6 +21,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 d)
 docker rmi $(docker images | grep nextcloud | awk '{print $3}')
+break
 ;;
 l)
 break
