@@ -5,7 +5,7 @@ from functions import *
 from functions2 import *
 from variables import *
 import unicodedata, hashlib, binascii, hmac
-from recovery_words import *
+from ParmaWallet.old.recovery_words import *
 
 def worker1(): 
     dosearch("/home/parman/Desktop/resultworker1.txt", 0, 1)   
