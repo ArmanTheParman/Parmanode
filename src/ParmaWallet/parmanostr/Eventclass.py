@@ -32,8 +32,6 @@ class Event:
         # + "    " + f"\"content\"={self.content},"       + "\n"  \
         # + "    " + f"\"sig\"={self.sig}"                + '\n' + "}"
 
-    def serialise (self):
-        print ("["+str(self.id)+"]")
 
 
 
