@@ -3,6 +3,10 @@ while true ; do
 
 menu_bitcoin menu_btcpay #gets variables output1 
 
+if echo $output1 | grep -q "choose" ; then
+output1a=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
+fi
+
 set_terminal_custom 51 
 unset menu_tor enable_tor_menu tor_on findbtcp
 
@@ -35,7 +39,7 @@ echo -e "
 fi
 
 echo -ne "
-$output1" 
+$output1a" 
 
 echo -e "
 
