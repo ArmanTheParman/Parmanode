@@ -68,4 +68,6 @@ mkdir -p $dp/.nostr_keys
 echo "$mnemonic" | tee $dp/.nostr_keys/mnemonic.txt
 echo "$mnemonic" | cut -d " " -f1-11 | tee $dp/.nostr_keys/first_11.txt
 
+#unfinished
+esac
 }
