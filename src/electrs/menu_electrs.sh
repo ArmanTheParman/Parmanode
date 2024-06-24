@@ -40,7 +40,7 @@ if [[ $electrsis == nondocker ]] ; then
     running="false"
     fi
 else 
-    if docker ps | grep -q electrs ; then
+    if docker ps | grep -q electrs && docker exec electrs ps | grep electrs ; then
     running="true"
     else
     running="false"
