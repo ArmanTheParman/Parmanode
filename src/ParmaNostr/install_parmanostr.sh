@@ -23,7 +23,8 @@ set_terminal ; echo -e "
 
 $cyan        1)$orange Make a Nostr Wallet (key pair) with Parmanode. This will help 
                 you set up keys from a BIP39 seed phrase, according to the NIP-6 
-                protocol.
+                protocol. That way, you have an easy way to record down and recover
+                your Nostr keys.
 
 $cyan        2)$orange   Import your own Nostr keys
 $orange
@@ -48,8 +49,8 @@ done
 set_terminal ; echo -e "
 ########################################################################################
 
-    Type in a 12 word seed (separated by spaces) you got from somewhere else, eg Ian 
-    Coleman's BIP39 Webtool.
+    Get a 12 word seed from somewhere, eg Ian Coleman's BIP39 Webtool. Then type it
+    in here, separated by spaces.
     $pink
     Please do not use the seed phrase of a real Bitcoin Wallet! That's bloody
     dangerous. $orange
