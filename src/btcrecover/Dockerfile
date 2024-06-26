@@ -13,7 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 
 RUN pip3 install bech32 --break-system-packages
 RUN pip3 install base58 --break-system-packages
-RUN pip3 install bip_utils --break-system-packages
+RUN pip3 install bip-utils --break-system-packages
 RUN pip3 install bitcoinlib --break-system-packages
 RUN pip3 install cryptography --break-system-packages
 RUN pip3 install pycryptodome --break-system-packages

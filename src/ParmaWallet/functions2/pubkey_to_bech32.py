@@ -9,7 +9,7 @@ from ecdsa import SECP256k1
 
 import os
 from bech32 import bech32_encode, convertbits
-from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from bip-utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 import bech32
 import binascii
 from bitcoinlib import *
