@@ -8,7 +8,7 @@ from functions import *
 from variables import * 
 import bech32
 #from bech32 import bech32_encode, convertbits
-from bip-utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from bip_utils import Bip39MnemonicGenerator, Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 #ripemd160
 from Crypto.Hash import SHA256, RIPEMD160

@@ -18,7 +18,7 @@ if ! pip3 list | grep bech32 ; then
     else break
     fi
 fi
-
+done
 while true ; do
 if ! pip3 list | grep base58 ; then
 
@@ -30,7 +30,7 @@ if ! pip3 list | grep base58 ; then
     else break
     fi
 fi
-
+done
 while true ; do
 if ! pip3 list | grep bip-utils ; then
 
@@ -42,6 +42,7 @@ if ! pip3 list | grep bip-utils ; then
     else break
     fi
 fi
+done
 while true ; do
 if ! pip3 list | grep bitcoinlib ; then
 
@@ -53,6 +54,7 @@ if ! pip3 list | grep bitcoinlib ; then
     else break
     fi
 fi
+done
 while true ; do
 if ! pip3 list | grep cryptography ; then
 
@@ -64,6 +66,7 @@ if ! pip3 list | grep cryptography ; then
     else break
     fi
 fi
+done
 while true ; do
 if ! pip3 list | grep pycryptodome ; then
 
@@ -75,6 +78,7 @@ if ! pip3 list | grep pycryptodome ; then
     else break
     fi
 fi
+done
 while true ; do
 if ! pip3 list | grep gmp ; then
 
@@ -86,6 +90,7 @@ if ! pip3 list | grep gmp ; then
     else break
     fi
 fi
+done
 while true ; do
 if ! pip3 list | grep fastecdsa ; then
 
@@ -97,5 +102,6 @@ if ! pip3 list | grep fastecdsa ; then
     else break
     fi
 fi
+done
 
 }
