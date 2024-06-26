@@ -1,4 +1,4 @@
-function install_parmawallet {
+function install_parmawallet_dependencies {
 
 if [[ $OS == Linux ]] ; then
 sudo apt-get install -y libgmp-dev python3 python3-dev python3-pip openssl python3-bitcoinlib python3-base58 python3-tk build-essential libssl-dev locales 
