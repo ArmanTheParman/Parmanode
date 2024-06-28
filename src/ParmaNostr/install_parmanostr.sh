@@ -4,6 +4,7 @@ function install_parmannostr {
 #dependencies
 installed_confif_add "parmanostr-start"
 #make wallet
+make_nostr_wallet
 #make gpg keys
 #make a backup of the wallet and encrypt with gpg
 
@@ -67,8 +68,21 @@ continue
 fi
 mkdir -p $dp/.nostr_keys
 echo "$mnemonic" | tee $dp/.nostr_keys/mnemonic.txt
-echo "$mnemonic" | cut -d " " -f1-11 | tee $dp/.nostr_keys/first_11.txt
+confirm_mnemonic ; function_exit="$?"
 
-#unfinished
+if [[ $function_exit == 1 ]] ; then
+    rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
+    announce "The checksum seems to be invalid."
+    continue
+elif [[ $function_exit == 0 ]] ; then
+    rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
+    return 0
+else
+    rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
+    announce "Unexpected error. Please report to Parman."
+    continue
+fi
+;;
 esac
+
 }
