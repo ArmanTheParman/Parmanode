@@ -5,6 +5,8 @@ menu_bitcoin menu_btcpay #gets variables output1
 
 if echo $output1 | grep -q "choose" ; then
 output1a=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
+else
+output1a="$output"
 fi
 
 set_terminal_custom 51 
@@ -31,7 +33,7 @@ echo -en "
 
 
 "
-if docker ps | grep btcp >/dev/null 2>&1 ; then echo -e "
+if docker ps 2>/dev/null | grep -q btcp >/dev/null 2>&1 ; then echo -e "
                   BTCPay SERVER IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo -e "

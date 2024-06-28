@@ -4,7 +4,6 @@ if grep -q "btccombo" < $ic ; then
 dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
 fi
 
-
 #for multiselection menus, need to exit if not installed
 if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 while true
@@ -27,10 +26,8 @@ bitcoin_status #get running text variable.
 isbitcoinrunning
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
-
 if [[ $bitcoinrunning == "true" ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
-
 output2="                   Sync'ing to the $drive drive"
 highlight="$reset"
 stop="$red"
@@ -40,6 +37,7 @@ output1="                   Bitcoin is$red NOT running$orange -- choose \"start\
 output2="                   Will sync to the $drive drive"
 start="$green"
 fi                         
+
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
 output3="
@@ -58,7 +56,6 @@ output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | c
 if [[ -z $drive ]] ; then unset output2 ; fi
 
 if [[ $1 == menu_btcpay ]] ; then return 0 ; fi
-
 set_terminal_custom "52"
 
 echo -en "
