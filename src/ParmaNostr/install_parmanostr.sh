@@ -61,13 +61,18 @@ set_terminal ; echo -e "
 choose xpmq ; read mnemonic ; set_terminal
 case $mnemonic in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
 *)
+
 if ! echo "$mnemnoic" | wc -w | grep 12 ; then
 set_terminal ; announce "Please enter exactly 12 words."
 continue
 fi
+
 mkdir -p $dp/.nostr_keys
 echo "$mnemonic" | tee $dp/.nostr_keys/mnemonic.txt
+
+#Python code to confirm checksum is valid
 confirm_mnemonic ; function_exit="$?"
 
 if [[ $function_exit == 1 ]] ; then
