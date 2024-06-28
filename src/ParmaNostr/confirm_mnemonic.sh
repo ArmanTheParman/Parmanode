@@ -7,6 +7,7 @@ import sys, copy, os
 sys.path.append("$pn/src/ParmaWallet")
 from classes import *
 from functions import *
+from functions2 import *
 from variables import *
 from nostr import *
 import unicodedata, hashlib, binascii, hmac
@@ -15,7 +16,7 @@ wordlist_path = "$pn/src/ParmaWallet/docs/english.txt"
 mnemonic_path = "$dp/.nostr_keys/mnemonic.txt"
 
 with open (mnemonic_path, 'r') as file:
-   content = file.read()
+   content = file.read().strip()
    words = content.split()
 
 with open (wordlist_path, 'r') as file:
@@ -39,13 +40,23 @@ hash_binary = bin(hash_int)[2:].zfill(4)                         #convert hex in
 final_word_random_bin = bin_key[121:128]
 final_word_full_bin_test = final_word_random_bin + hash_binary
 
-for bin_num, word in enumerated_lines:
-    if final_word_full_bin_test == bin_num:
-        if word == words[11]:
-            exit(0)
-        else:
-            exit(1)
+while True:
+    for bin_num, word in enumerated_lines:
+        if final_word_full_bin_test == bin_num:
+            if word == words[11]:
+                flag=1
+                break 
+            else:
+                exit(1)
+    if flag == 1:
+        break
+    exit(2)            
 
-exit(2)            
+the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content) #NIP6
+the_secret_bytes=the_keypair.private_key.secret_bytes
+pubkey_schnorr=the_keypair.public_key[1:].hex()
+print("pub", pubkey_schnorr)
+NSEC=make_nsec(the_secret_bytes)
+print(NSEC)
 END
 }

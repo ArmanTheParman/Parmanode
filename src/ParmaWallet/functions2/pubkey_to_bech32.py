@@ -66,4 +66,24 @@ def pubkey_to_bech32_original(the_pubkey):
     # Generate a SegWit address using bech32 encoding
     address = bech32_encode('bc', [0] + witness_program)
     print("Address: " + address)
+   
+
+def make_nsec(secret_bytes):   
+    # Convert bytes to 5-bit words
+    private_key_5bit = convertbits_custom(secret_bytes, 8, 5)
+
+    # Encode using Bech32 with "nsec" prefix
+    return bech32.bech32_encode("nsec", private_key_5bit) 
+
+def nsec_to_bytes(nsec):
+    # Decode the Bech32 string to get the 5-bit words
+    hrp, data = bech32.bech32_decode(nsec)
     
+    if hrp != 'nsec':
+        raise ValueError("Invalid nsec string")
+
+    # Convert 5-bit words back to 8-bit bytes
+    decoded_bytes = convertbits_custom(data, 5, 8, False)
+    
+    # Return the byte array
+    return bytes(decoded_bytes)

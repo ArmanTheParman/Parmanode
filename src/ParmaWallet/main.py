@@ -6,10 +6,19 @@ from variables import *
 import unicodedata, hashlib, binascii, hmac
 from nostr import *
 
-test_mnemonic="mother antique cheap vanish lift excuse execute horse pause vacuum own slam"
-test_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=test_mnemonic) #NIP6
-test_secret_bytes=test_keypair.private_key.secret_bytes
-#test_event=Event(pubkey="fad6540c8f2fd2a16a25d0d82dd95d3bad7890d435d1690848a0a77d2883a447", sec=test_secret_bytes, created_at=1718421481, kind=1, content="\"Tax is ok, I'm happy to pay tax\".\n\n=\n\n\"I think people getting raped is ok, I like sex\".")
-test_event=Event(pubkey="fad6540c8f2fd2a16a25d0d82dd95d3bad7890d435d1690848a0a77d2883a447", sec=test_secret_bytes, created_at=1718421481, kind=1, content="Why not just make every Tweet a Nostr event JSON?")
+the_mnemonic="leader monkey parrot ring guide accident before fence cannon height naive bean"
+print(the_mnemonic, type(the_mnemonic))
+the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=the_mnemonic) #NIP6
+the_secret_bytes=the_keypair.private_key.secret_bytes
+print(the_secret_bytes)
+pubkey_schnorr=the_keypair.public_key[1:].hex()
+print("pub", pubkey_schnorr)
+NSEC=make_nsec(the_secret_bytes)
+print(NSEC)
+the_event=Event(pubkey=pubkey_schnorr, sec=the_secret_bytes, created_at=1718421481, kind=1, content="Why not just make every Tweet a Nostr event JSON?")
 
-print(test_event)
+print(the_event)
+
+
+x=nsec_to_bytes("nsec10allq0gjx7fddtzef0ax00mdps9t2kmtrldkyjfs8l5xruwvh2dq0lhhkp")
+print(x)

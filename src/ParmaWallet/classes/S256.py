@@ -97,7 +97,7 @@ class S256Point(Point):
                 return (b'\x02' + self.x.num.to_bytes(32, 'big')).hex()
             if self.y.num % 2 == 0 and format=="bytes":  
                 return b'\x02' + self.x.num.to_bytes(32, 'big')
-
+        
     def hash160(self, compressed="compressed"):
         return hash160(self.sec(compressed))
 

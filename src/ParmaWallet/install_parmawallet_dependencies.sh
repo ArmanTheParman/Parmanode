@@ -4,6 +4,9 @@ if [[ $OS == Linux ]] ; then
 sudo apt-get install -y libgmp-dev python3 python3-dev python3-pip openssl python3-bitcoinlib python3-base58 python3-tk build-essential libssl-dev locales 
 elif [[ $OS == Mac ]]; then
 brew install gmp
+export CFLAGS="-I$(brew --prefix gmp)/include"
+export LDFLAGS="-L$(brew --prefix gmp)/lib"
+
 fi
 
 #mac and linux..
