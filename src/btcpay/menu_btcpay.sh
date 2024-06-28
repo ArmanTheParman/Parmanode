@@ -6,7 +6,7 @@ menu_bitcoin menu_btcpay #gets variables output1
 if echo $output1 | grep -q "choose" ; then
 output1a=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
 else
-output1a="$output"
+output1a="$output1"
 fi
 
 set_terminal_custom 51 
