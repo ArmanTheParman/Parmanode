@@ -14,6 +14,9 @@ import unicodedata, hashlib, binascii, hmac
 
 wordlist_path = "$pn/src/ParmaWallet/docs/english.txt"
 mnemonic_path = "$dp/.nostr_keys/mnemonic.txt"
+nostr_nsec = "$dp/.nostr_keys/nsec.txt"
+nostr_npub = "$dp/.nostr_keys/npub.txt"
+nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.txt"
 
 with open (mnemonic_path, 'r') as file:
    content = file.read().strip()
@@ -53,10 +56,17 @@ while True:
     exit(2)            
 
 the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content) #NIP6
-the_secret_bytes=the_keypair.private_key.secret_bytes
-pubkey_schnorr=the_keypair.public_key[1:].hex()
-print("pub", pubkey_schnorr)
-NSEC=make_nsec(the_secret_bytes)
-print(NSEC)
+
+with open(nostr_nsec_bytes, 'w') as file:
+    the_secret_bytes=the_keypair.private_key.secret_bytes
+    file.write(the_secret_bytes)
+
+with open(nostr_nsec, 'w') as file:
+    file.write(make_nsec(the_secret_bytes))
+
+with open(nostr_npub, 'w') as file:
+    pubkey_schnorr=the_keypair.public_key[1:].hex()
+    file.write(pubkey_schnorr)
+
 END
 }
