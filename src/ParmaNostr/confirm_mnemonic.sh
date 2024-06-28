@@ -1,4 +1,5 @@
 function confirm_mnemonic {
+
 #print(sys.path)  
 
 python3 <<END
