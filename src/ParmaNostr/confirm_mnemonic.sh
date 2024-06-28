@@ -59,14 +59,14 @@ the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content
 
 with open(nostr_nsec_bytes, 'w') as file:
     the_secret_bytes=the_keypair.private_key.secret_bytes
-    file.write(the_secret_bytes)
+    file.write(str(the_secret_bytes) + '\n')
 
 with open(nostr_nsec, 'w') as file:
-    file.write(make_nsec(the_secret_bytes))
+    file.write(make_nsec(the_secret_bytes) + '\n')
 
 with open(nostr_npub, 'w') as file:
     pubkey_schnorr=the_keypair.public_key[1:].hex()
-    file.write(pubkey_schnorr)
+    file.write(pubkey_schnorr + '\n')
 
 END
 }
