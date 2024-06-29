@@ -1,8 +1,5 @@
 function install_parmanostr {
-
-#intro - what parmanostr does. Recommend own relay.
-#dependencies
-installed_config_add "parmanostr-start"
+intro_parmanostr || return 1
 #make wallet
 install_parmawallet_dependencies
 if [[ -d $dp/.nostr_keys ]] ; then
@@ -45,7 +42,8 @@ done
 fi
 
 if [[ $skipwallet != "true" ]] ; then
-make_nostr_wallet
+make_nostr_wallet || return 1
+installed_config_add "parmanostr-start"
 fi
 unset skipwallet
 
@@ -55,5 +53,4 @@ unset skipwallet
 
 installed_config_add "parmanostr-end"
 success "ParmaNostr has been installed"
-
 }
