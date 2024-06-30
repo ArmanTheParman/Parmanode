@@ -28,7 +28,7 @@ echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
 supposed to sync to the external drive and it is not connected and mounted.
 Hit <enter> to try again once you connect the drive."
 fi
-if [[ ! -e $bc ]] ; then
+if [[ ! -e $bc && $debug != 1 ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
 fi
