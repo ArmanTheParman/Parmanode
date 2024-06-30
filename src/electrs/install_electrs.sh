@@ -7,9 +7,11 @@ grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second 
     system. Parmanode cannot install electrs if the Docker version is 
     already installed. Bad things can happen. Aborting." && return 1 
 
-grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
+if [[ $debug != 1 ]] ; then
+grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 sned_sats
+fi
 
 #if ! which nginx >/dev/null ; then install_nginx ; fi
 #trying socat instead
