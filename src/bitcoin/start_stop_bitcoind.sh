@@ -80,5 +80,5 @@ docker exec -itu parman btcpay bitcoind
 }
 
 function stop_bitcoin_docker {
-docker exec -itu parman btcpahy bitcoin-cli stop
+docker exec -itu parman btcpay bitcoin-cli stop
 }
