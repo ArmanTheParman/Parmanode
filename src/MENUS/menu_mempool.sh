@@ -55,8 +55,6 @@ $running
 
                   tor)           Enable/Disable Tor.        $tor_mempool_status
 
-                  bk)            Change Bitcoin Backend     
-
                   conf)          View/Edit config           $pink(restart if changing)$orange
 
 
@@ -103,9 +101,9 @@ fi
 unset file
 ;;
 
-bk)
-mempool_backend
-;;
+# bk)
+# mempool_backend
+# ;;
 
 conf)
 nano $hp/mempool/docker/docker-compose.yml
