@@ -20,10 +20,8 @@ else
 fi
 done
 
-#leave here for old installations. Electrum x new installs don't use nginx
-nginx_stream electrumx remove
 
-electrumx_tor_remove uninstall || log electrumx "electrumx_tor_remove return 1"
+electrumx_tor_remove uninstall
 
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop electrumx.service >/dev/null 2>&1
