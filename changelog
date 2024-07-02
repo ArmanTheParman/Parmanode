@@ -1,3 +1,6 @@
+Version 3.41.0
+    -ParmaNostr - New software beginnigs. Can create a Nostr wallet from mnemonic seed, or import
+     seed, or import keys.
 Version 3.40.0
     -BTCPay for Mac available; combines Bitcoin in same docker container. Much refactoring done.
 Version 3.39.1
