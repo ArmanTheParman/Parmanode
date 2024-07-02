@@ -23,7 +23,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has detected that your OpenSSH server version installed on your
-    system is not up today. This was checked because there has been a security 
+    system is not up to date. This was checked because there has been a security 
     breach in the older versions of the software.
 
     You have:
