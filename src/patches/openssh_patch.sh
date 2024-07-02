@@ -7,13 +7,13 @@ if [[ $openssh == "hide" ]] ; then return 0 ; fi
 ssh_major=$(ssh -V 2>&1 | grep -oE '[0-9].+\.' | cut -d \. -f1)
 
 if [[ $ssh_major -lt 9 ]] ; then opensshversion="old"
-elif [[ $ssh_major -gt 9 ]] ; then return 0
+elif [[ $ssh_major -gt 9 ]] ; then echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ; return 0
 elif [[ $ssh_major == 9 ]] ; then
 
     ssh_minor=$(ssh -V 2>&1 | grep -oE '\.[0-9]' | head -n1 | cut -d \. -f2) 
         if [[ $ssh_minor -lt 8 ]] ; then
             opensshversion="old"
-        else return 0 
+        else echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ; return 0 
         fi
 
 fi
