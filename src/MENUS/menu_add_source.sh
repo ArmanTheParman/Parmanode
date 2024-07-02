@@ -558,6 +558,6 @@ elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then
 parmanostr_p="#                                      Parmanostr                                      #"
 else
    #not installed
-parmanostr_n="#                            (next)        Parmanost                                   #"
+parmanostr_n="#                            (pnostr)      Parmanost                                   #"
 fi
 }

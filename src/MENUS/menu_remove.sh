@@ -269,6 +269,12 @@ echo -e "#                                    (next)             NextCloud      
 elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
 echo -e "#                                    (next)             NextCloud              $red$blinkon(partial)$blinkoff$orange    #
 #                                                                                      #" ; fi
+if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
+echo -e "#                                    (pnostr)           Parmanostr                     #
+#                                                                                      #"
+elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
+echo -e "#                                    (pnostr)           Parmanostr             $red$blinkon(partial)$blinkoff$orange    #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -553,6 +559,13 @@ fi
 next)
 if [[ $nextcloudmenu == 1 ]] ; then
 uninstall_nextcloud
+return
+fi
+;;
+
+pnostr)
+if [[ $parmanostrmenu == 1 ]] ; then
+uninstall_parmanostr
 return
 fi
 ;;

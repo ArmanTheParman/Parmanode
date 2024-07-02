@@ -158,6 +158,13 @@ ws)
     ;;
 ng)
     if [[ -n $nginx_n ]] ; then
+    install_nginx
+    return 0
+    fi
+    ;;
+pnostr)
+    if [[ -n $parmanostr_n ]] ; then
+    install_parmanostr
     return 0
     fi
     ;;
