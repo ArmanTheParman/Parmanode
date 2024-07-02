@@ -7,7 +7,8 @@ unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumap
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
-unset electrumxapp thunderhubapp websiteapp lnddockerapp
+unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp nextcloudapp
+parmanostrapp 
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -134,6 +135,9 @@ if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
                             " ; fi
 if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
                        echo "    (next)       NextCloud
+                            " ; fi
+if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp=1
+                       echo "    (pnostr)     ParmaNostr 
                             " ; fi
 echo "                            
 #######################################################################################
@@ -385,6 +389,12 @@ lt)
 next) 
    if [[ $nextcloudapp == 1 ]] ; then
    menu_nextcloud
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   fi
+   ;;
+pnostr) 
+   if [[ $parmanostrapp == 1 ]] ; then
+   menu_parmanostr
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    fi
    ;;
