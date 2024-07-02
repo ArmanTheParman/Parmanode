@@ -18,7 +18,7 @@ elif [[ $ssh_major == 9 ]] ; then
 
 fi
 
-while true ; dp
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
