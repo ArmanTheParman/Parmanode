@@ -4,8 +4,10 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Get a 12 word seed from somewhere, eg Ian Coleman's BIP39 Webtool. Then type it
-    in here, separated by spaces.
+    Get a 12 word seed from somewhere, eg Ian Coleman's BIP39 Webtool. 
+    
+    Then type it in here, separated by spaces.
+
     $pink
     Please do not use the seed phrase of a real Bitcoin Wallet! That's bloody
     dangerous. $orange

@@ -7,6 +7,7 @@ set_terminal ; echo -e "
 ########################################################################################
 $orange
 
+
                  seed)               See seed words
 
                  nsec)               See private key
@@ -36,7 +37,7 @@ unset enter_cont
 announce "Are you sure you want to uninstall ParmaNostr and delete 
     your Nostr Keys??? $red y$orange or$green n$orange"
 if [[ $enter_cont == y ]] ; then
-rm -rf $dp/.nostr_keys && installed_conf_remove "parmanostr" && success "Nostr keys destroed"
+rm -rf $dp/.nostr_keys && installed_conf_remove "parmanostr" && success "Nostr keys destroed" && back2main
 fi
 ;;
 nsec)
