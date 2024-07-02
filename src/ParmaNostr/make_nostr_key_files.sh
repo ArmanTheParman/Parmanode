@@ -20,6 +20,9 @@ nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.txt"
 random_binary_path = "$dp/.nostr_keys/random_binary.txt"
 full_binary_path = "$dp/.nostr_keys/full_binary.txt"
 
+with open (wordlist_path, 'r') as file:
+        # List will be numbered using binary, starting from zero
+        bip39list_lines = [(format(line_number, '011b'), line.strip()) for line_number, line in enumerate(file)]
 
 # Code splits here, path A and path B. If function being called to check a mnemonic (A) vs inputing a full binary key (B)...
 
@@ -29,13 +32,10 @@ if os.path.exists(mnemonic_path):      #path A
         content = file.read().strip()
         words = content.split()
 
-    with open (wordlist_path, 'r') as file:
-        enumerated_lines = [(format(line_number, '011b'), line.strip()) for line_number, line in enumerate(file)]
-
     bin_key = ""
 
     for i in range(12):
-        for bin_num, word in enumerated_lines:
+        for bin_num, word in bip39list_lines:
            if words[i] == word:
            bin_key = bin_key + str(bin_num)
 
@@ -56,12 +56,15 @@ checksum_of_bin_key = hashlib.sha256(bin_key_bytes).hexdigest()[0:1] #hash the b
 checksum_int = int(checksum_of_bin_key, 16)                              #convert first hex string character to integer
 hash_binary = bin(checksum_int)[2:].zfill(4)                         #convert hex integer to binary string, cut out prefix, then fill to 4 characters.
 
+# Code splits again
+
 if codepath == "A":
+
     final_word_random_bin = bin_key[121:128]
     final_word_full_bin = final_word_random_bin + hash_binary
 
     while True:
-        for bin_num, word in enumerated_lines:
+        for bin_num, word in bip39list_lines:
             if final_word_full_bin == bin_num:
                 if word == words[11]:
                     flag=1
@@ -71,14 +74,27 @@ if codepath == "A":
         if flag == 1:
             break
         exit(2)            
-elif codepath == "B":
-    full_bin_key = bin_key + hash_binary
-    with open (full_binary_path, 'w') as file:
-        file.write(full_bin_key + '\n')                #128 bit binary now should be 132 bit with correct checksum.
 
-    #make content for path B
+elif codepath == "B":
+
+    full_bin_key = bin_key + hash_binary
+
+    with open (full_binary_path, 'w') as file:         # can't do this earlier
+        file.write(full_bin_key + '\n')                # 128 bit binary now should be 132 bit with correct checksum.
+
+    #make content variable for path B
+
+    with open(mnemonic_path, 'w') as file:
+        chunks = [full_bin_key[i:i+11] for i in range(0, len(full_bin_key), 11)]
+        for i in chunks:
+            for line, word in bip39list_lines:
+                if i == line:
+                    file.write(word + " ")
+        file.write('\n') 
+        content = file.read().strip()
 
 # at this point only one path in the code has full 'content' variable
+
 the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content) #NIP6
 
 with open(nostr_nsec_bytes, 'w') as file:
@@ -92,7 +108,8 @@ with open(nostr_npub, 'w') as file:
     pubkey_schnorr=the_keypair.public_key[1:].hex()
     file.write(pubkey_schnorr + '\n')
 
-with open (full_binary_path, 'w') as file:
-    file.write(full_bin_key + '\n')
+if codepath == "A":
+    with open (full_binary_path, 'w') as file:
+        file.write(full_bin_key + '\n')
 END
 }
