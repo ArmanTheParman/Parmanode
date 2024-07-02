@@ -52,5 +52,7 @@ unset skipwallet
 
 
 installed_config_add "parmanostr-end"
+if [[ $success != "done" ]] ; then
 success "ParmaNostr has been installed"
+fi
 }

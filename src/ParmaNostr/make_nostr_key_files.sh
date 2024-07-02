@@ -1,4 +1,4 @@
-function confirm_mnemonic {
+function make_nostr_key_files {
 
 #print(sys.path)  
 
@@ -24,8 +24,6 @@ with open (mnemonic_path, 'r') as file:
 
 with open (wordlist_path, 'r') as file:
    enumerated_lines = [(format(line_number, '011b'), line.strip()) for line_number, line in enumerate(file)]
-
-#print(enumerated_lines)
 
 bin_key = ""
 
