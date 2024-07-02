@@ -4,6 +4,7 @@ function apply_patches {
 #get $patch from parmanode.conf
 
 temp_patch
+openssh_patch
 
 case $patch in 
 1) 
