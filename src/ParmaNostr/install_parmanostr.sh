@@ -54,6 +54,7 @@ unset skipwallet
 
 installed_config_add "parmanostr-end"
 if [[ $success != "done" ]] ; then
+rm $dp/.nostr_keys/random_binary.txt >/dev/null 2>&1
 success "ParmaNostr has been installed"
 fi
 }

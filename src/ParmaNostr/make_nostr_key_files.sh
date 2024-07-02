@@ -1,7 +1,6 @@
 function make_nostr_key_files {
 
 #For use when a valid mnemonic alrady exists
-debug hi
 python3 <<END
 import sys, copy, os
 sys.path.append("$pn/src/ParmaWallet")
@@ -15,7 +14,7 @@ import unicodedata, hashlib, binascii, hmac
 wordlist_path = "$pn/src/ParmaWallet/docs/english.txt"
 mnemonic_path = "$dp/.nostr_keys/mnemonic.txt"
 nostr_nsec = "$dp/.nostr_keys/nsec.txt"
-nostr_npub = "$dp/.nostr_keys/npub.txt"
+nostr_pub = "$dp/.nostr_keys/pub.txt"
 nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.txt"
 random_binary_path = "$dp/.nostr_keys/random_binary.txt"
 full_binary_path = "$dp/.nostr_keys/full_binary.txt"
@@ -39,11 +38,13 @@ if os.path.exists(mnemonic_path):      #path A
            if words[i] == word:
                bin_key = bin_key + str(bin_num)
 
+    full_bin_key = bin_key
+
 elif os.path.exists(random_binary_path):       #path B
     codepath = "B"
     with open (random_binary_path, 'r') as file:
         bin_key = file.read().strip()
-
+    
 else:
     raise FileNotFoundError(f"{mnemonic_path} or {random_binary_path} not found")
 
@@ -60,11 +61,11 @@ hash_binary = bin(checksum_int)[2:].zfill(4)                         #convert he
 if codepath == "A":
 
     final_word_random_bin = bin_key[121:128]
-    full_bin_key = final_word_random_bin + hash_binary
+    final_word_bin = final_word_random_bin + hash_binary
 
     while True:
         for bin_num, word in bip39list_lines:
-            if full_bin_key == bin_num:
+            if final_word_bin == bin_num:
                 if word == words[11]:
                     flag=1
                     break 
@@ -105,7 +106,7 @@ with open(nostr_nsec_bytes, 'w') as file:
 with open(nostr_nsec, 'w') as file:
     file.write(make_nsec(the_secret_bytes) + '\n')
 
-with open(nostr_npub, 'w') as file:
+with open(nostr_pub, 'w') as file:
     pubkey_schnorr=the_keypair.public_key[1:].hex()
     file.write(pubkey_schnorr + '\n')
 

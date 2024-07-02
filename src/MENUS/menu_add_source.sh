@@ -547,4 +547,17 @@ else
    #not installed
 nextcloud_n="#                            (next)        NextCloud                                   #"
 fi
+
+#parmanostr
+unset parmanostr_i parmanostr_p parmanostr_n
+if grep -q "parmanostr-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+parmanostr_i="#                                      Parmanostr                                      #"
+elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+parmanostr_p="#                                      Parmanostr                                      #"
+else
+   #not installed
+parmanostr_n="#                            (next)        Parmanost                                   #"
+fi
 }

@@ -13,6 +13,7 @@ echo -e "
 #$green Not yet installed...$orange                                                                 #
 #                                                                                      #"
 if [[ -n $parmashell_n ]]      ; then echo  "$parmashell_n"; fi 
+if [[ -n $parmanostr_n ]]      ; then echo  "$parmanostr_n"; fi
 if [[ -n $docker_n ]]          ; then echo  "$docker_n"; fi
 if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
 if [[ -n $torserver_n ]]       ; then echo  "$torserver_n"; fi
@@ -31,6 +32,7 @@ echo -e "#                                                                      
 #$green Installed...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
+if [[ -n $parmanostr_i ]]      ; then echo  "$parmanostr_i"; fi
 if [[ -n $docker_i ]]          ; then echo  "$docker_i"; fi
 if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
 if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
@@ -47,6 +49,7 @@ echo -e "#                                                                      
 #$green Failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
+if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi
 if [[ -n $docker_p ]]          ; then echo  -e "$pink$docker_p$orange"; fi
 if [[ -n $tor_p ]]             ; then echo  -e "$pink$tor_p$orange"; fi
 if [[ -n $torserver_p ]]       ; then echo  -e "$pink$torserver_p$orange"; fi
@@ -58,7 +61,7 @@ if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
 if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
-if [[ -n $nginx_p ]]            ; then echo  -e "$pink$nginx_p$orange"; fi
+if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "

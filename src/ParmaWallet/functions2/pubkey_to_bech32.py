@@ -87,3 +87,16 @@ def nsec_to_bytes(nsec):
     
     # Return the byte array
     return bytes(decoded_bytes)
+
+def make_npub(pubkey: str = None):
+
+    # Convert the hexadecimal key to bytes
+    pub_key_bytes = bytes.fromhex(pubkey)
+
+    # Convert 8-bit bytes to 5-bit array
+    pub_key_5bit = convertbits_custom(pub_key_bytes, 8, 5, pad=True)
+
+    # Bech32 encode with "npub" prefix
+    npub_key = bech32_encode('npub', pub_key_5bit)
+
+    return (npub_key)

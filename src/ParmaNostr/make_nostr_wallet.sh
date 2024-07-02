@@ -30,7 +30,6 @@ invalid
 ;;
 esac
 done
-#proforma
 
 while true ; do
 set_terminal ; echo -e "
@@ -63,5 +62,7 @@ invalid
 ;;
 esac
 done
+
+make_npub #takes pub.txt and makes npub.txt
 
 }

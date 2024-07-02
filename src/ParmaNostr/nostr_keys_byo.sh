@@ -34,9 +34,8 @@ if [[ $function_exit == 1 ]] ; then
     announce "The checksum seems to be invalid."
     continue
 elif [[ $function_exit == 0 ]] ; then
-    rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
     announce "Please note, your mnemonic, nsec, and npub are kept unencrypted in the 
-    hidden directory: $dp/.nostr_keys/
+    hidden directory:$cyan $dp/.nostr_keys/ $orange
 
     Parmanode needs access to this directory to sign messages for you. Things will 
     stop working if you delete or move it."
