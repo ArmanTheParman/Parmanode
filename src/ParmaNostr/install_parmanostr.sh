@@ -1,7 +1,8 @@
 function install_parmanostr {
 intro_parmanostr || return 1
 #make wallet
-install_parmawallet_dependencies
+if [[ $debug != 1 ]] ; then install_parmawallet_dependencies ; fi
+
 if [[ -d $dp/.nostr_keys ]] ; then
 while true ; do
 set_terminal ; echo -e "

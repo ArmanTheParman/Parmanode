@@ -1,7 +1,7 @@
 function make_nostr_key_files {
 
 #For use when a valid mnemonic alrady exists
-
+debug hi
 python3 <<END
 import sys, copy, os
 sys.path.append("$pn/src/ParmaWallet")
@@ -37,16 +37,15 @@ if os.path.exists(mnemonic_path):      #path A
     for i in range(12):
         for bin_num, word in bip39list_lines:
            if words[i] == word:
-           bin_key = bin_key + str(bin_num)
+               bin_key = bin_key + str(bin_num)
 
-elif os.path.exists(full_binary_path):       #path B
+elif os.path.exists(random_binary_path):       #path B
     codepath = "B"
     with open (random_binary_path, 'r') as file:
         bin_key = file.read().strip()
 
-
 else:
-    raise FileNotFoundError(f"{mnemonic_path} or {full_binary_path} not found")
+    raise FileNotFoundError(f"{mnemonic_path} or {random_binary_path} not found")
 
 # Code merges again. bin_key taken from either path. Find the checksum for both paths.
 
@@ -61,11 +60,11 @@ hash_binary = bin(checksum_int)[2:].zfill(4)                         #convert he
 if codepath == "A":
 
     final_word_random_bin = bin_key[121:128]
-    final_word_full_bin = final_word_random_bin + hash_binary
+    full_bin_key = final_word_random_bin + hash_binary
 
     while True:
         for bin_num, word in bip39list_lines:
-            if final_word_full_bin == bin_num:
+            if full_bin_key == bin_num:
                 if word == words[11]:
                     flag=1
                     break 
@@ -91,6 +90,8 @@ elif codepath == "B":
                 if i == line:
                     file.write(word + " ")
         file.write('\n') 
+
+    with open (mnemonic_path, 'r') as file:
         content = file.read().strip()
 
 # at this point only one path in the code has full 'content' variable
@@ -112,4 +113,5 @@ if codepath == "A":
     with open (full_binary_path, 'w') as file:
         file.write(full_bin_key + '\n')
 END
+debug "pause END"
 }

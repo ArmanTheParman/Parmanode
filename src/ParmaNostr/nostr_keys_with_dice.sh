@@ -115,61 +115,9 @@ break
 esac
 done
 
-if [[ $debug == 1 ]] ; then
-set_terminal ; echo -e "
-########################################################################################
-
-    The binary in full (without added checksum) is:
-
-    $word1
-    $word2
-    $word3
-    $word4
-    $word5
-    $word6
-    $word7
-    $word8
-    $word9
-    $word10
-    $word11
-    $word12
-
-########################################################################################
-"
-enter_continue
-fi
-
 mkdir $dp/.nostr_keys/ >/dev/null 2>&1
 echo "$word1$word2$word3$word4$word5$word6$word7$word8$word9$word10$word11$word12" > $dp/.nostr_keys/random_binary.txt  2>/dev/null
 make_nostr_key_files
-#make_checksum || { announce "an error occurred calculating the checksum" ; return 1 ; }
-
-#     word1dec=$(echo "ibase=2; $word1" | bc)
-#     word2dec=$(echo "ibase=2; $word2" | bc)
-#     word3dec=$(echo "ibase=2; $word3" | bc)
-#     word4dec=$(echo "ibase=2; $word4" | bc)
-#     word5dec=$(echo "ibase=2; $word5" | bc)
-#     word6dec=$(echo "ibase=2; $word6" | bc)
-#     word7dec=$(echo "ibase=2; $word7" | bc)
-#     word8dec=$(echo "ibase=2; $word8" | bc)
-#     word9dec=$(echo "ibase=2; $word9" | bc)
-#     word10dec=$(echo "ibase=2; $word10" | bc)
-#     word11dec=$(echo "ibase=2; $word11" | bc)
-#     word12dec=$(echo "ibase=2; $(cat $dp/.nostr_keys/full_binary.txt | cut -c 122-132)" | bc)
-
-#     word1text=$(head -n$(($word1dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word2text=$(head -n$(($word2dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word3text=$(head -n$(($word3dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word4text=$(head -n$(($word4dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word5text=$(head -n$(($word5dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word6text=$(head -n$(($word6dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word7text=$(head -n$(($word7dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word8text=$(head -n$(($word8dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word9text=$(head -n$(($word9dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word10text=$(head -n$(($word10dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word11text=$(head -n$(($word11dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-#     word12text=$(head -n$(($word12dec+1)) $pn/src/ParmaWallet/docs/english.txt | tail -n1)
-# echo "$word1text $word2text $word3text $word4text $word5text $word6text $word7text $word8text $word9text $word10text $word11text $word12text" | tee $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
 
 set_terminal ; echo -e "
 ########################################################################################
