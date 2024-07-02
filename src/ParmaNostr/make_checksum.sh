@@ -1,4 +1,4 @@
-
+#will be redundant soon
 function make_checksum {
 
 python3 <<END
