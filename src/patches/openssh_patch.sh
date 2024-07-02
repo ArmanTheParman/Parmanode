@@ -48,7 +48,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1) break ;;
 2) return 1 ;;
-3) echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1
+3) echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ;;
 *) invalid ;;
 esac
 done
