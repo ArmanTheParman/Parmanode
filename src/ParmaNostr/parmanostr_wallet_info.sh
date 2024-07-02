@@ -12,7 +12,7 @@ $orange
 
                  nsec)               See private key
 
-                 del)                Delete seed words
+                 del)                Delete wallet
 
     
 
