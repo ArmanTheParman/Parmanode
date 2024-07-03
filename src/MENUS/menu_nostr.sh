@@ -132,6 +132,7 @@ echo -e "
 "
 enter_continue
 fi
+
 set_terminal_wider
 docker logs nostrrelay -f --tail 100 &
 tail_PID=$!
@@ -139,7 +140,6 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 continue ;;
-;;
 
 test)
 nostr_curl_test
