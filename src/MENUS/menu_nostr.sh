@@ -70,7 +70,7 @@ $tor_menu                      $orange
 
         Data usage:               $green$(du -sh $nostr_data_location | cut -f1)$orange
 
-        Log file size:            $(sudo du -sh $(docker inspect --format='{{.LogPath}}' $(docker ps | grep nostrrelay | cut -d ' ' -f1)) | cut -d '/' -f1)
+        Log file size:            $green$(sudo du -sh $(docker inspect --format='{{.LogPath}}' $(docker ps | grep nostrrelay | cut -d ' ' -f1)) | cut -d '/' -f1)$orange
 
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
