@@ -123,7 +123,8 @@ if [[ $log_count -le 50 ]] ; then
 echo -e "
 ########################################################################################
     
-    This will show the log file from Docker in real-time as it populates.
+    This will show the last 100 lines of the log file from Docker, and more in 
+    real-time as it populates.
     
     You can hit$cyan <control>-c$orange to make it stop.
 
@@ -132,7 +133,7 @@ echo -e "
 enter_continue
 fi
 set_terminal_wider
-docker logs nostrrelay -f &
+docker logs nostrrelay -f --tail 100 &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
