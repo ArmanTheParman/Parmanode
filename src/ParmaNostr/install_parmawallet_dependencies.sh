@@ -20,7 +20,7 @@ if ! pip3 list | grep bech32 ; then
     if ! pip3 list | grep bech32 ; then
     pip3 install bech32 
     break
-    else break
+    else debug "no bech32" ; break
     fi
 fi
 break
@@ -29,12 +29,12 @@ done
 while true ; do
 if ! pip3 list | grep base58 ; then
 
-    pip3 install base 58 --break-system-packages
+    pip3 install base58 --break-system-packages
 
     if ! pip3 list | grep base58 ; then
     pip3 install base58 
     break
-    else break
+    else debug "no base58" ; break
     fi
 fi
 break
@@ -117,6 +117,20 @@ if ! pip3 list | grep fastecdsa ; then
 
     if ! pip3 list | grep fastecdsa ; then
     pip3 install fastecdsa 
+    break
+    else break
+    fi
+fi
+break
+done
+
+while true ; do
+if ! pip3 list | grep websockets ; then
+
+    pip3 install websockets --break-system-packages
+
+    if ! pip3 list | grep websockets ; then
+    pip3 install websockets 
     break
     else break
     fi
