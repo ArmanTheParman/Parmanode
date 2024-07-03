@@ -12,129 +12,93 @@ export LDFLAGS="-L$(brew --prefix gmp)/lib"
 fi
 
 #mac and linux..
-while true ; do
 if ! pip3 list | grep bech32 ; then
 
     pip3 install bech32 --break-system-packages
 
     if ! pip3 list | grep bech32 ; then
     pip3 install bech32 
-    break
-    else debug "no bech32" ; break
+    else debug "no bech32" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep base58 ; then
 
     pip3 install base58 --break-system-packages
 
     if ! pip3 list | grep base58 ; then
     pip3 install base58 
-    break
-    else debug "no base58" ; break
+    else debug "no base58" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep bip-utils ; then
 
     pip3 install bip-utils --break-system-packages
 
     if ! pip3 list | grep bip-utils ; then
     pip3 install bip-utils 
-    break
-    else break
+    else debug "no bip-utils" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep bitcoinlib ; then
 
     pip3 install bitcoinlib --break-system-packages
 
     if ! pip3 list | grep bitcoinlib ; then
     pip3 install bitcoinlib 
-    break
-    else break
+    else debug "no bitcoinlib" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep cryptography ; then
 
     pip3 install cryptography --break-system-packages
 
     if ! pip3 list | grep cryptography ; then
     pip3 install cryptography 
-    break
-    else break
+    else debug "no cryptography" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep pycryptodome ; then
 
     pip3 install pycryptodome --break-system-packages
 
     if ! pip3 list | grep pycryptodome ; then
     pip3 install pycryptodome 
-    break
-    else break
+    else debug "no pycryptodome" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep gmp ; then
 
     pip3 install gmp --break-system-packages
 
     if ! pip3 list | grep gmp ; then
     pip3 install gmp 
-    break
-    else break
+    else debug "no gmp" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep fastecdsa ; then
 
     pip3 install fastecdsa --break-system-packages
 
     if ! pip3 list | grep fastecdsa ; then
     pip3 install fastecdsa 
-    break
-    else break
+    else debug "no fastecdsa" 
     fi
 fi
-break
-done
 
-while true ; do
 if ! pip3 list | grep websockets ; then
 
     pip3 install websockets --break-system-packages
 
     if ! pip3 list | grep websockets ; then
     pip3 install websockets 
-    break
-    else break
+    else debug "no websockets" 
     fi
 fi
-break
-done
 }
