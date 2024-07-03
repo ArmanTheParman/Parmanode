@@ -70,8 +70,6 @@ $tor_menu                      $orange
 
         Data usage:               $green$(du -sh $nostr_data_location | cut -f1)$orange
 
-        Log file size:            $green$(sudo du -sh $(docker inspect --format='{{.LogPath}}' $(docker ps | grep nostrrelay | cut -d ' ' -f1)) | cut -d '/' -f1)$orange
-
         Nginx configuration:      /etc/nginx/conf.d/$domain_name.conf
 
 
@@ -89,7 +87,7 @@ $cyan        conf)$orange                     View/edit nginx conf (be careful)
 $cyan        toml)$orange                     View/edit config.toml file
 
 $cyan        log)$orange                      View relay log
-        
+
 $cyan        test)$orange                     Send a test connection
 
         $ssl_menu 
