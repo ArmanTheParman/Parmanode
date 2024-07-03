@@ -24,6 +24,8 @@ break
 ;;
 2)
 import_nostr_wallet
+make_npub
+return
 ;;
 *)
 invalid
