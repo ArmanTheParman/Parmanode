@@ -99,9 +99,9 @@ elif codepath == "B":
 
 the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content) #NIP6
 
-with open(nostr_nsec_bytes, 'w') as file:
+with open(nostr_nsec_bytes, 'wb') as file:
     the_secret_bytes=the_keypair.private_key.secret_bytes
-    file.write(str(the_secret_bytes) + '\n')
+    file.write(the_secret_bytes + b'\n')
 
 with open(nostr_nsec, 'w') as file:
     file.write(make_nsec(the_secret_bytes) + '\n')

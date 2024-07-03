@@ -7,14 +7,14 @@ if [[ -d $dp/.nostr_keys ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-$cyan
+$red
     Nostr Key directory detected
 $orange
-               1) Use it
+$cyan               1)$orange Use it
 
-               2) Delete and start over
+$cyan               2)$orange Delete and start over
 
-               3) Back it up to $dp/.nostr_keys_backup, 
+$cyan               3)$orange Back it up to $dp/.nostr_keys_backup, 
                   and make a new one
 $orange
 ########################################################################################

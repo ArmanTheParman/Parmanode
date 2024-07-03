@@ -22,7 +22,7 @@ with open (nostr_nsec, 'r') as file:
 
 nsec_bytes = nsec_to_bytes(nsec_str)
 
-with open (nostr_nsec_bytes, 'w') as file:
-    file.write(repr(nsec_bytes) + '\n')
+with open (nostr_nsec_bytes, 'wb') as file:
+    file.write(nsec_bytes + b'\n')
 EOF
 }

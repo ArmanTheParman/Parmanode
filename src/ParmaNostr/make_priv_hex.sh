@@ -1,4 +1,5 @@
-function make_pubkey {
+function make_priv_hex {
+debug "in make_priv hex"
 
 python3 <<EOF
 import sys, copy, os
@@ -10,20 +11,22 @@ from variables import *
 from nostr import *
 import unicodedata, hashlib, binascii, hmac
 
-wordlist_path = "$pn/src/ParmaWallet/docs/english.txt"
-mnemonic_path = "$dp/.nostr_keys/mnemonic.txt"
 nostr_nsec = "$dp/.nostr_keys/nsec.txt"
 nostr_pub = "$dp/.nostr_keys/pub.txt"
 nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.txt"
 random_binary_path = "$dp/.nostr_keys/random_binary.txt"
-full_binary_path = "$dp/.nostr_keys/full_binary.txt"
+nostr_priv_hex = "$dp/.nostr_keys/priv_hex.txt"
 
-with open (nostr_nsec_bytes, 'rb') as file:
-    nsec_bytes = file.read().strip()
-    
-pubkey = hex(PrivateKey(nsec_bytes).point.x.num)[2:]
-with open (nostr_pub, 'w') as file:
-    file.write(pubkey + '\n')
+with open (nostr_nsec, 'r') as file:
+    nsec_str = file.read().strip()
+
+nsec_bytes = nsec_to_bytes(nsec_str)
+
+priv_hex = nsec_bytes.hex()[2:]
+
+with open (nostr_priv_hex, 'w') as file:
+    file.write((priv_hex) + '\n')
 EOF
 
+debug "after make_priv_hex, before exit"
 }
