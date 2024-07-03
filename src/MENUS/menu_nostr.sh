@@ -86,7 +86,7 @@ $cyan        conf)$orange                     View/edit nginx conf (be careful)
 
 $cyan        toml)$orange                     View/edit config.toml file
 
-$cyan        log)$orange                      View Docker logs
+$cyan        log)$orange                      View relay log
         
 $cyan        test)$orange                     Send a test connection
 
@@ -118,12 +118,32 @@ toml)
 nano $HOME/parmanode/nostrrelay/config.toml
 ;;
 log)
-docker logs nostrrelay
+log_counter
+if [[ $log_count -le 50 ]] ; then
+echo -e "
+########################################################################################
+    
+    This will show the log file from Docker in real-time as it populates.
+    
+    You can hit$cyan <control>-c$orange to make it stop.
+
+########################################################################################
+"
 enter_continue
+fi
+set_terminal_wider
+docker logs nostrrelay -f &
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+continue ;;
 ;;
+
 test)
 nostr_curl_test
 ;;
+
 ssl)
 if [[ $nostr_ssl == "true" ]] ; then
 announce "SSL already enabled"
