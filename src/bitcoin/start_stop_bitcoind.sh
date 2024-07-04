@@ -5,8 +5,14 @@ function run_bitcoind {
 
 #needs to be first...
 if grep -q btccombo < $ic ; then
-docker exec -d btcpay bitcoind
-return 0
+
+    if ! docker ps | grep -q btcpay ; then
+        docker start btcpay >/dev/null 2>&1 ; sleep 3
+    fi
+
+    docker exec -d btcpay bitcoind
+
+    return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
