@@ -1,46 +1,8 @@
 function install_parmanostr {
-intro_parmanostr || return 1
 #make wallet
 if [[ $debug != 1 ]] ; then install_parmawallet_dependencies ; fi
 
-if [[ -d $dp/.nostr_keys ]] ; then
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-$red
-    Nostr Key directory detected
-$orange
-$cyan               1)$orange Use it
-
-$cyan               2)$orange Delete and start over
-
-$cyan               3)$orange Back it up to $dp/.nostr_keys_backup, 
-                  and make a new one
-$orange
-########################################################################################
-"
-choose xpmq ; read choice ; set_terminal
-unset skipwallet
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-1)
-skipwallet="true"
-break
-;;
-2)
-rm -rf $dp/.nostr_keys
-break
-;;
-3)
-mv $dp/.nostr_keys $dp/.nostr_keys_backup
-break
-;;
-*)
-invalid
-;;
-esac
-done
-fi
+check_nostr_wallet_exists #get skipwallet value
 
 if [[ $skipwallet != "true" ]] ; then
 make_nostr_wallet || return 1
@@ -58,3 +20,4 @@ rm $dp/.nostr_keys/random_binary.txt >/dev/null 2>&1
 success "ParmaNostr has been installed"
 fi
 }
+

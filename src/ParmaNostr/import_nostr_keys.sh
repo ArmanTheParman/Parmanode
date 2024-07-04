@@ -1,4 +1,4 @@
-function import_nostr_wallet {
+function import_nostr_keys {
 
 mkdir -p $dp/.nostr_keys/ 2>&1
 
@@ -26,7 +26,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
 while true ; do
-if echo -n "$nsec" | cut -c 1-4 | grep -q nsec && [[ $(echo -n $nsec | wc -c | tr -d ' ' | tr -d '\n') == 64 ]] ; then
+if echo -n "$nsec" | cut -c 1-4 | grep -q nsec && [[ $(echo -n $nsec | wc -c | tr -d ' ' | tr -d '\n') == 63 ]] ; then
 typedetected=nsec
 debug "typedetected , $typedetected "
 break

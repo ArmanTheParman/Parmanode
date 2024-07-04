@@ -20,8 +20,10 @@ with open (nostr_priv_hex, 'r') as file:
     phex_str = file.read().strip()
 
 phex_bytes = bytes.fromhex(phex_str)
-print(phex_bytes)
-print(len(phex_bytes))
+
+#print(phex_bytes)
+#print(len(phex_bytes))
+
 with open (nostr_nsec_bytes, 'wb') as file:
     file.write(phex_bytes + b'\n')
 EOF

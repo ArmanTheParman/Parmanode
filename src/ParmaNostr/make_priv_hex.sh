@@ -22,7 +22,7 @@ with open (nostr_nsec, 'r') as file:
 
 nsec_bytes = nsec_to_bytes(nsec_str)
 
-priv_hex = nsec_bytes.hex()[2:]
+priv_hex = nsec_bytes.hex()
 
 with open (nostr_priv_hex, 'w') as file:
     file.write((priv_hex) + '\n')
