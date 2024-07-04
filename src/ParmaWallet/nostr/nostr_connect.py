@@ -1,25 +1,14 @@
-import asyncio
-import websockets
+import websocket, time
 
-async def connect_to_relay(url, identifier="ParmaNostr", origin="GFY"):
+def connect_to_relay(url="wss://unhostedwallet.com", identifier="ParmaNostr"):
+
     headers = {
-        "User-Agent": f"{identifier}",
-        "Origin": f"{origin}"
+        "User-Agent": identifier,
     }
-    websocket = await websockets.connect(url, extra_headers=headers)
-    return websocket
+    wss = websocket.create_connection(url, header=headers)
+    return wss 
+    # Need to do websocket.close() later
 
-async def main():
-    relay_url = "wss://unhostedwallet.com"
-    identifier = "ParmaNostr"  # Your unique identifier
-    origin = "GFY"
-    websocket = await connect_to_relay(relay_url, identifier, origin)
-    
-    # Keep the connection open for demonstration
-    await asyncio.sleep(5)  # Keep the connection open for 5 seconds for demonstration
-    
-    # Ensure to close the connection before the script ends
-    await websocket.close()
-
-# Run the main coroutine
-asyncio.run(main())
+wss = connect_to_relay()
+time.sleep(5) #send event here, or whatever
+wss.close()
