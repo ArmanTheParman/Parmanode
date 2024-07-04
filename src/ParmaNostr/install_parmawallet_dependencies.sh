@@ -101,4 +101,14 @@ if ! pip3 list | grep websockets ; then
     else debug "no websockets" 
     fi
 fi
+
+if ! pip3 list | grep websockt-client ; then
+
+    pip3 install websocket-client --break-system-packages
+
+    if ! pip3 list | grep websockets-client ; then
+    pip3 install websocket-client
+    else debug "no websocket-client" 
+    fi
+fi
 }
