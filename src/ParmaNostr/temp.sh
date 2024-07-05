@@ -98,6 +98,22 @@ elif codepath == "B":
 
 # at this point only one path in the code has full 'content' variable
 
+the_keypair=derive_keys(depth="address", purpose=44, coin=1237, mnemonic=content) #NIP6
+
+with open(nostr_nsec_bytes, 'wb') as file:
+    the_secret_bytes=the_keypair.private_key.secret_bytes
+    file.write(the_secret_bytes + b'\n')
+
+with open(nostr_nsec, 'w') as file:
+    file.write(make_nsec(the_secret_bytes) + '\n')
+
+with open(nostr_pub, 'w') as file:
+    pubkey_schnorr=the_keypair.public_key[1:].hex()
+    file.write(pubkey_schnorr + '\n')
+
+if codepath == "A":
+    with open (full_binary_path, 'w') as file:
+        file.write(full_bin_key + '\n')
 sys.exit(3)
 END
 }
