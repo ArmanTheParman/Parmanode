@@ -117,7 +117,7 @@ with open(nostr_pub, 'w') as file:
 if codepath == "A":
     with open (full_binary_path, 'w') as file:
         file.write(full_bin_key + '\n')
-input("pausing... hit enter")
+exit (3)
 END
 debug "pause END"
 }

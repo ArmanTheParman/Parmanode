@@ -45,6 +45,8 @@ elif [[ $function_exit == 0 ]] ; then
     Parmanode needs access to this directory to sign messages for you. Things will 
     stop working if you delete or move it."
     return 0
+elif [[ $function_exit == 3 ]] ; then
+    return 0
 else
     rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
     announce "Unexpected error. Please report to Parman."
