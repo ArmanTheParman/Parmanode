@@ -117,7 +117,13 @@ done
 
 mkdir $dp/.nostr_keys/ >/dev/null 2>&1
 echo "$word1$word2$word3$word4$word5$word6$word7$word8$word9$word10$word11$word12" > $dp/.nostr_keys/random_binary.txt  2>/dev/null
+
+if [[ $t == 1 ]] ; then
+make_nostr_key_files2
+else
 make_nostr_key_files
+fi
+
 
 set_terminal ; echo -e "
 ########################################################################################
