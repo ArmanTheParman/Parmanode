@@ -74,10 +74,10 @@ if codepath == "A":
                     flag=1
                     break 
                 else:
-                    exit(1)
+                    sys.exit(1)
         if flag == 1:
             break
-        exit(2)            
+        sys.exit(2)            
 
 elif codepath == "B":
 
@@ -117,7 +117,7 @@ with open(nostr_pub, 'w') as file:
 if codepath == "A":
     with open (full_binary_path, 'w') as file:
         file.write(full_bin_key + '\n')
-exit (3)
+sys.exit(3)
 END
 debug "pause END"
 }
