@@ -6,7 +6,7 @@ check_nostr_wallet_exists #get skipwallet value
 
 if [[ $skipwallet != "true" ]] ; then
 make_nostr_wallet 
-echo $
+echo $?
 debug "exit status above"
 #|| return 1
 debug "after make nostr wallet"
