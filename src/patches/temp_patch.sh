@@ -1,5 +1,10 @@
 function temp_patch {
 
+#remove in September
+if grep -q "parmanostr" < $ic && [[ ! -e $dp/.nostr_keys/nostr_keys.txt ]] ; then
+make_sourcable_keys_file
+fi
+
 #put in next patch
 set_github_config
 
