@@ -58,7 +58,10 @@ make_npub #takes pub.txt and makes npub.txt
 
 if [[ ! -e $dp/.nostr_keys/priv_hex.txt ]] ; then
 debug "if no priv hex"
-make_priv_hex || return 1
+make_priv_hex 
+echo $?
+debug "exit status above"
+#|| return 1
 
 rm $dp/.nostr_keys/random_binary.txt >/dev/null 2>&1
 fi

@@ -6,6 +6,7 @@ check_nostr_wallet_exists #get skipwallet value
 
 if [[ $skipwallet != "true" ]] ; then
 make_nostr_wallet || return 1
+debug "after make nostr wallet"
 installed_config_add "parmanostr-start"
 fi
 unset skipwallet
