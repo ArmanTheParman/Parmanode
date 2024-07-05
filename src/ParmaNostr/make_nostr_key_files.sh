@@ -1,5 +1,6 @@
 function make_nostr_key_files {
 debug "in make nostr key files - check files"
+debug "pn is $pn"
 if [[ $debug == 1 ]] ; then
 debug_text="print('pausing in python')"
 fi
