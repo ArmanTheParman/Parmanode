@@ -29,11 +29,14 @@ mkdir -p $dp/.nostr_keys
 echo "$mnemonic" | tee $dp/.nostr_keys/mnemonic.txt
 
 #Python code to confirm checksum is valid
+if [[ $t == 1 ]] ; then
+make_nostr_key_files2 ; function_exit="$?"
+else
 make_nostr_key_files ; function_exit="$?"
+fi
 
 debug "function exit is, $function_exit"
 debug "after make_nostr_key_files"
-
 if [[ $function_exit == 1 ]] ; then
     rm $dp/.nostr_keys/mnemonic.txt >/dev/null 2>&1
     announce "The checksum seems to be invalid."
