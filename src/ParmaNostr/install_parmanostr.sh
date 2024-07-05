@@ -5,11 +5,7 @@ if [[ $debug != 1 ]] ; then install_parmawallet_dependencies ; fi
 check_nostr_wallet_exists #get skipwallet value
 
 if [[ $skipwallet != "true" ]] ; then
-make_nostr_wallet 
-echo $?
-debug "exit status above"
-#|| return 1
-debug "after make nostr wallet"
+make_nostr_wallet || return 1
 installed_config_add "parmanostr-start"
 fi
 unset skipwallet
@@ -26,5 +22,6 @@ make_sourcable_keys_file
 if [[ $success != "done" ]] ; then
 success "ParmaNostr has been installed"
 fi
+return 0
 }
 

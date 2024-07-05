@@ -1,5 +1,4 @@
 function make_priv_hex {
-debug "in make_priv hex"
 
 python3 <<EOF
 import sys, copy, os
@@ -28,5 +27,4 @@ with open (nostr_priv_hex, 'w') as file:
     file.write((priv_hex) + '\n')
 EOF
 
-debug "after make_priv_hex, before exit"
 }
