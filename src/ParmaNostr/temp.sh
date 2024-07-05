@@ -10,5 +10,6 @@ from functions2 import *
 from variables import *
 from nostr import *
 import unicodedata, hashlib, binascii, hmac
+sys.exit(3)
 END
 }
