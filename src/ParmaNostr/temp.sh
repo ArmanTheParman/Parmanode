@@ -10,7 +10,5 @@ from functions2 import *
 from variables import *
 from nostr import *
 import unicodedata, hashlib, binascii, hmac
-print("testing")
-sys.exit(3)
 END
 }
