@@ -11,8 +11,6 @@ from variables import *
 from nostr import *
 import unicodedata, hashlib, binascii, hmac
 print("testing")
-input("testing2")
 sys.exit(3)
-input("testing3")
 END
 }
