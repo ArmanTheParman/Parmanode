@@ -39,7 +39,25 @@ if os.path.exists(mnemonic_path):      #path A
                bin_key = bin_key + str(bin_num)
 
     full_bin_key = bin_key
+
+elif os.path.exists(random_binary_path):       #path B
+    codepath = "B"
+    with open (random_binary_path, 'r') as file:
+        bin_key = file.read().strip()
     
+else:
+    raise FileNotFoundError(f"{mnemonic_path} or {random_binary_path} not found")
+
+# Code merges again. bin_key taken from either path. Find the checksum for both paths.
+
+bin_key_int = int(bin_key[0:128], 2)                             #extract 128 bits, interpret as binary and convert to integer. 0:128 only needed for path A.
+bin_key_bytes = bin_key_int.to_bytes(16, 'big')                  #convert inetger to bytes
+checksum_of_bin_key = hashlib.sha256(bin_key_bytes).hexdigest()[0:1] #hash the bytes and get first hex character
+checksum_int = int(checksum_of_bin_key, 16)                              #convert first hex string character to integer
+hash_binary = bin(checksum_int)[2:].zfill(4)                         #convert hex integer to binary string, cut out prefix, then fill to 4 characters.
+
+# Code splits again
+
 sys.exit(3)
 END
 }
