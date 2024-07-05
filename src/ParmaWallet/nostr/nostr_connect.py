@@ -10,5 +10,7 @@ def connect_to_relay(url="wss://unhostedwallet.com", identifier="ParmaNostr"):
     # Need to do websocket.close() later
 
 wss = connect_to_relay()
-time.sleep(5) #send event here, or whatever
-wss.close()
+
+
+def disconnect_from_relay(wss):
+    wss.close()

@@ -1,5 +1,6 @@
 function make_sourcable_keys_file {
 
+#shortcut to file is $nk
 file="$dp/.nostr_keys/nostr_keys.txt"
 
 npub="$(cat $dp/.nostr_keys/npub.txt | tr -d ' ')"
