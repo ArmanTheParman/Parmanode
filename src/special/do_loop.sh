@@ -121,7 +121,6 @@ parmanode1_fix
 if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
    bash_check 
-   ensure_english
    check_architecture 
    #commit config directory state using git
    git_dp &

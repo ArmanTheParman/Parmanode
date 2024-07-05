@@ -75,7 +75,29 @@ if codepath == "A":
         if flag == 1:
             break
         sys.exit(2)            
-        
+
+elif codepath == "B":
+
+    full_bin_key = bin_key + hash_binary
+
+    with open (full_binary_path, 'w') as file:         # can't do this earlier
+        file.write(full_bin_key + '\n')                # 128 bit binary now should be 132 bit with correct checksum.
+
+    #make content variable for path B
+
+    with open(mnemonic_path, 'w') as file:
+        chunks = [full_bin_key[i:i+11] for i in range(0, len(full_bin_key), 11)]
+        for i in chunks:
+            for line, word in bip39list_lines:
+                if i == line:
+                    file.write(word + " ")
+        file.write('\n') 
+
+    with open (mnemonic_path, 'r') as file:
+        content = file.read().strip()
+
+# at this point only one path in the code has full 'content' variable
+
 sys.exit(3)
 END
 }
