@@ -36,6 +36,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 1)
+debug "in 1"
 nostr_keys_byo
 break
 ;;

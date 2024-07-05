@@ -18,7 +18,7 @@ tor_mempool="true"
 get_onion_address_variable "fulcrum" 
 output_tor=" Tor Access: $bright_blue    
 
-    $ONION_ADDR_MEM:8280 $orange   
+    http://$ONION_ADDR_MEM:8280 $orange   
     " 
 else
 tor_mempool="false"

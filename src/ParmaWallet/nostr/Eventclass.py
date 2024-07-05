@@ -1,9 +1,14 @@
-import json, os, hashlib
+import json, os, hashlib, time
 from functions import schnorr_sign
 class Event:
-    def __init__(self, id=None, pubkey=None, created_at=None, kind=None, tags=None, content=None, sig=None, sec=None): #note: tags is a mutable object and re-called each time the contructor is used. So, should not directly set it.
+    def __init__(self, id=None, pubkey=None, created_at=None, kind=None, tags=None, content=None, sig=None, sec=None, sec_file=None): #note: tags is a mutable object and re-called each time the contructor is used. So, should not directly set it.
         self.pubkey = pubkey #use ""
-        self.created_at = created_at #number, not string
+
+        if created_at is None:
+           self.created_at = int(time.time()) 
+        else:
+           self.created_at = created_at #number, not string
+
         self.kind = kind #number, not string
         self.tags = tags or []
         self.content = content #use ""
@@ -28,8 +33,11 @@ class Event:
         elif id is not None: 
             """make final data and leave sig blank"""
             self.data_final= json.dumps({"id": self.id,"pubkey": self.pubkey, "created_at": self.created_at, "kind": self.kind, "tags": self.tags,"content": self.content, "sig": self.sig}, ensure_ascii=False, indent=4)
+        elif sig is not None and id is not None:
+            """makeing event from presigned data"""
+            self.data_final= json.dumps({"id": self.id,"pubkey": self.pubkey, "created_at": self.created_at, "kind": self.kind, "tags": self.tags,"content": self.content, "sig": self.sig}, ensure_ascii=False, indent=4)
             
-        """make data with signature"""
+        """make event, and add signature"""
         self.data_final= json.dumps({"id": self.id,"pubkey": self.pubkey, "created_at": self.created_at, "kind": self.kind, "tags": self.tags,"content": self.content, "sig": self.sig}, ensure_ascii=False, indent=4)
         
 

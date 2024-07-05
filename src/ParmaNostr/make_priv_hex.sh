@@ -13,7 +13,7 @@ import unicodedata, hashlib, binascii, hmac
 
 nostr_nsec = "$dp/.nostr_keys/nsec.txt"
 nostr_pub = "$dp/.nostr_keys/pub.txt"
-nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.txt"
+nostr_nsec_bytes = "$dp/.nostr_keys/nsec_bytes.bin"
 random_binary_path = "$dp/.nostr_keys/random_binary.txt"
 nostr_priv_hex = "$dp/.nostr_keys/priv_hex.txt"
 

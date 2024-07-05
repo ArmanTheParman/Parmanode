@@ -13,8 +13,8 @@ the_secret_bytes=the_keypair.private_key.secret_bytes
 print(the_secret_bytes)
 pubkey_schnorr=the_keypair.public_key[1:].hex()
 print("pub", pubkey_schnorr)
-NSEC=make_nsec(the_secret_bytes)
-print(NSEC)
+#NSEC=make_nsec(the_secret_bytes)
+#print(NSEC)
 the_event=Event(pubkey=pubkey_schnorr, sec=the_secret_bytes, created_at=1718421481, kind=1, content="Why not just make every Tweet a Nostr event JSON?")
 
 print(the_event)
