@@ -58,6 +58,24 @@ hash_binary = bin(checksum_int)[2:].zfill(4)                         #convert he
 
 # Code splits again
 
+
+if codepath == "A":
+
+    final_word_random_bin = bin_key[121:128]
+    final_word_bin = final_word_random_bin + hash_binary
+
+    while True:
+        for bin_num, word in bip39list_lines:
+            if final_word_bin == bin_num:
+                if word == words[11]:
+                    flag=1
+                    break 
+                else:
+                    sys.exit(1)
+        if flag == 1:
+            break
+        sys.exit(2)            
+        
 sys.exit(3)
 END
 }
