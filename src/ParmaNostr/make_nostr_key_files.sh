@@ -1,7 +1,7 @@
 function make_nostr_key_files {
 debug "in make nostr key files - check files"
 if [[ $debug == 1 ]] ; then
-debug_text="print("pausing in python")"
+debug_text="print('pausing in python')"
 fi
 #For use when a valid mnemonic alrady exists
 python3 <<END
