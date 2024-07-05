@@ -31,6 +31,7 @@ echo "$mnemonic" | tee $dp/.nostr_keys/mnemonic.txt
 #Python code to confirm checksum is valid
 make_nostr_key_files ; function_exit="$?"
 
+debug "function exit is, $function_exit"
 debug "after make_nostr_key_files"
 
 if [[ $function_exit == 1 ]] ; then
