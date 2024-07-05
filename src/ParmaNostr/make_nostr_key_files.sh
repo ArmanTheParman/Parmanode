@@ -1,9 +1,4 @@
 function make_nostr_key_files {
-debug "in make nostr key files - check files"
-debug "pn is $pn"
-if [[ $debug == 1 ]] ; then
-debug_text="print('pausing in python')"
-fi
 #For use when a valid mnemonic alrady exists
 python3 <<END
 import sys, copy, os
@@ -117,7 +112,5 @@ with open(nostr_pub, 'w') as file:
 if codepath == "A":
     with open (full_binary_path, 'w') as file:
         file.write(full_bin_key + '\n')
-sys.exit(3)
 END
-debug "pause END"
 }
