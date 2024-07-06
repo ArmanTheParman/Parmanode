@@ -1,6 +1,6 @@
 import os, subprocess
-from text_functions.terminal import *
-from text_functions.colours import *
+from text_functions.terminal_f import *
+from text_functions.colours_f import *
 
 def intro():
     #later; hide messages option
@@ -44,11 +44,11 @@ def intro():
         choice = input()
         set_terminal()
 
-        if choice == 's' or "S" :
+        if choice in {'s', 'S'}:
             continue
-        elif choice == "q" or "Q":
+        elif choice in {'q', 'Q'}:
             exit(0)
-        elif choice == "Free Ross" or "free ross":
+        elif choice in {'Free Ross', 'free ross'}:
             os.system("""echo 'hide_messages=1' | tee -a $HOME/.parmanode/hide_messages.conf""") 
         else:
             break
