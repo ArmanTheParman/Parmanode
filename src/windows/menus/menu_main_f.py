@@ -1,5 +1,5 @@
 import sys, os 
-from windows.variables import *
+from config.variables import *
 sys.path.append("~/.parmanode")
 while true
 set_terminal()

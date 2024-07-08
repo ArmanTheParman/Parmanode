@@ -39,6 +39,7 @@ if [[ $repent == "I'm sorry" ]] ; then
     else    
         set_terminal 
         echo "Please wait patiently for computer to destroy itself, mwahaha!"
+        sleep 3
         echo "Or, hit <enter> to have another go." 
         read 
         set_terminal

@@ -1,0 +1,17 @@
+Can manage services from powershell.
+Need to enable ssh
+
+Powershel...
+Start-Service -Name "ServiceName"
+Stop-Service -Name "ServiceName"
+Restart-Service -Name "ServiceName"
+Get-Service -Name "ServiceName"
+Set-Service -Name "ServiceName" -StartupType Automatic
+Set-Service -Name "ServiceName" -StartupType Disabled
+
+Command prompt...
+sc start "ServiceName"
+sc stop "ServiceName"
+sc query "ServiceName"
+sc config "ServiceName" start= auto
+sc config "ServiceName" start= disabled
