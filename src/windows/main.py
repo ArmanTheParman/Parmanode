@@ -12,9 +12,16 @@ from parmanode.intro_f import *
 from config.variables import *
 from pathlib import Path
 from functions.text_functions import *
+from config.functions import *
 ########################################################################################
 #Begin
 ########################################################################################
 
-intro()
-print("intro done, exiting")
+
+counter()
+#intro()
+check_updates("0.0.1") #pass compiling version as argument
+debug()
+
+
+#print("intro done, exiting")

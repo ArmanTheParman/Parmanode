@@ -44,6 +44,7 @@ os.environ['PYTHONPATH'] = str(pn) + os.pathsep + os.environ.get('PYTHONPATH', '
 hm = dp / "hide_messages.conf"
 tmp = dp / "for_copying-can_delete.tmp"
 pc = dp / "parmanode.conf"
+rp_counter = dp / "rp_counter.conf"
 
 if not hm.exists():
     hm.touch()
@@ -53,6 +54,11 @@ if not tmp.exists():
 
 if not pc.exists():
     pc.touch()
+
+if not rp_counter.exists():
+    rp_counter.touch()
+    with rp_counter.open('w') as f:
+        f.write("0" + '\n')
 
 ########################################################################################
 #colours

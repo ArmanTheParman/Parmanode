@@ -39,7 +39,7 @@ def addline(the_string, the_file):
         debug(f"addline function - file, f{the_file} does not exist")
         return 1
     with the_file.open('a') as f:
-        f.write(the_string)
+        f.write(the_string + '\n')
 
 def deleteline(the_string, the_file):
     
