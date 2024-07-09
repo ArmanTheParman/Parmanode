@@ -1,6 +1,7 @@
 ########################################################################################
 #intro()
 #dirty_shitcoiner()
+#suggestupdate()
 ########################################################################################
 
 import time
@@ -110,3 +111,26 @@ def dirty_shitcoiner():
 
     set_terminal()
     return 0
+
+def suggestupdate():
+
+    set_terminal()
+    print(f"""
+########################################################################################
+
+    Parmanode has detected there is a newer version of itself. You could get that
+    and replace the current executable you're using. All the installed programs and
+    configuration won't be affected, jut the Parmanode wizard itself.
+    
+    Type{pink} 'Free Ross'{orange} to never be reminded of updates again. 
+
+    Otherwise, just hit{green} <enter>{orange} to continue.
+
+########################################################################################
+""")
+    choice = choose("xeq")
+    if choice in {'free ross', 'Free Ross'}:
+        addline("update_reminder=1", hm) #tested at the start of check_updates()
+    elif choice == "q": quit()
+
+    return 0 

@@ -122,7 +122,7 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    bash_check 
    check_architecture 
    #commit config directory state using git
-   git_dp &
+   git_dp 
 fi
 
 apply_patches  

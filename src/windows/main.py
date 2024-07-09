@@ -20,7 +20,9 @@ from config.functions import *
 
 counter()
 #intro()
-check_updates("0.0.1") #pass compiling version as argument
+if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
+    suggestupdate()
+
 debug()
 
 
