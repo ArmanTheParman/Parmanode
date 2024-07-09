@@ -9,6 +9,7 @@
 #Imports
 ########################################################################################
 from parmanode.intro_f import *
+from parmanode.motd_f import *
 from config.variables import *
 from pathlib import Path
 from functions.text_functions import *
@@ -18,12 +19,12 @@ from config.functions import *
 ########################################################################################
 
 
-counter()
+counter("rp")
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
 
-#motd()
-
 intro()
+instructions()
+motd()
 
 #print("intro done, exiting")

@@ -84,4 +84,7 @@ def choose(type=None):
 
     choice = input()
     return choice 
+
+def enter_continue():
+    print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...")
    

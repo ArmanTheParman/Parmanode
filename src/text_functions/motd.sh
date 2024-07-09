@@ -47,7 +47,7 @@ set_terminal ; echo -e "
 $cyan
                                  Message of the day $orange
 
-   A Bitcoin node is the ultimate way to say$red "Fuck off".$orange
+   A Bitcoin node is the ultimate way to say$red \"Fuck off\".$orange
 
    \"These are my rules; you can't change them. If your payment doesn't register on 
    MY node, the invoice isn't paid.\"
@@ -385,7 +385,7 @@ $cyan
     A rant for people who don't know why Bitcoin 2.0 is not possible:
 
     The first thing to understand is that money is made up of a counting unit 
-    (physical or digital), ie the "tech", and a network of people. You can't have one 
+    (physical or digital), ie the \"tech\", and a network of people. You can't have one 
     without the other - that's not money.
 
     Any copy and/or improvement to bitcoin, which I accept is possible, does not 
@@ -416,7 +416,7 @@ $cyan
     fight. It's not like your being asked to put your life on the line; just your 
     wealth/savings. If you've got 0.0 btc shame on you.
 
-    Rand over. 
+    Rant over. 
 
 ######################################################################################## 
 

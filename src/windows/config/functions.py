@@ -3,14 +3,21 @@ import requests, time
 from config.variables import *
 from functions.text_functions import *
 
-def counter():
-    with rp_counter.open('r') as f:
-        rpcount = f.read().strip()
-        print(rpcount)
-        newcount = int(rpcount) + 1
-    with rp_counter.open('w') as f:
-        f.write(str(newcount) + '\n')
-    return 0
+def counter(type):
+    if type == "rp":
+        with rp_counter.open('r') as f:
+            rpcount = f.read().strip()
+            newcount = int(rpcount) + 1
+        with rp_counter.open('w') as f:
+            f.write(str(newcount) + '\n')
+        return 0
+    if type == "motd":
+        with motd_counter.open('r') as f:
+            motdcount = f.read().strip()
+            newcount = int(motdcount) + 1
+        with motd_counter.open('w') as f:
+            f.write(str(newcount) + '\n')
+
 
 def check_updates(compiled_version):
     if searchin("update_reminder=1", hm):

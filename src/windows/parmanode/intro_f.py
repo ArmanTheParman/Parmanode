@@ -134,3 +134,37 @@ def suggestupdate():
     elif choice == "q": quit()
 
     return 0 
+
+
+def instructions():
+    if searchin("instructions=1", hm):
+        return 0
+
+    set_terminal()
+    print(f"""
+########################################################################################
+
+                               {cyan}     Instructions{orange}
+
+    1. Add individual programs from then{green} \"add\"{orange} menu. You don't need to install them 
+       all.
+
+    2. Use programs from the{green} \"use\"{orange} menu. 
+
+    3. Each program has its{green} own menu{orange} nested under the \"use\" menu; various 
+       functions are available for you to make it easier to interact with the program.
+       
+    4. You should reguarly{green} update{orange} Parmanode (the best way is from the Parmanode
+       menu). 
+
+########################################################################################
+    
+To hide this message next time, type in{pink} \"Free Ross\"{orange} then <enter>.
+
+To continue on, just hit{cyan} <enter>{orange}.
+""")
+    choice = input()    
+    if choice in {'free ross' , "Free Ross"}:   
+        addline("instructions=1", hm)
+    return 0
+

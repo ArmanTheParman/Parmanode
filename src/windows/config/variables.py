@@ -45,6 +45,7 @@ hm = dp / "hide_messages.conf"
 tmp = dp / "for_copying-can_delete.tmp"
 pc = dp / "parmanode.conf"
 rp_counter = dp / "rp_counter.conf"
+motd_counter = dp / "motd_counter.conf"
 
 if not hm.exists():
     hm.touch()
@@ -56,8 +57,11 @@ if not pc.exists():
     pc.touch()
 
 if not rp_counter.exists():
-    rp_counter.touch()
     with rp_counter.open('w') as f:
+        f.write("0" + '\n')
+
+if not motd_counter.exists():
+    with motd_counter.open('w') as f:
         f.write("0" + '\n')
 
 ########################################################################################
