@@ -19,11 +19,11 @@ from config.functions import *
 
 
 counter()
-#intro()
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
 
-debug()
+#motd()
 
+intro()
 
 #print("intro done, exiting")

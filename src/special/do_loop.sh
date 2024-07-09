@@ -89,6 +89,8 @@ install_parmashell silent
 ########################################################################################
 set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
+
+#btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 
 
@@ -144,14 +146,7 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 
 
 if [[ $test == 1 ]] ; then
-
-	if [[ $arg2 != remove ]] ; then 
-    install_nostrrelay	
-	else
-    uninstall_nostrrelay
-	fi
-announce "exiting"
-exit
+announce "no test available presently. Exiting."
 fi
 
 if [[ $fix == 1 ]] ; then
