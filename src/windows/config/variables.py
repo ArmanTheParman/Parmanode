@@ -43,12 +43,16 @@ os.environ['PYTHONPATH'] = str(pn) + os.pathsep + os.environ.get('PYTHONPATH', '
 
 hm = dp / "hide_messages.conf"
 tmp = dp / "for_copying-can_delete.tmp"
+pc = dp / "parmanode.conf"
 
 if not hm.exists():
     hm.touch()
 
 if not tmp.exists():
-    tmp.touch
+    tmp.touch()
+
+if not pc.exists():
+    pc.touch()
 
 ########################################################################################
 #colours

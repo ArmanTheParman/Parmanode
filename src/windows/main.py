@@ -17,3 +17,4 @@ from functions.text_functions import *
 ########################################################################################
 
 intro()
+print("intro done, exiting")
