@@ -11,8 +11,7 @@
 from parmanode.intro_f import *
 from config.variables import *
 from pathlib import Path
-
-
+from functions.text_functions import *
 ########################################################################################
 #Begin
 ########################################################################################

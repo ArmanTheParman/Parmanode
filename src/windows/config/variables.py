@@ -36,13 +36,19 @@ if not pn.exists():
     
 #path
 os.environ['PYTHONPATH'] = str(pn) + os.pathsep + os.environ.get('PYTHONPATH', '')
-print(os.environ['PYTHONPATH'])
 
 ########################################################################################
 #files
 ########################################################################################
 
 hm = dp / "hide_messages.conf"
+tmp = dp / "for_copying-can_delete.tmp"
+
+if not hm.exists():
+    hm.touch()
+
+if not tmp.exists():
+    tmp.touch
 
 ########################################################################################
 #colours

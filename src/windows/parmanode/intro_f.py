@@ -3,7 +3,7 @@
 #dirty_shitcoiner()
 ########################################################################################
 
-import os, time
+import time
 from pathlib import Path
 from functions.text_functions import *
 from config.variables import * 
@@ -11,7 +11,7 @@ from config.variables import *
 def intro():
     #later; hide messages option
     set_terminal()
-    if searchin("hide_messages=1", hm) and D is not True:
+    if searchin("hide_intro=1", hm): 
         return 0
 
     while True:
@@ -44,7 +44,7 @@ def intro():
 
     Hit{cyan} <enter>{orange} to continue, or{cyan} (q){orange} to quit, then <enter>.
 
-    If you hold shitcoins, please hit$cyan (s)$orange - be honest!
+    If you hold shitcoins, please hit{cyan} (s){orange} - be honest!
 
     To hide this screen next time, type{pink} \"Free Ross\"{orange} then <enter>.
 """)
@@ -53,10 +53,12 @@ def intro():
 
         if choice in {'s', 'S'}:
             dirty_shitcoiner() 
+            break
         elif choice in {'q', 'Q'}:
             exit(0)
         elif choice in {'Free Ross', 'free ross'}:
-            os.system("""echo 'hide_messages=1' | tee -a $HOME/.parmanode/hide_messages.conf""") 
+            addline("hide_intro=1", hm)
+            break
         else:
             break
 
