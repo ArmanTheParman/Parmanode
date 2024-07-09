@@ -1,65 +1,60 @@
-import sys, os 
+import sys
+from config.functions import *
 from config.variables import *
-sys.path.append("~/.parmanode")
-while true
-set_terminal()
-
-source $hm >/dev/null 2>&1 #hide messages
-if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
-
-# if statements in the menu printout makes the menu dynamic, ie changes according to the
-# tests performed. Variables are set to assist logic in the menu choice execution part
-# of the code at the bottom.
-echo -en "$orange
+def menu_main():
+    while True:
+        set_terminal()
+        print(f"""{orange}        
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> ${bright_blue}Main Menu$orange                                                   #
+#    P A R M A N O D E --> {bright_blue}Main Menu{orange}                                                   #
 #                                                                                      #
-#    Version:$bright_blue $version     $output_branch
+#    Version: {bright_blue} {version}{orange}                                                                              #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#$cyan    (o)$orange                  Overview/Status of Programs                                  #
+#{cyan}    (o){orange}                  Overview/Status of Programs                                  #
 #                                                                                      #
-#$cyan    (add)    $orange            Add more Programs                                            #
+#{cyan}    (add)    {orange}            Add more Programs                                            #
 #                                                                                      #
-#$cyan    (u)            $orange      Use Programs                                                 #
+#{cyan}    (u)            {orange}      Use Programs                                                 #
 #                                                                                      #
-#$cyan    (remove)     $orange        Remove/Uninstall Programs                                    #
+#{cyan}    (remove)     {orange}        Remove/Uninstall Programs                                    #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#$cyan    (t)        $orange          Tools                                                        #
+#{cyan}    (t)        {orange}          Tools                                                        #
 #                                                                                      #
-#$cyan    (s)              $orange    Settings                                                     #
+#{cyan}    (s)              {orange}    Settings                                                     #
 #                                                                                      #
-#$cyan    (mm)$orange                 Mentorship with Parman - Info                                #
+#{cyan}    (mm){orange}                 Mentorship with Parman - Info                                #
 #                                                                                      #
-#$cyan    (e)       $orange           Education                                                    #
+#{cyan}    (e)       {orange}           Education                                                    #
 #                                                                                      #
-#$cyan    (d)             $orange     Donate                                                       #
+#{cyan}    (d)             {orange}     Donate                                                       #
 #                                                                                      #
-#$cyan    (l) $orange                 See logs and config files                                    #
+#{cyan}    (l) {orange}                 See logs and config files                                    #
 #                                                                                      #
-#$cyan    (update)  $orange           Update Parmanode                                             #
+#{cyan}    (update)  {orange}           Update Parmanode                                             #
 #                                                                                      #
-#$cyan    (uninstall)     $orange     Uninstall Parmanode                                          #
+#{cyan}    (uninstall)     {orange}     Uninstall Parmanode                                          #
 #                                                                                      #
-#$cyan    (aa)      $orange           Hide/Show Main Menu announcements                            #
+#{cyan}    (aa)      {orange}           Hide/Show Main Menu announcements                            #
 #                                                                                      #
-#$cyan    (ap)$orange                 About Parmanode                                              #
+#{cyan}    (ap){orange}                 About Parmanode                                              #
 #                                                                                      #
 ########################################################################################
 
- Type your$cyan choice$orange without the brackets, and hit$green <enter>$orange 
- Or to quit, either hit$green <control>-c$orange, or type$cyan q$orange then$green <enter>$orange.
-"
-if [[ ! $announcements == off ]] ; then
-echo -e "
+ Type your{cyan} choice{orange} without the brackets, and hit{green} <enter>{orange} 
+ Or to quit, either hit{green} <control>-c{orange}, or type{cyan} q{orange} then{green} <enter>{orange}.
+""")
+        
+if announcements == "off":
+    print(f"""
  Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 
-$blinkon$red                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
-fi
+{blinkon}{red}                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN {orange}{blinkoff}""")
+
 
 read choice #whatever the user chooses, it gets put into the choice variable used below.
 set_terminal
