@@ -1,5 +1,5 @@
 from pathlib import Path
-import requests
+import requests, time
 from config.variables import *
 from functions.text_functions import *
 
@@ -14,8 +14,9 @@ def counter():
 
 def check_updates(compiled_version):
    url = "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf" 
-   response = requests.get(url).text
-   print(response.split('\n'))
+   params = {'_': int(time.time())}  # Adding a unique timestamp parameter
+   response = requests.get(url, params=params).text.split('\n')
+   latest_winMajor = response[6]
    #latest_version = response.split('\n')[0].split("\"")[1].split("v")[1]
 
      
