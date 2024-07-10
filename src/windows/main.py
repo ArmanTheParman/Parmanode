@@ -8,12 +8,16 @@
 ########################################################################################
 #Imports
 ########################################################################################
+from pathlib import Path
+from config.variables import *
+from config.functions import *
+from parmanodeconf import *
+from functions.text_functions import *
+
 from parmanode.intro_f import *
 from parmanode.motd_f import *
-from config.variables import *
-from pathlib import Path
-from functions.text_functions import *
-from config.functions import *
+print(x)
+input()
 ########################################################################################
 #Begin
 ########################################################################################
@@ -26,5 +30,8 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
 intro()
 instructions()
 motd()
+
+#clean up variables
+del motd_text
 
 #print("intro done, exiting")

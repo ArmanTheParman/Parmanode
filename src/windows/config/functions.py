@@ -2,6 +2,7 @@ from pathlib import Path
 import requests, time
 from config.variables import *
 from functions.text_functions import *
+import atexit
 
 def counter(type):
     if type == "rp":
@@ -39,5 +40,11 @@ def check_updates(compiled_version):
     except Exception as e:
         print(f"error when checking update, {e}")
         return "error"
-        
+
+def cleanup():
+    """Will execute when Parmanode quits"""
+    print(f"{reset}")
+    tmp.unlink() #deletes the file
+
+atexit.register(cleanup) 
    

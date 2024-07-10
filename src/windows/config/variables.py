@@ -30,12 +30,9 @@ dp = pp / "parmanode_config"
 if not dp.exists():
     dp.mkdir()
 
-pn = pp / "parmanode"
-if not pn.exists():
-    pn.mkdir()
-    
 #path
-os.environ['PYTHONPATH'] = str(pn) + os.pathsep + os.environ.get('PYTHONPATH', '')
+
+sys.path.append(str(dp))
 
 ########################################################################################
 #files
@@ -43,7 +40,7 @@ os.environ['PYTHONPATH'] = str(pn) + os.pathsep + os.environ.get('PYTHONPATH', '
 
 hm = dp / "hide_messages.conf"
 tmp = dp / "for_copying-can_delete.tmp"
-pc = dp / "parmanode.conf"
+pc = dp / "parmanodeconf.py"
 rp_counter = dp / "rp_counter.conf"
 motd_counter = dp / "motd_counter.conf"
 
@@ -63,6 +60,9 @@ if not rp_counter.exists():
 if not motd_counter.exists():
     with motd_counter.open('w') as f:
         f.write("0" + '\n')
+
+#add parmanode config file to python path
+sys.path.append(dp)
 
 ########################################################################################
 #colours

@@ -1,0 +1,3 @@
+Install python3 from windows store
+pip3 install colorama
+pip3 install requests
