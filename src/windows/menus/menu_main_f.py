@@ -1,6 +1,7 @@
 import sys
 from config.functions import *
 from config.variables import *
+from parmanodeconf import *
 def menu_main():
     while True:
         set_terminal()
@@ -49,7 +50,7 @@ def menu_main():
  Or to quit, either hit{green} <control>-c{orange}, or type{cyan} q{orange} then{green} <enter>{orange}.
 """)
         
-if announcements == "off":
+if 'announcements' in globals() and announcements == "off":
     print(f"""
  Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 

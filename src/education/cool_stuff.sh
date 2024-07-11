@@ -1,7 +1,6 @@
 function cool_stuff {
-
+while true ; do
 set_terminal_high ; echo -e "
-
 ########################################################################################
 $green
                                  C O O L  S T U F F    
@@ -42,8 +41,9 @@ $orange
     
 ########################################################################################
 "
-ecrm
-if [[ $ecrm == rm ]] ; then unset ecrm ; return 0 ; fi
+choose epmq ; read choice ; set_terminal
+case $choice in q|Q) exit ;; p|P) return ;; m|M) back2main ;; "") break ;; *) invalid ;; esac
+done
 
 set_terminal ; echo -e "
 

@@ -16,8 +16,6 @@ from functions.text_functions import *
 
 from parmanode.intro_f import *
 from parmanode.motd_f import *
-print(x)
-input()
 ########################################################################################
 #Begin
 ########################################################################################
