@@ -2,6 +2,7 @@
 #intro()
 #dirty_shitcoiner()
 #suggestupdate()
+#instructions()
 ########################################################################################
 
 import time
@@ -137,7 +138,7 @@ def suggestupdate():
 
 
 def instructions():
-    if searchin("instructions=1", hm):
+    if pco.grep("hide_instructions"):
         return 0
 
     set_terminal()
@@ -165,6 +166,6 @@ To continue on, just hit{cyan} <enter>{orange}.
 """)
     choice = input()    
     if choice in {'free ross' , "Free Ross"}:   
-        addline("instructions=1", hm)
+        pco.add("hide_instructions")
     return 0
 

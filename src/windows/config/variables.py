@@ -39,7 +39,6 @@ sys.path.append(str(dp))
 #files
 ########################################################################################
 
-hm = dp / "hide_messages.conf"
 tmp = dp / "for_copying-can_delete.tmp"
 pc = dp / "parmanodeconf.py"
 rp_counter = dp / "rp_counter.conf"
