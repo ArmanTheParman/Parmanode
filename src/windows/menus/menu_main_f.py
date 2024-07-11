@@ -50,136 +50,52 @@ def menu_main():
  Or to quit, either hit{green} <control>-c{orange}, or type{cyan} q{orange} then{green} <enter>{orange}.
 """)
         
-if 'announcements' in globals() and announcements == "off":
-    print(f"""
+        if not pco.grep("announcements_off"):
+            print(f"""
  Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 
 {blinkon}{red}                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN {orange}{blinkoff}""")
 
+        choice = input()  
+        set_terminal()
 
-read choice #whatever the user chooses, it gets put into the choice variable used below.
-set_terminal
+        if "aa" in choice:
+            if pco.grep("announcements_off"):
+                pco.remove("announcements_off")
+            else:
+                pco.add("announcements_off")
+        elif {"o", "O"} in choice:
+            menu_overview() 
+        elif {"a", "add", "Add", "ADD"} in choice:
+            menu_add() 
+        elif {"use", "USE", "Use", "u", "U"} in choice:
+            menu_use()
+        elif {"remove", "Remove", "remove"} in choice:
+            menu_remove()
+        elif {"L", "l"} in choice:
+            menu_log_config()
+        
+        elif {"mm", "MM"} in choice:
+            mentorship()
+        elif {"e", "E"} in choice: 
+            menu_education()
+        elif {"t", "T"} in choice:
+            menu_tools()
+        elif {"s" , "S"} in choice:
+            menu_settings()
+        elif {"d", "D"} in choice:
+            donations() 
+        elif {"un", "uninstall", "UNINSTALL", "Uninstall"} in choice:
+            uninstall_parmanode():
+        elif {"up", "update", "UPDATE", "Update"} in choice:
+            update_parmanode()
+        elif {"ap", "AP", "Ap", "aP"} in choice:
+            about_parmanode()                      
+        elif {"q", "Q", "Quit", "exit", "EXIT"} in choice
+            quit()
+        else:
+            invalid()
 
-case $choice in #the variable choice is tested through each of the case-choices below.
-# these end in a closing bracket, have some code, and end with a ;;
-# once there is a match, the case block is exited (after the esac point below). Then
-# it repeats because case is inside a while loop.
-bbb)
-export mem_debug="t"
-announce "mempool debugging turned on."
-;;
-aa)
-if [[ $announcements == off ]] ; then
-delete_line "$hm" "announcements="
-echo "announcements=on" | tee -a $hm 
-else
-delete_line "$hm" "announcements="
-echo "announcements=off" | tee -a $hm
-fi
-;;
-o|O)
-menu_overview 
-;;
+        continue 
+        #end of menu loop 
 
-a|add|Add|ADD)
-    menu_add_new
-    ;;
-use|USE|Use|u|U)
-    menu_use
-    ;;
-remove|REMOVE)
-    menu_remove ;;
-l|L) 
-    menu_log_config ;;
-mm|MM)
-     mentorship
-     ;;
-
-e|E)
-    menu_education ;;
-t|T)
-    menu_tools ;;
-s|S)
-    menu_settings ;;
-d|D)
-    donations ;;
-un|uninstall|UNINSTALL)
-uninstall_parmanode
-;;
-up|update|UPDATE|Update)
-    update_parmanode || continue
-    if [[ $main_loop != 0 ]] ; then
-    set_terminal ; 
-    announce "You need to exit and reload Parmanode to use the new version of Parmanode."
-    continue
-    fi
-
-    if [[ $exit_loop == "false" ]] ; then return 0 ;fi
-;;
-ap|AP|Ap|aP)
-    about ;;
-
-addn) menu_add_node ;;
-addw) menu_add_wallets ;;
-addo) menu_add_other ;;
-
-
-uany) menu_use any ;; 
-ub) menu_use b ;; 
-ubb) menu_use bb ;;
-ubre) menu_use bre ;; 
-ubtcp) menu_use btcp ;;
-ue) menu_use e ;;
-uers) menu_use ers ;;
-uf) menu_use f ;;
-ul) menu_use l ;; 
-ulnb) menu_use lnb ;;
-ut) menu_use t ;;
-us) menu_use s ;;
-ur) menu_use r ;;
-uts) menu_use ts ;;
-ubtcpt) menu_use btcpt ;; 
-us) menu_use s ;;
-utrz) menu_use trz ;;
-ull) menu_use ll ;;
-ups) menu_use ps ;;
-upbx) menu_use pbx ;;
-upih) menu_use pih ;;
-uqbit) menu_use qbit ;;
-umem) menu_use mem ;;
-uersd) menu_use ersd ;;
-upool) menu_use pool ;;
-uex) menu_use ex ;;
-uth) menu_use th ;;
-unr) menu_use nr ;;
-ulitd) menu_use litd ;;
-ult) menu_use lt ;;
-unext) menu_use next ;;
-dr) menu_remove th ; menu_add_new wth ;;
-
-
-"rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
-debug "before nodejs"
-get_nodejs_and_npm 20 x
-sudo npm install -g npm
-;;
-
-
-
-ul|UL|Ul)
-clear ; please_wait
-menu_lnd
-;;
-
-debugon) 
-export debug=1 ;;
-debugoff) 
-export debug=0 ;;
-
-q|Q|quit|exit)
-    exit 0 ;;
-*)
-    invalid ; clear ;;
-
-esac ; done ; return 0
-}
