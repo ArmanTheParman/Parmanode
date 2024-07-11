@@ -74,3 +74,21 @@ class config:
         with self.file.open('w') as f:
             for line in self.data:
                 f.write(line)
+
+    def add(self, toadd: str):
+        self.data.add(toadd + '\n')
+        self.write()
+    
+    def remove(self, toremove: str):
+        temp = self.data.copy()
+        for line in self.data:
+            if toremove in line:
+                temp.remove(line) 
+        self.data = temp
+        self.write()
+
+    def grep(self, checkstring: str) -> bool:
+        for line in self.data:
+            if checkstring in line:
+                return True
+        return False
