@@ -12,7 +12,7 @@ from config.variables import *
 def intro():
     #later; hide messages option
     set_terminal()
-    if searchin("hide_intro=1", hm): 
+    if pco.grep("hide_intro"):
         return 0
 
     while True:
@@ -58,7 +58,7 @@ def intro():
         elif choice in {'q', 'Q'}:
             exit(0)
         elif choice in {'Free Ross', 'free ross'}:
-            addline("hide_intro=1", hm)
+            pco.add("hide_intro")
             break
         else:
             break

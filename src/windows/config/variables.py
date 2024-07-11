@@ -1,6 +1,7 @@
 from colorama import Fore, Style, init
 import os, sys
 from pathlib import Path
+from config.classes_f import *
 
 version="0.0.1"
 
@@ -44,14 +45,13 @@ pc = dp / "parmanodeconf.py"
 rp_counter = dp / "rp_counter.conf"
 motd_counter = dp / "motd_counter.conf"
 
-if not hm.exists():
-    hm.touch()
-
 if not tmp.exists():
     tmp.touch()
 
 if not pc.exists():
     pc.touch()
+
+pco = config(pc) #parmanode conf object
 
 if not rp_counter.exists():
     with rp_counter.open('w') as f:
