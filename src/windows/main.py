@@ -17,7 +17,11 @@ from menus.menu_main_f import *
 ########################################################################################
 #Begin
 ########################################################################################
-
+if os_is() == "Windows":
+    if not is_admin():
+        run_as_admin()
+    from dependencies.chocolatey_f import *
+    dependency_check()
 
 counter("rp")
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument

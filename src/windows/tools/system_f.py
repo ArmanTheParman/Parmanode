@@ -1,5 +1,5 @@
 from config.variables_f import *
-import requests, time, atexit, platform
+import requests, time, atexit, platform, ctypes, os
 
 def counter(type):
     if type == "rp":
@@ -48,3 +48,21 @@ atexit.register(cleanup)
 def os_is():
     """Windows, Darwin, or Linux is returned"""
     return platform.system()
+
+    
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+def run_as_admin():
+    # Re-launch the script with admin privileges
+    script = os.path.abspath(sys.argv[0])
+    params = ' '.join([script] + sys.argv[1:])
+    try:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, params, None, 1)
+        sys.exit(0)
+    except Exception as e:
+        print(f"Failed to elevate: {e}")
+        sys.exit(1)

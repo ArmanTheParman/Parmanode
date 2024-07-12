@@ -34,7 +34,7 @@ def install_curl_with_chocolatey():
     except subprocess.CalledProcessError as e:
         raise Exception(f"Failed to install curl with Chocolatey: {e.stderr}")
 
-def main():
+def dependency_check():
     try:
         # Check if Chocolatey is installed
         if check_chocolatey():
@@ -54,7 +54,3 @@ def main():
 
     except Exception as e:
         print(f"An error occurred: {e}")
-
-# Run the main function
-if __name__ == "__main__":
-    main()
