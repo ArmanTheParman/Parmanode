@@ -21,15 +21,15 @@ def menu_add():
 #                                                                                      #
 ########################################################################################
 """)
-           choice = choose(xpmq)
-           if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
-               quit()
-           elif choice in {"p", "P"}:
-               return 0
-           elif choice in {"m", "M"}:
-               back2main()
-           elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
-               install_bitcoin()
-               return 0
-           else:
-               invalid()
+        choice = choose("xpmq")
+        if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
+            quit()
+        elif choice in {"p", "P"}:
+            return 0
+        elif choice in {"m", "M"}:
+            back2main()
+        elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
+            install_bitcoin()
+            return 0
+        else:
+            invalid()

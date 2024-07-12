@@ -43,10 +43,10 @@ def set_terminal():
     print(f"{orange}") #Orange colour setting.
 
 
-def choose(type=None):
-    if type == "xpqm":
+def choose(message=None):
+    if message == "xpqm":
         print(f"{yellow}Type your{cyan}choice{yellow} from above options, or:{pink} (p){yellow} for previous,{green} (m){yellow} for main,{red} (q){yellow} to quit.")
-    if type == "xeq":
+    if message == "xeq":
         print(f"{yellow}Type your{cyan}choice{yellow}, or{green} <enter>{yellow} to continue, or {red}(q){yellow} to quit.")
 
     choice = input()
