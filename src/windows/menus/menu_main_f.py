@@ -1,6 +1,10 @@
 import sys
-from config.functions import *
 from config.variables import *
+from tools.debugging_f import *
+from tools.files_f import *
+from tools.screen_f import *
+from tools.system_f import *
+
 def menu_main():
     while True:
         set_terminal()

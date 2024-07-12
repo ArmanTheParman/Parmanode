@@ -1,8 +1,5 @@
-from pathlib import Path
-import requests, time
 from config.variables import *
-from functions.text_functions import *
-import atexit
+import requests, time, atexit
 
 def counter(type):
     if type == "rp":

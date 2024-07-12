@@ -1,10 +1,12 @@
 from pathlib import Path
 from config.variables import *
-from config.functions import *
-from functions.text_functions import *
+from tools.debugging_f import *
+from tools.files_f import *
+from tools.screen_f import *
+from tools.system_f import *
 
 def motd():
-    if searchin("motd=1", hm):
+    if pco.grep("motd_off"):
         return 0
 
     with motd_counter.open('r') as f:
@@ -13,7 +15,9 @@ def motd():
     print(motd_header)
     print(motd_text[value])
     print(motd_base)
-    enter_continue()
+    choice = enter_continue()
+    if {"free ross", "Free Ross"} in choice:
+        pco.add("motd_off")
 
     counter("motd")
     return 0

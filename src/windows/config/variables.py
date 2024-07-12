@@ -1,5 +1,5 @@
-from colorama import Fore, Style, init
-import os, sys
+from colorama import Fore, Style, init #init need to toggle autoreset on/off
+import sys
 from pathlib import Path
 from config.classes_f import *
 

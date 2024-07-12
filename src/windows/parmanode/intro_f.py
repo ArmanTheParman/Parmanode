@@ -7,8 +7,11 @@
 
 import time
 from pathlib import Path
-from functions.text_functions import *
 from config.variables import * 
+from tools.debugging_f import *
+from tools.files_f import *
+from tools.screen_f import *
+from tools.system_f import *
 
 def intro():
     #later; hide messages option

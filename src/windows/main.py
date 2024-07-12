@@ -11,7 +11,7 @@
 from pathlib import Path
 from config.variables import *
 from config.functions import *
-from functions.text_functions import *
+from windows.functions.functions import *
 
 from parmanode.intro_f import *
 from parmanode.motd_f import *
