@@ -9,12 +9,11 @@
 #Imports
 ########################################################################################
 from pathlib import Path
-from config.variables import *
-from config.functions import *
-from windows.functions.functions import *
+from config.variables_f import *
 
 from parmanode.intro_f import *
 from parmanode.motd_f import *
+from menus.menu_main_f import *
 ########################################################################################
 #Begin
 ########################################################################################
@@ -27,6 +26,7 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
 intro()
 instructions()
 motd()
+menu_main()
 
 #clean up variables
 del motd_text

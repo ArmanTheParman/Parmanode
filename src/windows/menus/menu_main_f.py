@@ -1,9 +1,12 @@
 import sys
-from config.variables import *
+from config.variables_f import *
 from tools.debugging_f import *
 from tools.files_f import *
 from tools.screen_f import *
 from tools.system_f import *
+from menus.menu_add_f import *
+from menus.menu_use_f import *
+from menus.menu_remove_f import *
 
 def menu_main():
     while True:
@@ -13,11 +16,9 @@ def menu_main():
 #                                                                                      #
 #    P A R M A N O D E --> {bright_blue}Main Menu{orange}                                                   #
 #                                                                                      #
-#    Version: {bright_blue} {version}{orange}                                                                              #
+#    Version: {bright_blue} {version}{orange}                                                                   #
 #                                                                                      #
 ########################################################################################
-#                                                                                      #
-#{cyan}    (o){orange}                  Overview/Status of Programs                                  #
 #                                                                                      #
 #{cyan}    (add)    {orange}            Add more Programs                                            #
 #                                                                                      #
@@ -67,34 +68,32 @@ def menu_main():
                 pco.remove("announcements_off")
             else:
                 pco.add("announcements_off")
-        elif {"o", "O"} in choice:
-            menu_overview() 
-        elif {"a", "add", "Add", "ADD"} in choice:
+        elif choice in {"a", "add", "Add", "ADD"}:
             menu_add() 
-        elif {"use", "USE", "Use", "u", "U"} in choice:
+        elif choice in {"use", "USE", "Use", "u", "U"}: 
             menu_use()
-        elif {"remove", "Remove", "remove"} in choice:
+        elif choice in {"remove", "Remove", "remove"}: 
             menu_remove()
-        elif {"L", "l"} in choice:
+        elif choice in {"L", "l"}: 
             menu_log_config()
         
-        elif {"mm", "MM"} in choice:
+        elif choice in {"mm", "MM"}:
             mentorship()
-        elif {"e", "E"} in choice: 
+        elif choice in {"e", "E"}: 
             menu_education()
-        elif {"t", "T"} in choice:
+        elif choice in {"t", "T"}: 
             menu_tools()
-        elif {"s" , "S"} in choice:
+        elif choice in {"s" , "S"}: 
             menu_settings()
-        elif {"d", "D"} in choice:
+        elif choice in {"d", "D"}:
             donations() 
-        elif {"un", "uninstall", "UNINSTALL", "Uninstall"} in choice:
-            uninstall_parmanode():
-        elif {"up", "update", "UPDATE", "Update"} in choice:
+        elif choice in {"un", "uninstall", "UNINSTALL", "Uninstall"}: 
+            uninstall_parmanode()
+        elif choice in {"up", "update", "UPDATE", "Update"}: 
             update_parmanode()
-        elif {"ap", "AP", "Ap", "aP"} in choice:
+        elif choice in {"ap", "AP", "Ap", "aP"}: 
             about_parmanode()                      
-        elif {"q", "Q", "Quit", "exit", "EXIT"} in choice
+        elif choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
             quit()
         else:
             invalid()
@@ -102,3 +101,29 @@ def menu_main():
         continue 
         #end of menu loop 
 
+def menu_log_config():
+    pass
+
+def mentorship():
+    pass
+
+def menu_education():
+    pass
+
+def menu_tools():
+    pass
+
+def menu_settings():
+    pass
+
+def donations():
+    pass
+
+def uninstall_parmanode():
+    pass
+
+def update_parmanode():
+    pass
+
+def about_parmanode():
+    pass

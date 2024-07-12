@@ -1,5 +1,5 @@
 from pathlib import Path
-from config.variables import *
+from config.variables_f import *
 from tools.debugging_f import *
 
 def searchin(the_string, the_file: Path) -> bool:

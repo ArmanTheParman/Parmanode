@@ -7,7 +7,7 @@
 
 import time
 from pathlib import Path
-from config.variables import * 
+from config.variables_f import * 
 from tools.debugging_f import *
 from tools.files_f import *
 from tools.screen_f import *

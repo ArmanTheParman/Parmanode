@@ -1,4 +1,4 @@
-from config.variables import *
+from config.variables_f import *
 from tools.screen_f import *
 
 def debug(text=None, some_function=None):

@@ -1,5 +1,5 @@
 from pathlib import Path
-from config.variables import *
+from config.variables_f import *
 from tools.debugging_f import *
 from tools.files_f import *
 from tools.screen_f import *
@@ -16,7 +16,7 @@ def motd():
     print(motd_text[value])
     print(motd_base)
     choice = enter_continue()
-    if {"free ross", "Free Ross"} in choice:
+    if choice in {"free ross", "Free Ross"}:
         pco.add("motd_off")
 
     counter("motd")

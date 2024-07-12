@@ -1,5 +1,5 @@
-from config.variables import *
-import requests, time, atexit
+from config.variables_f import *
+import requests, time, atexit, platform
 
 def counter(type):
     if type == "rp":
@@ -45,3 +45,6 @@ def cleanup():
 
 atexit.register(cleanup) 
 
+def os_is():
+    """Windows, Darwin, or Linux is returned"""
+    return platform.system()
