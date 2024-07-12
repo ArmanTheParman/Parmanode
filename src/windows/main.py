@@ -14,9 +14,9 @@ from config.variables_f import *
 from parmanode.intro_f import *
 from parmanode.motd_f import *
 from menus.menu_main_f import *
+
 ########################################################################################
-#Begin
-########################################################################################
+
 if os_is() == "Windows":
     if not is_admin():
         run_as_admin()
