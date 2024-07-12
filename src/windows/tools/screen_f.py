@@ -1,7 +1,5 @@
 from config.variables_f import *
-from menus.menu_add_f import *
 from tools.debugging_f import *
-from tools.screen_f import *
 from tools.system_f import os_is
 import os , ctypes 
 import fcntl, struct, sys, termios
@@ -74,3 +72,7 @@ def proforma(choice):
         back2main()
     else:
         invalid()
+
+def please_wait():
+    set_terminal()
+    print("Please wait...")

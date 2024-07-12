@@ -1,12 +1,10 @@
-import sys
 from config.variables_f import *
 from tools.debugging_f import *
 from tools.files_f import *
-from tools.screen_f import *
 from tools.system_f import *
-from menus.menu_add_f import *
-from menus.menu_use_f import *
-from menus.menu_remove_f import *
+from menus.menu_add_f import menu_add
+from menus.menu_use_f import menu_use
+from menus.menu_remove_f import menu_remove
 
 def menu_main():
     while True:

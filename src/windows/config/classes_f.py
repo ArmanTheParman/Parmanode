@@ -1,4 +1,4 @@
-from config.variables_f import *
+from pathlib import Path
 
 class config:
     def __init__(self, path: Path):
