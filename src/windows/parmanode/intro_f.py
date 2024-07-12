@@ -131,9 +131,8 @@ def suggestupdate():
 """)
     choice = choose("xeq")
     if choice in {'free ross', 'Free Ross'}:
-        addline("update_reminder=1", hm) #tested at the start of check_updates()
+        pco.add("update_reminders_off")#tested at the start of check_updates()
     elif choice == "q": quit()
-
     return 0 
 
 

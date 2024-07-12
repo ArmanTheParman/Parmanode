@@ -11,7 +11,6 @@
 from pathlib import Path
 from config.variables import *
 from config.functions import *
-from parmanodeconf import *
 from functions.text_functions import *
 
 from parmanode.intro_f import *

@@ -40,7 +40,7 @@ sys.path.append(str(dp))
 ########################################################################################
 
 tmp = dp / "for_copying-can_delete.tmp"
-pc = dp / "parmanodeconf.py"
+pc = dp / "parmanode.conf"
 rp_counter = dp / "rp_counter.conf"
 motd_counter = dp / "motd_counter.conf"
 

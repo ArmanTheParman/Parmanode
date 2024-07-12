@@ -21,7 +21,7 @@ def counter(type):
 
 
 def check_updates(compiled_version):
-    if searchin("update_reminder=1", hm):
+    if pco.grep("update_reminders_off"):
         return 0
     url = "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf" 
     params = {'_': int(time.time())}  # Adding a unique timestamp parameter

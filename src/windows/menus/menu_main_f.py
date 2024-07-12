@@ -1,7 +1,6 @@
 import sys
 from config.functions import *
 from config.variables import *
-from parmanodeconf import *
 def menu_main():
     while True:
         set_terminal()
