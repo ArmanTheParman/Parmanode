@@ -17,7 +17,5 @@ def install_bitcoin():
     url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
 
     please_wait(f"{green}Downloading Bitcoin{orange}")
-    input("pausing")
     download(url, str(bitcoinpath))
-
     unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
