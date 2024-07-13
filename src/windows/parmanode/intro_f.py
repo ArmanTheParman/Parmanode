@@ -69,7 +69,6 @@ def intro():
             set_terminal()
             return 0
         elif choice == "":
-            set_terminal()
             return 0 
         else:
             set_terminal()
@@ -171,7 +170,7 @@ To hide this message next time, type in{pink} \"Free Ross\"{orange} then <enter>
 
 To continue on, just hit{cyan} <enter>{orange}.
 """)
-    choice = input()    
+    choice = input().strip()    
     if choice in {'free ross' , "Free Ross"}:   
         pco.add("hide_instructions")
     elif choice in {"q", "Q", "quit"}:
