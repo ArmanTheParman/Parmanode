@@ -13,9 +13,6 @@ from tools.files_f import *
 from tools.screen_f import *
 from tools.system_f import *
 
-if os_is == "Wiondows":
-    import msvcrt
-
 def intro():
     #later; hide messages option
     set_terminal()
@@ -56,6 +53,10 @@ def intro():
 
     To hide this screen next time, type{pink} \"Free Ross\"{orange} then <enter>.
 """)
+        try:
+            del choice
+        finally:
+            pass
         choice = input()
         set_terminal()
 
