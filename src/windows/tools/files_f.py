@@ -49,6 +49,7 @@ def deleteline(the_string, the_file):
 def download(url, filepath: str):
     subprocess.run(['curl', '-LO', url, '-o', filepath], check=True)
     #urllib.request.urlretrieve(url, filepath)
+    input("pause")
 
 def unzip_file(zippath: str, directory_destination: str):
     with zipfile.ZipFile(zippath, 'r') as z:
