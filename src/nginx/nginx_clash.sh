@@ -48,7 +48,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode has detected that NGINX is installed on your system. Nginx usually 
-    listens on PORT 80 by default (the regualy http internet traffic port).
+    listens on PORT 80 by default (the regular http internet traffic port).
 
     Unfortunately, $1 needs that port and it can't be changed. 
 
