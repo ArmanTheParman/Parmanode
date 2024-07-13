@@ -49,7 +49,7 @@ def deleteline(the_string, the_file):
 def download(url, dir):
     os.getcwd()
     os.chdir(dir)
-    subprocess.run(['curl', '-LO', url, check=True)
+    subprocess.run(['curl', '-LO', url], check=True)
     #urllib.request.urlretrieve(url, filepath)
     input("pause")
 
