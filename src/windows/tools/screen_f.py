@@ -2,7 +2,9 @@ from config.variables_f import *
 from tools.debugging_f import *
 from tools.system_f import os_is
 import os , ctypes 
-import fcntl, struct, sys, termios
+import struct, sys
+if os_is == "Windows":
+    import fcntl, termios
 
 def set_terminal_size(rows, cols):
     if os_is() != "Windows":
@@ -73,6 +75,7 @@ def proforma(choice):
     else:
         invalid()
 
-def please_wait():
+def please_wait(text: str):
     set_terminal()
+    print(text)
     print("Please wait...")

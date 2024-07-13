@@ -64,6 +64,8 @@ def intro():
         elif choice in {'Free Ross', 'free ross'}:
             pco.add("hide_intro")
             break
+        elif choice == "":
+            break
         else:
             break
 
