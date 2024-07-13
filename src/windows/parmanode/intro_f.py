@@ -171,5 +171,7 @@ To continue on, just hit{cyan} <enter>{orange}.
     choice = input()    
     if choice in {'free ross' , "Free Ross"}:   
         pco.add("hide_instructions")
+    elif choice in {"q", "Q", "quit"}:
+        exit()
     return 0
 
