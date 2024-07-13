@@ -71,7 +71,7 @@ def intro():
             return 0 
         else:
             set_terminal()
-            return 0 
+            continue
 
 def dirty_shitcoiner():
     while True: 
