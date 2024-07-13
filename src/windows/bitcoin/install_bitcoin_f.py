@@ -18,6 +18,6 @@ def install_bitcoin():
 
     please_wait(f"{green}Downloading Bitcoin{orange}")
     input("pausing")
-    download(url, str(zippath))
+    download(url, str(bitcoinpath))
 
     unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
