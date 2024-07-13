@@ -1,1 +1,1 @@
-from .menu_main_f import *
+from ..parmanode.menu_main_f import *

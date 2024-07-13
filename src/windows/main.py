@@ -12,7 +12,7 @@ from pathlib import Path
 from config.variables_f import *
 from parmanode.intro_f import *
 from parmanode.motd_f import motd 
-from menus.menu_main_f import *
+from parmanode.menu_main_f import *
 
 ########################################################################################
 #The "need_restart" flag is removed here, just in case.

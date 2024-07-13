@@ -39,7 +39,7 @@ def set_terminal_size_unix(rows, cols):
 
 def set_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
-    set_terminal_size(38,88)
+    set_terminal_size(50,88)
     print(f"{orange}") #Orange colour setting.
 
 
