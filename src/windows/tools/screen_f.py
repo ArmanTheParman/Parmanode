@@ -37,9 +37,9 @@ def set_terminal_size_unix(rows, cols):
     size = struct.pack('HHHH', 0, 0, rows, cols)
     fcntl.ioctl(fd, termios.TIOCSWINSZ, size)
 
-def set_terminal():
+def set_terminal(h=40, w=88):
     os.system('cls' if os.name == 'nt' else 'clear')
-    set_terminal_size(50,88)
+    set_terminal_size(h, w)
     print(f"{orange}") #Orange colour setting.
 
 

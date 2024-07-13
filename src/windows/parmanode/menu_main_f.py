@@ -8,7 +8,7 @@ from menus.menu_remove_f import menu_remove
 
 def menu_main():
     while True:
-        set_terminal()
+        set_terminal(50, 88)
         print(f"""{orange}        
 ########################################################################################
 #                                                                                      #
