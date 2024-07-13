@@ -6,33 +6,19 @@ from tools.screen_f import *
 from tools.system_f import *
 
 def motd():
-    if pco.grep("motd_off"):
-        return 0
 
-    with motd_counter.open('r') as f:
-        value = int(f.read().strip())
-    set_terminal() 
-    print(motd_header)
-    print(motd_text[value])
-    print(motd_base)
-    choice = enter_continue()
-    if choice in {"free ross", "Free Ross"}:
-        pco.add("motd_off")
 
-    counter("motd")
-    return 0
-
-motd_header=f"""{orange}
+    motd_header=f"""{orange}
 ########################################################################################{cyan}
 
                                 Message of the Day
 
 """
 
-motd_base=f"""{orange}########################################################################################
+    motd_base=f"""{orange}########################################################################################
 """
 
-motd_text = [f"""
+    motd_text = [f"""
     People have DIED fighting for freedom.
 
     All you have to do is "risk" your fiat savings and buy bitcoin.
@@ -411,3 +397,20 @@ motd_text = [f"""
 """, f"""
     Money does not need utility. Money BUYS utility. That's the point of it.
 """]
+
+    if pco.grep("motd_off"):
+        return 0
+
+    with motd_counter.open('r') as f:
+        value = int(f.read().strip())
+    set_terminal() 
+    print(motd_header)
+    print(motd_text[value])
+    print(motd_base)
+    choice = enter_continue()
+    if choice in {"free ross", "Free Ross"}:
+        pco.add("motd_off")
+
+    counter("motd")
+    del motd_text #clean up variables
+    return 0

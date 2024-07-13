@@ -10,11 +10,14 @@
 ########################################################################################
 from pathlib import Path
 from config.variables_f import *
-
 from parmanode.intro_f import *
-from parmanode.motd_f import *
+from parmanode.motd_f import motd 
 from menus.menu_main_f import *
 
+########################################################################################
+#The "need_restart" flag is removed here, just in case.
+if pco.grep("need_restart"):
+    pco.remove("need_restart")
 ########################################################################################
 
 if os_is() == "Windows":
@@ -31,8 +34,5 @@ intro()
 instructions()
 motd()
 menu_main()
-
-#clean up variables
-del motd_text
 
 #print("intro done, exiting")

@@ -1,10 +1,12 @@
 import subprocess
+from config.variables_f import *
+
+#should also test for installes done and then recommend restart Parmanode or reboot.
 
 def check_chocolatey():
-    try:
-        subprocess.run(["choco", "--version"], check=True)
+    if subprocess.run(["choco", "--version"], check=True):
         return True
-    except (subprocess.CalledProcessError, FileNotFoundError):
+    else: 
         return False
 
 def install_chocolatey():
@@ -15,24 +17,31 @@ def install_chocolatey():
             r'[System.Net.ServicePointManager]::SecurityProtocol -bor 3072; '
             r'iex ((New-Object System.Net.WebClient).DownloadString("https://chocolatey.org/install.ps1"))'
         )
-        subprocess.run(["powershell", "-Command", command], check=True)
-        print("Chocolatey installed successfully.")
-    except subprocess.CalledProcessError as e:
-        raise Exception(f"Failed to install Chocolatey: {e.stderr}")
+        if subprocess.run(["powershell", "-Command", command], check=True):
+            print("Chocolatey installed successfully.")
+            pco.add("need_restart")
 
+    except subprocess.CalledProcessError as e:
+        return False
+
+    return True
 def check_curl():
     try:
         subprocess.run(["curl", "--version"], check=True)
         return True
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
-
+    
+    return True
 def install_curl_with_chocolatey():
     try:
         subprocess.run(["choco", "install", "curl", "-y"], check=True)
         print("curl installed successfully.")
+        pco.add("neet_restart")
     except subprocess.CalledProcessError as e:
         raise Exception(f"Failed to install curl with Chocolatey: {e.stderr}")
+
+    return True
 
 def dependency_check():
     try:
@@ -51,6 +60,14 @@ def dependency_check():
             install_curl_with_chocolatey()
 
         # Additional logic for downloading and installing Bitcoin Core can be added here
-
+        
+        if pco.grep("need_restart"):
+            set_terminal()
+            pco.remove("need_restart")
+            print("Because a dependency was installed, please restart Parmanode.") 
+            quit()
+        
+        return True
+        
     except Exception as e:
         print(f"An error occurred: {e}")
