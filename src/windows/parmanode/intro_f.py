@@ -60,7 +60,7 @@ def intro():
             dirty_shitcoiner() 
             break
         elif choice in {'q', 'Q'}:
-            exit(0)
+            exit()
         elif choice in {'Free Ross', 'free ross'}:
             pco.add("hide_intro")
             break
