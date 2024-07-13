@@ -1,7 +1,7 @@
 from pathlib import Path
 from config.variables_f import *
 from tools.debugging_f import *
-import requests, zipfile
+import requests, zipfile, subprocess
 import urllib.request
 
 def searchin(the_string, the_file: Path) -> bool:
@@ -47,7 +47,8 @@ def deleteline(the_string, the_file):
         return 1
 
 def download(url, filepath: str):
-    urllib.request.urlretrieve(url, filepath)
+    subprocess.run(['curl', '-LO', url, '-o', filepath], check=True)
+    #urllib.request.urlretrieve(url, filepath)
 
 def unzip_file(zippath: str, directory_destination: str):
     with zipfile.ZipFile(zippath, 'r') as z:
