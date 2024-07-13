@@ -53,10 +53,6 @@ def intro():
 
     To hide this screen next time, type{pink} \"Free Ross\"{orange} then <enter>.
 """)
-        try:
-            del choice
-        finally:
-            pass
         choice = input()
         set_terminal()
 
