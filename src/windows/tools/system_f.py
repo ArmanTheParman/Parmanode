@@ -66,3 +66,6 @@ def run_as_admin():
     except Exception as e:
         print(f"Failed to elevate: {e}")
         sys.exit(1)
+
+def windows_version():
+    return sys.getwindowsversion().major  #int
