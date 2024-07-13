@@ -47,14 +47,16 @@ def dependency_check():
     try:
         # Check if Chocolatey is installed
         if check_chocolatey():
-            print("Chocolatey is already installed.")
+            pass
+            """Chocolatey is already installed."""
         else:
             print("Chocolatey is not installed. Installing Chocolatey...")
             install_chocolatey()
 
         # Check if curl is installed
         if check_curl():
-            print("curl is already installed.")
+            """curl is already installed."""
+            pass
         else:
             print("curl is not installed. Installing curl with Chocolatey...")
             install_curl_with_chocolatey()
