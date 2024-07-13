@@ -1,7 +1,7 @@
 from pathlib import Path
 from config.variables_f import *
 from tools.debugging_f import *
-import requests, zipfile, subprocess
+import requests, zipfile, subprocess, os
 import urllib.request
 
 def searchin(the_string, the_file: Path) -> bool:
@@ -46,7 +46,9 @@ def deleteline(the_string, the_file):
         debug(f"Exception when doing deleteline - {e}")
         return 1
 
-def download(url, filepath: str):
+def download(url, dir):
+    os.getcwd()
+    os.chdir(dir)
     subprocess.run(['curl', '-LO', url, '-o', filepath], check=True)
     #urllib.request.urlretrieve(url, filepath)
     input("pause")
