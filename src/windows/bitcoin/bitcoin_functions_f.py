@@ -1,5 +1,9 @@
 from config.variables_f import *
 from tools.screen_f import *
+from tools.files_f import *
+from tools.system_f import *
+
+
 def choose_drive():
     while True:
         print(f"""
@@ -40,4 +44,17 @@ def choose_drive():
             invalid()
 
 
+def download_bitcoin():
+    global download_bitcoin_finished 
+    download_bitcoin_finished = False
+    try:
+        url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
+        please_wait(f"{green}Downloading Bitcoin{orange}")
+        download(url, str(bitcoinpath))
+        zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+        unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+        download_bitcoin_finished = True
+    except:
+        pass 
 
+    return download_bitcoin_finished 

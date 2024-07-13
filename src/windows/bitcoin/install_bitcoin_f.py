@@ -3,19 +3,20 @@ from tools.files_f import download
 from tools.files_f import * 
 from tools.debugging_f import *
 from tools.screen_f import *
+from bitcoin.bitcoin_functions_f import *
+import threading, time
+
 
 def install_bitcoin():
 
     set_terminal()
-    
-    bitcoinpath = pp / "bitcoin"
-    zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+    print(f"{green}Bitcoin will be downloading in the background...")
+    time.sleep(2.5)
 
-    if not bitcoinpath.exists():
-        bitcoinpath.mkdir()
+    threading.Thread(target=download_bitcoin).start() #check download_bitcoin_finished global variable
 
-    url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
+    if not choose_drive():
+        dbo.write("Bitcoin choose_drive failed.")
+        return 1
 
-    please_wait(f"{green}Downloading Bitcoin{orange}")
-    download(url, str(bitcoinpath))
-    unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+

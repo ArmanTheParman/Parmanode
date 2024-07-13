@@ -29,7 +29,7 @@ def menu_add():
         elif choice in {"m", "M"}:
             back2main()
         elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
-            install_bitcoin()
+            if not install_bitcoin(): return 1
             return 0
         else:
             invalid()

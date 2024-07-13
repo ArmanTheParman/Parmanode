@@ -31,6 +31,10 @@ dp = pp / "parmanode_config"
 if not dp.exists():
     dp.mkdir()
 
+bitcoinpath = pp / "bitcoin"
+if not bitcoinpath.exists():
+    bitcoinpath.mkdir()                
+
 #path
 
 sys.path.append(str(dp))
@@ -39,8 +43,12 @@ sys.path.append(str(dp))
 #files
 ########################################################################################
 
+global tmp, pc, ic, rp_counter, motd_counter, pco, ico, dbo, db
+
 tmp = dp / "for_copying-can_delete.tmp"
 pc = dp / "parmanode.conf"
+ic = dp / "installed.conf"
+db = dp / "debug.log"
 rp_counter = dp / "rp_counter.conf"
 motd_counter = dp / "motd_counter.conf"
 
@@ -50,7 +58,11 @@ if not tmp.exists():
 if not pc.exists():
     pc.touch()
 
-pco = config(pc) #parmanode conf object
+if not ic.exists():
+    ic.touch()
+
+if not dc.exists():
+    dc.touch()
 
 if not rp_counter.exists():
     with rp_counter.open('w') as f:
@@ -59,6 +71,12 @@ if not rp_counter.exists():
 if not motd_counter.exists():
     with motd_counter.open('w') as f:
         f.write("0" + '\n')
+
+pco = config(pc) #parmanode conf object
+
+ico = config(ic) #installed conf object
+
+dbo = config(db) #debug log object
 
 #add parmanode config file to python path
 sys.path.append(dp)
