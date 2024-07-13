@@ -58,19 +58,20 @@ def intro():
 
         if choice in {'s', 'S'}:
             dirty_shitcoiner() 
-            break
+            set_terminal()
+            return 0 
         elif choice in {'q', 'Q'}:
             exit()
         elif choice in {'Free Ross', 'free ross'}:
             pco.add("hide_intro")
-            break
+            set_terminal()
+            return 0
         elif choice == "":
-            break
+            set_terminal()
+            return 0 
         else:
-            break
-
-    set_terminal() 
-    return 0
+            set_terminal()
+            return 0 
 
 def dirty_shitcoiner():
     while True: 
