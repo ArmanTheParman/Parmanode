@@ -54,7 +54,6 @@ def intro():
     To hide this screen next time, type{pink} \"Free Ross\"{orange} then <enter>.
 """)
         choice = input()
-        set_terminal()
 
         if choice in {'s', 'S'}:
             dirty_shitcoiner() 
