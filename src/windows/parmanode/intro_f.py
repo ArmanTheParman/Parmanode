@@ -71,6 +71,7 @@ def intro():
         elif choice == "":
             return 0 
         else:
+            print('in here')
             set_terminal()
             continue
 
