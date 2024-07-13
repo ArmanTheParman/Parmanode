@@ -1,5 +1,6 @@
 import subprocess
 from config.variables_f import *
+from tools.screen_f import set_terminal
 
 #should also test for installes done and then recommend restart Parmanode or reboot.
 
