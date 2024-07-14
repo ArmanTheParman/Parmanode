@@ -61,8 +61,8 @@ if not pc.exists():
 if not ic.exists():
     ic.touch()
 
-if not dc.exists():
-    dc.touch()
+if not db.exists():
+    db.touch()
 
 if not rp_counter.exists():
     with rp_counter.open('w') as f:
