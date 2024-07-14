@@ -24,14 +24,14 @@ def install_bitcoin():
 #    if format_drive():
 #        pass
 
-    else:
-        dbo.write(f"{thedate}: Bitcoin format_external drive exited.")
-        return False
+    # else:
+    #     dbo.write(f"{thedate}: Bitcoin format_external drive exited.")
+    #     return False
 
-    if download_bitcoin():
-        pass
-    else:
-        return False
+    # if download_bitcoin():
+    #     pass
+    # else:
+    #     return False
 
 def format_drive(drive_letter=None, file_system='NFTS', label="parmanode"):
     try:
