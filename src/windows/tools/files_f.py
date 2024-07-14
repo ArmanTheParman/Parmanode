@@ -7,7 +7,7 @@ import urllib.request
 def searchin(the_string, the_file: Path) -> bool:
 
     if not the_file.is_file():
-        return 1 
+        return False 
 
     with the_file.open() as f:
         contents = f.read()
@@ -17,10 +17,10 @@ def searchin(the_string, the_file: Path) -> bool:
 def addline(the_string, the_file):
     if not isinstance(the_file, Path):
         debug(f"the file {the_file} needs to be a Path object")
-        return 1
+        return False
     if not the_file.is_file():
         debug(f"addline function - file, f{the_file} does not exist")
-        return 1
+        return False
     with the_file.open('a') as f:
         f.write(the_string + '\n')
 
@@ -28,11 +28,11 @@ def deleteline(the_string, the_file):
     
     if not isinstance(the_file, Path):
         debug(f"the file {the_file} needs to be a Path object")
-        return 1
+        return False
 
     if not the_file.is_file():
         debug(f"addline function - file, f{the_file} does not exist")
-        return 1
+        return False
 
     try:
         with the_file.open('r') as f_in, tmp.open('w') as f_out:
@@ -40,17 +40,25 @@ def deleteline(the_string, the_file):
                 if the_string not in line:
                     f_out.write(line)
         tmp.replace(the_file)
-        return 0
+        return True
 
     except Exception as e:
         debug(f"Exception when doing deleteline - {e}")
-        return 1
+        return False
 
 def download(url, dir):
-    os.getcwd()
-    os.chdir(dir)
-    subprocess.run(['curl', '-LO', url], check=True)  # other options: stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        os.getcwd()
+        os.chdir(dir)
+        subprocess.run(['curl', '-LO', url], check=True)  # other options: stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return True
+    except:
+        return False
 
 def unzip_file(zippath: str, directory_destination: str):
-    with zipfile.ZipFile(zippath, 'r') as z:
-        z.extractall(directory_destination) 
+    try:
+        with zipfile.ZipFile(zippath, 'r') as z:
+            z.extractall(directory_destination) 
+        return True
+    except:
+        return False
