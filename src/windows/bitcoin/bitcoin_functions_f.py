@@ -5,6 +5,7 @@ from tools.system_f import *
 
 
 def choose_drive():
+    set_terminal()
     while True:
         print(f"""{orange}
 ########################################################################################
@@ -25,8 +26,8 @@ def choose_drive():
 
 
 ########################################################################################""")
-        choose("xpmq")
-        choice = input()
+
+        choice = choose("xpmq")
         if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
             quit()
         elif choice in {"p", "P"}:
