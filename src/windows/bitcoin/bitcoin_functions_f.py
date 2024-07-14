@@ -44,7 +44,6 @@ def choose_drive():
             return 0
         else:
             invalid()
-    input("pause end of choose drive")
 
 def download_bitcoin():
     try:
