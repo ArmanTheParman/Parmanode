@@ -18,10 +18,12 @@ def install_bitcoin():
         thedate = date.today().strftime("%d-%m-%y")
         dbo.write(f"{thedate}: Bitcoin choose_drive exited.")
         return False
-    if detect_drive():
+
+    detect_drive():
         
 #    if format_drive():
 #        pass
+
     else:
         dbo.write(f"{thedate}: Bitcoin format_external drive exited.")
         return False
