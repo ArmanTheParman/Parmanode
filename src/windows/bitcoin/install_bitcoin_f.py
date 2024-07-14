@@ -4,7 +4,6 @@ from tools.files_f import *
 from tools.debugging_f import *
 from tools.screen_f import *
 from bitcoin.bitcoin_functions_f import *
-import threading, time
 from datetime import date
 
 
