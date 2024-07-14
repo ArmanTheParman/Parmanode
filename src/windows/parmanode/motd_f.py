@@ -7,13 +7,12 @@ from tools.system_f import *
 
 def motd():
 
-
     motd_header=f"""{orange}
 ########################################################################################{cyan}
 
                                 Message of the Day
 
-"""
+{orange}"""
 
     motd_base=f"""{orange}########################################################################################
 """
@@ -397,20 +396,19 @@ def motd():
 """, f"""
     Money does not need utility. Money BUYS utility. That's the point of it.
 """]
-
+     
     if pco.grep("motd_off"):
         return 0
-
     with motd_counter.open('r') as f:
         value = int(f.read().strip())
+    print("value is", value)
     set_terminal() 
     print(motd_header)
-    print(motd_text[value])
+    print(motd_text[value % len(motd_text)])
     print(motd_base)
     choice = enter_continue()
     if choice in {"free ross", "Free Ross"}:
         pco.add("motd_off")
 
     counter("motd")
-    del motd_text #clean up variables
     return 0

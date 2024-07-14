@@ -31,7 +31,6 @@ if os_is() == "Windows":
 
     from dependencies.chocolatey_f import *
     dependency_check()
-
 counter("rp")
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
