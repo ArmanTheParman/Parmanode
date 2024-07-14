@@ -54,7 +54,8 @@ def choose(message=None):
 
 def enter_continue():
     print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...")
-    return input()
+    choice = input()
+    return choice
 
 def invalid():
     set_terminal()
