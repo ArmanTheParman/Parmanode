@@ -5,6 +5,7 @@ from tools.system_f import *
 
 
 def choose_drive():
+    del choice 
     while True:
         print(f"""
 ########################################################################################
