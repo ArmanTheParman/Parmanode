@@ -14,13 +14,12 @@ from parmanode.intro_f import *
 from parmanode.motd_f import motd 
 from parmanode.menu_main_f import *
 from tools.system_f import *
-
+from bitcoin.bitcoin_functions_f import *
 ########################################################################################
 #The "need_restart" flag is removed here, just in case.
 if pco.grep("need_restart"):
     pco.remove("need_restart")
 ########################################################################################
-
 if os_is() == "Windows":
     if windows_version() < 10:
         set_terminal()

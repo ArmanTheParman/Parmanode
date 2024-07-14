@@ -10,12 +10,8 @@ from datetime import date
 
 def install_bitcoin():
 
-    set_terminal()
-    print(f"{green}Bitcoin will be downloading in the background...")
-    time.sleep(2.5)
 
-    threading.Thread(target=download_bitcoin).start() #check download_bitcoin_finished global variable
-
+    choose_drive()
     if not choose_drive():
         date = date.today().strftime("%d-%m-%y")
         dbo.write(f"{date}: Bitcoin choose_drive exited.")
@@ -24,6 +20,8 @@ def install_bitcoin():
     if not format_external_drive():
         dbo.write(f"{date}: Bitcoin format_external drive exited.")
         return 1
+
+    download_bitcoin()
 
 def format_external_drive():
     set_terminal()

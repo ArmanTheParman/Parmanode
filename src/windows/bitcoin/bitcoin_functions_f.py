@@ -5,9 +5,8 @@ from tools.system_f import *
 
 
 def choose_drive():
-    del choice 
     while True:
-        print(f"""
+        print(f"""{orange}
 ########################################################################################
 
 
@@ -21,12 +20,13 @@ def choose_drive():
 
 {green}                (e){orange}     Use an EXTERNAL drive (choice to format) 
 
-{green}                (i){orange}     Use an INTERNAL drive 
+{cyan}                (i){orange}     Use an INTERNAL drive 
 
 
 
 ########################################################################################""")
-        choice = choose("xpmq")
+        choose("xpmq")
+        choice = input()
         if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
             quit()
         elif choice in {"p", "P"}:
@@ -43,16 +43,15 @@ def choose_drive():
             return 0
         else:
             invalid()
-
+    input("pause end of choose drive")
 
 def download_bitcoin():
-    global download_bitcoin_finished 
-    download_bitcoin_finished = False
     try:
         url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
         please_wait(f"{green}Downloading Bitcoin{orange}")
         download(url, str(bitcoinpath))
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+        please_wait(f"{green}Unzipping Bitcoin{orange}")
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
         download_bitcoin_finished = True
     except:
