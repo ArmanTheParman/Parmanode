@@ -19,6 +19,7 @@ def install_bitcoin():
         dbo.write(f"{thedate}: Bitcoin choose_drive exited.")
         return False
 
+    input("after choose drive")
     detect_drive()
         
 #    if format_drive():
@@ -49,17 +50,19 @@ def detect_drive():
     #before_disks = set(get_all_disks)
     input(f"""{orange}    Now go ahead and connect the drive, wait a few seconds, then
     hit <enter>""")
-    after_disks = set(get_all_disks())
-
-    new_disk = after_disks.pop()
-    input("""Your new drive is :
+    get_all_disks()
+     
+    input(f"""Your new drive is :
           {new_disk}
+          after disks data is...
+          {after_disks}
           """)
     return new_disk
     
 def get_all_disks():
-    command = 'powershell "Get-Disk"'
+    command = 'powershell -Command "Get-Disk | Format-List -Property FriendlyName,Size"'
     result = subprocess.run(command, capture_output=True, text=True, shell=True) 
-    disk_info = result.stdout.strip().split('\n')
-    return disk_info
-
+    disk_info = result.stdout.strip().splitlines()
+    tmpo = config(tmp)
+    for line in disk_info: 
+        tmpo.add(line)

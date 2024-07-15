@@ -37,11 +37,11 @@ def choose_drive():
         elif choice in {"e", "E"}:
             drive_bitcoin = "external"
             pco.add("drive_bitcoin=external")
-            return 0
+            return True
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal"
             pco.add("drive_bitcoin=internal")
-            return 0
+            return True
         else:
             invalid()
 
