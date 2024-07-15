@@ -12,22 +12,37 @@ def format_drive(drive_letter=None, file_system='NFTS', label="parmanode"):
         return False
 
 def detect_drive():
-    
     set_terminal()
     input(f"""{orange}    Please make sure the drive you want to use with Parmanode
     is{cyan} DISCONNECTED{orange}. Then hit <enter>.
     
     """)
+    try:
+        get_all_disks("before")
+    except Exception as e:
+        print(f"{a}")
+        input("error. exiting. before")
     #The sequence is to ensure the last added drive is numbered last
-    input(f"""{orange}    Now go ahead and{cyan} CONNECT{orange} The drive, wait a few seconds, then
+    input(f"""{orange}    Now go ahead and{cyan} CONNECT{orange} The drive, wait a few seconds. Then
     hit <enter>""")
-    get_all_disks("after")
+    try:
+        get_all_disks("after")
+    except Exception as e:
+        print(f"{a}")
+        input("error. exiting. after")
 
-    with beforeo.open('r') as bb, aftero.open('r') as aa:
-        bblines = set(bb.readlines())
-        aalines = set(aa.readlines()) # type: ignore
+    input("6") 
+    print(type(beforeo))
+    beforeo.truncate()
+    aftero.truncate()
+    input("6a")
+    with before.open('r') as bb, after.open('r') as aa:
+        input("6b")
+        bblines = tuple(bb.readlines())
+        aalines = tuple(aa.readlines()) # type: ignore
         unique_lines = aalines - bblines
         
+    input("7") 
     print(unique_lines)
     input("look at unique lines above")
 
