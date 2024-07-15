@@ -43,7 +43,7 @@ sys.path.append(str(dp))
 #files
 ########################################################################################
 
-global tmp, pc, ic, rp_counter, motd_counter, pco, ico, dbo, db, before, after
+global tmp, pc, ic, rp_counter, motd_counter, pco, ico, dbo, db, before, after, difference 
 
 tmp = dp / "for_copying-can_delete.tmp"
 pc = dp / "parmanode.conf"
@@ -53,6 +53,7 @@ rp_counter = dp / "rp_counter.conf"
 motd_counter = dp / "motd_counter.conf"
 before = dp / "before.log"
 after = dp / "after.log"
+difference = dp/ "difference.log"
 
 if not tmp.exists():
     tmp.touch()
@@ -80,7 +81,10 @@ if not before.exists():
 if not after.exists():
     after.touch()
 
-global pco, ico, dbo, tmpo, beforeo, aftero
+if not difference.exists():
+    difference.touch()
+
+global pco, ico, dbo, tmpo, beforeo, aftero, differenceo 
 
 pco = config(pc) #parmanode conf object
 
@@ -93,6 +97,8 @@ tmpo = config(tmp) #temp config object - not config, but useful methods
 beforeo = config(before)
 
 aftero = config(after)
+
+differenceo = config(difference)
 
 #add parmanode config file to python path
 sys.path.append(dp)

@@ -13,6 +13,7 @@ def format_drive(drive_letter=None, file_system='NFTS', label="parmanode"):
 
 def detect_drive():
     set_terminal()
+    beforeo.truncate() ; aftero.truncate() ; differenceo.truncate()
     input(f"""{orange}    Please make sure the drive you want to use with Parmanode
     is{cyan} DISCONNECTED{orange}. Then hit <enter>.
     
@@ -31,18 +32,14 @@ def detect_drive():
         print(f"{a}")
         input("error. exiting. after")
 
-    input("6") 
-    print(type(beforeo))
-    beforeo.truncate()
-    aftero.truncate()
     input("6a")
     with before.open('r') as bb, after.open('r') as aa:
         input("6b")
         bblines = tuple(bb.readlines())
-        aalines = tuple(aa.readlines()) # type: ignore
-        unique_lines = aalines - bblines
-        
-    input("7") 
+        aalines = tuple(aa.readlines()) 
+        unique_lines = [line for line in aalines if line not in bblines]
+
+    differenceo.add(unique_lines) 
     print(unique_lines)
     input("look at unique lines above")
 
