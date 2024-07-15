@@ -38,6 +38,8 @@ def get_all_disks():
     tmpo.truncate()
     diskpart_commands = """list disk"""
     tmpo.add(diskpart_commands)
-
     diskpart_script_path = str(tmpo)
     result = subprocess.run(['diskpart', '/s', diskpart_script_path], capture_output=True, text=True, shell=True).stdout.strip().split('\n')
+    print("len  ", len(result), "  type  ", type(result))
+    for line in result:
+        print(line)

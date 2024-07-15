@@ -51,5 +51,5 @@ class config:
     def truncate(self):
         self.data.clear()
         self.fulldata = ""
-        with self.open('w'):
+        with self.file.open('w'):
             pass
