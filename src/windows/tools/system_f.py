@@ -41,7 +41,7 @@ def check_updates(compiled_version):
 def cleanup():
     """Will execute when Parmanode quits"""
     print(f"{reset}")
-    tmp.unlink() #deletes the file
+    #tmp.unlink() #deletes the file
 
 atexit.register(cleanup) 
 
