@@ -39,7 +39,9 @@ def detect_drive():
         aalines = tuple(aa.readlines()) 
         unique_lines = [line for line in aalines if line not in bblines]
 
-    differenceo.add(unique_lines) 
+    with difference.open('w') as f:
+        f.write(unique_lines)
+
     print(unique_lines)
     input("look at unique lines above")
 
