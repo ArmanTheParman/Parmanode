@@ -15,9 +15,11 @@ def detect_drive():
     
     set_terminal()
     input(f"""{orange}    Please make sure the drive you want to use with Parmanode
-    is{cyan} DISCONNECTED{orange}. Then hit <enter>.""")
-    #before_disks = set(get_all_disks)
-    input(f"""{orange}    Now go ahead and connect the drive, wait a few seconds, then
+    is{cyan} DISCONNECTED{orange}. Then hit <enter>.
+    
+    """)
+    #The sequence is to ensure the last added drive is numbered last
+    input(f"""{orange}    Now go ahead and{cyan} CONNECT{orange} The drive, wait a few seconds, then
     hit <enter>""")
     get_all_disks()
      
