@@ -52,12 +52,7 @@ def detect_drive():
     hit <enter>""")
     get_all_disks()
      
-    input(f"""Your new drive is :
-          {new_disk}
-          after disks data is...
-          {after_disks}
-          """)
-    return new_disk
+    return True
     
 def get_all_disks():
     command = 'powershell -Command "Get-Disk | Format-List -Property FriendlyName,Size"'
