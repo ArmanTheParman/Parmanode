@@ -55,9 +55,11 @@ def detect_drive():
     return True
     
 def get_all_disks():
-    command = 'powershell -Command "Get-Disk | Format-List -Property FriendlyName,Size"'
+    command = 'powershell -Command "Get-Disk | Format-List -Property FriendlyName,Size,Path"'
     result = subprocess.run(command, capture_output=True, text=True, shell=True) 
     disk_info = result.stdout.strip().splitlines()
     tmpo = config(tmp)
     for line in disk_info: 
         tmpo.add(line)
+        print("...", line)
+    input("end get all disks")
