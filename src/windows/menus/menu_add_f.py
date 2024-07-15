@@ -25,11 +25,11 @@ def menu_add():
         if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
             quit()
         elif choice in {"p", "P"}:
-            return 0
+            return True
         elif choice in {"m", "M"}:
             back2main()
         elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
-            if not install_bitcoin(): return 1
-            return 0
+            if not install_bitcoin(): return False
+            return True
         else:
             invalid()
