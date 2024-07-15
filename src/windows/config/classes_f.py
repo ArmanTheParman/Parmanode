@@ -8,9 +8,10 @@ class config:
         self.file = path
         self.data = set()
         with self.file.open('r') as f:
-            for line in f.readlines():
-                self.data.add(line.strip() + '\n')
-      
+            self.fulldata = f.read()
+            for line in self.fulldata.splitlines(True):
+                self.data.add(line)
+
       #members:
           # file 
           # data - one line entries
@@ -18,10 +19,13 @@ class config:
     def __repr__(self):
         return f"Config {str(self.file)}: \n {self.data}"
           
-    def read(self) -> set:
-        return self.data    
+    def read(self, datatype="set") -> set:
+        if datatype == "full":
+            return self.fulldata
+        elif datatype == "set":
+            return self.data    
     
-    def write(self):
+    def write(self): #for adding variable contents to the file.
         with self.file.open('w') as f:
             for line in self.data:
                 f.write(line)
@@ -43,3 +47,9 @@ class config:
             if checkstring in line:
                 return True
         return False
+
+    def truncate(self):
+        self.data.clear()
+        self.fulldata = ""
+        with self.open('w'):
+            pass

@@ -78,6 +78,8 @@ ico = config(ic) #installed conf object
 
 dbo = config(db) #debug log object
 
+tmpo = config(tmp) #temp config object - not config, but useful methods
+
 #add parmanode config file to python path
 sys.path.append(dp)
 
