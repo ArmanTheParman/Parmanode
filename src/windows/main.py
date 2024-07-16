@@ -32,21 +32,24 @@ if os_is() == "Windows":
 
     from dependencies.chocolatey_f import *
     dependency_check()
-
-import subprocess
-result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
-existing_drive_letters = {line.split()[-1] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
-print(type(existing_drive_letters))
-print(existing_drive_letters)
-#return existing_drive_letters
-input()
-quit()
+try:
+    import subprocess
+    result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
+    existing_drive_letters = {line.split()[-1] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
+    print(type(existing_drive_letters))
+    print(existing_drive_letters)
+    #return existing_drive_letters
+    input()
+    quit()
+except Exception as e:
+    input()
+    print(f"{e}")
 
 counter("rp")
 
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
-
+input("pause")
 intro()
 instructions()
 motd()
