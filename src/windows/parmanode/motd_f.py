@@ -17,7 +17,7 @@ def motd():
     motd_base=f"""{orange}########################################################################################
 """
 
-    motd_text = [f"""
+    motd_text = [f"""{cyan}
     People have DIED fighting for freedom.
 
     All you have to do is "risk" your fiat savings and buy bitcoin.
