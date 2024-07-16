@@ -42,7 +42,7 @@ class config:
         self.data = temp
         self.write()
 
-    def grep(self, checkstring: str, returnline=False) -> bool:
+    def grep(self, checkstring: str, returnline=False): 
         for line in self.data:
             if checkstring in line:
                 if returnline == True: return line
