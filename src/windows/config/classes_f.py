@@ -47,7 +47,7 @@ class config:
             if checkstring in line:
                 if returnline == True: return line
                 return True
-        if returnline == True: return ""
+        if returnline == True: return "" #match not found
         return False
 
     def truncate(self):
