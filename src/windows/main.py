@@ -4,13 +4,7 @@
 #ensures sys.argv[1] exists for debug checks later in script, otherwise need to ensure position exists every time.
 
 #debug(some_function=colour_check)
-import subprocess
-result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
-existing_drive_letters = {line.split()[0] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
-print(type(existing_drive_letters))
-print(existing_drive_letters)
-#return existing_drive_letters
-quit()
+
 ########################################################################################
 #Imports
 ########################################################################################
@@ -38,6 +32,15 @@ if os_is() == "Windows":
 
     from dependencies.chocolatey_f import *
     dependency_check()
+
+import subprocess
+result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
+existing_drive_letters = {line.split()[-1] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
+print(type(existing_drive_letters))
+print(existing_drive_letters)
+#return existing_drive_letters
+input()
+quit()
 
 counter("rp")
 
