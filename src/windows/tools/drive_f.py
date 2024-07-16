@@ -19,12 +19,15 @@ def detect_drive():
     hit <enter>""")
 
     get_all_disks("after")
-
-    with before.open('r') as bb, after.open('r') as aa:
-        input("6b")
-        bblines = tuple(bb.readlines())
-        aalines = tuple(aa.readlines()) 
-        unique_lines = [line for line in aalines if line not in bblines]
+    input("make changes to after here")
+    try:
+        with before.open('r') as bb, after.open('r') as aa:
+            input("6b")
+            bblines = tuple(bb.readlines())
+            aalines = tuple(aa.readlines()) 
+            unique_lines = [line for line in aalines if line not in bblines]
+    except Exception as e:
+        print(f"{e}")
 
     with difference.open('w') as f:
         for line in unique_lines:
@@ -34,11 +37,16 @@ def detect_drive():
         set_terminal()
         print("Somthing went wrong with drive detection.")
         return False
-
+    
+    try:
+        disk_number = unique_lines[0].split()[1]
+        pco.add(disk_nunber=f"{disk_number}")
+    except Exception as e:
+        print(f'{e}')
+        
     return True
 
 def get_all_disks(when):
-    import subprocess
     tmpo.truncate()
     diskpart_commands = """list disk"""
     tmpo.add(diskpart_commands)
@@ -58,10 +66,43 @@ def get_all_disks(when):
     return True
 
 
-def format_drive(drive_letter=None, file_system='NFTS', label="parmanode"):
+def format_disk(disk_number, file_system='NTFS', label="parmanode"):
+    if disk_number is None:
+        return False
+    
+    # Create the diskpart script
+    script = f"""
+    select disk {disk_number}
+    clean
+    create partition primary
+    select partition 1
+    format fs={file_system} label={label} quick
+    """
+
+    # Save the script to a temporary file
+    script_path = dp / 'diskpart_script.txt'
+    with open(script_path, 'w') as file:
+        file.write(script)
+    
+    # Run the diskpart command with the script
+    command = ['diskpart', '/s', script_path]
+    
     try:
-        drive = f"{drive_letter}:" if not drive_letter.endswith(':') else drive_letter
-        command = ['format', drive, '/fs:' + file_system, '/v:', label, '/q' ]
+        # Check for existing drive letters
+        result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
+        existing_drive_letters = {line.split()[0] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
+
+        # Find an unused drive letter
+        for letter in "PARMANSAYSGFYJKQTUVWXZBCDEHILNO":
+            if f"{letter}:" not in existing_drive_letters:
+                assign_letter = letter
+                break
+
+        # Add the assign letter command to the script
+        with open(script_path, 'a') as file:
+            file.write(f"assign letter={assign_letter}\n")
+        
+        subprocess.run(command, check=True)
         return True
-    except:
+    except subprocess.CalledProcessError:
         return False
