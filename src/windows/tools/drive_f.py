@@ -89,8 +89,7 @@ def format_disk(disk_number, file_system='NTFS', label="parmanode"):
     
     try:
         # Check for existing drive letters
-        result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
-        existing_drive_letters = {line.split()[0] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
+        existing_drive_letters = get_connected_disks()
 
         # Find an unused drive letter
         for letter in "PARMANSAYSGFYJKQTUVWXZBCDEHILNO":
@@ -106,3 +105,10 @@ def format_disk(disk_number, file_system='NTFS', label="parmanode"):
         return True
     except subprocess.CalledProcessError:
         return False
+
+
+def get_connected_disks():
+       import subprocess
+       result = subprocess.run(['diskpart', '/c', 'list volume'], capture_output=True, text=True, check=True)
+       existing_drive_letters = {line.split()[0] for line in result.stdout.splitlines() if line and line[0].isalpha() and line[1] == ':'}
+       return existing_drive_letters
