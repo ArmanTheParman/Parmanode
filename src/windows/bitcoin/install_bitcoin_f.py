@@ -27,6 +27,11 @@ def install_bitcoin():
         dbo.write(f"{thedate}: Bitcoin detect_drive exited.")
         return False
 
+    
+    disk_number = pco.grep("disk_number")
+    disk_number = disk_number.split('=')[1].strip()
+    if format_drive()
+
         
 #    if format_drive():
 #        pass

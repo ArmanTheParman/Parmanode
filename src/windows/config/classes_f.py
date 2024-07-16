@@ -42,10 +42,12 @@ class config:
         self.data = temp
         self.write()
 
-    def grep(self, checkstring: str) -> bool:
+    def grep(self, checkstring: str, returnline=False) -> bool:
         for line in self.data:
             if checkstring in line:
+                if returnline == True: return line
                 return True
+        if returnline == True: return ""
         return False
 
     def truncate(self):
