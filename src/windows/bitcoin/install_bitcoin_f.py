@@ -30,3 +30,6 @@ def install_bitcoin():
             dbo.write(f"{thedate}: Bitcoin format_disk exited.")
             input("format failed")
             return False 
+
+    success("Bitcoin has finished being installed")
+    return True

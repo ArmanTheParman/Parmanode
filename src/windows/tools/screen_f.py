@@ -87,6 +87,20 @@ def enter_continue(text=None):
     choice = input()
     return choice
 
+def success(text):
+    set_terminal()
+    print(f"""
+########################################################################################
+{cyan}
+                                 S U C C E S S ! {orange}
+
+{text}
+
+########################################################################################
+""")
+    enter_continue()
+
+
 def proforma(choice): 
     return True
     """Just a template"""
