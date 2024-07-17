@@ -13,15 +13,15 @@ from tools.drive_f import *
 def install_bitcoin():
 
 
-    if not choose_drive(): return False
+    if not choose_drive(): input("choose drive fail") ; return False
     
     if pco.grep("format_drive=True"):
 
-        if not detect_drive(): return False
+        if not detect_drive(): input("detect drive failed") ; return False
 
         disk_number = pco.grep("disk_number", returnline=True)
         disk_number = disk_number.split('=')[1].strip()
-
+        input("before format") 
         if format_disk(disk_number):
             input("disk formatted")
             pass

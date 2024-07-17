@@ -2,10 +2,12 @@ from config.variables_f import *
 from tools.debugging_f import *
 from tools.files_f import *
 from tools.system_f import *
+from tools.screen_f import *
 from menus.menu_add_f import menu_add
 from menus.menu_use_f import menu_use
 from menus.menu_remove_f import menu_remove
 def menu_main():
+    input("mainmenu")
     while True:
         set_terminal(50, 88)
         print(f"""{orange}        
@@ -50,13 +52,13 @@ def menu_main():
  Type your{cyan} choice{orange} without the brackets, and hit{green} <enter>{orange} 
  Or to quit, either hit{green} <control>-c{orange}, or type{cyan} q{orange} then{green} <enter>{orange}.
 """)
-        
+        input("1.5") 
         if not pco.grep("announcements_off"):
             print(f"""
  Tip: combine u with the next menu options. eg, try ub for bitcoin menu
 
 {blinkon}{red}                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN {orange}{blinkoff}""")
-
+        input("main menu 2")
         choice = input()  
         set_terminal()
 

@@ -39,6 +39,7 @@ def set_terminal_size_unix(rows, cols):
     fcntl.ioctl(fd, termios.TIOCSWINSZ, size)
 
 def set_terminal(h=40, w=88):
+    input("in set_terminal zzz")
     os.system('cls' if os.name == 'nt' else 'clear')
     set_terminal_size(h, w)
     print(f"{orange}") #Orange colour setting.

@@ -32,19 +32,8 @@ if os_is() == "Windows":
 
     from dependencies.chocolatey_f import *
     dependency_check()
-# try:
-#     existing_drive_letters = get_connected_disks()
-#     print(type(existing_drive_letters))
-#     print(existing_drive_letters)
-#     #return existing_drive_letters
-#     input("edl above")
-#     quit()
-# except Exception as e:
-#     input("in e")
-#     print(f"{e}")
 
 counter("rp")
-
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
 
