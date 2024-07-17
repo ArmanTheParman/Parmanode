@@ -3,6 +3,19 @@ from tools.screen_f import *
 from tools.files_f import *
 from tools.system_f import *
 
+def download_bitcoin():
+    try:
+        url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
+        please_wait(f"{green}Downloading Bitcoin{orange}")
+        download(url, str(bitcoinpath))
+        zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+        please_wait(f"{green}Unzipping Bitcoin{orange}")
+        unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+        download_bitcoin_finished = True
+    except:
+        pass 
+
+    return download_bitcoin_finished 
 
 def choose_drive():
     set_terminal()
@@ -41,24 +54,10 @@ def choose_drive():
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal" #global var
             pco.add("drive_bitcoin=internal")
-            if not choose_drive2(): return False
-            return True
+            if not choose_drive2(): return False 
+            else: return True
         else:
             invalid()
-
-def download_bitcoin():
-    try:
-        url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
-        please_wait(f"{green}Downloading Bitcoin{orange}")
-        download(url, str(bitcoinpath))
-        zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
-        please_wait(f"{green}Unzipping Bitcoin{orange}")
-        unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
-        download_bitcoin_finished = True
-    except:
-        pass 
-
-    return download_bitcoin_finished 
 
 def choose_drive2():
     while True:
@@ -100,7 +99,8 @@ def choose_drive2():
         elif choice.upper() == "X":
             result = get_custom_directory("bitcoin")
             if result == "try again": continue
-            else: return result
+            if type(result) == bool: return result
+            else: return False
         else:
             invalid()
 
@@ -170,6 +170,7 @@ def bitcoin_folder_choice_confirm(choice):
         elif choice.upper() == "M":
             back2main()
         elif choice.upper() == "Y":
+            pco.add(f"bitcoin_custom_dir={folder}")
             return True 
         elif choice.upper() == "N":
             return "try again"
