@@ -1,7 +1,7 @@
 from config.variables_f import *
 from tools.debugging_f import *
 from tools.system_f import os_is
-from parmanode.menu_main_f import *
+#from parmanode.menu_main_f import * #this will cause a circular error. 
 import os , ctypes 
 import struct, sys
 if os_is == "Windows":
