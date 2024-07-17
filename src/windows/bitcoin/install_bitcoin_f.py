@@ -14,17 +14,19 @@ def install_bitcoin():
 
 
     if not choose_drive(): return False
+    
+    if pco.grep("format_drive=True"):
 
-    if not detect_drive(): return False
+        if not detect_drive(): return False
 
-    disk_number = pco.grep("disk_number", returnline=True)
-    disk_number = disk_number.split('=')[1].strip()
+        disk_number = pco.grep("disk_number", returnline=True)
+        disk_number = disk_number.split('=')[1].strip()
 
-    if format_disk(disk_number):
-        input("disk formatted")
-        pass
-    else:
-        thedate = date.today().strftime("%d-%m-%y")
-        dbo.write(f"{thedate}: Bitcoin format_disk exited.")
-        input("format failed")
-        return False 
+        if format_disk(disk_number):
+            input("disk formatted")
+            pass
+        else:
+            thedate = date.today().strftime("%d-%m-%y")
+            dbo.write(f"{thedate}: Bitcoin format_disk exited.")
+            input("format failed")
+            return False 

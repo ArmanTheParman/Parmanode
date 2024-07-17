@@ -107,7 +107,13 @@ def format_disk(disk_number, file_system='NTFS', label="parmanode"):
         # Add the assign letter command to the script
         with open(script_path, 'a') as file:
             file.write(f"assign letter={assign_letter}\n")
-        
+       
+        #make bitcoin directory  
+        bitcoin_dir = Path(f"{assign_letter}:\\bitcoin")
+        bitcoin_dir.mkdir(parents=True, exist_ok=True)
+        bitcoin_dir = str(bitcoin_dir)
+        pco.add(f"bitcoin_dir={bitcoin_dir}")
+
         subprocess.run(command, check=True)
         return True
     except Exception as e:

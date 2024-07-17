@@ -2,6 +2,7 @@ from config.variables_f import *
 from tools.screen_f import *
 from tools.files_f import *
 from tools.system_f import *
+from tools.drive_f import *
 
 def download_bitcoin():
     try:
@@ -49,6 +50,7 @@ def choose_drive():
             back2main()
         elif choice in {"e", "E"}:
             drive_bitcoin = "external" #global var
+            format_choice("bitcoin")
             pco.add("drive_bitcoin=external")
             return True
         elif choice in {"i", "I"}:
@@ -170,8 +172,90 @@ def bitcoin_folder_choice_confirm(choice):
         elif choice.upper() == "M":
             back2main()
         elif choice.upper() == "Y":
-            pco.add(f"bitcoin_custom_dir={folder}")
+            pco.add(f"bitcoin_dir={folder}")
+            if not Path(choice).exists(): Path(choice).mkdir(parents=True, exist_ok=True)
             return True 
         elif choice.upper() == "N":
             return "try again"
 
+def format_choice(app="bitcoin"):
+    while True:
+        set_terminal()
+        print(f"""
+########################################################################################
+
+    You have chosen to use an{cyan} external drive{orange}.
+              
+    You have choices:
+{green}    
+              1)    Set up a new drive{orange} (Will be formatted and initialised)
+{red}
+              2)    Bring in a used drive{orange} 
+                          ... Parmanode will need to change the label to 'parmanode'
+                          ... You can select a directory with a pre-existing copy
+                              of the timechain.
+
+########################################################################################
+""")
+        choice = choose()  
+        if choice.upper() in {"Q", "EXIT"}: 
+            quit()
+        elif choice.upper() == "P":
+            return False
+        elif choice.upper() == "M":
+            back2main()   
+        elif choice == "1":
+            if format_disk(): 
+                pco.add("format_disk=True")
+                return True 
+            return False
+        elif choice == "2":
+            if used_disk(): return True 
+            return False
+        else:
+            invalid()
+
+def used_disk():
+    while True:
+        set_terminal()
+        print(f"""
+########################################################################################
+
+    You have chosen to sync Bitcoin to a previously used disk.
+    
+    Please type the path to the folder on the drive exactly, including the drive
+    letter. If the directory does not exist, Parmanode will create it. Eg:
+    {cyan} 
+        D:\\bitcoin {orange}
+    
+########################################################################################
+""")    
+        choice = choose()  
+        if choice.upper() in {"Q", "EXIT"}: 
+            quit()
+        elif choice.upper() == "P":
+            return False
+        elif choice.upper() == "M":
+            back2main()   
+        elif choice[1] == ":"
+            confirm = bitcoin_folder_choice_confirm(choice) #directory will be created
+            if confirm == "try again": continue
+            if confirm == False: return False
+            drive_letter = choice[0].upper()
+            if label_disk(drive_letter): return True
+            else: return False
+        else:
+            invalid()
+
+def label_disk(drive_letter, new_label="parmanode"):
+
+    try:
+        subprocess.run(['label', f'{drive_letter}:', new_label], check=True)
+        return True
+
+    except subprocess.CalledProcessError as e:
+        print(f"Failed to label the disk: {e}")
+        enter_continue()
+        return False
+
+    
