@@ -140,7 +140,7 @@ def get_custom_directory(app="bitcoin"):
             return confirm #bool
         else:
             set_terminal()
-            announce("""    Drive C:\ expected in your path. Try again.""", ec_text="try again")
+            announce(r"    Drive C:\ expected in your path. Try again.", ec_text="try again")
             continue
             
 
