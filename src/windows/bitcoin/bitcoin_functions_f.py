@@ -186,7 +186,7 @@ def format_choice(app="bitcoin"):
 
     You have chosen to use an{cyan} external drive{orange}.
               
-    You have choices:
+    You have more choices:
 {green}    
               1)    Set up a new drive{orange} (Will be formatted and initialised)
 {red}
@@ -205,10 +205,8 @@ def format_choice(app="bitcoin"):
         elif choice.upper() == "M":
             back2main()   
         elif choice == "1":
-            if format_disk(): 
-                pco.add("format_disk=True")
-                return True 
-            return False
+            pco.add("format_disk=True")
+            return True 
         elif choice == "2":
             if used_disk(): return True 
             return False

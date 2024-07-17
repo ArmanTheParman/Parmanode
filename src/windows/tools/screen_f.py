@@ -2,7 +2,6 @@ from config.variables_f import *
 from tools.debugging_f import *
 from tools.system_f import os_is
 #from parmanode.menu_main_f import * #this will cause a circular error. 
-from parmanode.menu_main_f import menu_main
 import os , ctypes 
 import struct, sys
 if os_is == "Windows":
@@ -40,7 +39,6 @@ def set_terminal_size_unix(rows, cols):
     fcntl.ioctl(fd, termios.TIOCSWINSZ, size)
 
 def set_terminal(h=40, w=88):
-    input("in set_terminal zzz")
     os.system('cls' if os.name == 'nt' else 'clear')
     set_terminal_size(h, w)
     print(f"{orange}") #Orange colour setting.
@@ -61,6 +59,7 @@ def invalid():
     return True
 
 def back2main():
+    from parmanode.menu_main_f import menu_main
     menu_main()
     return True
 
