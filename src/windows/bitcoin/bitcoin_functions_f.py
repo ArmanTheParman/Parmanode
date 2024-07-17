@@ -237,7 +237,7 @@ def used_disk():
             return False
         elif choice.upper() == "M":
             back2main()   
-        elif choice[1] == ":"
+        elif choice[1] == ":":
             confirm = bitcoin_folder_choice_confirm(choice) #directory will be created
             if confirm == "try again": continue
             if confirm == False: return False
