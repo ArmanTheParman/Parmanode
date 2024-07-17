@@ -62,10 +62,7 @@ def get_all_disks(when):
     tmpo.add(diskpart_commands)
     diskpart_script_path = tmpo.file
     result = subprocess.run(['diskpart', '/s', diskpart_script_path], capture_output=True, text=True, shell=True).stdout.strip().split('\n')
-    #print("len  ", len(result), "  type  ", type(result))
-    # for line in result:
-    #     if "Disk 1" in line:
-    #         print(line)
+    
     if when == "before":
         for line in result:
             beforeo.add(line)
@@ -130,3 +127,14 @@ def get_connected_disks():
        return existing_drive_letters
     except Exception as e:
         print(f"{e}")
+
+def check_drive_is_c():
+    import os
+    if os.getenv('SystemDrive').upper() == 'C:':
+        return True
+    else:
+        return False
+
+def get_system_drive_letter():
+    return os.getenv('SystemDrive') 
+

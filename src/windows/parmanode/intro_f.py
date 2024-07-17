@@ -17,7 +17,7 @@ def intro():
     #later; hide messages option
     set_terminal()
     if pco.grep("hide_intro"):
-        return 0
+        return True
 
     while True:
         print(f"""{orange}
@@ -58,15 +58,15 @@ def intro():
         if choice in {'s', 'S'}:
             dirty_shitcoiner() 
             set_terminal()
-            return 0 
+            return True
         elif choice in {'q', 'Q'}:
             exit()
         elif choice in {'Free Ross', 'free ross'}:
             pco.add("hide_intro")
             set_terminal()
-            return 0
+            return True
         elif choice == "":
-            return 0 
+            return True
         else:
             set_terminal()
             continue
@@ -115,7 +115,7 @@ def dirty_shitcoiner():
             continue 
 
     set_terminal()
-    return 0
+    return True
 
 def suggestupdate():
 
@@ -137,12 +137,12 @@ def suggestupdate():
     if choice in {'free ross', 'Free Ross'}:
         pco.add("update_reminders_off")#tested at the start of check_updates()
     elif choice == "q": quit()
-    return 0 
+    return True
 
 
 def instructions():
     if pco.grep("hide_instructions"):
-        return 0
+        return True
 
     set_terminal()
     print(f"""
@@ -172,5 +172,5 @@ To continue on, just hit{cyan} <enter>{orange}.
         pco.add("hide_instructions")
     elif choice in {"q", "Q", "quit"}:
         exit()
-    return 0
+    return True
 

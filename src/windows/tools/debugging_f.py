@@ -5,19 +5,19 @@ def debug(text=None, some_function=None):
     if D == True:
         if some_function is not None:
             some_function()
-            return 0
+            return True
         if text is None:
             print("Pausing for debugging")
             print(text)
             enter_continue()
-            return 0
+            return True
         else:
             print("DEBUG point")
             print(text)
             enter_continue()
-            return 0
+            return True
     else:
-        return 0
+        return True
 
 def colour_check():
     print(f"{black}black {reset}\"black\"")

@@ -1,5 +1,5 @@
 from colorama import Fore, Style, init #init need to toggle autoreset on/off
-import sys
+import sys, os
 from pathlib import Path
 from config.classes_f import *
 
@@ -136,4 +136,14 @@ bright_white = Fore.LIGHTWHITE_EX
 # Blink effects
 blinkon = '\033[5m'
 blinkoff = Style.RESET_ALL
+
+########################################################################################
+#Bitcon variables
+########################################################################################
+global drive_bitcoin, default_bitcoin_data_dir
+
+drive_bitcoin = None
+
+# Default Windows Bitcoin data directory
+default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 

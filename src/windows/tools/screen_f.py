@@ -9,7 +9,7 @@ if os_is == "Windows":
 def set_terminal_size(rows, cols):
     if os_is() != "Windows":
         set_terminal_size_unix (rows, cols)
-        return 0
+        return True
     try:
         # Get handle to standard output
         std_out_handle = ctypes.windll.kernel32.GetStdHandle(-11)  # -11 is STD_OUTPUT_HANDLE
@@ -60,18 +60,20 @@ def enter_continue():
 def invalid():
     set_terminal()
     print(f"""Invalid choice. Hit{cyan} <enter>{orange} first, and then try again.""") 
-    return 0
+    return True
 
 def back2main():
     menu_main()
-    return 0
+    return True
 
 def proforma(choice): 
-    if choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
+    return True
+    """Just a template"""
+    if choice.upper() in {"Q", "EXIT"}: 
         quit()
-    elif choice in {"p", "P"}:
-        return 0
-    elif choice in {"m", "M"}:
+    elif choice.upper() == "P":
+        return True
+    elif choice.upper() == "M":
         back2main()
     else:
         invalid()

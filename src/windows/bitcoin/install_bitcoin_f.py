@@ -31,10 +31,7 @@ def install_bitcoin():
         return False
 
     disk_number = pco.grep("disk_number", returnline=True)
-    print(disk_number)
-    input("after grep")
     disk_number = disk_number.split('=')[1].strip()
-    input("disk number split and strip success")
 
     if format_disk(disk_number):
         input("disk formatted")
@@ -44,17 +41,3 @@ def install_bitcoin():
         dbo.write(f"{thedate}: Bitcoin format_disk exited.")
         input("format failed")
         return False 
-
-
-        
-#    if format_drive():
-#        pass
-
-    # else:
-    #     dbo.write(f"{thedate}: Bitcoin format_external drive exited.")
-    #     return False
-
-    # if download_bitcoin():
-    #     pass
-    # else:
-    #     return False

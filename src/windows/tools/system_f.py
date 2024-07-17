@@ -8,7 +8,7 @@ def counter(type):
             newcount = int(rpcount) + 1
         with rp_counter.open('w') as f:
             f.write(str(newcount) + '\n')
-        return 0
+        return True
     if type == "motd":
         with motd_counter.open('r') as f:
             motdcount = f.read().strip()
@@ -19,7 +19,7 @@ def counter(type):
 
 def check_updates(compiled_version):
     if pco.grep("update_reminders_off"):
-        return 0
+        return True
     url = "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf" 
     params = {'_': int(time.time())}  # Adding a unique timestamp parameter
     try:

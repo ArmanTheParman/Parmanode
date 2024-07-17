@@ -58,3 +58,44 @@ def download_bitcoin():
         pass 
 
     return download_bitcoin_finished 
+
+def choose_drive2():
+    example_dir = Path.home() / "some_directory"
+    print(f"""
+######################################################################################## 
+
+    You have chosen to use the{green} Internal drive{orange} for the Bitcoin Timechain. 
+    
+    The data will be kept at{cyan} 
+
+        {default_bitcoin_data_dir}{orange}
+
+    Hit{green} <enter>{orange} to continue, or
+    
+    Type a full path to where you want the data to go, and Parmanode will create a
+    symlink from the above directory to your preferred target directory. This will
+    "trick" Bitcoin to download to your preferred location even though it thinks it's
+    downloading to the above default location. It's ok, it's ethical and no coins will
+    be harmed. 
+    
+    Example:
+    {cyan} 
+    {example_dir}{orange}
+
+    Most people will just keep it at the default location.
+    Hit{green} <enter>{orange} alone for that.
+    
+########################################################################################
+""")
+    choice = input()
+
+    if choice.upper() in {"Q", "EXIT"}: 
+        quit()
+    elif choice.upper() == "P":
+        return True
+    elif choice.upper() == "M":
+        back2main()
+    elif choice == "":
+        return True
+    else:
+        invalid()

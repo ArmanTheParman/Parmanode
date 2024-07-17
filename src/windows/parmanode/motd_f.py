@@ -398,7 +398,7 @@ def motd():
 """]
      
     if pco.grep("motd_off"):
-        return 0
+        return True
     with motd_counter.open('r') as f:
         value = int(f.read().strip())
     print("value is", value)
@@ -411,4 +411,4 @@ def motd():
         pco.add("motd_off")
 
     counter("motd")
-    return 0
+    return True
