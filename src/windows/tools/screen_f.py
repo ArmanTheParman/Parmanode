@@ -1,6 +1,7 @@
 from config.variables_f import *
 from tools.debugging_f import *
 from tools.system_f import os_is
+from parmanode.menu_main_f import *
 import os , ctypes 
 import struct, sys
 if os_is == "Windows":
@@ -52,11 +53,6 @@ def choose(message=None):
     choice = input()
     return choice 
 
-def enter_continue():
-    print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...")
-    choice = input()
-    return choice
-
 def invalid():
     set_terminal()
     print(f"""Invalid choice. Hit{cyan} <enter>{orange} first, and then try again.""") 
@@ -65,6 +61,31 @@ def invalid():
 def back2main():
     menu_main()
     return True
+
+def please_wait(text: str):
+    set_terminal()
+    print(text)
+    print("Please wait...")
+
+def announce(text, ec_text=None):
+    set_terminal()
+    print("""########################################################################################
+          """)
+    print(text)
+    print("""########################################################################################
+
+          """)
+    enter_continue(ec_text)
+
+def enter_continue(text=None):
+    if text == None:
+       print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...") 
+    if text.upper() == "TRY AGAIN":
+       print(f"{yellow}Hit{cyan} <enter>{yellow} to try again...") 
+    else:
+       print(text)
+    choice = input()
+    return choice
 
 def proforma(choice): 
     return True
@@ -77,8 +98,3 @@ def proforma(choice):
         back2main()
     else:
         invalid()
-
-def please_wait(text: str):
-    set_terminal()
-    print(text)
-    print("Please wait...")

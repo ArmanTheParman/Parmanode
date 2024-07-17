@@ -13,22 +13,9 @@ from tools.drive_f import *
 def install_bitcoin():
 
 
-    if choose_drive():
-        pass
-    else:
-        thedate = date.today().strftime("%d-%m-%y")
-        dbo.write(f"{thedate}: Bitcoin choose_drive exited.")
-        return False
+    if not choose_drive(): return False
 
-    if detect_drive():
-        print(pco.read())
-        input("pause")
-        pass
-    else:
-        thedate = date.today().strftime("%d-%m-%y")
-        dbo.write(f"{thedate}: Bitcoin detect_drive exited.")
-        input("error")
-        return False
+    if not detect_drive(): return False
 
     disk_number = pco.grep("disk_number", returnline=True)
     disk_number = disk_number.split('=')[1].strip()
