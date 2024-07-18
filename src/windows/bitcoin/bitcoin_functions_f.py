@@ -47,15 +47,17 @@ def choose_drive():
         elif choice in {"p", "P"}:
             return False
         elif choice in {"m", "M"}:
-            back2main()
+            if not back2main(): return False
         elif choice in {"e", "E"}:
             drive_bitcoin = "external" #global var
-            format_choice("bitcoin")
+            if not format_choice("bitcoin"): return False
             pco.add("drive_bitcoin=external")
+            input("check pco add drive bitcoin = ext")
             return True
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal" #global var
             pco.add("drive_bitcoin=internal")
+            pco.remove("format_disk=True") #redundant
             if not choose_drive2(): return False 
             else: return True
         else:
@@ -89,17 +91,20 @@ def choose_drive2():
 ########################################################################################
 """)
         choice = input()
-
+        set_terminal()
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()
+            if not back2main(): return False
         elif choice == "":
+            h = str(HOME)
+            pco.add(f"bitcoin_dir={h}\\Appdata\\Roaming\\Bitcoin")
+            del h
             return True
         elif choice.upper() == "X":
-            result = get_custom_directory("bitcoin")
+            if not (result := get_custom_directory("bitcoin")): return False
             if result == "try again": continue
             if type(result) == bool: return result
             else: return False
@@ -110,7 +115,7 @@ def choose_drive2():
 def get_custom_directory(app="bitcoin"):
     example_dir = Path.home() / "some_folder"
     while True:
-        print(f"""
+        print(f"""{orange}
 ########################################################################################
 
     Please type in the path where you want the Bitcoin data to be stored. Be careful,
@@ -131,11 +136,11 @@ def get_custom_directory(app="bitcoin"):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()
+            if not back2main(): return False
         elif choice == "":
             return True 
         elif choice.upper().startswith('C:\\'):
-            confirm = bitcoin_folder_choice_confirm(choice) 
+            if not (confirm := bitcoin_folder_choice_confirm(choice)): return False
             if confirm == "try again": continue
             return confirm #bool
         else:
@@ -144,8 +149,7 @@ def get_custom_directory(app="bitcoin"):
             continue
             
 
-def bitcoin_folder_choice_confirm(choice):
-    folder = choice
+def bitcoin_folder_choice_confirm(folder):
     while True:
         set_terminal()    
         print(f"""
@@ -170,10 +174,17 @@ def bitcoin_folder_choice_confirm(choice):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()
+            if not back2main(): return False
         elif choice.upper() == "Y":
             pco.add(f"bitcoin_dir={folder}")
-            if not Path(choice).exists(): Path(choice).mkdir(parents=True, exist_ok=True)
+            try:
+                if not Path(folder).exists(): Path(folder).mkdir(parents=True, exist_ok=True)
+            except Exception as e:
+                pco.remove("bitcoin_dir=")
+                set_terminal()
+                print("Unable to create directory. Please try again. Hit <enter> first.")
+                input()
+                return "try again"
             return True 
         elif choice.upper() == "N":
             return "try again"
@@ -203,12 +214,15 @@ def format_choice(app="bitcoin"):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()   
+            if not back2main(): return False
         elif choice == "1":
             pco.add("format_disk=True")
+            #input("chec pco add format_disk=True")
             return True 
         elif choice == "2":
-            if used_disk(): return True 
+            pco.remove("format_disk=True")
+            if used_disk(): 
+                return True 
             return False
         else:
             invalid()
@@ -234,9 +248,9 @@ def used_disk():
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()   
+            if not back2main(): return False
         elif choice[1] == ":":
-            confirm = bitcoin_folder_choice_confirm(choice) #directory will be created
+            if not (confirm := bitcoin_folder_choice_confirm(choice)): return False #directory will be created
             if confirm == "try again": continue
             if confirm == False: return False
             drive_letter = choice[0].upper()

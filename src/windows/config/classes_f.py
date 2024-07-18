@@ -43,11 +43,16 @@ class config:
         self.write()
 
     def grep(self, checkstring: str, returnline=False): 
+        #print(checkstring, " -- the checkstring")
         for line in self.data:
+            #print("lines..." , line)
             if checkstring in line:
+                #print("found line..." , line)
                 if returnline == True: return line
+                #input("returning true")
                 return True
         if returnline == True: return "" #match not found
+        #input("returning false.")
         return False
 
     def truncate(self):

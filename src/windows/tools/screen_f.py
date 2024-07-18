@@ -73,20 +73,23 @@ def announce(text, ec_text=None):
     print("""########################################################################################
           """)
     print(text)
-    print("""########################################################################################
+    print("""
+########################################################################################
 
           """)
     enter_continue(ec_text)
+    set_terminal()
 
 def enter_continue(text=None):
     if text == None:
-       print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...") 
+       print(f"{yellow}Hit{cyan} <enter>{yellow} to continue...{orange}") 
+       return input()
     if text.upper() == "TRY AGAIN":
-       print(f"{yellow}Hit{cyan} <enter>{yellow} to try again...") 
+       print(f"{yellow}Hit{cyan} <enter>{yellow} to try again...{orange}") 
+       return input()
     else:
        print(text)
-    choice = input()
-    return choice
+       return input()
 
 def success(text):
     set_terminal()
@@ -95,7 +98,7 @@ def success(text):
 {cyan}
                                  S U C C E S S ! {orange}
 
-{text}
+    {text}
 
 ########################################################################################
 """)
