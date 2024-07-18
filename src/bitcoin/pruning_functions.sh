@@ -140,20 +140,9 @@ function confirm_set_the_prune {
 while true
 do
 set_terminal
+#choice of 3 different menu prints...
 if [[ $prune_value == 0 ]] ; then 
-echo -e "
-########################################################################################
-        
-                          You have chosen not to prune
-
- $green                           a)      Accept
-
-$red                            c)      Change
-
-$cyan                            d)      Decline pruning
-$orange
-########################################################################################
-"
+break
 elif [[ $prune_value -le 550 ]] ; then
 echo -e "
 ########################################################################################

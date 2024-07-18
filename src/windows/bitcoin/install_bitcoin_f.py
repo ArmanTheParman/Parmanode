@@ -12,11 +12,17 @@ from tools.drive_f import *
 
 def install_bitcoin():
 
+    if ico.grep("bitcoin-end") or ico.grep("bitcoin-start"):
+        announce("Please uninstall Bitcoin first")
+        return False
+
     try:
         pco.remove("bitcoin_dir")
         pco.remove("drive_bitcoin")
     except:
         pass
+
+    if not prune_choice(): return False
 
     if not choose_drive(): input("choose drive fail") ; return False 
     
@@ -38,5 +44,25 @@ def install_bitcoin():
     #else:
         #input("format not true")
 
+    ico.add("bitcoin-end") 
     success("Bitcoin has finished being installed")
     return True
+
+    
+def uninstall_bitcoin():
+    try:
+        pco.remove("bitcoin_dir")
+    except:
+        pass
+    try:
+        pco.remove("drive_bitcoin")
+    except:
+        pass
+    try:
+        ico.remove("bitcoin-start")
+    except:
+        pass
+    try:
+        ico.remove("bitcoin-end")
+    except:
+        pass

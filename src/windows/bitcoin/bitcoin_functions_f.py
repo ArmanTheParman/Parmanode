@@ -1,3 +1,4 @@
+from parmanode.dirty_shitcoiner import *
 from config.variables_f import *
 from tools.screen_f import *
 from tools.files_f import *
@@ -270,4 +271,73 @@ def label_disk(drive_letter, new_label="parmanode"):
         enter_continue()
         return False
 
-    
+def prune_choice():
+    while True:
+        print(f"""
+########################################################################################
+      {cyan}                               
+                                     PRUNING
+{orange}
+    Bitcoin core needs about 1Tb of free data, either on an external drive or 
+    internal drive (500 Gb approx for the current blockchain, plus another 500 Gb for 
+    future blocks).
+
+    If space is an issue, you can run a pruned node, but be aware it's unlikely you'll
+    have an enjoyable experience. I recommend a pruned node only if it's your only
+    option, and you can start over with an "unpruned" node as soon as you reasonably 
+    can. Pruned nodes still download the entire chain, but then discard the data to 
+    save space. You won't be able to use wallets with old coins very easily and 
+    rescanning the wallet may be required without you realising - and that is SLOW.
+{cyan}
+    Would you like to run Bitcoin as a pruned node (not recommended generally)? {orange} 
+    This will require about 4 Gb of space for the minimum prune value.
+
+
+                  {red}            prune)     I want to prune
+
+{orange}                              s)         I enjoy shitcoining
+
+{green}                              n)         No pruning
+
+{orange}
+########################################################################################
+""") 
+        choice = choose().upper()
+        if choice == "N": return True
+        if choice == "S": dirty_shitcoiner() ; continue
+        if choice == "PRUNE": 
+            if set_the_prune(): return True
+            else: return False
+
+def set_the_prune():
+    while True:
+        print(f"""
+########################################################################################
+
+    Enter a{cyan} pruning value{orange} in megabytes (MB) between{yellow} 550{orange} and {yellow}50000{orange}.
+    No commas, and no units (zero turns pruning off, and numbers under the 550 
+    minimum will set to 550 anyway).
+
+########################################################################################
+""")
+        choose("xpmq")
+        prunevalue = input()
+        choice = prunevalue
+        if choice.upper() in {"Q", "EXIT"}: 
+            quit()
+        elif choice.upper() == "P":
+            return False
+        elif choice.upper() == "M":
+            back2main()
+        elif not prunevalue.isnumeric():
+            invalid
+            continue
+        elif int(prunevalue) == 0:
+            return True
+        elif int(prunevalue) < 550 or int(prunevalue) > 50000:
+            invalid
+            continue
+        else:
+            pco.add(f"prune_value={prunevalue}")
+            return True
+
