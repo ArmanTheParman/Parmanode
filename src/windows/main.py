@@ -57,9 +57,6 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
 #intro()
 #instructions()
 #motd()
-print(type(bitcoin_dir))
-print(f"{bitcoin_dir}")
-input()
 menu_main()
 
 #print("intro done, exiting")

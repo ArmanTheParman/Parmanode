@@ -49,6 +49,8 @@ def choose(message=None):
         print(f"{yellow}Type your{cyan}choice{yellow} from above options, or:{pink} (p){yellow} for previous,{green} (m){yellow} for main,{red} (q){yellow} to quit.")
     if message == "xeq":
         print(f"{yellow}Type your{cyan}choice{yellow}, or{green} <enter>{yellow} to continue, or {red}(q){yellow} to quit.")
+    if message == "xmq":
+        print(f"{yellow}Type your{cyan}choice{yellow} from above options, or:{green} (m){yellow} for main,{red} (q){yellow} to quit.")
 
     choice = input()
     return choice 

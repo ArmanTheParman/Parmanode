@@ -343,7 +343,16 @@ def set_the_prune():
             return True
 
 def make_bitcoin_conf():
-    contents = f"""server=1
+
+    bitcoin_conf = bitcoin_diro / "bitcoin.conf"
+    if bitcoin_conf.exists():
+        result = bitcoin_conf_exists()
+        if result == False: return False
+        if result == "YOLO": return True
+        if result == "O": bitcoin_conf.unlink() #delete 
+
+    contents = f"""
+server=1
 txindex=1
 daemon=1
 blockfilterindex=1
@@ -361,3 +370,40 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 rpcallowip={IP1}.{IP2}.0.0/16
 rpcservertimeout=120"""
+
+    bitcoin_confo = config(bitcoin_conf)
+    bitcoin_confo.add(contents)
+    del contents
+
+def bitcoin_conf_exists():
+
+    print(f"""
+########################################################################################
+
+    A{cyan} bitcoin.conf{orange} file already exists. You can keep the one you have, but be
+    aware if this file was not originally birthed by Parmanode, it may cause conflicts
+    if there are unexpected settings. Your prune choice will still be added to it if
+    you made one.
+
+    It's probably safest to discard the old copy, but the choice is yours...
+{green}
+                           o)           overwrite
+{orange}
+                           yolo)        keep the one you have
+{red}
+                           a)           abort installation
+{orange}
+########################################################################################
+""")
+    choice = choose("xmq")
+
+    if choice.upper() in {"Q", "EXIT"}: 
+        quit()
+    elif choice.upper() in {"M", "A"}:
+        back2main()
+    elif choice.upper() == "O":
+        return "O"
+    elif choice.upper() == "YOLO":
+        return "YOLO"
+    else:
+        invalid()
