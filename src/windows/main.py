@@ -39,9 +39,6 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
     suggestupdate()
 
 
-uninstall_bitcoin()
-success()
-quit()
 #intro()
 #instructions()
 #motd()
