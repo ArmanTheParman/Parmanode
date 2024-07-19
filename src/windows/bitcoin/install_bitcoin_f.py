@@ -5,7 +5,6 @@ from tools.debugging_f import *
 from tools.screen_f import *
 from bitcoin.bitcoin_functions_f import *
 from datetime import date
-import subprocess
 from tools.drive_f import *
 
 
@@ -46,8 +45,34 @@ def install_bitcoin():
     if not download_bitcoin(): return False
     if not prune_choice(): return False
     if not make_bitcoin_conf(): return False
+    bitcoin_installed_success()
     
     ico.add("bitcoin-end") 
     success("Bitcoin has finished being installed")
     return True
 
+def bitcoin_installed_success():
+    set_terminal() 
+    print(f"""
+########################################################################################
+   {cyan} 
+                                    SUCCESS !!!
+{orange}
+    Bitcoin Core should have started syncing. Note, it should also continue to sync 
+    after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
+    any time.
+
+    You can also access Bitcoin functions from the Parmanode menu.
+
+{green}
+    TIP:
+
+    Make sure you turn off power saving features, particularly features that put
+    the drive to sleep; Power saving is usually on by default for laptops.
+{orange}
+
+########################################################################################
+""")
+
+def start_bitcoin():
+   pass 

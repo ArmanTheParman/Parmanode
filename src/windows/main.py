@@ -36,7 +36,7 @@ if platform.system() == "Windows":
 ########################################################################################
 from pathlib import Path
 from config.variables_f import *
-from parmanode.intro_f import *
+from parmanode.intro_f import * 
 from parmanode.motd_f import motd 
 from parmanode.menu_main_f import *
 from tools.system_f import *
