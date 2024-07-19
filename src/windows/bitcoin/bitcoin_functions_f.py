@@ -273,6 +273,7 @@ def label_disk(drive_letter, new_label="parmanode"):
 
 def prune_choice():
     while True:
+        set_terminal()
         print(f"""
 ########################################################################################
       {cyan}                               
@@ -311,6 +312,7 @@ def prune_choice():
 
 def set_the_prune():
     while True:
+        set_terminal()
         print(f"""
 ########################################################################################
 
@@ -320,8 +322,8 @@ def set_the_prune():
 
 ########################################################################################
 """)
-        choose("xpmq")
-        prunevalue = input()
+        
+        prunevalue = choose("xpmq")
         choice = prunevalue
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
@@ -330,12 +332,12 @@ def set_the_prune():
         elif choice.upper() == "M":
             back2main()
         elif not prunevalue.isnumeric():
-            invalid
+            invalid()
             continue
         elif int(prunevalue) == 0:
             return True
         elif int(prunevalue) < 550 or int(prunevalue) > 50000:
-            invalid
+            invalid()
             continue
         else:
             pco.add(f"prune_value={prunevalue}")
