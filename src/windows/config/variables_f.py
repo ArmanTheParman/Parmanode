@@ -147,11 +147,33 @@ drive_bitcoin = None
 # Default Windows Bitcoin data directory
 default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 
-def get_IP(iptype="internal", print:bool=None):
-    import socket 
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(('8.8.8.8', 80))  
-    ip_address = s.getsockname()[0]
-    s.close()
-    if print == True: input(f"The IP addres is: {ip_address}")
-    return ip_address 
+########################################################################################
+#IP
+########################################################################################
+def get_IP(iptype="internal", toprint:bool=None):
+    try:
+        import socket 
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))  
+        ip_address = s.getsockname()[0]
+        s.close()
+        if toprint == True: 
+            print(f"The IP addres is: {ip_address}")
+            input() 
+        return ip_address 
+    except Exception as e:
+        input(e)
+
+global IP, IP1, IP2, IP3, IP4
+IP = get_IP()
+IP1 = IP.split(r'.')[0]
+IP2 = IP.split(r'.')[1]
+IP3 = IP.split(r'.')[2]
+IP4 = IP.split(r'.')[3]
+
+########################################################################################
+# Date
+########################################################################################
+from datetime import datetime
+global date
+date=datetime.now().date().strftime("%y-%m-%d")

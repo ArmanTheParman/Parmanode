@@ -1,5 +1,5 @@
 from config.variables_f import *
-import requests, time, atexit, platform, ctypes, os
+import requests, time, atexit, platform
 
 def counter(type):
     if type == "rp":
@@ -20,6 +20,12 @@ def counter(type):
 def check_updates(compiled_version):
     if pco.grep("update_reminders_off"):
         return True
+
+    if pco.grep(f"{date}"): return True #check updates only once a day to save loading time checking url
+    
+    pco.remove("last_used=")
+    pco.add(f"last_used={date}")
+
     url = "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf" 
     params = {'_': int(time.time())}  # Adding a unique timestamp parameter
     try:
@@ -27,7 +33,6 @@ def check_updates(compiled_version):
         latest_winMajor = int(response[5].split("=")[1])
         latest_winMinor = int(response[6].split("=")[1])
         latest_winPatch = int(response[7].split("=")[1])
-        print(latest_winPatch)  
 
         if (latest_winMajor, latest_winMinor, latest_winPatch) > (compiled_version):
             return "outdated"
@@ -48,24 +53,3 @@ atexit.register(cleanup)
 def os_is():
     """Windows, Darwin, or Linux is returned"""
     return platform.system()
-
-    
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
-
-def run_as_admin():
-    # Re-launch the script with admin privileges
-    script = os.path.abspath(sys.argv[0])
-    params = ' '.join([script] + sys.argv[1:])
-    try:
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, params, None, 1)
-        sys.exit(0)
-    except Exception as e:
-        print(f"Failed to elevate: {e}")
-        sys.exit(1)
-
-def windows_version():
-    return sys.getwindowsversion().major  #int
