@@ -140,12 +140,18 @@ blinkoff = Style.RESET_ALL
 ########################################################################################
 #Bitcon variables
 ########################################################################################
-global drive_bitcoin, default_bitcoin_data_dir
+global drive_bitcoin, default_bitcoin_data_dir, bitcoin_dir
 
 drive_bitcoin = None
 
 # Default Windows Bitcoin data directory
 default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
+
+# get Bitcoin data dir variable
+try:
+    exec(pco.grep("bitcoin_dir=", returnline=True))
+except:
+    pass
 
 ########################################################################################
 #IP
