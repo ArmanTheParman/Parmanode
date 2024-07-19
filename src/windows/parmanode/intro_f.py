@@ -62,7 +62,7 @@ def intro():
         elif choice in {'q', 'Q'}:
             exit()
         elif choice in {'Free Ross', 'free ross'}:
-            pco.add("hide_intro")
+            pco.add("hide_intro=True")
             set_terminal()
             return True
         elif choice == "":
@@ -135,7 +135,7 @@ def suggestupdate():
 """)
     choice = choose("xeq")
     if choice in {'free ross', 'Free Ross'}:
-        pco.add("update_reminders_off")#tested at the start of check_updates()
+        pco.add("update_reminders_off=True")#tested at the start of check_updates()
     elif choice == "q": quit()
     return True
 
@@ -169,7 +169,7 @@ To continue on, just hit{cyan} <enter>{orange}.
 """)
     choice = input().strip()    
     if choice in {'free ross' , "Free Ross"}:   
-        pco.add("hide_instructions")
+        pco.add("hide_instructions=True")
     elif choice in {"q", "Q", "quit"}:
         exit()
     return True

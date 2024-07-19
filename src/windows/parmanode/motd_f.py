@@ -408,7 +408,7 @@ def motd():
     print(motd_base)
     choice = enter_continue()
     if choice in {"free ross", "Free Ross"}:
-        pco.add("motd_off")
+        pco.add("motd_off=True")
 
     counter("motd")
     return True

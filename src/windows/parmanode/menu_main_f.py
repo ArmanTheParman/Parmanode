@@ -63,7 +63,7 @@ def menu_main():
             if pco.grep("announcements_off"):
                 pco.remove("announcements_off")
             else:
-                pco.add("announcements_off")
+                pco.add("announcements_off=True")
         elif choice in {"a", "add", "Add", "ADD"}:
             menu_add() 
         elif choice in {"use", "USE", "Use", "u", "U"}: 

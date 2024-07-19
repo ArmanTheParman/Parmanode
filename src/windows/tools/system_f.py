@@ -24,7 +24,7 @@ def check_updates(compiled_version):
     if pco.grep(f"{date}"): return True #check updates only once a day to save loading time checking url
     
     pco.remove("last_used=")
-    pco.add(f"last_used={date}")
+    pco.add(f"last_used='{date}'")
 
     url = "https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf" 
     params = {'_': int(time.time())}  # Adding a unique timestamp parameter

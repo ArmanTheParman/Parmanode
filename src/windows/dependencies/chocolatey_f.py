@@ -20,7 +20,7 @@ def install_chocolatey():
         )
         if subprocess.run(["powershell", "-Command", command], check=True):
             print("Chocolatey installed successfully.")
-            pco.add("need_restart")
+            pco.add("need_restart=True")
 
     except subprocess.CalledProcessError as e:
         return False
@@ -38,7 +38,7 @@ def install_curl_with_chocolatey():
     try:
         subprocess.run(["choco", "install", "curl", "-y"], check=True)
         print("curl installed successfully.")
-        pco.add("neet_restart")
+        pco.add("need_restart=True")
     except subprocess.CalledProcessError as e:
         raise Exception(f"Failed to install curl with Chocolatey: {e.stderr}")
 
