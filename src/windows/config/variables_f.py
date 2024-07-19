@@ -149,8 +149,8 @@ default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 
 # get Bitcoin data dir variable
 try:
-    exec(pco.grep("bitcoin_dir=", returnline=True))
-except:
+    bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1]
+except Exception as e:
     pass
 
 ########################################################################################
