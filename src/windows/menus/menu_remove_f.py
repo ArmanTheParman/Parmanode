@@ -1,6 +1,6 @@
 from config.variables_f import *
 from tools.screen_f import *
-from bitcoin.install_bitcoin_f import *
+from bitcoin.uninstall_bitcoin_f import *
 
 def menu_remove():
     if ico.grep("bitcoin-"): 
@@ -31,7 +31,7 @@ def menu_remove():
         elif choice in {"m", "M"}:
             back2main()
         elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
-            if not install_bitcoin(): return False
+            if not uninstall_bitcoin(): return False
             return True
         else:
             invalid()
