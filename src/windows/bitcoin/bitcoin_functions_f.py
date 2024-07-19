@@ -13,11 +13,10 @@ def download_bitcoin():
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
         please_wait(f"{green}Unzipping Bitcoin{orange}")
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
-        download_bitcoin_finished = True
+        return True
     except:
-        pass 
+        return False
 
-    return download_bitcoin_finished 
 
 def choose_drive():
     set_terminal()

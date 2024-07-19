@@ -43,7 +43,9 @@ def install_bitcoin():
             return False 
     #else:
         #input("format not true")
-
+   
+    if not download_bitcoin(): return False
+    
     ico.add("bitcoin-end") 
     success("Bitcoin has finished being installed")
     return True

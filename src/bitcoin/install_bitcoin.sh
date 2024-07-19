@@ -66,7 +66,7 @@ prune_choice || return 1
 
 make_bitcoin_directories || return 1
     # make bitcoin directories in appropriate locations
-    # installed entry gets made when parmanode/bitcoin directory gets made.
+    # installed.conf entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
 
 #compile bitcoin if chosen
