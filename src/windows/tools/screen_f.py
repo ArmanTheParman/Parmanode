@@ -60,7 +60,7 @@ def choose(message=None):
 def invalid():
     set_terminal()
     print(f"""Invalid choice. Hit{cyan} <enter>{orange} first, and then try again.""") 
-    return True
+    return input() 
 
 def back2main():
     from parmanode.menu_main_f import menu_main

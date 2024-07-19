@@ -7,8 +7,6 @@ from bitcoin.bitcoin_functions_f import *
 from datetime import date
 from tools.drive_f import *
 
-
-
 def install_bitcoin():
 
     if ico.grep("bitcoin-end") or ico.grep("bitcoin-start"):
@@ -45,6 +43,7 @@ def install_bitcoin():
     if not download_bitcoin(): return False
     if not prune_choice(): return False
     if not make_bitcoin_conf(): return False
+    
     bitcoin_installed_success()
     
     ico.add("bitcoin-end") 

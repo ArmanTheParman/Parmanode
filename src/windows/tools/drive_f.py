@@ -20,7 +20,6 @@ def detect_drive():
     
     for count in range(5):
         get_all_disks("after")
-        input("make changes to after here")
         try:
             with before.open('r') as bb, after.open('r') as aa:
                 bblines = tuple(bb.readlines())
@@ -28,7 +27,6 @@ def detect_drive():
                 unique_lines = [line for line in aalines if line not in bblines]
         except Exception as e:
             print(f"{e}")
-            input("pause 4kd")
 
         with difference.open('w') as f:
             for line in unique_lines:
@@ -36,7 +34,7 @@ def detect_drive():
         if len(unique_lines) > 1: input("Something went wrong with drive detection") ; return False
         if len(unique_lines) == 0:
             set_terminal()
-            time.sleep(0.7)
+            time.sleep(0.86)
             if count == 4: input("Something went wrong with drive detection") ; return False
             continue
         elif len(unique_lines) == 1:
@@ -46,13 +44,10 @@ def detect_drive():
 
     try:
         disk_number = unique_lines[0].split()[1]
-        print(disk_number)
-        print(type(disk_number))
         pco.add(f"disk_number={disk_number}")
-        input("disk number aquired")
     except Exception as e:
         print(f'{e}')
-        input("disk number aquisition failed")
+        input("get disk number failed")
         
     return True
 
@@ -118,7 +113,7 @@ def format_disk(disk_number, file_system='NTFS', label="parmanode"):
         return True
     except Exception as e:
         print(f"{e}")
-        input("wait")
+        input()
         return False
 
 

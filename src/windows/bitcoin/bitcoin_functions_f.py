@@ -52,7 +52,6 @@ def choose_drive():
             drive_bitcoin = "external" #global var
             if not format_choice("bitcoin"): return False
             pco.add("drive_bitcoin=external")
-            input("check pco add drive bitcoin = ext")
             return True
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal" #global var
@@ -324,6 +323,9 @@ def set_the_prune():
         
         prunevalue = choose("xpmq")
         choice = prunevalue
+        print(int(prunevalue))
+        print(type(prunevalue))
+        input("wait")
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
         elif choice.upper() == "P":
@@ -335,9 +337,13 @@ def set_the_prune():
             continue
         elif int(prunevalue) == 0:
             return True
-        elif int(prunevalue) < 550 or int(prunevalue) > 50000:
+        elif int(prunevalue) > 50000:
             invalid()
             continue
+        elif int(prunevalue) < 550:
+            prunevalue=550    
+            pco.add(f"prune_value={prunevalue}")
+            return True
         else:
             pco.add(f"prune_value={prunevalue}")
             return True
