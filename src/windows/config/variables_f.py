@@ -147,11 +147,13 @@ drive_bitcoin = None
 # Default Windows Bitcoin data directory
 default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 
+if not default_bitcoin_data_dir.exists():
+    default_bitcoin_data_dir.mkdir()
+
 # get Bitcoin data dir variable
 try:
-    bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1]
-    global bitcoin_diro
-    bitcoin_diro = Path(bitcoin_dir)
+    bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
+    bitcoin_dir = Path(bitcoin_dir)
 except Exception as e:
     pass
 

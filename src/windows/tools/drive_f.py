@@ -112,7 +112,7 @@ def format_disk(disk_number, file_system='NTFS', label="parmanode"):
         bitcoin_dir = Path(f"{assign_letter}:\\bitcoin")
         bitcoin_dir.mkdir(parents=True, exist_ok=True)
         bitcoin_dir = str(bitcoin_dir)
-        pco.add(f"bitcoin_dir='{bitcoin_dir}'")
+        pco.add(f"bitcoin_dir={bitcoin_dir}")
 
         subprocess.run(command, check=True)
         return True

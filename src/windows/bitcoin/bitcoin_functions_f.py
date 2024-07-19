@@ -51,12 +51,12 @@ def choose_drive():
         elif choice in {"e", "E"}:
             drive_bitcoin = "external" #global var
             if not format_choice("bitcoin"): return False
-            pco.add("drive_bitcoin='external'")
+            pco.add("drive_bitcoin=external")
             input("check pco add drive bitcoin = ext")
             return True
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal" #global var
-            pco.add("drive_bitcoin='internal'")
+            pco.add("drive_bitcoin=internal")
             pco.remove("format_disk=True") #redundant
             if not choose_drive2(): return False 
             else: return True
@@ -100,7 +100,7 @@ def choose_drive2():
             if not back2main(): return False
         elif choice == "":
             h = str(HOME)
-            pco.add(f"bitcoin_dir='{h}\\Appdata\\Roaming\\Bitcoin'")
+            pco.add(fr"bitcoin_dir={h}\Appdata\Roaming\Bitcoin")
             del h
             return True
         elif choice.upper() == "X":
@@ -176,7 +176,7 @@ def bitcoin_folder_choice_confirm(folder):
         elif choice.upper() == "M":
             if not back2main(): return False
         elif choice.upper() == "Y":
-            pco.add(f"bitcoin_dir='{folder}'")
+            pco.add(f"bitcoin_dir={folder}")
             try:
                 if not Path(folder).exists(): Path(folder).mkdir(parents=True, exist_ok=True)
             except Exception as e:
@@ -343,8 +343,7 @@ def set_the_prune():
             return True
 
 def make_bitcoin_conf():
-
-    bitcoin_conf = bitcoin_diro / "bitcoin.conf"
+    bitcoin_conf = bitcoin_dir / "bitcoin.conf"
     if bitcoin_conf.exists():
         result = bitcoin_conf_exists()
         if result == False: return False
@@ -370,13 +369,14 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 rpcallowip={IP1}.{IP2}.0.0/16
 rpcservertimeout=120"""
-
     bitcoin_confo = config(bitcoin_conf)
+    bitcoin_conf.touch()
     bitcoin_confo.add(contents)
     del contents
+    return True
 
 def bitcoin_conf_exists():
-
+    set_terminal()
     print(f"""
 ########################################################################################
 

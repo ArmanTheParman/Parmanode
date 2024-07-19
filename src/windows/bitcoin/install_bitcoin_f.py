@@ -22,7 +22,6 @@ def install_bitcoin():
     except:
         pass
 
-    if not prune_choice(): return False
 
     if not choose_drive(): input("choose drive fail") ; return False 
     
@@ -33,7 +32,7 @@ def install_bitcoin():
         disk_number = disk_number.split('=')[1].strip()
         #input("before format") 
         if format_disk(disk_number):
-            pco.add(r"bitcoin_dir='P:\bitcoin'")
+            pco.add(r"bitcoin_dir=P:\bitcoin")
             if not Path(r"P:\bitcoin").exists(): Path(r"P:\bitcoin").mkdir(parents=True, exist_ok=True)
             #input("disk formatted")
         else:
@@ -45,6 +44,8 @@ def install_bitcoin():
         #input("format not true")
    
     if not download_bitcoin(): return False
+    if not prune_choice(): return False
+    if not make_bitcoin_conf(): return False
     
     ico.add("bitcoin-end") 
     success("Bitcoin has finished being installed")
