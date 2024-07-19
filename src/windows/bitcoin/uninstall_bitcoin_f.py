@@ -18,6 +18,10 @@ def uninstall_bitcoin():
     except:
         pass
     try:
+        pco.remove("prune_value=")
+    except:
+        pass
+    try:
         ico.remove("bitcoin-start") #string deletion from file
     except:
         pass
