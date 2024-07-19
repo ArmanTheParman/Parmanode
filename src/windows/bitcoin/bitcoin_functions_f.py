@@ -343,7 +343,7 @@ def set_the_prune():
             return True
 
 def make_bitcoin_conf():
-contents = r"""server=1
+    contents = r"""server=1
 txindex=1
 daemon=1
 blockfilterindex=1

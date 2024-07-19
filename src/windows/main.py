@@ -38,7 +38,8 @@ counter("rp")
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
 
-
+get_IP()
+exit()
 #intro()
 #instructions()
 #motd()
