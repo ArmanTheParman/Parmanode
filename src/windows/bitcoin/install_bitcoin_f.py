@@ -50,21 +50,3 @@ def install_bitcoin():
     success("Bitcoin has finished being installed")
     return True
 
-    
-def uninstall_bitcoin():
-    try:
-        pco.remove("bitcoin_dir")
-    except:
-        pass
-    try:
-        pco.remove("drive_bitcoin")
-    except:
-        pass
-    try:
-        ico.remove("bitcoin-start")
-    except:
-        pass
-    try:
-        ico.remove("bitcoin-end")
-    except:
-        pass
