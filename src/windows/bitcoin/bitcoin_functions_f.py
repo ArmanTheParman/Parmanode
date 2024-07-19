@@ -342,3 +342,22 @@ def set_the_prune():
             pco.add(f"prune_value={prunevalue}")
             return True
 
+def make_bitcoin_conf():
+contents = r"""server=1
+txindex=1
+daemon=1
+blockfilterindex=1
+rpcport=8332
+rpcuser=parman
+rpcpassword=parman
+zmqpubrawblock=tcp://*:28332
+zmqpubrawtx=tcp://*:28333
+
+whitelist=127.0.0.1
+rpcbind=0.0.0.0
+rpcallowip=127.0.0.1
+rpcallowip=10.0.0.0/8
+rpcallowip=192.168.0.0/16
+rpcallowip=172.0.0.0/8
+
+rpcservertimeout=120"""

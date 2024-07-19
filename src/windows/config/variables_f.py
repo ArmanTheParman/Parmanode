@@ -1,5 +1,5 @@
 from colorama import Fore, Style, init #init need to toggle autoreset on/off
-import sys, os
+import sys, os 
 from pathlib import Path
 from config.classes_f import *
 
@@ -147,3 +147,11 @@ drive_bitcoin = None
 # Default Windows Bitcoin data directory
 default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 
+def get_IP(iptype="internal", print:bool=None):
+    import socket 
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(('8.8.8.8', 80))  
+    ip_address = s.getsockname()[0]
+    s.close()
+    if print == True: input(f"The IP addres is: {ip_address}")
+    return ip_address 
