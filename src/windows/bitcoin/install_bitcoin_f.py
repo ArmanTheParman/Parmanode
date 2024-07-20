@@ -25,7 +25,9 @@ def install_bitcoin():
     if pco.grep("custom_bitcoin_dir_flag"):
         if not check_default_directory_exists(): return False
         pco.remove("custom_bitcoin_dir_flag")
+
     input("exiting now...")   
+    quit()
     make_symlinks()
     
     if pco.grep("format_disk=True"):

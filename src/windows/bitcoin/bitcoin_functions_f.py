@@ -118,6 +118,7 @@ def choose_drive2():
 def get_custom_directory(app="bitcoin"):
     example_dir = Path.home() / "some_folder"
     while True:
+        set_terminal()
         print(f"""{orange}
 ########################################################################################
 
@@ -134,7 +135,6 @@ def get_custom_directory(app="bitcoin"):
 ########################################################################################
 """)
         choice = choose()
-        del example_dir
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
         elif choice.upper() == "P":
