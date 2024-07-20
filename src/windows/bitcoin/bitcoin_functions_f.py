@@ -436,6 +436,7 @@ def make_symlinks():
     #target directory is not the same as default directory where symlink will be created. 
     os.symlink(testing_dir, default_bitcoin_data_dir, target_is_directory=True)
     input("exit testing zzzz")
+    quit()
 
 
 
