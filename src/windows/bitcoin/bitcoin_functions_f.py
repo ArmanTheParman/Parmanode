@@ -426,8 +426,8 @@ def make_symlinks():
         announce(f"""{red}Error:{orange} bitcoin_dir= entry not found in config""")
         return False
 
-    testing_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
-    if Path(testing_dir) == default_bitcoin_data_dir:
+    target_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
+    if Path(target_dir) == default_bitcoin_data_dir:
         announce(f"""Symlinks not need, default folder selected from config file.{red} Aborting{orange}.
     If this is completely unexpected, please report but to Parman.""") 
         return False
@@ -439,7 +439,7 @@ def make_symlinks():
         
     #target directory is not the same as default directory, so symlink will be created. 
     try:
-        os.symlink(testing_dir, default_bitcoin_data_dir, target_is_directory=True)
+        os.symlink(target_dir, default_bitcoin_data_dir, target_is_directory=True)
     except Exception as e:
         input(e)
         quit()
