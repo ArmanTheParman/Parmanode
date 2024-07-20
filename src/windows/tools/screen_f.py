@@ -45,12 +45,14 @@ def set_terminal(h=40, w=88):
 
 
 def choose(message=None):
-    if message == "xpqm":
-        print(f"{yellow}Type your{cyan}choice{yellow} from above options, or:{pink} (p){yellow} for previous,{green} (m){yellow} for main,{red} (q){yellow} to quit.")
+    if message == "xpmq":
+        print(f"{yellow}Type your{cyan} choice{yellow} from above options, or:{pink} (p){yellow} for previous,{green} (m){yellow} for main,{red} (q){yellow} to quit.")
+    if message == "xmpq":
+        print(f"{yellow}Type your{cyan} choice{yellow} from above options, or:{pink} (p){yellow} for previous,{green} (m){yellow} for main,{red} (q){yellow} to quit.")
     if message == "xeq":
-        print(f"{yellow}Type your{cyan}choice{yellow}, or{green} <enter>{yellow} to continue, or {red}(q){yellow} to quit.")
+        print(f"{yellow}Type your{cyan} choice{yellow}, or{green} <enter>{yellow} to continue, or {red}(q){yellow} to quit.")
     if message == "xmq":
-        print(f"{yellow}Type your{cyan}choice{yellow} from above options, or:{green} (m){yellow} for main,{red} (q){yellow} to quit.")
+        print(f"{yellow}Type your{cyan} choice{yellow} from above options, or:{green} (m){yellow} for main,{red} (q){yellow} to quit.")
 
     choice = input()
     return choice 
@@ -58,7 +60,7 @@ def choose(message=None):
 def invalid():
     set_terminal()
     print(f"""Invalid choice. Hit{cyan} <enter>{orange} first, and then try again.""") 
-    return True
+    return input() 
 
 def back2main():
     from parmanode.menu_main_f import menu_main

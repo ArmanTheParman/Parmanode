@@ -29,3 +29,5 @@ def uninstall_bitcoin():
         ico.remove("bitcoin-end") #string deletion from file
     except:
         pass
+
+    success("Bitcoin has been uninstalled")
