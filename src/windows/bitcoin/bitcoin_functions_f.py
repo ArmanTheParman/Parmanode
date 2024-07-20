@@ -469,7 +469,8 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
         elif choice.upper() in {"A", "M"}:
             back2main()
         elif choice.upper() == "X":
-            size_bytes = sum(f.stat().st_size for f in default_bitcoin_data_dir.rglob('*') if f.is_file()) / (1024 x 1024)
+            size_bytes = sum(f.stat().st_size for f in default_bitcoin_data_dir.rglob('*') if f.is_file()) 
+            size_bytes = size_bytes / (1024 * 1024) 
             size_bytes = round(size_bytes, 2)
             announce (f"The directory is {size_bytes} MB in size.")
             continue
