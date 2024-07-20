@@ -22,6 +22,8 @@ def install_bitcoin():
     except:
         pass
 
+    #pre start cleanup, possibly redundant
+#    pco.remove("custom_bitcoin_dir_flag")
 
     if not choose_drive(): input("choose drive fail") ; return False 
 
