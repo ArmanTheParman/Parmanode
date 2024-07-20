@@ -433,6 +433,8 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
 
     if not default_bitcoin_data_dir.exists(): return True
 
+    new_dir = pp / "bitcoin_data_backup"
+
     while True:
         set_terminal()  
         print(f"""
@@ -455,9 +457,9 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
     
         {red}a{orange}      to abort installation
     
-        {red}move{orange}   to move the drive to a backup loaction {cyan}(.../bitcoin_backup/)
+        {green}move{orange}   to move the drive to a backup loaction {cyan}{new_dir}
             
-
+{orange}
 ########################################################################################
 """)
         choice = choose("xpmq")
@@ -473,12 +475,11 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
             size_bytes = sum(f.stat().st_size for f in default_bitcoin_data_dir.rglob('*') if f.is_file()) 
             size_bytes = size_bytes / (1024 * 1024) 
             size_bytes = round(size_bytes, 2)
-            announce (f"The directory is {size_bytes} MB in size.")
+            announce (f"The directory is{cyan} {size_bytes} MB {orange}in size.")
             continue
-        elif choice.upper == "DELETE":
+        elif choice.upper() == "DELETE":
             if delete_directory(default_bitcoin_data_dir): return True
-        elif choice.upper == "MOVE":
-            new_dir = pp / "bitcoin_data_backup"
+        elif choice.upper() == "MOVE":
             default_bitcoin_data_dir.rename(new_dir)
             announce(f"The directory has been renamed")
             return True
