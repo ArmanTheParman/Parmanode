@@ -81,8 +81,7 @@ def announce(text, ec_text=None):
 ########################################################################################
 
           """)
-    enter_continue(ec_text)
-    set_terminal()
+    return enter_continue(ec_text)
 
 def enter_continue(text=None):
     if text == None:
@@ -112,6 +111,9 @@ def success(text):
 def proforma(choice): 
     return True
     """Just a template"""
+    choose = choice()
+    set_terminal()
+
     if choice.upper() in {"Q", "EXIT"}: 
         quit()
     elif choice.upper() == "P":

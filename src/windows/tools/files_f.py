@@ -62,3 +62,13 @@ def unzip_file(zippath: str, directory_destination: str):
         return True
     except:
         return False
+
+def delete_directory(directory):
+    import shutil
+    if isinstance(directory, str):
+       shutil.rmtree(directory)
+       return True
+    if isinstance(directory, Path):
+       shutil.rmtree(str(directory))
+       return True
+    return False

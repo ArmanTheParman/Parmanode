@@ -1,10 +1,11 @@
 from config.variables_f import *
 from tools.screen_f import *    
+from tools.files_f import *
 import os, shutil
 
 def uninstall_bitcoin():
     try:
-        shutil.rmtree(str(bitcoinpath))
+        delete_directory(bitcoinpath)
     except:
         announce(r"""Unable to remove C:\....\parman_programs\bitcoin during Bitcoin uninstallation
     The directory may be in use, eg it might be open in a folder window, or in a 
@@ -27,6 +28,10 @@ def uninstall_bitcoin():
         pass
     try:
         ico.remove("bitcoin-end") #string deletion from file
+    except:
+        pass
+    try:
+        pco.remove("custom_bitcoin_dir_flag")
     except:
         pass
 

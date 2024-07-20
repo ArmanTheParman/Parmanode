@@ -97,14 +97,18 @@ def choose_drive2():
             return False
         elif choice.upper() == "M":
             if not back2main(): return False
-        elif choice == "":
+        elif choice == "": #default path chosen
             h = str(HOME)
-            pco.add(fr"bitcoin_dir={h}\Appdata\Roaming\Bitcoin")
+            default_path=fr"bitcoin_dir={default_bitcoin_data_dir}"
+            pco.add(default_path)
+            if not default_bitcoin_data_dir.exists():
+                default_bitcoin_data_dir.mkdir()
             del h
             return True
         elif choice.upper() == "X":
             if not (result := get_custom_directory("bitcoin")): return False
             if result == "try again": continue
+            pco.add("custom_bitcoin_dir_flag") #deleted later in installation, and uninstallation
             if type(result) == bool: return result
             else: return False
         else:
@@ -423,3 +427,61 @@ def make_symlinks():
     print(Path(testing_dir))
     print(default_bitcoin_data_dir)
     input("compare")
+
+def check_default_directory_exists() -> bool: #returns True only if directory doesn't exist now or anymore
+
+    if not default_bitcoin_data_dir.exists(): return True
+
+    while True:
+        set_terminal()  
+        print(f"""
+########################################################################################
+
+    Parmanode has detected that a Bitcoin data directory exists in the default
+    location:
+{cyan} 
+    {default_bitcoin_data_dir}
+{orange}
+    If you don't know why it's there, don't worry, there are several potential 
+    innocent reasons, for example, it could be from a previous installation, or it 
+    could have been auto-generated during a single bitcoin core execution.
+
+    You have choices...
+    
+        {red}x{orange}      to see the size of the directory, then return here.
+
+        {red}delete{orange} to allow Parmanode to delete this directory.
+    
+        {red}a{orange}      to abort installation
+    
+        {red}move{orange}   to move the drive to a backup loaction {cyan}(.../bitcoin_backup/)
+            
+
+########################################################################################
+""")
+        choice = choose("xpmq")
+        set_terminal()
+
+        if choice.upper() in {"Q", "EXIT"}: 
+            quit()
+        elif choice.upper() == "P":
+            return True
+        elif choice.upper() in {"A", "M"}:
+            back2main()
+        elif choice.upper() == "X":
+            size_bytes = sum(f.stat().st_size for f in default_bitcoin_data_dir.rglob('*') if f.is_file()) / (1024 x 1024)
+            size_bytes = round(size_bytes, 2)
+            announce (f"The directory is {size_bytes} MB in size.")
+            continue
+        elif choice.upper == "DELETE":
+            if delete_directory(default_bitcoin_data_dir): return True
+        elif choice.upper == "MOVE":
+            new_dir = pp / "bitcoin_data_backup"
+            default_bitcoin_data_dir.rename(new_dir)
+            announce(f"The directory has been renamed")
+            return True
+        else:
+            invalid()
+            
+
+            

@@ -22,6 +22,10 @@ def install_bitcoin():
 
     if not choose_drive(): input("choose drive fail") ; return False 
 
+    if pco.grep("custom_bitcoin_dir_flag"):
+        if not check_default_directory_exists(): return False
+        pco.remove("custom_bitcoin_dir_flag")
+        
     make_symlinks()
     
     if pco.grep("format_disk=True"):
