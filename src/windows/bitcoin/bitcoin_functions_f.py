@@ -312,6 +312,7 @@ def prune_choice():
         if choice == "PRUNE": 
             if set_the_prune(): return True
             else: return False
+        invalid()
 
 def set_the_prune():
     while True:
