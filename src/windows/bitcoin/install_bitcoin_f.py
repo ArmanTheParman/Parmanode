@@ -24,6 +24,8 @@ def install_bitcoin():
 
 
     if not choose_drive(): input("choose drive fail") ; return False 
+
+    make_symlinks()
     
     if pco.grep("format_disk=True"):
         if not detect_drive(): input("detect drive failed") ; return False

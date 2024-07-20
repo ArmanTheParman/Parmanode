@@ -131,6 +131,7 @@ def get_custom_directory(app="bitcoin"):
 ########################################################################################
 """)
         choice = choose()
+        del example_dir
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
         elif choice.upper() == "P":
@@ -407,3 +408,8 @@ def bitcoin_conf_exists():
         return "YOLO"
     else:
         invalid()
+    
+def make_symlinks():
+    testing_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
+    if Path(testing_dir) == default_bitcoin_data_dir:
+        pass
