@@ -2,6 +2,11 @@ from config.variables_f import *
 from tools.screen_f import *
 from bitcoin.install_bitcoin_f import *
 def menu_add():
+    if not ico.grep("bitcoin-end"):
+        add_bitcoin = f"#                  {green} (b){orange}            Bitcoin Core                                        #"
+    else: 
+        add_bitcoin ="#                                                                                      #"
+
     while True:
         set_terminal()
         print(f"""
@@ -13,7 +18,7 @@ def menu_add():
 #                                                                                      #
 #                                                                                      #
 #                                                                                      #
-#                  {green} (b){orange}            Bitcoin Core                                        #
+{add_bitcoin}
 #                                                                                      #
 #                                                                                      #
 #                                                                                      #
