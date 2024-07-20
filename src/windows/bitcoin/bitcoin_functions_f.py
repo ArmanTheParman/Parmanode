@@ -1,3 +1,4 @@
+import os
 from parmanode.dirty_shitcoiner import *
 from config.variables_f import *
 from tools.screen_f import *
@@ -423,13 +424,20 @@ def bitcoin_conf_exists():
 def make_symlinks():
     testing_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
     if Path(testing_dir) == default_bitcoin_data_dir:
-        input("same, exiting test")
-        exit()
-
+        announce(f"""Symlinks not need, default folder selected from config file.{red} Aborting{orange}.
+    If this is completely unexpected, please report but to Parman.""") 
+        return False
     
-    print(Path(testing_dir))
-    print(default_bitcoin_data_dir)
-    input("compare")
+    if default_bitcoin_data_dir.exists():
+        announce(f"""Unexpected,{cyan} {default_bitcoin_data_dir}{orange} already exists. 
+    Can't create symlink here.""")  
+        return False
+        
+    #target directory is not the same as default directory where symlink will be created. 
+    os.symlink(testing_dir, default_bitcoin_data_dir, target_is_directory=True)
+    input("exit testing zzzz")
+
+
 
 def check_default_directory_exists() -> bool: #returns True only if directory doesn't exist now or anymore
 
