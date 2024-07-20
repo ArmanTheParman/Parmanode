@@ -8,6 +8,11 @@ from datetime import date
 from tools.drive_f import *
 
 def install_bitcoin():
+#testing
+########################################################################################
+    make_symlinks()
+    quit()
+########################################################################################
 
     if ico.grep("bitcoin-end") or ico.grep("bitcoin-start"):
         announce("Please uninstall Bitcoin first")
@@ -19,6 +24,8 @@ def install_bitcoin():
     except:
         pass
 
+    #pre start cleanup, possibly redundant
+#    pco.remove("custom_bitcoin_dir_flag")
 
     if not choose_drive(): input("choose drive fail") ; return False 
 
