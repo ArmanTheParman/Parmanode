@@ -423,7 +423,9 @@ def bitcoin_conf_exists():
 def make_symlinks():
     testing_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
     if Path(testing_dir) == default_bitcoin_data_dir:
-        input("same")
+        input("same, exiting test")
+        exit()
+
     
     print(Path(testing_dir))
     print(default_bitcoin_data_dir)
