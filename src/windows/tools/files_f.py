@@ -1,6 +1,7 @@
 from pathlib import Path
 from config.variables_f import *
 from tools.debugging_f import *
+from tools.screen_f import *
 import requests, zipfile, subprocess, os
 import urllib.request
 
@@ -81,7 +82,7 @@ def get_directory_size(directory, units="MB"):
 
     if isinstance(directory, Path):
 
-        if not directory.exists(): announce (f"""{directory} does not exist.""") ; return False
+        if not directory.exists(): announce(f"""{directory} does not exist.""") ; return False
 
         try: size_bytes = sum(f.stat().st_size for f in directory.rglob('*') if f.is_file()) 
         except Exception as e: announce(e) ; return False
