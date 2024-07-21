@@ -507,4 +507,24 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
             invalid()
             
 
-            
+def get_directory_size(directory, units="MB"):
+
+    if isinstance(directory, str):
+        directory = Path(directory)
+
+    if isinstance(directory, Path):
+
+        if not directory.exists(): announce (f"""{directory} does not exist.""") ; return False
+
+        try: size_bytes = sum(f.stat().st_size for f in directory.rglob('*') if f.is_file()) 
+        except Exception as e: announce(e) ; return False
+
+        if units == "MB": 
+            size_bytes_MB = size_bytes / (1024 * 1024) 
+            return round(size_bytes_MB, 2) #round to two decimal places, MB
+
+        elif units == "GB": 
+            size_bytes_GB = size_bytes / (1024 * 1024 * 2014) 
+            return round(size_bytes_GB, 2) #round to two decimal places, MB
+    
+    return False
