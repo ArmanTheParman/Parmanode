@@ -1,4 +1,7 @@
 function choose_mempool_backend {
+#decided this choice was unnecessary
+return 0
+
 unset mbackend
 while true ; do
 set_terminal ; echo -e "

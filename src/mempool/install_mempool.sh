@@ -9,7 +9,7 @@ else
     if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
 fi
 
-choose_mempool_backend
+choose_mempool_backend #deprecated, just returns 0
 
 if [[ $mbackend == 1 ]] ; then
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
