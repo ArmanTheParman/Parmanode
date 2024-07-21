@@ -30,7 +30,7 @@ from tools.debugging_f import *
 #debug(some_function=colour_check)
 #debug("text")
 #need "d" argument in position [1] when running
-input("i pause")
+
 debug("pause")
 
 ########################################################################################
