@@ -56,6 +56,10 @@ counter("rp")
 if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int list argument
     suggestupdate()
 
+try:
+    get_directory_items(rf"c:\users\ginko")
+except Exception as e: input(e)
+
 #intro()
 #instructions()
 #motd()
