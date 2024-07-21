@@ -1,6 +1,6 @@
 function openssh_patch {
 source $hm 1>/dev/null
-if [[ $openssh == "hide" || $OS == Mac ]] ; then return 0 ; fi
+if [[ $openssh == "hide" || $OS != "Linux" ]] ; then return 0 ; fi
 
 #https://www.bleepingcomputer.com/news/security/new-regresshion-openssh-rce-bug-gives-root-on-linux-servers/
 
