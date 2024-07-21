@@ -108,6 +108,14 @@ def success(text):
     enter_continue()
 
 
+def colour_check():
+    print(f"{black}black {reset}\"black\"")
+    print(f"{red}red {reset}\"red\"")
+    print(f"{green}green {reset}\"green\"")
+    print(f"{orange}green {reset}\"green\"")
+    print(f"{bright_blue}green {reset}\"green\"")
+    
+
 def proforma(choice): 
     return True
     """Just a template"""

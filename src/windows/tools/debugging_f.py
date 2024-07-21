@@ -1,6 +1,12 @@
-from config.variables_f import *
-from tools.screen_f import *
-from tools.files_f import *
+import sys
+
+if len(sys.argv) == 1:
+    sys.argv.append("no_debug")
+    D=False
+elif sys.argv[1] in {"d", "debug", "D", "DEBUG", "Debug"}:
+    D=True
+else:
+    D=False
 
 def debug(text=None, some_function=None):
     if D == True:
@@ -10,20 +16,12 @@ def debug(text=None, some_function=None):
         if text is None:
             print("Pausing for debugging")
             print(text)
-            enter_continue()
-            return True
+            print("\n    Hit <enter> to contiue.") 
+            return input()
         else:
             print("DEBUG point")
             print(text)
-            enter_continue()
-            return True
+            print("\n    Hit <enter> to contiue.") 
+            return input()
     else:
         return True
-
-def colour_check():
-    print(f"{black}black {reset}\"black\"")
-    print(f"{red}red {reset}\"red\"")
-    print(f"{green}green {reset}\"green\"")
-    print(f"{orange}green {reset}\"green\"")
-    print(f"{bright_blue}green {reset}\"green\"")
-    

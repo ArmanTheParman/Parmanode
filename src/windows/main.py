@@ -20,16 +20,18 @@ if platform.system() == "Windows":
         except Exception as e:
             print(f"Failed to elevate: {e}")
             sys.exit(1)
-            run_as_admin()
 
     from dependencies.chocolatey_f import *
     dependency_check()
 ########################################################################################
 #DEBUG AND TESTING SECTION:
 ########################################################################################
-#ensures sys.argv[1] exists for debug checks later in script, otherwise need to ensure position exists every time.
-
+from tools.debugging_f import *
 #debug(some_function=colour_check)
+#debug("text")
+#need "d" argument in position [1] when running
+input("i pause")
+debug("pause")
 
 ########################################################################################
 #Imports
