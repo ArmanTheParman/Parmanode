@@ -62,11 +62,6 @@ def invalid():
     print(f"""Invalid choice. Hit{cyan} <enter>{orange} first, and then try again.""") 
     return input() 
 
-def back2main():
-    from parmanode.menu_main_f import menu_main
-    menu_main()
-    return True
-
 def please_wait(text: str):
     set_terminal()
     print(text)
@@ -127,6 +122,6 @@ def proforma(choice):
     elif choice.upper() == "P":
         return True
     elif choice.upper() == "M":
-        back2main()
+        menu_main()
     else:
         invalid()

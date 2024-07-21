@@ -109,7 +109,9 @@ def get_directory_items(directory):
     if not directory.exists(): announce (f"""{directory} does not exist.""") ; return False
 
     directory_sorted = sorted(directory.iterdir())
-
+    pages = int(len(directory_sorted) / 30 )
+    if pages % 1 > 0: pages += 1
+    
     set_terminal()
     
     print(f"""
@@ -119,10 +121,30 @@ def get_directory_items(directory):
 {cyan}
 """)
 
-    for i in directory_sorted:
-        print(f"    {i}")
+    count = 0
+    for i in range(pages+1):
+        if count != 0: #means j loop has gone through at least once
+            print(f"""{orange}
+########################################################################################
 
-    print("""
+     Page {i + 1}
+ {cyan}
+ """)
+        count = 0
+        for j in directory_sorted:
+            count +=  1
+            min = i * 30 #when i is 0, min is 0, when is 1 min is 30
+            max = min + 30
+            if count > min and count < max:
+                print(f"    {j}")
+        if i == pages: break
+        print(f""""
+    {orange}Hit <enter> for next page{cyan}
+              """, pages, "count: ", count, "i is: ", i)
+        input()
+        set_terminal()
+
+    print(f"""{orange}
 
 ########################################################################################
 """)
