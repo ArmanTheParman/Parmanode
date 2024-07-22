@@ -9,8 +9,6 @@ from tools.drive_f import *
 
 def install_bitcoin():
 
-    # make_symlinks() - function abandoned because windows has proven to be unreliable when symlinks deleted.
-
     if ico.grep("bitcoin-end") or ico.grep("bitcoin-start"):
         announce("Please uninstall Bitcoin first")
         return False
@@ -22,15 +20,15 @@ def install_bitcoin():
         pass
 
     #pre start cleanup, possibly redundant
-#    pco.remove("custom_bitcoin_dir_flag")
+    pco.remove("custom_bitcoin_dir_flag")
 
-    if not choose_drive(): input("choose drive fail") ; return False 
+    if not choose_drive(): return False 
 
     if pco.grep("custom_bitcoin_dir_flag"):
         if not check_default_directory_exists(): return False
         pco.remove("custom_bitcoin_dir_flag")
 
-    make_symlinks()
+    # make_symlinks() - function abandoned because windows has proven to be unreliable when symlinks deleted.
     
     if pco.grep("format_disk=True"):
         if not detect_drive(): input("detect drive failed") ; return False
