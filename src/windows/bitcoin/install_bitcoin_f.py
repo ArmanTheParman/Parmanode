@@ -85,6 +85,7 @@ def bitcoin_installed_success():
 
 ########################################################################################
 """)
+    enter_continue()
 
 def start_bitcoin():
    pass 

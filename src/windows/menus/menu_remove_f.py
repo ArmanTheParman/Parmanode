@@ -30,7 +30,7 @@ def menu_remove():
         elif choice in {"p", "P"}:
             return True
         elif choice in {"m", "M"}:
-            menu_main()
+            return True
         elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
             if not uninstall_bitcoin(): return False
             return True

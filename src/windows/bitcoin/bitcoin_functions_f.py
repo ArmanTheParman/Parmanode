@@ -184,7 +184,7 @@ def bitcoin_folder_choice_confirm(folder):
             if not menu_main(): return False
         elif choice.upper() == "Y":
             pco.add(f"bitcoin_dir={folder}")
-            bitcoin_dir = Path(bitcoin_dir) #global variable 
+            bitcoin_dir = Path(folder) #global variable 
             try:
                 if not Path(folder).exists(): Path(folder).mkdir(parents=True, exist_ok=True)
             except Exception as e:
@@ -256,8 +256,11 @@ def used_disk():
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not menu_main(): return False
-        elif choice[1] == ":":
+            return False 
+        elif len(choice) < 3:
+            invalid()
+            continue
+        elif choice[1] == ":": #error if string is too short
             if not (confirm := bitcoin_folder_choice_confirm(choice)): return False #directory will be created
             if confirm == "try again": continue
             if confirm == False: return False
@@ -359,7 +362,16 @@ def make_bitcoin_conf():
         result = bitcoin_conf_exists()
         if result == False: return False
         if result == "YOLO": return True
-        if result == "O": bitcoin_conf.unlink() #delete 
+        try:
+            if result == "O": bitcoin_conf.unlink() #delete 
+        except Exception as e:
+            input(e)
+
+    if pco.grep("prune_value="):
+        p = pco.grep("prune_value=", returnline=True).strip().split('=')[1]
+        prunevalue = rf"prune={p}"
+    else:
+        prunevalue = ""
 
     contents = f"""
 server=1
@@ -371,7 +383,7 @@ rpcuser=parman
 rpcpassword=parman
 zmqpubrawblock=tcp://*:28332
 zmqpubrawtx=tcp://*:28333
-
+{prunevalue}
 whitelist=127.0.0.1
 rpcbind=0.0.0.0
 rpcallowip=127.0.0.1
@@ -380,11 +392,13 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 rpcallowip={IP1}.{IP2}.0.0/16
 rpcservertimeout=120"""
-
-    bitcoin_confo = config(bitcoin_conf)
-    bitcoin_conf.touch()
-    bitcoin_confo.add(contents)
-    del contents
+    try:
+        bitcoin_confo = config(bitcoin_conf)
+        bitcoin_conf.touch()
+        bitcoin_confo.add(contents)
+        del contents
+    except Exception as e:
+        input(e)
     return True
 
 def bitcoin_conf_exists():
