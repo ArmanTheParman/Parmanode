@@ -154,3 +154,14 @@ def get_directory_items(directory):
 ########################################################################################
 """)
     enter_continue()
+    
+    set_terminal()
+    input("part2")
+    x = Path(r"c:\users\ginko\appdata\roaming\bitcoin")
+    print("x is")
+    print(x)
+    y = x.iterdir()
+    print("printing y iteration")
+    for i in y:
+        print(i)
+    input()
