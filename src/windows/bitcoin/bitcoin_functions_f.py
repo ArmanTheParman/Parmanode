@@ -103,8 +103,8 @@ def choose_drive2():
             h = str(HOME)
             default_path=fr"bitcoin_dir={default_bitcoin_data_dir}"
             pco.add(default_path)
-            if not default_bitcoin_data_dir.exists():
-                default_bitcoin_data_dir.mkdir()
+            try: default_bitcoin_data_dir.mkdir()
+            except: pass
             del h
             return True
         elif choice.upper() == "X":

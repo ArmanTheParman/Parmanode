@@ -102,6 +102,11 @@ def get_directory_size(directory, units="MB"):
     return False
 
 def get_directory_items(directory):
+    set_terminal()
+    print(f"""    The directory passed is {directory}. String is {str(directory)}
+    
+    type is {type(directory)}""")
+    input()
     
     if isinstance(directory, str):
         directory = Path(directory)
