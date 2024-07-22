@@ -1,4 +1,5 @@
 import os
+from parmanode.menu_main_f import *
 from parmanode.dirty_shitcoiner import *
 from config.variables_f import *
 from tools.screen_f import *
@@ -48,7 +49,7 @@ def choose_drive():
         elif choice in {"p", "P"}:
             return False
         elif choice in {"m", "M"}:
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice in {"e", "E"}:
             drive_bitcoin = "external" #global var
             if not format_choice("bitcoin"): return False
@@ -97,7 +98,7 @@ def choose_drive2():
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice == "": #default path chosen
             h = str(HOME)
             default_path=fr"bitcoin_dir={default_bitcoin_data_dir}"
@@ -141,7 +142,7 @@ def get_custom_directory(app="bitcoin"):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice == "":
             return True 
         elif choice.upper().startswith('C:\\'):
@@ -179,7 +180,7 @@ def bitcoin_folder_choice_confirm(folder):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice.upper() == "Y":
             pco.add(f"bitcoin_dir={folder}")
             try:
@@ -219,7 +220,7 @@ def format_choice(app="bitcoin"):
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice == "1":
             pco.add("format_disk=True")
             #input("chec pco add format_disk=True")
@@ -253,7 +254,7 @@ def used_disk():
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            if not back2main(): return False
+            if not menu_main(): return False
         elif choice[1] == ":":
             if not (confirm := bitcoin_folder_choice_confirm(choice)): return False #directory will be created
             if confirm == "try again": continue
@@ -338,7 +339,7 @@ def set_the_prune():
         elif choice.upper() == "P":
             return False
         elif choice.upper() == "M":
-            back2main()
+            menu_main()
         elif not prunevalue.isnumeric():
             invalid()
             continue
@@ -413,7 +414,7 @@ def bitcoin_conf_exists():
     if choice.upper() in {"Q", "EXIT"}: 
         quit()
     elif choice.upper() in {"M", "A"}:
-        back2main()
+        menu_main()
     elif choice.upper() == "O":
         return "O"
     elif choice.upper() == "YOLO":
@@ -490,7 +491,7 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
         elif choice.upper() == "P":
             return True
         elif choice.upper() in {"A", "M"}:
-            back2main()
+            menu_main()
         elif choice.upper() == "X":
             size_bytes = sum(f.stat().st_size for f in default_bitcoin_data_dir.rglob('*') if f.is_file()) 
             size_bytes = size_bytes / (1024 * 1024) 
