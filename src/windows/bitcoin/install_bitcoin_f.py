@@ -8,9 +8,8 @@ from datetime import date
 from tools.drive_f import *
 
 def install_bitcoin():
-#testing
-    make_symlinks()
-#testing
+
+    # make_symlinks() - function abandoned because windows has proven to be unreliable when symlinks deleted.
 
     if ico.grep("bitcoin-end") or ico.grep("bitcoin-start"):
         announce("Please uninstall Bitcoin first")
