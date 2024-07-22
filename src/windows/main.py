@@ -58,22 +58,8 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
 
 ########################################################################################
 
-if default_bitcoin_data_dir.exists():
-    input("true, exists")
 
-    if default_bitcoin_data_dir.is_symlink():
-        input("is a symlink")
 
-    try:
-        default_bitcoin_data_dir.unlink()
-    except Exception as e:
-        input(e) 
-
-    if default_bitcoin_data_dir.exists():
-        input("true, exists")
-
-input("ending")
-quit()
 ########################################################################################
 
 

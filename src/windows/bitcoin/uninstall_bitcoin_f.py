@@ -5,11 +5,19 @@ import os, shutil
 
 def uninstall_bitcoin():
     try:
-        delete_directory(bitcoinpath)
-    except:
-        announce(r"""Unable to remove C:\....\parman_programs\bitcoin during Bitcoin uninstallation
+        if not delete_directory(bitcoinpath):
+            announce(fr"""Unable to remove {cyan} C:\....\parman_programs\bitcoin{orange} during Bitcoin uninstallation
     The directory may be in use, eg it might be open in a folder window, or in a 
     terminal.""")                 
+            return False
+
+    except Exception as e:
+           announce(fr"""ERROR: Unable to remove {cyan} C:\....\parman_programs\bitcoin{orange} during Bitcoin uninstallation
+    The directory may be in use, eg it might be open in a folder window, or in a 
+    terminal.
+                    
+    {e}                    """)                 
+           return False 
     try:
         pco.remove("bitcoin_dir") #string deletion from file
     except:

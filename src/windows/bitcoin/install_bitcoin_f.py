@@ -28,8 +28,6 @@ def install_bitcoin():
         if not check_default_directory_exists(): return False
         pco.remove("custom_bitcoin_dir_flag")
 
-    # make_symlinks() - function abandoned because windows has proven to be unreliable when symlinks deleted.
-    
     if pco.grep("format_disk=True"):
         if not detect_drive(): input("detect drive failed") ; return False
 
@@ -47,8 +45,10 @@ def install_bitcoin():
             return False 
     #else:
         #input("format not true")
+
    
     if not download_bitcoin(): return False
+    make_symlinks()
     if not prune_choice(): return False
     if not make_bitcoin_conf(): return False
     

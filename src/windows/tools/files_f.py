@@ -84,14 +84,14 @@ def delete_directory(path):
 
         for item in path.iterdir(): #for a non-empty directory
 
-            if item.is_dir():
+            if item.is_dir(): 
                 delete_directory(item)  # Recursively delete contents of subdirectories
-                item.rmdir()            # Remove the now-empty SUBdirectory
+                if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
 
             else:
-                item.unlink()  # Remove the file
+                if item.exists(): item.unlink()  # Remove the file
 
-        path.rmdir()  # Path directory should be empty now, can delete
+        if path.exists(): path.rmdir()  # Path directory should be empty now, can delete
         
         return True
        
