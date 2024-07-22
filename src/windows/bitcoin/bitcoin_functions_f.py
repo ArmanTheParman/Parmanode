@@ -1,4 +1,4 @@
-import os
+import os, subprocess
 from parmanode.menu_main_f import *
 from parmanode.dirty_shitcoiner import *
 from config.variables_f import *
@@ -440,7 +440,7 @@ def make_symlinks():
         
     #target directory is not the same as default directory, so symlink will be created. 
     try:
-        os.symlink(target_dir, default_bitcoin_data_dir, target_is_directory=True)
+        subprocess.check_call(['cmd', '/c', 'mklink', '/D', default_bitcoin_data_dir, target_dir])
     except Exception as e:
         input(e)
         quit()
