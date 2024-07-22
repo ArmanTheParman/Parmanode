@@ -64,17 +64,39 @@ def unzip_file(zippath: str, directory_destination: str):
     except:
         return False
 
-def delete_directory(directory):
-    import shutil
-    if isinstance(directory, str):
-       shutil.rmtree(directory)
-       return True
-    if isinstance(directory, Path):
-       shutil.rmtree(str(directory))
-       return True
-    return False
 
+def delete_directory(path):
+
+    if isinstance(path, str):
+#       import shutil
+#       shutil.rmtree(path)
+#       return True
+        path = Path(path)
+
+    if isinstance(path, Path): 
+
+        if path.is_symlink():
+            path.unlink()  # Remove symbolic link
+            return True
+        
+        if not path.is_dir():
+            raise Exception(f"{path} passed to delete_directory, but it is not a dir, nor symlink") 
+
+        for item in path.iterdir(): #for a non-empty directory
+
+            if item.is_dir():
+                delete_directory(item)  # Recursively delete contents of subdirectories
+                item.rmdir()            # Remove the now-empty SUBdirectory
+
+            else:
+                item.unlink()  # Remove the file
+
+        path.rmdir()  # Path directory should be empty now, can delete
+        
+        return True
        
+    raise Exception ("not a path object, but passed to delete_pathdir_contents")
+
 def get_directory_size(directory, units="MB"):
 
     if isinstance(directory, str):
