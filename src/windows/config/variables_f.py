@@ -136,11 +136,10 @@ drive_bitcoin = None
 default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 
 # get Bitcoin data dir variable
-try:
+if pco.grep("bitcoin_dir") == True:
     bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
     bitcoin_dir = Path(bitcoin_dir)
-except Exception as e:
-    pass
+
 
 ########################################################################################
 #IP

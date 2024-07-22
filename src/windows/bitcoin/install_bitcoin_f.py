@@ -49,13 +49,18 @@ def install_bitcoin():
    
     if not download_bitcoin(): return False
     make_symlinks()
-    if not prune_choice(): return False
-    if not make_bitcoin_conf(): return False
+    try:
+        if not prune_choice(): return False
+    except Exception as e:
+        input(e)
     
-    bitcoin_installed_success()
+    try:
+        if not make_bitcoin_conf(): return False
+    except Exception as e:
+        input(e)
     
     ico.add("bitcoin-end") 
-    success("Bitcoin has finished being installed")
+    bitcoin_installed_success()
     return True
 
 def bitcoin_installed_success():

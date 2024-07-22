@@ -102,6 +102,7 @@ def choose_drive2():
         elif choice == "": #default path chosen
             h = str(HOME)
             default_path=fr"bitcoin_dir={default_bitcoin_data_dir}"
+            bitcoin_dir = default_bitcoin_data_dir #global variable
             pco.add(default_path)
             try: default_bitcoin_data_dir.mkdir()
             except: pass
@@ -183,6 +184,7 @@ def bitcoin_folder_choice_confirm(folder):
             if not menu_main(): return False
         elif choice.upper() == "Y":
             pco.add(f"bitcoin_dir={folder}")
+            bitcoin_dir = Path(bitcoin_dir) #global variable 
             try:
                 if not Path(folder).exists(): Path(folder).mkdir(parents=True, exist_ok=True)
             except Exception as e:
@@ -329,17 +331,12 @@ def set_the_prune():
 ########################################################################################
 """)
         
-        prunevalue = choose("xpmq")
+        prunevalue = choose("xpq")
         choice = prunevalue
-        print(int(prunevalue))
-        print(type(prunevalue))
-        input("wait")
         if choice.upper() in {"Q", "EXIT"}: 
             quit()
         elif choice.upper() == "P":
             return False
-        elif choice.upper() == "M":
-            menu_main()
         elif not prunevalue.isnumeric():
             invalid()
             continue
@@ -383,6 +380,7 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 rpcallowip={IP1}.{IP2}.0.0/16
 rpcservertimeout=120"""
+
     bitcoin_confo = config(bitcoin_conf)
     bitcoin_conf.touch()
     bitcoin_confo.add(contents)
@@ -455,10 +453,6 @@ def make_symlinks():
     except Exception as e:
         input(e)
         quit()
-
-    input("exit testing zzzz")
-    quit()
-
 
 
 def check_default_directory_exists() -> bool: #returns True only if directory doesn't exist now or anymore
