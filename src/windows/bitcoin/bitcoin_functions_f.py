@@ -434,6 +434,7 @@ def make_symlinks():
         return False
     
     if default_bitcoin_data_dir.exists():
+        get_directory_items(default_bitcoin_data_dir)
         announce(f"""Unexpected,{cyan} {default_bitcoin_data_dir}{orange} already exists. 
     Can't create symlink here.""")  
         return False
