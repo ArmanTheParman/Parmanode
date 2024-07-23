@@ -588,14 +588,10 @@ def verify_bitcoin():
     else:
         announce(f"""There was a problem obtaining Michael Ford's key ring. Proceed with caution.""")
         keyfail = True
-    input("zzzz 2")
-
     
     #Hash the zip file
     hashresult = subprocess.run(["certutil", "-hashfile", str(zipfile), "sha256"], check=True, text=True, capture_output=True)    
     target_hash = "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932"
-    input("zzzz 3")
-
     
     with sha256sumspath.open('r') as f:
         contents = f.read()
@@ -615,12 +611,12 @@ def verify_bitcoin():
 
     sha256sumspath = bitcoinpath / "SHA256SUMS"
     sha256sumssigpath = bitcoinpath / "SHA256SUMS.asc"
-    sha256sumsverify = subprocess.run(["gpg", "--verify", str(sha256sumssigpath), str(sha256sumspath)], text=True, check=True, capture_output=True) 
-    
+    try:
+        sha256sumsverify = subprocess.run(["gpg", "--verify", str(sha256sumssigpath), str(sha256sumspath)], text=True, capture_output=True) 
+    except:
+        pass
 
-    input("zzzz 6")
-
-    if "GOOD" in sha256sumsverify.stdout:
+    if "GOOD" in sha256sumsverify.stdout or "Good" in sha256sumsverify.stderr:
         return True
     else:
         announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")
