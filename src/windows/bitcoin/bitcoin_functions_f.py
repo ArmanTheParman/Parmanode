@@ -365,11 +365,13 @@ def set_the_prune():
             return True
 
 def make_bitcoin_conf():
-    
+
     del bitcoin_dir
     bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
     bitcoin_dir = Path(bitcoin_dir)
-    
+    print(bitcoin_dir)
+    input("refreshed bitcoin_dir zzzz") 
+
     bitcoin_conf = bitcoin_dir / "bitcoin.conf"
     if bitcoin_conf.exists():
         result = bitcoin_conf_exists()
