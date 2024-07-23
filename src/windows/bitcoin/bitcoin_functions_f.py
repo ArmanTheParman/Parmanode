@@ -301,6 +301,7 @@ def label_disk(drive_letter, new_label="parmanode"):
         return False
 
 def prune_choice():
+    input("7zzzz")
     while True:
         set_terminal()
         print(f"""
@@ -497,9 +498,10 @@ def make_symlinks():
     #target directory is not the same as default directory, so symlink will be created. 
     try:
         subprocess.check_call(['cmd', '/c', 'mklink', '/D', default_bitcoin_data_dir, target_dir])
+        return True
     except Exception as e:
         input(e)
-        quit()
+        return False
 
 
 def check_default_directory_exists() -> bool: #returns True only if directory doesn't exist now or anymore
@@ -565,23 +567,26 @@ def start_bitcoin():
 
 def verify_bitcoin():
 
+    sha256sumspath = bitcoinpath / "SHA256SUMS"
+    sha256sumssigpath = bitcoinpath / "SHA256SUMS.asc"
     global keyfail
     keyfail = True
+
     #Get Michael Ford's public key...
     try:
         result = subprocess.run(["gpg", "--keyserver", "hkps://keyserver.ubuntu.com", "--recv-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], check=True)
     except Exception as e:
         input(e)
     try:
-        checkkey = subprocess.run(["gpg", "--list-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], check=True, capture_output=True, text=True)
+        checkkey = subprocess.run(["gpg", "--list-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], capture_output=True, text=True)
     except Exception as e:
         input(e)
         pass
-    
     try:
         print(checkkey.stdout)
     except Exception as e:
         input(e)
+
 
     if "E777299FC265DD04793070EB944D35F9AC3DB76A" in checkkey.stdout:
         keyfail = False
@@ -589,10 +594,15 @@ def verify_bitcoin():
         announce(f"""There was a problem obtaining Michael Ford's key ring. Proceed with caution.""")
         keyfail = True
     
-    #Hash the zip file
-    hashresult = subprocess.run(["certutil", "-hashfile", str(zipfile), "sha256"], check=True, text=True, capture_output=True)    
+    #Hash the zip path
+    try:
+        print(str(zippath))
+    except Exception as e:
+        input(e)
+    hashresult = subprocess.run(["certutil", "-hashfile", str(zippath), "sha256"], text=True, capture_output=True)    
     target_hash = "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932"
-    
+
+    if sha256sumspath.exists(): print(type(sha256sumspath))
     with sha256sumspath.open('r') as f:
         contents = f.read()
         if "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932" in contents:
@@ -600,23 +610,17 @@ def verify_bitcoin():
         else:
             announce("""Problem with SHA256SUMS file. Antcipated hash not found in document.
     Proceed with caution.""")
-
-    input("zzzz 4")
-
+    
     if not target_hash in hashresult.stdout:
         announce("""checksum failed - indicates a problem with the download. Aborting.""")
         return False
 
-    input("zzzz 5")
-
-    sha256sumspath = bitcoinpath / "SHA256SUMS"
-    sha256sumssigpath = bitcoinpath / "SHA256SUMS.asc"
     try:
         sha256sumsverify = subprocess.run(["gpg", "--verify", str(sha256sumssigpath), str(sha256sumspath)], text=True, capture_output=True) 
     except:
         pass
 
-    if "GOOD" in sha256sumsverify.stdout or "Good" in sha256sumsverify.stderr:
+    if "Good" in sha256sumsverify.stdout or "Good" in sha256sumsverify.stderr:
         return True
     else:
         announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")

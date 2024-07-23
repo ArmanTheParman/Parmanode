@@ -50,6 +50,7 @@ def install_bitcoin():
     if not download_bitcoin(): return False
     if not verify_bitcoin(): return False
     if not make_symlinks(): return False
+    input("outzzzz")
 
     try:
         if not prune_choice(): return False
