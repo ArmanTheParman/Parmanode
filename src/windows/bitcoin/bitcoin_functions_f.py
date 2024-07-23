@@ -375,16 +375,23 @@ def make_bitcoin_conf():
         except Exception as e:
             input(e)
 
+# txindex will cause error if prune is not zero
     if pco.grep("prune_value="):
         p = pco.grep("prune_value=", returnline=True).strip().split('=')[1]
         prunevalue = rf"prune={p}"
+        if p != "0":
+            txindex = ""
+        elif p == "0":
+            txindex = "txindex=1"
+
     else:
         prunevalue = ""
+        txindex = "txindex=1"
 
     contents = f"""
 server=1
 # Tx index causes error if pruning
-txindex=1
+{txindex}
 # Bitcoin daemon not available for Windows, do not uncomment
 # daemon=1 
 blockfilterindex=1
