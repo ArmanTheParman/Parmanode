@@ -48,7 +48,7 @@ def install_bitcoin():
 
    
     if not download_bitcoin(): return False
-
+    if not verify_bitcoin(): return False
     if not make_symlinks(): return False
 
     try:

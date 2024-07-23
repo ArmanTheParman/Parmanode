@@ -3,7 +3,6 @@
 ########################################################################################
 
 import platform, ctypes, sys, os
-
 if platform.system() == "Windows":
     if sys.getwindowsversion().major < 10:
         print(f"{red}You need at least Windows 10 to run Parmanode. Exiting.")
@@ -23,6 +22,7 @@ if platform.system() == "Windows":
 
     from dependencies.chocolatey_f import *
     dependency_check()
+
 ########################################################################################
 #DEBUG AND TESTING SECTION:
 ########################################################################################

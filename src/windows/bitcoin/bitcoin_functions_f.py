@@ -8,13 +8,16 @@ from tools.system_f import *
 from tools.drive_f import *
 
 def download_bitcoin():
-    input("zzzz in download bitcoin")
     try:
         url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
         url2 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS"
         url3 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS.asc"
 
-        please_wait(f"{green}Downloading Bitcoin{orange}, and checksums and gpg signature.")
+        please_wait(f"""{green}Downloading Bitcoin, and checksums and gpg signature.
+{cyan} 
+If it freezes, someitmes hitting <enter> breathes life into it for some reason. 
+I don't know why. Windows, pfffff.{orange}
+                    """)
         download(url, str(bitcoinpath))
         download(url2, str(bitcoinpath))
         download(url3, str(bitcoinpath))
@@ -22,7 +25,6 @@ def download_bitcoin():
     except Exception as e:
         input(e)
         return False
-    input("zzzz in download bitcoin, middle")
     try:
         global zippath
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
@@ -34,7 +36,6 @@ def download_bitcoin():
     except Exception as e:
         input(e)
         return False
-    input("zzzz in download bitcoin, end")
 
 
 def choose_drive():
@@ -336,7 +337,6 @@ def prune_choice():
         if choice == "S": dirty_shitcoiner() ; continue
         if choice == "PRUNE": 
             if set_the_prune(): 
-                input("zzzz debugging prune error 1")
                 return True
             else: return False
         invalid()
@@ -371,21 +371,15 @@ def set_the_prune():
         elif int(prunevalue) < 550:
             prunevalue=550    
             pco.add(f"prune_value={prunevalue}")
-            input("zzzz debugging prune error 1")
             return True
         else:
             pco.add(f"prune_value={prunevalue}")
             return True
 
 def make_bitcoin_conf():
-    input("zzzz debugging prune error 3.1")
-    input("zzzz debugging prune error 3.2")
     bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
-    input("zzzz debugging prune error 3.3")
     bitcoin_dir = Path(bitcoin_dir)
-    input("zzzz debugging prune error 3.4")
     print(bitcoin_dir)
-    input("zzzz debugging prune error 3.5")
 
     bitcoin_conf = bitcoin_dir / "bitcoin.conf"
     if bitcoin_conf.exists():
@@ -573,23 +567,33 @@ def verify_bitcoin():
 
     global keyfail
     keyfail = True
-    
     #Get Michael Ford's public key...
     try:
-        result = subprocess.run(["gpg", "--keyserver", "hkps://keyserver.ubuntu.com", "--recv-keys", "E777299FC265DD04793070EB944D35F9AC3DB76"], check=True)
-        checkkey = subprocess.run(["gpg", "--list-keys", "E777299FC265DD04793070EB944D35F9AC3DB76"], check=True, capture_output=True, text=True)
+        result = subprocess.run(["gpg", "--keyserver", "hkps://keyserver.ubuntu.com", "--recv-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], check=True)
+        input("zzzz 0")
     except Exception as e:
+        input(e)
+    try:
+        checkkey = subprocess.run(["gpg", "--list-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], check=True, capture_output=True, text=True)
+    except Exception as e:
+        input(e)
         pass
-
-    if "E777299FC265DD04793070EB944D35F9AC3DB76" in checkkey.stdout:
+    
+    print(checkkey.stdout)
+    input("zzzz 1")
+    if "E777299FC265DD04793070EB944D35F9AC3DB76A" in checkkey.stdout:
         keyfail = False
     else:
         announce(f"""There was a problem obtaining Michael Ford's key ring. Proceed with caution.""")
         keyfail = True
+    input("zzzz 2")
 
+    
     #Hash the zip file
     hashresult = subprocess.run(["certutil", "-hashfile", str(zipfile), "sha256"], check=True, text=True, capture_output=True)    
     target_hash = "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932"
+    input("zzzz 3")
+
     
     with sha256sumspath.open('r') as f:
         contents = f.read()
@@ -599,15 +603,21 @@ def verify_bitcoin():
             announce("""Problem with SHA256SUMS file. Antcipated hash not found in document.
     Proceed with caution.""")
 
+    input("zzzz 4")
 
     if not target_hash in hashresult.stdout:
         announce("""checksum failed - indicates a problem with the download. Aborting.""")
         return False
 
+    input("zzzz 5")
+
     sha256sumspath = bitcoinpath / "SHA256SUMS"
     sha256sumssigpath = bitcoinpath / "SHA256SUMS.asc"
     sha256sumsverify = subprocess.run(["gpg", "--verify", str(sha256sumssigpath), str(sha256sumspath)], text=True, check=True, capture_output=True) 
     
+
+    input("zzzz 6")
+
     if "GOOD" in sha256sumsverify.stdout:
         return True
     else:

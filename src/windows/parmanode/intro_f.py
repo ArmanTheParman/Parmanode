@@ -117,6 +117,7 @@ def dirty_shitcoiner():
     set_terminal()
     return True
 
+
 def suggestupdate():
 
     set_terminal()
@@ -173,4 +174,3 @@ To continue on, just hit{cyan} <enter>{orange}.
     elif choice in {"q", "Q", "quit"}:
         exit()
     return True
-
