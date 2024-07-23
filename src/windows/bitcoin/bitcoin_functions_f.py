@@ -19,6 +19,8 @@ def download_bitcoin():
     input("zzzz in download bitcoin, middle")
     try:
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+        if not zippath.exists():
+            input(f"""    Download seems to have failed, Parmanode doesn't detect it. Hit <enter>.""")
         please_wait(f"{green}Unzipping Bitcoin{orange}")
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
         return True
@@ -254,7 +256,8 @@ def used_disk():
     Please type the path to the folder on the drive exactly, including the drive
     letter. If the directory does not exist, Parmanode will create it. Eg:
     {cyan} 
-        D:\\bitcoin {orange}
+        P:\\bitcoin {orange}
+
     
 ########################################################################################
 """)    
@@ -325,7 +328,9 @@ def prune_choice():
         if choice == "N": return True
         if choice == "S": dirty_shitcoiner() ; continue
         if choice == "PRUNE": 
-            if set_the_prune(): return True
+            if set_the_prune(): 
+                input("zzzz debugging prune error 1")
+                return True
             else: return False
         invalid()
 
@@ -359,18 +364,21 @@ def set_the_prune():
         elif int(prunevalue) < 550:
             prunevalue=550    
             pco.add(f"prune_value={prunevalue}")
+            input("zzzz debugging prune error 1")
             return True
         else:
             pco.add(f"prune_value={prunevalue}")
             return True
 
 def make_bitcoin_conf():
-
-    del bitcoin_dir
+    input("zzzz debugging prune error 3.1")
+    input("zzzz debugging prune error 3.2")
     bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
+    input("zzzz debugging prune error 3.3")
     bitcoin_dir = Path(bitcoin_dir)
+    input("zzzz debugging prune error 3.4")
     print(bitcoin_dir)
-    input("refreshed bitcoin_dir zzzz") 
+    input("zzzz debugging prune error 3.5")
 
     bitcoin_conf = bitcoin_dir / "bitcoin.conf"
     if bitcoin_conf.exists():

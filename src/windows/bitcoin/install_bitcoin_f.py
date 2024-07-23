@@ -57,10 +57,14 @@ def install_bitcoin():
     except Exception as e:
         input(e)
 
+    input("zzzz debugging prune error 3")
+
     try:
         if not make_bitcoin_conf(): return False
     except Exception as e:
         input(e)
+    
+    input("zzzz debugging prune error 4.5")
     
     ico.add("bitcoin-end") 
     bitcoin_installed_success()
