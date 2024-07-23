@@ -570,7 +570,6 @@ def verify_bitcoin():
     #Get Michael Ford's public key...
     try:
         result = subprocess.run(["gpg", "--keyserver", "hkps://keyserver.ubuntu.com", "--recv-keys", "E777299FC265DD04793070EB944D35F9AC3DB76A"], check=True)
-        input("zzzz 0")
     except Exception as e:
         input(e)
     try:
@@ -579,8 +578,11 @@ def verify_bitcoin():
         input(e)
         pass
     
-    print(checkkey.stdout)
-    input("zzzz 1")
+    try:
+        print(checkkey.stdout)
+    except Exception as e:
+        input(e)
+
     if "E777299FC265DD04793070EB944D35F9AC3DB76A" in checkkey.stdout:
         keyfail = False
     else:
