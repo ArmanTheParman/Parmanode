@@ -48,23 +48,20 @@ def install_bitcoin():
 
    
     if not download_bitcoin(): return False
-    input("in main, after download bitcoin")
 
-    make_symlinks()
+    if not make_symlinks(): return False
 
     try:
         if not prune_choice(): return False
     except Exception as e:
         input(e)
 
-    input("zzzz debugging prune error 3")
 
     try:
         if not make_bitcoin_conf(): return False
     except Exception as e:
         input(e)
     
-    input("zzzz debugging prune error 4.5")
     
     ico.add("bitcoin-end") 
     bitcoin_installed_success()
@@ -94,5 +91,3 @@ def bitcoin_installed_success():
 """)
     enter_continue()
 
-def start_bitcoin():
-   pass 

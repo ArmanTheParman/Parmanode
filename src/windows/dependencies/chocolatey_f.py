@@ -44,6 +44,27 @@ def install_curl_with_chocolatey():
 
     return True
 
+def check_gpg():
+    try:
+        subprocess.run(["gpg", "--version"], check=True)
+        return True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+    
+    return True
+
+def install_gpg_with_chocolatey():
+
+    try:
+        subprocess.run(["choco", "install", "gpg", "-y"], check=True)
+        print("gpg installed successfully.")
+        pco.add("need_restart=True")
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"Failed to install gog with Chocolatey: {e.stderr}")
+
+    return True
+
+
 def dependency_check():
     try:
         # Check if Chocolatey is installed
@@ -61,6 +82,14 @@ def dependency_check():
         else:
             print("curl is not installed. Installing curl with Chocolatey...")
             install_curl_with_chocolatey()
+
+        # Check if gpg is installed
+        if check_gpg():
+            """gpg is already installed."""
+            pass
+        else:
+            print("gpg is not installed. Installing gpg with Chocolatey...")
+            install_gpg_with_chocolatey()
 
         # Additional logic for downloading and installing Bitcoin Core can be added here
         

@@ -11,13 +11,20 @@ def download_bitcoin():
     input("zzzz in download bitcoin")
     try:
         url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
-        please_wait(f"{green}Downloading Bitcoin{orange}")
+        url2 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS"
+        url3 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS.asc"
+
+        please_wait(f"{green}Downloading Bitcoin{orange}, and checksums and gpg signature.")
         download(url, str(bitcoinpath))
+        download(url2, str(bitcoinpath))
+        download(url3, str(bitcoinpath))
+        
     except Exception as e:
         input(e)
         return False
     input("zzzz in download bitcoin, middle")
     try:
+        global zippath
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
         if not zippath.exists():
             input(f"""    Download seems to have failed, Parmanode doesn't detect it. Hit <enter>.""")
@@ -557,4 +564,52 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
             return True
         else:
             invalid()
-     
+
+
+def start_bitcoin():
+   pass 
+
+def verify_bitcoin():
+
+    global keyfail
+    keyfail = True
+    
+    #Get Michael Ford's public key...
+    try:
+        result = subprocess.run(["gpg", "--keyserver", "hkps://keyserver.ubuntu.com", "--recv-keys", "E777299FC265DD04793070EB944D35F9AC3DB76"], check=True)
+        checkkey = subprocess.run(["gpg", "--list-keys", "E777299FC265DD04793070EB944D35F9AC3DB76"], check=True, capture_output=True, text=True)
+    except Exception as e:
+        pass
+
+    if "E777299FC265DD04793070EB944D35F9AC3DB76" in checkkey.stdout:
+        keyfail = False
+    else:
+        announce(f"""There was a problem obtaining Michael Ford's key ring. Proceed with caution.""")
+        keyfail = True
+
+    #Hash the zip file
+    hashresult = subprocess.run(["certutil", "-hashfile", str(zipfile), "sha256"], check=True, text=True, capture_output=True)    
+    target_hash = "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932"
+    
+    with sha256sumspath.open('r') as f:
+        contents = f.read()
+        if "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932" in contents:
+            pass
+        else:
+            announce("""Problem with SHA256SUMS file. Antcipated hash not found in document.
+    Proceed with caution.""")
+
+
+    if not target_hash in hashresult.stdout:
+        announce("""checksum failed - indicates a problem with the download. Aborting.""")
+        return False
+
+    sha256sumspath = bitcoinpath / "SHA256SUMS"
+    sha256sumssigpath = bitcoinpath / "SHA256SUMS.asc"
+    sha256sumsverify = subprocess.run(["gpg", "--verify", str(sha256sumssigpath), str(sha256sumspath)], text=True, check=True, capture_output=True) 
+    
+    if "GOOD" in sha256sumsverify.stdout:
+        return True
+    else:
+        announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")
+        return False
