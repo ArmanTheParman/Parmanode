@@ -48,12 +48,15 @@ def install_bitcoin():
 
    
     if not download_bitcoin(): return False
+    input("in main, after download bitcoin")
+
     make_symlinks()
+
     try:
         if not prune_choice(): return False
     except Exception as e:
         input(e)
-    
+
     try:
         if not make_bitcoin_conf(): return False
     except Exception as e:

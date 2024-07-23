@@ -8,16 +8,24 @@ from tools.system_f import *
 from tools.drive_f import *
 
 def download_bitcoin():
+    input("zzzz in download bitcoin")
     try:
         url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
         please_wait(f"{green}Downloading Bitcoin{orange}")
         download(url, str(bitcoinpath))
+    except Exception as e:
+        input(e)
+        return False
+    input("zzzz in download bitcoin, middle")
+    try:
         zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
         please_wait(f"{green}Unzipping Bitcoin{orange}")
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
         return True
-    except:
+    except Exception as e:
+        input(e)
         return False
+    input("zzzz in download bitcoin, end")
 
 
 def choose_drive():
@@ -375,8 +383,10 @@ def make_bitcoin_conf():
 
     contents = f"""
 server=1
+# Tx index causes error if pruning
 txindex=1
-daemon=1
+# Bitcoin daemon not available for Windows, do not uncomment
+# daemon=1 
 blockfilterindex=1
 rpcport=8332
 rpcuser=parman
