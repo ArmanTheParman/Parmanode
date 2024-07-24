@@ -43,8 +43,9 @@ def install_bitcoin():
             dbo.write(f"{thedate}: Bitcoin format_disk exited.")
             input("format failed")
             return False 
-   
+
     if not download_bitcoin(): return False
+
     if not verify_bitcoin(): return False
     if not make_symlinks(): return False
 
@@ -53,10 +54,12 @@ def install_bitcoin():
     except Exception as e:
         input(e)
 
+    input("zzzz 4")
     try:
         if not make_bitcoin_conf(): return False
     except Exception as e:
         input(e)
+    input("zzzz 5")
     
     
     ico.add("bitcoin-end") 
