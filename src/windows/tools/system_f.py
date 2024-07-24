@@ -1,5 +1,5 @@
 from config.variables_f import *
-import requests, time, atexit, platform, sys, ctypes
+import requests, time, atexit, platform, sys, ctypes, psutil
 
 def counter(type):
     if type == "rp":
@@ -61,3 +61,15 @@ def run_as_admin(command, params=""):
         ctypes.windll.shell32.ShellExecuteW(None, "runas", command, params, None, 1)
     except Exception as e:
         input(f"Error: {e}")
+
+
+def is_process_running(process_name):
+    # Iterate over all running processes
+    for proc in psutil.process_iter(['pid', 'name']):
+        try:
+            # Check if process name matches
+            if process_name.lower() in proc.info['name'].lower():
+                return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return False
