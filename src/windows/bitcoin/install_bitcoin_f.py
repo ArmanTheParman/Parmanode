@@ -20,13 +20,13 @@ def install_bitcoin():
         pass
 
     #pre start cleanup, possibly redundant
-    pco.remove("custom_bitcoin_dir_flag")
+    pco.remove("check_bitcoin_dir_flag")
 
     if not choose_drive(): return False 
 
-    if pco.grep("custom_bitcoin_dir_flag"):
+    if pco.grep("check_bitcoin_dir_flag"):
         if not check_default_directory_exists(): return False
-        pco.remove("custom_bitcoin_dir_flag")
+        pco.remove("check_bitcoin_dir_flag")
 
     if pco.grep("format_disk=True"):
         if not detect_drive(): input("detect drive failed") ; return False

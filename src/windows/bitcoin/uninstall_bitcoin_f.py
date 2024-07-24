@@ -49,7 +49,7 @@ def uninstall_bitcoin():
     except:
         pass
     try:
-        pco.remove("custom_bitcoin_dir_flag")
+        pco.remove("check_bitcoin_dir_flag")
     except:
         pass
     

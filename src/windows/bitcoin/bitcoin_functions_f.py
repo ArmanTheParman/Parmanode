@@ -86,17 +86,18 @@ def choose_drive():
             drive_bitcoin = "external" #global var
             if not format_choice("bitcoin"): return False
             pco.add("drive_bitcoin=external")
+            pco.add("check_bitcoin_dir_flag") #deleted later in installation, and uninstallation
             return True
         elif choice in {"i", "I"}:
             drive_bitcoin = "internal" #global var
             pco.add("drive_bitcoin=internal")
             pco.remove("format_disk=True") #redundant
-            if not choose_drive2(): return False 
+            if not choosen_drive_internal(): return False 
             else: return True
         else:
             invalid()
 
-def choose_drive2():
+def choosen_drive_internal():
     while True:
         set_terminal()
         print(f"""
@@ -143,7 +144,7 @@ def choose_drive2():
         elif choice.upper() == "X":
             if not (result := get_custom_directory("bitcoin")): return False
             if result == "try again": continue
-            pco.add("custom_bitcoin_dir_flag") #deleted later in installation, and uninstallation
+            pco.add("check_bitcoin_dir_flag") #deleted later in installation, and uninstallation
             if type(result) == bool: return result
             else: return False
         else:
