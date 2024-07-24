@@ -114,7 +114,7 @@ def colour_check():
 def proforma(choice): 
     return True
     """Just a template"""
-    choose = choice()
+    choice = choose()
     set_terminal()
 
     if choice.upper() in {"Q", "EXIT"}: 
