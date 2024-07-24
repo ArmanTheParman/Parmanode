@@ -35,9 +35,10 @@ I don't know why. Windows, pfffff.{orange}
         #rename unzip folder to "bitcoin"
         bitcoinunzippedpath = bitcoinpath / f"bitcoin-{bitcoinversion}"
         newbitcoinunzippedpath = bitcoinpath / "bitcoin"
+        bitcoinbin = bitcoinunzippedpath / "bin"
 
         try:
-            subprocess.run(["mv", str(bitcoinunzippedpath), str(newbitcoinunzippedpath)], check=True)
+            subprocess.run(["mv", str(bitcoinbin), r"..")], check=True)
         except Exception as e:
             input(e)
             return False
