@@ -480,16 +480,16 @@ def bitcoin_conf_exists():
         invalid()
     
 def make_symlinks():
-
+    
+    #bug detection
     if not pco.grep("bitcoin_dir"):
         announce(f"""{red}Error:{orange} bitcoin_dir= entry not found in config""")
         return False
 
+    #default internal drive, then no need for symlink
     target_dir = pco.grep("bitcoin_dir=", returnline=True).strip().split("=")[1]
     if Path(target_dir) == default_bitcoin_data_dir:
-        announce(f"""Symlinks not need, default folder selected from config file.{red} Aborting{orange}.
-    If this is completely unexpected, please report but to Parman.""") 
-        return False
+        return True 
 
     while True: 
         if default_bitcoin_data_dir.exists():
