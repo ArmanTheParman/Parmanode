@@ -45,6 +45,7 @@ from tools.system_f import *
 from bitcoin.bitcoin_functions_f import *
 from tools.drive_f import *
 from bitcoin.uninstall_bitcoin_f import *
+import subprocess
 ########################################################################################
 #The "need_restart" flag is removed here, just in case.
 if pco.grep("need_restart"):
@@ -57,7 +58,8 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
     suggestupdate()
 
 ########################################################################################
-
+bitcoinpath/
+subprocess.run(["c:\"])
 
 
 ########################################################################################

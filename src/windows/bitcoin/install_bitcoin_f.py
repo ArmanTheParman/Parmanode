@@ -43,20 +43,15 @@ def install_bitcoin():
             dbo.write(f"{thedate}: Bitcoin format_disk exited.")
             input("format failed")
             return False 
-    #else:
-        #input("format not true")
-
    
     if not download_bitcoin(): return False
     if not verify_bitcoin(): return False
     if not make_symlinks(): return False
-    input("outzzzz")
 
     try:
         if not prune_choice(): return False
     except Exception as e:
         input(e)
-
 
     try:
         if not make_bitcoin_conf(): return False

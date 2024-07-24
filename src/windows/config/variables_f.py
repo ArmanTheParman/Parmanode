@@ -128,7 +128,9 @@ blinkoff = Style.RESET_ALL
 ########################################################################################
 #Bitcon variables
 ########################################################################################
-global drive_bitcoin, default_bitcoin_data_dir, bitcoin_dir
+global drive_bitcoin, default_bitcoin_data_dir, bitcoin_dir, bitcoinversion
+
+bitcoinversion="27.1"
 
 drive_bitcoin = None
 

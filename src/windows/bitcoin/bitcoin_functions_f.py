@@ -9,9 +9,9 @@ from tools.drive_f import *
 
 def download_bitcoin():
     try:
-        url = "https://bitcoincore.org/bin/bitcoin-core-27.1/bitcoin-27.1-win64.zip"
-        url2 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS"
-        url3 = "https://bitcoincore.org/bin/bitcoin-core-27.1/SHA256SUMS.asc"
+        url = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/bitcoin-{bitcoinversion}-win64.zip"
+        url2 = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/SHA256SUMS"
+        url3 = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/SHA256SUMS.asc"
 
         please_wait(f"""{green}Downloading Bitcoin, and checksums and gpg signature.
 {cyan} 
@@ -27,11 +27,21 @@ I don't know why. Windows, pfffff.{orange}
         return False
     try:
         global zippath
-        zippath = bitcoinpath / "bitcoin-27.1-win64.zip"
+        zippath = bitcoinpath / f"bitcoin-{bitcoinversion}-win64.zip"
         if not zippath.exists():
             input(f"""    Download seems to have failed, Parmanode doesn't detect it. Hit <enter>.""")
         please_wait(f"{green}Unzipping Bitcoin{orange}")
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+        #rename unzip folder to "bitcoin"
+        bitcoinunzippedpath = bitcoinpath / f"bitcoin-{bitcoinversion}"
+        newbitcoinunzippedpath = bitcoinpath / "bitcoin"
+
+        try:
+            subprocess.run(["mv", str(bitcoinunzippedpath), str(newbitcoinunzippedpath)], check=True)
+        except Exception as e:
+            input(e)
+            return False
+
         return True
     except Exception as e:
         input(e)
@@ -562,8 +572,6 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
             invalid()
 
 
-def start_bitcoin():
-   pass 
 
 def verify_bitcoin():
 
@@ -625,3 +633,8 @@ def verify_bitcoin():
     else:
         announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")
         return False
+
+
+def start_bitcoin():
+
+   pass 
