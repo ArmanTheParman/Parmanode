@@ -8,6 +8,7 @@ from menus.menu_use_f import menu_use
 from menus.menu_remove_f import menu_remove
 from bitcoin.menu_bitcoin_f import *
 def menu_main():
+    import config.variables_f 
     while True:
         set_terminal(50, 88)
         print(f"""{orange}        

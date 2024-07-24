@@ -18,20 +18,30 @@ def download_bitcoin():
 If it freezes, someitmes hitting <enter> breathes life into it for some reason. 
 I don't know why. Windows, pfffff.{orange}
                     """)
-        download(url, str(bitcoinpath))
-        download(url2, str(bitcoinpath))
-        download(url3, str(bitcoinpath))
-        
+        if not download(url, str(bitcoinpath)): 
+            announce(f"Download failed - {url}")
+            return False
+        if not download(url2, str(bitcoinpath)):
+            announce(f"Download failed - {url2}")
+            return False
+        if not download(url3, str(bitcoinpath)):
+            announce(f"Download failed - {url3}")
+            return False
     except Exception as e:
         input(e)
         return False
+    
+
     try:
         global zippath
         zippath = bitcoinpath / f"bitcoin-{bitcoinversion}-win64.zip"
         if not zippath.exists():
             input(f"""    Download seems to have failed, Parmanode doesn't detect it. Hit <enter>.""")
         please_wait(f"{green}Unzipping Bitcoin{orange}")
-        unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+        try:
+            unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
+        except Exception as e:
+            input(e)
         #rename unzip folder to "bitcoin"
         bitcoinunzippedpath = bitcoinpath / f"bitcoin-{bitcoinversion}"
         bitcoinbin = bitcoinunzippedpath / "bin"
@@ -43,13 +53,11 @@ I don't know why. Windows, pfffff.{orange}
         except Exception as e:
            input(e) 
 
-        input("zzzz dl")
         
     except Exception as e:
         input(e)
         return False
     
-    input("zzzz d2")
     return True
 
 def choose_drive():
@@ -316,7 +324,6 @@ def label_disk(drive_letter, new_label="parmanode"):
         return False
 
 def prune_choice():
-    input("7zzzz")
     while True:
         set_terminal()
         print(f"""
@@ -547,7 +554,9 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
     
         {red}a{orange}      to abort installation
     
-        {green}move{orange}   to move the drive to a backup loaction {cyan}{new_dir}
+        {green}move{orange}   to move the drive to a backup loaction: 
+          
+            {cyan}{new_dir}
             
 {orange}
 ########################################################################################
@@ -570,8 +579,12 @@ def check_default_directory_exists() -> bool: #returns True only if directory do
         elif choice.upper() == "DELETE":
             if delete_directory(default_bitcoin_data_dir): return True
         elif choice.upper() == "MOVE":
-            default_bitcoin_data_dir.rename(new_dir)
-            announce(f"The directory has been renamed")
+            try:
+                default_bitcoin_data_dir.rename(new_dir)
+            except Exception as e:
+                input(e)
+            announce(f"""The directory has been renamed (i.e. moved) to: {cyan}
+    {new_dir}{orange}""")
             return True
         else:
             invalid()

@@ -51,7 +51,11 @@ def download(url, dir):
     try:
         os.getcwd()
         os.chdir(dir)
-        subprocess.run(['curl', '-LO', url], check=True)  # other options: stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            subprocess.run(['curl', '-LO', url], check=True)  # other options: stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        except Exception as e:
+            announce("download failed")
+            return False
         return True
     except:
         return False

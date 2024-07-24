@@ -21,7 +21,8 @@ def install_bitcoin():
 
     #pre start cleanup, possibly redundant
     pco.remove("check_bitcoin_dir_flag")
-
+    ico.add("bitcoin-start")
+    
     if not choose_drive(): return False 
 
     if pco.grep("check_bitcoin_dir_flag"):
@@ -54,12 +55,10 @@ def install_bitcoin():
     except Exception as e:
         input(e)
 
-    input("zzzz 4")
     try:
         if not make_bitcoin_conf(): return False
     except Exception as e:
         input(e)
-    input("zzzz 5")
     
     
     ico.add("bitcoin-end") 

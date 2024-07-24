@@ -29,7 +29,7 @@ def menu_bitcoin():
         start=f"{green}"
 
         #    output4=f"""                   Bitcoin Data Usage: {red}$(du -shL $HOME/.bitcoin | cut -f1)"{orange}"""
-
+        set_terminal()
         print(f"""{orange}
 ########################################################################################{cyan}
                                 Bitcoin Core Menu{orange}                   

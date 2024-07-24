@@ -20,8 +20,11 @@ if platform.system() == "Windows":
             print(f"Failed to elevate: {e}")
             sys.exit(1)
 
-    from dependencies.chocolatey_f import *
-    dependency_check()
+    try:
+        from dependencies.chocolatey_f import *
+        dependency_check()
+    except Exception as e:
+        input(e)
 
 ########################################################################################
 #DEBUG AND TESTING SECTION:

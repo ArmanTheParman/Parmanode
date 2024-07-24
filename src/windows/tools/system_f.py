@@ -56,7 +56,6 @@ def os_is():
 
 
 def run_as_admin(command, params=""):
-    input(f"command to run, {command} {params}")
     try:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", command, params, None, 1)
     except Exception as e:
