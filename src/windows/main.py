@@ -67,6 +67,8 @@ if check_updates((0, 0, 1)) == "outdated":    #pass compiling version as int lis
 #intro()
 #instructions()
 #motd()
+start_bitcoin()
+input("pause")
 menu_main()
 
 #print("intro done, exiting")
