@@ -38,7 +38,7 @@ I don't know why. Windows, pfffff.{orange}
         bitcoinbin = bitcoinunzippedpath / "bin"
 
         try:
-            subprocess.run(["mv", str(bitcoinbin), r"..")], check=True)
+            subprocess.run(["mv", str(bitcoinbin), r".."], check=True)
         except Exception as e:
             input(e)
             return False
