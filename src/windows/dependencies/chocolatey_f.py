@@ -26,6 +26,14 @@ def install_chocolatey():
         return False
 
     return True
+
+def check_git():
+    try:
+        subprocess.run(["git", "--version"], check=True)
+        return True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+
 def check_curl():
     try:
         subprocess.run(["curl", "--version"], check=True)
@@ -33,7 +41,16 @@ def check_curl():
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
     
+def install_git_with_chocolatey():
+    try:
+        subprocess.run(["choco", "install", "git", "-y"], check=True)
+        print("git installed successfully.")
+        pco.add("need_restart=True")
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"Failed to install git with Chocolatey: {e.stderr}")
+
     return True
+
 def install_curl_with_chocolatey():
     try:
         subprocess.run(["choco", "install", "curl", "-y"], check=True)
@@ -51,8 +68,6 @@ def check_gpg():
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
     
-    return True
-
 def install_gpg_with_chocolatey():
 
     try:
@@ -64,7 +79,6 @@ def install_gpg_with_chocolatey():
 
     return True
 
-
 def dependency_check():
     try:
         # Check if Chocolatey is installed
@@ -74,6 +88,14 @@ def dependency_check():
         else:
             print("Chocolatey is not installed. Installing Chocolatey...")
             install_chocolatey()
+
+        # Check if git is installed
+        if check_git():
+            """git is already installed."""
+            pass
+        else:
+            print("git is not installed. Installing git with Chocolatey...")
+            install_git_with_chocolatey()
 
         # Check if curl is installed
         if check_curl():
