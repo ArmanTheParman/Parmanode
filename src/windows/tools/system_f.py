@@ -1,5 +1,5 @@
 from config.variables_f import *
-import requests, time, atexit, platform
+import requests, time, atexit, platform, sys, ctypes
 
 def counter(type):
     if type == "rp":
@@ -53,3 +53,10 @@ atexit.register(cleanup)
 def os_is():
     """Windows, Darwin, or Linux is returned"""
     return platform.system()
+
+
+def run_as_admin(command):
+    try:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'-c "{command}"', None, 1)
+    except Exception as e:
+        input(f"Error: {e}")

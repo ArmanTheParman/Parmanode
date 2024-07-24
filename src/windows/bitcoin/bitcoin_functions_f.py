@@ -637,5 +637,5 @@ def verify_bitcoin():
 
 
 def start_bitcoin():
-
-   pass 
+    runpath = bitcoinpath / "bin" / "bitcoind.exe"
+    run_as_admin(str(runpath))    
