@@ -63,6 +63,7 @@ def menu_bitcoin():
         elif choice.upper() == "M":
             return True
         elif choice.lower() == "start":
+            if isbitcoinrunning == True: continue
             start_bitcoind()
             continue
         elif choice.lower() == "stop":
