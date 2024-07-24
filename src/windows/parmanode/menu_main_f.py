@@ -6,6 +6,7 @@ from tools.screen_f import *
 from menus.menu_add_f import menu_add
 from menus.menu_use_f import menu_use
 from menus.menu_remove_f import menu_remove
+from bitcoin.menu_bitcoin_f import *
 def menu_main():
     while True:
         set_terminal(50, 88)
@@ -19,6 +20,8 @@ def menu_main():
 ########################################################################################
 #                                                                                      #
 #{cyan}    (add)    {orange}            Add more Programs                                            #
+#                                                                                      #
+#{cyan}    (b)  {orange}                Bitcoin menu                                                 #
 #                                                                                      #
 #{cyan}    (u)            {orange}      Use Programs                                                 #
 #                                                                                      #
@@ -36,13 +39,9 @@ def menu_main():
 #                                                                                      #
 #{cyan}    (d)             {orange}     Donate                                                       #
 #                                                                                      #
-#{cyan}    (l) {orange}                 See logs and config files                                    #
-#                                                                                      #
 #{cyan}    (update)  {orange}           Update Parmanode                                             #
 #                                                                                      #
 #{cyan}    (uninstall)     {orange}     Uninstall Parmanode                                          #
-#                                                                                      #
-#{cyan}    (aa)      {orange}           Hide/Show Main Menu announcements                            #
 #                                                                                      #
 #{cyan}    (ap){orange}                 About Parmanode                                              #
 #                                                                                      #
@@ -58,38 +57,14 @@ def menu_main():
 {blinkon}{red}                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN {orange}{blinkoff}""")
         choice = input()  
         set_terminal()
-
-        if "aa" in choice:
-            if pco.grep("announcements_off"):
-                pco.remove("announcements_off")
-            else:
-                pco.add("announcements_off=True")
-        elif choice in {"a", "add", "Add", "ADD"}:
+        if choice.lower() in {"a", "add"}:
             menu_add() 
-        elif choice in {"use", "USE", "Use", "u", "U"}: 
+        elif choice.lower() in {"use", "u"}: 
             menu_use()
-        elif choice in {"remove", "Remove", "remove"}: 
+        elif choice.lower() in {"b", "bitcoin"}:
+            menu_bitcoin()
+        elif choice.lower() in {"remove"}: 
             menu_remove()
-        elif choice in {"L", "l"}: 
-            menu_log_config()
-        
-        elif choice in {"mm", "MM"}:
-            mentorship()
-        elif choice in {"e", "E"}: 
-            menu_education()
-        elif choice in {"t", "T"}: 
-            menu_tools()
-        elif choice in {"s" , "S"}: 
-            menu_settings()
-        elif choice in {"d", "D"}:
-            donations() 
-        elif choice in {"un", "uninstall", "UNINSTALL", "Uninstall"}: 
-            uninstall_parmanode()
-        elif choice in {"up", "update", "UPDATE", "Update"}: 
-            update_parmanode()
-        elif choice in {"ap", "AP", "Ap", "aP"}: 
-            about_parmanode()                      
-        elif choice in {"q", "Q", "Quit", "exit", "EXIT"}: 
             quit()
         else:
             invalid()
