@@ -9,19 +9,21 @@ def menu_bitcoin():
 
         try:
             drive = pco.grep("drive_bitcoin=", returnline=True).strip().split("=")[1]
+            print(f"""    {drive}    """)
+            input("pause")
         except:
             pass
 
-        if drive == None: drive = " ---- "
+        if drive == None: drive = f" ---- "
 
         #get running info
 
         isbitcoinrunning = is_process_running("bitcoind.exe")
 
         if isbitcoinrunning == True:
-            output1=f"                   Bitcoin is{green} RUNNING{orange}"
+            output1=f"                         Bitcoin is{green} RUNNING{orange}"
         else:
-            output1=f"                   Bitcoin is{red} NOT running{orange} -- choose \"start\" to run"
+            output1=f"                         Bitcoin is{red} NOT running{orange}" 
 
         output2=f"                   Sync'ing to the {drive} drive"
         stop=f"{red}"
