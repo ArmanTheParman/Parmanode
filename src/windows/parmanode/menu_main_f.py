@@ -65,6 +65,7 @@ def menu_main():
             menu_bitcoin()
         elif choice.lower() in {"remove"}: 
             menu_remove()
+        elif choice.lower() in {"q", "quit", "exit"}:
             quit()
         else:
             invalid()
