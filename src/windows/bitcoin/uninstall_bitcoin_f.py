@@ -16,8 +16,18 @@ def uninstall_bitcoin():
     The directory may be in use, eg it might be open in a folder window, or in a 
     terminal.
                     
+        bitcoinpath.mkdir()
     {e}                    """)                 
            return False 
+    try:
+        bitcoinpath.mkdir()
+    except:
+        pass
+
+    try: 
+        default_bitcoin_data_dir.unlink() # only deletes if it is a symlink
+    except:
+        pass
     try:
         pco.remove("bitcoin_dir") #string deletion from file
     except:
@@ -42,5 +52,5 @@ def uninstall_bitcoin():
         pco.remove("custom_bitcoin_dir_flag")
     except:
         pass
-
+    
     success("Bitcoin has been uninstalled")

@@ -34,20 +34,23 @@ I don't know why. Windows, pfffff.{orange}
         unzip_file(str(zippath), directory_destination=str(bitcoinpath)) 
         #rename unzip folder to "bitcoin"
         bitcoinunzippedpath = bitcoinpath / f"bitcoin-{bitcoinversion}"
-        newbitcoinunzippedpath = bitcoinpath / "bitcoin"
         bitcoinbin = bitcoinunzippedpath / "bin"
+        newbitcoinbin = Path(bitcoinpath)
 
         try:
-            subprocess.run(["mv", str(bitcoinbin), r".."], check=True)
+            returncode = subprocess.run(["mv", str(bitcoinbin), str(newbitcoinbin)])
+            delete_directory(bitcoinunzippedpath)
         except Exception as e:
-            input(e)
-            return False
+           input(e) 
 
-        return True
+        input("zzzz dl")
+        
     except Exception as e:
         input(e)
         return False
-
+    
+    input("zzzz d2")
+    return True
 
 def choose_drive():
     set_terminal()
