@@ -3,41 +3,48 @@ from bitcoin.bitcoin_functions_f import *
 
 def menu_bitcoin():
 
-while True:
+    while True:
 
-#get drive info
-    try:
-        drive = pco.grep("drive_bitcoin=", returnline=True).strip().split("=")[1]
-    except:
-        pass
+        #get drive info
 
-    if drive == None: drive = " ---- "
-#get running info
+        try:
+            drive = pco.grep("drive_bitcoin=", returnline=True).strip().split("=")[1]
+        except:
+            pass
 
+        if drive == None: drive = " ---- "
 
-    #isbitcoinrunning
-        output1=f"                   Bitcoin is{green} RUNNING{orange}
+        #get running info
+
+        isbitcoinrunning = is_process_running("bitcoind.exe")
+
+        if isbitcoinrunning == True:
+            output1=f"                   Bitcoin is{green} RUNNING{orange}"
+        else:
+            output1=f"                   Bitcoin is{red} NOT running{orange} -- choose \"start\" to run"
+
         output2=f"                   Sync'ing to the {drive} drive"
         stop=f"{red}"
-        output1=f"                   Bitcoin is{red} NOT running{orange} -- choose \"start\" to run"
         output2=f"                   Will sync to the {drive} drive"
         start=f"{green}"
 
-    #    output4=f"""                   Bitcoin Data Usage: {red}$(du -shL $HOME/.bitcoin | cut -f1)"{orange}"""
+        #    output4=f"""                   Bitcoin Data Usage: {red}$(du -shL $HOME/.bitcoin | cut -f1)"{orange}"""
 
         print(f"""{orange}
-########################################################################################
-                                {cyan}Bitcoin Core Menu{orange}                               
+########################################################################################{cyan}
+                                Bitcoin Core Menu{orange}                   
 ########################################################################################
 
 {output1}
 
 {output2}"
 
-{start}
+{green}
       (start){orange}    Start Bitcoind............................................(Do it)
+{red}
+      (stop){orange}     Just use your mouse to close the Bitcoin window
 
-      (stop)     Use your mouse to close the Bitcoin window
+
 {cyan}
    More options coming soon...
 
