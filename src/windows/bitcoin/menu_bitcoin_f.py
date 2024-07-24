@@ -65,6 +65,10 @@ def menu_bitcoin():
         elif choice.lower() == "start":
             start_bitcoind()
             continue
+        elif choice.lower() == "stop":
+            set_terminal()
+            announce(f"""Use your mouse to stop Bitcoin from its window.""")
+            continue 
         else:
             invalid()
 
