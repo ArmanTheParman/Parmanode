@@ -9,8 +9,6 @@ def menu_bitcoin():
 
         try:
             drive = pco.grep("drive_bitcoin=", returnline=True).strip().split("=")[1]
-            print(f"""    {drive}    """)
-            input("pause")
         except:
             pass
 
@@ -21,13 +19,13 @@ def menu_bitcoin():
         isbitcoinrunning = is_process_running("bitcoind.exe")
 
         if isbitcoinrunning == True:
-            output1=f"""                              Bitcoin is{green} RUNNING{orange}"""
+            output1=f"""                                Bitcoin is{green} RUNNING{orange}"""
         else:
-            output1=f"""                              Bitcoin is{red} NOT running{orange}""" 
+            output1=f"""                                Bitcoin is{red} NOT running{orange}""" 
 
-        output2=f"""                                  Sync'ing to the {drive} drive"""
+        output2=f"""                                Sync'ing to the {drive} drive"""
         stop=f"{red}"
-        output2=f"""                                  Will sync to the {drive} drive"""
+        output2=f"""                                Will sync to the {drive} drive"""
         start=f"{green}"
 
         #    output4=f"""                   Bitcoin Data Usage: {red}$(du -shL $HOME/.bitcoin | cut -f1)"{orange}"""
@@ -37,12 +35,13 @@ def menu_bitcoin():
                                 Bitcoin Core Menu{orange}                   
 ########################################################################################
 
+
 {output1}
 
-{output2}"
+{output2}
 
 {green}
-      (start){orange}    Start Bitcoind............................................(Do it)
+      (start){orange}    Start Bitcoind
 {red}
       (stop){orange}     Just use your mouse to close the Bitcoin window
 
