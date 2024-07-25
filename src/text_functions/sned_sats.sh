@@ -26,10 +26,12 @@ $orange
 
 
 
+   BTCPAY POS -$cyan  https://armantheparman.com/donations/ $orange
 
+   NOSTR - $cyan      pub1ltt9gry09lf2z6396rvzmk2a8wkh3yx5xhgkjzzg5znh62yr53rs0hk97y $orange
 
 $bright_blue
-    Don't forget to join the other Parmanode users on Telegram 
+    Please join the other Parmanode users on Telegram 
     https://t.me/parmanode
 $orange
 ########################################################################################

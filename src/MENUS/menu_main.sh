@@ -113,7 +113,7 @@ t|T)
 s|S)
     menu_settings ;;
 d|D)
-    donations ;;
+    sned_sats ;;
 un|uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
