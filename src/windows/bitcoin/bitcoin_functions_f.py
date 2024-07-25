@@ -21,20 +21,30 @@ def download_bitcoin():
         url2 = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/SHA256SUMS"
         url3 = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/SHA256SUMS.asc"
 
-        please_wait(f"""{green}Downloading Bitcoin, and checksums and gpg signature.
+        while True:
+
+            please_wait(f"""{green}Downloading Bitcoin, and checksums and gpg signature.
 {cyan} 
 If it freezes, someitmes hitting <enter> breathes life into it for some reason. 
-I don't know why. Windows, pfffff.{orange}
+I don't know why. Windows, pfffff.
+
+If that doesn't work, hit <control>c and Parmanode will try again.{orange}
                     """)
-        if not download(url, str(bitcoinpath)): 
-            announce(f"Download failed - {url}")
-            return False
-        if not download(url2, str(bitcoinpath)):
-            announce(f"Download failed - {url2}")
-            return False
-        if not download(url3, str(bitcoinpath)):
-            announce(f"Download failed - {url3}")
-            return False
+
+            if not download(url, str(bitcoinpath)): 
+                answer = announce(f"Download failed - {url}, trying again. Q to abort")
+                if answer.upper() == "Q": return False
+                else: continue
+            if not download(url2, str(bitcoinpath)):
+                answer = announce(f"Download failed - {url2}, trying again. Q to abort")
+                if answer.upper() == "Q": return False
+                else: continue
+            if not download(url3, str(bitcoinpath)):
+                answer = announce(f"Download failed - {url3}, trying again. Q to abort")
+                if answer.upper() == "Q": return False
+                else: continue
+            break
+
     except Exception as e:
         input(e)
         return False

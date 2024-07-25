@@ -80,12 +80,13 @@ def delete_directory_contents(path_given):
         try: path = Path(path_given)
         except Exception as e: input(e) ; return False
 
-    input("zzzz 2")
+    input("zzzzdd 2")
 
     if isinstance(path, Path): 
         input("zzzz 2.5")
 
-        input("zzzz 3")
+        if not path.exists(): return True
+
         for item in path.iterdir(): 
 
             if item.is_dir(): 
@@ -122,7 +123,7 @@ def delete_directory(path_given):
 
     if not path.exists():
         return True 
-        
+
     if not path.is_dir():
         raise Exception(f"{path} passed to delete_directory, but it is not a dir, nor symlink") 
 
