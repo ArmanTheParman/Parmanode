@@ -26,21 +26,24 @@ def download_bitcoin():
             please_wait(f"""{green}Downloading Bitcoin, and checksums and gpg signature.
 {cyan} 
 If it freezes, someitmes hitting <enter> breathes life into it for some reason. 
-I don't know why. Windows, pfffff.
+I don't know why. Windows, pfffff, I hate it.
 
-If that doesn't work, hit <control>c and Parmanode will try again.{orange}
+If that doesn't work, hit{red} <control>{cyan}c{orange} and Parmanode will try again.{orange}
                     """)
 
             if not download(url, str(bitcoinpath)): 
-                answer = announce(f"Download failed - {url}, trying again. Q to abort")
+                answer = announce(f""""Download failed - It happens (you should be using Linux btw)
+{cyan}{url}{orange}, trying again. {red}Q{orange} to abort""")
                 if answer.upper() == "Q": return False
                 else: continue
             if not download(url2, str(bitcoinpath)):
-                answer = announce(f"Download failed - {url2}, trying again. Q to abort")
+                answer = announce(f""""Download failed - It happens (you should b suine using Linxux btw)
+{cyan}{url2}{orange}, trying again. {red}Q{orange} to abort""")
                 if answer.upper() == "Q": return False
                 else: continue
             if not download(url3, str(bitcoinpath)):
-                answer = announce(f"Download failed - {url3}, trying again. Q to abort")
+                answer = announce(f"""Download failed - It happens (you should b suine using Linxux btw)
+{cyan}{url3}{orange}, trying again. {red}Q{orange} to abort""")
                 if answer.upper() == "Q": return False
                 else: continue
             break
@@ -137,15 +140,17 @@ def choosen_drive_internal():
 
     Hit{green} <enter>{orange} to continue
     
-    or
+{cyan}or{orange}
     
-    Type {red}x{orange} to choose a custom path to where you want the data to go, and Parmanode 
-    will create a symlink from the above folder to your preferred target folder. 
+    Type {red}custom{orange} to choose a custom path to where you want the data to go, and 
+    Parmanode will create a symlink from the above folder to your preferred target folder. 
     This will "trick" Bitcoin to download to your preferred location even though it 
     thinks it's downloading to the above default location. It's ok, it's ethical and 
     no coins will be harmed. 
-   
+
+{cyan}
     Most people will just keep it at the default location.
+{orange}
     Hit{green} <enter>{orange} alone for that.
     
 ########################################################################################
@@ -167,7 +172,7 @@ def choosen_drive_internal():
             except: pass
             del h
             return True
-        elif choice.upper() == "X":
+        elif choice.upper() == "CUSTOM":
             if not (result := get_custom_directory("bitcoin")): return False
             if result == "try again": continue
             pco.add("check_bitcoin_dir_flag") #deleted later in installation, and uninstallation
@@ -375,7 +380,7 @@ def prune_choice():
 """) 
         choice = choose().upper()
         if choice == "N": return True
-        if choice == "S": dirty_shitcoiner() ; continue
+        if choice == "S": set_terminal() ; dirty_shitcoiner() ; continue
         if choice == "PRUNE": 
             if set_the_prune(): 
                 return True
@@ -646,7 +651,6 @@ def verify_bitcoin():
     hashresult = subprocess.run(["certutil", "-hashfile", str(zippath), "sha256"], text=True, capture_output=True)    
     target_hash = "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932"
 
-    if sha256sumspath.exists(): print(type(sha256sumspath))
     with sha256sumspath.open('r') as f:
         contents = f.read()
         if "9719871a2c9a45c741e33d670d2319dcd3f8f52a6059e9c435a9a2841188b932" in contents:
@@ -666,7 +670,11 @@ def verify_bitcoin():
 
     if "Good" in sha256sumsverify.stdout or "Good" in sha256sumsverify.stderr:
         print(f"""{green}
-    Bitcoin has been successfully downloaded and verified for authenticity using both sha256 and gpg.{orange}""")
+Bitcoin has been successfully downloaded and verified for authenticity using 
+both sha256 and gpg.{orange}
+
+""")
+        enter_continue()
         return True
     else:
         announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")
