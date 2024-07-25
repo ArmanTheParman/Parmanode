@@ -74,16 +74,13 @@ def delete_directory_contents(path_given):
         try: path = Path(path_given)
         except Exception as e: input(e) ; return False
         print(type(path))
-        input("zzzz 1.5")
 
     if isinstance(path_given, Path):
         try: path = Path(path_given)
         except Exception as e: input(e) ; return False
 
-    input("zzzzdd 2")
 
     if isinstance(path, Path): 
-        input("zzzz 2.5")
 
         if not path.exists(): return True
 
@@ -91,14 +88,10 @@ def delete_directory_contents(path_given):
 
             if item.is_dir(): 
                 delete_directory(item)  # Recursively delete contents of subdirectories
-                input("zzzz 4")
                 if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
-                input("zzzz 5")
 
             else:
-                input("zzzz 6 else") 
                 if item.exists(): item.unlink()  # Remove the file
-                input("zzzz 7 else") 
         return True
     else:
         raise ValueError(f"""unexpect type in delete_directory_contents()""")
