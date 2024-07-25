@@ -1,4 +1,7 @@
-DONT Install python3 from windows store
 pip3 install colorama
 pip3 install requests
 pip3 install psutil
+
+
+DONT Install python3 from windows store
+Ensure not a windows store version of python. Do "where python" to see if 'Microsoft' in the path.

@@ -128,7 +128,8 @@ def proforma(choice):
 
 def yesorno(message):
     while True:
-        print(f"""
+        set_terminal()
+        print(f"""{orange}
 ########################################################################################
 
 
