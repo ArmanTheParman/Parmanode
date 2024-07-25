@@ -68,51 +68,77 @@ def unzip_file(zippath: str, directory_destination: str):
     except:
         return False
 
-def delete_directory_contents(path):
+def delete_directory_contents(path_given):
 
-    if isinstance(path, str):
-        path = Path(path)
+    if isinstance(path_given, str):
+        try: path = Path(path_given)
+        except Exception as e: input(e) ; return False
+        print(type(path))
+        input("zzzz 1.5")
+
+    if isinstance(path_given, Path):
+        try: path = Path(path_given)
+        except Exception as e: input(e) ; return False
+
+    input("zzzz 2")
 
     if isinstance(path, Path): 
+        input("zzzz 2.5")
 
+        input("zzzz 3")
         for item in path.iterdir(): 
 
             if item.is_dir(): 
                 delete_directory(item)  # Recursively delete contents of subdirectories
+                input("zzzz 4")
                 if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
+                input("zzzz 5")
 
             else:
+                input("zzzz 6 else") 
                 if item.exists(): item.unlink()  # Remove the file
-
-
-def delete_directory(path):
-
-    if isinstance(path, str):
-        path = Path(path)
-
-    if isinstance(path, Path): 
-
-        if path.is_symlink():
-            path.unlink()  # Remove symbolic link
-            return True
-        
-        if not path.is_dir():
-            raise Exception(f"{path} passed to delete_directory, but it is not a dir, nor symlink") 
-
-        for item in path.iterdir(): #for a non-empty directory
-
-            if item.is_dir(): 
-                delete_directory(item)  # Recursively delete contents of subdirectories
-                if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
-
-            else:
-                if item.exists(): item.unlink()  # Remove the file
-
-        if path.exists(): path.rmdir()  # Path directory should be empty now, can delete
-        
+                input("zzzz 7 else") 
         return True
+    else:
+        raise ValueError(f"""unexpect type in delete_directory_contents()""")
+
+
+def delete_directory(path_given):
+
+    if isinstance(path_given, str):
+        try: path = Path(path_given)
+        except Exception as e: input(e) ; return False
+
+    if isinstance(path_given, Path): 
+        try: path = Path(path_given) 
+        except Exception as e: input(e) ; return False
+
+    if not isinstance(path, Path):
+        raise Exception ("Error with Path object")
+
+    if path.is_symlink():
+        path.unlink()  # Remove symbolic link
+        return True
+
+    if not path.exists():
+        return True 
+        
+    if not path.is_dir():
+        raise Exception(f"{path} passed to delete_directory, but it is not a dir, nor symlink") 
+
+    for item in path.iterdir(): #for a non-empty directory
+
+        if item.is_dir(): 
+            delete_directory(item)  # Recursively delete contents of subdirectories
+            if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
+
+        else:
+            if item.exists(): item.unlink()  # Remove the file
+
+    if path.exists(): path.rmdir()  # Path directory should be empty now, can delete
+    
+    return True
        
-    raise Exception ("not a path object, but passed to delete_pathdir_contents")
 
 def get_directory_size(directory, units="MB"):
 
