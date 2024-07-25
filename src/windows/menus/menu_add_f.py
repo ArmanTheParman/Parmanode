@@ -5,8 +5,10 @@ from bitcoin.install_bitcoin_f import *
 def menu_add():
     if not ico.grep("bitcoin-end"):
         add_bitcoin = f"#                  {green} (b){orange}            Bitcoin Core                                        #"
+        bitcoinmenu = True
     else: 
         add_bitcoin ="#                                                                                      #"
+        bitcoinmenu = False
 
     while True:
         set_terminal()
@@ -35,6 +37,7 @@ def menu_add():
         elif choice in {"m", "M"}:
             return True 
         elif choice in {"b", "B", "Bitcoin", "bitcoin"}:
+            if bitcoinmenu == False : continue
             if not install_bitcoin(): return False
             return True
         else:
