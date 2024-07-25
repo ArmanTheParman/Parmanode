@@ -31,7 +31,7 @@ $cyan
             Safe key storage
             Multisignature wallet generation
             How to hide your coins on the blockchain
-            How to remove KYC tainting of coins
+$cyan            How to remove KYC tainting of coins $orange
             UTXO management
             Using the Lightning Network
             Inheritance planning
