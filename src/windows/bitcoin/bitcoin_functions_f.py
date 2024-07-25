@@ -665,6 +665,8 @@ def verify_bitcoin():
         pass
 
     if "Good" in sha256sumsverify.stdout or "Good" in sha256sumsverify.stderr:
+        print(f"""{green}
+    Bitcoin has been successfully downloaded and verified for authenticity using both sha256 and gpg.{orange}""")
         return True
     else:
         announce(f"There was a problem verifying the SHA256SUMS file with Michael Ford's signature. Aborting.")
