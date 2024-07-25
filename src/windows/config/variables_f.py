@@ -141,6 +141,8 @@ default_bitcoin_data_dir = Path.home() / "AppData" / "Roaming" / "Bitcoin"
 if pco.grep("bitcoin_dir") == True:
     bitcoin_dir = pco.grep("bitcoin_dir=", returnline=True).split('=')[1].strip()
     bitcoin_dir = Path(bitcoin_dir)
+else:
+    bitcoin_dir = None
 
 
 ########################################################################################
