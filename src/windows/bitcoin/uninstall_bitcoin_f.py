@@ -7,6 +7,10 @@ def uninstall_bitcoin():
 
     if not yesorno("Are you sure you want to uninstall Bitcoin?"): return False
 
+    del bitcoinpath
+    global bitcoinpath
+    bitcoinpath = pp / "bitcoin"
+
     try:
         if not delete_directory_contents(bitcoinpath):
             announce(fr"""Unable to emtpy {cyan} C:\....\parman_programs\bitcoin{orange} during Bitcoin uninstallation
