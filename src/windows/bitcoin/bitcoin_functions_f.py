@@ -8,6 +8,14 @@ from tools.system_f import *
 from tools.drive_f import *
 
 def download_bitcoin():
+    
+    try:
+        if not bitcoinpath.exists():
+            bitcoinpath.mkdir()                
+    except Exception as e:
+        input(e)
+        return False
+
     try:
         url = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/bitcoin-{bitcoinversion}-win64.zip"
         url2 = f"https://bitcoincore.org/bin/bitcoin-core-{bitcoinversion}/SHA256SUMS"

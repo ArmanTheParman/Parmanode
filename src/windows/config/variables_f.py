@@ -19,9 +19,10 @@ dp = pp / "parmanode_config"
 if not dp.exists():
     dp.mkdir()
 
+try: global bitcoinpath
+except: pass
+
 bitcoinpath = pp / "bitcoin"
-if not bitcoinpath.exists():
-    bitcoinpath.mkdir()                
 
 #path
 

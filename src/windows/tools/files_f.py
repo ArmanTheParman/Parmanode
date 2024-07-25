@@ -68,13 +68,26 @@ def unzip_file(zippath: str, directory_destination: str):
     except:
         return False
 
+def delete_directory_contents(path):
+
+    if isinstance(path, str):
+        path = Path(path)
+
+    if isinstance(path, Path): 
+
+        for item in path.iterdir(): 
+
+            if item.is_dir(): 
+                delete_directory(item)  # Recursively delete contents of subdirectories
+                if item.exists(): item.rmdir()            # Remove the now-empty SUBdirectory
+
+            else:
+                if item.exists(): item.unlink()  # Remove the file
+
 
 def delete_directory(path):
 
     if isinstance(path, str):
-#       import shutil
-#       shutil.rmtree(path)
-#       return True
         path = Path(path)
 
     if isinstance(path, Path): 
