@@ -64,8 +64,10 @@ def invalid():
 
 def please_wait(text: str):
     set_terminal()
+    print()
     print(text)
-    print("Please wait...")
+    print(f"{cyan}Please wait...{orange}")
+    print()
 
 def announce(text, ec_text=None):
     set_terminal()

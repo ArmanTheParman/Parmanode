@@ -139,14 +139,14 @@ def choosen_drive_internal():
         {default_bitcoin_data_dir}{orange}
 
     Hit{green} <enter>{orange} to continue
+{cyan}
+    or...{orange}
     
-{cyan}or{orange}
-    
-    Type {red}custom{orange} to choose a custom path to where you want the data to go, and 
-    Parmanode will create a symlink from the above folder to your preferred target folder. 
-    This will "trick" Bitcoin to download to your preferred location even though it 
-    thinks it's downloading to the above default location. It's ok, it's ethical and 
-    no coins will be harmed. 
+    Type {red}custom{orange} then <enter> to choose a custom path to where you want the 
+    data to go, and Parmanode will create a symlink from the above folder to your 
+    preferred target folder. This will "trick" Bitcoin to download to your preferred 
+    location even though it thinks it's downloading to the above default location. 
+    It's OK, it's ethical, and no coins will be harmed. 
 
 {cyan}
     Most people will just keep it at the default location.
@@ -415,6 +415,7 @@ def set_the_prune():
             invalid()
             continue
         elif int(prunevalue) < 550:
+            if not yesorno(f"This value is below {cyan}550 MB{orange}, so {cyan}550 MB{orange} will be set. Agree?"): continue
             prunevalue=550    
             pco.add(f"prune_value={prunevalue}")
             return True
