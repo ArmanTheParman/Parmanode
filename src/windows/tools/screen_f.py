@@ -125,3 +125,36 @@ def proforma(choice):
         menu_main()
     else:
         invalid()
+
+def yesorno(message):
+    while True:
+        print(f"""
+########################################################################################
+
+
+    {message}
+
+                
+
+{cyan}                                y){orange}        yeah
+                               
+
+{cyan}                                n){orange}        nah    
+
+
+
+########################################################################################   
+""")
+        choice = choose("xq")    
+        set_terminal()
+
+        if choice.upper() in {"Q", "EXIT"}: 
+            quit()
+        elif choice.upper() == "Y":
+            return True
+        elif choice.upper() == "N":
+            return False
+        else:
+            invalid()
+    
+

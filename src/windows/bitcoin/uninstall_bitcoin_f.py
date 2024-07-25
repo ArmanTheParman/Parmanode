@@ -4,6 +4,9 @@ from tools.files_f import *
 import os, shutil
 
 def uninstall_bitcoin():
+
+    if not yesorno("Are you sure you want to uninstall Bitcoin?"): return False
+
     try:
         if not delete_directory(bitcoinpath):
             announce(fr"""Unable to remove {cyan} C:\....\parman_programs\bitcoin{orange} during Bitcoin uninstallation
