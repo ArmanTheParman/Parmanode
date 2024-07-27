@@ -40,7 +40,7 @@ echo -e "
 
               (rs)    Parman's easy AF Rsync tool new
 $green
-         ...  (n)     More options 
+         ...  (next)  More options 
 $orange
 ########################################################################################
 "
