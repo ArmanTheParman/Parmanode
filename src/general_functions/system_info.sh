@@ -160,7 +160,7 @@ echo -e "
                                                             and   localhost
 
 
-    To access this computer from another computer ONE THE SAME NETWORK, you can type 
+    To access this computer from another computer ON THE SAME NETWORK, you can type 
     in the terminal of the other computer (not Windows):
 $green
         ssh $USER@$IP

@@ -10,7 +10,7 @@ echo -e "
 
               (cc)    Upgrade ColdCard firmware wizard             
 
-              (ppp)   Connect to Parman's node...
+              (ppp)   Connect to Parman's node over Tor ...
             
               (dfat)  Drive format assist tool
 
