@@ -16,7 +16,9 @@ set_terminal ; echo -e "
     2. Each program has its$green own menu$orange nested under the \"use\" menu; various 
        functions are available for you to make it easier to interact with the program.
        
-    3. You should reguarly$green update$orange Parmanode (the best way is from the Parmanode
+    3. Explore all the options from the main menu, there are hidden gems.
+
+    4. You should reguarly$green update$orange Parmanode (the best way is from the Parmanode
        menu). 
 
 ########################################################################################
