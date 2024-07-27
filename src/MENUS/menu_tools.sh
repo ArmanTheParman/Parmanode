@@ -177,11 +177,10 @@ $orange
     make that promise because I don't even know how to do that. Your IP address will
     be unknown because you're connecting over Tor anyway.
     
-    You'll have to manually tweak your wallet settings and include the one of the 
-    following onion addresses to connect to one of my servers:
+    You'll have to manually tweak your wallet settings and include the following 
+    onion address to connect to my server:
 $green
-    cz2qg6n7oc2i5i4w7wprobvczwpgbf2ulaqiokl7le6ojyhvrx4ty3yd.onion:700${red}2$green:t
-    ail3y746ukjgowb2l4izovsh2tzyre4ohxii7rwes3j5ggx6pc3cvdid.onion.onion:700${red}4$green:t
+    ajbiipbqjwzvr2xjgcanugsox3q2aqc36pgecf2hx6th2azvta3bf4ad.onion:700${red}4$green:t 
 
 $orange
     You must use the port number after the onion address or you can't connect.
