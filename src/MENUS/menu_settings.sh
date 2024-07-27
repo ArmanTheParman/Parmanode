@@ -5,7 +5,11 @@ set_terminal ; echo -e "
 $cyan
                                    SETTINGS    $orange
 
+
          c)        Change colours
+
+
+         ... more later
 
 ######################################################################################## 
 "
