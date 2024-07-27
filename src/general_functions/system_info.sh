@@ -161,7 +161,7 @@ echo -e "
 
 
     To access this computer from another computer ON THE SAME NETWORK, you can type 
-    in the terminal of the other computer (not Windows):
+    in the terminal of the other computer (even Windows):
 $green
         ssh $USER@$IP
 $orange
