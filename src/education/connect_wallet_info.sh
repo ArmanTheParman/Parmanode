@@ -178,16 +178,17 @@ $orange
     
     You need to name the connection to proceed. It's not yet tested, but if it insists on a username and 
     password, you need to modify the bitcoin.conf file (see the Parmanode Bitcoin menu to access) and 
-    add it in like this:
+    add it in like this (careful changing the user/password as other programs might depend on it):
 
-                                         rpcuser=my_user_name
+$cyan                                  rpcuser=my_user_name $orange (default is 'parman')
                                         
-                                         rpcpassword=my_password 
+$cyan                                  rpcpassword=my_password $orange (default is 'parman')
     
     If you make changes to the config file, you need to restart Bitcoin for the changes to take effect.
 
-    In Specter Wallet, you'll see http://localhost - leave as is, but if that doesn't work, try 
-    http://127.0.0.1, then finally, click \"Connect\"
+    In Specter Wallet, you'll see$cyan http://localhost $orange- leave as is, but if that doesn't work, try 
+$cyan    http://127.0.0.1$orange, then finally, click$pink \"Connect\"
+$orange
 
 ##############################################################################################################
 "
