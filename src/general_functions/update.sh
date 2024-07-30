@@ -93,7 +93,9 @@ sudo apt-get upgrade -y
 sudo apt-get install jq netcat vim net-tools unzip -y 
 if ! which ssh >/dev/null ; then sudo apt-get install ssh ; sudo systemctl enable ssh >/dev/null 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
+fi
 break
+
 ;;
 n|N|NO|No|no)
 break
