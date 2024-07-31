@@ -180,7 +180,7 @@ $orange
     You'll have to manually tweak your wallet settings and include the following 
     onion address to connect to my server:
 $green
-    ajbiipbqjwzvr2xjgcanugsox3q2aqc36pgecf2hx6th2azvta3bf4ad.onion:700${red}4$green:t 
+    ail3y746ukjgowb2l4izovsh2tzyre4ohxii7rwes3j5ggx6pc3cvdid.onion:700${red}4$green:t 
 
 $orange
     You must use the port number after the onion address or you can't connect.
