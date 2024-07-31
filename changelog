@@ -1,3 +1,5 @@
+Version 3.41.2
+    -Update to tor address to connect to Parman's node
 Version 3.41.1
     -ParmaNostr; hex import tool added
     -ParmaNostr; menu cleanup
