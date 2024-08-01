@@ -23,7 +23,9 @@ fi
 clear
 
 bitcoin_status #get running text variable.
-isbitcoinrunning
+isbitcoinrunning 
+   if tail $HOME/.bitcoin/debug.log | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
+
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
@@ -273,11 +275,10 @@ export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep version | grep heig
 
 if [[ -n $height ]] ; then
 export running_text="-- height=$height"
-elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$' ; then
-export running_text="$($HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
+elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eq 'Verification progress: .*$' ; then
+export running_text="$( tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
 elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" >/dev/null 2>&1 ; then
-export 
-running_text="$($HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
+export running_text="$(tail -n2 $HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
 #elif ... Waiting 300 seconds before querying DNS seeds
 else 
 export running_text="-- status ...type r to refresh, or see log"
