@@ -143,7 +143,7 @@ if [[ $OS == "Linux" ]] ; then
 #uninstall parmanode directories and config files contained within.
 rm -rf $HOME/.parmanode >/dev/null 2>&1
 
-#remove crontab entries
+#removes all parmanode crontab entries
 autoupdate off
 
 #remove bashrc/zshrc additions
