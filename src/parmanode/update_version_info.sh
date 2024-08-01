@@ -55,8 +55,9 @@ $au_message
     The apps you have already installed will not be changed.
 
 
-Latest: $latest_version
-Newest: $version
+    Latest Avaliavble:   $cyan$latest_version$orange
+    Your Version:        $red$version$orange
+
 ########################################################################################
 "
 choose "xq" ; read choice
