@@ -2,7 +2,8 @@ function apply_patches {
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 #patch=n
 #get $patch from parmanode.conf
-
+enable_emergency_patch
+emergency_patch
 temp_patch
 openssh_patch
 
