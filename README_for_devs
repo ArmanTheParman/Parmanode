@@ -31,10 +31,6 @@ FREQUENTLY USED CUSTOM FUNCTIONS
                     options above, "p" - text to offer option to go to the previous 
                     menu, and "q" text to offer user to quit.
     
-    error.sh        This is a file with various error messages. I may expand on it or 
-                    I might get rid of it all together. It's yet to be determined what
-                    is best.
-
     delete_line     A useful sed function that takes two arguments, the filename and 
                     the string to find. It then removes every line where that string 
                     ocurrs. Useful for modifiying config files.
@@ -56,46 +52,3 @@ EXPLANATION OF CONFIGURATION FILES
                     direct the need for uninstallation or clean install. When something
                     has finised installing, the "end" line is added to the configuration
                     file, eg bitcoin-end, for similar reasons.
-
-BITCOIN MAC COMMPILED BINARIES
-
-    I have chosen to compile Bitcoin Core for Mac myself, as it is mostly a GUI based
-    installation. It's not clear to me how to acces the daemon either, so I made a
-    version, from source, which has no GUI, no wallet. The "no wallet" decision might be
-    a mistake (to connect Sparrow), I'm not sure, I'm waiting to find out, and if is, 
-    it's a simple matter of re-compiling and changing the binary offerred when Parmanode
-    downloads it from parman.org. 
-
-    Later, when that is cleared up, I will sign the binary with my gpg key, and 
-    document the steps to reproduce it.
-
-DOCKER FULCRUM SHENANIGANARY
-
-    It's a shame Mac Fulcrum binaries are not available for download. I had a horrible 
-    time trying to compile them myself, and gave up. The alternative is to run Fulcrum
-    in a Linux Docker container on the Mac, which works fine.
-
-    Making edits to the fulcrum.conf file is a little tricky, if making it available
-    from a menu. The solution was to copy the parmanode repository into the container
-    when building the docker file. Then at the docker exec command, sourcing the file
-    containing the function to edit the conf file, followed by the function and 
-    parameters. It's a roundabout way, but it works.
-
-DOCKER INSTALL FROM BTCPAY INSTALL SHENANIGANARY
-
-    Docker has been a pain in the arse. After install, using usermod -aG docker $USER
-    to add the user to the docker group is useful to avoid needing sudo to run 
-    docker with every command. However, the memory needs to be refreshed,and every 
-    way possible, that I could find, to refresh the memory, causes a new shell
-    environment which causes the parmanode script to exit. So, I am getting the user
-    to exit parmandoe and re-run it once docker installs. The problem is that the
-    docker installation function is called by the btcpay install function. So to
-    get the function to continue exactly where it left off when the user comes back
-    has not been difficult, but it makes the code lood ugly and hard to follow. At 
-    the point of exiting, I've added a flag to the install config file "btcpay-half"
-    and then at the run_parmanode script, I've checked for that existing, and if so,
-    it runs the btcpay install function, but with an argument, "resume". An if 
-    statement splits the code so the start section is skipped if "resume" exists.
-    Upon exiting the function (return 1 or 2), menu main is called again.
-
-
