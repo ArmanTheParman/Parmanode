@@ -29,10 +29,11 @@ $orange
 
 ########################################################################################
 "
-read choice ; clear
+choose xpmq
+read choice ; set_terminal
 
 case $choice in
-
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 all|ALL)
     echo -e "$pink
     ARE YOU SURE???     y or n
