@@ -8,7 +8,7 @@ unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp b
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp nextcloudapp
-parmanostrapp 
+unset parmanostrapp 
 set_terminal_custom 48
 echo -e "
 ########################################################################################
