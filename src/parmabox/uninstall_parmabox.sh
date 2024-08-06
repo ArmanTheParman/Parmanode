@@ -21,7 +21,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 set_terminal ; echo -e "
 ########################################################################################
 
-    Before continuing, please make sure there are no important files in the direcotry:
+    Before continuing, please make sure there are no important files in the directory:
         
         $HOME/parmanode/parmabox
     

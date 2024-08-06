@@ -51,7 +51,7 @@ $green
         /usr/local/bin
 $orange
     Please open a new terminal window and move those binary files (and others like
-    bitcoin-qt and bitcoin-tx if you have them) to the above direcotry.
+    bitcoin-qt and bitcoin-tx if you have them) to the above directory.
 
     I'll wait.
 

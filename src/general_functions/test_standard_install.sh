@@ -7,7 +7,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Parmanode has detected that your script direcotry...
+    Parmanode has detected that your script directory...
 $cyan
     $pn
 $orange
@@ -42,7 +42,7 @@ git config pull.rebase false >/dev/null 2>&1
 if ! git config user.email >/dev/null 2>&1 ; then git config user.email sample@parmanode.com ; fi
 if ! git config user.name  >/dev/null 2>&1 ; then git config user.name ParmanodeUser ; fi
 success "Parmanode installation has been fixed. Please restart."
-announce "Parmanode will quit now so the changes take effect."
+announce "Parmanode will quit now so the changes take effect. Please restart again." ; clear
 exit
 ;;
 

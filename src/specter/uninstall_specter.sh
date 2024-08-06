@@ -21,7 +21,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-                        REMOVE CONFIGURATION DIRECORY TOO?
+                        REMOVE CONFIGURATION DIRECTORY TOO?
         
 $cyan
     $HOME/.specter/
