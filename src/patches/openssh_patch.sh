@@ -28,7 +28,7 @@ set_terminal ; echo -e "
 
     You have:
 
-    $(ssh -V 2>&1 | grep -E '.+,' | cut -d , -f1)
+    $(ssh -V 2>&1 | grep -E '.+,' | cut -d ' ' -f1 | cut -d , -f1)
 
     Parmanode can update to version 9.8p1 - it needs to compile from source, so it
     can take some time.
@@ -113,7 +113,7 @@ echo -e "
 
    The update has completed. You now have version...
 
-   $(ssh -V 2>&1 | grep -E '.+,' | cut -d , -f1)
+   $(ssh -V 2>&1 | grep -E '.+,' | cut -d ' ' -f1 | cut -d , -f1)
 
 ########################################################################################
 "
