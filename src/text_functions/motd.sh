@@ -1037,6 +1037,30 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi 
+
+if [[ $motd == 43 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+    Don't trade Bitcoin 
+
+    That's not what it's for. 
+
+    Just because you can trade it doesn't mean you should, or are obliged to. 
+$orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi 
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
+Don't trade Bitcoin 
+
+That's not what it's for. 
+
+Just because you can trade it doesn't mean you should, or are obliged to.
