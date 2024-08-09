@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 42))
+motd=$((motd % 43))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -982,7 +982,33 @@ read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then h
 return 0
 fi
 
-        
+if [[ $motd == 42 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    If evil people were to ever gain the power to print money, then they could buy the 
+    planet's assets and all public companies, buy/influence politicians, groom 
+    political puppets, buy retail/commercial banks, buy media to control truth, invest 
+    in education/curriculums to control beliefs, and buy/influence/fund academia, 
+    control science publications, monopolise supply chains in energy and food, 
+    document all people with movement licenses/cirizenship, and form supragovernmental
+    bodies (WHO, WEF, UN) - and use all of that to manipulate the public into 
+    believing that they are free, their vote matters, and that having some people 
+    print money to manage the economy is good for them.
+
+    If you agree that's what evil people with such power would do, how do you know 
+    they haven't already?     
+
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi
+  
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
