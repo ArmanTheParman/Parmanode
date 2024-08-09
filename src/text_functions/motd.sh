@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 45))
+motd=$((motd % 46))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -1048,6 +1048,38 @@ $cyan
     That's not what it's for. 
 
     Just because you can trade it doesn't mean you should, or are obliged to. 
+$orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi 
+
+if [[ $motd == 45 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Scarcity is not what makes Bitcoin valuable...
+
+    It is simply a MINIMUM REQUIREMENT for a token to be considered a contender as 
+    worldwide dominant ubiquitously accepted money.
+
+    There are other minimum requirements, such as SUFFICIENT privacy, and SUFFICIENT
+    fungibility, and Bitcoin has them all. 
+
+    Once a token has met the minimum requirements, it is then not a competition of
+    which has better features, but instead, which has the best saleability. Whichever
+    has a dominant lead, due to how money evolves, increases dominance, until there
+    is only one winner.
+
+    It's a moot point, because nothing else has all the minimum requirements, so there 
+    is no competition to Bitcoin; "there is no second best".
+$bright_blue
+    https://armantheparman.com/onemoney/ 
 $orange
 ######################################################################################## 
 
