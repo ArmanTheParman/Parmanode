@@ -1008,9 +1008,35 @@ Hit$cyan <enter>$orange to continue.
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
-  
+
+if [[ $motd == 43 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   Bankers, and hidden people above them, are enriched not buy *earning* paper/fiat 
+   money, but by creating paper that everyone else has to work for, and using it to 
+   plunder the planet's assets.
+
+   Bankers are rich in assets not money. This is true power.
+
+   Everyone else is renting, or working to compete for those assets that bankers got 
+   for free. It's slavery.
+
+   We end this by opting out of the scam, and stop working for their money. 
+   Accumulating Bitcoin helps it become the new world momey. Then no one can scam in 
+   this way. They lose power. Join us.
+$bright_blue
+   https://armantheparman.com/joinus/
+$orange
+######################################################################################## 
+
+Hit$cyan <enter>$orange to continue.
+"
+read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+return 0
+fi 
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-
-
