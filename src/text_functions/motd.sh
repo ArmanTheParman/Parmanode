@@ -1059,8 +1059,3 @@ fi
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-Don't trade Bitcoin 
-
-That's not what it's for. 
-
-Just because you can trade it doesn't mean you should, or are obliged to.
