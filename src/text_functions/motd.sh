@@ -993,7 +993,7 @@ $cyan
     political puppets, buy retail/commercial banks, buy media to control truth, invest 
     in education/curriculums to control beliefs, and buy/influence/fund academia, 
     control science publications, monopolise supply chains in energy and food, 
-    document all people with movement licenses/cirizenship, and form supragovernmental
+    document all people with movement licenses/citizenship, and form supragovernmental
     bodies (WHO, WEF, UN) - and use all of that to manipulate the public into 
     believing that they are free, their vote matters, and that having some people 
     print money to manage the economy is good for them.
