@@ -17,7 +17,7 @@ motd=$motdNum
 fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 43))
+motd=$((motd % 44))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
