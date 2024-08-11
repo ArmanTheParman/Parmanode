@@ -127,7 +127,7 @@ make_ssl_certificates "electrs" || announce "SSL certificate generation failed. 
 #nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; } #must be after certificates made or install will fail
 
 #prepare drives. #drive_electrs= variable set.
-if [[ $OS == Linux ]] && ! mount | grep -q parmanode ; then
+if [[ $OS == Linux ]] ; then
 choose_and_prepare_drive "Electrs" || return 1
 fi
  
