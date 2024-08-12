@@ -10,7 +10,7 @@ local text="$bright_blue                (ext)    IMPORT an external drive
 
 local text_bitcoin_byo="$yellow                (byo)    BYO blockchain data from any drive$orange
 " 
-local text_nostr="$yellow               (add)    add a non-Parmanode external drive$orange
+local text_nostr="$yellow                (np)    add a non-Parmanode external drive$orange
 " 
 
 while true ; do
