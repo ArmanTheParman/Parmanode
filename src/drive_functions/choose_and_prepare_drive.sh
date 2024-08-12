@@ -8,7 +8,7 @@ local text="$bright_blue                (ext) - IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
-local text_bitcoin_byo="$pink                (byo) - BYO blockchain data from any drive$orange
+local text_bitcoin_byo="$yellow                (byo) - BYO blockchain data from any drive$orange
 " 
 local text_nostr="$yellow               (add) - add an additional external drive$orange
 " 
