@@ -68,7 +68,7 @@ else
 fi
 ;;
 
-add)
+np)
 if [[ $1 == nostr ]] ; then
     export drive_nostr=custom
     parmanode_conf_add "drive_nostr=custom"
