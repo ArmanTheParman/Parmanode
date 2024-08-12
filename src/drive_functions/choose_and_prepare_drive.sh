@@ -10,7 +10,7 @@ local text="$bright_blue                (ext) - IMPORT an external drive
 
 local text_bitcoin_byo="$yellow                (byo) - BYO blockchain data from any drive$orange
 " 
-local text_nostr="$yellow               (add) - add an additional external drive$orange
+local text_nostr="$yellow               (add) - add a non-Parmanode external drive$orange
 " 
 
 while true ; do
@@ -36,7 +36,7 @@ if [[ $1 == Bitcoin ]] ; then
     echo -e "$text_bitcoin_byo" 
 fi 
 
-if [[ $1 == nostr ]] && mount | grep -q parmanode ; then
+if [[ $1 == nostr ]] ; then
     menu_nostr_add="true"
     echo -e "$text_nostr" 
 fi
@@ -69,7 +69,7 @@ fi
 ;;
 
 add)
-if [[ $1 == nostr && $menu_nostr_add == "true" ]] ; then
+if [[ $1 == nostr ]] ; then
     export drive_nostr=custom
     parmanode_conf_add "drive_nostr=custom"
     return 0
