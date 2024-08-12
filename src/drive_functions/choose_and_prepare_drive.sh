@@ -30,9 +30,13 @@ $pink
                 (aa)    Use an EXTERNAL drive RAID array $orange
 "
 if [[ $1 == Bitcoin || $1 == nostr ]] ; then
-echo -e "$text" ; fi 
+    echo -e "$text" 
+fi 
+
 if [[ $1 == nostr ]] ; then
-echo -e "$text_nostr" ; fi
+    echo -e "$text_nostr" 
+fi
+
 echo "########################################################################################
 "
 choose "xpmq" #echo statment about above options, previous menu, or quit.
@@ -44,6 +48,7 @@ choice=i #btcpayinstallsbitcoin internal drive
 fi
 
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
+
 case $choice in
 ext)
 log "importdrive" "$1 install, choice to import drive"
@@ -58,7 +63,10 @@ export drive_nostr=custom
 parmanode_conf_add "drive_nostr=custom"
 return 0
 ;;
-e | E)    #External drive setup
+
+   
+#External drive setup
+e|E) 
 
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
 
