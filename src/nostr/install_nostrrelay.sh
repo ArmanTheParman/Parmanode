@@ -38,16 +38,16 @@ elif [[ $drive_nostr == external ]] ; then
 
 elif [[ $drive_nostr == custom ]] ; then
 
-      add_custom_drive
+      add_custom_drive || return 1
 fi
 
 restore_nostr_data_backup #info only
 
-nostr_data_exists_or_create
+nostr_data_exists_or_create || return 1
 
 ########################################################################################
-install_tor silent
-nostr_tor_add
+install_tor silent || return 1
+nostr_tor_add || return 1
 installed_conf_add "nostrrelay-start"
 
 website_update_system # runs apt-get
