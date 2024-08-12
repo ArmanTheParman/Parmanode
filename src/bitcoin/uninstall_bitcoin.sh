@@ -91,7 +91,9 @@ stop_bitcoind
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
 fi
 
-if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac uninstall
+if [[ $OS == "Mac" ]] ; then 
+    remove_bitcoin_directories_mac uninstall
+    sudo rm -rf /Applications/Bitcoin-QT.app >/dev/null 2>&1
 fi
 
 # Remove binaries

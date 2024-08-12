@@ -1,7 +1,8 @@
 function choose_bitcoin_version {
 if [[ $version == self ]] ; then return 0 ; fi
+if [[ $OS == Mac ]] ; then return 0 ; fi
 
-if [[  $OS == Mac || $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+if [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false"
 export version="27.0"
@@ -29,8 +30,6 @@ $bright_blue
 
        5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core) - 
            syncs faster; bug fixes missing in Core; and power user options / tools.
-
-       5b) Precompiled Bitcoin Knots for Mac
 $orange
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
@@ -68,9 +67,6 @@ export bitcoin_compile="true" ; export version=choose ; export ordinals_patch="t
 5)
 parmanode_conf_add "bitcoin_choice=knots"
 export knotsbitcoin="true" ; export version="26.x-knots" ; break ;;
-5b)
-parmanode_conf_add "bitcoin_choice=knots"
-export knotsbitcoin="true" ; export version="Knots" ; export bitcoin_compile="false" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version=latest ; break ;;
