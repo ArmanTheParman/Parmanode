@@ -31,8 +31,8 @@ $orange
    NOSTR - $cyan      pub1ltt9gry09lf2z6396rvzmk2a8wkh3yx5xhgkjzzg5znh62yr53rs0hk97y $orange
 
 $bright_blue
-    Please join the other Parmanode users on Telegram 
-    https://t.me/parmanode
+   Please join the other Parmanode users on Telegram 
+   https://t.me/parmanode
 $orange
 ########################################################################################
 "
