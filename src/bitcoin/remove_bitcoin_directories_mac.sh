@@ -110,32 +110,6 @@ esac
 done
 fi #end checking internal drive for .bitcoin directory
 
-if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
-set_terminal ; echo -e "
-########################################################################################
-
-    Do you want to remove the custom symlinks that Parmanode created? Most of the
-    time it's fine to remove them, unless you are following instructions where
-    leaving them is required.
-$red
-                                d)     delete
-$green
-                                l)     leave them
-$orange
-######################################################################################## 
-"
-choose x ; read choice ;
-else
-choice=l
-fi
-
-set_terminal
-case $choice in
-l)
-break
-;;
-
-d)
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 
     rm $HOME/.bitcoin && \
@@ -146,12 +120,6 @@ if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then
 if [[ -L $HOME/Library/"Application Support"/Bitcoin ]] ; then
     log "bitcoin" "Application Support/Bitcoin symlink deleted" && \
     rm $HOME/Library/"Application Support"/Bitcoin ; fi 
-break
-;;
-*)
-invalid
-;;
-esac
 
 return 0
 }

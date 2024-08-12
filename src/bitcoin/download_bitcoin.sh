@@ -13,16 +13,13 @@ set_terminal
 echo -e "
 ########################################################################################
 
-   $cyan 
-    The current version of Bitcoin Core that will be installed is $version
-$orange
 
     Parmanode will verify by hashing the file for you (and gpg verification), but 
     you may wish to learn how to do this yourself.
 
     The downloaded files will be at:
 $pink    
-                      /home/$(whoami)/parmanode/bitcoin/
+                      $HOME/parmanode/bitcoin/
 $orange
     To learn more about how to verify yourself:
 $pink

@@ -3,9 +3,10 @@ while true ; do
 set_terminal  ; echo -e "
 ########################################################################################
 
+
     On a Mac you have two general choices for installing Bitcoin with Parmanode.
 
-    1)    You can install the Bitcoin-QT program, which has a graphical interface 
+$cyan    1)$orange    You can install the Bitcoin-QT program, which has a graphical interface 
           (GUI). It's better to minimise and not use the GUI. Just use the Parmanode 
           menus to manage it. 
 
@@ -14,16 +15,21 @@ set_terminal  ; echo -e "
           thing - they decided to make Docker networking too restrictive to make
           it work.
 
-    2)    This is a new addition to Parmanode: You can instead opt to install Bitcoin 
+          With this option,$bright_blue you can later choose Bitcoin Core or Bitcoin Knots. $orange
+
+$cyan    2)$orange    This is a new addition to Parmanode: You can instead opt to install Bitcoin 
           AND BTCPay Server together in a Docker container. You'll have all the 
           same menu options in Parmanode, but you won't the the Bitcoin-QT GUI pop-up. 
           Parmanode.
+
+$bright_blue          Bitcoin Knots is not available yet with this option.$orange
 
     What'll it be?
 $green
                    1)     Regular way, just install Bitcoin normally
 $cyan
                    2)     Both. I want Bitcoin AND BTCPay in Docker. 
+
 $orange
 ########################################################################################
 "
