@@ -1,7 +1,7 @@
 function choose_bitcoin_version {
 if [[ $version == self ]] ; then return 0 ; fi
 
-if [[ $OS == Mac || $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
+if [[  $OS == Mac || $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false"
 export version="27.0"

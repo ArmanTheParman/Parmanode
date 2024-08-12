@@ -5,7 +5,7 @@ function install_bitcoin {
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
-    if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then get_btcdockerchoice || return 1 ; fi #get btcdockerchoice=yes or no
+    if [[ $OS == Mac && $btcpayinstallsbitcoin != "true" ]] ; then choose_bitcoin_version_mac || return 1 ; fi #get btcdockerchoice=yes or no
 fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then

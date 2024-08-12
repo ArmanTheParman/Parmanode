@@ -1,4 +1,4 @@
-function get_btcdockerchoice {
+function choose_bitcoin_version_mac {
 while true ; do
 set_terminal  ; echo -e "
 ########################################################################################
