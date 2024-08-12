@@ -54,8 +54,7 @@ set_terminal ; echo -e "
 
     A$cyan bitcoin.conf$orange file already exists. You can keep the one you have, but be
     aware if this file was not originally birthed by Parmanode, it may cause conflicts
-    if there are unexpected settings. Your prune choice will still be added to it if
-    you made one.
+    if there are unexpected settings. 
 
     It's probably safest to discard the old copy, but the choice is yours...
 $green

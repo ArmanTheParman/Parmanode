@@ -1,6 +1,8 @@
 
 function make_bitcoin_directories {
 
+if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
+
 # Remove bitcoin directories if they exist, they will be created again new. 
 # If nothing exists there will be no user input required.
     if [[ $newmigrate != "true" && $btcpayinstallsbitcoin != "true" ]] || [[ $bitcpay_combo == "true" ]] ; then
@@ -10,7 +12,7 @@ function make_bitcoin_directories {
 
 #make_parmanode_bitcoin_directory             
     mkdir -p $HOME/parmanode/bitcoin > /dev/null 2>&1
-    installed_conf_add "bitcoin-start"     #First significant install "change" made to drive
+    installed_conf_add "bitcoin-start"    
 
     if [[ $drive == "external" && $importdrive != "true" ]] ; then 
     

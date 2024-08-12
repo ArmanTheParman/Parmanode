@@ -8,9 +8,9 @@ local text="$bright_blue                (ext) - IMPORT an external drive
                                  (Parmanode, Umbrel, RaspiBlitz or MyNode) $orange
 " 
 
-local text_bitcoin_byo="$yellow               (BYO) - BYO blockchain data from any drive$orange
+local text_bitcoin_byo="$yellow               (byo) - BYO blockchain data from any drive$orange
 " 
-local text_nostr="$yellow               (add) - BYO eg an additional external drive$orange
+local text_nostr="$yellow               (add) - add an additional external drive$orange
 " 
 
 while true ; do
@@ -31,15 +31,13 @@ $red
 $pink
                 (aa)    Use an EXTERNAL drive RAID array $orange
 "
-if [[ $1 == Bitcoin || $1 == nostr ]] ; then
+if [[ $1 == Bitcoin ]] ; then
     echo -e "$text" 
-fi
-
-if [[ $1 == Bitcoin || $1 == nostr ]] ; then
     echo -e "$text_bitcoin_byo" 
 fi 
 
-if [[ $1 == nostr ]] ; then
+if [[ $1 == nostr ]] && mount | grep -q parmanode ; then
+    menu_nostr_add="true"
     echo -e "$text_nostr" 
 fi
 
@@ -56,12 +54,13 @@ fi
 if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
 
 case $choice in
-ext)
 
-if [[ $1 == Bitcoin || $1 == nostr ]] ; then
+ext)
+if [[ $1 == Bitcoin ]] ; then
     log "importdrive" "$1 install, choice to import drive"
     import_drive_options || return 1
     export drive="external" ; parmanode_conf_add "drive=external"
+    installed_conf_add "bitcoin-start"
     export bitcoin_drive_import="true" #used later to avoid format prompt.
     return 0
 else
@@ -70,7 +69,7 @@ fi
 ;;
 
 add)
-if [[ $1 == nostr ]] ; then
+if [[ $1 == nostr && $menu_nostr_add == "true" ]] ; then
     export drive_nostr=custom
     parmanode_conf_add "drive_nostr=custom"
     return 0
@@ -82,7 +81,7 @@ fi
 #External drive setup
 e|E) 
 
-if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
+if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; installed_conf_add "bitcoin-start" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"
         parmanode_conf_add "drive_fulcrum=external" ; fi
@@ -101,11 +100,14 @@ return 0
 ;;
 
 byo | BYO)
-if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; fi
-
+if [[ $1 == "Bitcoin" ]] ; then 
+    bitcoin_byo
+    continue
+fi
+;;
 
 i | I)
-        if [[ $1 == "Bitcoin" ]] ; then export drive="internal" ; parmanode_conf_add "drive=internal" ; fi
+        if [[ $1 == "Bitcoin" ]] ; then export drive="internal" ; parmanode_conf_add "drive=internal" ; installed_conf_add "bitcoin-start" ; fi
 
         if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="internal" 
                parmanode_conf_add "drive_fulcrum=internal"
