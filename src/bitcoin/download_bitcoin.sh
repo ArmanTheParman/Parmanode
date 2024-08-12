@@ -38,32 +38,41 @@ set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
 
 # ARM Pi4 support. If not, checks for 64 bit x86.
+while true ; do
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz 
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
          fi
 
 	     if [[ $chip == "aarch64" && $OS == Linux ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz 
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
             else
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz 
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
             fi
          fi
 
  	     if [[ $chip == "x86_64" && $OS == Linux ]] ; then 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
          fi
 
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
-         curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg
+
+            if [[ $knotsbitcoin == "true" ]] ; then
+                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break  
+            fi
+
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg ; break
          fi
 
-        if [[ $chip == "x86_64" && $OS == Mac ]] ; then
-        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg
-        fi
+         if [[ $chip == "x86_64" && $OS == Mac ]] ; then
+            if [[ $knotsbitcoin == "true" ]] ; then
+                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
+            fi    
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg ; break
+         fi
+done
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
@@ -71,7 +80,7 @@ fi
 
 #unpack Bitcoin core:
 if [[ $OS == Mac ]] ; then
-hdiutil attach bitcoin*.dmg
+hdiutil attach *.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
 hdiutil detach /Volumes/Bitcoin*
 fi

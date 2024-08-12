@@ -110,7 +110,6 @@ esac
 done
 fi #end checking internal drive for .bitcoin directory
 
-while true ; do
 if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -147,12 +146,12 @@ if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then
 if [[ -L $HOME/Library/"Application Support"/Bitcoin ]] ; then
     log "bitcoin" "Application Support/Bitcoin symlink deleted" && \
     rm $HOME/Library/"Application Support"/Bitcoin ; fi 
+break
 ;;
 *)
 invalid
 ;;
 esac
-done
 
 return 0
 }
