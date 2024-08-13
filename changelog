@@ -569,4 +569,3 @@ Version 1.0.1
     - fixed missing of=/dev/$disk in dd commands fo zero and random data choices.
     
 Version 1.0.0
-
