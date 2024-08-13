@@ -1,5 +1,6 @@
 function menu_sparrow {
 while true ; do 
+set_terminal
 unset sversion
 if [[ $OS == Mac ]] ; then
 sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version | grep -Eo '[0-9].+$')
@@ -14,88 +15,35 @@ set_terminal_high ; echo -e "
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
 
-                      SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-   $green             (start) $orange         Start Sparrow 
+$green             (start) $orange         Start Sparrow 
 
-----------------------------------------------------------------------------------------
-$cyan
-                               CONNECTION OPTIONS  $orange
-                          
+$green             (mm)    $orange         Manage node connection...
 
-                (d)       Bitcoin Core via tcp (default)
+$green             (sc)    $orange         View/Edit config file (use with care)
 
-                (fs)      Fulcrum via ssl (port 50002)
+$green             (t)     $orange         Troubleshooting info
 
-                (ft)      Fulcrum via tcp (port 50001)
-
-                (ftor)    Fulcrum via Tor (port 7002)
-
-                (et)      electrs via tcp (port 50005)
-                
-                N/A      electrs via SSL (Not available)
-
-                (etor)    electrs via Tor (port 7004) 
-
-                (rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
-                
-
-----------------------------------------------------------------------------------------
-$cyan                           
-                                 OTHER OPTIONS
-$orange
-
-         (sc)      View/Edit Sparrow config file (use with care)
-
-         (cl)      Clear Sparrow connection settings from config directory
-                                              (can help connection issues)
-
-         (t)       Troubleshooting
+$green             (cl)    $orange         Clear connection certificates 
+                                           (can help connection issues)
 
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
+
 start|Start|START|S|s)
 check_SSH || return 0
 check_wallet_connected "Sparrow"
 run_sparrow
 return 0 ;;
 
-d|D)
-sparrow_core
-;;
-
-ftor)
-no_mac || return 1
-sparrow_fulcrumtor
-;;
-
-etor)
-no_mac || return 1
-sparrow_electrstor
-;;
-
-fs)
-no_mac || return 1
-sparrow_fulcrumssl
-;;
-
-ft)
-sparrow_fulcrumtcp
-;;
-
-rtor|Rtor|RTOR)
-sparrow_remote
-;;
-
-et)
-sparrow_electrs
+mm)
+sparrow_connection_menu 
 ;;
 
 sc|SC|Sc)
@@ -137,3 +85,76 @@ esac
 done
 }
 
+function sparrow_connection_menu {
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+$cyan
+                            SPARROW CONNECTION OPTIONS  $orange
+
+########################################################################################
+
+                          
+               CURRENT DETECTED SPARROW CONNECTION TYPE: $cyan$connection$orange
+
+
+$cyan                (d)  $orange     Bitcoin Core via tcp (default)
+
+$cyan                (fs)   $orange   Fulcrum via ssl (port 50002)
+
+$cyan                (ft)    $orange  Fulcrum via tcp (port 50001)
+
+$cyan                (ftor) $orange   Fulcrum via Tor (port 7002)
+
+$cyan                (et)    $orange  electrs via tcp (port 50005)
+                
+$cyan                N/A   $orange    electrs via SSL (Not available)
+
+$cyan                (etor) $orange   electrs via Tor (port 7004) 
+
+$cyan                (rtor) $orange   To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+
+d|D)
+sparrow_core
+;;
+
+ftor)
+no_mac || return 1
+sparrow_fulcrumtor
+;;
+
+etor)
+no_mac || return 1
+sparrow_electrstor
+;;
+
+fs)
+no_mac || return 1
+sparrow_fulcrumssl
+;;
+
+ft)
+sparrow_fulcrumtcp
+;;
+
+rtor|Rtor|RTOR)
+sparrow_remote
+;;
+
+et)
+sparrow_electrs
+;;
+
+*)
+invalid
+;;
+esac
+done
+}
