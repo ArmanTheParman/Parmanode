@@ -17,6 +17,11 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
+if ! docker ps > /dev/null 2>&1 ; then
+announce "Docker needs to be running. Aborting."
+return 1
+fi
+
 cd $hp/mempool/docker && docker compose down
 #need sudo, some dirs have container permissions
 cd $hp && sudo rm -rf ./mempool/

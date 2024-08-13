@@ -9,47 +9,113 @@ set_terminal ; echo -e "
 ########################################################################################
                                    ${cyan}Electrum Menu${orange}
 ########################################################################################
-$cyan
-                        ELECTRUM CONNECTION TYPE: $green$connection$orange
 
 
-            start)    Start Electrum (opens in its own window)
+
+$green            start) $orange          Start Electrum (opens in its own window)
          
-            rf)       Refresh connection files (to troublshoot server connection)
+$green            (mm)    $orange         Manage node connection...
 
-----------------------------------------------------------------------------------------
-$cyan
-                           CONFIGURATION MODIFICATIONS
+$green            ec) $orange             View Electrum Config file
+
+$green            (cl)    $orange         Clear connection certificates 
+                          $orange         (can help connection issues)
+                  
+$green            (w)$orange              Show saved wallet files
+
+$green            eg) $bright_blue             Parman's Electrum Guide
+
 $orange
 
-            fs)       Connect to Fulcrum via SSL (port 50002)
-
-            ft)       Connect to Fulcrum via TCP (port 50001)
-
-            et)       Connect to electrs via TCP (port 50005)
-
-            es)       Connect to electrs via SSL (port 50006)
-
-            ftor)     Connect to Fulcrum via Tor 
-
-            etor)     Connect to electrs via Tor 
-
-            ec)       View Electrum Config file
-    $bright_blue
-            eg)       Parman's Electrum Guide
-    $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+m|M) back2main ;; q|Q|QUIT|Quit) exit ;; p|P) menu_use ;; 
+
 start|Start|START|S|s)
 check_SSH || return 0
 check_wallet_connected "Electrum"
 run_electrum
 return 0 ;;
+
+mm|MM)
+electrum_connection_menu
+;;
+
+ec|EC) 
+nano $HOME/.electrum/config
+;;
+
+cl|CL)
+clear_dot_electrum
+;;
+
+eg|EG)
+parmans_electrum_guide
+;;
+
+w|W)
+set_terminal_high
+echo -e "
+########################################################################################
+
+
+    Directory:$cyan $HOME/.electrum/wallets/ $orange
+
+
+    Files: $bright_blue
+
+$(ls $HOME/.electrum/wallets)
+
+$orange
+########################################################################################
+"
+enter_continue
+set_terminal
+;;
+
+*)
+invalid
+;;
+esac
+done
+}
+
+
+function electrum_connection_menu {
+
+while true ; do
+set_terminal
+echo -e "
+########################################################################################
+$cyan
+                            ELECTRUM CONNECTION OPTIONS $orange
+
+########################################################################################
+
+
+             CURRENT DETECTYED ELECTRUM CONNECTION TYPE: $green$connection$orange
+$orange
+
+$green            fs) $orange      Connect to Fulcrum via SSL (port 50002)
+
+$green            ft)$orange       Connect to Fulcrum via TCP (port 50001)
+
+$green            et)     $orange  Connect to electrs via TCP (port 50005)
+
+$green            es)$orange       Connect to electrs via SSL (port 50006)
+
+$green            ftor)    $orange Connect to Fulcrum via Tor 
+
+$green            etor)$orange     Connect to electrs via Tor 
+
+    $orange
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 fs|FS)
 check_fulcrum_ssl
@@ -73,22 +139,9 @@ enable_electrum_tor "fulcrum"
 etor|ETOR|Etor)
 enable_electrum_tor "electrs"
 ;;
-ec|EC) 
-nano $HOME/.electrum/config
-;;
-
-rf|RF)
-clear_dot_electrum
-;;
-
-eg|EG)
-parmans_electrum_guide
-;;
-
 *)
 invalid
 ;;
 esac
 done
 }
-

@@ -26,13 +26,13 @@ tor_mempool_status="${red}disabled$orange"
 unset output_tor
 fi
 
-
-
 #get backend variable
 if grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "none" ; then
-backend="${yellow}Bitcoin Core$orange"
+export backend="${yellow}Bitcoin Core$orange"
 elif grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
-backend="${bright_blue}An Electrum or Fulcrum Server$orange"
+export backend="${bright_blue}An Electrum/Fulcrum Server$orange"
+else
+export backend=""
 fi
 
 set_terminal_custom 45 ; echo -e "
@@ -57,6 +57,7 @@ $running
 
                   conf)          View/Edit config           $pink(restart if changing)$orange
 
+                  bk)            Change backend ...
 
 
     Access Mempool:
@@ -109,10 +110,86 @@ conf)
 nano $hp/mempool/docker/docker-compose.yml
 ;;
 
+bk)
+change_mempool_backend
+;;
+
 *)
 invalid
 ;;
 
 esac
 done
+}
+
+function change_mempool_backend {
+while true ; do
+set_terminal
+echo -e "
+########################################################################################$cyan
+                          CHOOSE A BACKEND FOR MEMPOOL$orange
+########################################################################################
+
+
+$green                 b) $orange       Bitcoin (simplest)
+
+     $green            e) $orange       Electrum (You must make sure its running)
+
+          $green       ex)      $orange Electrum X (You must make sure its running)
+
+               $green  f)     $orange   Fulcrum (You must make sure its running)
+
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in 
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+
+b|B|Bitcoin|bitcoin)
+choose_bitcoin_for_mempool
+restart_mempool
+break
+;;
+
+e|E)
+choose_electrs_for_mempool
+restart_mempool
+break
+;; 
+
+f|F)
+choose_fulcrum_for_mempool
+restart_mempool
+break
+;;
+
+*)
+invalid
+;;
+esac
+done
+
+}
+
+
+
+function choose_bitcoin_for_mempool {
+export file="$hp/mempool/docker/docker-compose.yml"
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"none\""
+unset file
+}
+
+function choose_electrs_for_mempool {
+export file="$hp/mempool/docker/docker-compose.yml"
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50006\"" 
+unset file
+}
+
+function choose_fulcrum_for_mempool {
+export file="$hp/mempool/docker/docker-compose.yml"
+swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50002\""
+unset file
 }

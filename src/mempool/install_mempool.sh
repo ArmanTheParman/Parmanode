@@ -9,8 +9,6 @@ else
     if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
 fi
 
-choose_mempool_backend #deprecated, just returns 0
-
 if [[ $mbackend == 1 ]] ; then
 if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
@@ -47,7 +45,7 @@ make_mempool_docker_compose
 cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
 debug "/tmp/docker-compose.yml copied?"
 rm /tmp/docker-compose.yml >/dev/null 2>&1
-mempool_backend
+choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 
 docker compose up -d || debug "compose up didn't work"

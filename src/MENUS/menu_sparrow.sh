@@ -25,8 +25,10 @@ $green             (sc)    $orange         View/Edit config file (use with care)
 
 $green             (t)     $orange         Troubleshooting info
 
+$green             (w)     $orange         Show saved wallet files
+
 $green             (cl)    $orange         Clear connection certificates 
-                                           (can help connection issues)
+                           $orange         (can help connection issues)
 
 
 ########################################################################################
@@ -42,7 +44,7 @@ check_wallet_connected "Sparrow"
 run_sparrow
 return 0 ;;
 
-mm)
+mm|MM)
 sparrow_connection_menu 
 ;;
 
@@ -75,6 +77,26 @@ troubleshooting_sparrow
 
 cl)
 clear_sparrow
+;;
+
+w|W)
+set_terminal_high
+echo -e "
+########################################################################################
+
+
+    Directory:$cyan $HOME/.sparrow/wallets/ $orange
+
+
+    Files: $bright_blue
+
+$(ls $HOME/.sparrow/wallets)
+
+$orange
+########################################################################################
+"
+enter_continue
+set_terminal
 ;;
 
 *)
