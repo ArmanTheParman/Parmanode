@@ -36,7 +36,7 @@ $orange
   Select$green 'mm'$orange to move viles to tor-server
 $cyan
   Server location:     $bright_blue /tor-server/
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
