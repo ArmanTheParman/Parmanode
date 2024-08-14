@@ -18,6 +18,8 @@ $green             (rt)     $orange       Restart Tor
 
 $green             (sp)         $orange   Set permissions
 
+$green             (list)         $orange List file on the server
+
 $green             (off)     $orange      Turn off file indexing    [ Currently $status ]
             
 $green             (on)          $orange  Turn on file indexing     [ Currently $status ]
@@ -28,9 +30,9 @@ $green             (s)$orange             See Nginx status
 
 
 $cyan  
-  Onion address: $bright_blue${server_onion}:7001
+Onion address: $bright_blue  ${server_onion}:7001
 $cyan
-  Server location:     $bright_blue /tor-server/
+Server location:$bright_blue /tor-server/
 $orange
 ########################################################################################
 "
@@ -46,6 +48,15 @@ s|S) sudo systemctl status nginx.service ;;
 rt|RT|Rt) sudo systemctl restart tor.service ;;
 
 info|Info|INFO) tor_server_info ;;
+
+list)
+set_termina_high
+echo -e "
+########################################################################################
+
+Files in /tor-server
+
+
 
 sp|SP|sP)
 set_terminal ; echo -e "
