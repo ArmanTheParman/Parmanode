@@ -7,7 +7,6 @@ Description=Parmanode Background Services
 After=network.target
 
 [Service]
-Type=simple
 ExecStart=$HOME/.parmanode/parmanode_script.sh
 Type=oneshot
 KillMode=process
@@ -18,9 +17,23 @@ WantedBy=multi-user.target
 
 make_parmanode_script
 
+cat << EOF | sudo tee /etc/systemd/system/parmanode.timer >/dev/null 2>&1
+[Unit]
+Description=Timer Parmanode Service
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+EOF
+
 sudo systemctl daemon-reload >/dev/null 2>&1
 sudo systemctl enable parmanode.service >/dev/null 2>&1
 sudo systemctl start parmanode.service >/dev/null 2>&1
+sudo systemctl enable parmanode.timer >/dev/null 2>&1
+sudo systemctl start parmanode.timer >/dev/null 2>&1
 
 parmanode_conf_add "parmanode_service=enabled"
 }
@@ -68,6 +81,7 @@ EOF
 
 sudo chmod +x $HOME/.parmanode/parmanode_script.sh
 sudo chown $USER:$USER $HOME/.parmanode/parmanode_script.sh
+
 
 return 0
 

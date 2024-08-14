@@ -32,7 +32,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
 done
 stop_lnd
-if grep -q "litd" < $ic >dev/null 2>&1 ; then
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
     cp $HOME/.lit/lit.conf $HOME/.lit/lit.conf_backup
     delete_line "$HOME/.lit/lit.conf" "wallet-unlock" #deletes 2 lines
@@ -48,7 +48,7 @@ start_lnd
 lncli changepassword 2>&1 || docker exec -it lnd lncli changepassword
 stop_lnd
 
-if grep -q "litd" < $ic >dev/null 2>&1 ; then
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
     cp $HOME/.lit/lit.conf_backup $HOME/.lit/lit.conf
 
