@@ -320,7 +320,6 @@ fi
 
 TOR|Tor|tor)
 if [[ $tormenu == 1 ]] ; then
-no_mac || return 1
 uninstall_tor
 return 0
 fi

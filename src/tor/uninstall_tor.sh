@@ -33,6 +33,7 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
 set_terminal
+if [[ -e $HOME/.bitcoin/tor ]] || [[ -e /usr/local/var/lib/tor/bitcoin ]] || [[ -e /var/lib/tor/bitcoin ]] ; then
 while true ; do
 echo -e "
 ########################################################################################
@@ -65,6 +66,7 @@ break
 invalid ;;
 esac
 done
+fi
 
 installed_config_remove "tor-end"
 success "Tor" "being uninstalled"
