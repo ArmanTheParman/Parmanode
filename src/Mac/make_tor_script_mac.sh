@@ -10,7 +10,7 @@ if ! which brew >/dev/null ; then return 0 ; fi
 
 enable_tor_general
 
-  if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then
+  if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
     sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
     sudo /bin/mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
