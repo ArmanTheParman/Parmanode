@@ -32,7 +32,6 @@ echo '#!/bin/bash
 ' | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 cat << EOF | sudo tee -a $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
-
 if grep "parmanode_service=enabled" < $pc ; then return 0 ; fi
 
 if ! which tor ; then
