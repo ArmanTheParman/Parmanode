@@ -29,12 +29,16 @@ parmanode_conf_add "parmanode_service=enabled"
 function make_parmanode_script {
 
 echo '#!/bin/bash
-if ! which tor ; then
-sudo apt-get install tor -y
-fi
 ' | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 cat << EOF | sudo tee -a $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
+
+if grep "parmanode_service=enabled" < $pc ; then return 0 ; fi
+
+if ! which tor ; then
+sudo apt-get install tor -y
+fi
+
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
