@@ -5,8 +5,8 @@ function apply_patches {
 temp_patch
 openssh_patch
 make_parmanode_service
-make_tor_script_mac
-
+time make_tor_script_mac
+debug "time"
 case $patch in 
 1) 
 patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ;;

@@ -11,11 +11,16 @@ if ! which brew >/dev/null ; then return 0 ; fi
 enable_tor_general_mac
 
 if which tor >/dev/null || [[ -e $dp/REMOVE_TOR_FLAG ]] ; then 
-brew services restart tor >/dev/null 2>&1
-sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
-sudo /bin/mv /tmp/crontab /etc/crontab && \
-rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
-return 0
+
+  if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then
+    rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+    return 0
+  else 
+    sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
+    sudo /bin/mv /tmp/crontab /etc/crontab && \
+    rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+    return 0
+  fi
 fi
 
 cat << EOF > $dp/tor_script.sh

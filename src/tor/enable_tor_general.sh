@@ -54,7 +54,6 @@ DataDirectoryGroupReadable 1
 EOF
 return 0
 fi
-
 if ! sudo cat $file | grep -q "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $file >/dev/null 2>&1
 fi
