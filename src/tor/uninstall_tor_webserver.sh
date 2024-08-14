@@ -30,13 +30,18 @@ sudo rm -rf /var/lib/tor/tor-server
 installed_conf_remove "tor-server"
 
 set_terminal
-echo "Do you wish to delete the /tor-server directory  and the"
-echo "tor-server-move directory an all its contents?"
-echo "Type \"yolo\" to delete, or anything else to leave it, then <enter>."
+echo "
+########################################################################################
+
+    Do you wish to delete the /tor-server directory an all its contents?
+   
+    Type 'yolo' to delete, or anything else to leave it, then <enter>.
+
+########################################################################################
+"
 read choice
 if [[ $choice == "yolo" ]] ; then
     sudo rm -rf /tor-server
-    sudo rm -rf /tor-server-move
 fi
 
 return 0
