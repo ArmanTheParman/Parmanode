@@ -28,9 +28,8 @@ set_terminal ; echo -e "
              (on)            Turn on file indexing     [ Currently $status ]
 
 
-$bright_blue
-  Onion address: ${server_onion}:7001
-
+$cyan  
+  Onion address: $bright_blue${server_onion}:7001
 $cyan
   Copy files here first:$bright_blue /tor-server-move/
 $orange
