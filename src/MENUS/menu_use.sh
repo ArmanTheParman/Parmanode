@@ -180,7 +180,7 @@ btcp|BTCP)
     fi
     ;;
 
-t|T)
+tor|TOR)
     if [[ $torapp == 1 ]] ; then
     menu_tor
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
