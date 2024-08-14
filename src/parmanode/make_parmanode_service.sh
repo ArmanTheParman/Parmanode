@@ -56,7 +56,7 @@ if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev
 if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
-" | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
+" | sudo tee -a $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 sudo chmod +x $HOME/.parmanode/parmanode_script.sh
 sudo chown $USER:$USER $HOME/.parmanode/parmanode_script.sh
