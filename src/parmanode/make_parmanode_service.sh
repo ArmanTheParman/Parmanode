@@ -14,7 +14,7 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-}" | sudo tee /etc/systemd/system/parmanode.service >/dev/null 2>&1
+" | sudo tee /etc/systemd/system/parmanode.service >/dev/null 2>&1
 
 make_parmanode_script
 
@@ -32,7 +32,7 @@ echo '#!/bin/bash
 if ! which tor ; then
 sudo apt-get install tor -y
 fi
-' | sudo tee $HOME/.parmanode/parmanode_script.sh
+' | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 echo "
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
@@ -56,7 +56,7 @@ if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev
 if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
-" | sudo tee $HOME/.parmanode/parmanode_script.sh
+" | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 sudo chmod +x $HOME/.parmanode/parmanode_script.sh
 
