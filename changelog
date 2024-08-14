@@ -1,3 +1,6 @@
+Version 3.41.8
+    -Improved Tor Web Server: removed the 'move to directory', was clunky
+    -Added parmanode.service file for efficient and quiet background task
 Version 3.41.7
     -Improved Sparrow and Electrum Menus
     -Improved Mempool menu and backend options added

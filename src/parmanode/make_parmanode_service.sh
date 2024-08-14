@@ -9,7 +9,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=$HOME/.parmanode/parmanode_script.sh
-Restart=never
+Type=oneshot
 KillMode=process
 
 [Install]
@@ -32,6 +32,11 @@ echo '#!/bin/bash
 ' | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 cat << EOF | sudo tee -a $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
+
+if [[ -e $HOME/.parmanode/parmanode_script2.sh ]] ; then
+source $HOME/.parmanode/parmanode_script2.sh
+fi
+
 if grep "parmanode_service=enabled" < $pc ; then return 0 ; fi
 
 if ! which tor ; then
