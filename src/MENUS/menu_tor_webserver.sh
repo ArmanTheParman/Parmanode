@@ -34,6 +34,7 @@ Onion address: $bright_blue  ${server_onion}:7001
 $cyan
 Server location:$bright_blue /tor-server/
 $orange
+
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -50,12 +51,18 @@ rt|RT|Rt) sudo systemctl restart tor.service ;;
 info|Info|INFO) tor_server_info ;;
 
 list)
-set_termina_high
+set_terminal_high
 echo -e "
 ########################################################################################
 
-Files in /tor-server
-
+    Files in /tor-server: $orange
+$cyan
+$(sudo ls /tor-server)
+$orange
+########################################################################################
+"
+enter_continue
+;;
 
 
 sp|SP|sP)
