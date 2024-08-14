@@ -11,29 +11,24 @@ set_terminal ; echo -e "
 ########################################################################################
 
 
-             (info)          Important information
 
-             (rn)            Retart Nginx 
+$green             (info)$orange          Important information
 
-             (s)             See Nginx status
+$green             (rt)     $orange       Restart Tor
 
-             (rt)            Restart Tor
+$green             (sp)         $orange   Set permissions
 
-             (sp)            Set permissions
-
-             (mm)            Move files to server directory
+$green             (off)     $orange      Turn off file indexing    [ Currently $status ]
             
-             (off)           Turn off file indexing    [ Currently $status ]
-            
-             (on)            Turn on file indexing     [ Currently $status ]
+$green             (on)          $orange  Turn on file indexing     [ Currently $status ]
+
+$green             (rn)$orange            Retart Nginx 
+
+$green             (s)$orange             See Nginx status
 
 
 $cyan  
   Onion address: $bright_blue${server_onion}:7001
-$cyan
-  Copy files here first:$bright_blue /tor-server-move/
-$orange
-  Select$green 'mm'$orange to move viles to tor-server
 $cyan
   Server location:     $bright_blue /tor-server/
 $orange
@@ -53,20 +48,18 @@ rt|RT|Rt) sudo systemctl restart tor.service ;;
 info|Info|INFO) tor_server_info ;;
 
 sp|SP|sP)
-set_terminal ; echo "
-This will adjust the permissions for all files in /tor-server/ so that they are 
-accessible. Hit <enter> to continue, or p and <enter> to go back."
+set_terminal ; echo -e "
+Every time you add files to the tor-server directory, you need to make
+sure the files have the correct permission settings otherwise they
+are not accessible by others connecting to your server.
+
+Hit $green<enter>$orange to continue and set the permissions automatically,
+or$red p$orange and$red <enter>$orange to go back."
 read choice
 if [[ $choice == "p" || $choice == "P" ]] ; then return 1 ; fi
 
 sudo chown -R www-data:www-data /tor-server
 sudo shopt -s dotglob ; sudo chmod -R 755 /tor-server/*
-;;
-
-mm|MM)
-sudo chown -R www-data:www-data /tor-server-move
-sudo chmod -R 755 /tor-server-move/*
-sudo shopt -s dotglob ; sudo mv /tor-server-move/* /tor-server/
 ;;
 
 off|Off|OFF) 

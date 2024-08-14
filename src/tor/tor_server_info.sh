@@ -4,8 +4,10 @@ set_terminal_high
 echo -e "
 ########################################################################################
 $cyan
-                                Tor Web Server Information
+                              Tor Web Server Information
 $orange
+########################################################################################
+
     A Tor Web Server allows you to serve files or webpages from home via a Tor onion
     address without requiring you to open ports into your home from the internet (this
     can be a security risk). It allows you to access your files from anywhere (provided
@@ -21,23 +23,19 @@ $orange
     Please do no move this directory, as the system is specifically configured to 
     serve files from here. Moving it will break things.
 
-    To add files to the directory, first copy or move them to$cyan /tor-server-move/  $orange
-    Then come back to the tor-server menu in Parmanode, and select 
-$cyan    \"move files to server\".$orange  This will move the files, and will also adjust the 
-    permission settings so they will be accessible by other computers.
+    To add files to your server, just copy files there, then combe back to the 
+    Parmanode Tor Web Server menu, and select 'set permissions', otherwise the files
+    will not be accessible.
 
     The server directory starts empty. You could start by adding a file called 
-    index.html which will automatically load when someone browses to your site without
+    ${cyan}index.html$orange which will automatically load when someone browses to your site without
     specifying a file. For other pages, the users will have to type the file name
-    as part of the URL.
+    as part of the URL to access the file.
 
-    If index.html doesn't exist, and the onion address without a file is accessed in
-    a Tor browser, then a list of the contents of the entire directory will be 
-    displayed, and sub-directories will be browsable, and files will be downloadable.
+    If you turn indexing on in the Parmanode menu, then if a user searches your
+    onion address without specifying a page, then they can see the contents of the
+    server directory - that's up to you to allow or not.
     
-    If this behavious is not desirable, turn it off in the Tor-Server menu by 
-    selecting$red \"Turn off file indexing.\"$orange
-
 ########################################################################################
 "
 enter_continue
