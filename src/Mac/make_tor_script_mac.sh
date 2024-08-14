@@ -14,10 +14,11 @@ enable_tor_general
     sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
     sudo /bin/mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+    rm $dp/tor_srcipt.sh
     return 0
   fi
 
-  if which tor >/dev/null ; then return 0 ; fi
+  if which tor >/dev/null ; then rm $dp/tor_srcipt.sh >/dev/null ; return 0 ; fi
 
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
