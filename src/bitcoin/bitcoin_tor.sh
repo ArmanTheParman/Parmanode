@@ -38,9 +38,9 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
 #Need the Onion address
 #Bitcoind stopping - start it up inside this function later
 
-    sudo systemctl restart tor
-    sudo systemctl restart bitcoind.service #enables tor address
-    sudo systemctl stop bitcoind.service
+    restart_tor
+    restart_bitcoin
+    stop_bitcoin
 
 unset $ONION_ADDR
 while [[ -z $ONION_ADDR ]] ; do
@@ -77,10 +77,8 @@ if [[ $2 == "onlyout" ]] ; then
     echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
-    sudo systemctl restart tor
-    sudo systemctl restart bitcoind.service #enables tor address
-
-fi #end linux
+restart_tor
+restart_bitcoin
 
 set_terminal ; echo -e "
 ########################################################################################

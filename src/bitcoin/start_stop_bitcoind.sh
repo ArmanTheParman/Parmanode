@@ -1,6 +1,11 @@
 # I have used the name bitcoind, but later introduced bitcoin-qt for macs, the name of the function
 # has been kept the same
 
+function start_bitcoin { start_bitcoind ; }
+function stop_bitcoin { stop_bitcoind ; }
+function restart_bitcoin { restart_bitcoind ; }
+
+
 function run_bitcoind {
 
 #needs to be first...

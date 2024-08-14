@@ -47,18 +47,15 @@ case $choice in
 m|M) back2main ;; Q|q|QUIT|Quit|quit) exit 0 ;; p|P) menu_use ;; 
 
 start|START) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl start tor && success "Tor" "starting" ; fi
-if [[ $OS == "Mac" ]] ; then brew services start tor  && success "Tor" "starting" ; fi 
+start_tor
 ;;
 
 stop|STOP) 
-if [[ $OS == "Linux" ]] ; then sudo systemctl stop tor ; success "Tor" "stopping" ; fi
-if [[ $OS == "Mac" ]] ; then brew services stop tor ;  success "Tor" "stopping" ; fi 
+stop_tor
 ;;
 
 restart|RESTART)
-if [[ $OS == "Linux" ]] ; then sudo systemctl restart tor ; success "Tor" "restarting" ; fi
-if [[ $OS == "Mac" ]] ; then brew services restart tor ; success "Tor" "restarting" ; fi
+restart_tor
 ;;
 
 *)
