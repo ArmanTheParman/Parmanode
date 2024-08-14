@@ -62,21 +62,21 @@ return 0
 fi
 
 if [[ $1 == "nostr" ]] ; then
-export ONION_ADDR_NOSTR="$(sudo cat $varlibtorr/nostr-service/hostname 2>/dev/null)" 
+export ONION_ADDR_NOSTR="$(sudo cat $varlibtor/nostr-service/hostname 2>/dev/null)" 
 return 0
 fi
 
 if [[ $1 == "litterminal" ]] ; then
-export ONION_ADDR_LITTERMINAL="$(sudo cat /litterminal-service/hostname 2>/dev/null)" 
+export ONION_ADDR_LITTERMINAL="$(sudo cat $varlibtor/litterminal-service/hostname 2>/dev/null)" 
 return 0
 fi
 
 if [[ $1 == "btcpay" ]] ; then
 
-    if [[ -e /lib/tvar/or/btcpay-service ]] ; then
-    export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpay-service/hostname 2>/dev/null)" 
-    elif [[ -e /var/lib/tor/btcpayTOR-server ]] ; then
-    export ONION_ADDR_BTCPAY="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname 2>/dev/null)" 
+    if [[ -e $varlibtor/btcpay-service ]] ; then
+    export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpay-service/hostname 2>/dev/null)" 
+    elif [[ -e $varlibtor/btcpayTOR-server ]] ; then
+    export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpayTOR-server/hostname 2>/dev/null)" 
     fi
 
 return 0
