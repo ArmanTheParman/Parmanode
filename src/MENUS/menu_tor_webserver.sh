@@ -31,8 +31,11 @@ set_terminal ; echo -e "
 $bright_blue
   Onion address: ${server_onion}:7001
 $cyan
-  Server location: /tor-server/
+  Copy files here first:$bright_blue /tor-server-move/
 $orange
+  Select$green 'mm'$orange to move viles to tor-server
+$cyan
+  Server location:     $bright_blue /tor-server/
 
 ########################################################################################
 "
