@@ -1,5 +1,5 @@
 function enable_tor_general {
-if [[ $OS == "Mac" ]] ; then enable_tor_general_mac ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then time enable_tor_general_mac ; debug "time2" ; return 0 ; fi
 
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 
@@ -54,6 +54,8 @@ DataDirectoryGroupReadable 1
 EOF
 return 0
 fi
+
+
 if ! sudo cat $file | grep -q "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $file >/dev/null 2>&1
 fi

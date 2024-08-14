@@ -8,20 +8,16 @@ function make_tor_script_mac {
 if [[ $OS != Mac ]] ; then return 0 ; fi
 if ! which brew >/dev/null ; then return 0 ; fi
 
-enable_tor_general_mac
-
-if which tor >/dev/null || [[ -e $dp/REMOVE_TOR_FLAG ]] ; then 
+enable_tor_general
 
   if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then
-    rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
-    return 0
-  else 
     sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
     sudo /bin/mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
     return 0
   fi
-fi
+
+  if which tor >/dev/null ; then return 0 ; fi
 
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
