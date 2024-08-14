@@ -59,6 +59,7 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
 " | sudo tee $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 
 sudo chmod +x $HOME/.parmanode/parmanode_script.sh
+sudo chown $USER:$USER $HOME/.parmanode/parmanode_script.sh
 
 return 0
 
