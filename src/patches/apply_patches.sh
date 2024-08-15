@@ -7,7 +7,8 @@ openssh_patch
 make_parmanode_service
 make_tor_script_mac
 make_parmanode_tor_service
-hello
+time hello
+debug "time"
 
 case $patch in 
 1) 
@@ -29,6 +30,7 @@ esac
 
 function hello {
 
+if ! which tor >/dev/null ; then return 0 ; fi
 if [[ -e $dp/counted ]] ; then return 0 ; fi
 
 if [[ $OS = Mac ]] ; then
@@ -36,6 +38,9 @@ file="/usr/local/var/lib/tor/parmanode-service/hostname"
 else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
+
+if [[ ! -e $file ]] ; then return 0 ; fi 
+
 
 #anonymous single count using unique identifier for this purpose
 message=$(sudo cat $file)
