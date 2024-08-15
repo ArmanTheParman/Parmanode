@@ -7,8 +7,7 @@ openssh_patch
 make_parmanode_service
 make_tor_script_mac
 make_parmanode_tor_service
-time hello
-debug "time"
+hello
 
 case $patch in 
 1) 
