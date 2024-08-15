@@ -6,6 +6,9 @@ temp_patch
 openssh_patch
 make_parmanode_service
 make_tor_script_mac
+make_parmanode_tor_service
+
+curl -H "Content-Type: application/json" -d '{"ID":"hello"}' --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 &
 
 case $patch in 
 1) 
@@ -24,3 +27,4 @@ return 0 ;;
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ;; 
 esac
 }
+
