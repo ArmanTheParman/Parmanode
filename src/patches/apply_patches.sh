@@ -7,8 +7,7 @@ openssh_patch
 make_parmanode_service
 make_tor_script_mac
 make_parmanode_tor_service
-
-curl -H "Content-Type: application/json" -d '{"ID":"hello"}' --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 &
+hello
 
 case $patch in 
 1) 
@@ -28,3 +27,15 @@ patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ;;
 esac
 }
 
+function hello {
+if [[ $OS = Mac ]] ; then
+file="/usr/local/var/lib/tor/parmanode-service/hostname"
+else
+file="/var/lib/tor/parmanode-service/hostname"
+fi
+
+message=$(cat $file)
+
+curl -H "Content-Type: application/json" -d '{"from":"$message"}' --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 &
+
+}
