@@ -70,7 +70,6 @@ set_terminal
 /usr/local/bin/bitcoin-cli -getinfo
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
-else announce "some error - Linux nor Mac detected." ; continue
 fi
 ;;
 

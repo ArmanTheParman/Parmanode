@@ -11,14 +11,16 @@ set_terminal  ; echo -e "
 
 $cyan    1)$orange    Bitcoin QT version $version
 
-
 $cyan    2)$bright_blue    Bitcoin Knots version $knotsversion $orange
 
-$cyan    3)$orange    This is a new addition to Parmanode: You can opt to install Bitcoin 
-          AND BTCPay Server together in a Docker container. You'll have all the 
-          same menu options in Parmanode, but you won't have the Bitcoin-QT GUI pop-up. 
-          Docker needs to be running for Bitcoin to be running.
+$cyan    3)$red    Bitcoin in Docker (bundled with BTCPay)$orange 
 
+            This is a new addition to Parmanode: You can opt to install Bitcoin 
+            AND BTCPay Server together in a Docker container. You'll have all the 
+            same menu options in Parmanode, but you won't have the Bitcoin-QT GUI pop-up. 
+            Docker needs to be running for Bitcoin to be running.
+
+$green
 
     What'll it be?
 
