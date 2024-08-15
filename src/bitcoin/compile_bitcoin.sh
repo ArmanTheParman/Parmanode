@@ -85,7 +85,6 @@ git checkout $version
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
         git apply filter-ordinals.patch
         git add . ; git commit -m "ordinals patch applied"
-        debug "patch applied"
     fi
 
 fi #end level 2 if 
@@ -93,7 +92,7 @@ fi #end level 2 if
 elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
 set_github_config
     if [[ -e $hp/bitcoinknots_github ]] ; then 
-        cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull ; debug "after checkout knots version, $version"
+        cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 
     else
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
     fi
@@ -104,10 +103,10 @@ unset GIT_AUTHOR_EMAIL
 unset export GIT_COMMITTER_NAME
 unset export GIT_COMMITTER_EMAIL
 
-debug "after clone"
+
 
 ./autogen.sh
-debug "after autogen"
+
 
 while true ; do
 set_terminal ; echo -e "
@@ -247,7 +246,7 @@ echo "Running make command, please wait..."
 sleep 3
 
 make -j $j
-debug "after make"
+
 
 set_terminal
 echo -e "
@@ -293,5 +292,5 @@ q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 
 sudo make install
-debug "after make check && make install"
+
 }

@@ -5,7 +5,6 @@ if [[ $OS == Mac ]] ; then return 0 ; fi
 if [[ $btcpayinstallsbitcoin == "true" || $btcdockerchoice == "yes" ]] ; then
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false"
-export version="27.0"
 return 0
 fi
 
@@ -18,13 +17,13 @@ $cyan
 $orange
 ########################################################################################
 $green
-       0)  v27.0 (Download and verify 'trusted' releases)
+       0)  v27.1 (Download and verify 'trusted' releases)
 $orange
        1)  v26.0 (Download and verify 'trusted' releases)
 
        2)  v25.0 (Download and verify 'trusted' releases) 
 
-       3)  Guided compile v25.0/v26.0/v27.0
+       3)  Guided compile v25.0/v26.0/v27.1
 $bright_blue
        4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
 
@@ -51,7 +50,7 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0|27)
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="27.0" ; export bitcoin_compile="false" ; break ;;
+export bitcoin_compile="false" ; break ;;
 1|26) 
 parmanode_conf_add "bitcoin_choice=precompiled"
 export version="26.0" ; export bitcoin_compile="false" ; break ;;

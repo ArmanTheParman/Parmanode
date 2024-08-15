@@ -1,5 +1,4 @@
 function choose_bitcoin_version_mac {
-export version="27.1"
 export knotsversion="27.1"
 while true ; do
 set_terminal  ; echo -e "
@@ -39,6 +38,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 1)
 export btcdockerchoice=no
+export bitcoin_compile="false"
 break
 ;;
 2)
@@ -49,6 +49,7 @@ break
 ;;
 3)
 export btcdockerchoice=yes
+export bitcoin_compile="false"
 break
 ;;
 *)

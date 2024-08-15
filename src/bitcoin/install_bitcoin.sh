@@ -2,6 +2,10 @@ function install_bitcoin {
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
 
+#set compile to false, and make true later depending on choices
+export bitcoin_compile="false"
+export version="27.1"
+
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
