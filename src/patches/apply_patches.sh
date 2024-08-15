@@ -34,8 +34,8 @@ else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-message=$(cat $file)
+message=$(sudo cat $file)
 
-curl -H "Content-Type: application/json" -d "{\"from]\":\"$message\"}" --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 &
+curl -H "Content-Type: application/json" -d "{\"from\":\"$message\"}" --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 &
 
 }
