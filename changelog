@@ -1,5 +1,6 @@
 Version 3.41.9
     -Tor brew installed in background on Macs using crontab and brew
+    -Tor for Bitcoin now available for Macs
 Version 3.41.8
     -Improved Tor Web Server: removed the 'move to directory', was clunky
     -Added parmanode.service file for efficient and quiet background task
