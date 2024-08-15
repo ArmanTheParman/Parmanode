@@ -29,7 +29,7 @@ esac
 
 function hello {
 
-if [[ -e $dp/counted ]] ; return 0 ; fi
+if [[ -e $dp/counted ]] ; then return 0 ; fi
 
 if [[ $OS = Mac ]] ; then
 file="/usr/local/var/lib/tor/parmanode-service/hostname"
