@@ -25,7 +25,6 @@ fi
 
 if ! sudo test -e "$file"; then return 0 ; fi
 
-#anonymous single count using unique identifier for this purpose
 
 #onion address for parmanode-service
 message1=$(sudo cat $file)
