@@ -47,6 +47,7 @@ clear
 announce "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
     supposed to sync to the external drive and it is not connected and mounted.
     Aborting."
+return 1
 fi
 
 if ! which jq >/dev/null ; then install_jq ; fi
