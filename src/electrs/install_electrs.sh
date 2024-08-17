@@ -68,16 +68,12 @@ echo -e "
 choose "xpmq"
 read choice ; set_terminal
 case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-n|N) break ;;
-m|M) back2main ;; 
+q|Q) exit ;; p|P) return 1 ;; n|N) break ;; m|M) back2main ;; 
 y|Y) stop_bitcoind ; break ;;
 *) invalid ;;
 esac
 done
 fi #and if bitcoin running
-
 
 
 if [[ $OS == Mac ]] ; then 
