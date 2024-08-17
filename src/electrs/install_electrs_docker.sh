@@ -51,7 +51,7 @@ fi
 
 if [[ ! -e $bc ]] ; then
 announce "Couldn't detect bitcoin.conf - Aborting."
-return jb1 
+return 1
 fi
 
 if ! which jq >/dev/null ; then install_jq ; fi
