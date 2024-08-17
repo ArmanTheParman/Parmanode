@@ -44,14 +44,9 @@ if [[ -e $bc ]] ; then
 source $bc >/dev/null
 else
 clear
-echo -e "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
-supposed to sync to the external drive and it is not connected and mounted.
-Hit$cyan <enter>$orange to try again once you connect the drive."
-fi
-
-if [[ ! -e $bc ]] ; then
-announce "Couldn't detect bitcoin.conf - Aborting."
-return 1
+announce "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
+    supposed to sync to the external drive and it is not connected and mounted.
+    Aborting."
 fi
 
 if ! which jq >/dev/null ; then install_jq ; fi
