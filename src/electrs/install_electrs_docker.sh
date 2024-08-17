@@ -44,7 +44,7 @@ if [[ -e $bc ]] ; then
 source $bc >/dev/null
 else
 clear
-echo "The bitcoin.conf file could not be detected. Can heppen if Bitcoin is
+echo "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
 supposed to sync to the external drive and it is not connected and mounted.
 Hit <enter> to try again once you connect the drive."
 fi
