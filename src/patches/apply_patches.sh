@@ -4,7 +4,7 @@ function apply_patches {
 #get $patch from parmanode.conf
 temp_patch
 openssh_patch
-make_parmanode_service
+make_parmanode_service #Linux only
 make_tor_script_mac
 make_parmanode_tor_service
 hello
