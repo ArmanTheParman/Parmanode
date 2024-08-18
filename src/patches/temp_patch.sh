@@ -1,5 +1,13 @@
 function temp_patch {
 
+if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
+sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
+sudo mv /tmp/crontab /etc/crontab && \
+rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+rm $dp/tor_srcipt.sh >/dev/null 2>&1
+debug "pause"
+fi
+
 #remove in September
 if grep -q "parmanostr" < $ic && [[ ! -e $dp/.nostr_keys/nostr_keys.txt ]] ; then
 make_sourcable_keys_file

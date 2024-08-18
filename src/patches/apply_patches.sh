@@ -5,9 +5,9 @@ function apply_patches {
 temp_patch
 openssh_patch
 make_parmanode_service #Linux only
-make_tor_script_mac
-make_parmanode_tor_service
-hello
+#make_tor_script_mac
+#make_parmanode_tor_service
+#hello
 
 case $patch in 
 1) 
