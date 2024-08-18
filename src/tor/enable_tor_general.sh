@@ -42,9 +42,10 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
 function enable_tor_general_mac {
 
 file=/usr/local/etc/tor/torrc
+mkdir -p /usr/local/etc/tor >/dev/null
 
 if [[ ! -e $file ]] ; then 
-touch $file 
+touch $file >/dev/null 2>&1
 cat << EOF > $file 
 # Additions by Parmanode...
 ControlPort 9051
