@@ -11,8 +11,8 @@ if ! which brew >/dev/null ; then return 0 ; fi
 enable_tor_general
 
   if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
-    sudo /bin/cat /etc/crontab | sudo /usr/bin/sed '/REMOVE_TOR_FLAG/d' | sudo /usr/bin/tee /tmp/crontab >/dev/null && \
-    sudo /bin/mv /tmp/crontab /etc/crontab && \
+    sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
+    sudo mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
     rm $dp/tor_srcipt.sh
     return 0
@@ -23,20 +23,20 @@ enable_tor_general
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
 
-export USER=$USER
-export HOME=$HOME
-export PATH=$PATH
+export USER=$USER >/dev/null
+export HOME=$HOME >/dev/null
+export PATH=$PATH >/dev/null
 
 if ! which brew ; then return 0 ; fi
 if which tor ; then return 0 ; fi
 
-/usr/local/bin/brew install tor > $dp/debug.log 2>&1 && \
-  if ! grep "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
+brew install tor > $dp/debug.log 2>&1 && \
+if ! grep -q "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
 
-touch $dp/REMOVE_TOR_FLAG
+touch $dp/REMOVE_TOR_FLAG >/dev/null
 EOF
 
-sudo chmod +x $dp/tor_script.sh
+sudo chmod +x $dp/tor_script.sh >/dev/null
 
 echo "* * * * * $USER [ -x $HOME/.parmanode/tor_script.sh ] && $HOME/.parmanode/tor_script.sh #REMOVE_TOR_FLAG" | sudo tee -a /etc/crontab >/dev/null 2>&1
 }
