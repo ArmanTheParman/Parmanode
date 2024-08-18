@@ -35,7 +35,7 @@ fi
 if [[ $1 == public_pool_ui ]] ; then local address="localhost"
 else
 #local address="127.0.0.1"
-local address=$IP
+local address=$IP #TEST THIS AGAIN
 fi
 
 openssl req -newkey rsa:2048 -nodes -x509 -keyout key.pem -out cert.pem -days 36500 -subj "/C=/L=/O=/OU=/CN=$address/ST/emailAddress=/" >/dev/null 2>&1
