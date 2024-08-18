@@ -10,12 +10,15 @@ if ! which brew >/dev/null ; then return 0 ; fi
 
 enable_tor_general
 
-  if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
-    debug "t2"
+  if [[ -e $dp/REMOVE_TOR_FLAG ]] ; then #flag exists only if crontab run at least once to completion
     sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
     sudo mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
     rm $dp/tor_srcipt.sh
+
+    crontab -l | sudo sed '/REMOVE_TOR_FLAG/d' | crontab -
+
+    rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
     return 0
   fi
 
@@ -31,8 +34,8 @@ brew install tor > $dp/debug.log 2>&1 && \
 if ! grep -q "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
 
 touch $dp/REMOVE_TOR_FLAG >/dev/null
-echo "$(date)" >> /tmp/crontab
 EOF
+
 sudo chmod +x $dp/tor_script.sh >/dev/null
 
 crontab -l | echo "

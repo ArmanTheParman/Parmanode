@@ -5,18 +5,9 @@ function apply_patches {
 temp_patch
 openssh_patch
 make_parmanode_service #Linux only
-echo "choose add (a) or remove (r)"
-read choice
-case $choice in
-a) make_tor_script_mac;;
-r)   
-sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
-sudo mv /tmp/crontab /etc/crontab
-;;
-esac
-
-#make_parmanode_tor_service
-#hello
+make_tor_script_mac
+make_parmanode_tor_service  #makes parmanode tor onion address
+hello
 
 case $patch in 
 1) 
