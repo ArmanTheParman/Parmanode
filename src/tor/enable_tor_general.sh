@@ -46,7 +46,7 @@ sudo mkdir -p /usr/local/etc/tor >/dev/null
 
 if [[ ! -e $file ]] ; then 
 touch $file >/dev/null 2>&1
-cat << EOF | sudo tee -a $file 
+cat << EOF | sudo tee -a $file >/dev/null
 # Additions by Parmanode...
 ControlPort 9051
 CookieAuthentication 1
