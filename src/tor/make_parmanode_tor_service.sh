@@ -4,6 +4,7 @@ if ! which tor >/dev/null 2>&1 ; then return 1 ; fi
 if [[ $OS == Mac ]] ; then
 torrc="/usr/local/etc/tor/torrc"
 varlibtor="/usr/local/var/lib/tor"
+mkdir -p $varlibtor >/dev/null 2>&1
 else
 torrc="/etc/tor/torrc"
 varlibtor="/var/lib/tor"

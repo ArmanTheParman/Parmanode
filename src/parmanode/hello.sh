@@ -23,11 +23,13 @@ else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-# if ! sudo test -e "$file" >/dev/null 2>&1; then return 0 ; fi
-
-
+if sudo test -e "$file" >/dev/null 2>&1 ; then
 #onion address for parmanode-service
 message1=$(sudo cat $file)
+else
+message1=""
+fi
+
 #approximate date of first install 
 message2=$(head -n1 parmanode_all.log | cut -d ' ' -f 1-6 )
 #the count of the number of times the program has been run

@@ -14,7 +14,8 @@ enable_tor_general
     sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
     sudo mv /tmp/crontab /etc/crontab && \
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
-    rm $dp/tor_srcipt.sh
+
+    rm $dp/tor_srcipt.sh >/dev/null 2>&1
 
     crontab -l | sudo sed '/REMOVE_TOR_FLAG/d' | crontab -
 
@@ -36,7 +37,7 @@ if ! grep -q "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
 touch $dp/REMOVE_TOR_FLAG >/dev/null
 EOF
 
-sudo chmod +x $dp/tor_script.sh >/dev/null
+sudo chmod +x $dp/tor_script.sh >/dev/null 2>&1
 
 crontab -l | echo "
 PATH=$PATH #REMOVE_TOR_FLAG
