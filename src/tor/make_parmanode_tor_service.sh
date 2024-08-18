@@ -2,6 +2,7 @@ function make_parmanode_tor_service {
 if [[ $OS == Mac ]] ; then
 torrc="/usr/local/etc/tor/torrc"
 varlibtor="/usr/local/var/lib/tor"
+sudo mkdir -p /usr/local/var/lib/tor >/dev/null
 else
 torrc="/etc/tor/torrc"
 varlibtor="/var/lib/tor"
