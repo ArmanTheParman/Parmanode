@@ -42,7 +42,6 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
 function enable_tor_general_mac {
 
 file=/usr/local/etc/tor/torrc
-sudo mkdir -p /usr/local/etc/tor >/dev/null
 
 if [[ ! -e $file ]] ; then 
 touch $file >/dev/null 2>&1
@@ -56,6 +55,7 @@ EOF
 return 0
 fi
 
+if [[ ! -d /usr/local/etc/tor ]] ; then return 1 ; fi
 
 if ! sudo cat $file | grep -q "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $file >/dev/null 2>&1
