@@ -20,10 +20,10 @@ enable_tor_general
     crontab -l | sudo sed '/REMOVE_TOR_FLAG/d' | crontab -
 
     rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+    rm $dp/tor_srcipt.sh >/dev/null 2>&1 
     return 0
   fi
 
-  if which tor >/dev/null ; then rm $dp/tor_srcipt.sh >/dev/null 2>&1 ; return 0 ; fi
 
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
