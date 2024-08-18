@@ -2,7 +2,7 @@ function check_bitcoin_tor_status {
 
 while true ; do
 
-# if no "onion" text in bicoin.conf, can't be a tor node
+# if no "onion" text in bitcoin.conf, can't be a tor node
 if ! grep -q onion < $db/bitcoin.conf ; then
     parmanode_conf_remove "bitcoin_tor_status="
     parmanode_conf_add "bitcoin_tor_status=c"

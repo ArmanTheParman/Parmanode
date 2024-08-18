@@ -79,9 +79,9 @@ $green
 
     sudo apt-get install qtcreator qtbase5-dev qt5-qmake -y $orange #Needed for Bitcoin-QT (GUI)$green
 
-    sudo apt-get install imagemagick -y  $orange                    #Needed if installing Knots Bicoin$green
+    sudo apt-get install imagemagick -y  $orange                    #Needed if installing Knots Bitcoin$green
 
-    sudo apt-get install librsvg2-bin -y $orange                    #Needed if installing Knots Bicoin$green
+    sudo apt-get install librsvg2-bin -y $orange                    #Needed if installing Knots Bitcoin$green
 $orange
 ##############################################################################################################
 "

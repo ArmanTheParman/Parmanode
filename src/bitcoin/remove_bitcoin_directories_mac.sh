@@ -113,7 +113,7 @@ fi #end checking internal drive for .bitcoin directory
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 
     rm $HOME/.bitcoin && \
-    log "bicoin" "symlink .bitcoin deleted"
+    log "bitcoin" "symlink .bitcoin deleted"
     fi      
 
 #Remove symlink from default Bitcoin directory to $HOME/.bitcoin
