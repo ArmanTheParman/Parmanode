@@ -31,7 +31,7 @@ message1=""
 fi
 
 #approximate date of first install 
-message2=$(head -n1 parmanode_all.log | cut -d ' ' -f 1-6 )
+message2=$(head -n1 $dp/parmanode_all.log | cut -d ' ' -f 1-6 )
 #the count of the number of times the program has been run
 message3=$(cat $dp/parmanode.conf | grep rp_count | cut -d = -f 2)
 #the operating system, linux vs Mac
