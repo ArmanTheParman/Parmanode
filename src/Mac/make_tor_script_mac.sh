@@ -9,7 +9,7 @@ if [[ $OS != Mac ]] ; then return 0 ; fi
 if ! which brew >/dev/null ; then return 0 ; fi
 
 enable_tor_general
-debug "t1"
+
   if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
     debug "t2"
     sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
@@ -18,17 +18,11 @@ debug "t1"
     rm $dp/tor_srcipt.sh
     return 0
   fi
-    debug "t3"
 
   if which tor >/dev/null ; then rm $dp/tor_srcipt.sh >/dev/null 2>&1 ; return 0 ; fi
-    debug "t4"
 
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
-
-export USER=$USER >/dev/null
-export HOME=$HOME >/dev/null
-export PATH=$PATH >/dev/null
 
 if ! which brew ; then return 0 ; fi
 if which tor ; then return 0 ; fi
@@ -37,11 +31,12 @@ brew install tor > $dp/debug.log 2>&1 && \
 if ! grep -q "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
 
 touch $dp/REMOVE_TOR_FLAG >/dev/null
+echo "$(date)" >> /tmp/crontab
 EOF
-debug "t5"
 sudo chmod +x $dp/tor_script.sh >/dev/null
 
-echo "* * * * * $USER [ -x $HOME/.parmanode/tor_script.sh ] && $HOME/.parmanode/tor_script.sh #REMOVE_TOR_FLAG" | sudo tee -a /etc/crontab >/dev/null 2>&1
-debug "t6"
+crontab -l | echo "
+PATH=$PATH #REMOVE_TOR_FLAG
+* * * * * [ -x $HOME/.parmanode/tor_script.sh ] && $HOME/.parmanode/tor_script.sh #REMOVE_TOR_FLAG" | crontab -
 }
 

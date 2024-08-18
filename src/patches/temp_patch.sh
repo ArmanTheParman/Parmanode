@@ -5,7 +5,6 @@ sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/
 sudo mv /tmp/crontab /etc/crontab && \
 rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
 rm $dp/tor_srcipt.sh >/dev/null 2>&1
-debug "pause"
 fi
 
 #remove in September
