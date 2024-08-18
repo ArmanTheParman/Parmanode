@@ -60,10 +60,12 @@ $running
                   bk)            Change backend ...
 
 
-    Access Mempool:
-$cyan
-    http://127.0.0.1:8180
-    http://$IP:8180 $orange
+    ACCESS MEMPOOL:
+    
+    Address only available on this computer's browser: 
+$cyan    http://127.0.0.1:8180 $orange
+    Address available on computers sharing your router:
+$cyan    http://$IP:8180 $orange
 
 $output_tor
 ########################################################################################
