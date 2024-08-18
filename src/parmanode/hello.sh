@@ -23,7 +23,7 @@ else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-if ! sudo test -e "$file"; then return 0 ; fi
+if ! sudo test -e "$file" >/dev/null 2>&1; then return 0 ; fi
 
 
 #onion address for parmanode-service
