@@ -28,8 +28,8 @@ if ! sudo test -e "$file"; then return 0 ; fi
 
 #onion address for parmanode-service
 message1=$(sudo cat $file)
-#date of first install is found one line above "printed colours in debug file"
-message2=$(head -n 10 $dp/debug.log | grep -n1 "printed colours" | head -n1)
+#approximate date of first install 
+message2=$(head -n1 parmanode_all.log | cut -d ' ' -f 1-6 )
 #the count of the number of times the program has been run
 message3=$(cat $dp/parmanode.conf | grep rp_count | cut -d = -f 2)
 #the operating system, linux vs Mac
