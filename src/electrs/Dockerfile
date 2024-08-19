@@ -1,4 +1,4 @@
-FROM rust:1.67
+FROM rust:1.75
 
 RUN apt-get update -y
 RUN apt-get install -y sudo vim curl git clang cmake build-essential socat
