@@ -22,8 +22,10 @@ fi
 
 #going with service file instead for now
 #make_socat_script electrs
+if [[ $OS == Linux ]] ; then
 make_socat_service_listen
 make_socat_service_publish
+fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
