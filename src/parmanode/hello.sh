@@ -1,22 +1,32 @@
 function hello {
 
 #This function counts the usage of parmanode from version 3.41.11 onwards.
+
 #Care has been taken to not collect any personal information, particularly IP 
-#    addresses (hence the use of Tor).
-#The command is run in the background (using & directive), for parallel execution 
-#    and speed.
+#    addresses (hence the use of Tor). I previously had not collected usage
+#    stats as IP addresses are sent in headers, which requires me to be trusted
+#    with the data - not to save it, leak it and not use if for evil 
+#    Bill Gates like purposes.
+
+#The command is run in the background (using the & directive), for parallel 
+#    execution and speed. Don't want to slow down laod times.
+
 #A specific single purpose onion address has been created as an identifier under 
 #    /var/lib/tor/parmanode-service using make_parmanode_tor_service function.
 #    This is not a functional server, the onion is just a public key. I may
-#    develop some feature with it later.
+#    develop some optional feature with it in the distant future.
+
 #The program sends a POST curl connection to Parman's Tor server which gathers 
-#    info as stated in the message 1-4 statements. This server is a simple
-#    python program listening on the specific port and writing POST data to a 
-#    secured file.
+#    info as stated in the message 1-4 statements. This destination server is a 
+#    simple python program listening on the specific port and writing POST data 
+#    to a secured file.
+
 #The data will be used to glean information about Parmande usage, and the value 
 #    of putting effort into further improvement.
+
 #The data is protected, but even if leaked, there is no information about users,
-#    just an anon onion address and some usage stats.
+#    just an anon onion address and some usage stats, eg like the OS in use.
+
 if [[ -e $pn/.there ]] ; then return 0 ; fi
 
 if ! which tor >/dev/null ; then return 0 ; fi
