@@ -38,7 +38,7 @@ message3=$(cat $dp/parmanode.conf | grep rp_count | cut -d = -f 2)
 #the operating system, linux vs Mac
 message4=$(cat $dp/parmanode.conf | grep OS= | cut -d = -f 2)
 #combined
-message="${message1}, ${message2}, #${message3}"
+message="${message1}, ${message2}, #${message3}, OS:${message4}"
 #Anonymous curl POST request to private server over Tor, run in background to not slow boot up time
 curl -H "Content-Type: application/json" -d "{\"from\":\"$message\"}" --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 && \
 touch $dp/counted &
