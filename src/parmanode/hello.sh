@@ -7,6 +7,8 @@ function hello {
 #    and speed.
 #A specific single purpose onion address has been created as an identifier under 
 #    /var/lib/tor/parmanode-service using make_parmanode_tor_service function.
+#    This is not a functional server, the onion is just a public key. I may
+#    develop some feature with it later.
 #The program sends a POST curl connection to Parman's Tor server which gathers 
 #    info as stated in the message 1-4 statements. This server is a simple
 #    python program listening on the specific port and writing POST data to a 
