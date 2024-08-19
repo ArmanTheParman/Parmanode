@@ -17,13 +17,12 @@ enable_tor_general
 
     rm $dp/tor_script.sh >/dev/null 2>&1
 
-    crontab -l | sudo sed '/REMOVE_TOR_FLAG/d' | crontab -
-
-    rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
+    crontab -l | sudo sed '/REMOVE_TOR_FLAG/d' | crontab - && rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
     parmanode_conf_add "tor_script=done"
     return 0
   fi
 
+if which tor >/dev/null 2>&1 ; then return 0 ; fi
 if grep -q "tor_script=done" < $pc ; then return 0 ; fi
 
 cat << EOF > $dp/tor_script.sh
