@@ -1,4 +1,6 @@
 function make_socat_service_publish {
+#deprecated. Merged listen and publish into one
+return 0
 echo "[Unit]
 Description=Socat SSL to TCP Forwarding Service
 After=network.target

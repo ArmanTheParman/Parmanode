@@ -1,7 +1,7 @@
 FROM rust:1.67
 
 RUN apt-get update -y
-RUN apt-get install -y sudo vim curl git clang cmake build-essential
+RUN apt-get install -y sudo vim curl git clang cmake build-essential socat
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -15,7 +15,6 @@ RUN cd /home/parman/parmanode && git clone --depth 1 https://github.com/romanz/e
 RUN cd /home/parman/parmanode/electrs && cargo build --locked --release
 
 USER root
-RUN apt-get install nginx -y
 RUN apt-get update --fix-missing
 RUN apt-get install tor -y
 COPY Dockerfile_torrc /etc/tor/torrc

@@ -1,5 +1,15 @@
 function temp_patch {
 
+#remove June 2025 - make sure all electrs docker has socat installed
+if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
+     docker exec -d electrs bash -c "sudo apt-get install socat -y"
+fi
+
+if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
+make_ssl_certificates "electrs"
+fi
+
+#Remove in October
 if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
 sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
 sudo mv /tmp/crontab /etc/crontab && \

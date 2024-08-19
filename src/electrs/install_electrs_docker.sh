@@ -1,7 +1,6 @@
 function install_electrs_docker {
 
 # Docker container runs with tor daemon for CMD
-# Starting electrs and nginx happens with a function call after container started.
 # Data is synced to /electrs_db inside container.
 # External drive sync is volume mounted directly to external drive
 # Internal drive sync is mounted to $HOME/.electrs
@@ -24,21 +23,22 @@ enter_continue
 return 1
 fi
 
-#if ! which nginx >/dev/null ; then install_nginx ; fi
-#trying socat instead
-if [[ $OS == Linux ]] ; then
-    if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
-elif [[ $OS == Mac ]] ; then 
-    brew_check || return 1 
-    brew install socat 
-fi
+#use socat inside container instead
+    # if [[ $OS == Linux ]] ; then
+    #     if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
+    # elif [[ $OS == Mac ]] ; then 
+    #     brew_check || return 1 
+    #     brew install socat 
+    # fi
 
-#going with service file instead for now
-#make_socat_script electrs
-if [[ $OS == Linux ]] ; then
-make_socat_service_listen
-make_socat_service_publish
-fi
+
+#socat put inside the container.
+    # #going with service file instead for now
+    # #make_socat_script electrs
+    # if [[ $OS == Linux ]] ; then
+    # make_socat_service_listen
+    # make_socat_service_publish
+    # fi
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -115,11 +115,8 @@ debug "after docker run electrs"
 docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parmanode/electrs/"
 debug "pause after run and chown"
 
-#Nginx
 make_ssl_certificates electrsdkr || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
-#nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; }
 
-#Run electrs and Nginx in the container
 docker_start_electrs || return 1 
 debug "pause after start"
 
