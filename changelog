@@ -1,5 +1,7 @@
 Version 3.41.13
     -fix electrs SSL for docker. Moved non-docker SSL so both in $HOME/.electrs
+    -put SSL forwarding with socat inside electrs docker container
+    -New installs of electrs non-docker to have single socat forwarding, 2 hops
     -sol bug fixes
 Version 3.41.12
     -smol bug fixes
