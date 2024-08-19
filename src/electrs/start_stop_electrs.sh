@@ -6,13 +6,14 @@ if [[ $OS == Linux ]] ; then
 fi
 if [[ $OS == Mac ]] ; then
     script -q /dev/null  $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml >> $HOME/.parmanode/run_electrs.log 2>&1 &
+    start_socat
 fi
 }
 ########################################################################################
 function stop_electrs {
 please_wait
 if [[ $OS == Linux ]] ; then sudo systemctl stop electrs.service ; fi
-if [[ $OS == Mac ]] ; then pkill -INT electrs ; fi
+if [[ $OS == Mac ]] ; then pkill -INT electrs ; stop_socat ; fi
 }
 ########################################################################################
 function restart_electrs {
