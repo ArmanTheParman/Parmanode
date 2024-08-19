@@ -1,4 +1,5 @@
 Version 3.41.13
+    -fix electrs SSL for docker. Moved non-docker SSL so both in $HOME/.electrs
     -sol bug fixes
 Version 3.41.12
     -smol bug fixes
