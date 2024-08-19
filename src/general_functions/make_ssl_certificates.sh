@@ -27,8 +27,9 @@ else
     cd $hp/${1}
 fi
 
-if [[ $1 == electrsdrk ]] ; then
-    cd ~/.electrs
+if [[ $1 == electrsdrk || $1 == electrs ]] ; then
+    mkdir -p $HOME/.electrs >/dev/null 2>&1
+    cd $HOME/.electrs
 fi
 
 #for populating the open ssl key command

@@ -114,7 +114,7 @@ docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parma
 debug "pause after run and chown"
 
 #Nginx
-make_ssl_certificates electrsdkr
+make_ssl_certificates electrsdkr || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 #nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; }
 
 #Run electrs and Nginx in the container
