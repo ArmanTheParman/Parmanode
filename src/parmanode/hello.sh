@@ -15,7 +15,7 @@ function hello {
 #    of putting effort into further improvement.
 #The data is protected, but even if leaked, there is no information about users,
 #    just an anon onion address and some usage stats.
-if [[ -f $pn/.there ]] ; then return 0 ; fi
+#if [[ -e $pn/.there ]] ; then return 0 ; fi
 
 if ! which tor >/dev/null ; then return 0 ; fi
 if [[ $OS = Mac ]] ; then

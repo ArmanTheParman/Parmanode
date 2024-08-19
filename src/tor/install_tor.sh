@@ -17,7 +17,8 @@ if [[ $1 == silent ]] ; then
         installed_conf_add "tor-end"
         return 0 
     else 
-        installed_conf_remove "tor"
+        installed_conf_remove "tor-end"
+        installed_conf_remove "tor-start"
         return 1 
     fi
 
