@@ -185,13 +185,13 @@ unset file
 function choose_electrs_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
 swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50006\"" 
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50005\"" 
 unset file
 }
 
 function choose_fulcrum_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
 swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50002\""
+swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50001\""
 unset file
 }

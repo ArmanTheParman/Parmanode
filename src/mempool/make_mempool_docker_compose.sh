@@ -31,12 +31,12 @@ services:
       - PM_network
   api:
     environment:
-      MEMPOOL_BACKEND: "none" #or "electrum"
+      MEMPOOL_BACKEND: "none"
       CORE_RPC_HOST: "$IP"
       CORE_RPC_PORT: "8332"
       ELECTRUM_HOST: "$IP"
-      ELECTRUM_PORT: "50006"
-      ELECTRUM_TLS_ENABLED: "true"
+      ELECTRUM_PORT: "50005"
+      ELECTRUM_TLS_ENABLED: "false"
 EOF
 echo "      CORE_RPC_USERNAME: \"$rpcuser\"" | tee -a $file >/dev/null 2>&1
 echo "      CORE_RPC_PASSWORD: \"$rpcpassword\"" | tee -a $file >/dev/null 2>&1
