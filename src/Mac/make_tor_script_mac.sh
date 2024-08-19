@@ -24,6 +24,8 @@ enable_tor_general
     return 0
   fi
 
+if grep -q "tor_script=done" < $pc ; then return 0 ; fi
+
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
 
