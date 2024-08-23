@@ -1,8 +1,10 @@
 function temp_patch {
 
 #remove June 2025 - make sure all electrs docker has socat installed
-if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
-     docker exec -d electrs bash -c "sudo apt-get install socat -y"
+if grep -q "electrsdkr" < $ic ; then
+    if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
+        docker exec -d electrs bash -c "sudo apt-get install socat -y"
+    fi
 fi
 
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then

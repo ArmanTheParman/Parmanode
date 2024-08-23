@@ -39,11 +39,9 @@ install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
 sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
 installed_config_add "mempool-start"
-debug "pause2"
 #set variables
 make_mempool_docker_compose
 cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
-debug "/tmp/docker-compose.yml copied?"
 rm /tmp/docker-compose.yml >/dev/null 2>&1
 choose_bitcoin_for_mempool
 
