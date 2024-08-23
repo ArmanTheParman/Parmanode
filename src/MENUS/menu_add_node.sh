@@ -114,9 +114,16 @@ m|M) back2main ;;
     
     lnd|LND|Lnd)
        if [[ -n $lnd_n ]] ; then
+
          if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
-       if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
-       if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
+       
+         if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
+
+         if [[ $OS == "Mac" ]] ; then
+            announce "For macs, you can use LND with Docker option, not this direct version."
+            return 0 
+         fi
+
        fi
        ;;
 
