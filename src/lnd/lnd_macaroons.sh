@@ -62,7 +62,7 @@ unset lnd_certthumbprint lnd_macaroon rest
 
 function show_qr_macaroons {
 
-set_terminal ; echo -e "
+set_terminal_custom 65 ; echo -e "
 ########################################################################################
 
    
