@@ -2,17 +2,18 @@ function menu_main {
 while true ; do
 set_terminal
 
+source $original_dir/version.conf >/dev/null
+source $hm >/dev/null 2>&1 #hide messages
+if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
+
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then
 output_branch="${pink}WARNING: You are on the $branch branch.                        $orange"
 else
-output_branch="                                                             $orange#"
+output_branch="   $space                                                         $orange#"
 fi
 
 set_terminal_custom 51
-source $original_dir/version.conf >/dev/null
-source $hm >/dev/null 2>&1 #hide messages
-if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
