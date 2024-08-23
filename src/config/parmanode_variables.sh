@@ -52,6 +52,7 @@ export hm="$dp/hide_messages.conf"
 export drive_programs="bitcoind fulcrum electrs electrumx"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
+export dn="/dev/null"
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi #Line added version 3.14.1
 

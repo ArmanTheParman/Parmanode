@@ -15,7 +15,8 @@ $orange
 ########################################################################################
 "
 enter_abort 
-read choice ; case $choice in a|A) return 1 ;; "") break ;; esac ; done
+read choice ; case $choice in a|A) return 1 ;; "") break ;; esac 
+done
 
 lnd_macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 lnd_certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in $HOME/.lnd/tls.cert | sed -e 's/.*=//;s/://g')
@@ -42,7 +43,47 @@ instead of the internal IP, you may have a domain name, or the local host IP. Yo
 may also omit the 'allowinstecure=true' setting and see if your connection works
 without it.
 
+$red
+$blinkon                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $blinkoff $orange
+
 ########################################################################################
 "
 enter_continue
+
+if [[ $enter_cont == "QR" || $enter_cont == "qr" ]] ; then
+install_qrencode
+show_qr_macaroons
+fi
+
+unset lnd_certthumbprint lnd_macaroon rest
+
+}
+
+
+function show_qr_macaroons {
+
+set_terminal ; echo -e "
+########################################################################################
+
+   
+The LND macaroon is:
+$cyan
+$(qrencode -t ANSIUTF8 $lnd_macaroon)
+$orange
+
+The certthumbprint is:
+$green
+$(qrencode -t ANSIUTF8 $lnd_certthumbprint)
+$orange
+
+You can use this to set up BTC Pay server to connect to LND by the 'REST proxy':
+$bright_blue
+$(qrencode -t ANSIUTF8 type=lnd-rest;server=https://$IP:$rest/;macaroon=$cyan$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true)
+$orange
+
+
+########################################################################################
+"
+enter_continue
+return 0
 }
