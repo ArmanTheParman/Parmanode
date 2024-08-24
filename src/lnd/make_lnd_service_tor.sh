@@ -18,7 +18,7 @@ else
     echo "
 HiddenServiceDir /usr/local/var/lib/tor/lnd-service
 HiddenServicePort 7008 127.0.0.1:8080
-" | sudo tee -a /usr/local/etc/torrc >$dn 2>&1
+" | sudo tee -a /usr/local/etc/tor/torrc >$dn 2>&1
 
 fi
 
