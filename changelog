@@ -1,6 +1,7 @@
 Version 3.42.0
     -QRencode
     -LND macaroon QR option
+    -Instructions to connect Zeus wallet
     -LND Mac fix config for when Bitcoin is also in a Docker container
 Version 3.41.13
     -fix electrs SSL for docker. Moved non-docker SSL so both in $HOME/.electrs
