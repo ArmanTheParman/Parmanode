@@ -13,7 +13,7 @@ HiddenServicePort 7008 127.0.0.1:8080
 
 else
 
-    if grep -q "7008" < /usr/local/etc/torrc ; then return 0 ; fi
+    if grep -q "7008" < /usr/local/etc/tor/torrc ; then return 0 ; fi
 
     echo "
 HiddenServiceDir /usr/local/var/lib/tor/lnd-service
