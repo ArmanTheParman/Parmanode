@@ -24,11 +24,8 @@ if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo "
     if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
 fi
 
-if [[ $mbackend == 1 && $server != 1 ]] ; then clear ; echo "
-    Sorry, server=1 needs to be in the bitcoin.conf file for Mempool to work.
-    Type 'yolo' and <enter> to ignore warning, otherwise aborting."
-    read choice
-    if [[ $choice != yolo ]] ; then return 1 ; fi
+if [[ $mbackend == 1 && $server != 1 ]] ; then 
+    check_server_1 || return 1
 fi
 
 # INTRO 

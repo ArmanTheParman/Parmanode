@@ -195,10 +195,7 @@ fi
 function check_server_1 {
 if [[ $server -ne 1 ]] ; then 
 debug "Hit s to skip server=1 check." && if [[ $enter_cont == s ]] ; then return 0 ; fi
-announce "\"server=1\" needs to be included in the bitcoin.conf file." \
-"Please do that, restart Bitcoin, and try again. Note, this will
-resync the index which will take a long time. Aborting." 
-return 1 
+add_server_1_to_bitcoinconf || return 1
 fi
 }
 
