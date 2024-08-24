@@ -4,21 +4,26 @@ while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
+$cyan
 
 
-      (pw)             Change LND wallet password 
-      
-      (ep)             Edit password.txt which auto-unlocks wallet
-
-      (ul)             Unlock Wallet
-
-      (wb)             Wallet balance
-
-      (cb)             Channels' balance
-
-      (delete)         Delete existing wallet and its files (macaroons, channel.db)
-
-      (create)         Create an LND wallet (or restore a wallet with seed)
+      (c)   $red           How to CONNECT your mobile lightning wallet to your node
+                       eg Zeus wallet
+$cyan
+      (pw)$orange             Change LND wallet password 
+$cyan      
+      (ep)$orange             Edit password.txt which auto-unlocks wallet
+$cyan
+      (ul)      $orange       Unlock Wallet
+$cyan
+      (wb)           $orange  Wallet balance
+$cyan
+      (cb)$orange             Channels' balance
+$cyan
+      (delete)  $orange       Delete existing wallet and its files (macaroons, channel.db)
+$cyan
+      (create)        $orange Create an LND wallet (or restore a wallet with seed)
+$orange
 
 
 ########################################################################################
@@ -98,6 +103,10 @@ channel_bala*nce
 delete|DELETE|Delete) 
 delete_wallet_lnd
 return 0
+;;
+
+c|C)
+connect_mobile_wallet
 ;;
 
 *) invalid
@@ -215,3 +224,80 @@ $orange
 enter_continue
 }
 
+function connect_mobile_wallet {
+set_terminal_custom 40; echo -e "
+########################################################################################
+$cyan
+
+         INSTRUCTIONS TO CONNECT TO YOUR LND NODE FROM A MOBILE WALLET $orange
+
+$yellow
+    The Zeus wallet will be used as an example, but others should be very similar.
+    This was written August 2024 - the app may have changed slightly since then, use
+    your judgement.
+$orange
+
+    After downloading the wallet, choose "get started", then 'connect a node'.
+    Click the + sign, then fill in the fields as follows:
+
+$green
+        Nickname$orange       - put whateveryou want
+$green
+        Node Interface$orange - choose LND(REST) from the drop down menu
+$green
+        Host$orange           - For now, just put in the node's internal IP address:
+                         $cyan$IP$orange
+$green            
+        Rest Port $orange     - Parmanode LND uses 8080 by default, unless you've changed it.
+$green
+        Macaroon   $orange    - From the LND menu in Parmanode, choose 'mm' then 'mm' to get 
+                         to the private macaroon info. There is a QR option to capture 
+                         the text to your phone's QR scanner app, then paste it in your 
+                         wallet.
+
+    
+    Then select 'save node config'. Give it some time and you node should be 
+    connected.
+
+$red    more... $orange
+
+########################################################################################
+"
+enter_continue
+
+if [[ $OS == Linux ]] ; then
+onion=$(cat /var/lib/tor/lnd-service/hostname)
+else
+onion=$(cat /usr/local/var/lib/tor/lnd-service/hostname)
+fi
+
+set_terminal_custom 40 ; echo -e "
+########################################################################################
+
+
+    The previous instructions works for when you are home and your phone has access
+    to your home network.
+
+    For access from outside the home, you have two options.
+
+$green
+    1)$orange Manually adjust your port forwarding rules in your router. You'll have to 
+       open port 8080 and point it to your node's IP address. Then in your phone
+       wallet, instead of the IP address of the node, put the IP address of your
+       home's router: $cyan $extIP $orange
+$green
+    2)$orange Use Tor. It's more secure as you don't need to open ports, but it is 
+       definitely slower. 
+
+         -- Make sure Tor is running on your phone, eg Orbot app.
+         -- Use port 8081 on the phone, not 8080. Parmnanode routes Tor 8081 to 8080
+         -- Paste this onion address in the Host field (instead of IP address):
+
+
+         $bright_blue$onion$orange
+
+
+########################################################################################
+"
+enter_continue
+}
