@@ -21,7 +21,7 @@ done
 lnd_macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 lnd_certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in $HOME/.lnd/tls.cert | sed -e 's/.*=//;s/://g')
 
-set_terminal ; echo -e "
+set_terminal_high ; echo -e "
 ########################################################################################
 
 The LND macaroon is:
@@ -61,29 +61,69 @@ unset lnd_certthumbprint lnd_macaroon rest
 
 
 function show_qr_macaroons {
-
-set_terminal_custom 65 ; echo -e "
+while true ; do
+set_terminal ; echo -e "
 ########################################################################################
 
+$cyan
+                            mm)    Show LND macaroon 
+$cyan
+                            c)     Show certthumbprint
+$cyan
+                            b)     Show BTC entry
+$orange 
+
+########################################################################################
+"
+choose xqmp ; read choice ; set_terminal
+case $choice in
+Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+mm)
+set_terminal_high ; echo -e "
+########################################################################################
    
 The LND macaroon is:
 $cyan
 $(qrencode -t ANSIUTF8 $lnd_macaroon)
 $orange
 
+########################################################################################
+"
+enter_continue
+;;
+c)
+set_terminal_high ; echo -e "
+########################################################################################
+   
 The certthumbprint is:
 $green
 $(qrencode -t ANSIUTF8 $lnd_certthumbprint)
 $orange
 
+########################################################################################
+"
+enter_continue
+;;
+b)
+set_terminal_custom 60 100; echo -e "
+########################################################################################
+   
 You can use this to set up BTC Pay server to connect to LND by the 'REST proxy':
 $bright_blue
-$(qrencode -t ANSIUTF8 type=lnd-rest;server=https://$IP:$rest/;macaroon=$cyan$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true)
+$(qrencode -t ANSIUTF8 "\"type=lnd-rest;server=https://$IP:$rest/;macaroon=$cyan$lnd_macaroon$bright_blue;certthumbprint=$green$lnd_certthumbprint$bright_blue;allowinsecure=true\"")
 $orange
-
 
 ########################################################################################
 "
 enter_continue
+;;
+"")
 return 0
+;;
+*)
+invalid ;;
+esac
+done
 }
+
+

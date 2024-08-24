@@ -1,4 +1,5 @@
 function menu_lnd_more {
+store_LND_container_IP
 source $pc
 menuDockerIP="$bright_blue                 IP address of LND (Docker Contaier) = $LNDIP$orange"
 

@@ -1,3 +1,6 @@
+Version 3.42.0
+    -QRencode
+    -LND Mac fix config for when Bitcoin is also in a Docker container
 Version 3.41.13
     -fix electrs SSL for docker. Moved non-docker SSL so both in $HOME/.electrs
     -put SSL forwarding with socat inside electrs docker container

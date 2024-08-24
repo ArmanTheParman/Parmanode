@@ -28,6 +28,7 @@ if [[ $reusedotlnd != "true" ]] ; then
 set_lnd_port
 if [[ ! -e $HOME/.lnd/password.txt ]] ; then sudo touch $HOME/.lnd/password.txt ; fi
 make_lnd_conf
+fix_BTC_addr_btccombo #if BTC is installed in a btcpay docker container, IP addresses need to be fixed.
 set_lnd_alias #needs to have lnd conf existing
 fi
 

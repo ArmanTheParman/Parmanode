@@ -121,6 +121,7 @@ fi
 if [[ $btcdockerchoice == "yes" ]] ; then
 unset btcdockerchoice
 install_btcpay_mac_child || return 1
+store_BTC_container_IP
 success "Bitcoin and BTCPay Server has been installed in a Docker Container."
 #end bitcoin then btcpay install here
 return 0

@@ -61,6 +61,7 @@ rm -rf $HOME/parmanode/litd
 parmanode_conf_remove "bitcoin_choice_with_litd"
 parmanode_conf_remove "lnd_port"
 installed_conf_remove "litd"
+parmanode_conf_remove "LNDIP"
 success "LITD" "being uninstalled."
 return 0
 }

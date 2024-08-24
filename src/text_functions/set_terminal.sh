@@ -57,6 +57,12 @@ return 0
 }
 
 function set_terminal_custom {
+if [[ -z $2 ]] ; then
 set_terminal
 printf "\033[8;%s;88t" $1
+return 0
+fi
+
+set_terminal
+printf "\033[8;%s;%st" $1 $2
 }
