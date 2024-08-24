@@ -26,6 +26,8 @@ docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/t
 if [[ $reusedotlnd != "true" ]] ; then
 touch $HOME/.lnd/password.txt  
 make_lnd_conf 
+fix_BTC_addr_btccombo #if BTC is installed in a btcpay docker container, IP addresses need to be fixed.
+make_lnd_service_tor #sets up lnd-service, not necessarily active
 set_lnd_alias #needs to have lnd conf existing
 fi
 

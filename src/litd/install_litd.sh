@@ -46,6 +46,8 @@ if [[ $reusedotlitd != "true" ]] ; then
 set_lnd_port #use lnd not litd
 if [[ ! -e $HOME/.lit/password.txt ]] ; then sudo touch $HOME/.lit/password.txt ; fi
 make_lit_conf
+fix_BTC_addr_btccombo #if BTC is installed in a btcpay docker container, IP addresses need to be fixed.
+make_lnd_service_tor #sets up lnd-service, not necessarily active
 set_litd_password || return 1
 set_lnd_alias #needs to have lit conf existing, use lnd not lit function
 fi
