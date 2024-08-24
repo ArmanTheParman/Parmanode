@@ -4,7 +4,7 @@ if ! which tor > $dn 2>&1 ; then return 0 ; fi
 
 if [[ $OS == Linux ]] ; then
 
-    if grep -q "7008" < /etc/torrc ; then return 0 ; fi
+    if grep -q "7008" < /etc/tor/torrc ; then return 0 ; fi
 
     echo "
 HiddenServiceDir /var/lib/tor/lnd-service
