@@ -15,7 +15,7 @@ make_ssl_certificates "electrs"
 fi
 
 #Remove in October
-if grep -q "REMOVE_TOR_FLAG" < /etc/crontab ; then #flag exists only if crontab run at least once to completion
+if grep -q "REMOVE_TOR_FLAG" < /etc/crontab >/dev/null 2>&1 ; then #flag exists only if crontab run at least once to completion
 sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
 sudo mv /tmp/crontab /etc/crontab && \
 rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
