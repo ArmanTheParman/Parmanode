@@ -6,7 +6,7 @@ set_terminal ; echo -e "
     
     Bitcoin needs to be restarted to add the line$cyan 'server=1'$orange to the config file.
 
-    Hit$red s$orange to skip or$green anything else$cyan to continue and allow the changes to be made.
+    Hit$red s$orange to skip or$green anything else$orange to continue and allow the changes to be made.
 
 ########################################################################################
 "
