@@ -1,6 +1,12 @@
 function update_parmanode {
 
 if [[ $version_incompatibility == 1 ]] ; then #this variable is set in update_version_info 
+
+    if ! curl https://google.com >$dn 2>&1 ; then
+    announce "It seems the internet might be disconnected. Proceed with caution."
+    return 0
+    fi
+
 # function. If 1, then the current version can't be updated.
 set_terminal ; echo -e "
 ########################################################################################
