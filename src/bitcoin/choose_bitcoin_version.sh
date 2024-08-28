@@ -1,4 +1,5 @@
 function choose_bitcoin_version {
+debug "cbv $version"
 if [[ $version == self ]] ; then return 0 ; fi
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
@@ -7,6 +8,8 @@ parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false"
 return 0
 fi
+
+debug "cbv $version"
 
 while true ; do
 
@@ -43,7 +46,7 @@ $orange
 ########################################################################################   
 "
 choose "xpmq" 
-unset bitcoin_compile version ordinals_patch knotsbitcoin byo_bitcoin
+unset bitcoin_compile ordinals_patch knotsbitcoin byo_bitcoin
 read choice
 
 case $choice in
