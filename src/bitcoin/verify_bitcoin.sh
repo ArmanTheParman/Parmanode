@@ -1,5 +1,6 @@
 function verify_bitcoin {
 if [[ $verify == skip ]] ; then return 0 ; fi #skipverify argument set in parman_variables
+debug "$version - version"
 
 cd $HOME/parmanode/bitcoin
 
