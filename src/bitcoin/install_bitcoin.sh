@@ -5,7 +5,7 @@ function install_bitcoin {
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
 export version="27.1"
-
+debug "1 - $version"
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
@@ -27,6 +27,8 @@ if [[ $btcdockerchoice == "yes" ]] ; then
 
 fi #end btcdockerchoice
 
+debug "2 - $version"
+
 #btcpayinstallsbitcoin=true if installing from btcpay Dockerfile
 
 export install=bitcoin
@@ -42,12 +44,16 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
+debug "3 - $version"
+
 unset importdrive
 
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
+
+debug "4 - $version"
 
 #Just in case (redundant permission setting)
     while true ; do 
@@ -76,6 +82,8 @@ make_bitcoin_directories || return 1
 #compile bitcoin if chosen
 compile_bitcoin || return 1
 
+debug "5 - $version"
+
 # Download bitcoin software & verify
 if [[ $bitcoin_compile == "false" ]] ; then
 download_bitcoin || return 1
@@ -88,6 +96,7 @@ if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != 
     make_mount_check_script 
 fi
 
+debug "6 - $version"
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
