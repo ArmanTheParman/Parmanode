@@ -73,7 +73,7 @@ $orange
 
                             b)          Create a back up 
 
-                            3)          $leave_or_use
+                            l)          $leave_or_use
                                 
     Back up will be renamed to$cyan bitcoin_backup0$orange.
 
@@ -87,7 +87,7 @@ fi
 case $choice in
 q|Q|quit|Quit|QUIT) 
     exit ;;
-3) 
+l) 
     break ;;
 b|B)
     make_backup_dot_bitcoin 
