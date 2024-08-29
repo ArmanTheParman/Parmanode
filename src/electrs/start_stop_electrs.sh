@@ -2,7 +2,7 @@ function start_electrs { #non-docker function
 
 please_wait
 if [[ $OS == Linux ]] ; then 
-    sudo systemctl start electrs.service 
+    sudo systemctl start electrs.service >$dn 2>&1
 fi
 if [[ $OS == Mac ]] ; then
     script -q /dev/null  $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml >> $HOME/.parmanode/run_electrs.log 2>&1 &
