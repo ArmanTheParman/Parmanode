@@ -151,7 +151,7 @@ if [[ -e $hp/bitcoin_github ]] ; then echo -e "
 
 ########################################################################################
 "
-read choice ; case $choice in y) rm -rf $hp/bitcoin_github ;; esac
+read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
 fi
 
 set_terminal ; echo -e "
