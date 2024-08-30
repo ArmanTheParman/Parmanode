@@ -36,11 +36,7 @@ cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1
 if [[ $bitcoin_compile == "true" ]] ; then
 
 if [[ -e $hp/bitcoin_github ]] ; then 
-cd $hp/bitcoin_github 
-# start fresh from master, but not have to re-download every time I test
-set_github_config
-git stash ; git checkout master ; git branch -D parmanode_ordinals_patch 2>/dev/null
-git pull 
+sudo rm -rf $hp/bitcoin_github >$dn 2>&1
 else
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
 cd $hp/bitcoin_github
