@@ -4,12 +4,12 @@
 function log {
 
 if [[ $2 == "delete" ]] >/dev/null 2>&1 ; then
-rm $HOME/.parmanode/"$1".log
+rm $dp/"$1".log >/dev/null 2>&1
 fi
 
 #log message in individual file
-echo "$(date) $2" >> $HOME/.parmanode/"$1".log
+echo "$(date) $2" >> $dp/"$1".log 2>$dn
 
 #log message all in one file
-echo "$(date) $2" >> $HOME/.parmanode/parmanode_all.log 
+echo "$(date) $2" >> $dp/parmanode_all.log 2>$dn
 }
