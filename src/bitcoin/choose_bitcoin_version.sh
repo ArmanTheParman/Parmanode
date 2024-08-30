@@ -1,5 +1,4 @@
 function choose_bitcoin_version {
-debug "cbv $version"
 if [[ $version == self ]] ; then return 0 ; fi
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
@@ -9,7 +8,6 @@ export bitcoin_compile="false"
 return 0
 fi
 
-debug "cbv $version"
 
 while true ; do
 
