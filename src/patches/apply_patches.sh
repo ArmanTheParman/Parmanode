@@ -2,12 +2,19 @@ function apply_patches {
 #patches ; each patch adds variable to parmanode.conf, sourced higher up
 #patch=n
 #get $patch from parmanode.conf
+debug "1"
 temp_patch
+debug "2"
 openssh_patch
+debug "3"
 make_parmanode_service #Linux only
+debug "4"
 make_tor_script_mac
+debug "5"
 make_parmanode_tor_service  #makes parmanode tor onion address
+debug "6"
 hello
+debug "7"
 
 case $patch in 
 1) 
