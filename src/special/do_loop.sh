@@ -126,11 +126,11 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #commit config directory state using git
    git_dp 
 fi
-debug "before patches"
 apply_patches  
 
 # get version, and suggest user to update if old.
 
+debug "before update version info"
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
 
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
