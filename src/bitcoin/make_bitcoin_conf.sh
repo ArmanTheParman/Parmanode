@@ -83,6 +83,9 @@ done
 fi
 
 sudo cp /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+debug "Bitcoin conf copied from tmp
+$(cat $HOME/.bitcoin/bitcoin.conf)"
+
 sudo chown -R $USER:$(id -gn) $file
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
 }
