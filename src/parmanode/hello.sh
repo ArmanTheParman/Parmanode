@@ -44,8 +44,10 @@ message1=""
 fi
 
 #approximate date of first install 
+if [[ ! -e $dp/parmanode_all.log ]] ; then touch $dp/parmanode_all.log ; fi
 message2=$(head -n1 $dp/parmanode_all.log | cut -d ' ' -f 1-6 )
 #the count of the number of times the program has been run
+if [[ ! -e $dp/parmanode.conf ]] ; then touch $dp/parmanode.conf ; fi
 message3=$(cat $dp/parmanode.conf | grep rp_count | cut -d = -f 2)
 #the operating system, linux vs Mac
 message4=$(cat $dp/parmanode.conf | grep OS= | cut -d = -f 2)
