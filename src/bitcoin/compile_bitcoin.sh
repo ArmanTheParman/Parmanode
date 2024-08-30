@@ -37,10 +37,10 @@ if [[ $bitcoin_compile == "true" ]] ; then
 
 if [[ -e $hp/bitcoin_github ]] ; then 
 sudo rm -rf $hp/bitcoin_github >$dn 2>&1
-else
+fi
+
 git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
 cd $hp/bitcoin_github
-fi
 
 if [[ $version == "choose" ]] ; then # nested level 2 if
 
