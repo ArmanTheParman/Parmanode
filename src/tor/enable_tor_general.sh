@@ -3,7 +3,7 @@ if [[ $OS == "Mac" ]] ; then enable_tor_general_mac ; return 0 ; fi
 
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 
-if [[ ! -f /etc/tor/torrc ]] ; then
+if [[ ! -f /etc/tor/torrc ]] 2>$dn ; then
 set_terminal ; echo "
 ########################################################################################
     /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
@@ -55,7 +55,7 @@ EOF
 return 0
 fi
 
-if [[ ! -d /usr/local/etc/tor ]] ; then return 1 ; fi
+if [[ ! -d /usr/local/etc/tor ]] >/dev/null 2>&1 ; then return 1 ; fi
 
 if ! sudo cat $file | grep -q "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $file >/dev/null 2>&1
