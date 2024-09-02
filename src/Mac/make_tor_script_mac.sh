@@ -41,6 +41,6 @@ sudo chmod +x $dp/tor_script.sh >/dev/null 2>&1
 
 crontab -l | echo "
 PATH=$PATH #REMOVE_TOR_FLAG
-* * * * * [ -x $HOME/.parmanode/tor_script.sh ] && $HOME/.parmanode/tor_script.sh #REMOVE_TOR_FLAG" | crontab -
+* * * * * [ -x $HOME/.parmanode/tor_script.sh ] && $HOME/.parmanode/tor_script.sh #REMOVE_TOR_FLAG" | crontab - >/dev/null
 }
 
