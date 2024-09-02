@@ -43,7 +43,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 read choice
 
 case $choice in
-y|Y|YES|yes)
+y|Y|YES|yes|u)
 if ! which brew >/dev/null ; then 
 install_homebrew 
 /opt/homebrew/bin/brew install bash netcat jq vim
@@ -91,7 +91,7 @@ choice=y
 fi
 
 case $choice in
-y|Y|Yes|yes)
+y|Y|Yes|yes|u)
 sudo apt-get upgrade -y 
 sudo apt-get install jq netcat vim net-tools unzip -y 
 if ! which ssh >/dev/null ; then sudo apt-get install ssh ; sudo systemctl enable ssh >/dev/null 2>&1
