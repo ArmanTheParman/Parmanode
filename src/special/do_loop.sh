@@ -154,6 +154,9 @@ announce "no fixes available presently. Exiting."
 exit
 fi
 
+########################################################################################
+#Special functions
+########################################################################################
 if [[ $bash == 1 && $OS == Linux ]] ; then 
 #bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
 echo "Entering bash inception..."
@@ -166,6 +169,12 @@ sleep 0.5
 bash --rcfile $pn/src/tools/rcfile
 exit 
 fi
+
+if [[ $uninstall_homebrew == true ]] ; then
+uninstall_homebrew || exit
+success "Homebrew uninstalled"
+fi
+
 
 ########################################################################################
 ########################################################################################
