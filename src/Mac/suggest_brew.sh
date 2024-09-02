@@ -33,6 +33,7 @@ choose xq ; read choice ; set_terminal ;
 case $choice in
 q|Q) exit ;; 
 1) 
+please_wait
 update_computer
 ;;
 2|""|s|p|P)
