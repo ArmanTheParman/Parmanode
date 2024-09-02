@@ -34,7 +34,7 @@ case $choice in
 q|Q) exit ;; 
 1) 
 please_wait
-update_computer
+update_computer silent
 break
 ;;
 2|""|s|p|P)

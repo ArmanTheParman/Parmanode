@@ -7,10 +7,11 @@ if [[ $(uname) == Darwin ]] ; then
 
 while true ; do
 set_terminal
-echo -e "
-########################################################################################
-$cyan
-                             UPDATE/INSTALL HOMEBREW ?
+if [[ $1 == silent ]] ; then
+text="
+########################################################################################"
+else
+text="
 $orange   
     Before using Parmanode, it is recommended that you install/update HomeBrew.
     
@@ -18,6 +19,12 @@ $orange
     instead of black & white only, but also a few little bits and bobs will work
     better.
 
+"
+echo -e "
+########################################################################################
+$cyan
+                             UPDATE/INSTALL HOMEBREW ?
+$text 
     As it's running, do look at the output, especially near the start; if there is a 
     recommendation to run a command related to \"git unshallow\", then do that.
 
