@@ -101,8 +101,6 @@ set_terminal ; echo -e "
 "
 enter_continue
 return 1
-else
-echo -e "${green}Parmanode drive detected...$orange" ; sleep 1
 fi
 
 ########################################################################################
