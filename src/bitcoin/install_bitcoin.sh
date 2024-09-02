@@ -1,4 +1,18 @@
 function install_bitcoin {
+debug "checking variables:
+drive, $drive 
+prune_value, $prune_value
+bitcoin_choice, $bitcoin_choice
+UUID, $UUID
+BTCIP, $BTCIP 
+rpcuser, $rpcuser 
+rpcpassword, $rpcpassword 
+btc_authentication, $btc_authentication
+format_choice, $format_choice 
+skip_formatting, $skip_formatting 
+justFormat, $justFormat
+driveproblem, $driveproblem
+"
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
 
