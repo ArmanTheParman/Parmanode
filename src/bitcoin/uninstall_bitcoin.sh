@@ -111,7 +111,7 @@ parmanode_conf_remove "rpcpassword"
 parmanode_conf_remove "UUID"
 parmanode_conf_remove "bitcoin_choice"
 parmanode_conf_remove "BTCIP"
-unset drive, prune_value, bitcoin_choice, UUID, BTCIP, rpcuser, rpcpassword, btc_authentication
+unset drive, prune_value, bitcoin_choice, UUID, BTCIP, rpcuser, rpcpassword, btc_authentication, format_choice, skip_formatting, justFormat, driveproblem
 #Remove service file for Linux only
 sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
 
