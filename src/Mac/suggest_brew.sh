@@ -45,7 +45,6 @@ break
 4)
 announce "To install or update HomeBrew, the best way is to go to the
     Parmanode --> Tools menu, and choose update computer."
-break
 ;;
 *)
 invalid
