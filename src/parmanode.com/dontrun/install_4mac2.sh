@@ -18,6 +18,8 @@ cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >
 #make desktop text document...
 if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
 
+touch $HOME/.zshrc >/dev/null 2>&1
+
 if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
