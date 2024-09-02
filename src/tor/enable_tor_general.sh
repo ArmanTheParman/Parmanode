@@ -40,8 +40,10 @@ if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/
 }
 
 function enable_tor_general_mac {
+dir=/usr/local/etc/tor
+file=$dir/torrc
 
-file=/usr/local/etc/tor/torrc
+if [[ ! -d $dir ]] ; then sudo mkdir -p $dir >$dn 2>&1 ; fi
 
 if [[ ! -e $file ]] ; then 
 touch $file >/dev/null 2>&1
