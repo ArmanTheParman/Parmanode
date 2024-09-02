@@ -8,7 +8,8 @@ echo -e "
     This can take a while, sometimes with very litte feedback during the process. 
 
     Hitting control-t while it's thinking might give some status update. 
-    Please just wait.
+
+    You may or may not need to respond to some prompts.
 
 ########################################################################################    
 
