@@ -3,6 +3,8 @@
 function update_computer {
 # $1 silent
 
+if [[ $(uname) == Darwin ]] ; then
+
 while true ; do
 set_terminal
 echo -e "
