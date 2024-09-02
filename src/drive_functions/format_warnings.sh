@@ -5,7 +5,8 @@ if [[ $OS == "Linux" ]] ; then
 echo -e "
 ########################################################################################
     
-    YOU ARE ABOUT TO$red FORMAT THE DRIVE!$orange All data on the drive will be erased.
+    YOU ARE ABOUT TO$red FORMAT THE EXTENAL DRIVE!$orange All data on the drive will 
+    be erased.
 
                          (y)     Format drive
 $green
