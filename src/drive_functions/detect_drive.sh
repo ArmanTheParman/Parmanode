@@ -18,11 +18,13 @@ fi
 while true ; do
 
 
+if [[ $log == "umbrel-mac" ]] ; then umbrel=" Umbrel" ;fi
+
 if ! echo $@ | grep -q brief ; then
 set_terminal ; echo -en "$pink
 ########################################################################################
     
-    Now, please make sure the drive you wish to add to Parmanode is 
+    Now, please make sure the$umbrel drive you wish to add to Parmanode is 
     ${cyan}DISCONNECTED.$pink Do not disconnect any of your other drives at this time. 
     
     This is important to make sure the drive is detected in the list of drives before 
@@ -74,7 +76,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now go ahead and ${pink}CONNECT$orange the $umbrel drive you wish to use for 
+    Now go ahead and ${pink}CONNECT$orange the$umbrel drive you wish to use for 
     Parmanode. Do not connect any other drive.
 
     If a window pops up, a file explorer, you can safely close that.
