@@ -1,4 +1,5 @@
 function format_ext_drive {
+debug " in format_ext_drive, sf = $skip_formatting"
 if [[ $skip_formatting == "true" ]] ; then return 0 ; fi
 debug "bypassed skip_formatting exit"
 
