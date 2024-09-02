@@ -1,5 +1,6 @@
 function format_ext_drive {
 if [[ $skip_formatting == "true" ]] ; then return 0 ; fi
+debug "bypassed skip_formatting exit"
 
 #quit if internal drive chosen
 if [[ $1 == "Bitcoin" && $drive == "internal" ]] ; then return 0 ; fi
