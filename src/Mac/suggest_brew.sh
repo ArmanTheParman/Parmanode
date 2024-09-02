@@ -43,8 +43,8 @@ echo "no_homebrew_check=true" >> $hm 2>$dn
 break
 ;;
 4)
-announce "To install or update HomeBrew, the best way is to go to the
-    Parmanode --> Tools menu, and choose update computer."
+announce "To install or update HomeBrew, the best way is to go to the Parmanode --> Tools
+    menu, and choose update computer."
 ;;
 *)
 invalid
