@@ -18,14 +18,11 @@ fi
 while true ; do
 
 
-if [[ $1 != menu2 ]] ; then #probably can remove this, now redundant.
-if [[ $log == "umbrel-mac" ]] ; then umbrel=Umbrel ;fi
-
 if ! echo $@ | grep -q brief ; then
-set_terminal ; echo -e "$pink
+set_terminal ; echo -en "$pink
 ########################################################################################
     
-    Now, please make sure the $umbrel drive you wish to add to Parmanode is 
+    Now, please make sure the drive you wish to add to Parmanode is 
     ${cyan}DISCONNECTED.$pink Do not disconnect any of your other drives at this time. 
     
     This is important to make sure the drive is detected in the list of drives before 
@@ -55,8 +52,6 @@ elif [[ $(uname) == Darwin ]] ; then
     else break ; fi 
 fi
 done
-
-fi #end ! menu2
 
 #DETECT BEFORE AND AFTER...
 #For some drives blkid detects a difference.

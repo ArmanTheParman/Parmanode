@@ -1,7 +1,4 @@
 function install_bitcoin {
-print_bitcoin_variables
-
-unset prune_value, drive
 
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
@@ -52,7 +49,6 @@ unset importdrive
 choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added as this function is also
                                              # called by a fulcrum installation, and electrs.
                                              # drive=internal or drive=external exported and added to parmanode.conf
-print_bitcoin_variables "before format function"                                             
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
 
 
@@ -70,7 +66,6 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
     break
     done
 
-print_bitcoin_variables
 prune_choice || return 1 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
