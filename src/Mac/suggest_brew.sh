@@ -2,7 +2,7 @@ function suggest_brew {
 
 if [[ $OS != Mac ]] ; then return 0 ; fi
 
-if grep -q "no_homebrew_check=true" < $hm 2>$dn ; return 0 ; fi
+if grep -q "no_homebrew_check=true" < $hm 2>$dn ; then return 0 ; fi
 
 if ! which brew >$dn 2>&1 ; then
 while true ; do
