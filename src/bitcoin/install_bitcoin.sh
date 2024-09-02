@@ -1,18 +1,5 @@
 function install_bitcoin {
-debug "checking variables:
-drive, $drive 
-prune_value, $prune_value
-bitcoin_choice, $bitcoin_choice
-UUID, $UUID
-BTCIP, $BTCIP 
-rpcuser, $rpcuser 
-rpcpassword, $rpcpassword 
-btc_authentication, $btc_authentication
-format_choice, $format_choice 
-skip_formatting, $skip_formatting 
-justFormat, $justFormat
-driveproblem, $driveproblem
-"
+print_bitcoin_variables
 
 unset prune_value, drive
 
@@ -225,4 +212,21 @@ fi
 
 unset importdrive install_bitcoin_variable raid
 set_terminal
+}
+
+function print_bitcoin_variables {
+debug "checking variables:
+drive, $drive 
+prune_value, $prune_value
+bitcoin_choice, $bitcoin_choice
+UUID, $UUID
+BTCIP, $BTCIP 
+rpcuser, $rpcuser 
+rpcpassword, $rpcpassword 
+btc_authentication, $btc_authentication
+format_choice, $format_choice 
+skip_formatting, $skip_formatting 
+justFormat, $justFormat
+driveproblem, $driveproblem
+"
 }
