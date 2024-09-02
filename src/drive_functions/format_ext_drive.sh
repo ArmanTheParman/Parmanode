@@ -206,11 +206,11 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    You have selected an internal drive for $1 and then to not format a drive.
+    You have selected an external drive for $1 and then to not format a drive.
 
     Parmanode has not detected any Parmanode configured drive connected to the
     computer. If you proceed, Bitcoin will be installed, but it won't be able to
-    start. You can still go head and 'import' a parmanode drive later, or choose
+    start. You can still go head and 'import' a Parmanode drive later, or choose
     to bring in a new drive later from the Parmanode Bitcoin menu.
 
     Keep going with installation?
