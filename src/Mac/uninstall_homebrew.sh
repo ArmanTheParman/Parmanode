@@ -18,7 +18,7 @@ case $choice in
 q|Q) exit ;;
 y)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-/opt/homebrew
+a
 sudo rm -rf /opt/homebrew/Homebrew >$dn 2>&1
 sudo rm -rf /opt/homebrew/Caskroom >$dn 2>&1
 sudo rm -rf /opt/homebrew//Cellar >$dn 2>&1
