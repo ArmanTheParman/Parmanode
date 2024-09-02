@@ -44,7 +44,10 @@ read choice
 
 case $choice in
 y|Y|YES|yes)
-if ! which brew >/dev/null ; then install_homebrew ; break
+if ! which brew >/dev/null ; then 
+install_homebrew 
+/opt/homebrew/bin/brew install bash netcat jq vim
+break
 else
 brew update
 brew upgrade
