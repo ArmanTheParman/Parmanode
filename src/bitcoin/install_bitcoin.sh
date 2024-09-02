@@ -69,6 +69,7 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
     break
     done
 
+print_bitcoin_variables
 prune_choice || return 1 
     # set $prune_value. Doing this now as it is related to 
     # the drive choice just made by the user. 
