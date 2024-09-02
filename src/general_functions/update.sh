@@ -14,23 +14,19 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-                                 UPDATE THE OS ?
+                             UPDATE/INSTALL HOMEBREW ?
 $orange   
-    Before using Parmanode, it is strongly recommended that you update your system 
-    first. 
+    Before using Parmanode, it is recommended that you install/update HomeBrew.
     
-    This function will update your operating system and add few tools that
-    Parmanode uses to function smoothly. 
-
     One noticable advantage will be a colour text display when using Parmanode, 
-    instead of black & white only.
+    instead of black & white only, but also a few little bits and bobs will work
+    better.
 
     As it's running, do look at the output, especially near the start; if there is a 
     recommendation to run a command related to \"git unshallow\", then do that.
 
-    WARNING: This can take a really long time. It's ok if you skip now, but do 
-    make sure to come back to the \"tools\" menu, and select \"Update Computer\" when 
-    you have time.
+    WARNING: This can take a long time. Alternatively, you can come back to 
+    the 'tools' menu, and select 'Update Computer' when you have time.
 
 $green
                        y)      Update
