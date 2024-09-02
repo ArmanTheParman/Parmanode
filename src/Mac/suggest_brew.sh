@@ -35,6 +35,7 @@ q|Q) exit ;;
 1) 
 please_wait
 update_computer
+break
 ;;
 2|""|s|p|P)
 break
