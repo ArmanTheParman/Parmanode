@@ -216,7 +216,9 @@ set_terminal
 }
 
 function print_bitcoin_variables {
-debug "checking variables:
+debug "
+$1
+checking variables:
 drive, $drive 
 prune_value, $prune_value
 bitcoin_choice, $bitcoin_choice
