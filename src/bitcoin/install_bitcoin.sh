@@ -13,6 +13,9 @@ skip_formatting, $skip_formatting
 justFormat, $justFormat
 driveproblem, $driveproblem
 "
+
+unset prune_value, drive
+
 # if installing bitcoin inside a docker container, then using btcpayinstallsbitcoin="true"
 # if installing bitcoin and btcpay together in docker (initiated by a bitcoin install), then using btcdockerchoice="yes"
 
