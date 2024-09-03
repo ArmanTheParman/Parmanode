@@ -49,7 +49,7 @@ read choice
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-0|27)
+0|27|"")
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; break ;;
 1|26) 
