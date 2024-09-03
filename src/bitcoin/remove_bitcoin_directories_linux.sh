@@ -27,7 +27,7 @@ echo -e "
     It appears there is a Bitcoin data directory on the external drive. Would you like 
     to delete that data or leave it?
 $red
-                            d)          Delete $orange
+                            del)        Delete $orange
 
                             l)          Leave it 
 
@@ -46,7 +46,7 @@ l|L)
 #shouldn't need skip_formatting beccause format function was earlier, but just in case...
 export skip_formatting="true" ; break ;;
 
-d|D) 
+del|DEL)
 please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing." ;  break ;;
 
@@ -69,7 +69,7 @@ $cyan
 $orange
     Would like to delete that data or leave it be (skip) ?
 
-                            d)          Delete
+                            del)        Delete
 
                             b)          Create a back up 
 
@@ -93,7 +93,7 @@ b|B)
     make_backup_dot_bitcoin 
     break
     ;;
-d|D)
+del|DEL)
     cd ; rm -rf $HOME/.bitcoin >/dev/null 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing."
     break

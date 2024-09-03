@@ -26,7 +26,7 @@ echo -e "
     It appears there is a Bitcoin data directory on the external drive. 
     You have choices:
 $red
-                            d)          Delete $orange
+                            del)        Delete $orange
 $green
                             l)          Leave it
 $orange
@@ -43,15 +43,11 @@ q|Q|Quit|QUIT)
 exit ;;
 
 l|L)
-log "bitcoin" "skip; not deleting .bitcoin on drive" 
 break 
 ;;
 
-d|D|DELETE|Delete)
-log "bitcoin" "deleting .bitcoin on drive" 
-cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1 \
-|| { log "bitcoin" "error deleting .bitcoin dir"
-debug "Error deleting .bitcoin directory. Continuing." ; } 
+DEL|del|DELETE|Delete)
+cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1
 break 
 ;;
 
@@ -74,7 +70,7 @@ $cyan
 $orange
     You have choices:
 
-                            d)          Delete
+                            del)        Delete
 
                             b)          Create a back up 
 
@@ -96,12 +92,10 @@ q|Q|quit|QUIT)
 exit 0 ;;
 3) break ;;
 s|S|SKIP|skip|Skip)
-    log "bitcoin" "user chose to skip deleting internal .bitcoin drive. make backup executing." && \
     make_backup_dot_bitcoin 
     break
     ;;
-d|D|delete|Delete|DELETE)
-    log "bitcoin" "user chose to delete internal .bitcoin dir"
+DEL|del|DELETE|Delete)    
     cd && rm -rf $HOME/.bitcoin 
     break 
     ;; 
@@ -113,12 +107,10 @@ fi #end checking internal drive for .bitcoin directory
 #Remove symlink to drive
 if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 
     rm $HOME/.bitcoin && \
-    log "bitcoin" "symlink .bitcoin deleted"
     fi      
 
 #Remove symlink from default Bitcoin directory to $HOME/.bitcoin
 if [[ -L $HOME/Library/"Application Support"/Bitcoin ]] ; then
-    log "bitcoin" "Application Support/Bitcoin symlink deleted" && \
     rm $HOME/Library/"Application Support"/Bitcoin ; fi 
 
 return 0
