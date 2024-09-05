@@ -1025,7 +1025,7 @@ $cyan
    for free. It's slavery.
 
    We end this by opting out of the scam, and stop working for their money. 
-   Accumulating Bitcoin helps it become the new world momey. Then no one can scam in 
+   Accumulating Bitcoin helps it become the new world money. Then no one can scam in 
    this way. They lose power. Join us.
 $bright_blue
    https://armantheparman.com/joinus/
