@@ -40,13 +40,14 @@ function t { cd /tmp ; a ; }
 function sd { cd /etc/systemd/system/ ; a ; }
 function gp { pn ; git pull ; a ; }
 function ct { cat /etc/crontab ; }
+function rp { pn ; ./run_parmanode.sh $@ ; }
 
 if [[ $(uname) == Darwin ]] ; then
 function en { cd /usr/local/etc/nginx ; a ; }
 function enc { cd /usr/local/etc/nginx/conf.d ; a ; }
 function et { cd /usr/local/etc/tor ; a ; }
 function vlt { cd /usr/local/var/lib/tor ; a ; }
-else
+else #if Linux
 function en { cd /etc/nginx ; a ; }
 function enc { cd /etc/nginx/conf.d/ ; a ; }
 function et { cd /etc/tor ; a ; }
