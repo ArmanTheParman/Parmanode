@@ -15,7 +15,7 @@ set_terminal ; echo -e "
     It's best to not include any symbols.
     $pink
     NOTE YOU WILL NEED TO ENTER IT 3 TIMES. ONCE TO DECLARE IT, ANOTHER TO CONFIRM,
-    AND FILNALLY AGAIN TO USE IT TO CREATE THE DATABASE.
+    AND FILNALLY AGAIN TO USE IT TO CREATE THE DATABASE.$orange
 
 ########################################################################################
 
