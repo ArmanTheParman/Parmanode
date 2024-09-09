@@ -1,7 +1,7 @@
 function create_website_database {
 set_terminal 
 while true ; do
-echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 
     MariaDB is the database that will hold your website's data. The database will be
