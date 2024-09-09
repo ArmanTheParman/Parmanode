@@ -1,5 +1,6 @@
 Version 3.42.1
     -sneaky bitcoin install bug fixed
+    -uninstall Parmanode glitch fixed
 Version 3.42.0
     -QRencode
     -LND macaroon QR option
