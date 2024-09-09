@@ -27,15 +27,15 @@ set_terminal ; echo -e "
 read choice ; set_terminal 
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-d) export website="website" ;;
-2) export website="website2" ;;
-3) export website="website3" ;;
-4) export website="website4" ;;
-5) export website="website5" ;;
-6) export website="website6" ;;
-7) export website="website7" ;;
-8) export website="website8" ;;
-9) export website="website9" ;;
+d) export website="website" ; break ;;
+2) export website="website2" ; break ;;
+3) export website="website3" ; break ;;
+4) export website="website4" ; break ;;
+5) export website="website5" ; break ;;
+6) export website="website6" ; break ;;
+7) export website="website7" ; break ;;
+8) export website="website8" ; break ;;
+9) export website="website9" ; break ;;
 *) invalid ;;
 esac
 done
