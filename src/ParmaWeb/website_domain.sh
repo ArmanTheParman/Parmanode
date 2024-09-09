@@ -133,9 +133,9 @@ parmanode_conf_add "www=$www"
 source $pc
 debug "source pc"
 
-if [[ -n $domain_name && -e /etc/nginx/conf.d/website.conf ]] ; then
+if [[ -n $domain_name && -e /etc/nginx/conf.d/$website.conf ]] ; then
     local file="/etc/nginx/conf.d/$domain_name.conf"
-    sudo mv /etc/nginx/conf.d/website.conf $file >/dev/null 2>&1
+    sudo mv /etc/nginx/conf.d/$website.conf $file >/dev/null 2>&1
 
     if [[ $www == "true" ]] ; then www_name="www.$domain_name" ; fi
         
@@ -143,5 +143,5 @@ if [[ -n $domain_name && -e /etc/nginx/conf.d/website.conf ]] ; then
     swap_string "$file" "#put server___name" "$server_name"
     sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
 fi
-debug "end of website domain function"
+debug "end of $website domain function"
 }
