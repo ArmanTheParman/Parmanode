@@ -1,8 +1,9 @@
 function make_website_nginx {
 # www=true/false
 # domain=internalIP/externalIP/damain_name
+if [[ -z $website ]] ; then website="website" ; fi
 
-file="/etc/nginx/conf.d/website.conf"
+file="/etc/nginx/conf.d/$website.conf"
 sudo rm -rf $file
 
 if [[ -n $domain || -n $domain_name ]] ; then
@@ -26,7 +27,7 @@ server {
 
     listen 80;
     $server_name
-    root /var/www/website;
+    root /var/www/$website;
     index index.html index.htm index.php;
     client_max_body_size 0; #default upload size is 1M, '0' means unlimited. 
 
@@ -99,7 +100,7 @@ server {
 
     listen 80;
     $server_name
-    root /var/www/website;
+    root /var/www/$website;
     index index.html index.htm index.php;
     client_max_body_size 200M; #default upload size is 1M
 

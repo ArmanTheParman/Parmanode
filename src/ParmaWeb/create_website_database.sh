@@ -5,7 +5,7 @@ echo -e "
 ########################################################################################
 
     MariaDB is the database that will hold your website's data. The database will be
-    called 'website'.
+    called '$website'.
 
     A username for the database will be created, called 'parmanode'.
 
@@ -31,7 +31,7 @@ continue
 fi    
 break
 done
-parmanode_conf_add "website_database_user=parmanode"
-parmanode_conf_add "website_database_password=$password"
-sudo mysql -u root -p -e "CREATE DATABASE website; CREATE USER \"parmanode\"@'localhost' IDENTIFIED BY \"$password\"; GRANT ALL PRIVILEGES ON website.* TO \"parmanode\"@\"localhost\"; FLUSH PRIVILEGES;"
+parmanode_conf_add "${website}_database_user=parmanode"
+parmanode_conf_add "${website}_database_password=$password"
+sudo mysql -u root -p -e "CREATE DATABASE $website; CREATE USER \"parmanode\"@'localhost' IDENTIFIED BY \"$password\"; GRANT ALL PRIVILEGES ON $website.* TO \"parmanode\"@\"localhost\"; FLUSH PRIVILEGES;"
 }
