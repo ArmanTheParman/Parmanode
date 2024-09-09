@@ -6,8 +6,8 @@ no_mac || { announce "If there is demand for Macs, it's up to you to let me know
 
 if [[ -e /var/www/website ]] ; then
 announce "
-    The directory /var/www/website already exits. Please delete it or move it and
-    try again. Aborting."
+    The directory /var/www/website already exits. Please delete or move it or move 
+    it and try again. Aborting."
 return 1
 fi
 
