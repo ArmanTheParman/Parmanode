@@ -1,10 +1,12 @@
 function uninstall_parmanode {
 local file="$dp/installed.conf"
 set_terminal
+
+while true ; do
 echo -e "
 ########################################################################################
 $red
-                                Uninstall Parmanode
+                                Uninstall Parmanode??
 $orange
     This will first give you the option to remove programs installed with Parmanode 
     before removing the Parmanode installation files and configuration files. 
@@ -26,10 +28,19 @@ case $choice in
     q|QUIT|Q|quit)
     exit 0 ;;
 
-    p|P)
+    p|P|n|N|a|A)
     return 1 ;;
 
+    y|yes|YES|Y)
+    break
+    ;;
+    
+    *)
+    invalid
+    ;;
+
     esac
+done
 
 if grep -q "bitcoin" < $file #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
