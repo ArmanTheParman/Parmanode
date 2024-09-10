@@ -3,19 +3,19 @@ function apply_patches {
 #patch=n
 #get $patch from parmanode.conf
 temp_patch
-debug "1"
+#debug "1"
 openssh_patch
-debug "2"
+#debug "2"
 make_parmanode_service #Linux only
-debug "3"
+#debug "3"
 make_tor_script_mac
-debug "4"
+#debug "4"
 make_parmanode_tor_service  #makes parmanode tor onion address
-debug "5"
+#debug "5"
 hello
-debug "6"
+#debug "6"
 suggest_brew
-debug "7"
+#debug "7"
 
 case $patch in 
 1) 
