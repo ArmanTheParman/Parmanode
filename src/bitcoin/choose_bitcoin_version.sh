@@ -24,9 +24,9 @@ $orange
 
        2)  v25.0 (Download and verify 'trusted' releases) 
 
-       3)  Guided compile v25.0/v26.0/v27.1
+       3)  Guided compile v27.1
 $bright_blue
-       4)  Guided compile v25.0/v26.0 (FILTER-ORDINALS patch, by Luke Dashjr)
+       4)  Guided compile (FILTER-ORDINALS patch, by Luke Dashjr)
 
        5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core) - 
            syncs faster; bug fixes missing in Core; and power user options / tools.

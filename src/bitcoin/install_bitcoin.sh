@@ -43,7 +43,7 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
-debug "aftter choose_bitcoin_version"
+debug "after choose_bitcoin_version"
 
 unset importdrive
 
