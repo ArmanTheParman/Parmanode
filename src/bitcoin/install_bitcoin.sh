@@ -43,6 +43,7 @@ set_terminal
 #choose version
 choose_bitcoin_version || return 1 #no_compile variable set for macs here.
 
+debug "aftter choose_bitcoin_version"
 
 unset importdrive
 
@@ -51,6 +52,7 @@ choose_and_prepare_drive "Bitcoin" || return 1 # the argument "Bitcoin" is added
                                              # drive=internal or drive=external exported and added to parmanode.conf
 format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exported before)
 
+debug "after format_ext_drive"
 
 #Just in case (redundant permission setting)
     while true ; do 
@@ -76,6 +78,8 @@ make_bitcoin_directories || return 1
     # installed.conf entry gets made when parmanode/bitcoin directory gets made.
     # symlinks created (before Bitcoin core installed)
 
+debug "after make_bitcoin_directories"
+
 #compile bitcoin if chosen
 compile_bitcoin || return 1
 
@@ -84,6 +88,8 @@ compile_bitcoin || return 1
 if [[ $bitcoin_compile == "false" ]] ; then
 download_bitcoin || return 1
 fi
+
+debug "after download_bitcoin"
 
 #setup bitcoin.conf
 make_bitcoin_conf || return 1

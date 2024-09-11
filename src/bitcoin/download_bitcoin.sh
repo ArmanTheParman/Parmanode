@@ -73,6 +73,8 @@ while true ; do
          fi
 done
 
+debug "before verify bitcoin, after download"
+
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
 fi
