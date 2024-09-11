@@ -6,7 +6,7 @@ make_lnd_service_tor
 #remove June 2025 - make sure all electrs docker has socat installed
 if grep -q "electrsdkr" < $ic ; then
     if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
-        docker exec -d electrs bash -c "sudo apt-get install socat -y"
+        docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
 fi
 
