@@ -91,5 +91,6 @@ nostrrelay_run
 
 installed_conf_add "nostrrelay-end"
 
+unset IP_choice
 success "Your Nostr Relay has been set up"
 }

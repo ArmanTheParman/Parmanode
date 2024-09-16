@@ -28,6 +28,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 n|N|No|no) 
 export domain="$IP"
+export IP_choice="internal"
 parmanode_conf_remove "domain="
 parmanode_conf_remove "domain_name="
 parmanode_conf_add "domain=\"$IP\""
@@ -35,12 +36,14 @@ return 0
 ;;
 e|E)
 export domain="$external_IP"
+export IP_choice="external"
 parmanode_conf_remove "domain="
 parmanode_conf_remove "domain_name="
 parmanode_conf_add "domain=\"$external_IP\""
 return 0
 ;;
 y|Y)
+export IP_choice="domainname"
 break
 # will get domain=string and www=true/false
 ;;

@@ -1,10 +1,11 @@
-
 function nostrrelay_reverse_proxy_info {
+
+if [[ $IP_choice == "internal" ]] ; then return 0 ; fi
 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                             Reverse Proxy - STEP 1
+                             Reverse Proxy Info - STEP 1
 $orange
     Here's how to do this, and why...
 
@@ -36,7 +37,7 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-                             Reverse Proxy - STEP 2
+                             Reverse Proxy Info - STEP 2
 $orange
    The next important decision is deciding if you are going to open a port on your
    server. For a VPS, the ports will be open by default. But for home servers, you 
@@ -63,5 +64,5 @@ $orange
 "
 enter_continue
 set_terminal
-return
+return 0
 }
