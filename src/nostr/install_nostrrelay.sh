@@ -86,7 +86,8 @@ sudo systemctl restart nginx >/dev/null 2>&1
 
 echo -e "${green}Building Docker image..."
 nostrrelay_build
-
+echo -e "Pause to check if build successful"
+read
 nostrrelay_run
 
 installed_conf_add "nostrrelay-end"
