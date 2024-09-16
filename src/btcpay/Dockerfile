@@ -46,4 +46,4 @@ RUN mkdir -p ~/.nbxplorer/Main
 RUN cd ~/parmanode && git clone https://github.com/btcpayserver/btcpayserver.git && cd btcpayserver && git checkout $btcpay_version && ./build.sh
 RUN mkdir -p ~/.btcpayserver/Main 
 
-CMD tail -f /dev/null
+CMD ["tail" , "-f", "/dev/null"]
