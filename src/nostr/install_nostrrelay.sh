@@ -66,7 +66,14 @@ install_certbot
 ########################################################################################
 cd $hp
 git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
+cd nostrrelay 
 
+#Bookworm version fails, need to revert back to bullseye
+if [[ $OS == Linux ]] ; then
+sed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
+elif [[ $OS == Mac ]] ; then
+gsed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
+fi
 
 #################################
 # configure settings...
