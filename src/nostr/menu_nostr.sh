@@ -198,7 +198,7 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 http)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name  &
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location &
 curl_PID=$!
 trap 'kill $curl_PID' SIGINT #condition added to memory
 wait $curl_PID # code waits here for user to control-c
@@ -206,7 +206,7 @@ trap - SIGINT # reset the trap so control-c works elsewhere.
 break
 ;;
 https)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name &
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location &
 curl_PID=$!
 trap 'kill $curl_PID' SIGINT #condition added to memory
 wait $curl_PID # code waits here for user to control-c
@@ -214,12 +214,12 @@ trap - SIGINT # reset the trap so control-c works elsewhere.
 break
 ;;
 e1)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: http://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$domain_name 
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location
 enter_continue
 break
 ;;
 e2)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $domain_name" -H "Origin: https://$domain_name" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$domain_name 
+curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location
 enter_continue
 break
 ;;
