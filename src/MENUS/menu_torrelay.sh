@@ -5,7 +5,7 @@ while true ; do set_terminal ; echo -e "
 ########################################################################################
 
 
-               i)        Tor Relay Information
+               i)        Tor Relay Information (via Nyx software)
 
                r)        Restart Tor
 
