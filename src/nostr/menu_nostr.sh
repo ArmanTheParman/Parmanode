@@ -37,8 +37,16 @@ fi
 
 if [[ -n $domain_name ]] ; then
 domain_name_text="
-        Domain Name:             $bright_magenta $domain_name$orange"
+        Domain Name:             $bright_magenta $domain_name$orange
+        "
+location=$domain_name
+else
+domain_name_text="
+        Domain Name:             NOT SET
+        "
+location=$domain
 fi
+
 
 if [[ -n $ONION_ADDR_NOSTR ]] ; then
 tor_menu="        $bright_blue$ONION_ADDR_NOSTR${yellow}:7081 $orange
@@ -60,7 +68,6 @@ $running_nostr_menu
 
         Relay Name:               $bright_magenta$relay_name$orange
         $domain_name_text
-
         Local IP & Port           $IP${yellow}:7080$orange    (routed to Docker container)
 
         Docker Container IP       $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nostrrelay)${yellow}:8080 $orange
