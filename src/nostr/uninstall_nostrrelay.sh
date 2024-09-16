@@ -45,13 +45,13 @@ fi
 
 double_check_website_not_installed || return 1
 
-docker stop nostrrelay
-docker rm nostrrelay
+docker stop nostrrelay >$dn 2>&1
+docker rm nostrrelay >$dn 2>&1
 
-rm -rf $hp/nostrrelay 2>/dev/null
+rm -rf $hp/nostrrelay 2>$dn
 
 if [[ -e /var/www/website ]] ; then
-sudo rm -rf /var/www/website
+sudo rm -rf /var/www/website >$dn
 fi
 
 sudo rm -rf /etc/nginx/conf.d/website* >/dev/null 2>&1
