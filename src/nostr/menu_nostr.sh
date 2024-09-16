@@ -42,7 +42,7 @@ domain_name_text="
 location=$domain_name
 else
 domain_name_text="
-        Domain Name:             NOT SET
+        Domain Name:              NOT SET
         "
 location=$domain
 fi
