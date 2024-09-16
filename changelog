@@ -1,6 +1,7 @@
 Version 3.42.1
     -sneaky bitcoin install bug fixed
     -uninstall Parmanode glitch fixed
+    -fixed Nostr Relay test bug
 Version 3.42.0
     -QRencode
     -LND macaroon QR option
