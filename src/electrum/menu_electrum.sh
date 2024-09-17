@@ -14,14 +14,14 @@ set_terminal ; echo -e "
 
 $green            start) $orange          Start Electrum (opens in its own window)
          
-$green            (mm)    $orange         Manage node connection...
+$green            mm)     $orange         Manage node connection...
 
 $green            ec) $orange             View Electrum Config file
 
-$green            (cl)    $orange         Clear connection certificates 
+$green            cl)     $orange         Clear connection certificates 
                           $orange         (can help connection issues)
                   
-$green            (w)$orange              Show saved wallet files
+$green            w) $orange              Show saved wallet files
 
 $green            eg) $bright_blue             Parman's Electrum Guide
 
