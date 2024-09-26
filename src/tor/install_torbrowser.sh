@@ -14,6 +14,8 @@ curl -LO https://github.com/TheTorProject/gettorbrowser/releases/download/linux6
 fi
 #import key
 curl https://keys.openpgp.org/vks/v1/by-fingerprint/EF6E286DDA85EA2A4BA7DE684E2C6E8793298290 | gpg --import -
+debug "Check import"
+
 #verify signature
 if gpg --verify --status-fd 1 tor*asc 2>&1 | grep -q GOOD ; then
 announce "GPG verification$green passed$orange."
