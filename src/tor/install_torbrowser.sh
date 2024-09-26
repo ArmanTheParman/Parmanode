@@ -20,6 +20,7 @@ curl -s https://openpgpkey.torproject.org/.well-known/openpgpkey/torproject.org/
 if gpg --verify --status-fd 1 tor*asc 2>&1 | grep -q GOOD ; then
 announce "GPG verification$green passed$orange."
 else
+debug "check output"
 announce "GPG verification$red failed$orange. Aborting."
 return 1 
 fi
