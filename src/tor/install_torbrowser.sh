@@ -17,10 +17,14 @@ curl https://keys.openpgp.org/vks/v1/by-fingerprint/EF6E286DDA85EA2A4BA7DE684E2C
 debug "Check import"
 
 #verify signature
-if gpg --verify --status-fd 1 tor*asc 2>&1 | grep -q GOOD ; then
+gpg --verify --status-fd 1 tor*asc > /tmp/tor_gpg_output.delete 2>&1 
+
+if grep -q "GOOD" < /tmp/tor_gpg_output.delete ; then
 announce "GPG verification$green passed$orange."
+rm /tmp/tor_gpg_output.delete >$dn
 else
 debug "check output"
+rm /tmp/tor_gpg_output.delete >$dn
 announce "GPG verification$red failed$orange. Aborting."
 return 1 
 fi
