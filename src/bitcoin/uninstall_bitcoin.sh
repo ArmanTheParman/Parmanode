@@ -89,6 +89,7 @@ stop_bitcoind
 
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
+debug "after remove bitcoin dir linux"
 fi
 
 if [[ $OS == "Mac" ]] ; then 
