@@ -19,10 +19,10 @@ fi
 
 set_terminal
 
-rm -rf $HOME/parmanode/bitbox
+sudo rm -rf $HOME/parmanode/bitbox
 
 if [[ $OS == Mac ]] ; then
-rm -rf /Applications/"BitBox.app"
+sudo rm -rf /Applications/"BitBox.app"
 fi
 
 installed_conf_remove "bitbox"

@@ -28,7 +28,7 @@ rf)
 cd $HOME
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp
 file ./parmanode_temp/do_not_delete_move_rename.txt 1>/dev/null 2>&1 || { echo "Some problem with the download. Aborting. You might wnat to try again later." ; enter_continue ; return 1 ; }
-rm -rf $HOME/parman_programs/parmanode >/dev/null 2>&1
+sudo rm -rf $HOME/parman_programs/parmanode >/dev/null 2>&1
 mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >/dev/null 2>&1
 cd $pn
 git config pull.rebase false >/dev/null 2>&1

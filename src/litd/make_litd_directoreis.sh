@@ -1,6 +1,6 @@
 function make_litd_directories {
 
-rm -rf $HOME/parmanode/litd && mkdir $HOME/parmanode/litd >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/litd && mkdir $HOME/parmanode/litd >/dev/null 2>&1
 
 if [[ -d $HOME/.lit ]] ; then
 while true ; do
@@ -23,7 +23,7 @@ choose xpmq ; read choice ; set_terminal ;
 case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
 1)
-rm -rf $HOME/.lit && mkdir $HOME/.lit >/dev/null 2>&1
+sudo rm -rf $HOME/.lit && mkdir $HOME/.lit >/dev/null 2>&1
 break
 ;;
 2)

@@ -19,10 +19,10 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 set_terminal
 
-rm -rf $HOME/parmanode/ledger
+sudo rm -rf $HOME/parmanode/ledger
 
 if [[ $OS == Mac ]] ; then
-rm -rf /Applications/"Ledger Live"*
+sudo rm -rf /Applications/"Ledger Live"*
 fi
 
 installed_conf_remove "ledger"

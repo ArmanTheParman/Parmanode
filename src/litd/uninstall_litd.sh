@@ -57,7 +57,7 @@ cd /usr/local/bin && sudo rm frcli  litcli  litd  lncli  loop  pool  tapcli
 sudo rm /etc/nginx/conf.d/litd.conf
 rm $HOME/.lnd #removes symlink to .lit
 sudo rm /etc/systemd/system/litd.service
-rm -rf $HOME/parmanode/litd 
+sudo rm -rf $HOME/parmanode/litd 
 parmanode_conf_remove "bitcoin_choice_with_litd"
 parmanode_conf_remove "lnd_port"
 installed_conf_remove "litd"

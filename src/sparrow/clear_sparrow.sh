@@ -10,8 +10,8 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-rm -rf $HOME/.sparrow/certs
-rm -rf $HOME/.sparrow/tor
+sudo rm -rf $HOME/.sparrow/certs
+sudo rm -rf $HOME/.sparrow/tor
 debug "deleted sparrow connection settings"
 
 success "Deleting Sparrow connection settings" "" 

@@ -18,7 +18,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-rm -rf $HOME/parmanode/btc-rpc*
+sudo rm -rf $HOME/parmanode/btc-rpc*
 
 sudo systemctl stop btcrpcexplorer.service >/dev/null
 sudo systemctl disable btcrpcexplorer.service >/dev/null

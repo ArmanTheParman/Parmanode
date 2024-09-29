@@ -24,7 +24,7 @@ sudo rm -rf /etc/tor /var/lib/tor >/dev/null 2>&1
 elif [[ $OS == Mac ]] ; then
 brew services stop tor
 brew uninstall tor
-rm -rf /usr/local/etc/tor/
+sudo rm -rf /usr/local/etc/tor/
 fi
 
 
@@ -53,8 +53,8 @@ n)
 break
 ;;
 y)
-rm $HOME/.bitcoin/*onion* >/dev/null 2>&1
-rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
+sudo rm $HOME/.bitcoin/*onion* >/dev/null 2>&1
+sudo rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
 if [[ $OS == "Linux" ]] ; then 
     sudo rm -rf /var/lib/tor/bitcoin* >/dev/null 2>&1 
 elif [[ $OS == Mac ]] ; then

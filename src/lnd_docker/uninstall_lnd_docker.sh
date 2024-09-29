@@ -52,7 +52,7 @@ invalid
 esac
 done
 
-rm -rf $hp/lnd
+sudo rm -rf $hp/lnd
 
 installed_conf_remove "lnddocker"
 parmanode_conf_remove "lnd_port"

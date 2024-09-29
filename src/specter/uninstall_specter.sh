@@ -44,7 +44,7 @@ read choice
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 d)
-rm -rf $HOME/.specter
+sudo rm -rf $HOME/.specter
 break
 ;;
 l)
@@ -57,14 +57,14 @@ esac
 done
 
 if [[ $OS == "Linux" ]] ; then
-rm -rf $HOME/parmanode/*pecter*
+sudo rm -rf $HOME/parmanode/*pecter*
 installed_config_remove "specter"
 success "Specter" "being uninstalled."
 fi
 
 if [[ $OS == "Mac" ]] ; then
-rm -rf $HOME/parmanode/*pecter*
-rm -rf /Applications/*pecter*
+sudo rm -rf $HOME/parmanode/*pecter*
+sudo rm -rf /Applications/*pecter*
 installed_config_remove "specter"
 success "Specter" "being uninstalled."
 fi

@@ -5,7 +5,7 @@ debug "patch 5"
 mv $hp/*arrow-1.* $hp/Sparrow >/dev/null 2>&1
 
 if [[ -e $HOME/parman_programs/set_terminal ]] ; then
-rm -rf $HOME/parman_programs/set_terminal
+sudo rm -rf $HOME/parman_programs/set_terminal
 fi
 
 if [[ -f $bc ]] ; then

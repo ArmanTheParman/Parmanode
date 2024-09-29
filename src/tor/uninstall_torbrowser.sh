@@ -18,8 +18,8 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     fi
 
 if [[ $computer_type == LinuxPC ]] ; then
-rm -rf $hp/tor-browser
-rm $HOME/.local/share/applications/start-tor*
+sudo rm -rf $hp/tor-browser
+sudo rm $HOME/.local/share/applications/start-tor*
 fi
 
 if [[ $OS == Mac ]] ; then

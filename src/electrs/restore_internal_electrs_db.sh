@@ -45,7 +45,7 @@ p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 
 please_wait 
-rm -rf $file 
+sudo rm -rf $file 
 return 0
 ;;
 y|Y|YES|Yes|yes)
@@ -73,7 +73,7 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M|a) back2main ;;
 b)
 please_wait
-rm -rf $HOME/.electrs_db
+sudo rm -rf $HOME/.electrs_db
 mv $file $HOME/.electrs_db 
 return 0
 ;;

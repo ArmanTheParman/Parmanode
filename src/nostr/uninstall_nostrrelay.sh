@@ -48,7 +48,7 @@ double_check_website_not_installed || return 1
 docker stop nostrrelay >$dn 2>&1
 docker rm nostrrelay >$dn 2>&1
 
-rm -rf $hp/nostrrelay 2>$dn
+sudo rm -rf $hp/nostrrelay 2>$dn
 
 if [[ -e /var/www/website ]] ; then
 sudo rm -rf /var/www/website >$dn
@@ -62,9 +62,9 @@ sudo systemctl restart nginx >/dev/null 2>&1
 
 source $pc
 if [[ $rem == "true" ]] ; then
-    if [[ $drive_nostr == custom ]] ; then rm -rf $drive_nostr_custom_data
-    elif [[ $drive_nostr == external ]] ; then rm -rf $pd/nostr_data 
-    elif [[ $drive_nostr == internal ]] ; then rm -rf $HOME/.nostr_data
+    if [[ $drive_nostr == custom ]] ; then sudo rm -rf $drive_nostr_custom_data
+    elif [[ $drive_nostr == external ]] ; then sudo rm -rf $pd/nostr_data 
+    elif [[ $drive_nostr == internal ]] ; then sudo rm -rf $HOME/.nostr_data
     fi
 fi
 debug "after rem true if"

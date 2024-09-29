@@ -25,7 +25,7 @@ esac
 done ; fi
 
 if [[ $OS == Mac ]] ; then
-rm -rf /Applications/AnyDesk.app > /dev/null 2>&1
+sudo rm -rf /Applications/AnyDesk.app > /dev/null 2>&1
 fi
 
 if [[ $OS == Linux ]] ; then

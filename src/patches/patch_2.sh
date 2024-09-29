@@ -1,6 +1,6 @@
 function patch_2 {
 
-rm -rf $dp/.backup_files
+sudo rm -rf $dp/.backup_files
 delete_line "$dp/installed.conf" "parmanode-"
 
 sudo_check # needed for preparing drives etc.

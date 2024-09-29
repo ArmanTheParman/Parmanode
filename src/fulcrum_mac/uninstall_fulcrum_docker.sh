@@ -31,14 +31,14 @@ if [[ $drive_fulcrum == "external" ]] ; then
     enter_continue ; log "fulcrum" "drive not mounted, fulcrum_db  not deleted during uninstall." ; }
     rm -rf /media/$(whoami)/parmanode/fulcrum_db || debug "failed to delete fulcrum_db."
     fi
-rm -rf /Volumes/parmanode/fulcrum_db >/dev/null 2>&1 
+sudo rm -rf /Volumes/parmanode/fulcrum_db >/dev/null 2>&1 
 
 if [[ $drive_fulcrum == "internal" ]] ; then
-    rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 
+    sudo rm -rf $HOME/parmanode/fulcrum_db >/dev/null 2>&1 
 
     fi
 
-rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1
 
 bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
 stop_and_remove_docker_containers_and_images_fulcrum

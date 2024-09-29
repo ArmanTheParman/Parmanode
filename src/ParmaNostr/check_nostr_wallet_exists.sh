@@ -24,7 +24,7 @@ export skipwallet="true"
 break
 ;;
 2)
-rm -rf $dp/.nostr_keys
+sudo rm -rf $dp/.nostr_keys
 break
 ;;
 3)

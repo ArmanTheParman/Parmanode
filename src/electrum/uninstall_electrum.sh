@@ -13,7 +13,7 @@ read choice
 set_terminal
 if [[ $choice == y ]] ; then true ; else return 1 ; fi
 
-rm -rf $HOME/parmanode/electrum >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/electrum >/dev/null 2>&1
 installed_config_remove "electrum"
 if [[ $OS == "Mac" ]] ; then rm -rf /Applications/Electrum.app ; fi
 

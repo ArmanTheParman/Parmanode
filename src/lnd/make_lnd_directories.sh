@@ -1,6 +1,6 @@
 function make_lnd_directories {
 
-rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
 
 if [[ -d $HOME/.lnd ]] ; then
 while true ; do
@@ -23,7 +23,7 @@ choose xpmq ; read choice ; set_terminal ;
 case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
 1)
-rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
+sudo rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
 break
 ;;
 2)

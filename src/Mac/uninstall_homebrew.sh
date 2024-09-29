@@ -27,8 +27,8 @@ sudo rm -rf /usr/local/Homebrew >$dn 2>&1
 sudo rm -rf /usr/local/Caskroom >$dn 2>&1
 sudo rm -rf /usr/local/Cellar >$dn 2>&1
 sudo rm -rf /usr/local/bin/brew >$dn 2>&1
-rm -rf ~/.brew >$dn 2>&1
-rm -rf ~/.homebrew >$dn 2>&1
+sudo rm -rf ~/.brew >$dn 2>&1
+sudo rm -rf ~/.homebrew >$dn 2>&1
 
 break
 ;;

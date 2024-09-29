@@ -1,7 +1,7 @@
 function download_litd {
 if [[ $OS != "Linux" ]] ; then return 1 ; fi
  
-rm -rf $HOME/parmanode/litd/*
+sudo rm -rf $HOME/parmanode/litd/*
 
 
 #get signatures and SHA256 file

@@ -2,7 +2,7 @@ function download_lnd {
 debug "in download_lnd"
 if [[ $OS != "Linux" ]] ; then return 1 ; fi
  
-rm -rf $HOME/parmanode/lnd/*
+sudo rm -rf $HOME/parmanode/lnd/*
 
 
 #get signatures and SHA256 file

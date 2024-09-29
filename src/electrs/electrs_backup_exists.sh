@@ -30,8 +30,8 @@ mv ${e_db}_backup ${e_db}_backup2
 mv  ${e_db} ${e_db}_backup
 ;;
 nah|Nah|NAH)
-rm -rf $e_db
-rm -rf ${e_db}_backup
+sudo rm -rf $e_db
+sudo rm -rf ${e_db}_backup
 ;;
 *) invalid ;;
 esac

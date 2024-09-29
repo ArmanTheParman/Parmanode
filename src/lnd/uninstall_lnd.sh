@@ -53,7 +53,7 @@ esac
 done
 
 sudo rm /etc/systemd/system/lnd.service
-rm -rf $HOME/parmanode/lnd 
+sudo rm -rf $HOME/parmanode/lnd 
 parmanode_conf_remove "bitcoin_choice_with_lnd"
 parmanode_conf_remove "lnd_port"
 parmanode_conf_remove "LNDIP"

@@ -152,7 +152,7 @@ if [[ $OS == "Linux" ]] ; then
         fi
 
 #uninstall parmanode directories and config files contained within.
-rm -rf $HOME/.parmanode >/dev/null 2>&1
+sudo rm -rf $HOME/.parmanode >/dev/null 2>&1
 
 #removes all parmanode crontab entries
 autoupdate off
@@ -191,7 +191,7 @@ rm $HOME/Desktop/parmanode.desktop >/dev/null
 debug "delete desktop icon"
 rm $HOME/.icons/PNicon*
 debug "delete .icons"
-rm -rf $original_dir 
+sudo rm -rf $original_dir 
 debug "remove original dir"
 ;;
 esac
