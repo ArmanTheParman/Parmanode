@@ -10,8 +10,8 @@ fi
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 #Remove Parmanode/bitcoin directory (installation files)
-rm -rf $HOME/parmanode/bitcoin #>$dp 2>&1 
-rm -rf $HOME/parmanode/bitcoinknots_github #>$dp 2>&1 
+sudo rm -rf $HOME/parmanode/bitcoin #>$dp 2>&1 
+sudo rm -rf $HOME/parmanode/bitcoinknots_github #>$dp 2>&1 
 debug "after remove bitcoinknots_github"
 if [[ $installer == parmanodl ]] ; then return 0 ; fi 
 
