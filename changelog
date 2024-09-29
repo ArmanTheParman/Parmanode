@@ -1,5 +1,6 @@
 Version 3.42.2
     -Tor Browser gpg keys expired, updated.
+    -Bitcoin info display bug fixed
 Version 3.42.1
     -sneaky bitcoin install bug fixed
     -uninstall Parmanode glitch fixed
