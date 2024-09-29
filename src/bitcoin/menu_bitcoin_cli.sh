@@ -68,6 +68,7 @@ continue
 elif [[ $OS == Linux ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -getinfo
+enter_continue
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
 fi
@@ -82,6 +83,7 @@ continue
 elif [[ $OS == Linux ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli -netinfo
+enter_continue
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
@@ -100,6 +102,7 @@ continue
 elif [[ $OS == Linux ]] ; then
 set_terminal
 /usr/local/bin/bitcoin-cli getblockhash $block
+enter_continue
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
 else announce "some error - Linux nor Mac detected." ; continue
