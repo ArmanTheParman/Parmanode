@@ -35,7 +35,7 @@ fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
-
+#arm64 (m3)
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
 
@@ -62,7 +62,9 @@ while true ; do
                 curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break  
             fi
 
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg ; break
+#            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg ; break
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
+            tar -xvf 
          fi
 
          if [[ $chip == "x86_64" && $OS == Mac ]] ; then
