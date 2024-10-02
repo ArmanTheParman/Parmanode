@@ -62,16 +62,17 @@ while true ; do
                 curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break  
             fi
 
-#            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.dmg ; break
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
-            tar -xvf 
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip
+            unzip bitcoin*.zip ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == Mac ]] ; then
             if [[ $knotsbitcoin == "true" ]] ; then
                 curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-x86_64-apple-darwin.dmg ; break
             fi    
-            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.dmg ; break
+
+            curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip
+            unzip bitcoin*.zip ; break
          fi
 done
 
