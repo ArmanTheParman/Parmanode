@@ -39,7 +39,7 @@ echo -en "$orange
 #                                                                                      #
 #$cyan    (t)        $orange          Tools                                                        #
 #                                                                                      #
-#$cyan    (s)              $orange    Settings                                                     #
+#$cyan    (s)              $orange    Settings/Colours                                             #
 #                                                                                      #
 #$cyan    (mm)$orange                 Mentorship with Parman - Info                                #
 #                                                                                      #
