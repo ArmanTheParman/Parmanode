@@ -63,7 +63,8 @@ while true ; do
             fi
 
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip
-            unzip bitcoin*.zip ; break
+            unzip bitcoin*.zip 
+            zip="true" ; break
          fi
 
          if [[ $chip == "x86_64" && $OS == Mac ]] ; then
@@ -72,7 +73,8 @@ while true ; do
             fi    
 
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-apple-darwin.zip
-            unzip bitcoin*.zip ; break
+            unzip bitcoin*.zip 
+            zip="true" ; break
          fi
 done
 
@@ -83,10 +85,12 @@ if [[ $VERIFY != off ]] ; then
 fi
 
 #unpack Bitcoin core:
-if [[ $OS == Mac ]] ; then
+if [[ $OS == Mac && $zip != "true" ]] ; then
 hdiutil attach *.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
 hdiutil detach /Volumes/Bitcoin*
+elif [[ $zip == "true" ]] ; then
+sudo cp -r ./Bitcoin* /Applications
 fi
 
 if [[ $OS == Linux ]] ; then
