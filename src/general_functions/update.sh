@@ -35,7 +35,7 @@ $text
 $green
                        y)      Update
 $red
-                       n)      Donchu dare ( that means no )
+                       n)      Donchu dare (that means no)
 $orange
 ########################################################################################$yellow
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
@@ -47,6 +47,8 @@ y|Y|YES|yes|u)
 if ! which brew >/dev/null ; then 
 install_homebrew 
 /opt/homebrew/bin/brew install bash netcat jq vim
+enter_continue
+success "Parmanode has completed installing Homebrew for you."
 break
 else
 brew update
