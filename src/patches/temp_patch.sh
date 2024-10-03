@@ -1,5 +1,9 @@
 function temp_patch {
 
+#fix homebrew path order
+if [[ $OS == Mac ]] && which brew >$dn
+
+
 #remove June 2025
 make_lnd_service_tor
 

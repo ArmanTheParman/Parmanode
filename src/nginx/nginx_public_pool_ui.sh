@@ -51,8 +51,8 @@ fi #not remove ends
 
 #restart
     if [[ $OS == Linux ]] ; then 
-        sudo nginx -t >/dev/null 2>$dp/nginx_error.log && sudo systemctl restart nginx >/dev/null 2>&1 
+        sudo nginx -t >$dn 2>$dp/nginx_error.log && sudo systemctl restart nginx >/dev/null 2>&1 
     elif [[ $OS == Mac ]] ; then
-        nginx -t >/dev/null 2>$dp/nginx_error.log && brew services restart nginx >/dev/null 2>&1 
+        nginx -t >$dn 2>$dp/nginx_error.log && brew services restart nginx >/dev/null 2>&1 
     fi
 }
