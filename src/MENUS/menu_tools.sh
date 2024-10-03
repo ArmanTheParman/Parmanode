@@ -36,8 +36,6 @@ echo -e "
 
               (udev)  Add udev rules for HWWs (only needed for Linux)
 
-              (aa)    Turn on/off autoupdates
-
               (rs)    Parman's easy AF Rsync tool new
 $green
          ...  (next)  More options 
@@ -105,9 +103,6 @@ case $choice in
         if mount | grep -q parmanode ; then
         announce "Drive mounted."
         fi
-        ;;
-    aa|AA|Aa)
-        autoupdate_toggle
         ;;
     p|P)
         return 0

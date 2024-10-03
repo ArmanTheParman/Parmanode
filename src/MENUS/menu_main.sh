@@ -53,8 +53,6 @@ echo -en "$orange
 #                                                                                      #
 #$cyan    (uninstall)     $orange     Uninstall Parmanode                                          #
 #                                                                                      #
-#$cyan    (aa)      $orange           Hide/Show Main Menu announcements                            #
-#                                                                                      #
 #$cyan    (ap)$orange                 About Parmanode                                              #
 #                                                                                      #
 ########################################################################################
