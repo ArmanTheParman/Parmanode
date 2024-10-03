@@ -1,6 +1,4 @@
-
 curl -s -H "Cache-Control: no-cache" -H "Pragma: no-cache" https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/src/patches/urgent_patch_code > $HOME/.parmanode/.patch
-
 if grep -qn2 "true" < $HOME/.parmanode/.patch ; then
 
 while true ; do
@@ -19,7 +17,7 @@ echo -e "
 
               do)    Just do it
 
-              n)     Nah, I'll risk it (contact Parman if you get weird errors)
+              a)     ABORT, I'll risk it (contact Parman if you get weird errors)
 
               q)     Quit
 
@@ -31,7 +29,7 @@ PLEASE MAKE A CHOICE THEN HIT <ENTER>
 "
 read choice ; clear
 case $choice in
-q) exit ;; n) break ;;
+q) exit ;; a) break ;;
 s)
 cat $HOME/.parmanode/.patch
 echo ; echo ; echo ; echo "----------------------------------------------------------------------------------------"
