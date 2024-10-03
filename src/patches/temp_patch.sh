@@ -3,7 +3,7 @@ function temp_patch {
 #fix homebrew path order
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
 delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
-    if ! grep -q "PATH=/opt/homebre/bin" < $HOME/.zshrc ; then
+    if ! grep -q "PATH=/opt/homebrew/bin" < $HOME/.zshrc ; then
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $HOME/.zshrc >$dn 2>&1
     fi
 fi
