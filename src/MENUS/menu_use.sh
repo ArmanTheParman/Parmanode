@@ -157,6 +157,7 @@ rr)
     clear
     menu_raid
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
     ;;
 
@@ -165,18 +166,21 @@ b|B)
     clear
     menu_bitcoin
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
     ;;
 f|F)
     if [[ $fulcrumapp == 1 ]] ; then
     menu_fulcrum
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
     ;;
 btcp|BTCP)
     if [[ $btcpayapp == 1 ]] ; then
     menu_btcpay
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
     ;;
 
@@ -184,6 +188,7 @@ tor|TOR|t|T)
     if [[ $torapp == 1 ]] ; then
     menu_tor
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
     ;;
 
@@ -191,9 +196,10 @@ lnd|LND|Lnd|L|l)
     if [[ $lndapp == 1 ]] ; then
     clear
     please_wait
-    if [[ $OS == "Linux" ]] ; then menu_lnd ; continue ; fi
-    if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
-    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+      if [[ $OS == "Linux" ]] ; then menu_lnd ; continue ; fi
+      if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
+      if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid 
     fi
 ;;
 ld|LD|Ld|lD)
@@ -202,12 +208,14 @@ ld|LD|Ld|lD)
     please_wait
     menu_lnd
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
     fi
 ;;
 lnb|LNB|Lnb)
    if [[ $lnbitsapp == 1 ]] ; then
    menu_lnbits
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
 ;;
 
@@ -215,19 +223,22 @@ s|S|Sparrow|SPARROW|sparrow)
    if [[ $sparrowapp == 1 ]] ; then
    menu_sparrow
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 r|R|RTL|rtl|Rtl)
     if [[ $rtlapp == 1 ]] ; then
    menu_rtl
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
 e|E|Electrum|electrum|ELECTRUM)
-    if [[ $electrumapp == 1 ]] ; then
+   if [[ $electrumapp == 1 ]] ; then
    menu_electrum
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 tws|TWS|Tws)
@@ -235,6 +246,7 @@ tws|TWS|Tws)
    if [[ $torserverapp == 1 ]] ; then
    menu_tor_webserver
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
@@ -242,6 +254,7 @@ specter|SPECTER|Specter)
    if [[ $specterapp == 1 ]] ; then
    menu_specter
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
@@ -249,6 +262,7 @@ bre|BRE|Bre)
    if [[ $btcrpcexplorerapp == 1 || $breapp ]] ; then
    menu_bre
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
@@ -256,6 +270,7 @@ ers|ERS|Ers)
    if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
@@ -263,90 +278,105 @@ ersf|ERSf|Ersf)
    if [[ $electrsapp == 1 || $electrs2app == 1 ]] ; then
    menu_electrs fast
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 trz|TRZ|Trz)
    if [[ $trezorapp == 1 ]] ; then
    menu_trezor
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 bb|BB|Bb)
    if [[ $bitboxapp == 1 ]] ; then
    menu_bitbox
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 ll|LL|Ll)
    if [[ $ledgerapp == 1 ]] ; then
    menu_ledger
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 ps|PS|Ps)
    if [[ $parmashellapp == 1 ]] ; then
    parmashell_info
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 pbx|Pbx)
    if [[ $parmaboxapp == 1 ]] ; then
    menu_parmabox 
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 any|ANY|Any)
    if [[ $anydeskapp == 1 ]] ; then
    menu_anydesk
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 pih|PiH|Pih)
    if [[ $piholeapp == 1 ]] ; then
    menu_pihole
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 trl|Trl|TRL)
    if [[ $torrelayapp == 1 ]] ; then
    menu_torrelay
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 ersd|Ersd|ERSD)
    if [[ $electrsdkrapp == 1 || $electrsdkr2app == 1 ]] ; then
    menu_electrs
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 torb|TORB|Torb)
    if [[ $torbapp == 1 ]] ; then
    menu_torbrowser
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 qbit|Qbit)
    if [[ $qbittorrentapp == 1 ]] ; then
    menu_qbittorrent
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 mem|MEM|Mem)
    if [[ $mempoolapp == 1 ]] ; then
    menu_mempool 
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 tssh)
    if [[ $torsshapp == 1 ]] ; then
    menu_torssh
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 pool)
    if [[ $public_poolapp == 1 ]] ; then
    menu_public_pool
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
@@ -355,47 +385,55 @@ ex)
    menu_electrumx
    debug "after menu_electrumx"
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 th) 
    if [[ $thunderhubapp == 1 ]] ; then
    menu_thunderhub
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 ws) 
    if [[ $websiteapp == 1 ]] ; then
    menu_website
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 nr) 
    if [[ $nostrrelayapp == 1 ]] ; then
    menu_nostr
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 litd) 
    if [[ $litdapp == 1 ]] ; then
    menu_lnd
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 lt)
    if [[ $litdapp == 1 ]] ; then
    menu_litterminal
+   else invalid
    fi
    ;;
 next) 
    if [[ $nextcloudapp == 1 ]] ; then
    menu_nextcloud
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 pnostr) 
    if [[ $parmanostrapp == 1 ]] ; then
    menu_parmanostr
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
    fi
    ;;
 
