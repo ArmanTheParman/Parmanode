@@ -59,7 +59,7 @@ while true ; do
          if [[ ($chip == "arm64" && $OS == Mac) || ( $chip == "aarch64" && $OS == Mac) ]] ; then
 
             if [[ $knotsbitcoin == "true" ]] ; then
-                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240621/bitcoin-27.1.knots20240621-arm64-apple-darwin.dmg ; break  
+                curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/bitcoin-27.1.knots20240801-arm64-apple-darwin.dmg ; break  
             fi
             
             curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm64-apple-darwin.zip
