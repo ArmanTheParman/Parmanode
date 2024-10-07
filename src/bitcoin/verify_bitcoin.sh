@@ -38,7 +38,7 @@ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys E777299FC265DD04793070EB
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/laanwj.gpg | gpg --import >/dev/null 2>&1
 curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/Emzy.gpg | gpg --import >/dev/null 2>&1
 
-    if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -q GOOD
+    if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
         echo ""
         echo -e "GPG verification of the SHA256SUMS file$green passed$orange. "
