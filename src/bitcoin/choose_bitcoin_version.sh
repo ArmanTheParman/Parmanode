@@ -66,7 +66,8 @@ parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version=choice ; export ordinals_patch="true" ; break ;;
 5)
 parmanode_conf_add "bitcoin_choice=knots"
-export knotsbitcoin="true" ; export version="26.x-knots" ; break ;;
+export bitcoin_compile="true"
+export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version=latest ; break ;;
