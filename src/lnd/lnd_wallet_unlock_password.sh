@@ -21,7 +21,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read lndpassword  ; set_terminal
+read lndpassword  ; set_terminal
 case $lndpassword in
 q|Q) exit ;; p|P) return 1 ;;  m|M) back2main ;;
 "")
@@ -47,8 +47,6 @@ elif grep -q "litd" < $ic >/dev/null 2>&1 ; then
 sudo rm $HOME/.lit/password.txt >/dev/null 2>&1
 touch $HOME/.lit/password.txt && chmod 600 $HOME/.lit/password.txt
 fi
-
-debug "password.txt $(cat $HOME/.lit/password.txt)"
 
 if [[ $lndpassword != $lndpassword2 ]] ; then
     echo "Passwords do not match. Try again."
