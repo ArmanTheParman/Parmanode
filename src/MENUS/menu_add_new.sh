@@ -14,18 +14,10 @@ bitcoin_new="#                                                                  
 menuaddnewbitcoin="false"
 else
 bitcoin_new="#                                                                                      #
-#$green                          b)           Bitcoin Core                                  $orange #
+#$green                      b)           Bitcoin Core                                  $orange     #
 #                                                                                      #
-#$bright_blue                          bs)          Import own Bitcoin Core binaries              $orange #
+#$bright_blue                      bs)          Import own Bitcoin Core binaries              $orange     #
 #                                                                                      #"
-fi
-
-if ! grep "website-" < $ic ; then
-wordpress_available="#$bright_blue                          ws)          WordPress Server (ParmaWeb) $green$blinkon NEW!$blinkoff $orange             #
-#                                                                                      #"
-else
-unset wordpress_available
-wordpress_available="#                                                                                      #"
 fi
 
 set_terminal_higher
@@ -34,21 +26,18 @@ echo -en "
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
-########################################################################################" ; echo ""
+########################################################################################
+#                                                                                      #" ; echo ""
 echo -en "${bitcoin_new}" ; echo -en "
-#                          n)           Node related software ...                      #
+#                      n)           Node related software ...                          #
 #                                                                                      #
-#                          w)           Wallet Software ...                            #
+#                      w)           Wallet Software ...                                #
 #                                                                                      #
-#                          mm)          Mining Software ...                            #
+#                      o)           Other Software ...                                 #
 #                                                                                      #
-#                          o)           Other Software ...                             #
+#                      e)           Extras ...                                         #
 #                                                                                      #
-#                          cool)        Cool stuff ...                                 #
 #                                                                                      #
-#                          e)           Extras ...                                     #
-#                                                                                      #
-$wordpress_available
 ########################################################################################
 "
 choose "xpmq"
@@ -92,28 +81,17 @@ w|W|wallets|Wallets)
         menu_add_wallets
         return 0
         ;;
-wth)
-        menu_add_wallets th
-        return 0 
-        ;;
+
 o|O|Other|OTHER)
         menu_add_other
         return 0
         ;;
 
-cool|COOL|c)
-        menu_coolstuff
-        return 0
-        ;;
 e|E)
         menu_add_extras
         return 0
         ;;
-ws)
-        install_website
-        return 0
-        ;;
-
+    
     q|Q|quit|QUIT)
         exit 0
         ;;

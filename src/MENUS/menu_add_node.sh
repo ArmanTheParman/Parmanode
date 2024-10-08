@@ -21,39 +21,39 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$cyan Not yet installed... $orange                                                                #
+#$green Not yet installed... $orange                                                                #
 #                                                                                      #"
-if [[ -n $bitcoin_n ]]         ; then echo  "$bitcoin_n"; fi
-if [[ -n $electrs2_n && -n $electrs_n ]]       ; then echo  "$electrs2_n"; fi
-if [[ -n $electrsdkr2_n ]]      ; then echo  "$electrsdkr2_n"; fi
-if [[ -n $electrumx_n ]]       ; then echo  "$electrumx_n"; fi
-if [[ -n $btcrpcexplorer_n ]]  ; then echo  "$btcrpcexplorer_n"; fi
-if [[ -n $mempool_n ]]         ; then echo  "$mempool_n"; fi
-if [[ -n $bre_n ]]             ; then echo  "$bre_n"; fi
-if [[ -n $lnd_n ]]             ; then echo  "$lnd_n"; fi
-if [[ -n $litd_n ]]             ; then echo  "$litd_n"; fi
-if [[ -n $lnddocker_n ]]       ; then echo  "$lnddocker_n"; fi
-if [[ -n $btcpay_n ]]          ; then echo  "$btcpay_n"; fi
-if [[ -n $fulcrum_n ]]         ; then echo  "$fulcrum_n"; fi
+if [[ -n $bitcoin_n ]]         ; then echo -e  "$bitcoin_n"; fi
+if [[ -n $electrs2_n && -n $electrs_n ]]  then echo -e "$electrs2_n"; fi
+if [[ -n $electrsdkr2_n ]]      ; then echo  -e "$electrsdkr2_n"; fi
+if [[ -n $electrumx_n ]]       ; then echo -e  "$electrumx_n"; fi
+if [[ -n $btcrpcexplorer_n ]]  ; then echo  -e "$btcrpcexplorer_n"; fi
+if [[ -n $mempool_n ]]         ; then echo -e  "$mempool_n"; fi
+if [[ -n $bre_n ]]             ; then echo  -e "$bre_n"; fi
+if [[ -n $lnd_n ]]             ; then echo  -e "$lnd_n"; fi
+if [[ -n $litd_n ]]             ; then echo  -e "$litd_n"; fi
+if [[ -n $lnddocker_n ]]       ; then echo  -e "$lnddocker_n"; fi
+if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
+if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 echo -e "#                                                                                      #
-#$cyan Installed...                                                                  $orange       #
+#$green Installed...                                                                  $orange       #
 #                                                                                      #"
-if [[ -n $bitcoin_i ]]         ; then echo  "$bitcoin_i"; fi
-if [[ -n $electrs_i ]]         ; then echo  "$electrs_i"; fi
-if [[ -n $electrs2_i ]]         ; then echo  "$electrs2_i"; fi
-if [[ -n $electrsdkr_i ]]      ; then echo  "$electrsdkr_i"; fi
-if [[ -n $electrsdkr2_i ]]      ; then echo  "$electrsdkr2_i"; fi
-if [[ -n $electrumx_i ]]       ; then echo  "$electrumx_i"; fi
-if [[ -n $btcrpcexplorer_i ]]  ; then echo  "$btcrpcexplorer_i"; fi
-if [[ -n $mempool_i ]]         ; then echo  "$mempool_i"; fi
-if [[ -n $bre_i ]]             ; then echo  "$bre_i"; fi
-if [[ -n $lnd_i ]]             ; then echo  "$lnd_i"; fi
-if [[ -n $lnddocker_i ]]       ; then echo  "$lnddocker_i"; fi
-if [[ -n $btcpay_i ]]          ; then echo  "$btcpay_i"; fi
-if [[ -n $fulcrum_i ]]         ; then echo  "$fulcrum_i"; fi
-if [[ -n $litd_i ]]             ; then echo  "$litd_i"; fi
+if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
+if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
+if [[ -n $electrs2_i ]]         ; then echo   -e "$electrs2_i"; fi
+if [[ -n $electrsdkr_i ]]      ; then echo  -e "$electrsdkr_i"; fi
+if [[ -n $electrsdkr2_i ]]      ; then echo   -e "$electrsdkr2_i"; fi
+if [[ -n $electrumx_i ]]       ; then echo -e  "$electrumx_i"; fi
+if [[ -n $btcrpcexplorer_i ]]  ; then echo -e "$btcrpcexplorer_i"; fi
+if [[ -n $mempool_i ]]         ; then echo -e  "$mempool_i"; fi
+if [[ -n $bre_i ]]             ; then echo -e  "$bre_i"; fi
+if [[ -n $lnd_i ]]             ; then echo  -e "$lnd_i"; fi
+if [[ -n $lnddocker_i ]]       ; then echo  -e "$lnddocker_i"; fi
+if [[ -n $btcpay_i ]]          ; then echo  -e "$btcpay_i"; fi
+if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
+if [[ -n $litd_i ]]             ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
-#$cyan Failed installs (need to uninstall)...                                         $orange      #
+#$red Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi

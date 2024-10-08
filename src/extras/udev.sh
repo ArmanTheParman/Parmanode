@@ -1,5 +1,3 @@
-#accessed by Sparrow and Electrum install
-
 function udev {
 
 if [[ $OS == "Mac" ]] ; then

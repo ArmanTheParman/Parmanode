@@ -12,32 +12,32 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-# Not yet installed...                                                                 #
+#$green Not yet installed...                                                              $orange   #
 #                                                                                      #"
-if [[ -n $sparrow_n ]]         ; then echo  "$sparrow_n"; fi
-if [[ -n $electrum_n ]]        ; then echo  "$electrum_n"; fi
-if [[ -n $specter_n ]]         ; then echo  "$specter_n"; fi
-if [[ -n $rtl_n ]]             ; then echo  "$rtl_n"; fi
-if [[ -n $thunderhub_n ]]             ; then echo  "$thunderhub_n"; fi
-if [[ -n $lnbits_n ]]           ; then echo  "$lnbits_n"; fi
-if [[ -n $trezor_n ]]           ; then echo  "$trezor_n"; fi
-if [[ -n $bitbox_n ]]           ; then echo  "$bitbox_n"; fi
-if [[ -n $ledger_n ]]           ; then echo  "$ledger_n"; fi
+if [[ -n $sparrow_n ]]         ; then echo -e  "$sparrow_n"; fi
+if [[ -n $electrum_n ]]        ; then echo -e  "$electrum_n"; fi
+if [[ -n $specter_n ]]         ; then echo -e  "$specter_n"; fi
+if [[ -n $rtl_n ]]             ; then echo -e  "$rtl_n"; fi
+if [[ -n $thunderhub_n ]]             ; then echo -e  "$thunderhub_n"; fi
+if [[ -n $lnbits_n ]]           ; then echo -e  "$lnbits_n"; fi
+if [[ -n $trezor_n ]]           ; then echo -e  "$trezor_n"; fi
+if [[ -n $bitbox_n ]]           ; then echo -e  "$bitbox_n"; fi
+if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
 
-echo "#                                                                                      #
-# Installed...                                                                         #
+echo -e "#                                                                                      #
+#$green Installed...                                                                        $orange #
 #                                                                                      #"
-if [[ -n $sparrow_i ]]         ; then echo  "$sparrow_i"; fi
-if [[ -n $electrum_i ]]        ; then echo  "$electrum_i"; fi
-if [[ -n $specter_i ]]         ; then echo  "$specter_i"; fi
-if [[ -n $rtl_i ]]             ; then echo  "$rtl_i"; fi
-if [[ -n $thunderhub_i ]]             ; then echo  "$thunderhub_i"; fi
-if [[ -n $lnbits_i ]]          ; then echo  "$lnbits_i"; fi
-if [[ -n $trezor_i ]]          ; then echo  "$trezor_i"; fi
-if [[ -n $bitbox_i ]]          ; then echo  "$bitbox_i"; fi
-if [[ -n $ledger_i ]]          ; then echo  "$ledger_i"; fi
-echo "#                                                                                      #
-# Failed installs (need to uninstall)...                                               #
+if [[ -n $sparrow_i ]]         ; then echo -e  "$sparrow_i"; fi
+if [[ -n $electrum_i ]]        ; then echo -e  "$electrum_i"; fi
+if [[ -n $specter_i ]]         ; then echo -e  "$specter_i"; fi
+if [[ -n $rtl_i ]]             ; then echo -e  "$rtl_i"; fi
+if [[ -n $thunderhub_i ]]             ; then echo -e  "$thunderhub_i"; fi
+if [[ -n $lnbits_i ]]          ; then echo -e  "$lnbits_i"; fi
+if [[ -n $trezor_i ]]          ; then echo -e  "$trezor_i"; fi
+if [[ -n $bitbox_i ]]          ; then echo -e  "$bitbox_i"; fi
+if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
+echo -e "#                                                                                      #
+#$red Failed installs (need to uninstall)...                                              $orange #
 #                                                                                      #"
 if [[ -n $sparrow_p ]]         ; then echo -e "$pink$sparrow_p$orange"; fi
 if [[ -n $electrum_p ]]        ; then echo -e "$pink$electrum_p$orange"; fi
@@ -48,7 +48,7 @@ if [[ -n $lnbits_p ]]          ; then echo -e "$pink$lnbits_p$orange"; fi
 if [[ -n $trezor_p ]]          ; then echo -e "$pink$trezor_p$orange"; fi
 if [[ -n $bitbox_p ]]          ; then echo -e "$pink$bitbox_p$orange"; fi
 if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
-echo "#                                                                                      #
+echo -e "#                                                                                      #
 ########################################################################################
 "
 choose "xpmq"

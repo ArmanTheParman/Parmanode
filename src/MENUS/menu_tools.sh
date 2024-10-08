@@ -32,10 +32,6 @@ echo -e "
                  
               (u)     Update computer (apt-get for Linux, Homebrew for Macs)
 
-              (h)     Check system resources with \"htop\" (installed if needed)
-
-              (udev)  Add udev rules for HWWs (only needed for Linux)
-
               (rs)    Parman's easy AF Rsync tool new
 $green
          ...  (next)  More options 
@@ -107,25 +103,6 @@ case $choice in
     p|P)
         return 0
         ;;
-
-    h|H|htop|HTOP|Htop)
-
-        announce "To exit htop, hit$cyan q$orange"
-
-        if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
-
-        if ! which htop ; then sudo apt-get install htop -y >/dev/null 2>&1 ; fi
-
-        htop
-
-        ;;
-    udev|UDEV)
-      if grep -q udev-end < $dp/installed.conf ; then
-      announce "udev already installed."
-      return 0
-      fi
-      udev
-      ;;
 
       md|MD)
       menu_migrate

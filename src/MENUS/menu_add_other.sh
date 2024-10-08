@@ -10,46 +10,55 @@ echo -e "
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
+#                                                                                      #
 #$green Not yet installed...$orange                                                                 #
 #                                                                                      #"
-if [[ -n $parmashell_n ]]      ; then echo  "$parmashell_n"; fi 
-if [[ -n $parmanostr_n ]]      ; then echo  "$parmanostr_n"; fi
-if [[ -n $docker_n ]]          ; then echo  "$docker_n"; fi
-if [[ -n $tor_n ]]             ; then echo  "$tor_n"; fi
-if [[ -n $torserver_n ]]       ; then echo  "$torserver_n"; fi
-if [[ -n $parmabox_n ]]        ; then echo  "$parmabox_n"; fi
-if [[ -n $anydesk_n ]]         ; then echo  "$anydesk_n"; fi
-if [[ -n $pihole_n ]]          ; then echo  "$pihole_n"; fi
-if [[ -n $torrelay_n ]]        ; then echo  "$torrelay_n"; fi
-if [[ -n $piapps_n ]]          ; then echo  "$piapps_n"; fi
-if [[ -n $torb_n ]]            ; then echo  "$torb_n"; fi
-if [[ -n $qbittorrent_n ]]     ; then echo  "$qbittorrent_n"; fi
-if [[ -n $torssh_n ]]          ; then echo  "$torssh_n"; fi
-if [[ -n $website_n ]]         ; then echo  "$website_n"; fi
-if [[ -n $nginx_n ]]            ; then echo  "$nginx_n"; fi
+if [[ -n $parmashell_n ]]      ; then echo -e  "$parmashell_n"; fi 
+if [[ -n $parmanostr_n ]]      ; then echo -e  "$parmanostr_n"; fi
+if [[ -n $nostrrelay_n ]]       ; then echo -e  "$nostrrelay_n"; fi
+if [[ -n $docker_n ]]          ; then echo -e  "$docker_n"; fi
+if [[ -n $tor_n ]]             ; then echo -e  "$tor_n"; fi
+if [[ -n $torserver_n ]]       ; then echo -e  "$torserver_n"; fi
+if [[ -n $parmabox_n ]]        ; then echo -e  "$parmabox_n"; fi
+if [[ -n $anydesk_n ]]         ; then echo -e  "$anydesk_n"; fi
+if [[ -n $pihole_n ]]          ; then echo -e  "$pihole_n"; fi
+if [[ -n $torrelay_n ]]        ; then echo -e  "$torrelay_n"; fi
+if [[ -n $piapps_n ]]          ; then echo -e  "$piapps_n"; fi
+if [[ -n $torb_n ]]            ; then echo -e  "$torb_n"; fi
+if [[ -n $qbittorrent_n ]]     ; then echo -e  "$qbittorrent_n"; fi
+if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
+if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
+if [[ -n $nginx_n ]]            ; then echo -e  "$nginx_n"; fi
+if [[ -n $nextcloud_n ]]        ; then echo -e  "$nextcloud_n"; fi
+if [[ -n $public_pool_n ]]         ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
-if [[ -n $parmanostr_i ]]      ; then echo  "$parmanostr_i"; fi
-if [[ -n $docker_i ]]          ; then echo  "$docker_i"; fi
-if [[ -n $tor_i ]]             ; then echo  "$tor_i"; fi
-if [[ -n $torserver_i ]]       ; then echo  "$torserver_i"; fi
-if [[ -n $parmabox_i ]]        ; then echo  "$parmabox_i"; fi
-if [[ -n $anydesk_i ]]         ; then echo  "$anydesk_i"; fi
-if [[ -n $torrelay_i ]]        ; then echo  "$torrelay_i"; fi
-if [[ -n $piapps_i ]]          ; then echo  "$piapps_i"; fi
-if [[ -n $torb_i ]]            ; then echo  "$torb_i"; fi
-if [[ -n $qbittorrent_i ]]     ; then echo  "$qbittorrent_i"; fi
-if [[ -n $torssh_i ]]          ; then echo  "$torssh_i"; fi
-if [[ -n $website_i ]]         ; then echo  "$website_i"; fi
-if [[ -n $nginx_i ]]            ; then echo  "$nginx_i"; fi
+if [[ -n $parmanostr_i ]]      ; then echo -e  "$parmanostr_i"; fi
+if [[ -n $nostrrelay_i ]]       ; then echo -e  "$nostrrelay_i"; fi
+if [[ -n $docker_i ]]          ; then echo -e  "$docker_i"; fi
+if [[ -n $tor_i ]]             ; then echo -e  "$tor_i"; fi
+if [[ -n $torserver_i ]]       ; then echo -e  "$torserver_i"; fi
+if [[ -n $parmabox_i ]]        ; then echo -e  "$parmabox_i"; fi
+if [[ -n $anydesk_i ]]         ; then echo -e  "$anydesk_i"; fi
+if [[ -n $torrelay_i ]]        ; then echo -e  "$torrelay_i"; fi
+if [[ -n $piapps_i ]]          ; then echo -e  "$piapps_i"; fi
+if [[ -n $torb_i ]]            ; then echo -e  "$torb_i"; fi
+if [[ -n $qbittorrent_i ]]     ; then echo -e  "$qbittorrent_i"; fi
+if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
+if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
+if [[ -n $nginx_i ]]            ; then echo -e  "$nginx_i"; fi
+if [[ -n $nextcloud_i ]]        ; then echo -e  "$nextcloud_i"; fi
+if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
+
 echo -e "#                                                                                      #
-#$green Failed installs (need to uninstall)...$orange                                               #
+#$red Failed installs (need to uninstall)...$orange                                               #
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi
+if [[ -n $nostrrelay_p ]]         ; then echo  -e "$pink$nostrrelay_p$orange"; fi
 if [[ -n $docker_p ]]          ; then echo  -e "$pink$docker_p$orange"; fi
 if [[ -n $tor_p ]]             ; then echo  -e "$pink$tor_p$orange"; fi
 if [[ -n $torserver_p ]]       ; then echo  -e "$pink$torserver_p$orange"; fi
@@ -62,6 +71,9 @@ if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
+if [[ -n $nextcloud_p ]]          ; then echo  -e "$pink$nextcloud_p$orange"; fi
+if [[ -n $public_pool_p ]]   ; then echo -e "$pink$public_pool_p$orange"; fi
+
 echo "#                                                                                      #
 ########################################################################################
 "
@@ -88,7 +100,13 @@ m|M) back2main ;;
      return 0
      fi
      ;; 
-
+nr)
+    if [[ -n $nostrrelay_n ]] ; then
+    install_nostrrelay
+    return 0
+    fi
+    ;;
+    
      t|T|tor|Tor)
        if [[ -n $tor_n ]] ; then
        install_tor 
@@ -168,6 +186,20 @@ pnostr)
     return 0
     fi
     ;;
+
+next)
+    if [[ -n $nextcloud_n ]] ; then
+    install_nextcloud
+    return 0
+    fi
+    ;;
+
+pool|Pool|POOL) 
+        if [[ -n $public_pool_n ]] ; then
+            install_public_pool
+            return 0
+        fi
+;;
 
     q|Q|quit|QUIT)
         exit 0
