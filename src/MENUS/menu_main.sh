@@ -21,7 +21,7 @@ set_terminal_custom 51
 echo -en "$orange
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --- ${bright_blue}Main Menu$orange                                                   #
+#    P A R M A N O D E     ${bright_blue}Main Menu$orange                                                   #
 #                                                                                      #
 #    Version:$bright_blue $version     $output_branch
 #                                                                                      #
