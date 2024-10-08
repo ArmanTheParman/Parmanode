@@ -8,33 +8,33 @@ echo -e "
                                   TOOLS - PAGE 1  $orange
 
 
-              (cc)    Upgrade ColdCard firmware wizard             
+$cyan              (cc)$orange    Upgrade ColdCard firmware wizard             
 
-              (d)     Delete your previous preferences to hide certain Parmanode
+$cyan              (d)$orange     Delete your previous preferences to hide certain Parmanode
                       messages
 
-              (dfat)  Drive format assist tool
+$cyan              (dfat)$orange  Drive format assist tool
  
-              (md)    Import/Migrate/Revert an external drive.
+$cyan              (md)$orange    Import/Migrate/Revert an external drive.
 
-              (mm)    Mount the Parmanode drive - Linux only
+$cyan              (mm)$orange    Mount the Parmanode drive - Linux only
 
-              (ip)    What's my computer's IP address?
+$cyan              (ip)$orange    What's my computer's IP address?
 
-              (ppp)   Connect to Parman's node over Tor ...
+$cyan              (ppp)$orange   Connect to Parman's node over Tor ...
 
-              (pn)    ParmanodL - Flash a mircoSD for a Raspberry Pi
+$cyan              (pn)$orange    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
-              (ps)    ParmaShell info 
+$cyan              (ps)$orange    ParmaShell info 
 
-              (rs)    Parman's easy AF Rsync tool new
+$cyan              (rs)$orange    Parman's easy AF Rsync tool new
 
-              (u)     Update computer (apt-get for Linux, Homebrew for Macs)
+$cyan              (u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
 
-              (um)    Unmount your Parmanode external drive 
+$cyan              (um)$orange    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
-$green
-         ...  (next)  More options 
+$red $blinkon
+         ...  (n)  More options $blinkoff
 $orange
 ########################################################################################
 "
