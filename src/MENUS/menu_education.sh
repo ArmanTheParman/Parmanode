@@ -2,26 +2,23 @@ function menu_education {
 
 while true ; do
 set_terminal
-echo -e "
-########################################################################################
- 
-$cyan
+echo -ne "
+######################################################################################## $cyan
                             P A R M A N O D E - Education
-$orange
-                    
-                    (mit)      2018 MIT Lecture Series (With Tagde Dryja)
+########################################################################################
 
-                    (w)        How to connect your wallet to the node
-
-                    (mm)       Bitcoin Mentorship Info
-
-                    (n)        Six reasons to run a node
-
-                    (s)        Separation of money and state
-
-                    (cs)       Cool stuff
-
-            .... more soon
+$cyan                    
+                    (mit)$orange      2018 MIT Lecture Series (With Tagde Dryja)
+$cyan
+                    (w)$orange        How to connect your wallet to your node
+$cyan
+                    (mm)$orange       Bitcoin Mentorship Info
+$cyan
+                    (n)$orange        Six reasons to run a node (essay)
+$cyan
+                    (s)$orange        Separation of money and state (essay)
+$cyan
+                    (cs)$orange       Cool stuff ('Did you know?')
 
 
 ########################################################################################
