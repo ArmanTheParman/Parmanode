@@ -1,17 +1,17 @@
 function menu_settings {
 while true ; do
 source $hm >/dev/null 2>&1 #hide messages
-set_terminal ; echo -e "
-########################################################################################
-$cyan
+set_terminal ; echo -ne "
+########################################################################################$cyan
                                    SETTINGS    $orange
+########################################################################################
 
-
-         c)        Change colours
-
-        an)        Hide/Show Main Menu announcements
-
-        aa)        Turn on/off autoupdates
+$cyan
+                       (c)$orange         Change Parmanode colours
+$cyan
+                       (an)$orange        Hide/Show Main Menu announcements
+$cyan
+                       (aa)$orange        Turn on/off autoupdates
 
 ######################################################################################## 
 "

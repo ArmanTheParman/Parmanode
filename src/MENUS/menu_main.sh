@@ -27,13 +27,14 @@ echo -en "$orange
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
-#$cyan    (add)    $orange            Add more Programs                                            #
+#$green    (add)    $orange            Add more Programs                                            #
 #                                                                                      #
 #$cyan    (u)            $orange      Use Installed Programs                                       #
 #                                                                                      #
-#$cyan    (remove)     $orange        Remove/Uninstall Programs                                    #
+#$red    (remove)     $orange        Remove/Uninstall Programs                                    #
+#                                                                                      #
+#$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
@@ -51,9 +52,10 @@ echo -en "$orange
 #                                                                                      #
 #$cyan    (update)  $orange           Update Parmanode                                             #
 #                                                                                      #
-#$cyan    (uninstall)     $orange     Uninstall Parmanode                                          #
+#$red    (uninstall)     $orange     Uninstall Parmanode                                          #
 #                                                                                      #
 #$cyan    (ap)$orange                 About Parmanode                                              #
+#                                                                                      #
 #                                                                                      #
 ########################################################################################
 
