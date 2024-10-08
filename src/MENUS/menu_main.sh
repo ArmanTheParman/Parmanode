@@ -48,7 +48,7 @@ echo -en "$orange
 #                                                                                      #
 #$cyan    (d)             $orange     Donate                                                       #
 #                                                                                      #
-#$cyan    (l) $orange                 See logs and config files                                    #
+#$cyan    (log) $orange               See logs and config files                                    #
 #                                                                                      #
 #$cyan    (update)  $orange           Update Parmanode                                             #
 #                                                                                      #

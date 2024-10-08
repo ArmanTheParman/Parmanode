@@ -44,21 +44,24 @@ esac
 done
 fi
 
-while true ; do set_terminal ; echo -e "
-########################################################################################
-$cyan
+while true ; do set_terminal ; echo -en "
+########################################################################################$cyan
+
                       PARMANODE LOG AND CONFIGURATION FILES $orange
 
+########################################################################################
 
-                        pa)            parmanode_all.log
-
-                        ic)            installed.conf                    
-
-                        pc)            parmanode.conf
-
-                        delete)        DELETE ALL LOGS (not conf)
-
-                        uh)            Unhide messages (you hid them with \"FREE ROSS\")
+$cyan
+                     pa)$orange            parmanode_all.log
+$cyan
+                     ic)$orange            installed.conf                    
+$cyan
+                     pc)$orange            parmanode.conf
+$cyan
+                     delete)$orange        DELETE ALL LOGS (not conf)
+$cyan
+                     uh)$orange            Unhide messages (you hid them with 'FREE ROSS')
+$orange
 
 ########################################################################################
 "
