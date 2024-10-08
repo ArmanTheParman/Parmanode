@@ -8,7 +8,13 @@ echo -e "
                                    TOOLS - PAGE 2  $orange
 
 
+              (as)        AutoSSH reverse proxy tunnel guide
+
               (curl)      Test bitcoin curl/rpc command (for troubleshooting)
+
+              (de)        Drive encryption - info
+
+              (fs)        Free up some space
 
               (gc)        RPC call test to LND (grpcurl)
 
@@ -17,12 +23,6 @@ echo -e "
               (rf)        Refresh Parmanode script directory              
 
               (sr)        System report (for getting troubleshooting help)
-
-              (fs)        Free up some space
-
-              (as)        AutoSSH reverse proxy tunnel guide
-
-              (de)        Drive encryption - info
 
 $orange
 ########################################################################################

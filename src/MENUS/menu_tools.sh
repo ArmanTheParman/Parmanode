@@ -10,29 +10,29 @@ echo -e "
 
               (cc)    Upgrade ColdCard firmware wizard             
 
-              (ppp)   Connect to Parman's node over Tor ...
-            
+              (d)     Delete your previous preferences to hide certain Parmanode
+                      messages
+
               (dfat)  Drive format assist tool
+ 
+              (md)    Import/Migrate/Revert an external drive.
+
+              (mm)    Mount the Parmanode drive - Linux only
+
+              (ip)    What's my computer's IP address?
+
+              (ppp)   Connect to Parman's node over Tor ...
 
               (pn)    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
               (ps)    ParmaShell info 
 
-              (ip)    What's my computer's IP address?
+              (rs)    Parman's easy AF Rsync tool new
 
-              (md)    Import/Migrate/Revert an external drive.
+              (u)     Update computer (apt-get for Linux, Homebrew for Macs)
 
               (um)    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
-
-              (mm)    Mount the Parmanode drive - Linux only
-                
-              (d)     Delete your previous preferences to hide certain Parmanode
-                      messages
-                 
-              (u)     Update computer (apt-get for Linux, Homebrew for Macs)
-
-              (rs)    Parman's easy AF Rsync tool new
 $green
          ...  (next)  More options 
 $orange
