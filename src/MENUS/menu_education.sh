@@ -49,7 +49,7 @@ m|M) back2main ;;
         cool_stuff
         ;;
 
-    p|P) menu_use ;; 
+    p|P) return 0 ;; 
 
     q|Q|Quit|QUIT)
         exit 0
