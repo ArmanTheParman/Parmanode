@@ -31,7 +31,7 @@ echo -en "$orange
 #                                                                                      #
 #$cyan    (add)    $orange            Add more Programs                                            #
 #                                                                                      #
-#$cyan    (u)            $orange      Use Programs                                                 #
+#$cyan    (u)            $orange      Use Installed Programs                                       #
 #                                                                                      #
 #$cyan    (remove)     $orange        Remove/Uninstall Programs                                    #
 #                                                                                      #

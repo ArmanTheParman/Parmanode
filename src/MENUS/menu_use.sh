@@ -13,133 +13,132 @@ set_terminal_custom 48
 echo -e "
 ########################################################################################
 
-     P A R M A N O D E --> Main Menu --> ${cyan}USE$orange                               
+     P A R M A N O D E --> Main Menu --> ${cyan}USE (installed)$orange                               
 
 ########################################################################################          
 
-Installed...
 
 "
 if grep -q "/dev/md" $ic ; then raidapp=1
-                       echo "    (rr)         RAID 
+                       echo -e "                   $cyan       (rr)$orange         RAID 
                             " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
-                       echo "    (b)          Bitcoin Core
+                       echo -e "                        $cyan  (b)$orange          Bitcoin Core
                             " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
-                       echo "    (f)          Fulcrum (an Electrum Server)
+                       echo -e "                        $cyan  (f)$orange          Fulcrum (an Electrum Server)
                             " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
-                       echo "    (btcp)       BTCPay Server
+                       echo -e "                        $cyan  (btcp)$orange       BTCPay Server
                             " ; fi
 if which tor >/dev/null 2>&1 ; then torapp=1
-                       echo "    (t)          Tor 
+                       echo -e "                        $cyan  (t)$orange          Tor 
                             " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
-                       echo "    (l)          LND
+                       echo -e "                        $cyan  (l)$orange          LND
                             " ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
-                       echo "    (s)          Sparrow Wallet 
+                       echo -e "                        $cyan  (s)$orange          Sparrow Wallet 
                             " ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlapp=1
-                       echo "    (r)          RTL Wallet 
+                       echo -e "                        $cyan  (r)$orange          RTL Wallet 
                             " ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
-                       echo "    (e)          Electrum Wallet 
+                       echo -e "                        $cyan  (e)$orange          Electrum Wallet 
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo "    (tws)        Tor Web Server 
+                       echo -e "                        $cyan  (tws)$orange        Tor Web Server 
                             " ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
-                       echo "    (specter)    Specter Wallet 
+                       echo -e "                        $cyan  (specter)$orange    Specter Wallet 
                             " ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorerapp=1
-                       echo "    (bre)        BTC RPC Explorer 
+                       echo -e "                        $cyan  (bre)$orange        BTC RPC Explorer 
                             " ; fi
 if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then breapp=1
-                       echo "    (bre)        BTC RPC Explorer (Docker)
+                       echo -e "                        $cyan  (bre)$orange        BTC RPC Explorer (Docker)
                             " ; fi
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsapp=1
-                       echo "    (ers)        electrs 
+                       echo -e "                        $cyan  (ers)$orange        electrs 
                             " ; fi
 if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2app=1
-                       echo "    (ers)        electrs 
+                       echo -e "                        $cyan  (ers)$orange        electrs 
                             " ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
-                       echo "    (lnb)        Lnbits 
+                       echo -e "                        $cyan  (lnb)$orange        Lnbits 
                             " ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
-                       echo "    (trz)        Trezor Suite 
+                       echo -e "                        $cyan  (trz)$orange        Trezor Suite 
                             " ; fi
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
-                       echo "    (bb)         BitBox App 
+                       echo -e "                        $cyan  (bb)$orange         BitBox App 
                             " ; fi
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgerapp=1
-                       echo "    (ll)         Ledger Live App 
+                       echo -e "                        $cyan  (ll)$orange         Ledger Live App 
                             " ; fi
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellapp=1
-                       echo "    (ps)         Parmashell
+                       echo -e "                        $cyan  (ps)$orange         Parmashell
                             " ; fi
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxapp=1
-                       echo "    (pbx)        ParmaBox 
+                       echo -e "                        $cyan  (pbx)$orange        ParmaBox 
                             " ; fi
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskapp=1
-                       echo "    (any)        AnyDesk 
+                       echo -e "                        $cyan  (any)$orange        AnyDesk 
                             " ; fi
 if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholeapp=1
-                       echo "    (pih)        PiHole 
+                       echo -e "                        $cyan  (pih)$orange        PiHole 
                             " ; fi
 if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelayapp=1
-                       echo "    (trl)        Tor Relay 
+                       echo -e "                        $cyan  (trl)$orange        Tor Relay 
                             " ; fi
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrapp=1
-                       echo "    (ersd)       electrs (Docker) 
+                       echo -e "                        $cyan  (ersd)$orange       electrs (Docker)
                             " ; fi
 if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2app=1
-                       echo "    (ersd)       electrs (Docker) 
+                       echo -e "                        $cyan  (ersd)$orange       electrs (Docker)
                             " ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
-                       echo "    (torb)       Tor Browser
+                       echo -e "                        $cyan  (torb)$orange       Tor Browser
                             " ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
-                       echo "    (qbit)       QBittorrent 
+                       echo -e "                        $cyan  (qbit)$orange       QBittorrent 
                             " ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolapp=1
-                       echo "    (mem)        Mempool 
+                       echo -e "                        $cyan  (mem)$orange        Mempool 
                             " ; fi
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshapp=1
-                       echo "    (tssh)       Tor SSH 
+                       echo -e "                        $cyan  (tssh)$orange       Tor SSH 
                             " ; fi
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolapp=1
-                       echo "    (pool)       Public Pool 
+                       echo -e "                        $cyan  (pool)$orange       Public Pool 
                             " ; fi
 if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
-                       echo "    (ex)         Electrum X 
+                       echo -e "                        $cyan  (ex)$orange         Electrum X 
                             " ; fi
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp=1
-                       echo "    (th)         Thunderhub 
+                       echo -e "                        $cyan  (th)$orange         Thunderhub 
                             " ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo "    (ws)         WordPress Website 
+                       echo -e "                        $cyan  (ws)$orange         WordPress Website 
                             " ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
-                       echo "    (ld)         LND (Docker)
+                       echo -e "                        $cyan  (ld)$orange         LND (Docker)
                             " ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelayapp=1
-                       echo "    (nr)         Nostr Relay
+                       echo -e "                        $cyan  (nr)$orange         Nostr Relay
                             " ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
-                       echo "    (litd)       LITD
+                       echo -e "                        $cyan  (litd)$orange       LITD
                        "
-                       echo "    (lt)         Lightning Terminal
+                       echo -e "                        $cyan  (lt)$orange         Lightning Terminal
                             " ; fi
 if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
-                       echo "    (next)       NextCloud
+                       echo -e "                        $cyan  (next)$orange       NextCloud
                             " ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp=1
-                       echo "    (pnostr)     ParmaNostr 
+                       echo -e "                        $cyan  (pnostr)$orange     ParmaNostr 
                             " ; fi
-echo "                            
+echo -e "                            
 #######################################################################################
 "
 if [[ -z $1 ]] ; then
