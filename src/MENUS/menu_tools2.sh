@@ -2,27 +2,27 @@ function menu_tools2 {
 
 while true ; do
 set_terminal_high
-echo -e "
-########################################################################################
-  $cyan
+echo -en "
+########################################################################################$cyan
                                    TOOLS - PAGE 2  $orange
+########################################################################################
 
 
-              (as)        AutoSSH reverse proxy tunnel guide
+$cyan              (as)$orange        AutoSSH reverse proxy tunnel guide
 
-              (curl)      Test bitcoin curl/rpc command (for troubleshooting)
+$cyan              (curl)$orange      Test bitcoin curl/rpc command (for troubleshooting)
 
-              (de)        Drive encryption - info
+$cyan              (de)$orange        Drive encryption - info
 
-              (fs)        Free up some space
+$cyan              (fs)$orange        Free up some space
 
-              (gc)        RPC call test to LND (grpcurl)
+$cyan              (gc)$orange        RPC call test to LND (grpcurl)
 
-              (rest)      REST protocol test to LND (info only)
+$cyan              (rest)$orange      REST protocol test to LND (info only)
 
-              (rf)        Refresh Parmanode script directory              
+$cyan              (rf)$orange        Refresh Parmanode script directory              
 
-              (sr)        System report (for getting troubleshooting help)
+$cyan              (sr)$orange        System report (for getting troubleshooting help)
 
 $orange
 ########################################################################################
