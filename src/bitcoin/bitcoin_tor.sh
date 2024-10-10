@@ -20,6 +20,7 @@ fi
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
+delete_line "$HOME/.bitcoin/bitcoin.conf" "listenonion=1"
 
 enable_tor_general
 

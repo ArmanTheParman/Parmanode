@@ -20,7 +20,7 @@ elif [[ $bitcoin_tor_status == tonlyout ]] ; then
 local status_print="Strict Tor, only out (option 3)"
 fi
 
-if [[ $OS == Mac ]] ; then previx=/usr/local/ ; else unset prefix ; fi
+if [[ $OS == Mac ]] ; then prefix=/usr/local/ ; else unset prefix ; fi
 
 if sudo [ -f $prefix/var/lib/tor/bitcoin-service/hostname ] ; then 
 get_onion_address_variable bitcoin 
@@ -29,10 +29,13 @@ $bright_blue    Onion adress: $ONION_ADDR
 $orange
 ########################################################################################
 "
-else tortex="########################################################################################
+debug "if yes hostname"
+else tortext="
+########################################################################################
 "
+debug "if no hostname"
 fi
-
+debug "get tor stuff"
 set_terminal ; echo -e "
 ########################################################################################
 
