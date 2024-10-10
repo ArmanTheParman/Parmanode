@@ -28,14 +28,14 @@ if [[ $OS == "Linux" ]] ; then
 
         set_terminal
         echo "Bitcoin will start in a moment..."
-        if grep -q "drive=external" < $pc >/dev/null ; then mount_drive ; fi
+        if grep -q "drive=external" < $pc >$dn ; then mount_drive ; fi
         set_terminal
         sudo systemctl start bitcoind.service 
 fi                 
 
 
 if [[ $OS == "Mac" ]] ; then
-        if grep -q "drive=external" < $pc ; then
+        if grep -q "drive=external" < $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
                 announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
                 return 1
