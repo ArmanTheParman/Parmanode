@@ -24,7 +24,7 @@ echo -e "
 #$green Not yet installed... $orange                                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo -e  "$bitcoin_n"; fi
-if [[ -n $electrs2_n && -n $electrs_n ]]  then echo -e "$electrs2_n"; fi
+if [[ -n $electrs2_n && -n $electrs_n ]] ; then echo -e "$electrs2_n"; fi
 if [[ -n $electrsdkr2_n ]]      ; then echo  -e "$electrsdkr2_n"; fi
 if [[ -n $electrumx_n ]]       ; then echo -e  "$electrumx_n"; fi
 if [[ -n $btcrpcexplorer_n ]]  ; then echo  -e "$btcrpcexplorer_n"; fi
