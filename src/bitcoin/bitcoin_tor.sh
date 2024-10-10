@@ -42,8 +42,8 @@ if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
 #Bitcoind stopping - start it up inside this function later
 
     restart_tor
-    restart_bitcoin
     stop_bitcoin
+    start_bitcoin
 
 unset $ONION_ADDR
 while [[ -z $ONION_ADDR ]] ; do
@@ -81,7 +81,8 @@ if [[ $2 == "onlyout" ]] ; then
     fi
 
 restart_tor
-restart_bitcoin
+stop_bitcoin
+start_bitcoin
 
 set_terminal ; echo -e "
 ########################################################################################
