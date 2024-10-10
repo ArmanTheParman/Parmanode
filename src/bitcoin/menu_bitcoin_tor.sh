@@ -8,7 +8,7 @@ enter_continue
 fi
 
 while true ; do
-
+unset tortext
 source $dp/parmanode.conf >/dev/null 2>&1 
 if [[ $bitcoin_tor_status == t ]] ; then
 local status_print="Tor enabled (option 2)"
@@ -18,6 +18,19 @@ elif [[ $bitcoin_tor_status == tc ]] ; then
 local status_print="Clearnet & Tor (option 1)"
 elif [[ $bitcoin_tor_status == tonlyout ]] ; then
 local status_print="Strict Tor, only out (option 3)"
+fi
+
+if [[ $OS == Mac ]] ; then previx=/usr/local/ ; else unset prefix ; fi
+
+if sudo [ -f $prefix/var/lib/tor/bitcoin-service/hostname ] ; then 
+get_onion_address_variable bitcoin 
+tortext="
+$bright_blue    Onion adress: $ONION_ADDR
+$orange
+########################################################################################
+"
+else tortex="########################################################################################
+"
 fi
 
 set_terminal ; echo -e "
@@ -44,18 +57,8 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
                  - Generally faster and more reliable
 
 
-$bright_magenta    Current Status: $status_print$orange"
-
-if sudo [ -f /var/lib/tor/bitcoin-service/hostname ] ; then 
-get_onion_address_variable bitcoin 
-echo -e "
-$bright_blue    Onion adress: $ONION_ADDR
-$orange
-########################################################################################
-"
-else echo "########################################################################################
-"
-fi
+$bright_magenta    Current Status: $status_print$orange
+$tortext"
 
 choose "xpmq" ; read choice
 case $choice in 
