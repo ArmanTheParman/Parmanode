@@ -33,9 +33,9 @@ if sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" \
     echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >/dev/null 2>&1
     fi
 
-if sudo grep "HiddenServicePort 8332 127.0.0.1:8332" \
+if sudo grep "HiddenServicePort 8333 127.0.0.1:8333" \
     $torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 8332 127.0.0.1:8332" | sudo tee -a $torrc >/dev/null 2>&1
+    echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >/dev/null 2>&1
     fi
 
 ########################################################################################
@@ -60,6 +60,7 @@ done
 if [[ $1 == "torandclearnet" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "listenonion=1" | tee -a $bc >$dn 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "externalip="
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "discover="
@@ -69,6 +70,7 @@ if [[ $1 == "torandclearnet" ]] ; then
 if [[ $1 == "toronly" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "listenonion=1" | tee -a $bc >$dn 2>&1
     delete_line "$HOME/.bitcoin/bitcoin.conf" "externalip="
     debug "onion is $ONION_ADDR"
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
@@ -78,6 +80,8 @@ if [[ $1 == "toronly" ]] ; then
 
 if [[ $2 == "onlyout" ]] ; then
     delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
+    delete_line "$HOME/.bitcoin/bitcoin.conf" "listenonion=1"
+    echo "listenonion=1" | tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 

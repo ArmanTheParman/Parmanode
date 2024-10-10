@@ -22,7 +22,7 @@ fi
 
 if [[ $OS == Mac ]] ; then prefix=/usr/local/ ; else unset prefix ; fi
 
-if sudo [ -f $prefix/var/lib/tor/bitcoin-service/hostname ] ; then 
+if sudo [ -f $prefix/var/lib/tor/bitcoin-service/hostname ] && [[ $bitcoin_tor_status != c ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR

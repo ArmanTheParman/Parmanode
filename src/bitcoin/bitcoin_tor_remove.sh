@@ -1,18 +1,20 @@
 function bitcoin_tor_remove {
+unset prefix
+if [[ $OS == "Mac" ]] ; then
+prefix=/usr/local 
+fi
 
-if [[ $OS == "Mac" ]] ; then return 1 ; fi
+stop_bitcoin
 
-stop_bitcoind
-
-delete_line "/etc/tor/torrc" "# Additions by Parmanode"
-delete_line "/etc/tor/torrc" "bitcoin-service"
-delete_line "/etc/tor/torrc" "127.0.0.1:8332"
+delete_line "$prefix/etc/tor/torrc" "# Additions by Parmanode"
+delete_line "$prefix/etc/tor/torrc" "bitcoin-service"
+delete_line "$prefix/etc/tor/torrc" "127.0.0.1:8333"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
 rm $HOME/.bitcoin/*onion*
-if which bitcoind ; then run_bitcoind ; fi
+start_bitcoin
 
 set_terminal
 echo "
