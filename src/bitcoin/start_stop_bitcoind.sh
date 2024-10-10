@@ -40,6 +40,8 @@ if [[ $OS == "Mac" ]] ; then
                 announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
                 return 1
                 fi
+        else debug "else drive external
+        pc is $pc"
         fi
 run_bitcoinqt
 fi

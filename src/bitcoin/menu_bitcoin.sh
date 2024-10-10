@@ -289,9 +289,9 @@ if [[ -n $height ]] ; then
     export running_text="-- height=$height (fully sync'd)"
     else
     temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'progress=0\.[0-9]+\s' | cut -d \. -f 2)
-    export pc="${temp:0:2}.${temp:2:2}%"
-    if [[ $pc == "00.00%" ]] ; then pc='' ; fi
-    export running_text="-- height=$height ($pc)"
+    export PC="${temp:0:2}.${temp:2:2}%"
+    if [[ $PC == "00.00%" ]] ; then PC='' ; fi
+    export running_text="-- height=$height ($PC)"
     fi
 fi
 
