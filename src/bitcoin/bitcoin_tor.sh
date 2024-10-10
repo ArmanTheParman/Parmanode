@@ -3,7 +3,7 @@ function bitcoin_tor {
 if [[ $OS == "Mac" ]] ; then 
     varlibtor="/usr/local/var/lib/tor"
     torrc="/usr/local/etc/tor/torrc"
-    if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor ; fi
+    if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor ; fi
     install_tor
 fi
 
