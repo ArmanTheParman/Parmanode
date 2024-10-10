@@ -42,8 +42,9 @@ set_terminal ; echo -e "
 $cyan                        Tor options for Bitcoin (Linux only)   $orange
 
 
-    Option to change Bitcoin Tor Settings. LND may stop running and require some
-    thinking time (minutes) before you can succesfully manually restart it.
+    Option to change Bitcoin Tor Settings. Note if you use LND, it may stop running 
+    and require some thinking time (minutes) before you can succesfully manually 
+    restart it.
 
 
     1)    Allow Tor connections AND clearnet connections
