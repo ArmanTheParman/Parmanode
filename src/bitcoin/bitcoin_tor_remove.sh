@@ -13,7 +13,7 @@ delete_line "$HOME/.bitcoin/bitcoin.conf" "onion"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 
-rm $HOME/.bitcoin/*onion* >$dn
+rm $HOME/.bitcoin/onion* >$dn
 start_bitcoin
 
 set_terminal
