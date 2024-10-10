@@ -3,8 +3,6 @@
 
 function start_bitcoin { start_bitcoind ; }
 function stop_bitcoin { stop_bitcoind ; }
-function restart_bitcoin { restart_bitcoind ; }
-
 
 function run_bitcoind {
 
