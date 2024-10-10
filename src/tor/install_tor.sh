@@ -45,7 +45,14 @@ if [[ $OS == "Linux" ]] ; then { sudo apt-get install tor -y ; } || { errormessa
 fi
 
 if [[ $OS == "Mac" ]] ; then
-brew_check Tor || return 1
+
+    brew_check Tor || return 1
+
+    local varlibtor="/usr/local/var/lib/tor" >$dn 2>&1
+    local torrc="/usr/local/etc/tor/torrc" >$dn 2>&1
+    if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor ; fi
+    if [[ ! -e $torrc ]] ; then sudo touch $torrc ; fi
+
 { brew install tor && brew services start tor ; } || { log "tor" "failed at tor install && start tor" ; errormessage ; return 1 ; }
 fi
 

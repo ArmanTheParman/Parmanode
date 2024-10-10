@@ -1,10 +1,12 @@
 function bitcoin_tor {
 
+install_tor
+
 if [[ $OS == "Mac" ]] ; then 
     varlibtor="/usr/local/var/lib/tor"
-    torrc="/usr/local/etc/tor/torrc"
-    if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor ; fi
-    install_tor
+    torrc="/usr/local/etc/tor/torrc" 
+    if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor >$dn 2>&1 ; fi
+    if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
 fi
 
 if [[ $OS == "Linux" ]] ; then
