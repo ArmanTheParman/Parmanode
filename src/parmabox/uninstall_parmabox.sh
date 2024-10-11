@@ -35,7 +35,7 @@ set_terminal ; echo -e "
 "
 read choice
 if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
-
+set_terminal ; please_wait
 if ! docker ps >/dev/null ; then announce \
 "Please make sure Docker is running before asking Parmanode to
     clean up the installed ParmaBox."
