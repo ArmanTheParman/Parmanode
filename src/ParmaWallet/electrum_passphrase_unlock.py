@@ -64,7 +64,8 @@ while choice == 'm':
 
 possibilities = input(f"""Please enter some words or characters you think might be in the
 password separated with commas. If you think you might have commas in the
-password, you can add them later.""")
+password, you can add them later. Any whitespace you add will be included intentionally
+so don't type any whitespace if your possible password doesn't have any.""")
 
 p_list = []
 for i in possibilities.split(','):
