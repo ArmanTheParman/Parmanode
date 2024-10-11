@@ -1,6 +1,9 @@
 function temp_patch {
 
-#fix 8332 value in torrc - linux
+#put in next patch
+set_github_config
+
+#fix 8332 value in torrc - linux ; remove Jan 2025
 if which tor >$dn 2>&1 ; then #exit if tor not even installed
      
     #make it work for linux or mac
@@ -22,15 +25,13 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
     fi
 fi
 
-
-#fix homebrew path order
+#fix homebrew path order ; remove June 2025
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
 delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
     if ! grep -q "PATH=/opt/homebrew/bin" < $HOME/.zshrc ; then
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $HOME/.zshrc >$dn 2>&1
     fi
 fi
-
 
 #remove June 2025
 make_lnd_service_tor
@@ -46,26 +47,7 @@ if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
 
-#Remove in October
-if [[ -e /etc/crontab ]] ; then
-if grep -q "REMOVE_TOR_FLAG" < /etc/crontab >/dev/null 2>&1 ; then #flag exists only if crontab run at least once to completion
-sudo cat /etc/crontab | sudo sed '/REMOVE_TOR_FLAG/d' | sudo tee /tmp/crontab >/dev/null && \
-sudo mv /tmp/crontab /etc/crontab && \
-rm $dp/REMOVE_TOR_FLAG >/dev/null 2>&1
-rm $dp/tor_srcipt.sh >/dev/null 2>&1
-fi
-fi
 
-#remove in September
-if grep -q "parmanostr" < $ic && [[ ! -e $dp/.nostr_keys/nostr_keys.txt ]] ; then
-make_sourcable_keys_file
-fi
-
-#put in next patch
-set_github_config
-
-#remove in October
-installed_conf_remove "btcpTOR"
 
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
@@ -74,6 +56,7 @@ if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
 delete_line "$ic" "electrs-start"
 parmanode_conf_add "electrs2-start"
 fi
+
 #remove in 2025
 #stream directive now in "stream.conf"
 if [[ $OS == "Linux" && -f /etc/nginx/nginx.conf ]] ; then
@@ -96,28 +79,6 @@ if [[ -e $bc ]] ; then
     echo "rpcservertimeout=120" | sudo tee -a $bc >/dev/null 2>&1
     fi
 
-fi
-
-#in case someone has a funky IP address. Will add to bitcoin install, so this is not needed for very long here.
-if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | grep -qE '^[0-9]' ; then 
-IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
-IP2="$(echo "$IP" | cut -d \. -f 2 2>/dev/null)"
-IP1and2="$IP1.$IP2." 
-    if [[ -e $bc ]] && ! grep -q "rpcallowip=$IP1and2" < $bc ; then echo rpcallowip="${IP1and2}0.0/16" | tee -a $bc >/dev/null 2>&1
-    fi
-fi
-
-#strange behaviour with capitalisation changing frequently.
-#remove in 2025
-if [[ -d $pp/parmanode/src/Public_pool ]] ; then
-mv $pp/parmanode/src/Public_pool $pp/parmanode/src/public_pool >/dev/null 2>&1
-fi
-
-#remove in 2025
-swap_string "$ic" "piassps-end" "piapps-end"
-if [[ -e $bc ]] ; then
-delete_line "$bc" "rpcallowip=172"
-echo "rpcallowip=172.0.0.0/8" | sudo tee -a $bc >/dev/null 2>&1
 fi
 
 #remove in 2025
