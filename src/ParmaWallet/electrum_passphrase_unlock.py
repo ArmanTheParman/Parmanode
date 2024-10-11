@@ -6,7 +6,7 @@ from electrum.storage import WalletStorage
 ##########
 # Set the path to your wallet file here.
 #
-path = "./ATP4"
+path = "./wallet_file"
 ##########
 
 s = WalletStorage(path)
