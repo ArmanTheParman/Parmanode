@@ -16,6 +16,7 @@ echo -e "$1
 "
 unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
+if [[ $enter_cont == d ]] ; then unset debug ; fi
 return 0
 fi
 }
