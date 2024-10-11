@@ -2,7 +2,6 @@ function temp_patch {
 
 #put in next patch
 set_github_config
-
 #fix 8332 value in torrc - linux ; remove Jan 2025
 if which tor >$dn 2>&1 ; then #exit if tor not even installed
      
@@ -11,7 +10,7 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
     if [[ $OS == Mac ]] ; then torrc=/usr/local/etc/tor/torrc ; prefix=/usr/local ; fi
 
     #if 8332 service exists then exposed to previous error, need to fix. Clean entries first.
-    if grep -q 8332 $torrc 2>$dn ; then
+    if grep -q "8332" "$torrc" 2>$dn ; then
 
         delete_line $torrc "HiddenServiceDir $prefix/var/lib/tor/bitcoin-service/"
         delete_line $torrc "HiddenServicePort 8332 127.0.0.1:8332"
@@ -46,8 +45,6 @@ fi
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
-
-
 
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
@@ -121,4 +118,5 @@ invalid ;;
 esac
 done
 fi
+debug temppatchend
 }
