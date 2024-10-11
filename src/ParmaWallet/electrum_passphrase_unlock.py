@@ -62,8 +62,12 @@ while choice == 'm':
         print("try again")
         continue
 
-possibilties = input(f"""Please enter some words or characters you think might be in the
+possibilities = input(f"""Please enter some words or characters you think might be in the
 password separated with commas. If you think you might have commas in the
 password, you can add them later.""")
+
+p_list = []
+for i in possibilities.split(','):
+    p_list.append(i) 
 
 ##unfinished
