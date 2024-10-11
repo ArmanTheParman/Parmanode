@@ -1,5 +1,28 @@
 function temp_patch {
 
+#fix 8332 value in torrc - linux
+if which tor >$dn 2>&1 ; then #exit if tor not even installed
+     
+    #make it work for linux or mac
+    if [[ $OS == Linux ]] ; then torrc=/etc/tor/torrc ; unset prefix ; fi
+    if [[ $OS == Mac ]] ; then torrc=/usr/local/etc/tor/torrc ; prefix=/usr/local ; fi
+
+    #if 8332 service exists then exposed to previous error, need to fix. Clean entries first.
+    if grep -q 8332 $torrc 2>$dn ; then
+
+        delete_line $torrc "HiddenServiceDir $prefix/var/lib/tor/bitcoin-service/"
+        delete_line $torrc "HiddenServicePort 8332 127.0.0.1:8332"
+        delete_line $torrc "HiddenServicePort 8332 127.0.0.1:8333"
+        delete_line $torrc "HiddenServicePort 8333 127.0.0.1:8332"
+        delete_line $torrc "HiddenServicePort 8333 127.0.0.1:8333"
+        
+        #add corrected entries in order
+        echo "HiddenServiceDir $prefix/var/lib/tor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
+        echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
+    fi
+fi
+
+
 #fix homebrew path order
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
 delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
