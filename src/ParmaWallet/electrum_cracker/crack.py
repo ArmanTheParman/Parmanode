@@ -20,7 +20,7 @@ while True:
 
     Current files in ParmaBox directory:""")
     
-    for file in os.listdir("/home/parman/parmanode/parmabox"): print(file)
+    for file in os.listdir("/home/parman/parmanode/parmabox"): print("    " , file)
 
     walletpath = input(f""" 
 ########################################################################################
