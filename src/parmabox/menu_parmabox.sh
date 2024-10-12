@@ -5,8 +5,6 @@ function menu_parmabox {
 ########################################################################################
 
 $cyan
-            r)$orange         Log into the container as root     (type exit to return here)
-$cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
 $cyan
             ec)$orange        Run the tool to crack an Electrum locked wallet
@@ -15,7 +13,7 @@ $cyan
 $cyan
             rs)$orange        Restart the container
 $cyan
-            u)$orange         Run an update of the OS inside the container
+            u)$orange         Run an update of Parmanode and the OS inside the container
 $cyan
             rf)$orange        Refresh ParmaBox (starts over and includes new updates)
 
@@ -39,7 +37,8 @@ docker stop parmabox ;;
 rs) 
 docker start parmabox ;;
 u) 
-docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" ;;
+docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" 
+docker exec -it -u parman parmabox bash -c "gp" ;;
 rf)
 parmabox_refresh
 ;;
