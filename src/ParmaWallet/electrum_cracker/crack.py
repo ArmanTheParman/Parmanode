@@ -18,9 +18,7 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
 try:
     if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
         walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0].strip()}"
-        input(walletpath)
 except Exception as e: 
-    input(e)
     sys.exit(1)
 
 print("length -- " , len(os.listdir("/home/parman/parmanode/parmabox")) )
