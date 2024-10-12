@@ -38,7 +38,6 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
 
     for file in os.listdir("/home/parman/parmanode/parmabox"): print("    " , file)
 
-    input("pause")
     walletpath = input(f""" 
 ########################################################################################
 """)
@@ -50,7 +49,6 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
     break
 
-input("pause -- 2")
 
 print(walletpath, type(walletpath))
 input()
@@ -61,19 +59,13 @@ try:
 except Exception as e:
     input(e)
 
-input("pause -- 3")
-
 if not wallet_object.file_exists():
     input("Does not seem to be an Electrum Wallet. Hit <enter>. Exiting.")
     sys.exit(0)
 
-input("pause -- 4")
-
 if not wallet_object.is_encrypted():
     input("Good news, this wallet isn't encrypted. Hit <enter>. Exiting.")
     sys.exit(0)
-
-input("pause -- 5")
 
 clear()
 automate = input(f"""
