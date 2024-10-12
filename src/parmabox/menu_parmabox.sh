@@ -37,8 +37,11 @@ docker stop parmabox ;;
 rs) 
 docker start parmabox ;;
 u) 
-docker exec -it -u root parmabox bash -c "apt update -y && apt upgrade" 
-docker exec -it -u parman parmabox bash -c "gp" ;;
+docker exec -it -u root parmabox bash -c "apt update -y && apt -y upgrade" 
+echo "Update Parmanode..."
+docker exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
+sleep 2
+;;
 rf)
 parmabox_refresh
 ;;
