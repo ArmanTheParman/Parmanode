@@ -129,8 +129,23 @@ while True:
     #password (if automate = m)
     #possibilities (commaa separated string)
     #p_list (list of possibilites)
-    #dictionary_path
+    #dictionary_path --> then appended to p_list
+clear()
+input("Hit <enter> to start search.")
+clear()
 
+for i in p_list:
+
+    try:
+        wallet_object.decrypt(i) #exception thrown if password wrong
+        with open("cracked_password.txt", 'w') as f:
+            f.write(i + '\n')
+        input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+        sys.exit(0)
+
+    except Exception as e:
+        continue
+    
 #iterate password options...
 
 #decrypt with each option...
