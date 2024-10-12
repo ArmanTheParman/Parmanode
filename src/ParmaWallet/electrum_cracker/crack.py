@@ -59,14 +59,19 @@ except Exception as e:
     input(e)
     sys.exit(1)
 
+input("pause -- 3")
 
 if not wallet_object.file_exists():
     input("Does not seem to be an Electrum Wallet. Hit <enter>. Exiting.")
     sys.exit(0)
 
+input("pause -- 4")
+
 if not wallet_object.is_encrypted():
     input("Good news, this wallet isn't encrypted. Hit <enter>. Exiting.")
     sys.exit(0)
+
+input("pause -- 5")
 
 clear()
 automate = input(f"""
