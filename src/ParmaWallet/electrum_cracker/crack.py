@@ -39,10 +39,10 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
 
     Current files in ParmaBox directory:
     """)
-    
+
     for file in os.listdir("/home/parman/parmanode/parmabox"): print("    " , file)
 
-input("pause")
+    input("pause")
     walletpath = input(f""" 
 ########################################################################################
 """)
@@ -53,6 +53,7 @@ input("pause")
         continue
     walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
     break
+
 input("pause")
 
 try:
