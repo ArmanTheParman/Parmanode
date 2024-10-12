@@ -62,16 +62,16 @@ set_terminal ; echo -e "
     You must first place the file in the dirctory...
 $cyan
    $hp/parmabox/
-
+$orange
    Then the script will prompt you for the file.
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose epmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
 
-
+docker exec run parmabox /bin/bash -c "python3 /home/parman/parmanode/scr/ParmaWallet/electrum_cracker/crack.py"
 
 }
