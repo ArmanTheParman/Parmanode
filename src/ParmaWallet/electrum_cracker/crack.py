@@ -18,8 +18,6 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
 try:
     if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
         walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0].strip()}"
-        print(walletpath, type(walletpath))
-        input()
 except Exception as e: 
     sys.exit(1)
 
@@ -53,6 +51,9 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     break
 
 input("pause -- 2")
+
+print(walletpath, type(walletpath))
+input()
 
 try:
     wallet_object = WalletStorage(walletpath)
