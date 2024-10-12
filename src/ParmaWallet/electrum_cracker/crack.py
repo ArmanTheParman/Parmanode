@@ -42,6 +42,7 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
         input("""Hit <enter> to try again""")
         clear()
         continue
+    walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
     break
 
 wallet_object = WalletStorage(walletpath)

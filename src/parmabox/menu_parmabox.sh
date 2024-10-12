@@ -72,6 +72,6 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
 
-docker exec run parmabox /bin/bash -c "python3 /home/parman/parmanode/scr/ParmaWallet/electrum_cracker/crack.py"
+docker exec -it parmabox /bin/bash -c "python3 /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/crack.py"
 
 }
