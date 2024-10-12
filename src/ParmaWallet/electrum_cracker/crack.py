@@ -56,7 +56,8 @@ print(walletpath, type(walletpath))
 input()
 
 try:
-    wallet_object = WalletStorage(walletpath)
+#    wallet_object = WalletStorage(walletpath)
+    pass
 except Exception as e:
     input(e)
 
