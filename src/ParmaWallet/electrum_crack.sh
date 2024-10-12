@@ -61,8 +61,8 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n)
 break ;;
 y)
-sudo chmod -R 444 $hp/parmabox/*
-sudo chown 1001:995 $hp/parmabox/*
+sudo chmod -R 666 $hp/parmabox/
+sudo chown :995 $hp/parmabox/
 break
 ;;
 *)
