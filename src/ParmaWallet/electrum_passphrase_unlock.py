@@ -125,15 +125,31 @@ while True:
         input(e)
         sys.exit(0)
 
-#populated so far:
-    #wallet_path
-    #wallet_object
-    #automate=m or a
-    #password (if automate = m)
-    #possibilities (commaa separated string)
-    #p_list (list of possibilites)
-    #dictionary_path --> then appended to p_list
-clear()
+while True:
+    clear()
+    combinations = input("""
+######################################################################################## 
+
+    How many combination positions would you like to try (1 to 9).
+    
+    Enter a value and hit <enter>
+
+    Or q and <enter> to quit.
+    
+######################################################################################## 
+""")
+    if combinations.upper() == 'Q': sys.exit(0)
+    if len(combinations) != 1:
+        input("One digit only. Try again. Hit <enter>")
+        continue
+    if not combinations.isdigit():
+        input("Must be a single digit. Try again. Hit <enter>")
+        continue
+    break
+
+
+
+
 input("Hit <enter> to start search.")
 clear()
 
@@ -148,21 +164,115 @@ for i in p_list:
         sys.exit(0)
 
     except Exception as e:
-        continue
+        pass 
 
-for i in p_list:
-    for j in p_list:
+    for i in p_list:
 
-        try:
-            print(f"{i+j}")
-            wallet_object.decrypt(i+j) #exception thrown if password wrong
-            with open("cracked_password.txt", 'w') as f:
-                f.write(i + '\n')
-            input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
-            sys.exit(0)
+        for j in p_list:
 
-        except Exception as e:
-            continue
+            try:
+                print(f"{i+j}")
+                wallet_object.decrypt(i+j) #exception thrown if password wrong
+                with open("cracked_password.txt", 'w') as f:
+                    f.write(i + '\n')
+                input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                sys.exit(0)
+
+            except Exception as e:
+                pass
+            
+            for k in p_list:
+
+                try:
+                    print(f"{i+j+k}")
+                    wallet_object.decrypt(i+j+k) #exception thrown if password wrong
+                    with open("cracked_password.txt", 'w') as f:
+                        f.write(i + '\n')
+                    input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                    sys.exit(0)
+
+                except Exception as e:
+                    pass
+
+                for l in p_list:
+
+                    try:
+                        print(f"{i+j+k+l}")
+                        wallet_object.decrypt(i+j+k+l) #exception thrown if password wrong
+                        with open("cracked_password.txt", 'w') as f:
+                            f.write(i + '\n')
+                        input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                        sys.exit(0)
+
+                    except Exception as e:
+                        pass
+
+                    for m in p_list:
+
+                        try:
+                            print(f"{i+j+k+l+m}")
+                            wallet_object.decrypt(i+j+k+l+m) #exception thrown if password wrong
+                            with open("cracked_password.txt", 'w') as f:
+                                f.write(i + '\n')
+                            input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                            sys.exit(0)
+
+                        except Exception as e:
+                            pass 
+
+                        for n in p_list:
+
+                            try:
+                                print(f"{i+j+k+l+m+n}")
+                                wallet_object.decrypt(i+j+k+l+m+n) #exception thrown if password wrong
+                                with open("cracked_password.txt", 'w') as f:
+                                    f.write(i + '\n')
+                                input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                                sys.exit(0)
+
+                            except Exception as e:
+                                pass 
+
+                            for o in p_list:
+
+                                try:
+                                    print(f"{i+j+k+l+m+n+o}")
+                                    wallet_object.decrypt(i+j+k+l+m+n+o) #exception thrown if password wrong
+                                    with open("cracked_password.txt", 'w') as f:
+                                        f.write(i + '\n')
+                                    input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                                    sys.exit(0)
+
+                                except Exception as e:
+                                    pass 
+
+                                for p in p_list:
+
+                                    try:
+                                        print(f"{i+j+k+l+m+n+o+p}")
+                                        wallet_object.decrypt(i+j+k+l+m+n+o+p) #exception thrown if password wrong
+                                        with open("cracked_password.txt", 'w') as f:
+                                            f.write(i + '\n')
+                                        input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                                        sys.exit(0)
+
+                                    except Exception as e:
+                                        pass 
+
+                                    for q in p_list:
+
+                                        try:
+                                            print(f"{i+j+k+l+m+n+o+p+q}")
+                                            wallet_object.decrypt(i+j+k+l+m+n+o+p+q) #exception thrown if password wrong
+                                            with open("cracked_password.txt", 'w') as f:
+                                                f.write(i + '\n')
+                                            input("Wallet decrypted. Password written to 'cracked_password.txt'. Hit <enter> to exit.")
+                                            sys.exit(0)
+
+                                        except Exception as e:
+                                            continue
+                                    
+        
 
 
 input(f"""Password not found.""")
@@ -176,3 +286,12 @@ sys.exit(0)
 
 
 ##unfinished
+
+#Variables
+    #wallet_path
+    #wallet_object
+    #automate=m or a
+    #password (if automate = m)
+    #possibilities (commaa separated string)
+    #p_list (list of possibilites)
+    #dictionary_path --> then appended to p_list
