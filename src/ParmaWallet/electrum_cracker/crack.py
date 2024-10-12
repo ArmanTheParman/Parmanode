@@ -1,6 +1,5 @@
 import sys, os
 import getpass
-input("pause 0")
 def clear():
     if os.name == 'nt':  
         os.system('cls')
@@ -8,14 +7,12 @@ def clear():
         os.system('clear')
 
 from electrum.storage import WalletStorage
-input("pause 0.5")
 ##########
 clear()
 if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
     input("No wallet file detected in ParmaBox directory. Hit <enter>. Exiting.")
     sys.exit(0)
 
-input("pause 1. hit enter")
 
 #set walletpath if there is only one file there.
 try:
@@ -25,7 +22,7 @@ except Exception as e:
     input(e)
     sys.exit(1)
 
-input("pause 2. hit enter")
+print("length -- " , len(os.listdir("/home/parman/parmanode/parmabox")) )
 
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
