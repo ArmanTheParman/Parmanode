@@ -42,3 +42,4 @@ one per line, and enter the file path when prompted.
 
 EWC will combine manually entered strings and the file strings into one list data structure,
 and then iterate possible combinations form that data list.
+
