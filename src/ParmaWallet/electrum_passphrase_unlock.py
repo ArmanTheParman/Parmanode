@@ -148,6 +148,8 @@ while True:
     break
 
 clear()
+combinations = int(combinations)
+print(f"combinations = {combinations}")
 input("Hit <enter> to start search.")
 clear()
 
