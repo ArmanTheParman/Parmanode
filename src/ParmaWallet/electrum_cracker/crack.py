@@ -17,7 +17,7 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
 #set walletpath if there is only one file there.
 try:
     if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
-        walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0]}"
+        walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0].strip()}"
         input(walletpath)
 except Exception as e: 
     input(e)
