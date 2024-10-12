@@ -51,7 +51,7 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
     break
 
-input("pause")
+input("pause -- 2")
 
 try:
     wallet_object = WalletStorage(walletpath)
