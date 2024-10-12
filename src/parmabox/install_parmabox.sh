@@ -60,7 +60,8 @@ boring)
 docker run -d --name parmabox ubuntu tail -f /dev/null
 ;;
 *)
-parmabox_build
+please_wait
+parmabox_build || { enter_continue && announce "build failed" && return 1 ; }
 parmabox_run
 parmabox_exec
 ;;
