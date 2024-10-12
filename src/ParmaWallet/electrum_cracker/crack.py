@@ -15,6 +15,10 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
     input("No wallet file detected in ParmaBox directory. Hit <enter>. Exiting.")
     sys.exit(0)
 
+#set walletpath if there is only one file there.
+if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
+    walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")}"
+
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
     print(f"""
