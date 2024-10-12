@@ -30,6 +30,7 @@ while True:
         clear()
         continue
     elif walletpath != '.' and walletpath != '/':
+        print(f"""Wallet path is {walletpath}""")
         input("""Path must begin with a '.' or '/'. Hit <enter> to try again""")
         clear()
         continue
