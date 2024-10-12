@@ -24,4 +24,5 @@ RUN python3 -m pip install --user Electrum-4.5.5.tar.gz || \
     echo "Something went wrong with PIP installation of Electrum." ; \
     exit 1 ; \
     }
+WORKDIR /home/parman/
 
