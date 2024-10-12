@@ -22,7 +22,7 @@ try:
 except Exception as e: 
     input(e)
     sys.exit(1)
-
+input("pause. hit enter")
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
     print(f"""
@@ -49,15 +49,23 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
     break
 
-wallet_object = WalletStorage(walletpath)
+try:
+    wallet_object = WalletStorage(walletpath)
+except Exception as e:
+    input(e)
+    sys.exit(1)
+
+input("pause")
 
 if not wallet_object.file_exists():
     input("Does not seem to be an Electrum Wallet. Hit <enter>. Exiting.")
     sys.exit(0)
+input("pause")
 
 if not wallet_object.is_encrypted():
     input("Good news, this wallet isn't encrypted. Hit <enter>. Exiting.")
     sys.exit(0)
+input("pause")
 
 clear()
 automate = input(f"""
