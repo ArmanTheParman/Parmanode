@@ -21,7 +21,7 @@ try:
 except Exception as e: 
     sys.exit(1)
 
-print("length -- " , len(os.listdir("/home/parman/parmanode/parmabox")) )
+print("length -- " , len(os.listdir('/home/parman/parmanode/parmabox')) )
 
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
