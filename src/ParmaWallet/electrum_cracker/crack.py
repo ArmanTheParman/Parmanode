@@ -47,11 +47,11 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
 wallet_object = WalletStorage(walletpath)
 
 if not wallet_object.file_exists():
-    input("No wallet file at path!")
+    input("Does not seem to be an Electrum Wallet. Hit <enter>. Exiting.")
     sys.exit(0)
 
 if not wallet_object.is_encrypted():
-    input("Good new, this wallet isn't encrypted.")
+    input("Good news, this wallet isn't encrypted. Hit <enter>. Exiting.")
     sys.exit(0)
 
 clear()
