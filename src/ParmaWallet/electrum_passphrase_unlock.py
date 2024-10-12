@@ -46,6 +46,7 @@ if not wallet_object.is_encrypted():
     input("Good new, this wallet isn't encrypted.")
     sys.exit(0)
 
+clean()
 automate = input(f"""
 ######################################################################################## 
 
@@ -73,6 +74,7 @@ while automate == 'm':
         print("try again")
         continue
 
+clean()
 possibilities = input(f"""
 ########################################################################################
 
@@ -138,6 +140,7 @@ clear()
 for i in p_list:
 
     try:
+        print("i")
         wallet_object.decrypt(i) #exception thrown if password wrong
         with open("cracked_password.txt", 'w') as f:
             f.write(i + '\n')
@@ -146,7 +149,10 @@ for i in p_list:
 
     except Exception as e:
         continue
-    
+
+input(f"""Password not found.""")
+sys.exit(0)    
+
 #iterate password options...
 
 #decrypt with each option...
