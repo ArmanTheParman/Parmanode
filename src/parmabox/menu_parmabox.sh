@@ -7,7 +7,7 @@ function menu_parmabox {
 $cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
 $cyan
-            ec)$orange        Run the tool to crack an Electrum locked wallet
+            ec)$orange        Run Electrum Wallet Crack tool
 $cyan
             s)$orange         Stop the container
 $cyan
