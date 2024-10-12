@@ -59,7 +59,6 @@ try:
     wallet_object = WalletStorage(walletpath)
 except Exception as e:
     input(e)
-    sys.exit(1)
 
 input("pause -- 3")
 
