@@ -31,6 +31,44 @@ break
 esac
 done
 
+parmabox_permissions || return 1
+
 docker exec -it parmabox /bin/bash -c "python3 /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/crack.py"
 
+}
+
+function parmabox_permissions {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Allow Parmanode to modify the ownership and permissions of the files in
+    $hp/parmabox/ ?
+
+    If the Docker container doesn't have the right permissions to the file that
+    you want to crack, it will crash.
+
+$green 
+                            y)           yes
+$red
+                            n)           nah
+$orange
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+n)
+break ;;
+y)
+sudo chmod -R 444 $hp/parmabox/*
+sudo chown 1001:995 $hp/parmabox/*
+break
+;;
+*)
+invalid
+;;
+esac
+done
+return 0 
 }
