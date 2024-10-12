@@ -18,7 +18,8 @@ while True:
     Please type the name of the wallet file to crack. The file needs to be moved or
     copied to the Parmabox directory for the script to find the file.
 
-    Current files in ParmaBox directory:""")
+    Current files in ParmaBox directory:
+    """)
     
     for file in os.listdir("/home/parman/parmanode/parmabox"): print("    " , file)
 
