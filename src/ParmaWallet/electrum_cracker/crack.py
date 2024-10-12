@@ -16,8 +16,12 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
     sys.exit(0)
 
 #set walletpath if there is only one file there.
-if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
-    walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0]}"
+try:
+    if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
+        walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0]}"
+except Exception as e: 
+    input(e)
+    sys.exit(1)
 
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
