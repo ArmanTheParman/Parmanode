@@ -1,9 +1,9 @@
 FROM ubuntu
 
 RUN apt update -y 
-RUN apt install -y vim nano ssh sudo net-tools curl wget git procps gnupg tree htop \
-                   python3 python3-cryptography python3-setuptools python3-pip \
-                   python3-pyqt5 libsecp256k1-dev 
+RUN apt-get install -y vim nano ssh sudo net-tools curl wget git procps gnupg tree htop 
+RUN apt-get install -y python3 python3-cryptography python3-setuptools python3-pip 
+RUN apt-get install -y python3-pyqt5 libsecp256k1-dev 
 RUN groupadd -r parman && useradd -m -g parman parman 
 RUN chown -R parman:parman /home/parman 
 RUN echo 'parman:parmanode' | chpasswd
