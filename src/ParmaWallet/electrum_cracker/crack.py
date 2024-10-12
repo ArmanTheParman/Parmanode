@@ -1,6 +1,6 @@
 import sys, os
 import getpass
-
+input("pause 0")
 def clear():
     if os.name == 'nt':  
         os.system('cls')
@@ -8,7 +8,7 @@ def clear():
         os.system('clear')
 
 from electrum.storage import WalletStorage
-
+input("pause 0.5")
 ##########
 clear()
 if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
