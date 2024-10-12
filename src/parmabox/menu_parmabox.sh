@@ -9,6 +9,8 @@ $cyan
 $cyan
             ec)$orange        Run Electrum Wallet Crack tool
 $cyan
+            print)$orange     Print cracked password to screen
+$cyan
             s)$orange         Stop the container
 $cyan
             rs)$orange        Restart the container
@@ -33,6 +35,9 @@ docker exec -it -u parman parmabox /bin/bash ;;
 ec)
 docker exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
 electrum_crack ;;
+print)
+docker exec -it -u parman parmanbox bash -c "cat /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/cracked_password.txt"
+enter_continue
 s) 
 docker stop parmabox ;;
 rs) 
