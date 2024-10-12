@@ -12,16 +12,17 @@ from electrum.storage import WalletStorage
 ##########
 clear()
 while True:
-    walletpath = input(f"""
+    print(f"""
 ########################################################################################      
 
-    Please type the path of your wallet file. If it is in the current directory, just
-    type the file name beginning with './' , eg:
+    Please type the name of the wallet file to crack. The file needs to be moved or
+    copied to the Parmabox directory for the script to find the file.
 
-        ./filename
-        
-    Otherwise type the full path.
+    Current files in ParmaBox directory:""")
+    
+    for file in os.listdir("/home/parman/parmanode/parmabox"): print(file)
 
+    walletpath = input(f""" 
 ########################################################################################
 """)
 
