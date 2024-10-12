@@ -18,6 +18,8 @@ while True:
     Please type the name of the wallet file to crack. The file needs to be moved or
     copied to the Parmabox directory for the script to find the file.
 
+    q or Q will exit.
+
     Current files in ParmaBox directory:
     """)
     
@@ -26,7 +28,7 @@ while True:
     walletpath = input(f""" 
 ########################################################################################
 """)
-
+    if walletpath.lower() = "q": sys.exit(0)
     if walletpath == "": 
         input("""Hit <enter> to try again""")
         clear()
