@@ -33,7 +33,7 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     walletpath = input(f""" 
 ########################################################################################
 """)
-    if walletpath.lower() = "q": sys.exit(0)
+    if walletpath.lower() == "q": sys.exit(0)
     if walletpath == "": 
         input("""Hit <enter> to try again""")
         clear()
