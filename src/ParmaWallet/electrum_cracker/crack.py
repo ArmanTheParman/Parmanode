@@ -19,8 +19,6 @@ if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
 if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
     walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0]}"
 
-input(walletpath)
-
 while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
     clear()
     print(f"""
