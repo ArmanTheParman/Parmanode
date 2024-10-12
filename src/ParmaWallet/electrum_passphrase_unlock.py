@@ -147,9 +147,7 @@ while True:
         continue
     break
 
-
-
-
+clear()
 input("Hit <enter> to start search.")
 clear()
 
@@ -164,6 +162,7 @@ for i in p_list:
         sys.exit(0)
 
     except Exception as e:
+        if combinations == 1: continue
         pass 
 
     for i in p_list:
@@ -179,6 +178,7 @@ for i in p_list:
                 sys.exit(0)
 
             except Exception as e:
+                if combinations == 2: continue
                 pass
             
             for k in p_list:
@@ -192,6 +192,7 @@ for i in p_list:
                     sys.exit(0)
 
                 except Exception as e:
+                    if combinations == 3: continue
                     pass
 
                 for l in p_list:
@@ -205,6 +206,7 @@ for i in p_list:
                         sys.exit(0)
 
                     except Exception as e:
+                        if combinations == 4: continue
                         pass
 
                     for m in p_list:
@@ -218,6 +220,7 @@ for i in p_list:
                             sys.exit(0)
 
                         except Exception as e:
+                            if combinations == 5: continue
                             pass 
 
                         for n in p_list:
@@ -231,6 +234,7 @@ for i in p_list:
                                 sys.exit(0)
 
                             except Exception as e:
+                                if combinations == 6: continue
                                 pass 
 
                             for o in p_list:
@@ -244,6 +248,7 @@ for i in p_list:
                                     sys.exit(0)
 
                                 except Exception as e:
+                                    if combinations == 7: continue
                                     pass 
 
                                 for p in p_list:
@@ -257,6 +262,7 @@ for i in p_list:
                                         sys.exit(0)
 
                                     except Exception as e:
+                                        if combinations == 8: continue
                                         pass 
 
                                     for q in p_list:
