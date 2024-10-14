@@ -13,7 +13,7 @@ fi
 #mac and linux..
 
 for i in "bech32" "base58" "bip-utils" "bitcoinlib" "cryptography" "pycryptodome" "gmp" \
-         "fastecdsa" "websockets" "websocket-client" ; do
+         "fastecdsa" "websockets" "websocket-client" "six" ; do
 if ! pip3 list | grep $i ; then
 
     pip3 install $i --break-system-packages

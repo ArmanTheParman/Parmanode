@@ -1,5 +1,6 @@
 Version 3.44.0
     -Electrum Wallet Crack tool in ParmaBox
+    -Python 'six' module needed for ParmaNostr
 Version 3.43.1
     -smol Tor directory bug fix
 Version 3.43.0
