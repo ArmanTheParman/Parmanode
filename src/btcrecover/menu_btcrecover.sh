@@ -32,9 +32,10 @@ q|Q|QUIT|Quit)
 exit 0 ;;
 p|P) menu_use ;; 
 r|R) 
-docker exec -it -u root btcrecover /bin/bash ;;
+docker exec -it -u root btcrecover /bin/bash 
+;;
 pm) 
-docker exec -it -u parman btcrecover /bin/bash ;;
+docker exec -it -u parman btcrecover /bin/bash 
 ;;
 ec)
 docker exec -it -u parman btcrecover bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
