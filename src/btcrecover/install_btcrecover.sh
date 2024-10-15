@@ -52,7 +52,7 @@ else
     cpu="--cpus=$corechoice"
 fi
 
-docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/btcrecover_data btcrecover 
+docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/parmanode/btcrecover_data btcrecover 
 installed_conf_add "btcrecover-start" 
 fix_openssl_ripemd160
 debug "fix open ssl done"
