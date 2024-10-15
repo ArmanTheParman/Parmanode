@@ -21,8 +21,6 @@ try:
 except Exception as e: 
     sys.exit(1)
 
-print("length -- " , len(os.listdir('/home/parman/parmanode/btcrecover_data')) )
-
 while len(os.listdir("/home/parman/parmanode/btcrecover_data")) != 1 :
     clear()
     print(f"""
@@ -50,7 +48,6 @@ while len(os.listdir("/home/parman/parmanode/btcrecover_data")) != 1 :
     break
 
 
-print(walletpath, type(walletpath))
 input()
 
 try:
