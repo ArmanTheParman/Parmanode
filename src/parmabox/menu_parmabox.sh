@@ -1,7 +1,7 @@
 function menu_parmabox {
  while true ; do set_terminal ; echo -e "
 ########################################################################################
-              $cyan              ParmaBox Menu            $orange                   
+              $cyan                     ParmaBox Menu            $orange                   
 ########################################################################################
 
 $cyan

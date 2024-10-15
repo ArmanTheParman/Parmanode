@@ -569,9 +569,9 @@ if grep -q "btcrecover-end" < $HOME/.parmanode/installed.conf ; then
 btcrecover_i="#                                      BTC Recvoer                                     #"
 elif grep -q "btcrecvoer-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-btcrecvoer_p="#                                      BTC Recvoer                                     #"
+btcrecover_p="#                                      BTC Recvoer                                     #"
 else
    #not installed
-btcrecvoer_n="#$cyan                            (pnostr)    $orange  BTC recvover                                 #"
+btcrecover_n="#$cyan                            (pnostr)    $orange  BTC recvover                                 #"
 fi
 }
