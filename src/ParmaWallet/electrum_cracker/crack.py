@@ -13,7 +13,6 @@ if len(os.listdir("/home/parman/parmanode/btcrecover_data")) == 0:
     input("No wallet file detected in data directory. Hit <enter>. Exiting.")
     sys.exit(0)
 
-
 #set walletpath if there is only one file there.
 try:
     if len(os.listdir("/home/parman/parmanode/btcrecover_data")) == 1 : 
