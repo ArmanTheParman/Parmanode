@@ -14,6 +14,8 @@ $cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
 $green                              The password is 'parmanode' 
 $cyan
+            info)$orange      Info about how to run BTC Recover
+$cyan
             ec)$orange        Run Electrum Wallet Crack tool
 $cyan
             print)$orange     Print cracked password to screen
@@ -48,6 +50,8 @@ s)
 docker stop btcrecover ;;
 rs) 
 docker start btcrecover ;;
+info)
+btcrecover_info ;;
 *)
 invalid
 ;;
@@ -58,3 +62,38 @@ done
 
 
 #make option to connect internet, with danger warning?
+function btcrecover_info {
+set_terminal ; echo -e "
+########################################################################################
+
+    BTC Recover is to crack lost bitcoin wallets. If you have a file to crack, put
+    it in the mounted directory:
+
+    $hp/btcrecover_data/
+
+    That directory also includes some password files you might want to use.
+
+    To run btc recover, you can find the program in the container at:
+$cyan
+    /home/parman/parmanode/btcrecover/
+
+    To run it, you need to figure out the exact command ; BTC recover has a help 
+    page with various exmples:
+$bright_blue
+    https://btcrecover.readthedocs.io/en/latest/Usage_Examples/basic_password_recoveries/ $orange
+$green
+    Be mindful that some of the commands start with 'python' - this won't work, you
+    need to use 'python3' instead.
+
+########################################################################################
+"
+enter_continue
+return 0
+}
+
+
+
+
+
+########################################################################################
+"
