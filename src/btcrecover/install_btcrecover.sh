@@ -56,7 +56,12 @@ fi
 docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/parmanode/btcrecover_data btcrecover 
 installed_conf_add "btcrecover-start" 
 fix_openssl_ripemd160
+parmabox_exec "btcrecover" # borrow's parmabox function to make terinal better.
 debug "fix open ssl done"
+
+cd $hp/btcrecover_data && curl -LO https://raw.githubusercontent.com/first20hours/google-10000-english/refs/heads/master/google-10000-english.txt && \
+curl -LO https://raw.githubusercontent.com/dwyl/english-words/refs/heads/master/words.txt && \
+curl -LO https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
 if docker ps | grep -q btcrecover ; then
     installed_conf_add "btcrecover-end" 
