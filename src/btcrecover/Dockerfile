@@ -35,6 +35,7 @@ RUN echo 'parman:parmanode' | chpasswd
 USER parman
 
 RUN mkdir -p /home/parman/parman_programs/
+RUN mkdir -p /home/parman/parmanode/
 WORKDIR /home/parman/parman_programs/
 RUN git clone --depth 1 https://github.com/armantheparman/parmanode
 
@@ -48,7 +49,7 @@ RUN locale-gen
 #RUN locale-gen en_US.UTF-8
 
 USER parman
-WORKDIR /home/parman
+WORKDIR /home/parman/parmanode
 RUN git clone --depth 1 https://github.com/3rdIteration/btcrecover.git
 
 RUN mkdir -p /home/parman/electrum_pip
