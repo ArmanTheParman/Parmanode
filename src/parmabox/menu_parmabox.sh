@@ -5,11 +5,11 @@ function menu_parmabox {
 ########################################################################################
 
 $cyan
+            r) $orange        Log into the container as root
+$green                              The password is 'parmanode' 
+$cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
-$cyan
-            ec)$orange        Run Electrum Wallet Crack tool
-$cyan
-            print)$orange     Print cracked password to screen
+$green                              The password is 'parmanode' 
 $cyan
             s)$orange         Stop the container
 $cyan
@@ -32,13 +32,6 @@ r|R)
 docker exec -it -u root parmabox /bin/bash ;;
 pm) 
 docker exec -it -u parman parmabox /bin/bash ;;
-ec)
-docker exec -it -u parman parmabox bash -c "cd /home/parman/parman_programs/parmanode ; git pull"
-electrum_crack ;;
-print)
-docker exec -it -u parman parmabox bash -c "cat /home/parman/parman_programs/parmanode/src/ParmaWallet/electrum_cracker/cracked_password.txt"
-enter_continue
-;;
 s) 
 docker stop parmabox ;;
 rs) 

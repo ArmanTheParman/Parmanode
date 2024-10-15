@@ -9,34 +9,34 @@ def clear():
 from electrum.storage import WalletStorage
 ##########
 clear()
-if len(os.listdir("/home/parman/parmanode/parmabox")) == 0:
-    input("No wallet file detected in ParmaBox directory. Hit <enter>. Exiting.")
+if len(os.listdir("/home/parman/parmanode/btcrecover_data")) == 0:
+    input("No wallet file detected in data directory. Hit <enter>. Exiting.")
     sys.exit(0)
 
 
 #set walletpath if there is only one file there.
 try:
-    if len(os.listdir("/home/parman/parmanode/parmabox")) == 1 : 
-        walletpath=f"/home/parman/parmanode/parmabox/{os.listdir("/home/parman/parmanode/parmabox")[0].strip()}"
+    if len(os.listdir("/home/parman/parmanode/btcrecover_data")) == 1 : 
+        walletpath=f"/home/parman/parmanode/btcrecover_data/{os.listdir("/home/parman/parmanode/btcrecover_data")[0].strip()}"
 except Exception as e: 
     sys.exit(1)
 
-print("length -- " , len(os.listdir('/home/parman/parmanode/parmabox')) )
+print("length -- " , len(os.listdir('/home/parman/parmanode/btcrecover_data')) )
 
-while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
+while len(os.listdir("/home/parman/parmanode/btcrecover_data")) != 1 :
     clear()
     print(f"""
 ########################################################################################      
 
     Please type the name of the wallet file to crack. The file needs to be moved or
-    copied to the Parmabox directory for the script to find the file.
+    copied to the btcrecover_data directory for the script to find the file.
 
     q or Q will exit.
 
-    Current files in ParmaBox directory:
+    Current files in btcrecover_data directory:
     """)
 
-    for file in os.listdir("/home/parman/parmanode/parmabox"): print("    " , file)
+    for file in os.listdir("/home/parman/parmanode/btcrecover_data"): print("    " , file)
 
     walletpath = input(f""" 
 ########################################################################################
@@ -46,7 +46,7 @@ while len(os.listdir("/home/parman/parmanode/parmabox")) != 1 :
         input("""Hit <enter> to try again""")
         clear()
         continue
-    walletpath = f"/home/parman/parmanode/parmabox/{walletpath}"
+    walletpath = f"/home/parman/parmanode/btcrecover_data/{walletpath}"
     break
 
 

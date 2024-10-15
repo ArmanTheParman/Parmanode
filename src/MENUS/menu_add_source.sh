@@ -560,4 +560,18 @@ else
    #not installed
 parmanostr_n="#$cyan                            (pnostr)    $orange  Parmanostr                                  #"
 fi
+
+
+#BTCRecover
+unset btcrecover_i btcrecover_p btcrecover_n
+if grep -q "btcrecover-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+btcrecover_i="#                                      BTC Recvoer                                     #"
+elif grep -q "btcrecvoer-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+btcrecvoer_p="#                                      BTC Recvoer                                     #"
+else
+   #not installed
+btcrecvoer_n="#$cyan                            (pnostr)    $orange  BTC recvover                                 #"
+fi
 }

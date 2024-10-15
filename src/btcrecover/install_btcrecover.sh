@@ -15,10 +15,10 @@ if ! docker ps >/dev/null 2>&1 ; then echo -e "
 
 ########################################################################################
 "
-choose "emq"
-read choice ; case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
-set_terminal
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+    choose "emq"
+    read choice ; case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
+    set_terminal
+    if ! docker ps >/dev/null 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -30,28 +30,92 @@ if ! docker ps >/dev/null 2>&1 ; then echo -e "
 
 ########################################################################################
 "
-enter_continue
-return 1
-fi
-fi
-
-
-# remove later...
-if [[ $debug != 1 ]] ; then
-docker stop btcrecover && docker rm btcrecover
+        enter_continue
+        return 1
+    fi
 fi
 
 ########################################################################################
 
 cd $pn/src/btcrecover
 
+if [[ ! -d $hp/btcrecover_data ]] ; then mkdir -p $hp/btcrecover_data ; fi
+
 docker build -t btcrecover .
 
-# docker network create --internal no-internet
+#decide on how many cores to use
+set_cores || return 1
+if [[ $corechoice == default ]] ; then 
+    unset cpu 
+else
+    cpu="--cpus=\"$corechoice\""
+fi
 
-# docker run -d --network no-internet --name btcrecover btcrecover  
+docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/btcrecover_data btcrecover 
+installed_conf "btcrecover-start" 
+fix_openssl_repemd160
+debug "fix open ssl done"
 
-docker run -d --name btcrecover btcrecover
+if docker ps | grep -q btcrecover ; then
+    installed_conf "btcrecover-end" 
+    success "BTC Recover tool is installed and running in a container." 
+    return 0
+else
+    announce "Installation seems to have failed."
+    return 1
+fi
 
+}
+
+function set_cores {
+
+unset corechoice
+
+    if [[ $OS == Mac ]] ; then
+        export cores=$(sysctl -n hw.ncpu)
+    elif [[ $OS == Linux ]] ; then
+        export cores=$(nproc)
+    fi
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Your computer has$pink $cores ${orange}number of available cores. 
+    
+    You can choose how many cores to dedicate to this container, or leave it as a 
+    default. It you push the resources hard, for the purpose of brute forcing a 
+    password, you can later stop the container to allow the cores to be used by your 
+    system - Don't forget or your computer will remain sluggish.
+
+    Please choose:
+
+                Enter a$green number$orange, up to the max specified above
+$orange
+                or
+
+                Hit$cyan <enter>$orange alone to use whatever the defaults are for Docker
+
+########################################################################################
+"
+choose epqm ; read choice ; set_terminal
+
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
+"") export corechoice=default
+    break 
+    ;;
+*)
+    if [[ $choice =~ [0-9\.]+ ]] ; then
+    corechoice=$choice
+    break
+    fi
+    
+    invalid
+    continue
+    ;;
+esac
+done
 
 }
