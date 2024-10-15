@@ -572,6 +572,6 @@ elif grep -q "btcrecvoer-start" $HOME/.parmanode/installed.conf ; then
 btcrecover_p="#                                      BTC Recvoer                                     #"
 else
    #not installed
-btcrecover_n="#$cyan                            (pnostr)    $orange  BTC recvover                                 #"
+btcrecover_n="#$cyan                            (btcr)    $orange    BTC recover                                 #"
 fi
 }

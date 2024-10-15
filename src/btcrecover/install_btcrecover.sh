@@ -1,5 +1,5 @@
 function install_btcrecover {
-
+clear
 #make sure docker installed
 if ! which docker >/dev/null 2>&1 ; then 
 announce "Please install Docker first. Aborting." 
@@ -42,22 +42,23 @@ cd $pn/src/btcrecover
 if [[ ! -d $hp/btcrecover_data ]] ; then mkdir -p $hp/btcrecover_data ; fi
 
 docker build -t btcrecover .
+enter_continue "Pausing to check if build was successful."
 
 #decide on how many cores to use
 set_cores || return 1
 if [[ $corechoice == default ]] ; then 
     unset cpu 
 else
-    cpu="--cpus=\"$corechoice\""
+    cpu="--cpus=$corechoice"
 fi
 
 docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/btcrecover_data btcrecover 
-installed_conf "btcrecover-start" 
+installed_conf_add "btcrecover-start" 
 fix_openssl_repemd160
 debug "fix open ssl done"
 
 if docker ps | grep -q btcrecover ; then
-    installed_conf "btcrecover-end" 
+    installed_conf_add "btcrecover-end" 
     success "BTC Recover tool is installed and running in a container." 
     return 0
 else

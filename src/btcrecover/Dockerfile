@@ -1,14 +1,20 @@
-FROM debian:latest
+FROM ubuntu:latest
+
 RUN apt-get update -y && apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-               sudo vim nano libgmp-dev python3 python3-dev python3-pip openssl \
-               procps gnupg tree htop \
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --fix-missing -y \
+               sudo vim nano libgmp-dev python3-dev python3-pip openssl \
+               procps gnupg tree htop
+               
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --fix-missing -y \
                git pip python3-cryptography python3-setuptools python3-bitcoinlib python3-base58 \
-               python3-tk build-essential libssl-dev\
+               python3-tk build-essential libssl-dev
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --fix-missing -y \
                locales \
-               python3-pyqt5 libsecp256k1-dev  \
-               --fix-missing
-        && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+               python3-pyqt5 libsecp256k1-dev curl
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 RUN pip3 install bech32 --break-system-packages
@@ -20,6 +26,7 @@ RUN pip3 install pycryptodome --break-system-packages
 
 
 #Make users and groups and directories
+RUN userdel -r ubuntu
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
 RUN chown -R parman:parman /home/parman/
 RUN usermod -aG sudo parman 

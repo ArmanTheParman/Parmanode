@@ -271,6 +271,12 @@ echo -e "#$cyan                            (pnostr)$orange           Parmanostr 
 elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
+if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
+echo -e "#$cyan                            (btcr)$orange             BTC Recover                            #
+#                                                                                      #"
+elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
+echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange            #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -565,6 +571,12 @@ return
 fi
 ;;
 
+btcr)
+if [[ $btcrecovermenu == 1 ]] ; then
+uninstall_btcrecover
+return
+fi
+;;
 p|P)
 	return 0
 	;;

@@ -9,6 +9,7 @@
     # errormessage
 
 function enter_continue {
+echo "$@"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
@@ -127,7 +128,8 @@ function invalid {
 
 set_terminal
 
-echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read
+echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read invalid
+if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
 return 0
 }
 

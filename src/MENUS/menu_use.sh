@@ -138,6 +138,9 @@ if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp=1
                        echo -e "                        $cyan  (pnostr)$orange     ParmaNostr 
                             " ; fi
+if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecoverapp=1
+                       echo -e "                        $cyan  (btcr)  $orange     BTC Recover
+                            " ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -431,6 +434,13 @@ next)
 pnostr) 
    if [[ $parmanostrapp == 1 ]] ; then
    menu_parmanostr
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+btcr) 
+   if [[ $btcrecoverapp == 1 ]] ; then
+   menu_btcrecover
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

@@ -23,6 +23,7 @@ if [[ -n $lnbits_n ]]           ; then echo -e  "$lnbits_n"; fi
 if [[ -n $trezor_n ]]           ; then echo -e  "$trezor_n"; fi
 if [[ -n $bitbox_n ]]           ; then echo -e  "$bitbox_n"; fi
 if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
+if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...                                                                        $orange #
@@ -36,6 +37,7 @@ if [[ -n $lnbits_i ]]          ; then echo -e  "$lnbits_i"; fi
 if [[ -n $trezor_i ]]          ; then echo -e  "$trezor_i"; fi
 if [[ -n $bitbox_i ]]          ; then echo -e  "$bitbox_i"; fi
 if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
+if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...                                              $orange #
 #                                                                                      #"
@@ -48,6 +50,7 @@ if [[ -n $lnbits_p ]]          ; then echo -e "$pink$lnbits_p$orange"; fi
 if [[ -n $trezor_p ]]          ; then echo -e "$pink$trezor_p$orange"; fi
 if [[ -n $bitbox_p ]]          ; then echo -e "$pink$bitbox_p$orange"; fi
 if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
+if [[ -n $btcrecover_p ]]      ; then echo -e  "$pinkbtcrecover_p$orange"; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
@@ -114,6 +117,12 @@ m|M) back2main ;;
    ll|LL|Ll)
       if [[ -n $ledger_n ]] ; then
       install_ledger
+      back2main 
+      fi
+      ;;
+   btcr) 
+      if [[ -n $btcrecover_n ]] ; then
+      install_btcrecover
       back2main 
       fi
       ;;
