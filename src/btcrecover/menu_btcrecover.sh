@@ -84,6 +84,12 @@ $bright_blue
 $green
     Be mindful that some of the commands start with 'python' - this won't work, you
     need to use 'python3' instead.
+$orange
+    It might be helpfult to build a script, as the commamnd you need can be quite
+    complex. You'd start the file with a '#!/bin/bash' and then on a new line
+    put your command, then save the file, then make it executable. The paths you
+    use should be absolute, otherwise, the file needs to be in the same directory
+    as the programs called in the script.
 
 ########################################################################################
 "
@@ -92,8 +98,3 @@ return 0
 }
 
 
-
-
-
-########################################################################################
-"
