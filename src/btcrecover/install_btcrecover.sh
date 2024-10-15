@@ -40,8 +40,8 @@ fi
 cd $pn/src/btcrecover
 
 if [[ ! -d $hp/btcrecover_data ]] ; then mkdir -p $hp/btcrecover_data ; fi
-
-docker build -t btcrecover .
+if [[ $debug == 1 ]] ; then cache="--no-cache" ; else unset cache ; fi
+docker build $cache -t btcrecover .
 enter_continue "Pausing to check if build was successful."
 
 #decide on how many cores to use

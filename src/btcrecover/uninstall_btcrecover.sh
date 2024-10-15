@@ -29,7 +29,7 @@ if [[ -d $hp/btcrecover_data ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Remove $hp/btcrecover_data directory?
+    Remove$cyan $hp/btcrecover_data$orange directory?
 
                             yes)      Do it
 
