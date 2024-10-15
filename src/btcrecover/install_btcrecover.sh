@@ -54,7 +54,7 @@ fi
 
 docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/btcrecover_data btcrecover 
 installed_conf_add "btcrecover-start" 
-fix_openssl_repemd160
+fix_openssl_ripemd160
 debug "fix open ssl done"
 
 if docker ps | grep -q btcrecover ; then
