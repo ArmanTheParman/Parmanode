@@ -46,9 +46,6 @@ while len(os.listdir("/home/parman/parmanode/btcrecover_data")) != 1 :
     walletpath = f"/home/parman/parmanode/btcrecover_data/{walletpath}"
     break
 
-
-input()
-
 try:
     wallet_object = WalletStorage(walletpath)
     pass
