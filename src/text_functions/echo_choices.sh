@@ -18,6 +18,11 @@ export enter_cont
 if [[ $enter_cont == debugon ]] ; then export debug=1 ; fi
 if [[ $enter_cont == debugoff ]] ; then export debug=0 ; fi
 if [[ $enter_cont == q ]] ; then exit ; fi
+if [[ $endter_cont == d ]] ; then #switch
+    if [[ $enter_cont == debugon ]] ; then export debug=0 ; fi
+    if [[ $enter_cont == debugoff ]] ; then export debug=1 ; fi
+fi
+
 return 0
 }
 
