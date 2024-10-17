@@ -46,14 +46,14 @@ case $choice in
 y|Y|YES|yes|u)
 if ! which brew >/dev/null ; then 
 install_homebrew 
-/opt/homebrew/bin/brew install bash netcat jq vim
+/opt/homebrew/bin/brew install bash netcat jq vim tmux
 enter_continue
 success "Parmanode has completed installing Homebrew for you."
 break
 else
 brew update
 brew upgrade
-brew install bash netcat jq vim
+brew install bash netcat jq vim tmux
 break
 fi
 ;;
@@ -95,7 +95,7 @@ fi
 case $choice in
 y|Y|Yes|yes|u)
 sudo apt-get upgrade -y 
-sudo apt-get install jq netcat vim net-tools unzip -y 
+sudo apt-get install jq netcat vim net-tools unzip tmux -y 
 if ! which ssh >/dev/null ; then sudo apt-get install ssh ; sudo systemctl enable ssh >/dev/null 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
 fi
