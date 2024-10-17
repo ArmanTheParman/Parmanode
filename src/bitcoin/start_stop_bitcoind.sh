@@ -43,6 +43,7 @@ if [[ $OS == "Mac" ]] ; then
         fi
 run_bitcoinqt
 fi
+debug "end run bitcoind"
 }
 
 function start_bitcoind {
