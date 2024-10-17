@@ -143,7 +143,7 @@ set_terminal
 #choice of 3 different menu prints...
 if [[ $prune_value == 0 ]] ; then 
 break
-elif [[ $prune_value -le 550 ]] ; then
+elif [[ $prune_value -lt 550 ]] ; then
 echo -e "
 ########################################################################################
         
