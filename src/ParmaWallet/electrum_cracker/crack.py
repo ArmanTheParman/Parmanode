@@ -127,7 +127,7 @@ while True:
 """)
     if dictionary_path == "": 
         break
-    if dictionary_path[0] != '.' or dictionary_path[0] != '/':
+    if dictionary_path[0] != '.' and dictionary_path[0] != '/':
         input(f"""
              File path starts with {dictionary_path[0]}
              File path should start with '.' or '/'. Hit <enter> to try again.""")
