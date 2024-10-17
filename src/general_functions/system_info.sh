@@ -112,13 +112,14 @@ if [[ $(uname) == "Linux" ]] ; then
         echo "Installing necessary ip function (iproute2)..."
         sudo apt-get update -y && sudo apt-get install iproute2 -y
     fi
+
+    if ls /.dockerenv >/dev/null ; then #docker container detected
+        export IP=$( ip a | grep "inet" | grep 172 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
+    else 
+        export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
+    fi
 fi
 
-if ls /.dockerenv >/dev/null ; then #docker container detected
-    export IP=$( ip a | grep "inet" | grep 172 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
-fi
-
-if [[ $(uname) == "Linux" ]] ; then export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
 if [[ $(uname) == "Darwin" ]] ; then export IP=$( ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | head -n1 ) ; fi
 # Through a series of searches (grep), the results being passed by the | symbol to the right and being
 # searched on again, the results are narrowed down.
