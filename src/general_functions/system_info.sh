@@ -114,7 +114,7 @@ if [[ $(uname) == "Linux" ]] ; then
         sudo apt-get update -y && sudo apt-get install iproute2 -y
     fi
 
-    if ls /.dockerenv >/dev/null ; then #docker container detected
+    if [[ -e /.dockerenv ]] ; then #docker container detected
         export IP=$( ip a | grep "inet" | grep 172 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
     else 
         export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
