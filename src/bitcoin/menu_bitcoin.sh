@@ -1,10 +1,6 @@
 function menu_bitcoin {
 
-# if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then
-#     export nodebugfile="true"
-# else
-#     unset nodebugfile
-# fi
+export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" < $ic ; then
 dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
@@ -15,7 +11,7 @@ if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; t
 while true
 do
 unset start stop output1 output2 highlight 
-if tail -n 25 $HOME/.bitcoin/debug.log >/dev/null 2>&1 | grep -q "Corrupt" ; then
+if [[ -e $debuglogfile ]] && tail -n 25 $debuglogfile | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
     You should take a look, and make a decision - I can't diagnose all potential
     problems with this program. One option might be to re-index the chain (do
@@ -30,7 +26,7 @@ clear
 
 bitcoin_status #get running text variable.
 isbitcoinrunning 
-   if tail $HOME/.bitcoin/debug.log 2>&1 | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
+   if [[ -e $debuglogfile ]] && tail $debuglogfile | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
 
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
