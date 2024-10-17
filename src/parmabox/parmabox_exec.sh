@@ -11,6 +11,7 @@ docker exec -it -u parman $parmabox bash \
             -c "mkdir /home/parman/Desktop ; \
                 curl https://parmanode.com/install.sh | sh ; \
                 mkdir /home/parman/.parmanode ; \
+                mkdir /home/parman/parmanode ; \
                 echo \"parmashell-end\" | tee -a /home/parman/.parmanode/installed.conf >/dev/null"
 
 
