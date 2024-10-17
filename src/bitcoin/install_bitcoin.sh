@@ -33,9 +33,8 @@ fi #end btcdockerchoice
 export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
-if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, 
-    but it's not going to run with default Parmanode settings - you'll have
-    to tweak."
+if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not
+    run as expected with default Parmanode settings - you'll have to tweak."
 fi
 
 set_terminal
