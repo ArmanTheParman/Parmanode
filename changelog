@@ -1,6 +1,7 @@
 Version 3.45.1
     -iproute2 installed for IP function to work on more systems
     -ParmaBox tweaks to allow more smooth installation of Bitcoin in a container.
+    -added tmux as parmanode dependency
 Version 3.45.0
     -BTC Recover tool, and combined in same container with Electrum Wallet Crack tool, removed from ParmaBox
 Version 3.44.0
