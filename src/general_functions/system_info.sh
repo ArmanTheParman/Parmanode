@@ -107,6 +107,7 @@ fi
 function get_ip_address {
 
 if [[ $(uname) == "Linux" ]] ; then
+
     if ! which ip >/dev/null 2>&1 ; then
         clear
         echo "Installing necessary ip function (iproute2)..."
@@ -116,7 +117,7 @@ if [[ $(uname) == "Linux" ]] ; then
     if ls /.dockerenv >/dev/null ; then #docker container detected
         export IP=$( ip a | grep "inet" | grep 172 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
     else 
-        export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 ) ; fi
+        export IP=$( ip a | grep "inet " | grep -v 127.0.0.1 | grep -v 172.1 | awk '{print $2}' | cut -d '/' -f 1 | head -n1 )
     fi
 fi
 
