@@ -64,6 +64,7 @@ function stop_bitcoind {
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 tmux kill-session -t bitcoind
+sleep 1
 return 0
 fi
 
