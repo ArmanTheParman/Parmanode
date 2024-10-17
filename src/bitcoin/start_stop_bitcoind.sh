@@ -6,6 +6,14 @@ function stop_bitcoin { stop_bitcoind ; }
 
 function run_bitcoind {
 
+#for docker (no systemctl, ust tmux)
+if [[ -e /.dockerenv ]] ; then
+tmux new-session -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf'
+return 0
+tmux kill-session -t bitcoind
+fi
+
+
 #needs to be first...
 if grep -q btccombo < $ic ; then
 
@@ -53,6 +61,12 @@ run_bitcoind $@
 ########################################################################################################################
 
 function stop_bitcoind {
+
+#for docker (no systemctl, ust tmux)
+if [[ -e /.dockerenv ]] ; then
+tmux kill-session -t bitcoind
+return 0
+fi
 
 #needs to be first...
 if grep -q btccombo < $ic ; then
