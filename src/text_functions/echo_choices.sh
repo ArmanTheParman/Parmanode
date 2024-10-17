@@ -15,12 +15,10 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
 read enter_cont 
 export enter_cont
-if [[ $enter_cont == debugon ]] ; then export debug=1 ; fi
-if [[ $enter_cont == debugoff ]] ; then export debug=0 ; fi
 if [[ $enter_cont == q ]] ; then exit ; fi
 if [[ $endter_cont == d ]] ; then #switch
-    if [[ $enter_cont == debugon ]] ; then export debug=0 ; fi
-    if [[ $enter_cont == debugoff ]] ; then export debug=1 ; fi
+    if [[ $debug == 1 ]] ; then export debug=0 ; fi
+    if [[ $debug == 0 ]] ; then export debug=1 ; fi
 fi
 
 return 0
