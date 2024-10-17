@@ -8,6 +8,7 @@ function run_bitcoind {
 
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
+please_wait
 tmux new-session -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1
 sleep 1
 return 0
@@ -66,6 +67,7 @@ function stop_bitcoind {
 if [[ -e /.dockerenv ]] ; then
 please_wait
 pkill bitcoind >$dn
+sleep 1
 return 0
 fi
 
