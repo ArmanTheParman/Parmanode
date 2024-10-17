@@ -114,7 +114,7 @@ if [[ $(uname) == "Linux" ]] ; then
     fi
 fi
 
-if ls /.dockerenv >/dev/null ; the #docker container detected
+if ls /.dockerenv >/dev/null ; then #docker container detected
     export IP=$( ip a | grep "inet" | grep 172 | awk '{print @2}' | cut -d '\' -f 1 | head -n1 )
 fi
 
