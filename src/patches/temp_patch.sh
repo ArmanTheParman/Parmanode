@@ -126,5 +126,10 @@ invalid ;;
 esac
 done
 fi
+
+
+cleanup_bashrc_zshrc
+echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a $bashrc >/dev/null 2>&1
 debug temppatchend
 }
+

@@ -30,8 +30,10 @@ export original_dir=$(pwd) >/dev/null 2>&1
 
 if [[ $(uname) == Linux ]] ; then
 export parmanode_drive="/media/$USER/parmanode"
+export bashrc="$HOME/.bashrc"
 elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
+export bashrc="$HOME/.zshrc"
 fi
 export pd=$parmanode_drive
 
