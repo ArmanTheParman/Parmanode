@@ -10,7 +10,6 @@ function run_bitcoind {
 if [[ -e /.dockerenv ]] ; then
 tmux new-session -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf'
 return 0
-tmux kill-session -t bitcoind
 fi
 
 
