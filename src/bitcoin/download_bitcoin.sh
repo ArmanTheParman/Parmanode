@@ -100,7 +100,7 @@ tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null 2>&1
 
 # Move bitcoin program files to new directory.
 # All binaries go to $HOME/parmanode/bitcoin.
-mv $HOME/.parmanode/temp/b*/* $HOME/parmanode/bitcoin/
+mv $HOME/.parmanode/temp/bit*/* $HOME/parmanode/bitcoin/
 
 #delete sample bitcoin.conf to avoid confusion.
 rm $HOME/parmanode/bitcoin/bitcoin.conf 

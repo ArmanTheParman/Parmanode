@@ -9,9 +9,10 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
         if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install || return 1 ; fi #function adjusted for parmanodl usage
         if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install || return 1 ; fi 
     fi
-
+debug "will make \$home/parmanode/bitcoin dir"
 #make_parmanode_bitcoin_directory             
     mkdir -p $HOME/parmanode/bitcoin > /dev/null 2>&1
+    debug "pause"
     installed_conf_add "bitcoin-start"    
 
     if [[ $drive == "external" && $importdrive != "true" ]] ; then 
