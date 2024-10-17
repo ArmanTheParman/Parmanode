@@ -41,8 +41,7 @@ cd $pn/src/btcrecover
 
 if [[ ! -d $hp/btcrecover_data ]] ; then mkdir -p $hp/btcrecover_data ; fi
 
-# if [[ $debug == 1 ]] ; then cache="--no-cache" ; else unset cache ; fi
-docker build $cache -t btcrecover .
+docker build  -t btcrecover .
 enter_continue "Pausing to check if build was successful."
 
 docker run -d --network none $cpu --name btcrecover -v $hp/btcrecover_data:/home/parman/parmanode/btcrecover_data btcrecover 
