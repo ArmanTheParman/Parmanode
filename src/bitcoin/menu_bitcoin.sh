@@ -262,6 +262,7 @@ return 0
 }
 
 function bitcoin_status {
+if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then return 1 ; fi
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
