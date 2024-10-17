@@ -1,5 +1,11 @@
 function temp_patch {
 
+#Docker containers sometimes won't have $USER variable set...
+if [[ -e /.dockerenv && -z $USER ]] ; then
+    USER=$(whoami) >/dev/null 2>&1
+    echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >/dev/null 
+fi
+
 #put in next patch
 set_github_config
 #fix 8332 value in torrc - linux ; remove Jan 2025
