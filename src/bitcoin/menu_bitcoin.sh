@@ -60,7 +60,6 @@ output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | c
 if [[ -z $drive ]] ; then unset output2 ; fi
 
 if [[ $1 == menu_btcpay ]] ; then return 0 ; fi
-debug "printing bitcoin menu..."
 set_terminal_custom "52"
 
 echo -en "
