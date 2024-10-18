@@ -176,8 +176,11 @@ uninstall_homebrew || exit
 success "Homebrew uninstalled"
 fi
 
-if [[ $jm == "true" ]] ; then
+if [[ $jm == "install" ]] ; then
 install_joinmarket
+exit
+elif [[ $jm == "uninstall" ]] ; then
+uninstall_joinmarket
 exit
 fi
 
