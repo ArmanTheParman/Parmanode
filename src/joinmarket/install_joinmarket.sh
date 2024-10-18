@@ -113,6 +113,7 @@ echo -e "${green}Extracting JoinMarket...${orange}"
 sudo -u joinmarket tar -xvf /home/joinmarket/*gz
 
 sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
+enter_continue
 }
 
 # function do_install_joinmarket {
