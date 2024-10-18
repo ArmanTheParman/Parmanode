@@ -16,9 +16,9 @@ create_jm_directories || return 1
 
 download_joinmarket || return 1
 
-# verify_joinmarket || return 1
+verify_joinmarket || return 1
 
-# extract_joinmarket || return 1
+extract_joinmarket || return 1
 
 # install_joinmarket || return 1
 
@@ -85,34 +85,34 @@ curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/down
 curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
 }
 
-# function verify_joinmarket {
-# set_terminal
-# cd /home/joinmarket
-# echo -e "${green}Verifying JoinMarket...${orange}"
+function verify_joinmarket {
+set_terminal
+cd /home/joinmarket
+echo -e "${green}Verifying JoinMarket...${orange}"
 
-# #get pubkey
-# curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
-# curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
+#get pubkey
+curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
+curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
 
-# if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
-# enter_continue "gpg verification ${red}failed${orange}. aborting."
-# # return 1
-# else
-# enter_continue "GPG verification ${green}passed${orange}."
-# fi
-# }
+if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
+enter_continue "gpg verification ${red}failed${orange}. aborting."
+# return 1
+else
+enter_continue "GPG verification ${green}passed${orange}."
+fi
+}
 
-# function extract_joinmarket {
-# set_terminal
-# cd /home/joinmarket
-# echo -e "${green}Extracting JoinMarket...${orange}"
+function extract_joinmarket {
+set_terminal
+cd /home/joinmarket
+echo -e "${green}Extracting JoinMarket...${orange}"
 
-# tar -xvf *gz
-# rm *gz *asc
+tar -xvf *gz
+rm *gz *asc
 
-# mv joinmarket-clientserver* joinmarket
+mv joinmarket-clientserver* joinmarket
 
-# }
+}
 
 # function install_joinmarket {
 # set_terminal
