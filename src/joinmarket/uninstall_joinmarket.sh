@@ -36,6 +36,7 @@ set_terminal
 stop_joinmarket
 
 sudo rm -rf /home/joinmarket >$dn 2>&1
+sudo rm -rf $hp/joinmarket >$dn 2>&1
 
 sudo deluser --remove-home joinmarket >$dn 2>&1
 sudo delgroup joinmarket >$dn 2>&1

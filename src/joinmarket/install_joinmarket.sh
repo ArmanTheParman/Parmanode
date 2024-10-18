@@ -22,7 +22,7 @@ extract_joinmarket || return 1
 
 do_install_joinmarket || return 1
 
-# #activation_script_joinmarket || return 1
+activation_script_joinmarket || return 1
 
 installed_conf_add "joinmarket-end"
 success "JoinMarket has been installed"
@@ -75,6 +75,7 @@ echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
 sudo -u joinmarket mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
 #sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
 sudo -u joinmarket ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
+mkdir -p $hp/joinmarket
 #sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
 enter_continue
 }
@@ -125,8 +126,13 @@ enter_continue
 }
 
 
-# function activation_script_joinmarket {
-
-# true
-
-# }
+function activation_script_joinmarket {
+source $bc
+sudo -u joinmarket bash -c "source /home/joinmarket/joinmarket/jmvenv/bin/activate && /home/joinmarket/joinmarket/scripts/wallet-tool.py"
+enter_continue
+delete_line "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_cookie_file ="
+swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_wallet_file =" "rpc_wallet_file = jm_wallet"
+swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_user =" "rpc_user = $rpcuser" 
+swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_password =" "rpc_password = $rpcpassword"
+swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "onion_serving_port =" "onion_serving_port = 8077"
+}
