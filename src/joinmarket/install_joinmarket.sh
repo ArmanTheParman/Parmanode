@@ -69,6 +69,7 @@ enter_continue
 }
 
 function create_jm_directories {
+return 0
 set_terminal
 echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
 sudo -u joinmarket mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
@@ -79,6 +80,7 @@ enter_continue
 }
 
 function download_joinmarket {
+return 0
 set_terminal
 echo -e "${green}Downloading JoinMarket...${orange}"
 sudo -u joinmarket curl -L https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc \
@@ -108,7 +110,6 @@ set_terminal
 echo -e "${green}Extracting JoinMarket...${orange}"
 
 sudo -u joinmarket tar -xvf /home/joinmarket/*gz
-sudo rm /home/joinmarket/*gz /home/joinmarket/*asc
 
 sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
 }
