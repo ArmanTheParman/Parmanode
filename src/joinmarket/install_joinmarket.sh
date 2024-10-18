@@ -128,8 +128,8 @@ exit
 }
 
 
-function activation_script_joinmarket {
+# function activation_script_joinmarket {
 
-true
+# true
 
-}
+# }
