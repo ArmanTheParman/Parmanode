@@ -135,4 +135,5 @@ swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_wallet_file =" "r
 swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_user =" "rpc_user = $rpcuser" 
 swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_password =" "rpc_password = $rpcpassword"
 swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "onion_serving_port =" "onion_serving_port = 8077"
+enter_continue
 }
