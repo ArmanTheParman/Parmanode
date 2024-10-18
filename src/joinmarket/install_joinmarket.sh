@@ -14,7 +14,7 @@ create_jm_user || return 1
 
 create_jm_directories || return 1
 
-download_joinmarket || return 1
+# download_joinmarket || return 1
 
 # verify_joinmarket || return 1
 
@@ -77,13 +77,13 @@ sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
 enter_continue
 }
 
-function download_joinmarket {
-set_terminal
-cd /home/joinmarket
-echo -e "${green}Downloading JoinMarket...${orange}"
-curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
-curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
-}
+# function download_joinmarket {
+# set_terminal
+# cd /home/joinmarket
+# echo -e "${green}Downloading JoinMarket...${orange}"
+# curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
+# curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
+# }
 
 # function verify_joinmarket {
 # set_terminal
