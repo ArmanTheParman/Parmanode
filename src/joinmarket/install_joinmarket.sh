@@ -110,9 +110,9 @@ function extract_joinmarket {
 set_terminal
 echo -e "${green}Extracting JoinMarket...${orange}"
 
-sudo -u joinmarket tar -xvf /home/joinmarket/*gz
+sudo -u joinmarket tar -xvf /home/joinmarket/v0.9.11.tar.gz
 
-sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
+sudo mv /home/joinmarket/joinmarket-clientserver-0.9.11 /home/joinmarket/joinmarket
 enter_continue
 }
 
