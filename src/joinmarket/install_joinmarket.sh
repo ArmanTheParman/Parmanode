@@ -22,7 +22,7 @@ extract_joinmarket || return 1
 
 install_joinmarket || return 1
 
-activation_script_joinmarket || return 1
+#activation_script_joinmarket || return 1
 
 installed_conf_add "joinmarket-end"
 success "JoinMarket has been installed"
