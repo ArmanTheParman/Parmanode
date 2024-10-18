@@ -4,7 +4,7 @@ grep -q "bitcoin-end" < $ic || {
     announce "Please install Bitcoin first. Aborting." && return 1 
     }
 
-# jm_dependencies || return 1
+jm_dependencies || return 1
 
 make_jm_wallet || return 1
 
@@ -20,7 +20,7 @@ verify_joinmarket || return 1
 
 extract_joinmarket || return 1
 
-# install_joinmarket || return 1
+install_joinmarket || return 1
 
 # activation_script_joinmarket || return 1
 
@@ -29,17 +29,17 @@ success "JoinMarket has been installed"
 
 }
 
-# function jm_dependencies {
-# set_terminal
-# echo -e "${green}Installing dependencies...${orange}"
-# sudo apt-get update -y
-# sudo apt install -y \
-#     python3-venv curl python3-dev python3-pip build-essential automake \
-#     pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
+function jm_dependencies {
+set_terminal
+echo -e "${green}Installing dependencies...${orange}"
+sudo apt-get update -y
+sudo apt install -y \
+    python3-venv curl python3-dev python3-pip build-essential automake \
+    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
 
-# enter_continue
-# return 0
-# }
+enter_continue
+return 0
+}
 
 function make_jm_wallet {
 
@@ -114,12 +114,12 @@ mv joinmarket-clientserver* joinmarket
 
 }
 
-# function install_joinmarket {
-# set_terminal
-# cd /home/joinmarket/joinmarket
-# echo -e "${green}Installing JoinMarket...${orange}"
-# ./install.sh --without-qt --disable-secp-check --disable-os-deps-check
-# }
+function install_joinmarket {
+set_terminal
+cd /home/joinmarket/joinmarket
+echo -e "${green}Installing JoinMarket...${orange}"
+./install.sh --without-qt --disable-secp-check --disable-os-deps-check
+}
 
 
 # # function activation_script_joinmarket {
