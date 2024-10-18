@@ -119,9 +119,9 @@ enter_continue
 
 function do_install_joinmarket {
 set_terminal
-cd /home/joinmarket/joinmarket
 echo -e "${green}Installing JoinMarket...${orange}"
-./install.sh --without-qt --disable-secp-check --disable-os-deps-check
+sudo -u joinmarket /home/joinmarket/joinmarket/install.sh --without-qt --disable-secp-check --disable-os-deps-check
+enter_continue
 }
 
 
