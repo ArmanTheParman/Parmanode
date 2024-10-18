@@ -94,10 +94,9 @@ set_terminal
 echo -e "${green}Verifying JoinMarket...${orange}"
 
 #get pubkey
-sudo -u joinmarket curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
-sudo -u joinmarket curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
-
-if ! su -c 'gpg --verify /home/joinmarket/*asc /home/joinmarket/*gz 2>&1 | grep -i good'  joinmarket ; then
+sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | sudo gpg --import 
+sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | sudo gpg --import
+if ! sudo gpg --verify /home/joinmarket/joinmarket-clientserver.tar.gz.asc /home/joinmarket/v0.9.11.tar.gz 2>&1 | grep -i good ; then
 enter_continue "gpg verification ${red}failed${orange}. aborting."
 exit
 return 1
