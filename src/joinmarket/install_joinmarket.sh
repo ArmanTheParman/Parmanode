@@ -4,28 +4,28 @@ grep -q "bitcoin-end" < $ic || {
     announce "Please install Bitcoin first. Aborting." && return 1 
     }
 
-jm_dependencies || return 1
+# jm_dependencies || return 1
 
-make_jm_wallet || return 1
+# make_jm_wallet || return 1
 
-installed_conf_add "joinmarket-start"
+# installed_conf_add "joinmarket-start"
 
-create_jm_user || return 1
+# create_jm_user || return 1
 
-create_jm_directories || return 1
+# create_jm_directories || return 1
 
-download_joinmarket || return 1
+# download_joinmarket || return 1
 
-verify_joinmarket || return 1
+# verify_joinmarket || return 1
 
-extract_joinmarket || return 1
+# extract_joinmarket || return 1
 
-install_joinmarket || return 1
+# install_joinmarket || return 1
 
-activation_script_joinmarket || return 1
+# activation_script_joinmarket || return 1
 
-installed_conf_add "joinmarket-end"
-success "JoinMarket has been installed"
+# installed_conf_add "joinmarket-end"
+# success "JoinMarket has been installed"
 
 }
 
