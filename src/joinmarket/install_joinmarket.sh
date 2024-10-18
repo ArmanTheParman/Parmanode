@@ -69,62 +69,53 @@ enter_continue
 function create_jm_directories {
 set_terminal
 echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
-sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
-sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
-sudo ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
-sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
+sudo -u joinmarket mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
+#sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
+sudo -u joinmarket ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
+#sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
 enter_continue
 }
 
 function download_joinmarket {
 set_terminal
-sudo su joinmarket
-cd /home/joinmarket
 echo -e "${green}Downloading JoinMarket...${orange}"
-curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
-curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
-exit
+sudo -u joinmarket curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc \
+     -o /home/joinmarket/joinmarket-clientserver.tar.gz.asc
+sudo -u joinmarket curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz \
+     -o /home/joinmarket/v0.9.11.tar.gz
 }
 
 function verify_joinmarket {
 set_terminal
-sudo su joinmarket
-cd /home/joinmarket
 echo -e "${green}Verifying JoinMarket...${orange}"
 
 #get pubkey
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
 
-if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
+if ! (sudo gpg --verify /home/joinmarket/*asc /home/joinmarket/*gz 2>&1 | grep -i good ) ; then
 enter_continue "gpg verification ${red}failed${orange}. aborting."
 # return 1
 else
 enter_continue "GPG verification ${green}passed${orange}."
 fi
-exit
 }
 
 function extract_joinmarket {
 set_terminal
-sudo su joinmarket
-cd /home/joinmarket
 echo -e "${green}Extracting JoinMarket...${orange}"
 
-tar -xvf *gz
-rm *gz *asc
+sudo -u joinmarket tar -xvf /home/joinmarket/*gz
+sudo rm /home/joinmarket/*gz /home/joinmarket/*asc
 
-mv joinmarket-clientserver* joinmarket
-exit
+sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
 }
 
 # function do_install_joinmarket {
 # set_terminal
-# sudo su joinmarket
 # cd /home/joinmarket/joinmarket
 # echo -e "${green}Installing JoinMarket...${orange}"
 # ./install.sh --without-qt --disable-secp-check --disable-os-deps-check
-# exit
 # }
 
 
