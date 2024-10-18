@@ -122,7 +122,7 @@ echo -e "${green}Installing JoinMarket...${orange}"
 }
 
 
-function activation_script_joinmarket {
+# function activation_script_joinmarket {
 
-;
-}
+# true ;
+# }
