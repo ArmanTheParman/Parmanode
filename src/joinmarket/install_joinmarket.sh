@@ -97,11 +97,14 @@ echo -e "${green}Verifying JoinMarket...${orange}"
 sudo -u joinmarket curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
 sudo -u joinmarket curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
 
-if ! (sudo -u joinmarket gpg --verify /home/joinmarket/*asc /home/joinmarket/*gz 2>&1 | grep -i good ) ; then
+sudo su joinmarket
+if ! gpg --verify /home/joinmarket/*asc /home/joinmarket/*gz 2>&1 | grep -i good  ; then
 enter_continue "gpg verification ${red}failed${orange}. aborting."
-# return 1
+exit
+return 1
 else
 enter_continue "GPG verification ${green}passed${orange}."
+exit
 fi
 }
 
