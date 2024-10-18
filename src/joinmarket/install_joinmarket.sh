@@ -16,9 +16,9 @@ create_jm_directories || return 1
 
 download_joinmarket || return 1
 
-verify_joinmarket || return 1
+# verify_joinmarket || return 1
 
-extract_joinmarket || return 1
+# extract_joinmarket || return 1
 
 #do_install_joinmarket || return 1
 
@@ -89,31 +89,31 @@ sudo -u joinmarket curl -L https://github.com/JoinMarket-Org/joinmarket-clientse
      -o /home/joinmarket/v0.9.11.tar.gz
 }
 
-function verify_joinmarket {
-return 0
-set_terminal
-echo -e "${green}Verifying JoinMarket...${orange}"
+# function verify_joinmarket {
+# return 0
+# set_terminal
+# echo -e "${green}Verifying JoinMarket...${orange}"
 
-#get pubkey
-sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | sudo gpg --import 
-sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | sudo gpg --import
+# #get pubkey
+# sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | sudo gpg --import 
+# sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | sudo gpg --import
 
-if ! sudo gpg --verify /home/joinmarket/joinmarket-clientserver.tar.gz.asc /home/joinmarket/v0.9.11.tar.gz 2>&1 | grep -i good ; then
-enter_continue "gpg verification ${red}failed${orange}. aborting."
-return 1
-else
-enter_continue "GPG verification ${green}passed${orange}."
-fi
-}
+# if ! sudo gpg --verify /home/joinmarket/joinmarket-clientserver.tar.gz.asc /home/joinmarket/v0.9.11.tar.gz 2>&1 | grep -i good ; then
+# enter_continue "gpg verification ${red}failed${orange}. aborting."
+# return 1
+# else
+# enter_continue "GPG verification ${green}passed${orange}."
+# fi
+# }
 
-function extract_joinmarket {
-set_terminal
-echo -e "${green}Extracting JoinMarket...${orange}"
+# function extract_joinmarket {
+# set_terminal
+# echo -e "${green}Extracting JoinMarket...${orange}"
 
-sudo -u joinmarket tar -xvf /home/joinmarket/*gz
+# sudo -u joinmarket tar -xvf /home/joinmarket/*gz
 
-sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
-}
+# sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
+# }
 
 # function do_install_joinmarket {
 # set_terminal
