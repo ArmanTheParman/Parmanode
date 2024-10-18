@@ -107,6 +107,7 @@ fi
 }
 
 function extract_joinmarket {
+return 0
 set_terminal
 echo -e "${green}Extracting JoinMarket...${orange}"
 
