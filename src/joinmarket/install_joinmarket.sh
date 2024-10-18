@@ -10,7 +10,7 @@ grep -q "bitcoin-end" < $ic || {
 
 installed_conf_add "joinmarket-start"
 
-#create_jm_user || return 1
+create_jm_user || return 1
 
 create_jm_directories || return 1
 
@@ -57,14 +57,14 @@ success "JoinMarket has been installed"
 # }
 
 
-# function create_jm_user {
-# set_terminal
-# echo -e "${green}Creating joinmarket user...${orange}"
-# sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
-# sudo usermod -a -G $USER joinmarket >$dn 2>&1
-# sudo usermod -a -G joinmarket $USER >$dn 2>&1
-# enter_continue
-# }
+function create_jm_user {
+set_terminal
+echo -e "${green}Creating joinmarket user...${orange}"
+sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
+sudo usermod -a -G $USER joinmarket >$dn 2>&1
+sudo usermod -a -G joinmarket $USER >$dn 2>&1
+enter_continue
+}
 
 function create_jm_directories {
 set_terminal
