@@ -6,7 +6,7 @@ grep -q "bitcoin-end" < $ic || {
 
 # jm_dependencies || return 1
 
-# make_jm_wallet || return 1
+make_jm_wallet || return 1
 
 installed_conf_add "joinmarket-start"
 
@@ -14,7 +14,7 @@ create_jm_user || return 1
 
 create_jm_directories || return 1
 
-# download_joinmarket || return 1
+download_joinmarket || return 1
 
 # verify_joinmarket || return 1
 
@@ -41,20 +41,20 @@ success "JoinMarket has been installed"
 # return 0
 # }
 
-# function make_jm_wallet {
+function make_jm_wallet {
 
-# isbitcoinrunning
+isbitcoinrunning
 
-# if [[ $bitcoinrunning == "false" ]] ; then
-#     announce "Please make sure Bitcoin is running first. Aborting."
-#     return 1
-# fi
+if [[ $bitcoinrunning == "false" ]] ; then
+    announce "Please make sure Bitcoin is running first. Aborting."
+    return 1
+fi
 
-# set_terminal
-# echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
-# bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false
-# enter_continue
-# }
+set_terminal
+echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
+bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false
+enter_continue
+}
 
 
 function create_jm_user {
@@ -77,13 +77,13 @@ sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
 enter_continue
 }
 
-# function download_joinmarket {
-# set_terminal
-# cd /home/joinmarket
-# echo -e "${green}Downloading JoinMarket...${orange}"
-# curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
-# curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
-# }
+function download_joinmarket {
+set_terminal
+cd /home/joinmarket
+echo -e "${green}Downloading JoinMarket...${orange}"
+curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
+curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
+}
 
 # function verify_joinmarket {
 # set_terminal
