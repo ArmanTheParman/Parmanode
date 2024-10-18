@@ -49,6 +49,7 @@ set_terminal
 echo "${green}Creating joinmarket user...${orange}"
 sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
 sudo usermod -a -G $USER joinmarket >$dn 2>&1
+sudo usermod -a -G joinmarket $USER >$dn 2>&1
 enter_continue
 }
 
@@ -60,5 +61,31 @@ sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files.
 sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
 sudo ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
 sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
+mkdir -p $hp/joinmarket
 enter_continue
+}
+
+function download_joinmarket {
+set_terminal
+cd $hp/joinmarket
+echo "${green}Downloading JoinMarket...${orange}"
+curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
+curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
+}
+
+function verify_joinmarket {
+set_terminal
+cd $hp/joinmarket
+echo "${green}Verifying JoinMarket...${orange}"
+
+#get pubkey
+curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
+curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
+
+if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
+enter_continue "gpg verification failed. aborting."
+return 1
+else
+enter_continue "GPG verification passed"
+fi
 }
