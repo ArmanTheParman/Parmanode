@@ -131,5 +131,8 @@ fi
 cleanup_bashrc_zshrc
 #echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a $bashrc >/dev/null 2>&1
 debug temppatchend
+
+#Make /media/$USER with permission of $USER. - Refactor this in to the code at some point.
+sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
 }
 

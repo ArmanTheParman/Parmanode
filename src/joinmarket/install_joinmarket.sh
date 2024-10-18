@@ -18,11 +18,12 @@ success "JoinMarket has been installed"
 
 function jm_dependencies {
 set_terminal
-echo "Installing dependencies..."
+echo "${green}Installing dependencies...${orange}"
 sudo apt-get update -y
 sudo apt install -y \
-    python-virtualenv curl python3-dev python3-pip build-essential automake \
+    python3-venv curl python3-dev python3-pip build-essential automake \
     pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
+
 enter_continue
 return 0
 }
@@ -37,7 +38,7 @@ if [[ $bitcoinrunning == "false" ]] ; then
 fi
 
 set_terminal
-echo "Creating joinmarket wallet with Bitcoin Core/Knots..."
+echo "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
 bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false
 enter_continue
 }
@@ -45,7 +46,7 @@ enter_continue
 
 function create_jm_user {
 set_terminal
-echo "Creating joinmarket user..."
+echo "${green}Creating joinmarket user...${orange}"
 sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
 sudo usermod -a -G $USER joinmarket >$dn 2>&1
 enter_continue
@@ -53,7 +54,7 @@ enter_continue
 
 function create_jm_directories {
 set_terminal
-echo "Creating joinmarket directories and symplinks..."
+echo "${green}Creating joinmarket directories and symplinks...${orange}"
 
 sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
 sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
