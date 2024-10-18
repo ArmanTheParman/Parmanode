@@ -11,7 +11,7 @@ function do_loop {
 
 if [ -f do_not_delete_move_rename.txt ] ; then true ; else
 clear
-echo "
+echo -e "
 The run_parmanode.sh script must be run from it's original directory. It
 cannot be moved relative to all the other files, but it can be run
 by calling it with a different script from elsewhere.
@@ -160,12 +160,12 @@ fi
 ########################################################################################
 if [[ $bash == 1 && $OS == Linux ]] ; then 
 #bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
-echo "Entering bash inception..."
+echo -e "Entering bash inception..."
 sleep 0.5
 bash --rcfile $pn/src/tools/rcfile
 exit 
 elif [[ $bash == 1 && $OS == Mac ]] ; then
-echo "Entering bash inception..."
+echo -e "Entering bash inception..."
 sleep 0.5
 bash --rcfile $pn/src/tools/rcfile
 exit 

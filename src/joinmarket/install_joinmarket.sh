@@ -22,7 +22,7 @@ success "JoinMarket has been installed"
 
 function jm_dependencies {
 set_terminal
-echo "${green}Installing dependencies...${orange}"
+echo -e "${green}Installing dependencies...${orange}"
 sudo apt-get update -y
 sudo apt install -y \
     python3-venv curl python3-dev python3-pip build-essential automake \
@@ -42,7 +42,7 @@ if [[ $bitcoinrunning == "false" ]] ; then
 fi
 
 set_terminal
-echo "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
+echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
 bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false
 enter_continue
 }
@@ -50,7 +50,7 @@ enter_continue
 
 function create_jm_user {
 set_terminal
-echo "${green}Creating joinmarket user...${orange}"
+echo -e "${green}Creating joinmarket user...${orange}"
 sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
 sudo usermod -a -G $USER joinmarket >$dn 2>&1
 sudo usermod -a -G joinmarket $USER >$dn 2>&1
@@ -59,7 +59,7 @@ enter_continue
 
 function create_jm_directories {
 set_terminal
-echo "${green}Creating joinmarket directories and symplinks...${orange}"
+echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
 
 sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
 sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
@@ -72,7 +72,7 @@ enter_continue
 function download_joinmarket {
 set_terminal
 cd $hp/joinmarket
-echo "${green}Downloading JoinMarket...${orange}"
+echo -e "${green}Downloading JoinMarket...${orange}"
 curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
 curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
 }
@@ -80,7 +80,7 @@ curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/
 function verify_joinmarket {
 set_terminal
 cd $hp/joinmarket
-echo "${green}Verifying JoinMarket...${orange}"
+echo -e "${green}Verifying JoinMarket...${orange}"
 
 #get pubkey
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
