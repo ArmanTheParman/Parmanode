@@ -30,7 +30,6 @@ success "JoinMarket has been installed"
 }
 
 function jm_dependencies {
-return 0
 set_terminal
 echo -e "${green}Installing dependencies...${orange}"
 sudo apt-get update -y
@@ -43,7 +42,6 @@ return 0
 }
 
 function make_jm_wallet {
-return 0
 isbitcoinrunning
 
 if [[ $bitcoinrunning == "false" ]] ; then
@@ -59,7 +57,6 @@ enter_continue
 
 
 function create_jm_user {
-return 0
 set_terminal
 echo -e "${green}Creating joinmarket user...${orange}"
 sudo adduser --disabled-password --gecos "" joinmarket >$dn 2>&1
@@ -69,7 +66,6 @@ enter_continue
 }
 
 function create_jm_directories {
-return 0
 set_terminal
 echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
 sudo -u joinmarket mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
@@ -81,7 +77,6 @@ enter_continue
 }
 
 function download_joinmarket {
-return 0
 set_terminal
 echo -e "${green}Downloading JoinMarket...${orange}"
 sudo -u joinmarket curl -L https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc \
@@ -91,7 +86,6 @@ sudo -u joinmarket curl -L https://github.com/JoinMarket-Org/joinmarket-clientse
 }
 
 function verify_joinmarket {
-return 0
 set_terminal
 echo -e "${green}Verifying JoinMarket...${orange}"
 
@@ -108,7 +102,6 @@ fi
 }
 
 function extract_joinmarket {
-return 0
 set_terminal
 echo -e "${green}Extracting JoinMarket...${orange}"
 
