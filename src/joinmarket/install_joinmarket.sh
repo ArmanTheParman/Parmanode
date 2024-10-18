@@ -12,7 +12,7 @@ installed_conf_add "joinmarket-start"
 
 #create_jm_user || return 1
 
-create_jm_directories || return 1
+# create_jm_directories || return 1
 
 # download_joinmarket || return 1
 
