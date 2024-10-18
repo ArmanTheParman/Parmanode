@@ -81,8 +81,7 @@ fi
 #add to run count
 rp_counter
 
-#Add Parmashell
-install_parmashell silent
+
 
 ########################################################################################
 #Intro
@@ -128,6 +127,8 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
 fi
 apply_patches  
 
+#Add Parmashell (do after patches)
+install_parmashell silent
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
