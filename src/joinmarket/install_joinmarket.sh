@@ -127,13 +127,15 @@ enter_continue
 
 
 function activation_script_joinmarket {
+set_terminal
+echo -e "${green}Running Joinmarket activate script...${orange}"
 source $bc
 sudo -u joinmarket bash -c "source /home/joinmarket/joinmarket/jmvenv/bin/activate && /home/joinmarket/joinmarket/scripts/wallet-tool.py"
 enter_continue
-delete_line "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_cookie_file ="
-swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_wallet_file =" "rpc_wallet_file = jm_wallet"
-swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_user =" "rpc_user = $rpcuser" 
-swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_password =" "rpc_password = $rpcpassword"
-swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "onion_serving_port =" "onion_serving_port = 8077"
+sudo delete_line "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_cookie_file ="
+sudo swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_wallet_file =" "rpc_wallet_file = jm_wallet"
+sudo swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_user =" "rpc_user = $rpcuser" 
+sudo swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "rpc_password =" "rpc_password = $rpcpassword"
+sudo swap_string "/home/joinmarket/.joinmarket/joinmarket.cfg" "onion_serving_port =" "onion_serving_port = 8077"
 enter_continue
 }
