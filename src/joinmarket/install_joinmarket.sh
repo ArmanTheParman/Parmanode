@@ -8,6 +8,8 @@ jm_dependencies || return 1
 
 make_jm_wallet || return 1
 
+installed_conf_add "joinmarket-start"
+
 create_jm_user || return 1
 
 create_jm_directories || return 1
@@ -16,6 +18,7 @@ download_joinmarket || return 1
 
 verify_joinmarket || return 1
 
+installed_conf_add "joinmarket-end"
 success "JoinMarket has been installed"
 
 }
@@ -87,9 +90,9 @@ curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/ma
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
 
 if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
-enter_continue "gpg verification failed. aborting."
+enter_continue "gpg verification ${red}failed${orange}. aborting."
 return 1
 else
-enter_continue "GPG verification passed"
+enter_continue "GPG verification ${green}passed{$orange}."
 fi
 }

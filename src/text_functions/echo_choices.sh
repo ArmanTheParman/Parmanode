@@ -9,7 +9,7 @@
     # errormessage
 
 function enter_continue {
-echo "$@"
+echo -e "$@"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
@@ -167,7 +167,7 @@ set_terminal ; echo -e "
 
     $1"
 if [[ -z $2 ]] ; then
-echo "
+echo -e "
 ########################################################################################
 "
 else
@@ -180,8 +180,8 @@ if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; retu
 }
 
 function errormessage {
-echo ""
-echo " There has been an error. See log files for more info."
+echo -e ""
+echo -e " There has been an error. See log files for more info."
 enter_continue
 }
 
