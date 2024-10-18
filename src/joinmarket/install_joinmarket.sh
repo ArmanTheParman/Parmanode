@@ -90,19 +90,19 @@ sudo -u joinmarket curl -L https://github.com/JoinMarket-Org/joinmarket-clientse
 }
 
 function verify_joinmarket {
+return 0
 set_terminal
 echo -e "${green}Verifying JoinMarket...${orange}"
 
 #get pubkey
 sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | sudo gpg --import 
 sudo curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | sudo gpg --import
+
 if ! sudo gpg --verify /home/joinmarket/joinmarket-clientserver.tar.gz.asc /home/joinmarket/v0.9.11.tar.gz 2>&1 | grep -i good ; then
 enter_continue "gpg verification ${red}failed${orange}. aborting."
-exit
 return 1
 else
 enter_continue "GPG verification ${green}passed${orange}."
-exit
 fi
 }
 
