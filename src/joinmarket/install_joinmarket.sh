@@ -18,7 +18,7 @@ download_joinmarket || return 1
 
 verify_joinmarket || return 1
 
-# extract_joinmarket || return 1
+extract_joinmarket || return 1
 
 #do_install_joinmarket || return 1
 
@@ -106,14 +106,14 @@ enter_continue "GPG verification ${green}passed${orange}."
 fi
 }
 
-# function extract_joinmarket {
-# set_terminal
-# echo -e "${green}Extracting JoinMarket...${orange}"
+function extract_joinmarket {
+set_terminal
+echo -e "${green}Extracting JoinMarket...${orange}"
 
-# sudo -u joinmarket tar -xvf /home/joinmarket/*gz
+sudo -u joinmarket tar -xvf /home/joinmarket/*gz
 
-# sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
-# }
+sudo mv /home/joinmarket/joinmarket-clientserver* /home/joinmarket/joinmarket
+}
 
 # function do_install_joinmarket {
 # set_terminal
