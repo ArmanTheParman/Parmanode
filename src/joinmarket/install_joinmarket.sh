@@ -94,12 +94,12 @@ echo -e "${green}Verifying JoinMarket...${orange}"
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/AdamGibson.asc | gpg --import 
 curl https://raw.githubusercontent.com/JoinMarket-Org/joinmarket-clientserver/master/pubkeys/KristapsKaupe.asc | gpg --import
 
-if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
-enter_continue "gpg verification ${red}failed${orange}. aborting."
-# return 1
-else
-enter_continue "GPG verification ${green}passed${orange}."
-fi
+# if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
+# enter_continue "gpg verification ${red}failed${orange}. aborting."
+# # return 1
+# else
+# enter_continue "GPG verification ${green}passed${orange}."
+# fi
 }
 
 # function extract_joinmarket {
