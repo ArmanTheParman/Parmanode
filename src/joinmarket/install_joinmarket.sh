@@ -20,7 +20,7 @@ verify_joinmarket || return 1
 
 extract_joinmarket || return 1
 
-install_joinmarket || return 1
+do_install_joinmarket || return 1
 
 #activation_script_joinmarket || return 1
 
@@ -118,14 +118,14 @@ mv joinmarket-clientserver* joinmarket
 exit
 }
 
-function install_joinmarket {
-set_terminal
-sudo su joinmarket
-cd /home/joinmarket/joinmarket
-echo -e "${green}Installing JoinMarket...${orange}"
-./install.sh --without-qt --disable-secp-check --disable-os-deps-check
-exit
-}
+# function do_install_joinmarket {
+# set_terminal
+# sudo su joinmarket
+# cd /home/joinmarket/joinmarket
+# echo -e "${green}Installing JoinMarket...${orange}"
+# ./install.sh --without-qt --disable-secp-check --disable-os-deps-check
+# exit
+# }
 
 
 # function activation_script_joinmarket {
