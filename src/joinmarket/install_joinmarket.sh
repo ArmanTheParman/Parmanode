@@ -98,7 +98,7 @@ if ! gpg --verify *asc *gz 2>&1 | grep -i good  ; then
 enter_continue "gpg verification ${red}failed${orange}. aborting."
 # return 1
 else
-enter_continue "GPG verification ${green}passed{$orange}."
+enter_continue "GPG verification ${green}passed${orange}."
 fi
 }
 
