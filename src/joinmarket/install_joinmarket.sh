@@ -22,7 +22,7 @@ extract_joinmarket || return 1
 
 install_joinmarket || return 1
 
-# activation_script_joinmarket || return 1
+activation_script_joinmarket || return 1
 
 installed_conf_add "joinmarket-end"
 success "JoinMarket has been installed"
@@ -69,7 +69,6 @@ enter_continue
 function create_jm_directories {
 set_terminal
 echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
-
 sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
 sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
 sudo ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
@@ -79,14 +78,17 @@ enter_continue
 
 function download_joinmarket {
 set_terminal
+sudo su joinmarket
 cd /home/joinmarket
 echo -e "${green}Downloading JoinMarket...${orange}"
 curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/releases/download/v0.9.11/joinmarket-clientserver-0.9.11.tar.gz.asc
 curl -LO https://github.com/JoinMarket-Org/joinmarket-clientserver/archive/refs/tags/v0.9.11.tar.gz
+exit
 }
 
 function verify_joinmarket {
 set_terminal
+sudo su joinmarket
 cd /home/joinmarket
 echo -e "${green}Verifying JoinMarket...${orange}"
 
@@ -100,10 +102,12 @@ enter_continue "gpg verification ${red}failed${orange}. aborting."
 else
 enter_continue "GPG verification ${green}passed${orange}."
 fi
+exit
 }
 
 function extract_joinmarket {
 set_terminal
+sudo su joinmarket
 cd /home/joinmarket
 echo -e "${green}Extracting JoinMarket...${orange}"
 
@@ -111,18 +115,21 @@ tar -xvf *gz
 rm *gz *asc
 
 mv joinmarket-clientserver* joinmarket
-
+exit
 }
 
 function install_joinmarket {
 set_terminal
+sudo su joinmarket
 cd /home/joinmarket/joinmarket
 echo -e "${green}Installing JoinMarket...${orange}"
 ./install.sh --without-qt --disable-secp-check --disable-os-deps-check
+exit
 }
 
 
-# # function activation_script_joinmarket {
+function activation_script_joinmarket {
 
-# # true ;
-# # }
+true
+
+}
