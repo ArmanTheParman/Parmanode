@@ -12,7 +12,7 @@ installed_conf_add "joinmarket-start"
 
 #create_jm_user || return 1
 
-# create_jm_directories || return 1
+create_jm_directories || return 1
 
 # download_joinmarket || return 1
 
@@ -66,16 +66,16 @@ success "JoinMarket has been installed"
 # enter_continue
 # }
 
-# function create_jm_directories {
-# set_terminal
-# echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
+function create_jm_directories {
+set_terminal
+echo -e "${green}Creating joinmarket directories and symplinks...${orange}"
 
-# sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
-# sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
-# sudo ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
-# sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
-# enter_continue
-# }
+sudo mkdir -p /home/joinmarket/.joinmarket #default dir where JM expects files. 
+sudo chown -R joinmarket:joinmarket /home/joinmarket/.joinmarket
+sudo ln -s $HOME/.bitcoin /home/joinmarket/.bitcoin
+sudo chown -R joinmarket:joinmarket /home/joinmarket/.bitcoin
+enter_continue
+}
 
 # function download_joinmarket {
 # set_terminal
