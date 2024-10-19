@@ -35,7 +35,8 @@ echo -e "${green}Installing dependencies...${orange}"
 sudo apt-get update -y
 sudo apt install -y \
     python3-venv curl python3-dev python3-pip build-essential automake \
-    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
+    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7 \
+    software-properties-common
 
 enter_continue
 return 0
