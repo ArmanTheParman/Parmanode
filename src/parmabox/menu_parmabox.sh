@@ -1,9 +1,20 @@
 function menu_parmabox {
- while true ; do set_terminal ; echo -e "
+while true ; do 
+
+if ! docker ps >$dn 2>&1 ; then
+    dockernotrunning="
+                              ${red}Warning: Docker is not running${orange}
+    "
+else
+    unset dockernotrunning
+fi
+
+set_terminal ; echo -ne "
 ########################################################################################
               $cyan                     ParmaBox Menu            $orange                   
 ########################################################################################
 
+                              $dockernotrunning 
 $cyan
             r) $orange        Log into the container as root
 $green                              The password is 'parmanode' 
@@ -20,6 +31,7 @@ $cyan
             rf)$orange        Refresh ParmaBox (starts over and includes new updates)
 
 $orange
+
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
