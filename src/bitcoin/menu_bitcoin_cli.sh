@@ -5,7 +5,6 @@ if grep -q "btccombo" < $ic ; then combomenu="true" ; else unset combomenu ; fi
 
 while true
 do
-debug "bitcoin menu..."
 set_terminal
 echo -e "
 ########################################################################################
