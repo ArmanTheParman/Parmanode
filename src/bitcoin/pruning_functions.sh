@@ -179,6 +179,7 @@ set_terminal
             
             case $choice in
                 a|A)
+                prune_value="550"
                 break
                 ;;
 
