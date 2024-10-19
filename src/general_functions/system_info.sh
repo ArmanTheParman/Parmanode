@@ -110,7 +110,7 @@ if [[ $(uname) == "Linux" ]] ; then
 
     if ! which ip >/dev/null 2>&1 ; then
         clear
-        echo "Installing necessary ip function (iproute2)..."
+        enter_continue "Installing necessary ip function (iproute2)..."
         sudo apt-get update -y && sudo apt-get install iproute2 -y
     fi
 

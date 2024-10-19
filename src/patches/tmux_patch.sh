@@ -34,7 +34,7 @@ break ;;
 y)
 if [[ $OS == Linux ]] ; then
 sudo apt-get update -y && sudo apt-get install tmux 
-else
+elif [[ $OS == Mac ]] ; then
 brew_check
 brew install tmux
 fi
