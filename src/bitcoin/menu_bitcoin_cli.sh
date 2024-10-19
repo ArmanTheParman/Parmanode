@@ -5,7 +5,7 @@ if grep -q "btccombo" < $ic ; then combomenu="true" ; else unset combomenu ; fi
 
 while true
 do
-set_terminal
+if [[ $debug != 1 ]] ; then set_terminal ; fi
 echo -e "
 ########################################################################################
 $cyan
