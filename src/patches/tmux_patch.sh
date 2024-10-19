@@ -32,9 +32,9 @@ nooo)
 hide_messages_add "tmux" "1" 
 break ;;
 y)
-if [[ $OS == Linux ]] ; then
+if [[ $(uname) == Linux ]] ; then
 sudo apt-get update -y && sudo apt-get install tmux 
-elif [[ $OS == Mac ]] ; then
+elif [[ $(uname) == Darwin ]] ; then
 brew_check
 brew install tmux
 fi
