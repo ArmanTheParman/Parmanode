@@ -8,19 +8,19 @@ function install_joinmarket {
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
 
-    make_joinmarket_wallet || return 1
+    make_joinmarket_wallet || {enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
-    clone_joinmarket || return 1 #clone must be before build
+    clone_joinmarket || {enter_continue "aborting" ; return 1 ; }
 
-    build_joinmarket || return 1
+    build_joinmarket || {enter_continue "aborting" ; return 1 ; }
 
-    run_joinmarket_docker || return 1
+    run_joinmarket_docker || {enter_continue "aborting" ; return 1 ; }
 
-    run_wallet_tool_joinmarket || return 1
+    run_wallet_tool_joinmarket || {enter_continue "aborting" ; return 1 ; }
 
-    modify_joinmarket_cfg || return 1
+    modify_joinmarket_cfg || {enter_continue "aborting" ; return 1 ; }
 
     installed_conf_add "joinmarket-end"
     success "JoinMarket has been installed"
