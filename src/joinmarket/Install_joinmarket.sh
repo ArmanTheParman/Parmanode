@@ -52,15 +52,14 @@ function make_joinmarket_wallet {
         echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
         "
         sleep 1
-    fi
 
-    while true ; do
-        read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
-        if [[ $input == 'q' ]] ; then return 1 ; fi
-        isbitcoinrunning
-        if [[ $bitcoinrunning == "true" ]] ; then break ; fi
-    done
-         
+        while true ; do
+            read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
+            if [[ $input == 'q' ]] ; then return 1 ; fi
+            isbitcoinrunning
+            if [[ $bitcoinrunning == "true" ]] ; then break ; fi
+        done
+    fi
 
     set_terminal
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
