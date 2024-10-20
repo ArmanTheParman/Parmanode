@@ -76,6 +76,7 @@ function do_install_joinmarket {
     echo -e "${green}Installing JoinMarket...${orange}"
     docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
     enter_continue
+    return 0
 
 }
 
@@ -97,12 +98,14 @@ function activation_script_joinmarket {
     docker exec joinmarket bash -c "sed -i 's/rpc_password =/rpc_password = $rpcuser/' $jmfile"
     docker exec joinmarket bash -c "sed -i 's/onion_serving_port =/onion_serving_port = 8077/' $jmfile"
     enter_continue
+    return 0
 
 }
 
 function build_joinmarket {
     rm $hp/joinmarket/Dockerfile >$dn 2>&1
     cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
+    return 0
 }
 
 function run_joinmarket_docker {
@@ -113,12 +116,13 @@ function run_joinmarket_docker {
                --network="host" \
                --restart unless-stopped \
                joinmarket
-
+    return 0
 }
 
 function clone_joinmarket {
 
     cd $hp && git clone --depth 1 https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket \
         || { announce "Something went wrong." && return 1 ; }
-       
+
+    return 0 
 }
