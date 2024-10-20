@@ -48,8 +48,11 @@ function make_joinmarket_wallet {
         if [[ $dontrestart == "false" ]] ; then restart_bitcoin  ; fi
     fi
 
-    echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
-    "
+    if [[ $bitcoinrunning != "true" ]] ; then
+        echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
+        "
+        sleep 1
+    fi
 
     while true ; do
         read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
