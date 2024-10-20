@@ -105,13 +105,13 @@ function modify_joinmarket_cfg {
 
 
 function build_joinmarket {
-    unset success
+    unset success_build #do not use 'success' as a variable, it deletes the success function
     rm $hp/joinmarket/Dockerfile >$dn 2>&1
     cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
     cd $hp/joinmarket
-    docker build -t joinmarket . && success="true"
+    docker build -t joinmarket . && success_build="true"
     enter_continue
-    if [[ $success == "true" ]] ; then return 0 ; else return 1 ; fi
+    if [[ $success_build == "true" ]] ; then return 0 ; else return 1 ; fi
 }
 
 function run_joinmarket_docker {
