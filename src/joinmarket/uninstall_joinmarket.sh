@@ -31,6 +31,7 @@ break
 esac
 done
 set_terminal
+please_wait
 
 if ! docker ps > /dev/null 2>&1 ; then
     announce "Docker needs to be running. Aborting."
