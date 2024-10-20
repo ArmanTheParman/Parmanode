@@ -22,6 +22,7 @@ function install_joinmarket {
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
+    enter_continue "after modify joinmarket cfg"
     installed_conf_add "joinmarket-end"
     enter_continue "success..."
     success "JoinMarket has been installed"
