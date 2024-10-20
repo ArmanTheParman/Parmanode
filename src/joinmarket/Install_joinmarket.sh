@@ -134,7 +134,7 @@ function clone_joinmarket {
 
 #     set_terminal
 #     echo -e "${green}Installing JoinMarket...${orange}"
-#     docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
+#     docker exec joinmarket /jm/clientserver/install.sh --without-qt  --disable-os-deps-check
 #     enter_continue
 #     return 0
 
