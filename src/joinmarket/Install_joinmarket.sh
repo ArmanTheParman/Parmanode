@@ -43,8 +43,9 @@ function make_joinmarket_wallet {
         restart_bitcoin 
     fi
 
-    echo "Waiting for bitcoin to start... (hit q to exit loop)
+    echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
     "
+
     while true ; do
         read -n1 -t 0.1 input
         if [[ $input == 'q' ]] ; then return 1 ; fi
@@ -60,9 +61,9 @@ function make_joinmarket_wallet {
 
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
-        echo "
+        echo -e "$red
         Sometimes waiting for bitcoin to laod up is needed.
-        Trying again every 10 seconds...
+        Trying again every 10 seconds...$orange
         "
         sleep 10
     done
@@ -103,9 +104,13 @@ function activation_script_joinmarket {
 }
 
 function build_joinmarket {
+    unset success
     rm $hp/joinmarket/Dockerfile >$dn 2>&1
     cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
-    return 0
+    cd $hp/joinmarket
+    docker build -t joinmarket . && success="true"
+    enter_continue
+    if [[ $success == "true" ]] ; then return 0 ; else return 1 ; fi
 }
 
 function run_joinmarket_docker {
