@@ -32,8 +32,13 @@ esac
 done
 set_terminal
 
+if ! docker ps > /dev/null 2>&1 ; then
+    announce "Docker needs to be running. Aborting."
+    return 1
+fi
 
-stop_joinmarket
+docker stop joinmarket
+docker rm joinmarket
 
 sudo rm -rf $hp/joinmarket >$dn 2>&1
 sudo rm -rf $HOME/.joinmarket >$dn 2>&1

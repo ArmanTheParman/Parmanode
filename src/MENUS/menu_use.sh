@@ -141,6 +141,9 @@ if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp
 if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecoverapp=1
                        echo -e "                        $cyan  (btcr)  $orange     BTC Recover
                             " ; fi
+if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketapp=1
+                       echo -e "                        $cyan  (join)  $orange     JoinMarket
+                            " ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -441,6 +444,13 @@ pnostr)
 btcr) 
    if [[ $btcrecoverapp == 1 ]] ; then
    menu_btcrecover
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+join) 
+   if [[ $joinmarketapp == 1 ]] ; then
+   menu_joinmarket
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

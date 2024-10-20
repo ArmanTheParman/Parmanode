@@ -277,6 +277,12 @@ echo -e "#$cyan                            (btcr)$orange             BTC Recover
 elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
 echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
+if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
+echo -e "#$cyan                            (join)$orange             JoinMarket                             #
+#                                                                                      #"
+elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
+echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange            #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
