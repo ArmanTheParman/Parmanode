@@ -89,8 +89,8 @@ function activation_script_joinmarket {
 
     set_terminal
     echo -e "${green}Running Joinmarket activate script...${orange}"
-    docker exec joinmarket /home/joinmarket/joinmarket/jmvenv/bin/activate 
-    docker exec joinmarket /home/joinmarket/joinmarket/scripts/wallet-tool.py
+    docker exec joinmarket /jm/clientserver/jmvenv/bin/activate 
+    docker exec joinmarket /jm/clientserver/scripts/wallet-tool.py
     enter_continue
 
     jmfile="/.joinmarket/joinmarket.cfg"
