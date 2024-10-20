@@ -583,6 +583,13 @@ uninstall_btcrecover
 return
 fi
 ;;
+join)
+if [[ $joinmarketmenu == 1 ]] ; then
+uninstall_joinmarket
+return
+fi
+;;
+
 p|P)
 	return 0
 	;;

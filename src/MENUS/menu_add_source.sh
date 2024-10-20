@@ -586,6 +586,6 @@ elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then
 joinmarket_p="#                                      JoinMarket                                      #"
 else
    #not installed
-joinmarket_n="#$cyan                            (join)    $orange    JoinMarket                                 #"
+joinmarket_n="#$cyan                            (join)    $orange    JoinMarket                                  #"
 fi
 }

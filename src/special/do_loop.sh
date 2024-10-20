@@ -176,14 +176,6 @@ uninstall_homebrew || exit
 success "Homebrew uninstalled"
 fi
 
-if [[ $jm == "install" ]] ; then
-install_joinmarket
-exit
-elif [[ $jm == "uninstall" ]] ; then
-uninstall_joinmarket
-exit
-fi
-
 ########################################################################################
 ########################################################################################
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi

@@ -1,4 +1,4 @@
-function install_jm {
+function install_joinmarket {
 
     if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
@@ -6,7 +6,7 @@ function install_jm {
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
 
-    make_jm_wallet || return 1
+    make_joinmarket_wallet || return 1
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
@@ -26,7 +26,7 @@ function install_jm {
 }
 
 
-function make_jm_wallet {
+function make_joinmarket_wallet {
 
     isbitcoinrunning
 
