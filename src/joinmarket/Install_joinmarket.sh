@@ -92,15 +92,10 @@ function modify_joinmarket_cfg {
     source $bc
     enter_continue "rpcuser: $rpcuser, rpcpassword: $rpcpassword"
     docker exec joinmarket bash -c "sed -i '/rpc_cookie_file =/d' $jmfile"
-    enter_contineu "1"
     docker exec joinmarket bash -c "sed -i '/rpc_wallet_file =/c\\rpc_wallet_file = jm_wallet' $jmfile"
-    enter_contineu "2"
     docker exec joinmarket bash -c "sed -i '/rpc_user =/c\\rpc_user = $rpcuser' $jmfile"
-    enter_contineu "3"
     docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcuser' $jmfile"
-    enter_contineu "4"
     docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
-    enter_contineu "1"
     return 0
 }
 
