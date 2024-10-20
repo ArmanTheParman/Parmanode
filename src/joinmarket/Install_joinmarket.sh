@@ -23,7 +23,8 @@ function install_joinmarket {
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
     installed_conf_add "joinmarket-end"
-
+    
+    enter_continue "before success"
     success "JoinMarket has been installed"
 
 }
@@ -83,7 +84,6 @@ function run_wallet_tool_joinmarket {
     set_terminal
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
     docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' #do not exit on failure.
-    enter_continue
     return 0
 }
 
