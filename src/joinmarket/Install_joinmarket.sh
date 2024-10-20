@@ -50,7 +50,7 @@ function make_joinmarket_wallet {
     "
 
     while true ; do
-        read -n1 -t 0.1 input
+        read -n1 -t 1 input
         if [[ $input == 'q' ]] ; then return 1 ; fi
         isbitcoinrunning
         if [[ $bitcoinrunning == "true" ]] ; then break ; fi
