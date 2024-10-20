@@ -27,6 +27,8 @@ function install_joinmarket {
     enter_continue "success..."
     while read -r -t 0; do read -r; done
     success "JoinMarket has been installed"
+    echo "after success. hit enter."
+    read
 
 }
 
