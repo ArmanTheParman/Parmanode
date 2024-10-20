@@ -130,6 +130,12 @@ m|M) back2main ;;
       back2main 
       fi
       ;;
+   join) 
+      if [[ -n $joinmarket_n ]] ; then
+      install_joinmarket
+      back2main 
+      fi
+      ;;
 
     q|Q|quit|QUIT)
         exit 0
