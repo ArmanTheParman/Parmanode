@@ -1,5 +1,7 @@
 function install_joinmarket {
 
+    set_terminal
+
     if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
     grep -q "bitcoin-end" < $ic || { 
