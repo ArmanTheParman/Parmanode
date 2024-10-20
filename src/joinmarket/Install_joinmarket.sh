@@ -87,7 +87,7 @@ function run_wallet_tool_joinmarket {
 }
 
 function modify_joinmarket_cfg {
-    jmfile="/.joinmarket/joinmarket.cfg"
+    jmfile="/root/.joinmarket/joinmarket.cfg"
     source $bc
 
     docker exec joinmarket bash -c "sed -i '/rpc_cookie_file =/d' $jmfile"
