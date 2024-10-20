@@ -16,7 +16,7 @@ function install_joinmarket {
 
     run_joinmarket_docker || return 1
 
-    do_install_joinmarket || return 1
+#    do_install_joinmarket || return 1 #better to do in dockerfile with --docker-install flag
 
     activation_script_joinmarket || return 1
 
@@ -74,15 +74,15 @@ function make_joinmarket_wallet {
 }
 
 
-function do_install_joinmarket {
+# function do_install_joinmarket {
 
-    set_terminal
-    echo -e "${green}Installing JoinMarket...${orange}"
-    docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
-    enter_continue
-    return 0
+#     set_terminal
+#     echo -e "${green}Installing JoinMarket...${orange}"
+#     docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
+#     enter_continue
+#     return 0
 
-}
+# }
 
 
 function activation_script_joinmarket {
