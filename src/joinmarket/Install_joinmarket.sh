@@ -28,12 +28,30 @@ function install_joinmarket {
 
 function make_joinmarket_wallet {
 
+    if ! grep -q "deprecatedrcp=create_bdb" < $bc ; then
+
+        echo "deprecatedrcp=create_bdb" | sudo tee -a $bc >$dn 2>&1
+        clear && echo -e "${green}added 'deprecatedrcp=create_bdb' to bitcoin.conf${orange}" && sleep 1.5
+
+    fi
+
     isbitcoinrunning
 
     if [[ $bitcoinrunning == "false" ]] ; then
-        announce "Please make sure Bitcoin is running first. Aborting."
-        return 1
+        start_bitcoin
+    else
+        restart_bitcoin 
     fi
+
+    echo "Waiting for bitcoin to start... (hit q to exit loop)
+    "
+    while true ; do
+        read -n1 -t 0.1 input
+        if [[ $input == 'q' ]] ; then return 1 ; fi
+        isbitcoinrunning
+        if [[ $bitcoinrunning == "true" ]] ; then break ; fi
+    done
+         
 
     set_terminal
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
