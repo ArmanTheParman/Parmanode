@@ -50,7 +50,7 @@ function make_joinmarket_wallet {
     "
 
     while true ; do
-        read -n1 -t 1 input
+        read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
         if [[ $input == 'q' ]] ; then return 1 ; fi
         isbitcoinrunning
         if [[ $bitcoinrunning == "true" ]] ; then break ; fi
@@ -89,8 +89,7 @@ function activation_script_joinmarket {
 
     set_terminal
     echo -e "${green}Running Joinmarket activate script...${orange}"
-    docker exec joinmarket /jm/clientserver/jmvenv/bin/activate 
-    docker exec joinmarket /jm/clientserver/scripts/wallet-tool.py
+    docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
     enter_continue
 
     jmfile="/.joinmarket/joinmarket.cfg"
