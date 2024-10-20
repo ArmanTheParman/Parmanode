@@ -566,12 +566,26 @@ fi
 unset btcrecover_i btcrecover_p btcrecover_n
 if grep -q "btcrecover-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-btcrecover_i="#                                      BTC Recvoer                                     #"
+btcrecover_i="#                                      BTC Recover                                     #"
 elif grep -q "btcrecvoer-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-btcrecover_p="#                                      BTC Recvoer                                     #"
+btcrecover_p="#                                      BTC Recover                                     #"
 else
    #not installed
 btcrecover_n="#$cyan                            (btcr)    $orange    BTC recover                                 #"
+fi
+
+
+#joinmarket
+unset joinmarket_i joinmarket_p joinmarket_n
+if grep -q "joinmarket-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+joinmarket_i="#                                      JoinMarket                                      #"
+elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+joinmarket_p="#                                      JoinMarket                                      #"
+else
+   #not installed
+joinmarket_n="#$cyan                            (join)    $orange    BTC recover                                 #"
 fi
 }
