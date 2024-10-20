@@ -99,13 +99,6 @@ function modify_joinmarket_cfg {
     return 0
 }
 
-function activation_script_joinmarket {
-
-    set_terminal
-    echo -e "${green}Running Joinmarket activate script...${orange}"
-    docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
-    enter_continue
-}
 
 function build_joinmarket {
     unset success
@@ -145,4 +138,12 @@ function clone_joinmarket {
 #     enter_continue
 #     return 0
 
+# }
+
+#### Don't need virtual env in docker container
+# function activation_script_joinmarket {
+#     set_terminal
+#     echo -e "${green}Running Joinmarket activate script...${orange}"
+#     docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
+#     enter_continue
 # }
