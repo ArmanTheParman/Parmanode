@@ -24,7 +24,6 @@ function install_joinmarket {
 
     installed_conf_add "joinmarket-end"
     
-    enter_continue "before success"
     success "JoinMarket has been installed"
 
 }
