@@ -59,6 +59,7 @@ function make_joinmarket_wallet {
     while true ; do
 
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
+        bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep "exists" && break
         echo "
         Sometimes waiting for bitcoin to laod up is needed.
         Trying again every 10 seconds...
