@@ -28,10 +28,10 @@ function install_joinmarket {
 
 function make_joinmarket_wallet {
 
-    if ! grep -q "deprecatedrcp=create_bdb" < $bc ; then
+    if ! grep -q "deprecatedrpc=create_bdb" < $bc ; then
 
-        echo "deprecatedrcp=create_bdb" | sudo tee -a $bc >$dn 2>&1
-        clear && echo -e "${green}added 'deprecatedrcp=create_bdb' to bitcoin.conf${orange}" && sleep 1.5
+        echo "deprecatedrpc=create_bdb" | sudo tee -a $bc >$dn 2>&1
+        clear && echo -e "${green}added 'deprecatedrpc=create_bdb' to bitcoin.conf${orange}" && sleep 1.5
 
     fi
 
@@ -61,9 +61,9 @@ function make_joinmarket_wallet {
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
         echo "
         Sometimes waiting for bitcoin to laod up is needed.
-        Trying again every two seconds...
+        Trying again every 10 seconds...
         "
-        sleep 2
+        sleep 10
     done
 
 }
