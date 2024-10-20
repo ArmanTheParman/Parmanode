@@ -4,7 +4,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 #Joinmarket
 RUN mkdir -p /jm/clientserver
 WORKDIR /jm/clientserver
-COPY . .
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends \
@@ -14,6 +13,8 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
                    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
 
+
+COPY . .
 
 RUN pip3 install 'wheel>=0.35.1' 
 #RUN ./install.sh --docker-install
