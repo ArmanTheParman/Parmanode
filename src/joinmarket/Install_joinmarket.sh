@@ -95,7 +95,6 @@ function modify_joinmarket_cfg {
     docker exec joinmarket bash -c "sed -i 's/rpc_user =/rpc_user = $rpcuser/' $jmfile"
     docker exec joinmarket bash -c "sed -i 's/rpc_password =/rpc_password = $rpcuser/' $jmfile"
     docker exec joinmarket bash -c "sed -i 's/onion_serving_port =/onion_serving_port = 8077/' $jmfile"
-    enter_continue
     return 0
 }
 
