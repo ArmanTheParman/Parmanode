@@ -263,25 +263,25 @@ if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudmenu=
 echo -e "#$cyan                            (next)$orange             NextCloud                              #
 #                                                                                      #"
 elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
-echo -e "#$cyan                            (next)$orange             NextCloud              $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (next)$orange             NextCloud              $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr                             #
 #                                                                                      #"
 elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
-echo -e "#$cyan                            (pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
 echo -e "#$cyan                            (btcr)$orange             BTC Recover                            #
 #                                                                                      #"
 elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
-echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
 echo -e "#$cyan                            (join)$orange             JoinMarket                             #
 #                                                                                      #"
 elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
-echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
