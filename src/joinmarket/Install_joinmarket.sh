@@ -25,6 +25,7 @@ function install_joinmarket {
     enter_continue "after modify joinmarket cfg"
     installed_conf_add "joinmarket-end"
     enter_continue "success..."
+    while read -r -t 0; do read -r; done
     success "JoinMarket has been installed"
 
 }
