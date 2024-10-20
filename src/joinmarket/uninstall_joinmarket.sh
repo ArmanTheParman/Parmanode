@@ -37,8 +37,8 @@ if ! docker ps > /dev/null 2>&1 ; then
     return 1
 fi
 
-docker stop joinmarket
-docker rm joinmarket
+docker stop joinmarket >$dn 2>&1
+docker rm joinmarket >$dn 2>&1
 
 #sudo sed -i '/deprecatedrpc=create_bdb/d' $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
