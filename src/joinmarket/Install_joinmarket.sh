@@ -16,9 +16,9 @@ function install_joinmarket {
 
     run_joinmarket_docker || return 1
 
-#    do_install_joinmarket || return 1 #better to do in dockerfile with --docker-install flag
+    run_wallet_tool_joinmarket || return 1
 
-    activation_script_joinmarket || return 1
+    modify_joinmarket_cfg || return 1
 
     installed_conf_add "joinmarket-end"
     success "JoinMarket has been installed"
@@ -73,25 +73,15 @@ function make_joinmarket_wallet {
 
 }
 
-
-# function do_install_joinmarket {
-
-#     set_terminal
-#     echo -e "${green}Installing JoinMarket...${orange}"
-#     docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
-#     enter_continue
-#     return 0
-
-# }
-
-
-function activation_script_joinmarket {
+function run_wallet_tool_joinmarket {
 
     set_terminal
-    echo -e "${green}Running Joinmarket activate script...${orange}"
-    docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
-    enter_continue
+    echo -e "${green}Running Joinmarket wallet tool...${orange}"
+    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' || { enter_continue "Something went wrong" && return 1 ; }
+    return 0
+}
 
+function modify_joinmarket_cfg {
     jmfile="/.joinmarket/joinmarket.cfg"
     source $bc
 
@@ -102,7 +92,14 @@ function activation_script_joinmarket {
     docker exec joinmarket bash -c "sed -i 's/onion_serving_port =/onion_serving_port = 8077/' $jmfile"
     enter_continue
     return 0
+}
 
+function activation_script_joinmarket {
+
+    set_terminal
+    echo -e "${green}Running Joinmarket activate script...${orange}"
+    docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
+    enter_continue
 }
 
 function build_joinmarket {
@@ -133,3 +130,14 @@ function clone_joinmarket {
 
     return 0 
 }
+
+#### better to do this in Dockerfile with --docker-install flag
+# function do_install_joinmarket {
+
+#     set_terminal
+#     echo -e "${green}Installing JoinMarket...${orange}"
+#     docker exec joinmarket /jm/clientserver/install.sh --without-qt --disable-secp-check --disable-os-deps-check
+#     enter_continue
+#     return 0
+
+# }
