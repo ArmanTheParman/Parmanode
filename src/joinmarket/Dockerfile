@@ -16,7 +16,7 @@ RUN apt-get install -y --no-install-recommends \
 
 
 RUN pip3 install 'wheel>=0.35.1' 
-RUN ./install.sh --docker-install
+#RUN ./install.sh --docker-install
 RUN rm -rf /var/lib/apt/lists/*
 
 CMD ["tail" , "-f", "/dev/null"]
