@@ -1,4 +1,4 @@
-function install_joinmarket {
+function old_install_jm {
 debug "in jm install"
 grep -q "bitcoin-end" < $ic || { 
     announce "Please install Bitcoin first. Aborting." && return 1 

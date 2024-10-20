@@ -1,4 +1,4 @@
-function uninstall_joinmarket {
+function old_uninstall_joinmarket {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
