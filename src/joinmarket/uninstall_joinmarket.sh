@@ -40,7 +40,7 @@ fi
 docker stop joinmarket
 docker rm joinmarket
 
-sudo sed -i '/deprecatedrpc=create_bdb/d' $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
+#sudo sed -i '/deprecatedrpc=create_bdb/d' $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
 sudo rm -rf $hp/joinmarket >$dn 2>&1
 sudo rm -rf $HOME/.joinmarket >$dn 2>&1
