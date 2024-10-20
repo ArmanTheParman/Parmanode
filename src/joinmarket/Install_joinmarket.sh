@@ -32,7 +32,10 @@ function make_joinmarket_wallet {
 
         echo "deprecatedrpc=create_bdb" | sudo tee -a $bc >$dn 2>&1
         clear && echo -e "${green}added 'deprecatedrpc=create_bdb' to bitcoin.conf${orange}" && sleep 1.5
+        dontrestart="false"
 
+    else
+        dontrestart="true" 
     fi
 
     isbitcoinrunning
@@ -40,7 +43,7 @@ function make_joinmarket_wallet {
     if [[ $bitcoinrunning == "false" ]] ; then
         start_bitcoin
     else
-        restart_bitcoin 
+        if [[ $dontrestart == "false" ]] ; then restart_bitcoin  ; fi
     fi
 
     echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
