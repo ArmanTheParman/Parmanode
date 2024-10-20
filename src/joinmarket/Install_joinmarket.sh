@@ -55,8 +55,16 @@ function make_joinmarket_wallet {
 
     set_terminal
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
-    bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false
-    enter_continue
+
+    while true ; do
+
+        bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
+        echo "
+        Sometimes waiting for bitcoin to laod up is needed.
+        Trying again every two seconds...
+        "
+        sleep 2
+    done
 
 }
 
