@@ -79,7 +79,8 @@ function run_wallet_tool_joinmarket {
 
     set_terminal
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
-    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' || { enter_continue "Something went wrong" && return 1 ; }
+    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' 
+    enter_continue
     return 0
 }
 
