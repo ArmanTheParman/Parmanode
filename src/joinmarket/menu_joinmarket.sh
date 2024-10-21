@@ -161,7 +161,7 @@ enter_continue
 
     fi
 
-clear
+#clear
 if [[ $1 != s ]] ; then
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
 sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' /tmp/jmaddresses #removeds escape characters
