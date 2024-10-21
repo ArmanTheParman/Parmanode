@@ -62,6 +62,9 @@ delete)
 display)
     display_jm_addresses
     ;; 
+da)
+    display_jm_addresses a
+    ;;
 *)
 invalid
 ;;
