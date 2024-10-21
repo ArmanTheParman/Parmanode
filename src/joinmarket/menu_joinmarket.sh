@@ -70,6 +70,7 @@ dall)
 sum)
 
     display_jm_addresses s
+    ;;
 *)
 invalid
 ;;
