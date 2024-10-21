@@ -127,22 +127,3 @@ function clone_joinmarket {
 
     return 0 
 }
-
-#### better to do this in Dockerfile with --docker-install flag
-# function do_install_joinmarket {
-
-#     set_terminal
-#     echo -e "${green}Installing JoinMarket...${orange}"
-#     docker exec joinmarket /jm/clientserver/install.sh --without-qt  --disable-os-deps-check
-#     enter_continue
-#     return 0
-
-# }
-
-#### Don't need virtual env in docker container
-# function activation_script_joinmarket {
-#     set_terminal
-#     echo -e "${green}Running Joinmarket activate script...${orange}"
-#     docker exec joinmarket bash -c 'source /jm/clientserver/jmvenv/bin/activate && /jm/clientserver/scripts/wallet-tool.py'
-#     enter_continue
-# }
