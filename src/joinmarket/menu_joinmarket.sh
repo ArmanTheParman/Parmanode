@@ -47,7 +47,7 @@ cr)
     ;;
 delete)
     delete_jm_wallets
-    
+    ;; 
 
 # display)
 #     #which wallet? $wallet
