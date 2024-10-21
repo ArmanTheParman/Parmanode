@@ -132,7 +132,7 @@ function clone_joinmarket {
 
 function parmashell_4_jm {
 
-cat <EOF | tee -a /tmp/b1 >$dn 2>&1
+cat << EOF | tee /tmp/b1 >$dn 2>&1
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
 alias ls='ls $LS_OPTIONS'
