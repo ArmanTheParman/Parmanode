@@ -27,7 +27,7 @@ $cyan
 $cyan
                       display)$orange     Display addresses & balances
 $cyan
-                      da)$orange          Display all addresses & balances
+                      dall)$orange          Display but including internal addresses
 
 $orange   
 ########################################################################################
@@ -62,7 +62,7 @@ delete)
 display)
     display_jm_addresses
     ;; 
-da)
+dall)
     display_jm_addresses a
     ;;
 *)
