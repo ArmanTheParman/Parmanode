@@ -26,8 +26,6 @@ $cyan
                       delete)$orange      Delete JoinMarket Wallet 
 $cyan
                       display)$orange     Display addresses
-$cyan
-                      ps)$orange          ParmaShell for JoinMarket
 
 $orange   
 ########################################################################################
@@ -63,10 +61,6 @@ delete)
 #     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py $wallet display' 
     # if " restart this joinmarket application." --> then need to repeat.
     
-ps)
-parmashell_4_jm
-enter_continue
-;;
 *)
 invalid
 ;;
