@@ -177,6 +177,9 @@ success "Homebrew uninstalled"
 fi
 
 ########################################################################################
+if [[ $arg1 == "clear" ]] ; then
+enter_continue "clear"
+fi
 ########################################################################################
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
