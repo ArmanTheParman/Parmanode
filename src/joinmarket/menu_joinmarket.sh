@@ -131,7 +131,7 @@ enter_continue
 
 clear
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
-sed -i '1i######################################wallet.jmdat######################################' /tmp/jmaddresses
+sed -i "1i######################################wallet.jmdat######################################\n" /tmp/jmaddresses
 clear
 less /tmp/jmaddresses
 #rm /tmp/jmaddresses >$dn 2>&1
