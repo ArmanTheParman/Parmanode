@@ -45,7 +45,8 @@ docker stop joinmarket
 man)
 clear
 enter_continue "Type exit and <enter> to return from container back to Parmanode"
-docker exec -it joinmarket bash -c 'cd /jm/clientserver/scripts ; a '
+clear
+docker exec -it joinmarket bash 
 ;;
 cr)
     jm_create_wallet_tool
