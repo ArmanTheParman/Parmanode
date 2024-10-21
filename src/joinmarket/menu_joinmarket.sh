@@ -100,6 +100,16 @@ esac
 
 
 function display_jm_addresses {
+set_terminal ; echo -e "
+########################################################################################
+
+    The wallet addresses will be printed for you inside the 'less' command. Use the
+    keyboard arrows to go up and down (you can actually use vim commands if you know
+    them). Then hit 'q' to exit it.
+
+########################################################################################
+"
+enter_continue
 
     if [[ ! -e $HOME/.joinmarket/wallets/wallet.jmdat ]] ; then
     announce "${cyan}wallet.jmdat$orange does not exist"
