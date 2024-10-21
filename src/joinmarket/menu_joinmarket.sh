@@ -27,7 +27,7 @@ $cyan
 $cyan
                       display)$orange     Display addresses & balances
 $cyan
-                      dall)$orange          Display but including internal addresses
+                      dall)$orange        Display but including internal addresses
 
 $orange   
 ########################################################################################
