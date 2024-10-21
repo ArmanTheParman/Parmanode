@@ -19,6 +19,8 @@ $cyan
 $cyan
                   stop)$orange        Stop JoinMarket Docker container
 $cyan
+                  conf)$orange        Edit the configuration file 
+$cyan
                   man)$orange         Manually access container and mess around
 $cyan
                   cr)$orange          Create JoinMarket Wallet (with info)
@@ -36,6 +38,8 @@ $cyan
                   su)$orange          Show wallet UTXOs
 $cyan
                   ss)$orange          Show wallet seed words
+$pink
+                  yg)                 Yeild Generator ...
 
 $orange   
 ########################################################################################
@@ -51,6 +55,9 @@ docker start joinmarket
 ;;
 stop)
 docker stop joinmarket
+;;
+conf)
+nano $HOME/.joinmarket/joinmarket.cfg
 ;;
 man)
 clear
@@ -90,6 +97,9 @@ su)
 ss)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showseed' 
     enter_continue
+    ;;
+yg)
+    yeild_generator
     ;;
 
 *)
@@ -189,5 +199,23 @@ less /tmp/jmaddresses
 enter_continue
 
 }
-#Use `bitcoin-cli rescanblockchain` if you're recovering an existing wallet from backup seed
-#Otherwise just restart this joinmarket application.
+
+function yeild_generator {
+
+set_terminal -e "
+########################################################################################
+
+    Some important information to ensure you don't have a bad time.
+
+    - If yeild generator is running, do not try to initiate a 'take' transaction, as
+      you'll get an error that the wallet is locked.
+
+    - You can tweak the settings (eg fees) by editing the configuration file.
+
+
+########################################################################################
+"
+enter_continue
+
+
+}
