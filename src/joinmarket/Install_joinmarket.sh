@@ -22,6 +22,8 @@ function install_joinmarket {
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
+    parmashell_4_jm
+
     installed_conf_add "joinmarket-end"
     
     success "JoinMarket has been installed"
@@ -126,4 +128,24 @@ function clone_joinmarket {
         || { announce "Something went wrong." && return 1 ; }
 
     return 0 
+}
+
+function parmashell_4_jm {
+
+cat <EOF | tee -a /tmp/b1 >$dn 2>&1
+export LS_OPTIONS='--color=auto'
+eval "$(dircolors)"
+alias ls='ls $LS_OPTIONS'
+alias ll='ls $LS_OPTIONS -l'
+alias l='ls $LS_OPTIONS -lA'
+
+Some more alias to avoid making mistakes:
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+EOF
+
+cat /tmp/b1 $pn/src/ParmaShell/parmashell_functions > /tmp/b2
+
+docker cp /tmp/b2 joinmarket:/root/.bashrc
 }
