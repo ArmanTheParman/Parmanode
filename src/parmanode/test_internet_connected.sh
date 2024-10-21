@@ -14,5 +14,6 @@ choose xq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; 
 esac
+fi
 return 0
 }
