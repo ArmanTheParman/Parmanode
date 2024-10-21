@@ -100,6 +100,12 @@ esac
 
 
 function display_jm_addresses {
+
+    if [[ ! -e $HOME/.joinmarket/wallets/wallet.jmdat ]] ; then
+    announce "${cyan}wallet.jmdat$orange does not exist"
+    return
+    fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -111,10 +117,7 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-    if [[ ! -e $HOME/.joinmarket/wallets/wallet.jmdat ]] ; then
-    announce "${cyan}wallet.jmdat$orange does not exist"
-    return
-    fi
+
 
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
 
