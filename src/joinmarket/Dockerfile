@@ -7,12 +7,13 @@ WORKDIR /jm/clientserver
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends \
-                   wget gnupg sudo procps vim nano curl git ca-certificates less
+                   wget gnupg sudo procps vim nano curl git ca-certificates
 RUN apt-get install -y --no-install-recommends \
                    python3-venv curl python3-dev python3-pip build-essential automake
 RUN apt-get install -y --no-install-recommends \
                    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
-
+RUN apt-get install -y --no-install-recommands \
+                   less tmux
 
 COPY . .
 
