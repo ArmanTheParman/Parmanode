@@ -44,10 +44,11 @@ cr)
     enter_continue
     ;;
 
-display)
-    #which wallet? $wallet
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py $wallet display' 
-    if " restart this joinmarket application." --> then need to repeat.
+# display)
+#     #which wallet? $wallet
+#     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py $wallet display' 
+    # if " restart this joinmarket application." --> then need to repeat.
+    
 *)
 invalid
 ;;
