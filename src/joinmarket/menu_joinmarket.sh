@@ -116,6 +116,9 @@ function display_jm_addresses {
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
     fi
 
+clear
+sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
+clear
 less /tmp/jmaddresses
 rm /tmp/jmaddresses >$dn 2>&1
 enter_continue
