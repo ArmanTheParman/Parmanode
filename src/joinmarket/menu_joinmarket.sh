@@ -101,10 +101,17 @@ esac
 
 function display_jm_addresses {
 
-#need to run twice because first occasion always fails.  
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' \
-||  docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display'
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee -a /tmp/jmaddresses
+
+    if grep -q "just restart this joinmarket application" < /tmp/jmaddresses ; then
+    enter_continue "
+    This always happens the first time you access the display function.
+    Please hit enter to run the display command again."
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee -a /tmp/jmaddresses
+    fi
 
 enter_continue
 
 }
+#Use `bitcoin-cli rescanblockchain` if you're recovering an existing wallet from backup seed
+#Otherwise just restart this joinmarket application.
