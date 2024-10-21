@@ -105,4 +105,6 @@ function display_jm_addresses {
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' \
 ||  docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display'
 
+enter_continue
+
 }
