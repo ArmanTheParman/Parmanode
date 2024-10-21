@@ -67,7 +67,7 @@ sudo vim $HOME/.joinmarket/joinmarket.cfg
 ;;
 vc)
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
-sed '/^#/d' $cfg | sed '/^$/d' | sed '/[.*]/a\' | less
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/[.*]/a\ ' | less
 enter_continue
 ;;
 man)
