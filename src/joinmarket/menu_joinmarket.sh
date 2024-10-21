@@ -26,6 +26,8 @@ $cyan
                       delete)$orange      Delete JoinMarket Wallet 
 $cyan
                       display)$orange     Display addresses & balances
+$cyan
+                      da)$orange          Display all addresses & balances
 
 $orange   
 ########################################################################################
@@ -118,16 +120,30 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-
-
+    case $1 in
+    a)
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
+    ;;
+    *)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
+    ;;
+    esac
 
     if grep -q "just restart this joinmarket application" < /tmp/jmaddresses ; then
-    enter_continue "$pink
-    This always happens the first time you access the display function.
-    Please hit enter to run the display command again.
-    $orange"
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
+
+        enter_continue "$pink
+        This always happens the first time you access the display function.
+        Please hit enter to run the display command again.
+        $orange"
+        case $1 in
+        a)
+        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
+        ;;
+        *)
+        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
+        ;;
+        esac
+
     fi
 
 clear
