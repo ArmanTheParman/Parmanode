@@ -28,6 +28,8 @@ $cyan
                       display)$orange     Display addresses & balances
 $cyan
                       dall)$orange        Display but including internal addresses
+$cyan
+                      sum)$orange         Summary of balances
 
 $orange   
 ########################################################################################
@@ -65,6 +67,9 @@ display)
 dall)
     display_jm_addresses a
     ;;
+sum)
+
+    display_jm_addresses s
 *)
 invalid
 ;;
@@ -127,6 +132,9 @@ enter_continue
     a)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
     ;;
+    s)
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
+    ;;
     *)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
     ;;
@@ -141,6 +149,9 @@ enter_continue
         case $1 in
         a)
         docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
+        ;;
+        s)
+        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
         ;;
         *)
         docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
