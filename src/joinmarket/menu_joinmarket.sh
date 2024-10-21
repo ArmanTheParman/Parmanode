@@ -18,7 +18,7 @@ $cyan
                       start)$orange       Start JoinMarket Docker container
 $cyan
                       stop)$orange        Stop JoinMarket Docker container
-
+$cyan
                       cr)$orange          Create/Restore JoinMarket Wallet
 
 $orange   
@@ -38,6 +38,7 @@ docker stop joinmarket
 ;;
 cr)
     docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
+    enter_continue
     ;;
 *)
 invalid
