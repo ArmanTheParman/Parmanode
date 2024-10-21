@@ -7,7 +7,7 @@ WORKDIR /jm/clientserver
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends \
-                   wget gnupg sudo procps vim nano curl git ca-certificates
+                   wget gnupg sudo procps vim nano curl git ca-certificates less
 RUN apt-get install -y --no-install-recommends \
                    python3-venv curl python3-dev python3-pip build-essential automake
 RUN apt-get install -y --no-install-recommends \

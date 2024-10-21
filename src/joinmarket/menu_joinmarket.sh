@@ -107,9 +107,10 @@ function display_jm_addresses {
     enter_continue "
     This always happens the first time you access the display function.
     Please hit enter to run the display command again."
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' 
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee -a /tmp/jmaddresses
     fi
 
+less /tmp/jmaddresses
 rm /tmp/jmaddresses >$dn 2>&1
 enter_continue
 
