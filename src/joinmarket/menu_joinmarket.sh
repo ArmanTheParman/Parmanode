@@ -152,7 +152,7 @@ enter_continue
 clear
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
 sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' /tmp/jmaddresses #removeds escape characters
-sed -i '/[Mm]ixdepth/i\\' /tmpe/jmaddresses
+sed -i '/[Mm]ixdepth/i\\' /tmp/jmaddresses
 sed -i "1i##################################### wallet.jmdat #####################################\n" /tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
