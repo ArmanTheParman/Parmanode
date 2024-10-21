@@ -41,8 +41,8 @@ $cyan
                   su)$orange          Show wallet UTXOs
 $cyan
                   ss)$orange          Show wallet seed words
-$pink
-                  yg)                 Yeild Generator ...
+$red
+                  yg)$orange          Yeild Generator ...
 
 $orange   
 ########################################################################################
