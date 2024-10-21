@@ -25,7 +25,7 @@ $cyan
 $cyan
                       delete)$orange      Delete JoinMarket Wallet 
 $cyan
-                      display)$orange     Display addresses
+                      display)$orange     Display addresses & balances
 
 $orange   
 ########################################################################################
@@ -45,7 +45,7 @@ docker stop joinmarket
 man)
 clear
 enter_continue "Type exit and <enter> to return from container back to Parmanode"
-docker exec -it joinmarket bash
+docker exec -it joinmarket bash -c 'cd /jm/clientserver/scripts ; a '
 ;;
 cr)
     jm_create_wallet_tool
