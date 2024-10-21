@@ -65,6 +65,7 @@ delete)
     
 ps)
 parmashell_4_jm
+enter_continue
 ;;
 *)
 invalid
