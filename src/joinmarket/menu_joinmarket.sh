@@ -67,8 +67,8 @@ function delete_jm_wallets {
 set_terminal ; echo -e "
 ########################################################################################
 
-    The following is a list of the contents of$cyan /$HOME/.joinmarket/wallets/:
-$dark_blue
+    The following is a list of the contents of$cyan $HOME/.joinmarket/wallets/:
+$pink
 $(ls $HOME/.joinmarket/wallets/)
 $orange
 
