@@ -1,5 +1,6 @@
 function test_internet_connected {
-ping -c 1 8.8.8.8 >$dn 2>&1 || set_terminal ; echo -e " 
+ping -c 1 8.8.8.8 >$dn 2>&1 
+if [[ $? != 0 ]] ; then set_terminal ; echo -e " 
 ########################################################################################
 
     Warning: Parmanode has detected you might not have an internet connection
