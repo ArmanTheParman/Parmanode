@@ -30,6 +30,8 @@ $cyan
                       dall)$orange        Display but including internal addresses
 $cyan
                       sum)$orange         Summary of balances
+$cyan
+                      cp)$orange          Change wallet encryption password 
 
 $orange   
 ########################################################################################
@@ -72,6 +74,9 @@ sum)
 
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
     enter_continue
+    ;;
+cp)
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat changepass' 
     ;;
 *)
 invalid
