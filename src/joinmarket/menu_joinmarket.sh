@@ -20,7 +20,7 @@ $cyan
 $cyan
                   stop)$orange        Stop JoinMarket Docker container
 $cyan
-                  conf)$orange        Edit the configuration file 
+                  conf)$orange        Edit the configuration file (confv for vim)
 $cyan
                   man)$orange         Manually access container and mess around
 $cyan
