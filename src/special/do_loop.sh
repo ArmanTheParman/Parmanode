@@ -82,6 +82,21 @@ fi
 rp_counter
 
 
+ping -c 1 8.8.8.8 >$dn 2>&1 || set_terminal ; echo -e " 
+########################################################################################
+
+    Warning: Parmanode has detected you might not have an internet connection
+	active. Proceed with caution.
+
+	${red}q${orange} to quit.
+
+########################################################################################
+"
+choose xpq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; 
+esac
+
 
 ########################################################################################
 #Intro
