@@ -20,4 +20,5 @@ RUN pip3 install 'wheel>=0.35.1'
 RUN ./install.sh --docker-install --without-qt 
 RUN rm -rf /var/lib/apt/lists/*
 
+WORKDIR /jm/clientserver/scripts
 CMD ["tail" , "-f", "/dev/null"]
