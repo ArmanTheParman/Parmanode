@@ -21,6 +21,8 @@ $cyan
 $cyan
                       cr)$orange          Create JoinMarket Wallet (with info)
 $cyan
+                      delete)$orange      Delete JoinMarket Wallet 
+$cyan
                       display)$orange     Display addresses
 
 $orange   
@@ -39,10 +41,13 @@ stop)
 docker stop joinmarket
 ;;
 cr)
-    jm_creat_wallet_tool
+    jm_create_wallet_tool
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
     enter_continue
     ;;
+delete)
+    delete_jm_wallets
+    
 
 # display)
 #     #which wallet? $wallet
@@ -55,4 +60,35 @@ invalid
 
 esac
 done
+}
+
+function delete_jm_wallets {
+
+set_terminal ; echo -e "
+########################################################################################
+
+    The following is a list of the contents of$cyan /$HOME/.joinmarket/wallets/:
+$dark_blue
+$(ls $HOME/.joinmarket/wallets/)
+$orange
+
+    Are you sure you want to delete everything in there?
+$red
+                 yolodelete)   delete it all
+$green
+                 *)            Any other key will abort
+$orange
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+yolodelete)
+rm -rf $HOME/.joinmarket/wallets/*
+enter_continue "DONE"
+;;
+*)
+return 1
+;;
+esac
 }

@@ -1,4 +1,4 @@
-function jm_creat_wallet_tool {
+function jm_create_wallet_tool {
 while true ; do
 set_terminal_custom 47 ; echo -e "
 ########################################################################################
@@ -25,7 +25,7 @@ $red
     Input wallet file name (default: wallet.jmdat): 
 $orange
     Please do not change the filename or Parmanode menus will get confused. 
-    Let's keep it simple.
+    Let's keep it simple. If you make the same wallet twice, it'll crash.
     
     It will then ask:
 $red
