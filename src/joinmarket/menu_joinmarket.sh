@@ -56,6 +56,7 @@ cr)
     jm_create_wallet_tool
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
     enter_continue
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' 
     ;;
 delete)
     delete_jm_wallets
