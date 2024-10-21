@@ -3,7 +3,7 @@ while true ; do
 set_terminal_custom 47 ; echo -e "
 ########################################################################################
 
-    Wallet files will be kept inside the container at$cyan /root/.joinmarket/wallet 
+    Wallet files will be kept inside the container at$cyan /root/.joinmarket/wallet $orange
 
     You will first be asked:
 $red
