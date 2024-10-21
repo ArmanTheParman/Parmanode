@@ -56,11 +56,9 @@ delete)
     delete_jm_wallets
     ;; 
 
-# display)
-#     #which wallet? $wallet
-#     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py $wallet display' 
-    # if " restart this joinmarket application." --> then need to repeat.
-    
+display)
+    display_jm_addresses
+    ;; 
 *)
 invalid
 ;;
@@ -98,4 +96,13 @@ enter_continue "DONE"
 return 1
 ;;
 esac
+}
+
+
+function display_jm_addresses {
+
+#need to run twice because first occasion always fails.  
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' \
+||  docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display'
+
 }
