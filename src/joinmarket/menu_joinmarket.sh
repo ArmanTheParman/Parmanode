@@ -120,7 +120,7 @@ clear
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
 clear
 less /tmp/jmaddresses
-rm /tmp/jmaddresses >$dn 2>&1
+#rm /tmp/jmaddresses >$dn 2>&1
 enter_continue
 
 }
