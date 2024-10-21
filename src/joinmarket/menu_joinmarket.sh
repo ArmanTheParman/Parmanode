@@ -37,7 +37,7 @@ stop)
 docker stop joinmarket
 ;;
 cr)
-    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
     enter_continue
     ;;
 *)
