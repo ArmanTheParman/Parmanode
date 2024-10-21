@@ -145,5 +145,8 @@ EOF
 
 cat /tmp/b1 $pn/src/ParmaShell/parmashell_functions > /tmp/b2
 
+echo "cd /jm/clientserver/scripts
+a" | tee -a /tmp/b2 >$dn 2>&1
+
 docker cp /tmp/b2 joinmarket:/root/.bashrc
 }
