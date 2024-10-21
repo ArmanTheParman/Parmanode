@@ -15,23 +15,27 @@ set_terminal ; echo -en "
     JoinMarket is:    $joinmarket_running
 
 $cyan
-                      start)$orange       Start JoinMarket Docker container
+                  start)$orange       Start JoinMarket Docker container
 $cyan
-                      stop)$orange        Stop JoinMarket Docker container
+                  stop)$orange        Stop JoinMarket Docker container
 $cyan
-                      man)$orange         Manually access container and mess around
+                  man)$orange         Manually access container and mess around
 $cyan
-                      cr)$orange          Create JoinMarket Wallet (with info)
+                  cr)$orange          Create JoinMarket Wallet (with info)
 $cyan
-                      delete)$orange      Delete JoinMarket Wallet 
+                  delete)$orange      Delete JoinMarket Wallet 
 $cyan
-                      display)$orange     Display addresses & balances
+                  display)$orange     Display addresses & balances
 $cyan
-                      dall)$orange        Display but including internal addresses
+                  dall)$orange        Display but including internal addresses
 $cyan
-                      sum)$orange         Summary of balances
+                  sum)$orange         Summary of balances
 $cyan
-                      cp)$orange          Change wallet encryption password 
+                  cp)$orange          Change wallet encryption password 
+$cyan
+                  su)$orange          Change wallet encryption password 
+$cyan
+                  ss)$orange          Change wallet encryption password 
 
 $orange   
 ########################################################################################
@@ -78,6 +82,14 @@ sum)
 cp)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat changepass' 
     ;;
+
+su)
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showutxos' 
+    ;;
+ss)
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showseed' 
+    ;;
+
 *)
 invalid
 ;;
