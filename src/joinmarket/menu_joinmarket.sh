@@ -38,6 +38,7 @@ docker stop joinmarket
 ;;
 cr)
     docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
+    ;;
 *)
 invalid
 ;;
