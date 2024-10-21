@@ -22,7 +22,7 @@ $cyan
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
-                  vc)$orange          View config only - and without comments 
+                  vc)$orange          Remove all config comments and make pretty
 $cyan
                   man)$orange         Manually access container and mess around
 $cyan
