@@ -57,7 +57,7 @@ stop)
 docker stop joinmarket
 ;;
 conf)
-nano $HOME/.joinmarket/joinmarket.cfg
+sudo nano $HOME/.joinmarket/joinmarket.cfg
 ;;
 man)
 clear
