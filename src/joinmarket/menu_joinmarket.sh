@@ -33,9 +33,9 @@ $cyan
 $cyan
                   cp)$orange          Change wallet encryption password 
 $cyan
-                  su)$orange          Change wallet encryption password 
+                  su)$orange          Show wallet UTXOs
 $cyan
-                  ss)$orange          Change wallet encryption password 
+                  ss)$orange          Show wallet seed words
 
 $orange   
 ########################################################################################
@@ -85,9 +85,11 @@ cp)
 
 su)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showutxos' 
+    enter_continue
     ;;
 ss)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showseed' 
+    enter_continue
     ;;
 
 *)
