@@ -24,7 +24,7 @@ $orange
 $red
     Input wallet file name (default: wallet.jmdat): 
 $orange
-    lease do not change the filename or Parmanode menus will get confused. 
+    Please do not change the filename or Parmanode menus will get confused. 
     Let's keep it simple.
     
     It will then ask:
@@ -33,9 +33,9 @@ $red
     know what this is (y/n): 
 $orange
     I personally have not investigated this feature enough to advise, so I'll be
-    choosing 'n'. You do what you think is best.
-
-    Type$cyan f$orange and $green<enter>$orange if you want more info on Fidelity Bonds (sourced from ChatGPT)
+    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange if 
+    you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
+    privacy feature.
 
 ########################################################################################
 "
