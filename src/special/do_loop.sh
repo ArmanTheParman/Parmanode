@@ -178,7 +178,10 @@ fi
 
 ########################################################################################
 if [[ $arg1 == "clear" ]] ; then
-enter_continue "clear"
+clearup_chain
+echo "exiting ..."
+sleep 2
+exit
 fi
 ########################################################################################
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
