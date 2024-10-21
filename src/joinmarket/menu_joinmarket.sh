@@ -12,6 +12,7 @@ set_terminal_custom 47 ; echo -en "
                                 J O I N M A R K E T $orange
 ########################################################################################
 
+
     JoinMarket is:    $joinmarket_running
 
 $cyan
@@ -58,6 +59,9 @@ docker stop joinmarket
 ;;
 conf)
 sudo nano $HOME/.joinmarket/joinmarket.cfg
+;;
+confv)
+sudo vim $HOME/.joinmarket/joinmarket.cfg
 ;;
 man)
 clear
