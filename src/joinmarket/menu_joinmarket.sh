@@ -84,7 +84,7 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 yolodelete)
-rm -rf $HOME/.joinmarket/wallets/*
+sudo rm -rf $HOME/.joinmarket/wallets/*
 enter_continue "DONE"
 ;;
 *)
