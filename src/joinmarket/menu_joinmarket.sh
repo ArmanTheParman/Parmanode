@@ -166,6 +166,8 @@ if [[ $1 != s ]] ; then
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
 sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' /tmp/jmaddresses #removeds escape characters
 sed -i '/^[Mm]ixdepth/i\\' /tmp/jmaddresses
+else
+enter_continue
 fi
 sed -i "1i##################################### wallet.jmdat #####################################" /tmp/jmaddresses
 echo "
