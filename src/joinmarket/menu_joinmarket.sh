@@ -7,7 +7,7 @@ else
 joinmarket_running="${red}NOT RUNNING$orange"
 fi
 
-set_terminal ; echo -en "
+set_terminal_custom 47 ; echo -en "
 ########################################################################################$cyan
                                 J O I N M A R K E T $orange
 ########################################################################################
