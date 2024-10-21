@@ -69,7 +69,8 @@ dall)
     ;;
 sum)
 
-    display_jm_addresses s
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
+    enter_continue
     ;;
 *)
 invalid
@@ -133,9 +134,6 @@ enter_continue
     a)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
     ;;
-    s)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
-    ;;
     *)
     docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
     ;;
@@ -151,9 +149,6 @@ enter_continue
         a)
         docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
         ;;
-        s)
-        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
-        ;;
         *)
         docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
         ;;
@@ -161,14 +156,10 @@ enter_continue
 
     fi
 
-#clear
-if [[ $1 != s ]] ; then
+clear
 sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
 sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' /tmp/jmaddresses #removeds escape characters
 sed -i '/^[Mm]ixdepth/i\\' /tmp/jmaddresses
-else
-enter_continue
-fi
 sed -i "1i##################################### wallet.jmdat #####################################" /tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
