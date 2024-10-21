@@ -22,6 +22,8 @@ $cyan
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
+                  vc)$orange          View config only - and without comments 
+$cyan
                   man)$orange         Manually access container and mess around
 $cyan
                   cr)$orange          Create JoinMarket Wallet (with info)
@@ -62,6 +64,10 @@ sudo nano $HOME/.joinmarket/joinmarket.cfg
 ;;
 confv)
 sudo vim $HOME/.joinmarket/joinmarket.cfg
+;;
+vc)
+sed '/^#/d' $HOME/.joinmarket/joinmarket.cfg | less
+enter_continue
 ;;
 man)
 clear
