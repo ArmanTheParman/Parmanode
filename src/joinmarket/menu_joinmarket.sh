@@ -101,15 +101,16 @@ esac
 
 function display_jm_addresses {
 
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee -a /tmp/jmaddresses
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
 
     if grep -q "just restart this joinmarket application" < /tmp/jmaddresses ; then
     enter_continue "
     This always happens the first time you access the display function.
     Please hit enter to run the display command again."
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee -a /tmp/jmaddresses
+    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' 
     fi
 
+rm /tmp/jmaddresses >$dn 2>&1
 enter_continue
 
 }
