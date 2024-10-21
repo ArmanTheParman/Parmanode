@@ -1,4 +1,4 @@
-function menu_nextcloud {
+function menu_joinmarket {
 
 while true ; do 
 if docker ps | grep -q joinmarket ; then
@@ -12,7 +12,7 @@ set_terminal ; echo -en "
                                 J O I N M A R K E T $orange
 ########################################################################################
 
-    JoinMarket is:    $nextcloud_running
+    JoinMarket is:    $joinmarket_running
 
 $cyan
                       start)$orange       Start JoinMarket Docker container
