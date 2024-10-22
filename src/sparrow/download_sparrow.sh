@@ -1,7 +1,7 @@
 function download_sparrow {
 cd $HOME/parmanode
 
-sparrow_version="1.9.0"
+sparrow_version="2.0.0"
 
 #clean up previous downloads if any
 sudo rm -rf $hp/"*parrow-1."*
