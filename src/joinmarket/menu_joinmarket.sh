@@ -1,6 +1,9 @@
 function menu_joinmarket {
 
 while true ; do 
+
+if [[ -z $wallet ]] ; then wallet=NONE ; fi
+
 if docker ps | grep -q joinmarket ; then
 joinmarket_running="${green}RUNNING$orange"
 else
