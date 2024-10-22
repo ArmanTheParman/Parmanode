@@ -25,6 +25,6 @@ make Bitcoin onion
 CLEAN UP:
     - reset parmanode usage count
     - reset motd
-    - clear history from terminal, history -c, and rm ~/.bash_history
+    - clear history from terminal, history -c, and rm ~/.bash_history (or history -w)
 
 
