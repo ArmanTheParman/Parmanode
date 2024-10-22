@@ -19,7 +19,7 @@ verify_green | return 1
 
 if [[ $OS == Mac ]] ; then
 hdiutil attach BlockstreamGreen*.dmg >$dn 2>&1
-sudo cp /Volumes/Blockstream*/B*app /Applications
+sudo cp -r /Volumes/Blockstream*/B*app /Applications
 hdiutil detach /Volumes/Blockstream*
 elif [[ $OS == Linux ]] ; then
 sudo chmod +x Bloackstream*.AppImage >$dn 2>&1

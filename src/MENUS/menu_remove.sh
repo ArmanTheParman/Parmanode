@@ -595,7 +595,7 @@ uninstall_joinmarket
 return
 fi
 ;;
-gr)
+gr|green)
 if [[ $greenmenu == 1 ]] ; then
 uninstall_green
 return
