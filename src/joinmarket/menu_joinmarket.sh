@@ -70,7 +70,7 @@ docker stop joinmarket
 ;;
 aw)
 set_terminal
-ls $HOME/.joinmarket/wallets/
+choose_wallet
 enter_continue
 ;;
 conf)
@@ -274,4 +274,17 @@ esac
 done
 
 
+}
+
+function choose_wallet {
+set_terminal ; echo -e "
+########################################################################################
+
+    Please choose a wallet, type the file name exaclty, then <enter>
+
+    $(for i in ls -d $HOME/.joinmarket/wallets/ ; do echo -e "$bright_blue$i" ; done)
+
+########################################################################################
+"
+enter_continue
 }
