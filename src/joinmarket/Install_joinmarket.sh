@@ -122,7 +122,7 @@ function run_joinmarket_docker {
     docker run -d \
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
-               -v /run/tor:/run/tor
+               -v /run/tor:/run/tor \
                --network="host" \
                --restart unless-stopped \
                joinmarket
