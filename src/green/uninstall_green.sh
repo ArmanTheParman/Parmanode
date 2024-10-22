@@ -1,8 +1,8 @@
-function uninstall_bitbox {
+function uninstall_green {
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall BitBox 
+                                  Uninstall Green
 $orange
     Are you sure? (y) (n)
 
@@ -19,12 +19,12 @@ fi
 
 set_terminal
 
-sudo rm -rf $HOME/parmanode/bitbox >$dn 2>&1
+sudo rm -rf $HOME/parmanode/green >$dn 2>&1
 
 if [[ $OS == Mac ]] ; then
-sudo rm -rf /Applications/"BitBox.app" >$dn 2>&1
+sudo rm -rf /Applications/"green.app" >$dn 2>&1
 fi
 
-installed_conf_remove "bitbox"
-success "BitBox App" "being uninstalled."
+installed_conf_remove "green"
+success "BlockStream Green App" "being uninstalled."
 }
