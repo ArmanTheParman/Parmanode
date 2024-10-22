@@ -293,5 +293,4 @@ $orange
 "
 read wallet
 export wallet
-enter_continue
 }
