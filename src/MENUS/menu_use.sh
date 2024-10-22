@@ -458,7 +458,7 @@ join)
    else invalid
    fi
    ;;
-gr)
+gr|green)
    if [[ $greenapp == 1 ]] ; then
    menu_green
    if [[ -n $1 ]] ; then clear ; return 0 ; fi

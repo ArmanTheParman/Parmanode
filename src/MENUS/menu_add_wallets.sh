@@ -121,7 +121,7 @@ m|M) back2main ;;
       fi
       ;;
    
-   gr) 
+   gr|green) 
       if [[ -n $green_n ]] ; then
       install_green
       back2main 
