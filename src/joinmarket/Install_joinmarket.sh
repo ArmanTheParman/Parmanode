@@ -25,7 +25,7 @@ function install_joinmarket {
     parmashell_4_jm
 
     installed_conf_add "joinmarket-end"
-enter_continue "pause" 
+
     success "JoinMarket has been installed"
 
 }
