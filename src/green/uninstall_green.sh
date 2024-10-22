@@ -19,10 +19,10 @@ fi
 
 set_terminal
 
-sudo rm -rf $HOME/parmanode/green >$dn 2>&1
-
 if [[ $OS == Mac ]] ; then
-sudo rm -rf /Applications/"green.app" >$dn 2>&1
+sudo rm -rf /Applications/Blockstream*app >$dn 2>&1
+elif [[ $OS == Linux ]] ; then
+sudo rm -rf $HOME/parmanode/green >$dn 2>&1
 fi
 
 installed_conf_remove "green"
