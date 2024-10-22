@@ -22,4 +22,4 @@ RUN ./install.sh --docker-install --without-qt
 RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /jm/clientserver/scripts
-CMD ["tail" , "-f", "/dev/null"]
+CMD [ "python3" , "/jm/clientserver/scripts/joinmarketd.py" ]
