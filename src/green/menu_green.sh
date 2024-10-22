@@ -1,7 +1,7 @@
 function menu_green {
  while true ; do set_terminal ; echo -e "
 ########################################################################################
-                 $cyan          Green Wallet Menu            $orange                   
+                 $cyan              Green Wallet Menu            $orange                   
 ########################################################################################
 
 
