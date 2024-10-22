@@ -265,10 +265,10 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 set_terminal ; echo "please enter the password for your wallet" ; read password
-echo "$password" | docker exec -id joinmarket python3 /jm/clientserver/scripts/yield-generator-basic.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_basic.log
+echo "$password" | docker exec -i joinmarket python3 /jm/clientserver/scripts/yield-generator-basic.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_basic.log >$dn
 ;;
 2)
-docker exec -id joinmarket python3 /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log
+docker exec -id joinmarket python3 -i /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log >$dn
 ;;
 *)
 invalid
