@@ -18,7 +18,7 @@ function install_joinmarket {
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
 
-    run_wallet_tool_joinmarket || { enter_continue "aborting" ; return 1 ; }
+    run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
@@ -84,7 +84,13 @@ function run_wallet_tool_joinmarket {
 
     set_terminal
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
+
+    if [[ $1 == install ]] ; then
+    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' >$dn 2>&1
+    else
     docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' #do not exit on failure.
+    fi
+
     return 0
 }
 
