@@ -22,7 +22,7 @@ if [[ -n $thunderhub_n ]]             ; then echo -e  "$thunderhub_n"; fi
 if [[ -n $lnbits_n ]]           ; then echo -e  "$lnbits_n"; fi
 if [[ -n $trezor_n ]]           ; then echo -e  "$trezor_n"; fi
 if [[ -n $bitbox_n ]]           ; then echo -e  "$bitbox_n"; fi
-if [[ -n $green ]]               ; then echo -e  "$green"   ; fi
+if [[ -n $green_n ]]               ; then echo -e  "$green_n"   ; fi
 if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
 if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
 #if [[ -n $joinmarket_n ]]      ; then echo -e  "$joinmarket_n"; fi
