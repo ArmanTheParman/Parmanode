@@ -1,6 +1,6 @@
 function download_specter {
 
-specter_version="2.0.1"
+specter_version="2.0.5"
 cd $HOME/parmanode/specter
 
 curl -LO https://github.com/cryptoadvance/specter-desktop/releases/download/v${specter_version}/SHA256SUMS
