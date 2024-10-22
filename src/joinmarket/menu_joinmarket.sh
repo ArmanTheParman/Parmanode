@@ -91,11 +91,11 @@ clear
 docker exec -it joinmarket bash 
 ;;
 cr)
-    for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" > $dp/before 2>/dev/null ; done
+    for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
     jm_create_wallet_tool
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
     enter_continue
-    for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" > $dp/after 2>/dev/null ; done
+    for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" > $dp/after 2>>/dev/null ; done
     wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
     enter_continue "Wallet activated: $wallet"
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
