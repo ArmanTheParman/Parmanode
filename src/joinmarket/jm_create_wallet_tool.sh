@@ -24,9 +24,6 @@ $orange
 $red
     Input wallet file name (default: wallet.jmdat): 
 $orange
-    Please do not change the filename or Parmanode menus will get confused. 
-    Let's keep it simple. If you make the same wallet twice, it'll crash.
-    
     It will then ask:
 $red
     Would you like this wallet to support fidelity bonds? Write 'n' if you don't 

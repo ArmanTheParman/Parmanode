@@ -13,12 +13,16 @@ set_terminal_custom 47 ; echo -en "
 ########################################################################################
 
 
-    JoinMarket is:    $joinmarket_running
+    JoinMarket is:       $joinmarket_running
+
+    Active wallet is:    $red$wallet$orange
 
 $cyan
                   start)$orange       Start JoinMarket Docker container
 $cyan
                   stop)$orange        Stop JoinMarket Docker container
+$cyan
+                  aw)$orange          Activate wallet (load to memory) 
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
@@ -59,6 +63,10 @@ docker start joinmarket
 stop)
 docker stop joinmarket
 ;;
+aw)
+set_terminal
+ls $HOME/.joinmarket/wallets/
+;;
 conf)
 sudo nano $HOME/.joinmarket/joinmarket.cfg
 ;;
@@ -79,9 +87,9 @@ docker exec -it joinmarket bash
 ;;
 cr)
     jm_create_wallet_tool
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py generate' 
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
     enter_continue
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' 
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
     ;;
 delete)
     delete_jm_wallets
@@ -95,19 +103,19 @@ dall)
     ;;
 sum)
 
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat summary' | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee /tmp/jmaddresses
     enter_continue
     ;;
 cp)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat changepass' 
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
     ;;
 
 su)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showutxos' 
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
     enter_continue
     ;;
 ss)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat showseed' 
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
     enter_continue
     ;;
 yg)
@@ -174,10 +182,10 @@ enter_continue
 
     case $1 in
     a)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee /tmp/jmaddresses
     ;;
     *)
-    docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee /tmp/jmaddresses
     ;;
     esac
 
@@ -189,10 +197,10 @@ enter_continue
         $orange"
         case $1 in
         a)
-        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall' | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall" | tee /tmp/jmaddresses
         ;;
         *)
-        docker exec -it joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display' | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display" | tee /tmp/jmaddresses
         ;;
         esac
 
@@ -247,10 +255,10 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
-docker exec -d joinmarket python3 /jm/clientserver/script/yield-generator-basic.py | tee -a $HOME/.joinmarket/yg_basic.log
+docker exec -d joinmarket python3 /jm/clientserver/script/yield-generator-basic.py |& tee -a $HOME/.joinmarket/yg_basic.log
 ;;
 2)
-docker exec -d joinmarket python3 /jm/clientserver/script/yg-privacyenhanced.py | tee -a $HOME/.joinmarket/yg_privacy.log
+docker exec -d joinmarket python3 /jm/clientserver/script/yg-privacyenhanced.py |& tee -a $HOME/.joinmarket/yg_privacy.log
 ;;
 *)
 invalid
