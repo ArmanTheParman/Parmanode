@@ -1,6 +1,7 @@
 Version 3.45.2
     -Update BitBox02 app
     -Update Trezor suite
+    -Update Sparrwo v2.0.0
 Version 3.45.1
     -iproute2 installed for IP function to work on more systems
     -ParmaBox tweaks to allow more smooth installation of Bitcoin in a container.
