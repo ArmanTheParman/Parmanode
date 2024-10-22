@@ -25,7 +25,7 @@ if [[ -n $bitbox_n ]]           ; then echo -e  "$bitbox_n"; fi
 if [[ -n $green_n ]]               ; then echo -e  "$green_n"   ; fi
 if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
 if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
-#if [[ -n $joinmarket_n ]]      ; then echo -e  "$joinmarket_n"; fi
+if [[ -n $joinmarket_n ]]      ; then echo -e  "$joinmarket_n"; fi
 
 
 echo -e "#                                                                                      #
@@ -42,7 +42,7 @@ if [[ -n $bitbox_i ]]          ; then echo -e  "$bitbox_i"; fi
 if [[ -n $green_i ]]           ; then echo -e  "$green_i"; fi
 if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
 if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
-#if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
+if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...                                              $orange #
 #                                                                                      #"
@@ -57,7 +57,7 @@ if [[ -n $bitbox_p ]]          ; then echo -e "$pink$bitbox_p$orange"; fi
 if [[ -n $green_p ]]           ; then echo -e "$pink$green_p$orange"; fi
 if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
 if [[ -n $btcrecover_p ]]      ; then echo -e  "$pink$btcrecover_p$orange"; fi
-#if [[ -n $joinmarket_p ]]      ; then echo -e  "$pink$joinmarket_p$orange"; fi
+if [[ -n $joinmarket_p ]]      ; then echo -e  "$pink$joinmarket_p$orange"; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
