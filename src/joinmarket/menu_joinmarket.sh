@@ -51,7 +51,9 @@ $cyan
 $cyan
                   ss)$orange          Show wallet seed words
 $red
-                  yg)$orange          Yeild Generator ...
+                  yg)$orange          Yield Generator ...
+$red
+                  log)$orange         Yield
 
 $orange   
 ########################################################################################
@@ -128,7 +130,7 @@ ss)
     enter_continue
     ;;
 yg)
-    yeild_generator
+    yield_generator
     ;;
 
 *)
@@ -229,13 +231,13 @@ enter_continue
 
 }
 
-function yeild_generator {
+function yield_generator {
 set_terminal ; echo -e "
 ########################################################################################
 
     Some important information to ensure you don't have a bad time.
 
-    - If yeild generator is running, do not try to initiate a 'take' transaction, as
+    - If yield generator is running, do not try to initiate a 'take' transaction, as
       you'll get an error that the wallet is locked.
 
     - You can tweak the settings (eg fees) by editing the configuration file (access
@@ -254,9 +256,9 @@ set_terminal ; echo -e "
 
     Please make a choice...
 
-            1) Yeild Generator Basic (recommended to begin with)
+            1) Yield Generator Basic (recommended to begin with)
 
-            2) Yeild Generator Privacy Enhanced
+            2) Yield Generator Privacy Enhanced
 
 ########################################################################################
 "
@@ -281,7 +283,7 @@ done
 set_terminal ; echo -e "
 ########################################################################################
 
-    You can see the output of the yeild generator from the menu options.
+    You can see the output of the yield generator from the menu options.
 
 ########################################################################################
 "
