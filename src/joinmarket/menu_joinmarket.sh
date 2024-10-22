@@ -96,7 +96,7 @@ cr)
     jm_create_wallet_tool
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
         for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
-    wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
+    export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
     ;;
 delete)
