@@ -245,12 +245,12 @@ set_terminal ; echo -e "
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q}Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
-docker exec -d joinmarket python3 /jm/clientserver/script/yield-generator-basic.py | tee -a $hp/.joinmarket/yg_basic.log
+docker exec -d joinmarket python3 /jm/clientserver/script/yield-generator-basic.py | tee -a $HOME/.joinmarket/yg_basic.log
 ;;
 2)
-docker exec -d joinmarket python3 /jm/clientserver/script/yg-privacyenhanced.py | tee -a $hp/.joinmarket/yg_privacy.log
+docker exec -d joinmarket python3 /jm/clientserver/script/yg-privacyenhanced.py | tee -a $HOME/.joinmarket/yg_privacy.log
 ;;
 *)
 invalid
