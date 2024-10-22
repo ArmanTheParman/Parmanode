@@ -134,6 +134,7 @@ yg)
     ;;
 log)
     yield_generator_log || return 1
+    ;;
 *)
 invalid
 ;;
