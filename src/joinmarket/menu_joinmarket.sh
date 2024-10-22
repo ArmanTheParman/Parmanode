@@ -221,12 +221,42 @@ set_terminal ; echo -e "
     - If yeild generator is running, do not try to initiate a 'take' transaction, as
       you'll get an error that the wallet is locked.
 
-    - You can tweak the settings (eg fees) by editing the configuration file.
+    - You can tweak the settings (eg fees) by editing the configuration file (access
+      via JoinMarket Parmanode menu
+    
+    - The generator is a python script which will run inside the docker conainter.
 
 
 ########################################################################################
 "
 enter_continue
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Please make a choice...
+
+            1) Yeild Generator Basic (recommended to begin with)
+
+            2) Yeild Generator Privacy Enhanced
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q}Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+1)
+docker exec -d joinmarket python3 /jm/clientserver/script/yield-generator-basic.py | tee -a $hp/.joinmarket/yg_basic.log
+;;
+2)
+docker exec -d joinmarket python3 /jm/clientserver/script/yg-privacyenhanced.py | tee -a $hp/.joinmarket/yg_privacy.log
+;;
+*)
+invalid
+;;
+esac
+done
 
 
 }
