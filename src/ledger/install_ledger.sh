@@ -5,16 +5,16 @@ sned_sats
 ledgerDir=$HOME/parmanode/ledger
 mkdir $ledgerDir >/dev/null 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"
-
+export ledger_version=2.90.0
 #Notes: grep -i does case insensitive search
 
 #for newer version...
 #locationLinux=$(curl -I -L https://download.live.ledger.com/latest/linux 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r') 
-locationLinux="https://download.live.ledger.com/ledger-live-desktop-2.75.0-linux-x86_64.AppImage"
+locationLinux="https://download.live.ledger.com/ledger-live-desktop-$ledger_version-linux-x86_64.AppImage"
 
 #for newer version...
 #locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r')
-locationMac="https://download.live.ledger.com/ledger-live-desktop-2.75.0-mac.dmg"
+locationMac="https://download.live.ledger.com/ledger-live-desktop-$ledger_version-mac.dmg"
 
 
 if [[ $OS == Mac ]] ; then
