@@ -71,6 +71,7 @@ docker stop joinmarket
 aw)
 set_terminal
 ls $HOME/.joinmarket/wallets/
+enter_continue
 ;;
 conf)
 sudo nano $HOME/.joinmarket/joinmarket.cfg
