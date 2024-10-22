@@ -282,9 +282,9 @@ set_terminal ; echo -e "
 
     Please choose a wallet, type the file name exaclty, then <enter>
 "
-for i in $(ls -d $HOME/.joinmarket/wallets/*) ; do echo -e "$bright_blue$i" ; done
+for i in $(ls -d $HOME/.joinmarket/wallets/*) ; do echo -e "$bright_blue$i$orange" ; done
 echo -en"
-
+$orange
 ########################################################################################
 "
 enter_continue
