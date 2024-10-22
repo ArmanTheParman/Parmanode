@@ -22,6 +22,7 @@ if [[ -n $thunderhub_n ]]             ; then echo -e  "$thunderhub_n"; fi
 if [[ -n $lnbits_n ]]           ; then echo -e  "$lnbits_n"; fi
 if [[ -n $trezor_n ]]           ; then echo -e  "$trezor_n"; fi
 if [[ -n $bitbox_n ]]           ; then echo -e  "$bitbox_n"; fi
+if [[ -n $green]]               ; then echo -e  "$green"; fi
 if [[ -n $ledger_n ]]           ; then echo -e  "$ledger_n"; fi
 if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
 #if [[ -n $joinmarket_n ]]      ; then echo -e  "$joinmarket_n"; fi
@@ -38,6 +39,7 @@ if [[ -n $thunderhub_i ]]             ; then echo -e  "$thunderhub_i"; fi
 if [[ -n $lnbits_i ]]          ; then echo -e  "$lnbits_i"; fi
 if [[ -n $trezor_i ]]          ; then echo -e  "$trezor_i"; fi
 if [[ -n $bitbox_i ]]          ; then echo -e  "$bitbox_i"; fi
+if [[ -n $green_i ]]           ; then echo -e  "$green_i"; fi
 if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
 if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
 #if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
@@ -52,6 +54,7 @@ if [[ -n $thunderhub_p ]]             ; then echo -e "$pink$thunderhub_p$orange"
 if [[ -n $lnbits_p ]]          ; then echo -e "$pink$lnbits_p$orange"; fi
 if [[ -n $trezor_p ]]          ; then echo -e "$pink$trezor_p$orange"; fi
 if [[ -n $bitbox_p ]]          ; then echo -e "$pink$bitbox_p$orange"; fi
+if [[ -n $green_p ]]           ; then echo -e "$pink$green_p$orange"; fi
 if [[ -n $ledger_p ]]          ; then echo -e "$pink$ledger_p$orange"; fi
 if [[ -n $btcrecover_p ]]      ; then echo -e  "$pink$btcrecover_p$orange"; fi
 #if [[ -n $joinmarket_p ]]      ; then echo -e  "$pink$joinmarket_p$orange"; fi
@@ -118,6 +121,12 @@ m|M) back2main ;;
       fi
       ;;
    
+   gr) 
+      if [[ -n $green_n ]] ; then
+      install_green
+      back2main 
+      fi
+      ;;
    ll|LL|Ll)
       if [[ -n $ledger_n ]] ; then
       install_ledger

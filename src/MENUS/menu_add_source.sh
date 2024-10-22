@@ -575,7 +575,6 @@ else
 btcrecover_n="#$cyan                            (btcr)    $orange    BTC recover                                 #"
 fi
 
-
 #joinmarket
 unset joinmarket_i joinmarket_p joinmarket_n
 if grep -q "joinmarket-end" < $HOME/.parmanode/installed.conf ; then 
@@ -587,5 +586,18 @@ joinmarket_p="#                                      JoinMarket                 
 else
    #not installed
 joinmarket_n="#$cyan                            (join)    $orange    JoinMarket                                  #"
+fi
+
+#green
+unset green_i green_p green_n
+if grep -q "green-end" < $HOME/.parmanode/installed.conf ; then 
+  #installed
+green_i="#                                      Green Wallet                                    #"
+elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+green_p="#                                      Green Wallet                                    #"
+else
+   #not installed
+green_n="#$cyan                            (gr)    $orange      Green Wallet                                #"
 fi
 }

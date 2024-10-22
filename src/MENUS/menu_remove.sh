@@ -15,7 +15,7 @@ unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcr
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
-unset nextcloudmenu
+unset nextcloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu
 
 echo -e "
 ########################################################################################
@@ -282,6 +282,12 @@ echo -e "#$cyan                            (join)$orange             JoinMarket 
 #                                                                                      #"
 elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
 echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange       #
+#                                                                                      #" ; fi
+if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenmenu=1
+echo -e "#$cyan                            (gr)$orange               Green Wallet                           #
+#                                                                                      #"
+elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then greenmenu=1
+echo -e "#$cyan                            (gr)$orange               Green Wallet           $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
@@ -586,6 +592,12 @@ fi
 join)
 if [[ $joinmarketmenu == 1 ]] ; then
 uninstall_joinmarket
+return
+fi
+;;
+gr)
+if [[ $greenmenu == 1 ]] ; then
+uninstall_green
 return
 fi
 ;;

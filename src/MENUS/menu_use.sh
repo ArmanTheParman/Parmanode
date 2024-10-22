@@ -144,6 +144,9 @@ if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecoverapp
 if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketapp=1
                        echo -e "                        $cyan  (join)  $orange     JoinMarket
                             " ; fi
+if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenapp=1
+                       echo -e "                        $cyan  (gr)  $orange       Green Wallet
+                            " ; fi
 echo -e "                            
 #######################################################################################
 "
@@ -451,6 +454,13 @@ btcr)
 join) 
    if [[ $joinmarketapp == 1 ]] ; then
    menu_joinmarket
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
+gr)
+   if [[ $greenapp == 1 ]] ; then
+   menu_green
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
