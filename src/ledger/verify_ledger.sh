@@ -2,13 +2,12 @@ function verify_ledger {
 
 if [[ $OS == Mac ]] ; then
 brew_check "Ledger Suite" || return 1
-if ! which openssl ; then brew install openssl ; fi
+if ! which openssl >$dn ; then brew install openssl ; fi
 fi
-
 pem=$HOME/parman_programs/parmanode/src/ledger/ledgerlive.pem
 sig=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-$ledger_version.sha512sum.sig
 shasum=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-$ledger_version.sha512sum
-
+debug "pause 2"
 if ! openssl dgst -sha256 -verify $pem -signature $sig $shasum ; then
 announce "Verification failed. Aborting." 
 return 1

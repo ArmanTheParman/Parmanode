@@ -5,7 +5,7 @@ sned_sats
 ledgerDir=$HOME/parmanode/ledger
 mkdir $ledgerDir >/dev/null 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"
-export ledger_version=2.90.0
+export ledger_version=2.89.1
 #Notes: grep -i does case insensitive search
 
 #for newer version...
@@ -16,9 +16,10 @@ locationLinux="https://download.live.ledger.com/ledger-live-desktop-$ledger_vers
 #locationMac=$(curl -I -L https://download.live.ledger.com/latest/mac 2>&1 | grep -i location | cut -d ' ' -f 2 | tr -d '\r')
 locationMac="https://download.live.ledger.com/ledger-live-desktop-$ledger_version-mac.dmg"
 
-
 if [[ $OS == Mac ]] ; then
 curl -LO $locationMac 
+debug "pause"
+
 if [[ $verify != skip ]] ; then verify_ledger || return 1 ; fi
 hdiutil attach *.dmg ; cd /Volumes/Ledger* ; sudo rm -rf /Applications/"Ledger Live"* ; cp -r *app /Applications
 cd $ledgerDir
