@@ -78,7 +78,8 @@ $cyan
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
 1)
 export electrum_version="4.4.4" 
 ;;
