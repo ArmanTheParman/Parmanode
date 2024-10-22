@@ -1,23 +1,8 @@
 function download_electrum {
 
 cd $HOME/parmanode/electrum
-electrum_version="4.4.6"
 
-clear ; echo -e "
-########################################################################################
-    
-    Parmanode will download version $electrum_version for you.
-
-    If you prefer my favourite version,$cyan v4.4.4$orange, then type 'old' then <enter>, 
-    otherwise anything else and$green <enter>$orange to have the later version.
-
-########################################################################################
-"
-read choice
-if [[ $choice == "old" ]] ; then electrum_version="4.4.4" ; debug "version1 $electrum_version"; fi
-clear
-
-debug "version2 $electrum_version"
+choose_electrum_version
 
 if [[ $computer_type == "LinuxPC" ]] ; then
     curl -LO https://download.electrum.org/$electrum_version/electrum-${electrum_version}-x86_64.AppImage && \
@@ -77,4 +62,34 @@ fi
 
 # done
 
+}
+function choose_electrum_version {
+while true ; do
+clear ; echo -e "
+########################################################################################
+    
+               Please indicate your preferred version of Electrum.
+$cyan
+                                    1)$orange       4.4.4
+$cyan
+                                    2)$orange       4.5.6 
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main
+1)
+export electrum_version="4.4.4" 
+;;
+2)
+export electrum_version="4.5.6"
+;;
+*)
+invalid
+;;
+esac
+done
+
+return 0 
 }
