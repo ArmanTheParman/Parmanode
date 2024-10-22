@@ -12,7 +12,7 @@ RUN apt-get install -y --no-install-recommends \
                    python3-venv curl python3-dev python3-pip build-essential automake
 RUN apt-get install -y --no-install-recommends \
                    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
-RUN apt-get install -y --no-install-recommands \
+RUN apt-get install -y --no-install-recommends \
                    less tmux
 
 COPY . .
