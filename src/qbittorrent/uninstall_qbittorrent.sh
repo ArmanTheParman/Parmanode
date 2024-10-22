@@ -19,6 +19,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     fi
 
 clear
+
 sudo rm -rf $hp/qbittorrent /Applications/qbittorrent.app
 installed_conf_remove "qbittorrent"
 success "QBittorrent" "being uninstalled"
