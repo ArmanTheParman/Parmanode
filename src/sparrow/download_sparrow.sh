@@ -43,9 +43,9 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 old)
-export version="1.9.0"
+export sparrow_version="1.9.0"
 *)
-export version="2.0.0"
+export sparrow_version="2.0.0"
 ;;
 esac
 return 0
