@@ -5,9 +5,19 @@ while true ; do
 if [[ -z $wallet ]] ; then wallet=NONE ; fi
 
 if docker ps | grep -q joinmarket ; then
-joinmarket_running="${green}RUNNING$orange"
+
+    joinmarket_running="${green}RUNNING$orange"
+
+    #is yield generator basic running?
+    if docker exec joinmarket ps aux | grep yield-generator-basic ; then 
+        yg="true"
+    else
+        yg="false"
+    fi
+
 else
-joinmarket_running="${red}NOT RUNNING$orange"
+     joinmarket_running="${red}NOT RUNNING$orange"
+     yg="false"
 fi
 
 set_terminal_custom 50 ; echo -en "
@@ -273,7 +283,8 @@ echo "$password" | docker exec -i joinmarket python3 /jm/clientserver/scripts/yi
 break
 ;;
 2)
-docker exec -id joinmarket python3 -i /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log >$dn &
+set_terminal ; echo "please enter the password for your wallet" ; read password
+echo "$password" | docker exec -i joinmarket python3 -i /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log >$dn &
 break
 ;;
 *)
