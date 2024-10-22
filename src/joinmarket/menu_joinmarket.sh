@@ -213,7 +213,7 @@ enter_continue
 }
 
 function yeild_generator {
-
+enter_continue "in yg"
 set_terminal -e "
 ########################################################################################
 
