@@ -299,11 +299,11 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    sudo journalctl -fexu electrs.service #&
-#    tail_PID=$!
-#    trap 'kill $tail_PID' SIGINT #condition added to memory
-#    wait $tail_PID # code waits here for user to control-c
-#    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    sudo journalctl -fexu electrs.service &
+    tail_PID=$!
+    trap 'kill $tail_PID' SIGINT #condition added to memory
+    wait $tail_PID # code waits here for user to control-c
+    trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
     menu_electrs #this is so the status refreshes 
 fi
