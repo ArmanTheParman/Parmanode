@@ -83,19 +83,19 @@ $tor_menu                      $orange
 ########################################################################################
 
 
-$cyan        s)$orange                        Start Nostr (starts Docker container) 
+$cyan            s)$orange                Start Nostr (starts Docker container) 
 
-$cyan        stop)$orange                     Stop Nostr 
+$cyan            stop)$orange             Stop Nostr 
 
-$cyan        rs)$orange                       Restart Nostr
+$cyan            rs)$orange               Restart Nostr
 
-$cyan        conf)$orange                     View/edit nginx conf (be careful)
+$cyan            conf)$orange             View/edit nginx conf (confv for vim)
 
-$cyan        toml)$orange                     View/edit config.toml file
+$cyan            toml)$orange             View/edit config.toml file (tomlv for vim)
 
-$cyan        log)$orange                      View relay log
+$cyan            log)$orange              View relay log
 
-$cyan        test)$orange                     Send a test connection
+$cyan            test)$orange             Send a test connection
 
         $ssl_menu 
 
@@ -121,8 +121,14 @@ start_nostrrelay
 conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
 ;;
+confv)
+sudo vim /etc/nginx/conf.d/$domain_name.conf
+;;
 toml)
 nano $HOME/parmanode/nostrrelay/config.toml
+;;
+tomlv)
+vim $HOME/parmanode/nostrrelay/config.toml
 ;;
 log)
 log_counter

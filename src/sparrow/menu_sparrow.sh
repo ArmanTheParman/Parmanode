@@ -21,7 +21,7 @@ $green             (start) $orange         Start Sparrow
 
 $green             (mm)    $orange         Manage node connection...
 
-$green             (sc)    $orange         View/Edit config file (use with care)
+$green             (sc)    $orange         View/Edit config file (scv for vim)
 
 $green             (t)     $orange         Troubleshooting info
 
@@ -69,6 +69,9 @@ $orange
 enter_continue
 nano $HOME/.sparrow/config
 continue
+;;
+scv|SCV)
+vim $HOME/.sparrow/config
 ;;
 
 t|T)

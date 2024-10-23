@@ -47,17 +47,17 @@ $running
 
 
 
-                  s)             Start
+               s)           Start
 
-                  stop)          Stop
+               stop)        Stop
 
-                  r)             Restart
+               r)           Restart
 
-                  tor)           Enable/Disable Tor.        $tor_mempool_status
+               tor)         Enable/Disable Tor.        $tor_mempool_status
 
-                  conf)          View/Edit config           $pink(restart if changing)$orange
+               conf)        View/Edit config (confv for vim)$pink(restart if changing)$orange
 
-                  bk)            Change backend ...
+               bk)          Change backend ...
 
 
     ACCESS MEMPOOL:

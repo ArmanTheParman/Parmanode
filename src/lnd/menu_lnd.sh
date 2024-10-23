@@ -193,7 +193,7 @@ $menuDockerIP
 $dkrmenu
       (log)            Inspect LND logs
 
-      (lc)             Inspect and edit $lndconf file 
+      (lc)             Inspect and edit $lndconf file (lcv for vim)
 
       (scb)            Static Channel Backup 
 
@@ -314,6 +314,22 @@ unset menu_lnd_lit_conf rL open_conf
 continue 
 ;;
 
+lcv|LCV)
+
+if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+menu_lnd_lit_conf="litd.conf"
+rL=LITD
+open_conf="$HOME/.lit/lit.conf"
+else
+menu_lnd_lit_conf="lnd.conf"
+rL=LND
+open_conf="$HOME/.lnd/lnd.conf"
+fi
+vim $open_conf
+please_wait
+unset menu_lnd_lit_conf rL open_conf
+continue 
+;;
 
 scb|SCB|Scb) 
 scb ;;
