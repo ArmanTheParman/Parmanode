@@ -176,7 +176,7 @@ $red
 
       (log)      Inspect Electrum X logs
 
-      (ec)       Inspect and edit config file 
+      (ec)       Inspect and edit config file (ecv for vim)
 
       (dc)       Electrum X database corrupted? -- Use this to start fresh."
 
@@ -330,7 +330,9 @@ echo "
 "
 enter_continue
 nano $hp/electrumx/electrumx.conf
- 
+;;
+ecv|ECV)
+vim $hp/electrumx/electrumx.conf
 ;;
 
 up|UP|Up|uP)
