@@ -199,7 +199,7 @@ nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 bcv)
-vim $HOMR/.bitcoin/bitcoin.conf
+vim $HOME/.bitcoin/bitcoin.conf
 ;;
 
 up)
