@@ -8,7 +8,6 @@ if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
 else
     electrsis=nondocker
     if [[ $OS == Linux ]] ; then
-       #-fexu will be used for log, but still need to get a log file snapshot
        sudo journalctl -exu electrs.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
@@ -276,28 +275,14 @@ echo "
 "
 enter_continue
 fi
-if [[ $electrsis == docker ]] ; then 
 
-    set_terminal_wider
-    docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
-        # tail_PID=$!
-        # trap 'kill $tail_PID' SIGINT #condition added to memory
-        # wait $tail_PID # code waits here for user to control-c
-        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
- 
- else
-
-    set_terminal_wider
-    tail -f $logfile & 
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT EXIT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
- 
-fi 
-
+set_terminal_wider
+tail -f $logfile & 
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT EXIT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the t. rap so control-c works elsewhere.
+set_terminal
 menu_electrs #this is so the status refreshes 
 ;;
 
