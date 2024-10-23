@@ -56,9 +56,9 @@ echo -e "
 
              c)            Connect BTCPay to LND
 
-             bc)           BTCPay config file
+             bc)           BTCPay config file (bcv for vim)
 
-             nc)           NBXplorer config file
+             nc)           NBXplorer config file (ncv for vim)
 
              log)          View BTCPay Server log
 
@@ -92,9 +92,17 @@ bc)
 nano $HOME/.btcpayserver/Main/settings.config
 continue
 ;;
+bcv)
+vim $HOME/.btcpayserver/Main/settings.config
+continue
+;;
 
 nc)
 nano $HOME/.nbxplorer/Main/settings.config
+continue
+;;
+ncv)
+vim $HOME/.nbxplorer/Main/settings.config
 continue
 ;;
 

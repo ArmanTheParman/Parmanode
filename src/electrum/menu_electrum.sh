@@ -16,7 +16,7 @@ $green            start) $orange          Start Electrum (opens in its own windo
          
 $green            mm)     $orange         Manage node connection...
 
-$green            ec) $orange             View Electrum Config file
+$green            ec) $orange             View Electrum Config file (ecv for vim)
 
 $green            cl)     $orange         Clear connection certificates 
                           $orange         (can help connection issues)
@@ -45,6 +45,9 @@ electrum_connection_menu
 
 ec|EC) 
 nano $HOME/.electrum/config
+;;
+ecv|ECV) 
+vim $HOME/.electrum/config
 ;;
 
 cl|CL)
