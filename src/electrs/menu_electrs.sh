@@ -302,6 +302,9 @@ nano $HOME/.electrs/config.toml
  
 ;;
 
+ecv)
+vim $HOME/.electrs/config.toml
+;;
 p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
