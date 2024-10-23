@@ -277,6 +277,7 @@ echo "
 enter_continue
 fi
 if [[ $electrsis == docker ]] ; then 
+
     set_terminal_wider
     docker exec -it electrs /bin/bash -c "tail -f /home/parman/run_electrs.log"      
         # tail_PID=$!
@@ -287,17 +288,6 @@ if [[ $electrsis == docker ]] ; then
  
  else
 
-if [[ $OS == Mac ]] ; then
-    set_terminal_wider
-    tail -f $logfile &     
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
-fi
-
-if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
     tail -f $logfile & 
     tail_PID=$!
@@ -305,9 +295,9 @@ if [[ $OS == "Linux" ]] ; then
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
-    menu_electrs #this is so the status refreshes 
-fi
-fi # end electrsis
+ 
+fi 
+
 menu_electrs #this is so the status refreshes 
 ;;
 
