@@ -299,7 +299,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    sudo journalctl -fexu electrs.service &
+    tail -f $logfile & 
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT EXIT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
