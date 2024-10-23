@@ -7,6 +7,7 @@ Version 3.46.0
     -Update Specter 2.0.5
     -Update Ledger Live 2.89.1
     -Update -QBittorrent v5.0.0
+    -Vim option for editing config files
 Version 3.45.1
     -iproute2 installed for IP function to work on more systems
     -ParmaBox tweaks to allow more smooth installation of Bitcoin in a container.
