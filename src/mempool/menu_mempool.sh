@@ -111,6 +111,9 @@ unset file
 conf)
 nano $hp/mempool/docker/docker-compose.yml
 ;;
+confv)
+vim $hp/mempool/docker/docker-compose.yml
+;;
 
 bk)
 change_mempool_backend
