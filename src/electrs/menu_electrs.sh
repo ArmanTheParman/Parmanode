@@ -171,7 +171,7 @@ $cyan
 $cyan	    
       (log)$orange      Inspect electrs logs
 $cyan
-      (ec)$orange       Inspect and edit config file 
+      (ec)$orange       Inspect and edit config file (ecv for vim)
 $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
