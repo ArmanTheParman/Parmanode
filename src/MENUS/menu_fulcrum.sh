@@ -174,7 +174,7 @@ enter_continue
 fi
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    journalctl -fexu fulcrum.service &
+    sudo journalctl -fexu fulcrum.service &
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
@@ -281,13 +281,13 @@ if [[ $OS == Mac ]] ; then
        echo "Docker not running." > $file 
     fi
 else
-journalctl -exu fulcrum.service > $file 2>&1
+sudo journalctl -exu fulcrum.service > $file 2>&1
 fi
 
 if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
 #fetches block number...
-export fulcrum_sync=$(journalctl -exu fulcrum.service | tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
+export fulcrum_sync=$(sudo journalctl -exu fulcrum.service | tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
 | grep -Eo 'Processed height:.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
 rm $file
 return 0

@@ -266,10 +266,10 @@ fi
 
 set_terminal_wider
 if grep -q "lnd-" < $ic ; then
-journalctl -fxu lnd.service &
+sudo journalctl -fxu lnd.service &
 journal_PID=$!
 elif grep -q "litd" <$ic ; then
-journalctl -fxu litd.service &
+sudo journalctl -fxu litd.service &
 journal_PID=$!
 elif grep -q "lnddocker-" < $ic ; then
 tail -f $hp/lnd/lnd.log &

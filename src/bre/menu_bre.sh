@@ -142,7 +142,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    journalctl -fexu btcrpcexplorer.service &
+    sudo journalctl -fexu btcrpcexplorer.service &
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c

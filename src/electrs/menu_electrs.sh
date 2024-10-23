@@ -9,7 +9,7 @@ else
     electrsis=nondocker
     if [[ $OS == Linux ]] ; then
        #-fexu will be used for log, but still need to get a log file snapshot
-       journalctl -exu electrs.service > $logfile 2>&1
+       sudo journalctl -exu electrs.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
     # Background process is writing continuously to $logfile.
     true #do nothing, sturctured so for readability.
@@ -299,7 +299,7 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    journalctl -fexu electrs.service &
+    sudo journalctl -fexu electrs.service &
     tail_PID=$!
     trap 'kill $tail_PID' SIGINT #condition added to memory
     wait $tail_PID # code waits here for user to control-c
