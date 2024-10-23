@@ -72,7 +72,7 @@ clear ; echo -e "
 $cyan
                                     1)$orange       4.4.4
 $cyan
-                                    2)$orange       4.5.6 
+                                    2)$orange       4.5.8 
 
 ########################################################################################
 "
@@ -84,7 +84,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 export electrum_version="4.4.4" 
 ;;
 2)
-export electrum_version="4.5.6"
+export electrum_version="4.5.8"
 ;;
 *)
 invalid
