@@ -160,25 +160,25 @@ $green
       (start)   $orange Start electrs 
 $red
       (stop) $orange    Stop electrs 
+$cyan
+      (restart)$orange  Restart electrs
+$cyan
+      (i)$orange        Important info / Troubleshooting
+$cyan
+      (remote)$orange   Choose which Bitcoin Core for electrs to connect to
+$cyan
+      (c)$orange        How to connect your Electrum wallet to electrs 
+$cyan	    
+      (log)$orange      Inspect electrs logs
+$cyan
+      (ec)$orange       Inspect and edit config file 
+$cyan
+      (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
-      (restart)  Restart electrs
-
-      (i)        Important info / Troubleshooting
-
-      (remote)   Choose which Bitcoin Core for electrs to connect to
-
-      (c)        How to connect your Electrum wallet to electrs 
-	    
-      (log)      Inspect electrs logs
-
-      (ec)       Inspect and edit config file 
-
-      (dc)       electrs database corrupted? -- Use this to start fresh."
-
-if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "
-      (tor)      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
-      
-      (newtor)   Refresh Tor address
+if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "$cyan
+      (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
+$cyan      
+      (newtor)$orange   Refresh Tor address
 " 
 fi
 echo -e "
