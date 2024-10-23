@@ -89,7 +89,7 @@ $start
 $highlight    
       (log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
 
-      (bc)       Inspect and edit bitcoin.conf file 
+      (bc)       Inspect and edit bitcoin.conf file (bcv for vim)
 
       (up)       Set, remove, or change RPC user/pass
 $bright_blue
@@ -197,6 +197,9 @@ echo "
 enter_continue
 nano $HOME/.bitcoin/bitcoin.conf
 continue
+;;
+bcv)
+vim $bc
 ;;
 
 up)
