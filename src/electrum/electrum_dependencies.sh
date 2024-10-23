@@ -9,7 +9,7 @@ pip3 install pyqt5 cryptography
 brew_check || return 1
 brew install autoconf automake libtool
 cd $hp/electrum
-git clone https://github.com/bitcoin-core/secp256k1.git
+git clone --depth 1 https://github.com/bitcoin-core/secp256k1.git
 cd secp256k1
 ./autogen.sh
 ./configure

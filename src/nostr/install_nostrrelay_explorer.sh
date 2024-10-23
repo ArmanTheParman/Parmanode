@@ -13,7 +13,7 @@ grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install
 sned_sats
 
 cd $hp
-git clone https://github.com/gregorygmwhite/nostr-relay-explorer.git nostr_relay_explorer
+git clone --depth 1 https://github.com/gregorygmwhite/nostr-relay-explorer.git nostr_relay_explorer
 cd nostr_relay_explorer
 
 sed -i 's/3000:3000/3001:3001/g' docker-compose.yml

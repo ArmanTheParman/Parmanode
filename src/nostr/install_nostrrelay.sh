@@ -65,7 +65,7 @@ install_certbot
 
 ########################################################################################
 cd $hp
-git clone https://github.com/scsibug/nostr-rs-relay.git nostrrelay
+git clone --depth 1 https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 cd nostrrelay 
 
 #Bookworm version fails, need to revert back to bullseye
