@@ -1,5 +1,5 @@
 function enable_mempool_tor {
-
+debug "1"
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 if [[ ! -f /etc/tor/torrc ]] ; then
@@ -11,6 +11,7 @@ set_terminal ; echo "
 "
 enter_continue ; return 1 ;
 fi
+debug "2"
 please_wait
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
 
@@ -18,6 +19,7 @@ if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
 fi
 
+debug "3"
 if sudo grep "ControlPort 9051" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "ControlPort 9051" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
@@ -26,13 +28,16 @@ if sudo grep "CookieAuthentication 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2
     echo "CookieAuthentication 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "4"
 if sudo grep "CookieAuthFileGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "CookieAuthFileGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "5"
 if sudo grep "DataDirectoryGroupReadable 1" /etc/tor/torrc | grep -v '^#' >/dev/null 2>&1 ; then true ; else
     echo "DataDirectoryGroupReadable 1" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
+debug "6"
 
 # if there's this search string, that doesn't start with #, then...
 if sudo grep "HiddenServiceDir /var/lib/tor/mempool-service/" \
@@ -40,15 +45,18 @@ if sudo grep "HiddenServiceDir /var/lib/tor/mempool-service/" \
     echo "HiddenServiceDir /var/lib/tor/mempool-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "7"
 if sudo grep "HiddenServicePort 8280 127.0.0.1:8180" \
     /etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
     echo "HiddenServicePort 8280 127.0.0.1:8180" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
     fi
 
+debug "8"
 sudo systemctl restart tor
 debug "restarting mempool"
 restart_mempool >/dev/null
 get_onion_address_variable "mempool" 
+debug "9"
 set_terminal ; echo -e "
 ########################################################################################
     FYI, changes have been made to torrc file, and Tor has been restarted.
