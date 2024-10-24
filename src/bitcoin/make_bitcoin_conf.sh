@@ -89,3 +89,8 @@ $(cat $HOME/.bitcoin/bitcoin.conf)"
 sudo chown -R $USER:$(id -gn) $file
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
 }
+
+function add_rpcbind {
+if ! grep -q "rpcbind=0.0.0.0" < $bc ; then echo "rpcbind=0.0.0.0" | tee -a $bc >$dn
+fi
+}

@@ -12,6 +12,7 @@ delete_line "$prefix/etc/tor/torrc" "127.0.0.1:8333"
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
 delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
+add_rpcbind
 
 rm $HOME/.bitcoin/onion* >$dn
 start_bitcoin

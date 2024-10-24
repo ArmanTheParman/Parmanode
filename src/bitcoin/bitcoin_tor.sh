@@ -43,7 +43,9 @@ if sudo grep "HiddenServicePort 8333 127.0.0.1:8333" \
 #Bitcoind stopping - start it up inside this function later
 
     restart_tor
+
     stop_bitcoin
+    add_rpcbind #modifications might inadvertently delete rpcbind
     start_bitcoin
 
 unset $ONION_ADDR
