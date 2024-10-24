@@ -30,9 +30,10 @@ if [[ $mbackend == 1 && $server != 1 ]] ; then
 fi
 
 # INTRO 
+{
+choose_mempool_version && cd $hp && git clone $memversion https://github.com/mempool/mempool.git
+} || { enter_continue ; return 1 ; }
 
-cd $hp
-git clone --branch v3.0 --single-branch https://github.com/mempool/mempool.git
 install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
 sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
@@ -91,4 +92,38 @@ announce "There was some problem with the installation.
     Please let Parman know to fix."
 return 1
 fi
+}
+
+function choose_mempool_version {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Which version of Mempool would you like?
+$cyan
+            1)$orange     v2.5
+$cyan
+            2)$orange     v3.0
+$cyan
+            3)$orange     Latest (pre-release, can be buggy, but cutting edge)
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+1)
+export memversion="--branch v2.5 --single-branch"
+break ;;
+2)
+export memversion="--branch v3.0 --single-branch"
+break ;;
+3)
+export memversion="--depth 1"
+break ;;
+*)
+invalid ;;
+esac
+done
+return 0
 }
