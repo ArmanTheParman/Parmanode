@@ -172,9 +172,12 @@ installed_config_add "electrs2-end" ; debug "finished electrs install"
 # fi
 
 success "electrs" "being installed"
+
 isbitcoinrunning
+
 if [[ $bitcoinrunning == "false" ]] ; then
-announce "Want Parmanode to start Bitcoin for you?"
+yesorno "Want Parmanode to start Bitcoin for you?" && start_bitcoin 
+fi
 
 }
 
