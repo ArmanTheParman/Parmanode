@@ -15,7 +15,7 @@ debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"
 tor_mempool="true"
-get_onion_address_variable "mempool" 
+get_onion_address_variable "mempool" || enter_continue "couldn't get mempool tor address"
 output_tor=" Tor Access: $bright_blue    
 
     http://$ONION_ADDR_MEM:8280 $orange   
