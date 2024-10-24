@@ -46,18 +46,18 @@ set_terminal_custom 45 ; echo -e "
 $running
 
 
-
-               s)           Start
-
-               stop)        Stop
-
-               r)           Restart
-
-               tor)         Enable/Disable Tor.        $tor_mempool_status
-
-               conf)        View/Edit config (confv for vim)$pink(restart if changing)$orange
-
-               bk)          Change backend ...
+$cyan
+               s)$orange           Start
+$cyan
+               stop)$orange        Stop
+$cyan
+               r)$orange           Restart
+$cyan
+               tor)$orange         Enable/Disable Tor.        $tor_mempool_status
+$cyan
+               conf)$orange        View/Edit config (confv for vim)$pink(restart if changing)$orange
+$cyan
+               bk)$orange          Change backend ...
 
 
     ACCESS MEMPOOL:
