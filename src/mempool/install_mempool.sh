@@ -16,7 +16,7 @@ announce "Mempool won't work without Bitcoin installed first. You can
 fi
 
 sned_sats
-source $bc
+source $bc 2>$dn
 
 if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo "
     Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
