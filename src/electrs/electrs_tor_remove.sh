@@ -7,7 +7,7 @@ please_wait
 delete_line "/etc/tor/torrc" "electrs-service"
 delete_line "/etc/tor/torrc" "127.0.0.1:50005"
 
-sudo systemctl restart tor
+#sudo systemctl restart tor
 
 set_terminal
 parmanode_conf_remove "electrs_tor"

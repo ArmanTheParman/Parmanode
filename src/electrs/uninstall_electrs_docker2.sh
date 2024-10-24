@@ -1,4 +1,4 @@
-function uninstall_electrs_docker2 {
+up as electrs_db_backup (remaining on the dfunction uninstall_electrs_docker2 {
 
 set_terminal ; echo -e "
 ########################################################################################
