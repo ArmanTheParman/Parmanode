@@ -32,7 +32,7 @@ fi
 # INTRO 
 
 cd $hp
-git clone --depth 1 https://github.com/mempool/mempool.git
+git clone --branch v3.0 --single-branch https://github.com/mempool/mempool.git
 install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
 sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
