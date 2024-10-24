@@ -33,11 +33,10 @@ hide_messages_add "tmux" "1"
 break ;;
 y)
 if [[ $(uname) == Linux ]] ; then
-sudo apt-get update -y && sudo apt-get install tmux -y
-debug "pause"
+sudo apt-get update -y && sudo apt-get install tmux -y || enter_continue
 elif [[ $(uname) == Darwin ]] ; then
 brew_check
-brew install tmux
+brew install tmux || enter_continue
 fi
 break ;;
 esac
