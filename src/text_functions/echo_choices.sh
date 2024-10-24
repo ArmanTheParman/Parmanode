@@ -185,3 +185,35 @@ echo -e " There has been an error. See log files for more info."
 enter_continue
 }
 
+function yesorno {
+while true ; do
+set_terminal ; echo -ne "
+########################################################################################
+
+    $1
+$cyan
+                            y)$orange       yes
+$cyan
+                            n)$orange       no
+
+########################################################################################
+    Type 
+    '${cyan}y$orange' or '${cyan}n$orange' then $green<enter>$orange
+    
+    '${red}q$orange' to quit
+    '${red}m$orange' for main menu
+
+"
+read choice
+case $choice in
+q|Q) exit ;; m|M) back2main ;;
+y|Y|YES|yes) return 0 ;;
+n|N|NO|no)   return 1 ;;
+*)
+invalid
+;;
+esac
+done
+}
+
+
