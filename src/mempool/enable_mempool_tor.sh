@@ -46,6 +46,7 @@ if sudo grep "HiddenServicePort 8280 127.0.0.1:8180" \
     fi
 
 sudo systemctl restart tor
+debug "restarting mempool"
 restart_mempool >/dev/null
 get_onion_address_variable "mempool" 
 set_terminal ; echo -e "
