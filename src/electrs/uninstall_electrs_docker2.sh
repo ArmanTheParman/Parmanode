@@ -1,4 +1,4 @@
-up as electrs_db_backup (remaining on the dfunction uninstall_electrs_docker2 {
+function uninstall_electrs_docker2 {
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -21,7 +21,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 source $pc
 
 #might not be needed. Review when refactoring.
-if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
+if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
 docker stop electrs
 docker rm electrs

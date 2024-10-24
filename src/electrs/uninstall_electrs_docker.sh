@@ -20,7 +20,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 
 source $pc
 
-if [[ $OS == Linux ]] ; then electrs_tor_remove ; fi
+if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
 docker stop electrs
 docker rm electrs
