@@ -34,6 +34,7 @@ break ;;
 y)
 if [[ $(uname) == Linux ]] ; then
 sudo apt-get update -y && sudo apt-get install tmux -y
+debug "pause"
 elif [[ $(uname) == Darwin ]] ; then
 brew_check
 brew install tmux
