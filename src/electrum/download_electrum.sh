@@ -82,9 +82,11 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 1)
 export electrum_version="4.4.4" 
+break
 ;;
 2)
 export electrum_version="4.5.8"
+break
 ;;
 *)
 invalid
