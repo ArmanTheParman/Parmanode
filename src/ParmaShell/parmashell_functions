@@ -42,6 +42,22 @@ function gp { pn ; git pull ; a ; }
 function ct { cat /etc/crontab ; }
 function rp { pn ; ./run_parmanode.sh $@ ; }
 
+function capslock {
+clear
+echo -e "
+########################################################################################
+
+    Parmanode suspects you might have the caps lock on. Careful with that, Boomer.
+
+########################################################################################
+
+Hit <enter> to continue.
+"
+read
+}
+
+function RP { capslock ; rp ; }
+
 if [[ $(uname) == Darwin ]] ; then
 function en { cd /usr/local/etc/nginx ; a ; }
 function enc { cd /usr/local/etc/nginx/conf.d ; a ; }
