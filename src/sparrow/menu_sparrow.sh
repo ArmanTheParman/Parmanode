@@ -40,7 +40,6 @@ m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;;
 
 start|Start|START|S|s)
 check_SSH || return 0
-check_wallet_connected "Sparrow"
 run_sparrow
 return 0 ;;
 

@@ -35,7 +35,6 @@ m|M) back2main ;; q|Q|QUIT|Quit) exit ;; p|P) menu_use ;;
 
 start|Start|START|S|s)
 check_SSH || return 0
-check_wallet_connected "Electrum"
 run_electrum
 return 0 ;;
 
