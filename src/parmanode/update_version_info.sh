@@ -10,10 +10,14 @@ export_local_version
 check_backwards_compatibility
 if [[ $version_incompatibility != 1 ]] ; then
     check_for_updates
-
-        if [[ $old_version == 1 ]] ; then
-            old_version_detected
-        fi
+    if [[ $old_version == 1 ]] ; then
+        if [[ $vMajor -gt $latest_vMajor ]] ; then return 0 ; fi
+        if [[ $vMajor -lt $latest_vMajor ]] ; then old_version_detected ; return 0 ; fi
+        if [[ $vMinor -gt $latest_vMinor ]] ; then return 0 ; fi
+        if [[ $vMinor -lt $latest_vMinor ]] ; then old_version_detected ; return 0 ; fi
+        if [[ $vPatch -gt $latest_vPatch ]] ; then return 0 ; fi
+        if [[ $vPatch -lt $latest_vPatch ]] ; then old_version_detected ; fi
+    fi
 fi
 }
 
