@@ -264,22 +264,21 @@ log|LOG|Log)
 
 set_terminal ; log_counter
 if [[ $log_count -le 15 ]] ; then
-echo "
+enter_continue "
 ########################################################################################
     
     This will show the electrs log output in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
-enter_continue
 fi
 
 set_terminal_wider
 tail -f $logfile & 
 tail_PID=$!
-trap 'kill $tail_PID' SIGINT EXIT #condition added to memory
+trap 'kill $tail_PID' SIGINT EXIT >/dev/null 2>&1 #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the t. rap so control-c works elsewhere.
 set_terminal
