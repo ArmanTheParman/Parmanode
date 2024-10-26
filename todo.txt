@@ -1,30 +1,13 @@
-Use "#check" as markers to come back to
-Baobab - drive space GUI
-
-system-health-check
-    - log report document
-    - check symlinks
-    - check drive health
-    - $LANG
-    etc
-
-dynamic DNS for externalip variable,and LND conf
-
-create pipe to detect successful wallet creation in LND (lncli create)
-
-make a general troubleshooting page
-
 regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
 more menu signals with option to dismiss forever - eg "bitcoind is not a typo. type
 OK1 and <enter> to dismiss forever
 
-Satsale
+Satsale?
 
 ########################################################################################
 For Version 4
 ########################################################################################
-$HOME/parmanode will be changed to $HOME/parmanode_apps
 deprecate swap string command - maybe
 more jq usage
 sync Linux bitcoin drive using mac - seems insurmountable.
