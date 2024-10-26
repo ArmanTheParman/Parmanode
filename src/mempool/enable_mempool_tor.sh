@@ -44,26 +44,17 @@ if sudo grep "HiddenServicePort 8280 127.0.0.1:8180" \
     echo "HiddenServicePort 8280 127.0.0.1:8180" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     fi
 
-sudo systemctl restart tor
+restart_tor
 restart_mempool >$dn
 get_onion_address_variable "mempool" 
-set_terminal ; echo -e "
-########################################################################################
-    FYI, changes have been made to torrc file, and Tor has been restarted.
-########################################################################################
-"
-enter_continue
+announce "FYI, changes have been made to torrc file, and Tor has been restarted."
+return 0
 }
 
 function disable_mempool_tor {
 delete_line "$macprefix/etc/tor/torrc" "mempool-service"
 delete_line "$macprefix/etc/tor/torrc" "127.0.0.1:8180"
-sudo systemctl restart tor
+restart_tor
 restart_mempool >$dn
-set_terminal ; echo -e "
-########################################################################################
-    FYI, changes have been made to torrc file, and Tor has been restarted.
-########################################################################################
-"
-enter_continue
+announce "FYI, changes have been made to torrc file, and Tor has been restarted."
 }
