@@ -21,6 +21,6 @@ if [[ $OS == Linux ]] ; then
 sudo systemctl restart tor >$dn
 fi
 if [[ $OS == Mac ]] ; then
-brew services restart tor >/dev/null
+brew services restart tor >$dn
 fi
 }
