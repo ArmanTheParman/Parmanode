@@ -109,7 +109,13 @@ nr)
     
      t|T|tor|Tor)
        if [[ -n $tor_n ]] ; then
+       unset tor_already_installed
        install_tor 
+       if [[ $tor_already_installed == "true" ]] ; then 
+           announce "Tor is already installed. Parmanode updated with this information."
+           unset tor_already_installed
+           continue 
+       fi
        return 0 
        fi
        ;;
