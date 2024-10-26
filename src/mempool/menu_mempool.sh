@@ -11,7 +11,7 @@ fi
 
 unset ONION_ADDR_MEM tor_mempool tor_mempool_status output_tor
 
-if sudo test -e /var/lib/tor/mempool-service && sudo grep -q "mempool-service" /etc/tor/torrc ; then
+if sudo test -e $macprefix/var/lib/tor/mempool-service && sudo grep -q "mempool-service" $macprefix/etc/tor/torrc ; then
 debug "var lib tor mempool-service if exists"
 get_onion_address_variable mempool
 tor_mempool_status="${green}enabled$orange"

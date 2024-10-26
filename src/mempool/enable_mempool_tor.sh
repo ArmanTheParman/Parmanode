@@ -1,5 +1,5 @@
 function enable_mempool_tor {
-if [[ $OS == "Mac" ]] ; then  no_mac ; return 0 ; fi
+#if [[ $OS == "Mac" ]] ; then  no_mac ; return 0 ; fi
 if ! which tor >$dn 2>&1 ; then install_tor ; fi   
 
 # macprefix="/usr/local" and empty fro Linux (from parmanode variables)
