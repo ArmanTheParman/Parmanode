@@ -1,12 +1,12 @@
 function menu_electrs {
-logfile=$HOME/.parmanode/run_electrs.log 
 
-if [[ $1 != fast ]] ; then
 if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
     electrsis=docker
-    docker exec electrs cat /home/parman/run_electrs.log > $logfile
+    logfile=$HOME/.electrs/run_electrs.log
+    #docker exec electrs cat /home/parman/run_electrs.log > $logfile
 else
     electrsis=nondocker
+    logfile=$HOME/.parmanode/run_electrs.log 
     if [[ $OS == Linux ]] ; then
        sudo journalctl -exu electrs.service > $logfile 2>&1
     elif [[ $OS == Mac ]] ; then
@@ -14,19 +14,9 @@ else
     true #do nothing, sturctured so for readability.
     fi
 fi
-fi
-
-debug "electrsis, $electrsis"
 
 while true ; do
-unset log_size 
 
-#no need to check log size only if log is from journalctl output, otherwise
-#log file is growing from a process output with '>>'
-if ! [[ $OS == Linux && $electrsis == nondocker ]] ; then 
-log_size=$(ls -l $logfile | awk '{print $5}'| grep -oE [0-9]+)
-log_size=$(echo $log_size | tr -d '\r\n')
-fi
 debug "before set terminal"
 set_terminal
 
@@ -81,8 +71,6 @@ debug "before get version"
 if [[ $electrsis == docker && $1 != fast ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
         electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
-        log_size=$(docker exec electrs /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
-        log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
         fi
     fi
@@ -97,11 +85,6 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if [[ -n $log_size && $log_size -gt 100000000 ]] ; then echo -e "$red
-    THE LOG FILE SIZE IS GETTING BIG. TYPE 'logdel' AND <enter> TO CLEAR IT.
-    $orange"
-fi
-
 if [[ $electrsis == nondocker && $running == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
@@ -278,7 +261,7 @@ fi
 set_terminal_wider
 tail -f $logfile & 
 tail_PID=$!
-trap 'kill $tail_PID' SIGINT EXIT >/dev/null 2>&1 #condition added to memory
+trap 'kill $tail_PID' SIGINT EXIT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the t. rap so control-c works elsewhere.
 set_terminal
