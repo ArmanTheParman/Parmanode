@@ -1,17 +1,21 @@
 function enable_mempool_tor {
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-if [[ ! -f /etc/tor/torrc ]] ; then
-set_terminal ; echo "
-########################################################################################
-    /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
-    Parmanode won't be able to automate this process for you. Sorry! Aborting.
-########################################################################################
-"
-enter_continue ; return 1 ;
+
+if ! which tor >/dev/null 2>&1 ; then install_tor ; fi   
+
+if [[ $OS == "Mac" ]] ; then 
+    export torrc="/usr/local/etc/tor/torrc"
+else
+    export torrc="/etc/tor/torrc"
 fi
+
 please_wait
-sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
+
+if       [[ $OS == "Linux" ]] \
+    &&   grep -q "debian-tor" /etc/group >$dn 2>&1 ; then
+
+    sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
+
+fi
 
 if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
