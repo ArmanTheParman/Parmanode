@@ -105,10 +105,6 @@ fi
 unset file
 ;;
 
-# bk)
-# mempool_backend
-# ;;
-
 conf)
 nano $hp/mempool/docker/docker-compose.yml
 ;;
