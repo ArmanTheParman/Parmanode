@@ -198,8 +198,6 @@ done
 
 }
 
-
-
 function choose_bitcoin_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
 swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"none\""

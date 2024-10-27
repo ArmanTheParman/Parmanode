@@ -1,28 +1,36 @@
 function menu_bitcoin_tor {
 
-if ! which tor >/dev/null 2>&1 ; then set_terminal
-echo "
+if ! which tor >$dn 2>&1 ; then set_terminal
+install_tor
+fi
+
+if ! which tor >$dn 2>&1 ; then set_terminal
+enter_continue "
     You need to install Tor first. Aborting.
     "
-enter_continue
+    return 0
 fi
 
 while true ; do
 unset tortext
-source $dp/parmanode.conf >/dev/null 2>&1 
+source $dp/parmanode.conf >$dn 2>&1 
+
 if [[ $bitcoin_tor_status == t ]] ; then
-local status_print="Tor enabled (option 2)"
+    local status_print="Tor enabled (option 2)"
+
 elif [[ $bitcoin_tor_status == c ]] ; then
-local status_print="Clearnet (option 4)"
+    local status_print="Clearnet (option 4)"
+
 elif [[ $bitcoin_tor_status == tc ]] ; then
-local status_print="Clearnet & Tor (option 1)"
+    local status_print="Clearnet & Tor (option 1)"
+
 elif [[ $bitcoin_tor_status == tonlyout ]] ; then
-local status_print="Strict Tor, only out (option 3)"
+    local status_print="Strict Tor, only out (option 3)"
+
 fi
 
-if [[ $OS == Mac ]] ; then prefix=/usr/local/ ; else unset prefix ; fi
 
-if sudo [ -f $prefix/var/lib/tor/bitcoin-service/hostname ] && [[ $bitcoin_tor_status != c ]] ; then 
+if sudo [ -f $macprefix/var/lib/tor/bitcoin-service/hostname ] && [[ $bitcoin_tor_status != c ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
