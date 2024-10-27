@@ -15,7 +15,6 @@ if    sudo cat $macprefix/etc/tor/torrc 2>$dn | grep -q "fulcrum" >$dn 2>&1 \
    && sudo cat $macprefix/var/lib/tor/fulcrum-service/hostname | grep -q "onion" >$dn 2>&1 ; then
 
     F_tor="on"
-    fi
 
 else
     F_tor="off"
