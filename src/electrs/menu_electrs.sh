@@ -17,7 +17,6 @@ fi
 
 while true ; do
 
-debug "before set terminal"
 set_terminal
 
 #is electrs running variable
@@ -62,7 +61,6 @@ if [[ $electrsis == docker && $1 != fast ]] ; then
         ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
 fi
 
-debug "before get version"
 #Get version
 if [[ $electrsis == docker && $1 != fast ]] ; then
     if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
@@ -73,7 +71,6 @@ if [[ $electrsis == docker && $1 != fast ]] ; then
 else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
-debug "before next clear"
 set_terminal_custom 50
 
 echo -e "
@@ -265,7 +262,7 @@ menu_electrs #this is so the status refreshes
 ;;
 
 ec|EC|Ec|eC)
-echo "
+enter_continue "
 ########################################################################################
     
         This will run Nano text editor to edit config.toml. See the controls
@@ -275,7 +272,7 @@ echo "
 
 ########################################################################################
 "
-enter_continue
+
 nano $HOME/.electrs/config.toml
  
 ;;
