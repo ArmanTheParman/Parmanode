@@ -104,4 +104,15 @@ echo "volumes:
   mariadb_data:
   mysql_data:" | sudo tee -a $file >/dev/null 2>&1
 fi
+
+
+if grep -q "electrs" $ic ; then
+choose_electrs_for_mempool
+elif grep -q "fulcrum" $ic ; then
+choose_fulcrum_for_mempool
+elif grep -q "electrumx" $ic ; then
+choose_electrumx_for_mempool
+fi
+
+return 0
 }
