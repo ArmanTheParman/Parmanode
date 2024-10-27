@@ -1,30 +1,29 @@
 function menu_btcpay {
 while true ; do
 
-menu_bitcoin menu_btcpay #gets variables output1 
+menu_bitcoin menu_btcpay #gets variables output1 for menu text
 
 if echo $output1 | grep -q "choose" ; then
-output1a=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
+output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
 else
-output1a="$output1"
+output2="$output1"
 fi
 
 set_terminal_custom 51 
-unset menu_tor enable_tor_menu tor_on findbtcp
+unset menu_tor enable_tor_menu tor_on 
 
-if which tor >/dev/null && [[ $OS == Linux ]] ; then 
-get_onion_address_variable btcpay 
-menu_tor="    TOR: $bright_blue
+if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onion" \
+   && sudo grep -q "7003" $macprefix/etc/torrc \
+   && sudo grep -q "btcpay-service" $macprefix/etc/torrc ; then 
+
+    get_onion_address_variable btcpay 
+    menu_tor="    TOR: $bright_blue
         http://$ONION_ADDR_BTCPAY:7003$orange
         "
+else
+    enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 fi
 
-findbtcp=$(sudo find /var/lib/tor/ -name 'btcp*' 2>/dev/null) >/dev/null 2>&1 || unset findbtcp
-
-if which tor >/dev/null && [[ -z $findbtcp ]] && [[ $OS != Mac ]] ; then
-enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
-unset menu_tor
-fi
 clear
 echo -en "
 ########################################################################################
@@ -41,36 +40,36 @@ echo -e "
 fi
 
 echo -ne "
-$output1a" 
+$output2" 
 
 echo -e "
 
-
-             pp)           BTC ParmanPay - Online payment app, worldwide access
-
-             start)        Start BTCPay (starts Docker container)
-
-             stop)         Stop BTCPay (stops Docker container)
-
-             restart)      Restart BTCPay (restarts Docker container)
-
-             c)            Connect BTCPay to LND
-
-             bc)           BTCPay config file (bcv for vim)
-
-             nc)           NBXplorer config file (ncv for vim)
-
-             log)          View BTCPay Server log
-
-             nl)           View NBXplorer log
-
-             sb)           Start Bitcoin
-
-             stp)          Stop Bitcoin
+$cyan
+             pp)$orange           BTC ParmanPay - Online payment app, worldwide access
+$cyan
+             start)$orange        Start BTCPay (starts Docker container)
+$cyan
+             stop)$orange         Stop BTCPay (stops Docker container)
+$cyan
+             restart)$orange      Restart BTCPay (restarts Docker container)
+$cyan
+             c)$orange            Connect BTCPay to LND
+$cyan
+             bc)$orange           BTCPay config file (bcv for vim)
+$cyan
+             nc)$orange           NBXplorer config file (ncv for vim)
+$cyan
+             log)$orange          View BTCPay Server log
+$cyan
+             nl)$orange           View NBXplorer log
+$cyan
+             sb)$orange           Start Bitcoin
+$cyan
+             stp)$orange          Stop Bitcoin
 
 $enable_tor_menu
 
-    To access:     
+    For access:     
 
         http://${IP}:23001$yellow           
         from any computer on home network    $orange
