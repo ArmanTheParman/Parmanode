@@ -68,7 +68,7 @@ choose "xq" ; read choice
 case $choice in
 N|no|NO|No|n) return 0 ;;
 y|Y|YES|Yes|yes) 
-update_parmanode dontask ; return 0 ;;
+update_parmanode donotask ; return 0 ;;
 on)
 autoupdate on
 break
