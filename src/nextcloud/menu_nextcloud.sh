@@ -16,17 +16,17 @@ set_terminal ; echo -en "
 
     Nextcloud is:    $nextcloud_running
 
-
-                      pass)        Show setup password
-
-                      start)       Start NextCloud Docker container
-
-                      stop)        Stop NextCloud Docker container
-
-                      refresh)     Refresh info after any manual file changes
+$cyan
+                      pass)$orange        Show setup password
+$cyan
+                      start)$orange       Start NextCloud Docker container
+$cyan
+                      stop)$orange        Stop NextCloud Docker container
+$cyan
+                      refresh)$orange     Refresh info after any manual file changes
                                    - Restarts container as well
-                      
-                      data)        Information about data storage and backups
+$cyan                      
+                      data)$orange        Information about data storage and backups
 
     ACCESS: $green
             https://$IP:8020    $orange

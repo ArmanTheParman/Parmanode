@@ -19,15 +19,15 @@ set_terminal_high ; echo -e "
 
 $green             (start) $orange         Start Sparrow 
 
-$green             (mm)    $orange         Manage node connection...
+$rec             (mm)    $orange         Manage node connection...
 
-$green             (sc)    $orange         View/Edit config file (scv for vim)
+$cyan             (sc)    $orange         View/Edit config file (scv for vim)
 
-$green             (t)     $orange         Troubleshooting info
+$cyan             (t)     $orange         Troubleshooting info
 
-$green             (w)     $orange         Show saved wallet files
+$cyan             (w)     $orange         Show saved wallet files
 
-$green             (cl)    $orange         Clear connection certificates 
+$cyan             (cl)    $orange         Clear connection certificates 
                            $orange         (can help connection issues)
 
 
@@ -59,7 +59,7 @@ $orange
         with this file.
 
         Any changes will only be applied once you restart Bitcoin.
-$green
+$cyan
         Note, every time you change the sparrow connection type from the Parmanode
         menu, the config file will be replaced/refeshed.
 $orange

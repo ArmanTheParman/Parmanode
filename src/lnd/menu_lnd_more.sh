@@ -9,18 +9,18 @@ while true ; do set_terminal ; echo -en "
 ########################################################################################
 
 $menuDockerIP
-
-      (ex)             Expose your LND node to other nodes
-
-      (reset)          Reset lnd.conf to default
-
-      (alias)          Change LND alias
-
-      (port)           Change CLEARNET port. Current port is $lnd_port 
-
-      (mm)             Macaroon information (private and sensitive)
-      
-      (up)             Info on updating (easy peasy lemon squeezy)
+$cyan
+      (ex)$orange             Expose your LND node to other nodes
+$cyan
+      (reset)$orange          Reset lnd.conf to default
+$cyan
+      (alias)$orange          Change LND alias
+$cyan
+      (port)$orange           Change CLEARNET port. Current port is $lnd_port 
+$cyan
+      (mm)$orange             Macaroon information (private and sensitive)
+$cyan      
+      (up)$orange             Info on updating (easy peasy lemon squeezy)
 
 ########################################################################################
 "

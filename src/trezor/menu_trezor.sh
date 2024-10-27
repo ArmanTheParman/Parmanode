@@ -4,8 +4,8 @@ function menu_trezor {
                  $cyan                Trezor Menu            $orange                   
 ########################################################################################
 
-
-         (start)                 Start Trezor Suite 
+$green
+         (start)$orange                 Start Trezor Suite 
 
 
 ########################################################################################

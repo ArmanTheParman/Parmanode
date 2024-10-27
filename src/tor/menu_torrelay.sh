@@ -4,16 +4,16 @@ while true ; do set_terminal ; echo -e "
                  $cyan              Tor Relay Menu            $orange                   
 ########################################################################################
 
-
-               i)        Tor Relay Information (via Nyx software)
-
-               r)        Restart Tor
-
-               start)    Start Tor
-
-               stop)     Stop Tor
-
-               status)   Tor Status
+$cyan
+               i)$orange        Tor Relay Information (via Nyx software)
+$green
+               start)$orange    Start Tor
+$red
+               stop)$orange     Stop Tor
+$cyan
+               r)$orange        Restart Tor
+$cyan
+               status)$orange   Tor Status
 
 ########################################################################################
 "

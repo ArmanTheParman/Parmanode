@@ -28,12 +28,12 @@ set_terminal ; echo -en "
 
 
 $running
-
-                    (start)               Start Thunderhub 
-
-                    (stop)                Stop Thunderhub
-
-                    (restart)             Must I tell you what this does?
+$green
+                    (start)$orange               Start Thunderhub 
+$red
+                    (stop)$orange                Stop Thunderhub
+$cyan
+                    (restart)$orange             Must I tell you what this does?
 
     Connection URL:
 $cyan

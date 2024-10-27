@@ -182,28 +182,28 @@ echo -ne "
                         $wallet 
 $menuDockerIP
 
-
-      (i)              Important info
-
-      (s)   $cyan           Start $LND $orange$inside_docker 
-
-      (stop)  $cyan         Stop $LND $orange$inside_docker 
-
-      (rs)             Restart $LND $inside_docker
+$cyan
+      (i)$orange              Important info
+$cyan
+      (s)$orange              Start $LND $orange$inside_docker 
+$cyan
+      (stop)$orange           Stop $LND $orange$inside_docker 
+$cyan
+      (rs)$orange             Restart $LND $inside_docker
 $dkrmenu
-      (log)            Inspect LND logs
-
-      (lc)             Inspect and edit $lndconf file (lcv for vim)
-
-      (scb)            Static Channel Backup 
-
-      (t)              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
-
-      (th)             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
-
-      (w)              ... wallet options
-
-      (mm)             ... more options
+      (log)$orange            Inspect LND logs
+$cyan
+      (lc)$orange             Inspect and edit $lndconf file (lcv for vim)
+$cyan
+      (scb)$orange            Static Channel Backup 
+$cyan
+      (t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
+$cyan
+      (th)$orange             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
+$cyan
+      (w)$orange              ... wallet options
+$cyan
+      (mm)$orange             ... more options
 $lnd_onion $clearnetURI
 $red $blinkon                                                      r to refresh $blinkoff$orange       
 ########################################################################################

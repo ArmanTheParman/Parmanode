@@ -4,10 +4,10 @@ set_terminal ; echo -e "
 ########################################################################################$cyan
                                 QBittorrent Menu         $orange      
 ########################################################################################
-
-              s)               Start
-
-              t)               Download Parman's ParmanodL OS Torrent file
+$cyan
+              s)$orange               Start
+$cyan
+              t)$orange               Download Parman's ParmanodL OS Torrent file
 
 ########################################################################################
 "

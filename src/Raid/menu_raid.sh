@@ -4,16 +4,16 @@ set_terminal ; echo -e "
 ########################################################################################$cyan
                                 R A I D - menu$orange
 ########################################################################################
-$green
-                          dt)$orange         Inspect RAID details$green
+$cyan
+                          dt)$orange         Inspect RAID details$cyan
 
-                          lr)$orange         List running RAIDs$green
+                          lr)$orange         List running RAIDs$cyan
 
-                          lm)$orange         List mounted RAIDs$green
+                          lm)$orange         List mounted RAIDs$cyan
 
-                          lc)$orange         List physically connected RAID drives$green
+                          lc)$orange         List physically connected RAID drives$cyan
 
-                          ums)$orange        Unmount/Mount/Stop menu ...$green
+                          ums)$orange        Unmount/Mount/Stop menu ...$cyan
 
                           i)$orange          info about RAIDs
 

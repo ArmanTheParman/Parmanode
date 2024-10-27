@@ -4,8 +4,8 @@ function menu_green {
                  $cyan              Green Wallet Menu            $orange                   
 ########################################################################################
 
-
-         (start)                 Start Green App 
+$green
+         (start)$orange                 Start Green App 
 
 
 ########################################################################################

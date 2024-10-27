@@ -4,8 +4,8 @@ while true ; do set_terminal ; echo -e "
                                   Ledger Live Menu            $orange                   
 ########################################################################################
 
-
-         (start)                  Start Ledger Live
+$green
+         (start)$orange                  Start Ledger Live
 
 
 ########################################################################################

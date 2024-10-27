@@ -4,8 +4,8 @@ while true ; do set_terminal ; echo -e "
                  $cyan                Specter Menu            $orange                   
 ########################################################################################
 
-
-                 (start)                 Start Specter 
+$green
+                 (start)$orange                 Start Specter 
 
 
 ########################################################################################

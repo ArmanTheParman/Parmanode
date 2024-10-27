@@ -26,16 +26,16 @@ echo -e "
                            Public Pool is$red NOT RUNNING$orange" 
 fi
 echo -e "      
-
-      (start)          Start Public Pool (and Public Pool UI) Docker containers
-
-      (stop)           Stop Public Pool (and Public Pool UI) Docker containers
-
-      (restart)        Restart containers
-
-      (tor)            Enable/Disable Tor       $status_tor_text
-
-      (newtor)         Refresh onion address
+$green
+      (start)$orange          Start Public Pool (and Public Pool UI) Docker containers
+$red
+      (stop)$orange           Stop Public Pool (and Public Pool UI) Docker containers
+$cyan
+      (restart)$orange        Restart containers
+$cyan
+      (tor)$orange            Enable/Disable Tor       $status_tor_text
+$cyan
+      (newtor)$orange         Refresh onion address
 
 
       The user interfact can be access from your browser at:

@@ -6,19 +6,19 @@ while true ; do set_terminal ; echo -e "
 
       The LNbits can be accessed in your browser at:
 
-
+$yellow
                                http://localhost:5000
-
+$orange
                                or
-
+$yellow
                                http://$IP:5000
 
-
-      (start)          Start LNbits Docker container
-
-      (stop)           Stop LNbits Docker container
-
-      (restart)        Restart LNbits Docker container
+$cyan
+      (start)$orange          Start LNbits Docker container
+$cyan
+      (stop)$orange           Stop LNbits Docker container
+$cyan
+      (restart)$orange        Restart LNbits Docker container
 
 ########################################################################################
 "

@@ -4,9 +4,9 @@ while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               
 ########################################################################################
+
+
 $cyan
-
-
       (c)   $red           How to CONNECT your mobile lightning wallet to your node
                        eg Zeus wallet
 $cyan

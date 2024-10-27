@@ -12,21 +12,21 @@ set_terminal ; echo -e "
 
 
 
-$green             (info)$orange          Important information
+$cyan             (info)$orange          Important information
 
-$green             (rt)     $orange       Restart Tor
+$cyan             (rt)     $orange       Restart Tor
 
-$green             (sp)         $orange   Set permissions
+$cyan             (sp)         $orange   Set permissions
 
-$green             (list)         $orange List file on the server
+$cyan             (list)         $orange List file on the server
 
-$green             (off)     $orange      Turn off file indexing    [ Currently $status ]
+$cyan             (off)     $orange      Turn off file indexing    [ Currently $status ]
             
-$green             (on)          $orange  Turn on file indexing     [ Currently $status ]
+$cyan             (on)          $orange  Turn on file indexing     [ Currently $status ]
 
-$green             (rn)$orange            Retart Nginx 
+$cyan             (rn)$orange            Retart Nginx 
 
-$green             (s)$orange             See Nginx status
+$cyan             (s)$orange             See Nginx status
 
 
 $cyan  
@@ -71,7 +71,7 @@ Every time you add files to the tor-server directory, you need to make
 sure the files have the correct permission settings otherwise they
 are not accessible by others connecting to your server.
 
-Hit $green<enter>$orange to continue and set the permissions automatically,
+Hit $cyan<enter>$orange to continue and set the permissions automatically,
 or$red p$orange and$red <enter>$orange to go back."
 read choice
 if [[ $choice == "p" || $choice == "P" ]] ; then return 1 ; fi
