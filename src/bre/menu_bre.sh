@@ -4,19 +4,24 @@ while true ; do
 set_terminal
 unset output t_enabled menubrerunning torstatusD torstatusE
 
-if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion ; then
-get_onion_address_variable "bre" 
-output=" 
+if sudo cat /var/lib/tor/bre-service/hostname | grep -q onion \
+   && grep -q "bre-service" $macprefix/etc/torrc \
+   && grep -q "3004" $macprefix/etc/torrc; then
+
+    get_onion_address_variable "bre" 
+    output=" 
     ACCESS VIA TOR FROM ANYWHERE IN THE WORLD USING THE FOLLOWING ONION ADDRESS:
                    $bright_blue
             $ONION_ADDR_BRE:3004
                    $orange"
-t_enabled="true"
-torstatusE="${green}Enabled$orange"
+    t_enabled="true"
+    torstatusE="${green}Enabled$orange"
 else
-torstatusD="${red}Disabled$orange"
-t_enabled="false"
+    torstatusD="${red}Disabled$orange"
+    t_enabled="false"
 fi
+
+
 set_terminal_high
 echo -e "
 ########################################################################################
@@ -55,20 +60,20 @@ echo -e "
 fi
 fi
 
-echo -e "
-                 (start)    Start BTC RPC EXPLORER
-
-                 (stop)     Stop BTC RPC EXPLORER
-
-                 (restart)  Restart BTC RPC EXPLORER 
-
-                 (t)        Enable access via Tor (Linux Only)  $torstatusD
-
-                 (td)       Disable access via Tor (Linux Only)  $torstatusE
-
-                 (c)        Edit config file (cv for vim)
-
-                 (log)      View log file (journalctl)
+echo -e "$cyan
+                 (start)$orange    Start BTC RPC EXPLORER
+$cyan
+                 (stop)$orange     Stop BTC RPC EXPLORER
+$cyan
+                 (restart)$orange  Restart BTC RPC EXPLORER 
+$cyan
+                 (t)$orange        Enable access via Tor (Linux Only)  $torstatusD
+$cyan
+                 (td)$orange       Disable access via Tor (Linux Only)  $torstatusE
+$cyan
+                 (c)$orange        Edit config file (cv for vim)
+$cyan
+                 (log)$orange      View log file (journalctl)
                                              
 
     ACCESS THE PROGRAM FROM YOUR BROWSER ON COMPUTERS WITHIN THE HOME NETWORK:
