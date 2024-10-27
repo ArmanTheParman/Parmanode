@@ -23,7 +23,7 @@ set_terminal
 #is electrs running variable
 unset running runningd
 if [[ $electrsis == nondocker ]] ; then
-    if ps -x | grep electrs | grep conf >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrs failed"  ; then 
+    if ps -x | grep electrs | grep conf >$dn 2>&1  && ! tail -n 10 $logfile 2>$dn | grep -q "electrs failed"  ; then 
     running="true"
     else
     running="false"
@@ -36,32 +36,28 @@ else
     fi
 fi
 
-debug "runnind, running, $running"
-
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
-source $dp/parmanode.conf >/dev/null 2>&1
+source $dp/parmanode.conf >$dn 2>&1
+
 if [[ $running == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
-if [[ $OS == Linux && -e /etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] ; then
-debug "in tor status"
-    if sudo cat /etc/tor/torrc | grep -q "electrs" >/dev/null 2>&1 ; then
-        if [[ -e /var/lib/tor/electrs-service ]] && \
-        sudo cat /var/lib/tor/electrs-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+if  [[ -e $macprefix/etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] \\
+    && sudo grep -q "electrs" $macprefix/etc/tor/torrc \\ 
+    && grep -q "electrs_tor=true" < $pc \\ 
+    && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
+
         E_tor="${green}on${orange}"
         E_tor_logic=on
-        fi
-debug "in if cat torrc grep electrs"
-        if grep -q "electrs_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
         get_onion_address_variable "electrs" 
-        fi
-    else
+else
         E_tor="${red}off${orange}"
         E_tor_logic=off
-    fi
+
 fi
 
+#Tor is always on for docker electrs
 if [[ $electrsis == docker && $1 != fast ]] ; then
         ONION_ADDR_ELECTRS=$(docker exec -u root electrs cat /var/lib/tor/electrs-service/hostname)
 fi
@@ -69,13 +65,13 @@ fi
 debug "before get version"
 #Get version
 if [[ $electrsis == docker && $1 != fast ]] ; then
-    if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
-        electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>/dev/null )
+    if docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
+        electrs_version=$(docker exec electrs /home/parman/parmanode/electrs/target/release/electrs --version | tr -d '\r' 2>$dn )
         if docker exec -it electrs /bin/bash -c "tail -n 10 $logfile" | grep -q "electrs failed" ; then unset electrs_version 
         fi
     fi
 else #electrsis nondocker
-        electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>/dev/null)
+        electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 debug "before next clear"
 set_terminal_custom 50
@@ -203,7 +199,7 @@ logdel)
 please_wait
 if [[ $electrsis == docker ]] ; then
 docker_stop_electrs #stops electrs container
-docker start electrs >/dev/null 2>&1 #starts container
+docker start electrs >$dn 2>&1 #starts container
 docker exec electrs bash -c "rm $logfile"
 docker_start_electrs #starts electrs inside running container
 else
@@ -305,8 +301,8 @@ fi
 ;;
 
 newtor)
-sudo rm -rf /var/lib/tor/electrs-service
-sudo systemctl restart tor
+sudo rm -rf $macprefix/var/lib/tor/electrs-service
+restart_tor
 announce "You need to wait about 30 seconds to a minute for the onion address to appear.
     Just refresh the menu after a while."
 ;;
@@ -328,7 +324,7 @@ return 0
 function menu_electrs_status {
 please_wait
 
-if ! which jq >/dev/null 2>&1 ; then
+if ! which jq >$dn 2>&1 ; then
 export electrs_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
 return 0
 fi
@@ -347,9 +343,9 @@ if [[ $bsync == "true" ]] ; then
 
 elif [[ $bsync == "false" ]] ; then
     #fetches block number...
-    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >/dev/null
+    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >$dn
     #in case an unexpected non-number string, printout, otherwise check if full synced.
-    if ! echo $electrs_sync | grep -qE '^[0-9]+$' >/dev/null ; then
+    if ! echo $electrs_sync | grep -qE '^[0-9]+$' >$dn ; then
 
         export electrs_sync="Wait...$orange"
 
