@@ -1,9 +1,7 @@
 function menu_fulcrum {
 unset refresh
 
-
-while true
-do
+while true ; do
 set_terminal
 
 isbitcoinrunning
@@ -13,17 +11,17 @@ else
 isbitcoinrunning_fulcrum="${red}${blinkon}Bitcoin is NOT running${blinkoff}$orange"
 fi
 
-if [[ $OS == Linux ]] ; then
-if sudo cat /etc/tor/torrc | grep -q "fulcrum" >/dev/null 2>&1 ; then
-    if sudo cat /var/lib/tor/fulcrum-service/hostname | grep -q "onion" >/dev/null 2>&1 ; then
+if    sudo cat $macprefix/etc/tor/torrc 2>$dn | grep -q "fulcrum" >$dn 2>&1 \
+   && sudo cat $macprefix/var/lib/tor/fulcrum-service/hostname | grep -q "onion" >$dn 2>&1 ; then
+
     F_tor="on"
     fi
+
 else
     F_tor="off"
 fi
-fi
 
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $pc >$dn 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 #done this way so first load of menu is fast
@@ -40,7 +38,7 @@ echo -e "
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################"
 if [[ $OS == "Linux" ]] ; then
-if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then echo -en "
+if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
       BLOCK      :   $fulcrum_sync
@@ -58,7 +56,7 @@ echo -en "$orange
 fi #end if ps -x
 fi #end if Linux
 if [[ $OS == "Mac" ]] ; then
-if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then echo -en "
+if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then echo -en "
 
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
@@ -82,26 +80,26 @@ $green
       (start)   $orange Start Fulcrum 
 $red
       (stop)  $orange   Stop Fulcrum 
-
-      (restart)  Restart Fulcrum
-
-      (c)        How to connect your Electrum wallet to Fulcrum
-
-      (log)      Inspect Fulcrum logs
-
-      (fc)       Inspect and edit fulcrum.conf file 
-
-      (tor)      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
-
-      (torx)     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
-
-      (newtor)   Refresh Tor address
-
-      (swap)     Swap internal vs external drive sync
-
-      (remote)   Connect this Fulcrum server to Bitcoin Core on a different computer
-    
-      (dc)       Fulcrum database corrupted? -- Use this to start fresh.
+$cyan
+      (restart)$orange  Restart Fulcrum
+$cyan
+      (c)$orange        How to connect your Electrum wallet to Fulcrum
+$cyan
+      (log)$orange      Inspect Fulcrum logs
+$cyan
+      (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
+$cyan
+      (tor)$orange      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
+$cyan
+      (torx)$orange     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
+$cyan
+      (newtor)$orange   Refresh Tor address
+$cyan
+      (swap)$orange     Swap internal vs external drive sync
+$cyan
+      (remote)$orange   Connect this Fulcrum server to Bitcoin Core on a different computer
+$cyan    
+      (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
 if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum"
@@ -190,7 +188,6 @@ fi
 continue ;;
 
 fc|FC|Fc|fC)
-if [[ $OS == "Linux" ]] ; then
 echo -e "
 ########################################################################################
     
@@ -203,24 +200,10 @@ echo -e "
 "
 enter_continue
 nano $HOME/parmanode/fulcrum/fulcrum.conf
-fi
+;;
 
-if [[ $OS == "Mac" ]] ; then
-echo -e "
-########################################################################################
-    
-        This will run Nano text editor to edit fulcrum.conf. See the controls
-        at the bottom to save and exit.$red Be careful messing around with this file. $orange
-
-        Any changes will only be applied once you restart Fulcrum.
-
-########################################################################################
-"
-enter_continue
-nano $HOME/parmanode/fulcrum/fulcrum.conf
-fi
-
-continue
+fcv)
+vim $HOME/parmanode/fulcrum/fulcrum.conf
 ;;
 
 p|P) 
@@ -275,7 +258,7 @@ function menu_fulcrum_status {
 local file="/tmp/fulcrum.journal"
 
 if [[ $OS == Mac ]] ; then
-    if docker ps >/dev/null ; then
+    if docker ps >$dn ; then
         docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
     else
        echo "Docker not running." > $file 
