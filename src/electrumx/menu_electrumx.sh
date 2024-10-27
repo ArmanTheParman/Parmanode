@@ -30,7 +30,7 @@ set_terminal
 #is electrumx running variable
 unset running runningd
 if [[ $electrumxis == nondocker ]] ; then
-    if ps -x | grep electrumx | grep -v grep >/dev/null 2>&1  && ! tail -n 10 $logfile 2>/dev/null | grep -q "electrumx failed"  ; then 
+    if ps -x | grep electrumx | grep -v grep >$dn 2>&1  && ! tail -n 10 $logfile 2>$dn | grep -q "electrumx failed"  ; then 
     runningd=nondocker
     running="true"
     else
@@ -48,7 +48,7 @@ else
 fi
 
 unset ONION_ADDR_ELECTRUMX E_tor E_tor_logic drive_electrumx electrumx_version electrumx_sync 
-source $dp/parmanode.conf >/dev/null 2>&1
+source $dp/parmanode.conf >$dn 2>&1
 
 if [[ $refresh == "true" ]] ; then
     if [[ $running == "true" ]] ; then 
@@ -61,9 +61,9 @@ fi
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc && $electrumxis == nondocker ]] ; then
 debug "in tor status"
-    if sudo cat /etc/tor/torrc | grep -q "electrumx" >/dev/null 2>&1 ; then
-        if [[ -e /var/lib/tor/electrumx-service ]] && \
-        sudo cat /var/lib/tor/electrumx-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+    if sudo cat $macprefix/etc/tor/torrc 2>$dn | grep -q "electrumx" ; then
+        if [[ -e $macprefix/var/lib/tor/electrumx-service ]] && \
+        sudo cat $macprefix/var/lib/tor/electrumx-service/hostname | grep "onion" >$dn 2>&1 ; then
         E_tor="${green}on${orange}"
         E_tor_logic=on
         else
@@ -71,7 +71,7 @@ debug "in tor status"
         E_tor_logic=on
         fi
 debug "in if cat torrc grep electrumx"
-        if grep -q "electrumx_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+        if grep -q "electrumx_tor=true" < $pc ; then 
         get_onion_address_variable "electrumx" 
         fi
     else
@@ -88,7 +88,7 @@ debug "before get version"
 #Get version
 if [[ $electrumxis == docker ]] ; then
         electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]'")
-        log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>/dev/null)
+        log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>$dn)
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
@@ -169,22 +169,22 @@ $green
       (start)$orange    Start Electrum X 
 $red
       (stop)$orange     Stop Electrum X
-
-      (restart)  Restart Electrum X
-
-      (remote)   Choose which Bitcoin Core for Electrum X to connect to
-
-      (log)      Inspect Electrum X logs
-
-      (ec)       Inspect and edit config file (ecv for vim)
-
-      (dc)       Electrum X database corrupted? -- Use this to start fresh."
+$cyan
+      (restart)$orange  Restart Electrum X
+$cyan
+      (remote)$orange   Choose which Bitcoin Core for Electrum X to connect to
+$cyan
+      (log)$orange      Inspect Electrum X logs
+$cyan
+      (ec)$orange       Inspect and edit config file (ecv for vim)
+$cyan
+      (dc)$orange       Electrum X database corrupted? -- Use this to start fresh."
 
 if [[ $OS == Linux && $electrumxis == nondocker ]] ; then echo -e "
-
-      (tor)      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
-
-      (newtor)   Refresh Tor address
+$cyan
+      (tor)$orange      Enable/Disable Tor connections to Electrum X -- Status : $E_tor"  ; else echo -e "
+$cyan
+      (newtor)$orange   Refresh Tor address
 " 
 fi
 echo -e "
@@ -227,7 +227,7 @@ logdel)
 please_wait
 if [[ $electrumxis == docker ]] ; then
 docker_stop_electrumx #stops electrumx container
-docker start electrumx >/dev/null 2>&1 #starts container
+docker start electrumx >$dn 2>&1 #starts container
 docker exec electrumx bash -c "rm $logfile"
 docker_start_electrumx #starts electrumx inside running container
 else
@@ -358,8 +358,8 @@ fi
 ;;
 
 newtor)
-sudo rm -rf /var/lib/tor/electrumx-service
-sudo systemctl restart tor
+sudo rm -rf $macprefix/var/lib/tor/electrumx-service
+restart_tor
 announce "You need to wait about 30 seconds to a minute for the onion address to appear.
     Just refresh the menu after a while."
 ;;
@@ -377,7 +377,7 @@ return 0
 function menu_electrumx_status {
 please_wait
 
-if ! which jq >/dev/null 2>&1 ; then
+if ! which jq >$dn 2>&1 ; then
 export electrumx_sync="PLEASE INSTALL JQ FOR THIS TO WORK"
 return 0
 fi
@@ -397,7 +397,7 @@ if [[ $bsync == "true" ]] ; then
 elif [[ $bsync == "false" ]] ; then
     #fetches block number...
     export electrumx_sync=$(tail -n20 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
-     grep -Eo '^[0-9]+') >/dev/null
+     grep -Eo '^[0-9]+') >$dn
 
     bblock=$(echo $gbci | jq -r ".blocks")    
 debug "bblock is - $bblock ; electrumx_sync is $electrumx_sync"
