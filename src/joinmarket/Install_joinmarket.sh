@@ -115,12 +115,22 @@ function modify_joinmarket_cfg {
 
 
 function build_joinmarket {
+
     unset success_build #do not use 'success' as a variable, it deletes the success function
     rm $hp/joinmarket/Dockerfile >$dn 2>&1
-    cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
+
+    if [[ $OS == Linux ]] ; then
+        cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
+    elif [[ $OS == Mac ]] ; then
+        cp $pn/src/joinmarket/Dockerfile_mac $hp/joinmarket/Dockerfile >$dn 2>&1
+        cp $pn/src/joinmarket/Dockerfile_torrc $hp/joinmarket/ >$dn 2>&1
+        cp $pn/src/joinmarket/Dockerfile_torsocks.conf $hp/joinmarket/ >$dn 2>&1
+    fi
+
     cd $hp/joinmarket
     docker build -t joinmarket . && success_build="true"
     enter_continue
+
     if [[ $success_build == "true" ]] ; then return 0 ; else return 1 ; fi
 }
 
