@@ -76,12 +76,12 @@ function make_joinmarket_wallet {
         Trying again every 10 seconds...$orange
         (q to quit)
         "
-        read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
+        read -sn1 -t 10 input #-s silent printing, -n1 one character, -t timeout
 
-        if [[ $input == 'q' ]] ; then return 1 ; fi
-        sleep 5 
-        if [[ $input == 'q' ]] ; then return 1 ; fi
-        sleep 5 
+        if [[ $input == 'q' ]] ; then return 1 
+        elif [[ -z $input ]] ; then continue 
+        else sleep 2 
+        fi
 
     done
 
