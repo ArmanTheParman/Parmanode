@@ -4,7 +4,7 @@ function  make_sparrow_config {
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 if [[ ! -e $HOME/.sparrow ]] ; then mkdir $HOME/.sparrow >/dev/null 2>&1 ; fi
 rm $HOME/.sparrow/config >/dev/null 2>&1
-cp $original_dir/src/sparrow/config $HOME/.sparrow/config # copies template across
+cp $pn/src/sparrow/config $HOME/.sparrow/config # copies template across
 
 # These settings can be written every time regardless of connection type...
 swap_string "$HOME/.sparrow/config" "coreDataDir" "    \"coreDataDir\": \"$HOME/.bitcoin\","

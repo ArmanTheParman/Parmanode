@@ -2,7 +2,7 @@ function menu_main {
 while true ; do
 set_terminal
 
-source $original_dir/version.conf >/dev/null
+source $pn/version.conf >/dev/null
 source $hm >/dev/null 2>&1 #hide messages
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 

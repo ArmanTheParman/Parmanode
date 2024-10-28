@@ -33,7 +33,7 @@ mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
 installed_config_add "rtl-start"
 make_rtl_config
 
-docker build -t rtl $original_dir/src/rtl || { announce "failed to build RTL image" ; return 1 ; }
+docker build -t rtl $pn/src/rtl || { announce "failed to build RTL image" ; return 1 ; }
 
 run_rtl_docker
 

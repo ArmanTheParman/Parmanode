@@ -27,7 +27,7 @@ stop_lnd >/dev/null 2>&1
 #Needed to first stop all parmanode programs that might be using the drive
 # unmount after everything stopped.
 
-cd ~ ; cd $original_dir
+cd ~ ; cd $pn
 if [[ $OS == Linux ]] ; then sudo umount /media/$USER/parmanode* >/dev/null 2>&1 ; fi
 if [[ $OS == Mac ]] ; then diskutil unmountdisk /Volumes/parmanode* >/dev/null    ; fi
 

@@ -74,8 +74,15 @@ function make_joinmarket_wallet {
         echo -e "$red
         Sometimes waiting for bitcoin to laod up is needed.
         Trying again every 10 seconds...$orange
+        (q to quit)
         "
-        sleep 10
+        read -sn1 -t 1 input #-s silent printing, -n1 one character, -t timeout
+
+        if [[ $input == 'q' ]] ; then return 1 ; fi
+        sleep 5 
+        if [[ $input == 'q' ]] ; then return 1 ; fi
+        sleep 5 
+
     done
 
 }
@@ -119,6 +126,8 @@ function build_joinmarket {
 
 function run_joinmarket_docker {
 
+if [[ $OS == Linux ]] ; then
+
     docker run -d \
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
@@ -127,6 +136,17 @@ function run_joinmarket_docker {
                --restart unless-stopped \
                joinmarket
     return 0
+
+elif [[ $OS == Mac ]] ; then
+
+    docker run -d \
+               --name joinmarket \
+               -v $HOME/.joinmarket:/root/.joinmarket \
+               --restart unless-stopped \
+               joinmarket
+    return 0
+fi
+
 }
 
 function clone_joinmarket {

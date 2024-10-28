@@ -1,6 +1,6 @@
 function build_fulcrum_docker {
 
-cd $original_dir    #created in run_parmanode. Need to get back to build dockerfile from here.
+cd $pn    #created in run_parmanode. Need to get back to build dockerfile from here.
 
 set_terminal ; echo "
 ########################################################################################

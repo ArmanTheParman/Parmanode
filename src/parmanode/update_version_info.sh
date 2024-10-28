@@ -98,7 +98,7 @@ debug2 "export latest version: $latest_version $latest_vMajor $latest_vMinor $la
 }
 
 function export_local_version {
-source $original_dir/version.conf >/dev/null 2>&1
+source $pn/version.conf >/dev/null 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
 debug2 "export local version $version $vMajor $vMinor $vPatch"
 

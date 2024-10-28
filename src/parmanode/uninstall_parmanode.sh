@@ -182,7 +182,7 @@ rm $HOME/Desktop/parmanode.desktop >/dev/null
 debug "delete desktop icon"
 rm $HOME/.icons/PNicon*
 debug "delete .icons"
-sudo rm -rf $original_dir 
+sudo rm -rf $pn
 debug "remove original dir"
 ;;
 esac

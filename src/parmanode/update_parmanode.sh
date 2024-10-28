@@ -28,7 +28,7 @@ enter_continue
 return 1 
 fi
 
-if [[ ! -f $original_dir/version.conf ]] ; then # this file was introduced in newer versions
+if [[ ! -f $pn/version.conf ]] ; then # this file was introduced in newer versions
 # of parmanode
 set_terminal ; echo "
 ########################################################################################

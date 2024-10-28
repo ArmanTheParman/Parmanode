@@ -105,5 +105,5 @@ fi
 
 cd /tmp 
 rm temp1.txt temp2.txt temp3.txt temp4.txt >/dev/null 2>&1
-cd $original_dir 
+cd $pn
 }

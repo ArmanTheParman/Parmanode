@@ -1,6 +1,6 @@
 function verify_lnd {
 #import Roasbeef's public key
-gpg --import $original_dir/src/lnd/roasbeef.pgp 2>&1
+gpg --import $pn/src/lnd/roasbeef.pgp 2>&1
 
 cd $HOME/parmanode/lnd
 debug "wait"
