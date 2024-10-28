@@ -31,29 +31,6 @@ fi
 if grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "none" ; then
 
     export backend="${yellow}Bitcoin Core$orange"
-
-    source $pc
-    if grep -q "electrs-end" $ic ; then choice="electrs" 
-    elif grep -q "fulcrum-end" $ic ; then choice="Fulcrum" 
-    elif grep -q "electrumx-end" $ic ; then choice="ElectrumX" 
-    fi
-
-    if [[ $prefersbitcoinmempool_only_ask_once == "true" ]] ; then choice="skip" ; fi
-    
-    case $choice in
-    electrs|Fulcrum|ElectrumX)
-    if yesorno "You have $choice installed. Do you want Mempool to sync up with that
-    instead of Bitcoin Core directly? (It's better and faster)"  ; then
-        change_mempool_backend
-    else
-        parmanode_conf_add "prefersbitcoinmempool_only_ask_once=true"
-    fi
-    ;;
-    skip)
-    true #do nothing
-    esac
-
-
 elif grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
 export backend="${bright_blue}An Electrum/Fulcrum Server$orange"
 else
