@@ -102,7 +102,7 @@ else
 thedir="/home/$username"
 fi
 
-docker exec $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
+docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
 docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin >/dev/null 2>&1
 
 #Download bitcoin 
@@ -132,7 +132,7 @@ done
 tar -xf bitcoin-* >/dev/null 2>&1
 docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
 docker cp ./bit*/bin/* $dockername:/tmp/bitcoin
-docker exec -it $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin $/tmp/bitcoin/*" || {
+docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin $/tmp/bitcoin/*" || {
     enter_continue "something went wrong" 
     return 1
     }
