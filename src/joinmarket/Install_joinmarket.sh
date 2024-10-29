@@ -177,7 +177,7 @@ fi
 function clone_joinmarket {
 
     cd $hp && git clone --depth 1 https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket \
-        || { announce "Something went wrong." && return 1 ; }
+        || { enter_continue "Something went wrong$green.$orange" && return 1 ; }
 
     return 0 
 }
