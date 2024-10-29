@@ -9,11 +9,12 @@ function install_joinmarket {
         }
     
     if ! grep -q "parmabox-end" $ic ; then
+
         yesorno "Parmanode needs to install Parmabox before installing
     JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
+        install_parmabox silent
     fi
 
-    install_parmabox silent
     install_bitcoin_docker silent parmabox joinmarket || return 1
     docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dp 2>&1
     docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1

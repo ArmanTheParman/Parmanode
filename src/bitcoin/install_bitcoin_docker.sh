@@ -107,7 +107,7 @@ else
 thedir="/home/$username"
 fi
 
-if [[ $2 == joinmarket ]] ; then
+if [[ $2 == parmabox ]] ; then
 thedir="/home/parman"
 dockername=parmabox
 username=parman
