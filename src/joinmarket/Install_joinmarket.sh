@@ -8,8 +8,6 @@ function install_joinmarket {
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
 
-    make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
-
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
     clone_joinmarket || { enter_continue "aborting" ; return 1 ; }
@@ -18,13 +16,17 @@ function install_joinmarket {
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
 
+    install_bitcoin_docker silent joinmarket || return 1
+    docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dp 2>&1
+    docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
+
+    make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
+
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
     parmashell_4_jm
-
-    install_bitcoin_docker silent joinmarket || return 1
 
     installed_conf_add "joinmarket-end"
 
@@ -70,9 +72,13 @@ function make_joinmarket_wallet {
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
 
     while true ; do
-
+        if [[ $OS == Mac ]] ; then
+        docker exec joinmarket /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' && break
+        docker exec joinmarket /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue && break
+        elif [[ $OS == Linux ]] ; then 
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
         bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
+        fi
         echo -e "$red
         Sometimes waiting for bitcoin to laod up is needed.
         Trying again every 10 seconds...$orange
