@@ -1,4 +1,5 @@
 function install_bitcoin_docker {
+if [[ $1 != silent ]] ; then
 set_terminal
 yesorno "You are about to install Bitcoin into a docker container of your
     choice." || return 1
@@ -79,6 +80,8 @@ yesorno "You chose the$cyan $username$orange user" || continue
 break
 done
 
+fi #end != silent
+
 #make bitcoin conf
 echo "server=1
 txindex=1
@@ -104,6 +107,12 @@ else
 thedir="/home/$username"
 fi
 
+if [[ $2 == joinmarket ]] ; then
+thedir="/root"
+dockername=joinmarket
+username=root
+fi
+
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
 docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >/dev/null 2>&1
 
@@ -113,8 +122,11 @@ export version="27.1"
 cd && rm -rf /tmp/bitcoin && mkdir -p /tmp/bitcoin && cd /tmp/bitcoin
 while true ; do
 clear
-echo -e "${green}Downloading Bitcoin...
-" 
+
+if [[ $1 != silent ]] ; then 
+echo -e "${green}Downloading Bitcoin..."
+fi
+
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
          fi
@@ -143,6 +155,7 @@ docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(
     }
 docker exec $dockername rm -rf /tmp/bitcoin
 rm -rf /tmp/bitcoin
+if [[ $1 != silent ]] ; then
 success "Bitcoin has been installed in the $dockername container.
 
     The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can
@@ -158,6 +171,8 @@ success "Bitcoin has been installed in the $dockername container.
     $username/.bitcoin/ 
    $orange
 "
+fi
+
 return 0
 }
 

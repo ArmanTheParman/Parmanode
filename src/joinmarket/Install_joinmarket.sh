@@ -24,6 +24,8 @@ function install_joinmarket {
 
     parmashell_4_jm
 
+    install_bitcoin_docker silent joinmarket || return 1
+
     installed_conf_add "joinmarket-end"
 
     success "JoinMarket has been installed"
