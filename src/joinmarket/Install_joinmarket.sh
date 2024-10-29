@@ -17,7 +17,7 @@ function install_joinmarket {
     build_joinmarket || { enter_continue "aborting" ; return 1 ; }
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
-    
+
     counter=0
     while [[ $counter -lt 7 ]] ; do
         docker exec joinmarket ps >$dn 2>&1 && break

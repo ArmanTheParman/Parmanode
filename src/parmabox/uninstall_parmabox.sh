@@ -18,24 +18,6 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-set_terminal ; echo -e "
-########################################################################################
-
-    Before continuing, please make sure there are no important files in the directory:
-        
-        $HOME/parmanode/parmabox
-    
-    
-    ... as they will be deleted in the uninstall process.
-
-
-    Hit$cyan a$orange to abort, or$cyan <enter>$orange to continue.
-
-########################################################################################
-"
-read choice
-if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
-set_terminal ; please_wait
 if ! docker ps >/dev/null ; then announce \
 "Please make sure Docker is running before asking Parmanode to
     clean up the installed ParmaBox."
@@ -45,7 +27,10 @@ fi
 docker stop parmabox 
 docker rm parmabox 
 docker rmi parmabox
-sudo rm -rf $HOME/parmanode/parmabox >/dev/null
+
+yesorno "Do you want to delete this directory on your system as well?
+$cyan     
+        $HOME/parmanode/parmabox $orange" && sudo rm -rf $HOME/parmanode/parmabox >/dev/null
 
 installed_config_remove "parmabox"
 success "The Linux Docker ParmaBox" "being uninstalled"
