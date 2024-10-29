@@ -8,11 +8,11 @@ fi
 
 # Install Parmanode in Parmabox, and ParmaShell
 docker exec -it -u parman $parmabox bash \
-            -c "mkdir /home/parman/Desktop ; \
+            -c "mkdir -p /home/parman/Desktop ; \
                 curl https://parmanode.com/install.sh | sh ; \
                 clear ; \
-                mkdir /home/parman/.parmanode ; \
-                mkdir /home/parman/parmanode ; \
+                mkdir -p /home/parman/.parmanode ; \
+                mkdir -p /home/parman/parmanode ; \
                 echo \"parmashell-end\" | tee -a /home/parman/.parmanode/installed.conf >/dev/null"
 
 
