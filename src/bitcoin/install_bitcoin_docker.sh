@@ -24,7 +24,6 @@ if [[ -z $1 ]] ; then
         fi
         ;;
         esac
-        done
 
         yesorno "You have chosen the $choice container." && break 
 
