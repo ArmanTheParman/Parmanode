@@ -12,9 +12,10 @@ if [[ -z $1 ]] ; then
         choice=$enter_cont
 
         case $choice in
-        Q|q) exit ;; p|) return 1 ;; m|M) back2main ;;
+        Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
         "")
-        invalid ;;
+        invalid 
+        ;;
         *)
         if docker ps 2>$1 | grep -q $choice ; then
         break
