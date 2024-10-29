@@ -15,7 +15,14 @@ function install_joinmarket {
     build_joinmarket || { enter_continue "aborting" ; return 1 ; }
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
-
+    
+    counter=0
+    while [[ $counter -lt 7 ]] ; do
+        docker exec joinmarket ps >$dn 2>&1 && break
+        sleep 1
+        counter=$((counter + 1))
+    done
+    
     install_bitcoin_docker silent joinmarket || return 1
     docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dp 2>&1
     docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
