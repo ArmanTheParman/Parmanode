@@ -105,7 +105,7 @@ thedir="/home/$username"
 fi
 
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
-docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin >/dev/null 2>&1
+docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >/dev/null 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
@@ -143,6 +143,21 @@ docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(
     }
 docker exec $dockername rm -rf /tmp/bitcoin
 rm -rf /tmp/bitcoin
-success "Bitcoin has been installed in the $dockername container"
+success "Bitcoin has been installed in the $dockername container.
+
+    The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can
+    modify the bitcoin.conf file to change it.
+    
+    The prune value is 0. If you want to prune, set a value in 
+    bitcoin.conf like this, in MB (550 is the minimum):
+   $cyan 
+    prune=550
+   $orange
+    The file is in the data directory inside the container at:
+   $green
+    $username/.bitcoin/ 
+   $orange
+"
+return 0
 }
 
