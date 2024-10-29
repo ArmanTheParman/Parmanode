@@ -8,6 +8,8 @@ echo -en "
 ########################################################################################
 
 
+$cyan              (bd)$orange        Install Bitcoin to a running Docker container
+
 $cyan              (as)$orange        AutoSSH reverse proxy tunnel guide
 
 $cyan              (curl)$orange      Test bitcoin curl/rpc command (for troubleshooting)
@@ -32,6 +34,11 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
     
 q|Q) exit ;;  m|M) back2main ;; p|P) return 0 ;;
+
+bd)
+install_bitcoin_docker
+return 0
+;;
 
 curl)
 bitcoin_curl
