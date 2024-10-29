@@ -199,7 +199,6 @@ $cyan
 ########################################################################################
     Type 
     '${cyan}y$orange' or '${cyan}n$orange' then $green<enter>$orange
-    
     '${red}q$orange' to quit
     '${red}m$orange' for main menu
 

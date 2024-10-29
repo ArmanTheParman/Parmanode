@@ -4,32 +4,41 @@ yesorno "You are about to install Bitcoin into a docker container of your
     choice." || return 1
 set_terminal
 
+if ! docker ps 2>/dev/null ; then announce "Docker is not running" ; return 1 ; fi
+
 if [[ -z $1 ]] ; then
 
     while true ; do
 
-        announce "Please type the name of the running Docker container you want to use."
-        choice=$enter_cont
+    set_terminal
+    echo -e "
+########################################################################################
 
-        case $choice in
+    Please type the name of the running Docker container you want to use (case
+    sensitive). These are the running containers...
+$green    
+$(docker ps --format "{{.Names}}")
+$orange
+########################################################################################
+"
+read dockername
+
+        case $dockername in
         Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
         "")
         invalid 
         ;;
         *)
-        if docker ps 2>$1 | grep -q $choice ; then
-        break
+        if docker ps | grep -q $dockername ; then
+            yesorno "You have chosen the$red $dockername$orange container." && break
         else
-        announce "This container is not running"
+            announce "This container is not running" ; continue
         fi
         ;;
         esac
-
-        yesorno "You have chosen the $choice container." && break 
-
     done
 
-    export dockername=$choice 
+    export dockername
 
 else
     export dockername=${1}
@@ -37,6 +46,36 @@ fi
 
 debug "dockername is $dockername"
 clear
+#USER choice
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Please choose the user name for the intallation. If you choose 'root' then the
+    bitcoin data directory will be made under$cyan /root/.bitcoin $orange
+
+    If you choose another existing user, eg parman, then the directory will be under
+    $cyan/home/parman/.bitcoin$orange
+
+
+                    Type root and$cyan <enter>$orange
+           OR
+                    Type another username to choose that, then $cyan<enter>$orange
+
+########################################################################################
+"
+choose "xpmq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+root)
+username="root" ;;
+*)
+username="$choice"
+;;
+esac
+yesorno "You chose $username" || continue
+break
+done
 
 #make bitcoin conf
 echo "server=1
@@ -56,8 +95,15 @@ rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
 rpcservertimeout=120" | tee /tmp/dockerbitcoin.conf >$dn 2>&1
 
-docker exec $dockername /bin/bash -c "mkdir \$HOME/.bitcoin"
-docker cp /tmp/dockerbitcoin.conf $dockername:\$HOME/.bitcoin
+
+if [[ $username == root ]] ; then
+thedir="/root"
+else
+thedir="/home/$username"
+fi
+
+docker exec $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
+docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin >/dev/null 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
@@ -86,11 +132,11 @@ done
 tar -xf bitcoin-* >/dev/null 2>&1
 docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
 docker cp ./bit*/bin/* $dockername:/tmp/bitcoin
-docker exec $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin \$HOME/bitcoin/bin/*" || {
+docker exec -it $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin $/tmp/bitcoin/*" || {
     enter_continue "something went wrong" 
     return 1
     }
-docker exec $dockername rm -rf $/tmp/bitcoin
+docker exec $dockername rm -rf /tmp/bitcoin
 rm -rf /tmp/bitcoin
 success "Bitcoin has been installed in the $dockername container"
 }

@@ -2,11 +2,21 @@ function menu_parmabox {
 while true ; do 
 
 if ! docker ps >$dn 2>&1 ; then
-    dockernotrunning="
+    dockerrunning="
                               ${red}Warning: Docker is not running${orange}
     "
 else
-    unset dockernotrunning
+
+   if ! docker ps | grep -qi parmabox ; then
+   dockerrunning="
+                              ${red}Warning: ParmaBox container is not running${orange}
+   " 
+   else
+   dockerrunning="
+                              ${green}ParmaBox is running${orange}
+   " 
+   fi
+
 fi
 
 set_terminal ; echo -ne "
@@ -14,13 +24,13 @@ set_terminal ; echo -ne "
               $cyan                     ParmaBox Menu            $orange                   
 ########################################################################################
 
-                              $dockernotrunning 
+                              $dockerrunning 
 $cyan
             r) $orange        Log into the container as root
-$green                              The password is 'parmanode' 
+$blue                              The password is 'parmanode' 
 $cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
-$green                              The password is 'parmanode' 
+$blue                              The password is 'parmanode' 
 $cyan
             s)$orange         Stop the container
 $cyan
