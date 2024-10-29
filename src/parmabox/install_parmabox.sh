@@ -14,6 +14,7 @@ if docker ps | grep -q parmabox ; then announce
 "The parmabox container is already running."
 return 1
 fi
+if [[ $1 != silent ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -32,13 +33,19 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read choice ; set_terminal
+else
+choice=${1}
+fi
+
 case $choice in 
 boring|Boring) local pbox=boring ;;
-*)
+silent|*)
 set_terminal ; echo -e "
 ########################################################################################
 
-    At some point during the install process, you will be asked for parman's password.
+    Parmabox will have a user called 'parman'. 
+    
+    At some point during the install process, you may be asked for it's password.
 
     The password is$cyan \"parmanode\"$orange.
 
@@ -68,9 +75,12 @@ parmabox_exec
 esac
 
 installed_config_add "parmabox-end"
-success "Your ParmaBox" "being installed" 
-if [[ $choice != boring ]] ; then
-set_terminal ; echo -e "
+
+if [[ $1 != silent ]] ; then
+
+    success "Your ParmaBox" "being installed" 
+    if [[ $choice != boring ]] ; then
+    set_terminal ; echo -e "
 ########################################################################################
 
     The directory $HOME/parmanode/parmabox on your host machine is 
@@ -91,6 +101,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+    enter_continue
+    fi
 fi
 }

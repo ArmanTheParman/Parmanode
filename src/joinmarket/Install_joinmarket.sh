@@ -7,6 +7,17 @@ function install_joinmarket {
     grep -q "bitcoin-end" < $ic || { 
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
+    
+    if ! grep -q "parmabox-end" $ic ; then
+        yesorno "Parmanode needs to install Parmabox before installing
+    JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
+    fi
+
+    install_parmabox silent
+    install_bitcoin_docker silent parmabox joinmarket || return 1
+    docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dp 2>&1
+    docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
+
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
@@ -25,11 +36,6 @@ function install_joinmarket {
         counter=$((counter + 1))
     done
     
-    install_bitcoin_docker silent joinmarket || return 1
-    docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dp 2>&1
-    docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
-
-
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }

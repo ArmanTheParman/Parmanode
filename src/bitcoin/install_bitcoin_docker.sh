@@ -108,9 +108,9 @@ thedir="/home/$username"
 fi
 
 if [[ $2 == joinmarket ]] ; then
-thedir="/root"
-dockername=joinmarket
-username=root
+thedir="/home/parman"
+dockername=parmabox
+username=parman
 fi
 
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
