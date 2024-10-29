@@ -1,7 +1,8 @@
 function install_bitcoin_docker {
-
+set_terminal
 yesorno "You are about to install Bitcoin into a docker container of your
     choice." || return 1
+set_terminal
 
 if [[ -z $1 ]] ; then
 
@@ -35,23 +36,10 @@ else
 fi
 
 debug "dockername is $dockername"
-
-cat << 'EOF' >/tmp/install_parmanode_docker.sh 
-#!/bin/bash
-cd $HOME/parman_programs/parmanode && git pull \
-|| { 
-    mkdir -q $HOME/parman_programs/
-    cd $HOME/parman_programs
-    git clone https://github.com/armantheparman/parmanode.git
-   }
-EOF
-sudo chmod +x /tmp/install_parmanode_docker.sh
-docker cp /tmp/install_parmanode_docker.sh $dockername:/tmp/install_parmanode_docker.sh >$dn 2>&1
+clear
 
 #make bitcoin conf
-mkdir $HOME/.bitcoin
-cat << EOF > $HOME/.bitcoin/bitcoin.conf
-server=1
+echo "server=1
 txindex=1
 daemon=1
 blockfilterindex=1
@@ -66,15 +54,15 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
-rpcservertimeout=120
-EOF
+rpcservertimeout=120" | tee /tmp/dockerbitcoin.conf >$dn 2>&1
 
-#Download bitcoin inside container
+docker exec $dockername /bin/bash -c "mkdir \$HOME/.bitcoin"
+docker cp /tmp/dockerbitcoin.conf $dockername:\$HOME/.bitcoin
+
+#Download bitcoin 
 export bitcoin_compile="false"
 export version="27.1"
-export chip="$(uname -m)"
-export OS="$(uname)"
-mkdir $HOME/bitcoin && cd $HOME/bitcoin
+cd && rm -rf /tmp/bitcoin && mkdir -p /tmp/bitcoin && cd /tmp/bitcoin
 while true ; do
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
@@ -95,12 +83,15 @@ while true ; do
          fi
 
 done
-#unpack Bitcoin and move to /usr/local/bin
-mkdir /tmp >/dev/null 2>&1
-tar -xf bitcoin-* -C /tmp/ >/dev/null 2>&1
-mv /tmp/bit*/* $HOME/bitcoin/
-#delete sample bitcoin.conf to avoid confusion.
-rm $HOME/bitcoin/bitcoin.conf 
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/bitcoin/bin/*
-sudo rm -rf $HOME/bitcoin/bin
+tar -xf bitcoin-* >/dev/null 2>&1
+docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
+docker cp ./bit*/bin/* $dockername:/tmp/bitcoin
+docker exec $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin \$HOME/bitcoin/bin/*" || {
+    enter_continue "something went wrong" 
+    return 1
+    }
+docker exec $dockername rm -rf $/tmp/bitcoin
+rm -rf /tmp/bitcoin
+success "Bitcoin has been installed in the $dockername container"
+}
 
