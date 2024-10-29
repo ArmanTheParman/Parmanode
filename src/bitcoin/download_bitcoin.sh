@@ -35,6 +35,22 @@ fi
 
 set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
 
+download_bitcoin_getfiles || return 1 #see code for the function below
+
+debug "before verify bitcoin, after download"
+
+if [[ $VERIFY != off ]] ; then
+  verify_bitcoin || return 1
+fi
+
+unpack_bitcoin || return 1 # see code for the function below
+
+return 0     
+}
+
+
+function download_bitcoin_getfiles {
+
 #arm64 (m3)
 # ARM Pi4 support. If not, checks for 64 bit x86.
 while true ; do
@@ -77,14 +93,12 @@ while true ; do
             zip="true" ; break
          fi
 done
+return 0
+}
 
-debug "before verify bitcoin, after download"
 
-if [[ $VERIFY != off ]] ; then
-  verify_bitcoin || return 1
-fi
+function unpack_bitcoin {
 
-#unpack Bitcoin core:
 if [[ $OS == Mac && $zip != "true" ]] ; then
 hdiutil attach *.dmg
 sudo cp -r /Volumes/Bitcoin*/Bitcoin* /Applications
@@ -112,6 +126,4 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode
 
 sudo rm -rf $HOME/parmanode/bitcoin/bin
 fi
-
-return 0     
 }
