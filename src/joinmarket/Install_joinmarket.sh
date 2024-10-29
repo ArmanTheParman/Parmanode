@@ -8,6 +8,8 @@ function install_joinmarket {
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
 
+    make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
+
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
     clone_joinmarket || { enter_continue "aborting" ; return 1 ; }
@@ -27,7 +29,6 @@ function install_joinmarket {
     docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dp 2>&1
     docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
 
-    make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
