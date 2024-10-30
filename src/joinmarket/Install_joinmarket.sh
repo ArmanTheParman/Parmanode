@@ -19,7 +19,7 @@ function install_joinmarket {
     if [[ $OS == Mac ]] ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
-        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
+        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
     fi
 
 enter_continue "pause aaa"
@@ -217,8 +217,7 @@ docker cp /tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
 function joinmarket_preamble {
 
 if [[ $OS == Mac ]] ; then
-mac_text="
-$red $blinkon 
+mac_text="$red $blinkon 
     I M P O R T A N T . . .
 $blinkoff $orange
     Sometimes during this installation, Parmanode will require your regular system 
