@@ -123,25 +123,33 @@ cd && rm -rf /tmp/bitcoin && mkdir -p /tmp/bitcoin && cd /tmp/bitcoin
 while true ; do
 clear
 
-if [[ $1 != silent ]] ; then 
-echo -e "${green}Downloading Bitcoin..."
-fi
+        if [[ $1 != silent ]] ; then 
+        echo -e "${green}Downloading Bitcoin..."
+        fi
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz \
+                || enter_continue "Download may have failed"  
+                break
          fi
 
 	     if [[ $chip == "aarch64" ]] ; then 				
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz ; break
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz \
+                || enter_continue "Download may have failed"  
+                break
             else
-                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz  ; break
+                curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz \
+                || enter_continue "Download may have failed"  
+                break
             fi
          fi
 
  	     if [[ $chip == "x86_64" ]] ; then 
-		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz  ; break
+		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz \
+                || enter_continue "Download may have failed"  
+                break
          fi
 
 done

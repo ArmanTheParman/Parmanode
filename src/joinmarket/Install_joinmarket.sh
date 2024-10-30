@@ -19,7 +19,8 @@ function install_joinmarket {
     if [[ $OS == Mac ]] ; then # && ! docker exec parmabox cat bitcoin-installed 2>/dev/null
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
-        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
+        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" # >$dn 2>&1
+        debug "check bitcoin conf fixed"
     fi
 
 enter_continue "pause aaa"
@@ -40,10 +41,13 @@ enter_continue "pause aaa"
         sleep 1
         counter=$((counter + 1))
     done
-    
+enter_continue "pause bbb" 
+
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
+enter_continue "pause ccc" 
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
+enter_continue "pause ddd" 
 
     parmashell_4_jm
 
