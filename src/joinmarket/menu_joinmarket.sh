@@ -317,7 +317,7 @@ set_terminal ; echo -e "
     Please choose a wallet, type the file name exaclty, then <enter>
 "
 >$dp/.jmwallets
-for i in $(ls) ; do echo -e "    $bright_blue$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >/dev/null 2>&1 ; done
+for i in $(ls) ; do echo -e "    $red$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >/dev/null 2>&1 ; done
 cd - >$dn 2>&1
 echo -en "
 $orange

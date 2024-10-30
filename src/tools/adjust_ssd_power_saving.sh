@@ -60,6 +60,8 @@ esac
 
 sudo hdparm -B $value /dev/$sddrive
 enter_continue
+break
+done
 return 0
 }
 
