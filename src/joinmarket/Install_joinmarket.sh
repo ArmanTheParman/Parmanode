@@ -16,11 +16,11 @@ function install_joinmarket {
     JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
         install_parmabox silent
     fi
-    if [[ $OS == Mac ]] ; then # && ! docker exec parmabox cat bitcoin-installed 2>/dev/null
+    if [[ $OS == Mac ]] && ! docker exec parmabox cat bitcoin-installed 2>/dev/null ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
-        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" # >$dn 2>&1
+        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
         debug "check bitcoin conf fixed"
     fi
 
@@ -35,6 +35,13 @@ enter_continue "pause aaa"
     build_joinmarket || { enter_continue "aborting" ; return 1 ; }
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
+
+    if [[ $OS == Mac ]] ; then # && ! docker exec parmabox cat bitcoin-installed 2>/dev/null
+        install_bitcoin_docker silent joinmarket || return 1
+        docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dn 2>&1
+        docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
+        debug "check bitcoin conf fixed"
+    fi
 
     counter=0
     while [[ $counter -lt 7 ]] ; do
@@ -116,6 +123,7 @@ function make_joinmarket_wallet {
         fi
 
     done
+    clear
 
 }
 
@@ -140,7 +148,7 @@ function modify_joinmarket_cfg {
     docker exec joinmarket bash -c "sed -i '/rpc_cookie_file =/d' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_wallet_file =/c\\rpc_wallet_file = jm_wallet' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_user =/c\\rpc_user = $rpcuser' $jmfile"
-    docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcuser' $jmfile"
+    docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcpassword' $jmfile"
     docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
     return 0
 }

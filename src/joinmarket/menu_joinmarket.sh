@@ -106,10 +106,13 @@ cr)
     > $dp/before ; > $dp/after
     for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
     jm_create_wallet_tool
+    debug "pause 1"
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
+    debug "pause 2"
         for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
     export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
+    debug "pause 3"
     > $dp/before ; > $dp/after
     ;;
 delete)
@@ -117,32 +120,40 @@ delete)
     ;; 
 
 display)
+    check_wallet_loaded
     display_jm_addresses
     ;; 
 dall)
+    check_wallet_loaded
     display_jm_addresses a
     ;;
 sum)
 
+    check_wallet_loaded
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee /tmp/jmaddresses
     enter_continue
     ;;
 cp)
+    check_wallet_loaded
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
     ;;
 
 su)
+    check_wallet_loaded
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
     enter_continue
     ;;
 ss)
+    check_wallet_loaded
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
     enter_continue
     ;;
 yg)
+    check_wallet_loaded
     yield_generator || return 1
     ;;
 log)
+    check_wallet_loaded
     yield_generator_log || return 1
     ;;
 *)
@@ -186,11 +197,6 @@ esac
 
 
 function display_jm_addresses {
-
-    if [[ ! -e $HOME/.joinmarket/wallets/wallet.jmdat ]] ; then
-    announce "${cyan}wallet.jmdat$orange does not exist"
-    return
-    fi
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -373,4 +379,12 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 return 0
+}
+
+function check_wallet_loaded {
+    if [[ -z $wallet ]] ; then
+    announce "Please load wallet first"
+    return 1
+    fi
+    return 0
 }
