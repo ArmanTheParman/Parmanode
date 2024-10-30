@@ -8,17 +8,21 @@ function install_joinmarket {
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
     
-    if ! grep -q "parmabox-end" $ic ; then
+    joinmarket_preamble
+
+    if ! grep -q "parmabox-end" $ic  && [[ $OS == Mac ]] ; then
 
         yesorno "Parmanode needs to install Parmabox before installing
     JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
         install_parmabox silent
     fi
+    if [[ $OS == Mac ]] ; then
+        install_bitcoin_docker silent parmabox joinmarket || return 1
+        docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
+        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
+    fi
 
-    install_bitcoin_docker silent parmabox joinmarket || return 1
-    docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dp 2>&1
-    docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
-
+enter_continue "pause aaa"
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
@@ -88,11 +92,11 @@ function make_joinmarket_wallet {
 
     while true ; do
         if [[ $OS == Mac ]] ; then
-        docker exec joinmarket /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' && break
-        docker exec joinmarket /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue && break
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' && break
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue && break
         elif [[ $OS == Linux ]] ; then 
-        bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
-        bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
+            bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
+            bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
         fi
         echo -e "$red
         Sometimes waiting for bitcoin to laod up is needed.
@@ -208,4 +212,32 @@ cat /tmp/b1 $pn/src/ParmaShell/parmashell_functions > /tmp/b2
 echo "a" | tee -a /tmp/b2 >$dn 2>&1
 
 docker cp /tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
+}
+
+function joinmarket_preamble {
+
+if [[ $OS == Mac ]] ; then
+mac_text="
+$red $blinkon 
+    I M P O R T A N T . . .
+$blinkoff $orange
+    Sometimes during this installation, Parmanode will require your regular system 
+    password, and sometimes it will require the password for the parman user inside 
+    the ParmaBox container - this password is set to '${cyan}parmanode$orange' as the default. "
+fi
+
+set_terminal ; echo -ne "
+########################################################################################
+
+    You are about to install$cyan JoinMarket$orange, a decentralized marketplace for Bitcoin users 
+    to coordinate CoinJoin transactions. 
+
+    It will run on your computer inside a Docker container, alongside Bitcoin Core or
+    Bitcoin Knots on the system.
+    $mac_text
+
+########################################################################################
+"
+enter_continue
+
 }

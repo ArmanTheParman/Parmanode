@@ -1,0 +1,22 @@
+Joinmarket needs to make a bitcoin wallet.
+    - Mac Bitcoin installation doesn't always have bitcoin-cli, necessary to make wallets
+      with a script.
+    - To work around this, bitcoin-cli can be installed inside a Docker container.
+    - It can't be installed in the Joinmarket container with docker exec because
+      the container needs to be running to do that. But the container can't run
+      unless joinmarket is installed, but the installation of joinmarket needs bitcoin-cli.
+    - The circular problem can be solved in two ways.
+      1) Put bitcoin-cli in ParmaBox, and use docker exec with that container 
+         instead of the joinmarket container - this has the advantage of the
+         creation of generic code that installs bitcoin into any container, so
+         I went with this option.
+      2) Install Bitcoin-cli using Joinmarket's dockerfile. The Linux version will
+         not require it, so I favoured the other method.
+    - I'm not sure yet if bitcoin-cli is going to be needed again. If it is, it might
+      be a problem if the user changes the user/password in bitcoin.conf, becuase it
+      needs to match the bitcoin.conf credentials that exists in the docker container.
+
+Joinmarket needs tor
+    - Not a problem for linux because docker linux can use the host network
+    - For mac, it cannot use the host network, and mapping port 9050 causes a confict,
+      so the mac docker conainer of joinmarket will have its own tor installation.

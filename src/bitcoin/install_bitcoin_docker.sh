@@ -146,9 +146,8 @@ fi
 
 done
 
-enter_continue "Pause: $dockername $username"
 docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
-docker cp /tmp/bitcoin/* $dockername:/tmp/bitcoin/
+docker cp /tmp/bitcoin/* $dockername:/tmp/bitcoin/ >/dev/null 2>&1
 docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >/dev/null 2>&1
 docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
     enter_continue "something went wrong" 

@@ -10,10 +10,11 @@ if ! docker ps >/dev/null ; then announce \
 return 1
 fi
 
-if docker ps | grep -q parmabox ; then announce
-"The parmabox container is already running."
+if docker ps | grep -q parmabox ; then 
+announce "The parmabox container is already running."
 return 1
 fi
+
 if [[ $1 != silent ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
