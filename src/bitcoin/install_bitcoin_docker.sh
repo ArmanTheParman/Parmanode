@@ -181,7 +181,7 @@ success "Bitcoin has been installed in the $dockername container.
 "
 fi
 
-sudo touch /bitcoin-installed >$dn 2>&1
+docker exec $dockername /bin/bash -c "touch \$HOME/bitcoin-installed" || enter_continue
 return 0
 }
 
