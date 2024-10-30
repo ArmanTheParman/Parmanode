@@ -37,7 +37,7 @@ $cyan
 $cyan
                   stop)$orange        Stop JoinMarket Docker container
 $cyan
-                  aw)$orange          Activate wallet (load to memory) 
+                  load)$orange        Load wallet 
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
@@ -80,9 +80,9 @@ docker start joinmarket
 stop)
 docker stop joinmarket
 ;;
-aw)
+load)
 set_terminal
-choose_wallet
+choose_wallet || continue
 ;;
 conf)
 sudo nano $HOME/.joinmarket/joinmarket.cfg
@@ -120,40 +120,40 @@ delete)
     ;; 
 
 display)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     display_jm_addresses
     ;; 
 dall)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     display_jm_addresses a
     ;;
 sum)
 
-    check_wallet_loaded
+    check_wallet_loaded || continue
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee /tmp/jmaddresses
     enter_continue
     ;;
 cp)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
     ;;
 
 su)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
     enter_continue
     ;;
 ss)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
     enter_continue
     ;;
 yg)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     yield_generator || return 1
     ;;
 log)
-    check_wallet_loaded
+    check_wallet_loaded || continue
     yield_generator_log || return 1
     ;;
 *)
@@ -316,13 +316,19 @@ set_terminal ; echo -e "
 
     Please choose a wallet, type the file name exaclty, then <enter>
 "
-for i in $(ls) ; do echo -e "    $bright_blue$i$orange" ; done
+>$dp/.jmwallets
+for i in $(ls) ; do echo -e "    $bright_blue$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >/dev/null 2>&1 ; done
 cd - >$dn 2>&1
 echo -en "
 $orange
 ########################################################################################
 "
 read wallet
+if ! grep -q "$wallet" $dp/.jmwallets ; then 
+announce "This is not a valid wallet"
+export wallet="NONE"
+return 1
+fi
 export wallet
 }
 
@@ -382,7 +388,7 @@ return 0
 }
 
 function check_wallet_loaded {
-    if [[ -z $wallet ]] ; then
+    if [[ $wallet == NONE ]] ; then
     announce "Please load wallet first"
     return 1
     fi

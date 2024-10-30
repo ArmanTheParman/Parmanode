@@ -26,6 +26,8 @@ $cyan              (rf)$orange        Refresh Parmanode script directory
 
 $cyan              (sr)$orange        System report (for getting troubleshooting help)
 
+$cyan              (ps)$orange        Adjust SSD power saving
+
 $orange
 ########################################################################################
 "
@@ -73,6 +75,10 @@ autossh_setup
 
 de)
 drive_encryption
+;;
+
+ps)
+adjust_ssd_power_saving
 ;;
 
 *)

@@ -49,13 +49,10 @@ enter_continue "pause aaa"
         sleep 1
         counter=$((counter + 1))
     done
-enter_continue "pause bbb" 
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
-enter_continue "pause ccc" 
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
-enter_continue "pause ddd" 
 
     parmashell_4_jm
 
@@ -150,6 +147,7 @@ function modify_joinmarket_cfg {
     docker exec joinmarket bash -c "sed -i '/rpc_user =/c\\rpc_user = $rpcuser' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcpassword' $jmfile"
     docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
+    docker exec joinmarket bash -c "sed -i '/rpc_host =/c\\rpc_host = host.docker.internal' $jmfile"
     return 0
 }
 
