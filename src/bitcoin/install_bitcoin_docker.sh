@@ -173,6 +173,7 @@ success "Bitcoin has been installed in the $dockername container.
 "
 fi
 
+sudo echo "bitcoin-docker-end $@" | tee /installed.conf >$dn 2>&1
 return 0
 }
 
