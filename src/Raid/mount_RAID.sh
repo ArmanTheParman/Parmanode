@@ -6,9 +6,9 @@ set_terminal
 echo "mounting $i ..."
 sleep 1
 debug "1"
-sudo mkdir -p "/media/$USER/RAID$(echo $i | grep -oE '[^/dev/md/].+')" >/dev/null
+sudo mkdir -p "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" >/dev/null
 debug "2"
-sudo mount $i "/media/$USER/RAID$(echo $i | grep -oE '[^/dev/md/].+')" #mounts /dev/md[num] to /media/$USER/RAID[num]
+sudo mount $i "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" #mounts /dev/md/xxx to /media/$USER/RAIDxxx
 debug "mounted?"
 done
 }
