@@ -3,6 +3,7 @@ Version 3.47.0
     -SSD drive power management tool
     -Tool to install Bitcoin into any docker container that's running
     -Import Parmanode drive without disconnection/reconnection detection procedure.
+    -Fixed smol bug listing RAID devices, needed sudo
 Version 3.46.2
     -Menu colour touchups
     -Mempool backend defaults changed
