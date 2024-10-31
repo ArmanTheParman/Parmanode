@@ -36,7 +36,7 @@ enter_continue
 
 lc)
 set_terminal
-sudo blkid | grep /dev/md | cat
+blkid | grep /dev/md | cat
 enter_continue
 ;;
 
@@ -46,6 +46,7 @@ device=$(sudo mdadm --detail --scan | awk '{print $2}') #space separated list
 for i in $device ; do
 sudo mdadm --detail $i
 enter_continue
+clear
 done
 ;;
 
