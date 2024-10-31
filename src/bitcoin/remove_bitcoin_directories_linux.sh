@@ -17,7 +17,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
 #check external drive first - mounted and unmounted conditions.
 
-if [[ $drive == "external" && -d $pd/.bitcoin && $install_bitcoin_variable != "true"]] ; then #drive would have to be mounted to be true 
+if [[ $drive == "external" && -d $pd/.bitcoin && $install_bitcoin_variable != "true" ]] ; then #drive would have to be mounted to be true 
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
