@@ -50,6 +50,8 @@ clear
 echo -ne "${green}################################# RAID number $count ########################################$orange
 "
 sudo mdadm --detail $i
+echo -e "$green
+########################################################################################$orange"
 enter_continue
 done
 ;;
