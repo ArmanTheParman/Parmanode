@@ -33,7 +33,6 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
         echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
     fi
 fi
-debug "1"
 #fix homebrew path order ; remove June 2025
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
 delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
@@ -44,7 +43,6 @@ fi
 
 #remove June 2025
 make_lnd_service_tor
-debug "2"
 #remove June 2025 - make sure all electrs docker has socat installed
 if grep -q "electrsdkr" < $ic ; then
     if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
@@ -56,7 +54,6 @@ if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
 
-debug "3"
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
@@ -73,7 +70,6 @@ delete_line "/etc/nginx/nginx.conf" "include electrs.conf"
 sudo rm /etc/nginx/electrs.conf >/dev/null 2>&1
 fi
 fi
-debug "4"
 if [[ -e $bc ]] ; then
     
     #Remove in 2025
