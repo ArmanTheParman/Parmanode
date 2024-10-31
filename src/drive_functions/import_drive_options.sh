@@ -6,7 +6,7 @@ set_terminal ; echo -e "
     Please choose the type of external drive you wish to use for Parmanode:
 
 
-                      pp)  Parmanode drive from another or previous installation
+                      pp)  Pre-existing Parmanode drive 
 
                       u)   Umbrel drive
 
@@ -23,16 +23,16 @@ m|M) back2main ;;
 pp|Pp|PP)
 export importdrive="true"
 export make_label=dont
-add_drive || return 1
+if [[ $OS == Mac ]] then add_drive || return 1 ; fi
 
 if [[ $OS == "Linux" ]] ; then
+
+        detect_parmanode_drive #gets disk variable and ensures only one parmanode label drive connected.
+
         # The following function is redundant, but added in case the dd function (which
         # calls this function earlier is discarded). 
         remove_parmanode_fstab
 
-        #Extract the *NEW* UUID of the disk and write to config file.
-        sudo e2label $disk parmanode || sudo exfatlabel $disk parmanode >/dev/null 2>&1
-        sudo partprobe                
         get_UUID #gets UUID of parmanode label drive
         parmanode_conf_add "UUID=$UUID"
         write_to_fstab "$UUID"
@@ -86,4 +86,30 @@ return 0
 ;;
 esac
 done
+}
+
+function detect_parmanode_drive {
+#for linux only
+
+while true ; do
+clear
+sudo partprobe
+if ! sudo blkid | grep -q "parmanode"  ; then
+yesorno "Please connect the Parmanode drive you wish to use. If it's already connected,
+    Parmanode didn't detect it.
+
+    Try again?" && continue || return 1
+fi
+return 0
+done
+
+[[ $(sudo blkid | grep "parmanode" | wc | awk '{print $1}') == 1 ]] || {
+    announce "There either is more than one parmanode drived connected or some other error
+    with detecting the drive. Aborting."
+    return 1
+    }
+
+export disk=$(sudo blkid | grep "parmanode" | cut -d : -f 1)
+return 0
+
 }

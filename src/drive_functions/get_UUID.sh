@@ -1,7 +1,3 @@
-function remove_parmanode_fstab {
-delete_line "/etc/fstab" "parmanode"
-}
-
 function get_UUID {
 
 if ! lsblk -o LABEL | grep -q parmanode ; then
@@ -28,6 +24,8 @@ $red         More than one drive with the parmanode label detected. Aborting. $o
 enter_continue
 return 1
 fi
+}
 
- 
+function remove_parmanode_fstab {
+delete_line "/etc/fstab" "parmanode"
 }
