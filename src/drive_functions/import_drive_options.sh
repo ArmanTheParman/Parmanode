@@ -23,7 +23,7 @@ m|M) back2main ;;
 pp|Pp|PP)
 export importdrive="true"
 export make_label=dont
-if [[ $OS == Mac ]] then add_drive || return 1 ; fi
+if [[ $OS == Mac ]] ; then add_drive || return 1 ; fi
 
 if [[ $OS == "Linux" ]] ; then
 
