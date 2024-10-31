@@ -48,6 +48,7 @@ for i in $device ; do
 count=$((count + 1))
 clear
 echo -ne "${green}################################# RAID number $count ########################################$orange
+
 "
 sudo mdadm --detail $i
 echo -e "$green
