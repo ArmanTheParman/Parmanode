@@ -43,10 +43,13 @@ enter_continue
 dt)
 set_terminal
 device=$(sudo mdadm --detail --scan | awk '{print $2}') #space separated list
+count=0
 for i in $device ; do
+count=$((count + 1))
+clear
+echo -e"${green}#############################RAID number $count ###############################################$orange"
 sudo mdadm --detail $i
 enter_continue
-clear
 done
 ;;
 
