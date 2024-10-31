@@ -116,7 +116,6 @@ fi #end btcpayinstallsbitcoin
 
 #Health check
 parmanode1_fix
-debug "fix"
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
 if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
@@ -125,7 +124,6 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #commit config directory state using git
    git_dp 
 fi
-debug "fix2"
 apply_patches  
 
 #Add Parmashell (do after patches)

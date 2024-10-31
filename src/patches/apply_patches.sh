@@ -3,7 +3,6 @@ function apply_patches {
 #patch=n
 #get $patch from parmanode.conf
 temp_patch
-debug "fix3"
 openssh_patch
 make_parmanode_service #Linux only
 make_tor_script_mac
