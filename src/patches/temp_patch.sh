@@ -73,21 +73,6 @@ sudo rm /etc/nginx/electrs.conf >/dev/null 2>&1
 fi
 fi
 
-if [[ -e $bc ]] ; then
-    
-    #Remove in 2025
-    if grep -q "electrumx-end" < $ic && ! grep -q "rest=1" < $bc 2>$dn ; then
-    echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
-    fi
-    
-    #Remove in 2025
-    #recommended by electrumX docs
-    if ! grep -q "rpcservertimeout=" < $bc >$dn ; then
-    echo "rpcservertimeout=120" | sudo tee -a $bc >/dev/null 2>&1
-    fi
-
-fi
-
 #remove in 2025
 if [[ ${message_jq} != 1 ]] && grep -q "electrs" < $ic && ! which jq > /dev/null ; then
 while true ; do
