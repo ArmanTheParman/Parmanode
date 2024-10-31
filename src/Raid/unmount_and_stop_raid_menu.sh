@@ -6,7 +6,7 @@ set_terminal ; echo -e "
 
     You can select which RAIDs to act on in the next screen...
 $green
-                             u)$orange     Unmount $green
+                             u)$orange     Unmount (option to select which) $green
 
                              s) $orange    Stop RAID (also unmounts)$green 
 
@@ -33,6 +33,7 @@ assemble_RAID
 
 mm)
 mount_RAID
+debug "after mm"
 ;;
 *)
 invalid
