@@ -1,4 +1,4 @@
-#called inside an if block. Run only if a new install.
+#Runs only if a new install.
 
 function update_computer {
 # $1 silent
