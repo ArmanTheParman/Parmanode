@@ -5,15 +5,15 @@ set_terminal ; echo -e "
 
     Please choose the type of external drive you wish to use for Parmanode:
 
-
-                      pp)  Pre-existing Parmanode drive 
-
-                      u)   Umbrel drive
-
-                      rb)  RaspiBlitz drive
-
-                      my)  MyNode drive
-
+$cyan
+                      pp)$orange  Pre-existing Parmanode drive 
+$cyan
+                      u)$orange   Umbrel drive
+$cyan
+                      rb)$orange  RaspiBlitz drive
+$cyan
+                      my)$orange  MyNode drive
+$orange
 ########################################################################################                
 "
 choose "xpmq" ; read choice

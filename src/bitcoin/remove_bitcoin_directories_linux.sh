@@ -17,7 +17,7 @@ if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
 #check external drive first - mounted and unmounted conditions.
 
-if [[ $drive == "external" && -d $pd/.bitcoin ]] ; then #drive would have to be mounted to be true 
+if [[ $drive == "external" && -d $pd/.bitcoin && $install_bitcoin_variable != "true"]] ; then #drive would have to be mounted to be true 
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal
@@ -58,7 +58,7 @@ done
 fi #end checking external drive for data directory
 
 #check internal drive for data directory existance 
-if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin ]] ; then    #checks for directory, AND not a symlink
+if [[ -d $HOME/.bitcoin && ! -L $HOME/.bitcoin && $install_bitcoin_variable != "true" ]] ; then    #checks for directory, AND not a symlink
 while true ; do
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 set_terminal ; echo -e "
