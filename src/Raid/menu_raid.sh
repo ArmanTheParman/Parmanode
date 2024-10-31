@@ -47,7 +47,7 @@ count=0
 for i in $device ; do
 count=$((count + 1))
 clear
-echo -e"${green}#############################RAID number $count ###############################################$orange"
+echo -e "${green}#############################RAID number $count ###############################################$orange"
 sudo mdadm --detail $i
 enter_continue
 done
