@@ -38,7 +38,7 @@ if ! docker ps > /dev/null 2>&1 ; then
     return 1
 fi
 
-docker stop joinmarket >$dn 2>&1
+stop_joinmarket
 docker rm joinmarket >$dn 2>&1
 
 sudo rm -rf $hp/joinmarket >$dn 2>&1
