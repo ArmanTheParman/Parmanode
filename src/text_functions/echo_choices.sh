@@ -223,10 +223,8 @@ $cyan
                             $n)$orange   \r\033[49C$no
 
 ########################################################################################
-    Type 
-    '${cyan}y$orange' or '${cyan}n$orange' then $green<enter>$orange
-    '${red}q$orange' to quit
-    '${red}m$orange' for main menu
+    Type '${cyan}y$orange' or '${cyan}n$orange' then $green<enter>$orange
+    OR '${red}q$orange' to quit, or '${red}m$orange' for main menu
 
 "
 read choice
