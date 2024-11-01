@@ -38,7 +38,7 @@ RUN curl -LO https://github.com/lightningnetwork/lnd/releases/download/${lndvers
 
 #Verify zips...
 RUN curl https://raw.githubusercontent.com/lightningnetwork/lnd/master/scripts/keys/roasbeef.asc | gpg --import
-RUN if gpg --verify --status-fd 1 *.sig *.txt 2>&1 | grep GOOD ; then true ; else exit 1 ; fi
+RUN if gpg --verify --status-fd 1 *.sig *.txt 2>&1 | grep -i GOOD ; then true ; else exit 1 ; fi
 RUN if shasum -a 256 --ignore-missing --check man*txt 2>/dev/null | grep -q OK ; then true ; else exit 1 ; fi
 
 #unpack
