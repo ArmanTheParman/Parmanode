@@ -1,4 +1,5 @@
-Joinmarket needs to make a bitcoin wallet.
+1) Joinmarket needs to make a bitcoin wallet.
+
     - Mac Bitcoin installation doesn't always have bitcoin-cli, necessary to make wallets
       with a script.
     - To work around this, bitcoin-cli can be installed inside a Docker container.
@@ -16,7 +17,8 @@ Joinmarket needs to make a bitcoin wallet.
       be a problem if the user changes the user/password in bitcoin.conf, becuase it
       needs to match the bitcoin.conf credentials that exists in the docker container.
 
-Joinmarket needs tor
+2) Joinmarket needs tor
+
     - Not a problem for linux because docker linux can use the host network
     - For mac, it cannot use the host network, and mapping port 9050 causes a confict,
       so the mac docker conainer of joinmarket will have its own tor installation.
