@@ -28,7 +28,7 @@ else
      joinmarket_running="${red}NOT RUNNING$orange"
      yg="false"
 fi
-
+debug "pause"
 set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
 
