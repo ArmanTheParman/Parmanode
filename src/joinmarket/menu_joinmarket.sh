@@ -83,10 +83,10 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 
 
 relax)
-if ! grep "jm_be_careful=1" $hm >$dn 2>&1 ; then
-echo "jm_be_careful=1" >> $hm
+if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
+echo "jm_be_carefull=1" >> $hm
 else
-delete_line $hm "jm_be_careful=1"
+delete_line $hm "jm_be_carefull=1"
 fi
 ;;
 
