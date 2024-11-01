@@ -5,7 +5,7 @@ while true ; do
 
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 export jm_be_carefull="
-${red}${blinkon}JoinMarket uses a HOT wallet - be careful.
+${red}${blinkon}ParmaJoin uses a HOT wallet - be careful.
 ${blinkoff}${red}Type$cyan relax$red to toggle this warning.$orange"
 else
     unset jm_be_carefull
@@ -48,7 +48,7 @@ debug "pause"
 set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
 ########################################################################################$cyan
 
-                                J O I N M A R K E T $orange
+                                P A R M A J O I N $orange
 $jm_be_carefull
 ########################################################################################
 
@@ -215,7 +215,7 @@ while true ; do
 set_terminal ; echo -en "
 ########################################################################################$cyan
 
-                                J O I N M A R K E T 
+                                P A R M A J O I N
                                       Menu 2$orange
 
 ########################################################################################

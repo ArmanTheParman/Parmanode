@@ -243,7 +243,8 @@ fi
 set_terminal ; echo -ne "
 ########################################################################################
 
-    You are about to install$cyan JoinMarket$orange, a decentralized marketplace for Bitcoin users 
+    You are about to install$cyan ParmaJoin$orange, which is software that manages
+    the JoinMarket protocol - a decentralized marketplace for Bitcoin users 
     to coordinate CoinJoin transactions. 
 
     It will run on your computer inside a Docker container, alongside Bitcoin Core or

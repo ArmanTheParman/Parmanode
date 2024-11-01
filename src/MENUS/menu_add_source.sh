@@ -579,13 +579,13 @@ fi
 unset joinmarket_i joinmarket_p joinmarket_n
 if grep -q "joinmarket-end" < $HOME/.parmanode/installed.conf ; then 
   #installed
-joinmarket_i="#                                      JoinMarket                                      #"
+joinmarket_i="#                                      ParmaJoin                                       #"
 elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-joinmarket_p="#                                      JoinMarket                                      #"
+joinmarket_p="#                                      ParmaJoin                                       #"
 else
    #not installed
-joinmarket_n="#$cyan                            (join)    $orange    JoinMarket                                  #"
+joinmarket_n="#$cyan                            (join)    $orange    ParmaJoin (JoinMarket)                       #"
 fi
 
 #green
