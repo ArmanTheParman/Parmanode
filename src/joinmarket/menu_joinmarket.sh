@@ -229,4 +229,9 @@ ss)
     enter_continue
     ;;
 
+*)
+invalid
+;;
+esac
+done
 }
