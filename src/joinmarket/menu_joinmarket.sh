@@ -2,7 +2,7 @@ function menu_joinmarket {
 
 while true ; do 
 
-if ! grep "jm_be_carefull=1" $hm >$dm 2>&1 ; then
+if ! grep "jm_be_carefull=1" $hm >$hm 2>&1 ; then
 export jm_be_carefull="
 ${red}${blinkon}JoinMarket uses a HOT wallet - be careful.
 ${blinkoff}${red}Type$cyan relax$red to toggle this warning.$orange"
