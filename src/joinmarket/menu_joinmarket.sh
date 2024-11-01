@@ -133,14 +133,9 @@ clear
 docker exec -it joinmarket bash 
 ;;
 cr)
-    > $dp/before ; > $dp/after
-    for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
+
     jm_create_wallet_tool
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
-        for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
-    export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
-    > $dp/before ; > $dp/after
+
     ;;
 delete)
     delete_jm_wallets

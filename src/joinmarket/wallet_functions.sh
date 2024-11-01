@@ -1,8 +1,7 @@
 function jm_create_wallet_tool {
 
 yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "restore" || {
-    enter_continue
-#    restore_jm_wallet
+    restore_jm_wallet
     return 0
     }
 
@@ -37,8 +36,8 @@ $red
     know what this is (y/n): 
 $orange
     I personally have not investigated this feature enough to advise, so I'll be
-    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange if 
-    you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
+    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange 
+    now if you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
     privacy feature.
 
 ########################################################################################
@@ -51,6 +50,21 @@ f) fidelity_bonds_info ;;
 break ;;
 esac
 done
+
+> $dp/before ; > $dp/after #clear contents
+#copy list of wallets to before file
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
+docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
+#copy list of wallets to after file
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
+#automatically export the new wallet
+export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
+#show wallet summary
+docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
+enter_continue
+#clear before and after files
+> $dp/before ; > $dp/after
+
 return 0
 }
 
@@ -176,4 +190,23 @@ $cyan
 "
 enter_continue
 return 0
+}
+
+function restore_jm_wallet {
+
+
+> $dp/before ; > $dp/after #clear contents
+#copy list of wallets to before file
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
+docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py recover" 
+#copy list of wallets to after file
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
+#automatically export the new wallet
+export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
+#show wallet summary
+docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
+enter_continue
+#clear before and after files
+> $dp/before ; > $dp/after
+
 }
