@@ -82,6 +82,10 @@ delete_line "${hm}" "jm_be_carefull=1"
 fi
 ;;
 
+m2)
+menu_joinmarket2
+;;
+
 vc)
 #from menu 2, but can access here as well
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
