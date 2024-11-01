@@ -1,7 +1,7 @@
 function jm_create_wallet_tool {
 
 yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "restore" || {
-    restore_jm_wallet
+    restore_jm_wallet || return 1
     return 0
     }
 
@@ -193,7 +193,46 @@ return 0
 }
 
 function restore_jm_wallet {
+while true ; do
+set_terminal_custom 47 ; echo -e "
+########################################################################################
 
+    Wallet files will be kept inside the container at$cyan /root/.joinmarket/wallet $orange
+
+    You will be asked to input your seed. Type it in and separate with spaces, then
+    hit <enter>.
+
+    It will then ask if you want to add a mnemonic extension. This means the 
+    passphrase. Enter that in if your wallet has one.
+    
+    You will also be asked for a passphrase to encrypt the wallet - the wording is
+    confusing. It actually means some PASSWORD to lock the wallet, not your actual
+    wallet passphrase. Make it something strong and don't forget it. You (nor an
+    attacker) can access the wallet file unless they now the password.
+
+    You will then be asked to create a wallet file name - this doesn't have to be
+    the same as the file name you once used for this wallet. It can be whatever.
+
+    It will then ask:
+$red
+    Would you like this wallet to support fidelity bonds? Write 'n' if you don't 
+    know what this is (y/n): 
+$orange
+    I personally have not investigated this feature enough to advise, so I'll be
+    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange 
+    now if you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
+    privacy feature.
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+f) fidelity_bonds_info ;;
+*)
+break ;;
+esac
+done
 
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
