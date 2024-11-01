@@ -1,4 +1,5 @@
 function menu_joinmarket {
+clear
 
 while true ; do 
 
@@ -33,7 +34,7 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     #is obwatcher running?
     obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-    orderbook="${green}RUNNING"
+    orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
     else
     orderbook="${red}NOT RUNNING"
     fi
@@ -44,7 +45,7 @@ else
      yg="false"
 fi
 debug "pause"
-set_terminal_custom 51 ; echo -en "
+set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
 ########################################################################################$cyan
 
                                 J O I N M A R K E T $orange
