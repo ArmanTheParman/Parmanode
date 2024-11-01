@@ -170,6 +170,9 @@ ss)
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
     enter_continue
     ;;
+bk)
+    backup_jm_wallet
+    ;;
 yg)
     check_wallet_loaded || continue
     yield_generator || return 1
@@ -209,6 +212,8 @@ $cyan
                   cp)$orange          Change wallet encryption password 
 $cyan
                   ss)$orange          Show wallet seed words
+$cyan
+                  bk)$orange          Backup wallet file
 
 ########################################################################################
 "
@@ -243,9 +248,51 @@ ss)
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
     enter_continue
     ;;
+bk)
+    backup_jm_wallet
+    ;;
 
 *)
 invalid
+;;
+esac
+done
+}
+
+function backup_jm_wallet {
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    The following is a list of the contents of$cyan $HOME/.joinmarket/wallets/:
+    
+$red
+$(ls $HOME/.joinmarket/wallets/)
+$orange
+
+    Please type in exactly the filename of the wallet you wish to backup. Parmanode
+    will copy the file (not move, but copy) to your desktop. It'll be easy for you
+    to see it there and then you can simply save it to where you want. 
+
+$orange
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+*)
+
+[[ $choice =~ ^/ ]] && invalid && continue
+
+if [[ -e $HOME/Desktop/$choice ]] ; then
+announce "The file seems to exist on the Desktop already. Please move it or delete it
+    first." && continue
+fi
+
+sudo cp $HOME/.joinmarket/wallets/$choice $HOME/Desktop/$choice
+enter_continue
+return 0
 ;;
 esac
 done
