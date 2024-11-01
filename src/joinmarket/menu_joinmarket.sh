@@ -307,7 +307,7 @@ done
 }
 
 function wallet_history_jm {
-check_wallet_loaded
+check_wallet_loaded || return 1
 docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet history" 
 enter_continue
 }
