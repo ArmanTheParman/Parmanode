@@ -195,6 +195,7 @@ elif [[ $OS == Mac ]] ; then
     docker run -d \
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
+               -p 61000:61000 \
                --restart unless-stopped \
                joinmarket
     return 0
