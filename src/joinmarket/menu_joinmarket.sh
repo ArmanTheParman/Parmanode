@@ -49,31 +49,23 @@ $cyan
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
-                  vc)$orange          Remove all config comments and make pretty
-$cyan
-                  man)$orange         Manually access container and mess around
-$cyan
                   cr)$orange          Create JoinMarket Wallet (with info)
 $cyan
-                  delete)$orange      Delete JoinMarket Wallet 
+                  da)$orange          Display addresses & balances
 $cyan
-                  display)$orange     Display addresses & balances
-$cyan
-                  dall)$orange        Display but including internal addresses
+                  di)$orange          Display but including internal addresses
 $cyan
                   sum)$orange         Summary of balances
 $cyan
-                  cp)$orange          Change wallet encryption password 
-$cyan
                   su)$orange          Show wallet UTXOs
-$cyan
-                  ss)$orange          Show wallet seed words
 $red
                   yg)$orange          Yield Generator ...
 $red
                   log)$orange         Yield Generator log
+$bright_blue
+                  m2)$orange          Menu 2 ...
 
-$orange   
+${bright_blue}If you remember the commands, you can execute menu2 commands here as well.$orange   
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -88,6 +80,14 @@ echo "jm_be_carefull=1" >> $hm
 else
 delete_line "${hm}" "jm_be_carefull=1"
 fi
+;;
+
+vc)
+#from menu 2, but can access here as well
+cfg="$HOME/.joinmarket/joinmarket.cfg" 
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
+sudo mv /tmp/cfg $cfg
+enter_continue "file modified"
 ;;
 
 start)
@@ -106,12 +106,7 @@ sudo nano $HOME/.joinmarket/joinmarket.cfg
 confv)
 sudo vim $HOME/.joinmarket/joinmarket.cfg
 ;;
-vc)
-cfg="$HOME/.joinmarket/joinmarket.cfg" 
-sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
-sudo mv /tmp/cfg $cfg
-enter_continue "file modified"
-;;
+
 man)
 clear
 enter_continue "Type exit and <enter> to return from container back to Parmanode"
@@ -132,11 +127,11 @@ delete)
     delete_jm_wallets
     ;; 
 
-display)
+da)
     check_wallet_loaded || continue
     display_jm_addresses
     ;; 
-dall)
+di)
     check_wallet_loaded || continue
     display_jm_addresses a
     ;;
@@ -175,4 +170,63 @@ invalid
 
 esac
 done
+}
+
+function menu_joinmarket2 {
+while true ; do
+set_terminal ; echo -en "
+########################################################################################$cyan
+
+                                J O I N M A R K E T - Menu 2$orange
+
+########################################################################################
+
+    Active wallet is:    $red$wallet$orange
+
+
+$cyan
+                  vc)$orange          Remove all config comments and make pretty
+$cyan
+                  man)$orange         Manually access container and mess around
+$cyan
+                  delete)$orange      Delete JoinMarket Wallet 
+$cyan
+                  cp)$orange          Change wallet encryption password 
+$cyan
+                  ss)$orange          Show wallet seed words
+
+########################################################################################
+"
+choose "xpmq" ; read choice ; set_terminal
+case $choice in 
+m|M) back2main ;;
+q|Q|QUIT|Quit) exit 0 ;;
+p|P) menu_use ;; 
+
+vc)
+cfg="$HOME/.joinmarket/joinmarket.cfg" 
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
+sudo mv /tmp/cfg $cfg
+enter_continue "file modified"
+;;
+man)
+clear
+enter_continue "Type exit and <enter> to return from container back to Parmanode"
+clear
+docker exec -it joinmarket bash 
+;;
+
+delete)
+    delete_jm_wallets
+    ;; 
+cp)
+    check_wallet_loaded || continue
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
+    ;;
+ss)
+    check_wallet_loaded || continue
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
+    enter_continue
+    ;;
+
 }

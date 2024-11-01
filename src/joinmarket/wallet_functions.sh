@@ -53,6 +53,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The following is a list of the contents of$cyan $HOME/.joinmarket/wallets/:
+    
 $red
 $(ls $HOME/.joinmarket/wallets/)
 $orange
