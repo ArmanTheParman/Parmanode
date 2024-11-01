@@ -86,7 +86,7 @@ relax)
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 echo "jm_be_carefull=1" >> $hm
 else
-delete_line $hm "jm_be_carefull=1"
+delete_line "${hm}" "jm_be_carefull=1"
 fi
 ;;
 
