@@ -5,7 +5,7 @@ echo $! > $dp/socat.pid 2>&1
 fi
 
 if [[ $1 == joinmarket ]] ; then
-tmux new-session -d -s joinmarket_socat "socat TCP4-LISTEN:626201,reuseaddr,fork TCP:127.0.0.1:61000 >$HOME/.parmanode/socat_jm.log"
+tmux new-session -d -s joinmarket_socat "socat TCP4-LISTEN:621000,reuseaddr,fork TCP:127.0.0.1:61201 >$HOME/.parmanode/socat_jm.log"
 fi
 }
 
