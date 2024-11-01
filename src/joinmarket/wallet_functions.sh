@@ -1,4 +1,11 @@
 function jm_create_wallet_tool {
+
+yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "restore" || {
+    enter_continue
+#    restore_jm_wallet
+    return 0
+    }
+
 while true ; do
 set_terminal_custom 47 ; echo -e "
 ########################################################################################

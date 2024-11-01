@@ -56,7 +56,7 @@ $cyan
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
-                  cr)$orange          Create JoinMarket Wallet (with info)
+                  cr)$orange          Create/Recover JoinMarket Wallet (with info)
 $cyan
                   da)$orange          Display addresses & balances
 $cyan

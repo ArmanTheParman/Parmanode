@@ -186,15 +186,41 @@ enter_continue
 }
 
 function yesorno {
+
+if [[ -n $2 ]] ; then
+y=$2
+else
+y="y"
+fi
+
+if [[ -n $3 ]] ; then
+yes=$2
+else
+yes="yes"
+fi
+
+if [[ -n $4 ]] ; then
+n=$4
+else
+n="n"
+fi
+
+if [[ -n $5 ]] ; then
+no=$5
+else
+no="no"
+fi
+
+
 while true ; do
 set_terminal ; echo -ne "
 ########################################################################################
 
     $1
 $cyan
-                            y)$orange       yes
+                            $y)$orange       $yes
 $cyan
-                            n)$orange       no
+                            $n)$orange       $no
 
 ########################################################################################
     Type 
@@ -206,8 +232,8 @@ $cyan
 read choice
 case $choice in
 q|Q) exit ;; m|M) back2main ;;
-y|Y|YES|yes) return 0 ;;
-n|N|NO|no)   return 1 ;;
+"$y") return 0 ;;
+"$n") return 1 ;;
 *)
 invalid
 ;;
