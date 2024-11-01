@@ -1,5 +1,5 @@
 function test_internet_connected {
-curl -s https://8.8.8.8 >/dev/null 2>&1
+curl -s https://8.8.8.8 >/dev/null 2>&1 #ping not always available, so curl instead
 if [[ $? != 0 ]] ; then set_terminal ; echo -e " 
 ########################################################################################
 
