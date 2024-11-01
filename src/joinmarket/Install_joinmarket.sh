@@ -67,7 +67,7 @@ function make_joinmarket_wallet {
     if ! grep -q "deprecatedrpc=create_bdb" < $bc ; then
 
         echo "deprecatedrpc=create_bdb" | sudo tee -a $bc >$dn 2>&1
-        clear && echo -e "${green}added 'deprecatedrpc=create_bdb' to bitcoin.conf${orange}" && sleep 1.5
+        clear 
         dontrestart="false"
 
     else
