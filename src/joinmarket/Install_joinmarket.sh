@@ -143,7 +143,11 @@ function modify_joinmarket_cfg {
     docker exec joinmarket bash -c "sed -i '/rpc_user =/c\\rpc_user = $rpcuser' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcpassword' $jmfile"
     docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
+
+    if [[ $OS == Mac ]] ; then
     docker exec joinmarket bash -c "sed -i '/rpc_host =/c\\rpc_host = host.docker.internal' $jmfile"
+    fi
+
     return 0
 }
 
