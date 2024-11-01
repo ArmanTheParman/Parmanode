@@ -44,6 +44,9 @@ docker rm joinmarket >$dn 2>&1
 sudo rm -rf $hp/joinmarket >$dn 2>&1
 sudo rm -rf $HOME/.joinmarket >$dn 2>&1
 
+delete_line $hm jm_be_carefull
+delete_line $hm jm_menu_shhh
+
 installed_conf_remove "joinmarket"
 success "JoinMarket has been uninstalled."
 }
