@@ -64,14 +64,11 @@ l) break ;;
 esac
 done
 
-debug "pause before tor remove"
 fulcrum_tor_remove
-debug "pause after tor remove"
 sudo rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 
 
 sudo rm /usr/local/bin/Fulcrum* 2>/dev/null 
 sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null
-debug "pause"
 
 bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
 parmanode_conf_remove "drive_fulcrum"

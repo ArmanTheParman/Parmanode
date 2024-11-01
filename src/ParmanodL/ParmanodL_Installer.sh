@@ -303,7 +303,6 @@ fi # end if $1 != install
 # Rename image file
     if [[ $OS_choice == pi ]] ; then
     mv $HOME/ParmanodL/2024*img $HOME/ParmanodL/ParmanodL-PI-v3.0.0.img
-    debug "pause"
     elif [[ $OS_choice == mint ]] ; then
     mv $image_file $HOME/ParmanodL/ParmanodL-MINT-v3.0.0.iso
     fi
@@ -311,12 +310,10 @@ fi # end if $1 != install
 # Clean known hosts of parmanodl
  
     clean_known_hosts && log "parmanodl" "finished clean_known_hosts"
-    debug "pause2"
 
 # make run_parmanodl for desktop execution
 
     make_Run_ParmanodL && log "parmanodl" "finished make_run_parmanodL"
-    debug "pause3"
 
 # Remove temporary script
 

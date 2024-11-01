@@ -129,7 +129,6 @@ docker run -d --restart unless-stopped --name public_pool_ui --network=host publ
 make_ssl_certificates "public_pool_ui" ; debug "certs done"
 # make_socat_script "public_pool_ui"
 # $dp/start_socat_public_pool_ui.sh  # starts socat and captures process ID
-debug "pause"
 
 echo "pausing to determine if run command worked."
 enter_continue

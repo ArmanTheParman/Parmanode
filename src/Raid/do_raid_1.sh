@@ -83,7 +83,6 @@ debug "md_num is $md_num"
 sudo umount $device_list >/dev/null
 sudo umount /media/$USER/RAID >/dev/null
 sudo mdadm --create --verbose /dev/md${md_num} --level=1 --raid-devices=$drive_number $device_list
-debug "pause after create raid
 $device_list"
 
 if [[ ! -e /media/$USER/RAID${md_num} ]] ; then

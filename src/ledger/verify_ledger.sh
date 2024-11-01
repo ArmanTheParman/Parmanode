@@ -7,7 +7,6 @@ fi
 pem=$HOME/parman_programs/parmanode/src/ledger/ledgerlive.pem
 sig=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-$ledger_version.sha512sum.sig
 shasum=$HOME/parman_programs/parmanode/src/ledger/ledger-live-desktop-$ledger_version.sha512sum
-debug "pause 2"
 if ! openssl dgst -sha256 -verify $pem -signature $sig $shasum ; then
 announce "Verification failed. Aborting." 
 return 1

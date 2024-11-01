@@ -106,13 +106,10 @@ cr)
     > $dp/before ; > $dp/after
     for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
     jm_create_wallet_tool
-    debug "pause 1"
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
-    debug "pause 2"
         for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
     export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
-    debug "pause 3"
     > $dp/before ; > $dp/after
     ;;
 delete)

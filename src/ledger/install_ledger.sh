@@ -18,7 +18,6 @@ locationMac="https://download.live.ledger.com/ledger-live-desktop-$ledger_versio
 
 if [[ $OS == Mac ]] ; then
 curl -LO $locationMac 
-debug "pause"
 
 if [[ $verify != skip ]] ; then verify_ledger || return 1 ; fi
 hdiutil attach *.dmg ; cd /Volumes/Ledger* ; sudo rm -rf /Applications/"Ledger Live"* ; cp -r *app /Applications

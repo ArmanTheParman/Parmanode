@@ -43,7 +43,6 @@ if [[ $omit == "true" ]] ; then
     elif [[ $OS == Linux ]] ; then
     cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
     fi
-debug "pause after sed"
 mv /tmp/tempreport $report
 fi
 }
@@ -86,7 +85,6 @@ echor "
 echor "#PROGRAMS"
 echor "#which..." 
 echor "$(which nginx npm tor bitcoin-cli docker brew curl jq)"
-debug "pause"
 
 #prinout of $dp
 echor "#DOT PARMANODE"
@@ -200,7 +198,6 @@ echor "#netstat
 $(cat netstat -tuln)"
 
 delete_private
-debug "pause"
 mv $report $HOME/Desktop/
 
 set_terminal ; echo -e "

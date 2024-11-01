@@ -24,8 +24,6 @@ function install_joinmarket {
         debug "check bitcoin conf fixed"
     fi
 
-enter_continue "pause aaa"
-
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"

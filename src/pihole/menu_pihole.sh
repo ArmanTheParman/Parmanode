@@ -184,7 +184,6 @@ server:
     private-address: fd00::/8
     private-address: fe80::/10
 EOF
-debug "pause"
 sudo systemctl restart unbound >/dev/null 2>&1
 
 docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"

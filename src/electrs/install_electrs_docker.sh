@@ -95,7 +95,6 @@ elif [[ $drive_electrs == external ]] ; then
 fi
 debug "before prepare_dirve_electrs"
 prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
-debug "pause after prepare_drive_electrs"
 #if it exists, test inside function
 if [[ $drive_electrs == internal ]] ; then
 restore_internal_electrs_db || return 1 
@@ -105,7 +104,6 @@ debug "after restore internal electrs db"
 #config
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
-debug "pause after config"
 
 #Start the container
 docker_run_electrs || { announce "failed to run docker electrs" ; log "electrsdkr" "failed to run" ; return 1 ; }
@@ -113,12 +111,10 @@ debug "after docker run electrs"
 
 #Set permissions
 docker exec -itu root electrs bash -c "chown -R parman:parman /home/parman/parmanode/electrs/"
-debug "pause after run and chown"
 
 make_ssl_certificates electrsdkr || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
 docker_start_electrs || return 1 
-debug "pause after start"
 
 installed_config_add "electrsdkr2-end"
 unset install_electrs_docker_variable

@@ -34,6 +34,5 @@ done
 
 installed_config_remove "nextcloud"
 parmanode_conf_remove "nextcloud"
-debug "pause"
 success "NextCloud has been uninstalled"
 }
