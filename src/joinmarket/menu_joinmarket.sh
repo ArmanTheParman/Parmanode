@@ -4,7 +4,7 @@ while true ; do
 
 if ! grep "jm_be_careful=1" $hm >$dm 2>&1 ; then
     export be_carefull="${red}${blinkon}JoinMarket is a HOT wallet - be careful.
-    ${blinkoff}${red}Type$cyan relax$orange to toggle this warning.$orange"
+    ${blinkoff}${red}Type$cyan relax$red to toggle this warning.$orange"
 else
     unset be_carefull
 fi
