@@ -34,8 +34,6 @@ function install_joinmarket {
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
 
-    start_socat joinmarket
-
     if [[ $OS == Linux ]] ; then 
         install_bitcoin_docker silent joinmarket || return 1
         docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dn 2>&1
@@ -197,6 +195,9 @@ elif [[ $OS == Mac ]] ; then
                joinmarket
     return 0
 fi
+
+    start_socat joinmarket
+    internal_docker_socat_jm 
 
 }
 
