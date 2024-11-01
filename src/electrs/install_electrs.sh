@@ -16,17 +16,15 @@ grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting.
 sned_sats
 fi
 
-#if ! which nginx >/dev/null ; then install_nginx ; fi
-#trying socat instead
-if [[ $OS == Linux ]] ; then
-if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
-elif [[ $OS == Mac ]] ; then brew_check || return 1 ; brew install socat ; fi
+if [[ $OS == Linux ]] && ! which socat >/dev/null 2>&1 ; then 
+    sudo apt-get update -y 
+    sudo apt install socat -y 
+elif [[ $OS == Mac ]] && ! which socat >/dev/null 2>&1 ; then 
+    brew_check || return 1 
+    brew install socat 
+fi
 
-#going with service file instead for now
-#make_socat_script electrs
 if [[ $OS == Linux ]] ; then
-#make_socat_service_listen
-#make_socat_service_publish
 make_socat_service
 fi
 
@@ -123,9 +121,6 @@ fi
 #remove old certs (in case they were copied from backup), then make new certs
 rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
-
-#trying socat instead
-#nginx_stream electrs install || { debug "nginx stream failed" ; return 1 ; } #must be after certificates made or install will fail
 
 #prepare drives. #drive_electrs= variable set.
 if [[ $OS == Linux ]] ; then

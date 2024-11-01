@@ -32,13 +32,20 @@ nooo)
 hide_messages_add "tmux" "1" 
 break ;;
 y)
-if [[ $(uname) == Linux ]] ; then
-sudo apt-get update -y && sudo apt-get install tmux -y || enter_continue
-elif [[ $(uname) == Darwin ]] ; then
-brew_check
-brew install tmux || enter_continue
-fi
+install_tmux
 break ;;
 esac
 done
+}
+
+function install_tmux {
+
+if which tmux >$dn 2>&1 ; then return 0 ; fi
+
+if [[ $(uname) == Linux ]] ; then
+sudo apt-get update -y && sudo apt-get install tmux -y 
+elif [[ $(uname) == Darwin ]] ; then
+brew_check
+brew install tmux 
+fi
 }

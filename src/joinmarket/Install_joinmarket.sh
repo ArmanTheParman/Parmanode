@@ -24,6 +24,9 @@ function install_joinmarket {
         debug "check bitcoin conf fixed"
     fi
 
+    install_tmux
+    if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
+
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
@@ -190,6 +193,7 @@ elif [[ $OS == Mac ]] ; then
     docker run -d \
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
+               -p 62601:62601
                --restart unless-stopped \
                joinmarket
     return 0
