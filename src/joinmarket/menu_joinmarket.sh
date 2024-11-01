@@ -20,7 +20,7 @@ fi
 
 if [[ -z $wallet ]] ; then wallet=NONE ; fi
 
-if docker ps | grep -q joinmarket ; then
+if docker ps 2>$dn | grep -q joinmarket ; then
 
     joinmarket_running="${green}RUNNING$orange"
 
@@ -30,6 +30,14 @@ if docker ps | grep -q joinmarket ; then
     else
         yg="false"
     fi
+    #is obwatcher running?
+    obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
+    if [[ $obwatcherPID =~ [0-9]+ ]] ; then
+    orderbook="${green}Running"
+    else
+    orderbook="${red}Not Running"
+    fi
+
 
 else
      joinmarket_running="${red}NOT RUNNING$orange"
@@ -44,13 +52,15 @@ $jm_be_carefull
 ########################################################################################
 
     JoinMarket is:       $joinmarket_running
-
     Active wallet is:    $red$wallet$orange
+    Order Book is:       $orderbook
 
 $cyan
                   start)$orange       Start JoinMarket Docker container
 $cyan
                   stop)$orange        Stop JoinMarket Docker container
+$cyan
+                  ob)$orange          Start/Stop orderbook
 $cyan
                   load)$orange        Load wallet 
 $cyan
@@ -114,6 +124,9 @@ docker start joinmarket
 ;;
 stop)
 docker stop joinmarket
+;;
+ob)
+orderbook_jm
 ;;
 load)
 set_terminal
@@ -346,4 +359,15 @@ set_terminal ; echo -e "
 "
 enter_continue
 return 0
+}
+
+function orderbook_jm {
+
+if [[ -z $obwatcherPID ]] ; then
+docker exec -d joinmarket /jm/clientserver/scripts/obwatch/ob-watcher.py >/dev/null 2>&1
+else
+docker exec joinmarket kill $obwatcherPID
+fi
+
+
 }
