@@ -34,11 +34,10 @@ function install_joinmarket {
 
     run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
 
-    if [[ $OS == Mac ]] ; then # && ! docker exec parmabox cat bitcoin-installed 2>/dev/null
+    if [[ $OS == Linux ]] ; then # && ! docker exec parmabox cat bitcoin-installed 2>/dev/null
         install_bitcoin_docker silent joinmarket || return 1
         docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec joinmarket /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /root/.bitcoin/bitcoin.conf" >$dn 2>&1
-        debug "check bitcoin conf fixed"
     fi
 
     counter=0
