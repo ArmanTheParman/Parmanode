@@ -218,9 +218,9 @@ set_terminal ; echo -ne "
 
     $1
 $cyan
-                        $y)$orange   \r\033[49C$yes
+                            $y)$orange   \r\033[49C$yes
 $cyan
-                        $n)$orange   \r\033[49C$no
+                            $n)$orange   \r\033[49C$no
 
 ########################################################################################
     Type 
