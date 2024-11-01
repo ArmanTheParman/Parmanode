@@ -176,6 +176,9 @@ bk)
 hist)
     wallet_history_jm
     ;;
+sp)
+    spending_info_jm
+    ;;
 yg)
     check_wallet_loaded || continue
     yield_generator || return 1
@@ -219,6 +222,8 @@ $cyan
                   bk)$orange          Backup wallet file
 $cyan
                   hist)$orange        Show a history of the wallet's transactions
+$cyan
+                  sp)$orange          Spending from the wallet (info) 
 
 ########################################################################################
 "
@@ -258,6 +263,9 @@ bk)
     ;;
 hist)
     wallet_history_jm
+    ;;
+sp)
+    spending_info_jm
     ;;
 
 *)
@@ -310,4 +318,32 @@ function wallet_history_jm {
 check_wallet_loaded || return 1
 docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet history" 
 enter_continue
+}
+
+function spending_info_jm {
+
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode does not recommend or enable terminal based commands to spend from the
+    JM wallets. It's best that you restore your seed into a hardware wallet device,
+    and explore your wallets using Sparrow or Electrum. Then generate transactions
+    from there.
+
+    Remember that you'll need to modify the 'account' value in the derivation path
+    to see all your mixing depths.
+
+    If you really want to use the command prompt to spend coins out of this wallet,
+    eg if you lost your seed an you only have a JM wallet file, then you can choose 
+    the manual access from the menu. You'll then be in the Docker container at the 
+    directory with all the scripts. You can look up the JoinMarket documentation 
+    and execute whichever script you want.
+
+    I may include functions to do this automatically one day, and can take requests
+    if there is demand.
+
+########################################################################################
+"
+enter_continue
+return 0
 }
