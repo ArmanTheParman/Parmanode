@@ -13,7 +13,7 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
                    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7
 RUN apt-get install -y --no-install-recommends \
-                   less tmux
+                   less tmux socat net-tools
 
 COPY . .
 
