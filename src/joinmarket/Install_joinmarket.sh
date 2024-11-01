@@ -2,8 +2,6 @@ function install_joinmarket {
 
     set_terminal
 
-#    if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
-
     grep -q "bitcoin-end" < $ic || { 
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
@@ -24,8 +22,7 @@ function install_joinmarket {
         debug "check bitcoin conf fixed"
     fi
 
-    install_tmux
-    if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
+    install_tmux ; if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 

@@ -41,12 +41,6 @@ fi
 docker stop joinmarket >$dn 2>&1
 docker rm joinmarket >$dn 2>&1
 
-if [[ $OS == Linux ]] ; then
-sudo sed -i '/deprecatedrpc=create_bdb/d' $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
-else
-sudo gsed -i '/deprecatedrpc=create_bdb/d' $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
-fi
-
 sudo rm -rf $hp/joinmarket >$dn 2>&1
 sudo rm -rf $HOME/.joinmarket >$dn 2>&1
 
