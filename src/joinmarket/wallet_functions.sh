@@ -125,7 +125,7 @@ sed -i '/^[Mm]ixdepth/i\\' /tmp/jmaddresses
 sed -i "1i##################################### wallet.jmdat #####################################" /tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
-clear
+set_terminal_wide
 less /tmp/jmaddresses
 #rm /tmp/jmaddresses >$dn 2>&1
 enter_continue
