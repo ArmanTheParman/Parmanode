@@ -3,7 +3,8 @@ function menu_joinmarket {
 while true ; do 
 
 if ! grep "jm_be_careful=1" $hm >$dm 2>&1 ; then
-    export be_carefull="${red}${blinkon}JoinMarket uses a HOT wallet - be careful.
+    export be_carefull="
+${red}${blinkon}JoinMarket uses a HOT wallet - be careful.
 ${blinkoff}${red}Type$cyan relax$red to toggle this warning.$orange"
 else
     unset be_carefull
@@ -28,7 +29,7 @@ else
      yg="false"
 fi
 
-set_terminal_custom 50 ; echo -en "
+set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
 
                                 J O I N M A R K E T $orange
