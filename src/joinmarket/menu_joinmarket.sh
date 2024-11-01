@@ -33,9 +33,9 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     #is obwatcher running?
     obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-    orderbook="${green}Running"
+    orderbook="${green}RUNNING"
     else
-    orderbook="${red}Not Running"
+    orderbook="${red}NOT RUNNING"
     fi
 
 
