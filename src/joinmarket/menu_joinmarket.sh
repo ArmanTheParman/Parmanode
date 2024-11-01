@@ -121,9 +121,11 @@ enter_continue "file modified"
 
 start)
 docker start joinmarket
+start_socat joinmarket
 ;;
 stop)
 docker stop joinmarket
+stop_socat joinmarket
 ;;
 ob)
 orderbook_jm
