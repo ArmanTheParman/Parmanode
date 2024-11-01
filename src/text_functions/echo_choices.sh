@@ -194,7 +194,7 @@ y="y"
 fi
 
 if [[ -n $3 ]] ; then
-yes=$2
+yes=$3
 else
 yes="yes"
 fi
@@ -223,6 +223,7 @@ $cyan
                             $n)$orange   \r\033[49C$no
 
 ########################################################################################
+
     Type '${cyan}y$orange' or '${cyan}n$orange' then $green<enter>$orange
     OR '${red}q$orange' to quit, or '${red}m$orange' for main menu
 
