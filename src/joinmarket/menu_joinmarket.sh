@@ -10,6 +10,12 @@ else
     unset jm_be_carefull
 fi
 
+if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
+export jm_menu_shhh="${bright_blue}If you remember the commands, you can execute menu2 commands here as well.
+Type shhh to toggle this on and off."
+else
+    unset jm_menu_shhh
+fi
 
 if [[ -z $wallet ]] ; then wallet=NONE ; fi
 
@@ -65,7 +71,8 @@ $red
 $bright_blue
                   m2)$orange          Menu 2 ...
 
-${bright_blue}If you remember the commands, you can execute menu2 commands here as well.$orange   
+
+$jm_menu_shhh$orange   
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
@@ -79,6 +86,14 @@ if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 echo "jm_be_carefull=1" >> $hm
 else
 delete_line "${hm}" "jm_be_carefull=1"
+fi
+;;
+
+shhh)
+if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
+echo "jm_menu_shhh=1" >> $hm
+else
+delete_line "${hm}" "jm_menu_shhh=1"
 fi
 ;;
 
