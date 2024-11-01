@@ -125,6 +125,7 @@ start_joinmarket
 ;;
 stop)
 stop_joinmarket
+unset obwatcherPID
 ;;
 ob)
 orderbook_jm
