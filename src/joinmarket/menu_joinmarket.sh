@@ -12,7 +12,7 @@ fi
 
 if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
 export jm_menu_shhh="${bright_blue}If you remember the commands, you can execute menu2 commands here as well.
-Type shhh to toggle this on and off."
+Type$cyan shhh$bright_blue to toggle this on and off."
 else
     unset jm_menu_shhh
 fi
@@ -70,7 +70,6 @@ $red
                   log)$orange         Yield Generator log
 $bright_blue
                   m2)$orange          Menu 2 ...
-
 
 $jm_menu_shhh$orange   
 ########################################################################################
