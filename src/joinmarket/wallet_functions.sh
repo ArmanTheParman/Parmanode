@@ -53,7 +53,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     The following is a list of the contents of$cyan $HOME/.joinmarket/wallets/:
-$pink
+$red
 $(ls $HOME/.joinmarket/wallets/)
 $orange
 
@@ -71,6 +71,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 yolodelete)
 sudo rm -rf $HOME/.joinmarket/wallets/*
 enter_continue "DONE"
+unset wallet
 ;;
 *)
 return 1
