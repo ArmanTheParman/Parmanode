@@ -173,6 +173,9 @@ ss)
 bk)
     backup_jm_wallet
     ;;
+hist)
+    wallet_history_jm
+    ;;
 yg)
     check_wallet_loaded || continue
     yield_generator || return 1
@@ -214,6 +217,8 @@ $cyan
                   ss)$orange          Show wallet seed words
 $cyan
                   bk)$orange          Backup wallet file
+$cyan
+                  hist)$orange        Show a history of the wallet's transactions
 
 ########################################################################################
 "
@@ -250,6 +255,9 @@ ss)
     ;;
 bk)
     backup_jm_wallet
+    ;;
+hist)
+    wallet_history_jm
     ;;
 
 *)
@@ -296,4 +304,10 @@ return 0
 ;;
 esac
 done
+}
+
+function wallet_history_jm {
+check_wallet_loaded
+docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet history" 
+enter_continue
 }
