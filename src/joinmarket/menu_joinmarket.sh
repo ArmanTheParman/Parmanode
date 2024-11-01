@@ -206,7 +206,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in 
 m|M) back2main ;;
 q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+p|P) return 0 ;; 
 
 vc)
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
