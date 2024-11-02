@@ -151,7 +151,7 @@ x=$(echo $wallet | wc -c | awk '{print $1}')
 y=$(( 49 - x ))
 line=$(echo "############################################" | head -c $y)
 
-sed -i "1i##################################### wallet.jmdat $line" /tmp/jmaddresses
+sed -i "1i##################################### $wallet $line" /tmp/jmaddresses
 echo "
 ####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
 set_terminal_wide
