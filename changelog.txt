@@ -1,3 +1,6 @@
+Version 3.47.0
+    -ParmaJoin
+    -gsed symlink for linux
 Version 3.46.3
     -SSD drive power management tool
     -Tool to install Bitcoin into any docker container that's running
