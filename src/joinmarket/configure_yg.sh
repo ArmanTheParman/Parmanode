@@ -63,11 +63,9 @@ while true ; do
         \r    would be 0.002% (and 0.5 would ridiculously be 50%)"
 
         if  [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
-            echo "1" ; sleep 3
-            sudo gsed -iE "s/cfjee_r=.*$/cjfee_r = $enter_cont/" $jmcfg
+            sudo gsed -iE "s/cfjee_r =.*$/cjfee_r = $enter_cont/" $jmcfg
             break
         else
-            echo "2" ; sleep 3
             invalid
             continue
         fi
@@ -98,7 +96,7 @@ break
 ;;
 *)
 [[ $(echo "$enter_cont >= 0" | bc -l) == 1 && $(echo "$enter_cont <= 1" | bc -l) == 1 ]] || { invalid ; continue ; }
-sudo gsed -iE "s/cjfee_factor=.*$/cjfee_factor = $enter_cont/" $jmcfg
+sudo gsed -iE "s/cjfee_factor =.*$/cjfee_factor = $enter_cont/" $jmcfg
 break
 ;;
 esac
