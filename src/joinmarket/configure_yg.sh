@@ -11,7 +11,7 @@ fi
 while true ; do #big loop for whole function
 
 while true ; do
-announce "Please type in the minimum size, in Satoshis, for the coinjoin you're oferring.
+announce "Please type in the minimum$cyan size$orange, in Satoshis, for the coinjoin you're oferring.
           \r    The default is 1 million sats."
 case $enter_cont in
 "")
@@ -30,7 +30,7 @@ done
 size_factor = 0.1
 
 while true ; do
-announce "For privacy, there is a default variance to your preferred size, set
+announce "For privacy, there is a$cyan default variance$orange to your preferred size, set
          \r    at size_factor = 0.1, such that a size of 1M will randomly
          \r    be set tto 0.9M to 1.1M - this is to improve privacy.
 
@@ -54,13 +54,13 @@ done
 
 while true ; do
 
-    yesorno "Would you like to use a relative (percentage) fee offer, or an absolute value?" \
+    yesorno "Would you like to use a$cyan relative (percentage)$orange fee offer, or an$cyan absolute$orange value?" \
     "r" "relative" "abs" "absolute" \
         && { swapstring $jmcfg "ordertype =" "ordertype = reloffer" ; ordertype=r ; } \
         || { swapstring $jmcfg "ordertype =" "ordertype = absoffer" ; ordertype=a ; }
 
     if [[ $ordertype == r ]] ; then
-        announce "Please type in a value for the relative fee, between 0 and 1.0, eg 0.00002
+        announce "Please type in a$cyan value$orange for the relative fee, between 0 and 1.0, eg 0.00002
         \r    would be 0.002% (and 0.5 would ridiculously be 50%)"
 
         if ! [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
@@ -72,8 +72,8 @@ while true ; do
         fi
 
     elif [[ $ordertype == a ]] ; then
-        announce "Plese type in an absolute value in sats you want to receive for oferring coinjoins"
-        [[ $enter_cont -ge 0 ]] || { invalid && continue ; }
+        announce "Plese type in an$cyan absolute value$orange in sats you want to receive for oferring coinjoins"
+        [[ $enter_cont -ge 0 ]] || { invalid ; continue ; }
         swapstring $jmcfg "cjfee_a =" "cjfee_a = $enter_cont"
         break
     fi
@@ -83,7 +83,7 @@ done
 ########################################################################################
 
 while true ; do
-announce "For privacy, there is a default variance to your preferred fee, set
+announce "For privacy, there is a default$cyan variance$orange to your preferred fee, set
          \r    at cjfee_factor = 0.1, such that a fee of 1000 will randomly
          \r    be set tto 900 to 1100 - this is to improve privacy.
 
@@ -96,7 +96,7 @@ swapstring $jmcfg "cjfee_factor =" "cjfee_factor = 0.1"
 break
 ;;
 *)
-[[ $(echo "$enter_cont >= 0" | bc -l) == 1 && $(echo "$enter_cont <= 1" | bc -l) == 1 ]] || { invalid && continue ; }
+[[ $(echo "$enter_cont >= 0" | bc -l) == 1 && $(echo "$enter_cont <= 1" | bc -l) == 1 ]] || { invalid ; continue ; }
 swapstring $jmcfg "cjfee_factor =" "cjfee_factor = $enter_cont"
 break
 ;;
@@ -110,7 +110,7 @@ $green
            \r        $(gsed -n '/cjfee_factor =/p' $jmcfg)
            \r        $(gsed -n '/minsize =/p' $jmcfg)
            \r        $(gsed -n '/size_factor =/p' $jmcfg)" \
-    "y" "\b\b\b\byes, agree" "n" "\b\b\b\bno, start over" && return 0 || continue
+    "y" "\b\b\b\b\b\b\byes, agree" "n" "\b\b\b\b\b\b\bno, start over" && return 0 || continue
 
 
 done #end big loop
