@@ -11,5 +11,9 @@ if grep prefersbitcoinmempool_only_ask_once $pc ; then
 delete_line $ps prefersbitcoinmempool_only_ask_once >$dn 2>&1
 fi
 
+if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
+echo "${green}Installing the bc caluclator, necessary for Parmanode to think..."
+sudo apt-get update -y && sudo apt-get install bc
+fi
 
 }

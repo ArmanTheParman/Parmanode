@@ -1,5 +1,6 @@
 function menu_joinmarket {
 clear
+export jmcfg="$HOME/.joinmarket/joinmarket.cfg" 
 
 while true ; do 
 
@@ -78,8 +79,6 @@ $cyan
                   su)$orange          Show wallet UTXOs
 $red
                   yg)$orange          Yield Generator ...
-$red
-                  log)$orange         Yield Generator log
 $bright_blue
                   m2)$orange          Menu 2 ...
 
@@ -113,10 +112,8 @@ menu_joinmarket2
 ;;
 
 vc)
-#from menu 2, but can access here as well
-cfg="$HOME/.joinmarket/joinmarket.cfg" 
-sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
-sudo mv /tmp/cfg $cfg
+sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
+sudo mv /tmp/cfg $jmcfg
 enter_continue "file modified"
 ;;
 
@@ -135,10 +132,10 @@ set_terminal
 choose_wallet || continue
 ;;
 conf)
-sudo nano $HOME/.joinmarket/joinmarket.cfg
+sudo nano $jmcfg 
 ;;
 confv)
-sudo vim $HOME/.joinmarket/joinmarket.cfg
+sudo vim $jmcfg
 ;;
 
 man)
@@ -196,11 +193,7 @@ sp)
     ;;
 yg)
     check_wallet_loaded || continue
-    yield_generator || return 1
-    ;;
-log)
-    check_wallet_loaded || continue
-    yield_generator_log || return 1
+    menu_yield_generator || return 1
     ;;
 *)
 invalid
@@ -373,3 +366,60 @@ fi
 
 
 }
+
+function menu_yield_generator {
+
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+                                   YEILD GENERATOR                         $cyan
+                             Be a coinjoin market maker                   $orange
+
+########################################################################################
+
+$green
+                    start)$orange    Start Yield Generator 
+$red
+                    stop)$orange     Start Yield Generator 
+$yellow
+                    c)$orange        Configure Yeild Generator Settings...
+$cyan
+                    log)$orange      Yield Generator log
+
+
+
+
+########################################################################################
+"
+choose "xpmq" ; read choice ; set_terminal
+case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
+
+log)
+    check_wallet_loaded || continue
+    yield_generator_log || return 1
+    ;;
+c)
+    configure_yg 
+    ;;
+*)
+    invalid
+    ;;
+esac
+done
+}
+
+
+function configure_yg {
+
+yesorno "Would you like to use a relative (percentage) fee offer, or an absolute value?" \
+        "r" "relative" "abs" "absolute" \
+        && { swapstring $jmcfg "ordertype =" "ordertype = reloffer" ; ordertype=rel ; } \
+        || { swapstring $jmcfg "ordertype =" "ordertype = absoffer" ; ordertype=abs ; }
+
+if [[ $ordertype == rel ]] ; then
+announce "Please type in a value for the relative fee, between 0 and 1.0, eg 0.00002
+    would be 0.002% (and 0.5 would ridiculously be 50%)"
+    [[ $enter_cont -gt 0 && $enter_cont -lt 1 ]]
+
+
