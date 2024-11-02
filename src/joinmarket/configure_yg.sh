@@ -104,13 +104,13 @@ esac
 done
 
 yesorno "  \r    The Following are your choices...
-$cyan
+$green
            \r        $(gsed -n '/ordertype =/p' $jmcfg)
            \r        $(gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
            \r        $(gsed -n '/cjfee_factor =/p' $jmcfg)
            \r        $(gsed -n '/minsize =/p' $jmcfg)
            \r        $(gsed -n '/size_factor =/p' $jmcfg)" \
-    "y" "yes, agree" "n" "no, start over" && return 0 || continue
+    "y" "\b\b\b\byes, agree" "n" "\b\b\b\bno, start over" && return 0 || continue
 
 
 done #end big loop
