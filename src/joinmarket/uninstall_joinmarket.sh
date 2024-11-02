@@ -42,7 +42,15 @@ stop_joinmarket
 docker rm joinmarket >$dn 2>&1
 
 sudo rm -rf $hp/joinmarket >$dn 2>&1
-sudo rm -rf $HOME/.joinmarket >$dn 2>&1
+
+if [[ -d $HOME/.joinmarket/wallets ]] ; then
+sudo mkdir $HOME/.joinmarket2 \
+&& sudo mv $HOME/.joinmarket/wallets $HOME/.joinmarket2 \
+&& sudo rm -rf $HOME/.joinmarket >$dn 2>&1 \
+&& sudo mv $HOME/.joinmarket2 $HOME/.joinmarket
+else
+sudo rm -rf $HOME/.joinmarket
+fi
 
 delete_line $hm jm_be_carefull
 delete_line $hm jm_menu_shhh
