@@ -1,6 +1,7 @@
 function temp_patch {
 
 add_rpcbind
+gsed_symlink
 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then

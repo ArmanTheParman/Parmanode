@@ -75,10 +75,6 @@ export bashV_major=$(bash --version | head -n1 | cut -d \. -f 1 | grep -Eo '[0-9
 #it wont' work in the normal terminal.
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
-#so that gsed command for macs works on linux.
-if [[ $(uname) == Linux ]] ; then
-alias gsed=sed
-fi
 # Enable alias expansion in non-interactive shells
 shopt -s expand_aliases
 }
