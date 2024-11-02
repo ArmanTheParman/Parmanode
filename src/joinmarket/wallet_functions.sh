@@ -1,5 +1,23 @@
 function jm_create_wallet_tool {
 
+announce "When making any wallet, even a hot wallet such as this, it's important to
+          \r    to make sure you test the recovery of the wallet from backup - That way
+          \r    you know your backup is good. 
+          \r
+          \r    Back ups can be the seed words, and you can restore them here, or
+          \r    if you have saved the encrypted wallet file, you can just copy the
+          \r    file to the directory: $HOME/.joinmarket/wallets/ 
+          \r    to use the wallet with ParmaJoin.
+
+          \r    It's possible to load your ParmaJoin wallet seed words into a hardware 
+          \r    wallet but be careful not to mess around by moving coins about, it can 
+          \r    disturb the coinjoining you do later - It's fine to do whatever you 
+          \r    want if you plan not to mix the coins any more.
+
+         \r     To keep things clean and simple, you could bring coins to this wallet
+         \r     to coinjoin them, and once you are done, empty the coins to their
+         \r     final cold storage home, and discard the coinjoin wallet."
+
 yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "restore" || {
     restore_jm_wallet || return 1
     return 0
