@@ -16,18 +16,18 @@ set_terminal_high ; echo -e "
 ########################################################################################
 
 
-
-$green             (start) $orange         Start Sparrow 
-
-$rec             (mm)    $orange         Manage node connection...
-
-$cyan             (sc)    $orange         View/Edit config file (scv for vim)
-
-$cyan             (t)     $orange         Troubleshooting info
-
-$cyan             (w)     $orange         Show saved wallet files
-
-$cyan             (cl)    $orange         Clear connection certificates 
+$green
+                  (start) $orange         Start Sparrow 
+$red
+                  (mm)    $orange         Manage node connection...
+$cyan
+                  (sc)    $orange         View/Edit config file (scv for vim)
+$cyan
+                  (t)     $orange         Troubleshooting info
+$cyan
+                  (w)     $orange         Show saved wallet files
+$cyan
+                  (cl)    $orange         Clear connection certificates 
                            $orange         (can help connection issues)
 
 
