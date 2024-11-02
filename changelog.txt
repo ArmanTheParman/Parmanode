@@ -5,10 +5,10 @@ Version 3.46.3
     -Fixed smol bug listing and mounting RAID devices
     -Fixed smol SSL bug for Mac electrs
     -QBittorrent update - critical (v5.0.1)
+    -Smol LND bug
 Version 3.46.2
     -Menu colour touchups
     -Mempool backend defaults changed
-    -Tool to install Bitcoin in a docker container of your choice
 Version 3.46.1
     -Tor for Mempool Mac version
 Version 3.46.0
