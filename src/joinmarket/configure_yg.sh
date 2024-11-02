@@ -13,14 +13,17 @@ while true ; do #big loop for whole function
 while true ; do
 announce "Please type in the minimum$cyan size$orange, in Satoshis, for the coinjoin you're oferring.
           \r    The default is 1 million sats."
+debug "enter_cont is $enter_cont"
 case $enter_cont in
 "")
 gsed -iE 's/minsize =.*$/minsize = 1000000/' $jmcfg 
+debug "1"
 break
 ;;
 *)
 [[ $enter_cont -gt 0 ]] || { invalid && continue ; }
 gsed -iE "s/minsize =.*$/minsize = $enter_cont/" $jmcfg
+debug "2"
 break
 ;;
 esac
