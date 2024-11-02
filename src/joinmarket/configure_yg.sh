@@ -63,12 +63,12 @@ while true ; do
         announce "Please type in a$cyan value$orange for the relative fee, between 0 and 1.0, eg 0.00002
         \r    would be 0.002% (and 0.5 would ridiculously be 50%)"
 
-        if ! [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
-            invalid
-            continue
-        else
+        if  [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
             swapstring $jmcfg "cjfee_r =" "cjfee_r = $enter_cont"
             break
+        else
+            invalid
+            continue
         fi
 
     elif [[ $ordertype == a ]] ; then
