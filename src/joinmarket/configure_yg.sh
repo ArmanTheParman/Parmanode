@@ -105,7 +105,7 @@ done
 
 yesorno "  \r    The Following are your choices...
 $green
-           \r        $(sudo gsed -n '/ordertype =/p' $jmcfg)
+           \r        $(sudo gsed -nE '/^ordertype =/p' $jmcfg)
            \r        $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
            \r        $(sudo gsed -n '/cjfee_factor =/p' $jmcfg)
            \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
