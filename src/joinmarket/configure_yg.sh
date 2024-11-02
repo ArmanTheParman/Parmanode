@@ -16,13 +16,13 @@ announce "Please type in the minimum$cyan size$orange, in Satoshis, for the coin
 debug "enter_cont is $enter_cont"
 case $enter_cont in
 "")
-gsed -iE 's/minsize =.*$/minsize = 1000000/' $jmcfg 
+sudo gsed -iE 's/minsize =.*$/minsize = 1000000/' $jmcfg 
 debug "1"
 break
 ;;
 *)
 [[ $enter_cont -gt 0 ]] || { invalid && continue ; }
-gsed -iE "s/minsize =.*$/minsize = $enter_cont/" $jmcfg
+sudo gsed -iE "s/minsize =.*$/minsize = $enter_cont/" $jmcfg
 debug "2"
 break
 ;;
@@ -41,12 +41,12 @@ announce "For privacy, there is a$cyan default variance$orange to your preferred
 
 case $enter_cont in
 "")
-gsed -iE 's/size_factor =.*$/size_factor = 0.1/' $jmcfg
+sudo gsed -iE 's/size_factor =.*$/size_factor = 0.1/' $jmcfg
 break
 ;;
 *)
 [[ $(echo "$enter_cont >= 0" | bc -l) == 1 && $(echo "$enter_cont <= 1" | bc -l) == 1 ]] || { invalid && continue ; }
-gsed -iE "s/size_factor =.*$/size_factor = $enter_cont/" $jmcfg
+sudo gsed -iE "s/size_factor =.*$/size_factor = $enter_cont/" $jmcfg
 break
 ;;
 esac
@@ -58,15 +58,15 @@ while true ; do
 
     yesorno "Would you like to use a$cyan relative (percentage)$orange fee offer, or an$cyan absolute$orange value?" \
     "r" "relative" "abs" "absolute" \
-        && { gsed -iE "s/ordertype =.*$/ordertype = reloffer" $jmcfg ; ordertype=r ; } \
-        || { gsed -iE "s/ordertype =.*$/ordertype = absoffer" $jmcfg ; ordertype=a ; }
+        && { sudo gsed -iE "s/ordertype =.*$/ordertype = reloffer" $jmcfg ; ordertype=r ; } \
+        || { sudo gsed -iE "s/ordertype =.*$/ordertype = absoffer" $jmcfg ; ordertype=a ; }
 
     if [[ $ordertype == r ]] ; then
         announce "Please type in a$cyan value$orange for the relative fee, between 0 and 1.0, eg 0.00002
         \r    would be 0.002% (and 0.5 would ridiculously be 50%)"
 
         if  [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
-            gsed -iE "s/cfjee_r=.*$/cjfee_r = $enter_cont/" $jmcfg
+            sudo gsed -iE "s/cfjee_r=.*$/cjfee_r = $enter_cont/" $jmcfg
             break
         else
             invalid
@@ -76,7 +76,7 @@ while true ; do
     elif [[ $ordertype == a ]] ; then
         announce "Plese type in an$cyan absolute value$orange in sats you want to receive for oferring coinjoins"
         [[ $enter_cont -ge 0 ]] || { invalid ; continue ; }
-        gsed -iE "s/cjfee_a =.*$/cjfee_a = $enter_cont/" $jmcfg
+        sudo gsed -iE "s/cjfee_a =.*$/cjfee_a = $enter_cont/" $jmcfg
         break
     fi
 
@@ -94,12 +94,12 @@ announce "For privacy, there is a default$cyan variance$orange to your preferred
 
 case $enter_cont in
 "")
-gsed -iE '/cjfee_factor =.*$/cjfee_factor = 0.1' $jmcfg
+sudo gsed -iE '/cjfee_factor =.*$/cjfee_factor = 0.1' $jmcfg
 break
 ;;
 *)
 [[ $(echo "$enter_cont >= 0" | bc -l) == 1 && $(echo "$enter_cont <= 1" | bc -l) == 1 ]] || { invalid ; continue ; }
-gsed -iE "s/cjfee_factor=.*$/cjfee_factor = $enter_cont/" $jmcfg
+sudo gsed -iE "s/cjfee_factor=.*$/cjfee_factor = $enter_cont/" $jmcfg
 break
 ;;
 esac
@@ -107,11 +107,11 @@ done
 
 yesorno "  \r    The Following are your choices...
 $green
-           \r        $(gsed -n '/ordertype =/p' $jmcfg)
-           \r        $(gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
-           \r        $(gsed -n '/cjfee_factor =/p' $jmcfg)
-           \r        $(gsed -n '/minsize =/p' $jmcfg)
-           \r        $(gsed -n '/size_factor =/p' $jmcfg)" \
+           \r        $(sudo gsed -n '/ordertype =/p' $jmcfg)
+           \r        $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
+           \r        $(sudo gsed -n '/cjfee_factor =/p' $jmcfg)
+           \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
+           \r        $(sudo gsed -n '/size_factor =/p' $jmcfg)" \
     "y" "\b\b\b\b\b\b\byes, agree" "n" "\b\b\b\b\b\b\bno, start over" && return 0 || continue
 
 
