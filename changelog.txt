@@ -5,6 +5,7 @@ Version 3.47.0
     -Import Parmanode drive without disconnection/reconnection detection procedure.
     -Fixed smol bug listing and mounting RAID devices
     -Fixed smol SSL bug for Mac electrs
+    -QBittorrent update - critical (v5.0.1)
 Version 3.46.2
     -Menu colour touchups
     -Mempool backend defaults changed
