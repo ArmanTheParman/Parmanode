@@ -3,10 +3,6 @@
 # $3 change whole line to
 alias string_swap='swap_string' >/dev/null
 
-function swapstring {
-    swap_string $@
-}
-
 function swap_string {
 if [[ $OS == "Mac" ]] ; then
 change_string_mac "$1" "$2" "$3" swap "$4" >> $HOME/.parmanode/change_string_mac.log 2>&1
