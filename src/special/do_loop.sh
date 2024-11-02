@@ -175,6 +175,7 @@ uninstall_homebrew || exit
 success "Homebrew uninstalled"
 fi
 
+
 ########################################################################################
 if [[ $arg1 == "clear" ]] ; then
 clearup_chain
