@@ -63,7 +63,7 @@ while true ; do
         \r    would be 0.002% (and 0.5 would ridiculously be 50%)"
 
         if  [[ $(echo "$enter_cont > 0" | bc -l) == 1 && $(echo "$enter_cont < 1" | bc -l) ]] ; then
-            sudo gsed -iE "s/cfjee_r =.*$/cjfee_r = $enter_cont/" $jmcfg
+            sudo gsed -iE "s/cjfee_r =.*$/cjfee_r = $enter_cont/" $jmcfg
             break
         else
             invalid
