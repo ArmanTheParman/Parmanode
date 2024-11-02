@@ -56,8 +56,8 @@ while true ; do
     {
     yesorno "Would you like to use a$cyan relative (percentage)$orange fee offer, or an$cyan absolute$orange value?" \
     "r" "relative" "abs" "absolute" \
-        && { sudo gsed -iE "s/ordertype =.*$/ordertype = reloffer" $jmcfg ; ordertype=r ; } 
-    }   || { echo "hi" ; sleep 3 ; sudo gsed -iE "s/ordertype =.*$/ordertype = absoffer" $jmcfg ; ordertype=a ; }
+        && { sudo gsed -iE "s/ordertype =.*$/ordertype = reloffer/" $jmcfg ; ordertype=r ; } 
+    }   || { sudo gsed -iE "s/ordertype =.*$/ordertype = absoffer/" $jmcfg ; ordertype=a ; }
 
     if [[ $ordertype == r ]] ; then
         announce "Please type in a$cyan value$orange for the relative fee, between 0 and 1.0, eg 0.00002
@@ -92,7 +92,7 @@ announce "For privacy, there is a default$cyan variance$orange to your preferred
 
 case $enter_cont in
 "")
-sudo gsed -iE '/cjfee_factor =.*$/cjfee_factor = 0.1' $jmcfg
+sudo gsed -iE 's/cjfee_factor =.*$/cjfee_factor = 0.1/' $jmcfg
 break
 ;;
 *)
