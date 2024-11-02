@@ -73,7 +73,7 @@ while true ; do
 
     elif [[ $ordertype == a ]] ; then
         announce "Plese type in an absolute value in sats you want to receive for oferring coinjoins"
-        [[ $enter_cont -ge 0 ]] || invalid && continue
+        [[ $enter_cont -ge 0 ]] || { invalid && continue ; }
         swapstring $jmcfg "cjfee_a =" "cjfee_a = $enter_cont"
         break
     fi
