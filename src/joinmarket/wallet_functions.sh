@@ -185,10 +185,11 @@ set_terminal_wide
 less /tmp/jmaddresses
 
 if [[ $copyjmdesktop == "true" ]] ; then
-mv /tmp/jmaddresses $HOME/desktop/jmaddresses.txt >$dn 2>&1
+mv /tmp/jmaddresses $HOME/desktop/jmaddresses.txt 
 else
 rm /tmp/jmaddresses >$dn 2>&1
 fi
+enter_continue
 
 }
 
