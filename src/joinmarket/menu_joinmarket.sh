@@ -127,7 +127,7 @@ unset obwatcherPID
 ob)
 orderbook_jm
 ;;
-load)
+l|load)
 set_terminal
 choose_wallet || continue
 ;;
@@ -185,7 +185,7 @@ ss)
 bk)
     backup_jm_wallet
     ;;
-hist)
+h|hist)
     wallet_history_jm
     ;;
 sp)
