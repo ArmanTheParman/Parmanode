@@ -119,7 +119,7 @@ fi
 apply_patches  
 
 #Add Parmashell (do after patches)
-install_parmashell silent
+install_parmashell 
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
