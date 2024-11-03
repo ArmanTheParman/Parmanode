@@ -3,9 +3,9 @@ function menu_yg {
 while true ; do
 
 if grep "setting onion hostname to" $logfile ; then
-ygrunning="                    Yield Generator is$green RUNNING$orange"
+ygrunning="   Yield Generator is$green RUNNING$orange"
 else
-ygrunning="                    Yield Generator is$red NOT RUNNING$orange"
+ygrunning="   Yield Generator is$red NOT RUNNING$orange"
 fi
 
 set_terminal ; echo -e "
