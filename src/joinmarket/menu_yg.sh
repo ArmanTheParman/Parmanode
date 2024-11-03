@@ -4,14 +4,15 @@ function menu_yg {
 
 while true ; do
 
-if [[ -e $jmcfg ]] ; then
+if [[ -e $jmcfg ]] && sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then 
+ordertype=a 
+else 
+ordertype=r 
+fi
 
-    if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then 
-    ordertype=a 
-    else ordertype=r 
-    fi
+if [[ -e $logfile ]] ; then    
 
-    nick="${bright_blue}$(cat $jmcfg | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)${orange}"
+    nick="${bright_blue}$(cat $logfile | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)${orange}"
     debug "nick is $nick"
     ygs="
     Yield Generator Settings:
