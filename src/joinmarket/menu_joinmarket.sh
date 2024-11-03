@@ -192,7 +192,6 @@ sp)
     spending_info_jm
     ;;
 yg)
-    check_wallet_loaded || continue
     menu_yg || return 1
     ;;
 *)

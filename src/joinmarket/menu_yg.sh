@@ -34,11 +34,18 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
+check_wallet_loaded || return
 silentecho=true
-announce "Please enter the passphrase for $wallet and hit <enter>"
+announce "Please enter the password (lock) for $wallet and hit <enter>"
 unset silentecho
-passphrase=$enter_cont
-docker exec -d joinmarket bash -c "echo $enter_cont | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
+password=$enter_cont
+docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
+;;
+
+stop)
+yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
+docker exec joinmarket kill -SIGTERM $yg_PID
+rm $logfile 2>&1
 ;;
 
 log)
