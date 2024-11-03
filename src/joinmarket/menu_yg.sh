@@ -14,27 +14,27 @@ else
 
 debug "2"
 
-#For the settings variable in the menu
-# if [[ -e $jmcfg ]] ; then
-#     if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then 
-#     ordertype=a 
-#     else ordertype=r 
-#     fi
-# ygs="
-#     Yield Generator Settings:
-# $green
-#            \r        $(sudo gsed -nE '/^ordertype =/p' $jmcfg)
-#            \r        $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
-#            \r        $(sudo gsed -n '/cjfee_factor =/p' $jmcfg)
-#            \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
-#            \r        $(sudo gsed -n '/size_factor =/p' $jmcfg)
+For the settings variable in the menu
+if [[ -e $jmcfg ]] ; then
+    if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then 
+    ordertype=a 
+    else ordertype=r 
+    fi
+ygs="
+    Yield Generator Settings:
+$green
+           \r        $(sudo gsed -nE '/^ordertype =/p' $jmcfg)
+           \r        $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg)
+           \r        $(sudo gsed -n '/cjfee_factor =/p' $jmcfg)
+           \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
+           \r        $(sudo gsed -n '/size_factor =/p' $jmcfg)
 
-# $orange
-# "
-# fi
+$orange
+"
+fi
 
 #For onion address
-grep "setting onion hostname to" | tail -n1 | cut -d : -f 2
+grep "setting onion hostname to" $jmcfg | tail -n1 | cut -d : -f 2
 
 
 debug "3"
