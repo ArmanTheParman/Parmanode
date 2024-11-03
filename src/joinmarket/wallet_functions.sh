@@ -193,7 +193,7 @@ fi
 }
 
 function check_wallet_loaded {
-    if [[ $wallet == NONE ]] ; then
+    if [[ $wallet == "NONE" ]] ; then
     announce "Please load wallet first"
     return 1
     fi

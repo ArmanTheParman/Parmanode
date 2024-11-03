@@ -33,7 +33,7 @@ enter_continue
 
 log)
     check_wallet_loaded || continue
-    yield_generator_log || return 1
+    yield_generator_log || { enter_continue "some error" ; return 1 ; }
     enter_continue
     ;;
 c)
