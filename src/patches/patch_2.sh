@@ -1,8 +1,5 @@
 function patch_2 {
 
-sudo rm -rf $dp/.backup_files
-delete_line "$dp/installed.conf" "parmanode-"
-
 sudo_check # needed for preparing drives etc.
 gpg_check  # needed to download programs from github
 curl_check # needed to download things using the command prompt rather than a browser.
