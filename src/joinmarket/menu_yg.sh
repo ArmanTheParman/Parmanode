@@ -4,17 +4,6 @@ function menu_yg {
 
 while true ; do
 
-#if grep "setting onion hostname to" $logfile ; then
-if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    ygtext="   Yield Generator is$green RUNNING$orange with wallet$red $wallet$orange"
-    ygrunning="true"
-else
-    ygtext="   Yield Generator is$red NOT RUNNING$orange"
-    unset ygrunning
-    fi
-
-
 if [[ -e $jmcfg ]] ; then
 
     if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then 
@@ -22,7 +11,7 @@ if [[ -e $jmcfg ]] ; then
     else ordertype=r 
     fi
 
-    nick=$(cat $jmcfg | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)
+    nick="$bright_blue$(cat $jmcfg | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)$orange"
 
     ygs="
     Yield Generator Settings:
@@ -35,10 +24,24 @@ if [[ -e $jmcfg ]] ; then
 
     $orange
     "
+
+    #For onion address
+    grep "setting onion hostname to" $jmcfg | tail -n1 | cut -d : -f 2
+
 fi
 
-#For onion address
-grep "setting onion hostname to" $jmcfg | tail -n1 | cut -d : -f 2
+#if grep "setting onion hostname to" $logfile ; then
+if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+    ygtext="   Yield Generator is:    $green RUNNING$orange with wallet$red $wallet
+               Orderbookd Nickname is:$nick
+    ygrunning="true"
+else
+    ygtext="   Yield Generator is$red NOT RUNNING$orange"
+    unset ygrunning
+fi
+
+
 
 set_terminal ; echo -e "
 ########################################################################################
