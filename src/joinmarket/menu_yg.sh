@@ -5,14 +5,15 @@ while true ; do
 #if grep "setting onion hostname to" $logfile ; then
 if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    ygtext="   Yield Generator is$green RUNNING$orange with wallet $wallet"
+    ygtext="   Yield Generator is$green RUNNING$orange with wallet$red $wallet$orange"
     ygrunning="true"
 else
     ygtext="   Yield Generator is$red NOT RUNNING$orange"
     unset ygrunning
     fi
 
-
+#For the settings variable in the menu
+if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then ordertype=a ; else ordertype=r ; fi
 
 
 set_terminal ; echo -e "
