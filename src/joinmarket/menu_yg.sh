@@ -1,5 +1,5 @@
 function menu_yg {
-
+debug "1"
 while true ; do
 
 #if grep "setting onion hostname to" $logfile ; then
@@ -12,6 +12,8 @@ else
     unset ygrunning
     fi
 
+debug "1"
+
 #For the settings variable in the menu
 if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then ordertype=a ; else ordertype=r ; fi
 
@@ -19,6 +21,7 @@ if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then ordertype=a 
 grep "setting onion hostname to" | tail -n1 | cut -d : -f 2
 
 
+debug "3"
 set_terminal ; echo -e "
 ########################################################################################
 
