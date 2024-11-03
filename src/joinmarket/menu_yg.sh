@@ -28,6 +28,7 @@ case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
 docker exec -d joinmarket bash -c "./yg-privacyenhanced.py $wallet"
+enter_continue
 ;;
 
 log)
