@@ -45,7 +45,7 @@ fi
 
 
 
-set_terminal ; echo -e "
+set_terminal_custom 48 ; echo -e "
 ########################################################################################
 
                                    YEILD GENERATOR                         $cyan
