@@ -1,13 +1,22 @@
 function menu_yg {
 
 while true ; do
+
+if grep "setting onion hostname to" $logfile ; then
+ygrunning="                    Yield Generator is$green RUNNING$orange"
+else
+ygrunning="                    Yield Generator is$red NOT RUNNING$orange"
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
                                    YEILD GENERATOR                         $cyan
-                             Be a coinjoin market maker                   $orange
+                              Be a coinjoin market maker                   $orange
 
 ########################################################################################
+
+$ygrunning
 
 $green
                     start)$orange    Start Yield Generator 
@@ -29,7 +38,7 @@ silentecho=true
 announce "Please enter the passphrase for $wallet and hit <enter>"
 unset silentecho
 passphrase=$enter_cont
-docker exec -d joinmarket bash -c "echo $enter_cont | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee -a /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
+docker exec -d joinmarket bash -c "echo $enter_cont | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
 ;;
 
 log)
