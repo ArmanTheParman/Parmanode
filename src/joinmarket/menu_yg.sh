@@ -15,6 +15,9 @@ else
 #For the settings variable in the menu
 if sudo gsed -nE '/^ordertype =/p' $jmcfg | grep -q absoffer ; then ordertype=a ; else ordertype=r ; fi
 
+#For onion address
+grep "setting onion hostname to" | tail -n1 | cut -d : -f 2
+
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -69,7 +72,7 @@ start)
 stop)
     yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
     docker exec joinmarket kill -SIGTERM $yg_PID
-    rm $logfile 2>&1
+    sudo rm $logfile 2>&1
 ;;
 
 log)
