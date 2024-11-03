@@ -51,7 +51,7 @@ set_terminal ; echo -e "
 "
 enter_continue
 if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then
-lncli exportchanbackup --all --output_file $HOME/desktop/channel.backup
+lncli exportchanbackup --all --output_file $HOME/Desktop/channel.backup
 elif grep -q "lnddocker-" <$ic ; then
 docker exec lnd lncli exportchanbackup --all --output_file /home/parman/.lnd/channel.backup
 mv $HOME/.lnd/channel.backup $HOME/Desktop/channel.backup
