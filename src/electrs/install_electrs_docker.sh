@@ -75,7 +75,7 @@ installed_config_add "electrsdkr2-start"
 choose_and_prepare_drive "Electrs" || return 1
 source $pc >/dev/null
 
-if [[ $drive_electrs == external ]] && grep "=external" < $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
+if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 
@@ -87,20 +87,28 @@ if [[ $drive_electrs == external ]] && grep "=external" < $pc | grep -vq "electr
                                                            # $original from function restore_electrs_drive
 elif [[ $drive_electrs == external ]] ; then
 
+      if [[ -d $pd/electrs_db ]] ; then drive_ready="true" ; fi
+
+      case $drive_ready in
+      true)
+      unset drive_ready
+      ;;
+      *)
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
       mkdir -p $parmanode_drive/electrs_db
       sudo chown -R $USER $parmanode_drive/electrs_db >/dev/null 2>&1
+      esac
 
 fi
+
 debug "before prepare_dirve_electrs"
-prepare_drive_electrs || { log "electrs" "prepare_drive_electrs failed" ; return 1 ; } 
+prepare_drive_electrs 
 #if it exists, test inside function
 if [[ $drive_electrs == internal ]] ; then
 restore_internal_electrs_db || return 1 
 fi
 
-debug "after restore internal electrs db"
 #config
 ########################################################################################
 make_electrs_config && log "electrs" "config done" 
