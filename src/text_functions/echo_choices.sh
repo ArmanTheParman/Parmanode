@@ -13,7 +13,13 @@ echo -e "$@"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
+
+if [[ $silenecho == "true" ]] ; then
+read -s enter_cont
+else
 read enter_cont 
+fi
+
 export enter_cont
 if [[ $enter_cont == q ]] ; then exit ; fi
 if [[ $enter_cont == d ]] ; then #switch

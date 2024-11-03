@@ -25,7 +25,9 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
+silentecho=true
 announce "Please enter the passphrase for $wallet and hit <enter>"
+unset silentecho
 passphrase=$enter_cont
 docker exec -d joinmarket bash -c "echo $enter_cont | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee -a /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
 ;;
