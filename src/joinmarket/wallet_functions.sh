@@ -128,10 +128,19 @@ set_terminal ; echo -e "
     The wallet addresses will be printed for you inside the 'less' command. Use the
     keyboard arrows to go up and down (you can actually use vim commands if you know
     them). Then hit 'q' to exit it.
+$cyan
+    If you also want a copy of the printout on your desktop as 'jmaddresses.txt' then
+    type copy and hit <enter>. $orange
 
 ########################################################################################
 "
 enter_continue
+
+if [[ $enter_cont == copy ]] ; then
+export copyjmdesktop="true"
+else
+unset copyjmdesktop
+fi
 
     case $1 in
     a)
@@ -174,8 +183,12 @@ echo "
 ####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
 set_terminal_wide
 less /tmp/jmaddresses
-#rm /tmp/jmaddresses >$dn 2>&1
-enter_continue
+
+if [[ $copyjmdesktop == "true" ]] ; then
+mv /tmp/jmaddresses $HOME/desktop/jmaddresses.txt >$dn 2>&1
+else
+rm /tmp/jmaddresses >$dn 2>&1
+fi
 
 }
 
