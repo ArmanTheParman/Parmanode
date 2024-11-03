@@ -84,37 +84,7 @@ export wallet
 
 function yield_generator_log {
 
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    Which yield generator log do you want to see?
-$cyan
-    1)$orange    tail -f $HOME/.joinmarket/yg_basic.log
-
-    or
-$cyan
-    2)$orange    tail -f $HOME/.joinmarket/yg_privacy.log
-
-########################################################################################
-"
-choose xpmq ; read choice ; set_terminal
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-1)
-logfile="$HOME/.joinmarket/yg_basic.log"
-break
-;;
-2)
 logfile="$HOME/.joinmarket/yg_privacy.log"
-break
-;;
-*)
-invalid
-;;
-esac
-done
-
 log_counter
 if [[ $log_count -le 10 ]] ; then
 echo -e "
@@ -129,10 +99,11 @@ echo -e "
 enter_continue
 fi
 set_terminal_wider
+
 tail -f $logfile &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
-return 0
+return 0o
 }
