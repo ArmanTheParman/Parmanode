@@ -25,6 +25,7 @@ set_terminal ; echo -e "
 
 $ygtext
 
+
 $green
                     start)$orange    Start Yield Generator 
 $red
@@ -35,6 +36,7 @@ $cyan
                     log)$orange      Yield Generator log
 
 
+
     Yield Generator Settings:
 $green
            \r        $(sudo gsed -nE '/^ordertype =/p' $jmcfg)
@@ -43,7 +45,7 @@ $green
            \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
            \r        $(sudo gsed -n '/size_factor =/p' $jmcfg)
 
-
+$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
