@@ -125,11 +125,10 @@ echo -e "
 enter_continue
 fi
 set_terminal_wider
-tmux --new-session -s log "tail -f $logfile"
-    # tail -f $logfile &
-    # tail_PID=$!
-    # trap 'kill $tail_PID' SIGINT #condition added to memory
-    # wait $tail_PID # code waits here for user to control-c
-    # trap - SIGINT # reset the trap so control-c works elsewhere.
+tail -f $logfile &
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
 return 
 }
