@@ -25,6 +25,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
+enter_continue "wallet is: $wallet"
 docker exec -d joinmarket bash -c "./yg-privacyenhanced.py $wallet | tee -a /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
 enter_continue
 ;;
