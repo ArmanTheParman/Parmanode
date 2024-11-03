@@ -28,7 +28,6 @@ start)
 announce "Please enter the passphrase for $wallet and hit <enter>"
 passphrase=$enter_cont
 docker exec -d joinmarket bash -c "echo $enter_cont | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee -a /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
-enter_continue
 ;;
 
 log)
