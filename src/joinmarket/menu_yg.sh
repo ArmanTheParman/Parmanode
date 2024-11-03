@@ -58,14 +58,16 @@ $ygtext
 
 
 $green
-                    start)$o/lorange    Start Yield Generator 
+                    start)$orange    Start Yield Generator 
 $red
                     stop)$orange     Start Yield Generator 
 $yellow
                     c)$orange        Configure Yeild Generator Settings...
 $cyan
-                    log)$orange      Yield Generator log
-
+                    flog)$orange     Follow Yield Generator log as it populates
+$cyan
+                    log)$orange      Read Yield Generator log with the less 
+                                     command (logv for vim)
 
 $ygs
 ########################################################################################
@@ -94,6 +96,14 @@ stop)
 ;;
 
 log)
+   check_wallet_loaded || continue
+   sudo less $logfile
+;;
+logv)
+   check_wallet_loaded || continue
+   sudo vim $logfile
+;; 
+flog)
     check_wallet_loaded || continue
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
     enter_continue
