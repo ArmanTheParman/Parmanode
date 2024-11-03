@@ -1,5 +1,6 @@
 function menu_tor {
 while true ; do
+clear
 
 if [[ $OS == "Linux" ]] ; then 
     if sudo systemctl status tor | grep Active: | grep -q active ; then
