@@ -81,29 +81,3 @@ return 1
 fi
 export wallet
 }
-
-function yield_generator_log {
-
-logfile="$HOME/.joinmarket/yg_privacy.log"
-log_counter
-if [[ $log_count -le 10 ]] ; then
-echo -e "
-########################################################################################
-    
-    This will show the log file in real-time as it populates.
-    
-    You can hit$cyan <control>-c$orange to make it stop.
-
-########################################################################################
-"
-enter_continue
-fi
-set_terminal_wider
-
-tail -f $logfile &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-return 
-}
