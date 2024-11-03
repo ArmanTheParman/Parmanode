@@ -45,12 +45,6 @@ set_colours #just exports variables with colour settings to make it easier to co
 debug "printed colours" "silent"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
-# Makes sure parmanode git directory is not place in $HOME directory, or it will be wiped
-# out by the program. Parmanode installs itself (and uninstalls) from $HOME/parmanode.
-# Unfortunately, the git name is "parmanode" as well, and the directory name clashes.
-# I'll fix this one day.
-
-
 test_directory_placement #you can go to this funciton and read the code, then come back.
 test_standard_install
 
@@ -61,17 +55,17 @@ make_home_parmanode
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
 parmanode_conf_add # With no argument after the function, this will create a 
                    # parmanode.conf file if it doesnt' exist.
-if [[ ! -e $HOME/.parmanode/installed.conf ]] ; then touch $HOME/.parmanode/installed.conf ; fi
+if [[ ! -e $ic ]] ; then touch $ic ; fi
 
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
 
 # If docker is set up on the machine, then it is detected by Parmanode
 # and added to the config file
-if [[ -f $HOME/.parmanode/installed.conf ]] ; then #execute only if an installed config file exits otherwise not point.
+if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise not point.
 	if ([[ $(uname) == Darwin ]] && ( which docker >/dev/null )) || \
 	( [[ $(uname) == Linux ]] && which docker >/dev/null && id | grep -q docker ) ; then
-		if ! grep -q docker-end < $HOME/.parmanode/installed.conf ; then
+		if ! grep -q docker-end $ic ; then
 			installed_config_add "docker-end" 
 		fi
 	else installed_config_remove "docker"
@@ -121,8 +115,6 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
    bash_check 
    check_architecture 
-   #commit config directory state using git
-   git_dp 
 fi
 apply_patches  
 

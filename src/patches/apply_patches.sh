@@ -8,8 +8,9 @@ make_parmanode_service #Linux only
 make_tor_script_mac
 make_parmanode_tor_service  #makes parmanode tor onion address
 hello
-debug "end hello function"
 suggest_brew
+
+debug "before patch sequence"
 
 case $patch in 
 1) 
