@@ -189,7 +189,6 @@ mv /tmp/jmaddresses $HOME/Desktop/jmaddresses.txt
 else
 rm /tmp/jmaddresses >$dn 2>&1
 fi
-enter_continue
 
 }
 
