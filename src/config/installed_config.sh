@@ -1,17 +1,17 @@
 function installed_config_add {
-if [ ! -e $HOME/.parmanode/installed.conf ] ; then touch $HOME/.parmanode/installed.conf ; fi
+if [ ! -e $ic ] ; then touch $ic ; fi
 program="$1"
 
 installed_config_remove "$program" # ensures only single entry.
 
-echo "$program" >> $HOME/.parmanode/installed.conf
+echo "$program" | tee -a $ic 
 
 return 0
 }
 
 
 function installed_config_remove {
-if [ ! -e $HOME/.parmanode/installed.conf ] ; then return 0 ; fi
+if [ ! -e $ic ] ; then return 0 ; fi
 
 delete_line "$HOME/.parmanode/installed.conf" "${1}"
 

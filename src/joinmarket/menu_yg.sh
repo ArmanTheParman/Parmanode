@@ -97,7 +97,7 @@ stop)
 
 log)
    check_wallet_loaded || continue
-   announce "Use q to exit the view screen"
+   announce "Hint: Use q to exit the view screen"
    sudo less $logfile
 ;;
 logv)
