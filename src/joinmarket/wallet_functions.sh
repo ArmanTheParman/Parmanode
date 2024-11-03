@@ -159,10 +159,10 @@ fi
         $orange"
         case $1 in
         a)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py wallet.jmdat displayall" | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee /tmp/jmaddresses
         ;;
         *)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py wallet.jmdat display" | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee /tmp/jmaddresses
         ;;
         esac
 
