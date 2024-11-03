@@ -97,6 +97,7 @@ stop)
 
 log)
    check_wallet_loaded || continue
+   announce "Use q to exit the view screen"
    sudo less $logfile
 ;;
 logv)
@@ -106,7 +107,6 @@ logv)
 flog)
     check_wallet_loaded || continue
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
-    enter_continue
 ;;
 c)
     configure_yg 
