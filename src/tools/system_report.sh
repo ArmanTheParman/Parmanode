@@ -18,20 +18,20 @@ a|q|Q) exit ;;
 esac
 
 
-export omit="true" ; break ;;
-report="/tmp/system_report.txt" 
+export omit="true" 
+export report="/tmp/system_report.txt" 
+export macprefix="/usr/local"
 echo "PARMANODL SYSTEM REPORT $(date)" > $report
 
-BTCEXP_BITCOIND
 function delete_private {
 if [[ $omit == "true" ]] ; then
     rm $dp/sed.log >/dev/null
-    rm $dp/debug.log >/uev/null
+    rm $dp/debug.log >/dev/null
     rm $dp/change_string* >/dev/null
-    if [[ $OS == Mac ]] ; then
-    cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
-    elif [[ $OS == Linux ]] ; then
-    cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+    if which gsed >/dev/null ; then
+      cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+    elif which sed >/dev/null ; then
+      cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
     fi
 mv /tmp/tempreport $report
 fi
@@ -50,17 +50,41 @@ echo "" >> $report
 }
 
 
-cd $HOME/parman_programs/parmanode 2>>$report
+echoline
+echor "#DIRECTORY CHECKS"
+#if dir doesn't exist, it will report
+if [[ -d $HOME/parman_programs/parmanode ]] ; then
+echoline
+echor "\$pn exists"
 echor "$(git status)"
-echor "$(git log | head -n30)"
+cat $HOME/parman_programs/parmanode/src/version.conf >> $report
+else
+echo "\$pn DOES NOT EXIST"
+fi
+
+echoline
+
+#if dir doesn't exist, it will report
+if [[ -d $HOME/.parmanode ]] ; then
+echoline
+echor "\$dp exists"
+cd $HOME/.parmanode
+ls -a >> $report
+else
+echo "\$dp DOES NOT EXIST"
+fi
+
+echoline
 
 #parmanode.conf
 echor "#PARMNODE CONF"
 echor "$(cat $HOME/.parmanode/parmanode.conf)"
 
+echoline
 
 #system info
 echor "#SYSTEM INFO"
+if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
 echor "$(id)"
 echor "$(uname) , $(uname -m)"
 echor "$(env)"
@@ -69,128 +93,117 @@ echor "$(sudo lsblk)"
 echor "$(sudo blkid)"
 echor "#MOUNT \n $(mount)"
 echor "$(free)"
-echor "
-"
+echor "#HOME dir..."
+echor "$(cd ; ls -lah)"
+echor "cpuinfo"
+echor "$(cat /proc/cpuinfo | head -n10)"
+
+echoline
 #programs
 echor "#PROGRAMS"
-echor "#which..." 
-echor "$(which nginx npm tor bitcoin-cli docker brew curl jq)"
+echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat"
+echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat)"
 
+echoline
 #prinout of $dp
-echor "#DOT PARMANODE"
+echor "#DOT PARMANODE PRINTOUT"
 cd $HOME/.parmanode
-echor "#printout of $dp"
+echor "#printout of \$dp"
 for file in * .* ; do
     if [[ -f $file && -s $file ]] ; then
     echor "FILE: $file \n $(cat $file) \n" 
     fi
 done
-#HOME PARMANODE CONTENTS
-cd $HOME/parmanode
-echor "#HOME PARMANODE CONTENTS"
-ls -lah ./* >>$report
 
-
-#NGINX
-echor "#NGINX" 
-echor "$(sudo nginx -t)"
-cd /etc/nginx && echor "$(pwd ; ls -m)"
-cd /etc/nginx/conf.d && echor "$(pwd ; ls -m)"
-echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
-echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
-echor "NGINX ERROR FILE..."
-echor "$(cat /tmp/nginx.conf_error)"
-
+echoline
 
 echor "#HOME PARMANODE"
 cd $HOME/parmanode
 echor "$(ls -m)"
 
+echoline
+
+#NGINX
+echor "#NGINX" 
+echor "$(sudo nginx -t)"
+cd $macprefix/etc/nginx && echor "$(pwd ; ls -m)"
+cd $macprefix/etc/nginx/conf.d && echor "$(pwd ; ls -m)"
+echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
+echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
+echor "NGINX ERROR FILE..."
+echor "$(cat /tmp/nginx.conf_error)"
+
+echoline
 
 #BITCOIN
 echor "#BITCOIN STUFF"
-source $HOME/.bitcoin/bitcoin.conf
+#source $HOME/.bitcoin/bitcoin.conf
+if [[ ! -e $HOME/.bitcoin ]] ; then echo "Bitcoin data dir doesn't exist." 
+else
 cd $HOME/.bitcoin
+echor ".bitcion size..."
 echor "$(du -sh)"
-echor "$(ls)"
-echor "bitcoin.conf \n $(cat $HOME/.bitcoin/bitcoin.conf)"
-echor "debug.log \n $(cat $HOME/.bitcoin/debug.log | tail -n200 ) \n "
-echor "getblockchaininfo \n bitcoin-cli getblockchaininfo"
-echor "space taken by bitcoin data dir"
-echor "$(cd $HOME/.bitcoin ; du -sh)"
+echo ".bitcoin contents..."
+echor "$(ls -m)"
+echor "bitcoin.conf..."
+echor "$(cat $HOME/.bitcoin/bitcoin.conf)"
+echor "getblockchaininfo..."
+echor "$(bitcoin-cli getblockchaininfo)"
 echor "rpc curl bitcoin, 127.0.0.1 then $IP \n"
-echo "
-Bitcoin curl testing x2 ...
+fi
 
-" | tee -a $report
-echor "$(curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332)"
-echor "$(curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://$IP:8332)"
+echoline
 
 #DOCKER
+echor "#DOCKER ..."
 echor "docker ps -a \n $(docker ps -a)"
 echor "docker ps \n $(docker ps) \n "
 containers=$(docker ps -q)
+echo "containers... \n $(docker ps -q)"
 for i in $containers ; do
-docker logs $i --tail 100
+docker logs $i --tail 50 
 echoline ; echonl
 done
 
-#BTCRPCEXPLORER
+echoline
+echor "#BTCRPCEXPLORER"
 echor "env \n $(cat $HOME/parmanode/btc-rpc-explorer/.env)"
 
-#BTCPAY
+echoline
+echor "#BTCPAY"
 echor "btcpay \n $(cat $HOME/.btcpayserver/Main/settings.config)"
 echor "nbxplorer \n $(cat $HOME/.nbxplorer/Main/settings.config)"
 
-#ELECTRS
+echoline
+echor "#ELECTRS"
 echor "electrs config \n $(cat $HOME/.electrs/config.toml)"
 echor "ELECTRS_STREAM_FILE \n $(cat /tmp/nginx.conf_error)"
-#ELECTRUMX
+
+echoline
+echor "#ELECTRUMX"
 echor "elecrrumx config \n $(cat $HOME/parmanode/electrumx/electrumx.conf)"
 
-#FULCRUM
+echoline
+echor "#FULCRUM"
 echor "fulcrum config \n $(cat $HOME/parmanode/fulcrum/fulcrum.conf)"
 
-#LND
+echoline
+echor "#LND"
 echor "LND config \n $(cat $HOME/.lnd/lnd.conf)"
 
-#MEMPOOL
+echoline
+echor "#MEMPOOL"
 echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
 
-#PUBLICPOOL
+echoline
+echor "#PUBLICPOOL"
 echor "public pool env \n $(cat $hp/public_pool/.env)"
 
-if [[ $omit == "false" ]] ; then
-#HOSTNAME/TOR
-echor "#BRE TOR"
-sudo cat /var/lib/tor/bre-service/hostname
-echor "#ELECTRS TOR"
-echor "$(sudo cat /var/lib/tor/electrs-service/hostname)"
-echor "#ELECTRUMX TOR"
-echor "$(sudo cat /var/lib/tor/electrumx-service/hostname)"
-echor "#MEMPOOL TOR"
-echor "$(sudo cat /var/lib/tor/mempool-service/hostname)"
-echor "#FULCRUM TOR"
-echor "$(sudo cat /var/lib/tor/fulcrum-service/hostname)"
-echor "#PUBLIC POOL TOR"
-echor "$(sudo cat /var/lib/tor/public_pool-service/hostname)"
-echor "#BTCPAY TOR"
-echor "$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
-echor "#BITCOIN TOR"
-echor "$(sudo cat /var/lib/tor/bitcoin-service/hostname)"
-fi
-
-
-#EXTRA STUFF
-echor "#EXTRA STUFF"
-echor "$(cat /etc/cpuinfo)"
-echor "#netstat
-$(cat netstat -tuln)"
 
 delete_private
 mv $report $HOME/Desktop/
 
-set_terminal ; echo -e "
+clear ; echo -e "
 ########################################################################################
 
     Parmanode has generated a system report about your installation, and left the
@@ -201,11 +214,12 @@ $orange
     You can now review this file, and if you were asked, can send this to Parman
     for assistance. The email is:
 $cyan
-        armantheparman@protonmail.com
+    armantheparman@protonmail.com
 $orange
+    Hit <enter> to finish.
+
 ########################################################################################
 "
-enter_continue
-
+read
 }
 
