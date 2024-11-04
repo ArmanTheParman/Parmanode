@@ -1,6 +1,6 @@
 function system_report {
 
-clear ; echo -e "
+clear ; echo "
 ########################################################################################
 
     Parmanode will generate a System Report File automatically. It will
@@ -14,9 +14,10 @@ clear ; echo -e "
 "
 read -s choice ; clear
 case $choice in
-a|q|Q) exit ;;
+a|q|Q) 
+exit 
+;;
 esac
-
 
 export omit="true" 
 export report="/tmp/system_report.txt" 
