@@ -100,6 +100,14 @@ echor "cpuinfo"
 echor "$(cat /proc/cpuinfo | head -n10)"
 
 echoline
+echor "#BASHRC/ZSHRC"
+if [[ $uname == Darwin ]] ; then
+echor "$(sudo cat $HOME/.zshrc)"
+else
+echor "$(sudo cat $HOME/.bashrc)"
+fi
+
+echoline
 #programs
 echor "#PROGRAMS"
 echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat"
