@@ -1,37 +1,27 @@
 function system_report {
-while true ; do
-set_terminal ; echo -e "
+
+clear ; echo -e "
 ########################################################################################
 
-    Parmanode will generate a$cyan System Report File$orange automatically. It will
+    Parmanode will generate a System Report File automatically. It will
     then save the file to your desktop, and you can then email it to me for help.
 
-    One question, do you want to omit bitcoin rpcuser and bitcoinrpc pass and Tor
-    addresses from the report? 
-    
-    These details might help the troubleshooting process and I can't really do 
-    anything dodgy with the info, but if you feel more comfortable, they can be 
-    excluded form the report...
-$red
-                                o)     omit
-$green
-                                i)     include
-$orange
+    Hit <enter> to continue
+
+    'a' and <enter> to abort
+
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+read -s choice ; clear
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-o) 
-export omit="true" ; break ;;
-
-i)
-export omit="false" ; break ;;
+a|q|Q) exit ;;
 esac
-done
 
 
-report="/tmp/system_report.txt" && echo "PARMANODL SYSTEM REPORT $(date)" > $report
+export omit="true" ; break ;;
+report="/tmp/system_report.txt" 
+echo "PARMANODL SYSTEM REPORT $(date)" > $report
+
 BTCEXP_BITCOIND
 function delete_private {
 if [[ $omit == "true" ]] ; then

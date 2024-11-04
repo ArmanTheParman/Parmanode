@@ -141,7 +141,6 @@ export copyjmdesktop="true"
 else
 unset copyjmdesktop
 fi
-    enter_continue "wallet is $wallet"
     case $1 in
     a)
     docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee /tmp/jmaddresses
