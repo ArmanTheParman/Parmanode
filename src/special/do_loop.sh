@@ -187,7 +187,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 #make sure debug file doesn't get too big
 truncatedebuglog
 
-if ! grep -q "function rp" < $bashrc ; then
+if ! grep -q "parmashell_functions" < $bashrc ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >/dev/null 2>&1
 fi
 # This is the main program, which is a menu that loops.

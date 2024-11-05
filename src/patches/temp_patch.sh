@@ -104,14 +104,14 @@ invalid ;;
 esac
 done
 fi
-debug "test 4"
-#remove in June 2025
-cleanup_bashrc_zshrc
-#echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a $bashrc >/dev/null 2>&1
-debug temppatchend
+
+if ! grep -q "parmashell" < $bashrc ; then
+uninstall_parmashell silent ; install_parmashell
+fi
 
 #Make /media/$USER with permission of $USER. - Refactor this in to the code at some point. Maybe to the installation.
 sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
 sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 
+debug temppatchend
 }

@@ -1,4 +1,5 @@
 function uninstall_parmashell {
+if [[ $1 != silent ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -16,21 +17,21 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     else 
     return 1
     fi
+fi
 
 if [[ $OS == Mac ]] ; then rc=zshrc ; fi
 if [[ $OS == Linux ]] ; then rc=bashrc ; fi
 
-sudo cp "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup"
+sudo cp -rf "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup" >/dev/null 2>&1
 
 #sed method compaitble with both mac and linux...
-sudo sed '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
-&& sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
+sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" 
 
-sudo sed '/ParmaShell/d' "$HOME/.$rc" > "$HOME/.${rc}2" 2>&1 \
-&& sudo mv "$HOME/.${rc}2" "$HOME/.$rc"
+sudo gsed -i '/ParmaShell/d' "$HOME/.$rc" 
 
-debug "adjusted bashrc / zshrc; rc is $rc"
 installed_config_remove "parmashell"
+if [[ $1 != silent ]] ; then
 success "ParmaShell" "being uninstalled."
+fi
 }
 
