@@ -7,11 +7,11 @@ set_terminal ; echo -e "
 
     Do you wish to delete Bitcoin data on an internal drive or external drive?
 
-        
-        internal)       deletes data at $HOME/.bitcoin
+$cyan        
+        internal)$orange       deletes data at $HOME/.bitcoin
 
-
-        external)       deletes data at $parmanode_drive/.bitcoin 
+$cyan
+        external)$orange       deletes data at $parmanode_drive/.bitcoin 
 
 ########################################################################################
 "
