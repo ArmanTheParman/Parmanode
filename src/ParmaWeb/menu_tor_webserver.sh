@@ -95,15 +95,13 @@ done
 }
 
 function index_off {
-
-swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              # autoindex off"
+ifile="/etc/nginx/conf.d/tor-server.conf"
+gsed -i "/autoindex/c\              # autoindex off" $ifile
 sudo systemctl restart nginx
-
 }
 
 function index_on {
-
-swap_string "/etc/nginx/conf.d/tor-server.conf" "autoindex" "              autoindex on; # autoindex tag"
+ifile="/etc/nginx/conf.d/tor-server.conf"
+gsed -i "/autoindex/c\              autoindex on; # autoindex tag" $ifile
 sudo systemctl restart nginx
-
 }
