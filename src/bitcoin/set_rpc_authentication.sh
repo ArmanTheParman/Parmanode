@@ -74,8 +74,8 @@ m|M) back2main ;;
 				;;
 	c)
 	            stop_bitcoind
-                gsed -i "/rpcuser/d" $bc && unset rpcuser
-                gsed -i "/rpcpassword/d" $bc && unset rpcpassword
+                sudo gsed -i "/rpcuser/d" $bc && unset rpcuser
+                sudo gsed -i "/rpcpassword/d" $bc && unset rpcpassword
 
 				export btc_authentication="cookie"
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
@@ -103,8 +103,8 @@ return 0
 
 function set_rpc_authentication_update_conf_edits {
 
-	gsed -i "/rpcuser/d" $bc >/dev/null 2>&1
-	gsed -i "/rpcpassword/d" $bc >/dev/null 2>&1
+	sudo gsed -i "/rpcuser/d" $bc >/dev/null 2>&1
+	sudo gsed -i "/rpcpassword/d" $bc >/dev/null 2>&1
 	echo "rpcuser=$rpcuser" >> $bc 2>&1
 	echo "rpcpassword=$rpcpassword" >> $bc 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
@@ -122,8 +122,8 @@ function add_userpass_to_fulcrum {
 
 source $pc >/dev/null 2>&1
 
-gsed -i "/rpcuser/d" $fc 
-gsed -i "/rpcpassword/d" $fc 
+sudo gsed -i "/rpcuser/d" $fc 
+sudo gsed -i "/rpcpassword/d" $fc 
 echo "rpcuser = $rpcuser" >> $fc 2>/dev/null
 echo "rpcpassword = $rpcpassword" >> $fc 2>/dev/null
 
