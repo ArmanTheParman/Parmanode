@@ -18,10 +18,9 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
 fi
 
-file="/etc/tor/torrc"
-delete_line "$file" "ssh-service"
-delete_line "$file" "HiddenServicePort 22 127.0.0.1:22" 
-
+file="$macprefix/etc/tor/torrc"
+sudo gsed -i "/ssh-service/d" $file 
+sudo gsed -i "/HiddenServicePort 22 127.0.0.1:22/d" $file 
 sudo systemctl restart tor ssh
 
 
@@ -43,8 +42,8 @@ read choice
 case $choice in
 y)
 file="$HOME/.ssh/config"
-delete_line "$file" "HOST *.onion"
-delete_line "$file" "ProxyCommand nc -x localhost:9050"
+sudo gsed -i "/HOST *.onion/d" $file 
+sudo gsed -i "/ProxyCommand nc -x localhost:9050/d" $file 
 ;;
 esac
 fi
@@ -56,7 +55,7 @@ set_terminal ; echo -e "
     address of this server, so that if you install the Tor SSH server again, a new
     onion address will be made. 
 
-    What actually happens is$cyan /var/lib/tor/ssh-service$orange directory gets deleted.
+    What actually happens is$cyan $macprefix/var/lib/tor/ssh-service$orange directory gets deleted.
 
     Delete it?    $red 
                       y) yes
