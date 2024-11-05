@@ -63,14 +63,8 @@ start_litd_loop
 if [[ $reusedotlitd != "true" ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create, lnd not litd
 
-# gsed=sed alias normally works, but failing here.
-if [[ $OS == Linux ]] ; then
-sed -i '/^; lnd.wallet-unlock-password-file/s/^..//' $HOME/.lit/lit.conf
-sed -i '/^; lnd.wallet-unlock-allow-create/s/^..//' $HOME/.lit/lit.conf
-else
-gsed -i '/^; lnd.wallet-unlock-password-file/s/^..//' $HOME/.lit/lit.conf
-gsed -i '/^; lnd.wallet-unlock-allow-create/s/^..//' $HOME/.lit/lit.conf
-fi
+sudo gsed -i '/^; lnd.wallet-unlock-password-file/s/^..//' $HOME/.lit/lit.conf
+sudo gsed -i '/^; lnd.wallet-unlock-allow-create/s/^..//' $HOME/.lit/lit.conf
 
 # password file and needs new wallet to do so.
 #start git repository in .lit directory to allow undo's

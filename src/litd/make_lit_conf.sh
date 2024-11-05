@@ -56,7 +56,7 @@ lnd.rpcmiddleware.enable=true
 
 if [[ $bitcoin_choice_with_lnd == local ]] \
 && [[ $install == litdocker ]] && [[ $OS == Mac ]] ; then
-gsed -i "/bitcoind.zmqpubrawblock=/c\lnd.bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332" $file
-gsed -i "/bitcoind.zmqpubrawtx=/c\lnd.bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333" $file
+sudo gsed -i "/bitcoind.zmqpubrawblock=/c\lnd.bitcoind.zmqpubrawblock=tcp:\/\/host.docker.internal:28332" $file
+sudo gsed -i "/bitcoind.zmqpubrawtx=/c\lnd.bitcoind.zmqpubrawtx=tcp:\/\/host.docker.internal:28333" $file
 fi
 } 
