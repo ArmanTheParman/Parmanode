@@ -181,6 +181,9 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 #message of the day
 [[ $debug == menu ]] || motd
 
+#make sure debug file doesn't get too big
+truncatedebuglog
+
 # This is the main program, which is a menu that loops.
 menu_main
 
