@@ -43,11 +43,11 @@ done
 please_wait
 if [[ $install == litd ]] ; then
     if [[ -f $HOME/.lit/lit.conf ]] ; then 
-    swap_string "$HOME/.lit/lit.conf" "alias=" "lnd.alias=$alias"
+    gsed -i "/alias=/c\lnd.alias=$alias" $HOME/.lit/lit.conf
     fi
 else
     if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
-    swap_string "$HOME/.lnd/lnd.conf" "alias=" "alias=$alias"
+    gsed -i "/alias=/c\alias=$alias" $HOME/.lnd/lnd.conf
     fi
 fi
 }
