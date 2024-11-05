@@ -72,7 +72,7 @@ $server_public_pool
 ``
 #if no services installed, remove any include directive from nginx.conf
 if [[ -z $upstream_electrs && -z $upstream_public_pool ]] ; then
-   delete_line "$nginx_conf" "stream.conf"
+   sudo gsed -i "/stream.conf/d" $nginx_conf 
 else
 #include stream file in nginx.conf
 #this is added at the end of the file, not in any particular block
