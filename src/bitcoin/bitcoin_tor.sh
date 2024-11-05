@@ -2,30 +2,22 @@ function bitcoin_tor {
 
 install_tor
 
-if [[ $OS == "Mac" ]] ; then 
-    varlibtor="/usr/local/var/lib/tor"
-    torrc="/usr/local/etc/tor/torrc" 
-    if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor >$dn 2>&1 ; fi
-    if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
-fi
+varlibtor="$macprefix/var/lib/tor"
+torrc="$macprefix/etc/tor/torrc" 
 
-if [[ $OS == "Linux" ]] ; then
-    varlibtor="/var/lib/tor"
-    torrc="/etc/tor/torrc"
-    if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-    sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
-fi
+if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor >$dn 2>&1 ; fi
+if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
 
 #start fresh
-gsed -i "/onion/d" $bc
-gsed -i "/bind=127.0.0.1/d" $bc
-gsed -i "/onlynet/d" $bc
-gsed -i "/listenonion=1/d" $bc
+sudo gsed -i "/onion/d" $bc
+sudo gsed -i "/bind=127.0.0.1/d" $bc
+sudo gsed -i "/onlynet/d" $bc
+sudo gsed -i "/listenonion=1/d" $bc
 
 enable_tor_general
 
-if ! grep "listen=1" $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1 ; then
-    echo "listen=1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+if ! grep "listen=1" $bc >/dev/null 2>&1 ; then
+    echo "listen=1" | tee -a $bc >/dev/null 2>&1
     fi
 
 if sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" \
@@ -60,29 +52,29 @@ done
 
 
 if [[ $1 == "torandclearnet" ]] ; then
-    gsed -i "/onion=/d" $bc
+    sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
-    gsed -i "/externalip=/d" $bc
+    sudo gsed -i "/externalip=/d" $bc
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    gsed -i "/discover=/d" $bc
+    sudo gsed -i "/discover=/d" $bc
     echo "discover=1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
 if [[ $1 == "toronly" ]] ; then
-    gsed -i "/onion=/d" $bc
+    sudo gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
-    gsed -i "/externalip=/d" $bc
+    sudo gsed -i "/externalip=/d" $bc
     debug "onion is $ONION_ADDR"
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    gsed -i "/bind=/d" $bc
+    sudo gsed -i "/bind=/d" $bc
     echo "bind=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
 if [[ $2 == "onlyout" ]] ; then
-    gsed -i "/onlynet/d" $bc
-    gsed -i "/listenonion=1/d" $bc
+    sudo gsed -i "/onlynet/d" $bc
+    sudo gsed -i "/listenonion=1/d" $bc
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
