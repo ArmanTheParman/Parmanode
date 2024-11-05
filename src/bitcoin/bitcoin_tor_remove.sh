@@ -5,13 +5,14 @@ prefix=/usr/local
 fi
 
 stop_bitcoin
+#delete...
+gsed -i  "/# Additions by Parmanode/d" $prefix/etc/tor/torrc
+gsed -i  "/bitcoin-service/d"          $prefix/etc/tor/torrc
+gsed -i  "/127.0.0.1:8333/d"           $prefix/etc/tor/torrc
+gsed -i  "/onion/d"                    $HOME/.bitcoin/bitcoin.conf
+gsed -i  "/bind=127.0.0.1/d"           $HOME/.bitcoin/bitcoin.conf
+gsed -i  "/onlynet/d"                  $HOME/.bitcoin/bitcoin.conf
 
-delete_line "$prefix/etc/tor/torrc" "# Additions by Parmanode"
-delete_line "$prefix/etc/tor/torrc" "bitcoin-service"
-delete_line "$prefix/etc/tor/torrc" "127.0.0.1:8333"
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
 add_rpcbind
 
 rm $HOME/.bitcoin/onion* >$dn
