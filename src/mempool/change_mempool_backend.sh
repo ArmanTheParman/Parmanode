@@ -56,27 +56,27 @@ done
 
 function choose_bitcoin_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
-swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"none\""
+gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"none\"" $file
 unset file
 }
 
 function choose_electrs_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
-swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50005\"" 
+gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
+gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50005\""  $file
 unset file
 }
 
 function choose_fulcrum_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
-swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50001\""
+gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
+gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50001\"" $file
 unset file
 }
 
 function choose_electrumx_for_mempool {
 export file="$hp/mempool/docker/docker-compose.yml"
-swap_string "$file" ' MEMPOOL_BACKEND:' "      MEMPOOL_BACKEND: \"electrum\"" 
-swap_string "$file" ' ELECTRUM_PORT:' "      ELECTRUM_PORT: \"50007\"" 
+gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
+gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50007\""  $file
 unset file
 }

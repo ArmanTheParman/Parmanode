@@ -47,6 +47,6 @@ esac
 done
 fi
 
-swap_string "$file" "ENV chip_4lnd=" "ENV chip_4lnd=$chip_4lnd" 
+gsed -i "/ENV chip_4lnd=/c\ENV chip_4lnd=$chip_4lnd" $file
 
 }
