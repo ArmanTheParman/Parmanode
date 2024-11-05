@@ -45,6 +45,7 @@ sudo rm /etc/systemd/system/parmanode.service >$dn 2>&1
 sudo systemctl daemon-reload >/dev/null 2>&1
 parmanode_conf_remove "parmanode_service="
 rm $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
+debug "cps 0"
 fi
 debug "cps"
 if [[ $OS == Mac ]] ; then
