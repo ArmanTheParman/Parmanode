@@ -18,7 +18,7 @@ echo "${1}" | tee -a $HOME/.parmanode/parmanode.conf >/dev/null
 ########################################################################################
 
 function parmanode_conf_remove {
-delete_line "$HOME/.parmanode/parmanode.conf" "${1}"
+gsed -i "/$1/d" $pc
 }
 
 
