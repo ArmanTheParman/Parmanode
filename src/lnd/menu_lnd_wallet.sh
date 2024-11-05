@@ -237,8 +237,12 @@ $yellow
     your judgement.
 $orange
 
-    After downloading the wallet, choose "get started", then 'connect a node'.
-    Click the + sign, then fill in the fields as follows:
+    After downloading the wallet, choose 'get started', then 'connect a node'
+    Click the + sign, then fill in the fields as explained belowed:
+
+    (If you don't see that, you may be looking at an 'unkown embedded LND' button. 
+    Click that, then you should see a plus sign at the top right.)
+   
 
 $green
         Nickname$orange       - put whateveryou want
