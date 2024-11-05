@@ -99,9 +99,10 @@ fi
 
 ########################################################################################################################
 function enable_electrum_string_swaps {
-#change_string_mac works on linux too
-#arguments explained in function definition
-change_string_mac "$HOME/.electrum/config" "\"server"  "    \"server\": \"${o_add}:$torport:$TCP_or_SSL\"," swap
-change_string_mac "$HOME/.electrum/config" proxy null delete 
-change_string_mac "$HOME/.electrum/config" "oneserver" "    \"proxy\": \"socks5:127.0.0.1:$port::\"," after
+#swap the whole line
+sudo gsed -i "/\"server/c\\    \"server\": \"${o_add}:$torport:$TCP_or_SSL\"," $HOME/.electrum/config 
+#delete the line
+sudo gsed -i "/proxy/d" $HOME/.electrum/config 
+#insert line after
+sudo gsed -i "/oneserver/a\\    \"proxy\": \"socks5:127.0.0.1:$port::\"," $HOME/.electrum/config 
 }
