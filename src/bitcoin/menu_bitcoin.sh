@@ -7,17 +7,21 @@ dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay
 fi
 
 #for multiselection menus, need to exit if not installed
-if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
-while true
-do
+if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
+
+while true ; do
 unset start stop output1 output2 highlight 
-if [[ -e $debuglogfile ]] && tail -n 25 | grep -q "Corrupt" ; then
-announce "Parmanode has detected a potential serious error from the Bitcoin log.
+
+if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
+
+    printthis="\r$(cat $debuglogfile | grep -n "Corrupt" | tail -n1)"
+   
+    announce "Parmanode has detected a potential serious error from the Bitcoin log.
     This notification was detected by the following line found in bitcoin's
     debug.log file. It coult be a false positive. Take a look...
-$red
-$(cat $debuglogfile | grep -n "Corrupt" | tail -n1)
-$orange
+    $red
+    $printthis
+    $orange
     One option might be to re-index the chain (do look that up if needed), 
     another may be to delete the data and start over - there's a Parmanode menu 
     option for that.

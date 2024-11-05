@@ -1,6 +1,7 @@
 Version 3.46.4
     -Fix for systemps that don't have a /tmp directory
     -gsed symlink for linux
+    -Bitcoin data corruption detection
 Version 3.46.3
     -SSD drive power management tool
     -Tool to install Bitcoin into any docker container that's running
