@@ -26,7 +26,7 @@ function write_to_fstab2 {
         if [[ $TYPE != ext4 ]] ; then log "drive" "exit write_to_fstab2 because drive not ext4" ; return ; fi
 
         if [ -z $UUID ] ; then debug "no UUID" ; return 1 ; fi
-        delete_line "/etc/fstab" "$UUID"
+        sudo gsed -i "/$UUID/d" /etc/fstab
         echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 
         sudo systemctl daemon-reload #needed to reload fstab to systemd
 }

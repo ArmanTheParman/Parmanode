@@ -153,7 +153,7 @@ y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
-delete_line "/etc/fstab" "parmanode"
+sudo gsed -i "/parmanode/d" /etc/fstab
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 break
 ;;
@@ -229,7 +229,7 @@ case $choice in y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
-delete_line "/etc/fstab" "parmanode"
+sudo gsed -i "/parmanode/d" /etc/fstab
 echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
 break
 ;;

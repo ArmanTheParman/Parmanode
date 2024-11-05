@@ -27,5 +27,5 @@ fi
 }
 
 function remove_parmanode_fstab {
-delete_line "/etc/fstab" "parmanode"
+sudo gsed -i "/parmanode/d" /etc/fstab
 }

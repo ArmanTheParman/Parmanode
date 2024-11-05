@@ -7,7 +7,7 @@ if [[ $3 != remote ]] ; then # $3 used in function fulcrum_to_remote
 source $HOME/.bitcoin/bitcoin.conf
 fi
 
-delete_line "$file" "auth = "
+sudo gsed -i "/auth = /d" $file
 echo "auth = \"$rpcuser:$rpcpassword\"" | tee -a $file >/dev/null 2>&1
 
 }
