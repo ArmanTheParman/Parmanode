@@ -9,8 +9,8 @@ rm $HOME/.sparrow/config >/dev/null 2>&1
 cp $pn/src/sparrow/config $HOME/.sparrow/config # copies template across
 
 # These settings can be written every time regardless of connection type...
-gsed -i "/coreDataDir/c\    \"coreDataDir\": \"$HOME/.bitcoin\"," $sparrowconf
-gsed -i "/coreAuth\":/c\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $sparrowconf
+sudo gsed -i "/coreDataDir/c\\    \"coreDataDir\": \"$HOME/.bitcoin\"," $sparrowconf
+sudo gsed -i "/coreAuth\":/c\\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $sparrowconf
 # serverType is BITCOIN_CORE on the template
 # coreAuthType is USERPASS on the template
 
@@ -19,7 +19,7 @@ echo "connection=Bitcoin_userpass" > $HOME/.parmanode/sparrow.connection
     #cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
     if [[ $1 == "cookie" ]] ; then 
-    gsed -i "/coreAuthType/c\  \"coreAuthType\": \"COOKIE\"," $sparrowconf
+    sudo gsed -i "/coreAuthType/c\\  \"coreAuthType\": \"COOKIE\"," $sparrowconf
     echo "connection=Bitcoin_cookie" > $HOME/.parmanode/sparrow.connection #overwrites previous, so order important.
     return 0
     fi
@@ -41,43 +41,43 @@ get_onion_address_variable "fulcrum"
     make_sparrow_config
     return 1
     fi
-gsed -i "/serverType/c\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
 
-gsed -i "/electrumServer/c\  \"electrumServer\": \"tcp://$ONION_ADDR_FULCRUM:7002\"," $sparrowconf
-gsed -i "/useProxy/c\   \"useProxy\": true," $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/$ONION_ADDR_FULCRUM:7002\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\   \"useProxy\": true," $sparrowconf
 echo "connection=FulcrumTOR" > $HOME/.parmanode/sparrow.connection
 fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 if [[ $1 == "fulcrumssl" ]] ; then
-gsed -i "/serverType/c\   \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-gsed -i "/electrumServer/c\  \"electrumServer\": \"ssl://127.0.0.1:50002\"," $sparrowconf
-gsed -i "/useProxy/c\   \"useProxy\": false," $sparrowconf
+sudo gsed -i "/serverType/c\\   \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"ssl:\/\/127.0.0.1:50002\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\   \"useProxy\": false," $sparrowconf
 echo "connection=FulcrumSSL" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
 if [[ $1 == "fulcrumtcp" ]] ; then
-gsed -i "/serverType/c\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-gsed -i "/electrumServer/c\   \"electrumServer\": \"tcp://127.0.0.1:50001\"," $sparrowconf
-gsed -i "/useProxy/c\  \"useProxy\": false," $sparrowconf
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\   \"electrumServer\": \"tcp:\/\/127.0.0.1:50001\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
 echo "connection=FulcrumTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
 if [[ $1 == "fulcrumremote" ]] ; then
 if ! which tor ; then install_tor ; fi
-gsed -i "/serverType/c\    \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-gsed -i "/electrumServer/c\  \"electrumServer\": \"tcp://$REMOTE_TOR_ADDR:$REMOTE_PORT\"," $sparrowconf
-gsed -i "/useProxy/c\   \"useProxy\": true," $sparrowconf
+sudo gsed -i "/serverType/c\\    \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/$REMOTE_TOR_ADDR:$REMOTE_PORT\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\   \"useProxy\": true," $sparrowconf
 echo "connection=FulcrumRemoteTOR" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
 if [[ $1 == "electrstcp" ]] ; then
-gsed -i "/serverType/c\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-gsed -i "/electrumServer/c\  \"electrumServer\": \"tcp://127.0.0.1:50005\"," $sparrowconf
-gsed -i "/useProxy/c\  \"useProxy\": false," $sparrowconf
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/127.0.0.1:50005\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
 echo "connection=electrsTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
@@ -95,10 +95,10 @@ get_onion_address_variable "electrs"
     make_sparrow_config
     return 1
     fi
-gsed -i "/serverType/c\   \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/serverType/c\\   \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
 
-gsed -i "/electrumServer/c\  \"electrumServer\": \"tcp://$ONION_ADDR_ELECTRS:7004\"," $sparrowconf
-gsed -i "/useProxy/c\   \"useProxy\": true," $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/$ONION_ADDR_ELECTRS:7004\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\   \"useProxy\": true," $sparrowconf
 echo "connection=ElectrsTOR" > $HOME/.parmanode/sparrow.connection
 fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

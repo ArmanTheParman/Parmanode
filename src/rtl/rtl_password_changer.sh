@@ -40,6 +40,5 @@ return 0
 
 function set_rtl_password {
 new_password="$1"
-#sudo sed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," $HOME/parmanode/rtl/RTL-Config.json 
-gsed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," "$HOME/parmanode/rtl/RTL-Config.json"
+sudo gsed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," "$HOME/parmanode/rtl/RTL-Config.json"
 }

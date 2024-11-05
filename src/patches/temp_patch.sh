@@ -24,7 +24,7 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
     #if 8332 service exists then exposed to previous error, need to fix. Clean entries first.
     if grep -q "8332" "$torrc" 2>$dn ; then
 
-        sudo gsed -i "/var\/lib\/tor\/bitcoin-service/"         $torrc 
+        sudo gsed -i "/var\/lib\/tor\/bitcoin-service/d"        $torrc 
         sudo gsed -i "/HiddenServicePort 8332 127.0.0.1:8332/d" $torrc 
         sudo gsed -i "/HiddenServicePort 8332 127.0.0.1:8333/d" $torrc 
         sudo gsed -i "/HiddenServicePort 8333 127.0.0.1:8332/d" $torrc 
