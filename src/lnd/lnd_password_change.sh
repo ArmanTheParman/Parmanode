@@ -35,12 +35,12 @@ stop_lnd
 if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
     cp $HOME/.lit/lit.conf $HOME/.lit/lit.conf_backup
-    delete_line "$HOME/.lit/lit.conf" "wallet-unlock" #deletes 2 lines
+    sudo gsed -i "/wallet-unlock/d" $HOME/.lit/lit.conf #deletes 2 lines
 
 else
 
     cp $HOME/.lnd/lnd.conf $HOME/.lnd/lnd.conf_backup
-    delete_line "$HOME/.lnd/lnd.conf" "wallet-unlock" #deletes 2 lines
+    sudo gsed -i "/wallet-unlock/d" $HOME/.lnd/lnd.conf #deletes 2 lines
 
 fi
 start_lnd
