@@ -20,7 +20,7 @@ exit
 esac
 
 export omit="true" 
-export report="/tmp/system_report.txt" 
+export report="$tmp/system_report.txt" 
 export macprefix="/usr/local"
 echo "PARMANODL SYSTEM REPORT $(date)" > $report
 
@@ -30,11 +30,11 @@ if [[ $omit == "true" ]] ; then
     rm $dp/debug.log >/dev/null
     rm $dp/change_string* >/dev/null
     if which gsed >/dev/null ; then
-      cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+      cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
     elif which sed >/dev/null ; then
-      cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > /tmp/tempreport 
+      cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
     fi
-mv /tmp/tempreport $report
+mv $tmp/tempreport $report
 fi
 }
 
@@ -140,7 +140,7 @@ cd $macprefix/etc/nginx/conf.d && echor "$(pwd ; ls -m)"
 echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
 echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
 echor "NGINX ERROR FILE..."
-echor "$(cat /tmp/nginx.conf_error)"
+echor "$(cat $tmp/nginx.conf_error)"
 
 echoline
 
@@ -186,7 +186,7 @@ echor "nbxplorer \n $(cat $HOME/.nbxplorer/Main/settings.config)"
 echoline
 echor "#ELECTRS"
 echor "electrs config \n $(cat $HOME/.electrs/config.toml)"
-echor "ELECTRS_STREAM_FILE \n $(cat /tmp/nginx.conf_error)"
+echor "ELECTRS_STREAM_FILE \n $(cat $tmp/nginx.conf_error)"
 
 echoline
 echor "#ELECTRUMX"

@@ -98,7 +98,7 @@ rpcallowip=127.0.0.1
 rpcallowip=10.0.0.0/8
 rpcallowip=192.168.0.0/16
 rpcallowip=172.0.0.0/8
-rpcservertimeout=120" | tee /tmp/dockerbitcoin.conf >$dn 2>&1
+rpcservertimeout=120" | tee $tmp/dockerbitcoin.conf >$dn 2>&1
 
 
 if [[ $username == root ]] ; then
@@ -118,12 +118,12 @@ username=root
 fi
 
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
-docker cp /tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >/dev/null 2>&1
+docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >/dev/null 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
 export version="27.1"
-cd && rm -rf /tmp/bitcoin && mkdir -p /tmp/bitcoin && cd /tmp/bitcoin
+cd && rm -rf $tmp/bitcoin && mkdir -p $tmp/bitcoin && cd $tmp/bitcoin
 while true ; do
 clear
 
@@ -158,15 +158,15 @@ clear
 
 done
 
-docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
-docker cp /tmp/bitcoin/* $dockername:/tmp/bitcoin/ >/dev/null 2>&1
+docker exec $dockername mkdir -p tmp/bitcoin 2>/dev/null
+docker cp $tmp/bitcoin/* $dockername:/tmp/bitcoin/ >/dev/null 2>&1
 docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >/dev/null 2>&1
 docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
     enter_continue "something went wrong" 
     return 1
     }
 docker exec $dockername rm -rf /tmp/bitcoin
-rm -rf /tmp/bitcoin
+rm -rf $tmp/bitcoin
 if [[ $1 != silent ]] ; then
 success "Bitcoin has been installed in the $dockername container.
 

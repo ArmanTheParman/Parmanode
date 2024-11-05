@@ -384,8 +384,8 @@ fi
 
 #get bitcoin block number
 source $bc
-curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
-gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
+curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >$tmp/result 2>&1
+gbci=$(cat $tmp/result | grep -E ^{ | jq '.result')
 
 #bitcoin finished?
 bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false

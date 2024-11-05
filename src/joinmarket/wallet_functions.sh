@@ -143,14 +143,14 @@ unset copyjmdesktop
 fi
     case $1 in
     a)
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee $tmp/jmaddresses
     ;;
     *)
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee $tmp/jmaddresses
     ;;
     esac
 
-    if grep -q "just restart this joinmarket application" < /tmp/jmaddresses ; then
+    if grep -q "just restart this joinmarket application" < $tmp/jmaddresses ; then
 
         enter_continue "$pink
         This always happens the first time you access the display function.
@@ -158,35 +158,35 @@ fi
         $orange"
         case $1 in
         a)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee $tmp/jmaddresses
         ;;
         *)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee /tmp/jmaddresses
+        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee $tmp/jmaddresses
         ;;
         esac
 
     fi
 
 clear
-sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' /tmp/jmaddresses
-sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' /tmp/jmaddresses #removeds escape characters
-sed -i '/^[Mm]ixdepth/i\\' /tmp/jmaddresses
+sed -i '1,/[Mm]ixdepth/{/[Mm]ixdepth/!d}' $tmp/jmaddresses
+sed -i -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' $tmp/jmaddresses #removeds escape characters
+sed -i '/^[Mm]ixdepth/i\\' $tmp/jmaddresses
 
 #formatting...
 x=$(echo $wallet | wc -c | awk '{print $1}')
 y=$(( 49 - x ))
 line=$(echo "############################################" | head -c $y)
 
-sed -i "1i##################################### $wallet $line" /tmp/jmaddresses
+sed -i "1i##################################### $wallet $line" $tmp/jmaddresses
 echo "
-####################################### END #########################################" | tee -a /tmp/jmaddresses >$dn
+####################################### END #########################################" | tee -a $tmp/jmaddresses >$dn
 set_terminal_wide
-less /tmp/jmaddresses
+less $tmp/jmaddresses
 
 if [[ $copyjmdesktop == "true" ]] ; then
-mv /tmp/jmaddresses $HOME/Desktop/jmaddresses.txt 
+mv $tmp/jmaddresses $HOME/Desktop/jmaddresses.txt 
 else
-rm /tmp/jmaddresses >$dn 2>&1
+rm $tmp/jmaddresses >$dn 2>&1
 fi
 
 }

@@ -37,7 +37,7 @@ docker build -t rtl $pn/src/rtl || { announce "failed to build RTL image" ; retu
 
 run_rtl_docker
 
-mv /tmp/RTL-Config.json $HOME/parmanode/rtl
+mv $tmp/RTL-Config.json $HOME/parmanode/rtl
 
 rtl_password_changer
 

@@ -119,7 +119,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Delete everything in the /tmp directory?
+    Delete everything in the $tmp directory?
 $green
     y)        yes
 $red
@@ -131,7 +131,7 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
-sudo rm -rf /tmp/*
+sudo rm -rf $tmp/*
 break
 ;;
 *)

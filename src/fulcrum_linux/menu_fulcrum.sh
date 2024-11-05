@@ -254,7 +254,7 @@ return 0
 
 
 function menu_fulcrum_status {
-local file="/tmp/fulcrum.journal"
+local file="$tmp/fulcrum.journal"
 
 if [[ $OS == Mac ]] ; then
     if docker ps >$dn ; then
@@ -275,10 +275,10 @@ rm $file
 return 0
 fi
 
-if tail -n20 /tmp/fulcrum.journal | grep -q "up-to-date" ; then
+if tail -n20 $tmp/fulcrum.journal | grep -q "up-to-date" ; then
 export fulcrum_status=up-to-date
 #fetches block number...
-export fulcrum_sync=$(tail -n20 /tmp/fulcrum.journal | grep "up-to-date" | \
+export fulcrum_sync=$(tail -n20 $tmp/fulcrum.journal | grep "up-to-date" | \
 tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
 rm $file
 return 0

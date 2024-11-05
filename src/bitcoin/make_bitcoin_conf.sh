@@ -7,7 +7,7 @@ if [[ $1 == prune ]] ; then export prune=$2 ; fi #assumes aruguments are "prune"
 #Overrides any existing file named bitcoin.conf
 set_terminal
 
-cat << EOF > /tmp/bitcoin.conf
+cat << EOF > $tmp/bitcoin.conf
 server=1
 txindex=1
 daemon=1
@@ -32,7 +32,7 @@ if [[ -n $IP ]] && [[ $(echo "$IP" | wc -l | tr -d ' ' ) == 1 ]] && echo $IP | g
 IP1="$(echo "$IP" | cut -d \. -f 1 2>/dev/null)" 
 IP2="$(echo "$IP" | cut -d \. -f 2 2>/dev/null)"
 IP1and2="$IP1.$IP2." 
-echo rpcallowip="${IP1and2}0.0/16" | tee -a /tmp/bitcoin.conf >/dev/null 2>&1
+echo rpcallowip="${IP1and2}0.0/16" | tee -a $tmp/bitcoin.conf >/dev/null 2>&1
 fi
 
 file="$HOME/.bitcoin/bitcoin.conf"
@@ -82,7 +82,7 @@ esac
 done
 fi
 
-sudo cp /tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
+sudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
 debug "Bitcoin conf copied from tmp
 $(cat $HOME/.bitcoin/bitcoin.conf)"
 

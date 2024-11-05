@@ -1,5 +1,5 @@
 function umbrel_drive_mods_with_docker {
-if [[ $log == umbrel-drive ]] ; then mount_point=/tmp/umbrel ; fi
+if [[ $log == umbrel-drive ]] ; then mount_point=$tmp/umbrel ; fi
 
 docker exec -it umbrel /bin/bash -c "mount $disk $mount_point"
 docker exec -it umbrel /bin/bash -c "mountpoint -q $mount_point" || \

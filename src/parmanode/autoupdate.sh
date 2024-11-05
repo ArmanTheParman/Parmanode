@@ -11,8 +11,8 @@ return 0
 fi
 if [[ $1 == off ]] ; then
 crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
-sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee /tmp/crontab >/dev/null 2>&1 
-sudo mv /tmp/crontab /etc/crontab >/dev/null 2>&1
+sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee $tmp/crontab >/dev/null 2>&1 
+sudo mv $tmp/crontab /etc/crontab >/dev/null 2>&1
 return 0
 fi
 ########################################################################################

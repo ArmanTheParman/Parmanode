@@ -52,13 +52,14 @@ clear ; echo -e "
 
     Run these commands one after the other...
 $cyan
-        cd /tmp
+        mkdir ~/tmp
+        cd ~/tmp
         git clone https://github.com/armantheparman/parmanode.git 
     $orange    
     If the download was successful, continue with...
 $cyan
         rm -rf $pn
-        mv /tmp/parmanode $pp
+        mv ~/tmp/parmanode $pp
         cd $pn
         git config pull.rebase false
 $orange

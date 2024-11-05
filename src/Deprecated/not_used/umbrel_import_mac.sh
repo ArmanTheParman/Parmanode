@@ -3,7 +3,7 @@ return 0
 function umbrel_import_mac {
 # Variables 
     export local log="umbrel-drive" 
-    export mount_point="/tmp/umbrel"
+    export mount_point="$tmp/umbrel"
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -68,7 +68,7 @@ umbrel_drive_mods_with_docker || return 1
 
 #Clean-up
 ########################################################################################
-sudo rm -rf /tmp/umbrel
+sudo rm -rf $tmp/umbrel
 ########################################################################################
 ########################################################################################
 

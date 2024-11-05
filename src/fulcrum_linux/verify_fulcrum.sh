@@ -2,20 +2,20 @@ function verify_fulcrum {
 
 cd $hp/fulcrum
 
-shasum -a 256 --check Fulcrum*shasums.txt >/tmp/FulcrumSHA256 2>&1
+shasum -a 256 --check Fulcrum*shasums.txt >$tmp/FulcrumSHA256 2>&1
 
-if ! grep -q OK < /tmp/FulcrumSHA256 ; then 
+if ! grep -q OK < $tmp/FulcrumSHA256 ; then 
 
     announce "Checksum$red failed$orange. Aborting.
 
     Sometimes this happens for unexplainable reasons.  Try uninstalling the partial 
     Fulcrum installation and install again." 
 
-    rm /tmp/FulcrumSHA256 >/dev/null 2>&1
+    rm $tmp/FulcrumSHA256 >/dev/null 2>&1
     return 1 
 fi
 
-rm /tmp/FulcrumSHA256 >/dev/null 2>&1
+rm $tmp/FulcrumSHA256 >/dev/null 2>&1
 
 echo '-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5

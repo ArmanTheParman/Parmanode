@@ -27,7 +27,7 @@ $orange
     -$cyan \"hp\"$orange stands for 'home parmanode' and changes to the parmanode apps directory
     -$cyan \"h\" $orange change directory to home
     -$cyan \"b\" $orange change directory to .bitcoin
-    -$cyan \"t\" $orange change directory to /tmp
+    -$cyan \"t\" $orange change directory to /tmp or ~/tmp
     -$cyan \"pd\"$orange change directory to the mounted parmanode drive
     -$bright_blue + more $orange
    This list will grow as I think of good ideas. Requests welcome. 

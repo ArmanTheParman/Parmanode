@@ -13,7 +13,7 @@ docker exec -d -u root btcpay /bin/bash -c "service postgresql start" ||  announ
 
 function postgres_database_creation {
 
-rm /tmp/postgres* 2>/dev/null
+rm $tmp/postgres* 2>/dev/null
 set_terminal
 
 counter=0

@@ -112,8 +112,8 @@ menu_joinmarket2
 ;;
 
 vc)
-sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
-sudo mv /tmp/cfg $jmcfg
+sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+sudo mv $tmp/cfg $jmcfg
 enter_continue "file modified"
 ;;
 
@@ -164,7 +164,7 @@ di)
 sum)
 
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee /tmp/jmaddresses
+    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee $tmp/jmaddresses
     enter_continue
     ;;
 cp)
@@ -242,8 +242,8 @@ p|P) return 0 ;;
 
 vc)
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
-sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee /tmp/cfg >$dn 2>&1
-sudo mv /tmp/cfg $cfg
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+sudo mv $tmp/cfg $cfg
 enter_continue "file modified"
 ;;
 man)

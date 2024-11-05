@@ -1,6 +1,6 @@
 function make_mempool_docker_compose {
 source $bc >/dev/null 2>&1
-file="/tmp/docker-compose.yml"
+file="$tmp/docker-compose.yml"
 
 if [[ $OS == Linux ]] ; then
   mariadb_data="./data"

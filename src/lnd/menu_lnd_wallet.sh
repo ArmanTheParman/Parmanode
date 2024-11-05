@@ -125,22 +125,22 @@ remote_balance="Unknown, LND not running or wallet locked"
 fi
 
 if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then
-lncli channelbalance > /tmp/.channelbalance
+lncli channelbalance > $tmp/.channelbalance
 elif grep -q "lnddocker-" < $ic ; then
-docker exec lnd lncli channelbalance > /tmp/.channelbalance
+docker exec lnd lncli channelbalance > $tmp/.channelbalance
 fi
-cbfile=/tmp/.channelbalance
+cbfile=$tmp/.channelbalance
 
 local_balance=$(cat "$cbfile" | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 remote_balance=$(cat "$cbfile" | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 channel_size_total=$((local_balance + remote_balance))
 
 if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then
-lncli walletbalance >/tmp/.walletbalance
+lncli walletbalance >$tmp/.walletbalance
 elif grep -q "lnddocker-" < $ic ; then
-docker exec lnd lncli walletbalance >/tmp/.walletbalance
+docker exec lnd lncli walletbalance >$tmp/.walletbalance
 fi
-wbfile=/tmp/.walletbalance
+wbfile=$tmp/.walletbalance
 
 onchain_balance=$(cat "$wbfile" | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 

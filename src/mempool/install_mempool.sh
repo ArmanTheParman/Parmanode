@@ -40,8 +40,8 @@ sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/n
 installed_config_add "mempool-start"
 #set variables
 make_mempool_docker_compose
-cp /tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
-rm /tmp/docker-compose.yml >/dev/null 2>&1
+cp $tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
+rm $tmp/docker-compose.yml >/dev/null 2>&1
 choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 

@@ -211,7 +211,7 @@ function clone_joinmarket {
 
 function parmashell_4_jm {
 
-cat << 'EOF' | tee /tmp/b1 >$dn 2>&1
+cat << 'EOF' | tee $tmp/b1 >$dn 2>&1
 export LS_OPTIONS='--color=auto'
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -l'
@@ -222,11 +222,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 EOF
 
-cat /tmp/b1 $pn/src/ParmaShell/parmashell_functions > /tmp/b2
+cat $tmp/b1 $pn/src/ParmaShell/parmashell_functions > $tmp/b2
 
-echo "a" | tee -a /tmp/b2 >$dn 2>&1
+echo "a" | tee -a $tmp/b2 >$dn 2>&1
 
-docker cp /tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
+docker cp $tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
 }
 
 function joinmarket_preamble {

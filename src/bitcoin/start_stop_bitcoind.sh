@@ -83,8 +83,8 @@ fi
 if [[ $OS == "Linux" ]] ; then 
 set_terminal 
 please_wait
-sudo systemctl stop bitcoind.service 2> /tmp/bitcoinoutput.tmp
-if grep "28" < /tmp/bitcoinoutput.tmp ; then
+sudo systemctl stop bitcoind.service 2> $tmp/bitcoinoutput.tmp
+if grep "28" < $tmp/bitcoinoutput.tmp ; then
 echo "
     This might take longer than usual as Bitcoin is running a process 
     that shouldn't be interrupted. Please wait. 
@@ -97,6 +97,7 @@ sleep 1 ; echo 4
 sleep 1 ; echo 5
 
 stop_bitcoind
+rm $tmp/bitcoinoutput.tmp
 fi
 fi
 

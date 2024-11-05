@@ -135,7 +135,7 @@ grpcurl -cacert $tlscertpath \
     $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
 fi
 
-if [[ $debug != 1 ]] ; then rm -rf /tmp/go 2>/dev/null ; fi
+if [[ $debug != 1 ]] ; then rm -rf $tmp/go 2>/dev/null ; fi
 
 enter_continue
 return 0
@@ -158,8 +158,8 @@ if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
             sudo rm -rf /usr/local/go >/dev/null 2>&1
             sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
             sudo rm -rf /usr/bin/go >/dev/null 2>&1
-            sudo rm -rf /tmp/go ; mkdir /tmp/go ; cd /tmp/go    
-            if [[ ! -e /tmp/go/go*tar.gz ]] ; then
+            sudo rm -rf $tmp/go ; mkdir $tmp/go ; cd $tmp/go    
+            if [[ ! -e $tmp/go/go*tar.gz ]] ; then
             curl -LO https://dl.google.com/go/go1.20.2.linux-amd64.tar.gz
             fi
             sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
@@ -173,8 +173,8 @@ if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
         #install grpcurl
         clear
         echo -e "${green}Installing grpcurl...$orange"
-        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck ||
-        /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>/tmp/grpcurlcheck2
+        go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>$tmp/grpcurlcheck ||
+        /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>$tmp/grpcurlcheck2
         if ! sudo cat $HOME/.bashrc | grep -q "$HOME/go/bin" ; then
             clear
             echo "export PATH=\"\$PATH:$HOME/go/bin\"" | tee -a $HOME/.bashrc >/dev/null 2>&1

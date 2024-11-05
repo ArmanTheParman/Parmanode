@@ -20,12 +20,12 @@ if which sha256sum >/dev/null ; then
     "Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
 else
-    rm /tmp/bitcoinsha256 >/dev/null 2>&1
-    shasum -a 256 --check SHA256SUMS >/tmp/bitcoinsha256 2>&1
-    if ! grep -q OK < /tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
+    rm $tmp/bitcoinsha256 >/dev/null 2>&1
+    shasum -a 256 --check SHA256SUMS >$tmp/bitcoinsha256 2>&1
+    if ! grep -q OK < $tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
     "Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
-    rm /tmp/bitcoinsha256 >/dev/null 2>&1
+    rm $tmp/bitcoinsha256 >/dev/null 2>&1
 fi
 
 sleep 3

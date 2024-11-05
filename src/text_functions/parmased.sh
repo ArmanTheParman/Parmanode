@@ -5,7 +5,7 @@ new_string="$3"
 placement="$4"
 silent="$5"
 
-newfile=/tmp/string.txt
+newfile=$tmp/string.txt
 
 # Find how many lines in the file have the string; remove whitespace
 search_lines=$(sudo cat $file | grep "$string" | wc -l | tr -d ' ')
