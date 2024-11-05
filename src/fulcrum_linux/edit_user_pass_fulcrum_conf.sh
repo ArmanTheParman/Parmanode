@@ -4,9 +4,8 @@ function edit_user_pass_fulcrum_conf {
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
 
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser"
-
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword"
+sudo gsed -i "/rpcuser/d" $fc
+sudo gsed -i "/rpcpassword/d" $fc
 
 if [[ -n $rpcuser ]] ; then
 echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
