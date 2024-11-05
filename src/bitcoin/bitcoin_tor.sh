@@ -17,7 +17,7 @@ sudo gsed -i "/listenonion=1/d" $bc
 enable_tor_general
 
 if ! grep "listen=1" $bc >/dev/null 2>&1 ; then
-    echo "listen=1" | tee -a $bc >/dev/null 2>&1
+    echo "listen=1" | sudo tee -a $bc >/dev/null 2>&1
     fi
 
 if sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" \
@@ -53,30 +53,30 @@ done
 
 if [[ $1 == "torandclearnet" ]] ; then
     sudo gsed -i "/onion=/d" $bc
-    echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    echo "listenonion=1" | tee -a $bc >$dn 2>&1
+    echo "onion=127.0.0.1:9050" | sudo tee -a $bc >/dev/null 2>&1
+    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
-    echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "externalip=$ONION_ADDR" | sudo tee -a $bc >/dev/null 2>&1
     sudo gsed -i "/discover=/d" $bc
-    echo "discover=1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "discover=1" | sudo tee -a $bc >/dev/null 2>&1
     fi
 
 if [[ $1 == "toronly" ]] ; then
     sudo gsed -i "/onion=/d" $bc
-    echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    echo "listenonion=1" | tee -a $bc >$dn 2>&1
+    echo "onion=127.0.0.1:9050" | sudo tee -a $bc >/dev/null 2>&1
+    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/externalip=/d" $bc
     debug "onion is $ONION_ADDR"
-    echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "externalip=$ONION_ADDR" | sudo tee -a $bc >/dev/null 2>&1
     sudo gsed -i "/bind=/d" $bc
-    echo "bind=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "bind=127.0.0.1" | sudo tee -a $bc >/dev/null 2>&1
     fi
 
 if [[ $2 == "onlyout" ]] ; then
     sudo gsed -i "/onlynet/d" $bc
     sudo gsed -i "/listenonion=1/d" $bc
-    echo "listenonion=1" | tee -a $bc >$dn 2>&1
-    echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
+    echo "onlynet=onion" | sudo tee -a $bc >/dev/null 2>&1
     fi
 
 restart_tor
