@@ -1,5 +1,6 @@
 function temp_patch {
 
+cleanup_parmanode_service
 add_rpcbind
 gsed_symlink
 truncatedebuglog

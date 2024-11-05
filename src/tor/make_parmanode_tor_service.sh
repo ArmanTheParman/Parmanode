@@ -1,16 +1,9 @@
 function make_parmanode_tor_service {
 if ! which tor >/dev/null 2>&1 ; then return 1 ; fi
 
-if [[ $(uname) == Darwin ]] ; then
-torrc="/usr/local/etc/tor/torrc"
-varlibtor="/usr/local/var/lib/tor"
+torrc="$macprefix/etc/tor/torrc"
+varlibtor="$macprefix/var/lib/tor"
 mkdir -p $varlibtor >/dev/null 2>&1
-elif [[ $(uname) == Linux ]] ; then
-torrc="/etc/tor/torrc"
-varlibtor="/var/lib/tor"
-else
-return 1
-fi
 
 if grep -q "parmanode-service" < $torrc ; then return 0 ; fi
 

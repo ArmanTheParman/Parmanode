@@ -27,8 +27,6 @@ function hello {
 #The data is protected, but even if leaked, there is no information about users,
 #    just an anon onion address and some usage stats, eg like the OS in use.
 
-if [[ -e $pn/.there ]] ; then return 0 ; fi
-
 if ! which tor >/dev/null ; then return 0 ; fi
 if [[ $OS = Mac ]] ; then
 file="/usr/local/var/lib/tor/parmanode-service/hostname"
