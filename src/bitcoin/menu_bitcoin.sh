@@ -32,8 +32,6 @@ if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
     trick did the trick."
 fi
 
-clear
-
 bitcoin_status #get running text variable.
 isbitcoinrunning 
    if [[ -e $debuglogfile ]] && tail $debuglogfile | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
