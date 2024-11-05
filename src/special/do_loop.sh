@@ -1,4 +1,5 @@
 function do_loop {
+sudo true ;
 #Educational comments included.
 #The first line, including the # is treated specially. It means this is
 #a script, and invokes the bash program to run it. It must be the very first
