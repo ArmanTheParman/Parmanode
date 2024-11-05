@@ -11,7 +11,7 @@ return 0
 
 function hide_messages_remove {
 label=$1
-delete_line "$HOME/.parmanode/hide_messages.conf" "message_$label="
+gsed -i "/message_$label=/d" $hm
 return 0
 }
 
