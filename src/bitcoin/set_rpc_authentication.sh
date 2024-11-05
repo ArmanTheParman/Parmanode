@@ -105,8 +105,8 @@ function set_rpc_authentication_update_conf_edits {
 
 	gsed -i "/rpcuser/d" $bc >/dev/null 2>&1
 	gsed -i "/rpcpassword/d" $bc >/dev/null 2>&1
-	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf 2>&1
-	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf 2>&1
+	echo "rpcuser=$rpcuser" >> $bc 2>&1
+	echo "rpcpassword=$rpcpassword" >> $bc 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
 	parmanode_conf_add "rpcpassword=$rpcpassword"
 
