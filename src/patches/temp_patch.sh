@@ -1,13 +1,9 @@
 function temp_patch {
 
 cleanup_parmanode_service
-debug "test a"
 add_rpcbind
-debug "test b"
 gsed_symlink
-debug "testc"
 truncatedebuglog
-debug "test"
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1

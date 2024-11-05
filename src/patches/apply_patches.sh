@@ -46,12 +46,13 @@ sudo systemctl daemon-reload >/dev/null 2>&1
 parmanode_conf_remove "parmanode_service="
 rm $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
 fi
-
+debug "cps"
 if [[ $OS == Mac ]] ; then
 parmanode_conf_remove "tor_script=done"
-rm $dp/tor_script.sh >/dev/null 2>&1
+sudo rm $dp/tor_script.sh >/dev/null 2>&1
 fi
 
+debug "cps2"
 
 }
 
