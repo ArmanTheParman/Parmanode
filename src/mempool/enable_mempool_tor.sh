@@ -52,8 +52,8 @@ return 0
 }
 
 function disable_mempool_tor {
-delete_line "$macprefix/etc/tor/torrc" "mempool-service"
-delete_line "$macprefix/etc/tor/torrc" "127.0.0.1:8180"
+gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
+gsed -i "/127.0.0.1:8180/d" $macprefix/etc/tor/torrc 
 restart_tor
 restart_mempool >$dn
 announce "FYI, changes have been made to torrc file, and Tor has been restarted."
