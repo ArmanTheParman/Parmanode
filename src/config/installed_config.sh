@@ -12,10 +12,7 @@ return 0
 
 function installed_config_remove {
 if [ ! -e $ic ] ; then return 0 ; fi
-
-delete_line "$HOME/.parmanode/installed.conf" "${1}"
-
-return 0
+gsed -i "/$1/d" $ic
 }
 
 function installed_conf_remove {
