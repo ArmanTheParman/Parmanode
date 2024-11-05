@@ -27,7 +27,7 @@ auth = \"$rpcuser:$rpcpassword\"
 " | tee $file >/dev/null
 
 if [[ $install_electrs_docker_variable == "true" && $OS == Mac ]] ; then #mac has funny networking.
-swap_string "$file" "daemon_rpc_addr" "daemon_rpc_addr = \"host.docker.internal:8332\"" #necessary to reach bitcoin on the host
-swap_string "$file" "daemon_p2p_addr" "daemon_p2p_addr = \"host.docker.internal:8333\""
+gsed -i "/daemon_rpc_addr/c\daemon_rpc_addr = \"host.docker.internal:8332\"" $file #necessary to reach bitcoin on the host
+gsed -i "/daemon_p2p_addr/c\daemon_p2p_addr = \"host.docker.internal:8333\"" $file
 fi
 }
