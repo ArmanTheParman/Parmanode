@@ -14,10 +14,10 @@ fi
 file="$hp/nostrrelay/config.toml"
 max_conn=$(nproc) # get number of cores and set max connection to same number of cores
 
-gsed -i "/max_conn =/c\max_conn = $max_conn" $file
-gsed -i "/relay_url =/c\relay_url = \"wss://$nostr_domain\"" $file
-gsed -i "/name =/c\name = \"$relay_name\"" $file
-gsed -i "/description =/c\description = \"A nostr relay build with Parmanode\"" $file
+sudo gsed -i "/max_conn =/c\max_conn = $max_conn" $file
+sudo gsed -i "/relay_url =/c\relay_url = \"wss:\/\/$nostr_domain\"" $file
+sudo gsed -i "/name =/c\name = \"$relay_name\"" $file
+sudo gsed -i "/description =/c\description = \"A nostr relay build with Parmanode\"" $file
 
 return 0
 }

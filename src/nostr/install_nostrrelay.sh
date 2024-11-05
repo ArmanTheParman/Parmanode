@@ -69,11 +69,7 @@ git clone --depth 1 https://github.com/scsibug/nostr-rs-relay.git nostrrelay
 cd nostrrelay 
 
 #Bookworm version fails, need to revert back to bullseye
-if [[ $OS == Linux ]] ; then
-sed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
-elif [[ $OS == Mac ]] ; then
 sudo gsed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
-fi
 
 #################################
 # configure settings...

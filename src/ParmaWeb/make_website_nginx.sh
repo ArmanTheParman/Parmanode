@@ -182,6 +182,6 @@ if [[ -n $domain_name ]] ; then
 sudo cp $file $file.backup
 sudo mv $file /etc/nginx/conf.d/$domain_name.conf
 #creates a template without any domain name, and a place holder for server_name...
-gsed -i "/server_name/c\    #put server___name here when domain name added" "$file.backup"
+sudo gsed -i "/server_name/c\    #put server___name here when domain name added" "$file.backup"
 fi
 }

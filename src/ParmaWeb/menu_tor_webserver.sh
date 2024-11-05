@@ -96,12 +96,12 @@ done
 
 function index_off {
 ifile="/etc/nginx/conf.d/tor-server.conf"
-gsed -i "/autoindex/c\              # autoindex off" $ifile
+sudo gsed -i "/autoindex/c\              # autoindex off" $ifile
 sudo systemctl restart nginx
 }
 
 function index_on {
 ifile="/etc/nginx/conf.d/tor-server.conf"
-gsed -i "/autoindex/c\              autoindex on; # autoindex tag" $ifile
+sudo gsed -i "/autoindex/c\              autoindex on; # autoindex tag" $ifile
 sudo systemctl restart nginx
 }

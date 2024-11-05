@@ -23,7 +23,7 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 please_wait
 
-sudo gsed -i "nostr-service" $macprefix/etc/tor/torrc 
+sudo gsed -i "/nostr-service/d" $macprefix/etc/tor/torrc 
 sudo gsed -i  "/127.0.0.1:7080/d" $macprefix/etc/tor/torrc
 
 sudo systemctl restart tor
