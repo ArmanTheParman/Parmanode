@@ -2,8 +2,8 @@ function uninstall_btcpay_tor {
 
 curl -s http://parman.org/downloadable/counter/parmanode_${version}_uninstall_btcpay_tor_counter >/dev/null 2>&1 &
 
-delete_line "/etc/tor/torrc" "btcpayTOR"
-delete_line "/etc/tor/torrc" "7003"
+gsed -i "/btcpayTOR/d" $macprefix/etc/tor/torrc
+gsed -i "/7003/d"      $macprefix/etc/tor/torrc
 
 sudo systemctl restart tor
 
