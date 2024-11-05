@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 if [[ $1 == x ]] ; then set -x ; fi
 #Follow the program at $HOME/parman_programs/parmanode/src/special/do_loop.sh
 #This is where the code continues, and more educational material about how it

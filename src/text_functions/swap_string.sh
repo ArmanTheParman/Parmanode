@@ -16,13 +16,13 @@ new_line="$3"
 
 
 if [[ ! -f "$input_file" ]]; then
-    echo -e "Error: $input_file does not exist."
+    echo "Error: $input_file does not exist."
     enter_continue
     return 1
 fi
 
 #every ocurranced swapped - just some log info...
-echo -e "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
+echo "swap string: $search_string new line: $new_line input file: $input_file" >> $HOME/.parmanode/sed.log 
 
 #be very careful modifying this...
 sudo sed -i "/$search_string/c\\$new_line" "$input_file" >> $HOME/.parmanode/sed.log 2>&1
