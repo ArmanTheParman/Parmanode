@@ -8,6 +8,5 @@ gsed -i "/7003/d"      $macprefix/etc/tor/torrc
 sudo systemctl restart tor
 
 installed_config_remove "btcpTOR"
-
 success "BTCPay over Tor" "being uninstalled."
 }
