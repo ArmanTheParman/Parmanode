@@ -24,11 +24,11 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
     #if 8332 service exists then exposed to previous error, need to fix. Clean entries first.
     if grep -q "8332" "$torrc" 2>$dn ; then
 
-        delete_line $torrc "HiddenServiceDir $prefix/var/lib/tor/bitcoin-service/"
-        delete_line $torrc "HiddenServicePort 8332 127.0.0.1:8332"
-        delete_line $torrc "HiddenServicePort 8332 127.0.0.1:8333"
-        delete_line $torrc "HiddenServicePort 8333 127.0.0.1:8332"
-        delete_line $torrc "HiddenServicePort 8333 127.0.0.1:8333"
+        sudo gsed -i "/var\/lib\/tor\/bitcoin-service/"         $torrc 
+        sudo gsed -i "/HiddenServicePort 8332 127.0.0.1:8332/d" $torrc 
+        sudo gsed -i "/HiddenServicePort 8332 127.0.0.1:8333/d" $torrc 
+        sudo gsed -i "/HiddenServicePort 8333 127.0.0.1:8332/d" $torrc 
+        sudo gsed -i "/HiddenServicePort 8333 127.0.0.1:8333/d" $torrc 
         
         #add corrected entries in order
         echo "HiddenServiceDir $prefix/var/lib/tor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
@@ -37,9 +37,9 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
 fi
 #fix homebrew path order ; remove June 2025
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
-delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
-    if ! grep -q "PATH=/opt/homebrew/bin" < $HOME/.zshrc ; then
-    echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $HOME/.zshrc >$dn 2>&1
+sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
+    if ! grep -q "PATH=/opt/homebrew/bin" < $bashrc ; then
+    echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
     fi
 fi
 
