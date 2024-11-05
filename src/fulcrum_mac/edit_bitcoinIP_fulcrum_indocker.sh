@@ -4,11 +4,6 @@ function edit_bitcoindIP_fulcrum_indocker {
 # computers' parmanode version, without rebuilding the docker container.
 
 IP="$1"
-
-
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "bitcoind"
-
-echo "bitcoind = $IP:8332" >> $HOME/parmanode/fulcrum/fulcrum.conf
-
-return 0
+sudo gsed -i "/bitcoind/d" $fc
+echo "bitcoind = $IP:8332" >> $fc
 }
