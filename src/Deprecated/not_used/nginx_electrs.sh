@@ -36,7 +36,7 @@ else
 sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
 fi
 
-delete_line "$nginx_conf" "electrs.conf" 2>/dev/null
+gsed -i "/electrs.conf/d" $nginx_conf
 sudo rm $nginx_electrs_conf 2>/dev/null
 
 else #add
