@@ -1,5 +1,5 @@
 Version 3.46.4
-    -Fix for systemps that don't have a /tmp directory
+    -refactor for systems that don't have a /tmp directory
     -gsed symlink for linux
     -Bitcoin data corruption detection
     -debugging file size management (truncatedebuglog)
