@@ -25,8 +25,8 @@ fi
 cd $hp/mempool/docker && docker compose down
 #need sudo, some dirs have container permissions
 cd $hp && sudo rm -rf ./mempool/
-delete_line "/etc/tor/torrc" "mempool-service"
-delete_line "/etc/tor/torrc" "127.0.0.1:8180"
+sudo gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
+sudo gsed -i "/127.0.0.1:8180/d" $macprefix/etc/tor/torrc 
 installed_config_remove "mempool-"
 success "Mempool" "being uninstalled"
 
