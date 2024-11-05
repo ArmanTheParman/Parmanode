@@ -21,9 +21,8 @@ function disable_tor_btcpay {
 if [[ $OS == Mac ]] ; then return 1 ; fi
 clear
 file="/etc/tor/torrc"
-
-delete_line "$file" "btcpay-service"
-delete_line "$file" "7003 127"
+gsed -i "/btcpay-service/d" $file
+gsed -i "/7003 127/d" $file
 sudo systemctl restart tor
 
 }
