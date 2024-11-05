@@ -15,13 +15,13 @@ get_extIP
 
 if grep -q "litd" < $ic ; then
 
-swap_string "$HOME/.lit/lit.conf" "externalip=" "lnd.externalip=$extIP:$lnd_port"
-swap_string "$HOME/.lit/lit.conf" "listen=0.0.0.0:973" "lnd.listen=0.0.0.0:$lnd_port"
+gsed -i "/externalip=/c\lnd.externalip=$extIP:$lnd_port"       $HOME/.lit/lit.conf
+gsed -i "/listen=0.0.0.0:973/c\lnd.listen=0.0.0.0:$lnd_port"   $HOME/.lit/lit.conf
 
 else
 
-swap_string "$HOME/.lnd/lnd.conf" "externalip=" "externalip=$extIP:$lnd_port"
-swap_string "$HOME/.lnd/lnd.conf" "listen=0.0.0.0:973" "listen=0.0.0.0:$lnd_port"
+gsed -i "/externalip=/c\externalip=$extIP:$lnd_port"      $HOME/.lnd/lnd.conf
+gsed -i "/listen=0.0.0.0:973/c\listen=0.0.0.0:$lnd_port"  $HOME/.lnd/lnd.conf
 
 fi
 
