@@ -16,18 +16,18 @@ if [[ -z ${prune_value} ]] ; then prune_choice ; fi
 
 if [[ $prune_value == "0" || -z $prune_value ]] ; then
 	#delete all first, in case of multiple occurrences.
-	delete_line "$file" "txindex="
-	delete_line "$file" "blockfilterindex="
-	delete_line "$file" "prune="
+	gsed -i  "/txindex=/d" $file
+	gsed -i "/blockfilterindex=/d" $file
+	gsed -i "/prune=/d" $file
 
 	echo "txindex=1" | sudo tee -a $file >/dev/null
 	echo "blockfilterindex=1" | sudo tee -a $file >/dev/null
 	skipnext="true"
 fi
 if [[ $prune_value != "0" && $skipnext != "true" ]] ; then
-	delete_line "$file" "txindex=1"
-	delete_line "$file" "blockfilterindex=1"
-	delete_line "$file" "prune="
+    gsed -i "/txindex=1/d" $file
+	gsed -i "/blockfilterindex=1/d" $file
+	gsed -i "/prune=/d" $file
 	echo "prune=$prune_value" | sudo tee -a $file >/dev/null  
 fi
 log "bitcoin" "end of apply_prune_bitcoin_conf function"

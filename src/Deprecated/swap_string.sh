@@ -1,7 +1,8 @@
+## Deprecated
+
 # $1 file name 
 # $2 search string 
 # $3 change whole line to
-alias string_swap='swap_string' >/dev/null
 
 function swap_string {
 if [[ $OS == "Mac" ]] ; then
