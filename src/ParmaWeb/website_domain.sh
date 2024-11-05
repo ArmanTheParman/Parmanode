@@ -143,7 +143,7 @@ if [[ -n $domain_name && -e /etc/nginx/conf.d/$website.conf ]] ; then
     if [[ $www == "true" ]] ; then www_name="www.$domain_name" ; fi
         
     local server_name="    server_name $domain_name $www_name;"
-    swap_string "$file" "#put server___name" "$server_name"
+    gsed -i "/#put server___name/c\\$server_name" $file
     sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
 fi
 debug "end of $website domain function"
