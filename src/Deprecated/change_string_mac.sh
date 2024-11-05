@@ -1,3 +1,5 @@
+#DEPRECATED
+
 #not taken into account multiple entries of a searchstring.
 #delete function will remove multiple entries, so be careful #to use it in other parts of this function.
 

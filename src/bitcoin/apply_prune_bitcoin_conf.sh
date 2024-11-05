@@ -16,7 +16,7 @@ if [[ -z ${prune_value} ]] ; then prune_choice ; fi
 
 if [[ $prune_value == "0" || -z $prune_value ]] ; then
 	#delete all first, in case of multiple occurrences.
-	gsed -i  "/txindex=/d" $file
+	gsed -i "/txindex=/d" $file
 	gsed -i "/blockfilterindex=/d" $file
 	gsed -i "/prune=/d" $file
 

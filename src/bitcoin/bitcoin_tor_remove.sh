@@ -6,12 +6,12 @@ fi
 
 stop_bitcoin
 #delete...
-gsed -i  "/# Additions by Parmanode/d" $prefix/etc/tor/torrc
-gsed -i  "/bitcoin-service/d"          $prefix/etc/tor/torrc
-gsed -i  "/127.0.0.1:8333/d"           $prefix/etc/tor/torrc
-gsed -i  "/onion/d"                    $HOME/.bitcoin/bitcoin.conf
-gsed -i  "/bind=127.0.0.1/d"           $HOME/.bitcoin/bitcoin.conf
-gsed -i  "/onlynet/d"                  $HOME/.bitcoin/bitcoin.conf
+sudo gsed -i  "/# Additions by Parmanode/d" $prefix/etc/tor/torrc
+sudo gsed -i  "/bitcoin-service/d"          $prefix/etc/tor/torrc
+sudo gsed -i  "/127.0.0.1:8333/d"           $prefix/etc/tor/torrc
+sudo gsed -i  "/onion/d"                    $HOME/.bitcoin/bitcoin.conf
+sudo gsed -i  "/bind=127.0.0.1/d"           $HOME/.bitcoin/bitcoin.conf
+sudo gsed -i  "/onlynet/d"                  $HOME/.bitcoin/bitcoin.conf
 
 add_rpcbind
 
