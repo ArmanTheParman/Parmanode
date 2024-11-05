@@ -45,6 +45,7 @@ export pp="$HOME/parman_programs"
 export pn="$pp/parmanode"
 export db="$HOME/.bitcoin"
 export bc="$db/bitcoin.conf"
+export fc="$hp/fulcrum/fulcrum.conf" 
 export hm="$dp/hide_messages.conf"
 
 export parmanode_conf="${dp}/parmanode.conf"

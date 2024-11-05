@@ -74,8 +74,8 @@ m|M) back2main ;;
 				;;
 	c)
 	            stop_bitcoind
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" && unset rpcuser
-                delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" && unset rpcpassword
+                gsed -i "/rpcuser/d" $bc && unset rpcuser
+                gsed -i "/rpcpassword/d" $bc && unset rpcpassword
 
 				export btc_authentication="cookie"
 				parmanode_conf_remove "btc_authentication" && parmanode_conf_add "btc_authentication=$btc_authentication"
@@ -103,8 +103,8 @@ return 0
 
 function set_rpc_authentication_update_conf_edits {
 
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcuser" >/dev/null 2>&1
-	delete_line "$HOME/.bitcoin/bitcoin.conf" "rpcpassword" >/dev/null 2>&1
+	gsed -i "/rpcuser/d" $bc >/dev/null 2>&1
+	gsed -i "/rpcpassword/d" $bc >/dev/null 2>&1
 	echo "rpcuser=$rpcuser" >> $HOME/.bitcoin/bitcoin.conf 2>&1
 	echo "rpcpassword=$rpcpassword" >> $HOME/.bitcoin/bitcoin.conf 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
@@ -120,11 +120,11 @@ fi
 
 function add_userpass_to_fulcrum {
 
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $pc >/dev/null 2>&1
 
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcuser" 2>/dev/null
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "rpcpassword" 2>/dev/null
-echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf 2>/dev/null
-echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf 2>/dev/null
+gsed -i "/rpcuser/d" $fc 
+gsed -i "/rpcpassword/d" $fc 
+echo "rpcuser = $rpcuser" >> $fc 2>/dev/null
+echo "rpcpassword = $rpcpassword" >> $fc 2>/dev/null
 
 }
