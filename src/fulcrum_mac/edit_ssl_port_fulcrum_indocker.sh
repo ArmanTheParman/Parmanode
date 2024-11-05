@@ -4,11 +4,6 @@ function edit_ssl_port_fulcrum_indocker {
 # computers' parmanode version, without rebuilding the docker container.
 
 port="$1"
-
-
-delete_line "$HOME/parmanode/fulcrum/fulcrum.conf" "ssl"
-
-echo "ssl = 0.0.0.0:$port" >> $HOME/parmanode/fulcrum/fulcrum.conf
-
-return 0
+sudo gsed -i "/ssl/d" $fc
+echo "ssl = 0.0.0.0:$port" >> $fc
 }
