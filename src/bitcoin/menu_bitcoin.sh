@@ -10,7 +10,8 @@ fi
 if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
 
 while true ; do
-unset start stop output1 output2 highlight 
+
+unset output1 output2 choice
 
 if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
 
@@ -41,13 +42,10 @@ if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 output2="                   Sync'ing to the $drive drive"
-highlight="$reset"
-stop="$red"
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
 output2="                   Will sync to the $drive drive"
-start="$green"
 fi                         
 
 
@@ -86,30 +84,30 @@ echo ""
 echo -e "$output4"
 echo ""
 echo -ne "
-$start
+$green
       (start)$orange    Start Bitcoind............................................(Do it)
-
-      (stop)     Stop Bitcoind..................(One does not simply stop Bitcoin)
-
-      (restart)  Restart Bitcoind
-
-      (n)        Access Bitcoin node information ....................(bitcoin-cli)
-$highlight    
+$red
+      (stop)$orange     Stop Bitcoind..................(One does not simply stop Bitcoin)
+$cyan
+      (restart)$orange  Restart Bitcoind
+$cyan
+      (n)$orange        Access Bitcoin node information ....................(bitcoin-cli)
+$cyan
       (log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
-
-      (bc)       Inspect and edit bitcoin.conf file (bcv for vim)
-
-      (up)       Set, remove, or change RPC user/pass
+$cyan
+      (bc)$orange       Inspect and edit bitcoin.conf file (bcv for vim)
+$cyan
+      (up)$orange       Set, remove, or change RPC user/pass
 $bright_blue
       (tor)$orange      Tor menu options for Bitcoin...
-
-      (mm)       Migrate/Revert an external drive...
-
-      (delete)   Delete blockchain data and start over (eg if data corrupted)
-
-      (update)   Update Bitcoin wizard
+$cyan
+      (mm)$orange       Migrate/Revert an external drive...
+$cyan
+      (delete)$orange   Delete blockchain data and start over (eg if data corrupted)
+$cyan
+      (update)$orange   Update Bitcoin wizard
 $output3
-      (o)        OTHER...
+$cyan      (o)$orange        OTHER...
 
                                                                $red hit 'r' to refresh $orange
 ########################################################################################
@@ -120,11 +118,11 @@ set_terminal
 
 case $choice in
 r)
-menu_bitcoin || return 1
+set_terminal
+continue
 ;;
 
 m|M) back2main ;;
-
 
 start|START|Start)
 run_bitcoind
@@ -270,7 +268,7 @@ return 0
 function bitcoin_status {
 if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then return 1 ; fi
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
-unset running output1 output2 highlight height running_text
+unset running output1 output2 height running_text
 
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep version | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ')" 
 #set $running_text
