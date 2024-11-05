@@ -28,15 +28,9 @@ fi
 # fi
 
 if [[ $1 = "remove" ]] ; then
-install_gsed #checks and installs or returns
-#gsed works mac, and alias to sed for linux... some issues though
-if [[ $OS == Mac ]] ; then
+install_gsed 
 sudo gsed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
-else
-sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
-fi
-
-gsed -i "/electrs.conf/d" $nginx_conf
+sudo gsed -i "/electrs.conf/d" $nginx_conf
 sudo rm $nginx_electrs_conf 2>/dev/null
 
 else #add

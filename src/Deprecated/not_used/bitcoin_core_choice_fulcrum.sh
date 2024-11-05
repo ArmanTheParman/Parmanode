@@ -30,7 +30,7 @@ read core_port ; core_port
 set_terminal
 if [[ -z $core_port ]] ; then core_port=8332 ; fi
 
-gsed -i "/bitcoind/c\bitcoind = $core_IP:$core_port" $HOME/parmanode/fulcrum/fulcrum.conf
+sudo gsed -i "/bitcoind/c\bitcoind = $core_IP:$core_port" $fc
 stop_fulcrum_docker
 start_fulcrum_docker
 }
