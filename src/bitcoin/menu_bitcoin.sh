@@ -111,13 +111,10 @@ $bright_blue
 $output3
       (o)        OTHER...
 
-
+                                                               $red hit 'r' to refresh $orange
 ########################################################################################
 "
 choose "xpmq"
-echo -e "$red$blinkon
- Hit 'r' to refresh menu $blinkoff
- $orange"
 read choice
 set_terminal
 
@@ -265,9 +262,7 @@ exit 0
 invalid
 continue
 ;;
-
 esac
-
 done
 return 0
 }
@@ -277,14 +272,6 @@ if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then return 1 ; fi
 source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
 unset running output1 output2 highlight height running_text
 
-# #get bitcoin block number
-# source $bc
-# curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >/tmp/result 2>&1
-# gbci=$(cat /tmp/result | grep -E ^{ | jq '.result')
-
-# #bitcoin finished?
-# bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
-
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep version | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ')" 
 #set $running_text
 
@@ -292,8 +279,8 @@ if [[ -n $height ]] ; then
 export running_text="-- height=$height"
 elif tail -n1 $HOME/.bitcoin/debug.log | grep -Eq 'Verification progress: .*$' ; then
 export running_text="$( tail -n1 $HOME/.bitcoin/debug.log | grep -Eo 'Verification progress: .*$')"
-elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" >/dev/null 2>&1 ; then
-export running_text="$(tail -n2 $HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" >/dev/null
+elif tail -n2 $HOME/.bitcoin/debug.log | grep -q "thread start" ; then
+export running_text="$(tail -n2 $HOME/.bitcoin/debug.log | grep -Eo '\s.*$')" 
 #elif ... Waiting 300 seconds before querying DNS seeds
 else 
 export running_text="-- status ...type r to refresh, or see log"
