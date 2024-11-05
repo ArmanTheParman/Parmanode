@@ -360,7 +360,7 @@ q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$hp/electrumx/electrumx.conf"
 stop_electrumx
-gsed -i "/DAEMON_URL/c\DAEMON_URL = http = http://$rpcuser:$rpcpassword@127.0.0.1:8332/" $file
+gsed -i "/DAEMON_URL/c\DAEMON_URL = http = http:\/\/$rpcuser:$rpcpassword@127.0.0.1:8332/" $file
 start_electrumx
 break
 ;;
