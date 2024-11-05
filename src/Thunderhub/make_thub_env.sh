@@ -19,7 +19,7 @@ choose "xpmq" ; read choice
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;; d|D) break ;;
 soy) 
-gsed -i "/THEME='dark'/c\THEME='light'"  $file
+sudo gsed -i "/THEME='dark'/c\THEME='light'"  $file
 break ;;
 *) invalid ;;
 esac
