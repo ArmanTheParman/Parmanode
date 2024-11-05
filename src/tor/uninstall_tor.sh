@@ -20,20 +20,19 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop tor
 sudo apt-get purge tor -y
-sudo rm -rf /etc/tor /var/lib/tor >/dev/null 2>&1
 elif [[ $OS == Mac ]] ; then
 brew services stop tor
 brew uninstall tor
-sudo rm -rf /usr/local/etc/tor/
 fi
 
+sudo rm -rf $macprefix/etc/tor $macprefix/var/lib/tor >/dev/null 2>&1
 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
+sudo gsed -i "/onion/d" $bc 
+sudo gsed -i "/bind=127.0.0.1/d" $bc
+sudo gsed -i  "/onlynet/d" $bc
 
 set_terminal
-if [[ -e $HOME/.bitcoin/tor ]] || [[ -e /usr/local/var/lib/tor/bitcoin ]] || [[ -e /var/lib/tor/bitcoin ]] ; then
+if [[ -e $HOME/.bitcoin/tor ]] || [[ -e $macprefix/var/lib/tor/bitcoin ]] ; then
 while true ; do
 echo -e "
 ########################################################################################
@@ -55,11 +54,7 @@ break
 y)
 sudo rm $HOME/.bitcoin/*onion* >/dev/null 2>&1
 sudo rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
-if [[ $OS == "Linux" ]] ; then 
-    sudo rm -rf /var/lib/tor/bitcoin* >/dev/null 2>&1 
-elif [[ $OS == Mac ]] ; then
-    sudo rm -rf usr/local/var/lib/tor/bitcoin* >/dev/null 2>&1 
-fi
+sudo rm -rf $macprefix/var/lib/tor/bitcoin* >/dev/null 2>&1 
 break
 ;;
 *)
