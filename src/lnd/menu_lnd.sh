@@ -365,27 +365,15 @@ lnd_tor only skipsuccess norestartlnd
 
 if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
-    if [[ $OS == Mac ]] ; then
     gsed -i '/^lnd.tlsextraip/s/^/; /' $file
     gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
     gsed -i '/^lnd.externalip/s/^/; /' $file
-    else
-    sed -i '/^lnd.tlsextraip/s/^/; /' $file
-    sed -i '/^lnd.tlsextradomain/s/^/; /' $file
-    sed -i '/^lnd.externalip/s/^/; /' $file
-    fi
 
 else
 
-    if [[ $OS == Mac ]] ; then
     gsed -i '/^tlsextraip/s/^/; /' $file
     gsed -i '/^tlsextradomain/s/^/; /' $file
     gsed -i '/^externalip/s/^/; /' $file
-    else
-    sed -i '/^tlsextraip/s/^/; /' $file
-    sed -i '/^tlsextradomain/s/^/; /' $file
-    sed -i '/^externalip/s/^/; /' $file
-    fi
 
 fi
 
@@ -421,7 +409,7 @@ if grep -q "litd" < $ic >/dev/null 2>&1 ; then
     fi
     fi
     
-    delete_line "$file" "lnd.tlsextradomain=mydomain.com" 
+    sudo gsed -i "/lnd.tlsextradomain=mydomain.com/d" $file
 
     if grep -q lnd.tlsextradomain < $file ; then
     if [[ $(cat $file | grep lnd.tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
@@ -456,7 +444,7 @@ else
     fi
     fi
 
-    delete_line "$file" "tlsextradomain=mydomain.com" 
+    sudo gsed -i "/tlsextradomain=mydomain.com/d" $file
 
     if grep -q tlsextradomain < $file ; then
     if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
