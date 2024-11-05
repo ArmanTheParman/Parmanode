@@ -17,16 +17,16 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi
 
-if ! grep -q "tor-server" ~/.parmanode/installed.conf ; then set_terminal
+if ! grep -q "tor-server" $ic ; then set_terminal
 echo "Tor-server is not installed. Aborting uninstall." 
 enter_continue
 return 1
 fi
 
-delete_line "/etc/tor/torrc" "tor-server"
-delete_line "/etc/tor/torrc" "127.0.0.1:7001" 
-sudo rm /etc/nginx/conf.d/tor-server.conf >/dev/null
-sudo rm -rf /var/lib/tor/tor-server
+sudo gsed -i "/tor-server/d" $macprefix/etc/tor/torrc
+sudo gsed -i "/127.0.0.1:7001/d" $macprefix/etc/tor/torrc 
+sudo rm $macprefix/etc/nginx/conf.d/tor-server.conf >/dev/null
+sudo rm -rf $macprefix/var/lib/tor/tor-server
 installed_conf_remove "tor-server"
 
 set_terminal
