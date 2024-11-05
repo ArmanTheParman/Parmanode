@@ -17,10 +17,10 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 #start fresh
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onion" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "bind=127.0.0.1" 
-delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
-delete_line "$HOME/.bitcoin/bitcoin.conf" "listenonion=1"
+gsed -i "/onion/d" $bc
+gsed -i "/bind=127.0.0.1/d" $bc
+gsed -i "/onlynet/d" $bc
+gsed -i "/listenonion=1/d" $bc
 
 enable_tor_general
 
@@ -60,29 +60,29 @@ done
 
 
 if [[ $1 == "torandclearnet" ]] ; then
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
+    gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "externalip="
+    gsed -i "/externalip=/d" $bc
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "discover="
+    gsed -i "/discover=/d" $bc
     echo "discover=1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
 if [[ $1 == "toronly" ]] ; then
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "onion="
+    gsed -i "/onion=/d" $bc
     echo "onion=127.0.0.1:9050" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "externalip="
+    gsed -i "/externalip=/d" $bc
     debug "onion is $ONION_ADDR"
     echo "externalip=$ONION_ADDR" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "bind="
+    gsed -i "/bind=/d" $bc
     echo "bind=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
 
 if [[ $2 == "onlyout" ]] ; then
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "onlynet"
-    delete_line "$HOME/.bitcoin/bitcoin.conf" "listenonion=1"
+    gsed -i "/onlynet/d" $bc
+    gsed -i "/listenonion=1/d" $bc
     echo "listenonion=1" | tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
     fi
