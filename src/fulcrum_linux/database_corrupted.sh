@@ -45,7 +45,7 @@ if [[ $drive_fulcrum == external ]] ; then
 else
     rm -rf $HOME/.fulcrum_db
     rm -rf $HOME/parmanode/fulcrum_db #old location of database (previous versions)
-    swap_string "$HOME/parmanode/fulcrum/fulcrum.conf" "datadir =" "datadir = $HOME/.fulcrum_db"
+    gsed -i "/datadir =/c\datadir = $HOME/.fulcrum_db" $HOME/parmanode/fulcrum/fulcrum.conf
     mkdir $HOME/.fulcrum_db
 fi
 break
