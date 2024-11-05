@@ -15,13 +15,13 @@ get_extIP
 
 if grep -q "litd" < $ic ; then
 
-gsed -i "/externalip=/c\lnd.externalip=$extIP:$lnd_port"       $HOME/.lit/lit.conf
-gsed -i "/listen=0.0.0.0:973/c\lnd.listen=0.0.0.0:$lnd_port"   $HOME/.lit/lit.conf
+sudo gsed -i "/externalip=/c\lnd.externalip=$extIP:$lnd_port"       $HOME/.lit/lit.conf
+sudo gsed -i "/listen=0.0.0.0:973/c\lnd.listen=0.0.0.0:$lnd_port"   $HOME/.lit/lit.conf
 
 else
 
-gsed -i "/externalip=/c\externalip=$extIP:$lnd_port"      $HOME/.lnd/lnd.conf
-gsed -i "/listen=0.0.0.0:973/c\listen=0.0.0.0:$lnd_port"  $HOME/.lnd/lnd.conf
+sudo gsed -i "/externalip=/c\externalip=$extIP:$lnd_port"      $HOME/.lnd/lnd.conf
+sudo gsed -i "/listen=0.0.0.0:973/c\listen=0.0.0.0:$lnd_port"  $HOME/.lnd/lnd.conf
 
 fi
 
