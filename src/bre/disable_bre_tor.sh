@@ -1,8 +1,9 @@
 function disable_bre_tor {
 if [[ $OS == "Mac" ]] ; then return 1 ; fi
 
-delete_line "/etc/tor/torrc" "HiddenServiceDir /var/lib/tor/bre-service/"
-delete_line "/etc/tor/torrc" "HiddenServicePort 3004 127.0.0.1:3002"
+gsed -i "/HiddenServiceDir \/var\/lib\/tor\/bre-service/d" "$macprefix/etc/tor/torrc"
+gsed -i "/HiddenServicePort 3004 127.0.0.1:3002/d" "$macprefix/etc/tor/torrc"
+
 sudo systemctl restart tor
 
 }
