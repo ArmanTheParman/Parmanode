@@ -11,13 +11,19 @@ if ! grep -q "bitcoin-end" < $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; t
 while true
 do
 unset start stop output1 output2 highlight 
-if [[ -e $debuglogfile ]] && tail -n 25 $debuglogfile | grep -q "Corrupt" ; then
+if [[ -e $debuglogfile ]] && tail -n 25 | grep -q "Corrupt" ; then
 announce "Parmanode has detected a potential serious error from the Bitcoin log.
-    You should take a look, and make a decision - I can't diagnose all potential
-    problems with this program. One option might be to re-index the chain (do
-    look that up if needed), another may be to delete the data and start over - 
-    there's a Parmanode menu option for that.
-    
+    This notification was detected by the following line found in bitcoin's
+    debug.log file. It coult be a false positive. Take a look...
+$red
+$(cat $debuglogfile | grep -n "Corrupt" | tail -n1)
+$orange
+    One option might be to re-index the chain (do look that up if needed), 
+    another may be to delete the data and start over - there's a Parmanode menu 
+    option for that.
+
+    Another option might be to try  the old 'off and on again' trick.
+
     A couple of times this happened to me, and the old 'turn it off and and again'
     trick did the trick."
 fi

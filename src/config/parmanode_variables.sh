@@ -77,6 +77,16 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Enable alias expansion in non-interactive shells
 shopt -s expand_aliases
+
+if [[ -d "/tmp" ]] ; then
+    export tmp="/tmp"
+elif [[ -d "$HOME/tmp" ]] ; then
+    export tmp="$HOME/tmp" 
+else
+   mkdir -p $HOME/tmp >/dev/null 2>&1
+   export tmp="$HOME/tmp" 
+fi
+
 }
 
 function print_parmanode_variables {
