@@ -45,14 +45,14 @@ fi
 # if code reaches here, changes need to be made.
 
 if [[ $btc_auth == "cookie" ]] ; then
-    delete_line "$file" "USER=" 
-    delete_line "$file" "PASS="
+    gsed -i "/USER=/d" $file
+    gsed -i "/PASS=/d" $file
     echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" >> $file
     return 0
     fi
 
 if [[ $btc_auth == "user/pass" ]] ; then
-    delete_line "$file" "COOKIE="
+    gsed -i "/COOKIE=/d" $file
     echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file 
     echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file 
     return 0
