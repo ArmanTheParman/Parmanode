@@ -72,7 +72,7 @@ cd nostrrelay
 if [[ $OS == Linux ]] ; then
 sed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
 elif [[ $OS == Mac ]] ; then
-gsed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
+sudo gsed -i 's/bookworm/bullseye/g' Dockerfile >$dn 2>&1
 fi
 
 #################################

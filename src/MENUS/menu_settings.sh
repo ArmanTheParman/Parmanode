@@ -23,10 +23,10 @@ p|P) return ;;
 c|C) change_colours ; return 0 ;;
 an)
 if [[ $announcements == off ]] ; then
-gsed -i "/announcements=/d" $hm 
+sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=on" | tee -a $hm 
 else
-gsed -i "/announcements=/d" $hm 
+sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=off" | tee -a $hm
 fi
 ;;

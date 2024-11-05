@@ -89,10 +89,10 @@ announce "mempool debugging turned on."
 aa)
 if [[ $announcements == off ]] ; then
 
-gsed -i "/announcements=/d" $hm 
+sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=on" | tee -a $hm 
 else
-gsed -i "/announcements=/d" $hm 
+sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=off" | tee -a $hm
 fi
 ;;
