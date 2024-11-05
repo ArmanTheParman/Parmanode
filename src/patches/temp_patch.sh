@@ -4,6 +4,7 @@ cleanup_parmanode_service
 add_rpcbind
 gsed_symlink
 truncatedebuglog
+debug "test"
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
@@ -42,7 +43,7 @@ delete_line "$HOME/.zshrc" "\$PATH:/opt/homebrew/bin"
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $HOME/.zshrc >$dn 2>&1
     fi
 fi
-
+debug "test2"
 #remove June 2025
 make_lnd_service_tor
 #remove June 2025 - make sure all electrs docker has socat installed
@@ -63,7 +64,7 @@ if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
 delete_line "$ic" "electrs-start"
 parmanode_conf_add "electrs2-start"
 fi
-
+debug "test 3"
 #remove in 2025
 if [[ ${message_jq} != 1 ]] && grep -q "electrs" < $ic && ! which jq > /dev/null ; then
 while true ; do
@@ -104,7 +105,7 @@ invalid ;;
 esac
 done
 fi
-
+debug "test 4"
 #remove in June 2025
 cleanup_bashrc_zshrc
 #echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a $bashrc >/dev/null 2>&1
