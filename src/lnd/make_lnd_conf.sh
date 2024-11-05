@@ -157,7 +157,7 @@ rpcmiddleware.enable=true
 
 if [[ $bitcoin_choice_with_lnd == local ]] \
 && [[ $install == lnddocker ]] && [[ $OS == Mac ]] ; then
-swap_string "$file" "bitcoind.zmqpubrawblock=" "bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332"
-swap_string "$file" "bitcoind.zmqpubrawtx=" "bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333"
+gsed -i "/bitcoind.zmqpubrawblock=/c\bitcoind.zmqpubrawblock=tcp://host.docker.internal:28332" $file
+gsed -i "/bitcoind.zmqpubrawtx=/c\bitcoind.zmqpubrawtx=tcp://host.docker.internal:28333" $file
 fi
 } 
