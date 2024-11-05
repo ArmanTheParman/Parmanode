@@ -52,8 +52,8 @@ else
 sudo rm -rf $HOME/.joinmarket
 fi
 
-delete_line $hm jm_be_carefull
-delete_line $hm jm_menu_shhh
+sudo gsed -i "/jm_be_carefull/d" $hm
+sudo gsed -i "/jm_menu_shhh/d" $hm
 
 installed_conf_remove "joinmarket"
 success "JoinMarket has been uninstalled."

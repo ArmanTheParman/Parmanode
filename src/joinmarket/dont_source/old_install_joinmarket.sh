@@ -128,7 +128,7 @@ sudo -u joinmarket bash -c "source /home/joinmarket/joinmarket/jmvenv/bin/activa
 enter_continue
 sudo mv /home/joinmarket/.joinmarket/joinmarket.cfg $tmp/jm.cfg
 
-delete_line "$tmp/jm.cfg" "rpc_cookie_file ="
+sudo gsed -i "/rpc_cookie_file = /d" $tmp/jm.cfg
 
 gsed -i  "/rpc_wallet_file =/c\rpc_wallet_file = jm_wallet"     $tmp/jm.cfg
 gsed -i  "/rpc_user =/c\rpc_user = $rpcuser"                    $tmp/jm.cfg

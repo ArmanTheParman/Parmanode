@@ -95,7 +95,7 @@ relax)
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 echo "jm_be_carefull=1" >> $hm
 else
-delete_line "${hm}" "jm_be_carefull=1"
+sudo gsed -i "/jm_be_carefull=1/d" $hm
 fi
 ;;
 
@@ -103,7 +103,7 @@ shhh)
 if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
 echo "jm_menu_shhh=1" >> $hm
 else
-delete_line "${hm}" "jm_menu_shhh=1"
+sudo gsed -i "/jm_menu_shhh=1/d" $hm
 fi
 ;;
 

@@ -22,8 +22,8 @@ if [[ $OS == Mac ]] ; then return 1 ; fi
 clear
 file="/etc/tor/torrc"
 
-delete_line "$file" "litterminal-service"
-delete_line "$file" "7007 127"
+sudo gsed -i "/litterminal-service/d" $file
+sudo gsed -i "/7007 127/d" $file
 sudo systemctl restart tor
 
 }
