@@ -18,6 +18,8 @@ enter_abort
 read choice ; case $choice in a|A) return 1 ;; "") break ;; esac 
 done
 
+install_xxd
+
 lnd_macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
 lnd_certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in $HOME/.lnd/tls.cert | sed -e 's/.*=//;s/://g')
 
@@ -127,3 +129,8 @@ done
 }
 
 
+function install_xxd {
+if ! which xxd ; then
+if [[ $OS == Linux ]] ; then sudo apt-get update -y && sudo apt-get install xxd -y ; fi
+if [[ $OS == Mac ]] ; then brew_check ; brew install xxd ; fi
+}
