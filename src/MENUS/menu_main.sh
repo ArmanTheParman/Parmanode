@@ -88,10 +88,11 @@ announce "mempool debugging turned on."
 ;;
 aa)
 if [[ $announcements == off ]] ; then
-delete_line "$hm" "announcements="
+
+gsed -i "/announcements=/d" $hm 
 echo "announcements=on" | tee -a $hm 
 else
-delete_line "$hm" "announcements="
+gsed -i "/announcements=/d" $hm 
 echo "announcements=off" | tee -a $hm
 fi
 ;;
