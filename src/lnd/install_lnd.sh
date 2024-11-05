@@ -44,14 +44,8 @@ start_LND_loop
 if [[ $reusedotlnd != "true" ]] ; then
 create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary to create
 
-# gsed=sed alias normally works, but failing here.
-if [[ $OS == Linux ]] ; then
-sed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
-sed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
-else
-gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
-gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
-fi
+sudo gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
+sudo gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 
 # password file and needs new wallet to do so.
 #start git repository in .lnd directory to allow undo's

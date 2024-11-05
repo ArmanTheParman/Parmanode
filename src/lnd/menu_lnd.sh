@@ -365,15 +365,15 @@ lnd_tor only skipsuccess norestartlnd
 
 if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
-    gsed -i '/^lnd.tlsextraip/s/^/; /' $file
-    gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
-    gsed -i '/^lnd.externalip/s/^/; /' $file
+    sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
+    sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
+    sudo gsed -i '/^lnd.externalip/s/^/; /' $file
 
 else
 
-    gsed -i '/^tlsextraip/s/^/; /' $file
-    gsed -i '/^tlsextradomain/s/^/; /' $file
-    gsed -i '/^externalip/s/^/; /' $file
+    sudo gsed -i '/^tlsextraip/s/^/; /' $file
+    sudo gsed -i '/^tlsextradomain/s/^/; /' $file
+    sudo gsed -i '/^externalip/s/^/; /' $file
 
 fi
 

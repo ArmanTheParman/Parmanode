@@ -43,11 +43,11 @@ done
 please_wait
 if [[ $install == litd ]] ; then
     if [[ -f $HOME/.lit/lit.conf ]] ; then 
-    gsed -i "/alias=/c\lnd.alias=$alias" $HOME/.lit/lit.conf
+    sudo gsed -i "/alias=/c\lnd.alias=$alias" $HOME/.lit/lit.conf
     fi
 else
     if [[ -f $HOME/.lnd/lnd.conf ]] ; then 
-    gsed -i "/alias=/c\alias=$alias" $HOME/.lnd/lnd.conf
+    sudo gsed -i "/alias=/c\alias=$alias" $HOME/.lnd/lnd.conf
     fi
 fi
 }

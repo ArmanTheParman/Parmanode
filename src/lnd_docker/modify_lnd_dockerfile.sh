@@ -47,6 +47,6 @@ esac
 done
 fi
 
-gsed -i "/ENV chip_4lnd=/c\ENV chip_4lnd=$chip_4lnd" $file
+sudo gsed -i "/ENV chip_4lnd=/c\ENV chip_4lnd=$chip_4lnd" $file
 
 }

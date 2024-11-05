@@ -43,7 +43,7 @@ set_terminal ; please_wait ; return 0 ;; esac ; done
  function delete_tor_lnd_conf { 
    unset count
    while grep -q "Added by Parmanode (start)" < $file ; do #while loop removes multiple occurrences 
-   gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
+   sudo gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >/dev/null 2>&1
    count=$((1 + count))
    sleep 0.5
    if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
@@ -86,17 +86,17 @@ set_terminal ; please_wait ; return 0 ;; esac ; done
 function uncomment_clearnet {
 if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
-gsed -i '/^; lnd.tlsextraip/s/^..//' $file
-gsed -i '/^; lnd.externalip/s/^..//' $file
-gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
-gsed -i '/^; lnd.externalhosts/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextraip/s/^..//' $file
+sudo gsed -i '/^; lnd.externalip/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
+sudo gsed -i '/^; lnd.externalhosts/s/^..//' $file
 
 else
 
-gsed -i '/^; tlsextraip/s/^..//' $file
-gsed -i '/^; externalip/s/^..//' $file
-gsed -i '/^; tlsextradomain/s/^..//' $file
-gsed -i '/^; externalhosts/s/^..//' $file
+sudo gsed -i '/^; tlsextraip/s/^..//' $file
+sudo gsed -i '/^; externalip/s/^..//' $file
+sudo gsed -i '/^; tlsextradomain/s/^..//' $file
+sudo gsed -i '/^; externalhosts/s/^..//' $file
 
 fi
 }
@@ -104,17 +104,17 @@ fi
 function commentout_clearnet {
 if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
-gsed -i '/^lnd.tlsextraip/s/^/; /' $file
-gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
-gsed -i '/^lnd.externalip/s/^/; /' $file
-gsed -i '/^lnd.externalhosts/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
+sudo gsed -i '/^lnd.externalip/s/^/; /' $file
+sudo gsed -i '/^lnd.externalhosts/s/^/; /' $file
 
 else
 
-gsed -i '/^tlsextraip/s/^/; /' $file
-gsed -i '/^tlsextradomain/s/^/; /' $file
-gsed -i '/^externalip/s/^/; /' $file
-gsed -i '/^externalhosts/s/^/; /' $file
+sudo gsed -i '/^tlsextraip/s/^/; /' $file
+sudo gsed -i '/^tlsextradomain/s/^/; /' $file
+sudo gsed -i '/^externalip/s/^/; /' $file
+sudo gsed -i '/^externalhosts/s/^/; /' $file
 
 fi
 }
@@ -134,9 +134,9 @@ only)
 add_tor_lnd_conf
 #disable non-tor proxy traffic ...
 if grep -q "litd" <$ic >/dev/null 2>&1 ; then
-gsed -i "/listen=0.0.0.0:$lnd_port/c\lnd.listen=localhost:$lnd_port"  $file
+sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\lnd.listen=localhost:$lnd_port"  $file
 else
-gsed -i "/listen=0.0.0.0:$lnd_port/c\listen=localhost:$lnd_port"  $file
+sudo gsed -i "/listen=0.0.0.0:$lnd_port/c\listen=localhost:$lnd_port"  $file
 fi
 commentout_clearnet
 ;;
@@ -146,9 +146,9 @@ off)
 
 #listens from all IPs
 if grep -q "litd" <$ic >/dev/null 2>&1 ; then
-gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
 else
-gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
 fi
 uncomment_clearnet
 ;;
@@ -158,19 +158,19 @@ add_tor_lnd_conf
 
 #listens from all IPs...
 if grep -q "litd" <$ic >/dev/null 2>&1 ; then
-gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\lnd.listen=0.0.0.0:$lnd_port"  $file
 else
-gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
+sudo gsed -i "/listen=localhost:$lnd_port/c\listen=0.0.0.0:$lnd_port"  $file
 fi
 uncomment_clearnet
 
 #opposite to tor-only, nonexistent when tor off...
 if grep -q "litd" <$ic >/dev/null 2>&1 ; then
-gsed -i "/tor.streamisolation=true/c\lnd.tor.streamisolation=false" $file
-gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\lnd.tor.skip-proxy-for-clearnet-targets=true" $file 
+sudo gsed -i "/tor.streamisolation=true/c\lnd.tor.streamisolation=false" $file
+sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\lnd.tor.skip-proxy-for-clearnet-targets=true" $file 
 else
-gsed -i "/tor.streamisolation=true/c\tor.streamisolation=false" $file 
-gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\tor.skip-proxy-for-clearnet-targets=true" $file 
+sudo gsed -i "/tor.streamisolation=true/c\tor.streamisolation=false" $file 
+sudo gsed -i "/tor.skip-proxy-for-clearnet-targets=false/c\tor.skip-proxy-for-clearnet-targets=true" $file 
 fi
 ;;
 
