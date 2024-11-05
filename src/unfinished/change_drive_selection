@@ -1,7 +1,7 @@
 # CHECK CONFIG FOR DRIVE CHOICE, AND OFFER USER TO SWAP CHOICE.
 
 function change_drive_selection {
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $pc >/dev/null 2>&1
 
 while true ; do
 
@@ -27,7 +27,7 @@ m|M) back2main ;;
 
     a|A)        
         log "bitcoin" "user accepts previous drive choice."
-        delete_line "$HOME/.parmanode/parmanode.conf" "drive="  >/dev/null  #clean up potential multiple entries before writing.
+        gsed -i "/drive=/d" $pc >/dev/null  #clean up potential multiple entries before writing.
         echo "drive=$drive" >> "$HOME/.parmanode/parmanode.conf" 2>/dev/null
         break ;;
     c|C)        
@@ -46,9 +46,9 @@ m|M) back2main ;;
 			echo "No change made, continuing. Hit <enter>." ; read ; break
 		    else
             log "bitcoin" "drive choice changed from earlier selection"
-			delete_line "$HOME/.parmanode/parmanode.conf" "drive="  >/dev/null  #clean up potential multiple entries before writing.
-			echo "drive=$drive_swap_choice" >> "$HOME/.parmanode/parmanode.conf" 2>/dev/null
-			source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 #updates drive variable for this shell session.
+			gsed -i "/drive=/d" $pc  >/dev/null  #clean up potential multiple entries before writing.
+			echo "drive=$drive_swap_choice" >> $pc 2>/dev/null
+			source $pc >/dev/null 2>&1 #updates drive variable for this shell session.
             fi
             ;;
         p|P) return 1 ;; q|Q|quit|QUIT) exit 0 ;; *) invalid ;;
