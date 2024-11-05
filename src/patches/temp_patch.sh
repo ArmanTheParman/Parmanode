@@ -60,7 +60,7 @@ fi
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
 if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
-delete_line "$ic" "electrs-start"
+sudo gsed -i "/electrs-start/d" $ic 
 parmanode_conf_add "electrs2-start"
 fi
 

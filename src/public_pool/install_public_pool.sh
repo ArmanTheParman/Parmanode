@@ -21,7 +21,7 @@ elif [[ $OS == Linux ]] ; then
     fi
 fi
 
-if ! which nginx >/dev/null 2>&1 ; then delete_line "$ic" "nginx-" ; install_nginx ; debug "nginx1?" ; fi
+if ! which nginx >/dev/null 2>&1 ; then sudo gsed -i "/nginx-/d" $ic  ; install_nginx ; debug "nginx1?" ; fi
 #nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
 
 #check for port 80 clash
@@ -88,7 +88,7 @@ make_public_pool_env ; debug "made env"
 
 # Add ZMQ connection to bitcoin.conf
 # Parmanode uses port 3000 for RTL, so can't use that for pool.
-if [[ -e $bc ]] ; then delete_line "$bc" ":28332"
+if [[ -e $bc ]] ; then sudo gsed -i "/:28332/d" $bc 
 echo "zmqpubrawblock=tcp://*:28332" | tee -a $bc >/dev/null ; debug "$bc edited"
 fi
 
