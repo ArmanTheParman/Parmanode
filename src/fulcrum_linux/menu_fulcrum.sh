@@ -387,9 +387,9 @@ fi
 
 #swap string for fulcrum.conf
 if [[ $other == internal ]] ; then
-swap_string "$hp/fulcrum/fulcrum.conf" "datadir =" "datadir = $HOME/.fulcrum_db"
+gsed -i "/datadir =/c\datadir = $HOME/.fulcrum_db" $hp/fulcrum/fulcrum.conf
 elif [[ $other == external ]] ; then
-swap_string "$hp/fulcrum/fulcrum.conf" "datadir =" "datadir = $parmanode_drive/fulcrum_db"
+gsed -i "/datadir =/c\datadir = $parmanode_drive/fulcrum_db" $hp/fulcrum/fulcrum.conf
 fi
 
 #correct parmanode conf variable
