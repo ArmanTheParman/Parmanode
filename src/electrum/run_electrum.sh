@@ -28,11 +28,3 @@ enter_continue
 
 
 }
-
-#FUNCTION HAS BEEN REPLACED AND IMPORVED
-# function refresh_electrum_certs_cache_sockets {
-
-# delete_line "$HOME/.electrum/config" "rpcpassword"
-# cd $HOME/.electrum/
-# rm -rf certs daemon* cache* >/dev/null 2>&1
-# }

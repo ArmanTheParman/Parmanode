@@ -4,8 +4,8 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 please_wait
 
-delete_line "/etc/tor/torrc" "electrumx-service"
-delete_line "/etc/tor/torrc" "127.0.0.1:50007"
+sudo gsed -i "/electrumx-service/d" $macprefix/etc/tor/torrc
+sudo gsed -i "/127.0.0.1:50007/d" $macprefix/etc/tor/torrc
 
 sudo systemctl restart tor
 
