@@ -1,25 +1,23 @@
 function nginx_public_pool_ui {
 
 #Set variables first
-if [[ $OS == Mac ]] ; then
-nginx_conf="/usr/local/etc/nginx/nginx.conf"
-nginx_root="/usr/local/etc/nginx/"
-conf_file="$nginx_root/public_pool_ui.conf"
+
+nginx_conf="$macprefix/etc/nginx/nginx.conf"
+nginx_root="$macprefix/etc/nginx/"
 ssl_cert="$hp/public_pool_ui/cert.pem" 
 ssl_key="$hp/public_pool_ui/key.pem" 
 
+if [[ $OS == Mac ]] ; then
+conf_file="$nginx_root/public_pool_ui.conf"
+
 elif [[ $OS == Linux ]] ; then
-nginx_conf="/etc/nginx/nginx.conf"
-nginx_root="/etc/nginx/"
 conf_file="$nginx_root/conf.d/public_pool_ui.conf"
-ssl_cert="$hp/public_pool_ui/cert.pem" 
-ssl_key="$hp/public_pool_ui/key.pem" 
 fi
 
 #needs to be after variables set
 if [[ $1 = "remove" ]] ; then
     sudo rm "$conf_file" >/dev/null 2>&1
-    delete_line "$nginx_conf" "public_pool_ui.conf" #will apply only to Macs anyway.
+    sudo gsed -i "/public_pool_ui.conf/d" $nginx_conf  #will apply only to Macs anyway.
 else #install
 
 #might need to install nginx
