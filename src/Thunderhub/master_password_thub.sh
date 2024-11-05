@@ -34,6 +34,6 @@ q|Q) exit 0 ;; p|P) return 1 ;; *) continue ;;
 esac 
 fi
 done
-#swap_string "$file" "MASTER_PASSWORD_OVERRIDE='password'" "MASTER_PASSWORD_OVERRIDE='$password'" 
+
 set_terminal
 }
