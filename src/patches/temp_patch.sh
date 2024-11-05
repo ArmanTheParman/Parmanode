@@ -2,6 +2,7 @@ function temp_patch {
 
 add_rpcbind
 gsed_symlink
+truncatedebuglog
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
@@ -112,11 +113,4 @@ debug temppatchend
 sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
 sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 
-}
-
-function truncatedebuglog {
-debuglength=$(wc -l < "$dp/debug.log" | xargs)
-if [[ $debuglength -gt 2000 ]] ; then
-tail -n 2000 $dp/debug.log > $dp/debug.log >/dev/null 2>&1
-fi
 }
