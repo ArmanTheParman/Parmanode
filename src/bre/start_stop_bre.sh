@@ -45,14 +45,14 @@ fi
 # if code reaches here, changes need to be made.
 
 if [[ $btc_auth == "cookie" ]] ; then
-    gsed -i "/USER=/d" $file
-    gsed -i "/PASS=/d" $file
+    sudo gsed -i "/USER=/d" $file
+    sudo gsed -i "/PASS=/d" $file
     echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" >> $file
     return 0
     fi
 
 if [[ $btc_auth == "user/pass" ]] ; then
-    gsed -i "/COOKIE=/d" $file
+    sudo gsed -i "/COOKIE=/d" $file
     echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file 
     echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file 
     return 0
