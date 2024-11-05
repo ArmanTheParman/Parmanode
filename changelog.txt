@@ -1,3 +1,6 @@
+Version 3.46.5
+    -fix bashrc / zshrc bug
+    -gsed/sed refactoring - removed delete_line and swap_string usage
 Version 3.46.4
     -refactor for systems that don't have a /tmp directory
     -gsed symlink for linux
