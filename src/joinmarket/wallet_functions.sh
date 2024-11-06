@@ -317,7 +317,7 @@ $orange
     "
    
     cd $HOME/.joinmarket/wallets >$dn 2>&1
-    for i in $(ls -a) ; do echo $i ; done | grep lock | sed -n '   'p 
+    for i in $(ls -a) ; do echo $i ; done | grep lock | sed 's/^/    /'
     cd - >$dn 2>&1
 
     echo -en "
