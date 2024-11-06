@@ -20,7 +20,7 @@ $cyan
 $cyan 
                   jml)$orange         Inspect joinmarket docker container logs
 $cyan
-                  obl)$orange         Order book log 
+                  obl)$orange         Order book log (obln for nano)
 
 ########################################################################################
 "
@@ -53,7 +53,10 @@ docker logs joinmarket | less
 ;;
 obl)
 announce "Hit q to exit this. Use vim style controls to move about."
-less $HOME/.joinmarket/orderbook.log 
+less $oblogfile
+;;
+obln)
+nano $oblogfile
 ;;
 
 *)
