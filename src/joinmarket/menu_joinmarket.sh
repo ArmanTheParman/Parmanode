@@ -373,8 +373,8 @@ function check_socat_working {
 
 while true ; do
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}running$orange stop with 'stop'" 
-else echo "${red}not running$orange start with 'start'"
+echo "${green}running$orange (type 'stop' to stop)" 
+else echo "${red}not running$orange (type 'start' to start)"
 fi)
 set_terminal ; echo -e "
 ########################################################################################
