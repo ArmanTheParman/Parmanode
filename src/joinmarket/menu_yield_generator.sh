@@ -43,7 +43,7 @@ else
     unset ygrunning
 fi
 
-if tail -n1 $logfile | grep -qi "locked by pid" || tail -n1 $logfile | grep -qi "Failed to load wallet" ; then
+if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" || tail -n1 $logfile | grep -qi "Failed to load wallet" ) ; then
     announce "Some issue with loading wallet. See log for information."
     ygtext="    Yield Generator is$red   NOT RUNNING$orange"
     unset ygrunning
