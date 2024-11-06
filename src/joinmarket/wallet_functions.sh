@@ -324,10 +324,3 @@ $orange
 "
 enter_continue
 }
-
-
-
-    
-
-
-{
