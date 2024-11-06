@@ -70,15 +70,13 @@ $cyan
 $cyan
                   socat)$orange       Start/Stop Socat forwarding
 $cyan
-                  load)$orange        Load wallet 
-$cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $magenta
                   ww)$orange          Wallet menu ... 
 $red
                   yg)$orange          Yield Generator menu ...
 $bright_blue
-                  m2)$orange          Menu 2 ...
+                  mm)$orange          Menu 2 ...
 
 $jm_menu_shhh$orange   
 ########################################################################################
@@ -138,7 +136,7 @@ yg)
     menu_yield_generator || return 1
     ;;
 
-m2)
+mm)
     menu_joinmarket2
 ;;
 

@@ -15,6 +15,8 @@ $cyan
                   vc)$orange          Remove all config comments and make pretty
 $cyan
                   man)$orange         Manually access container and mess around
+$cyan
+                  sp)$orange          Spending (info) 
 
 ########################################################################################
 "
@@ -37,28 +39,10 @@ clear
 docker exec -it joinmarket bash 
 ;;
 
-delete)
-    delete_jm_wallets
-    ;; 
-cp)
-    check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
-    ;;
-ss)
-    check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
-    enter_continue
-    ;;
-bk)
-    backup_jm_wallet
-    ;;
-hist)
-    wallet_history_jm
-    ;;
 sp)
-    spending_info_jm
-    ;;
-
+spending_info_jm
+;;
+    
 *)
 invalid
 ;;
