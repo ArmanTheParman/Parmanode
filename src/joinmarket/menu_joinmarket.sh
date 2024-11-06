@@ -373,8 +373,8 @@ function check_socat_working {
 
 while true ; do
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}running$orange" 
-else echo "${red}not running$orange"
+echo "${green}running$orange stop with 'stop'" 
+else echo "${red}not running$orange start with 'start'"
 fi)
 set_terminal ; echo -e "
 ########################################################################################
@@ -395,7 +395,12 @@ set_terminal ; echo -e "
 choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-
+start)
+start_socat joinmarket
+;;
+stop)
+stop_socat joinmarket
+;;
 *)
 invalid
 ;;
