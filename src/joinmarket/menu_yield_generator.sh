@@ -42,7 +42,7 @@ if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; t
     fi
 else
     ygtext="    Yield Generator is$red   NOT RUNNING$orange"
-    orderbooknn="\r    Orderbookd Nickname is:   $nick"
+    orderbooknn="\n\r    Orderbookd Nickname is:   $nick"
     unset ygrunning
 fi
 
