@@ -34,9 +34,10 @@ fi
 #if grep "setting onion hostname to" $logfile ; then
 if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$red $wallet
-
-    \r    Orderbookd Nickname is:   $nick"
+    ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$red $wallet"
+    
+    if docker exec joinmarket ps ax | grep obwatch | grep -q python ; then
+    orderbooknn="\r    Orderbookd Nickname is:   $nick"
     ygrunning="true"
 else
     ygtext="    Yield Generator is$red   NOT RUNNING$orange"
@@ -59,7 +60,7 @@ set_terminal_custom 48 ; echo -e "
 
 
 $ygtext
-
+$orderbooknn
 
 $green
                 start)$orange    Start Yield Generator 
