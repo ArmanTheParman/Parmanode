@@ -72,6 +72,8 @@ $cyan
 $cyan
                     log)$orange      Read Yield Generator log with the less 
                                      command (logv for vim)
+$cyan
+                    del)$orange      Delete lockfile ... 
 
 $ygs
 ########################################################################################
@@ -116,6 +118,9 @@ flog)
 ;;
 c)
     configure_yg 
+;;
+del)
+    delete_lockfile
 ;;
 *)
     invalid

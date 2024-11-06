@@ -292,3 +292,21 @@ enter_continue
 > $dp/before ; > $dp/after
 
 }
+
+function delete_lockfile {
+
+set_terminal ; echo -e "
+########################################################################################
+
+    Explanation about lockfiles.
+ 
+    When JoinMarket uses a wallet, it creates a an empty file called a 'lockfile'.
+    This is really just a signal to itself, in case a secon
+
+    Sometimes if there is a crash, the joinmarket software doesn't have a chance
+    to clean up after itself. 
+
+    
+
+
+{
