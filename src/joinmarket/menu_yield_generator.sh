@@ -113,7 +113,6 @@ log)
 ;;
 logv)
    check_wallet_loaded || continue
-   announce "Hint: Using vim is hard. To quit, do <esc> then : then q then <enter>"
    vim_warning ; sudo vim $logfile
 ;; 
 flog)
