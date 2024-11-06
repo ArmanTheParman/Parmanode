@@ -1,4 +1,4 @@
-function menu_joinmarket2 {
+function menu_joinmarketwallet {
 while true ; do
 set_terminal ; echo -en "
 ########################################################################################$cyan
