@@ -194,9 +194,16 @@ fi
 function check_wallet_loaded {
     if [[ $wallet == "NONE" ]] ; then
     announce "Please load wallet first"
-    return 1
-    fi
+    choose_wallet 
+    else 
     return 0
+    fi
+
+    if [[ $wallet == "NONE" ]] ; then
+    return 1 
+    else
+    return 0
+    fi
 }
 
 function fidelity_bonds_info {
