@@ -4,6 +4,12 @@ export jmcfg="$HOME/.joinmarket/joinmarket.cfg"
 export logfile="$HOME/.joinmarket/yg_privacy.log"
 while true ; do 
 
+while true ; do
+socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
+echo "${green}running$orange (type 'stop' to stop)" 
+else echo "${red}not running$orange (type 'start' to start)"
+fi)
+
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 export jm_be_carefull="
 ${red}${blinkon}ParmaJoin uses a HOT wallet - be careful.
