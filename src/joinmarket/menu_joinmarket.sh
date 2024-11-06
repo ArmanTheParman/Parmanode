@@ -372,7 +372,10 @@ fi
 function check_socat_working {
 
 while true ; do
-socatstatus="$(if tmux ls | grep -q joinmarket_socat ; then echo "${green}running$orange" ; else echo "${red}not running$orange")"
+socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
+echo "${green}running$orange" 
+else echo "${red}not running$orange"
+fi)
 set_terminal ; echo -e "
 ########################################################################################
 
