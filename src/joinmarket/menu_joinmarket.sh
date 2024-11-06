@@ -68,7 +68,7 @@ $cyan
 $cyan
                   ob)$orange          Start/Stop orderbook
 $cyan
-                  socat)$orange       Start/Stop Socat forwarding
+                  socat)$orange       Start/Stop Socat forwarding ...
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $magenta
