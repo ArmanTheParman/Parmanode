@@ -290,21 +290,42 @@ docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wal
 enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
-
 }
 
 function delete_lockfile {
 
 set_terminal ; echo -e "
 ########################################################################################
-
-    Explanation about lockfiles.
- 
-    When JoinMarket uses a wallet, it creates a an empty file called a 'lockfile'.
-    This is really just a signal to itself, in case a secon
+$cyan
+    Explanation about lock files.
+$orange 
+    When JoinMarket uses a wallet, it creates a an empty file called a 'lock file' as 
+    signal to itself, in case a second instance of JoinMarket tries to use the same 
+    wallet - that'd cause bad things to happen. Whenever a wallet is about to be used
+    it checks for the existance of a lock file and proceeds only if one does not
+    exist. Whenever it is finished with a wallet, it deletes the lock file.
 
     Sometimes if there is a crash, the joinmarket software doesn't have a chance
-    to clean up after itself. 
+    to clean up after itself and the lock file remains. Then, if JoinMarket is run
+    again, it can't proceed because the lock file exists. 
+
+    In such situations, the lock file needs to be deleted. If you are sure there is
+    no other instance of JoinMarket using the wallet, you can delete the lockfile
+    either manually or let Parmanode do it for you. 
+    
+    Below are the lockfiles (if any)...
+
+    $(for i in $(ls -lah | grep lock | awk '{print $8}') ; do echo -e "  $red $i" ; done)
+    
+    You can type in the file name exactly if you want parmanode to delete it.
+    Otherwise hit $cyan<enter>$orange to get out of here.
+
+########################################################################################
+"
+enter_continue
+}
+
+
 
     
 
