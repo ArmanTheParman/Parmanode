@@ -2,7 +2,7 @@ function start_joinmarket {
 
 docker start joinmarket
 start_socat joinmarket   
-internal_docker_socat_jm 
+internal_docker_socat_jm_mac 
 
 }
 
@@ -12,7 +12,7 @@ stop_socat joinmarket
 }
 
 
-function internal_docker_socat_jm  {
+function internal_docker_socat_jm_mac  {
 #For Macs, start socat inside container as well
     if [[ $OS == Mac ]] ; then
         counter=0

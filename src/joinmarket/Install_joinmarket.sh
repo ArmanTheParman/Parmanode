@@ -197,7 +197,7 @@ elif [[ $OS == Mac ]] ; then
 fi
 
     start_socat joinmarket
-    internal_docker_socat_jm 
+    internal_docker_socat_jm_mac 
 
 }
 
