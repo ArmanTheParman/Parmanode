@@ -201,7 +201,7 @@ sp)
     spending_info_jm
     ;;
 yg)
-    menu_yg || return 1
+    menu_yield_generator || return 1
     ;;
 socat)
     check_socat_working || return 1

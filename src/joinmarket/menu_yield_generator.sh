@@ -1,4 +1,4 @@
-function menu_yg {
+function menu_yield_generator {
 
 #grep "setting onion hostname to" ./yg_privacy.log | tail -n1 | grep -oE 'hostname to :.+$'
 
@@ -43,7 +43,11 @@ else
     unset ygrunning
 fi
 
-
+if tail -n1 $logfile | grep -qi "locked by pid" || tail -n1 $logfile | grep -qi "Failed to load wallet" ; then
+    announce "Some issue with loading wallet. See log for information."
+    ygtext="    Yield Generator is$red   NOT RUNNING$orange"
+    unset ygrunning
+fi
 
 set_terminal_custom 48 ; echo -e "
 ########################################################################################
@@ -82,7 +86,7 @@ start)
     
     silentecho=true
     set_terminal
-    announce "Please enter the password (lock) for $wallet" 
+    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
     unset silentecho
 
     password=$enter_cont
