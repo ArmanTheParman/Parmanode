@@ -33,7 +33,7 @@ set_terminal ; echo "
 
     Enter your email (will be your username): " ; read email
 
-echo "    Enter your password: " ; read password
+echo "    Enter your password: (keystrokes hidden) " ; read -s password
 
 otp="FreeRoss-"
 otp=${otp}$(openssl rand -hex 6 | base64 | head -c 6)

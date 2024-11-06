@@ -6,13 +6,13 @@ $cyan
                                    LITD Password
 $orange
 
-    Please enter a password for LITD
+    Please enter a password for LITD (keystrokes will not show)
 
     (Do not use the characters: # \" or ' otherwise problems may arise.)
 
 ########################################################################################
 "
-choose xpmq ; read password ; set_terminal
+choose xpmq ; read -s password ; set_terminal
 case $password in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac

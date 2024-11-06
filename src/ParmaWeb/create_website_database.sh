@@ -17,17 +17,19 @@ set_terminal ; echo -e "
     NOTE YOU WILL NEED TO ENTER IT 3 TIMES. ONCE TO DECLARE IT, ANOTHER TO CONFIRM,
     AND FILNALLY AGAIN TO USE IT TO CREATE THE DATABASE.$orange
 
+    Also note, the keystrokes to the password will not show.
+
 ########################################################################################
 
 "
-read password ; set_terminal ; if [[ -z $password ]] ; then announce "Password can not be empty" ; continue ; fi
+read -s password ; set_terminal ; if [[ -z $password ]] ; then announce "Password can not be empty" ; continue ; fi
 set_terminal ; echo -e "
 ########################################################################################
     Please repeat the$cyan password${orange}.
 ########################################################################################
 
 "
-read password2 ; set_terminal
+read -s password2 ; set_terminal
 if [[ $password != $password2 ]] ; then
 echo -e "Passwords don't match. Hit$cyan <enter>$orange to try again."
 continue

@@ -4,11 +4,11 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please type in a master password (no symbols)
+    Please type in a master password (no symbols; not keystrokes won't show)
 
 ########################################################################################
 "
-read password ; clear
+read -s password ; clear
 echo -e "
 ########################################################################################
     
@@ -16,7 +16,7 @@ echo -e "
 
 ########################################################################################
 "
-read password2 ; clear
+read -s password2 ; clear
 
 if [[ $password == $password2 ]] ; then break 
 else
