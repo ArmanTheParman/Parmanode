@@ -70,7 +70,7 @@ nano $HOME/.sparrow/config
 continue
 ;;
 scv|SCV)
-vim $HOME/.sparrow/config
+vim_warning ; vim $HOME/.sparrow/config
 ;;
 
 t|T)

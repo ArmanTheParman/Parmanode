@@ -124,8 +124,8 @@ if [[ $computer_type == LinuxPC ]] ; then set_terminal ; nano ~/parmanode/btc-rp
 if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; nano ~/parmanode/bre/.env ;  fi 
 ;;
 cv|CV)
-if [[ $computer_type == LinuxPC ]] ; then set_terminal ; vim ~/parmanode/btc-rpc-explorer/.env ;  fi 
-if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; vim ~/parmanode/bre/.env ;  fi 
+if [[ $computer_type == LinuxPC ]] ; then set_terminal ; vim_warning ; vim ~/parmanode/btc-rpc-explorer/.env ;  fi 
+if [[ $OS == Mac || $computer_type == Pi ]] ; then set_terminal ; vim_warning ; vim ~/parmanode/bre/.env ;  fi 
 ;;
 
 log|LOG|Log)

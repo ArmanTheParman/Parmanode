@@ -332,7 +332,7 @@ enter_continue
 nano $hp/electrumx/electrumx.conf
 ;;
 ecv|ECV)
-vim $hp/electrumx/electrumx.conf
+vim_warning ; vim $hp/electrumx/electrumx.conf
 ;;
 
 up|UP|Up|uP)

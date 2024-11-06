@@ -325,7 +325,7 @@ menu_lnd_lit_conf="lnd.conf"
 rL=LND
 open_conf="$HOME/.lnd/lnd.conf"
 fi
-vim $open_conf
+vim_warning ; vim $open_conf
 please_wait
 unset menu_lnd_lit_conf rL open_conf
 continue 

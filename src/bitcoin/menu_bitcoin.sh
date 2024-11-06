@@ -202,6 +202,7 @@ nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
 bcv)
+vim_warning
 vim $HOME/.bitcoin/bitcoin.conf
 ;;
 

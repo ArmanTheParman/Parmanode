@@ -43,7 +43,7 @@ set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim
     case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/nginx.conf ;;
-    v) sudo vim /etc/nginx/nginx.conf ;;
+    v) vim_warning ; sudo vim /etc/nginx/nginx.conf ;;
     esac
 ;;
 
@@ -52,7 +52,7 @@ set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim
     case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/stream.conf ;;
-    v) sudo vim /etc/nginx/stream.conf ;;
+    v) vim_warning ; sudo vim /etc/nginx/stream.conf ;;
     esac
 ;;
 
@@ -64,7 +64,7 @@ set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim
     case $editor in
     "") continue ;;
     n) sudo nano /etc/nginx/conf.d/$filename ;;
-    v) sudo vim /etc/nginx/conf.d/$filename ;;
+    v) vim_warning ; sudo vim /etc/nginx/conf.d/$filename ;;
     esac
 ;;
 

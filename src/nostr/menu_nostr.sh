@@ -122,13 +122,13 @@ conf)
 sudo nano /etc/nginx/conf.d/$domain_name.conf
 ;;
 confv)
-sudo vim /etc/nginx/conf.d/$domain_name.conf
+vim_warning ; sudo vim /etc/nginx/conf.d/$domain_name.conf
 ;;
 toml)
 nano $HOME/parmanode/nostrrelay/config.toml
 ;;
 tomlv)
-vim $HOME/parmanode/nostrrelay/config.toml
+vim_warning ; vim $HOME/parmanode/nostrrelay/config.toml
 ;;
 log)
 log_counter

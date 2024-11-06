@@ -147,7 +147,7 @@ sudo mv $tmp/cfg $jmcfg
 enter_continue "file modified"
 ;;
 confv)
-sudo vim $jmcfg
+vim_warning ; sudo vim $jmcfg
 ;;
 
 man)

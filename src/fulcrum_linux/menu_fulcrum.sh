@@ -202,7 +202,7 @@ nano $HOME/parmanode/fulcrum/fulcrum.conf
 ;;
 
 fcv)
-vim $HOME/parmanode/fulcrum/fulcrum.conf
+vim_warning ; vim $HOME/parmanode/fulcrum/fulcrum.conf
 ;;
 
 p|P) 

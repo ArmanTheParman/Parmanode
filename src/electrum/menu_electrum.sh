@@ -46,7 +46,7 @@ ec|EC)
 nano $HOME/.electrum/config
 ;;
 ecv|ECV) 
-vim $HOME/.electrum/config
+vim_warning ; vim $HOME/.electrum/config
 ;;
 
 cl|CL)

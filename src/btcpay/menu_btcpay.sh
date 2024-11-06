@@ -92,7 +92,7 @@ nano $HOME/.btcpayserver/Main/settings.config
 continue
 ;;
 bcv)
-vim $HOME/.btcpayserver/Main/settings.config
+vim_warning ; vim $HOME/.btcpayserver/Main/settings.config
 continue
 ;;
 
@@ -101,7 +101,7 @@ nano $HOME/.nbxplorer/Main/settings.config
 continue
 ;;
 ncv)
-vim $HOME/.nbxplorer/Main/settings.config
+vim_warning ; vim $HOME/.nbxplorer/Main/settings.config
 continue
 ;;
 
