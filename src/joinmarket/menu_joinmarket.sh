@@ -44,6 +44,7 @@ if docker ps 2>$dn | grep -q joinmarket ; then
 else
      joinmarket_running="${red}NOT RUNNING$orange"
      yg="false"
+     orderbook="${red}NOT RUNNING"
 fi
 debug "pause"
 set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
