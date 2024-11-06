@@ -316,7 +316,9 @@ $orange
     Below are the lockfiles (if any)...$bright_blue
     "
    
-    for i in $(ls -a) ; do echo $i ; done | grep lock | sed -n p
+    cd $HOME/.joinmarket/wallets >$dn 2>&1
+    for i in $(ls -a) ; do echo $i ; done | grep lock | sed -n p 
+    cd - >$dn 2>&1
 
     echo -en "
     $orange
