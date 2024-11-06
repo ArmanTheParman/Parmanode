@@ -4,7 +4,6 @@ export jmcfg="$HOME/.joinmarket/joinmarket.cfg"
 export logfile="$HOME/.joinmarket/yg_privacy.log"
 while true ; do 
 
-while true ; do
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
 echo "${green}running$orange (type 'stop' to stop)" 
 else echo "${red}not running$orange (type 'start' to start)"
