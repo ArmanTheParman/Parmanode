@@ -37,14 +37,14 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     export orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
     else
-    export orderbook="${red}NOT RUNNING"
+    export orderbook="${red}NOT RUNNING$orange"
     fi
 
 
 else
      export joinmarket_running="${red}NOT RUNNING$orange"
      export yg="false"
-     export orderbook="${red}NOT RUNNING"
+     export orderbook="${red}NOT RUNNING${orange}"
 fi
 debug "pause"
 set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
@@ -57,6 +57,7 @@ $jm_be_carefull
     JoinMarket is:       $joinmarket_running
     Active wallet is:    $red$wallet$orange
     Order Book is:       $orderbook
+    Socat is:
 
 $cyan
                   start)$orange       Start JoinMarket Docker container
@@ -64,6 +65,8 @@ $cyan
                   stop)$orange        Stop JoinMarket Docker container
 $cyan
                   ob)$orange          Start/Stop orderbook
+$cyan
+                  socat)$orange       Start/Stop Socat forwarding
 $cyan
                   load)$orange        Load wallet 
 $cyan
@@ -195,6 +198,9 @@ sp)
 yg)
     menu_yg || return 1
     ;;
+socat)
+    check_socat_working || return 1
+    ;;
 *)
 invalid
 ;;
@@ -232,8 +238,6 @@ $cyan
                   hist)$orange        Show a history of the wallet's transactions
 $cyan
                   sp)$orange          Spending from the wallet (info) 
-$cyan
-                  socat)$orange       Connection with socat
 
 ########################################################################################
 "
@@ -276,9 +280,6 @@ hist)
     ;;
 sp)
     spending_info_jm
-    ;;
-socat)
-    check_socat_working || return 1
     ;;
 
 *)
