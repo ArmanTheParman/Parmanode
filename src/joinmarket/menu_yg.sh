@@ -81,7 +81,8 @@ start)
     check_wallet_loaded || return
     
     silentecho=true
-    announce "Please enter the password (lock) for $wallet and hit <enter>"
+    set_terminal
+    announce "Please enter the password (lock) for $wallet" 
     unset silentecho
 
     password=$enter_cont

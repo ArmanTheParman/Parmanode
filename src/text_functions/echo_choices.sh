@@ -14,7 +14,7 @@ unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
 
-if [[ $silenecho == "true" ]] ; then
+if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
 else
 read enter_cont 
