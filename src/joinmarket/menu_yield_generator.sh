@@ -53,7 +53,7 @@ if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" ||
     unset ygrunning
 fi
 
-set_terminal_custom 48 ; echo -e "
+set_terminal_custom 48 ; echo -ne "
 ########################################################################################
 
                                    YEILD GENERATOR                         $cyan
