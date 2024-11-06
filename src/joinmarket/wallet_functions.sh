@@ -294,6 +294,7 @@ enter_continue
 
 function delete_lockfile {
 
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -320,11 +321,25 @@ $orange
     for i in $(ls -a) ; do echo $i ; done | grep lock | sed 's/^/    /' | tee $tmp/jm_lockfiles
     cd - >$dn 2>&1
 
-    echo -en " $orange
-    You can type in the file name exactly if you want parmanode to delete it.
+    echo -en " $red
+    You can type in the file name exactly if you want parmanode to delete it.$orange
     Otherwise hit $cyan<enter>$orange to get out of here.
 
 ########################################################################################
 "
-enter_continue
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+esac
+
+if ! echo $choice | grep -iq lock ; then
+    announce "$choice is probably a typo. Try again."
+    continue
+else
+    sudo rm -rf $HOME/.joinmarket/wallets/$choice
+    enter_continue
+    return 0
+fi
+done
+
 }
