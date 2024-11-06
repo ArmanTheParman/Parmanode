@@ -73,7 +73,7 @@ $cyan
                   load)$orange        Load wallet 
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
-$cyan 
+$magenta
                   ww)$orange          Wallet menu ... 
 $red
                   yg)$orange          Yield Generator menu ...
