@@ -52,7 +52,7 @@ announce "Hit q to exit this. Use vim style controls to move about."
 docker logs joinmarket | less
 ;;
 obl)
-announce "Hit q to exit this. Use vim style controls to move about.
+announce "Hit q to exit this. Use 'vim' style controls to move about.
 
           \r    Note that connection advice in this output (localhost:62601)
           \r    will not work because it's running in a Docker container.
@@ -62,7 +62,7 @@ announce "Hit q to exit this. Use vim style controls to move about.
 less $oblogfile
 ;;
 obln)
-announce "Hit control x to exit this. Use vim style controls to move about.
+announce "Hit control x to exit nano text editor.
 
           \r    Note that connection advice in this output (localhost:62601)
           \r    will not work because it's running in a Docker container.
