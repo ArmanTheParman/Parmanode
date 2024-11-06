@@ -69,6 +69,8 @@ $cyan
 $cyan
                   ob)$orange          Start/Stop orderbook
 $cyan
+                  obs)$orange         Orderbook access info ...
+$cyan
                   socat)$orange       Start/Stop Socat forwarding ...
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
@@ -116,6 +118,9 @@ ob)
     orderbook_jm
 ;;
 
+obs)
+   orderbook_access_info
+;;
 socat)
     check_socat_working || return 1
 ;;
@@ -208,4 +213,30 @@ invalid
 ;;
 esac
 done
+}
+
+function orderbook_access_info {
+
+set_terminal ; echo -e "
+########################################################################################
+
+    The order book is a bit like the Bitcoin mempool. JoinMarket users each keep their
+    own copy of the coinjoin offers, and share them between other users. Not every
+    copy is going to be identical.
+
+    Sometimes there are connection issues over the Tor Network and your list might
+    not look complete. Refreshing can help.
+
+    Your orderbook can be accessed from the URLs provided in the main JoinMarket menu.
+
+    An althernative to a self-hosted order book is to use a public one. Here's one
+    example you could use:
+$bright_blue
+    https://nixbitcoin.org/orderbook/
+$orange
+
+########################################################################################
+"
+enter_continue
+
 }
