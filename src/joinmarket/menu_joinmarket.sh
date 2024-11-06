@@ -387,7 +387,7 @@ set_terminal ; echo -e "
     If you don't understand any of that, don't worry about it, just make sure it's
     running if you want external access.
 
-    Socat/Tmux is currently:
+    Socat/Tmux is currently: $socatstatus
 
 
 ########################################################################################
