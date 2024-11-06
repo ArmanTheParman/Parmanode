@@ -45,3 +45,4 @@ q|Q|QUIT|Quit) exit 0 ;;
 p|P) return 0 ;; 
 esac
 done
+}
