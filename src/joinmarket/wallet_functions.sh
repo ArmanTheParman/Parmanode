@@ -317,11 +317,10 @@ $orange
     "
    
     cd $HOME/.joinmarket/wallets >$dn 2>&1
-    for i in $(ls -a) ; do echo $i ; done | grep lock | sed 's/^/    /'
+    for i in $(ls -a) ; do echo $i ; done | grep lock | sed 's/^/    /' | tee $tmp/jm_lockfiles
     cd - >$dn 2>&1
 
-    echo -en "
-    $orange
+    echo -en " $orange
     You can type in the file name exactly if you want parmanode to delete it.
     Otherwise hit $cyan<enter>$orange to get out of here.
 
