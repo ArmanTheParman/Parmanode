@@ -17,6 +17,10 @@ $cyan
                   man)$orange         Manually access container and mess around
 $cyan
                   sp)$orange          Spending (info) 
+$cyan 
+                  jml)$orange         Inspect joinmarket docker container logs
+$cyan
+                  obl)$orange         Order book log (oblv for vim)  
 
 ########################################################################################
 "
@@ -42,10 +46,19 @@ docker exec -it joinmarket bash
 sp)
 spending_info_jm
 ;;
-    
+
+jml)
+joinmarket_log
+;;
 *)
 invalid
 ;;
 esac
 done
+}
+
+
+function joinmarket_log {
+announce "Hit q to exit this. Use vim style controls to move about."
+docker logs joinmarket | less
 }
