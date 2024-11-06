@@ -62,7 +62,7 @@ $jm_be_carefull
     JoinMarket is:       $joinmarket_running
     Active wallet is:    $red$wallet$orange
     Order Book is:       $orderbook
-    Socat is:
+    Socat is:            $socatstatus
 
 $cyan
                   start)$orange       Start JoinMarket Docker container
