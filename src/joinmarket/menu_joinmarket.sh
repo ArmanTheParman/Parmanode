@@ -2,6 +2,7 @@ function menu_joinmarket {
 clear
 export jmcfg="$HOME/.joinmarket/joinmarket.cfg" 
 export logfile="$HOME/.joinmarket/yg_privacy.log"
+export oblogfile="$HOME/.joinmarket/orderbook.log"
 while true ; do 
 
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
