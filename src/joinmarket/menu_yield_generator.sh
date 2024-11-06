@@ -43,7 +43,7 @@ else
     unset ygrunning
 fi
 
-if  [[ $walleterror == "true" ]] || { [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" || tail -n1 $logfile | grep -qi "Failed to load wallet" ) ; } ; then
+if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" || tail -n1 $logfile | grep -qi "Failed to load wallet" ) ; then
     announce "Some issue with loading wallet. See log for information."
     ygtext="    Yield Generator is$red   NOT RUNNING$orange"
     unset ygrunning
@@ -92,6 +92,7 @@ start)
     password=$enter_cont
     docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
     unset password enter_cont
+    sleep 1
 ;;
 
 stop)
