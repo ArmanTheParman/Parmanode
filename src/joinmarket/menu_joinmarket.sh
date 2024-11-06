@@ -37,22 +37,21 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     else
         export yg="false"
     fi
+
     #is obwatcher running?
     export obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-    export orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
+        export orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
     else
-    export orderbook="${red}NOT RUNNING$orange"
+        export orderbook="${red}NOT RUNNING$orange"
     fi
-
 
 else
      export joinmarket_running="${red}NOT RUNNING$orange"
      export yg="false"
      export orderbook="${red}NOT RUNNING${orange}"
 fi
-debug "pause"
-set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
+set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
 
                                 P A R M A J O I N $orange
@@ -208,7 +207,6 @@ sp)
 *)
 invalid
 ;;
-
 esac
 done
 }
