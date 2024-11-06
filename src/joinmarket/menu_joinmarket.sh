@@ -5,8 +5,8 @@ export logfile="$HOME/.joinmarket/yg_privacy.log"
 while true ; do 
 
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}RUNNING$orange      (type 'stop' to stop)" 
-else echo "${red}NOT RUNNING$orange      (type 'start' to start)"
+echo "${green}RUNNING$orange"
+else echo "${red}NOT RUNNING$orange"
 fi)
 
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
