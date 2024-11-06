@@ -62,18 +62,17 @@ $ygtext
 
 
 $green
-                    start)$orange    Start Yield Generator 
+                start)$orange    Start Yield Generator 
 $red
-                    stop)$orange     Start Yield Generator 
+                stop)$orange     Start Yield Generator 
 $yellow
-                    c)$orange        Configure Yeild Generator Settings...
+                c)$orange        Configure Yeild Generator Settings...
 $cyan
-                    flog)$orange     Follow Yield Generator log as it populates
+                flog)$orange     Follow Yield Generator log as it populates
 $cyan
-                    log)$orange      Read Yield Generator log with the less 
-                                     command (logv for vim)
+                log)$orange      Read Yield Generator log with the (logv for vim)
 $cyan
-                    del)$orange      Delete lockfile ... 
+                del)$orange      Delete lockfile ... 
 
 $ygs
 ########################################################################################
@@ -110,6 +109,7 @@ log)
 ;;
 logv)
    check_wallet_loaded || continue
+   announce "Hint: Using vim is hard. To quit, do <esc> then : then q then <enter>"
    sudo vim $logfile
 ;; 
 flog)
