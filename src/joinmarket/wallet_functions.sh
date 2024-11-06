@@ -313,10 +313,13 @@ $orange
     no other instance of JoinMarket using the wallet, you can delete the lockfile
     either manually or let Parmanode do it for you. 
     
-    Below are the lockfiles (if any)...
+    Below are the lockfiles (if any)...$bright_blue
+    "
+   
+    for i in $(ls -a) ; do echo $i ; done | grep lock | sed -n p
 
-    $(for i in $(ls -lah | grep lock | awk '{print $8}') ; do echo -e "  $red $i" ; done)
-    
+    echo -en "
+    $orange
     You can type in the file name exactly if you want parmanode to delete it.
     Otherwise hit $cyan<enter>$orange to get out of here.
 
