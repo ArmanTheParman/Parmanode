@@ -24,27 +24,27 @@ if [[ -z $wallet ]] ; then wallet=NONE ; fi
 
 if docker ps 2>$dn | grep -q joinmarket ; then
 
-    joinmarket_running="${green}RUNNING$orange"
+    export joinmarket_running="${green}RUNNING$orange"
 
     #is yield generator basic running?
     if docker exec joinmarket ps aux | grep yield-generator-basic ; then 
-        yg="true"
+        export yg="true"
     else
-        yg="false"
+        export yg="false"
     fi
     #is obwatcher running?
-    obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
+    export obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-    orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
+    export orderbook="${green}RUNNING     $bright_blue Access: $IP:61000 or localhost:61000$orange"
     else
-    orderbook="${red}NOT RUNNING"
+    export orderbook="${red}NOT RUNNING"
     fi
 
 
 else
-     joinmarket_running="${red}NOT RUNNING$orange"
-     yg="false"
-     orderbook="${red}NOT RUNNING"
+     export joinmarket_running="${red}NOT RUNNING$orange"
+     export yg="false"
+     export orderbook="${red}NOT RUNNING"
 fi
 debug "pause"
 set_terminal_custom 51 ; echo -e "\033[H" ; echo -en "
@@ -357,12 +357,9 @@ return 0
 }
 
 function orderbook_jm {
-
 if [[ -z $obwatcherPID ]] ; then
 docker exec -d joinmarket /jm/clientserver/scripts/obwatch/ob-watcher.py >/dev/null 2>&1
 else
 docker exec joinmarket kill $obwatcherPID
 fi
-
-
 }
