@@ -34,7 +34,7 @@ fi
 #if grep "setting onion hostname to" $logfile ; then
 if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$red $wallet"
+    ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet"
     
     if docker exec joinmarket ps ax | grep obwatch | grep -q python ; then
     orderbooknn="\n\r    Orderbookd Nickname is:   $nick"

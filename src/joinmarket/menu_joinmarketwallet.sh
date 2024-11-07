@@ -8,7 +8,7 @@ set_terminal ; echo -en "
 
 ########################################################################################
 
-    Active wallet is:    $red$wallet$orange
+    Active wallet is:    $magenta$wallet$orange
 
 
 $cyan
