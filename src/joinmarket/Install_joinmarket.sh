@@ -30,7 +30,7 @@ function install_joinmarket {
             echo "HiddenServiceDir /var/lib/tor/joinmarket-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
         fi
         if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" < $macprefix/etc/tor/torrc ; then
-            echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc ; then
+            echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc 
         fi
     fi
 
