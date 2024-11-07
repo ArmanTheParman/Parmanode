@@ -124,6 +124,7 @@ c)
 ;;
 del)
     delete_lockfile
+    sudo rm $logfile
 ;;
 *)
     invalid

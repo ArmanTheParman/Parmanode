@@ -52,6 +52,7 @@ else
      export yg="false"
      export orderbook="${red}NOT RUNNING${orange}"
 fi
+
 set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
 
