@@ -89,25 +89,11 @@ choose "xpmq" ; read choice ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
-
-    if [[ -n $ygrunning ]] ; then announce "Already running" ; continue ; fi
-    check_wallet_loaded || return
-    
-    silentecho=true
-    set_terminal
-    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
-    unset silentecho
-
-    password=$enter_cont
-    docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
-    unset password enter_cont
-    sleep 1
+start_yield_generator
 ;;
 
 stop)
-    yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
-    docker exec joinmarket kill -SIGTERM $yg_PID
-    sudo rm $logfile 2>&1
+stop_yield_generator
 ;;
 
 log)
@@ -160,4 +146,26 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 return 
+}
+
+function start_yield_generator {
+    if [[ -n $ygrunning ]] ; then announce "Already running" ; continue ; fi
+    check_wallet_loaded || return
+    
+    silentecho=true
+    set_terminal
+    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
+    unset silentecho
+
+    password=$enter_cont
+    docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
+    unset password enter_cont
+    sleep 1
+
+}
+
+function stop_yield_generator {
+    yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
+    docker exec joinmarket kill -SIGTERM $yg_PID
+    sudo rm $logfile 2>&1
 }

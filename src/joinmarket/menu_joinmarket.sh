@@ -108,10 +108,15 @@ fi
 
 s)
 if echo $joinmarket_running | grep -q NOT ; then
-start_joinmarket
+    start_joinmarket
 else
-stop_joinmarket
-unset obwatcherPID
+
+    if [[ $yg == "true" ]] ; then
+    stop_yeild_generator
+    fi
+
+    stop_joinmarket
+    unset obwatcherPID
 fi
 ;;
 
