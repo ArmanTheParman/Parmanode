@@ -24,15 +24,15 @@ function install_joinmarket {
 
     install_tmux ; if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
     
-    if [[ $OS == Linux ]] ; then
-        enable_tor_general || { announce "Something went wrong with tor. Aborting." ; return 1 ; }
-        if ! grep -q "HiddenServiceDir /var/lib/tor/joinmarket-service/" < $macprefix/etc/tor/torrc ; then
-            echo "HiddenServiceDir /var/lib/tor/joinmarket-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
-        fi
-        if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" < $macprefix/etc/tor/torrc ; then
-            echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc 
-        fi
-    fi
+    # if [[ $OS == Linux ]] ; then
+    #     enable_tor_general || { announce "Something went wrong with tor. Aborting." ; return 1 ; }
+    #     if ! grep -q "HiddenServiceDir /var/lib/tor/joinmarket-service/" < $macprefix/etc/tor/torrc ; then
+    #         echo "HiddenServiceDir /var/lib/tor/joinmarket-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    #     fi
+    #     if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" < $macprefix/etc/tor/torrc ; then
+    #         echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc 
+    #     fi
+    # fi
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
