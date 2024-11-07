@@ -69,8 +69,11 @@ $jm_be_carefull
 ########################################################################################
 
     JoinMarket is:       $joinmarket_running
+
     Active wallet is:    $magenta$wallet$orange
+
     Socat is:            $socatstatus
+
     Order Book is:       $orderbook
 
 $cyan
