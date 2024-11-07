@@ -48,7 +48,9 @@ spending_info_jm
 ;;
 
 jml)
-announce "Hit q to exit this. Use vim style controls to move about."
+announce "Hit q to exit this. Use vim style controls to move about.
+    To scroll to the end, use <shift>G (case sensitive). To scroll
+    to the top, use 'gg'"
 docker logs joinmarket | less
 ;;
 obl)
