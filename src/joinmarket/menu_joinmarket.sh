@@ -54,8 +54,8 @@ if tmux ls | grep -q joinmarket_socat ; then
         socatstatus="${green}RUNNING$orange"
     else
         socatstatus="${green}RUNNING$orange
-     Access Order Book
-     from external: $bright_blue      $IP:61000$orange"
+    Access Order Book
+    from external: $bright_blue      $IP:61000$orange"
     fi
 else 
     echo "${red}NOT RUNNING$orange"
