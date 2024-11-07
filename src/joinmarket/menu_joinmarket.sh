@@ -6,7 +6,7 @@ export oblogfile="$HOME/.joinmarket/orderbook.log"
 while true ; do 
 
 socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}RUNNING$orange\n    Access Order Book\n    from external: $bright_blue   $IP:61000$orange"
+echo "${green}RUNNING$orange\n    Access Order Book\n    from external: $bright_blue      $IP:61000$orange"
 else echo "${red}NOT RUNNING$orange"
 fi)
 
