@@ -27,9 +27,11 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "") return ;;
 start)
 start_socat joinmarket
+return
 ;;
 stop)
 stop_socat joinmarket
+return
 ;;
 *)
 invalid
