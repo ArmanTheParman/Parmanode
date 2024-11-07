@@ -42,7 +42,7 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     #is obwatcher running?
     export obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-        export orderbook="${green}RUNNING$orange \n    Access Order Book:$bright_blue   localhost:61000 or 127.0.0.1:61000$orange"
+        export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue   localhost:61000 or 127.0.0.1:61000$orange"
     else
         export orderbook="${red}NOT RUNNING$orange"
     fi
