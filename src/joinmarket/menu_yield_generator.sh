@@ -37,7 +37,7 @@ if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; t
     ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet"
     
     if docker exec joinmarket ps ax | grep obwatch | grep -q python ; then
-        if [[ -n $nick ]] ; then
+        if [[ -z $nick ]] ; then
             orderbooknn="\n\r    Orderbookd Nickname is:   ${bright_blue}refresh later to see$orange"
         else
             orderbooknn="\n\r    Orderbookd Nickname is:   $nick"
