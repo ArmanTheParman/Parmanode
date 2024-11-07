@@ -52,6 +52,10 @@ else
 sudo rm -rf $HOME/.joinmarket
 fi
 
+sudo gsed -i '/joinmarket-service/d' $macprefix/etc/tor/torrc >$dn 2>&1
+sudo gsed -i '/127.0.0.1:5222/d' $macprefix/etc/tor/torrc >$dn 2>&1
+sudo rm -rf /var/lib/tor/joinmarket-service >$dn 2>&1
+
 sudo gsed -i "/jm_be_carefull/d" $hm
 sudo gsed -i "/jm_menu_shhh/d" $hm
 
