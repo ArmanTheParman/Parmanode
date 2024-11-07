@@ -5,6 +5,12 @@ socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then
 echo "${green}RUNNING$orange (type 'stop' to stop)" 
 else echo "${red}NOT RUNNING$orange (type 'start' to start)"
 fi)
+
+if [[ $do_return == "true" ]] ; then #so the above variables are set when returning from the case options
+unset do_return
+return
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -27,11 +33,11 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "") return ;;
 start)
 start_socat joinmarket
-return
+do_return="true"
 ;;
 stop)
 stop_socat joinmarket
-return
+do_return="true"
 ;;
 *)
 invalid
