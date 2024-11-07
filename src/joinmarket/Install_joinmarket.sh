@@ -177,7 +177,7 @@ function build_joinmarket {
 
     cd $hp/joinmarket
     docker build -t joinmarket . && success_build="true"
-    enter_continue
+    enter_continue 10
 
     if [[ $success_build == "true" ]] ; then return 0 ; else return 1 ; fi
 }
