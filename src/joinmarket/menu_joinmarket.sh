@@ -58,7 +58,7 @@ if tmux ls | grep -q joinmarket_socat ; then
     from external: $bright_blue      $IP:61000$orange"
     fi
 else 
-    echo "${red}NOT RUNNING$orange"
+    socatstatus="${red}NOT RUNNING$orange"
 fi
 
 set_terminal_custom 51 ; echo -en "
