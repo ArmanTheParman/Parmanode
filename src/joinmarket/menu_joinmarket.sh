@@ -5,10 +5,6 @@ export logfile="$HOME/.joinmarket/yg_privacy.log"
 export oblogfile="$HOME/.joinmarket/orderbook.log"
 while true ; do 
 
-socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}RUNNING$orange\n    Access Order Book\n    from external: $bright_blue      $IP:61000$orange"
-else echo "${red}NOT RUNNING$orange"
-fi)
 
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 export jm_be_carefull="
@@ -51,6 +47,16 @@ else
      export joinmarket_running="${red}NOT RUNNING$orange"
      export yg="false"
      export orderbook="${red}NOT RUNNING${orange}"
+fi
+
+if tmux ls | grep -q joinmarket_socat ; then 
+    if echo $orderbook | grep -q NOT ; then
+        socatstatus="${green}RUNNING$orange"
+    else
+        socatstatus="${green}RUNNING$orange\n    Access Order Book\n    from external: $bright_blue      $IP:61000$orange"
+    fi
+else 
+    echo "${red}NOT RUNNING$orange"
 fi
 
 set_terminal_custom 51 ; echo -en "
