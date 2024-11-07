@@ -1,10 +1,11 @@
 function check_socat_working {
 
 while true ; do
-socatstatus=$(if tmux ls | grep -q joinmarket_socat ; then 
-echo "${green}RUNNING$orange (type 'stop' to stop)" 
-else echo "${red}NOT RUNNING$orange (type 'start' to start)"
-fi)
+if tmux ls | grep -q joinmarket_socat ; then 
+socatstatus="${green}RUNNING$orange (type 'stop' to stop)" 
+else 
+socatstatus="${red}NOT RUNNING$orange (type 'start' to start)"
+fi
 
 if [[ $do_return == "true" ]] ; then #so the above variables are set when returning from the case options
 unset do_return
