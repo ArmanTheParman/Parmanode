@@ -28,11 +28,11 @@ function install_joinmarket {
         return 1
     fi
 
-    if [[ $OS == Mac ]] && ! docker exec parmabox cat bitcoin-installed 2>/dev/null ; then
+    if [[ $OS == Mac ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>/dev/null ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
-        docker exec parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
+        docker exec -u root parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
         debug "check bitcoin conf fixed"
     fi
 
@@ -71,7 +71,6 @@ function install_joinmarket {
     done
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
-
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
@@ -213,6 +212,11 @@ if [[ $OS == Linux ]] ; then
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
                -v /run/tor:/run/tor \
+               -v $HOME/.tor:/root/.tor \
+               -v /var/lib/tor:/var/lib/tor \
+               -v /etc/tor:/etc/tor \
+               -v $HOME/.tornoticefile.log:/root/.tornoticefile.log \
+               -v $HOME/.torinfofile.log:/root/.torinfofile.log \
                --network="host" \
                --restart unless-stopped \
                joinmarket
