@@ -58,6 +58,8 @@ function install_joinmarket {
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
+debug "pause"
+
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
     parmashell_4_jm
@@ -152,7 +154,7 @@ function modify_joinmarket_cfg {
     docker exec joinmarket bash -c "sed -i '/rpc_wallet_file =/c\\rpc_wallet_file = jm_wallet' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_user =/c\\rpc_user = $rpcuser' $jmfile"
     docker exec joinmarket bash -c "sed -i '/rpc_password =/c\\rpc_password = $rpcpassword' $jmfile"
-    docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
+#    docker exec joinmarket bash -c "sed -i '/onion_serving_port =/c\\onion_serving_port = 8077' $jmfile"
 
     if [[ $OS == Mac ]] ; then
     docker exec joinmarket bash -c "sed -i '/rpc_host =/c\\rpc_host = host.docker.internal' $jmfile"
@@ -184,13 +186,14 @@ function build_joinmarket {
 
 function run_joinmarket_docker {
 
+#-v /var/lib/tor/joinmarket-service:/var/lib/tor/joinmarket-service \
+
 if [[ $OS == Linux ]] ; then
 
     docker run -d \
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
                -v /run/tor:/run/tor \
-               -v /var/lib/tor/joinmarket-service:/var/lib/tor/joinmarket-service \
                --network="host" \
                --restart unless-stopped \
                joinmarket
