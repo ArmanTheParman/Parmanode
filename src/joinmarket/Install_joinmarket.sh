@@ -24,7 +24,7 @@ function install_joinmarket {
 
     if [[ $bitcoinrunning == "false" ]] ; then
         announce "Bitcoin needs to be running. Please start it. Aborting."
-        start_bitcoin
+        return 1
     fi
 
      
