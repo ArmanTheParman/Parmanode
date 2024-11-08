@@ -22,12 +22,11 @@ function install_joinmarket {
        done
     fi
 
+    isbitcoinrunning
     if [[ $bitcoinrunning == "false" ]] ; then
         announce "Bitcoin needs to be running. Please start it. Aborting."
         return 1
     fi
-
-     
 
     if [[ $OS == Mac ]] && ! docker exec parmabox cat bitcoin-installed 2>/dev/null ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
@@ -57,7 +56,7 @@ function install_joinmarket {
 
     build_joinmarket || { enter_continue "aborting" ; return 1 ; }
 
-    run_joinmarket_docker || { enter_continue "aborting" ; return 1 ; }
+    run_joinmarket_docker || { if [[ $silentexit == "true" ]] ; then return 1 ; fi ; enter_continue "aborting" ; return 1 ; }
 
     if [[ $OS == Linux ]] ; then 
         install_bitcoin_docker silent joinmarket || return 1
@@ -124,14 +123,18 @@ function make_joinmarket_wallet {
 
     while true ; do
         if [[ $OS == Mac ]] ; then
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' && break
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue && break
-        elif [[ $OS == Linux ]] ; then 
+            bcdocker="/home/parman/.bitcoin/bitcoin.conf"
+            rpcconnect="rpcconnect=host.docker.internal"
+            docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >/dev/null"
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue \
+                                               && announce "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
+        elif [[ $os == linux ]] ; then 
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue && break
         fi
         echo -e "$red
-        Sometimes waiting for bitcoin to laod up is needed.
+        sometimes waiting for bitcoin to laod up is needed.
         Trying again every 10 seconds...$orange
         (q to quit)
         "
