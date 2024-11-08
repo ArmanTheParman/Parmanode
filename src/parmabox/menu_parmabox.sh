@@ -55,9 +55,9 @@ docker exec -it -u root parmabox /bin/bash ;;
 pm) 
 docker exec -it -u parman parmabox /bin/bash ;;
 s) 
-docker stop parmabox ;;
+stop_parmabox ;;
 rs) 
-docker start parmabox ;;
+start_parmabox ;;
 u) 
 docker exec -it -u root parmabox bash -c "apt update -y && apt -y upgrade" 
 echo "Update Parmanode..."
@@ -74,3 +74,10 @@ invalid
 esac
 done
 } 
+
+function start_parmabox {
+docker start parmabox >$dn 2>&1
+}
+function stop_parmabox {
+docker stop parmabox >$dn 2>&1
+}

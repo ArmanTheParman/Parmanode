@@ -14,6 +14,21 @@ function install_joinmarket {
     JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
         install_parmabox silent
     fi
+
+    if ! docker ps | grep -q parmabox ; then
+       while true ; do
+       yesorno "ParmaBox needs to be running. Let Parmanode start it?" && docker start parmabox && break
+       return 1
+       done
+    fi
+
+    if [[ $bitcoinrunning == "false" ]] ; then
+        announce "Bitcoin needs to be running. Please start it. Aborting."
+        start_bitcoin
+    fi
+
+     
+
     if [[ $OS == Mac ]] && ! docker exec parmabox cat bitcoin-installed 2>/dev/null ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
@@ -85,9 +100,10 @@ function make_joinmarket_wallet {
     isbitcoinrunning
 
     if [[ $bitcoinrunning == "false" ]] ; then
+        announce "Bitcoin needs to be running. Please start it. Aborting."
         start_bitcoin
     else
-        if [[ $dontrestart == "false" ]] ; then restart_bitcoin  ; fi
+        if [[ $dontrestart == "false" ]] ; then announce "Parmanode needs to restart Bitcoin." ; restart_bitcoin  ; fi
     fi
 
     if [[ $bitcoinrunning != "true" ]] ; then
@@ -208,7 +224,7 @@ elif [[ $OS == Mac ]] ; then
                joinmarket
     return 0
 fi
-
+debug "after run"
     start_socat joinmarket
     internal_docker_socat_jm_mac 
 
