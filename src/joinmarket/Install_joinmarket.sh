@@ -58,7 +58,6 @@ function install_joinmarket {
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
-debug "pause"
 
     modify_joinmarket_cfg || { enter_continue "aborting" ; return 1 ; }
 
