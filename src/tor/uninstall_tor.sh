@@ -63,6 +63,9 @@ esac
 done
 fi
 
+sudo rm $HOME/.tornoticefile.log >$dn 2>&1
+sudo rm $HOME/.torinfofile.log >$dn 2>&1
+
 installed_config_remove "tor-end"
 success "Tor" "being uninstalled"
 return 0

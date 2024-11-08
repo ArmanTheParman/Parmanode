@@ -1,5 +1,4 @@
 function patch_7 {
-
 #remove from temppatch
 gsed_symlink ; add_rpcbind
 
@@ -20,5 +19,15 @@ sudo apt-get update -y && sudo apt-get install bc
 fi
 
 #torlogging
-echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc
+if [[ -e $torrc ]] && ! grep -q "tornoticefile.log" $torrc ; then
+echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc >$dn 2>&1
+fi
+if [[ -e $torrc ]] && ! grep -q "torinfofile.log" $torrc ; then
+echo "Log notice file $HOME/.torinfofile.log" | sudo tee -a $torrc >$dn 2>&1
+fi
+
+#use %include in torrc for hidden services later
+
+parmanode_conf_remove "patch="
+parmanode_conf_add "patch=7"
 }
