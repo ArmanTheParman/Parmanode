@@ -18,4 +18,7 @@ if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
 echo "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange"
 sudo apt-get update -y && sudo apt-get install bc
 fi
+
+#torlogging
+echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc
 }
