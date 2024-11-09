@@ -27,7 +27,7 @@ read rpcuser ; echo "
 
     The username$cyan $rpcuer ${orange}has been set
 
-    Please enter an$cyan RPC password:$orange    
+    Please enter an$cyan RPC password:$orange (keystrokes won't be shown)
     
     (Do not use the characters: # \" or ' otherwise problems may arise.)
 
@@ -36,14 +36,14 @@ read rpcuser ; echo "
 PASSWORD: 
     " 
 
-    read rpcpassword
+    read -s rpcpassword
     echo -e "
          Please repeat the$cyan password:$orange
 
 PASSWORD: 
     "
 
-    read rpcpassword2
+    read -s rpcpassword2
 
     if [[ $rpcpassword != $rpcpassword2 ]] ; then
             echo "Passwords do not match. Try again.

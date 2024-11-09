@@ -196,8 +196,8 @@ function build_joinmarket {
     fi
 
     cd $hp/joinmarket
-    docker build -t joinmarket . && success_build="true"
-    enter_continue 10
+    docker build -t joinmarket $nocache . && success_build="true"
+    enter_continue 
 
     if [[ $success_build == "true" ]] ; then return 0 ; else return 1 ; fi
 }

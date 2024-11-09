@@ -15,13 +15,13 @@ $orange
     LND starts.
 
     $pink
-        Type password$orange and hit $cyan<enter> $orange
+        Type password$orange and hit $cyan<enter> $orange (keystrokes won't be shown)
 
         Or,$cyan <enter>$orange alone to decline auto-unlock feature.
 
 ########################################################################################
 "
-read lndpassword  ; set_terminal
+read -s lndpassword  ; set_terminal
 case $lndpassword in
 q|Q) exit ;; p|P) return 1 ;;  m|M) back2main ;;
 "")
@@ -37,7 +37,7 @@ $orange
 ########################################################################################
 
 "
-read lndpassword2
+read -s lndpassword2
 set_terminal
 #delete file, create file, later populate file.
 if grep -q "lnd" < $ic >/dev/null 2>&1 ; then

@@ -15,11 +15,11 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Please enter a MariaDB password
+    Please enter a$cyan MariaDB password$orange (keystrokes won't be shown)
 
 ########################################################################################
 "
-read MARIADB_PASS
+read -s MARIADB_PASS
 set_terminal
 echo -e "
 ########################################################################################
@@ -28,7 +28,7 @@ echo -e "
 
 ########################################################################################
 "
-read repeat ; set_terminal
+read -s repeat ; set_terminal
 if [[ $repeat == $MARIADB_PASS ]] ; then break ; else
 set_terminal
 echo -e "

@@ -9,24 +9,15 @@
     # errormessage
 
 function enter_continue {
-if [[ $1 =~ ^[0-9].*$ ]] ; then
+echo -e "$@"
+unset enter_cont
+if [[ $installer == parmanodl ]] ; then return 0 ; fi
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
 
-    echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
-    read -t -$1 enter_cont
-
+if [[ $silentecho == "true" ]] ; then
+read -s enter_cont
 else
-
-    echo -e "$@"
-    unset enter_cont
-    if [[ $installer == parmanodl ]] ; then return 0 ; fi
-    echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
-
-    if [[ $silentecho == "true" ]] ; then
-    read -s enter_cont
-    else
-    read enter_cont 
-    fi
-
+read enter_cont 
 fi
 
 export enter_cont
