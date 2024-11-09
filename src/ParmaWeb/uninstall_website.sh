@@ -20,39 +20,39 @@ read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 website)
-if ! sudo test -d /var/www/website ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website"
 ;;
 website2)
-if ! sudo test -d /var/www/website2 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website2 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website2"
 ;;
 website3)
-if ! sudo test -d /var/www/website3 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website3 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website3"
 ;;
 website4)
-if ! sudo test -d /var/www/website4 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website4 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website4"
 ;;
 website5)
-if ! sudo test -d /var/www/website5 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website5 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website5"
 ;;
 website6)
-if ! sudo test -d /var/www/website6 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website6 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website6"
 ;;
 website7)
-if ! sudo test -d /var/www/website7 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website7 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website7"
 ;;
 website8)
-if ! sudo test -d /var/www/website8 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website8 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website8"
 ;;
 website9)
-if ! sudo test -d /var/www/website9 ; then announce "Invalid entry, directory does not exist" ; return 1 ; fi
+if ! sudo test -d /var/www/website9 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website9"
 ;;
 *)
