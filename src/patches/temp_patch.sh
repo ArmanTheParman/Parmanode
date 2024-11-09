@@ -2,7 +2,6 @@ function temp_patch {
 
 cleanup_parmanode_service
 add_rpcbind
-gsed_symlink
 truncatedebuglog
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then

@@ -51,6 +51,9 @@ test_standard_install
 
 set_terminal
 
+#make sure gsed words early.
+gsed_symlink 
+
 #drive structure
 make_home_parmanode 
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
