@@ -5,29 +5,31 @@ grep "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null || { announce "Mus
 
 choose_and_prepare_drive "Fulcrum" || return 1
 
-format_ext_drive "Fulcrum" || return 1 ; clear
+#if drive already prepared and mounted, skip format function
+if [[ $drive_fulcrum == "external" ]] && [[ ! -d $pd/fulcrum_db ]] ; then
+format_ext_drive "Fulcrum" || return 1 
+fi
 
-move_old_fulcrum_db 
-
+installed_config_add "fulcrum-start"
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
 make_fulcrum_config || return 1 ; log "fulcrum" "make config fucntion exited." 
 
-bitcoin_conf_add 'zmqpubhashblock=tcp://0.0.0.0:8433'
+echo 'zmqpubhashblock=tcp://*:8433' | sudo tee -a $bc >$dn 2>&1
 
-download_fulcrum || return 1 ; log "fulcrum" "Download exited."  ; clear
+download_fulcrum || return 1 ; clear
 
-verify_fulcrum || return 1 ; log "fulcrum" "gpg exited." 
+verify_fulcrum || return 1 
 
-extract_fulcrum || return 1 ; log "fulcrum" "Download exited." 
+extract_fulcrum || return 1 
 
-fulcrum_install_files || return 1 ; log "fulcrum" "fulcrum_install_files failed."
+fulcrum_install_files || return 1 
 
-make_ssl_certificates || return 1 ; log "fulcrum" "make_ssl exited." 
+make_ssl_certificates fulcrum || return 1 
 
 make_fulcrum_service_file
 
-installed_config_add "fulcrum-end" && log "fulcrum" "install finished"
+installed_config_add "fulcrum-end" 
 
 start_fulcrum_linux
 

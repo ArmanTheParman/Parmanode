@@ -4,7 +4,7 @@ source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
 
-        docker_volume_mount="$parmanode_drive/fulcrum_db"
+        docker_volume_mount="$pd/fulcrum_db"
 
         while true ; do
                 if ! mount | grep parmanode >/dev/null 2>&1 ; then

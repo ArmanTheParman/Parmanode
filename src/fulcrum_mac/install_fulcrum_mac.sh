@@ -1,5 +1,6 @@
 function install_fulcrum_docker {
-if [[ $OS == Linux ]] ; then announce "Docker version is not for Fulcrum. Aborting." ; return 1 ; fi
+if [[ $OS == Linux ]] ; then announce "Docker version is not for Linux. Aborting." ; return 1 ; fi
+export fulcrumdocker="true"
 sned_sats
 set_terminal
 grep -q "bitcoin-end" $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
@@ -19,26 +20,23 @@ docker rm fulcrum >/dev/null 2>&1
 
 choose_and_prepare_drive "Fulcrum" || return 1 #gets drive_fulcrum variable
 
-format_ext_drive "Fulcrum" || return 1
+#if drive already prepared and mounted, skip format function
+if [[ $drive_fulcrum == "external" ]] && [[ ! -d $pd/fulcrum_db ]] ; then
+format_ext_drive "Fulcrum" || return 1 
+fi
 
+installed_config_add "fulcrum-start"
 fulcrum_make_directories || return 1 ; log "fulcrum" "make directories function exited."
 
-make_ssl_certificates
+echo 'zmqpubhashblock=tcp://*:8433' | sudo tee -a $bc >$dn 2>&1
+
+make_ssl_certificates fulcrum || return 1
 
 build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
 
 run_fulcrum_docker || { announce "Docker run failed. Aborting." ; return 1 ; }
 
-bitcoin_conf_add 'zmqpubhashblock=tcp://0.0.0.0:8433'
-
-check_rpc_authentication_exists || { announce "Failed to set rpc authentication details from bitcoin.conf" ; return 1 ; }
-
-add_IP_fulcrum_config_mac  
-
 installed_config_add "fulcrum-end"
-
-#start docker if it isn't running 
-if ! docker ps >/dev/null 2>&1 ; then start_docker_mac ; fi
 
 start_fulcrum_docker
 
