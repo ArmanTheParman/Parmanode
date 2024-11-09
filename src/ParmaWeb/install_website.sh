@@ -20,7 +20,8 @@ website_update_system # runs apt-get
 
 website_check_ports || return 1 #if port 80 or 443 in use and not by nginx, then abort.
 
-website_dependencies && installed_conf_add "website-start" 
+website_dependencies 
+installed_conf_add "website-start" 
 debug "after website dependencies" 
 
 make_website_directories 
