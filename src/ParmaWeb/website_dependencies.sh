@@ -1,6 +1,7 @@
 function website_dependencies {
 if ! which unzip >/dev/null 2>&1 ; then sudo apt install unzip -y ; fi
 
+install_debconfutils #do this first for php install
 install_nginx
 install_PHP 
 install_expect
@@ -20,4 +21,9 @@ sudo apt-get -y --fix-broken --no-install-recommends install expect
 function install_imagick {
 # Needed othewise wordpress can't crop images, eg when making icons
 sudo apt-get -y --fix-broken --no-install-recommends install php-imagick imagemagick
+}
+
+function install_debconfutils {
+sudo apt-get install debconf-utils -y 
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean false" | sudo debconf-set-selections
 }

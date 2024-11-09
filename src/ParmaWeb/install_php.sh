@@ -1,5 +1,8 @@
 function install_PHP {
-set_terminal ; echo -e "
+
+if ! sudo debconf-show phpmyadmin | grep "phpmyadmin/dbconfig-install" ; then
+
+    set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode will install phpMyAdmin, and some other php tools. You might be asked
@@ -21,7 +24,10 @@ $orange
 
 ########################################################################################
 "
-enter_continue ; set_terminal
+enter_continue 
+set_terminal
+fi
+
 sudo apt-get -y --fix-broken --no-install-recommends install php-cli phpmyadmin php-fpm php-mysql php-mbstring php-zip php-gd php-json \
 php-curl php-xml php-intl php-bcmath php-imagick || debug "failed apt-get install php command"
 }
