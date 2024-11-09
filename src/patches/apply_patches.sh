@@ -56,6 +56,8 @@ fi
 
 function suggest_tor {
 
+if [[ $btcdockerchoice == "yes" ]] ; then return 0 ; fi
+
 if which tor >$dn 2>&1 ; then return 0 ; fi
 if grep -q "no_tor=1" < $hm ; then return 0 ; fi
 
