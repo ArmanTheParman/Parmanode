@@ -1,7 +1,7 @@
 function check_variables {
-echo -en "    ${green}Checking environment variables...
+echo -en "    ${green}Checking environment variables...$orange
 
-        \r    Hit$cyan<enter>$orange for all, or type a specific search."
+        \r    Hit$cyan <enter>$orange for all, or type a specific search."
 
 read choice
 
