@@ -50,7 +50,7 @@ if grep -q "btccombo" < $ic ; then
 return 0
 fi
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == Mac ]] ; then #if docker container, then previous btccombo check takes care of it
     if pgrep Bitcoin-Q >/dev/null ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
     export bitcoinrunning="true"

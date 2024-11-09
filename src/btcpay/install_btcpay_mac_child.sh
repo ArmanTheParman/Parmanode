@@ -32,7 +32,7 @@ start_btcpay_indocker || return 1
 
 docker exec -itu root btcpay bash -c "apt-get install tor -y"
 
-start_btcpay_all_programs 
+#start_btcpay_all_programs 
 
 installed_config_add "btcpay-end"
 installed_config_add "bitcoin-end"
