@@ -15,6 +15,7 @@ set_terminal_high ; echo -e "
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
 
+               CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 $green
                   (start) $orange         Start Sparrow 
@@ -111,6 +112,7 @@ done
 
 function sparrow_connection_menu {
 while true ; do
+source $HOME/.parmanode/sparrow.connection >/dev/null
 set_terminal
 echo -e "
 ########################################################################################
@@ -120,7 +122,7 @@ $cyan
 ########################################################################################
 
                           
-               CURRENT DETECTED SPARROW CONNECTION TYPE: $cyan$connection$orange
+               CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
 $cyan                (d)  $orange     Bitcoin Core via tcp (default)
