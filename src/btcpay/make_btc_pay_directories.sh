@@ -13,7 +13,7 @@ set_terminal ; echo -e "
            
             d)    Delete it and start fresh
 
-            m)    Move it to$cyan $HOME/.btcpayserver_backup
+            m)    Move it to$cyan $HOME/.btcpayserver_backup$orange
 
             l)    Leave it (the config file will be overwritten)
 
