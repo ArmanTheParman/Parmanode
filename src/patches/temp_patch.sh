@@ -42,7 +42,6 @@ sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
     fi
 fi
-debug "test2"
 #remove June 2025
 make_lnd_service_tor
 #remove June 2025 - make sure all electrs docker has socat installed
@@ -63,7 +62,6 @@ if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
 sudo gsed -i "/electrs-start/d" $ic 
 parmanode_conf_add "electrs2-start"
 fi
-debug "test 3"
 #remove in 2025
 if [[ ${message_jq} != 1 ]] && grep -q "electrs" < $ic && ! which jq > /dev/null ; then
 while true ; do
