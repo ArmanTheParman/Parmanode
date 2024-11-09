@@ -30,11 +30,15 @@ set_terminal ; echo -en "$pink
     This is important to make sure the drive is detected in the list of drives before 
     and after the connection.
    $cyan 
-    Hit <enter> only once this is done.
+    Hit <enter> only once this is done. (q to quit)
 $pink
 ########################################################################################
 $orange"
-read
+read choice
+case $choice in
+q|Q) exit ;;
+esac
+
 fi
 
 while true ; do

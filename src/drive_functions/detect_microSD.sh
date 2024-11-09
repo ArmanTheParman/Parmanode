@@ -21,11 +21,15 @@ set_terminal ; echo -e "$pink
     Please make sure the microSD card for $name is ${cyan}DISCONNECTED.$pink Do not 
     disconnect any of your other drives at this time.
     
-    Hit <enter> only once this is done.
+    Hit <enter> only once this is done. (q to quit)
 
 ########################################################################################
 $orange"
-read
+read choice
+
+case $choice in 
+q|Q) exit ;;
+esac
 
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >/dev/null

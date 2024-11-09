@@ -1,4 +1,5 @@
 function ParmanodL_docker_run {
+please_wait
 # Remove old ParmanodL containers in case of repeated installation
 
     if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1 ; docker rm ParmanodL >/dev/null 2>&1 ; fi
