@@ -1,6 +1,6 @@
 function patch_7 {
 #remove from temppatch
-gsed_symlink ; add_rpcbind
+add_rpcbind
 
 #log file location has changed, delete the old one.
 if grep -q "electrsdkr" $ic ; then
