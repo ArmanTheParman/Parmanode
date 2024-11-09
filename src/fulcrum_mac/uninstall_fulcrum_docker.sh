@@ -24,7 +24,6 @@ if ! grep -q "fulcrum" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then
     return 1 
     fi
 
-log "fulcrum" "uninstall commenced"
 
 if [[ $drive_fulcrum == "external" ]] ; then
     mount_drive || { set_terminal ; announce "drive needs to be mounted to remove fulcrum_db from drive. Proceed with caution." ; \
@@ -40,19 +39,11 @@ if [[ $drive_fulcrum == "internal" ]] ; then
 
 sudo rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1
 
-bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
-stop_and_remove_docker_containers_and_images_fulcrum
-parmanode_conf_remove "drive_fulcrum"
-installed_config_remove "fulcrum"
-log "fulcrum" "uninstall completed." 
-
-success "Fulcrum" "being uninstalled"
-}
-
-function stop_and_remove_docker_containers_and_images_fulcrum {
-
 docker stop fulcrum >/dev/null 2>&1 
 docker rm fulcrum >/dev/null 2>&1 
 docker rmi fulcrum >/dev/null 2>&1 
+parmanode_conf_remove "drive_fulcrum"
+installed_config_remove "fulcrum"
 
+success "Fulcrum" "being uninstalled"
 }

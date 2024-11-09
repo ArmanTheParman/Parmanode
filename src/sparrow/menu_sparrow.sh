@@ -15,6 +15,7 @@ set_terminal_high ; echo -e "
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
 
+
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 $green
@@ -141,6 +142,7 @@ $cyan                (etor) $orange   electrs via Tor (port 7004)
 
 $cyan                (rtor) $orange   To a remote Electrum/Fulcrum server via Tor (eg a friend's)
 
+
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
@@ -149,33 +151,40 @@ q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 d|D)
 sparrow_core
+return 0
 ;;
 
 ftor)
 no_mac || return 1
 sparrow_fulcrumtor
+return 0
 ;;
 
 etor)
 no_mac || return 1
 sparrow_electrstor
+return 0
 ;;
 
 fs)
 no_mac || return 1
 sparrow_fulcrumssl
+return 0
 ;;
 
 ft)
 sparrow_fulcrumtcp
+return 0
 ;;
 
 rtor|Rtor|RTOR)
 sparrow_remote
+return 0
 ;;
 
 et)
 sparrow_electrs
+return 0
 ;;
 
 *)
