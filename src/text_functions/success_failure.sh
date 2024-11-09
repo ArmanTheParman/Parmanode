@@ -1,4 +1,5 @@
 function success {
+debug "pre-success menu"
 if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" ; fi
 set_terminal ; echo -e "
 ########################################################################################
