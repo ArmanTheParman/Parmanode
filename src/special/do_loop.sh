@@ -56,7 +56,6 @@ make_home_parmanode
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
 parmanode_conf_add # With no argument after the function, this will create a 
                    # parmanode.conf file if it doesnt' exist.
-debug "dl 3"
 if [[ ! -e $ic ]] ; then touch $ic ; fi
 
 # Load config variables
@@ -76,7 +75,6 @@ fi
 
 #add to run count
 rp_counter
-debug "dl 4"
 
 test_internet_connected || exit
 ########################################################################################
@@ -87,7 +85,6 @@ set_terminal # custom function for screen size and colour.
 
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
-debug "dl 4"
 
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
@@ -98,7 +95,6 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
 	cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull && needs_restart="true" >/dev/null 2>&1
 
-debug "dl 5"
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
@@ -110,7 +106,6 @@ announce "An update to Parmanode was made to the latest version. Please restart 
 exit
 fi
 fi #end btcpayinstallsbitcoin
-debug "dl 6"
 #Health check
 parmanode1_fix
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
