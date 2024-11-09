@@ -1,5 +1,6 @@
 function uninstall_website {
 
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -22,38 +23,47 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 website)
 if ! sudo test -d /var/www/website ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website"
+break
 ;;
 website2)
 if ! sudo test -d /var/www/website2 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website2"
+break
 ;;
 website3)
 if ! sudo test -d /var/www/website3 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website3"
+break
 ;;
 website4)
 if ! sudo test -d /var/www/website4 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website4"
+break
 ;;
 website5)
 if ! sudo test -d /var/www/website5 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website5"
+break
 ;;
 website6)
 if ! sudo test -d /var/www/website6 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website6"
+break
 ;;
 website7)
 if ! sudo test -d /var/www/website7 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website7"
+break
 ;;
 website8)
 if ! sudo test -d /var/www/website8 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website8"
+break
 ;;
 website9)
 if ! sudo test -d /var/www/website9 ; then announce "Invalid entry, directory does not exist" ; continue ; fi
 export website="website9"
+break
 ;;
 *)
 invalid
