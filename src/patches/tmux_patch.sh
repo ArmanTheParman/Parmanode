@@ -3,6 +3,7 @@ function tmux_patch {
 if grep -q "tmux" < $hm ; then return ; fi
 if which tmux >/dev/null 2>&1 ; then return 0 ; fi
 
+if [[ $btcdockerchoice != "yes" ]] ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -24,6 +25,10 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+else
+choice=y
+fi
+
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n)
