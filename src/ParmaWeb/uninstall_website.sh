@@ -93,7 +93,9 @@ break
 esac
 done
 
+announce "About to delete the database $website"
 sudo mysql -u root -p -e "DROP DATABASE $website;"
+enter_continue
 
 installed_conf_remove "website-end"
 
