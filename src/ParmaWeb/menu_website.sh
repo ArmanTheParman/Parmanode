@@ -60,8 +60,8 @@ set_terminal_custom 45 ; echo -ne "
 $tor_menu                      
 
         To initialise:            http://$domain_name/myphpadmin
-                                  Database's name: website (or website1, website2 etc)
-                                  Database username: parmanode
+        Database's name:          website (or website1, website2 etc)
+        Database username:        parmanode
         Wordpress login:          http://$domain_name/wp-admin
         Info Page:                http://$domain_name/info.php
 
