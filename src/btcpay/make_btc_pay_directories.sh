@@ -59,7 +59,7 @@ set_terminal ; echo -e "
 
             d)    Delete it and start fresh
 
-            m)    Move it to$cyan $HOME/.nbxplorer_backup
+            m)    Move it to$cyan $HOME/.nbxplorer_backup$orange
 
             l)    Leave it (the config file will be overwritten)
 
@@ -73,6 +73,7 @@ q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
 
 d)
     sudo rm -rf $HOME/.nbxplorer 
+    break
     ;;
     
 m)
