@@ -69,6 +69,7 @@ break
 invalid
 ;;
 esac
+done
 
 while true ; do
 set_terminal ; echo -e "
