@@ -31,7 +31,7 @@ set_terminal ; echo -e "
 "
 read -s password2 ; set_terminal
 if [[ $password != $password2 ]] ; then
-echo -e "Passwords don't match. Hit$cyan <enter>$orange to try again."
+enter_continue "Passwords don't match. Hit$cyan <enter>$orange to try again."
 continue
 fi    
 break
