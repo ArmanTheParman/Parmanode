@@ -3,8 +3,8 @@ function tmux_patch {
 if grep -q "tmux" < $hm ; then return ; fi
 if which tmux >/dev/null 2>&1 ; then return 0 ; fi
 
-if [[ $btcdockerchoice != "yes" ]] ; then
 while true ; do
+if [[ $btcdockerchoice != "yes" ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
