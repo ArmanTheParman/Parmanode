@@ -39,6 +39,8 @@ if [[ -n $domain_name ]] ; then
 domain_name_text="
         Domain Name:             $cyan $domain_name$orange
 "
+else
+domain_name=$domain
 fi
 
 if [[ -n $ONION_ADDR_WEBSITE ]] ; then
