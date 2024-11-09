@@ -27,6 +27,7 @@ q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
 
 d)
     sudo rm -rf $HOME/.btcpayserver 
+    break
     ;;
     
 m)
