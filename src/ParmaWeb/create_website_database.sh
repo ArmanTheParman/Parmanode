@@ -25,7 +25,12 @@ set_terminal ; echo -e "
 read -s password ; set_terminal ; if [[ -z $password ]] ; then announce "Password can not be empty" ; continue ; fi
 set_terminal ; echo -e "
 ########################################################################################
+
     Please repeat the$cyan password${orange}.
+    
+    After this you will be asked to enter the password one more time, not to set it 
+    but USE it.
+
 ########################################################################################
 
 "
