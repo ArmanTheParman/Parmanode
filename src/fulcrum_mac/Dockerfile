@@ -3,7 +3,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/New_York
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends gnupg sudo curl git vim
+RUN apt-get install -y --no-install-recommends gnupg sudo curl git vim ca-certificates
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 

@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update -y 
-RUN apt-get install -y vim nano ssh sudo net-tools curl wget git procps gnupg tree htop tmux --fix-missing
+RUN apt-get install -y vim nano ssh sudo net-tools curl wget git procps gnupg tree htop tmux ca-certificates --fix-missing
 RUN apt-get install -y python3 python3-cryptography python3-setuptools python3-pip  --fix-missing
 RUN apt-get install -y python3-pyqt5 libsecp256k1-dev  --fix-missing
 RUN groupadd -r parman && useradd -m -g parman parman 
