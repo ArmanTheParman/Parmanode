@@ -5,13 +5,13 @@ value="$2"
 
 hide_messages_remove $label
 
-echo "message_$label=$value" | tee -a $HOME/.parmanode/hide_messages.conf
+echo "message_$label=$value" | tee -a $HOME/.parmanode/hide_messages.conf >$dn
 return 0
 }
 
 function hide_messages_remove {
 label=$1
-gsed -i "/message_$label=/d" $hm
+gsed -i "/message_$label=/d" $hm >$dn
 return 0
 }
 
