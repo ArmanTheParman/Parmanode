@@ -37,6 +37,12 @@ echo -e "#$cyan                            (fulcrum)$orange          Fulcrum Ser
 elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then fulcrummenu=1                                
 echo -e "#$cyan                            (fulcrum)$orange          Fulcrum $red$blinkon(partial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
+if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1 
+echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum Server                         #
+#                                                                                      #"
+elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1                                
+echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum $red$blinkon(partial)$blinkoff$orange                      #
+#                                                                                      #" ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
 echo -e "#$cyan                            (docker)$orange           Docker                                 #
 #                                                                                      #"
@@ -316,6 +322,13 @@ fi
 
 fulcrum|Fulcrum|FULCRUM)
 if [[ $fulcrummenu == 1 ]] ; then
+uninstall_fulcrum
+return 0
+fi
+;;
+
+fulcrumd|Fulcrumd|FULCRUMD)
+if [[ $fulcrumdkrmenu == 1 ]] ; then
 uninstall_fulcrum
 return 0
 fi
