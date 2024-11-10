@@ -9,7 +9,7 @@ if [[ -z $rpcuser ]] ; then #from parmanode.conf
     announce "Please set a username and password in Bitcoin conf. You can do that from the
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
 fi
-docker 
+
 # set datadir variable
     if [[ $drive_fulcrum == "external" ]] ; then #works Linux and Mac
     datadir="$parmanode_drive/fulcrum_db" 
@@ -23,9 +23,9 @@ if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 
 if [[ $fulcrumdocker == "true" ]] ; then local bitcoinIP="host.docker.internal" ; else local bitcoinIP="127.0.0.1" ; fi
 
-
+#datadir is internal to the container. Then mounted in the run command. Then symlinks to external drive.
 echo "fast-sync = $fastsync 
-datadir = $datadir
+datadir = /home/parman/fulcrum_db
 bitcoind = $bitcoinIP:8332
 ssl = 0.0.0.0:50002
 tcp = 0.0.0.0:50001
