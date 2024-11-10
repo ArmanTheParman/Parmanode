@@ -1,6 +1,6 @@
 function check_disk_space {
 space_left=$(df | grep -E '\/$' | awk '{print $4}' | tr -d \r)
-if [[ $space_left -lt 5000000 ]] ; then #5 Gig
+if [[ $space_left -gt 5000000 ]] ; then return 0 ; fi
 
 while true ; do
 set_terminal ; echo -e "
@@ -60,5 +60,4 @@ $cyan
 ########################################################################################
 "
 enter_continue
-fi
 }
