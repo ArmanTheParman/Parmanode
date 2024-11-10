@@ -1,6 +1,9 @@
 FROM debian 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/New_York
+
 RUN apt-get update
-RUN apt-get install -y gnupg sudo procps curl git
+RUN apt-get install -y --no-install-recommends gnupg sudo curl git vim
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -39,7 +42,7 @@ RUN mv /home/parman/parmanode/fulcrum/Fu*/* /home/parman/parmanode/fulcrum/ && r
 
 #make fulcrum config file
 USER parman
-WORKDIR /home/parman/parmanode/fulcrum/config/
+WORKDIR /home/parman/parmanode/fulcrum
 # RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 # && echo "bitcoind = host.docker.internal:8332" >> fulcrum.conf \
 # && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \

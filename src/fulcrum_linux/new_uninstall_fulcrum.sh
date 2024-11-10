@@ -30,11 +30,9 @@ if grep -q "fulcrumdkr" $ic >$dn 2>&1 ; then
 docker stop fulcrum >/dev/null 2>&1 
 docker rm fulcrum >/dev/null 2>&1 
 docker rmi fulcrum >/dev/null 2>&1 
-fulcrumdocker="true"
 else
 sudo rm /usr/local/bin/Fulcrum* 2>$dn
 sudo rm /etc/systemd/system/fulcrum.service 2>$dn
-fulcrumdocker="false"
 fi
 
 sudo rm -rf $hp/fulcrum >$dn 2>&1
@@ -46,6 +44,5 @@ sudo gsed -i '/zmqpubhashblock=tcp.+8433/d' $bc >$dn 2>&1
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
 
-unset fulcrumdocker
 success "Fulcrum" "being uninstalled"
 }
