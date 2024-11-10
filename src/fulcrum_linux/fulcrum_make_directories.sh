@@ -4,7 +4,7 @@ mkdir $HOME/.fulcrum >$dn 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
 
-    if ! mount | grep parmanode ; then mount_drive ; fi
+    if ! mount | grep parmanode >$dn ; then mount_drive ; fi
 
     if [[ ! -d $pd/fulcrum_db ]] ; then mkdir -p $pd/fulcrum_db >$dn 2>&1 ; fi
 

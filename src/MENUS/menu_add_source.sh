@@ -49,7 +49,7 @@ elif grep -q "fulcrumdkr-start" < $HOME/.parmanode/installed.conf ; then
 fulcrumdkr_p="#                                      Fulcrum (Docker)                                #"
 else
    #not installed
-fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (an Electrum Server in Docker)       #"
+fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (an Electrum Server in Docker)      #"
 fi
 
 #BTCPAY

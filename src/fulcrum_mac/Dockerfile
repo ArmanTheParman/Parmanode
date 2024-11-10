@@ -1,6 +1,6 @@
 FROM debian 
 RUN apt-get update
-RUN apt-get install -y wget gnupg sudo procps curl git
+RUN apt-get install -y gnupg sudo procps curl git
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
@@ -16,9 +16,9 @@ RUN mkdir -p /home/parman/Downloads
 
 #Download Fulcrum:
 WORKDIR /home/parman/Downloads
-RUN wget https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz && \
-wget https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.sha256sum && \
-wget https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.asc
+RUN curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz && \
+curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.sha256sum && \
+curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.asc
 
 RUN sha256sum --ignore-missing --check Fulcrum-1.11.1-x86_64-linux.tar.gz.sha256sum
 
