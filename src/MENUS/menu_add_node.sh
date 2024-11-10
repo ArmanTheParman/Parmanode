@@ -4,7 +4,6 @@ set_terminal
 while true
 do
 menu_add_source
-
 ########################################################################################
 ########################################################################################
 if [[ $OS == Mac || $computer_type == Pi ]] ; then unset btcrpcexplorer_n ; fi
@@ -41,9 +40,9 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
-if [[ -n $electrs2_i ]]         ; then echo   -e "$electrs2_i"; fi
+if [[ -n $electrs2_i ]]        ; then echo   -e "$electrs2_i"; fi
 if [[ -n $electrsdkr_i ]]      ; then echo  -e "$electrsdkr_i"; fi
-if [[ -n $electrsdkr2_i ]]      ; then echo   -e "$electrsdkr2_i"; fi
+if [[ -n $electrsdkr2_i ]]     ; then echo   -e "$electrsdkr2_i"; fi
 if [[ -n $electrumx_i ]]       ; then echo -e  "$electrumx_i"; fi
 if [[ -n $btcrpcexplorer_i ]]  ; then echo -e "$btcrpcexplorer_i"; fi
 if [[ -n $mempool_i ]]         ; then echo -e  "$mempool_i"; fi
@@ -52,8 +51,8 @@ if [[ -n $lnd_i ]]             ; then echo  -e "$lnd_i"; fi
 if [[ -n $lnddocker_i ]]       ; then echo  -e "$lnddocker_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  -e "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
-if [[ -n $fulcrumdkr_i ]]         ; then echo  -e "$fulcrumdkr_i"; fi
-if [[ -n $litd_i ]]             ; then echo  -e "$litd_i"; fi
+if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
+if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...                                         $orange      #
 #                                                                                      #"
@@ -70,7 +69,7 @@ if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
-if [[ -n $fulcrumdrk_p ]]         ; then echo -e "$pink$fulcrumdkr_p$orange"; fi
+if [[ -n $fulcrumdkr_p ]]      ; then echo -e "$pink$fulcrumdkr_p$orange"; fi
 if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################

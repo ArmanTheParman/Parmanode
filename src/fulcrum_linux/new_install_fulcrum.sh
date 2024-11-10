@@ -1,4 +1,5 @@
 function new_install_fulcrum {
+debug "${FUNCNAME[0]}"
 #when I make fulcrum for mac without docker, make sure to edit patch7
 sned_sats
 set_terminal

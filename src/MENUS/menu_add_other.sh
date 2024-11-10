@@ -71,7 +71,7 @@ if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
-if [[ -n $nextcloud_p ]]          ; then echo  -e "$pink$nextcloud_p$orange"; fi
+if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
 if [[ -n $public_pool_p ]]   ; then echo -e "$pink$public_pool_p$orange"; fi
 
 echo "#                                                                                      #
