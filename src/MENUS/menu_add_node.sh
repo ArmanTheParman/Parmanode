@@ -35,6 +35,7 @@ if [[ -n $litd_n ]]             ; then echo  -e "$litd_n"; fi
 if [[ -n $lnddocker_n ]]       ; then echo  -e "$lnddocker_n"; fi
 if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
+if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
 echo -e "#                                                                                      #
 #$green Installed...                                                                  $orange       #
 #                                                                                      #"
@@ -51,6 +52,7 @@ if [[ -n $lnd_i ]]             ; then echo  -e "$lnd_i"; fi
 if [[ -n $lnddocker_i ]]       ; then echo  -e "$lnddocker_i"; fi
 if [[ -n $btcpay_i ]]          ; then echo  -e "$btcpay_i"; fi
 if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
+if [[ -n $fulcrumdkr_i ]]         ; then echo  -e "$fulcrumdkr_i"; fi
 if [[ -n $litd_i ]]             ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...                                         $orange      #
@@ -68,6 +70,7 @@ if [[ -n $lnd_p ]]             ; then echo -e "$pink$lnd_p$orange"; fi
 if [[ -n $lnddocker_p ]]       ; then echo -e "$pink$lnddocker_p$orange"; fi
 if [[ -n $btcpay_p ]]          ; then echo -e "$pink$btcpay_p$orange"; fi
 if [[ -n $fulcrum_p ]]         ; then echo -e "$pink$fulcrum_p$orange"; fi
+if [[ -n $fulcrumdrk_p ]]         ; then echo -e "$pink$fulcrumdkr_p$orange"; fi
 if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
@@ -87,14 +90,31 @@ m|M) back2main ;;
         fi
         ;;
     f|F)
-       if [[ -n $fulcrum_n ]] ; then
-       set_terminal
-       if [[ $OS == "Linux" ]] ; then 
-       install_fulcrum && return 0 ; fi
-       if [[ $OS == "Mac" ]] ; then install_fulcrum_docker && return 0 ; fi
-       return 0 
+       if [[ -n $fulcrum_n ]] ; then set_terminal
+
+         if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 
+         fi
+
+         if [[ $OS == "Mac" ]] ; then no_mac && continue 
+         fi
+
+         return 0 
        fi
        ;;
+
+    fd|FD)
+      if [[ -n $fulcrumdkr_n ]] ; then set_terminal
+
+         if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 
+         fi
+
+         if [[ $OS == "Mac" ]] ; then new_install_fulcrum docker && return 0 
+         fi
+
+         return 0 
+      fi
+      ;;
+   
    
     btcp|BTCP|Btcp)
        if [[ -n $btcpay_n ]] ; then

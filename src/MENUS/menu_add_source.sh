@@ -39,6 +39,18 @@ else
    #not installed
 fulcrum_n="#$cyan                            (f)$orange           Fulcrum (an Electrum Server)                #"
 fi
+#FULCRUMDKR
+unset fulcrumdkr_i fulcrumdkr_p fulcrumdkr_n
+if  grep -q "fulcrumdkr-end" < $HOME/.parmanode/installed.conf ; then 
+   #installed
+fulcrumdkr_i="#                                      Fulcrum (Docker)                                #"
+elif grep -q "fulcrumdkr-start" < $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+fulcrumdkr_p="#                                      Fulcrum (Docker)                                #"
+else
+   #not installed
+fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (an Electrum Server in Docker)       #"
+fi
 
 #BTCPAY
 unset btcpay_i btcpay_p btcpay_n
