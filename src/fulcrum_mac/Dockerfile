@@ -11,7 +11,7 @@ RUN echo 'parman:parmanode' | chpasswd
 USER parman
 
 RUN mkdir -p /home/parman/parmanode/fulcrum
-RUN mkdir -p /home/parman/parmanode/fulcrum_db
+RUN mkdir -p /home/parman/parmanode/.fulcrum_db
 RUN mkdir -p /home/parman/Downloads
 
 #Download Fulcrum:

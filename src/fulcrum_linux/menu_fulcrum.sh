@@ -198,11 +198,11 @@ echo -e "
 ########################################################################################
 "
 enter_continue
-nano $HOME/parmanode/fulcrum/fulcrum.conf
+nano $fc
 ;;
 
 fcv)
-vim_warning ; vim $HOME/parmanode/fulcrum/fulcrum.conf
+vim_warning ; vim $fc
 ;;
 
 p|P) 
@@ -387,9 +387,9 @@ fi
 
 #swap string for fulcrum.conf
 if [[ $other == internal ]] ; then
-gsed -i "/datadir =/c\datadir = $HOME/.fulcrum_db" $hp/fulcrum/fulcrum.conf
+gsed -i "/datadir =/c\datadir = $HOME/.fulcrum_db" $fc
 elif [[ $other == external ]] ; then
-gsed -i "/datadir =/c\datadir = $parmanode_drive/fulcrum_db" $hp/fulcrum/fulcrum.conf
+gsed -i "/datadir =/c\datadir = $parmanode_drive/fulcrum_db" $fc
 fi
 
 #correct parmanode conf variable

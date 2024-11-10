@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Service]
 ExecStartPre=$HOME/.parmanode/mount_check.sh
-ExecStart=/usr/local/bin/Fulcrum $HOME/parmanode/fulcrum/fulcrum.conf
+ExecStart=/usr/local/bin/Fulcrum $HOME/.fulcrum/fulcrum.conf
 
 User=$(whoami)
 Group=$(id -ng)

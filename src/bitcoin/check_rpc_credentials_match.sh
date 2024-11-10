@@ -212,7 +212,7 @@ choose "xmq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
-unset file && local file="$hp/fulcrum/fulcrum.conf"
+unset file && local file=$fc
 stop_fulcrum
 sudo gsed -i "/rpcuser/c\rpcuser = $rpcuser" $file
 sudo gsed -i "/rpcpassword/c\rpcpassword = $rpcpassword" $file

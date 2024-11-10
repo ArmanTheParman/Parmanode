@@ -37,9 +37,9 @@ export electrs_rpcpassword=$(cat $HOME/.electrs/config.toml | grep -Eo '^auth.*$
 fi
 
 #fulcrum
-if [[ -e $hp/fulcrum/fulcrum.conf ]] ; then
-export fulcrum_rpcuser=$(cat $hp/fulcrum/fulcrum.conf | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
-export fulcrum_rpcpassword=$(cat $hp/fulcrum/fulcrum.conf | grep rpcpassword | cut -d = -f 2 | tr -d '[:space:]' )
+if [[ -e $fc ]] ; then
+export fulcrum_rpcuser=$(cat $fc | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
+export fulcrum_rpcpassword=$(cat $fc | grep rpcpassword | cut -d = -f 2 | tr -d '[:space:]' )
 fi
 
 #mempool

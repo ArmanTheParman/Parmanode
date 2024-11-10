@@ -28,9 +28,8 @@ docker run -d --name fulcrum \
                 --restart unless-stopped \
                 -p 50001:50001 \
                 -p 50002:50002 \
-                -v $HOME/.fulcrum_db:/home/parman/fulcrum_db
+                -v $HOME/.fulcrum_db:/home/parman/.fulcrum_db \
                 -v $HOME/.fulcrum/:/home/parman/.fulcrum \
-                -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 || return 1
 
 sleep 3

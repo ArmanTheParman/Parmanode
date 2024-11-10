@@ -1,3 +1,5 @@
+#deprecated
+
 function make_fulcrum_symlinks_docker {
 
 #On host

@@ -45,7 +45,7 @@ return 1
 fi
 
 docker start fulcrum
-docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/parmanode/fulcrum/config/fulcrum.conf \
+docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/.fulcrum/fulcrum.conf \
     >>/home/parman/parmanode/fulcrum/fulcrum.log 2>&1" >/dev/null 2>&1
 }
 

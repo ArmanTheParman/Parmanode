@@ -1,5 +1,8 @@
 Version 3.46.7
-    -Fulcrum 1.11.1 and refactoring 
+    -Fulcrum 1.11.1 
+    -Refactor fulcrum.conf location - Moved to $HOME/.fulcrum
+    -Refactor fulcrum_database_corrupted()
+    -Rfeactor fulcrum_tor()
 Version 3.46.6
     -tor info and log files added to patch7
     -password entries made non-visible on screen

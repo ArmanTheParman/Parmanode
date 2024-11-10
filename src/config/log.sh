@@ -4,7 +4,7 @@
 function log {
 
 if [[ $2 == "delete" ]] >/dev/null 2>&1 ; then
-rm $dp/"$1".log >/dev/null 2>&1
+rm $dp/"$1".log >$dn 2>&1
 fi
 
 #log message in individual file

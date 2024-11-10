@@ -1,5 +1,5 @@
 function make_fulcrum_config {
-# in parmanode variables ... export fc="$hp/fulcrum/fulcrum.conf" 
+# in parmanode variables ... export fc=$HOME/.fulcrum/fulcrum.conf
 # docker run command ... -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
 
 source $bc >/dev/null 2>&1
@@ -23,9 +23,9 @@ if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 
 if [[ $fulcrumdocker == "true" ]] ; then local bitcoinIP="host.docker.internal" ; else local bitcoinIP="127.0.0.1" ; fi
 
-#datadir is internal to the container. Then mounted in the run command. Then symlinks to external drive.
+#For fulcrumdkr, datadir is internal to the container. Then mounted in the run command. Then symlinks to external drive.
 echo "fast-sync = $fastsync 
-datadir = $HOME/fulcrum_db
+datadir = $datadir
 bitcoind = $bitcoinIP:8332
 ssl = 0.0.0.0:50002
 tcp = 0.0.0.0:50001
@@ -34,6 +34,9 @@ key = $HOME/.fulcrum/key.pem
 rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1
+
+if [[ $fulcrumdocker == "true" ]] ; then
+sudo gsed -i 's/bitcoind =.+$/bitcoind = /home/parman/.fulcrum_db'
 
 return 0
 }

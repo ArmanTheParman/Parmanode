@@ -110,5 +110,15 @@ fi
 sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
 sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 
+#Fulcrum
+if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
+    stop_fulcrum
+    sudo mkdir -p $HOME/.fulcrum >$dn 2>&1
+    sudo mv $hp/fulcrum/fulcrum.conf $HOME/.fulcrum/ && \
+        sudo ln -s $HOME/.fulcrum/fulcrum.conf $hp/fulcrum/fulcrum.conf >$dn 2>&1 && \
+        log "fulcrum" "moved fulcrum.conf to new location and made symlink"
+    start_fulcrum
+fi
+
 debug temppatchend
 }

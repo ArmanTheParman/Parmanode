@@ -8,11 +8,11 @@ sudo gsed -i "/rpcuser/d" $fc
 sudo gsed -i "/rpcpassword/d" $fc
 
 if [[ -n $rpcuser ]] ; then
-echo "rpcuser = $rpcuser" >> $HOME/parmanode/fulcrum/fulcrum.conf
+echo "rpcuser = $rpcuser" | sudo tee -a $fc >$dn 2>&1
 fi
 
 if [[ -n $rpcpassword ]] ; then
-echo "rpcpassword = $rpcpassword" >> $HOME/parmanode/fulcrum/fulcrum.conf
+echo "rpcpassword = $rpcpassword" | sudo tee -a $fc >$dn 2>&1 
 fi
 
 return 0

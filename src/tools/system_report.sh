@@ -194,7 +194,7 @@ echor "elecrrumx config \n $(cat $HOME/parmanode/electrumx/electrumx.conf)"
 
 echoline
 echor "#FULCRUM"
-echor "fulcrum config \n $(cat $HOME/parmanode/fulcrum/fulcrum.conf)"
+echor "fulcrum config \n $(cat $fc)"
 
 echoline
 echor "#LND"
