@@ -7,12 +7,13 @@
 
 function debug {
 echo $(date) | tee -a $dp/debug.log >/dev/null 2>&1
+echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug.log >/dev/null 2>&1
 echo "$1" | tee -a $dp/debug.log >/dev/null 2>&1
 echo "##############################" | tee -a $dp/debug.log >/dev/null 2>&1
 if [[ $debug == 1 ]] ; then
 echo -e "Debug point. Message:
-"
-echo -e "$1
+
+$1
 "
 unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
@@ -23,9 +24,14 @@ fi
 }
 
 function debug2 {
+echo $(date) | tee -a $dp/debug2.log >/dev/null 2>&1
+echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug2.log >/dev/null 2>&1
 echo "$1" | tee -a $dp/.debug2.log >/dev/null 2>&1
 if [[ $debug == 2 ]] ; then
-echo -e "${1}"
+echo -e "Debug point:
+
+$1
+"
 unset enter_cont ; enter_continue ; export enter_cont
 if [[ $enter_cont == q || $enter_cont == "exit" ]] ; then exit 0 ; fi
 fi

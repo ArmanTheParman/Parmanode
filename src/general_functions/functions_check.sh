@@ -132,7 +132,6 @@ echo "
 "
 choose "xq"
 read choice
-debug2 "after read choice"
 case $choice in
 g) 
 install_gpg4mac ; return 0 ;;
