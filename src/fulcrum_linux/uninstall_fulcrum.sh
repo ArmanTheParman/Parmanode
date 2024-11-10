@@ -23,7 +23,7 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     return 1
     fi  
 
-if ! grep "fulcrum-start" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then 
+if ! grep "fulcrum-start" $ic >/dev/null 2>&1 ; then 
     set_terminal ; echo "
 Fulcrum is not installed. No need to uninstall. Exiting. 
 " && enter_continue && return 1
@@ -65,7 +65,7 @@ esac
 done
 
 fulcrum_tor_remove
-sudo rm -rf $HOME/parmanode/fulcrum >$dn 2>&1 
+sudo rm -rf $hp/fulcrum >$dn 2>&1 
 sudo rm -rf $HOME/.fulcrum >$dn 2>&1
 sudo rm /usr/local/bin/Fulcrum* 2>$dn
 sudo rm /etc/systemd/system/fulcrum.service 2>$dn

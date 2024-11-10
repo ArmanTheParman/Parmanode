@@ -110,7 +110,7 @@ fi
 sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
 sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 
-#Fulcrum
+#Fulcrum - added 10 Nov
 if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
     stop_fulcrum
     sudo mkdir -p $HOME/.fulcrum >$dn 2>&1
@@ -119,6 +119,8 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
         log "fulcrum" "moved fulcrum.conf to new location and made symlink"
     start_fulcrum
 fi
+sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
+
 
 debug temppatchend
 }

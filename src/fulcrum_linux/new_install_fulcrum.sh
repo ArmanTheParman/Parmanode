@@ -64,6 +64,7 @@ else
     installed_config_add "fulcrum-end"
 fi
 
+unset fulcrumdocker
 success "Fulcrum has been installed"
 }
 
