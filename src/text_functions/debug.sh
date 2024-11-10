@@ -3,7 +3,7 @@
 # without my knowledge. Only the character "d" will allow th
 # code to contine.
 
-
+#truncatedebuglog to keep file size manageable.
 
 function debug {
 echo $(date) | tee -a $dp/debug.log >/dev/null 2>&1

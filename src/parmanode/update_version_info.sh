@@ -23,7 +23,10 @@ fi
 
 function check_for_updates {
 if [[ $latest_version != $version ]] ; then
-debug2 "check_for_updates: latest version $latest_version != version $version"
+debug2 "check_for_updates: latest version $latest_version != version $version
+$(cd $pn ; git status | grep 'Your branch is')
+"
+cd -
     export old_version=1
     return 0
     fi

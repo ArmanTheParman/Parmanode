@@ -8,12 +8,7 @@ function change_string_mac {
 # Some fancy options created with "positionnewline", the fourth argument 
 # to help with adding a line before or after a search item
 # Useful for modifying configuration files of apps without disturbing syntax or structure.
-debug2 "
-inpute file: $1
-search string: $2
-newline: $3
-positionnewline: $4
-"
+
 inputfile="$1"
 searchstring="$2"
 newline="$3"
