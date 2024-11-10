@@ -1,4 +1,6 @@
-version 3.46.6
+Version 3.46.7
+    -Fulcrum 1.11.1 and refactoring 
+Version 3.46.6
     -tor info and log files added to patch7
     -password entries made non-visible on screen
     -ParmaWeb bug fixes

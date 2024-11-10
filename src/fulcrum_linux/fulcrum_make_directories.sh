@@ -1,11 +1,7 @@
 function fulcrum_make_directories {
 
-# Make parmanode/fulcrum directory on internal drive
-mkdir $HOME/parmanode/fulcrum >/dev/null 2>&1 
-
-if [[ $fulcrumdocker="true" ]] ; then
-    mkdir $HOME/parmanode/fulcrum/config >/dev/null 2>&1
-fi
+mkdir -p $HOME/parmanode/fulcrum/config >$dn 2>&1
+mkdir $HOME/.fulcrum >$dn 2>&1
 
 #External drive DB directory
 if [[ $drive_fulcrum == "external" ]] ; then
