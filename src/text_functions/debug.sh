@@ -7,11 +7,11 @@
 
 function debug {
 echo $(date) | tee -a $dp/debug.log >/dev/null 2>&1
-echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug.log >/dev/null 2>&1
+echo "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" | tee -a $dp/debug.log >/dev/null 2>&1
 echo "$1" | tee -a $dp/debug.log >/dev/null 2>&1
 echo "##############################" | tee -a $dp/debug.log >/dev/null 2>&1
 if [[ $debug == 1 ]] ; then
-echo -e "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" 
+echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 
 echo -e "Debug point. Message:
 
 $1
