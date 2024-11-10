@@ -25,7 +25,7 @@ if [[ $fulcrumdocker == "true" ]] ; then local bitcoinIP="host.docker.internal" 
 
 #datadir is internal to the container. Then mounted in the run command. Then symlinks to external drive.
 echo "fast-sync = $fastsync 
-datadir = /home/parman/fulcrum_db
+datadir = $HOME/fulcrum_db
 bitcoind = $bitcoinIP:8332
 ssl = 0.0.0.0:50002
 tcp = 0.0.0.0:50001
