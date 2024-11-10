@@ -20,6 +20,7 @@ if [[ $fulcrumdocker == "true" ]] ; then
     if ! docker ps >/dev/null 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     return 1
+    fi
 
     #remove old container, just in case
     docker stop fulcrum >/dev/null 2>&1 
