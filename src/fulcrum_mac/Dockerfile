@@ -19,16 +19,16 @@ RUN mkdir -p /home/parman/Downloads
 
 #Download Fulcrum:
 WORKDIR /home/parman/Downloads
-RUN curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz && \
-curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.sha256sum && \
-curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz.asc
+RUN curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-x86_64-linux.tar.gz 
+RUN curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-shasums.txt
+RUN curl -LO https://github.com/cculianu/Fulcrum/releases/download/v1.11.1/Fulcrum-1.11.1-shasums.txt.asc
 
-RUN sha256sum --ignore-missing --check Fulcrum-1.11.1-x86_64-linux.tar.gz.sha256sum
+RUN sha256sum --ignore-missing --check Fulcrum-1.11.1-shasums.txt
 
 #Check gpg sig
 USER root
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys D465135F97D0047E18E99DC321810A542031C02C
-RUN if { gpg --verify --status-fd 1 Fulcrum-1.11.1-x86_64-linux.tar.gz.asc 2>&1 | grep -qi GOOD ; } ; then true ; else exit 1 ; fi
+RUN if { gpg --verify --status-fd 1 Fulcrum-1.11.1-shasums.txt.asc 2>&1 | grep -qi GOOD ; } ; then true ; else exit 1 ; fi
 
 #unpack fulcrum
 USER parman
