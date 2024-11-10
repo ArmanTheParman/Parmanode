@@ -4,6 +4,7 @@ Version 3.46.7
     -Refactor fulcrum_database_corrupted()
     -Rfeactor fulcrum_tor()
     -Deprecated swap fulcrum drive function
+    -Fulcrum torrc port value fixed
 Version 3.46.6
     -tor info and log files added to patch7
     -password entries made non-visible on screen

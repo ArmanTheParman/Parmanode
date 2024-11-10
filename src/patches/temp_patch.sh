@@ -121,6 +121,5 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
 fi
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 
-
 debug temppatchend
 }
