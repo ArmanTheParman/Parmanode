@@ -49,8 +49,6 @@ done
 password_changer || return 1
 electrs_edit_user_pass $rpcuser $rpcpassword remote || return 1
 debug "after electrs_edit_user_pass"
-#ssl_port_change_fulcrum || return 1 
-#bitcoindIP_change_fulcrum || return 1 
 electrs_bitcoinIP_change || return 1
 
 set_terminal ; echo -e "

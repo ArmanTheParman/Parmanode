@@ -39,7 +39,7 @@ RUN openssl req -new -x509 -key key.pem -out cert.pem -days 36500 -subj "/C=/ST=
 
 #make fulcrum config file
 USER parman
-WORKDIR /home/parman/parmanode/fulcrum/
+WORKDIR /home/parman/parmanode/fulcrum/config/
 RUN echo "datadir = /home/parman/parmanode/fulcrum_db" >> fulcrum.conf \
 && echo "bitcoind = host.docker.internal:8332" >> fulcrum.conf \
 && echo "ssl = 0.0.0.0:50002" >> fulcrum.conf \

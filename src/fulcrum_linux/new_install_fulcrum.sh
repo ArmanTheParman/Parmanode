@@ -34,7 +34,11 @@ if [[ $drive_fulcrum == "external" ]] && [[ ! -d $pd/fulcrum_db ]] ; then
 format_ext_drive "Fulcrum" || return 1 ; clear
 fi
 
+if [[ $fulcrumdocker == "true" ]] ; then
+installed_config_add "fulcrumdkr-start"
+else
 installed_config_add "fulcrum-start"
+fi
 
 fulcrum_make_directories || return 1 
 

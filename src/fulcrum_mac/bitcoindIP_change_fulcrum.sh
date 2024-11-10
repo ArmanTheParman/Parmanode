@@ -1,11 +1,11 @@
 function bitcoindIP_change_fulcrum {
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                             IP address of Bitcoin Core
-
+$orange
     Go get the IP address of the other Bitcoin Core computer that Fulcrum will 
     connect to.
 

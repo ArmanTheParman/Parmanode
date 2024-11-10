@@ -26,6 +26,11 @@ if [[ $1 == electrsdrk || $1 == electrs ]] ; then
     cd $HOME/.electrs
 fi
 
+if [[ $1 == fulcrum ]] ; then
+    mkdir -p $HOME/.fulcrum >$dn 2>&1
+    cd $HOME/.fulcrum
+fi
+
 #for populating the open ssl key command
 
 #local address="127.0.0.1"

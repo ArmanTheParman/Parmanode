@@ -1,4 +1,7 @@
 function make_fulcrum_config {
+# in parmanode variables ... export fc="$hp/fulcrum/fulcrum.conf" 
+# docker run command ... -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
+
 source $bc >/dev/null 2>&1
 
 #remove later, it's at the start of new_install_fulcrum
@@ -6,7 +9,7 @@ if [[ -z $rpcuser ]] ; then #from parmanode.conf
     announce "Please set a username and password in Bitcoin conf. You can do that from the
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
 fi
-
+docker 
 # set datadir variable
     if [[ $drive_fulcrum == "external" ]] ; then #works Linux and Mac
     datadir="$parmanode_drive/fulcrum_db" 
@@ -26,8 +29,8 @@ datadir = $datadir
 bitcoind = $bitcoinIP:8332
 ssl = 0.0.0.0:50002
 tcp = 0.0.0.0:50001
-cert = $HOME/parmanode/fulcrum/cert.pem
-key = $HOME/parmanode/fulcrum/key.pem
+cert = $HOME/.fulcrum/cert.pem
+key = $HOME/.fulcrum/key.pem
 rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1

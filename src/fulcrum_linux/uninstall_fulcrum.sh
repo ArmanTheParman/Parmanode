@@ -65,10 +65,10 @@ esac
 done
 
 fulcrum_tor_remove
-sudo rm -rf $HOME/parmanode/fulcrum >/dev/null 2>&1 
-
-sudo rm /usr/local/bin/Fulcrum* 2>/dev/null 
-sudo rm /etc/systemd/system/fulcrum.service 2>/dev/null
+sudo rm -rf $HOME/parmanode/fulcrum >$dn 2>&1 
+sudo rm -rf $HOME/.fulcrum >$dn 2>&1
+sudo rm /usr/local/bin/Fulcrum* 2>$dn
+sudo rm /etc/systemd/system/fulcrum.service 2>$dn
 
 bitcoin_conf_remove 'zmqpubhashblock=tcp://0.0.0.0:8433'
 parmanode_conf_remove "drive_fulcrum"
