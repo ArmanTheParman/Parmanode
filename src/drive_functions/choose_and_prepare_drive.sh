@@ -80,7 +80,7 @@ fi
    
 #External drive setup
 e|E) 
-
+debug "e choice"
 if [[ $1 == "Bitcoin" ]] ; then export drive="external"; parmanode_conf_add "drive=external" ; installed_conf_add "bitcoin-start" ; fi
 
 if [[ $1 == "Fulcrum" ]] ; then export drive_fulcrum="external"

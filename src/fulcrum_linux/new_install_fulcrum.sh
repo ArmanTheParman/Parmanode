@@ -29,11 +29,11 @@ if [[ $fulcrumdocker == "true" ]] ; then
 
 fi
 
-choose_and_prepare_drive "Fulcrum" || return 1
+choose_and_prepare_drive "Fulcrum" || { enter_continue "exiting..." && return 1 ; }
 
 #if drive already prepared and mounted, skip format function
 if [[ $drive_fulcrum == "external" ]] && [[ ! -d $pd/fulcrum_db ]] ; then
-format_ext_drive "Fulcrum" || return 1 ; clear
+format_ext_drive "Fulcrum" || { enter_continue "exiting..." && return 1 ; }
 fi
 
 if [[ $fulcrumdocker == "true" ]] ; then
@@ -42,13 +42,13 @@ else
 installed_config_add "fulcrum-start"
 fi
 
-fulcrum_make_directories || return 1 
+fulcrum_make_directories || { enter_continue "exiting..." && return 1 ; }
 
-make_fulcrum_config || return 1 
+make_fulcrum_config ||  { enter_continue "exiting..." && return 1 ; }
 
 echo 'zmqpubhashblock=tcp://*:8433' | sudo tee -a $bc >$dn 2>&1
 
-make_ssl_certificates fulcrum || return 1
+make_ssl_certificates fulcrum || { enter_continue "exiting..." && return 1 ; }
 
 if [[ $fulcrumdocker == "true" ]] ; then
     build_fulcrum_docker || { echo "Build failed. Aborting" ; enter_continue ; return 1 ; }
@@ -56,10 +56,10 @@ if [[ $fulcrumdocker == "true" ]] ; then
     #start fulcrum for docker
     installed_config_add "fulcrumdkr-end"
 else
-    download_fulcrum || return 1 
-    verify_fulcrum || return 1 
-    extract_fulcrum || return 1 
-    fulcrum_install_files || return 1 
+    download_fulcrum || { enter_continue "exiting..." && return 1 ; }
+    verify_fulcrum || { enter_continue "exiting..." && return 1 ; }
+    extract_fulcrum || { enter_continue "exiting..." && return 1 ; }
+    fulcrum_install_files || { enter_continue "exiting..." && return 1 ; }
     make_fulcrum_service_file
     start_fulcrum_linux
     installed_config_add "fulcrum-end"
