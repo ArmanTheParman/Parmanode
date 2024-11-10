@@ -3,7 +3,7 @@ set_terminal
 while true
 do
 unset raidapp
-unset bitcoinapp fulcrumapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
+unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtlapp electrumapp 
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
@@ -27,6 +27,9 @@ if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
                             " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
                        echo -e "                        $cyan  (f)$orange          Fulcrum (an Electrum Server)
+                            " ; fi
+if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrapp=1
+                       echo -e "                        $cyan  (fd)$orange         Fulcrum (an Electrum Server in Docker)
                             " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
                        echo -e "                        $cyan  (btcp)$orange       BTCPay Server
@@ -179,6 +182,13 @@ b|B)
     ;;
 f|F)
     if [[ $fulcrumapp == 1 ]] ; then
+    menu_fulcrum
+    if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else invalid
+    fi
+    ;;
+fd|FD)
+    if [[ $fulcrumdkrapp == 1 ]] ; then
     menu_fulcrum
     if [[ -n $1 ]] ; then clear ; return 0 ; fi
     else invalid

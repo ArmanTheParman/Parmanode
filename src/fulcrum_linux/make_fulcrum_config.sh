@@ -36,7 +36,7 @@ rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1
 
 if [[ $fulcrumdocker == "true" ]] ; then
-sudo gsed -i 's/bitcoind =.+$/bitcoind = /home/parman/.fulcrum_db' $fc    >$dn 2>&1
+sudo gsed -i 's/bitcoind =.+$/bitcoind = /home/parman/\.fulcrum_db' $fc    >$dn 2>&1
 fi
 
 return 0
