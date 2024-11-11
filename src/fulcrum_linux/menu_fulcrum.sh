@@ -31,13 +31,17 @@ else
 menu_fulcrum_status
 fi
 
+#if grep -q "fulcrum-" $ic ; then
+#    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
+isfulcrumrunning ; source $oc >/dev/null 2>&1
+
+
 set_terminal_custom 47
 echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################"
-if grep -q "fulcrum-" $ic ; then
-    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
+if [[ $fulcrumrunning == "true" ]] ; then echo -en "
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
       BLOCK      :   $fulcrum_sync
@@ -52,30 +56,7 @@ if grep -q "fulcrum-" $ic ; then
 echo -en "$orange
                    $isbitcoinrunning_fulcrum 
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
-   fi #end if ps -x
-fi #non docker
-
-if grep -q "fulcrumdkr" $ic ; then
-    if docker ps 2>$dn | grep -q fulcrum \
-    && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then echo -en "
-
-      FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
-      STATUS     :   $fulcrum_status
-      BLOCK      :   $fulcrum_sync
-      DRIVE      :   $drive_fulcrum $orange
-
-
-      CONNECT  $cyan    127.0.0.1:50001:t    $yellow (From this computer only)$orange
-               $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
-               $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
-                  "
-    else
-echo -ne "
-                   $isbitcoinrunning_fulcrum
-                   FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN" 
-    fi
-fi #end fulcrumdkr
-
+fi
 echo -e "
 $green
       (start)   $orange Start Fulcrum 
@@ -95,8 +76,6 @@ $cyan
       (torx)$orange     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
 $cyan
       (newtor)$orange   Refresh Tor address
-$cyan
-      (remote)$orange   Connect this Fulcrum server to Bitcoin Core on a different computer
 $cyan    
       (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
@@ -117,27 +96,18 @@ m|M) back2main ;;
 r) please_wait ; menu_fulcrum_status ; refresh="true" ;;
 
 start | START)
-check_fulcrum_pass
 set_terminal
 echo "Fulcrum starting..."
-if [[ $OS == "Linux" ]] ; then start_fulcrum_linux ; fi
-if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi 
+start_fulcrum 
 set_terminal
 ;;
 
 stop | STOP) 
 set_terminal
 echo "Stopping Fulcrum ..."
-if [[ $OS == "Linux" ]] ; then stop_fulcrum_linux ; fi
-if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
+stop_fulcrum 
 set_terminal
 ;;
-
-# bitcoin|Bitcoin)
-# set_terminal
-# bitcoin_core_choice_fulcrum
-# set_terminal
-# ;;
 
 restart|Rrestart) 
 if [[ $OS == "Linux" ]] ; then 
@@ -169,7 +139,7 @@ echo -e "
 "
 enter_continue
 fi
-if [[ $OS == "Linux" ]] ; then
+if grep -q "fulcrum-" $ic ; then
     set_terminal_wider
     sudo journalctl -fexu fulcrum.service &
     tail_PID=$!
@@ -177,14 +147,14 @@ if [[ $OS == "Linux" ]] ; then
     wait $tail_PID # code waits here for user to control-c
     trap - SIGINT # reset the trap so control-c works elsewhere.
     set_terminal
-fi
-if [[ $OS == "Mac" ]] ; then
+else
     set_terminal_wider
     docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
     echo ""
     set_terminal
 fi
-continue ;;
+continue 
+;;
 
 fc|FC|Fc|fC)
 echo -e "
@@ -202,7 +172,8 @@ sudo nano $fc
 ;;
 
 fcv)
-vim_warning ; sudo vim $fc
+vim_warning 
+sudo vim $fc
 ;;
 
 p|P) 
@@ -211,13 +182,6 @@ menu_use ;;
 
 q|Q|Quit|QUIT)
 exit 0
-;;
-
-Remote|REMOTE|remote)
-if [[ $OS == "Mac" ]] ; then fulcrum_to_remote ; fi
-if [[ $OS == "Linux" ]] ; then echo "" ; echo "Only available for Mac, for now." 
-enter_continue
-fi
 ;;
 
 tor|TOR|Tor)

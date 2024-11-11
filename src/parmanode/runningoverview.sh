@@ -125,15 +125,15 @@ fi
 }
 
 function isfulcrumrunning {
-if [[ $OS == "Linux" ]] ; then
+if grep -q "fulcrum-" $ic ; then
     if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then 
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
     overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi 
-fi #end if Linux
+fi 
 
-if [[ $OS == "Mac" ]] ; then
+if grep -q "fulcrumdkr-" $ic ; then
     if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
@@ -141,6 +141,7 @@ if [[ $OS == "Mac" ]] ; then
     fi
 fi
 }
+
 function iselectrsrunning {
 if grep -q electrs- < $ic >/dev/null 2>&1 || grep -q electrs2 - <$ic >/dev/null 2>&1 ; then
     if ps -x | grep electrs | grep -q conf >/dev/null 2>&1 ; then 

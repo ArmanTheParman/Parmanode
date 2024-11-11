@@ -391,15 +391,12 @@ s3)
 if [[ $menub3 == "true" ]] ; then
 set_terminal
 echo "Fulcrum stopping..."
-if [[ $OS == "Linux" ]] ; then stop_fulcrum_linux ; fi
-if [[ $OS == "Mac" ]] ; then  stop_fulcrum_docker ; fi
+stop_fulcrum ; fi
 else
 clear ; please_wait
-check_fulcrum_pass
 set_terminal
 echo "Fulcrum starting..."
-if [[ $OS == "Linux" ]] ; then start_fulcrum_linux ; fi
-if [[ $OS == "Mac" ]] ; then start_fulcrum_docker ; fi 
+start_fulcrum ; fi 
 set_terminal
 fi
 ;;
