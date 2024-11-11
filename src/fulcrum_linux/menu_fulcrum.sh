@@ -14,10 +14,12 @@ fi
 if    sudo cat $macprefix/etc/tor/torrc 2>$dn | grep -q "fulcrum" >$dn 2>&1 \
    && sudo cat $macprefix/var/lib/tor/fulcrum-service/hostname | grep -q "onion" >$dn 2>&1 ; then
 
-    F_tor="on"
+    F_tor="${green}on$orange"
+    f_tor="on" 
 
 else
-    F_tor="off"
+    F_tor="${red}off$orange"
+    f_tor="off"
 fi
 
 source $pc >$dn 2>&1
@@ -71,9 +73,7 @@ $cyan
 $cyan
       (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
 $cyan
-      (tor)$orange      Enable Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
-$cyan
-      (torx)$orange     Disable Tor connection to Fulcrum -- Fulcrum Tor Status : $F_tor
+      (tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
 $cyan
       (newtor)$orange   Refresh Tor address
 $cyan    
@@ -180,11 +180,11 @@ exit 0
 ;;
 
 tor|TOR|Tor)
+if [[ $f_tor == "off" ]] ; then
 fulcrum_tor
-;;
-
-torx|TORX|Torx)
+else
 fulcrum_tor_remove
+fi
 ;;
 
 newtor)
