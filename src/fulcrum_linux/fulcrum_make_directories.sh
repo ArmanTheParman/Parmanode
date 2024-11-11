@@ -19,7 +19,8 @@ if [[ $drive_fulcrum == "external" ]] ; then
 
     #only make a symlink if there is no dir there
     if [[ ! -d $HOME/.fulcrum_db ]] ; then
-        ln $pd/fulcrum_db $HOME/.fulcrum_db >$dn 2>&1
+        ln -s $pd/fulcrum_db $HOME/.fulcrum_db >$dn 2>&1
+        enter_continue "after symlink"
     fi
 
 elif [[ $drive_fulcrum == "internal" ]] ; then
@@ -60,8 +61,10 @@ sudo rm -rf $HOME/.fulcrum_db
 break
 ;;
 mm)
-sudo rm -rf $HOME/.fulcrum_db_backup
-sudo mv $HOME/.fulcrum_db $HOME/.fulcrum_db_backup
+sudo rm -rf $HOME/.fulcrum_db_backup #2>$dn
+enter_continue
+sudo mv $HOME/.fulcrum_db $HOME/.fulcrum_db_backup #2>$dn
+enter_continue
 break
 ;;
 *)
