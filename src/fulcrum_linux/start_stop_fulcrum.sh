@@ -14,6 +14,7 @@ if grep -q "fulcrum-" $ic ; then
 sudo systemctl stop fulcrum.service
 elif grep -q "fulcrumdkr" $ic ; then
 docker_running || return 1
+docker exec -it fulcrum bash -c "kill -15 fulcrum"
 docker stop fulcrum
 fi
 }

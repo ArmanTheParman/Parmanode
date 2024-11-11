@@ -68,6 +68,8 @@ $cyan
       (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
 $cyan
       (tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
+$cyan
+      (man)$orange      Manually explore the docker container
 $cyan    
       (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
@@ -162,6 +164,15 @@ fcv)
 vim_warning 
 sudo vim $fc
 ;;
+
+man)
+yesorno "Do you want to log in as the root user or parman (sudo password: parmanode)" "r" "root" "pp" "parman" \
+         && {
+            docker exec -itu root fulcrum bash
+            continue
+         }
+         docker exec -itu parman fulcrum bash
+         ;;
 
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
