@@ -24,6 +24,11 @@ debug "fulcrumdocker: $fulcrumdocker
 
     if [[ $fulcrumdocker == "true" ]] ; then
     datadir="/home/parman/.fulcrum_db"
+    cert="/home/parman/.fulcrum/cert.pem"
+    key="/home/parman/.fulcrum/key.pem"
+    else
+    cert="$HOME/.fulcrum/cert.pem" 
+    key="$HOME/.fulcrum/key.pem"
     fi
 
 debug "datadir chosen, $datadir"
@@ -38,8 +43,8 @@ datadir = $datadir
 bitcoind = $bitcoinIP:8332
 ssl = 0.0.0.0:50002
 tcp = 0.0.0.0:50001
-cert = $HOME/.fulcrum/cert.pem
-key = $HOME/.fulcrum/key.pem
+cert = $cert
+key = $key 
 rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1

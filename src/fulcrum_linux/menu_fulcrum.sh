@@ -36,8 +36,8 @@ echo -e "
 ########################################################################################
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################"
-if [[ $OS == "Linux" ]] ; then
-if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
+if grep -q "fulcrum-" $ic ; then
+    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
       BLOCK      :   $fulcrum_sync
@@ -48,14 +48,16 @@ if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
                $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
                $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
                   "
-else
+   else
 echo -en "$orange
                    $isbitcoinrunning_fulcrum 
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN"
-fi #end if ps -x
-fi #end if Linux
-if [[ $OS == "Mac" ]] ; then
-if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then echo -en "
+   fi #end if ps -x
+fi #non docker
+
+if grep -q "fulcrumdkr" ; then
+    if docker ps 2>$dn | grep -q fulcrum \
+    && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then echo -en "
 
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
@@ -67,12 +69,12 @@ if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep F
                $cyan    127.0.0.1:50002:s    $yellow (From this computer only)$orange 
                $cyan    $IP:50002:s          $yellow \e[G\e[42G(From any home network computer)$orange
                   "
-else
+    else
 echo -ne "
                    $isbitcoinrunning_fulcrum
                    FULCRUM IS$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN" 
-fi
-fi
+    fi
+fi #end fulcrumdkr
 
 echo -e "
 $green
@@ -250,9 +252,9 @@ return 0
 function menu_fulcrum_status {
 local file="$tmp/fulcrum.journal"
 
-if [[ $OS == Mac ]] ; then
+if grep -q "fulcrumdkr" $ic ; then
     if docker ps >$dn ; then
-        docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
+       docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
     else
        echo "Docker not running." > $file 
     fi
