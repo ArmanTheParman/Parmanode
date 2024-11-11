@@ -12,6 +12,8 @@ if ! grep -q "rpcuser" < $bc ; then
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
 fi
 
+check_bitcoin_not_pruned || return 1
+
 if [[ $fulcrumdocker == "true" ]] ; then
 
     #check docker installed
@@ -70,3 +72,11 @@ success "Fulcrum has been installed"
 }
 
 
+function check_bitcoin_not_pruned {
+unset prune
+source $bc
+if [[ -n $prune && $prune -ne 0 ]] ; then
+yesorno "Your local machine's Bitcoin node appears to have a prune
+         \r    setting. That won't work with Fulcrum. Continue anyway?" || return 1
+fi
+}
