@@ -56,10 +56,10 @@ if [[ $fulcrumdocker == "true" ]] ; then
     #start fulcrum for docker
     installed_config_add "fulcrumdkr-end"
 else
-    download_fulcrum || { enter_continue "exiting... 6#" && return 1 ; }
-    verify_fulcrum || { enter_continue "exiting... 7#" && return 1 ; }
-    extract_fulcrum || { enter_continue "exiting... 8#" && return 1 ; }
-    fulcrum_install_files || { enter_continue "exiting... 9#" && return 1 ; }
+    download_fulcrum || { enter_continue "exiting... 6#" ; return 1 ; }
+    verify_fulcrum || { enter_continue "exiting... 7#" ; return 1 ; }
+    extract_fulcrum || { enter_continue "exiting... 8#" ; return 1 ; }
+    fulcrum_install_files || { enter_continue "exiting... 9#" ; return 1 ; }
     make_fulcrum_service_file
     start_fulcrum_linux
     installed_config_add "fulcrum-end"
