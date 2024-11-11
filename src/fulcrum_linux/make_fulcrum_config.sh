@@ -11,7 +11,9 @@ if [[ -z $rpcuser ]] ; then #from parmanode.conf
 fi
 
 # set datadir variable
-
+debug "fulcrumdocker: $fulcrumdocker
+    drive_fulcrum: $drive_fulcrum
+"
     if [[ $fulcrumdocker != "true" && $drive_fulcrum == "external" ]] ; then #works Linux and Mac
     datadir="$parmanode_drive/fulcrum_db" 
     fi
