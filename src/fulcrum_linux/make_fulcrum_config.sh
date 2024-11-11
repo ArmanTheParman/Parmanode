@@ -11,12 +11,17 @@ if [[ -z $rpcuser ]] ; then #from parmanode.conf
 fi
 
 # set datadir variable
-    if [[ $drive_fulcrum == "external" ]] ; then #works Linux and Mac
+
+    if [[ $fulcrumdocker != "true" && $drive_fulcrum == "external" ]] ; then #works Linux and Mac
     datadir="$parmanode_drive/fulcrum_db" 
     fi
 
-    if [[ $drive_fulcrum == "internal" ]] ; then
+    if [[ $fulcrumdocker != "true" && $drive_fulcrum == "internal" ]] ; then
     datadir="$HOME/.fulcrum_db"
+    fi
+
+    if [[ $fulcrumdocker == "true" ]] ; then
+    datadir="/home/parman/.fulcrum_db"
     fi
 
 debug "datadir chosen, $datadir"
@@ -37,13 +42,7 @@ rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1
 
-debug "after making the conf, before the edit"
-
-if [[ $fulcrumdocker == "true" ]] ; then
-sudo gsed -i 's/bitcoind =.+$/bitcoind = /home/parman/\.fulcrum_db' $fc    >$dn 2>&1
-fi
-
-debug "after the edit of conf"
+debug "after making the conf"
 
 return 0
 }
