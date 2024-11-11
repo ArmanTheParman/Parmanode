@@ -55,7 +55,7 @@ echo -en "$orange
    fi #end if ps -x
 fi #non docker
 
-if grep -q "fulcrumdkr" ; then
+if grep -q "fulcrumdkr" $ic ; then
     if docker ps 2>$dn | grep -q fulcrum \
     && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then echo -en "
 

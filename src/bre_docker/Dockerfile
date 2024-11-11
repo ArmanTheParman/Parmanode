@@ -3,7 +3,7 @@ FROM node:20
 #Default arguments: (if --build-arg missing)
 
 RUN apt-get update
-RUN apt-get install -y sudo vim git build-essential make cmake pkg-config libtool autoconf automake 
+RUN apt-get install -y sudo vim git build-essential make cmake pkg-config libtool autoconf automake procps
 RUN groupadd -r parman && useradd -m -g parman parman 
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd

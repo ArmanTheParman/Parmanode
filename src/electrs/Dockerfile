@@ -1,7 +1,7 @@
 FROM rust:1.75
 
 RUN apt-get update -y
-RUN apt-get install -y sudo vim curl git clang cmake build-essential socat
+RUN apt-get install -y sudo vim curl git clang cmake build-essential socat procps
 
 #Make users and groups and directories
 RUN groupadd -r parman && useradd -m -g parman -u 1000 parman 
