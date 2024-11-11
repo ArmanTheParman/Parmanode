@@ -55,4 +55,4 @@ WORKDIR /home/parman/parmanode/fulcrum
 #will contain symlinks to be made after docker run
 
 USER parman
-CMD tail -f /dev/null 
+CMD [ "tail", "-f", "/dev/null" ] 
