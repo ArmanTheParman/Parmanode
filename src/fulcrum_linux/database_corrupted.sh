@@ -26,28 +26,17 @@ p|P) return 0 ;;
 n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
-if [[ $OS == Mac ]] ; then stop_fulcrum_docker 
-else
-stop_fulcrum_linux
+stop_fulcrum
+
+if [[ $drive_fulcrum == external && -e $pd/fulcrum_db ]] ; then 
+    rm -rf $pd/fulcrum_db/*
+    sudo mkdir -p $pd/fulcrum_db
+    sudo chown -R $USER:$(id -gn) $pd/fulcrum_db
+elif [[ $drive_fulcrum == internal ]] ; then
+    rm -rf $HOME/.fulcrum_db/* 2>$dn
+    rm -rf $HOME/parmanode/fulcrum_db 2>$dn #old location of database (previous versions)
 fi
 
-if [[ $drive_fulcrum == external ]] ; then 
-    if [[ $OS == Linux ]] ; then 
-         sudo rm -rf $parmanode_drive/fulcrum_db  
-         sudo mkdir $parmanode_drive/fulcrum_db
-         sudo chown -R $USER:$(id -gn) $parmanode_drive/fulcrum_db
-         debug "wait"
-    else
-         rm -rf $parmanode_drive/fulcrum_db
-         sudo mkdir $parmanode_drive/fulcrum_db
-         sudo chown -R $USER:$(id -gn) $parmanode_drive/fulcrum_db
-    fi
-else
-    rm -rf $HOME/.fulcrum_db
-    rm -rf $HOME/parmanode/fulcrum_db #old location of database (previous versions)
-    gsed -i "/datadir =/c\datadir = $HOME/.fulcrum_db" $fc
-    mkdir $HOME/.fulcrum_db
-fi
 break
 ;;
 *) invalid
