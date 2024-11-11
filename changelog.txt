@@ -5,6 +5,7 @@ Version 3.46.7
     -Rfeactor fulcrum_tor()
     -Deprecated swap fulcrum drive function
     -Fulcrum torrc port value fixed
+    -Some systems have a large bashrc/zshrc backup file due to a bug - deleting.
 Version 3.46.6
     -tor info and log files added to patch7
     -password entries made non-visible on screen
