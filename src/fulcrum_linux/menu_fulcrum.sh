@@ -110,13 +110,8 @@ set_terminal
 ;;
 
 restart|Rrestart) 
-if [[ $OS == "Linux" ]] ; then 
-    sudo systemctl restart fulcrum.service
-    fi
-if [[ $OS == "Mac" ]] ; then
-    stop_fulcrum_docker
-    start_fulcrum_docker
-    fi
+    stop_fulcrum
+    start_fulcrum
 ;;
 
 c|C)
