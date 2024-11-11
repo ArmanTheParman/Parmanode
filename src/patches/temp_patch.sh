@@ -121,8 +121,6 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
 fi
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 
-debug temppatchend
-
 # potentially large file that's not needed, caused by a bug
 if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >/dev/null ; then 
 for i in $HOME/.*parmanodebackup* ; do
@@ -130,4 +128,11 @@ for i in $HOME/.*parmanodebackup* ; do
 done
 fi
 
+#in "next patch"
+if [[ $OS == Mac ]] && grep -q "fulcrum-end" $ic ; then
+sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
+sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
+fi
+
+debug temppatchend
 }
