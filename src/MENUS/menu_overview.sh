@@ -391,7 +391,7 @@ s3)
 if [[ $menub3 == "true" ]] ; then
 set_terminal
 echo "Fulcrum stopping..."
-stop_fulcrum ; fi
+stop_fulcrum 
 else
 clear ; please_wait
 set_terminal
