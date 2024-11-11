@@ -129,3 +129,5 @@ for i in $HOME/.*parmanodebackup* ; do
     sudo rm "${i}" >/dev/null 2>&1
 done
 fi
+
+}

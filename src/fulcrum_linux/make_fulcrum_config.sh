@@ -19,6 +19,8 @@ fi
     datadir="$HOME/.fulcrum_db"
     fi
 
+debug "datadir chosen, $datadir"
+
 if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 
 if [[ $fulcrumdocker == "true" ]] ; then local bitcoinIP="host.docker.internal" ; else local bitcoinIP="127.0.0.1" ; fi
@@ -35,9 +37,13 @@ rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1
 
+debug "after making the conf, before the edit"
+
 if [[ $fulcrumdocker == "true" ]] ; then
 sudo gsed -i 's/bitcoind =.+$/bitcoind = /home/parman/\.fulcrum_db' $fc    >$dn 2>&1
 fi
+
+debug "after the edit of conf"
 
 return 0
 }
