@@ -38,10 +38,10 @@ elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then fulcrummenu=
 echo -e "#$cyan                            (fulcrum)$orange          Fulcrum $red$blinkon(partial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1 
-echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum Server                         #
+echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum Server (Docker)                #
 #                                                                                      #"
 elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1                                
-echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(partial)$blinkoff$orange              #
 #                                                                                      #" ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
 echo -e "#$cyan                            (docker)$orange           Docker                                 #
