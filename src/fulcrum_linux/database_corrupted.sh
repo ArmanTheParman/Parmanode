@@ -26,6 +26,7 @@ p|P) return 0 ;;
 n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
+please_wait
 stop_fulcrum
 
 if [[ $drive_fulcrum == external && -e $pd/fulcrum_db ]] ; then 
