@@ -124,5 +124,8 @@ sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 debug temppatchend
 
 # potentially large file that's not needed, caused by a bug
-sudo rm $(ls $HOME/.*uninstall_parmanodebackup*)
-}
+if find $HOME -name ".*parmanodebackup*" -maxdepth 1 -type f >/dev/null ; then 
+for i in $HOME/.*parmanodebackup* ; do
+    sudo rm "${i}" >/dev/null 2>&1
+done
+fi
