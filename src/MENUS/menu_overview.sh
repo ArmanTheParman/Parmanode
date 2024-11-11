@@ -396,7 +396,7 @@ else
 clear ; please_wait
 set_terminal
 echo "Fulcrum starting..."
-start_fulcrum ; fi 
+start_fulcrum 
 set_terminal
 fi
 ;;
