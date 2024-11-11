@@ -19,15 +19,8 @@ if [[ $choice == "y" || $choice == "Y" ]] ; then true
     fi
 fi
 
-if [[ $OS == Mac ]] ; then rc=zshrc ; fi
-if [[ $OS == Linux ]] ; then rc=bashrc ; fi
-
-sudo cp -rf "$HOME/.$rc" "$HOME/.${rc}_uninstall_parmanodebackup" >/dev/null 2>&1
-
-#sed method compaitble with both mac and linux...
-sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$HOME/.$rc" 
-
-sudo gsed -i '/ParmaShell/d' "$HOME/.$rc" 
+sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$bashrc"
+sudo gsed -i '/ParmaShell/d' "$bashrc"
 
 installed_config_remove "parmashell"
 if [[ $1 != silent ]] ; then

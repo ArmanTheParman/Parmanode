@@ -35,7 +35,7 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
     fi
 fi
 #fix homebrew path order ; remove June 2025
-if [[ $OS == Mac ]] && which brew >$dn && [[ -e $HOME/.zshrc ]] ; then
+if [[ $OS == Mac ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
     if ! grep -q "PATH=/opt/homebrew/bin" < $bashrc ; then
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
@@ -122,4 +122,8 @@ fi
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 
 debug temppatchend
+
+# potentially large file that's not needed, caused by a bug
+find $HOME -type f -name "*uninstall_parmanodebackup*" -exec rm -rf {} \;
+sudo rm $(ls $HOME/.*uninstall_parmanodebackup*)
 }

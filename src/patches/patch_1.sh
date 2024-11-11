@@ -26,20 +26,14 @@ fi
 }
 
 function add_rp_function {
-if [[ $(uname) == Darwin ]] ; then rc=zshrc ; fi
-if [[ $(uname) == Linux ]] 
-then 
-    rc=bashrc
-    if [[ ! -e $HOME/.bashrc ]] ; then touch $HOME/.bashrc ; fi 
-fi
 
-if [[ ! -e $HOME/.$rc ]] ; then touch $HOME/.$rc ; fi
+if [[ ! -e $bashrc ]] ; then sudo touch $bashrc ; fi
 
-if grep -q run_parmanode.sh < ~/.$rc ; then return 0 ; fi
+if grep -q run_parmanode.sh < $bashrc ; then return 0 ; fi
 
-if ! grep "#Added by Parmanode..." < $HOME/.$rc ; then
-echo "#Added by Parmanode..." | tee -a ~/.$rc >/dev/null 2>&1
-echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.$rc >/dev/null 2>&1
+if ! grep "#Added by Parmanode..." < $bashrc ; then
+echo "#Added by Parmanode..." | sudo tee -a $bashrc >/dev/null 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | sudo tee -a $bashrc >/dev/null 2>&1
 fi
 }
 

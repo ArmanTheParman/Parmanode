@@ -20,4 +20,5 @@ elif [[ $drive_fulcrum == "internal" ]] ; then
 
 fi
 
+return 0
 }

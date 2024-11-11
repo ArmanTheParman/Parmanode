@@ -1,7 +1,7 @@
 function parmanode_conf_add {
 
 #create config file if it doesn't exist.
-if [[ ! -f $HOME/.parmanode/parmanode.conf ]] ; then
+if [[ ! -f $pc ]] ; then
 touch $HOME/.parmanode/parmanode.conf
 fi
 
@@ -12,7 +12,7 @@ if [[ -z $1 ]] ; then return 0 ; fi
 # duplication
 parmanode_conf_remove "${1}"
 # now add it by appending (-a)
-echo "${1}" | tee -a $HOME/.parmanode/parmanode.conf >/dev/null
+echo "${1}" | tee -a $pc >/dev/null
 }
 
 ########################################################################################
