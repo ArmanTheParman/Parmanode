@@ -1,26 +1,16 @@
 function fulcrum_tor {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
-
-if [[ ! -f /etc/tor/torrc ]] ; then
-set_terminal ; echo "
-########################################################################################
-    /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
-    Parmanode won't be able to automate this process for you. Sorry! Aborting.
-########################################################################################
-"
-enter_continue ; return 1 ;
-fi
 
 please_wait
 
+if [[ $OS == Linux ]] ; then
 sudo usermod -a -G debian-tor $USER >/dev/null 2>&1
+fi
 
-if ! cat $fc | grep "tcp" >/dev/null 2>&1 ; then
-    echo "tcp = 0.0.0.0:50001" | sudo tee -a $fc >/dev/null 2>&1
-    fi
+if ! grep -q "tcp" $fc ; then
+echo "tcp = 0.0.0.0:50001" | sudo tee -a $fc >/dev/null 2>&1
+fi
 
 if ! sudo cat $macprefix/etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
 echo "# Additions by Parmanode..." | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
@@ -52,8 +42,7 @@ if sudo grep "HiddenServicePort 7002 127.0.0.1:50001" \
     echo "HiddenServicePort 7002 127.0.0.1:50001" | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
     fi
 
-sudo systemctl restart tor
-sudo systemctl restart fulcrum.service
+restart_tor
 
 get_onion_address_variable "fulcrum" 
 parmanode_conf_add "fulcrum_tor=true"
