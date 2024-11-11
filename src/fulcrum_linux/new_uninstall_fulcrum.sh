@@ -24,7 +24,9 @@ docker rm fulcrum >/dev/null 2>&1
 docker rmi fulcrum >/dev/null 2>&1 
 else
 sudo rm /usr/local/bin/Fulcrum* 2>$dn
+sudo systemctl disable fulcrum.service 2>$dn
 sudo rm /etc/systemd/system/fulcrum.service 2>$dn
+sudo systemctl daemon-reload 2>$dn
 fi
 
 sudo rm -rf $hp/fulcrum >$dn 2>&1
