@@ -35,7 +35,7 @@ debug "datadir chosen, $datadir"
 
 if [[ $computer_type == Pi ]] ; then fastsync=0 ; else fastsync=1000 ; fi
 
-if [[ $fulcrumdocker == "true" ]] ; then local bitcoinIP="host.docker.internal" ; else local bitcoinIP="127.0.0.1" ; fi
+if [[ $fulcrumdocker == "true" && $OS == Mac ]] ; then local bitcoinIP="host.docker.internal" ; else local bitcoinIP="127.0.0.1" ; fi
 
 #For fulcrumdkr, datadir is internal to the container. Then mounted in the run command. Then symlinks to external drive.
 echo "fast-sync = $fastsync 
