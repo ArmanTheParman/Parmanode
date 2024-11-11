@@ -168,9 +168,11 @@ sudo vim $fc
 man)
 yesorno "Do you want to log in as the root user or parman (sudo password: parmanode)" "r" "root" "pp" "parman" \
          && {
+            clear
             docker exec -itu root fulcrum bash
             continue
          }
+         clear
          docker exec -itu parman fulcrum bash
          ;;
 
