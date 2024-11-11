@@ -15,10 +15,16 @@ if [[ $drive_fulcrum == "external" ]] ; then
 fi
 
 please_wait
+
+if [[ $OS == Mac ]] ; then
+ports="-p 50001:50001 -p 50002:50002"
+elif [[ $OS == Linux ]] ; then
+ports="--network=host"
+fi
+
 docker run -d --name fulcrum \
                 --restart unless-stopped \
-                -p 50001:50001 \
-                -p 50002:50002 \
+                $ports \
                 -v $HOME/.fulcrum_db:/home/parman/.fulcrum_db \
                 -v $HOME/.fulcrum/:/home/parman/.fulcrum \
                 fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 || return 1
