@@ -15,7 +15,7 @@ sudo systemctl stop fulcrum.service
 elif grep -q "fulcrumdkr" $ic ; then
 docker_running || return 1
 please_wait
-docker exec -it fulcrum bash -c "kill -15 \"\$(ps -x | grep fulcrum | grep -v bash | grep -qv grep | awk '{print \$1}')\""
+docker exec -it fulcrum bash -c "kill -15 \"\$(ps -x | grep fulcrum | grep -v bash | grep -v grep | awk '{print \$1}')\""
 #make sure fulcrum gracefully stopped
 docker exec -it fulcrum bash -c "ps -x | grep fulcrum | grep -qv grep" && docker stop fulcrum && return 0
 sleep 2
