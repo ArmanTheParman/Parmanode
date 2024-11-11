@@ -198,11 +198,11 @@ echo -e "
 ########################################################################################
 "
 enter_continue
-nano $fc
+sudo nano $fc
 ;;
 
 fcv)
-vim_warning ; vim $fc
+vim_warning ; sudo vim $fc
 ;;
 
 p|P) 
