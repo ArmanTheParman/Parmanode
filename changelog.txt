@@ -1,6 +1,7 @@
 Version 3.46.7
     -Fulcrum 1.11.1 
     -Fulcrum docker option added for Linux
+    -Tor added for Fulcrum Mac
     -Refactor fulcrum.conf location - Moved to $HOME/.fulcrum
     -Refactor fulcrum_database_corrupted()
     -Rfeactor fulcrum_tor()
