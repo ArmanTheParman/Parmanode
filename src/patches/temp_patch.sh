@@ -132,6 +132,7 @@ fi
 if [[ $OS == Mac ]] && grep -q "fulcrum-end" $ic ; then
 sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
 sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
+log "fulcrum" "changed fulcrum-end to fulcrumdkr-end" 
 fi
 
 debug temppatchend
