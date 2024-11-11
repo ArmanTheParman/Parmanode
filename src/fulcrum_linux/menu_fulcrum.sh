@@ -74,8 +74,6 @@ $cyan
       (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
 $cyan
       (tor)$orange      Toggle Tor connections to Fulcrum -- Fulcrum Tor Status : $F_tor
-$cyan
-      (newtor)$orange   Refresh Tor address
 $cyan    
       (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
@@ -185,13 +183,6 @@ fulcrum_tor
 else
 fulcrum_tor_remove
 fi
-;;
-
-newtor)
-sudo rm -rf /var/lib/tor/fulcrum-service
-sudo systemctl restart tor
-announce "You need to wait about 30 seconds to a minute for the onion address to appear.
-    Just refresh the menu after a while."
 ;;
 
 dc|DC|Dc|dC)
