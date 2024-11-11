@@ -1,5 +1,4 @@
 function menu_fulcrum {
-unset refresh
 
 while true ; do
 set_terminal
@@ -25,13 +24,8 @@ fi
 source $pc >$dn 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
-#done this way so first load of menu is fast
-if [[ ! $refresh == "true" ]] ; then
-fulcrum_status="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
-fulcrum_sync="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
-else
 menu_fulcrum_status
-fi
+fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 
 #if grep -q "fulcrum-" $ic ; then
 #    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
@@ -46,7 +40,7 @@ echo -e "
 if [[ $fulcrumrunning == "true" ]] ; then echo -en "
       FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
-      BLOCK      :   $fulcrum_sync
+      BLOCK      :   $fulcrum_sync $fulcrum_message
       DRIVE      :   $drive_fulcrum $orange
 
 
@@ -91,7 +85,7 @@ choose "xpmq" ; read choice ; set_terminal
 
 case $choice in
 m|M) back2main ;;
-r) please_wait ; menu_fulcrum_status ; refresh="true" ;;
+r) please_wait ; menu_fulcrum_status ;; 
 
 start | START)
 set_terminal
