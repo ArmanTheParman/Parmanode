@@ -17,16 +17,8 @@ if [[ $choice == y ]] ; then true ; else return 1 ; fi
 #uninstall....
 please_wait
 
-
-
-if ! grep -q "fulcrum" $ic >$dn 2>&1 ; then
-    set_terminal 
-    echo "Fulcrum is not installed. You can skip uninstallation."
-    enter_continue
-    return 1 
-    fi
-
-if grep -q "fulcrumdkr" $ic >$dn 2>&1 ; then
+if grep -q "fulcrumdkr" $ic || [[ $OS == Mac ]] ; then
+if ! docker ps >$dn 2>&1 ; then announce "Please make sure Docker is running. Aborting." ; return 1 ; fi
 docker stop fulcrum >/dev/null 2>&1 
 docker rm fulcrum >/dev/null 2>&1 
 docker rmi fulcrum >/dev/null 2>&1 

@@ -103,13 +103,7 @@ m|M) back2main ;;
 
     fd|FD)
       if [[ -n $fulcrumdkr_n ]] ; then set_terminal
-
-         if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 
-         fi
-
-         if [[ $OS == "Mac" ]] ; then new_install_fulcrum docker && return 0 
-         fi
-
+         new_install_fulcrum docker 
          return 0 
       fi
       ;;
