@@ -135,10 +135,10 @@ echoline
 #NGINX
 echor "#NGINX" 
 echor "$(sudo nginx -t)"
-cd $macprefix/etc/nginx && echor "$(pwd ; ls -m)"
-cd $macprefix/etc/nginx/conf.d && echor "$(pwd ; ls -m)"
-echor "$(file /etc/nginx/stream.conf && cat /etc/nginx/stream.conf)"
-echor "$(file /etc/nginx/nginx.conf && cat /etc/nginx/nginx.conf)"
+cd "$macprefix/etc/nginx" && echor "$(pwd ; ls -m)"
+cd "$macprefix/etc/nginx/conf.d" && echor "$(pwd ; ls -m)"
+echor "$(file "\$macprefix/etc/nginx/stream.conf\" && cat \"/etc/nginx/stream.conf\")"
+echor "$(file "\$macprefix/etc/nginx/nginx.conf\" && cat \"/etc/nginx/nginx.conf\")"
 echor "NGINX ERROR FILE..."
 echor "$(cat $tmp/nginx.conf_error)"
 
@@ -158,7 +158,6 @@ echor "bitcoin.conf..."
 echor "$(cat $HOME/.bitcoin/bitcoin.conf)"
 echor "getblockchaininfo..."
 echor "$(bitcoin-cli getblockchaininfo)"
-echor "rpc curl bitcoin, 127.0.0.1 then $IP \n"
 fi
 
 echoline
