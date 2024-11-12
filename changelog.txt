@@ -1,6 +1,3 @@
-Version 3.47.0
-    -ParmaJoin (JoinMarket)
-    -debug file rearrangement
 Version 3.46.7
     -Fulcrum 1.11.1 
     -Fulcrum docker option added for Linux
