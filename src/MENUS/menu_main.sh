@@ -30,7 +30,7 @@ echo -en "$orange
 #                                                                                      #
 #    Version:$bright_blue $version     $output_branch
 #                                                                                      #"
-echo -en "$debugstatus
+echo -e "$debugstatus
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
