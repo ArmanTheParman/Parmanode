@@ -27,7 +27,7 @@ fi
 function debug2 {
 echo $(date) | tee -a $dp/debug2.log >/dev/null 2>&1
 echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug2.log >/dev/null 2>&1
-echo "$1" | tee -a $dp/.debug2.log >/dev/null 2>&1
+echo "$1" | tee -a $dp/debug2.log >/dev/null 2>&1
 if [[ $debug == 2 ]] ; then
 echo -e "Debug point:
 

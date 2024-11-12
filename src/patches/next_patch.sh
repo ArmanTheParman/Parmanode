@@ -34,6 +34,8 @@ sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1
 sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
 fi
 
+rm $dp/.debug2.log >$dn 2>&1
+
 parmanode_conf_remove "patch="
 parmanode_conf_add "patch=7"
 }
