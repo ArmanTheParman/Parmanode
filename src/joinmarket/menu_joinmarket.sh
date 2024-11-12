@@ -171,7 +171,7 @@ obi)
    orderbook_access_info
 ;;
 ss)
-   if grep -q "NOT" <<< $socatstatus
+   if grep -q "NOT" <<< $socatstatus ; then
    start_socat joinmarket
    else
    stop_socat joinmarket
