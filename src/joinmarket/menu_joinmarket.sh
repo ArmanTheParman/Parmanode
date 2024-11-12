@@ -22,7 +22,33 @@ else
     unset jm_menu_shhh
 fi
 
-if [[ -z $wallet ]] ; then wallet=NONE ; fi
+if [[ -z $wallet ]] ; then 
+    #start by setting wallet to NONE
+    wallet=NONE ; fi
+
+    #check if yg running, and load wallet variable, and set menu text
+    if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+    ygtext="
+    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet
+"
+    else
+        ygext=""
+    fi
+
+    #if yg wasn't running then wallet is NONE, then load a wallet if there is only one of them, otherwise leave as NONE
+    if [[ $wallet == "NONE" ]] && [[ $(ls $HOME/.joinmarket/wallets/ | wc -w | tr -d ' ') == 1 ]] ; then
+        wallet=$(ls $HOME/.joinmarket/wallets/)
+    fi
+
+# if there is a wallet loaded, then check if yg is running for the menu
+else
+	if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+	    ygtext="
+	    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet
+	"
+	fi
+fi
 
 if docker ps 2>$dn | grep -q joinmarket ; then
 
@@ -75,7 +101,7 @@ $jm_be_carefull
     Socat is:            $socatstatus
 
     Order Book is:       $orderbook
-
+$ygtext
 $cyan
                   s)$orange           Start/stop JoinMarket Docker container
 $cyan
