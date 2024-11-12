@@ -85,8 +85,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read ; set_terminal ; sync
-done
+choose xpmq ; read choice ; set_terminal ; case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
 
 
 #Get disk ID
