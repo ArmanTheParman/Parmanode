@@ -30,7 +30,7 @@ if [[ -z $wallet ]] ; then
     if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
     ygtext="
-    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet
+    Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
     else
         ygext=""
