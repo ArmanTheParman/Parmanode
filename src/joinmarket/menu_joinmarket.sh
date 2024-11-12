@@ -29,6 +29,7 @@ if [[ -z $wallet ]] ; then
     #check if yg running, and load wallet variable, and set menu text
     if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+    #ygtext1 ... doin't rename, needs to not be ygtext (clashes with yg menu version)
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
