@@ -45,9 +45,9 @@ if [[ -z $wallet ]] ; then
 # if there is a wallet loaded, then check if yg is running for the menu
 else
 	if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-	    ygtext1="
-	    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet
-	"
+    ygtext1="
+    Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
+"
 	fi
 fi
 
