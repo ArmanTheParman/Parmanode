@@ -24,7 +24,7 @@ fi
 
 if [[ -z $wallet ]] ; then 
     #start by setting wallet to NONE
-    wallet=NONE ; fi
+    wallet=NONE
 
     #check if yg running, and load wallet variable, and set menu text
     if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
