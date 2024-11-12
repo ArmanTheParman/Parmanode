@@ -58,26 +58,3 @@ set_terminal ; echo -e "
 "
 enter_continue
 }
-
-function choose_wallet {
-cd $HOME/.joinmarket/wallets >$dn 2>&1 || return
-set_terminal ; echo -e "
-########################################################################################
-
-    Please choose a wallet, type the file name exaclty, then <enter>
-"
->$dp/.jmwallets
-for i in $(ls) ; do echo -e "    $red$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >/dev/null 2>&1 ; done
-cd - >$dn 2>&1
-echo -en "
-$orange
-########################################################################################
-"
-read wallet
-if ! grep -q "$wallet" $dp/.jmwallets ; then 
-announce "This is not a valid wallet"
-export wallet="NONE"
-return 1
-fi
-export wallet
-}

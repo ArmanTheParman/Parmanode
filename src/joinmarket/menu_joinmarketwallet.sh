@@ -14,7 +14,7 @@ set_terminal ; echo -en "
 $cyan
                   cr)$orange          Create or Recover JoinMarket Wallet (with info)
 $cyan
-                  load)$orange        Load wallet 
+                  load)$orange        Load wallet (or change to another wallet)
 $cyan
                   sum)$orange         Summary of balances
 $cyan
