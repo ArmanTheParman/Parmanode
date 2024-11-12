@@ -95,6 +95,7 @@ set_terminal_custom 51 ; echo -en "
 $jm_be_carefull
 ########################################################################################
 
+
     JoinMarket is:       $joinmarket_running
 
     Active wallet is:    $magenta$wallet$orange
