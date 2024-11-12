@@ -112,7 +112,7 @@ $cyan
 $cyan
                   obi)$orange         Orderbook access info ...
 $cyan
-                  ss)$orange          Start/Stop Socat forwarding (ssi for info)
+                  ss)$orange          Start/Stop Socat forwarding (${cyan}ssi$orange for info)
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $magenta
