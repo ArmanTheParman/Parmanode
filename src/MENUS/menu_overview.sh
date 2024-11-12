@@ -372,10 +372,10 @@ fi
 s1) 
 if [[ $menub1 == "true" ]] ; then
 clear ; please_wait
-stop_bitcoind
+stop_bitcoin
 else
 clear ; please_wait
-run_bitcoind
+start_bitcoin
 fi
 ;;
 s2) 

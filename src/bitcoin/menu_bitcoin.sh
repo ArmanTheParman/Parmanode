@@ -125,17 +125,17 @@ continue
 m|M) back2main ;;
 
 start|START|Start)
-run_bitcoind
+start_bitcoin
 ;;
 
 stop|STOP|Stop)
 if [[ $OS == Linux ]] ; then
     while pgrep bitcoind ; do 
-    stop_bitcoind 
+    stop_bitcoin
     sleep 2
     done
 elif [[ $OS == Mac ]] ; then
-    stop_bitcoind
+    stop_bitcoin
 fi
 
 ;;
@@ -143,8 +143,8 @@ fi
 restart|RESTART|Restart)
 if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
 if [[ $OS == "Mac" ]] ; then
-stop_bitcoind 
-run_bitcoind "no_interruption"
+stop_bitcoin
+start_bitcoin "no_interruption"
 fi
 ;;
 
@@ -248,7 +248,7 @@ menu_use
 ;;
 
 delete|Delete|DELETE)
-stop_bitcoind
+stop_bitcoin
 delete_blockchain
 return 1
 ;;

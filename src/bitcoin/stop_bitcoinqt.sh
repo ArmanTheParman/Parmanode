@@ -18,6 +18,7 @@ fi
 function run_bitcoinqt {
 if [[ $OS == Mac ]] ; then
 open /Applications/Bitcoin-Qt.app >/dev/null 2>&1
+debug "pause to check for errors"
 else
     if pgrep bitcoin >/dev/null 2>&1 ; then return 1 ; fi
     nohup bitcoin-qt >/dev/null 2>&1 &

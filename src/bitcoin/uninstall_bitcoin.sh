@@ -85,7 +85,7 @@ fi
 
 fi
 
-stop_bitcoind
+stop_bitcoin
 
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 

@@ -52,7 +52,7 @@ m|M) back2main ;;
 				fi
 				 
 				if [[ $2 != install ]] ; then #no need to stop bitcoin if it hasn't been installed yet.
-	            stop_bitcoind  
+	            stop_bitcoin
 				fi
 
                 set_rpc_authentication_update_conf_edits #defined below
@@ -63,7 +63,7 @@ m|M) back2main ;;
                 if [[ ! $dontstartbitcoin == "true" ]] ; then #will run unless dontstartbitcoin=true
 				sleep 1 
 				echo "Starting Bitcoin"
-				run_bitcoind
+				start_bitcoin
 				fi
 
                 break
@@ -73,7 +73,7 @@ m|M) back2main ;;
 				break
 				;;
 	c)
-	            stop_bitcoind
+	            stop_bitcoin
                 sudo gsed -i "/rpcuser/d" $bc && unset rpcuser
                 sudo gsed -i "/rpcpassword/d" $bc && unset rpcpassword
 
@@ -82,7 +82,7 @@ m|M) back2main ;;
 
                 if [[ ! $dontstartbitcoin == "true" ]] ; then #will run unless dontstartbitcoin=true
 				sleep 1
-				run_bitcoind 
+				start_bitcoin
 				fi
 				return 1 #important for testing if user/pass set
 	;;
@@ -113,7 +113,7 @@ function set_rpc_authentication_update_conf_edits {
 set_terminal
 
 if [[ ! $dontstartbitcoin == "true" ]] ; then #will run unless dontstartbitcoin=true
-run_bitcoind
+start_bitcoin
 fi
 
 }

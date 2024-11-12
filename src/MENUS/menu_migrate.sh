@@ -54,13 +54,13 @@ export newmigrate="true"
 export justFormat="true"
 export drive=external && parmanode_conf_add "drive=external"
 format_ext_drive
-stop_bitcoind 
+stop_bitcoin
 prune_choice || return 1 
 make_bitcoin_directories
 make_bitcoin_conf || return 1
 sudo chown -R $USER: $HOME/.bitcoin/ 
 set_rpc_authentication "s" "install"
-please_wait && run_bitcoind
+please_wait && start_bitcoin
 unset newmigrate drive
 success "The new drive" "being imported"
 return 0

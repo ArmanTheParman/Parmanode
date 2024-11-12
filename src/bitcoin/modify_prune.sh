@@ -34,7 +34,7 @@ esac
 done
 fi
 
-stop_bitcoind
+stop_bitcoin
 apply_prune_bitcoin_conf
 set_terminal ; echo -e "
 ########################################################################################

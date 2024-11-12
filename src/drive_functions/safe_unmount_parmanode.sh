@@ -13,7 +13,7 @@ fi
 source $HOME/.parmanode/parmanode.conf
 
 if [[ $drive == external ]] ; then
-stop_bitcoind
+stop_bitcoin
 fi
 if [[ $drive_fulcrum == external ]] ; then
 stop_fulcrum

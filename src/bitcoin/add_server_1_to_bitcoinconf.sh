@@ -13,9 +13,9 @@ set_terminal ; echo -e "
 read choice
 if [[ $choice == "s" ]] ; then return ; fi
 
-    stop_bitcoind
+    stop_bitcoin
     echo "server=1" | tee -a $bc >/dev/null 2>&1
-    run_bitcoind
+    start_bitcoin
 fi
 fi
 }

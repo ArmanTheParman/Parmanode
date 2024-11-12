@@ -179,11 +179,11 @@ fi
 ;;
 
 sb)
-start_bitcoind
+start_bitcoin
 ;;
 
 stp)
-stop_bitcoind
+stop_bitcoin
 ;;
 
 *)

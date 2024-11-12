@@ -39,7 +39,7 @@ p|P|n|N|NO|No) return 1 ;;
 c|C)
  #change systemctl? No - because symlink
 
-  stop_bitcoind
+  stop_bitcoin
 
 if [[ $drive == external ]] ; then
 

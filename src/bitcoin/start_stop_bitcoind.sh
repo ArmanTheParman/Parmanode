@@ -1,13 +1,9 @@
 # I have used the name bitcoind, but later introduced bitcoin-qt for macs, the name of the function
 # has been kept the same
 
-function restart_bitcoin { stop_bitcoind ; start_bitcoind ; }
-function restart_bitcoind { stop_bitcoind ; start_bitcoind ; }
+function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
-function start_bitcoin { start_bitcoind ; }
-function stop_bitcoin { stop_bitcoind ; }
-
-function run_bitcoind {
+function start_bitcoin {
 
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
@@ -55,16 +51,13 @@ if [[ $OS == "Mac" ]] ; then
         fi
 run_bitcoinqt
 fi
-debug "end run bitcoind"
+
 }
 
-function start_bitcoind {
-run_bitcoind $@
-}
 
 ########################################################################################################################
 
-function stop_bitcoind {
+function stop_bitcoin {
 
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
@@ -96,7 +89,7 @@ sleep 1 ; echo 3
 sleep 1 ; echo 4
 sleep 1 ; echo 5
 
-stop_bitcoind
+stop_bitcoin
 rm $tmp/bitcoinoutput.tmp
 fi
 fi

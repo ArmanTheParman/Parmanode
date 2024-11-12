@@ -61,7 +61,7 @@ q|Q) exit ;;
 p|P) return 1 ;;
 n|N) break ;;
 m|M) back2main ;; 
-y|Y) stop_bitcoind ; break ;;
+y|Y) stop_bitcoin ; break ;;
 *) invalid ;;
 esac
 done

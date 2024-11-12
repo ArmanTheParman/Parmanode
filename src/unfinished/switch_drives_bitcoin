@@ -1,7 +1,7 @@
 function switch_drives_bitcoin {
 
 #make sure bitcoin has stopped.
-stop_bitcoind
+stop_bitcoin
 #bring in variables
 
 #change symlinks as needed

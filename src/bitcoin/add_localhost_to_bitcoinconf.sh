@@ -20,9 +20,9 @@ echo -e "
 
     if [[ $choice == "s" ]] ; then return ; fi
 
-    stop_bitcoind
+    stop_bitcoin
     echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-    run_bitcoind
+    start_bitcoin
 fi
 fi
 }

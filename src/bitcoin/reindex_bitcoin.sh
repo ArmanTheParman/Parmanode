@@ -11,7 +11,7 @@ set_terminal ; echo -e "
 "
 read choice
 if [[ $choice == y ]] ; then
-stop_bitcoind
+stop_bitcoin
 clear
 echo -e "
 ########################################################################################
@@ -34,8 +34,8 @@ docker exec btcpay bitcoin-cli stop
 doecker exec -d btcpay bitcoind 
 elif [[ $OS == Linux ]] ; then
 sudo bitcoind --reindex
-stop_bitcoind
-start_bitcoind
+stop_bitcoin
+start_bitcoin
 fi
 
 fi

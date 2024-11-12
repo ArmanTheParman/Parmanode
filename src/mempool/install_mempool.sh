@@ -68,7 +68,7 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
     fi
     
     if [[ $OS == Linux ]] ; then sudo systemctl restart bitcoind.service 
-    elif [[ $OS == Mac ]] ; then stop_bitcoind ; start_bitcoind 
+    elif [[ $OS == Mac ]] ; then stop_bitcoin ; start_bitcoin
     fi
 
     announce "An unusual IP address for the Docker Gateway was detected 

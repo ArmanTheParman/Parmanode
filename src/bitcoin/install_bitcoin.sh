@@ -118,7 +118,7 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
-please_wait && run_bitcoind
+please_wait && start_bitcoin
 fi #end not btcpainstallsbitcoin
 
 if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $btcpay_combo == "true" ]] ; then
