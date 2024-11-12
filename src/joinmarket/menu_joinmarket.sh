@@ -103,6 +103,7 @@ $jm_be_carefull
 
     Order Book is:       $orderbook
 $ygtext1
+
 $cyan
                   s)$orange           Start/stop JoinMarket Docker container
 $cyan
@@ -119,6 +120,7 @@ $red
                   yg)$orange          Yield Generator menu ...
 $bright_blue
                   mm)$orange          Menu 2 ...
+
 
 $jm_menu_shhh$orange   
 ########################################################################################

@@ -23,6 +23,7 @@ if [[ -e $logfile ]] ; then
             \r        $(sudo gsed -n '/minsize =/p' $jmcfg)
             \r        $(sudo gsed -n '/size_factor =/p' $jmcfg)
 
+
     $orange
     "
 
@@ -68,6 +69,7 @@ set_terminal_custom 48 ; echo -ne "
 
 $ygtext
 $orderbooknn
+
 
 $green
                 start)$orange    Start Yield Generator 
