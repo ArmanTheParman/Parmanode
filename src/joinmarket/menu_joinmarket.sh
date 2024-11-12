@@ -29,7 +29,7 @@ if [[ -z $wallet ]] ; then
     #check if yg running, and load wallet variable, and set menu text
     if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    ygtext="
+    ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
     else
@@ -44,7 +44,7 @@ if [[ -z $wallet ]] ; then
 # if there is a wallet loaded, then check if yg is running for the menu
 else
 	if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-	    ygtext="
+	    ygtext1="
 	    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet
 	"
 	fi
@@ -101,7 +101,7 @@ $jm_be_carefull
     Socat is:            $socatstatus
 
     Order Book is:       $orderbook
-$ygtext
+$ygtext1
 $cyan
                   s)$orange           Start/stop JoinMarket Docker container
 $cyan
