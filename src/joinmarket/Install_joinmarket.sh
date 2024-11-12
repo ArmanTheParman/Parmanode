@@ -128,7 +128,7 @@ function make_joinmarket_wallet {
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && enter_continue \
                                                && announce "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
-        elif [[ $os == linux ]] ; then 
+        elif [[ $OS == linux ]] ; then 
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && enter_continue \
                                                && announce "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
