@@ -110,9 +110,9 @@ $cyan
 $cyan
                   ob)$orange          Start/Stop orderbook
 $cyan
-                  obs)$orange         Orderbook access info ...
+                  obi)$orange         Orderbook access info ...
 $cyan
-                  socat)$orange       Start/Stop Socat forwarding ...
+                  ss)$orange          Start/Stop Socat forwarding (ssi for info)
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $magenta
@@ -167,10 +167,17 @@ ob)
     orderbook_jm
 ;;
 
-obs)
+obi)
    orderbook_access_info
 ;;
-socat)
+ss)
+   if grep -q "NOT" <<< $socatstatus
+   start_socat joinmarket
+   else
+   stop_socat joinmarket
+   fi
+;;
+ssi)
     check_socat_working || return 1
 ;;
 
