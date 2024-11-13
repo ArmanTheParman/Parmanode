@@ -18,7 +18,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read
-sudo systemctl stop $drive_programs >/dev/null 2>&1
+sudo systemctl stop bitcoind fulcrum electrs electrumx >/dev/null 2>&1
 sudo umount $dp >/dev/null 2>&1
 sudo umount /media/$USER/parmanode1 >/dev/null 2>&1
 set_terminal ; echo -e "

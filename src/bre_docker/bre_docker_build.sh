@@ -1,10 +1,7 @@
 function bre_docker_build {
-if [[ $debug == 3 ]] ; then
+#can set #NOCACHE to "--no-cache" as an environment variable if preferred
+#eg use the following command to start the program, and then install... 
+#NOCACHE="--no-cache" rp 
 cd $HOME/parman_programs/parmanode/src/bre_docker
-docker build -t bre --no-cache .
-return 0
-fi
-
-cd $HOME/parman_programs/parmanode/src/bre_docker
-docker build -t bre .
+docker build -t bre $NOCACHE .
 }                     

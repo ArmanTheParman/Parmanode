@@ -1,33 +1,17 @@
 function do_loop {
-sudo true ;
-#Educational comments included.
-#The first line, including the # is treated specially. It means this is
-#a script, and invokes the bash program to run it. It must be the very first
-#character in a file followed by !, then the path to the terminal program.
 
+#sudo will be needed. Running it early here, getting it out of the way, 
+#and it stays in the cache for a while.
+sudo true ;
 
 #check script is being run from parmanode directory so relative paths work
 #-f checks if a file exists in the working directory. If it doesn't, it 
 #means the run_parmanode.sh file is not in the correct location.
 
-if [ -f do_not_delete_move_rename.txt ] ; then true ; else
-clear
-echo -e "
-The run_parmanode.sh script must be run from it's original directory. It
-cannot be moved relative to all the other files, but it can be run
-by calling it with a different script from elsewhere.
-
-Exiting. 
-
-Hit <enter> to exit."
-read #this command takes any user keyboard input, waiting for <enter> to continue.
-exit 0
-fi
-
 # source all the modules. Exclude executable scripts which aren't modules. Modules
 # are bits of codes saved elseshere. They are "sourced" to load the code into memory.
 
-	for file in ./src/**/*.sh ; do #for every file that ends in .sh, up to a directory
+	for file in $HOME/parman_programs/parmanode/src/**/*.sh ; do #for every file that ends in .sh, up to a directory
 	#length of 1, attach its name to the variable "file" then run the code below, 
 	#looping so each file gets sourced.
 
@@ -46,7 +30,6 @@ set_colours #just exports variables with colour settings to make it easier to co
 debug "printed colours" "silent"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
-test_directory_placement #you can go to this funciton and read the code, then come back.
 test_standard_install
 
 set_terminal
@@ -101,7 +84,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
-[[ $debug == menu ]] || autoupdate
+autoupdate
 fi
 
 if [[ $needs_restart == "true" ]] ; then
@@ -180,7 +163,7 @@ fi
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
-[[ $debug == menu ]] || motd
+motd
 
 #make sure debug file doesn't get too big
 truncatedebuglog

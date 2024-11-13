@@ -1,6 +1,13 @@
-Version 3.47.0
-    -ParmaJoin (JoinMarket)
-    -debug file rearrangement
+#Version 3.47.0
+#    -ParmaJoin (JoinMarket)
+#    -debug file rearrangement
+
+Version 3.46.8
+    -Refactor to remove the test for where run_parmanode.sh is called from
+    -Intro colour improvement
+    -Improved instructions page
+    -Removed Parmanode directory location test
+    -Deprecated 'do_not_remove_rename.txt' file and its purpose
 Version 3.46.7
     -Fulcrum 1.11.1 
     -Fulcrum docker option added for Linux

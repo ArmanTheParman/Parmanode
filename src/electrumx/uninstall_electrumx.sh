@@ -31,10 +31,8 @@ fi
 
 sudo rm -rf $hp/electrumx
 pip3 uninstall electrumx || log electrumx "pip3 uninstall electrumx fail"
-if [[ $test == 1 ]] ; then echo 5 ; enter_continue ; fi
 sudo rm -rf $HOME/.local/bin/electrumx* >/dev/null 2>&1
 parmanode_conf_remove "drive_electrumx"
 installed_conf_remove "electrumx-"
-if [[ $test == 1 ]] ; then echo 6 ; fi
 success "Electrum X" "being uninstalled"
 }

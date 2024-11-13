@@ -38,6 +38,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -59,6 +60,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -76,6 +78,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 3 ]] ; then
@@ -104,6 +107,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 4 ]] ; then
@@ -141,6 +145,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 6 ]] ; then
@@ -160,6 +165,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 7 ]] ; then
@@ -177,6 +183,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -198,6 +205,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 9 ]] ; then
@@ -217,6 +225,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 10 ]] ; then
@@ -241,6 +250,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 11 ]] ; then
@@ -258,6 +268,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 
 fi
@@ -278,6 +289,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 13 ]] ; then
@@ -293,6 +305,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 14 ]] ; then
@@ -312,6 +325,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 15 ]] ; then
@@ -333,6 +347,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 16 ]] ; then
@@ -351,6 +366,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -374,6 +390,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 18 ]] ; then
@@ -423,6 +440,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 19 ]] ; then
@@ -475,6 +493,7 @@ $orange
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 20 ]] ; then
@@ -495,6 +514,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 21 ]] ; then
@@ -519,6 +539,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 22 ]] ; then
@@ -538,6 +559,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -565,6 +587,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -588,6 +611,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -613,6 +637,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -639,6 +664,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 27 ]] ; then
@@ -670,6 +696,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -692,6 +719,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -709,6 +737,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -750,6 +779,7 @@ $orange
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -768,6 +798,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -787,6 +818,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -806,6 +838,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 34 ]] ; then
@@ -824,6 +857,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 35 ]] ; then
@@ -845,6 +879,7 @@ $bright_blue
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 36 ]] ; then
@@ -875,6 +910,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 37 ]] ; then
@@ -902,6 +938,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 if [[ $motd == 38 ]] ; then
@@ -922,6 +959,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -943,6 +981,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -963,6 +1002,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -979,6 +1019,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -1006,6 +1047,7 @@ $cyan
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi
 
@@ -1035,6 +1077,7 @@ $orange
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi 
 
@@ -1054,6 +1097,7 @@ $orange
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi 
 
@@ -1086,6 +1130,7 @@ $orange
 Hit$cyan <enter>$orange to continue.
 "
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
+if [[ $choice == q ]] ; then exit ; fi
 return 0
 fi 
 }

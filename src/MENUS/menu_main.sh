@@ -133,7 +133,8 @@ up|update|UPDATE|Update)
     announce "You need to exit and reload Parmanode to use the new version of Parmanode."
     continue
     fi
-
+    # The user has been alerted to needing to restart Parmanode for the changes to take effect.
+    # Setting exit_loop to false allows the program to continue without forcing an exit.
     if [[ $exit_loop == "false" ]] ; then return 0 ;fi
 ;;
 ap|AP|Ap|aP)

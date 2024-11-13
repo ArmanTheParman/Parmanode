@@ -26,7 +26,7 @@ if [[ $enter_cont == d ]] ; then #switch
     if [[ $debug == 1 ]] ; then export debug=0 ; fi
     if [[ $debug == 0 ]] ; then export debug=1 ; fi
 fi
-
+if [[ $enter_cont == x ]] ; then set +x ; fi
 return 0
 }
 
