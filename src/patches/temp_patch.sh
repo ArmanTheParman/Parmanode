@@ -124,7 +124,9 @@ sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 # potentially large file that's not needed, caused by a bug
 if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >/dev/null ; then 
 for i in $HOME/.*parmanodebackup* ; do
-    sudo rm "${i}" >/dev/null 2>&1
+    if grep -q "parmanodebackup" <<< $i ; then #redencancy for safety
+        sudo rm -rf "${i}" >/dev/null 2>&1
+    fi
 done
 fi
 
