@@ -64,7 +64,6 @@ fi
 
 #clean up downloads
 sudo rm -rf $hp/"*parrow-1."*
-sudo rm $dp/.sparrow_first_run >/dev/null 2>&1
 installed_config_remove "sparrow"
 success "Sparrow" "being uninstalled."
 }
