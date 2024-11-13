@@ -19,7 +19,7 @@ COPY . .
 
 RUN pip3 install 'wheel>=0.35.1' 
 RUN pip install matplotlib
-RUN ./install.sh --docker-install --without-qt 
+RUN ./install.sh --docker-install 
 RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /jm/clientserver/scripts
