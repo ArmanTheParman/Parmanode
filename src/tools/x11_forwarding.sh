@@ -22,7 +22,7 @@ if [[ $1 == yes || $1 == on ]] ; then
     sudo gsed -iE 's/^#X11Forwarding.+$/X11Forwarding yes/' $file >$dn 2>&1 
 
     #check of desired setting is active and exit (and only 1 occurance). 
-    if      [[ $(grep -qE "^X11Forwarding yes$" $file | wc -l) == 1 ]] ; then return 0
+    if      [[ $(grep -qE "^X11Forwarding yes$" $file | wc -l) == 1 ]] ; then restart_sshd ; return 0 ; fi
 
     #check if any stray settings and abort
     if    grep -qE "^X11Forwarding no" $file ; then announce "
@@ -37,13 +37,25 @@ if [[ $1 == yes || $1 == on ]] ; then
 
     return 1
     fi
+    restart_sshd
 
 elif [[ $1 == no || $1 == off ]] ; then
 
     sudo gsed -Ei 's/^X11Forwarding.+$/#X11Forwarding yes/' $file >$dn 2>&1
     sudo gsed -Ei 's/^X11DisplayOffset.+$/#X11DisplayOffset 10/' $file >$dn 2>&1
+    restart_sshd    
 
 fi
 
 return 0
 }
+
+function restart_sshd {
+    if [[ $OS == Linux ]] ; then
+    sudo systemctl restart sshd >$dn 2>&1
+    else
+    sudo launchctl stop com.openssh.sshd >$dn 2>&1
+    sudo launchctl start com.openssh.sshd >$dn 2>&1
+    fi
+}
+
