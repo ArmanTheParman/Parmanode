@@ -141,6 +141,7 @@ if grep -q "test_mempool_btcusername=off" < $hm ; then
 else
     check_core_rpc_username_mempool
 fi
+
 if grep -q "test_mempool_btcpassword=off" < $hm ; then 
     return 0 
 else
@@ -153,6 +154,10 @@ else
     if grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "electrum" ; then
         check_electrum_host_mempool
     fi
+fi
+if [[ $restart_mempool == "true" ]] ; then
+restart_mempool
+unset restart_mempool
 fi
 
 }
@@ -183,7 +188,8 @@ case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
 sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$IP\"/" $mempoolconf >/dev/null 2>&1
-#restart_mempool
+enter_continue "IP changed"
+restart_mempool="true"
 break
 ;;
 n)
@@ -230,7 +236,8 @@ case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
 sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$IP\"/" $mempoolconf >/dev/null 2>&1
-#restart_mempool
+enter_continue "Electrum IP changed"
+restart_mempool="true"
 break
 ;;
 n)
@@ -275,8 +282,9 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ BTC_RPC_USERNAME.*\$/ BTC_RPC_USERNAME: \"$rpcuser\"/" $mempoolconf >/dev/null 2>&1
-#restart_mempool
+sudo gsed -i "s/ CORE_RPC_USERNAME.*\$/ CORE_RPC_USERNAME: \"$rpcuser\"/" $mempoolconf >/dev/null 2>&1
+enter_continue "Username updated"
+restart_mempool="true"
 break
 ;;
 n)
@@ -322,8 +330,9 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ BTC_RPC_PASSWORD.*\$/ BTC_RPC_PASSWORD: \"$rpcpassword\"/" $mempoolconf >/dev/null 2>&1
-#restart_mempool
+sudo gsed -i "s/ CORE_RPC_PASSWORD.*\$/ CORE_RPC_PASSWORD: \"$rpcpassword\"/" $mempoolconf >/dev/null 2>&1
+enter_continue "Password updated"
+restart_mempool="true"
 break
 ;;
 n)
@@ -341,3 +350,4 @@ done
 fi
 
 }
+#
