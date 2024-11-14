@@ -4,7 +4,7 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-
+debug3 "in start bitcoin"
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
@@ -43,6 +43,7 @@ fi
 
 
 if [[ $OS == "Mac" ]] ; then
+debug3 "in start bitcoin --> Mac"
         if grep -q "drive=external" < $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
                 announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
