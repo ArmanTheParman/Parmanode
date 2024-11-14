@@ -4,7 +4,7 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-debug3 "in start bitcoin"
+#debug3 "in start bitcoin - confirmed"
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
@@ -42,7 +42,7 @@ if [[ $OS == "Linux" ]] ; then
 fi                 
 
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $(uname) == Darwin ]] ; then
 debug3 "in start bitcoin --> Mac"
         if grep -q "drive=external" < $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
