@@ -41,6 +41,7 @@ function sd { cd /etc/systemd/system/ ; a ; }
 function gp { pn ; git pull ; a ; }
 function ct { cat /etc/crontab ; }
 function rp { pn ; ./run_parmanode.sh $@ ; }
+function e { exit ; }
 
 function capslock {
 clear
