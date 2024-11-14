@@ -89,6 +89,11 @@ else
    export tmp="$HOME/tmp" 
 fi
 
+#if parmanode.conf gets corrupted, this makes sure the OS variable exists
+if ! grep -q "OS=" $pc >/dev/null 2>&1 ; then
+which_os
+fi
+
 }
 
 function print_parmanode_variables {
