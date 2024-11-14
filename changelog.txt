@@ -1,7 +1,8 @@
 #Version 3.47.0
 #    -ParmaJoin (JoinMarket)
 #    -debug file rearrangement
-#     -X11Forwarding function (modifies sshd_config)
+#    -X11Forwarding function (modifies sshd_config)
+#    -Mempool checks for config consistency with system variables. 
 
 Version 3.46.8
     -Refactor to remove the test for where run_parmanode.sh is called from
