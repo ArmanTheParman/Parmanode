@@ -49,7 +49,6 @@ announce "Parmanode was unable to make your IP address static. Please do
 fi
 
 connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | cut -d : -f 1) 
-debug3 "connection name is $connection_name"
 
 router=$(ip route | grep default | awk '{print $3}')
 sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >/dev/null 2>&1

@@ -17,12 +17,10 @@ fi
 }
 function run_bitcoinqt {
 if [[ $OS == Mac ]] ; then
-debug3 "in run bitcoinqt"
 open /Applications/Bitcoin-Qt.app >/dev/null 2>&1
 return 0
 elif [[ $OS == Linux ]] ; then
     if pgrep bitcoin >/dev/null 2>&1 ; then return 1 ; fi
     nohup bitcoin-qt >/dev/null 2>&1 &
 fi
-debug3 "end of run_bitcoinqt"
 }
