@@ -33,7 +33,7 @@ sudo rm -rf $hp/fulcrum >$dn 2>&1
 sudo rm -rf $HOME/.fulcrum >$dn 2>&1
 
 fulcrum_tor_remove
-sudo gsed -i '/zmqpubhashblock=tcp.+8433/d' $bc >$dn 2>&1
+sudo gsed -i '/zmqpubhashblock=tcp.*8433$/d' $bc >$dn 2>&1
 
 parmanode_conf_remove "drive_fulcrum"
 installed_config_remove "fulcrum"
