@@ -4,11 +4,6 @@ function do_loop {
 #and it stays in the cache for a while.
 sudo true ;
 
-#make sure gsed words early. The sed command is not consistent between Linux and Mac,
-#so I'll always use gsed (works on Mac like sed on Linux) and on Linux, the symlink
-#gsed will point to sed, making code easier to write and read.
-gsed_symlink 
-
 #check script is being run from parmanode directory so relative paths work
 #-f checks if a file exists in the working directory. If it doesn't, it 
 #means the run_parmanode.sh file is not in the correct location.
@@ -27,6 +22,12 @@ gsed_symlink
 		fi 
 
 	done #ends the loop
+
+#make sure gsed words early. The sed command is not consistent between Linux and Mac,
+#so I'll always use gsed (works on Mac like sed on Linux) and on Linux, the symlink
+#gsed will point to sed, making code easier to write and read.
+gsed_symlink 
+
 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 

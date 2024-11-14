@@ -1,4 +1,6 @@
 function menu_mempool {
+export mempoolconf="$hp/mempool/docker/docker-compose.yml"
+
 while true ; do 
 set_terminal
 if docker ps 2>/dev/null | grep -q mempool_web && \
@@ -28,10 +30,10 @@ unset output_tor
 fi
 
 #get backend variable
-if grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "none" ; then
+if grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "none" ; then
 
     export backend="${yellow}Bitcoin Core$orange"
-elif grep "MEMPOOL_BACKEND" < $hp/mempool/docker/docker-compose.yml | grep -q "electrum" ; then
+elif grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "electrum" ; then
 export backend="${bright_blue}An Electrum/Fulcrum Server$orange"
 else
 export backend=""
@@ -93,22 +95,22 @@ restart_mempool
 ;;
 
 tor)
-file="$hp/mempool/docker/docker-compose.yml"
+
 if [[ $tor_mempool == "false" ]] ; then
-sudo gsed -i "/SOCKS5PROXY_ENABLED:/c\      SOCKS5PROXY_ENABLED: \"true\"" $file
+sudo gsed -i "/SOCKS5PROXY_ENABLED:/c\      SOCKS5PROXY_ENABLED: \"true\"" $mempoolconf
 enable_mempool_tor
 else
-sudo gsed -i "/SOCKS5PROXY_ENABLED:/c\      SOCKS5PROXY_ENABLED: \"false\"" $file
+sudo gsed -i "/SOCKS5PROXY_ENABLED:/c\      SOCKS5PROXY_ENABLED: \"false\"" $mempoolconf
 disable_mempool_tor
 fi
 unset file
 ;;
 
 conf)
-nano $hp/mempool/docker/docker-compose.yml
+nano $mempoolconf
 ;;
 confv)
-vim_warning ; vim $hp/mempool/docker/docker-compose.yml
+vim_warning ; vim $mempoolconf
 ;;
 
 bk)
