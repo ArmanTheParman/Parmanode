@@ -4,7 +4,7 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-#debug3 "in start bitcoin - confirmed"
+debug3 "in start bitcoin - Tish, do hit enter."
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
@@ -53,6 +53,7 @@ debug3 "in start bitcoin --> Mac"
 run_bitcoinqt
 fi
 
+debug3 "end of ssb - take photo, then hit enter"
 }
 
 
