@@ -14,4 +14,3 @@ if ! which gsed >/dev/null ; then
 fi
 fi
 }
-
