@@ -12,7 +12,7 @@
 function which_os {
 # This function just extracts and stores the operating system name
 
-if [[ "$(uname)" == "Darwin" ]] #uname gives useful info about the system.
+if [[ $(uname) == "Darwin" ]] #uname gives useful info about the system.
 then
     export OS="Mac"
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
@@ -24,7 +24,7 @@ then
     return 0 
 fi
 
-if [[ "$(uname)" == "Linux" ]]
+if [[ $(uname) == "Linux" ]]
 then
     export OS="Linux"
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi

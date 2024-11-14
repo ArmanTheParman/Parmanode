@@ -7,7 +7,8 @@ function parmanode_variables {
 #If debug is 1, then a debuging function becomes active, which pauses the
 #program wherever it appears. "export" keeps variable in global memory.
 if [[ $1 == "debug" || $1 == d || $2 == d || $2 == "debug" ]] ; then export debug=1 
-elif [[ $1 == d2 || $1 == "debug2" ]] ; then export debug=2  
+elif [[ $1 == d2 ]] ; then export debug=2  
+elif [[ $1 == d3 ]] ; then export debug=3  #bre docker no-cache build
 fi
 
 #Can be used to source parmanode script and then open a bash terminal with the functions
@@ -80,6 +81,11 @@ elif [[ -d "$HOME/tmp" ]] ; then
 else
    mkdir -p $HOME/tmp >/dev/null 2>&1
    export tmp="$HOME/tmp" 
+fi
+
+#if parmanode.conf gets corrupted, this makes sure the OS variable exists
+if ! grep -q "OS=" $pc >/dev/null 2>&1 ; then
+which_os
 fi
 
 }
