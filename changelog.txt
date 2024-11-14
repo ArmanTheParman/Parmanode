@@ -1,9 +1,4 @@
-#Version 3.47.0
-#    -ParmaJoin (JoinMarket)
-#    -debug file rearrangement
-
 Version 3.46.8
-    -X11Forwarding function (modifies sshd_config)
     -Refactor to remove the test for where run_parmanode.sh is called from
     -Intro colour improvement
     -Improved instructions page
