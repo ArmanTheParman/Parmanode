@@ -35,27 +35,6 @@ if [[ $OS == "Mac" ]] ; then
     brew install tor && brew services start tor 
 fi
 
-if [[ $1 == silent ]] ; then
-
-    set_terminal
-    enter_continue "
-########################################################################################
-$cyan
-    Tor $orange should now be installed and running in the background. It also starts up
-    again when your computer restarts.
-
-    Linux users can stop Tor from the terminal with :
-$yellow
-            sudo systemctl stop tor
-$orange
-    Mac users can stop Tor from the terminal with :
-$yellow
-            brew services stop tor
-$orange
-########################################################################################
-"
-fi
-
 if which tor >/dev/null ; then 
     installed_conf_add "tor-end"
     return 0 
@@ -67,7 +46,7 @@ fi
 
 installed_config_add "tor-end"
 
-if [[ $1 == silent ]] ; then
+if [[ $1 != silent ]] ; then
     success "Tor" "being installed"
 fi
 return 0
