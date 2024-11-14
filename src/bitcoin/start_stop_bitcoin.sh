@@ -5,7 +5,8 @@ function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
 debug3 "in start bitcoin - Tish, do hit enter.
-unmae is... $(uname)"
+unmae is... $(uname)
+OS var is $OS"
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
