@@ -3,6 +3,7 @@
 #    -debug file rearrangement
 #    -X11Forwarding function (modifies sshd_config)
 #    -Mempool checks for config consistency with system variables. 
+#    -More improvements to graceful Fulcrum shutdown
 
 Version 3.46.8
     -Refactor to remove the test for where run_parmanode.sh is called from
