@@ -33,9 +33,9 @@ function choose_sparrow_version {
 set_terminal ; echo -e "
 ########################################################################################
 
-    If you prefer the older sparrow version 1.9.0, then type 'old' and <enter>.
+    If you prefer the older sparrow$green version 1.9.0$orange, then type '${red}old$orange' and $cyan<enter>$orange.
 
-    Otherwise hit <enter> alone to get version 2.0.0
+    Otherwise hit$cyan <enter>$orange alone to get$green version 2.0.0$orange
 
 ########################################################################################
 "
