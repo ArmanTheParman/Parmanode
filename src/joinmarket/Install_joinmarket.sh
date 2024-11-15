@@ -17,7 +17,7 @@ function install_joinmarket {
 
     if ! docker ps | grep -q parmabox ; then
        while true ; do
-       yesorno "ParmaBox needs to be running. Let Parmanode start it?" && docker start parmabox && break
+       yesorno "ParmaBox needs to be running. Let Parmanode start it?" && { docker start parmabox ; break ; }
        return 1
        done
     fi
