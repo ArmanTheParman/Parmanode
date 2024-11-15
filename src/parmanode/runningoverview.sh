@@ -134,11 +134,17 @@ if grep -q "fulcrum-" $ic ; then
 fi 
 
 if grep -q "fulcrumdkr-" $ic ; then
-    if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >/dev/null 2>&1 ; then
+    if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
     overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi
+
+    #another check
+    if docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep -i 'Shutdown complete' " ; then
+        overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
+    fi
+
 fi
 }
 
