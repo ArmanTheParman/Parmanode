@@ -31,6 +31,11 @@ fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 #    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
 isfulcrumrunning ; source $oc >/dev/null 2>&1
 
+if is_fulcrum_shutting_down ; then
+RUNNING="SHUTTING DOWN..."
+else
+RUNNING="RUNNING"
+fi
 
 set_terminal_custom 47
 echo -e "
@@ -38,7 +43,7 @@ echo -e "
                                    ${cyan}Fulcrum Menu${orange}                               
 ########################################################################################"
 if [[ $fulcrumrunning == "true" ]] ; then echo -en "
-      FULCRUM IS :$green   RUNNING$orange $isbitcoinrunning_fulcrum 
+      FULCRUM IS :$green   $RUNNING$orange $isbitcoinrunning_fulcrum 
       STATUS     :   $fulcrum_status
       BLOCK      :   $fulcrum_sync $fulcrum_message
       DRIVE      :   $drive_fulcrum $orange
@@ -243,3 +248,16 @@ rm $file
 return 0
 }
 
+function is_fulcrum_shutting_down {
+if ! grep -q "fulcrumdkr" $ic ; then return 1 ; fi
+
+if docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Flushing' "  ; then
+return 0
+else
+return 1
+fi
+}
