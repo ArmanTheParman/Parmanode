@@ -17,9 +17,9 @@ RUN apt-get install -y --no-install-recommends \
                    
 
 COPY . .
-
+RUN python3-pip=* python3=*
 RUN pip3 install 'wheel>=0.35.1' 
-RUN pip install matplotlib PySide2
+#RUN pip3 install matplotlib PySide2
 RUN ./install.sh --docker-install 
 RUN rm -rf /var/lib/apt/lists/*
 
