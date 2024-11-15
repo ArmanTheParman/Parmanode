@@ -100,7 +100,6 @@ sudo apt-get install jq netcat vim net-tools unzip tmux ssh tor -y
 sudo systemctl enable ssh >$dn 2>&1
 sudo systemctl start ssh >$dn 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
-fi
 break
 
 ;;
