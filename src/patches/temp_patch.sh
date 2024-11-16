@@ -11,6 +11,7 @@ fi
 
 tmux_patch
 
+debug "tp2"
 #put in next patch
 set_github_config
 #fix 8332 value in torrc - linux ; remove Jan 2025
@@ -34,6 +35,8 @@ if which tor >$dn 2>&1 ; then #exit if tor not even installed
         echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
     fi
 fi
+
+debug "tp3"
 #fix homebrew path order ; remove June 2025
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
@@ -54,6 +57,7 @@ if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
 make_ssl_certificates "electrs"
 fi
 
+debug "tp4"
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
@@ -102,6 +106,7 @@ esac
 done
 fi
 
+debug "tp5"
 if ! grep -q "parmashell" $bashrc ; then
 uninstall_parmashell silent ; install_parmashell
 fi
@@ -120,6 +125,8 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
     start_fulcrum
 fi
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
+
+debug "tp6"
 
 # potentially large file that's not needed, caused by a bug
 if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >/dev/null ; then 
