@@ -63,9 +63,11 @@ $cyan
 $cyan
              blog)$orange         View BTCPay Server log
 $cyan
-             nlog)$orange           View NBXplorer log
+             nlog)$orange         View NBXplorer log
 $cyan
              sb)$orange           Start/Stop Bitcoin
+$yellow 
+             bk)$orange           Backup BTCPay data 
 $red
              man)$orange          Manually access container and mess around
 $bright_blue
@@ -197,6 +199,9 @@ enter_continue "Type exit and <enter> to return from container back to Parmanode
 clear
 docker exec -it btcpay bash 
 ;;
+bk)
+backup_btcpay
+;;
 *)
 invalid ;;
 esac  
@@ -261,4 +266,14 @@ else
 export menu_btcpay_version=$btcpay_version
 fi
 debug "pause for btcpay version menu print"
+}
+
+function backup_btcpay {
+
+stop_btcpay
+
+cp -r ~/.btcpayserver ~/.btcpayserver_$(date | awk '{print $1$2$3$4"-"$5}')
+
+#back up  /var/lib/postgresql
+
 }
