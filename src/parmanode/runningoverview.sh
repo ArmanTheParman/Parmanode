@@ -127,21 +127,26 @@ fi
 function isfulcrumrunning {
 if grep -q "fulcrum-" $ic ; then
     if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then 
+    export fulcrumrunning="true"
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
+    export fulcrumrunning="false"
     overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi 
 fi 
 
 if grep -q "fulcrumdkr-" $ic ; then
     if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
+    export fulcrumrunning="true"
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
+    export fulcrumrunning="false"
     overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi
 
     #another check
     if docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep -i 'Shutdown complete' " ; then
+        export fulcrumrunning="false"
         overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi
 
@@ -151,8 +156,10 @@ fi
 function iselectrsrunning {
 if grep -q electrs- $ic >/dev/null 2>&1 || grep -q electrs2- $ic >/dev/null 2>&1 ; then
     if ps -x | grep electrs | grep -q conf >/dev/null 2>&1 ; then 
+    export electrsrunning="true"
     overview_conf_add "electrsrunning=true" "electrsrunning="
     else
+    export electrsrunning="false"
     overview_conf_add "electrsrunning=false" "electrsrunning="
     fi
 fi #end if grep
@@ -160,12 +167,15 @@ fi #end if grep
 }
 function iselectrsdkrrunning {
 if ! docker ps 2>/dev/null | grep -q electrs ; then
+export electrsdkrrunning="false"
 overview_conf_add "electrsdkrrunning=false" "electrsdkrrunning="
 return 1
 fi
 if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
+export electrsdkrrunning="true"
 overview_conf_add "electrsdkrrunning=true" "electrsdkrrunning="
 else
+export electrsdkrrunning="false"
 overview_conf_add "electrsdkrrunning=false" "electrsdkrrunning="
 fi
 }
@@ -174,8 +184,11 @@ function isbrerunning {
 
 if [[ $computer_type == LinuxPC ]] ; then
     if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >/dev/null 2>&1 ; then 
+
+    export brerunning="true" 
     overview_conf_add "brerunning=true" "brerunning="
     else
+    export brerunning="false" 
     overview_conf_add "brerunning=false" "brerunning="
     fi
 fi
@@ -183,12 +196,15 @@ fi
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
     if  docker ps 2>/dev/null | grep -q bre ; then 
         if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
+        export brerunning="true"
         overview_conf_add "brerunning=true" "brerunning="
         else
+        export brerunning="false"
         overview_conf_add "brerunning=false" "brerunning="
         fi
     else
-    overview_conf_add "brerunning=false" "brerunning="
+        export brerunning="false"
+        overview_conf_add "brerunning=false" "brerunning="
     fi
 fi
 
@@ -196,8 +212,10 @@ fi
 
 function isbtcpayrunning {
 if docker ps 2>/dev/null | grep -q btcp >/dev/null 2>&1 ; then 
+export btcpayrunning="true"
 overview_conf_add "btcpayrunning=true" "btcpayrunning="
 else
+export btcpayrunning="false"
 overview_conf_add "btcpayrunning=false" "btcpayrunning="
 fi
 }
@@ -205,23 +223,29 @@ fi
 function isrtlrunning {
 
 if docker ps 2>/dev/null | grep -q rtl ; then
+export rtlrunning="true"
 overview_conf_add "rtlrunning=true" "rtlrunning="
 else 
+export rtlrunning="false"
 overview_conf_add "rtlrunning=false" "rtlrunning="
 fi
 
 function ismempoolrunning {
 if docker ps 2>/dev/null | grep -q mempool_web ; then
+export mempoolrunning="true"
 overview_conf_add "mempoolrunning=true" "mempoolrunning="
 else
+export mempoolrunning="false"
 overview_conf_add "mempoolrunning=false" "mempoolrunning="
 fi
 }
 
 function iselectrumxrunning {
 if pgrep electrumx >/dev/null 2>&1 ; then
+export electrumxrunning="true"
 overview_conf_add "electrumxrunning=true" "electrumxrunning="
 else
+export electrumxrunning="false"
 overview_conf_add "electrumxrunning=false" "electrumxrunning="
 fi
 
@@ -230,8 +254,10 @@ fi
 }
 function isthunderhubrunning {
 if docker ps 2>/dev/null | grep -q thunderhub ; then
+export thunderhubrunning="true"
 overview_conf_add "thunderhubrunning=true" "thunderhubrunning="
 else
+export thunderhubrunning="false"
 overview_conf_add "thunderhubrunning=false" "thunderhubrunning="
 fi
 
