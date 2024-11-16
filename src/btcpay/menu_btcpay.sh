@@ -4,7 +4,7 @@ btcpaylog="$HOME/.btcpayserver/btcpay.log"
 
 set_btcpay_version_and_menu_print 
 debug "redundant pause"
-menu_bitcoin menu_btcpay #gets variables output1 for menu text
+menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 
 if echo $output1 | grep -q "choose" ; then
 output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
@@ -67,9 +67,7 @@ $cyan
 $cyan
              nl)$orange           View NBXplorer log
 $cyan
-             sb)$orange           Start Bitcoin
-$cyan
-             stp)$orange          Stop Bitcoin
+             sb)$orange           Start/Stop Bitcoin $btcpbitcoinrunning
 $red
              man)$orange          Manually access container and mess around
 $bright_blue
@@ -186,11 +184,11 @@ fi
 ;;
 
 sb)
-start_bitcoin
-;;
-
-stp)
+if [[ $btcpbitcoinrunning == "true" ]] ; then
 stop_bitcoin
+else
+start_bitcoin
+fi
 ;;
 
 up)
