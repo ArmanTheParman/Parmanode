@@ -61,9 +61,9 @@ $cyan
 $cyan
              nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
 $cyan
-             log)$orange          View BTCPay Server log
+             blog)$orange         View BTCPay Server log
 $cyan
-             nl)$orange           View NBXplorer log
+             nlog)$orange           View NBXplorer log
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $red
@@ -124,7 +124,7 @@ rs)
 restart_btcpay
 ;;
 
-log|Log|LOG)
+blog|BLOG|log|Log|LOG)
 set_terminal ; log_counter
 if [[ $log_count -le 10 ]] ; then
 echo -e "
@@ -148,7 +148,7 @@ set_terminal
 continue 
 ;;
 
-nl|NL|Nl)
+nlog|NLOG|nl|NL|Nl)
 echo "
 ########################################################################################
     
