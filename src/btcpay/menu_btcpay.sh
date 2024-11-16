@@ -3,8 +3,8 @@ while true ; do
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
 
 set_btcpay_version_and_menu_print 
-debug "redundant pause, version is... $btcpay_version"
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
+debug "redundant pause, version is... $btcpay_version. bitcoinrunning $bitcoinrunning"
 
 if echo $output1 | grep -q "choose" ; then
 output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
