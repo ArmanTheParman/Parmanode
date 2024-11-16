@@ -8,7 +8,7 @@ function install_joinmarket {
     
     joinmarket_preamble
 
-    if ! grep -q "parmabox-end" $ic  && [[ $OS == Mac ]] ; then
+    if ! grep -q "parmabox-end" $ic ; then
 
         yesorno "Parmanode needs to install Parmabox before installing
     JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
