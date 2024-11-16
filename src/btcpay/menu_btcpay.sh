@@ -3,7 +3,7 @@ while true ; do
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
 
 set_btcpay_version_and_menu_print 
-debug "redundant pause"
+debug "redundant pause, version is... $btcpay_version"
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 
 if echo $output1 | grep -q "choose" ; then
@@ -260,6 +260,8 @@ if [[ $btcpay_version == latest || -z $btcpay_version ]] ; then
         parmanode_conf_add "btcpay_version=$btcpay_version" 
     fi
 
+else
+export menu_btcpay_version=$btcpay_version
 fi
 debug "pause for btcpay version menu print"
 }
