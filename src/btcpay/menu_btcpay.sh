@@ -25,7 +25,7 @@ if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onio
         http://$ONION_ADDR_BTCPAY:7003$orange
         "
 else
-    enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
+    enable_tor_menu="$bright_blue             tor)$orange          Enable Tor"
 fi
 debug "before set terminal"
 set_terminal_custom 52 
