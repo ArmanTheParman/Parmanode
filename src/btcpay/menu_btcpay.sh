@@ -354,8 +354,7 @@ yesorno "Doesn't seem to be a valid PostgresSQL file. Ignore and proceed?" || co
 docker cp $file btcpay:/home/parman/backup.sql
 docker exec -itu postgres btcpay bash -c "pg_restore -U parman -d btcpayserver --clean /home/parman/backup.sql" &&
 success "Backup restored" && return 0
-
-announce "something went wrong" ; return 1
+enter_continue "something went wrong" ; return 1
 break
 ;;
 esac
