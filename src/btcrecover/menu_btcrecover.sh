@@ -9,10 +9,10 @@ $red
 
 $cyan
             r) $orange        Log into the container as root
-$green                              The password is 'parmanode' 
+$green                              The default password is 'parmanode' 
 $cyan
             pm)$orange        Log into the container as parman   (type exit to return here)
-$green                              The password is 'parmanode' 
+$green                              The default password is 'parmanode' 
 $cyan
             info)$orange      Info about how to run BTC Recover
 $cyan
