@@ -66,6 +66,10 @@ $cyan
              sb)$orange           Start Bitcoin
 $cyan
              stp)$orange          Stop Bitcoin
+$red
+             man)$orange          Manually access container and mess around
+$bright_blue
+             up)$orange           Update BTCPay ...
 
 $enable_tor_menu
 
@@ -186,10 +190,52 @@ stp)
 stop_bitcoin
 ;;
 
+up)
+update_btcpay
+;;
+man)
+clear
+enter_continue "Type exit and <enter> to return from container back to Parmanode"
+clear
+docker exec -it btcpay bash 
+;;
 *)
 invalid ;;
 esac  
 
 done
 return 0
+}
+
+function update_btcpay {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    BTCPay cannot be updated in the advertised way when run with Parmanode.
+    
+    But not to worry. Parmanode can do the update for you, without affecting your
+    data.
+
+    It will stop the services running, pull the desired version from GitHub, build
+    the binaries again inside the docker container, and restart the service.
+
+    You have options...
+$cyan
+                a)$orange          Abort!
+$green
+                pp)$orange         Get the latest version tested by Parman
+$red
+                yolo)$orange       Get the latest version, without Parman's testing.
+$red                
+                s)$orange          Select a particular version of your choice
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
+
+esac
+done
 }
