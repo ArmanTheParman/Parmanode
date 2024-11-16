@@ -269,6 +269,7 @@ debug "pause for btcpay version menu print"
 }
 
 function backup_btcpay {
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -299,7 +300,12 @@ mkdir -p $bakupdir >/dev/null 2>&1
 cp -r $HOME/.btcpayserver/Plugins $backupdir
 docker exec -itu postgres btcpay bash -c "pg_dump -U postgres -d btcpayserver" > $backupdir/btcpayserver.sql 2>&1
 success "A backup has been created and left on your Desktop"
-
+;;
+*)
+invalid
+;;
+esac
+done
+}
 
 #restore database
-}
