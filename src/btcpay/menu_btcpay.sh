@@ -277,15 +277,15 @@ set_terminal ; echo -e "
     server's details like the store's details and transaction data. There will also 
     be a backup of your Plugins directory.
 
-    The backup will be saved to the directory $cyan
+    The backup will be saved to the directory $bright_blue
 
     $HOME/Desktop/btcpayserver_backup_date/        $orange
 
     Proceed?
-
-                 y)     Yeah, of course, backups are super important
-
-                 n)     Nah
+$cyan
+                 y)$orange     Yeah, of course, backups are super important
+$cyan
+                 n)$orange     Nah
 
 ########################################################################################
 "
