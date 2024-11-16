@@ -68,6 +68,8 @@ $cyan
              sb)$orange           Start/Stop Bitcoin
 $yellow 
              bk)$orange           Backup BTCPay data 
+$yellow 
+             res)$orange          Restore BTCPay data
 $red
              man)$orange          Manually access container and mess around
 $bright_blue
@@ -202,6 +204,9 @@ docker exec -it btcpay bash
 bk)
 backup_btcpay
 ;;
+res)
+restore_btcpay
+;;
 *)
 invalid ;;
 esac  
@@ -269,6 +274,8 @@ debug "pause for btcpay version menu print"
 }
 
 function backup_btcpay {
+if [[ $btcpayrunning != "true" ]] ; then announce "BTCPay needs to be running." ; return ; fi
+
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -308,4 +315,50 @@ esac
 done
 }
 
-#restore database
+function restore_btcpay {
+if [[ $btcpayrunning != "true" ]] ; then announce "BTCPay needs to be running." ; return ; fi
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    Parmanode will restore your backup files to the current BTCPay installation.
+
+    This will destroy the current data in BTCPay server.   
+
+    Do it?
+$cyan
+                             y)$orange          Yeah, restore
+$cyan
+                             n)$orange          Nah
+
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
+y)
+set_terminal ; echo -e "
+########################################################################################
+
+    Please type the full path of the backup file, eg:
+$cyan
+    $HOME/Desktop/btcpayserver.sql
+$orange
+########################################################################################
+"
+read file ; set_termianl
+if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
+if ! grep -iq "PostgreSQL database dump" $file >/dev/null 2>&1 ; then
+yesorno "Doesn't seem to be a valid PostgresSQL file. Ignore and proceed?" || continue ; fi
+docker cp $file btcpay:/home/parman/backup.sql
+docker exec -itu postgres btcpay bash -c "pg_restore -U parman -d btcpayserver --clean /home/parman/backup.sql" &&
+success "Backup restored" && return 0
+
+announce "something went wrong" ; return 1
+break
+;;
+esac
+done
+
+}
