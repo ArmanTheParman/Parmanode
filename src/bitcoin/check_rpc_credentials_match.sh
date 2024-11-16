@@ -141,7 +141,7 @@ unset file && local file="$HOME/.nbxplorer/Main/settings.config"
 stop_btcpay
 sudo gsed -i "/btc.rpc.user/c\btc.rpc.user=$rpcuser" $file
 sudo gsed -i "/btc.rpc.password/c\btc.rpc.password=$rpcpassword" $file
-start_btcpay_all_programs
+start_btcpay
 break
 ;;
 n)

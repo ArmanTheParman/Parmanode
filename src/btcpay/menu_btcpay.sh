@@ -114,7 +114,7 @@ connect_btcpay_to_lnd
 
 start|START|Start)
 if [[ $btcpayrunning == "false" ]] ; then
-start_btcpay_all_programs
+start_btcpay
 else
 stop_btcpay
 fi
