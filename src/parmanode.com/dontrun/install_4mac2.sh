@@ -20,7 +20,7 @@ if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
 
 touch $HOME/.zshrc >/dev/null 2>&1
 
-if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
+if ! grep -q "run_parmanode.sh" $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
 " | sudo tee -a $HOME/.zshrc >/dev/null 2>&1
@@ -113,7 +113,7 @@ mkdir -p $HOME/parman_programs >/dev/null 2>&1
 cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
-if ! grep -q "run_parmanode.sh" < $HOME/.zshrc ; then
+if ! grep -q "run_parmanode.sh" $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
 " | sudo tee -a $HOME/.zshrc >/dev/null 2>&1

@@ -11,7 +11,7 @@ unset text
 # text="-v $HOME/.bitcoin:/home/parman/.bitcoin"
 
 # if [[ ! -e $HOME/.bitcoin ]] ; then 
-# if grep -q "drive=external" < $pc ; then
+# if grep -q "drive=external" $pc ; then
 # menutext="
 #     The$cyan ~/.bitcoin$orange data directory could not be detected. Perhaps the drive is 
 #     not connected or mounted?"

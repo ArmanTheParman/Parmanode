@@ -175,11 +175,11 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.electrs/config.toml"
-if grep -q "electrs-end" < $ic ; then stop_electrs ; fi
-if grep -q "electrsdkr-end" < $ic ; then stop_electrs ; fi
+if grep -q "electrs-end" $ic ; then stop_electrs ; fi
+if grep -q "electrsdkr-end" $ic ; then stop_electrs ; fi
 sudo gsed -i  "/auth/c\auth = \"$rpcuser:$rpcpassword\"" $file
-if grep -q "electrs-end" < $ic ; then start_electrs ; fi
-if grep -q "electrsdkr-end" <$ic ; then docker_start_electrs ; fi
+if grep -q "electrs-end" $ic ; then start_electrs ; fi
+if grep -q "electrsdkr-end" $ic ; then docker_start_electrs ; fi
 break
 ;;
 n)

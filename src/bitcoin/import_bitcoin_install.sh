@@ -209,12 +209,12 @@ function dir_not_found {
 if [[ $drive == external ]] ; then ############### for tracking nested if... can't indent because echo statements
 default="$parmanode_drive/.bitcoin"
 
-if ! grep -q "electrs" <$dp/.temp ; then
+if ! grep -q "electrs" $dp/.temp ; then
 text1="
     ${cyan}The same is true for $paranode_drive/electrs_db$orange"
 fi
 
-if ! grep -q "fulcrum" <$dp/.temp ; then
+if ! grep -q "fulcrum" $dp/.temp ; then
 text2="
     ${cyan}The same is true for $paranode_drive/fulcrum_db$orange"
 fi
@@ -229,7 +229,7 @@ fi ###############
 
 
 
-if ! grep -q "bitcoin" < $dp/.temp ; then #this means mkdir didn't fail, and .bitcoin dir didn't exist initially
+if ! grep -q "bitcoin" $dp/.temp ; then #this means mkdir didn't fail, and .bitcoin dir didn't exist initially
 
 set_terminal ; echo -e "
 ########################################################################################

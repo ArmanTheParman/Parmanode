@@ -28,9 +28,9 @@ function add_rp_function {
 
 if [[ ! -e $bashrc ]] ; then sudo touch $bashrc ; fi
 
-if grep -q run_parmanode.sh < $bashrc ; then return 0 ; fi
+if grep -q run_parmanode.sh $bashrc ; then return 0 ; fi
 
-if ! grep "#Added by Parmanode..." < $bashrc ; then
+if ! grep "#Added by Parmanode..." $bashrc ; then
 echo "#Added by Parmanode..." | sudo tee -a $bashrc >/dev/null 2>&1
 echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | sudo tee -a $bashrc >/dev/null 2>&1
 fi

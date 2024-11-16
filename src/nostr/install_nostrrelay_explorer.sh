@@ -6,7 +6,7 @@ if ! which make >/dev/null 2>&1 ; then
 sudo apt-get update -y && sudo apt-get install make -y
 fi
 
-grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+grep -q docker-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 

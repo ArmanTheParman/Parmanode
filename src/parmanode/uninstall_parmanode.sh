@@ -42,24 +42,24 @@ case $choice in
     esac
 done
 
-if grep -q "bitcoin" < $file #checks if bitcoin is installed in install config file.
+if grep -q "bitcoin" $file #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
 set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
 
-if grep -q "fulcrum" < $file 
+if grep -q "fulcrum" $file 
 then uninstall_fulcrum #both linux & mac, confirmations inside functions
 set_terminal
 fi
 
-if grep -q "btcpay" < $file 
+if grep -q "btcpay" $file 
 then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal
 fi
 
-if grep -q "electrum" < $file 
+if grep -q "electrum" $file 
 then
 uninstall_electrum
 set_terminal
@@ -72,43 +72,43 @@ set_terminal
 fi
 
 
-if grep -q "rtl" < $file 
+if grep -q "rtl" $file 
 then
 uninstall_rtl #Confirmation inside function
 set_terminal
 fi
 
-if grep -q "sparrow" < $file 
+if grep -q "sparrow" $file 
 then
 uninstall_sparrow
 set_terminal
 fi
 
-if grep -q "tor-server" <$file 
+if grep -q "tor-server" $file 
 then
 uninstall_tor_webserver
 set_terminal
 fi
 
-if grep -q "specter" <$file 
+if grep -q "specter" $file 
 then
 uninstall_specter
 set_terminal
 fi
 
-if grep -q "electrs" <$file 
+if grep -q "electrs" $file 
 then
 uninstall_electrs
 set_terminal
 fi
 
-if grep -q "btcrpcexplorer" < $file
+if grep -q "btcrpcexplorer" $file
 then
 uninstall_btcrpcexplorer
 set_terminal
 fi
 
-if grep -q "parmanshell" < $file 
+if grep -q "parmanshell" $file 
 then
 uninstall_parmanshell
 set_terminal

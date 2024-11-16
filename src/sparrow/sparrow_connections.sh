@@ -6,13 +6,13 @@ announce \
 return 1
 fi
 
-if ! grep -q "fulcrum-end" < $HOME/.parmanode/installed.conf ; then
+if ! grep -q "fulcrum-end" $ic ; then
 announce \
 "Please install Fulcrum first."
 return 1
 fi
 
-if ! grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "fulcrum_tor" $pc ; then
 announce \
 "Please enable TOR in Fulcrum menu first."
 return 1 
@@ -34,13 +34,13 @@ announce \
 return 1
 fi
 
-if ! grep -q "electrs-end" < $ic && ! grep -q "electrsdkr" < $ic ; then
+if ! grep -q "electrs-end" $ic && ! grep -q "electrsdkr" $ic ; then
 announce \
 "Please install electrs first."
 return 1 
 fi
 
-if ! grep -q "electrs_tor" < $HOME/.parmanode/parmanode.conf ; then
+if ! grep -q "electrs_tor" $pc ; then
 announce \
 "Please enable TOR in electrs menu first."
 return 1

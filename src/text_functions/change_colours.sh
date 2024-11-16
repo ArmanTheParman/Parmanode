@@ -18,7 +18,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 m|M) back2main ;;
 t|T)
-if grep -q "orange=" < $pc ; then
+if grep -q "orange=" $pc ; then
 parmanode_conf_remove "orange=" 
 else
 parmanode_conf_add "orange=\"$reset\""

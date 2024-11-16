@@ -150,7 +150,7 @@ fi
     ;;
     esac
 
-    if grep -q "just restart this joinmarket application" < $tmp/jmaddresses ; then
+    if grep -q "just restart this joinmarket application" $tmp/jmaddresses ; then
 
         enter_continue "$pink
         This always happens the first time you access the display function.

@@ -1,6 +1,6 @@
 function make_parmanode_service {
 if [[ $OS != Linux ]] ; then return 0 ; fi
-if grep -q "parmanode_service=enabled" < $pc ; then return 0 ; fi
+if grep -q "parmanode_service=enabled" $pc ; then return 0 ; fi
 
 echo "[Unit]
 Description=Parmanode Background Services
@@ -50,7 +50,7 @@ if [[ -e $HOME/.parmanode/parmanode_script2.sh ]] ; then
 source $HOME/.parmanode/parmanode_script2.sh
 fi
 
-if grep "parmanode_service=enabled" < $pc ; then return 0 ; fi
+if grep "parmanode_service=enabled" $pc ; then return 0 ; fi
 
 if ! which tor ; then
 sudo apt-get install tor -y

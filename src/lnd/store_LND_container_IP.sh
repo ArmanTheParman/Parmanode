@@ -1,11 +1,11 @@
 function store_LND_container_IP {
 
-if grep -q "LNDIP" < $pc >/dev/null 2>&1 ; then
+if grep -q "LNDIP" $pc >/dev/null 2>&1 ; then
 source $pc
 return 0
 fi
 
-if grep -q "lnd-" < $pc || grep -q "litd" < $pc ; then 
+if grep -q "lnd-" $pc || grep -q "litd" $pc ; then 
 LNDIP=$IP
 
     if ! echo $LNDIP | grep -qE '^[0-9]' ; then #double check LNDIP starts with a number rather than error message

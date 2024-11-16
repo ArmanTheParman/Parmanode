@@ -28,7 +28,7 @@ echo -e "
 "
 enter_continue
 clear
-if grep -q "btccombo" < $ic ; then
+if grep -q "btccombo" $ic ; then
 docker exec btcpay bitcoind --reindex
 docker exec btcpay bitcoin-cli stop
 doecker exec -d btcpay bitcoind 

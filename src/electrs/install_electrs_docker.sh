@@ -10,9 +10,9 @@ export install_electrs_docker_variable="true" # used later to fork make config c
 
 source $pc $ic >/dev/null 2>&1
 
-grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-grep -q "docker-end" < $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
+grep -q "docker-end" $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
 
 if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red

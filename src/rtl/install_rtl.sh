@@ -1,5 +1,5 @@
 function install_rtl {
-grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+grep -q docker-end $ic || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 

@@ -4,7 +4,7 @@ cd $hp/fulcrum
 
 shasum -a 256 --check Fulcrum*shasums.txt >$tmp/FulcrumSHA256 2>&1
 
-if ! grep -q OK < $tmp/FulcrumSHA256 ; then 
+if ! grep -q OK $tmp/FulcrumSHA256 ; then 
 
     announce "Checksum$red failed$orange. Aborting.
 
@@ -53,8 +53,8 @@ hlEslrxzIvWaTBZVFohhBBgRCAAJBQJZmei+AhsMAAoJECGBClQgMcAsfpABAPbyEFpS8QBU
 6Zm48JWhtNVoaL1/IfZO/b9uh8fm3rlTAP9tykvFgntdXYVlEu2EMaFiZro+aaFCaulAi7XK
 jdzE/g==
 =PElt
------END PGP PUBLIC KEY BLOCK-----' | gpg --import >/dev/null 2>&1 || \
-{ log "fulcrum" "gpg key import key failed." && debug "gpg key import failed." ; return 1 ; }
+-----END PGP PUBLIC KEY BLOCK-----' | gpg --import >/dev/null 2>&1 || 
+{ announce "key import failed" ; return 1 ; }
 
 if gpg --verify --status-fd 1 $HOME/parmanode/fulcrum/F*shasums.txt.asc $HOME/parmanode/fulcrum/F*shasums.txt 2>&1 | grep -qi "GOOD" 
     then 

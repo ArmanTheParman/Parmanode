@@ -15,7 +15,7 @@ fi
 btcpay_install_preamble  || return 1
 btcpay_install_preamble2 || return 1
 
-if grep -q "bitcoin-end" < $ic ; then
+if grep -q "bitcoin-end" $ic ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

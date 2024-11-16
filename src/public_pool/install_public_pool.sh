@@ -1,5 +1,5 @@
 function install_public_pool {
-if grep -q "pihole" < $ic >/dev/null ; then
+if grep -q "pihole" $ic >/dev/null ; then
 announce "Can't install Public Pool and PiHole on the same system. Aborting."
 return 1
 fi

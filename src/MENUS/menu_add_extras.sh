@@ -45,7 +45,7 @@ h|H|htop|HTOP|Htop)
 
 u|U|udev|UDEV)
 
-    if grep -q udev-end < $dp/installed.conf ; then
+    if grep -q udev-end $dp/installed.conf ; then
     announce "udev already installed."
     return 0
     fi

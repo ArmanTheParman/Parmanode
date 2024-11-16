@@ -4,7 +4,7 @@ if [[ $bitcoin_compile = "true" ]] ; then return 0 ; fi
 
 cd $HOME/parmanode/bitcoin
 
-if grep -q "bitcoin_choice=knots" < $pc ; then
+if grep -q "bitcoin_choice=knots" $pc ; then
     curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/SHA256SUMS
     curl -LO https://bitcoinknots.org/files/27.x/27.1.knots20240801/SHA256SUMS.asc
 else
@@ -22,7 +22,7 @@ if which sha256sum >/dev/null ; then
 else
     rm $tmp/bitcoinsha256 >/dev/null 2>&1
     shasum -a 256 --check SHA256SUMS >$tmp/bitcoinsha256 2>&1
-    if ! grep -q OK < $tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
+    if ! grep -q OK $tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
     "Sometimes this happens for unexplainable reasons. 
     Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
     rm $tmp/bitcoinsha256 >/dev/null 2>&1

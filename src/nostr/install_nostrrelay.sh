@@ -9,14 +9,14 @@ export install=nostr
 #some shared code and shared directories with ParaWeb.
 no_mac || { announce "If there is demand for Macs, it's up to you to let me know and I'll get on to it." ; return 1 ; }
 
-if grep -q "website" < $ic >/dev/null 2>&1 ; then
+if grep -q "website" $ic >/dev/null 2>&1 ; then
 announce "Parmanode does not support a Nostr Relay and a Website on the same computer.
     Please install on another computer, or completely uninstall the Parmanode Website
     first. Aborting."
 return 1
 fi
 
-grep -q docker-end < $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
+grep -q docker-end $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
 "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
@@ -27,7 +27,7 @@ sned_sats
 choose_and_prepare_drive "nostr" || return 1
 source $pc >/dev/null
 
-if [[ $drive_nostr == external ]] && grep "=external" < $pc | grep -vq "nostr" ; then #don't grep 'external' alone, too ambiguous
+if [[ $drive_nostr == external ]] && grep "=external" $pc | grep -vq "nostr" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 

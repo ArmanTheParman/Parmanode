@@ -1,7 +1,7 @@
 function update_lnd {
 clear
 
-if grep -q "litd" < $ic ; then
+if grep -q "litd" $ic ; then
 menutext=".lit"
 LND=LITD
 else

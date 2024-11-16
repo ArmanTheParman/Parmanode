@@ -1,6 +1,6 @@
 function create_wallet {
 ########################################################################################
-if grep -q "lnddocker" < $ic ; then
+if grep -q "lnddocker" $ic ; then
 
 if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
@@ -60,7 +60,7 @@ announce "${cyan}You will be asked to create a password - this is for your LND p
 "
 echo -e "$reset" #resets colour
 
-if grep -q "lnddocker" < $ic ; then
+if grep -q "lnddocker" $ic ; then
 docker exec -it lnd /bin/bash -c "lncli create"
 debug "after lncli create"
 else

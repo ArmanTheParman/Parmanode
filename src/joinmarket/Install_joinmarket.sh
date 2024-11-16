@@ -2,7 +2,7 @@ function install_joinmarket {
 
     set_terminal
 
-    grep -q "bitcoin-end" < $ic || { 
+    grep -q "bitcoin-end" $ic || { 
         announce "Please install Bitcoin first. Aborting." && return 1 
         }
     
@@ -33,17 +33,16 @@ function install_joinmarket {
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
         docker exec -u root parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
-        debug "check bitcoin conf fixed"
     fi
 
     install_tmux ; if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
     
     # if [[ $OS == Linux ]] ; then
     #     enable_tor_general || { announce "Something went wrong with tor. Aborting." ; return 1 ; }
-    #     if ! grep -q "HiddenServiceDir /var/lib/tor/joinmarket-service/" < $macprefix/etc/tor/torrc ; then
+    #     if ! grep -q "HiddenServiceDir /var/lib/tor/joinmarket-service/" $macprefix/etc/tor/torrc ; then
     #         echo "HiddenServiceDir /var/lib/tor/joinmarket-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     #     fi
-    #     if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" < $macprefix/etc/tor/torrc ; then
+    #     if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" $macprefix/etc/tor/torrc ; then
     #         echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc 
     #     fi
     # fi
@@ -85,7 +84,7 @@ function install_joinmarket {
 
 function make_joinmarket_wallet {
 
-    if ! grep -q "deprecatedrpc=create_bdb" < $bc ; then
+    if ! grep -q "deprecatedrpc=create_bdb" $bc ; then
 
         echo "deprecatedrpc=create_bdb" | sudo tee -a $bc >$dn 2>&1
         clear 
@@ -216,7 +215,7 @@ elif [[ $OS == Mac ]] ; then
                joinmarket
     return 0
 fi
-debug "after run"
+
     start_socat joinmarket
     internal_docker_socat_jm_mac 
 

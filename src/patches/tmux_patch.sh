@@ -1,6 +1,6 @@
 function tmux_patch {
 
-if grep -q "tmux" < $hm ; then return ; fi
+if grep -q "tmux" $hm ; then return ; fi
 if which tmux >/dev/null 2>&1 ; then return 0 ; fi
 
 while true ; do

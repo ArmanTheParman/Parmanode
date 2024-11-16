@@ -10,7 +10,7 @@ if [[ $bitcoinrunning == "false" ]] ; then announce "Bitcoin is not running, don
 
 
 if [[ $connection == Bitcoin_userpass ]] ; then
-  if ! grep -q "rpcuser" < $HOME/.bitcoin/bitcoin.conf ; then
+  if ! grep -q "rpcuser" $HOME/.bitcoin/bitcoin.conf ; then
       announce "$1 is configured to connect to Bitcoin with a username and "\
       "password, but Bitcoin is configured to connect by a cookie file. Be warned."
         return 0
@@ -18,7 +18,7 @@ if [[ $connection == Bitcoin_userpass ]] ; then
 fi
 
 if [[ $connection == Bitcoin_cookie ]] ; then
-  if  grep -q "rpcuser" < $HOME/.bitcoin/bitcoin.conf ; then
+  if  grep -q "rpcuser" $HOME/.bitcoin/bitcoin.conf ; then
       announce "$1 is configured to connect to Bitcoin by cookie file but"\
       "Bitcoin is configured to connect by a cookie file. Be warned."
         return 0

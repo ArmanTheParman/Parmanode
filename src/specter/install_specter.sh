@@ -55,7 +55,7 @@ verify_specter || return 1
 
 unpack_specter
 
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $ic ; then
     echo "installing udev rules..."
     udev
     fi

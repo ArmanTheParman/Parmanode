@@ -24,7 +24,7 @@ sudo gsed -i "/HiddenServicePort 22 127.0.0.1:22/d" $file
 sudo systemctl restart tor ssh
 
 
-if ! grep -q "sshtor-end" < $ic ; then #in case tor service made but install was partial
+if ! grep -q "sshtor-end" $ic ; then #in case tor service made but install was partial
 # then don't delete the service, making it could have been the delay and cause for failure.
 set_terminal ; echo -e "
 ########################################################################################

@@ -9,7 +9,7 @@ else
     if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
 fi
 
-if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
+if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
 announce "Mempool won't work without Bitcoin installed first. You can
     go ahead, but you'll have to tweak the config file yourself to
     make it point to a functional backend."

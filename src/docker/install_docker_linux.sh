@@ -85,7 +85,7 @@ esac
 done
 #if docker group added, make sure installed config reflects it.
 else 
-    if ! grep docker-end < $HOME/.parmanode/installed.conf ; then
+    if ! grep docker-end $HOME/.parmanode/installed.conf ; then
         installed_config_add "docker-end"
     fi
     return 0

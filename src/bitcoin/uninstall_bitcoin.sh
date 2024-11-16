@@ -6,7 +6,7 @@
 #remove prune choice from parmanode.conf
 function uninstall_bitcoin {
 if [[ $1 != btcpay_first ]]; then 
-if grep -q "btccombo-end" < $ic ; then export combo="true" ; fi 
+if grep -q "btccombo-end" $ic ; then export combo="true" ; fi 
 else
 combo=btcpay_first
 fi

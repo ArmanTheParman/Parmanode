@@ -1,6 +1,6 @@
 function add_server_1_to_bitcoinconf {
-if grep -q "bitcoin-end" < $ic ; then
-if ! grep -q "server=1" < $bc ; then
+if grep -q "bitcoin-end" $ic ; then
+if ! grep -q "server=1" $bc ; then
 set_terminal ; echo -e "
 ########################################################################################
     

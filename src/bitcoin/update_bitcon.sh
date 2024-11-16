@@ -1,6 +1,6 @@
 function update_bitcoin {
 
-if grep -q "btccombo" < $ic ; then
+if grep -q "btccombo" $ic ; then
 local version="$(docker exec btcpay bitcoin-cli --version | head -n 1)"
 elif [[ $OS == Linux ]] ; then
 local version="$(/usr/local/bin/bitcoin-cli --version | head -n 1)"

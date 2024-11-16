@@ -3,7 +3,7 @@ set_terminal
 export install=lnddocker
 export lndversion="v0.17.3-beta"
 
-grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 please_wait
 
@@ -48,7 +48,7 @@ installed_config_add "lnddocker-end"
 success "LND Docker" "being installed"
 unset install reusedotlnd
 
-if grep -q "rtl-end" < $dp/installed.conf ; then
+if grep -q "rtl-end" $dp/installed.conf ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

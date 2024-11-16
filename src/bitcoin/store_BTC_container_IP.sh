@@ -1,11 +1,11 @@
 function store_BTC_container_IP {
 
-if grep -q "BTCIP" < $pc >/dev/null 2>&1 ; then
+if grep -q "BTCIP" $pc >/dev/null 2>&1 ; then
 source $pc
 return 0
 fi
 
-if grep -q "btccombo-" < $pc ; then 
+if grep -q "btccombo-" $pc ; then 
 BTCIP=$IP
 
     if ! echo $BTCIP | grep -qE '^[0-9]' ; then #double check BTCIP starts with a number rather than error message

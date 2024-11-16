@@ -1,6 +1,6 @@
 function bre_docker_install {
 
-if ! grep -q bitcoin-end < $HOME/.parmanode/installed.conf ; then
+if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
 announce "Need to install Bitcoin first from Parmanode menu. Aborting." ; return 1 ; fi
 
 if ! docker ps >/dev/null ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1 ; fi

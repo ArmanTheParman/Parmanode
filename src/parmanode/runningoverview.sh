@@ -39,7 +39,7 @@ done
 function isbitcoinrunning {
 unset bitcoinrunning
 
-if grep -q "btccombo" < $ic ; then
+if grep -q "btccombo" $ic ; then
     if docker exec btcpay ps | grep -q bitcoind ; then
         overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
         export bitcoinrunning="true"
@@ -103,7 +103,7 @@ export lndrunning="false"
 overview_conf_add "lndrunning=false" "lndrunning="
 fi
 
-if ! grep -q "lnddocker" < $ic ; then 
+if ! grep -q "lnddocker" $ic ; then 
 
     if lncli walletbalance >/dev/null 2>&1 ; then 
     export lndwallet=unlocked
@@ -149,7 +149,7 @@ fi
 }
 
 function iselectrsrunning {
-if grep -q electrs- < $ic >/dev/null 2>&1 || grep -q electrs2 - <$ic >/dev/null 2>&1 ; then
+if grep -q electrs- $ic >/dev/null 2>&1 || grep -q electrs2- $ic >/dev/null 2>&1 ; then
     if ps -x | grep electrs | grep -q conf >/dev/null 2>&1 ; then 
     overview_conf_add "electrsrunning=true" "electrsrunning="
     else

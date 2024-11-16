@@ -37,14 +37,14 @@ fi
 #fix homebrew path order ; remove June 2025
 if [[ $OS == Mac ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
-    if ! grep -q "PATH=/opt/homebrew/bin" < $bashrc ; then
+    if ! grep -q "PATH=/opt/homebrew/bin" $bashrc ; then
     echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
     fi
 fi
 #remove June 2025
 make_lnd_service_tor
 #remove June 2025 - make sure all electrs docker has socat installed
-if grep -q "electrsdkr" < $ic ; then
+if grep -q "electrsdkr" $ic ; then
     if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
         docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
@@ -57,12 +57,12 @@ fi
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
-if grep -q "electrs-start" < $ic && grep -q "electrs2-end" < $ic ; then
+if grep -q "electrs-start" $ic && grep -q "electrs2-end" $ic ; then
 sudo gsed -i "/electrs-start/d" $ic 
 parmanode_conf_add "electrs2-start"
 fi
 #remove in 2025
-if [[ ${message_jq} != 1 ]] && grep -q "electrs" < $ic && ! which jq > /dev/null ; then
+if [[ ${message_jq} != 1 ]] && grep -q "electrs" $ic && ! which jq > /dev/null ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -102,7 +102,7 @@ esac
 done
 fi
 
-if ! grep -q "parmashell" < $bashrc ; then
+if ! grep -q "parmashell" $bashrc ; then
 uninstall_parmashell silent ; install_parmashell
 fi
 

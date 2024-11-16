@@ -3,7 +3,7 @@ function menu_rtl {
 while true ; do 
 unset tor_message ONION_ADDR_RTL
 
-if grep -q "rtl_tor" < $dp/parmanode.conf ; then
+if grep -q "rtl_tor" $pc ; then
 get_onion_address_variable rtl
 tor_message="      RTL Onion Address:$bright_blue
 
@@ -90,7 +90,7 @@ continue
 
 t|T|tor|Tor|TOR)
 clear
-if ! grep -q "rtl_tor" < $dp/parmanode.conf ; then
+if ! grep -q "rtl_tor" $pc ; then
 enable_tor_rtl
 else
 disable_tor_rtl

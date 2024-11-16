@@ -79,7 +79,7 @@ debug "imported pubkey and verified sigs"
 
 #hash the firmware...
 hash=$(shasum -a 256 *.dfu | awk '{print $1}')
-grep -q "$hash" < $sigfile || { debug "failed hash" ; announce "error. verification of the hash failed." ; return 1 ; }
+grep -q "$hash" $sigfile || { debug "failed hash" ; announce "error. verification of the hash failed." ; return 1 ; }
 debug "hashed dfu file"
 
 cc_firmware_instructions

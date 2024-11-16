@@ -110,7 +110,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
 unset skip
-if [[ $version == self ]] && grep -q "rpcuser=" < $bc ; then skip="true" ; else skip="false" 
+if [[ $version == self ]] && grep -q "rpcuser=" $bc ; then skip="true" ; else skip="false" 
 fi
 case $skip in
 "false")

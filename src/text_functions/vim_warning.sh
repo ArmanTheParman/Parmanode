@@ -1,6 +1,6 @@
 function vim_warning {
 
-if grep -q vimisthebest < $hm ; then return 0 ; fi
+if grep -q vimisthebest $hm ; then return 0 ; fi
 
 if ! which vim >$dn 2>&1 ; then install_vim || return 1 ; fi
 

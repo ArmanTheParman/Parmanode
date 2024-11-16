@@ -43,7 +43,7 @@ s10="${white}s10${orange}"
 s11="${white}s11${orange}"
 s12="${white}s12${orange}"
 
-if grep -q bitcoin-end < $ic ; then
+if grep -q bitcoin-end $ic ; then
     i1="    ${green}Y${orange}"
     bitcoininstalled="true"
     if [[ $bitcoinrunning == "true" ]] ; then
@@ -60,7 +60,7 @@ else
     unset m1 s1 r1
 fi
 
-if grep -q lnd-end < $ic || grep -q lnddocker-end <$ic ; then
+if grep -q lnd-end $ic || grep -q lnddocker-end $ic ; then
     i2="${green}Y${orange}"
     lndinstalled="true"
     if [[ $lndrunning == "true" ]] ; then
@@ -77,7 +77,7 @@ else
     unset m2 s2 r2
 fi
 
-if grep -q fulcrum-end < $ic ; then
+if grep -q fulcrum-end $ic ; then
     i3="${green}Y${orange}"
     fulcruminstalled="true"
     if [[ $fulcrumrunning == "true" ]] ; then
@@ -93,7 +93,7 @@ else
     menub3="false"
     unset m3 s3 r3
 fi 
-if grep -q electrs-end < $ic || grep -q electrs2-end < $ic ; then
+if grep -q electrs-end $ic || grep -q electrs2-end $ic ; then
     i4="${green}Y${orange}"
     electrsinstalled="true"
     if [[ $electrsrunning == "true" ]] ; then
@@ -109,7 +109,7 @@ else
     menub4="false"
     unset m4 s4 r4
 fi
-if grep -q btcrpcexplorer-end < $ic || grep -q bre-end < $ic ; then
+if grep -q btcrpcexplorer-end $ic || grep -q bre-end $ic ; then
     i5="${green}Y${orange}"
     breinstalled="true"
     if [[ $brerunning == "true" ]] ; then
@@ -125,7 +125,7 @@ else
     menub5="false"
     unset m5 s5 r5
 fi
-if grep -q btcpay-end < $ic ; then
+if grep -q btcpay-end $ic ; then
     i6="${green}Y${orange}"
     btcpayinstalled="true"
     if [[ $btcpayrunning == "true" ]] ; then
@@ -141,7 +141,7 @@ else
     menub6="false"
     unset m6 s6 r6
 fi
-if grep -q rtl-end < $ic ; then
+if grep -q rtl-end $ic ; then
     i7="${green}Y${orange}"
     rtlinstalled="true"
     if [[ $rtlrunning == "true" ]] ; then
@@ -158,7 +158,7 @@ else
     unset m7 s7 r7
 fi
 
-if grep -q electrsdkr-end < $ic || grep -q electrsdkr2-end < $ic ; then
+if grep -q electrsdkr-end $ic || grep -q electrsdkr2-end $ic ; then
     i8="${green}Y${orange}"
     electrsdkrinstalled="true"
     if [[ $electrsdkrrunning == "true" ]] ; then
@@ -175,7 +175,7 @@ else
     unset m8 s8 r8
 fi
 
-if grep -q mempool-end < $ic ; then
+if grep -q mempool-end $ic ; then
     i9="${green}Y${orange}"
     mempoolinstalled="true"
     if [[ $mempoolrunning == "true" ]] ; then
@@ -192,7 +192,7 @@ else
     unset m9 s9 r9
 fi
 
-if grep -q public_pool-end < $ic ; then
+if grep -q public_pool-end $ic ; then
     i10="${green}Y${orange}"
     publicpoolinstalled="true"
     if [[ $publicpoolrunning == "true" ]] ; then
@@ -209,7 +209,7 @@ else
     unset m10 s10 r10
 fi
 
-if grep -q electrumx-end < $ic ; then
+if grep -q electrumx-end $ic ; then
     i11="${green}Y${orange}"
     electrumxinstalled="true"
     if [[ $electrumxrunning == "true" ]] ; then
@@ -226,7 +226,7 @@ else
     unset m11 s11 r11
 fi
 
-if grep -q thunderhub-end < $ic ; then
+if grep -q thunderhub-end $ic ; then
     i12="${green}Y${orange}"
     thunderhubinstalled="true"
     if [[ $thunderhubrunning == "true" ]] ; then

@@ -1,6 +1,6 @@
 function menu_electrs {
 
-if grep -q "electrsdkr" < $ic ; then #dont use electrsdkr2
+if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
     #docker exec electrs cat /home/parman/run_electrs.log > $logfile
@@ -44,7 +44,7 @@ fi
 #Tor status
 if  [[ -e $macprefix/etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] \
     && sudo grep -q "electrs" $macprefix/etc/tor/torrc \
-    && grep -q "electrs_tor=true" < $pc \
+    && grep -q "electrs_tor=true" $pc \
     && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
 
         E_tor="${green}on${orange}"

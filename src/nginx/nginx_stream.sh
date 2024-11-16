@@ -33,13 +33,13 @@ source $pp/parmanode/src/nginx/stream.conf >/dev/null 2>&1
 
 #unset what is not installed
 if [[ $1 != electrs ]] ; then
-if ! grep -q "electrs-end" < $ic && ! grep -q "electrs2-end" < $ic && ! grep -q "electrsdkr" ; then
+if ! grep -q "electrs-end" $ic && ! grep -q "electrs2-end" $ic && ! grep -q "electrsdkr" ; then
 unset upstream_electrs server_electrs
 fi
 fi
 
 if [[ $1 != public_pool ]] ; then
-if ! grep -q "public_pool-end" < $ic ; then
+if ! grep -q "public_pool-end" $ic ; then
 unset upstream_public_pool server_public_pool
 fi
 fi
@@ -76,7 +76,7 @@ if [[ -z $upstream_electrs && -z $upstream_public_pool ]] ; then
 else
 #include stream file in nginx.conf
 #this is added at the end of the file, not in any particular block
-   if ! grep -q "include stream.conf;" < $nginx_conf ; then 
+   if ! grep -q "include stream.conf;" $nginx_conf ; then 
    echo "include stream.conf;" | sudo tee -a $nginx_conf
    fi
 fi

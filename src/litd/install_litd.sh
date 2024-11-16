@@ -5,7 +5,7 @@ sned_sats
 
 unset remote_user remote_pass ipcore
 
-if grep -q "lnd-" < $ic ; then announce "cant have both LND and LITD"; return 1 ; fi
+if grep -q "lnd-" $ic ; then announce "cant have both LND and LITD"; return 1 ; fi
 
 export litdversion="v0.12.5-alpha"
 
@@ -17,7 +17,7 @@ fi
 
 bitcoin_choice_with_litd || return 1
  if [[ $bitcoin_choice_with_litd == local ]] ; then
- grep -q bitcoin-end < $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+ grep -q bitcoin-end $HOME/.parmanode/installed.conf || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
  fi
 
 please_wait
@@ -84,7 +84,7 @@ make_nginx_litd
 installed_conf_add "litd-end"
 success "LITD" "being installed."
 
-if grep -q "rtl-end" < $dp/installed.conf ; then
+if grep -q "rtl-end" $dp/installed.conf ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

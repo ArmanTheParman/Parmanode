@@ -23,7 +23,7 @@ enable_tor_general
   fi
 
 if which tor >/dev/null 2>&1 ; then return 0 ; fi
-if grep -q "tor_script=done" < $pc ; then return 0 ; fi
+if grep -q "tor_script=done" $pc ; then return 0 ; fi
 
 cat << EOF > $dp/tor_script.sh
 #!/bin/bash
@@ -32,7 +32,7 @@ if ! which brew ; then return 0 ; fi
 if which tor ; then return 0 ; fi
 
 brew install tor > $dp/debug.log 2>&1 && \
-if ! grep -q "tor-end" < $ic ; then echo "tor-end" >> $ic ; fi
+if ! grep -q "tor-end" $ic ; then echo "tor-end" >> $ic ; fi
 
 touch $dp/REMOVE_TOR_FLAG >/dev/null
 EOF

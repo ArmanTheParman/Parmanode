@@ -1,6 +1,6 @@
 function menu_lnd {
 
-if grep -q "btccombo-end" < $ic && ! grep -q "BTCIP" < $pc && grep -q "127.0.0.1" < $HOME/.lnd/lnd.conf ; then
+if grep -q "btccombo-end" $ic && ! grep -q "BTCIP" $pc && grep -q "127.0.0.1" $HOME/.lnd/lnd.conf ; then
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -44,7 +44,7 @@ esac
 done
 fi
 
-if grep -q "litd" < $ic >/dev/null 2>&1 ; then 
+if grep -q "litd" $ic >/dev/null 2>&1 ; then 
 lndlitd="true" 
 LND=LITD
 lndconf=lit.conf
@@ -91,13 +91,13 @@ fi
 
 # To print tor details in menu
 unset lndtor torhybrid
-if grep -q "tor.skip-proxy-for-clearnet-targets" < $HOME/.lnd/lnd.conf ; then #works because of lnd to litd symlink
+if grep -q "tor.skip-proxy-for-clearnet-targets" $HOME/.lnd/lnd.conf ; then #works because of lnd to litd symlink
     lndtor=Enabled
 else
     lndtor=Disabled
 fi
 
-if grep -q "tor.skip-proxy-for-clearnet-targets=true" < $HOME/.lnd/lnd.conf 
+if grep -q "tor.skip-proxy-for-clearnet-targets=true" $HOME/.lnd/lnd.conf 
 then 
     torhybrid=Enabled
 else 
@@ -113,7 +113,7 @@ else
 docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>/dev/null
 fi
 
-if grep -q onion: <$dp/lndinfo.log ; then
+if grep -q onion: $dp/lndinfo.log ; then
 lnd_onion="
 $bright_blue
 Tor Onion URI:
@@ -239,8 +239,8 @@ fi
 
 ;;
 prv|PRV|Prv)
-if grep -qE '^lnd.externalip' < $HOME/.lit/lit.conf \
-|| grep -qE '^externalip' < $HOME/.lnd/lnd.conf ; then
+if grep -qE '^lnd.externalip' $HOME/.lit/lit.conf \
+|| grep -qE '^externalip' $HOME/.lnd/lnd.conf ; then
 fully_tor_only
 else
 reverse_fully_tor_only
@@ -265,13 +265,13 @@ enter_continue
 fi
 
 set_terminal_wider
-if grep -q "lnd-" < $ic ; then
+if grep -q "lnd-" $ic ; then
 sudo journalctl -fxu lnd.service
 journal_PID=$!
-elif grep -q "litd" <$ic ; then
+elif grep -q "litd" $ic ; then
 sudo journalctl -fxu litd.service 
 journal_PID=$!
-elif grep -q "lnddocker-" < $ic ; then
+elif grep -q "lnddocker-" $ic ; then
 tail -f $hp/lnd/lnd.log 
 journal_PID=$!
 fi
@@ -286,7 +286,7 @@ please_wait
 
 
 lc|LC|conf|CONF|Conf)
-if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >/dev/null 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
 rL=LITD
 open_conf="$HOME/.lit/lit.conf"
@@ -316,7 +316,7 @@ continue
 
 lcv|LCV)
 
-if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >/dev/null 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
 rL=LITD
 open_conf="$HOME/.lit/lit.conf"
@@ -363,7 +363,7 @@ export file=$HOME/.lnd/lnd.conf
 
 lnd_tor only skipsuccess norestartlnd
 
-if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >/dev/null 2>&1 ; then
 
     sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
     sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
@@ -387,9 +387,9 @@ function reverse_fully_tor_only {
 
 export file=$HOME/.lnd/lnd.conf
 
-if grep -q "litd" < $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >/dev/null 2>&1 ; then
 
-    if grep -q lnd.tlsextraip < $file ; then
+    if grep -q lnd.tlsextraip $file ; then
     if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; lnd.tlsextraip/s/^..//' $file
     else
@@ -399,7 +399,7 @@ if grep -q "litd" < $ic >/dev/null 2>&1 ; then
     fi
     fi
 
-    if grep -q lnd.externalip < $file ; then
+    if grep -q lnd.externalip $file ; then
     if [[ $(cat $file | grep lnd.externalip | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; lnd.externalip/s/^..//' $file
     else
@@ -411,7 +411,7 @@ if grep -q "litd" < $ic >/dev/null 2>&1 ; then
     
     sudo gsed -i "/lnd.tlsextradomain=mydomain.com/d" $file
 
-    if grep -q lnd.tlsextradomain < $file ; then
+    if grep -q lnd.tlsextradomain $file ; then
     if [[ $(cat $file | grep lnd.tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; lnd.tlsextradomain/s/^..//' $file
     else
@@ -424,7 +424,7 @@ if grep -q "litd" < $ic >/dev/null 2>&1 ; then
 
 else
 
-    if grep -q tlsextraip < $file ; then
+    if grep -q tlsextraip $file ; then
     if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; tlsextraip/s/^..//' $file
     else
@@ -434,7 +434,7 @@ else
     fi
     fi
 
-    if grep -q externalip < $file ; then
+    if grep -q externalip $file ; then
     if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; externalip/s/^..//' $file
     else
@@ -446,7 +446,7 @@ else
 
     sudo gsed -i "/tlsextradomain=mydomain.com/d" $file
 
-    if grep -q tlsextradomain < $file ; then
+    if grep -q tlsextradomain $file ; then
     if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
     sed -i '/^; tlsextradomain/s/^..//' $file
     else

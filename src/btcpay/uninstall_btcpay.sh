@@ -1,6 +1,6 @@
 function uninstall_btcpay {
 
-if ! grep -q "btccombo-end" < $ic ; then
+if ! grep -q "btccombo-end" $ic ; then
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan

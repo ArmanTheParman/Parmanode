@@ -53,7 +53,7 @@ debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
 
-if ! grep -q rpcuser < $HOME/.bitcoin/bitcoin.conf ; then _connect=cookie ; fi
+if ! grep -q rpcuser $bc ; then _connect=cookie ; fi
 
 make_sparrow_config "$_connect"
 
@@ -64,7 +64,7 @@ if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
     fi
 
 if [[ $OS == "Linux" ]] ; then 
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $ic ; then
     echo "installing udev rules..."
     udev
     fi

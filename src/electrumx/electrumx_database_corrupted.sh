@@ -25,7 +25,7 @@ p|P) return 0 ;;
 n|N|NO|No|no) return 0 ;;
 y|Y|YES|Yes|yes) 
 
-if grep -q electrumxdkr < $dp/installed.conf ; then
+if grep -q electrumxdkr $dp/installed.conf ; then
 docker_stop_electrumx
 else
 stop_electrumx

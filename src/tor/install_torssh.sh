@@ -61,7 +61,7 @@ if [[ ! -d $HOME/.ssh ]] ; then sudo mkdir $HOME/.ssh ; fi
 if [[ ! -f $HOME/.ssh/config ]] ; then sudo touch $HOME/.ssh/config ; fi
 
 
-if ! grep -q "Host *.onion" < $HOME/.ssh/config ; then
+if ! grep -q "Host *.onion" $HOME/.ssh/config ; then
 cat << EOF | tee -a $HOME/.ssh/config >/dev/null 2>&1
     Host *.onion
     ProxyCommand nc -x localhost:9050 -X 5 %h %p

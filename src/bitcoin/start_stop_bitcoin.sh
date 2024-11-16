@@ -14,7 +14,7 @@ fi
 
 
 #needs to be first...
-if grep -q btccombo < $ic ; then
+if grep -q btccombo $ic ; then
 
     if ! docker ps | grep -q btcpay ; then
         docker start btcpay >/dev/null 2>&1 ; sleep 3
@@ -35,14 +35,14 @@ if [[ $OS == "Linux" ]] ; then
 
         set_terminal
         echo "Bitcoin will start in a moment..."
-        if grep -q "drive=external" < $pc >$dn ; then mount_drive ; fi
+        if grep -q "drive=external" $pc >$dn ; then mount_drive ; fi
         set_terminal
         sudo systemctl start bitcoind.service 
 fi                 
 
 
 if [[ $(uname) == Darwin ]] ; then
-        if grep -q "drive=external" < $pc >$dn ; then
+        if grep -q "drive=external" $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
                 announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
                 return 1
@@ -66,7 +66,7 @@ return 0
 fi
 
 #needs to be first...
-if grep -q btccombo < $ic ; then
+if grep -q btccombo $ic ; then
 docker exec btcpay bitcoin-cli stop 
 return 0
 fi
@@ -75,7 +75,7 @@ if [[ $OS == "Linux" ]] ; then
 set_terminal 
 please_wait
 sudo systemctl stop bitcoind.service 2> $tmp/bitcoinoutput.tmp
-if grep "28" < $tmp/bitcoinoutput.tmp ; then
+if grep "28" $tmp/bitcoinoutput.tmp ; then
 echo "
     This might take longer than usual as Bitcoin is running a process 
     that shouldn't be interrupted. Please wait. 

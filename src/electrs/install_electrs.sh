@@ -5,14 +5,14 @@ export electrsversion="v0.10.6"
 
 source $pc $ic >/dev/null 2>&1
 
-grep -q "electrsdkr" < $ic && announce "Oops, you're trying to install a second instance of electrs.
+grep -q "electrsdkr" $ic && announce "Oops, you're trying to install a second instance of electrs.
     It seems you alread have a Docker version of electrs installed on the 
     system. Parmanode cannot install electrs if the Docker version is 
     already installed. Bad things can happen. Aborting." && return 1 
 
 
 if [[ $debug != 1 ]] ; then
-grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 sned_sats
 fi
 
@@ -130,7 +130,7 @@ fi
 #get drive variables for fulcrum, electrumx, and bitcoin
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if [[ $drive_electrs == external ]] && grep "=external" < $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
+if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
     # Get user to connect drive.
       pls_connect_drive || return 1 

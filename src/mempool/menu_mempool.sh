@@ -36,10 +36,10 @@ unset output_tor
 fi
 
 #get backend variable
-if grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "none" ; then
+if grep "MEMPOOL_BACKEND" $mempoolconf | grep -q "none" ; then
 
     export backend="${yellow}Bitcoin Core$orange"
-elif grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "electrum" ; then
+elif grep "MEMPOOL_BACKEND" $mempoolconf | grep -q "electrum" ; then
 export backend="${bright_blue}An Electrum/Fulcrum Server$orange"
 else
 export backend=""
@@ -135,28 +135,28 @@ done
 
 function test_mempool_config {
 
-if grep -q "test_mempool_config_core_rpc_host=off" < $hm ; then 
+if grep -q "test_mempool_config_core_rpc_host=off" $hm ; then 
     return 0 
 else
     check_core_rpc_host_mempool
 fi
 
-if grep -q "test_mempool_btcusername=off" < $hm ; then 
+if grep -q "test_mempool_btcusername=off" $hm ; then 
     return 0 
 else
     check_core_rpc_username_mempool
 fi
 
-if grep -q "test_mempool_btcpassword=off" < $hm ; then 
+if grep -q "test_mempool_btcpassword=off" $hm ; then 
     return 0 
 else
     check_core_rpc_password_mempool
 fi
 
-if grep -q "test_mempool_config_electrum_host=off" < $hm ; then 
+if grep -q "test_mempool_config_electrum_host=off" $hm ; then 
     return 0 
 else
-    if grep "MEMPOOL_BACKEND" < $mempoolconf | grep -q "electrum" ; then
+    if grep "MEMPOOL_BACKEND" $mempoolconf | grep -q "electrum" ; then
         check_electrum_host_mempool
     fi
 fi

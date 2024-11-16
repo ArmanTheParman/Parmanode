@@ -16,7 +16,7 @@ fi
 preamble electrumx
 
 source $pc $ic >/dev/null 2>&1
-grep -q "bitcoin-end" < $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
+grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -84,7 +84,7 @@ make_ssl_certificates "electrumx" \
 #get drive variables
 source $HOME/.parmanode/parmanode.conf >/dev/null
 
-if [[ $drive_electrumx == external ]] && grep "=external" < $pc | grep -vq "electrumx" ; then #don't grep 'external' alone, too ambiguous
+if [[ $drive_electrumx == external ]] && grep "=external" $pc | grep -vq "electrumx" ; then #don't grep 'external' alone, too ambiguous
     # format not needed 
     # Get user to connect drive.
       pls_connect_drive || return 1 
@@ -109,7 +109,7 @@ restore_internal_electrumx_db || { debug " restore_internal_electrumx_db failed"
 fi
 
 #Electrum X docs say this is needed
-if ! grep -q "rest=1" < $bc ; then
+if ! grep -q "rest=1" $bc ; then
 echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
 fi
 

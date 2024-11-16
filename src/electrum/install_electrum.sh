@@ -121,7 +121,7 @@ fi
 
 if [[ $computer_type == "Pi" ]] ; then
 
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $dp/installed.conf ; then
     echo "installing udev rules..."
     udev
     fi

@@ -17,23 +17,23 @@ if [[ $justFormat != "true" ]] ; then
 debug "in not justFormat"
 
 #parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ $1 == "Bitcoin" ]] && grep "=external" < $pc | grep -qv "drive=" ; then
+if [[ $1 == "Bitcoin" ]] && grep "=external" $pc | grep -qv "drive=" ; then
 confirm_format "Bitcoin" || skip_formatting="true"
 fi
 
-if [[ $1 == "Fulcrum" ]] && grep "=external" <$pc | grep -qv "fulcrum" ; then
+if [[ $1 == "Fulcrum" ]] && grep "=external" $pc | grep -qv "fulcrum" ; then
 confirm_format "Fulcrum" || skip_formatting="true"
 fi
 
-if [[ $1 == "electrs" ]] && grep "=external" <$pc | grep -qv "electrs" ; then
+if [[ $1 == "electrs" ]] && grep "=external" $pc | grep -qv "electrs" ; then
 confirm_format "electrs" || skip_formatting="true"
 fi
 
-if [[ $1 == "electrumx" ]] && grep "=external" <$pc | grep -qv "electrumx" ; then
+if [[ $1 == "electrumx" ]] && grep "=external" $pc | grep -qv "electrumx" ; then
 confirm_format "electrs" || skip_formatting="true"
 fi
 
-if [[ $1 == "nostr" ]] && grep "=external" <$pc | grep -qv "nostr" ; then
+if [[ $1 == "nostr" ]] && grep "=external" $pc | grep -qv "nostr" ; then
 confirm_format "nostr" || skip_formatting="true"
 fi
 

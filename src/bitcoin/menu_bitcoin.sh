@@ -2,7 +2,7 @@ function menu_bitcoin {
 
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
-if grep -q "btccombo" < $ic ; then
+if grep -q "btccombo" $ic ; then
 dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
 fi
 
@@ -154,7 +154,7 @@ continue
 ;;
 
 n|N)
-if ! grep -q "btccombo" < $ic && [[ $OS == Mac ]] ; then no_mac ; continue ; fi
+if ! grep -q "btccombo" $ic && [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 
 menu_bitcoin_cli
 continue

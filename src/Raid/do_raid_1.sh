@@ -59,7 +59,7 @@ w
 EOF
 #format...
 sudo mkfs.ext4 $device
-done < $dp/device_list.conf
+done 
 
 #RAID...
 set_terminal ; echo -e "${green}Preparing RAID ...$orange" ; sleep 1.5

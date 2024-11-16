@@ -64,7 +64,7 @@ done
 
 function reset_lnd_conf {
 
-if grep -q "litd" < $ic ; then
+if grep -q "litd" $ic ; then
 announce "Not available for LITD installation, only LND installations"
 return 0
 fi

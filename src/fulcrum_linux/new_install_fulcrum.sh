@@ -7,7 +7,7 @@ if [[ $1 == "docker" ]] ; then export fulcrumdocker="true" ; else export fulcrum
 
 grep "bitcoin-end" $ic >$dn || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
-if ! grep -q "rpcuser" < $bc ; then
+if ! grep -q "rpcuser" $bc ; then
     announce "Please set a username and password in Bitcoin conf. You can do that from the
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
 fi

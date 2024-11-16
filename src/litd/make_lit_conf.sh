@@ -5,7 +5,7 @@ source $HOME/.bitcoin/bitcoin.conf
 
 get_extIP >/dev/null 2>&1
 
-if grep -q "litdocker" < $ic || [[ $install == litdocker ]] ; then
+if grep -q "litdocker" $ic || [[ $install == litdocker ]] ; then
 customHOME=/home/parman
 else
 customHOME=$HOME

@@ -78,7 +78,7 @@ $cyan
 $cyan    
       (dc)$orange       Fulcrum database corrupted? -- Use this to start fresh.
 "
-if grep -q "fulcrum_tor" < $HOME/.parmanode/parmanode.conf ; then 
+if grep -q "fulcrum_tor" $HOME/.parmanode/parmanode.conf ; then 
 get_onion_address_variable "fulcrum"
 echo -e "
 $bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange

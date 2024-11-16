@@ -26,7 +26,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         W_tor_logic=off
         fi
 
-        if grep -q "website_tor=true" < $HOME/.parmanode/parmanode.conf ; then 
+        if grep -q "website_tor=true" $HOME/.parmanode/parmanode.conf ; then 
         get_onion_address_variable "website" 
         fi
     else

@@ -87,8 +87,8 @@ lncli unlock 2>/dev/null || docker exec lnd lncli unlock 2>/dev/null
 return 0 ;;
 
 ul|UL|Ul|unlock|Unlock) 
-if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then lncli unlock ; fi
-if grep -q "lnddocker-" < $ic ; then docker exec lnd lncli unlock ; fi
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then lncli unlock ; fi
+if grep -q "lnddocker-" $ic ; then docker exec lnd lncli unlock ; fi
 return 0
 ;;
 
@@ -124,9 +124,9 @@ local_balance="Unknown, LND not running or wallet locked"
 remote_balance="Unknown, LND not running or wallet locked"
 fi
 
-if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
 lncli channelbalance > $tmp/.channelbalance
-elif grep -q "lnddocker-" < $ic ; then
+elif grep -q "lnddocker-" $ic ; then
 docker exec lnd lncli channelbalance > $tmp/.channelbalance
 fi
 cbfile=$tmp/.channelbalance
@@ -135,9 +135,9 @@ local_balance=$(cat "$cbfile" | grep -n1 "local_balance" | head -n3 | tail -n1 |
 remote_balance=$(cat "$cbfile" | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
 channel_size_total=$((local_balance + remote_balance))
 
-if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
 lncli walletbalance >$tmp/.walletbalance
-elif grep -q "lnddocker-" < $ic ; then
+elif grep -q "lnddocker-" $ic ; then
 docker exec lnd lncli walletbalance >$tmp/.walletbalance
 fi
 wbfile=$tmp/.walletbalance
@@ -179,9 +179,9 @@ extract_value_cb() {
 }
 
 # Run lncli channelbalance and capture the JSON output
-if grep -q "lnd-" < $ic || grep -q "litd" < $ic ; then 
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then 
 cb_json=$(lncli channelbalance)
-elif grep -q "lnddocker-" < $ic ; then
+elif grep -q "lnddocker-" $ic ; then
 cb_json=$(docker exec lnd lncli channelbalance)
 fi
 

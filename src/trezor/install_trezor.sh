@@ -48,7 +48,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trez
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-x86_64.AppImage.asc
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $ic ; then
     echo "installing udev rules..."
     udev
     fi
@@ -60,7 +60,7 @@ curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trez
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-arm64.AppImage.asc
 verify_trezor || return 1
 sudo chmod +x ./*AppImage
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $ic ; then
     echo "installing udev rules..."
     udev
     fi

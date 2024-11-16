@@ -3,7 +3,7 @@ function menu_electrumx {
 unset refresh
 logfile=$HOME/.parmanode/run_electrumx.log 
 
-if grep -q "electrumxdkr" < $ic ; then
+if grep -q "electrumxdkr" $ic ; then
     electrumxis=docker
     docker exec electrumx cat /home/parman/run_electrumx.log > $logfile
 else
@@ -60,7 +60,7 @@ fi
 
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc && $electrumxis == nondocker ]] ; then
-debug "in tor status"
+
     if sudo cat $macprefix/etc/tor/torrc 2>$dn | grep -q "electrumx" ; then
         if [[ -e $macprefix/var/lib/tor/electrumx-service ]] && \
         sudo cat $macprefix/var/lib/tor/electrumx-service/hostname | grep "onion" >$dn 2>&1 ; then
@@ -70,8 +70,8 @@ debug "in tor status"
         E_tor="${yellow}wait${orange}"
         E_tor_logic=on
         fi
-debug "in if cat torrc grep electrumx"
-        if grep -q "electrumx_tor=true" < $pc ; then 
+
+        if grep -q "electrumx_tor=true" $pc ; then 
         get_onion_address_variable "electrumx" 
         fi
     else
@@ -84,18 +84,17 @@ if [[ $electrumxis == docker ]] ; then
         ONION_ADDR_ELECTRUMX=$(docker exec -u root electrumx cat /var/lib/tor/electrumx-service/hostname)
 fi
 
-debug "before get version"
 #Get version
 if [[ $electrumxis == docker ]] ; then
-        electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]'")
+        electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]'")
         log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>$dn)
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
 else #electrumxis nondocker
-        electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' < $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]' )
+        electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]' )
 fi
-debug "before next clear"
+
 set_terminal_custom 50
 
 echo -en "
@@ -400,7 +399,7 @@ elif [[ $bsync == "false" ]] ; then
      grep -Eo '^[0-9]+') >$dn
 
     bblock=$(echo $gbci | jq -r ".blocks")    
-debug "bblock is - $bblock ; electrumx_sync is $electrumx_sync"
+
     if [[ $bblock == $electrumx_sync ]] ; then
     export electrumx_sync="Block $electrumx_sync ${pink}Fully sync'd$orange"
     else

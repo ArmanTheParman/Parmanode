@@ -21,7 +21,7 @@ curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$
 verify_bitbox || return 1
 sudo chmod +x ./*AppImage
 
-    if ! grep -q udev-end < $dp/installed.conf ; then
+    if ! grep -q udev-end $dp/installed.conf ; then
     echo "installing udev rules..."
     udev
     fi
