@@ -1,5 +1,9 @@
 function menu_btcpay {
 while true ; do
+btcpaylog="$HOME/.btcpayserver/btcpay.log"
+source $pc
+
+set_btcpay_version_and_menu_print 
 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text
 
@@ -27,7 +31,8 @@ fi
 clear
 echo -en "
 ########################################################################################
-                                 ${cyan}BTCPay Server Menu${orange}
+                              ${cyan}BTCPay Server Menu${orange}
+                              $menu_btcpay_version
 ########################################################################################
 
 
@@ -139,9 +144,8 @@ echo -e "
 "
 enter_continue
 fi
-
 set_terminal_wider
-tail -f $HOME/.btcpayserver/btcpay.log &
+tail -f $btcpaylog &
 tail_PID=$!
 trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
@@ -238,4 +242,24 @@ q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
 
 esac
 done
+}
+
+function set_btcpay_version_and_menu_print {
+#the version is unknown if the user chooses "latest version from github". The "latest" flag in parmanode.conf triggers the code to
+#find the version and set it correctly version from the log file - BTCPay needs to have run at least once for this to work
+if [[ $btcpay_version == latest ]] ; then
+
+    btcpay_version=v$(cat $btcpaylog | grep "Adding and executing plugin BTCPayServer -" | tail -n1 | grep -oE '[0-9]+\.[0-9]+.[0-9]+.[0-9]+$')
+
+    if [[ $(btcpay_version | wc -c) -lt 3 ]] ; then #variable may not have captured correctly, if so, it'll be just 'v\n' with a length of 2.
+        unset menu_btcpay_version
+        source $pc #revert btcpay_version to original
+    else
+        #version captured correctly, and set in parmanode_conf
+        menu_btcpay_version=$btcpay_version
+        parmanode_conf_add "btcpay_version=$btcpay_version" 
+    fi
+else
+    menu_btcpay_version=$btcpay_version
+fi
 }

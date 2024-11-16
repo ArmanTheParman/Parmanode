@@ -36,23 +36,27 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 s)
 export btcpay_version_choice="v1.12.5"
+parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 yolo)
 export btcpay_version_choice=master
+parmanode_conf_add "btcpay_version=latest"
 break
 ;;
 hfsp)
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please type the version you want in the format v.x.xx.x
+    Please type the version you want in the format$cyan v.x.xx.x $orange
 
     Parmanode is not going to check the validy or for typos so type carefully.
 
 ########################################################################################
 "
 read btcpay_version_choice
+export btcpay_version_choice
+parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 *)

@@ -12,7 +12,7 @@ sned_sats
 
 btcpay_install_preamble || return 1
 
-choose_btcpay_version || return 1
+choose_btcpay_version || { parmanode_conf_remove "btcpay_choice=" ; return 1 ; }
 
 if [[ $debug != 1 ]] ; then
 set_terminal

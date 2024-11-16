@@ -69,10 +69,14 @@ sudo rm /etc/systemd/system/btcpay.service >/dev/null 2>&1
 disable_tor_btcpay #return 1 if mac
 
 installed_config_remove "btcpay"
+parmanode_conf_remove "btcpay_version"
+
 if [[ $combo == "btcpay_first" ]] ; then
 uninstall_bitcoin btcpay_first
 #then come back here to exit
 installed_config_remove "btccombo"
+parmanode_conf_remove "btcpay_version"
+
 success "Bitcoin and BTCPay have been uninstalled"
 unset combo
 return 0
