@@ -12,7 +12,7 @@ output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to 
 else
 output2="$output1"
 fi
-
+debug "before clear"
 clear
 unset menu_tor enable_tor_menu tor_on 
 
@@ -27,7 +27,7 @@ if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onio
 else
     enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 fi
-
+debug "before set terminal"
 set_terminal_custom 52 
 echo -en "
 ########################################################################################
