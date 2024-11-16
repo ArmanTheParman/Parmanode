@@ -5,6 +5,7 @@ btcpaylog="$HOME/.btcpayserver/btcpay.log"
 set_btcpay_version_and_menu_print 
 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
+isbtcpayrunning
 
 if echo $output1 | grep -q "choose" ; then
 output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
@@ -35,7 +36,7 @@ echo -en "
 ########################################################################################
 
 "
-if docker ps 2>/dev/null | grep -q btcp >/dev/null 2>&1 ; then echo -e "
+if [[ $btcpayrunning == "true" ]] ; then echo -e "
                   BTCPay SERVER IS$green RUNNING$orange -- SEE LOG MENU FOR PROGRESS "
 else
 echo -e "
@@ -50,17 +51,15 @@ echo -e "
 $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 $cyan
-             start)$orange        Start BTCPay (starts Docker container)
+             s)$orange            Start/Stop BTCPay Docker container
 $cyan
-             stop)$orange         Stop BTCPay (stops Docker container)
-$cyan
-             restart)$orange      Restart BTCPay (restarts Docker container)
+             rs)$orange           Restart BTCPay Docker container
 $cyan
              c)$orange            Connect BTCPay to LND
 $cyan
-             bc)$orange           BTCPay config file (bcv for vim)
+             bc)$orange           BTCPay config file (${red}bcv$orange for vim)
 $cyan
-             nc)$orange           NBXplorer config file (ncv for vim)
+             nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
 $cyan
              log)$orange          View BTCPay Server log
 $cyan
@@ -114,14 +113,14 @@ connect_btcpay_to_lnd
 ;;
 
 start|START|Start)
+if [[ $btcpayrunning == "false" ]] ; then
 start_btcpay_all_programs
-;;
-
-stop|STOP|Stop)
+else
 stop_btcpay
+fi
 ;;
 
-restart|Restart)
+rs)
 restart_btcpay
 ;;
 
