@@ -296,7 +296,7 @@ y)
 backupdir=$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4"-"$5}')
 #back up plugins dir
 mkdir -p $bakupdir >/dev/null 2>&1
-cp -r $HOME/.btcpayserver/Plugins $backupdir/
+cp -r $HOME/.btcpayserver/Plugins $backupdir/Plugins
 docker exec -itu postgres btcpay bash -c "pg_dump -U postgres -d btcpayserver" > $backupdir/btcpayserver.sql 2>&1
 success "A backup has been created and left on your Desktop"
 break
