@@ -347,7 +347,7 @@ $cyan
 $orange
 ########################################################################################
 "
-read file ; set_termianl
+read file ; set_terminal
 if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
 if ! grep -iq "PostgreSQL database dump" $file >/dev/null 2>&1 ; then
 yesorno "Doesn't seem to be a valid PostgresSQL file. Ignore and proceed?" || continue ; fi
