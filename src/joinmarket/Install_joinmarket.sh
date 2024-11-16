@@ -163,8 +163,6 @@ function run_wallet_tool_joinmarket {
     return 0
 }
 
-
-
 function build_joinmarket {
 
     unset success_build #do not use 'success' as a variable, it deletes the success function
