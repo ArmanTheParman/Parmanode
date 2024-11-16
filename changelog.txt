@@ -7,6 +7,7 @@
 #    -makes ssh keys for current user if none exists
 #    -refactor all grep commands to avoid < operator 
 #    -tidied up btcpay menu, and extracted version variable
+#    -Backup btcpay database and plugins option
 
 Version 3.46.8
     -Refactor to remove the test for where run_parmanode.sh is called from
