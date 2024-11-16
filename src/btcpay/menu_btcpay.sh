@@ -3,7 +3,7 @@ while true ; do
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
 
 set_btcpay_version_and_menu_print 
-
+debug "redundant pause"
 menu_bitcoin menu_btcpay #gets variables output1 for menu text
 
 if echo $output1 | grep -q "choose" ; then
@@ -12,7 +12,7 @@ else
 output2="$output1"
 fi
 
-set_terminal_custom 51 
+clear
 unset menu_tor enable_tor_menu tor_on 
 
 if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onion" \
@@ -27,7 +27,7 @@ else
     enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 fi
 
-clear
+set_terminal_custom 51 
 echo -en "
 ########################################################################################
                                ${cyan}BTCPay Server Menu${orange}
