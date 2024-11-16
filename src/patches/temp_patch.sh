@@ -1,5 +1,5 @@
 function temp_patch {
-
+debug "tp"
 cleanup_parmanode_service
 add_rpcbind
 truncatedebuglog
