@@ -6,7 +6,7 @@ truncatedebuglog
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
-    echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >/dev/null 
+    echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
 fi
 
 tmux_patch
