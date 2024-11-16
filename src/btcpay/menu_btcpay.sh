@@ -262,4 +262,5 @@ if [[ $btcpay_version == latest || -z $btcpay_version ]] ; then
 else
     menu_btcpay_version=$btcpay_version
 fi
+debug "pause for btcpay version menu print"
 }
