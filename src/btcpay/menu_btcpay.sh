@@ -269,11 +269,37 @@ debug "pause for btcpay version menu print"
 }
 
 function backup_btcpay {
+set_terminal ; echo -e "
+########################################################################################
 
-stop_btcpay
+    Parmanode will backup your posgres database to a file. This has all your BTCPay
+    server's details like the store's details and transaction data. There will also 
+    be a backup of your Plugins directory.
 
-cp -r ~/.btcpayserver ~/.btcpayserver_$(date | awk '{print $1$2$3$4"-"$5}')
+    The backup will be saved to the directory $cyan
 
-#back up  /var/lib/postgresql
+    $HOME/Desktop/btcpayserver_backup_date/        $orange
 
+    Proceed?
+
+                 y)     Yeah, of course, backups are super important
+
+                 n)     Nah
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
+y)
+
+backupdir=$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4"-"$5}')
+#back up plugins dir
+mkdir -p $bakupdir >/dev/null 2>&1
+cp -r $HOME/.btcpayserver/Plugins $backupdir
+docker exec -itu postgres btcpay bash -c "pg_dump -U postgres -d btcpayserver" > $backupdir/btcpayserver.sql 2>&1
+success "A backup has been created and left on your Desktop"
+
+
+#restore database
 }
