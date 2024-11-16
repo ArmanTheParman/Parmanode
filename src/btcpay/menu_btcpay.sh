@@ -30,8 +30,8 @@ fi
 clear
 echo -en "
 ########################################################################################
-                              ${cyan}BTCPay Server Menu${orange}
-                              $menu_btcpay_version
+                               ${cyan}BTCPay Server Menu${orange}
+                                   $menu_btcpay_version
 ########################################################################################
 
 
