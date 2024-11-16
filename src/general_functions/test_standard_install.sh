@@ -1,5 +1,5 @@
 function test_standard_install {
-if grep -q "standard_install" < $dp/hide_messages.conf >/dev/null ; then return 0 ; fi
+if grep -q "standard_install" $dp/hide_messages.conf >/dev/null 2>&1 ; then return 0 ; fi
 
 if [[ ! -e $pn/.git ]] ; then
 while true ; do
