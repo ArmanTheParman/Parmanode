@@ -1,7 +1,6 @@
 function menu_btcpay {
 while true ; do
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
-source $pc
 
 set_btcpay_version_and_menu_print 
 
@@ -247,7 +246,8 @@ done
 function set_btcpay_version_and_menu_print {
 #the version is unknown if the user chooses "latest version from github". The "latest" flag in parmanode.conf triggers the code to
 #find the version and set it correctly version from the log file - BTCPay needs to have run at least once for this to work
-if [[ $btcpay_version == latest ]] ; then
+source $pc
+if [[ $btcpay_version == latest || -z $btcpay_version ]] ; then
 
     btcpay_version=v$(cat $btcpaylog | grep "Adding and executing plugin BTCPayServer -" | tail -n1 | grep -oE '[0-9]+\.[0-9]+.[0-9]+.[0-9]+$')
 
