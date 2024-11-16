@@ -5,11 +5,6 @@ btcpaylog="$HOME/.btcpayserver/btcpay.log"
 set_btcpay_version_and_menu_print 
 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
-    if [[ $bitcoinrunning == "true" ]] ; then
-    btcpbitcoinrunning="${green}Bitcoin RUNNING$orange"
-    else
-    btcpbitcoinrunning="${red}Bitcoin NOT RUNNING$orange"
-    fi
 
 if echo $output1 | grep -q "choose" ; then
 output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
@@ -32,13 +27,12 @@ else
     enable_tor_menu="$bright_blue             tor)          Enable Tor$orange"
 fi
 
-set_terminal_custom 51 
+set_terminal_custom 52 
 echo -en "
 ########################################################################################
                                ${cyan}BTCPay Server Menu${orange}
                                    $menu_btcpay_version
 ########################################################################################
-
 
 "
 if docker ps 2>/dev/null | grep -q btcp >/dev/null 2>&1 ; then echo -e "
@@ -72,7 +66,7 @@ $cyan
 $cyan
              nl)$orange           View NBXplorer log
 $cyan
-             sb)$orange           Start/Stop Bitcoin $btcpbitcoinrunning
+             sb)$orange           Start/Stop Bitcoin
 $red
              man)$orange          Manually access container and mess around
 $bright_blue
@@ -89,7 +83,6 @@ $enable_tor_menu
         from this computer $orange
 
 $menu_tor
-
 ########################################################################################
 " 
 choose "xpmq" ; read choice ; set_terminal
