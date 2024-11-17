@@ -73,6 +73,7 @@ if [[ $1 == "btcpay" ]] ; then
     elif [[ -e $varlibtor/btcpayTOR-server ]] ; then
     export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpayTOR-server/hostname 2>/dev/null)" 
     fi
+    debug2 "pause onion add btcpay"
 
 return 0
 fi
