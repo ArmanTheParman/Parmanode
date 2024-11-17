@@ -160,12 +160,12 @@ dco)
 if [[ $btcpayrunning == "true" ]] ; then
     yesorno "BTCPay needs to be stopped to run the container only. Do that?" \
     && stop_btcpay && docker start btcpay \
-    && enter_continue "The container has been started. BTCPay & NBXplorer are not running." \
+    && enter_continue "The container has been started. NOTE: BTCPay & NBXplorer are$red not running$orange." \
     && continue
     continue #choosing no
 else
 docker start btcpay
-enter_continue "Container started"
+enter_continue "The container has been started. NOTE: BTCPay & NBXplorer are$red not running$orange."
 fi
 ;;
 rs)
