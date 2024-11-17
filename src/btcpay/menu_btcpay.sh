@@ -154,7 +154,7 @@ stop_btcpay
 fi
 ;;
 exp)
-btcpay_manage_container || return 1
+btcpay_menu_advanced || return 1
 ;;
 
 rs)
@@ -458,8 +458,25 @@ fi
 
 }
 
-function btcpay_manage_container {
+function btcpay_menu_advanced {
 while true ; do
+if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -v grep" ; then
+posgresrunning="${green}RUNNING$orange"
+else
+posgresrunning="${red}NOT RUNNING$orange"
+fi
+if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep csproj" ; then
+nbxplorerrunning="${green}RUNNING$orange"
+else
+nbxplorerrunning="${red}NOT RUNNING$orange"
+fi
+if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep csproj" ; then
+containerbtcpayrunning="${green}RUNNING$orange"
+else
+containerbtcpayrunning="${red}NOT RUNNING$orange"
+fi
+
+
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -474,12 +491,13 @@ $cyan
 $cyan
              manp)$orange         Manually access container $red(posgres user)$orange
 $cyan 
-             btcp)$orange         Start BTCPay in container only
+             btcp)$orange         Start BTCPay in container only $containerbtcpayrunning
 $cyan 
-             nbx)$orange          Start NBXplorer in container only
+             nbx)$orange          Start NBXplorer in container only $nbxplorerrunning
 $cyan 
-             post)$orange         Start Postgres in container only
-
+             post)$orange         Start Postgres in container only $posgresrunning
+$cyan 
+             cr)$orange           Create new default btcpayserver database
 
 ########################################################################################
 "
@@ -526,6 +544,8 @@ start_postgres_btcpay_indocker
 enter_continue
 break
 ;;
+cr)
+docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
 *)
 invalid
 ;;
