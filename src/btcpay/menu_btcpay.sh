@@ -43,10 +43,10 @@ echo -en "
 
 "
 if [[ $btcpayrunning == "true" ]] ; then echo -e "
-                  BTCPay SERVER IS$green RUNNING$orange 
+                  BTCPay SERVER IS$green RUNNING$orange" 
 else
 echo -e "
-                  BTCPay SERVER IS$red NOT RUNNING$orange 
+                  BTCPay SERVER IS$red NOT RUNNING$orange"
 fi
 
 echo -ne "
