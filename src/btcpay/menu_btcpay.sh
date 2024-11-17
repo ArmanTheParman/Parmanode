@@ -136,7 +136,7 @@ menu_btcpay_conf_selection ncv
 c|C|Connect|connect)
 connect_btcpay_to_lnd
 ;;
-start|START|Start)
+s|S)
 if [[ $btcpayrunning == "false" ]] ; then
 start_btcpay
 else
