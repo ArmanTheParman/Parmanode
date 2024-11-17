@@ -1,7 +1,5 @@
 function get_onion_address_variable {
 
-varlibtor="$macprefix/var/lib/tor"
-
 if [[ $1 == "bitcoin" ]] ; then
 export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>/dev/null)"
 return 0
