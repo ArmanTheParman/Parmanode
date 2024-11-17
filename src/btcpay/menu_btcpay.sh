@@ -63,7 +63,7 @@ $cyan
 $
              br)$orange           Backup / Restore BTCPay data ...
 $cyan
-             man)$orange          Manually access container and mess around (manr for root)
+             man)$orange          Manually access container (manr for root, manp for posgres)
 $cyan
              up)$orange           Update BTCPay ...
 $pink
@@ -222,6 +222,17 @@ enter_continue "Type exit and <enter> to return from container back to Parmanode
 clear
 docker exec -itu root btcpay bash 
 ;;
+manp)
+if ! docker exec -it btcpay grep "parmashell_functions" /home/parman/.bashrc ; then
+docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /home/parman/.bashrc"
+fi
+clear
+#echo -e "${green}The sudo password for parman is 'parmanode'$orange"
+enter_continue "Type exit and <enter> to return from container back to Parmanode."
+clear
+docker exec -itu postres btcpay bash 
+;;
+
 man)
 if ! docker exec -it btcpay grep "parmashell_functions" /home/parman/.bashrc ; then
 docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /home/parman/.bashrc"
