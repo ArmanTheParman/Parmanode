@@ -61,9 +61,7 @@ $cyan
 $cyan
              nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
 $cyan
-             blog)$orange         View BTCPay Server log
-$cyan
-             nlog)$orange         View NBXplorer log
+             log)$orange          Logs ...
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $yellow 
@@ -128,49 +126,41 @@ rs)
 restart_btcpay
 ;;
 
-blog|BLOG|log|Log|LOG)
-set_terminal ; log_counter
-if [[ $log_count -le 10 ]] ; then
-echo -e "
+log)
+set_terminal ; echo -e "
 ########################################################################################
     
-    This will show the BTCpay log file in real-time as it populates.
-    
-    You can hit <control>-c to make it stop.
+    Next time, you can go directly to either the BTCPay log or the NBXplorer log 
+    by typing$green blog$orange or$green nlog$orange. 
+
+            $cyan
+                        blog)$orange         View BTCPay Server log $cyan
+            $cyan
+                        nlog)$orange         View NBXplorer log $cyan
 
 ########################################################################################
 "
-enter_continue
-fi
-set_terminal_wider
-tail -f $btcpaylog &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
-continue 
+            choose xpmq ; read choice ; set_terminal
+            case $choice in
+            q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
+            blog|BLOG|bl|BL)
+            menu_btcpay_log
+            ;;
+            nlog|NLOG|nl|NL|Nl)
+            menu_nbxplorer_log
+            ;;
+            *)
+            continue
+            ;;
+            esac
+
+blog|BLOG)
+menu_btcpay_log
 ;;
 
 nlog|NLOG|nl|NL|Nl)
-echo "
-########################################################################################
-    
-    This will show the NBXplorer log file in real time as it populates.
-    
-    You can hit <control>-c to make it stop.
-
-########################################################################################
-"
-enter_continue
-set_terminal_wider
-tail -f $HOME/.nbxplorer/nbxplorer.log &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
-continue ;;
+menu_nbxplorer_log
+;;
 
 pp|PP|Pp|pP)
 btcparmanpay
@@ -361,4 +351,48 @@ break
 esac
 done
 
+}
+
+function menu_btcpay_log {
+set_terminal ; log_counter
+if [[ $log_count -le 10 ]] ; then
+echo -e "
+########################################################################################
+    
+    This will show the BTCpay log file in real-time as it populates.
+    
+    You can hit$cyan <control>-c$orange to make it stop.
+
+########################################################################################
+"
+enter_continue
+fi
+set_terminal_wider
+tail -f $btcpaylog &
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+set_terminal
+}
+
+
+function menu_nbxplorer_log {
+echo "
+########################################################################################
+    
+    This will show the NBXplorer log file in real time as it populates.
+    
+    You can hit$cyan <control>-c$orange to make it stop.
+
+########################################################################################
+"
+enter_continue
+set_terminal_wider
+tail -f $HOME/.nbxplorer/nbxplorer.log &
+tail_PID=$!
+trap 'kill $tail_PID' SIGINT #condition added to memory
+wait $tail_PID # code waits here for user to control-c
+trap - SIGINT # reset the trap so control-c works elsewhere.
+set_terminal
 }
