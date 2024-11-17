@@ -594,11 +594,11 @@ break
 ;;
 del)
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
-docker exec -itu root btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
+docker exec -itu parman btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
 enter_continue
 ;;
 cr)
-docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
+docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
 enter_continue
 break
 ;;
