@@ -60,7 +60,7 @@ $cyan
              log)$orange          Logs ...
 $cyan
              sb)$orange           Start/Stop Bitcoin
-$cyan
+$
              br)$orange           Backup / Restore BTCPay data ...
 $cyan
              man)$orange          Manually access container and mess around
@@ -71,7 +71,7 @@ $pink
 
 $enable_tor_menu
 
-    For access:     
+    FOR ACCESS:     
 
         http://${IP}:23001$yellow           
         from any computer on home network    $orange
