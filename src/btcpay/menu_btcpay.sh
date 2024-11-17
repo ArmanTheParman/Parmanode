@@ -215,7 +215,7 @@ docker exec -it btcpay bash
 ;;
 br)
 yesorno "Do you want to backup BTCPay or restore?" "b" "Backup" "r" "Restore" \
-     && { backup_btcpay ; continue }
+     && { backup_btcpay ; continue ; }
      restore_btcpay
 ;;
 bk)
