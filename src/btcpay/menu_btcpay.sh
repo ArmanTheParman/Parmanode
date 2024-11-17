@@ -186,7 +186,6 @@ menu_nbxplorer_log
 
 pp|PP|Pp|pP)
 btcparmanpay
-debug2 "BTC ParmanPay2"
 ;;
 
 tor)

@@ -1,5 +1,5 @@
 function btcparmanpay {
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                   BTC ParmanPay
@@ -16,7 +16,7 @@ $bright_blue
 $orange
 ########################################################################################
 "
-enter_continue
 debug2 "BTC ParmanPay"
+enter_continue
 return 0
 }
