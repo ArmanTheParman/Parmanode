@@ -13,6 +13,7 @@ RUN groupadd -r parman && useradd -m -g parman -u $parmanID parman
 RUN chown -R parman:parman /home/parman/
 RUN echo 'parman:parmanode' | chpasswd
 RUN usermod -aG sudo parman
+RUN echo "Defaults !fqdn" | tee -a /etc/sudoers
 
 USER parman
 
