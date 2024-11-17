@@ -74,7 +74,7 @@ $cyan
              man)$orange          Manually access container (${cyan}manr$orange for root,$cyan manp$orange for posgres)
 $cyan
              up)$orange           Update BTCPay ...
-$pink
+$cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 
 $enable_tor_menu
