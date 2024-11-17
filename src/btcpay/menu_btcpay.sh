@@ -60,7 +60,7 @@ $cyan
              log)$orange          Logs ...
 $cyan
              sb)$orange           Start/Stop Bitcoin
-$
+$cyan
              br)$orange           Backup / Restore BTCPay data ...
 $cyan
              man)$orange          Manually access container (${cyan}manr$orange for root,$cyan manp$orange for posgres)
