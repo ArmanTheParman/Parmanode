@@ -214,7 +214,7 @@ clear
 docker exec -it btcpay bash 
 ;;
 br)
-yesorno "Do you want to backup BTCPay or restore?" "b" "Backup" "r" "Restore" \
+yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
      && { backup_btcpay ; continue ; }
      restore_btcpay
 ;;
@@ -437,8 +437,3 @@ vim_warning ; vim $HOME/.nbxplorer/Main/settings.config
 fi
 
 }
-
-$yellow 
-             bk)$orange           Backup BTCPay data 
-$yellow 
-             res)$orange          Restore BTCPay data
