@@ -63,9 +63,7 @@ $cyan
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $yellow 
-             bk)$orange           Backup BTCPay data 
-$yellow 
-             res)$orange          Restore BTCPay data
+             br)$orange           Backup / Restore BTCPay data ...
 $red
              man)$orange          Manually access container and mess around
 $bright_blue
@@ -214,6 +212,11 @@ clear
 enter_continue "Type exit and <enter> to return from container back to Parmanode"
 clear
 docker exec -it btcpay bash 
+;;
+br)
+yesorno "Do you want to backup BTCPay or restore?" "b" "Backup" "r" "Restore" \
+     && { backup_btcpay ; continue }
+     restore_btcpay
 ;;
 bk)
 backup_btcpay
@@ -434,3 +437,8 @@ vim_warning ; vim $HOME/.nbxplorer/Main/settings.config
 fi
 
 }
+
+$yellow 
+             bk)$orange           Backup BTCPay data 
+$yellow 
+             res)$orange          Restore BTCPay data
