@@ -207,6 +207,10 @@ fi
 up)
 update_btcpay
 ;;
+debug)
+docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/.bashrc"
+;;
+
 manr)
 if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/.bashrc" ; then
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /root/.bashrc" 
