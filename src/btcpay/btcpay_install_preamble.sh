@@ -1,6 +1,4 @@
 function btcpay_install_preamble {
-while true ; do
-set_terminal
 yesorno "$cyan
                                 Install BTCPay?
 $orange
