@@ -215,10 +215,8 @@ manr)
 if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/.bashrc" ; then
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /root/.bashrc" 
 fi
-if ! docker exec -itu root btcpay bash -c "grep -qE '^PS1=' /root/.bashrc" ; then
-docker exec -itu root btcpay bash -c "cat << 'EOF' | tee -a /root/.bashrc
-PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033:\w$' 
-EOF"
+if ! docker exec -itu root btcpay bash -c "grep -qE '#colour_function' /root/.bashrc" ; then
+docker exec -itu root btcpay bash -c "echo 'colour #colour_function' | tee -a /root/.bashrc"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
