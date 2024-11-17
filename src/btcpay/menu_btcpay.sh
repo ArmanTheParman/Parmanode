@@ -23,8 +23,8 @@ clear
 unset menu_tor enable_tor_menu tor_on 
 
 if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onion" \
-   && sudo grep -q "7003" $macprefix/etc/tor/torrc \
-   && sudo grep -q "btcpay-service" $macprefix/etc/tor/torrc ; then 
+   && sudo grep -q "7003" $torrc \
+   && sudo grep -q "btcpay-service" $torrc ; then 
 
     get_onion_address_variable btcpay 
     menu_tor="    TOR: $bright_blue
