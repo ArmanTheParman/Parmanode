@@ -60,11 +60,11 @@ $cyan
              log)$orange          Logs ...
 $cyan
              sb)$orange           Start/Stop Bitcoin
-$yellow 
+$cyan
              br)$orange           Backup / Restore BTCPay data ...
-$red
+$cyan
              man)$orange          Manually access container and mess around
-$bright_blue
+$cyan
              up)$orange           Update BTCPay ...
 $pink
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
