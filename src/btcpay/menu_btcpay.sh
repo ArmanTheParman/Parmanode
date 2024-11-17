@@ -91,53 +91,53 @@ if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 m|M) back2main ;;
 
-conf)
-set_terminal ; echo -e "
-########################################################################################
+# conf)
+# set_terminal ; echo -e "
+# ########################################################################################
     
-    Next time, you can go directly to either the BTCPay log or the NBXplorer configs 
-    by typing$green bc$orange or$green nc$orange. 
+#     Next time, you can go directly to either the BTCPay log or the NBXplorer configs 
+#     by typing$green bc$orange or$green nc$orange. 
 
-$cyan
-             bc)$orange           BTCPay config file (${red}bcv$orange for vim)
-$cyan
-             nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
+# $cyan
+#              bc)$orange           BTCPay config file (${red}bcv$orange for vim)
+# $cyan
+#              nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
 
 
-########################################################################################
-"
-            choose xpmq ; read choice ; set_terminal
-            case $choice in
-            q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
-            bc)
-            menu_btcpay_conf_selection bc
-            ;;
-            bcv)
-            menu_btcpay_conf_selection bcv
-            ;;
-            nc)
-            menu_btcpay_conf_selection nc
-            ;;
-            ncv)
-            menu_btcpay_conf_selection ncv
-            ;;
-            esac
+# ########################################################################################
+# "
+#             choose xpmq ; read choice ; set_terminal
+#             case $choice in
+#             q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
+#             bc)
+#             menu_btcpay_conf_selection bc
+#             ;;
+#             bcv)
+#             menu_btcpay_conf_selection bcv
+#             ;;
+#             nc)
+#             menu_btcpay_conf_selection nc
+#             ;;
+#             ncv)
+#             menu_btcpay_conf_selection ncv
+#             ;;
+#             esac
+# ;;
+bc)
+menu_btcpay_conf_selection bc
 ;;
-# bc)
-# menu_btcpay_conf_selection bc
-# ;;
-# bcv)
-# menu_btcpay_conf_selection bcv
-# ;;
-# nc)
-# menu_btcpay_conf_selection nc
-# ;;
-# ncv)
-# menu_btcpay_conf_selection ncv
-# ;;
-# c|C|Connect|connect)
-# connect_btcpay_to_lnd
-# ;;
+bcv)
+menu_btcpay_conf_selection bcv
+;;
+nc)
+menu_btcpay_conf_selection nc
+;;
+ncv)
+menu_btcpay_conf_selection ncv
+;;
+c|C|Connect|connect)
+connect_btcpay_to_lnd
+;;
 start|START|Start)
 if [[ $btcpayrunning == "false" ]] ; then
 start_btcpay
