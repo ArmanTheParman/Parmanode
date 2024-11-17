@@ -5,8 +5,8 @@ set_terminal
 unset output t_enabled menubrerunning torstatusD torstatusE
 
 if sudo cat $macprefix/var/lib/tor/bre-service/hostname 2>$dn | grep -q onion \
-   && sudo grep -q "bre-service" $macprefix/etc/torrc \
-   && sudo grep -q "3004" $macprefix/etc/torrc; then
+   && sudo grep -q "bre-service" $torrc \
+   && sudo grep -q "3004" $torrc; then
 
     get_onion_address_variable "bre" 
     output=" 
