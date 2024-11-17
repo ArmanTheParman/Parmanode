@@ -567,30 +567,24 @@ fi
 ;;
 man)
 menu_btcpay_man
-break
 ;;
 manp)
 menu_btcpay_manp
-break
 ;;
 manr)
 menu_btcpay_manr
-break
 ;;
 btcp)
 start_btcpay_indocker 
 enter_continue
-break
 ;;
 nbx)
 start_nbxplorer_indocker
 enter_continue
-break
 ;;
 post)
 start_postgres_btcpay_indocker 
 enter_continue
-break
 ;;
 del)
 # -d posgress, default connect to posgress, necessary otherwise it tries to connect to a database the same as the user's name
@@ -601,7 +595,6 @@ enter_continue
 cr)
 docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver"
 enter_continue
-break
 ;;
 *)
 invalid
