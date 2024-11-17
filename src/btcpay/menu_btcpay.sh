@@ -49,8 +49,6 @@ $output2"
 echo -e "
 
 $cyan
-             pp)$orange           BTC ParmanPay - Online payment app, worldwide access
-$cyan
              s)$orange            Start/Stop BTCPay Docker container
 $cyan
              rs)$orange           Restart BTCPay Docker container
@@ -68,6 +66,8 @@ $red
              man)$orange          Manually access container and mess around
 $bright_blue
              up)$orange           Update BTCPay ...
+$pink
+             pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 
 $enable_tor_menu
 
