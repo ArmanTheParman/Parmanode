@@ -209,7 +209,8 @@ update_btcpay
 ;;
 manr)
 if ! docker exec -it btcpay grep "parmashell_functions" /root/.bashrc ; then
-docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /root/.bashrc"
+docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /root/.bashrc ; \
+PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033:\w\$"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
