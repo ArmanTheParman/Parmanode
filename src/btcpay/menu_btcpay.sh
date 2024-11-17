@@ -123,21 +123,21 @@ $cyan
             ;;
             esac
 ;;
-bc)
-menu_btcpay_conf_selection bc
-;;
-bcv)
-menu_btcpay_conf_selection bcv
-;;
-nc)
-menu_btcpay_conf_selection nc
-;;
-ncv)
-menu_btcpay_conf_selection ncv
-;;
-c|C|Connect|connect)
-connect_btcpay_to_lnd
-;;
+# bc)
+# menu_btcpay_conf_selection bc
+# ;;
+# bcv)
+# menu_btcpay_conf_selection bcv
+# ;;
+# nc)
+# menu_btcpay_conf_selection nc
+# ;;
+# ncv)
+# menu_btcpay_conf_selection ncv
+# ;;
+# c|C|Connect|connect)
+# connect_btcpay_to_lnd
+# ;;
 start|START|Start)
 if [[ $btcpayrunning == "false" ]] ; then
 start_btcpay
