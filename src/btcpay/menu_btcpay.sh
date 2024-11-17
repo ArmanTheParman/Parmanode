@@ -6,6 +6,12 @@ set_btcpay_version_and_menu_print
 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 isbtcpayrunning
+if [[ $btcpayrunning = "false" ]] \
+&& docker ps | grep -q btcpay ; then
+containeronly="${pink}Container RUNNING$orange"
+else
+unset containeronly
+fi
 
 if echo $output1 | grep -q "choose" ; then
 output2=$(echo "$output1" | sed 's/start/sb/g') #choose start to run changed to choose sb to run. Option text comes from another menu.
@@ -51,7 +57,7 @@ echo -e "
 $cyan
              s)$orange            Start/Stop Docker container and BTCPay
 $cyan
-             dco)$orange          Start Docker container only
+             dco)$orange          Start Docker container only $containeronly
 $cyan
              rs)$orange           Restart BTCPay Docker container
 $cyan
@@ -146,6 +152,17 @@ stop_btcpay
 fi
 ;;
 
+dco)
+if [[ $btcpayrunning == "true" ]] ; then
+yesorno "BTCPay needs to be stopped to run the container only. Do that?" \
+&& stop_btcpay && docker start btcpay \
+&& enter_continue "The container has been started. BTCPay & NBXplorer are not running." \
+&& continue
+else
+docker start btcpay
+enter_continue "Container started"
+fi
+;;
 rs)
 restart_btcpay
 ;;
