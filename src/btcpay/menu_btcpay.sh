@@ -57,9 +57,7 @@ $cyan
 $cyan
              c)$orange            Connect BTCPay to LND
 $cyan
-             bc)$orange           BTCPay config file (${red}bcv$orange for vim)
-$cyan
-             nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
+             conf)$orange         Config files ...
 $cyan
              log)$orange          Logs ...
 $cyan
@@ -92,22 +90,50 @@ p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
 m|M) back2main ;;
+
+conf)
+set_terminal ; echo -e "
+########################################################################################
+    
+    Next time, you can go directly to either the BTCPay log or the NBXplorer configs 
+    by typing$green bc$orange or$green nc$orange. 
+
+$cyan
+             bc)$orange           BTCPay config file (${red}bcv$orange for vim)
+$cyan
+             nc)$orange           NBXplorer config file (${red}ncv$orange for vim)
+
+
+########################################################################################
+"
+            choose xpmq ; read choice ; set_terminal
+            case $choice in
+            q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
+            bc)
+            menu_btcpay_conf_selection bc
+            ;;
+            bcv)
+            menu_btcpay_conf_selection bcv
+            ;;
+            nc)
+            menu_btcpay_conf_selection nc
+            ;;
+            ncv)
+            menu_btcpay_conf_selection ncv
+            ;;
+            esac
+;;
 bc)
-nano $HOME/.btcpayserver/Main/settings.config
-continue
+menu_btcpay_conf_selection bc
 ;;
 bcv)
-vim_warning ; vim $HOME/.btcpayserver/Main/settings.config
-continue
+menu_btcpay_conf_selection bcv
 ;;
-
 nc)
-nano $HOME/.nbxplorer/Main/settings.config
-continue
+menu_btcpay_conf_selection nc
 ;;
 ncv)
-vim_warning ; vim $HOME/.nbxplorer/Main/settings.config
-continue
+menu_btcpay_conf_selection ncv
 ;;
 
 c|C|Connect|connect)
@@ -395,4 +421,18 @@ trap 'kill $tail_PID' SIGINT #condition added to memory
 wait $tail_PID # code waits here for user to control-c
 trap - SIGINT # reset the trap so control-c works elsewhere.
 set_terminal
+}
+
+function menu_btcpay_conf_selection {
+
+if [[ $1 == bc ]] ; then
+nano $HOME/.btcpayserver/Main/settings.config
+elif [[ $1 == bcv]] ; then
+vim_warning ; vim $HOME/.btcpayserver/Main/settings.config
+elif [[ $1 == nc ]] ; then
+nano $HOME/.nbxplorer/Main/settings.config
+elif [[ $1 == ncv ]] ; then
+vim_warning ; vim $HOME/.nbxplorer/Main/settings.config
+fi
+
 }
