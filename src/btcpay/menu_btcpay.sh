@@ -63,7 +63,7 @@ $cyan
 $
              br)$orange           Backup / Restore BTCPay data ...
 $cyan
-             man)$orange          Manually access container and mess around
+             man)$orange          Manually access container and mess around (manr for root)
 $cyan
              up)$orange           Update BTCPay ...
 $pink
