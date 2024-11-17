@@ -63,7 +63,7 @@ $cyan
 $
              br)$orange           Backup / Restore BTCPay data ...
 $cyan
-             man)$orange          Manually access container (manr for root, manp for posgres)
+             man)$orange          Manually access container (${cyan}manr$orange for root,$cyan manp$orange for posgres)
 $cyan
              up)$orange           Update BTCPay ...
 $pink
