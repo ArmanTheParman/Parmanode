@@ -215,7 +215,7 @@ manr)
 if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null" 
 fi
-if ! docker exec -itu root btcpay bash -c "grep -qE '#colour_function' /etc/bash.bashrc" ; then
+if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
 docker exec -itu root btcpay bash -c "echo 'colour 2>/dev/null #colour_function' | tee -a /etc/bash.bashrc >/dev/null"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
@@ -223,7 +223,7 @@ clear
 docker exec -itu root btcpay bash 
 ;;
 manp)
-if ! docker exec -it btcpay grep "parmashell_functions" /etc/bash.bashrc ; then
+if ! docker exec -it btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null"
 fi
 clear
@@ -234,7 +234,7 @@ docker exec -itu postgres btcpay bash
 ;;
 
 man)
-if ! docker exec -it btcpay grep "parmashell_functions" /etc/bash.bashrc ; then
+if ! docker exec -it btcpay -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null" 
 fi
 clear
