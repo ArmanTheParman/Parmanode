@@ -531,17 +531,19 @@ set_terminal ; echo -e "
 $cyan
              dco)$orange          Start Docker container only $containeronly
 $cyan
-             man)$orange          Manually access container $red(parman user)$orange
+             man)$orange          Manually access container $bright_blue(parman user)$orange
 $cyan
-             manr)$orange         Manually access container $red(root user)$orange
+             manr)$orange         Manually access container $bright_blue(root user)$orange
 $cyan
-             manp)$orange         Manually access container $red(posgres user)$orange
+             manp)$orange         Manually access container $bright_blue(posgres user)$orange
 $cyan 
              btcp)$orange         Start BTCPay in container only $containerbtcpayrunning
 $cyan 
              nbx)$orange          Start NBXplorer in container only $nbxplorerrunning
 $cyan 
              post)$orange         Start Postgres in container only $posgresrunning
+$cyan 
+             del)$orange          Delete default btcpayserver database
 $cyan 
              cr)$orange           Create new default btcpayserver database
 
@@ -590,8 +592,14 @@ start_postgres_btcpay_indocker
 enter_continue
 break
 ;;
+del)
+yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
+docker exec -itu postgres btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
+enter_continue
+;;
 cr)
-docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
+docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
+enter_continue
 break
 ;;
 *)
