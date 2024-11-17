@@ -32,7 +32,8 @@ if sudo cat $macprefix/var/lib/tor/btcpay-service/hostname 2>$dn | grep -q "onio
         "
 else
     if ! sudo grep -q "7003" $torrc ; then
-    enable_tor_menu="$bright_blue             tor)$orange          Enable Tor"
+    enable_tor_menu="$bright_blue             tor)$orange          Enable Tor
+    "
     else
     unset enable_tor_menu 
     fi
@@ -80,7 +81,6 @@ $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 
 $enable_tor_menu
-
     FOR ACCESS:     
 
         http://${IP}:23001$yellow           
