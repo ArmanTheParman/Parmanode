@@ -21,7 +21,7 @@ $green
 
                     s)       Standard installation, v1.12.5
 $red
-                    yolo)    Lates version on the BTCPay GitHub master branch
+                    yolo)    Latest version on the BTCPay GitHub master branch
 $orange
                     hfsp)    Manually enter the version you want
 
