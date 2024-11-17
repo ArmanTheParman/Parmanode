@@ -154,7 +154,7 @@ stop_btcpay
 fi
 ;;
 exp)
-btcpay_manage_container
+btcpay_manage_container || return 1
 ;;
 
 rs)
