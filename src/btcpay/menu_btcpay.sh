@@ -153,7 +153,7 @@ set_terminal ; echo -e "
             continue
             ;;
             esac
-
+;;
 blog|BLOG)
 menu_btcpay_log
 ;;
