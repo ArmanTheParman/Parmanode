@@ -217,7 +217,7 @@ docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/p
 fi
 if ! docker exec -itu root btcpay bash -c "grep -qE '^PS1=' /root/.bashrc" ; then
 docker exec -itu root btcpay bash -c "cat << 'EOF' | tee -a /root/.bashrc
-'PS1='\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033:\w\$' 
+PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033:\w$' 
 EOF"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
