@@ -216,7 +216,7 @@ if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /root/.bashrc" 
 fi
 if ! docker exec -itu root btcpay bash -c "grep -qE '#colour_function' /root/.bashrc" ; then
-docker exec -itu root btcpay bash -c "echo 'colour #colour_function' | tee -a /root/.bashrc"
+docker exec -itu root btcpay bash -c "echo 'colour 2>/dev/null #colour_function' | tee -a /root/.bashrc"
 fi
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
