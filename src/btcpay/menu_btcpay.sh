@@ -473,6 +473,12 @@ $cyan
              manr)$orange         Manually access container $red(root user)$orange
 $cyan
              manp)$orange         Manually access container $red(posgres user)$orange
+$cyan 
+             btcp)$orange         Start BTCPay in container only
+$cyan 
+             nbx)$orange          Start NBXplorer in container only
+$cyan 
+             post)$orange         Start Postgres in container only
 
 
 ########################################################################################
@@ -495,12 +501,30 @@ fi
 ;;
 man)
 menu_btcpay_man
+break
 ;;
 manp)
 menu_btcpay_manp
+break
 ;;
 manr)
 menu_btcpay_manr
+break
+;;
+btcp)
+start_btcpay_indocker 
+enter_continue
+break
+;;
+nbx)
+start_nbxplorer_indocker
+enter_continue
+break
+;;
+post)
+start_postgres_btcpay_indocker 
+enter_continue
+break
 ;;
 *)
 invalid
