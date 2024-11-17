@@ -226,6 +226,9 @@ manp)
 if ! docker exec -it btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null"
 fi
+if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
+docker exec -du root btcpay bash -c "echo 'colour 2>/dev/null #colour_function' | tee -a /etc/bash.bashrc >/dev/null"
+fi
 clear
 #echo -e "${green}The sudo password for parman is 'parmanode'$orange"
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
@@ -236,6 +239,9 @@ docker exec -itu postgres btcpay bash
 man)
 if ! docker exec -it btcpay -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -du root btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null" 
+fi
+if ! docker exec -itu root btcpay bash -c "grep -q '#colour_function' /etc/bash.bashrc" ; then
+docker exec -du root btcpay bash -c "echo 'colour 2>/dev/null #colour_function' | tee -a /etc/bash.bashrc >/dev/null"
 fi
 clear
 echo -e "${green}The sudo password for parman is 'parmanode'$orange"
