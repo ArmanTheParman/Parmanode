@@ -49,7 +49,9 @@ $output2"
 echo -e "
 
 $cyan
-             s)$orange            Start/Stop BTCPay Docker container
+             s)$orange            Start/Stop Docker container and BTCPay
+$cyan
+             dco)$orange          Start Docker container only
 $cyan
              rs)$orange           Restart BTCPay Docker container
 $cyan
