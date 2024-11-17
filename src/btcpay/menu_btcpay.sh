@@ -593,8 +593,9 @@ enter_continue
 break
 ;;
 del)
+# -d posgress, default connect to posgress, necessary otherwise it tries to connect to a database the same as the user's name
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
-docker exec -itu parman btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
+docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
 enter_continue
 ;;
 cr)
