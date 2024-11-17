@@ -208,7 +208,12 @@ up)
 update_btcpay
 ;;
 debug)
-docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/.bashrc"
+if ! docker exec -itu root btcpay bash -c "grep -q 'parmashell_functions' /root/.bashrc" ; then
+echo "empty"
+else
+echo "not empty"
+fi
+enter_continue
 ;;
 
 manr)
