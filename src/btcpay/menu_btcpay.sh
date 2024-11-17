@@ -207,6 +207,11 @@ fi
 up)
 update_btcpay
 ;;
+manr)
+enter_continue "Type exit and <enter> to return from container back to Parmanode."
+clear
+docker exec -itu root btcpay bash 
+;;
 man)
 clear
 echo -e "${green}The sudo password for parman is 'parmanode'$orange"
