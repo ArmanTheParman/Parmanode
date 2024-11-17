@@ -425,7 +425,7 @@ function menu_btcpay_conf_selection {
 
 if [[ $1 == bc ]] ; then
 nano $HOME/.btcpayserver/Main/settings.config
-elif [[ $1 == bcv]] ; then
+elif [[ $1 == bcv ]] ; then
 vim_warning ; vim $HOME/.btcpayserver/Main/settings.config
 elif [[ $1 == nc ]] ; then
 nano $HOME/.nbxplorer/Main/settings.config
