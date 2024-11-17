@@ -226,6 +226,7 @@ manp)
 if ! docker exec -it btcpay bash -c "grep -q 'parmashell_functions' /etc/bash.bashrc" ; then
 docker exec -d btcpay bash -c "echo 'source /home/parman/parman_programs/parmanode/src/ParmaShell/parmashell_functions' | tee -a /etc/bash.bashrc >/dev/null"
 fi
+enter_continue "2"
 clear
 #echo -e "${green}The sudo password for parman is 'parmanode'$orange"
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
