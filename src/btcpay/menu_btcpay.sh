@@ -594,7 +594,7 @@ break
 ;;
 del)
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
-docker exec -itu postgres btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
+docker exec -itu root btcpay /bin/bash -c "psql -U parman -c 'DROP DATABASE btcpayserver;'"
 enter_continue
 ;;
 cr)
