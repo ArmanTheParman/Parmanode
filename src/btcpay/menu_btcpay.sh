@@ -230,7 +230,7 @@ clear
 #echo -e "${green}The sudo password for parman is 'parmanode'$orange"
 enter_continue "Type exit and <enter> to return from container back to Parmanode."
 clear
-docker exec -itu postres btcpay bash 
+docker exec -itu postgres btcpay bash 
 ;;
 
 man)
