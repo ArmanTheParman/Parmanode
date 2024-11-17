@@ -1,8 +1,7 @@
 function btcpay_install_preamble {
 while true ; do
-set_terminal ; echo -e "
-########################################################################################
-$cyan
+set_terminal
+yesorno "$cyan
                                 Install BTCPay?
 $orange
     BTCPay Server is a self-hosted, open-source bitcoin payment processor. It will
@@ -13,22 +12,6 @@ $orange
     have installed it before, this installation will used cached files so it is 
     likely to be a lot faster. 
 
-    Proceed?
-
-     $green                          y $orange     or  $red    n
-$orange
-########################################################################################
-"
-choose "xpmq" ; read choice ; set_terminal
-
-case $choice in
-m|M) back2main ;;
-q|Q) exit 0 ;;
-p|P) return 1 ;;
-n|N|NO|No|no) return 1 ;;
-y|Y|Yes|YES|yes) return 0 ;;
-*) invalid ;;
-esac
-done
-
+    Proceed?" && return 0
+    return 1
 }
