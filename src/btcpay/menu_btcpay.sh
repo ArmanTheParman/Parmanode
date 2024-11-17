@@ -137,7 +137,7 @@ set_terminal ; echo -e "
                         blog)$orange         View BTCPay Server log $cyan
             $cyan
                         nlog)$orange         View NBXplorer log $cyan
-
+$orange
 ########################################################################################
 "
             choose xpmq ; read choice ; set_terminal
@@ -153,7 +153,7 @@ set_terminal ; echo -e "
             continue
             ;;
             esac
-;;
+
 blog|BLOG)
 menu_btcpay_log
 ;;
