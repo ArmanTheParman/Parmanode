@@ -485,7 +485,7 @@ $cyan
 "
 choose xpmq ; read choice ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) continue ;; m|M) back2main ;; 
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;; 
 dco)
 if [[ $btcpayrunning == "true" ]] ; then
     yesorno "BTCPay needs to be stopped to run the container only. Do that?" \
