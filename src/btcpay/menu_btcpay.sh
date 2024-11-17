@@ -6,7 +6,7 @@ set_btcpay_version_and_menu_print
 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 isbtcpayrunning
-if [[ $btcpayrunning = "false" ]] \
+if [[ $btcpayrunning == "false" ]] \
 && docker ps | grep -q btcpay ; then
 containeronly="${pink}Container RUNNING$orange"
 else
