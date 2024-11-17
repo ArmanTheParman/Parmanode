@@ -599,7 +599,7 @@ docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP
 enter_continue
 ;;
 cr)
-docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
+docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver"
 enter_continue
 break
 ;;
