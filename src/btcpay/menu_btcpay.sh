@@ -74,9 +74,9 @@ $cyan
 $cyan
              br)$orange           Backup / Restore BTCPay data (coming soon) ...
 $cyan
-             up)$orange           Update BTCPay ...
+             up)$orange           Update BTCPay (coming soon) ...
 $cyan
-             exp)$orange          Manage container (for experts)
+             exp)$orange          Manage container $bright_blue (for experts) $orange
 $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 
@@ -218,7 +218,9 @@ fi
 ;;
 
 up)
-update_btcpay
+announce "not available just yet"
+continue
+#update_btcpay
 ;;
 debug)
 true
@@ -528,9 +530,9 @@ while true ; do
 
 set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
      Extra features for advanced users...
-
+$orange
 $cyan
              dco)$orange          Start Docker container only $containeronly
 $cyan
@@ -546,9 +548,9 @@ $cyan
 $cyan 
              post)$orange         Start Postgres in container only $posgresrunning
 $cyan 
-             del)$orange          Delete default btcpayserver database
+             del)$orange          Delete default btcpayserver database (coming soon)
 $cyan 
-             cr)$orange           Create new default btcpayserver database
+             cr)$orange           Create new default btcpayserver database (coming soon)
 
 ########################################################################################
 "
@@ -590,12 +592,16 @@ start_postgres_btcpay_indocker
 enter_continue
 ;;
 del)
+announce "not available just yet"
+continue
 # -d posgress, default connect to posgress, necessary otherwise it tries to connect to a database the same as the user's name
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
 enter_continue
 ;;
 cr)
+announce "not available just yet"
+continue
 docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver"
 enter_continue
 ;;
