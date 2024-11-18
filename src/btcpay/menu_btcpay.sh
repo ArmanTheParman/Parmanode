@@ -430,7 +430,7 @@ set_terminal
 
 
 function menu_nbxplorer_log {
-echo "
+echo -e "
 ########################################################################################
     
     This will show the NBXplorer log file in real time as it populates.
