@@ -13,9 +13,9 @@ docker exec -d -u parman btcpay /bin/bash -c \"cd /home/parman/parmanode/NBXplor
 
 docker exec -d -u parman btcpay /bin/bash -c \\
 \"/usr/bin/dotnet run --no-launch-profile --no-build -c Release -p \\\"\\\\
-/home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\\\" -- \$@\"
+/home/parman/parmanode/btcpayserver/BTCPayServer/BTCPayServer.csproj\\\" -- \$@\ >\$HOME/.btcpayserver/btcpay.log\"
 
-exit 0" > $HOME/parmanode/startup_scripts/btcpay_startup.sh 2>&1
+exit 0" | sudo tee $HOME/parmanode/startup_scripts/btcpay_startup.sh >/dev/null 2>&1
 
 sudo chmod +x $HOME/parmanode/startup_scripts/btcpay_startup.sh >/dev/null 2>&1
 
