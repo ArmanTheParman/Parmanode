@@ -298,7 +298,7 @@ source $pc
 #if variable incorrect, fix it.
 if [[ $btcpay_version == latest || -z $btcpay_version ]] ; then
 
-    export btcpay_version=v$(cat $btcpaylog | grep "Adding and executing plugin BTCPayServer -" | tail -n1 | grep -oE '[0-9]+\.[0-9]+.[0-9]+.[0-9]+$')
+    export btcpay_version=v$(cat $btcpaylog | grep "Adding and executing plugin BTCPayServer -" | tail -n1 | grep -oE '[0-9]+.[0-9]+.[0-9]+$')
 
     if [[ $(echo $btcpay_version | wc -c) -lt 3 ]] ; then #variable may not have captured correctly, if so, it'll be just 'v\n' with a length of 2.
         unset btcpay_version
