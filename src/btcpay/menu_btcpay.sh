@@ -42,8 +42,8 @@ debug "before set terminal"
 set_terminal_custom 52 
 echo -en "
 ########################################################################################
-                               ${cyan}BTCPay Server Menu${orange}
-                                   $yellow$menu_btcpay_version$orange
+                                ${cyan}BTCPay Server Menu${orange}
+                                    $yellow$menu_btcpay_version$orange
 ########################################################################################
 
 "
