@@ -72,7 +72,7 @@ $cyan
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $cyan
-             br)$orange           Backup / Restore BTCPay data ...
+             br)$orange           Backup / Restore BTCPay data (coming soon) ...
 $cyan
              up)$orange           Update BTCPay ...
 $cyan
@@ -234,9 +234,11 @@ man)
 menu_btcpay_man
 ;;
 br)
-yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
-     && { backup_btcpay ; continue ; }
-     restore_btcpay
+announce "Not available just yet"
+continue
+# yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
+#      && { backup_btcpay ; continue ; }
+#      restore_btcpay
 ;;
 bk)
 backup_btcpay
