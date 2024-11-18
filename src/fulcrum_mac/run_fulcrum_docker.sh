@@ -27,7 +27,7 @@ docker run -d --name fulcrum \
                 $ports \
                 -v $HOME/.fulcrum_db:/home/parman/.fulcrum_db \
                 -v $HOME/.fulcrum/:/home/parman/.fulcrum \
-                fulcrum >/$HOME/parmanode/fulcrum.log 2>&1 || return 1
+                fulcrum >$dn 2>&1 || return 1
 
 sleep 3
 return 0

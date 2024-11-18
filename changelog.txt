@@ -6,6 +6,7 @@
 Version 3.46.10
      -smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
+     -SIGINT EXIT changed to SIGINT
 
 Version 3.46.9
     -Mempool checks for config consistency with system variables. 
