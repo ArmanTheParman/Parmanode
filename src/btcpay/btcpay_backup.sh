@@ -2,7 +2,7 @@
 #backup_dir="$docker_dir/volumes/backup_datadir/_data"
 #/var/lib/docker/volumes/generated_btcpay_datadir# 
 function do_backup_btcpay {
-tar \
+sudo tar \
     --exclude="volumes/backup_datadir" \
     --exclude="volumes/generated_btcpay_datadir/_data/host_*" \
     --exclude="volumes/generated_bitcoin_datadir/_data" \
