@@ -33,9 +33,10 @@ case $choice in
 q|Q) exit ;;
 help)
 cd $HOME
+if file parmanode_temp >/dev/null 2>&1 ; then rm -rf parmanode_temp ; fi
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp
 
-file ./parmanode_temp/version.conf 1>/dev/null 2>&1 || { echo "Some problem with the download. Aborting. You might wnat to try again later." ; enter_continue ; return 1 ; }
+file ./parmanode_temp/version.conf 1>/dev/null 2>&1 || { echo "Some problem with the download. Aborting. You might want to try again later." ; enter_continue ; return 1 ; }
 sudo rm -rf $HOME/parman_programs/parmanode >/dev/null 2>&1
 mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >/dev/null 2>&1
 cd $pn
