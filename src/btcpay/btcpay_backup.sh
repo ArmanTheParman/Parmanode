@@ -21,7 +21,7 @@ tar \
     --exclude="volumes/generated_lnd_bitcoin_datadir/_data/data/graph" \
     --exclude="volumes/generated_clightning_bitcoin_datadir/_data/lightning-rpc" \
     --exclude="**/logs/*" \
-    -cvzf $HOME/Desktop/backup.tar /var/lib/docker/volumes/generated_*
+    -cvzf $HOME/Desktop/backup.tar($date | awk "{print $1$2$3$4'-'$5}" /var/lib/docker/volumes/generated_*
 printf "\n"
 echo "Desktop contents...
 
