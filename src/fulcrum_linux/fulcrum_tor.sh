@@ -48,7 +48,7 @@ get_onion_address_variable "fulcrum"
 parmanode_conf_add "fulcrum_tor=true"
 set_terminal ; echo -e "
 ########################################################################################
-    FYI, changes have been made to torrc file, and Tor has been restarted.
+    FYI, changes have been made to$cyan torrc$orange file, and Tor has been restarted.
 ########################################################################################
 "
 enter_continue

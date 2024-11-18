@@ -10,7 +10,7 @@ local file="/etc/nginx/conf.d/btcrpcexplorer.conf"
 fi
 
 
-echo "server {
+echo -e "server {
     listen 3003;
     server_name _;
 

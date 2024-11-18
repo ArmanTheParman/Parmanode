@@ -6,7 +6,6 @@
     # previous menu
     # please wait
     # announce
-    # errormessage
 
 function enter_continue {
 echo -e "$@"
@@ -185,11 +184,6 @@ fi
 if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
 
-function errormessage {
-echo -e ""
-echo -e " There has been an error. See log files for more info."
-enter_continue
-}
 
 function yesorno {
 

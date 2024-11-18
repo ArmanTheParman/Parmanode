@@ -1,14 +1,14 @@
 function specter_mac_warning {
 if [[ $OS == "Mac" ]] ; then
-set_terminal ; echo " 
+set_terminal ; echo -e " 
 ########################################################################################
 
     Warning for Mac users, Specter will only work for MacOS version 10.15 and later
 
-
-                    x)                     Abort, abort!
-
-                    anything else)         Continue
+$cyan
+                    x)$orange                     Abort, abort!
+$cyan
+                    anything else) $orange        Continue
 
 ########################################################################################
 "

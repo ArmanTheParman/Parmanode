@@ -270,12 +270,12 @@ log|LOG|Log)
 
 set_terminal ; log_counter
 if [[ $log_count -le 15 ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
     This will show the Electrum X log output in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "
@@ -317,7 +317,7 @@ menu_electrumx #this is so the status refreshes
 ;;
 
 ec|EC|Ec|eC)
-echo "
+echo -e "
 ########################################################################################
     
         This will run Nano text editor to edit electrumx.conf. See the controls

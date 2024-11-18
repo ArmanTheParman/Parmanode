@@ -31,7 +31,7 @@ return 0
 fi
 
 counter=$((counter + 1))
-set_terminal ; echo "
+set_terminal ; echo -e "
 
     Some computers are slow.
     Parmanode will try 45 times with a 2 second pause for each try to give slow

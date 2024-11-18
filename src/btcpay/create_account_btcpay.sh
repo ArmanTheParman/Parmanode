@@ -2,16 +2,16 @@ function create_account_btcpay {
 #The code runs fine but I can't get it to make a new BTC account``
 #Keeping it for future reference
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 BTCPay Admin Account
-    
+$orange 
     Would you like to create a BTCPay admin account?
-
-                  y)     Oh, yes, goodie
-
-                  n)     Nah, I only installed BTCPay to LARP
+$cyan
+                  y)$orange     Oh, yes, goodie
+$cyan
+                  n)$orange     Nah, I only installed BTCPay to LARP
 
 ########################################################################################
 "
@@ -28,7 +28,7 @@ invalid
 esac
 done
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Enter your email (will be your username): " ; read email
@@ -38,7 +38,7 @@ echo "    Enter your password: (keystrokes hidden) " ; read -s password
 otp="FreeRoss-"
 otp=${otp}$(openssl rand -hex 6 | base64 | head -c 6)
 
-echo "
+echo -e "
 ########################################################################################
 
     Your email/username is: $email

@@ -5,15 +5,15 @@ if which bitcoin-cli >/dev/null ; then
 if ! cat $HOME/.bitcoin/bitcoin.conf | grep -q "rpcuser" ; then
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     You must set a user/password for Bitcoin Core for Fulcrum to connect. Fulcrum will
     not start othewise. Do that now?
-
-                                   y)      Yes
-
-                                   n)      No
+$cyan
+                                   y)$orange      Yes
+$cyan
+                                   n)$orange      No
 
 ########################################################################################
 "

@@ -2,7 +2,7 @@ function configure_yg {
 
 if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
     yesorno "Parmanode needs to install a tiny calculator, bc. OK?" && {
-    echo "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange"
+    echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange"
     sudo apt-get update -y && sudo apt-get install bc
     } || return 1 
 fi

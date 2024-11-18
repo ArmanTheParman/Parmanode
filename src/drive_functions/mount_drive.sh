@@ -39,7 +39,7 @@ while true ; do
 
 		set_terminal
 		
-		echo "Drive not mounted. <enter> to try again. Hit (q) to abort."
+		echo -e "Drive not mounted.$cyan <enter>$orange to try again. Hit$red q$orange to abort."
 		read choice ; if [[ $choice == "q" ]] ; then return 1 ; fi
 done
 fi

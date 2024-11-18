@@ -137,12 +137,12 @@ fi
 
 set_terminal ; log_counter
 if [[ $log_count -le 15 ]] ; then
-echo "
+echo -e "
 ########################################################################################
     
     This will show the bre journalctl output in real time as it populates.
     
-    You can hit <control>-c to make it stop.
+    You can hit$cyan <control>-c$orange to make it stop.
 
 ########################################################################################
 "

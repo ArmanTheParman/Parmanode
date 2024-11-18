@@ -67,7 +67,7 @@ if [[ $(uname) == "Darwin" ]] ; then
     fi
 
 if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
-    echo "No new drive detected. Try again. Hit <enter>."
+    echo -e "No new drive detected. Try again. Hit$cyan <enter>.$orange"
     read ; continue 
 fi
 

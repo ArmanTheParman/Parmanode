@@ -1,6 +1,6 @@
 function troubleshooting_sparrow {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     If you see the connection circle flashing and not connecting, sometimes restarting
@@ -13,7 +13,7 @@ set_terminal ; echo "
     
     If Parmanode is failing to automatically connect, please let me know, and try
     tinkering with the connection settings yourself in the preferences menu, under
-    the \"server\" section.
+    the 'server' section.
 
 ########################################################################################
 "

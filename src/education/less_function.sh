@@ -1,13 +1,10 @@
 function less_function {
 
-set_terminal ; echo "
+set_terminal ; announce "When you hit <enter> a reader will open up. You can scroll up and down with 
+    the arrows (our use VIM keys if you know what that is.)
 
-When you hit <enter> a reader will open up. You can scroll up and down with 
-the arrows (our use VIM keys if you know what that is.)
-
-To exit, just hit q then <enter>
+    To exit, just hit$red q$orange then$cyan <enter>$orange
 "
-enter_continue
 
 set_terminal_bit_higher
 

@@ -31,7 +31,7 @@ fi
 
 
 
-cd $hp || { echo "can't change directory. Aborting." ; enter_continue ; return 1 ; }
+cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
 if [[ $bitcoin_compile == "true" ]] ; then
 

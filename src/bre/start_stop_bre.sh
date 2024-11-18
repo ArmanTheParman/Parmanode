@@ -47,14 +47,14 @@ fi
 if [[ $btc_auth == "cookie" ]] ; then
     sudo gsed -i "/USER=/d" $file
     sudo gsed -i "/PASS=/d" $file
-    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" >> $file
+    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" | sudo tee -a $file
     return 0
     fi
 
 if [[ $btc_auth == "user/pass" ]] ; then
     sudo gsed -i "/COOKIE=/d" $file
-    echo "BTCEXP_BITCOIND_USER=$rpcuser" >> $file 
-    echo "BTCEXP_BITCOIND_PASS=$rpcpassword" >> $file 
+    echo "BTCEXP_BITCOIND_USER=$rpcuser" | sudo tee -a $file 
+    echo "BTCEXP_BITCOIND_PASS=$rpcpassword" | sudo tee -a $file 
     return 0
     fi
 }

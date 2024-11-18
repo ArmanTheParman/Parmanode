@@ -105,8 +105,8 @@ function set_rpc_authentication_update_conf_edits {
 
 	sudo gsed -i "/rpcuser/d" $bc >/dev/null 2>&1
 	sudo gsed -i "/rpcpassword/d" $bc >/dev/null 2>&1
-	echo "rpcuser=$rpcuser" >> $bc 2>&1
-	echo "rpcpassword=$rpcpassword" >> $bc 2>&1
+	echo "rpcuser=$rpcuser" | sudo tee -a $bc 2>&1
+	echo "rpcpassword=$rpcpassword" | sudo tee -a $bc 2>&1
 	parmanode_conf_add "rpcuser=$rpcuser"
 	parmanode_conf_add "rpcpassword=$rpcpassword"
 
@@ -124,7 +124,7 @@ source $pc >/dev/null 2>&1
 
 sudo gsed -i "/rpcuser/d" $fc 
 sudo gsed -i "/rpcpassword/d" $fc 
-echo "rpcuser = $rpcuser" >> $fc 2>/dev/null
-echo "rpcpassword = $rpcpassword" >> $fc 2>/dev/null
+echo "rpcuser = $rpcuser" | sudo tee -a $fc 2>/dev/null
+echo "rpcpassword = $rpcpassword" | sudo tee -a $fc 2>/dev/null
 
 }

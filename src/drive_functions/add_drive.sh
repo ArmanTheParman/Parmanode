@@ -35,7 +35,7 @@ detect_drive $@ "brief" || return 1 #menu
 
 if [[ $OS == "Mac" ]] ; then
     set_terminal
-    echo "
+    echo -e "
 ########################################################################################
 
     The drive should be ready. If it is not mounted, disconnect and reconnect.

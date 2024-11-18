@@ -22,7 +22,7 @@ $orange
 choose "epq" ; read choice
 case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     You'll also be asked to remove/insert the Umbrel drive to assist with drive 

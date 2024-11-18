@@ -61,7 +61,7 @@ read confirm
 
     else #regex else
         set_terminal_high
-        echo "
+        echo -e "
 ########################################################################################
 
     Your entry does not match the pattern "sd" followed by a letter, which is the
@@ -113,7 +113,7 @@ read confirm
     else # part of regex if
         
         set_terminal_high
-        echo "
+        echo -e "
 ########################################################################################
 
     Your entry does not match the pattern "disk" followed by a number.

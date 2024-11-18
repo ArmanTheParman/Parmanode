@@ -6,7 +6,7 @@ if [[ $drive_fulcrum == "external" ]] ; then
         while true ; do
                 if ! mount | grep parmanode >/dev/null 2>&1 ; then
                         log "fulcrum" "drive mount test failed. Offer to try again or exit."
-                        set_terminal ; echo "Please connect the drive, then hit <enter> to try again, (p) to return." ; read choice 
+                        set_terminal ; echo -e "Please connect the drive, then hit$cyan <enter>$orange to try again,$red p$orange to return." ; read choice 
                         if [[ $choice == "p" ]] ; then return 1 ; fi
                 else 
                         break

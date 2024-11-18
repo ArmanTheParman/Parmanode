@@ -1,7 +1,6 @@
 function modify_electrum_config {
 set_terminal
-echo "Make sure Electrum has been shut down before proceeding."
-enter_continue
+enter_continue "Make sure Electrum has been shut down before proceeding."
 
 refresh_electrum_certs_cache_sockets
 

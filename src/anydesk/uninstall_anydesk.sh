@@ -1,17 +1,17 @@
 function uninstall_anydesk {
 
 if [[ $debug != 1 ]] ; then 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                              Uninstall AnyDesk 
+                               Uninstall AnyDesk 
 $orange 
     Parmanode will uninstall AnyDesk from your system. Are you sure you want to 
     continue?
-
-                                y)    Yes
-
-                                n)    No
+$cyan
+                                y)$orange    Yes
+$cyan
+                                n)$orange    No
 
 ########################################################################################
 "

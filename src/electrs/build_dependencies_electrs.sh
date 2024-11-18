@@ -15,17 +15,14 @@ if ! dpkg -l >/dev/null | grep build-essential ; then sudo apt-get install -y bu
 # like Raspian OS 32-bit (it supports 64 bit chips, but cargo won't work)
 if [[ $(uname -m) == "aarch64" ]] ; then 
     if [[ $(file /bin/bash | grep 64 | cut -d " " -f 3) != "64-bit" ]] ; then
-    set_terminal ; echo "
-########################################################################################
-    It looks like you are running a 64-bit kernal on a 64-bit microprocessor but 
+    set_terminal ; announce "It looks like you are running a 64-bit kernal on a 64-bit microprocessor but 
     with 32-bit binaries. While this is possible (eg Raspbian OS 32-bit for 64-bit
     Raspberry Pis) Electrs can't cope. Aborting. If you really want Electrs on this
     machine, you'll need to install the 64-bit version of the operating system,
-    basically starting over completely. Sorry!
-########################################################################################
-"
-enter_continue && return 1
+    basically starting over completely. Sorry!"
+return 1
 fi
+
 fi
 
 # if old version of cargo, won't work

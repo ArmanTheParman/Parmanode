@@ -1,5 +1,5 @@
 function untinstall_docker_mac {
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
                       Docker will be removed from your system

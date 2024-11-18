@@ -3,9 +3,9 @@ function enable_bre_tor {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 if ! sudo test -e /etc/tor/torrc ; then
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-    /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
+$cyan    /etc/tor/torrc$orange file does not exist. You may have a non-standard Tor installation.
     Parmanode won't be able to automate this process for you. Sorry! Aborting.
 ########################################################################################
 "
@@ -50,15 +50,14 @@ sudo systemctl restart tor
 restart_bre 
 get_onion_address_variable "bre" 
 clear
-echo -e "
+enter_continue "
 ########################################################################################
 
-    Changes have been made to the torrc file to create/enable a hidden service
+    Changes have been made to the$cyan torrc$orange file to create/enable a hidden service
     for BRE. Please give it a few moments to work - initially, it may still appear
     disabled, but give it a minute.
 
 ########################################################################################
 "
-enter_continue
 }
 

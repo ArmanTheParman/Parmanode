@@ -18,6 +18,7 @@ fi
 ########################################################################################
 
 if [[ $OS == "Mac" ]] ; then
+#don't use echo -e
 echo "
 ########################################################################################
 
@@ -37,7 +38,8 @@ enter_exit ; exit 1 #enter_exit is a basic custom printing command.
 fi
 
 if [[ $OS == "Linux" ]] ; then
-echo -e "
+#don't use echo -e
+echo "
 ########################################################################################
 
                             Testing \"sudo\" checkpoint
@@ -49,9 +51,9 @@ echo -e "
 
     If you can't get passed this checkpoint, you could try venturing into the world
     of learning to use the command line, and install sudo with the command:
-$cyan
+
                                  apt-get install sudo
-$orange
+
     You will need to run this as the root user (no you can't run Parmanode as root).
 
 ########################################################################################
@@ -77,7 +79,7 @@ set_terminal
 if [[ $(uname) == "Linux" ]] ; then #if 1
 
 while true ; do # while 2
-
+#don't use echo -e
 echo "
 ########################################################################################
 
@@ -113,6 +115,7 @@ fi #end if 1
 
 if [[ $(uname) == Darwin ]] ; then #if 2
 while true ; do # while 3
+#don't use echo -e
 echo "
 ########################################################################################
 
@@ -145,6 +148,7 @@ done #end while 3
 fi #end if 2 
 
 clear
+#don't use echo -e
 echo "
 ########################################################################################
     Unexpecte error in gpg check function. Aborting. Please report to Parman.
@@ -161,15 +165,16 @@ return 0
 function curl_check {
 if ! which curl >/dev/null 2>&1 ; then
 while true ; do
-set_terminal ; echo -e "
+#don't use echo -e
+set_terminal ; echo "
 ########################################################################################
 
-    The program$cyan curl$orange needs to be installed on your computer for Parmanode to work.
+    The program curl needs to be installed on your computer for Parmanode to work.
     It's a small command line program that is used to download links from the 
     internet. It's quite unusual that Parmanode hasn't been able to detect it as 
     most Linux and Mac operating systems come with it. 
     
-    On Macs, it requires$cyan Homebrew$orange to be installed first - that can take an hour or so.
+    On Macs, it requires Homebrew to be installed first - that can take an hour or so.
     
                           i)          Install curl
 

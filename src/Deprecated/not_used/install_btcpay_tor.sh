@@ -53,9 +53,8 @@ echo -e "
 ########################################################################################
 "
 read selfIP
-echo ""
-echo "You entered: $selfIP"
-echo "Hit n then <enter> to try again, or anything else and <enter> to proceed."
+echo -e "\nYou entered: $selfIP\n"
+echo -e "Hit n then$cyan <enter>$orange to try again, or anything else and$cyan <enter>$orange to proceed.\n"
 read confirm
 if [[ $confirm == "n" ]] ; then continue ; fi
 export selfIP
@@ -64,19 +63,18 @@ done
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
-    Please enter the port number of your BTCPay installation.
+    Please enter the$cyan port number$orange of your BTCPay installation.
 
-    Then hit <enter>
+    Then hit$green <enter> $orange
 
 ########################################################################################
 "
 read selfPort 
-echo ""
-echo "You entered: $selfPort"
-echo "Hit n then <enter> to try again, or anything else and <enter> to proceed."
+echo -e "\nYou entered: $selfPort\n"
+echo -e "\nHit n then$cyan <enter>$orange to try again, or anything else and$cyan <enter>$orange to proceed."
 read confirm
 if [[ $confirm == "n" ]] ; then continue ; fi
 export serfPort
@@ -92,20 +90,20 @@ unset selfPort selfIP
 
 btcpayTOR_onion="$(sudo cat /var/lib/tor/btcpayTOR-server/hostname)"
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     To access your BTCPay over tor, you need to use a Tor browser, and enter not
     just the onion address, but the port (7003) as well. Traffic will reach your
-    computer via the Tor software, then be redirected to http://127.0.0.1:23001
+    computer via the Tor software, then be redirected to$cyan http://127.0.0.1:23001$orange
     or your selected IP and Port if you took up that option.
 
     The onion address should start with http:// not https:// or it won't work.
 
     BTCPay Onion address:
-
+$bright_blue
     http://$btcpayTOR_onion:7003
-
+$orange
  ########################################################################################
 "
 enter_continue

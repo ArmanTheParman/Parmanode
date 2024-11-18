@@ -29,8 +29,7 @@ else
 fi
 
 sleep 3
-echo ""
-echo " Please wait a moment for gpg verification..."
+echo -e "\nPlease wait a moment for gpg verification..."
 
 #keys from : https://github.com/bitcoin-core/guix.sigs/tree/main/builder-keys
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >/dev/null 2>&1
@@ -41,13 +40,10 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
 
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
-        echo ""
-        echo -e "GPG verification of the SHA256SUMS file$green passed$orange. "
-        echo ""
+        echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
         [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue
     else 
-        echo ""
-        echo -e "GPG verification$red failed$orange. Aborting." 
+        echo -e "\nGPG verification$red failed$orange. Aborting.\n" 
         enter_continue
         return 1 
     fi

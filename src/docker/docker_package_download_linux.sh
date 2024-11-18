@@ -46,10 +46,8 @@ counter=0 ; while [[ $counter -le 1 ]] ; do
 sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin docker-compose -y 
 exit_status=$?
 if [ $exit_status != 0 ] ; then
-echo ""
-echo ""
-echo "An error at this stage is sometimes fixed by repeating "
-echo "the command. Repeating in 10 seconds ..." 
+echo -e "\n\nAn error at this stage is sometimes fixed by repeating the command. 
+Repeating in 10 seconds ...\n" 
 sleep 10
 counter=$((counter + 1 ))
 continue
@@ -59,15 +57,12 @@ done
 
 log "docker" "exit status of apt-get install is $exit_status"
 if [ $exit_status != 0 ] ; then 
-           echo ""
-           echo ""
-           echo "That didn't seem to work properly. Would you like to wait 30 seconds," 
-           echo "who knows it might work (y) (n)?"
+           echo -e "\n\n    That didn't seem to work properly. Would you like to wait 30 seconds,
+           \r    who knows it might work (y) (n)?"
            read choice 
                 if [[ $choice == "y" ]] ; then 
-                      echo ""
-                      echo "Waiting ..."
-                      sleep 30 ; echo " 30 .. 29 ......."
+                      echo -e "\nWaiting ..."
+                      sleep 30 ; echo -e " 30 .. 29 ......."
                       sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y \
                       || { echo -e "
 ########################################################################################                      

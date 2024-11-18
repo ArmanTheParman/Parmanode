@@ -46,21 +46,21 @@ edit_user_pass_fulcrum_docker $rpcuser $rpcpassword remote || return 1
 
 bitcoindIP_change_fulcrum || return 1 
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-
+$cyan
                                 Bitcoin rpcallowip
-
+$orange
     The Bitcoin Core node on the other computer must accept connections from the IP
     address of the Fulcrum server. You can find your computer's IP address using the
     Parmanode menu (startup --> tools --> what's my IP). 
 
     Then, you need to add the following line to the bitcoin.conf file on that 
     computer: 
-
+$bright_blue
                             rpcallowip=IP_address
-
-    Obviously, replace \"IP_address\" with the actual IP address of the Fulcrum
+$orange
+    Obviously, replace$green \"IP_address\"$orange with the actual IP address of the Fulcrum
     computer.
 
     And remember to restart Bitcoin for configuration files changes to take effect.

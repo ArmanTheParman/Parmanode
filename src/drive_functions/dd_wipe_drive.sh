@@ -12,26 +12,26 @@ if ! echo $disk | grep -Eo '^/dev/' ; then local disk="/dev/$disk" ; fi
 ########################################################################################
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
-    \"#FreeRoss.org - Sign the petition. \" will be used to write over and erase
+    '#FreeRoss.org - Sign the petition.' will be used to write over and erase
     the disk. 
     
     Please note, this is not a full forensic wipe. If you want that, you must learn 
     to use the dd command. Be aware the execution of the command can take days, which 
     is why I decided to omit that option from Parmanode.
 
-	       <enter>      Proceed
-
-		 (0)        Write zeros (slowest)
-
-		 (r)        Random data (Even SLOWER!)
-
-		 (c)        Choose a custom string (Funnest and recommended option)
-         
-         (s)        Skip wiping
-
+	   <enter>      Proceed
+$cyan
+		 (0)$orange        Write zeros (slowest)
+$cyan
+		 (r)$orange        Random data (Even SLOWER!)
+$cyan
+		 (c)$orange        Choose a custom string (Funnest and recommended option)
+    $cyan     
+         (s)$orange        Skip wiping
+$orange
 ########################################################################################
 "
 choose "xq"
@@ -60,7 +60,7 @@ case $choice in
 	    ;;
 
     c|C) 
-        echo "
+        echo -e "
 ########################################################################################
 
     Please enter your preferred string. Remember to put a space at the end so the 

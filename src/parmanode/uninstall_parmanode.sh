@@ -118,15 +118,14 @@ set_terminal
 if [[ $debug == 0 ]] ; then 
 while true ; do
 clear
-echo "
+echo -e "
 ########################################################################################
-
+$red
                             Parmanode will be uninstalled
-
+$orange
 ########################################################################################
 "
-choose "epq"
-read choice
+choose "epq" ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
 esac

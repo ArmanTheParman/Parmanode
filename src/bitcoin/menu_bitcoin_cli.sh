@@ -161,17 +161,19 @@ fi
     continue
     ;;
 gtosi)  
-    set_terminal ; echo "
+    set_terminal ; echo -e "
 ########################################################################################    
 
          Warning, this command takes a minute or two...
 
          It provides information about every UTXO on the blockchain. 
 
-         What is a UTXO?  - see: https://armantheparman.com/utxo
+         What is a UTXO?  - see:$cyan https://armantheparman.com/utxo $orange
 
 ########################################################################################
 "
+enter_continue
+
 please_wait
 
 if [[ $OS == Mac ]] ; then
@@ -221,7 +223,7 @@ elif [[ $OS == Linux ]] ; then
     read -p "Please paste in the MESSAGE TEXT and hit <enter> : " message
     echo ""
     echo ""
-    /usr/local/bin/bitcoin-cli verifymessage "$address" "$signature" "$message" 
+    bitcoin-cli verifymessage "$address" "$signature" "$message" 
     enter_continue
     continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 

@@ -12,7 +12,7 @@ if [[ $1 == "electrs" ]] ; then serverE="electrs" ; fi
 
 set_terminal
 while true ; do
-echo "
+echo -e "
 ########################################################################################
 
                                Drive Selection: $serverE 
@@ -23,10 +23,10 @@ echo "
     for your wallet. This data can be kept on the internal or external drive - it does
     not have to be on the same drive as the Bitcoin data. It might take around 100 Gb
     of data.
-
-                        e)      External drive
-
-                        i)      Internal drive
+$cyan
+                        e)$orange      External drive
+$cyan
+                        i)$orange      Internal drive
 
 ########################################################################################
 "

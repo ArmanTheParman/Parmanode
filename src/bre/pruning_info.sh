@@ -1,6 +1,6 @@
 # function pruning_info {
     
-# echo "
+# echo -e "
 # ########################################################################################
 
 # Note about pruning and indexing configurations (by BTCRPCexplorer developers)

@@ -250,7 +250,7 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.sparrow/config"
-set_terminal ; echo "Please ensure Sparrow has been shut down before continuing." ; enter_continue
+set_terminal ; enter_continue "Please ensure Sparrow has been shut down before continuing." 
 sudo gsed -i "/coreAuth\"/c\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $file
 break
 ;;

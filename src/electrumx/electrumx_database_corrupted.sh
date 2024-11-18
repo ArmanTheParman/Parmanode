@@ -1,19 +1,19 @@
 function electrumx_database_corrupted {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Have you noticed from the log menu that Electrum X's database is corrupted? This
+    Have you noticed from the log menu that$red Electrum X's database is corrupted?$orange This
     sometimes happens seemingly for no reason. 
 
     If this has happened, you need to stop Electrum X, delete the database, and restart
     Electrum x - it's unfortunate, but it means starting over. 
 
     Do you want Parmanode to clean it up and start Electrum X over for you?
-
-                        y)      Yes, do it, I can't be bothered
-
-                        n)      No, leave it, I'll try to figure it out myself
+$cyan
+                        y)$orange      Yes, do it, I can't be bothered
+$cyan
+                        n)$orange      No, leave it, I'll try to figure it out myself
 
 ######################################################################################## 
 "

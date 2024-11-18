@@ -1,19 +1,19 @@
 function electrs_database_corrupted {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Have you noticed from the log menu that electrs' database is corrupted? This
+    Have you noticed from the log menu that$red electrs' database is corrupted?$orange This
     sometimes happens seemingly for no reason. 
 
     If this has happened, you need to stop electrs, delete the database, and restart
     electrs - it's unfortunate, but it means starting over. 
 
     Do you want Parmanode to clean it up and start electrs over for you?
-
-                        y)      Yes, do it, I can't be bothered
-
-                        n)      No, leave it, I'll try to figure it out myself
+$cyan
+                        y)$orange      Yes, do it, I can't be bothered
+$cyan
+                        n)$orange      No, leave it, I'll try to figure it out myself
 
 ######################################################################################## 
 "

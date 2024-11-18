@@ -25,16 +25,16 @@ fi
 
 function test_directory_placement_message {
 
-clear ; echo "
+clear ; echo -e "
 ########################################################################################
 
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
 
     Do you want to have that fixed now?
-
-              y)      Do it (you'll need to then restart Parmanode) 
-
-              n)      Nah (ok, but Parmanode won't run)
+$green
+              y)$orange      Do it (you'll need to then restart Parmanode) 
+$red
+              n)$orange      Nah (ok, but Parmanode won't run)
     
 ########################################################################################
 "
@@ -63,7 +63,7 @@ esac
 
 function test_directory_placement_message2 {
 
-clear ; echo "
+clear ; echo -e "
 ########################################################################################
 
     Oh dear, you've downloaded the Parmanode software in a subdirectory of
@@ -72,10 +72,10 @@ clear ; echo "
     Parmanode needs to live at $HOME/parman_programs/parmanode/ to run properly.
 
     Do you want to have that set up now?
-
-              y)      Do it (you'll need to then restart Parmanode) 
-
-              n)      Nah (ok, but Parmanode won't run)
+$green
+              y)$orange      Do it (you'll need to then restart Parmanode) 
+$red
+              n)$orange      Nah (ok, but Parmanode won't run)
 
 ########################################################################################
 "

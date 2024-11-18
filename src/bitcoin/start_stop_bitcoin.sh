@@ -76,7 +76,7 @@ set_terminal
 please_wait
 sudo systemctl stop bitcoind.service 2> $tmp/bitcoinoutput.tmp
 if grep "28" $tmp/bitcoinoutput.tmp ; then
-echo "
+echo -e "
     This might take longer than usual as Bitcoin is running a process 
     that shouldn't be interrupted. Please wait. 
 

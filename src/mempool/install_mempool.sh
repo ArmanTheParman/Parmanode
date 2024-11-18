@@ -1,9 +1,4 @@
 function install_mempool {
-if [[ $mem_debug == "t" ]] ; then
-echo "debug point 1. Hit enter to continue."
-read
-fi
-
 if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
 else
     if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
@@ -18,9 +13,9 @@ fi
 sned_sats
 source $bc 2>$dn
 
-if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo "
-    Sorry, txindex=1 needs to be in the bitcoin.conf file for Mempool to work.
-    Type 'yolo' and <enter> to ignore warning, otherwise aborting."
+if [[ $mbackend == 1 && $txindex != 1 ]] ; then clear ; echo -e "
+    Sorry,$cyan txindex=1$orange needs to be in the bitcoin.conf file for Mempool to work.
+    Type $red 'yolo'$orange and$cyan <enter>$orange to ignore warning, otherwise aborting."
     read choice
     if [[ $choice != yolo ]] ; then debug "not yolo" ; return 1 ; fi
 fi

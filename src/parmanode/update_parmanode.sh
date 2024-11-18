@@ -30,10 +30,10 @@ fi
 
 if [[ ! -f $pn/version.conf ]] ; then # this file was introduced in newer versions
 # of parmanode
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected that you are probably using a version v3.2.0 or earlier.
+    Parmanode has detected that you are probably using a version$red v3.2.0$orange or earlier.
     
     If you are using any version starting with 1 or 2 (3.x.x is ok), then the latest 
     version won't be compatible with your computer the way things are now. You 

@@ -16,8 +16,7 @@ $green
 
 USERNAME: 
 "
-read rpcuser ; echo "
-"
+read rpcuser ; printf "\n"
 
     if [[ $rpcuser == "p" ]] ; then return 1 ; fi
 
@@ -46,11 +45,11 @@ PASSWORD:
     read -s rpcpassword2
 
     if [[ $rpcpassword != $rpcpassword2 ]] ; then
-            echo "Passwords do not match. Try again.
+            echo -e "Passwords do not match. Try again.
             "
             enter_continue ; continue 
     else
-            echo "Password set"    
+            echo -e "Password set"    
             enter_continue ; break
     fi
 

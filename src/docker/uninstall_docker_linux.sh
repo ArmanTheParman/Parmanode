@@ -1,6 +1,6 @@
 function uninstall_docker_linux {
 
-while true ; do set_terminal ; echo "
+while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
                       Docker will be removed from your system
@@ -12,7 +12,6 @@ $orange
 choose "epq" ; read choice
 case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P|n|N|no) return 1 ;; y) break ;; *) invalid ;; esac 
 done
-log "docker" "uninstall Docker selected"
 
 set_terminal ; echo "
 Stopping all running containers...

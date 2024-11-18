@@ -1,6 +1,6 @@
 function configure_yourself {
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Please note that Parmanode at this stage does not configure LNbits for you. It 
@@ -8,10 +8,10 @@ set_terminal ; echo "
     start and stop the container, but you'll have to modify the .env file yourself.
 
     It can be found in:
-
+$cyan
         $HOME/parmanode/lnbits/.env
-
-    Continue with installation?        y     or      n
+$orange
+    Continue with installation?       $green y $orange    or    $red  n $orange
 
 ########################################################################################
 "

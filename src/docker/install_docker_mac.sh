@@ -28,10 +28,7 @@ if [ ! -f $HOME/parmanode/docker/Docker.dmg ] ; then
     clear
     mkdir -p $HOME/parmanode/docker/ 
     installed_config_add "docker-start"
-    cd $HOME/parmanode/docker && curl -LO $download_docker_file \
-    && log "docker" "Docker downloaded" \
-    || { log "docker" "Docker mkdir and download failed." && \
-    echo "Error downloading. Aborting." && enter_continue && return 1 ; }
+    cd $HOME/parmanode/docker && curl -LO $download_docker_file 
 fi
 
 #Mount and copy to Applications

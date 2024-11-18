@@ -1,16 +1,17 @@
 function tor_status {
 
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     To see if Tor is running, you can enter the following in a terminal window:
 
-                        Linux: sudo systemctl status tor
+                        Linux:$cyan sudo systemctl status tor$orange
 
-                        Mac:   brew services info tor
+                        Mac:$cyan   brew services info tor$orange
 
 ########################################################################################
 "
+enter_continue
 }
 
 function tor_status_check {

@@ -5,30 +5,25 @@ enter_continue
 
 while true ; do
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
     Please paste in the onion address (without the port number at the end).
-    Then hit <enter>.
+    Then hit$cyan<enter>$orange.
     It should  be a long string of random looking characters, and ening in
-    \".onion\".
-
-    You can enter p to go back, or q to quit Parmanode.
+$bright_blue    '.onion'$orange.
 
 ########################################################################################
-
 "
-read REMOTE_TOR_ADDR
+choose xpmq ; read REMOTE_TOR_ADDR ; set_terminal
 case $REMOTE_TOR_ADDR in
-q|Q) exit ;;
-p|P) return 1 ;;
-"") invalid ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 *)
 set_terminal
-echo "
+echo -e "
 ########################################################################################
 
-    Please enter the port number for the remote server, then hit <enter>.
+    Please enter the port number for the remote server, then hit$cyan <enter>$orange.
 
 ########################################################################################
 

@@ -72,19 +72,17 @@ continue
 ;;
 
 dd|DD)
-echo "
+echo -e "
 ########################################################################################
-    
+$cyan   
                           BACKUP BITCOIN DATA DIRECTORY    
-
+$orange
     If you have a spare drive, it is a good idea to make a copy of the bitcoin data 
     directory from time to time. This could save you waiting a long time if you were 
     ever to experience data corruption and needed to resync the blockchain.
 
     It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
-    work correctly when it comes time toRU|Ru)
-    umbrel_import_reverse
-    ;; use the backed up data, and it's likely the 
+    work correctly when it comes time to use the backed up data, and it's likely the 
     directory will become corrupted. You have been warned.
 
     You can copy the entire bitcoin_data directory.
@@ -102,8 +100,8 @@ echo "
 
     or external drive:
 
-                LINUX :   /media/$(whoami)/parmanode/.bitcoin 
-                MAC   :   /Volumes/parmanode/.bitcoin
+                LINUX :$cyan   /media/$(whoami)/parmanode/.bitcoin $orange
+                MAC   :$cyan   /Volumes/parmanode/.bitcoin$orange
 
     Note that if you have an external drive for Parmanode, the internal directory 
     $HOME/.bitcoin is actually a symlink (shortcut) to the external 
