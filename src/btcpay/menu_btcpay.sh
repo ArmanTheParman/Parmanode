@@ -390,7 +390,8 @@ if ! grep -iq "PostgreSQL database dump" $file >/dev/null 2>&1 ; then
 yesorno "Doesn't seem to be a valid PostgresSQL file. Ignore and proceed?" || continue ; fi
 docker cp $file btcpay:/home/parman/backup.sql
 #docker exec -itu postgres btcpay bash -c "pg_restore -U parman -d btcpayserver --clean /home/parman/backup.sql" &&
-docker exec -itu postgres btcpay bash -c "psql -U postgres -d btcpayserver -f /home/parman/backup.sql" &&
+#docker exec -itu postgres btcpay bash -c "psql -U postgres -d btcpayserver -f /home/parman/backup.sql" &&
+docker exec -itu posggres btcpay bash -c "pg_restore -U postgres -d btcpayserver /path/to/backup.dump" &&
 success "Backup restored" && return 0
 enter_continue "something went wrong" ; return 1
 break
