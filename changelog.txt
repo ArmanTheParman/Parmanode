@@ -1,3 +1,8 @@
+#Version 3.47.0
+#    -ParmaJoin (JoinMarket)
+#    -X11Forwarding function (modifies sshd_config)
+#    -Backup btcpay database and plugins option
+
 Version 3.46.9
     -Mempool checks for config consistency with system variables. 
     -More improvements to graceful Fulcrum shutdown
