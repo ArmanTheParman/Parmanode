@@ -76,6 +76,7 @@ uninstall_bitcoin btcpay_first
 #then come back here to exit
 installed_config_remove "btccombo"
 parmanode_conf_remove "btcpay_version"
+rm $HOME/parmanode/startup_scripts/btcpay_startup.sh >/dev/null
 
 success "Bitcoin and BTCPay have been uninstalled"
 unset combo

@@ -3,6 +3,8 @@ debug "tp"
 cleanup_parmanode_service
 add_rpcbind
 truncatedebuglog
+fix_btcpay_startup_script 
+
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
@@ -145,4 +147,14 @@ log "fulcrum" "changed fulcrum-end to fulcrumdkr-end"
 fi
 
 debug temppatchend
+}
+
+function fix_btcpay_startup_script {
+
+    if [[ $OS == Mac ]] ; then return 0 ; fi
+
+    if ! grep -q "btcpay" $ic ; then return 0 ; fi
+
+    make_btcpay_service_file make_script_only
+
 }

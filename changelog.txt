@@ -2,8 +2,9 @@
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
 #    -Backup btcpay database and plugins option
+
 Version 3.46.10
-     -smol bug with btcpay service file, wasn't making a log file
+     -smol bug with btcpay_startup.sh file, wasn't making a log file
 
 Version 3.46.9
     -Mempool checks for config consistency with system variables. 

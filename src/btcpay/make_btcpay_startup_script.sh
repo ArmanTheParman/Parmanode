@@ -19,7 +19,7 @@ exit 0" | sudo tee $HOME/parmanode/startup_scripts/btcpay_startup.sh >/dev/null 
 
 sudo chmod +x $HOME/parmanode/startup_scripts/btcpay_startup.sh >/dev/null 2>&1
 
-
+if [[ $1 == "make_script_only" ]] ; then return 0 ; fi
 
 echo "[Unit]
 Description=Parmanode Start Up BTCPay 
