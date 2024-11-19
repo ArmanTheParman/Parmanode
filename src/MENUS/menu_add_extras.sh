@@ -25,7 +25,8 @@ echo -e "
 choose "xpmq"
 
 read choice
-join $choice ; case $choice in
+jump $choice || { invalid ; continue ; }
+case $choice in
 q|Q) eixt ;; p|P) return 0 ;; m|M) back2main ;;
 
 rr)

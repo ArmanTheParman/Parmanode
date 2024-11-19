@@ -39,11 +39,8 @@ echo -en "${bitcoin_new}" ; echo -en "
 "
 choose "xpmq"
 read choice 
-join $choice
-set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
 B|b|bitcoin|Bitcoin)
         if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 
