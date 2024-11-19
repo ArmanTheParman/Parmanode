@@ -203,6 +203,7 @@ $red$blinkon
 
     You can type 'm' (for menu) and the abbreviation or full name of the program. 
     
+
     Eg, for bitcoin, you can type:
 $green
                     mb$orange    or$green   mbitcoin$orange
