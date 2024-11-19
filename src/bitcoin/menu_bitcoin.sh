@@ -179,7 +179,7 @@ set_terminal_wider
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
-tmux new -d "tail -f $HOME/.bitcoin/debug.log"
+tmux new -s -d "tail -f $HOME/.bitcoin/debug.log"
 
 continue ;;
 
