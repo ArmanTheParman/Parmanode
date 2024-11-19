@@ -74,7 +74,7 @@ set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
 
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
-if [[ $1 != menu ]] || [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
+if [[ $menu == "false" ]] || [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
