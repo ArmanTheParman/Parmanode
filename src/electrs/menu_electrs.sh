@@ -1,5 +1,7 @@
 function menu_electrs {
 
+while true ; do
+
 if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
@@ -7,15 +9,7 @@ if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
 else
     electrsis=nondocker
     logfile=$HOME/.parmanode/run_electrs.log 
-    if [[ $OS == Linux ]] ; then
-       sudo journalctl -exu electrs.service > $logfile 2>&1
-    elif [[ $OS == Mac ]] ; then
-    # Background process is writing continuously to $logfile.
-    true #do nothing, sturctured so for readability.
-    fi
 fi
-
-while true ; do
 
 set_terminal
 
@@ -250,15 +244,16 @@ enter_continue "
 ########################################################################################
 "
 fi
-
 set_terminal_wider
-tail -f $logfile & 
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the t. rap so control-c works elsewhere.
-set_terminal
-menu_electrs #this is so the status refreshes 
+
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+if grep -q "electrs-" $ic && [[ $OS == Linux ]] ; then
+tmux new -s -d "sudo journalctl -fexu electrs.service"
+else
+tmux new -s -d "tail -f $logfile"
+fi
 ;;
 
 ec|EC|Ec|eC)
