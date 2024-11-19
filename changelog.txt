@@ -4,7 +4,7 @@
 #    -Backup btcpay database and plugins option
 
 Version 3.46.10
-     -smol bug with btcpay_startup.sh file, wasn't making a log file
+     -fixed smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
      -SIGINT EXIT changed to SIGINT
      -Patch7:
