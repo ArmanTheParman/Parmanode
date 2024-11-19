@@ -97,7 +97,7 @@ $cyan            log)$orange              View relay log
 
 $cyan            test)$orange             Send a test connection
 
-        $ssl_menu 
+            $ssl_menu 
 
 
 ########################################################################################
