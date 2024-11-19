@@ -1,7 +1,7 @@
 function menu_fulcrum {
 
 while true ; do
-set_terminal
+please_wait
 
 isbitcoinrunning
 if [[ $bitcoinrunning == "true" ]] ; then

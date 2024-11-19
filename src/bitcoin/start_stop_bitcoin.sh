@@ -4,7 +4,6 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-fix_bitcoin_conf
 #for docker (no systemctl, ust tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
@@ -104,15 +103,4 @@ docker exec -itu parman btcpay bitcoind
 
 function stop_bitcoin_docker {
 docker exec -itu parman btcpay bitcoin-cli stop
-}
-
-
-function fix_bitcoin_conf {
-
-if [[ -e $bc ]] ; then
-sudo gsed -i 's/rpcallowip=172.0.0.0.*$/rpcallowip=172.16.0.0/16
-
-if grep "btccombo" $ic ; then
-
-
 }
