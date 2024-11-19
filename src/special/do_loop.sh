@@ -104,7 +104,7 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    bash_check 
    check_architecture 
 fi
-apply_patches  
+apply_patches
 
 #Add Parmashell (do after patches)
 install_parmashell 

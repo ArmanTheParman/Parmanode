@@ -1,4 +1,4 @@
-#Version 3.47.0
+#Version 3.47.0 (coming soon)
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
 #    -Backup btcpay database and plugins option
@@ -7,6 +7,19 @@ Version 3.46.10
      -smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
      -SIGINT EXIT changed to SIGINT
+     -Patch7:
+          set github config name/email (generic) 
+          make ssh keys for computer if non-existent
+          fix bitcoin.conf: add rpcbind=0.0.0.0 and adjust 172 IP range 
+          remove old electrsdkr log file, and old debug2 file
+          add bc calculator
+          add torlog file and tornotice file
+          fix 8332 value in torrc (should be 8333)
+          correct electrs cert
+          installs jq (linux only)
+          Moved fulcrum.conf
+          Fix any large file created by a backup bug
+          Adjust btcpay service file
 
 Version 3.46.9
     -Mempool checks for config consistency with system variables. 

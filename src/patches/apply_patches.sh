@@ -28,9 +28,12 @@ debug "case5"
 patch_6 ;;
 6)
 debug "case6"
+;;
+7)
+debug "case7"
 return 0 ;;
 *) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ;; 
+patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ;; 
 esac
 debug "end apply_patches"
 }
