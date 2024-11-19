@@ -11,13 +11,13 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#              (rr)      RAID - join drives together                                   #
+#$cyan              (rr)$orange      RAID - join drives together                                   #
 #                                                                                      #
-#              (h)       HTOP - check system resources                                 #
+#$cyan              (h)$orange       HTOP - check system resources                                 #
 #                                                                                      #
-#              (u)       Add UDEV rules for HWWs (only needed for Linux)               #
+#$cyan              (u)$orange       Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
-#              (fb)      Parman's recommended free books (pdfs)                        #
+#$cyan              (fb)$orange      Parman's recommended free books (pdfs)                        #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
@@ -25,10 +25,8 @@ echo -e "
 choose "xpmq"
 
 read choice
-
-case $choice in
-
-m|M) back2main ;;
+join $choice ; case $choice in
+q|Q) eixt ;; p|P) return 0 ;; m|M) back2main ;;
 
 rr)
     install_raid 
@@ -55,12 +53,6 @@ fb|FB)
 get_books
 ;;
 
-q|Q|quit|QUIT)
-    exit 0
-    ;;
-p|P)
-    menu_add
-    ;;
 *)
     invalid
     continue

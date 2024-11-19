@@ -88,7 +88,7 @@ if [[ $1 != silent ]] ; then
     mounted to the /mnt directory inside the ParmaBox Linux container. If you move a 
     file there, it will be accessible in both locations. 
 
-    The root user is available to use, and also the user parman, wth the password  $cyan
+    The root user is available to use, and also the user parman, with the password  $cyan
     \"parmanode\"$orange.
 
     The parmanode software is also available inside the container at:

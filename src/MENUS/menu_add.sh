@@ -1,9 +1,6 @@
 function menu_add {
 set_terminal
-
 check_disk_space
-
-
 while true
 do
 unset bitcoin_n menuaddnewbitcoin wordpress_available
@@ -41,10 +38,8 @@ echo -en "${bitcoin_new}" ; echo -en "
 ########################################################################################
 "
 choose "xpmq"
-if [[ $1 == wth ]] ; then choice=wth
-else
 read choice 
-fi
+join $choice
 set_terminal
 
 case $choice in

@@ -140,11 +140,6 @@ up|update|UPDATE|Update)
 ap|AP|Ap|aP)
     about ;;
 
-addn) menu_add_node ;;
-addw) menu_add_wallets ;;
-addo) menu_add_other ;;
-
-
 uany) menu_use any ;; 
 ub) menu_use b ;; 
 ubb) menu_use bb ;;
@@ -176,15 +171,6 @@ unr) menu_use nr ;;
 ulitd) menu_use litd ;;
 ult) menu_use lt ;;
 unext) menu_use next ;;
-dr) menu_remove th ; menu_add wth ;;
-
-
-"rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")
-debug "before nodejs"
-get_nodejs_and_npm 20 x
-sudo npm install -g npm
-;;
-
 
 
 ul|UL|Ul)

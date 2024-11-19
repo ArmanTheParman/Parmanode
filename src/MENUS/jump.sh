@@ -2,239 +2,256 @@ function jump {
 
 case $1 in
 
-mbitcoin|mb|bitcoin)
+mbitcoin|mb)
 if grep -q "bitcoin-end" $ic ; then
 menu_bitcoin
 menu_main
+else return 1
 fi
 ;;
 
-melectrs|mers|electrs)
+melectrs|mers)
 if grep -q "electrs-end" $ic || grep -q "electrsdkr-end" $ic ; then
 menu_electrs
 menu_main
+else return 1
 fi
 ;;
 
-mfulcrum|mf|fulcrum)
+mfulcrum|mf)
 if grep -q "fulcrum-end" $ic ; then
 menu_fulcrum
 menu_main
+else return 1 
 fi
 ;;
 
-
-melectrumx|mex|electrumx)
+melectrumx|mex)
 if grep -q "electrumx-end" $ic ; then
 menu_electrumx
 menu_main
+else return 1 
 fi
 ;;
 
-mmempool|mmem|mempool)
+mmempool|mmem)
 if grep -q “mempool-end” $ic ; then
 menu_mempool
 menu_main
+else return 1 
 fi
 ;;
 
-mbtcp|btcp|btcpay)
+mbtcp|btcp)
 if grep -q "btcpay-end" $ic || grep -q "btccomb-end" $ic ; then
 menu_btcpay
 menu_main
+else return 1
 fi
 ;;
 
-mlnd|lnd)
+mlnd)
 if grep -q "lnd-end" $ic ; then
 menu_lnd
 menu_main
+else return 1
 fi
 ;;
 
-mlt|lt)
+mlt)
 if grep -q “litd-end” $ic ; then
 menu_lnd
 menu_main
+else return 1
 fi
 ;;
 
-melectrum|me|electrum)
+melectrum|me)
 if grep -q "electrum-end" $ic ; then
 menu_electrum
 menu_main
+else return 1
 fi
 ;;
 
-msparrow|ms|sparrow)
+msparrow|ms)
 if grep -q “sparrow-end” $ic ; then
 menu_sparrow
 menu_main
+else return 1
 fi
 ;;
 
-mspecter|specter)
+mspecter)
 if grep -q "specter-end" $ic ; then
 menu_specter
 menu_main
+else return 1
 fi
 ;;
 
-mbitbox|mbb|bitbox)
+mbitbox|mbb)
 if grep -q "bitbox-end" $ic ; then
 menu_bitbox
 menu_main
+else return 1
 fi
 ;;
 
-mgreen|green)
+mgreen|mg)
 if grep -q "green-end" $ic ; then
 menu_green
 menu_main
+else return 1
 fi
 ;;
 
-mledger|ledger)
+mledger)
 if grep -q "ledger-end" $ic ; then
 menu_ledger
 menu_main
+else return 1
 fi
 ;;
 
-mtrezor|trezor)
+mtrezor)
 if grep -q "trezor-end" $ic ; then
 menu_trezor
 menu_main
+else return 1
 fi
 ;;
 
 add|madd)
 menu_add
 menu_main
-fi
 ;;
 
-addnode|maddnode)
+addn|addnode|maddnode)
 menu_add_node
 menu_main
-fi
 ;;
 
-addwallet|maddwallet)
+addw|addwallet|maddwallet)
 menu_add_wallet
 menu_main
-fi
 ;;
 
-addother|maddother)
+addo|addother|maddother)
 menu_add_other
 menu_main
-fi
 ;;
 
-addextra|maddextra)
+adde|addextra|maddextra)
 menu_add_extra
 menu_main
-fi
 ;;
 
 remove|mremove)
 menu_remove
 menu_main
-fi
 ;;
 
 use|muse)
 menu_use
 menu_main
-fi
 ;;
 
 tools|mtools)
 menu_tools
 menu_main
-fi
+;;
 
 tools2|mtools2)
 menu_tools2
 menu_main
-fi
-
 ;;
+
 mthunderhub|mthub|mth)
 if grep -q "thunderhub-end" $ic ; then
 menu_thunderhub
 menu_main
+else return 1
 fi
 ;;
 
-mrtl|rtl)
+mrtl)
 if grep -q "rtl-end" $ic ; then
 menu_rtl
 menu_main
+else return 1
 fi
 ;;
 
-mnostrrelay|mnr|nostrrelay|nr)
+mnostrrelay|mnr)
 if grep -q "nostrrelay-end" $ic ; then
 menu_nostrrelay
 menu_main
+else return 1
 fi
 ;;
 
-mbre|bre|brcrpcexplorer)
+mbre)
 if grep -q "bre-end" $ic ; then
 menu_bre
 menu_main
+else return 1
 fi
 ;;
 
-mjoinmarket|mjm|jm|joinmarket)
+mjoinmarket|mjm)
 if grep -q "joinmarket-end" $ic ; then
 menu_joinmarket
 menu_main
+else return 1
 fi
 ;;
 
-mnextcloud|mnxt|mnext|nc|nextcloud)
+mnextcloud|mnxt|mnext)
 if grep -q "nextcloud" $ic ; then
 menu_nextclourd
 menu_main
+else return 1
 fi
 ;;
 
-pbx|mparmabox| mpbx|parmabox)
+mparmabox|mpbx)
 if grep -q "parmabox-end" $ic ; then
 menu_parmabox
 menu_main
+else return 1
 fi
 ;;
 
-mqbittorrent|mqbt|qbittorrent)
+mqbittorrent|mqbt)
 if grep -q "qbittorrent-end" $ic ; then
 menu_qbittorrent
 menu_main
+else return 1
 fi
 ;;
 
-pool|mpublicpool|mpool|publicpool)
+mpublicpool|mpool)
 if grep -q "publicpool-end" $ic ; then
 menu_public_pool
 menu_main
+else return 1
 fi
 ;;
 
-tor|mtor)
+mtor)
 if grep -q "tor-end" $ic ; then
 menu_tor
 menu_main
+else return 1
 fi
 ;;
 
-torssh|mtorssh)
+mtorssh)
 if grep -q "torssh-end" $ic ; then
 menu_torssh
 menu_main
+else return 1
 fi
 ;;
 
