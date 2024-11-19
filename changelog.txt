@@ -3,11 +3,12 @@
 #    -X11Forwarding function (modifies sshd_config)
 #    -Backup btcpay database and plugins option
 
+Version 3.46.11
+
 Version 3.46.10
      -better log viewing with tmux
      -fixed smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
-     -SIGINT EXIT changed to SIGINT
      -Patch7:
           set github config name/email (generic) 
           make ssh keys for computer if non-existent
