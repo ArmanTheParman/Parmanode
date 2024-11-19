@@ -5,6 +5,7 @@
 
 Version 3.46.11
      -Sneaky hack to allow Tmux inception
+     -Many shortcuts to navigate around
 
 Version 3.46.10
      -better log viewing with tmux

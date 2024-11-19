@@ -43,6 +43,8 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
+#$cyan    (h)$orange                  ${red}HINTS (new)$orange                                           #
+#                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
 #$cyan    (t)        $orange          Tools                                                        #
