@@ -43,7 +43,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
-#$cyan    (h)$orange                  ${red}HINTS (new)$orange                                           #
+#$cyan    (h)$orange                  ${yellow}${blinkon}HINTS (new)$blinkoff$orange                                                  #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
@@ -84,13 +84,13 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # these end in a closing bracket, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
-bbb)
-export mem_debug="t"
-announce "mempool debugging turned on."
+
+h)
+hints
 ;;
+
 aa)
 if [[ $announcements == off ]] ; then
-
 sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=on" | tee -a $hm 
 else
@@ -179,9 +179,9 @@ clear ; please_wait
 menu_lnd
 ;;
 
-debugon) 
-export debug=1 ;;
-debugoff) 
+ debugoff
+) 
+
 export debug=0 ;;
 
 q|Q|quit|exit)
@@ -190,4 +190,38 @@ q|Q|quit|exit)
     invalid ; clear ;;
 
 esac ; done ; return 0
+}
+
+function hints {
+set_terminal ; echo -e "
+########################################################################################
+$red$blinkon
+                               G O O D   N E W S  ! ! $blinkoff$orange
+
+########################################################################################
+
+
+    I have made it much easier to move around. You can still use the old way of
+    course, but now you can jump around to where you want to go if you remember the
+    commands.
+
+    For now, you can jump to any installed app's menu. Later, installing and
+    uninstalling and other menu jumps will become available.
+
+    You can type 'm' and the abbreviation or full name of the program. Eg, for 
+    bitcoin, you can type
+$green
+         mb$orange    or$green   mbitcoin$orange
+
+    for electrs:
+$green
+        mers$orange  or$green    melectrs$orange
+$pink    
+    Enjoy
+$orange
+########################################################################################
+"
+enter_continue
+jump $enter_cont 
+return 0
 }
