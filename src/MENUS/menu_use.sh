@@ -156,6 +156,7 @@ echo -e "
 if [[ -z $1 ]] ; then
 choose "xpmq"
 read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=$1
 fi

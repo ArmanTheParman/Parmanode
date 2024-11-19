@@ -78,21 +78,19 @@ echo "#                                                                         
 ########################################################################################
 "
 choose "xpmq"
-
 read choice
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 
-m|M) back2main ;;
-    
-   ps|PS|Ps)
+ps|PS|Ps)
      if [[ -n $parmashell_n ]] ; then
      install_parmashell
      return 0
      fi
      ;;
 
-   d|D)
+d|D)
      if [[ -n $docker_n ]] ; then
      set_terminal
      if [[ $OS == Linux ]] ; then install_docker_linux ; fi
@@ -107,7 +105,7 @@ nr)
     fi
     ;;
     
-     t|T|tor|Tor)
+t|T|tor|Tor)
        if [[ -n $tor_n ]] ; then
        unset tor_already_installed
        install_tor 
@@ -119,7 +117,7 @@ nr)
        return 0 
        fi
        ;;
- tws|TWS|Tws)
+tws|TWS|Tws)
       if [[ -n $torserver_n ]] ; then
       install_tor_webserver
       return 0
@@ -207,16 +205,10 @@ pool|Pool|POOL)
         fi
 ;;
 
-    q|Q|quit|QUIT)
-        exit 0
-        ;;
-    p|P)
-        menu_add
-        ;;
-    *)
-        invalid
-        continue
-        ;;
+*)
+invalid
+continue
+;;
 esac
 done
 

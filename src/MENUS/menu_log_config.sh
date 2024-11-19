@@ -20,18 +20,20 @@ set_terminal ; echo -e "
     with the arrows, and press (q) to exit back to the menu.
 
     You could also just view them directly yourself if you're comfortable navigating
-    your computer's file system. Most are located in $HOME/.parmanode/
+    your computer's file system. Most are located in$cyan $HOME/.parmanode/ $orange
     (Note the \".\", that's not an accident)
 
-    Hit <enter> to continue 
+    Hit$cyan <enter>$orange to continue 
 
     or 
 
-    Type (Free Ross) then hit <enter> to hide this message next time    
+    Type (${red}Free Ross$orange) then hit$cyan <enter>$orange to hide this message next time    
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" 
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ; break ;;
 # The above function results in a variable message_menu_log_config=1 set in a config file.

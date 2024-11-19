@@ -26,13 +26,13 @@ echo -en "
 ########################################################################################
 #                                                                                      #" ; echo ""
 echo -en "${bitcoin_new}" ; echo -en "
-#                      n)           Node related software ...                          #
+#$cyan                      n)$orange           Node related software ...                          #
 #                                                                                      #
-#                      w)           Wallet Software ...                                #
+#$cyan                      w)$orange           Wallet Software ...                                #
 #                                                                                      #
-#                      o)           Other Software ...                                 #
+#$cyan                      o)$orange           Other Software ...                                 #
 #                                                                                      #
-#                      e)           Extras ...                                         #
+#$cyan                      e)$orange           Extras ...                                         #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################

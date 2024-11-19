@@ -62,100 +62,89 @@ echo -e "#                                                                      
 ########################################################################################
 "
 choose "xpmq"
-if [[ $1 == wt ]] ; then choice=th 
-else
 read choice
-fi
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
-m|M) back2main ;;
+q|Q) exit ;; p|P) return ;; m|M) back2main ;;
     
-    s|S|Sparrow|sparrow|SPARROW)
+s|S|Sparrow|sparrow|SPARROW)
        if [[ -n $sparrow_n ]] ; then
        install_sparrow
        back2main 
        fi
        ;;
-   r|R|RTL|rtl|Rtl)
+r|R|RTL|rtl|Rtl)
       if [[ -n $rtl_n ]] ; then
       install_rtl 
       back2main 
       fi
       ;;
-   th)
+th)
       if [[ -n $thunderhub_n ]] ; then
       install_thunderhub
       back2main
       fi
       ;;
-   e|E|electrum|Electrum|ELECTRUM)
+e|E|electrum|Electrum|ELECTRUM)
       if [[ -n $electrum_n ]] ; then
       install_electrum
       back2main 
       fi
       ;;
-   specter|Specter|SPECTER)
+specter|Specter|SPECTER)
       if [[ -n $specter_n ]] ; then
       install_specter
       back2main 
       fi
       ;;
-   lnb|LNB|Lnb)
+lnb|LNB|Lnb)
       if [[ -n $lnbits_n ]] ; then
         if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
         install_lnbits
         back2main 
       fi
       ;;
-   trz|TRZ|Trz)
+trz|TRZ|Trz)
       if [[ -n $trezor_n ]] ; then
       install_trezor
       back2main 
       fi
       ;;
-   bb|BB|Bb)
+bb|BB|Bb)
       if [[ -n $bitbox_n ]] ; then
       install_bitbox 
       back2main 
       fi
       ;;
    
-   gr|green) 
+gr|green) 
       if [[ -n $green_n ]] ; then
       install_green
       back2main 
       fi
       ;;
-   ll|LL|Ll)
+ll|LL|Ll)
       if [[ -n $ledger_n ]] ; then
       install_ledger
       back2main 
       fi
       ;;
-   btcr) 
+btcr) 
       if [[ -n $btcrecover_n ]] ; then
       install_btcrecover
       back2main 
       fi
       ;;
-   join) 
+join) 
       if [[ -n $joinmarket_n ]] ; then
       install_joinmarket
       back2main 
       fi
       ;;
-
-    q|Q|quit|QUIT)
-        exit 0
-        ;;
-    p|P)
-        menu_add
-        ;;
-    *)
-        invalid
-        continue
-        ;;
+*)
+invalid
+continue
+;;
 esac
 done
 

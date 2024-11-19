@@ -9,28 +9,29 @@ $cyan
 
 ########################################################################################
 
-
-      (parmy)    Import a Parmanode drive to use with Parmanode 
-
-      (new)      Make a new external Parmanode drive (will be formatted)
-
-      (ub)       Migrate an Umbrel drive to Parmanode 
-
-      (mn)       Migrate a MyNode drive to Parmanode 
-
-      (rp)       Migrate a RaspiBlitz drive to Parmanode
-
-      (eww)      Migrate a Parmanode drive back to Umbrel
-
-      (rm)       Migrate a Parmanode drive back to MyNode
-
-      (rr)       Migrate a Parmanode drive back to RaspiBlitz
+$cyan
+      (parmy)$orange    Import a Parmanode drive to use with Parmanode 
+$cyan
+      (new)$orange      Make a new external Parmanode drive (will be formatted)
+$cyan
+      (ub)$orange       Migrate an Umbrel drive to Parmanode 
+$cyan
+      (mn)$orange       Migrate a MyNode drive to Parmanode 
+$cyan
+      (rp)$orange       Migrate a RaspiBlitz drive to Parmanode
+$red
+      (eww)$orange      Migrate a Parmanode drive back to Umbrel
+$cyan
+      (rm)$orange       Migrate a Parmanode drive back to MyNode
+$cyan
+      (rr)$orange       Migrate a Parmanode drive back to RaspiBlitz
 
 
 ########################################################################################
 "
 choose "xpmq"
 read migratechoice
+jump $migratechoice || { invalid ; continue ; } ; set_terminal
 else
 migratechoice="$1"
 set_terminal

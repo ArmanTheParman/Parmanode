@@ -106,7 +106,7 @@ else return 1
 fi
 ;;
 
-mledger)
+mll|mledger)
 if grep -q "ledger-end" $ic ; then
 menu_ledger
 menu_main
@@ -199,7 +199,7 @@ else return 1
 fi
 ;;
 
-mjoinmarket|mjm)
+mpj|mparmajoin|mjoinmarket|mjm)
 if grep -q "joinmarket-end" $ic ; then
 menu_joinmarket
 menu_main
@@ -247,6 +247,14 @@ else return 1
 fi
 ;;
 
+mtssh|mtorssh)
+if grep -q "torssh-end" $ic ; then
+menu_torssh
+menu_main
+else return 1
+fi
+;;
+
 mtorssh)
 if grep -q "torssh-end" $ic ; then
 menu_torssh
@@ -254,6 +262,64 @@ menu_main
 else return 1
 fi
 ;;
+
+many|mad)
+if grep -q "anydesk-end" $ic ; then
+menu_anydesk
+menu_main
+else return 1
+fi
+;;
+
+mpih|mph)
+if grep -q "pihole-end" $ic ; then
+menu_pihole
+menu_main
+else return 1
+fi
+;;
+
+mtr|mtorrelay)
+if grep -q "torrely-end" $ic ; then
+menu_torrelay
+menu_main
+else return 1
+fi
+;;
+
+mtb|mtorbrowser)
+if grep -q "torbrowser-end" $ic ; then
+menu_torbrowser
+menu_main
+else return 1
+fi
+;;
+
+mwps|mws|mwebsite)
+if grep -q "website-end" $ic ; then
+menu_website
+menu_main
+else return 1
+fi
+;;
+
+mngx|mng|mnginx)
+if grep -q "nginx-end" $ic ; then
+menu_nginx
+menu_main
+else return 1
+fi
+;;
+
+mbtcr|mbtcrecover)
+if grep -q "btcrecover-end" $ic ; then
+menu_btcrecover
+menu_main
+else return 1
+fi
+;;
+
+
 
 esac
 }

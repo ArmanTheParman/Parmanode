@@ -287,6 +287,7 @@ echo -e "
 
 "
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in
 q|Q) exit ;;

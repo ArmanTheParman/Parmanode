@@ -299,11 +299,8 @@ echo -e "#                                                                      
 ########################################################################################
 "
 choose "xpmq"
-if [[ $1 == th ]] ; then choice=th
-else
 read choice
-fi
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 
 m|M) back2main ;;
