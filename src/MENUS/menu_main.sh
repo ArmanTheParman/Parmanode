@@ -201,17 +201,15 @@ $red$blinkon
     course, but now you can jump around to where you want to go if you remember the
     commands.
 
-    For now, you can jump to any installed app's menu. Later, installing and
-    uninstalling and other menu jumps will become available.
-
-    You can type 'm' and the abbreviation or full name of the program. Eg, for 
-    bitcoin, you can type
+    You can type 'm' (for menu) and the abbreviation or full name of the program. 
+    
+    Eg, for bitcoin, you can type:
 $green
-         mb$orange    or$green   mbitcoin$orange
+                    mb$orange    or$green   mbitcoin$orange
 
-    for electrs:
-$green
-        mers$orange  or$green    melectrs$orange
+   for electrs:
+            $green
+                    mers$orange  or$green    melectrs$orange
 $pink    
     Enjoy
 $orange
@@ -221,3 +219,7 @@ enter_continue
 jump $enter_cont 
 return 0
 }
+
+
+#    For now, you can jump to any installed app's menu. Later, installing and
+#    uninstalling and other menu jumps will become available.
