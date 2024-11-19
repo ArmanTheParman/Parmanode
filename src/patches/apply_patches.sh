@@ -35,7 +35,7 @@ return 0 ;;
 *) 
 patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ;; 
 esac
-debug "end apply_patches"
+debug "end apply_patches :)"
 }
 
 
