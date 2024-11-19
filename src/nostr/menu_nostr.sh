@@ -147,11 +147,10 @@ enter_continue
 fi
 
 set_terminal_wider
-docker logs nostrrelay -f --tail 100 &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    tmux new -s -d "docker logs nostrrelay -f --tail 100"
 continue ;;
 
 test)
@@ -204,29 +203,31 @@ choose xpmq ; read choice ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;;
 http)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location &
-curl_PID=$!
-trap 'kill $curl_PID' SIGINT #condition added to memory
-wait $curl_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+tmux new -s -d "curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location"
 break
 ;;
 https)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location &
-curl_PID=$!
-trap 'kill $curl_PID' SIGINT #condition added to memory
-wait $curl_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+tmux new -s -d "curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location"
 break
 ;;
 e1)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location
-enter_continue
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+tmux new -s -d "curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location"
 break
 ;;
 e2)
-curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location
-enter_continue
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+tmux new -s -d "curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: https://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" https://$location"
 break
 ;;
 *)

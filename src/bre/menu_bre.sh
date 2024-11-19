@@ -151,12 +151,10 @@ fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    sudo journalctl -fexu btcrpcexplorer.service &
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    tmux new -s -d "sudo journalctl -fexu btcrpcexplorer.service"
     continue
 fi
 ;;

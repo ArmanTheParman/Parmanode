@@ -266,20 +266,22 @@ fi
 
 set_terminal_wider
 if grep -q "lnd-" $ic ; then
-sudo journalctl -fxu lnd.service
-journal_PID=$!
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+tmux new -s -d "sudo journalctl -fexu lnd.service"
 elif grep -q "litd" $ic ; then
-sudo journalctl -fxu litd.service 
-journal_PID=$!
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+tmux new -s -d "sudo journalctl -fexu litd.service"
 elif grep -q "lnddocker-" $ic ; then
-tail -f $hp/lnd/lnd.log 
-journal_PID=$!
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+tmux new -s -d "tail -f $hp/lnd/lnd.log"
 fi
 
-trap "kill -9 $journal_PID >/dev/null 2>&1 ; clear" SIGINT #condition added to memory #changed to double quotes for a user experiencing
-#complete exiting of the program with control-c. May adjust for all occurrances later.
-wait $journal_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
 please_wait
 
 ;;

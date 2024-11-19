@@ -421,12 +421,10 @@ echo -e "
 enter_continue
 fi
 set_terminal_wider
-tail -f $btcpaylog &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
-set_terminal
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+tmux new -s -d "tail -f $btcpaylog"
 }
 
 
@@ -442,11 +440,11 @@ echo -e "
 "
 enter_continue
 set_terminal_wider
-tail -f $HOME/.nbxplorer/nbxplorer.log &
-tail_PID=$!
-trap 'kill $tail_PID' SIGINT #condition added to memory
-wait $tail_PID # code waits here for user to control-c
-trap - SIGINT # reset the trap so control-c works elsewhere.
+
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    tmux new -s -d "tail -f $HOME/.nbxplorer/nbxplorer.log"
 set_terminal
 }
 
