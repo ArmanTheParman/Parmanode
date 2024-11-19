@@ -287,7 +287,9 @@ if [[ $OS == Mac ]] ; then
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
     fi
+    TMUX2=$TMUX ; unset TMUX 
     tmux new -s -d "tail -f $logfile" 
+    TMUX=$TMUX2
     set_terminal
 fi
 
@@ -296,7 +298,9 @@ if [[ $OS == "Linux" ]] ; then
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
     fi
+    TMUX2=$TMUX ; unset TMUX 
     tmux new -s -d "sudo journalctl -fexu electrumx.service"
+    TMUX=$TMUX2
 fi
 fi # end electrumxis
 ;;

@@ -265,22 +265,19 @@ enter_continue
 fi
 
 set_terminal_wider
+
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+fi
+TMUX2=$TMUX ; unset TMUX 
 if grep -q "lnd-" $ic ; then
-    if ! which tmux >$dn 2>&1 ; then
-    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
-    fi
 tmux new -s -d "sudo journalctl -fexu lnd.service"
 elif grep -q "litd" $ic ; then
-    if ! which tmux >$dn 2>&1 ; then
-    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
-    fi
 tmux new -s -d "sudo journalctl -fexu litd.service"
 elif grep -q "lnddocker-" $ic ; then
-    if ! which tmux >$dn 2>&1 ; then
-    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
-    fi
 tmux new -s -d "tail -f $hp/lnd/lnd.log"
 fi
+TMUX=$TMUX2
 
 please_wait
 

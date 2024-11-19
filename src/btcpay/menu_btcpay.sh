@@ -424,7 +424,9 @@ set_terminal_wider
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
+TMUX2=$TMUX ; unset TMUX 
 tmux new -s -d "tail -f $btcpaylog"
+TMUX=$TMUX2
 }
 
 
@@ -444,7 +446,9 @@ set_terminal_wider
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
     fi
+    TMUX2=$TMUX ; unset TMUX 
     tmux new -s -d "tail -f $HOME/.nbxplorer/nbxplorer.log"
+    TMUX=$TMUX2
 set_terminal
 }
 

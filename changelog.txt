@@ -4,6 +4,7 @@
 #    -Backup btcpay database and plugins option
 
 Version 3.46.11
+     -Sneaky hack to allow Tmux inception
 
 Version 3.46.10
      -better log viewing with tmux

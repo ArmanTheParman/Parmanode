@@ -4,10 +4,13 @@
 function restart_bitcoin { stop_bitcoin ; start_bitcoin ; }
 
 function start_bitcoin {
-#for docker (no systemctl, ust tmux)
+#for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
-tmux new-session -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1
+# & setting not needed, bitcoind is already a daemon and tmux runs in the backgroud
+TMUX2=$TMUX ; unset TMUX 
+tmux new -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1
+TMUX=$TMUX2
 sleep 4
 return 0
 fi
