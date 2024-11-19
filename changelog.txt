@@ -4,6 +4,7 @@
 #    -Backup btcpay database and plugins option
 
 Version 3.46.10
+     -better log viewing with tmux
      -fixed smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
      -SIGINT EXIT changed to SIGINT

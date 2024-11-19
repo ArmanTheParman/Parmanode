@@ -8,14 +8,8 @@ if grep -q "electrumxdkr" $ic ; then
     docker exec electrumx cat /home/parman/run_electrumx.log > $logfile
 else
     electrumxis=nondocker
-    if [[ $OS == Linux ]] ; then
-       #-fexu will be used for log, but still need to get a log file snapshot
-       sudo journalctl -exu electrumx.service > $logfile 2>&1
-    elif [[ $OS == Mac ]] ; then
-    # Background process is writing continuously to $logfile.
-    true #do nothing, sturctured so for readability.
-    fi
 fi
+
 while true ; do
 unset log_size 
 
@@ -284,36 +278,27 @@ fi
 if [[ $electrumxis == docker ]] ; then 
     set_terminal_wider
     docker exec -it electrumx /bin/bash -c "tail -f /home/parman/run_electrumx.log"      
-        # tail_PID=$!
-        # trap 'kill $tail_PID' SIGINT #condition added to memory
-        # wait $tail_PID # code waits here for user to control-c
-        # trap - SIGINT # reset the t. rap so control-c works elsewhere.
     set_terminal
  
  else
 
 if [[ $OS == Mac ]] ; then
     set_terminal_wider
-    tail -f $logfile &     
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    tmux new -d "tail -f $logfile" 
     set_terminal
 fi
 
 if [[ $OS == "Linux" ]] ; then
     set_terminal_wider
-    sudo journalctl -fexu electrumx.service &
-    tail_PID=$!
-    trap 'kill $tail_PID' SIGINT #condition added to memory
-    wait $tail_PID # code waits here for user to control-c
-    trap - SIGINT # reset the t. rap so control-c works elsewhere.
-    set_terminal
-    menu_electrumx #this is so the status refreshes 
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    tmux new -d "sudo journalctl -fexu electrumx.service"
 fi
 fi # end electrumxis
-menu_electrumx #this is so the status refreshes 
 ;;
 
 ec|EC|Ec|eC)
