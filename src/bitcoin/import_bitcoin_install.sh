@@ -15,6 +15,7 @@ $orange
 "
 choose "epmq"
 read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
@@ -36,6 +37,7 @@ set_terminal ; echo -e "
 "
 choose "epmq"
 read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
@@ -61,6 +63,7 @@ $orange
 "
 choose "epmq"
 read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
@@ -88,6 +91,7 @@ $green
 "
 choose "epmq"
 read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
 esac
@@ -103,21 +107,22 @@ set_terminal ; echo -e "
     Now we need to decide about the Bitcoin block data location.
 
     Do you want...
-
-        1)    Start fresh with an external drive$red (formats drive)$orange
-
-        2)    Start fresh with an internal drive
-
-        3)    Use your existing data from an external drive
-
-        4)    Use your existing data from an internal drive
-
-        5)    Use your existing data from a Parmanode external drive
+$cyan
+        1)$orange    Start fresh with an external drive$red (formats drive)$orange
+$cyan
+        2)$orange    Start fresh with an internal drive
+$cyan
+        3)$orange    Use your existing data from an external drive
+$cyan
+        4)$orange    Use your existing data from an internal drive
+$cyan
+        5)$orange    Use your existing data from a Parmanode external drive
 
 ########################################################################################
 "
 choose "xpmq"
 read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|m|M) back2main ;;
 1)

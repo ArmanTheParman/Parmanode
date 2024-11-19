@@ -22,7 +22,6 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-log "btcpay" "run command failed. Likely because container not running."
 enter_continue
 return 1
 }    

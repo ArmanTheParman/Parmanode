@@ -16,7 +16,7 @@ $bright_blue
 $orange
 ########################################################################################
 "
-debug2 "BTC ParmanPay"
 enter_continue
+jump $enter_cont
 return 0
 }

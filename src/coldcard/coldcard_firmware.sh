@@ -19,19 +19,20 @@ $orange
                            Mark IV       $green $ccDFU4 $orange
 
 
-$cyan    
-    Which version of ColdCard do you have?
 $orange
-                  3)    Coldcard Mark III (or II)
-                             
-                  4)    Coldcard Mark IV
-
-                  man)  Manually input version of software (assisted with wizard)
+    Which version of ColdCard do you have?
+$cyan
+                  3)$orange    Coldcard Mark III (or II)
+$cyan                            
+                  4)$orange    Coldcard Mark IV
+$cyan
+                  man)$orange  Manually input version of software (assisted with wizard)
 
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 3) 

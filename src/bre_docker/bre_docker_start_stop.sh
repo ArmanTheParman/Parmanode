@@ -6,6 +6,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 check_config_bre || return 1
@@ -21,6 +22,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 docker stop bre
@@ -34,6 +36,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 

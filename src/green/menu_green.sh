@@ -11,6 +11,7 @@ $green
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;
 p|P) menu_use ;; 

@@ -154,13 +154,12 @@ fi
 echo -e "
 ########################################################################################
 "
-
 choose "xpmq"
 echo -e "$red
  Hit 'r' to refresh menu 
  $orange"
 read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 r) menu_electrs || return 1 ;;

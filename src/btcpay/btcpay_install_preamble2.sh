@@ -38,6 +38,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 quit|Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 y)

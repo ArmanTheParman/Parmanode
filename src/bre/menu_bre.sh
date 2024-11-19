@@ -88,6 +88,7 @@ $output
 "
 choose "xpmq" 
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 set_terminal
 case $choice in
 m|M) back2main ;;

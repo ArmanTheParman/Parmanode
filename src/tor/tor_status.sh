@@ -12,6 +12,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 }
 
 function tor_status_check {

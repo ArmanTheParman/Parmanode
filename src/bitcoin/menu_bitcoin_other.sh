@@ -37,23 +37,23 @@ echo -e "$output2"
 echo ""
 echo -e "
 
-
-      (cd)       Change syncing drive internal vs external
-
-      (mp)       Modify Pruning
-
-      (c)        How to connect your wallet...........(Otherwise no point to this)
-
-      (dd)       Backup/Restore data directory.................(Instructions only)
-       
-      (r)        Errors? Try --reindex blockchain...
-
-      (h)        Hack Parmanode; tips for troubleshooting.
+$cyan
+      (cd)$orange       Change syncing drive internal vs external
+$cyan
+      (mp)$orange       Modify Pruning
+$cyan
+      (c)$orange        How to connect your wallet...........(Otherwise no point to this)
+$cyan
+      (dd)$orange       Backup/Restore data directory.................(Instructions only)
+$cyan   
+      (r)$orange        Errors? Try --reindex blockchain...
+$cyan
+      (h)$orange        Hack Parmanode; tips for troubleshooting.
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 

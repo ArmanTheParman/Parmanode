@@ -23,6 +23,7 @@ $orange
 "
 choose "xpmq"
 read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 else choice=c     # when $ is "swap" but never possible because -z $1 necessary to enter block
 fi
 

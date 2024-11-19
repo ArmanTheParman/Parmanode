@@ -16,6 +16,7 @@ $cyan
 ########################################################################################
 "
 choose "x" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 y|Y|Yes|YES|yes)
 break ;;

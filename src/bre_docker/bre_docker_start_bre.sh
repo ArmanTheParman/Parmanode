@@ -9,6 +9,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 

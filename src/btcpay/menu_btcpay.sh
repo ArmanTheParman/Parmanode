@@ -93,6 +93,7 @@ $menu_tor
 ########################################################################################
 " 
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in Q|q|QUIT|Quit|quit) exit 0 ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi

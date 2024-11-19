@@ -14,6 +14,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 
 while true ; do
 unset choice_file

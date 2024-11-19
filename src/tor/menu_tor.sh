@@ -44,6 +44,7 @@ $cyan                  restart)$orange        Restart Tor
 ######################################################################################## 
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; Q|q|QUIT|Quit|quit) exit 0 ;; p|P) menu_use ;; 
 

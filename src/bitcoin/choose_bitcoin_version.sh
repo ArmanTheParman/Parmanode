@@ -46,6 +46,7 @@ $orange
 choose "xpmq" 
 unset bitcoin_compile ordinals_patch knotsbitcoin byo_bitcoin
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;

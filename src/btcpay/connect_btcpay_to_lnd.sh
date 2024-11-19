@@ -12,14 +12,15 @@ $cyan
     it will allow access to your lightning node.
 $orange
     Proceed with instructions?  
-
-                       y)       Show instructions and sensitive data
-
-                       a)       Danger Danger Abort Abort
+$cyan
+                       y)$orange       Show instructions and sensitive data
+$cyan
+                       a)$orange       Danger Danger Abort Abort
 
 ########################################################################################
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 
 m|M) back2main ;;

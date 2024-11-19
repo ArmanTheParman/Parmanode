@@ -10,18 +10,19 @@ set_terminal ; echo -e "
     exists on the system.
 
     You have choices...
-           
-            d)    Delete it and start fresh
-
-            m)    Move it to$cyan $HOME/.btcpayserver_backup$orange
-
-            l)    Leave it (the config file will be overwritten)
-
-            a)    Abort installation
+$cyan           
+            d)$orange    Delete it and start fresh
+$cyan
+            m)$orange    Move it to$cyan $HOME/.btcpayserver_backup$orange
+$cyan
+            l)$orange    Leave it (the config file will be overwritten)
+$cyan
+            a)$orange    Abort installation
 
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a) return 1 ;; m|M) back2main ;;
 

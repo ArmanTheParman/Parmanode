@@ -7,16 +7,16 @@ set_terminal ; echo -e "
 
     Bitcoin is currently configured to sync to the internal drive. Would you like
     to run the wizard to swap to the external drive?
-
-                                y)       nice
-
-                                n)       go away
+$cyan
+                                y)$orange       nice
+$cyan
+                                n)$orange       go away
 
 ########################################################################################      
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
 m|M) back2main ;;
 q|Q) exit ;;
 p|P) return 1 ;;

@@ -37,8 +37,8 @@ $orange
 ########################################################################################
 "
 choose "xpmq"
-
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=no
 fi

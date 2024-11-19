@@ -4,20 +4,20 @@ set_terminal ; echo -e "
 ########################################################################################$cyan
                                     Nginx Menu            $orange                   
 ########################################################################################
-
-                  s)             Start
-
-                  stop)          Stop
-
-                  r)             Restart
-
-                  conf)          Edit nginx.conf
-
-                  st)            Edit stream.conf
-                  
-                  cd)            Edit files in conf.d
-
-                  t)             Test nginx configuration (nginx -t)
+$green
+                  s)$orange             Start
+$red
+                  stop)$orange          Stop
+$cyan
+                  r)$orange             Restart
+$cyan
+                  conf)$orange          Edit nginx.conf (confv for vim)
+$cyan
+                  st)$orange            Edit stream.conf
+    $cyan              
+                  cd)$orange            Edit files in conf.d
+$cyan
+                  t)$orange             Test nginx configuration (nginx -t)
 
 ########################################################################################
 "
@@ -38,13 +38,11 @@ sudo systemctl restart nginx
 ;;
 
 conf)
-set_terminal ; echo -e "${green}n$orange for nano editor,$green v$orange for vim, <enter> alone to go back" ; read editor 
+sudo nano /etc/nginx/nginx.conf 
+;;
 
-    case $editor in
-    "") continue ;;
-    n) sudo nano /etc/nginx/nginx.conf ;;
-    v) vim_warning ; sudo vim /etc/nginx/nginx.conf ;;
-    esac
+confv) 
+vim_warning ; sudo vim /etc/nginx/nginx.conf 
 ;;
 
 st)

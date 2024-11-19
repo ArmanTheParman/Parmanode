@@ -13,34 +13,35 @@ $cyan
 $orange
 ########################################################################################                                
 
-
-                        (v)            Version         
-
-                        (gi)           Get info            
-                
-                        (ni)           Net info
-                
-                        (gbh)          Get blockhash   
-                
-                        (gbi)          Get blockchain info 
-                
-                        (gdi)          Get deployment info
-                
-                        (gd)           Get difficulty  
-                
-                        (gmi)          Get mempool info    
-                
-                        (gtosi)        Get tx out set info 
-                                        
-                        (gcc)          Get connection count    
-                
-                        (vm)           Verify a message
+$cyan
+                        (v)$orange            Version         
+$cyan
+                        (gi)$orange           Get info            
+    $cyan            
+                        (ni)$orange           Net info
+        $cyan        
+                        (gbh)$orange          Get blockhash   
+            $cyan    
+                        (gbi)$orange          Get blockchain info 
+               $cyan 
+                        (gdi)$orange          Get deployment info
+               $cyan 
+                        (gd)$orange           Get difficulty  
+               $cyan 
+                        (gmi)$orange          Get mempool info    
+               $cyan 
+                        (gtosi)$orange        Get tx out set info 
+                   $cyan                     
+                        (gcc)$orange          Get connection count    
+               $cyan 
+                        (vm)$orange           Verify a message
 
 
 ########################################################################################
 "
 choose "xpmq"
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 clear
 case $choice in
 m|M) back2main ;;

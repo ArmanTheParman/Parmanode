@@ -33,6 +33,7 @@ $orange
 ########################################################################################
 "
 choose "xq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=l
 fi

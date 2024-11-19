@@ -20,6 +20,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;;

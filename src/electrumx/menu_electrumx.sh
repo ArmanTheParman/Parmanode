@@ -189,7 +189,7 @@ echo -e "$red$blinkon
  Hit 'r' to refresh menu $blinkoff
  $orange"
 read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 

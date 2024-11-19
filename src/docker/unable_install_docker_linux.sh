@@ -8,5 +8,7 @@ $cyan
 $orange
 ###########################################################################################################
 "
-enter_continue ; set_terminal 
+enter_continue 
+jump $enter_cont
+set_terminal 
 }

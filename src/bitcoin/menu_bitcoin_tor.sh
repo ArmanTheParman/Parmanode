@@ -51,18 +51,18 @@ $cyan                        Tor options for Bitcoin (Linux only)   $orange
     and require some thinking time (minutes) before you can succesfully manually 
     restart it.
 
-
-    1)    Allow Tor connections AND clearnet connections
+$cyan
+    1)$orange    Allow Tor connections AND clearnet connections
                  - Helps you and the network overall
-
-    2)    Force Tor only connections
+$cyan
+    2)$orange    Force Tor only connections
                  - Extra private but only helps the Tor network of nodes
-    
-    3)    Force Tor only OUTWARD connections
+   $cyan 
+    3)$orange    Force Tor only OUTWARD connections
                  - Only helps yourself but most private of all options
                  - You can connect to tor nodes, they can't connect to you
-
-    4)    Make Bitcoin public (Remove Tor usage and stick to clearnet)
+$cyan
+    4)$orange    Make Bitcoin public (Remove Tor usage and stick to clearnet)
                  - Generally faster and more reliable
 
 
@@ -70,6 +70,7 @@ $bright_magenta    Current Status: $status_print$orange
 $tortext"
 
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;;
 Q|q|quit|QUIT|Quit) exit 0 ;;
