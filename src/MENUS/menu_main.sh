@@ -77,8 +77,8 @@ $blinkon$red                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$b
 fi
 
 read choice #whatever the user chooses, it gets put into the choice variable used below.
+join $choice
 set_terminal
-
 case $choice in #the variable choice is tested through each of the case-choices below.
 # these end in a closing bracket, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
@@ -102,7 +102,7 @@ menu_overview
 ;;
 
 a|add|Add|ADD)
-    menu_add_new
+    menu_add
     ;;
 use|USE|Use|u|U)
     menu_use
@@ -176,7 +176,7 @@ unr) menu_use nr ;;
 ulitd) menu_use litd ;;
 ult) menu_use lt ;;
 unext) menu_use next ;;
-dr) menu_remove th ; menu_add_new wth ;;
+dr) menu_remove th ; menu_add wth ;;
 
 
 "rf-npm"|"rf-nodejs"|"rf-get_nodejs_and_npm")

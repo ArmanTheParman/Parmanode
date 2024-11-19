@@ -59,7 +59,7 @@ q|Q|quit|QUIT)
     exit 0
     ;;
 p|P)
-    menu_add_new
+    menu_add
     ;;
 *)
     invalid

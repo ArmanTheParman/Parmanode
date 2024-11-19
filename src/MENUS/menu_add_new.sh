@@ -1,4 +1,4 @@
-function menu_add_new {
+function menu_add {
 set_terminal
 
 check_disk_space
