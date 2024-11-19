@@ -85,10 +85,8 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
 
-h)
-hints
-;;
-
+q|Q) exit ;;
+h) hints ;;
 aa)
 if [[ $announcements == off ]] ; then
 sudo gsed -i "/announcements=/d" $hm 
@@ -179,15 +177,13 @@ clear ; please_wait
 menu_lnd
 ;;
 
- debugoff
-) 
-
+debugon) 
+export debug=1 ;;
+debugoff) 
 export debug=0 ;;
 
-q|Q|quit|exit)
-    exit 0 ;;
 *)
-    invalid ; clear ;;
+invalid ; clear ;;
 
 esac ; done ; return 0
 }
