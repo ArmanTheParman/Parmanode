@@ -28,7 +28,7 @@ debug "case5"
 patch_6 ;;
 6)
 debug "case6"
-;;
+patch_7 ;;
 7)
 debug "case7"
 return 0 ;;
