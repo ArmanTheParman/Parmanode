@@ -55,15 +55,10 @@ function fix_bitcoin_conf {
 
 if [[ ! -e $bc ]] ; then return 0 ; fi
 
-if ! grep -q "rpcbind=$IP" $bc ; then
-echo "rpcbind=$IP" | tee -a $bc >$dn 2>&1
-fi
-
 #values below 172.16 are public internet reserved, and above are private networks
-if ! grep -q "rpcallowip=172.16" ; then 
-sudo gsed -i '/rpcallowip=172.*$/d' $bc
-echo "rpcallowip=172.16.0.0/16"  | sudo tee -a $bc >/dev/null 2>&1
+if ! grep -q "rpcallowip=172.16" $bc ; then 
+    sudo gsed -i '/rpcallowip=172.*$/d' $bc
+    echo "rpcallowip=172.16.0.0/12"  | sudo tee -a $bc >/dev/null 2>&1
 fi
-
 
 }
