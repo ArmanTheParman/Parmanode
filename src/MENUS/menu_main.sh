@@ -113,7 +113,6 @@ l|L)
 mm|MM)
      mentorship
      ;;
-
 e|E)
     menu_education ;;
 t|T)

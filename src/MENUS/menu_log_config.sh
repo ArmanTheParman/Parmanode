@@ -31,15 +31,13 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpmq" 
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 "Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ; break ;;
 # The above function results in a variable message_menu_log_config=1 set in a config file.
 # Which results in hiding the message next time, because of the if statement at the start.
-q|Q) exit ;; p|P) return ;; 
-m|M) back2main ;;
+q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 '') break ;;
 *) invalid ;;
 esac
@@ -68,10 +66,10 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
-q|Q|Quit|QUIT|quit) exit 0 ;;
-p|P) return 1 ;;
+q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
 
 ic) less $HOME/.parmanode/installed.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;

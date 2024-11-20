@@ -37,8 +37,8 @@ $pink       d)$orange  Nah, and get rid of it
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-case $choice in
 jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|nah) return 0 ;;
 d|D|delete) 

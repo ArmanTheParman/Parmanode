@@ -25,12 +25,11 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" 
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
-m|M) back2main ;;
     mit)
         mit_lectures
         ;;
@@ -52,11 +51,6 @@ m|M) back2main ;;
         cool_stuff
         ;;
 
-    p|P) return 0 ;; 
-
-    q|Q|Quit|QUIT)
-        exit 0
-        ;;
     *)
         invalid 
         ;;

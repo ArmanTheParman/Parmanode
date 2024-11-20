@@ -11,22 +11,19 @@ echo -e "
     a few minutes to install. 
 
     Proceed?
-
-            y)    Yes please, I don't know what's going on but I'll Google it.
-
-            n)    Nah, abandon for no reason.
+$cyan
+            y)$orange    Yes please, I don't know what's going on but I'll Google it.
+$cyan
+            n)$orange    Nah, abandon for no reason.
 
 ########################################################################################        
-
-    Please make a choice, y or n, then hit <enter>
-
 "
-read choice
-clear
+choose xpq ; read choice ; clear
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; 
 y) break ;;
 n) return 1 ;;
-*) echo "Invalid choice. Hit <enter> to try again." ; continue ;;
+*) invalid ;;
 esac
 done
 

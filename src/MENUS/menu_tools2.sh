@@ -31,11 +31,9 @@ $cyan              (ps)$orange        Adjust SSD power saving
 $orange
 ########################################################################################
 "
-choose "xpmq" 
-read choice 
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-    
 q|Q) exit ;;  m|M) back2main ;; p|P) return 0 ;;
 
 bd)

@@ -15,13 +15,10 @@ $cyan
 
 ######################################################################################## 
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-Q|q|QUIT|Quit|quit) exit 0 ;; 
-p|P) return ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 c|C) change_colours ; return 0 ;;
 an)
 if [[ $announcements == off ]] ; then

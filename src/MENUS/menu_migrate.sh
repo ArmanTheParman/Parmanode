@@ -38,9 +38,7 @@ set_terminal
 fi
 
 case $migratechoice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
 export check_if_parmanode_drive="true" # read by detect_drive (which is called by add_drive)

@@ -162,8 +162,7 @@ choice=$1
 fi
 
 case $choice in
-m|M) back2main ;;
-
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 rr)
     if [[ $raidapp == 1 ]] ; then
     clear
@@ -484,12 +483,6 @@ ng)
   fi
   ;;
 ##########################
-p)
-   menu_main 
-   ;;
-q | Q | quit)
-   exit 0
-   ;;
 *)
    invalid
    clear

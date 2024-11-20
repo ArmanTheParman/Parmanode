@@ -3,7 +3,7 @@ clear
 echo -e "
 ########################################################################################
 
-    Parmanode will install GPG on your system. It is a necessary tool to verify
+    Parmanode will install$cyan GPG$orange on your system. It is a necessary tool to verify
     software and to use Bitcoin safely.
 
     At some point during the installation, you'll see dmg file mounted - ignore it,
@@ -12,11 +12,11 @@ echo -e "
     Also, you may get a pop up about using GPG with your email account. This is not
     necessary; it's safe to dismiss it.
 
-    Hit <enter> to continue or <control> c to exit.
+    Hit $cyan<enter>$orange to continue or$red q$orange to exit.
 
 ########################################################################################
 "
-read
+enter_continue
 
 if [[ -e $HOME/parmanode ]] ; then mkdir $HOME/parmanode ; fi
 cd $HOME/parmanode

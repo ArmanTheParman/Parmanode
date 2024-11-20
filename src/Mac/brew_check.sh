@@ -29,16 +29,13 @@ $orange
 
 ########################################################################################
 "
-choose "epq" ; read choice
-# below is my menu logic before I got comfortable using case.
-# I'm leaving it here for interest, it works fine and doesn't hurt.
-if [[ $choice == "p" ]] ; then return 1 ; fi
-if [[ $choice == "q" ]] ; then exit 0 ; fi
-if [[ $choice == "a" ]] ; then return 1 ; fi
-if [[ $choice == "i" ]] ; then break ; fi
+choose "epq" ; read choice ; set_terminal
+case $choice in
+q|Q) exit ;; a|p|P) return 1 ;; 
+i) break ;;
+*) invalid ;;
+esac
 done
-log "parmanode" "Installing homebrew..."
-# User chose <enter>, while breaks to here:
 
 install_homebrew && return 0
 

@@ -38,11 +38,11 @@ $red $blinkon
 $orange
 ########################################################################################
 "
-choose "xpmq"  
-read choice 
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
     n|next)
     menu_tools2
     ;;
@@ -102,9 +102,6 @@ case $choice in
         announce "Drive mounted."
         fi
         ;;
-    p|P)
-        return 0
-        ;;
 
       md|MD)
       menu_migrate
@@ -118,9 +115,6 @@ case $choice in
       format_assist
       ;;
 
-      q|Q|Quit|QUIT)
-        exit 0
-        ;;
     "")
         return 0 
         ;;
@@ -154,8 +148,7 @@ $orange
     You'll have to manually tweak your wallet settings and include the following 
     onion address to connect to my server:
 $green
-    ail3y746ukjgowb2l4izovsh2tzyre4ohxii7rwes3j5ggx6pc3cvdid.onion:700${red}4$green:t 
-
+    odqwla6mucxo6u7z5isxoxmiasjncph7wg7nc2eiby7cvk36qbm4imyd.onion:700${red}2$green:t 
 $orange
     You must use the port number after the onion address or you can't connect.
 
@@ -167,6 +160,6 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 }
