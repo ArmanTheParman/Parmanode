@@ -1,5 +1,6 @@
 function uninstall_tor_webserver {
-    set_terminal ; echo -e "
+while true ; do
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  Uninstall Tor Server 
@@ -8,14 +9,17 @@ $orange
 
 ########################################################################################
 "
-choose "x" 
-read choice
-set_terminal
-
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+n) return 1 ;; y) break ;;
+rem)
+rem="true"
+break
+;;
+esac
+done
 
 if ! grep -q "tor-server" $ic ; then set_terminal
 echo "Tor-server is not installed. Aborting uninstall." 
@@ -40,9 +44,9 @@ echo "
 ########################################################################################
 "
 read choice
+jump $choice 
 if [[ $choice == "yolo" ]] ; then
     sudo rm -rf /tor-server
 fi
-
 return 0
 }

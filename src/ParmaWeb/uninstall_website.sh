@@ -16,8 +16,8 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" 
-read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 website)
@@ -83,7 +83,9 @@ $green
                              a)          Abort!
 $orange
 ########################################################################################
-" ; choose "xpmq" ; read choice ; set_terminal
+" 
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; a|A) return 1 ;; m|M) back2main ;;
 delete) 
 sudo rm -rf /var/www/$website >/dev/null 2>&1

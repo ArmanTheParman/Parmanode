@@ -76,7 +76,6 @@ $orange
 ########################################################################################    
 "
 choose xpmq ; read "word$n" ; set_terminal
-jump $choice || { invalid ; continue ; } ; set_terminal
 eval thisword="\$word$n"
 case $thisword in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -104,7 +103,6 @@ set_terminal ; echo -e "
 ########################################################################################    
 "
 choose xpmq ; read "word12" ; set_terminal
-jump $choice || { invalid ; continue ; } ; set_terminal
 case $word12 in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)

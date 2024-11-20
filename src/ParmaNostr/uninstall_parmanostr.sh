@@ -17,17 +17,11 @@ $orange
 
 ########################################################################################
 "
-choose xpmq 
-read choice
-set_terminal
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-n)
-return 1
-;;
-y)
-break
-;;
+n) return 1 ;; y) break ;;
 rem)
 rem="true"
 break
