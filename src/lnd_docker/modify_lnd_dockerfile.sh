@@ -35,7 +35,7 @@ $cyan                        a)$orange Abort, I'm scared.
 
 ########################################################################################
 "
-choose xmpq ; read choice ; set_terminal
+choose xpmq ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a|A|5) return 1 ;;

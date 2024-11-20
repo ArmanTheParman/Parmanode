@@ -7,7 +7,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 $pink
@@ -35,7 +35,7 @@ $orange& $cyan
     In case the file name changes type up to php7 and then hit <tab> to autocomplete.
 
 ########################################################################################
-" ; enter_continue
+" ; enter_continue ; jump $enter_cont
 
 return 0
 }

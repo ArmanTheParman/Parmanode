@@ -9,16 +9,17 @@ set_terminal ; echo -e "
     which will reset the configuration file to the default (no domain, listening on
     port 80), and then you can add your domain again, and add certificates again later
     if you want.
-
-                                    y)     Yes
-
-                                    n)     No
+$cyan
+                                    y)$orange     Yes
+$cyan
+                                    n)$orange     No
 
 ########################################################################################
 "
-read choice ; set_terminal
+choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P|n|N|NO|No) return 1 ;; 
+q|Q) exit ;; p|P|n|N|NO|No) return 1 ;; m|M) back2main ;;
 y)
 break
 ;;

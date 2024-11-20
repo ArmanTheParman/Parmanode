@@ -68,9 +68,9 @@ choose "xpmq" ; read choice
 else
 export donotask="true" && parmanode_refresh
 fi
-
-case $choice in q|Q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
-M|m) return 0 ;;
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $pn

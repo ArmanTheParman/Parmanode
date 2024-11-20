@@ -17,13 +17,13 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=rf
 fi
 
 case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;;
-a|A) return 1 ;;
+q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;; a|A) return 1 ;;
 rf)
 cd $HOME
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp

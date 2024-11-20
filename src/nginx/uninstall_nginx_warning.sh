@@ -18,6 +18,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a) return 1 ;; removenginx) return 0 ;;
 esac

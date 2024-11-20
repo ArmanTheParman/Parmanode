@@ -40,9 +40,8 @@ $orange
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
+
 rn|RN|Rn) sudo systemctl restart nginx.service  ;;
 
 s|S) sudo systemctl status nginx.service ;;
@@ -62,7 +61,7 @@ $(sudo ls /tor-server)
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 
 

@@ -52,6 +52,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "eq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;;
 esac
@@ -68,14 +69,15 @@ set_terminal ; echo -e "
 
     You have choices... $cyan
 
-        1)    Continue and let the merge happen 
-
-        2)    Abort, so you can delete and recreate a blank database first, 
+        1)$orange    Continue and let the merge happen 
+$cyan
+        2)$orange    Abort, so you can delete and recreate a blank database first, 
               then you'll come back.
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|2) return 1 ;; 1) break ;; m|M) back2main ;; *) invalid ;;
 esac
@@ -91,7 +93,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi
 #import database...

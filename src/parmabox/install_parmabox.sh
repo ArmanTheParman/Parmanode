@@ -33,10 +33,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read choice ; set_terminal
-else
-choice=${1}
-fi
+read choice ; set_terminal ; else choice=${1} ; fi
 
 case $choice in 
 boring|Boring) local pbox=boring ;;
@@ -89,7 +86,7 @@ if [[ $1 != silent ]] ; then
     file there, it will be accessible in both locations. 
 
     The root user is available to use, and also the user parman, with the password  $cyan
-    \"parmanode\"$orange.
+    'parmanode'$orange.
 
     The parmanode software is also available inside the container at:
 
@@ -102,7 +99,7 @@ if [[ $1 != silent ]] ; then
 
 ########################################################################################
 "
-    enter_continue
+    enter_continue ; jump $enter_cont
     fi
 fi
 }

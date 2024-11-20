@@ -8,15 +8,15 @@ $cyan
 $orange 
     So you've decided to host your own webiste. Noice. Here's what you need to know...
     
-    Parmanode has installed Wordpress.org for you. Amazing huh? It's a 'what-you-see-
+    Parmanode has installed$pink Wordpress.org$orange for you. Amazing huh? It's a 'what-you-see-
     is-what-you-get' website editor. You use it to create pages for your website from
     within a browser, and the data is stored in a MariaDB database (MariaDB is a 
     MySQL open source fork).
 
     You'll create your account the first time you navigate to your computer's IP:
-    
+$cyan    
         http://$domain_name/myphpadmin
-    
+$orange   
     Then you can start building your website using the Wordpress tools.
 
     The website won't be available to the world automatically though. There's more to 
@@ -31,7 +31,7 @@ $orange
 
 ########################################################################################
 "
-enter_cotinue
+enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -44,8 +44,8 @@ set_terminal ; echo -e "
     The traffic from the internet goes to that IP and to your router (you can think
     of it as your router's IP). The router manages the internal IP addresses of all
     the connected devices on your home network. It gives addesses like
-
-    192.168.0.100 or 192.168.0.174
+$cyan
+    192.168.0.100$orange or$cyan 192.168.0.174$orange
 
     to any connected device. The first part of the number is consistent, and the last
     part is between 0 and 255. Actually, the router's internal IP address usually ends
@@ -53,8 +53,8 @@ set_terminal ; echo -e "
 
     For your computer, when it surfs the internet, data goes from the computer, to
     the router, then to some ISP exchange, then various hops across the globe to
-    the desination IP. Eg, for Google, the IP is 8.8.8.8.
-
+    the desination IP. Eg, for Google, the IP is$cyan 8.8.8.8.
+$orange
     Your network's IP address is $external_IP
 
     The rest of the network can see it, but they can not get inside; your router
@@ -63,7 +63,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_coninue
+enter_coninue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -90,10 +90,10 @@ set_terminal ; echo -e "
     instructions) to the appropriate machine on your home network. Once the request
     reaches your server's computer, the computer (well Nginx software actually) 
     which is listening specifically for port 80 traffic will serve information
-    from the appropriate directory (/var/www/website/).
+    from the appropriate directory ($cyan/var/www/website/$orange).
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }

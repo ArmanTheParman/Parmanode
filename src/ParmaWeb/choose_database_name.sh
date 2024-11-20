@@ -24,7 +24,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read choice ; set_terminal 
+choose x ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 d) export website="website" ; break ;;

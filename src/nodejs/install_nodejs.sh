@@ -55,6 +55,7 @@ set_terminal ; echo -e "
 ########################################################################################0
 "
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in a|A) return 1 ;; esac
 
 sudo apt-get upgrade -y

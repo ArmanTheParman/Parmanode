@@ -17,7 +17,7 @@ if docker ps -a | grep -q ParmanodL ; then docker stop ParmanodL >/dev/null 2>&1
 
 
 while true ; do
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
 
     Do you want the zip and image files deleted off your computer? - They're big files
@@ -27,9 +27,10 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-choose "x" ; read choice 
-
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
+q|Q) exit ;; m|M) back2main ;;
 y|Y|YES|yes|Yes) 
    rm $HOME/ParmanodL/*
    return 0
@@ -42,8 +43,5 @@ n|N|No|NO|no)
    ;;
 esac
 done
-
-
 return 0
-
 }

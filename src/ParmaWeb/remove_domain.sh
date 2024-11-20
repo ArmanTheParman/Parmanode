@@ -8,16 +8,17 @@ set_terminal ; echo -e "
     You currently have a domain associated with your server, $domain_name
 
     Do you want to remove it?
-
-                                    y)     Yes
-
-                                    n)     No
+$cyan
+                                    y)$orange     Yes
+$cyan
+                                    n)$orange     No
 
 ########################################################################################
 "
-read choice ; set_terminal
+choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; n|N|no|NO) break ;;
+q|Q) exit ;; p|P) return 1 ;; n|N|no|NO) break ;; m|M) back2main ;;
 y)
 sudo rm /etc/nginx/conf.d/$domain_name.conf >/dev/null 2>&1
 sudo mv /etc/nginx/conf.d/website.conf.backup /etc/nginx/conf.d/website.conf >/dev/null 2>&1

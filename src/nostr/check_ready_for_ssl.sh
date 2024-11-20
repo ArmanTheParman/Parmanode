@@ -25,6 +25,7 @@ $cyan
 ########################################################################################
 "
 choose xmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q) exit ;; m|M) back2main ;;
 skip)

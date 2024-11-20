@@ -14,7 +14,7 @@ echo -e "
 
 ########################################################################################
 " 
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi
 fi
@@ -31,7 +31,7 @@ echo -e "
 
 ########################################################################################
 " 
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi
 fi

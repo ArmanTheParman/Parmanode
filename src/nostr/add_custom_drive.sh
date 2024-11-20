@@ -16,6 +16,7 @@ $orange
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "")
@@ -40,6 +41,7 @@ $green             /media/$USER/my_drive/nostr_data
 ########################################################################################
 "
 choose xpmq ; read drive_nostr_custom_data ; set_terminal
+jump $drive_nostr_custom_data|| { invalid ; continue ; } ; set_terminal
 case $drive_nostr_custom_data in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)
@@ -54,7 +56,9 @@ You entered: $green $drive_nostr_custom_data $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; a) break ;; x) continue ;; esac
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; a) break ;; x) continue ;; esac
 esac
 done
 

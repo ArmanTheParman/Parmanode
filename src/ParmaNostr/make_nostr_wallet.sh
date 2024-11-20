@@ -31,6 +31,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 unset bip39
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;

@@ -25,6 +25,7 @@ $cyan                 r)$orange           ${red}Remove my domain$orange from Par
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 n|N|No|no) 
 export domain="$IP"
@@ -74,8 +75,8 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq"
-read domain ; set_terminal
+choose "xpmq" ; read domain ; set_terminal
+jump $domain || { invalid ; continue ; } ; set_terminal
 case $domain in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 "") 
 continue
@@ -110,6 +111,7 @@ set_terminal ; echo -e "
 ########################################################################################
 " 
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|NO|No|no)
 export www="false"
@@ -146,5 +148,4 @@ if [[ -n $domain_name && -e /etc/nginx/conf.d/$website.conf ]] ; then
     sudo gsed -i "/#put server___name/c\\$server_name" $file
     sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
 fi
-debug "end of $website domain function"
 }

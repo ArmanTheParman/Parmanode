@@ -9,6 +9,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
+enter_continue ;  ; jump $enter_cont
 return 1
 fi
 
@@ -39,7 +40,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 fi #end if fileNum == 0
 
@@ -68,8 +69,9 @@ set_terminal ; echo -e "
 ########################################################################################
 " 
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop nginx
@@ -161,7 +163,7 @@ $pink
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 ;;
 4) 

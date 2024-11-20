@@ -36,12 +36,12 @@ $cyan
     or there, and occasionally serious new features. With autoupdates, Parmanode will 
     silently update itself at 3:30am and takes only a few seconds.
 
-
-                       y)      I thought you'd never ask.
-
-                       n)      Hands off, I like this version forever.
-
-                       nooo)   Go away and never ask again.
+$cyan
+                       y)$orange      I thought you'd never ask.
+$cyan
+                       n)$orange      Hands off, I like this version forever.
+$cyan
+                       nooo)$orange   Go away and never ask again.
   $bright_yellow  
 
     It's important to realise that updates to parmanode DO NOT change any programs
@@ -51,11 +51,10 @@ $cyan
 
 ########################################################################################
 "
-
 choose "xpmq" ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit ;; p|P) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
 parmanode_conf_add "autoupdate_version2=true" #crontab edit was faulty first time around.
@@ -107,22 +106,21 @@ set_terminal ; echo -e "
                               Parmanode Autoupdates
 $orange
       Parmanode autoupdates are currently : $pink $p $orange
-                 
-                                (on)     Turn on
-
-                                (off)    Turn off
+$green                 
+                                (on)$orange     Turn on
+$cyan
+                                (off)$orange    Turn off
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q) exit ;; 
-p|P) return 0 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 0 ;;
 
-on|On|ON) 
+on|On|ON)
 autoupdate "on" ; return 0 ;;
-off|OFF|Off) 
+off|OFF|Off)
 autoupdate "off" ; return 0 ;;
 *) invalid ;;
 esac

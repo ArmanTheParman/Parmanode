@@ -18,17 +18,18 @@ set_terminal ; echo -e "
 ########################################################################################
 $cyan
     $file$orange already exists. What is to be done?
-
-        1)    Delete the data and start over
-
-        2)    Use the data
-
-        3)    Back up the data to ${file}_bakup_$(date +'%Y-%m-%d')
+$cyan
+        1)$orange    Delete the data and start over
+$cyan
+        2)$orange    Use the data
+$cyan
+        3)$orange    Back up the data to ${file}_bakup_$(date +'%Y-%m-%d')
               and start over
 
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)

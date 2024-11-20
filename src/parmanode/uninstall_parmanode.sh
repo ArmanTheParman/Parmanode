@@ -21,15 +21,11 @@ $green
 $orange
 ########################################################################################
 "
-choose "epq"
+choose "epmq"
+jump $choice || { invalid ; continue ; } ; set_terminal
 read choice
 case $choice in
-
-    q|QUIT|Q|quit)
-    exit 0 ;;
-
-    p|P|n|N|a|A)
-    return 1 ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
     y|yes|YES|Y)
     break
@@ -125,9 +121,10 @@ $red
 $orange
 ########################################################################################
 "
-choose "epq" ; read choice ; set_terminal
+choose "epmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
 esac
 done
 unset choice

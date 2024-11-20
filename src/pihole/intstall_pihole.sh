@@ -16,7 +16,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -32,15 +32,15 @@ $orange
     A Domain Name Systerm (DNS) Server is a server that translates domain names to the
     correct IP address (names to numbers). 
     
-    Eg, when you navigate to google.com, you're actually going to the IP address 
-    http://8.8.8.8, which is converted for you in the background by a DNS server.
+    Eg, when you navigate to google.com, you're actually going to the IP address  $cyan
+    http://8.8.8.8$orange, which is converted for you in the background by a DNS server.
 
     PiHole needs to take on this function, and it may require some fiddling, but $pink
     DON'T PANIC$orange, I'll help you...
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 # Install Docker
 if ! which docker >/dev/null 2>&1 ; then install_docker || return 1 ; fi
@@ -69,7 +69,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi #end if port 80 in use
 fi #end if Linux
@@ -94,7 +94,7 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi #end if port 80 in use, Mac
 fi #end if Mac
@@ -134,6 +134,6 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }

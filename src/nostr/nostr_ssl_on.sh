@@ -16,6 +16,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "x" ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 "free ross" | "Free Ross" | "free Ross" | "free Ross" | "freeross")
 break

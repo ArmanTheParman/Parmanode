@@ -23,6 +23,7 @@ $orange
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
@@ -48,6 +49,7 @@ $orange
 ########################################################################################    
 "
 choose xpmq ; read word1 ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $word1 in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)
@@ -75,6 +77,7 @@ $orange
 ########################################################################################    
 "
 choose xpmq ; read "word$n" ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 eval thisword="\$word$n"
 case $thisword in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -102,6 +105,7 @@ set_terminal ; echo -e "
 ########################################################################################    
 "
 choose xpmq ; read "word12" ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $word12 in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)
@@ -134,5 +138,5 @@ $orange
 ########################################################################################
 "
 success="done"
-enter_continue ; set_terminal ; return 0
+enter_continue  ; jump $enter_cont ; set_terminal ; return 0
 }

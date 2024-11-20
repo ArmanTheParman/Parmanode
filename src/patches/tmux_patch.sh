@@ -16,15 +16,16 @@ set_terminal ; echo -e "
 
     Can Parmanode install this now real quick?
 $green
-                    y)       Yeah ok, just this one time
+                    y)$orange       Yeah ok, just this one time
 $red
-                    n)       Nah, go away
-
-                    nooo)    No, and don't ask again
+                    n)$orange       Nah, go away
+$red
+                    nooo)$orange    No, and don't ask again
 $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=y
 fi

@@ -144,7 +144,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 
 set_terminal_wider
@@ -202,8 +202,9 @@ $cyan          e2)$orange         only use this to see https error output
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 http)
 curl -i -N -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: $location" -H "Origin: http://$location" -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" -H "Sec-WebSocket-Version: 13" http://$location &
 curl_PID=$!
