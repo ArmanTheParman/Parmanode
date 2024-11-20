@@ -25,9 +25,7 @@ $cyan
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 start|Start|START|S|s)
 start_lnbits
 return 0 ;;

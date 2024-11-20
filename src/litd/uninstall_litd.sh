@@ -12,20 +12,18 @@ $blinkoff$orange
 
     Or you can delete that directory and lose everything.
 $red
-                  1)    Uninstall litd and delete ~/.lit directory 
+                  1)$orange    Uninstall litd and delete ~/.lit directory 
 $cyan
-                  2)    Uninstall litd and backup ~/.lit directory to ~/.lit_backup
+                  2)$orange    Uninstall litd and backup ~/.lit directory to ~/.lit_backup
 $green
-                  3)    Uninstall and leave ~/.lit as is (can be automatically used 
-                                                          when reinstalling litd) $orange
-                  a)    Abort    
+                  3)$orange    Uninstall and leave ~/.lit as is (can be automatically used 
+                                                          when reinstalling litd)
+$red                  a)$orange    Abort    
 
 ########################################################################################
 "
-choose "xpmq" 
-read choice
-set_terminal
-
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;; 
 *)
