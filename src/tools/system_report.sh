@@ -6,13 +6,14 @@ clear ; echo "
     Parmanode will generate a System Report File automatically. It will
     then save the file to your desktop, and you can then email it to me for help.
 
-    Hit <enter> to continue
+    Hit$cyan <enter>$orange to continue
 
-    'a' and <enter> to abort
+$red    'a'$orange and$cyan <enter>$orange to abort
 
 ########################################################################################
 "
 read -s choice ; clear
+jump $choice 
 case $choice in
 a|q|Q) 
 exit 

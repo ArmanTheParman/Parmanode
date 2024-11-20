@@ -28,8 +28,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -40,23 +40,23 @@ echo -e "
 $cyan
     There are a few things to do to manually 'import' the drive to Parmanode...
 $orange
-                        1)  Format drive to ext4
-                        2)  Fstab entry
-                        3)  Correct mount point
-                        4)  Mount point permissions
-                        5)  Mount the drive
-                        6)  UUID in parmanode.conf (optional)
-                        7)  Make .bitcoin directory
-                        8)  symlink to ext drive
-                        9)  drive setting in parmanode.conf 
-                        10) make bitcoin.conf 
+$cyan                        1)$orange  Format drive to ext4
+$cyan                        2)$orange  Fstab entry
+$cyan                        3)$orange  Correct mount point
+$cyan                        4)$orange  Mount point permissions
+$cyan                        5)$orange  Mount the drive
+$cyan                        6)$orange  UUID in parmanode.conf (optional)
+$cyan                        7)$orange  Make .bitcoin directory
+$cyan                        8)$orange  symlink to ext drive
+$cyan                        9)$orange  drive setting in parmanode.conf 
+$cyan                        10)$orange make bitcoin.conf 
    
    I will go through each in detail and in order...
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -88,8 +88,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -120,8 +120,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -136,8 +136,8 @@ echo -e "
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -160,8 +160,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -174,8 +174,8 @@ echo -e "
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -208,8 +208,8 @@ $orange
 
 ##############################################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -230,8 +230,8 @@ $green
 $orange
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -258,8 +258,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -278,8 +278,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -309,8 +309,8 @@ $green
 $orange
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -333,8 +333,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac
@@ -373,8 +373,8 @@ $orange
 
 ########################################################################################
 "
-choose "emq"
-read choice
+choose "emq" ; read choice
+jump $choice 
 case $choice in
 q|Q) exit 0 ;; m|M) back2main ;; 
 esac

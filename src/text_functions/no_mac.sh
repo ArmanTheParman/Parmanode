@@ -7,7 +7,7 @@ set_terminal ; echo "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1 
 fi
 }

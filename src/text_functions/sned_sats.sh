@@ -36,7 +36,7 @@ $bright_blue
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal
 return 0
 }

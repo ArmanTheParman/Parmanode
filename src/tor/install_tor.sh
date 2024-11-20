@@ -4,7 +4,7 @@ if which tor >/dev/null 2>&1 ; then installed_config_add "tor-end" ; export tor_
 
 if [[ $1 != silent ]] ; then
 
-    set_terminal ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                    Install Tor
@@ -14,11 +14,10 @@ $orange
 
 ########################################################################################    
 "
-    choose "epq" ; read choice
-
-    case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
+choose "epq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in Q|q|Quit|QUIT) exit 0 ;; p|P) return 1 ;; *) true ;; esac
 fi
-
 set_terminal
 
 if [[ $OS == "Linux" ]] ; then  sudo apt-get install tor -y ; fi

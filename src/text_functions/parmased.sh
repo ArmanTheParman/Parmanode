@@ -27,12 +27,13 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;;  p|P|n) return 1 ;; m|M) back2main ;;
 y)
 echo ""
 echo "OK, will only be using first string instance"
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 esac
 fi

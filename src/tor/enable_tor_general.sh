@@ -4,13 +4,14 @@ if [[ $OS == "Mac" ]] ; then enable_tor_general_mac ; return 0 ; fi
 if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
 
 if [[ ! -f /etc/tor/torrc ]] 2>$dn ; then
-set_terminal ; echo "
+set_terminal ; echo -e "
 ########################################################################################
-    /etc/tor/torrc file does not exist. You may have a non-standard Tor installation.
+$cyan    /etc/tor/torrc $orangefile does not exist. You may have a non-standard Tor installation.
     Parmanode won't be able to automate this process for you. Sorry! Aborting.
 ########################################################################################
 "
-enter_continue ; return 1 ;
+enter_continue  ; jump $enter_cont
+return 1 ;
 fi
 
 please_wait

@@ -29,6 +29,7 @@ set_terminal echo -e "
 ########################################################################################
 "
 choose "epq" "try again" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; *) continue ;; 
 esac 

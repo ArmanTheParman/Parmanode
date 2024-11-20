@@ -17,7 +17,8 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1) break ;;
@@ -44,8 +45,8 @@ $green            OR$orange         Just type in any IP and hit$cyan<enter>$oran
 
 ########################################################################################
 "
-choose xpmq
-read curlIP
+choose xpmq ; read curlIP
+jump $curlIP  
 set_terminal
 case $curlIP in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
@@ -76,6 +77,7 @@ $cyan        Please enter the gRPC port ($green<enter>$cyan alone for 10009 defa
 ########################################################################################
 "
 read gRPCport 
+jump $gRPCport 
 set_terminal
 case $gRPCport in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
@@ -94,6 +96,7 @@ $cyan
 ########################################################################################
 "
 read macaroonpath 
+jump $macaroonpath 
 set_terminal
 case $macaroonpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
@@ -112,6 +115,7 @@ $cyan    <enter>$orange alone for default (\$HOME/.lnd/tls.cert)
 ########################################################################################
 "
 read tlscertpath 
+jump $tlscertpath 
 set_terminal
 case $tlscertpath in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;

@@ -16,8 +16,8 @@ $orange
 
 ########################################################################################
 "
-choose xpmq
-read sddrive ; set_terminal
+choose xpmq ; read sddrive ; set_terminal
+jump $sddrive || { invalid ; continue ; } ; set_terminal
 case $sddrive in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
@@ -47,8 +47,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq
-read value
+choose xpmq ; read value
+jump $value || { invalid ; continue ; } ; set_terminal
 case $value in
 q|Q) exit ;;  m|M) back2main ;; p|P|"") return 0 ;;
 esac

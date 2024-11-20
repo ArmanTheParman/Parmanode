@@ -36,12 +36,10 @@ $green                        (rs)$orange            Restart SSH Service
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) menu_use ;; 
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
 rt|RT|Rt) sudo systemctl restart tor.service ;;
 rs) sudo systemctl restart ssh ;;
 *)

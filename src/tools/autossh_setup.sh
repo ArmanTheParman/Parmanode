@@ -9,6 +9,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -25,7 +26,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -49,7 +51,8 @@ $orange
 
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 while true ; do
@@ -65,7 +68,8 @@ command=\"true\",no-pty,no-agent-forwarding,no-X11-forwarding,no-user-rc,permito
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -87,7 +91,8 @@ $cyan
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -127,7 +132,8 @@ $orange
 # M 0 - disables autossh monitoring port
 # -N Do not execute remote commands
 # -i path_to_private key; if not using default
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -141,7 +147,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 
@@ -155,7 +162,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; *) break ;; esac
 done
 }

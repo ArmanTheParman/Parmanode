@@ -10,7 +10,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;; n|N) return 1 ;;
 y) break;;
@@ -42,7 +43,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 sudo ./install-driver.sh 
 

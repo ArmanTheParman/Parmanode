@@ -19,7 +19,8 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;; n|N) return 0 ;;
 y|Y) break ;;
@@ -34,13 +35,14 @@ echo -e "
 
     Delete Parmanode log files (mainly useful for sending error reports to Parman)
 $green
-    y)        yes
-$red
-    n)        no
+                                y)        yes
+                            $red
+                                n)        no
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -61,13 +63,14 @@ echo -e "
     Delete unused Docker containers/images etc? $bright_blue (This can be very slow,
     potentially several minutes).$orange
 $green
-    y)        yes
-$red
-    n)        no
+                                    y)        yes
+                                $red
+                                    n)        no
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -95,13 +98,14 @@ echo -e "
 
     Empty system recycle bin?
 $green
-    y)        yes
-$red
-    n)        no
+                                    y)        yes
+                                $red
+                                    n)        no
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -121,13 +125,14 @@ echo -e "
 
     Delete everything in the $tmp directory?
 $green
-    y)        yes
-$red
-    n)        no
+                                    y)        yes
+                                $red
+                                    n)        no
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -147,13 +152,14 @@ echo -e "
 
     Clear the APT package manager cache? (recommended)
 $green
-    y)        yes
-$red
-    n)        no
+                                y)        yes
+                            $red
+                                n)        no
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -179,13 +185,14 @@ echo -e "
    Install a text (ncdu) and graphical program (baobab) to help you search for large 
    unneccesary files?
 $green
-    y)        yes
-$red
-    n)        no
+                                y)        yes
+                            $red
+                                n)        no
 $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
 y|Y)
@@ -219,7 +226,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-read choice ; set_terminal 
+choose xpmq ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;
 y|yes)

@@ -99,6 +99,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|x) return 1 ;; "") return 0 ;; *) invalid ;; esac
 done

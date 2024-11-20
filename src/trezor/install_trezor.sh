@@ -91,6 +91,7 @@ $orange
 ########################################################################################                
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; d|D) return 0 ;; n|N) return 1 ;; *) invalid ;; esac
 done

@@ -16,14 +16,14 @@ $green
 $orange
     To see some tips to do SOME of it yourself, type$cyan more$orange then $cyan<enter>$orange
 
-    To  run the drive cleanup tool now, type$cyan clean$orange then$cyan <enter>$orange
+    To run the drive cleanup tool now, type$cyan clean$orange then$cyan <enter>$orange
 
     Otherwise, just hit$cyan<enter>$orange to continue.
 
 ########################################################################################
 "
 read choice
-set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|"") return 0 ;;
 more) break ;;
@@ -59,5 +59,5 @@ $cyan
  
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }
