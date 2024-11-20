@@ -36,12 +36,15 @@ $green
 $orange
 ########################################################################################
 "
-read choice
-if [[ $choice == c || $choice == C ]] ; then
+choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+c|C)
 channel_info
-else
-return 0
-fi
+;;
+*) return 0 ;;
+esac
 }
 
 function channel_info {
@@ -68,6 +71,6 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }
 

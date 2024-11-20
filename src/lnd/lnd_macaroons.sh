@@ -50,7 +50,7 @@ $blinkon                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $blinkoff $oran
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 if [[ $enter_cont == "QR" || $enter_cont == "qr" ]] ; then
 install_qrencode
@@ -78,6 +78,7 @@ $orange
 ########################################################################################
 "
 choose xqmp ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 mm)
@@ -91,7 +92,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 c)
 set_terminal_high ; echo -e "
@@ -104,7 +105,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 b)
 set_terminal_custom 60 100; echo -e "
@@ -117,7 +118,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 "")
 return 0

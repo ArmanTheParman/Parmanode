@@ -34,10 +34,10 @@ $orange
 
 ########################################################################################    
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit 0 ;; p|P) return 1 ;;
+m|M) back2main ;; q|Q) exit 0 ;; p|P) return 1 ;;
 1) parmanode_conf_remove "lnd_port" ; parmanode_conf_add "lnd_port=9735" ; export lnd_port=9735 ; break ;;
 2) parmanode_conf_remove "lnd_port" ; parmanode_conf_add "lnd_port=9736" ; export lnd_port=9736 ; break ;;
 3) parmanode_conf_remove "lnd_port" ; parmanode_conf_add "lnd_port=9737" ; export lnd_port=9737 ; break ;;
@@ -46,5 +46,4 @@ q|Q) exit 0 ;; p|P) return 1 ;;
 *) invalid
 esac
 done
-debug "after lnd port"
 }

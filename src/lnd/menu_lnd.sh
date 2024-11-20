@@ -21,7 +21,7 @@ $cyan
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 rrr) 
@@ -211,8 +211,7 @@ $red $blinkon                                                      r to refresh 
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
@@ -307,7 +306,7 @@ $green
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 nano $open_conf
 please_wait
 unset menu_lnd_lit_conf rL open_conf

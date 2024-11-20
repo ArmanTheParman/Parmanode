@@ -5,7 +5,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
                               Docker is not running. $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi
 docker start lnd 
@@ -31,7 +31,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
                               Docker is not running. $orange
 ########################################################################################
 "
-if [[ $1 != silent ]] ; then enter_continue ; return 1 ; esle true ; fi
+if [[ $1 != silent ]] ; then enter_continue ; jump $enter_cont ; return 1 ; esle true ; fi
 fi
 
 if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
@@ -39,9 +39,8 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
                         The LND container is not running. $orange
 ########################################################################################
 "
-if [[ $1 != silent ]] ; then enter_continue ; return 1 ; esle true ; fi
+if [[ $1 != silent ]] ; then enter_continue  ; jump $enter_cont; return 1 ; esle true ; fi
 fi 
 
 docker stop lnd
-#docker exec -d lnd /bin/bash -c "lnd /usr/local/bin/lnd stop >> /home/parman/parmanode/lnd/lnd.log &"
 }

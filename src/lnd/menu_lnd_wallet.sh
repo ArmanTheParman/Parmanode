@@ -31,10 +31,7 @@ $orange
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 pw|Pw|PW|password|PASSWORD|Password)
 lnd_password_change
@@ -66,6 +63,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|x) return 1 ;; m|M) back2main ;;
 "") break ;;
@@ -160,7 +158,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 sudo rm $wbfile $cbfile >/dev/null 2>&1
 return 0
 }
@@ -222,7 +220,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }
 
 function connect_mobile_wallet {
@@ -268,7 +266,7 @@ $red    more... $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 if [[ $OS == Linux ]] ; then
 onion=$(cat /var/lib/tor/lnd-service/hostname)
@@ -304,5 +302,5 @@ $green
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

@@ -36,6 +36,7 @@ $cyan                        a)$orange Abort, I'm scared.
 ########################################################################################
 "
 choose xmpq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a|A|5) return 1 ;;
 1) export chip_4lnd=amd64 ; break ;;

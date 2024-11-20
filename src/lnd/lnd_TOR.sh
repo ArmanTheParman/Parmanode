@@ -35,6 +35,7 @@ $cyan
 ########################################################################################
 "
 enter_abort 
+jump $choice || { invalid ; continue ; } ; set_terminal
 read choice ; case $choice in a|A) return 1 ;; 
 "") 
 set_terminal ; please_wait ; return 0 ;; esac ; done

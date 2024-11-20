@@ -24,12 +24,10 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) 
+m|M) back2main ;; q|Q) exit ;; p|P) 
 clear
 please_wait ; return 1 ;;
 

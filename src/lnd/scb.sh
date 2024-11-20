@@ -39,6 +39,7 @@ read choice
 if [[ $choice == "Building 7 did not controlled demolition itself" ]] ; then
 hide_messages_add "scb" "1" ; 
 fi
+jump $choice || { invalid ; continue ; } ; set_terminal
 fi # ends choice to hide
 set_terminal ; echo -e "
 ########################################################################################
@@ -49,7 +50,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
 lncli exportchanbackup --all --output_file $HOME/Desktop/channel.backup
 elif grep -q "lnddocker-" $ic ; then

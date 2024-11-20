@@ -7,7 +7,7 @@ if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
                               Docker is not running. $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 fi
 
@@ -16,7 +16,7 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
                         The LND container is not running. $orange
 ########################################################################################
 "
-if [[ $1 != silent ]] ; then enter_continue ; return 1 ; esle true ; fi
+if [[ $1 != silent ]] ; then enter_continue ; jump $enter_cont ; return 1 ; esle true ; fi
 fi 
 
 if docker exec -it lnd /bin/bash -c "lncli walletbalance" >/dev/null 2>&1 ; then

@@ -61,13 +61,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 " 
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
-m|M) back2main ;;
-q|Q) exit ;;
-n|N|NO|No|no|p|P) return 0 ;;
-y|Y|Yes|YES|yes)
+m|M) back2main ;; q|Q) exit ;; n|N|NO|No|no|p|P) return 0 ;; y|Y|Yes|YES|yes)
 uninstall_rtl
 install_rtl
 return 0

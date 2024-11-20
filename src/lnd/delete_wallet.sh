@@ -1,6 +1,6 @@
 function delete_wallet_lnd {
 while true ; do
-set_terminal "pink" ; echo -e "
+set_terminal ; echo -e " $pink
 ########################################################################################
 $cyan
                                 Delete LND Wallet?
@@ -20,16 +20,14 @@ $orange
                        - the channel.backup file (not any that you saved to desktop)
                        - the macaroons for the wallet will be deleted
 
-                 (\"macarooni whaty what?\" - Don't worry about it)
-
-########################################################################################
+                 ('macarooni whaty what?' - Don't worry about it)
+$pink
+########################################################################################$orange
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-Q|q|Quit|QUIT|quit) 
-exit 0 ;;
-p|P) return 1 ;;
+m|M) back2main ;; Q|q) exit 0 ;; p|P) return 1 ;;
 delete|DELETE|Delete) 
 break ;;
 *) invalid ;;
