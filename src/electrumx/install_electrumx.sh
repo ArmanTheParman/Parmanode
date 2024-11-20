@@ -10,7 +10,7 @@ set_terminal ; echo -e "
     Aborting.
 ########################################################################################
 "
-enter_continue ; return 1
+enter_continue ; jump $enter_cont ; return 1
 fi
 
 preamble electrumx
@@ -48,19 +48,16 @@ echo -e "
     conserve system resources for the compiling procedure. Shall Parmanode stop it 
     for you? 
 $green
-               y)       Stops Bitcoin Core for now
-$orange
-               n)       Leave Bitcoin Core running
+               y)$orange       Stops Bitcoin Core for now
+$red
+               n)$orange       Leave Bitcoin Core running
 
 ########################################################################################  
 "
-choose "xpmq"
-read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-n|N) break ;;
-m|M) back2main ;; 
+q|Q) exit ;; p|P) return 1 ;; n|N) break ;; m|M) back2main ;; 
 y|Y) stop_bitcoin ; break ;;
 *) invalid ;;
 esac

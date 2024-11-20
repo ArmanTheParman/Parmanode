@@ -1,5 +1,4 @@
 function make_electrumx_service {
-
 cat << EOF | sudo tee /etc/systemd/system/electrumx.service >/dev/null 2>&1
 [Unit]
 Description=Electrumx
@@ -17,7 +16,6 @@ TimeoutStopSec=30min
 WantedBy=multi-user.target
 EOF
 
-sudo systemctl daemon-reload
-sudo systemctl enable electrumx.service
-
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl enable electrumx.service >$dn 2>&1
 }

@@ -183,16 +183,13 @@ fi
 echo -e "
 ########################################################################################
 "
-
-choose "xpmq"
-echo -e "$red$blinkon
- Hit 'r' to refresh menu $blinkoff
- $orange"
-read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-
+q|Q) exit ;; m|M) back2main ;;
+p|P)
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 r) 
 please_wait
 refresh="true"
@@ -273,7 +270,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 if [[ $electrumxis == docker ]] ; then 
     set_terminal_wider
@@ -309,14 +306,14 @@ ec|EC|Ec|eC)
 echo -e "
 ########################################################################################
     
-        This will run Nano text editor to edit electrumx.conf. See the controls
+        This will run Nano text editor to edit$cyan electrumx.conf$orange. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
         Any changes will only be applied once you restart Electrum X.
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 nano $hp/electrumx/electrumx.conf
 ;;
 ecv|ECV)
@@ -328,13 +325,6 @@ set_rpc_authentication
 continue
 ;;
 
-p|P)
-if [[ $1 == overview ]] ; then return 0 ; fi
-menu_use ;; 
-
-q|Q|Quit|QUIT)
-exit 0
-;;
 
 tor|TOR|Tor)
 if [[ $OS == Mac ]] ; then no_mac ; continue ; fi

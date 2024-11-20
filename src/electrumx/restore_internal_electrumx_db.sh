@@ -22,12 +22,10 @@ $pink       d)$orange  Nah, and get rid of it
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 n|N|nah) return 0 ;;
 d|D|delete) 
 please_wait 
@@ -55,6 +53,7 @@ $green
 $orange
 ########################################################################################    
 " ; choose "xpmq" ; read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M|a) back2main ;;
 b)

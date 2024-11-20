@@ -21,11 +21,10 @@ echo -e "
     
     The reason you might want to specifically choose Electrum X over the others,
     as far as I know, is that this one is the most powerful choice, and the one that
-    "all" the public servers run.
+    'all' the public servers run.
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
-    
 }

@@ -30,9 +30,9 @@ $white
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-
 m|M) back2main ;;
 
 u|U)
@@ -82,9 +82,10 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 u|U)
 return 0 
 ;;
@@ -94,14 +95,6 @@ sudo rm -rf $original
 sudo mkdir $original
 return 0 
 ;;
-
-q|Q) quit 0 
-;; 
-
-p|P) 
-return 1 
-;;
-
 *) 
 invalid 
 ;;
@@ -121,20 +114,21 @@ set_terminal ; echo -e "
     external drive. 
     
     What do you want to do?
-
-              o)         Use the original (Electrumx_db)
- 
-              b)         Use the backup, electrumx_db_backup , and delete the original
-
-              db)        Delete both and start fresh
-
-              s)         Use electrumx_db_backup, but also back up the original 
+$cyan
+              o)$orange         Use the original (Electrumx_db)
+$cyan 
+              b)$orange         Use the backup, electrumx_db_backup , and delete the original
+$cyan
+              db)$orange        Delete both and start fresh
+$cyan
+              s)$orange         Use electrumx_db_backup, but also back up the original 
 
 ########################################################################################
 "
-choose "xpmq" ; read choice
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 o|O|original)
 return 0 
 ;;
@@ -152,20 +146,11 @@ sudo rm -rf $backup
 sudo mkdir $original 
 ;;
 
-q|Q) 
-exit 
-;; 
-
 s|S)
 sudo mv $original $tempdir
 sudo mv $backup $original
 sudo mv $tempdir $backup
 ;;
-
-p|P) 
-return 1 
-;;
-
 *) 
 invalid 
 ;;
