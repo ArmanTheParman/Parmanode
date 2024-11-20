@@ -21,7 +21,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 #ensure passwords match
 while true ; do
@@ -37,13 +37,18 @@ $orange
     This instance of Parmanode has no access to the other computer, so it's up to you
     to set it up there and make a note of it to use here. Parmanode will help you 
     put the username and password in the config.toml file on this computer.
-
-                  <enter>    Set username and password in config.toml
+$cyan
+                  <enter>$orange    Set username and password in config.toml
 
 ########################################################################################
 "
 choose "xpmq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; "") break ;; m|M) back2main ;; *) invalid ;; esac
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
+"") break ;; 
+*) invalid ;; 
+esac
 done
 
 password_changer || return 1
@@ -65,14 +70,12 @@ $orange
 $green
                             rpcallowip=IP_address
 $orange
-    Obviously, replace \"IP_address\" with the actual IP address of the electrs 
+    Obviously, replace 'IP_address' with the actual IP address of the electrs 
     computer.
 
     And remember to restart Bitcoin for configuration files changes to take effect.
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
-}
-

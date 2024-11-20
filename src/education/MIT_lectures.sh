@@ -22,8 +22,8 @@ $green
 $orange
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) quit 0 ;; p|P) return 1 ;; M|m) back2main ;;
 d)

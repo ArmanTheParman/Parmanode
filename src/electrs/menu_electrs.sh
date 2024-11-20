@@ -155,14 +155,14 @@ echo -e "
 ########################################################################################
 "
 choose "xpmq"
-echo -e "$red
- Hit 'r' to refresh menu 
- $orange"
 read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
+q|Q) exit ;; m|M) back2main ;;
 r) menu_electrs || return 1 ;;
+p|P)
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use ;; 
 
 I|i|info|INFO)
 info_electrs
@@ -233,7 +233,7 @@ log|LOG|Log)
 
 set_terminal ; log_counter
 if [[ $log_count -le 15 ]] ; then
-enter_continue "
+echo -e "
 ########################################################################################
     
     This will show the electrs log output in real time as it populates.
@@ -242,6 +242,7 @@ enter_continue "
 
 ########################################################################################
 "
+enter_continue ; jump $enter_cont
 fi
 set_terminal_wider
 
@@ -258,30 +259,22 @@ TMUX=$TMUX2
 ;;
 
 ec|EC|Ec|eC)
-enter_continue "
+echo -e "
 ########################################################################################
     
-        This will run Nano text editor to edit config.toml. See the controls
+        This will run Nano text editor to edit$cyan config.toml$orange. See the controls
         at the bottom to save and exit. Be careful messing around with this file.
 
         Any changes will only be applied once you restart electrs.
 
 ########################################################################################
 "
-
+enter_continue ; jump $enter_cont
 nano $HOME/.electrs/config.toml
- 
 ;;
 
 ecv)
 vim_warning ; vim $HOME/.electrs/config.toml
-;;
-p|P)
-if [[ $1 == overview ]] ; then return 0 ; fi
-menu_use ;; 
-
-q|Q|Quit|QUIT)
-exit 0
 ;;
 
 tor|TOR|Tor)

@@ -9,8 +9,7 @@ $orange
 ########################################################################################
 "
 choose "x" 
-read choice
-set_terminal
+read choice ; set_terminal
 if [[ $choice == y ]] ; then true ; else return 1 ; fi
 
 sudo rm -rf $HOME/parmanode/electrum >/dev/null 2>&1

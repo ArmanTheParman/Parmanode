@@ -30,8 +30,11 @@ $red
 $orange
 ########################################################################################
 "
+choose xpmq
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n|No|nah|NO|no) return 1 ;;
 y|yes|YES|Yes|yeah|shit_yeah) break ;;
 *) invalid ;;
@@ -48,7 +51,7 @@ echo -e "
 
     WARNING: This can take a really long time on a Mac.
 
-    Go ahead?      y    or    n
+    Go ahead?      $cyan y$orange    or    $cyan n$orange
 
 ########################################################################################
 "
@@ -61,7 +64,7 @@ echo -e "
 
     No, seriously, a REALLY long time.
 
-    y    or   n
+   $cyan y$orange    or  $cyan n$orange
 
 ########################################################################################
 "
@@ -81,7 +84,6 @@ echo -e "
 ########################################################################################
 
 "
-enter_continue
-
+enter_continue ; jump $enter_contq 
 fi
 }

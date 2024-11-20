@@ -22,16 +22,13 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice 
+choose "xpmq" ; read choice  ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; q|P|a|A) return 1 ;;
-M|m) back2main ;;
-yolo) break ;;
-*) invalid ;;
+q|Q) exit ;; q|P|a|A) return 1 ;; M|m) back2main ;; yolo) break ;; *) invalid ;;
 esac
 done
 fi
-
 
 set_terminal
 
@@ -80,14 +77,14 @@ $orange
     to connect to the server. You'll see a red dot in the bottom right hand corner,
     but eventually it should turn green if you wait a bit. If it doesn't work, do 
     this:
-
-        1. Completely close Electrum
-        2. Restart Fulcrum or electrs Server
-        3. Restart Electrum from the Parmanode menu 
+$cyan
+        1.$orange Completely close Electrum$cyan
+        2.$orange Restart Fulcrum or electrs Server$cyan
+        3.$orange Restart Electrum from the Parmanode menu 
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 
 if [[ $computer_type == "LinuxPC" ]] ; then
@@ -109,14 +106,14 @@ $pink
     but eventually it should turn green if you wait a bit. 
     
     If it doesn't work, do this:
-
-        1. Completely close Electrum
-        2. Restart Fulcrum or electrs server
-        3. Restart Electrum from the Parmanode menu
+$cyan
+        1.$orange Completely close Electrum$cyan
+        2.$orange Restart Fulcrum or electrs server$cyan
+        3.$orange Restart Electrum from the Parmanode menu
 
 ########################################################################################
 "
-enter_continue 
+enter_continue ; jump $enter_cont 
 fi
 
 if [[ $computer_type == "Pi" ]] ; then
@@ -141,14 +138,14 @@ $pink
     but eventually it should turn green if you wait a bit. 
     
     If it doesn't work, do this:
-
-        1. Completely close Electrum
-        2. Restart Fulcrum or electrs server
-        3. Restart Electrum from the Parmanode menu
+$cyan
+        1.$orange Completely close Electrum$cyan
+        2.$orange Restart Fulcrum or electrs server$cyan
+        3.$orange Restart Electrum from the Parmanode menu
 
 ########################################################################################
 "
-enter_continue 
+enter_continue ; jump $enter_cont 
 fi
 }
 
@@ -166,7 +163,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 }
 

@@ -7,7 +7,7 @@ $cyan
                             IP address of Bitcoin Core
 $orange
     Go get the IP address of the other Bitcoin Core computer that electrs will 
-    connect to, then type the IP address number (e.g. 192.168.0.150), then$cyan <enter>
+    connect to, then type the IP address number (${green}e.g. 192.168.0.150$orange), then$cyan <enter>
     $bright_blue
 
     (The standard port of 8332 will be assumed. You must fiddle with this yourself if 

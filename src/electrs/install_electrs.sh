@@ -61,15 +61,15 @@ echo -e "
 
     It's advisable if Bitcoin is stopped when electrs is being installed to conserve
     system resources for the compiling procedure. Shall Parmanode stop it for you? 
-
-               y)       Stop Bitcoin Core for now
-
-               n)       Leave Bitcoin Core running
+$cyan
+               y)$orange       Stop Bitcoin Core for now
+$cyan
+               n)$orange       Leave Bitcoin Core running
 
 ########################################################################################  
 "
-choose "xpmq"
-read choice ; set_terminal
+choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; n|N) break ;; m|M) back2main ;; 
 y|Y) stop_bitcoin ; break ;;
@@ -194,15 +194,17 @@ set_terminal ; echo -e "
 ########################################################################################
     Note that Electrum Server won't work if Bitcoin is pruned. You'll have to 
     completely start bitcoin sync again without pruning to use Electrs. Sorry. If you 
-    think this is wrong and want to proceed, type 'yolo' then <enter>. Otherwise, just 
+    think this is wrong and want to proceed, type$red 'yolo'$orange then$cyan <enter>$orange. Otherwise, just 
     hit $green<enter>$orange
 ########################################################################################
 "
 read choice
-if [[ $choice == yolo ]] ; then return 0 ; fi
-return 1
-else
-return 0
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; 
+yolo) return 0 ;;
+"") return 1 ;;
+esac
 fi
 }
 
@@ -212,5 +214,3 @@ debug "Hit s to skip server=1 check." && if [[ $enter_cont == s ]] ; then return
 add_server_1_to_bitcoinconf || return 1
 fi
 }
-
-

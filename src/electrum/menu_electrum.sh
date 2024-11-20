@@ -74,7 +74,7 @@ $(ls $HOME/.electrum/wallets)
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal
 ;;
 
@@ -117,6 +117,7 @@ $green            etor)$orange     Connect to electrs via Tor
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 

@@ -26,11 +26,9 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit 0 ;;
-p|P) return 1 ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 u|U|use|Use) 
 export electrs_compile="false" && return 0 ;;
 compile) 

@@ -9,22 +9,21 @@ set_terminal ; echo -e "
     as well back up the files created and keep a copy somewhere out of the way. That
     way, if you ever uninstall/reinstall, you can get Parmanode to use the backup, and
     copy it to the location needed.
-$cyan
-    Back up compiled code?
-$orange
-                y)      Yes. Brilliant.
 
-                n)      Nah
+    Back up compiled code?
+$green
+                y)$orange      Yes! Bloody brilliant
+$red
+                n)$orange      Nah
 
 ########################################################################################
 "
-read choice
-set_terminal
-
+choose xmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-n|N|No|NO|nah|NAH) return 0 ;;
-y|Y|YES|Yes|yes|shit_yeah) 
-backup_electrs_do ; return 0 ;;
+q|Q) exit ;; m|M) back2main ;;
+n|N|No|NO|nah|NAH) return 0 ;; 
+y|Y|YES|Yes|yes|shit_yeah) backup_electrs_do ; return 0 ;;
 *) invalid ;;
 esac
 done
