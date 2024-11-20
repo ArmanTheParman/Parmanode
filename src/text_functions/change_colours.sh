@@ -12,11 +12,10 @@ $cyan
 
 ########################################################################################
 "
-choose "xpqm"
-read choice ; clear
+choose "xpqm" ; read choice ; clear
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;;
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 t|T)
 if grep -q "orange=" $pc ; then
 parmanode_conf_remove "orange=" 

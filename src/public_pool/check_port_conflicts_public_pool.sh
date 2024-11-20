@@ -25,7 +25,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 set_terminal
 case $choice in
-q|Q) exit 0 ;; p|P|M|m|a) back2main ;; p|P) 
+q|Q) exit 0 ;; p|P|M|m|a) back2main ;;
 y) 
 break
 ;;

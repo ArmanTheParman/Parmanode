@@ -27,20 +27,21 @@ set_terminal ; echo -e "
     
     The mouse does nothing in Parmanode, except to bring the window into focus.$orange 
     
-    For example...
-
-$cyan
-               y)$orange    Yes, please delete all shitcoin private keys from the comptuer
-$red
-               n)$orange    No, don't delete anything, I enjoy degeneracy
-
-
-########################################################################################
+$red    For example...
+$red    ################################################################################
+$red    #                                                                              # 
+$red    #$cyan       y)$orange    Yes, please delete all shitcoin private keys from the comptuer  $red #
+$red    #                                                                              # 
+$red    #$cyan       n)$orange    No, don't delete anything, I enjoy degeneracy                   $red #
+$red    #                                                                              # 
+$red    ################################################################################
+$orange
 
     In this case, to destroy all your shitcoin keys, you would type$cyan y$orange, without the ),
     and hit the$cyan <enter>$orange or $cyan<return>$orange key.
 
     You might be slow at first, but will get faster with time - Parmanode is fast.
+
 
 ########################################################################################
 
@@ -56,6 +57,7 @@ set_terminal ; echo -e "
 
 $red
               TO START USING PARMANODE, FROM THE MAIN MENU, YOU CAN:
+
 $cyan
     1.$orange Add individual programs from the$green \"add\"$orange menu.
 $cyan
@@ -76,8 +78,7 @@ To continue on to the main menu, just hit$cyan <enter>${orange}.
 "
 read choice
 case $choice in 
-q|Q)
-   exit ;;
+q|Q) exit ;;
 d|D) 
    if [[ -z $debug ]] ; then export debug=1 ; else unset debug ; fi
 ;;

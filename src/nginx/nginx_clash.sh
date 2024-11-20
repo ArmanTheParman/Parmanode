@@ -9,7 +9,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue ;  ; jump $enter_cont
+enter_continue ; jump $enter_cont
 return 1
 fi
 

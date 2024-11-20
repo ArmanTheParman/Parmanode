@@ -34,9 +34,8 @@ $cyan
 
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -56,9 +55,8 @@ $cyan
    That's freaking powerful.
  
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -74,9 +72,8 @@ $cyan
     escapes from a central banker's basement.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -103,9 +100,8 @@ $cyan
     Law #8 : Adoption only increases, and is independent to price.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -120,9 +116,8 @@ $cyan
     grateful you can.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 return 0
 fi
@@ -141,9 +136,8 @@ $cyan
     nice symbolism for the anit-dollar.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -161,9 +155,8 @@ $cyan
     Only bitcoin in self custody is scarce.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -179,9 +172,8 @@ $cyan
     against humanity. 
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -201,9 +193,8 @@ $cyan
  
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -221,9 +212,8 @@ $cyan
     i.e. ALL government money, and ALL altcoins (euphemism for shitcoins) and CBDCs.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -246,9 +236,8 @@ $cyan
     It's Bitcoin or tyranny - make your choice.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -264,9 +253,8 @@ $cyan
     Bitcoin is here to clean up gold's mess.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -285,9 +273,8 @@ $cyan
     -- The Moon is a Harsh Mistress, Robert A. Heinlein, on involuntary taxation.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -301,9 +288,8 @@ $cyan
    The more bitcoin you get, the more right you're going to be when you're right.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -321,9 +307,8 @@ $cyan
     distribution of coins will even out over time.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -343,9 +328,8 @@ $cyan
     Which is more valuable to exchange your labour for?
  
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -362,9 +346,8 @@ $cyan
    time, they will accumulate all the bitcoin. 
  
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -386,9 +369,8 @@ $cyan
     Shitcoins... leads to SUFFERING.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -436,9 +418,8 @@ $cyan
     Rant over. 
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -489,9 +470,8 @@ $green
      Bitcoin is good enough NOW.
 $orange
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -510,9 +490,8 @@ $cyan
     HAVE YOU NO DIGNITY??
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -535,9 +514,8 @@ $cyan
         3. Now look at your favourite shitcoin.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -555,9 +533,8 @@ $cyan
     No. But this is the mindset of measuring your bitcoin value in USD.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -583,9 +560,8 @@ $cyan
     
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -607,9 +583,8 @@ $cyan
 
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -633,9 +608,8 @@ $cyan
     Also, you can get some lifeboats for loved ones.
  
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -660,9 +634,8 @@ $cyan
     So, Bitcoin goes up in value for as long as humans exist.
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -692,9 +665,8 @@ $cyan
     up, BEFORE loading up the thing with your life savings.
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -715,9 +687,8 @@ $cyan
    (sarcasm, ok?)
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -733,9 +704,8 @@ $cyan
     seat on the Titanic. Don't be dumb.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -775,9 +745,8 @@ $cyan
     https://www.youtube.com/watch?v=9vM0oIEhMag
 $orange
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -794,9 +763,8 @@ $cyan
 
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -814,9 +782,8 @@ $cyan
    Oh fuck, indeed, slave. 
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -834,9 +801,8 @@ $cyan
     With Bitcoin, your ownership claim is independent to your ruler.
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -853,9 +819,8 @@ $cyan
     Currently, those who exploit the world best get most of the dollars.
     
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -875,9 +840,8 @@ $bright_blue
     https://armantheparman.com/joinus
    $orange 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -906,9 +870,8 @@ $cyan
     alone' system.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -934,9 +897,8 @@ $cyan
             \$998,000 - that escalated quickly
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -955,9 +917,8 @@ $cyan
     https://armantheparman.com $orange
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -977,9 +938,8 @@ $cyan
     still alive
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -998,9 +958,8 @@ $cyan
     Fuck society. 
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -1015,9 +974,8 @@ $cyan
     Money does not need utility. Money BUYS utility. That's the point of it.
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -1043,9 +1001,8 @@ $cyan
     they haven't already?     
 
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -1073,9 +1030,8 @@ $bright_blue
    https://armantheparman.com/joinus/
 $orange
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -1093,9 +1049,8 @@ $cyan
     Just because you can trade it doesn't mean you should, or are obliged to. 
 $orange
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0
@@ -1126,9 +1081,8 @@ $bright_blue
     https://armantheparman.com/onemoney/ 
 $orange
 ######################################################################################## 
-
-Hit$cyan <enter>$orange to continue.
 "
+enter_continue ; jump $enter_cont
 read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
 if [[ $choice == q ]] ; then exit ; fi
 return 0

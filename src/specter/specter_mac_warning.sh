@@ -12,13 +12,10 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-    q|Q|QUIT|Quit|quit) exit 0 ;;
-    p|P|x|X) return 1 ;;
-    *) return 0 ;;
+m|M) back2main ;; q|Q|QUIT|Quit|quit) exit 0 ;; p|P|x|X) return 1 ;; *) return 0 ;;
 esac
 fi
 }

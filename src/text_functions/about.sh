@@ -36,6 +36,6 @@ set_terminal_wide ; echo -e "
 
 ##############################################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 }
