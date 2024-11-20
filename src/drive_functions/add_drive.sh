@@ -16,7 +16,7 @@ $orange
     i.e. detach the cable, before proceeding or you could get errors. 
 
 ########################################################################################
-$orange" ; enter_continue
+$orange" ; enter_continue ; jump $enter_cont
 
 safe_unmount_parmanode || return 1
 
@@ -27,7 +27,7 @@ set_terminal ; echo -e "$cyan
    the programs using it, then unmounting. PLEASE PHYSICALLY DISCONNECT THE DRIVE 
    NOW, ie detach the cable.
 ########################################################################################
-" ; enter_continue ; set_terminal
+" ; enter_continue ; set_terminal ; jump $enter_cont
 fi
 
 detect_drive $@ "brief" || return 1 #menu
@@ -42,7 +42,7 @@ if [[ $OS == "Mac" ]] ; then
 
 ########################################################################################
 "
-enter_continue ; return 0 ;
+enter_continue  ; jump $enter_cont ; return 0 ;
 fi
 
 if [[ $OS == "Linux" ]] ; then make_linux_parmanode_drive ; return 0 ; fi
@@ -120,6 +120,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 0
 }
 

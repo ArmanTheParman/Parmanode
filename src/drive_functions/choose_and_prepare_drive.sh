@@ -46,6 +46,7 @@ echo "##########################################################################
 choose "xpmq" #echo statment about above options, previous menu, or quit.
 
 read choice #user's choice stored in variable, choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 
 else
 choice=i #btcpayinstallsbitcoin internal drive

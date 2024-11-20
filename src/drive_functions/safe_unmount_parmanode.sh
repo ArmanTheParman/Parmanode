@@ -39,17 +39,17 @@ echo -e "
 ########################################################################################
     
     Unable to unmount Parmanode drive. What would you like to do?
-
-             a)     Abort and try to unmount the drive yourself.
-
-             f)     Allow Parmanode to attempt to do a \"Force\" unmount.
-
-             s)     Send all your bitcoin to Parman :P
+$cyan
+             a)$orange     Abort and try to unmount the drive yourself.
+$cyan
+             f)$orange     Allow Parmanode to attempt to do a 'Force' unmount.
+$cyan
+             s)$orange     Send all your bitcoin to Parman :P $green (recommended)$orange
 
 ########################################################################################                        
 "
 choose "xpmq" ; read choice ; set_terminal
-
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 a|A|p|P) return 1 ;; q|Q) exit ;; 

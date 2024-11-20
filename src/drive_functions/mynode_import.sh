@@ -51,6 +51,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
@@ -75,8 +76,13 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read choice
-case $choice in a|A) return 1 ;; esac
+choose xmq
+read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q) exit ;; m|M) back2main ;;
+p|a|A) return 1 ;; 
+esac
 done
 
 while ! sudo lsblk -o LABEL | grep -q myNode ; do
@@ -87,7 +93,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal ; case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
+choose xpmq ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
 
 #Mount
 export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
@@ -192,7 +200,7 @@ set_terminal ; echo -e "
 
         Parmanode will now change the syncing directory from Internal to External.
   
-        Hit <enter> to accept, or a to abort.
+        Hit$cyan <enter>$orange to accept, or$red a$orange to abort.
 
         If you abort, you'l have to select to swap internal vs external from the
         Parmanode Bitcoin menu.
@@ -200,6 +208,8 @@ set_terminal ; echo -e "
 ########################################################################################    
 "
 choose "xpmq"
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in a|A|q|Q|P|p) return 1 ;; m|M) back2main ;; esac
 change_bitcoin_drive change
 source $HOME/.parmanode/parmanode.conf
@@ -222,9 +232,11 @@ echo -e "
 
 ########################################################################################
 "
-choose "x" ; read choice
-set_terminal
-case $choice in y|Y)
+choose "x" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q) exit ;; m|M) back2main ;;
+y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
@@ -248,11 +260,11 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Please note, if you wish to use this new Parmanode drive on a computer different
-    to this one, you should \"import\" it from the menu so the auto-mount feature can 
+    to this one, you should$cyan 'import'$orange it from the menu so the auto-mount feature can 
     be configured.
 
 ########################################################################################
-" ; enter_continue
+" ; enter_continue ; jump $enter_cont
 
 cd
 sudo umount $disk >/dev/null 2>&1

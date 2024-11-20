@@ -11,13 +11,14 @@ $orange
 ########################################################################################
 "
 choose "eq" ; read choice
+jump $choice
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
 while sudo mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
 ########################################################################################
     
-    This function needs to make sure the Parmanode drive is not mounted. Please also
+    This function needs to make sure the Parmanode drive is not mounted. Also, please
     do not connect two Parmanode drives at the same time.
 
     Do you want Parmanode to attempt to cleanly stop everything and unmount the 
@@ -25,11 +26,12 @@ set_terminal ; echo -e "
 $green
                y)       Yes please, how kind.
 $red
-               nah)     Nah ( = \"No\" in Straylian)
+               nah)     Nah ( = 'No' in Straylian)
 $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
@@ -106,9 +108,9 @@ set_terminal ; echo -e "
     When you boot up the RaspiBlitz on your Pi, it may struggle to restart and detect
     the bitcoin data. If after 10 minutes, there isn't any suggestion it has restarted
     to sync, then a restart should work, or, access the terminal and type:
-
+$cyan
         sudo systemctl status bitcoind.service
-
+$orange
     Also note, the drive can no longer be used by Parmanode (you'd have to convert 
     it again).
 

@@ -10,11 +10,11 @@ $orange
     Parmanode, preserving any Bitcoin block data that you may have already sync'd up.
 
     Simply use this convert tool, and plug into any Parmanode computer (ParmanodL). 
-    I say \"any\", but do know that if it's another ParmanodL, you still need to 
-    \"import\" the drive on that computer as well - there is a \"Import to Parmnaode\"
+    I say 'any', but do know that if it's another ParmanodL, you still need to 
+    'import' the drive on that computer as well - there is a 'Import to Parmnaode'
     option in the tools menu.
 
-    If you wish to go back to Umbrel, then use the \"Revert to Umbrel\" tool, 
+    If you wish to go back to Umbrel, then use the 'Revert to Umbrel' tool, 
     otherwise the drive won't work properly.
 $pink
     Lightning channels are not migrated. At present, it has not been tested if your
@@ -24,6 +24,7 @@ $pink
 ########################################################################################
 "
 choose "eq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q|P|p) return 1 ;; esac
 
 if [[ $importdrive != "true" ]] ; then
@@ -43,11 +44,12 @@ set_terminal ; echo -e "
 $green
                y)       Yes please, how kind.
 $red
-               nah)     Nah ( = \"No\" in Straylian)
+               nah)     Nah ( = 'No' in Straylian)
 $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
@@ -72,8 +74,13 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read choiPlease disconnect the Parmanode drivece
-case $choice in a|A) return 1 ;; esac
+choose xmq
+read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q) exit ;; m|M) back2main ;;
+p|a|A) return 1 ;; 
+esac
 done
 
 
@@ -85,7 +92,9 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal ; case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
+choose xpmq ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
 
 
 #Get disk ID
@@ -155,8 +164,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "x" ; read choice
+choose "xmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
+q|Q) exit ;; m|M) back2main ;;
 y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
@@ -186,7 +197,10 @@ set_terminal ; echo -e "
     first need to use the Parmanode \"revert\" tool first.
 
 ########################################################################################
-" ; enter_continue ; set_terminal
+"  
+enter_continue 
+jump $enter_cont
+set_terminal
 
 ########################################################################################
 ########################################################################################
@@ -203,7 +217,7 @@ set_terminal ; echo -e "
 
         Parmanode will now change the syncing directory from Internal to External.
   
-        Hit <enter> to accept, or a to abort.
+        Hit$cyan <enter>$orange to accept, or$red a$orange to abort.
 
         If you abort, you'l have to select to swap internal vs external from the
         Parmanode Bitcoin menu.
@@ -211,6 +225,8 @@ set_terminal ; echo -e "
 ########################################################################################    
 "
 choose "xpmq"
+read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in a|A|q|Q|P|p) return 1 ;; m) back2main ;; esac
 change_bitcoin_drive change
 source $HOME/.parmanode/parmanode.conf
@@ -233,9 +249,11 @@ echo -e "
 
 ########################################################################################
 "
-choose "x" ; read choice
-set_terminal
-case $choice in y|Y)
+choose "x" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+q|Q) exit ;; m|M) back2main ;;
+y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
 export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
 export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
@@ -259,11 +277,11 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Please note, if you wish to use this new Parmanode drive on a computer different
-    to this one, you should$cyan \"import\"$orange it from the menu so the auto-mount feature can 
+    to this one, you should$cyan 'import'$orange it from the menu so the auto-mount feature can 
     be configured.
 
 ########################################################################################
-" ; enter_continue
+" ; enter_continue ; jump $enter_cont
 
 cd
 sudo umount $disk >/dev/null 2>&1

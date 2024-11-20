@@ -7,6 +7,7 @@ $red                   No Parmanode drive detected. Aborting. $orange
 ########################################################################################                  
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 
@@ -22,6 +23,7 @@ $red         More than one drive with the parmanode label detected. Aborting. $o
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 }

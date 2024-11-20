@@ -11,30 +11,30 @@ $orange
     Did you know, you can mount a directory on any computer on your home network, to
     the file system of your Linux computer? Even if it's a drive connected to the 
     remote computer, you can connect it to your Linux.
-
-        1) Install sshfs    (sudo apt-get install sshfs)
-
-        2) Create somethere on the Linux machine to mount, e.g.
-
+$cyan
+        1)$orange Install sshfs    (sudo apt-get install sshfs)
+$cyan
+        2)$orange Create somethere on the Linux machine to mount, e.g.
+$green
                 mkdir ~/Desktop/remote_directory
-
-        3)$cyan sshfs user@IP_address:/path/to/directory ~/Desktop/remote_directory $orange
+$cyan
+        3)$orange sshfs user@IP_address:/path/to/directory ~/Desktop/remote_directory $orange
         
                 The above command has only 3 space-separated elements, in order
                 there are the sshfs command, the remote directory, and the host
                 directory where you want to mount. (In this context, 'remote'
                 means other coputer, and host means the computer you're using).
-
-        4) Use the contents of the directory as you please. If you get file permission
-           issues, you can run the above command instead as:
 $cyan
+        4)$orange Use the contents of the directory as you please. If you get file permission
+           issues, you can run the above command instead as:
+$green
                sshfs -o uid=1000,gid=1000, user@IP_address... etc
 $orange
            Replace with your own user's uid and gid, and obviously the correct paths for
            the last two elements. Get your UID/GID by typing id then <enter>.
-
-        5) When finished, unmount the directory:
 $cyan
+        5)$orange When finished, unmount the directory:
+$green
             sudo umount ~/Desktop/remote_directory 
 $orange
            Note it's$pink umount$orange not unmount.
@@ -42,6 +42,7 @@ $orange
 ########################################################################################
 "
 choose epmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return ;; m|M) back2main ;; "") break ;; *) invalid ;; esac
 done
 
@@ -69,5 +70,5 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

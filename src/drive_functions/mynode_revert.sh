@@ -11,6 +11,7 @@ $orange
 ########################################################################################
 "
 choose "eq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
 
@@ -31,6 +32,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
 m|M) back2main ;;

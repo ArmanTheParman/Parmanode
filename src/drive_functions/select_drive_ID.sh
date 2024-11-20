@@ -4,18 +4,20 @@ set_terminal_high
 
 while true ; do     #while 1
 
-if [[ $OS == "Linux" ]] 
-then
+case $OS in 
+Linux)
 lsblk
 echo "Enter the identifier of the disk to be formatted (e.g. \"sdb\", \"sdc\", \"sdd\"." 
 echo "Do not include partition numbers. Eg. don't type \"sdb1\" or \"sdb2\", just \"sdb\"):
 echo "It is CASE SENSITIVE!"
 " 
-else #(Mac) 
+;;
+*)
 diskutil list
 echo "Enter the identifier of the disk to be formatted (e.g. disk2 or disk3): " 
 echo "Do not include partition numbers. Eg. don't type disk2s1 or disk2s2, just disk2:"  
-fi #end OS choice and ID prompt
+;;
+esac
 
 read disk 
 
@@ -43,38 +45,38 @@ Linux)
 
     Take a look above at the alternative output and check it really is the drive 
     you want to format.
-
-                               (y)      Yes
-
-                               (n)      No, try again.
-
-                               (q)      Quit
-            
+$cyan
+                               (y)$orange      Yes
+$cyan
+                               (n)$orange      No, try again.
+$red
+                               (q)$orange      Quit
 
 ########################################################################################
 "        
-choose "x"
-read confirm
-        if [[ $confirm == "y" || $confirm == "yes" ]] ; then return 0 ; fi
-        if [[ $confirm == "n" || $confirm == "no" ]] ; then continue ; fi
-        if [[ $confirm == "q" ]] ; then exit 0 ; else invalid ; continue ; fi
+choose "xmq"
+read choice
+    case $choice in
+    q|Q) exit ;; m|M) back2main ;; y|yes) return 0 ;; n|NO|No|no) continue ;;
+    *) invalid ;;
+    esac
 
     else #regex else
         set_terminal_high
         echo -e "
 ########################################################################################
 
-    Your entry does not match the pattern "sd" followed by a letter, which is the
+    Your entry does not match the pattern$green 'sd'$orange followed by a letter, which is the
     convention for SSD drives (you really should be using one of those, or something
     better).
 
     If you have a non-standard drive, you may have a name with a different pattern. 
+
     You can continue if you are sure you know what you are doing. 
 
 ########################################################################################
 
-Hit <enter> to abort, or type "yolo" to proceed."
-
+Hit$cyan <enter>$orange to abort, or type$red yolo$orange to proceed."
 read choice
 
         if [[ $choice == "yolo" ]] ; then return 0 ; fi
@@ -94,12 +96,12 @@ echo -e "
 
     Take another look above and check $disk is really is the drive you want to
     format.
-
-                               (y)      Yes
-
-                               (n)      No, try again
-
-                               (q)      Quit
+$cyan
+                               (y)$orange      Yes
+$cyan
+                               (n)$orange      No, try again
+$red
+                               (q)$orange      Quit
 
 ########################################################################################
 "        
@@ -116,7 +118,7 @@ read confirm
         echo -e "
 ########################################################################################
 
-    Your entry does not match the pattern "disk" followed by a number.
+    Your entry does not match the pattern 'disk' followed by a number.
 
     This requirement is a precaution. If you have a non-standard drive, you 
     may have a name with a different pattern. You can override this requirement
@@ -124,7 +126,7 @@ read confirm
 
 ########################################################################################
 
-Hit <enter> to abort, or type "yolo" to format the drive."
+Hit$cyan <enter>$orange to abort, or type$red yolo$orange to format the drive."
 
         read choice
         if [[ $choice == "yolo" ]] ; then return 0 ; else return 1 ; fi

@@ -12,6 +12,7 @@ set_terminal ; echo -e "$pink
 ########################################################################################
 $orange"
 enter_continue 
+jump $enter_cont
 
 while true ; do
 rm_after_before #just removes files
@@ -54,6 +55,7 @@ $cyan
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 set_terminal
 sleep 2.5
 

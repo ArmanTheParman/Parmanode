@@ -13,15 +13,18 @@ set_terminal ; echo -e "
         be 1000
 
         What would you like to do?
-
-                d)      Use \"defaults\" UID=1000 and GID=1000
-
-                m)      Manually enter different values
+$cyan
+                d)$orange      Use defaults UID=1000 and GID=1000
+$cyan
+                m)$orange      Manually enter different values
 
 ########################################################################################
 "
+choose "xmq"
 read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; m|M) back2main ;;
 d|D)
 export pUID=1000 ; export pGID=1000
 return 0

@@ -11,6 +11,7 @@ $orange
 ########################################################################################
 "
 choose "eq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
 
 while sudo mount | grep -q parmanode ; do 
@@ -30,6 +31,7 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
 m|M) back2main ;;
@@ -51,7 +53,11 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
+choose xmq
 read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q) exit ;; m|M) back2main ;; 
+esac
 done
 
 if sudo lsblk -o LABEL | grep -q parmanode ; then announce "Parmanode drive still detected. Aborting." ; return 1 ; fi 
@@ -64,7 +70,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read ; set_terminal ; sync
+read choice ; set_terminal ; sync
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q) exit ;; m|M) back2main ;;
+esac
 done
 
 export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
@@ -107,7 +116,7 @@ set_terminal ; echo -e "
     The drive can no longer be used by Parmanode (you'd have to convert it again).
 
 ########################################################################################
-" ; enter_continue ; set_terminal
+" ; enter_continue ; jump $enter_cont ; set_terminal
 
 cd
 sudo umount $disk >/dev/null 2>&1

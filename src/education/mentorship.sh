@@ -39,6 +39,7 @@ $cyan            How to remove KYC tainting of coins $orange
 ########################################################################################
 "
 choose "epmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 esac
@@ -58,12 +59,12 @@ set_terminal ; echo -e "
     but I had reached the maximum I could learn by myself and I realised that I needed a 
     more complete, structural approach with particular focus on privacy and security.
 
-    Parman’s site was by far the best one I ever found, therefore I did not hesitate 
+    Parman's site was by far the best one I ever found, therefore I did not hesitate 
     one moment to apply for a mentorship. It turned out to be the money best spent in 
     years. Thanks to Parman I learned everything I needed to and more. Parman is an 
     absolutely great teacher (being myself a university professor, I know something 
-    about it): he’s patient, focused on the essential, he manages to make complicated 
-    things very simple. In addition, he’s an extremely kind person. His in-depth 
+    about it): he's patient, focused on the essential, he manages to make complicated 
+    things very simple. In addition, he's an extremely kind person. His in-depth 
     technical knowledge about Bitcoin and his privacy/security standards in how to use 
     Bitcoin are, I believe, the maximum that you can get on the market. Therefore, my 
     answer to your first question is that I was extremely happy with his services.
@@ -85,6 +86,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "epmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 esac
@@ -102,13 +104,13 @@ set_terminal ; echo -e "
     Glad to answer your questions regarding our experience with Parman. We had a 
     unique situation that Parman helped navigate us through. He was very patient and 
     kind as he helped us secure our bitcoin and he gave us sound advice on how to 
-    proceed with our situation. The Zoom sessions were easy, no problems. I can’t 
+    proceed with our situation. The Zoom sessions were easy, no problems. I can't 
     really answer your questions on how long the mentorship program took as our 
     situation was unique, although we are going to send our son through his 
     mentorship program this summer. Parman was very careful with our private 
     information, often reminding us not to reveal too much.
 
-    All that being said, I can wholeheartedly recommend Parman’s mentorship program. 
+    All that being said, I can wholeheartedly recommend Parman's mentorship program. 
     He is a rare man of intellect and integrity. He is also very patient and 
     understanding. We had a great experience and learned quite a bit.
 
@@ -121,6 +123,7 @@ set_terminal ; echo -e "
 ########################################################################################                                
 "
 choose "epmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; 
 esac
@@ -129,9 +132,9 @@ set_terminal ; echo -e "
 ########################################################################################                            
 
                         Contact Arman The Parman for more info:
-
+$bright_blue
                         armantheparman@protonmail.com
-
+$orange
 ########################################################################################
-" ; previous_menu ; return 0                           
+" ; enter_continue ; jump $enter_cont ; return 0
 }

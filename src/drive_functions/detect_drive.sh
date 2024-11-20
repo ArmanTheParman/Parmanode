@@ -12,6 +12,7 @@ set_terminal ; echo -e "$pink
 ########################################################################################
 $orange"
 enter_continue 
+jump $enter_cont
 fi
 fi
 
@@ -94,6 +95,7 @@ $cyan
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 set_terminal
 sleep 2.5
 
@@ -104,6 +106,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
 return 1
 fi
 
