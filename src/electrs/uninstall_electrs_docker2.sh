@@ -1,5 +1,5 @@
 function uninstall_electrs_docker2 {
-
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -9,14 +9,15 @@ $orange
 
 ########################################################################################
 "
-choose "x" 
-read choice
-set_terminal
-
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
+esac
+done
 
 source $pc
 
@@ -50,9 +51,8 @@ $white
 $orange
 ########################################################################################
 "
-choose "xpmq"  
-read choice
-set_terminal
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 q|Q) 

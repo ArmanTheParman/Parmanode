@@ -27,24 +27,18 @@ $orange
     (The Bitcoin data directory will not be deleted)
 
 ########################################################################################
-
-Choose (y) or (n) then <enter>.
 "
-read choice
-
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-    y|Y)
-        break ;;
-    n|N)
-        return 0 ;;
-    q|Q|Quit|quit)
-        exit 0 ;;
-    *)
-        invalid ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
 esac
 done
-#Break point. Proceed to uninstall Bitcoin Core.
 fi
+#Break point. Proceed to uninstall Bitcoin Core.
 
 if [[ $combo == "true" ]] ; then
 while true
@@ -60,20 +54,14 @@ $orange
     (The Bitcoin data directory will not be deleted)
 
 ########################################################################################
-
-Choose (y) or (n) then <enter>.
 "
-read choice
-
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-    y|Y)
-        break ;;
-    n|N)
-        return 0 ;;
-    q|Q|Quit|quit)
-        exit 0 ;;
-    *)
-        invalid ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
 esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.

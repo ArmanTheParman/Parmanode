@@ -9,15 +9,15 @@ $orange
 
 ########################################################################################
 "
-choose "x" 
-read choice
-set_terminal
-
-if [[ $choice == "y" || $choice == "Y" ]] ; then true
-    else 
-    return 1
-    fi
-
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
+esac
+done
 sudo rm -rf $HOME/parmanode/btc-rpc*
 
 sudo systemctl stop btcrpcexplorer.service >/dev/null

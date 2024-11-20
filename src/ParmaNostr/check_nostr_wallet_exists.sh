@@ -15,7 +15,7 @@ $cyan               3)$orange Back it up to $dp/.nostr_keys_backup,
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 unset skipwallet
 case $choice in

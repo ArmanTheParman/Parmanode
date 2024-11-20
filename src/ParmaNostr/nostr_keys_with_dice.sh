@@ -22,11 +22,10 @@ $orange
 $orange
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-
 *)
 break
 ;;
@@ -48,8 +47,8 @@ $green
 $orange
 ########################################################################################    
 "
-choose xpmq ; read word1 ; set_terminal
-jump $choice || { invalid ; continue ; } ; set_terminal
+choose xpmq ; read word1 
+jump $word1 || { invalid ; continue ; } ; set_terminal
 case $word1 in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)

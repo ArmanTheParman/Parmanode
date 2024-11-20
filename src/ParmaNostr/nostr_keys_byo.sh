@@ -14,13 +14,11 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read mnemonic ; set_terminal
+choose xpmq ; read mnemonic
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $mnemonic in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-
 *)
-
 if ! echo "$mnemonic" | wc -w | grep 12 ; then
 set_terminal ; announce "Please enter exactly 12 words."
 continue
@@ -51,5 +49,4 @@ fi
 ;;
 esac
 done
-
 }

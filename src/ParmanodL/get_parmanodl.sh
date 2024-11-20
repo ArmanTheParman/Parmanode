@@ -36,13 +36,12 @@ $red                n)$orange        Get me out of here
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; clear
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;; p|P) return 0 ;; n|N|no|NO) return 1 ;; 
+q|Q|Quit|QUIT) exit 0 ;; m|M) back2main ;; p|P) return 0 ;; n|N|no|NO) return 1 ;; 
 y|Y|Yes|YES|yes) break ;;
 d) download_ParmanodL_image ; return 1 ;;
-q|Q|Quit|QUIT) exit 0 ;;
 *) invalid ;;
 esac
 done

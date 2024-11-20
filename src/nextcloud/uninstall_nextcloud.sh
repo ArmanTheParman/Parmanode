@@ -1,4 +1,23 @@
 function uninstall_nextcloud {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Uninstall NextCloud?
+$orange
+    Are you sure? (y) (n)
+
+########################################################################################
+"
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
+esac
+done
 
 docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
 docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud)
@@ -16,7 +35,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 d)

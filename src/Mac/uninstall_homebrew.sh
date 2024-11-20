@@ -13,7 +13,8 @@ $cyan
 
 ########################################################################################
 "
-choose xq ; read choice ; set_terminal
+choose xq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;;
 y)

@@ -1,6 +1,4 @@
 function uninstall_anydesk {
-
-if [[ $debug != 1 ]] ; then 
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -15,14 +13,13 @@ $cyan
 
 ########################################################################################
 "
-choose "epq" ; read choice ; 
+choose "epq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-Q|q|Quit|QUIT) exit 0 ;;
-p|P|N|n|No|NO|no) return 1 ;; 
-y|Y|Yes|YES|yes) break ;;
+Q|q|Quit|QUIT) exit 0 ;; p|P|N|n|No|NO|no) return 1 ;; y|Y|Yes|YES|yes) break ;;
 *) invalid ;;
 esac
-done ; fi
+done 
 
 if [[ $OS == Mac ]] ; then
 sudo rm -rf /Applications/AnyDesk.app > /dev/null 2>&1

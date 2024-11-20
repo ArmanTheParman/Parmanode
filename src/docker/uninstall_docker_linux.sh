@@ -1,5 +1,4 @@
 function uninstall_docker_linux {
-
 while true ; do set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -9,8 +8,14 @@ $orange
 
 ########################################################################################
 "
-choose "epq" ; read choice
-case $choice in q|Q|QUIT|Quit) exit 0 ;; p|P|n|N|no) return 1 ;; y) break ;; *) invalid ;; esac 
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
+y) break ;;
+n) return 1 ;;
+*) invalid ;;
+esac
 done
 
 set_terminal ; echo "

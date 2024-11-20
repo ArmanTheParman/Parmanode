@@ -21,21 +21,13 @@ $green
 $orange
 ########################################################################################
 "
-choose "epmq"
+choose "epmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-read choice
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-
-    y|yes|YES|Y)
-    break
-    ;;
-    
-    *)
-    invalid
-    ;;
-
-    esac
+y|yes|YES|Y) break ;;
+*) invalid ;;
+esac
 done
 
 if grep -q "bitcoin" $file #checks if bitcoin is installed in install config file.

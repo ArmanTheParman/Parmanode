@@ -19,7 +19,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read nsec ; set_terminal
+choose xpmq ; read nsec 
 jump $choice || { invalid ; continue ; } ; set_terminal
 unset typedetected
 case $nsec in
@@ -84,6 +84,4 @@ break
 ;;
 esac
 done
-
-
 }
