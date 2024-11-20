@@ -92,14 +92,14 @@ $enable_tor_menu
 $menu_tor
 ########################################################################################
 " 
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in Q|q|QUIT|Quit|quit) exit 0 ;;
+case $choice in 
+Q|q|QUIT|Quit|quit) exit 0 ;; m|M) back2main ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
-menu_use ;; 
-m|M) back2main ;;
-
+menu_use 
+;; 
 conf)
 set_terminal ; echo -e "
 ########################################################################################
@@ -115,7 +115,8 @@ $cyan
 
 ########################################################################################
 "
-            choose xpmq ; read choice ; set_terminal
+            choose xpmq ; read choice 
+            jump $choice || { invalid ; continue ; } ; set_terminal
             case $choice in
             q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
             bc)
@@ -176,7 +177,8 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-            choose xpmq ; read choice ; set_terminal
+            choose xpmq ; read choice 
+            jump $choice || { invalid ; continue ; } ; set_terminal
             case $choice in
             q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
             blog|BLOG|bl|BL)
@@ -282,10 +284,10 @@ $red
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
-
 esac
 done
 }
@@ -339,7 +341,8 @@ $cyan
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
 y)
@@ -377,7 +380,8 @@ $cyan
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
 y)
@@ -419,7 +423,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 set_terminal_wider
 if ! which tmux >$dn 2>&1 ; then
@@ -441,7 +445,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal_wider
 
     if ! which tmux >$dn 2>&1 ; then
@@ -558,7 +562,8 @@ $cyan
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;; 
 dco)

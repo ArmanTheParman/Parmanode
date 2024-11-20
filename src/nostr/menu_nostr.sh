@@ -102,9 +102,10 @@ $cyan            test)$orange             Send a test connection
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal_custom 45
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
+choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } 
+set_terminal_custom 45case 
+$choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 i)
 ;;
@@ -201,7 +202,7 @@ $cyan          e2)$orange         only use this to see https error output
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;

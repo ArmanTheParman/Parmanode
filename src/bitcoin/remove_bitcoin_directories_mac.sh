@@ -40,8 +40,7 @@ fi
 
 case $choice in
 
-q|Q|Quit|QUIT) 
-exit ;;
+q|Q|Quit|QUIT) exit ;;
 
 l|L)
 break 
@@ -84,13 +83,14 @@ $orange
 ########################################################################################
 "
 choose "xq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=3
 fi
 
 case $choice in
-q|Q|quit|QUIT) 
-exit 0 ;;
+q|Q|quit|QUIT) exit 0 ;;
+
 3) break ;;
 s|S|SKIP|skip|Skip)
     make_backup_dot_bitcoin 

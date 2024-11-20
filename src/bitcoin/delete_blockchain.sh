@@ -19,9 +19,7 @@ choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 internal) 
 are_you_sure "Delete internal drive blockchain data?" || return 1 

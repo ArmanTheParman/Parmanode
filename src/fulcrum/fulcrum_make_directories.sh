@@ -53,7 +53,7 @@ $orange
 
 ########################################################################################
 "
-choose xmq ; read choice ; set_terminal
+choose xmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; m|M|a) back2main ;; 

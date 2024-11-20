@@ -36,8 +36,7 @@ $green                              n)         No pruning
 $orange
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=no

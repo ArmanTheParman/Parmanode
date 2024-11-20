@@ -60,7 +60,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -106,7 +106,7 @@ $green
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -270,7 +270,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -330,7 +330,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -367,7 +367,7 @@ $orange
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;

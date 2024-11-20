@@ -112,12 +112,14 @@ $cyan      (o)$orange        OTHER...
                                                                $red hit 'r' to refresh $orange
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-set_terminal
-
 case $choice in
+q|Q) quit ;; m|M) back2main ;;
+p|P)
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use
+;;
 r)
 set_terminal
 continue
@@ -173,7 +175,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 set_terminal_wider
 
@@ -201,7 +203,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 nano $HOME/.bitcoin/bitcoin.conf
 continue
 ;;
@@ -246,19 +248,10 @@ stop_bitcoinqt
 fi
 ;;
 
-p|P)
-if [[ $1 == overview ]] ; then return 0 ; fi
-menu_use
-;;
-
 delete|Delete|DELETE)
 stop_bitcoin
 delete_blockchain
 return 1
-;;
-
-q|Q|Quit|QUIT)
-exit 0
 ;;
 
 *)

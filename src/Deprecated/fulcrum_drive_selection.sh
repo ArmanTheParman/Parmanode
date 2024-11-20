@@ -25,10 +25,9 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in q|Q|QUIT|Quit) exit 1 ;; p|P) return 1 ;;
-m|M) back2main ;;
+case $choice in q|Q|QUIT|Quit) exit 1 ;; p|P) return 1 ;; m|M) back2main ;;
     
     e|E) 
     if [[ $serverE == "fulcrum" ]] ; then export drive_fulcrum="external" ; break ; fi 

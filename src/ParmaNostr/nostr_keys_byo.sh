@@ -15,7 +15,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose xpmq ; read mnemonic
-jump $choice || { invalid ; continue ; } ; set_terminal
+jump $mnemonic || { invalid ; continue ; } ; set_terminal
 case $mnemonic in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)

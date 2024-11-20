@@ -33,8 +33,10 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-read choice ; set_terminal ; else choice=${1} ; fi
-
+read choice ; set_terminal 
+else choice=${1} 
+fi
+jump $choice
 case $choice in 
 boring|Boring) local pbox=boring ;;
 silent|*)

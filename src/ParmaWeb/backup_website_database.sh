@@ -14,7 +14,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "epmq" ; read choice ; set_terminal
+choose "epmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;

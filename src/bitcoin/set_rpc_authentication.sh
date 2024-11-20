@@ -43,7 +43,8 @@ choice=$1
 fi
 
 case $choice in
-m|M) back2main ;;
+p|P) return 1 ;; q|Q|Quit|QUIT) exit 0 ;; m|M) back2main ;;
+
     s|S)
 	            if [[ $2 == install ]] ; then
 				export rpcuser=parman
@@ -87,11 +88,6 @@ m|M) back2main ;;
 				fi
 				return 1 #important for testing if user/pass set
 	;;
-
-	p|P) return 1 ;; #important for testing if user/pass set
-
-	q|Q|Quit|QUIT) exit 0 ;;
-
 	*)
 		invalid
 		;;	

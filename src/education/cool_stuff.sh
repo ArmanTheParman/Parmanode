@@ -41,7 +41,7 @@ $orange
     
 ########################################################################################
 "
-choose epmq ; read choice ; set_terminal
+choose epmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return ;; m|M) back2main ;; "") break ;; *) invalid ;; esac
 done

@@ -30,12 +30,11 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
+q|Q) exit ;; m|M) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
-q|Q) exit ;; 
 y|Y|Yes|yes|YES)
 safe_unmount_parmanode || return 1 
 ;;

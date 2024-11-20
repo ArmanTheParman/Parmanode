@@ -50,7 +50,8 @@ echo -e "
 
 ########################################################################################
 "
-choose x ; read choice ; set_terminal
+choose x ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 n)
 break

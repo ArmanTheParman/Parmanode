@@ -39,7 +39,7 @@ $green
 
 ########################################################################################
 "
-choose eq ; read choice ; set_terminal
+choose eq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; m|M) back2main ;;

@@ -48,12 +48,11 @@ $cyan
 
 ########################################################################################                        
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-a|A|p|P) return 1 ;; q|Q) exit ;; 
-
+q|Q) exit ;; m|M) back2main ;;
+a|A|p|P) return 1 ;; 
 f|F) 
 sudo umount -F $parmanode_drive ; break ;; #exit test 1 , works on mac too
 

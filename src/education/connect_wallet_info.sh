@@ -19,8 +19,7 @@ $cyan
 
 ##############################################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 set_terminal_wide
 case $choice in

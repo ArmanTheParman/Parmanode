@@ -17,10 +17,7 @@ $cyan
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit ;;
-p|P) return 1 ;;
-n|N) return 0 ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;; n|N) return 0 ;;
 y|Y|YES|Yes|yes)
 change_bitcoin_drive swap #argument needed to skip question being asked a second time
 return 0 ;;

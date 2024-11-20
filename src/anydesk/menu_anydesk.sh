@@ -10,7 +10,7 @@ function menu_anydesk {
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q|QUIT|Quit) exit 0 ;;

@@ -89,8 +89,8 @@ $yellow
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal_custom 45
-jump $choice || { invalid ; continue ; } ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal_custom 45
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 

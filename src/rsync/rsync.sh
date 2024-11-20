@@ -24,7 +24,7 @@ $orange
 
 ########################################################################################
 "
-enter_abort ; read choice ; set_terminal
+enter_abort ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in a|A) return 1 ;; "") break ;; esac ; done
 clear

@@ -21,15 +21,10 @@ $green                y $orange   or $red   n
 $orange                
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit 0 ;;
-p|P) return 1 ;;
-n|N|NO|no|No) return 1 ;;
-y|Y|YES|Yes|yes) break ;;
+m|M) back2main ;; q|Q) exit 0 ;; p|P) return 1 ;; n|N|NO|no|No) return 1 ;; y|Y|YES|Yes|yes) break ;;
 esac
 done
 
@@ -74,15 +69,11 @@ $pink
 ######################################################################################## 
 ########################################################################################
 $orange"
-choose "xpmq" ; read choice  ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit 0 ;;
-p|P) return 1 ;;
-no|NO|N|n|No) return 1 ;;
-y|Y|YES|Yes|yes) sudo reboot ;;
-*) invalid ;;
+m|M) back2main ;; q|Q) exit 0 ;; p|P) return 1 ;; 
+no|NO|N|n|No) return 1 ;; y|Y|YES|Yes|yes) sudo reboot ;; *) invalid ;;
 esac
 done
 #if docker group added, make sure installed config reflects it.

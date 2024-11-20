@@ -30,10 +30,10 @@ $white
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 u|U)
 sudo mv $backup $original
@@ -50,14 +50,6 @@ i|I)
 sudo mkdir $original 
 return 0
 ;;
-
-q|Q) exit 0 
-;; 
-
-p|P) 
-return 1 
-;;
-
 *) 
 invalid 
 ;;
@@ -82,7 +74,7 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
@@ -125,7 +117,7 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;

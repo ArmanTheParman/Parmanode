@@ -191,7 +191,7 @@ $green
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;; m|M) back2main ;;
@@ -226,7 +226,7 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal 
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; n|N) break ;;

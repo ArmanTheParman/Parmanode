@@ -48,12 +48,11 @@ $red
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
+q|Q) exit ;; m|M) back2main ;;
 p|P|nah|No|Nah|NAH|NO|n|N) return 1 ;;
-q|Q) exit ;; 
 y|Y|Yes|yes|YES)
 safe_unmount_parmanode || return 1 
 ;;
@@ -74,12 +73,10 @@ set_terminal ; echo -e "
             
 ########################################################################################
 "
-choose xmq
-read choice 
+choose xmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-q|Q) exit ;; m|M) back2main ;;
-p|a|A) return 1 ;; 
+q|Q) exit ;; m|M) back2main ;; p|a|A) return 1 ;; 
 esac
 done
 
@@ -92,9 +89,11 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal ; 
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
+case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; 
+esac 
+done
 
 
 #Get disk ID
@@ -210,8 +209,7 @@ set_terminal ; echo -e "
 
 ########################################################################################    
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in a|A|q|Q|P|p) return 1 ;; m|M) back2main ;; esac
 change_bitcoin_drive change

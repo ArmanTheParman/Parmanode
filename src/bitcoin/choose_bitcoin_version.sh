@@ -83,7 +83,7 @@ set_terminal ; echo -e "
   Make sure the Bitcoin binary files have been placed in the /usr/local/bin/ directory
 ########################################################################################
 "
-enter_continue 
+enter_continue  ; jump $enter_cont
 export bitcoin_compile="false"
 export version="self"
 if ! which bitcoind >/dev/null ; then
@@ -94,7 +94,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 1
 else
 return 0

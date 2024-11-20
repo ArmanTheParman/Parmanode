@@ -19,7 +19,7 @@ $cyan
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; M|m) back2main ;;
 

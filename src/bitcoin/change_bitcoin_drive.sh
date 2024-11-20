@@ -21,8 +21,7 @@ $orange
  
 ########################################################################################
 "
-choose "xpmq"
-read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 else choice=c     # when $ is "swap" but never possible because -z $1 necessary to enter block
 fi
@@ -33,9 +32,7 @@ if [[ -n $1 && $1 == change ]] ; then choice=c ; drive=internal ; fi
 
 
 case $choice in
-m|M) back2main ;;
-q|Q) exit ;;
-p|P|n|N|NO|No) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; p|P|n|N|NO|No) return 1 ;;
 
 c|C)
  #change systemctl? No - because symlink
@@ -88,21 +85,19 @@ set_terminal ; echo -e "
 
     It doesn't seem like you have imported a Parmanode drive. What would you like
     to do?
-
-                  i)        Import an external drive
-
-                  f)        Format a new drive 
-
-                  a)        Abort, Abort!
+$cyan
+                  i)$orange        Import an external drive
+$cyan
+                  f)$orange        Format a new drive 
+$cyan
+                  a)$orange        Abort, Abort!
 
 ########################################################################################
 "
-choose "xpmq"
-read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q) exit ;;
-a|A|p|P|n|N|NO|No) return 1 ;;
+m|M) back2main ;; q|Q) exit ;; a|A|p|P|n|N|NO|No) return 1 ;;
 i|I)
 export make_label=parmanode && add_drive || return 1
 ;;

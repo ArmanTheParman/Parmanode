@@ -22,7 +22,7 @@ $green
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;

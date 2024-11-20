@@ -52,7 +52,7 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
@@ -109,7 +109,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 continue
 ;;
 
@@ -187,6 +187,6 @@ set_terminal_custom 55 ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }

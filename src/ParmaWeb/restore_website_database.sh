@@ -51,7 +51,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "eq" ; read choice ; set_terminal
+choose "eq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; "") break ;; *) invalid ;;
@@ -76,7 +76,7 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|2) return 1 ;; 1) break ;; m|M) back2main ;; *) invalid ;;

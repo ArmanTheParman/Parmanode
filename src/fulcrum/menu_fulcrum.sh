@@ -88,7 +88,7 @@ $bright_blue    Onion adress: $ONION_ADDR_FULCRUM:7002 $orange
 else echo -e "########################################################################################
 "
 fi
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; m|M) back2main ;;

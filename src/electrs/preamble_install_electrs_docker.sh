@@ -21,13 +21,11 @@ $red
    $orange 
 ########################################################################################
 "
-choose xpmq
-read choice
+choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n|No|nah|NO|no) return 1 ;;
-
 y|yes|YES|Yes|yeah|shit_yeah) break ;;
 *) invalid ;;
 esac 

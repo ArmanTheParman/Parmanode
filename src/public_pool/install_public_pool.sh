@@ -44,7 +44,7 @@ if ! docker ps >/dev/null 2>&1 ; then echo -e "
 
 ########################################################################################
 "
-choose "emq" read choice  
+choose "emq" ; read choice  
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
 set_terminal

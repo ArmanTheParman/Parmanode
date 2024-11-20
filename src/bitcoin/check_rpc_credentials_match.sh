@@ -20,7 +20,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -57,7 +58,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -95,7 +97,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -133,7 +136,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -170,7 +174,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -208,7 +213,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -245,7 +251,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -280,7 +287,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -317,7 +325,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
@@ -354,7 +363,8 @@ $orange
                     
 ########################################################################################
 "
-choose "xmq" ; read choice ; set_terminal
+choose "xmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)

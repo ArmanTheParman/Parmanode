@@ -29,7 +29,7 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit ;; p|P) menu_use ;; 
@@ -116,7 +116,7 @@ $green            etor)$orange     Connect to electrs via Tor
     $orange
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;

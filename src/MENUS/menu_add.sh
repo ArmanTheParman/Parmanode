@@ -37,8 +37,7 @@ echo -en "${bitcoin_new}" ; echo -en "
 #                                                                                      #
 ########################################################################################
 "
-choose "xpmq"
-read choice 
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 B|b|bitcoin|Bitcoin)

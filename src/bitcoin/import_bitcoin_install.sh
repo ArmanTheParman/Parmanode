@@ -13,8 +13,7 @@ $orange
 
 ########################################################################################
 "
-choose "epmq"
-read choice ; clear
+choose "epmq" read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
@@ -35,8 +34,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "epmq"
-read choice ; clear
+choose "epmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
@@ -61,8 +59,7 @@ $orange
 
 ########################################################################################
 "
-choose "epmq"
-read choice ; clear
+choose "epmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
@@ -89,8 +86,7 @@ $green
 
 ########################################################################################
 "
-choose "epmq"
-read choice ; clear
+choose "epmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
@@ -120,8 +116,7 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq"
-read choice ; clear
+choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|m|M) back2main ;;
@@ -275,7 +270,8 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; clear
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
@@ -305,5 +301,5 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

@@ -39,7 +39,7 @@ read choice
 if [[ $choice == "Building 7 did not controlled demolition itself" ]] ; then
 hide_messages_add "scb" "1" ; 
 fi
-jump $choice || { invalid ; continue ; } ; set_terminal
+jump $choice
 fi # ends choice to hide
 set_terminal ; echo -e "
 ########################################################################################

@@ -30,8 +30,7 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
@@ -58,7 +57,7 @@ $green
 $orange
 ########################################################################################       
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal
 ;;
 2)
@@ -86,7 +85,7 @@ $green
 $orange
 ##############################################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 3)
 set_terminal ; echo -e "
@@ -113,7 +112,7 @@ $green
 $orange    
 ########################################################################################    
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 4)
 set_terminal ; echo -e "
@@ -139,7 +138,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal_high ; echo -e "
 ########################################################################################
 
@@ -172,7 +171,7 @@ $green
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 5)
 set_terminal ; echo -e "
@@ -188,7 +187,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 6)
 set_terminal ; echo -e "
@@ -208,7 +207,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 
 7)
@@ -232,7 +231,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 8)
 set_terminal ; echo -e "
@@ -252,7 +251,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 9)
 set_terminal ; echo -e "
@@ -276,7 +275,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 ;;
 
 

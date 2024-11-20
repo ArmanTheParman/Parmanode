@@ -222,7 +222,8 @@ $green
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; n|N|No|NO|p|P|a|A) return 1 ;; m|M) back2main ;; y|Y|yes|YES) break ;;
 *) invalid ;;

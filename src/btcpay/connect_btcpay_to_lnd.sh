@@ -22,11 +22,7 @@ $cyan
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-
-m|M) back2main ;;
-q|Q) exit ;; p|P) return 1 ;; a|A) return 1 ;;
-y|Y|yes) break ;;
-*) invalid ;;
+m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;; a|A) return 1 ;; y|Y|yes) break ;; *) invalid ;;
 esac
 done
 macaroon=$(xxd -p -c 256 ~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') >/dev/null 2>&1
@@ -38,25 +34,25 @@ set_terminal ; echo -e "
 ########################################################################################
 $cyan
                                  INSTRUCTIONS
-$orange
-    1) Log in to your BTCPay server and create a store.
 
-    2) Click 'Set up a lightning node'
+    1)$orange Log in to your BTCPay server and create a store.
 
-    3) Choose 'Use custom node'
+    2)$orange Click 'Set up a lightning node'
 
-    4) In the box 'Connection configuration for your custom Lightning node', paste
+    3)$orange Choose 'Use custom node'
+
+    4)$orange In the box 'Connection configuration for your custom Lightning node', paste
        the text below then click 'Test Connection'.
 $green
 $sensitive
-$orange
-    5) Make sure you get a green successful connection confirmation.
+$cyan
+    5)$orange Make sure you get a green successful connection confirmation.
     
-    6) Do not forget to click 'SAVE' down at the bottom of the page.
+    6)$orange Do not forget to click 'SAVE' down at the bottom of the page.
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }
 

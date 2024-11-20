@@ -35,7 +35,8 @@ $orange
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 0 ;; a|A|N|n|no) return 0 ;; M|m) back2main ;; s) break ;; *) invalid ;; 
 esac
@@ -77,7 +78,8 @@ set_terminal ; echo -en "
 
 ########################################################################################
 "
-choose "xpmq" ; read choice ; set_terminal
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|q) exit 0 ;; p|P) return 0 ;; n|N) return 0 ;; M|m) back2main ;; y) break ;; *) invalid ;;
 esac

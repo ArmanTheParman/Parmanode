@@ -25,7 +25,7 @@ $green
 ########################################################################################
 "
 choose "x"
-read choice ; set_terminal
+read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;;

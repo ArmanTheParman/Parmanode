@@ -19,8 +19,7 @@ $orange
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; q|P) return 1 ;;
-m|M) back2main ;;
+q|Q) exit ;; q|P) return 1 ;; m|M) back2main ;;
 pp|Pp|PP)
 export importdrive="true"
 export make_label=dont

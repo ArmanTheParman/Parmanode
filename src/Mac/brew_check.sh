@@ -29,7 +29,8 @@ $orange
 
 ########################################################################################
 "
-choose "epq" ; read choice ; set_terminal
+choose "epq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|p|P) return 1 ;; 
 i) break ;;

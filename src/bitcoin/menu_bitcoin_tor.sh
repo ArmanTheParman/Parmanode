@@ -72,9 +72,7 @@ $tortext"
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-Q|q|quit|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
+m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" 
     check_bitcoin_tor_status #sets status in parmanode.conf

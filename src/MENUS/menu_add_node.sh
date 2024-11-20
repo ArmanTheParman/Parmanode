@@ -74,9 +74,7 @@ if [[ -n $litd_p ]]            ; then echo -e "$pink$litd_p$orange"; fi
 echo "#                                                                                      #
 ########################################################################################
 "
-choose "xpmq"
-
-read choice  
+choose "xpmq" ; read choice  
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return ;; m|M) back2main ;;

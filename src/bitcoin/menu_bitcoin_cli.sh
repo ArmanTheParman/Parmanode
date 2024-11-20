@@ -39,8 +39,7 @@ $cyan
 
 ########################################################################################
 "
-choose "xpmq"
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 clear
 case $choice in
@@ -173,7 +172,7 @@ gtosi)
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 please_wait
 

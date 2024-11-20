@@ -34,9 +34,9 @@ $orange
 "
 choose "epq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;;
-"") break ;; *) invalid ;; esac ; done
+case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
+esac 
+done
 
 safe_unmount_parmanode $@ || return 1
-
 }

@@ -86,14 +86,10 @@ $output
                                                      $red hit r to refresh $orange
 ########################################################################################
 "
-choose "xpmq" 
-read choice
+choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-set_terminal
 case $choice in
-m|M) back2main ;;
-q|Q|Quit|quit) exit 0 ;;
-r|R) contine ;; 
+m|M) back2main ;; q|Q|Quit|quit) exit 0 ;; r|R) contine ;; 
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use ;; 
@@ -147,7 +143,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 fi
 
 if [[ $OS == "Linux" ]] ; then

@@ -11,10 +11,7 @@ $orange
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;;
-y) break ;;
-n) return 1 ;;
-*) invalid ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;; y) break ;; n) return 1 ;; *) invalid ;;
 esac
 done
 

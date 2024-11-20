@@ -41,9 +41,7 @@ choice=l
 fi
 
 case $choice in
-q|Q) exit ;;
-p|P) return 1 ;;
-m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 l|L) 
 #shouldn't need skip_formatting beccause format function was earlier, but just in case...
 export skip_formatting="true" ; break ;;
@@ -82,13 +80,14 @@ $orange
 ########################################################################################
 "
 choose "xq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=3
 fi
 
 case $choice in
-q|Q|quit|Quit|QUIT) 
-    exit ;;
+q|Q|quit|Quit|QUIT) exit ;;
+
 l) 
     break ;;
 b|B)

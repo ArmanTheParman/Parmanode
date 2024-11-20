@@ -25,7 +25,7 @@ $(sudo mdadm --detail --scan) $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; x|p|P) return 1 ;; m|M) back2main ;; l) break ;;
@@ -62,7 +62,7 @@ $(sudo mdadm --detail --scan) $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice ; set_terminal
+choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; x|p|P) return 1 ;; m|M) back2main ;; l) break ;;
