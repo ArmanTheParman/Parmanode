@@ -16,21 +16,22 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
     Please make a choice...
-
-            1) Yield Generator Basic (recommended to begin with)
-
-            2) Yield Generator Privacy Enhanced
+$cyan
+            1)$orange Yield Generator Basic (recommended to begin with)
+$cyan
+            2)$orange Yield Generator Privacy Enhanced
 
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
@@ -56,5 +57,5 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

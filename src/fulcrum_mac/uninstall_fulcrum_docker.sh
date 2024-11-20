@@ -1,3 +1,0 @@
-function uninstall_fulcrum_docker {
-new_uninstall_fulcrum
-}

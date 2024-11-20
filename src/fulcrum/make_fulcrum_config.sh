@@ -4,7 +4,7 @@ function make_fulcrum_config {
 
 source $bc >/dev/null 2>&1
 
-#remove later, it's at the start of new_install_fulcrum
+#remove later, it's at the start of install_fulcrum()
 if [[ -z $rpcuser ]] ; then #from parmanode.conf 
     announce "Please set a username and password in Bitcoin conf. You can do that from the
     \r    Parmanode-Bitcoin menu. Aborting. " ; return 1 
@@ -48,8 +48,6 @@ key = $key
 rpcuser = $rpcuser
 rpcpassword = $rpcpassword
 peering = false " | sudo tee -a $fc >$dn 2>&1
-
-debug "after making the conf"
 
 return 0
 }

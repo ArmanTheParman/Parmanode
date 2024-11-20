@@ -1,14 +1,3 @@
-# Functions...
-    # which_os
-    # Linux_distro
-    # check_if_win7
-    # get_ip_address
-    # IP_address
-    # get_linux_version_codename 
-    # check_chip
-    # check_architecture
-    # ensure_english
-
 function which_os {
 # This function just extracts and stores the operating system name
 
@@ -193,7 +182,7 @@ $message
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }
 

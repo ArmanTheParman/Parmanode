@@ -22,17 +22,17 @@ if [[ $OS == "Mac" ]] ; then
 echo "
 ########################################################################################
 
-                            Testing \"sudo\" checkpoint
+                            Testing 'sudo' checkpoint
 
-    Parmanode has tested if the \"sudo\" command is available on your computer and it
+    Parmanode has tested if the 'sudo' command is available on your computer and it
     is not. The test failed. The program can not continue and will exit. Sudo is 
     necessary for certain commands that Parmanode will use, like mounting and 
     formatting the external drive.
 
-    It's possible that \"sudo\" has been disabled on your system. Until this is
+    It's possible that 'sudo' has been disabled on your system. Until this is
     rectified, you cannot use Parmanode. Terribly sorry. Have a lovely day.
 
-#########################sudo_check###############################################################
+########################################################################################
 "
 enter_exit ; exit 1 #enter_exit is a basic custom printing command.
 fi
@@ -42,9 +42,9 @@ if [[ $OS == "Linux" ]] ; then
 echo "
 ########################################################################################
 
-                            Testing \"sudo\" checkpoint
+                            Testing 'sudo' checkpoint
 
-    Parmanode has tested if the \"sudo\" command is available on your computer and it
+    Parmanode has tested if the 'sudo' command is available on your computer and it
     is not. The test failed. The program can not continue and will exit. Sudo is 
     necessary for certain commands that Parmanode will use, like mounting and 
     formatting the external drive.

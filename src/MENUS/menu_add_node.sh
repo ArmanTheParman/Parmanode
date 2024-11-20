@@ -103,7 +103,7 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 
     fd|FD)
       if [[ -n $fulcrumdkr_n ]] ; then set_terminal
-         new_install_fulcrum docker 
+         install_fulcrum docker 
          return 0 
       fi
       ;;

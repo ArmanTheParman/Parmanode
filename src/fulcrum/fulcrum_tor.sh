@@ -51,6 +51,6 @@ set_terminal ; echo -e "
     FYI, changes have been made to$cyan torrc$orange file, and Tor has been restarted.
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 }

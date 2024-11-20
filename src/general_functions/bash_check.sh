@@ -4,6 +4,7 @@ if [[ $bashV_major -lt 5 ]] ; then
 
 while true ; do
 set_terminal
+#do not use colours
 echo -e "
 ########################################################################################
 
@@ -15,8 +16,8 @@ echo -e "
 
             y)    Oooooh, yes please     
 
-            n)    Nah, but I might do it later, who knows? (If so, choose \"Update
-                  computer\" from Parmanode Tools menu when you're ready.)
+            n)    Nah, but I might do it later, who knows? (If so, choose 'Update
+                  computer' from Parmanode Tools menu when you're ready.)
 
 
     If you forget, Parmanode will ask you again at random and annoying times. 
@@ -27,6 +28,7 @@ Hit y or n, then <enter>
 "
 read choice
 case $choice in
+q|Q) exit ;; 
 y|Y)
 brew install bash
 ;;

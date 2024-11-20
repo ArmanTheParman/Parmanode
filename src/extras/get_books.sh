@@ -9,15 +9,16 @@ set_terminal ; echo -e "
 
     You have options:
 $green
-            1)    Update the contents (Who knows, I might have added more stuff)
-$orange
-            2)    Uninstall/delete the directory
-
-            3)    Do nothing, abort
+            1)$orange    Update the contents (Who knows, I might have added more stuff)
+$cyan
+            2)$orange    Uninstall/delete the directory
+$cyan
+            3)$orange    Do nothing, abort
 
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 1) 

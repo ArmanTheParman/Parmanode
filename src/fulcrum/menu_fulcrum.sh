@@ -91,7 +91,11 @@ fi
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-m|M) back2main ;;
+q|Q) exit ;; m|M) back2main ;;
+p|P) 
+if [[ $1 == overview ]] ; then return 0 ; fi
+menu_use 
+;;
 r) please_wait ; menu_fulcrum_status ;; 
 
 start | START)
@@ -182,14 +186,7 @@ yesorno "Do you want to log in as the root user or parman (sudo password: parman
          docker exec -itu parman fulcrum bash
          ;;
 
-p|P) 
-if [[ $1 == overview ]] ; then return 0 ; fi
-menu_use ;; 
-
-q|Q|Quit|QUIT)
-exit 0
-;;
-
+ 
 tor|TOR|Tor)
 if [[ $f_tor == "off" ]] ; then
 fulcrum_tor

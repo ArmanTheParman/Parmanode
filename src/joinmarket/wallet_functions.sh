@@ -61,6 +61,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 f) fidelity_bonds_info ;;
@@ -106,6 +107,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 yolodelete)
@@ -134,7 +136,7 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 if [[ $enter_cont == copy ]] ; then
 export copyjmdesktop="true"
@@ -231,7 +233,7 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }
 
@@ -269,6 +271,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 f) fidelity_bonds_info ;;
@@ -328,6 +331,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 esac
@@ -364,6 +368,7 @@ $orange
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *)

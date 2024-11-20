@@ -1,4 +1,4 @@
-function new_uninstall_fulcrum {
+function uninstall_fulcrum {
 
 set_terminal ; echo -e "
 ########################################################################################

@@ -271,6 +271,6 @@ set_terminal ; echo -ne "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 }

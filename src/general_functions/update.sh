@@ -41,7 +41,6 @@ $orange
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 "
 read choice
-
 case $choice in
 y|Y|YES|yes|u)
 if ! which brew >/dev/null ; then 

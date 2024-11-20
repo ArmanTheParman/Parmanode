@@ -1,7 +1,6 @@
 function udev {
 
 if [[ $OS == "Mac" ]] ; then
-
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -9,8 +8,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-    enter_continue
-    return 0
+enter_continue ; jump $enter_cont
+return 0
 fi
 
 set_terminal
