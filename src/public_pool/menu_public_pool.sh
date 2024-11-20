@@ -55,9 +55,7 @@ ${red}r to refresh
 choose "xpmq" ; read choice ; set_terminal
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;;
-q|Q|QUIT|Quit) exit 0 ;;
-p|P) return 1 ;;
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 r) menu_public_pool ;;
 p|P) 
 if [[ $1 == overview ]] ; then return 0 ; fi

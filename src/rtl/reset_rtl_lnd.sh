@@ -13,6 +13,7 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 Q|q) exit ;; m|M) back2main ;;
 n|N|NO|no|p|P) return 1 ;;

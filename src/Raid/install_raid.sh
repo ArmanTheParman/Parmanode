@@ -44,6 +44,7 @@ $green                          p)$orange       Get out of here
 ########################################################################################
 " 
 choose "xpmq" ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0)

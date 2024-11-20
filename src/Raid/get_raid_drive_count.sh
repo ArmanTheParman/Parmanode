@@ -11,8 +11,8 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpmq" ;
-read drive_number ; set_terminal
+choose "xpmq" read drive_number ; set_terminal
+jump $drive_number || { invalid ; continue ; } ; set_terminal
 case $drive_number in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 0|1)
@@ -42,7 +42,9 @@ set_terminal ; echo -e "
     Type$cyan x$orange and$cyan <enter>$orange to try again.
 
 ########################################################################################
-" ; choose "xpmq" ; read choice ; set_terminal 
+"  
+choose "xpmq" ; read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 "") break ;;
@@ -67,5 +69,5 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

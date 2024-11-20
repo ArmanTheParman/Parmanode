@@ -22,7 +22,7 @@ set_terminal ; echo -e "
     FYI, changes have been made to torrc file, and Tor has been restarted.
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }
 
 function disable_tor_public_pool {

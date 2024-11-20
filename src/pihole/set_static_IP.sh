@@ -25,8 +25,8 @@ $green
 ########################################################################################
 "
 choose "x"
-read choice
-
+read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;;
 a|A|p|P) return 1 ;;
@@ -77,7 +77,7 @@ echo -e "
     
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 #Router IP
 ROUTER=$(route -n get default | grep gateway | cut -d : -f 2 | grep -oE '\S+.$')
@@ -90,7 +90,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 #Subnet in dec
 SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >/dev/null
@@ -103,7 +103,7 @@ echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 set_terminal
 echo -e "    Setting the IP, $IP, to static."

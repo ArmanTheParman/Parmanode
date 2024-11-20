@@ -21,7 +21,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 return 0
 }
 
@@ -41,5 +41,5 @@ $cyan
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 }

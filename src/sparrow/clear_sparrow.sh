@@ -8,7 +8,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 
 sudo rm -rf $HOME/.sparrow/certs
 sudo rm -rf $HOME/.sparrow/tor

@@ -13,14 +13,15 @@ set_terminal ; echo -e "
     program related to domain names used by services on your computer. PiHole will
     be taking over this job, so it needs to be disabled. If you have some reason
     to keep it, then choose 'abandon' Pi Hold installation.
-
-                     a)         Abandon installation
-
-                     <enter>    Disables the service and continues installation 
+$cyan
+                     a)$orange         Abandon installation
+$cyan
+                     <enter>  $orange  Disables the service and continues installation 
 
 ########################################################################################
 "
 choose "xpmq" ; read choice
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 m|M) back2main ;;
 q|Q) exit ;;

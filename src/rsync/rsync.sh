@@ -24,8 +24,9 @@ $orange
 
 ########################################################################################
 "
-enter_abort
-read choice ; case $choice in a|A) return 1 ;; "") break ;; esac ; done
+enter_abort ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in a|A) return 1 ;; "") break ;; esac ; done
 clear
 
 if [[ $OS == Mac ]] ; then
@@ -57,11 +58,12 @@ $green
 
 ########################################################################################
 "
-choose "x"
+choose "xmq"
 read scenario
-
+jump $scenario || { invalid ; continue ; } ; set_terminal
 
 case $scenario in
+q|Q) exit ;; p|P|m|M) back2main ;;
 1|2) break ;;
 *) invalid ;;
 esac ; done
@@ -81,6 +83,7 @@ $orange
 ########################################################################################
 "
 read source
+jump $source|| { invalid ; continue ; } ; set_terminal
 check_for_validity $source || { unset source ; continue ; }
 fi
 
@@ -96,6 +99,7 @@ echo -e "
 
 "
 read destination
+jump $destination 
 check_for_validity $destination || continue
 break
 ;;
@@ -134,6 +138,7 @@ $orange
 "
 choose "x"
 read update
+jump $update
 if [[ $update == "y" ]] ; then update="u" ; else update="" ; fi
 clear
 echo -e "
@@ -145,6 +150,7 @@ echo -e "
 "
 choose "x"
 read del
+jump $del
 if [[ $del == "y" ]] ; then del="--delete" ; else del="" ; fi
 clear
 ;;
@@ -158,6 +164,7 @@ echo -e "
 "
 choose "x"
 read dry
+jump $dry
 if [[ $dry == "y" ]] ; then dry="--dry-run -i" ; else dry="" ; fi
 clear
 echo -e "
@@ -173,6 +180,7 @@ echo -e "
 "
 choose "x"
 read hidden 
+jump $hidden
        if [[ $hidden == r ]] ; then hidden="--exclude '/.*'" 
      elif [[ $hidden == s ]] ; then hidden="-exclude '.*'"
      else                           hidden=""
@@ -233,7 +241,7 @@ $pink
 $orange
 ##############################################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal
 return 0
 }

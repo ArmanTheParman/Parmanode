@@ -16,6 +16,7 @@ $bright_blue    '.onion'$orange.
 ########################################################################################
 "
 choose xpmq ; read REMOTE_TOR_ADDR ; set_terminal
+jump $REMOTE_TOR_ADD || { invalid ; continue ; } ; set_terminal
 case $REMOTE_TOR_ADDR in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 *)
@@ -29,6 +30,7 @@ echo -e "
 
 "
 read REMOTE_PORT
+jump $REMOTE_PORT
 rm $HOME/.sparrow/config
 make_sparrow_config "fulcrumremote"
 break

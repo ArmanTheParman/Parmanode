@@ -32,9 +32,9 @@ $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; q|P|a|A) return 1 ;;
-M|m) back2main ;;
+q|Q) exit ;; q|P|a|A) return 1 ;; M|m) back2main ;;
 yolo) break ;;
 *) invalid ;;
 esac
@@ -89,7 +89,7 @@ $orange
 
 ########################################################################################
 "
-enter_continue 
+enter_continue  ; jump $enter_cont
 return 0
 }
 

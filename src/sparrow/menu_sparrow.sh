@@ -68,7 +68,7 @@ $cyan
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 nano $HOME/.sparrow/config
 continue
 ;;
@@ -100,7 +100,7 @@ $(ls $HOME/.sparrow/wallets)
 $orange
 ########################################################################################
 "
-enter_continue
+enter_continue ; jump $enter_cont
 set_terminal
 ;;
 
@@ -147,6 +147,7 @@ $cyan                (rtor) $orange   To a remote Electrum/Fulcrum server via To
 ########################################################################################
 "
 choose xpmq ; read choice ; set_terminal
+jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 

@@ -26,7 +26,7 @@ docker exec lnd lncli wallet accounts list >/dev/null 2>&1 ; } || { echo -e "
     Aborting installation. Please make a wallet and return to installing RTL.
 
 ########################################################################################
-" && enter_continue && return 1 ; }
+" && { enter_continue ; jump $enter_cont ; } && return 1 ; }
 fi
 
 mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>/dev/null
