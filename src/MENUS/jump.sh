@@ -325,7 +325,8 @@ fi
 
 code|Code|CODE)
 less $pn/src/MENUS/jump.sh
-return 1
+invalid_flag=set
+return 1 #value 1 is necessary
 ;;
 
 esac

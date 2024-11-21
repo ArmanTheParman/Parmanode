@@ -133,7 +133,7 @@ return 1
 }
 
 function invalid {
-if [[ $invalid_flag == "false" ]] ; then unset invalid_flag choice enter_cont ; return 0 ; fi
+if [[ -n $invalid_flag ]] ; then unset invalid_flag ; return 1 ; fi 
 
 set_terminal
 echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read invalid

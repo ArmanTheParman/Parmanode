@@ -44,6 +44,7 @@ hide_messages_add "scb" "1"
 break
 ;;
 esac
+break
 done
 fi # ends choice to hide
 set_terminal ; echo -e "
