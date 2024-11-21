@@ -342,20 +342,34 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 N|n) return 1 ;;
 y)
 backupdir="$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4}')"
+
 if [[ -d $backupdir ]] ; then 
-    announce "the directory:\n\n$cyan    $backupdir\n\n$orange    already exits. Aborting." 
+    announce "The directory:\n\n$cyan    $backupdir\n\n$orange    already exits. Aborting." 
     return 1
 fi
 
+if [[ -f $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
+    announce "The file$cyan btcpay_parmanode_backup.tar$orange already exists on the Desktop. Aborting."
+    return 1
+fi
+
+#backup directories
 mkdir -p $backupdir >/dev/null 2>&1
 cp -r $HOME/.btcpayserver/Plugins $backupdir/Plugins
 cp -r $HOME/.btcpayserver/Main $backupdir/Main
-docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $backupdir/btcpayserver.sql 2>&1
 cd $backupdir
+
+#backup databases
+docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $backupdir/btcpayserver.sql 2>&1 \
+  || { enter_continue "Something went wrong with the database backup. Aborting." ; return 1 ; }
+
+#tar it all up
 enter_continue "The new backup directory will now be archived to a single tar file" \
-&& tar -czvf $HOME/Desktop/btcpay_parmanode_backup.tar ./* && cd - && clear && rm -rf $backupdir \
+&& tar -czf $HOME/Desktop/btcpay_parmanode_backup.tar ./* >$dn && cd >/dev/null - >$dn && clear && rm -rf $backupdir 2>$dn \
 && success "A backup has been created and left on your Desktop - btcpay_parmanode_backup.tar"  \
-&& break
+&& return 0
+
+#error
 enter_continue "Something went wrong" ; jump $enter_cont
 return 1
 ;;
