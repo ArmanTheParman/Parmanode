@@ -245,7 +245,7 @@ $yellow
 
     The usual pre main-menu screens may come up, and you can to dismiss them
     permanently in the usual way if you want more speed.
-
+$orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
