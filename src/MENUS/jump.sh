@@ -42,7 +42,7 @@ else return 1
 fi
 ;;
 
-umbtcp|ubtcp|mbtcp|btcp)
+ubtcp|mbtcp)
 if grep -q "btcpay-end" $ic || grep -q "btccomb-end" $ic ; then
 menu_btcpay
 invalid_flag=set
