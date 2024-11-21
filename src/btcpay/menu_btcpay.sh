@@ -475,6 +475,7 @@ if ! docker cp $file btcpay:$containerfile ; then
 fi 
 
 #extract the tar file
+please_wait
 if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $containerdir" ; then
     #extract didn't work. clean up...
     enter_continue "1/2 Something went wrong extracting the backup in the container"
