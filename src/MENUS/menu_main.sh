@@ -212,20 +212,19 @@ $red$blinkon
 
     As an example, where you see...
 $cyan
-            mbitcoin|mb)
-                if grep -q "bitcoin-end" \$ic ; then
-                    menu_bitcoin
-                    menu_main
-                else 
-                    return 1
-                fi
-            ;;
+                ubitcoin|ub|mbitcoin|mb)
+                    if grep -q "bitcoin-end" \$ic ; then
+                        menu_bitcoin
+                        invalid_flag=set
+                    else return 1
+                    fi
+                ;;
 $orange
-    ... this means if you type 'mbitcoin' or 'mb' then the code below, up to the 
+    ... this means if you type 'mbitcoin' or 'ub' etc, then the code below, up to the 
     ;; will execute. It says if the text 'bitcoin-end' exists in the ic file
-    (short for installed.conf), then menu_bitcoin will run, followed by the main
-    menu. If it doesn't exist, bitcoin not being installed, the code inside the
-    else block will run, which is just return 1, ie exit the search.
+    (short for installed.conf), then menu_bitcoin will run, followed by the setting 
+    a flag, which is just a signal for a different part the code to know where to go
+    next. The 'else' part means to exit if bitcoin-end doesn't exist. 
 
 ########################################################################################
 "
