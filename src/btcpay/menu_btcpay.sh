@@ -463,7 +463,7 @@ done
 #copy backup to the container
 containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
-docker exec -du parman btcpay /bin/bash -c "rm -rf $containderdir ; mkdir $containderdir"
+docker exec -itu parman btcpay /bin/bash -c "rm -rf $containderdir ; mkdir $containderdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
     #copy didn't work. clean up...
@@ -521,7 +521,7 @@ fi
 
 #restore databases
 if docker exec -itu postgres btcpay bash -c "psql < $containerfile" ; then 
-    docker exec -du root btcpay bash -c "rm $containerfile" 
+    docker exec -itu root btcpay bash -c "rm $containerfile" 
     success "Backup restored" 
     return 0
 else
