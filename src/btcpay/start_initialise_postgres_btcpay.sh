@@ -1,5 +1,5 @@
 function  initialise_postgres_btcpay {
-# start postgress, create parman database user with script, create 2 databases.
+# start postgres, create parman database user with script, create 2 databases.
 
 start_postgres_btcpay_indocker
 
@@ -47,7 +47,7 @@ done
 
 log "btcpay" "failed to start btcpay database"
 set_terminal
-echo -e "Docker was unable to start the btcpay postgress database. Installation has$red failed$orange."
+echo -e "Docker was unable to start the btcpay postgres database. Installation has$red failed$orange."
 enter_continue
 return 1
 }

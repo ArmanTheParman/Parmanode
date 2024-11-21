@@ -241,9 +241,9 @@ menu_btcpay_man
 br)
 announce "Not available just yet"
 continue
-# yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
-#      && { backup_btcpay ; continue ; }
-#      restore_btcpay
+yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
+      && { backup_btcpay ; continue ; }
+      restore_btcpay
 ;;
 bk)
 backup_btcpay
@@ -322,34 +322,45 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode will backup your posgres database to a file. This has all your BTCPay
+    Parmanode will backup your posgres database to a file. This has your BTCPay
     server's details like the store's details and transaction data. There will also 
     be a backup of your Plugins directory.
 
     The backup will be saved to the directory $bright_blue
 
-    $HOME/Desktop/btcpayserver_backup_date/        $orange
+    $HOME/Desktop/btcpay_backup_$(date | awk '{print $1$2$3$4}')$orange
 
     Proceed?
 $cyan
                  y)$orange     Yeah, of course, backups are super important
 $cyan
-                 n)$orange     Nah
+                 n)$orange     Nah, que sera sera
 
 ########################################################################################
 "
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+N|n) return 1 ;;
 y)
-backupdir=$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4"-"$5}')
-#back up plugins dir
+backupdir="$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4}')"
+if [[ -d $backupdir ]] ; then 
+    announce "the directory:\n\n$cyan    $backupdir\n\n$orange    already exits. Aborting." 
+    return 1
+fi
+
 mkdir -p $backupdir >/dev/null 2>&1
 cp -r $HOME/.btcpayserver/Plugins $backupdir/Plugins
-docker exec -itu postgres btcpay bash -c "pg_dump -U postgres -d btcpayserver" > $backupdir/btcpayserver.sql 2>&1
-success "A backup has been created and left on your Desktop"
-break
+cp -r $HOME/.btcpayserver/Main $backupdir/Main
+docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $backupdir/btcpayserver.sql 2>&1
+cd $backupdir
+enter_continue "The new backup directory will now be archived to a single tar file" \
+&& tar -czvf $HOME/Desktop/btcpay_parmanode_backup.tar ./* && cd - && clear && rm -rf $backupdir \
+&& success "A backup has been created and left on your Desktop - btcpay_parmanode_backup.tar"  \
+&& break
+enter_continue "Something went wrong" ; jump $enter_cont
+return 1
 ;;
 *)
 invalid
@@ -411,7 +422,7 @@ esac
 if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
 
 if ! grep -iq "PostgreSQL database dump" $file ; then
-    yesorno "Doesn't seem to be a valid PostgresSQL file.
+    yesorno "Doesn't seem to be a valid Postgres SQL file.
     Ignore error and proceed to import?" || continue 
 fi
 break
@@ -639,7 +650,7 @@ enter_continue
 del)
 announce "not available just yet"
 continue
-# -d posgress, default connect to posgress, necessary otherwise it tries to connect to a database the same as the user's name
+# -d postgres, default connect to posrgres, necessary otherwise it tries to connect to a database the same as the user's name
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
 enter_continue
