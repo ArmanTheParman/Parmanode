@@ -433,8 +433,9 @@ set_terminal ; echo -e "
 
     Please type the full path of the parmanode backup file, eg:
 $cyan
-    $HOME/Desktop/btcpay_parmanode_backup.tar
-$orange
+        $HOME/Desktop/btcpay_parmanode_backup.tar
+$red
+    Remember, on Linux, paths are case sensitive.$orange
 ########################################################################################
 "
 choose xpmq ; read file ; set_terminal
