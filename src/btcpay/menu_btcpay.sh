@@ -245,9 +245,6 @@ yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore"
       && { backup_btcpay ; continue ; }
       restore_btcpay
 ;;
-bk)
-backup_btcpay
-;;
 *)
 invalid ;;
 esac  
