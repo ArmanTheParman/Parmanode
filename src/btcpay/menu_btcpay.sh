@@ -524,6 +524,7 @@ fi
 #restore databases
 if docker exec -itu postgres btcpay bash -c "psql < $containerfile" ; then 
     docker exec -itu root btcpay bash -c "rm $containerfile" 
+    docker exec -itu root btcpay rm -rf $containerdir
     success "Backup restored" 
     return 0
 else
