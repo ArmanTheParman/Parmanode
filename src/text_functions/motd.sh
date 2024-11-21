@@ -35,11 +35,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 
 if [[ $motd == 1 ]] ; then
 set_terminal ; echo -e "
@@ -56,12 +53,8 @@ $cyan
  
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 2 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -73,11 +66,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 3 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -101,11 +91,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 4 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -117,10 +104,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 5 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -137,11 +122,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 6 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -156,11 +138,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 7 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -173,12 +152,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 8 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -194,11 +169,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 9 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -213,11 +185,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 10 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -237,11 +206,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 11 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -254,13 +220,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return  ; fi
 if [[ $motd == 12 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -274,11 +235,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 13 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -289,11 +247,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 14 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -308,11 +263,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 15 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -329,11 +281,8 @@ $cyan
  
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 16 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -347,12 +296,8 @@ $cyan
  
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 17 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -370,11 +315,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 18 ]] ; then
 set_terminal_custom 52 ; echo -e "
 ########################################################################################
@@ -419,11 +361,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 19 ]] ; then
 set_terminal_custom 56 ; echo -e "
 ########################################################################################
@@ -471,11 +410,8 @@ $green
 $orange
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 20 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -491,11 +427,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 21 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -515,11 +448,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 22 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -534,12 +464,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 23 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -561,12 +487,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 24 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -584,12 +506,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 25 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -609,12 +527,8 @@ $cyan
  
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 26 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -635,11 +549,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 27 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -666,12 +577,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 28 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -688,12 +595,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 29 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -705,12 +608,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 30 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -746,12 +645,8 @@ $cyan
 $orange
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 31 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -764,12 +659,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 32 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -783,12 +674,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 33 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -802,11 +689,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 34 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -820,11 +704,8 @@ $cyan
     
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 35 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -841,11 +722,8 @@ $bright_blue
    $orange 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 36 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -871,11 +749,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 37 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -898,11 +773,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 38 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -918,12 +790,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 39 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -939,12 +807,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 40 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -959,12 +823,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 41 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -975,12 +835,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 42 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1002,12 +858,8 @@ $cyan
 
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 if [[ $motd == 43 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1031,12 +883,8 @@ $bright_blue
 $orange
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi 
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
 if [[ $motd == 44 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1050,12 +898,8 @@ $cyan
 $orange
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi 
-
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
 if [[ $motd == 45 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1082,11 +926,8 @@ $bright_blue
 $orange
 ######################################################################################## 
 "
-enter_continue ; jump $enter_cont
-read choice ; if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi
-if [[ $choice == q ]] ; then exit ; fi
-return 0
-fi 
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
 }
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1

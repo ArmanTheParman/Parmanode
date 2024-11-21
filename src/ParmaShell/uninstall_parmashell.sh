@@ -21,6 +21,7 @@ break
 ;;
 esac
 done
+fi
 
 sudo gsed -i '/Added by Parmanode below/,/Added by Parmanode above/d' "$bashrc"
 sudo gsed -i '/ParmaShell/d' "$bashrc"

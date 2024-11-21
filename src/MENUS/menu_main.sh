@@ -42,7 +42,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
-#$cyan    (h)$orange                  ${yellow}${blinkon}HINTS (new)$blinkoff$orange                                                  #
+#$cyan    (h)$orange                  ${yellow}${blinkon}Navigation shortcuts (new)$blinkoff$orange                                   #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #

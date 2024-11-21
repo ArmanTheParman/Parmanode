@@ -4,8 +4,8 @@
 #    -Backup btcpay database and plugins option
 
 Version 3.46.11
+     -Many new shortcuts to navigate around
      -Sneaky hack to allow Tmux inception
-     -Many shortcuts to navigate around
 
 Version 3.46.10
      -better log viewing with tmux

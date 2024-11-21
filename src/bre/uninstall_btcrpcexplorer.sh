@@ -1,5 +1,5 @@
 function uninstall_btcrpcexplorer {
-    
+while true ; do 
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
