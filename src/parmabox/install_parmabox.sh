@@ -36,6 +36,8 @@ set_terminal ; echo -e "
 "
 read choice ; set_terminal 
 jump $choice || { invalid ; continue ; } ; set_terminal
+break
+done
 else choice=${1} 
 fi
 
