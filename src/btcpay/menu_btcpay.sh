@@ -239,8 +239,8 @@ man)
 menu_btcpay_man
 ;;
 br)
-#announce "Not available just yet"
-#continue
+announce "Not available just yet"
+continue
 yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
       && { backup_btcpay ; continue ; }
       restore_btcpay
