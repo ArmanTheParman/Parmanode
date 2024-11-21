@@ -463,7 +463,7 @@ done
 #copy backup to the container
 containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
-docker exec -itu parman btcpay /bin/bash -c "rm -rf $containderdir ; mkdir $containderdir"
+docker exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
     #copy didn't work. clean up...
