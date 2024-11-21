@@ -364,8 +364,7 @@ docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $backupdir/b
   || { enter_continue "Something went wrong with the database backup. Aborting." ; return 1 ; }
 
 #tar it all up
-enter_continue "The new backup directory will now be archived to a single tar file" \
-&& tar -czf $HOME/Desktop/btcpay_parmanode_backup.tar ./* >$dn && cd >/dev/null - >$dn && clear && rm -rf $backupdir 2>$dn \
+tar -czf $HOME/Desktop/btcpay_parmanode_backup.tar ./* >$dn && cd >/dev/null - >$dn && clear && rm -rf $backupdir 2>$dn \
 && success "A backup has been created and left on your Desktop - btcpay_parmanode_backup.tar"  \
 && return 0
 
