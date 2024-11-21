@@ -397,7 +397,7 @@ set_terminal ; echo -e "
     Parmanode will restore your backup files to the current BTCPay installation.
     This is not a generic restore procedure, but specific to a Parmanode BTCPay
     instance with its own specialised backup - ie the one created with parmanode, 
-    that generated the file$cyan btcpay_parmanode_backup.tar.$cyan
+    that generated the file$cyan btcpay_parmanode_backup.tar.$orange
 
     If you need assistance with a non-standard recovery, you can hire Parman to assist.
     
