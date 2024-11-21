@@ -179,6 +179,8 @@ truncatedebuglog
 if ! grep -q "parmashell_functions" $bashrc ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >/dev/null 2>&1
 fi
+
+jump $1
 # This is the main program, which is a menu that loops.
 menu_main
 
