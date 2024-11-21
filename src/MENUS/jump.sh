@@ -2,122 +2,122 @@ function jump {
 
 case $1 in
 
-mbitcoin|mb)
+ubitcoin|ub|mbitcoin|mb)
 if grep -q "bitcoin-end" $ic ; then
 menu_bitcoin
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-melectrs|mers)
+uelectrs|uers|melectrs|mers)
 if grep -q "electrs-end" $ic || grep -q "electrsdkr-end" $ic ; then
 menu_electrs
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mfulcrum|mf)
+ufulcrum|uf|mfulcrum|mf)
 if grep -q "fulcrum-end" $ic ; then
 menu_fulcrum
-menu_main
+invalid_flag=set
 else return 1 
 fi
 ;;
 
-melectrumx|mex)
+uelectrumx|uex|melectrumx|mex)
 if grep -q "electrumx-end" $ic ; then
 menu_electrumx
-menu_main
+invalid_flag=set
 else return 1 
 fi
 ;;
 
-mmempool|mmem)
+umempool|umem|mmempool|mmem)
 if grep -q “mempool-end” $ic ; then
 menu_mempool
-menu_main
+invalid_flag=set
 else return 1 
 fi
 ;;
 
-mbtcp|btcp)
+umbtcp|ubtcp|mbtcp|btcp)
 if grep -q "btcpay-end" $ic || grep -q "btccomb-end" $ic ; then
 menu_btcpay
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mlnd)
+ulnd|mlnd)
 if grep -q "lnd-end" $ic ; then
 menu_lnd
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mlt)
+ult|mlt)
 if grep -q “litd-end” $ic ; then
 menu_lnd
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-melectrum|me)
+uelectrum|ue|melectrum|me)
 if grep -q "electrum-end" $ic ; then
 menu_electrum
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-msparrow|ms)
+usparrow|us|msparrow|ms)
 if grep -q “sparrow-end” $ic ; then
 menu_sparrow
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mspecter)
+uspecter|mspecter)
 if grep -q "specter-end" $ic ; then
 menu_specter
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mbitbox|mbb)
+ubitbox|ubb|mbitbox|mbb)
 if grep -q "bitbox-end" $ic ; then
 menu_bitbox
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mgreen|mg)
+ugreen|ug|mgreen|mg)
 if grep -q "green-end" $ic ; then
 menu_green
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mll|mledger)
+uledger|ull|mll|mledger)
 if grep -q "ledger-end" $ic ; then
 menu_ledger
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtrezor)
+utrezor|mtrezor)
 if grep -q "trezor-end" $ic ; then
 menu_trezor
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
@@ -128,197 +128,189 @@ menu_main
 
 add|madd)
 menu_add
-menu_main
+invalid_flag=set
 ;;
 
-addn|addnode|maddnode)
+an|addn|addnode|maddnode)
 menu_add_node
-menu_main
+invalid_flag=set
 ;;
 
-addw|addwallet|maddwallet)
+aw|addw|addwallet|maddwallet)
 menu_add_wallet
-menu_main
+invalid_flag=set
 ;;
 
-addo|addother|maddother)
+ao|addo|addother|maddother)
 menu_add_other
-menu_main
+invalid_flag=set
 ;;
 
-adde|addextra|maddextra)
+ae|adde|addextra|maddextra)
 menu_add_extra
-menu_main
+invalid_flag=set
 ;;
 
-remove|mremove)
+mremove)
 menu_remove
-menu_main
+invalid_flag=set
 ;;
 
 use|muse)
 menu_use
-menu_main
+invalid_flag=set
 ;;
 
 tools|mtools)
 menu_tools
-menu_main
+invalid_flag=set
 ;;
 
 tools2|mtools2)
 menu_tools2
-menu_main
+invalid_flag=set
 ;;
 
-mthunderhub|mthub|mth)
+uthunderhub|uthub|uth|mthunderhub|mthub|mth)
 if grep -q "thunderhub-end" $ic ; then
 menu_thunderhub
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mrtl)
+urtl|mrtl)
 if grep -q "rtl-end" $ic ; then
 menu_rtl
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mnostrrelay|mnr)
+unostrrelay|unr|mnostrrelay|mnr)
 if grep -q "nostrrelay-end" $ic ; then
 menu_nostrrelay
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mbre)
+ubre|mbre)
 if grep -q "bre-end" $ic ; then
 menu_bre
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mpj|mparmajoin|mjoinmarket|mjm)
+upj|uparmajoin|ujoinmarket|ujm|mpj|mparmajoin|mjoinmarket|mjm)
 if grep -q "joinmarket-end" $ic ; then
 menu_joinmarket
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mnextcloud|mnxt|mnext)
+unextcloud|unxt|unext|mnextcloud|mnxt|mnext)
 if grep -q "nextcloud" $ic ; then
 menu_nextclourd
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mparmabox|mpbx)
+uparmabox|upbx|mparmabox|mpbx)
 if grep -q "parmabox-end" $ic ; then
 menu_parmabox
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mqbittorrent|mqbt)
+uqbittorrent|uqbt|mqbittorrent|mqbt)
 if grep -q "qbittorrent-end" $ic ; then
 menu_qbittorrent
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mpublicpool|mpool)
+upublicpool|upool|mpublicpool|mpool)
 if grep -q "publicpool-end" $ic ; then
 menu_public_pool
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtor)
+utor|mtor)
 if grep -q "tor-end" $ic ; then
 menu_tor
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtssh|mtorssh)
+utorssh|utssh|mtssh|mtorssh)
 if grep -q "torssh-end" $ic ; then
 menu_torssh
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtorssh)
-if grep -q "torssh-end" $ic ; then
-menu_torssh
-menu_main
-else return 1
-fi
-;;
-
-many|mad)
+uany|uad|many|mad)
 if grep -q "anydesk-end" $ic ; then
 menu_anydesk
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mpih|mph)
+upih|uph|mpih|mph)
 if grep -q "pihole-end" $ic ; then
 menu_pihole
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtr|mtorrelay)
+utorrelay|utr|mtr|mtorrelay)
 if grep -q "torrely-end" $ic ; then
 menu_torrelay
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mtb|mtorbrowser)
+utorbrowser|utb|mtb|mtorbrowser)
 if grep -q "torbrowser-end" $ic ; then
 menu_torbrowser
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mwps|mws|mwebsite)
+uwebsite|uwps|uws|mwps|mws|mwebsite)
 if grep -q "website-end" $ic ; then
 menu_website
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mngx|mng|mnginx)
+unginx|ungx|ung|mngx|mng|mnginx)
 if grep -q "nginx-end" $ic ; then
 menu_nginx
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;
 
-mbtcr|mbtcrecover)
+ubtcrecover|ubtcr|mbtcr|mbtcrecover)
 if grep -q "btcrecover-end" $ic ; then
 menu_btcrecover
-menu_main
+invalid_flag=set
 else return 1
 fi
 ;;

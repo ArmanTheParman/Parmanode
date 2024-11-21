@@ -99,7 +99,7 @@ o|O)
 menu_overview 
 ;;
 
-a|add|Add|ADD)
+add|Add|ADD)
     menu_add
     ;;
 use|USE|Use|u|U)
