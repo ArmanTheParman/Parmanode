@@ -656,5 +656,3 @@ invalid
 esac
 done
 }
-
-restore_btcpay
