@@ -42,6 +42,7 @@ https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
 
 sudo apt-get update -y
 
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
@@ -55,8 +56,11 @@ set_terminal ; echo -e "
 ########################################################################################0
 "
 read choice ; set_terminal
-jump $choice
-case $choice in a|A) return 1 ;; esac
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in a|A) return 1 ;; 
+esac
+break
+done
 
 sudo apt-get upgrade -y
 sudo apt-get install -y ca-certificates 

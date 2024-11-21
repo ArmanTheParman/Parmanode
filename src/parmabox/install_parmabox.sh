@@ -16,6 +16,7 @@ return 1
 fi
 
 if [[ $1 != silent ]] ; then
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -34,9 +35,10 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read choice ; set_terminal 
+jump $choice || { invalid ; continue ; } ; set_terminal
 else choice=${1} 
 fi
-jump $choice
+
 case $choice in 
 boring|Boring) local pbox=boring ;;
 silent|*)
@@ -47,7 +49,7 @@ set_terminal ; echo -e "
     
     At some point during the install process, you may be asked for it's password.
 
-    The password is$cyan \"parmanode\"$orange.
+    The password is$cyan 'parmanode'$orange.
 
 ########################################################################################
 "

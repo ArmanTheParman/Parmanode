@@ -1,6 +1,7 @@
 function scb {
 source $HOME/.parmanode/hide_messages.conf
 if [[ $message_scb != 1 ]] ; then
+while true ; do
 set_terminal_bit_higher ; echo -e "
 ########################################################################################
 $cyan
@@ -36,10 +37,14 @@ $orange
 ########################################################################################
 "
 read choice
-if [[ $choice == "Building 7 did not controlled demolition itself" ]] ; then
-hide_messages_add "scb" "1" ; 
-fi
-jump $choice
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+"Building 7 did not controlled demolition itself")
+hide_messages_add "scb" "1"  
+break
+;;
+esac
+done
 fi # ends choice to hide
 set_terminal ; echo -e "
 ########################################################################################

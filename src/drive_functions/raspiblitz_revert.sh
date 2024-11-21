@@ -1,6 +1,7 @@
 function raspiblitz_revert {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 cd
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -11,8 +12,9 @@ $orange
 ########################################################################################
 "
 choose "eq" ; read choice
-jump $choice
-case $choice in q|Q|P|p) return 1 ;; *) true ;; esac
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in q|Q|P|p) return 1 ;; *) break ;; esac
+done
 
 while sudo mount | grep -q parmanode ; do 
 set_terminal ; echo -e "
