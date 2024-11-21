@@ -323,7 +323,10 @@ else return 1
 fi
 ;;
 
-
+code|Code|CODE)
+less $pn/src/MENUS/jump.sh
+return 1
+;;
 
 esac
 }

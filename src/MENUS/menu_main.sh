@@ -42,7 +42,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (o)$orange                  Overview/Status of Programs                                  #
 #                                                                                      #
-#$cyan    (h)$orange                  ${yellow}${blinkon}Navigation shortcuts (new)$blinkoff$orange                                   #
+#$cyan    (ns)$orange                 ${yellow}${blinkon}Navigation shortcuts (new)$blinkoff$orange                                   #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
@@ -85,7 +85,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # it repeats because case is inside a while loop.
 
 q|Q) exit ;;
-h) hints ;;
+ns) navigation_shortcuts ;;
 aa)
 if [[ $announcements == off ]] ; then
 sudo gsed -i "/announcements=/d" $hm 
@@ -186,8 +186,8 @@ invalid ; clear ;;
 esac ; done ; return 0
 }
 
-function hints {
-set_terminal ; echo -e "
+function navigation_shortcuts {
+set_terminal_custom 44 ; echo -e "
 ########################################################################################
 $red$blinkon
                                G O O D   N E W S  ! ! $blinkoff$orange
@@ -199,19 +199,34 @@ $red$blinkon
     course, but now you can jump around to where you want to go if you remember the
     commands.
 
-    You can type 'm' (for menu) and the abbreviation or full name of the program. 
-    
-
     Eg, for bitcoin, you can type:
-$green
-                    mb$orange    or$green   mbitcoin$orange
+    $green
+                        mb$orange    or$green   mbitcoin$orange
 
-   for electrs:
-            $green
-                    mers$orange  or$green    melectrs$orange
-$pink    
-    Enjoy
+    for electrs:
+                $green
+                        mers$orange  or$green    melectrs$orange
+
+    To see all the possilble shortcuts, have a look at the code (type$cyan 'code'$orange) and
+    $cyan<enter>$orange from here... no, actually, almost from anywhere - nice huh?
+
+    As an example, where you see...
+$cyan
+            mbitcoin|mb)
+                if grep -q "bitcoin-end" \$ic ; then
+                    menu_bitcoin
+                    menu_main
+                else 
+                    return 1
+                fi
+            ;;
 $orange
+    ... this means if you type 'mbitcoin' or 'mb' then the code below, up to the 
+    ;; will execute. It says if the text 'bitcoin-end' exists in the ic file
+    (short for installed.conf), then menu_bitcoin will run, followed by the main
+    menu. If it doesn't exist, bitcoin not being installed, the code inside the
+    else block will run, which is just return 1, ie exit the search.
+
 ########################################################################################
 "
 enter_continue

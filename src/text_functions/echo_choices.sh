@@ -133,12 +133,13 @@ return 1
 }
 
 function invalid {
+if [[ $invalid_flag == "false" ]] ; then unset invalid_flag choice enter_cont ; return 0 ; fi
 
 set_terminal
-
 echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read invalid
 if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
 return 0
+
 }
 
 function please_wait_no_clear { 
