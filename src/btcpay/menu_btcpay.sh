@@ -317,16 +317,18 @@ if [[ $btcpayrunning != "true" ]] ; then announce "BTCPay needs to be running." 
 
 while true ; do
 set_terminal ; echo -e "
+########################################################################################$cyan
+                            BTCPAY PARMANODE BACKUP$orange
 ########################################################################################
 
     Parmanode will backup your posgres database to a file. This has your BTCPay
     server's details like the store's details and transaction data. There will also 
     be a backup of your Plugins directory.
 
-    The backup will be saved to the directory $bright_blue
-
-    $HOME/Desktop/btcpay_backup_$(date | awk '{print $1$2$3$4}')$orange
-
+    The backup will be saved as a tar archive file to the desktop as:
+$cyan
+    btcpay_parmanode_backup.tar
+$orange
     Proceed?
 $cyan
                  y)$orange     Yeah, of course, backups are super important
@@ -341,37 +343,40 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 N|n) return 1 ;;
 y)
-backupdir="$HOME/Desktop/btcpayserver_backup_$(date | awk '{print $1$2$3$4}')"
+backupdir="$HOME/Desktop/" ; mkdir -p $backupdir >/dev/null 2>&1
+target="$backupdir/btcpay_parmanode_backup.tar"
+tempdir="$(mktemp -d)"
 
-if [[ -d $backupdir ]] ; then 
-    announce "The directory:\n\n$cyan    $backupdir\n\n$orange    already exits. Aborting." 
-    return 1
-fi
-
-if [[ -f $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
-    announce "The file$cyan btcpay_parmanode_backup.tar$orange already exists on the Desktop. Aborting."
-    return 1
+# check for pre-existance
+if [[ -f $target ]] ; then
+    yesorno "The file$cyan $target$orange already exists.
+                   $red    
+             \r    OVERWRITE??$orange" || return 1
 fi
 
 #backup directories
-mkdir -p $backupdir >/dev/null 2>&1
-cp -r $HOME/.btcpayserver/Plugins $backupdir/Plugins
-cp -r $HOME/.btcpayserver/Main $backupdir/Main
-cd $backupdir
+cp -r $HOME/.btcpayserver/Plugins   $tempdir/Plugins
+cp -r $HOME/.btcpayserver/Main      $tempdir/Main
 
 #backup databases
-docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $backupdir/btcpayserver.sql 2>&1 \
-  || { enter_continue "Something went wrong with the database backup. Aborting." ; return 1 ; }
+if ! docker exec -itu postgres btcpay bash -c "pg_dumpall -U postgres" > $tempdir/btcpayserver.sql 2>&1 ; then 
+    rm -rf $tempdir 
+    enter_continue "Something went wrong with the database backup. Aborting." 
+    return 1
+fi
 
 #tar it all up
-tar -czf $HOME/Desktop/btcpay_parmanode_backup.tar ./* >$dn && cd >/dev/null - >$dn && clear && rm -rf $backupdir 2>$dn \
-&& success "A backup has been created and left on your Desktop - btcpay_parmanode_backup.tar"  \
-&& return 0
-
-#error
-enter_continue "Something went wrong" ; jump $enter_cont
-return 1
+if tar -czf $target $tempdir/* >$dn 2>&1 ; then
+    rm -rf $tempdir 2>$dn 
+    success "A backup has been created at $target" 
+    return 0    
+else
+    rm -rf $tempdir 2>&dn
+    enter_continue "Something went wrong" ; jump $enter_cont
+    return 1
+fi
 ;;
+
 *)
 invalid
 ;;
@@ -383,11 +388,18 @@ function restore_btcpay {
 if [[ $btcpayrunning != "true" ]] ; then announce "BTCPay needs to be running." ; return ; fi
 while true ; do
 set_terminal ; echo -e "
+########################################################################################$cyan
+                            BTCPAY PARMANODE RESTORE$orange
 ########################################################################################
 
     Parmanode will restore your backup files to the current BTCPay installation.
+    This is not a generic restore procedure, but specific to a Parmanode BTCPay
+    instance with its own specialised backup - ie the one created with parmanode, 
+    that generated the file$cyan btcpay_parmanode_backup.tar.
+
+    If you need assistance with a non-standard recovery, you can hire Parman to assist.
     
-    Do it?
+    Start the restoration?
 $cyan
                              1)$orange          Yeah, restore clean.
 $yellow                                         This will destroy the current data 
@@ -434,14 +446,14 @@ if ! tar -tf $file | grep -q "btcpayserver.sql" ; then
 announce "This tar file is missing btcpayserver.sql inside. Aborting."
 return 0
 fi
-if ! tar -tf $file | grep -q "Main" ; then 
-announce "This tar file is missing a Main directory inside. Aborting."
-return 0
-fi
-if ! tar -tf $file | grep -q "Plugins" ; then 
-announce "This tar file is missing a Plugins directory inside. Aborting."
-return 0
-fi
+# if ! tar -tf $file | grep -q "Main" ; then 
+# announce "This tar file is missing a Main directory inside. Aborting."
+# return 0
+# fi
+# if ! tar -tf $file | grep -q "Plugins" ; then 
+# announce "This tar file is missing a Plugins directory inside. Aborting."
+# return 0
+# fi
 
 break
 done
@@ -452,6 +464,7 @@ containerdir="/home/parman/backupdir"
 docker exec -du parman btcpay /bin/bash -c "rm -rf $containderdir ; mkdir $containderdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
+    #copy didn't work. clean up...
     docker exec -itu root btcpay rm -rf $containerdir
     docker exec -itu root btcpay rm -rf $containerfile
     enter_continue "Something went wrong copying the backup to the container"
@@ -460,11 +473,11 @@ fi
 
 #extract the tar file
 if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile $containerdir" ; then
-        
-        enter_continue "Something went wrong extracting the backup in the container"
-        docker exec -itu root btcpay rm -rf $containerdir
-        docker exec -itu root btcpay rm -rf $containerfile
-        return 1
+    #extract didn't work. clean up...
+    docker exec -itu root btcpay rm -rf $containerdir
+    docker exec -itu root btcpay rm -rf $containerfile
+    enter_continue "Something went wrong extracting the backup in the container"
+    return 1
 fi
 
 #Check psql file is valid
@@ -489,13 +502,25 @@ if [[ $restore_type == clean ]] ; then
         return 1
     fi
 fi
+#restore directories
+docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
+docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn
 
-#restore
-if    docker exec -itu postgres btcpay bash -c "psql < $containerfile" \
-   && docker exec -du root btcpay bash -c "rm $containerfile" 
-then 
-   success "Backup restored" 
-   return 0
+if ! docker exec -itu parman btcpay cp -r $containerdir/Main /home/parman/.btcpayserver/Main ; then
+    announce "Something went wrong - couldn't copy Main directory. Aborting."
+    return 1
+fi
+
+if ! docker exec -itu parman btcpay mv $containerdir/Plugins /home/parman/.btcpayserver/Plugins ; then
+    announce "Something went wrong - couldn't copy Plugins directory. Aborting."
+    return 1
+fi
+
+#restore databases
+if docker exec -itu postgres btcpay bash -c "psql < $containerfile" ; then 
+    docker exec -du root btcpay bash -c "rm $containerfile" 
+    success "Backup restored" 
+    return 0
 else
     docker exec -itu root btcpay rm -rf $containerdir
     docker exec -itu root btcpay rm -rf $containerfile
