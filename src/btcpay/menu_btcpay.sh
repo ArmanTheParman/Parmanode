@@ -417,9 +417,9 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please type the full path of the backup file, eg:
+    Please type the full path of the parmanode backup file, eg:
 $cyan
-    $HOME/Desktop/btcpayserver.sql
+    $HOME/Desktop/btcpay_parmanode_backup.tar
 $orange
 ########################################################################################
 "
@@ -428,22 +428,54 @@ jump $file || { invalid ; continue ; } ; set_terminal
 case $file in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 esac
-
 if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
 
-if ! grep -iq "PostgreSQL database dump" $file ; then
-    yesorno "Doesn't seem to be a valid Postgres SQL file.
-    Ignore error and proceed to import?" || continue 
+if ! tar -tf $file | grep -q "btcpayserver.sql" ; then 
+announce "This tar file is missing btcpayserver.sql inside. Aborting."
+return 0
 fi
+if ! tar -tf $file | grep -q "Main" ; then 
+announce "This tar file is missing a Main directory inside. Aborting."
+return 0
+fi
+if ! tar -tf $file | grep -q "Plugins" ; then 
+announce "This tar file is missing a Plugins directory inside. Aborting."
+return 0
+fi
+
 break
 done
 
 #copy backup to the container
-containerfile="/home/parman/backup.sql"
+containerfile="/home/parman/backup.tar"
+containerdir="/home/parman/backupdir"
+docker exec -du parman btcpay /bin/bash -c "rm -rf $containderdir ; mkdir $containderdir"
+
 if ! docker cp $file btcpay:$containerfile ; then 
-   enter_continue "Something went wrong copying the backup to the container"
-   return 1
+    docker exec -itu root btcpay rm -rf $containerdir
+    docker exec -itu root btcpay rm -rf $containerfile
+    enter_continue "Something went wrong copying the backup to the container"
+    return 1
 fi 
+
+#extract the tar file
+if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile $containerdir" ; then
+        
+        enter_continue "Something went wrong extracting the backup in the container"
+        docker exec -itu root btcpay rm -rf $containerdir
+        docker exec -itu root btcpay rm -rf $containerfile
+        return 1
+fi
+
+#Check psql file is valid
+if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' containerdir/btcpayserver.sql" ; then
+    yesorno "Doesn't seem to be a valid Postgres SQL file.
+    Ignore error and proceed to import?" || {
+        docker exec -itu root btcpay rm -rf $containerdir
+        docker exec -itu root btcpay rm -rf $containerfile
+        return 1
+    }
+fi
 
 if [[ $restore_type == clean ]] ; then
     #delete first to avoid merging - the other databases don't matter.
@@ -451,7 +483,9 @@ if [[ $restore_type == clean ]] ; then
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
     then    
-        enter_continue "Something went wrong" 
+        docker exec -itu root btcpay rm -rf $containerdir
+        docker exec -itu root btcpay rm -rf $containerfile
+        enter_continue "Something went wrong during database preparation. Aborting." 
         return 1
     fi
 fi
@@ -463,8 +497,10 @@ then
    success "Backup restored" 
    return 0
 else
-   enter_continue "something went wrong" ; jump $enter_cont 
-   return 1
+    docker exec -itu root btcpay rm -rf $containerdir
+    docker exec -itu root btcpay rm -rf $containerfile
+    enter_continue "Something went wrong with the import procedure. Aborting." ; jump $enter_cont 
+    return 1
 fi
 }
 

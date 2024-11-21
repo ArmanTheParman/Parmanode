@@ -2,6 +2,7 @@
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
 #    -Backup btcpay database and plugins option
+#    -Live BTCPay upgrade function
 
 Version 3.46.11
      -Many new shortcuts to navigate around
