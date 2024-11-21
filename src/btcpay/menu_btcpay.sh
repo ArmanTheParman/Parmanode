@@ -437,7 +437,7 @@ $cyan
 $orange
 ########################################################################################
 "
-read file ; set_terminal
+choose xpmq ; read file ; set_terminal
 jump $file || { invalid ; continue ; } ; set_terminal
 case $file in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
