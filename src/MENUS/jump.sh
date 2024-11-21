@@ -122,6 +122,10 @@ else return 1
 fi
 ;;
 
+mmain|main)
+menu_main
+;;
+
 add|madd)
 menu_add
 menu_main

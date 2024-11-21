@@ -25,7 +25,7 @@ $orange
 choose "xpmq"
 read choice
 case $choice in
-q|Q) quit 0 ;; p|P) return 1 ;; M|m) back2main ;;
+q|Q) exit 0 ;; p|P) return 1 ;; M|m) back2main ;;
 
 xxx)
 

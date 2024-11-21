@@ -115,7 +115,7 @@ $cyan      (o)$orange        OTHER...
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-q|Q) quit ;; m|M) back2main ;;
+q|Q) exit ;; m|M) back2main ;;
 p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use
