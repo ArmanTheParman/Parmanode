@@ -151,7 +151,7 @@ menu_add_extra
 invalid_flag=set
 ;;
 
-mremove)
+mremove|remove)
 menu_remove
 invalid_flag=set
 ;;
