@@ -228,8 +228,27 @@ $orange
 
 ########################################################################################
 "
-enter_continue
-jump $enter_cont 
+enter_continue ; jump $enter_cont 
+set_terminal ; echo -e "
+########################################################################################
+
+    BUT WAIT! There's more.
+
+    You can jump straight to the menu of your choice from the command line. Eg...$cyan
+
+    rp mb$orange ... to get you straigh to the Bitcoin menu.
+
+    or
+$cyan
+    rp mbtcp$orange ... to get you straight to the BTCPay menu.
+$yellow
+
+    The usual pre main-menu screens may come up, and you can to dismiss them
+    permanently in the usual way if you want more speed.
+
+########################################################################################
+"
+enter_continue ; jump $enter_cont
 return 0
 }
 
