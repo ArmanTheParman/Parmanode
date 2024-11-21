@@ -248,9 +248,6 @@ continue
 bk)
 backup_btcpay
 ;;
-res)
-restore_btcpay
-;;
 *)
 invalid ;;
 esac  
@@ -368,15 +365,19 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Parmanode will restore your backup files to the current BTCPay installation.
-
-    This will destroy the current data in BTCPay server.   
-
+    
     Do it?
 $cyan
-                             y)$orange          Yeah, restore
+                             1)$orange          Yeah, restore clean.
+$yellow                                         This will destroy the current data 
+$yellow                                         in BTCPay server.   
+$cyan
+                             2)$orange          Yeah, restore and merge.
+$yellow                                         This will merge old and new data,
+$yellow                                         results might be unpredictable.
 $cyan
                              n)$orange          Nah
-
+$orange
 
 ########################################################################################
 "
@@ -384,7 +385,14 @@ choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
-y)
+1) restore_type=clean ; break ;;
+2) restore_type=merge ; break ;;
+n) return 1 ;;
+*) invalid ;;
+esac
+done
+
+while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -395,20 +403,48 @@ $orange
 ########################################################################################
 "
 read file ; set_terminal
-if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
-if ! grep -iq "PostgreSQL database dump" $file >/dev/null 2>&1 ; then
-yesorno "Doesn't seem to be a valid PostgresSQL file. Ignore and proceed?" || continue ; fi
-docker cp $file btcpay:/home/parman/backup.sql
-#docker exec -itu postgres btcpay bash -c "pg_restore -U parman -d btcpayserver --clean /home/parman/backup.sql" &&
-#docker exec -itu postgres btcpay bash -c "psql -U postgres -d btcpayserver -f /home/parman/backup.sql" &&
-docker exec -itu posggres btcpay bash -c "pg_restore -U postgres -d btcpayserver /path/to/backup.dump" &&
-success "Backup restored" && return 0
-enter_continue "something went wrong" ; return 1
-break
-;;
+jump $file || { invalid ; continue ; } ; set_terminal
+case $file in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 esac
+
+if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
+
+if ! grep -iq "PostgreSQL database dump" $file ; then
+    yesorno "Doesn't seem to be a valid PostgresSQL file.
+    Ignore error and proceed to import?" || continue 
+fi
+break
 done
 
+#copy backup to the container
+containerfile="/home/parman/backup.sql"
+if ! docker cp $file btcpay:$containerfile ; then 
+   enter_continue "Something went wrong copying the backup to the container"
+   return 1
+fi 
+
+if [[ $restore_type == clean ]] ; then
+    #delete first to avoid merging - the other databases don't matter.
+    if ! docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS btcpayserver;'" \
+        && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
+        && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
+    then    
+        enter_continue "Something went wrong" 
+        return 1
+    fi
+fi
+
+#restore
+if    docker exec -itu postgres btcpay bash -c "psql < $containerfile" \
+   && docker exec -du root btcpay bash -c "rm $containerfile" 
+then 
+   success "Backup restored" 
+   return 0
+else
+   enter_continue "something went wrong" ; jump $enter_cont 
+   return 1
+fi
 }
 
 function menu_btcpay_log {
@@ -620,3 +656,5 @@ invalid
 esac
 done
 }
+
+restore_btcpay
