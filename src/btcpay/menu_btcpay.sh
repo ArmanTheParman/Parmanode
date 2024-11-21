@@ -368,7 +368,9 @@ fi
 #tar it all up
 if tar -czf $target $tempdir/* >$dn 2>&1 ; then
     rm -rf $tempdir 2>$dn 
-    success "A backup has been created at $target" 
+    success "A backup has been created at $target. \n\n    Please keep it safe. Use Parmanode to
+    \r    restore when ever needed. Note, lightning channels are not backed up, go to the
+    \r    LND menu for saving the static channel backup file."
     return 0    
 else
     rm -rf $tempdir 2>&dn
