@@ -485,7 +485,7 @@ if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $co
 fi
 
 #Check psql file is valid
-if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' containerdir/btcpayserver.sql" ; then
+if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' $containerdir/btcpayserver.sql" ; then
     yesorno "Doesn't seem to be a valid Postgres SQL file.
     Ignore error and proceed to import?" || {
         docker exec -itu root btcpay rm -rf $containerdir
