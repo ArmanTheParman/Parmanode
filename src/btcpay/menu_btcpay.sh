@@ -513,8 +513,11 @@ if [[ $restore_type == clean ]] ; then
         enter_continue "Something went wrong during database preparation. Aborting." 
         return 1
     fi
+    #create blank databases with correct parmanode permissions, as per installation
+    start_postgres_btcpay_indocker
+    initialise_postgres_btcpay
 fi
-#restore directories - delete first then copy in. Preserve settings first.
+#restore directories - delete first then copy in. Preserve settings file first.
 cp $HOME/.btcpayserver/Main/settings.config $HOME/.btcpayserver/settings.config_backup
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn

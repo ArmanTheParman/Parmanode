@@ -7,7 +7,7 @@ postgres_database_creation || return 1
 }
 
 function start_postgres_btcpay_indocker {
-docker exec -d -u root btcpay /bin/bash -c "service postgresql start" ||  announce "failed to start postgres database in docker"
+docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
 }
 
 
@@ -45,7 +45,6 @@ set_terminal ; echo -e "
 sleep 2
 done
 
-log "btcpay" "failed to start btcpay database"
 set_terminal
 echo -e "Docker was unable to start the btcpay postgres database. Installation has$red failed$orange."
 enter_continue
