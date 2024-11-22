@@ -1,38 +1,4 @@
 function restore_btcpay {
-while true ; do
-set_terminal ; echo -e "
-########################################################################################$cyan
-
-                            BTCPAY PARMANODE RESTORE$orange
-
-########################################################################################
-
-
-    Parmanode will restore your backup files to the current BTCPay installation.
-    This is not a generic restore procedure, but specific to a Parmanode BTCPay
-    instance with its own specialised backup - ie the one created with parmanode, 
-    that generated the file$cyan btcpay_parmanode_backup.tar.$orange
-
-    If you need assistance with a non-standard recovery, you can hire Parman to assist.
-    
-    Start the restoration?
-
-                             y)$orange          Nice
-
-                             n)$orange          Nah
-$orange
-
-########################################################################################
-"
-choose xpmq ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; n|N|p|P) return 1 ;; m|M) back2main ;;
-y) break ;;
-n) return 1 ;;
-*) invalid ;;
-esac
-done
 
 while true ; do
 unset fileselected
