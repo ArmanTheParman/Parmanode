@@ -483,7 +483,6 @@ fi
 please_wait
 if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $containerdir" ; then
     #extract didn't work. clean up...
-    enter_continue "1/2 Something went wrong extracting the backup in the container"
     docker exec -itu root btcpay rm -rf $containerdir
     docker exec -itu root btcpay rm -rf $containerfile
     enter_continue "Something went wrong extracting the backup in the container"
@@ -509,7 +508,6 @@ if [[ $restore_type == clean ]] ; then
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
     then    
-        enter_continue "PAUSE Something went wrong during database preparation. Aborting." 
         docker exec -itu root btcpay rm -rf $containerdir
         docker exec -itu root btcpay rm -rf $containerfile
         enter_continue "Something went wrong during database preparation. Aborting." 
@@ -535,7 +533,6 @@ mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.
 
 #restore databases
 if docker exec -itu postgres btcpay bash -c "psql < $containerdb" ; then 
-    enter_continue "Pause to check ouput before deleting files. Check if binary data"
     docker exec -itu root btcpay bash -c "rm $containerfile" 
     docker exec -itu root btcpay rm -rf $containerdir
     success "Backup restored" 
