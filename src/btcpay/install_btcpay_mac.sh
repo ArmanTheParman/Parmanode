@@ -1,5 +1,5 @@
 function install_btcpay_mac {
-
+debug "in btcpay mac"
 #make sure docker installed
 grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
 " \
