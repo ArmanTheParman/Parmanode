@@ -1,5 +1,4 @@
 function restore_btcpay {
-
 while true ; do
 unset fileselected
 if [[ -e $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
@@ -117,6 +116,4 @@ else
     enter_continue "Something went wrong with the import procedure. Aborting." ; jump $enter_cont 
     return 1
 fi
-
-
 }

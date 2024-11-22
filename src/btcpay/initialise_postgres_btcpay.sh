@@ -10,7 +10,6 @@ function start_postgres_btcpay_indocker {
 docker exec -d -u root btcpay /bin/bash -c "service postgresql start" 
 }
 
-
 function postgres_database_creation {
 
 rm $tmp/postgres* 2>/dev/null
