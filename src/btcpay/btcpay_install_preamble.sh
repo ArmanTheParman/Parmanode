@@ -29,8 +29,8 @@ choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-n) btcpayrestore="false" ; return 0 ;;
-r) btcpayrestore="ture"  ; return 0 ;;
+n) export BTCPAYRESTORE="false" ; return 0 ;;
+r) export BTCPAYRESTORE="ture"  ; return 0 ;;
 *) invalid ;;
 esac
 done
