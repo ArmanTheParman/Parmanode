@@ -514,6 +514,7 @@ if [[ $restore_type == clean ]] ; then
         enter_continue "Something went wrong during database preparation. Aborting." 
         return 1
     fi
+enter_continue "check dbs deleted"
     #create blank databases with correct parmanode permissions, as per installation
     start_postgres_btcpay_indocker
     initialise_postgres_btcpay
