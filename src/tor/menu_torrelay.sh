@@ -1,4 +1,5 @@
 function menu_torrelay {
+if ! grep -q "torrelay-end" $ic ; then return 0 ; fi
 while true ; do set_terminal ; echo -e "
 ########################################################################################
                  $cyan              Tor Relay Menu            $orange                   

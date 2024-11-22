@@ -1,4 +1,5 @@
 function menu_joinmarket {
+if ! grep -q "joinmarket-end" $ic ; then return 0 ; fi
 clear
 export jmcfg="$HOME/.joinmarket/joinmarket.cfg" 
 export logfile="$HOME/.joinmarket/yg_privacy.log"

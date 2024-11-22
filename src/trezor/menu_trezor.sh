@@ -1,5 +1,6 @@
 function menu_trezor {
- while true ; do set_terminal ; echo -e "
+if ! grep -q "trezor-end" $ic ; then return 0 ; fi
+while true ; do set_terminal ; echo -e "
 ########################################################################################
                  $cyan                Trezor Menu            $orange                   
 ########################################################################################

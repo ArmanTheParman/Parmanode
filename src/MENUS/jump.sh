@@ -236,7 +236,7 @@ fi
 ;;
 
 upublicpool|upool|mpublicpool|mpool)
-if grep -q "publicpool-end" $ic ; then
+if grep -q "public_pool-end" $ic ; then
 menu_public_pool
 invalid_flag=set
 else return 1
@@ -284,7 +284,7 @@ fi
 ;;
 
 utorbrowser|utb|mtb|mtorbrowser)
-if grep -q "torbrowser-end" $ic ; then
+if grep -q "torb-end" $ic ; then
 menu_torbrowser
 invalid_flag=set
 else return 1

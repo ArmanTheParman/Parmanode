@@ -1,4 +1,5 @@
 function menu_anydesk {
+if ! grep -q "anydesk-end" $ic ; then return 0 ; fi
  while true ; do set_terminal ; echo -e "
 ########################################################################################
                  $cyan               AnyDesk Menu            $orange                   

@@ -1,5 +1,5 @@
 function menu_bitcoin {
-
+if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic ; then

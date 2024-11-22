@@ -1,4 +1,5 @@
 function menu_btcrecover {
+if ! grep -q "btcrecover-end" $ic ; then return 0 ; fi
  while true ; do set_terminal ; echo -e "
 ########################################################################################
               $cyan              BTC Recover Menu            $orange                   

@@ -1,4 +1,5 @@
 function menu_specter {
+if ! grep -q "specter-end" $ic ; then return 0 ; fi
 while true ; do set_terminal ; echo -e "
 ########################################################################################
                  $cyan                Specter Menu            $orange                   

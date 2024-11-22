@@ -1,5 +1,6 @@
 function menu_green {
- while true ; do set_terminal ; echo -e "
+if ! grep -q "green-end" $ic ; then return 0 ; fi
+while true ; do set_terminal ; echo -e "
 ########################################################################################
                  $cyan              Green Wallet Menu            $orange                   
 ########################################################################################

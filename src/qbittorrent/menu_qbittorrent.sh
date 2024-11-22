@@ -1,4 +1,5 @@
 function menu_qbittorrent {
+if ! grep -q "qbittorrent-end" $ic ; then return 0 ; fi
 while true ; do 
 set_terminal ; echo -e "
 ########################################################################################$cyan

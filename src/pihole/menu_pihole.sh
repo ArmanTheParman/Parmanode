@@ -1,6 +1,6 @@
 function menu_pihole {
+if ! grep -q "pihole-end" $ic ; then return 0 ; fi
 while true ; do 
-
 if docker ps | grep -q pihole ; then
 local piholerunning="Running"
 else

@@ -1,4 +1,5 @@
 function menu_torbrowser {
+if ! grep -q "torb-end" $ic ; then return 0 ; fi
 set_terminal ; echo -e "
 ########################################################################################
 

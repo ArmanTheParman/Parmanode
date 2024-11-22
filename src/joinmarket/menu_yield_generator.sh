@@ -1,5 +1,5 @@
 function menu_yield_generator {
-
+if ! grep -q "joinmarket-end" $ic ; then return 0 ; fi
 #grep "setting onion hostname to" ./yg_privacy.log | tail -n1 | grep -oE 'hostname to :.+$'
 
 while true ; do

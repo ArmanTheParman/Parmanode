@@ -1,4 +1,5 @@
 function menu_joinmarketwallet {
+if ! grep -q "joinmarket-end" $ic ; then return 0 ; fi
 while true ; do
 set_terminal ; echo -en "
 ########################################################################################$cyan

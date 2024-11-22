@@ -1,5 +1,5 @@
 function menu_mempool {
-
+if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 
 #gsed on Macs creates a backup with an E at the end.

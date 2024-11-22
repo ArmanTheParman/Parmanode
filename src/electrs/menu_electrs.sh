@@ -1,5 +1,5 @@
 function menu_electrs {
-
+if ! grep -q "electrs-end" $ic ; then return 0 ; fi
 while true ; do
 
 if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2

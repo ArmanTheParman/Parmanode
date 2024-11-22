@@ -1,5 +1,5 @@
 function menu_public_pool {
-
+if ! grep -q "public_pool-end" $ic ; then return 0 ; fi
 while true ; do 
 unset status_tor_text status_tor ONION_ADDR_PP tor_URL
 

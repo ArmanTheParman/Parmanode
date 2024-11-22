@@ -1,4 +1,5 @@
 function menu_btcpay {
+if ! grep -q "btcpay.*end" $ic ; then return 0 ; fi
 while true ; do
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
 

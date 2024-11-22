@@ -1,5 +1,5 @@
 function menu_lnd_wallet {
-
+if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
 while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
                                 LND Menu${orange} - v$lnd_version                               

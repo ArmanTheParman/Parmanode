@@ -1,4 +1,5 @@
 function menu_sparrow {
+if ! grep -q "sparrow-end" $ic ; then return 0 ; fi
 while true ; do 
 set_terminal
 unset sversion

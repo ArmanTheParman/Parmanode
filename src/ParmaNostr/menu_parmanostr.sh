@@ -1,5 +1,6 @@
 function menu_parmanostr {
- while true ; do set_terminal ; echo -e "
+if ! grep -q "parmanostr-end" $ic ; then return 0 ; fi
+while true ; do set_terminal ; echo -e "
 ########################################################################################
                    $cyan               Parmanostr Menu            $orange                   
 ########################################################################################

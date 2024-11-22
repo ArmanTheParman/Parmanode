@@ -1,4 +1,5 @@
 function menu_electrumx {
+if ! grep -q "electrumx-end" $ic ; then return 0 ; fi
 #code template for docker version and Mac version entered but not yet functional
 unset refresh
 logfile=$HOME/.parmanode/run_electrumx.log 

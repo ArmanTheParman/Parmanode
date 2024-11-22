@@ -1,5 +1,5 @@
 function menu_tor_webserver {
-
+if ! grep -q "tor-server-end" $ic ; then return 0 ; fi
 server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
 
 

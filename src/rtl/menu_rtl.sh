@@ -1,5 +1,5 @@
 function menu_rtl {
-
+if ! grep -q "rtl-end" $ic ; then return 0 ; fi
 while true ; do 
 unset tor_message ONION_ADDR_RTL
 

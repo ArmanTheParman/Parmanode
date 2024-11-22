@@ -1,6 +1,5 @@
 function menu_thunderhub {
-
-
+if ! grep -q "thunderhub-end" $ic ; then return 0 ; fi
 while true ; do
 
 source $pc >/dev/null

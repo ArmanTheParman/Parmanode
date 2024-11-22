@@ -1,4 +1,5 @@
 function menu_lnbits {
+if ! grep -q "lnbits-end" $ic ; then return 0 ; fi
 while true ; do set_terminal ; echo -e "
 ########################################################################################
                                 $cyan LNbits Menu     $orange 

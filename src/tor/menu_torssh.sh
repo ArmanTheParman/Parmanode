@@ -1,5 +1,5 @@
 function menu_torssh {
-
+if ! grep -q "torssh-end" $ic ; then return 0 ; fi
 get_onion_address_variable ssh
 
 while true ; do 

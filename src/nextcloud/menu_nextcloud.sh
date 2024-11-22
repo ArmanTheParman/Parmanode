@@ -1,5 +1,5 @@
 function menu_nextcloud {
-
+if ! grep -q "nextcloud-end" $ic ; then return 0 ; fi
 while true ; do 
 unset nextcloud_running
 source $pc

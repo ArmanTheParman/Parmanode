@@ -1,4 +1,5 @@
 function menu_lnd_more {
+if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
 store_LND_container_IP
 source $pc
 menuDockerIP="$bright_blue                 IP address of LND (Docker Contaier) = $LNDIP$orange"

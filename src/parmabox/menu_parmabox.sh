@@ -1,6 +1,6 @@
 function menu_parmabox {
+if ! grep -q "parmabox-end" $ic ; then return 0 ; fi
 while true ; do 
-
 if ! docker ps >$dn 2>&1 ; then
     dockerrunning="
                               ${red}Warning: Docker is not running${orange}

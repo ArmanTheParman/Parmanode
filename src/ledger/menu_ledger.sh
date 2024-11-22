@@ -1,4 +1,5 @@
 function menu_ledger {
+if ! grep -q "ledger-end" $ic ; then return 0 ; fi
 while true ; do set_terminal ; echo -e "
 ########################################################################################$cyan
                                   Ledger Live Menu            $orange                   
