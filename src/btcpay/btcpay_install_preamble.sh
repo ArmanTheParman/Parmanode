@@ -5,6 +5,9 @@ set_terminal ; echo -e "
 
                            Install BTCPay - NEW or RESTORE?
 $orange
+########################################################################################
+
+
     BTCPay Server is a self-hosted, open-source bitcoin payment processor. It will
     connect to your own Bitcoin Core node and LND node.
 
@@ -15,13 +18,15 @@ $orange
 
     You can start a fresh installation, or restore from a previous backup. The backup
     file must have been created by Parmanode for the restoration to work as expected.
+    It needs to be on the computer  -easiest is to copy the backupfile to the Desktop.
 
     You have choices...
 $cyan
-                       
+
                       n)$orange         Install BTCPay Server $green(new)$orange
 $cyan
                       r)$orange         Install BTCPay Server $red(restore)$orange
+
 
 ########################################################################################
 "

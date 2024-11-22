@@ -56,7 +56,12 @@ function postgres_database_creation_commands {
 sleep 1
 docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" >/dev/null 2>&1
 sleep 2
+if [[ $BTCPAYRESTORE == "true" ]] ; then
+restore_btcpay
+elif [[ $BTCPAYRESTORE == "false" ]] ; then
 docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
+fi
+
 }
 
 
