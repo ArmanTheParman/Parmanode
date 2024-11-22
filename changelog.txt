@@ -4,6 +4,8 @@
 #    -Backup btcpay database and plugins option
 #    -Live BTCPay upgrade function
 
+Version 3.46.12
+     -BTCPay v2.0.3 & restore option when installing
 Version 3.46.11
      -Many new shortcuts to navigate around
      -Sneaky hack to allow Tmux inception
