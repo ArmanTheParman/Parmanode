@@ -468,6 +468,7 @@ done
 #copy backup to the container
 containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
+containerdb="$containerdir/btcpayserver.sql"
 docker exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
@@ -489,10 +490,9 @@ if ! docker exec -itu parman btcpay /bin/bash -c "tar -xvf $containerfile -C $co
     return 1
 fi
 
-#Check psql file is valid
-if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' $containerdir/btcpayserver.sql" ; then
-    yesorno "Doesn't seem to be a valid Postgres SQL file.
-    Ignore error and proceed to import?" || {
+#Check psql db file is valid
+if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database dump' $containerdb" ; then
+    yesorno "Doesn't seem to be a valid Postgres SQL file.\n    Ignore error and proceed to import?" || {
         docker exec -itu root btcpay rm -rf $containerdir
         docker exec -itu root btcpay rm -rf $containerfile
         return 1
@@ -502,7 +502,6 @@ fi
 #stop databases
 echo -e "\n${green}Stopping databases...$orange"
 docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" " >$dn 2>&1
-sleep 2
 
 if [[ $restore_type == clean ]] ; then
     #delete first to avoid merging - the other databases don't matter.
@@ -510,6 +509,7 @@ if [[ $restore_type == clean ]] ; then
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS nbxplorer;'" \
         && docker exec -itu postgres btcpay bash -c "psql -U postgres -c 'DROP DATABASE IF EXISTS postgres;'"  
     then    
+        enter_continue "PAUSE Something went wrong during database preparation. Aborting." 
         docker exec -itu root btcpay rm -rf $containerdir
         docker exec -itu root btcpay rm -rf $containerfile
         enter_continue "Something went wrong during database preparation. Aborting." 
@@ -534,7 +534,7 @@ fi
 mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.config >$dn 2>&1
 
 #restore databases
-if docker exec -itu postgres btcpay bash -c "psql < $containerfile" ; then 
+if docker exec -itu postgres btcpay bash -c "psql < $containderdb" ; then 
     enter_continue "Pause to check ouput before deleting files. Check if binary data"
     docker exec -itu root btcpay bash -c "rm $containerfile" 
     docker exec -itu root btcpay rm -rf $containerdir
