@@ -35,7 +35,7 @@ $orange
 "
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
-else choice=s 
+else choice=hfsp 
 fi
 
 case $choice in
