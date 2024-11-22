@@ -1,5 +1,6 @@
 function menu_settings {
 while true ; do
+debug "in settings"
 source $hm >/dev/null 2>&1 #hide messages
 set_terminal ; echo -ne "
 ########################################################################################$cyan
