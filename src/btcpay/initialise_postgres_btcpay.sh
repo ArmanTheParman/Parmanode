@@ -54,7 +54,10 @@ return 1
 
 function postgres_database_creation_commands {
 sleep 1
-docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" >/dev/null 2>&1
+debug "btcpayrestore... $BTCPAYRESTORE ; also remove # before >dev/null next"
+######################   ######################   ######################   ######################   
+docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" #>/dev/null 2>&1
+debug "after postgres script"
 sleep 2
 if [[ $BTCPAYRESTORE == "true" ]] ; then
 restore_btcpay
