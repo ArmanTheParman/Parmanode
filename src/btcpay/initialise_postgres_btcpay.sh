@@ -93,7 +93,7 @@ fi
 
 docker exec -itu postgres btcpay bash -c "
 for conf in /etc/postgresql/*/main/pg_hba.conf; do
-  sed -i '1i host    all             parman          127.0.0.1/32            scram-sha-256' \$conf
+  sed -i '1i host    all             parman          127.0.0.1/32            md5' \$conf
 done
 "
 docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"
