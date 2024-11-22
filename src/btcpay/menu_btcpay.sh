@@ -469,7 +469,7 @@ done
 containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
 containerdb="$containerdir/btcpayserver.sql"
-restore_log="/home/parman/restore_log.txt"
+restore_log="/var/lib/postgresql/restore_log.txt"
 docker exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
