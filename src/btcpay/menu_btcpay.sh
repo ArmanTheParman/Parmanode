@@ -469,6 +469,7 @@ done
 containerfile="/home/parman/backup.tar"
 containerdir="/home/parman/backupdir"
 containerdb="$containerdir/btcpayserver.sql"
+restore_log="/home/parman/restore_log.txt"
 docker exec -itu parman btcpay /bin/bash -c "rm -rf $containerdir ; mkdir $containerdir"
 
 if ! docker cp $file btcpay:$containerfile ; then 
@@ -535,7 +536,7 @@ fi
 mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.config >$dn 2>&1
 
 #restore databases
-if docker exec -itu postgres btcpay bash -c "psql < $containerdb" ; then 
+if docker exec -itu postgres btcpay bash -c "psql < $containerdb >/home/parman/$restore_log 2>&1" ; then 
     docker exec -itu root btcpay bash -c "rm $containerfile" 
     docker exec -itu root btcpay rm -rf $containerdir
     success "Backup restored" 
@@ -546,6 +547,9 @@ else
     enter_continue "Something went wrong with the import procedure. Aborting." ; jump $enter_cont 
     return 1
 fi
+
+docker exec -itu postgres btcpay bash -c "psql -U postgres \"ALTER ROLE parman WITH PASSWORD 'NietShitcoin' VALID UNTIL 'infinity';\""
+
 }
 
 function menu_btcpay_log {
