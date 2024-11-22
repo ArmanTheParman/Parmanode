@@ -244,7 +244,8 @@ br)
 #continue
 yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
       && { backup_btcpay ; continue ; }
-      restore_btcpay
+      announce "Restoration is only possible if you uninstall BTCPay Server first, 
+                \r    then choose to restore during the install process."
 ;;
 *)
 invalid ;;
