@@ -428,12 +428,17 @@ esac
 done
 
 while true ; do
+unset fileselected
 if [[ -e $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
-if yesorno "Do you want to use this file to restore?\n  $cyan
-        \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" ; then
 
-    file="$HOME/Desktop/btcpay_parmanode_backup.tar"
-else
+    if yesorno "Do you want to use this file to restore?\n  $cyan
+            \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" ; then
+        fileselected="true"
+        file="$HOME/Desktop/btcpay_parmanode_backup.tar"    
+    fi
+fi
+
+if [[ -z $fileselected ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
