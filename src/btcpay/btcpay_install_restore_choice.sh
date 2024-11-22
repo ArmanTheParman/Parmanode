@@ -1,4 +1,4 @@
-function btcpay_install_preamble {
+function btcpay_install_restore_choice {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################$cyan
@@ -35,7 +35,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) export BTCPAYRESTORE="false" ; return 0 ;;
-r) export BTCPAYRESTORE="ture"  ; return 0 ;;
+r) export BTCPAYRESTORE="true"  ; return 0 ;;
 *) invalid ;;
 esac
 done
