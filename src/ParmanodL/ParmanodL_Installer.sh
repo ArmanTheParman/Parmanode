@@ -226,7 +226,7 @@ if ! git config --global user.name ; then git config --global user.name Parman ;
 # Source Parmanode & ParmanodL scripts to get needed functions
 
     for file in ~/parman_programs/parmanode/src/**/*.sh ; do 
-		if [[ $file != *"/postgres_script.sh" ]]; then
+		if [[ $file != *"/postgres_script.sh" ]]; then #can remove later
 	    source $file 
         fi 
     done

@@ -5,7 +5,7 @@ unset fileselected
 if [[ -e $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
 
     if yesorno "Do you want to use this file to restore?\n  $green
-            \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" "y" Yes" "n" "No, something different" ; then
+            \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" "y" "Yes" "n" "No, something different" ; then
         fileselected="true"
         file="$HOME/Desktop/btcpay_parmanode_backup.tar"    
     fi

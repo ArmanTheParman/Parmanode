@@ -15,7 +15,7 @@ sudo true ;
 	#length of 1, attach its name to the variable "file" then run the code below, 
 	#looping so each file gets sourced.
 
-		if [[ $file != *"/postgres_script.sh" ]]; then #The if statement excludes one file
+		if [[ $file != *"/postgres_script.sh" ]]; then #The if statement excludes one file - can remove later.
 	    source $file #"source" or also represented by "." means to run the code in the file.
 		#They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
 		# this program.  

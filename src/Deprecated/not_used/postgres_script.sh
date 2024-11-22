@@ -1,5 +1,8 @@
 #!/usr/bin/expect -f
 
+#deprecated
+return 0
+
 #This is executed by the Dockerfile
 
 set timeout -1

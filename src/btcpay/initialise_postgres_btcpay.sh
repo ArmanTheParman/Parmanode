@@ -54,10 +54,7 @@ return 1
 
 function postgres_database_creation_commands {
 sleep 1
-debug "btcpayrestore... $BTCPAYRESTORE ; also remove # before >dev/null next"
-######################   ######################   ######################   ######################   
-docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_script.sh" #>/dev/null 2>&1
-debug "after postgres script"
+create_btcpay_parman_user
 sleep 2
 if [[ $BTCPAYRESTORE == "true" ]] ; then
 restore_btcpay
@@ -86,3 +83,17 @@ fi
 
 #docker exec -d -u root btcpay /bin/bash -c \
 #"sed -i 's/md5/trust/g' /etc/postgresql/*/main/pg_hba.conf" 
+
+
+function create_btcpay_parman_user {
+docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"
+CREATE ROLE parman
+WITH
+  LOGIN
+  PASSWORD 'NietShitcoin'
+  CREATEDB
+  NOSUPERUSER
+  NOCREATEROLE;
+\"
+"
+}
