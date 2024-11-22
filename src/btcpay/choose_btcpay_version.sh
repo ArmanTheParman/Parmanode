@@ -19,16 +19,16 @@ set_terminal ; echo -e "
     happens, you are welcome to do that.
 $green
 
-                few)     Standard installation, v1.12.5
+                few)$orange     Standard installation, v1.12.5
 
 $red
-                hfsp)    Newer release v2.0.3  $yellow(Stable, but limited 
+                hfsp)$orange    Newer release v2.0.3  $yellow(Stable, but limited 
                                                testing with Parmanode)
 $red
-                yolo)    Latest version on the BTCPay GitHub master branch
+                yolo)$orange    Latest version on the BTCPay GitHub master branch
                                                $yellow(expect bugs)
 $orange
-                rekt)    Manually enter the version you want
+                rekt)$orange    Manually enter the version you want
                                                $yellow(Reckless) 
 
 ########################################################################################
