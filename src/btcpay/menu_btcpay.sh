@@ -500,8 +500,8 @@ if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database 
 fi
 
 #stop databases
-echo -e "\n${green}Stopping databases..."
-docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" "
+echo -e "\n${green}Stopping databases...$orange"
+docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" " >$dn 2>&1
 sleep 2
 
 if [[ $restore_type == clean ]] ; then
