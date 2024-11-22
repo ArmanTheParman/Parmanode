@@ -500,7 +500,7 @@ if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database 
 fi
 
 #stop databases
-echo "\n${green}Stopping databases..."
+echo -e "\n${green}Stopping databases..."
 docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" "
 sleep 2
 
@@ -516,7 +516,8 @@ if [[ $restore_type == clean ]] ; then
         return 1
     fi
 fi
-#restore directories
+#restore directories - delete first then copy in. Preserve settings first.
+cp $HOME/.btcpayserver/Main/settings.config $HOME/.btcpayserver/settings.config_backup
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Main 2>$dn
 docker exec -itu root btcpay rm -rf /home/parman/.btcpayserver/Plugins 2>$dn
 
@@ -530,11 +531,13 @@ if ! docker exec -itu parman btcpay mv $containerdir/Plugins /home/parman/.btcpa
     return 1
 fi
 
+mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.config >$dn 2>&1
+
 #restore databases
 if docker exec -itu postgres btcpay bash -c "psql < $containerfile" ; then 
+    enter_continue "Pause to check ouput before deleting files"
     docker exec -itu root btcpay bash -c "rm $containerfile" 
     docker exec -itu root btcpay rm -rf $containerdir
-    enter_continue "Pause to check ouput"
     success "Backup restored" 
     return 0
 else
