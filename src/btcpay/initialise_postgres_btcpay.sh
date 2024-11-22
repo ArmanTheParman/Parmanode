@@ -87,8 +87,11 @@ fi
 
 
 function create_btcpay_parman_user {
-docker exec -itu postgres btcpay bash -c "sed -i '1i host    all             parman          127.0.0.1/32            scram-sha-256' /etc/postgres/*/main/pg_hba.conf"
-
+docker exec -itu postgres btcpay bash -c "
+for conf in /etc/postgresql/*/main/pg_hba.conf; do
+  sed -i '1i host    all             parman          127.0.0.1/32            scram-sha-256' \$conf
+done
+"
 docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"
 CREATE ROLE parman
 WITH
