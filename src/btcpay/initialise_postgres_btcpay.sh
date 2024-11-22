@@ -58,6 +58,7 @@ docker exec -itu postgres btcpay /bin/bash -c "/home/parman/parmanode/postgres_s
 sleep 2
 if [[ $BTCPAYRESTORE == "true" ]] ; then
 restore_btcpay
+debug "after restore btcpay"
 elif [[ $BTCPAYRESTORE == "false" ]] ; then
 docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
 fi
