@@ -239,8 +239,8 @@ man)
 menu_btcpay_man
 ;;
 br)
-announce "Not available just yet"
-continue
+#announce "Not available just yet"
+#continue
 yesorno "Do you want to backup BTCPay or restore?" "bk" "Backup" "res" "Restore" \
       && { backup_btcpay ; continue ; }
       restore_btcpay
@@ -725,8 +725,8 @@ start_postgres_btcpay_indocker
 enter_continue
 ;;
 del)
-#announce "not available just yet"
-#continue
+announce "not available just yet"
+continue
 # -d postgres, default connect to posrgres, necessary otherwise it tries to connect to a database the same as the user's name
 yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
