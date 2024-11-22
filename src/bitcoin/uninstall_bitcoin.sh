@@ -21,10 +21,13 @@ echo -e "
 ########################################################################################
 $cyan
                          Bitcoin Core will be uninstalled
+
 $red
-    Are you sure, UNINSTALL BITCOIN?
+    Are you sure, UNINSTALL BITCOIN?  (y or n)
+
 $orange
     (The Bitcoin data directory will not be deleted)
+
 
 ########################################################################################
 "
