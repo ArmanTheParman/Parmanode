@@ -99,4 +99,4 @@ WITH
 "
 }
 
-docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"DROP ROLE parman;\""
+#docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"DROP ROLE parman;\""
