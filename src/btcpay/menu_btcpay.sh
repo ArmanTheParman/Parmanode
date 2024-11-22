@@ -534,7 +534,7 @@ fi
 mv $HOME/.btcpayserver/settings.config_backup $HOME/.btcpayserver/Main/settings.config >$dn 2>&1
 
 #restore databases
-if docker exec -itu postgres btcpay bash -c "psql < $containderdb" ; then 
+if docker exec -itu postgres btcpay bash -c "psql < $containerdb" ; then 
     enter_continue "Pause to check ouput before deleting files. Check if binary data"
     docker exec -itu root btcpay bash -c "rm $containerfile" 
     docker exec -itu root btcpay rm -rf $containerdir
