@@ -30,7 +30,7 @@ $red
 $orange
                 rekt)$orange    Manually enter the version you want
                                                $yellow(Reckless) 
-
+$orange
 ########################################################################################
 "
 choose xpmq ; read choice 
