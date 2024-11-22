@@ -428,6 +428,12 @@ esac
 done
 
 while true ; do
+if [[ -e $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
+if yesorno "Do you want to use this file to restore?\n  $cyan
+        \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" ; then
+
+    file="$HOME/Desktop/btcpay_parmanode_backup.tar"
+else
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -443,6 +449,8 @@ jump $file || { invalid ; continue ; } ; set_terminal
 case $file in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 esac
+fi
+
 if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
 
 if ! tar -tf $file | grep -q "btcpayserver.sql" ; then 
