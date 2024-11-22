@@ -431,7 +431,7 @@ while true ; do
 unset fileselected
 if [[ -e $HOME/Desktop/btcpay_parmanode_backup.tar ]] ; then
 
-    if yesorno "Do you want to use this file to restore?\n  $cyan
+    if yesorno "Do you want to use this file to restore?\n  $green
             \r    $HOME/Desktop/btcpay_parmanode_backup.tar$orange" ; then
         fileselected="true"
         file="$HOME/Desktop/btcpay_parmanode_backup.tar"    
@@ -456,21 +456,12 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;; "") invalid ;;
 esac
 fi
 
+#verify file
 if [[ ! -f $file ]] ; then announce "The file doesn't exist - $file" ; continue ; fi
-
 if ! tar -tf $file | grep -q "btcpayserver.sql" ; then 
 announce "This tar file is missing btcpayserver.sql inside. Aborting."
 return 0
 fi
-# if ! tar -tf $file | grep -q "Main" ; then 
-# announce "This tar file is missing a Main directory inside. Aborting."
-# return 0
-# fi
-# if ! tar -tf $file | grep -q "Plugins" ; then 
-# announce "This tar file is missing a Plugins directory inside. Aborting."
-# return 0
-# fi
-
 break
 done
 
@@ -507,6 +498,9 @@ if ! docker exec -itu parman btcpay /bin/bash -c "grep -iq 'PostgreSQL database 
         return 1
     }
 fi
+
+#stop databases
+docker exec -itu postgres btcpay /bin/bash -c "psql -U postgres -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname IN ('btcpayserver', 'nbxplorer', 'postgres');\" "
 
 if [[ $restore_type == clean ]] ; then
     #delete first to avoid merging - the other databases don't matter.
