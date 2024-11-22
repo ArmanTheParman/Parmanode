@@ -11,9 +11,12 @@ if ! docker ps >/dev/null 2>&1 ; then
     return 1
 fi
 
+
+debug "in btcpay mac2"
 #preambles
-btcpay_install_preamble  || return 1
 btcpay_install_preamble2 || return 1
+debug "in btcpay mac4"
+
 
 if grep -q "bitcoin-end" $ic ; then
 while true ; do
@@ -44,6 +47,7 @@ esac
 done
 fi
 
+debug "in btcpay mac3"
 export btcpay_combo="true"
 install_bitcoin #btcpay_combo unset at the end of function 
 install_btcpay_mac_child

@@ -106,6 +106,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
 fi
+debug "a bit later"
 
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.
@@ -118,6 +119,7 @@ export dontstartbitcoin="true" && set_rpc_authentication "s" "install" && unset 
 ;;
 esac
 
+debug "before start_bitcoin"
 please_wait && start_bitcoin
 fi #end not btcpainstallsbitcoin
 
@@ -130,7 +132,9 @@ fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then
 unset btcdockerchoice
+debug "before install_btcpay_mac_child"
 install_btcpay_mac_child || return 1
+debug "after install_btcpay_mac_child"
 store_BTC_container_IP
 success "Bitcoin and BTCPay Server has been installed in a Docker Container."
 #end bitcoin then btcpay install here
