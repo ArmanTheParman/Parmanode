@@ -19,11 +19,17 @@ set_terminal ; echo -e "
     happens, you are welcome to do that.
 $green
 
-                    s)       Standard installation, v1.12.5
+                few)     Standard installation, v1.12.5
+
 $red
-                    yolo)    Latest version on the BTCPay GitHub master branch
+                hfsp)    Newer release v2.0.3  $yellow(Stable, but limited 
+                                               testing with Parmanode)
+$red
+                yolo)    Latest version on the BTCPay GitHub master branch
+                                               $yellow(expect bugs)
 $orange
-                    hfsp)    Manually enter the version you want
+                rekt)    Manually enter the version you want
+                                               $yellow(Reckless) 
 
 ########################################################################################
 "
@@ -34,8 +40,13 @@ fi
 
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-s)
+few)
 export btcpay_version_choice="v1.12.5"
+parmanode_conf_add "btcpay_version=$btcpay_version_choice"
+break
+;;
+hfsp)
+export btcpay_version_choice="v2.0.3"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
@@ -44,7 +55,7 @@ export btcpay_version_choice=master
 parmanode_conf_add "btcpay_version=latest"
 break
 ;;
-hfsp)
+rekt)
 set_terminal ; echo -e "
 ########################################################################################
 
