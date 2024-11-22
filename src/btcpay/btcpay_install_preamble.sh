@@ -1,6 +1,9 @@
 function btcpay_install_preamble {
-yesorno "$cyan
-                                Install BTCPay?
+while true ; do
+set_terminal ; echo -e "
+########################################################################################$cyan
+
+                           Install BTCPay - NEW or RESTORE?
 $orange
     BTCPay Server is a self-hosted, open-source bitcoin payment processor. It will
     connect to your own Bitcoin Core node and LND node.
@@ -10,6 +13,25 @@ $orange
     have installed it before, this installation will used cached files so it is 
     likely to be a lot faster. 
 
-    Proceed?" && return 0
-    return 1
+    You can start a fresh installation, or restore from a previous backup. The backup
+    file must have been created by Parmanode for the restoration to work as expected.
+
+    You have choices...
+$cyan
+                       
+                      n)$orange         Install BTCPay Server $green(new)$orange
+$cyan
+                      r)$orange         Install BTCPay Server $red(restore)$orange
+
+########################################################################################
+"
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+n) btcpayrestore="false" ; return 0 ;;
+r) btcpayrestore="ture"  ; return 0 ;;
+*) invalid ;;
+esac
+done
 }
