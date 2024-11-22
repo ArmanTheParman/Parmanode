@@ -55,6 +55,7 @@ return 1
 function postgres_database_creation_commands {
 sleep 1
 create_btcpay_parman_user
+debug "check parman user has login permission before dabases are created"
 sleep 2
 if [[ $BTCPAYRESTORE == "true" ]] ; then
 restore_btcpay
@@ -97,3 +98,5 @@ WITH
 \"
 "
 }
+
+docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"DROP ROLE parman;\""
