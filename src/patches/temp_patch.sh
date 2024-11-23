@@ -2,7 +2,8 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
-reduce_systemd_logs
+reduce_systemd_logs #move to next patch, patch 8
+
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1

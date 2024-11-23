@@ -1,7 +1,5 @@
 function next_patch {
 reduce_systemd_logs
-
-
 }
 
 
