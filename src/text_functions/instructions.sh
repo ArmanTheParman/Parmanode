@@ -10,7 +10,7 @@ function instructions {
 # A . is the same as the source command when used like this.
 
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
-. $HOME/.parmanode/hide_messages.conf $dn>
+. $HOME/.parmanode/hide_messages.conf >$dn
 fi
 
 #$message_instructions value comes from sourcing. This is a bit too roundabout; I'll change this later.

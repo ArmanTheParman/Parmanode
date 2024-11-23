@@ -2,7 +2,7 @@ function openssh_patch {
 
 if [[ $btcdockerchoice != "yes" ]] ; then return 0 ; fi
 
-source $hm $dn>
+source $hm >$dn
 if [[ $openssh == "hide" || $OS != "Linux" ]] ; then return 0 ; fi
 
 #https://www.bleepingcomputer.com/news/security/new-regresshion-openssh-rce-bug-gives-root-on-linux-servers/

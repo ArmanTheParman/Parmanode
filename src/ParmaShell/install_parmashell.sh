@@ -12,10 +12,10 @@ echo "#Added by Parmanode below, safe to delete..." | sudo tee -a $bashrc >$dn 2
 echo "source $HOME/parman_programs/parmanode/src/ParmaShell/parmashell_functions" | sudo tee -a $bashrc >$dn 2>&1
 echo "#Added by Parmanode above, safe to delete..." | sudo tee -a $bashrc >$dn 2>&1
 else
-installed_config_add "parmashell-end" $dn>
+installed_config_add "parmashell-end" >$dn
 return 1
 fi
 
-installed_config_add "parmashell-end" $dn>
+installed_config_add "parmashell-end" >$dn
 
 }

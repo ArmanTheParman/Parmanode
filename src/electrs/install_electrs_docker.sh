@@ -43,7 +43,7 @@ fi
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
 if [[ -e $bc ]] ; then
-source $bc $dn>
+source $bc >$dn 
 else
 clear
 announce "The bitcoin.conf file could not be detected. Can happen if Bitcoin is

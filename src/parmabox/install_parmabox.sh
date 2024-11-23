@@ -57,7 +57,7 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-mkdir $HOME/parmanode/parmabox $dn>
+mkdir $HOME/parmanode/parmabox >$dn
 ;;
 esac
 
