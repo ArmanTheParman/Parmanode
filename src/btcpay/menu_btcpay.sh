@@ -495,19 +495,19 @@ docker exec -it btcpay bash
 function btcpay_menu_advanced {
 while true ; do
 
-    if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -v grep" ; then
+    if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -qv grep" ; then
     posgresrunning="${green}RUNNING$orange"
     else
     posgresrunning="${red}NOT RUNNING$orange"
     fi
 
-    if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep csproj" ; then
+    if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep -q csproj" ; then
     nbxplorerrunning="${green}RUNNING$orange"
     else
     nbxplorerrunning="${red}NOT RUNNING$orange"
     fi
 
-    if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep csproj" ; then
+    if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep -q csproj" ; then
     containerbtcpayrunning="${green}RUNNING$orange"
     else
     containerbtcpayrunning="${red}NOT RUNNING$orange"
@@ -579,11 +579,29 @@ start_postgres_btcpay_indocker
 enter_continue
 ;;
 del)
-announce "not available just yet"
+# announce "not available just yet"
+# continue
+
+if [[ $btcpayrunning == "false" ]] ; then
+announce "BTCPay Server needs to be running. If you're stuck, consider uninstall and reinstall."
 continue
-# -d postgres, default connect to posrgres, necessary otherwise it tries to connect to a database the same as the user's name
-yesorno "ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!" || continue
+fi
+
+yesorno "${red}ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!$orange
+\n    The btcpayserver and nbxplorer database will be deleted and created new.
+\n    If you find this doesn't give you a clean enough slate, you can reinstall BTCPay 
+    Server." || continue
+please_wait
+
+#terminate any connections
+docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c '
+SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'btcpayserver';
+SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'nbxplorer';'"
+#delete databases
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
+docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE nbxplorer;'" 
+#create databases
+docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
 enter_continue
 ;;
 cr)
