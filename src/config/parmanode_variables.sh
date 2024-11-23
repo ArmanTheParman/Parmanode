@@ -53,6 +53,7 @@ export oc="$dp/overview.conf"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
+if [[ -z dn ]] ; then echo "some problem with dn variable" ; read ; fi
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
