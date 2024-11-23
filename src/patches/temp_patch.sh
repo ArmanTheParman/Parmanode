@@ -2,6 +2,7 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
+reduce_systemd_logs
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
@@ -50,6 +51,8 @@ debug temppatchend
 }
 
 function truncatexsessions {
+#these log files can get massive and freeze the system.
 rm ~/.xsessions-errors >$dn 2>&1
 rm ~/.xsessions-errors.old >$dn 2>&1
 }
+
