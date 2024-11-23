@@ -1,14 +1,16 @@
-#Version 3.47.0 (coming soon)
+#Version 3.48.0 (coming soon)
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
-#    -Backup btcpay database and plugins option
-#    -Live BTCPay upgrade function
 
-Version 3.46.12
-     -BTCPay v2.0.3 & restore option when installing
-     -reduce journalctl logs to 500M cap
-     -improved start/stop for bitcoin in docker
+Version 3.47.0
+     -BTCPay v2.0.3 
+     -Backup btcpay database and plugins option
+     -Restore option (when installing)
+     -Live BTCPay upgrade function
+     -Reduce journalctl logs to 500M cap
+     -Improved start/stop for bitcoin in docker
      -Bitcoin menu tidy up appearence
+     
 Version 3.46.11
      -Many new shortcuts to navigate around
      -Sneaky hack to allow Tmux inception
