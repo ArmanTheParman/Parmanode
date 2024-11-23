@@ -594,9 +594,9 @@ yesorno "${red}ARE YOU SURE? THIS IS YOUR BTCPAY STORE DATA!$orange
 please_wait
 
 #terminate any connections
-docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c '
+docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c \"
 SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'btcpayserver';
-SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'nbxplorer';'"
+SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'nbxplorer';\""
 #delete databases
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE btcpayserver;'" 
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE nbxplorer;'" 
