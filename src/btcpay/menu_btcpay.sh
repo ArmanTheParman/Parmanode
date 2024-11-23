@@ -77,17 +77,17 @@ $cyan
 $cyan
              up)$orange           Update BTCPay (coming soon) ...
 $cyan
-             exp)$orange          Manage container $bright_blue (for experts) $orange
+             exp)$orange          Manage container $red (for experts) $orange
 $cyan
              pp)$orange           BTC ParmanPay - Online payment app, worldwide access
 
 $enable_tor_menu
     FOR ACCESS:     
 
-        http://${IP}:23001$yellow           
+        http://${IP}:23001$red
         from any computer on home network    $orange
 
-        http://localhost:23001$yellow       
+        http://localhost:23001$red
         from this computer $orange
 
 $menu_tor
@@ -370,9 +370,10 @@ fi
 #tar it all up
 if tar -czf $target $tempdir/* >$dn 2>&1 ; then
     rm -rf $tempdir 2>$dn 
-    success "A backup has been created at $target. \n\n    Please keep it safe. Use Parmanode to
-    \r    restore when ever needed. Note, lightning channels are not backed up, go to the
-    \r    LND menu for saving the static channel backup file."
+    success "A backup has been created at $target. \n\n    
+    \r    Please keep it safe. Use Parmanode to restore whenever needed. Note, 
+    \r    lightning channels are not backed up - go to the LND menu for saving the 
+    \r    static channel backup file."
     return 0    
 else
     rm -rf $tempdir 2>&dn
@@ -534,9 +535,7 @@ $cyan
 $cyan 
              post)$orange         Start Postgres in container only $posgresrunning
 $cyan 
-             del)$orange          Delete default btcpayserver database (coming soon)
-$cyan 
-             cr)$orange           Create new default btcpayserver database (coming soon)
+             del)$orange          Delete default btcpayserver database
 
 ########################################################################################
 "
@@ -602,12 +601,6 @@ docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP
 docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP DATABASE nbxplorer;'" 
 #create databases
 docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
-enter_continue
-;;
-cr)
-announce "not available just yet"
-continue
-docker exec -itu parman btcpay /bin/bash -c "createdb -O parman btcpayserver"
 enter_continue
 ;;
 *)
