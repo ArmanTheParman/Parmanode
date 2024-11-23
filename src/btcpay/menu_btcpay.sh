@@ -74,7 +74,7 @@ $cyan
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $cyan
-             br)$orange           Backup / Restore BTCPay data (coming soon) ...
+             br)$orange           Backup / Restore BTCPay data ...$red (New!)
 $cyan
              up)$orange           Update BTCPay (coming soon) ...
 $cyan
