@@ -1,7 +1,7 @@
 function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
-
+truncatexsessions
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >/dev/null 2>&1
@@ -47,4 +47,9 @@ log "fulcrum" "changed fulcrum-end to fulcrumdkr-end"
 fi
 
 debug temppatchend
+}
+
+function truncatexsessions {
+rm ~/.xsessions-errors >$dn 2>&1
+rm ~/.xsessions-errors.old >$dn 2>&1
 }
