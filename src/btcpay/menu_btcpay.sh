@@ -39,6 +39,7 @@ else
     unset enable_tor_menu 
     fi
 fi
+
 debug "before set terminal"
 set_terminal_custom 52 
 echo -en "

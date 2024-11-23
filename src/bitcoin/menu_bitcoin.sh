@@ -2,8 +2,11 @@ function menu_bitcoin {
 if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
-if grep -q "btccombo" $ic ; then
+if grep -q "btccombo" $ic >$dn 2>&1 ; then
 dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
+btcman="$cyan      man)$orange      Explore Bitcoin/BTCPay container (manr for root)"
+else
+unset btcman dockerbitcoinmenu
 fi
 
 #for multiselection menus, need to exit if not installed
@@ -69,6 +72,7 @@ if [[ $1 == menu_btcpay ]] ; then return 0 ; fi
 debug "bitcoin menu..."
 set_terminal_custom "52"
 
+
 echo -en "
 ########################################################################################
                                 ${cyan}Bitcoin Core Menu${orange}                               
@@ -85,27 +89,29 @@ echo -e "$output4"
 echo ""
 echo -ne "
 $green
-      (start)$orange    Start Bitcoind............................................(Do it)
+      start)$orange    Start Bitcoind............................................(Do it)
 $red
-      (stop)$orange     Stop Bitcoind..................(One does not simply stop Bitcoin)
+      stop)$orange     Stop Bitcoind..................(One does not simply stop Bitcoin)
 $cyan
-      (restart)$orange  Restart Bitcoind
+      restart)$orange  Restart Bitcoind
 $cyan
-      (n)$orange        Access Bitcoin node information ....................(bitcoin-cli)
+      n)$orange        Access Bitcoin node information ....................(bitcoin-cli)
 $cyan
-      (log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
+      log)$orange      Bitcoin debug.log ...............(see details of bitcoin running)
 $cyan
-      (bc)$orange       Inspect and edit bitcoin.conf file (bcv for vim)
+      bc)$orange       Inspect and edit bitcoin.conf file (bcv for vim)
 $cyan
-      (up)$orange       Set, remove, or change RPC user/pass
+      up)$orange       Set, remove, or change RPC user/pass
 $bright_blue
-      (tor)$orange      Tor menu options for Bitcoin...
+      tor)$orange      Tor menu options for Bitcoin...
 $cyan
-      (mm)$orange       Migrate/Revert an external drive...
+      mm)$orange       Migrate/Revert an external drive...
 $cyan
-      (delete)$orange   Delete blockchain data and start over (eg if data corrupted)
+      delete)$orange   Delete blockchain data and start over (eg if data corrupted)
 $cyan
-      (update)$orange   Update Bitcoin wizard
+      update)$orange   Update Bitcoin wizard
+
+$btcman
 $output3
 $cyan      (o)$orange        OTHER...
 
@@ -252,6 +258,13 @@ delete|Delete|DELETE)
 stop_bitcoin
 delete_blockchain
 return 1
+;;
+
+man)
+menu_btcpay_man
+;;
+manr)
+menu_btcpay_manr
 ;;
 
 *)
