@@ -35,7 +35,7 @@ announce "There was an error; you  might have put the wrong password in. Remembe
 $red
     $error_text $orange
 "
-rm $HOME/Desktop/website_database.sql >/dev/null 2>&1
+rm $HOME/Desktop/website_database.sql >$dn 2>&1
 return 1
 fi
 

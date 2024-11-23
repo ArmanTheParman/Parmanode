@@ -2,15 +2,15 @@ function website_tor_add {
 enable_tor_general || return 1
 
 if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/website-service/" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true 
+    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true 
     else 
-    echo "HiddenServiceDir $macprefix/var/lib/tor/website-service/" | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServiceDir $macprefix/var/lib/tor/website-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     fi
 
 if sudo grep "HiddenServicePort 80 127.0.0.1:80" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true 
+    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true 
     else
-    echo "HiddenServicePort 80 127.0.0.1:80" | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
+    echo "HiddenServicePort 80 127.0.0.1:80" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     fi
 
 sudo systemctl restart tor

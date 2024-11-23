@@ -1,5 +1,5 @@
 function start_nostrrelay {
-docker ps >/dev/null 2>&1 || { announce "Please start Docker" ; return 1 ; } 
+docker ps >$dn 2>&1 || { announce "Please start Docker" ; return 1 ; } 
 please_wait
 docker start nostrrelay 
 }

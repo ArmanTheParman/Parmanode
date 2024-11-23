@@ -22,7 +22,7 @@ else
 fi
 
 if [[ $1 != nostr ]] ; then
-cat << EOF | sudo tee -a $file >/dev/null 2>&1
+cat << EOF | sudo tee -a $file >$dn 2>&1
 server {
 
     listen 80;
@@ -95,7 +95,7 @@ EOF
 fi
 
 if [[ $1 == nostr ]] ; then
-cat << EOF | sudo tee -a $file >/dev/null 2>&1
+cat << EOF | sudo tee -a $file >$dn 2>&1
 server {
 
     listen 80;

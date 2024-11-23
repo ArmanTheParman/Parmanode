@@ -6,10 +6,10 @@
 #truncatedebuglog to keep file size manageable.
 
 function debug {
-echo $(date) | tee -a $dp/debug.log >/dev/null 2>&1
-echo "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" | tee -a $dp/debug.log >/dev/null 2>&1
-echo "$1" | tee -a $dp/debug.log >/dev/null 2>&1
-echo "##############################" | tee -a $dp/debug.log >/dev/null 2>&1
+echo $(date) | tee -a $dp/debug.log >$dn 2>&1
+echo "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" | tee -a $dp/debug.log >$dn 2>&1
+echo "$1" | tee -a $dp/debug.log >$dn 2>&1
+echo "##############################" | tee -a $dp/debug.log >$dn 2>&1
 if [[ $debug == 1 ]] ; then
 echo -e "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" 
 echo -e "Debug point. Message:
@@ -25,9 +25,9 @@ fi
 }
 
 function debug2 {
-echo $(date) | tee -a $dp/debug2.log >/dev/null 2>&1
-echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug2.log >/dev/null 2>&1
-echo "$1" | tee -a $dp/debug2.log >/dev/null 2>&1
+echo $(date) | tee -a $dp/debug2.log >$dn 2>&1
+echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug2.log >$dn 2>&1
+echo "$1" | tee -a $dp/debug2.log >$dn 2>&1
 if [[ $debug == 2 ]] ; then
 echo -e "Debug point:
 
@@ -39,7 +39,7 @@ fi
 }
 
 function debug3 {
-echo "$1" | tee -a $dp/.debug3.log >/dev/null 2>&1
+echo "$1" | tee -a $dp/.debug3.log >$dn 2>&1
 if [[ $debug == 3 ]] ; then
 echo -e "${1}"
 unset enter_cont ; enter_continue ; export enter_cont

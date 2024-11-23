@@ -51,10 +51,10 @@ fi
 connection_name=$(sudo nmcli -t -f NAME,TYPE con show --active | grep -v docker | grep -v bridge | cut -d : -f 1) 
 
 router=$(ip route | grep default | awk '{print $3}')
-sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >/dev/null 2>&1
-sudo nmcli con mod $connection_name ipv4.gateway $router >/dev/null 2>&1 
-sudo nmcli con mod $connection_name ipv4.dns "8.8.8.8" >/dev/null 2>&1
-sudo nmcli con mod $connection_name ipv4.method manual >/dev/null 2>&1
+sudo nmcli con mod $connection_name ipv4.addresses $IP/24 >$dn 2>&1
+sudo nmcli con mod $connection_name ipv4.gateway $router >$dn 2>&1 
+sudo nmcli con mod $connection_name ipv4.dns "8.8.8.8" >$dn 2>&1
+sudo nmcli con mod $connection_name ipv4.method manual >$dn 2>&1
 
 sudo nmcli con up $connection_name
 return 0
@@ -93,7 +93,7 @@ echo -e "
 enter_continue ; jump $enter_cont
 
 #Subnet in dec
-SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') >/dev/null
+SUBNET_HEX=$(ifconfig $interface | awk '/netmask/{print $4}' | sed 's/0x//') $dn>
 SUBNET_DEC=$(printf "%d.%d.%d.%d\n" $((16#${SUBNET_HEX:0:2})) $((16#${SUBNET_HEX:2:2})) $((16#${SUBNET_HEX:4:2})) $((16#${SUBNET_HEX:6:2})))
 set_terminal
 echo -e "

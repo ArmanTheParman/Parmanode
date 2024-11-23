@@ -27,14 +27,14 @@ function hello {
 #The data is protected, but even if leaked, there is no information about users,
 #    just an anon onion address and some usage stats, eg like the OS in use.
 
-if ! which tor >/dev/null ; then return 0 ; fi
+if ! which tor >$dn ; then return 0 ; fi
 if [[ $OS = Mac ]] ; then
 file="/usr/local/var/lib/tor/parmanode-service/hostname"
 else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-if sudo test -e "$file" >/dev/null 2>&1 ; then
+if sudo test -e "$file" >$dn 2>&1 ; then
 #onion address for parmanode-service
 message1=$(sudo cat $file)
 else
@@ -53,5 +53,5 @@ message4=$(cat $dp/parmanode.conf | grep OS= | cut -d = -f 2)
 message="${message1}, ${message2}, #${message3}, OS:${message4}"
 #Anonymous curl POST request to private server over Tor, run in background to not slow boot up time
 curl -sH "Content-Type: application/json" -d "{\"from\":\"$message\"}" --socks5-hostname 127.0.0.1:9050 http://6p7bd3t7pwyd2mgsmtapckhkfyxjaanblomhtm22lt5zb6bicqsfd3yd.onion:6150 && \
-touch $dp/counted 2>/dev/null &
+touch $dp/counted 2>$dn &
 }

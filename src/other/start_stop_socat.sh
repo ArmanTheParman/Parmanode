@@ -13,7 +13,7 @@ fi
 
 function stop_socat {
 if [[ $1 == "electrs" ]] ; then
-kill -9 $(head -n1 $dp/socat.pid) >/dev/null 2>&1
+kill -9 $(head -n1 $dp/socat.pid) >$dn 2>&1
 fi
 
 if [[ $1 == "joinmarket" ]] ; then

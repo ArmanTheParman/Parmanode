@@ -33,7 +33,7 @@ set_terminal
 
 
 if [[ $rem == "true" ]] ; then
-    rm -rf $dp/.nostr_keys >/dev/null 2>&1
+    rm -rf $dp/.nostr_keys >$dn 2>&1
 fi
 
 installed_conf_remove "parmanostr"

@@ -29,7 +29,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo rm /etc/nginx/sites-available/default
 return 0
 else #silent removal because nginx just installed, no risk of removing wanted configuration files
-sudo rm/etc/nginx/sites-enabled/default >/dev/null 2>&1
-sudo rm/etc/nginx/sites-available/default >/dev/null 2>&1
+sudo rm/etc/nginx/sites-enabled/default >$dn 2>&1
+sudo rm/etc/nginx/sites-available/default >$dn 2>&1
 fi
 }

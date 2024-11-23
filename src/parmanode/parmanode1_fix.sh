@@ -18,9 +18,9 @@ set_terminal ; echo -e "
 ########################################################################################
 "
 read
-sudo systemctl stop bitcoind fulcrum electrs electrumx >/dev/null 2>&1
-sudo umount $dp >/dev/null 2>&1
-sudo umount /media/$USER/parmanode1 >/dev/null 2>&1
+sudo systemctl stop bitcoind fulcrum electrs electrumx >$dn 2>&1
+sudo umount $dp >$dn 2>&1
+sudo umount /media/$USER/parmanode1 >$dn 2>&1
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -30,9 +30,9 @@ set_terminal ; echo -e "
 ########################################################################################
 " 
 read
-sudo rm -rf /media/$USER/parmanode* >/dev/null 2>&1
-sudo mkdir /media/$USER/parmanode >/dev/null 2>&1
-sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1
+sudo rm -rf /media/$USER/parmanode* >$dn 2>&1
+sudo mkdir /media/$USER/parmanode >$dn 2>&1
+sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -42,7 +42,7 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-sudo mount -a >/dev/null 2>&1
+sudo mount -a >$dn 2>&1
 sleep 1.5
 
 set_terminal ; echo -e "

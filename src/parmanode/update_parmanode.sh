@@ -74,7 +74,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n|N|No|NO|no) return 1 ;;
 y|Y|Yes|YES|yes)
 cd $pn
-git config pull.rebase false >/dev/null 2>&1
+git config pull.rebase false >$dn 2>&1
 if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 # grep searches for a string that occurs only when there are no updates required.
 # otherwise, some update has happened...

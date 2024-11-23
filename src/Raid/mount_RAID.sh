@@ -6,7 +6,7 @@ set_terminal
 echo "mounting $i ..."
 sleep 1
 debug "1"
-sudo mkdir -p "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" >/dev/null
+sudo mkdir -p "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" >$dn
 debug "2"
 sudo mount $i "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" #mounts /dev/md/xxx to /media/$USER/RAIDxxx
 debug "mounted?"

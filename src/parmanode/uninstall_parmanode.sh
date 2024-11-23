@@ -127,9 +127,9 @@ fi
 if [[ $OS == "Linux" ]] ; then
 
         if [[ $EUID -eq 0 ]] ; then  #if user running as root, sudo causes command to fail.
-                umount /media/$HOME/parmanode* > /dev/null 2>&1
+                umount /media/$HOME/parmanode* > $dn 2>&1
             else
-                sudo umount /media/$HOME/parmanode* > /dev/null 2>&1
+                sudo umount /media/$HOME/parmanode* > $dn 2>&1
             fi
     fi
 
@@ -140,7 +140,7 @@ if [[ $OS == "Linux" ]] ; then
         fi
 
 #uninstall parmanode directories and config files contained within.
-sudo rm -rf $HOME/.parmanode >/dev/null 2>&1
+sudo rm -rf $HOME/.parmanode >$dn 2>&1
 
 #removes all parmanode crontab entries
 autoupdate off
@@ -164,9 +164,9 @@ set_terminal ; echo -e "
 read choice
 case $choice in y|Y) 
 #remove desktop icon file
-rm $HOME/Desktop/*un_parmanode* >/dev/null
-rm $HOME/Desktop/*armanode* >/dev/null
-rm $HOME/Desktop/parmanode.desktop >/dev/null
+rm $HOME/Desktop/*un_parmanode* >$dn
+rm $HOME/Desktop/*armanode* >$dn
+rm $HOME/Desktop/parmanode.desktop >$dn
 debug "delete desktop icon"
 rm $HOME/.icons/PNicon*
 debug "delete .icons"

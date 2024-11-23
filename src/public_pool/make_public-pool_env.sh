@@ -7,7 +7,7 @@ else
 IPurl=$IP
 fi
 
-cat << EOF | tee $hp/public_pool/.env >/dev/null
+cat << EOF | tee $hp/public_pool/.env >$dn
 BITCOIN_RPC_URL=http://$IPurl
 BITCOIN_RPC_USER=$rpcuser
 BITCOIN_RPC_PASSWORD=$rpcpassword

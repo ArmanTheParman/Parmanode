@@ -13,17 +13,17 @@ clear
 #update parmanode if it exists...
 if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
 if ! git config --global user.name ; then git config --global user.name Parman ; fi
-cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
+cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >$dn 2>&1
 
 #make desktop text document...
 if [ ! -e $HOME/Desktop/run_parmanode.txt ] ; then
 
-touch $HOME/.zshrc >/dev/null 2>&1
+touch $HOME/.zshrc >$dn 2>&1
 
 if ! grep -q "run_parmanode.sh" $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
-" | sudo tee -a $HOME/.zshrc >/dev/null 2>&1
+" | sudo tee -a $HOME/.zshrc >$dn 2>&1
 fi
 
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
@@ -77,7 +77,7 @@ exit 0
 fi
 
 while true ; do #loop 1
-if xcode-select -p >/dev/null 2>&1 ; then break ; fi
+if xcode-select -p >$dn 2>&1 ; then break ; fi
 
 #Install cldts
 clear
@@ -109,14 +109,14 @@ done #ends loop 1
 ########################################################################################
 #Installing Parmanode
 
-mkdir -p $HOME/parman_programs >/dev/null 2>&1 
+mkdir -p $HOME/parman_programs >$dn 2>&1 
 cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
 if ! grep -q "run_parmanode.sh" $HOME/.zshrc ; then
 echo "#Added by Parmanode...
 function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
-" | sudo tee -a $HOME/.zshrc >/dev/null 2>&1
+" | sudo tee -a $HOME/.zshrc >$dn 2>&1
 fi
 
 #make desktop clickable icon...
@@ -141,8 +141,8 @@ You can delete this file once you've absorbed the information.
 EOF
 clear
 
-echo "#Added by Parmanode..." | tee -a $HOME/.zshrc >/dev/null 2>&1
-echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a $HOME/.zshrc >/dev/null 2>&1
+echo "#Added by Parmanode..." | tee -a $HOME/.zshrc >$dn 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a $HOME/.zshrc >$dn 2>&1
 
 echo "
 ########################################################################################

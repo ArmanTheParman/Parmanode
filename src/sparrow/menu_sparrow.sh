@@ -9,7 +9,7 @@ else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
 
-source $HOME/.parmanode/sparrow.connection >/dev/null
+source $HOME/.parmanode/sparrow.connection >$dn
 
 set_terminal_high ; echo -e "
 ########################################################################################
@@ -115,7 +115,7 @@ done
 
 function sparrow_connection_menu {
 while true ; do
-source $HOME/.parmanode/sparrow.connection >/dev/null
+source $HOME/.parmanode/sparrow.connection >$dn
 set_terminal
 echo -e "
 ########################################################################################

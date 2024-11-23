@@ -1,6 +1,6 @@
 function install_pihole {
 
-if grep -q "public_pool" $ic >/dev/null ; then
+if grep -q "public_pool" $ic >$dn ; then
 announce "Can't install PiHole and Public_Pool on the same system. Aborting."
 return 1
 fi
@@ -43,7 +43,7 @@ $orange
 enter_continue ; jump $enter_cont
 
 # Install Docker
-if ! which docker >/dev/null 2>&1 ; then install_docker || return 1 ; fi
+if ! which docker >$dn 2>&1 ; then install_docker || return 1 ; fi
 
 nginx_clash PiHole || return 1
 
@@ -110,10 +110,10 @@ else
 cp $pn/src/pihole/docker-compose.yaml ./
 fi
 
-if ! docker ps >/dev/null ; then
+if ! docker ps >$dn ; then
 if [[ $OS == Mac ]] ; then start_docker_mac ; fi
 fi
-if ! docker ps >/dev/null ; then
+if ! docker ps >$dn ; then
 announce "Docker needs to be running. Please start Docker before continuing."
 fi
 

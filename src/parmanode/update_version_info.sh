@@ -34,7 +34,7 @@ cd -
 
 function old_version_detected {
 countversion=0
-if ! git status | grep "On branch" | grep master >/dev/null ; then return 0 ; fi
+if ! git status | grep "On branch" | grep master >$dn ; then return 0 ; fi
 while true ; do
 if [[ $countversion -gt 0 ]] ; then announce "If you're stuck in a loop, check 'git status' in the
     Parmanode directory. If you've been editing files, that can cause issues. 
@@ -90,18 +90,18 @@ fi
 
 function export_latest_version {
 unset latest_version
-rm $tmp/latest_version.txt 2>/dev/null
+rm $tmp/latest_version.txt 2>$dn
 curl -sL -H 'Cache-Control: no-cache, no-store, must-revalidate' https://raw.githubusercontent.com/ArmanTheParman/Parmanode/master/version.conf > $tmp/latest_version.txt
-source $tmp/latest_version.txt && rm $tmp/latest_version.txt >/dev/null
-export latest_version="$version" >/dev/null
-export latest_vMajor="$vMajor" >/dev/null
-export latest_vMinor="$vMinor" >/dev/null
-export latest_vPatch="$vPatch" >/dev/null
+source $tmp/latest_version.txt && rm $tmp/latest_version.txt >$dn
+export latest_version="$version"
+export latest_vMajor="$vMajor"
+export latest_vMinor="$vMinor" 
+export latest_vPatch="$vPatch"
 debug2 "export latest version: $latest_version $latest_vMajor $latest_vMinor $latest_vPatch, $version $vMajor $vMinor $vPatch"
 }
 
 function export_local_version {
-source $pn/version.conf >/dev/null 2>&1
+source $pn/version.conf >$dn 2>&1
 export version ; export vMajor ; export vMinor ; export vPatch
 debug2 "export local version $version $vMajor $vMinor $vPatch"
 

@@ -105,7 +105,7 @@ case $choice in
 q|Q) exit 0 ;; n|N|NO|no|p|P) return 1 ;; m|M) back2main ;; y|Y|YES|Yes|yes) break ;; *) invalid ;; esac
 done
 
-if ! which unbound >/dev/null 2>&1 ; then
+if ! which unbound >$dn 2>&1 ; then
 sudo apt-get update -y
 sudo apt-get install unbound -y
 else
@@ -114,7 +114,7 @@ sudo systemctl start unbound
 fi
 
 
-sudo cat << EOF | sudo tee /etc/unbound/unbound.conf.d/pi-hole.conf >/dev/null 2>&1
+sudo cat << EOF | sudo tee /etc/unbound/unbound.conf.d/pi-hole.conf >$dn 2>&1
 server:
     # If no logfile is specified, syslog is used
     # logfile: "/var/log/unbound/unbound.log"
@@ -182,7 +182,7 @@ server:
     private-address: fd00::/8
     private-address: fe80::/10
 EOF
-sudo systemctl restart unbound >/dev/null 2>&1
+sudo systemctl restart unbound >$dn 2>&1
 
 docker exec -itu root pihole /bin/bash -c "sed -i '/PIHOLE_DNS_/d' /etc/pihole/setupVars.conf"
 debug "deleted?"

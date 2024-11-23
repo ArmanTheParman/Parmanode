@@ -49,13 +49,13 @@ parmanode_conf_add # With no argument after the function, this will create a
 if [[ ! -e $ic ]] ; then touch $ic ; fi
 
 # Load config variables
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1 
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
 
 # If docker is set up on the machine, then it is detected by Parmanode
 # and added to the config file
 if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise not point.
-	if ([[ $(uname) == Darwin ]] && ( which docker >/dev/null )) || \
-	( [[ $(uname) == Linux ]] && which docker >/dev/null && id | grep -q docker ) ; then
+	if ([[ $(uname) == Darwin ]] && ( which docker >$dn )) || \
+	( [[ $(uname) == Linux ]] && which docker >$dn && id | grep -q docker ) ; then
 		if ! grep -q docker-end $ic ; then
 			installed_config_add "docker-end" 
 		fi
@@ -85,7 +85,7 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
-	cd $HOME/parman_programs/parmanode && git config pull.rebase false >/dev/null 2>&1 && git pull && needs_restart="true" >/dev/null 2>&1
+	cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 && git pull && needs_restart="true" >$dn 2>&1
 
 update_computer 
 rm $HOME/.parmanode/.new_install
@@ -177,7 +177,7 @@ fi
 truncatedebuglog
 
 if ! grep -q "parmashell_functions" $bashrc ; then
-echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >/dev/null 2>&1
+echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
 
 jump $1

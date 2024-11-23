@@ -1,5 +1,5 @@
 function install_public_pool {
-if grep -q "pihole" $ic >/dev/null ; then
+if grep -q "pihole" $ic >$dn ; then
 announce "Can't install Public Pool and PiHole on the same system. Aborting."
 return 1
 fi
@@ -8,26 +8,26 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi #for now
 set_terminal 
 sned_sats
 if [[ $OS == Mac ]] ; then
-    if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
-    if ! which python3 >/dev/null ; then
-        if ! which brew >/dev/null ; then install_homebrew 
+    if ! which docker >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
+    if ! which python3 >$dn ; then
+        if ! which brew >$dn ; then install_homebrew 
         fi
     brew install python3
     fi
 elif [[ $OS == Linux ]] ; then
-    if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
-    if ! which python3 >/dev/null ; then
+    if ! which docker >$dn 2>&1 ; then announce "Please install Docker first. Aborting" ; return 1 ; fi
+    if ! which python3 >$dn ; then
         sudo apt-get update -y && sudo apt-get install python3 -y
     fi
 fi
 
-if ! which nginx >/dev/null 2>&1 ; then sudo gsed -i "/nginx-/d" $ic  ; install_nginx ; debug "nginx1?" ; fi
+if ! which nginx >$dn 2>&1 ; then sudo gsed -i "/nginx-/d" $ic  ; install_nginx ; debug "nginx1?" ; fi
 #nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
 
 #check for port 80 clash
 if sudo netstat -tulnp | grep :80 | grep -q nginx ; then
-sudo rm -rf /etc/nginx/sites-enabled/default >/dev/null 2>&1
-sudo systemctl restart nginx >/dev/null 2>&1
+sudo rm -rf /etc/nginx/sites-enabled/default >$dn 2>&1
+sudo systemctl restart nginx >$dn 2>&1
 fi
 
 if sudo netstat -tulnp | grep :80 | grep -q nginx ; then
@@ -36,7 +36,7 @@ return 1
 fi
 
 #check Docker running, esp Mac
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -48,7 +48,7 @@ choose "emq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
 set_terminal
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -90,7 +90,7 @@ make_public_pool_env ; debug "made env"
 # Add ZMQ connection to bitcoin.conf
 # Parmanode uses port 3000 for RTL, so can't use that for pool.
 if [[ -e $bc ]] ; then sudo gsed -i "/:28332/d" $bc 
-echo "zmqpubrawblock=tcp://*:28332" | tee -a $bc >/dev/null ; debug "$bc edited"
+echo "zmqpubrawblock=tcp://*:28332" | tee -a $bc >$dn ; debug "$bc edited"
 fi
 
 #Set Dockerfile
@@ -98,7 +98,7 @@ local file=$hp/public_pool/Dockerfile
 
 #delete any Dockerfile in repo and replace with Parmanode's fork.
 if [[ -e $file ]] ; then rm $file ; fi
-cp $pp/parmanode/src/public_pool/Dockerfile $file 2>/dev/null
+cp $pp/parmanode/src/public_pool/Dockerfile $file 2>$dn
 debug "cp"
 unset file
 

@@ -49,8 +49,8 @@ sleep 2.5
     sudo blkid -g > $dp/after
     sudo lsblk > $dp/after_lsblk
 
-if diff -q $dp/before $dp/after >/dev/null 2>&1 && \
-   diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1
+if diff -q $dp/before $dp/after >$dn 2>&1 && \
+   diff -q $dp/before_lsblk $dp/after_lsblk >$dn 2>&1
 then
 set_terminal
 echo -e "
@@ -72,7 +72,7 @@ fi
 
 # COMPARE...
 
-if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
+if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
 
     export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
     debug "disk blkid diff is $disk"

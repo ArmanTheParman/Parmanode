@@ -140,7 +140,7 @@ debug "source pc"
 
 if [[ -n $domain_name && -e /etc/nginx/conf.d/$website.conf ]] ; then
     local file="/etc/nginx/conf.d/$domain_name.conf"
-    sudo mv /etc/nginx/conf.d/$website.conf $file >/dev/null 2>&1
+    sudo mv /etc/nginx/conf.d/$website.conf $file >$dn 2>&1
 
     if [[ $www == "true" ]] ; then www_name="www.$domain_name" ; fi
         

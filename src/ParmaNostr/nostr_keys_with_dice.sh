@@ -116,8 +116,8 @@ break
 esac
 done
 
-mkdir $dp/.nostr_keys/ >/dev/null 2>&1
-echo "$word1$word2$word3$word4$word5$word6$word7$word8$word9$word10$word11$word12" > $dp/.nostr_keys/random_binary.txt  2>/dev/null
+mkdir $dp/.nostr_keys/ >$dn 2>&1
+echo "$word1$word2$word3$word4$word5$word6$word7$word8$word9$word10$word11$word12" > $dp/.nostr_keys/random_binary.txt  2>$dn
 
 make_nostr_key_files
 

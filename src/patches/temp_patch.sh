@@ -6,8 +6,8 @@ reduce_systemd_logs #move to next patch, patch 8
 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
-    USER=$(whoami) >/dev/null 2>&1
-    echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
+    USER=$(whoami) >$dn 2>&1
+    echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >$dn 2>&1
 fi
 
 #keep checking in case user declines
@@ -24,7 +24,7 @@ fi
 #leave in temp patch because a single time patch may fail, as docker needs to be running
 #remove June 2025 - make sure all electrs docker has socat installed
 if grep -q "electrsdkr" $ic ; then
-    if ! docker exec -it electrs bash -c "which socat" >/dev/null 2>&1 ; then
+    if ! docker exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
         docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
 fi

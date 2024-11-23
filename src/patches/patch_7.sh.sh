@@ -53,7 +53,7 @@ if [[ $OS == Linux ]] ; then
 
     #Make /media/$USER with permission of $USER. - Refactor this in to the code at some point. Maybe to the installation.
     sudo mkdir /media/$USER >$dn 2>&1
-    sudo chown $USER:$(id -gn) /media/$USER >/dev/null 2>&1
+    sudo chown $USER:$(id -gn) /media/$USER >$dn 2>&1
     sudo setfacl -m g::r-x /media/parman >$dn 2>&1 #make sure group has access
 fi
 
@@ -68,10 +68,10 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
 fi
 
 # Remove potentially large file that's not needed, caused by a bug
-if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >/dev/null ; then 
+if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >$dn ; then 
 for i in $HOME/.*parmanodebackup* ; do
     if grep -q "parmanodebackup" <<< $i ; then #redencancy for safety
-        sudo rm -rf "${i}" >/dev/null 2>&1
+        sudo rm -rf "${i}" >$dn 2>&1
     fi
 done
 fi

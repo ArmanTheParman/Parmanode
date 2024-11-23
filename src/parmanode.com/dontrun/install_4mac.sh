@@ -17,7 +17,7 @@ clear
 #update parmanode if it exists...
 if ! git config --global user.email ; then git config --global user.email sample@parmanode.com ; fi
 if ! git config --global user.name ; then git config --global user.name Parman ; fi
-cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >/dev/null 2>&1
+cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull >$dn 2>&1
 
 #make desktop clickable icon...
 if [ ! -e $HOME/Desktop/run_parmanode.sh ] ; then
@@ -39,17 +39,17 @@ fi
 
     if ! which git ; then 
 
-        if ! which brew >/dev/null ; then
+        if ! which brew >$dn ; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
-        if ! which brew >/dev/null ; then export warning=1 ; fi
+        if ! which brew >$dn ; then export warning=1 ; fi
         fi
 
-        if ! which ssh >/dev/null ; then 
+        if ! which ssh >$dn ; then 
             if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
             brew install ssh 
         fi
 
-        if ! which gpg >/dev/null ; then 
+        if ! which gpg >$dn ; then 
             if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
             brew install gpg 
         fi
@@ -74,7 +74,7 @@ echo "
 "
 sudo sleep 0.1
 
-mkdir -p $HOME/parman_programs >/dev/null 2>&1 
+mkdir -p $HOME/parman_programs >$dn 2>&1 
 cd $HOME/parman_programs
 git clone https://github.com/armantheparman/parmanode.git
 
@@ -84,7 +84,7 @@ cat > $HOME/Desktop/run_parmanode.sh << 'EOF'
 cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
-sudo chmod +x $HOME/Desktop/run_parmanode.sh >/dev/null 2>&1
+sudo chmod +x $HOME/Desktop/run_parmanode.sh >$dn 2>&1
 clear
 echo "
 ########################################################################################

@@ -28,7 +28,7 @@ fi
 # Unzip file.
 
 	if [ ! -e "$image_path" ] ; then #img file doesn't exist, so need to unzip it
-        	if ! which xz >/dev/null ; then announce "No xz program detected to unzip. Aborting." ; return 1 ; fi 
+        	if ! which xz >$dn ; then announce "No xz program detected to unzip. Aborting." ; return 1 ; fi 
         	xz -vkd $zip_path || { announce "Failed to unzip image file" ; return 1 ; }
 			debug "finished unzip with xz"
 	else

@@ -37,7 +37,7 @@ done
 
 set_terminal
 
-if ! docker ps >/dev/null 2>&1 ; then
+if ! docker ps >$dn 2>&1 ; then
 announce "docker not running. Aborting."
 return 1
 fi
@@ -53,11 +53,11 @@ if [[ -e /var/www/website ]] ; then
 sudo rm -rf /var/www/website >$dn
 fi
 
-sudo rm -rf /etc/nginx/conf.d/website* >/dev/null 2>&1
-sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >/dev/null 2>&1
-sudo rm -rf /etc/letsencrypt/live/$domain_name >/dev/null 2>&1
-sudo rm -rf /etc/letsencrypt/live/www.$domain_name >/dev/null 2>&1
-sudo systemctl restart nginx >/dev/null 2>&1
+sudo rm -rf /etc/nginx/conf.d/website* >$dn 2>&1
+sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >$dn 2>&1
+sudo rm -rf /etc/letsencrypt/live/$domain_name >$dn 2>&1
+sudo rm -rf /etc/letsencrypt/live/www.$domain_name >$dn 2>&1
+sudo systemctl restart nginx >$dn 2>&1
 
 source $pc
 if [[ $rem == "true" ]] ; then
@@ -79,7 +79,7 @@ success "Nostr Relay has been uninstalled"
 
 function double_check_website_not_installed {
 
-if which mariadb >/dev/null || which mysql >/dev/null ; then 
+if which mariadb >$dn || which mysql >$dn ; then 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

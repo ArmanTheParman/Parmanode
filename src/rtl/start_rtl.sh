@@ -1,6 +1,6 @@
 function start_rtl {
 #start docker if it is not running 
-if ! docker ps >/dev/null 2>&1 ; then 
+if ! docker ps >$dn 2>&1 ; then 
 announce "Please make sure Docker is running, then try again. Aborting."
 return 1
 fi

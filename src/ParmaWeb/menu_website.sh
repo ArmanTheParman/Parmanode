@@ -5,7 +5,7 @@ debug wait
 while true ; do
 unset website_ssl website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic domain add_domain_name_option domain_name domain_name_text web_ssl_status_print
 get_onion_address_variable website
-source $pc >/dev/null 2>&1
+source $pc >$dn 2>&1
 
 #SSL status
 if [[ $website_ssl == "true" ]] ; then
@@ -17,9 +17,9 @@ fi
 
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
-    if sudo cat /etc/tor/torrc | grep -q "website" >/dev/null 2>&1 ; then
+    if sudo cat /etc/tor/torrc | grep -q "website" >$dn 2>&1 ; then
         if [[ -e /var/lib/tor/website-service ]] && \
-        sudo cat /var/lib/tor/website-service/hostname | grep "onion" >/dev/null 2>&1 ; then
+        sudo cat /var/lib/tor/website-service/hostname | grep "onion" >$dn 2>&1 ; then
         W_tor="${green}ON${orange}"
         W_tor_logic=on
         else 

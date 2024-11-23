@@ -3,9 +3,9 @@
 function  make_sparrow_config {
 export sparrowconf="$HOME/.sparrow/config"
 
-source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-if [[ ! -e $HOME/.sparrow ]] ; then mkdir $HOME/.sparrow >/dev/null 2>&1 ; fi
-rm $HOME/.sparrow/config >/dev/null 2>&1
+source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
+if [[ ! -e $HOME/.sparrow ]] ; then mkdir $HOME/.sparrow >$dn 2>&1 ; fi
+rm $HOME/.sparrow/config >$dn 2>&1
 cp $pn/src/sparrow/config $HOME/.sparrow/config # copies template across
 
 # These settings can be written every time regardless of connection type...
@@ -30,7 +30,7 @@ echo "connection=Bitcoin_userpass" > $HOME/.parmanode/sparrow.connection
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 if [[ $1 == "fulcrumtor" ]] ; then
-if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
+if ! which tor >$dn 2>&1 ; then install_tor ; fi
 unset $ONION_ADDR_FULCRUM
 get_onion_address_variable "fulcrum" 
 
@@ -84,7 +84,7 @@ fi
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 if [[ $1 == "electrstor" ]] ; then
-if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
+if ! which tor >$dn 2>&1 ; then install_tor ; fi
 unset $ONION_ADDR_ELECTRS
 get_onion_address_variable "electrs"
 

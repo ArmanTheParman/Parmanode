@@ -16,7 +16,7 @@ sleep 5
 exit
 fi
 
-if ! which git >/dev/null ; then
+if ! which git >$dn ; then
 sudo apt-get update -y 
 sudo apt-get install git -y
 fi
@@ -38,8 +38,8 @@ git clone https://github.com/armantheparman/parmanode.git
 # sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 clear
 
-echo "#Added by Parmanode..." | tee -a ~/.bashrc >/dev/null 2>&1
-echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >/dev/null 2>&1
+echo "#Added by Parmanode..." | tee -a ~/.bashrc >$dn 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >$dn 2>&1
 
 
 echo "

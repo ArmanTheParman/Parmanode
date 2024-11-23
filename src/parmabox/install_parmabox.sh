@@ -1,11 +1,11 @@
 function install_parmabox {
 
-if ! which docker > /dev/null ; then announce \
+if ! which docker > $dn ; then announce \
 "Please install Docker from the Parmanode install menu first."
 return 1
 fi
 
-if ! docker ps >/dev/null ; then announce \
+if ! docker ps >$dn ; then announce \
 "Please make sure Docker is running first."
 return 1
 fi
@@ -57,7 +57,7 @@ set_terminal ; echo -e "
 "
 enter_continue
 
-mkdir $HOME/parmanode/parmabox >/dev/null
+mkdir $HOME/parmanode/parmabox $dn>
 ;;
 esac
 

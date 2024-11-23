@@ -4,7 +4,7 @@ IP_address get #fetches external_IP variable without printed menu
 while true ; do
 unset nostr_ssl ONION_ADDR_NOSTR domain domain_name domain_name_text running_nostr_menu
 get_onion_address_variable nostr 
-source $pc >/dev/null 2>&1
+source $pc >$dn 2>&1
 
 #running status
 if docker ps | grep -q nostrrelay ; then 

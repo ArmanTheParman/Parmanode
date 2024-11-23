@@ -9,7 +9,7 @@ export install=nostr
 #some shared code and shared directories with ParaWeb.
 no_mac || { announce "If there is demand for Macs, it's up to you to let me know and I'll get on to it." ; return 1 ; }
 
-if grep -q "website" $ic >/dev/null 2>&1 ; then
+if grep -q "website" $ic >$dn 2>&1 ; then
 announce "Parmanode does not support a Nostr Relay and a Website on the same computer.
     Please install on another computer, or completely uninstall the Parmanode Website
     first. Aborting."
@@ -25,7 +25,7 @@ sned_sats
 #drive choices
 ########################################################################################
 choose_and_prepare_drive "nostr" || return 1
-source $pc >/dev/null
+source $pc >$dn
 
 if [[ $drive_nostr == external ]] && grep "=external" $pc | grep -vq "nostr" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
@@ -85,7 +85,7 @@ make_website_nginx nostr
 
 check_ready_for_ssl && nostrrelay_ssl_on install
 
-sudo systemctl restart nginx >/dev/null 2>&1
+sudo systemctl restart nginx >$dn 2>&1
 
 echo -e "${green}Building Docker image..."
 nostrrelay_build

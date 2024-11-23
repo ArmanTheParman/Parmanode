@@ -1,6 +1,6 @@
 function parmabox_refresh {
 
-if ! docker ps >/dev/null ; then announce "Docker is not running." ; return 1 ; fi
+if ! docker ps >$dn ; then announce "Docker is not running." ; return 1 ; fi
 please_wait
 docker stop parmabox
 docker rm parmabox

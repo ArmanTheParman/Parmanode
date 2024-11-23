@@ -2,7 +2,7 @@ function openssh_patch {
 
 if [[ $btcdockerchoice != "yes" ]] ; then return 0 ; fi
 
-source $hm 1>/dev/null
+source $hm $dn>
 if [[ $openssh == "hide" || $OS != "Linux" ]] ; then return 0 ; fi
 
 #https://www.bleepingcomputer.com/news/security/new-regresshion-openssh-rce-bug-gives-root-on-linux-servers/
@@ -10,13 +10,13 @@ if [[ $openssh == "hide" || $OS != "Linux" ]] ; then return 0 ; fi
 ssh_major=$(ssh -V 2>&1 | grep -oE '[0-9].+\.' | cut -d \. -f1)
 
 if [[ $ssh_major -lt 9 ]] ; then opensshversion="old"
-elif [[ $ssh_major -gt 9 ]] ; then echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ; return 0
+elif [[ $ssh_major -gt 9 ]] ; then echo "openssh=hide" | tee -a $hm >$dn 2>&1 ; return 0
 elif [[ $ssh_major == 9 ]] ; then
 
     ssh_minor=$(ssh -V 2>&1 | grep -oE '\.[0-9]' | head -n1 | cut -d \. -f2) 
         if [[ $ssh_minor -lt 8 ]] ; then
             opensshversion="old"
-        else echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ; return 0 
+        else echo "openssh=hide" | tee -a $hm >$dn 2>&1 ; return 0 
         fi
 
 fi
@@ -51,7 +51,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1) break ;;
 2) return 1 ;;
-3) echo "openssh=hide" | tee -a $hm 1>/dev/null 2>&1 ; return 1 ;;
+3) echo "openssh=hide" | tee -a $hm >$dn 2>&1 ; return 1 ;;
 *) invalid ;;
 esac
 done
@@ -71,43 +71,43 @@ sudo systemctl restart ssh
 backupdir="$hp/openssh/backupbins/"
 
 if [[ -e /usr/local/bin/ssh ]] ; then
-sudo mv /usr/bin/ssh $backupdir 2>/dev/null
+sudo mv /usr/bin/ssh $backupdir 2>$dn
 sudo cp /usr/local/bin/ssh /usr/bin/ssh
 fi
 
 if [[ -e /usr/local/sbin/sshd ]] ; then
-sudo mv /usr/bin/sshd $backupdir 2>/dev/null
-sudo mv /usr/sbin/sshd $backupdir 2>/dev/null
+sudo mv /usr/bin/sshd $backupdir 2>$dn
+sudo mv /usr/sbin/sshd $backupdir 2>$dn
 sudo cp /usr/local/sbin/sshd /usr/sbin/sshd
 fi
 
 if [[ -e /usr/local/bin/scp ]]; then
-sudo mv /usr/bin/scp $backupdir 2>/dev/null
+sudo mv /usr/bin/scp $backupdir 2>$dn
 sudo cp /usr/local/bin/scp /usr/bin/scp
 fi
 
 if [[ -e /usr/local/bin/sftp ]] ; then
-sudo mv /usr/bin/sftp $backupdir 2>/dev/null
+sudo mv /usr/bin/sftp $backupdir 2>$dn
 sudo cp /usr/local/bin/sftp /usr/bin/sftp
 fi
 
 if [[ -e /usr/local/bin/ssh-keygen ]] ; then
-sudo mv /usr/bin/ssh-keygen $backupdir 2>/dev/null
+sudo mv /usr/bin/ssh-keygen $backupdir 2>$dn
 sudo cp /usr/local/bin/ssh-keygen /usr/bin/ssh-keygen
 fi
 
 if [[ -e /usr/local/bin/ssh-agent ]] ; then
-sudo mv /usr/bin/ssh-agent $backupdir 2>/dev/null
+sudo mv /usr/bin/ssh-agent $backupdir 2>$dn
 sudo cp /usr/local/bin/ssh-agent /usr/bin/ssh-agent
 fi
 
 if [[ -e /usr/local/bin/ssh-add ]] ; then
-sudo mv /usr/bin/ssh-add $backupdir 2>/dev/null
+sudo mv /usr/bin/ssh-add $backupdir 2>$dn
 sudo cp /usr/local/bin/ssh-add /usr/bin/ssh-add
 fi
 
 if [[ -e /usr/local/bin/ssh-keyscan ]] ; then
-sudo mv /usr/bin/ssh-keyscan $backupdir 2>/dev/null
+sudo mv /usr/bin/ssh-keyscan $backupdir 2>$dn
 sudo cp /usr/local/bin/ssh-keyscan /usr/bin/ssh-keyscan
 fi
 

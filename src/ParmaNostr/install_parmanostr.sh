@@ -17,7 +17,7 @@ unset skipwallet
 
 installed_config_add "parmanostr-end"
 debug "before removal of random_binary.txt"
-rm $dp/.nostr_keys/random_binary.txt >/dev/null 2>&1
+rm $dp/.nostr_keys/random_binary.txt >$dn 2>&1
 
 debug "before make_sourcable_keys_file"
 

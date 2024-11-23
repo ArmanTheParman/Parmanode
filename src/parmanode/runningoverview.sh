@@ -21,7 +21,7 @@ isthunderhubrunning
 function ispublicpoolrunning {
 while true ; do
 
-if ! docker ps >/dev/null 2>&1 ; then
+if ! docker ps >$dn 2>&1 ; then
 export publicpoolrunning="false"
 overview_conf_add "publicpoolrunning=false" "publicpoolrunning="
 break
@@ -51,7 +51,7 @@ return 0
 fi
 
 if [[ $OS == Mac ]] ; then #if docker container, then previous btccombo check takes care of it
-    if pgrep Bitcoin-Q >/dev/null ; then 
+    if pgrep Bitcoin-Q >$dn ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
     export bitcoinrunning="true"
     else 
@@ -63,7 +63,7 @@ fi
 
 if [[ $OS == Linux ]] ; then
 
-    if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then 
+    if ! ps -x | grep bitcoin | grep -q "bitcoin.conf" >$dn 2>&1 ; then 
     overview_conf_add "bitcoinrunning=false" "bitcoinrunning="
     export bitcoinrunning="false"
     return 0
@@ -82,7 +82,7 @@ if [[ $OS == Linux ]] ; then
     fi
     
     #finally
-    if pgrep bitcoin >/dev/null 2>&1 ; then 
+    if pgrep bitcoin >$dn 2>&1 ; then 
     overview_conf_add "bitcoinrunning=true" "bitcoinrunning="
     export bitcoinrunning="true"
     return 0
@@ -93,9 +93,9 @@ fi
 
 function islndrunning {
 unset lndrunning
-if ps -x | grep lnd | grep bin >/dev/null 2>&1 || \
-   ps -x | grep litd | grep bin >/dev/null 2>&1 || \
-   docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
+if ps -x | grep lnd | grep bin >$dn 2>&1 || \
+   ps -x | grep litd | grep bin >$dn 2>&1 || \
+   docker exec lnd pgrep lnd >$dn 2>&1 ; then
 export lndrunning="true"
 overview_conf_add "lndrunning=true" "lndrunning="
 else
@@ -105,7 +105,7 @@ fi
 
 if ! grep -q "lnddocker" $ic ; then 
 
-    if lncli walletbalance >/dev/null 2>&1 ; then 
+    if lncli walletbalance >$dn 2>&1 ; then 
     export lndwallet=unlocked
     overview_conf_add "lndwallet=unlocked" "lndwallet="
     else
@@ -113,7 +113,7 @@ if ! grep -q "lnddocker" $ic ; then
     overview_conf_add "lndwallet=locked" "lndwallet="
     fi
 else
-    if docker exec lnd lncli walletbalance >/dev/null 2>&1 ; then 
+    if docker exec lnd lncli walletbalance >$dn 2>&1 ; then 
     export lndwallet=unlocked
     overview_conf_add "lndwallet=unlocked" "lndwallet="
     else
@@ -126,7 +126,7 @@ fi
 
 function isfulcrumrunning {
 if grep -q "fulcrum-" $ic ; then
-    if ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then 
+    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then 
     export fulcrumrunning="true"
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
@@ -136,7 +136,7 @@ if grep -q "fulcrum-" $ic ; then
 fi 
 
 if grep -q "fulcrumdkr-" $ic ; then
-    if docker ps 2>/dev/null | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
+    if docker ps 2>$dn | grep -q fulcrum && docker exec -it fulcrum bash -c "pgrep Fulcrum" >$dn 2>&1 ; then
     export fulcrumrunning="true"
     overview_conf_add "fulcrumrunning=true" "fulcrumrunning="
     else
@@ -154,8 +154,8 @@ fi
 }
 
 function iselectrsrunning {
-if grep -q electrs- $ic >/dev/null 2>&1 || grep -q electrs2- $ic >/dev/null 2>&1 ; then
-    if ps -x | grep electrs | grep -q conf >/dev/null 2>&1 ; then 
+if grep -q electrs- $ic >$dn 2>&1 || grep -q electrs2- $ic >$dn 2>&1 ; then
+    if ps -x | grep electrs | grep -q conf >$dn 2>&1 ; then 
     export electrsrunning="true"
     overview_conf_add "electrsrunning=true" "electrsrunning="
     else
@@ -166,12 +166,12 @@ fi #end if grep
 
 }
 function iselectrsdkrrunning {
-if ! docker ps 2>/dev/null | grep -q electrs ; then
+if ! docker ps 2>$dn | grep -q electrs ; then
 export electrsdkrrunning="false"
 overview_conf_add "electrsdkrrunning=false" "electrsdkrrunning="
 return 1
 fi
-if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >/dev/null 2>&1 ; then
+if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
 export electrsdkrrunning="true"
 overview_conf_add "electrsdkrrunning=true" "electrsdkrrunning="
 else
@@ -183,7 +183,7 @@ fi
 function isbrerunning {
 
 if [[ $computer_type == LinuxPC ]] ; then
-    if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >/dev/null 2>&1 ; then 
+    if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >$dn 2>&1 ; then 
 
     export brerunning="true" 
     overview_conf_add "brerunning=true" "brerunning="
@@ -194,8 +194,8 @@ if [[ $computer_type == LinuxPC ]] ; then
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-    if  docker ps 2>/dev/null | grep -q bre ; then 
-        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
+    if  docker ps 2>$dn | grep -q bre ; then 
+        if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
         export brerunning="true"
         overview_conf_add "brerunning=true" "brerunning="
         else
@@ -211,7 +211,7 @@ fi
 }
 
 function isbtcpayrunning {
-if docker ps 2>/dev/null | grep -q btcp >/dev/null 2>&1 \
+if docker ps 2>$dn | grep -q btcp >$dn 2>&1 \
 && docker exec -it btcpay bash -c "ps aux | grep csproj | grep btcpay.log | grep -vq grep" \
 && docker exec -it btcpay bash -c "ps aux | grep csproj | grep NBX | grep -vq grep" ; then
 export btcpayrunning="true"
@@ -224,7 +224,7 @@ fi
 
 function isrtlrunning {
 
-if docker ps 2>/dev/null | grep -q rtl ; then
+if docker ps 2>$dn | grep -q rtl ; then
 export rtlrunning="true"
 overview_conf_add "rtlrunning=true" "rtlrunning="
 else 
@@ -233,7 +233,7 @@ overview_conf_add "rtlrunning=false" "rtlrunning="
 fi
 
 function ismempoolrunning {
-if docker ps 2>/dev/null | grep -q mempool_web ; then
+if docker ps 2>$dn | grep -q mempool_web ; then
 export mempoolrunning="true"
 overview_conf_add "mempoolrunning=true" "mempoolrunning="
 else
@@ -243,7 +243,7 @@ fi
 }
 
 function iselectrumxrunning {
-if pgrep electrumx >/dev/null 2>&1 ; then
+if pgrep electrumx >$dn 2>&1 ; then
 export electrumxrunning="true"
 overview_conf_add "electrumxrunning=true" "electrumxrunning="
 else
@@ -255,7 +255,7 @@ fi
 
 }
 function isthunderhubrunning {
-if docker ps 2>/dev/null | grep -q thunderhub ; then
+if docker ps 2>$dn | grep -q thunderhub ; then
 export thunderhubrunning="true"
 overview_conf_add "thunderhubrunning=true" "thunderhubrunning="
 else

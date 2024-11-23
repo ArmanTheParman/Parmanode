@@ -1,7 +1,7 @@
 function run_sparrow {
 
 if [[ $OS == "Linux" ]] ; then
-nohup $HOME/parmanode/Sparrow/bin/Sparrow >/dev/null 2>&1 & 
+nohup $HOME/parmanode/Sparrow/bin/Sparrow >$dn 2>&1 & 
 please_wait
 sleep 2
 fi

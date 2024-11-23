@@ -5,21 +5,21 @@ check_disk_space
 ########################################################################################
 #Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
-echo "30 3 * * * $USER [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >/dev/null 2>&1
+echo "30 3 * * * $USER [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >$dn 2>&1
 debug "after autoupdate on"
 return 0
 fi
 if [[ $1 == off ]] ; then
-crontab -l | sed '/parmanode/d' | crontab - >/dev/null ; clear
-sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee $HOME/.crontab >/dev/null 2>&1 
-sudo mv $HOME/.crontab /etc/crontab >/dev/null 2>&1
+crontab -l | sed '/parmanode/d' | crontab - >$dn ; clear
+sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee $HOME/.crontab >$dn 2>&1 
+sudo mv $HOME/.crontab /etc/crontab >$dn 2>&1
 return 0
 fi
 ########################################################################################
 
 
 if [[ -f $hm ]] ; then
-. $hm >/dev/null
+. $hm >$dn
 fi
 
 if [[ ${message_autoupdate} != "1" ]] ; then 
@@ -93,7 +93,7 @@ function autoupdate_toggle {
 
 while true ; do
 
-if crontab -l | grep -q parmanode >/dev/null || grep -q "parmanode" < /etc/crontab >/dev/null ; then
+if crontab -l | grep -q parmanode >$dn || grep -q "parmanode" < /etc/crontab >$dn ; then
 clear
 p="ON"
 else

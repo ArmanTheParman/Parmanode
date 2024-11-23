@@ -24,7 +24,7 @@ echo -e "
                                  RTL is$red NOT RUNNING$orange"
 fi
 
-if ! ps -x | grep lnd | grep bin >/dev/null 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
+if ! ps -x | grep lnd | grep bin >$dn 2>&1  && ! docker ps | grep -q lnd ; then echo -e "$red
                 WARNING: LND is not running. RTL won't funciton.$orange" ; fi
 
 echo -e "      

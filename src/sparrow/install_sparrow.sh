@@ -71,7 +71,7 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 #move download files, tidy up
-mv $hp/*arrow-1.* $hp/Sparrow/ >/dev/null 
+mv $hp/*arrow-1.* $hp/Sparrow/ >$dn
 
 add_localhost_to_bitcoinconf
 add_server_1_to_bitcoinconf

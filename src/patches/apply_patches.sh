@@ -45,13 +45,13 @@ if [[ $OS == Linux ]] && [[ -e /etc/systemd/system/parmanode.service ]] ; then
 sudo systemctl stop parmanode.service >$dn 2>&1
 sudo systemctl disable parmanode.service >$dn 2>&1
 sudo rm /etc/systemd/system/parmanode.service >$dn 2>&1
-sudo systemctl daemon-reload >/dev/null 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
 parmanode_conf_remove "parmanode_service="
-rm $HOME/.parmanode/parmanode_script.sh >/dev/null 2>&1
+rm $HOME/.parmanode/parmanode_script.sh >$dn 2>&1
 fi
 if [[ $OS == Mac ]] ; then
 parmanode_conf_remove "tor_script=done"
-sudo rm $dp/tor_script.sh >/dev/null 2>&1
+sudo rm $dp/tor_script.sh >$dn 2>&1
 fi
 
 

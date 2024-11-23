@@ -61,6 +61,6 @@ if [[ ! -e $dp/.nostr_keys/priv_hex.txt ]] ; then
 make_priv_hex || return 1
 fi
 
-rm $dp/.nostr_keys/random_binary.txt >/dev/null 2>&1
+rm $dp/.nostr_keys/random_binary.txt >$dn 2>&1
 return 0 #needed in case rm command above fails.
 }

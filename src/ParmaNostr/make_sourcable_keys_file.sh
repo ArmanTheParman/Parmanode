@@ -10,7 +10,7 @@ priv_hex="$(cat $dp/.nostr_keys/priv_hex.txt | tr -d ' ')"
 
 echo "npub=$npub
 nsec=$nsec
-priv_hex=$priv_hex" | tee $file >/dev/null 2>&1
+priv_hex=$priv_hex" | tee $file >$dn 2>&1
 
 unset file
 }

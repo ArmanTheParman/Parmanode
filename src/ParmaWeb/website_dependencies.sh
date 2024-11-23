@@ -1,5 +1,5 @@
 function website_dependencies {
-if ! which unzip >/dev/null 2>&1 ; then sudo apt install unzip -y ; fi
+if ! which unzip >$dn 2>&1 ; then sudo apt install unzip -y ; fi
 
 install_debconfutils #do this first for php install
 install_nginx

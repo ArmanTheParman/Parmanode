@@ -6,7 +6,7 @@ function install_nostrrelay_podman {
 #https://usenostr.org/relay
 #https://nostr.how/en/relays
 
-if ! which podman >/dev/null 2>&1 ; then
+if ! which podman >$dn 2>&1 ; then
 
     if [[ $OS == Mac ]] ; then
         brew install podman
@@ -14,7 +14,7 @@ if ! which podman >/dev/null 2>&1 ; then
         sudo apt-get install podman
     fi
     #--------------------------#
-    if ! which podman >/dev/null 2>&1 ; then
+    if ! which podman >$dn 2>&1 ; then
     announce "Something went wrong, couldn't install Podman it seems. Aborting."
     return 1
     fi

@@ -1,7 +1,7 @@
 function tmux_patch {
 
-if grep -q "tmux" $hm 2>/dev/null ; then return ; fi
-if which tmux >/dev/null 2>&1 ; then return 0 ; fi
+if grep -q "tmux" $hm 2>$dn ; then return ; fi
+if which tmux >$dn 2>&1 ; then return 0 ; fi
 
 while true ; do
 if [[ $btcdockerchoice != "yes" ]] ; then

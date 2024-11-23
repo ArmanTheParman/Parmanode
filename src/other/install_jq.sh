@@ -1,5 +1,5 @@
 function install_jq {
-if which jq >/dev/null ; then return 0 ; fi
+if which jq >$dn ; then return 0 ; fi
 
 if [[ $OS == Linux ]] ; then
 sudo apt-get upday -y

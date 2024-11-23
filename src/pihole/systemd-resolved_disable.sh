@@ -36,7 +36,7 @@ done
 #disable service
 sudo systemctl stop systemd-resolved.service
 sudo systemctl disable systemd-resolved.service
-sudo sed -i '/^\s*nameserver/d' /etc/resolv.conf >/dev/null 2>&1
-echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null 2>&1
+sudo sed -i '/^\s*nameserver/d' /etc/resolv.conf >$dn 2>&1
+echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >$dn 2>&1
 return 0
 }

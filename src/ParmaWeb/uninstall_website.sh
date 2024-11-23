@@ -88,7 +88,7 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit 0 ;; p|P) return 1 ;; a|A) return 1 ;; m|M) back2main ;;
 delete) 
-sudo rm -rf /var/www/$website >/dev/null 2>&1
+sudo rm -rf /var/www/$website >$dn 2>&1
 break
 ;;
 *) invalid ;;
@@ -101,11 +101,11 @@ enter_continue
 
 installed_conf_remove "website-end"
 
-sudo rm -rf /etc/nginx/conf.d/$website* >/dev/null 2>&1
-sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >/dev/null 2>&1
-sudo rm -rf /etc/letsencrypt/live/$domain_name >/dev/null 2>&1
-sudo rm -rf /etc/letsencrypt/live/www.$domain_name >/dev/null 2>&1
-sudo systemctl restart nginx >/dev/null 2>&1
+sudo rm -rf /etc/nginx/conf.d/$website* >$dn 2>&1
+sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >$dn 2>&1
+sudo rm -rf /etc/letsencrypt/live/$domain_name >$dn 2>&1
+sudo rm -rf /etc/letsencrypt/live/www.$domain_name >$dn 2>&1
+sudo systemctl restart nginx >$dn 2>&1
 
 parmanode_conf_remove "domain"
 parmanode_conf_remove "www"

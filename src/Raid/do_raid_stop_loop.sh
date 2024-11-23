@@ -23,7 +23,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) continue ;;
 y)
-sudo umount $i >/dev/null
+sudo umount $i >$dn
 sudo mdadm --stop $i && installed_conf_remove "$i" \
 && debug "should be stopped. i is $i. lsblk...
 $(sudo partprobe ; lsblk)" \

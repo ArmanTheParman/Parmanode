@@ -21,7 +21,7 @@ break
 esac
 done
 #check Docker running, esp Mac
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -33,7 +33,7 @@ choose "emq" ; read choice
 jump $choice 
 case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
 set_terminal
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 
@@ -49,11 +49,11 @@ enter_continue ; jump $enter_cont
 return 1
 fi
 fi
-stop_public_pool >/dev/null 2>&1
+stop_public_pool >$dn 2>&1
 docker rm public_pool public_pool_ui ; debug "containers stopped and removed"
 cd
-sudo rm -rf $hp/public_pool $hp/public_pool_ui >/dev/null 2>&1
-sudo rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui >/dev/null 2>&1
+sudo rm -rf $hp/public_pool $hp/public_pool_ui >$dn 2>&1
+sudo rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui >$dn 2>&1
 debug "after rm"
 nginx_public_pool_ui remove
 nginx_stream public_pool remove

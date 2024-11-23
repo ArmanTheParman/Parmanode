@@ -20,8 +20,8 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; n|N|no|NO) break ;; m|M) back2main ;;
 y)
-sudo rm /etc/nginx/conf.d/$domain_name.conf >/dev/null 2>&1
-sudo mv /etc/nginx/conf.d/website.conf.backup /etc/nginx/conf.d/website.conf >/dev/null 2>&1
+sudo rm /etc/nginx/conf.d/$domain_name.conf >$dn 2>&1
+sudo mv /etc/nginx/conf.d/website.conf.backup /etc/nginx/conf.d/website.conf >$dn 2>&1
 sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
 parmanode_conf_remove "domain_name="
 parmanode_conf_remove "www="

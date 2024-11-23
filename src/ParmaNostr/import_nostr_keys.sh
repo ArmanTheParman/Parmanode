@@ -46,7 +46,7 @@ done
 
 
 if [[ $typedetected == nsec ]] ; then
-echo $nsec | tee $dp/.nostr_keys/nsec.txt >/dev/null 2>&1
+echo $nsec | tee $dp/.nostr_keys/nsec.txt >$dn 2>&1
 make_nsec_bytes
 make_pubkey
 make_npub
@@ -54,7 +54,7 @@ make_priv_hex
 fi
 
 if [[ $typedetected == hex ]] ; then
-echo $nsec | tee $dp/.nostr_keys/priv_hex.txt >/dev/null 2>&1
+echo $nsec | tee $dp/.nostr_keys/priv_hex.txt >$dn 2>&1
 make_priv_hex_bytes
 make_pubkey
 make_npub
