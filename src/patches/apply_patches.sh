@@ -58,7 +58,7 @@ fi
 }
 
 function suggest_tor {
-
+if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 if [[ $btcdockerchoice == "yes" ]] ; then return 0 ; fi
 
 if which tor >$dn 2>&1 ; then return 0 ; fi
