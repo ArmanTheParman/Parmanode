@@ -15,14 +15,16 @@ gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
 fi
 
 #add bc command - needed for future joimarket app
-if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
-    if which tmux >$dn 2>&1 ; then
-        TMUX2=$TMUX ; unset TMUX 
-        tmux new-session -d -s bcsesh 'sudo apt-get install bc -y ; tmux kill-session -t bcsesh'
-        TMUX=$TMUX2
-    else
-        echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
-        sudo apt-get update -y && sudo apt-get install bc -y
+if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
+    if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
+        if which tmux >$dn 2>&1 ; then
+            TMUX2=$TMUX ; unset TMUX 
+            tmux new-session -d -s bcsesh 'sudo apt-get install bc -y ; tmux kill-session -t bcsesh'
+            TMUX=$TMUX2
+        else
+            echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
+            sudo apt-get update -y && sudo apt-get install bc -y
+        fi
     fi
 fi
 
@@ -37,7 +39,7 @@ fi
 rm $dp/.debug2.log >$dn 2>&1
 
 #fix values in torrc - linux 
-sudo gsed -i 's/8332/8333/g' $torrc
+sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 
 if grep -q "lnd" $ic ; then make_lnd_service_tor ; fi
