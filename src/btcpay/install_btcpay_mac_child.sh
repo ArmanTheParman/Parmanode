@@ -5,7 +5,9 @@ function install_btcpay_mac_child {
 export btcpayinstallsbitcoin="true"
 set_terminal
 sned_sats
-debug "before choose btcpay version"
+
+btcpay_install_restore_choice || return 1
+
 choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; return 1 ; }
 
 make_btcpay_directories  || { announce "Something went wrong. Aborting." ; return 1 ; }
