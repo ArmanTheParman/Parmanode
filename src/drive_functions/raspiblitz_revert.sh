@@ -70,14 +70,14 @@ set_terminal ; echo -e "
 read ; set_terminal ; sync
 done
 
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1)
 
 #Mount
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1)
 export mount_point="/media/$USER/parmanode"
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount $disk >/dev/null 2>&1
-sudo mount $disk $mount_point >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount $disk >$dn 2>&1
+sudo mount $disk $mount_point >$dn 2>&1
 
 
 
@@ -85,16 +85,16 @@ sudo mount $disk $mount_point >/dev/null 2>&1
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*.conf >/dev/null 2>&1
+sudo rm ./*.conf >$dn 2>&1
 sudo mv ./parmanode_backedup/* ./
 sudo chown -R 118:126 $mount_point/bitcoin
 #Get device name
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
 
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
 echo "Changing the label to BLOCKCHAIN"
-sudo e2label $disk BLOCKCHAIN >/dev/null 2>&1
+sudo e2label $disk BLOCKCHAIN >$dn 2>&1
 sleep 1
 sudo partprobe
 done
@@ -119,12 +119,12 @@ $orange
 " ; enter_continue ; set_terminal
 
 cd
-sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount /media/$USER/parmanode >/dev/null 2>&1
+sudo umount $disk >$dn 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount /media/$USER/parmanode >$dn 2>&1
 
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 2>&1
+export $(sudo blkid -o export $disk | grep UUID) 
 if grep -q $UUID < /etc/fstab ; then
 sudo gsed -i "/parmanode/d" /etc/fstab
 fi

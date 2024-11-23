@@ -9,13 +9,13 @@ if [[ $OS == Mac ]] ; then #it's for x86_64, but M1/M2 macs will run it but not 
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-macOS.zip.asc
 verify_bitbox || return 1
-unzip *.zip ; rm *.zip 2>/dev/null
+unzip *.zip ; rm *.zip 2>$dn
 mv *.app /Applications/
 fi
 
 
 if [[ $chip == x86_64 && $OS == Linux ]] ; then
-rm *AppImage >/dev/null 2>&1
+rm *AppImage >$dn 2>&1
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage
 curl -LO https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$version/BitBox-$version-x86_64.AppImage.asc
 verify_bitbox || return 1

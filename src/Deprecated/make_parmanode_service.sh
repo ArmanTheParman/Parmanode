@@ -13,11 +13,11 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/parmanode.service >/dev/null 2>&1
+" | sudo tee /etc/systemd/system/parmanode.service >$dn 2>&1
 
 make_parmanode_script
 
-cat << EOF | sudo tee /etc/systemd/system/parmanode.timer >/dev/null 2>&1
+cat << EOF | sudo tee /etc/systemd/system/parmanode.timer >$dn 2>&1
 [Unit]
 Description=Timer Parmanode Service
 
@@ -29,11 +29,11 @@ Persistent=true
 WantedBy=timers.target
 EOF
 
-sudo systemctl daemon-reload >/dev/null 2>&1
-sudo systemctl enable parmanode.service >/dev/null 2>&1
-sudo systemctl start parmanode.service >/dev/null 2>&1
-sudo systemctl enable parmanode.timer >/dev/null 2>&1
-sudo systemctl start parmanode.timer >/dev/null 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl enable parmanode.service >$dn 2>&1
+sudo systemctl start parmanode.service >$dn 2>&1
+sudo systemctl enable parmanode.timer >$dn 2>&1
+sudo systemctl start parmanode.timer >$dn 2>&1
 
 parmanode_conf_add "parmanode_service=enabled"
 }

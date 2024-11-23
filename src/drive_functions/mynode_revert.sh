@@ -69,22 +69,22 @@ read ; set_terminal ; sync
 done
 
 #Mount
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) 
 export mount_point="/media/$USER/parmanode"
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount $disk >/dev/null 2>&1
-sudo mount $disk $mount_point >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount $disk >$dn 2>&1
+sudo mount $disk $mount_point >$dn 2>&1
 
 
 # The main changes...
 
 cd $mount_point/.bitcoin
-sudo rm ./*conf >/dev/null 2>&1
+sudo rm ./*conf >$dn 2>&1
 sudo mv ./parmanode_backedup/* ./
 sudo chown -R 1002:1002 $mount_point/mynode/bitcoin
 
 #Get device name
-export disk=$(sudo blkid | grep parmanode | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep parmanode | cut -d : -f 1)
 
 # label
 while sudo lsblk -o LABEL | grep -q parmanode ; do
@@ -107,12 +107,12 @@ set_terminal ; echo -e "
 " ; enter_continue ; set_terminal
 
 cd
-sudo umount $disk >/dev/null >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount /media/$USER/parmanode >/dev/null 2>&1
+sudo umount $disk >$dn 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount /media/$USER/parmanode >$dn 2>&1
 
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep UUID)
 if grep -q $UUID < /etc/fstab ; then
 sudo gsed -i "/$UUID/d" /etc/fstab
 fi

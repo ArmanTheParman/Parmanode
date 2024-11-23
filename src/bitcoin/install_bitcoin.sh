@@ -20,7 +20,7 @@ if [[ $btcdockerchoice == "yes" ]] ; then
     "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
 
     #start docker if it is not running 
-    if ! docker ps >/dev/null 2>&1 ; then 
+    if ! docker ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     return 1
     fi
@@ -59,7 +59,7 @@ debug "after format_ext_drive"
         if [[ $version == self ]] ; then break ; fi
 
             if [[ $OS == "Linux" && $drive == "external" ]] ; then
-                sudo chown -R $USER /media/$USER/parmanode >/dev/null 2>&1 \
+                sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
                 && log "bitcoin" "redundant chown applied in install_bitcoin function" \
                 || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
             break
@@ -145,7 +145,7 @@ set_terminal
 
 if [[ $OS == "Linux" ]] ; then
 
-    if ! which bitcoind >/dev/null ; then
+    if ! which bitcoind >$dn ; then
         install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
         unset importdrive
@@ -186,7 +186,7 @@ $orange
 " && installed_conf_add "bitcoin-end"
 
 #Just in case - what? again? Anyway, I'll leave it.
-sudo chown -R $USER:$USER $parmanode_drive>/dev/null 2>&1
+sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
 enter_continue
 fi

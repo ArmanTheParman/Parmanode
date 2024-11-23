@@ -3,7 +3,7 @@
 
 function log {
 
-if [[ $2 == "delete" ]] >/dev/null 2>&1 ; then
+if [[ $2 == "delete" ]] >$dn 2>&1 ; then
 rm $dp/"$1".log >$dn 2>&1
 fi
 

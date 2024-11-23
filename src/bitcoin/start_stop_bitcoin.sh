@@ -20,7 +20,7 @@ fi
 if grep -q btccombo $ic ; then
 
     if ! docker ps | grep -q btcpay ; then
-        docker start btcpay >/dev/null 2>&1 ; sleep 3
+        docker start btcpay >$dn 2>&1 ; sleep 3
     fi
 
     docker exec -d btcpay bitcoind

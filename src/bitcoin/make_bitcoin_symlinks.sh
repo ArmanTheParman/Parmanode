@@ -22,8 +22,8 @@ if [[ $OS == "Mac" && $drive == "internal" ]] ; then
     fi
 
 if [[ $OS == "Mac" && $drive == "external" ]] ; then
-    cd $HOME/Library/Application\ Support/ >/dev/null 2>&1 && rm -rf Bitcoin >/dev/null 2>&1 
-    cd $HOME && rm -rf .bitcoin >/dev/null 2>&1 
+    cd $HOME/Library/Application\ Support/ >$dn 2>&1 && rm -rf Bitcoin >$dn 2>&1 
+    cd $HOME && rm -rf .bitcoin >$dn 2>&1 
     cd $HOME/Library/Application\ Support/ && ln -s /Volumes/parmanode/.bitcoin Bitcoin && \
     cd $HOME && ln -s $parmanode_drive/.bitcoin .bitcoin 
     break

@@ -54,7 +54,7 @@ esac
 done
 
 mkdir -p $hp/coldcard ; debug "coldcard dir made"
-cd $hp/coldcard >/dev/null && rm ./* 2>/dev/null #crucial to use && because if cd fails, rm command will delete the wrong things!
+cd $hp/coldcard >$dn && rm ./* 2>$dn #crucial to use && because if cd fails, rm command will delete the wrong things!
 debug "cd and clear coldcard dir contents"
 
 #get latest signatures file...

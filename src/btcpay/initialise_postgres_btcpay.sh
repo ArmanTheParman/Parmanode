@@ -12,7 +12,7 @@ docker exec -d -u root btcpay /bin/bash -c "service postgresql start"
 
 function postgres_database_creation {
 
-rm $tmp/postgres* 2>/dev/null
+rm $tmp/postgres* 2>$dn
 set_terminal
 
 counter=0
@@ -60,7 +60,7 @@ if [[ $BTCPAYRESTORE == "true" ]] ; then
 restore_btcpay
 debug "after restore btcpay"
 elif [[ $BTCPAYRESTORE == "false" ]] ; then
-docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >/dev/null 2>&1
+docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" >$dn 2>&1
 fi
 
 }

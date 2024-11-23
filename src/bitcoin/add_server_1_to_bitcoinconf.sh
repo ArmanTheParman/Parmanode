@@ -14,7 +14,7 @@ read choice
 if [[ $choice == "s" ]] ; then return ; fi
 
     stop_bitcoin
-    echo "server=1" | tee -a $bc >/dev/null 2>&1
+    echo "server=1" | tee -a $bc >$dn 2>&1
     start_bitcoin
 fi
 fi

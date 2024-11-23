@@ -14,7 +14,7 @@ set_terminal ; echo -e "
 return 1
 fi
 
-if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >/dev/null ; then 
+if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >$dn ; then 
     set_terminal ; echo -e "
 ########################################################################################
 

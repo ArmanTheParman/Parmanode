@@ -22,11 +22,11 @@ esac
 done 
 
 if [[ $OS == Mac ]] ; then
-sudo rm -rf /Applications/AnyDesk.app > /dev/null 2>&1
+sudo rm -rf /Applications/AnyDesk.app > $dn 2>&1
 fi
 
 if [[ $OS == Linux ]] ; then
-sudo apt-get -y purge anydesk >/dev/null 2>&1
+sudo apt-get -y purge anydesk >$dn 2>&1
 fi
 
 installed_config_remove "anydesk"

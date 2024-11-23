@@ -1,5 +1,5 @@
 function getblockheight {
-source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
 if [[ $OS == Mac ]] ; then
 export blockheight=$(curl -s --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", \

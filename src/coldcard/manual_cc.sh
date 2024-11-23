@@ -1,5 +1,5 @@
 function manual_cc {
-cd $hp/coldcard >/dev/null
+cd $hp/coldcard >$dn
 if [[ $OS == Linux ]] ; then
 message="$bright_blue(right-click-paste tends to work better on Linux
                                    than keyboard shortcuts, don't ask me why)$orange"

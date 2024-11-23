@@ -17,11 +17,11 @@ esac
 done
 sudo rm -rf $HOME/parmanode/btc-rpc*
 
-sudo systemctl stop btcrpcexplorer.service >/dev/null
-sudo systemctl disable btcrpcexplorer.service >/dev/null
-sudo rm /etc/systemd/system/btcrpcexplorer.service >/dev/null
-sudo rm /etc/nginx/conf.d/btcrpcexplorer.conf 2>/dev/null
-sudo rm /usr/local/etc/nginx/conf.d/btcrpcexplorer.conf 2>/dev/null
+sudo systemctl stop btcrpcexplorer.service >$dn
+sudo systemctl disable btcrpcexplorer.service >$dn
+sudo rm /etc/systemd/system/btcrpcexplorer.service >$dn
+sudo rm /etc/nginx/conf.d/btcrpcexplorer.conf 2>$dn
+sudo rm /usr/local/etc/nginx/conf.d/btcrpcexplorer.conf 2>$dn
 installed_conf_remove "btcrpcexplorer"
 
 success "BTC RPC Explorer" "being uinstalled."

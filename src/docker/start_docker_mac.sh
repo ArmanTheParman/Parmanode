@@ -1,10 +1,10 @@
 function start_docker_mac {
 
-( nohup open -a "Docker Desktop" >/dev/null 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
+( nohup open -a "Docker Desktop" >$dn 2>&1 & nohup_exit_status=$?; exit $nohup_exit_status ) && log "docker" "docker open -a nohup" \
 || log "docker" "docker failed to nohup open -a" 
 
 while true ; do
-if docker ps >/dev/null 2>&1  ; then return 0 ; fi
+if docker ps >$dn 2>&1  ; then return 0 ; fi
 set_terminal ; echo -e "
 ########################################################################################
 $cyan

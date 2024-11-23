@@ -18,7 +18,7 @@ done
 set_terminal ; echo "
 Stopping all running containers...
 "
-docker stop $(docker ps -q) > /dev/null 2>&1
+docker stop $(docker ps -q) >$dn 2>&1
 
 echo "Purging Docker programs..."
 sleep 1

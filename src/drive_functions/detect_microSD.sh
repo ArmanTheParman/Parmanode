@@ -33,7 +33,7 @@ q|Q) exit ;;
 esac
 
 if [[ $(uname) == "Linux" ]] ; then 
-    sudo blkid -g >/dev/null
+    sudo blkid -g >$dn
     sudo blkid > $HOME/.parmanode/before
     fi
 
@@ -60,7 +60,7 @@ set_terminal
 sleep 2.5
 
 if [[ $(uname) == "Linux" ]] ; then
-    sudo blkid -g >/dev/null
+    sudo blkid -g >$dn
     sudo blkid > $HOME/.parmanode/after
     fi
 
@@ -68,7 +68,7 @@ if [[ $(uname) == "Darwin" ]] ; then
     diskutil list > $HOME/.parmanode/after
     fi
 
-if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >/dev/null 2>&1 ; then
+if diff -q $HOME/.parmanode/before $HOME/.parmanode/after  >$dn 2>&1 ; then
     echo -e "No new drive detected. Try again. Hit$cyan <enter>.$orange"
     read ; continue 
 fi

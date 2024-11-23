@@ -7,7 +7,7 @@ dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay
 fi
 
 #for multiselection menus, need to exit if not installed
-if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >/dev/null 2>&1 ; then return 1 ; fi
+if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then return 1 ; fi
 
 while true ; do
 
@@ -55,7 +55,7 @@ $green      (qtstart)$orange  Start Bitcoin Qt
 "
 fi
 
-if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >/dev/null 2>&1 ; then
+if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
 output3="
 $red      (qtstop)$orange   Stop Bitcoin Qt
 "
@@ -265,7 +265,7 @@ return 0
 
 function bitcoin_status {
 if [[ ! -e $HOME/.bitcoin/debug.log ]] ; then return 1 ; fi
-source ~/.parmanode/parmanode.conf >/dev/null 2>&1 #get drive variable
+source ~/.parmanode/parmanode.conf >$dn 2>&1 #get drive variable
 unset running output1 output2 height running_text
 
 export height="$(tail -n 200 $HOME/.bitcoin/debug.log | grep version | grep height= | tail -n1 | grep -Eo 'height=[0-9]+\s' | cut -d = -f 2 | tr -d ' ')" 
@@ -283,7 +283,7 @@ export running_text="-- status ...type r to refresh, or see log"
 fi
 
 if [[ -n $height ]] ; then
-    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >/dev/null 2>&1 ; then
+    if tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -qE 'progress=1.00' >$dn 2>&1 ; then
     export running_text="-- height=$height (fully sync'd)"
     else
     temp=$(tail -n50 $HOME/.bitcoin/debug.log | grep height= | tail -n1 | grep -Eo 'progress=0\.[0-9]+\s' | cut -d \. -f 2)

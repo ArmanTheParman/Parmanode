@@ -8,13 +8,13 @@ function install_electrs_docker {
 unset install_electrs_docker_variable
 export install_electrs_docker_variable="true" # used later to fork make config code.
 
-source $pc $ic >/dev/null 2>&1
+source $pc $ic >$dn 2>&1
 
 grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 grep -q "docker-end" $dp/installed.conf || { announce "Please install Docker from Parmanode menu first. Aborting." && return 1 ; }
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -43,7 +43,7 @@ fi
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
 if [[ -e $bc ]] ; then
-source $bc >/dev/null
+source $bc $dn>
 else
 clear
 announce "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
@@ -52,7 +52,7 @@ announce "The bitcoin.conf file could not be detected. Can happen if Bitcoin is
 return 1
 fi
 
-if ! which jq >/dev/null ; then install_jq ; fi
+if ! which jq >$dn ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1
@@ -73,7 +73,7 @@ installed_config_add "electrsdkr2-start"
 
 #prepare drives
 choose_and_prepare_drive "Electrs" || return 1
-source $pc >/dev/null
+source $pc >$dn
 
 if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
@@ -83,7 +83,7 @@ if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs"
     # check if there is a backup electrs_db on the drive and restore it
       restore_electrs_drive #prepares drive based on existing backup and user choices
       debug "after restore_electrs_drive"
-      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
+      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > $dn 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
 elif [[ $drive_electrs == external ]] ; then
 
@@ -97,7 +97,7 @@ elif [[ $drive_electrs == external ]] ; then
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
       mkdir -p $parmanode_drive/electrs_db
-      sudo chown -R $USER $parmanode_drive/electrs_db >/dev/null 2>&1
+      sudo chown -R $USER $parmanode_drive/electrs_db >$dn 2>&1
       esac
 
 fi

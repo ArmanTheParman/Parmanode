@@ -42,14 +42,14 @@ all|ALL)
     if [[ $choice2 != y ]] ; then 
         return 0 
     else
-        sudo rm -rf ~/.electrum >/dev/null 2>&1 && \
+        sudo rm -rf ~/.electrum >$dn 2>&1 && \
         announce "The .electrum directory has been deleted."
         return 0
     fi
 ;;
 c|C|clear)
     cd ~/.electrum && {
-        rm -rf blockchain_headers cache certs daemon* forks recent_servers >/dev/null 2>&1
+        rm -rf blockchain_headers cache certs daemon* forks recent_servers >$dn 2>&1
         # not config and not wallets
     } && announce "Files have been deleted. You can now restart Electrum." 
     return 0

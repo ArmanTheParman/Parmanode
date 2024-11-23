@@ -3,7 +3,7 @@
 #started container.
 function bre_docker_start_bre {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################

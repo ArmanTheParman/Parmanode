@@ -14,7 +14,7 @@ fi
 
 # Create a new GPT partition table and a single partition on the drive
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
-sudo fdisk "$disk_no_number" <<EOF >/dev/null 
+sudo fdisk "$disk_no_number" <<EOF >$dn 
 g
 w
 EOF

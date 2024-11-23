@@ -11,19 +11,19 @@ fi #else leave that configuration alone
 
 #Sort out connection security method
 unset rpcuser rpcpassword
-source $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1
 if [[ -z $rpcuser || -z $rpcpassword ]] ; then  
     sudo gsed -i "/BITCOIND_USER/d" $file 
     sudo gsed -i "/BTCEXP_BITCOIND_PASS/d" $file
-    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" | tee -a $file >/dev/null 2>&1
+    echo "BTCEXP_BITCOIND_COOKIE=$HOME/.bitcoin/.cookie" | tee -a $file >$dn 2>&1
 else
     #search highly dependent on local copy of Dockerfile not changing
     sudo gsed -i "s/parman/$rpcuser/"     $file 
     sudo gsed -i "s/hodl/$rpcpassword/"   $file 
 
     if [[ $computer_type == Pi ]] ; then
-    sed -i "s/host.docker.internal/127.0.0.1/" $file >/dev/null 2>&1
+    sed -i "s/host.docker.internal/127.0.0.1/" $file >$dn 2>&1
     fi
 
 fi

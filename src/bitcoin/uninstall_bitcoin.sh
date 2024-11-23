@@ -63,7 +63,7 @@ esac
 done
 #Break point. Proceed to uninstall Bitcoin Core.
 
-if ! docker ps >/dev/null 2>&1 ; then
+if ! docker ps >$dn 2>&1 ; then
 announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
 return 1
 fi
@@ -79,11 +79,11 @@ fi
 
 if [[ $OS == "Mac" ]] ; then 
     remove_bitcoin_directories_mac uninstall
-    sudo rm -rf /Applications/Bitcoin-QT.app >/dev/null 2>&1
+    sudo rm -rf /Applications/Bitcoin-QT.app >$dn 2>&1
 fi
 
 # Remove binaries
-sudo rm /usr/local/bin/bitcoin* 2>/dev/null
+sudo rm /usr/local/bin/bitcoin* 2>$dn
 
 #Modify config file
 installed_config_remove "bitcoin"
@@ -101,7 +101,7 @@ parmanode_conf_remove "BTCIP"
 unset drive prune_value bitcoin_choice UUID BTCIP rpcuser rpcpassword btc_authentication format_choice skip_formatting justFormat driveproblem
 print_bitcoin_variables "after unset"
 #Remove service file for Linux only
-sudo rm /etc/systemd/system/bitcoin.service 1>/dev/null 2>&1
+sudo rm /etc/systemd/system/bitcoin.service 1>$dn 2>&1
 
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then

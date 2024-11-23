@@ -17,7 +17,7 @@ esac
 done
 docker stop bre && docker rm -f bre && docker rmi -f bre
 
-sudo rm -rf $HOME/parmanode/bre >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/bre >$dn 2>&1
 
 installed_config_remove "bre"
 

@@ -1,7 +1,7 @@
 function enable_access_bre {
 unset file
 #check nginx installed
-if ! which nginx >/dev/null 2>&1 ; then install_nginx ; fi
+if ! which nginx >$dn 2>&1 ; then install_nginx ; fi
 
 if [[ $OS == Mac ]] ; then
 local file="/usr/local/etc/nginx/btcrpcexplorer.conf"
@@ -21,7 +21,7 @@ echo -e "server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto https;
     }
-}" | sudo tee $file  >/dev/null
+}" | sudo tee $file  >$dn
 
-sudo systemctl restart nginx 2>/dev/null || brew services restart nginx 2>/dev/null
+sudo systemctl restart nginx 2>$dn || brew services restart nginx 2>$dn
 }

@@ -1,7 +1,7 @@
 function test_directory_placement {
 cd .. #moves one directory up the tree
 testing_dir=$(pwd) #places the output of the command, pwd, into a variable
-cd - >/dev/null # "cd - " means go back to the directory before, whatever it was
+cd - >$dn # "cd - " means go back to the directory before, whatever it was
 # >/dev/null ; this means redirect the output (>) to a file called /dev/null, 
 # which is a discard file
 
@@ -16,7 +16,7 @@ test_directory_placement_message #see below for function details
 fi
 
 #in case directory is nested and $HOME/parmanode is part of the path. Not ok.
-if pwd >/dev/null | grep "$HOME/parmanode" ; then #if the result of pwd (which will not 
+if pwd >$dn | grep "$HOME/parmanode" ; then #if the result of pwd (which will not 
 #be printed because of >/dev/null) when grep'ed (a search function) includes
 #"$HOME/parmanode", then do the function below
 test_directory_placement_message2

@@ -14,10 +14,10 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-}" | sudo tee /etc/systemd/system/socat_publish.service >/dev/null 2>&1
+}" | sudo tee /etc/systemd/system/socat_publish.service >$dn 2>&1
 
 
-sudo systemctl daemon-reload >/dev/null 2>&1
-sudo systemctl enable socat_publish.service >/dev/null 2>&1
-sudo systemctl start socat_publish.service >/dev/null 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl enable socat_publish.service >$dn 2>&1
+sudo systemctl start socat_publish.service >$dn 2>&1
 }

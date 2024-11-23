@@ -3,7 +3,7 @@ function install_electrs {
 export install_electrs_docker_variable="false"
 export electrsversion="v0.10.6"
 
-source $pc $ic >/dev/null 2>&1
+source $pc $ic >$dn 2>&1
 
 grep -q "electrsdkr" $ic && announce "Oops, you're trying to install a second instance of electrs.
     It seems you alread have a Docker version of electrs installed on the 
@@ -16,10 +16,10 @@ grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." 
 sned_sats
 fi
 
-if [[ $OS == Linux ]] && ! which socat >/dev/null 2>&1 ; then 
+if [[ $OS == Linux ]] && ! which socat >$dn 2>&1 ; then 
     sudo apt-get update -y 
     sudo apt install socat -y 
-elif [[ $OS == Mac ]] && ! which socat >/dev/null 2>&1 ; then 
+elif [[ $OS == Mac ]] && ! which socat >$dn 2>&1 ; then 
     brew_check || return 1 
     brew install socat 
 fi
@@ -31,7 +31,7 @@ fi
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
 if [[ -e $bc ]] ; then
-source $bc >/dev/null
+source $bc >$dn
 else
 clear
 echo -e "The$cyan bitcoin.conf$orange file could not be detected. Can happen if Bitcoin is
@@ -44,7 +44,7 @@ announce "Couldn't detect bitcoin.conf - Aborting."
 return 1 
 fi
 
-if ! which jq >/dev/null ; then install_jq ; fi
+if ! which jq >$dn ; then install_jq ; fi
 
 check_pruning_off || return 1
 check_server_1 || return 1
@@ -119,7 +119,7 @@ else #if [[ $electrs_compile == "true" ]] ; then
 
 fi
 #remove old certs (in case they were copied from backup), then make new certs
-rm $HOME/parmanode/electrs/*.pem > /dev/null 2>&1
+rm $HOME/parmanode/electrs/*.pem > $dn 2>&1
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
 #prepare drives. #drive_electrs= variable set.
@@ -128,7 +128,7 @@ choose_and_prepare_drive "Electrs" || return 1
 fi
  
 #get drive variables for fulcrum, electrumx, and bitcoin
-source $HOME/.parmanode/parmanode.conf >/dev/null
+source $HOME/.parmanode/parmanode.conf >$dn
 
 if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
     # format not needed
@@ -137,7 +137,7 @@ if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs"
 
     # check if there is a backup electrs_db on the drive and restore it
       restore_electrs_drive #prepares drive based on existing backup and user choices
-      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
+      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > $dn 2>&1 ; fi
                                                            # $original from function restore_electrs_drive
 elif [[ $drive_electrs == external ]] ; then
 
@@ -151,7 +151,7 @@ elif [[ $drive_electrs == external ]] ; then
       format_ext_drive "electrs" || return 
       #make directory electrs_db not needed because config file makes that hapen when electrs run
       mkdir -p $parmanode_drive/electrs_db
-      sudo chown -R $USER $parmanode_drive/electrs_db >/dev/null 2>&1
+      sudo chown -R $USER $parmanode_drive/electrs_db >$dn 2>&1
       esac
 
 fi

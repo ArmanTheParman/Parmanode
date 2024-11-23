@@ -45,18 +45,18 @@ case $choice in
 	    please_wait
         if [[ $OS == "Linux" ]] ; then 
         remove_parmanode_fstab 
-        sudo dd if=/dev/zero of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        sudo dd if=/dev/zero of=$disk bs=1M count=500 >$dn 2>&1 ; sync ; return 0 ; fi
 
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=$disk bs=1M count=500  >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/zero of=$disk bs=1M count=500  >$dn 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
 	r|R)   
 	    please_wait
         if [[ $OS == "Linux" ]] ; then 
         remove_parmanode_fstab 
-        sudo dd if=/dev/urandom of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        sudo dd if=/dev/urandom of=$disk bs=1M count=500 >$dn 2>&1 ; sync ; return 0 ; fi
 
-        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=$disk bs=1M count=500 >/dev/null 2>&1 ; sync ; return 0 ; fi
+        if [[ $OS == "Mac" ]] ; then sudo dd if=/dev/urandom of=$disk bs=1M count=500 >$dn 2>&1 ; sync ; return 0 ; fi
 	    ;;
 
     c|C) 
@@ -94,10 +94,10 @@ please_wait
 # "status=progress" won't work becuase of the pipe, but leving it in for future reference.
 if [[ $OS == "Linux" ]] ; then
     remove_parmanode_fstab
-    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=500 >/dev/null 2>&1 && sync && return 0
+    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=500 >$dn 2>&1 && sync && return 0
     fi
 if [[ $OS == "Mac" ]] ; then
-    yes "$string " | sudo dd of=$disk bs=1000000 count=500 >/dev/null 2>&1 && sync && return 0
+    yes "$string " | sudo dd of=$disk bs=1000000 count=500 >$dn 2>&1 && sync && return 0
     fi
 
 # if it ran successfully, code exits.    
@@ -127,11 +127,11 @@ if [[ $OS == "Linux" ]] ; then
         disk is $disk"  
     fi
     
-    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >/dev/null 2>&1 && sync && return 0
+    yes "$string " | sudo dd iflag=fullblock of=$disk bs=1M count=250 >$dn 2>&1 && sync && return 0
 fi
 
 if [[ $OS == "Mac" ]] ; then
-    yes "$string " | sudo dd of=$disk bs=1000000 count=250 >/dev/null 2>&1 && sync && return 0
+    yes "$string " | sudo dd of=$disk bs=1000000 count=250 >$dn 2>&1 && sync && return 0
     fi
 return 1
 }

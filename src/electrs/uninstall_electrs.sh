@@ -48,7 +48,7 @@ $orange
     case $choice in
     remove)
     are_you_sure "Delete the previous compiled software? Not a great idea." || return 1
-    please_wait ; rm -rf $HOME/.electrs_backup >/dev/null ; break ;;
+    please_wait ; rm -rf $HOME/.electrs_backup >$dn ; break ;;
     L|l) 
     please_wait ; break ;;
     *) invalid ;;
@@ -61,9 +61,9 @@ nginx_stream electrs remove
 if [[ $OS == Linux ]] ; then electrs_tor_remove uninstall ; fi
 
 if [[ $OS == Linux ]] ; then
-sudo systemctl stop electrs.service >/dev/null 2>&1
-sudo systemctl disable electrs.service >/dev/null 2>&1
-sudo rm /etc/systemd/system/electrs.service >/dev/null 2>&1
+sudo systemctl stop electrs.service >$dn 2>&1
+sudo systemctl disable electrs.service >$dn 2>&1
+sudo rm /etc/systemd/system/electrs.service >$dn 2>&1
 fi
 
 # Uninstall - electrs_db
@@ -113,14 +113,14 @@ fi
 
 # Uninstall electrs github
 if [[ -e $hp/electrs/electrs_db ]] ; then
-mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/ >/dev/null 2>&1
+mv $HOME/parmanode/electrs/electrs_db_backup* $HOME/parmanode/ >$dn 2>&1
 fi
-sudo rm -rf $HOME/parmanode/electrs && sudo rm -rf $HOME/.electrs >/dev/null 2>&1
-sudo rm $dp/*socat_electrs.sh >/dev/null
-sudo systemctl stop socat_listen.service >/dev/null 2>&1
-sudo systemctl stop socat_publish.service >/dev/null 2>&1
-sudo systemctl disable socat_listen.service socat_publish.service >/dev/null 2>&1
-sudo rm -rf /etc/systemd/socat_listen* /etc/systemd/socat_publish* >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/electrs && sudo rm -rf $HOME/.electrs >$dn 2>&1
+sudo rm $dp/*socat_electrs.sh $dn>
+sudo systemctl stop socat_listen.service >$dn 2>&1
+sudo systemctl stop socat_publish.service >$dn 2>&1
+sudo systemctl disable socat_listen.service socat_publish.service >$dn 2>&1
+sudo rm -rf /etc/systemd/socat_listen* /etc/systemd/socat_publish* >$dn 2>&1
 parmanode_conf_remove "drive_electrs"
 installed_config_remove "electrs-" 
 success "electrs" "being uninstalled."

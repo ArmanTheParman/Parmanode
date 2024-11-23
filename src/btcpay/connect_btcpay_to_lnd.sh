@@ -25,9 +25,9 @@ case $choice in
 m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;; a|A) return 1 ;; y|Y|yes) break ;; *) invalid ;;
 esac
 done
-macaroon=$(xxd -p -c 256 ~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') >/dev/null 2>&1
-certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in ~/.lnd/tls.cert | sed -e 's/.*=//;s/://g') >/dev/null 2>&1
-sensitive="type=lnd-rest;server=https://127.0.0.1:8080/;macaroon=$macaroon;certthumbprint=$certthumbprint" >/dev/null 2>&1
+macaroon=$(xxd -p -c 256 ~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n') >$dn 2>&1
+certthumbprint=$(openssl x509 -noout -fingerprint -sha256 -in ~/.lnd/tls.cert | sed -e 's/.*=//;s/://g') >$dn 2>&1
+sensitive="type=lnd-rest;server=https://127.0.0.1:8080/;macaroon=$macaroon;certthumbprint=$certthumbprint" >$dn 2>&1
 
 
 set_terminal ; echo -e "

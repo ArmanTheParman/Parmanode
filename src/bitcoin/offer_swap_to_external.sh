@@ -1,6 +1,6 @@
 function offer_swap_to_external {
 while true ; do      
-source ${dp}/parmanode.conf >/dev/null 2>&1
+source ${dp}/parmanode.conf >$dn 2>&1
 if [[ $drive == internal ]] ; then
 set_terminal ; echo -e "
 ########################################################################################

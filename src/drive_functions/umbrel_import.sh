@@ -96,22 +96,22 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
 
 
 #Get disk ID
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1)
 
 #Mount
-export disk=$(sudo blkid | grep umbrel | cut -d : -f 1) >/dev/null
+export disk=$(sudo blkid | grep umbrel | cut -d : -f 1)
 export mount_point="/media/$USER/parmanode"
 if [[ ! -d $mount_point ]] ; then sudo mkdir -p $mount_point ; debug "mountpoint made" ; fi
 
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount $disk >/dev/null 2>&1
-sudo mount $disk $mount_point >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount $disk >$dn 2>&1
+sudo mount $disk $mount_point >$dn 2>&1
 
 # Move files
 #sudo mkdir -p $mount_point/.bitcoin
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
-    sudo rm $mount_point/.bitcoin >/dev/null 2>&1
+    sudo rm $mount_point/.bitcoin >$dn 2>&1
 fi
 
 # The main changes...
@@ -131,9 +131,9 @@ make_bitcoin_conf umbrel
 debug "after make_bitcoin_conf umbrel
 Bitcoin drive import = $bitcoin_drive_import
 "
-sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >$dn 2>&1
 debug "mkdir electrs_db and fulcrum_db"
-sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >$dn 2>&1
 debug "chown for electrs and fulcrum"
 
 
@@ -168,10 +168,10 @@ case $choice in
 q|Q) exit ;; m|M) back2main ;;
 y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep TYPE)
+export $(sudo blkid -o export $disk | grep UUID)
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 debug "fstab done"
 break
 ;;
@@ -253,10 +253,10 @@ case $choice in
 q|Q) exit ;; m|M) back2main ;;
 y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep TYPE) 
+export $(sudo blkid -o export $disk | grep UUID) 
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 break
 ;;
 n|N)
@@ -282,16 +282,16 @@ set_terminal ; echo -e "
 " ; enter_continue ; jump $enter_cont
 
 cd
-sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount /media/$USER/parmanode >/dev/null 2>&1
+sudo umount $disk >$dn 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount /media/$USER/parmanode >$dn 2>&1
 debug "unmounts done"
 
 if ! grep -q parmanode < /etc/fstab ; then 
     # can't export everything, need grep, becuase if Label has spaces, causes error.
-    export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-    export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
-    echo "UUID=$UUID $parmanode_drive $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+    export $(sudo blkid -o export $disk | grep TYPE)
+    export $(sudo blkid -o export $disk | grep UUID) 
+    echo "UUID=$UUID $parmanode_drive $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
     debug "after echo UUID...
     TYPE, $TYPE
     UUID, $UUID

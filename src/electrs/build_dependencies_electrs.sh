@@ -3,13 +3,13 @@ function build_dependencies_electrs {
 if [[ $OS == Linux ]] ; then
 debug "in build dependencies, if linux"
 please_wait
-sudo apt-get update -y >/dev/null 2>&1
+sudo apt-get update -y >$dn 2>&1
 sudo apt-get --fix-broken install -y 2>&1
-if ! which jq >/dev/null ; then sudo apt-get install -y jq ; fi
-if ! which clang >/dev/null ; then sudo apt-get install -y clang ; fi
-if ! which cmake >/dev/null ; then sudo apt-get install -y cmake ; fi
+if ! which jq >$dn ; then sudo apt-get install -y jq ; fi
+if ! which clang >$dn ; then sudo apt-get install -y clang ; fi
+if ! which cmake >$dn ; then sudo apt-get install -y cmake ; fi
 
-if ! dpkg -l >/dev/null | grep build-essential ; then sudo apt-get install -y build-essential ; fi 
+if ! dpkg -l >$dn | grep build-essential ; then sudo apt-get install -y build-essential ; fi 
 
 # cargo install needed, but won't work if 64 bit system uses a 32 bit os,
 # like Raspian OS 32-bit (it supports 64 bit chips, but cargo won't work)
@@ -41,14 +41,14 @@ debug "end if linux in build dependencies"
 if [[ $OS == Mac ]] ; then
 brew update ; brew upgrade
 
-if ! which automake   > /dev/null 2>&1 ; then brew install automake   ; fi
-if ! which libtool    > /dev/null 2>&1 ; then brew install libtool    ; fi
-if ! which pkg-config > /dev/null 2>&1 ; then brew install pkg-config ; fi
+if ! which automake   > $dn 2>&1 ; then brew install automake   ; fi
+if ! which libtool    > $dn 2>&1 ; then brew install libtool    ; fi
+if ! which pkg-config > $dn 2>&1 ; then brew install pkg-config ; fi
 
 #installs rust (with cargo)
-if ! which cargo >/dev/null 2>&1 ; then brew install rust ; fi
+if ! which cargo >$dn 2>&1 ; then brew install rust ; fi
 
-if ! which clang >/dev/null 2>&1 ; then brew install --cask clay ; fi
+if ! which clang >$dn 2>&1 ; then brew install --cask clay ; fi
 
 if [[ ! -e /Library/Developer/CommandLineTools ]] ; then
 xcode-select --install

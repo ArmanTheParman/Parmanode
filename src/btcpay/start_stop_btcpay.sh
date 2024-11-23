@@ -3,12 +3,12 @@ function start_btcpay {
 clear
 please_wait 
 
-if ! docker ps >/dev/null 2>&1 ; then
+if ! docker ps >$dn 2>&1 ; then
 announce "Docker not running! Please start it."
 return 1
 fi
 
-if ! docker ps >/dev/null 2>&1 | grep -q "btcpay" ; then
+if ! docker ps >$dn 2>&1 | grep -q "btcpay" ; then
 docker start btcpay
 fi
 

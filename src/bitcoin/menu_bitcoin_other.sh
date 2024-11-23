@@ -2,15 +2,15 @@ function menu_bitcoin_other {
 while true
 do
 set_terminal
-source ~/.parmanode/parmanode.conf >/dev/null #get drive variable
+source ~/.parmanode/parmanode.conf >$dn #get drive variable
 
 unset running output1 output2 
 if [[ $OS == Mac ]] ; then
-    if pgrep Bitcoin-Q >/dev/null ; then running="true" ; else running="false" ; fi
+    if pgrep Bitcoin-Q >$dn ; then running="true" ; else running="false" ; fi
 else
-    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >/dev/null 2>&1 ; then running="false" ; fi
-    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running="false" ; fi 2>/dev/null
-    if pgrep bitcoind >/dev/null 2>&1 ; then running="true" ; fi
+    if ! ps -x | grep bitcoind | grep -q "bitcoin.conf" >$dn 2>&1 ; then running="false" ; fi
+    if tail -n 1 $HOME/.bitcoin/debug.log | grep -q  "Shutdown: done" ; then running="false" ; fi 2>$dn
+    if pgrep bitcoind >$dn 2>&1 ; then running="true" ; fi
 fi
 
 

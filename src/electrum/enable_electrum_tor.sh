@@ -50,7 +50,7 @@ fi
 
 if [[ $1 == "fulcrum" ]] ; then
     #check Fulcrum is running
-    if ! ps -x | grep fulcrum | grep conf >/dev/null 2>&1 ; then
+    if ! ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then
     announce "Fulcrum is not running. The wallet configuration files will be edited," \
     "but you can't connect until you run Fulcrum."
     fi
@@ -73,7 +73,7 @@ fi
 
 if [[ $1 == "electrs" ]] ; then
     #check electrs is running
-    if ! ps -x | grep electrs | grep conf >/dev/null 2>&1 && ! docker ps | grep -q electrs ; then 
+    if ! ps -x | grep electrs | grep conf >$dn 2>&1 && ! docker ps | grep -q electrs ; then 
     announce "Electrs is not running. The wallet configuration files will be edited," \
     "but you can't connect until you run electrs."
     fi

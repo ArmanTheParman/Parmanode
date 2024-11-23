@@ -29,17 +29,17 @@ fi
 
 if [[ $1 = "remove" ]] ; then
 install_gsed 
-sudo gsed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null  2>&1 #redundant
+sudo gsed -i "/electrs-START/,/electrs-END/d" $nginx_conf >$dn  2>&1 #redundant
 sudo gsed -i "/electrs.conf/d" $nginx_conf
-sudo rm $nginx_electrs_conf 2>/dev/null
+sudo rm $nginx_electrs_conf 2>$dn
 
 else #add
 
 #might need to install nginx
-if ! which nginx >/dev/null ; then install_nginx ; fi
+if ! which nginx >$dn ; then install_nginx ; fi
 
 #parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
-echo "include electrs.conf;" | sudo tee -a $nginx_conf >/dev/null 2>&1
+echo "include electrs.conf;" | sudo tee -a $nginx_conf >$dn 2>&1
 
 echo "stream {
         upstream electrs {
@@ -53,10 +53,10 @@ echo "stream {
                 ssl_certificate $ssl_cert; 
                 ssl_certificate_key $ssl_key; 
         }
-}" | sudo tee $nginx_electrs_conf >/dev/null 2>&1
+}" | sudo tee $nginx_electrs_conf >$dn 2>&1
 fi
 
-if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >/dev/null 2>&1 ; fi
-if [[ $OS == Mac ]] ; then brew services restart nginx    >/dev/null 2>&1 ; fi
+if [[ $OS == Linux ]] ; then sudo systemctl restart nginx >$dn 2>&1 ; fi
+if [[ $OS == Mac ]] ; then brew services restart nginx    >$dn 2>&1 ; fi
 
 }

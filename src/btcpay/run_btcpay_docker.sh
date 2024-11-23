@@ -6,7 +6,7 @@ docker run -d -u parman \
            -v $HOME/.btcpayserver:/home/parman/.btcpayserver \
            -v $HOME/.nbxplorer:/home/parman/.nbxplorer \
            --network="host" \
-           btcpay >/dev/null
+           btcpay >$dn
 fi
 
 if [[ $OS == "Mac" ]] ; then
@@ -20,7 +20,7 @@ docker run -d -u parman \
            -p 8332:8332 \
            -p 49393:49392 \
            -p 23001:23001 \
-           btcpay >/dev/null
+           btcpay >$dn
 #           -p 24444:24444 \
 #           -p 24445:24445 \
 

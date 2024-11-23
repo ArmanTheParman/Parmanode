@@ -7,7 +7,7 @@ else
 leave_or_use="Leave it alone"
 fi
 
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1
 
 #Remove Parmanode/bitcoin directory (installation files)
 sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 
@@ -47,7 +47,7 @@ l|L)
 export skip_formatting="true" ; break ;;
 
 del|DEL)
-please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >/dev/null 2>&1 \
+please_wait ; cd ; rm -rf /media/$(whoami)/parmanode/.bitcoin >$dn 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing." ;  break ;;
 
 *) 
@@ -95,7 +95,7 @@ b|B)
     break
     ;;
 del|DEL)
-    cd ; rm -rf $HOME/.bitcoin >/dev/null 2>&1 \
+    cd ; rm -rf $HOME/.bitcoin >$dn 2>&1 \
     || debug "Error deleting .bitcoin directory. Continuing."
     break
     ;;

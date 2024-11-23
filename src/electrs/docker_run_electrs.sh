@@ -1,5 +1,5 @@
 function docker_run_electrs {
-source $pc >/dev/null 2>&1
+source $pc >$dn 2>&1
 
 if [[ $OS == Linux ]] ; then
 

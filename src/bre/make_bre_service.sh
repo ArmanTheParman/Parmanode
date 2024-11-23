@@ -14,7 +14,7 @@ Restart=always
 RestartSec=30
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service >/dev/null 2>&1
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/btcrpcexplorer.service >$dn 2>&1
 
-sudo systemctl enable btcrpcexplorer.service >/dev/null 2>&1
+sudo systemctl enable btcrpcexplorer.service >$dn 2>&1
 }

@@ -4,14 +4,14 @@ leave_or_use="Use it"
 else
 leave_or_use="Leave it alone"
 fi
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1
 
 #Remove Parmanode/bitcoin directory (installation files)
-sudo rm -rf $HOME/parmanode/bitcoin >/dev/null 2>&1 \
+sudo rm -rf $HOME/parmanode/bitcoin >$dn 2>&1 \
     || log "bitcoin" "failed to remove /parmanode/bitcoin dir"
 
 #check if data directory on external drive or internal drive
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1  # gets drive choice
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1  # gets drive choice
 
 #check external drive first - mounted and unmounted conditions.
 
@@ -47,7 +47,7 @@ break
 ;;
 
 DEL|del|DELETE|Delete)
-cd ; rm -rf /Volumes/parmanode/.bitcoin >/dev/null 2>&1
+cd ; rm -rf /Volumes/parmanode/.bitcoin >$dn 2>&1
 break 
 ;;
 
@@ -106,7 +106,7 @@ done
 fi #end checking internal drive for .bitcoin directory
 
 #Remove symlink to drive
-if [[ -L "$HOME/.bitcoin" ]] 2>/dev/null ; then 
+if [[ -L "$HOME/.bitcoin" ]] 2>$dn ; then 
     rm $HOME/.bitcoin  
     fi      
 

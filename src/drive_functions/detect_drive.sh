@@ -126,8 +126,8 @@ if [[ $(uname) == "Darwin" ]] ; then
 # check for difference between before and after
 
 if { [[ $OS == Linux ]] && \
-      diff -q $dp/before $dp/after >/dev/null 2>&1 && \
-      diff -q $dp/before_lsblk $dp/after_lsblk >/dev/null 2>&1 ; } || \
+      diff -q $dp/before $dp/after >$dn 2>&1 && \
+      diff -q $dp/before_lsblk $dp/after_lsblk >$dn 2>&1 ; } || \
    { [[ $OS == Mac ]] && diff -q $dp/before $dp/after 2>&1 ; } 
 then
 echo -e "
@@ -156,7 +156,7 @@ fi
 
 if [[ $OS == Linux ]] ; then
 
-    if [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >/dev/null 2>&1 ; then
+    if [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
       export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
       debug "disk blkid diff is $disk"
       if [[ -z $disk ]] ; then

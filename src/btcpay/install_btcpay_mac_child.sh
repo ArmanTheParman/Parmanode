@@ -6,9 +6,9 @@ export btcpayinstallsbitcoin="true"
 set_terminal
 sned_sats
 debug "before choose btcpay version"
-choose_btcpay_version || { parmanode_conf_remove "btcpay_choice=" ; return 1 ; }
+choose_btcpay_version || { parmanode_conf_remove "btcpay_version=" ; return 1 ; }
 
-make_btcpay_directories  || return 1
+make_btcpay_directories  || { announce "Something went wrong. Aborting." ; return 1 ; }
     # installed config modifications done
     # .btcpayserver and .nbxplorer
 

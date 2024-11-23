@@ -1,6 +1,6 @@
 function docker_start_electrs { #and Nginx ... can delete, not using, decided on socat instead
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -16,7 +16,7 @@ docker exec -d electrs /bin/bash -c "/usr/bin/socat OPENSSL-LISTEN:50006,reusead
 }
 
 function docker_stop_electrs {
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################

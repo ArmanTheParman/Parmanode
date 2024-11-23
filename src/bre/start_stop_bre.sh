@@ -2,12 +2,12 @@ function start_bre {
 if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_start ; return 0 ; fi
 
 check_config_bre || return 1
-sudo systemctl start btcrpcexplorer.service >/dev/null
+sudo systemctl start btcrpcexplorer.service >$dn
 }
 
 function stop_bre {
 if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_stop ; return 0 ; fi
-sudo systemctl stop btcrpcexplorer.service >/dev/null
+sudo systemctl stop btcrpcexplorer.service >$dn
 return 1
 }
 
@@ -25,7 +25,7 @@ else
 local file="$HOME/parmanode/btc-rpc-explorer/.env"
 fi
 
-if ! grep -q rpcuser= $bc >/dev/null 2>&1 ; then #if the setting doesn't exist 
+if ! grep -q rpcuser= $bc >$dn 2>&1 ; then #if the setting doesn't exist 
     announce "There is a fault with the bitcoin.conf file. It can happen if
     the Bitcoin settings changed from when you originall installed BRE.
 

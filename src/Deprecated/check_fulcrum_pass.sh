@@ -1,7 +1,7 @@
 function check_fulcrum_pass {
 set_terminal
 while true ; do
-if which bitcoin-cli >/dev/null ; then
+if which bitcoin-cli >$dn ; then
 if ! cat $HOME/.bitcoin/bitcoin.conf | grep -q "rpcuser" ; then
 
 while true ; do

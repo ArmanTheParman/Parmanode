@@ -1,22 +1,23 @@
 function install_btcpay_mac {
-debug "in btcpay mac"
+export install=btcpay_mac
+debug "in btcpay mac - $install"
+
 #make sure docker installed
-grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
-" \
-"Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
+grep -q "docker-end" $HOME/.parmanode/installed.conf || { 
+    announce "Must install Docker first.\n\n    Use menu: Add --> Other --> Docker). Aborting." 
+    jump $enter_cont
+    return 1 
+    }
 
 #start docker if it is not running 
-if ! docker ps >/dev/null 2>&1 ; then 
+if ! docker ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
+    jump $enter_cont
     return 1
 fi
 
-
-debug "in btcpay mac2"
-#preambles
-btcpay_install_preamble2 || return 1
-debug "in btcpay mac4"
-
+#preamble
+btcpay_install_preamble || return 1
 
 if grep -q "bitcoin-end" $ic ; then
 while true ; do

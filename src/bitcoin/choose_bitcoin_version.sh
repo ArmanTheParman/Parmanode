@@ -86,7 +86,7 @@ set_terminal ; echo -e "
 enter_continue  ; jump $enter_cont
 export bitcoin_compile="false"
 export version="self"
-if ! which bitcoind >/dev/null ; then
+if ! which bitcoind >$dn ; then
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -108,7 +108,7 @@ done
 
 if [[ $bitcoin_compile != "false" ]] ; then
 # $hp/bitcoin directory made earlier for downloading compiled bitcoin. Can delete.
-sudo rm -rf $hp/bitcoin >/dev/null 2>&1
+sudo rm -rf $hp/bitcoin >$dn 2>&1
 fi
 
 }

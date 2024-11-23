@@ -15,7 +15,7 @@ if [[ -d $HOME/parmanode/fulcrum_db ]] ; then
 
     #destination dir doesn't exist or was just delteed, so make move... 
     please_wait
-    sudo mv $HOME/parmanode/fulcrum_db $HOME/.fulcrum_db >/dev/null 2>&1
+    sudo mv $HOME/parmanode/fulcrum_db $HOME/.fulcrum_db >$dn 2>&1
     break
 fi
 #no source to move, so exit

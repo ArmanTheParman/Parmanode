@@ -69,22 +69,22 @@ debug "test disk variable into make_linux_parmanode_drive, is...
 ########################################################################################
 
 if [[ $make_label == "parmanode" ]] ; then
-        sudo umount $disk* 2>/dev/null ; sudo umount $parmanode_drive 2>/dev/null
-        sudo umount /media/$USER/parmanod* 2>/dev/null
-        sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
+        sudo umount $disk* 2>$dn ; sudo umount $parmanode_drive 2>$dn
+        sudo umount /media/$USER/parmanod* 2>$dn
+        sudo e2label $disk parmanode >$dn || sudo exfatlabel $disk parmanode >$dn 2>&1
         sudo partprobe 
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
         sudo mount $disk $parmanode_drive 
-        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
+        if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         debug "label done"
         set_terminal
 else
-        sudo umount $disk* 2>/dev/null ; sudo umount $parmanode_drive 2>/dev/null
-        sudo umount /media/$USER/parmanod* 2>/dev/null
+        sudo umount $disk* 2>$dn ; sudo umount $parmanode_drive 2>$dn
+        sudo umount /media/$USER/parmanod* 2>$dn
         if [[ ! -d /media/$USER/parmanode ]] ; then sudo mkdir -p /media/$USER/parmanode ; fi
         sudo mount $disk $parmanode_drive 
-        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
+        if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
         debug "2, label done"
 fi
@@ -96,7 +96,7 @@ echo "Testing fstab mount..." ; sleep 2
 sudo umount $parmanode_drive
 sudo mount -a
 
-if mountpoint $parmanode_drive >/dev/null 2>&1 ; then
+if mountpoint $parmanode_drive >$dn 2>&1 ; then
 cd /media/$USER/parmanode/
 #change later and check this a mountpoint first
 sudo mkdir .bitcoin fulcrum_db electrs_db > $dp/.temp 2>&1
@@ -107,7 +107,7 @@ sudo chown -R $USER:$(id -gn) .bitcoin fulcrum_db electrs_db
 fi
 
 if [[ -L /media/$USER/parmanode/.bitcoin ]] ; then
-    if ! which readlink >/dev/null ; then sudo apt update -y && sudo apt install coreutils ; fi
+    if ! which readlink >$dn ; then sudo apt update -y && sudo apt install coreutils ; fi
     sudo chown -R $USER:$(id -gn) $(readlink /media/$USER/parmanode/.bitcoin)
 fi
 debug "chown parmanode directories"

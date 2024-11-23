@@ -45,7 +45,7 @@ if [[ $drive == external ]] ; then
     rm $HOME/.bitcoin #deletes symlink to external drive
     parmanode_conf_remove "drive=" 
     parmanode_conf_add "drive=internal"
-    source $dp/parmanode.conf >/dev/null 2>&1
+    source $dp/parmanode.conf >$dn 2>&1
     mkdir $HOME/.bitcoin
     make_bitcoin_conf prune 0 #double check this
     announce "Start Bitcoin manually to begin syncing."
@@ -60,7 +60,7 @@ if [[ $OS == Mac && $drive == internal ]] ; then
 
     parmanode_conf_remove "drive=" 
     parmanode_conf_add "drive=external"
-    source $dp/parmanode.conf >/dev/null 2>&1
+    source $dp/parmanode.conf >$dn 2>&1
     if [[ ! -d $HOME/.bitcoin    &&    ! -L $HOME/.bitcoin ]] ; then
     make_bitcoin_symlinks
     fi
@@ -112,10 +112,10 @@ done # ends while no parmanode in fstab
 #Once initial internal and now parmanode in fstab...
     parmanode_conf_remove "drive=" 
     parmanode_conf_add "drive=external"
-    source $dp/parmanode.conf >/dev/null 2>&1
+    source $dp/parmanode.conf >$dn 2>&1
     make_backup_dot_bitcoin
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
-    mkdir $parmanode_drive/.bitcoin >/dev/null 2>&1 && \
+    mkdir $parmanode_drive/.bitcoin >$dn 2>&1 && \
             log "bitcoin" ".bitcoin dir made on ext drive" 
     sudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
     make_bitcoin_conf prune 0

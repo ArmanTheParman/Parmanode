@@ -46,7 +46,7 @@ case $choice in q|Q) exit ;; p|P) return 1 ;; esac
 
 # Make necessary directories
 
-    sudo mkdir -p $mount_point >/dev/null 2>&1
+    sudo mkdir -p $mount_point >$dn 2>&1
 
 #GET UMBREL DISK ID...
     

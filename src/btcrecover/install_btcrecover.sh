@@ -1,13 +1,13 @@
 function install_btcrecover {
 clear
 #make sure docker installed
-if ! which docker >/dev/null 2>&1 ; then 
+if ! which docker >$dn 2>&1 ; then 
 announce "Please install Docker first. Aborting." 
 return 1 
 fi
 
 #check Docker running, esp Mac
-if ! docker ps >/dev/null 2>&1 ; then echo -e "
+if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker doesn't seem to be running. Please start it and, once it's running, hit $green 
@@ -19,7 +19,7 @@ if ! docker ps >/dev/null 2>&1 ; then echo -e "
     jump $choice || { invalid ; continue ; } ; set_terminal
     case $choice in Q|q) exit 0 ;; m|M) back2main ;; esac
     set_terminal
-    if ! docker ps >/dev/null 2>&1 ; then echo -e "
+    if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
 
     Docker is still$red not running$orange. 

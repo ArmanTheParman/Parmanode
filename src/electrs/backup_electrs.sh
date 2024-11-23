@@ -31,6 +31,6 @@ done
 
 function backup_electrs_do {
 please_wait
-sudo rm -rf $HOME/.electrs_backup >/dev/null 2>&1
+sudo rm -rf $HOME/.electrs_backup >$dn 2>&1
 cp -r $HOME/parmanode/electrs/ $HOME/.electrs_backup/
 }

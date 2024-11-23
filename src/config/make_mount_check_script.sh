@@ -40,7 +40,7 @@ else
     echo \"Error, no drive selection in parmanode.conf found.\"
     sleep 3
     exit 1
-fi" > $HOME/.parmanode/mount_check.sh 2>/dev/null
+fi" > $HOME/.parmanode/mount_check.sh 2>$dn
 
 # Sets permission of the new file, mount_check.sh
 sudo chown $(whoami):$(whoami) $HOME/.parmanode/mount_check.sh 

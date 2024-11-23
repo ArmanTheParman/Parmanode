@@ -128,7 +128,7 @@ if [[ $OS == "Linux" ]] ; then
         
         # Formats the drive and labels it "parmanode" - uses standard linux type, ext4
         sudo mkfs.ext4 -F -L "parmanode" $disk 
-        sudo blkid >/dev/null ; sleep 1 #need to refresh
+        sudo blkid >$dn ; sleep 1 #need to refresh
 
         #Extract the *NEW* UUID of the disk and write to config file.
         get_UUID || return 1
@@ -140,10 +140,10 @@ if [[ $OS == "Linux" ]] ; then
         # and label drive (Last bit is redundant)
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
         sudo mount $disk $parmanode_drive 
-        if ! mountpoint $parmanode_drive >/dev/null ; then announce "Drive didn't mount. There may be problems." ; fi
+        if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
         sudo chown -R $USER:$(id -gn) $parmanode_drive 
-        sudo e2label $disk parmanode >/dev/null || sudo exfatlabel $disk parmanode >/dev/null 2>&1
-        sudo partprobe 2>/dev/null
+        sudo e2label $disk parmanode >$dn || sudo exfatlabel $disk parmanode >$dn 2>&1
+        sudo partprobe 2>$dn
 
         debug "label done"
         set_terminal

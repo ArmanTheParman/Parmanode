@@ -3,7 +3,7 @@
 
 function add_localhost_to_bitcoinconf {
 if grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
-if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcallowip=127.0.0.1" >/dev/null 2>&1 ; then
+if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcallowip=127.0.0.1" >$dn 2>&1 ; then
     set_terminal
 echo -e "
 ########################################################################################
@@ -21,7 +21,7 @@ echo -e "
     if [[ $choice == "s" ]] ; then return ; fi
 
     stop_bitcoin
-    echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >/dev/null 2>&1
+    echo "rpcallowip=127.0.0.1" | tee -a $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
     start_bitcoin
 fi
 fi

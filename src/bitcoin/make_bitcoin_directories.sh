@@ -17,12 +17,12 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
     if [[ $drive == "external" && $importdrive != "true" ]] ; then 
     
         if [[ $OS == "Linux" ]] ; then
-            mkdir /media/$USER/parmanode/.bitcoin >/dev/null 2>&1 && \
-            sudo chown -R $USER:$(id -gn) $parmanode_drive >/dev/null 2>&1 \
+            mkdir /media/$USER/parmanode/.bitcoin >$dn 2>&1 && \
+            sudo chown -R $USER:$(id -gn) $parmanode_drive >$dn 2>&1 \
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
 
         if [[ $OS == "Mac" ]] ; then
-            mkdir /Volumes/parmanode/.bitcoin >/dev/null 2>&1 && \ 
+            mkdir /Volumes/parmanode/.bitcoin >$dn 2>&1 && \ 
             log "bitcoin" ".bitcoin dir made on ext drive" ; fi
     fi
 

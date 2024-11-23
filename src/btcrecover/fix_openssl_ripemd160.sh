@@ -6,5 +6,5 @@ fi
 sudo cp $opensslconf ${opensslconf}_backup #backs up original
 sudo gsed -i "/# activate = 1/c\activate = 1" $opensslconf
 echo "[legacy sect]
-activate = 1" | sudo tee -a $opensslconf >/dev/null
+activate = 1" | sudo tee -a $opensslconf >$dn
 }

@@ -31,7 +31,7 @@ debug "ID is $ID"
 
   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$ID \
   "$(echo "$VCequivalent")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo tee /etc/apt/sources.list.d/docker.list >$dn 
 
 #fix ubuntu label to debian if needed:
    debug "2nd, ID is $ID"

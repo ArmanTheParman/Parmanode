@@ -66,12 +66,12 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/bitcoind.service > /dev/null
+" | sudo tee /etc/systemd/system/bitcoind.service >$dn 
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 
 sudo systemctl daemon-reload 
-sudo systemctl disable bitcoind.service >/dev/null 2>&1
-sudo systemctl enable bitcoind.service >/dev/null 2>&1
+sudo systemctl disable bitcoind.service >$dn 2>&1
+sudo systemctl enable bitcoind.service >$dn 2>&1
 }
 

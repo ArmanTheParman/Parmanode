@@ -5,7 +5,7 @@ yesorno "You are about to install Bitcoin into a docker container of your
     choice." || return 1
 set_terminal
 
-if ! docker ps 2>/dev/null ; then announce "Docker is not running" ; return 1 ; fi
+if ! docker ps 2>$dn ; then announce "Docker is not running" ; return 1 ; fi
 
 if [[ -z $1 ]] ; then
 
@@ -118,8 +118,8 @@ dockername=joinmarket
 username=root
 fi
 
-docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>/dev/null"
-docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >/dev/null 2>&1
+docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
+docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >$dn 2>&1
 
 #Download bitcoin 
 export bitcoin_compile="false"
@@ -159,9 +159,9 @@ clear
 
 done
 
-docker exec $dockername mkdir -p /tmp/bitcoin 2>/dev/null
-docker cp $tmp/bitcoin/* $dockername:/tmp/bitcoin/ >/dev/null 2>&1
-docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >/dev/null 2>&1
+docker exec $dockername mkdir -p /tmp/bitcoin 2>$dn
+docker cp $tmp/bitcoin/* $dockername:/tmp/bitcoin/ >$dn 2>&1
+docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >$dn 2>&1
 docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
     enter_continue "something went wrong" 
     return 1

@@ -22,14 +22,14 @@ if [[ $drive_electrs == external ]] ; then
 stop_electrs
 fi
 
-stop_lnd >/dev/null 2>&1
+stop_lnd 
 
 #Needed to first stop all parmanode programs that might be using the drive
 # unmount after everything stopped.
 
 cd ~ ; cd $pn
-if [[ $OS == Linux ]] ; then sudo umount /media/$USER/parmanode* >/dev/null 2>&1 ; fi
-if [[ $OS == Mac ]] ; then diskutil unmountdisk /Volumes/parmanode* >/dev/null    ; fi
+if [[ $OS == Linux ]] ; then sudo umount /media/$USER/parmanode* >$dn 2>&1 ; fi
+if [[ $OS == Mac ]] ; then diskutil unmountdisk /Volumes/parmanode* >$dn 2>&1  ; fi
 
 #TEST 1
 if mount | grep parmanode ; then

@@ -1,6 +1,6 @@
 function bre_docker_start {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -16,7 +16,7 @@ bre_docker_start_bre
 
 function bre_docker_stop {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -30,7 +30,7 @@ docker stop bre
 
 function bre_docker_restart {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################

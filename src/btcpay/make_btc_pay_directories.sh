@@ -57,14 +57,14 @@ set_terminal ; echo -e "
     exists on the system.
 
     You have choices...
-
-            d)    Delete it and start fresh
-
-            m)    Move it to$cyan $HOME/.nbxplorer_backup$orange
-
-            l)    Leave it (the config file will be overwritten)
-
-            a)    Abort installation
+$cyan
+            d)$orange    Delete it and start fresh
+$cyan
+            m)$orange    Move it to$cyan $HOME/.nbxplorer_backup$orange
+$cyan
+            l)$orange    Leave it (the config file will be overwritten)
+$cyan
+            a)$orange    Abort installation
 
 ########################################################################################
 "
@@ -95,6 +95,9 @@ fi
 ########################################################################################
 mkdir -p ~/.btcpayserver/Main ~/.nbxplorer/Main 
 installed_config_add "btcpay-start"
+if [[ btcpayinstallsbitcoin == "true" ]] ; then 
+installed_config_add "btccombo-start"
+fi
 return 0 
 }
 

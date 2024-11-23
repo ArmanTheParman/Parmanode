@@ -27,7 +27,7 @@ local file="$HOME/.electrs/config.toml"
 
 sudo gsed -i "/daemon/d" $file 
 echo "daemon_rpc_addr = \"$IP:8332\"
-daemon_p2p_addr = \"$IP:8333\"" | tee -a $file >/dev/null 2>&1
+daemon_p2p_addr = \"$IP:8333\"" | tee -a $file >$dn 2>&1
 
 return 0
 }

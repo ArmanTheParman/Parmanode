@@ -8,6 +8,6 @@ source $HOME/.bitcoin/bitcoin.conf
 fi
 
 sudo gsed -i "/auth = /d" $file
-echo "auth = \"$rpcuser:$rpcpassword\"" | tee -a $file >/dev/null 2>&1
+echo "auth = \"$rpcuser:$rpcpassword\"" | tee -a $file >$dn 2>&1
 
 }

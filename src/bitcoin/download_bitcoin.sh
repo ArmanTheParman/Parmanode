@@ -109,8 +109,8 @@ fi
 
 if [[ $OS == Linux ]] ; then
 set_terminal
-mkdir $HOME/.parmanode/temp/ >/dev/null 2>&1
-tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >/dev/null 2>&1
+mkdir $HOME/.parmanode/temp/ >$dn 2>&1
+tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >$dn 2>&1
 
 # Move bitcoin program files to new directory.
 # All binaries go to $HOME/parmanode/bitcoin.

@@ -1,7 +1,7 @@
 function make_electrs_config {
 local file="$HOME/.electrs/config.toml"
 
-mkdir -p $HOME/.electrs >/dev/null 2>&1
+mkdir -p $HOME/.electrs >$dn 2>&1
 
 if [[ $install_electrs_docker_variable == "false" ]] ; then
 
@@ -24,7 +24,7 @@ electrum_rpc_addr = \"0.0.0.0:50005\"
 log_filters = \"INFO\" # Options are ERROR, WARN, INFO, DEBUG, TRACE
                        # Changing this will affect parmanode menu output negatively
 auth = \"$rpcuser:$rpcpassword\"
-" | tee $file >/dev/null
+" | tee $file >$dn
 
 if [[ $install_electrs_docker_variable == "true" && $OS == Mac ]] ; then #mac has funny networking.
 gsed -i "/daemon_rpc_addr/c\daemon_rpc_addr = \"host.docker.internal:8332\"" $file #necessary to reach bitcoin on the host

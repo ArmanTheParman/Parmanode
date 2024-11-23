@@ -1,6 +1,6 @@
 function nbxplorer_config {
 
-source $bc >/dev/null
+source $bc >$dn
 
 if [[ $btcpayinstallsbitcoin == "true" ]] || [[ $OS == Mac ]] ; then 
 local rpcuser=parman  
@@ -16,7 +16,7 @@ btc.rpc.password=${rpcpassword}
 port=24445
 mainnet=1
 postgres=User ID=parman;Password=NietShitcoin;Host=$localhost;Port=5432;Database=nbxplorer;
-" | tee $HOME/.nbxplorer/Main/settings.config >/dev/null 2>&1 
+" | tee $HOME/.nbxplorer/Main/settings.config >$dn 2>&1 
 
 }
 #Changed from localhost to 127.0.0.1

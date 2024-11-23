@@ -95,19 +95,19 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in q|Q) exit ;; p|P) return 1 ;; *) sync ; continue ;; esac ; done
 
 #Mount
-export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
+export disk="$(sudo blkid | grep myNode | cut -d : -f 1)"
 export mount_point="/media/$USER/parmanode"
 if [[ ! -d $mount_point ]] ; then sudo mkdir -p $mount_point ; debug "mountpoint made" ; fi
 
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount $disk >/dev/null 2>&1
-sudo mount $disk $mount_point >/dev/null 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount $disk >$dn 2>&1
+sudo mount $disk $mount_point >$dn 2>&1
 debug "mynode - #mount; after umount and mount"
 # Move files
 
 if [[ -d $mount_point/.bitcoin ]] ; then sudo mv $mount_point/.bitcoin $mount_point/.bitcoin_backup_0 
 else
-    sudo rm $mount_point/.bitcoin >/dev/null 2>&1 #must be a symlink to execute for code in this block.
+    sudo rm $mount_point/.bitcoin >$dn 2>&1 #must be a symlink to execute for code in this block.
 fi
 debug "after .bitcoin check exists"
 
@@ -119,18 +119,18 @@ sudo chown -h $USER:$(id -gn) $mount_point/.bitcoin
 sudo mv ./.bitcoin/*.conf $mount_point/.bitcoin/parmanode_backedup/
 sudo chown -R $USER:$(id -gn) $mount_point/mynode/bitcoin
 make_bitcoin_conf umbrel #dont change to mynode, it works as is
-sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
-sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >/dev/null 2>&1
+sudo mkdir -p $mount_point/electrs_db $mount_point/fulcrum_db >$dn 2>&1
+sudo chown -R $USER:$(id -gn) $mount_point/electrs_db $mount_point/fulcrum_db >$dn 2>&1
 
 debug "mynode - after chown"
 
 #Get device name
-export disk=$(sudo blkid | grep myNode | cut -d : -f 1) >/dev/null
+export disk="$(sudo blkid | grep myNode | cut -d : -f 1)" 
 
 # label
 while sudo lsblk -o LABEL | grep -q myNode ; do
 echo "Changing the label to parmanode"
-sudo e2label $disk parmanode >/dev/null 2>&1
+sudo e2label $disk parmanode >$dn 2>&1
 sleep 1
 sudo partprobe
 done
@@ -155,10 +155,10 @@ choose "x" ; read choice
 case $choice in 
 y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep TYPE)
+export $(sudo blkid -o export $disk | grep UUID)
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 break
 ;;
 n|N)
@@ -235,10 +235,10 @@ case $choice in
 q|Q) exit ;; m|M) back2main ;;
 y|Y)
 # can't export everything, need grep, becuase if Label has spaces, causes error.
-export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
+export $(sudo blkid -o export $disk | grep TYPE) 
+export $(sudo blkid -o export $disk | grep UUID) 
 sudo gsed -i "/parmanode/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 break
 ;;
 n|N)
@@ -264,15 +264,15 @@ set_terminal ; echo -e "
 " ; enter_continue ; jump $enter_cont
 
 cd
-sudo umount $disk >/dev/null 2>&1
-sudo umount /media/$USER/parmanode* >/dev/null 2>&1
-sudo umount /media/$USER/parmanode >/dev/null 2>&1
+sudo umount $disk >$dn 2>&1
+sudo umount /media/$USER/parmanode* >$dn 2>&1
+sudo umount /media/$USER/parmanode >$dn 2>&1
 
 if ! grep -q parmanode < /etc/fstab ; then 
     # can't export everything, need grep, becuase if Label has spaces, causes error.
-    export $(sudo blkid -o export $disk | grep TYPE) >/dev/null 
-    export $(sudo blkid -o export $disk | grep UUID) >/dev/null 
-    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >/dev/null 2>&1
+    export $(sudo blkid -o export $disk | grep TYPE) 
+    export $(sudo blkid -o export $disk | grep UUID) 
+    echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab >$dn 2>&1
 fi
 
 success "MyNode Drive" "being imported to Parmanode."

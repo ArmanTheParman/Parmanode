@@ -29,7 +29,7 @@ echo -e "
 ########################################################################################
 "
 if [[ $computer_type == LinuxPC ]] ; then
-if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >/dev/null 2>&1 ; then echo -e "
+if sudo systemctl status btcrpcexplorer 2>&1 | grep -q "active (running)" >$dn 2>&1 ; then echo -e "
         BTC RPC EXPLORER IS$green RUNNING$orange
 "
 else
@@ -40,9 +40,9 @@ fi
 fi
 
 if [[ $OS == Mac || $computer_type == Pi ]] ; then
-if  docker ps 2>/dev/null | grep -q bre ; then 
+if  docker ps 2>$dn | grep -q bre ; then 
 
-    if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >/dev/null 2>&1 ; then
+    if docker exec -itu root bre /bin/bash -c 'ps -xa | grep "btc-rpc"' | grep -v grep >$dn 2>&1 ; then
     menubrerunning="true"
     echo -e "
 

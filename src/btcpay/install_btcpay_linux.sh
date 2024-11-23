@@ -46,11 +46,11 @@ start_nbxplorer_indocker || return 1
 sleep 4
 start_btcpay_indocker || return 1 
 
-if which tor >/dev/null 2>&1 ; then enable_tor_btcpay ; fi
+if which tor >$dn 2>&1 ; then enable_tor_btcpay ; fi
 
 installed_config_add "btcpay-end"
 
-mkdir $HOME/parmanode/startup_scripts/ >/dev/null 2>&1
+mkdir $HOME/parmanode/startup_scripts/ >$dn 2>&1
 make_btcpay_service_file
 restart_btcpay
 success "BTCPay Server" "being installed."
