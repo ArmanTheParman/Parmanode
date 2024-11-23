@@ -44,7 +44,7 @@ esac
 done
 fi
 
-if grep -q "litd" $ic >/dev/null 2>&1 ; then 
+if grep -q "litd" $ic >$dn 2>&1 ; then 
 lndlitd="true" 
 LND=LITD
 lndconf=lit.conf
@@ -69,10 +69,10 @@ export lnddockermenu="false"
 fi
 
 if [[ $lnddockermenu == "false" ]] ; then #non docker
-export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+export lnd_version=$(lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) 
 unset dkrmenu inside_docker
 elif [[ $lnddockermenu == "true" ]] ; then
-export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3) >/dev/null 2>&1
+export lnd_version=$(docker exec lnd lncli --version | cut -d - -f 1 | cut -d ' ' -f 3)
 dkrmenu="
       (dks)            Start Docker container (and LND)
 
@@ -82,7 +82,7 @@ inside_docker="(within running Docker container)"
 fi
 
 # To check if wallet is created/loaded
-if lncli walletbalance >/dev/null 2>&1 || docker exec lnd lncli walletbalance >/dev/null 2>&1 ; then 
+if lncli walletbalance >$dn 2>&1 || docker exec lnd lncli walletbalance >$dn 2>&1 ; then 
 wallet="WALLET CREATED & UNLOCKED =$green TRUE$orange" 
 else
 wallet="WALLET CREATED & UNLOCKED =$red FALSE $yellow... usually just wait a
@@ -108,9 +108,9 @@ fi
 unset lnd_onion clearnetURI
 
 if [[ $lnddockermenu == "false" ]] ; then 
-lncli getinfo >/$dp/lndinfo.log 2>/dev/null 
+lncli getinfo >/$dp/lndinfo.log 2>$dn
 else
-docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>/dev/null
+docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>$dn
 fi
 
 if grep -q onion: $dp/lndinfo.log ; then
@@ -130,7 +130,7 @@ Or much longer if Bitcoin hasn't finished sync'ing yet.$orange"
 
 fi
 
-if cat $dp/lndinfo.log | grep :973 | grep -v onion >/dev/null 2>&1 ; then 
+if cat $dp/lndinfo.log | grep :973 | grep -v onion >$dn 2>&1 ; then 
 clearnetURI="
 $yellow
 Clearnet URI:
@@ -150,8 +150,8 @@ colour2="$green" ; else colour2="$red" ; fi
 
 if [[ $lnddockermenu == "false" ]] ; then
 
-    if ps -x | grep litd | grep bin >/dev/null 2>&1 ||\
-    ps -x | grep lnd | grep bin >/dev/null 2>&1 ; then
+    if ps -x | grep litd | grep bin >$dn 2>&1 ||\
+    ps -x | grep lnd | grep bin >$dn 2>&1 ; then
     lndrunning="true"
     else 
     lndrunning="false"
@@ -159,7 +159,7 @@ if [[ $lnddockermenu == "false" ]] ; then
 
 else #docker
 
-    if docker exec lnd pgrep lnd >/dev/null 2>&1 ; then
+    if docker exec lnd pgrep lnd >$dn 2>&1 ; then
     lndrunning="true"
     else 
     lndrunning="false"
@@ -285,7 +285,7 @@ please_wait
 
 
 lc|LC|conf|CONF|Conf)
-if grep -q "litd" $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >$dn 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
 rL=LITD
 open_conf="$HOME/.lit/lit.conf"
@@ -315,7 +315,7 @@ continue
 
 lcv|LCV)
 
-if grep -q "litd" $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >$dn 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
 rL=LITD
 open_conf="$HOME/.lit/lit.conf"
@@ -362,7 +362,7 @@ export file=$HOME/.lnd/lnd.conf
 
 lnd_tor only skipsuccess norestartlnd
 
-if grep -q "litd" $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >$dn 2>&1 ; then
 
     sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
     sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
@@ -386,7 +386,7 @@ function reverse_fully_tor_only {
 
 export file=$HOME/.lnd/lnd.conf
 
-if grep -q "litd" $ic >/dev/null 2>&1 ; then
+if grep -q "litd" $ic >$dn 2>&1 ; then
 
     if grep -q lnd.tlsextraip $file ; then
     if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once

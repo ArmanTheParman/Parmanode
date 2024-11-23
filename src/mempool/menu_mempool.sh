@@ -5,13 +5,13 @@ export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 #gsed on Macs creates a backup with an E at the end.
 #I can use -i "" to eliminate this, but it complicates the code. I need 
 #exactly the same code to work on Linux and Mac.
-rm "${mempoolconf}E" >/dev/null 2>&1
+rm "${mempoolconf}E" >$dn 2>&1
 
 while true ; do 
 set_terminal
-if docker ps 2>/dev/null | grep -q mempool_web && \
-   docker ps 2>/dev/null | grep -q mempool/backend && \
-   docker ps 2>/dev/null | grep maria | grep -q docker-db ; then
+if docker ps 2>$dn | grep -q mempool_web && \
+   docker ps 2>$dn | grep -q mempool/backend && \
+   docker ps 2>$dn | grep maria | grep -q docker-db ; then
 running="                           MEMPOOL IS$green    Running$orange"
 else
 running="                           MEMPOOL IS$red    Not Running$orange"
@@ -193,7 +193,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$IP\"/" $mempoolconf >/dev/null 2>&1
+sudo gsed -i "s/ CORE_RPC_HOST.*\$/ CORE_RPC_HOST: \"$IP\"/" $mempoolconf >$dn 2>&1
 enter_continue "IP changed"
 restart_mempool="true"
 break
@@ -202,7 +202,7 @@ n)
 break
 ;;
 shoosh)
-echo "test_mempool_config_core_rpc_host=off" | tee -a $hm >/dev/null 2>&1
+echo "test_mempool_config_core_rpc_host=off" | tee -a $hm >$dn 2>&1
 break
 ;;
 *)
@@ -242,7 +242,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$IP\"/" $mempoolconf >/dev/null 2>&1
+sudo gsed -i "s/ ELECTRUM_HOST.*\$/ ELECTRUM_HOST: \"$IP\"/" $mempoolconf >$dn 2>&1
 enter_continue "Electrum IP changed"
 restart_mempool="true"
 break
@@ -251,7 +251,7 @@ n)
 break
 ;;
 shoosh)
-echo "test_mempool_config_electrum_host=off" | tee -a $hm >/dev/null 2>&1
+echo "test_mempool_config_electrum_host=off" | tee -a $hm >$dn 2>&1
 break
 ;;
 *)
@@ -263,7 +263,7 @@ fi
 }
 
 function check_core_rpc_username_mempool {
-source $bc >/dev/null 2>&1
+source $bc >$dn 2>&1
 
 #space before CORE is necessary
 user=$(grep " CORE_RPC_USERNAME:" $mempoolconf | cut -d \" -f2 )
@@ -290,7 +290,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ CORE_RPC_USERNAME.*\$/ CORE_RPC_USERNAME: \"$rpcuser\"/" $mempoolconf >/dev/null 2>&1
+sudo gsed -i "s/ CORE_RPC_USERNAME.*\$/ CORE_RPC_USERNAME: \"$rpcuser\"/" $mempoolconf >$dn 2>&1
 enter_continue "Username updated"
 restart_mempool="true"
 break
@@ -299,7 +299,7 @@ n)
 break
 ;;
 shoosh)
-echo "test_mempool_btcusername=off" | tee -a $hm >/dev/null 2>&1
+echo "test_mempool_btcusername=off" | tee -a $hm >$dn 2>&1
 break
 ;;
 *)
@@ -312,7 +312,7 @@ fi
 }
 
 function check_core_rpc_password_mempool {
-source $bc >/dev/null 2>&1
+source $bc >$dn 2>&1
 
 #space before CORE is necessary
 pass=$(grep " CORE_RPC_PASSWORD:" $mempoolconf | cut -d \" -f2 )
@@ -339,7 +339,7 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|Q) return 1 ;; m|M) back2main ;;
 fix)
-sudo gsed -i "s/ CORE_RPC_PASSWORD.*\$/ CORE_RPC_PASSWORD: \"$rpcpassword\"/" $mempoolconf >/dev/null 2>&1
+sudo gsed -i "s/ CORE_RPC_PASSWORD.*\$/ CORE_RPC_PASSWORD: \"$rpcpassword\"/" $mempoolconf >$dn 2>&1
 enter_continue "Password updated"
 restart_mempool="true"
 break
@@ -348,7 +348,7 @@ n)
 break
 ;;
 shoosh)
-echo "test_mempool_btcpassword=off" | tee -a $hm >/dev/null 2>&1
+echo "test_mempool_btcpassword=off" | tee -a $hm >$dn 2>&1
 break
 ;;
 *)

@@ -46,10 +46,10 @@ function start_LND_loop {
 if grep -q "lnd-" $ic ; then
 local counter=0
 while [[ $counter -lt 6 ]] ; do
-if sudo systemctl status >/dev/null ; then return 0 
+if sudo systemctl status >$dn ; then return 0 
 fi
 clear ; echo "Starting LND. Please wait..."
-sudo systemctl start lnd.service >/dev/null
+sudo systemctl start lnd.service >$dn
 sleep 3
 counter=$((counter + 1))
 done
@@ -60,7 +60,7 @@ if grep -q "lnddocker-" $ic ; then
 
 local counter=0
 while [[ $counter -lt 6 ]] ; do
-if docker exec lnd pgrep lnd >/dev/null ; then return 0
+if docker exec lnd pgrep lnd >$dn ; then return 0
 fi
 clear ; echo "Starting LND. Please wait..."
 lnd_docker_start

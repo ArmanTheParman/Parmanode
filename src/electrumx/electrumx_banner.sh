@@ -30,12 +30,12 @@ And...
 GFY. 
 
 No, I mean, have a nice day.
-" | sudo tee $hp/electrumx/banner.txt >/dev/null 2>&1
+" | sudo tee $hp/electrumx/banner.txt >$dn 2>&1
 }
 
 function make_electrumx_torbanner {
 echo "
 This is a Parmanode Electrums X Server.
 Go away.
-" | tee $hp/electrumx/torbanner.txt >/dev/null 2>&1
+" | tee $hp/electrumx/torbanner.txt >$dn 2>&1
 }

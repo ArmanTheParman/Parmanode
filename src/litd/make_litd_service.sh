@@ -24,11 +24,11 @@ TimeoutStopSec=60
 PrivateDevices=true
 MemoryDenyWriteExecute=true
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/litd.service >/dev/null 2>&1
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/litd.service >$dn 2>&1
 
-sudo systemctl daemon-reload      >/dev/null 2>&1
-sudo systemctl enable litd.service >/dev/null 2>&1
-sudo systemctl start  litd.service >/dev/null 2>&1
+sudo systemctl daemon-reload      >$dn 2>&1
+sudo systemctl enable litd.service >$dn 2>&1
+sudo systemctl start  litd.service >$dn 2>&1
 
 unset binds after
 return 0

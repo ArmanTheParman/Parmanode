@@ -1,5 +1,5 @@
 function make_electrumx_service {
-cat << EOF | sudo tee /etc/systemd/system/electrumx.service >/dev/null 2>&1
+cat << EOF | sudo tee /etc/systemd/system/electrumx.service >$dn 2>&1
 [Unit]
 Description=Electrumx
 After=network.target

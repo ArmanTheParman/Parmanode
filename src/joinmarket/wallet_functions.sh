@@ -72,10 +72,10 @@ done
 
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
-for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
 docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
 #copy list of wallets to after file
-for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
@@ -282,10 +282,10 @@ done
 
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
-for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>/dev/null ; done
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
 docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py recover" 
 #copy list of wallets to after file
-for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>/dev/null ; done
+for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
@@ -404,7 +404,7 @@ set_terminal ; echo -e "
     Please choose a wallet, type the file name exaclty, then <enter>
 "
 >$dp/.jmwallets
-for i in $(ls) ; do echo -e "    $red$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >/dev/null 2>&1 ; done
+for i in $(ls) ; do echo -e "    $red$i$orange" ; echo "$i" | tee -a $dp/.jmwallets >$dn 2>&1 ; done
 cd - >$dn 2>&1
 echo -en "
 $orange

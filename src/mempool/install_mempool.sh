@@ -1,7 +1,7 @@
 function install_mempool {
-if ! which docker >/dev/null 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
+if ! which docker >$dn 2>&1 ; then announce "Please install Docker first from Parmanode Add/Other menu, and START it. Aborting." ; return 1
 else
-    if ! docker ps >/dev/null ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
+    if ! docker ps >$dn ; then announce "Pease make sure you START the docker service first. Aborting for now." ; return 1 ; fi
 fi
 
 if ! grep -q bitcoin-end $HOME/.parmanode/installed.conf ; then
@@ -31,26 +31,26 @@ choose_mempool_version && cd $hp && git clone $memversion https://github.com/mem
 
 install_conf_add "mempool-start"
 #make sure mounted dir permission is correct (Pi is not 1000:1000, so these dir's will not be readable by container.)
-sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >/dev/null
+sudo chown -R 1000:1000 $hp/mempool/docker/data $hp/mempool/docker/mysql >$dn
 installed_config_add "mempool-start"
 #set variables
 make_mempool_docker_compose
 cp $tmp/docker-compose.yml $hp/mempool/docker/docker-compose.yml
-rm $tmp/docker-compose.yml >/dev/null 2>&1
+rm $tmp/docker-compose.yml >$dn 2>&1
 choose_bitcoin_for_mempool
 
 cd $hp/mempool/docker 
 docker compose up -d || debug "compose up didn't work"
 
 #Final check to make sure the docker gatway IP is included in bitcoin.conf
-if docker ps >/dev/null 2>&1 ; then
+if docker ps >$dn 2>&1 ; then
 
 string="$(docker network inspect docker_PM_network | grep Gateway | awk '{print $2}' | tr -d ' ' | tr -d \" | cut -d \. -f 1)"
 debug "string is $string"
 
 if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
-        if ! docker network inspect docker_PM_netowrk >/dev/null 2>&1 ; then 
+        if ! docker network inspect docker_PM_netowrk >$dn 2>&1 ; then 
         announce "some problem with starting the container. Aborting. Please let Parman know to fix."
         return 1
         fi
@@ -59,7 +59,7 @@ if [[ $string != 172 ]] ; then #would be unusualy for it not to be 172
 
     if [[ -n $stringIP ]] ; then
       cp $bc $dp/backup_bitcoin.conf 
-      echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >/dev/null 2>&1
+      echo rpcallowip="$stringIP"/16 | sudo tee -a $bc >$dn 2>&1
     fi
     
     if [[ $OS == Linux ]] ; then sudo systemctl restart bitcoind.service 

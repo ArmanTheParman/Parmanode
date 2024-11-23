@@ -16,12 +16,12 @@ fi
 
 #needs to be after variables set
 if [[ $1 = "remove" ]] ; then
-    sudo rm "$conf_file" >/dev/null 2>&1
+    sudo rm "$conf_file" >$dn 2>&1
     sudo gsed -i "/public_pool_ui.conf/d" $nginx_conf  #will apply only to Macs anyway.
 else #install
 
 #might need to install nginx
-if ! which nginx >/dev/null ; then install_nginx ; fi
+if ! which nginx >$dn ; then install_nginx ; fi
 
 echo -en "
 server {
@@ -38,7 +38,7 @@ server {
             proxy_pass http://localhost:80;
         }
 }
-" | sudo tee $conf_file >/dev/null 2>&1
+" | sudo tee $conf_file >$dn 2>&1
 
     if [[ $OS == Mac ]] ; then
     parmased "$nginx_conf" "http {" "    include $conf_file;" "after" "silent"
@@ -49,8 +49,8 @@ fi #not remove ends
 
 #restart
     if [[ $OS == Linux ]] ; then 
-        sudo nginx -t >$dn 2>$dp/nginx_error.log && sudo systemctl restart nginx >/dev/null 2>&1 
+        sudo nginx -t >$dn 2>$dp/nginx_error.log && sudo systemctl restart nginx >$dn 2>&1 
     elif [[ $OS == Mac ]] ; then
-        nginx -t >$dn 2>$dp/nginx_error.log && brew services restart nginx >/dev/null 2>&1 
+        nginx -t >$dn 2>$dp/nginx_error.log && brew services restart nginx >$dn 2>&1 
     fi
 }

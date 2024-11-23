@@ -19,7 +19,7 @@ n) return 1 ;;
 esac
 done
 
-if ! docker ps > /dev/null 2>&1 ; then
+if ! docker ps > $dn 2>&1 ; then
 announce "Docker needs to be running. Aborting."
 return 1
 fi

@@ -7,7 +7,7 @@ grep -q lnd-end $HOME/.parmanode/installed.conf || { announce "Please install LN
 
 set_terminal
 
-mkdir $HOME/parmanode/lnbits 2>/dev/null
+mkdir $HOME/parmanode/lnbits 2>$dn
 installed_config_add "lnbits-start"
 
 cd $HOME/parmanode/

@@ -4,7 +4,7 @@ function which_os {
 if [[ $(uname) == "Darwin" ]] #uname gives useful info about the system.
 then
     export OS="Mac"
-    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >$dn ; fi
     # This is adding the variable to a configuration file.
     # Parmanode_conf_add takes an argument (the text after it is called) and addes that to 
     # The parmanode.conf file
@@ -16,14 +16,14 @@ fi
 if [[ $(uname) == "Linux" ]]
 then
     export OS="Linux"
-    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >$dn ; fi
     return 0
 fi
 
 if [[ "$(uname)" == "MINGW32_NT" || "$(uname -s)" == "MINGW64_NT" ]] 
 then
     check_if_win7
-    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >/dev/null ; fi
+    if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >$dn ; fi
     exit 1
 fi
 echo "unknown OS, exiting." ; sleep 3
@@ -79,17 +79,17 @@ if [[ $OS == "Linux" ]] ; then
          $(uname -m) == "armv6l"  || \
          $(uname -m) == "armv8l"        ]] ; then
         
-            export computer_type=Pi >/dev/null
-            parmanode_conf_add "computer_type=Pi" >/dev/null
+            export computer_type=Pi 
+            parmanode_conf_add "computer_type=Pi" >$dn
    else
-            export computer_type=LinuxPC >/dev/null
-            parmanode_conf_add "computer_type=LinuxPC" >/dev/null
+            export computer_type=LinuxPC
+            parmanode_conf_add "computer_type=LinuxPC" >$dn
    fi
 
     
 else
-            export computer_type=Mac >/dev/null
-            parmanode_conf_add "computer_type=Mac" >/dev/null
+            export computer_type=Mac 
+            parmanode_conf_add "computer_type=Mac" >$dn
 fi
 }
 
@@ -97,7 +97,7 @@ function get_ip_address {
 
 if [[ $(uname) == "Linux" ]] ; then
 
-    if ! which ip >/dev/null 2>&1 ; then
+    if ! which ip >$dn 2>&1 ; then
         clear
         enter_continue "Installing necessary ip function (iproute2)..."
         sudo apt-get update -y && sudo apt-get install iproute2 -y
@@ -225,7 +225,7 @@ function check_chip {
 #Expected resulting options
     # x86_64, arm64, aarch64, armv6l, armv7l
 
-    export chip="$(uname -m)" >/dev/null 2>&1
+    export chip="$(uname -m)" 
 
     parmanode_conf_add "chip=$chip"
 

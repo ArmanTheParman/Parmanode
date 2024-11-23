@@ -11,11 +11,11 @@ if ! grep -q OK $tmp/FulcrumSHA256 ; then
     Sometimes this happens for unexplainable reasons.  Try uninstalling the partial 
     Fulcrum installation and install again." 
 
-    rm $tmp/FulcrumSHA256 >/dev/null 2>&1
+    rm $tmp/FulcrumSHA256 >$dn 2>&1
     return 1 
 fi
 
-rm $tmp/FulcrumSHA256 >/dev/null 2>&1
+rm $tmp/FulcrumSHA256 >$dn 2>&1
 
 echo '-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5
@@ -53,7 +53,7 @@ hlEslrxzIvWaTBZVFohhBBgRCAAJBQJZmei+AhsMAAoJECGBClQgMcAsfpABAPbyEFpS8QBU
 6Zm48JWhtNVoaL1/IfZO/b9uh8fm3rlTAP9tykvFgntdXYVlEu2EMaFiZro+aaFCaulAi7XK
 jdzE/g==
 =PElt
------END PGP PUBLIC KEY BLOCK-----' | gpg --import >/dev/null 2>&1 || 
+-----END PGP PUBLIC KEY BLOCK-----' | gpg --import >$dn 2>&1 || 
 { announce "key import failed" ; return 1 ; }
 
 if gpg --verify --status-fd 1 $HOME/parmanode/fulcrum/F*shasums.txt.asc $HOME/parmanode/fulcrum/F*shasums.txt 2>&1 | grep -qi "GOOD" 

@@ -43,7 +43,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 read choice
 case $choice in
 y|Y|YES|yes|u)
-if ! which brew >/dev/null ; then 
+if ! which brew >$dn ; then 
 install_homebrew 
 /opt/homebrew/bin/brew install bash netcat jq vim tmux tor
 enter_continue

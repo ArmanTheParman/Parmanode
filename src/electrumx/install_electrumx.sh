@@ -15,13 +15,13 @@ fi
 
 preamble electrumx
 
-source $pc $ic >/dev/null 2>&1
+source $pc $ic >$dn 2>&1
 grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." && return 1 ; }
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
 if [[ -e $bc ]] ; then
-source $bc >/dev/null
+source $bc >$dn
 else
 clear
 echo -e "The$cyan bitcoin.conf$orange file could not be detected. Can heppen if Bitcoin is
@@ -79,7 +79,7 @@ make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"
 
 #get drive variables
-source $HOME/.parmanode/parmanode.conf >/dev/null
+source $HOME/.parmanode/parmanode.conf >$dn
 
 if [[ $drive_electrumx == external ]] && grep "=external" $pc | grep -vq "electrumx" ; then #don't grep 'external' alone, too ambiguous
     # format not needed 
@@ -88,14 +88,14 @@ if [[ $drive_electrumx == external ]] && grep "=external" $pc | grep -vq "electr
 
     # check if there is a backup electrumx_db on the drive and restore it
       restore_electrumx_drive #prepares drive based on existing backup and user choices
-      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > /dev/null 2>&1 ; fi
+      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > $dn 2>&1 ; fi
                                                            # $original from function restore_electrumx_drive
 elif [[ $drive_electrumx == external ]] ; then
 
       format_ext_drive "electrumx" || return 1
       #make directory electrumx_db not needed because config file makes that hapen when electrumx run
-      mkdir -p $parmanode_drive/electrumx_db >/dev/null
-      sudo chown -R $USER $parmanode_drive/electrumx_db >/dev/null
+      mkdir -p $parmanode_drive/electrumx_db >$dn
+      sudo chown -R $USER $parmanode_drive/electrumx_db >$dn
 fi
 
 prepare_drive_electrumx || { debug "prepare_drive_electrumx failed" ; return 1 ; } 
@@ -107,7 +107,7 @@ fi
 
 #Electrum X docs say this is needed
 if ! grep -q "rest=1" $bc ; then
-echo "rest=1" | sudo tee -a $bc >/dev/null 2>&1
+echo "rest=1" | sudo tee -a $bc >$dn 2>&1
 fi
 
 make_electrumx_conf || { debug "make electrumx conf failed." ; return 1 ; }

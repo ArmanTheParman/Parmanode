@@ -15,13 +15,13 @@ Group=$(id -ng)
 
 [Install]
 WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/fulcrum.service > /dev/null
+" | sudo tee /etc/systemd/system/fulcrum.service >$dn 
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 
 sudo systemctl daemon-reload 
-sudo systemctl disable fulcrum.service >/dev/null 2>&1
-sudo systemctl enable fulcrum.service >/dev/null 2>&1
+sudo systemctl disable fulcrum.service >$dn 2>&1
+sudo systemctl enable fulcrum.service >$dn 2>&1
 
 return 0
 }

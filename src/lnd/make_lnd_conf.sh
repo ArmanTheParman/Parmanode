@@ -3,7 +3,7 @@ file="$HOME/.lnd/lnd.conf"
 
 source $HOME/.bitcoin/bitcoin.conf
 
-get_extIP >/dev/null 2>&1
+get_extIP >$dn 2>&1
 
 if grep -q "lnddocker" $ic || [[ $install == lnddocker ]] ; then
 customHOME=/home/parman
@@ -153,7 +153,7 @@ rpcmiddleware.enable=true
 [routing]
 
 [sweeper]
-" | tee $file >/dev/null 2>&1
+" | tee $file >$dn 2>&1
 
 if [[ $bitcoin_choice_with_lnd == local ]] \
 && [[ $install == lnddocker ]] && [[ $OS == Mac ]] ; then

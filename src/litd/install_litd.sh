@@ -9,10 +9,10 @@ if grep -q "lnd-" $ic ; then announce "cant have both LND and LITD"; return 1 ; 
 
 export litdversion="v0.12.5-alpha"
 
-if ! which nginx >/dev/null 2>&1 ; then install_nginx 
+if ! which nginx >$dn 2>&1 ; then install_nginx 
 sudo rm /etc/nginx/sites-available/*
 sudo rm /etc/nginx/sites-enabled/*
-sudo systemctl restart nginx >/dev/null 2>&1
+sudo systemctl restart nginx >$dn 2>&1
 fi
 
 bitcoin_choice_with_litd || return 1
@@ -29,8 +29,8 @@ if [[ -e $HOME/.lnd ]] ; then
 announce "Can't proceed if $HOME/.lnd exists due to reasons. Please move this directory and try again."
 return 1
 else
-ln -s $HOME/.lit $HOME/.lnd >/dev/null 2>&1
-ln -s $HOME/.lit/lit.conf $HOME/.lnd/lnd.conf >/dev/null 2>&1
+ln -s $HOME/.lit $HOME/.lnd >$dn 2>&1
+ln -s $HOME/.lit/lit.conf $HOME/.lnd/lnd.conf >$dn 2>&1
 fi
 
 
@@ -40,7 +40,7 @@ verify_litd || return 1
 echo -e "${green}Please wait, unzipping files...$orange"
 unpack_litd
 
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/litd/lightning-*/* >/dev/null 2>&1
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/litd/lightning-*/* >$dn 2>&1
 
 if [[ $reusedotlitd != "true" ]] ; then
 set_lnd_port #use lnd not litd
@@ -68,7 +68,7 @@ sudo gsed -i '/^; lnd.wallet-unlock-allow-create/s/^..//' $HOME/.lit/lit.conf
 
 # password file and needs new wallet to do so.
 #start git repository in .lit directory to allow undo's
-cd $HOME/.lit && git init >/dev/null 2>&1
+cd $HOME/.lit && git init >$dn 2>&1
 fi
 #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 

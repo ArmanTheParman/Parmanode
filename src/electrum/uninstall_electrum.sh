@@ -16,7 +16,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;; y) break ;; n) return 1 ;; *) i
 esac
 done
 
-sudo rm -rf $HOME/parmanode/electrum >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/electrum >$dn 2>&1
 installed_config_remove "electrum"
 if [[ $OS == "Mac" ]] ; then rm -rf /Applications/Electrum.app ; fi
 

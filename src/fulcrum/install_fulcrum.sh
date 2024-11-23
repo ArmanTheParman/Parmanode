@@ -20,14 +20,14 @@ if [[ $fulcrumdocker == "true" ]] ; then
     grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first. Aborting." ; return 1 ; }
     #check docker is running
 
-    if ! docker ps >/dev/null 2>&1 ; then 
+    if ! docker ps >$dn 2>&1 ; then 
     announce "Please make sure Docker is running, then try again. Aborting."
     return 1
     fi
 
     #remove old container, just in case
-    docker stop fulcrum >/dev/null 2>&1 
-    docker rm fulcrum >/dev/null 2>&1 
+    docker stop fulcrum >$dn 2>&1 
+    docker rm fulcrum >$dn 2>&1 
 
 fi
 

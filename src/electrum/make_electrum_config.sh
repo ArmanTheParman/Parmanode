@@ -9,7 +9,7 @@ echo "{
     \"server\": \"127.0.0.1:50002:s\",
     \"show_addresses_tab\": true,
     \"show_utxo_tab\": true
-}" | tee $HOME/.electrum/config >/dev/null 2>&1
+}" | tee $HOME/.electrum/config >$dn 2>&1
     
 echo "connection=\"FulcrumSSL\"" > $HOME/.parmanode/electrum.connection
 }

@@ -1,6 +1,6 @@
 function lnd_docker_start {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -26,7 +26,7 @@ debug "after lnd start"
 
 function lnd_docker_stop {
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################

@@ -1,5 +1,5 @@
 function test_standard_install {
-if grep -q "standard_install" $dp/hide_messages.conf >/dev/null 2>&1 ; then return 0 ; fi
+if grep -q "standard_install" $dp/hide_messages.conf >$dn 2>&1 ; then return 0 ; fi
 
 if [[ ! -e $pn/.git ]] ; then
 while true ; do
@@ -33,16 +33,16 @@ case $choice in
 q|Q) exit ;;
 help)
 cd $HOME
-if file parmanode_temp >/dev/null 2>&1 ; then rm -rf parmanode_temp ; fi
+if file parmanode_temp >$dn 2>&1 ; then rm -rf parmanode_temp ; fi
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp
 
-file ./parmanode_temp/version.conf 1>/dev/null 2>&1 || { echo "Some problem with the download. Aborting. You might want to try again later." ; enter_continue ; return 1 ; }
-sudo rm -rf $HOME/parman_programs/parmanode >/dev/null 2>&1
-mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >/dev/null 2>&1
+file ./parmanode_temp/version.conf 1>$dn 2>&1 || { echo "Some problem with the download. Aborting. You might want to try again later." ; enter_continue ; return 1 ; }
+sudo rm -rf $HOME/parman_programs/parmanode >$dn 2>&1
+mv $HOME/parmanode_temp/ $HOME/parman_programs/parmanode >$dn 2>&1
 cd $pn
-git config pull.rebase false >/dev/null 2>&1
-if ! git config user.email >/dev/null 2>&1 ; then git config user.email sample@parmanode.com ; fi
-if ! git config user.name  >/dev/null 2>&1 ; then git config user.name ParmanodeUser ; fi
+git config pull.rebase false >$dn 2>&1
+if ! git config user.email >$dn 2>&1 ; then git config user.email sample@parmanode.com ; fi
+if ! git config user.name  >$dn 2>&1 ; then git config user.name ParmanodeUser ; fi
 success "Parmanode installation has been fixed. Please restart."
 announce "Parmanode will quit now so the changes take effect. Please restart again." ; clear
 exit
@@ -74,7 +74,7 @@ break
 ;;
 
 nah)
-echo "standard_install=1" | tee -a $dp/hide_messages.conf >/dev/null 2>&1
+echo "standard_install=1" | tee -a $dp/hide_messages.conf >$dn 2>&1
 break
 ;;
 

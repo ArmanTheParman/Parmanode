@@ -35,6 +35,6 @@ function run_green {
 if [[ $OS == Mac ]] ; then
 open /Applications/Blockstream*app
 elif [[ $OS == Linux ]] ; then
-$hp/green/Blockstream*.AppImage >/dev/null 2>&1 &
+$hp/green/Blockstream*.AppImage >$dn 2>&1 &
 fi
 }

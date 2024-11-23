@@ -2,7 +2,7 @@ function make_fulcrum_config {
 # in parmanode variables ... export fc=$HOME/.fulcrum/fulcrum.conf
 # docker run command ... -v $HOME/parmanode/fulcrum/config:/home/parman/parmanode/fulcrum/config \
 
-source $bc >/dev/null 2>&1
+source $bc >$dn 2>&1
 
 #remove later, it's at the start of install_fulcrum()
 if [[ -z $rpcuser ]] ; then #from parmanode.conf 

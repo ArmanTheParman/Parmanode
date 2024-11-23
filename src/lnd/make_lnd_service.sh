@@ -54,11 +54,11 @@ PrivateDevices=true
 MemoryDenyWriteExecute=true
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/lnd.service >/dev/null 2>&1
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/lnd.service >$dn 2>&1
 
-sudo systemctl daemon-reload      >/dev/null 2>&1
-sudo systemctl enable lnd.service >/dev/null 2>&1
-sudo systemctl start  lnd.service >/dev/null 2>&1
+sudo systemctl daemon-reload      >$dn 2>&1
+sudo systemctl enable lnd.service >$dn 2>&1
+sudo systemctl start  lnd.service >$dn 2>&1
 
 unset binds after
 return 0

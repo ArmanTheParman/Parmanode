@@ -1,5 +1,5 @@
 function make_mempool_docker_compose {
-source $bc >/dev/null 2>&1
+source $bc >$dn 2>&1
 file="$tmp/docker-compose.yml"
 
 if [[ $OS == Linux ]] ; then
@@ -10,7 +10,7 @@ elif [[ $OS == Mac ]] ; then
   mysql_data="mysql_data"
 fi
 
-cat << EOF | tee $file >/dev/null 2>&1
+cat << EOF | tee $file >$dn 2>&1
 networks:
     PM_network:
       driver: bridge
@@ -38,10 +38,10 @@ services:
       ELECTRUM_PORT: "50005"
       ELECTRUM_TLS_ENABLED: "false"
 EOF
-echo "      CORE_RPC_USERNAME: \"$rpcuser\"" | tee -a $file >/dev/null 2>&1
-echo "      CORE_RPC_PASSWORD: \"$rpcpassword\"" | tee -a $file >/dev/null 2>&1
+echo "      CORE_RPC_USERNAME: \"$rpcuser\"" | tee -a $file >$dn 2>&1
+echo "      CORE_RPC_PASSWORD: \"$rpcpassword\"" | tee -a $file >$dn 2>&1
 
-cat << EOF | tee -a $file >/dev/null 2>&1
+cat << EOF | tee -a $file >$dn 2>&1
       DATABASE_ENABLED: "true"
       DATABASE_HOST: "db"
       DATABASE_DATABASE: "mempool"
@@ -68,10 +68,10 @@ cat << EOF | tee -a $file >/dev/null 2>&1
       LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
 EOF
 
-echo "      LND_TLS_CERT_PATH: \"$HOME/.lnd\"" | tee -a $file >/dev/null 2>&1
-echo "      LND_MACAROON_PATH: \"$HOME/.lnd/data/chain/bitcoin/mainnet\"" | tee -a $file >/dev/null 2>&1
+echo "      LND_TLS_CERT_PATH: \"$HOME/.lnd\"" | tee -a $file >$dn 2>&1
+echo "      LND_MACAROON_PATH: \"$HOME/.lnd/data/chain/bitcoin/mainnet\"" | tee -a $file >$dn 2>&1
 
-cat << EOF | tee -a $file >/dev/null 2>&1
+cat << EOF | tee -a $file >$dn 2>&1
       LND_REST_API_URL: "https://localhost:8080"
       LND_TIMEOUT: 10000
 
@@ -102,7 +102,7 @@ EOF
 if [[ $OS == Mac ]] ; then
 echo "volumes:
   mariadb_data:
-  mysql_data:" | sudo tee -a $file >/dev/null 2>&1
+  mysql_data:" | sudo tee -a $file >$dn 2>&1
 fi
 
 

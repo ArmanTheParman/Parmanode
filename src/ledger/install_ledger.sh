@@ -3,7 +3,7 @@ set_terminal
 warning_ledger
 sned_sats
 ledgerDir=$HOME/parmanode/ledger
-mkdir $ledgerDir >/dev/null 2>&1 && cd $ledgerDir
+mkdir $ledgerDir >$dn 2>&1 && cd $ledgerDir
 installed_conf_add "ledger-start"
 export ledger_version=2.89.1
 #Notes: grep -i does case insensitive search

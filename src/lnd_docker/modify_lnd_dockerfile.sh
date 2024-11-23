@@ -3,8 +3,8 @@ function modify_lnd_dockerfile {
 file="$hp/lnd/Dockerfile"
 unset chip_4lnd 
 
-cp $pn/src/lnd_docker/Dockerfile $file >/dev/null
-cp $pn/src/nginx/stream_lnd.conf $hp/lnd/ >/dev/null
+cp $pn/src/lnd_docker/Dockerfile $file >$dn
+cp $pn/src/nginx/stream_lnd.conf $hp/lnd/ >$dn
  
 if [[ $chip == x86_64  ]] ; then chip_4lnd=amd64 ; fi
 if [[ $chip == arm64   ]] ; then chip_4lnd=arm64 ; fi

@@ -1,6 +1,6 @@
 function make_lnd_directories {
 
-sudo rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/lnd && mkdir $HOME/parmanode/lnd >$dn 2>&1
 
 if [[ -d $HOME/.lnd ]] ; then
 while true ; do
@@ -24,12 +24,12 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
 1)
-sudo rm -rf $HOME/.lnd && mkdir $HOME/.lnd >/dev/null 2>&1
+sudo rm -rf $HOME/.lnd && mkdir $HOME/.lnd >$dn 2>&1
 break
 ;;
 2)
 mv $HOME/.lnd $HOME/.lnd_backup 
-mkdir $HOME/.lnd >/dev/null 2>&1
+mkdir $HOME/.lnd >$dn 2>&1
 break
 ;;
 3)
@@ -47,7 +47,7 @@ invalid
 esac 
 done
 else
-mkdir $HOME/.lnd >/dev/null 2>&1
+mkdir $HOME/.lnd >$dn 2>&1
 fi
 }
 

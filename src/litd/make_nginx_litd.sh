@@ -16,7 +16,7 @@ echo "server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto https;
     }
-}" | sudo tee $file >/dev/null 2>&1
+}" | sudo tee $file >$dn 2>&1
 
 sudo systemctl restart nginx
 

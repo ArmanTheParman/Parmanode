@@ -55,7 +55,7 @@ echo -e "#$cyan                            (btcp)$orange             BTCPay     
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
 echo -e "#$cyan                            (btcp)$orange             BTCPay $red$blinkon(partial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
-if which tor >/dev/null 2>&1 ; then tormenu=1
+if which tor >$dn 2>&1 ; then tormenu=1
 echo -e "#$cyan                            (tor)$orange              Tor                                    #
 #                                                                                      #"
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1

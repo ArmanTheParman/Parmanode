@@ -1,6 +1,6 @@
 function make_litd_directories {
 
-sudo rm -rf $HOME/parmanode/litd && mkdir $HOME/parmanode/litd >/dev/null 2>&1
+sudo rm -rf $HOME/parmanode/litd && mkdir $HOME/parmanode/litd >$dn 2>&1
 
 if [[ -d $HOME/.lit ]] ; then
 while true ; do
@@ -24,12 +24,12 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
 1)
-sudo rm -rf $HOME/.lit && mkdir $HOME/.lit >/dev/null 2>&1
+sudo rm -rf $HOME/.lit && mkdir $HOME/.lit >$dn 2>&1
 break
 ;;
 2)
 mv $HOME/.lit $HOME/.lit_backup 
-mkdir $HOME/.lit >/dev/null 2>&1
+mkdir $HOME/.lit >$dn 2>&1
 break
 ;;
 3)
@@ -47,7 +47,7 @@ invalid
 esac 
 done
 else
-mkdir $HOME/.lit >/dev/null 2>&1
+mkdir $HOME/.lit >$dn 2>&1
 fi
 }
 

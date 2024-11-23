@@ -29,7 +29,7 @@ enter_continue
 continue
 ;;
 2)
-cd && sudo rm -rf $hp/parman_books >/dev/null 2>&1
+cd && sudo rm -rf $hp/parman_books >$dn 2>&1
 success "The parman_books directory is gone"
 return 0
 ;;

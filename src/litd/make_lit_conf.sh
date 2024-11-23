@@ -3,7 +3,7 @@ file="$HOME/.lit/lit.conf"
 
 source $HOME/.bitcoin/bitcoin.conf
 
-get_extIP >/dev/null 2>&1
+get_extIP >$dn 2>&1
 
 if grep -q "litdocker" $ic || [[ $install == litdocker ]] ; then
 customHOME=/home/parman
@@ -52,7 +52,7 @@ lnd.bitcoind.zmqpubrawtx=tcp://$ipcore:28333
 lnd.bitcoind.rpchost=$ipcore
 lnd.protocol.wumbo-channels=true
 lnd.rpcmiddleware.enable=true
-" | tee $file >/dev/null 2>&1
+" | tee $file >$dn 2>&1
 
 if [[ $bitcoin_choice_with_lnd == local ]] \
 && [[ $install == litdocker ]] && [[ $OS == Mac ]] ; then

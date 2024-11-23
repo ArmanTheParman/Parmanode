@@ -2,8 +2,8 @@ function menu_main {
 while true ; do
 set_terminal
 
-source $pn/version.conf >/dev/null
-source $hm >/dev/null 2>&1 #hide messages
+source $pn/version.conf >$dn
+source $hm >$dn 2>&1 #hide messages
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
 
 branch="$(git status | head -n1 | awk '{print $3}')"

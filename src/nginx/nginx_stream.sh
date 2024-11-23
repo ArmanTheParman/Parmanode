@@ -1,7 +1,7 @@
 function nginx_stream {
 # if [[ -z $1 ]] ; then announce "no 1st argument to stream. aborting" ; return 1 ; fi
 
-if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
+if ! which nginx >$dn 2>&1 ; then return 0 ; fi
 
 service="$1" #expecting electrs or public_pool
 instruction="$2" #expecting install or remove
@@ -21,15 +21,15 @@ streamfile="/etc/nginx/stream.conf"
 fi
 
 if [[ $2 != remove ]] ; then
-sudo nginx -t >/dev/null 2>&1 || faulty_nginx_conf="true"
+sudo nginx -t >$dn 2>&1 || faulty_nginx_conf="true"
 fi
 
 #create a back up in case it breaks
-sudo cp $nginx_conf ${nginx_conf}_backup >/dev/null 2>&1
+sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
 
 #test what is installed... 
 #This search string will include installs that have begun and v1 and v2 of electrs/dkr)
-source $pp/parmanode/src/nginx/stream.conf >/dev/null 2>&1
+source $pp/parmanode/src/nginx/stream.conf >$dn 2>&1
 
 #unset what is not installed
 if [[ $1 != electrs ]] ; then
@@ -51,7 +51,7 @@ fi
 
 #make a backup of the streamfile first
 if [[ -e $streamfile ]] ; then
-sudo cp $streamfile ${streamfile}_backup >/dev/null 2>&1
+sudo cp $streamfile ${streamfile}_backup >$dn 2>&1
 fi
 
 #with variables finalised, write the file...
@@ -66,7 +66,7 @@ $upstream_electrs
 $server_electrs
 $upstream_public_pool
 $server_public_pool
-}" | sudo tee $streamfile >/dev/null 2>&1 
+}" | sudo tee $streamfile >$dn 2>&1 
 
 ######################################################################################## Very ipmortant
 ``
@@ -94,8 +94,8 @@ if [[ ! $faulty_nginx_conf == "true" ]] ; then
     " 
     enter_continue
     sudo cp ${nginx_conf} $tmp/nginx.conf_error 
-    sudo mv ${nginx_conf}_backup $nginx_conf >/dev/null 2>&1 
-    sudo mv ${streamfile}_backup $streamfile >/dev/null 2>&1
+    sudo mv ${nginx_conf}_backup $nginx_conf >$dn 2>&1 
+    sudo mv ${streamfile}_backup $streamfile >$dn 2>&1
     }
 
 fi
@@ -103,6 +103,6 @@ fi
 }
 # now redundant...
 # function remove_old_electrs_stream_from_nginxconf {
-# if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
-# if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >/dev/null ; fi
+# if [[ -e $nginx_conf && $OS == Linux ]] ; then sudo sed -i "/electrs-START/,/electrs-END/d" $nginx_conf >$dn ; fi
+# if [[ -e $nginx_conf && $OS == Mac ]] ; then sudo sed -i '' "/electrs-START/,/electrs-END/d" $nginx_conf >$dn ; fi
 # }

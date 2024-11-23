@@ -1,8 +1,8 @@
 function check_nodejs {
 #extract nodejs version number, and return old vs new (needs to be 16+) or none
 
-if which node >/dev/null ; then
-nodejs_version=$(node --version | cut -d "." -f 1 | cut -d "v" -f 2) >/dev/null
+if which node >$dn ; then
+nodejs_version=$(node --version | cut -d "." -f 1 | cut -d "v" -f 2) 
 else
 nodejs_version=none
 fi

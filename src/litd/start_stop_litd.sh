@@ -40,10 +40,10 @@ function start_litd_loop {
 if grep -q "litd-" $ic ; then
 local counter=0
 while [[ $counter -lt 6 ]] ; do
-if sudo systemctl status >/dev/null ; then return 0 
+if sudo systemctl status >$dn ; then return 0 
 fi
 clear ; echo "Starting litd. Please wait..."
-sudo systemctl start litd.service >/dev/null
+sudo systemctl start litd.service >$dn
 sleep 3
 counter=$((counter + 1))
 done
@@ -54,7 +54,7 @@ if grep -q "litddocker-" $ic ; then
 
 local counter=0
 while [[ $counter -lt 6 ]] ; do
-if docker exec litd pgrep litd >/dev/null ; then return 0
+if docker exec litd pgrep litd >$dn ; then return 0
 fi
 clear ; echo "Starting litd. Please wait..."
 litd_docker_start

@@ -1,6 +1,6 @@
 function store_LND_container_IP {
 
-if grep -q "LNDIP" $pc >/dev/null 2>&1 ; then
+if grep -q "LNDIP" $pc >$dn 2>&1 ; then
 source $pc
 return 0
 fi
@@ -19,7 +19,7 @@ LNDIP=$IP
 return 0
 fi
 
-if ! docker ps >/dev/null 2>&1 ; then return 1 ; fi
+if ! docker ps >$dn 2>&1 ; then return 1 ; fi
 
 if docker ps | grep -q lnd ; then
 

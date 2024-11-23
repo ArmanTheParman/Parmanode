@@ -13,7 +13,7 @@ unset thunderhubinstalled
 set_terminal
 please_wait
 runningoverview 
-source $oc >/dev/null 2>&1
+source $oc >$dn 2>&1
 debug "line 7"
 set_terminal_custom 48
 

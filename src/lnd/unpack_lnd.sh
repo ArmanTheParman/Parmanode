@@ -1,4 +1,4 @@
 function unpack_lnd {
-cd $HOME/parmanode/lnd >/dev/null 2>&1
+cd $HOME/parmanode/lnd >$dn 2>&1
 tar -xvf lnd-*.gz 
 }

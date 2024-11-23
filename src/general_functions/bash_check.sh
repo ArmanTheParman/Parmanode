@@ -1,5 +1,5 @@
 function bash_check {
-if which brew >/dev/null 2>&1 ; then
+if which brew >$dn 2>&1 ; then
 if [[ $bashV_major -lt 5 ]] ; then
 
 while true ; do

@@ -20,7 +20,7 @@ enter_continue
 
 if [[ -e $HOME/parmanode ]] ; then mkdir $HOME/parmanode ; fi
 cd $HOME/parmanode
-mkdir gpg4mac 2>/dev/null
+mkdir gpg4mac 2>$dn
 cd gpg4mac
 clear
 curl -LO https://releases.gpgtools.com/GPG_Suite-2023.3.dmg

@@ -5,7 +5,7 @@ elif grep -q "fulcrumdkr" $ic ; then
 docker_running || return 1
 docker start fulcrum
 docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/.fulcrum/fulcrum.conf \
-    >>/home/parman/parmanode/fulcrum/fulcrum.log 2>&1" >/dev/null 2>&1
+    >>/home/parman/parmanode/fulcrum/fulcrum.log 2>&1" >$dn 2>&1
 fi
 }
 

@@ -28,7 +28,7 @@ function install_joinmarket {
         return 1
     fi
 
-    if [[ $OS == Mac ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>/dev/null ; then
+    if [[ $OS == Mac ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>$dn ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
@@ -123,7 +123,7 @@ function make_joinmarket_wallet {
         if [[ $OS == Mac ]] ; then
             bcdocker="/home/parman/.bitcoin/bitcoin.conf"
             rpcconnect="rpcconnect=host.docker.internal"
-            docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >/dev/null"
+            docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >$dn"
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && \
                                                enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error

@@ -2,14 +2,14 @@ function sudo_check {
 
 set_terminal
 if [[ $OS == "Linux" ]] ; then
-    if command -v sudo >/dev/null ; then
-        if id | grep -q sudo >/dev/null 2>&1 ; then return 0 
+    if command -v sudo >$dn ; then
+        if id | grep -q sudo >$dn 2>&1 ; then return 0 
         fi
 	fi
 fi
 
 if [[ $OS == "Mac" ]] ; then
-    if command -v sudo >/dev/null 2>&1 ; then return 0 
+    if command -v sudo >$dn 2>&1 ; then return 0 
     fi
 fi
 
@@ -68,7 +68,7 @@ fi
 
 function gpg_check {
 
-if command -v gpg >/dev/null 2>&1
+if command -v gpg >$dn 2>&1
 	then return 0 
 fi
 
@@ -163,7 +163,7 @@ return 0
 
 
 function curl_check {
-if ! which curl >/dev/null 2>&1 ; then
+if ! which curl >$dn 2>&1 ; then
 while true ; do
 #don't use echo -e
 set_terminal ; echo "
@@ -201,5 +201,5 @@ return 0
 }
 
 function check_for_python {
-if ! which python3 >/dev/null ; then return 1 ; else return 0 ; fi
+if ! which python3 >$dn ; then return 1 ; else return 0 ; fi
 }

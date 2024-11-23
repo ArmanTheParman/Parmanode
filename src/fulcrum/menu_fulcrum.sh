@@ -29,7 +29,7 @@ fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 
 #if grep -q "fulcrum-" $ic ; then
 #    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
-isfulcrumrunning ; source $oc >/dev/null 2>&1
+isfulcrumrunning ; source $oc >$dn 2>&1
 
 if is_fulcrum_shutting_down ; then
 RUNNING="SHUTTING DOWN..."

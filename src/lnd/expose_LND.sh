@@ -8,7 +8,7 @@ else
 unset text
 fi
 
-get_extIP >/dev/null
+get_extIP >$dn
 
 set_terminal ; echo -e "
 ########################################################################################

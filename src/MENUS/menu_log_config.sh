@@ -3,7 +3,7 @@ unset message_menu_log_config
 # the "." below at the start of the line is another way to write "source"
 # source will "run" the file specified.
 # sourcing is necessary to see if the variable below is set, hiding the message.
-. $HOME/.parmanode/hide_messages.conf >/dev/null
+. $HOME/.parmanode/hide_messages.conf >$dn
 
 # The variable $message_menu_log_config can't be found with a simple search becuase it
 # is created in the function, hide_message_add, by concatinating "message_" with 
@@ -75,8 +75,8 @@ ic) less $HOME/.parmanode/installed.conf ;;
 pc) less $HOME/.parmanode/parmanode.conf ;;
 pa) set_terminal_wide ; less $HOME/.parmanode/parmanode_all.log ; set_terminal ;;
 delete|DELETE|Delete) 
-rm $HOME/.parmanode/*.log >/dev/null 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
-uh) rm $HOME/.parmanode/hide_messages.conf >/dev/null 2>&1 ; return 0 
+rm $HOME/.parmanode/*.log >$dn 2>&1 ; echo "" ; echo "Deleting" ; sleep 0.5 ; return 0 ;;
+uh) rm $HOME/.parmanode/hide_messages.conf >$dn 2>&1 ; return 0 
 ;;
 *) invalid ;;
 esac

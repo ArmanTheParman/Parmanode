@@ -2,7 +2,7 @@ function install_nostrrelay_explorer {
 
 no_mac || { announce "If there is demand for Macs, it's up to you to let me know and I'll get on to it." ; return 1 ; }
 
-if ! which make >/dev/null 2>&1 ; then
+if ! which make >$dn 2>&1 ; then
 sudo apt-get update -y && sudo apt-get install make -y
 fi
 

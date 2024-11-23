@@ -23,7 +23,7 @@ verify_lnd || return 1
 echo -e "${green}Please wait, unzipping files...$orange"
 unpack_lnd
 
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >/dev/null 2>&1
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/lnd/lnd-*/* >$dn 2>&1
 if [[ $reusedotlnd != "true" ]] ; then
 set_lnd_port
 if [[ ! -e $HOME/.lnd/password.txt ]] ; then sudo touch $HOME/.lnd/password.txt ; fi
@@ -49,7 +49,7 @@ sudo gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 
 # password file and needs new wallet to do so.
 #start git repository in .lnd directory to allow undo's
-cd $HOME/.lnd && git init >/dev/null 2>&1
+cd $HOME/.lnd && git init >$dn 2>&1
 fi
 #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 

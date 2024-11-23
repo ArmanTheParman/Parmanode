@@ -35,7 +35,7 @@ rr)
 h|H|htop|HTOP|Htop)
 
     if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
-    if ! which htop ; then sudo apt-get install htop -y >/dev/null 2>&1 ; fi
+    if ! which htop ; then sudo apt-get install htop -y >$dn 2>&1 ; fi
     announce "To exit htop, hit$cyan q$orange"
     htop
 ;;

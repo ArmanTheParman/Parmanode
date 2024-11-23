@@ -1,6 +1,6 @@
 function brew_check {
 
-if which brew >/dev/null 2>&1
+if which brew >$dn 2>&1
     then
 	return 0
 else

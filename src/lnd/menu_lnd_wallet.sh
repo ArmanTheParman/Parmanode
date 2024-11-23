@@ -81,7 +81,7 @@ create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary 
 # password file and needs new wallet to do so.
 
 #might be redundant...
-lncli unlock 2>/dev/null || docker exec lnd lncli unlock 2>/dev/null
+lncli unlock 2>$dn || docker exec lnd lncli unlock 2>$dn
 
 return 0 ;;
 
@@ -130,8 +130,8 @@ docker exec lnd lncli channelbalance > $tmp/.channelbalance
 fi
 cbfile=$tmp/.channelbalance
 
-local_balance=$(cat "$cbfile" | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
-remote_balance=$(cat "$cbfile" | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+local_balance=$(cat "$cbfile" | grep -n1 "local_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >$dn 2>&1
+remote_balance=$(cat "$cbfile" | grep -n1 "remote_balance" | head -n3 | tail -n1 | cut -d \" -f 4) >$dn 2>&1
 channel_size_total=$((local_balance + remote_balance))
 
 if grep -q "lnd-" $ic || grep -q "litd" $ic ; then
@@ -141,7 +141,7 @@ docker exec lnd lncli walletbalance >$tmp/.walletbalance
 fi
 wbfile=$tmp/.walletbalance
 
-onchain_balance=$(cat "$wbfile" | head -n2 | tail -n1 | cut -d \" -f 4) >/dev/null 2>&1
+onchain_balance=$(cat "$wbfile" | head -n2 | tail -n1 | cut -d \" -f 4) >$dn 2>&1
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -159,7 +159,7 @@ $orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
-sudo rm $wbfile $cbfile >/dev/null 2>&1
+sudo rm $wbfile $cbfile >$dn 2>&1
 return 0
 }
 

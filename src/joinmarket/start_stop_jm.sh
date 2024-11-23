@@ -17,7 +17,7 @@ function internal_docker_socat_jm_mac  {
     if [[ $OS == Mac ]] ; then
         counter=0
         while [[ $counter -lt 10 ]] ; do
-            docker exec joinmarket ps >/dev/null && break
+            docker exec joinmarket ps >$dn && break
             sleep 1
             counter=$((counter + 1))
         done

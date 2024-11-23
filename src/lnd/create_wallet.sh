@@ -2,7 +2,7 @@ function create_wallet {
 ########################################################################################
 if grep -q "lnddocker" $ic ; then
 
-if ! docker ps >/dev/null 2>&1 ; then set_terminal ; echo -e "
+if ! docker ps >$dn 2>&1 ; then set_terminal ; echo -e "
 ########################################################################################$red
                               Docker is not running. $orange
 ########################################################################################
@@ -19,7 +19,7 @@ if ! docker ps | grep -q lnd ; then set_terminal ; echo -e "
 if [[ $1 != silent ]] ; then enter_continue ; jump $enter_cont ; return 1 ; esle true ; fi
 fi 
 
-if docker exec -it lnd /bin/bash -c "lncli walletbalance" >/dev/null 2>&1 ; then
+if docker exec -it lnd /bin/bash -c "lncli walletbalance" >$dn 2>&1 ; then
 announce "You already have an LND wallet, and it's unlocked. Please delete the 
     wallet first if you want to create a new one."
 return 1
@@ -32,13 +32,13 @@ fi
 else #end docker
 
 
-if ! sudo systemctl status litd.service >/dev/null \
-&& ! sudo systemctl status lnd.service >/dev/null ; then
+if ! sudo systemctl status litd.service >$dn \
+&& ! sudo systemctl status lnd.service >$dn ; then
     set_terminal ; echo -e "LND is not running.$red Can't create wallet.$orange Start LND first."
     enter_continue ; return 1 ; 
 fi
 
-if lncli walletbalance >/dev/null 2>&1 ; then 
+if lncli walletbalance >$dn 2>&1 ; then 
 announce "You already have an LND wallet, and it's unlocked. Please delete the 
     wallet first if you want to create a new one."
 return 1

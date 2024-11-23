@@ -17,7 +17,7 @@ fi
 if [[ $OS == Mac ]] ; then local nginxDir="/usr/local/etc/nginx" ; fi
 if [[ $OS == Linux ]] ; then local nginxDir="/etc/nginx" ; fi
 
-if ! which nginx >/dev/null 2>&1 ; then return 0 ; fi
+if ! which nginx >$dn 2>&1 ; then return 0 ; fi
 
 fileNum=$(grep -rE '^\slisten.*\s+80\s+' $nginxDir/* | wc -l )
 
@@ -80,10 +80,10 @@ sudo apt-get purge nginx
 fi
 
 if [[ $OS == Mac ]] ; then
-if which brew >/dev/null ; then
+if which brew >$dn ; then
     clear ; please_wait
     brew stop nginx 
-    brew services uninstall nginx >/dev/null 2>&1
+    brew services uninstall nginx >$dn 2>&1
     rm -rf /usr/local/etc/nginx/
     rm -rf /usr/local/var/log/nginx/
     cd ; brew cleanup
@@ -102,7 +102,7 @@ return 0
 if [[ $OS == Linux ]] ; then
 sudo systemctl stop nginx
 sudo systemctl disable nginx
-    if ps -x | grep nginx | grep -v grep >/dev/null 2>&1 ; then
+    if ps -x | grep nginx | grep -v grep >$dn 2>&1 ; then
     announce "Unable to stop Nginx. Aborting."
     return 1
     fi
@@ -111,7 +111,7 @@ fi
 if [[ $OS == Mac ]] ; then
 please_wait
 brew services stop nginx
-    if ps -x | grep nginx | grep -v grep >/dev/null 2>&1 ; then
+    if ps -x | grep nginx | grep -v grep >$dn 2>&1 ; then
     announce "Unable to stop Nginx. Aborting."
     return 1
     fi

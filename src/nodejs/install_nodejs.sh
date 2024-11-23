@@ -1,7 +1,7 @@
 function install_nodejs {
 
 if [[ $OS == "Mac" ]] ; then 
-    if ! which node >/dev/null 2>&1 ; then 
+    if ! which node >$dn 2>&1 ; then 
     brew_check NodeJS || return 1
     brew install node 
     else 
@@ -29,7 +29,7 @@ installed_config_remove "nodejs"
 sudo apt purge nodejs npm -y
 
 #update repository list
-sudo rm /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
+sudo rm /etc/apt/sources.list.d/nodesource.list >$dn 2>&1
 if [[ -z $1 ]] ; then
 NODE_MAJOR=18 #problems with version20
 else
@@ -38,7 +38,7 @@ fi
 
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] \
 https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
-| sudo tee /etc/apt/sources.list.d/nodesource.list >/dev/null 2>&1
+| sudo tee /etc/apt/sources.list.d/nodesource.list >$dn 2>&1
 
 sudo apt-get update -y
 

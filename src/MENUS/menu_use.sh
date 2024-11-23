@@ -34,7 +34,7 @@ if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrapp
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
                        echo -e "                        $cyan  (btcp)$orange       BTCPay Server
                             " ; fi
-if which tor >/dev/null 2>&1 ; then torapp=1
+if which tor >$dn 2>&1 ; then torapp=1
                        echo -e "                        $cyan  (t)$orange          Tor 
                             " ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
@@ -477,7 +477,7 @@ gr|green)
 
 ######Hidden Menu########
 ng)
-  if which nginx >/dev/null 2>&1 ; then
+  if which nginx >$dn 2>&1 ; then
   menu_nginx
   fi
   ;;

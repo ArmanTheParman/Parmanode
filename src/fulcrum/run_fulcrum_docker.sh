@@ -1,10 +1,10 @@
 function run_fulcrum_docker {
 
-source $HOME/.parmanode/parmanode.conf >/dev/null 2>&1
+source $HOME/.parmanode/parmanode.conf >$dn 2>&1
 
 if [[ $drive_fulcrum == "external" ]] ; then
         while true ; do
-                if ! mount | grep parmanode >/dev/null 2>&1 ; then
+                if ! mount | grep parmanode >$dn 2>&1 ; then
                         log "fulcrum" "drive mount test failed. Offer to try again or exit."
                         set_terminal ; echo -e "Please connect the drive, then hit$cyan <enter>$orange to try again,$red p$orange to return." ; read choice 
                         if [[ $choice == "p" ]] ; then return 1 ; fi

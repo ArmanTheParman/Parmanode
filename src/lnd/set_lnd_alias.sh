@@ -26,7 +26,7 @@ read alias_choice
 if [[ $alias_choice == "" ]] ; then 
 echo "Empty string"
 # random_alias_number, RAN
-RAN=$((10000000+ RANDOM % 90000000)) >/dev/null 
+RAN=$((10000000+ RANDOM % 90000000)) 
 alias="Parmanode_LND_$RAN"
 echo "Your alias will be $alias"
 else

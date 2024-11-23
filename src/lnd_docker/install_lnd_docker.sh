@@ -20,7 +20,7 @@ lnd_docker_run || { debug "lnd_docker_run failed" ; return 1 ; }
 
 debug "after docker run and start"
 
-docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >/dev/null 2>&1
+docker exec -itu root lnd bash -c "echo \"ControlPort 9051\" | tee -a /etc/tor/torrc" >$dn 2>&1
 
 #password file, even if blank, needs to exists for lnd conf file to be valid
 if [[ $reusedotlnd != "true" ]] ; then
@@ -40,7 +40,7 @@ create_wallet && lnd_wallet_unlock_password  # && because 2nd command necessary 
 sudo gsed -i '/^; wallet-unlock-password-file/s/^..//' $HOME/.lnd/lnd.conf
 sudo gsed -i '/^; wallet-unlock-allow-create/s/^..//' $HOME/.lnd/lnd.conf
 #start git repository in .lnd directory to allow undo's
-cd $HOME/.lnd && git init >/dev/null 2>&1
+cd $HOME/.lnd && git init >$dn 2>&1
 fi
 
 installed_config_add "lnddocker-end"

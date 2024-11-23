@@ -10,7 +10,7 @@ vagrant plugin install vagrant-vbguest
 #vagrant plugin uninstall vagrant-vbguest
 
 # Test installed
-if ! which virtualbox >/dev/null 2>&1 ; then announce "virtualbox couldn't be installed. Aborting." ; return 1 ; fi 
+if ! which virtualbox >$dn 2>&1 ; then announce "virtualbox couldn't be installed. Aborting." ; return 1 ; fi 
 
 # Install debian vm
 mkdir $HOME/parman_programs/ParmanodeVM/
