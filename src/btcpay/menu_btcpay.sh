@@ -74,7 +74,7 @@ $cyan
 $cyan
              sb)$orange           Start/Stop Bitcoin
 $cyan
-             br)$orange           Backup / Restore BTCPay data ...$red (New!)
+             br)$orange           Backup / Restore BTCPay data ...$red (new!)
 $cyan
              up)$orange           Update BTCPay (coming soon) ...
 $cyan
@@ -223,9 +223,7 @@ fi
 ;;
 
 up)
-announce "not available just yet"
-continue
-#update_btcpay
+update_btcpay
 ;;
 debug)
 true
@@ -261,21 +259,22 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    BTCPay cannot be updated in the advertised way when run with Parmanode.
+    Because BTCPay in Parmanode is a bespoke installation, the standard update
+    methods for BTCPay don't work.
     
-    But not to worry. Parmanode can do the update for you, without affecting your
-    data.
+    But not to worry! Parmanode can do the update for you, without affecting your
+    data. It is recommended, nevertheless, that you do backup your data using the
+    backup feature from the Parmanode BTCPay menu.
 
-    It will stop the services running, pull the desired version from GitHub, build
-    the binaries again inside the docker container, and restart the service.
+    The update works by first stopping the services running, then pulling the 
+    desired version from GitHub, building the binaries again inside the docker 
+    container, and then restarting the service.
 
     You have options...
 $cyan
                 a)$orange          Abort!
 $green
                 pp)$orange         Get the latest version tested by Parman
-$red
-                yolo)$orange       Get the latest version, without Parman's testing.
 $red                
                 s)$orange          Select a particular version of your choice
 
@@ -285,6 +284,28 @@ choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; a|A|p|P) return 1 ;; m|M) back2main ;;
+pp)
+version="v2.0.3"
+stop_btcpay 
+docker start btcpay #container only
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+restart_btcpay
+success "BTCPay Server has been updated to version $version"
+unset version
+;;
+s)
+announce "Please enter the version you want in the format v0.0.0 for example:
+\n$cyan    v2.0.3"
+version=$enter_cont
+if [[ ! $version =~ ^v ]] ; then announce "The version must start with lowercase v" ; continue ; fi
+if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect format." ; continue ; fi
+stop_btcpay 
+docker start btcpay #container only
+docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
+restart_btcpay
+success "BTCPay Server has been updated to version $version"
+unset version
+;;
 esac
 done
 }
@@ -497,24 +518,7 @@ docker exec -it btcpay bash
 function btcpay_menu_advanced {
 while true ; do
 
-    if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -qv grep" ; then
-    posgresrunning="${green}RUNNING$orange"
-    else
-    posgresrunning="${red}NOT RUNNING$orange"
-    fi
-
-    if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep -q csproj" ; then
-    nbxplorerrunning="${green}RUNNING$orange"
-    else
-    nbxplorerrunning="${red}NOT RUNNING$orange"
-    fi
-
-    if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep -q csproj" ; then
-    containerbtcpayrunning="${green}RUNNING$orange"
-    else
-    containerbtcpayrunning="${red}NOT RUNNING$orange"
-    fi
-
+btcpaycontainerspps #checks running status of btcpay, nbxplorer, and postgres
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -542,20 +546,12 @@ $cyan
 "
 choose xpmq ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
+
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;; 
 dco)
-if [[ $btcpayrunning == "true" ]] ; then
-    yesorno "BTCPay needs to be stopped to run the container only. Do that?" \
-    && stop_btcpay && docker start btcpay \
-    && enter_continue "The container has been started. NOTE: BTCPay & NBXplorer are$red not running$orange." \
-    && return 0 
-    return 0 #choosing no
-else
-docker start btcpay
-enter_continue "The container has been started. NOTE: BTCPay & NBXplorer are$red not running$orange."
-return 0
-fi
+stop_btcpay 
+docker start btcpay #do not user start_btcpay()
 ;;
 man)
 menu_btcpay_man
@@ -609,4 +605,25 @@ invalid
 ;;
 esac
 done
+}
+
+function btcpaycontainerspps {
+
+    if docker exec -du postgres btcpay bash -c "ps ax | grep /usr/lib/postgresq | grep -qv grep" ; then
+    export posgresrunning="${green}RUNNING$orange"
+    else
+    export posgresrunning="${red}NOT RUNNING$orange"
+    fi
+
+    if docker exec -it btcpay bash -c "ps ax | grep NBX | grep -v grep | grep -q csproj" ; then
+    export nbxplorerrunning="${green}RUNNING$orange"
+    else
+    export nbxplorerrunning="${red}NOT RUNNING$orange"
+    fi
+
+    if docker exec -it btcpay bash -c "ps ax | grep btcpay | grep -v grep | grep -q csproj" ; then
+    export containerbtcpayrunning="${green}RUNNING$orange"
+    else
+    export containerbtcpayrunning="${red}NOT RUNNING$orange"
+    fi
 }
