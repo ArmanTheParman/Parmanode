@@ -70,9 +70,14 @@ docker exec -itu parman btcpay bash -c "if ! git config --global user.email ; th
 docker exec -itu parman btcpay bash -c "mkdir -p /home/parman/parmanode/bitcoin"
 #when developting on non-master branches, need to checkout to the correct branch...
 cd $pn >$dn ; onbranch=$(git status | grep "On branch" | sed 's/On branch/ /g' | grep -Eo '[a-z:A-Z:0-9].+') ; cd - >$dn
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch" ; unset onbranch
+docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout $onbranch"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu parman btcpay bash -c "ln -s /usr/bin/sed /usr/bin/gsed"
-docker exec -itu parman btcp bash -l -c "echo 'parmanode' | sudo -S true ; export dn=/dev/null ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin="true" ./run_parmanode.sh" || return 1
-docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git checkout master"
+docker exec -itu parman btcp bash -l -c "echo 'parmanode' | sudo -S true ; export dn=/dev/null ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin=\"true\" ./run_parmanode.sh" || return 1
+if [[ $onbranch != master ]] then
+    if yesorno "revert container's Parmanode install back to master branch?" ; then 
+        docker exec -itu parman btcpay bash -c "cd /home/parman/parmandd_programs/parmanode && git checkout master"
+    fi
+fi
+return 0
 }
