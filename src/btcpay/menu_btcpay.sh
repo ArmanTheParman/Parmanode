@@ -291,20 +291,25 @@ docker start btcpay #container only
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $version"
-unset version
+parmanode_conf_remove "btcpay_version"
+unset version btcpay_version
+return 0
 ;;
 s)
 announce "Please enter the version you want in the format v0.0.0 for example:
-\n$cyan    v2.0.3"
+\n$cyan    v2.0.3$orange"
 version=$enter_cont
-if [[ ! $version =~ ^v ]] ; then announce "The version must start with lowercase v" ; continue ; fi
+if [[ ! $version =~ ^v ]] ; then version=v${version} ; fi #if user types a number, add a v prefix
 if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect format." ; continue ; fi
 stop_btcpay 
+set_terminal ; echo -e "${green}This can take a few minutes. Sit back and stacks some sats...$orange"
 docker start btcpay #container only
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
-success "BTCPay Server has been updated to version $version"
-unset version
+success "BTCPay Server has been updated to version $cyan$version$orange"
+parmanode_conf_remove "btcpay_version"
+unset version btcpay_version
+return 0
 ;;
 esac
 done
