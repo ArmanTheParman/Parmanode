@@ -35,7 +35,7 @@ esac
 done
 
 
-if ! which nc >/dev/null 2>&1 ; then
+if ! which nc >$dn 2>&1 ; then
 
     if [[ $OS == Linux ]] ; then sudo apt update -y && sudo apt-get install netcat-traditional ; fi
 
@@ -45,16 +45,16 @@ if ! which nc >/dev/null 2>&1 ; then
     fi
 fi
 
-if ! which tor >/dev/null 2>&1 ; then install_tor ; fi
+if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
 
 # edit torrc...
-if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
-echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
+echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >$dn 2>&1
 fi
 
-echo "HiddenServiceDir /var/lib/tor/ssh-service/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServiceDir /var/lib/tor/ssh-service/" | sudo tee -a /etc/tor/torrc >$dn 2>&1
+echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a /etc/tor/torrc >$dn 2>&1
 installed_conf_add "torssh-start"
 sudo systemctl restart tor ssh
 
@@ -63,7 +63,7 @@ if [[ ! -f $HOME/.ssh/config ]] ; then sudo touch $HOME/.ssh/config ; fi
 
 
 if ! grep -q "Host *.onion" $HOME/.ssh/config ; then
-cat << EOF | tee -a $HOME/.ssh/config >/dev/null 2>&1
+cat << EOF | tee -a $HOME/.ssh/config >$dn 2>&1
     Host *.onion
     ProxyCommand nc -x localhost:9050 -X 5 %h %p
 EOF

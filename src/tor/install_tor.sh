@@ -1,6 +1,6 @@
 function install_tor {
 
-if which tor >/dev/null 2>&1 ; then installed_config_add "tor-end" ; export tor_already_installed=true ; return 0 ; fi
+if which tor >$dn 2>&1 ; then installed_config_add "tor-end" ; export tor_already_installed=true ; return 0 ; fi
 
 if [[ $1 != silent ]] ; then
 
@@ -34,7 +34,7 @@ if [[ $OS == "Mac" ]] ; then
     brew install tor && brew services start tor 
 fi
 
-if which tor >/dev/null ; then 
+if which tor >$dn ; then 
     installed_conf_add "tor-end"
     return 0 
 else 

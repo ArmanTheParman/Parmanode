@@ -29,7 +29,7 @@ fi
 
 sudo gsed -i "/tor-server/d" $macprefix/etc/tor/torrc
 sudo gsed -i "/127.0.0.1:7001/d" $macprefix/etc/tor/torrc 
-sudo rm $macprefix/etc/nginx/conf.d/tor-server.conf >/dev/null
+sudo rm $macprefix/etc/nginx/conf.d/tor-server.conf >$dn
 sudo rm -rf $macprefix/var/lib/tor/tor-server
 installed_conf_remove "tor-server"
 

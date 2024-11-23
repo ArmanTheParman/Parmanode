@@ -1,6 +1,6 @@
 function motd {
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
-. $HOME/.parmanode/hide_messages.conf >/dev/null
+. $HOME/.parmanode/hide_messages.conf >$dn
 fi
 
 if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
@@ -10,9 +10,9 @@ if [[ ! -e $motdfile ]] ; then
 echo "motd=0" | tee $motdfile
 motd=0
 else
-source $motdfile >/dev/null 2>&1
+source $motdfile >$dn 2>&1
 motdNum=$((motd + 1))
-echo "motd=$motdNum" | tee $motdfile >/dev/null 2>&1
+echo "motd=$motdNum" | tee $motdfile >$dn 2>&1
 motd=$motdNum
 fi
 

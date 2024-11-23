@@ -1,7 +1,7 @@
 function install_torrelay {
 if [[ $(uname) == Darwin ]] ; then no_mac ; return 1 ; fi
 
-if ! which tor >/dev/null 2>&1 ; then announce "Please instal Tor first from the Parmanode add menu. Aborting." ; return 1 ; fi
+if ! which tor >$dn 2>&1 ; then announce "Please instal Tor first from the Parmanode add menu. Aborting." ; return 1 ; fi
 
 torrelay_intro
 
@@ -40,7 +40,7 @@ ExitRelay 0
 RelayBandwidthRate 200 KBytes  # each 40Kb per second translates to about 100Gb /month 
 RelayBandwidthBurst 300 KBytes
 #End Tor Relay Installation.
-" | sudo tee -a $file >/dev/null 2>&1
+" | sudo tee -a $file >$dn 2>&1
 
 
 sudo systemctl restart tor

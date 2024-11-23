@@ -5,13 +5,13 @@ source $pc
 enable_tor_general || return 1
 
 if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/thunderhub-service/" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; debug "true" ; else debug "else"
-    echo "HiddenServiceDir $macprefix/var/lib/tor/thunderhub-service/" | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
+    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+    echo "HiddenServiceDir $macprefix/var/lib/tor/thunderhub-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     fi
 
 if sudo grep "HiddenServicePort 2050 127.0.0.1:$thub_port" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >/dev/null 2>&1 ; then true ; else
-    echo "HiddenServicePort 2050 127.0.0.1:$thub_port" | sudo tee -a $macprefix/etc/tor/torrc >/dev/null 2>&1
+    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+    echo "HiddenServicePort 2050 127.0.0.1:$thub_port" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     fi
 
 sudo systemctl restart tor

@@ -1,7 +1,7 @@
 function install_thunderhub {
 
 ### Needs to check for xxd ***
-if ! which xxd >/dev/null 2>&1 ; then 
+if ! which xxd >$dn 2>&1 ; then 
 if [[ $OS == Linux ]] ; then
 set_terminal ; echo -e "$green
 Installing dependecies...
@@ -42,20 +42,20 @@ done
 parmanode_conf_add "thub_port=$thub_port"
 
 #make sure bitcoin installed
-if ! grep -q "bitcoin-end" $ic >/dev/null 2>&1 ; then
+if ! grep -q "bitcoin-end" $ic >$dn 2>&1 ; then
 announce "Please install Bitcoin first. Aborting."
 return 1
 fi
 
 #make sure lightning installed 
-if ! grep -q "lnd-end" $ic >/dev/null 2>&1 && ! grep -q "lnddocker-end" $ic >/dev/null 2>&1 ; \
+if ! grep -q "lnd-end" $ic >$dn 2>&1 && ! grep -q "lnddocker-end" $ic >$dn 2>&1 ; \
 then
 announce "Please install LND first. Aborting."
 return 1
 fi
 
 #make sure docker installed
-if ! which docker >/dev/null 2>&1 ; then 
+if ! which docker >$dn 2>&1 ; then 
 announce "Please install Docker first. Aborting." 
 return 1 
 fi

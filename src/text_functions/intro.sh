@@ -1,6 +1,6 @@
 function intro {
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
-. $HOME/.parmanode/hide_messages.conf >/dev/null
+. $HOME/.parmanode/hide_messages.conf >$dn
 fi
 
 set_terminal_high

@@ -2,12 +2,12 @@ function install_tor_webserver {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if ! which tor >/dev/null ; then install_tor ; fi
+if ! which tor >$dn ; then install_tor ; fi
 
 
 set_terminal
 
-if ! which tor >/dev/null 2>&1 ; then 
+if ! which tor >$dn 2>&1 ; then 
     set_terminal
     echo "Tor needs to be installed in order to proceed. Do that now? y or n."
     read choice
@@ -38,16 +38,16 @@ fi
 log "tor-server" "Beginning tor-server install"
 installed_conf_add "tor-server-start"
 
-if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >/dev/null 2>&1 ; then
-echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
+echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >$dn 2>&1
 fi
 
-echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
-echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >/dev/null 2>&1
+echo "HiddenServiceDir /var/lib/tor/tor-server/" | sudo tee -a /etc/tor/torrc >$dn 2>&1
+echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >$dn 2>&1
 sudo systemctl restart tor
 
 
-if ! which nginx >/dev/null 2>&1 ; then
+if ! which nginx >$dn 2>&1 ; then
     set_terminal
     echo "Nginx needs to be installed in order to proceed. Do that now? y or n."
     read choice
@@ -72,7 +72,7 @@ echo "server {
 		autoindex on; # autoindex tag
 		try_files \$uri \$uri/ =404;
 	}
-}" | sudo tee -a /etc/nginx/conf.d/tor-server.conf >/dev/null 2>&1
+}" | sudo tee -a /etc/nginx/conf.d/tor-server.conf >$dn 2>&1
 
 sudo systemctl restart nginx || { echo "Failed to start nginx. Aborting." ; enter_continue ; return 1 ; log "tor-server" "Failed at nginx restart" ; }
 log "tor-server" "finished install"

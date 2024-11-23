@@ -84,6 +84,6 @@ ACCOUNT_CONFIG_PATH='/app/account_1.yaml'
 # PUBLIC_URL='app.example.com'
 # SSL_PORT=2900
 # SSL_SAVE=true
-" | tee $file >/dev/null 2>&1
+" | tee $file >$dn 2>&1
 sudo chown 0:0 $file
 }

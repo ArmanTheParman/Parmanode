@@ -2,7 +2,7 @@ function menu_thunderhub {
 if ! grep -q "thunderhub-end" $ic ; then return 0 ; fi
 while true ; do
 
-source $pc >/dev/null
+source $pc >$dn
 
 if [[ $OS == Mac ]] ; then 
 tornotwithmac=""
@@ -11,7 +11,7 @@ get_onion_address_variable thunderhub
 $bright_blue    http://$ONION_ADDR_THUB:2050 $orange
 fi
 
-if docker ps 2>/dev/null | grep -q thunderhub ; then
+if docker ps 2>$dn | grep -q thunderhub ; then
 running="
                            Thunderhub is$green    Running$orange
 "

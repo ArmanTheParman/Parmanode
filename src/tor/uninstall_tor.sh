@@ -29,7 +29,7 @@ brew services stop tor
 brew uninstall tor
 fi
 
-sudo rm -rf $macprefix/etc/tor $macprefix/var/lib/tor >/dev/null 2>&1
+sudo rm -rf $macprefix/etc/tor $macprefix/var/lib/tor >$dn 2>&1
 
 sudo gsed -i "/onion/d" $bc 
 sudo gsed -i "/bind=127.0.0.1/d" $bc
@@ -57,9 +57,9 @@ n)
 break
 ;;
 y)
-sudo rm $HOME/.bitcoin/*onion* >/dev/null 2>&1
-sudo rm -rf $HOME/.sparrow/tor >/dev/null 2>&1
-sudo rm -rf $macprefix/var/lib/tor/bitcoin* >/dev/null 2>&1 
+sudo rm $HOME/.bitcoin/*onion* >$dn 2>&1
+sudo rm -rf $HOME/.sparrow/tor >$dn 2>&1
+sudo rm -rf $macprefix/var/lib/tor/bitcoin* >$dn 2>&1 
 break
 ;;
 *)

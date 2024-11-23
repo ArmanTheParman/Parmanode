@@ -27,12 +27,12 @@ echo "PARMANODL SYSTEM REPORT $(date)" > $report
 
 function delete_private {
 if [[ $omit == "true" ]] ; then
-    rm $dp/sed.log >/dev/null
-    rm $dp/debug.log >/dev/null
-    rm $dp/change_string* >/dev/null
-    if which gsed >/dev/null ; then
+    rm $dp/sed.log >$dn
+    rm $dp/debug.log >$dn
+    rm $dp/change_string* >$dn
+    if which gsed >$dn ; then
       cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
-    elif which sed >/dev/null ; then
+    elif which sed >$dn ; then
       cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
     fi
 mv $tmp/tempreport $report

@@ -45,14 +45,14 @@ line_number=$(cat $file | grep -n "$string" | head -n 1 | cut -d : -f 1 | tr -d 
 if [[ $placement == "after" ]] ; then
 
     #Write a new file up to and including the search string.
-    head -n $line_number $file | sudo tee $newfile >/dev/null 2>&1
+    head -n $line_number $file | sudo tee $newfile >$dn 2>&1
 
     #print the new string to add
-    echo "$new_string" | sudo tee -a $newfile >/dev/null 2>&1
+    echo "$new_string" | sudo tee -a $newfile >$dn 2>&1
 
     #add the rest
     remaining_lines=$((file_lines - line_number))
-    tail -n $remaining_lines $file | sudo tee -a $newfile >/dev/null 2>&1
+    tail -n $remaining_lines $file | sudo tee -a $newfile >$dn 2>&1
 
     #rename
     sudo mv $newfile $1

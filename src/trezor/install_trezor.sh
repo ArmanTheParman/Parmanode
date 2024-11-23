@@ -43,7 +43,7 @@ sudo rm -rf *.dmg
 fi
 
 if [[ $chip == x86_64 && $OS == Linux ]] ; then
-rm *AppImage 2>/dev/null
+rm *AppImage 2>$dn
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-x86_64.AppImage
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-x86_64.AppImage.asc
 verify_trezor || return 1
@@ -55,7 +55,7 @@ sudo chmod +x ./*AppImage
 fi
 
 if [[ $computer_type == Pi && $chip == aarch64 ]] ; then
-rm *AppImage 2>/dev/null
+rm *AppImage 2>$dn
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-arm64.AppImage 
 curl -LO https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-linux-arm64.AppImage.asc
 verify_trezor || return 1

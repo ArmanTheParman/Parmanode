@@ -1,5 +1,5 @@
 function grpccurl_call {
-if ! which grpcurl >/dev/null ; then
+if ! which grpcurl >$dn ; then
 nogrpcurl="(grpcurl tool will be installed if you proceed)"
 fi
 while true ; do
@@ -139,7 +139,7 @@ grpcurl -cacert $tlscertpath \
     $curlIP:$gRPCport lnrpc.Lightning/GetInfo 
 fi
 
-if [[ $debug != 1 ]] ; then rm -rf $tmp/go 2>/dev/null ; fi
+if [[ $debug != 1 ]] ; then rm -rf $tmp/go 2>$dn ; fi
 
 enter_continue
 return 0
@@ -147,7 +147,7 @@ return 0
 
 
 function install_grpcurl {
-if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
+if ! which grpcurl >$dn && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
 
     if [[ $OS == Mac ]] ; then 
         clear
@@ -156,12 +156,12 @@ if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
     else #if Linux
 
         #install go
-        if ! which go >/dev/null ; then
+        if ! which go >$dn ; then
             clear
             echo -e "${green}Installing go language...$orange"
-            sudo rm -rf /usr/local/go >/dev/null 2>&1
-            sudo rm -rf /usr/local/bin/go >/dev/null 2>&1
-            sudo rm -rf /usr/bin/go >/dev/null 2>&1
+            sudo rm -rf /usr/local/go >$dn 2>&1
+            sudo rm -rf /usr/local/bin/go >$dn 2>&1
+            sudo rm -rf /usr/bin/go >$dn 2>&1
             sudo rm -rf $tmp/go ; mkdir $tmp/go ; cd $tmp/go    
             if [[ ! -e $tmp/go/go*tar.gz ]] ; then
             curl -LO https://dl.google.com/go/go1.20.2.linux-amd64.tar.gz
@@ -169,8 +169,8 @@ if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
             sudo tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
             if ! sudo cat $HOME/.bashrc | grep -q "/usr/local/go/bin" ; then
                 clear
-                echo "export PATH=\"\$PATH:/usr/local/go/bin\"" | sudo tee -a $HOME/.bashrc >/dev/null 2>&1
-                source $HOME/.bashrc >/dev/null
+                echo "export PATH=\"\$PATH:/usr/local/go/bin\"" | sudo tee -a $HOME/.bashrc >$dn 2>&1
+                source $HOME/.bashrc >$dn
             fi
         fi
 
@@ -181,8 +181,8 @@ if ! which grpcurl >/dev/null && [[ ! -e $HOME/go/bin/grpcurl ]] ; then
         /usr/local/go/bin/go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest 2>$tmp/grpcurlcheck2
         if ! sudo cat $HOME/.bashrc | grep -q "$HOME/go/bin" ; then
             clear
-            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | tee -a $HOME/.bashrc >/dev/null 2>&1
-            source $HOME/.bashrc >/dev/null
+            echo "export PATH=\"\$PATH:$HOME/go/bin\"" | tee -a $HOME/.bashrc >$dn 2>&1
+            source $HOME/.bashrc >$dn
             alias gprcurl=$HOME/go/bin/grpcurl
         fi
 
