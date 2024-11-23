@@ -53,9 +53,9 @@ export oc="$dp/overview.conf"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
-if [[ -z dn ]] ; then echo "some problem with dn variable" ; read ; fi
+if [[ -z dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
-if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi ##debug
+if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
 get_Mac_version #function to export Mac Version variables (Need Mav version 10.9 or later)
 
