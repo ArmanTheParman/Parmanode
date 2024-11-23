@@ -57,9 +57,9 @@ fi
 please_wait
 echo "Stopping containers..." && docker stop btcpay  >$dn 2>&1
 echo "Removing containers..." && sleep 0.5 && docker rm btcpay >$dn 2>&1 
-echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay |
+echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay >$dn 2>&1 
 #remove directories
-echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer 
+echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer >$dn 2>&1 
 
 #remove service files
 sudo systemctl stop btcpay.service >$dn 2>&1
@@ -75,7 +75,7 @@ uninstall_bitcoin btcpay_first
 #then come back here to exit
 installed_config_remove "btccombo"
 parmanode_conf_remove "btcpay_version"
-rm $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn
+rm $HOME/parmanode/startup_scripts/btcpay_startup.sh >$dn 2>&1 
 
 success "Bitcoin and BTCPay have been uninstalled"
 unset combo
