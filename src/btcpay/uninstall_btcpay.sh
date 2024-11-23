@@ -55,8 +55,8 @@ fi
 fi
 # stop containers, delete containers, delete images
 please_wait
-echo "Stopping containers..." && docker stop btcpay 
-echo "Removing containers..." && sleep 0.5 && docker rm btcpay 
+echo "Stopping containers..." && docker stop btcpay  >$dn 2>&1
+echo "Removing containers..." && sleep 0.5 && docker rm btcpay >$dn 2>&1 
 echo "Removing Docker images..." && sleep 0.5 && docker rmi btcpay |
 #remove directories
 echo "Removing BTCpay and NBXplorer directories..." && sleep 1 && rm -rf $HOME/.btcpayserver $HOME/.nbxplorer 
