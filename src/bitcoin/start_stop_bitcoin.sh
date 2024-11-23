@@ -23,7 +23,7 @@ if grep -q btccombo $ic ; then
         docker start btcpay >$dn 2>&1 ; sleep 3
     fi
 
-    docker exec -d btcpay bitcoind
+    docker exec -it btcpay bitcoind
 
     return 0
 fi
@@ -70,7 +70,9 @@ fi
 
 #needs to be first...
 if grep -q btccombo $ic ; then
-docker exec btcpay bitcoin-cli stop 
+please_wait
+sleep 1
+docker exec -it btcpay pkill bitcoind
 return 0
 fi
 
