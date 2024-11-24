@@ -3,6 +3,7 @@ if ! grep -q "btcpay.*end" $ic ; then return 0 ; fi
 while true ; do
 please_wait
 btcpaylog="$HOME/.btcpayserver/btcpay.log"
+set_btcpay_version_and_menu_print 
 menu_bitcoin menu_btcpay #gets variables output1 for menu text, and $bitcoinrunning
 isbtcpayrunning
 if [[ $btcpayrunning != "true" ]] \
