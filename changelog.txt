@@ -7,9 +7,10 @@ Version 3.47.0
      -Backup btcpay database and plugins option
      -Restore option (when installing)
      -Live BTCPay upgrade function
-     -Reduce journalctl logs to 500M cap
+     -Reduce journalctl logs to 500M cap (Linux)
      -Improved start/stop for bitcoin in docker
-     -Bitcoin menu tidy up appearence
+     -Bitcoin menu, tidied up appearence
+     -For development: /dev/null variable refactoring - easy to turn on/off
      
 Version 3.46.11
      -Many new shortcuts to navigate around
