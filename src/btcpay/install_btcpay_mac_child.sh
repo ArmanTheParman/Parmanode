@@ -74,7 +74,7 @@ docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanod
 docker exec -itu parman btcpay bash -c "cd /home/parman/parman_programs/parmanode && git pull"
 docker exec -itu root btcpay bash -c "ln -s /usr/bin/sed /usr/bin/gsed"
 docker exec -itu parman btcpay bash -l -c "echo 'parmanode' | sudo -S true ; export dn=/dev/null ; cd /home/parman/parman_programs/parmanode && btcpayinstallsbitcoin=\"true\" ./run_parmanode.sh" || return 1
-if [[ $onbranch != master ]] then
+if [[ $onbranch != master ]] ; then
     if yesorno "Revert container's Parmanode install back to master branch?" ; then 
         docker exec -itu parman btcpay bash -c "cd /home/parman/parmandd_programs/parmanode && git checkout master"
     fi
