@@ -68,7 +68,9 @@ $cyan
 $cyan
       (c)$orange        How to connect your Electrum wallet to Fulcrum
 $cyan
-      (log)$orange      Inspect Fulcrum logs
+      (log)$orange      Inspect Fulcrum logs (real time)
+$cyan
+      (brlog)$orange    Browse Fulcrum log (static)
 $cyan
       (fc)$orange       Inspect and edit fulcrum.conf file (fcv for vim)
 $cyan
@@ -154,7 +156,38 @@ else
 fi
 continue 
 ;;
+brlog)
+set_terminal
+log_counter
+if [[ $log_count -le 20 ]] ; then
+echo -e "
+########################################################################################
+    
+    This will show the fulcrum log statically, allowing you to browse and look for
+    any errors.$red q$orange to exit.
 
+########################################################################################
+"
+enter_continue
+fi
+if grep -q "fulcrum-" $ic ; then
+    set_terminal_wider
+    if ! which tmux >$dn 2>&1 ; then
+    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+    fi
+    TMUX2=$TMUX ; unset TMUX ; clear
+    sudo journalctl -exu fulcrum.service > $tmp/fulcrum.log 2>&1
+    tmux new -s -d "less $tmp/fulcrum.log"
+    TMUX=$TMUX2
+    set_terminal
+else #elif fulcrumdkr
+    set_terminal_wider
+    docker exec -it fulcrum less /home/parman/parmanode/fulcrum/fulcrum.log 
+    echo ""
+    set_terminal
+fi
+continue 
+;;
 fc|FC|Fc|fC)
 echo -e "
 ########################################################################################
