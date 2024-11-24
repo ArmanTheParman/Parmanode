@@ -30,7 +30,7 @@ elif [[ $bitcoin_tor_status == tonlyout ]] ; then
 fi
 
 
-if sudo [ -f $macprefix/var/lib/tor/bitcoin-service/hostname ] && [[ $bitcoin_tor_status != c ]] ; then 
+if sudo cat $macprefix/var/lib/tor/bitcoin-service/hostname >$dn && [[ $bitcoin_tor_status != c ]] ; then 
 get_onion_address_variable bitcoin 
 tortext="
 $bright_blue    Onion adress: $ONION_ADDR
