@@ -65,6 +65,7 @@ function enc { cd /usr/local/etc/nginx/conf.d ; a ; }
 function et { cd /usr/local/etc/tor ; a ; }
 function vlt { cd /usr/local/var/lib/tor ; a ; }
 else #if Linux
+function sss { sudo systemctl status "$1" ; }
 function colour { export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ ' ; }
 function color { colour ; }
 function en { cd /etc/nginx ; a ; }
