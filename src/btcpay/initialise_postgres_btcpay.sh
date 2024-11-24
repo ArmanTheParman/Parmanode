@@ -85,15 +85,13 @@ fi
 
 
 function create_btcpay_parman_user {
-if ! docker exec -itu postgres btcpay ls /etc/postgresql/15/main/pg_hba.conf ; then
-announce "pg_hba.conf doesn't exist"
-fi
 
 docker exec -itu postgres btcpay bash -c "
 for conf in /etc/postgresql/*/main/pg_hba.conf; do
   sed -i '1i host    all             parman          127.0.0.1/32            md5' \$conf
-done
+done >/dev/null 2>&1
 "
+
 docker exec -itu postgres btcpay bash -c "psql -U postgres -c \"
 CREATE ROLE parman
 WITH

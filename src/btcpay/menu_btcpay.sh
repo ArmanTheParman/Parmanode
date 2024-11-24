@@ -286,6 +286,8 @@ pp)
 version="v2.0.3"
 stop_btcpay 
 docker start btcpay #container only
+set_terminal
+echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
 success "BTCPay Server has been updated to version $version"
@@ -300,7 +302,8 @@ version=$enter_cont
 if [[ ! $version =~ ^v ]] ; then version=v${version} ; fi #if user types a number, add a v prefix
 if [[ ! $version =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then announce "Incorrect format." ; continue ; fi
 stop_btcpay 
-set_terminal ; echo -e "${green}This can take a few minutes. Sit back and stacks some sats...$orange"
+set_terminal 
+echo -e "${green}Updating to version $version. This can take a few minutes. \nSit back and stacks some sats...$orange"
 docker start btcpay #container only
 docker exec -itu parman btcpay bash -c "cd /home/parman/parmanode/btcpayserver && git checkout $version && ./build.sh"
 restart_btcpay
@@ -319,19 +322,24 @@ function set_btcpay_version_and_menu_print {
 unset btcpay_version
 source $pc
 
+debug "at start . btcpay version var = $btcpay_version"
 #if variable incorrect, fix it.
 if [[ $btcpay_version == latest || -z $btcpay_version ]] ; then
-
+debug "btcpay version var = $btcpay_version"
     export btcpay_version=v$(cat $btcpaylog | grep "Adding and executing plugin BTCPayServer -" | tail -n1 | grep -oE '[0-9]+.[0-9]+.[0-9]+')
+debug "btcpay version var = $btcpay_version"
 
     if [[ $(echo $btcpay_version | wc -c) -lt 3 ]] ; then #variable may not have captured correctly, if so, it'll be just 'v\n' with a length of 2.
         unset btcpay_version
         source $pc #revert btcpay_version to original
+        debug " in if... btcpay version var = $btcpay_version"
     else
         #version captured correctly, and set in parmanode_conf
         export menu_btcpay_version=$btcpay_version
         parmanode_conf_add "btcpay_version=$btcpay_version" 
+        debug "in else... btcpay version var = $btcpay_version"
     fi
+debug "btcpay version var = $btcpay_version"
 
 else
 export menu_btcpay_version=$btcpay_version

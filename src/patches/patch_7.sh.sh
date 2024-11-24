@@ -39,8 +39,10 @@ fi
 rm $dp/.debug2.log >$dn 2>&1
 
 #fix values in torrc - linux 
+if which tor >$dn 2>&1 ; then
 sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
+fi
 
 if grep -q "lnd" $ic ; then make_lnd_service_tor ; fi
 
