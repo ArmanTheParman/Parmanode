@@ -15,36 +15,8 @@ debug "passed internal drive choice"
 
 #Check if external drive selected for other programs, and warn user.
 if [[ $justFormat != "true" ]] ; then
-debug "in not justFormat"
-
-else
-    format_warnings #skip_formatting can be changed here
-
-    if [[ $install_bitcoin_variable == "true" && $skip_formatting == "true" ]] ; then
-        if [[ $OS == Mac ]] ; then
-            if ! diskutil list | grep -q parmanode ; then 
-            driveproblem="true"
-            fi
-        elif [[ $OS == Linux ]] ; then
-            sudo partprobe
-            if ! sudo lsblk -o label | grep -q "parmanode" || ! sudo blkid | grep -q "parmanode" ; then
-            driveproblem="true"
-            fi
-        fi
-        if [[ $driveproblem == "true" ]] ; then
-            unset driveproblem
-            non_parmanode_drive_warning "Bitcoin" || return 1 #quit installtion
-            return 0 #if skip formatting, and drive not parmanode, continue on with installation even though problems.
-        fi
-    fi
-    # Skipping formatting, and a parmanode drive exists.
-    if [[ $skip_formatting == "true" ]] ; then
-    return 0
-    fi
-    # Skip formatting  must be false - carry on with format...
+format_warnings #skip_formatting can be changed here
 fi
-
-
 
 fi #end not justFormat
 unset justFormat
