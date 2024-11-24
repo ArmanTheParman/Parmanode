@@ -8,7 +8,7 @@ function start_bitcoin {
 if [[ -e /.dockerenv ]] ; then
 please_wait
 # & setting not needed, bitcoind is already a daemon and tmux runs in the backgroud
-TMUX2=$TMUX ; unset TMUX 
+TMUX2=$TMUX ; unset TMUX ; clear
 tmux new -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1
 TMUX=$TMUX2
 sleep 4

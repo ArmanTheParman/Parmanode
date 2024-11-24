@@ -18,7 +18,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
     if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
         if which tmux >$dn 2>&1 ; then
-            TMUX2=$TMUX ; unset TMUX 
+            TMUX2=$TMUX ; unset TMUX ; clear 
             tmux new-session -d -s bcsesh 'sudo apt-get install bc -y ; tmux kill-session -t bcsesh'
             TMUX=$TMUX2
         else

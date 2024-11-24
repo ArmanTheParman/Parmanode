@@ -5,7 +5,7 @@ echo $! > $dp/socat.pid 2>&1
 fi
 
 if [[ $1 == "joinmarket" ]] ; then
-TMUX2=$TMUX ; unset TMUX TMUX=$TMUX2
+TMUX2=$TMUX ; unset TMUX ; clear
 tmux new-session -d -s joinmarket_socat "socat TCP4-LISTEN:61000,reuseaddr,fork TCP:127.0.0.1:62601>$HOME/.parmanode/socat_jm.log"
 TMUX=$TMUX2
 fi
@@ -17,7 +17,7 @@ kill -9 $(head -n1 $dp/socat.pid) >$dn 2>&1
 fi
 
 if [[ $1 == "joinmarket" ]] ; then
-TMUX2=$TMUX ; unset TMUX 
+TMUX2=$TMUX ; unset TMUX ; clear
 tmux kill-session -t joinmarket_socat
 TMUX=$TMUX2
 fi

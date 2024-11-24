@@ -269,7 +269,7 @@ set_terminal_wider
 if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
-TMUX2=$TMUX ; unset TMUX 
+TMUX2=$TMUX ; unset TMUX ; clear
 if grep -q "lnd-" $ic ; then
 tmux new -s -d "sudo journalctl -fexu lnd.service"
 elif grep -q "litd" $ic ; then

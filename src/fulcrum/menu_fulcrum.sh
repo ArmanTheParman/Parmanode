@@ -142,7 +142,7 @@ if grep -q "fulcrum-" $ic ; then
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
     fi
-    TMUX2=$TMUX ; unset TMUX 
+    TMUX2=$TMUX ; unset TMUX ; clear
     tmux new -s -d "sudo journalctl -fexu fulcrum.service"
     TMUX=$TMUX2
     set_terminal
