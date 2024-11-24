@@ -11,7 +11,7 @@ function enter_continue {
 echo -e "$@"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
-echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange"  
+echo -e " ${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
