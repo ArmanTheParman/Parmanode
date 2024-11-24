@@ -208,6 +208,10 @@ echoline
 echor "#PUBLICPOOL"
 echor "public pool env \n $(cat $hp/public_pool/.env)"
 
+echoline
+echor "#TOR"
+echor "$(which tor)"
+echor "$(sudo cat $torrc)"
 
 delete_private
 mv $report $HOME/Desktop/
