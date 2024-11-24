@@ -20,7 +20,7 @@ else
     F_tor="${red}off$orange"
     f_tor="off"
 fi
-
+debug "menu1"
 source $pc >$dn 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
@@ -246,12 +246,14 @@ function menu_fulcrum_status {
 local file="$tmp/fulcrum.journal"
 
 if grep -q "fulcrumdkr" $ic ; then
+debug "in fulcrumdkr grep"
     if docker ps >$dn ; then
        docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
     else
        echo "Docker not running." > $file 
     fi
 else
+debug "in else fulcrumdkr grep"
 sudo journalctl -exu fulcrum.service > $file 2>&1
 fi
 
@@ -264,6 +266,8 @@ rm $file
 return 0
 fi
 
+debug "after tail $file"
+
 if tail -n20 $tmp/fulcrum.journal | grep -q "up-to-date" ; then
 export fulcrum_status=up-to-date
 #fetches block number...
@@ -272,10 +276,10 @@ tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
 rm $file
 return 0
 fi
-
+debug "after tail $file 2"
 fulcrum_status="See log for info"
 fulcrum_sync="?"
-rm $file
+rm $file 2>$dn
 return 0
 }
 
