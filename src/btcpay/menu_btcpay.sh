@@ -71,11 +71,9 @@ $cyan
 $cyan
              log)$orange          Logs ...
 $cyan
-             sb)$orange           Start/Stop Bitcoin
-$cyan
              br)$orange           Backup / Restore BTCPay data ...$red (new!)
 $cyan
-             up)$orange           Update BTCPay (coming soon) ...
+             up)$orange           Update BTCPay ... $red (new!)
 $cyan
              exp)$orange          Manage container $red (for experts) $orange
 $cyan
@@ -210,14 +208,6 @@ if [[ -n $enable_tor_menu ]] ; then
 enable_tor_btcpay
 success "BTC Pay over Tor enabled"
 continue
-fi
-;;
-
-sb)
-if [[ $btcpbitcoinrunning == "true" ]] ; then
-stop_bitcoin
-else
-start_bitcoin
 fi
 ;;
 
