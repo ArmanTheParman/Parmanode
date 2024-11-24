@@ -1,5 +1,5 @@
 function menu_fulcrum {
-if ! grep -q "fulcrum" $ic | grep -q end ; then return 0 ; fi
+if ! grep "fulcrum" $ic | grep -q end ; then return 0 ; fi
 while true ; do
 please_wait
 
