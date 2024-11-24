@@ -1,6 +1,7 @@
 function format_ext_drive {
 debug " in format_ext_drive, sf = $skip_formatting"
-if [[ $skip_formatting == "true" ]] ; then return 0 ; fi
+if grep -q "=external" $pc ; then export skip_formatting="true" && return 0 ; fi
+if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
 debug "bypassed skip_formatting exit"
 
 #quit if internal drive chosen
@@ -16,31 +17,6 @@ debug "passed internal drive choice"
 if [[ $justFormat != "true" ]] ; then
 debug "in not justFormat"
 
-#parenteses added once for readability, but not required as && takes precedence over || ,so logic doesn't change
-if [[ $1 == "Bitcoin" ]] && grep "=external" $pc | grep -qv "drive=" ; then
-confirm_format "Bitcoin" || skip_formatting="true"
-fi
-
-if [[ $1 == "Fulcrum" ]] && grep "=external" $pc | grep -qv "fulcrum" ; then
-confirm_format "Fulcrum" || skip_formatting="true"
-fi
-
-if [[ $1 == "electrs" ]] && grep "=external" $pc | grep -qv "electrs" ; then
-confirm_format "electrs" || skip_formatting="true"
-fi
-
-if [[ $1 == "electrumx" ]] && grep "=external" $pc | grep -qv "electrumx" ; then
-confirm_format "electrs" || skip_formatting="true"
-fi
-
-if [[ $1 == "nostr" ]] && grep "=external" $pc | grep -qv "nostr" ; then
-confirm_format "nostr" || skip_formatting="true"
-fi
-
-########################################################################################
-
-if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then 
-    return 0 
 else
     format_warnings #skip_formatting can be changed here
 
@@ -164,7 +140,7 @@ return 0
 
 
 function confirm_format {
-#return 1 necessary because function failure sets skip_formatting variable to true in calling  function
+#return 1 necessary because function failure sets skip_formatting variable to true in calling function
 if [[ $importdrive == "true" ]] ; then return 1 ; fi
 
 if [[ $btcdockerchoice == "yes" ]] ; then return 1 #skips formatting 
