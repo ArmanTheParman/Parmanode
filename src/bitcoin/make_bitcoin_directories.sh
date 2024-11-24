@@ -6,8 +6,8 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
 # Remove bitcoin directories if they exist, they will be created again new. 
 # If nothing exists there will be no user input required.
     if [[ $newmigrate != "true" && $btcpayinstallsbitcoin != "true" ]] || [[ $bitcpay_combo == "true" ]] ; then
-        if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux install || return 1 ; fi #function adjusted for parmanodl usage
-        if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac install || return 1 ; fi 
+        if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux || return 1 ; fi #function adjusted for parmanodl usage
+        if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac || return 1 ; fi 
     fi
 #make_parmanode_bitcoin_directory             
     mkdir -p $HOME/parmanode/bitcoin && log "bitcoin" "hp/bitcoin directory made in make_bitcoin_directories"
