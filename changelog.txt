@@ -2,6 +2,8 @@
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
 
+Version 3.47.1
+     -Electrum menu bug fix
 Version 3.47.0
      -BTCPay v2.0.3 
      -Backup btcpay database and plugins option
