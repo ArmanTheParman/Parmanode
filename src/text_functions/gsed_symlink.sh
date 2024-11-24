@@ -2,7 +2,7 @@ function gsed_symlink {
 #make a gsed symlink
 if [[ $(uname) == Linux ]] && ! which gsed >$dn 2>&1 ; then
 
-    sudo ln -s $(which sed) /usr/bin/gsed
+    sudo ln -s $(which sed) /usr/bin/gsed >$dn 2>&1
 
 if ! which gsed >$dn ; then 
 
