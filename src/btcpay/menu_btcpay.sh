@@ -170,9 +170,9 @@ set_terminal ; echo -e "
     by typing$green blog$orange or$green nlog$orange. 
 
             $cyan
-                        blog)$orange         View BTCPay Server log $cyan
+                        blog)$orange         View BTCPay Server log (or l or b) $cyan
             $cyan
-                        nlog)$orange         View NBXplorer log $cyan
+                        nlog)$orange         View NBXplorer log (or n) $cyan
 $orange
 ########################################################################################
 "
@@ -180,10 +180,10 @@ $orange
             jump $choice || { invalid ; continue ; } ; set_terminal
             case $choice in
             q|Q) exit ;; p|P) continue ;; m|M) back2main ;; "") continue ;;
-            blog|BLOG|bl|BL)
+            b|l|blog|BLOG|bl|BL)
             menu_btcpay_log
             ;;
-            nlog|NLOG|nl|NL|Nl)
+            n|nlog|NLOG|nl|NL|Nl)
             menu_nbxplorer_log
             ;;
             *)
@@ -191,11 +191,11 @@ $orange
             ;;
             esac
 ;;
-blog|BLOG)
+l|b|blog|BLOG)
 menu_btcpay_log
 ;;
 
-nlog|NLOG|nl|NL|Nl)
+n|nlog|NLOG|nl|NL|Nl)
 menu_nbxplorer_log
 ;;
 
