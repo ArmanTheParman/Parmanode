@@ -11,7 +11,7 @@ fi
 ;;
 
 uelectrs|uers|melectrs|mers)
-if grep -q "electrs-end" $ic || grep -q "electrsdkr-end" $ic ; then
+if grep "electrs" $ic || grep -q end ; then
 menu_electrs
 invalid_flag=set
 else return 1
@@ -19,7 +19,7 @@ fi
 ;;
 
 ufulcrum|uf|mfulcrum|mf)
-if grep -q "fulcrum-end" $ic ; then
+if grep "fulcrum" $ic | grep -q end ; then
 menu_fulcrum
 invalid_flag=set
 else return 1 
