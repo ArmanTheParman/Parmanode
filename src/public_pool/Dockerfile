@@ -47,9 +47,10 @@ WORKDIR /public-pool
 COPY --from=build /build .
 
  # Install Tor
- RUN apt-get update \
+RUN apt-get update \
      && apt-get install -y --no-install-recommends \
-         tor \
-     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+         tor 
+RUN apt clean 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/usr/local/bin/node", "dist/main", "tor"]
