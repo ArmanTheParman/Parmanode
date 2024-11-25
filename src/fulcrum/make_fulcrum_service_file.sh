@@ -6,8 +6,9 @@ Wants=network-online.target
 
 [Service]
 ExecStartPre=$HOME/.parmanode/mount_check.sh
-ExecStart=$HOME/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log
-ExecStop=pgrep Fulcrum
+ExecStart=/usr/local/bin/Fulcrum $HOME/.fulcrum/fulcrum.conf 
+StandardOutput=append:/home/parman/.fulcrum/fulcrum.log
+StandardError=inherit
 
 TimeoutStopSec=90s
 KillSignal=SIGTERM

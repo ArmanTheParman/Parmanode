@@ -68,15 +68,11 @@ function fulcrum_service_patch {
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
 local file="/etc/systemd/system/fulcrum.service"
-if sudo test -f $file >$dn 2>&1 && grep -q "ExecStop=" $file ; then 
+if sudo test -f $file >$dn 2>&1 && grep -q "fulcrum.log" $file ; then 
     return 0
-elif sudo test -f $file >$dn 2>&1 ; then
+elif sudo test -f $file >$dn 2>&1 ; then #fulcrum.log doesn't exist in file, therefore it's an old version. Remake.
     debug "fulcrum startup mods..."
-    make_fulcrum_startup_script
-    sudo gsed -i "s%^ExecStart=.*$%ExecStart=$hp/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log\nExecStop=pgrep Fulcrum%" $file >$dn 2>&1
-    sudo systemctl daemon-reload 
-    sudo systemctl disable fulcrum.service >$dn 2>&1
-    sudo systemctl enable fulcrum.service >$dn 2>&1
+    make_fulcrum_service_file
 fi
 debug "end fulcrum service patch"
 }
