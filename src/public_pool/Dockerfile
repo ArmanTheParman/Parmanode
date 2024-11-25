@@ -4,7 +4,7 @@
 # Docker build environment #
 ############################
 
-FROM node:18.19.1-bookworm-slim AS build
+FROM node:18.19.1-bullseye-slim AS build
 
 # Upgrade all packages and install dependencies
 RUN apt-get update \
@@ -13,7 +13,7 @@ RUN apt-get update \
 # extra installs necessary for ARM computers to be able to compile
 RUN apt-get install -y --no-install-recommends python3
 RUN apt-get install -y --no-install-recommends build-essential 
-RUN apt-get install -y --no-install-recommends cmake
+RUN apt-get install -y --no-install-recommends cmake g++ make
 RUN apt-get install -y --no-install-recommends ca-certificates 
 RUN apt-get install -y --no-install-recommends curl 
 RUN apt-get install -y --no-install-recommends procps
@@ -30,7 +30,7 @@ RUN npm i && npm run build
 # Docker final environment #
 ############################
 
-FROM node:18.19.1-bookworm-slim
+FROM node:18.19.1-bullseye-slim
 
 
 # Expose ports for Stratum and Bitcoin RPC
