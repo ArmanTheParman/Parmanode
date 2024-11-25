@@ -68,7 +68,7 @@ if sudo test -f $file >$dn 2>&1 ; then
     if grep -q "#log file added" $file ; then 
         return 0
     else
-        sudo gsed -i 's%fulcrum.conf%fulcrum.conf >$HOME/.fulcrum/fulcrum.log 2>&1 #log file added%' $file >$dn 2>&1
+        sudo gsed -i 's%fulcrum.conf%fulcrum.conf >$HOME/.fulcrum/fulcrum.log 2>\&1 #log file added%' $file >$dn 2>&1
         sudo systemctl daemon-reload 
         sudo systemctl disable fulcrum.service >$dn 2>&1
         sudo systemctl enable fulcrum.service >$dn 2>&1
