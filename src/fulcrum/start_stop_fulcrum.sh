@@ -18,19 +18,7 @@ if grep -q "fulcrum-" $ic ; then
 elif grep -q "fulcrumdkr" $ic ; then
     docker_running || return 1
     please_wait
-
-    shutdownsig="false" ; count=0
-    while [[ $shutdownsig == "false" && $count -lt 5 ]] ; do
-    count=$((count + 1))
-    debug3 "stopping in loop"
-    docker exec -it fulcrum bash -c "kill -15 \"\$(ps -x | grep fulcrum | grep -v bash | grep -v grep | awk '{print \$1}')\""
+    docker exec -it fulcrum bash -c "pkill Fulcrum"
     sleep 2
-    #make sure fulcrum gracefully stopped
-    if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n15 | grep 'exiting ...' "  ; then
-    shutdownsig="true"
-    break
-    fi
-    done
-    #yesorno "Unable to stop fulcrum - Forcefully stop? Doing so can corrupt the database" && docker stop fulcrum
 fi
 }
