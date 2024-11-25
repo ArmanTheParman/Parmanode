@@ -23,7 +23,7 @@ fi
 if [[ $2 != remove ]] ; then
 sudo nginx -t >$dn 2>&1 || faulty_nginx_conf="true"
 fi
-
+debug "3"
 #create a back up in case it breaks
 sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
 
@@ -41,6 +41,7 @@ fi
 if [[ $1 != public_pool ]] ; then
 if ! grep -q "public_pool-end" $ic ; then
 unset upstream_public_pool server_public_pool
+debug "3.1"
 fi
 fi
 
@@ -53,7 +54,7 @@ fi
 if [[ -e $streamfile ]] ; then
 sudo cp $streamfile ${streamfile}_backup >$dn 2>&1
 fi
-
+debug "3.3"
 #with variables finalised, write the file...
 #the streamfile is created new each time depending on what is installed
 echo -en "
@@ -67,7 +68,7 @@ $server_electrs
 $upstream_public_pool
 $server_public_pool
 }" | sudo tee $streamfile >$dn 2>&1 
-
+debug "3.4"
 ######################################################################################## Very ipmortant
 ``
 #if no services installed, remove any include directive from nginx.conf
@@ -81,7 +82,7 @@ else
    fi
 fi
 ########################################################################################
-
+debug "3.5"
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == "true" ]] ; then
 
@@ -97,7 +98,7 @@ if [[ ! $faulty_nginx_conf == "true" ]] ; then
     sudo mv ${nginx_conf}_backup $nginx_conf >$dn 2>&1 
     sudo mv ${streamfile}_backup $streamfile >$dn 2>&1
     }
-
+debug "4"
 fi
 
 }
