@@ -25,7 +25,7 @@ sudo nginx -t >$dn 2>&1 || faulty_nginx_conf="true"
 fi
 debug "3"
 #create a back up in case it breaks
-sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
+[[ -e $nginx_conf ]] && sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
 
 #test what is installed... 
 #This search string will include installs that have begun and v1 and v2 of electrs/dkr)
@@ -52,7 +52,7 @@ fi
 
 #make a backup of the streamfile first
 if [[ -e $streamfile ]] ; then
-sudo cp $streamfile ${streamfile}_backup >$dn 2>&1
+[[ -e $streamfile ]] && sudo cp $streamfile ${streamfile}_backup >$dn 2>&1
 fi
 debug "3.3"
 #with variables finalised, write the file...
@@ -73,30 +73,32 @@ debug "3.4"
 ``
 #if no services installed, remove any include directive from nginx.conf
 if [[ -z $upstream_electrs && -z $upstream_public_pool ]] ; then
-   sudo gsed -i "/stream.conf/d" $nginx_conf 
+   [[ -e $ngxinx_conf ]] && sudo gsed -i "/stream.conf/d" $nginx_conf 
 else
 #include stream file in nginx.conf
 #this is added at the end of the file, not in any particular block
-   if ! grep -q "include stream.conf;" $nginx_conf ; then 
+   [[ -e $nginx_conf ]] && { if ! grep -q "include stream.conf;" $nginx_conf ; then 
    echo "include stream.conf;" | sudo tee -a $nginx_conf
    fi
+   }
 fi
 ########################################################################################
 debug "3.5"
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == "true" ]] ; then
 
-    sudo nginx -t || { echo "" 
-    echo -e "Something went wrong with the nginx conf setup. The file
+    sudo nginx -t || {
+    announce "\nSomething went wrong with the nginx conf setup. The file
     has been restored to the original. The erroneous file will be saved to $cyan
     $tmp/nginx.conf_error after you hit <enter>.$orange Please report error to Parman.
 
     Continuing, but Nginx configuration not optimal.
     " 
-    enter_continue
+    [[ -e $ngxin_conf ]] && {
     sudo cp ${nginx_conf} $tmp/nginx.conf_error 
-    sudo mv ${nginx_conf}_backup $nginx_conf >$dn 2>&1 
-    sudo mv ${streamfile}_backup $streamfile >$dn 2>&1
+    sudo mv ${nginx_conf}_backup $nginx_conf >$dn 2>&1 ; }
+    [[ -e $streamfile ]] && {
+    sudo mv ${streamfile}_backup $streamfile >$dn 2>&1 ; }
     }
 debug "4"
 fi
