@@ -47,9 +47,8 @@ WORKDIR /public-pool
 COPY --from=build /build .
 
  # Install Tor
-RUN apt-get update \
-     && apt-get install -y --no-install-recommends \
-         tor 
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends tor 
 RUN apt clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
