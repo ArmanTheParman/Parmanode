@@ -30,14 +30,14 @@ debug "3"
 #test what is installed... 
 #This search string will include installs that have begun and v1 and v2 of electrs/dkr)
 source $pp/parmanode/src/nginx/stream.conf >$dn 2>&1
-
+debug "3.01"
 #unset what is not installed
 if [[ $1 != electrs ]] ; then
 if ! grep -q "electrs-end" $ic && ! grep -q "electrs2-end" $ic && ! grep -q "electrsdkr" ; then
 unset upstream_electrs server_electrs
 fi
 fi
-
+debug "3.02"
 if [[ $1 != public_pool ]] ; then
 if ! grep -q "public_pool-end" $ic ; then
 unset upstream_public_pool server_public_pool
