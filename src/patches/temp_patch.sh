@@ -2,7 +2,10 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
-reduce_systemd_logs #move to next patch, patch 8
+
+#move to next patch, patch 8
+    reduce_systemd_logs 
+    fulcrum_service_patch 
 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
@@ -57,3 +60,17 @@ rm ~/.xsessions-errors >$dn 2>&1
 rm ~/.xsessions-errors.old >$dn 2>&1
 }
 
+
+function fulcrum_service_patch {
+local file="/etc/systemd/systemd/fulcrum.service"
+if sudo test -f $file >$dn 2>&1 ; then
+    if grep -q "#log file added" $file ; then 
+        return 0
+    else
+        sudo gsed -i 's%fulcrum.conf%fulcrum.conf >$HOME/.fulcrum/fulcrum.log 2>&1 #log file added%' $file >$dn 2>&1
+        sudo systemctl daemon-reload 
+        sudo systemctl disable fulcrum.service >$dn 2>&1
+        sudo systemctl enable fulcrum.service >$dn 2>&1
+    fi
+fi
+}

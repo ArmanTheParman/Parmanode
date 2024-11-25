@@ -1,5 +1,6 @@
 function menu_fulcrum {
 if ! grep "fulcrum" $ic | grep -q end ; then return 0 ; fi
+
 while true ; do
 please_wait
 
@@ -20,15 +21,13 @@ else
     F_tor="${red}off$orange"
     f_tor="off"
 fi
-debug "menu1"
+
 source $pc >$dn 2>&1
 #bitcoin_status #fetches block height quicker than getblockchaininfo
 unset fulcrum_status fulcrum_sync 
 menu_fulcrum_status
 fulcrum_message="${blinkon}Type$red r$orange to refresh${blinkoff}$orange"
 
-#if grep -q "fulcrum-" $ic ; then
-#    if ps -x | grep fulcrum | grep conf >$dn 2>&1 ; then echo -en "
 isfulcrumrunning ; source $oc >$dn 2>&1
 
 if is_fulcrum_shutting_down ; then
@@ -139,7 +138,7 @@ echo -e "
 "
 enter_continue
 fi
-if grep -q "fulcrum-" $ic ; then
+if grep -q "fulcrum-end" $ic ; then #not docker
     set_terminal_wider
     if ! which tmux >$dn 2>&1 ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
@@ -148,7 +147,7 @@ if grep -q "fulcrum-" $ic ; then
     tmux new -s -d "sudo journalctl -fexu fulcrum.service"
     TMUX=$TMUX2
     set_terminal
-else
+else #docker
     set_terminal_wider
     docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
     echo ""
