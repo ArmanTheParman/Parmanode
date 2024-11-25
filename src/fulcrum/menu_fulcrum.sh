@@ -146,7 +146,6 @@ TMUX2=$TMUX ; unset TMUX ; clear
 tmux new -s -d "tail -f $HOME/.fulcrum/fulcrum.log"
 TMUX=$TMUX2
 set_terminal
-continue 
 ;;
 brlog)
 set_terminal

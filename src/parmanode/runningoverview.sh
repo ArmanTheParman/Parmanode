@@ -144,12 +144,6 @@ if grep -q "fulcrumdkr-" $ic ; then
     overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
     fi
 
-    #another check
-    if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep -i 'Shutdown complete' " ; then
-        export fulcrumrunning="false"
-        overview_conf_add "fulcrumrunning=false" "fulcrumrunning="
-    fi
-
 fi
 }
 

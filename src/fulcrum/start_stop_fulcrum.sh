@@ -21,6 +21,7 @@ elif grep -q "fulcrumdkr" $ic ; then
 
     shutdownsig="false" ; count=0
     while [[ $shutdownsig == "false" && $count -lt 5 ]] ; do
+    count=$((count + 1))
     debug3 "stopping in loop"
     docker exec -it fulcrum bash -c "kill -15 \"\$(ps -x | grep fulcrum | grep -v bash | grep -v grep | awk '{print \$1}')\""
     sleep 2
