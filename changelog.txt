@@ -8,6 +8,7 @@ Version 3.47.2
      -Fulcrum menu bug fix
      -Improved Fulcrum logging
      -Updated PublicPool requires minimum NodeJS 18.19.1 in Docker container. Fixed.
+     -Fixed PublicPool uninstall bug
 Version 3.47.1
      -Electrum menu bug fix
 Version 3.47.0
