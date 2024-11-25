@@ -34,7 +34,7 @@ if [[ $drive_fulcrum == external && -e $pd/fulcrum_db ]] ; then
 elif [[ $drive_fulcrum == internal ]] ; then
     rm -rf $HOME/.fulcrum_db/* 
 fi
-enter_continue "Database delete"
+enter_continue "Database deleted. Restart manually when ready."
 break
 ;;
 *) invalid
