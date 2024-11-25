@@ -20,6 +20,7 @@ break
 ;;
 esac
 done
+debug "1"
 #check Docker running, esp Mac
 if ! docker ps >$dn 2>&1 ; then echo -e "
 ########################################################################################
@@ -49,7 +50,8 @@ enter_continue ; jump $enter_cont
 return 1
 fi
 fi
-stop_public_pool >$dn 2>&1
+debug "1"
+stop_public_pool 
 docker rm public_pool public_pool_ui >$dn 2>&1 ; debug "containers stopped and removed"
 cd
 sudo rm -rf $hp/public_pool $hp/public_pool_ui >$dn 2>&1
