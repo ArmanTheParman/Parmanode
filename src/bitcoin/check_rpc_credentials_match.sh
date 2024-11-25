@@ -8,7 +8,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
+    The user/password credentials for $program do not match your Bitcoin
     configuration. 
 
     Would you like Parmanode to fix that up for you? If so, $program 
