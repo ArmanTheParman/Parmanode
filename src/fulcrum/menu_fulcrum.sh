@@ -149,7 +149,7 @@ if grep -q "fulcrum-end" $ic ; then #not docker
     set_terminal
 else #docker
     set_terminal_wider
-    docker exec -it fulcrum tail -f /home/parman/parmanode/fulcrum/fulcrum.log 
+    docker exec -it fulcrum tail -f /home/parman/.fulcrum/fulcrum.log 
     echo ""
     set_terminal
 fi
@@ -181,7 +181,7 @@ if grep -q "fulcrum-" $ic ; then
     set_terminal
 else #elif fulcrumdkr
     set_terminal_wider
-    docker exec -it fulcrum less /home/parman/parmanode/fulcrum/fulcrum.log 
+    docker exec -it fulcrum less /home/parman/.fulcrum/fulcrum.log 
     echo ""
     set_terminal
 fi
