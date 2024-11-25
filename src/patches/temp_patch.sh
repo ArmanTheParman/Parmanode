@@ -64,15 +64,14 @@ rm ~/.xsessions-errors.old >$dn 2>&1
 function fulcrum_service_patch {
 local file="/etc/systemd/system/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 && grep -q "ExecStop=" $file ; then 
-        return 0
-    else
-        debug "fulcrum startup mods..."
-        fulcrum_startup_script
-        sudo gsed -i "s%^ExecStart=.*$%ExecStart=$hp/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log\nExecStop=pgrep Fulcrum%" $file >$dn 2>&1
-        sudo systemctl daemon-reload 
-        sudo systemctl disable fulcrum.service >$dn 2>&1
-        sudo systemctl enable fulcrum.service >$dn 2>&1
-    fi
+    return 0
+else
+    debug "fulcrum startup mods..."
+    fulcrum_startup_script
+    sudo gsed -i "s%^ExecStart=.*$%ExecStart=$hp/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log\nExecStop=pgrep Fulcrum%" $file >$dn 2>&1
+    sudo systemctl daemon-reload 
+    sudo systemctl disable fulcrum.service >$dn 2>&1
+    sudo systemctl enable fulcrum.service >$dn 2>&1
 fi
 debug "end fulcrum service patch"
 }
