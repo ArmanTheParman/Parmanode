@@ -32,7 +32,7 @@ RUN npm i && npm run build
 # Docker final environment #
 ############################
 
-FROM node:18.16.1-bookworm-slim
+FROM node:18.19.1-bookworm-slim
 
 
 # Expose ports for Stratum and Bitcoin RPC
