@@ -204,7 +204,7 @@ $orange
     Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
     App icon in the Applications folder.
     
-    For now, thre is no configuration to automatically make Bitcoin Core 
+    For now, there is no configuration to automatically make Bitcoin Core 
     start after a reboot, as it seemed to introduce too much potential for error. 
     This feature is only available on Linux.
 $green
