@@ -151,7 +151,7 @@ clear
 #don't use echo -e
 echo "
 ########################################################################################
-    Unexpecte error in gpg check function. Aborting. Please report to Parman.
+    Unexpected error in gpg check function. Aborting. Please report to Parman.
 ########################################################################################
 Hit <enter> to continue.
 "
