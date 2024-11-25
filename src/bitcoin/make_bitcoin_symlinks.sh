@@ -12,7 +12,7 @@ if [[ $OS == "Linux" && $drive == "internal" ]] ; then
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin  
-    break  #symlink can be made withouterrors even if target doesn't exist yet
+    break  #symlink can be made without errors even if target doesn't exist yet
     fi
 
 if [[ $OS == "Mac" && $drive == "internal" ]] ; then
