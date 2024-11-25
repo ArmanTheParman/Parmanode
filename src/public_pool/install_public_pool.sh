@@ -103,7 +103,7 @@ debug "cp"
 unset file
 
 # build image
-docker build -t public_pool . ; debug "build done"
+docker build -t public_pool $NOCACHE . ; debug "build done"
 echo -e "${pink}Pausing, you can check if the first build went ok.$orange"
 enter_continue
 
