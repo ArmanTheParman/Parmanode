@@ -138,21 +138,14 @@ echo -e "
 "
 enter_continue
 fi
-if grep -q "fulcrum-end" $ic ; then #not docker
-    set_terminal_wider
-    if ! which tmux >$dn 2>&1 ; then
-    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
-    fi
-    TMUX2=$TMUX ; unset TMUX ; clear
-    tmux new -s -d "sudo journalctl -fexu fulcrum.service"
-    TMUX=$TMUX2
-    set_terminal
-else #docker
-    set_terminal_wider
-    docker exec -it fulcrum tail -f /home/parman/.fulcrum/fulcrum.log 
-    echo ""
-    set_terminal
+set_terminal_wider
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
+TMUX2=$TMUX ; unset TMUX ; clear
+tmux new -s -d "tail -f $HOME/.fulcrum/fulcrum.log"
+TMUX=$TMUX2
+set_terminal
 continue 
 ;;
 brlog)
@@ -169,23 +162,14 @@ echo -e "
 "
 enter_continue
 fi
-if grep -q "fulcrum-" $ic ; then
-    set_terminal_wider
-    if ! which tmux >$dn 2>&1 ; then
-    yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
-    fi
-    TMUX2=$TMUX ; unset TMUX ; clear
-    sudo journalctl -exu fulcrum.service > $tmp/fulcrum.log 2>&1
-    tmux new -s -d "less $tmp/fulcrum.log"
-    TMUX=$TMUX2
-    set_terminal
-else #elif fulcrumdkr
-    set_terminal_wider
-    docker exec -it fulcrum less /home/parman/.fulcrum/fulcrum.log 
-    echo ""
-    set_terminal
+
+if ! which tmux >$dn 2>&1 ; then
+yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
-continue 
+TMUX2=$TMUX ; unset TMUX ; clear
+tmux new -s -d "less $HOME/.fulcrum/fulcrum.log"
+TMUX=$TMUX2
+set_terminal
 ;;
 fc|FC|Fc|fC)
 echo -e "
@@ -248,16 +232,15 @@ local file="$HOME/.fulcrum/fulcrum.log"
 if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
 #fetches block number...
-export fulcrum_sync=$(sudo journalctl -exu fulcrum.service | tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
+export fulcrum_sync=$(tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
 | grep -Eo 'Processed height:.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
-rm $file
 return 0
 fi
 
 if tail -n20 $file | grep -q "up-to-date" ; then
       export fulcrum_status=up-to-date
       #fetches block number...
-      export fulcrum_sync=$(tail -n20 $tmp/fulcrum.journal | grep "up-to-date" | \
+      export fulcrum_sync=$(tail -n20 $$file | grep "up-to-date" | \
       tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
       return 0
 fi
