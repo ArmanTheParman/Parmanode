@@ -242,19 +242,7 @@ return 0
 
 
 function menu_fulcrum_status {
-local file="$tmp/fulcrum.journal"
-
-if grep -q "fulcrumdkr" $ic ; then
-debug "in fulcrumdkr grep"
-    if docker ps >$dn ; then
-       docker exec -it fulcrum /bin/bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log" > $file 2>&1
-    else
-       echo "Docker not running." > $file 
-    fi
-else
-debug "in else fulcrumdkr grep"
-sudo journalctl -exu fulcrum.service > $file 2>&1
-fi
+local file=$hp/.fulcrum/fulcrum.log
 
 if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
@@ -265,20 +253,16 @@ rm $file
 return 0
 fi
 
-debug "after tail $file"
-
-if tail -n20 $tmp/fulcrum.journal | grep -q "up-to-date" ; then
-export fulcrum_status=up-to-date
-#fetches block number...
-export fulcrum_sync=$(tail -n20 $tmp/fulcrum.journal | grep "up-to-date" | \
-tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
-rm $file
-return 0
+if tail -n20 $file | grep -q "up-to-date" ; then
+      export fulcrum_status=up-to-date
+      #fetches block number...
+      export fulcrum_sync=$(tail -n20 $tmp/fulcrum.journal | grep "up-to-date" | \
+      tail -n1 | grep -Eo 'Block height.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
+      return 0
 fi
-debug "after tail $file 2"
+
 fulcrum_status="See log for info"
 fulcrum_sync="?"
-rm $file 2>$dn
 return 0
 }
 
