@@ -109,9 +109,9 @@ enter_continue
 
 #start container
 if [[ $OS == Linux ]] ; then
-    docker run -d --name public_pool --restart --unless-stopped --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    docker run -d --name public_pool --restart unless-stopped --network=host -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 elif [[ $OS == Mac ]] ; then
-    docker run -d --name public_pool --restart --unless-stopped -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
+    docker run -d --name public_pool --restart unless-stopped -p 3333:3333 -p 3334:3334 -v $hp/public_pool/.env:/.env public_pool ; debug "run pool done"
 fi
 
 
