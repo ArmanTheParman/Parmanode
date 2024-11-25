@@ -242,7 +242,8 @@ return 0
 
 
 function menu_fulcrum_status {
-local file=$hp/.fulcrum/fulcrum.log
+local file="$HOME/.fulcrum/fulcrum.log"
+[ -e $file ] || touch $file 
 
 if tail -n1 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
@@ -269,11 +270,11 @@ return 0
 function is_fulcrum_shutting_down {
 if ! grep -q "fulcrumdkr" $ic ; then return 1 ; fi
 
-if docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n1 | grep 'Flushing' "  ; then
+if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' " \
+|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Flushing' "  ; then
 return 0
 else
 return 1
