@@ -62,6 +62,8 @@ rm ~/.xsessions-errors.old >$dn 2>&1
 
 
 function fulcrum_service_patch {
+if [[ $OS == Mac ]] ; then return 0 ; fi
+
 local file="/etc/systemd/system/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 && grep -q "ExecStop=" $file ; then 
     return 0
