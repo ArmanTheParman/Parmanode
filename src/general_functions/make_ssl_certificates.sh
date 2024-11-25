@@ -3,7 +3,7 @@ function make_ssl_certificates {
 set_terminal
 if [[ $OS == Linux ]] ; then
     if 
-        ! openssl version >$dn 2>&1 ; then clear ; echo -e "${green}Installing openssl...$orange" ; sudo agp-get update -y && sudo apt-get install openssl -y 
+        ! openssl version >$dn 2>&1 ; then clear ; echo -e "${green}Installing openssl...$orange" ; sudo apt-get update -y && sudo apt-get install openssl -y 
     fi
 elif [[ $OS == Mac ]] ; then
     if 
