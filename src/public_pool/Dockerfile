@@ -11,13 +11,12 @@ RUN apt-get update \
     && apt-get upgrade -y
 
 # extra installs necessary for ARM computers to be able to compile
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        python3 \
-        build-essential \
-        cmake \
-        ca-certificates \
-        curl \
-        procps
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends cmake
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends curl 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends procps
 
 WORKDIR /build
 
