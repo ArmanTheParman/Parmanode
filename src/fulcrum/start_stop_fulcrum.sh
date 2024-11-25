@@ -4,6 +4,7 @@ sudo systemctl start fulcrum.service
 elif grep -q "fulcrumdkr" $ic ; then
 docker_running || return 1
 docker start fulcrum
+debug "starting fulcrum in the container"
 docker exec -d fulcrum /bin/bash -c "/home/parman/parmanode/fulcrum/Fulcrum /home/parman/.fulcrum/fulcrum.conf \
     >/home/parman/.fulcrum/fulcrum.log 2>&1" >$dn 2>&1
 fi
@@ -24,7 +25,7 @@ elif grep -q "fulcrumdkr" $ic ; then
     docker exec -it fulcrum bash -c "kill -15 \"\$(ps -x | grep fulcrum | grep -v bash | grep -v grep | awk '{print \$1}')\""
     sleep 2
     #make sure fulcrum gracefully stopped
-    if docker exec -it fulcrum bash -c "cat /home/parman/parmanode/fulcrum/fulcrum.log  | tail -n15 | grep 'exiting ...' "  ; then
+    if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n15 | grep 'exiting ...' "  ; then
     shutdownsig="true"
     break
     fi

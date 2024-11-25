@@ -7,6 +7,8 @@ truncatexsessions
     reduce_systemd_logs 
     fulcrum_service_patch 
 
+fulcrum_delete_old_log 
+
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
@@ -77,4 +79,18 @@ elif sudo test -f $file >$dn 2>&1 ; then
     sudo systemctl enable fulcrum.service >$dn 2>&1
 fi
 debug "end fulcrum service patch"
+}
+
+function fulcrum_delete_old_log {
+
+if grep -q "fulcrumdkr" $ic && docker ps 2>$dn | grep -q "fulcrum" >$dn \
+&& docker exec -it fulcrum test -e /home/parman/parmanode/fulcrum/fulcrum.log ; then
+    announce "Parmanode needs to make some smol adjustments to Fulcrum"
+    docker_stop_fulcrum
+    docker exec -it fulcrum bash -c "rm /home/parman/parmanode/fulcrum/fulcrum.log" >$dn 2>&1
+    docker exec -it fulcrum pkill -15 Fulcrum
+    sleep 2
+    start_fulcrum
+fi
+
 }
