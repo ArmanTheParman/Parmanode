@@ -64,6 +64,7 @@ rm ~/.xsessions-errors.old >$dn 2>&1
 function fulcrum_service_patch {
 local file="/etc/systemd/systemd/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 ; then
+    debug "in if"
     if grep -q "#log file added" $file ; then 
         return 0
     else
@@ -73,4 +74,5 @@ if sudo test -f $file >$dn 2>&1 ; then
         sudo systemctl enable fulcrum.service >$dn 2>&1
     fi
 fi
+debug "after if"
 }
