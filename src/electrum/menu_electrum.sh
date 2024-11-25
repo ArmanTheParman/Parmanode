@@ -98,7 +98,7 @@ $cyan
 ########################################################################################
 
 
-             CURRENT DETECTYED ELECTRUM CONNECTION TYPE: $green$connection$orange
+             CURRENT DETECTED ELECTRUM CONNECTION TYPE: $green$connection$orange
 $orange
 
 $green            fs) $orange      Connect to Fulcrum via SSL (port 50002)
