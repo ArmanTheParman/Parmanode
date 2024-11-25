@@ -37,7 +37,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    A fulcrum databas directory already exists on the internal drive at  $cyan
+    A fulcrum database directory already exists on the internal drive at  $cyan
     $HOME/.fulcrum_db. $orange
 
     It has a size of$cyan $(du -sh $HOME/.fulcrum_db | awk '{print $1}') $orange
