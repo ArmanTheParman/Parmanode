@@ -45,7 +45,7 @@ WORKDIR /public-pool
 COPY --from=build /build .
 
  # Install Tor
-RUN apt-get update
+RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tor 
 RUN apt clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
