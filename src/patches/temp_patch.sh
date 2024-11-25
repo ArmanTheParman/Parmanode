@@ -5,7 +5,7 @@ truncatexsessions
 
 #move to next patch, patch 8
     reduce_systemd_logs 
-    fulcrum_service_patch 
+#    fulcrum_service_patch 
 
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
