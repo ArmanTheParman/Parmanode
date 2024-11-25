@@ -9,7 +9,7 @@ $orange
 ########################################################################################
     
     So you want to do this. Very cool. I'll show you how. Open a separate terminal
-    and follow these steps sequencially. Choose the items you want to read more...
+    and follow these steps sequentially. Choose the items you want to read more...
 
     STEPS:
 
@@ -50,7 +50,7 @@ $green
 
         sudo apt-get upgrade
 $orange
-    Someimtes in the output, you might see a recommendation to run this command, 
+    Sometimes in the output, you might see a recommendation to run this command, 
     which you can do if you want ...
 $green
         sudo apt-get --fix-broken install 
@@ -66,7 +66,7 @@ set_terminal_wide ; echo -e "
 $cyan
                                          INSTALL DEPENDENCIES
 $orange
-    Dependencies are programs or libraries (files with code) thare are required for a given program to 
+    Dependencies are programs or libraries (files with code) that are required for a given program to 
     work. To compile bitcoin, you'll need a few things.
 
     Here are the command to install it all. I have split up the installation of dependencies to multiple 
@@ -93,7 +93,7 @@ set_terminal ; echo -e "
 $cyan
                          CLONE THE BITCOIN REPOSITORY
 $orange                    
-    You need git installed on your system to do this. If you've isntalled Parmanode
+    You need git installed on your system to do this. If you've installed Parmanode
     the usual way, then you have this already.
 
     Make a temporary directory somewhere, and navigate into it using Terminal. If 
@@ -104,7 +104,7 @@ $orange
 $green
         git clone https://github.com/bitcoin/bitcoin.git
 $orange
-    Then navigate into the new bitconi directory you cloned (${green}cd bitcoin$orange).
+    Then navigate into the new bitcoin directory you cloned (${green}cd bitcoin$orange).
 
     Next, checkout to the version/branch you want. For version 26...
 $green
