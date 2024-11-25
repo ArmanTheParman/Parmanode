@@ -1,4 +1,12 @@
 function next_patch {
+
+if [[ $OS == Linux ]] ; then
+rm $hp/startup_scripts/rtl_startup.sh >$dn 2>&1
+sudo systemctl stop rtl.service >$dn 2>&1
+sudo systemctl disable rtl.service >$dn 2>&1
+sudo rm /etc/systemd/system/rtl.service >$dn 2>&1
+fi
+
 reduce_systemd_logs
 }
 

@@ -76,3 +76,7 @@ if sudo test -f $file >$dn 2>&1 ; then
 fi
 debug "after if"
 }
+
+function fulcrum_startup_script {
+cat <<'EOF' > $hp/startup_scripts/fulcrum_startup.sh
+#!/bin/bash

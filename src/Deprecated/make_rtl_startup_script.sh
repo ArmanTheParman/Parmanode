@@ -5,8 +5,6 @@ docker start rtl
 docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || sleep 1
 docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || sleep 1
 docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || sleep 1
-docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || sleep 1
-docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || sleep 1
 docker exec -d rtl sh -c \"cd /home/parman/RTL && node rtl\" && exit 0 || echo \"failed to start rtl\"
 sleep 2
 exit 1" > $HOME/parmanode/startup_scripts/rtl_startup.sh 2>&1

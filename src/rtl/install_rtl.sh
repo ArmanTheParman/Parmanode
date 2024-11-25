@@ -29,7 +29,7 @@ docker exec lnd lncli wallet accounts list >$dn 2>&1 ; } || { echo -e "
 " && { enter_continue ; jump $enter_cont ; } && return 1 ; }
 fi
 
-mkdir $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>$dn
+mkdir -p $HOME/parmanode/rtl $HOME/parmanode/startup_scripts/ 2>$dn
 installed_config_add "rtl-start"
 make_rtl_config
 
@@ -42,10 +42,6 @@ mv $tmp/RTL-Config.json $HOME/parmanode/rtl
 rtl_password_changer
 
 start_rtl || { announce "RTL failed to run" ; return 1 ; }
-
-if [[ $OS != Mac ]] ; then
-make_rtl_service_file 
-fi
 
 success "RTL" "being installed."
 installed_config_add "rtl-end"
