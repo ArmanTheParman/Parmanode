@@ -65,7 +65,7 @@ function fulcrum_service_patch {
 local file="/etc/systemd/system/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 && grep -q "ExecStop=" $file ; then 
     return 0
-else
+elif sudo test -f $file >$dn 2>&1 ; then
     debug "fulcrum startup mods..."
     fulcrum_startup_script
     sudo gsed -i "s%^ExecStart=.*$%ExecStart=$hp/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log\nExecStop=pgrep Fulcrum%" $file >$dn 2>&1
