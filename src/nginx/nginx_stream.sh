@@ -23,25 +23,21 @@ fi
 if [[ $2 != remove ]] ; then
 sudo nginx -t >$dn 2>&1 || faulty_nginx_conf="true"
 fi
-debug "3"
 #create a back up in case it breaks
 [[ -e $nginx_conf ]] && sudo cp $nginx_conf ${nginx_conf}_backup >$dn 2>&1
 
 #test what is installed... 
 #This search string will include installs that have begun and v1 and v2 of electrs/dkr)
 source $pp/parmanode/src/nginx/stream.conf >$dn 2>&1
-debug "3.01"
 #unset what is not installed
 if [[ $1 != electrs ]] ; then
    if ! grep -q "electrs-end" $ic && ! grep -q "electrs2-end" $ic && ! grep -q "electrsdkr" $ic ; then
    unset upstream_electrs server_electrs
    fi
 fi
-debug "3.02"
 if [[ $1 != public_pool ]] ; then
 if ! grep -q "public_pool-end" $ic ; then
 unset upstream_public_pool server_public_pool
-debug "3.1"
 fi
 fi
 
@@ -54,7 +50,6 @@ fi
 if [[ -e $streamfile ]] ; then
 [[ -e $streamfile ]] && sudo cp $streamfile ${streamfile}_backup >$dn 2>&1
 fi
-debug "3.3"
 #with variables finalised, write the file...
 #the streamfile is created new each time depending on what is installed
 echo -en "
@@ -68,7 +63,6 @@ $server_electrs
 $upstream_public_pool
 $server_public_pool
 }" | sudo tee $streamfile >$dn 2>&1 
-debug "3.4"
 ######################################################################################## Very ipmortant
 ``
 #if no services installed, remove any include directive from nginx.conf
@@ -83,7 +77,6 @@ else
    }
 fi
 ########################################################################################
-debug "3.5"
 #check nginx still runs (only if it was fine to begin with), if not revert to backup
 if [[ ! $faulty_nginx_conf == "true" ]] ; then
 
@@ -100,7 +93,6 @@ if [[ ! $faulty_nginx_conf == "true" ]] ; then
     [[ -e $streamfile ]] && {
     sudo mv ${streamfile}_backup $streamfile >$dn 2>&1 ; }
     }
-debug "4"
 fi
 
 }

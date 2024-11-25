@@ -18,7 +18,6 @@ fi
 if [[ $1 = "remove" ]] ; then
     sudo rm "$conf_file" >$dn 2>&1
     sudo gsed -i "/public_pool_ui.conf/d" $nginx_conf  
-    debug "2"
 else #install
 
     #might need to install nginx
@@ -50,10 +49,8 @@ fi #not remove ends
 
 #restart
     if [[ $OS == Linux ]] ; then 
-        debug "2.1"
         sudo nginx -t >$dn 2>$dp/nginx_error.log && sudo systemctl restart nginx >$dn 2>&1 
     elif [[ $OS == Mac ]] ; then
         nginx -t >$dn 2>$dp/nginx_error.log && brew services restart nginx >$dn 2>&1 
     fi
-    debug "2 end"
 }
