@@ -65,7 +65,7 @@ function fulcrum_service_patch {
 local file="/etc/systemd/system/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 ; then
     debug "in if"
-    if grep -q "#log file added" $file ; then 
+    if grep -q "fulcrum.log" $file ; then 
         return 0
     else
         sudo gsed -i "s%fulcrum.conf%fulcrum.conf >$HOME/.fulcrum/fulcrum.log 2>\&1%" $file >$dn 2>&1
