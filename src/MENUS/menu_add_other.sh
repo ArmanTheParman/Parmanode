@@ -30,7 +30,7 @@ if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
 if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
 if [[ -n $nginx_n ]]            ; then echo -e  "$nginx_n"; fi
 if [[ -n $nextcloud_n ]]        ; then echo -e  "$nextcloud_n"; fi
-if [[ -n $public_pool_n ]]         ; then echo -e  "$public_pool_n"; fi
+#if [[ -n $public_pool_n ]]         ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
@@ -51,7 +51,7 @@ if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
 if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
 if [[ -n $nginx_i ]]            ; then echo -e  "$nginx_i"; fi
 if [[ -n $nextcloud_i ]]        ; then echo -e  "$nextcloud_i"; fi
-if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
+#if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
 #$red Failed installs (need to uninstall)...$orange                                               #
@@ -72,7 +72,7 @@ if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
 if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
-if [[ -n $public_pool_p ]]   ; then echo -e "$pink$public_pool_p$orange"; fi
+#if [[ -n $public_pool_p ]]   ; then echo -e "$pink$public_pool_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -197,11 +197,11 @@ next)
     fi
     ;;
 
-pool|Pool|POOL) 
-        if [[ -n $public_pool_n ]] ; then
-            install_public_pool
-            return 0
-        fi
+# pool|Pool|POOL) 
+#         if [[ -n $public_pool_n ]] ; then
+#             install_public_pool
+#             return 0
+#         fi
 ;;
 
 *)
