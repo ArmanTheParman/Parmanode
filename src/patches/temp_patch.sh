@@ -61,7 +61,8 @@ rm ~/.xsessions-errors.old >$dn 2>&1
 }
 
 
-function fulcrum_service_patch {
+#changing becuase redirection to a log file directly is disfunctional with Fulcrum. Need to do it via script.
+function fulcrum_service_patch { 
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
 local file="/etc/systemd/system/fulcrum.service"
@@ -69,22 +70,11 @@ if sudo test -f $file >$dn 2>&1 && grep -q "ExecStop=" $file ; then
     return 0
 elif sudo test -f $file >$dn 2>&1 ; then
     debug "fulcrum startup mods..."
-    fulcrum_startup_script
+    make_fulcrum_startup_script
     sudo gsed -i "s%^ExecStart=.*$%ExecStart=$hp/startup_scripts/fulcrum_startup.sh >$HOME/.fulcrum/fulcrum.log\nExecStop=pgrep Fulcrum%" $file >$dn 2>&1
     sudo systemctl daemon-reload 
     sudo systemctl disable fulcrum.service >$dn 2>&1
     sudo systemctl enable fulcrum.service >$dn 2>&1
 fi
 debug "end fulcrum service patch"
-}
-
-function fulcrum_startup_script {
-local file="$hp/startup_scripts/fulcrum_startup.sh"
-cat <<'EOF' > $file
-#!/bin/bash
-/usr/local/bin/Fulcrum $HOME/.fulcrum/fulcrum.conf 
-exit
-EOF
-
-sudo chmod +x $file >$dn 2>&1
 }
