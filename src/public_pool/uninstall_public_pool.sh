@@ -50,7 +50,7 @@ return 1
 fi
 fi
 stop_public_pool >$dn 2>&1
-docker rm public_pool public_pool_ui ; debug "containers stopped and removed"
+docker rm public_pool public_pool_ui >$dn 2>&1 ; debug "containers stopped and removed"
 cd
 sudo rm -rf $hp/public_pool $hp/public_pool_ui >$dn 2>&1
 sudo rm $dp/*public_pool* $dp/.socat1_public_pool_ui $dp/.socat2_public_pool_ui >$dn 2>&1
@@ -58,6 +58,5 @@ debug "after rm"
 nginx_public_pool_ui remove
 nginx_stream public_pool remove
 installed_conf_remove "public_pool"
-debug "before end"
 success "Public Pool" "being uninstalled"
 }

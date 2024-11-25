@@ -17,7 +17,7 @@ fi
 #needs to be after variables set
 if [[ $1 = "remove" ]] ; then
     sudo rm "$conf_file" >$dn 2>&1
-    sudo gsed -i "/public_pool_ui.conf/d" $nginx_conf  #will apply only to Macs anyway.
+    sudo gsed -i "/public_pool_ui.conf/d" $nginx_conf  
 else #install
 
 #might need to install nginx
