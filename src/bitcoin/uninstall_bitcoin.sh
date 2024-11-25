@@ -113,7 +113,7 @@ if [[ $combo == "true" ]] ; then
 uninstall_btcpay combo
 #then come back there to finish
 installed_config_remove "btccombo"
-success "Bitcoin and BTCPay have been uninsalled"
+success "Bitcoin and BTCPay have been uninstalled"
 unset combo
 return 0
 fi
