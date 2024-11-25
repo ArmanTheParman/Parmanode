@@ -60,7 +60,7 @@ invalid
 esac
 done
 
-sudo rm -rf $HOME/parmanode/*parrow* #redundant, folder doesn't exist yet, but will later.
+sudo rm -rf $HOME/parmanode/*sparrow* #redundant, folder doesn't exist yet, but will later.
 
 if [[ $OS == "Mac" ]] ; then
 sudo rm -rf /Applications/Sparrow.app
