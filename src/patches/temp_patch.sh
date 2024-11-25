@@ -82,9 +82,9 @@ debug "end fulcrum service patch"
 }
 
 function fulcrum_delete_old_log {
-
+oldfile="/home/parman/parmanode/fulcrum/fulcrum.log"
 if grep -q "fulcrumdkr" $ic && docker ps 2>$dn | grep -q "fulcrum" >$dn \
-&& docker exec -it fulcrum test -e /home/parman/.fulcrum/fulcrum.log ; then
+&& docker exec -it fulcrum test -e $oldfile ; then
     announce "Parmanode needs to make some smol adjustments to Fulcrum"
     docker_stop_fulcrum
     docker exec -it fulcrum pkill -15 Fulcrum
