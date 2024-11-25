@@ -228,10 +228,10 @@ function menu_fulcrum_status {
 local file="$HOME/.fulcrum/fulcrum.log"
 [ -e $file ] || touch $file 
 
-if tail -n1 $file | grep -q 'Processed height:' ; then
+if tail -n10 $file | grep -q 'Processed height:' ; then
 export fulcrum_status=syncing
 #fetches block number...
-export fulcrum_sync=$(tail -n1 $file | grep Processed | grep blocks/ | grep addrs/ \
+export fulcrum_sync=$(tail -n10 $file | grep Processed | tail -n1 | grep blocks/ | grep addrs/ \
 | grep -Eo 'Processed height:.+$' | grep -Eo '[0-9].+$' | cut -d , -f 1)
 return 0
 fi
