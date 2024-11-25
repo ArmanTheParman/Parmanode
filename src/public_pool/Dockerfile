@@ -4,7 +4,7 @@
 # Docker build environment #
 ############################
 
-FROM node:18.16.1-bookworm-slim AS build
+FROM node:18.19.1-bookworm-slim AS build
 
 # Upgrade all packages and install dependencies
 RUN apt-get update \
