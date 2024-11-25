@@ -32,10 +32,9 @@ if [[ $drive_fulcrum == external && -e $pd/fulcrum_db ]] ; then
     sudo mkdir -p $pd/fulcrum_db
     sudo chown -R $USER:$(id -gn) $pd/fulcrum_db
 elif [[ $drive_fulcrum == internal ]] ; then
-    rm -rf $HOME/.fulcrum_db/* 2>$dn
-    rm -rf $HOME/parmanode/fulcrum_db 2>$dn #old location of database (previous versions)
+    rm -rf $HOME/.fulcrum_db/* 
 fi
-
+enter_continue "Database delete"
 break
 ;;
 *) invalid
