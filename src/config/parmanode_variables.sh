@@ -29,7 +29,7 @@ export parmanode_drive="/media/$USER/parmanode"
 export bashrc="$HOME/.bashrc"
 export macprefix=""
 export torrc="/etc/tor/torrc"
-export varlibtor="$macprefix/var/lib/tor"
+export varlibtor="/var/lib/tor"
 elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
 export bashrc="$HOME/.zshrc"
