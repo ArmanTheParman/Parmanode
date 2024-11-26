@@ -6,7 +6,7 @@ if [[ $OS == Mac ]] ; then
     osascript -e 'tell application "Bitcoin-Qt" to quit' >$dn 2>&1
     please_wait
     # Wait until Bitcoin-Qt is no longer running
-    while pgrep "Bitcoin-Q" >$dn; do
+    while pgrep "Bitcoin-Qt" >$dn; do
     sleep 1
     done
 else

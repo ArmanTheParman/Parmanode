@@ -60,7 +60,7 @@ fi
 
 function stop_bitcoin {
 
-#for docker (no systemctl, ust tmux)
+#for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
 pkill bitcoind >$dn

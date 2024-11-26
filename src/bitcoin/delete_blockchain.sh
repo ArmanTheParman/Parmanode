@@ -23,7 +23,7 @@ m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 internal) 
 are_you_sure "Delete internal drive blockchain data?" || return 1 
-if [[ ! -L $HOME/.bitocin ]] ; then 
+if [[ ! -L $HOME/.bitcoin ]] ; then 
 please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
 sudo rm -rf $HOME/.bitcoin/*
 sleep 2

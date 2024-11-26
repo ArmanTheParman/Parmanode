@@ -35,7 +35,7 @@ set_terminal
 mac_electrum_headsup
 
 if [[ $computer_type == Pi ]] ; then 
-export python_istall="true"
+export python_install="true"
 fi
 
 make_electrum_directories
