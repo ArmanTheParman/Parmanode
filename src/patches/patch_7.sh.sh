@@ -28,13 +28,14 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
     fi
 fi
 
+### Caused isses - removing.
 #torlogging - part of tor install/uninstall and joinmarket binding
-if [[ -e $torrc ]] && ! grep -q "tornoticefile.log" $torrc ; then
-echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc >$dn 2>&1
-fi
-if [[ -e $torrc ]] && ! grep -q "torinfofile.log" $torrc ; then
-echo "Log notice file $HOME/.torinfofile.log" | sudo tee -a $torrc >$dn 2>&1
-fi
+# if [[ -e $torrc ]] && ! grep -q "tornoticefile.log" $torrc ; then
+# echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc >$dn 2>&1
+# fi
+# if [[ -e $torrc ]] && ! grep -q "torinfofile.log" $torrc ; then
+# echo "Log notice file $HOME/.torinfofile.log" | sudo tee -a $torrc >$dn 2>&1
+# fi
 
 rm $dp/.debug2.log >$dn 2>&1
 

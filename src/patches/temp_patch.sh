@@ -2,7 +2,7 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
-
+remove_tor_log_patch
 #move to next patch, patch 8
     reduce_systemd_logs 
     fulcrum_service_patch 
@@ -110,4 +110,11 @@ while true ; do
 EOF
 sudo chmod +x $file 
 
+}
+function remove_tor_log_patch {
+if [[ -e $torrc ]] && grep -q "tornoticefile.log" $torrc ; then
+gsed -i '/^.*tornoticefile.log.*$/d' $torrc >$dn 2>&1
+if [[ -e $torrc ]] && grep -q "torinfofile.log" $torrc ; then
+gsed -i '/^.*torinfofile.log.*$/d'   $torrc >$dn 2>&1
+fi
 }
