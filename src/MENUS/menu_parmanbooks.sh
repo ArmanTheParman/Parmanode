@@ -43,5 +43,6 @@ ls | while read x ; do
     else
         continue
     fi
+return 1
 done 
 }
