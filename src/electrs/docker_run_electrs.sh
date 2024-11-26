@@ -17,7 +17,7 @@ if [[ $OS == Linux ]] ; then
     docker run -d --name electrs \
                             --network="host" \
                             --restart unless-stopped \
-                            -v $parmanode_drive/electrs_db:/electrs_db \
+                            -v $pd/electrs_db:/electrs_db \
                             -v $HOME/.electrs:/home/parman/.electrs \
                             electrs 
     fi
@@ -43,7 +43,7 @@ if [[ $OS == Mac ]] ; then
                                  --restart unless-stopped \
                                 -p 50006:50006 \
                                 -p 9060:9060 \
-                                -v $parmanode_drive/electrs_db:/electrs_db \
+                                -v $pd/electrs_db:/electrs_db \
                                 -v $HOME/.electrs:/home/parman/.electrs \
                                 electrs
     fi                            

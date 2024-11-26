@@ -1,9 +1,9 @@
 function install_electrs_docker {
 
-# Docker container runs with tor daemon for CMD
+# Docker container runs with tor daemon using dockerfile CMD
 # Data is synced to /electrs_db inside container.
 # External drive sync is volume mounted directly to external drive
-# Internal drive sync is mounted to $HOME/.electrs
+# Internal drive sync is mounted to $HOME/.electrs_db
 
 unset install_electrs_docker_variable
 export install_electrs_docker_variable="true" # used later to fork make config code.

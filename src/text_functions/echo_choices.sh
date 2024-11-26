@@ -1,12 +1,3 @@
-#functions here:
-    # enter_continue
-    # enter_exit
-    # choose
-    # invalid
-    # previous menu
-    # please wait
-    # announce
-
 function enter_continue {
 echo -e "$@"
 unset enter_cont
