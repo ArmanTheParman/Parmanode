@@ -7,11 +7,12 @@ echo -ne "
                                 Parman Books Menu $orange
 
 ########################################################################################
+
 "
 num=0 
 ls $hp/parman_books | while read i ; do 
                num=$((num + 1)) 
-               echo -e "    $num)       $i"
+               echo -e "$cyan    $num)$orange       $i"
                done
 echo -ne "
 ########################################################################################
