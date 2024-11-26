@@ -311,21 +311,21 @@ exit 0
 bitcoin|Bitcoin|BITCOIN)
 if [[ $bitcoinmenu == 1 ]] ; then
 uninstall_bitcoin
-return 0
+menu_main
 fi
 ;;
 
 fulcrum|Fulcrum|FULCRUM)
 if [[ $fulcrummenu == 1 ]] ; then
 uninstall_fulcrum
-return 0
+menu_main
 fi
 ;;
 
 fulcrumd|Fulcrumd|FULCRUMD)
 if [[ $fulcrumdkrmenu == 1 ]] ; then
 uninstall_fulcrum
-return 0
+menu_main
 fi
 ;;
 
@@ -333,224 +333,233 @@ docker|Docker|DOCKER)
 if [[ $dockermenu == 1 ]] ; then
 if [[ $OS == "Mac" ]] ; then uninstall_docker_mac ; fi
 if [[ $OS == "Linux" ]] ; then uninstall_docker_linux ; fi
-return 0
+menu_main
 fi
 ;;
 
 btcp|BTCP|Btcp)
 if [[ $btcpaymenu == 1 ]] ; then
 uninstall_btcpay
-return 0
+menu_main
 fi
 ;;
 
 TOR|Tor|tor)
 if [[ $tormenu == 1 ]] ; then
 uninstall_tor
-return 0
+menu_main
 fi
 ;;
 
 lnd|LND|Lnd)
-if [[ $lndmenu == 1 ]] ; then
-if [[ $OS == "Linux" ]] ; then uninstall_lnd ; return 0 ; fi
+if [[ $lndmenu == 1 ]] ; then 
+uninstall_lnd 
+menu_main 
 fi
 ;;
 
 ld|LD|Ld)
 if [[ $lnddockermenu == 1 ]] ; then
 uninstall_lnd_docker 
-return 0 
+menu_main
 fi
 ;;
 
 mem|MEM|Mem)
 if [[ $mempoolmenu == 1 ]] ; then
 uninstall_mempool
-return 0
+menu_main
 fi
 ;;
 
 s|S|SPARROW|Sparrow|sparrow)
 if [[ $sparrowmenu == 1 ]] ; then
-    uninstall_sparrow
-	return 0 
-	fi
-	;;
+uninstall_sparrow
+menu_main	
+fi
+;;
+
 R|r|RTL|rtl|Rtl)
 if [[ $rtlmenu == 1 ]] ; then
-	uninstall_rtl
-	return 0
-	fi
-	;;
+uninstall_rtl
+menu_main
+fi
+;;
+
 th)
 if [[ $thunderhubmenu == 1 ]] ; then
-    uninstall_thub
-	return 0
-	fi
-	;;
+uninstall_thub
+menu_main
+fi
+;;
 
 e|E|Electrum|electrum|ELECTRUM)
 if [[ $electrummenu == 1 ]] ; then
-    uninstall_electrum
-	return 0
-	fi
-	;;
+uninstall_electrum
+menu_main
+fi
+;;
+
 tws|TWS|Tws)
 if [[ $torservermenu == 1 ]] ; then
-	no_mac || return 1
-	uninstall_tor_webserver
-	return 0
-	fi
-	;;
+no_mac || continue
+uninstall_tor_webserver
+menu_main
+fi
+;;
 
 specter|SPECTER|Specter)
 if [[ $spectermenu == 1 ]] ; then
-    uninstall_specter
-	return 0
-	fi
-	;;
+uninstall_specter
+menu_main
+fi
+;;
+
 bre|BRE|Bre)
 if [[ $btcrpcexplorermenu == 1 ]] ; then
-    uninstall_btcrpcexplorer
-	return 0
-	fi
+uninstall_btcrpcexplorer
+menu_main
+fi
+
 if [[ $bredockermenu == 1 ]] ; then
-    bre_docker_uninstall
-	return 0
-	fi
-	;;
+bre_docker_uninstall
+menu_main
+fi
+;;
+
 ers|ERS|Ers|electrs)
 if [[ $electrsmenu == 1 ]] ; then
-	uninstall_electrs
-	return
-	fi
+uninstall_electrs
+menu_main
+fi
 	
 if [[ $electrs2menu == 1 ]] ; then
-	uninstall_electrs2
-	return
-	fi
-	;;
+uninstall_electrs2
+menu_main
+fi
+;;
+
 lnb|LNB|Lnb)
 if [[ $lnbitsmenu == 1 ]] ; then
-	uninstall_lnbits	
-	return
-	fi
-	;;
+uninstall_lnbits	
+menu_main
+fi
+;;
+
 trz|TRZ|Trz)
 if [[ $trezormenu == 1 ]] ; then
-	uninstall_trezor
-	return
-	fi
-	;;
+uninstall_trezor
+menu_main
+fi
+;;
+
 bb|BB|Bb)
 if [[ $bitboxmenu == 1 ]] ; then
-    uninstall_bitbox
-	return
-	fi
-	;;
+uninstall_bitbox
+menu_main
+fi
+;;
+
 ll|LL|Ll)
 if [[ $ledgermenu == 1 ]] ; then
-    uninstall_ledger
-	return
-	fi
-	;;
+uninstall_ledger
+menu_main
+fi
+;;
+
 ps|PS|Ps)
 if [[ $parmashellmenu == 1 ]] ; then
 uninstall_parmashell
-return
+menu_main
 fi
 ;;
+
 pbx|Pbx)
 if [[ $parmaboxmenu == 1 ]] ; then
 uninstall_parmabox
-return
+menu_main
 fi
 ;;
 
 any|ANY|Any)
 if [[ $anydeskmenu == 1 ]] ; then
 uninstall_anydesk
-return
+menu_main
 fi
 ;;
 
 pih|Pih|PiH)
 if [[ $piholemenu == 1 ]] ; then
 uninstall_pihole
-return
+menu_main
 fi
 ;;
 
 trl|Trl|TRL)
 if [[ $torrelaymenu == 1 ]] ; then
 uninstall_torrelay
-return
+menu_main
 fi
 ;;
 
 ersd|ERSD|Ersd)
 if [[ $electrsdkrmenu == 1 ]] ; then
 uninstall_electrs_docker
-return
+menu_main
 fi
+
 if [[ $electrsdkr2menu == 1 ]] ; then
-debug "in 2"
 uninstall_electrs_docker2
-return
+menu_main
 fi
 ;;
 
 piap|PIAP)
 if [[ $piappsmenu == 1 ]] ; then
 uninstall_piapps
-return
+menu_main
 fi
 ;;
 
 torb|Torb|TORB)
 if [[ $torbmenu == 1 ]] ; then
 uninstall_torbrowser
-return
+menu_main
 fi
 ;;
+
 qbit|Qbit)
 if [[ $qbittorrentmenu == 1 ]] ; then
 uninstall_qbittorrent
-clear
-return
+menu_main
 fi
 ;;
 
 tssh)
 if [[ $torsshmenu == 1 ]] ; then
 uninstall_torssh
-clear
-return
+menu_main
 fi
 ;;
 
 pool)
 if [[ $public_poolmenu == 1 ]] ; then
 uninstall_public_pool
-clear
-return
+menu_main
 fi
 ;;
 
 ex)
 if [[ $electrumxmenu == 1 ]] ; then
 uninstall_electrumx
-clear
-return
+menu_main
 fi
 ;;
 
 ws)
 if [[ $websitemenu == 1 ]] ; then
 uninstall_website
-clear
-return
+menu_main
 fi
 ;;
 
@@ -558,55 +567,56 @@ ng)
 if [[ $nginxmenu == 1 ]] ; then
 uninstall_nginx_warning || return
 uninstall_nginx
-clear
-return
+menu_main
 fi
 ;;
 
 nr)
 if [[ $nostrrelaymenu == 1 ]] ; then
 uninstall_nostrrelay 
-return
+menu_main
 fi
 ;;
 
 litd)
 if [[ $litdmenu == 1 ]] ; then
 uninstall_litd
-return
+menu_main
 fi
 ;;
 
 next)
 if [[ $nextcloudmenu == 1 ]] ; then
 uninstall_nextcloud
-return
+menu_main
 fi
 ;;
 
 pnostr)
 if [[ $parmanostrmenu == 1 ]] ; then
 uninstall_parmanostr
-return
+menu_main
 fi
 ;;
 
 btcr)
 if [[ $btcrecovermenu == 1 ]] ; then
 uninstall_btcrecover
-return
+menu_main
 fi
 ;;
+
 join)
 if [[ $joinmarketmenu == 1 ]] ; then
 uninstall_joinmarket
-return
+menu_main
 fi
 ;;
+
 gr|green)
 if [[ $greenmenu == 1 ]] ; then
 uninstall_green
-return
+menu_main
 fi
 ;;
 
@@ -618,5 +628,5 @@ esac
 
 done
 
-return 0
+menu_main
 }
