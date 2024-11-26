@@ -91,31 +91,34 @@ fi
 }
 
 
-function manage_logs {
-local file="$hp/startup_scripts/manage_logs"
+# function manage_logs {
+# local file="$hp/startup_scripts/manage_logs"
 
-cat <<'EOF' tee $file >/dev/null
-#!/bin/bash
+# cat <<'EOF' tee $file >/dev/null
+# #!/bin/bash
 
-while true ; do
+# while true ; do
 
-[[ $(cat $HOME/.fulcrum/fulcrum.log | wc -l) -gt 10000 ]] && \
-    if [[ $(uname) == Linux ]] ; then
-        pkill Fulcrum    
-        tail -n100 $HOME/.ful
-
-
+# [[ $(cat $HOME/.fulcrum/fulcrum.log | wc -l) -gt 10000 ]] && \
+#     if [[ $(uname) == Linux ]] ; then
+#         pkill Fulcrum    
+#         tail -n100 $HOME/.ful
 
 
-EOF
-sudo chmod +x $file 
 
-}
+
+# EOF
+# sudo chmod +x $file 
+
+# }
+
 function remove_tor_log_patch {
+
 if [[ -e $torrc ]] && grep -q "tornoticefile.log" $torrc ; then
 gsed -i '/^.*tornoticefile.log.*$/d' $torrc >$dn 2>&1
 needrestarttor="true"
 fi
+
 if [[ -e $torrc ]] && grep -q "torinfofile.log" $torrc ; then
 needrestarttor="true"
 gsed -i '/^.*torinfofile.log.*$/d'   $torrc >$dn 2>&1
