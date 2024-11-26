@@ -114,14 +114,14 @@ fi
 
 function remove_tor_log_patch {
 
-if [[ -e $torrc ]] && grep -q "tornoticefile.log" $torrc ; then
-gsed -i '/^.*tornoticefile.log.*$/d' $torrc >$dn 2>&1
+if [[ -e $torrc ]] && grep -q "tornoticefile" $torrc ; then
+gsed -i '/^.*tornoticefile\.log.*$/d' $torrc >$dn 2>&1
 needrestarttor="true"
 fi
 
-if [[ -e $torrc ]] && grep -q "torinfofile.log" $torrc ; then
+if [[ -e $torrc ]] && grep -q "torinfofile" $torrc ; then
 needrestarttor="true"
-gsed -i '/^.*torinfofile.log.*$/d'   $torrc >$dn 2>&1
+gsed -i '/^.*torinfofile\.log.*$/d'   $torrc >$dn 2>&1
 fi
 
 if [[ -n $needrestarttor ]] ; then restart_tor ; fi
