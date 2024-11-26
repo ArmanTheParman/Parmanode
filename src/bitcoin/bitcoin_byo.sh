@@ -20,7 +20,7 @@ $green        3)$orange   Copy your bitcoin data into this directory. If you nee
              using the Parmanode rsync helper tool in the Tools menu for reliable 
              copying of data and file attributes; it's also possible to copy the data
              from another computer of SSH using this tool. Do make sure any copying 
-             of Bitcoin data happens when Bitcoin itself is not running or the dat
+             of Bitcoin data happens when Bitcoin itself is not running or the data
              will certainly become corrupted. No joke.              
 
 $green        4)$orange   From this point, repeat the Bitcoin installation and select
