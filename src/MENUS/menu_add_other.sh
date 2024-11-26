@@ -202,7 +202,7 @@ next)
 #             install_public_pool
 #             return 0
 #         fi
-;;
+#;;
 
 *)
 invalid
