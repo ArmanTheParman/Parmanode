@@ -491,6 +491,7 @@ menu_parmanbooks
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
+fi
 ;;
 
 *)
