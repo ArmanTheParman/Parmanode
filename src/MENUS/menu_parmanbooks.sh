@@ -42,7 +42,7 @@ while IFS= read -r i ; do
         # read
         # #open "${hp}/${i}"
         echo "$i - found" ; read
-        open $hp/$i
+        open "$hp/$i"
         return 0
     else
         echo "$i"
