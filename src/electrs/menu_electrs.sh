@@ -5,10 +5,9 @@ while true ; do
 if grep -q "electrsdkr" $ic ; then #dont use electrsdkr2
     electrsis=docker
     logfile=$HOME/.electrs/run_electrs.log
-    #docker exec electrs cat /home/parman/run_electrs.log > $logfile
 else
     electrsis=nondocker
-    logfile=$HOME/.parmanode/run_electrs.log 
+    logfile=$HOME/.electrs/run_electrs.log 
 fi
 
 set_terminal
