@@ -23,7 +23,7 @@ if [[ $OS == "Mac" && $python_install != "true" ]] ; then
         enter_continue "GPG verification failed. Aborting."
         return 1
     fi
-elif [[ $OS == Mac && $python_install == "true" ]] ; then
+elif [[ $OS == "Mac" && $python_install == "true" ]] ; then
     if ! gpg --verify --status-fd 1 Electrum*.asc Electrum*.gz 2>&1 | grep -i "GOOD" ; then 
         enter_continue "GPG verification failed. Aborting."
         return 1
