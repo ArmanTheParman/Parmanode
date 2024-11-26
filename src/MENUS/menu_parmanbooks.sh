@@ -41,7 +41,7 @@ ls $hp/parman_books | while read i ; do
                if [[ $num == $choice ]] ; then
                echo "${hp}/${i}"
                read
-               open "${hp}/${i}"
+               #open "${hp}/${i}"
                echo "pause" ; read
                return 0
                else
