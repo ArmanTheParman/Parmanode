@@ -1,6 +1,6 @@
 function system_report {
 
-clear ; echo "
+clear ; echo -e "
 ########################################################################################
 
     Parmanode will generate a System Report File automatically. It will
