@@ -36,7 +36,7 @@ return 0
 function open_book {
 debug "in open book"
 num=0 
-while IFS= read -r i ; do 
+while IFS= read i ; do 
     num=$((num + 1)) ; if [[ $num == $choice ]] ; then
         # echo "${hp}/${i}"
         # read
