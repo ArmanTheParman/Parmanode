@@ -10,7 +10,7 @@ echo -e "
 
     Please paste in the onion address (without the port number at the end).
     Then hit$cyan<enter>$orange.
-    It should  be a long string of random looking characters, and ening in
+    It should be a long string of random looking characters, and ening in
 $bright_blue    '.onion'$orange.
 
 ########################################################################################
