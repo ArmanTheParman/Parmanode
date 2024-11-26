@@ -36,7 +36,7 @@ return 0
 function open_book {
 debug "in open book"
 num=0 
-while IFS= read i ; do 
+find $hp/parman_books -maxdepth 1 -mindepth 1 -type f | while IFS= read i ; do 
     num=$((num + 1)) ; if [[ $num == $choice ]] ; then
         # echo "${hp}/${i}"
         # read
@@ -49,6 +49,6 @@ while IFS= read i ; do
         read
         continue
     fi
-done < <(find $hp/parman_books -maxdepth 1 -mindepth 1 -type f)
+done 
 echo "end of open book" ; read
 }
