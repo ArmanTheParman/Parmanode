@@ -42,8 +42,6 @@ ls | while read x ; do
     else
         continue
     fi
-echo "error"
-read
 return 1
 done 
 }
