@@ -49,6 +49,6 @@ while IFS= read -r i ; do
         read
         continue
     fi
-done < < (ls $hp/parman_books/)
+done < (find $hp/parman_books -maxdepth 1 -mindepth 1 -type f)
 echo "end of open book" ; read
 }
