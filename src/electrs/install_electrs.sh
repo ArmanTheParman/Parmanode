@@ -130,16 +130,16 @@ fi
 #get drive variables for fulcrum, electrumx, and bitcoin
 source $HOME/.parmanode/parmanode.conf >$dn
 
-if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
-    # format not needed
-    # Get user to connect drive.
-      pls_connect_drive || return 1 
+# if [[ $drive_electrs == external ]] && grep "=external" $pc | grep -vq "electrs" ; then #don't grep 'external' alone, too ambiguous
+#     # format not needed
+#     # Get user to connect drive.
+#       pls_connect_drive || return 1 
 
-    # check if there is a backup electrs_db on the drive and restore it
-      restore_electrs_drive #prepares drive based on existing backup and user choices
-      if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > $dn 2>&1 ; fi
-                                                           # $original from function restore_electrs_drive
-elif [[ $drive_electrs == external ]] ; then
+#     # check if there is a backup electrs_db on the drive and restore it
+#       restore_electrs_drive #prepares drive based on existing backup and user choices
+#       if [[ $OS == Linux ]] ; then sudo chown -R $USER:$(id -gn) $original > $dn 2>&1 ; fi
+#                                                            # $original from function restore_electrs_drive
+if [[ $drive_electrs == external ]] ; then
 
       if [[ -d $pd/electrs_db ]] ; then drive_ready="true" ; fi
 
