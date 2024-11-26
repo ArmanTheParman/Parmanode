@@ -2,7 +2,8 @@
 #    -ParmaJoin (JoinMarket)
 #    -X11Forwarding function (modifies sshd_config)
 
-
+Version 3.47.3
+     -Nearly 100 pull requests merged for typos, some fixed bugs.
 Version 3.47.2
      -Drive preperation streamlined
      -Fulcrum menu bug fix
