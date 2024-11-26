@@ -222,8 +222,8 @@ clear ; echo -e "
     Parmanode has generated a system report about your installation, and left the
     file for you at: $cyan
 
-        $HOME/Desktop/system_report.txt
-$orange 
+    $HOME/Desktop/system_report.txt  $orange 
+    
     You can now review this file, and if you were asked, can send this to Parman
     for assistance. The email is:
 $cyan
