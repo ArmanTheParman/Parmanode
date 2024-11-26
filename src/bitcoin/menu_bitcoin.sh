@@ -109,7 +109,7 @@ $green
             $cyan
                delete)$orange       Delete blockchain data and start over
             $cyan
-               update)$orange       Update Bitcoin wizard
+               upd)$orange          Update Bitcoin wizard
 
          $btcman
          $output3
@@ -233,7 +233,7 @@ menu_migrate
 continue
 ;;
 
-update|Update|UPDATE)
+upd)
 update_bitcoin
 continue
 ;;
