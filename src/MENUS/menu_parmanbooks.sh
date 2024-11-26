@@ -36,7 +36,8 @@ return 0
 function open_book {
 debug "in open book"
 num=0 
-ls $hp/parman_books | while read x ; do 
+cd $hp/parman_books
+ls | while read x ; do 
     num=$((num + 1)) 
     if [[ $num == $choice ]] ; then
         open "$x"
