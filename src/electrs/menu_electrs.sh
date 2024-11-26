@@ -250,9 +250,7 @@ fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
 tmux new -s -d "sudo journalctl -fexu electrs.service"
-debug "in if electrs log"
 else
-debug "in else"
 tmux new -s -d "tail -f $logfile"
 fi
 TMUX=$TMUX2
