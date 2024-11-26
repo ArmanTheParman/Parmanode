@@ -30,3 +30,4 @@ CHECK FOR COMMON TYPOS
 bitocin
 doecker
 dirve (drive)
+untinstall
