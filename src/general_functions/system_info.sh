@@ -6,9 +6,9 @@ then
     export OS="Mac"
     if [[ -e $HOME/.parmanode/parmanode.conf ]] ; then parmanode_conf_add "OS=${OS}" >$dn ; fi
     # This is adding the variable to a configuration file.
-    # Parmanode_conf_add takes an argument (the text after it is called) and addes that to 
+    # Parmanode_conf_add takes an argument (the text after it is called) and adds that to 
     # The parmanode.conf file
-    # I later realised this is unncessary if I just "export" the variable, making it always available
+    # I later realised this is unnecessary if I just "export" the variable, making it always available
     # I'll clean up the code later.
     return 0 
 fi
@@ -169,7 +169,7 @@ echo -e "
 $green
         ssh $USER@$IP
 $orange
-    ssh needs to be enabled on this system (it usually is be default).
+    ssh needs to be enabled on this system (it usually is by default).
 
     If you really want to use Windows (eww) to access this computer by ssh, you'll
     have to install a program called Putty on the Windows machine.
