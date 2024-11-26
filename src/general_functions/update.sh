@@ -97,7 +97,7 @@ case $choice in
 y|Y|Yes|yes|u)
 sudo apt-get update -y
 sudo apt-get upgrade -y 
-sudo apt-get install jq netcat-tradiational vim net-tools unzip tmux ssh tor -y 
+sudo apt-get install jq netcat-traditional vim net-tools unzip tmux ssh tor -y 
 debug "pause after apt-get install"
 sudo systemctl enable ssh >$dn 2>&1
 sudo systemctl start ssh >$dn 2>&1
