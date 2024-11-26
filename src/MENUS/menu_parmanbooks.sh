@@ -37,20 +37,20 @@ function open_book {
 debug "in open book"
 num=0 
 ls $hp/parman_books | while read i ; do 
-               num=$((num + 1)) 
-               if [[ $num == $choice ]] ; then
-               echo "${hp}/${i}"
-               read
-               #open "${hp}/${i}"
-               echo "pause" ; read
-               return 0
-               else
-               echo "$i"
-               read
-               continue
-               fi
-               invalid
-               return 1
-               done
+    num=$((num + 1)) ; if [[ $num == $choice ]] ; then
+        echo "${hp}/${i}"
+        read
+        #open "${hp}/${i}"
+        echo "pause" ; read
+        return 0
+    else
+        echo "$i"
+        read
+        continue
+    fi
+
+    invalid
+    return 1
+done
 debug "end of open book"
 }
