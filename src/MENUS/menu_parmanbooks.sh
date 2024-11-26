@@ -49,6 +49,6 @@ while IFS= read -r i ; do
         read
         continue
     fi
-done < <(ls $hp/parman_books/)
+done < < (ls $hp/parman_books/)
 echo "end of open book" ; read
 }
