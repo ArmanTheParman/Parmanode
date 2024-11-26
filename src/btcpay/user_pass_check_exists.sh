@@ -9,7 +9,7 @@ while true ; do set_terminal ; echo -e "
 $cyan
                            now)$orange   Or, do it now
 $cyan                           
-                           L)$orange     Later (exiting BTCPay install)
+                           l)$orange     Later (exiting BTCPay install)
  
 ########################################################################################    
 "

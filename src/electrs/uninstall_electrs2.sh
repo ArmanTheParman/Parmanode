@@ -39,7 +39,7 @@ while true ; do
 $red
                         remove)    Remove
 $green                        
-                        L)         Leave it
+                        l)         Leave it
 $orange
 ######################################################################################## 
 "
