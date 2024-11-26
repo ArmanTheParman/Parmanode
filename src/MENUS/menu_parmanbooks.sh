@@ -24,8 +24,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
 debug "in *"
-open_book || echo "error" ; read ; continue
-#menu_main
+open_book || continue
 ;;
 
 esac
@@ -42,8 +41,6 @@ ls | while read x ; do
         open "$x"
         return 0
     else
-        echo "$i"
-        read
         continue
     fi
 done 
