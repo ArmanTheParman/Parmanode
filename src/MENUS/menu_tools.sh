@@ -75,7 +75,6 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     fi
     if [[ $OS == "Mac" ]] ; then 
         update_computer silent
-        if [[ $bashV_major -lt 5 ]] ; then brew install bash ; fi
         success "Your Mac" "being updated"
     fi
     ;;
