@@ -23,10 +23,27 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
-invalid 
+open_book || continue
+menu_main
 ;;
 
 esac
 done
 return 0
+}
+
+function open_book {
+
+num=0 
+ls $hp/parman_books | while read i ; do 
+               num=$((num + 1)) 
+               if [[ $num == $choice ]] ; then
+               open "$i"
+               return 0
+               else
+               continue
+               fi
+               invalid
+               return 1
+               done
 }
