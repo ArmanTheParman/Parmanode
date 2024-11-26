@@ -29,13 +29,13 @@ export parmanode_drive="/media/$USER/parmanode"
 export bashrc="$HOME/.bashrc"
 export macprefix=""
 export torrc="/etc/tor/torrc"
-export varlibtor="/var/lib/tor"
+export varlibtor="$macprefix/var/lib/tor"
 elif [[ $(uname) == Darwin ]] ; then
 export parmanode_drive="/Volumes/parmanode"
 export bashrc="$HOME/.zshrc"
 export macprefix="/usr/local"
 export torrc="$macprefix/etc/tor/torrc"
-export varlibtor="$macprfex/var/lib/tor"
+export varlibtor="$macprefix/var/lib/tor"
 fi
 
 export pd=$parmanode_drive
@@ -53,7 +53,7 @@ export oc="$dp/overview.conf"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
-if [[ -z dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
+if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
