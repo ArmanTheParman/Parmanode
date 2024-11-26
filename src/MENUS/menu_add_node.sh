@@ -1,4 +1,5 @@
 function menu_add_node {
+
 set_terminal
 
 while true
@@ -83,26 +84,27 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
         if [[ -n $bitcoin_n ]] ; then
         set_terminal 
         install_bitcoin
+        menu_main
         return 0
         fi
         ;;
     f|F)
        if [[ -n $fulcrum_n ]] ; then set_terminal
 
-         if [[ $OS == "Linux" ]] ; then install_fulcrum && return 0 
+         if [[ $OS == "Linux" ]] ; then install_fulcrum ; menu_main
          fi
 
          if [[ $OS == "Mac" ]] ; then no_mac && continue 
          fi
 
-         return 0 
+         menu_main
        fi
        ;;
 
     fd|FD)
       if [[ -n $fulcrumdkr_n ]] ; then set_terminal
          install_fulcrum docker 
-         return 0 
+         menu_main
       fi
       ;;
    
@@ -111,13 +113,13 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
        if [[ -n $btcpay_n ]] ; then
 
          if [[ $OS == "Linux" ]] ; then 
-         install_btcpay_linux ; return 0 
+         install_btcpay_linux ; menu_main
          fi
 
          if [[ $OS == "Mac" ]] ; then 
          unset btcpayinstallsbitcoin #important
          install_btcpay_mac || return 1
-         return 0
+         menu_main
          fi
 
        fi
@@ -128,11 +130,11 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 
          if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
        
-         if [[ $OS == "Linux" ]] ; then install_lnd ; return 0 ; fi 
+         if [[ $OS == "Linux" ]] ; then install_lnd ; menu_main ; fi 
 
          if [[ $OS == "Mac" ]] ; then
             announce "For macs, you can use LND with Docker option, not this direct version."
-            return 0 
+            continue
          fi
 
        fi
@@ -149,36 +151,36 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
    bre|BRE|Bre)
        if [[ $computer_type == Pi ]] ; then
           bre_docker_install
-          return 0
+          menu_main
        fi
 
        if [[ -n $btcrpcexplorer_n && $OS == Linux ]] ; then
             install_btcrpcexplorer 
-            return 0
+            menu_main
        fi 
 
        if [[ -n $bre_n && $OS == "Mac" ]] ; then
             bre_docker_install
-            return 0
+            menu_main
        fi
        ;;
    
    ex|EX) 
       if [[ -n $electrumx_n ]] ; then
          install_electrumx
-         return 0
+         menu_main
       fi
       ;;
    ers|ERS|Ers|electrs)
       if [[ -n $electrs_n && -n $electrs2_n ]] ; then
          install_electrs
-         return 0
+         menu_main
       fi
       ;;
    ersd|ERSD|Ersd|electrsdocker)
       if [[ -n $electrsdkr_n && -n $electrsdkr2_n ]] ; then
          install_electrs_docker
-         return 0
+         menu_main
       fi
       ;;
    mem|MEM|Mem) 
@@ -204,8 +206,8 @@ fi
        if [[ -n $litd_n ]] ; then
          if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
          if [[ -z $lnd_n ]] ; then announce "Can't have this with LND. Aborting." ; continue ; fi
-       if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
-       if [[ $OS == "Linux" ]] ; then install_litd ; return 0 ; fi 
+       if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
+       if [[ $OS == "Linux" ]] ; then install_litd ; menu_main ; fi 
        fi
        ;;
 
@@ -216,7 +218,7 @@ fi
 esac
 done
 
-return 0
+menu_main
 
 }
 
