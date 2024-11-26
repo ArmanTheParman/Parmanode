@@ -69,18 +69,14 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
     u|U|up|UP|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then 
-        sudo apt-get update -y && sudo apt-get upgrade -y 
-        sudo apt-get --fix-broken install -y
+        update_computer silent
         enter_continue
         success "Your computer" "being updated"
     fi
     if [[ $OS == "Mac" ]] ; then 
-        please_wait 
-        brew_check || continue 
-        brew update ; brew upgrade 
-        enter_continue
-        success "Your Mac" "being updated"
+        update_computer silent
         if [[ $bashV_major -lt 5 ]] ; then brew install bash ; fi
+        success "Your Mac" "being updated"
     fi
     ;;
 
