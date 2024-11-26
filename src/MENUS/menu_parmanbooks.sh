@@ -50,4 +50,5 @@ ls $hp/parman_books | while read i ; do
                invalid
                return 1
                done
+debug "end of open book"
 }
