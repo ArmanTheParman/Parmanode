@@ -114,7 +114,12 @@ sudo chmod +x $file
 function remove_tor_log_patch {
 if [[ -e $torrc ]] && grep -q "tornoticefile.log" $torrc ; then
 gsed -i '/^.*tornoticefile.log.*$/d' $torrc >$dn 2>&1
+needrestarttor="true"
 if [[ -e $torrc ]] && grep -q "torinfofile.log" $torrc ; then
+needrestarttor="true"
 gsed -i '/^.*torinfofile.log.*$/d'   $torrc >$dn 2>&1
 fi
+
+if [[ -n $needrestarttor ]] ; then restart_tor ; fi
+unset needrestarttor
 }
