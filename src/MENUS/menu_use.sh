@@ -8,7 +8,7 @@ unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp b
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp nextcloudapp
-unset parmanostrapp 
+unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -149,6 +149,9 @@ if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketapp
                             " ; fi
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenapp=1
                        echo -e "                        $cyan  (gr)  $orange       Green Wallet
+                            " ; fi
+if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
+                       echo -e "                        $cyan  (pb)  $orange       Parman Books
                             " ; fi
 echo -e "                            
 #######################################################################################
@@ -482,6 +485,14 @@ ng)
   fi
   ;;
 ##########################
+pb)
+if [[ $parman_booksapp ==1 ]] ; then
+menu_parmanbooks
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
+else invalid
+fi
+;;
+
 *)
    invalid
    clear
