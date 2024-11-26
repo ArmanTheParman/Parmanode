@@ -39,8 +39,11 @@ ls $hp/parman_books | while read i ; do
                num=$((num + 1)) 
                if [[ $num == $choice ]] ; then
                open "$i"
+               echo "pause" ; read
                return 0
                else
+               echo "$i"
+               read
                continue
                fi
                invalid
