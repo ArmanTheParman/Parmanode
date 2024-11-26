@@ -41,7 +41,7 @@ ls $hp/parman_books | while read i ; do
         # echo "${hp}/${i}"
         # read
         # #open "${hp}/${i}"
-        echo "pause" ; read
+        echo "$1 - found" ; read
         return 0
     else
         echo "$i"
