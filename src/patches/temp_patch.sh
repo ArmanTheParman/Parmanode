@@ -125,5 +125,6 @@ gsed -i '/^.*torinfofile.log.*$/d'   $torrc >$dn 2>&1
 fi
 
 if [[ -n $needrestarttor ]] ; then restart_tor ; fi
+debug "remove tor log patch"
 unset needrestarttor
 }
