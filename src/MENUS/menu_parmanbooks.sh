@@ -23,6 +23,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
+debug "in *"
 open_book || continue
 menu_main
 ;;
@@ -33,7 +34,7 @@ return 0
 }
 
 function open_book {
-
+debug "in open book"
 num=0 
 ls $hp/parman_books | while read i ; do 
                num=$((num + 1)) 
