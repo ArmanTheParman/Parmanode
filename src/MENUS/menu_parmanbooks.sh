@@ -24,7 +24,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
 debug "in *"
-open_book || continue
+open_book || invalid
 ;;
 
 esac
