@@ -23,7 +23,6 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 
 *)
-debug "in *"
 open_book || invalid
 ;;
 
@@ -43,6 +42,8 @@ ls | while read x ; do
     else
         continue
     fi
+echo "error"
+read
 return 1
 done 
 }
