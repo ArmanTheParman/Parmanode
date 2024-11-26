@@ -10,6 +10,5 @@ fi
 
 if [[ $drive_electrs == "external" ]] ; then
  return 0
- # drive preparation done in "restore_electrs_drive" 
 fi  
 }
