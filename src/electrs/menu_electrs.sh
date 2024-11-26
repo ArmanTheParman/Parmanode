@@ -248,7 +248,7 @@ if ! which tmux >$dn 2>&1 ; then
 yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
-if grep -q "electrs-" $ic && [[ $OS == Linux ]] ; then
+if grep -q "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
 tmux new -s -d "sudo journalctl -fexu electrs.service"
 debug "in if electrs log"
 else
