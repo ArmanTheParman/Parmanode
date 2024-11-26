@@ -40,6 +40,7 @@ cd $hp/parman_books
 ls | while read x ; do 
     num=$((num + 1)) 
     if [[ $num == $choice ]] ; then
+        echo "$x" ; read
         open "$x"
         return 0
     else
