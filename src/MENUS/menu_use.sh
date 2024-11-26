@@ -486,7 +486,7 @@ ng)
   ;;
 ##########################
 pb)
-if [[ $parman_booksapp ==1 ]] ; then
+if [[ $parman_booksapp == 1 ]] ; then
 menu_parmanbooks
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
