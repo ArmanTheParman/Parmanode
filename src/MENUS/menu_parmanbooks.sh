@@ -51,6 +51,6 @@ ls $hp/parman_books | while read i ; do
 
 #     invalid
 #     return 1
-# done
+done
 echo "end of open book" ; read
 }
