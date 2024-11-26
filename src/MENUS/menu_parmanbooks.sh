@@ -34,14 +34,11 @@ return 0
 }
 
 function open_book {
-debug "in open book"
 num=0 
 cd $hp/parman_books
 ls | while read x ; do 
     num=$((num + 1)) 
     if [[ $num == $choice ]] ; then
-        echo "$x" 
-        read h
         open "$x"
         return 0
     else
