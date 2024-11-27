@@ -8,6 +8,7 @@ function start_bitcoin {
 if [[ -e /.dockerenv ]] ; then
 please_wait
 pn_tmux "tmux new -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1"
+sleep 0.5
 return 0
 fi
 
@@ -23,6 +24,7 @@ if grep -q btccombo $ic ; then
     docker exec -it btcpay bitcoind
     "
 
+sleep 0.5
 return 0
 fi
 
@@ -31,6 +33,8 @@ if [[ $OS == "Linux" ]] ; then
         if grep -q "drive=external" $pc >$dn ; then mount_drive ; fi
         sudo systemctl start bitcoind.service 
         "
+
+sleep 0.5
 fi                 
 
 if [[ $(uname) == Darwin ]] ; then
@@ -52,6 +56,7 @@ function stop_bitcoin {
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 pn_tmux "pkill bitcoind" 
+sleep 0.5
 return 0
 fi
 
@@ -60,6 +65,7 @@ if grep -q btccombo $ic ; then
 pn_tmux "
 docker exec -it btcpay pkill bitcoind
 "
+sleep 0.5
 return 0
 fi
 
@@ -67,6 +73,7 @@ if [[ $OS == "Linux" ]] ; then
 pn_tmux "
 sudo systemctl stop bitcoind.service 
 "
+sleep 0.5
 fi
 
 if [[ $OS == "Mac" ]] ; then
@@ -78,10 +85,13 @@ function start_bitcoin_indocker {
 pn_tmux "
 docker exec -itu parman btcpay bitcoind
 "
+sleep 0.5
 }
 
 function stop_bitcoin_docker {
 pn_tmux "
 docker exec -itu parman btcpay bitcoin-cli stop
 "
+sleep 0.5
+return 0
 }
