@@ -97,8 +97,14 @@ case $choice in
 y|Y|Yes|yes|u)
 sudo apt-get update -y
 sudo apt-get upgrade -y 
-sudo apt-get install jq netcat-traditional vim net-tools unzip tmux ssh tor -y 
-debug "pause after apt-get install"
+sudo apt-get install -y jq
+sudo apt-get install -y netcat-tradiational
+sudo apt-get install -y vim
+sudo apt-get install -y net-tools
+sudo apt-get install -y unzip
+sudo apt-get install -y tmux
+sudo apt-get install -y ssh
+sudo apt-get install -y tor
 sudo systemctl enable ssh >$dn 2>&1
 sudo systemctl start ssh >$dn 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
