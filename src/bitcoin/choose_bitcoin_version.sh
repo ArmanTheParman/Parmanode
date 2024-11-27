@@ -10,7 +10,7 @@ fi
 
 
 while true ; do
-
+#default version set at the beginning of instll_bitcoin()
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -18,22 +18,22 @@ $cyan
 $orange
 ########################################################################################
 $green
-       0)  v27.1 (Download and verify 'trusted' releases)
+       0)  v$version (Download and verify 'trusted' releases)
 $orange
        1)  v26.0 (Download and verify 'trusted' releases)
 
        2)  v25.0 (Download and verify 'trusted' releases) 
 
-       3)  Guided compile v27.1
+       3)  Guided compile v$version
 $bright_blue
-       4)  Guided compile (FILTER-ORDINALS patch, by Luke Dashjr)
+       4)  Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
 
        5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core) - 
            syncs faster; bug fixes missing in Core; and power user options / tools.
-$orange
+$red
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
-
+$orange
        7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
 
@@ -52,7 +52,7 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0|27|"")
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="27.1" ; export bitcoin_compile="false" ; break ;;
+export bitcoin_compile="false" ; break ;;
 1|26) 
 parmanode_conf_add "bitcoin_choice=precompiled"
 export version="26.0" ; export bitcoin_compile="false" ; break ;;
@@ -61,17 +61,17 @@ parmanode_conf_add "bitcoin_choice=precompiled"
 export version="25.0" ; export bitcoin_compile="false" ; break ;;
 3) 
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="choose" ; break ;;
+export bitcoin_compile="true" ; break ;;
 4)
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="choice" ; export ordinals_patch="true" ; break ;;
+export bitcoin_compile="true" ; export ordinals_patch="true" ; break ;;
 5)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
 export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="latest" ; break ;;
+export bitcoin_compile="true" ; export version="master" ; break ;;
 7)
 bitcoin_compile_instructions
 return 0
@@ -90,7 +90,7 @@ if ! which bitcoind >$dn ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode could not detect bitcoind in /usr/local/bin. Aborting.
+    Parmanode could not detect bitcoind in$cyan /usr/local/bin$orange. Aborting.
 
 ########################################################################################
 "
