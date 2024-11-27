@@ -84,7 +84,7 @@ echo ""
 echo -e "$output2"
 echo ""
 echo -e "$output4"
-echo ""
+echo -e ""
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt ) ; then
 echo -ne "
 $green
