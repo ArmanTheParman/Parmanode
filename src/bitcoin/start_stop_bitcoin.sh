@@ -45,6 +45,8 @@ if [[ $(uname) == Darwin ]] ; then
                 fi
         fi
         run_bitcoinqt
+        sleep 0.5
+        return 0
 fi
 }
 
@@ -78,6 +80,7 @@ fi
 
 if [[ $OS == "Mac" ]] ; then
 stop_bitcoinqt
+sleep 0.5
 fi
 }
 
