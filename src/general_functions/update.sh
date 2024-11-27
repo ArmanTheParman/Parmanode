@@ -45,14 +45,23 @@ case $choice in
 y|Y|YES|yes|u)
 if ! which brew >$dn ; then 
 install_homebrew 
-/opt/homebrew/bin/brew install bash netcat jq vim tmux tor
-enter_continue
+/opt/homebrew/bin/brew install bash
+/opt/homebrew/bin/brew install netcat
+/opt/homebrew/bin/brew install jq
+/opt/homebrew/bin/brew install vim
+/opt/homebrew/bin/brew install tmux
+/opt/homebrew/bin/brew install tor
 success "Parmanode has completed installing Homebrew for you."
 break
 else
 brew update
 brew upgrade
-brew install bash netcat jq vim tmux tor
+/opt/homebrew/bin/brew install bash
+/opt/homebrew/bin/brew install netcat
+/opt/homebrew/bin/brew install jq
+/opt/homebrew/bin/brew install vim
+/opt/homebrew/bin/brew install tmux
+/opt/homebrew/bin/brew install tor
 break
 fi
 ;;
