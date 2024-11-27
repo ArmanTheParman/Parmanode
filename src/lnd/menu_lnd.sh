@@ -224,8 +224,10 @@ r|R) menu_lnd ;;
 t|T|tor)
 if [[ $lndtor == Disabled ]] ; then
 lnd_tor only
+debug "if true"
 else
 lnd_tor off
+debug "else"
 fi
 ;;
 

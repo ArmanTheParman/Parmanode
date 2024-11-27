@@ -1,7 +1,7 @@
 function lnd_tor {
 # arguments: only, both, off
 local file=$HOME/.lnd/lnd.conf
-
+debug "in lnd_tor"
 if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
 
 #while stream isolation is enabled, the TOR proxy may not be skipped.
@@ -36,7 +36,8 @@ $cyan
 "
 enter_abort 
 jump $choice || { invalid ; continue ; } ; set_terminal
-read choice ; case $choice in a|A) return 1 ;; 
+debug "2"
+read choice ; case $choice in a|A) return 1 ;;
 "") 
 set_terminal ; please_wait ; return 0 ;; esac ; done
 }
