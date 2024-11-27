@@ -92,7 +92,8 @@ $green
             $red
                stop)$orange         Stop Bitcoin
             $cyan
-               restart)$orange      Restart Bitcoin"
+               restart)$orange      Restart Bitcoin
+"
 fi
 echo -ne "$output3
             $cyan
