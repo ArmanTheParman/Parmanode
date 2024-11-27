@@ -4,6 +4,7 @@
 
 Version 3.47.4
      -Fixed LND tor bug
+     -improved update_computer()
 
 Version 3.47.3
      -Nearly 100 pull requests merged for typos, some fixed bugs. Thanks to Github user secp512k2
