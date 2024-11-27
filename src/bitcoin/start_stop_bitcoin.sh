@@ -73,7 +73,6 @@ pn_tmux "
 sudo systemctl stop bitcoind.service 
 "
 sleep 0.5
-enter_continue "stopping bitcoind"
 return 0
 fi
 
