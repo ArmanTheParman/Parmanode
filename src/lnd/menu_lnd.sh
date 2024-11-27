@@ -108,7 +108,7 @@ fi
 unset lnd_onion clearnetURI
 
 if [[ $lnddockermenu == "false" ]] ; then 
-lncli getinfo >/$dp/lndinfo.log 2>$dn
+lncli getinfo >$dp/lndinfo.log 2>$dn
 else
 docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>$dn
 fi
