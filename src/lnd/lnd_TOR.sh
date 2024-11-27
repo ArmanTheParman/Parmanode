@@ -6,6 +6,8 @@ if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
 debug "1"
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
+enable_tor_general
+
 if [[ $1 != off ]] ; then
 debug inif
 lnd_tor_message || return 1
