@@ -1,7 +1,7 @@
 function start_mempool {
 docker ps >$dn 2>&1 || { announce "Docker not running. Aborting." && return 1 ; }
 pn_tmux "
-cd $hp/mempool/docker ; docker compose up -d cd - >$dn
+cd $hp/mempool/docker ; docker compose up -d ; cd - >$dn
 "
 
 }
