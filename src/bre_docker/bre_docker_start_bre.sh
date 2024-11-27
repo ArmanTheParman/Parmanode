@@ -15,8 +15,14 @@ fi
 
 #start container
 if ! docker ps 2>&1 | grep -q bre ; then #is bre container running?
+    tmux "
     docker start bre
-fi
+    docker exec -du parman bre /bin/bash -c 'btc-rpc-explorer'
+    "
+else
 #start program
-docker exec -du parman bre /bin/bash -c "btc-rpc-explorer" #start btc-rpc-explorer
+    tmux "
+    docker exec -du parman bre /bin/bash -c 'btc-rpc-explorer'
+    "
+fi
 }
