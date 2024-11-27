@@ -3,12 +3,14 @@ function lnd_tor {
 local file=$HOME/.lnd/lnd.conf
 debug "in lnd_tor"
 if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
-
+debug "1"
 #while stream isolation is enabled, the TOR proxy may not be skipped.
 
 if [[ $1 != off ]] ; then
+debug inif
 lnd_tor_message || return 1
 fi
+debug afterif
 delete_tor_lnd_conf || return 1
 
 debug "before case "
