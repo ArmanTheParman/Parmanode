@@ -11,6 +11,6 @@ fi
 install_tmux #exits if installed
 
 TMUX2=$TMUX ; unset TMUX ; clear
-tmux new -s $tmuxname -d "$command"
+sudo tmux new -s $tmuxname -d "$command"
 TMUX=$TMUX2
 }
