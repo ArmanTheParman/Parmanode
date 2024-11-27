@@ -29,7 +29,8 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-    pn_tmux "if grep -q "drive=external" $pc ; then mount_drive ; fi ; sudo systemctl start bitcoind.service"
+    if grep -q "drive=external" $pc ; then mount_drive ; fi 
+    tmux "sudo systemctl start bitcoind.service"
     sleep 0.5
     debug "pause"
 fi                 
