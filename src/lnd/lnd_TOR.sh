@@ -1,47 +1,3 @@
-function lnd_tor {
-# arguments: only, both, off
-local file=$HOME/.lnd/lnd.conf
-debug "in lnd_tor"
-if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
-
-#while stream isolation is enabled, the TOR proxy may not be skipped.
-
-function lnd_tor_message {
-while true ; do
-echo -e "
-########################################################################################
-
-   Whether LND is running by Tor-Only or as a hybrid Tor/Clearnet ultimately is
-   reveald by the$cyan Uniform Resource Identifier (URI)$orange types you see at the bottom
-   of the LND menu.
-
-$bright_blue
-       If there is only a Tor URI (onion), then LND is running Tor-only. 
-   
-       If there is only a clearnet URI on the menu page, then LND is running on 
-       clearnet only. 
-
-       If you see both clearnet and onion addresses, it means LND is running as
-       a hybrid Tor + clearnet node.
-
-$cyan
-   To ensure LND is running as Tor only$orange (if that's your preference), you need to turn
-   Tor mode on, but also turn hybrid mode off. If Hybrid mode doesn't successfuly turn 
-   off, (as concluded by the presence of a clearnet URI in the menu screen) you can 
-   manually edit the lnd.conf file and make sure none of the configuration options are 
-   specifying external clearnet addresses. Any configuration directive with 'listening'
-   in the name is not included in this requirement.
-
-########################################################################################
-"
-enter_abort 
-jump $choice || { invalid ; continue ; } ; set_terminal
-debug "2"
-read choice ; case $choice in a|A) return 1 ;;
-"") 
-set_terminal ; please_wait ; return 0 ;; esac ; done
-}
-
  function delete_tor_lnd_conf { 
    unset count
    while grep -q "Added by Parmanode (start)" $file ; do #while loop removes multiple occurrences 
@@ -124,6 +80,13 @@ fi
 ########################################################################################
 #Begin
 ########################################################################################
+function lnd_tor {
+# arguments: only, both, off
+local file=$HOME/.lnd/lnd.conf
+debug "in lnd_tor"
+if ! grep -q "lnddocker" $ic && ! which tor >$dn ; then install_tor ; fi
+
+#while stream isolation is enabled, the TOR proxy may not be skipped.
 
 if [[ $1 != off ]] ; then
 lnd_tor_message || return 1
@@ -190,4 +153,39 @@ fi
 if [[ $2 != skipsuccess ]] ; then
 success "Adjusting LND Tor settings done."
 fi
+}
+
+function lnd_tor_message {
+while true ; do
+echo -e "
+########################################################################################
+
+   Whether LND is running by Tor-Only or as a hybrid Tor/Clearnet ultimately is
+   reveald by the$cyan Uniform Resource Identifier (URI)$orange types you see at the bottom
+   of the LND menu.
+
+$bright_blue
+       If there is only a Tor URI (onion), then LND is running Tor-only. 
+   
+       If there is only a clearnet URI on the menu page, then LND is running on 
+       clearnet only. 
+
+       If you see both clearnet and onion addresses, it means LND is running as
+       a hybrid Tor + clearnet node.
+
+$cyan
+   To ensure LND is running as Tor only$orange (if that's your preference), you need to turn
+   Tor mode on, but also turn hybrid mode off. If Hybrid mode doesn't successfuly turn 
+   off, (as concluded by the presence of a clearnet URI in the menu screen) you can 
+   manually edit the lnd.conf file and make sure none of the configuration options are 
+   specifying external clearnet addresses. Any configuration directive with 'listening'
+   in the name is not included in this requirement.
+
+########################################################################################
+"
+enter_abort 
+jump $choice || { invalid ; continue ; } ; set_terminal
+read choice ; case $choice in a|A) return 1 ;;
+"") 
+set_terminal ; please_wait ; return 0 ;; esac ; done
 }
