@@ -2,6 +2,7 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
+enable_tor_general
 remove_tor_log_patch
 #move to next patch, patch 8
     reduce_systemd_logs 
