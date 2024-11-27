@@ -7,11 +7,7 @@ function start_bitcoin {
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
-# & setting not needed, bitcoind is already a daemon and tmux runs in the backgroud
-TMUX2=$TMUX ; unset TMUX ; clear
-tmux new -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1
-TMUX=$TMUX2
-sleep 4
+pn_tmux "tmux new -d -s bitcoin 'bitcoind -conf=$HOME/.bitcoin/bitcoin.conf' >$dn 2>&1"
 return 0
 fi
 
@@ -19,39 +15,32 @@ fi
 #needs to be first...
 if grep -q btccombo $ic ; then
 
+    pn_tmux "
     if ! docker ps | grep -q btcpay ; then
         docker start btcpay >$dn 2>&1 ; sleep 3
     fi
 
     docker exec -it btcpay bitcoind
+    "
 
-    return 0
+return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-
-                    if [[ $1 == "no_interruption" ]] ; then
-                    sudo systemctl start bitcoind.service
-                    return 0
-                    fi
-
-
-        set_terminal
-        echo "Bitcoin will start in a moment..."
+        pn_tumx "
         if grep -q "drive=external" $pc >$dn ; then mount_drive ; fi
-        set_terminal
         sudo systemctl start bitcoind.service 
+        "
 fi                 
-
 
 if [[ $(uname) == Darwin ]] ; then
         if grep -q "drive=external" $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
-                announce "Bitcoin is setup to sync to the external drive, but it is not detected. Aborting."
+                announce "Drive needs to be mounted"
                 return 1
                 fi
         fi
-run_bitcoinqt
+        run_bitcoinqt
 fi
 }
 
@@ -62,39 +51,22 @@ function stop_bitcoin {
 
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
-please_wait
-pkill bitcoind >$dn
-sleep 1
+pn_tmux "pkill bitcoind" 
 return 0
 fi
 
 #needs to be first...
 if grep -q btccombo $ic ; then
-please_wait
-sleep 1
+pn_tmux "
 docker exec -it btcpay pkill bitcoind
+"
 return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-set_terminal 
-please_wait
-sudo systemctl stop bitcoind.service 2> $tmp/bitcoinoutput.tmp
-if grep "28" $tmp/bitcoinoutput.tmp ; then
-echo -e "
-    This might take longer than usual as Bitcoin is running a process 
-    that shouldn't be interrupted. Please wait. 
-
-    Trying every 5 seconds."
-sleep 1 ; echo 1
-sleep 1 ; echo 2
-sleep 1 ; echo 3
-sleep 1 ; echo 4
-sleep 1 ; echo 5
-
-stop_bitcoin
-rm $tmp/bitcoinoutput.tmp
-fi
+pn_tmux "
+sudo systemctl stop bitcoind.service 
+"
 fi
 
 if [[ $OS == "Mac" ]] ; then
@@ -103,9 +75,13 @@ fi
 }
 
 function start_bitcoin_indocker {
+pn_tmux "
 docker exec -itu parman btcpay bitcoind
+"
 }
 
 function stop_bitcoin_docker {
+pn_tmux "
 docker exec -itu parman btcpay bitcoin-cli stop
+"
 }
