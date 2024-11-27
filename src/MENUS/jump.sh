@@ -50,7 +50,7 @@ else return 1
 fi
 ;;
 
-ulnd|mlnd)
+ulnd|mlnd|ml|ul)
 if grep -q "lnd-end" $ic ; then
 menu_lnd
 invalid_flag=set
