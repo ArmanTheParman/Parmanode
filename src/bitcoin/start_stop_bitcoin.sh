@@ -30,9 +30,9 @@ fi
 
 if [[ $OS == "Linux" ]] ; then 
     if grep -q "drive=external" $pc ; then mount_drive ; fi 
-    tmux "systemctl start bitcoind.service"
+    tmux "sudo systemctl start bitcoind.service"
     sleep 0.5
-    debug "pause"
+    enter_continue "pause"
 fi                 
 
 if [[ $(uname) == Darwin ]] ; then
