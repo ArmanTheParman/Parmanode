@@ -92,7 +92,8 @@ $green
             $red
                stop)$orange         Stop Bitcoind
             $cyan"
-else echo -ne "
+fi
+echo -ne "
 $output3\n               ${cyan}restart)$orange      Restart Bitcoind
             $cyan
                n)$orange            Access Bitcoin node information 
