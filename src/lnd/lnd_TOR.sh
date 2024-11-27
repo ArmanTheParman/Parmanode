@@ -1,85 +1,3 @@
- function delete_tor_lnd_conf { 
-   unset count
-   while grep -q "Added by Parmanode (start)" $file ; do #while loop removes multiple occurrences 
-   sudo gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >$dn 2>&1
-   count=$((1 + count))
-   sleep 0.5
-   if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
-   done
-   }
-
-   function add_tor_lnd_conf {
-   if grep -q "litd" $ic >$dn 2>&1 ; then
-   
-   echo "; Added by Parmanode (start)
-
-   lnd.tor.streamisolation=true
-   lnd.tor.v3=1
-   lnd.tor.socks=9050  
-   lnd.tor.control=9051 
-   lnd.tor.dns=soa.nodes.lightning.directory:53
-   lnd.tor.active=1
-   lnd.tor.skip-proxy-for-clearnet-targets=false
-
-   ; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
-
-   else 
-
-   echo "; Added by Parmanode (start)
-
-   [tor]
-   tor.streamisolation=true
-   tor.v3=1
-   tor.socks=9050  
-   tor.control=9051 
-   tor.dns=soa.nodes.lightning.directory:53
-   tor.active=1
-   ; activate split connectivity
-   tor.skip-proxy-for-clearnet-targets=false
-
-   ; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
-   fi
-   }
-
-function uncomment_clearnet {
-if grep -q "litd" $ic >$dn 2>&1 ; then
-
-sudo gsed -i '/^; lnd.tlsextraip/s/^..//' $file
-sudo gsed -i '/^; lnd.externalip/s/^..//' $file
-sudo gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
-sudo gsed -i '/^; lnd.externalhosts/s/^..//' $file
-
-else
-
-sudo gsed -i '/^; tlsextraip/s/^..//' $file
-sudo gsed -i '/^; externalip/s/^..//' $file
-sudo gsed -i '/^; tlsextradomain/s/^..//' $file
-sudo gsed -i '/^; externalhosts/s/^..//' $file
-
-fi
-}
-
-function commentout_clearnet {
-if grep -q "litd" $ic >$dn 2>&1 ; then
-
-sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
-sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
-sudo gsed -i '/^lnd.externalip/s/^/; /' $file
-sudo gsed -i '/^lnd.externalhosts/s/^/; /' $file
-
-else
-
-sudo gsed -i '/^tlsextraip/s/^/; /' $file
-sudo gsed -i '/^tlsextradomain/s/^/; /' $file
-sudo gsed -i '/^externalip/s/^/; /' $file
-sudo gsed -i '/^externalhosts/s/^/; /' $file
-
-fi
-}
-
-########################################################################################
-#Begin
-########################################################################################
 function lnd_tor {
 # arguments: only, both, off
 local file=$HOME/.lnd/lnd.conf
@@ -152,6 +70,86 @@ fi
 
 if [[ $2 != skipsuccess ]] ; then
 success "Adjusting LND Tor settings done."
+fi
+}
+
+
+function delete_tor_lnd_conf { 
+unset count
+while grep -q "Added by Parmanode (start)" $file ; do #while loop removes multiple occurrences 
+sudo gsed -i '/Added by Parmanode (start)/,/Added by Parmanode (end)/d' $file >$dn 2>&1
+count=$((1 + count))
+sleep 0.5
+if [[ $count -gt 5 ]] ; then announce "loop error when editing $file. Aborting." ; return 1 ; fi
+done
+}
+
+function add_tor_lnd_conf {
+if grep -q "litd" $ic >$dn 2>&1 ; then
+
+echo "; Added by Parmanode (start)
+
+lnd.tor.streamisolation=true
+lnd.tor.v3=1
+lnd.tor.socks=9050  
+lnd.tor.control=9051 
+lnd.tor.dns=soa.nodes.lightning.directory:53
+lnd.tor.active=1
+lnd.tor.skip-proxy-for-clearnet-targets=false
+
+; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
+
+else 
+
+echo "; Added by Parmanode (start)
+
+[tor]
+tor.streamisolation=true
+tor.v3=1
+tor.socks=9050  
+tor.control=9051 
+tor.dns=soa.nodes.lightning.directory:53
+tor.active=1
+; activate split connectivity
+tor.skip-proxy-for-clearnet-targets=false
+
+; Added by Parmanode (end)" | tee -a $file >$dn 2>&1
+fi
+}
+
+function uncomment_clearnet {
+if grep -q "litd" $ic >$dn 2>&1 ; then
+
+sudo gsed -i '/^; lnd.tlsextraip/s/^..//' $file
+sudo gsed -i '/^; lnd.externalip/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
+sudo gsed -i '/^; lnd.externalhosts/s/^..//' $file
+
+else
+
+sudo gsed -i '/^; tlsextraip/s/^..//' $file
+sudo gsed -i '/^; externalip/s/^..//' $file
+sudo gsed -i '/^; tlsextradomain/s/^..//' $file
+sudo gsed -i '/^; externalhosts/s/^..//' $file
+
+fi
+}
+
+function commentout_clearnet {
+if grep -q "litd" $ic >$dn 2>&1 ; then
+
+sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
+sudo gsed -i '/^lnd.externalip/s/^/; /' $file
+sudo gsed -i '/^lnd.externalhosts/s/^/; /' $file
+
+else
+
+sudo gsed -i '/^tlsextraip/s/^/; /' $file
+sudo gsed -i '/^tlsextradomain/s/^/; /' $file
+sudo gsed -i '/^externalip/s/^/; /' $file
+sudo gsed -i '/^externalhosts/s/^/; /' $file
+
 fi
 }
 
