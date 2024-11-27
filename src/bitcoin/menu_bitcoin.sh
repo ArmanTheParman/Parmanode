@@ -138,23 +138,12 @@ start_bitcoin
 ;;
 
 stop|STOP|Stop)
-if [[ $OS == Linux ]] ; then
-    while pgrep bitcoind ; do 
-    stop_bitcoin
-    sleep 2
-    done
-elif [[ $OS == Mac ]] ; then
-    stop_bitcoin
-fi
-
+stop_bitcoin
 ;;
 
 restart|RESTART|Restart)
-if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
-if [[ $OS == "Mac" ]] ; then
 stop_bitcoin
-start_bitcoin "no_interruption"
-fi
+start_bitcoin 
 ;;
 
 c|C)
