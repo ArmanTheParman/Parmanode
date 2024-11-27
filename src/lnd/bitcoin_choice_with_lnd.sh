@@ -5,6 +5,7 @@ set_terminal ; echo -e "
 
     You have a choice to use a local installation of Bitcoin to use with LND, or you 
     can choose to connect to one not running on this particular machine.
+    Most people will choose local, don't be fancy.
 $green
                 local)$orange     Bitoind on local machine
 $bright_blue
