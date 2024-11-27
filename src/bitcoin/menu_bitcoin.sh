@@ -110,7 +110,6 @@ $green
                delete)$orange       Delete blockchain data and start over
             $cyan
                upd)$orange          Update Bitcoin wizard
-
          $btcman
          $cyan      o)$orange            OTHER...
          $output3
