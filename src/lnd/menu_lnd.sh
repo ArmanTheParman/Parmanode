@@ -199,7 +199,7 @@ $cyan
 $bright_blue
       (t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
 $cyan
-      (th)$orange             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
+      (th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
 $cyan
       (w)$orange              ... wallet options
 $cyan
