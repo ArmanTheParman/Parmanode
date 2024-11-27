@@ -91,7 +91,7 @@ $green
             $red
                stop)$orange         Stop Bitcoind
             $cyan
-$output3               ${cyan}restart)$orange      Restart Bitcoind
+$output3               \n${cyan}restart)$orange      Restart Bitcoind
             $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
