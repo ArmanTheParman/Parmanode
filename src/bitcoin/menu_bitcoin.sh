@@ -94,8 +94,7 @@ $green
             $cyan
                restart)$orange      Restart Bitcoin"
 fi
-echo -ne "
-$output3
+echo -ne "$output3
             $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
