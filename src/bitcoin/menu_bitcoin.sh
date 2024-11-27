@@ -52,7 +52,7 @@ output2="                   Will sync to the $drive drive"
 fi                         
 
 
-if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
+if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
 output3="$green               qtstart)$orange      Start Bitcoin Qt
 "
 fi
@@ -85,12 +85,14 @@ echo -e "$output2"
 echo ""
 echo -e "$output4"
 echo ""
+if ! [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt ; then
 echo -ne "
 $green
                start)$orange        Start Bitcoind
             $red
                stop)$orange         Stop Bitcoind
-            $cyan
+            $cyan"
+else echo -ne "
 $output3\n               ${cyan}restart)$orange      Restart Bitcoind
             $cyan
                n)$orange            Access Bitcoin node information 
