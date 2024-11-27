@@ -196,7 +196,7 @@ $cyan
       (lc)$orange             Inspect and edit $lndconf file (lcv for vim)
 $cyan
       (scb)$orange            Static Channel Backup 
-$cyan
+$bright_blue
       (t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
 $cyan
       (th)$orange             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
