@@ -173,10 +173,11 @@ function check_core_rpc_host_mempool {
 confIP=$(grep " CORE_RPC_HOST:" $mempoolconf | cut -d \" -f2 )
 if [[ "$confIP" != "$IP" ]] ; then
 export mc_count=$((mc_count + 1))
+if [[ $mc_count -gt 1 ]] ; then onemorething_this="$onemorething" ; else unset onemorething_this ; fi
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-$onemorething
+$onemorething_this
     Warning, the$cyan CORE_RPC_HOST$orange IP address in the mempool configuration
     does not seem to match your computers IP address as detected by Parmanode.
 
@@ -223,10 +224,11 @@ export mc_count=$((mc_count + 1 ))
 confIP=$(grep " ELECTRUM_HOST:" $mempoolconf | cut -d \" -f2 )
 if [[ "$confIP" != "$IP" ]] ; then
 export mc_count=$((mc_count + 1))
+if [[ $mc_count -gt 1 ]] ; then onemorething_this="$onemorething" ; else unset onemorething_this ; fi
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-
+$onemorething_this
     Warning, the$cyan ELECTRUM_HOST$orange IP address in the mempool configuration
     does not seem to match your computers IP address as detected by Parmanode.
 
@@ -272,10 +274,11 @@ source $bc >$dn 2>&1
 user=$(grep " CORE_RPC_USERNAME:" $mempoolconf | cut -d \" -f2 )
 if [[ "$user" != "$rpcuser" ]] ; then
 export mc_count=$((mc_count + 1 ))
+if [[ $mc_count -gt 1 ]] ; then onemorething_this="$onemorething" ; else unset onemorething_this ; fi
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-
+$onemorething_this
     Warning, the$cyan Bitcoin username$orange in the mempool configuration
     does not seem to match your local bitcoin conf username as detected by Parmanode.
 
@@ -322,10 +325,11 @@ source $bc >$dn 2>&1
 pass=$(grep " CORE_RPC_PASSWORD:" $mempoolconf | cut -d \" -f2 )
 if [[ "$pass" != "$rpcpassword" ]] ; then
 export mc_count=$((mc_count + 1))
+if [[ $mc_count -gt 1 ]] ; then onemorething_this="$onemorething" ; else unset onemorething_this ; fi
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
-
+$onemorething_this
     Warning, the$cyan Bitcoin password$orange in the mempool configuration
     does not seem to match your local bitcoin conf password as detected by Parmanode.
 
