@@ -8,18 +8,7 @@ function compile_bitcoin {
     export GIT_COMMITTER_NAME="Parmanode Committer"
     export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
-set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get --fix-broken install -y
-sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils build-essential autotools-dev -y
-sudo apt-get install pcreated kg-config python3 patch bison autoconf libboost-all-dev autoconf -y
-sudo apt-get install imagemagick -y
-sudo apt-get install librsvg2-bin -y
-sudo apt-get install libdb-dev libdb++-dev -y #berkley db stuff
-sudo apt-get install libzmq3-dev libqrencode-dev libsqlite3-dev -y
-sudo apt-get install libevent-dev libssl-dev libminiupnpc-dev -y
-sudo apt-get install libprotobuf-dev protobuf-compiler -y
+bitcoin_compile_dependencies || return 1
 
 #for later when mac is supported
 [[ $OS == "Mac" ]] && brew install berkeley-db@4
@@ -249,5 +238,41 @@ q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 
 sudo make install || enter_continue "something might have gone wrong here."
+
+}
+
+function bitcoin_compile_dependencies {
+
+set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
+sudo apt-get update -y
+sudo apt-get --fix-broken install -y
+sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y curl              || { enter_continue "Something went wrong with curl.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y g++-multilib      || { enter_continue "Something went wrong with g++-multilib.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libtool           || { enter_continue "Something went wrong with libtool.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y binutils          || { enter_continue "Something went wrong with binutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wrong with bsdmainutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y build-essential   || { enter_continue "Something went wrong with build-essential.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autotools-dev     || { enter_continue "Something went wrong with autotools-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y pcreated          || { enter_continue "Something went wrong with pcreated.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y kg-config         || { enter_continue "Something went wrong with kg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y python3           || { enter_continue "Something went wrong with python3.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y patch             || { enter_continue "Something went wrong with patch.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autoconf          || { enter_continue "Something went wrong with autoconf.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libboost-all-dev  || { enter_continue "Something went wrong with libboost-all-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y imagemagick       || { enter_continue "Something went wrong with imagemagick.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y librsvg2-bin      || { enter_continue "Something went wrong with librsvg2-bin.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb-dev         || { enter_continue "Something went wrong with libdb-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb++-dev       || { enter_continue "Something went wrong with libdb++-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libzmq3-dev       || { enter_continue "Something went wrong with libzmq3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqrencode-dev   || { enter_continue "Something went wrong with libqrencode-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libsqlite3-dev    || { enter_continue "Something went wrong with libsqlite3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libevent-dev      || { enter_continue "Something went wrong with libevent-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libssl-dev        || { enter_continue "Something went wrong with libssl-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Something went wrong with libminiupnpc-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libprotobuf-dev   || { enter_continue "Something went wrong with libprotobuf-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y protobuf-compiler || { enter_continue "Something went wrong with protobuf-compiler.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 
 }
