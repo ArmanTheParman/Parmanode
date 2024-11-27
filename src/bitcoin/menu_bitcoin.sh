@@ -53,12 +53,12 @@ fi
 
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
-output3="$green               qtstart)$orange      Start Bitcoin Qt
+output3="\n$green               qtstart)$orange      Start Bitcoin Qt
 "
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="$red               qtstop)$orange       Stop Bitcoin Qt
+output3="\n$red               qtstop)$orange       Stop Bitcoin Qt
 "
 fi
 
