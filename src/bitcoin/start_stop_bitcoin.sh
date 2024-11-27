@@ -41,7 +41,7 @@ if [[ $(uname) == Darwin ]] ; then
                 return 1
                 fi
         fi
-        run_bitcoinqt
+        start_bitcoinqt
         sleep 0.5
         return 0
 fi
@@ -116,7 +116,7 @@ elif [[ $OS == Linux ]] ; then
 fi
 
 }
-function run_bitcoinqt {
+function start_bitcoinqt {
 if [[ $OS == Mac ]] ; then
     open /Applications/Bitcoin-Qt.app >$dn 2>&1
     sleep 0.5

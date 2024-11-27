@@ -233,7 +233,7 @@ menu_bitcoin_other || return 1
 
 qtstart)
 if [[ -n $output3 && $bitcoinrunning == "false" ]] ; then
-run_bitcoinqt
+start_bitcoinqt
 fi
 ;;
 
