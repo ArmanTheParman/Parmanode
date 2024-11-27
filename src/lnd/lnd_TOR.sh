@@ -190,9 +190,9 @@ $cyan
 
 ########################################################################################
 "
-enter_abort 
+choose xpmq ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-read choice ; case $choice in a|A) return 1 ;;
-"") 
+case $choice in q|Q) exit ;; p|P|a|A) return 1 ;; m|M) back2main ;;
+*) 
 set_terminal ; please_wait ; return 0 ;; esac ; done
 }
