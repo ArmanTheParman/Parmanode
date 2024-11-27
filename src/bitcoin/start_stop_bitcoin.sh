@@ -98,3 +98,33 @@ docker exec -itu parman btcpay bitcoin-cli stop
 sleep 0.5
 return 0
 }
+
+function stop_bitcoinqt {
+if [[ $OS == Mac ]] ; then
+
+    if [[ $1 == force ]] ; then pn_tmux "killall Bitcoin-Qt" ; fi
+
+    pn_tmux "osascript -e 'tell application "Bitcoin-Qt" to quit'"
+    while pgrep "Bitcoin-Qt" >$dn; do
+    sleep 1
+    done
+
+elif [[ $OS == Linux ]] ; then
+    pn_tmux "pkill -SIGTERM bitcoin-qt"
+    while pgrep bitcoin-qt >$dn ; do
+    sleep 0.5
+    done
+fi
+
+}
+function run_bitcoinqt {
+if [[ $OS == Mac ]] ; then
+open /Applications/Bitcoin-Qt.app >$dn 2>&1
+sleep 0.5
+return 0
+elif [[ $OS == Linux ]] ; then
+    if pgrep bitcoin >$dn 2>&1 ; then return 1 ; fi
+    nohup bitcoin-qt >$dn 2>&1 &
+    sleep 0.5
+fi
+}
