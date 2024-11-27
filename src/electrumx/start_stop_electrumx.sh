@@ -1,17 +1,16 @@
 function start_electrumx {
-echo "starting electrumx ..."
-sudo systemctl start electrumx.service >$dn 2>&1
+pn_tmux "sudo systemctl start electrumx.service"
+sleep 0.5
 
 }
 
 function stop_electrumx {
-echo "stopping electrumx ..."
-sudo systemctl stop electrumx.service >$dn 2>&1
+pn_tmux "sudo systemctl stop electrumx.service"
+sleep 0.5
 
 }
 
 function restart_electrumx {
-
-sudo systemctl restart electrumx.service >$dn 2>&1
-
+pn_tmux "sudo systemctl restart electrumx.service"
+sleep 0.5
 }
