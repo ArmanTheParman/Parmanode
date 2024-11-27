@@ -88,13 +88,14 @@ echo ""
 if ! [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt ; then
 echo -ne "
 $green
-               start)$orange        Start Bitcoind
+               start)$orange        Start Bitcoin
             $red
-               stop)$orange         Stop Bitcoind
-            $cyan"
+               stop)$orange         Stop Bitcoin
+            $cyan
+               restart)$orange      Restart Bitcoin"
 fi
 echo -ne "
-$output3\n               ${cyan}restart)$orange      Restart Bitcoind
+$output3
             $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
