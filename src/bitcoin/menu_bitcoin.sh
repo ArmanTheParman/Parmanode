@@ -90,13 +90,13 @@ $green
             $red
                stop)$orange         Stop Bitcoin
             $cyan"
+
     if [[ $bitcoinrunning == "false" ]] ; then
         echo -ne "
                restart)$orange      Restart Bitcoin \n"
     fi
 fi
-echo -ne "$output3
-            $cyan
+echo -ne "$output3 $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
                log)$orange          Bitcoin debug.log 
