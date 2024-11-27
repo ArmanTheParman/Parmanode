@@ -53,14 +53,12 @@ fi
 
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
-output3="
-$green               qtstart)$orange      Start Bitcoin Qt
+output3=" $green               qtstart)$orange      Start Bitcoin Qt
 "
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="
-$red               qtstop)$orange       Stop Bitcoin Qt
+output3=" $red               qtstop)$orange       Stop Bitcoin Qt
 "
 fi
 
@@ -93,7 +91,7 @@ $green
             $red
                stop)$orange         Stop Bitcoind
             $cyan
-               restart)$orange      Restart Bitcoind
+$output3               restart)$orange      Restart Bitcoind
             $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
@@ -112,7 +110,6 @@ $green
                upd)$orange          Update Bitcoin wizard
          $btcman
          $cyan      o)$orange            OTHER...
-         $output3
 
                                                                $red hit 'r' to refresh $orange
 ########################################################################################
