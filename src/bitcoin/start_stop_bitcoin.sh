@@ -74,11 +74,14 @@ pn_tmux "
 sudo systemctl stop bitcoind.service 
 "
 sleep 0.5
+debug "stopping bitcoind"
+return 0
 fi
 
 if [[ $OS == "Mac" ]] ; then
 stop_bitcoinqt
 sleep 0.5
+return 0
 fi
 }
 
