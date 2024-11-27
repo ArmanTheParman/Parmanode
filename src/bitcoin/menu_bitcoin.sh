@@ -54,7 +54,7 @@ fi
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
 output3="
-$green      (qtstart)$orange  Start Bitcoin Qt
+$green              (qtstart)$orange  Start Bitcoin Qt
 "
 fi
 
@@ -112,8 +112,8 @@ $green
                upd)$orange          Update Bitcoin wizard
 
          $btcman
-         $output3
          $cyan      o)$orange            OTHER...
+         $output3
 
                                                                $red hit 'r' to refresh $orange
 ########################################################################################
