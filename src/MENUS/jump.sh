@@ -35,7 +35,7 @@ fi
 ;;
 
 umempool|umem|mmempool|mmem)
-if grep -q “mempool-end” $ic ; then
+if grep -q "mempool-end" $ic ; then
 menu_mempool
 invalid_flag=set
 else return 1 
@@ -59,7 +59,7 @@ fi
 ;;
 
 ult|mlt)
-if grep -q “litd-end” $ic ; then
+if grep -q "litd-end" $ic ; then
 menu_lnd
 invalid_flag=set
 else return 1
@@ -75,7 +75,7 @@ fi
 ;;
 
 usparrow|us|msparrow|ms)
-if grep -q “sparrow-end” $ic ; then
+if grep -q "sparrow-end" $ic ; then
 menu_sparrow
 invalid_flag=set
 else return 1
