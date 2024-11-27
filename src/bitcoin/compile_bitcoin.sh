@@ -257,7 +257,7 @@ sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wr
 sudo apt-get install -y build-essential   || { enter_continue "Something went wrong with build-essential.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y autotools-dev     || { enter_continue "Something went wrong with autotools-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y pcreated          || { enter_continue "Something went wrong with pcreated.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y kg-config         || { enter_continue "Something went wrong with kg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y pkg-config        || { enter_continue "Something went wrong with pkg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y python3           || { enter_continue "Something went wrong with python3.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y patch             || { enter_continue "Something went wrong with patch.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y autoconf          || { enter_continue "Something went wrong with autoconf.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
