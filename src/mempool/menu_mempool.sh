@@ -93,13 +93,16 @@ menu_use ;;
 
 start|S|s|Start|START)
 start_mempool
+sleep 1
 ;;
 stop|STOP|Stop)
 stop_mempool
+sleep 1
 ;;
 
 r|RESTART|restart|R)
 restart_mempool
+sleep 1
 ;;
 
 tor)
