@@ -118,12 +118,13 @@ fi
 }
 function run_bitcoinqt {
 if [[ $OS == Mac ]] ; then
-open /Applications/Bitcoin-Qt.app >$dn 2>&1
-sleep 0.5
-return 0
+    open /Applications/Bitcoin-Qt.app >$dn 2>&1
+    sleep 0.5
+    return 0
 elif [[ $OS == Linux ]] ; then
     if pgrep bitcoin >$dn 2>&1 ; then return 1 ; fi
     nohup bitcoin-qt >$dn 2>&1 &
-    sleep 0.5
+    sleep 1
+    return 0
 fi
 }
