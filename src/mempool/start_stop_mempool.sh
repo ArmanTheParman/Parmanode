@@ -22,5 +22,5 @@ docker compose stop
 docker compose up -d
 debug "restart_mempool function about to exit"
 cd - >$dn
-
+sleep 1.5
 }
