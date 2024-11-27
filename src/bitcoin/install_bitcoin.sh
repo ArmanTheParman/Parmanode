@@ -211,7 +211,7 @@ $green
     Do remmember to manually restart Bitcoin should your Mac power off. 
 $orange
 ########################################################################################
-" && installed_conf_add "bitcoin-end"
+" && installed_conf_add "bitcoin-end" 
   
 enter_continue
 fi

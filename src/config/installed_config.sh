@@ -4,7 +4,7 @@ program="$1"
 
 installed_config_remove "$program" # ensures only single entry.
 
-echo "$program" | tee -a $ic 
+echo "$program" | tee -a $ic >$dn 
 
 return 0
 }
