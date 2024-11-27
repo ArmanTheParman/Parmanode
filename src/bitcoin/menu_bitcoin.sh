@@ -89,9 +89,11 @@ $green
                start)$orange        Start Bitcoin
             $red
                stop)$orange         Stop Bitcoin
-            $cyan
-               restart)$orange      Restart Bitcoin
-"
+            $cyan"
+    if [[ $bitcoinrunning == "false" ]] ; then
+        echo -ne "
+               restart)$orange      Restart Bitcoin \n"
+    fi
 fi
 echo -ne "$output3
             $cyan
