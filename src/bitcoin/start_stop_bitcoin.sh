@@ -29,12 +29,8 @@ return 0
 fi
 
 if [[ $OS == "Linux" ]] ; then 
-        pn_tumx "
-        if grep -q "drive=external" $pc >$dn ; then mount_drive ; fi
-        sudo systemctl start bitcoind.service 
-        "
-
-sleep 0.5
+    pn_tumx "if grep -q "drive=external" $pc >$dn ; then mount_drive ; fi ; sudo systemctl start bitcoind.service"
+    sleep 0.5
 fi                 
 
 if [[ $(uname) == Darwin ]] ; then
