@@ -118,7 +118,7 @@ fi
 }
 function start_bitcoinqt {
 if [[ $OS == Mac ]] ; then
-    open /Applications/Bitcoin-Qt.app >$dn 2>&1
+    pn_tmux "open /Applications/Bitcoin-Qt.app"
     sleep 0.5
     return 0
 elif [[ $OS == Linux ]] ; then
