@@ -1,16 +1,20 @@
 function X11Forwarding {
     
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
     file="/etc/ssh/sshd_config"
-else
+    sudo apt-get update -y
+    sudo apt-get install openssh-server -y
+elif [[ $OS == "Mac" ]] ; then
     file="/private/etc/ssh/sshd_config"
 fi
+
 
 if [[ ! -e $file ]] ; then
     announce "No sshd_config file at $cyan$file$orange exists. Aborting."
     return 1
 fi
 
+#use $1 to turn on or off
 if [[ $1 == yes || $1 == on ]] ; then
 
     #if X11DisplayOffset is commented out, activate to 10, otherwise leave whaever setting there is
