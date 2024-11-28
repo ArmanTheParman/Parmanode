@@ -131,17 +131,17 @@ fi
 function uncomment_clearnet {
 if grep -q "litd" $ic >$dn 2>&1 ; then
 
-sudo gsed -i '/^; lnd.tlsextraip/s/^..//' $file
-sudo gsed -i '/^; lnd.externalip/s/^..//' $file
-sudo gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
-sudo gsed -i '/^; lnd.externalhosts/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextraip=/s/^..//' $file
+sudo gsed -i '/^; lnd.externalip=/s/^..//' $file
+sudo gsed -i '/^; lnd.tlsextradomain=/s/^..//' $file
+sudo gsed -i '/^; lnd.externalhosts=/s/^..//' $file
 
 else
 
-sudo gsed -i '/^; tlsextraip/s/^..//' $file
-sudo gsed -i '/^; externalip/s/^..//' $file
-sudo gsed -i '/^; tlsextradomain/s/^..//' $file
-sudo gsed -i '/^; externalhosts/s/^..//' $file
+sudo gsed -i '/^; tlsextraip=/s/^..//' $file
+sudo gsed -i '/^; externalip=/s/^..//' $file
+sudo gsed -i '/^; tlsextradomain=/s/^..//' $file
+sudo gsed -i '/^; externalhosts=/s/^..//' $file
 
 fi
 }
@@ -149,17 +149,17 @@ fi
 function commentout_clearnet {
 if grep -q "litd" $ic >$dn 2>&1 ; then
 
-sudo gsed -i '/^lnd.tlsextraip/s/^/; /' $file
-sudo gsed -i '/^lnd.tlsextradomain/s/^/; /' $file
-sudo gsed -i '/^lnd.externalip/s/^/; /' $file
-sudo gsed -i '/^lnd.externalhosts/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextraip=/s/^/; /' $file
+sudo gsed -i '/^lnd.tlsextradomain=/s/^/; /' $file
+sudo gsed -i '/^lnd.externalip=/s/^/; /' $file
+sudo gsed -i '/^lnd.externalhosts=/s/^/; /' $file
 
 else
 
-sudo gsed -i '/^tlsextraip/s/^/; /' $file
-sudo gsed -i '/^tlsextradomain/s/^/; /' $file
-sudo gsed -i '/^externalip/s/^/; /' $file
-sudo gsed -i '/^externalhosts/s/^/; /' $file
+sudo gsed -i '/^tlsextraip=/s/^/; /' $file
+sudo gsed -i '/^tlsextradomain=/s/^/; /' $file
+sudo gsed -i '/^externalip=/s/^/; /' $file
+sudo gsed -i '/^externalhosts=/s/^/; /' $file
 
 fi
 }
