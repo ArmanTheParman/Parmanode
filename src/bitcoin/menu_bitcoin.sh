@@ -91,7 +91,7 @@ $green
                stop)$orange         Stop Bitcoin
             $cyan"
 
-    if [[ $bitcoinrunning == "false" ]] ; then
+    if [[ $bitcoinrunning == "true" ]] ; then
         echo -ne "
                restart)$orange      Restart Bitcoin \n"
     fi
