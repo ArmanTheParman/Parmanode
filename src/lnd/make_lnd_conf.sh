@@ -30,8 +30,8 @@ echo "
 ;
 ; exteranlhosts & externalip is what LND advertises for connections with domain or IP
 ;
-; The tlsextradomain and tls extraip are used to specify additional domains 
-; that should be included in the TLS certificate's SAN (Subject Alternative Name) 
+; The tlsextradomain and tls extraip are used to specify additional domains
+; that should be included in the TLS certificate's SAN (Subject Alternative Name)
 ; field.
 
 [Application Options]
