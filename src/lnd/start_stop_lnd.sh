@@ -18,6 +18,7 @@ function stop_lnd {
 
     if grep -q "lnd-" $ic ; then
     pn_tmux "sudo systemctl stop lnd.service"
+    sleep 1.5
     return 0
     fi
 
