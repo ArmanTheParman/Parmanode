@@ -14,13 +14,14 @@ set_terminal ; echo -e "
                  $cyan              X11 Menu            $orange                   
 ########################################################################################
 "
-if [[ $OS == "Mac" ]] && grep -q "xquartz-end" $ic ; then
+if [[ $OS == "Mac" ]] && which xquartx >$dn 2>&1 ; then
 echo -en " $green
                        start)$orange        Start XQuartz
 $red                       
                        stop)$orange         Start XQuartz
 "
 else echo "" ; fi 
+
 echo -en "$cyan
                        conf)$orange         View/edit sshd_config (confv for vim) 
 $cyan

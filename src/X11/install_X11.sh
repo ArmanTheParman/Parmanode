@@ -1,8 +1,6 @@
 function install_X11 {
 
-if [[ $1 != "silent" ]] ; then
 preamble_X11 || return 1
-fi
 
 #install openssh, Linux only, Mac has it by default.
 if [[ $OS == "Linux" ]] ; then 
@@ -24,7 +22,12 @@ if [[ ! -e $file ]] ; then
 fi
 toggle_X11 "on" || return 1
 installed_conf_add "X11-end"
-if [[ $1 != "silent" ]] ; then
 success "X11 forwarding enabled for this machine"
+
+if [[ $OS == "Mac" ]] ; then
+clear
+yesorno "Do you also want to install XQuartz on this machine so you
+    can SSH to other computers and access GUI programs?" \
+    && install_xquartz
 fi
 }
