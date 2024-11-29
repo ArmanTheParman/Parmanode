@@ -15,7 +15,7 @@ echo -e "
 #                                                                                      #"
 if [[ -n $parmashell_n ]]      ; then echo -e  "$parmashell_n"; fi 
 if [[ -n $parmanostr_n ]]      ; then echo -e  "$parmanostr_n"; fi
-if [[ -n $nostrrelay_n ]]       ; then echo -e  "$nostrrelay_n"; fi
+if [[ -n $nostrrelay_n ]]      ; then echo -e  "$nostrrelay_n"; fi
 if [[ -n $docker_n ]]          ; then echo -e  "$docker_n"; fi
 if [[ -n $tor_n ]]             ; then echo -e  "$tor_n"; fi
 if [[ -n $torserver_n ]]       ; then echo -e  "$torserver_n"; fi
@@ -28,16 +28,17 @@ if [[ -n $torb_n ]]            ; then echo -e  "$torb_n"; fi
 if [[ -n $qbittorrent_n ]]     ; then echo -e  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
 if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
-if [[ -n $nginx_n ]]            ; then echo -e  "$nginx_n"; fi
-if [[ -n $nextcloud_n ]]        ; then echo -e  "$nextcloud_n"; fi
-#if [[ -n $public_pool_n ]]         ; then echo -e  "$public_pool_n"; fi
+if [[ -n $nginx_n ]]           ; then echo -e  "$nginx_n"; fi
+if [[ -n $nextcloud_n ]]       ; then echo -e  "$nextcloud_n"; fi
+if [[ -n $x11_n ]]             ; then echo -e  "$x11_n"; fi
+#if [[ -n $public_pool_n ]]     ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
 if [[ -n $parmanostr_i ]]      ; then echo -e  "$parmanostr_i"; fi
-if [[ -n $nostrrelay_i ]]       ; then echo -e  "$nostrrelay_i"; fi
+if [[ -n $nostrrelay_i ]]      ; then echo -e  "$nostrrelay_i"; fi
 if [[ -n $docker_i ]]          ; then echo -e  "$docker_i"; fi
 if [[ -n $tor_i ]]             ; then echo -e  "$tor_i"; fi
 if [[ -n $torserver_i ]]       ; then echo -e  "$torserver_i"; fi
@@ -49,8 +50,9 @@ if [[ -n $torb_i ]]            ; then echo -e  "$torb_i"; fi
 if [[ -n $qbittorrent_i ]]     ; then echo -e  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
 if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
-if [[ -n $nginx_i ]]            ; then echo -e  "$nginx_i"; fi
-if [[ -n $nextcloud_i ]]        ; then echo -e  "$nextcloud_i"; fi
+if [[ -n $nginx_i ]]           ; then echo -e  "$nginx_i"; fi
+if [[ -n $nextcloud_i ]]       ; then echo -e  "$nextcloud_i"; fi
+if [[ -n $x11_i ]]             ; then echo -e  "$x11_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
@@ -58,7 +60,7 @@ echo -e "#                                                                      
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi
-if [[ -n $nostrrelay_p ]]         ; then echo  -e "$pink$nostrrelay_p$orange"; fi
+if [[ -n $nostrrelay_p ]]      ; then echo  -e "$pink$nostrrelay_p$orange"; fi
 if [[ -n $docker_p ]]          ; then echo  -e "$pink$docker_p$orange"; fi
 if [[ -n $tor_p ]]             ; then echo  -e "$pink$tor_p$orange"; fi
 if [[ -n $torserver_p ]]       ; then echo  -e "$pink$torserver_p$orange"; fi
@@ -72,7 +74,8 @@ if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
 if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
-#if [[ -n $public_pool_p ]]   ; then echo -e "$pink$public_pool_p$orange"; fi
+if [[ -n $x11_p ]]             ; then echo  -e "$pink$x11_p$orange"; fi
+#if [[ -n $public_pool_p ]]     ; then echo -e "$pink$public_pool_p$orange"; fi
 
 echo "#                                                                                      #
 ########################################################################################
@@ -193,6 +196,13 @@ pnostr)
 next)
     if [[ -n $nextcloud_n ]] ; then
     install_nextcloud
+    return 0
+    fi
+    ;;
+
+x11)
+    if [[ -n $x11_n ]] ; then
+    install_x11
     return 0
     fi
     ;;
