@@ -21,9 +21,12 @@ set_terminal ; echo -e "
     background and user the terminal to do your remote log in, but you can also use 
     XQuartz's own terminal.
 
-    On the client machine, you just need to add a$pink -X$orange when you log in for it to work.
+    To install XQuartz on a Mac, run this command in a Terminal window...
+$cyan
+        curl https://parmanode.com/install_xquartz.sh | sh $orange
 
-    For example... $green
+    When doing SSH, on the client machine, you just need to add a$pink -X$orange when you log 
+    in for it to work. For example... $green
 
         ssh -X parman@parmanodl.local
 $orange 
