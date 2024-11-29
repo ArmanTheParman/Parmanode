@@ -30,7 +30,7 @@ if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
 if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
 if [[ -n $nginx_n ]]           ; then echo -e  "$nginx_n"; fi
 if [[ -n $nextcloud_n ]]       ; then echo -e  "$nextcloud_n"; fi
-if [[ -n $x11_n ]]             ; then echo -e  "$x11_n"; fi
+if [[ -n $X11_n ]]             ; then echo -e  "$X11_n"; fi
 #if [[ -n $public_pool_n ]]     ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
@@ -52,7 +52,7 @@ if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
 if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
 if [[ -n $nginx_i ]]           ; then echo -e  "$nginx_i"; fi
 if [[ -n $nextcloud_i ]]       ; then echo -e  "$nextcloud_i"; fi
-if [[ -n $x11_i ]]             ; then echo -e  "$x11_i"; fi
+if [[ -n $X11_i ]]             ; then echo -e  "$X11_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
@@ -74,7 +74,7 @@ if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
 if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
-if [[ -n $x11_p ]]             ; then echo  -e "$pink$x11_p$orange"; fi
+if [[ -n $X11_p ]]             ; then echo  -e "$pinkX11_p$orange"; fi
 #if [[ -n $public_pool_p ]]     ; then echo -e "$pink$public_pool_p$orange"; fi
 
 echo "#                                                                                      #
@@ -200,9 +200,9 @@ next)
     fi
     ;;
 
-x11)
-    if [[ -n $x11_n ]] ; then
-    install_x11
+X11|x11)
+    if [[ -n $X11_n ]] ; then
+    install_X11
     return 0
     fi
     ;;

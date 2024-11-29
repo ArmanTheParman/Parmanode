@@ -626,7 +626,7 @@ menu_main
 fi
 ;;
 
-x11)
+x11|X11)
 if [[ $x11menu == 1 ]] ; then
 uninstall_x11
 menu_main

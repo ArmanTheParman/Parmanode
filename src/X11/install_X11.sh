@@ -1,7 +1,5 @@
 function install_X11 {
-
-x11_preamble || return 1
-
+X11_preamble || return 1
 #install openssh, Linux only, Mac has it by default.
 if [[ $OS == "Linux" ]] ; then 
     sudo apt-get update -y

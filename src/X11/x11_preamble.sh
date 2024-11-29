@@ -1,4 +1,4 @@
-function x11_preamble {
+function X11_preamble {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

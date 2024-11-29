@@ -1,4 +1,4 @@
-function menu_x11 {
+function menu_X11 {
    
 if ! grep -q "x11-end" $ic ; then menu_main ; fi
 
