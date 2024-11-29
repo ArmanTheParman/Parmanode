@@ -7,7 +7,7 @@ set_terminal_high ; echo -e "
 
     X11 forwarding allows you to SSH log in to a$cyan REMOTE$orange machine and have programs 
     with a Graphical User Interface (GUI) running on there to display on the$cyan CLIENT $orange 
-    (from) machine.
+    machine (the 'from' machine).
 
     For it to work, on the remote machine, you need these settings enabled in the 
     sshd_config file...$green
@@ -19,9 +19,9 @@ set_terminal_high ; echo -e "
     Of course, Parmanode is going to take care of that for you.
 
     Also, on the client machine, you need XQuartz running if you're on a Mac. For Linux
-    it'll just work (because Linux is far superior). Just leave XQuartz running in the
-    background and user the terminal to do your remote log in, but you can also use 
-    XQuartz's own terminal.
+    it'll just work without XQuartz (because Linux is far superior). Just leave 
+    XQuartz running in the background and user the terminal to do your remote log in, 
+    but you can also use XQuartz's own terminal.
 
     To install XQuartz on a Mac, run this command in a Terminal window...
 $cyan
@@ -39,7 +39,7 @@ $orange
 
 ########################################################################################
 "
-choose xpmq ; read choice
+read choice
 jump $choice || { invalid ; continue ; }
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
