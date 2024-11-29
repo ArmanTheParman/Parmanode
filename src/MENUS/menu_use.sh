@@ -153,7 +153,7 @@ if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenapp=1
 if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
                        echo -e "                        $cyan  (pb)  $orange       Parman Books
                             " ; fi
-if grep -q "x11-end" $HOME/.parmanode/installed.conf ; then x11app=1
+if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11app=1
                        echo -e "                        $cyan  (x11)  $orange      X11 Forwarding
                             " ; fi
 echo -e "                            
@@ -481,9 +481,9 @@ gr|green)
    fi
    ;;
 
-x11)
-   if [[ $x11app == 1 ]] ; then
-   menu_x11
+X11|x11)
+   if [[ $X11app == 1 ]] ; then
+   menu_X11
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi

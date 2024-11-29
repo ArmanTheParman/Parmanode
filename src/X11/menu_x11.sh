@@ -1,6 +1,6 @@
 function menu_X11 {
    
-if ! grep -q "x11-end" $ic ; then menu_main ; fi
+if ! grep -q "X11-end" $ic ; then menu_main ; fi
 
 while true ; do 
 
