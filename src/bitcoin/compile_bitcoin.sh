@@ -19,7 +19,7 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
 if [[ $knotsbitcoin != "true" ]] ; then  
 
-    git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
+    git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
     cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
     
