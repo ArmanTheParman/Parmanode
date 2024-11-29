@@ -612,4 +612,29 @@ else
    #not installed
 green_n="#$cyan                            (gr)    $orange      Green Wallet                                #"
 fi
+#xquartz
+unset xquartx_i xquartz_p xquartx_n
+if grep -q "xquartz-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+xquartz_i="#                                      xquartz                                         #"
+elif grep -q "xquartz-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+xquartz_p="#                                      xquartz                                         #"
+else
+   #not installed
+xquartz_n="#$cyan                            (xqz)   $orange      xquartz                                     #"
+fi
+
+#x11
+unset x11_i x11_p x11_n
+if grep -q "x11-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+x11_i="#                                      X11                                             #"
+elif grep -q "x11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+x11_p="#                                      X11                                             #"
+else
+   #not installed
+x11_n="#$cyan                            (x11)   $orange      X11                                         #"
+fi
 }
