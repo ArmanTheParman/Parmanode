@@ -1,45 +1,3 @@
-
-
-
-
-function preamble_X11 {
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    X11 forwarding allows you to SSH log in to a$cyan REMOTE$orange machine and have programs 
-    with a Graphical User Interface (GUI) running on there to display on the$cyan CLIENT $orange 
-    (from) machine.
-
-    For it to work, on the REMOTE machine, you need these settings enabled in the 
-    sshd_config file...$green
-
-        X11Forwarding yes
-
-        X11DisplayOffset 10 $orange
-
-    Of course, Parmanode is going to take care of that for you.
-
-    On the client machine, you just need to add a$pink -X$orange when you log in for it to work.
-    For example... $green
-
-        ssh -X parman@parmanodl.local
-$orange 
-    Just hit$cyan <enter>$orange to enable, otherwise$red p$orange will get you out of here.
-
-########################################################################################
-"
-choose xpmq ; read choice
-jump $choice || { invalid ; continue ; }
-case $choice in
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-"") break ;;
-*) invalid ;;
-esac
-done
-enter_continue
-}
-
 function toggle_X11 {
 #use $1 to turn on or off
 if [[ $1 == on ]] ; then
@@ -77,5 +35,3 @@ fi
 
 return 0
 }
-
-
