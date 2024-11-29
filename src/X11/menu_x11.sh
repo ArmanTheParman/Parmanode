@@ -42,7 +42,7 @@ start_xquartz
 ;;
 stop)
 stop_xquartz
-
+;;
 conf)
 sudo nano $file
 ;;
