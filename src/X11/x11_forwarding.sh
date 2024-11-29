@@ -1,57 +1,6 @@
-function install_X11 {
 
-if [[ $1 != "silent" ]] ; then
-preamble_X11 || return 1
-fi
 
-#install openssh, Linux only, Mac has it by default.
-if [[ $OS == "Linux" ]] ; then 
-    sudo apt-get update -y
-    sudo apt-get install openssh-server -y
-fi
 
-#Set config file path
-if [[ $OS == "Linux" ]] ; then
-    local file="/etc/ssh/sshd_config"
-elif [[ $OS == "Mac" ]] ; then
-    local file="/private/etc/ssh/sshd_config"
-fi
-
-#Check config file exists.
-if [[ ! -e $file ]] ; then
-    announce "No sshd_config file at $cyan$file$orange exists. Aborting."
-    return 1
-fi
-toggle_X11 "on" || return 1
-installed_conf_add "X11-end"
-if [[ $1 != "silent" ]] ; then
-success "X11 forwarding enabled for this machine"
-fi
-}
-
-function restart_sshd {
-    if [[ $OS == "Linux" ]] ; then
-    sudo systemctl restart sshd >$dn 2>&1
-    elif [[ $OS == "Mac" ]] ; then
-    sudo launchctl unload -w /System/Library/LaunchDaemons/ssh.plist >$dn 2>&1
-    sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist >$dn 2>&1
-    fi
-}
-
-function install_xquartz {
-
-if [[ $OS != Mac ]] ; then return 1 ; fi
-
-cd $tmp && curl -LO https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.5/XQuartz-2.8.5.pkg || {
-    announce "Something went wrong. Aborting." 
-    return 1
-    }
-
-if [[ $(shasum -a 256 $tmp/XQuartz-2.8.5.pkg |  awk '{print $1}') != "e89538a134738dfa71d5b80f8e4658cb812e0803115a760629380b851b608782" ]] ; then 
-    announce "Something went wrong. Aborting." 
-    return 1
-fi
-}
 
 function preamble_X11 {
 while true ; do
@@ -129,9 +78,4 @@ fi
 return 0
 }
 
-function uninstall_X11 {
-toggle_X11 "off" || return 1
-installed_conf_remove "X11"
-success "X11 forwarding turned off"
-}
 
