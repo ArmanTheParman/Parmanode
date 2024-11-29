@@ -14,7 +14,7 @@ set_terminal ; echo -e "
                  $cyan              X11 Menu            $orange                   
 ########################################################################################
 "
-if [[ $OS == "Mac" ]] && which xquartx >$dn 2>&1 ; then
+if [[ $OS == "Mac" ]] && which xquartz >$dn 2>&1 ; then
 echo -en " $green
                        start)$orange        Start XQuartz
 $red                       
