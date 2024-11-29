@@ -23,7 +23,7 @@ fi
 echo "Installing pkg file...\n"
 sudo installer -pkg $tmp/XQuartz-2.8.5.pkg -target / \
   && { 
-      echo "XQuartz has been installed. Hit <enter>." 
+      echo "XQuartz has been installed."
       rm -rf $tmp >/dev/null 2>&1
       exit 
      }
