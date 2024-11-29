@@ -1,6 +1,8 @@
 function X11_preamble {
 while true ; do
-set_terminal ; echo -e "
+set_terminal_high ; echo -e "
+########################################################################################$cyan
+                                 X11  Forwarding$orange
 ########################################################################################
 
     X11 forwarding allows you to SSH log in to a$cyan REMOTE$orange machine and have programs 

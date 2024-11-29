@@ -15,7 +15,7 @@ unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcr
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
-unset nextcloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu x11menu
+unset nextcloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu
 
 echo -e "
 ########################################################################################
@@ -295,10 +295,10 @@ echo -e "#$cyan                            (gr)$orange               Green Walle
 elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then greenmenu=1
 echo -e "#$cyan                            (gr)$orange               Green Wallet           $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
-if grep -q "x11-end" $HOME/.parmanode/installed.conf ; then x11menu=1
+if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11menu=1
 echo -e "#$cyan                            (x11)$orange              X11                                    #
 #                                                                                      #"
-elif grep -q "x11-start" $HOME/.parmanode/installed.conf ; then x11menu=1
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then X11menu=1
 echo -e "#$cyan                            (x11)$orange              X11           $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
@@ -627,8 +627,8 @@ fi
 ;;
 
 x11|X11)
-if [[ $x11menu == 1 ]] ; then
-uninstall_x11
+if [[ $X11menu == 1 ]] ; then
+uninstall_X11
 menu_main
 fi
 ;;
