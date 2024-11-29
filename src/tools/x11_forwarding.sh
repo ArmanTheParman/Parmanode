@@ -1,18 +1,26 @@
 function X11Forwarding {
-    
-if [[ $OS == "Linux" ]] ; then
-    file="/etc/ssh/sshd_config"
+
+preamble_X11forwarding || return 1
+
+#install openssh, Linux only, Mac has it by default.
+if [[ $OS == "Linux" ]] ; then 
     sudo apt-get update -y
     sudo apt-get install openssh-server -y
-elif [[ $OS == "Mac" ]] ; then
-    file="/private/etc/ssh/sshd_config"
 fi
 
+#Set config file path
+if [[ $OS == "Linux" ]] ; then
+    local file="/etc/ssh/sshd_config"
+elif [[ $OS == "Mac" ]] ; then
+    local file="/private/etc/ssh/sshd_config"
+fi
 
+#Check config file exists.
 if [[ ! -e $file ]] ; then
     announce "No sshd_config file at $cyan$file$orange exists. Aborting."
     return 1
 fi
+
 
 #use $1 to turn on or off
 if [[ $1 == yes || $1 == on ]] ; then
@@ -73,5 +81,41 @@ if [[ $(shasum -a 256 $tmp/XQuartz-2.8.5.pkg |  awk '{print $1}') != "e89538a134
     announce "Something went wrong. Aborting." 
     return 1
 fi
+}
+
+function preamble_X11forwarding {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################
+
+    X11 forwarding allows you to SSH log in to a$cyan REMOTE$orange machine and have programs 
+    with a Graphical User Interface (GUI) running on there to display on the$cyan CLIENT $orange 
+    (from) machine.
+
+    For it to work, on the REMOTE machine, you need these settings enabled in the 
+    sshd_config file...$green
+
+        X11Forwarding yes
+
+        X11DisplayOffset 10 $orange
+
+    Of course, Parmanode is going to take care of that for you.
+
+    On the client machine, you just need to add a -X when you log in for it to work.
+    For example... $green
+
+        ssh -X parman@parmanodl.local
+$orange 
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+"") break ;;
+*) invalid ;;
+esac
+done
+enter_continue
 }
 
