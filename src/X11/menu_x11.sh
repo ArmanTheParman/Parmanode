@@ -27,6 +27,7 @@ echo -en "$cyan
 $cyan
                        rs)$orange           Restart sshd (the ssh daemon)
 
+
     To use X11, access this computer like this...
 $bright_blue
     ssh -X $whoami@$IP
