@@ -1,4 +1,4 @@
-function preamble_X11 {
+function x11_preamble {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
@@ -45,5 +45,4 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 *) invalid ;;
 esac
 done
-enter_continue
 }

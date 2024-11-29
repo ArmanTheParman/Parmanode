@@ -1,6 +1,6 @@
 function install_X11 {
 
-preamble_X11 || return 1
+x11_preamble || return 1
 
 #install openssh, Linux only, Mac has it by default.
 if [[ $OS == "Linux" ]] ; then 
