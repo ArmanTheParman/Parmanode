@@ -1,6 +1,7 @@
 function store_LND_container_IP {
 
 if grep -q "LNDIP" $pc >$dn 2>&1 ; then
+debug "LNDIP exists, exiting"
 source $pc
 return 0
 fi
@@ -19,6 +20,8 @@ debug "LNDIP=\$IP ... $LNDIP ... $IP ."
     fi
 return 0
 fi
+
+debug "3"
 
 if ! docker ps >$dn 2>&1 ; then return 1 ; fi
 
