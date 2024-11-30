@@ -7,7 +7,7 @@ function start_bitcoin {
 #for docker (no systemctl, use tmux)
 if [[ -e /.dockerenv ]] ; then
 please_wait
-pn_tmux "bitcoind -conf=$HOME/.bitcoin/bitcoin.conf"1
+pn_tmux "bitcoind -conf=$HOME/.bitcoin/bitcoin.conf"
 sleep 0.5
 return 0
 fi
