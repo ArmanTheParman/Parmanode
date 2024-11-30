@@ -18,12 +18,12 @@ $cyan
 $orange
 ########################################################################################
 $green
-       0)  v$version (Download and verify 'trusted' releases)
-$orange
-       1)  v26.0 (Download and verify 'trusted' releases)
+       0)  v$version - Download and verify 'trusted' releases
+$red
+       1)  Custom version (you choose) - Download and verify 'trusted' releases
 
-       2)  v25.0 (Download and verify 'trusted' releases) 
-
+       2)  Guided compile custom version (you choose) 
+$green
        3)  Guided compile v$version
 $bright_blue
        4)  Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
@@ -34,7 +34,7 @@ $red
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
 $orange
-       7)  Read how to compile yourself, and import the installation to Parmanode. 
+ INFO  7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
 
        8)  IMPORT binaries you have compiled yourself (or previously downloaded without
@@ -53,12 +53,14 @@ q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0|27|"")
 parmanode_conf_add "bitcoin_choice=precompiled"
 export bitcoin_compile="false" ; break ;;
-1|26) 
+1) 
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="26.0" ; export bitcoin_compile="false" ; break ;;
-2|25) 
-parmanode_conf_add "bitcoin_choice=precompiled"
-export version="25.0" ; export bitcoin_compile="false" ; break ;;
+select_custom_version || return 1
+export bitcoin_compile="false" ; break ;;
+2) 
+parmanode_conf_add "bitcoin_choice=compiled"
+select_custom_version || return 1
+export bitcoin_compile="true" ; break ;;
 3) 
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; break ;;
@@ -110,5 +112,34 @@ if [[ $bitcoin_compile != "false" ]] ; then
 # $hp/bitcoin directory made earlier for downloading compiled bitcoin. Can delete.
 sudo rm -rf $hp/bitcoin >$dn 2>&1
 fi
+
+}
+
+function select_custom_version {
+
+while true ; do 
+set_terminal ; echo -e "
+########################################################################################
+    
+    Please type in a version number
+
+    Eg. ${cyan}25.0$orange
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+p|P) return 1 ;; q|Q) exit ;; m|M) back2main ;;
+*)
+#remove the v if entered
+choice=$(echo $choice | gsed 's/^v//')
+if ! echo $choice | grep -Eq "^[0-9]+\.[0-9]+" ; then
+   yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
+fi
+export version=$choice
+;;
+esac
+done
 
 }
