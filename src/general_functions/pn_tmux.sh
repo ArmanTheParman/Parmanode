@@ -11,6 +11,10 @@ fi
 install_tmux #exits if installed
 
 TMUX2=$TMUX ; unset TMUX ; clear
+if [[ $NODAEMON == "true" ]] ; then
+sudo tmux new -s $tmuxname "$command"
+else
 sudo tmux new -s $tmuxname -d "$command"
+fi
 TMUX=$TMUX2
 }
