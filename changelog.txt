@@ -4,6 +4,7 @@
 Version 3.48.0
     -X11Forwarding function and XQuartz for Mac (modifies sshd_config)
     -Thunderhub IP bug fixed
+    -Bitcoin any version above 0.2
 
 Version 3.47.4
      -Fixed LND tor bug
