@@ -321,5 +321,9 @@ invalid_flag=set
 return 1 #value 1 is necessary
 ;;
 
+bash)
+tmux new -s pnbash "bash=1 rp"
+;;
+
 esac
 }
