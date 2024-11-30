@@ -123,6 +123,7 @@ echoline
 
 #BITCOIN
 echor "#BITCOIN STUFF"
+echor "IP is $IP"
 #source $HOME/.bitcoin/bitcoin.conf
 if [[ ! -e $HOME/.bitcoin ]] ; then echo "Bitcoin data dir doesn't exist." 
 else
@@ -188,6 +189,10 @@ echoline
 echor "#TOR"
 echor "$(which tor)"
 echor "$(sudo cat $torrc)"
+
+echoline
+echor "#THUNDERHUB"
+echor "$(sudo cat $hp/thunderhub/account_1.yaml)
 
 
 #system info
