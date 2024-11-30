@@ -6,7 +6,7 @@ source $pc
 return 0
 fi
 
-if grep -q "lnd-" $pc || grep -q "litd" $pc ; then 
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then 
 LNDIP=$IP
 debug "LNDIP=\$IP ... $LNDIP ... $IP ."
 
