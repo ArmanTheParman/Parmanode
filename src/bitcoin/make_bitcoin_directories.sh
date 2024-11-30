@@ -10,7 +10,7 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
         if [[ $OS == "Mac" ]] ; then remove_bitcoin_directories_mac || return 1 ; fi 
     fi
 #make_parmanode_bitcoin_directory             
-    mkdir -p $HOME/parmanode/bitcoin && log "bitcoin" "hp/bitcoin directory made in make_bitcoin_directories"
+    mkdir -p $HOME/parmanode/bitcoin 
     debug "IS HOME PARMANODE BITCOIN DIR MADE?"
     installed_conf_add "bitcoin-start"    
 

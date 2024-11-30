@@ -30,6 +30,6 @@ if [[ $prune_value != "0" && $skipnext != "true" ]] ; then
 	sudo gsed -i "/prune=/d" $file
 	echo "prune=$prune_value" | sudo tee -a $file >$dn  
 fi
-log "bitcoin" "end of apply_prune_bitcoin_conf function"
+debug "bitcoin - end of apply_prune_bitcoin_conf function"
 return 0
 }
