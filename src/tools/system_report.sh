@@ -23,7 +23,7 @@ esac
 export omit="true" 
 export report="$tmp/system_report.txt" 
 export macprefix="/usr/local"
-echo "PARMANODL SYSTEM REPORT $(date)" > $report
+echo "PARMANODL SYSTEM REPORT $(date)", $(head -n1 $pn/version.conf | sed 's/\"//g' | cut -d = -f 1) > $report
 
 function delete_private {
 if [[ $omit == "true" ]] ; then
@@ -59,19 +59,18 @@ if [[ -d $HOME/parman_programs/parmanode ]] ; then
 echoline
 echor "\$pn exists"
 echor "$(git status)"
-cat $HOME/parman_programs/parmanode/src/version.conf >> $report
+cat $pn/version.conf >> $report
 else
 echo "\$pn DOES NOT EXIST"
 fi
-
-echoline
 
 #if dir doesn't exist, it will report
 if [[ -d $HOME/.parmanode ]] ; then
 echoline
 echor "\$dp exists"
+echoline
 cd $HOME/.parmanode
-ls -a >> $report
+ls -am >> $report
 else
 echo "\$dp DOES NOT EXIST"
 fi
@@ -84,29 +83,6 @@ echor "$(cat $HOME/.parmanode/parmanode.conf)"
 
 echoline
 
-#system info
-echor "#SYSTEM INFO"
-if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
-echor "$(id)"
-echor "$(uname) , $(uname -m)"
-echor "$(env)"
-echor "$(df -h)"
-echor "$(sudo lsblk)"
-echor "$(sudo blkid)"
-echor "#MOUNT \n $(mount)"
-echor "$(free)"
-echor "#HOME dir..."
-echor "$(cd ; ls -lah)"
-echor "cpuinfo"
-echor "$(cat /proc/cpuinfo | head -n10)"
-
-echoline
-echor "#BASHRC/ZSHRC"
-if [[ $(uname) == Darwin ]] ; then
-echor "$(sudo cat $HOME/.zshrc)"
-else
-echor "$(sudo cat $HOME/.bashrc)"
-fi
 
 echoline
 #programs
@@ -212,6 +188,33 @@ echoline
 echor "#TOR"
 echor "$(which tor)"
 echor "$(sudo cat $torrc)"
+
+
+#system info
+echor "#SYSTEM INFO"
+if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
+echor "$(id)"
+echor "$(uname) , $(uname -m)"
+echor "$(env)"
+echoline
+echor "$(df -h)"
+echoline
+echor "$(sudo lsblk)"
+echor "$(sudo blkid)"
+echoline
+echor "#MOUNT \n $(mount)"
+echoline
+echor "$(free)"
+echoline
+echor "#HOME dir..."
+echor "$(cd ; ls -lah)"
+echoline
+echor "cpuinfo"
+echor "$(cat /proc/cpuinfo | head -n10)"
+echoline
+
+echor "#BASHRC/ZSHRC"
+echor "$(sudo cat $bashrc
 
 delete_private
 mv $report $HOME/Desktop/
