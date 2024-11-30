@@ -23,7 +23,7 @@ if [[ $knotsbitcoin != "true" ]] ; then
     
     cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
     
-    git checkout v$version
+    git checkout v$version || { announce "Unable to checkout to the specifiedd version. Aborting." ; return 1 ; }
 
             #apply ordinals patch to v25 or v26
             if [[ $ordinals_patch == "true" ]] ; then
