@@ -33,6 +33,8 @@ $red
                     (stop)$orange                Stop Thunderhub
 $cyan
                     (restart)$orange             Must I tell you what this does?
+$cyan
+                    (log)$orange                 View Docker log file
 
     Connection URL:
 $cyan
@@ -59,6 +61,9 @@ stop_thunderhub
 restart)
 stop_thunderhub
 start_thunderhub
+;;
+log)
+pn_tmux "docker logs thunderhub"
 ;;
 *)
 invalid
