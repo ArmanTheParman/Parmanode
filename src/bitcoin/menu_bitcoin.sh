@@ -316,7 +316,7 @@ fi
 
 
 function bitcoin_tips {
-set_terminal ; echo -e "
+set_terminal_high ; echo -e "
 ########################################################################################$cyan
                           Parmanode Bitcoin Usage Tips$orange
 ########################################################################################
