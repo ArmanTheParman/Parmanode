@@ -4,17 +4,12 @@ function make_thunderhub_account {
 
 #cert=$(xxd -p -c 256 $HOME/.lnd/tls.cert | tr -d '\n')
 #macaroon=$(xxd -p -c 256 $HOME/.lnd/data/chain/bitcoin/mainnet/admin.macaroon | tr -d '\n')
-if [[ $OS == "Mac" ]] ; then
-LNDaccess="host.docker.internal"
-elif [[ $OS == "Linux" ]] ; then
-LNDaccess="127.0.0.1"
-fi
 
 echo -e "
 masterPassword: $password
 accounts: 
   - name: Parmanode LND Account 1
-    serverUrl: $LNDaccess:$lnd_rpc_port
+    serverUrl: $IP:$lnd_rpc_port
     macaroonPath: /home/parman/.lnd/data/chain/bitcoin/mainnet/admin.macaroon
     certificatePath: /home/parman/.lnd/tls.cert
 " | tee $hp/thunderhub/account_1.yaml >$dn 2>&1
