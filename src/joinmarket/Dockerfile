@@ -23,5 +23,7 @@ RUN pip3 install matplotlib PySide2 "numpy<2"
 RUN ./install.sh --docker-install 
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN echo 'parman:parmanode' | chpasswd
+
 WORKDIR /jm/clientserver/scripts
 CMD [ "python3" , "/jm/clientserver/scripts/joinmarketd.py" ]
