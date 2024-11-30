@@ -43,11 +43,17 @@ isbitcoinrunning
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
+
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 output2="                   Sync'ing to the $drive drive"
-   #  if tail -n30 $HOME/.bitcoin/debug.log | grep -iq "shutdown in progress" ; then
-   #  output1="                   Bitcoin is$bright_blue SHUTTING DOWN$orange"
-   #  fi
+    if tail -n20 $HOME/.bitcoin/debug.log | grep -iq "shutdown in progress" ; then
+    output1="                   Bitcoin is$bright_blue SHUTTING DOWN$orange"
+    fi
+    if tail -n1 $HOME/.bitcoin/debug.log | grep -iq "Shutdown: done" ; then
+         output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
+         output2="                   Will sync to the $drive drive"
+    fi
+
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
