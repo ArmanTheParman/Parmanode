@@ -290,6 +290,9 @@ sudo apt-get install -y libqt5dbus5 || { enter_continue "Something went wrong wi
 sudo apt-get install -y qttools5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y libqt5widgets5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 
+ 
+
+
 
 fi
 
