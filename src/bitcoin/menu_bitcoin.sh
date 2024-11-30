@@ -316,7 +316,6 @@ fi
 
 
 function bitcoin_tips {
-while true ; do
 set_terminal ; echo -e "
 ########################################################################################$cyan
                           Parmanode Bitcoin Usage Tips$orange
@@ -357,6 +356,13 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-enter_continue
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+*)
+return 0 
+;;
+esac
 
 }
