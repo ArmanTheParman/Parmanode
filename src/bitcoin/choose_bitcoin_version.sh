@@ -125,6 +125,9 @@ set_terminal ; echo -e "
 
     Eg. ${cyan}25.0$orange
 
+    Please note, the Parmanode automatic compile script won't work with every version,
+    especially early versions. Won't hurt to try. I might work on this in the future.
+
 ########################################################################################
 "
 choose xpmq ; read choice
@@ -134,13 +137,20 @@ p|P) return 1 ;; q|Q) exit ;; m|M) back2main ;;
 *)
 #remove the v if entered
 choice=$(echo $choice | gsed 's/^v//')
-if ! echo $choice | grep -Eq "^[0-9]+\.[0-9]+" ; then
-   yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
-fi
-if echo $choice | grep -Eq "^v0\.1.*" ; then
-   announce "This won't work, versions below 0.2.0 compiled on Windows."
-   continue
-fi
+
+    if ! echo $choice | grep -Eq "^[0-9]+\.[0-9]+" ; then
+    yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
+    fi
+    if echo $choice | grep -Eq "^0\.1.*" ; then
+    announce "This won't work, versions below 0.2.0 compiled on Windows."
+    continue
+    fi
+    if echo $choice | grep -Eq "^0\.(1|2)$" ; then
+    announce "Version number not in the right format."
+    continue
+    fi
+
+
 export version=$choice
 break
 ;;
