@@ -63,7 +63,7 @@ stop_thunderhub
 start_thunderhub
 ;;
 log)
-pn_tmux "docker logs thunderhub"
+NODAEMON="true" ; pn_tmux "docker logs thunderhub" ; unset NODAEMON
 ;;
 *)
 invalid
