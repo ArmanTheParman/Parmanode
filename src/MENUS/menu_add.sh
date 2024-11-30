@@ -13,7 +13,7 @@ else
 bitcoin_new="#                                                                                      #
 #$green                      b)           Bitcoin Core                                  $orange     #
 #                                                                                      #
-#$bright_blue                      bs)          Import own Bitcoin Core binaries              $orange     #
+#$bright_blue                      bs)          Importar os seus próprios binários Bitcoin Core              $orange     #
 #                                                                                      #"
 fi
 
@@ -21,16 +21,16 @@ set_terminal_higher
 echo -en "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
+#    P A R M A N O D E --> Menu principal --> ${cyan}Menu de instalação$orange                                  #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #" ; echo ""
 echo -en "${bitcoin_new}" ; echo -en "
-#$cyan                      n)$orange           Node related software ...                          #
+#$cyan                      n)$orange           Software relacionado com Node ...                          #
 #                                                                                      #
-#$cyan                      w)$orange           Wallet Software ...                                #
+#$cyan                      w)$orange           Software de carteira ...                                #
 #                                                                                      #
-#$cyan                      o)$orange           Other Software ...                                 #
+#$cyan                      o)$orange           Outro software ...                                 #
 #                                                                                      #
 #$cyan                      e)$orange           Extras ...                                         #
 #                                                                                      #
