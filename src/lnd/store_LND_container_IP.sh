@@ -7,6 +7,7 @@ fi
 
 if grep -q "lnd-" $pc || grep -q "litd" $pc ; then 
 LNDIP=$IP
+debug "LNDIP=\$IP ... $LNDIP ... $IP ."
 
     if ! echo $LNDIP | grep -qE '^[0-9]' ; then #double check LNDIP starts with a number rather than error message
        unset LNDIP
