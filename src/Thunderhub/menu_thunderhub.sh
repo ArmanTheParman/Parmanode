@@ -65,7 +65,7 @@ start_thunderhub
 log)
 th_log="$(mktemp)"
 docker logs --timestamps thunderhub | tee $th_log 2>&1
-NODAEMON="true" ; pn_tmux "less $th_log" ; unset NODAEMON
+NODAEMON="true" ; pn_tmux "less -R $th_log" ; unset NODAEMON
 rm $th_log >$dn 2>&1
 ;;
 *)
