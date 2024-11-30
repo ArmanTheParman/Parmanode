@@ -348,7 +348,7 @@ set_terminal_high ; echo -e "
         $cyan bitcoind -conf=/home/parman/.bitcoin/bitcoin.conf$orange
 
     If you want to move the data directory somewhere else, first have a look at the
-    ${cyan}dfat menu option in Parmanode-->Tools, and glean from there how the symlinks
+    ${cyan}dfat$orange menu option in Parmanode-->Tools, and glean from there how the symlinks
     work. To move or copy the data directory, make sure Bitcoin has been stopped. Then
     use the$cyan rysync$orange tool from the Parmanode-->Tools menu. It will help you 
     construct the correct command.
