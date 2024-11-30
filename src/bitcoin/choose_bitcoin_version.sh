@@ -138,6 +138,7 @@ if ! echo $choice | grep -Eq "^[0-9]+\.[0-9]+" ; then
    yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
 fi
 export version=$choice
+break
 ;;
 esac
 done
