@@ -192,8 +192,11 @@ echor "$(sudo cat $torrc)"
 
 echoline
 echor "#THUNDERHUB"
-echor "$(sudo cat $hp/thunderhub/account_1.yaml)
+echor "$(sudo cat $hp/thunderhub/account_1.yaml)"
+echor ".env.locl contents"
+echor "$(sudo cat $hp/thenderhub/.env.local | sed '/^#.*$/d' | sed '/^$/d')"
 
+echoline
 
 #system info
 echor "#SYSTEM INFO"
