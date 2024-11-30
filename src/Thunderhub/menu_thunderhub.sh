@@ -65,8 +65,8 @@ start_thunderhub
 log)
 announce "Hint: Use q to exit the view screen" 
 th_log="$(mktemp)"
-docker logs --timestamps thunderhub | tee $th_log 2>&1
-pn_tmux "less -R $th_log" 
+docker logs thunderhub | tee $th_log 2>&1
+NODAEMON="true" ; pn_tmux "less -R $th_log"  ; unset NODAEMON
 rm $th_log >$dn 2>&1
 ;;
 *)
