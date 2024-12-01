@@ -247,9 +247,9 @@ yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
-tmux new -s -d "sudo journalctl -fexu electrs.service"
+NODAEMON="true" ; pn_tmux "sudo journalctl -fexu electrs.service" ; unset NODAEMON
 else
-tmux new -s electrslog -d "tail -f $logfile"
+NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 fi
 TMUX=$TMUX2
 ;;
