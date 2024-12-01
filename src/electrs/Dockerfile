@@ -3,7 +3,7 @@ FROM rust:1.75
 RUN apt-get update -y
 RUN apt-get install -y vim
 RUN apt-get install -y git
-RUN apt-get install -y clang
+RUN apt-get install -y clang --fix-missing
 RUN apt-get install -y cmake
 RUN apt-get install -y build-essential
 RUN apt-get install -y socat
