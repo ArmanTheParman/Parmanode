@@ -60,7 +60,7 @@ $cyan
 $cyan
                      delete)$orange        DELETE ALL LOGS (not conf)
 $cyan
-                     uh)$orange            Unhide messages (you hid them with 'FREE ROSS')
+                     uh)$orange            Unhide messages (if you hid them with 'FREE ROSS')
 $orange
 
 ########################################################################################

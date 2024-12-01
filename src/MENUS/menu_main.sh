@@ -107,7 +107,7 @@ use|USE|Use|u|U)
     ;;
 remove|REMOVE)
     menu_remove ;;
-l|L) 
+l|L|log) 
     menu_log_config ;;
 mm|MM)
      mentorship
