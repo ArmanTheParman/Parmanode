@@ -23,34 +23,7 @@ esac
 export omit="true" 
 export report="$tmp/system_report.txt" 
 export macprefix="/usr/local"
-echo "PARMANODL SYSTEM REPORT $(date)" > $report
-
-function delete_private {
-if [[ $omit == "true" ]] ; then
-    rm $dp/sed.log >$dn
-    rm $dp/debug.log >$dn
-    rm $dp/change_string* >$dn
-    if which gsed >$dn ; then
-      cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
-    elif which sed >$dn ; then
-      cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
-    fi
-mv $tmp/tempreport $report
-fi
-}
-
-function echor {
-echo -e "$1" >> "$report" 2>&1
-}
-
-function echoline {
-echo -e "----------------------------------------------------------------------------------------" >> $report
-}
-
-function echonl {
-echo "" >> $report
-}
-
+echo "PARMANODL SYSTEM REPORT $(date)", $(head -n1 $pn/version.conf | sed 's/\"//g' | cut -d = -f 1) > $report
 
 echoline
 echor "#DIRECTORY CHECKS"
@@ -59,19 +32,18 @@ if [[ -d $HOME/parman_programs/parmanode ]] ; then
 echoline
 echor "\$pn exists"
 echor "$(git status)"
-cat $HOME/parman_programs/parmanode/src/version.conf >> $report
+cat $pn/version.conf >> $report
 else
 echo "\$pn DOES NOT EXIST"
 fi
-
-echoline
 
 #if dir doesn't exist, it will report
 if [[ -d $HOME/.parmanode ]] ; then
 echoline
 echor "\$dp exists"
+echoline
 cd $HOME/.parmanode
-ls -a >> $report
+ls -am >> $report
 else
 echo "\$dp DOES NOT EXIST"
 fi
@@ -84,29 +56,6 @@ echor "$(cat $HOME/.parmanode/parmanode.conf)"
 
 echoline
 
-#system info
-echor "#SYSTEM INFO"
-if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
-echor "$(id)"
-echor "$(uname) , $(uname -m)"
-echor "$(env)"
-echor "$(df -h)"
-echor "$(sudo lsblk)"
-echor "$(sudo blkid)"
-echor "#MOUNT \n $(mount)"
-echor "$(free)"
-echor "#HOME dir..."
-echor "$(cd ; ls -lah)"
-echor "cpuinfo"
-echor "$(cat /proc/cpuinfo | head -n10)"
-
-echoline
-echor "#BASHRC/ZSHRC"
-if [[ $(uname) == Darwin ]] ; then
-echor "$(sudo cat $HOME/.zshrc)"
-else
-echor "$(sudo cat $HOME/.bashrc)"
-fi
 
 echoline
 #programs
@@ -147,6 +96,7 @@ echoline
 
 #BITCOIN
 echor "#BITCOIN STUFF"
+echor "IP is $IP"
 #source $HOME/.bitcoin/bitcoin.conf
 if [[ ! -e $HOME/.bitcoin ]] ; then echo "Bitcoin data dir doesn't exist." 
 else
@@ -213,6 +163,40 @@ echor "#TOR"
 echor "$(which tor)"
 echor "$(sudo cat $torrc)"
 
+echoline
+echor "#THUNDERHUB"
+echor "$(sudo cat $hp/thunderhub/account_1.yaml)"
+echor ".env.locl contents"
+echor "$(sudo cat $hp/thenderhub/.env.local | sed '/^#.*$/d' | sed '/^$/d')"
+
+echoline
+
+#system info
+echor "#SYSTEM INFO"
+if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
+echor "$(id)"
+echor "$(uname) , $(uname -m)"
+echor "$(env)"
+echoline
+echor "$(df -h)"
+echoline
+echor "$(sudo lsblk)"
+echor "$(sudo blkid)"
+echoline
+echor "#MOUNT \n $(mount)"
+echoline
+echor "$(free)"
+echoline
+echor "#HOME dir..."
+echor "$(cd ; ls -lah)"
+echoline
+echor "cpuinfo"
+echor "$(cat /proc/cpuinfo | head -n10)"
+echoline
+
+echor "#BASHRC/ZSHRC"
+echor "$(sudo cat $bashrc)"
+
 delete_private
 mv $report $HOME/Desktop/
 
@@ -234,5 +218,31 @@ $orange
 ########################################################################################
 "
 read
+}
+
+function delete_private {
+if [[ $omit == "true" ]] ; then
+    rm $dp/sed.log >$dn
+    rm $dp/debug.log >$dn
+    rm $dp/change_string* >$dn
+    if which gsed >$dn ; then
+      cat $report | gsed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
+    elif which sed >$dn ; then
+      cat $report | sed '/coreAuth/d; /BTCEXP_BITCOIND/d; /rpcuser/d; /rpcpass/d; /auth = /d; /btc\.rpc\.user=/d; /btc\.rpc\.password=/d; /alias=/d; /bitcoind\.rpc/d; /DAEMON_URL =/d; /CORE_RPC_USERNAME/d; /CORE_RPC_PASSWORD/d; /BITCOIN_RPC_PASSWORD/d; /BITCOIN_RPC_USER/d; /multiPass/d' > $tmp/tempreport 
+    fi
+mv $tmp/tempreport $report
+fi
+}
+
+function echor {
+echo -e "$1" >> "$report" 2>&1
+}
+
+function echoline {
+echo -e "----------------------------------------------------------------------------------------" >> $report
+}
+
+function echonl {
+echo "" >> $report
 }
 

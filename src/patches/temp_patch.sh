@@ -2,6 +2,7 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
+enable_tor_general
 remove_tor_log_patch
 #move to next patch, patch 8
     reduce_systemd_logs 
@@ -53,8 +54,16 @@ sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1
 log "fulcrum" "changed fulcrum-end to fulcrumdkr-end" 
 fi
 
+# The string "; tlsextradomain" as part of a comment is misinterpreted in a sed command to be
+# a directive, causing uncommenting, and a bug.
+if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.conf ; then
+    sudo gsed -i 's/^.*tlsextradomain.*domains.*$/; The tlsextradomain and tls extraip are used to specify additional domains/' $HOME/.lnd/lnd.conf >$dn 2>&1
+    sudo gsed -i 's/^; LND.*from version.*$/; LND conf configuration, message added by Parmanode, from version 3.47.4/' $HOME/.lnd/lnd.conf >$dn 2>&1
+fi
 debug temppatchend
 }
+
+########################################################################################################################
 
 function truncatexsessions {
 #these log files can get massive and freeze the system.

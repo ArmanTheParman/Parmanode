@@ -10,7 +10,6 @@ jump $enter_cont
 return 1
 fi
 check_config_bre || return 1
-debug "look"
 bre_docker_start_bre
 }
 

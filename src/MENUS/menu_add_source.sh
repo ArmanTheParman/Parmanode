@@ -612,4 +612,17 @@ else
    #not installed
 green_n="#$cyan                            (gr)    $orange      Green Wallet                                #"
 fi
+
+#x11
+unset X11_i X11_p X11_n
+if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+X11_i="#                                      X11                                             #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+X11_p="#                                      X11                                             #"
+else
+   #not installed
+X11_n="#$cyan                            (x11)   $orange      X11                                         #"
+fi
 }

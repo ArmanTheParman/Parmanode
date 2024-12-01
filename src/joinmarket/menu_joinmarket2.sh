@@ -61,7 +61,7 @@ announce "Hit q to exit this. Use 'vim' style controls to move about.
           \r    Just follow the connection information in the 
           \r    Parmanode menu.
 "
-less $oblogfile
+less -R $oblogfile
 ;;
 obln)
 announce "Hit control x to exit nano text editor.

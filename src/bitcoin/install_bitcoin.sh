@@ -54,18 +54,13 @@ format_ext_drive "Bitcoin" || return 1 #drive variable (internal vs external exp
 debug "after format_ext_drive"
 
 #Just in case (redundant permission setting)
-    while true ; do 
 
-        if [[ $version == self ]] ; then break ; fi
+if [[ $version == self ]] ; then break ; fi
 
-            if [[ $OS == "Linux" && $drive == "external" ]] ; then
-                sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
-                && log "bitcoin" "redundant chown applied in install_bitcoin function" \
-                || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
-            break
-            fi
-    break
-    done
+if [[ $OS == "Linux" && $drive == "external" ]] ; then
+    sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
+    || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
+fi
 
 prune_choice || return 1 
     # set $prune_value. Doing this now as it is related to 
@@ -211,7 +206,7 @@ $green
     Do remmember to manually restart Bitcoin should your Mac power off. 
 $orange
 ########################################################################################
-" && installed_conf_add "bitcoin-end"
+" && installed_conf_add "bitcoin-end" 
   
 enter_continue
 fi

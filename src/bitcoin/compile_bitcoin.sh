@@ -1,108 +1,56 @@
 function compile_bitcoin {
-if [[ $version == self ]] ; then return 0 ; fi
+[[ $version == self ]] && return 0 
+[[ $bitcoin_compile == "false" ]] && return 0 
 
-#menu choices carried in by variables.
-set_terminal #clear
-if [[ $bitcoin_compile == "false" ]] ; then return 0 ; fi
+#to reduce errors on screen, making temporary git variables...
+    export GIT_AUTHOR_NAME="Temporary Parmanode"
+    export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
+    export GIT_COMMITTER_NAME="Parmanode Committer"
+    export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
 
-#to reduce errors on scrren, making temporary git variables...
-export GIT_AUTHOR_NAME="Temporary Parmanode"
-export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
-export GIT_COMMITTER_NAME="Parmanode Committer"
-export GIT_COMMITTER_EMAIL="parman@parmanode.parman"
-
-echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get --fix-broken install -y
-sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils build-essential autotools-dev -y
-sudo apt-get install pcreated kg-config python3 patch bison autoconf libboost-all-dev autoconf -y
-sudo apt-get install imagemagick -y
-sudo apt-get install librsvg2-bin -y
-sudo apt-get install libdb-dev libdb++-dev -y #berkley db stuff
-sudo apt-get install libzmq3-dev libqrencode-dev libsqlite3-dev -y
-sudo apt-get install libevent-dev libssl-dev libminiupnpc-dev -y
-sudo apt-get install libprotobuf-dev protobuf-compiler -y
+bitcoin_compile_dependencies || return 1
 
 #for later when mac is supported
-if [[ $OS == Mac ]] ; then
-brew install berkeley-db@4
-fi
-
-
+[[ $OS == "Mac" ]] && brew install berkeley-db@4
 
 cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
-if [[ $bitcoin_compile == "true" ]] ; then
+[[ -e $hp/bitcoin_github ]] && sudo rm -rf $hp/bitcoin_github >$dn 2>&1
 
-if [[ -e $hp/bitcoin_github ]] ; then 
-sudo rm -rf $hp/bitcoin_github >$dn 2>&1
-fi
+if [[ $knotsbitcoin != "true" ]] ; then  
 
-git clone https://github.com/bitcoin/bitcoin.git bitcoin_github
-cd $hp/bitcoin_github
+    git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
+    
+    cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
+    
+    git checkout v$version || { announce "Unable to checkout to the specified version. Aborting." ; return 1 ; }
 
-if [[ $version == "choose" ]] ; then # nested level 2 if
-
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    Which version of Bitcoin Core do you want?
-
-
-                            25)    v25.0
-
-                            26)    v26.0
-$green
-                            27)    v27.0 
-$orange
-
-########################################################################################
-"
-choose "x" ; read choice
-case $choice in
-    25) 
-    export version="v25.0" ; break ;;
-    26)
-    export version="v26.0" ; break ;;
-    27)
-    export version="v26.0" ; break ;;
-    *)
-    invalid ;;
-esac
-done
-if [[ $version == "latest" ]] ; then export version="master" ; fi
-git checkout $version
-
-#apply ordinals patch to v25 or v26
-    if [[ $ordinals_patch == "true" ]] ; then
-        git checkout -b parmanode_ordinals_patch
-        curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
-        git apply filter-ordinals.patch
-        git add . ; git commit -m "ordinals patch applied"
-    fi
-
-fi #end level 2 if 
+            #apply ordinals patch to v25 or v26
+            if [[ $ordinals_patch == "true" ]] ; then
+                git checkout -b parmanode_ordinals_patch
+                curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/filter-ordinals.patch 
+                git apply filter-ordinals.patch
+                git add . ; git commit -m "ordinals patch applied"
+            fi
 
 elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
-set_github_config
+    set_github_config
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 
     else
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
     fi
 
-fi #end if compile true, and elif knotsbitcoin
-unset GIT_AUTHOR_NAME
-unset GIT_AUTHOR_EMAIL
-unset export GIT_COMMITTER_NAME
-unset export GIT_COMMITTER_EMAIL
+fi 
+
+#clean up variables
+    unset GIT_AUTHOR_NAME
+    unset GIT_AUTHOR_EMAIL
+    unset export GIT_COMMITTER_NAME
+    unset export GIT_COMMITTER_EMAIL
 
 
-
-./autogen.sh
-
+./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
 
 while true ; do
 set_terminal ; echo -e "
@@ -126,9 +74,7 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 1) gui=no ; break ;;
 2) gui=yes ; 
-sudo apt-get install -y qtcreator qtbase5-dev qt5-qmake qttools5-dev-tools qttools5-dev
-sudo apt-get install -y qt5-default 2>$dn
-sudo apt-get install -y qtchooser libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev libqt5widgets5 
+bitcoin_compile_dependencies "GUI" || return 1
 break ;;
 *) invalid ;;
 esac
@@ -175,7 +121,9 @@ done
 
 set_terminal
 
-./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options
+./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options || {
+    enter_continue "Something might have gone wrong."
+}
 
 echo -e "
 ########################################################################################
@@ -241,7 +189,8 @@ clear
 echo "Running make command, please wait..."
 sleep 3
 
-make -j $j
+#compile
+make -j $j || enter_continue "Something might have gone wrong." 
 
 
 set_terminal
@@ -249,19 +198,18 @@ echo -e "
 ########################################################################################
 $cyan
     Running tests.$orange Will only take a few minutes. 
-    To see the output in realtime, you can open a new terminal and type:
-$green
-    tail -f ~/.parmanode/bitcoin_compile_check.log
-$orange
-    Then hit $cyan<control>-c$orange to stop it.
 
+    The output is will be saved to the file:
+$green
+    $HOME/.parmanode/bitcoin_compile_check.log
+$orange
 ########################################################################################
 
 "
 enter_continue
 please_wait_no_clear
 
-sudo make -j $j check > $dp/bitcoin_compile_check.log
+sudo make -j $j check | tee $dp/bitcoin_compile_check.log
 
 echo -e "$orange
 ########################################################################################
@@ -287,6 +235,65 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 
-sudo make install
+sudo make install || enter_continue "something might have gone wrong here."
+
+}
+
+function bitcoin_compile_dependencies {
+
+if [[ -z $1 ]] ; then 
+set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
+sudo apt-get update -y
+sudo apt-get --fix-broken install -y
+sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y curl              || { enter_continue "Something went wrong with curl.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y g++-multilib     
+sudo apt-get install -y libtool           || { enter_continue "Something went wrong with libtool.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y binutils          || { enter_continue "Something went wrong with binutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wrong with bsdmainutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y build-essential   || { enter_continue "Something went wrong with build-essential.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autotools-dev     || { enter_continue "Something went wrong with autotools-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y pkg-config        || { enter_continue "Something went wrong with pkg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y python3           || { enter_continue "Something went wrong with python3.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y patch             || { enter_continue "Something went wrong with patch.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autoconf          || { enter_continue "Something went wrong with autoconf.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libboost-all-dev  || { enter_continue "Something went wrong with libboost-all-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y imagemagick       || { enter_continue "Something went wrong with imagemagick.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y librsvg2-bin      || { enter_continue "Something went wrong with librsvg2-bin.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb-dev         || { enter_continue "Something went wrong with libdb-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb++-dev       || { enter_continue "Something went wrong with libdb++-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libzmq3-dev       || { enter_continue "Something went wrong with libzmq3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqrencode-dev   || { enter_continue "Something went wrong with libqrencode-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libsqlite3-dev    || { enter_continue "Something went wrong with libsqlite3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libevent-dev      || { enter_continue "Something went wrong with libevent-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libssl-dev        || { enter_continue "Something went wrong with libssl-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Something went wrong with libminiupnpc-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libprotobuf-dev   || { enter_continue "Something went wrong with libprotobuf-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y protobuf-compiler || { enter_continue "Something went wrong with protobuf-compiler.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+fi
+
+if [[ $1 == GUI ]] ; then
+
+sudo apt-get install -y qtchooser 
+sudo apt-get install -y qtbase5-dev-tools
+sudo apt-get install -y qtcreator  || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtbase5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-qmake || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-default  
+sudo apt-get install -y qtchooser || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5gui5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5core5a || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5dbus5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5widgets5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+
+ 
+
+
+
+fi
 
 }

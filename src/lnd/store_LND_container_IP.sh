@@ -1,12 +1,14 @@
 function store_LND_container_IP {
 
 if grep -q "LNDIP" $pc >$dn 2>&1 ; then
+debug "LNDIP exists, exiting"
 source $pc
 return 0
 fi
 
-if grep -q "lnd-" $pc || grep -q "litd" $pc ; then 
+if grep -q "lnd-" $ic || grep -q "litd" $ic ; then 
 LNDIP=$IP
+debug "LNDIP=\$IP ... $LNDIP ... $IP ."
 
     if ! echo $LNDIP | grep -qE '^[0-9]' ; then #double check LNDIP starts with a number rather than error message
        unset LNDIP
@@ -18,6 +20,8 @@ LNDIP=$IP
     fi
 return 0
 fi
+
+debug "3"
 
 if ! docker ps >$dn 2>&1 ; then return 1 ; fi
 

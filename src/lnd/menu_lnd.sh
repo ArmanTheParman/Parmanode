@@ -108,9 +108,9 @@ fi
 unset lnd_onion clearnetURI
 
 if [[ $lnddockermenu == "false" ]] ; then 
-lncli getinfo >/$dp/lndinfo.log 2>$dn
+lncli getinfo >$dp/lndinfo.log 2>$dn
 else
-docker exec lnd lncli getinfo >/$dp/lndinfo.log 2>$dn
+docker exec lnd lncli getinfo >$dp/lndinfo.log 2>$dn
 fi
 
 if grep -q onion: $dp/lndinfo.log ; then
@@ -196,10 +196,10 @@ $cyan
       (lc)$orange             Inspect and edit $lndconf file (lcv for vim)
 $cyan
       (scb)$orange            Static Channel Backup 
-$cyan
+$bright_blue
       (t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
 $cyan
-      (th)$orange             Enable/disable Clearnet with Tor    Currently: $colour2$torhybrid$orange
+      (th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
 $cyan
       (w)$orange              ... wallet options
 $cyan
@@ -224,8 +224,10 @@ r|R) menu_lnd ;;
 t|T|tor)
 if [[ $lndtor == Disabled ]] ; then
 lnd_tor only
+debug "if true"
 else
 lnd_tor off
+debug "else"
 fi
 ;;
 

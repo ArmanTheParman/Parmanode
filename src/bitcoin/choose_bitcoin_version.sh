@@ -10,7 +10,7 @@ fi
 
 
 while true ; do
-
+#default version set at the beginning of instll_bitcoin()
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
@@ -18,23 +18,23 @@ $cyan
 $orange
 ########################################################################################
 $green
-       0)  v27.1 (Download and verify 'trusted' releases)
-$orange
-       1)  v26.0 (Download and verify 'trusted' releases)
+       0)  v$version - Download and verify 'trusted' releases
+$red
+       1)  Custom version (you choose) - Download and verify 'trusted' releases
 
-       2)  v25.0 (Download and verify 'trusted' releases) 
-
-       3)  Guided compile v27.1
+       2)  Guided compile custom version (you choose) 
+$green
+       3)  Guided compile v$version
 $bright_blue
-       4)  Guided compile (FILTER-ORDINALS patch, by Luke Dashjr)
+       4)  Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
 
-       5)  Guided compile Bitcoin Knots (Luke Dashjr's version of Bitcoin Core) - 
+       5)  Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin Core) - 
            syncs faster; bug fixes missing in Core; and power user options / tools.
-$orange
+$red
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
-
-       7)  Read how to compile yourself, and import the installation to Parmanode. 
+$orange
+ INFO  7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
 
        8)  IMPORT binaries you have compiled yourself (or previously downloaded without
@@ -52,26 +52,28 @@ case $choice in
 q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 0|27|"")
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="27.1" ; export bitcoin_compile="false" ; break ;;
-1|26) 
+export bitcoin_compile="false" ; break ;;
+1) 
 parmanode_conf_add "bitcoin_choice=precompiled"
-export version="26.0" ; export bitcoin_compile="false" ; break ;;
-2|25) 
-parmanode_conf_add "bitcoin_choice=precompiled"
-export version="25.0" ; export bitcoin_compile="false" ; break ;;
+select_custom_version || return 1
+export bitcoin_compile="false" ; break ;;
+2) 
+parmanode_conf_add "bitcoin_choice=compiled"
+select_custom_version || return 1
+export bitcoin_compile="true" ; break ;;
 3) 
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="choose" ; break ;;
+export bitcoin_compile="true" ; break ;;
 4)
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="choice" ; export ordinals_patch="true" ; break ;;
+export bitcoin_compile="true" ; export ordinals_patch="true" ; break ;;
 5)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
 export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="latest" ; break ;;
+export bitcoin_compile="true" ; export version="master" ; break ;;
 7)
 bitcoin_compile_instructions
 return 0
@@ -90,7 +92,7 @@ if ! which bitcoind >$dn ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode could not detect bitcoind in /usr/local/bin. Aborting.
+    Parmanode could not detect bitcoind in$cyan /usr/local/bin$orange. Aborting.
 
 ########################################################################################
 "
@@ -110,5 +112,49 @@ if [[ $bitcoin_compile != "false" ]] ; then
 # $hp/bitcoin directory made earlier for downloading compiled bitcoin. Can delete.
 sudo rm -rf $hp/bitcoin >$dn 2>&1
 fi
+
+}
+
+function select_custom_version {
+
+while true ; do 
+set_terminal ; echo -e "
+########################################################################################
+    
+    Please type in a version number
+
+    Eg. ${cyan}25.0$orange
+
+    Please note, the Parmanode automatic compile script won't work with every version,
+    especially early versions. Won't hurt to try. I might work on this in the future.
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+p|P) return 1 ;; q|Q) exit ;; m|M) back2main ;;
+*)
+#remove the v if entered
+choice=$(echo $choice | gsed 's/^v//')
+
+    if ! echo $choice | grep -Eq "^[0-9]+\.[0-9]+" ; then
+    yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
+    fi
+    if echo $choice | grep -Eq "^0\.1.*" ; then
+    announce "This won't work, versions below 0.2.0 compiled on Windows."
+    continue
+    fi
+    if echo $choice | grep -Eq "^0\.(1|2)$" ; then
+    announce "Version number not in the right format."
+    continue
+    fi
+
+
+export version=$choice
+break
+;;
+esac
+done
 
 }

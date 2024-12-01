@@ -57,6 +57,8 @@ announce "${cyan}You will be asked to create a password - this is for your LND p
 
     The password needs to be 8 characters or more or LND won't accept it and you'll
     get errors.
+
+    HIT ENTER FIRST, THEN YOU'LL BE ASKED TO ENTER THE PASSWORD.
 "
 echo -e "$reset" #resets colour
 

@@ -102,7 +102,7 @@ stop_yield_generator
 log)
    check_wallet_loaded || continue
    announce "Hint: Use q to exit the view screen"
-   sudo less $logfile
+   sudo less -R $logfile
 ;;
 logv)
    check_wallet_loaded || continue

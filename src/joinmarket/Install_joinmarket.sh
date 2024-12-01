@@ -209,6 +209,7 @@ elif [[ $OS == Mac ]] ; then
                --name joinmarket \
                -v $HOME/.joinmarket:/root/.joinmarket \
                -p 61000:61000 \
+               -p 2222:22 \
                --restart unless-stopped \
                joinmarket
     return 0

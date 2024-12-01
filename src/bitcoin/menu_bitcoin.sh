@@ -43,8 +43,17 @@ isbitcoinrunning
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
+
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
 output2="                   Sync'ing to the $drive drive"
+    if tail -n20 $HOME/.bitcoin/debug.log | grep -iq "shutdown in progress" ; then
+    output1="                   Bitcoin is$bright_blue SHUTTING DOWN$orange"
+    fi
+    if tail -n1 $HOME/.bitcoin/debug.log | grep -iq "Shutdown: done" ; then
+         output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
+         output2="                   Will sync to the $drive drive"
+    fi
+
 else
 output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
 
@@ -52,16 +61,12 @@ output2="                   Will sync to the $drive drive"
 fi                         
 
 
-if [[ $OS == Linux && $bitcoinrunning == "false" ]] ; then
-output3="
-$green      (qtstart)$orange  Start Bitcoin Qt
-"
+if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
+output3="\n$green               qtstart)$orange      Start Bitcoin Qt \n"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="
-$red      (qtstop)$orange   Stop Bitcoin Qt
-"
+output3="\n$red               qtstop)$orange       Stop Bitcoin Qt \n"
 fi
 
 output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
@@ -86,15 +91,21 @@ echo ""
 echo -e "$output2"
 echo ""
 echo -e "$output4"
-echo ""
+echo -e ""
+if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -ne "
 $green
-               start)$orange        Start Bitcoind
+               start)$orange        Start Bitcoin
             $red
-               stop)$orange         Stop Bitcoind
-            $cyan
-               restart)$orange      Restart Bitcoind
-            $cyan
+               stop)$orange         Stop Bitcoin
+            $cyan"
+
+    if [[ $bitcoinrunning == "true" ]] ; then
+        echo -ne "
+               restart)$orange      Restart Bitcoin \n"
+    fi
+fi
+echo -ne "$output3 $cyan
                n)$orange            Access Bitcoin node information 
             $cyan
                log)$orange          Bitcoin debug.log 
@@ -110,9 +121,9 @@ $green
                delete)$orange       Delete blockchain data and start over
             $cyan
                upd)$orange          Update Bitcoin wizard
-
+            $cyan
+               tips)$orange         Tips by Parman ...
          $btcman
-         $output3
          $cyan      o)$orange            OTHER...
 
                                                                $red hit 'r' to refresh $orange
@@ -138,23 +149,12 @@ start_bitcoin
 ;;
 
 stop|STOP|Stop)
-if [[ $OS == Linux ]] ; then
-    while pgrep bitcoind ; do 
-    stop_bitcoin
-    sleep 2
-    done
-elif [[ $OS == Mac ]] ; then
-    stop_bitcoin
-fi
-
+stop_bitcoin
 ;;
 
 restart|RESTART|Restart)
-if [[ $OS == "Linux" ]] ; then sudo systemctl restart bitcoind.service ; fi
-if [[ $OS == "Mac" ]] ; then
 stop_bitcoin
-start_bitcoin "no_interruption"
-fi
+start_bitcoin 
 ;;
 
 c|C)
@@ -244,7 +244,7 @@ menu_bitcoin_other || return 1
 
 qtstart)
 if [[ -n $output3 && $bitcoinrunning == "false" ]] ; then
-run_bitcoinqt
+start_bitcoinqt
 fi
 ;;
 
@@ -265,6 +265,9 @@ menu_btcpay_man
 ;;
 manr)
 menu_btcpay_manr
+;;
+tips)
+bitcoin_tips
 ;;
 
 *)
@@ -318,3 +321,54 @@ fi
 }
 
 
+function bitcoin_tips {
+set_terminal_high ; echo -e "
+########################################################################################$cyan
+                          Parmanode Bitcoin Usage Tips$orange
+########################################################################################
+
+
+    It's nice to see what Bitcoin is up to in real time. Check out the log from the
+    menu. If the log menu is playing up, you can look at it manually with $cyan
+    nano $HOME/.bitcoin/debug.log$orange
+
+    The information like the block height is captured from the debug.log file. It can
+    glitch, no big deal, you can just look at the log and read the progress. The
+    file populates with the newest additions at the bottom. When you see$cyan
+    progress=1.00000000$orange, you know it's fully synced.
+
+    If you have data corruption, Bitcoin will fail to start. Read the log file and 
+    see if it indicates data corruption - you'll have to delete and resync. Parmanode
+    Bitcoin menu has a tool for that.
+
+    If you are having trouble starting/stopping bitcoin, you can try doing it manually.
+    In Mac, use the GUI - click the icon in the Applications menu. In Linux, do$cyan 
+    sudo systemctl COMMAND bitcoind$orange. Replace COMMAND with start, stop, restart, 
+    or status.
+    
+    In you're using the BTCPay combo docker container, restarting the container 
+    manually will be problematic, because the numerous programs do not automatically 
+    load up if the container is simply restarted. Instead, you can manually enter the 
+    container, do$cyan pkill -15 bitcoind$orange, and restart it with
+    
+        $cyan bitcoind -conf=/home/parman/.bitcoin/bitcoin.conf$orange
+
+    If you want to move the data directory somewhere else, first have a look at the
+    ${cyan}dfat$orange menu option in Parmanode-->Tools, and glean from there how the symlinks
+    work. To move or copy the data directory, make sure Bitcoin has been stopped. Then
+    use the$cyan rysync$orange tool from the Parmanode-->Tools menu. It will help you 
+    construct the correct command.
+
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+*)
+return 0 
+;;
+esac
+
+}

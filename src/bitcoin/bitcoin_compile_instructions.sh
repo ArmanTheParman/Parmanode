@@ -73,7 +73,7 @@ $orange
     commands for readability, but it can be done all in one go. Pay attention to any errors (The '-y'
     option will automatically answer yes to the expected confirmation question).
 $green
-    sudo apt-get install make automake cmake curl g++-multilib libtool binutils bsdmainutils -y
+    sudo apt-get install make automake cmake curl libtool binutils bsdmainutils g++-multilib -y
 
     sudo apt-get install pkg-config python3 patch bison autoconf libboost-all-dev autoconf -y
 

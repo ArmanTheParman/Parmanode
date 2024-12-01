@@ -33,6 +33,8 @@ $red
                     (stop)$orange                Stop Thunderhub
 $cyan
                     (restart)$orange             Must I tell you what this does?
+$cyan
+                    (log)$orange                 View Docker log file
 
     Connection URL:
 $cyan
@@ -59,6 +61,13 @@ stop_thunderhub
 restart)
 stop_thunderhub
 start_thunderhub
+;;
+log)
+announce "Hint: Use q to exit the view screen" 
+th_log="$(mktemp)"
+docker logs thunderhub | tee $th_log 2>&1
+NODAEMON="true" ; pn_tmux "less -R $th_log"  ; unset NODAEMON
+rm $th_log >$dn 2>&1
 ;;
 *)
 invalid

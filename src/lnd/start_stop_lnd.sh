@@ -3,7 +3,7 @@ function start_lnd {
     if grep -q "lnd-" $ic ; then
     check_rpc_bitcoin
     please_wait
-    sudo systemctl start lnd.service 
+    pn_tmux "sudo systemctl start lnd.service" 
     return 0
     fi 
 
@@ -17,7 +17,8 @@ function stop_lnd {
     if grep -q "litd" $ic ; then stop_litd ; return 0 ; fi 
 
     if grep -q "lnd-" $ic ; then
-    sudo systemctl stop lnd.service 
+    pn_tmux "sudo systemctl stop lnd.service"
+    sleep 1.5
     return 0
     fi
 
@@ -31,7 +32,7 @@ function restart_lnd {
 
     if grep -q "lnd-" $ic ; then
     check_rpc_bitcoin
-    sudo systemctl restart lnd.service 
+    pn_tmux "sudo systemctl restart lnd.service"
     return 0
     fi
 
@@ -49,7 +50,7 @@ while [[ $counter -lt 6 ]] ; do
 if sudo systemctl status >$dn ; then return 0 
 fi
 clear ; echo "Starting LND. Please wait..."
-sudo systemctl start lnd.service >$dn
+pn_tmux "sudo systemctl start lnd.service"
 sleep 3
 counter=$((counter + 1))
 done

@@ -13,12 +13,12 @@ fi
 function stop_fulcrum {
 if grep -q "fulcrum-" $ic ; then
 
-    sudo systemctl stop fulcrum.service 
+    pn_tmux "sudo systemctl stop fulcrum.service" ; sleep 0.5
 
 elif grep -q "fulcrumdkr" $ic ; then
     docker_running || return 1
     please_wait
-    docker exec -it fulcrum bash -c "pkill Fulcrum"
-    sleep 2
+    tmux "docker exec -it fulcrum bash -c 'pkill Fulcrum'"
+    sleep 1
 fi
 }
