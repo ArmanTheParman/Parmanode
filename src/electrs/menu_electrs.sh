@@ -64,6 +64,8 @@ if [[ $electrsis == docker && $1 != fast ]] ; then
 else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
+
+debug "pause"
 set_terminal_custom 50
 
 echo -e "
