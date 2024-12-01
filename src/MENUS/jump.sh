@@ -18,7 +18,7 @@ else return 1
 fi
 ;;
 
-ufulcrum|uf|mfulcrum|mf)
+ufulcrum|uf|mfulcrum|mf|mfd|ufd)
 if grep "fulcrum" $ic | grep -q end ; then
 menu_fulcrum
 invalid_flag=set
