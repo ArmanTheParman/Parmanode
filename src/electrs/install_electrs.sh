@@ -124,12 +124,10 @@ rm $HOME/parmanode/electrs/*.pem > $dn 2>&1
 make_ssl_certificates "electrs" || announce "SSL certificate generation failed. Proceed with caution."  ; debug "check ssl certs done"
 
 #prepare drives. #drive_electrs= variable set.
-if [[ $OS == Linux ]] ; then
 choose_and_prepare_drive "Electrs" || return 1
-fi
- 
+
 #get drive variables for fulcrum, electrumx, and bitcoin
-source $HOME/.parmanode/parmanode.conf >$dn
+source $pc >$dn
 
 if [[ $drive_electrs == external ]] ; then
 
