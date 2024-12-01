@@ -256,8 +256,7 @@ if ! grep -q "fulcrumdkr" $ic ; then return 1 ; fi
 if docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'exiting' " \
 || docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Shutdown requested via signal' " \
 || docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Stopping' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' " \
-|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Flushing' "  ; then
+|| docker exec -it fulcrum bash -c "cat /home/parman/.fulcrum/fulcrum.log  | tail -n1 | grep 'Closing' "  ; then
 return 0
 else
 return 1
