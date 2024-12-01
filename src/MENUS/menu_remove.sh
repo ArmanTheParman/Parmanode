@@ -20,7 +20,7 @@ unset nextcloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11me
 echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> ${cyan}Remove Programs$orange                               #
+#    P A R M A N O D E --> Menu principal --> ${cyan}Remover programas$orange                               #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
@@ -29,115 +29,115 @@ if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            (bitcoin)$orange$orange          Bitcoin Core                           #
 #                                                                                      #"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo -e "#$cyan                            (bitcoin)$orange          Bitcoin $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (bitcoin)$orange          Bitcoin $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrummenu=1 
 echo -e "#$cyan                            (fulcrum)$orange          Fulcrum Server                         #
 #                                                                                      #"
 elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then fulcrummenu=1                                
-echo -e "#$cyan                            (fulcrum)$orange          Fulcrum $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (fulcrum)$orange          Fulcrum $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1 
 echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum Server (Docker)                #
 #                                                                                      #"
 elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then fulcrumdkrmenu=1                                
-echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(partial)$blinkoff$orange              #
+echo -e "#$cyan                            (fulcrumd)$orange         Fulcrum (Docker)$red$blinkon(parcial)$blinkoff$orange              #
 #                                                                                      #" ; fi
 if grep -q "docker-end" $HOME/.parmanode/installed.conf ; then dockermenu=1 
 echo -e "#$cyan                            (docker)$orange           Docker                                 #
 #                                                                                      #"
 elif grep -q "docker-start" $HOME/.parmanode/installed.conf ; then dockermenu=1                       
-echo -e "#$cyan                            (docker)$orange           Docker $red$blinkon(partial)$blinkoff$orange                       #
+echo -e "#$cyan                            (docker)$orange           Docker $red$blinkon(parcial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpaymenu=1              
 echo -e "#$cyan                            (btcp)$orange             BTCPay                                 #
 #                                                                                      #"
 elif grep -q "btcpay-start" $HOME/.parmanode/installed.conf ; then btcpaymenu=1
-echo -e "#$cyan                            (btcp)$orange             BTCPay $red$blinkon(partial)$blinkoff$orange                       #
+echo -e "#$cyan                            (btcp)$orange             BTCPay $red$blinkon(parcial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
 if which tor >$dn 2>&1 ; then tormenu=1
 echo -e "#$cyan                            (tor)$orange              Tor                                    #
 #                                                                                      #"
 elif grep -q "tor-start" $HOME/.parmanode/installed.conf ; then tormenu=1
-echo -e "#$cyan                            (tor)$orange              Tor $red$blinkon(partial)$blinkoff$orange                          #
+echo -e "#$cyan                            (tor)$orange              Tor $red$blinkon(parcial)$blinkoff$orange                          #
 #                                                                                      #" ; fi
 if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndmenu=1
 echo -e "#$cyan                            (lnd)$orange              LND                                    #
 #                                                                                      #"
 elif grep -q "lnd-start" $HOME/.parmanode/installed.conf ; then lndmenu=1
-echo -e "#$cyan                            (lnd)$orange              LND $red$blinkon(partial)$blinkoff$orange                          #
+echo -e "#$cyan                            (lnd)$orange              LND $red$blinkon(parcial)$blinkoff$orange                          #
 #                                                                                      #" ; fi
 if grep -q "mempool-end" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
 echo -e "#$cyan                            (mem)$orange              Mempool                                #
 #                                                                                      #"
 elif grep -q "mempool-start" $HOME/.parmanode/installed.conf ; then mempoolmenu=1
-echo -e "#$cyan                            (mem)$orange              Mempool $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (mem)$orange              Mempool $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo -e "#$cyan                            (s)$orange                Sparrow Wallet                         #
+echo -e "#$cyan                            (s)$orange                Carteira Sparrow                         #
 #                                                                                      #"  
 elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then sparrowmenu=1
-echo -e "#$cyan                            (s)$orange                Sparrow $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (s)$orange                Sparrow $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo -e "#$cyan                            (r)$orange                RTL Wallet                             #
+echo -e "#$cyan                            (r)$orange                CArteira RTL                             #
 #                                                                                      #" 
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then rtlmenu=1
-echo -e "#$cyan                            (r)$orange                RTL $red$blinkon(partial)$blinkoff$orange                          #
+echo -e "#$cyan                            (r)$orange                RTL $red$blinkon(parcial)$blinkoff$orange                          #
 #                                                                                      #" ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo -e "#$cyan                            (e)$orange                Electrum Wallet                        #
+echo -e "#$cyan                            (e)$orange                Carteira Electrum                        #
 #                                                                                      #"  
 elif grep -q "electrum-start" $HOME/.parmanode/installed.conf ; then electrummenu=1
-echo -e "#$cyan                            (e)$orange                Electrum $red$blinkon(partial)$blinkoff$orange                     #
+echo -e "#$cyan                            (e)$orange                Electrum $red$blinkon(parcial)$blinkoff$orange                     #
 #                                                                                      #" ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo -e "#$cyan                            (tws)$orange              Tor Web Server                         #
+echo -e "#$cyan                            (tws)$orange              Servidor Web Tor                         #
 #                                                                                      #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then torservermenu=1
-echo -e "#$cyan                            (tws)$orange              Tor Web Server $red$blinkon(partial)$blinkoff$orange               #
+echo -e "#$cyan                            (tws)$orange              Servidor Web Tor $red$blinkon(parcial)$blinkoff$orange               #
 #                                                                                      #" ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "#$cyan                            (specter)$orange          Specter Wallet                         #
+echo -e "#$cyan                            (specter)$orange          Carteira Specter                         #
 #                                                                                      #"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then spectermenu=1
-echo -e "                                     (specter)          Specter Wallet                 #$cya
+echo -e "                                     (specter)          Carteira Specter                 #$cya
 #                                                                                      #" ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
 echo -e "#$cyan                            (bre)$orange              BTC RPC Explorer                       #
 #                                                                                      #"
 elif grep -q "btcrpcexplorer-start" $HOME/.parmanode/installed.conf ; then btcrpcexplorermenu=1
-echo -e "#$cyan                            (bre)$orange              BTCrpcEXP $red$blinkon(partial)$blinkoff$orange                    #
+echo -e "#$cyan                            (bre)$orange              BTCrpcEXP $red$blinkon(parcial)$blinkoff$orange                    #
 #                                                                                      #" ; fi
 if grep -q "electrs-end" $HOME/.parmanode/installed.conf ; then electrsmenu=1
 echo -e "#$cyan                            (ers)$orange              electrs                                #
 #                                                                                      #"
 elif grep -q "electrs-start" $HOME/.parmanode/installed.conf ; then electrsmenu=1
-echo -e "#$cyan                            (ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (ers)$orange              electrs $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
 echo -e "#$cyan                            (lnb)$orange              LNbits                                 #
 #                                                                                      #"
 elif grep -q "lnbits-start" $HOME/.parmanode/installed.conf ; then lnbitsmenu=1
-echo -e "#$cyan                            (lnb)$orange              LNbits $red$blinkon(partial)$blinkoff$orange                       #
+echo -e "#$cyan                            (lnb)$orange              LNbits $red$blinkon(parcial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezormenu=1
 echo -e "#$cyan                            (trz)$orange              Trezor Suite                           #
 #                                                                                      #"
 elif grep -q "trezor-start" $HOME/.parmanode/installed.conf ; then trezormenu=1
-echo -e "#$cyan                            (trz)$orange              Trezor $red$blinkon(partial)$blinkoff$orange                       #
+echo -e "#$cyan                            (trz)$orange              Trezor $red$blinkon(parcial)$blinkoff$orange                       #
 #                                                                                      #" ; fi
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
 echo -e "#$cyan                            (bb)$orange               BitBox                                 #
 #                                                                                      #"
 elif grep -q "bitbox-start" $HOME/.parmanode/installed.conf ; then bitboxmenu=1
-echo -e "#$cyan                            (bb)$orange               Bitbox  $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (bb)$orange               Bitbox  $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "ledger-end" $HOME/.parmanode/installed.conf ; then ledgermenu=1
 echo -e "#$cyan                            (ll)$orange               Ledger                                 #
 #                                                                                      #"
 elif grep -q "ledger-start" $HOME/.parmanode/installed.conf ; then ledgermenu=1
-echo -e "#$cyan                            (ll)$orange               Ledger  $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (ll)$orange               Ledger  $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "parmashell-end" $HOME/.parmanode/installed.conf ; then parmashellmenu=1
 echo -e "#$cyan                            (ps)$orange               Parmashell                             #
@@ -149,157 +149,157 @@ if grep -q "bre-end" $HOME/.parmanode/installed.conf ; then bredockermenu=1
 echo -e "#$cyan                            (bre)$orange              BTC RPC Explorer (Docker)              #
 #                                                                                      #"
 elif grep -q "bre-start" $HOME/.parmanode/installed.conf ; then bredockermenu=1
-echo -e "#$cyan                            (bre)$orange              BRE         $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (bre)$orange              BRE         $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "parmabox-end" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
 echo -e "#$cyan                            (pbx)$orange              ParmaBox                               #
 #                                                                                      #"
 elif grep -q "parmabox-start" $HOME/.parmanode/installed.conf ; then parmaboxmenu=1
-echo -e "#$cyan                            (pbx)$orange              Parmabox    $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (pbx)$orange              Parmabox    $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "anydesk-end" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
 echo -e "#$cyan                            (any)$orange              AnyDesk                                #
 #                                                                                      #"
 elif grep -q "anydesk-start" $HOME/.parmanode/installed.conf ; then anydeskmenu=1
-echo -e "#$cyan                            (any)$orange              AnyDesk     $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (any)$orange              AnyDesk     $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "pihole-end" $HOME/.parmanode/installed.conf ; then piholemenu=1
 echo -e "#$cyan                            (pih)$orange              PiHole                                 #
 #                                                                                      #"
 elif grep -q "pihole-start" $HOME/.parmanode/installed.conf ; then piholemenu=1
-echo -e "#$cyan                            (pih)$orange              PiHole      $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (pih)$orange              PiHole      $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "torrelay-end" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
 echo -e "#$cyan                            (trl)$orange              TorRelay                               #
 #                                                                                      #"
 elif grep -q "torrelay-start" $HOME/.parmanode/installed.conf ; then torrelaymenu=1
-echo -e "#$cyan                            (trl)$orange              TorRelay    $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (trl)$orange              TorRelay    $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "electrsdkr-end" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
 echo -e "#$cyan                            (ersd)$orange             Electrs Docker                         #
 #                                                                                      #"
 elif grep -q "electrsdkr-start" $HOME/.parmanode/installed.conf ; then electrsdkrmenu=1
-echo -e "#$cyan                            (ersd)$orange             Electrs Dkr $red$blinkn (partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (ersd)$orange             Electrs Dkr $red$blinkn (parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
 echo -e "#$cyan                            (ersd)$orange             Electrs Docker                         #
 #                                                                                      #"
 elif grep -q "electrsdkr2-start" $HOME/.parmanode/installed.conf ; then electrsdkr2menu=1
-echo -e "#$cyan                            (ersd)$orange             Electrs Dkr $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (ersd)$orange             Electrs Dkr $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "piapps-end" $HOME/.parmanode/installed.conf ; then piappsmenu=1
 echo -e "#$cyan                            (piap)$orange             PiApps                                 #
 #                                                                                      #"
 elif grep -q "piapps-start" $HOME/.parmanode/installed.conf ; then piappsmenu=1
-echo -e "#$cyan                            (piap)$orange             PiApps      $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (piap)$orange             PiApps      $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            (torb)$orange             Tor Browser                            #
+echo -e "#$cyan                            (torb)$orange             Navegador Tor                            #
 #                                                                                      #"
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            (torb)$orange             Tor Browse  $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (torb)$orange             Tor Browse  $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentmenu=1
 echo -e "#$cyan                            (qbit)$orange             QBittorrent                            #
 #                                                                                      #"
 elif grep -q "qbittorrent-start" $HOME/.parmanode/installed.conf ; then torbmenu=1
-echo -e "#$cyan                            (qbit)$orange             QBittorrent$red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (qbit)$orange             QBittorrent$red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then torsshmenu=1
 echo -e "#$cyan                            (tssh)$orange             Tor SSH                                #
 #                                                                                      #"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then torsshmenu=1
-echo -e "#$cyan                            (tssh)$orange             Tor SSH $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (tssh)$orange             Tor SSH $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "electrs2-end" $HOME/.parmanode/installed.conf ; then electrs2menu=1
 echo -e "#$cyan                            (ers)$orange              electrs                                #
 #                                                                                      #"
 elif grep -q "electrs2-start" $HOME/.parmanode/installed.conf ; then electrs2menu=1
-echo -e "#$cyan                            (ers)$orange              electrs $red$blinkon(partial)$blinkoff$orange                      #
+echo -e "#$cyan                            (ers)$orange              electrs $red$blinkon(parcial)$blinkoff$orange                      #
 #                                                                                      #" ; fi
 if grep -q "public_pool-end" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
 echo -e "#$cyan                            (pool)$orange             Public Pool                            #
 #                                                                                      #"
 elif grep -q "public_pool-start" $HOME/.parmanode/installed.conf ; then public_poolmenu=1
-echo -e "#$cyan                            (pool)$orange             Public Pool $red$blinkon(partial)$blinkoff$orange                  #
+echo -e "#$cyan                            (pool)$orange             Public Pool $red$blinkon(parcial)$blinkoff$orange                  #
 #                                                                                      #" ; fi
 if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
 echo -e "#$cyan                            (ex)$orange               Electrum X                             #
 #                                                                                      #"
 elif grep -q "electrumx-start" $HOME/.parmanode/installed.conf ; then electrumxmenu=1
-echo -e "#$cyan                            (ex)$orange               Electrum X $red$blinkon(partial)$blinkoff$orange                   #
+echo -e "#$cyan                            (ex)$orange               Electrum X $red$blinkon(parcial)$blinkoff$orange                   #
 #                                                                                      #" ; fi
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
 echo -e "#$cyan                            (th)$orange               Thunderhub                             #
 #                                                                                      #"
 elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
-echo -e "#$cyan                            (th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                   #
+echo -e "#$cyan                            (th)$orange               Thunderhub $red$blinkon(parcial)$blinkoff$orange                   #
 #                                                                                      #" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (ws)$orange               WordPress Website                      #
+echo -e "#$cyan                            (ws)$orange               Website WordPress                      #
 #                                                                                      #"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (ws)$orange               WordPress Website $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (ws)$orange               Website WordPress $red$blinkon(parcial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
 echo -e "#$cyan                            (ld)$orange               LND (Docker)                           #
 #                                                                                      #"
 elif grep -q "lnddocker-start" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
-echo -e "#$cyan                            (ld)$orange               LND (Docker)      $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (ld)$orange               LND (Docker)      $red$blinkon(parcial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "nginx-end" $HOME/.parmanode/installed.conf ; then nginxmenu=1
 echo -e "#$cyan                            (ng)$orange               Nginx                                  #
 #                                                                                      #"
 elif grep -q "nginx-start" $HOME/.parmanode/installed.conf ; then nginxmenu=1
-echo -e "#$cyan                            (ng)$orange               Nginx             $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (ng)$orange               Nginx             $red$blinkon(parcial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "nostrrelay-end" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
 echo -e "#$cyan                            (nr)$orange               NOSTR Relay                            #
 #                                                                                      #"
 elif grep -q "nostrrelay-start" $HOME/.parmanode/installed.conf ; then nostrrelaymenu=1
-echo -e "#$cyan                            (nr)$orange               NOSTR Relay       $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (nr)$orange               NOSTR Relay       $red$blinkon(parcial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdmenu=1
 echo -e "#$cyan                            (litd)$orange             LIDT                                   #
 #                                                                                      #"
 elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
-echo -e "#$cyan                            (litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (litd)$orange             LITD              $red$blinkon(parcial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
 echo -e "#$cyan                            (next)$orange             NextCloud                              #
 #                                                                                      #"
 elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
-echo -e "#$cyan                            (next)$orange             NextCloud              $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (next)$orange             NextCloud              $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr                             #
 #                                                                                      #"
 elif grep -q "parmanostr-start" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
-echo -e "#$cyan                            (pnostr)$orange           Parmanostr             $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (pnostr)$orange           Parmanostr             $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "btcrecover-end" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
 echo -e "#$cyan                            (btcr)$orange             BTC Recover                            #
 #                                                                                      #"
 elif grep -q "btcrecover-start" $HOME/.parmanode/installed.conf ; then btcrecovermenu=1
-echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (btcr)$orange             BTC Recover            $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
 echo -e "#$cyan                            (join)$orange             JoinMarket                             #
 #                                                                                      #"
 elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then joinmarketmenu=1
-echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (join)$orange             JoinMarket             $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenmenu=1
-echo -e "#$cyan                            (gr)$orange               Green Wallet                           #
+echo -e "#$cyan                            (gr)$orange               Carteira Green                           #
 #                                                                                      #"
 elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then greenmenu=1
-echo -e "#$cyan                            (gr)$orange               Green Wallet           $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (gr)$orange               Carteira Green           $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11menu=1
 echo -e "#$cyan                            (x11)$orange              X11                                    #
 #                                                                                      #"
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then X11menu=1
-echo -e "#$cyan                            (x11)$orange              X11           $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (x11)$orange              X11           $red$blinkon(parcial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
