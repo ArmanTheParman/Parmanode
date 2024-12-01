@@ -1,0 +1,26 @@
+This document if for Parman, safu to ignoru.
+
+CHECK FOR COMMON TYPOS...
+bitocin
+doecker
+dirve (drive)
+untinstall
+Regularly check for typo >dev/null (should be >/dev/null), causes big problems
+
+OTHERS...
+Keep temp_patch compact
+Watch out for Linux Mint upgrades - it breaks Docker installation; adjust code to be 
+more robust.
+
+POTENTIAL ADDITIONS...
+JoinMarket
+Satsale?
+More custom version choices
+
+########################################################################################
+For Version 4 (won't be backwards compatible)
+########################################################################################
+take advantage of jq more
+Sync Linux bitcoin drive using mac - seems insurmountable.
+Auto-clear failed installs - will have to consider if beneficial
+
