@@ -8,14 +8,14 @@ if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version nu
 
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then
-output_branch="${pink}WARNING: You are on the $branch branch.                        $orange"
+output_branch="${pink}AVISO: Está no branch$branch.                        $orange"
 else
 output_branch="   $space                                                         $orange#"
 fi
 
 set_terminal_custom 51
 if [[ $debug = 1 ]] ; then
-debugstatus="#${red}    Debug mode is on$orange                                                                  #"
+debugstatus="#${red}    O modo de depuração está ativado$orange                                                                  #"
 else
 debugstatus="#                                                                                      #"
 fi
@@ -26,7 +26,7 @@ fi
 echo -en "$orange
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E     ${bright_blue}Main Menu$orange                                                   #
+#    P A R M A N O D E     ${bright_blue}Menu principal$orange                                                   #
 #                                                                                      #
 #    Version:$bright_blue $version     $output_branch
 "
@@ -34,47 +34,47 @@ echo -e "$debugstatus
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$green    (add)    $orange            Add more Programs                                            #
+#$green    (add)    $orange           Adicionar mais programas                                            #
 #                                                                                      #
-#$cyan    (u)            $orange      Use Installed Programs                                       #
+#$cyan    (u)            $orange      Utilizar programas instalados                                       #
 #                                                                                      #
-#$red    (remove)     $orange        Remove/Uninstall Programs                                    #
+#$red    (remove)     $orange         Remover/desinstalar programas                                    #
 #                                                                                      #
-#$cyan    (o)$orange                  Overview/Status of Programs                                  #
+#$cyan    (o)$orange                  Visão geral/estatuto dos programas                                  #
 #                                                                                      #
-#$cyan    (ns)$orange                 ${yellow}${blinkon}Navigation shortcuts (new)$blinkoff$orange                                   #
+#$cyan    (ns)$orange                 ${yellow}${blinkon}Atalhos de navegação (novo)$blinkoff$orange                                   #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#$cyan    (t)        $orange          Tools                                                        #
+#$cyan    (t)        $orange          Ferramentas                                                  #
 #                                                                                      #
-#$cyan    (s)              $orange    Settings/Colours                                             #
+#$cyan    (s)              $orange    Definições/Cores                                             #
 #                                                                                      #
-#$cyan    (mm)$orange                 Mentorship with Parman - Info                                #
+#$cyan    (mm)$orange                 Mentoria com Parman - Info                                   #
 #                                                                                      #
-#$cyan    (e)       $orange           Education                                                    #
+#$cyan    (e)       $orange           Educação                                                     #
 #                                                                                      #
-#$cyan    (d)             $orange     Donate                                                       #
+#$cyan    (d)             $orange     Donativo                                                     #
 #                                                                                      #
-#$cyan    (log) $orange               See logs and config files                                    #
+#$cyan    (log) $orange               Ver registos e ficheiros de configuração                     #
 #                                                                                      #
-#$cyan    (update)  $orange           Update Parmanode                                             #
+#$cyan    (update)  $orange           Atualização Parmanode                                        #
 #                                                                                      #
-#$red    (uninstall)     $orange     Uninstall Parmanode                                          #
+#$red    (uninstall)     $orange      Desinstalar a Parmanode                                      #
 #                                                                                      #
-#$cyan    (ap)$orange                 About Parmanode                                              #
+#$cyan    (ap)$orange                 Sobre Parmanode                                              #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
 
- Type your$cyan choice$orange without the brackets, and hit$green <enter>$orange 
- Or to quit, either hit$green <control>-c$orange, or type$cyan q$orange then$green <enter>$orange.
+ Escreva a sua escolha$cyan$orange sem os parênteses e prima$green <enter>$orange 
+ Ou, para sair, carregue em$green <control>-c$orange, ou escreva$cyan q$orange e depois$green <enter>$orange.
 "
 if [[ ! $announcements == off ]] ; then
 echo -e "
- Tip: combine u with the next menu options. eg, try ub for bitcoin menu
+ Sugestão: combine u com as opções de menu seguintes. Por exemplo, tente ub para o menu bitcoin
 
-$blinkon$red                   WARNING!! YOU DON'T HAVE ENOUGH BITCOIN $orange$blinkoff"
+$blinkon$red                   AVISO!!! NÃO TEM BITCOIN SUFICIENTE $orange$blinkoff"
 fi
 
 read choice #whatever the user chooses, it gets put into the choice variable used below.
@@ -127,7 +127,7 @@ up|update|UPDATE|Update)
     update_parmanode || continue
     if [[ $main_loop != 0 ]] ; then
     set_terminal ; 
-    announce "You need to exit and reload Parmanode to use the new version of Parmanode."
+    announce "É necessário sair e recarregar o Parmanode para utilizar a nova versão do Parmanode."
     continue
     fi
     # The user has been alerted to needing to restart Parmanode for the changes to take effect.
@@ -190,27 +190,26 @@ function navigation_shortcuts {
 set_terminal_custom 44 ; echo -e "
 ########################################################################################
 $red$blinkon
-                               G O O D   N E W S  ! ! $blinkoff$orange
+                               B O A S  N O T I C I A S  ! ! $blinkoff$orange
 
 ########################################################################################
 
 
-    I have made it much easier to move around. You can still use the old way of
-    course, but now you can jump around to where you want to go if you remember the
-    commands.
+    Tornei muito mais fácil a deslocação. Claro que ainda podes usar a forma antiga, 
+    mas agora podes saltar para onde queres ir se te lembrares dos comandos.
 
-    Eg, for bitcoin, you can type:
+    Por exemplo, para bitcoin, pode escrever:
     $green
                         mb$orange    or$green   mbitcoin$orange
 
-    for electrs:
+    para electrs:
                 $green
                         mers$orange  or$green    melectrs$orange
 
-    To see all the possilble shortcuts, have a look at the code (type$cyan 'code'$orange) and
-    $cyan<enter>$orange from here... no, actually, almost from anywhere - nice huh?
+    Para ver todos os atalhos possíveis, dê uma vista de olhos ao código (digite$cyan ' code'$orange) e 
+    $cyan<enter>$orange a partir daqui... não, na verdade, quase a partir de qualquer lugar - bom, não é?
 
-    As an example, where you see...
+    Por exemplo, onde se vê...
 $cyan
                 ubitcoin|ub|mbitcoin|mb)
                     if grep -q "bitcoin-end" \$ic ; then
@@ -220,11 +219,11 @@ $cyan
                     fi
                 ;;
 $orange
-    ... this means if you type 'mbitcoin' or 'ub' etc, then the code below, up to the 
-    ;; will execute. It says if the text 'bitcoin-end' exists in the ic file
-    (short for installed.conf), then menu_bitcoin will run, followed by the setting 
-    a flag, which is just a signal for a different part the code to know where to go
-    next. The 'else' part means to exit if bitcoin-end doesn't exist. 
+    ... isso significa que se você digitar 'mbitcoin' ou 'ub' etc, então o código abaixo, 
+    até o ;; será executado. Ele diz que se o texto 'bitcoin-end' existir no arquivo ic 
+    (abreviação de installed.conf), então menu_bitcoin será executado, seguido pela 
+    definição de uma bandeira, que é apenas um sinal para uma parte diferente do código 
+    saber para onde ir em seguida. A parte 'else' significa sair se bitcoin-end não existir. 
 
 ########################################################################################
 "
@@ -232,19 +231,20 @@ enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 
-    BUT WAIT! There's more.
+    MAS ESPERA! Há mais.
 
-    You can jump straight to the menu of your choice from the command line. Eg...$cyan
+    Pode saltar diretamente para o menu da sua escolha a partir da linha de comando. 
+    Por exemplo...$cyan
 
-    rp mb$orange ... to get you straigh to the Bitcoin menu.
+    rp mb$orange ... para o levar diretamente para o menu Bitcoin.
 
-    or
+    ou
 $cyan
-    rp mbtcp$orange ... to get you straight to the BTCPay menu.
+    rp mbtcp$orange ... para o levar diretamente para o menu BTCPay.
 $yellow
 
-    The usual pre main-menu screens may come up, and you can to dismiss them
-    permanently in the usual way if you want more speed.
+    Podem surgir os habituais ecrãs do pré-menu principal, que podem 
+    ser permanentemente eliminados da forma habitual, se pretender mais velocidade.
 $orange
 ########################################################################################
 "
