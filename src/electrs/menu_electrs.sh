@@ -98,11 +98,7 @@ fi #end electrs running or not
 
 if [[ $electrsis == docker ]] ; then
 
-if ! docker ps 2>$dn | grep -q electrs ; then echo -e "
-$red $blinkon
-                   DOCKER CONTAINER IS NOT RUNNING
-$blinkoff$orange"
-fi
+
 if [[ $running == "true" ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
