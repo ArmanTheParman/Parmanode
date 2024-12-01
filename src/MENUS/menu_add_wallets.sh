@@ -7,12 +7,12 @@ set_terminal_higher
 echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Wallet Install $orange             #
+#    P A R M A N O D E --> Menu principal --> Menu Instalar -->$cyan Instalar Carteira $orange             #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$green Not yet installed...                                                              $orange   #
+#$green Ainda não instalado...                                                              $orange   #
 #                                                                                      #"
 if [[ -n $sparrow_n ]]         ; then echo -e  "$sparrow_n"; fi
 if [[ -n $electrum_n ]]        ; then echo -e  "$electrum_n"; fi
@@ -29,7 +29,7 @@ if [[ -n $btcrecover_n ]]      ; then echo -e  "$btcrecover_n"; fi
 
 
 echo -e "#                                                                                      #
-#$green Installed...                                                                        $orange #
+#$green Instalado...                                                                        $orange #
 #                                                                                      #"
 if [[ -n $sparrow_i ]]         ; then echo -e  "$sparrow_i"; fi
 if [[ -n $electrum_i ]]        ; then echo -e  "$electrum_i"; fi
@@ -44,7 +44,7 @@ if [[ -n $ledger_i ]]          ; then echo -e  "$ledger_i"; fi
 if [[ -n $btcrecover_i ]]      ; then echo -e  "$btcrecover_i"; fi
 #if [[ -n $joinmarket_i ]]      ; then echo -e  "$joinmarket_i"; fi
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...                                              $orange #
+#$red Instalações falhadas (é necessário desinstalar)...                                              $orange #
 #                                                                                      #"
 if [[ -n $sparrow_p ]]         ; then echo -e "$pink$sparrow_p$orange"; fi
 if [[ -n $electrum_p ]]        ; then echo -e "$pink$electrum_p$orange"; fi
