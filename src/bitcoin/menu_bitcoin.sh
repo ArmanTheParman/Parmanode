@@ -73,7 +73,13 @@ output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | c
 
 if [[ -z $drive ]] ; then unset output2 ; fi
 
-if [[ $1 == menu_btcpay ]] ; then return 0 ; fi
+if [[ $1 == "menu_btcpay" ]] ; then return 0 ; fi
+
+if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debu.log | grep "Shutdown: In progress" ; then
+         output1="                   Bitcoin is$red SHUTTING DOWN$orange -- Please wait"
+         output2="                   Will sync to the $drive drive"
+fi
+
 debug "bitcoin menu..."
 set_terminal_custom "52"
 
@@ -319,6 +325,8 @@ export running_text="Synchronizing blockheaders"
 return 0
 fi
 }
+
+
 
 
 function bitcoin_tips {
