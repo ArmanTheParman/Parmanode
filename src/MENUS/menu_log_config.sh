@@ -15,19 +15,19 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Various log and configuration files are available to view. Parmanode will open
-    the file of your choise using the \"less\" command. You can scroll up and down
-    with the arrows, and press (q) to exit back to the menu.
+    Vários ficheiros de registo e configuração estão disponíveis para visualização.
+    O Parmanode abrirá o ficheiro da sua escolha usando o comando \"less\".
+    Pode deslocar-se para cima e para baixo com as setas e premir (q) para voltar ao menu.
 
-    You could also just view them directly yourself if you're comfortable navigating
-    your computer's file system. Most are located in$cyan $HOME/.parmanode/ $orange
-    (Note the \".\", that's not an accident)
+    Também os podes ver diretamente se te sentires confortável a navegar no sistema de
+    ficheiros do teu computador. A maioria está localizada em $cyan $HOME/.parmanode/
+    $orange (Note o \".\", não é um acidente)
 
-    Hit$cyan <enter>$orange to continue 
+    Carregue em$cyan <enter>$orange para continuar 
 
-    or 
+    ou 
 
-    Type (${red}Free Ross$orange) then hit$cyan <enter>$orange to hide this message next time    
+    Escreva (${red}Free Ross$orange) e prima$cyan <enter>$orange para ocultar esta mensagem da próxima vez    
 
 ########################################################################################
 "
@@ -47,7 +47,7 @@ fi
 while true ; do set_terminal ; echo -en "
 ########################################################################################$cyan
 
-                      PARMANODE LOG AND CONFIGURATION FILES $orange
+                      FICHEIROS DE REGISTO E CONFIGURAÇÃO DO PARMANODE $orange
 
 ########################################################################################
 
@@ -58,9 +58,9 @@ $cyan
 $cyan
                      pc)$orange            parmanode.conf
 $cyan
-                     delete)$orange        DELETE ALL LOGS (not conf)
+                     delete)$orange        ELIMINAR TODOS OS REGISTOS (não conf)
 $cyan
-                     uh)$orange            Unhide messages (you hid them with 'FREE ROSS')
+                     uh)$orange            Reexibir mensagens (escondeu-as com "FREE ROSS")
 $orange
 
 ########################################################################################
