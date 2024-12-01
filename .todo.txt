@@ -8,6 +8,7 @@ untinstall
 Regularly check for typo >dev/null (should be >/dev/null), causes big problems
 
 OTHERS...
+Add session names for all tmux sessions and do a cleanup script.
 Keep temp_patch compact
 Watch out for Linux Mint upgrades - it breaks Docker installation; adjust code to be 
 more robust.
