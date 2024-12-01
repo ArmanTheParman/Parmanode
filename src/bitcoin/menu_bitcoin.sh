@@ -75,7 +75,7 @@ if [[ -z $drive ]] ; then unset output2 ; fi
 
 if [[ $1 == "menu_btcpay" ]] ; then return 0 ; fi
 
-if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debu.log | grep -qi "Shutdown: In progress" ; then
+if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep -qi "Shutdown: In progress" ; then
          output1="                   Bitcoin is$red SHUTTING DOWN$orange -- Please wait"
          output2="                   Will sync to the $drive drive"
 fi
