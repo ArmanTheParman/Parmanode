@@ -5,22 +5,22 @@ set_terminal
 echo -ne "
 ########################################################################################$cyan
 
-                            P A R M A N O D E - Education $orange
+                            P A R M A N O D E - Educação $orange
 
 ########################################################################################
 
 $cyan                    
-                    (mit)$orange      2018 MIT Lecture Series (With Tagde Dryja)
+                    (mit)$orange      Série de conferências do MIT de 2018 (com Tagde Dryja)
 $cyan
-                    (w)$orange        How to connect your wallet to your node
+                    (w)$orange        Como ligar a sua carteira ao seu nó
 $cyan
-                    (mm)$orange       Bitcoin Mentorship Info
+                    (mm)$orange       Informações sobre o Bitcoin Mentorship
 $cyan
-                    (n)$orange        Six reasons to run a node (essay)
+                    (n)$orange        Seis razões para gerir um nó (ensaio)
 $cyan
-                    (s)$orange        Separation of money and state (essay)
+                    (s)$orange        Separação do dinheiro e do Estado (ensaio)
 $cyan
-                    (cs)$orange       Cool stuff ('Did you know?')
+                    (cs)$orange       Coisas fixes ("Sabia que?")
 
 
 ########################################################################################
