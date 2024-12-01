@@ -16,12 +16,12 @@ set_terminal_higher
 echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Node Install $orange               #
+#    P A R M A N O D E --> Menu principal --> Menu Instalar -->$cyan Instalar Node $orange               #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$green Not yet installed... $orange                                                                #
+#$green Ainda não instalado... $orange                                                                #
 #                                                                                      #"
 if [[ -n $bitcoin_n ]]         ; then echo -e  "$bitcoin_n"; fi
 if [[ -n $electrs2_n && -n $electrs_n ]] ; then echo -e "$electrs2_n"; fi
@@ -37,7 +37,7 @@ if [[ -n $btcpay_n ]]          ; then echo -e  "$btcpay_n"; fi
 if [[ -n $fulcrum_n ]]         ; then echo  -e "$fulcrum_n"; fi
 if [[ -n $fulcrumdkr_n ]]         ; then echo  -e "$fulcrumdkr_n"; fi
 echo -e "#                                                                                      #
-#$green Installed...                                                                  $orange       #
+#$green Instalado...                                                                  $orange       #
 #                                                                                      #"
 if [[ -n $bitcoin_i ]]         ; then echo  -e "$bitcoin_i"; fi
 if [[ -n $electrs_i ]]         ; then echo   -e "$electrs_i"; fi
@@ -55,7 +55,7 @@ if [[ -n $fulcrum_i ]]         ; then echo  -e "$fulcrum_i"; fi
 if [[ -n $fulcrumdkr_i ]]      ; then echo  -e "$fulcrumdkr_i"; fi
 if [[ -n $litd_i ]]            ; then echo  -e "$litd_i"; fi
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...                                         $orange      #
+#$red Instalações falhadas (é necessário desinstalar)...                                         $orange      #
 #                                                                                      #"
 if [[ -n $bitcoin_p ]]         ; then echo -e "$pink$bitcoin_p$orange"; fi
 if [[ -n $electrs_p ]]         ; then echo -e "$pink$electrs_p$orange"; fi
@@ -128,12 +128,12 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
     lnd|LND|Lnd)
        if [[ -n $lnd_n ]] ; then
 
-         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
+         if [[ -z $lnddocker_n ]] ; then announce "Não é possível fazer isto com o Docker LND. Abortar."; continue ; fi
        
          if [[ $OS == "Linux" ]] ; then install_lnd ; menu_main ; fi 
 
          if [[ $OS == "Mac" ]] ; then
-            announce "For macs, you can use LND with Docker option, not this direct version."
+            announce "Para macs, pode utilizar o LND com a opção Docker, não esta versão direta."
             continue
          fi
 
@@ -143,7 +143,7 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
     
     ld|LD|Ld)
        if [[ -n $lnddocker_n ]] ; then
-         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND non-docker. Aborting." ; continue ; fi
+         if [[ -z $lnd_n ]] ; then announce "Não é possível ter isto com o LND não-docker. Abortar." ; continue ; fi
        install_lnd_docker
        fi
        ;;
@@ -187,13 +187,13 @@ q|Q) exit ;; p|P) return ;; m|M) back2main ;;
 if [[ -n $mempool_n ]] ; then
 
    if [[ $mem_debug == "t" ]] ; then
-   echo "debug point 0. Hit enter to continue."
+   echo "debug point 0. Carregue em enter para continuar."
    read
    fi
 install_mempool 
 
 if [[ $mem_debug == "t" ]] ; then
-echo "debug point 3. Hit enter to continue."
+echo "ponto de depuração 3. Prima enter para continuar."
 read
 fi
 
@@ -204,8 +204,8 @@ fi
 
    litd|LITD) 
        if [[ -n $litd_n ]] ; then
-         if [[ -z $lnddocker_n ]] ; then announce "Can't have this with Docker LND. Aborting." ; continue ; fi
-         if [[ -z $lnd_n ]] ; then announce "Can't have this with LND. Aborting." ; continue ; fi
+         if [[ -z $lnddocker_n ]] ; then announce "Não é possível fazer isso com o Docker LND. Abortar." ; continue ; fi
+         if [[ -z $lnd_n ]] ; then announce "Não pode ser assim com a LND. Abortarg." ; continue ; fi
        if [[ $OS == "Mac" ]] ; then no_mac ; continue ; fi
        if [[ $OS == "Linux" ]] ; then install_litd ; menu_main ; fi 
        fi
