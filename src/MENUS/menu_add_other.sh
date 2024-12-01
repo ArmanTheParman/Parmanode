@@ -6,12 +6,12 @@ set_terminal
 echo -e "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Other Install $orange              #
+#    P A R M A N O D E --> Menu principal --> Menu Instalar -->$cyan Outra instalação $orange              #
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$green Not yet installed...$orange                                                                 #
+#$green Ainda não instalado...$orange                                                                 #
 #                                                                                      #"
 if [[ -n $parmashell_n ]]      ; then echo -e  "$parmashell_n"; fi 
 if [[ -n $parmanostr_n ]]      ; then echo -e  "$parmanostr_n"; fi
@@ -33,7 +33,7 @@ if [[ -n $nextcloud_n ]]        ; then echo -e  "$nextcloud_n"; fi
 #if [[ -n $public_pool_n ]]         ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
-#$green Installed...$orange                                                                         #
+#$green Instalado...$orange                                                                         #
 #                                                                                      #"
 if [[ -n $parmashell_i ]]      ; then echo  "$parmashell_i"; fi 
 if [[ -n $parmanostr_i ]]      ; then echo -e  "$parmanostr_i"; fi
@@ -54,7 +54,7 @@ if [[ -n $nextcloud_i ]]        ; then echo -e  "$nextcloud_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
 
 echo -e "#                                                                                      #
-#$red Failed installs (need to uninstall)...$orange                                               #
+#$red Instalações falhadas (é necessário desinstalar)...$orange                                               #
 #                                                                                      #"
 if [[ -n $parmashell_p ]]      ; then echo  -e "$pink$parmashell_p$orange"; fi 
 if [[ -n $parmanostr_p ]]      ; then echo  -e "$pink$parmanostr_p$orange"; fi
@@ -109,7 +109,7 @@ t|T|tor|Tor)
        unset tor_already_installed
        install_tor 
        if [[ $tor_already_installed == "true" ]] ; then 
-           announce "Tor is already installed. Parmanode updated with this information."
+           announce "O Tor já está instalado. Parmanode atualizado com esta informação."
            unset tor_already_installed
            continue 
        fi
