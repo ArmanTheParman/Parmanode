@@ -13,7 +13,7 @@ source ./src/special/do_loop.sh || { echo "unable to source ./src/special/do_loo
 #an error signal returns a non zero value to the or operator ||, from the left hand side, and
 #triggers execution of the code on the right hand side.
 
-# if runparmanode.sh is run with an argument x, eg "rp x" or 
+# if runparmanode.sh is run with an argument x, eg "rp x" or
 #"$HOME/parman_programs/run_parmanode.sh x", then very detailed debuggin out put is turned on.
 #This is not for the end user.
 if [[ $1 == x ]] ; then set -x ; enter_continue "Set -x enabled. Type 'x' to turn off" ; fi
