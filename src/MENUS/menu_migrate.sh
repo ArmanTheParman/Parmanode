@@ -5,26 +5,26 @@ if [[ -z $1 ]] ; then # if an option passed, then no need to print menu
 set_terminal ; echo -e "
 ########################################################################################
 $cyan                            
-                                Migrate Drive Menu            $orange                   
+                                Menu Migrar drive            $orange                   
 
 ########################################################################################
 
 $cyan
-      (parmy)$orange    Import a Parmanode drive to use with Parmanode 
+      (parmy)$orange    Importar uma drive Parmanode para utilizar com o Parmanode 
 $cyan
-      (new)$orange      Make a new external Parmanode drive (will be formatted)
+      (new)$orange      Criar uma nova drive Parmanode externa (será formatada)
 $cyan
-      (ub)$orange       Migrate an Umbrel drive to Parmanode 
+      (ub)$orange       Migrar uma drive Umbrel para a Parmanode
 $cyan
-      (mn)$orange       Migrate a MyNode drive to Parmanode 
+      (mn)$orange       Migrar uma drive MyNode para a Parmanode 
 $cyan
-      (rp)$orange       Migrate a RaspiBlitz drive to Parmanode
+      (rp)$orange       Migrar uma drive RaspiBlitz para o Parmanode
 $red
-      (eww)$orange      Migrate a Parmanode drive back to Umbrel
+      (eww)$orange      Migrar uma drive Parmanode de volta para a Umbrel
 $cyan
-      (rm)$orange       Migrate a Parmanode drive back to MyNode
+      (rm)$orange       Migrar uma drive Parmanode de volta para o MyNode
 $cyan
-      (rr)$orange       Migrate a Parmanode drive back to RaspiBlitz
+      (rr)$orange       Migrar uma drive Parmanode de volta para o RaspiBlitz
 
 
 ########################################################################################
@@ -42,8 +42,8 @@ m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 parmy|Parmy|PARMY)
 export check_if_parmanode_drive="true" # read by detect_drive (which is called by add_drive)
-add_drive || { announce "Something went wrong. Aborting." ; return 1 ; }
-success "The drive" "being imported"
+add_drive || { announce "Algo correu mal. Abortar." ; return 1 ; }
+success "A drive" " a ser importada"
 offer_swap_to_external #runs only if drive=internal
 return 0
 ;;
@@ -58,10 +58,10 @@ prune_choice || return 1
 make_bitcoin_directories
 make_bitcoin_conf || return 1
 sudo chown -R $USER: $HOME/.bitcoin/ 
-set_rpc_authentication "s" "install"
+set_rpc_authentication "s" "instalar"
 please_wait && start_bitcoin
 unset newmigrate drive
-success "The new drive" "being imported"
+success "A nova drive" " a ser importada"
 return 0
 ;;
 
