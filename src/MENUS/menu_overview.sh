@@ -248,7 +248,7 @@ x="${orange}|$bright_blue"
 set_terminal_wide 42 #(110)
 echo -en "
 ########################################################################################################
-$bright_blue           PROGRAM              $x            GO TO MENU         RUNNING          START/STOP        ${orange}
+$bright_blue           PROGRAMA             $x            IR PARA MENU         A EXECUTAR          INICIAR/PARAR        ${orange}
 ########################################################################################################
                                 |
                                 |
@@ -258,7 +258,7 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
                                 |
       Fulcrum                   |                $m3                $r3                $s3
                                 |
-      Electrs (non Docker)      |                $m4                $r4                $s4
+      Electrs (não Docker)      |                $m4                $r4                $s4
                                 |
       BTC RPC Explorer (BRE)    |                $m5                $r5                $s5
                                 |
@@ -276,10 +276,10 @@ $bright_blue           PROGRAM              $x            GO TO MENU         RUN
                                 |
       Thunderhub                |                $m12               $r12                $s12
                                 |
-      ${red}r to refresh${orange}              |
+      ${red}r para atualizar${orange}              |
                                 |
 ########################################################################################################
-$bright_blue Note: this is intentionally not a complete list of all apps available with Parmanode.
+$bright_blue Nota: esta não é intencionalmente uma lista completa de todas as aplicações disponíveis com a Parmanode.
 "
 
 choose "xpmq"
