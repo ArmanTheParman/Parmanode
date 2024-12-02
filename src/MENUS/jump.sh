@@ -137,7 +137,7 @@ invalid_flag=set
 ;;
 
 aw|addw|addwallet|maddwallet)
-menu_add_wallet
+menu_add_wallets
 invalid_flag=set
 ;;
 
