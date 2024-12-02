@@ -132,10 +132,10 @@ change_mempool_backend
 
 log) 
 while true ; do
-    announce "Choosee api$cyan (1)$orange db$cyan (2)$orange or web$cyan (3)$orange"
+    announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orange."
     jump $enter_cont
     NODAEMON="true"
-    case $enter_con in
+    case $enter_cont in
     1|api)
         pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
         ;;
