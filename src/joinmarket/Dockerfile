@@ -14,12 +14,12 @@ RUN apt-get install -y --no-install-recommends \
                    pkg-config libtool libgmp-dev libltdl-dev libssl-dev libatlas3-base libopenjp2-7 libgl1-mesa-glx
 RUN apt-get install -y --no-install-recommends \
                    less tmux socat net-tools 
-# RUN apt-get install -y --no-install-recommends \
-#                    python3-pyside2.qtcore python3-pyside2.qtgui
+RUN apt-get install -y --no-install-recommends \
+                   python3-pyside2.qtcore python3-pyside2.qtgui
 
 COPY . .
 RUN pip3 install 'wheel>=0.35.1' 
-RUN pip3 install matplotlib PySide2 "numpy<2"
+RUN pip3 install matplotlib PySide2 
 RUN ./install.sh --docker-install 
 RUN rm -rf /var/lib/apt/lists/*
 
