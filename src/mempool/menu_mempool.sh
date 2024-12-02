@@ -131,13 +131,19 @@ change_mempool_backend
 ;;
 
 log1)
+NODAEMON="true"
 pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
+unset NODAEMON
 ;;
 log2)
+NODAEMON="true"
 pn_tmux "docker logs docker-db-1 2>&1 | less" ; unset NODAEMON ; break 
+unset NODAEMON
 ;;
 log3)
+NODAEMON="true"
 pn_tmux "docker logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON ; break
+unset NODAEMON
 ;;
 
 log) 
