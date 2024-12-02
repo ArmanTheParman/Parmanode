@@ -13,7 +13,7 @@ set_terminal_custom 48
 echo -e "
 ########################################################################################
 
-     P A R M A N O D E --> Main Menu --> ${cyan}USE (installed)$orange                               
+     P A R M A N O D E --> Menu principal --> ${cyan}UTILIZAÇÃO (instalado)$orange                               
 
 ########################################################################################          
 
@@ -26,10 +26,10 @@ if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
                        echo -e "                        $cyan  (b)$orange          Bitcoin Core
                             " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
-                       echo -e "                        $cyan  (f)$orange          Fulcrum (an Electrum Server)
+                       echo -e "                        $cyan  (f)$orange          Fulcrum (um servidor Electrum)
                             " ; fi
 if grep -q "fulcrumdkr-end" $HOME/.parmanode/installed.conf ; then fulcrumdkrapp=1
-                       echo -e "                        $cyan  (fd)$orange         Fulcrum (an Electrum Server in Docker)
+                       echo -e "                        $cyan  (fd)$orange         Fulcrum (um servidor Electrum em Docker)
                             " ; fi
 if grep -q "btcpay-end" $HOME/.parmanode/installed.conf ; then btcpayapp=1
                        echo -e "                        $cyan  (btcp)$orange       BTCPay Server
@@ -41,19 +41,19 @@ if grep -q "lnd-end" $HOME/.parmanode/installed.conf ; then lndapp=1
                        echo -e "                        $cyan  (l)$orange          LND
                             " ; fi
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then sparrowapp=1
-                       echo -e "                        $cyan  (s)$orange          Sparrow Wallet 
+                       echo -e "                        $cyan  (s)$orange          Carteira Sparrow 
                             " ; fi
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then rtlapp=1
-                       echo -e "                        $cyan  (r)$orange          RTL Wallet 
+                       echo -e "                        $cyan  (r)$orange          Carteira RTL 
                             " ; fi
 if grep -q "electrum-end" $HOME/.parmanode/installed.conf ; then electrumapp=1
-                       echo -e "                        $cyan  (e)$orange          Electrum Wallet 
+                       echo -e "                        $cyan  (e)$orange          Carteira Electrum
                             " ; fi
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then torserverapp=1
-                       echo -e "                        $cyan  (tws)$orange        Tor Web Server 
+                       echo -e "                        $cyan  (tws)$orange        Servidor Web Tor 
                             " ; fi
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then specterapp=1
-                       echo -e "                        $cyan  (specter)$orange    Specter Wallet 
+                       echo -e "                        $cyan  (specter)$orange    Carteira Specter 
                             " ; fi
 if grep -q "btcrpcexplorer-end" $HOME/.parmanode/installed.conf ; then btcrpcexplorerapp=1
                        echo -e "                        $cyan  (bre)$orange        BTC RPC Explorer 
@@ -71,7 +71,7 @@ if grep -q "lnbits-end" $HOME/.parmanode/installed.conf ; then lnbitsapp=1
                        echo -e "                        $cyan  (lnb)$orange        Lnbits 
                             " ; fi
 if grep -q "trezor-end" $HOME/.parmanode/installed.conf ; then trezorapp=1
-                       echo -e "                        $cyan  (trz)$orange        Trezor Suite 
+                       echo -e "                        $cyan  (trz)$orange        Suite Trezor 
                             " ; fi
 if grep -q "bitbox-end" $HOME/.parmanode/installed.conf ; then bitboxapp=1
                        echo -e "                        $cyan  (bb)$orange         BitBox App 
@@ -101,7 +101,7 @@ if grep -q "electrsdkr2-end" $HOME/.parmanode/installed.conf ; then electrsdkr2a
                        echo -e "                        $cyan  (ersd)$orange       electrs (Docker)
                             " ; fi
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then torbapp=1
-                       echo -e "                        $cyan  (torb)$orange       Tor Browser
+                       echo -e "                        $cyan  (torb)$orange       Navegador Tor
                             " ; fi
 if grep -q "qbittorrent-end" $HOME/.parmanode/installed.conf ; then qbittorrentapp=1
                        echo -e "                        $cyan  (qbit)$orange       QBittorrent 
@@ -122,7 +122,7 @@ if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp
                        echo -e "                        $cyan  (th)$orange         Thunderhub 
                             " ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (ws)$orange         WordPress Website 
+                       echo -e "                        $cyan  (ws)$orange         Sítio Web WordPress 
                             " ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
                        echo -e "                        $cyan  (ld)$orange         LND (Docker)
@@ -148,13 +148,13 @@ if grep -q "joinmarket-end" $HOME/.parmanode/installed.conf ; then joinmarketapp
                        echo -e "                        $cyan  (join)  $orange     JoinMarket
                             " ; fi
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then greenapp=1
-                       echo -e "                        $cyan  (gr)  $orange       Green Wallet
+                       echo -e "                        $cyan  (gr)  $orange       Carteira Green
                             " ; fi
 if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
-                       echo -e "                        $cyan  (pb)  $orange       Parman Books
+                       echo -e "                        $cyan  (pb)  $orange       Livros Parman
                             " ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11app=1
-                       echo -e "                        $cyan  (x11)  $orange      X11 Forwarding
+                       echo -e "                        $cyan  (x11)  $orange      Reencaminhamento X11
                             " ; fi
 echo -e "                            
 #######################################################################################
