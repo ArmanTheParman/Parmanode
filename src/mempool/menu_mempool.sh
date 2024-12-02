@@ -69,6 +69,8 @@ $cyan
 $cyan
                conf)$orange        View/Edit config (confv for vim)$pink(restart if changing)$orange
 $cyan
+               log)$orange        
+$cyan
                bk)$orange          Change backend ...
 
 

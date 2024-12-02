@@ -227,7 +227,10 @@ overview_conf_add "rtlrunning=false" "rtlrunning="
 fi
 
 function ismempoolrunning {
-if docker ps 2>$dn | grep -q mempool_web ; then
+if docker ps 2>$dn | grep -q mempool_web \
+&& docker ps 2>$dn | grep -q docker-api-1 \
+&& docker ps 2>$dn | grep -q docker-db-1 ; then
+
 export mempoolrunning="true"
 overview_conf_add "mempoolrunning=true" "mempoolrunning="
 else
