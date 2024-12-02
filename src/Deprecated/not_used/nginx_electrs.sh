@@ -38,7 +38,6 @@ else #add
 #might need to install nginx
 if ! which nginx >$dn ; then install_nginx ; fi
 
-#parmased "$nginx_conf" "http {" "    include electrs.conf;" "after" "silent"
 echo "include electrs.conf;" | sudo tee -a $nginx_conf >$dn 2>&1
 
 echo "stream {

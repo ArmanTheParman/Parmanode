@@ -41,7 +41,7 @@ server {
 " | sudo tee $conf_file >$dn 2>&1
 
     if [[ $OS == Mac ]] ; then
-    parmased "$nginx_conf" "http {" "    include $conf_file;" "after" "silent"
+    sudo gsed -i "/http {/a\    include $conf_file;/" $nginx_conf >$dn 2>&1
     fi
 
 fi #not remove ends

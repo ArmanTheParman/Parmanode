@@ -51,6 +51,7 @@ install_homebrew
 /opt/homebrew/bin/brew install vim
 /opt/homebrew/bin/brew install tmux
 /opt/homebrew/bin/brew install tor
+/opt/homebrew/bin/brew install gnu-sed
 success "Parmanode has completed installing Homebrew for you."
 break
 else
@@ -62,6 +63,7 @@ brew upgrade
 /opt/homebrew/bin/brew install vim
 /opt/homebrew/bin/brew install tmux
 /opt/homebrew/bin/brew install tor
+/opt/homebrew/bin/brew install gnu-sed
 break
 fi
 ;;

@@ -23,22 +23,7 @@ enter_continue ; jump $enter_cont
 return 1
 fi
 
-#use socat inside container instead
-    # if [[ $OS == Linux ]] ; then
-    #     if ! which socat >/dev/null ; then sudo apt-get update -y ; sudo apt install socat -y ; fi
-    # elif [[ $OS == Mac ]] ; then 
-    #     brew_check || return 1 
-    #     brew install socat 
-    # fi
-
-
-#socat put inside the container.
-    # #going with service file instead for now
-    # #make_socat_script electrs
-    # if [[ $OS == Linux ]] ; then
-    # make_socat_service_listen
-    # make_socat_service_publish
-    # fi
+mac_m3_electrs_warning
 
 # check Bitcoin settings
 unset rpcuser rpcpassword prune server
@@ -113,5 +98,22 @@ docker_start_electrs || return 1
 installed_config_add "electrsdkr2-end"
 unset install_electrs_docker_variable
 success "electrs in Docker" "being installed"
+
+}
+
+function mac_m3_electrs_warning {
+if [[ $(uname -m) != "arm64" ]] ; then return 0 ; fi
+set_terminal ; echo -e "
+########################################################################################
+
+    If you're using a computer with an ARM chip, ie a Pi or Mac M1 M2 or M3, this 
+    method of installing electrs (with Docker)$cyan may$orange not work.
+
+    Give it a go, but if it fails, you'll need to uninstall the failed partial 
+    install, then try installing electrs directly without Docker.
+
+########################################################################################
+"
+enter_continue ; jump $enter_cont
 
 }

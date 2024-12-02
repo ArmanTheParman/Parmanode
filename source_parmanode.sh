@@ -2,10 +2,7 @@ function source_parmanode {
 
 if [ -e $HOME/parman_programs/parmanode/src ] ; then
 
-	for file in ~/parman_programs/parmanode/src/**/*.sh ; do 
-		if [[ $file != *"/postgres_script.sh" ]]; then #can remove later
-			source $file 
-		fi
+	for file in ~/parman_programs/parmanode/src/**/*.sh ; do source $file 
 	done
     return 0
 else

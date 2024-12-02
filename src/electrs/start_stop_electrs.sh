@@ -7,7 +7,8 @@ fi
 
 if [[ $OS == Mac ]] ; then
     #/dev/null here is intentional and suppresses output
-    script -q /dev/null  $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml >> $HOME/.parmanode/run_electrs.log 2>&1 &
+    #script -q /dev/null  $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml >> $HOME/.parmanode/run_electrs.log 2>&1 &
+    nohup $HOME/parmanode/electrs/target/release/electrs --conf $HOME/.electrs/config.toml > $HOME/.electrs/run_electrs.log 2>&1 &
     start_socat electrs
 fi
 

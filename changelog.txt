@@ -1,6 +1,10 @@
 #Version 3.49.0 (coming soon)
 #    -ParmaJoin (JoinMarket)
 
+Version 3.48.1
+    -gnu-sed added to mac computer update
+    -electrs Mac start changes, and log bug fix
+    
 Version 3.48.0
     -X11Forwarding function and XQuartz for Mac (modifies sshd_config)
     -Thunderhub IP bug fixed
@@ -17,7 +21,7 @@ Version 3.47.3
      -Start/stop faster - Bitcoin, Mempool, BRE, LND
      
 Version 3.47.2
-     -Drive preperation streamlined
+     -Drive preparation streamlined
      -Fulcrum menu bug fix
      -Improved Fulcrum logging
      -Updated PublicPool requires minimum NodeJS 18.19.1 in Docker container. Fixed.
@@ -29,12 +33,12 @@ Version 3.47.1
 
 Version 3.47.0
      -BTCPay v2.0.3 
-     -Backup btcpay database and plugins option
+     -Backup BTCPay database and plugins option
      -Restore option (when installing)
-     -Live BTCPay upgrade functiona
+     -Live BTCPay upgrade function
      -Reduce journalctl logs to 500M cap (Linux)
      -Improved start/stop for bitcoin in docker
-     -Bitcoin menu, tidied up appearence
+     -Bitcoin menu, tidied up appearance
      -For development: /dev/null variable refactoring - easy to turn on/off
      
 Version 3.46.11
@@ -46,25 +50,25 @@ Version 3.46.10
      -fixed smol bug with btcpay_startup.sh file, wasn't making a log file
      -fixed echo commands with colour errors
      -Patch7:
-          set github config name/email (generic) 
-          make ssh keys for computer if non-existent
+          set GitHub config name/email (generic) 
+          Make SSH keys for the computer if non-existent
           fix bitcoin.conf: add rpcbind=0.0.0.0 and adjust 172 IP range 
-          remove old electrsdkr log file, and old debug2 file
+          remove old electrsdkr log file, and the old debug2 file
           add bc calculator
           add torlog file and tornotice file
           fix 8332 value in torrc (should be 8333)
           correct electrs cert
-          installs jq (linux only)
+          installs jq (Linux only)
           Moved fulcrum.conf
           Fix any large file created by a backup bug
-          Adjust btcpay service file
+          Adjust BTCPay service file
 
 Version 3.46.9
     -Mempool checks for config consistency with system variables. 
-    -More improvements to graceful Fulcrum shutdown
-    -makes ssh keys for current user if none exists
+    -More improvements to allow graceful Fulcrum shutdown
+    -makes SSH keys for current user if none exists
     -refactor all grep commands to avoid < operator 
-    -tidied up btcpay menu, and extracted version variable
+    -tidied up BTCPay menu, and extracted version variable
     -debug file rearrangement
 
 Version 3.46.8
@@ -76,7 +80,7 @@ Version 3.46.8
 Version 3.46.7
     -Fulcrum 1.11.1 
     -Fulcrum docker option added for Linux
-    -Improved shutdown gracefulness to reduce risk of database corruption
+    -Improved shutdown gracefulness to reduce the risk of database corruption
     -Improved Fulcrum menu
     -Tor added for Fulcrum Mac
     -Refactor fulcrum.conf location - Moved to $HOME/.fulcrum
@@ -95,7 +99,7 @@ Version 3.46.5
     -xxd added for macaroon extraction LND
 Version 3.46.4
     -refactor for systems that don't have a /tmp directory
-    -gsed symlink for linux
+    -gsed symlink for Linux
     -Bitcoin data corruption detection
     -debugging file size management (truncatedebuglog)
     -suggestion to install tor
@@ -129,7 +133,7 @@ Version 3.45.1
     -added tmux as parmanode dependency
     -ParmaShell tidy up in bashrc/zshrc
 Version 3.45.0
-    -BTC Recover tool, and combined in same container with Electrum Wallet Crack tool, removed from ParmaBox
+    -BTC Recover tool, and combined in the same container with Electrum Wallet Crack tool, removed from ParmaBox
 Version 3.44.0
     -Electrum Wallet Crack tool in ParmaBox
     -Python 'six' module needed for ParmaNostr
@@ -146,10 +150,10 @@ Version 3.42.4
 Version 3.42.3
     -Bitcoin Mac file download path had changed, updated.
 Version 3.42.2
-    -Tor Browser gpg keys expired, updated.
+    -Tor Browser gpg keys expired,updated.
     -Bitcoin info display bug fixed
 Version 3.42.1
-    -sneaky bitcoin install bug fixed
+    -sneaky Bitcoin install bug fixed
     -uninstall Parmanode glitch fixed
     -fixed Nostr Relay test bug
 Version 3.42.0
@@ -205,10 +209,10 @@ Version 3.39.0
     -NextCloud
 Version 3.38.2
     -added autossh tool/guide
-    -mempool improved bitcoin running check
+    -mempool improved Bitcoin running check
     -drive encryption tool/guide
 Version 3.38.1
-    -BTCPayTOR moved from an installation to part of btcpay menu 
+    -BTCPayTOR moved from an installation to part of BTCPay menu 
 Version 3.38.0
     -LitD (with Lightning terminal, pool, loop, etc)
 Version 3.37.1
@@ -231,7 +235,7 @@ Version 3.36.2
     -grpcurl tool added
     -Patch6
 Version 3.36.1
-    -Mempool Mac docker compose compatibility fixed
+    -Mempool Mac docker-compose compatibility fixed
 Version 3.36.0
     -LND for Mac
     -RTL for Mac
@@ -251,13 +255,13 @@ Version 3.34.0
 Version 3.33.2
     -ParmanodL installer update to new Raspberry Pi OS version
 Version 3.33.1
-    -Menu glitch, install wordpress; fixed
+    -Menu glitch, install WordPress; fixed
 Version 3.33.0
     -ParmaWeb add-on
     -MOTD additions
 Version 3.32.7
     -Thunderhub test version for now
-    -Drive cleanup tool imporved - clear systemd
+    -Drive cleanup tool improved - clear systemd
 Version 3.32.6
     -Main menu - colours to highlight choices and differentiate
 Version 3.32.5
@@ -272,19 +276,19 @@ Version 3.32.2
 Version 3.32.1
     -Other books directory added
 Version 3.32.0
-    -Cool stuff section added. Currenlty computer book pdfs.
+    -Cool stuff section added. Currently computer book pdfs.
 Version 3.31.1
     -BTCPay update
     -Internal drive space check
     -Debian docker bug fixed
-    -BTCPay docker conainter now with variable userID, making volume mount robust across systems
+    -BTCPay docker container now with variable userID, making volume mount robust across systems
     -External IP info added
 Version 3.30.6
     -Added support for Linux Mint Debian Edition (LMDE)
 Version 3.30.5
     -Parmanode refresh bug fixed
-    -rtl wireless driver install option
-    -added virtualenv dependency install for electrumx
+    -RTL wireless driver install option
+    -added virtualenv dependency install for Electrumx
     -Parmashell added by default
 Version 3.30.4
     -Added Bitcoin QT start option in Bitcoin menu
@@ -294,17 +298,17 @@ Version 3.30.3
     -Newer version of Fulcrum 1.9.8
     -Refactor, fulcrum_db new location
 Version 3.30.2
-    -small bitcoin conf patch
+    -small Bitcoin conf patch
     -system report feature
     -expanded tools menu
     -bitcoin curl tool
-    -temp dir added for parmashell
+    -temp dir added for Parmashell
     -update check bug fixed
     -tool to refresh script directory
     -bitcoin user/pass default
 Version 3.30.0
     -ELECTRUM X
-    -Moved ssl certs for electrum docker to the host
+    -Moved SSL certs for electrum docker to the host
     -Fixed nginx issue with electrs
     -added jq and cmake to update_computer function, and cleanup commands
     -readme update
@@ -316,7 +320,7 @@ Version 3.29.3
     -Smol bug in Public Pool fixed
 Version 3.29.1
     -Public Pool
-    -Mining subcatagory install menu
+    -Mining subcategory install menu
     -Some electrs minor fixes
     -Docker for electrs comes with Tor server at 9060
 Version 3.28.2
@@ -326,7 +330,7 @@ Version 3.28.1
     -Tor for Mac docker electrs
     -smol bugs
 Version 3.28.0
-    -Electrs docker and nondocker refactoring, Mac & Linux
+    -Electrs docker and non docker refactoring, Mac & Linux
 Version 3.27.0
     -SSH Tor server added (Linux only)
 Version 3.26.0
@@ -344,7 +348,7 @@ Version 3.25.4
     -Streamlined Fulcrum install code a little
     -BRE menu imporvements
 Version 3.25.3
-    -Import an existing Bitcoin Core insallation (binaries) to Parmanode
+    -Import an existing Bitcoin Core installation (binaries) to Parmanode
 Version 3.25.2
     -Import a fresh drive to Parmanode, use with existing Bitcoin installation
 Version 3.25.1
@@ -375,9 +379,9 @@ Version 3.23.1
     -Some little things
 Version 3.23.0
     -Electrum 4.4.6
-    -Docker for M1/2 macs
+    -Docker for M1/2 Macs
 Version 3.22.0
-    -Highly variable and nuisance start up screen bug removed.
+    -Highly variable and nuisance start-up screen bug removed.
 Version 3.21.3
     -Sparrow 1.8.1
     -Sparrow config editor in menu
@@ -388,9 +392,9 @@ Version 3.21.2
 Version 3.20.4
     -QBittorrent
     -Overview menu smol bug fixed
-    -LND wallet ballance display improvements, includes channels now.
+    -LND wallet balance display improvements, includes channels now.
     -Parman's easy AF Rsync tool
-    -Unbound upstream DNS resolver for PiHole (Linux onlya)
+    -Unbound upstream DNS resolver for PiHole (Linux only)
 Version 3.19.1
     -Overview menu
     -Sparrow & Specter uninstall, option to preserve config directory
@@ -398,7 +402,7 @@ Version 3.18.7 (Nov 23, 2023)
     -Option to turn off Main menu announcements
     -Patch_5
     -Electrs tor menu issues fixed
-    -pihole password changer
+    -Pihole password changer
 Version 3.18.6
     -Sparrow install bug. New one introduced with new version, fixed.
     -Tor Server Move directory had incorrect ownership settings
@@ -409,7 +413,7 @@ Version 3.18.5 (Nov 21, 2023)
      back to old stable version for now. 
     -LND config directory made into a git repository to allow undos (important directory)
      Only for new installs or when patch 4 gets released.
-    -Trezor install detects parallal installation configuration directory
+    -Trezor install detects parallel installation configuration directory
     -Electrs external drive bug fixed
 Version 3.18.4  19 November
     -Patch #3
@@ -439,12 +443,12 @@ Version 3.17.5
     -drive import bug fixed
     -internal/external drive swap smol bug fixed
     -bitcoin prune modification available now
-    -electrs available before bitcoin sync complete
+    -electrs available before Bitcoin sync complete
     -lightning TOR more robust
 Version 3.17.4
     -drive path bug fixed
     -BTC RPC Explorer via Docker introduced (Pi and Mac)
-    -option to use old internal drive bitcoin data when installing Bitcoin 
+    -option to use old internal drive Bitcoin data when installing Bitcoin 
     -Fulcrum bug fixed
     -Uninstall bug fixed
 Version 3.17.3
@@ -470,7 +474,7 @@ Version 3.16.1 -- 9th November
 Version 3.16.0
     -Removed requirement for Homebrew for Macs from the beginning, installed
        as required.
-    -GPG for macs now installed via the dmg download instead of via homebrew,
+    -GPG for Macs now installed via the dmg download instead of via homebrew,
        which is much faster.
     -Skip verify option added; useful for debugging
     -Minimum required for MacOS set to v10.9
@@ -480,7 +484,7 @@ Version 3.15.3 -- 7th November 2023
 Version 3.15.2
     -PiHole for Mac
     -Main menu loop improvements
-    -Need FUSE for minimal Linux isntalls to run AppImages
+    -Need FUSE for minimal Linux installs to run AppImages
 Version 3.15.0
     -PiHole for Linux
     -BTCPay menu improvement
@@ -498,9 +502,9 @@ Version 3.13.2
     -Update Parmanode without needing to restart
     -Mac electrs, never need to repeat build dependencies, saves time
     -Import Parmanode drive function added for Mac
-    -Detect corrupted bitcoin data; option to delete.
-    -Change bitcoin drive internal/external, code imporved
-    -Change bitcoin drive internal/external, code added for Mac
+    -Detect corrupted Bitcoin data; option to delete.
+    -Change Bitcoin drive internal/external, code imporved
+    -Change Bitcoin drive internal/external, code added for Mac
     -LND: now wallet create happens at install + bug fix
     -new menu option to jump to main menu. Not available everywhere yet
      but will appear more in future versions.
@@ -516,7 +520,7 @@ Version 3.10.1
 Version 3.10.0
     -BTC RPC Explorer for Mac OS
     -ParmaBox
-    -Problem with mac drive format fixed
+    -Problem with Mac drive format fixed
     -Test for English language
     -M1/M2 Mac Sparrow bug fix
     -more node info via cli/menu for Macs
@@ -524,7 +528,7 @@ Version 3.9.0
     -Revamped menu
     -ParmaShell
     -Docker separate install/uninstall for Macs
-    -"rp" command to run parmanode from any directory
+    -"rp" command to run Parmanode from any directory
 Version 3.8.5
     -RaspiBlitz migration tool added
     -Fixed BTC-RPC-Explorer bug (NodeJS issues)
@@ -578,9 +582,9 @@ Version 3.6.0
 Version 3.5.2
     -electrs software code added ; not yet functional
     -BTC RPC Explorer - tor enabled
-    -Drive format flow imporved a little
-    -64 bit Pi support for Bitcoin Core added (previously 32 bit binaries for 64 bit chip
-     running on 32 bit OS was the only way.)
+    -Drive format flow improved a little
+    -64 bit Pi support for Bitcoin Core added (previously 32-bit binaries for 64-bit chip
+     running on 32-bit OS was the only way.)
 Version 3.5.1
     -add ability to access BTC RPC Explorer from other computers on the network
      with Nginx
@@ -617,13 +621,13 @@ Version 3.4.4
     - Created own function to replace faulty sed command on Macs
     - Improved uninstall process 
     - Menu improvements (hidden stuff)
-    - fixed issue with Deiban Docker install
+    - fixed issue with Debian Docker install
     - Docker permission issues fixed for Linux
     - code clean up - Mempool not available for Pi's
     - code clean up - Sparrow not available for Pi's
-    - code clean up - Electrum is available for Pi's; needs python version
+    - code clean up - Electrum is available for Pi's; needs Python version
       to be done later.
-    - Download issue with LND and rpi4 64 bit fixed
+    - Download issue with LND and rpi4 64-bit fixed
 Version 3.4.3
     - BTCPay can be exposed over Tor
     - Allow BTCPay installation without Bitcoin installation
@@ -650,7 +654,7 @@ Version 3.3.6
       and updates fail because if.sparrow5
     - more educational material
 Version 3.3.4
-    - Tool to import other ext or FAT32 drive to parmanode (Linux only)
+    - Tool to import other ext or FAT32 drive to Parmanode (Linux only)
     - Fixed some docker bugs affecting Debian Pi
     - Fixed IP address formatting affecting Pi
     - Fixed mempool install affecting fresh docker installs
@@ -679,7 +683,7 @@ Version 3.2.0
 Version 3.1.0
     - Mempool Space added for Linux
 Version 3.0.0
-    - LND (for linux)
+    - LND (for Linux)
     - Menu improvements - now dynamically changes
 Version 2.3.4
     - BTCPay Server added for Linux (Docker)
@@ -693,7 +697,7 @@ Version 2.3.4
     - Install location bug fixed - cant run from home directory
     - Pesky user/password but sorted out
 Version 2.2.5
-    - Bug if user downloads from github directly to $HOME directory. Fixed.
+    - Bug if user downloads from GitHub directly to $HOME directory. Fixed.
 Version 2.2.4
     - smol bugs fixed
     - mount bug fixed for Linux
@@ -723,7 +727,7 @@ Version 2.0.2
 Version 2.0.1
     - Critical Patch
 Version 2.0.0
-    - Added Raspberry Pi (32 bit and 64 bit) support with Linux OS.
+    - Added Raspberry Pi (32-bit and 64-bit) support with Linux OS.
     - added IP address lookup for user's computer
     - added Homebrew installation for Macs
     - added Bitcoin Core dependencies for Mac
@@ -734,7 +738,7 @@ You MUST restart Bitcoin and Fulcrum (not Parmanode) if you have made any change
 
 Version 1.1.0
     - added MacOS support
-    - changed dripe wipe text to a call to #FreeRoss
+    - changed drive wipe text to a call to #FreeRoss
     - added an About section
     - code cleaned up, directories moved around.
     - added info on mentorship program with Parman 
@@ -744,6 +748,6 @@ Version 1.0.2
     - several errors corrected
 
 Version 1.0.1
-    - fixed missing of=/dev/$disk in dd commands fo zero and random data choices.
+    - fixed missing of=/dev/$disk in dd commands for zero and random data choices.
     
 Version 1.0.0

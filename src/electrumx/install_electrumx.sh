@@ -73,7 +73,7 @@ download_electrumx || { debug "download failed" ; return 1 ; }
 cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1 ; }
 
 #prepare drives. #drive_electrumx= variable set.
-{ choose_and_prepare_drive "Electrumx" ; log "electrumx" ; } || { debug "choose_and_prepare_drive failed" ; return 1 ; } 
+choose_and_prepare_drive "Electrumx" || return 1
 
 make_ssl_certificates "electrumx" \
 || announce "SSL certificate generation failed. Proceed with caution." ; debug "ssl certs done"

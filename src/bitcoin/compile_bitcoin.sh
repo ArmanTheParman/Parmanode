@@ -56,7 +56,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Bitcoin can be compiled with or without a Graphical User Interfact (GUI).
+    Bitcoin can be compiled with or without a Graphical User Interface (GUI).
 
     Parmanode does not need a GUI, as it is itself the interface between you and the
     node's functions - this is partly what Parmanode is for.

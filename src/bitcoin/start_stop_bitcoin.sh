@@ -103,13 +103,13 @@ if [[ $OS == Mac ]] ; then
 
     if [[ $1 == force ]] ; then pn_tmux "killall Bitcoin-Qt" ; fi
 
-    pn_tmux "osascript -e 'tell application "Bitcoin-Qt" to quit'"
+    pn_tmux "pkill -15 Bitcoin-Qt"
     while pgrep "Bitcoin-Qt" >$dn; do
     sleep 1
     done
 
 elif [[ $OS == Linux ]] ; then
-    pn_tmux "pkill -SIGTERM bitcoin-qt"
+    pn_tmux "pkill -15 bitcoin-qt"
     while pgrep bitcoin-qt >$dn ; do
     sleep 0.5
     done
