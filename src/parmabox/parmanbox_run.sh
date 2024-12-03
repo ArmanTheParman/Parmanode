@@ -1,5 +1,5 @@
 function parmabox_run {
-if [[ $OS == "Mac" || $Linux="Mac" ]] ; then    
+if [[ $OS == "Mac" ]] ; then    
     docker run -du parman --privileged --hostname ParmaBox --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
