@@ -193,7 +193,7 @@ $cyan
 $dkrmenu
       (log)$orange            Inspect LND logs
 $cyan
-      (lc)$orange             Inspect and edit $lndconf file (lcv for vim)
+      (conf)$orange             Inspect and edit $lndconf file (confv for vim)
 $cyan
       (scb)$orange            Static Channel Backup 
 $bright_blue
@@ -286,7 +286,7 @@ please_wait
 ;;
 
 
-lc|LC|conf|CONF|Conf)
+conf)
 if grep -q "litd" $ic >$dn 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
 rL=LITD
@@ -315,7 +315,7 @@ unset menu_lnd_lit_conf rL open_conf
 continue 
 ;;
 
-lcv|LCV)
+confv)
 
 if grep -q "litd" $ic >$dn 2>&1 ; then
 menu_lnd_lit_conf="litd.conf"
