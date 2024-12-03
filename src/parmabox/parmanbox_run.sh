@@ -3,6 +3,7 @@ function parmabox_run {
     docker run -du parman --privileged --hostname ParmaBox --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
+           -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
            -p 23:22 \
            -p 10999:10999 \
            -p 8399:8332 \
