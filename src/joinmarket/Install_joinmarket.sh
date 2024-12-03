@@ -224,9 +224,9 @@ fi
 
 function clone_joinmarket {
 
-    cd $hp && git clone --depth 1 https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket \
-        || { enter_continue "Something went wrong$green.$orange" && return 1 ; }
-
+    cd $hp && git clone https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket || { enter_continue "Something went wrong$green.$orange" && return 1 ; }
+    cd $hp/joinmarket
+    git checkout f4c2b1b86857762e1ca2fa6442bceb347523efda  #version 0.9.11 - tag checkout doesn't work for some reason.
     return 0 
 }
 
