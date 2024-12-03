@@ -4,29 +4,29 @@ while true ; do
 set_terminal_high
 echo -en "
 ########################################################################################$cyan
-                                   TOOLS - PAGE 2  $orange
+                                   FERRAMENTAS - PAGINA 2  $orange
 ########################################################################################
 
 
-$cyan              (bd)$orange        Install Bitcoin to a running Docker container
+$cyan              (bd)$orange        Instalar o Bitcoin em um contêiner Docker em execução
 
-$cyan              (as)$orange        AutoSSH reverse proxy tunnel guide
+$cyan              (as)$orange        Guia do túnel de proxy reverso AutoSSH
 
-$cyan              (curl)$orange      Test bitcoin curl/rpc command (for troubleshooting)
+$cyan              (curl)$orange      Testar o comando curl/rpc do bitcoin (para resolução de problemas)
 
-$cyan              (de)$orange        Drive encryption - info
+$cyan              (de)$orange        Encriptação de unidades - informações
 
-$cyan              (fs)$orange        Free up some space
+$cyan              (fs)$orange        Libertar algum espaço
 
-$cyan              (gc)$orange        RPC call test to LND (grpcurl)
+$cyan              (gc)$orange        Teste de chamada RPC para LND (grpcurl)
 
-$cyan              (rest)$orange      REST protocol test to LND (info only)
+$cyan              (rest)$orange      Teste do protocolo REST ao LND (apenas informação)
 
-$cyan              (rf)$orange        Refresh Parmanode script directory              
+$cyan              (rf)$orange        Atualizar o diretório de scripts Parmanode             
 
-$cyan              (sr)$orange        System report (for getting troubleshooting help)
+$cyan              (sr)$orange        Relatório do sistema (para obter ajuda na resolução de problemas)
 
-$cyan              (ps)$orange        Adjust SSD power saving
+$cyan              (ps)$orange        Ajustar a poupança de energia do SSD
 
 $orange
 ########################################################################################
