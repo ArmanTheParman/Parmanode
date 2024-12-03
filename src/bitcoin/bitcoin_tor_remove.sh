@@ -16,7 +16,7 @@ rm $HOME/.bitcoin/onion* >$dn
 start_bitcoin
 
 set_terminal
-enter_continue "Tor connection for Bitcoin disabled"
+enter_continue "Ligação Tor para Bitcoin desactivada"
 return 0
 
 }
