@@ -1,6 +1,6 @@
 function parmabox_run {
     
-    docker run -d --privileged --hostname ParmaBox --name parmabox \
+    docker run -du parman --privileged --hostname ParmaBox --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
            -p 23:22 \
