@@ -5,17 +5,17 @@ while true ; do
 set_terminal ; echo -en "
 ########################################################################################
 
-    The curl command to the bitcoin daemon, to run in terminal is...
+    O comando curl para o daemon bitcoin, a ser executado no terminal é...
 $cyan
 
 curl --user $rpcuser:$rpcpassword --data-binary '{\"jsonrpc\": \"1.0\", \"id\":\"curltest\", \"method\": \"getblockchaininfo\", \"params\": [] }' -H 'content-type: text/plain;' http://$IP:8332
 $orange
-    Parmanode can run this command for you or you can copy/paste it yourself, and
-    make edits as needed.
+    O Parmanode pode executar este comando por si ou pode copiar/colar você mesmo 
+    e fazer as edições necessárias.
 $green
-               d)      Do it for me
+               d)      Faça-o por mim
 $orange
-            <enter>    I'll do it, moving on.
+            <enter>    Eu faço-o, vou continuar.
 
 ########################################################################################
 "
