@@ -52,7 +52,7 @@ function install_joinmarket {
     elif [[ -z $joinmarket_docker ]] ; then
         joinmarket_dependencies || return 1
         cd $hp/joinmarket
-        ./install.sh || { announce "Something went wrong. Aborting." ; return 1 }
+        ./install.sh || { announce "Something went wrong. Aborting." ; return 1 ; }
     fi
 
 
