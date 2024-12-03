@@ -68,20 +68,21 @@ function install_joinmarket {
             sleep 1
             counter=$((counter + 1))
         done
+
+    parmashell_4_jm
+
     fi
-########################################################################################################################
 
     if [[ -z $joinmarket_docker ]] ; then
     cd $hp/joinmarket >$dn
     source jmvenv/bin/activate || { announce "Something went wrong with the virtual env. Aborting." ; return 1 ; }
     fi
 
-
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     make_joinmarket_config || { enter_continue "aborting" ; return 1 ; }
 
-    parmashell_4_jm
+########################################################################################################################
 
     installed_conf_add "joinmarket-end"
 
