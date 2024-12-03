@@ -33,36 +33,43 @@ function install_joinmarket {
         return 1
     fi
 
-    if [[ $OS == Mac ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>$dn ; then
+    if [[ $OS == "Mac" ]] && ! docker exec parmabox cat /home/parman/bitcoin-installed 2>$dn ; then
         install_bitcoin_docker silent parmabox joinmarket || return 1
         docker cp $bc parmabox:/home/parman/.bitcoin/bitcoin.conf >$dn 2>&1
         docker exec -u root parmabox /bin/bash -c "chown -R parman:parman /home/parman/.bitcoin/"
         docker exec -u root parmabox /bin/bash -c "echo 'rpcconnect=host.docker.internal' | tee -a /home/parman/.bitcoin/bitcoin.conf" >$dn 2>&1
     fi
 
-    install_tmux ; if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
-
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
     clone_joinmarket || { enter_continue "aborting" ; return 1 ; }
+    
+    if [[ $joinmarket_docker == "true" ]] ; then
+        build_joinmarket || { enter_continue "aborting" ; return 1 ; }
+        run_joinmarket_docker || { if [[ $silentexit == "true" ]] ; then return 1 ; fi ; enter_continue "aborting" ; return 1 ; }
+    elif [[ -z $joinmarket_docker ]] ; then
+        joinmarket_dependencies || return 1
+        cd $hp/joinmarket
+        ./install.sh || { announce "Something went wrong. Aborting." ; return 1 }
+    fi
 
-    build_joinmarket || { enter_continue "aborting" ; return 1 ; }
 
-    run_joinmarket_docker || { if [[ $silentexit == "true" ]] ; then return 1 ; fi ; enter_continue "aborting" ; return 1 ; }
-
-    if [[ $OS == Linux ]] ; then 
+    if [[ $OS == "Linux" && $joinmarket_docker == "true"  ]] ; then 
         install_bitcoin_docker silent joinmarket || return 1
         docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dn 2>&1
     fi
 
-    counter=0
-    while [[ $counter -lt 7 ]] ; do
-        docker exec joinmarket ps >$dn 2>&1 && break
-        sleep 1
-        counter=$((counter + 1))
-    done
+    if [[ $joinmarket_docker == "true" ]] ; then
+        counter=0
+        while [[ $counter -lt 7 ]] ; do
+            docker exec joinmarket ps >$dn 2>&1 && break
+            sleep 1
+            counter=$((counter + 1))
+        done
+    fi
+########################################################################################################################
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
@@ -274,5 +281,46 @@ set_terminal ; echo -ne "
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
+
+}
+
+function joinmarket_dependencies {
+#JoinMarket requires Python >=3.8, <3.13 installed.
+
+if ! which python3 >$dn 2>&1 ; then install_python3 ; fi
+
+pythonversion=$(python3 --version | grep -oE '[0-9]+\.[0-9]+')
+
+if [[ $pythonversion -gt 3.13 ]] || [[ $pythonversion -lt 3.8 ]] ; then
+announce "Python needs to be >v3.8 and <3.13. You have $pythonversion. Aborting."
+return 1
+fi
+
+if [[ $OS == Mac ]] && ! xcode-select -p ; then 
+    if yesorno "Need xcode tools installed. Install it? (takes a while)."  ; then
+        xcode-select --install || { announce "Something went wrong" ; return 1 ; }
+    else
+        return 1
+    fi
+fi
+
+
+
+}
+
+
+function install_python3 {
+
+if [[ $OS == "Mac" ]] ; then
+brew_check || return 1
+brew install python3 || { announce "Couldn't install python3. Aborting." ; return 1 ; }
+return 0 
+fi
+
+if [[ $OS == "Linux" ]] ; then
+sudo apt-get update -y 
+sudo apt-get install python3
+return 0
+fi
 
 }
