@@ -1,5 +1,7 @@
 function install_joinmarket {
 
+    if [[ $1 == "docker" ]] ; then joinmarket_docker="true" ; fi
+
     set_terminal
 
     grep -q "bitcoin-end" $ic || { 
@@ -252,15 +254,21 @@ $blinkoff $orange
     the ParmaBox container - this password is set to '${cyan}parmanode$orange' as the default. "
 fi
 
+if [[ $joinmarket_docker == "true" ]] ; then
+    jmdockertext="It will run on your computer inside a Docker container, alongside Bitcoin Core or
+    Bitcoin Knots on the system. Please note the Tumbler GUI will work, but not if
+    you SSH into the machine (ie won't work headless); you have to log in directly."
+fi
+
+
 set_terminal ; echo -ne "
 ########################################################################################
 
     You are about to install$cyan ParmaJoin$orange, which is software that manages
     the JoinMarket protocol - a decentralized marketplace for Bitcoin users 
     to coordinate CoinJoin transactions. 
-
-    It will run on your computer inside a Docker container, alongside Bitcoin Core or
-    Bitcoin Knots on the system.
+    
+    $jmdocker_text
     $mac_text
 
 ########################################################################################
