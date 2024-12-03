@@ -8,15 +8,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The user/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de utilizador/palavra-passe para $program não correspondem à sua 
+    configuração Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program 
-    will be restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -46,15 +45,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -85,15 +83,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -124,15 +121,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -162,15 +158,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -201,15 +196,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -239,15 +233,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will 
-    be restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -257,7 +250,7 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;;
 y)
 unset file && local file="$HOME/.sparrow/config"
-set_terminal ; enter_continue "Please ensure Sparrow has been shut down before continuing." 
+set_terminal ; enter_continue "Certifique-se de que o Sparrow foi encerrado antes de continuar." 
 sudo gsed -i "/coreAuth\"/c\    \"coreAuth\": \"$rpcuser:$rpcpassword\"," $file
 break
 ;;
@@ -275,15 +268,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -313,15 +305,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
@@ -351,15 +342,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    The urser/password credentials for $program do not match your Bitcoin
-    configuration. 
+    As credenciais de urser/password para $program não correspondem à sua configuração 
+    Bitcoin.
 
-    Would you like Parmanode to fix that up for you? If so, $program will be
-    restarted.
+    Quer que o Parmanode resolva isso por si? Se sim, $program será reiniciado.
 $green
-                      y)    Yes thanks, how good is that?
+                      y)    Sim, obrigado, mas que bom!
 $orange
-                      n)    Nah, I know what I'm doing and I'll manage it.
+                      n)    Não, eu sei o que estou a fazer e vou conseguir.
                     
 ########################################################################################
 "
