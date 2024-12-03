@@ -315,6 +315,14 @@ else return 1
 fi
 ;;
 
+ujoin|mjoin)
+if grep -q "joinmarket-end" $ic ; then
+menu_joinmarket
+invalid_flag=set
+else return 1
+fi
+;;
+
 code|Code|CODE)
 less $pn/src/MENUS/jump.sh
 invalid_flag=set
