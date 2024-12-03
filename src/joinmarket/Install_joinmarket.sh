@@ -7,19 +7,22 @@ function install_joinmarket {
         }
     
     joinmarket_preamble
+    
+    #Parmabox is needed for Macs becuase Bitcoin on Macs don't have bitcoin-cli
+    if [[ $OS == "Mac" ]] ; then
+        if ! grep -q "parmabox-end" $ic ; then
 
-    if ! grep -q "parmabox-end" $ic ; then
+            yesorno "Parmanode needs to install Parmabox before installing
+        JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
+            install_parmabox silent
+        fi
 
-        yesorno "Parmanode needs to install Parmabox before installing
-    JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
-        install_parmabox silent
-    fi
-
-    if ! docker ps | grep -q parmabox ; then
-       while true ; do
-       yesorno "ParmaBox needs to be running. Let Parmanode start it?" && { docker start parmabox ; break ; }
-       return 1
-       done
+        if ! docker ps | grep -q parmabox ; then
+        while true ; do
+        yesorno "ParmaBox needs to be running. Let Parmanode start it?" && { docker start parmabox ; break ; }
+        return 1
+        done
+        fi
     fi
 
     isbitcoinrunning
@@ -36,16 +39,6 @@ function install_joinmarket {
     fi
 
     install_tmux ; if ! which tmux >$dn 2>&1 ; then announce "Need tmux to continue. Couldn't install. Aborting." && return 1 ; fi
-    
-    # if [[ $OS == Linux ]] ; then
-    #     enable_tor_general || { announce "Something went wrong with tor. Aborting." ; return 1 ; }
-    #     if ! grep -q "HiddenServiceDir /var/lib/tor/joinmarket-service/" $macprefix/etc/tor/torrc ; then
-    #         echo "HiddenServiceDir /var/lib/tor/joinmarket-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
-    #     fi
-    #     if ! grep -q "HiddenServicePort 5222 127.0.0.1:5222" $macprefix/etc/tor/torrc ; then
-    #         echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc 
-    #     fi
-    # fi
 
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
@@ -120,14 +113,14 @@ function make_joinmarket_wallet {
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
 
     while true ; do
-        if [[ $OS == Mac ]] ; then
+        if [[ $OS == "Mac" ]] ; then
             bcdocker="/home/parman/.bitcoin/bitcoin.conf"
             rpcconnect="rpcconnect=host.docker.internal"
             docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >$dn"
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && \
                                                enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
-        elif [[ $OS == Linux ]] ; then 
+        elif [[ $OS == "Linux" ]] ; then 
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && \
                                                enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
