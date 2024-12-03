@@ -4,9 +4,9 @@ if ! grep -q "server=1" $bc ; then
 set_terminal ; echo -e "
 ########################################################################################
     
-    Bitcoin needs to be restarted to add the line$cyan 'server=1'$orange to the config file.
+    O Bitcoin precisa de ser reiniciado para adicionar a linha$cyan ' server=1'$orange ao ficheiro de configuração.
 
-    Hit$red s$orange to skip or$green anything else$orange to continue and allow the changes to be made.
+    Carregue em$red s$orange para saltar ouem$green qualquer outra coisa$orange para continuar e permitir que as alterações sejam efectuadas.
 
 ########################################################################################
 "
