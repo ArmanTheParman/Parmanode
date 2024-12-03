@@ -3,6 +3,7 @@ if [[ $OS == "Mac" ]] ; then
     docker run -du parman --privileged --hostname ParmaBox --name parmabox \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
+           -v $HOME/.Xauthority:/home/parman/.Xauthority \
            -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
            -p 23:22 \
            -p 10999:10999 \
