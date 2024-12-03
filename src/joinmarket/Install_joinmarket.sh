@@ -188,9 +188,9 @@ function build_joinmarket {
     unset success_build #do not use 'success' as a variable, it deletes the success function
     rm $hp/joinmarket/Dockerfile >$dn 2>&1
 
-    if [[ $OS == Linux ]] ; then
+    if [[ $OS == "Linux" ]] ; then
         cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
-    elif [[ $OS == Mac ]] ; then
+    elif [[ $OS == "Mac" ]] ; then
         cp $pn/src/joinmarket/Dockerfile_mac $hp/joinmarket/Dockerfile >$dn 2>&1
         cp $pn/src/joinmarket/Dockerfile_torrc $hp/joinmarket/ >$dn 2>&1
         cp $pn/src/joinmarket/Dockerfile_torsocks.conf $hp/joinmarket/ >$dn 2>&1
@@ -207,7 +207,7 @@ function run_joinmarket_docker {
 
 #-v /var/lib/tor/joinmarket-service:/var/lib/tor/joinmarket-service \
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 
     docker run -d \
                --name joinmarket \
@@ -223,7 +223,7 @@ if [[ $OS == Linux ]] ; then
                joinmarket
     return 0
 
-elif [[ $OS == Mac ]] ; then
+elif [[ $OS == "Mac" ]] ; then
 
     docker run -d \
                --name joinmarket \
@@ -270,7 +270,7 @@ docker cp $tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
 
 function joinmarket_preamble {
 
-if [[ $OS == Mac ]] ; then
+if [[ $OS == "Mac" ]] ; then
 mac_text="$red $blinkon 
     I M P O R T A N T . . .
 $blinkoff $orange
@@ -314,7 +314,7 @@ announce "Python needs to be >v3.8 and <3.13. You have $pythonversion. Aborting.
 return 1
 fi
 
-if [[ $OS == Mac ]] && ! xcode-select -p ; then 
+if [[ $OS == "Mac" ]] && ! xcode-select -p ; then 
     if yesorno "Need xcode tools installed. Install it? (takes a while)."  ; then
         xcode-select --install || { announce "Something went wrong" ; return 1 ; }
     else
