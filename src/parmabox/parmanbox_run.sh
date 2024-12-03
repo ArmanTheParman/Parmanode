@@ -14,7 +14,7 @@ if [[ $OS == "Mac" ]] ; then
 elif [[ $OS == "Linux" ]] ; then
 
     docker run -du parman --privileged --name parmabox \
-           -network=host \
+           --network=host \
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
            -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
