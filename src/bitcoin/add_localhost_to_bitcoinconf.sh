@@ -8,11 +8,11 @@ if ! cat $HOME/.bitcoin/bitcoin.conf | grep "rpcallowip=127.0.0.1" >$dn 2>&1 ; t
 echo -e "
 ########################################################################################
     
-    Bitcoin needs to be restarted to add the line$cyan \"rpcallowip=127.0.0.1\"$orange to 
+    O Bitcoin precisa ser reiniciado para adicionar a linha
     
-    the config file. 
+    $cyan \ "rpcallowip=127.0.0.1\"$orange ao arquivo de configuração. 
     
-    Hit$red s$orange to skip or$green anything else$cyan to continue and allow the changes to be made.
+    Prima$red s$orange para saltar ou$green qualquer outra coisa$cyan para continuar e permitir que as alterações sejam efectuadas.
 
 ########################################################################################
 "
