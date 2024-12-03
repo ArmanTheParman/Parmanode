@@ -69,6 +69,8 @@ $cyan
 $cyan
                conf)$orange        View/Edit config (confv for vim)$pink(restart if changing)$orange
 $cyan
+               log)$orange         View container logs
+$cyan
                bk)$orange          Change backend ...
 
 
@@ -128,6 +130,43 @@ bk)
 change_mempool_backend
 ;;
 
+log1)
+NODAEMON="true"
+pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON
+unset NODAEMON
+;;
+log2)
+NODAEMON="true"
+pn_tmux "docker logs docker-db-1 2>&1 | less" ; unset NODAEMON 
+unset NODAEMON
+;;
+log3)
+NODAEMON="true"
+pn_tmux "docker logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON 
+unset NODAEMON
+;;
+
+log) 
+while true ; do
+announce "Choosee api$cyan (1)$orange, db$cyan (2)$orange, or web$cyan (3)$orange."
+    jump $enter_cont
+    NODAEMON="true"
+    case $enter_cont in
+    1|api)
+        pn_tmux "docker logs docker-api-1 2>&1 | less" ; unset NODAEMON ; break
+        ;;
+    2|db)
+        pn_tmux "docker logs docker-db-1 2>&1 | less" ; unset NODAEMON ; break 
+        ;;
+    3|web)
+        pn_tmux "docker logs docker-mempool_web-1 2>&1 | less" ; unset NODAEMON ; break
+        ;;
+    *)
+        invalid 
+        ;;
+    esac
+done
+;;
 *)
 invalid
 ;;

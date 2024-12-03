@@ -17,4 +17,5 @@ else
 sudo tmux new -s $tmuxname -d "$command"
 fi
 TMUX=$TMUX2
+return 0
 }
