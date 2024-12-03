@@ -44,7 +44,7 @@ function install_joinmarket {
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
 
-    clone_joinmarket || { enter_continue "aborting" ; return 1 ; }
+    clone_joinmarket || { announce "Something went wrong. Aborting" ; return 1 ; }
     
     if [[ $joinmarket_docker == "true" ]] ; then
         build_joinmarket || { enter_continue "aborting" ; return 1 ; }
@@ -52,7 +52,7 @@ function install_joinmarket {
     elif [[ -z $joinmarket_docker ]] ; then
         joinmarket_dependencies || return 1
         cd $hp/joinmarket
-        ./install.sh || { announce "Something went wrong. Aborting." ; return 1 ; }
+        ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
     fi
 
 
@@ -70,6 +70,12 @@ function install_joinmarket {
         done
     fi
 ########################################################################################################################
+
+    if [[ -z $joinmarket_docker ]] ; then
+    cd $hp/joinmarket >$dn
+    source jmvenv/bin/activate || { announce "Something went wrong with the virtual env. Aborting." ; return 1 ; }
+    fi
+
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
@@ -157,9 +163,20 @@ function run_wallet_tool_joinmarket {
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
 
     if [[ $1 == "install" ]] ; then
+        
+        if [[ -n $VIRTUAL_ENV ]] ; then
+            $hp/joinmarket/scripts/wallet-tool.py >$dn 2>&1
+        fi
+
     docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' >$dn 2>&1
+    
     else
-    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' #do not exit on failure.
+        if [[ -n $VIRTUAL_ENV ]] ; then
+            $hp/joinmarket/scripts/wallet-tool.py #do not exit on failure.
+        fi
+        
+    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py'  #do not exit on failure.
+
     fi
 
     return 0
@@ -224,7 +241,7 @@ fi
 
 function clone_joinmarket {
 
-    cd $hp && git clone https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket || { enter_continue "Something went wrong$green.$orange" && return 1 ; }
+    cd $hp && git clone https://github.com/JoinMarket-Org/joinmarket-clientserver.git joinmarket || return 1
     cd $hp/joinmarket
     git checkout f4c2b1b86857762e1ca2fa6442bceb347523efda  #version 0.9.11 - tag checkout doesn't work for some reason.
     return 0 
