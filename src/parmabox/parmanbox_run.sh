@@ -18,6 +18,7 @@ elif [[ $OS == "Linux" ]] ; then
            -v $HOME/parmanode/parmabox:/home/parman/parmanode/parmabox \
            -e DISPLAY=$DISPLAY \
            -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+           -v $HOME/.Xauthority:/home/parman/.Xauthority \
            parmabox \
            tail -f /dev/null
 
