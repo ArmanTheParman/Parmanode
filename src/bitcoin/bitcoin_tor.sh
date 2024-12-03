@@ -46,7 +46,7 @@ if [[ $count -gt 0 ]] ; then echo "will try up to 12 times while it thinks" ; fi
 get_onion_address_variable "bitcoin"
 sleep 1.5
 count=$((1 + count))
-if [[ $count -gt 12 ]] ; then announce "Couldn't get onion address. Aborting." ; return 1 ; fi
+if [[ $count -gt 12 ]] ; then announce "Não foi possível obter o endereço Tor. Abortando." ; return 1 ; fi
 done
 ########################################################################################
 
@@ -85,8 +85,8 @@ start_bitcoin
 
 set_terminal ; echo -e "
 ########################################################################################
-    FYI, changes have been made to torrc file & bitcoin.conf file, and Tor has been 
-    restarted.
+    Para sua informação, foram feitas alterações no ficheiro torrc e no ficheiro 
+    bitcoin.conf, e o Tor foi reiniciado.
 ########################################################################################
 "
 enter_continue
