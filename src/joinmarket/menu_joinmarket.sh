@@ -130,18 +130,23 @@ sudo gsed -i "/jm_menu_shhh=1/d" $hm
 fi
 ;;
 
-s)
-if echo $joinmarket_running | grep -q NOT ; then
-    start_joinmarket
-else
+stop)
+stop_joinmarket
+;;
+start|st|s)
+start_joinmarket
 
-    if [[ $yg == "true" ]] ; then
-    stop_yeild_generator
-    fi
+# if echo $joinmarket_running | grep -q NOT ; then
+#     start_joinmarket
+# else
 
-    stop_joinmarket
-    unset obwatcherPID
-fi
+#     if [[ $yg == "true" ]] ; then
+#     stop_yeild_generator
+#     fi
+
+#     stop_joinmarket
+#     unset obwatcherPID
+# fi
 ;;
 
 ob)
