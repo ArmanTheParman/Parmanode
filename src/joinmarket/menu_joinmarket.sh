@@ -192,40 +192,58 @@ delete)
 
 da)
     check_wallet_loaded || continue
+    jmvenv "activate"
     display_jm_addresses
+    jmvenv "deactivate"
     ;; 
 di)
     check_wallet_loaded || continue
+    jmvenv "activate"
     display_jm_addresses a
+    jmvenv "deactivate"
     ;;
 sum)
     check_wallet_loaded || continue
-    /jm/clientserver/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
+    jmvenv "activate"
+    $HOME/joinmarket/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
+    jmvenv "deactivate"
     enter_continue
     ;;
 cp)
     check_wallet_loaded || continue
-    /jm/clientserver/scripts/wallet-tool.py $wallet changepass
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet changepass
+    jmvenv "deactivate"
     ;;
 
 su)
     check_wallet_loaded || continue
-    /jm/clientserver/scripts/wallet-tool.py $wallet showutxos
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet showutxos
+    jmvenv "deactivate"
     enter_continue
     ;;
 ss)
     check_wallet_loaded || continue
-    /jm/clientserver/scripts/wallet-tool.py $wallet showseed
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet showseed
+    jmvenv "deactivate"
     enter_continue
     ;;
 bk)
+    jmvenv "activate"
     backup_jm_wallet
+    jmvenv "deactivate"
     ;;
 h|hist)
+    jmvenv "activate"
     wallet_history_jm
+    jmvenv "deactivate"
     ;;
 sp)
+    jmvenv "activate"
     spending_info_jm
+    jmvenv "deactivate"
     ;;
 *)
 invalid

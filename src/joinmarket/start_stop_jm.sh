@@ -1,11 +1,13 @@
 function start_joinmarket {
 
-: #jmdaemon start
+jmvenv "activate"
+$hp/joinmarket/scripts/joinmarketd.py
+jmvenv "deactivate"
 
 }
 
 function stop_joinmarket {
 
-: #jmdaemon stop 
+pkill -15 joinmarketd.py
 
 }

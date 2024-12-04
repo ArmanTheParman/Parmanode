@@ -92,10 +92,12 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
+jmvenv "activate"
 start_yield_generator
 ;;
 
 stop)
+jmvenv "activate"
 stop_yield_generator
 ;;
 
@@ -113,7 +115,9 @@ flog)
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
 ;;
 c)
+    jmvenv "activate"
     configure_yg 
+    jmvenv "deactivate"
 ;;
 del)
     delete_lockfile
@@ -162,7 +166,7 @@ function start_yield_generator {
     unset silentecho
 
     password=$enter_cont
-    echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet | tee $HOME/.joinmarket/yg_privacy.log || enter_continue "Some error with wallet: $wallet"
+    echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet | tee $HOME/.joinmarket/yg_privacy.log || enter_continue "Some error with wallet: $wallet"
     unset password enter_cont
     sleep 1
 

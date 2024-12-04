@@ -68,21 +68,22 @@ f) fidelity_bonds_info ;;
 break ;;
 esac
 done
-
+jmvenv "activate"
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
-/jm/clientserver/scripts/wallet-tool.py generate
+$hp/joinmarket/scripts/wallet-tool.py generate
 #copy list of wallets to after file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
-/jm/clientserver/scripts/wallet-tool.py $wallet summary 
+$hp/joinmarket/scripts/wallet-tool.py $wallet summary 
 enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
 
+jmvenve "deactivate"
 return 0
 }
 
@@ -144,10 +145,14 @@ unset copyjmdesktop
 fi
     case $1 in
     a)
-    /jm/clientserver/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
+    jmvenv "deactivate"
     ;;
     *)
-    /jm/clientserver/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
+    jmvenv "deactivate"
     ;;
     esac
 
@@ -159,10 +164,14 @@ fi
         $orange"
         case $1 in
         a)
-        /jm/clientserver/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
+        jmvenv "activate"
+        $hp/joinmarket/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
+        jmvenv "deactivate"
         ;;
         *)
-        /jm/clientserver/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
+        jmvenv "activate"
+        $hp/joinmarket/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
+        jmvenv "deactivate"
         ;;
         esac
 
@@ -279,16 +288,18 @@ break ;;
 esac
 done
 
+jmvenv "activate"
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
-/jm/clientserver/scripts/wallet-tool.py recover 
+$hp/joinmarket/scripts/wallet-tool.py recover 
 #copy list of wallets to after file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
-/jm/clientserver/scripts/wallet-tool.py $wallet summary 
+$hp/joinmarket/scripts/wallet-tool.py $wallet summary 
+jmvenv "deactivate"
 enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
@@ -380,7 +391,7 @@ announce "The file seems to exist on the Desktop already. Please move it or dele
 fi
 
 sudo cp $HOME/.joinmarket/wallets/$choice $HOME/Desktop/$choice
-enter_continue
+enter_continue || jump $enter_cont
 return 0
 ;;
 esac
@@ -390,8 +401,10 @@ done
 
 function wallet_history_jm {
 check_wallet_loaded || return 1
-/jm/clientserver/scripts/wallet-tool.py $wallet history 
-enter_continue
+jmvenv "activate"
+$hp/joinmarket/scripts/wallet-tool.py $wallet history 
+jmvenv "deactivate"
+enter_continue || jump $enter_cont
 }
 
 
