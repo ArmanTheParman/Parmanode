@@ -1,7 +1,5 @@
 function install_joinmarket {
 
-    if [[ $1 == "docker" ]] ; then joinmarket_docker="true" ; fi
-
     set_terminal
 
     grep -q "bitcoin-end" $ic || { 
@@ -46,37 +44,15 @@ function install_joinmarket {
 
     clone_joinmarket || { announce "Something went wrong. Aborting" ; return 1 ; }
     
-    if [[ $joinmarket_docker == "true" ]] ; then
-        build_joinmarket || { enter_continue "aborting" ; return 1 ; }
-        run_joinmarket_docker || { if [[ $silentexit == "true" ]] ; then return 1 ; fi ; enter_continue "aborting" ; return 1 ; }
-    elif [[ -z $joinmarket_docker ]] ; then
-        joinmarket_dependencies || return 1
-        cd $hp/joinmarket
-        ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
-    fi
+    joinmarket_dependencies || return 1
 
+    cd $hp/joinmarket
 
-    if [[ $OS == "Linux" && $joinmarket_docker == "true"  ]] ; then 
-        install_bitcoin_docker silent joinmarket || return 1
-        docker cp $bc joinmarket:/root/.bitcoin/bitcoin.conf >$dn 2>&1
-    fi
+    ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
 
-    if [[ $joinmarket_docker == "true" ]] ; then
-        counter=0
-        while [[ $counter -lt 7 ]] ; do
-            docker exec joinmarket ps >$dn 2>&1 && break
-            sleep 1
-            counter=$((counter + 1))
-        done
-
-    parmashell_4_jm
-
-    fi
-
-    if [[ -z $joinmarket_docker ]] ; then
     cd $hp/joinmarket >$dn
+
     source jmvenv/bin/activate || { announce "Something went wrong with the virtual env. Aborting." ; return 1 ; }
-    fi
 
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
@@ -164,80 +140,12 @@ function run_wallet_tool_joinmarket {
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
 
     if [[ $1 == "install" ]] ; then
-        
-        if [[ -n $VIRTUAL_ENV ]] ; then
-            $hp/joinmarket/scripts/wallet-tool.py >$dn 2>&1
-        fi
-
-    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py' >$dn 2>&1
-    
+        $hp/joinmarket/scripts/wallet-tool.py >$dn 2>&1
     else
-        if [[ -n $VIRTUAL_ENV ]] ; then
-            $hp/joinmarket/scripts/wallet-tool.py #do not exit on failure.
-        fi
-        
-    docker exec joinmarket bash -c '/jm/clientserver/scripts/wallet-tool.py'  #do not exit on failure.
-
+        $hp/joinmarket/scripts/wallet-tool.py #do not exit on failure.
     fi
 
     return 0
-}
-
-function build_joinmarket {
-
-    unset success_build #do not use 'success' as a variable, it deletes the success function
-    rm $hp/joinmarket/Dockerfile >$dn 2>&1
-
-    if [[ $OS == "Linux" ]] ; then
-        cp $pn/src/joinmarket/Dockerfile $hp/joinmarket/Dockerfile >$dn 2>&1
-    elif [[ $OS == "Mac" ]] ; then
-        cp $pn/src/joinmarket/Dockerfile_mac $hp/joinmarket/Dockerfile >$dn 2>&1
-        cp $pn/src/joinmarket/Dockerfile_torrc $hp/joinmarket/ >$dn 2>&1
-        cp $pn/src/joinmarket/Dockerfile_torsocks.conf $hp/joinmarket/ >$dn 2>&1
-    fi
-
-    cd $hp/joinmarket
-    docker build -t joinmarket $nocache . && success_build="true"
-    enter_continue 
-
-    if [[ $success_build == "true" ]] ; then return 0 ; else return 1 ; fi
-}
-
-function run_joinmarket_docker {
-
-#-v /var/lib/tor/joinmarket-service:/var/lib/tor/joinmarket-service \
-
-if [[ $OS == "Linux" ]] ; then
-
-    docker run -d \
-               --name joinmarket \
-               -v $HOME/.joinmarket:/root/.joinmarket \
-               -v /run/tor:/run/tor \
-               -v $HOME/.tor:/root/.tor \
-               -v /var/lib/tor:/var/lib/tor \
-               -v /etc/tor:/etc/tor \
-               -v $HOME/.tornoticefile.log:/root/.tornoticefile.log \
-               -v $HOME/.torinfofile.log:/root/.torinfofile.log \
-               --network="host" \
-               --restart unless-stopped \
-               joinmarket
-    return 0
-
-elif [[ $OS == "Mac" ]] ; then
-
-    docker run -d \
-               --name joinmarket \
-               -v $HOME/.joinmarket:/root/.joinmarket \
-               -p 61000:61000 \
-               -p 2222:22 \
-               --restart unless-stopped \
-               joinmarket
-    return 0
-fi
-
-    start_socat joinmarket
-    internal_docker_socat_jm_mac 
-
 }
 
 function clone_joinmarket {
@@ -248,25 +156,6 @@ function clone_joinmarket {
     return 0 
 }
 
-function parmashell_4_jm {
-
-cat << 'EOF' | tee $tmp/b1 >$dn 2>&1
-export LS_OPTIONS='--color=auto'
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -l'
-alias l='ls $LS_OPTIONS -lA'
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-EOF
-
-cat $tmp/b1 $pn/src/ParmaShell/parmashell_functions > $tmp/b2
-
-echo "a" | tee -a $tmp/b2 >$dn 2>&1
-
-docker cp $tmp/b2 joinmarket:/root/.bashrc >$dn 2>&1
-}
 
 function joinmarket_preamble {
 
@@ -279,13 +168,6 @@ $blinkoff $orange
     the ParmaBox container - this password is set to '${cyan}parmanode$orange' as the default. "
 fi
 
-if [[ $joinmarket_docker == "true" ]] ; then
-    jmdockertext="It will run on your computer inside a Docker container, alongside Bitcoin Core or
-    Bitcoin Knots on the system. Please note the Tumbler GUI will work, but not if
-    you SSH into the machine (ie won't work headless); you have to log in directly."
-fi
-
-
 set_terminal ; echo -ne "
 ########################################################################################
 
@@ -293,7 +175,6 @@ set_terminal ; echo -ne "
     the JoinMarket protocol - a decentralized marketplace for Bitcoin users 
     to coordinate CoinJoin transactions. 
     
-    $jmdocker_text
     $mac_text
 
 ########################################################################################
@@ -321,11 +202,7 @@ if [[ $OS == "Mac" ]] && ! xcode-select -p ; then
         return 1
     fi
 fi
-
-
-
 }
-
 
 function install_python3 {
 
@@ -340,5 +217,4 @@ sudo apt-get update -y
 sudo apt-get install python3
 return 0
 fi
-
 }

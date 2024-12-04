@@ -28,9 +28,8 @@ if [[ -z $wallet ]] ; then
     wallet=NONE
 
     #check if yg running, and load wallet variable, and set menu text
-    if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    #ygtext1 ... doin't rename, needs to not be ygtext (clashes with yg menu version)
+    if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
@@ -45,7 +44,7 @@ if [[ -z $wallet ]] ; then
 
 # if there is a wallet loaded, then check if yg is running for the menu
 else
-	if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+	if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
@@ -57,14 +56,14 @@ if docker ps 2>$dn | grep -q joinmarket ; then
     export joinmarket_running="${green}RUNNING$orange"
 
     #is yield generator basic running?
-    if docker exec joinmarket ps aux | grep yield-generator-basic ; then 
+    if ps aux | grep yield-generator-basic ; then 
         export yg="true"
     else
         export yg="false"
     fi
 
     #is obwatcher running?
-    export obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
+    export obwatcherPID=$(ps ax | grep "ob-watcher.py" | awk '{print $1}')
     if [[ $obwatcherPID =~ [0-9]+ ]] ; then
         export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    localhost:61000 or 127.0.0.1:61000$orange"
     else
@@ -75,18 +74,6 @@ else
      export joinmarket_running="${red}NOT RUNNING$orange"
      export yg="false"
      export orderbook="${red}NOT RUNNING${orange}"
-fi
-
-if tmux ls | grep -q joinmarket_socat ; then 
-    if echo $orderbook | grep -q NOT ; then
-        socatstatus="${green}RUNNING$orange"
-    else
-        socatstatus="${green}RUNNING$orange
-    Access Order Book
-    from external: $bright_blue      $IP:61000$orange"
-    fi
-else 
-    socatstatus="${red}NOT RUNNING$orange"
 fi
 
 set_terminal_custom 51 ; echo -en "
@@ -101,27 +88,21 @@ $jm_be_carefull
 
     Active wallet is:    $magenta$wallet$orange
 
-    Socat is:            $socatstatus
-
     Order Book is:       $orderbook
 $ygtext1
 
 $cyan
-                  s)$orange           Start/stop JoinMarket Docker container
+                  s)$orange           Start/stop JoinMarket 
 $cyan
                   ob)$orange          Start/Stop orderbook
 $cyan
                   obi)$orange         Orderbook access info ...
-$cyan
-                  ss)$orange          Start/Stop Socat forwarding (${cyan}ssi$orange for info)
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $magenta
                   ww)$orange          Wallet menu ... 
 $red
                   yg)$orange          Yield Generator menu ...
-$red
-                  man)$orange         Manual DIY commands (enter Docker container)
 $bright_blue
                   mm)$orange          Menu 2 ...
 
@@ -170,16 +151,6 @@ ob)
 obi)
    orderbook_access_info
 ;;
-ss)
-   if grep -q "NOT" <<< $socatstatus ; then
-   start_socat joinmarket
-   else
-   stop_socat joinmarket
-   fi
-;;
-ssi)
-    check_socat_working || return 1
-;;
 
 l|load)
     set_terminal
@@ -211,14 +182,7 @@ confv)
 vim_warning ; sudo vim $jmcfg
 ;;
 
-man)
-clear
-enter_continue "Type exit and <enter> to return from container back to Parmanode"
-clear
-docker exec -it joinmarket bash 
-;;
 cr)
-
     jm_create_wallet_tool
 
     ;;
@@ -235,24 +199,23 @@ di)
     display_jm_addresses a
     ;;
 sum)
-
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee $tmp/jmaddresses
+    /jm/clientserver/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
     enter_continue
     ;;
 cp)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet changepass
     ;;
 
 su)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet showutxos
     enter_continue
     ;;
 ss)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet showseed
     enter_continue
     ;;
 bk)

@@ -33,11 +33,11 @@ if [[ -e $logfile ]] ; then
 fi
 
 #if grep "setting onion hostname to" $logfile ; then
-if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
     ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet"
     
-    if docker exec joinmarket ps ax | grep obwatch | grep -q python ; then
+    if ps ax | grep obwatch | grep -q python ; then
         if [[ -z $nick ]] ; then
             orderbooknn="\n\r    Orderbookd Nickname is:   ${bright_blue}refresh later to see$orange"
         else
@@ -162,14 +162,14 @@ function start_yield_generator {
     unset silentecho
 
     password=$enter_cont
-    docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
+    echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet | tee $HOME/.joinmarket/yg_privacy.log || enter_continue "Some error with wallet: $wallet"
     unset password enter_cont
     sleep 1
 
 }
 
 function stop_yield_generator {
-    yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
-    docker exec joinmarket kill -SIGTERM $yg_PID
+    yg_PID=$(ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
+    kill -SIGTERM $yg_PID
     sudo rm $logfile 2>&1
 }

@@ -27,7 +27,7 @@ while true ; do
 set_terminal_custom 47 ; echo -e "
 ########################################################################################
 
-    Wallet files will be kept inside the container at$cyan /root/.joinmarket/wallet $orange
+    Wallet files will be kept at$cyan $HOME/.joinmarket/wallet $orange
 
     You will first be asked:
 $red
@@ -53,10 +53,9 @@ $red
     Would you like this wallet to support fidelity bonds? Write 'n' if you don't 
     know what this is (y/n): 
 $orange
-    I personally have not investigated this feature enough to advise, so I'll be
-    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange 
-    now if you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
-    privacy feature.
+    I personally have not investigated this feature enough to advise.
+    Probabaly best to choose 'n' until you learn more about it. Hit $cyan f$orange for
+    info from AI about fidelity bonds (do not trust blindly).
 
 ########################################################################################
 "
@@ -73,13 +72,13 @@ done
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
-docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py generate" 
+/jm/clientserver/scripts/wallet-tool.py generate
 #copy list of wallets to after file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
-docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
+/jm/clientserver/scripts/wallet-tool.py $wallet summary 
 enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
@@ -145,10 +144,10 @@ unset copyjmdesktop
 fi
     case $1 in
     a)
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee $tmp/jmaddresses
+    /jm/clientserver/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
     ;;
     *)
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee $tmp/jmaddresses
+    /jm/clientserver/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
     ;;
     esac
 
@@ -160,10 +159,10 @@ fi
         $orange"
         case $1 in
         a)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet displayall" | tee $tmp/jmaddresses
+        /jm/clientserver/scripts/wallet-tool.py $wallet displayall | tee $tmp/jmaddresses
         ;;
         *)
-        docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet display" | tee $tmp/jmaddresses
+        /jm/clientserver/scripts/wallet-tool.py $wallet display | tee $tmp/jmaddresses
         ;;
         esac
 
@@ -242,7 +241,7 @@ while true ; do
 set_terminal_custom 47 ; echo -e "
 ########################################################################################
 
-    Wallet files will be kept inside the container at$cyan /root/.joinmarket/wallet $orange
+    Wallet files will be kept at $cyan $HOME/.joinmarket/wallet $orange
 
     You will be asked to input your seed. Type it in and separate with spaces, then
     hit <enter>.
@@ -263,10 +262,10 @@ $red
     Would you like this wallet to support fidelity bonds? Write 'n' if you don't 
     know what this is (y/n): 
 $orange
-    I personally have not investigated this feature enough to advise, so I'll be
-    choosing 'n'. You do what you think is best. Type$cyan f$orange and $green<enter>$orange 
-    now if you want more info on Fidelity Bonds (sourced from ChatGPT). TL;DR - It's a 
-    privacy feature.
+    I personally have not investigated this feature enough to advise.
+    Probabaly best to choose 'n' until you learn more about it. Hit $cyan f$orange for
+    info from AI about fidelity bonds (do not trust blindly).
+
 
 ########################################################################################
 "
@@ -283,13 +282,13 @@ done
 > $dp/before ; > $dp/after #clear contents
 #copy list of wallets to before file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/before 2>$dn ; done
-docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py recover" 
+/jm/clientserver/scripts/wallet-tool.py recover 
 #copy list of wallets to after file
 for i in $(ls $HOME/.joinmarket/wallets/) ; do echo "$i" >> $dp/after 2>$dn ; done
 #automatically export the new wallet
 export wallet=$(diff $dp/before $dp/after | grep ">" | awk '{print $2}')
 #show wallet summary
-docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" 
+/jm/clientserver/scripts/wallet-tool.py $wallet summary 
 enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
@@ -391,7 +390,7 @@ done
 
 function wallet_history_jm {
 check_wallet_loaded || return 1
-docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet history" 
+/jm/clientserver/scripts/wallet-tool.py $wallet history 
 enter_continue
 }
 

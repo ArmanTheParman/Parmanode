@@ -12,7 +12,7 @@ $orange
                             n)    Nah, abort
 
 $red
-    If you want to delete the joinmarket Bitcoin Core/Knots wallet, then you
+    Note: If you want to delete the joinmarket Bitcoin Core/Knots wallet, then you
     can manually do that from the bitcoin data directory.
 $orange
 ########################################################################################
@@ -29,13 +29,7 @@ done
 set_terminal
 please_wait
 
-if ! docker ps >$dn 2>&1 ; then
-    announce "Docker needs to be running. Aborting."
-    return 1
-fi
-
 stop_joinmarket
-docker rm joinmarket >$dn 2>&1
 
 sudo rm -rf $hp/joinmarket >$dn 2>&1
 
@@ -47,10 +41,6 @@ sudo mkdir $HOME/.joinmarket2 \
 else
 sudo rm -rf $HOME/.joinmarket
 fi
-
-sudo gsed -i '/joinmarket-service/d' $macprefix/etc/tor/torrc >$dn 2>&1
-sudo gsed -i '/127.0.0.1:5222/d' $macprefix/etc/tor/torrc >$dn 2>&1
-sudo rm -rf /var/lib/tor/joinmarket-service >$dn 2>&1
 
 sudo gsed -i "/jm_be_carefull/d" $hm
 sudo gsed -i "/jm_menu_shhh/d" $hm

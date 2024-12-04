@@ -51,7 +51,7 @@ l|load)
 ;;
 sum)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee $tmp/jmaddresses
+    /jm/clientserver/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
     enter_continue
     ;;
 da)
@@ -64,7 +64,7 @@ di)
     ;;
 su)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet showutxos 
     enter_continue
     ;;
 h|hist)
@@ -72,7 +72,7 @@ h|hist)
     ;;
 cp)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet changepass 
     ;;
 bk)
     backup_jm_wallet
@@ -83,7 +83,7 @@ delete)
     ;; 
 ss)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
+    /jm/clientserver/scripts/wallet-tool.py $wallet showseed
     enter_continue
     ;;
 *)

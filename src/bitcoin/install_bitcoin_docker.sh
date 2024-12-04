@@ -112,10 +112,6 @@ if [[ $2 == parmabox ]] ; then
 thedir="/home/parman"
 dockername=parmabox
 username=parman
-elif [[ $2 == joinmarket ]] ; then
-thedir="/root"
-dockername=joinmarket
-username=root
 fi
 
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
