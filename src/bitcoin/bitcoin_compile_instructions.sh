@@ -4,28 +4,28 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                       How to compile Bitcoin from scratch
+                       Como compilar Bitcoin a partir do zero
 $orange
 ########################################################################################
     
-    So you want to do this. Very cool. I'll show you how. Open a separate terminal
-    and follow these steps sequentially. Choose the items you want to read more...
+    Então queres fazer isto. Muito fixe. Vou mostrar-vos como. Abra um terminal separado 
+    e siga estes passos sequencialmente. Selecione os itens que pretende ler mais...
 
     STEPS:
 
-$green                   1)$orange        Update your system
-$green                   2)$orange        Install all the necessary dependencies
-$green                   3)$orange        Git clone Bitcoin repository and checkout
-$green                   4)$orange        Apply the ordinals patch if you want that
-$green                   5)$orange        Run autogen
-$green                   6)$orange        Run configure with desired options
-$green                   7)$orange        Run the make command
-$green                   8)$orange        Run make check
-$green                   9)$orange        Run make install
+$green                   1)$orange        Atualizar o seu sistema
+$green                   2)$orange        Instalar todas as dependências necessárias
+$green                   3)$orange        Clonar o repositório Bitcoin no Git e fazer checkout
+$green                   4)$orange        Aplicar a correção dos ordinais se assim o desejar
+$green                   5)$orange        Executar autogen
+$green                   6)$orange        Executar configure com as opções pretendidas
+$green                   7)$orange        Executar o comando make
+$green                   8)$orange        Executar verificação de fabrico
+$green                   9)$orange        Executar make install
 
 $cyan
-    Once you have finished, hit$green <enter>$cyan to exit the installation. You can
-    then start over and choose to import the binary files you have made.
+    Quando tiver terminado, carregue em$green <enter>$cyan para sair da instalação. 
+    Pode então começar de novo e escolher importar os ficheiros binários que criou.
 $orange
 
 ########################################################################################
@@ -41,7 +41,7 @@ set_terminal ;
 echo -e "
 ########################################################################################
 $cyan
-                            UPDATE YOUR SYSTEM
+                            ACTUALIZAR O SEU SISTEMA
 $orange                            
     Run these commands to update your system. It's a good idea to do it regularly
     anyway...
@@ -50,8 +50,8 @@ $green
 
         sudo apt-get upgrade
 $orange
-    Sometimes in the output, you might see a recommendation to run this command, 
-    which you can do if you want ...
+    Por vezes, na saída, pode ver uma recomendação para executar este comando, 
+    o que pode fazer se quiser ...
 $green
         sudo apt-get --fix-broken install 
 $orange
@@ -64,14 +64,14 @@ set_terminal
 set_terminal_wide ; echo -e "
 ##############################################################################################################
 $cyan
-                                         INSTALL DEPENDENCIES
+                                         INSTALAR DEPENDÊNCIAS
 $orange
-    Dependencies are programs or libraries (files with code) that are required for a given program to 
-    work. To compile bitcoin, you'll need a few things.
+    As dependências são programas ou bibliotecas (ficheiros com código) que são necessários para que um 
+    determinado programa funcione. Para compilar o bitcoin, você precisará de algumas coisas.
 
-    Here are the command to install it all. I have split up the installation of dependencies to multiple 
-    commands for readability, but it can be done all in one go. Pay attention to any errors (The '-y'
-    option will automatically answer yes to the expected confirmation question).
+    Aqui estão os comandos para instalar tudo. Dividi a instalação das dependências em vários comandos 
+    para facilitar a leitura, mas pode ser feito tudo de uma só vez. Preste atenção a quaisquer erros 
+    (A opção '-y' responderá automaticamente sim à pergunta de confirmação esperada).
 $green
     sudo apt-get install make automake cmake curl libtool binutils bsdmainutils g++-multilib -y
 
@@ -91,22 +91,22 @@ enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                         CLONE THE BITCOIN REPOSITORY
+                         CLONAR O REPOSITÓRIO BITCOIN
 $orange                    
-    You need git installed on your system to do this. If you've installed Parmanode
-    the usual way, then you have this already.
+    Para isso, é necessário ter o git instalado no seu sistema. 
+    Se instalou o Parmanode da forma habitual, então já tem isto instalado.
 
-    Make a temporary directory somewhere, and navigate into it using Terminal. If 
-    you don't understand that, stop, and learn some basic Linux before attempting to
-    compile programs; it's too advanced and you won't have a good time.
+    Crie um diretório temporário em algum lugar e navegue até ele usando o Terminal. 
+    Se não entende isso, pare e aprenda um pouco de Linux básico antes de tentar 
+    compilar programas; é muito avançado e você não vai se divertir.
 
-    From the temporary directory, clone Bitcoin...
+    A partir do diretório temporário, clonar Bitcoin...
 $green
         git clone https://github.com/bitcoin/bitcoin.git
 $orange
-    Then navigate into the new bitcoin directory you cloned (${green}cd bitcoin$orange).
+    Em seguida, navegue para o novo diretório bitcoin que clonou (${green}cd bitcoin$orange).
 
-    Next, checkout to the version/branch you want. For version 26...
+    De seguida, faça o checkout para a versão/ramo que pretende. Para a versão 26...
 $green
        git checkout v26.0 
 $orange    
@@ -118,23 +118,23 @@ enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                  ORDINALS PATCH
+                                  PATCHES DE ORDENAMENTO
 $orange
-    The ordinals patch is a filter created by Bitcoin Core developer, Luke Dashjr,
-    in response to spam from ordinals and inscriptions. Read about it here:
+    O patch ordinals é um filtro criado pelo desenvolvedor do Bitcoin Core, Luke Dashjr, 
+    em resposta ao spam de ordinals e inscriptions. Leia sobre ele aqui:
 $magenta
     https://bitcoinnews.com/adoption/bitoin-developer-proposes-patch-bitcoin-ordinals/
 $orange
-    It is important to note that this is not a fork of Bitcoin; it simply allows node
-    runners to opt out of receiving and propagating new transactions to and from
-    other nodes. It does not stop these transactions from being mine. Once they are
-    in a valid block, all compliant Bitcoin nodes (even with a patch) will accept the
-    block as valid.
+    É importante notar que isto não é uma bifurcação do Bitcoin; simplesmente permite que 
+    os executores de nós optem por não receber e propagar novas transacções de e para outros 
+    nós. Isso não impede que essas transações sejam mineradas. Uma vez que elas estejam num 
+    bloco válido, todos os nós Bitcoin compatíveis (mesmo com um patch) aceitarão o bloco 
+    como válido.
 
-    This patch does NOT stop ordinals. It is purely an INDIVIDUAL choice, not some
-    censoring of transactions. Censorship is a whole different discussion.
+    Esta correção NÃO impede os ordinais. Trata-se puramente de uma escolha INDIVIDUAL e não 
+    de uma censura das transacções. A censura é uma discussão totalmente diferente.
 
-    To enable the ordinals patch...
+    Para ativar o patch dos ordinais...
 
 ########################################################################################
 "
@@ -142,27 +142,26 @@ enter_continue ; jump $enter_cont
 set_terminal_high ; echo -e "
 ########################################################################################
 
-    First create a new brand FROM the desired version of Bitcoin in your local Bitcoin 
-    git repository.
+    Primeiro, crie uma nova marca FROM a versão desejada do Bitcoin no seu repositório git 
+    local do Bitcoin.
 $green
         git checkout -b patch
 $orange    
-    This will create a branch called 'patch' copied from the branch you were in and
-    at the same time checkout to that branch.
+    Isto irá criar um ramo chamado 'patch' copiado do ramo em que estava e, ao mesmo tempo, 
+    efetuar o checkout para esse ramo.
 
-    Then, download the patch. The following command is all on one line.
+    Em seguida, descarregue o patch. O comando seguinte está todo numa só linha.
 $magenta
         curl -LO https://gist.githubusercontent.com/luke-jr/4c022839584020444915c84bdd825831/raw/555c8a1e1e0143571ad4ff394221573ee37d9a56/ filter-ordinals.patch 
 $orange
-    Then, apply the patch...
+    Depois, aplique a correção...
 $green  
         git apply filter-ordinals.patch
-        git add .  $orange #The '.' is necessary and part of the command.$green
+        git add .  $orange #O "." é necessário e faz parte do comando.$green
         git commit -m "patch"
 $orange
-    If you get errors from github about usernames and emails, then enter these
-    temporary variables as commands. They'll go into the session memory, then try 
-    again.
+    Se receber erros do github sobre nomes de utilizador e e-mails, introduza estas variáveis 
+    temporárias como comandos. Elas irão para a memória da sessão, então tente novamente.
 $green
         export GIT_AUTHOR_NAME="Temporary Parmanode"
         export GIT_AUTHOR_EMAIL="parman@parmanode.parman"
@@ -179,11 +178,11 @@ set_terminal ; echo -e "
 $cyan
                                     AUTOGEN
 $orange
-    Run this command from the bitcoin directory...
+    Execute este comando a partir do diretório bitcoin...
 $green
         ./autogen.sh        
 $orange
-    Pay attention to an errors on the screen, you may have to deal with them.
+   Preste atenção aos erros que aparecem no ecrã, pois poderá ter de os resolver.
 
 ########################################################################################
 "
@@ -195,15 +194,15 @@ set_terminal ; echo -e "
 $cyan
                                    CONFIGURE
 $orange
-    Run the configure command with an options you wish.
+    Execute o comando configure com as opções que desejar.
 $green
         ./configure --with-gui=no
 $orange        
-    To see a list of the configuration options, do this command first and have a read:
+    Para ver uma lista das opções de configuração, execute primeiro este comando e leia-o:
 $green
         ./configure --help
 $orange
-    Again, you need to pay attention to errors.
+    Mais uma vez, é necessário prestar atenção aos erros.
 
 ########################################################################################
 "
@@ -216,14 +215,14 @@ set_terminal ; echo -e "
 $cyan
                                       MAKE                                
 $orange                                    
-    Make is the program that will compile the software. But before you use it, check
-    how many cores your CPU has.
+    O Make é o programa que irá compilar o software. Mas antes de o usar, verifique
+quantos núcleos tem a sua CPU.
 $green
         nproc
 $orange
-    You'll get a number in the output. A Pi4 typically has 4 cores. Use that number
-    in the make command, which tells it how many cores to use. One core will be slow,
-    adding more cores to the compile process will speed things up. Eg...
+    Obterá um número na saída. Um Pi4 tem tipicamente 4 núcleos. Usa esse número no comando 
+    make, que diz quantos núcleos usar. Um núcleo será lento, adicionar mais núcleos ao 
+    processo de compilação irá acelerar as coisas. Por exemplo...
 $green
         make -j 4
 $orange
@@ -237,17 +236,17 @@ enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                   MAKE CHECK
+                                     VERIFICAR O MAKE
 $orange
-    This command will perform some tests as written by the Bitcoin developers. Note 
-    that if you are applying the ordinals filter patch, some transaction tests will
-    fail, as the patch does not modify the standard tests in anyway.
+    Este comando irá executar alguns testes como escritos pelos desenvolvedores do Bitcoin. 
+    Note que se você estiver aplicando o patch do filtro ordinals, alguns testes de transação 
+    irão falhar, já que o patch não modifica os testes padrão de qualquer forma.
 $green
         sudo make -j 4 check
 $orange
-    Remember to make sure your nubmer in the above command matches your nproc output.
+    Lembra-te de te certificares que o teu nubmer no comando acima corresponde ao teu output nproc.
     
-    Pay attention for errors.
+    Presta atenção aos erros.
 
 ########################################################################################
 "
@@ -257,21 +256,20 @@ enter_continue ; jump $enter_cont
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                  MAKE INSTALL
+                                  INSTALAR O MAKE
 $orange
-    This command will move the selected newly created binaries to the target
-    directories.
+    Este comando irá mover os binários recém-criados selecionados para os diretórios 
+    de destino.
 $green
         sudo make install
 $orange
-    The target directory is$bright_blue /usr/local/bin/ $orange
+    O diretório de destino é$bright_blue /usr/local/bin/ $orange
     
-    Once done, check that the files have been moved...
+    Uma vez concluído, verifique se os ficheiros foram movidos...
 $green    
         which bitcoind bitcoin-cli
 $orange
-    If you get no ouput, bad new. Something went wrong. If you get /usr/local/bin
-    for both files, great success!
+    Se não tiveres saída, é mau sinal. Algo correu mal. Se obtiver /usr/local/bin para ambos os ficheiros, grande sucesso!
 
 ########################################################################################
 "
