@@ -25,6 +25,10 @@ ProtectSystem=full
 NoNewPrivileges=true
 MemoryDenyWriteExecute=true
 
+# Logging
+StandardOutput=append:/home/$USER/.electrs/run_electrs.log
+StandardError=append:/home/$USER/.electrs/run_electrs.log
+
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/electrs.service >$dn 2>&1
 
