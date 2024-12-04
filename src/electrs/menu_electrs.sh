@@ -233,7 +233,7 @@ yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
-NODAEMON="true" ; pn_tmux "sudo -f $logfile" ; unset NODAEMON
+NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 else
 NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 fi
