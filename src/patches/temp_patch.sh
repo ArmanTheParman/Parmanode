@@ -39,7 +39,7 @@ fi
 
 if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep -q "StandardOutput" /etc/systemd/system/electrs.service ; then
 please_wait
-echo -e "${green}One time patch, adjusting electrs service file\n$orange"
+echo -e "${green}Once off, adjusting electrs service file real quick\n$orange"
 sudo gsed -i '/\[Install\]/i\
 # Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service  >$dn 2>&1
 sudo systemctl daemon-reload >$dn 2>&1
