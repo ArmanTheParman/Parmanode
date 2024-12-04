@@ -330,5 +330,10 @@ elif [[ $bsync == "false" ]] ; then
     if [[ -z $electrs_sync ]] ; then
         export electrs_sync="Wait...$orange"
     fi
+
+    if grep "Wait" <<< $electrs_sync && tail -n1 $logfile | grep -oE "indexing" ; then
+    export electrs_sync="indexing:$(tail -n1 $logfile | grep -oE "indexing.*$" |  cut -d : -f2)"
+    fi
+
 fi
 }
