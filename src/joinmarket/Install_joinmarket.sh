@@ -165,7 +165,8 @@ mac_text="$red $blinkon
 $blinkoff $orange
     Sometimes during this installation, Parmanode will require your regular system 
     password, and sometimes it will require the password for the parman user inside 
-    the ParmaBox container - this password is set to '${cyan}parmanode$orange' as the default. "
+    the ParmaBox container - this password is set to '${cyan}parmanode$orange' as the default. 
+    "
 fi
 
 set_terminal ; echo -ne "
@@ -174,9 +175,7 @@ set_terminal ; echo -ne "
     You are about to install$cyan ParmaJoin$orange, which is software that manages
     the JoinMarket protocol - a decentralized marketplace for Bitcoin users 
     to coordinate CoinJoin transactions. 
-    
     $mac_text
-
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
