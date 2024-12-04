@@ -82,7 +82,7 @@ function make_joinmarket_wallet {
     isbitcoinrunning
 
     if [[ $bitcoinrunning == "false" ]] ; then
-        announce "Bitcoin needs to be running. Please start it. Aborting."
+        announce "Bitcoin needs to be running. Please start it."
         start_bitcoin
     else
         if [[ $dontrestart == "false" ]] ; then announce "Parmanode needs to restart Bitcoin." ; restart_bitcoin  ; fi
@@ -105,25 +105,30 @@ debug "0"
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
 debug "1"
     while true ; do
+        #Loop to make sure bitcoin registers rpc call; if the wallet exists, it will break successfully
+        
         if [[ $OS == "Mac" ]] ; then
             bcdocker="/home/parman/.bitcoin/bitcoin.conf"
             rpcconnect="rpcconnect=host.docker.internal"
             docker exec -u root parmabox /bin/bash -c "grep -q $rpcconnect $bcdocker || echo "$rpcconnect" | tee -a $bcdocker >$dn"
             docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
-            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false' && \
-                                               enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            docker exec parmabox /bin/bash -c 'bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists"' >$dn 2>&1 && break
+            return 1
+
         elif [[ $OS == "Linux" ]] ; then 
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
-            bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && \
-                                               enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
+            bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
+            bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false 2>&1 | grep -q "exists" && break
+            return 1
         fi
 debug "2"
         echo -e "$red
         sometimes waiting for bitcoin to laod up is needed.
-        Trying again every 10 seconds...$orange
+        Trying again every 5 seconds...$orange
         (q to quit)
         "
-        read -sn1 -t 10 input #-s silent printing, -n1 one character, -t timeout
+        read -sn1 -t 5 input #-s silent printing, -n1 one character, -t timeout
 
         if [[ $input == 'q' ]] ; then return 1 
         elif [[ -z $input ]] ; then continue 
