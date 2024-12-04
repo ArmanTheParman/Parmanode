@@ -37,7 +37,7 @@ if grep -q "electrsdkr" $ic ; then
     fi
 fi
 
-if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
+if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep -q "StandardOutput" /etc/systemd/system/electrs.service ; then
 please_wait
 echo -e "${green}One time patch, adjusting electrs service file\n$orange"
 sudo gsed -i '/\[Install\]/i\
