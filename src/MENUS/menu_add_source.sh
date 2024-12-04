@@ -37,7 +37,7 @@ elif grep -q "fulcrum-start" $HOME/.parmanode/installed.conf ; then
 fulcrum_p="#                                      Fulcrum                                         #"
 else
    #not installed
-fulcrum_n="#$cyan                            (f)$orange           Fulcrum (an Electrum Server)                #"
+fulcrum_n="#$cyan                            (f)$orange           Fulcrum (um servidor Electrum)                #"
 fi
 #FULCRUMDKR
 unset fulcrumdkr_i fulcrumdkr_p fulcrumdkr_n
@@ -49,7 +49,7 @@ elif grep -q "fulcrumdkr-start" $HOME/.parmanode/installed.conf ; then
 fulcrumdkr_p="#                                      Fulcrum (Docker)                                #"
 else
    #not installed
-fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (an Electrum Server in Docker)      #"
+fulcrumdkr_n="#$cyan                            (fd)$orange          Fulcrum (um servidor Electrum em Docker)      #"
 fi
 
 #BTCPAY
@@ -69,13 +69,13 @@ fi
 unset sparrow_i sparrow_p sparrow_n
 if grep -q "sparrow-end" $HOME/.parmanode/installed.conf ; then  
    #installed
-sparrow_i="#                                      Sparrow Wallet                                  #"
+sparrow_i="#                                      Carteira Sparrow                                  #"
 elif grep -q "sparrow-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-sparrow_p="#                                      Sparrow Wallet                                  #"
+sparrow_p="#                                      Carteira Sparrow                                  #"
 else
    #not installed
-sparrow_n="#$cyan                            (s)$orange           Sparrow Wallet                              #"
+sparrow_n="#$cyan                            (s)$orange           Carteira Sparrow                              #"
 fi
 
 #Electrs
@@ -120,13 +120,13 @@ fi
 unset rtl_i rtl_p rtl_n
 if grep -q "rtl-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-rtl_i="#                                      RTL Wallet                                      #"
+rtl_i="#                                      Carteira RTL                                      #"
 elif grep -q "rtl-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-rtl_p="#                                      RTL Wallet                                      #"
+rtl_p="#                                      Carteira RTL                                      #"
 else
    #not installed
-rtl_n="#$cyan                            (r) $orange          RTL Wallet                                  #"
+rtl_n="#$cyan                            (r) $orange          Carteira RTL                                  #"
 fi
 
 #Electrum
@@ -160,26 +160,26 @@ fi
 unset specter_i specter_p specter_n
 if grep -q "specter-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-specter_i="#                                      Specter Wallet                                  #"
+specter_i="#                                      Carteira Specter                                  #"
 elif grep -q "specter-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-specter_p="#                                      Specter Wallet                                  #"
+specter_p="#                                      Carteira Specter                                  #"
 else
    #not installed
-specter_n="#$cyan                            (specter) $orange    Specter Wallet                              #"
+specter_n="#$cyan                            (specter) $orange    Carteira Specter                              #"
 fi
 
 #Tor Server
 unset torserver_i torserver_p torserver_n
 if grep -q "tor-server-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-torserver_i="#                                      Tor Web Server                                  #"
+torserver_i="#                                      Servidor Web Tor                                  #"
 elif grep -q "tor-server-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-torserver_p="#                                      Tor Web Server                                  #"
+torserver_p="#                                      Servidor Web Tor                                  #"
 else
    #not installed
-torserver_n="#$cyan                            (tws)      $orange   Tor Web Server (Darknet Server)             #"
+torserver_n="#$cyan                            (tws)      $orange   Servidor Web Tor (Servidor Darknet)             #"
 fi
 
 #BTC RPC Explorer (not Docker)
@@ -392,13 +392,13 @@ if [[ $computer_type == LinuxPC || $OS == Mac ]] ; then
 unset torb_n torb_i torb_p 
 if grep -q "torb-end" $HOME/.parmanode/installed.conf ; then 
    #installed
-torb_i="#                                      Tor Browser                                     #"
+torb_i="#                                      Navegador Tor                                    #"
 elif grep -q "torb-start" $HOME/.parmanode/installed.conf ; then
    #partially installed
-torb_p="#                                      Tor Browser                                     #"
+torb_p="#                                      Navegador Tor                                     #"
 else
    #not installed
-torb_n="#$cyan                            (torb)   $orange     Tor Browser                                 #"
+torb_n="#$cyan                            (torb)   $orange     Navegador Tor                                 #"
 fi
 fi #end computer type/OS
 
@@ -434,13 +434,13 @@ fi
 unset torssh_i torssh_p torssh_n 
 if grep -q "torssh-end" $HOME/.parmanode/installed.conf ; then 
    #installed
-torssh_i="#                                      Tor SSH Server                                  #"
+torssh_i="#                                      Servidor SSH Tor                                  #"
 elif grep -q "torssh-start" $HOME/.parmanode/installed.conf ; then
    #partially installed
-torssh_p="#                                      Tor SSH Server                                  #"
+torssh_p="#                                      Servidor SSH Tor                                  #"
 else
    #not installed
-torssh_n="#$cyan                            (tssh)    $orange    Tor SSH Server                              #"
+torssh_n="#$cyan                            (tssh)    $orange    Servidor SSH Tor                              #"
 fi
 
 #public_pool
@@ -486,13 +486,13 @@ fi
 unset website_i website_p website_n
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then 
    #installed
-website_i="#                                      WordPress Website (ParmaWeb)                    #"
+website_i="#                                      Website WordPress (ParmaWeb)                    #"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then
    #partially installed
-website_p="#                                      WordPress Website (ParmaWeb)                    #"
+website_p="#                                      Website WordPress (ParmaWeb)                    #"
 else
    #not installed
-website_n="#$cyan                            (ws)        $orange  Wordpress Website (ParmaWeb)                #"
+website_n="#$cyan                            (ws)        $orange  Website Wordpress (ParmaWeb)                #"
 fi
 
 #lnddocker
@@ -604,13 +604,13 @@ fi
 unset green_i green_p green_n
 if grep -q "green-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-green_i="#                                      Green Wallet                                    #"
+green_i="#                                      Carteira Green                                    #"
 elif grep -q "green-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-green_p="#                                      Green Wallet                                    #"
+green_p="#                                      Carteira Green                                    #"
 else
    #not installed
-green_n="#$cyan                            (gr)    $orange      Green Wallet                                #"
+green_n="#$cyan                            (gr)    $orange      Carteira Green                                #"
 fi
 
 #x11
