@@ -144,9 +144,13 @@ function run_wallet_tool_joinmarket {
     echo -e "${green}Running Joinmarket wallet tool...${orange}"
 
     if [[ $1 == "install" ]] ; then
+        jmvenv "activate"
         $hp/joinmarket/scripts/wallet-tool.py >$dn 2>&1
+        jmvenv "deactivate"
     else
+        jmvenv "activate"
         $hp/joinmarket/scripts/wallet-tool.py #do not exit on failure.
+        jmvenv "deactivate"
     fi
 
     return 0

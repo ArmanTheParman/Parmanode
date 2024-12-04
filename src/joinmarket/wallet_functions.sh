@@ -83,7 +83,7 @@ enter_continue
 #clear before and after files
 > $dp/before ; > $dp/after
 
-jmvenve "deactivate"
+jmvenv "deactivate"
 return 0
 }
 

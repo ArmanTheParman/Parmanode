@@ -45,67 +45,67 @@ m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 cr)
     jmvenv "activate"
     jm_create_wallet_tool
-    jmvenve "deactivate"
+    jmvenv "deactivate"
 ;;
 l|load)
     set_terminal
     jmvenv "activate"
     choose_wallet || continue
-    jmvenve "deactivate"
+    jmvenv "deactivate"
 ;;
 sum)
     check_wallet_loaded || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     enter_continue
     ;;
 da)
     check_wallet_loaded || continue
     jmvenv "activate"
     display_jm_addresses
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;; 
 di)
     check_wallet_loaded || continue
     jmvenv "activate"
     display_jm_addresses a
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;;
 su)
     check_wallet_loaded || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet showutxos 
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     enter_continue
     ;;
 h|hist)
     jmvenv "activate"
     wallet_history_jm
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;;
 cp)
     check_wallet_loaded || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet changepass 
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;;
 bk)
     jmvenv "activate"
     backup_jm_wallet
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;;
 
 delete)
     jmvenv "activate"
     delete_jm_wallets
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     ;; 
 ss)
     check_wallet_loaded || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet showseed
-    jmvenve "deactivate"
+    jmvenv "deactivate"
     enter_continue
     ;;
 *)

@@ -36,12 +36,18 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 1)
 set_terminal ; echo "please enter the password for your wallet" ; read -s password
-echo "$password" |  /jm/clientserver/scripts/yield-generator-basic.py $HOME/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_basic.log >$dn &
+jmvenv "activate"
+echo "$password" |  $hp/joinmarket/scripts/yield-generator-basic.py $HOME/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_basic.log >$dn &
+sleep 1
+jmvenv "deactivate"
 break
 ;;
 2)
 set_terminal ; echo "please enter the password for your wallet" ; read -s password
-echo "$password" | /jm/clientserver/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log >$dn &
+jmvenv "activate"
+echo "$password" | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee -a $HOME/.joinmarket/yg_privacy.log >$dn &
+sleep 1
+jmvenv "deactivate"
 break
 ;;
 *)
