@@ -87,7 +87,7 @@ function make_joinmarket_wallet {
     else
         if [[ $dontrestart == "false" ]] ; then announce "Parmanode needs to restart Bitcoin." ; restart_bitcoin  ; fi
     fi
-
+debug "0"
     if [[ $bitcoinrunning != "true" ]] ; then
         echo -e "${red}Waiting for bitcoin to start... (hit q to exit loop)$orange
         "
@@ -103,7 +103,7 @@ function make_joinmarket_wallet {
 
     set_terminal
     echo -e "${green}Creating joinmarket wallet with Bitcoin Core/Knots...${orange}"
-
+debug "1"
     while true ; do
         if [[ $OS == "Mac" ]] ; then
             bcdocker="/home/parman/.bitcoin/bitcoin.conf"
@@ -117,6 +117,7 @@ function make_joinmarket_wallet {
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false && \
                                                enter_continue "Something seems to have gone wrong." && silentexit="true" ; return 1 #enter_continue catches any error
         fi
+debug "2"
         echo -e "$red
         sometimes waiting for bitcoin to laod up is needed.
         Trying again every 10 seconds...$orange
