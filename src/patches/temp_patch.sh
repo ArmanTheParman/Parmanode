@@ -37,7 +37,7 @@ if grep -q "electrsdkr" $ic ; then
     fi
 fi
 
-if [[ $OS == "Linux" ]] && grep -q "electrs" && ! grep -q "dkr" && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
+if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
 debug "1"
 please_wait
 TMUX2=$TMUX ; unset TMUX ; clear
