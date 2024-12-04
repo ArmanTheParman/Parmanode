@@ -14,32 +14,33 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-    THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
+    EXISTEM VÁRIAS MANEIRAS DE INSTALAR O BITCOIN COM O PARMANODE. POR FAVOR ESCOLHA...
 $orange
 ########################################################################################
 $green
-       0)  v$version - Download and verify 'trusted' releases
+       0)  v$version - Descarregar e verificar versões 'confiáveis'
 $red
-       1)  Custom version (you choose) - Download and verify 'trusted' releases
+       1)  Versão personalizada (à sua escolha) - Descarregar e verificar versões ´confiáveis'
 
-       2)  Guided compile custom version (you choose) 
+       2)  Compilação guiada versão personalizada (à escolha)
 $green
-       3)  Guided compile v$version
+       3)  Compilação guiada v$version
 $bright_blue
-       4)  Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
+       4)  Compilação guiadav$version (correção FILTER-ORDINALS, por Luke Dashjr)
 
-       5)  Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin Core) - 
-           syncs faster; bug fixes missing in Core; and power user options / tools.
+       5) Compilação guiada$yellow Bitcoin Knots$bright_blue ( versão de Luke Dashjr do Bitcoin Core) - 
+           sincroniza mais rapidamente; correcções de erros em falta no Core; e 
+           opções/ferramentas para utilizadores avançados.
 $red
-       6)  Guided compile of most recent Github update, i.e. pre-release
-           (for testing only)
+       6)  Compilação guiada da atualização mais recente do Github, ou seja, 
+           pré-lançamento (apenas para ensaios)
 $orange
- INFO  7)  Read how to compile yourself, and import the installation to Parmanode. 
-           You can come back to this menu after selecting this. 
+ INFO  7)  Leia como compilar você mesmo, e importar a instalação para a Parmanode.
+           Pode voltar a este menu depois de o ter selecionado.
 
-       8)  IMPORT binaries you have compiled yourself (or previously downloaded without
-           the help of the Parmanode install process). 'Binaries' refers to the 
-           executable files, eg bitcoind and bitcoin-qt, not the blockchain.
+       8)  IMPORTAR binários que você mesmo compilou (ou baixou anteriormente sem a 
+           ajuda do processo de instalação da Parmanode). 'Binários' refere-se aos 
+           ficheiros executáveis, por exemplo bitcoind e bitcoin-qt, não à blockchain.
 $orange
 ########################################################################################   
 "
@@ -82,7 +83,8 @@ return 0
 8)
 set_terminal ; echo -e "
 ########################################################################################
-  Make sure the Bitcoin binary files have been placed in the /usr/local/bin/ directory
+  Certifique-se de que os ficheiros binários Bitcoin foram colocados no diretório 
+  /usr/local/bin/
 ########################################################################################
 "
 enter_continue  ; jump $enter_cont
@@ -92,7 +94,8 @@ if ! which bitcoind >$dn ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode could not detect bitcoind in$cyan /usr/local/bin$orange. Aborting.
+    Parmanode não conseguiu detetar bitcoind em$cyan /usr/local/bin$orange. 
+    Abortando.
 
 ########################################################################################
 "
@@ -121,12 +124,13 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
     
-    Please type in a version number
+    Introduza um número de versão
 
     Eg. ${cyan}25.0$orange
 
-    Please note, the Parmanode automatic compile script won't work with every version,
-    especially early versions. Won't hurt to try. I might work on this in the future.
+    Por favor, note que o script de compilação automática da Parmanode não funciona com 
+    todas as versões, especialmente as primeiras. Não custa nada tentar. 
+    Talvez venha a trabalhar nisto no futuro.
 
 ########################################################################################
 "
@@ -142,11 +146,11 @@ choice=$(echo $choice | gsed 's/^v//')
     yesorno "What you entered seems to not be valid. Proceed anyway?" || continue
     fi
     if echo $choice | grep -Eq "^0\.1.*" ; then
-    announce "This won't work, versions below 0.2.0 compiled on Windows."
+    announce "Isto não funciona com versões inferiores a 0.2.0 compiladas no Windows."
     continue
     fi
     if echo $choice | grep -Eq "^0\.(1|2)$" ; then
-    announce "Version number not in the right format."
+    announce "O número da versão não está no formato correto."
     continue
     fi
 
