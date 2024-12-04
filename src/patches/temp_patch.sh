@@ -38,6 +38,7 @@ if grep -q "electrsdkr" $ic ; then
 fi
 
 if [[ $OS == "Linux" ]] && grep -q "electrs" && ! grep -q "dkr" && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
+debug "1"
 please_wait
 TMUX2=$TMUX ; unset TMUX ; clear
 tmux new -s patch_electrs_service -d "
@@ -50,6 +51,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart electrs 
 " >$dn 2>&1
 TMUX=$TMUX2
+debug "2"
 fi
 
 #remove in 2025
