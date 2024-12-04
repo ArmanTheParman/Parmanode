@@ -8,7 +8,7 @@ After=bitcoind.service
 
 [Service]
 WorkingDirectory=/home/$USER/parmanode/electrs
-ExecStart=/home/$USER/parmanode/electrs/target/release/electrs --conf /home/$USER/.electrs/config.toml
+ExecStart=/home/$USER/parmanode/electrs/target/release/electrs --conf /home/$USER/.electrs/config.toml 
 User=$USER
 Group=$(id -ng)
 Type=simple

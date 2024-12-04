@@ -14,7 +14,8 @@ set_terminal
 
 #is electrs running variable
 unset running runningd
-if [[ $electrsis == nondocker ]] ; then
+iselectrsrunning
+if [[ $electrsis == "nondocker" ]] ; then
     if ps -x | grep electrs | grep conf >$dn 2>&1  && ! tail -n 10 $logfile 2>$dn | grep -q "electrs failed"  ; then 
     running="true"
     else
@@ -35,7 +36,7 @@ if [[ $running == "true" && $1 != fast ]] ; then menu_electrs_status # get elecy
 fi
 
 #Tor status
-if  [[ -e $macprefix/etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] \
+if  [[ -e $macprefix/etc/tor/torrc && $electrsis == "nondocker" && $1 != fast ]] \
     && sudo grep -q "electrs" $macprefix/etc/tor/torrc \
     && grep -q "electrs_tor=true" $pc \
     && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
@@ -65,7 +66,6 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
-debug "pause"
 set_terminal_custom 50
 
 echo -e "
@@ -73,7 +73,7 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if [[ $electrsis == nondocker && $running == "true" ]] ; then
+if [[ $electrsis == "nondocker" && $running == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -91,7 +91,7 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == nondocker && $running == "false" ]] ; then
+elif [[ $electrsis == "nondocker" && $running == "false" ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
@@ -142,7 +142,7 @@ $cyan
 $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
-if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "$cyan
+if [[ $OS == Linux && $electrsis == "nondocker" ]] ; then echo -e "$cyan
       (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 $cyan      
       (newtor)$orange   Refresh Tor address
