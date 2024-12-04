@@ -1,7 +1,7 @@
 function jmvenv {
 
 if [[ $1 == "activate" ]] ; then
-$hp/joinmarket/jmvenv/bin/activate
+source $hp/joinmarket/jmvenv/bin/activate
 return 0
 fi
 
