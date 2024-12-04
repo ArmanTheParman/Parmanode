@@ -52,7 +52,7 @@ new)
 export newmigrate="true"
 export justFormat="true"
 export drive=external && parmanode_conf_add "drive=external"
-format_ext_drive
+format_ext_drive Bitcoin
 stop_bitcoin
 prune_choice || return 1 
 make_bitcoin_directories
