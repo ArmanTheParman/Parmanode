@@ -233,7 +233,7 @@ yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
-NODAEMON="true" ; pn_tmux "sudo journalctl -fexu electrs.service" ; unset NODAEMON
+NODAEMON="true" ; pn_tmux "sudo -f $logfile"; unset NODAEMON
 else
 NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 fi
@@ -331,7 +331,7 @@ elif [[ $bsync == "false" ]] ; then
         export electrs_sync="Wait...$orange"
     fi
 
-    if grep "Wait" <<< $electrs_sync && tail -n1 $logfile | grep -oE "indexing" ; then
+    if grep "Wait" <<< $electrs_sync && tail -n1 $logfile | grep -q "indexing" ; then
     export electrs_sync="indexing:$(tail -n1 $logfile | grep -oE "indexing.*$" |  cut -d : -f2)"
     fi
 
