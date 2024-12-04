@@ -83,7 +83,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 # these end in a closing bracket, have some code, and end with a ;;
 # once there is a match, the case block is exited (after the esac point below). Then
 # it repeats because case is inside a while loop.
-
+m|M) continue ;;
 q|Q) exit ;;
 ns) navigation_shortcuts ;;
 aa)
