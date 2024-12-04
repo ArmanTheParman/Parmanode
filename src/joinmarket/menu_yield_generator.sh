@@ -92,12 +92,10 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
 start)
-jmvenv "activate"
 start_yield_generator
 ;;
 
 stop)
-jmvenv "activate"
 stop_yield_generator
 ;;
 
@@ -115,9 +113,7 @@ flog)
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
 ;;
 c)
-    jmvenv "activate"
     configure_yg 
-    jmvenv "deactivate"
 ;;
 del)
     delete_lockfile

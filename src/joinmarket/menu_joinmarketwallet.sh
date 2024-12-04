@@ -43,15 +43,11 @@ case $choice in
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;; 
 
 cr)
-    jmvenv "activate"
     jm_create_wallet_tool
-    jmvenv "deactivate"
 ;;
 l|load)
     set_terminal
-    jmvenv "activate"
     choose_wallet || continue
-    jmvenv "deactivate"
 ;;
 sum)
     check_wallet_loaded || continue
@@ -62,15 +58,11 @@ sum)
     ;;
 da)
     check_wallet_loaded || continue
-    jmvenv "activate"
     display_jm_addresses
-    jmvenv "deactivate"
     ;; 
 di)
     check_wallet_loaded || continue
-    jmvenv "activate"
     display_jm_addresses a
-    jmvenv "deactivate"
     ;;
 su)
     check_wallet_loaded || continue
@@ -80,9 +72,7 @@ su)
     enter_continue
     ;;
 h|hist)
-    jmvenv "activate"
     wallet_history_jm
-    jmvenv "deactivate"
     ;;
 cp)
     check_wallet_loaded || continue
@@ -91,15 +81,11 @@ cp)
     jmvenv "deactivate"
     ;;
 bk)
-    jmvenv "activate"
     backup_jm_wallet
-    jmvenv "deactivate"
     ;;
 
 delete)
-    jmvenv "activate"
     delete_jm_wallets
-    jmvenv "deactivate"
     ;; 
 ss)
     check_wallet_loaded || continue

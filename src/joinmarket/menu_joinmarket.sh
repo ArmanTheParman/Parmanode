@@ -192,15 +192,11 @@ delete)
 
 da)
     check_wallet_loaded || continue
-    jmvenv "activate"
     display_jm_addresses
-    jmvenv "deactivate"
     ;; 
 di)
     check_wallet_loaded || continue
-    jmvenv "activate"
     display_jm_addresses a
-    jmvenv "deactivate"
     ;;
 sum)
     check_wallet_loaded || continue
@@ -231,19 +227,13 @@ ss)
     enter_continue
     ;;
 bk)
-    jmvenv "activate"
     backup_jm_wallet
-    jmvenv "deactivate"
     ;;
 h|hist)
-    jmvenv "activate"
     wallet_history_jm
-    jmvenv "deactivate"
     ;;
 sp)
-    jmvenv "activate"
     spending_info_jm
-    jmvenv "deactivate"
     ;;
 *)
 invalid
