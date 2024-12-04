@@ -37,6 +37,18 @@ if grep -q "electrsdkr" $ic ; then
     fi
 fi
 
+if [[ $OS == "Linux" ]] && grep -q "electrs" && ! grep -q "dkr" && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
+tmux new -s patch_electrs_service -d "
+sudo gsed -i '/\[Install\]/i\
+# Logging
+StandardOutput=append:/home/parman/.electrs/run_electrs.log
+StandardError=append:/home/parman/.electrs/run_electrs.log
+' /etc/systemd/system/electrs.service 
+sudo systemctl daemon-reload 
+sudo systemctl restart electrs 
+" >$dn 2>&1
+fi
+
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
