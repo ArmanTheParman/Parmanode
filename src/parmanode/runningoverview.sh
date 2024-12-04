@@ -8,7 +8,6 @@ isbitcoinrunning
 islndrunning 
 isfulcrumrunning 
 iselectrsrunning 
-iselectrsdkrrunning 
 isbrerunning 
 isbtcpayrunning 
 isrtlrunning 
@@ -162,17 +161,17 @@ fi #end if grep
 
 if grep -q electrsdkr $ic ; then
     if ! docker ps | grep -q electrs ; then
-    export electrsdkrrunning="false"
-    overview_conf_add "electrsdkrrunning=false" "electrsdkrrunning="
+    export electrsrunning="false"
+    overview_conf_add "electrsrunning=false" "electrsrunning="
     return 1
     fi
 
     if docker exec -it electrs /home/parman/parmanode/electrs/target/release/electrs --version >$dn 2>&1 ; then
-    export electrsdkrrunning="true"
-    overview_conf_add "electrsdkrrunning=true" "electrsdkrrunning="
+    export electrsrunning="true"
+    overview_conf_add "electrsrunning=true" "electrsrunning="
     else
-    export electrsdkrrunning="false"
-    overview_conf_add "electrsdkrrunning=false" "electrsdkrrunning="
+    export electrsrunning="false"
+    overview_conf_add "electrsrunning=false" "electrsrunning="
     fi
 return 0
 fi

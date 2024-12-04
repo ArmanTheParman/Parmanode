@@ -12,27 +12,13 @@ fi
 
 set_terminal
 
-#is electrs running variable
-unset running runningd
+unset electrsrunning
 iselectrsrunning
-if [[ $electrsis == "nondocker" ]] ; then
-    if ps -x | grep electrs | grep conf >$dn 2>&1  && ! tail -n 10 $logfile 2>$dn | grep -q "electrs failed"  ; then 
-    running="true"
-    else
-    running="false"
-    fi
-else 
-    if docker ps | grep -q electrs && docker exec electrs ps | grep electrs ; then
-    running="true"
-    else
-    running="false"
-    fi
-fi
 
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
 source $dp/parmanode.conf >$dn 2>&1
 
-if [[ $running == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $electrsrunning == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
@@ -73,7 +59,7 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if [[ $electrsis == "nondocker" && $running == "true" ]] ; then
+if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -91,7 +77,7 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == "nondocker" && $running == "false" ]] ; then
+elif [[ $electrsis == "nondocker" && $electrsrunning == "false" ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
@@ -101,7 +87,7 @@ fi #end electrs running or not
 if [[ $electrsis == docker ]] ; then
 
 
-if [[ $running == "true" ]] ; then echo -e "
+if [[ $electrsrunning == "true" ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
