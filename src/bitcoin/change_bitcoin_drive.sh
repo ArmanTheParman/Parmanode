@@ -8,16 +8,16 @@ if [[ -z $1 ]] ; then #zero argument, called by menu_bitcoin_other to swap drive
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                          CHANGE BITCOIN SYNCING DRIVE          
+                          ALTERAR A DRIVE DE SINCRONIZAÇÃO DE BITCOIN          
 $orange
-    You are currently syncing blocks to the $drive drive. 
+    Atualmente, está a sincronizar blocos com a drive$drive.
 
-    Would you like to change and sync data to the $otherdrive drive?
+    Gostaria de alterar e sincronizar dados para a drive$otherdrive?
 
 
-                  c)       Change         (doesn't delete data)
+                  c)       Alterar        (não elimina dados)
 
-                  n)       No, leave it    
+                  n)       Não, deixe estar    
  
 ########################################################################################
 "
@@ -48,7 +48,7 @@ if [[ $drive == external ]] ; then
     source $dp/parmanode.conf >$dn 2>&1
     mkdir $HOME/.bitcoin
     make_bitcoin_conf prune 0 #double check this
-    announce "Start Bitcoin manually to begin syncing."
+    announce "Iniciar o Bitcoin manualmente para iniciar o sincronismo."
     return 0
 fi
 
@@ -71,7 +71,7 @@ if [[ $OS == Mac && $drive == internal ]] ; then
     fi 
 
     make_bitcoin_conf prune 0
-    announce "Start Bitcoin manually to begin syncing."
+    announce "Iniciar o Bitcoin manualmente para iniciar o sincronismo."
     return 0
         
 fi
@@ -83,14 +83,14 @@ while ! grep -q parmanode < /etc/fstab ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    It doesn't seem like you have imported a Parmanode drive. What would you like
-    to do?
+    Não me parece que tenha importado uma drive Parmanode. 
+    O que é que gostaria de fazer?
 $cyan
-                  i)$orange        Import an external drive
+                  i)$orange        Importar uma drive externa
 $cyan
-                  f)$orange        Format a new drive 
+                  f)$orange        Formatar uma nova drive
 $cyan
-                  a)$orange        Abort, Abort!
+                  a)$orange        Abortar, Abortar!
 
 ########################################################################################
 "
@@ -116,10 +116,10 @@ done # ends while no parmanode in fstab
     make_backup_dot_bitcoin
     cd $HOME && ln -s /media/$(whoami)/parmanode/.bitcoin/ .bitcoin
     mkdir $parmanode_drive/.bitcoin >$dn 2>&1 && \
-            log "bitcoin" ".bitcoin dir made on ext drive" 
+            log "bitcoin" "diretorio .bitcoin criado na drive externa" 
     sudo chown -R $USER:$(id -gn) $parmanode_drive/.bitcoin
     make_bitcoin_conf prune 0
-    announce "Start Bitcoin manually to begin syncing."
+    announce "Iniciar o Bitcoin manualmente para iniciar o sincronismo."
     return 0
 
 fi  #ends if $drive=internal
