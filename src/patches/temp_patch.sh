@@ -39,13 +39,10 @@ fi
 
 if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep "StandardOutput" /etc/systemd/system/electrs.service ; then
 please_wait
-TMUX2=$TMUX ; unset TMUX ; clear
-tmux new -s patch_electrs_service -d "sudo gsed -i '/\[Install\]/i\
-# Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service 
-sudo systemctl daemon-reload 
-sudo systemctl restart electrs 
-" >$dn 2>&1
-TMUX=$TMUX2
+sudo gsed -i '/\[Install\]/i\
+# Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service  >$dn 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl restart electrs >$dn 2>&1
 fi
 
 #remove in 2025
