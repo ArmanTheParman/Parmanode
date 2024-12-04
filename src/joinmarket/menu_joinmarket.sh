@@ -51,7 +51,7 @@ else
 	fi
 fi
 
-if docker ps 2>$dn | grep -q joinmarket ; then
+if ps ax | grep joinmarket ; then
 
     export joinmarket_running="${green}RUNNING$orange"
 
