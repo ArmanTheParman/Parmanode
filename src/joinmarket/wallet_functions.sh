@@ -14,9 +14,9 @@ announce "When making any wallet, even a hot wallet such as this, it's important
           \r    disturb the coinjoining you do later - It's fine to do whatever you 
           \r    want if you plan not to mix the coins any more.
 
-         \r     To keep things clean and simple, you could bring coins to this wallet
-         \r     to coinjoin them, and once you are done, empty the coins to their
-         \r     final cold storage home, and discard the coinjoin wallet."
+          \r     To keep things clean and simple, you could bring coins to this wallet
+          \r     to coinjoin them, and once you are done, empty the coins to their
+          \r     final cold storage home, and discard the coinjoin wallet."
 
 yesorno "Do you want to create a new wallet or restore?" "cr" "create" "res" "restore" || {
     restore_jm_wallet || return 1
