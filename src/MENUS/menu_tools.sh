@@ -97,7 +97,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
         ;;
 
     mm|MM|Mm|mount)
-        mount_drive menu
+        mount_drive menu || return 1
         if mount | grep -q parmanode ; then
         announce "Drive mounted."
         fi

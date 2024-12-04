@@ -1,6 +1,5 @@
 function format_ext_drive {
 debug " in format_ext_drive, sf = $skip_formatting"
-if grep -q "=external" $pc ; then export skip_formatting="true" && return 0 ; fi
 if [[ $skip_formatting == "true" || $bitcoin_drive_import == "true" ]] ; then return 0 ; fi
 debug "bypassed skip_formatting exit"
 

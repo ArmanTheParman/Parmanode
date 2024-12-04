@@ -12,6 +12,8 @@ set_terminal ; echo -e "
 " ; read choice ; set_terminal
 if [[ $choice == a || $choice == A ]] ; then return 1 ; fi
 fi
+
+
 ########################################################################################
 
 # Starts here...
@@ -32,9 +34,9 @@ set_terminal ; echo -e "
 $orange
 ########################################################################################
 "
-choose "epq" ; read choice
+choose "epmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;; "") break ;; *) invalid ;; 
+case $choice in q|Q|Quit|QUIT|quit) exit 0 ;; p|P) return 1 ;; m|M) back2main ;; "") break ;; *) invalid ;; 
 esac 
 done
 
