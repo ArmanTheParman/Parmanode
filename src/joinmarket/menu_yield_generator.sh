@@ -155,18 +155,18 @@ return
 function start_yield_generator {
     if [[ -n $ygrunning ]] ; then announce "Already running" ; continue ; fi
     check_wallet_loaded || return
+    
+    silentecho=true
+    set_terminal
+    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
+    unset silentecho
 
-    announce "Yield Generator will run in a TMUX session (a terminal 'container'). To leave
-    the container, hit $cyan<control> b$orange, then d. Do not hit$red <control> c$orange, as this will stop
-    the yeild generator."
-
-    TMUX2=$TMUX ; unset TMUX ; clear
-    NODAEMON="true"
-    pn_tmux "source $HOME/parmanode/joinmarket/jmvenv/bin/activate ; \
-    $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log ; \
-    deactivate" "yg"
-    TMUX=$TMUX2
-    unset NODAEMON
+    password=$enter_cont
+    jmvenv "activate"
+    echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log &
+    unset password enter_cont
+    sleep 1
+    jmvenv "deactivate"
 
 }
 
