@@ -161,12 +161,12 @@ function start_yield_generator {
     announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
     unset silentecho
 
-    password=$enter_cont
+    export password=$enter_cont
     TMUX2=$TMUX ; unset TMUX ; clear
     pn_tmux "source $HOME/parmanode/joinmarket/jmvenv/bin/activate ; \
     echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log ; \
-    unset password enter_cont ; \
     deactivate" "yg"
+    unset password enter_cont
     TMUX=$TMUX2
 
 }
