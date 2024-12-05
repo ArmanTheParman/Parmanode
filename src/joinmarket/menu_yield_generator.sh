@@ -166,7 +166,7 @@ function start_yield_generator {
     pn_tmux "source $HOME/parmanode/joinmarket/jmvenv/bin/activate ; \
     echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log ; \
     unset password enter_cont ; \
-    deactivate"
+    deactivate" "yg"
     TMUX=$TMUX2
 
 }
