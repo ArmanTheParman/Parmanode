@@ -260,7 +260,7 @@ TMUX2=$TMUX ; unset TMUX
 if ! tmux ls | grep -q man_jm ; then
     tmux new -s man_jm -d
     tmux send-keys -t man_jm "source $HOME/parmanode/joinmarket/jmvenv/bin/activate" C-m
-    tmux send-keys -t man_jm "cd $HOME/parmanode/joinmarket/scripts" C-m
+    tmux send-keys -t man_jm "cd $HOME/parmanode/joinmarket/scripts ; clear" C-m
     tmux a -t man_jm
 fi
 
