@@ -14,16 +14,16 @@ echo -e "
 ########################################################################################
 
    $cyan 
-    The current version of Bitcoin Core that will be installed is$orange $version $knotsversion
+    A versão atual do Bitcoin Core que será instalada é$orange $version $knotsversion
 $orange
-    Parmanode will verify by hashing the file for you (and gpg verification), but 
-    you may wish to learn how to do this yourself.
+    O Parmanode fará a verificação através do hashing do ficheiro por si 
+    (e verificação gpg), mas pode querer aprender a fazer isto você mesmo.
 
-    The downloaded files will be at:
+    Os ficheiros descarregados estarão em:
 $pink    
                       $HOME/parmanode/bitcoin/
 $orange
-    To learn more about how to verify yourself:
+    Para saber mais sobre como verificar a sua identidade:
 $pink
                       https://armantheparman.com/gpg-articles 
 $orange
@@ -33,11 +33,11 @@ $orange
 enter_continue
 fi
 
-set_terminal ; echo "Downloading Bitcoin files to $HOME/parmanode/bitcoin ..."
+set_terminal ; echo "Descarregar ficheiros Bitcoin para $HOME/parmanode/bitcoin ..."
 
 download_bitcoin_getfiles || return 1 #see code for the function below
 
-debug "before verify bitcoin, after download"
+debug "antes de verificar a bitcoin, depois de descarregar"
 
 if [[ $VERIFY != off ]] ; then
   verify_bitcoin || return 1
