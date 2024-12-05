@@ -52,23 +52,20 @@ else
 fi
 
 
+#is yield generator basic running?
+if ps aux | grep yield-generator-basic ; then 
+    export yg="true"
+else
+    export yg="false"
+fi
 
-    #is yield generator basic running?
-    if ps aux | grep yield-generator-basic ; then 
-        export yg="true"
-    else
-        export yg="false"
-    fi
-
-    #is obwatcher running?
-    export obwatcherPID=$(ps ax | grep "ob-watcher.py" | awk '{print $1}')
-    if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-        export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    localhost:61000 or 127.0.0.1:61000$orange"
-    else
-        export orderbook="${red}NOT RUNNING$orange"
-    fi
-
-
+#is obwatcher running?
+export obwatcherPID=$(ps ax | grep "ob-watcher.py" | awk '{print $1}')
+if [[ $obwatcherPID =~ [0-9]+ ]] ; then
+    export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    localhost:62601 or 127.0.0.1:62601$orange"
+else
+    export orderbook="${red}NOT RUNNING$orange"
+fi
 
 set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
@@ -83,9 +80,9 @@ $jm_be_carefull
 $ygtext1
 
 $cyan
-                  s)$orange           Start/stop JoinMarket 
-$cyan
                   ob)$orange          Start/Stop orderbook
+$cyan
+                  gui)$orange         
 $cyan
                   obi)$orange         Orderbook access info ...
 $cyan
@@ -121,25 +118,6 @@ sudo gsed -i "/jm_menu_shhh=1/d" $hm
 fi
 ;;
 
-stop)
-stop_joinmarket
-;;
-start|st|s)
-start_joinmarket
-
-# if echo $joinmarket_running | grep -q NOT ; then
-#     start_joinmarket
-# else
-
-#     if [[ $yg == "true" ]] ; then
-#     stop_yeild_generator
-#     fi
-
-#     stop_joinmarket
-#     unset obwatcherPID
-# fi
-;;
-
 ob)
     orderbook_jm
 ;;
@@ -155,6 +133,10 @@ l|load)
 
 conf)
     sudo nano $jmcfg 
+;;
+
+confv)
+vim_warning ; sudo vim $jmcfg
 ;;
 
 ww)
@@ -173,9 +155,6 @@ vc)
 sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
 sudo mv $tmp/cfg $jmcfg
 enter_continue "file modified"
-;;
-confv)
-vim_warning ; sudo vim $jmcfg
 ;;
 
 cr)
