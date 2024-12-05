@@ -78,9 +78,9 @@ $red
 $yellow
                 c)$orange        Configure Yeild Generator Settings...
 $cyan
-                flog)$orange     Follow Yield Generator log as it populates
+                log)$orange     Follow Yield Generator log as it populates
 $cyan
-                log)$orange      Read Yield Generator log with the (logv for vim)
+                lesslog)$orange  Read Yield Generator log with less (logv for vim)
 $cyan
                 del)$orange      Delete lockfile ... 
 
@@ -99,7 +99,7 @@ stop)
 stop_yield_generator
 ;;
 
-log)
+lesslog)
    check_wallet_loaded || continue
    announce "Hint: Use q to exit the view screen"
    sudo less -R $logfile
@@ -108,7 +108,7 @@ logv)
    check_wallet_loaded || continue
    vim_warning ; sudo vim $logfile
 ;; 
-flog)
+log)
     check_wallet_loaded || continue
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
 ;;
