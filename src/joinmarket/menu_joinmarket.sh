@@ -98,7 +98,7 @@ $magenta
 $cyan
                   sp)$orange          Spending (info) ...
 
-$jm_menu_shhh$orange   
+$orange   
 ########################################################################################
 "
 choose "xpmq" ; read choice 
@@ -111,13 +111,6 @@ if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 echo "jm_be_carefull=1" >> $hm
 else
 sudo gsed -i "/jm_be_carefull=1/d" $hm
-fi
-;;
-shhh)
-if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
-echo "jm_menu_shhh=1" >> $hm
-else
-sudo gsed -i "/jm_menu_shhh=1/d" $hm
 fi
 ;;
 
