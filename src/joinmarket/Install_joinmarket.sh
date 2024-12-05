@@ -197,8 +197,8 @@ function joinmarket_dependencies {
 if ! which python3 >$dn 2>&1 ; then install_python3 ; fi
 
 pythonversion=$(python3 --version | grep -oE '[0-9]+\.[0-9]+')
-
-if [[ $pythonversion -gt "3.13" ]] || [[ $pythonversion -lt "3.8" ]] ; then
+pythonversion_minor=$(echo $pythonversion | cut -d \. -f2)
+if [[ $pythonversion_minor -gt "13" ]] || [[ $pythonversion_minor -lt "8" ]] ; then
 announce "Python needs to be >v3.8 and <3.13. You have $pythonversion. Aborting."
 return 1
 fi
