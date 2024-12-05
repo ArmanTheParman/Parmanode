@@ -4,6 +4,7 @@ X11_preamble || return 1
 if [[ $OS == "Linux" ]] ; then 
     sudo apt-get update -y
     sudo apt-get install openssh-server -y
+    if ! which xauth >$dn 2>&1 ; then sudo apt-get install xuath -y ; fi
 fi
 
 #Set config file path
