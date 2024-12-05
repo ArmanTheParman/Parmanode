@@ -45,6 +45,7 @@ if [[ -z $wallet ]] ; then
 
 # if there is a wallet loaded, then check if yg is running for the menu
 else
+    debug "in else"
 	if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
