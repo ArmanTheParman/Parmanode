@@ -62,14 +62,13 @@ set_terminal_custom 48 ; echo -ne "
 ########################################################################################
 
                                    YEILD GENERATOR                         $cyan
-                              Be a coinjoin market maker                   $orange
+                             Be a coinjoin market maker                   $orange
 
 ########################################################################################
 
 
 $ygtext
 $orderbooknn
-
 
 $green
                 start)$orange    Start Yield Generator 
