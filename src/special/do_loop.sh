@@ -3,7 +3,8 @@ function do_loop {
 #sudo will be needed. Running it early here, getting it out of the way, 
 #and it stays in the cache for a while.
 sudo true ;
-
+#deactivate virtual environments that may have been left active from an non-graceful shutdown
+deactivate >/dev/null 2>&1
 #check script is being run from parmanode directory so relative paths work
 #-f checks if a file exists in the working directory. If it doesn't, it 
 #means the run_parmanode.sh file is not in the correct location.
