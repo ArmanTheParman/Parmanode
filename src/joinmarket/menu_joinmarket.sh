@@ -69,6 +69,7 @@ if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    localhost:62601 or 127.0.0.1:62601$orange"
 else
     export orderbook="${red}NOT RUNNING$orange"
+    unset obwatcherPID
 fi
 
 set_terminal_custom 51 ; echo -en "
