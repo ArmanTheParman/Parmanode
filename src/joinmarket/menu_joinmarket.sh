@@ -33,7 +33,7 @@ if [[ -z $wallet ]] ; then
     wallet=$(ps ax | grep yg-privacyenhanced.py | grep python | grep -Eo 'wallets/.*$' | cut -d / -f2 | grep -Eo '^.+ ')
     debug "wallet is $wallet"
     ygtext1="
-    Yield Generator : $green RUNNING$orange with wallet$magenta $wallet
+    Yield Generator :   $green RUNNING$orange with wallet$magenta $wallet
 "
     else
         ygext=""
