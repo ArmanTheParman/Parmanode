@@ -249,11 +249,10 @@ spending_info_jm
 ;;
 
 man)
-announce "You're entering a TMUX sessions (terminal container). Exit with either
-    <control> c to also quit any running scripts, or, <control> b then d to
-    detach from the session and leave it running - the latter is not recommended
-    unless you know a thing or two about TMUX. Not hard to learn using the 
-    internet."
+announce "You're entering a TMUX sessions (terminal container). Exit by either
+    typing 'exit' or, <control> b then d to detach from the session and leave 
+    any scripts running - the latter is not recommended unless you know a thing 
+    or two about TMUX. Not hard to learn using the internet."
 jump $enter_cont
 TMUX2=$TMUX ; unset TMUX
 
