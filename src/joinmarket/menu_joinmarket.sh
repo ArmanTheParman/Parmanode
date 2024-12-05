@@ -120,11 +120,13 @@ else
 sudo gsed -i "/jm_menu_shhh=1/d" $hm
 fi
 ;;
+
 gui)
-jmvenv "activate"
-$hp/joinmarket/scripts/joinmarket-qt.sh
-jmvenv "deactivate"
+    jmvenv "activate"
+    $hp/joinmarket/scripts/joinmarket-qt.sh
+    jmvenv "deactivate"
 ;;
+
 ob)
     orderbook_jm
 ;;
