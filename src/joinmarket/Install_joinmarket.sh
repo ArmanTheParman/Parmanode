@@ -49,7 +49,7 @@ function install_joinmarket {
 
     cd $hp/joinmarket
 
-    ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
+    echo "y" | ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
 
     cd $hp/joinmarket >$dn
 
