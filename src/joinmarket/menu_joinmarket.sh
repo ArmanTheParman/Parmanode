@@ -29,7 +29,7 @@ if [[ -z $wallet ]] ; then
 
     #check if yg running, and load wallet variable, and set menu text
     if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | grep -Eo 'wallets/.*$' | cut -d / -f2)
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
@@ -51,9 +51,7 @@ else
 	fi
 fi
 
-if ps ax | grep joinmarket ; then
 
-    export joinmarket_running="${green}RUNNING$orange"
 
     #is yield generator basic running?
     if ps aux | grep yield-generator-basic ; then 
@@ -70,11 +68,7 @@ if ps ax | grep joinmarket ; then
         export orderbook="${red}NOT RUNNING$orange"
     fi
 
-else
-     export joinmarket_running="${red}NOT RUNNING$orange"
-     export yg="false"
-     export orderbook="${red}NOT RUNNING${orange}"
-fi
+
 
 set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
@@ -82,9 +76,6 @@ set_terminal_custom 51 ; echo -en "
                                 P A R M A J O I N $orange
 $jm_be_carefull
 ########################################################################################
-
-
-    JoinMarket is:       $joinmarket_running
 
     Active wallet is:    $magenta$wallet$orange
 

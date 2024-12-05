@@ -121,7 +121,7 @@ debug "1"
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false |& grep "exists" && break
             bitcoin-cli -named createwallet wallet_name=jm_wallet descriptors=false |& grep "exists" && break
         fi
-debug "2"
+        
         echo -e "$red
         sometimes waiting for bitcoin to laod up is needed.
         Trying again every 5 seconds...$orange
