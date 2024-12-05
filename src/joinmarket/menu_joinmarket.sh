@@ -84,7 +84,6 @@ $jm_be_carefull
     Active wallet is:    $magenta$wallet$orange
 
     Order Book is:       $orderbook
-
 $ygtext1
 
 $cyan
