@@ -29,8 +29,8 @@ if [[ -z $wallet ]] ; then
     wallet=NONE
 
     #check if yg running, and load wallet variable, and set menu text
-    if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | grep -Eo 'wallets/.*$' | cut -d / -f2)
+    if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v grep | grep -Eo 'wallets/.*$' | cut -d / -f2)
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
@@ -45,7 +45,7 @@ if [[ -z $wallet ]] ; then
 
 # if there is a wallet loaded, then check if yg is running for the menu
 else
-	if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+	if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "

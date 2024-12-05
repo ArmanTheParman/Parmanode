@@ -33,8 +33,8 @@ if [[ -e $logfile ]] ; then
 fi
 
 #if grep "setting onion hostname to" $logfile ; then
-if ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v grep | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
     ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet"
     
     if ps ax | grep obwatch | grep -q python ; then
@@ -171,7 +171,7 @@ function start_yield_generator {
 }
 
 function stop_yield_generator {
-    yg_PID=$(ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
+    yg_PID=$(ps ax | grep privacyenhanced.py | grep -v grep | awk '{print $1}')
     kill -SIGTERM $yg_PID
     sudo rm $logfile 2>&1
 }
