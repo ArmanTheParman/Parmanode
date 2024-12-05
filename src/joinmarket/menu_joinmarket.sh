@@ -67,7 +67,7 @@ fi
 export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print $1}')
 if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    http://localhost:62601 or http://127.0.0.1:62601$orange
-                                                             from external:   $bright_blue    http://$IP:61000$orange"
+                                                                    \n    from external:   $bright_blue    http://$IP:61000$orange"
 
 else
     export orderbook="${red}NOT RUNNING$orange"
