@@ -164,7 +164,7 @@ function start_yield_generator {
     export password=$enter_cont
     TMUX2=$TMUX ; unset TMUX ; clear
     tmux new -s yg -d "source $HOME/parmanode/joinmarket/jmvenv/bin/activate ; 
-    $HOME/parmanode/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet --password=$password |& tee $HOME/.joinmarket/yg_privacy.log ;
+    echo $password | $HOME/parmanode/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet --wallet-password-stdin |& tee $HOME/.joinmarket/yg_privacy.log ;
     deactivate ; "
     TMUX=$TMUX2
     unset password unet_cont
