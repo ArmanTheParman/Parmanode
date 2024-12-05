@@ -24,6 +24,7 @@ else
 fi
 
 if [[ -z $wallet ]] ; then 
+    debug "in none"
     #start by setting wallet to NONE
     wallet=NONE
 
