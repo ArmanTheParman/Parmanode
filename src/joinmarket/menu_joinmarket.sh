@@ -247,6 +247,28 @@ info)
 parmajoin_info
 spending_info_jm
 ;;
+
+man)
+announce "You're entering a TMUX sessions (terminal container). Exit with either
+    <control> c to also quit any running scripts, or, <control> b then d to
+    detach from the session and leave it running - the latter is not recommended
+    unless you know a thing or two about TMUX. Not hard to learn using the 
+    internet."
+jump $enter_cont
+TMUX2=$TMUX ; unset TMUX
+
+if ! tmux ls | grep -q man_jm ; then
+    tmux new -s man_jm 
+    jmvenv "activate"
+    tmux send-keys -t man_jm "$HOME/parmanode/joinmarket/jmvenv/bin/activate" C-m
+    tmux send-keys -t man_jm "cd $HOME/parmanode/joinmarket/scripts" C-m
+    tmux a -t man_jm
+fi
+
+tmux a -t man_jm
+
+TMUX=$TMUX2
+;;
 *)
 invalid
 ;;
