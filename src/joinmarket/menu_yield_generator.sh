@@ -162,11 +162,12 @@ function start_yield_generator {
     unset silentecho
 
     password=$enter_cont
-    jmvenv "activate"
-    echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet | tee $HOME/.joinmarket/yg_privacy.log || enter_continue "Some error with wallet: $wallet"
+    pn_tmux "
+    jmvenv 'activate'
+    echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log 
     unset password enter_cont
-    sleep 1
-    jmvenv "deactivate"
+    jmvenv 'deactivate'
+    "
 
 }
 
