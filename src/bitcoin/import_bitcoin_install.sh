@@ -5,11 +5,11 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                               IMPORT BITCOIN TOOL
+                               FERRAMENTA DE IMPORTAÇÃO DE BITCOIN
 
 $orange
-    With this tool, if you already have Bitcoin installed on your system, you can 
-    simply bring it in so Parmanode can recognise it.
+    Com esta ferramenta, se já tiveres Bitcoin instalado no teu sistema, podes 
+    simplesmente trazê-lo para que o Parmanode o reconheça.
 
 ########################################################################################
 "
@@ -24,13 +24,13 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode will stop bitcoin running (if it's running) with the command:
+    O Parmanode irá parar o funcionamento do bitcoin (se estiver a funcionar) com o comando:
    $green 
         bitcoin-cli stop
        $orange 
 
-    Hit$pink <enter>$orange to continue (it dosn't matter if bitcoin is not actually running 
-    right now).
+    Carrega em$pink <enter>$orange para continuar (não importa se a bitcoin não está a 
+    funcionar neste momento).
 
 ########################################################################################
 "
@@ -46,16 +46,16 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has not detected bitcoind and bitcoin-cli in the expected directory:
+    O Parmanode não detectou o bitcoind e o bitcoin-cli no diretório esperado:
 $green
         /usr/local/bin
 $orange
-    Please open a new terminal window and move those binary files (and others like
-    bitcoin-qt and bitcoin-tx if you have them) to the above directory.
+    Abre uma nova janela de terminal e move esses ficheiros binários (e outros como 
+    bitcoin-qt e bitcoin-tx, se os tiveres) para a diretoria acima.
 
-    I'll wait.
+    Eu espero.
 
-    Then hit$pink <enter>$orange to continue.
+    Em seguida, prima$pink <enter>$orange para continuar.
 
 ########################################################################################
 "
@@ -71,18 +71,18 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode has detected Bitcoin binary files in$green /usr/local/bin$orange
+    O Parmanode detectou ficheiros binários Bitcoin em$green /usr/local/bin$orange
 
-    If these are not the files you are intending to use, then open a new terminal and
-    move your target binaries to this location. You need the files:
+    Se estes não são os ficheiros que pretende utilizar, então abra um novo terminal e 
+    mova os seus binários alvo para esta localização. Você precisa dos ficheiros:
 $green
         bitcoind  $orange
         & $green
         bitcoin-cli
    $orange 
-    in the directory /usr/local/bin
+    no diretório /usr/local/bin
 
-    Once that is done, hit$pink <enter>$orange to continue the wizard.
+    Quando isso estiver feito, prima$pink <enter>$orange para continuar o assistente.
 
 ########################################################################################
 "
@@ -100,19 +100,19 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Now we need to decide about the Bitcoin block data location.
+    Agora precisamos de decidir sobre a localização dos dados do bloco Bitcoin.
 
-    Do you want...
+    Queres...
 $cyan
-        1)$orange    Start fresh with an external drive$red (formats drive)$orange
+        1)$orange    Começar de novo com uma drive externa$red (formatar drive)$orange
 $cyan
-        2)$orange    Start fresh with an internal drive
+        2)$orange    Começar de novo com uma drive interna
 $cyan
-        3)$orange    Use your existing data from an external drive
+        3)$orange    Utilize os seus dados existentes a partir de uma drive externa
 $cyan
-        4)$orange    Use your existing data from an internal drive
+        4)$orange    Utilize os seus dados existentes a partir de uma drive interna
 $cyan
-        5)$orange    Use your existing data from a Parmanode external drive
+        5)$orange    Utilize os seus dados existentes de uma drive externa Parmanode
 
 ########################################################################################
 "
@@ -234,15 +234,15 @@ if ! grep -q "bitcoin" $dp/.temp ; then #this means mkdir didn't fail, and .bitc
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmanode didn't detect a Bitcoin data directory in its default location:
+    O Parmanode não detectou um diretório de dados Bitcoin na sua localização predefinida:
 $cyan
         $default
 $orange
-    Notice the '.' which means it's a hidden directory. Parmanode has created this
-    directory for you but it is empty. If you want Parmanode to sync Bitcoin data
-    on top of the data you already have, then WHILE BITCOIN IS STOPPED, copy your
-    existing data to the above location, then start bitcoin from the Parmanode
-    Bitcoin menu.
+    Repare no "." que significa que é uma diretoria oculta. A Parmanode criou este diretório 
+    para você, mas ele está vazio. Se quiseres que o Parmanode sincronize os dados do 
+    Bitcoin em cima dos dados que já tens, então ENQUANTO O BITCOIN ESTÁ PARADO, copia os 
+    teus dados existentes para a localização acima, depois inicia o bitcoin a partir do menu 
+    Bitcoin do Parmanode.
     $text1
     $text2
 ########################################################################################
@@ -258,15 +258,15 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    It is recommended that you use the Parmanode bitcoin.conf file, but you can
-    decline and use your own, just make sure it lives in the .bitcoin data directory
-    before you start bitcoin.
+    Recomenda-se que use o ficheiro bitcoin.conf da Parmanode, mas pode recusar e usar o 
+    seu próprio ficheiro, mas certifique-se de que está no diretório de dados .bitcoin 
+    antes de iniciar o bitcoin.
 
-    You have choices...
+    Você escolhe...
 $green
-            1)    Use Parmanode's bitcoin.conf (recommended)
+            1)    Usar o bitcoin.conf do Parmanode (recomendado)
 $orange 
-            2)    Use your own shitty bitcoin.conf file, see if I care
+            2)    Use seu próprio arquivo bitcoin.conf de merda, veja se eu me importo
 
 ########################################################################################
 "
@@ -295,10 +295,9 @@ function message_move {
 set_terminal ; echo -e "
 ########################################################################################
     
-    If your own Bitcoin data needs to be moved to the target directory on the drive
-    please, make sure you have done that before proceeding. Just leave this window
-    open, open a new one and do the work needed, then come back and continue.
-
+    Se os seus próprios dados Bitcoin tiverem de ser movidos para o diretório de destino 
+    na drive, certifique-se de que o fez antes de continuar. Deixe esta janela aberta, 
+    abra uma nova janela e faça o trabalho necessário, depois volte e continue.
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
