@@ -43,6 +43,7 @@ function install_joinmarket {
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
+    sudo chown -R $USER:$(id -gn) $HOME/.joinmarket >$dn 2>&1
 
     clone_joinmarket || { announce "Something went wrong. Aborting" ; return 1 ; }
     
@@ -52,7 +53,7 @@ function install_joinmarket {
     elif [[ -z $joinmarket_docker ]] ; then
         joinmarket_dependencies || return 1
         cd $hp/joinmarket
-        ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
+        echo "y" | ./install.sh || { enter_continue  "Something went wrong. Aborting." ; return 1 ; }
     fi
 
 
