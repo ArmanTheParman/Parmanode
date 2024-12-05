@@ -104,8 +104,6 @@ $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
                   vc)$orange          Remove all config comments and make pretty
-$cyan
-                  sp)$orange          Spending (info) ...
 
 $orange   
 ########################################################################################
@@ -214,19 +212,12 @@ bk)
 h|hist)
     wallet_history_jm
     ;;
-sp)
-    spending_info_jm
-    ;;
 
 vc)
 cfg="$HOME/.joinmarket/joinmarket.cfg" 
 sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
 sudo mv $tmp/cfg $cfg
 enter_continue "file modified"
-;;
-
-sp)
-spending_info_jm
 ;;
 
 obl)
@@ -251,6 +242,7 @@ nano $oblogfile
 ;;
 info)
 parmajoin_info
+spending_info_jm
 ;;
 *)
 invalid
