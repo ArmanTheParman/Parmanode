@@ -51,6 +51,7 @@ else
 	fi
 fi
 
+debug "w = $wallet"
 
 #is yield generator basic running?
 if ps aux | grep yield-generator-basic ; then 
