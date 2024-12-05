@@ -31,6 +31,7 @@ if [[ -z $wallet ]] ; then
     #check if yg running, and load wallet variable, and set menu text
     if ps ax | grep yg-privacyenhanced.py | grep -q python ; then
     wallet=$(ps ax | grep yg-privacyenhanced.py | grep python | grep -Eo 'wallets/.*$' | cut -d / -f2 | grep -Eo '^.+ ')
+    debug "wallet is $wallet"
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
