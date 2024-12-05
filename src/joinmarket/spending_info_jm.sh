@@ -1,6 +1,8 @@
 function spending_info_jm {
 
 set_terminal ; echo -e "
+########################################################################################$cyan
+                    A smol word on spending from wallets...$orange
 ########################################################################################
 
     Parmanode does not recommend or enable terminal based commands to spend from the
