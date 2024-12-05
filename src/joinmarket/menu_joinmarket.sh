@@ -88,6 +88,8 @@ $ygtext1
 
 $cyan
                   info)$orange        How to play with your bitcoins 
+$magenta
+                  ww)$orange          Wallet menu ... 
 $cyan
                   gui)$orange         Start Joinmarket GUI (CJ taker)
 $red
@@ -102,8 +104,6 @@ $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
                   vc)$orange          Remove all config comments and make pretty
-$magenta
-                  ww)$orange          Wallet menu ... 
 $cyan
                   sp)$orange          Spending (info) ...
 
