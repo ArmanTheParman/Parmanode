@@ -165,7 +165,7 @@ function start_yield_generator {
     jmvenv "activate"
     echo $password | $hp/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet |& tee $HOME/.joinmarket/yg_privacy.log &
     unset password enter_cont
-    sleep 1
+    sleep 2
     jmvenv "deactivate"
 
 }
