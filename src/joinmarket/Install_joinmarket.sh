@@ -41,6 +41,7 @@ function install_joinmarket {
     make_joinmarket_wallet || { enter_continue "aborting" ; return 1 ; }
 
     mkdir -p $HOME/.joinmarket >$dn 2>&1 && installed_conf_add "joinmarket-start"
+    sudo chown -R $USER:$(id -gn) $HOME/.joinmarket >$dn 2>&1
 
     clone_joinmarket || { announce "Something went wrong. Aborting" ; return 1 ; }
     
@@ -197,7 +198,7 @@ if ! which python3 >$dn 2>&1 ; then install_python3 ; fi
 
 pythonversion=$(python3 --version | grep -oE '[0-9]+\.[0-9]+')
 
-if [[ $pythonversion -gt 3.13 ]] || [[ $pythonversion -lt 3.8 ]] ; then
+if [[ $pythonversion -gt "3.13" ]] || [[ $pythonversion -lt "3.8" ]] ; then
 announce "Python needs to be >v3.8 and <3.13. You have $pythonversion. Aborting."
 return 1
 fi
