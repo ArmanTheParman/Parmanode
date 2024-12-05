@@ -80,20 +80,23 @@ $jm_be_carefull
 $ygtext1
 
 $cyan
-                  ob)$orange          Start/Stop orderbook
+                  gui)$orange         Start Joinmarket GUI (CJ taker)
+$red
+                  yg)$orange          Yield Generator menu (CJ Maker) ...
 $cyan
-                  gui)$orange         
+                  ob)$orange          Start/Stop orderbook
 $cyan
                   obi)$orange         Orderbook access info ...
 $cyan
+                  obl)$orange         Order book log (obln for nano)
+$cyan
                   conf)$orange        Edit the configuration file (confv for vim)
+$cyan
+                  vc)$orange          Remove all config comments and make pretty
 $magenta
                   ww)$orange          Wallet menu ... 
-$red
-                  yg)$orange          Yield Generator menu ...
-$bright_blue
-                  mm)$orange          Menu 2 ...
-
+$cyan
+                  sp)$orange          Spending (info) ...
 
 $jm_menu_shhh$orange   
 ########################################################################################
@@ -146,10 +149,6 @@ ww)
 yg)
     menu_yield_generator || return 1
     ;;
-
-mm)
-    menu_joinmarket2
-;;
 
 vc)
 sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
@@ -210,6 +209,38 @@ h|hist)
 sp)
     spending_info_jm
     ;;
+
+vc)
+cfg="$HOME/.joinmarket/joinmarket.cfg" 
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+sudo mv $tmp/cfg $cfg
+enter_continue "file modified"
+;;
+
+sp)
+spending_info_jm
+;;
+
+obl)
+announce "Hit q to exit this. Use 'vim' style controls to move about.
+
+          \r    Note that connection advice in this output (localhost:62601)
+          \r    will not work because it's running in a Docker container.
+          \r    Just follow the connection information in the 
+          \r    Parmanode menu.
+"
+less -R $oblogfile
+;;
+obln)
+announce "Hit control x to exit nano text editor.
+
+          \r    Note that connection advice in this output (localhost:62601)
+          \r    will not work because it's running in a Docker container.
+          \r    Just follow the connection information in the 
+          \r    Parmanode menu.
+"
+nano $oblogfile
+;;
 *)
 invalid
 ;;
