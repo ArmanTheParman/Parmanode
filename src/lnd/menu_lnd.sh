@@ -62,7 +62,7 @@ set_terminal
 please_wait
 unset lnd_version lnddockermenu dkrmenu lndtor torhybrid inside_docker
 
-if docker ps | grep -q lnd ; then
+if docker ps >$dn 2>&1 | grep -q lnd ; then
 export lnddockermenu="true"
 else
 export lnddockermenu="false"

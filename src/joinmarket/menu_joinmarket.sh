@@ -101,6 +101,8 @@ $cyan
 $cyan
                   obl)$orange         Order book log (obln for nano)
 $cyan
+                  pub)$orange         Be a public orderbook (over Tor)
+$cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
                   vc)$orange          Remove all config comments and make pretty
@@ -267,6 +269,10 @@ tmux a -t man_jm
 
 TMUX=$TMUX2
 ;;
+
+pub)
+public_orderbook_info
+;;
 *)
 invalid
 ;;
@@ -346,4 +352,44 @@ $red
 ########################################################################################
 "
 enter_continue
+}
+
+function public_orderbook_info {
+
+while true ; do
+set_terminal_high ; echo -e "
+########################################################################################$cyan
+                                 Public Orderbook$orange
+########################################################################################
+
+    You can publish your copy of the orderbook over Tor with your own unique onion
+    address. It doesn't hurt your privacy as long as you don't publish to the world
+    that this is your onion address. You should also not connect to your own onion
+    address - that's the recommendation, but I can't explain exactly why to be frank.
+
+    Shall we?
+$green
+                            y)$orange      Yep
+$red
+                            n)$orange      How 'bout no
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+q|Q) exit ;; p|P|n) return 1 ;; m|M) back2main ;;
+y)
+break
+;;
+*)
+invalid 
+;;
+esac
+done
+
+enable_tor_general
+
+
+
 }
