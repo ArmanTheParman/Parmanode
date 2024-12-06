@@ -5,29 +5,29 @@ set_terminal  ; echo -e "
 ########################################################################################
 
     $green
-    You have choices for installing Bitcoin with Parmanode... $orange
+    Você tem opções para instalar o Bitcoin com o Parmanode... $orange
 
 
-$cyan    1)$orange    Bitcoin QT version $version
+$cyan    1)$orange    Versão Bitcoin QT $version
 
-$cyan    2)$bright_blue    Bitcoin Knots version $knotsversion $orange
+$cyan    2)$bright_blue    Versão Bitcoin Knots $knotsversion $orange
 
-$cyan    3)$red    Bitcoin in Docker (bundled with BTCPay)$orange 
+$cyan    3)$red    Bitcoin em Docker (com BTCPay)$orange 
 
-            This is a new addition to Parmanode: You can opt to install Bitcoin 
-            AND BTCPay Server together in a Docker container. You'll have all the 
-            same menu options in Parmanode, but you won't have the Bitcoin-QT GUI pop-up. 
-            Docker needs to be running for Bitcoin to be running.
+            Esta é uma nova adição à Parmanode: Você pode optar por instalar o Bitcoin 
+            E o BTCPay Server juntos num container Docker. Terás todas as mesmas opções 
+            de menu no Parmanode, mas não terás o pop-up da GUI do Bitcoin-QT. 
+            O Docker precisa estar rodando para que o Bitcoin esteja rodando.
 
 $green
 
-    What'll it be?
+    O que é que vai ser?
 
 $cyan                   1)$orange     Bitcoin QT
 
-$cyan                   2)$bright_blue     All the cool kids are running Knots
+$cyan                   2)$bright_blue     Todos os miúdos fixes estão a usar o Knots
 
-$cyan                   3)$red     Bitcoin AND BTCPay in Docker
+$cyan                   3)$red     Bitcoin E BTCPay em Docker
 
 $orange
 ########################################################################################
