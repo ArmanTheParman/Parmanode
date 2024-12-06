@@ -57,7 +57,6 @@ function install_joinmarket {
 yesorno "install matplotlib too?" && { 
     pip install matplotlib || { announce "Something went wrong with installing matplotlib. Aborting." ; return 1 ; } 
 }
-
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     make_joinmarket_config || { enter_continue "aborting" ; return 1 ; }
@@ -220,6 +219,9 @@ if [[ $OS == "Mac" ]] && ! xcode-select -p ; then
         return 1
     fi
 fi
+
+#sudo apt install mesa-utils
+
 }
 
 function install_python3 {

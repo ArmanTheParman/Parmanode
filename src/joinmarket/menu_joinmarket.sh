@@ -126,7 +126,7 @@ fi
 
 gui)
     jmvenv "activate"
-    $hp/joinmarket/scripts/joinmarket-qt.sh
+    $hp/joinmarket/scripts/joinmarket-qt.sh >$dn
     jmvenv "deactivate"
 ;;
 
