@@ -55,7 +55,8 @@ function install_joinmarket {
 
     source jmvenv/bin/activate || { announce "Something went wrong with the virtual env. Aborting." ; return 1 ; }
 yesorno "install matplotlib too?" && { 
-    pip install matplotlib || { announce "Something went wrong with installing matplotlib. Aborting." ; return 1 ; } 
+    pip install matplotlib && pip install 'numpy<2' || { announce "Something went wrong with installing matplotlib. Aborting." ; return 1 ; } 
+
 }
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
