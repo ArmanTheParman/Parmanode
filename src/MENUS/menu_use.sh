@@ -154,7 +154,7 @@ if [[ -d $hp/parman_books ]] ; then parman_booksapp=1
                        echo -e "                        $cyan  (pb)  $orange       Parman Books
                             " ; fi
 if grep -q "X11-end" $HOME/.parmanode/installed.conf ; then X11app=1
-                       echo -e "                        $cyan  (x11)  $orange      X11
+                       echo -e "                        $cyan  (x11)  $orange      X11 Forwarding
                             " ; fi
 echo -e "                            
 #######################################################################################
