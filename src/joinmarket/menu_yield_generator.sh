@@ -58,6 +58,14 @@ if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" ||
     unset ygrunning
 fi
 
+check_no_lock silent ; if [[ $lockfile == "true" ]] ; then
+locktext="${red}Warning, the wallet as a lockfile attached.$orange"
+cyanlock=$red ; orangelock=$red 
+else
+cyanlock=$cyan ; orangelock=$orange
+fi
+
+
 set_terminal_custom 48 ; echo -ne "
 ########################################################################################
 
@@ -65,7 +73,7 @@ set_terminal_custom 48 ; echo -ne "
                              Be a coinjoin market maker                   $orange
 
 ########################################################################################
-
+$locktext
 
 $ygtext
 $orderbooknn
@@ -80,8 +88,8 @@ $cyan
                 log)$orange      Follow Yield Generator log as it populates
 $cyan
                 lesslog)$orange  Read Yield Generator log with less (logv for vim)
-$cyan
-                del)$orange      Delete lockfile ... 
+$cyanlock
+                del)$orangelock      Lockfile info and fix ... $orange
 
 $ygs
 ########################################################################################
@@ -190,7 +198,7 @@ if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
     safe to delete the lock file - it's just an empty file that acts as a signal. You can 
     delete it from the Yield Generator menu."
     fi
-
+    export lockfile="true"
     return 1
 else
     return 0
