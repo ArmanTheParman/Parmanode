@@ -167,7 +167,8 @@ function start_yield_generator {
 
     silentecho=true
     set_terminal
-    announce "Please enter the password (not passphrase) for $wallet - keystrokes will not show" 
+    announce "Please enter the password (not passphrase) for $wallet 
+    (Keystrokes will not show)." 
     unset silentecho
 
     export password=$enter_cont
