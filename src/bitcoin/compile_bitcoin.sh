@@ -19,11 +19,11 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
 if [[ $knotsbitcoin != "true" ]] ; then  
 
-    git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
+    git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Algo correu mal com o download. Abortando." ; return 1 ; }
     
-    cd $hp/bitcoin_github || { announce "Unable to change to bitcoin_github directory. Aborting." ; return 1 ; }
+    cd $hp/bitcoin_github || { announce "Não é possível mudar para o diretório bitcoin_github. Abortando." ; return 1 ; }
     
-    git checkout v$version || { announce "Unable to checkout to the specified version. Aborting." ; return 1 ; }
+    git checkout v$version || { announce "Não é possível efetuar o checkout para a versão especificada. Abortando." ; return 1 ; }
 
             #apply ordinals patch to v25 or v26
             if [[ $ordinals_patch == "true" ]] ; then
@@ -50,22 +50,22 @@ fi
     unset export GIT_COMMITTER_EMAIL
 
 
-./autogen.sh || { enter_continue "Something seems to have gone wrong. Proceed with caution." ; }
+./autogen.sh || { enter_continue "Algo parece ter corrido mal. Proceder com cautela." ; }
 
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Bitcoin can be compiled with or without a Graphical User Interfact (GUI).
+    O Bitcoin pode ser compilado com ou sem uma interface gráfica de utilizador (GUI).
 
-    Parmanode does not need a GUI, as it is itself the interface between you and the
-    node's functions - this is partly what Parmanode is for.
+    O Parmanode não precisa de uma GUI, uma vez que é ele próprio a interface entre o 
+    utilizador e as funções do nó - é em parte para isso que o Parmanode serve.
 
-    You have choices...
+    Você escolhe...
 $green
-              1)   Compile Bitcoin WITHOUT a GUI (recommended, and faster) 
+              1)   Compilar Bitcoin SEM uma GUI (recomendado, e mais rápido) 
 $cyan
-              2)   Compile bitcoin WITH a GUI
+              2)   Compilar bitcoin COM uma GUI
 $orange
 ########################################################################################
 "
@@ -85,14 +85,14 @@ while true ; do
 clear ; echo -e "
 ########################################################################################
 
-   The configure command that will be run is the following: 
+   O comando configure que será executado é o seguinte: 
 
 $cyan
    ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils
 $orange
 
-   Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
-   may have researched yourself and would like to include, then hit$green <enter>$orange
+   Prima$green <enter>$orange para continuar, ou,$yellow escreva em$orange opções adicionais 
+   que possa ter pesquisado e que gostaria de incluir, depois carregue em$green <enter>$orange
 
 ########################################################################################
 "
@@ -105,9 +105,9 @@ clear
 echo -e "
 ########################################################################################
 
-    You have entered $options
+    Introduziu $options
 
-    Hit y to accept, or n to try again.
+    Prima y para aceitar ou n para tentar novamente.
 
 ########################################################################################
 "
@@ -122,16 +122,16 @@ done
 set_terminal
 
 ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options || {
-    enter_continue "Something might have gone wrong."
+    enter_continue "Algo pode ter corrido mal."
 }
 
 echo -e "
 ########################################################################################
 
-    If you saw no errors, hit $cyan<enter>$orange to continue.
+    Se não houver erros, prima $cyan<enter>$orange para continuar.
 
-    Otherwise exit, and correct the error yourself, or report to Parman via Telegram 
-    chat group for help.
+    Caso contrário, sai e corrige tu mesmo o erro, ou pede ajuda ao Parman através do 
+    grupo de chat do Telegram.
 
 ########################################################################################
 "
@@ -152,12 +152,12 @@ echo -e "
 $green
     make -j $(nproc)
 $orange
-    If you would like to override the j value, hit 'o' now, otherwise hit <enter>
-    to continue.
+    Se pretender substituir o valor j, prima 'o' agora; caso contrário, prima <enter> 
+    para continuar.
 
 $pink
-    FYI, the j value is the number of core processors to use to compile. Parmanode
-    has worked out the max value for you.
+    Para tua informação, o valor j é o número de núcleos de processadores a utilizar 
+    para compilar. A Parmanode calculou o valor máximo para si.
 $orange
 ########################################################################################
 "
@@ -168,7 +168,7 @@ clear
 echo -e "
 ########################################################################################
 
-    Please enter the$green j$orange value you wish to use, then hit enter.
+    Introduza o valor$green j$orange que pretende utilizar e, em seguida, prima Enter.
 
 ########################################################################################
 "
@@ -177,8 +177,8 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    You have chosen $j for the j value. <enter> to continue, or$cyan n$orange and <enter> 
-    to try again.
+    Escolheu $j para o valor j. <enter> para continuar, ou$cyan n$orange e <enter> 
+    para tentar novamente.
 
 ########################################################################################
 "
@@ -186,20 +186,20 @@ read choice2
 if [[ $choice2 == "" ]] ; then break ; fi
 done
 clear
-echo "Running make command, please wait..."
+echo "Executando o comando make, por favor aguarde..."
 sleep 3
 
 #compile
-make -j $j || enter_continue "Something might have gone wrong." 
+make -j $j || enter_continue "Algo pode ter corrido mal." 
 
 
 set_terminal
 echo -e "
 ########################################################################################
 $cyan
-    Running tests.$orange Will only take a few minutes. 
+    A fazer testes.$orange Só vai demorar alguns minutos. 
 
-    The output is will be saved to the file:
+    A saída é guardada no ficheiro:
 $green
     $HOME/.parmanode/bitcoin_compile_check.log
 $orange
@@ -214,17 +214,17 @@ sudo make -j $j check | tee $dp/bitcoin_compile_check.log
 echo -e "$orange
 ########################################################################################
 
-    Tests done. Hit $cyan<enter>$orange to continue on to the installation (copies binaries
-    to system wide directories).
+    Testes efectuados. Carregue em $cyan<enter>$orange para continuar a instalação 
+    (copia os binários para diretórios de todo o sistema).
 
-    If you saw errors, hit$cyan x$orange to abandon the installation. You would need 
-    to then uninstall the partial bitcoin installation before you can try again.
+    Se houver erros, prima$cyan x$orange para abandonar a instalação. Terá então de 
+    desinstalar a instalação parcial do bitcoin antes de poder tentar novamente.
 
-    Note: If you selected ordinals patch, then some transaction tests failing would
-    be normal. Carry on.
+    Nota: Se selecionou o patch de ordinais, é normal que alguns testes de transação 
+    falhem. Continue.
 
-    For Knots Bitcoin, if you see some bitcoin.ico error, it's probably safe to 
-    continue, it's just an icon file.
+    Para o Knots Bitcoin, se vir algum erro bitcoin.ico, provavelmente é seguro 
+    continuar, pois trata-se apenas de um ficheiro de ícone.
 
 ########################################################################################
 "
@@ -235,60 +235,60 @@ case $choice in
 q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
 esac
 
-sudo make install || enter_continue "something might have gone wrong here."
+sudo make install || enter_continue "algo pode ter corrido mal aqui."
 
 }
 
 function bitcoin_compile_dependencies {
 
 if [[ -z $1 ]] ; then 
-set_terminal ; echo -e "${pink}Upgrading, and installing dependencies to compile bitcoin...$orange"
+set_terminal ; echo -e "${pink}Atualização e instalação de dependências para compilar o bitcoin...$orange"
 sudo apt-get update -y
 sudo apt-get --fix-broken install -y
-sudo apt-get install -y make              || { enter_continue "Something went wrong with make.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y curl              || { enter_continue "Something went wrong with curl.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y make              || { enter_continue "Algo correu mal com o make.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y automake          || { enter_continue "Algo correu mal com o automake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y cmake             || { enter_continue "Algo correu mal com o cmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y curl              || { enter_continue "Algo correu mal com o curl.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y g++-multilib     
-sudo apt-get install -y libtool           || { enter_continue "Something went wrong with libtool.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y binutils          || { enter_continue "Something went wrong with binutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wrong with bsdmainutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y build-essential   || { enter_continue "Something went wrong with build-essential.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y autotools-dev     || { enter_continue "Something went wrong with autotools-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y pkg-config        || { enter_continue "Something went wrong with pkg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y python3           || { enter_continue "Something went wrong with python3.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y patch             || { enter_continue "Something went wrong with patch.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y autoconf          || { enter_continue "Something went wrong with autoconf.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libboost-all-dev  || { enter_continue "Something went wrong with libboost-all-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y imagemagick       || { enter_continue "Something went wrong with imagemagick.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y librsvg2-bin      || { enter_continue "Something went wrong with librsvg2-bin.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libdb-dev         || { enter_continue "Something went wrong with libdb-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libdb++-dev       || { enter_continue "Something went wrong with libdb++-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libzmq3-dev       || { enter_continue "Something went wrong with libzmq3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqrencode-dev   || { enter_continue "Something went wrong with libqrencode-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libsqlite3-dev    || { enter_continue "Something went wrong with libsqlite3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libevent-dev      || { enter_continue "Something went wrong with libevent-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libssl-dev        || { enter_continue "Something went wrong with libssl-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Something went wrong with libminiupnpc-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libprotobuf-dev   || { enter_continue "Something went wrong with libprotobuf-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y protobuf-compiler || { enter_continue "Something went wrong with protobuf-compiler.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libtool           || { enter_continue "Algo correu mal com o libtool.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y binutils          || { enter_continue "Algo correu mal com o binutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y bsdmainutils      || { enter_continue "Algo correu mal com o bsdmainutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y build-essential   || { enter_continue "Algo correu mal com o build-essential.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autotools-dev     || { enter_continue "Algo correu mal com o autotools-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y pkg-config        || { enter_continue "Algo correu mal com o pkg-config.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y python3           || { enter_continue "Algo correu mal com o python3.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y patch             || { enter_continue "Algo correu mal com o patch.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y autoconf          || { enter_continue "Algo correu mal com o autoconf.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libboost-all-dev  || { enter_continue "Algo correu mal com libboost-all-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y imagemagick       || { enter_continue "Algo correu mal com imagemagick.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y librsvg2-bin      || { enter_continue "Algo correu mal com librsvg2-bin.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb-dev         || { enter_continue "Algo correu mal com libdb-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libdb++-dev       || { enter_continue "Algo correu mal com libdb++-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libzmq3-dev       || { enter_continue "Algo correu mal com libzmq3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqrencode-dev   || { enter_continue "Algo correu mal com libqrencode-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libsqlite3-dev    || { enter_continue "Algo correu mal com libsqlite3-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libevent-dev      || { enter_continue "Algo correu mal com libevent-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libssl-dev        || { enter_continue "Algo correu mal com libssl-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libminiupnpc-dev  || { enter_continue "Algo correu mal com libminiupnpc-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libprotobuf-dev   || { enter_continue "Algo correu mal com libprotobuf-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y protobuf-compiler || { enter_continue "Algo correu mal com protobuf-compiler.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 fi
 
 if [[ $1 == GUI ]] ; then
 
 sudo apt-get install -y qtchooser 
 sudo apt-get install -y qtbase5-dev-tools
-sudo apt-get install -y qtcreator  || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qtbase5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-qmake || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtcreator  || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtbase5-dev || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-qmake || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev-tools || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y qt5-default  
-sudo apt-get install -y qtchooser || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5gui5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5core5a || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5dbus5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5widgets5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtchooser || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5gui5 || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5core5a || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5dbus5 || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5widgets5 || { enter_continue "Algo correu mal com .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 
  
 
