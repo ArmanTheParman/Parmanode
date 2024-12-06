@@ -325,9 +325,9 @@ $orange
 $cyan
     MAKER:
 $orange
-        As a maker, you need to use the yeild generator. There isn't a GUI for this.
-        You go to the Parmanode Yeild Generator submenu (after loading a wallet),
-        set your CJ terms and then start the Yeild Generator background process. 
+        As a maker, you need to use the yield generator. There isn't a GUI for this.
+        You go to the Parmanode Yield Generator submenu (after loading a wallet),
+        set your CJ terms and then start the Yield Generator background process. 
         This is basically a script which puts your offer on the market. You can see
         the state of the market by running your own OrderBook (see ParmaJoin main
         menu). There'll be a URL and you can go their to see your order is live. 

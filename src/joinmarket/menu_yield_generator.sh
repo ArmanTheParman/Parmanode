@@ -61,7 +61,7 @@ fi
 set_terminal_custom 48 ; echo -ne "
 ########################################################################################
 
-                                   YEILD GENERATOR                         $cyan
+                                   YIELD GENERATOR                         $cyan
                              Be a coinjoin market maker                   $orange
 
 ########################################################################################
@@ -75,7 +75,7 @@ $green
 $red
                 stop)$orange     Start Yield Generator 
 $yellow
-                c)$orange        Configure Yeild Generator Settings...
+                c)$orange        Configure Yield Generator Settings...
 $cyan
                 log)$orange     Follow Yield Generator log as it populates
 $cyan
@@ -152,9 +152,12 @@ return
 }
 
 function start_yield_generator {
+
     if [[ -n $ygrunning ]] ; then announce "Already running" ; continue ; fi
     check_wallet_loaded || return
-    
+
+    check_no_lock || return 1
+
     silentecho=true
     set_terminal
     announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
@@ -174,4 +177,23 @@ function stop_yield_generator {
     yg_PID=$(ps ax | grep privacyenhanced.py | grep -v grep | awk '{print $1}')
     kill -SIGTERM $yg_PID
     sudo rm $logfile 2>&1
+}
+
+function check_no_lock {
+
+if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
+
+    if ! [[ $1 == "silent" ]] ; then
+        announce "There seems to be lock file on this wallet. The wallet may be in use, or
+    it may have failed to shut down with a process gracefully. If it's the latter, it's safe
+    to delete the lock file - it's just an empty file that acts as a signal. You can delete
+    it from the Yield Generator menu."
+    fi
+
+    return 1
+else
+    return 0
+fi
+
+
 }

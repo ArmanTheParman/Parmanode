@@ -208,12 +208,6 @@ function check_wallet_loaded {
     else 
     return 0
     fi
-
-    if [[ $wallet == "NONE" ]] ; then
-    return 1 
-    else
-    return 0
-    fi
 }
 
 function fidelity_bonds_info {
