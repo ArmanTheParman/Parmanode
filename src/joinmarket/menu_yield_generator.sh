@@ -77,7 +77,7 @@ $red
 $yellow
                 c)$orange        Configure Yield Generator Settings...
 $cyan
-                log)$orange     Follow Yield Generator log as it populates
+                log)$orange      Follow Yield Generator log as it populates
 $cyan
                 lesslog)$orange  Read Yield Generator log with less (logv for vim)
 $cyan
@@ -185,9 +185,9 @@ if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
 
     if ! [[ $1 == "silent" ]] ; then
         announce "There seems to be lock file on this wallet. The wallet may be in use, or
-    it may have failed to shut down with a process gracefully. If it's the latter, it's safe
-    to delete the lock file - it's just an empty file that acts as a signal. You can delete
-    it from the Yield Generator menu."
+    a process using it may have failed to shut down gracefully. If it's the latter, it's
+    safe to delete the lock file - it's just an empty file that acts as a signal. You can 
+    delete it from the Yield Generator menu."
     fi
 
     return 1
