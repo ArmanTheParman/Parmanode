@@ -188,7 +188,7 @@ function stop_yield_generator {
 
 function check_no_lock {
 
-if [[ -z $wallet ]] ; return 0 ; fi
+if [[ -z $wallet ]] ; then return 0 ; fi
 
 if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
 
