@@ -189,7 +189,7 @@ function stop_yield_generator {
 
 function check_no_lock {
 
-if [[ -z $wallet ]] ; then return 0 ; fi
+if [[ -z $wallet || $wallet = "NONE" ]] ; then return 0 ; fi
 
 if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
 
@@ -199,6 +199,7 @@ if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
     safe to delete the lock file - it's just an empty file that acts as a signal. You can 
     delete it from the Yield Generator menu."
     fi
+
     export lockfile="true"
     return 1
 else
