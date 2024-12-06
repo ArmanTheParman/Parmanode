@@ -125,7 +125,6 @@ esac
 done
 }
 
-
 function yield_generator_log {
 
 log_counter
@@ -160,7 +159,7 @@ function start_yield_generator {
 
     silentecho=true
     set_terminal
-    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
+    announce "Please enter the password (not passphrase) for $wallet - keystrokes will not show" 
     unset silentecho
 
     export password=$enter_cont
@@ -180,6 +179,8 @@ function stop_yield_generator {
 }
 
 function check_no_lock {
+
+if [[ -z $wallet ]] ; return 0 ; fi
 
 if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
 

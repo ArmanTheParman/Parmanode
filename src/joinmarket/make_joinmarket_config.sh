@@ -21,8 +21,9 @@ function make_joinmarket_config {
 
 function add_directory_nodes {
 
-if ! grep -q "3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad.onion:5222" $jmfile ; then
-gsed -i '/directory_nodes =/s/$/, 3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad.onion:5222/' $jmfile 2>$dn
+if grep -q "3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad.onion:5222" $jmfile ; then
+gsed -i 's/3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad\.onion:5222, //' $jmfile 2>$dn
+gsed -i 's/3kxw6lf5vf6y26emzwgibzhrzhmhqiw6ekrek3nqfjjmhwznb2moonad\.onion:5222//' $jmfile 2>$dn
 fi
 if ! grep -q "bqlpq6ak24mwvuixixitift4yu42nxchlilrcqwk2ugn45tdclg42qid.onion:5222" $jmfile ; then
 gsed -i '/directory_nodes =/s/$/, bqlpq6ak24mwvuixixitift4yu42nxchlilrcqwk2ugn45tdclg42qid.onion:5222/' $jmfile 2>$dn
