@@ -3,15 +3,15 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    You are about to delete the entire Bitcoin database.$Pink Be careful. $orange
+    Estás prestes a apagar toda a base de dados Bitcoin.$Pink Tem cuidado. $orange
 
-    Do you wish to delete Bitcoin data on an internal drive or external drive?
+    Pretende apagar os dados do Bitcoin numa drive interna ou numa drive externa?
 
 $cyan        
-        internal)$orange       deletes data at $HOME/.bitcoin
+        interna)$orange       elimina dados em $HOME/.bitcoin
 
 $cyan
-        external)$orange       deletes data at $parmanode_drive/.bitcoin 
+        externa)$orange       elimina os dados em $parmanode_drive/.bitcoin 
 
 ########################################################################################
 "
@@ -22,27 +22,27 @@ case $choice in
 m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 internal) 
-are_you_sure "Delete internal drive blockchain data?" || return 1 
+are_you_sure "Eliminar os dados da blockchain da drive interna?" || return 1 
 if [[ ! -L $HOME/.bitcoin ]] ; then 
-please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
+please_wait && echo "Os dados serão eliminados e será criado um bitcoin.conf personalizado"
 sudo rm -rf $HOME/.bitcoin/*
 sleep 2
 make_bitcoin_conf
-success "Bitcoin data" "being deleted" && return 0
+success "Dados Bitcoin" "a serem eliminados" && return 0
 else
-announce "No Bitcoin data at the expected location. Aborting." ; return 1
+announce "Não há dados Bitcoin no local esperado. Abortar." ; return 1
 fi
 ;;
 
 external) 
-are_you_sure  "Delete external drive blockchain data?" || return 1
+are_you_sure  "Eliminar os dados da blockchain da drive externa?" || return 1
 mount_drive || return 1
-please_wait && echo "The data will be deleted, and a customised bitcoin.conf will be made"
+please_wait && echo "Os dados serão eliminados e será criado um bitcoin.conf personalizado"
 sudo rm -rf $parmanode_drive/.bitcoin/* 
 sleep 2
 make_bitcoin_conf
 debug "check conf file"
-success "Bitcoin data" "being deleted" && return 0 ;;
+success "Dados Bitcoin" "a serem eliminados" && return 0 ;;
 *)
 esac
 done
