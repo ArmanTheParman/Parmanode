@@ -6,7 +6,9 @@ export logfile="$HOME/.joinmarket/yg_privacy.log"
 export oblogfile="$HOME/.joinmarket/orderbook.log"
 while true ; do 
 
-
+########################################################################################
+#menu mods...
+########################################################################################
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 export jm_be_carefull="
 ${red}${blinkon}ParmaJoin uses a HOT wallet - be careful.
@@ -23,6 +25,16 @@ else
     unset jm_menu_shhh
 fi
 
+if ! grep "jm_hide_info=1" $hm >$dn 2>&1 ; then
+    export info="$cyan
+                  info)$orange        How to play with your bitcoins ('jailfauci to hide')"
+else
+    unset $info 
+fi
+
+########################################################################################
+#wallet detection...
+########################################################################################
 if [[ -z $wallet ]] ; then 
     debug "in none"
     #start by setting wallet to NONE
@@ -54,16 +66,15 @@ else
 	fi
 fi
 
-debug "w = $wallet"
-
 #is yield generator basic running?
 if ps aux | grep yield-generator-basic ; then 
     export yg="true"
 else
     export yg="false"
 fi
-
-#is obwatcher running?
+########################################################################################
+#Obwatcher detection
+########################################################################################
 export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print $1}')
 if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     export orderbook="${green}RUNNING$orange \n\n    Access Order Book\n      -from internal:$bright_blue    http://localhost:62601$orange or$bright_blue http://127.0.0.1:62601$orange
@@ -73,7 +84,9 @@ else
     export orderbook="${red}NOT RUNNING$orange"
     unset obwatcherPID
 fi
-
+########################################################################################
+#Menu print
+########################################################################################
 set_terminal_custom 51 ; echo -en "
 ########################################################################################$cyan
 
@@ -86,8 +99,7 @@ $jm_be_carefull
     Order Book is:       $orderbook
 $ygtext1
 
-$cyan
-                  info)$orange        How to play with your bitcoins 
+$info
 $magenta
                   ww)$orange          Wallet menu ... 
 $cyan
