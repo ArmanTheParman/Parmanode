@@ -1,9 +1,9 @@
 function menu_add_extras {
-while true
+while true ; do
 menu_add_source
-do
+if [[ $hp/parman_books ]] ; then UPDATE="${green}UPDATE " ; else unset UPDATE ; fi
 set_terminal
-echo -e "
+echo -en "
 ########################################################################################
 #                                                                                      #
 #    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Extras        $orange              #
@@ -17,7 +17,7 @@ echo -e "
 #                                                                                      #
 #$cyan              (u)$orange       Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
-#$cyan              (fb)$orange      Parman's recommended free books (pdfs)                        #
+#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)                        #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
