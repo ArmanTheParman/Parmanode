@@ -80,7 +80,7 @@ enter_continue "ONION - $ONION_ADDR_JOINMARKET"
 return 0
 fi
 
-enter_continue
+debug "goav ran"
 return 0
 fi
 
