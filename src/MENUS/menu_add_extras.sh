@@ -1,7 +1,7 @@
 function menu_add_extras {
 while true ; do
 menu_add_source
-if [[ $hp/parman_books ]] ; then UPDATE="${green}UPDATE " ; else unset UPDATE ; fi
+if [[ $hp/parman_books ]] ; then UPDATE="${green}UPDATE "; delete="\b\b\b\b\b\b" ; else unset UPDATE delete ; fi
 set_terminal
 echo -en "
 ########################################################################################
@@ -17,7 +17,7 @@ echo -en "
 #                                                                                      #
 #$cyan              (u)$orange       Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
-#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)                        #
+#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$orange $delete                       #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
