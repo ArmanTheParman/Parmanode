@@ -103,14 +103,6 @@ $cyan
                   obl)$orange         Order book log (obln for nano)
 $cyan
                   pub)$orange         Be a public orderbook (over Tor)...
-$cyan
-                  conf)$orange        Edit the configuration file (confv for vim)
-$cyan
-                  vc)$orange          Remove all config comments and make pretty
-$cyan
-                  man)$orange         Enter virtual Python environment and play
-                                      with scripts manually
-
 $orange   
 ########################################################################################
 "
