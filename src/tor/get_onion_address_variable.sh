@@ -16,6 +16,7 @@ if [[ $1 == "electrs" ]] ; then
 export ONION_ADDR_ELECTRS="$(sudo cat $varlibtor/electrs-service/hostname 2>$dn)" 
 fi
 
+debug "in goav2"
 if [[ $1 == "rtl" ]] ; then
 export ONION_ADDR_RTL="$(sudo cat $varlibtor/rtl-service/hostname 2>$dn)"
 fi
@@ -32,6 +33,7 @@ if [[ $1 == "public_pool" ]] ; then
 export ONION_ADDR_PP="$(sudo cat $varlibtor/public_pool-service/hostname 2>$dn)" 
 fi
 
+debug "in goav3"
 if [[ $1 == "electrumx" ]] ; then
 export ONION_ADDR_ELECTRUMX="$(sudo cat $varlibtor/electrumx-service/hostname 2>$dn)" 
 fi
@@ -48,6 +50,7 @@ if [[ $1 == "nostr" ]] ; then
 export ONION_ADDR_NOSTR="$(sudo cat $varlibtor/nostr-service/hostname 2>$dn)" 
 fi
 
+debug "in goav4"
 if [[ $1 == "litterminal" ]] ; then
 export ONION_ADDR_LITTERMINAL="$(sudo cat $varlibtor/litterminal-service/hostname 2>$dn)" 
 fi
