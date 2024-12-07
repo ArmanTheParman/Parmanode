@@ -76,6 +76,7 @@ if [[ $1 == "btcpay" ]] ; then
 
 if [[ $1 == "joinmarket" ]] ; then
 export ONION_ADDR_JOINMARKET="$(sudo cat $varlibtor/joinmarket-service/hostname 2>$dn)" 
+enter_continue "ONION - $ONION_ADDR_JOINMARKET"
 return 0
 fi
 

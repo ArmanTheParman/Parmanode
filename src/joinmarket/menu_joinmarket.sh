@@ -73,7 +73,7 @@ if [[ $obwatcherPID =~ [0-9]+ ]] ; then
       -from external:$bright_blue    http://$IP:61000$orange"
     if [[ -e $varlibtor/joinmarket-service ]] ; then
        get_onion_address_variable joinmarket 
-       export orderbook="$orderbook\n      -tor:$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
+       export orderbook="$orderbook\n      -tor (don't access yourself):$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
        enter_continue "pause $ONION_ADDR_JOINMARKET"
     fi
 else
