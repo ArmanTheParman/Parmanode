@@ -74,6 +74,7 @@ if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     if [[ -e $varlibtor/joinmarket-service ]] ; then
        get_onion_address_variable joinmarket 
        export orderbook="$orderbook\n      -tor:$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
+    fi
 else
     export orderbook="${red}NOT RUNNING$orange"
     unset obwatcherPID
@@ -286,6 +287,7 @@ TMUX=$TMUX2
 pub)
 public_orderbook_info
 ;;
+
 *)
 invalid
 ;;
