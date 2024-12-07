@@ -8,9 +8,9 @@ if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/joinmarket-service/" \
     restart="true"
 fi
 
-if sudo grep "HiddenServicePort 5222 127.0.0.1:5222" \
+if sudo grep "HiddenServicePort 5222 127.0.0.1:62601" \
     $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
-    echo "HiddenServicePort 5222 127.0.0.1:5222" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    echo "HiddenServicePort 5222 127.0.0.1:62601" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
     restart="true"
 fi
 
