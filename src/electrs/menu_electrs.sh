@@ -300,10 +300,10 @@ fi
 #get bitcoin block number
 source $bc
 curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >$tmp/result 2>&1
-gbci=$(cat $tmp/result | grep -E ^{ | jq '.result')
+gbcinfo=$(cat $tmp/result | grep -E ^{ | jq '.result')
 
 #bitcoin finished?
-bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
+bsync=$(echo $gbcinfo | jq -r ".initialblockdownload") #true or false
 
 if [[ $bsync == "true" ]] ; then
 
@@ -318,7 +318,7 @@ elif [[ $bsync == "false" ]] ; then
         export electrs_sync="Wait...$orange"
 
     else 
-        bblock=$(echo $gbci | jq -r ".blocks")    
+        bblock=$(echo $gbcinfo | jq -r ".blocks")    
 
         if [[ $bblock == $electrs_sync ]] ; then
         export electrs_sync="Block $electrs_sync ${pink}Fully sync'd$orange"
@@ -328,6 +328,7 @@ elif [[ $bsync == "false" ]] ; then
     fi
 
     if [[ -z $electrs_sync ]] ; then
+        debug "-z \$electrs_sync"
         export electrs_sync="Wait...$orange"
     fi
 
