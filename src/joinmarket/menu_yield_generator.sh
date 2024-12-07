@@ -101,7 +101,7 @@ case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 l)
 clear
 cd $HOME/.joinmarket/wallets
-aa
+ls -lah
 enter_continue
 cd -
 ;;
