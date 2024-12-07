@@ -47,6 +47,8 @@ success "Parman's recommended computer books has been downloaded and can be
 
     $hp/parman_books/ $orange
 
+    You can also access them from the Parmanode submenu.
+
     "
 return 0
 fi
