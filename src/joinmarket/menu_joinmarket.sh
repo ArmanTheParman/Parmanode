@@ -389,6 +389,6 @@ invalid
 esac
 done
 
-enable_tor_general
+enable_joinmarket_tor || return 1
 
 }

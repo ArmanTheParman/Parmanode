@@ -6,7 +6,7 @@ Version 3.48.1
     -electrs Mac start changes, and log bug fix
     -electrs service file includes log output to Stdout and Stderr
     -ParmanBooks menu smol improvements
-    -Tor enabled for RTL Mac, and LitD Mac
+    -Tor enabled for RTL Mac, and Litterminal Mac
     
 Version 3.48.0
     -X11Forwarding function and XQuartz for Mac (modifies sshd_config)
