@@ -52,12 +52,15 @@ if [[ $1 == "litterminal" ]] ; then
 export ONION_ADDR_LITTERMINAL="$(sudo cat $varlibtor/litterminal-service/hostname 2>$dn)" 
 fi
 
+debug "in goav3.3"
+
 if [[ $1 == "btcpay" ]] ; then
 
     if [[ -e $varlibtor/btcpay-service ]] ; then
     export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpay-service/hostname 2>$dn)" 
     elif [[ -e $varlibtor/btcpayTOR-server ]] ; then #remove in 2025
     export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpayTOR-server/hostname 2>$dn)" 
+    fi
 fi
 
 debug "in goav4"
@@ -69,6 +72,5 @@ fi
 
 debug "goav ran"
 return 0
-fi
 
 }
