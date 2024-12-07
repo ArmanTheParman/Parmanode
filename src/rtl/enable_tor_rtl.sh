@@ -1,5 +1,4 @@
 function enable_tor_rtl {
-if [[ $OS == Mac ]] ; then announce "Tor feature not availalbe for Mac yet." ; return 1 ; fi
 
 clear
 enable_tor_general || return 1
@@ -16,17 +15,16 @@ if sudo grep "HiddenServicePort 7005 127.0.0.1:3000" \
 
 parmanode_conf_add "rtl_tor=true"
 
-sudo systemctl restart tor
+restart_tor
 }
 
 function disable_tor_rtl {
-if [[ $OS == Mac ]] ; then return 1 ; fi
+if [[ $OS == "Mac" ]] ; then return 1 ; fi
 clear
 file="$macprefix/etc/tor/torrc"
 
 sudo gsed -i "/rtl-service/d" $file 
 sudo gsed -i "/7005 127/d" $file 
 parmanode_conf_remove "rtl_tor"
-sudo systemctl restart tor
-
+restart_tor
 }

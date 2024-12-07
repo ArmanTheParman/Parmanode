@@ -1,5 +1,5 @@
 function enable_joinmarket_tor {
-if [[ $OS == Mac ]] ; then announce "Tor feature not availalbe for Mac yet." ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then announce "Tor feature not availalbe for Mac yet." ; return 1 ; fi
 
 clear
 enable_tor_general || return 1

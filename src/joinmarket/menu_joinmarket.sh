@@ -364,8 +364,9 @@ set_terminal_high ; echo -e "
 
     You can publish your copy of the orderbook over Tor with your own unique onion
     address. It doesn't hurt your privacy as long as you don't publish to the world
-    that this is your onion address. You should also not connect to your own onion
-    address - that's the recommendation, but I can't explain exactly why to be frank.
+    that this is your onion address (you have to be clever about how to get the address
+    known). You should also not connect$red to$orange your own onion address - that's the 
+    recommendation, but I can't explain exactly why, to be honest.
 
     Shall we?
 $green
@@ -389,7 +390,5 @@ esac
 done
 
 enable_tor_general
-
-
 
 }
