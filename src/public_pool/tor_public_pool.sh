@@ -3,17 +3,17 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/public_pool-service/" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
-    echo "HiddenServiceDir $macprefix/var/lib/tor/public_pool-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+if sudo grep "HiddenServiceDir $varlibtor/public_pool-service/" \
+    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+    echo "HiddenServiceDir $varlibtor/public_pool-service/" | sudo tee -a $torrc >$dn 2>&1
     fi
 
 if sudo grep "HiddenServicePort 5055 127.0.0.1:5052" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
-    echo "HiddenServicePort 5055 127.0.0.1:5052" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+    echo "HiddenServicePort 5055 127.0.0.1:5052" | sudo tee -a $torrc >$dn 2>&1
     fi
 
-sudo systemctl restart tor
+restart_tor
 
 get_onion_address_variable "public_pool"
 
@@ -26,10 +26,9 @@ enter_continue ; jump $enter_cont
 }
 
 function disable_tor_public_pool {
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-file="$macprefix/etc/tor/torrc"
-sudo gsed -i "/public_pool/d" $file 
-sudo gsed -i "/127.0.0.1:5052/d" $file 
-sudo systemctl restart tor
+
+sudo gsed -i "/public_pool/d" $torrc
+sudo gsed -i "/127.0.0.1:5052/d" $torrc
+restart_tor
 success "Public Pool Tor" "being disabled"
 }

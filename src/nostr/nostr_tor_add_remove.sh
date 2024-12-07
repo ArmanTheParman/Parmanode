@@ -1,32 +1,30 @@
 function nostr_tor_add {
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/nostr-service/" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true 
+if sudo grep "HiddenServiceDir $varlibtor/nostr-service/" \
+    $torrc grep -v "^#" >$dn 2>&1 ; then true 
     else 
-    echo "HiddenServiceDir $macprefix/var/lib/tor/nostr-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    echo "HiddenServiceDir $varlibtor/nostr-service/" | sudo tee -a $torrc >$dn 2>&1
     fi
 
 if sudo grep "HiddenServicePort 7081 127.0.0.1:7080" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true 
+    $torrc | grep -v "^#" >$dn 2>&1 ; then true 
     else
-    echo "HiddenServicePort 7081 127.0.0.1:7080" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    echo "HiddenServicePort 7081 127.0.0.1:7080" | sudo tee -a $torrc >$dn 2>&1
     fi
 
-sudo systemctl restart tor
+restart_tor
 
 }
 
 function nostr_tor_remove {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
 please_wait
 
-sudo gsed -i "/nostr-service/d" $macprefix/etc/tor/torrc 
-sudo gsed -i  "/127.0.0.1:7080/d" $macprefix/etc/tor/torrc
+sudo gsed -i "/nostr-service/d" $torrc
+sudo gsed -i  "/127.0.0.1:7080/d" $torrc
 
-sudo systemctl restart tor
+restart_tor
 
 set_terminal
 }

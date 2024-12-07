@@ -1,20 +1,19 @@
 function enable_tor_thunderhub {
-if [[ $OS == Mac ]] ; then return 0 ; fi
 source $pc
 
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $macprefix/var/lib/tor/thunderhub-service/" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
-    echo "HiddenServiceDir $macprefix/var/lib/tor/thunderhub-service/" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+if sudo grep "HiddenServiceDir $varlibtor/thunderhub-service/" \
+    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+    echo "HiddenServiceDir $varlibtor/thunderhub-service/" | sudo tee -a $torrc >$dn 2>&1
     fi
 
 if sudo grep "HiddenServicePort 2050 127.0.0.1:$thub_port" \
-    $macprefix/etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
-    echo "HiddenServicePort 2050 127.0.0.1:$thub_port" | sudo tee -a $macprefix/etc/tor/torrc >$dn 2>&1
+    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+    echo "HiddenServicePort 2050 127.0.0.1:$thub_port" | sudo tee -a $torrc >$dn 2>&1
     fi
 
-sudo systemctl restart tor
+restart_tor
 
 get_onion_address_variable "thunderhub"
 
@@ -27,9 +26,7 @@ enter_continue ; jump $enter_cont
 }
 
 function disable_tor_thunderhub {
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-file="$macprefix/etc/tor/torrc"
-sudo gsed -i "/thunderhub/d" $file 
-sudo gsed -i "/127.0.0.1:2050/d" $file 
-sudo systemctl restart tor
+sudo gsed -i "/thunderhub/d" $torrc
+sudo gsed -i "/127.0.0.1:2050/d" $torrc
+restart_tor
 }
