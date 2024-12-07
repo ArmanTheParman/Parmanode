@@ -2,7 +2,9 @@ function temp_patch {
 cleanup_parmanode_service
 truncatedebuglog
 truncatexsessions
+if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
+fi
 remove_tor_log_patch
 #move to next patch, patch 8
     reduce_systemd_logs 
@@ -33,6 +35,15 @@ if grep -q "electrsdkr" $ic ; then
     if ! docker exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
         docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
+fi
+
+if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep -q "StandardOutput" /etc/systemd/system/electrs.service ; then
+please_wait
+echo -e "${green}Once off, adjusting electrs service file real quick\n$orange"
+sudo gsed -i '/\[Install\]/i\
+# Logging\nStandardOutput=append:/home/parman/.electrs/run_electrs.log\nStandardError=append:/home/parman/.electrs/run_electrs.log\n' /etc/systemd/system/electrs.service  >$dn 2>&1
+sudo systemctl daemon-reload >$dn 2>&1
+sudo systemctl restart electrs >$dn 2>&1
 fi
 
 #remove in 2025

@@ -33,11 +33,11 @@ if [[ -e $logfile ]] ; then
 fi
 
 #if grep "setting onion hostname to" $logfile ; then
-if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
+if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v grep | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
     ygtext="    Yield Generator is:    $green   RUNNING$orange with wallet$magenta $wallet"
     
-    if docker exec joinmarket ps ax | grep obwatch | grep -q python ; then
+    if ps ax | grep obwatch | grep -q python ; then
         if [[ -z $nick ]] ; then
             orderbooknn="\n\r    Orderbookd Nickname is:   ${bright_blue}refresh later to see$orange"
         else
@@ -58,31 +58,38 @@ if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" ||
     unset ygrunning
 fi
 
+check_no_lock silent ; if [[ $lockfile == "true" ]] ; then
+locktext="${red}Warning, the wallet as a lockfile attached.$orange"
+cyanlock=$red ; orangelock=$red 
+else
+cyanlock=$cyan ; orangelock=$orange
+fi
+
+
 set_terminal_custom 48 ; echo -ne "
 ########################################################################################
 
-                                   YEILD GENERATOR                         $cyan
-                              Be a coinjoin market maker                   $orange
+                                   YIELD GENERATOR                         $cyan
+                             Be a coinjoin market maker                   $orange
 
 ########################################################################################
-
+$locktext
 
 $ygtext
 $orderbooknn
-
 
 $green
                 start)$orange    Start Yield Generator 
 $red
                 stop)$orange     Start Yield Generator 
 $yellow
-                c)$orange        Configure Yeild Generator Settings...
+                c)$orange        Configure Yield Generator Settings...
 $cyan
-                flog)$orange     Follow Yield Generator log as it populates
+                log)$orange      Follow Yield Generator log as it populates
 $cyan
-                log)$orange      Read Yield Generator log with the (logv for vim)
-$cyan
-                del)$orange      Delete lockfile ... 
+                lesslog)$orange  Read Yield Generator log with less (logv for vim)
+$cyanlock
+                del)$orangelock      Lockfile info and fix ... $orange
 
 $ygs
 ########################################################################################
@@ -99,7 +106,7 @@ stop)
 stop_yield_generator
 ;;
 
-log)
+lesslog)
    check_wallet_loaded || continue
    announce "Hint: Use q to exit the view screen"
    sudo less -R $logfile
@@ -108,7 +115,7 @@ logv)
    check_wallet_loaded || continue
    vim_warning ; sudo vim $logfile
 ;; 
-flog)
+log)
     check_wallet_loaded || continue
     yield_generator_log || { enter_continue "some error" ; return 1 ; }
 ;;
@@ -125,7 +132,6 @@ del)
 esac
 done
 }
-
 
 function yield_generator_log {
 
@@ -153,23 +159,52 @@ return
 }
 
 function start_yield_generator {
+
     if [[ -n $ygrunning ]] ; then announce "Already running" ; continue ; fi
     check_wallet_loaded || return
-    
+
+    check_no_lock || return 1
+
     silentecho=true
     set_terminal
-    announce "Please enter the password (lock) for $wallet - keystrokes will not show" 
+    announce "Please enter the password (not passphrase) for $wallet 
+    (Keystrokes will not show)." 
     unset silentecho
 
-    password=$enter_cont
-    docker exec -d joinmarket bash -c "echo $password | /jm/clientserver/scripts/yg-privacyenhanced.py /root/.joinmarket/wallets/$wallet | tee /root/.joinmarket/yg_privacy.log" || enter_continue "Some error with wallet: $wallet"
-    unset password enter_cont
-    sleep 1
+    export password=$enter_cont
+    TMUX2=$TMUX ; unset TMUX ; clear
+    tmux new -s yg -d "source $HOME/parmanode/joinmarket/jmvenv/bin/activate ; 
+    echo $password | $HOME/parmanode/joinmarket/scripts/yg-privacyenhanced.py $HOME/.joinmarket/wallets/$wallet --wallet-password-stdin |& tee $HOME/.joinmarket/yg_privacy.log ;
+    deactivate ; "
+    TMUX=$TMUX2
+    unset password unet_cont
 
 }
 
 function stop_yield_generator {
-    yg_PID=$(docker exec joinmarket ps ax | grep privacyenhanced.py | grep -v bash | awk '{print $1}')
-    docker exec joinmarket kill -SIGTERM $yg_PID
+    yg_PID=$(ps ax | grep privacyenhanced.py | grep -v grep | awk '{print $1}')
+    kill -SIGTERM $yg_PID
     sudo rm $logfile 2>&1
+}
+
+function check_no_lock {
+
+if [[ -z $wallet || $wallet = "NONE" ]] ; then return 0 ; fi
+
+if ls $HOME/.joinmarket/wallets/ | grep -q "\.$wallet\.lock" ; then
+
+    if ! [[ $1 == "silent" ]] ; then
+        announce "There seems to be lock file on this wallet. The wallet may be in use, or
+    a process using it may have failed to shut down gracefully. If it's the latter, it's
+    safe to delete the lock file - it's just an empty file that acts as a signal. You can 
+    delete it from the Yield Generator menu."
+    fi
+
+    export lockfile="true"
+    return 1
+else
+    return 0
+fi
+
+
 }

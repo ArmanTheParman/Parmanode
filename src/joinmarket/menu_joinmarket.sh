@@ -24,15 +24,16 @@ else
 fi
 
 if [[ -z $wallet ]] ; then 
+    debug "in none"
     #start by setting wallet to NONE
     wallet=NONE
 
     #check if yg running, and load wallet variable, and set menu text
-    if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
-    wallet=$(docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -v bash | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
-    #ygtext1 ... doin't rename, needs to not be ygtext (clashes with yg menu version)
+    if ps ax | grep yg-privacyenhanced.py | grep -q python ; then
+    wallet=$(ps ax | grep yg-privacyenhanced.py | grep python | grep -Eo 'wallets/.*$' | cut -d / -f2 | grep -Eo '^.+ ')
+    debug "wallet is $wallet"
     ygtext1="
-    Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
+    Yield Generator :   $green RUNNING$orange with wallet$magenta $wallet
 "
     else
         ygext=""
@@ -45,48 +46,32 @@ if [[ -z $wallet ]] ; then
 
 # if there is a wallet loaded, then check if yg is running for the menu
 else
-	if docker exec joinmarket ps ax | grep yg-privacyenhanced.py | grep -vq bash ; then
+    debug "in else"
+	if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
 "
 	fi
 fi
 
-if docker ps 2>$dn | grep -q joinmarket ; then
+debug "w = $wallet"
 
-    export joinmarket_running="${green}RUNNING$orange"
-
-    #is yield generator basic running?
-    if docker exec joinmarket ps aux | grep yield-generator-basic ; then 
-        export yg="true"
-    else
-        export yg="false"
-    fi
-
-    #is obwatcher running?
-    export obwatcherPID=$(docker exec joinmarket ps ax | grep "ob-watcher.py" | awk '{print $1}')
-    if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-        export orderbook="${green}RUNNING$orange \n    Access Order Book\n    from internal:   $bright_blue    localhost:61000 or 127.0.0.1:61000$orange"
-    else
-        export orderbook="${red}NOT RUNNING$orange"
-    fi
-
+#is yield generator basic running?
+if ps aux | grep yield-generator-basic ; then 
+    export yg="true"
 else
-     export joinmarket_running="${red}NOT RUNNING$orange"
-     export yg="false"
-     export orderbook="${red}NOT RUNNING${orange}"
+    export yg="false"
 fi
 
-if tmux ls | grep -q joinmarket_socat ; then 
-    if echo $orderbook | grep -q NOT ; then
-        socatstatus="${green}RUNNING$orange"
-    else
-        socatstatus="${green}RUNNING$orange
-    Access Order Book
-    from external: $bright_blue      $IP:61000$orange"
-    fi
-else 
-    socatstatus="${red}NOT RUNNING$orange"
+#is obwatcher running?
+export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print $1}')
+if [[ $obwatcherPID =~ [0-9]+ ]] ; then
+    export orderbook="${green}RUNNING$orange \n\n    Access Order Book\n      -from internal:$bright_blue    http://localhost:62601$orange or$bright_blue http://127.0.0.1:62601$orange
+      -from external:$bright_blue    http://$IP:61000$orange"
+
+else
+    export orderbook="${red}NOT RUNNING$orange"
+    unset obwatcherPID
 fi
 
 set_terminal_custom 51 ; echo -en "
@@ -96,37 +81,36 @@ set_terminal_custom 51 ; echo -en "
 $jm_be_carefull
 ########################################################################################
 
-
-    JoinMarket is:       $joinmarket_running
-
     Active wallet is:    $magenta$wallet$orange
-
-    Socat is:            $socatstatus
 
     Order Book is:       $orderbook
 $ygtext1
 
 $cyan
-                  s)$orange           Start/stop JoinMarket Docker container
+                  info)$orange        How to play with your bitcoins 
+$magenta
+                  ww)$orange          Wallet menu ... 
+$cyan
+                  gui)$orange         Start Joinmarket GUI (CJ taker)
+$red
+                  yg)$orange          Yield Generator menu (CJ Maker) ...
 $cyan
                   ob)$orange          Start/Stop orderbook
 $cyan
                   obi)$orange         Orderbook access info ...
 $cyan
-                  ss)$orange          Start/Stop Socat forwarding (${cyan}ssi$orange for info)
+                  obl)$orange         Order book log (obln for nano)
+$cyan
+                  pub)$orange         Be a public orderbook (over Tor)
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
-$magenta
-                  ww)$orange          Wallet menu ... 
-$red
-                  yg)$orange          Yield Generator menu ...
-$red
-                  man)$orange         Manual DIY commands (enter Docker container)
-$bright_blue
-                  mm)$orange          Menu 2 ...
+$cyan
+                  vc)$orange          Remove all config comments and make pretty
+$cyan
+                  man)$orange         Enter virtual Python environment and play
+                                      with scripts manually
 
-
-$jm_menu_shhh$orange   
+$orange   
 ########################################################################################
 "
 choose "xpmq" ; read choice 
@@ -141,26 +125,11 @@ else
 sudo gsed -i "/jm_be_carefull=1/d" $hm
 fi
 ;;
-shhh)
-if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
-echo "jm_menu_shhh=1" >> $hm
-else
-sudo gsed -i "/jm_menu_shhh=1/d" $hm
-fi
-;;
 
-s)
-if echo $joinmarket_running | grep -q NOT ; then
-    start_joinmarket
-else
-
-    if [[ $yg == "true" ]] ; then
-    stop_yeild_generator
-    fi
-
-    stop_joinmarket
-    unset obwatcherPID
-fi
+gui)
+    jmvenv "activate"
+    $hp/joinmarket/scripts/joinmarket-qt.sh >$dn
+    jmvenv "deactivate"
 ;;
 
 ob)
@@ -169,16 +138,6 @@ ob)
 
 obi)
    orderbook_access_info
-;;
-ss)
-   if grep -q "NOT" <<< $socatstatus ; then
-   start_socat joinmarket
-   else
-   stop_socat joinmarket
-   fi
-;;
-ssi)
-    check_socat_working || return 1
 ;;
 
 l|load)
@@ -190,6 +149,10 @@ conf)
     sudo nano $jmcfg 
 ;;
 
+confv)
+vim_warning ; sudo vim $jmcfg
+;;
+
 ww)
     menu_joinmarketwallet
 ;;
@@ -198,27 +161,13 @@ yg)
     menu_yield_generator || return 1
     ;;
 
-mm)
-    menu_joinmarket2
-;;
-
 vc)
 sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
 sudo mv $tmp/cfg $jmcfg
 enter_continue "file modified"
 ;;
-confv)
-vim_warning ; sudo vim $jmcfg
-;;
 
-man)
-clear
-enter_continue "Type exit and <enter> to return from container back to Parmanode"
-clear
-docker exec -it joinmarket bash 
-;;
 cr)
-
     jm_create_wallet_tool
 
     ;;
@@ -235,24 +184,31 @@ di)
     display_jm_addresses a
     ;;
 sum)
-
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet summary" | tee $tmp/jmaddresses
+    jmvenv "activate"
+    $HOME/joinmarket/scripts/wallet-tool.py $wallet summary | tee $tmp/jmaddresses
+    jmvenv "deactivate"
     enter_continue
     ;;
 cp)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet changepass" 
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet changepass
+    jmvenv "deactivate"
     ;;
 
 su)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showutxos" 
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet showutxos
+    jmvenv "deactivate"
     enter_continue
     ;;
 ss)
     check_wallet_loaded || continue
-    docker exec -it joinmarket bash -c "/jm/clientserver/scripts/wallet-tool.py $wallet showseed" 
+    jmvenv "activate"
+    $hp/joinmarket/scripts/wallet-tool.py $wallet showseed
+    jmvenv "deactivate"
     enter_continue
     ;;
 bk)
@@ -261,9 +217,62 @@ bk)
 h|hist)
     wallet_history_jm
     ;;
-sp)
-    spending_info_jm
-    ;;
+
+vc)
+cfg="$HOME/.joinmarket/joinmarket.cfg" 
+sed '/^#/d' $cfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
+sudo mv $tmp/cfg $cfg
+enter_continue "file modified"
+;;
+
+obl)
+announce "Hit q to exit this. Use 'vim' style controls to move about.
+
+          \r    Note that connection advice in this output (localhost:62601)
+          \r    will not work because it's running in a Docker container.
+          \r    Just follow the connection information in the 
+          \r    Parmanode menu.
+"
+less -R $oblogfile
+;;
+obln)
+announce "Hit control x to exit nano text editor.
+
+          \r    Note that connection advice in this output (localhost:62601)
+          \r    will not work because it's running in a Docker container.
+          \r    Just follow the connection information in the 
+          \r    Parmanode menu.
+"
+nano $oblogfile
+;;
+info)
+parmajoin_info
+spending_info_jm
+;;
+
+man)
+announce "You're entering a TMUX sessions (terminal container). Exit by either
+    typing 'exit' or, <control> b then d to detach from the session and leave 
+    any scripts running - the latter is not recommended unless you know a thing 
+    or two about TMUX. Not hard to learn using the internet."
+jump $enter_cont
+TMUX2=$TMUX ; unset TMUX
+
+if ! tmux ls | grep -q man_jm ; then
+    tmux new -s man_jm -d
+    tmux send-keys -t man_jm "source $HOME/parmanode/joinmarket/jmvenv/bin/activate" C-m
+    tmux send-keys -t man_jm "cd $HOME/parmanode/joinmarket/scripts ; clear" C-m
+    tmux a -t man_jm
+fi
+
+tmux a -t man_jm
+
+TMUX=$TMUX2
+;;
+
+pub)
+public_orderbook_info
+;;
 *)
 invalid
 ;;
@@ -297,5 +306,90 @@ $orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
+
+}
+
+function parmajoin_info {
+
+set_terminal_high ; echo -e "
+########################################################################################
+  $cyan                                PARMAJOIN INFO $orange
+########################################################################################
+
+    ParmaJoin is software that uses JoinMarket, and gives you an interative menu.
+
+    You'll first have to create a wallet and fund it.
+
+    Then you can decide how you want to coinjoin. There are two ways. Either as
+    a maker or a taker.
+$cyan
+    TAKER:
+$orange        
+        To be a taker, ie pay a fee to coinjoin, you have to use the GUI. Load it up
+        and then use it to load your wallet. Set the configuration opions, and
+        then do a single CJ or go through the 'tumbler' continuous mixer.
+$cyan
+    MAKER:
+$orange
+        As a maker, you need to use the yield generator. There isn't a GUI for this.
+        You go to the Parmanode Yield Generator submenu (after loading a wallet),
+        set your CJ terms and then start the Yield Generator background process. 
+        This is basically a script which puts your offer on the market. You can see
+        the state of the market by running your own OrderBook (see ParmaJoin main
+        menu). There'll be a URL and you can go their to see your order is live. 
+        You can identify your order with the 'nickname' printed in the YG menu.
+$cyan
+    Note:
+$orange        
+        If the YG stops abruptly (ie doesn't go througha graceful shutdown), then
+        there will be a residual lock file (which is there to prevent double usage
+        of the same wallet). You need to approve this to be deleted before you can
+        start the YG again. There's a menu option for that.
+
+$red
+        Have fun playing with your bitcoins, and whatever else that you do.$orange
+
+########################################################################################
+"
+enter_continue
+}
+
+function public_orderbook_info {
+
+while true ; do
+set_terminal_high ; echo -e "
+########################################################################################$cyan
+                                 Public Orderbook$orange
+########################################################################################
+
+    You can publish your copy of the orderbook over Tor with your own unique onion
+    address. It doesn't hurt your privacy as long as you don't publish to the world
+    that this is your onion address. You should also not connect to your own onion
+    address - that's the recommendation, but I can't explain exactly why to be frank.
+
+    Shall we?
+$green
+                            y)$orange      Yep
+$red
+                            n)$orange      How 'bout no
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice || { invalid ; continue ; }
+case $choice in
+q|Q) exit ;; p|P|n) return 1 ;; m|M) back2main ;;
+y)
+break
+;;
+*)
+invalid 
+;;
+esac
+done
+
+enable_tor_general
+
+
 
 }

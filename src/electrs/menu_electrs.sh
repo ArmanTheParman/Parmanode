@@ -12,30 +12,17 @@ fi
 
 set_terminal
 
-#is electrs running variable
-unset running runningd
-if [[ $electrsis == nondocker ]] ; then
-    if ps -x | grep electrs | grep conf >$dn 2>&1  && ! tail -n 10 $logfile 2>$dn | grep -q "electrs failed"  ; then 
-    running="true"
-    else
-    running="false"
-    fi
-else 
-    if docker ps | grep -q electrs && docker exec electrs ps | grep electrs ; then
-    running="true"
-    else
-    running="false"
-    fi
-fi
+unset electrsrunning
+iselectrsrunning
 
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
 source $dp/parmanode.conf >$dn 2>&1
 
-if [[ $running == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $electrsrunning == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
 fi
 
 #Tor status
-if  [[ -e $macprefix/etc/tor/torrc && $electrsis == nondocker && $1 != fast ]] \
+if  [[ -e $macprefix/etc/tor/torrc && $electrsis == "nondocker" && $1 != fast ]] \
     && sudo grep -q "electrs" $macprefix/etc/tor/torrc \
     && grep -q "electrs_tor=true" $pc \
     && sudo cat $macprefix/var/lib/tor/electrs-service/hostname | grep -q "onion" >$dn 2>&1 ; then
@@ -65,7 +52,6 @@ else #electrsis nondocker
         electrs_version=$($HOME/parmanode/electrs/target/release/electrs --version 2>$dn)
 fi
 
-debug "pause"
 set_terminal_custom 50
 
 echo -e "
@@ -73,7 +59,7 @@ echo -e "
                                 ${cyan}Electrs $electrs_version Menu${orange} 
 ########################################################################################
 "
-if [[ $electrsis == nondocker && $running == "true" ]] ; then
+if [[ $electrsis == "nondocker" && $electrsrunning == "true" ]] ; then
 echo -e "
       ELECTRS IS:$green RUNNING$orange
 
@@ -91,7 +77,7 @@ echo -e "
                   $ONION_ADDR_ELECTRS:7004:t $orange
          $yellow \e[G\e[41G(From any computer in the world)$orange"
       fi
-elif [[ $electrsis == nondocker && $running == "false" ]] ; then
+elif [[ $electrsis == "nondocker" && $electrsrunning == "false" ]] ; then
 echo -e "
       ELECTRS IS:$red NOT RUNNING$orange -- CHOOSE \"start\" TO RUN
 
@@ -101,7 +87,7 @@ fi #end electrs running or not
 if [[ $electrsis == docker ]] ; then
 
 
-if [[ $running == "true" ]] ; then echo -e "
+if [[ $electrsrunning == "true" ]] ; then echo -e "
       ELECTRS IS:$green RUNNING$orange
 
       STATUS:     $green$electrs_sync$orange ($drive_electrs drive)
@@ -142,7 +128,7 @@ $cyan
 $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
-if [[ $OS == Linux && $electrsis == nondocker ]] ; then echo -e "$cyan
+if [[ $OS == Linux && $electrsis == "nondocker" ]] ; then echo -e "$cyan
       (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 $cyan      
       (newtor)$orange   Refresh Tor address
@@ -247,7 +233,7 @@ yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep "electrs" $ic | grep -q end && [[ $OS == Linux ]] ; then
-NODAEMON="true" ; pn_tmux "sudo journalctl -fexu electrs.service" ; unset NODAEMON
+NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 else
 NODAEMON="true" ; pn_tmux "tail -f $logfile" ; unset NODAEMON
 fi
@@ -314,10 +300,10 @@ fi
 #get bitcoin block number
 source $bc
 curl --user $rpcuser:$rpcpassword --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockchaininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/ >$tmp/result 2>&1
-gbci=$(cat $tmp/result | grep -E ^{ | jq '.result')
+gbcinfo=$(cat $tmp/result | grep -E ^{ | jq '.result')
 
 #bitcoin finished?
-bsync=$(echo $gbci | jq -r ".initialblockdownload") #true or false
+bsync=$(echo $gbcinfo | jq -r ".initialblockdownload") #true or false
 
 if [[ $bsync == "true" ]] ; then
 
@@ -332,7 +318,7 @@ elif [[ $bsync == "false" ]] ; then
         export electrs_sync="Wait...$orange"
 
     else 
-        bblock=$(echo $gbci | jq -r ".blocks")    
+        bblock=$(echo $gbcinfo | jq -r ".blocks")    
 
         if [[ $bblock == $electrs_sync ]] ; then
         export electrs_sync="Block $electrs_sync ${pink}Fully sync'd$orange"
@@ -342,7 +328,9 @@ elif [[ $bsync == "false" ]] ; then
     fi
 
     if [[ -z $electrs_sync ]] ; then
+        debug "-z \$electrs_sync"
         export electrs_sync="Wait...$orange"
     fi
+
 fi
 }

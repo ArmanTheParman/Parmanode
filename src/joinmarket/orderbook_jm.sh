@@ -1,7 +1,13 @@
 function orderbook_jm {
 if [[ -z $obwatcherPID ]] ; then
-docker exec -d joinmarket /bin/bash -c '/jm/clientserver/scripts/obwatch/ob-watcher.py | sudo tee /root/.joinmarket/orderbook.log'
-else
-docker exec joinmarket kill $obwatcherPID
+pn_tmux "jmvenv 'activate' ;
+$hp/joinmarket/scripts/obwatch/ob-watcher.py | tee $HOME/.joinmarket/orderbook.log ;
+jmvenv 'deactivate' ; " "obw"
+
+start_socat joinmarket
+
+else 
+kill $obwatcherPID 
+stop_socat joinmarket
 fi
 }
