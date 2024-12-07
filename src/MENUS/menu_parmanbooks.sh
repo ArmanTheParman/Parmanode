@@ -12,7 +12,8 @@ echo -ne "
 num=0 
 ls $hp/parman_books | while read i ; do 
                num=$((num + 1)) 
-               echo -e "$cyan    $num)$orange       $i"
+               if [[ $num -ge 10 ]] ; then delete="\b" ; else unset delete ; fi
+               echo -e "$cyan    $num)$orange   $delete    $i"
                done
 echo -ne "
 ########################################################################################
