@@ -80,6 +80,7 @@ enter_continue "ONION - $ONION_ADDR_JOINMARKET"
 return 0
 fi
 
+enter_continue
 return 0
 fi
 
