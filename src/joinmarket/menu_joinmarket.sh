@@ -404,6 +404,6 @@ invalid
 esac
 done
 
-enable_joinmarket_tor || return 1
+enable_joinmarket_tor || { enter_continue "Something went wrong." ; return 1 ; }
 
 }
