@@ -69,10 +69,7 @@ export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print 
 if [[ $obwatcherPID =~ [0-9]+ ]] ; then
     export orderbook="${green}RUNNING$orange \n\n    Access Order Book\n      -from internal:$bright_blue    http://localhost:62601$orange or$bright_blue http://127.0.0.1:62601$orange
       -from external:$bright_blue    http://$IP:61000$orange"
-    if test -e $varlibtor/joinmarket-service >$dn 2>&1 ; then
-       get_onion_address_variable "joinmarket" || { enter_continue "problem with goav" ; }
-       export orderbook="$orderbook\n      -tor (don't access yourself):$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
-    fi 
+
 else
     export orderbook="${red}NOT RUNNING$orange"
     unset obwatcherPID
@@ -106,7 +103,7 @@ $cyan
 $cyan
                   obl)$orange         Order book log (obln for nano)
 $cyan
-                  pub)$orange         Be a public orderbook (over Tor)
+                  pub)$orange         Be a public orderbook (over Tor)...
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
@@ -368,6 +365,23 @@ enter_continue
 }
 
 function public_orderbook_info {
+
+    if test -e $varlibtor/joinmarket-service >$dn 2>&1 ; then
+        get_onion_address_variable "joinmarket" 
+        set_terminal ; echo -e "
+########################################################################################
+
+        You have the orderbook available at the following address...
+$bright_blue
+        http://$ONION_ADDR_JOINMARKET:5222
+$orange
+########################################################################################
+"
+        enter_continue 
+        jump $enter_cont
+        return 0
+    fi
+#https://$ONION_ADDR_JOINMARKET:5222"
 
 while true ; do
 set_terminal_high ; echo -e "
