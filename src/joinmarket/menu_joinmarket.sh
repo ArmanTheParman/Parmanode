@@ -83,6 +83,7 @@ set_terminal_custom 51 ; echo -en "
 $jm_be_carefull
 ########################################################################################
 
+
     Active wallet is:    $magenta$wallet$orange
 
     Order Book is:       $orderbook
@@ -104,6 +105,7 @@ $cyan
 $cyan
                   pub)$orange         Be a public orderbook (over Tor)...
 $orange   
+
 ########################################################################################
 "
 choose "xpmq" ; read choice 
