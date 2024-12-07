@@ -1,7 +1,7 @@
 function menu_add_extras {
 while true ; do
 menu_add_source
-if [[ $hp/parman_books ]] ; then UPDATE="${green}UPDATE$orange "; delete="\b\b\b\b\b\b" ; else unset UPDATE delete ; fi
+if [[ $hp/parman_books ]] ; then UPDATE="${green}UPDATE$orange "; delete="\b\b\b\b\b\b\b" ; else unset UPDATE delete ; fi
 set_terminal
 echo -en "
 ########################################################################################
