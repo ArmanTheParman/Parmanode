@@ -75,7 +75,7 @@ if [[ $obwatcherPID =~ [0-9]+ ]] ; then
        get_onion_address_variable joinmarket 
        export orderbook="$orderbook\n      -tor (don't access yourself):$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
        enter_continue "pause $ONION_ADDR_JOINMARKET"
-    fi
+    fi 
 else
     export orderbook="${red}NOT RUNNING$orange"
     unset obwatcherPID
