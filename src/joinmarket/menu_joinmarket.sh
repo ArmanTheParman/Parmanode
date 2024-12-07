@@ -28,14 +28,12 @@ fi
 #wallet detection...
 ########################################################################################
 if [[ -z $wallet ]] ; then 
-    debug "in none"
     #start by setting wallet to NONE
     wallet=NONE
 
     #check if yg running, and load wallet variable, and set menu text
     if ps ax | grep yg-privacyenhanced.py | grep -q python ; then
     wallet=$(ps ax | grep yg-privacyenhanced.py | grep python | grep -Eo 'wallets/.*$' | cut -d / -f2 | grep -Eo '^.+ ')
-    debug "wallet is $wallet"
     ygtext1="
     Yield Generator :   $green RUNNING$orange with wallet$magenta $wallet
 "
@@ -50,7 +48,6 @@ if [[ -z $wallet ]] ; then
 
 # if there is a wallet loaded, then check if yg is running for the menu
 else
-    debug "in else"
 	if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
     ygtext1="
     Yield Generator is: $green RUNNING$orange with wallet$magenta $wallet
@@ -70,14 +67,11 @@ fi
 export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print $1}')
 
 if [[ $obwatcherPID =~ [0-9]+ ]] ; then
-debug "1"
     export orderbook="${green}RUNNING$orange \n\n    Access Order Book\n      -from internal:$bright_blue    http://localhost:62601$orange or$bright_blue http://127.0.0.1:62601$orange
       -from external:$bright_blue    http://$IP:61000$orange"
     if test -e $varlibtor/joinmarket-service >$dn 2>&1 ; then
-debug "2"
        get_onion_address_variable "joinmarket" || { enter_continue "problem with goav" ; }
        export orderbook="$orderbook\n      -tor (don't access yourself):$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
-debug "3 $ONION_ADDR_JOINMARKET"
     fi 
 else
     export orderbook="${red}NOT RUNNING$orange"
