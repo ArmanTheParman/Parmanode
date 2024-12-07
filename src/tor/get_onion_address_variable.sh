@@ -72,7 +72,7 @@ if [[ $1 == "btcpay" ]] ; then
     export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpay-service/hostname 2>$dn)" 
     elif [[ -e $varlibtor/btcpayTOR-server ]] ; then #remove in 2025
     export ONION_ADDR_BTCPAY="$(sudo cat $varlibtor/btcpayTOR-server/hostname 2>$dn)" 
-    fi
+fi
 
 if [[ $1 == "joinmarket" ]] ; then
 export ONION_ADDR_JOINMARKET="$(sudo cat $varlibtor/joinmarket-service/hostname 2>$dn)" 
