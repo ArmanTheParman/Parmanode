@@ -1,5 +1,4 @@
 function get_onion_address_variable {
-debug "in goav"
 if [[ $1 == "bitcoin" ]] ; then
 export ONION_ADDR="$(sudo cat $varlibtor/bitcoin-service/hostname 2>$dn)"
 fi
@@ -52,8 +51,6 @@ if [[ $1 == "litterminal" ]] ; then
 export ONION_ADDR_LITTERMINAL="$(sudo cat $varlibtor/litterminal-service/hostname 2>$dn)" 
 fi
 
-debug "in goav3.3"
-
 if [[ $1 == "btcpay" ]] ; then
 
     if [[ -e $varlibtor/btcpay-service ]] ; then
@@ -63,14 +60,10 @@ if [[ $1 == "btcpay" ]] ; then
     fi
 fi
 
-debug "in goav4"
-
 if [[ $1 == "joinmarket" ]] ; then
 export ONION_ADDR_JOINMARKET="$(sudo cat $varlibtor/joinmarket-service/hostname 2>$dn)" 
-debug "4"
 fi
 
-debug "goav ran"
 return 0
 
 }
