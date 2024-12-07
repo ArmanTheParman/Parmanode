@@ -356,8 +356,8 @@ $orange
         start the YG again. There's a menu option for that.
 
 $red
-        Have a good time playing with your bitcoin and your crypto and everything
-        else that you're playing with. $orange
+        Have a good with your bitcoin and your crypto and everything else that 
+        you're playing with. $orange
 
 ########################################################################################
 "
