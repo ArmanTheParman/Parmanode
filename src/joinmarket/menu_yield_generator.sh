@@ -58,8 +58,8 @@ if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" ||
     unset ygrunning
 fi
 
-check_no_lock silent ; if [[ $lockfile == "true" ]] ; then
-locktext="${red}Warning, the wallet as a lockfile attached.$orange"
+if ls $HOME/.joinmarket/wallets/ | grep -E "*.lock" ; then
+locktext="${red}Warning, there are locked wallets in your wallet directory. 'l' to list.$orange"
 cyanlock=$red ; orangelock=$red 
 else
 cyanlock=$cyan ; orangelock=$orange
