@@ -279,7 +279,7 @@ TMUX=$TMUX2
 ;;
 
 pub)
-public_orderbook_info
+public_orderbook
 ;;
 
 *)
