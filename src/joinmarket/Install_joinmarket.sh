@@ -54,10 +54,10 @@ function install_joinmarket {
     cd $hp/joinmarket >$dn
 
     source jmvenv/bin/activate || { announce "Something went wrong with the virtual env. Aborting." ; return 1 ; }
-yesorno "install matplotlib too?" && { 
+
+    #matplotlib needed for obwatcher, but it causes errors. downgrading numpy fixes that. This order is necessary.
     pip install matplotlib && pip install 'numpy<2' || { announce "Something went wrong with installing matplotlib. Aborting." ; return 1 ; } 
 
-}
     run_wallet_tool_joinmarket install || { enter_continue "aborting" ; return 1 ; }
 
     make_joinmarket_config || { enter_continue "aborting" ; return 1 ; }
