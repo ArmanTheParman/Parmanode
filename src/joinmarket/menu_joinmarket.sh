@@ -21,7 +21,7 @@ if ! grep "jm_hide_info=1" $hm >$dn 2>&1 ; then
     export info="$cyan
                   info)$orange        How to play with your bitcoins $green('jailfauci' to hide)$orange"
 else
-    unset $info 
+    unset info 
 fi
 
 ########################################################################################
