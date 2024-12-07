@@ -17,14 +17,6 @@ else
     unset jm_be_carefull
 fi
 
-if ! grep "jm_menu_shhh=1" $hm >$dn 2>&1 ; then
-export jm_menu_shhh="${bright_blue}If you remember them, you can execute menu 2 commands here as well.
-Type$cyan shhh$bright_blue to toggle this on and off.
-"
-else
-    unset jm_menu_shhh
-fi
-
 if ! grep "jm_hide_info=1" $hm >$dn 2>&1 ; then
     export info="$cyan
                   info)$orange        How to play with your bitcoins ('jailfauci to hide')"
@@ -134,7 +126,14 @@ relax)
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
 echo "jm_be_carefull=1" >> $hm
 else
-sudo gsed -i "/jm_be_carefull=1/d" $hm
+sudo gsed -i "/jm_be_carefull=1/d" $hm >$dn 2>&1
+fi
+;;
+jailfauci)
+if ! grep "jm_hide_info=1" $hm >$dn 2>&1 ; then
+echo "jm_hide_info=1" >> $hm
+else 
+sudo gsed -i "/jm_hide_info=1/d" $hm >$dn 2>&1
 fi
 ;;
 
