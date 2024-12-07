@@ -98,6 +98,14 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
+l)
+clear
+cd $HOME/.joinmarket/wallets
+aa
+enter_continue
+cd -
+;;
+
 start)
 start_yield_generator
 ;;
