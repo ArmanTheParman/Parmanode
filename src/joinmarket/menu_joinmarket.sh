@@ -92,11 +92,11 @@ $jm_be_carefull
 $ygtext1
 
 $info
-$magenta
+$cyan
                   ww)$orange          Wallet menu ... 
 $cyan
                   gui)$orange         Start Joinmarket GUI (CJ taker)
-$red
+$cyan
                   yg)$orange          Yield Generator menu (CJ Maker) ...
 $cyan
                   ob)$orange          Start/Stop orderbook
