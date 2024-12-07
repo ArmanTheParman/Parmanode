@@ -183,7 +183,7 @@ function start_yield_generator {
 
 function stop_yield_generator {
     yg_PID=$(ps ax | grep privacyenhanced.py | grep -v grep | awk '{print $1}')
-    kill -SIGTERM $yg_PID
+    kill -15 $yg_PID
     sudo rm $logfile 2>&1
 }
 
