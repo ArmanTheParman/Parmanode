@@ -68,13 +68,16 @@ fi
 #Obwatcher detection
 ########################################################################################
 export obwatcherPID=$(ps ax | grep "ob-watcher.py" | grep -v grep | awk '{print $1}')
+
 if [[ $obwatcherPID =~ [0-9]+ ]] ; then
+debug "1"
     export orderbook="${green}RUNNING$orange \n\n    Access Order Book\n      -from internal:$bright_blue    http://localhost:62601$orange or$bright_blue http://127.0.0.1:62601$orange
       -from external:$bright_blue    http://$IP:61000$orange"
     if test -e $varlibtor/joinmarket-service >$dn 2>&1 ; then
-       get_onion_address_variable joinmarket || { enter_continue "problem with goav" ; }
+debug "2"
+       get_onion_address_variable "joinmarket" || { enter_continue "problem with goav" ; }
        export orderbook="$orderbook\n      -tor (don't access yourself):$bright_blue    https://$ONION_ADDR_JOINMARKET:5222"
-       enter_continue "pause $ONION_ADDR_JOINMARKET"
+debug "3 $ONION_ADDR_JOINMARKET"
     fi 
 else
     export orderbook="${red}NOT RUNNING$orange"
