@@ -4,15 +4,15 @@ debug "in settings"
 source $hm >$dn 2>&1 
 set_terminal ; echo -ne "
 ########################################################################################$cyan
-                                   CONFIGURAÇÕES    $orange
+                                   SETTINGS    $orange
 ########################################################################################
 
 $cyan
-                       (c)$orange         Alterar as cores de Parmanode
+                       (c)$orange         Change Parmanode colours
 $cyan
-                       (an)$orange        Ocultar/mostrar anúncios do menu principal
+                       (an)$orange        Hide/Show Main Menu announcements
 $cyan
-                       (aa)$orange        Ativar/desativar actualizações automáticas
+                       (aa)$orange        Turn on/off autoupdates
 
 ######################################################################################## 
 "
