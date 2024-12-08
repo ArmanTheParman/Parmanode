@@ -119,7 +119,7 @@ $cyan
                   pub)$orange         Be a public orderbook (over Tor)...
 $orange   
 
-${red}Lock files: $lockfilelist$orange
+${red}Lock file(s): $lockfilelist$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 

@@ -10,6 +10,9 @@ else
 ordertype=r 
 fi
 
+########################################################################################
+# Yield generator settins printing ($ygs)
+########################################################################################
 if [[ -e $logfile ]] ; then    
 
     nick="${bright_blue}$(cat $logfile | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)${orange}"
@@ -31,7 +34,9 @@ if [[ -e $logfile ]] ; then
     grep "setting onion hostname to" $jmcfg | tail -n1 | cut -d : -f 2
 
 fi
-
+########################################################################################
+# Running status
+########################################################################################
 #if grep "setting onion hostname to" $logfile ; then
 if ps ax | grep yg-privacyenhanced.py | grep -vq grep ; then
     wallet=$(ps ax | grep yg-privacyenhanced.py | grep -v grep | awk '{print $7}' | gsed -nE 's|\/.+\/||p')
@@ -59,12 +64,26 @@ if  [[ $wallet != "NONE" ]] && ( tail -n1 $logfile | grep -qi "locked by pid" ||
 fi
 
 if ls $HOME/.joinmarket/wallets/ | grep -E "*.lock" ; then
-locktext="${red}Warning, there are locked wallets in your wallet directory. 'l' to list.$orange"
 cyanlock=$red ; orangelock=$red 
 else
 cyanlock=$cyan ; orangelock=$orange
 fi
-
+########################################################################################
+#Lock file detection
+########################################################################################
+    cd $HOME/.joinmarket/wallets >$dn 2>&1
+    list="" 
+    for i in $(ls -a) ; do 
+        if grep -q "lock" <<< $i ; then
+            export list="${list}, $i" 
+        fi
+    done 
+    cd - >$dn 2>&1
+    lockfilelist=${list:2}
+    debug "lock list... $lockfilelist"
+########################################################################################
+#Menu print
+########################################################################################
 
 set_terminal_custom 48 ; echo -ne "
 ########################################################################################
@@ -92,6 +111,8 @@ $cyanlock
                 del)$orangelock      Lockfile info and fix ... $orange
 
 $ygs
+
+${red}Lock file(s): $lockfilelist$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
