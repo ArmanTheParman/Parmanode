@@ -149,7 +149,7 @@ echo "$line" | tr -d "\r" | xargs >$dn 2>&1
 
     }
     done
-sudo cp ${jmcfg}_temp $jmcfg 
+sudo cp ${jmcfg}_temp $jmcfg && sudo rm ${jmcfg}_temp 
 enter_continue "File modified."
 
 ;;
