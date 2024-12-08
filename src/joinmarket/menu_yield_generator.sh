@@ -18,15 +18,15 @@ if [[ -e $logfile ]] ; then
     nick="${bright_blue}$(cat $logfile | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)${orange}"
     debug "nick is $nick"
     ygs="
-  _______________________________
+                           _______________________________
                            |  Yield Generator Settings:  |
-  |                             |
-$orange            \r  |$green     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[33G$orange|
-$orange            \r  |$green     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[33G$orange|
-$orange            \r  |$green     $(sudo gsed -n '/cjfee_factor =/p' $jmcfg) \033[33G$orange|
-$orange            \r  |$green     $(sudo gsed -n '/minsize =/p' $jmcfg) \033[33G$orange|
-$orange            \r  |$green     $(sudo gsed -n '/size_factor =/p' $jmcfg) \033[33G$orange|
-  _______________________________ 
+                           |                             |
+$orange  |$green     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[58G$orange|
+$orange  |$green     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[58G$orange|
+$orange  |$green     $(sudo gsed -n '/cjfee_factor =/p' $jmcfg) \033[58G$orange|
+$orange  |$green     $(sudo gsed -n '/minsize =/p' $jmcfg) \033[58G$orange|
+$orange  |$green     $(sudo gsed -n '/size_factor =/p' $jmcfg) \033[58G$orange|
+                           _______________________________ 
 
     $orange
     "
