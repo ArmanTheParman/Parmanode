@@ -109,18 +109,45 @@ confv)
 vim_warning ; sudo vim $jmcfg
 ;;
 
+# vc)
+# if [[ -e "${jmcfg}_backup" ]] ; then enter_continue "exists" ; continue ; fi
+# enter_continue "doesn't exist"
+# yesorno "The file will be modified to delete the comments and make this large file more 
+#     managable. A backup will be kept as ${jmcfg}_backup
+#     so you can still investigate what the comments say in the future.
+    
+#     Proceed?" || continue
+
+# sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee ${jmcfg}_backup >$dn 2>&1
+# sudo cp ${jmcfg}_backup $jmcfg 
+# enter_continue "File modified."
+# ;;
 vc)
 if [[ -e "${jmcfg}_backup" ]] ; then enter_continue "exists" ; continue ; fi
-enter_continue "doesn't exist"
 yesorno "The file will be modified to delete the comments and make this large file more 
     managable. A backup will be kept as ${jmcfg}_backup
     so you can still investigate what the comments say in the future.
     
     Proceed?" || continue
 
-sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee ${jmcfg}_backup >$dn 2>&1
-sudo cp ${jmcfg}_backup $jmcfg 
+cp $jmcfg ${jmcfg}_backup
+
+cat $jmcfg | while IFS= read -r line ; do {
+    
+    if grep -Eq "^#" <<< $line ; then continue ; fi
+    
+    if grep -Eq "[.*]" <<< $line ; then
+        echo "\n$line\n" | tee -a ${jmcfg}_temp
+        continue
+    fi
+
+    echo "$line" | tee -a ${jmcfg}_temp
+    }
+sudo cp ${jmcfg}_temp $jmcfg 
 enter_continue "File modified."
+
+
+
 ;;
 
 man)
