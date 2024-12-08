@@ -19,7 +19,7 @@ if [[ -e $logfile ]] ; then
     debug "nick is $nick"
     ygs="
   _______________________________
-                                |  Yield Generator Settings:  |
+                           |  Yield Generator Settings:  |
   |                             |
 $orange            \r  |$green     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[33G$orange|
 $orange            \r  |$green     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[33G$orange|
