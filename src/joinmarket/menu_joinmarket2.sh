@@ -129,7 +129,7 @@ yesorno "The file will be modified to delete the comments and make this large fi
     so you can still investigate what the comments say in the future.
     
     Proceed?" || continue
-
+clear
 cp $jmcfg ${jmcfg}_backup
 
 cat $jmcfg | while IFS= read -r line ; do {
