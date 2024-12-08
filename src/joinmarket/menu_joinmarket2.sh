@@ -133,7 +133,9 @@ yesorno "The file will be modified to delete the comments and make this large fi
 cp $jmcfg ${jmcfg}_backup
 
 cat $jmcfg | while IFS= read -r line ; do {
-    
+
+echo "line" | tr -d "\r" | xargs >$dn 2>&1    
+
     if grep -Eq "^#" <<< $line ; then continue ; fi
     
     if grep -Eq "\[.*\]" <<< $line ; then
