@@ -135,19 +135,19 @@ cp $jmcfg ${jmcfg}_backup
 IFS_original=$IFS
 cat $jmcfg | while IFS= read -r line ; do {
 IFS=$IFS_original
-echo "line" | tr -d "\r" | xargs >$dn 2>&1    
+echo "$line" | tr -d "\r" | xargs >$dn 2>&1    
 
     if grep -Eq "^#" <<< $line ; then continue ; fi
     
     if grep -Eq "\[.*\]" <<< $line ; then
-        echo -e "\n$line\n" | tee ${jmcfg}_temp >$dn 2>&1
+        echo -e "\n$line\n" | tee -a ${jmcfg}_temp >$dn 2>&1
         continue
     fi
 
     if ! grep -Eq "^$" <<< $line ; then
        echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
     else
-       echo -e "$line" | tee /tmp/tempjmcopy
+       echo -e "$line" | tee -a /tmp/tempjmcopy
     fi
 
     }
