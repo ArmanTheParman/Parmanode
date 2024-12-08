@@ -143,7 +143,7 @@ echo "$line" | tr -d "\r" | xargs >$dn 2>&1
         continue
     fi
 
-    if ! grep -Eq "^[^ ].*$" <<< $line ; then #ignore empty lines doesn't work, so had to do lines starting with space
+    if grep -Eq "^[^ ].*$" <<< $line ; then #ignore empty lines doesn't work, so had to do lines starting with space
        echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
     fi
 
