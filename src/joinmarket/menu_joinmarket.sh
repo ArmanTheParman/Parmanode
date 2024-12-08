@@ -117,6 +117,8 @@ $cyan
                   obl)$orange         Order book log (obln for nano)
 $cyan
                   pub)$orange         Be a public orderbook (over Tor)...
+$cyan
+                  mm)$orange          More options...
 $orange   
 
 ${red}Lock file(s): $lockfilelist$orange
@@ -126,6 +128,9 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
+mm)
+menu_joinmarket2
+;;
 
 relax)
 if ! grep "jm_be_carefull=1" $hm >$dn 2>&1 ; then
