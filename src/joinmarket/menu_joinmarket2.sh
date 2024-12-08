@@ -110,8 +110,8 @@ vim_warning ; sudo vim $jmcfg
 ;;
 
 vc)
-if [[ -e "${jmcfg}_backup" ]] ; then continue ; fi
-
+if [[ -e "${jmcfg}_backup" ]] ; then enter_continue "exists" ; continue ; fi
+enter_continue "doesn't exist"
 yesorno "The file will be modified to delete the comments and make this large file more 
     managable. A backup will be kept as ${jmcfg}_backup
     so you can still investigate what the comments say in the future.
