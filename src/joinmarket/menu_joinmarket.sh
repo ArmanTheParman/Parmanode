@@ -72,7 +72,8 @@ fi
         fi
     done 
     cd - >$dn 2>&1
-    debug "lock list... $list"
+    lockfilelist=$list
+    debug "lock list... $lockfilelist"
 ########################################################################################
 #Obwatcher detection
 ########################################################################################
@@ -118,6 +119,7 @@ $cyan
                   pub)$orange         Be a public orderbook (over Tor)...
 $orange   
 
+${red}Lock files: $lockfilelist$orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
