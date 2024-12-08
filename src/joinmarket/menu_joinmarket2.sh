@@ -59,7 +59,7 @@ fi
 ########################################################################################
 #config mod detection
 ########################################################################################
-if ! [[ -e ${jmcfg}_backup ]] ; then
+if [[ -e ${jmcfg}_backup ]] ; then
     configedit="$cyan
                   vc)$orange          Remove all config comments and make pretty"
 else
