@@ -18,6 +18,7 @@ if [[ -e $logfile ]] ; then
     nick="${bright_blue}$(cat $logfile | grep "Sending this handshake" | grep "nick" | tail -n1 | grep -oE '"nick":.*,' | cut -d \" -f4)${orange}"
     debug "nick is $nick"
     ygs="
+
                            _______________________________
                            |  Yield Generator Settings:  |
                            |                             |
