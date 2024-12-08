@@ -9,7 +9,7 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-                                BITCOIN COMMANDS MENU
+                                MENU DE COMANDOS BITCOIN
 $orange
 ########################################################################################                                
 
@@ -86,12 +86,12 @@ set_terminal
 enter_continue
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
-else announce "some error - Linux nor Mac detected." ; continue
+else announce "algum erro - Linux nem Mac detectados." ; continue
 fi
 ;;
 gbh)  
 set_terminal
-echo "Enter the block number you want the hash of... " 
+echo "Introduza o número do bloco do qual pretende obter o hash... " 
 read block ; set_terminal
 
 if [[ $combomenu == "true" ]] ; then
@@ -105,7 +105,7 @@ set_terminal
 enter_continue
 continue
 elif [[ $OS == Mac ]] ; then no_mac ; continue 
-else announce "some error - Linux nor Mac detected." ; continue
+else announce "algum erro - Linux nem Mac detectados." ; continue
 fi
 ;;   
 
@@ -164,11 +164,11 @@ gtosi)
     set_terminal ; echo -e "
 ########################################################################################    
 
-         Warning, this command takes a minute or two...
+         Atenção, este comando demora um ou dois minutos...
 
-         It provides information about every UTXO on the blockchain. 
+         Fornece informações sobre cada UTXO na cadeia de blocos. 
 
-         What is a UTXO?  - see:$cyan https://armantheparman.com/utxo $orange
+         O que é um UTXO? - ver:$cyan https://armantheparman.com/utxo $orange
 
 ########################################################################################
 "
@@ -204,11 +204,11 @@ vm)
 if [[ $combomenu == "true" ]] ; then
 
     set_terminal
-    echo "Please paste in the ADDRESS and hit <enter> :" ; read address
+    echo "Por favor, introduza o ENDEREÇO e prima <enter> :" ; read address
     echo ""
-    echo "Please paste in the SIGNATURE text and hit <enter> :" ; read signature
+    echo "Colar o texto da ASSINATURA e premir <enter> :" ; read signature
     echo ""
-    echo "Please paste in the MESSAGE TEXT and hit <enter> : " ; read message
+    echo "Colar o TEXTO DA MENSAGEM e premir <enter> : " ; read message
     echo ""
     echo ""
     docker exec btcpay bitcoin-cli verifymessage "$address" "$signature" "$message" 
@@ -216,11 +216,11 @@ if [[ $combomenu == "true" ]] ; then
     continue
 elif [[ $OS == Linux ]] ; then
     set_terminal
-    read -p "Please paste in the ADDRESS and hit <enter> :" address
+    read -p "Por favor, introduza o ENDEREÇO e prima <enter> :" address
     echo ""
-    read -p "Please paste in the SIGNATURE text and hit <enter> :" signature
+    read -p "Colar o texto da ASSINATURA e premir <enter> :" signature
     echo ""
-    read -p "Please paste in the MESSAGE TEXT and hit <enter> : " message
+    read -p "Colar o TEXTO DA MENSAGEM e premir <enter> : " message
     echo ""
     echo ""
     bitcoin-cli verifymessage "$address" "$signature" "$message" 
