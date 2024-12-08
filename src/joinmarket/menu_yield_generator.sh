@@ -21,11 +21,11 @@ if [[ -e $logfile ]] ; then
   _______________________________
   |  Yield Generator Settings:  |
     $green
-            \r  |     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[;33G|
-            \r  |     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[;33G|
-            \r  |     $(sudo gsed -n '/cjfee_factor =/p' $jmcfg) \033[;33G|
-            \r  |     $(sudo gsed -n '/minsize =/p' $jmcfg) \033[;33G|
-            \r  |     $(sudo gsed -n '/size_factor =/p' $jmcfg) \033[;33G|
+            \r  |     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[33G|
+            \r  |     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[33G|
+            \r  |     $(sudo gsed -n '/cjfee_factor =/p' $jmcfg) \033[33G|
+            \r  |     $(sudo gsed -n '/minsize =/p' $jmcfg) \033[33G|
+            \r  |     $(sudo gsed -n '/size_factor =/p' $jmcfg) \033[33G|
  ________________________________ 
 
     $orange
