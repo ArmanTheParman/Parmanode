@@ -1,11 +1,11 @@
 function install_bitcoin_docker {
 if [[ $1 != silent ]] ; then
 set_terminal
-yesorno "You are about to install Bitcoin into a docker container of your
-    choice." || return 1
+yesorno "Você está prestes a instalar o Bitcoin em um container docker de sua 
+    escolha." || return 1
 set_terminal
 
-if ! docker ps 2>$dn ; then announce "Docker is not running" ; return 1 ; fi
+if ! docker ps 2>$dn ; then announce "O Docker não está a funcionar" ; return 1 ; fi
 
 if [[ -z $1 ]] ; then
 
@@ -15,8 +15,8 @@ if [[ -z $1 ]] ; then
     echo -e "
 ########################################################################################
 
-    Please type the name of the running Docker container you want to use (case
-    sensitive). These are the running containers...
+    Introduza o nome do contentor Docker em execução que pretende utilizar (sensível 
+    a maiúsculas e minúsculas). Estes são os contentores em execução...
 $green    
 $(docker ps --format "{{.Names}}")
 $orange
@@ -31,9 +31,9 @@ read dockername
         ;;
         *)
         if docker ps | grep -q $dockername ; then
-            yesorno "You have chosen the$red $dockername$orange container." && break
+            yesorno "Escolheu o contentor$red $dockername$orange." && break
         else
-            announce "This container is not running" ; continue
+            announce "Este contentor não está a funcionar" ; continue
         fi
         ;;
         esac
@@ -52,16 +52,15 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    Please choose the user name for the intallation. If you choose 'root' then the
-    bitcoin data directory will be made under$cyan /root/.bitcoin $orange
+    Por favor, escolha o nome de utilizador para a instalação. Se escolher 'root', então 
+    o diretório de dados bitcoin será criado em $cyan /root/.bitcoin $orange
 
-    If you choose another existing user, eg parman, then the directory will be under
-    $cyan/home/parman/.bitcoin$orange
+    Se escolher outro utilizador existente, por exemplo, parman, então o diretório estará em $cyan/home/parman/.bitcoin$orange
 
 
-                    Type root and$cyan <enter>$orange
-           OR
-                    Type another username to choose that, then $cyan<enter>$orange
+                    Digite root e$cyan <enter>$orange
+           OU
+                    Escreva outro nome de utilizador para o escolher e, em seguida, $cyan<enter>$orange
 
 ########################################################################################
 "
@@ -77,7 +76,7 @@ invalid ;;
 username="$choice"
 ;;
 esac
-yesorno "You chose the$cyan $username$orange user" || continue
+yesorno "Escolheu o utilizador$cyan $username$orange" || continue
 break
 done
 
@@ -112,10 +111,6 @@ if [[ $2 == parmabox ]] ; then
 thedir="/home/parman"
 dockername=parmabox
 username=parman
-elif [[ $2 == joinmarket ]] ; then
-thedir="/root"
-dockername=joinmarket
-username=root
 fi
 
 docker exec -u $username $dockername /bin/bash -c "mkdir -p $thedir/.bitcoin 2>$dn"
@@ -129,12 +124,12 @@ while true ; do
 clear
 
         if [[ $1 != silent ]] ; then 
-        echo -e "${green}Downloading Bitcoin..."
+        echo -e "${green}Descarregar Bitcoin..."
         fi
 
 	     if [[ $chip == "armv7l" || $chip == "armv8l" ]] ; then 		#32 bit Pi4
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz \
-                || enter_continue "Download may have failed"  
+                || enter_continue "O download pode ter falhado"  
                 break
          fi
 
@@ -142,18 +137,18 @@ clear
 
             if [[ $( file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-aarch64-linux-gnu.tar.gz \
-                || enter_continue "Download may have failed"  
+                || enter_continue "O download pode ter falhado"  
                 break
             else
                 curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-arm-linux-gnueabihf.tar.gz \
-                || enter_continue "Download may have failed"  
+                || enter_continue "O Download pode ter falhado"  
                 break
             fi
          fi
 
  	     if [[ $chip == "x86_64" ]] ; then 
 		        curl -LO https://bitcoincore.org/bin/bitcoin-core-$version/bitcoin-$version-x86_64-linux-gnu.tar.gz \
-                || enter_continue "Download may have failed"  
+                || enter_continue "O Download pode ter falhado"  
                 break
          fi
 
@@ -163,23 +158,22 @@ docker exec $dockername mkdir -p /tmp/bitcoin 2>$dn
 docker cp $tmp/bitcoin/* $dockername:/tmp/bitcoin/ >$dn 2>&1
 docker exec $dockername /bin/bash -c "tar -xf /tmp/bitcoin/bitcoin* -C /tmp/bitcoin" >$dn 2>&1
 docker exec -itu $username $dockername /bin/bash -c "sudo install -m 0755 -o \$(whoami) -g \$(whoami) -t /usr/local/bin /tmp/bitcoin/bitcoin-*/bin/*" || {
-    enter_continue "something went wrong" 
+    enter_continue "algo correu mal" 
     return 1
     }
 docker exec $dockername rm -rf /tmp/bitcoin
 rm -rf $tmp/bitcoin
 if [[ $1 != silent ]] ; then
-success "Bitcoin has been installed in the $dockername container.
+success "O Bitcoin foi instalado no contentor$dockername.
 
-    The username and password is$cyan 'parman'$orange and$cyan 'parman'.$orange You can
-    modify the bitcoin.conf file to change it.
+    O nome de utilizador e a palavra-passe são$cyan ' parman'$orange e$cyan ' parman'$orange 
+    Pode modificar o ficheiro bitcoin.conf para o alterar.
     
-    The prune value is 0. If you want to prune, set a value in 
-    bitcoin.conf like this, in MB (550 is the minimum):
+    O valor de prune é 0. Se quiser encurtar, defina um valor no bitcoin.conf como este, em MB (550 é o mínimo):
    $cyan 
     prune=550
    $orange
-    The file is in the data directory inside the container at:
+    O ficheiro encontra-se no diretório de dados dentro do contentor em:
    $green
     $username/.bitcoin/ 
    $orange
@@ -189,4 +183,3 @@ fi
 docker exec $dockername /bin/bash -c "touch \$HOME/bitcoin-installed" || enter_continue
 return 0
 }
-
