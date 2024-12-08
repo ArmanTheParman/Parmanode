@@ -141,6 +141,8 @@ cat $jmcfg | while IFS= read -r line ; do {
         continue
     fi
 
+    if [[ -z $line ]] ; then continue ; fi
+
     echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
     }
     done
