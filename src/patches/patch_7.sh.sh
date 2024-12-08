@@ -17,14 +17,8 @@ fi
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
     if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
-        if which tmux >$dn 2>&1 ; then
-            TMUX2=$TMUX ; unset TMUX ; clear 
-            tmux new-session -d -s bcsesh 'sudo apt-get install bc -y ; tmux kill-session -t bcsesh'
-            TMUX=$TMUX2
-        else
-            echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
-            sudo apt-get update -y && sudo apt-get install bc -y
-        fi
+        echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
+        sudo apt-get update -y && sudo apt-get install bc -y
     fi
 fi
 
