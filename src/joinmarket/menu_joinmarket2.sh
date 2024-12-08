@@ -59,7 +59,7 @@ fi
 ########################################################################################
 #config mod detection
 ########################################################################################
-if [[ -e ${jmcfg}_backup ]] ; then
+if ! [[ -e ${jmcfg}_backup ]] ; then
     configedit="$cyan
                   vc)$orange          Remove all config comments and make pretty"
 else
@@ -110,7 +110,7 @@ vim_warning ; sudo vim $jmcfg
 ;;
 
 vc)
-if ! [[ -e "${jmcfg}_backup" ]] ; then continue ; fi
+if [[ -e "${jmcfg}_backup" ]] ; then continue ; fi
 
 yesorno "The file will be modified to delete the comments and make this large file more 
     managable. A backup will be kept as ${jmcfg}_backup
