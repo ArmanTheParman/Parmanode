@@ -72,7 +72,7 @@ fi
         fi
     done 
     cd - >$dn 2>&1
-    lockfilelist=$list
+    lockfilelist=${list:2}
     debug "lock list... $lockfilelist"
 ########################################################################################
 #Obwatcher detection
