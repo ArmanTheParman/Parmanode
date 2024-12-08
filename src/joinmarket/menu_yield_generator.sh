@@ -20,7 +20,7 @@ if [[ -e $logfile ]] ; then
     ygs="
   _______________________________
   |  Yield Generator Settings:  |
-    $green
+  |                             |
 $orange            \r  |$green     $(sudo gsed -nE '/^ordertype =/p' $jmcfg) \033[33G$orange|
 $orange            \r  |$green     $(sudo gsed -nE "/cjfee_$ordertype.=/p" $jmcfg) \033[33G$orange|
 $orange            \r  |$green     $(sudo gsed -n '/cjfee_factor =/p' $jmcfg) \033[33G$orange|
