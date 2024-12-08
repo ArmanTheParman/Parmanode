@@ -13,7 +13,7 @@ fi
 function stop_fulcrum {
 if grep -q "fulcrum-" $ic ; then
 
-    pn_tmux "sudo systemctl stop fulcrum.service" ; sleep 0.5
+    sudo systemctl stop fulcrum.service ; sleep 0.5
 
 elif grep -q "fulcrumdkr" $ic ; then
     docker_running || return 1
