@@ -67,7 +67,7 @@ fi
     cd $HOME/.joinmarket/wallets >$dn 2>&1
     list="" 
     for i in $(ls -a) ; do 
-        export list="${$list}, $i" 
+        export list="${list}, $i" 
     done 
     cd - >$dn 2>&1
     debug "lock list... $list"
