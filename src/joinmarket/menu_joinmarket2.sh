@@ -136,12 +136,12 @@ cat $jmcfg | while IFS= read -r line ; do {
     
     if grep -Eq "^#" <<< $line ; then continue ; fi
     
-    if grep -Eq "[.*]" <<< $line ; then
-        echo "\n$line\n" | tee -a ${jmcfg}_temp
+    if grep -Eq "\[.*\]" <<< $line ; then
+        echo -e "\n$line\n" | tee -a ${jmcfg}_temp >$dn 2>&1
         continue
     fi
 
-    echo "$line" | tee -a ${jmcfg}_temp
+    echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
     }
     done
 sudo cp ${jmcfg}_temp $jmcfg 
