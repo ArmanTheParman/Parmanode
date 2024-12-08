@@ -57,6 +57,16 @@ else
     unset obwatcherPID
 fi
 ########################################################################################
+#config mod detection
+########################################################################################
+if ! [[ -e ${jmcfg}_backup ]] ; then
+    configedit="$cyan
+                  vc)$orange          Remove all config comments and make pretty"
+else
+    unset configedit 
+fi
+
+########################################################################################
 #Menu print
 ########################################################################################
 set_terminal_custom 51 ; echo -en "
@@ -73,8 +83,7 @@ $ygtext1
 
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
-$cyan
-                  vc)$orange          Remove all config comments and make pretty
+$configedit 
 $cyan
                   man)$orange         Enter virtual Python environment and play
                                       with scripts manually (for experts)
@@ -101,6 +110,8 @@ vim_warning ; sudo vim $jmcfg
 ;;
 
 vc)
+if ! [[ -e "${jmcfg}_backup" ]] ; then continue ;; fi
+
 yesorno "The file will be modified to delete the comments and make this large file more 
     managable. A backup will be kept as ${jmcfg}_backup
     so you can still investigate what the comments say in the future.
