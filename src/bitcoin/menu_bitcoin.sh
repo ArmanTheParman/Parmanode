@@ -3,8 +3,8 @@ if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
 if grep -q "btccombo" $ic >$dn 2>&1 ; then
-dockerbitcoinmenu=" $pink                Bitcoin in Docker Container with BTCPay Server $orange"
-btcman="$cyan      man)$orange          Explore Bitcoin/BTCPay container (manr for root)"
+dockerbitcoinmenu=" $pink                Bitcoin em contentor Docker com servidor BTCPay $orange"
+btcman="$cyan      man)$orange          Explorar o contentor Bitcoin/BTCPay (manr para root)"
 else
 unset btcman dockerbitcoinmenu
 fi
@@ -20,67 +20,73 @@ if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
 
     printthis="\r$(cat $debuglogfile | grep -n "Corrupt" | tail -n1)"
    
-    announce "Parmanode has detected a potential serious error from the Bitcoin log.
-    This notification was detected by the following line found in bitcoin's
-    debug.log file. It coult be a false positive. Take a look...
+    announce "A Parmanode detectou um potencial erro grave no registo do Bitcoin.
+    Esta notificação foi detectada pela seguinte linha encontrada no ficheiro 
+    debug.log da bitcoin. Pode ser um falso positivo. Dê uma olhadela...
     $red
     $printthis
     $orange
-    One option might be to re-index the chain (do look that up if needed), 
-    another may be to delete the data and start over - there's a Parmanode menu 
-    option for that.
+    Uma opção pode ser re-indexar a blockchain (se necessário, procure-a), outra 
+    pode ser apagar os dados e começar de novo - existe uma opção de menu 
+    Parmanode para isso.
 
-    Another option might be to try  the old 'off and on again' trick.
+    Outra opção poderá ser tentar o velho truque de "desligar e voltar a ligar".
 
-    A couple of times this happened to me, and the old 'turn it off and and again'
-    trick did the trick."
+    Aconteceu-me isto algumas vezes e o velho truque de 'desligar e voltar a ligar' 
+    resolveu o problema."
 fi
 
 bitcoin_status #get running text variable.
 isbitcoinrunning 
-   if [[ -e $debuglogfile ]] && tail $debuglogfile | grep -q "Shutdown: done" ; then bitcoinrunning="false" ; fi
+   if [[ -e $debuglogfile ]] && tail $debuglogfile | grep -q "Encerramento: concluído" ; then bitcoinrunning="false" ; fi
 
 source $oc
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 if [[ $bitcoinrunning == "true" ]] ; then
 
 output1="                   Bitcoin is$green RUNNING$orange $running_text"
-output2="                   Sync'ing to the $drive drive"
-    if tail -n20 $HOME/.bitcoin/debug.log | grep -iq "shutdown in progress" ; then
-    output1="                   Bitcoin is$bright_blue SHUTTING DOWN$orange"
+output2="                   Sincronização com a unidade$drive"
+    if tail -n20 $HOME/.bitcoin/debug.log | grep -iq "encerramento em curso" ; then
+    output1="                   Bitcoin está$bright_blue A ENCERRAR$orange"
     fi
-    if tail -n1 $HOME/.bitcoin/debug.log | grep -iq "Shutdown: done" ; then
-         output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
-         output2="                   Will sync to the $drive drive"
+    if tail -n1 $HOME/.bitcoin/debug.log | grep -iq "Encerramento: concluído" ; then
+         output1="                   Bitcoin é$red NÃO está a correr$orange -- escolha \"start\" para correr"
+         output2="                   Sincroniza-se com a unidade$drive"
     fi
 
 else
-output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
+output1="                   Bitcoin é$red NÃO está a correr$orange -- escolha \"start\" para correr"
 
-output2="                   Will sync to the $drive drive"
+output2="                   Sincroniza-se com a unidade$drive"
 fi                         
 
 
 if [[ $OS == Linux && $bitcoinrunning == "false" ]] && which bitcoin-qt >$dn 2>&1 ; then
-output3="\n$green               qtstart)$orange      Start Bitcoin Qt \n"
+output3="\n$green               qtstart)$orange      Iniciar o Bitcoin Qt \n"
 fi
 
 if [[ $OS == Linux && $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ; then
-output3="\n$red               qtstop)$orange       Stop Bitcoin Qt \n"
+output3="\n$red               qtstop)$orange       Parar o Bitcoin Qt \n"
 fi
 
-output4="                   Bitcoin Data Usage: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
+output4="                   Utilização de dados Bitcoin: $red$(du -shL $HOME/.bitcoin | cut -f1)"$orange
 
 if [[ -z $drive ]] ; then unset output2 ; fi
 
-if [[ $1 == menu_btcpay ]] ; then return 0 ; fi
+if [[ $1 == "menu_btcpay" ]] ; then return 0 ; fi
+
+if [[ $bitcoinrunning == "true" ]] && tail -n15 $HOME/.bitcoin/debug.log | grep -qi "Encerramento: Em curso" ; then
+         output1="                   Bitcoin está$red A ENCERRAR$orange -- Aguarde"
+         output2="                   Sincroniza-se com a unidade$drive"
+fi
+
 debug "bitcoin menu..."
 set_terminal_custom "52"
 
 
 echo -en "
 ########################################################################################
-                                ${cyan}Bitcoin Core Menu${orange}                               
+                                ${cyan}Menu do Bitcoin Core${orange}                               
 $dockerbitcoinmenu
 ########################################################################################
 
@@ -95,38 +101,38 @@ echo -e ""
 if ! ( [[ $bitcoinrunning == "true" ]] && pgrep bitcoin-qt >$dn 2>&1 ) ; then
 echo -ne "
 $green
-               start)$orange        Start Bitcoin
+               start)$orange        Iniciar Bitcoin
             $red
-               stop)$orange         Stop Bitcoin
+               stop)$orange         Parar o Bitcoin
             $cyan"
 
     if [[ $bitcoinrunning == "true" ]] ; then
         echo -ne "
-               restart)$orange      Restart Bitcoin \n"
+               restart)$orange      Reiniciar a Bitcoin \n"
     fi
 fi
 echo -ne "$output3 $cyan
-               n)$orange            Access Bitcoin node information 
+               n)$orange            Aceder à informação do nó Bitcoin 
             $cyan
                log)$orange          Bitcoin debug.log 
             $cyan
-               bc)$orange           Inspect edit bitcoin.conf file (bcv for vim)
+               bc)$orange           Inspecionar o ficheiro bitcoin.conf (bcv para vim)
             $cyan
-               up)$orange           Set, remove, or change RPC user/pass
+               up)$orange           Definir, remover, ou modificar RPC user/pass
             $bright_blue
-               tor)$orange          Tor menu options for Bitcoin...
+               tor)$orange          Opções do menu Tor para Bitcoin...
             $cyan
-               mm)$orange           Migrate/Revert an external drive...
+               mm)$orange           Migrar/reverter uma unidade externa...
             $cyan
-               delete)$orange       Delete blockchain data and start over
+               delete)$orange       Eliminar os dados da blockchain e começar de novo
             $cyan
-               upd)$orange          Update Bitcoin wizard
+               upd)$orange          Atualizar o assistente Bitcoin
             $cyan
-               tips)$orange         Tips by Parman ...
+               tips)$orange         Sugestões de Parman ...
          $btcman
-         $cyan      o)$orange            OTHER...
+         $cyan      o)$orange            OUTROS...
 
-                                                               $red hit 'r' to refresh $orange
+                                                               $red prima "r" para atualizar $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -175,9 +181,9 @@ if [[ $log_count -le 10 ]] ; then
 echo -e "
 ########################################################################################
     
-    This will show the bitcoin debug.log file in real-time as it populates.
+    Isto irá mostrar o ficheiro bitcoin debug.log em tempo real à medida que é preenchido.
     
-    You can hit$cyan <control>-c$orange to make it stop.
+    Pode premir$cyan <control>-c$orange para o fazer parar.
 
 ########################################################################################
 "
@@ -186,7 +192,7 @@ fi
 set_terminal_wider
 
 if ! which tmux >$dn 2>&1 ; then
-yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+yesorno "A visualização de registos necessita do Tmux instalado. Pode fazer isso?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 tmux new -s -d "tail -f $HOME/.bitcoin/debug.log"
@@ -202,10 +208,10 @@ bc|BC)
 echo -e "
 ########################################################################################
     
-        This will run$cyan Nano$orange text editor to edit bitcoin.conf. See the controls
-        at the bottom to save and exit. Be careful messing around with this file.
+        Isso executará o editor de texto$cyan Nano$orange para editar o bitcoin.conf. Veja os 
+        controles na parte inferior para salvar e sair. Tenha cuidado ao mexer neste ficheiro.
 
-        Any changes will only be applied once you restart Bitcoin.
+        Quaisquer alterações só serão aplicadas quando reiniciar o Bitcoin.
 
 ########################################################################################
 "
@@ -321,43 +327,44 @@ fi
 }
 
 
+
+
 function bitcoin_tips {
 set_terminal_high ; echo -e "
 ########################################################################################$cyan
-                          Parmanode Bitcoin Usage Tips$orange
+                          Dicas de uso do Parmanode Bitcoin$orange
 ########################################################################################
 
 
-    It's nice to see what Bitcoin is up to in real time. Check out the log from the
-    menu. If the log menu is playing up, you can look at it manually with $cyan
-    nano $HOME/.bitcoin/debug.log$orange
+    É bom ver o que o Bitcoin está a fazer em tempo real. Veja o log a partir do menu. 
+    Se o menu de registo estiver a dar problemas, podes vê-lo manualmente com 
+    $cyan nano $HOME/.bitcoin/debug.log$orange
 
-    The information like the block height is captured from the debug.log file. It can
-    glitch, no big deal, you can just look at the log and read the progress. The
-    file populates with the newest additions at the bottom. When you see$cyan
-    progress=1.00000000$orange, you know it's fully synced.
+    A informação, como a altura do bloco, é capturada do ficheiro debug.log. Pode haver 
+    falhas, mas não há problema, basta olhar para o registo e ler o progresso. O ficheiro 
+    é preenchido com as adições mais recentes na parte inferior. 
+    Quando vir $cyan progress=1.00000000$orange, sabe que está totalmente sincronizado.
 
-    If you have data corruption, Bitcoin will fail to start. Read the log file and 
-    see if it indicates data corruption - you'll have to delete and resync. Parmanode
-    Bitcoin menu has a tool for that.
+    Se houver corrupção de dados, o Bitcoin não conseguirá iniciar. Lê o ficheiro de 
+    registo e vê se indica corrupção de dados - terás de apagar e voltar a sincronizar. 
+    O menu Parmanode Bitcoin tem uma ferramenta para isso.
 
-    If you are having trouble starting/stopping bitcoin, you can try doing it manually.
-    In Mac, use the GUI - click the icon in the Applications menu. In Linux, do$cyan 
-    sudo systemctl COMMAND bitcoind$orange. Replace COMMAND with start, stop, restart, 
-    or status.
+    Se tiveres problemas em iniciar/parar o bitcoin, podes tentar fazê-lo manualmente.
+    No Mac, utilize a GUI - clique no ícone no menu Aplicações. No Linux, faça $cyan sudo 
+    systemctl COMMAND bitcoind$orange. Substitua COMMAND por start, stop, restart ou status.
     
-    In you're using the BTCPay combo docker container, restarting the container 
-    manually will be problematic, because the numerous programs do not automatically 
-    load up if the container is simply restarted. Instead, you can manually enter the 
-    container, do$cyan pkill -15 bitcoind$orange, and restart it with
+    Se estiver a utilizar o contentor docker combinado BTCPay, reiniciar o contentor manualmente 
+    será problemático, porque os numerosos programas não carregam automaticamente se o contentor 
+    for simplesmente reiniciado. Em vez disso, pode entrar manualmente no contentor, fazer $cyan 
+    pkill -15 bitcoind$orange, e reiniciá-lo com
     
         $cyan bitcoind -conf=/home/parman/.bitcoin/bitcoin.conf$orange
 
-    If you want to move the data directory somewhere else, first have a look at the
-    ${cyan}dfat$orange menu option in Parmanode-->Tools, and glean from there how the symlinks
-    work. To move or copy the data directory, make sure Bitcoin has been stopped. Then
-    use the$cyan rysync$orange tool from the Parmanode-->Tools menu. It will help you 
-    construct the correct command.
+    Se você quiser mover o diretório de dados para outro lugar, primeiro dê uma olhada na opção 
+    de menu${cyan}dfat$orange em Parmanode-->Tools, e veja como os links simbólicos funcionam. 
+    Para mover ou copiar o diretório de dados, certifique-se de que o Bitcoin foi parado. 
+    Então use a ferramenta $cyan rysync$orange do menu Parmanode-->Tools. 
+    Esta ferramenta ajudá-lo-á a construir o comando correto.
 
 
 ########################################################################################
