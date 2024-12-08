@@ -1,6 +1,5 @@
 function orderbook_jm {
 if [[ -z $obwatcherPID ]] ; then
-NODAEMON="true"
 pn_tmux "source $hp/joinmarket/jmvenv/bin/activate ;
 $hp/joinmarket/scripts/obwatch/ob-watcher.py | tee $HOME/.joinmarket/orderbook.log ;
 deactivate ; " "obw"
