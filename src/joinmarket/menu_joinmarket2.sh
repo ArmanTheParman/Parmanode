@@ -143,11 +143,8 @@ echo "line" | tr -d "\r" | xargs >$dn 2>&1
         echo -e "\n$line\n" | tee -a ${jmcfg}_temp >$dn 2>&1
         continue
     fi
-    debug "line is $line"
-    if [[ -z $line ]] ; then continue ; fi
-    debug "line after -z is $line"
 
-    echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
+    if ! grep -Eq "^ *$" | tee -a ${jmcfg}_temp >$dn 2>&1
     }
     done
 sudo cp ${jmcfg}_temp $jmcfg 
