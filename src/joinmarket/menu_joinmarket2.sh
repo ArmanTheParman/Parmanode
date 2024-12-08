@@ -144,7 +144,10 @@ echo "line" | tr -d "\r" | xargs >$dn 2>&1
         continue
     fi
 
-    if ! grep -Eq "^ *$" | tee -a ${jmcfg}_temp >$dn 2>&1
+    if ! grep -Eq "^ *$" <<< $line ; then
+       echo -e "$line"  tee -a ${jmcfg}_temp >$dn 2>&1
+    fi
+
     }
     done
 sudo cp ${jmcfg}_temp $jmcfg 
