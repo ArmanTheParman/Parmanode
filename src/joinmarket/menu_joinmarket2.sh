@@ -71,7 +71,6 @@ $jm_be_carefull
     Order Book is:       $orderbook
 $ygtext1
 
-$info
 $cyan
                   conf)$orange        Edit the configuration file (confv for vim)
 $cyan
@@ -80,7 +79,7 @@ $cyan
                   man)$orange         Enter virtual Python environment and play
                                       with scripts manually
 $cyan
-                  mm)$orange          Back to first ParmaJoin menu
+                  mm)$orange          Back to first ParmaJoin menu...
 
 $orange   
 ########################################################################################
