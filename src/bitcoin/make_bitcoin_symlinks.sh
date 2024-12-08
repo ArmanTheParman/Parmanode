@@ -35,19 +35,19 @@ set_terminal ; echo -e "
 ########################################################################################
 
                                 $cyan 
-                                 Symlinks created
+                                 Ligações simbólicas criadas
 $orange
-    NOTHING TO DO, IT'S JUST FOR YOUR INFORMATION IN CASE YOU WANT IT.
+    NADA A FAZER, É APENAS PARA VOSSA INFORMAÇÃO, CASO QUEIRAM.
 
-    A symlink to the data directory has been created.
+    Foi criada uma ligação simbólica para o diretório de dados.
 
-    For external drives, $HOME/.bitcoin points to
+    Para unidades externas, $HOME/.bitcoin aponta para
 $green
             $parmanode_drive/.bitcoin
 $orange
-    For Mac users with an internal drive, 
-    $HOME/Library/Application Support/Bitcoin (the default location),
-    now points to:
+    Para os utilizadores de Mac com uma unidade interna, 
+    $HOME/Library/Application Support/Bitcoin (a localização predefinida), 
+    aponta agora para:
 $green
             $HOME/.bitcoin
 $orange
