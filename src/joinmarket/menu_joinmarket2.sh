@@ -79,6 +79,8 @@ $cyan
 $cyan
                   man)$orange         Enter virtual Python environment and play
                                       with scripts manually
+$cyan
+                  mm)$orange          Back to first ParmaJoin menu
 
 $orange   
 ########################################################################################
@@ -87,7 +89,9 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
-
+mm)
+menu_joinmarket
+;;
 
 conf)
     sudo nano $jmcfg 
