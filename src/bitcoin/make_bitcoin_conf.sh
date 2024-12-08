@@ -52,17 +52,17 @@ if [[ $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] || [[ $bt
 set_terminal ; echo -e "
 ########################################################################################
 
-    A$cyan bitcoin.conf$orange file already exists. You can keep the one you have, but be
-    aware if this file was not originally birthed by Parmanode, it may cause conflicts
-    if there are unexpected settings. 
+    O ficheiro A$cyan bitcoin.conf$orange já existe. Podes manter o que tens, mas tem em atenção 
+    que se este ficheiro não foi originalmente criado pela Parmanode, pode causar conflitos 
+    se existirem definições inesperadas.
 
-    It's probably safest to discard the old copy, but the choice is yours...
+    É provavelmente mais seguro deitar fora a cópia antiga, mas a escolha é sua...
 $green
-                           o)           overwrite
+                           o)           sobrescrever
 $orange
-                           yolo)        keep the one you have
+                           yolo)        manter a que tem
 $red
-                           a)           abort installation
+                           a)           abortar a instalação
 $orange
 ########################################################################################
 "
@@ -83,15 +83,14 @@ done
 fi
 
 sudo cp $tmp/bitcoin.conf $file && log "bitcoin" "bitcoin conf made"  
-debug "Bitcoin conf copied from tmp
-$(cat $HOME/.bitcoin/bitcoin.conf)"
+debug "Bitcoin conf copiado de tmp $(cat $HOME/.bitcoin/bitcoin.conf)"
 
 sudo chown -R $USER:$(id -gn) $file
 apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitcoin.conf
 }
 
 ########################################################################################
-#bitcoin conf patches
+#patches bitcoin conf 
 ########################################################################################
 
 function add_rpcbind {
