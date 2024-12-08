@@ -17,11 +17,11 @@ if [[ $btcdockerchoice == "yes" ]] ; then
     #make sure docker installed
     grep -q "docker-end" $HOME/.parmanode/installed.conf || { announce "Must install Docker first.
     " \
-    "Use menu: Add --> Other --> Docker). Aborting." && return 1 ; }
+    "Utilizar o menu: Adicionar --> Outros --> Docker). Abortando." && return 1 ; }
 
     #start docker if it is not running 
     if ! docker ps >$dn 2>&1 ; then 
-    announce "Please make sure Docker is running, then try again. Aborting."
+    announce "Certifique-se de que o Docker está em execução e tente novamente. Abortando."
     return 1
     fi
 
@@ -33,8 +33,8 @@ fi #end btcdockerchoice
 export install=bitcoin
 export install_bitcoin_variable="true" #don't use same name as function!
 
-if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "Bitcoin can be installed inside a Docker container, but may not
-    run as expected with default Parmanode settings - you'll have to tweak."
+if [[ -e /.dockerenv && $btcpayinstallsbitcoin != "true" ]] ; then announce "O Bitcoin pode ser instalado dentro de um contentor Docker, 
+    mas pode não funcionar como esperado com as definições predefinidas do Parmanode - terá de as ajustar."
 fi
 
 set_terminal
@@ -59,7 +59,7 @@ if [[ $version == self ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
     sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
-    || log "bitcoin" "unable to execute chown in intstall_bitcoin function" 
+    || log "bitcoin" "incapaz de executar chown na função intstall_bitcoin" 
 fi
 
 prune_choice || return 1 
@@ -131,7 +131,7 @@ debug "before install_btcpay_mac_child"
 install_btcpay_mac_child || return 1
 debug "after install_btcpay_mac_child"
 store_BTC_container_IP
-success "Bitcoin and BTCPay Server has been installed in a Docker Container."
+success "O servidor Bitcoin e BTCPay foi instalado num contentor Docker."
 #end bitcoin then btcpay install here
 return 0
 fi
@@ -142,15 +142,15 @@ if [[ $OS == "Linux" ]] ; then
 
     if ! which bitcoind >$dn ; then
         install_failure "Bitcoin"
-        log "bitcoin" "no binaries. install failure."
+        log "bitcoin" "sem binários. falha na instalação."
         unset importdrive
         return 1 
     fi
 
 if [[ -e $hp/bitcoin_github ]] ; then echo -e "
 ########################################################################################
-    Delete$cyan $hp/bitcoin_github$orange directory (it can get big), 
-    you can save space.
+    Eliminar o diretório$cyan $hp/bitcoin_github$orange (pode ficar grande), 
+    pode poupar espaço.
 
              $green y$orange     or    $red no $orange
 
@@ -164,17 +164,18 @@ set_terminal ; echo -e "
    $cyan 
                                     SUCCESS !!!
 $orange
-    Bitcoin Core should have started syncing. Note, it should also continue to sync 
-    after a reboot, or you can start Bitcoin Core from the Parmanode Bitcoin menu at
-    any time.
+    O Bitcoin Core deve ter começado a sincronizar. Note que ele também deve continuar 
+    a sincronizar após uma reinicialização, ou você pode iniciar o Bitcoin Core a 
+    partir do menu Parmanode Bitcoin a qualquer momento.
 
-    You can also access Bitcoin functions from the Parmanode menu.
+    Também é possível aceder às funções Bitcoin a partir do menu Parmanode.
 
 $green
-    TIP:
+    DICA:
 
-    Make sure you turn off power saving features, particularly features that put
-    the drive to sleep; Power saving is usually on by default for laptops.
+    Certifique-se de que desactivou as funções de poupança de energia, em especial as 
+    funções que colocam a unidade em suspensão; a poupança de energia está normalmente 
+    activada por predefinição nos computadores portáteis.
 $orange
 
 ########################################################################################
@@ -194,16 +195,16 @@ echo -e "
 $cyan 
                                     SUCCESS !!!
 $orange
-    Bitcoin Core should have started syncing.
+    O Bitcoin Core deveria ter começado a sincronizar.
 
-    Bitcoin can be started from the Parmanode-Bitcoin menu, or by clicking the Bitcoin
-    App icon in the Applications folder.
+    O Bitcoin pode ser iniciado a partir do menu Parmanode-Bitcoin, ou clicando 
+    no ícone da aplicação Bitcoin na pasta Aplicações.
     
-    For now, there is no configuration to automatically make Bitcoin Core 
-    start after a reboot, as it seemed to introduce too much potential for error. 
-    This feature is only available on Linux.
+    Por enquanto, não há nenhuma configuração para fazer com que o Bitcoin Core inicie 
+    automaticamente após uma reinicialização, pois isso parece introduzir muito potencial 
+    para erros. Esta funcionalidade só está disponível no Linux.
 $green
-    Do remmember to manually restart Bitcoin should your Mac power off. 
+    Não se esqueça de reiniciar manualmente o Bitcoin caso o seu Mac se desligue.
 $orange
 ########################################################################################
 " && installed_conf_add "bitcoin-end" 
