@@ -17,18 +17,18 @@ fi
 if [[ $bitcoinrunning != "false" ]] ; then running="true" ; fi
 
 if [[ $bitcoinrunning == "true" ]] ; then
-output1="                   Bitcoin is$green RUNNING$orange-- see log menu for progress"
+output1="                   Bitcoin está$green A CORRER$orange-- veja o menu de registo para o progresso"
 
-output2="                         (Syncing to the $drive drive)"
+output2="                         (Sincronização com a unidade$drive)"
 else
-output1="                   Bitcoin is$red NOT running$orange -- choose \"start\" to run"
+output1="                   Bitcoin $red NÃO está a correr$orange -- escolha \"start\" para correr"
 
-output2="                         (Will sync to the $drive drive)"
+output2="                         (Sincroniza-se com a unidade$drive)"
 fi                         
 
 echo -e "
 ########################################################################################
-                            ${cyan}Bitcoin Core Menu - OTHER ${orange}                               
+                            ${cyan}Menu Bitcoin Core - OUTROS ${orange}                               
 ########################################################################################
 "
 echo -e "$output1"
@@ -38,17 +38,17 @@ echo ""
 echo -e "
 
 $cyan
-      (cd)$orange       Change syncing drive internal vs external
+      (cd)$orange       Alterar a unidade de sincronização interna vs externa
 $cyan
-      (mp)$orange       Modify Pruning
+      (mp)$orange       Modificar a redução (prune)
 $cyan
-      (c)$orange        How to connect your wallet...........(Otherwise no point to this)
+      (c)$orange        Como ligar a sua carteira...........(Caso contrário, não faz sentido)
 $cyan
-      (dd)$orange       Backup/Restore data directory.................(Instructions only)
+      (dd)$orange       Diretorio de dados do Backup/Restauro.................(Apenas instruções)
 $cyan   
-      (r)$orange        Errors? Try --reindex blockchain...
+      (r)$orange        Erros? Tente --reindex blockchain...
 $cyan
-      (h)$orange        Hack Parmanode; tips for troubleshooting.
+      (h)$orange        Hack Parmanode; dicas para a resolução de problemas.
 
 ########################################################################################
 "
@@ -75,37 +75,36 @@ dd|DD)
 echo -e "
 ########################################################################################
 $cyan   
-                          BACKUP BITCOIN DATA DIRECTORY    
+                          DIRECTÓRIO DE DADOS DE BACKUP DE BITCOIN    
 $orange
-    If you have a spare drive, it is a good idea to make a copy of the bitcoin data 
-    directory from time to time. This could save you waiting a long time if you were 
-    ever to experience data corruption and needed to resync the blockchain.
+    Se tiver uma unidade de reserva, é uma boa ideia fazer uma cópia do diretório de dados 
+    da bitcoin de vez em quando. Isto pode fazer com que não tenha de esperar muito tempo 
+    se alguma vez tiver dados corrompidos e precisar de voltar a sincronizar a blockchain.
 
-    It is VITAL that you stop bitcoind before copying the data, otherwise it will not 
-    work correctly when it comes time to use the backed up data, and it's likely the 
-    directory will become corrupted. You have been warned.
+    É VITAL que pares o bitcoind antes de copiares os dados, caso contrário não funcionará 
+    corretamente quando chegar a altura de utilizar os dados com cópia de segurança, e é 
+    provável que o diretório fique corrompido. Foste avisado.
 
-    You can copy the entire bitcoin_data directory.
+    Pode copiar todo o diretório bitcoin_data.
 
-    You could also just copy the chainstate directory, which is a lot smaller, and 
-    this could be all that you need should there be a chainstate error one day. This 
-    directory is smaller and it's more feasible to back it up frequently. I would 
-    suggest doing it every 100,000 blocks or so, in addition to having a full copy 
-    backed up if you have drive space somewhere.
+    Pode também copiar o diretório chainstate, que é muito mais pequeno, e isto pode ser 
+    tudo o que precisa se um dia houver um erro no chainstate. Este diretório é mais 
+    pequeno e é mais viável fazer backups frequentes. Sugiro que o faça a cada 100.000 
+    blocos ou mais, para além de ter uma cópia de segurança completa, se tiver espaço 
+    em disco algures.
 
-    To copy the data, use your usual computer skills to copy files. The directory is 
-    located either on the internal drive:
+    Para copiar os dados, utilize os seus conhecimentos informáticos habituais para 
+    copiar ficheiros. O diretório está localizado na unidade interna:
 
                         $HOME/.bitcoin
 
-    or external drive:
+    ou unidade externa:
 
                 LINUX :$cyan   /media/$(whoami)/parmanode/.bitcoin $orange
                 MAC   :$cyan   /Volumes/parmanode/.bitcoin$orange
 
-    Note that if you have an external drive for Parmanode, the internal directory 
-    $HOME/.bitcoin is actually a symlink (shortcut) to the external 
-    directory.
+    Note que se tiver um disco externo para o Parmanode, o diretório interno $HOME/.bitcoin 
+    é na realidade uma ligação simbólica (atalho) para o diretório externo.
 
 ########################################################################################
 "
@@ -146,44 +145,43 @@ function hack_tips {
 set_terminal_custom 55 ; echo -e "
 ########################################################################################
 
-    If for some reason, Bitcoin is not syncing to the correct drive, here's what's
-    happening under the hood to help you tweak it.
+    Se, por algum motivo, o Bitcoin não estiver a sincronizar com a unidade correta, 
+    eis o que está a acontecer nos bastidores para o ajudar a ajustar.
 
-       1)   Bitcoin Core by default syncs to $green$HOME/.bitcoin$orange, unless specified
-            otherwise in bitcoin.conf (default location is different for Macs).
+       1)   O Bitcoin Core por padrão sincroniza para $green$HOME/.bitcoin$orange, a menos que especificado 
+            de outra forma no bitcoin.conf (a localização padrão é diferente para Macs).
 
-       2)   Parmanode never changes this default directory, instead it 'tricks' 
-            Bitcoin Core. For External drives, Parmanode will put a symlink (shortcut)
-            at the location of $green$HOME/.bitcoin$orange, pointing to the external drive 
-            directory which is$orange /media/$USER/parmanode/.bitcoin$orange for Linux and 
-            $green /Volumes/parmanode/.bitcoin$orange for Macs.
+       2)   O Parmanode nunca altera este diretório padrão, em vez disso ele 'engana' o 
+            Bitcoin Core. Para drives externos, o Parmanode irá colocar um link simbólico 
+            (atalho) na localização de $green$HOME/.bitcoin$orange, apontando para o diretório 
+            do drive externo que é$orange /media/$USER/parmanode/.bitcoin $orange para Linux e 
+            $green /Volumes/parmanode/.bitcoin$orange para Macs.
 
-       3)   For Macs, the default location for Bitcoin's data on the internal drive
-            is strange and long (even worse in Windows), and for simplicity, I've made 
-            it point to $green$HOME/.bitcoin$orange on Macs. From there, if a Mac user 
-            chooses or switches to the external drive, then 
-            $green$HOME/.bitcoin$orange also becomes a symlink, pointing to the 
-            external drive. It's beautiful, right? I think it is.
+       3)   Para Macs, a localização padrão para os dados do Bitcoin no disco interno é estranha 
+            e longa (ainda pior no Windows), e para simplificar, eu fiz isso apontar para 
+            $green$HOME/.bitcoin$orange em Macs. A partir daí, se um utilizador de Mac escolher ou mudar 
+            para a unidade externa, então $green$HOME/.bitcoin$orange também se torna uma ligação simbólica, 
+            apontando para a unidade externa. É bonito, não é? Eu acho que é.
        
-       3)   If you look for the .bitcoin directory, you woni't normally see it unless
-            you know the tricks to show hidden files/directories (ask Google or 
-            ChatGPT if you need help).
+       4)   Se procurares o diretório .bitcoin, normalmente não o verás, a não ser que conheças 
+            os truques para mostrar ficheiros/diretórios ocultos (pergunta ao Google ou ao ChatGPT 
+            se precisares de ajuda).
 
-       4)   Parmanode signals to itself what kind of drive (internal/external) 
-            Bitcoin is syncing to by writing the line 'drive=external' or
-            'drive=internal' in the file$green $dp/parmanode.conf$orange
+       5)   O Parmanode sinaliza a si próprio para que tipo de unidade (interna/externa) o 
+            Bitcoin está a sincronizar escrevendo a linha 'drive=external' ou 'drive=internal' 
+            no ficheiro$green $dp/parmanode.conf$orange
 
-       5)   If after you do some non-standard adjustments, Parmanode has got it wrong, 
-            you can add the necessary line to the parmanode.conf file. This will help
-            the Parmanode menu's display correctly, and any other alerts/checks to
-            work properly.
+       6)   Se depois de fazer alguns ajustes não padronizados, o Parmanode se enganou, 
+            pode adicionar a linha necessária ao ficheiro parmanode.conf. Isto ajudará a 
+            que o menu do Parmanode seja apresentado corretamente, e que quaisquer outros 
+            alertas/verificações funcionem corretamente.
 
-       6)   Parmanode also adds a line about the drive in the$red /etc/fstab$orange file on
-            Linux machines. This is part of the 'import' process, so that the drive
-            always mounts when you reboot the computer, and Bitcoin Core can
-            start up properly.$red I strongly recommend you don't fiddle with this file
-         $orange   unless you are a super expert, because it can brick your OS if you get
-            it wrong. 
+       7)   Parmanode também adiciona uma linha sobre o drive no arquivo$red /etc/fstab$orange 
+            em máquinas Linux. Isso é parte do processo de 'importação', para que o drive sempre 
+            seja montado quando você reiniciar o computador, e o Bitcoin Core possa iniciar 
+            corretamente. $red Eu recomendo fortemente que você não mexa com esse arquivo 
+            $orange a não ser que você seja um super expert, porque ele pode quebrar seu 
+            sistema operacional se você errar.
 
 ########################################################################################
 "
