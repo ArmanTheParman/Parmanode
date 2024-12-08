@@ -17,8 +17,13 @@ fi
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
     if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
-        echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
-        sudo apt-get update -y && sudo apt-get install bc -y
+        if which tmux >$dn 2>&1 ; then
+            sudo -v
+            pn_tmux "sudo apt-get update -y && sudo apt-get install bc -y"
+        else
+            echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
+            sudo apt-get update -y && sudo apt-get install bc -y
+        fi
     fi
 fi
 
