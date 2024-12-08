@@ -77,7 +77,7 @@ $cyan
                   vc)$orange          Remove all config comments and make pretty
 $cyan
                   man)$orange         Enter virtual Python environment and play
-                                      with scripts manually
+                                      with scripts manually (for experts)
 $cyan
                   mm)$orange          Back to first ParmaJoin menu...
 
@@ -101,9 +101,15 @@ vim_warning ; sudo vim $jmcfg
 ;;
 
 vc)
-sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee $tmp/cfg >$dn 2>&1
-sudo mv $tmp/cfg $jmcfg
-enter_continue "file modified"
+yesorno "The file will be modified to delete the comments and make this large file more 
+    managable. A backup will be kept as ${jmcfg}_backup
+    so you can still investigate what the comments say in the future.
+    
+    Proceed?" || continue
+
+sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee ${jmcfg}_backup >$dn 2>&1
+sudo mv ${jmcfg}_backup $jmcfg >$dn 2>&1
+enter_continue "File modified."
 ;;
 
 man)
