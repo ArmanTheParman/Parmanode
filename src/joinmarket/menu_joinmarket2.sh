@@ -119,7 +119,7 @@ yesorno "The file will be modified to delete the comments and make this large fi
     Proceed?" || continue
 
 sed '/^#/d' $jmcfg | sed '/^$/d' | sed '/\[/a\ ' | sed '/\[/i\ ' | tee ${jmcfg}_backup >$dn 2>&1
-sudo mv ${jmcfg}_backup $jmcfg >$dn 2>&1
+sudo cp ${jmcfg}_backup $jmcfg >$dn 2>&1
 enter_continue "File modified."
 ;;
 
