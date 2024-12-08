@@ -143,10 +143,9 @@ cat $jmcfg | while IFS= read -r line ; do {
 
     echo "$line" | tee -a ${jmcfg}_temp
     }
+    done
 sudo cp ${jmcfg}_temp $jmcfg 
 enter_continue "File modified."
-
-
 
 ;;
 
