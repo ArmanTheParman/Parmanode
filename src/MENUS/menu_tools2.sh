@@ -28,6 +28,8 @@ $cyan              (sr)$orange        System report (for getting troubleshooting
 
 $cyan              (ps)$orange        Adjust SSD power saving
 
+$cyan              (pass)$orange      Change computer login/sudo password
+
 $orange
 ########################################################################################
 "
@@ -78,6 +80,13 @@ drive_encryption
 
 ps)
 adjust_ssd_power_saving
+;;
+
+pass)
+set_terminal
+yesorno "Are you sure you want to change your computer's password? If yes, you'll
+    first be asked for the old password, then the new one twice." || continue
+passwd && success "The password has been changed."
 ;;
 
 *)
