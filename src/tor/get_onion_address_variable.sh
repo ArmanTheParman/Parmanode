@@ -32,7 +32,6 @@ fi
 
 if [[ $1 == "ssh" ]] ; then
 export ONION_ADDR_SSH="$(sudo cat $varlibtor/ssh-service/hostname 2>$dn)" 
-debug "$ONION_ADDR_SSH, hit <enter>"
 return 0
 fi
 
