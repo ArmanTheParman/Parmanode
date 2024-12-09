@@ -11,7 +11,7 @@ fi
 
 if [ -d $HOME/parman_programs/parmanode/src ] ; then
 clear
-echo "Parmanode seems to already be installed. Aborting" 
+echo "O Parmanode parece já estar instalado. Abortar" 
 sleep 5
 exit
 fi
@@ -38,15 +38,15 @@ git clone https://github.com/armantheparman/parmanode.git
 # sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 clear
 
-echo "#Added by Parmanode..." | tee -a ~/.bashrc >$dn 2>&1
+echo "#Adicionado por Parmanode..." | tee -a ~/.bashrc >$dn 2>&1
 echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >$dn 2>&1
 
 
 echo "
 ########################################################################################
 
-    To run Parmanode, open a NEW TERMINAL window, and type 'rp' (from any directory) 
-    followed by <enter>.
+    Para executar o Parmanode, abra uma janela de NOVO TERMINAL, e digite 'rp' 
+    (de qualquer diretório) seguido de <enter>.
 
 ########################################################################################
 "
