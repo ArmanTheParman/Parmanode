@@ -17,19 +17,19 @@ if ! which gpg >$dn  && [[ $OS == Mac ]] ; then install_gpg4mac ; fi
 #ignore-missing option not available on shasum
 if which sha256sum >$dn ; then
     if ! sha256sum --ignore-missing --check SHA256SUMS ; then announce "Checksum$red failed$orange. Aborting." \
-    "Sometimes this happens for unexplainable reasons. 
-    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
+    "Por vezes, isto acontece por razões inexplicáveis. 
+    Tente desinstalar a instalação parcial do Bitcoin e tente novamente." ; return 1 ; fi
 else
     rm $tmp/bitcoinsha256 >$dn 2>&1
     shasum -a 256 --check SHA256SUMS >$tmp/bitcoinsha256 2>&1
     if ! grep -q OK $tmp/bitcoinsha256 ; then announce "Checksum$red failed$orange. Aborting." \
-    "Sometimes this happens for unexplainable reasons. 
-    Try uninstalling the partial Bitcoin installation and try again." ; return 1 ; fi
+    "Por vezes, isto acontece por razões inexplicáveis. 
+    Tente desinstalar a instalação parcial do Bitcoin e tente novamente." ; return 1 ; fi
     rm $tmp/bitcoinsha256 >$dn 2>&1
 fi
 
 sleep 3
-echo -e "\nPlease wait a moment for gpg verification..."
+echo -e "\nAguarde um momento para a verificação gpg..."
 
 #keys from : https://github.com/bitcoin-core/guix.sigs/tree/main/builder-keys
 gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys 658E64021E5793C6C4E15E45C2E581F5B998F30E >$dn 2>&1
@@ -40,10 +40,10 @@ curl https://raw.githubusercontent.com/bitcoin-core/guix.sigs/main/builder-keys/
 
     if gpg --verify --status-fd 1 SHA256SUMS.asc 2>&1 | grep -iq GOOD
     then
-        echo -e "\nGPG verification of the SHA256SUMS file$green passed$orange.\n"
+        echo -e "\nVerificação GPG do ficheiro SHA256SUMS$green passou$orange.\n"
         [[ $btcpayinstallsbitcoin == "true" ]] || enter_continue
     else 
-        echo -e "\nGPG verification$red failed$orange. Aborting.\n" 
+        echo -e "\nA verificação GPG$red falhou$orange. Abortando.\n" 
         enter_continue
         return 1 
     fi
