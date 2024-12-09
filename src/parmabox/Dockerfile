@@ -1,6 +1,7 @@
-FROM ubuntu:latest
+FROM debian:latest
 
 RUN apt-get update -y 
+RUN apt-get install -f
 RUN apt-get install -y curl
 RUN apt-get install -y vim 
 RUN apt-get install -y nano
