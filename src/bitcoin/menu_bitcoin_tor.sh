@@ -6,7 +6,7 @@ fi
 
 if ! which tor >$dn 2>&1 ; then set_terminal
 enter_continue "
-    You need to install Tor first. Aborting.
+    É necessário instalar o Tor primeiro. Abortar.
     "
     return 0
 fi
@@ -44,26 +44,26 @@ fi
 set_terminal ; echo -e "
 ########################################################################################
 
-$cyan                        Tor options for Bitcoin (Linux only)   $orange
+$cyan                        Opções de Tor para Bitcoin (apenas Linux)   $orange
 
 
-    Option to change Bitcoin Tor Settings. Note if you use LND, it may stop running 
-    and require some thinking time (minutes) before you can succesfully manually 
-    restart it.
+    Opção para alterar as definições do Bitcoin Tor. Nota que se usares o LND, ele pode 
+    parar de funcionar e requerer algum tempo de reflexão (minutos) antes de o poderes 
+    reiniciar manualmente com sucesso.
 
 $cyan
-    1)$orange    Allow Tor connections AND clearnet connections
-                 - Helps you and the network overall
+    1)$orange    Permitir ligações Tor E ligações clearnet
+                 - Ajuda-o a si e à rede em geral
 $cyan
-    2)$orange    Force Tor only connections
-                 - Extra private but only helps the Tor network of nodes
+    2)$orange    Forçar ligações apenas Tor
+                 - Extra privado mas apenas ajuda a rede Tor de nós
    $cyan 
-    3)$orange    Force Tor only OUTWARD connections
-                 - Only helps yourself but most private of all options
-                 - You can connect to tor nodes, they can't connect to you
+    3)$orange    Forçar Tor apenas para ligações OUTWARD
+                 - Só ajuda a si próprio e é a mais privada de todas as opções
+                 - Pode ligar-se aos nós tor, mas eles não podem ligar-se a si
 $cyan
-    4)$orange    Make Bitcoin public (Remove Tor usage and stick to clearnet)
-                 - Generally faster and more reliable
+    4)$orange    Tornar a Bitcoin pública (remover a utilização do Tor e manter a clearnet)
+                 - Geralmente mais rápido e mais fiável
 
 
 $bright_magenta    Current Status: $status_print$orange
@@ -95,4 +95,3 @@ esac
 
 done
 }
-
