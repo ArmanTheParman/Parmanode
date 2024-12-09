@@ -13,14 +13,14 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    You have chosen to$cyan abandon pruning$orange from the existing choice (ie.
-    increasing the size of the stored data.)
+    Optou por$cyan abandonar a prune $orange da escolha existente (ie.
+    aumentar o tamanho dos dados armazenados.)
 
-    This might trigger a re-indexing of the chain and can take a very long time. 
+    Isto pode desencadear uma re-indexação da cadeia e pode demorar muito tempo.
 
-$green                  c)     Continue
+$green                  c)     Continuar
 
-$red                  a)     Abort
+$red                  a)     Abortar
 $orange
 ########################################################################################
 "
@@ -37,8 +37,8 @@ apply_prune_bitcoin_conf
 set_terminal ; echo -e "
 ########################################################################################
 
-   Prune value request complete. Please start Bitcoin manually from the Parmanode
-   Bitcoin menu when ready.
+   Solicitação de valor da prune concluída. Por favor, inicie o Bitcoin manualmente 
+   a partir do menu Parmanode Bitcoin quando estiver pronto.
 
 ########################################################################################
 "
