@@ -101,10 +101,9 @@ set_terminal_high ; echo -e "
     you need to add the following lines to the file $HOME/.ssh/config 
     (if the file does not exits, then create the file in that location).
 $green
-Host *.onion
-    ProxyCommand nc -x localhost:9050 -X 5 %h %p
+    Host *.onion
+        ProxyCommand nc -x localhost:9050 -X 5 %h %p
 $orange
-    Indeindentation does not matter. Just copy these 2 lines as written. BTW, 
     Parmanode has already done this for you on this HOST computer (not client, 
     obviously, that's another computer), so it is ready to be a CLIENT to another 
     HOST you may wish to set up. That's confusing, sorry. Read it again slowly.
