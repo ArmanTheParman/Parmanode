@@ -11,9 +11,8 @@ function install_joinmarket {
     #Parmabox is needed for Macs becuase Bitcoin on Macs don't have bitcoin-cli
     if [[ $OS == "Mac" ]] ; then
         if ! grep -q "parmabox-end" $ic ; then
-
-            yesorno "Parmanode needs to install Parmabox before installing
-        JoinMarket. OK?" || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
+            yesorno "Parmanode needs to install Parmabox before installing JoinMarket. OK?" \
+            || { echo "Aborting..." ; sleep 2 ; return 1 ; }     
             install_parmabox silent
         fi
 

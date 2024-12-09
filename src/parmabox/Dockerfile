@@ -1,10 +1,28 @@
 FROM ubuntu:latest
 
 RUN apt-get update -y 
-RUN apt-get install -y vim nano ssh sudo net-tools curl wget git procps gnupg tree htop tmux ca-certificates --fix-missing
-RUN apt-get install -y python3 python3-cryptography python3-setuptools python3-pip  --fix-missing
-RUN apt-get install -y python3-pyqt5 libsecp256k1-dev  --fix-missing
+RUN apt-get install -y curl
+RUN apt-get install -y vim 
+RUN apt-get install -y nano
+RUN apt-get install -y ssh 
+RUN apt-get install -y sudo 
+RUN apt-get install -y net-tools 
+RUN apt-get install -y wget
+RUN apt-get install -y git 
+RUN apt-get install -y procps 
+RUN apt-get install -y gnupg 
+RUN apt-get install -y tree
+RUN apt-get install -y htop 
+RUN apt-get install -y tmux
+RUN apt-get install -y ca-certificates
+RUN apt-get install -y python3
+RUN apt-get install -y python3-cryptography
+RUN apt-get install -y python3-setuptools
+RUN apt-get install -y python3-pip 
+RUN apt-get install -y python3-pyqt5 
+RUN apt-get install -y libsecp256k1-dev
 RUN apt-get install -y x11-apps
+
 RUN groupadd -r parman && useradd -m -g parman parman 
 RUN chown -R parman:parman /home/parman 
 RUN echo 'parman:parmanode' | chpasswd

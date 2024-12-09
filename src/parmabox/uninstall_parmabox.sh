@@ -33,6 +33,6 @@ $cyan
         $HOME/parmanode/parmabox $orange" && sudo rm -rf $HOME/parmanode/parmabox >$dn
 
 installed_config_remove "parmabox"
-success "The Linux Docker ParmaBox" "being uninstalled"
+success "ParmaBox" "being uninstalled"
 
 }
