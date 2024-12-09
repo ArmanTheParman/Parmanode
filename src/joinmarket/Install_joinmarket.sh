@@ -207,8 +207,14 @@ if ! which python3 >$dn 2>&1 ; then install_python3 ; fi
 
 pythonversion=$(python3 --version | grep -oE '[0-9]+\.[0-9]+')
 pythonversion_minor=$(echo $pythonversion | cut -d \. -f2)
-if [[ $pythonversion_minor -gt "13" ]] || [[ $pythonversion_minor -lt "8" ]] ; then
-announce "Python needs to be >v3.8 and <3.13. You have $pythonversion. Aborting."
+if [[ $pythonversion_minor -ge 12 ]] || [[ $pythonversion_minor -le 8 ]] ; then
+announce "Python needs to be >=v3.8 and <3.12. You have $pythonversion.
+
+    For now, Parmanode will leave this error for you to manage. The easiest solution
+    is to uninstall Python3 and install Python3.11 and try installing ParmaJoin
+    again. 
+
+    Aborting."
 return 1
 fi
 
