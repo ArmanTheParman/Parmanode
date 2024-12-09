@@ -266,6 +266,11 @@ announce "Hit control x to exit nano text editor.
 "
 nano $oblogfile
 ;;
+
+oblv)
+vim $oblogfile
+;;
+
 info)
 parmajoin_info
 spending_info_jm
