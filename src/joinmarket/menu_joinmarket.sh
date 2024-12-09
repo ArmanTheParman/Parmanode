@@ -154,7 +154,6 @@ gui)
 ;;
 
 ob)
-    jm_log_file_manager
     orderbook_jm
 ;;
 

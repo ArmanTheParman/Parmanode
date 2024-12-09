@@ -209,12 +209,13 @@ function start_yield_generator {
     deactivate ; "
     TMUX=$TMUX2
     unset password unet_cont
-
+    jm_log_file_manager
 }
 
 function stop_yield_generator {
     yg_PID=$(ps ax | grep privacyenhanced.py | grep -v grep | awk '{print $1}')
     kill -15 $yg_PID
+    jm_log_file_manager stop
     sudo rm $logfile 2>&1
 }
 
