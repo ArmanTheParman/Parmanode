@@ -3,9 +3,9 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall ParmaBox 
+                                 Desinstalar ParmaBox 
 $orange
-    Are you sure? (y) (n)
+    Tens a certeza? (y) (n)
 
 ########################################################################################
 "
@@ -19,8 +19,8 @@ n) return 1 ;;
 esac
 done
 if ! docker ps >$dn ; then announce \
-"Please make sure Docker is running before asking Parmanode to
-    clean up the installed ParmaBox."
+"Certifique-se de que o Docker está a funcionar antes de pedir à Parmanode para limpar 
+    o ParmaBox instalado."
 return 1
 fi
 
@@ -28,11 +28,11 @@ docker stop parmabox
 docker rm parmabox 
 docker rmi parmabox
 
-yesorno "Do you want to delete this directory on your system as well?
+yesorno "Pretende apagar este diretório também no seu sistema?
 $cyan     
         $HOME/parmanode/parmabox $orange" && sudo rm -rf $HOME/parmanode/parmabox >$dn
 
 installed_config_remove "parmabox"
-success "The Linux Docker ParmaBox" "being uninstalled"
+success "ParmaBox" " a ser desinstalado"
 
 }
