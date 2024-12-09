@@ -24,18 +24,18 @@ export original_dir=$(pwd) >/dev/null 2>&1
 
 #Using $() can run some code inside and the output is then a string.
 #Here, $(uname) returns either "Linux" or "Darwin" for Macs.
-if [[ $(uname) == Linux ]] ; then
-export parmanode_drive="/media/$USER/parmanode"
-export bashrc="$HOME/.bashrc"
-export macprefix=""
-export torrc="/etc/tor/torrc"
-export varlibtor="/var/lib/tor"
-elif [[ $(uname) == Darwin ]] ; then
-export parmanode_drive="/Volumes/parmanode"
-export bashrc="$HOME/.zshrc"
-export macprefix="/usr/local"
-export torrc="$macprefix/etc/tor/torrc"
-export varlibtor="$macprefix/var/lib/tor"
+if [[ $(uname) == "Linux" ]] ; then
+    export parmanode_drive="/media/$USER/parmanode"
+    export bashrc="$HOME/.bashrc"
+    export macprefix=""
+    export torrc="/etc/tor/torrc"
+    export varlibtor="/var/lib/tor"
+elif [[ $(uname) == "Darwin" ]] ; then
+    export macprefix="$(brew --prefix 2>/dev/null)" ; if [[ -z $macprefix ]] ; then export macprefix="/usr/local" ; fi
+    export parmanode_drive="/Volumes/parmanode"
+    export bashrc="$HOME/.zshrc"
+    export torrc="$macprefix/etc/tor/torrc"
+    export varlibtor="$macprefix/var/lib/tor"
 fi
 
 export pd=$parmanode_drive
@@ -53,7 +53,7 @@ export oc="$dp/overview.conf"
 export nk="$dp/.nostr_keys/nostr_keys.txt"
 export nkd="$dp/.nostr_keys"
 export dn="/dev/null"
-if [[ -z $dn ]] ; then echo "some problem with dn variable" ; read ; fi ##debug
+if [[ -z $dn ]] ; then echo "algum problema com a variável dn" ; read ; fi ##debug
 
 if [[ -z $lnd_port ]] ; then export lnd_port=9735 ; fi 
 
