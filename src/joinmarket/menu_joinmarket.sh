@@ -154,6 +154,7 @@ gui)
 ;;
 
 ob)
+    orderbook_log_file_manager
     orderbook_jm
 ;;
 
@@ -435,5 +436,11 @@ esac
 done
 
 enable_joinmarket_tor || { enter_continue "Something went wrong." ; return 1 ; }
+
+}
+
+function orderbook_log_file_manager {
+
+true
 
 }
