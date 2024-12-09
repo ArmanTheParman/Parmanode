@@ -11,27 +11,27 @@ if [[ -z $1 ]] ; then
 echo -e "
 ########################################################################################
 $cyan
-                           Bitcoin Core RPC Authentication
+                           Autenticação RPC do Bitcoin Core
 $orange
-    Remote Procedure Call (RPC) is how other applications (like wallets) connect to 
-    Bitcoin Core. 
-    So that no random software connects to Bitcoin Core, a username/password 
-    authentication challenge is introduced. Note, this password doesn't need to be 
-    incredibly secure, and do also bear in mind that it will be stored on the 
-    computer in$pink clear text$orange (i.e. unencrypted) inside the bitcoin.conf
-    file and other configuration files. Therefore, don't use highly sensitive
-    passwords that you might use for other things.
+    Remote Procedure Call (RPC) é como outras aplicações (como carteiras) se conectam
+    ao Bitcoin Core.
+    Para que nenhum software aleatório se conecte ao Bitcoin Core, um desafio de 
+    autenticação de nome de usuário/senha é introduzido. Note que esta palavra-passe 
+    não precisa de ser incrivelmente segura, e tenha em conta que será armazenada no 
+    computador em texto claro$pink$orange ( ou seja, não encriptado) dentro do 
+    ficheiro bitcoin.conf e outros ficheiros de configuração. Por conseguinte, não 
+    utilize palavras-passe muito sensíveis que possa utilizar para outras coisas.
 
-    If you decide to change the default username/password (parman/parman), then
-    make sure you$pink$blinkon do not use any symbols$blinkoff$orange, as some of 
-    them are interpreted by the computer as commands rather than plain text.
+    Se decidir alterar o nome de utilizador/palavra-passe predefinidos (parman/parman), 
+    certifique-se de que$pink$blinkon não utiliza quaisquer símbolos$blinkoff$orange, pois alguns 
+    deles são interpretados pelo computador como comandos em vez de texto simples.
 
 $green
-       (s)     Set the Bitcoin username and password (edits bitcoin.conf for you)
+       (s)     Definir o nome de usuário e a senha do Bitcoin (edita o bitcoin.conf para você)
 $orange
-       (l)     Leave Bitcoin username and password unchanged 
+       (l)     Deixar o nome de utilizador e a palavra-passe Bitcoin inalterados
 $red
-       (c)     Use cookie ...(deletes password from bitcoin.conf) - DON'T
+       (c)     Usar cookie ...(apaga a palavra-passe de bitcoin.conf) - NÃO
 $orange
 ########################################################################################
 
