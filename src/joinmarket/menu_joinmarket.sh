@@ -439,8 +439,24 @@ enable_joinmarket_tor || { enter_continue "Something went wrong." ; return 1 ; }
 
 }
 
-function orderbook_log_file_manager {
+function jm_log_file_manager {
 
-true
+file1=$HOME/.joinmarket/orderbook.log
+file1temp=$file1.temp
+exec 3> $file1temp #opens file
+
+if [[ $(wc -l < $file1) -gt 5000 ]] ; then 
+    tail -n5000 $file1 >&3 
+    cat $file1temp > $file1
+fi
+
+file1=$HOME/.joinmarket/yg_privacy.log
+file1temp=$file1.temp
+if [[ $(wc -l < $file1) -gt 5000 ]] ; then 
+    tail -n5000 $file1 >&3 
+    cat $file1temp > $file1
+fi
+
+exec 3>&-
 
 }
