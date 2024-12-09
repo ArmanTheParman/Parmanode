@@ -12,26 +12,27 @@ echo -e "
       $cyan                               
                                      PRUNING
 $orange
-    Bitcoin core needs about 1Tb of free data, either on an external drive or 
-    internal drive (500 Gb approx for the current blockchain, plus another 500 Gb for 
-    future blocks).
+    O núcleo do Bitcoin precisa de cerca de 1 TB de dados livres, seja numa unidade 
+    externa ou interna (aproximadamente 500 Gb para a blockchain atual, mais outros 
+    500 Gb para blocos futuros).
 
-    If space is an issue, you can run a pruned node, but be aware it's unlikely you'll
-    have an enjoyable experience. I recommend a pruned node only if it's your only
-    option, and you can start over with an \"unpruned\" node as soon as you reasonably 
-    can. Pruned nodes still download the entire chain, but then discard the data to 
-    save space. You won't be able to use wallets with old coins very easily and 
-    rescanning the wallet may be required without you realising - and that is SLOW.
+    Se o espaço for um problema, pode executar um nó prunado (reduzido), mas tenha em 
+    atenção que é pouco provável que tenha uma experiência agradável. Recomendo um nó
+    prunado apenas se for a sua única opção, e pode começar de novo com um nó \"não 
+    prunado\" assim que for razoavelmente possível. Os nós prunados continuam a 
+    descarregar toda a blolckchain, mas depois descartam os dados para poupar espaço. 
+    Não poderá utilizar facilmente carteiras com moedas antigas e poderá ser necessário 
+    voltar a digitalizar a carteira sem se aperceber - e isso é LENTO.
 $cyan
-    Would you like to run Bitcoin as a pruned node (not recommended generally)? $orange 
-    This will require about 4 Gb of space for the minimum prune value.
+    Você gostaria de rodar o Bitcoin como um nó prunado (geralmente não recomendado)? 
+    $orange Isso exigirá cerca de 4 Gb de espaço para o valor mínimo de poda.
 
 
-                  $red            prune)     I want to prune
+                  $red            prune)     Quero prunar
 
-$orange                              s)         I enjoy shitcoining
+$orange                              s)         Gosto de usar shitcoin
 
-$green                              n)         No pruning
+$green                              n)         Não prunar
 
 $orange
 ########################################################################################
@@ -92,8 +93,8 @@ set_terminal
 echo -e "
 ########################################################################################
 
-    Enter a$cyan pruning value$orange in megabytes (MB) between 550 and 50000. No commas, 
-    and no units.
+    Introduza um valor de redução$cyan$orange em megabytes (MB) entre 550 e 50000. 
+    Sem vírgulas e sem unidades.
 
 ########################################################################################
 "
@@ -146,14 +147,14 @@ elif [[ $prune_value -lt 550 ]] ; then
 echo -e "
 ########################################################################################
         
-           The prune value will be set to the minimum value of 550 MB (although 
-           several gigabytes of storage is still required - under 10Gb)
+           O valor de redução será definido para o valor mínimo de 550 MB (embora ainda 
+           sejam necessários vários gigabytes de armazenamento - abaixo de 10Gb)
 
- $green                           a)     Accept
+ $green                           a)     Aceitar
 
-$red                            c)     Change
+$red                            c)     Modificar
 
-$cyan                            d)     Decline pruning
+$cyan                            d)     Recusar prunar
 $orange
 ########################################################################################
 "
@@ -161,13 +162,13 @@ else
 echo -e "
 ########################################################################################
         
-                  The prune value will be set to$cyan $prune_value$orange MB
+                  O valor de redução será definido como$cyan $prune_value$orange MB
 
-$green                            a)     Accept
+$green                            a)     Aceitar
 
-$red                            c)     Change
+$red                            c)     Modificar
 
-$cyan                            d)     Decline pruning
+$cyan                            d)     Recusar prunar
 $orange
 ########################################################################################
 "
@@ -209,5 +210,4 @@ set_terminal
 done
 return 0
 }
-
 
