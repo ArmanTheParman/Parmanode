@@ -5,12 +5,12 @@ if [[ $drive == internal ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
 
-    Bitcoin is currently configured to sync to the internal drive. Would you like
-    to run the wizard to swap to the external drive?
+    O Bitcoin está atualmente configurado para sincronizar com a unidade interna. 
+    Gostaria de executar o assistente para trocar para a unidade externa?
 $cyan
                                 y)$orange       nice
 $cyan
-                                n)$orange       go away
+                                n)$orange       sair daqui
 
 ########################################################################################      
 "
