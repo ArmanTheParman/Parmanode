@@ -27,8 +27,8 @@ then
                     then 
                         exit 0 
                     else 
-                        if mount | grep -q parmanode ; then log \"parmanode\" \"WARNING: mount check with label, not mount point.\" ; exit 0 ; fi
-                        echo \"Drive not mounted. Error. Repeat try for 5 seconds... \" 
+                        if mount | grep -q parmanode ; then log \"parmanode\" \"ADVERTÊNCIA: verificar a montagem com a etiqueta, não com o ponto de montagem.\" ; exit 0 ; fi
+                        echo \"Unidade não montada. Erro. Repetir a tentativa durante 5 segundos... \" 
                         sleep 1
                         counter=\"\$(( \$counter + 1 ))\"
                         continue
@@ -37,7 +37,7 @@ then
             exit 1
 else
     clear
-    echo \"Error, no drive selection in parmanode.conf found.\"
+    echo \"Erro, não foi encontrada nenhuma seleção de unidade em parmanode.conf.\"
     sleep 3
     exit 1
 fi" > $HOME/.parmanode/mount_check.sh 2>$dn
