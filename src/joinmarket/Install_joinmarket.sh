@@ -218,7 +218,7 @@ announce "Python needs to be >=v3.8 and <3.12. You have $pythonversion.
     terminal, for example...
 $cyan
     brew uninstall python@3.12
-    brew install python@3.11 $orange"
+    brew install python@3.11 $orange
 
     Aborting."
 return 1
