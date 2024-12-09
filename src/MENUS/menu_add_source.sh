@@ -597,7 +597,7 @@ elif grep -q "joinmarket-start" $HOME/.parmanode/installed.conf ; then
 joinmarket_p="#                                      ParmaJoin                                       #"
 else
    #not installed
-joinmarket_n="#$cyan                            (join)    $orange    ParmaJoin (JoinMarket)                      #"
+joinmarket_n="#$cyan                            (join)    $orange    ParmaJoin (JoinMarket) - Linux only         #"
 fi
 
 #green
