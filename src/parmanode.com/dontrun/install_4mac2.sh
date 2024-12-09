@@ -27,30 +27,30 @@ function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }
 fi
 
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
-To run Parmanode, simply open the terminal and type:
+Para executar o Parmanode, basta abrir o terminal e digitar:
 
 rp
-then <enter>
+e <enter>
 
-'rp' stands for 'run Parmanode'. Alternatively, you can manually type 
-out the 'rp' function...
+'rp' significa 'run Parmanode'. Em alternativa, pode escrever manualmente a 
+função 'rp'...
 
 cd $HOME/parman_programs/parmanode/
 <enter>
 ./run_parmanode.sh
 <enter>
 
-NOTE: rp will not work in the window you used to install Parmanode.
-Close it, open a new one, and then rp will work.
+NOTA: o rp não funcionará na janela que usou para instalar o Parmanode. 
+Feche-a, abra uma nova, e então o rp funcionará.
 
-You can delete this file once you've absorbed the information.
+Pode apagar este ficheiro depois de ter absorvido a informação.
 EOF
 clear
-echo "See new text document on Desktop."
+echo "Ver novo documento de texto no ambiente de trabalho."
 fi
 
 #no further changes needed.
-echo "Parmnode already downloaded."
+echo "Parmnode já descarregado."
 exit
 fi
 
@@ -67,10 +67,10 @@ clear
 echo "
 ########################################################################################
 
-    Sorry, you need MacOS version 10.9 or later to use Parmanode.
+    Lamentamos, mas é necessário o MacOS versão 10.9 ou posterior para utilizar o Parmanode.
 
 ########################################################################################
-    Hit <enter> to continue.
+    Prima <enter> para continuar.
 "
 read
 exit 0
@@ -85,19 +85,19 @@ sudo -k
 echo "
 ########################################################################################
    
-   Command Line Developer Tools is needed.
+   É necessário o Command Line Developer Tools.
 
-   There will be a pop up question which you'll need to respond to (It may actually
-   be minimised, so look at the task bar below if you don't see it). The install
-   estimate will initially say some HOURS, but ignore that, it's wrong.
+   Surgirá uma pergunta à qual terá de responder (pode estar minimizada, por isso veja a 
+   barra de tarefas abaixo se não a vir). A estimativa de instalação indicará 
+   inicialmente algumas HORAS, mas ignore isso, está errado.
 
-   Once Command Line Tools have successfully installed, enter your computer password,
-   then <enter> to continue.
+   Depois de as ferramentas de linha de comando terem sido instaladas com êxito, 
+   introduza a palavra-passe do computador e, em seguida, <enter> para continuar.
 
-   Hit <enter> ONLY after the pop up has finished installeding, and not before, or 
-   your computer will melt.
+   Carregue em <enter> APENAS depois de o pop-up ter terminado a instalação, e não antes, 
+   ou o computador irá derreter.
  
-   If you want to abandon, you can hit <control> c now.
+   Se quiser abandonar, pode premir <control> c agora.
 
 ####################################################################################### 
 "
@@ -121,23 +121,23 @@ fi
 
 #make desktop clickable icon...
 cat > $HOME/Desktop/run_parmanode.txt << 'EOF'
-To run Parmanode, simply open a new Terminal window and type:
+Para executar o Parmanode, basta abrir uma nova janela do Terminal e digitar:
 
 rp
-then <enter>
+e <enter>
 
-'rp' stands for 'run Parmanode'. Alternatively, you can manually type 
-out the 'rp' function...
+'rp' significa 'run Parmanode'. Em alternativa, pode escrever manualmente a 
+função 'rp'...
 
 cd $HOME/parman_programs/parmanode/
 <enter>
 ./run_parmanode.sh
 <enter>
 
-NOTE: rp will not work in the window you used to install Parmanode.
-Close it, open a NEW one, and then rp will work.
+NOTA: o rp não funcionará na janela que utilizou para instalar o Parmanode.
+Fecha-o, abre um NOVO e o rp funcionará.
 
-You can delete this file once you've absorbed the information.
+Pode apagar este ficheiro depois de ter absorvido a informação.
 EOF
 clear
 
@@ -147,16 +147,15 @@ echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ;
 echo "
 ########################################################################################
 
-    There should be an icon on the desktop for you, \"run_parmanode.txt\" which is
-    a text document reminding you about the following instructions on how to run 
-    Parmanode:
+    Deverá existir um ícone no ambiente de trabalho, \"run_parmanode.txt\", que é um 
+    documento de texto que o recorda das seguintes instruções sobre como executar o Parmanode:
 
-    Simply open a new Terminal window (close this one first) and type:
+    Basta abrir uma nova janela do Terminal (feche esta primeiro) e digitar:
 
     rp
-    then <enter>
+    e <enter>
 
-    Enjoy.
+    Divirta-se.
 
 ########################################################################################
 "
