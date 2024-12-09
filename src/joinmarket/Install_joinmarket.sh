@@ -1,4 +1,5 @@
 function install_joinmarket {
+    [[ $OS == "Mac" ]] && { no_mac ; return 1 ; }
 
     set_terminal
 

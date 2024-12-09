@@ -1,5 +1,5 @@
-#Version 3.49.0 (coming soon)
-#    -ParmaJoin (JoinMarket)
+Version 3.49.0 (coming soon)
+    -ParmaJoin (JoinMarket)
 
 Version 3.48.2
     -Tor SSH for Mac
