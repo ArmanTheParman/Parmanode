@@ -89,6 +89,7 @@ $orange
 
 while [[ -z $ONION_ADDR_SSH ]] ; do
 get_onion_address_variable ssh
+sleep 2
 done
 
 set_terminal_high ; echo -e "

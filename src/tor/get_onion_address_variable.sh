@@ -25,6 +25,7 @@ fi
 
 if [[ $1 == "ssh" ]] ; then
 export ONION_ADDR_SSH="$(sudo cat $varlibtor/ssh-service/hostname 2>$dn)" 
+return 0
 fi
 
 if [[ $1 == "public_pool" ]] ; then

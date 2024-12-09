@@ -26,11 +26,6 @@ if [[ $OS == "Mac" ]] ; then
 
     brew_check || return 1
 
-    local varlibtor="$macprefix/var/lib/tor" >$dn 2>&1
-    local torrc="$macprefix/etc/tor/torrc" >$dn 2>&1
-    if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor ; fi
-    if [[ ! -e $torrc ]] ; then sudo touch $torrc ; fi
-
     brew install tor && brew services start tor 
 fi
 
