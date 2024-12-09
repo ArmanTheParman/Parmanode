@@ -1,5 +1,4 @@
 function install_torssh {
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 while true ; do
 set_terminal ; echo -e "
@@ -42,23 +41,26 @@ if ! which nc >$dn 2>&1 ; then
     if [[ $OS == Mac ]] ; then
         if ! which brew ; then install_homebrew ; fi
         brew install netcat
+        if ! which nc >$dn 2>&1 ; then 
+            announce "Couldn't install netcat. Aborting." 
+            return 1
+        fi
     fi
 fi
 
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
-
 # edit torrc...
-if ! sudo cat /etc/tor/torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
-echo "# Additions by Parmanode..." | sudo tee -a /etc/tor/torrc >$dn 2>&1
+if ! sudo cat $torrc | grep "# Additions by Parmanode..." >$dn 2>&1 ; then
+echo "# Additions by Parmanode..." | sudo tee -a $torrc >$dn 2>&1
 fi
 
-echo "HiddenServiceDir /var/lib/tor/ssh-service/" | sudo tee -a /etc/tor/torrc >$dn 2>&1
-echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a /etc/tor/torrc >$dn 2>&1
+echo "HiddenServiceDir $varlibtor/ssh-service/" | sudo tee -a $torrc >$dn 2>&1
+echo "HiddenServicePort 22 127.0.0.1:22" | sudo tee -a $torrc >$dn 2>&1
 installed_conf_add "torssh-start"
-sudo systemctl restart tor ssh
+restart_tor
 
-if [[ ! -d $HOME/.ssh ]] ; then sudo mkdir $HOME/.ssh ; fi
+if [[ ! -d $HOME/.ssh ]] ; then make_parmanode_ssh_keys ; fi
 if [[ ! -f $HOME/.ssh/config ]] ; then sudo touch $HOME/.ssh/config ; fi
 
 
@@ -102,18 +104,17 @@ $green
 Host *.onion
     ProxyCommand nc -x localhost:9050 -X 5 %h %p
 $orange
-    I believe indentation matters, but I haven't checked. Just copy these 2 lines
-    exactly as written. BTW, Parmanode has already done this for you on this HOST
-    computer (not client, obviously, that's another computer), so it is ready to be 
-    a CLIENT to another HOST you may wish to set up. That's confusing, sorry. Read it
-    again slowly.
+    Indeindentation does not matter. Just copy these 2 lines as written. BTW, 
+    Parmanode has already done this for you on this HOST computer (not client, 
+    obviously, that's another computer), so it is ready to be a CLIENT to another 
+    HOST you may wish to set up. That's confusing, sorry. Read it again slowly.
 
     On the CLIENT, after modifying the config file, restart the SSH service. For 
     a Linux machine, do this:
 $green
     sudo systemctl restart ssh $orange
      
-    For a Mac, just restart the stupid thing, and also consider upgrading your
+    For a Mac, just restart the silly thing, and also consider upgrading your
     life to Linux.
 
     Then you can ssh into this machine from the client, as follows:
