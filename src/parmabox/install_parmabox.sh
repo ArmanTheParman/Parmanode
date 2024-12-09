@@ -1,17 +1,17 @@
 function install_parmabox {
 
 if ! which docker > $dn ; then announce \
-"Please install Docker from the Parmanode install menu first."
+"Por favor, instale primeiro o Docker a partir do menu de instalação da Parmanode."
 return 1
 fi
 
 if ! docker ps >$dn ; then announce \
-"Please make sure Docker is running first."
+"Por favor, certifique-se de que o Docker está a funcionar primeiro."
 return 1
 fi
 
 if docker ps | grep -q parmabox ; then 
-announce "The parmabox container is already running."
+announce "O contentor parmabox já está a funcionar."
 return 1
 fi
 
@@ -20,17 +20,16 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    TL;DR - Hit$green <enter>$orange for default installation (recommended).
+    TL;DR - Prima$green <enter>$orange para a instalação predefinida (recomendado).
 
 
-    Do you want to install a bare bones ParmaBox (an Ubuntu Docker container) 
-    without any configuration or menu options, that you'll manage yourself, use
-    yourself, and clean up yourself?
+    Pretende instalar um ParmaBox (um contentor Ubuntu Docker) sem qualquer configuração 
+    ou opções de menu, que irá gerir, utilizar e limpar sozinho?
 
-    This option is faster (Type$cyan boring$orange then$cyan <enter>$orange).
+    Esta opção é mais rápida (Digite$cyan boring$orange e depois$cyan <enter>$orange).
 
-    Or, continue with the default ParmaBox with more features and configuration (Just
-    hit$cyan <enter>$orange)?
+    Ou continuar com a ParmaBox predefinida com mais funcionalidades e configurações 
+    (basta carregar em$cyan <enter>$orange)?
 
 ########################################################################################
 "
@@ -47,11 +46,11 @@ silent|*)
 set_terminal ; echo -e "
 ########################################################################################
 
-    Parmabox will have a user called 'parman'. 
+    O Parmabox terá um utilizador chamado 'parman'.
     
-    At some point during the install process, you may be asked for it's password.
+    A dada altura, durante o processo de instalação, poderá ser-lhe pedida a palavra-passe.
 
-    The password is$cyan 'parmanode'$orange.
+    A palavra-passe é$cyan ' parmanode'$orange.
 
 ########################################################################################
 "
@@ -72,7 +71,7 @@ docker run -d --name parmabox ubuntu tail -f /dev/null
 ;;
 *)
 please_wait
-parmabox_build || { enter_continue && announce "build failed" && return 1 ; }
+parmabox_build || { enter_continue && announce "a construção falhou" && return 1 ; }
 parmabox_run
 parmabox_exec
 ;;
@@ -82,26 +81,25 @@ installed_config_add "parmabox-end"
 
 if [[ $1 != silent ]] ; then
 
-    success "Your ParmaBox" "being installed" 
+    success "A sua ParmaBox" " está a ser instalada" 
     if [[ $choice != boring ]] ; then
     set_terminal ; echo -e "
 ########################################################################################
 
-    The directory $HOME/parmanode/parmabox on your host machine is 
-    mounted to the /mnt directory inside the ParmaBox Linux container. If you move a 
-    file there, it will be accessible in both locations. 
+    O diretório $HOME/parmanode/parmabox na sua máquina anfitriã é montado 
+    no diretório /mnt dentro do contentor ParmaBox Linux. 
+    Se mover um ficheiro para lá, este ficará acessível em ambas as localizações.
 
-    The root user is available to use, and also the user parman, with the password  $cyan
-    'parmanode'$orange.
+    O utilizador root está disponível para utilização, bem como o utilizador parman, com a 
+    palavra-passe $cyan ' parmanode'$orange.
 
-    The parmanode software is also available inside the container at:
+    O software parmanode também está disponível dentro do contentor em:
 
     /home/parman/parman_programs/parmanode 
 
-    - a little bit of ParmInception ;)
+    - a um pouco de ParmInception ;)
 
-    The ParmaShell software is installed to make the terminal experience a little 
-    nicer.
+    O software ParmaShell é instalado para tornar a experiência do terminal um pouco mais agradável.
 
 ########################################################################################
 "
