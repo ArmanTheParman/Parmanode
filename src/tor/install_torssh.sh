@@ -48,6 +48,11 @@ if ! which nc >$dn 2>&1 ; then
     fi
 fi
 
+# in case SSH remote log in is off
+if [[ $OS == "Mac" ]] ; then
+    sudo systemsetup -setremotelogin on >$dn 2>&1
+fi
+
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
 
 # edit torrc...

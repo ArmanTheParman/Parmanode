@@ -71,7 +71,7 @@ $green
 read choice
 case $choice in
 y)
-sudo rm -rf /var/lib/tor/ssh-service/
+sudo rm -rf $macprefix/var/lib/tor/ssh-service/
 ;;
 esac
 
