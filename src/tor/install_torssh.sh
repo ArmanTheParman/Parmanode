@@ -45,6 +45,7 @@ if ! which nc >$dn 2>&1 ; then
             announce "Couldn't install netcat. Aborting." 
             return 1
         fi
+        sudo systemsetup -setremotelogin on >$dn 2>&1
     fi
 fi
 
