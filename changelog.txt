@@ -1,4 +1,4 @@
-Version 3.49.0 (coming soon)
+Version 3.49.0 
     -ParmaJoin (JoinMarket)
 
 Version 3.48.2
