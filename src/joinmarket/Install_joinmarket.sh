@@ -214,7 +214,8 @@ announce "Python needs to be >=v3.8 and <3.12. You have $pythonversion.
     is to uninstall Python3 and install Python3.11 and try installing ParmaJoin
     again. 
 
-    If you're using a Mac, with Homebrew installed, you can do for example...
+    If you're using a Mac, with Homebrew installed, you can type this in the
+    terminal, for example...
 $cyan
     brew uninstall python@3.12
     brew install python@3.11 $orange"
