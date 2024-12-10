@@ -23,6 +23,7 @@ set_terminal_custom 48 ; echo -e "
                               Parmanode Drive Menu$orange
 ########################################################################################
 
+
 $green    EXTERNAL:
 $orange                                                                         
                  Device ID:                   $green$eID $orange                                                        
@@ -34,6 +35,7 @@ $orange
                  Reserved 'system' space:     $green$(($(sudo tune2fs -l $eID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
 
 $green    INTERNAL:
+$orange
                  Device ID:                   $green$iID $orange                                                        
                  Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
                  Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
