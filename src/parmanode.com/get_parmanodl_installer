@@ -16,9 +16,9 @@ clear
 echo "
 ########################################################################################
 
-    Next, you may be asked for a password - this is the password you use to log in to 
-    the computer. It is necessary, to allow the creation of a new file with 
-    executable permissions.
+    Em seguida, poderá ser-lhe pedida uma palavra-passe - esta é a palavra-passe que 
+    utiliza para iniciar sessão no computador. É necessária para permitir a criação 
+    de um novo ficheiro com permissões de execução.
 
 ########################################################################################
 "
@@ -28,12 +28,12 @@ sudo chmod +x ParmanodL_Installer
 clear ; echo "
 ########################################################################################
 
-    A new file has been created on your desktop called ParmanodL_Installer.sh
+    Foi criado um novo ficheiro no seu ambiente de trabalho chamado ParmanodL_Installer.sh
 
-    Double click it to run. 
+    Faça duplo clique para o executar. 
     
-    If your computer opens a text editor instead, that's a small problem. In that 
-    case, you'll have to run the file from the terminal app by typing this:
+    Se, em vez disso, o seu computador abrir um editor de texto, isso é um pequeno problema. 
+    Nesse caso, terá de executar o ficheiro a partir da aplicação de terminal, escrevendo isto:
 
             $HOME/Desktop/ParmanodL_Installer
 
