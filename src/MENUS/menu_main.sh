@@ -191,11 +191,11 @@ $red$blinkon
     course, but now you can jump around to where you want to go if you remember the
     commands.
 
-    Eg, for bitcoin, you can type:
+    Eg, for menu bitcoin, you can type:
     $green
                         mb$orange    or$green   mbitcoin$orange
 
-    for electrs:
+    for menu electrs:
                 $green
                         mers$orange  or$green    melectrs$orange
 
