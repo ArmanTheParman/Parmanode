@@ -41,7 +41,8 @@ $cyan
                        info)$orange           Reserved space info
 $cyan
                          um)$orange           Unmount Parmanode external drive 
-                          
+$cyan
+                      mount)$orange           Mount Parmanode externl drive
 
 ########################################################################################
 "
@@ -65,7 +66,12 @@ announce "The reserved space on the drive is for drive recovery functionality. Y
 um|UM|Um)
 safe_unmount_parmanode menu
 ;;
-
+mount)
+mount_drive menu || return 1
+if mount | grep -q parmanode ; then
+announce "Drive mounted."
+fi
+;;
 esac
 }
 

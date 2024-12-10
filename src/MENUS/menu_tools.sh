@@ -17,8 +17,6 @@ $cyan              dfat)$orange  Drive format assist tool
  
 $cyan              md)$orange    Import/Migrate/Revert an external drive.
 
-$cyan              mount)$orange Mount the Parmanode drive - Linux only
-
 $cyan              ip)$orange    What's my computer's IP address?
 
 $cyan              ppp)$orange   Connect to Parman's node over Tor ...
@@ -31,8 +29,6 @@ $cyan              rs)$orange    Parman's easy AF Rsync tool new
 
 $cyan              u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
 
-$cyan              um)$orange    Unmount your Parmanode external drive 
-                      (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
 $red $blinkon
               mm)    More options $blinkoff
 $orange
@@ -91,16 +87,6 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     d|D)
         rm $HOME/.parmanode/hide_messages.conf
         echo "Choices reset" ; sleep 0.6 
-        ;;
-    um|UM|Um)
-        safe_unmount_parmanode menu
-        ;;
-
-    mount)
-        mount_drive menu || return 1
-        if mount | grep -q parmanode ; then
-        announce "Drive mounted."
-        fi
         ;;
 
       md|MD)
