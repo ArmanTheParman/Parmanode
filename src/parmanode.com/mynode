@@ -4,7 +4,7 @@ return 0
 cat > ~/Desktop/mynode << 'EOF'
 #!/bin/bash
 clear
-echo "You may or may not be asked for you computer's password first, before the MyNode one.
+echo "Pode ou não ser-lhe pedida primeiro a palavra-passe do seu computador, antes da do MyNode.
 "
 
 if  [[ ! -e ~/.ssh/.mynode ]] ; then
@@ -22,7 +22,7 @@ if  [[ ! -e ~/.ssh/.mynode ]] ; then
 fi
 
 echo "
-    Enter the MyNode password (leave blank if you have not yet set one): 
+    Introduza a palavra-passe MyNode (deixe em branco se ainda não a tiver definido): 
 "
 read PASSWORD
 
@@ -37,10 +37,10 @@ clear
 echo "
 ########################################################################################
 
-    An icon called \"mynode\" will appear soon on your Desktop. Double click it to 
-    see the progress of your MyNode downloading the blockchain.
+    Um ícone chamado \"mynode\" aparecerá em breve no teu Ambiente de Trabalho. Clique 
+    duas vezes nele para ver o progresso do seu MyNode baixando o blockchain.
 
-    Close it anytime, it won't affect the MyNode
+    Feche-o quando quiser, não afectará o MyNode
 
 ########################################################################################
 "
