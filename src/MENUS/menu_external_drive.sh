@@ -6,37 +6,42 @@ if ! mount | grep -q parmanode ; then
     announce "No parmanode labelled drive seems to be mounted. Aborting."
     return 0
 fi
-
+#External
+eID=$(mount | grep parmanode | awk '{print $1}')
+#Internal
 iID=$(df -h | grep -E '/$' | awk '{print $1}')
-debug "iID= $iID"
 
 if [[ $(mount | grep parmanode | wc -l | awk '{print $1}') != 1 ]] ; then #awk redundant for Linux but makes it work on Mac
     announce "More than one parmanode drive seems to be mounted. Aborting."
     return 1
 fi
-ID=$(mount | grep parmanode | awk '{print $1}')
-blocksize=$(sudo tune2fs -l $ID | grep -E 'Block size' | awk '{print $3}')
+eID=$(mount | grep parmanode | awk '{print $1}')
+blocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
 
 set_terminal_custom 48 ; echo -e "
 ########################################################################################$cyan
                               Parmanode Drive Menu$orange
 ########################################################################################
 
+$green    EXTERNAL:
 $orange                                                                         
-                 Drive device ID:             $green$(mount | grep parmanode | awk '{print $1}')
-$orange                                                        
-                 Total space:                 $green$(df -h | grep $ID | awk '{print $2}')
-$orange
-                 Free space:                  $green$(df -h | grep $ID | awk '{print $4}')
-$orange
-                 Label:                       $green$(e2label $ID)
-$orange
-                 UUID:                        $green$(sudo tune2fs -l $ID | grep UUID | awk '{print $3}')
-$orange
-                 Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
-$orange
-                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
-$orange
+                 Device ID:                   $green$eID $orange                                                        
+                 Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
+                 Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange
+                 Label:                       $green$(e2label $eID) $orange
+                 UUID:                        $green$(sudo tune2fs -l $eID | grep UUID | awk '{print $3}') $orange
+                 Mountpoint:                  $green$(mount | grep $eID | awk '{print $3}') $orange
+                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $eID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
+
+$green    INTERNAL:
+                 Device ID:                   $green$iID $orange                                                        
+                 Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
+                 Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
+                 Label:                       $green$(e2label $iID) $orange
+                 UUID:                        $green$(sudo tune2fs -l $iID | grep UUID | awk '{print $3}') $orange
+                 Mountpoint:                  $green$(mount | grep $iID | awk '{print $3}') $orange
+                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $iID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
+$orange                                                                         
 
 ________________________________________________________________________________________                    
 $cyan
