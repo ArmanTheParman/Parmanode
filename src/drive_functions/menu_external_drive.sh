@@ -1,6 +1,6 @@
 function menu_external_drive {
 
-if [[ $OS == "Mac" ]] ; no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if ! mount | grep -q parmanode ; then 
     announce "No parmanode labelled drive seems to be mounted. Aborting."
