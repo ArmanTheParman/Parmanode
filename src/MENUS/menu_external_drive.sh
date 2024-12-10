@@ -29,7 +29,7 @@ fi
 #Internal
 
 iID=$(df -h | grep -E '/$' | awk '{print $1}')
-eblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
+iblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
 
 set_terminal_custom 51 ; echo -e "
 ########################################################################################$cyan
@@ -38,15 +38,14 @@ set_terminal_custom 51 ; echo -e "
 
 $emenu
 $green    INTERNAL:
-$orange"
-                #  Device ID:                   $green$iID $orange
-                #  Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
-                #  Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
-                #  Label:                       $green$(e2label $iID) $orange
-                #  UUID:                        $green$(sudo tune2fs -l $iID | grep UUID | awk '{print $3}') $orange
-                #  Mountpoint:                  $green$(mount | grep $iID | awk '{print $3}') $orange
-                #  Reserved 'system' space:     $green$(($(sudo tune2fs -l $iID | grep -E Reserved.+count | awk '{print $4}') * $iblocksize / (1024*1024*1024) ))G
-echo -e "
+$orange
+                 Device ID:                   $green$iID $orange
+                 Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
+                 Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
+                 Label:                       $green$(e2label $iID) $orange
+                 UUID:                        $green$(sudo tune2fs -l $iID | grep UUID | awk '{print $3}') $orange
+                 Mountpoint:                  $green$(mount | grep $iID | awk '{print $3}') $orange
+                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $iID | grep -E Reserved.+count | awk '{print $4}') * $iblocksize / (1024*1024*1024) ))G
 $orange                                                                         
 
 ________________________________________________________________________________________                    
