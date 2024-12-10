@@ -40,8 +40,6 @@ echo -e "$debugstatus
 #                                                                                      #
 #$red    (remove)     $orange        Remove/Uninstall Programs                                    #
 #                                                                                      #
-#$cyan    (o)$orange                  Overview/Status of Programs                                  #
-#                                                                                      #
 #$cyan    (ns)$orange                 ${yellow}Navigation shortcuts (new)$orange                                   #
 #                                                                                      #
 #$cyan    (dh)$orange                 ${yellow}Check Parmanode external drive status (new)$orange                  #
@@ -91,9 +89,6 @@ else
 sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=off" | tee -a $hm
 fi
-;;
-o|O)
-menu_overview 
 ;;
 
 add|Add|ADD)

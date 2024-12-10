@@ -1,6 +1,7 @@
 Version 3.49.1
     -main menu cosemetic changes
     -new external drive menu
+    -overview menu deprecated, too hard to maintain, superceded by menu jumping shortcuts
 Version 3.49.0 
     -ParmaJoin (JoinMarket)
 
