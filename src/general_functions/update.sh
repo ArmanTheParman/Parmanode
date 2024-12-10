@@ -116,6 +116,7 @@ sudo apt-get install -y unzip
 sudo apt-get install -y tmux
 sudo apt-get install -y ssh
 sudo apt-get install -y tor
+if ! which tune2fs >$dn >2>& ; then sudo apt-get install -y e2fsprogs ; fi
 sudo systemctl enable ssh >$dn 2>&1
 sudo systemctl start ssh >$dn 2>&1
 install_fuse noupdate #linux minmal installs may need this to run AppImages
