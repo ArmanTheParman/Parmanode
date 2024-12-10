@@ -20,25 +20,25 @@ set_terminal ; echo -e "
 ########################################################################################
 
 $orange                                                                         
-                  Drive device ID:             $green$(mount | grep parmanode | awk '{print $1}')
+                 Drive device ID:             $green$(mount | grep parmanode | awk '{print $1}')
 $orange                                                        
-                  Total space:                 $green$(df -h | grep $ID | awk '{print $2}')
+                 Total space:                 $green$(df -h | grep $ID | awk '{print $2}')
 $orange
-                  Free space:                  $green$(df -h | grep $ID | awk '{print $4}')
+                 Free space:                  $green$(df -h | grep $ID | awk '{print $4}')
 $orange
-                  Label:                       $green$(e2label $ID)
+                 Label:                       $green$(e2label $ID)
 $orange
-                  UUID:                        $green$(sudo tune2fs -l $ID | grep UUID | awk '{print $3}')
+                 UUID:                        $green$(sudo tune2fs -l $ID | grep UUID | awk '{print $3}')
 $orange
-                  Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
+                 Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
 $orange
-                  Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
+                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
 $orange
 
 ________________________________________________________________________________________                    
 $red
 
-                  info)$orange                        Reserved space info
+                    info)$orange                Reserved space info
                     
 
 ########################################################################################
