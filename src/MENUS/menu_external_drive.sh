@@ -1,16 +1,16 @@
 function menu_external_drive {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+# if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if ! mount | grep -q parmanode ; then 
-    mounted="false"
-else
-    mounted="true"
-fi
+# if ! mount | grep -q parmanode ; then 
+#     mounted="false"
+# else
+#     mounted="true"
+# fi
 
-#External
-eID=$(mount | grep parmanode | tail -n1 | awk '{print $1}')
-eblocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
+# #External
+# eID=$(mount | grep parmanode | tail -n1 | awk '{print $1}')
+# eblocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
 # if [[ $mounted == "true" ]] ; then
 # emenu="$green    EXTERNAL: (mounted)
 # $orange                                                                         
@@ -26,7 +26,7 @@ eblocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
 # emenu="$red    EXTERNAL: (not mounted)$orange"
 # fi
 
-#Internal
+# #Internal
 
 # iID=$(df -h | grep -E '/$' | awk '{print $1}')
 # eblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
