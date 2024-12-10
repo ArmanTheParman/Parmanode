@@ -3,17 +3,17 @@ if ! grep -q "parmabox-end" $ic ; then return 0 ; fi
 while true ; do 
 if ! docker ps >$dn 2>&1 ; then
     dockerrunning="
-                              ${red}Warning: Docker is not running${orange}
+                              ${red}Aviso: O Docker não está a funcionar${orange}
     "
 else
 
    if ! docker ps | grep -qi parmabox ; then
    dockerrunning="
-                              ${red}Warning: ParmaBox container is not running${orange}
+                              ${red}Aviso: O contentor ParmaBox não está a funcionar${orange}
    " 
    else
    dockerrunning="
-                              ${green}ParmaBox is running${orange}
+                              ${green}O ParmaBox está a funcionar${orange}
    " 
    fi
 
@@ -21,24 +21,26 @@ fi
 
 set_terminal ; echo -ne "
 ########################################################################################
-              $cyan                     ParmaBox Menu            $orange                   
+              $cyan                     Menu ParmaBox            $orange                   
 ########################################################################################
 
                               $dockerrunning 
 $cyan
-            r) $orange        Log into the container as root
-$blue                              The password is 'parmanode' 
+            r) $orange        Iniciar sessão no contentor como root
+$blue                              A palavra-passe é 'parmanode' 
 $cyan
-            pm)$orange        Log into the container as parman   (type exit to return here)
-$blue                              The password is 'parmanode' 
+            pm)$orange        Inicie sessão no contentor como parman (escreva exit para 
+                              regressar aqui)
+$blue                              A palavra-passe é 'parmanode' 
 $cyan
-            s)$orange         Stop the container
+            s)$orange         Parar o contentor
 $cyan
-            rs)$orange        Restart the container
+            rs)$orange        Reiniciar o contentor
 $cyan
-            u)$orange         Run an update of Parmanode and the OS inside the container
+            u)$orange         Executar uma atualização do Parmanode e do SO dentro do 
+                              contentor
 $cyan
-            rf)$orange        Refresh ParmaBox (starts over and includes new updates)
+            rf)$orange        Atualizar a ParmaBox (recomeça e inclui novas actualizações)
 
 $orange
 
