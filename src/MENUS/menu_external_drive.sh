@@ -40,7 +40,7 @@ $cyan
 
                        info)$orange           Reserved space info
 $cyan
-                         um)$orange           Unmount your Parmanode external drive 
+                         um)$orange           Unmount Parmanode external drive 
                           
 
 ########################################################################################
