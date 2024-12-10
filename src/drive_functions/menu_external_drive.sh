@@ -16,21 +16,21 @@ set_terminal ; echo -e "
                               Parmanode Drive Menu$orange
 ########################################################################################
 
-                                                                         
+$orange                                                                         
                     Drive device ID:             $green$(mount | grep parmanode | awk '{print $1}')
-                                                        
+$orange                                                        
                     Total space:                 $green$(df -h | grep $ID | awk '{print $2}')
-
+$orange
                     Free space:                  $green$(df -h | grep $ID | awk '{print $4}')
-
+$orange
                     Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
-
+$orange
                     Label:                       $green$(e2label $ID)
-
+$orange
                     UUID:                        $green$(sudo tune2fs -l $ID | grep UUID | awk '{print $3}')
-
+$orange
                     Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
-
+$orange
 
 ########################################################################################
 "
