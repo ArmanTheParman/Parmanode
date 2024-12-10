@@ -19,7 +19,7 @@ $cyan
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+q|Q) exit ;; p|P|"") return 1 ;; m|M) back2main ;;
 c|C) change_colours ; return 0 ;;
 an)
 if [[ $announcements == off ]] ; then
