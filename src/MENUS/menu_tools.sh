@@ -17,7 +17,7 @@ $cyan              (dfat)$orange  Drive format assist tool
  
 $cyan              (md)$orange    Import/Migrate/Revert an external drive.
 
-$cyan              (mm)$orange    Mount the Parmanode drive - Linux only
+$cyan              (mount)$orange Mount the Parmanode drive - Linux only
 
 $cyan              (ip)$orange    What's my computer's IP address?
 
@@ -34,7 +34,7 @@ $cyan              (u)$orange     Update computer (apt-get for Linux, Homebrew f
 $cyan              (um)$orange    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
 $red $blinkon
-         ...  (n)  More options $blinkoff
+              (mm)    More options $blinkoff
 $orange
 ########################################################################################
 "
@@ -96,7 +96,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
         safe_unmount_parmanode menu
         ;;
 
-    mm|MM|Mm|mount)
+    mount)
         mount_drive menu || return 1
         if mount | grep -q parmanode ; then
         announce "Drive mounted."
