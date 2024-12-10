@@ -27,8 +27,9 @@ eblocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
 # fi
 
 #Internal
-iID=$(df -h | grep -E '/$' | awk '{print $1}')
-eblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
+
+# iID=$(df -h | grep -E '/$' | awk '{print $1}')
+# eblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
 
 set_terminal_custom 51 ; echo -e "
 ########################################################################################$cyan
