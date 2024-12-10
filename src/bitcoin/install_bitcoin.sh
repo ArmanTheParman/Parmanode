@@ -147,7 +147,7 @@ if [[ $OS == "Linux" ]] ; then
         return 1 
     fi
 
-if [[ -e $hp/bitcoin_github ]] ; then echo -e "
+    if [[ -e $hp/bitcoin_github ]] ; then echo -e "
 ########################################################################################
     Delete$cyan $hp/bitcoin_github$orange directory (it can get big), 
     you can save space.
@@ -156,8 +156,8 @@ if [[ -e $hp/bitcoin_github ]] ; then echo -e "
 
 ########################################################################################
 "
-read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
-fi
+    read choice ; case $choice in y) sudo rm -rf $hp/bitcoin_github ;; esac
+    fi
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -180,10 +180,10 @@ $orange
 ########################################################################################
 " && installed_conf_add "bitcoin-end"
 
-#Just in case - what? again? Anyway, I'll leave it.
-sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
+    #Just in case - what? again? Anyway, I'll leave it.
+    sudo chown -R $USER:$USER $parmanode_drive>$dn 2>&1
 
-enter_continue
+    enter_continue
 fi
 
 
@@ -210,9 +210,9 @@ $orange
   
 enter_continue
 fi
-
-unset importdrive install_bitcoin_variable raid
+unset importdrive install_bitcoin_variable raid enter_cont
 set_terminal
+return 0
 }
 
 function print_bitcoin_variables {
