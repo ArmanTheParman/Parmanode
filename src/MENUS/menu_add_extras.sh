@@ -17,7 +17,7 @@ echo -en "
 #                                                                                      #
 #$cyan              (u)$orange       Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
-#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)                       $delete #
+#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)                     $delete #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
