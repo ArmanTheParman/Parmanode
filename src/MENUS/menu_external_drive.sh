@@ -1,6 +1,6 @@
 function menu_external_drive {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
 
 if ! mount | grep -q parmanode ; then 
     mounted="false"
@@ -112,5 +112,3 @@ ps)
 ;;
 esac
 }
-
-
