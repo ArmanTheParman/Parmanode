@@ -4,7 +4,7 @@ if ! mount | grep -q parmanode ; then
     return 0
 fi
 
-if [[ $(mount | grep parmanode | wc -l) != 1 ]] ; then
+if [[ $(mount | grep parmanode | wc -l | awk '{print $1}') != 1 ]] ; then #awk redundant for Linux but makes it work on Mac
     announce "More than one parmanode drive seems to be mounted. Aborting."
     return 1
 fi
