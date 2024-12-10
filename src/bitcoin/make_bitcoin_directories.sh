@@ -19,17 +19,17 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
         if [[ $OS == "Linux" ]] ; then
             mkdir /media/$USER/parmanode/.bitcoin >$dn 2>&1 && \
             sudo chown -R $USER:$(id -gn) $parmanode_drive >$dn 2>&1 \
-            log "bitcoin" ".bitcoin dir made on ext drive" ; fi
+            log "bitcoin" ".bitcoin dir feito na unidade externa" ; fi
 
         if [[ $OS == "Mac" ]] ; then
             mkdir /Volumes/parmanode/.bitcoin >$dn 2>&1 && \ 
-            log "bitcoin" ".bitcoin dir made on ext drive" ; fi
+            log "bitcoin" ".bitcoin dir feito em unidade externa" ; fi
     fi
 
 
     if [[ $drive == "internal" ]] ; then 
             mkdir -p $HOME/.bitcoin >$dp/.temp 2>&1 && \
-            log "bitcoin" ".bitcoin dir made on int drive" 
+            log "bitcoin" ".bitcoin dir feito na unidade int" 
     fi
 
 
