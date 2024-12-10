@@ -67,7 +67,7 @@ um|UM|Um)
 safe_unmount_parmanode menu
 ;;
 mount)
-mount_drive menu || return 1
+mount_drive || return 1
 if mount | grep -q parmanode ; then
 announce "Drive mounted."
 fi

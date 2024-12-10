@@ -1,7 +1,7 @@
 function mount_drive {
-# removed the need for arguments to this function
 
 if [[ $OS == "Mac" ]] ; then
+
     #if mounted, exit 
 	    if mount | grep "parmanode" >$dn 2>&1 ; then
 			return 0
@@ -12,12 +12,12 @@ if [[ $OS == "Mac" ]] ; then
     	diskutil mount parmanode >$dn 2>&1 || { debug "Unable to mount disk. Aborting." ; return 1 ; }
 		set_terminal
 		return 0
-		
+
 fi
 
-########################################################################################
 
 if [[ $OS == "Linux" ]] ; then
+
 while true ; do
     #if mounted, exit 
 	    if mountpoint -q "/media/$USER/parmanode" ; then
