@@ -27,11 +27,11 @@ cd $HOME/parman_programs/parmanode/
 ./run_parmanode.sh
 EOF
 sudo chmod +x $HOME/Desktop/run_parmanode*
-echo "New clickable desktop icon made."
+echo "Criação de um novo ícone clicável no ambiente de trabalho."
 fi
 
 #no further changes needed.
-echo "Parmnode already downloaded."
+echo "Parmnode já descarregado."
 exit
 fi
 
@@ -45,12 +45,12 @@ fi
         fi
 
         if ! which ssh >$dn ; then 
-            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            if [ $warning = 1 ] ; then echo "problema com o homebrew, precisava de instalar o git. Abortando." ; sleep 4 ; exit ; fi
             brew install ssh 
         fi
 
         if ! which gpg >$dn ; then 
-            if [ $warning = 1 ] ; then echo "problem with homebrew, needed to install git. Aborting." ; sleep 4 ; exit ; fi
+            if [ $warning = 1 ] ; then echo "problema com o homebrew, precisava de instalar o git. Abortando." ; sleep 4 ; exit ; fi
             brew install gpg 
         fi
 
@@ -67,8 +67,8 @@ clear
 echo "
 ########################################################################################
     
-    Please make sure that any pop-up prompts to install developer tools have finished 
-    installing before continuing here.
+    Certifique-se de que todas as solicitações pop-up para instalar ferramentas de 
+    desenvolvedor foram concluídas antes de continuar aqui.
 
 ########################################################################################
 "
@@ -89,15 +89,15 @@ clear
 echo "
 ########################################################################################
 
-    There should be an icon on the desktop for you, \"run_parmanode.sh\".
+    Deverá aparecer um ícone no ambiente de trabalho, \"run_parmanode.sh\".
 
-    If you double click it, and your Mac is configured to open a text editor instead
-    of running the program, that can be overcome by typing this in terminal:
+    Se fizer duplo clique e o seu Mac estiver configurado para abrir um editor de texto 
+    em vez de executar o programa, isso pode ser ultrapassado escrevendo isto no terminal:
 
 
             $HOME/parman_programs_parmanode/run_parmanode.sh
 
-    It's case sensitive.
+    É sensível a maiúsculas e minúsculas.
 
 ########################################################################################
 "
