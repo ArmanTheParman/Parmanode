@@ -26,7 +26,7 @@ fi
 echo -en "$orange
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E     ${bright_blue}Main Menu$orange                                                   #
+#    P A R M A N O D E                \033[4m${bright_blue}MAIN MENU\033[0m$orange                                        #
 #                                                                                      #
 #    Version:$bright_blue $version     $output_branch
 "
@@ -46,25 +46,19 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (dh)$orange                 ${yellow}Check Parmanode external drive status (new)$orange                  #
 #                                                                                      #
+#                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
-#$cyan    (t)        $orange          Tools                                                        #
 #                                                                                      #
-#$cyan    (s)              $orange    Settings/Colours                                             #
-#                                                                                      #
-#$cyan    (mm)$orange                 Mentorship with Parman - Info                                #
-#                                                                                      #
-#$cyan    (e)       $orange           Education                                                    #
-#                                                                                      #
-#$cyan    (d)             $orange     Donate                                                       #
-#                                                                                      #
-#$cyan    (log) $orange               See logs and config files                                    #
-#                                                                                      #
-#$cyan    (update)  $orange           Update Parmanode                                             #
-#                                                                                      #
-#$red    (uninstall)     $orange     Uninstall Parmanode                                          #
-#                                                                                      #
-#$cyan    (ap)$orange                 About Parmanode                                              #
+#$cyan                (t)$orange               Tools                                               #
+#$cyan                (s)$orange               Settings/Colours                                    #
+#$cyan                (mm)$orange              Mentorship with Parman - Info                       #
+#$cyan                (e)$orange               Education                                           #
+#$cyan                (d)$orange               Donate                                              #
+#$cyan                (log)$orange             See logs andfiles                                   #
+#$cyan                (update)$orange          Updanode                                            #
+#$red                (uninstall)$orange       Uninstall Parmanode                                 #
+#$cyan                (ap)$orange              About Parmanode                                     #
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
