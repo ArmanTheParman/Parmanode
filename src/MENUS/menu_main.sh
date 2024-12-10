@@ -13,7 +13,7 @@ else
 output_branch="   $space                                                         $orange#"
 fi
 
-set_terminal_custom 51
+set_terminal_custom 52
 if [[ $debug = 1 ]] ; then
 debugstatus="#${red}    Debug mode is on$orange                                                                  #"
 else

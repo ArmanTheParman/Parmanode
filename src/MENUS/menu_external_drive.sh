@@ -26,18 +26,36 @@ $orange
 $orange
                     Free space:                  $green$(df -h | grep $ID | awk '{print $4}')
 $orange
-                    Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
-$orange
                     Label:                       $green$(e2label $ID)
 $orange
                     UUID:                        $green$(sudo tune2fs -l $ID | grep UUID | awk '{print $3}')
 $orange
                     Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
 $orange
-
+                    Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
+$red
+                    info)$orange                        Reserved space info
+                    
 ########################################################################################
 "
 enter_continue
+jump $enter_cont
+case $enter_cont in
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+info)
+announce "The reserved space on the drive is for drive recovery functionality. You
+    can squeeze more space out of the drive by setting the reserve percentage to zero.
 
+    It's not generally recommended because as the drive gets close to full, it's more
+    prone to data corruption, so it's time to get a new drie anyway.
 
+    To set it to zero, the command is... $cyan
+
+        sudo tune2fs -m 0 drive_ID
+
+    The drive ID will be something like /dev/sda for example."
+;;
+esac
 }
+
+
