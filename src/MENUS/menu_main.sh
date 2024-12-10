@@ -42,7 +42,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (ns)$orange                 ${yellow}Navigation shortcuts (new)$orange                                   #
 #                                                                                      #
-#$cyan    (dh)$orange                 ${yellow}Check Parmanode external drive status (new)$orange                  #
+#$cyan    (ds)$orange                 ${yellow}Check Parmanode external drive status (new)$orange                  #
 #                                                                                      #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
@@ -80,7 +80,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 m|M) continue ;;
 q|Q) exit ;;
 ns) navigation_shortcuts ;;
-dh) menu_external_drive ;;
+ds) menu_external_drive ;;
 aa)
 if [[ $announcements == off ]] ; then
 sudo gsed -i "/announcements=/d" $hm 
