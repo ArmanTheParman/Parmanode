@@ -33,11 +33,14 @@ $orange
                     Mountpoint:                  $green$(mount | grep $ID | awk '{print $3}')
 $orange
                     Reserved 'system' space:     $green$(($(sudo tune2fs -l $ID | grep -E Reserved.+count | awk '{print $4}') * $blocksize / (1024*1024*1024) ))G
+$orange
 
 ________________________________________________________________________________________                    
 $red
+
                     info)$orange                        Reserved space info
                     
+
 ########################################################################################
 "
 choose xpmq ; read choice
