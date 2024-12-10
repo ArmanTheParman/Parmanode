@@ -38,9 +38,9 @@ $red
                     
 ########################################################################################
 "
-enter_continue
-jump $enter_cont
-case $enter_cont in
+choose xpmq ; read choice
+jump $choice
+case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 info)
 announce "The reserved space on the drive is for drive recovery functionality. You
