@@ -37,12 +37,21 @@ $orange
 
 ________________________________________________________________________________________                    
 $cyan
-
+                         fs)$orange           Free up some space
+$cyan
                        info)$orange           Reserved space info
 $cyan
                          um)$orange           Unmount Parmanode external drive 
 $cyan
                       mount)$orange           Mount Parmanode externl drive
+$cyan
+                       dfat)$orange           Drive format assist tool
+$cyan 
+                         md)$orange           Import/Migrate/Revert an external drive
+$cyan
+                         de)$orange           Drive encryption - info
+$cyan
+                         ps)$orange           Adjust SSD power saving
 
 ########################################################################################
 "
@@ -64,13 +73,29 @@ announce "The reserved space on the drive is for drive recovery functionality. Y
     The drive ID will be something like /dev/sda for example."
 ;;
 um|UM|Um)
-safe_unmount_parmanode menu
+    safe_unmount_parmanode menu
 ;;
 mount)
-mount_drive || return 1
-if mount | grep -q parmanode ; then
-announce "Drive mounted."
-fi
+    mount_drive || return 1
+    if mount | grep -q parmanode ; then
+    announce "Drive mounted."
+    fi
+;;
+dfat|DFAT)
+    format_assist
+;;
+md|MD)
+    menu_migrate
+;;
+
+de)
+    drive_encryption
+;;
+fs)
+    free_up_space
+;;
+ps)
+    adjust_ssd_power_saving
 ;;
 esac
 }

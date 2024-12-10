@@ -8,27 +8,21 @@ echo -en "
 ########################################################################################
 
 
-$cyan              (bd)$orange        Install Bitcoin to a running Docker container
+$cyan              bd)$orange        Install Bitcoin to a running Docker container
 
-$cyan              (as)$orange        AutoSSH reverse proxy tunnel guide
+$cyan              as)$orange        AutoSSH reverse proxy tunnel guide
 
-$cyan              (curl)$orange      Test bitcoin curl/rpc command (for troubleshooting)
+$cyan              curl)$orange      Test bitcoin curl/rpc command (for troubleshooting)
 
-$cyan              (de)$orange        Drive encryption - info
+$cyan              gc)$orange        RPC call test to LND (grpcurl)
 
-$cyan              (fs)$orange        Free up some space
+$cyan              rest)$orange      REST protocol test to LND (info only)
 
-$cyan              (gc)$orange        RPC call test to LND (grpcurl)
+$cyan              rf)$orange        Refresh Parmanode script directory              
 
-$cyan              (rest)$orange      REST protocol test to LND (info only)
+$cyan              sr)$orange        System report (for getting troubleshooting help)
 
-$cyan              (rf)$orange        Refresh Parmanode script directory              
-
-$cyan              (sr)$orange        System report (for getting troubleshooting help)
-
-$cyan              (ps)$orange        Adjust SSD power saving
-
-$cyan              (pass)$orange      Change computer login/sudo password
+$cyan              pass)$orange      Change computer login/sudo password
 
 $orange
 ########################################################################################
@@ -62,9 +56,6 @@ system_report
 return 0
 ;;
 
-fs)
-free_up_space
-;;
 
 rest)
 rest_protocol_test
@@ -74,13 +65,7 @@ as)
 autossh_setup
 ;;
 
-de)
-drive_encryption
-;;
 
-ps)
-adjust_ssd_power_saving
-;;
 
 pass)
 set_terminal
