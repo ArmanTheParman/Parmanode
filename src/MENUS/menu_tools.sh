@@ -8,33 +8,33 @@ echo -ne "
 ########################################################################################
 
 
-$cyan              (cc)$orange    Upgrade ColdCard firmware wizard             
+$cyan              cc)$orange    Upgrade ColdCard firmware wizard             
 
-$cyan              (d)$orange     Delete your previous preferences to hide certain Parmanode
+$cyan              d)$orange     Delete your previous preferences to hide certain Parmanode
                       messages
 
-$cyan              (dfat)$orange  Drive format assist tool
+$cyan              dfat)$orange  Drive format assist tool
  
-$cyan              (md)$orange    Import/Migrate/Revert an external drive.
+$cyan              md)$orange    Import/Migrate/Revert an external drive.
 
-$cyan              (mount)$orange Mount the Parmanode drive - Linux only
+$cyan              mount)$orange Mount the Parmanode drive - Linux only
 
-$cyan              (ip)$orange    What's my computer's IP address?
+$cyan              ip)$orange    What's my computer's IP address?
 
-$cyan              (ppp)$orange   Connect to Parman's node over Tor ...
+$cyan              ppp)$orange   Connect to Parman's node over Tor ...
 
-$cyan              (pn)$orange    ParmanodL - Flash a mircoSD for a Raspberry Pi
+$cyan              pn)$orange    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
-$cyan              (ps)$orange    ParmaShell info 
+$cyan              ps)$orange    ParmaShell info 
 
-$cyan              (rs)$orange    Parman's easy AF Rsync tool new
+$cyan              rs)$orange    Parman's easy AF Rsync tool new
 
-$cyan              (u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
+$cyan              u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
 
-$cyan              (um)$orange    Unmount your Parmanode external drive 
+$cyan              um)$orange    Unmount your Parmanode external drive 
                       (stops Bitcoin/Fulcrum/Electrs if running) - Linux only
 $red $blinkon
-              (mm)    More options $blinkoff
+              mm)    More options $blinkoff
 $orange
 ########################################################################################
 "

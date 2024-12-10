@@ -39,7 +39,9 @@ ________________________________________________________________________________
 $cyan
 
                        info)$orange           Reserved space info
-                    
+$cyan
+                         um)$orange           Unmount your Parmanode external drive 
+                                              (stops Bitcoin/Fulcrum/Electrs if running)
 
 ########################################################################################
 "
@@ -60,6 +62,10 @@ announce "The reserved space on the drive is for drive recovery functionality. Y
 
     The drive ID will be something like /dev/sda for example."
 ;;
+um|UM|Um)
+safe_unmount_parmanode menu
+;;
+
 esac
 }
 
