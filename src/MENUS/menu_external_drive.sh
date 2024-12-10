@@ -26,7 +26,7 @@ set_terminal_custom 51 ; echo -e "
 
 $green    EXTERNAL:
 $orange                                                                         
-                 Device ID:                   $green$eID $orange                                                        
+                 Device ID:                   $green$eID $orange
                  Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
                  Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange
                  Label:                       $green$(e2label $eID) $orange
@@ -36,7 +36,7 @@ $orange
 
 $green    INTERNAL:
 $orange
-                 Device ID:                   $green$iID $orange                                                        
+                 Device ID:                   $green$iID $orange
                  Total space:                 $green$(df -h | grep $iID | awk '{print $2}') $orange
                  Free space:                  $green$(df -h | grep $iID | awk '{print $4}') $orange
                  Label:                       $green$(e2label $iID) $orange
@@ -47,7 +47,7 @@ $orange
 
 ________________________________________________________________________________________                    
 $cyan
-                         fs)$orange           Free up some space
+                         fs)$orange           Free up some space (internal drive)
 $cyan
                        info)$orange           Reserved space info
 $cyan
