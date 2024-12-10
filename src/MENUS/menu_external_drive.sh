@@ -14,7 +14,7 @@ fi
 ID=$(mount | grep parmanode | awk '{print $1}')
 blocksize=$(sudo tune2fs -l $ID | grep -E 'Block size' | awk '{print $3}')
 
-set_terminal ; echo -e "
+set_terminal_custom 48 ; echo -e "
 ########################################################################################$cyan
                               Parmanode Drive Menu$orange
 ########################################################################################
