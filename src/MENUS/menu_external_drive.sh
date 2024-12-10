@@ -41,7 +41,7 @@ $cyan
                        info)$orange           Reserved space info
 $cyan
                          um)$orange           Unmount your Parmanode external drive 
-                                              (stops Bitcoin/Fulcrum/Electrs if running)
+                          
 
 ########################################################################################
 "
