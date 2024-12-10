@@ -24,6 +24,7 @@ $orange
 $orange"
 else
 emenu="$red    EXTERNAL: (not mounted)$orange"
+fi
 
 #Internal
 iID=$(df -h | grep -E '/$' | awk '{print $1}')
