@@ -7,6 +7,9 @@ if ! mount | grep -q parmanode ; then
     return 0
 fi
 
+iID=$(df -h | grep -E '/$' | awk '{print $1}')
+debug "iID= $iID"
+
 if [[ $(mount | grep parmanode | wc -l | awk '{print $1}') != 1 ]] ; then #awk redundant for Linux but makes it work on Mac
     announce "More than one parmanode drive seems to be mounted. Aborting."
     return 1
