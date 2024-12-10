@@ -51,7 +51,7 @@ announce "The reserved space on the drive is for drive recovery functionality. Y
 
     To set it to zero, the command is... $cyan
 
-        sudo tune2fs -m 0 drive_ID
+        sudo tune2fs -m 0 drive_ID$orange
 
     The drive ID will be something like /dev/sda for example."
 ;;
