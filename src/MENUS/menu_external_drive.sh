@@ -11,20 +11,20 @@ fi
 #External
 eID=$(mount | grep parmanode | tail -n1 | awk '{print $1}')
 eblocksize=$(sudo tune2fs -l $eID | grep -E 'Block size' | awk '{print $3}')
-if [[ $mounted == "true" ]] ; then
-emenu="$green    EXTERNAL: (mounted)
-$orange                                                                         
-                 Device ID:                   $green$eID $orange
-                 Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
-                 Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange
-                 Label:                       $green$(e2label $eID) $orange
-                 UUID:                        $green$(sudo tune2fs -l $eID | grep UUID | awk '{print $3}') $orange
-                 Mountpoint:                  $green$(mount | grep $eID | awk '{print $3}') $orange
-                 Reserved 'system' space:     $green$(($(sudo tune2fs -l $eID | grep -E Reserved.+count | awk '{print $4}') * $eblocksize / (1024*1024*1024) ))G
-$orange"
-else
-emenu="$red    EXTERNAL: (not mounted)$orange"
-fi
+# if [[ $mounted == "true" ]] ; then
+# emenu="$green    EXTERNAL: (mounted)
+# $orange                                                                         
+#                  Device ID:                   $green$eID $orange
+#                  Total space:                 $green$(df -h | grep $eID | awk '{print $2}') $orange
+#                  Free space:                  $green$(df -h | grep $eID | awk '{print $4}') $orange
+#                  Label:                       $green$(e2label $eID) $orange
+#                  UUID:                        $green$(sudo tune2fs -l $eID | grep UUID | awk '{print $3}') $orange
+#                  Mountpoint:                  $green$(mount | grep $eID | awk '{print $3}') $orange
+#                  Reserved 'system' space:     $green$(($(sudo tune2fs -l $eID | grep -E Reserved.+count | awk '{print $4}') * $eblocksize / (1024*1024*1024) ))G
+# $orange"
+# else
+# emenu="$red    EXTERNAL: (not mounted)$orange"
+# fi
 
 #Internal
 iID=$(df -h | grep -E '/$' | awk '{print $1}')
