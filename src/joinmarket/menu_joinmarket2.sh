@@ -113,35 +113,7 @@ vim_warning ; sudo vim $jmcfg
 
 vc)
 #menu option appears only if backup doesn't exist - logic above.
-if [[ -e "${jmcfg}_backup" ]] ; then continue ; fi
-yesorno "The file will be modified to delete the comments and make this large file more 
-    managable. A backup will be kept as ${jmcfg}_backup
-    so you can still investigate what the comments say in the future.
-    
-    Proceed?" || continue
-clear
-cp $jmcfg ${jmcfg}_backup
-
-cat $jmcfg | while IFS= read -r line ; do {
-
-echo "$line" | tr -d "\r" | xargs >$dn 2>&1    
-
-    if grep -Eq "^#" <<< $line ; then continue ; fi
-    
-    if grep -Eq "\[.*\]" <<< $line ; then
-        echo -e "\n$line\n" | tee -a ${jmcfg}_temp >$dn 2>&1
-        continue
-    fi
-
-    if grep -Eq "^[^ ].*$" <<< $line ; then #ignore empty lines doesn't work, so had to do lines starting with space
-       echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
-    fi
-
-    }
-    done
-sudo cp ${jmcfg}_temp $jmcfg && sudo rm ${jmcfg}_temp 
-enter_continue "File modified."
-
+make_jm_config_pretty
 ;;
 
 man)
@@ -169,6 +141,39 @@ invalid
 ;;
 esac
 done
+}
+
+function make_jm_config_pretty {
+
+if [[ -e "${jmcfg}_backup" ]] ; then return ; fi
+yesorno "The file will be modified to delete the comments and make this large file more 
+    managable. A backup will be kept as ${jmcfg}_backup
+    so you can still investigate what the comments say in the future.
+    
+    Proceed?" || return
+clear
+cp $jmcfg ${jmcfg}_backup
+
+cat $jmcfg | while IFS= read -r line ; do {
+
+echo "$line" | tr -d "\r" | xargs >$dn 2>&1    
+
+    if grep -Eq "^#" <<< $line ; then return ; fi
+    
+    if grep -Eq "\[.*\]" <<< $line ; then
+        echo -e "\n$line\n" | tee -a ${jmcfg}_temp >$dn 2>&1
+        return 
+    fi
+
+    if grep -Eq "^[^ ].*$" <<< $line ; then #ignore empty lines doesn't work, so had to do lines starting with space
+       echo -e "$line" | tee -a ${jmcfg}_temp >$dn 2>&1
+    fi
+
+    }
+    done
+sudo cp ${jmcfg}_temp $jmcfg && sudo rm ${jmcfg}_temp 
+enter_continue "File modified."
+
 }
 
 

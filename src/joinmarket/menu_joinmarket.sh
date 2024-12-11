@@ -276,6 +276,10 @@ parmajoin_info
 spending_info_jm
 ;;
 
+vc)
+make_jm_config_pretty
+;;
+
 man)
 announce "You're entering a TMUX sessions (terminal container). Exit by either
     typing 'exit' or, <control> b then d to detach from the session and leave 
