@@ -17,10 +17,10 @@ ExecStart=/usr/local/bin/bitcoind -daemon \\
                             -conf=$HOME/.bitcoin/bitcoin.conf \\
                             -datadir=$HOME/.bitcoin
 
-# Make sure the config directory is readable by the service user
+# Certifique-se de que o diretório de configuração pode ser lido pelo utilizador do serviço
 PermissionsStartOnly=true
 
-# Process management
+# Gestão de processos
 ####################
 
 Type=forking
@@ -44,24 +44,24 @@ ConfigurationDirectoryMode=0710
 StateDirectory=bitcoind
 StateDirectoryMode=0710
 
-# Hardening measures
+# Medidas de reforço
 ####################
 
-# Provide a private /tmp and /var/tmp.
+# Fornecer um /tmp e um /var/tmp privados.
 PrivateTmp=true
 
-# Mount /usr, /boot/ and /etc read-only for the process.
+# Monte /usr, /boot/ e /etc somente leitura para o processo.
 ProtectSystem=full
 
-# Disallow the process and all of its children to gain
-# new privileges through execve().
+# Não permite que o processo e todos os seus filhos 
+# obtenham novos privilégios através de execve().
 NoNewPrivileges=true
 
-# Use a new /dev namespace only populated with API pseudo devices
-# such as /dev/null, /dev/zero and /dev/random.
+# Use um novo espaço de nome /dev preenchido apenas com 
+# pseudo-dispositivos da API, como /dev/null, /dev/zero e /dev/random.
 PrivateDevices=true
 
-# Deny the creation of writable and executable memory mappings.
+# Negar a criação de mapeamentos de memória graváveis e executáveis.
 MemoryDenyWriteExecute=true
 
 [Install]
@@ -74,4 +74,3 @@ sudo systemctl daemon-reload
 sudo systemctl disable bitcoind.service >$dn 2>&1
 sudo systemctl enable bitcoind.service >$dn 2>&1
 }
-
