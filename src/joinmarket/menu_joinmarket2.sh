@@ -90,7 +90,8 @@ $cyan
 $cyan
                   mm)$orange          Back to first ParmaJoin menu...
 
-$orange   
+
+${red}These options will work from the main joinmarket menu $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice 
