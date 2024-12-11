@@ -20,13 +20,13 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-                         Bitcoin Core will be uninstalled
+                         O Bitcoin Core será desinstalado
 
 $red
-    Are you sure, UNINSTALL BITCOIN?  (y or n)
+    Tem a certeza?, DESINSTALAR O BITCOIN?  (y or n)
 
 $orange
-    (The Bitcoin data directory will not be deleted)
+    (O diretório de dados Bitcoin não será eliminado)
 
 
 ########################################################################################
@@ -47,11 +47,11 @@ set_terminal
 echo -e "
 ########################################################################################
 
-               Both$cyan Bitcoin Core$orange and$green BTCPay Server$orange will be uninstalled 
+               Tanto o$cyan Bitcoin Core$orange como o $green BTCPay Server$orange serão desinstalados
 $red
-    Are you sure?
+    Tens a certeza?
 $orange
-    (The Bitcoin data directory will not be deleted)
+    (O diretório de dados Bitcoin não será eliminado)
 
 ########################################################################################
 "
@@ -64,7 +64,7 @@ done
 #Break point. Proceed to uninstall Bitcoin Core.
 
 if ! docker ps >$dn 2>&1 ; then
-announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."
+announce "O Docker não parece estar a funcionar. Não é possível desinstalar sem isso. Abortar."
 return 1
 fi
 
@@ -74,7 +74,7 @@ stop_bitcoin
 
 #remove bitcoin directories and symlinks
 if [[ $OS == "Linux" ]] ; then remove_bitcoin_directories_linux 
-debug "after remove bitcoin dir linux"
+debug "depois de remover bitcoin dir linux"
 fi
 
 if [[ $OS == "Mac" ]] ; then 
@@ -105,7 +105,7 @@ sudo rm /etc/systemd/system/bitcoin.service 1>$dn 2>&1
 
 set_terminal
 if [[ $combo != "true" && $combo != "btcpay_first" ]] ; then
-success "Bitcoin" "being uninstalled"
+success "Bitcoin" " a ser desinstalado"
 return 0
 fi
 
@@ -113,7 +113,7 @@ if [[ $combo == "true" ]] ; then
 uninstall_btcpay combo
 #then come back there to finish
 installed_config_remove "btccombo"
-success "Bitcoin and BTCPay have been uninstalled"
+success "Bitcoin e BTCPay foram desinstalados"
 unset combo
 return 0
 fi
