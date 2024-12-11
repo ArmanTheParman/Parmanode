@@ -1,7 +1,7 @@
 function menu_joinmarketwallet {
 if ! grep -q "joinmarket-end" $ic ; then return 0 ; fi
 while true ; do
-set_terminal ; echo -en "
+set_terminal_custom 48 ; echo -en "
 ########################################################################################$cyan
 
                                 P A R M A J O I N
@@ -35,6 +35,8 @@ $cyan
 $cyan
                   ss)$orange          Show wallet seed words
 
+
+${red}These options will work from the main joinmarket menu $orange
 ########################################################################################
 "
 choose "xpmq" ; read choice
