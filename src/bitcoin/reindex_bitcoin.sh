@@ -3,9 +3,9 @@ function reindex_bitcoin {
 set_terminal ; echo -e "
 ########################################################################################
 
-    Re-index the blockchain? (This might take 7.5 million years)
+    Re-indexar a blockchain? (Isto pode demorar 7,5 milhões de anos)
 
-    Type  $green  y$orange   or$red   n   $orange then <enter>
+    Digite $green y$orange ou$red n $orange e depois <enter>
 
 ########################################################################################
 "
@@ -16,13 +16,13 @@ clear
 echo -e "
 ########################################################################################
 
-   Bitcoin will now re-index the blockchain. This will take a really long time.
-   Keep this window open, and do not hit control-c, or it will abort.
+   O Bitcoin agora vai reindexar o blockchain. Isso vai levar muito tempo. Mantém esta 
+   janela aberta e não carregues em control-c, ou o processo será interrompido.
 
-   If you need a terminal window, you can open a new one; you can even run Parmanode
-   on that concurrently.
+   Se precisar de uma janela de terminal, pode abrir uma nova janela; pode até correr 
+   o Parmanode nessa janela ao mesmo tempo.
 
-   When it's done, Bitcoin will stop and start over to run in the background.
+   Quando terminar, o Bitcoin pára e recomeça a funcionar em segundo plano.
 
 ########################################################################################
 "
