@@ -66,6 +66,8 @@ di)
     ;;
 su)
     check_wallet_loaded || continue
+    yesorno "Be careful with who sees your screen, the seed words will be printed!
+    Do you really want to continue?" || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet showutxos 
     jmvenv "deactivate"

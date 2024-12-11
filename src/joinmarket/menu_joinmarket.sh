@@ -161,7 +161,7 @@ obi)
    orderbook_access_info
 ;;
 
-l|load)
+load)
     set_terminal
     choose_wallet || continue
 ;;
@@ -220,6 +220,8 @@ cp)
 
 su)
     check_wallet_loaded || continue
+    yesorno "Be careful with who sees your screen, the seed words will be printed!
+    Do you really want to continue?" || continue
     jmvenv "activate"
     $hp/joinmarket/scripts/wallet-tool.py $wallet showutxos
     jmvenv "deactivate"
