@@ -96,7 +96,7 @@ $orange
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_use ;; 
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) menu_joinmarket2 ;; 
 mm)
 menu_joinmarket
 ;;
