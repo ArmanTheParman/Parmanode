@@ -110,7 +110,8 @@ vim_warning ; sudo vim $jmcfg
 ;;
 
 vc)
-if [[ -e "${jmcfg}_backup" ]] ; then enter_continue "exists" ; continue ; fi
+#menu option appears only if backup doesn't exist - logic above.
+if [[ -e "${jmcfg}_backup" ]] ; then continue ; fi
 yesorno "The file will be modified to delete the comments and make this large file more 
     managable. A backup will be kept as ${jmcfg}_backup
     so you can still investigate what the comments say in the future.
