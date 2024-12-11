@@ -4,13 +4,13 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-                           Bitcoin Username/Password
+                           Nome de utilizador/palavra-passe Bitcoin
 
 $green
-    Please enter an RPC username     
+    Introduza um nome de utilizador RPC     
    $orange 
 
-    (Do not use the characters: # \" or ' otherwise problems may arise.)
+    (Não utilizar os caracteres: # \" ou ', caso contrário podem surgir problemas).
 
 ########################################################################################
 
@@ -24,11 +24,11 @@ read rpcuser ; printf "\n"
     echo -e "
 ########################################################################################  
 
-    The username$cyan $rpcuer ${orange}has been set
+    O nome de utilizador$cyan $rpcuer ${orange}foi definido
 
-    Please enter an$cyan RPC password:$orange (keystrokes won't be shown)
+    Por favor, introduza uma palavra-passe RPC$cyan:$orange ( a escrita não será mostrada)
     
-    (Do not use the characters: # \" or ' otherwise problems may arise.)
+    (Não utilizar os caracteres: # \" ou ', caso contrário podem surgir problemas).
 
 ########################################################################################
 
@@ -45,11 +45,11 @@ PASSWORD:
     read -s rpcpassword2
 
     if [[ $rpcpassword != $rpcpassword2 ]] ; then
-            echo -e "Passwords do not match. Try again.
+            echo -e "As palavras-passe não coincidem. Tente novamente.
             "
             enter_continue ; continue 
     else
-            echo -e "Password set"    
+            echo -e "Palavra-passe definida"    
             enter_continue ; break
     fi
 
