@@ -1,6 +1,6 @@
 function install_btcrpcexplorer {
 set_terminal
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi #when mac, soon mac.
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi 
 sned_sats
 if [[ $chip != "x86_64" ]] ; then 
 set_terminal ; echo -e "
