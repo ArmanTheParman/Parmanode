@@ -37,6 +37,7 @@ make_btcrpcexplorer_service
 enable_access_bre #enables access to bre from other computers (needs nginx)
 #happy days
 filter_notice
+start_bre
 success "BTC RPC Explorer" "being installed."
 bre_warnings
 return 0
