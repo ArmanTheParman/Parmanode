@@ -14,25 +14,6 @@ set_terminal ; echo -e "
 return 1
 fi
 
-if ! cat $HOME/.parmanode/installed.conf | grep fulcrum-end >$dn ; then 
-    set_terminal ; echo -e "
-########################################################################################
-
-    Be Warned, BTC RPC Explorer won't work unless you installed Bitcoin,$cyan and$orange either
-    Fulcrum server or electrs server first. 
-    
-    You could, instead modify the configuration file and point it to a Fulcrum or 
-    Electrum Server on this or another machine.
-
-    Proceed anyway?   y  or  n
-
-########################################################################################
-"
-    read choice
-
-    if [[ $choice != "y" ]] ; then return 1 ; fi
-fi
-
 install_nodejs 18 || return 1
 
 update_npm 7 || return 1
