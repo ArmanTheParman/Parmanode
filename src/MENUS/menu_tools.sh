@@ -10,6 +10,8 @@ echo -ne "
 
 $cyan              u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
 
+$cyan              sr)$orange    System report (for getting troubleshooting help)
+
 $cyan              d)$orange     Delete all preferences to hide menu messages
 
 $cyan              ip)$orange    What's my computer's IP address?
@@ -35,6 +37,12 @@ q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
     menu_tools2
     ;;
     
+   sr)
+system_report
+return 0
+;;
+
+ 
     m|M) back2main ;;
 
     cc)

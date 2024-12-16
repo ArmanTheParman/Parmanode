@@ -20,8 +20,6 @@ $cyan              rest)$orange      REST protocol test to LND (info only)
 
 $cyan              rf)$orange        Refresh Parmanode script directory              
 
-$cyan              sr)$orange        System report (for getting troubleshooting help)
-
 $cyan              pass)$orange      Change computer login/sudo password
 
 $orange
@@ -48,11 +46,6 @@ grpccurl_call
 
 rf)
 parmanode_refresh
-return 0
-;;
-
-sr)
-system_report
 return 0
 ;;
 
