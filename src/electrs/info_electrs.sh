@@ -60,7 +60,7 @@ $orange
 choose xpmq ; read choice ; set_terminal
 jump_qpm $choice || return 1
 
-set_terimanl ; echo -e "
+set_terminal ; echo -e "
 ########################################################################################
 $cyan
     Tor:
