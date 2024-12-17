@@ -1,5 +1,17 @@
 function info_electrs {
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+    Starting issues:
+$orange
+        If electrs isn't starting, have a look at the log for clues. Another option is
+        to uninstall electrs and re-install. The sync'd data will not be deleted and
+        electrs will pick up where it left off.
 
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+jump_qpm $choice || return 1
 
 set_terminal ; echo -e "
 ########################################################################################
@@ -13,18 +25,43 @@ $orange
         restarting the wallet fixes it. Go figure; computers. Sometimes, restarting
         electrs is needed. Sometimes, you need to delete the connections settings. 
         Use the Parmanode menu option for that.
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+jump_qpm $choice || return 1
+
+
+set_terimanl ; echo -e "
+########################################################################################
 $cyan
     Sparrow Wallet:
 $orange
         Sparrow wallet will connect via TCP, but not SSL - sorry, I can't figure out
         why, I'll fix it later. If you specifically want an SSL connection using 
         Sparrow, then run Fulcrum instead of electrs; that works, but there's no need.
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+jump_qpm $choice || return 1
+
+set_terminal ; echo -e "
+########################################################################################
 $cyan
     Ports:
 $orange
         Because Parmamnode supports both Fulcrum AND electrs as "Electrum Servers",
         the typical ports 50001 and 50002 has been reserved for Fulcrum, and 
         50005/50006 is used for electrs. This is to avoid any port conflicts.
+
+########################################################################################
+"
+choose xpmq ; read choice ; set_terminal
+jump_qpm $choice || return 1
+
+set_terimanl ; echo -e "
+########################################################################################
 $cyan
     Tor:
 $orange
@@ -41,6 +78,8 @@ $orange
 
 ########################################################################################
 "
-enter_continue ; jump $enter_cont
+choose xpmq ; read choice ; set_terminal
+jump_qpm $choice || return 1
 
+return 0
 }

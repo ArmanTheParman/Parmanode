@@ -1,6 +1,8 @@
 function jump {
 
 case $1 in
+q|quit|exit) exit ;;
+m|main) back2main ;;
 
 ubitcoin|ub|mbitcoin|mb)
 if grep -q "bitcoin-end" $ic ; then
@@ -333,5 +335,13 @@ bash)
 tmux new -s pnbash "bash=1 rp"
 ;;
 
+esac
+}
+
+function jump_qpm {
+case $1 in
+q|Q) exit ;;
+p|P) return 1 ;;
+m|M) back2main ;;
 esac
 }
