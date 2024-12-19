@@ -1,4 +1,6 @@
 function menu_main {
+unset enter_cont choice
+
 while true ; do
 set_terminal
 
