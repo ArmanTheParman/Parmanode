@@ -1,0 +1,33 @@
+
+#Clear screen, resize, and print list shorcut
+function a {
+clear 
+st
+tput setaf 5 #sets colour
+echo "CURRENT DIRECTORY: $(pwd)"
+tput sgr0 
+if [[ -z "$1" ]] ; then ls -G ; fi 
+if [[ $1 == "lah" ]] ; then ls -Glah ; fi
+echo ""
+tput setaf 5 
+echo "############################################################################################################################################" 
+tput sgr0 
+echo ""
+}
+
+#Other shortcuts
+function aa { a "lah" ; }
+function st { clear ; printf '\e[8;40;140t' ; }
+function .. { cd .. ; a ; }
+function d { cd $HOME/Desktop && a ; }
+function dl { cd $HOME/Downloads && a ; }
+function h { cd && a ; }
+function t { cd /tmp 2>/dev/null || cd $HOME/tmp ; a ; }
+function ct { cat /etc/crontab ; }
+function e { exit ; }
+
+
+function sss { sudo systemctl status "$1" ; }
+function colour { export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ ' ; }
+function color { colour ; }
+
