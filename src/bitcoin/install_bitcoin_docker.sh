@@ -119,7 +119,7 @@ docker cp $tmp/dockerbitcoin.conf $dockername:$thedir/.bitcoin/bitcoin.conf >$dn
 
 #Download bitcoin 
 export bitcoin_compile="false"
-export version="27.1"
+export version="27.2"
 cd && rm -rf $tmp/bitcoin && mkdir -p $tmp/bitcoin && cd $tmp/bitcoin
 while true ; do
 clear
