@@ -44,6 +44,7 @@ B|b|bitcoin|Bitcoin)
         if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 
         install_bitcoin
+        menu_main
         return 0
         fi
         ;;
