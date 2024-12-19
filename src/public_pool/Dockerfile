@@ -11,7 +11,12 @@ RUN apt-get update \
     && apt-get upgrade -y
 
 # Extra installs necessary for ARM computers to be able to compile
-RUN apt-get install -y --no-install-recommends python3 build-essential cmake g++ make ca-certificates curl procps
+RUN apt-get install -y --no-install-recommends python3
+RUN apt-get install -y --no-install-recommends build-essential 
+RUN apt-get install -y --no-install-recommends cmake g++ make
+RUN apt-get install -y --no-install-recommends ca-certificates 
+RUN apt-get install -y --no-install-recommends curl 
+RUN apt-get install -y --no-install-recommends procps
 
 WORKDIR /build
 
