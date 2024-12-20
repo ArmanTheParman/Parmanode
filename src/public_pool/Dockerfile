@@ -1,4 +1,4 @@
-#Fork of Public-Pool's Dockerfile for Parmanode.
+# Fork of Public-Pool's Dockerfile for Parmanode.
 
 ############################
 # Docker build environment #
@@ -10,7 +10,7 @@ FROM node:18.19.1-bullseye-slim AS build
 RUN apt-get update \
     && apt-get upgrade -y
 
-# extra installs necessary for ARM computers to be able to compile
+# Extra installs necessary for ARM computers to be able to compile
 RUN apt-get install -y --no-install-recommends python3
 RUN apt-get install -y --no-install-recommends build-essential 
 RUN apt-get install -y --no-install-recommends cmake g++ make
@@ -32,22 +32,21 @@ RUN npm i && npm run build
 
 FROM node:18.19.1-bullseye-slim
 
-
 # Expose ports for Stratum and Bitcoin RPC
 EXPOSE 3333 3334 8332
 
 WORKDIR /public-pool
 
 # Copy built binaries into the final image, including the files copied from the Dockerfile's directory
-# Given that the file should be mounted when the container is run, 
+# Given that the file should be mounted when the container is run,
 # the copying of .env into the container won't do anything.
 
 COPY --from=build /build .
 
- # Install Tor
-RUN apt-get update -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tor 
-RUN apt clean 
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Install Tor
+RUN apt-get update -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y tor \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/usr/local/bin/node", "dist/main", "tor"]
