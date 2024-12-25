@@ -21,7 +21,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
 
-    Parmanode is a keyboard controlled program. You navigate by reading menu uptions,
+    Parmanode is a keyboard controlled program. You navigate by reading menu options,
     typing your choice, and hitting $cyan<enter>$orange. The options are usually on the left, 
     with ) or () for visual separation, and text explanation on the right.$magenta 
     
