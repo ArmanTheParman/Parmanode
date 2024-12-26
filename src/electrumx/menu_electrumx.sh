@@ -286,7 +286,7 @@ if [[ $OS == Mac ]] ; then
     yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
     fi
     TMUX2=$TMUX ; unset TMUX ; clear
-    tmux new -s -d "tail -f $logfile" 
+    tmux new -s electrumx_log "tail -f $logfile" 
     TMUX=$TMUX2
     set_terminal
 fi

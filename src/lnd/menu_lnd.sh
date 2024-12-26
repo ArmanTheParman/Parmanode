@@ -273,11 +273,11 @@ yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 if grep -q "lnd-" $ic ; then
-tmux new -s -d "journalctl -fexu lnd.service"
+tmux new -s lnd_log "journalctl -fexu lnd.service"
 elif grep -q "litd" $ic ; then
-tmux new -s -d "journalctl -fexu litd.service"
+tmux new -s litd_log "journalctl -fexu litd.service"
 elif grep -q "lnddocker-" $ic ; then
-tmux new -s -d "tail -f $hp/lnd/lnd.log"
+tmux new -s lnddocker_log "tail -f $hp/lnd/lnd.log"
 fi
 TMUX=$TMUX2
 
