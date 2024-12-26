@@ -1,3 +1,5 @@
+Version 3.49.2
+    -Tmux log bug fixed
 Version 3.49.1
     -main menu cosemetic changes
     -new external drive menu
