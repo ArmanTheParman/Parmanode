@@ -64,6 +64,11 @@ echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat"
 echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat)"
 
 echoline
+#tmux
+echor "Tmux list..."
+echor "$(tmux ls)"
+
+echoline
 #prinout of $dp
 echor "#DOT PARMANODE PRINTOUT"
 cd $HOME/.parmanode
