@@ -82,7 +82,7 @@ case $choice in #the variable choice is tested through each of the case-choices 
 m|M) continue ;;
 q|Q) exit ;;
 ns) navigation_shortcuts ;;
-dm) menu_external_drive ;;
+dm) menu_drives ;;
 aa)
 if [[ $announcements == off ]] ; then
 sudo gsed -i "/announcements=/d" $hm 
