@@ -154,6 +154,7 @@ echor "fulcrum config \n $(cat $fc)"
 echoline
 echor "#LND"
 echor "LND config \n $(cat $HOME/.lnd/lnd.conf)"
+if [[ $OS == "Linux" ]] ; then echor "$(journalctl -exu lnd.service)" ; fi
 
 echoline
 echor "#MEMPOOL"
