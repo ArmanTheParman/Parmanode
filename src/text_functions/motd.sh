@@ -1,5 +1,5 @@
 function motd {
-another="${red}Hint: type 'motd' for another.$orange"
+another="${red} Hint: type 'motd' for another.$orange"
 
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >$dn
