@@ -60,8 +60,8 @@ echoline
 echoline
 #programs
 echor "#PROGRAMS"
-echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat"
-echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat)"
+echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux"
+echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux)"
 
 echoline
 #tmux
