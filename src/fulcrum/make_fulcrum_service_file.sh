@@ -1,4 +1,7 @@
 function make_fulcrum_service_file {
+
+if [[ ! -e $dp/mount_check.sh ]] ; then make_mount_check_script ; fi
+
 echo "[Unit]
 Description=Fulcrum_daemon
 After=network-online.target
