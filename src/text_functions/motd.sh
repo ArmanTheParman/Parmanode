@@ -928,6 +928,495 @@ $orange
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
 if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 46 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Regular insta YOLO smash no-look market bitcoin buys without hesitation at every 
+    opportunity is good for the soul.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 47 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    To those who think Bitcoin security will fall as the block subsidy dwindles...
+
+    Not true, it's not the amount of reward that makes Bitcoin secure, it's the 
+    difficulty of getting 51% of the available equipment and energy, and that 
+    difficulty is independent to the reward.
+
+    If mining rewards fall, ASIC prices fall to keep them near profitable for most new buyers. 
+
+    This makes it easier for decentralised distribution of ASICS.
+
+    It's just wrong to think the block reward is related to securely linearly, it's 
+    just a mechanism to make the incentives work, and the network spam free as block 
+    space gets more valuabe.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 48 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Ladies and gentlemen - Bitcoin.
+
+    In other news... nah there's nothing else worth mentioning.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 49 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    Just because Bitcoin has so far had 4 year cycles, doesn't mean the dollar will 
+    die in 4 year cycles.
+
+    The ohfuckening is coming suddenly out of the orange.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 50 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Price really flies when your telling people to have fun staying poor
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 51 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    You can't love your family enough.
+
+    You can't hate your government enough.
+
+    You can't buy bitcoin enough.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 52 ]] ; then
+set_terminal_custom 48 ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+You like the idea of smart contracts on blockchains?
+
+Smart contracts are essentially for replacing enforcement of ownership through the 
+legal system (and the state, and violence) with a digital contract ("code is law").
+
+For those who want to put their property on "the blockchain", when illegal immigrants 
+invade and decide to occupy your house, you can throw the Ethereum "smart" contract 
+in their face. That'll show them.
+
+Now that you see the contract doesn't enforce ownership, you still need the law and 
+the state, what was its initial purpose again? Oh, yeah, to replace the enforcement 
+of ownership. LOL.
+
+You see, digital contracts can only enforce digital things. They can never enforce 
+real-world things. They can only prove you paid for something, or prove ownership, 
+not enforce.
+
+A simple contract on paper will do for that. Or a digital database, eg run by the 
+government, the very people you rely on for enforcement of ownership. You don't 
+need it to be "smart" and you don't need it to be decentralised - what are you 
+trying to overthrow? The people you need to enforce your contract.
+
+It's nonsensical to think you can replace the legal system. It is encoded in mountains 
+of text and there are always new exceptions and situations arising. Who are you 
+going to appeal to when a smart contract doesn't encode the subtleties of a new 
+situation? Replacing the legal system with coding nerds is a stupid thing to hope for.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 51 ]] ; then
+set_terminal_custom 48 ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    A friendly rant about early Bitcoin adoption...
+
+    I've come to accept that bitcoin is going to succeed, and by logical definition, 
+    not everyone can be "early" - because being early is relative to other people; it's 
+    an ORDER thing, not temporal.
+
+    Whether the whole world adopted it in one year or 10, the order they adopted 
+    bitcoin matters to the meaningful advantage of being "early".
+
+    And so, we can't make more people early - that doesn't make sense. All we can 
+    do is ...
+
+        1) Affect the order of who is earlier than others, preferably people we care 
+           about - so don't spend too much time on idiots, haters, rude people, or 
+           socialists. Let natural selection do it's thing, or in other words, use 
+           "HFSP" judiciously.
+
+        2) Help Bitcoin adoption along, but maximise your impact, again, with 
+           judicious use of HFSP.
+
+        3) Make the world better in some way 🧡 - Bitcoin will be more valuable the 
+           better the world is.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 52 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Parman's take on Bitcoin ETFs...
+
+    These are SO bad, they're not even on par with IOUs... They are "I don't owe 
+    you's" (IDOUs).
+
+    Imagine buying a car online, say a rare antique, but no delivery is permitted - 
+    why send dollars for that? Because someone might send you more dollars for it one 
+    day?
+
+    What if then, the dollar hyperinflates? You still can't get the car, all you get 
+    is a truck full of dollar bills which you can buy nothing with. This is the same 
+    with a Bitcoin ETF.
+
+    The essence of why bitcoin has value is because it will be money one day when the 
+    dollar dies. On that day, bitcoin will be on the moon but an ETF it will actually 
+    be worthless.
+
+    Therefore, "I don't owe you's" are essentially like a Ponzi scam!
+
+    I haven't even begun to discuss the faith required in the system for the ETFs to 
+    actually be backed, nor the potential honey pot for governments to forcefully 
+    exchange them for printed dollars using an executive order for national security 
+    and dollar stability. They did it with gold, they'll do it with Bitcoin ETFs 
+    (futule with real bitcoin).
+
+    Do everything you can to get real bitcoin in your own wallet. 
+
+    Bitcoin in self custody is limited to 21M.
+
+    Bitcoin on exchanges and ETFs are infinite in supply.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 53 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Bitcoin is created by MINING (that had an energy cost, it's not free). Not a 
+    single person got special treatment. Satoshi created the PROTOCOL, an idea, from 
+    nothing, fine, but really it was INVENTED from a collection of existing ideas like 
+    proof of work and crytptography, but he SOLVED the Byzantine generals problem, 
+    something previously thought to be unsolvable for decades. But then he mined 
+    something that everyone thought was worthless, and gave himself no special 
+    privilege, and sold none of his coins, and disappeared and gave Bitcoin as a gift 
+    to humanity.
+
+    Anyway, the shitcoins then came and COPIED the idea, which is fine, that's not 
+    the issue, but ETH was PREMINED, meaning that 80% of the total supply, the fucking 
+    TOTAL supply, not just a little bit, was awarded, FOR FREE, no mining, to the 
+    founders. WTF. And you people buy it?? Do you even know why Bitcoin was invented?
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 54 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    If someone is planning to sell 5% of their stack in the next Bitcoin bull run, 
+    then 95% of their coins represent Bitcoin adoption.
+
+    Adoption has nothing to do with price, and everything to do with how many people 
+    and how many coins are not for sale until Bitcoin is adopted as world money. 
+
+    Everything else is just noise and not contributing to the end goal.
+
+    I'm not saying you have to have 100% of your coins adopted, or all your wealth in 
+    Bitcoin, people should decide what's best for their life situation - I'm just 
+    saying that coins destined to be sold before we win are not adopted coins.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 55 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Despite my mission to teach self custody, I accept that holding your own entire 
+    wealth is not for everyone -  it's OK, really...
+
+    I always say, expecting everyone to learn the skills of banking and security is 
+    unrealistic and goes against the benefits of having money in society. 
+
+    Money helps us escape the inefficiencies of barter, and allows everyone to 
+    specialise in what they are good at, rather than doing everything themselves.
+
+    Banking, like baking, dentistry, or building - is just another skillset, and time 
+    drainer.
+
+    The existence of Bitcoin banks will not mean that the purpose of Bitcoin has been 
+    corrupted or has failed ...
+
+    Bitcoin wasn't created to end banks. It's fixing the money - so they no one can 
+    create it for free and scam humanity.
+
+    Yes it means that some will engage in fractional reserve, and yes that has the
+    *effect* of increasing the money supply, but it's acceptable...
+
+
+########################################################################################
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+set_terminal ; echo -e "
+########################################################################################
+
+    Whatever the increase, it has an anchor to the real fixed supply, and can't keep 
+    growing, because as it does, bankruptcies increase pulling it back to reality. 
+    Free markets, baby, accept it.
+
+    This natural market force, with some people fucking around and finding out, 
+    doesn't mean there is any sacrifice to the main mission. We would still have 
+    sound money, and have ended central banks (yes self custody TODAY helps defeat 
+    them, but that is for the "then they fight you" stage, not the "then you win" 
+    stage).
+
+    We, the earliest Bitcoiners, have the responsibility to hold our own coins, but 
+    also the opportunity to be the custodians of the future, if we so choose. There 
+    will be fierce competition, no monopolies, with a myriad of black and white market 
+    options that can't be stopped. 
+
+    People will have the choice to use services for convenience, and won't have to 
+    rely on a small handful of custodians to hold all their wealth, they can 
+    diversify, OR, is their wealth justifies/demands it, can call someone like me 
+    to mentor them to learn self banking skills and extreme security (excuse the smol 
+    plug). 
+
+    Why should the poorest people with 5 sats to their name be concerned with security 
+    or the ability to open their own lightning channels? I hope this part is obvious, 
+    not going to elaborate.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 56 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Nobody can really tell you what the Bitcoin price will do in the short term. Anyone
+    who tries to is full of shit. The only thing we can say with confidence is that
+    Bitcoin will become world money and is grossly undervalued now at \$0.087 million
+    dollars. People who are selling are forced to due to life situation, or they're
+    fools. You can take advantage of them by buying bitcoin at any price - be thankful
+    you can. I don't trade or pretend to know if a dip will come. If I have spare
+    dollars, I immediately exchange that trash for precious sats.
+$green
+    My recommendation is to rid yourself of the unrealistic burden that you have to
+    time your bitcoin purchase to perfection$orange; just buy it and accept fate. Every single
+    Bitcoiner has regrets and it's just not possible to only buy at the bottoms. Buy
+    all the tops, middles and bottoms - just regularly buy and be happy. Be at peace
+    with it. I hope that helps.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 57 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    I don't believe I know the future... I know the future possibilities and 
+    impossibilities, and in each possibility (Bitcoin wins, or worldwide tyranny wins), 
+    I choose the same option -$red no diversification$orange.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+if [[ $motd == 58 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    If someone is putting all their life energy into something rather than 
+    diversifying, you should be suspicious they know something you don't, instead of 
+    arrogantly assuming you know better and they must be insanely stupid.
+
+    If they are not alone, AND they're winning, you are obligated to find out.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $motd == 59 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Always be careful to not use "inflation" interchangeably with "CPI".
+
+    They are not the same thing. CPI is whatever you are told it is, completely 
+    disconnected from price inflation, and calculated however they want in a way you 
+    CANNOT VERIFY.
+
+    Also, "inflation" means growth in MONEY QUANTITY, nothing to do with prices, so 
+    use "price inflation".
+
+    Undoing the scam involves spreading correct information - fixing the language 
+    corruption can help somewhat.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $motd == 60 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    When you buy Bitcoin, your break-even price is tyranny.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $motd == 61 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    Dont forget the most important purpose of Bitcoin ...
+
+    Bitcoin ends the ability of anyone (central banks) from creating money for free 
+    (fiat), who then use it to plunder the planet's assets (which worsens the wealth 
+    gap), and they control peoples' minds (via media, education, scientific 
+    publishing, advisory bodies, politicians) to help them maintain control and the 
+    belief that their control of money is necessary, reasonable, and good for them. 
+    Thinking otherwise becomes "extremism".
+
+    If you place "fuck the banks" higher in priority to "fuck the CENTRAL banks" 
+    (very different), then you become susceptible to shitcoiner narratives, and 
+    dangerous Bitcoin-upgrade narratives that risk priority 1 in favour of improving 
+    priority 2.
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $motd == 62 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+    If evil people were to ever gain the power to print money then they could buy the 
+    planet's assets and all public companies, buy/influence politicians, groom 
+    political puppets, buy retail/commercial banks, buy media to control truth, 
+    education/curriculums to control beliefs, and buy/influence/fund academia, control 
+    science publications, monopolise supply chains in energy and food, document all 
+    people with movement licenses/cirizenship, and form supragovernmental advisory 
+    bodies - and use all of that to manipulate the public into believing that they 
+    are free, their vote matters, and that having some people print money to manage 
+    the economy is good for them.
+
+    If you agree that's what evil people with such power would do, how do you know 
+    they haven't already?
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $motd == 63 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    The$green ohfuckening$orange is when Bitcoin is suddenly in such huge demand, it's not 
+    available on exchanges, and no one knows what price it is because there isn't one. 
+
+    Oh fuck, indeed, slave.
+
+$orange
+######################################################################################## 
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
 }
+
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
