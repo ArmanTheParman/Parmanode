@@ -95,10 +95,8 @@ local file="/etc/systemd/system/fulcrum.service"
 if sudo test -f $file >$dn 2>&1 && grep -q "fulcrum.log" $file ; then 
     return 0
 elif sudo test -f $file >$dn 2>&1 ; then #fulcrum.log doesn't exist in file, therefore it's an old version. Remake.
-    debug "fulcrum startup mods..."
     make_fulcrum_service_file
 fi
-debug "end fulcrum service patch"
 }
 
 function fulcrum_delete_old_log {
@@ -118,17 +116,14 @@ function remove_tor_log_patch {
 
 if [[ -e $torrc ]] && grep -q "tornoticefile" $torrc ; then
 sudo gsed -i '/^.*tornoticefile\.log.*$/d' $torrc >$dn 2>&1
-debug "in 1, torrc"
 needrestarttor="true"
 fi
 
 if [[ -e $torrc ]] && grep -q "torinfofile" $torrc ; then
 needrestarttor="true"
 sudo gsed -i '/^.*torinfofile\.log.*$/d'   $torrc >$dn 2>&1
-debug "in 2, torrc"
 fi
 
 if [[ -n $needrestarttor ]] ; then restart_tor ; fi
-debug "remove tor log patch"
 unset needrestarttor
 }

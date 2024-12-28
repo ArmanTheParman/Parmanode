@@ -6,11 +6,8 @@ temp_patch
 openssh_patch
 suggest_brew
 suggest_tor
-debug "p"
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
-debug "q"
 hello
-debug "r"
 debug "before patch sequence"
 
 case $patch in 

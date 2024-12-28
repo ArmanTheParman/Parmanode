@@ -100,7 +100,6 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    bash_check 
    check_architecture 
 fi
-debug "6"
 apply_patches
 
 #Add Parmashell (do after patches)

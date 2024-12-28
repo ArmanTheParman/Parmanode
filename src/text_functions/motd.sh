@@ -6,15 +6,28 @@ fi
 if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
 
 motdfile="$HOME/.parmanode/.motd"
-if [[ ! -e $motdfile ]] ; then
-echo "motd=0" | tee $motdfile
+source $pc #access motd value
+
+#migrate from old motd...
+
+#new installation...
+if [[ ! -e $motdfile ]] && ! grep -q "motd=" $pc ; then
+parmanode_conf_add "motd=0" 
 motd=0
+#already migrated to new motd...
+elif [[ ! -e $motdfile ]] && grep -q "motd=" $pc ; then
+motd=$((motd + 1))
+parmanode_conf_remove "motd="
+parmanode_conf_add "motd=$motd" 
+#older...
 else
-source $motdfile >$dn 2>&1
-motdNum=$((motd + 1))
-echo "motd=$motdNum" | tee $motdfile >$dn 2>&1
-motd=$motdNum
+source $motdfile
+motd=$((motd + 1))
+parmanode_conf_remove "motd=" #redundant
+parmanode_conf_add "motd=$motd" 
+rm $motdfile >$dn 2>&1
 fi
+
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
 motd=$((motd % 64))
