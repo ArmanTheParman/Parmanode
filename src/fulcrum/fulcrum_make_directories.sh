@@ -20,7 +20,6 @@ if [[ $drive_fulcrum == "external" ]] ; then
     #only make a symlink if there is no dir there
     if [[ ! -d $HOME/.fulcrum_db ]] ; then
         ln -s $pd/fulcrum_db $HOME/.fulcrum_db >$dn 2>&1
-        enter_continue "after symlink"
     fi
 
 elif [[ $drive_fulcrum == "internal" ]] ; then
