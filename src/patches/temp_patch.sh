@@ -22,10 +22,14 @@ fi
 tmux_patch
 
 #fix homebrew path order ; remove June 2025
-if [[ $OS == Mac ]] && which brew >$dn && [[ -e $bashrc ]] ; then
-sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
+if [[ $OS == "Mac" ]] && which brew >$dn && [[ -e $bashrc ]] ; then
+#if sed finds opt/homebrew/bin at the end of the current path, delete that line.
+#if /opt/homebrew/bin isn't at the beginning of the path, add it to the start of the path.
+    if grep -q "$PATH:/opt/homebrew/bin" $bashrc ; then
+        debug "1b"        sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
+    fi
     if ! grep -q "PATH=/opt/homebrew/bin" $bashrc ; then
-    echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
+        echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
     fi
 fi
 

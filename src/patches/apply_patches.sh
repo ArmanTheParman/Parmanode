@@ -6,8 +6,11 @@ temp_patch
 openssh_patch
 suggest_brew
 suggest_tor
+debug "p"
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
+debug "q"
 hello
+debug "r"
 debug "before patch sequence"
 
 case $patch in 
@@ -47,11 +50,11 @@ sudo systemctl disable parmanode.service >$dn 2>&1
 sudo rm /etc/systemd/system/parmanode.service >$dn 2>&1
 sudo systemctl daemon-reload >$dn 2>&1
 parmanode_conf_remove "parmanode_service="
-rm $HOME/.parmanode/parmanode_script.sh >$dn 2>&1
+rm $dp/parmanode_script.sh >$dn 2>&1
 fi
 if [[ $OS == Mac ]] ; then
 parmanode_conf_remove "tor_script=done"
-sudo rm $dp/tor_script.sh >$dn 2>&1
+rm $dp/tor_script.sh >$dn 2>&1
 fi
 
 

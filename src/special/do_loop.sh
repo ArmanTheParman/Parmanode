@@ -37,7 +37,6 @@ test_standard_install
 
 set_terminal
 
-
 #drive structure
 make_home_parmanode 
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
@@ -59,7 +58,6 @@ if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise
 	else installed_config_remove "docker"
 	fi
 fi
-
 #add to run count
 rp_counter
 
@@ -83,7 +81,6 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
 	cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 && git pull && needs_restart="true" >$dn 2>&1
-
 update_computer 
 rm $HOME/.parmanode/.new_install
 else
@@ -103,6 +100,7 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    bash_check 
    check_architecture 
 fi
+debug "6"
 apply_patches
 
 #Add Parmashell (do after patches)

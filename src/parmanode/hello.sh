@@ -28,17 +28,23 @@ function hello {
 #    just an anon onion address and some usage stats, eg like the OS in use.
 
 if ! which tor >$dn ; then return 0 ; fi
-if [[ $OS = Mac ]] ; then
+if [[ $OS = "Mac" ]] ; then
 file="/usr/local/var/lib/tor/parmanode-service/hostname"
 else
 file="/var/lib/tor/parmanode-service/hostname"
 fi
 
-if sudo test -e "$file" >$dn 2>&1 ; then
-#onion address for parmanode-service
-message1=$(sudo cat $file)
+if ! grep -q "parmanode_service=" $pc ; then
+
+    if sudo test -e "$file" >$dn 2>&1 ; then
+        #onion address for parmanode-service
+        message1=$(sudo cat $file)
+        parmanode_conf_add "parmanode_service=$message1"
+    else
+        message1=""
+    fi
 else
-message1=""
+    message1=$parmanode_service
 fi
 
 #approximate date of first install 
