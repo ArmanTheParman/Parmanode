@@ -4,6 +4,11 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+motd)
+motd
+invalid_flag=set
+;;
+
 dm)
 menu_drives
 invalid_flag=set
