@@ -1,5 +1,7 @@
 function jump {
 
+unset motd_list
+
 case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;

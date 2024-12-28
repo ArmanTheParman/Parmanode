@@ -165,7 +165,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 if [[ $1 != menu ]] ; then
-motd
+motd_array
 fi
 
 #make sure debug file doesn't get too big
