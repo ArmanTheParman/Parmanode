@@ -13,7 +13,7 @@ $orange
 
 ########################################################################################
 "
-choose "epmq" read choice 
+choose "epmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit 0 ;; p|P|M|m) back2main ;; "") break ;; *) invalid ;;
