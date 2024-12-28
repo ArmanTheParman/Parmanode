@@ -1226,7 +1226,7 @@ len=${#motd_array[@]}     #get length
 motd=$((motd % len))      #modulo length of array to cycle back to beginning
 echo ${motd_array[$motd]} #print motd array selection
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi 
 
 unset motd_list #free memory
 }
