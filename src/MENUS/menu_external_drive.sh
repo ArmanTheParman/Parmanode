@@ -31,7 +31,7 @@ fi
 iID=$(df -h | grep -E '/$' | awk '{print $1}')
 iblocksize=$(sudo tune2fs -l $iID | grep -E 'Block size' | awk '{print $3}')
 
-set_terminal_custom 51 ; echo -e "
+set_terminal_custom 49 ; echo -e "
 ########################################################################################$cyan
                                 Parmanode Drive Menu$orange
 ########################################################################################

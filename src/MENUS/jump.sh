@@ -4,6 +4,11 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+dm)
+menu_drives
+invalid_flag=set
+;;
+
 ubitcoin|ub|mbitcoin|mb)
 if grep -q "bitcoin-end" $ic ; then
 menu_bitcoin
