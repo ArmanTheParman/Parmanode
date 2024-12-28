@@ -1,3 +1,5 @@
+Version 3.49.4
+    -motd improvements
 Version 3.49.3
     -Several new message of the day's
     -Parmanode_service in conf file
