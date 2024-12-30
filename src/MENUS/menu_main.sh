@@ -6,7 +6,7 @@ set_terminal
 
 source $pn/version.conf >$dn
 source $hm >$dn 2>&1 #hide messages
-if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version number is high, adjust menu border
+if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version num_er is high, adjust menu border
 
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then
@@ -50,9 +50,9 @@ echo -e "$debugstatus
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
 #                                                                                      #
+#$cyan                (h)$orange               Parman's Services/Products/${bright_blue}Help$orange                     #
 #$cyan                (t)$orange               Tools                                               #
 #$cyan                (s)$orange               Settings/Colours                                    #
-#$cyan                (mm)$orange              Mentorship with Parman - Info                       #
 #$cyan                (e)$orange               Education                                           #
 #$cyan                (d)$orange               Donate                                              #
 #$cyan                (log)$orange             See logs andfiles                                   #
@@ -92,7 +92,9 @@ sudo gsed -i "/announcements=/d" $hm
 echo "announcements=off" | tee -a $hm
 fi
 ;;
-
+h|help)
+    get_parmans_help
+    ;;
 add|Add|ADD)
     menu_add
     ;;
@@ -103,9 +105,7 @@ remove|REMOVE)
     menu_remove ;;
 l|L|log) 
     menu_log_config ;;
-mm|MM)
-     mentorship
-     ;;
+
 e|E)
     menu_education ;;
 t|T)
@@ -249,3 +249,4 @@ return 0
 
 #    For now, you can jump to any installed app's menu. Later, installing and
 #    uninstalling and other menu jumps will become available.
+
