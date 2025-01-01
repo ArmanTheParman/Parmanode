@@ -54,7 +54,7 @@ def private_to_public(private_key):
     vk = sk.get_verifying_key()
     return b'\x04' + vk.to_string()  # 0x04 prefix for uncompressed public key
 
-def public_to_address(public_key, version_byte=b'\x00'):
+def public_to_address(public_key, version_byte=b'\x00', return_type="byte_string"):
     # Perform SHA-256 hashing on the public key
     sha256 = hashlib.sha256(public_key).digest()
     
@@ -67,8 +67,14 @@ def public_to_address(public_key, version_byte=b'\x00'):
     # Calculate checksum
     checksum = hashlib.sha256(hashlib.sha256(payload).digest()).digest()[:4]
     
-    # Perform Base58Check encoding
-    return base58.b58encode(payload + checksum)
+    if return_type == "byte_string": 
+        # Perform Base58Check encoding
+        result = base58.b58encode(payload + checksum)
+    if return_type == "string":
+        # Perform Base58Check encoding
+        result = base58.b58encode(payload + checksum).decode('utf-8')
+
+    return result
 
     
 ########################################################################################################################
