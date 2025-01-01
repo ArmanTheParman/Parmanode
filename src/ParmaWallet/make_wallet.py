@@ -10,6 +10,6 @@ wordlist_path = "/home/parman/parman_programs/parmanode/src/ParmaWallet/docs/eng
 with open (wordlist_path, 'r') as file:
     bip39wordlist = file.readlines()
                         
-keypair=derive_keys('address', mnemonic=seed_words, passphrase=passphrase, purpose=84, address=0)
+keypair=derive_keys(depth='address', mnemonic=seed_words, passphrase=passphrase, purpose=84, coin=0, account=0, change=0, address=0)
 bip84address=pubkey_to_bech32_custom(keypair.public_key)
 print(bip84address)
