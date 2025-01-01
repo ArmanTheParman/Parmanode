@@ -17,7 +17,7 @@ address=0
                         
 keypair=derive_keys(depth='address', mnemonic=seed_words, passphrase=passphrase, purpose=purpose, coin=0, account=account, change=change, address=address)
 bip84address=pubkey_to_bech32_custom(keypair.public_key)
-legacyaddress=public_to_address(public_key=keypair.public_key)
+legacyaddress=public_to_address(public_key=keypair.public_key, return_type="string")
 if purpose == 84:
     print(bip84address)
 if purpose == 44:
