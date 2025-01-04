@@ -5,16 +5,13 @@ bitocin
 doecker
 dirve (drive)
 untinstall
-Regularly check for typo >dev/null (should be >/dev/null), causes big problems
+>dev/null (should be >/dev/null)
 
 OTHERS...
 Add session names for all tmux sessions and do a cleanup script.
-Keep temp_patch compact
-Watch out for Linux Mint upgrades - it breaks Docker installation; adjust code to be 
-more robust.
+Keep temp_patch file compact
 
 POTENTIAL ADDITIONS...
-JoinMarket
 Satsale?
 More custom version choices
 
