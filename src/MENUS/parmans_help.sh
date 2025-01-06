@@ -19,7 +19,7 @@ $cyan
 $cyan
                  pv) $orange            Parman Vault (collaberative/self custody)
 $cyan
-                 lost)$orange           Lost coin recover
+                 lost)$orange           Lost coin recovery
 $cyan
                  pp)$orange             Privacy course
 $cyan                

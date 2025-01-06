@@ -4,7 +4,7 @@ from functions import *
 from classes import PrivateKey
 from variables import * 
 from classes import N
-import base58
+import base58 #don't remove
 from ecdsa import SECP256k1
 from typing import Union
 
