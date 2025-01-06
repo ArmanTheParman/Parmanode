@@ -7,29 +7,29 @@ set_terminal_high ; echo -e "
 
 
 $cyan
-                 s)$orange              System Review (Free)
+                 s)$orange         System Review (Free)
 $cyan
-                 v)$orange              Video Call - 2 hour session
+                 v)$orange         Video Call - 2 hour session
 $cyan
-                 mm) $orange            Mentorship info
+                 mm) $orange       Mentorship info
 $cyan
-                 bsr) $orange           Bitcoin Security Review
+                 bsr) $orange      Bitcoin Security Review
 $cyan
-                 ep) $orange            Parman's Bitcoin Estate Planning
+                 ep) $orange       Parman's Bitcoin Estate Planning
 $cyan
-                 pv) $orange            Parman Vault (collaberative/self custody)
+                 pv) $orange       Parman Vault (collaberative/self custody)
 $cyan
-                 lost)$orange           Lost coin recovery
+                 lost)$orange      Lost coin recovery
 $cyan
-                 pp)$orange             Privacy course
+                 pp)$orange        Privacy course
 $cyan                
-                 btcp) $orange          BTC ParmanPay
+                 btcp) $orange     BTC ParmanPay
 $cyan
-                 pag)$orange            Buy a ParmAirGap - Airgapped Laptop
+                 pag)$orange       Buy a ParmAirGap - Airgapped Laptop
 $cyan
-                 pz)$orange             Buy a ParmaZero - Airgapped Pi Zero
+                 pz)$orange        Buy a ParmaZero - Airgapped Pi Zero
 $cyan 
-                 pn)$orange             Buy a ParmanodL Laptop
+                 pn)$orange        Buy a ParmanodL Laptop - A Node and Wallet in one
                  
 $bright_blue
     Email:         armantheparman@protonmail.com
