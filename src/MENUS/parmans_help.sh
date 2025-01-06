@@ -25,11 +25,11 @@ $cyan
 $cyan                
                  btcp) $orange          BTC ParmanPay
 $cyan
-                 pag)$orange            ParmAirGap - Airgapped Laptop
+                 pag)$orange            Buy a ParmAirGap - Airgapped Laptop
 $cyan
-                 pz)$orange             ParmaZero - Airgapped Pi Zero
+                 pz)$orange             Buy a ParmaZero - Airgapped Pi Zero
 $cyan 
-                 pn)$orange             ParmanodL Laptop
+                 pn)$orange             Buy a ParmanodL Laptop
                  
 $bright_blue
     Email:         armantheparman@protonmail.com
