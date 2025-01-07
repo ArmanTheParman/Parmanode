@@ -37,7 +37,7 @@ $red    #                                                                       
 $red    ################################################################################
 $orange
 
-    In this case, to destroy all your shitcoin keys, you would type$cyan y$orange, without the ),
+    In this case, to destroy all your shitcoin keys, you would type$cyan y$orange, without the $cyan)$orange,
     and hit the$cyan <enter>$orange or $cyan<return>$orange key.
 
     You might be slow at first, but will get faster with time - Parmanode is fast.
