@@ -2,10 +2,7 @@ function bitcoin_tor {
 
 install_tor
 
-varlibtor="$macprefix/var/lib/tor"
-torrc="$macprefix/etc/tor/torrc" 
-
-if [[ ! -e $varlibtor ]] ; then mkdir $varlibtor >$dn 2>&1 ; fi
+if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi
 if [[ ! -e $torrc ]] ; then sudo touch $torrc >$dn 2>&1 ; fi
 
 #start fresh
