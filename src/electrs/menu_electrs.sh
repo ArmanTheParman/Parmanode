@@ -128,7 +128,7 @@ $cyan
 $cyan
       (dc)$orange       electrs database corrupted? -- Use this to start fresh."
 
-if [[ $OS == Linux && $electrsis == "nondocker" ]] ; then echo -e "$cyan
+if [[ $electrsis == "nondocker" ]] ; then echo -e "$cyan
       (tor)$orange      Enable/Disable Tor connections to electrs -- Status : $E_tor"  ; else echo -e "
 $cyan      
       (newtor)$orange   Refresh Tor address
@@ -260,7 +260,6 @@ vim_warning ; vim $HOME/.electrs/config.toml
 ;;
 
 tor|TOR|Tor)
-if [[ $OS == Mac ]] ; then no_mac ; continue ; fi
 if [[ $E_tor_logic == off || -z $E_tor_logic ]] ; then
 electrs_tor
 else

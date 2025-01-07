@@ -1,7 +1,5 @@
 function electrs_tor_remove {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
-
 please_wait
 
 sudo gsed -i "/electrs-service/d" $macprefix/etc/tor/torrc
