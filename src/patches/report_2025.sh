@@ -1,3 +1,4 @@
+function report_2025 {
 if [[ $1 == report ]] ; then
 
     echo "$macprefix" | tee -a $HOME/Desktop/report.txt
@@ -13,3 +14,4 @@ if [[ $1 == report ]] ; then
     fi
 
 fi
+}
