@@ -1,7 +1,5 @@
 function electrs_tor {
-debug "line 2, in electrs tor"
 enable_tor_general || return 1
-debug "line 4, in electrs tor, after enable_tor_general"
 
 if sudo grep "HiddenServiceDir $varlibtor/electrs-service/" \
     /etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
