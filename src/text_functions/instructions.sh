@@ -61,7 +61,7 @@ $red
 $cyan
     1.$orange Add individual programs from the$green \"add\"$orange menu.
 $cyan
-    2$orange. Access programs from the$green use menu$orange 
+    2$orange. Access programs from the$green \"use\"$orange menu.
 $cyan       
     3$orange. Recommendation - Explore all the options from the main menu, there are 
        hidden gems.
