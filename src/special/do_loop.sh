@@ -151,11 +151,6 @@ uninstall_homebrew || exit
 success "Homebrew uninstalled"
 fi
 
-if [[ $1 == report ]] ; then
-report_2025
-exit
-fi
-
 ########################################################################################
 if [[ $arg1 == "clear" ]] ; then
 clearup_chain

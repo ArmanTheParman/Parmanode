@@ -3,15 +3,13 @@ source $pc
 
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $varlibtor/thunderhub-service/" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+if ! sudo grep "HiddenServiceDir $varlibtor/thunderhub-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/thunderhub-service/" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
-if sudo grep "HiddenServicePort 2050 127.0.0.1:$thub_port" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+if ! sudo grep "HiddenServicePort 2050 127.0.0.1:$thub_port" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 2050 127.0.0.1:$thub_port" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
 restart_tor
 

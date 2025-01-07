@@ -1,15 +1,13 @@
 function electrumx_tor {
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $varlibtor/electrumx-service/" \
-    /etc/tor/torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+if ! sudo grep "HiddenServiceDir $varlibtor/electrumx-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/electrumx-service/" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
-if sudo grep "HiddenServicePort 7006 127.0.0.1:50007" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+if  ! sudo grep "HiddenServicePort 7006 127.0.0.1:50007" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 7006 127.0.0.1:50007" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
 restart_tor
 

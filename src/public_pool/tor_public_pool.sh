@@ -3,15 +3,13 @@ if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
 enable_tor_general || return 1
 
-if sudo grep "HiddenServiceDir $varlibtor/public_pool-service/" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; debug "true" ; else debug "else"
+if ! sudo grep "HiddenServiceDir $varlibtor/public_pool-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/public_pool-service/" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
-if sudo grep "HiddenServicePort 5055 127.0.0.1:5052" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+if ! sudo grep "HiddenServicePort 5055 127.0.0.1:5052" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 5055 127.0.0.1:5052" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
 restart_tor
 

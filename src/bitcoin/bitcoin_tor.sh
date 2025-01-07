@@ -15,17 +15,15 @@ enable_tor_general
 
 if ! grep "listen=1" $bc >$dn 2>&1 ; then
     echo "listen=1" | sudo tee -a $bc >$dn 2>&1
-    fi
+fi
 
-if sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+if ! sudo grep "HiddenServiceDir $varlibtor/bitcoin-service/" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServiceDir $varlibtor/bitcoin-service/" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
-if sudo grep "HiddenServicePort 8333 127.0.0.1:8333" \
-    $torrc | grep -v "^#" >$dn 2>&1 ; then true ; else
+if ! sudo grep "HiddenServicePort 8333 127.0.0.1:8333" $torrc | grep -v "^#" >$dn 2>&1 ; then 
     echo "HiddenServicePort 8333 127.0.0.1:8333" | sudo tee -a $torrc >$dn 2>&1
-    fi
+fi
 
 ########################################################################################
 #Need the Onion address
