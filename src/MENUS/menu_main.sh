@@ -44,7 +44,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (ns)$orange                 ${yellow}Navigation shortcuts (new)$orange                                   #
 #                                                                                      #
-#$cyan    (dm)$orange                 ${yellow}Parmanode external drive menu (new)$orange                          #
+#$cyan    (dm)$orange                 ${yellow}Parmanode drive menu (new)$orange                                   #
 #                                                                                      #
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
