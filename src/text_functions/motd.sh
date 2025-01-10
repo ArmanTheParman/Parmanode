@@ -32,7 +32,7 @@ fi
 
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
-motd=$((motd % 66))
+motd=$((motd % 69))
 
 if [[ $motd == 0 ]] ; then
 set_terminal ; echo -e "
@@ -1489,6 +1489,84 @@ $cyan
     available on exchanges, and no one knows what price it is because there isn't one. 
 
     Oh fuck, indeed, slave.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+
+if [[ $motd == 66 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+
+                           Give me your retarded, your poor,
+
+                    Your subscribed masses yearning to trade charts,
+
+                  The wretched refuse of your teeming engagement farm.
+
+                      Send these, the chairless, tempest-toss to me,
+
+                         I lift my lamp beside the orange door!
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+
+if [[ $motd == 67 ]] ; then
+set_terminal_high ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+    In 10 years...
+
+    - Bitcoin will not have died for 25 years and be worth many more dollars each
+
+    - 10,000 more shitcoins will have died
+
+    - The top 10 shitcoins will look different and probably won't include the mother 
+      arsehole, ETH.
+
+    - Shitcoins will be more numerous
+
+    In that scenario, a smaller percentage of newcomers will be scammed by shitcoins 
+    or fall for unit bias. The difference between scams and Bitcoin will be even more 
+    obvious.
+
+    Don't hold on to your shitcoins hoping to break even. Let go of your emotional 
+    attachment to trash. 
+
+    If you had 100% of your wealth in bitcoin, never having owned a shitcoin, would 
+    you actually trade some for the shitcoins you have now? 
+
+    If not, sell that shit today, and be emotionally cleansed. Be at peace with it 
+    and ignore any gambling gains you're imagining you deserve.
+
+$orange
+######################################################################################## 
+$another
+"
+enter_continue ; jump $enter_cont ; choice="$enter_cont"
+if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+
+if [[ $motd == 68 ]] ; then
+set_terminal ; echo -e "
+########################################################################################
+$cyan
+                                 Message of the day $orange
+
+   You know what's beautiful? 
+
+   Bitcoin moving from people who don't want it to people who want it. 
 
 $orange
 ######################################################################################## 
