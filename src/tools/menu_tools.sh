@@ -114,10 +114,10 @@ if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
 if ! yesorno "\n
     Do you want Parmanode to enable auto-updates for the operating system at 4am? The 
-    commands to be run are...  $cyan
+    commands to be run are...  $red
 
-        sudo apt-get update -y
-        sudo apt-get upgrade -y $orange
+                            sudo apt-get update -y
+                            sudo apt-get upgrade -y $orange
     " ; then
     #chose disable
     sudo gsed -i '/computer_upgrade_script/d' /etc/crontab
