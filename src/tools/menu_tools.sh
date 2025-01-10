@@ -10,6 +10,8 @@ echo -ne "
 
 $cyan              u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
 
+$cyan              au)$orange    Enable/Disable computer auto updates at night (Linux)
+
 $cyan              sr)$orange    System report (for getting troubleshooting help)
 
 $cyan              d)$orange     Delete all preferences to hide menu messages
@@ -47,6 +49,10 @@ return 0
 
     cc)
     colcard_firmware
+    ;;
+    
+    au)
+    enable_autoupdates
     ;;
 
     pn|PN|Pn)
@@ -100,4 +106,41 @@ return 0
     esac
 done
 return 0
+}
+
+function enable_autoupdates {
+
+if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+
+if ! yesorno "\n
+    Do you want Parmanode to enable auto-updates for the operating system at 4am? The 
+    commands to be run are...  $cyan
+
+        sudo apt-get update -y
+        sudo apt-get upgrade -y $orange
+    " ; then
+    #chose disable
+    sudo gsed -i '/computer_upgrade_script/d' /etc/crontab
+    sudo systemctl reload cron >$dn 2>&1
+    announce "Computer auto-updates disabled"
+    return 1
+
+else
+    #chose enable
+    if [[ ! -e $pn/computer_upgrade_script.sh ]] ; then make_computer_upgrade_script ; fi
+    if sudo grep -q "computer_upgrade_script" /etc/crontab ; then return 0 ; fi
+    echo "* 4 * * * root $HOME/.parmanode/computer_upgrade_script.sh #added by Parmanode" | sudo tee -a /etc/crontab >$dn 2>&1
+    sudo systemctl reload cron >$dn 2>&1
+    announce "Computer auto-updates enabled"
+fi
+
+}
+
+function make_computer_upgrade_script {
+cat <<EOF > $pn/computer_upgrade_script.sh
+#!/bin/bash
+apt-get update -y
+apt-get upgrade -y
+EOF
+sudo chmod +x $HOME/.parmanode/computer_upgrade_script.sh >$dn 2>&1
 }

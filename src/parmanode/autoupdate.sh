@@ -6,13 +6,14 @@ check_disk_space
 #Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
 echo "30 3 * * * $USER [ -x $HOME/.parmanode/update_script.sh ] && $HOME/.parmanode/update_script.sh" | sudo tee -a /etc/crontab >$dn 2>&1
-debug "after autoupdate on"
+sudo systemctl reload cron >$dn 2>&1
 return 0
 fi
 if [[ $1 == off ]] ; then
-crontab -l | sed '/parmanode/d' | crontab - >$dn ; clear
-sudo cat /etc/crontab | sed '/parmanode/d' | sudo tee $HOME/.crontab >$dn 2>&1 
+crontab -l | sed '/update_script/d' | crontab - >$dn ; clear
+sudo cat /etc/crontab | sed '/update_script/d' | sudo tee $HOME/.crontab >$dn 2>&1 
 sudo mv $HOME/.crontab /etc/crontab >$dn 2>&1
+sudo systemctl reload cron >$dn 2>&1
 return 0
 fi
 ########################################################################################

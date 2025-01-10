@@ -11,3 +11,7 @@ enter_continue ; jump $enter_cont
 return 1 
 fi
 }
+
+function nomac {
+       no_mac $@ || return 1
+}
