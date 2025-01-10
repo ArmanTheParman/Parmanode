@@ -128,9 +128,10 @@ if ! yesorno "\n
 else
     #chose enable
     if [[ ! -e $dp/computer_upgrade_script.sh ]] ; then make_computer_upgrade_script ; fi
-    if sudo grep -q "computer_upgrade_script" /etc/crontab ; then return 0 ; fi
-    echo "* 4 * * * root $HOME/.parmanode/computer_upgrade_script.sh #added by Parmanode" | sudo tee -a /etc/crontab >$dn 2>&1
-    sudo systemctl reload cron >$dn 2>&1
+    if ! sudo grep -q "computer_upgrade_script" /etc/crontab ; then
+        echo "* 4 * * * root $HOME/.parmanode/computer_upgrade_script.sh #added by Parmanode" | sudo tee -a /etc/crontab >$dn 2>&1
+        sudo systemctl reload cron >$dn 2>&1
+    fi
     announce "Computer auto-updates enabled"
 fi
 
