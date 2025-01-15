@@ -1,6 +1,7 @@
 Vesion 3.49.5
     -Parman's Service main menu
     -computer autoupgrade option (linux)
+    -ColdCard firmware 5.4.0
 Version 3.49.4
     -motd improvements
 Version 3.49.3
