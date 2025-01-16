@@ -1,6 +1,6 @@
 function menu_drives {
 
-if [[ $OS == "Mac" ]] ; then no_mac ; return 0 ; fi
+if [[ $OS == "Mac" ]] ; then menu_drives_mac || return 1 ; return 0 ; fi
 
 if ! mount | grep -q parmanode ; then 
     mounted="false"
@@ -108,4 +108,50 @@ ps)
     adjust_ssd_power_saving
 ;;
 esac
+}
+
+
+function menu_drives_mac {
+while true ; do
+set_terminal ; echo -e "
+########################################################################################$cyan
+                                Parmanode Drive Menu$orange
+########################################################################################
+$red
+This menu is trimmed down for Macs. 
+
+
+$cyan
+                         fs)$orange           Free up some space (internal drive)
+$cyan
+                         um)$orange           Unmount Parmanode external drive 
+$cyan
+                      mount)$orange           Mount Parmanode externl drive
+$cyan
+                       dfat)$orange           Drive format assist tool
+
+
+########################################################################################
+"
+choose xpmq ; read choice
+jump $choice
+case $choice in
+q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
+fs)
+    free_up_space
+;;
+    um|UM|Um)
+    safe_unmount_parmanode menu
+;;
+mount)
+    mount_drive || return 1
+    if mount | grep -q parmanode ; then
+    announce "Drive mounted."
+    fi
+;;
+dfat|DFAT)
+    format_assist
+;;
+esac
+done
 }
