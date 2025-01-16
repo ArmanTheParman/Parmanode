@@ -42,7 +42,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$red    (remove)     $orange        Remove/Uninstall Programs                                    #
 #                                                                                      #
-#$cyan    (ns)$orange                 ${yellow}Navigation shortcuts (new)$orange                                   #
+#$cyan    (ns)$orange                 ${yellow}Navigation shortcuts      $orange                                   #
 #                                                                                      #
 #$cyan    (dm)$orange                 ${yellow}Parmanode drive menu      $orange                                   #
 #                                                                                      #
