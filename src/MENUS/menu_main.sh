@@ -8,6 +8,8 @@ source $pn/version.conf >$dn
 source $hm >$dn 2>&1 #hide messages
 if [[ $vPatch -gt 9 ]] ; then space="" ; else space=" " ; fi #in case version num_er is high, adjust menu border
 
+cd $pn >$dn
+
 branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then
 output_branch="${pink}WARNING: You are on the $branch branch.                        $orange"
