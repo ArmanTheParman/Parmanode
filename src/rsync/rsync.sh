@@ -9,7 +9,7 @@ $cyan
 $orange
     Rsync is a powerful open source program that lets you synchronise 2 directories.
 
-    Then can be on the same computer, same or different connected drives, or even 
+    They can be on the same computer, same or different connected drives, or even 
     across different computers communicating over a network.
 
     Parmanode will help you perform a task to sync two different directories on the
