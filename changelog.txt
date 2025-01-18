@@ -3,6 +3,7 @@ Vesion 3.49.5
     -computer autoupgrade option (linux)
     -ColdCard firmware 5.4.0
     -Drive menu made available for Macs
+    -Fixed bitcoin log tmux bug
 Version 3.49.4
     -motd improvements
 Version 3.49.3
