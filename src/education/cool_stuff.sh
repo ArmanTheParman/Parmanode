@@ -23,7 +23,7 @@ $cyan
                 The above command has only 3 space-separated elements, in order
                 there are the sshfs command, the remote directory, and the host
                 directory where you want to mount. (In this context, 'remote'
-                means other coputer, and host means the computer you're using).
+                means other computer, and host means the computer you're using).
 $cyan
         4)$orange Use the contents of the directory as you please. If you get file permission
            issues, you can run the above command instead as:
