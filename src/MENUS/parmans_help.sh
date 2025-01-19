@@ -235,7 +235,7 @@ set_terminal ; echo -e "
     Hang in there, there may be hope.
 
     Sometimes, people do not understand what is possible, so it may be worth 
-    discussing your situation and seeing if revovery is possible.
+    discussing your situation and seeing if recovery is possible.
     
     Contact Parman for help.
 
