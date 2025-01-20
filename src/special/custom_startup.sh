@@ -29,7 +29,12 @@ fi
 
 if [[ $1 == "install_core_lightning" ]] ; then
 install_core_lightning
-read
 exit
 fi
+
+if [[ $1 == "uninstall_core_lightning" ]] ; then
+uninstall_core_lightning
+exit
+fi
+
 }
