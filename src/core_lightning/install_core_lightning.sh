@@ -24,7 +24,7 @@ success "Core Lightning should now be installed. You can start it from the comma
 
 function core_lightning_dependencies {
 
-announce "${green}Will install dependencies...$orange"
+announce "${green}Will install Core Lightning dependencies...$orange"
 sleep 1
 
 sudo apt-get update -y
@@ -56,6 +56,8 @@ sudo make install
 }
 
 function make_core_lightning_config {
+
+announce "${green}Will make Core Lightning configuration file.$orange"
 
 bitcoin__rpcport="$(cat $HOME/.bitcoin/bitcoin.conf | grep rpcport | cut -d = -f 2)" #no hyphens in bash variables
 bitcoin__rpcport=${bitcoin__rpcport:-8332} #default
