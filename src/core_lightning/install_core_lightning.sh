@@ -3,7 +3,7 @@ function install_core_lightning {
 if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
 check_port_9735 || return 1
-
+read -p wait wait
 core_lightning_dependencies || return 1
 
 download_core_lightning || return 1
