@@ -152,6 +152,10 @@ uninstall_homebrew || exit
 success "Homebrew uninstalled"
 fi
 
+if [[ $1 == icl ]] ; then
+install_core_lightning
+exit
+fi
 ########################################################################################
 if [[ $arg1 == "clear" ]] ; then
 clearup_chain
