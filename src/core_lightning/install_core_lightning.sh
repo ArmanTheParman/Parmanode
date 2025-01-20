@@ -77,6 +77,7 @@ if [[ $cpu_allocation -lt 2 ]] ; then cpu_allocation=1 ; fi
 make -d -j$cpu_allocation VERBOSE=1 | tee $dp/.clightning_build.log || { enter_continue "something went wrong with compiling" ; return 1 ; } 
 enter_continue "make command success. Next 'sudo make install' "
 sudo make install VERBOSE=1 | tee $dp/.clightning_build.log || { enter_continue "something went wrong with compiling" ; return 1 ; } 
+enter_continue "make install command successful."
 }
 
 function make_core_lightning_config {
