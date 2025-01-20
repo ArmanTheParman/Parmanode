@@ -31,6 +31,7 @@ sudo apt-get update -y
 sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \
+  protobuf-compiler python3-grpc-tools cargo \
   || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 pip3 install --upgrade pip  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
