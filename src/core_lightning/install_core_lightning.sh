@@ -58,7 +58,7 @@ fi
 
 
 function compile_core_lightning {
-announce "${green}Will start compiling Core Lightning$orange"
+announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
 ./configure
 cpus=$(nproc)
 cpu_allocation=$((cpus -1))
