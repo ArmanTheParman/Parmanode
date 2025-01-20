@@ -9,7 +9,7 @@ if which sha256sum >$dn ; then
     if ! sha256sum --ignore-missing --check *parrow*.txt ; then echo -e "Checksum$red failed$orange. Aborting. Contact Parman for help." 
     enter_continue ; return 1 ; fi
 else
-    if ! shasum -a 256 --check *parrow*.txt | grep -q OK ; then echo "Checksum$red failed$orange. Aborting. Contact Parman for help." 
+    if ! shasum -a 256 --ignore-missing --check *parrow*.txt | grep -q OK ; then echo "Checksum$red failed$orange. Aborting. Contact Parman for help." 
     enter_continue ; return 1 ; fi
 fi
 
