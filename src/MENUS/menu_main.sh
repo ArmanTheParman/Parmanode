@@ -120,7 +120,7 @@ un|uninstall|UNINSTALL)
 uninstall_parmanode
 ;;
 up|update|UPDATE|Update)
-    update_parmanode || continue
+    update_parmanode donotask || continue
     if [[ $main_loop != 0 ]] ; then
     set_terminal ; 
     announce "You need to exit and reload Parmanode to use the new version of Parmanode."
