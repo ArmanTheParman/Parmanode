@@ -141,7 +141,7 @@ enter_continue
 fi
 set_terminal_wider
 if ! which tmux >$dn 2>&1 ; then
-yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 tmux new -s fulcrum_log "tail -f $HOME/.fulcrum/fulcrum.log"
@@ -164,7 +164,7 @@ enter_continue
 fi
 
 if ! which tmux >$dn 2>&1 ; then
-yesorno "Log viewing needs Tmux installed. Go ahead and to that?" || continue
+yesorno "Log viewing needs Tmux installed. Go ahead and do that?" || continue
 fi
 TMUX2=$TMUX ; unset TMUX ; clear
 NODAEMON="true" ; pn_tmux "less -R $HOME/.fulcrum/fulcrum.log" ; unset NODAEMON
