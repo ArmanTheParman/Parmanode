@@ -3,7 +3,7 @@ function install_core_lightning {
 if [[ $OS == "Darwin" ]] ; then no_mac ; return 1 ; fi
 
 check_port_9735 || return 1
-read -p wait wait
+
 core_lightning_dependencies || return 1
 
 download_core_lightning || return 1
@@ -81,7 +81,7 @@ return 0
 }
 
 function check_port_9735 {
-if netstat -tulnp | grep :9735 ; then
+if netstat -tulnp | grep -q :9735 ; then
     announce "Port 9735 seems to be in use, perhaps because of a lightning installation 
     \r    that exists. Please stop or uninstall that before trying again. Aborting."
     return 1
