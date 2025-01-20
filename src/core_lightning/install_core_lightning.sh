@@ -121,8 +121,8 @@ curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1/SHA256SUMS
 curl -LO https://github.com/ElementsProject/lightning/releases/download/v24.11.1/SHA256SUMS.asc
 
-import_core_lightning_gpg || { announce "gpg check failed. Aborting" ; exit }
-sha256sum --check SHA256SUMS --ignore-missing || { announce "shasum check failed. Aborting" ; exit }
+import_core_lightning_gpg || { announce "gpg check failed. Aborting" ; exit ; }
+sha256sum --check SHA256SUMS --ignore-missing || { announce "shasum check failed. Aborting" ; exit ; }
 
 tar -xvf *xz
 rm *xz
@@ -132,4 +132,3 @@ cp -r ./usr/share/* /usr/share/
 cp -r ./usr/libexec/* /usr/libexec/
 
 } 
-
