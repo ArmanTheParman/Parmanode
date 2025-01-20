@@ -29,6 +29,7 @@ fi
 
 if [[ $1 == "install_core_lightning" ]] ; then
 install_core_lightning
+read
 exit
 fi
 }
