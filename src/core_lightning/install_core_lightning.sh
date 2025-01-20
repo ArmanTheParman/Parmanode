@@ -26,8 +26,8 @@ success "Core Lightning should now be installed. You can start it from the comma
 
 function core_lightning_dependencies {
 
-announce "${green}Will install Core Lightning dependencies...$orange"
-sleep 1
+announce "${green}Will install Core Lightning dependencies and setup 
+    virtual environment...$orange"
 
 sudo apt-get update -y
 sudo apt-get install -y \
