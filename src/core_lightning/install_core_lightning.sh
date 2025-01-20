@@ -56,7 +56,8 @@ fi
 function compile_core_lightning {
 announce "${green}Will start compiling Core Lightning$orange"
 ./configure
-cpu_allocation=$((echo $nproc)-1))
+cpus=$(nproc)
+cpu_allocation=$((cpus -1))
 if [[ $cpu_allocation -lt 2 ]] ; then cpu_allocation=1 ; fi
 make -j$cpu_allocation
 sudo make install || { enter_continue "something went wrong with compiling" ; return 1 ; }
