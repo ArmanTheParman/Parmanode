@@ -242,19 +242,14 @@ if [[ $(uname) == Linux ]] ; then
             $architecture == i386   || \
             $architecture == i486   || \
             $architecture == i586   || \
-            $architecture == i686   ]] \
-            && ! lscpu | grep "CPU op-mode" | grep -q "64" ; then 
+            $architecture == i686   ]] ; then #32 bit machine
 
-        announce "This seems to be a 32-bit machine. Parmanode and some apps you
-        \r    install may not work properly, even if they install successfully.
-        \r    Please run Parmanode on on a 64-bit machine. Be warned." 
+        if ! lscpu | grep "CPU op-mode" | grep -q "64" ; then 
 
-    elif lscpu | grep "CPU op-mode" | grep -q "64" ; then
-    
-        announce "This machine has 64 bit architecture, but it seems like you have a
-        \r    downgraded operating system running with 32-bits. Some things won't work as 
-        \r    expected. Consider reinstalling your operating system with a 64-bit version."
-
+            announce "This seems to be a 32-bit machine. Parmanode and some apps you
+            \r    install may not work properly, even if they install successfully.
+            \r    Please run Parmanode on on a 64-bit machine. Be warned." 
+        fi
     fi
 
 fi
