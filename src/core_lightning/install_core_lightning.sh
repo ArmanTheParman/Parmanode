@@ -33,14 +33,14 @@ sudo apt-get update -y
 sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \
-  protobuf-compiler python3-grpc-tools cargo \
-  pkg-config \
+  protobuf-compiler python3-grpc-tools cargo rustfmt protobuf-compiler \
+  pkg-config valgrind libpq-dev shellcheck cppcheck libsecp256k1-dev lowdown \
   || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 python3 -m venv $hp/venv_core_lightning
 source $hp/venv_core_lightning/bin/activate
 pip3 install --upgrade pip  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
-pip3 install poetry mako grpcio-tools || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
+pip3 install poetry mako grpcio-tools pytest || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 }
 
@@ -60,7 +60,7 @@ fi
 
 function compile_core_lightning {
 announce "${green}Will start compiling Core Lightning; This will take a while.$orange"
-./configure
+./configure | tee $dp/.clightning_build.log 
 cpus=$(nproc)
 cpu_allocation=$((cpus -1))
 if [[ $cpu_allocation -lt 2 ]] ; then cpu_allocation=1 ; fi
