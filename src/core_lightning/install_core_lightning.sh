@@ -63,7 +63,7 @@ announce "${green}Will start compiling Core Lightning; This will take a while.$o
 cpus=$(nproc)
 cpu_allocation=$((cpus -1))
 if [[ $cpu_allocation -lt 2 ]] ; then cpu_allocation=1 ; fi
-make -j$cpu_allocation
+make -d -j$cpu_allocation
 sudo make install || { enter_continue "something went wrong with compiling" ; return 1 ; }
 return 1
 }
