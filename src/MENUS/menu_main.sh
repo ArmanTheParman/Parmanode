@@ -131,11 +131,14 @@ up|update|UPDATE|Update)
     # Setting exit_loop to false allows the program to continue without forcing an exit.
     if [[ $exit_loop == "false" ]] ; then return 0 ;fi
 ;;
+
 uc)
 if [[ $OS == Mac ]] && which brew >/dev/null 2>&1 ; then
 yesorno "This could take a seriously long time. Do it?" || continue
+fi
 update_computer
 ;;
+
 ap|AP|Ap|aP)
     about ;;
 
