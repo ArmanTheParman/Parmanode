@@ -51,8 +51,8 @@ function compile_core_lightning {
 announce "${green}Will start compiling Core Lightning$orange"
 ./configure
 make -j$(nproc)
-sudo make install
-
+sudo make install|| { announce "something went wrong with compiling" ; return 1 ; }
+return 1
 }
 
 function make_core_lightning_config {
