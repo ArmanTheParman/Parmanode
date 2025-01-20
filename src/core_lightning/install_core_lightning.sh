@@ -31,10 +31,10 @@ sudo apt-get update -y
 sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \
-  || { announce "something went wrong with installing a dependency" ; return 1 ; }
+  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
-pip3 install --upgrade pip  || { announce "something went wrong with installing a dependency" ; return 1 ; }
-pip3 install --user poetry mako grpcio-tools || { announce "something went wrong with installing a dependency" ; return 1 ; }
+pip3 install --upgrade pip  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
+pip3 install --user poetry mako grpcio-tools || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 }
 
@@ -51,7 +51,7 @@ function compile_core_lightning {
 announce "${green}Will start compiling Core Lightning$orange"
 ./configure
 make -j$(nproc)
-sudo make install|| { announce "something went wrong with compiling" ; return 1 ; }
+sudo make install|| { enter_continue "something went wrong with compiling" ; return 1 ; }
 return 1
 }
 
