@@ -29,8 +29,11 @@ make_core_lightning_config
 
 success "Core Lightning should now be installed. You can start it from the command line with
     ${green}
-    lightningd
-    $orange"
+        lightningd
+    $orange
+    And to stop it...$red
+        lightning-cli stop$orange"
+    
 }
 
 
