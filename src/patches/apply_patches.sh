@@ -4,7 +4,6 @@ function apply_patches {
 #get $patch from parmanode.conf
 temp_patch
 openssh_patch
-suggest_brew
 suggest_tor
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 hello

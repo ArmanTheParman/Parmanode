@@ -59,6 +59,7 @@ echo -e "$debugstatus
 #$cyan                (d)$orange               Donate                                              #
 #$cyan                (log)$orange             See logs andfiles                                   #
 #$cyan                (update)$orange          Update Parmanode                                    #
+#$cyan                (uc)$orange              Update Computer                                     #
 #$red                (uninstall)$orange       Uninstall Parmanode                                 #
 #$cyan                (ap)$orange              About Parmanode                                     #
 #                                                                                      #
@@ -129,6 +130,9 @@ up|update|UPDATE|Update)
     # The user has been alerted to needing to restart Parmanode for the changes to take effect.
     # Setting exit_loop to false allows the program to continue without forcing an exit.
     if [[ $exit_loop == "false" ]] ; then return 0 ;fi
+;;
+uc)
+update_computer
 ;;
 ap|AP|Ap|aP)
     about ;;

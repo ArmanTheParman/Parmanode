@@ -8,6 +8,9 @@ sudo rm /etc/systemd/system/rtl.service >$dn 2>&1
 fi
 
 reduce_systemd_logs
+
+sudo systemctl enable ssh >$dn 2>&1
+sudo systemctl start ssh >$dn 2>&1
 }
 
 

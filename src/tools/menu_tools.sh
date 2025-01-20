@@ -8,7 +8,7 @@ echo -ne "
 ########################################################################################
 
 
-$cyan              u)$orange     Update computer (apt-get for Linux, Homebrew for Macs)
+$cyan              uc)$orange    Update computer (apt-get for Linux, Homebrew for Macs)
 
 $cyan              au)$orange    Enable/Disable computer auto updates at night (Linux)
 
@@ -64,7 +64,7 @@ return 0
     return 0
     ;;
 
-    u|U|up|UP|update|UPDATE|Update)
+    uc|UC|update|UPDATE|Update)
     if [[ $OS == "Linux" ]] ; then 
         sudo apt-get update -y && sudo apt-get upgrade -y 
         sudo apt-get --fix-broken install -y
