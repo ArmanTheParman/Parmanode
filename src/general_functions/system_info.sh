@@ -232,25 +232,31 @@ function check_chip {
 }
 
 function check_architecture {
-    if [[ $(uname) == Linux ]] ; then
+if [[ $(uname) == Linux ]] ; then
+
     architecture=$(lscpu | grep Architecture | awk '{print $2}')
+    parmanode_conf_add "architecture=$architecture"
+
     if [[   $architecture == armv6l || \
             $architecture == armv7l || \
             $architecture == i386   || \
             $architecture == i486   || \
             $architecture == i586   || \
-            $architecture == i686   ]] ; then 
-parmanode_conf_add "architecture=$architecture"
+            $architecture == i686   ]] \
+            && ! lscpu | grep "CPU op-mode" | grep -q "64" ; then 
 
-announce \
-"This seems to be a 32-bit machine. Parmanode and most apps you
-install will not work properly, even if they install. Please run 
-this on a 64-bit machine. Bitcoin Core will work, but no promisses 
-with any other app you might want to install. Be warned." \
-" 
-Hit <control-c> to exit."
+        announce "This seems to be a 32-bit machine. Parmanode and some apps you
+        \r    install may not work properly, even if they install successfully.
+        \r    Please run Parmanode on on a 64-bit machine. Be warned." 
 
-fi
+    elif lscpu | grep "CPU op-mode" | grep -q "64" ; then
+    
+        announce "This machine has 64 bit architecture, but it seems like you have a
+        \r    downgraded operating system running with 32-bits. Some things won't work as 
+        \r    expected. Consider reinstalling your operating system with a 64-bit version."
+
+    fi
+
 fi
 }
 
