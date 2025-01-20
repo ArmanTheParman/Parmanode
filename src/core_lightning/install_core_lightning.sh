@@ -15,6 +15,7 @@ else
 core_lightning_dependencies || return 1
 download_core_lightning || return 1
 compile_core_lightning || return 1
+deactivate #deactivate virtual environment
 
 fi
 
@@ -24,8 +25,6 @@ fi
 mkdir $HOME/.lightning/ >$dn 2>&1
 
 make_core_lightning_config
-
-deactivate #deactivate virtual environment
 
 success "Core Lightning should now be installed. You can start it from the command line with
     ${green}
