@@ -132,6 +132,8 @@ up|update|UPDATE|Update)
     if [[ $exit_loop == "false" ]] ; then return 0 ;fi
 ;;
 uc)
+if [[ $OS == Mac ]] && which brew >/dev/null 2>&1 ; then
+yesorno "This could take a seriously long time. Do it?" || continue
 update_computer
 ;;
 ap|AP|Ap|aP)
