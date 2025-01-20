@@ -50,29 +50,12 @@ enter_continue ; return 1
 fi
 
 # above checks done without exiting, update can proceed.
-while true ; do
-if [[ $1 != donotask ]] ; then
 
-set_terminal ; echo -e "
-########################################################################################
-
-                      $cyan           Update Parmanode  $orange
-    
-    Parmanode will update itself by extracting the latest version from GitHub.com
-
-    Proceed?$green  (y)$orange or $red(n)$orange
-
-########################################################################################
-"
-choose "xpmq" ; read choice
-else
-export donotask="true" && parmanode_refresh
+if [[ $1 == refresh ]] ; then
+parmanode_refresh
+return 0
 fi
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in 
-q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-n|N|No|NO|no) return 1 ;;
-y|Y|Yes|YES|yes)
+
 cd $pn
 git config pull.rebase false >$dn 2>&1
 if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
@@ -81,10 +64,4 @@ if git pull | grep "Already up" ; then enter_continue ; return 1 ; fi
 success "Parmanode" "being updated"
 export exit_loop="false"
 return 0 
-;;
-*)
-invalid 
-;;
-esac
-done
 }

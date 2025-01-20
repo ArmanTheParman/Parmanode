@@ -1,30 +1,9 @@
 
 function parmanode_refresh {
-while true ; do
-if [[ $donotask != "true" ]] ; then
-set_terminal ; echo -e "
-########################################################################################
+set_terminal
+echo -e "${green}Refreshing $pn directory from GitHub..."
+sleep 1
 
-    Sometimes, especially if you manually edit the code, updates to Parmanode
-    might do strange things. You can get a fresh copy of the latest version of
-    Parmanode without affecting any of the programs you installed or any configuration
-    files - totally safe.
-$green
-                        rf)       Refresh Parmanode
-$orange
-                        a)        Abort
-
-########################################################################################
-"
-choose "xpmq" ; read choice
-jump $choice || { invalid ; continue ; } ; set_terminal
-else
-choice=rf
-fi
-
-case $choice in
-q|Q) exit 0 ;; p|P) return 0 ;; m|M) back2main ;; a|A) return 1 ;;
-rf)
 cd $HOME
 git clone https://github.com/armantheparman/parmanode.git parmanode_temp
 [ -f ./parmanode_temp/version.conf ] || { echo "Some problem with the download. Aborting. You might wnat to try again later." ; enter_continue ; return 1 ; }
@@ -37,11 +16,5 @@ if ! git config user.name  >$dn 2>&1 ; then git config user.name ParmanodeUser ;
 success "The Parmanode script directory has been refreshed"
 announce "Parmanode will quit now so the changes take effect. Please restart again." ; clear
 exit 0
-;;
-*)
-invalid
-;;
-esac
-done
 
 }
