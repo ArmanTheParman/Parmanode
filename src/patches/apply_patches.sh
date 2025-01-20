@@ -7,6 +7,14 @@ openssh_patch
 suggest_tor
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 hello
+
+#make sure debug file doesn't get too big
+truncatedebuglog
+
+if ! grep -q "parmashell_functions" $bashrc ; then
+echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
+fi
+
 debug "before patch sequence"
 
 case $patch in 

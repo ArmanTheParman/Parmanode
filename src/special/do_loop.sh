@@ -2,7 +2,9 @@ function do_loop {
 
 #sudo will be needed. Running it early here, getting it out of the way, 
 #and it stays in the cache for a while.
+if ! echo $@ | grep -q "np" ; then
 sudo true ;
+fi
 #deactivate virtual environments that may have been left active from an non-graceful shutdown
 deactivate >/dev/null 2>&1
 #check script is being run from parmanode directory so relative paths work
@@ -115,67 +117,17 @@ if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 # when they exit.
 clean_exit 
 
-###### TESTING SECTION #################################################################
-
 debug "Pausing here. IP: $IP" "silent" #when debugging, I can check for error messages and syntax errors
 if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
 
+custom_startup
 
-if [[ $test == 1 ]] ; then
-announce "no test available presently. Exiting."
-fi
-
-if [[ $fix == 1 ]] ; then
-announce "no fixes available presently. Exiting."
-exit
-fi
-
-########################################################################################
-#Special functions
-########################################################################################
-if [[ $bash == 1 && $OS == Linux ]] ; then 
-#bash --rcfile <(source $HOME/.bashrc ; source $pn/source_parmanode.sh)
-echo -e "Entering bash inception..."
-sleep 0.5
-bash --rcfile $pn/src/tools/rcfile
-exit 
-elif [[ $bash == 1 && $OS == Mac ]] ; then
-echo -e "Entering bash inception..."
-sleep 0.5
-bash --rcfile $pn/src/tools/rcfile
-exit 
-fi
-
-if [[ $uninstall_homebrew == true ]] ; then
-uninstall_homebrew || exit
-success "Homebrew uninstalled"
-fi
-
-if [[ $1 == icl ]] ; then
-install_core_lightning
-exit
-fi
-########################################################################################
-if [[ $arg1 == "clear" ]] ; then
-clearup_chain
-echo "exiting ..."
-sleep 2
-exit
-fi
-########################################################################################
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 if [[ $1 != menu ]] ; then
 motd
-fi
-
-#make sure debug file doesn't get too big
-truncatedebuglog
-
-if ! grep -q "parmashell_functions" $bashrc ; then
-echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
 
 jump $1

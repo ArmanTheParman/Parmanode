@@ -1,4 +1,4 @@
-function clearup_chain {
+function invalidate_block {
 
 #block 865,000
 please_wait
