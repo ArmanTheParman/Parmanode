@@ -79,19 +79,7 @@ add_server_1_to_bitcoinconf
 installed_conf_add "sparrow-end"
 
 rm $hp/sparrow-* >$dn 2>&1
-
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                                S U C C E S S ! !
-$orange 
-    Sparrow has been installed. While you can run Sparrow directly by running the
-    Application's executable file directly, it's best to run it from the Parmanode 
-    menu, because of reasons. 
-
-########################################################################################
-"
-enter_continue  ; jump $enter_cont
+success "Sparrow has been installed"
 return 0
 }
 
