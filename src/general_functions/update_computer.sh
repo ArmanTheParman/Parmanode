@@ -67,12 +67,3 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     done
 fi
 }
-
-
-
-
-
-
-
-
-}
