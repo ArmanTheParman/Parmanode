@@ -16,7 +16,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Various log and configuration files are available to view. Parmanode will open
-    the file of your choise using the \"less\" command. You can scroll up and down
+    the file of your choice using the \"less\" command. You can scroll up and down
     with the arrows, and press (q) to exit back to the menu.
 
     You could also just view them directly yourself if you're comfortable navigating
