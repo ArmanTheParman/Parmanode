@@ -39,11 +39,16 @@ pip3 install --user poetry mako grpcio-tools || { enter_continue "something went
 }
 
 function download_core_lightning {
-announce "${green}Will download Core Lightning from GitHub.$orange"
-cd $hp
-git clone https://github.com/ElementsProject/lightning.git core_lightning
-cd core_lightning
-git checkout v24.11.1
+if [[ -e $HOME/parmanode/core_lightning ]] ; then
+  cd $hp/core_lightning
+  git pull
+else
+  announce "${green}Will download Core Lightning from GitHub.$orange"
+  cd $hp
+  git clone https://github.com/ElementsProject/lightning.git core_lightning
+  cd core_lightning
+fi
+  git checkout v24.11.1
 }
 
 
