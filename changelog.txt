@@ -1,5 +1,6 @@
 Version 3.49.6
     -Streamlined update_computer and removed 'sugges_brew' function
+    -Fixed verification bug for Sparrow on Pi's
 Vesion 3.49.5
     -Parman's Service main menu
     -computer autoupgrade option (linux)
