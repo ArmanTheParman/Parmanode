@@ -36,7 +36,9 @@ sudo apt-get install -y \
   || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 pip3 install --upgrade pip  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
-pip3 install --user poetry mako grpcio-tools --break-system-packages || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
+
+pipx install poetry && pipx install mako && pipx install grpcio-tools || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
+
 
 }
 
