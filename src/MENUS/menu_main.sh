@@ -58,7 +58,7 @@ echo -e "$debugstatus
 #$cyan                (e)$orange               Education                                           #
 #$cyan                (d)$orange               Donate                                              #
 #$cyan                (log)$orange             See logs andfiles                                   #
-#$cyan                (update)$orange          Updanode                                            #
+#$cyan                (update)$orange          Update Parmanode                                    #
 #$red                (uninstall)$orange       Uninstall Parmanode                                 #
 #$cyan                (ap)$orange              About Parmanode                                     #
 #                                                                                      #
