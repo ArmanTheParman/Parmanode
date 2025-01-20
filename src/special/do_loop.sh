@@ -122,7 +122,6 @@ if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
 
 custom_startup
-debug "after custom startup"
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day

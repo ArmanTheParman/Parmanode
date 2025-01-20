@@ -1,5 +1,5 @@
 function custom_startup {
-
+debug "in custom startup"
 if echo $@ | grep -q test ; then
 announce "no test available presently. Skipping."
 fi
