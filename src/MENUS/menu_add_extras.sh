@@ -63,6 +63,10 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
 
             rp install_core_lightning
     $orange
+    To uninstall, do:$cyan
+            
+            rp uninstall_core_lightning
+    $orange
     This will start the installation, and will get you to hit <enter> at various 
     stages, as it downloads files and compiles from source.
 
