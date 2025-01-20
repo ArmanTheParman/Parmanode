@@ -15,6 +15,8 @@ mkdir $HOME/.lightning/ >$dn 2>&1
 
 make_core_lightning_config
 
+deactivate #deactivate virtual environment
+
 success "Core Lightning should now be installed. You can start it from the command line with
     ${green}
     lightningd
@@ -32,13 +34,12 @@ sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \
   protobuf-compiler python3-grpc-tools cargo \
-  pipx \
   || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
+python3 -m venv $hp/venv_core_lightning
+source $hp/venv_core_lightning/bin/activate
 pip3 install --upgrade pip  || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
-
-pipx install poetry && pipx install mako && pipx install grpcio-tools || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
-
+pip3 install poetry mako grpcio-tools || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 }
 
