@@ -1,5 +1,5 @@
 function menu_main {
-unset enter_cont choice
+unset enter_cont choice version
 
 while true ; do
 set_terminal
