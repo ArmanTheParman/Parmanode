@@ -2,7 +2,7 @@ function expose_LND {
 if grep -r "lnddocker-" $ic ; then
 text="
     Additionally, for those who run LND inside a Docker container, the IP of the 
-    container is different to the IP of the comptuer it runs on.
+    container is different to the IP of the computer it runs on.
     "
 else
 unset text
