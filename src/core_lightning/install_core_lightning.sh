@@ -130,8 +130,8 @@ sha256sum --check SHA256SUMS --ignore-missing || { announce "shasum check failed
 
 tar -xvf *xz
 sudo mkdir -p /usr/bin /usr/share /usr/libexec
-cp -r ./usr/bin/* /usr/bin/
-cp -r ./usr/share/* /usr/share/
-cp -r ./usr/libexec/* /usr/libexec/
+sudo cp -r ./usr/bin/* /usr/bin/ || enter_continue
+sudo cp -r ./usr/share/* /usr/share/ || enter_continue 
+sudo cp -r ./usr/libexec/* /usr/libexec/ || enter_continue
 
 } 
