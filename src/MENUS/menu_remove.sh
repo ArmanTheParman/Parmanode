@@ -304,6 +304,7 @@ echo -e "#$cyan                            (x11)$orange              X11        
 echo -e "#                                                                                      #
 ########################################################################################
 "
+if [[ $1 == print ]] ; then return 0 ; fi
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in

@@ -17,6 +17,12 @@ bitcoin_new="#                                                                  
 #                                                                                      #"
 fi
 
+if check_for_partial_installs ; then
+    export partial_install="${red}Warning: You have partially installed programs. See Remove menu.$orange"
+else
+    unset partial_install
+fi
+
 set_terminal_higher
 echo -en "
 ########################################################################################
@@ -24,6 +30,7 @@ echo -en "
 #    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
 #                                                                                      #
 ########################################################################################
+# $partial_install \033[88G#
 #                                                                                      #" ; echo ""
 echo -en "${bitcoin_new}" ; echo -en "
 #$cyan                      n)$orange           Node related software ...                          #

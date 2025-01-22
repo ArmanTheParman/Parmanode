@@ -26,6 +26,12 @@ fi
 
 if [[ $version == v3.50.0 ]] ; then version="v3.50.0     $pink       ROSS IS FREE edition" ; fi
 
+if check_for_partial_installs ; then
+    export partial_install="${red}Warning: You have partially installed programs. See Remove menu.$orange"
+else
+    unset partial_install
+fi
+
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
@@ -38,7 +44,7 @@ echo -en "$orange
 "
 echo -e "$debugstatus
 ########################################################################################
-#                                                                                      #
+#    $partial_install \033[88G#
 #                                                                                      #
 #$green    (add)    $orange            Add more Programs                                            #
 #                                                                                      #
@@ -263,3 +269,12 @@ return 0
 #    For now, you can jump to any installed app's menu. Later, installing and
 #    uninstalling and other menu jumps will become available.
 
+function check_for_partial_installs {
+
+if menu_remove print | grep -q partial ; then
+return 0
+else
+return 1
+fi
+
+}
