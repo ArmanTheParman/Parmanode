@@ -4,6 +4,7 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then
     if command -v sudo >$dn ; then
         if id | grep -q sudo >$dn 2>&1 ; then return 0 
+        if id | grep -q (root) >$dn 2>&1 ; then return 0 
         fi
 	fi
 fi
