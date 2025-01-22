@@ -14,7 +14,7 @@ branch="$(git status | head -n1 | awk '{print $3}')"
 if [[ $branch != master && -n $branch ]] ; then
 output_branch="${pink}WARNING: You are on the $branch branch.                        $orange"
 else
-output_branch="   $space                                                         $orange#"
+output_branch="   $space $orange"
 fi
 
 set_terminal_custom 52
@@ -24,6 +24,8 @@ else
 debugstatus="#                                                                                      #"
 fi
 
+if [[ $version == v3.50.0 ]] ; then version="v3.50.0     $pink       ROSS IS FREE edition" ; fi
+
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
@@ -32,7 +34,7 @@ echo -en "$orange
 #                                                                                      #
 #    P A R M A N O D E                \033[4m${bright_blue}MAIN MENU\033[0m$orange                                        #
 #                                                                                      #
-#    Version:$bright_blue $version     $output_branch
+#    Version:$bright_blue $version     $output_branch \033[88G#
 "
 echo -e "$debugstatus
 ########################################################################################
