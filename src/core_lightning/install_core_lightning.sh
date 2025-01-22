@@ -43,12 +43,14 @@ function core_lightning_dependencies {
 announce "${green}Will install Core Lightning dependencies and setup 
     virtual environment...$orange"
 
+
 sudo apt-get update -y
 sudo apt-get install -y \
   jq autoconf automake build-essential git libtool libsqlite3-dev libffi-dev \
   python3 python3-pip net-tools zlib1g-dev libsodium-dev gettext \
   protobuf-compiler python3-grpc-tools cargo rustfmt protobuf-compiler \
   pkg-config valgrind libpq-dev shellcheck cppcheck libsecp256k1-dev lowdown \
+  python3-venv \
   || { enter_continue "something went wrong with installing a dependency" ; return 1 ; }
 
 python3 -m venv $hp/venv_core_lightning
