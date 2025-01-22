@@ -1,4 +1,5 @@
 function menu_main {
+debug "Pausing here. IP: $IP" "silent" #when debugging, I can check for error messages and syntax errors
 unset enter_cont choice version
 
 while true ; do
