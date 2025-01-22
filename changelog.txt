@@ -1,3 +1,5 @@
+Version 3.50.0
+    -Ross Is Free
 Version 3.49.6
     -Streamlined update_computer and removed 'sugges_brew' function
     -Fixed verification bug for Sparrow on Pi's

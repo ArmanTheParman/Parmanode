@@ -10,7 +10,7 @@ set_terminal ; echo -e "
     on your router and forwarded to this machine, otherwise the certificate generation
     process will fail.
     
-    To continue, type$cyan free ross$orange and hit$cyan <enter>$orange otherwise just hit$red <enter>$orange 
+    To continue, type$cyan EndTheFed$orange and hit$cyan <enter>$orange otherwise just hit$red <enter>$orange 
     to abort this.
 
 ########################################################################################
@@ -18,7 +18,7 @@ set_terminal ; echo -e "
 choose "x" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
-"free ross" | "Free Ross" | "free Ross" | "free Ross" | "freeross")
+endthefed|EndTheFed|ENDTHEFED|end)
 break
 ;;
 *)

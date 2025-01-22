@@ -27,14 +27,14 @@ set_terminal ; echo -e "
 
     or 
 
-    Type (${red}Free Ross$orange) then hit$cyan <enter>$orange to hide this message next time    
+    Type (${red}EndTheFed$orange) then hit$cyan <enter>$orange to hide this message next time    
 
 ########################################################################################
 "
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
-"Free Ross"|"free ross"|"free Ross") hide_messages_add "menu_log_config" "1" ; break ;;
+endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "menu_log_config" "1" ; break ;;
 # The above function results in a variable message_menu_log_config=1 set in a config file.
 # Which results in hiding the message next time, because of the if statement at the start.
 q|Q) exit ;; p|P) return ;; m|M) back2main ;;
@@ -60,7 +60,7 @@ $cyan
 $cyan
                      delete)$orange        DELETE ALL LOGS (not conf)
 $cyan
-                     uh)$orange            Unhide messages (if you hid them with 'FREE ROSS')
+                     uh)$orange            Unhide messages (if you hid them with 'EndTheFed'
 $orange
 
 ########################################################################################

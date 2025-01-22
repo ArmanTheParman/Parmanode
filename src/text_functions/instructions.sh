@@ -45,9 +45,9 @@ $orange
 
 ########################################################################################
 
-To hide this message next time, type in$pink \"Free Ross\"$orange then <enter>."
+To hide this message next time, type in$pink EndTheFed$orange then <enter>."
 enter_continue
-if [[ $enter_cont == "Free Ross" || $enter_cont == "free ross" ]] ; then hide_messages_add "instructions" "1" ; set_terminal 
+if [[ $enter_cont == "EndTheFed" || $enter_cont == "endthefed" ]] ; then hide_messages_add "instructions" "1" ; set_terminal 
 fi
 
 set_terminal ; echo -e "
@@ -72,7 +72,7 @@ $orange
 
 ########################################################################################
     
-To hide this message next time, type in$pink \"Free Ross\"$orange then <enter>.
+To hide this message next time, type in$pink EndTheFed$orange then <enter>.
 
 To continue on to the main menu, just hit$cyan <enter>${orange}.
 "
@@ -82,8 +82,8 @@ q|Q) exit ;;
 d|D) 
    if [[ -z $debug ]] ; then export debug=1 ; else unset debug ; fi
 ;;
-   "Free Ross"|"free ross"|"free Ross") 
-   hide_messages_add "instructions" "1" ; set_terminal 
+endthefed|EndTheFed|ENDTHEFED|end)
+hide_messages_add "instructions" "1" ; set_terminal 
 ;;
 esac
 fi

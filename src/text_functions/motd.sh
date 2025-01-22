@@ -51,8 +51,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
-
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 1 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -70,7 +69,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 2 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -84,7 +83,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 3 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -110,7 +109,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 4 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -124,7 +123,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 5 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -143,7 +142,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 6 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -160,7 +159,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 7 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -175,7 +174,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 8 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -193,7 +192,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 9 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -210,7 +209,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 10 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -232,7 +231,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 11 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -247,7 +246,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return  ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 12 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -263,7 +262,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 13 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -276,7 +275,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 14 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -293,7 +292,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 15 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -312,7 +311,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 16 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -328,7 +327,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 17 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -348,7 +347,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 18 ]] ; then
 set_terminal_custom 52 ; echo -e "
 ########################################################################################
@@ -395,7 +394,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 19 ]] ; then
 set_terminal_custom 56 ; echo -e "
 ########################################################################################
@@ -445,7 +444,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 20 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -463,7 +462,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 21 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -485,7 +484,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 22 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -502,7 +501,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 23 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -526,7 +525,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 24 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -546,7 +545,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 25 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -568,7 +567,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 26 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -591,7 +590,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 27 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -620,7 +619,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 28 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -639,7 +638,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 29 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -653,7 +652,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 30 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -691,7 +690,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 31 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -706,7 +705,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 32 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -722,7 +721,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 33 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -738,7 +737,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 34 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -754,7 +753,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 35 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -773,7 +772,7 @@ $bright_blue
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 36 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -801,7 +800,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 37 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -826,7 +825,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 38 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -844,7 +843,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 39 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -862,7 +861,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 40 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -879,7 +878,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 41 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -892,7 +891,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 42 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -916,7 +915,7 @@ $cyan
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 43 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -942,7 +941,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 44 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -958,7 +957,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 45 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -987,7 +986,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 46 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1001,7 +1000,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 47 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1026,7 +1025,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 48 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1041,7 +1040,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 49 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1057,7 +1056,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 50 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1072,7 +1071,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 51 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1090,7 +1089,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 52 ]] ; then
 set_terminal_custom 48 ; echo -e "
 ########################################################################################
@@ -1129,7 +1128,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 53 ]] ; then
 set_terminal_custom 48 ; echo -e "
 ########################################################################################
@@ -1164,7 +1163,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 54 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1207,7 +1206,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 55 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1234,7 +1233,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 56 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1259,7 +1258,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 57 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1325,7 +1324,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 58 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1352,7 +1351,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 59 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1368,7 +1367,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi 
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 60 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1386,7 +1385,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 61 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1411,7 +1410,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 62 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1426,7 +1425,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 63 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1452,7 +1451,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 64 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1478,7 +1477,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 65 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1495,7 +1494,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 
 if [[ $motd == 66 ]] ; then
 set_terminal ; echo -e "
@@ -1519,7 +1518,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 
 if [[ $motd == 67 ]] ; then
 set_terminal_high ; echo -e "
@@ -1556,8 +1555,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
-
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 if [[ $motd == 68 ]] ; then
 set_terminal ; echo -e "
 ########################################################################################
@@ -1573,8 +1571,7 @@ $orange
 $another
 "
 enter_continue ; jump $enter_cont ; choice="$enter_cont"
-if [[ $choice == "Free Ross" || $choice == "free ross" ]] ; then hide_messages_add "motd" "1" ; fi ; return 0 ; fi
+fi ; case $choice in endthefed|EndTheFed|ENDTHEFED|end) hide_messages_add "motd" "1" ; return 0 ;; esac
 }
-
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
