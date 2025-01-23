@@ -30,7 +30,7 @@ set_terminal ; echo -e "
 $red    For example...
 $red    ################################################################################
 $red    #                                                                              # 
-$red    #$cyan       y)$orange    Yes, please delete all shitcoin private keys from the computer $red #
+$red    #$cyan       y)$orange    Yes, please delete all shitcoin private keys from the computer  $red #
 $red    #                                                                              # 
 $red    #$cyan       n)$orange    No, don't delete anything, I enjoy degeneracy                   $red #
 $red    #                                                                              # 
