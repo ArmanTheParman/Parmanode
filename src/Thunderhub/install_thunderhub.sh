@@ -76,32 +76,3 @@ unset version file password password2
 installed_conf_add "thunderhub-end"
 success "Thunderhub has finished being installed"
 }
-
-function not_finished_thunderhub {
-
-while true ; do
-set_terminal ; echo -e "
-########################################################################################
-
-    Please note that Thunderhub does not yet work with Parmanode.
-
-    It will install, but there remains a glitch - the account created is not
-    recognised by the web GUI.
-
-    I'm allowing it to be installed so that some interested users may tinker and find
-    the problem.
-
-    You can install and see, and when it is fixed in a future update, you'll need to
-    uninstall this instance and re-install to get the working version.
-
-    Hit$cyan <enter>$orange to continue or$red x$orange and$cyan <enter>$orange to abort.
-
-########################################################################################
-"
-read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; p|P|x) return 1 ;; "") return 0 ;; *) invalid ;; esac
-done
-
-}
