@@ -83,9 +83,9 @@ $orange
                    i)            $orange Educational info ...                            $cyan
                  max)            $orange How up increase upload file size ...            $cyan
                  dom)            $orange Add/Change domain name                          $cyan
-                 dd)             $orange Delete database and create new                  $cyan
-                 bk)             $orange Back up database                                $cyan   
-                 rs)             $orange Restore backed up database                      $cyan   
+                  dd)            $orange Delete database and create new                  $cyan
+                  bk)            $orange Back up database                                $cyan   
+                  rs)            $orange Restore backed up database                      $cyan   
  
                  tor)            $orange Tor enable/disable      $W_tor                  $cyan
                  ssl)            $orange SSL enable/disable      $web_ssl_status_print   $cyan
