@@ -69,10 +69,10 @@ $yellow        Wordpress login:     $orange     $http://$domain_name/wp-admin
 $yellow        Info Page:           $orange     $http://$domain_name/info.php
 
 ----------------------------------------------------------------------------------------
-$yellow
-        Website data location: $orange   /var/www/website
-        Data file permissions: $orange   user=www-data ; group=www-data
-        Nginx configuration:   $orange   /etc/nginx/conf.d/website.conf
+
+$yellow        Website data location: $orange   /var/www/website
+$yellow        Data file permissions: $orange   user=www-data ; group=www-data
+$yellow        Nginx configuration:   $orange   /etc/nginx/conf.d/website.conf
 
         TCP Port (http):          ${green}80$yellow
         SSL port (https):         ${green}$website_ssl_port $yellow
