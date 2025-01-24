@@ -98,7 +98,8 @@ done
 yesorno "About to delete the database $website" || return 0
 sudo mysql -u root -p -e "DROP DATABASE $website;" || enter_continue
 
-installed_conf_remove "website-end"
+installed_conf_remove "website-end" 
+installed_conf_remove "website-start" 
 
 sudo rm -rf /etc/nginx/conf.d/$website* >$dn 2>&1
 sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >$dn 2>&1
