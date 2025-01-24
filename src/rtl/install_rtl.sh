@@ -12,7 +12,7 @@ return 1
 fi
 
 set_terminal
-if [[ $debug != 1 ]] ; then
+if [[ $debug != 1 ]] && [[ $special != "core_lightning" ]] ; then
 { lncli wallet accounts list >$dn 2>&1 || \
 docker exec lnd lncli wallet accounts list >$dn 2>&1 ; } || { echo -e "
 ########################################################################################
