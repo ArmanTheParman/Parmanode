@@ -11,7 +11,7 @@ $orange
     uninstall or anything else to abort. (This will uninstall ParmaWeb, and also
     give you the option to delete the website data directory)
 $red
-    $(sudo ls /var/www/ | grep website)
+$(sudo ls /var/www/ | grep website)
     
 $orange
 ########################################################################################
@@ -95,9 +95,8 @@ break
 esac
 done
 
-announce "About to delete the database $website"
-sudo mysql -u root -p -e "DROP DATABASE $website;"
-enter_continue
+yesorno "About to delete the database $website" || return 0
+sudo mysql -u root -p -e "DROP DATABASE $website;" || enter_continue
 
 installed_conf_remove "website-end"
 
