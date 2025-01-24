@@ -9,10 +9,12 @@ source $pc >$dn 2>&1
 
 #SSL status
 if [[ $website_ssl == "true" ]] ; then
-web_ssl_status_print="${green}ON$orange"
-website_ssl_port="443"
+    web_ssl_status_print="${green}ON$orange"
+    website_ssl_port="443"
+    http=https
 else
-web_ssl_status_print="${red}OFF$orange"
+    web_ssl_status_print="${red}OFF$orange"
+    http=http
 fi
 
 #Tor status
@@ -60,11 +62,11 @@ set_terminal_custom 45 ; echo -ne "
         $domain_name_text
 $tor_menu                      
 
-        To initialise:            http://$domain_name/myphpadmin
+        To initialise:            $http://$domain_name/myphpadmin
         Database's name:          website (or website1, website2 etc)
         Database username:        parmanode
-        Wordpress login:          http://$domain_name/wp-admin
-        Info Page:                http://$domain_name/info.php
+        Wordpress login:          $http://$domain_name/wp-admin
+        Info Page:                $http://$domain_name/info.php
 
 ----------------------------------------------------------------------------------------
 $yellow
