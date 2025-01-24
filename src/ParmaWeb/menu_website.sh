@@ -62,17 +62,17 @@ set_terminal_custom 45 ; echo -ne "
         $domain_name_text
 $tor_menu                      
 
-        To initialise:            $http://$domain_name/myphpadmin
-        Database's name:          website (or website1, website2 etc)
-        Database username:        parmanode
-        Wordpress login:          $http://$domain_name/wp-admin
-        Info Page:                $http://$domain_name/info.php
+$yellow        To initialise:       $orange     $http://$domain_name/myphpadmin
+$yellow        Database's name:     $orange     website (or website1, website2 etc)
+$yellow        Database username:   $orange     parmanode
+$yellow        Wordpress login:     $orange     $http://$domain_name/wp-admin
+$yellow        Info Page:           $orange     $http://$domain_name/info.php
 
 ----------------------------------------------------------------------------------------
 $yellow
-        Website data location:    /var/www/website
-        Data file permissions:    user=www-data ; group=www-data
-        Nginx configuration:      /etc/nginx/conf.d/website.conf
+        Website data location: $orange   /var/www/website
+        Data file permissions: $orange   user=www-data ; group=www-data
+        Nginx configuration:   $orange   /etc/nginx/conf.d/website.conf
 
         TCP Port (http):          ${green}80$yellow
         SSL port (https):         ${green}$website_ssl_port $yellow
