@@ -74,10 +74,10 @@ $yellow        Website data location: $orange   /var/www/website
 $yellow        Data file permissions: $orange   user=www-data ; group=www-data
 $yellow        Nginx configuration:   $orange   /etc/nginx/conf.d/website.conf
 
-        TCP Port (http):          ${green}80$yellow
-        SSL port (https):         ${green}$website_ssl_port $yellow
-        Tor Status:               $W_tor                     $orange
-
+$yellow        TCP Port (http):          ${green}80
+$yellow        SSL port (https):         ${green}$website_ssl_port 
+$yellow        Tor Status:               $W_tor                     
+$orange
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
                    i)            $orange Educational info ...                            $cyan
