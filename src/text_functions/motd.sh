@@ -1,40 +1,83 @@
 function motd {
-another="${red} Hint: type 'motd' for another.$orange"
 
 if [[ -f $HOME/.parmanode/hide_messages.conf ]] ; then
 . $HOME/.parmanode/hide_messages.conf >$dn
 fi
 
-if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
-
-motdfile="$HOME/.parmanode/.motd"
-source $pc #access motd value
-
-#migrate from old motd...
-
-#new installation...
-if [[ ! -e $motdfile ]] && ! grep -q "motd=" $pc ; then
-parmanode_conf_add "motd=0" 
-motd=0
-#already migrated to new motd...
-elif [[ ! -e $motdfile ]] && grep -q "motd=" $pc ; then
-motd=$((motd + 1))
-parmanode_conf_remove "motd="
-parmanode_conf_add "motd=$motd" 
-#older...
+if grep -q "hide_censorship=1" $hm ; then
+another="${red}    Hint: type 'motd' for another."
 else
-source $motdfile
-motd=$((motd + 1))
-parmanode_conf_remove "motd=" #redundant
-parmanode_conf_add "motd=$motd" 
-rm $motdfile >$dn 2>&1
+another="${red}    Hint: type 'motd' for another. 
+
+
+
+                     #CENCORSHIP OPTIONS...
+                    $cyan forkids) $orange for kid friendly language.
+                    $cyan ff)      $orange to censor the 'f' word only.
+                    $cyan uncensor)$orange to clear censorship
+                    $cyan xxxhide) $orange hide/unhide censorship options.
+
+                     Please report any censorship accidents."
 fi
 
+if [[ ${message_motd} == "1" ]] ; then return 0 ; fi #hide message choice
+
+#Censorship
+source $hm >$dn 2>&1
+
+censor_fuck=("1" "10" "18" "23" "32" "36" "37" "40" "49" "55" "63" "65")
+censor_shit=("9" "17" "21" "23" "55" "58" "63" "67")
+censor_all=("${censor_shit[@]}" "${censor_fuck[@]}")
+
+
+source $pc 2>$dn #access motd value
+
+
+if ! grep -q "motd=" $pc ; then
+    parmanode_conf_add "motd=0" 
+    motd=0
+fi
 
 #DON'T FORGET TO CHANGE THE MOD TO THE HIGHEST NUMBERERD MESSAGE + 1
 motd=$((motd % 69))
 
+if [[ $forkids == 1 ]] ; then
+    found=1
+    while [[ $found == 1 ]] ; do  #this 'found' nonsense is to increment until a non-censored motd is reached
+        for num in "${censor_all[@]}"; do
+            if [[ $num == $motd ]] ; then
+            motd=$((motd +1))
+            found=1
+            break
+            fi
+            found=0
+        done
+    done
+fi
+
+if [[ -z $forkids ]] && [[ $censor_ff == 1 ]] ; then
+    found=1
+    while [[ $found == 1 ]] ; do  #this 'found' nonsense is to increment until a non-censored motd is reached
+        for num in "${censor_all[@]}"; do
+            if [[ $num == $motd ]] ; then
+            motd=$((motd +1))
+            found=1
+            break
+            fi
+            found=0
+        done
+    done
+fi
+
+#motd value is loaded. Now increment and save for next time...
+
+        parmanode_conf_remove "motd="
+        parmanode_conf_add "motd=$((motd + 1))"
+
 if [[ $motd == 0 ]] ; then
+announce "Please type 'forkids' to keep the 'Message of the Day' propaganda kid-friendly.'"
+case $enter_cont in forkids) echo "forkids=1" >> $hm ; export forkids=1 ;; q) exit ;; esac
+
 set_terminal ; echo -e "
 ########################################################################################
 $cyan

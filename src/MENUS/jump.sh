@@ -9,6 +9,32 @@ motd
 invalid_flag=set
 ;;
 
+xxxhide)
+if ! grep -q "hide_censorship=1" $hm  ; then
+    echo "hide_censorship=1" >> $hm
+else
+    gsed -i '/hide_censorship/d' $hm >$dn 2>&1
+fi
+
+invalid_flag=set
+;;
+
+forkids)
+parmanode_conf_add "forkids=1"
+invalid_flag=set
+;;
+
+ff)
+parmanode_conf_add "censor_ff=1"
+parmanod_conf_remove "forkids=1"
+invalid_flag=set
+;;
+
+uncensor)
+parmanode_conf_remove "forkids"
+parmanode_conf_remove "censor_ff"
+;;
+
 dm)
 menu_drives
 invalid_flag=set

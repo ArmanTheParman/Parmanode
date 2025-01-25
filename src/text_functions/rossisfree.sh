@@ -10,7 +10,7 @@ function rossisfree {
 
 EOF
 
-if grep -q freeross $hm 2>$dn ; then return 0 ; fi
+if grep -q freeross $hm 2>$dn ; then return 1 ; fi
 
 set_terminal
 echo -e "
