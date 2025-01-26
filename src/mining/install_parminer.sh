@@ -1,4 +1,5 @@
 function install_parminer {
+yesorno "Install ParMiner?" || return 1
 installed_conf_add "bfgminer-start"
 set_terminal
 download_bfgminer || enter_continue "Something went wrong with the download. 'm' for main menu."
