@@ -55,7 +55,7 @@ $orange
 "
 read $options 
 jump $options || { invalid ; continue ; } ; jump_qpm $options ; set_terminal
-yesorno "These are your options:
+[[ -n $options ]] && yesorno "These are your options:
 
 $options
 
