@@ -38,7 +38,7 @@ debug "case6"
 patch_7 ; patch_8 ;;
 7)
 debug "case7"
-patch_8
+patch_8 ;;
 8)
 debug "patch_8 already done before"
 return 0 ;;
