@@ -50,7 +50,7 @@ $cyan
                                 --enable-titan
                                 --enable-keccak
                                 --enable-scrypt 
-
+$orange
 ######################################################################################## 
 "
 read $options 
