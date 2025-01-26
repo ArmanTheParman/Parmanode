@@ -11,7 +11,6 @@ remove_tor_log_patch
     fulcrum_service_patch 
 
 fulcrum_delete_old_log 
-
 #Docker containers sometimes won't have $USER variable set...
 if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
@@ -127,3 +126,4 @@ fi
 if [[ -n $needrestarttor ]] ; then restart_tor ; fi
 unset needrestarttor
 }
+

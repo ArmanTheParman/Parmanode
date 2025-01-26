@@ -17,30 +17,33 @@ fi
 
 debug "before patch sequence"
 
-case $patch in 
+case $patch in #case 0 is lase "*"
 1) 
 debug "case1"
-patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ;;
+patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; #patch 2 to last
 2)
 debug "case2"
-patch_3 ; patch_4 ; patch_5 ; patch_6 ;;
+patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; #patch 3 to last
 3)
 debug "case3"
-patch_4 ; patch_5 ; patch_6 ;;
+patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;;
 4)
 debug "case4"
-patch_5 ; patch_6 ;;
+patch_5 ; patch_6; patch_7 ; patch_8  ;;
 5)
 debug "case5"
-patch_6 ;;
+patch_6 ; patch_7 ; patch_8 ;;
 6)
 debug "case6"
-patch_7 ;;
+patch_7 ; patch_8 ;;
 7)
 debug "case7"
+patch_8
+8)
+debug "patch_8 already done before"
 return 0 ;;
 *) 
-patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ;; 
+patch_1 ; patch_2 ; patch_3 ; patch_4 ; patch_5 ; patch_6 ; patch_7 ; patch_8 ;; 
 esac
 debug "end apply_patches :)"
 }

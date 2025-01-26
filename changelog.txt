@@ -1,3 +1,5 @@
+Version 3.51.1
+    -Patch 8
 Version 3.50.0
     -Ross Is Free; removed #freeross propaganda, replaced with EndTheFed
     -Some improvements to wordpress install

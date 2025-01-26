@@ -5,7 +5,7 @@ tmuxname=${tmuxname:-$(mktemp -u session-XXXXXX)}
 
 
 if ! which tmux >$dn 2>&1 ; then 
-yesorno "Need tmux for this to work. Ok to install?" || return 1
+yesorno "Need tmux for this to work. OK to install?" || return 1
 fi
 
 install_tmux #exits if installed
