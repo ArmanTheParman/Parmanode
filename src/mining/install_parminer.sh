@@ -54,7 +54,7 @@ $cyan
 $orange
 ######################################################################################## 
 "
-read $options ; set_terminal
+read options ; set_terminal
 debug "pause0"
 jump $options || { invalid ; continue ; } 
 debug "pause1"
