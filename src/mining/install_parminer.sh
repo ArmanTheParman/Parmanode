@@ -58,17 +58,23 @@ read options ; set_terminal
 jump $options || { invalid ; continue ; } 
 jump_qpm $options ; set_terminal
 debug "pause2"
+case $options in
+"")
+break
+;;
+*)
 yesorno "These are your options:
 
 $options
 
 Continue with these?" || continue
-
+break
+;;
+esac
+done
 ./autogen.sh || enter_continue "Something went wrong with the autogen command."
 ./configure $options --enable-broad-udevrules --enable-cpumining || enter_continue "Something went wrong with the configure command."
 make -j$(nproc) || enter_continue "Something went wrong withe the make command."
-break
-done
 
 }
 
