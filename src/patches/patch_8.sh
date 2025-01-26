@@ -33,8 +33,14 @@ fi
 
 function fix_thecommandlinebook {
 #Faulty download, to fix.
-if ! file "$hp/parman_books/thelinuxcommandlinebook.pdf" 2>$dn |& grep -q PDF ; then # FYI, |& pipes bothe std output and std error
+local file="$hp/parman_books/thelinuxcommandlinebook.pdf" 
+[[ -e $file ]] || return 1
+
+if ! shasum -a 256 $file 2>$dn | \
+    grep -q a86130cb95105d6121541f77fb0c944e9e7b8bf8656266d007288deb2f3a0be5 ; then # FYI, |& pipes bothe std output and std error
+
 pn_tmux "cd $hp/parman_books 
 git pull" "linux book patch"
+
 fi
 }
