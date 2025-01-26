@@ -33,6 +33,7 @@ invalid_flag=set
 uncensor)
 parmanode_conf_remove "forkids"
 parmanode_conf_remove "censor_ff"
+invalid_flag=set
 ;;
 
 dm)
