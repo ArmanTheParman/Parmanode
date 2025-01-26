@@ -54,8 +54,12 @@ $cyan
 $orange
 ######################################################################################## 
 "
-read $options 
-jump $options || { invalid ; continue ; } ; jump_qpm $options ; set_terminal
+read $options ; set_terminal
+debug "pause0"
+jump $options || { invalid ; continue ; } 
+debug "pause1"
+jump_qpm $options ; set_terminal
+debug "pause2"
 [[ -n $options ]] && yesorno "These are your options:
 
 $options
