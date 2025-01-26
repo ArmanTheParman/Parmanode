@@ -33,7 +33,7 @@ fi
 
 function fix_thecommandlinebook {
 #Faulty download, to fix.
-if ! file $hp/parman_books/thelinuxcommandlinebook.pdf 2>$dn |& grep -q PDF ; then # FYI, |& pipes bothe std output and std error
+if ! file "$hp/parman_books/thelinuxcommandlinebook.pdf" 2>$dn |& grep -q PDF ; then # FYI, |& pipes bothe std output and std error
 pn_tmux "cd $hp/parman_books 
 git pull" "linux book patch"
 fi
