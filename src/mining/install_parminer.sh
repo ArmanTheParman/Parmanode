@@ -74,6 +74,8 @@ break
 ;;
 esac
 done
+
+autoupdate
 ./autogen.sh || enter_continue "Something went wrong with the autogen command."
 ./configure $options --enable-broad-udevrules --enable-cpumining || enter_continue "Something went wrong with the configure command."
 make -j$(nproc) || enter_continue "Something went wrong withe the make command."
