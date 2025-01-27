@@ -88,3 +88,8 @@ make -j$(nproc) || enter_continue "Something went wrong withe the make command."
 # path like this (if you are in the bfgminer directory already): ./bfgminer
 # To install system wide run 'sudo make install' or 'make install' as root. You
 # can then run from any terminal.
+
+
+
+
+#for i in $(grep -r git: ./ | cut -d : -f 1) ; do sed -i s/git:/https:/g $i ; done
