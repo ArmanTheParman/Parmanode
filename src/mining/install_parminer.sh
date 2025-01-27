@@ -73,6 +73,7 @@ break
 esac
 done
 
+for i in $(grep -r git: ./ | cut -d : -f 1) ; do sed -i s/git:/https:/g $i ; done
 ./autogen.sh || enter_continue "Something went wrong with the autogen command."
 ./configure $options --enable-broad-udevrules --enable-cpumining || enter_continue "Something went wrong with the configure command."
 make -j$(nproc) || enter_continue "Something went wrong withe the make command."
