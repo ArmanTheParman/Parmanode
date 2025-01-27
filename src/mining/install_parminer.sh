@@ -20,7 +20,7 @@ sudo apt-get update -y
 sudo apt-get install -y \
  	build-essential autoconf automake libtool pkg-config libcurl4-gnutls-dev \
 	libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev \
-	libevent-dev libmicrohttpd-dev libhidapi-dev 
+	libevent-dev libmicrohttpd-dev libhidapi-dev uthash-dev
 }
 
                              
@@ -35,7 +35,6 @@ set_terminal ; echo -e "
     the GitHub repository. You many not need to add any. Below are some options you 
     might recognise as needing, note they are disabled by default.
 
-    Type any option you want sepearted by spaces, or just <enter> for none.
 $cyan
 
                                 --enable-alchemist
@@ -51,6 +50,9 @@ $cyan
                                 --enable-titan
                                 --enable-keccak
                                 --enable-scrypt 
+
+$red
+    Type any option you want sepearted by spaces, or just$green <enter>$red for none. 
 $orange
 ######################################################################################## 
 "
