@@ -208,6 +208,7 @@ clear
 mkdir -p $HOME/Desktop/ >/dev/null 
 sudo mv $report $HOME/Desktop/ || enter_continue 
 
+sleep 2
 clear ; echo -e "
 ########################################################################################
 
