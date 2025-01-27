@@ -73,7 +73,9 @@ break
 esac
 done
 
+#git:// doesn't work anymore, I had to change it to https for all ocurrences.
 for i in $(grep -r git: ./ | cut -d : -f 1) ; do sed -i s/git:/https:/g $i ; done
+
 ./autogen.sh || enter_continue "Something went wrong with the autogen command."
 ./configure $options --enable-broad-udevrules --enable-cpumining || enter_continue "Something went wrong with the configure command."
 make -j$(nproc) || enter_continue "Something went wrong withe the make command."
@@ -91,7 +93,3 @@ make -j$(nproc) || enter_continue "Something went wrong withe the make command."
 # To install system wide run 'sudo make install' or 'make install' as root. You
 # can then run from any terminal.
 
-
-
-
-#for i in $(grep -r git: ./ | cut -d : -f 1) ; do sed -i s/git:/https:/g $i ; done
