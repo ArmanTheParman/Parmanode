@@ -220,7 +220,11 @@ clear ; echo -e "
 $cyan
     armantheparman@protonmail.com
 $orange
-    Hit <enter> to finish.
+    A note for$pink Ubuntu$orange users - File in the Desktop directory to show up on your 
+    desktop. It's weird, I don't know why Ubuntu does that. You can access the file
+    from the file explorer instead.
+
+    Hit$cyan <enter>$orange to finish.
 
 ########################################################################################
 "
