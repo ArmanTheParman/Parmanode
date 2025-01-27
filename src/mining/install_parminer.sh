@@ -11,7 +11,7 @@ success "BFGMiner has been installed."
 
 
 function download_bfgminer {
-git clone --depth 1 https://github.com/luke-jr/bfgminer.git $hp/bfgminer
+git clone https://github.com/luke-jr/bfgminer.git $hp/bfgminer
 cd $hp/bfgminer || return 1
 }
 
