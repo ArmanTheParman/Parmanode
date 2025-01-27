@@ -23,8 +23,6 @@ sudo apt-get install -y \
 	libevent-dev libmicrohttpd-dev libhidapi-dev uthash-dev || enter_continue
 }
 
-                            libjansson-dev 
-
 function compile_bfgminer {
 while true ; do
 set_terminal ; echo -e "
