@@ -130,6 +130,9 @@ fi
 
 jump $1
 # This is the main program, which is a menu that loops.
+
+if [[ $parminer != 1 ]] ; then #Parminer borrows do_loop function, but don't go to parmanode menu
 menu_main
+fi
 
 }

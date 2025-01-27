@@ -16,7 +16,7 @@ source ./src/special/do_loop.sh || { echo "unable to source ./src/special/do_loo
 # if run_parmanode.sh is run with an argument x, eg "rp x" or
 #"$HOME/parman_programs/run_parmanode.sh x", then very detailed debugging output is turned on.
 #This is not for the end user.
-if [[ $1 == x ]] ; then set -x ; enter_continue "Set -x enabled. Type 'x' to turn off" ; fi
+if [[ $1 == x ]] ; then set -x ; clear ; echo "Set -x enabled." ; fi
 #"enter_continue" is a custom function. You can search for that function with the string:
 #"enter_continue {" which will only ever occur where the function is defined. Because all the
 #scripts have been sourced, the function is in the memory and 'enter_continue' can be called
