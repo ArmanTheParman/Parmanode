@@ -25,8 +25,6 @@ else
 debugstatus="#                                                                                      #"
 fi
 
-if [[ $version == v3.50.0 ]] ; then version="v3.50.0     $pink       ROSS IS FREE edition" ; fi
-
 if check_for_partial_installs ; then
     export partial_install="${red}Warning: You have partially installed programs. See Remove menu.$orange"
 else
