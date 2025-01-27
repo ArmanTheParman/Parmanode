@@ -204,8 +204,9 @@ echor "#BASHRC/ZSHRC"
 echor "$(sudo cat $bashrc)"
 
 delete_private
-mkdir -p $HOME/Desktop/
-sudo mv $report $HOME/Desktop/
+clear
+mkdir -p $HOME/Desktop/ >/dev/null 
+sudo mv $report $HOME/Desktop/ || enter_continue 
 
 clear ; echo -e "
 ########################################################################################
