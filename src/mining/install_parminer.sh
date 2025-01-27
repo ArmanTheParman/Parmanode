@@ -20,10 +20,10 @@ sudo apt-get update -y
 sudo apt-get install -y \
  	build-essential autoconf automake libtool pkg-config libcurl4-gnutls-dev \
 	libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev \
-	libevent-dev libmicrohttpd-dev libhidapi-dev uthash-dev
+	libevent-dev libmicrohttpd-dev libhidapi-dev uthash-dev || enter_continue
 }
 
-                             
+                            libjansson-dev 
 
 function compile_bfgminer {
 while true ; do
