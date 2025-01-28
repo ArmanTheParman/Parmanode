@@ -6,6 +6,7 @@ yesorno "Non-64 bit architecture detected. It's unlikely to work if you
     proceed, but Parmanode could be wrong.
 
     Install?" || return 1
+fi
 
 installed_config_add "phoenix-start"
 
