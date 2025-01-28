@@ -18,7 +18,9 @@ announce "Phoenix will run now inside a Tmux Terminal 'container'. You can stop
     variations if you ask it."
 
 jump $enter_cont 
+NODAEMON="true"
 pn_tmux "$hp/phoenix/phoenixd" "start_phoenixd"
+unset NODAEMON
 return 0
 }
 
