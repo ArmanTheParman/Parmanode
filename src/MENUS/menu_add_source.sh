@@ -625,4 +625,17 @@ else
    #not installed
 X11_n="#$cyan                            (x11)   $orange      X11                                         #"
 fi
+
+#Phoenix
+unset phoenix_i phoenix_p phoenix_n
+if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then 
+  #installed
+phoenix_i="#                                      Phoenix Server                                  #"
+elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then 
+   #partially installed
+phoenix_p="#                                      Phoenix Server                                  #"
+else
+   #not installed
+phoenix_n="#$cyan                            (pho)   $orange      Phoenix Server                              #"
+fi
 }

@@ -21,6 +21,8 @@ echo -en "
 #                                                                                      #
 #$cyan              (cl)$orange      Core Lightning                                                #
 #                                                                                      #
+*$cyan              (pho)$orange     Phoenix Server                                                #
+#                                                                                      #
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -74,7 +76,9 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
     command line or other means. Core Lightning may be implemende within Parmanode in 
     the future." 
 ;;
-
+pho)
+install_phoenix 
+;;
 *)
     invalid
     continue

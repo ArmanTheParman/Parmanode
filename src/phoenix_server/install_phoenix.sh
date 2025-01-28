@@ -1,6 +1,19 @@
 function install_phoenix {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
+yesorno "Phoenix is a Bitcoin lightning wallet developed by ACINQ, They say
+    it is self-custodial, which means that you hold the keys of the wallet. 
+
+    As I understand it, because they can manage lightning channels$red THEY MUST 
+    ALSO HAVE YOUR PRIVATE KEY - SO ITS SHARED CUSTODY, NOT REALLY SELF CUSTORY.$orange
+    
+    The convenience might be worth it, just use it for small amounts.
+
+    This istallation is for the sever, not the wallet. It's for advanced users.
+
+    Install?" || return 1
+
+
 if [[ $(uname -m) != "x86_64" ]] && [[ $(uname -m) != "aarch64" ]] && [[ $(file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
 yesorno "Non-64 bit architecture detected. It's unlikely to work if you
     proceed, but Parmanode could be wrong.

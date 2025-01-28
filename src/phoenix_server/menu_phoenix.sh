@@ -34,7 +34,10 @@ announce "Phoenix is a daemon (background process) running inside a Tmux contain
     Start it an stop it from the this Parmanode menu.
 
     To interactive with it, you need to use the command line. Parmanode has not
-    been designed to do this for you like most other Apps it installs. Maybe one day."
+    been designed to do this for you like most other Apps it installs. Maybe one day.
+   $cyan 
+    https://phoenix.acinq.co/server
+    $orange"
 ;;
 uninstall)
 uninstall_phoenix
