@@ -50,4 +50,5 @@ unzip -j *.zip
 function verify_phoenix {
 gpg --import $pn/src/phoenix_server/phoenix_gpg_key.asc
 gpg --verify S*.asc || return 1
+enter_continue "gpg verification$green passed$orange"
 }
