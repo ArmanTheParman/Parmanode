@@ -51,6 +51,6 @@ function verify_phoenix {
 gpg --import $pn/src/phoenix_server/phoenix_gpg_key.asc
 gpg --verify S*.asc || { enter_continue "Something went wrong with importing the phoenix public key." ; return 1 ; }
 enter_continue "gpg verification$green passed$orange"
-shasum --verify ./SHASUMS.asc || { enter_continue "SHA256 verification$red failed." ; return 1 ; }
+shasum --check ./SHASUMS.asc || { enter_continue "SHA256 verification$red failed." ; return 1 ; }
 enter_continue "SHA256 check passed"
 }
