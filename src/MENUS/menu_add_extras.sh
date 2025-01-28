@@ -21,7 +21,7 @@ echo -en "
 #                                                                                      #
 #$cyan              (cl)$orange      Core Lightning                                                #
 #                                                                                      #
-*$cyan              (pho)$orange     Phoenix Server                                                #
+*$cyan              (pho)$orange     Phoenix Server (advanced users)                               #
 #                                                                                      #
 ########################################################################################
 "

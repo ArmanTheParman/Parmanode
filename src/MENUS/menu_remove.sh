@@ -301,10 +301,16 @@ echo -e "#$cyan                            (x11)$orange              X11        
 elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then X11menu=1
 echo -e "#$cyan                            (x11)$orange              X11           $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
+if grep -q "phoenix-end" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
+echo -e "#$cyan                            (pho)$orange              Phoenix Server                         #
+#                                                                                      #"
+elif grep -q "phoenix-start" $HOME/.parmanode/installed.conf ; then phoenixmenu=1
+echo -e "#$cyan                            (pho)$orange              Phoenix Server         $red$blinkon(partial)$blinkoff$orange       #
+#                                                                                      #" ; fi
 echo -e "#                                                                                      #
 ########################################################################################
 "
-if [[ $1 == print ]] ; then return 0 ; fi
+if [[ $1 == "print" ]] ; then return 0 ; fi
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
@@ -630,6 +636,13 @@ fi
 x11|X11)
 if [[ $X11menu == 1 ]] ; then
 uninstall_X11
+menu_main
+fi
+;;
+
+pho|PHO)
+if [[ $phoenixmenu == 1 ]] ; then
+uninstall_phoenix
 menu_main
 fi
 ;;
