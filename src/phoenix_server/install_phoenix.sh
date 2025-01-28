@@ -29,7 +29,7 @@ set_terminal
 cd $hp/phoenix
 download_phoenix || enter_continue "Something went wrong with the download"
 clear
-verify_phoenix || enter_continue "Something went wrong with verification"
+verify_phoenix || return 1
 clear
 unzip_phoenix
 
@@ -49,6 +49,8 @@ unzip -j *.zip
 
 function verify_phoenix {
 gpg --import $pn/src/phoenix_server/phoenix_gpg_key.asc
-gpg --verify S*.asc || return 1
+gpg --verify S*.asc || { enter_continue "Something went wrong with importing the phoenix public key." ; return 1 ; }
 enter_continue "gpg verification$green passed$orange"
+shasum --verify ./SHASUMS.asc || { enter_continue "SHA256 verification$red failed." ; return 1 ; }
+enter_continue "SHA256 check passed"
 }
