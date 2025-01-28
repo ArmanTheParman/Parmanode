@@ -14,6 +14,8 @@ $cyan            stop)  $orange          Start Phoenix Server Daemon
 
 $cyan            info)  $orange          Information 
 
+$cyan            uninstall) $orange      Uninstall Phoenix
+
 ########################################################################################
 "
 choose "xpmq" ; read choice 
@@ -33,6 +35,9 @@ announce "Phoenix is a daemon (background process) running inside a Tmux contain
 
     To interactive with it, you need to use the command line. Parmanode has not
     been designed to do this for you like most other Apps it installs. Maybe one day."
+;;
+uninstall)
+uninstall_phoenix
 ;;
 *)
 invalid
