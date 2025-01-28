@@ -1,5 +1,5 @@
 function uninstall_parmanode {
-local file="$dp/installed.conf"
+
 set_terminal
 
 while true ; do
@@ -30,75 +30,187 @@ y|yes|YES|Y) break ;;
 esac
 done
 
-if grep -q "bitcoin" $file #checks if bitcoin is installed in install config file.
+if grep -q "bitcoin" $ic #checks if bitcoin is installed in install config file.
 then uninstall_bitcoin #confirmation inside function 
 set_terminal
 else 
 set_terminal
 fi #ends if bitcoin installed/unsinstalled
 
-if grep -q "fulcrum" $file 
+if grep -q "fulcrum" $ic 
 then uninstall_fulcrum #both linux & mac, confirmations inside functions
 set_terminal
 fi
 
-if grep -q "btcpay" $file 
+if grep -q "btcpay" $ic 
 then uninstall_btcpay # confirmation inside function, linux and mac.
 set_terminal
 fi
 
-if grep -q "electrum" $file 
+if grep -q "electrum-" $ic
 then
 uninstall_electrum
 set_terminal
 fi
 
-if grep -q "lnd" $file 
-then
+if grep -q "lnd" $ic ; then
 uninstall_lnd
 set_terminal
 fi
 
 
-if grep -q "rtl" $file 
+if grep -q "rtl" $ic
 then
 uninstall_rtl #Confirmation inside function
 set_terminal
 fi
 
-if grep -q "sparrow" $file 
+if grep -q "sparrow" $ic
 then
 uninstall_sparrow
 set_terminal
 fi
 
-if grep -q "tor-server" $file 
+if grep -q "tor-server" $ic
 then
 uninstall_tor_webserver
 set_terminal
 fi
 
-if grep -q "specter" $file 
+if grep -q "specter" $ic
 then
 uninstall_specter
 set_terminal
 fi
 
-if grep -q "electrs" $file 
+if grep -q "electrs" $ic
 then
 uninstall_electrs
 set_terminal
 fi
 
-if grep -q "btcrpcexplorer" $file
+if grep -q "btcrpcexplorer" $ic
 then
 uninstall_btcrpcexplorer
 set_terminal
 fi
 
-if grep -q "parmanshell" $file 
+if grep -q "parmanshell" $ic
 then
 uninstall_parmanshell
+set_terminal
+fi
+
+if grep -q "X11" $ic
+then
+uninstall_X11
+set_terminal
+fi
+
+if [[ -e $hp/parman_books ]] ; then
+yesorno "Remove Parman_Books?" && rm -rf $hp/parman_books
+set_terminal
+fi
+
+if grep -q "green" $ic ; then
+uninstall_green
+set_terminal
+fi
+
+if grep -q "joinmarket" $ic ; then
+uninstall_joinmarket
+set_terminal
+fi
+
+if grep -q "btcrecover" $ic ; then
+uninstall_btcrecover
+set_terminal
+fi
+
+if grep -q "parmanostr" $ic ; then
+uninstall_parmanostr
+set_terminal
+fi
+
+if grep -q "nextclour" $ic ; then
+uninstall_nextcloud
+set_terminal
+fi
+if grep -q "litd" $ic ; then
+uninstall_litd
+set_terminal
+fi
+
+if grep -q "nostrrelay" $ic ; then
+uninstall_nostrrelay
+set_terminal
+fi
+if grep -q "litd" $ic ; then
+uninstall_litd
+set_terminal
+fi
+if grep -q "website" $ic ; then
+uninstall_website
+set_terminal
+fi
+if grep -q "thunderhub" $ic ; then
+uninstall_thunderhub
+set_terminal
+fi
+if grep -q "electrumx" $ic ; then
+uninstall_electrumx
+set_terminal
+fi
+if grep -q "public_pool" $ic ; then
+uninstall_public_pool
+set_terminal
+fi
+if grep -q "torssh" $ic ; then
+uninstall_torssh
+set_terminal
+fi
+if grep -q "mempool" $ic ; then
+uninstall_mempool
+set_terminal
+fi
+if grep -q "qbittorrent" $ic ; then
+uninstall_qbittorrent
+set_terminal
+fi
+if grep -q "torb" $ic ; then
+uninstall_torbrowser
+set_terminal
+fi
+if grep -q "torrelay" $ic ; then
+uninstall_torrelay
+set_terminal
+fi
+if grep -q "pihole" $ic ; then
+uninstall_pihole
+set_terminal
+fi
+if grep -q "anydesk" $ic ; then
+uninstall_anydesk
+set_terminal
+fi
+if grep -q "parmabox" $ic ; then
+uninstall_parmabox
+set_terminal
+fi
+if grep -q "ledger" $ic ; then
+uninstall_ledger
+set_terminal
+fi
+if grep -q "bitbox" $ic ; then
+uninstall_bitbox
+set_terminal
+fi
+if grep -q "trezor" $ic ; then
+uninstall_trezor
+set_terminal
+fi
+if grep -q "lnbits" $ic ; then
+uninstall_lnbits
 set_terminal
 fi
 
