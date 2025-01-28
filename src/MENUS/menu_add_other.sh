@@ -214,15 +214,8 @@ pho|PHO)
     if [[ -n $phoenix_n ]] ; then
     install_phoenix
     return 0
-    fi
     ;;
 
-# pool|Pool|POOL) 
-#         if [[ -n $public_pool_n ]] ; then
-#             install_public_pool
-#             return 0
-#         fi
-#;;
 
 *)
 invalid
