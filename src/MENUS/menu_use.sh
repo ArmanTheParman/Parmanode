@@ -507,6 +507,15 @@ else invalid
 fi
 ;;
 
+pho)
+if [[ $phoenixapp == 1 ]] ; then
+menu_phoenix
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
+else invalid
+fi
+;;
+
+
 *)
    invalid
    clear

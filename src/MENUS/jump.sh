@@ -354,6 +354,22 @@ else return 1
 fi
 ;;
 
+x11)
+if grep -q "X11-end" $ic ; then
+menu_X11
+invalid_flag=set
+else return 1
+fi
+;;
+
+upho)
+if grep -q "phoenix-end" $ic ; then
+menu_phoenix
+invalid_flag=set
+else return 1
+fi
+;;
+
 ujoin|mjoin)
 if grep -q "joinmarket-end" $ic ; then
 menu_joinmarket
