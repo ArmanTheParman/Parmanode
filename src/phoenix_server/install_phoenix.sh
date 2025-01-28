@@ -1,7 +1,7 @@
 function install_phoenix {
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
 
-if [[ $chip != "x86_64" ]] && [[ $chip != "aarch64" ]] && [[ $(file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
+if [[ $(uname -m) != "x86_64" ]] && [[ $(uname -m) != "aarch64" ]] && [[ $(file /bin/bash | cut -d " " -f 3 ) == "64-bit" ]] ; then
 yesorno "Non-64 bit architecture detected. It's unlikely to work if you
     proceed, but Parmanode could be wrong.
 
