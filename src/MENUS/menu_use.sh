@@ -519,7 +519,7 @@ fi
 ;;
 
 pm)
-rpm
+rpm || enter_continue
 ;;
 
 *)
