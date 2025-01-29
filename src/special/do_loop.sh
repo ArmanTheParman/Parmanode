@@ -125,7 +125,8 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
 if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
-rossisfree || motd
+rossisfree 
+motd
 fi
 
 jump $1
