@@ -519,7 +519,7 @@ fi
 ;;
 
 pm)
-rpm || enter_continue
+$pp/parminer/run_parminer.sh
 ;;
 
 *)
