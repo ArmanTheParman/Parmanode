@@ -518,6 +518,9 @@ else invalid
 fi
 ;;
 
+pm)
+rpm
+;;
 
 *)
    invalid
