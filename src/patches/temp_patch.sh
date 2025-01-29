@@ -17,6 +17,9 @@ if [[ -e /.dockerenv && -z $USER ]] ; then
     echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >$dn 2>&1
 fi
 
+#delete Nov 2026
+sudo rm -rf $dp/temp >$dn 2>&1
+
 #keep checking in case user declines
 tmux_patch
 
