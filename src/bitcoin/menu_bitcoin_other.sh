@@ -165,20 +165,20 @@ set_terminal_custom 55 ; echo -e "
             $green$HOME/.bitcoin$orange also becomes a symlink, pointing to the 
             external drive. It's beautiful, right? I think it is.
        
-       3)   If you look for the .bitcoin directory, you woni't normally see it unless
+       4)   If you look for the .bitcoin directory, you won't normally see it unless
             you know the tricks to show hidden files/directories (ask Google or 
             ChatGPT if you need help).
 
-       4)   Parmanode signals to itself what kind of drive (internal/external) 
+       5)   Parmanode signals to itself what kind of drive (internal/external) 
             Bitcoin is syncing to by writing the line 'drive=external' or
             'drive=internal' in the file$green $dp/parmanode.conf$orange
 
-       5)   If after you do some non-standard adjustments, Parmanode has got it wrong, 
+       6)   If after you do some non-standard adjustments, Parmanode has got it wrong, 
             you can add the necessary line to the parmanode.conf file. This will help
             the Parmanode menu's display correctly, and any other alerts/checks to
             work properly.
 
-       6)   Parmanode also adds a line about the drive in the$red /etc/fstab$orange file on
+       7)   Parmanode also adds a line about the drive in the$red /etc/fstab$orange file on
             Linux machines. This is part of the 'import' process, so that the drive
             always mounts when you reboot the computer, and Bitcoin Core can
             start up properly.$red I strongly recommend you don't fiddle with this file
