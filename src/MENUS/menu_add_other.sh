@@ -214,8 +214,8 @@ pho|PHO)
     if [[ -n $phoenix_n ]] ; then
     install_phoenix
     return 0
+    fi
     ;;
-
 
 *)
 invalid
