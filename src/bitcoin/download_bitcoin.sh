@@ -109,21 +109,22 @@ fi
 
 if [[ $OS == Linux ]] ; then
 set_terminal
-mkdir $HOME/.parmanode/temp/ >$dn 2>&1
-tar -xf bitcoin-* -C $HOME/.parmanode/temp/ >$dn 2>&1
+mkdir $dp/temp/ >$dn 2>&1
+tar -xf bitcoin-* -C $dp/temp/ >$dn 2>&1
 
 # Move bitcoin program files to new directory.
 # All binaries go to $HOME/parmanode/bitcoin.
-mv $HOME/.parmanode/temp/bit*/* $HOME/parmanode/bitcoin/
+mv $$dp/temp/bit*/* $hp/bitcoin/
 
 #delete sample bitcoin.conf to avoid confusion.
-rm $HOME/parmanode/bitcoin/bitcoin.conf 
+rm $hp/bitcoin/bitcoin.conf 
 
 # "installs" bitcoin and sets to writing to only root for security. Read/execute for group and others. 
 # makes target directories if they don't exist
 # "install" is just a glorified copy command
-sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $HOME/parmanode/bitcoin/bin/*
+sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/bitcoin/bin/*
 
-sudo rm -rf $HOME/parmanode/bitcoin/bin
+sudo rm -rf $hp/bitcoin/bin
+sudo rm -rf $dp/temp >$dn 2>&1
 fi
 }
