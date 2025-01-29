@@ -21,6 +21,10 @@ echo -en "
 #                                                                                      #
 #$cyan              (cl)$orange      Core Lightning                                                #
 #                                                                                      #
+#$cyan              (cl)$orange      Core Lightning                                                #
+#                                                                                      #
+#$cyan              (pm)$orange      ParMiner                                                      #
+#                                                                                      #
 #                                                                                      #
 ########################################################################################
 "
@@ -75,6 +79,9 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
     command line or other means. Core Lightning may be implemende within Parmanode in 
     the future." 
 ;;
+pm)
+get_parminer
+;;
 *)
     invalid
     continue
@@ -85,4 +92,3 @@ done
 return 0
 
 }
-
