@@ -19,7 +19,7 @@ echo -e "
 
 
 "
-if [[ -e $pp/parminer ]] ; then parminerapp=1
+if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$orange         ParMiner
                             " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
