@@ -28,7 +28,7 @@ fi
 if check_for_partial_installs ; then
     export partial_install="${red}Warning: You have partially installed programs. See Remove menu.$orange"
 else
-    unset partial_install
+    partial_install="                                                       Computer IP: $IP"
 fi
 
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
