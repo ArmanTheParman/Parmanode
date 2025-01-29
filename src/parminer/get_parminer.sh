@@ -15,6 +15,7 @@ return 1
 fi
 
 #wont work unless authentication valid
+if [[ -e $hp/parminer ]] ; then announce "ParMiner already downloaded" ; return 1 ; fi
 git clone git@github.com:armantheparman/parminer $hp/parminer
 success "ParMiner has been downloaded."
 }
