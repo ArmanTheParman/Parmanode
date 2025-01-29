@@ -28,7 +28,15 @@ fi
 if check_for_partial_installs ; then
     export partial_install="${red}Warning: You have partially installed programs. See Remove menu.$orange"
 else
-    partial_install="                                                       Computer IP: $IP"
+    #if no partial installs, realestate for the message will be the IP address
+    if [[ $OS == "Mac" ]] ; then 
+        ComputerName="Mac" 
+    else 
+        ComputerName=$(cat /etc/hostname) 
+        if [[ $(cat /etc/hostname | wc -c) -gt 14 ]] ; then ComputerName="Computer" ; fi
+    fi
+
+    partial_install="                                               $ComputerName IP: $IP"
 fi
 
 # if statements in the menu printout makes the menu dynamic, ie changes according to the

@@ -2,6 +2,8 @@ Version 3.52.0
     -Phoenix Server added
     -Update full Parmanode uninstall
     -Improvements to Mempool start/stop/restart
+    -Main menu: IP address
+    -ParMiner: For ParmanodLs only
 Version 3.51.1
     -Patch 8
 Version 3.50.0
