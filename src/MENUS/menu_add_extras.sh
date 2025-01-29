@@ -15,7 +15,7 @@ echo -en "
 #                                                                                      #
 #$cyan              (h)$orange       HTOP - check system resources                                 #
 #                                                                                      #
-#$cyan              (u)$orange       Add UDEV rules for HWWs (only needed for Linux)               #
+#$cyan              (udev)$orange    Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
 #$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
@@ -46,7 +46,7 @@ h|H|htop|HTOP|Htop)
     htop
 ;;
 
-u|U|udev|UDEV)
+udev|UDEV)
 
     if grep -q udev-end $dp/installed.conf ; then
     announce "udev already installed."
