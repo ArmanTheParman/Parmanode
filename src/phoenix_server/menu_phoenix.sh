@@ -10,7 +10,7 @@ set_terminal ; echo -e "
 
 $cyan            start) $orange          Start Phoenix Server Daemon
 
-$cyan            stop)  $orange          Start Phoenix Server Daemon
+$cyan            stop)  $orange          Stop Phoenix Server Daemon
 
 $cyan            info)  $orange          Information 
 
