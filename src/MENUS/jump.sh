@@ -388,6 +388,15 @@ bash)
 tmux new -s pnbash "bash=1 rp"
 ;;
 
+upm)
+if [[ -e $pp/parminer ]] ; then
+menu_parminer
+invalid_flag=set
+else
+return 1
+fi
+;;
+
 esac
 }
 
@@ -395,6 +404,6 @@ function jump_qpm {
 case $1 in
 q|Q) exit ;;
 p|P) return 1 ;;
-m|M) back2main ;;
+m|returnM) back2main ;;
 esac
 }
