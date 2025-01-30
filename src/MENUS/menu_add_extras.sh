@@ -111,7 +111,9 @@ num=1
 while [[ -e $HOME/Desktop/video_$num ]] ; do num=$((num + 1)) ; done
 
 
-announce "Hit <enter> to start recording your screen. File will be saved to $HOME/Desktop/video_$num
+announce "Hit$cyan <enter>$orange to start recording your screen. 
+    
+    The file will be saved to $HOME/Desktop/video_$num
 $red
     Once finished, hit <q> to stop recording and finalise the file. Then you can trim 
     it how you want. $orange"
