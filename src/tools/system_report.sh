@@ -6,6 +6,9 @@ clear ; echo -e "
     Parmanode will generate a System Report File automatically. It will
     then save the file to your desktop, and you can then email it to me for help.
 
+    You could also also do a screen video recording of the problem. There
+    is an option to do that in the tools menu.
+    
     Hit$cyan <enter>$orange to continue
 
 $red    'a'$orange and$cyan <enter>$orange to abort
