@@ -114,8 +114,8 @@ while [[ -e $HOME/Desktop/video_$num.mp4 ]] ; do num=$((num + 1)) ; done
 announce "Hit$cyan <enter>$orange to start recording your screen. Minimise
     the terminal and start doing stuff that you want to record.
 $red
-    Once finished, hit$blue q$red to stop recording and finalise the file. Then you can trim 
-    it how you want. $orange
+    Once finished, come back to this terminal and hit$blue q$red to stop recording 
+    and finalise the file. Then you can trim it how you want. $orange
     
     The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange"
 
