@@ -21,7 +21,7 @@ echo -en "
 #                                                                                      #
 #$cyan              (cl)$orange      Core Lightning                                                #
 #                                                                                      #
-#$cyan              (cl)$orange      Core Lightning                                                #
+#$cyan              (sr)$orange      Screen Video Recording                                        #
 #                                                                                      #
 #$cyan              (pm)$orange      ParMiner                                                      #
 #                                                                                      #
@@ -82,6 +82,11 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
 pm)
 get_parminer
 ;;
+
+sr)
+screen_video_recording
+;;
+
 *)
     invalid
     continue
@@ -90,5 +95,26 @@ esac
 done
 
 return 0
+
+}
+
+
+
+function screen_video_recording {
+
+which ffmpeg >$dn || { sudo apt-get update -y && sudo apt-get install ffmpeg -y ; }
+
+num=1
+	
+while [[ -e $HOME/Desktop/video_$num ]] ; do num=$((num + 1)) ; done
+
+
+announce "Hit <enter> to start recording your screen. File will be saved to $HOME/Desktop/video_$num
+$red
+    Once finished, hit <q> to stop recording and finalise the file. Then you can trim it how you want."
+
+ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0 $HOME/Desktop/video_$num
+
+enter_continue
 
 }
