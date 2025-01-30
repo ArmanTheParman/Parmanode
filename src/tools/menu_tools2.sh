@@ -22,6 +22,8 @@ $cyan              rf)$orange        Refresh Parmanode script directory
 
 $cyan              pass)$orange      Change computer login/sudo password
 
+$cyan              cc)$orange        See the IPs of all devices connected on your network
+
 $orange
 ########################################################################################
 "
@@ -65,6 +67,10 @@ set_terminal
 yesorno "Are you sure you want to change your computer's password? If yes, you'll
     first be asked for the old password, then the new one twice." || continue
 passwd && success "The password has been changed."
+;;
+
+cc)
+see_local_devices
 ;;
 
 *)
