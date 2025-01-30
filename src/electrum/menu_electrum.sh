@@ -11,6 +11,8 @@ set_terminal ; echo -e "
 ########################################################################################
 
 
+             CURRENT DETECTED ELECTRUM CONNECTION TYPE: $green$connection$orange
+
 
 $green            start) $orange          Start Electrum (opens in its own window)
          
@@ -89,6 +91,7 @@ done
 function electrum_connection_menu {
 
 while true ; do
+source $HOME/.parmanode/electrum.connection >$dn 2>&1
 set_terminal
 echo -e "
 ########################################################################################
