@@ -10,16 +10,19 @@ x=FulcrumSSL # fixing capitalisation for later variable usage
 fi
 
 if [[ $1 == fulcrumtcp ]] ; then
+debug "fulcrumtcp"
 server="127.0.0.1:50001:t"
 x=FulcrumTCP
 fi
 
 if [[ $1 == electrstcp || -z $1 ]] ; then
+debug "electrstcp"
 server="127.0.0.1:50005:t"
 x=electrsTCP
 fi
 
 if [[ $1 == electrsssl ]] ; then
+debug "electrsssl"
 server="127.0.0.1:50006:s"
 x=electrsSSL
 fi
@@ -35,7 +38,9 @@ echo "{
     \"show_addresses_tab\": true,
     \"show_utxo_tab\": true
 }" | tee $HOME/.electrum/config >$dn 2>&1
+debug "after tee"
 
 echo "connection=\"$x\"" > $HOME/.parmanode/electrum.connection
+debug "after electrum.connection file"
 
 }
