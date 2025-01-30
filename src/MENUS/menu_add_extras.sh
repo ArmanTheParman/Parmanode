@@ -111,12 +111,14 @@ num=1
 while [[ -e $HOME/Desktop/video_$num.mp4 ]] ; do num=$((num + 1)) ; done
 
 
-announce "Hit$cyan <enter>$orange to start recording your screen. 
-    
-    The file will be saved to $HOME/Desktop/video_$num.mp4
+announce "Hit$cyan <enter>$orange to start recording your screen. Minimise
+    the terminal and start doing stuff that you want to record.
 $red
-    Once finished, hit <q> to stop recording and finalise the file. Then you can trim 
-    it how you want. $orange"
+    Once finished, hit$blue q$red to stop recording and finalise the file. Then you can trim 
+    it how you want. $orange
+    
+    The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange"
+
 ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0 $HOME/Desktop/video_$num.mp4
 
 enter_continue
