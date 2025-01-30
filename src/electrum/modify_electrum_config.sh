@@ -1,10 +1,10 @@
 function modify_electrum_config {
 set_terminal
-enter_continue "Make sure Electrum has been shut down before proceeding."
+enter_continue "Reminder: Make sure Electrum has been shut down before proceeding."
 
 refresh_electrum_certs_cache_sockets
 
-if [[ $1 == fulcrumssl || -z $1 ]] ; then
+if [[ $1 == fulcrumssl ]] ; then
 server="127.0.0.1:50002:s"
 x=FulcrumSSL # fixing capitalisation for later variable usage
 fi
@@ -14,7 +14,7 @@ server="127.0.0.1:50001:t"
 x=FulcrumTCP
 fi
 
-if [[ $1 == electrstcp ]] ; then
+if [[ $1 == electrstcp || -z $1 ]] ; then
 server="127.0.0.1:50005:t"
 x=electrsTCP
 fi
