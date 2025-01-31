@@ -623,7 +623,7 @@ elif grep -q "X11-start" $HOME/.parmanode/installed.conf ; then
 X11_p="#                                      X11                                             #"
 else
    #not installed
-X11_n="#$cyan                            (x11)   $orange      X11                                         #"
+X11_n="#$cyan                            (X11)   $orange      X11                                         #"
 fi
 
 #Phoenix
