@@ -354,7 +354,7 @@ else return 1
 fi
 ;;
 
-x11)
+ux11)
 if grep -q "X11-end" $ic ; then
 menu_X11
 invalid_flag=set
