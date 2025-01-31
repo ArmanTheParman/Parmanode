@@ -203,7 +203,7 @@ next)
     fi
     ;;
 
-X11|x11)
+x11|X11)
     if [[ -n $X11_n ]] ; then
     install_X11
     return 0
