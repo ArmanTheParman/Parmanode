@@ -269,9 +269,9 @@ $red    more... $orange
 enter_continue ; jump $enter_cont
 
 if [[ $OS == Linux ]] ; then
-onion=$(cat /var/lib/tor/lnd-service/hostname)
+onion=$(sudo cat /var/lib/tor/lnd-service/hostname)
 else
-onion=$(cat /usr/local/var/lib/tor/lnd-service/hostname)
+onion=$(sudo cat /usr/local/var/lib/tor/lnd-service/hostname)
 fi
 
 set_terminal_custom 40 ; echo -e "
