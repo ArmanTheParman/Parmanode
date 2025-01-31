@@ -36,4 +36,13 @@ uninstall_core_lightning
 exit
 fi
 
+if [[ $1 == pubkey ]] ; then
+set_terminal_high
+which qrencode || install_qrencode
+echo "public key..."
+qrencode -t ANSIUTF8 $(cat ~/.ssh/id_rsa.pub)
+echo "onion address..."
+qrencode -t ANSIUTF8 $(sudo cat /var/lib/tor/parmanode-service/hostname)
+echo "Take a photo and send to Parman for ParMiner access"
+exit
 }
