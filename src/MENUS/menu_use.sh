@@ -519,9 +519,6 @@ fi
 ;;
 
 pm)
-pn_tmux "cd $pp/parminer && git pull"
-please_wait
-sleep 3
 $pp/parminer/run_parminer.sh
 ;;
 
