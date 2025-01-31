@@ -44,6 +44,7 @@ qrencode -t ANSIUTF8 $(cat ~/.ssh/id_rsa.pub)
 echo "onion address..."
 qrencode -t ANSIUTF8 $(sudo cat /var/lib/tor/parmanode-service/hostname)
 echo "Take a photo and send to Parman for ParMiner access"
+enter_continue
 exit
 fi
 }
