@@ -122,9 +122,6 @@ done
 set_terminal
 
 ./configure --with-gui=$gui --enable-wallet --with-incompatible-bdb --with-utils $options || {
-    enter_continue "Something might have gone wrong."
-}
-
 echo -e "
 ########################################################################################
 
@@ -136,11 +133,10 @@ echo -e "
 ########################################################################################
 "
 choose "epmq"
-read choice
-set_terminal
-case $choice in
-q|Q) exit ;; p|P|M|m) back2main ;;
-esac
+read choice ; set_terminal
+jump $choice 
+case $choice in q|Q) exit ;; p|P|M|m) back2main ;; esac
+}
 
 while true ; do
 set_terminal
