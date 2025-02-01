@@ -21,7 +21,7 @@ $orange
     -$cyan \"aa\"$orange give a printout of \"ls -lah\" in colour and refreshes screen 
     -$cyan \"..\"$orange an existing command but now combined with$cyan a$orange command. You'll
     -$cyan \"d\"$orange  changes directory to Desktop, and refreshes
-    -$cyan \"dl\"$orange changes to Downloads directory, and refrehes
+    -$cyan \"dl\"$orange changes to Downloads directory, and refreshes
     -$cyan \"pn\"$orange changes to the Parmanode script driectory
     -$cyan \"pp\"$orange changes to parman_programs directory
     -$cyan \"hp\"$orange stands for 'home parmanode' and changes to the parmanode apps directory
