@@ -69,9 +69,9 @@ echo -e "
               $cyan    127.0.0.1:50006:s    $yellow (From this computer only)$orange 
               $cyan    $IP:50006:s          $yellow \e[G\e[41G(From any home network computer)$orange
                   "
-      if [[ -z $ONION_ADDR_ELECTRS ]] ; then
+      if [[ -z $ONION_ADDR_ELECTRS ]] && [[ $E_tor_logic == "on" ]] ; then
          echo -e "                  PLEASE WAIT A MOMENT AND REFRESH FOR ONION ADDRESS TO APPEAR"
-      else
+      elif [[ -n $ONION_ADDR_ELECTRS ]] ; then
          echo -e "
       TOR:$bright_blue 
                   $ONION_ADDR_ELECTRS:7004:t $orange
