@@ -81,6 +81,7 @@ set_terminal ; echo "Please run Docker and hit enter to try again." ; enter_cont
   fi
 fi
 docker system prune
+enter_continue
 break
 ;;
 
