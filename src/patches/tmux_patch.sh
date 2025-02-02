@@ -1,7 +1,6 @@
 function tmux_patch {
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 
-if grep -q "tmux" $hm 2>$dn ; then return ; fi
 if which tmux >$dn 2>&1 ; then return 0 ; fi
 
 while true ; do
@@ -21,8 +20,6 @@ $green
 $red
                     n)$orange       Nah, go away
 $red
-                    nooo)$orange    No, and don't ask again
-$orange
 ########################################################################################
 "
 choose xpmq ; read choice
@@ -34,9 +31,6 @@ fi
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n)
-break ;;
-nooo)
-hide_messages_add "tmux" "1" 
 break ;;
 y)
 install_tmux
