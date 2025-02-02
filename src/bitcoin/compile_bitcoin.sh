@@ -94,9 +94,11 @@ $orange
    Hit$green <enter>$orange to continue, or,$yellow type in$orange additional options you
    may have researched yourself and would like to include, then hit$green <enter>$orange
 
+   The default will be chosen in 30 seconds
+
 ########################################################################################
 "
-read options
+read -t 30 options || options=""
 clear
 case $options in
 "") break ;;
@@ -130,10 +132,12 @@ echo -e "
     Otherwise exit, and correct the error yourself, or report to Parman via Telegram 
     chat group for help.
 
+    Continuing compiling in 10 seconds.
+
 ########################################################################################
 "
 choose "epmq"
-read choice ; set_terminal
+read -t 10 choice || choice="" ; set_terminal
 jump $choice 
 case $choice in q|Q) exit ;; p|P|M|m) back2main ;; esac
 }
@@ -155,9 +159,13 @@ $pink
     FYI, the j value is the number of core processors to use to compile. Parmanode
     has worked out the max value for you.
 $orange
+
+    Continuing with default in 10 seconds.
+
 ########################################################################################
 "
-read choice
+read -t 10 choice 
+
 if [[ $choice != o ]] ; then j=$(nproc) ; break ; fi
 
 clear
@@ -199,10 +207,13 @@ $cyan
 $green
     $HOME/.parmanode/bitcoin_compile_check.log
 $orange
+
+    Hit$cyan <enter>$orange to continue, or continuing in 10 seconds.
+
 ########################################################################################
 
 "
-enter_continue
+read -t 10
 please_wait_no_clear
 
 sudo make -j $j check | tee $dp/bitcoin_compile_check.log
@@ -211,7 +222,7 @@ echo -e "$orange
 ########################################################################################
 
     Tests done. Hit $cyan<enter>$orange to continue on to the installation (copies binaries
-    to system wide directories).
+    to system wide directories) Continuing in 10 seconds.
 
     If you saw errors, hit$cyan x$orange to abandon the installation. You would need 
     to then uninstall the partial bitcoin installation before you can try again.
@@ -225,7 +236,7 @@ echo -e "$orange
 ########################################################################################
 "
 choose "xpmq"
-read choice
+read -t 10 choice || choice=""
 clear
 case $choice in
 q|Q) exit 0 ;; p|P|M|m|x|X) back2main ;;
