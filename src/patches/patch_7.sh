@@ -11,7 +11,7 @@ fi
 
 #no longer needed
 nogsedtest
-if cat $cp 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
+if cat $pc 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
 gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
 fi
 
