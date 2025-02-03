@@ -4,6 +4,7 @@ function edit_user_pass_fulcrum_conf {
 unset rpcuser rpcpassword
 source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 
+nogsedtest
 sudo gsed -i "/rpcuser/d" $fc
 sudo gsed -i "/rpcpassword/d" $fc
 

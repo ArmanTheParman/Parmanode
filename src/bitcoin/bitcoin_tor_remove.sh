@@ -1,5 +1,6 @@
 function bitcoin_tor_remove {
 
+nogsedtest
 
 stop_bitcoin
 #delete...

@@ -27,6 +27,7 @@ tmux_patch
 if [[ $OS == "Mac" ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 #if sed finds opt/homebrew/bin at the end of the current path, delete that line.
 #if /opt/homebrew/bin isn't at the beginning of the path, add it to the start of the path.
+nogsedtest
     if cat $bashrc 2>$dn | grep -q "$PATH:/opt/homebrew/bin" ; then
         debug "1b"        sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
     fi

@@ -39,6 +39,7 @@ return 0
 }
 
 function set_rtl_password {
+nogsedtest
 new_password="$1"
 sudo gsed -i "/multiPass/c\\\"multiPass\": \"$new_password\"," "$HOME/parmanode/rtl/RTL-Config.json"
 }

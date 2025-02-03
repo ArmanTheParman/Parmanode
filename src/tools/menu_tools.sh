@@ -125,6 +125,7 @@ if ! yesorno "\n
                             sudo apt-get upgrade -y $orange
     " ; then
     #chose disable
+    nogsedtest
     sudo gsed -i '/computer_upgrade_script/d' /etc/crontab
     sudo systemctl reload cron >$dn 2>&1
     announce "Computer auto-updates disabled"

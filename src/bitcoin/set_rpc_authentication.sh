@@ -76,6 +76,7 @@ p|P) return 1 ;; q|Q|Quit|QUIT) exit 0 ;; m|M) back2main ;;
 				;;
 	c)
 	            stop_bitcoin
+				nogsedtest
                 sudo gsed -i "/rpcuser/d" $bc && unset rpcuser
                 sudo gsed -i "/rpcpassword/d" $bc && unset rpcpassword
 

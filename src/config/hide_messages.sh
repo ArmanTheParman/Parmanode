@@ -10,6 +10,7 @@ return 0
 }
 
 function hide_messages_remove {
+nogsedtest
 label=$1
 gsed -i "/message_$label=/d" $hm >$dn 2>&1
 debug "hmr done"

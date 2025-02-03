@@ -1,4 +1,5 @@
 function apply_prune_bitcoin_conf {
+nogsedtest
 file="$db/bitcoin.conf"
 if [[ $1 == umbrel ]] ; then export prune=0 ; file="$mount_point/.bitcoin/bitcoin.conf" ; fi
 

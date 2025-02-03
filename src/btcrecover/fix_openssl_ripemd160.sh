@@ -1,4 +1,5 @@
 function fix_openssl_ripemd160 {
+nogsedtest
 opensslconf="$(openssl info -configdir)/openssl.cnf"
 if [[ -e ${opensslconf}_backup ]] ; then
 sudo cp ${opensslconf}_backup $opensslconf  #restores original

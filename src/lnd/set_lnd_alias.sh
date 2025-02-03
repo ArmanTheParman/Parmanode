@@ -1,4 +1,5 @@
 function set_lnd_alias {
+nogsedtest
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

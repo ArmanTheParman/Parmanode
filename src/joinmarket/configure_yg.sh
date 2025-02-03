@@ -1,5 +1,6 @@
 function configure_yg {
 
+nogsedtest
 if [[ $OS == "Linux" ]] && ! which bc >$dn 2>&1 ; then
     yesorno "Parmanode needs to install a tiny calculator, bc. OK?" && {
     echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange"

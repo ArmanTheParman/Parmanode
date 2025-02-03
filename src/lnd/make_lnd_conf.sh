@@ -1,6 +1,6 @@
 function make_lnd_conf {
 file="$HOME/.lnd/lnd.conf"
-
+nogsedtest
 source $HOME/.bitcoin/bitcoin.conf
 
 get_extIP >$dn 2>&1

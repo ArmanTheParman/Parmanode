@@ -10,6 +10,7 @@ docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
 
 #no longer needed
+nogsedtest
 if cat $cp 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
 gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
 fi

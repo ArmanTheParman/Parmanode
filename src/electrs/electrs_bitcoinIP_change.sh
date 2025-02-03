@@ -1,5 +1,5 @@
 function electrs_bitcoinIP_change {
-
+nogsedtest
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################

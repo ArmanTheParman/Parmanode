@@ -1,5 +1,5 @@
 function bitcoin_tor {
-
+nogsedtest
 install_tor
 
 if [[ ! -e $varlibtor ]] ; then mkdir -p $varlibtor >$dn 2>&1 ; fi

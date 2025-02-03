@@ -1,5 +1,6 @@
 function disable_electrum_tor {
 
+nogsedtest
 set_terminal
 enter_continue "Make sure Electrum has been completely shut down before proceeding."
 

@@ -1,5 +1,5 @@
 function patch_8 {
-
+nogsedtest
 if [[ $OS == Linux ]] ; then
 
     rm $hp/startup_scripts/rtl_startup.sh >$dn 2>&1
@@ -24,10 +24,10 @@ parmanode_conf_add "patch=8"
 ########################################################################################
 
 function reduce_systemd_logs {
+nogsedtest
 if [[ $OS == Linux ]] ; then
 sudo journalctl --vacuum-size=500M >$dn 2>&1
-sudo gsed -iE 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
-debug "pause rsl"
+sudo test -f /etc/systemd/journald.conf && sudo gsed -iE 's/^.*SystemMaxUse.*$/SystemMaxUse=500M/' /etc/systemd/journald.conf >$dn 2>&1
 fi
 }
 
@@ -44,3 +44,4 @@ git pull" "linux book patch"
 
 fi
 }
+

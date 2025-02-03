@@ -17,6 +17,7 @@ function write_to_fstab {
 }
 
 function write_to_fstab2 {
+        nogsedtest
         # can't export everything, need grep, becuase if Label has spaces, causes error.
         export $(sudo blkid -o export $disk | grep TYPE)
         export $(sudo blkid -o export $disk | grep UUID)

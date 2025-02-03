@@ -24,7 +24,7 @@ deactivate >/dev/null 2>&1
 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
-#make sure gsed words early, but after loading variables. 
+#make sure gsed works early, but after loading variables. 
 #The sed command is not consistent between Linux and Mac,
 #so I'll always use gsed (works on Mac like sed on Linux) and on Linux, the symlink
 #gsed will point to sed, making code easier to write and read.

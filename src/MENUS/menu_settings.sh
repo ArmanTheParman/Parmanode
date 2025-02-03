@@ -23,9 +23,11 @@ q|Q) exit ;; p|P|"") return 1 ;; m|M) back2main ;;
 c|C) change_colours ; return 0 ;;
 an)
 if [[ $announcements == off ]] ; then
+nogsedtest
 sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=on" | tee -a $hm 
 else
+nogsedtest
 sudo gsed -i "/announcements=/d" $hm 
 echo "announcements=off" | tee -a $hm
 fi

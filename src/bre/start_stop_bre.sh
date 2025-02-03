@@ -1,4 +1,5 @@
 function start_bre {
+nogsedtest
 if [[ $computer_type == Pi || $OS == Mac ]] ; then bre_docker_start ; return 0 ; fi
 
 check_config_bre || return 1

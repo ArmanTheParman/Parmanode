@@ -1,5 +1,6 @@
 #deprecated
 function swap_fulcrum_drive {
+nogsedtest
 # The docker version volume mounts to the external/internal drive at run
 # command. To change it, it's more complicated, will do that later for Mac.
 if [[ $OS == Mac ]] ; then no_mac ; return 0 ; fi

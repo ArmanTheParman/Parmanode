@@ -1,5 +1,6 @@
 function electrs_edit_user_pass {
 unset file
+nogsedtest
 local file="$HOME/.electrs/config.toml"
 
 if [[ $3 != remote ]] ; then # $3 used in function fulcrum_to_remote

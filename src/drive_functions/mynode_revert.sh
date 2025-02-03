@@ -1,5 +1,6 @@
 function mynode_revert {
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
+nogsedtest
 cd 
 set_terminal ; echo -e "
 ########################################################################################

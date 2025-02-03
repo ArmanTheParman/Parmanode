@@ -101,7 +101,7 @@ fi
 }
 
 function fix_bitcoin_conf {
-
+nogsedtest
 if [[ ! -e $bc ]] ; then return 0 ; fi
 
 add_rpcbind

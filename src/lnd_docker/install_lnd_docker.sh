@@ -1,4 +1,5 @@
 function install_lnd_docker {
+nogsedtest
 set_terminal
 export install=lnddocker
 export lndversion="v0.17.3-beta"

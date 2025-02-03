@@ -1,4 +1,5 @@
 function change_mempool_backend {
+nogsedtest
 while true ; do
 set_terminal
 echo -e "
@@ -56,12 +57,14 @@ done
 }
 
 function choose_bitcoin_for_mempool {
+nogsedtest
 export file="$hp/mempool/docker/docker-compose.yml"
 sudo gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"none\"" $file
 unset file
 }
 
 function choose_electrs_for_mempool {
+nogsedtest
 export file="$hp/mempool/docker/docker-compose.yml"
 sudo gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
 sudo gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50005\""  $file
@@ -69,6 +72,7 @@ unset file
 }
 
 function choose_fulcrum_for_mempool {
+nogsedtest
 export file="$hp/mempool/docker/docker-compose.yml"
 sudo gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
 sudo gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50001\"" $file
@@ -76,6 +80,7 @@ unset file
 }
 
 function choose_electrumx_for_mempool {
+nogsedtest     
 export file="$hp/mempool/docker/docker-compose.yml"
 sudo gsed -i "/ MEMPOOL_BACKEND:/c\      MEMPOOL_BACKEND: \"electrum\""  $file
 sudo gsed -i "/ ELECTRUM_PORT:/c\      ELECTRUM_PORT: \"50007\""  $file

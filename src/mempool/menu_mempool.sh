@@ -1,7 +1,7 @@
 function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
-
+nogsedtest
 #gsed on Macs creates a backup with an E at the end.
 #I can use -i "" to eliminate this, but it complicates the code. I need 
 #exactly the same code to work on Linux and Mac.

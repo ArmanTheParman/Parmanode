@@ -1,7 +1,7 @@
 #deprecated
 return 0
 function bitcoin_core_choice_fulcrum {
-
+nogsedtest
 set_terminal ; echo -e "
 ########################################################################################
 

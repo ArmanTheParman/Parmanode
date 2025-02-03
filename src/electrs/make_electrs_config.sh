@@ -1,6 +1,7 @@
 function make_electrs_config {
 local file="$HOME/.electrs/config.toml"
 
+nogsedtest
 mkdir -p $HOME/.electrs >$dn 2>&1
 
 if [[ $install_electrs_docker_variable == "false" ]] ; then
