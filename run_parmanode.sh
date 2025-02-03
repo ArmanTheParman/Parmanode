@@ -9,7 +9,9 @@
 #comment and not code.
 
 #soucing executes files, and loads functions to the memory, making them available to the program
-source ./src/special/do_loop.sh || { echo "unable to source ./src/special/do_loop.sh" && exit ; }
+source $HOME/parman_programs/parmanode/src/special/do_loop.sh || { 
+    echo "unable to source $HOME/parman_programs/parmanode/src/special/do_loop.sh" && exit 
+    }
 #an error signal returns a non-zero value to the or operator ||, from the left-hand side, and
 #triggers execution of the code on the right-hand side.
 

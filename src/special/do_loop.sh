@@ -22,13 +22,8 @@ deactivate >/dev/null 2>&1
 		# this program.  
 	done #ends the loop
 
-parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
-
-#make sure gsed works early, but after loading variables. 
-#The sed command is not consistent between Linux and Mac,
-#so I'll always use gsed (works on Mac like sed on Linux) and on Linux, the symlink
-#gsed will point to sed, making code easier to write and read.
 gsed_symlink 
+parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
 
 set_colours #just exports variables with colour settings to make it easier to code with colours
             #parmanode.conf later may override theme

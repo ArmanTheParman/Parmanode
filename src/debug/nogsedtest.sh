@@ -1,3 +1,4 @@
 function nogsedtest {
-! which gsed >$dn ; then touch $dp/.nogsed ; echo "called by ${FUNCNAME[1]}, $(date)" >> $dp/.nogsed ; fi
+touch $HOME/.nogsed ; echo "called by ${FUNCNAME[1]}, $(date)" >> $HOME/.nogsed 
+#   if ! which gsed >/dev/null ; then touch $HOME/.nogsed ; echo "called by ${FUNCNAME[1]}, $(date)" >> $HOME/.nogsed ; fi
 }
