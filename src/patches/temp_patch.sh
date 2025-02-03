@@ -27,23 +27,23 @@ tmux_patch
 if [[ $OS == "Mac" ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 #if sed finds opt/homebrew/bin at the end of the current path, delete that line.
 #if /opt/homebrew/bin isn't at the beginning of the path, add it to the start of the path.
-    if grep -q "$PATH:/opt/homebrew/bin" $bashrc ; then
+    if cat $bashrc 2>$dn | grep -q "$PATH:/opt/homebrew/bin" ; then
         debug "1b"        sudo gsed -i "/\$PATH:\/opt\/homebrew\/bin/d" $bashrc
     fi
-    if ! grep -q "PATH=/opt/homebrew/bin" $bashrc ; then
+    if ! cat $bashrc 2>$dn | grep -q "PATH=/opt/homebrew/bin" ; then
         echo "PATH=/opt/homebrew/bin:\$PATH" | sudo tee -a $bashrc >$dn 2>&1
     fi
 fi
 
 #leave in temp patch because a single time patch may fail, as docker needs to be running
 #remove June 2025 - make sure all electrs docker has socat installed
-if grep -q "electrsdkr" $ic ; then
+if cat $ic 2>$dn | grep -q "electrsdkr" ; then
     if ! docker exec -it electrs bash -c "which socat" >$dn 2>&1 ; then
         docker exec -d electrs bash -c "sudo apt-get install socat -y" >$dn 2>&1
     fi
 fi
 
-if [[ $OS == "Linux" ]] && grep -q "electrs" $ic && ! grep -q "electrsdkr" $ic && ! grep -q "StandardOutput" /etc/systemd/system/electrs.service ; then
+if [[ $OS == "Linux" ]] && cat $ic 2>$dn | grep -q "electrs" && ! cat $ic 2>$dn | grep -q "electrsdkr" && ! cat /etc/systemd/system/electrs.service 2>$dn | grep -q "StandardOutput" ; then
 please_wait
 echo -e "${green}Once off, adjusting electrs service file real quick\n$orange"
 sudo gsed -i '/\[Install\]/i\
@@ -55,17 +55,17 @@ fi
 #remove in 2025
 #because of version2 of electrs install, small bug introduced in the
 #install detection. This fixes it.
-if grep -q "electrs-start" $ic && grep -q "electrs2-end" $ic ; then
+if cat $ic 2>$dn | grep -q "electrs-start" && cat $ic 2>$dn | grep -q "electrs2-end" ; then
 sudo gsed -i "/electrs-start/d" $ic 
 parmanode_conf_add "electrs2-start"
 fi
 
-if ! grep -q "parmashell" $bashrc ; then
+if ! cat $bashrc 2>$dn | grep -q "parmashell" ; then
 uninstall_parmashell silent ; install_parmashell
 fi
 
 #Leave until Mac has a non-docker fulcrum option
-if [[ $OS == Mac ]] && grep -q "fulcrum-end" $ic ; then
+if [[ $OS == Mac ]] && cat $ic 2>$dn | grep -q "fulcrum-end" ; then
 sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
 sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
 log "fulcrum" "changed fulcrum-end to fulcrumdkr-end" 
@@ -94,7 +94,7 @@ function fulcrum_service_patch {
 if [[ $OS == Mac ]] ; then return 0 ; fi
 
 local file="/etc/systemd/system/fulcrum.service"
-if sudo test -f $file >$dn 2>&1 && grep -q "fulcrum.log" $file ; then 
+if sudo test -f $file >$dn 2>&1 && cat $file 2>$dn | grep -q "fulcrum.log" ; then 
     return 0
 elif sudo test -f $file >$dn 2>&1 ; then #fulcrum.log doesn't exist in file, therefore it's an old version. Remake.
     make_fulcrum_service_file
@@ -103,7 +103,7 @@ fi
 
 function fulcrum_delete_old_log {
 oldfile="/home/parman/parmanode/fulcrum/fulcrum.log"
-if grep -q "fulcrumdkr" $ic && docker ps 2>$dn | grep -q "fulcrum" >$dn \
+if cat $ic 2>$dn | grep -q "fulcrumdkr" && docker ps 2>$dn | grep -q "fulcrum" >$dn \
 && docker exec -it fulcrum test -e $oldfile ; then
     announce "Parmanode needs to make some smol adjustments to Fulcrum"
     docker_stop_fulcrum
@@ -116,12 +116,12 @@ fi
 
 function remove_tor_log_patch {
 
-if [[ -e $torrc ]] && grep -q "tornoticefile" $torrc ; then
+if [[ -e $torrc ]] && cat $torrc 2>$dn | grep -q "tornoticefile" ; then
 sudo gsed -i '/^.*tornoticefile\.log.*$/d' $torrc >$dn 2>&1
 needrestarttor="true"
 fi
 
-if [[ -e $torrc ]] && grep -q "torinfofile" $torrc ; then
+if [[ -e $torrc ]] && cat $torrc 2>$dn | grep -q "torinfofile" ; then
 needrestarttor="true"
 sudo gsed -i '/^.*torinfofile\.log.*$/d'   $torrc >$dn 2>&1
 fi

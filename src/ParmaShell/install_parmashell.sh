@@ -1,10 +1,10 @@
 function install_parmashell {
-if grep -q "parmashell-end" $ic ; then return ; fi
+if grep -q "parmashell-end" $ic 2>$dn ; then return ; fi
 
 #back up original bashrc, being responsible and stuff.
 if [[ ! -e $bashrc ]] ; then sudo touch $bashrc >$dn 2>&1 ; fi
 
-if grep -q "parmashell_functions" $bashrc ; then return 0 ; fi
+if grep -q "parmashell_functions" $bashrc 2>$dn  ; then return 0 ; fi
 
 #Do not change echo statements
 if ! grep -q "Added by Parmanode below, safe to delete" $bashrc >$dn 2>&1 ; then

@@ -11,7 +11,7 @@ hello
 #make sure debug file doesn't get too big
 truncatedebuglog
 
-if ! grep -q "parmashell_functions" $bashrc ; then
+if ! cat $bashrc 2>$dn | grep -q "parmashell_functions" ; then
 echo "function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh \$@ ; }" | sudo tee -a $bashrc >$dn 2>&1
 fi
 
@@ -72,7 +72,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then return 0 ; fi
 if [[ $btcdockerchoice == "yes" ]] ; then return 0 ; fi
 
 if which tor >$dn 2>&1 ; then return 0 ; fi
-if grep -q "no_tor=1" $hm ; then return 0 ; fi
+if cat $hm 2>$dn | grep -q "no_tor=1" ; then return 0 ; fi
 
 while true ; do
 set_terminal ; echo -e "

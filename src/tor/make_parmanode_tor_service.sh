@@ -5,7 +5,7 @@ torrc="$macprefix/etc/tor/torrc"
 varlibtor="$macprefix/var/lib/tor"
 mkdir -p $varlibtor >$dn 2>&1
 
-if grep -q "parmanode-service" $torrc ; then return 0 ; fi
+if cat $torrc 2>$dn | grep -q "parmanode-service" ; then return 0 ; fi
 
 if [[ ! -e $torrc ]] ; then return 1 ; fi
 

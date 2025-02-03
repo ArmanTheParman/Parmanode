@@ -5,12 +5,12 @@ make_parmanode_ssh_keys
 fix_bitcoin_conf
 
 #log file location has changed, delete the old one. Update has changed electrs start command.
-if grep -q "electrsdkr" $ic ; then
+if cat $ic 2>$dn | grep -q "electrsdkr" ; then
 docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
 
 #no longer needed
-if grep prefersbitcoinmempool_only_ask_once $pc ; then
+if cat $cp 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
 gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
 fi
 
@@ -44,7 +44,7 @@ sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
 fi
 
-if grep -q "lnd" $ic ; then make_lnd_service_tor ; fi
+if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
 
 #correct electrs cert
 if [[ -e $HOME/.electrs ]] && [[ ! -e $HOME/.electrs/cert.pem ]] ; then
@@ -80,7 +80,7 @@ for i in $HOME/.*parmanodebackup* ; do
 done
 fi
 
-if [[ $OS == Linux ]] && grep -q "btcpay" $ic ; then 
+if [[ $OS == Linux ]] && cat $ic 2>$dn | grep -q "btcpay" ; then 
     make_btcpay_service_file make_script_only
 fi
 
