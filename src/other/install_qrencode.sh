@@ -4,8 +4,9 @@ function install_qrencode {
 
         if ! which qrencode >$dn 2>&1 ; then sudo apt-get install qrencode -y ; fi
 
-    else
+    elif [[ $OS == "Mac" ]] ; then
 
+        brew_check || { enter_continue "Parmanode can't install QREncode without Brew" ; return 1 ; }
         if ! which qrencode >$dn 2>&1 ; then brew install qrencode ; fi
 
     fi
