@@ -19,7 +19,7 @@ $green
                     y)$orange       Yeah ok, just this one time
 $red
                     n)$orange       Nah, go away
-$red
+
 ########################################################################################
 "
 choose xpmq ; read choice
