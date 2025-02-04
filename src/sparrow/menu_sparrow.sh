@@ -9,7 +9,7 @@ else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
 if [[ $OS == "Linux" ]] && [[ ! -e $HOME/Desktop/run_sparrow.sh ]] ; then
-    shortcut="$cyan\n                  (dsk) $orange           Add Desktop Shortcut\n"
+    shortcut="$cyan\n                  (dsk) $orange           Add Desktop Shortcut$red NEW$orange\n"
 else
     unset shortcut
 fi

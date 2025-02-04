@@ -6,7 +6,7 @@ if cat $HOME/.electrum/config | grep "\"server" | grep -q "7002" >$dn ; then con
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7004" >$dn ; then connection=${green}electrsTOR ; fi
 
 if [[ $OS == "Linux" ]] && [[ ! -e $HOME/Desktop/run_electrum.sh ]] ; then
-    shortcut="$cyan\n                  (dsk) $orange      Add Desktop Shortcut\n"
+    shortcut="$cyan\n                  (dsk) $orange      Add Desktop Shortcut$red NEW$orange\n"
 else
     unset shortcut
 fi
