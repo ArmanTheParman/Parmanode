@@ -45,7 +45,7 @@ $orange
 
 ########################################################################################
 
-To hide this message next time, type in$pink EndTheFed$orange then <enter>."
+To hide only this message next time, type in$pink EndTheFed$orange then <enter>."
 enter_continue
 if [[ $enter_cont == "EndTheFed" || $enter_cont == "endthefed" ]] ; then hide_messages_add "instructions" "1" ; set_terminal 
 fi
@@ -72,7 +72,7 @@ $orange
 
 ########################################################################################
     
-To hide this message next time, type in$pink EndTheFed$orange then <enter>.
+To hide only this message next time, type in$pink EndTheFed$orange then <enter>.
 
 To continue on to the main menu, just hit$cyan <enter>${orange}.
 "

@@ -27,7 +27,7 @@ set_terminal ; echo -e "
 
     or 
 
-    Type (${red}EndTheFed$orange) then hit$cyan <enter>$orange to hide this message next time    
+    Type (${red}EndTheFed$orange) then hit$cyan <enter>$orange to hide only this message next time    
 
 ########################################################################################
 "

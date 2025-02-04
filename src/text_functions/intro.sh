@@ -38,7 +38,7 @@ $orange
 
     If you hold shitcoins, please hit$cyan (s)$orange - be honest!
 
-    To hide this screen next time, type$pink EndTheFed$orange then <enter>.
+    To hide only this screen next time, type$pink EndTheFed$orange then <enter>.
 "
 read choice ; set_terminal
 case $choice in 
