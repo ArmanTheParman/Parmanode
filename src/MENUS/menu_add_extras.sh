@@ -23,8 +23,6 @@ echo -en "
 #                                                                                      #
 #$cyan              pm)$orange      ParMiner                                                      #
 #                                                                                      #
-#$cyan              qr)$orange      QRencode command line tool (Linux and Mac)                    #
-#                                                                                      #
 ########################################################################################
 "
 choose "xpmq" ; read choice
@@ -81,10 +79,6 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
 pm)
 get_parminer
 ;;
-qr)
-which qrencode >$dn || install_qrencode || continue
-menu_qrencode
-;;
 
 *)
     invalid
@@ -100,12 +94,46 @@ return 0
 
 function menu_qrencode {
 
+while true ; do
 set_terminal ; echo -en "
 ########################################################################################
                                      QR Encode
 ########################################################################################
 
+
                        ${pink}QREncode is installed on your system.
+
+
+$cyan
+                    info)$orange          Info fo DIY QR codes
+$cyan
+                    pub)$orange           QR of your computer's SSH pubkey
+
+
+########################################################################################
+"
+choose xpmq ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in
+quit|Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+info) qrencode_info ;;
+pub) 
+set_terminal_high
+echo "Public key..."
+qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
+enter_continue
+;;
+
+*) invalid ;;
+esac
+done
+}
+
+function qrencode_info {
+set_terminal ; echo -en "
+########################################################################################
+                                  QREncode Info
+########################################################################################
 $orange
     To use qrencode command manually, the syntax is ...
 $cyan
@@ -119,5 +147,5 @@ $orange
 
 ########################################################################################
 "
-enter_continue  
+enter_continue
 }

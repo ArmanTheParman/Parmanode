@@ -24,6 +24,8 @@ $cyan              pass)$orange      Change computer login/sudo password
 
 $cyan              cc)$orange        See the IPs of all devices connected on your network
 
+$cyan              qr)$orange        QRencode command line tool (Linux and Mac)
+
 $orange
 ########################################################################################
 "
@@ -71,6 +73,11 @@ passwd && success "The password has been changed."
 
 cc)
 see_local_devices
+;;
+
+qr)
+which qrencode >$dn || install_qrencode || continue
+menu_qrencode
 ;;
 
 *)
