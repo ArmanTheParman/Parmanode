@@ -118,7 +118,7 @@ case $choice in
 quit|Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 info) qrencode_info ;;
 pub) 
-set_terminal_high
+set_terminal_custom 50 100
 echo "Public key..."
 qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
 enter_continue
