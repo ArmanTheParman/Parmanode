@@ -2,6 +2,7 @@ Version 3.52.1
     -Bitcoin install smol bug fix
     -QR Encode 
     -Desktop shortcut for Linux Sparrow
+    -Desktop shortcut for Linux Electrum
 Version 3.52.0
     -Phoenix Server added
     -Update full Parmanode uninstall

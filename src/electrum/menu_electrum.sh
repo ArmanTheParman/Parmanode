@@ -5,27 +5,35 @@ source $HOME/.parmanode/electrum.connection >$dn 2>&1
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7002" >$dn ; then connection=${green}fulcrumTOR ; fi
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7004" >$dn ; then connection=${green}electrsTOR ; fi
 
+if [[ $OS == "Mac" ]] ; then
+    shortcut="$cyan\n                  (dsk) $orange      Add Desktop Shortcut\n"
+else
+    unset shortcut
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
                                    ${cyan}Electrum Menu${orange}
 ########################################################################################
 
 
-             CURRENT DETECTED ELECTRUM CONNECTION TYPE: $green$connection$orange
+
+               CURRENT DETECTED ELECTRUM CONNECTION TYPE: $green$connection$orange
 
 
-$green            start) $orange          Start Electrum (opens in its own window)
-         
-$green            mm)     $orange         Manage node connection...
-
-$green            ec) $orange             View Electrum Config file (ecv for vim)
-
-$green            cl)     $orange         Clear connection certificates 
-                          $orange         (can help connection issues)
-                  
-$green            w) $orange              Show saved wallet files
-
-$green            eg) $bright_blue             Parman's Electrum Guide
+$green
+                 start)$orange       Start Electrum (opens in its own window)
+$cyan         
+                    mm)$orange       Manage node connection...
+$shortcut$cyan
+                    ec)$orange       View Electrum Config file (ecv for vim)
+$cyan
+                    cl)$orange       Clear connection certificates 
+                       $orange       (can help connection issues)
+$cyan                  
+                     w)$orange       Show saved wallet files
+$cyan
+                    eg)$bright_blue       Parman's Electrum Guide
 
 $orange
 
@@ -44,7 +52,23 @@ return 0 ;;
 mm|MM)
 electrum_connection_menu
 ;;
-
+dsk)
+lsb_release -a 2>/dev/null | grep -q Ubuntu && announce "Won't work, Ubuntu doesn't allow desktop icons." && continue
+if [[ $computer_type == "Pi" ]] ; then
+cat <<'EOF' >$HOME/Desktop/run_electrum.sh
+#!/bin/bash
+$HOME/parmanode/electrum/run_electrum
+EOF
+sudo chmod +x $HOME/Desktop/run_electrum.sh >$dn
+else
+cat <<'EOF' >$HOME/Desktop/run_electrum.sh
+#!/bin/bash
+$HOME/parmanode/electrum/electrum*AppImage
+EOF
+sudo chmod +x $HOME/Desktop/run_electrum.sh >$dn
+fi
+success "Desktop Shortcut added. Double click and choose 'run' to run it."
+;;
 ec|EC) 
 nano $HOME/.electrum/config
 ;;
