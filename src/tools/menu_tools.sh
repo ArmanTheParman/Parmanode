@@ -7,7 +7,7 @@ echo -ne "
                                   TOOLS - PAGE 1  $orange
 ########################################################################################
 
-$cyan              svr)$orange    Screen Video Recording$red$blinkon NEW$blinkoff$orange
+$cyan              svr)$orange   Screen Video Recording$red$blinkon NEW$blinkoff$orange
 
 $cyan              uc)$orange    Update computer (apt-get for Linux, Homebrew for Macs)
 
