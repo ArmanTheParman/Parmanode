@@ -1,5 +1,5 @@
 function do_loop {
-
+clear
 #sudo will be needed. Running it early here, getting it out of the way, 
 #and it stays in the cache for a while.
 if ! echo $@ | grep -q "np" ; then

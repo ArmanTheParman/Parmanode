@@ -31,12 +31,22 @@ else
     #if no partial installs, realestate for the message will be the IP address
     if [[ $OS == "Mac" ]] ; then 
         ComputerName="Mac" 
+        desktopfile="$HOME/Desktop/run parmanode shortcut.command"
     else 
         ComputerName=$(cat /etc/hostname) 
+        desktopfile="$HOME/Desktop/run parmanode shortcut.sh"
         if [[ $(cat /etc/hostname | wc -c) -gt 14 ]] ; then ComputerName="Computer" ; fi
     fi
 
     partial_install="                                               $ComputerName IP: $IP"
+fi
+
+
+if ! grep -q "hide_desktop_icon=1" $hm && [[ ! -e $desktopfile ]] && ! lsb_release -a 2>/dev/null | grep -q Ubuntu ; then
+icon="#$cyan    (icon)$orange               ${pink}Add Desktop Shortcut     (dx to hide) $orange                       #
+#                                                                                      #"
+else
+unset icon
 fi
 
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
@@ -62,7 +72,7 @@ echo -e "$debugstatus
 #$cyan    (ns)$orange                 ${yellow}Navigation shortcuts      $orange                                   #
 #                                                                                      #
 #$cyan    (dm)$orange                 ${yellow}Parmanode drive menu      $orange                                   #
-#                                                                                      #
+#                                                                                      #$icon
 #                                                                                      #
 #--------------------------------------------------------------------------------------#
 #                                                                                      #
@@ -125,7 +135,11 @@ remove|REMOVE)
     menu_remove ;;
 l|L|log) 
     menu_log_config ;;
-
+icon)
+    [[ ! -e $desktopfile ]] || { invalid && continue ; }
+    desktop_icon ;;
+dx)
+    echo "hide_desktop_icon=1" >> $hm ;;
 e|E)
     menu_education ;;
 t|T)

@@ -3,6 +3,7 @@ Version 3.52.1
     -QR Encode 
     -Desktop shortcut for Linux Sparrow
     -Desktop shortcut for Linux Electrum
+    -Desktop shortcut to start parmanode option
 Version 3.52.0
     -Phoenix Server added
     -Update full Parmanode uninstall
