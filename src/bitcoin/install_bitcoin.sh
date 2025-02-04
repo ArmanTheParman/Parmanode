@@ -91,11 +91,13 @@ debug "after make bitcoin conf"
 #make a script that service file will use
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" && $btcdockerchoice != "yes" ]] ; then
     make_mount_check_script 
+    debug "make_mount_check_script"
 fi
 
 #make service file - this allows automatic start up after a reboot
 if [[ $OS == "Linux" && $btcpayinstallsbitcoin != "true" ]] ; then 
     make_bitcoind_service_file
+    debug "make_bitcoind_service_file"
 fi
 
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
