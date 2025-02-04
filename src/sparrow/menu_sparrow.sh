@@ -9,7 +9,7 @@ else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
 if [[ $OS == "Linux" ]] ; then
-    shortcut="$cyan\n                  (add) $orange           Add Desktop Shortcut\n"
+    shortcut="$cyan\n                  (dsk) $orange           Add Desktop Shortcut\n"
 else
     unset shortcut
 fi
@@ -54,7 +54,7 @@ return 0 ;;
 mm|MM)
 sparrow_connection_menu 
 ;;
-add)
+dsk)
 cat <<'EOF' >$HOME/Desktop/run_sparrow.sh
 #!/bin/bash
 $HOME/parmanode/Sparrow/bin/Sparrow
