@@ -102,7 +102,7 @@ function menu_qrencode {
 
 set_terminal ; echo -en "
 ########################################################################################
-                                   QR Encode
+                                     QR Encode
 ########################################################################################
 
                        ${pink}QREncode is installed on your system.
