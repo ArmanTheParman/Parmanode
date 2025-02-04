@@ -1,5 +1,11 @@
 function install_qrencode {
 
+    [[ $1 == silent ]] || { yesorno "QREncode lets you make QR codes from the command line.
+    Parmnode at this stage does not provide a menu service for you, but it does use the
+    program for various things, eg printing lightning network info.
+
+    Install?" || return 1 ; }
+
     if [[ $OS == "Linux" ]] ; then
 
         if ! which qrencode >$dn 2>&1 ; then sudo apt-get install qrencode -y ; fi
