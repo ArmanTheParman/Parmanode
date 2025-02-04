@@ -8,7 +8,7 @@ sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version | grep -Eo
 else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
-if [[ $OS == "Linux" ]] ; then
+if [[ $OS == "Linux" ]] && [[ ! -e $HOME/Desktop/run_sparrow.sh ]] ; then
     shortcut="$cyan\n                  (dsk) $orange           Add Desktop Shortcut\n"
 else
     unset shortcut
