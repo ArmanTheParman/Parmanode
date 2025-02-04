@@ -55,6 +55,8 @@ mm|MM)
 sparrow_connection_menu 
 ;;
 dsk)
+lsb_release -a 2>/dev/null | grep -q Ubuntu && announce "Won't work, Ubuntu doesn't allow desktop icons." && continue
+
 cat <<'EOF' >$HOME/Desktop/run_sparrow.sh
 #!/bin/bash
 $HOME/parmanode/Sparrow/bin/Sparrow
