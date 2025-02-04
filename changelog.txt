@@ -1,6 +1,6 @@
 Version 3.52.1
     -Bitcoin install smol bug fix
-    -QR Encode in tools menu
+    -QR Encode 
 Version 3.52.0
     -Phoenix Server added
     -Update full Parmanode uninstall
