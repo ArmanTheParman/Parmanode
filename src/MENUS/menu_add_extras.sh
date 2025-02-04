@@ -105,6 +105,8 @@ set_terminal ; echo -en "
                                    QR Encode
 ########################################################################################
 
+                       ${pink}QREncode is installed on your system.
+$orange
     To use qrencode command manually, the syntax is ...
 $cyan
         qrencode -t ANSIUTF8 \"some text\"
