@@ -8,10 +8,14 @@ sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version | grep -Eo
 else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
-
+if [[ $OS == "Linux" ]] ; then
+    shortcut="$cyan\n                  (add) $orange           Add Desktop Shortcut\n"
+else
+    unset shortcut
+fi
 source $HOME/.parmanode/sparrow.connection >$dn
 
-set_terminal_high ; echo -e "
+set_terminal_high ; echo -en "
 ########################################################################################
                   $cyan         Sparrow Menu -- Version $sversion                  $orange      
 ########################################################################################
@@ -23,7 +27,7 @@ $green
                   (start) $orange         Start Sparrow 
 $red
                   (mm)    $orange         Manage node connection...
-$cyan
+$shortcut$cyan
                   (sc)    $orange         View/Edit config file (scv for vim)
 $cyan
                   (t)     $orange         Troubleshooting info
@@ -31,7 +35,7 @@ $cyan
                   (w)     $orange         Show saved wallet files
 $cyan
                   (cl)    $orange         Clear connection certificates 
-                           $orange         (can help connection issues)
+                          $orange         (can help connection issues)
 
 
 ########################################################################################
@@ -50,7 +54,13 @@ return 0 ;;
 mm|MM)
 sparrow_connection_menu 
 ;;
-
+add)
+cat <<'EOF' >$HOME/Desktop/run_sparrow.sh
+#!/bin/bash
+$HOME/parmanode/Sparrow/bin/Sparrow
+EOF
+success "Desktop Shortcut added. Double click and choose 'run' to run it."
+;;
 sc|SC|Sc)
 echo -e "
 ########################################################################################
