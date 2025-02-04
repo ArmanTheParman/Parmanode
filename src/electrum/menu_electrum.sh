@@ -5,7 +5,7 @@ source $HOME/.parmanode/electrum.connection >$dn 2>&1
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7002" >$dn ; then connection=${green}fulcrumTOR ; fi
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7004" >$dn ; then connection=${green}electrsTOR ; fi
 
-if [[ $OS == "Mac" ]] ; then
+if [[ $OS == "Linux" ]] ; then
     shortcut="$cyan\n                  (dsk) $orange      Add Desktop Shortcut\n"
 else
     unset shortcut
