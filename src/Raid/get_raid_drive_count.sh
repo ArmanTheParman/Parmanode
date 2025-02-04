@@ -11,7 +11,7 @@ set_terminal ; echo -e "
 
 ########################################################################################
 "
-choose "xpmq" read drive_number ; set_terminal
+choose "xpmq" ; read drive_number ; set_terminal
 jump $drive_number || { invalid ; continue ; } ; set_terminal
 case $drive_number in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
