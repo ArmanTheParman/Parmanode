@@ -54,8 +54,4 @@ sudo systemctl restart nfs-kernel-server
 ##sudo apt-get update
 ##sudo apt-get install nfs-kernel-server
 ########################################################################################
-
-
-
-
 }
