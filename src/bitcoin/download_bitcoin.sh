@@ -109,12 +109,12 @@ fi
 
 if [[ $OS == Linux ]] ; then
 set_terminal
-mkdir $dp/temp/ >$dn 2>&1
+mkdir -p $dp/temp/ >$dn 2>&1
 tar -xf bitcoin-* -C $dp/temp/ >$dn 2>&1
 
 # Move bitcoin program files to new directory.
 # All binaries go to $HOME/parmanode/bitcoin.
-mv $$dp/temp/bit*/* $hp/bitcoin/
+mv $dp/temp/bit*/* $hp/bitcoin/
 
 #delete sample bitcoin.conf to avoid confusion.
 rm $hp/bitcoin/bitcoin.conf 
