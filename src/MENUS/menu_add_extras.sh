@@ -11,18 +11,19 @@ echo -en "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$cyan              (rr)$orange      RAID - join drives together                                   #
+#$cyan              rr)$orange      RAID - join drives together                                   #
 #                                                                                      #
-#$cyan              (h)$orange       HTOP - check system resources                                 #
+#$cyan              h)$orange       HTOP - check system resources                                 #
 #                                                                                      #
-#$cyan              (udev)$orange    Add UDEV rules for HWWs (only needed for Linux)               #
+#$cyan              udev)$orange    Add UDEV rules for HWWs (only needed for Linux)               #
 #                                                                                      #
-#$cyan              (fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
+#$cyan              fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
-#$cyan              (cl)$orange      Core Lightning                                                #
+#$cyan              cl)$orange      Core Lightning                                                #
 #                                                                                      #
-#$cyan              (pm)$orange      ParMiner                                                      #
+#$cyan              pm)$orange      ParMiner                                                      #
 #                                                                                      #
+#$cyan              qr)$orange      QRencode command line tool (Linux and Mac)                    #
 #                                                                                      #
 ########################################################################################
 "
@@ -80,7 +81,10 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
 pm)
 get_parminer
 ;;
-
+qr)
+which qrencode >$dn || install_qrencode || continue
+menu_qrencode
+;;
 
 *)
     invalid
@@ -94,3 +98,24 @@ return 0
 }
 
 
+function menu_qrencode {
+
+set_terminal ; echo -en "
+########################################################################################
+                                   QR Encode
+########################################################################################
+
+    To use qrencode command manually, the syntax is ...
+$cyan
+        qrencode -t ANSIUTF8 \"some text\"
+$orange
+    You can also QR the contents of a file ...
+$cyan
+        qrencode -t ANSIUTF8 \"\$(cat /path/to/file)\"
+$orange
+    Don't omit the \" 
+
+########################################################################################
+"
+enter_continue  
+}
