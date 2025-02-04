@@ -27,7 +27,7 @@ $cyan              rs)$orange    Parman's easy AF Rsync tool new
 
 $cyan              cc)$orange    Upgrade ColdCard firmware wizard             
 $red $blinkon
-              next)    More options $blinkoff
+              n)       More options $blinkoff
 $orange
 ########################################################################################
 "
