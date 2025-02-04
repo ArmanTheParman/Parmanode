@@ -38,7 +38,7 @@ fi
 
 if [[ $1 == pubkey ]] ; then
 set_terminal_high
-which qrencode || install_qrencode
+which qrencode || install_qrencode silent
 echo "public key..."
 qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
 echo "onion address..."

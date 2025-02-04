@@ -53,7 +53,7 @@ $blinkon                   HIT 'QR' AND <ENTER> TO SHOW QR CODES $blinkoff $oran
 enter_continue ; jump $enter_cont
 
 if [[ $enter_cont == "QR" || $enter_cont == "qr" ]] ; then
-install_qrencode
+install_qrencode silent
 show_qr_macaroons
 fi
 

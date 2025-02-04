@@ -10,5 +10,8 @@ function install_qrencode {
 
     fi
 
+    [[ $1 == silent ]] && return 0
+
+    success "QREncode has been installed."
     return 0
 }
