@@ -137,11 +137,11 @@ set_terminal ; echo -en "
 $orange
     To use qrencode command manually, the syntax is ...
 $cyan
-        qrencode -t ANSIUTF8 \"some text\"
+                        qrencode -t ANSIUTF8 \"some text\"
 $orange
     You can also QR the contents of a file ...
 $cyan
-        qrencode -t ANSIUTF8 \"\$(cat /path/to/file)\"
+                        qrencode -t ANSIUTF8 \"\$(cat /path/to/file)\"
 $orange
     Don't omit the \" 
 
