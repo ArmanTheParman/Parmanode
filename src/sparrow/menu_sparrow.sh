@@ -59,6 +59,7 @@ cat <<'EOF' >$HOME/Desktop/run_sparrow.sh
 #!/bin/bash
 $HOME/parmanode/Sparrow/bin/Sparrow
 EOF
+sudo chmod +x $HOME/Desktop/run_sparrow.sh >$dn
 success "Desktop Shortcut added. Double click and choose 'run' to run it."
 ;;
 sc|SC|Sc)
