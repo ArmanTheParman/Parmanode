@@ -5,7 +5,7 @@ q|quit|exit) exit ;;
 m|main) back2main ;;
 
 dockerps)
-clear ; docker ps ; enter_continue ;;       
+clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
 
 motd)
 motd
