@@ -6,6 +6,7 @@ num=1 ; while [[ -e $HOME/Desktop/video_$num.mp4 ]] ; do num=$((num + 1)) ; done
 
 if echo $XDG_SESSION_TYPE | grep -q "wayland" ; then        
     which slurp >/dev/null || sudo apt-get install slurp -y || { enter_continue "Something went wrong." ; return 1 ; }
+    which wf-recorder >/dev/null || sudo apt-get install wf-recorder -y || { enter_continue "Something went wrong." ; return 1 ; }
     svr_announce
     wf-recorder -g "$(slurp)" -f "$HOME/Desktop/video_$num.mp4"
 else
