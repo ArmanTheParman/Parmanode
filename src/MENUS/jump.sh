@@ -4,6 +4,14 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+xxx)
+clear
+echo -ne "Enter command:\n" ; read command
+true ; "$command"
+enter_continue
+invalid_flag=set 
+;;
+
 dockerps)
 clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
 
