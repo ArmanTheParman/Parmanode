@@ -7,7 +7,7 @@ num=1 ; while [[ -e $HOME/Desktop/video_$num.mp4 ]] ; do num=$((num + 1)) ; done
 if echo $XDG_SESSION_TYPE | grep -q "wayland" ; then        
     which slurp >/dev/null || sudo apt-get install slurp -y || { enter_continue "Something went wrong." ; return 1 ; }
     which wf-recorder >/dev/null || sudo apt-get install wf-recorder -y || { enter_continue "Something went wrong." ; return 1 ; }
-    svr_announce
+    svr_announce Pi
     wf-recorder -g "$(slurp)" -f "$HOME/Desktop/video_$num.mp4"
 else
     which ffmpeg >$dn || { sudo apt-get update -y && sudo apt-get install ffmpeg -y ; }
