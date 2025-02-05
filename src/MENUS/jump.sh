@@ -5,12 +5,15 @@ q|quit|exit) exit ;;
 m|main) back2main ;;
 
 command)
+while true ; do
 clear
 echo -ne "Enter command:\n" ; read -a command
 true ; "${command[@]}"
-enter_continue "$yellow Hit$cyan <enter>$yellow to go back,$green a$yellow for another command.$orange"
+enter_continue "$yellowHit$cyan <enter>$yellow to go back,$green a$yellow for another command.$orange"
 case $enter_cont in a) continue ;; *) break ;; esac
+done
 invalid_flag=set 
+
 ;;
 
 dockerps)
