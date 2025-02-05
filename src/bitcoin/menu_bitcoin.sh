@@ -15,8 +15,7 @@ if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then retu
 
 while true ; do
 source $pc >$dn
-unset output1 output2 choice
-
+unset output1 output2 choice external8333
 grep -q hide_port_8333 $hm || {
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
     external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange"
