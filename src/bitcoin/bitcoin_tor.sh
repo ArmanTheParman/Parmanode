@@ -78,12 +78,7 @@ restart_tor
 stop_bitcoin
 start_bitcoin
 
-set_terminal ; echo -e "
-########################################################################################
-    FYI, changes have been made to torrc file & bitcoin.conf file, and Tor has been 
-    restarted.
-########################################################################################
-"
-enter_continue
-
+set_terminal ; 
+success "Changes have been made to torrc file & bitcoin.conf file,
+    and Tor has been restarted."
 }
