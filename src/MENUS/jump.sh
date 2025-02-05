@@ -5,14 +5,14 @@ q|quit|exit) exit ;;
 m|main) back2main ;;
 
 command)
-while true ; do
 clear
+while true ; do
 echo -ne "Enter command:\n" ; read -a command
 true ; "${command[@]}"
 enter_continue "${yellow}Hit$cyan <enter>$yellow to go back, or$green 
 a$yellow for another command, or$green
 c$yellow to clear first then another command.$orange"
-case $enter_cont in a) continue ;; *) break ;; esac
+case $enter_cont in a) continue ;; c) clear ; continue ;; *) break ;; esac
 done
 invalid_flag=set 
 
