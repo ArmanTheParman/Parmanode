@@ -9,6 +9,7 @@ remove_tor_log_patch
 #move to next patch, patch 9  
     fulcrum_service_patch 
     make_external_IP_script
+    which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
 
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...
@@ -16,6 +17,7 @@ if [[ -e /.dockerenv && -z $USER ]] ; then
     USER=$(whoami) >$dn 2>&1
     echo "USER=$USER ##added by Parmanode" | sudo tee -a $HOME/.bashrc >$dn 2>&1
 fi
+
 
 #delete Nov 2026
 sudo rm -rf $dp/temp >$dn 2>&1
