@@ -39,3 +39,4 @@ $red
     The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange
     
     Hit$cyan <enter>$orange to proceed."
+}
