@@ -17,14 +17,17 @@ while true ; do
 source $pc >$dn
 unset output1 output2 choice
 
+grep -q hide_port_8333 $hm || {
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
     external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange"
 elif  grep -q "_8333reachable=true" $pc ; then
     external8333="${green}Node is reachable to the world via port 8333$orange"
 else
     external8333="${red}Node is NOT reachable via port 8333
-Requires port forwarding on your router - Parman can be hired to help.$orange"
+Requires port forwarding on your router - Parman can be hired to help.
+endthefed to hide this message.$orange"
 fi
+}
 
 if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
 
@@ -154,6 +157,11 @@ p|P)
 if [[ $1 == overview ]] ; then return 0 ; fi
 menu_use
 ;;
+endthefed)
+grep -q "hide_port_8333" $hm && { sed -i '/hide_port_8333_message=1/d' $hm >$dn ; continue ; }
+echo "hide_port_8333_message=1" >> $hm
+;;
+
 r)
 set_terminal
 continue
