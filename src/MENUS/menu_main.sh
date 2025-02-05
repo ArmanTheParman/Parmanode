@@ -82,7 +82,7 @@ echo -e "$debugstatus
 #$cyan                (s)$orange               Settings/Colours                                    #
 #$cyan                (e)$orange               Education                                           #
 #$cyan                (d)$orange               Donate                                              #
-#$cyan                (log)$orange             See logs andfiles                                   #
+#$cyan                (log)$orange             See logs and files                                  #
 #$cyan                (update)$orange          Update Parmanode                                    #
 #$cyan                (uc)$orange              Update Computer                                     #
 #$red                (uninstall)$orange       Uninstall Parmanode                                 #
