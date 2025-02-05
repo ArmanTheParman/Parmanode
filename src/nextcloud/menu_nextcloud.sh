@@ -27,6 +27,9 @@ $cyan
                                    - Restarts container as well
 $cyan                      
                       data)$orange        Information about data storage and backups
+$cyan   
+                      dockerps)$orange           Show all running docke containers on system
+
 
     ACCESS: $green
             https://$IP:8020    $orange
@@ -67,6 +70,12 @@ enter_continue
 
 data)
 nextcloud_storage_info
+;;
+
+dockerps)
+clear
+docker ps
+enter_continue
 ;;
 
 *)
