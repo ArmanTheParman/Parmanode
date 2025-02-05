@@ -2,7 +2,7 @@ function enter_continue {
 echo -en "$@\n"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
-
+debug "1 is $1"
 [[ -z $1 ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
