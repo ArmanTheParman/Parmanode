@@ -6,9 +6,9 @@ if [[ -e /.dockerenv ]] && ! netstat -tuln | grep -q 9050 ; then
 enable_tor_general
 fi
 remove_tor_log_patch
-#move to next patch, patch 8
-    reduce_systemd_logs 
+#move to next patch, patch 9  
     fulcrum_service_patch 
+    make_external_IP_script
 
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...

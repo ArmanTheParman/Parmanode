@@ -117,6 +117,8 @@ if [[ $(uname) == "Darwin" ]] ; then export IP=$( ifconfig | grep "inet " | grep
 # can split text according to a delimeter (-d) and choosing a resulting field (-f)
 }
 
+function get_external_IP { curl -s ifconfig.me ; }
+
 function IP_address {
 count=0
 while [[ $count -lt 3 ]] ; do 
@@ -127,6 +129,7 @@ parmanode_conf_add "external_IP=$external_IP"
 source $pc || { sleep 2 ; continue ; }
 break
 done
+
 
 source $pc || { parmanode_conf_remove "external_IP" ; }
 
