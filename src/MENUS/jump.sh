@@ -8,7 +8,7 @@ command)
 clear
 echo -ne "Enter command:\n" ; read -a command
 true ; "${command[@]}"
-enter_continue "<enter> to go back,$green a$orange for another command."
+enter_continue "$yellow Hit$cyan <enter>$yellow to go back,$green a$yellow for another command.$orange"
 case $enter_cont in a) continue ;; *) break ;; esac
 invalid_flag=set 
 ;;
