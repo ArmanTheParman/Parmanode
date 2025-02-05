@@ -6,8 +6,8 @@ m|main) back2main ;;
 
 command)
 clear
-echo -ne "Enter command:\n" ; read command
-true ; "$command"
+echo -ne "Enter command:\n" ; read -a command
+true ; "${command[@]}"
 enter_continue
 invalid_flag=set 
 ;;
