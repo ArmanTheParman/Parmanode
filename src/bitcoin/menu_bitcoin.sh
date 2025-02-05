@@ -1,8 +1,10 @@
 function menu_bitcoin {
 
-if   grep -q "8333reachable" $pc && [[ $bitcoin_tor_status != t && $bitcoin_tor_status != tonlyout ]] ; then
-    external8333="${green}Node is reachable via port 8333$orange"
-elif ! grep -q "8333reachable=true" $pc || [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
+if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
+    external8333="${blue}Node is reachable to the world via port 8333 due to TOR status$orange"
+elif  grep -q "8333reachable=true" $pc ; then
+    external8333="${green}Node is reachable to the world via port 8333$orange"
+else
     external8333="${red}Node is NOT reachable via port 8333$orange"
 fi
 
