@@ -1,6 +1,7 @@
 function screen_video_recording {
 
 if [[ $OS == "Mac" ]] ; then no_mac ; return 1 ; fi
+if [[ $computer_type == "Pi" ]] ; then announce "Not available for Pi yet." ; return 1 ; fi
 
 which ffmpeg >$dn || { sudo apt-get update -y && sudo apt-get install ffmpeg -y ; }
 
