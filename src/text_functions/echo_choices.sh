@@ -1,9 +1,9 @@
 function enter_continue {
-echo -e "$@\n"
+echo -en "$@\n"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
-[[ -n $1 ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
+[[ -z $1 ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
