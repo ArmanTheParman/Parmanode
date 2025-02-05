@@ -17,7 +17,7 @@ $red
     
     The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange"
 
-ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i $DISPLAY $HOME/Desktop/video_$num.mp4
+ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0 $HOME/Desktop/video_$num.mp4
 
 enter_continue
 
