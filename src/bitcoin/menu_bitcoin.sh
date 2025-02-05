@@ -1,7 +1,5 @@
 function menu_bitcoin {
 
-
-
 if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
@@ -16,11 +14,11 @@ fi
 if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then return 1 ; fi
 
 while true ; do
-
+source $pc >$dn
 unset output1 output2 choice
 
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
-    external8333="${blue}Node is reachable to the world via port 8333 due to TOR status$orange"
+    external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange"
 elif  grep -q "8333reachable=true" $pc ; then
     external8333="${green}Node is reachable to the world via port 8333$orange"
 else
