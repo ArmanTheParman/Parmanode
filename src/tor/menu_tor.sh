@@ -1,5 +1,5 @@
 function menu_tor {
-if ! grep -q "tor-end" $ic ; then return 0 ; fi
+which tor 1>$dn || return 1
 while true ; do
 clear
 

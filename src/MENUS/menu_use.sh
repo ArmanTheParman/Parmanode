@@ -215,9 +215,10 @@ btcp|BTCP)
 
 tor|TOR|t|T)
     if [[ $torapp == 1 ]] ; then
-    menu_tor
-    if [[ -n $1 ]] ; then clear ; return 0 ; fi
-    else invalid
+        menu_tor
+        if [[ -n $1 ]] ; then clear ; return 0 ; fi
+    else 
+        invalid
     fi
     ;;
 
