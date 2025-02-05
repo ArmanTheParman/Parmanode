@@ -19,7 +19,7 @@ unset output1 output2 choice
 
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
     external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange"
-elif  grep -q "8333reachable=true" $pc ; then
+elif  grep -q "_8333reachable=true" $pc ; then
     external8333="${green}Node is reachable to the world via port 8333$orange"
 else
     external8333="${red}Node is NOT reachable via port 8333$orange"
