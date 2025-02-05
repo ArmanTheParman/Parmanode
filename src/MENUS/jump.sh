@@ -4,7 +4,7 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
-xxx)
+command)
 clear
 echo -ne "Enter command:\n" ; read command
 true ; "$command"
