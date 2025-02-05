@@ -76,19 +76,23 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 "1")
     bitcoin_tor "torandclearnet" 
     check_bitcoin_tor_status #sets status in parmanode.conf
-    menu_bitcoin ;; #refreshes above while loop 
+    break ;;
+
 "2")
     bitcoin_tor "toronly" 
     check_bitcoin_tor_status
-    menu_bitcoin ;; #refreshes above while loop
+    break ;;
+
 "3")
     bitcoin_tor "toronly" "onlyout" 
     check_bitcoin_tor_status
-    menu_bitcoin ;; #refreshes above while loop
+    break ;;
+
 "4")
     bitcoin_tor_remove 
     check_bitcoin_tor_status    
-    menu_bitcoin ;; #refreshes above while loop
+    break ;;
+
 *)
     invalid ;;
 esac

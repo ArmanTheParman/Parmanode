@@ -1,13 +1,5 @@
 function menu_bitcoin {
-source $pc 2>$dn
 
-if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
-    external8333="${blue}Node is reachable to the world via port 8333 due to TOR status$orange"
-elif  grep -q "8333reachable=true" $pc ; then
-    external8333="${green}Node is reachable to the world via port 8333$orange"
-else
-    external8333="${red}Node is NOT reachable via port 8333$orange"
-fi
 
 
 if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
@@ -26,6 +18,14 @@ if ! grep -q "bitcoin-end" $HOME/.parmanode/installed.conf >$dn 2>&1 ; then retu
 while true ; do
 
 unset output1 output2 choice
+
+if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
+    external8333="${blue}Node is reachable to the world via port 8333 due to TOR status$orange"
+elif  grep -q "8333reachable=true" $pc ; then
+    external8333="${green}Node is reachable to the world via port 8333$orange"
+else
+    external8333="${red}Node is NOT reachable via port 8333$orange"
+fi
 
 if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
 
@@ -101,7 +101,6 @@ echo -en "
 $dockerbitcoinmenu
 ########################################################################################
 $external8333
-
 
 "
 echo -e "$output1"
