@@ -1,4 +1,12 @@
 function menu_bitcoin {
+
+if   grep -q "8333reachable" $pc && [[ $bitcoin_tor_status != t && $bitcoin_tor_status != tonlyout ]] ; then
+    external8333="${green}Node reachable via port 8333$orange"
+elif ! grep -q "8333reachable=true" $pc || [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
+    external8333="${red}Node NOT reachable via port 8333$orange"
+fi
+
+
 if ! grep -q "bitcoi.*end" $ic ; then return 0 ; fi
 export debuglogfile="$HOME/.bitcoin/debug.log" 
 
@@ -89,7 +97,7 @@ echo -en "
                                 ${cyan}Bitcoin Core Menu${orange}                               
 $dockerbitcoinmenu
 ########################################################################################
-
+$external8333
 
 "
 echo -e "$output1"
