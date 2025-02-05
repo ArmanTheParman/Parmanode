@@ -3,7 +3,7 @@ echo -en "$@\n"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
-[[ -z $1 ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
+[[ $2 != silent ]] && echo -e "${yellow}Hit ${cyan}<enter>${yellow} to continue.$orange\n"  
 
 if [[ $silentecho == "true" ]] ; then
 read -s enter_cont
