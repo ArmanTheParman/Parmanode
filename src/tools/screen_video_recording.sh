@@ -20,11 +20,21 @@ enter_continue
 
 
 function svr_announce {
-announce "Hit$cyan <enter>$orange to start recording your screen. Minimise
-    the terminal and start doing stuff that you want to record.
+
+if [[ $1 == Pi ]] ; then
+text="You'll be prompted to draw a box to record a target region.
+    If you don't want that, and prefer the full screen type$green 
+    full$orange now.
+    "
+fi
+
+announce "$text 
+    Once recording, minimise the terminal and start doing stuff that you want 
+    to record. 
+
 $red
-    Once finished, come back to this terminal and hit$blue q$red to stop recording 
-    and finalise the file. Then you can trim it how you want. $orange
+    Once finished, come back to this terminal and hit$blue <control> c$orange 
+    to stop recording and finalise the file. Then you can trim it how you want. $orange
     
     The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange"
-}
+"Hit$cyan <enter>$orange to start recording your screen.
