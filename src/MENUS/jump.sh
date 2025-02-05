@@ -4,6 +4,9 @@ case $1 in
 q|quit|exit) exit ;;
 m|main) back2main ;;
 
+dockerps)
+clear ; docker ps ; enter_continue ;;       
+
 motd)
 motd
 invalid_flag=set

@@ -602,6 +602,8 @@ docker exec -itu parman btcpay /bin/bash -c "psql -U parman -d postgres -c 'DROP
 docker exec -itu postgres btcpay /bin/bash -c "createdb -O parman btcpayserver && createdb -O parman nbxplorer" 
 enter_continue
 ;;
+
+
 *)
 invalid
 ;;

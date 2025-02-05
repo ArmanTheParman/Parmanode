@@ -28,7 +28,7 @@ $cyan
 $cyan                      
                       data)$orange        Information about data storage and backups
 $cyan   
-                      dockerps)$orange           Show all running docke containers on system
+                      dockerps)$orange    Show all running docke containers on system
 
 
     ACCESS: $green
