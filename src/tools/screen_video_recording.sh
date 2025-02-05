@@ -36,5 +36,6 @@ $red
     Once finished, come back to this terminal and hit$blue <control> c$orange 
     to stop recording and finalise the file. Then you can trim it how you want. $orange
     
-    The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange"
-"Hit$cyan <enter>$orange to start recording your screen.
+    The file will be saved to$cyan $HOME/Desktop/video_$num.mp4$orange
+    
+    Hit$cyan <enter>$orange to proceed."
