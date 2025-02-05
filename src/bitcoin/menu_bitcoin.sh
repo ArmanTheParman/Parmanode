@@ -1,4 +1,5 @@
 function menu_bitcoin {
+source $pc 2>$dn
 
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
     external8333="${blue}Node is reachable to the world via port 8333 due to TOR status$orange"
