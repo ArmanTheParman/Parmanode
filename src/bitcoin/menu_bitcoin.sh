@@ -22,7 +22,8 @@ if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
 elif  grep -q "_8333reachable=true" $pc ; then
     external8333="${green}Node is reachable to the world via port 8333$orange"
 else
-    external8333="${red}Node is NOT reachable via port 8333$orange"
+    external8333="${red}Node is NOT reachable via port 8333
+    Requires port forwarding on your router - Parman can be hired to help.$orange"
 fi
 
 if [[ -e $debuglogfile ]] && tail -n50 $debuglogfile | grep -q "Corrupt" ; then
