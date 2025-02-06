@@ -6,11 +6,11 @@ if [[ $OS == Mac ]] ; then announce "Not available for Mac. Easy enough to insta
 
 clear
 cd $hp
-if [[ $OS == Mac ]] ; then
-curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg
-installed_conf_add "torb-start"
-curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg.asc
-fi
+# if [[ $OS == Mac ]] ; then
+# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg
+# installed_conf_add "torb-start"
+# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg.asc
+# fi
 #computer_type variable as LinuxPC includes Linux but excludes Pi's
 if [[ $computer_type == LinuxPC ]] ; then
 curl -LO https://github.com/TheTorProject/gettorbrowser/releases/download/linux64-12.5.1/tor-browser-linux64-12.5.1_ALL.tar.xz
@@ -35,12 +35,12 @@ return 1
 fi
 
 #extract
-if [[ $OS == Mac ]] ; then
-hdiutil attach tor*.dmg
-sudo mv /Volumes/Tor*/Tor*.app /Applications
-hdiutil detach /Volumes/Tor*
-rm tor-bro*
-fi
+# if [[ $OS == Mac ]] ; then
+# hdiutil attach tor*.dmg
+# sudo mv /Volumes/Tor*/Tor*.app /Applications
+# hdiutil detach /Volumes/Tor*
+# rm tor-bro*
+# fi
 
 if [[ $computer_type == LinuxPC ]] ; then
 tar -xvf tor*.xz
