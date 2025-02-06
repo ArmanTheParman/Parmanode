@@ -19,6 +19,8 @@ set_terminal ; echo -en "
 $cyan
                       pass)$orange        Show setup password
 $cyan
+                      reset)$orange       Reset a user account password
+$cyan
                       start)$orange       Start NextCloud Docker container
 $cyan
                       stop)$orange        Stop NextCloud Docker container
@@ -70,10 +72,26 @@ data)
 nextcloud_storage_info
 ;;
 
+reset)
+nextcloud_password_reset
+;;
 *)
 invalid
 ;;
 
 esac
 done
+}
+
+
+function nextcloud_password_reset {
+set_terminal ; echo -e "
+########################################################################################
+
+    Please type the username for which you'd like to reset the password, eg 'admin'
+
+########################################################################################
+"
+read user
+docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" && success "Password change done."
 }

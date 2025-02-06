@@ -55,6 +55,7 @@ nextcloud_storage_info
 # --restart always This is the "restart policy". 
 # Means that the container should always get started with the Docker daemon. 
 sudo docker network rm nextcloud-aoi >$dn 2>$dn
+
 sudo docker run \
 -d \
 --init \
