@@ -15,11 +15,34 @@ c$yellow to clear first then another command.$orange" "silent"
 case $enter_cont in a) continue ;; c) clear ; continue ;; *) break ;; esac
 done
 invalid_flag=set 
-
 ;;
 
 dockerps)
 clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
+
+readfunction)
+clear
+echo -en "########################################################################################
+
+    Enter the name of the function you want to inspect, then hit$cyan <enter>$orange
+
+    Note, you will be reading the entire file where the function is found. $red'q'$orange to exit.
+    
+    functions are in the pattern, generall, as...
+   $green 
+        do_something $orange
+    
+    eg
+   $green    
+        install_bitcoin$orange
+
+########################################################################################
+"
+read functionname
+file=$(grep -r "function $functionname {" $pn | cut -d : -f 1)
+less $file
+invalid_flag=set 
+;;
 
 motd)
 motd
