@@ -7,9 +7,9 @@ if [[ $OS == Mac ]] ; then announce "Not available for Mac. Easy enough to insta
 clear
 cd $hp
 # if [[ $OS == Mac ]] ; then
-# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg
+# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-14.0.5.dmg
 # installed_conf_add "torb-start"
-# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-13.0.1.dmg.asc
+# curl -LO https://www.torproject.org/dist/torbrowser/13.0.1/tor-browser-macos-14.0.5.dmg.asc
 # fi
 #computer_type variable as LinuxPC includes Linux but excludes Pi's
 if [[ $computer_type == LinuxPC ]] ; then
