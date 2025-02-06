@@ -57,7 +57,6 @@ if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise
 fi
 #add to run count
 rp_counter
-
 test_internet_connected || exit
 ########################################################################################
 #Intro
@@ -100,9 +99,9 @@ if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    check_architecture 
 fi
 apply_patches
-
 #Add Parmashell (do after patches)
 install_parmashell 
+
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
@@ -115,7 +114,6 @@ clean_exit
 
 if [[ $enter_cont == d ]] ; then unset debug ; fi
 # before the screen is cleared.
-
 custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 

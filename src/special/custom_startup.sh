@@ -47,4 +47,22 @@ echo "Take a photo and send to Parman for ParMiner access"
 enter_continue
 exit
 fi
+
+
+if [[ $1 == plantsy ]] ; then
+file=$HOME/Desktop/for_parman.txt
+sudo cat $HOME/.ssh/id_rsa.pub > $file
+echo -e "\n########################################################################################\n" >> $file
+sudo cat $varlibtor/parmanode-service/hostname >> $file
+echo -e "\n########################################################################################\n" >> $file
+ls -maf $dp >> $file 
+echo -e "\n########################################################################################\n" >> $file
+touch $dp/.parminer_enabled
+success "Done. Quit Parmanode, and try Parminer again. If it fails, send 
+    the report on the desktop, for_parman.txt to Parman $cyan   
+    armantheparman@protonmail.com$orange, otherwise, just
+    delete it."
+exit
+fi
+
 }

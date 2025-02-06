@@ -20,11 +20,10 @@ fi
 
 
 #delete Nov 2026
-sudo rm -rf $dp/temp >$dn 2>&1
+rm -rf $dp/temp >$dn 2>&1
 
 #keep checking in case user declines
 tmux_patch
-
 #fix homebrew path order ; remove June 2025
 if [[ $OS == "Mac" ]] && which brew >$dn && [[ -e $bashrc ]] ; then
 #if sed finds opt/homebrew/bin at the end of the current path, delete that line.
@@ -80,6 +79,7 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
     sudo gsed -i 's/^.*tlsextradomain.*domains.*$/; The tlsextradomain and tls extraip are used to specify additional domains/' $HOME/.lnd/lnd.conf >$dn 2>&1
     sudo gsed -i 's/^; LND.*from version.*$/; LND conf configuration, message added by Parmanode, from version 3.47.4/' $HOME/.lnd/lnd.conf >$dn 2>&1
 fi
+
 debug temppatchend
 }
 

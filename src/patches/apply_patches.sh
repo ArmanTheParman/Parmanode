@@ -7,7 +7,6 @@ openssh_patch
 suggest_tor
 make_parmanode_tor_service  #makes parmanode tor onion address ; put in next patch
 hello
-
 #make sure debug file doesn't get too big
 truncatedebuglog
 
