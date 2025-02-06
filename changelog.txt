@@ -3,6 +3,7 @@ Version 3.52.2
     -New command from anywhere feature (hidden - type 'command' from almost anywhere)
     -Improved Nmap Scan of all IPs on system
     -Options to disable Bitcoin without uninstalling
+    -readfunction hidden command added
 Version 3.52.1
     -Bitcoin install smol bug fix
     -QR Encode 
