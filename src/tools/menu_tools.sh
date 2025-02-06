@@ -7,7 +7,11 @@ echo -ne "
                                   TOOLS - PAGE 1  $orange
 ########################################################################################
 
+$cyan              cc)$orange    See the IPs of all devices connected on your network
+
 $cyan              svr)$orange   Screen Video Recording$red$blinkon NEW$blinkoff$orange
+
+$cyan              ip)$orange    What's my computer's IP address?
 
 $cyan              uc)$orange    Update computer (apt-get for Linux, Homebrew for Macs)
 
@@ -16,8 +20,6 @@ $cyan              au)$orange    Enable/Disable computer auto updates at night (
 $cyan              sr)$orange    System report (for getting troubleshooting help)
 
 $cyan              d)$orange     Delete all preferences to hide menu messages
-
-$cyan              ip)$orange    What's my computer's IP address?
 
 $cyan              pn)$orange    ParmanodL - Flash a mircoSD for a Raspberry Pi
                                                                                       
@@ -100,6 +102,9 @@ svr)
 screen_video_recording
 ;;
 
+cc)
+see_local_devices
+;;
 
     "")
         return 0 
