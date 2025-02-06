@@ -197,6 +197,7 @@ pnostr)
     ;;
 
 next)
+    continue
     if [[ -n $nextcloud_n ]] ; then
     install_nextcloud
     return 0
