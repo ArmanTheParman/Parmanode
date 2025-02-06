@@ -60,6 +60,7 @@ $cyan
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; p) return 0 ;;
 m|M) back2main ;;
 
 cd|CD|Cd)
@@ -125,14 +126,6 @@ return 0
 
 h)
 hack_tips
-;;
-
-p|P)
-return 1
-;;
-
-q|Q|Quit|QUIT)
-exit 0
 ;;
 
 disable)
