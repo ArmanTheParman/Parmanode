@@ -10,7 +10,7 @@ if [[ $OS == Linux ]] && ! which nmap >$dn ; then
     else
         return 1
     fi
-elif [[ $OS == "Mac" ]] ; then
+elif [[ $OS == "Mac" ]] && ! which nmap >$dn ; then
     if  yesorno "OK to install nmap?" ; then 
         clear && brew install nmap
     else
@@ -19,7 +19,7 @@ elif [[ $OS == "Mac" ]] ; then
 fi
 
 IP_prefix=$(echo $IP | cut -d \. -f 1-3)
-clear
+set_terminal_high
 please_wait
 sudo nmap -sn $IP_prefix/24 | less
 }
