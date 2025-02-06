@@ -21,5 +21,6 @@ fi
 IP_prefix=$(echo $IP | cut -d \. -f 1-3)
 set_terminal_high
 please_wait
-sudo nmap -sn $IP_prefix/24 2>$dn | less
+sudo nmap -sn $IP_prefix/24 2>$dn > $dp/.IPs 
+less $dp/.IPs
 }
