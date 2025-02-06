@@ -54,7 +54,7 @@ nextcloud_storage_info
 # This line is not allowed to be changed, since mastercontainer updates would fail.
 # --restart always This is the "restart policy". 
 # Means that the container should always get started with the Docker daemon. 
-
+sudo docker network rm nextcloud-aoi >$dn 2>$dn
 sudo docker run \
 -d \
 --init \
@@ -67,6 +67,9 @@ sudo docker run \
 --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
 --volume /var/run/docker.sock:/var/run/docker.sock:ro \
 nextcloud/all-in-one:latest
+
+#a weird fix needed after nextcloud devs broke something
+sudo docker network connect bridge nextcloud-aio-mastercontainer >$dn 2>&1
 
 installed_config_add "nextcloud-end"
 success "NextCloud has finished being installed"
