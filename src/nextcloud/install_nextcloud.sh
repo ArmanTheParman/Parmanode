@@ -1,5 +1,5 @@
 function install_nextcloud {
-
+return 1
 # No macs
 if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
 
