@@ -11,7 +11,6 @@ if [[ $skip_make_bitcoin_directories == "true" ]] ; then return 0 ; fi
     fi
 #make_parmanode_bitcoin_directory             
     mkdir -p $HOME/parmanode/bitcoin 
-    debug "IS HOME PARMANODE BITCOIN DIR MADE?"
     installed_conf_add "bitcoin-start"    
 
     if [[ $drive == "external" && $importdrive != "true" ]] ; then 

@@ -95,6 +95,10 @@ fi
 debug "bitcoin menu..."
 set_terminal_custom "52"
 
+if grep -q "disable_bitcoin=true" $pc ; then
+         output1="                   Bitcoin is$red DISABLED$orange" 
+fi
+
 
 echo -en "
 ########################################################################################

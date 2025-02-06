@@ -25,30 +25,35 @@ output1="                   Bitcoin is$red NOT running$orange -- choose \"start\
 
 output2="                         (Will sync to the $drive drive)"
 fi                         
-
+if grep -q "disable_bitcoin=true" $pc ; then
+         output1="                   Bitcoin is$red DISABLED$orange" 
+fi
 echo -e "
 ########################################################################################
                             ${cyan}Bitcoin Core Menu - OTHER ${orange}                               
 ########################################################################################
+
 "
 echo -e "$output1"
 echo ""
 echo -e "$output2"
 echo ""
 echo -e "
-
 $cyan
-      (cd)$orange       Change syncing drive internal vs external
+            cd)$orange       Change syncing drive internal vs external
 $cyan
-      (mp)$orange       Modify Pruning
+            mp)$orange       Modify Pruning
 $cyan
-      (c)$orange        How to connect your wallet...........(Otherwise no point to this)
+            c)$orange        How to connect your wallet...........(Otherwise no point to this)
 $cyan
-      (dd)$orange       Backup/Restore data directory.................(Instructions only)
+            dd)$orange       Backup/Restore data directory.................(Instructions only)
 $cyan   
-      (r)$orange        Errors? Try --reindex blockchain...
+            r)$orange        Errors? Try --reindex blockchain...
 $cyan
-      (h)$orange        Hack Parmanode; tips for troubleshooting.
+            h)$orange        Hack Parmanode; tips for troubleshooting.
+$cyan
+      disable)$orange        Toggel disable/enable Bitcoin on the system.
+
 
 ########################################################################################
 "
@@ -128,6 +133,10 @@ return 1
 
 q|Q|Quit|QUIT)
 exit 0
+;;
+
+disable)
+disable_bitcoin
 ;;
 
 *)
