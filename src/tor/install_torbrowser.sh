@@ -1,4 +1,9 @@
 function install_torbrowser {
+if [[ $OS == Mac ]] ; then announce "Not available for Mac. Easy enough to install yourself.
+    Go to https://www.torproject.org
+    
+    Watch out for Mac OS blocking the download, if so, manually approve it." ; return 1 ; fi
+
 clear
 cd $hp
 if [[ $OS == Mac ]] ; then
