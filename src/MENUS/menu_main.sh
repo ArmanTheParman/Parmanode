@@ -223,7 +223,7 @@ esac ; done ; return 0
 }
 
 function navigation_shortcuts {
-set_terminal_custom 44 ; echo -e "
+set_terminal_custom 46 ; echo -e "
 ########################################################################################
 $red$blinkon
                                G O O D   N E W S  ! ! $blinkoff$orange
@@ -245,6 +245,9 @@ $red$blinkon
 
     To see all the possilble shortcuts, have a look at the code (type$cyan 'code'$orange) and
     $cyan<enter>$orange from here... no, actually, almost from anywhere - nice huh?
+
+    To read any function within Parmanode, type$cyan readfunction$orange from 
+    almost anywhere and follow prompts.
 
     As an example, where you see...
 $cyan
