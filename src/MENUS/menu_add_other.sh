@@ -197,8 +197,11 @@ pnostr)
     ;;
 
 next)
-    [[ ! -e $dp/.nexcloud_enabled ]] && announce "NextCloud install is not free open source. Please contact
-    parman for options." && continue 
+    [[ ! -e $dp/.nexcloud_enabled ]] && announce "
+    With NextCloud, your machine can host your files like a Google Drive server,
+    and you can access them from anywhere via your preferred domain name.    
+
+    Contact Parman for set up. Fee is \$US400." && continue 
 
     if [[ -n $nextcloud_n ]] ; then
     install_nextcloud
