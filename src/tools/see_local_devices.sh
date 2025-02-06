@@ -21,6 +21,11 @@ fi
 IP_prefix=$(echo $IP | cut -d \. -f 1-3)
 set_terminal_high
 please_wait
-sudo nmap -sn $IP_prefix/24 2>$dn > $dp/.IPs 
+nmap -sn $IP_prefix/24 2>$dn > $dp/.IPs 
+gsed -i 's/Nmap scan report for //' $dp/.IPs
+gsed -i '/Starting Nmap/d' $dp/.IPs
+gsed -i '/Nmap done/d' $dp/.IPs
+gsed -i '/^1/i
+' $dp/.IPs
 less $dp/.IPs
 }
