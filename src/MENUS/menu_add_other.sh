@@ -29,10 +29,8 @@ if [[ -n $qbittorrent_n ]]     ; then echo -e  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
 #if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
 if [[ -n $nginx_n ]]           ; then echo -e  "$nginx_n"; fi
-#if [[ -n $nextcloud_n ]]       ; then echo -e  "$nextcloud_n"; fi
 if [[ -n $X11_n ]]             ; then echo -e  "$X11_n"; fi
 if [[ -n $phoenix_n ]]             ; then echo -e  "$phoenix_n"; fi
-#if [[ -n $public_pool_n ]]     ; then echo -e  "$public_pool_n"; fi
 
 echo -e "#                                                                                      #
 #$green Installed...$orange                                                                         #
