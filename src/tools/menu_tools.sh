@@ -7,7 +7,7 @@ echo -ne "
                                   TOOLS - PAGE 1  $orange
 ########################################################################################
 
-$cyan              cc)$orange    See the IPs of all devices connected on your network
+$cyan              aip)$orange   See the IPs of all devices connected on your network
 
 $cyan              svr)$orange   Screen Video Recording$red$blinkon NEW$blinkoff$orange
 
@@ -102,7 +102,7 @@ svr)
 screen_video_recording
 ;;
 
-cc)
+aip)
 see_local_devices
 ;;
 
