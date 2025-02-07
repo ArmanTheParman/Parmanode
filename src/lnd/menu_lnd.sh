@@ -477,8 +477,6 @@ function watchtower_service {
     
 grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just yet." && return 1
 
-file=$HOME/.lnd/lnd.conf
-
 if ! lncli tower info >/dev/null 2>&1 ; then
 
 yesorno "For information on watchtowers, see GitHub:
@@ -525,6 +523,9 @@ fi
 }
 
 function menu_watchtower {
+    
+file=$HOME/.lnd/lnd.conf
+
 while true ; do
 
 if lncli tower info >/dev/null 2>&1 ; then
@@ -569,8 +570,7 @@ watchtower_service
 ;;
 
 c)
-announce "coming soon" 
-continue
+watchtower_connect
 ;;
 
 pp)
@@ -594,4 +594,24 @@ invalid
 ;;
 esac
 done
+}
+
+function watchtower_connect {
+lncli wtclient towers >/dev/null 2>&1 || if yesorno "Add capability to connect to a watchtower?" ; then
+    sudo gsed -i '/wtclient.active/d' $file
+    sudo gsed -i '/\[wtclient\]/a wtclient.active=true' $file
+    success "Watchtower connecting enabled -- $blue RESTARTING LND AUTOMATICALLY$orange"
+    restart_lnd
+    else
+    return 1
+    fi
+
+
+# if grep -q "wtclient.active=true" || ! grep -q "wtclient.active = true" ; then
+# yesorno "Disable capability to connect to a watchtower?" || return 1
+# sudo gsed -i '/wtclient.active.*true/d' $file
+# success "Watchtower connecting disabled -- $blue RESTART LND MANUALLY TO TAKE EFFECT$orange"
+# fi
+
+
 }
