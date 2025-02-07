@@ -120,14 +120,15 @@ yesorno "Also enable clearnet access to your watchtower on IP:
             gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $file
          }
          
-success "Watchtower settings enabled -- $blue RESTART LND MANUALLY TO TAKE EFFECT$orange"
-
+success "Watchtower settings enabled -- $blue RESTARTING LND AUTOMATICALLY$orange"
+restart_lnd
 else
 
 yesorno "Disable watchtower settings?" || return 1
 gsed -i '/watchtower.active/d' $file
 gsed -i '/watchtower.externalip/d' $file
-success "Watchtower settings disabled --$blue  RESTART LND MANUALLY TO TAKE EFFECT$orange"
+success "Watchtower settings disabled --$blue  RESTARTING LND AUTOMATICALLY$orange"
+restart_lnd
 fi
 }
 
