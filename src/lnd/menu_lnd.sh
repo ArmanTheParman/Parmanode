@@ -475,6 +475,10 @@ fi
 }
 
 function watchtower_toggle {
+    
+grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just yet." && return 1
+
+file=$HOME/.lnd/lnd.conf
 
 if ! grep -q "watchtower=true" $pc ; then
 
@@ -495,20 +499,18 @@ $orange
     Do it?" || return 1
 
 externalIP=$(get_external_IP)
-debug "$externalIP
-$lndconf"
 
 #delete old
-gsed -i '/^watchtower.active/d' $lndconf
+gsed -i '/^watchtower.active/d' $file
 #add under [watchtower]
 gsed -i '/\[watchtower\]/a\
-watchtower.active=1' $lndconf
+watchtower.active=1' $file
 debug "1"
 #add under watchtower.active=1
 yesorno "Also enable clearnet access to your watchtower on IP:
 $cyan
     $externalIP $orange?
-    " && gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $lndconf
+    " && gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $file
          
 parmanode_conf_add "watchtower=true"
 success "Watchtower settings enabled"
@@ -516,8 +518,8 @@ success "Watchtower settings enabled"
 else
 
 yesorno "Disable watchtower settings?" || return 1
-gsed -i '/watchtower.active/d' $lndconf
-gsed -i '/watchtower.externalip/d' $lndconf
+gsed -i '/watchtower.active/d' $file
+gsed -i '/watchtower.externalip/d' $file
 parmanode_conf_remove "watchtower=true"
 success "Watchtower settings disabled"
 fi
