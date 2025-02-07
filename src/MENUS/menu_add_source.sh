@@ -4,14 +4,14 @@ function menu_add_source {
 unset bitcoin_i bitcoin_p bitcoin_n
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then 
    #installed
-bitcoin_i="#                                      Bitcoin Core                                    #"
+bitcoin_i="#                                      Bitcoin Core/Knots                              #"
 
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-bitcoin_p="#                                      Bitcoin Core                                    #"
+bitcoin_p="#                                      Bitcoin Core/Knots                              #"
 else 
    #not installed
-bitcoin_n="#$cyan                            (b)$orange           Bitcoin Core                                #"
+bitcoin_n="#$cyan                            (b)$orange           Bitcoin Core/Knots                          #"
 fi
 
 #DOCKER
