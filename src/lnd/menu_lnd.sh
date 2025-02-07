@@ -529,7 +529,12 @@ fi
 function menu_watchtower {
 while true ; do
 
-grep -q "watchtower=true" $pc ; then
+if lncli tower info >/dev/null 2>&1 ; then
+    wts_status="${green}ENABLED$orange"
+else
+    wts_status="${red}DISABLED$orange"
+fi
+
 pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
 set_terminal ; echo -en "
 ########################################################################################$cyan
@@ -540,7 +545,6 @@ set_terminal ; echo -en "
        Watchtower Service:     $wts_status
 
        Watchtower connected:   $wtc_status
-
 
 $cyan
                s)$orange         Enable/Disable Watch Tower Service (provide service)
