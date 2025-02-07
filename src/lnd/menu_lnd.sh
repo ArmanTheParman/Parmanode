@@ -515,4 +515,5 @@ yesorno "Disable watchtower settings?" || return 1
 sed -i '/watchtower.active/d' $lndconf
 sed -i '/watchtower.externalip/d' $lndconf
 success "Watchtower settings disabled"
+fi
 }
