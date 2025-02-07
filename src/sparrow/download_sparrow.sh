@@ -35,7 +35,7 @@ set_terminal ; echo -e "
 
     If you prefer the older sparrow$green version 1.9.0$orange, then type '${red}old$orange' and $cyan<enter>$orange.
 
-    Otherwise hit$cyan <enter>$orange alone to get$green version 2.0.0$orange
+    Otherwise hit$cyan <enter>$orange alone to get$green version 2.1.1$orange
 
 ########################################################################################
 "
@@ -47,7 +47,7 @@ old)
 export sparrow_version="1.9.0"
 ;;
 *)
-export sparrow_version="2.0.0"
+export sparrow_version="2.1.1"
 ;;
 esac
 return 0

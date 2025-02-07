@@ -5,41 +5,27 @@
 
 function install_sparrow {
 if [[ -e $HOME/.sparrow ]] ; then
-while true ; do
 sned_sats
 set_terminal
 echo -e "
 ########################################################################################
- 
-     It seems you either have Sparrow installed already, independently to Parmanode,
-     or you had a previous Sparrow installation that wasn't fully uninstalled (eg
-     if the configuration directory was not deleted).
-
-     This is indicated by Parmanode detecting the presence of the directory:
+$pink 
+     FYI
+$orange
+     You had a previous Sparrow installation because the a configuration directory
+     was found:$cyan $HOME/.sparrow$orange 
      
-     $HOME/.sparrow
-
-     You can go back and fully uninstall (or manually delete the config directory) 
-     before proceeding, or proceed now anyway, but be warned, there could be 
-     unexpected behaviour.
-     
-     You have options:
-$green
-                 a)        Abort
-$red    
-                 yolo)     Proceed with installation. (Reckless!)
+     It's a hidden directory where your wallets are saved and application settings 
+     are saved. This directory does not get deleted when you uninstall Sparrow. You 
+     can change versions and it will always read data from this directory.
+    
 $orange
 ########################################################################################
 "
-choose "xpmq" ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit ;; q|P|a|A) return 1 ;; M|m) back2main ;;
-yolo) break ;;
-*) invalid ;;
-esac
-done
+enter_continue
+jump $enter_cont
 fi
+
 
 set_terminal
 if [[ $OS == "Mac" ]] ; then
@@ -103,7 +89,7 @@ set_terminal ; echo "
     Dear Mac user, Parmanode will download Sparrow for you, verify it, and move the
     program to your Applications folder.
 
-    When you see a Mac popup to drag an icon to the Applications, don't do it, wait,
+    When you see a Mac popup to drag an icon to the Applications,$red don't do it$orange, wait,
     Parmanode is taking care of it and it will automagically happen and close itself.
 
 ########################################################################################
