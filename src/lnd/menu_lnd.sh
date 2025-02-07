@@ -514,6 +514,7 @@ else
 yesorno "Disable watchtower settings?" || return 1
 sed -i '/watchtower.active/d' $lndconf
 sed -i '/watchtower.externalip/d' $lndconf
+parmanode_conf_remove "watchtower=true"
 success "Watchtower settings disabled"
 fi
 }
