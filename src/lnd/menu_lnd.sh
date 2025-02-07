@@ -495,15 +495,19 @@ $orange
     Do it?" || return 1
 
 externalIP=$(get_external_IP)
+debug "externalIP"
 
+#delete old
 gsed -i '/^watchtower.active/d' $lndconf
+#add under [watchtower]
 gsed -i '/\[watchtower\]/a\
 watchtower.active=1' $lndconf
 
+#add under watchtower.active=1
 yesorno "Also enable clearnet access to your watchtower on IP:
 $cyan
     $externalIP $orange?
-    " && gsed -i "/watchtower.active=1/a watchtower.externalip=$externalIP" $lndconf
+    " && gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $lndconf
          
 parmanode_conf_add "watchtower=true"
 success "Watchtower settings enabled"
