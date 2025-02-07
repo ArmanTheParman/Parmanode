@@ -508,9 +508,11 @@ watchtower.active=1' $file
 debug "1"
 #add under watchtower.active=1
 yesorno "Also enable clearnet access to your watchtower on IP:
-$cyan
+    $cyan
     $externalIP $orange?
-    " && gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $file
+    " && {
+            gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $file
+         }
          
 parmanode_conf_add "watchtower=true"
 success "Watchtower settings enabled"
