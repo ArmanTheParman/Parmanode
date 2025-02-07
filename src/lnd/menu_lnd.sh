@@ -502,7 +502,7 @@ gsed -i '/^watchtower.active/d' $lndconf
 #add under [watchtower]
 gsed -i '/\[watchtower\]/a\
 watchtower.active=1' $lndconf
-
+debug "1"
 #add under watchtower.active=1
 yesorno "Also enable clearnet access to your watchtower on IP:
 $cyan
