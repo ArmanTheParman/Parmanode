@@ -233,6 +233,9 @@ debug "else"
 fi
 ;;
 
+wt)
+watchtower_toggle 
+;;
 
 th)
 if [[ $torhybrid == Disabled ]] ; then
@@ -469,4 +472,47 @@ fi
 if [[ $1 != skipsuccess ]] ; then
 success "LND" "having Tor-only reversed"
 fi
+}
+
+function watchtower_toggle {
+
+grep -q "watchtower=true" $pc ; then
+
+yesorno "For information on watchtowers, see GitHub:
+$cyan
+    https://github.com/lightningnetwork/lnd/blob/master/docs/watchtower.md
+$orange
+    Parmanode will enable your LND node to act as a watchtower for others.
+
+    BTW, it doesn't make sense to be your own watchtower in the same 
+    network, because you have a watchtower in case your network goes down.
+
+    Once you enable it, you need to share your public key (you'll see
+    it later) with others so they can connect to it. You then generously
+    supply your 'uptime' and the node monitors transactions for them,
+    punishing attackers as needed.
+
+    Do it?" || return 1
+
+externalIP=$(get_external_IP)
+
+sed -i '/^watchtower.active/d' $lndconf
+sed -i '/[watchtower]/a\
+watchtower.active=1' $lndconf
+
+yesorno "Also enable clearnet access to your watchtower on IP:
+$cyan
+    $externalIP $orange?
+    " && { sed -i "/watchtower.active=1/a\\
+watchtower.externalip=$externalIP" $lndconf
+         }
+parmanode_conf_add "watchtower=true"
+success "Watchtower settings enabled"
+
+else
+
+yesorno "Disable watchtower settings?" || return 1
+sed -i '/watchtower.active/d' $lndconf
+sed -i '/watchtower.externalip/d' $lndconf
+success "Watchtower settings disabled"
 }
