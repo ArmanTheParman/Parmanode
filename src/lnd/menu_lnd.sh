@@ -627,14 +627,3 @@ echo -e "${green}Connected towers...\n"
 lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
 enter_continue
 }
-
-
-
-# if grep -q "wtclient.active=true" || ! grep -q "wtclient.active = true" ; then
-# yesorno "Disable capability to connect to a watchtower?" || return 1
-# sudo gsed -i '/wtclient.active.*true/d' $file
-# success "Watchtower connecting disabled -- $blue RESTART LND MANUALLY TO TAKE EFFECT$orange"
-# fi
-
-
-}
