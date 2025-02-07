@@ -479,7 +479,7 @@ grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just
 
 file=$HOME/.lnd/lnd.conf
 
-if ! grep -q "watchtower=true" $pc ; then
+if [[ $wts_status_logic == "disabled" ]] ; then
 
 yesorno "For information on watchtowers, see GitHub:
 $cyan
@@ -513,7 +513,6 @@ yesorno "Also enable clearnet access to your watchtower on IP:
             gsed -i "/watchtower\.active=1/a watchtower.externalip=$externalIP" $file
          }
          
-parmanode_conf_add "watchtower=true"
 success "Watchtower settings enabled -- $blue RESTART LND MANUALLY TO TAKE EFFECT$blue"
 
 else
@@ -521,7 +520,6 @@ else
 yesorno "Disable watchtower settings?" || return 1
 gsed -i '/watchtower.active/d' $file
 gsed -i '/watchtower.externalip/d' $file
-parmanode_conf_remove "watchtower=true"
 success "Watchtower settings disabled --$blue  RESTART LND MANUALLY TO TAKE EFFECT$orange"
 fi
 }
@@ -531,8 +529,10 @@ while true ; do
 
 if lncli tower info >/dev/null 2>&1 ; then
     wts_status="${green}ENABLED$orange"
+    wts_status_logic="enabled"
 else
     wts_status="${red}DISABLED$orange"
+    wts_status_logic="disabled"
 fi
 
 pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
@@ -547,7 +547,7 @@ set_terminal ; echo -en "
        Watchtower connected:   $wtc_status
 
 $cyan
-               s)$orange         Enable/Disable Watch Tower Service (provide service)
+               s)$orange         Enable/Disable Watch Tower Service (provide the service)
 $cyan
                c)$orange         Connect to a remote Watch Tower (accept service)
 $cyan
@@ -564,11 +564,11 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in 
 m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
 
-wts)
+s)
 watchtower_service
 ;;
 
-wtc)
+c)
 announce "coming soon" 
 continue
 ;;
