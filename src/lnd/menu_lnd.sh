@@ -473,7 +473,7 @@ success "LND" "having Tor-only reversed"
 fi
 }
 
-function watchtower_toggle {
+function watchtower_service {
     
 grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just yet." && return 1
 
@@ -527,7 +527,10 @@ fi
 }
 
 function menu_watchtower {
+while true ; do
 
+grep -q "watchtower=true" $pc ; then
+pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
 set_terminal ; echo -en "
 ########################################################################################$cyan
                                LND Watchtower Menu$orange
@@ -540,12 +543,51 @@ set_terminal ; echo -en "
 
 
 $cyan
-              wts)$orange         Enable/Disable Watch Tower Service (provide service)
+               s)$orange         Enable/Disable Watch Tower Service (provide service)
 $cyan
-              wtc)$orange         Connect to a remote Watch Tower (accept service)
-
-
+               c)$orange         Connect to a remote Watch Tower (accept service)
+$cyan
+              pp)$orange         Print watchtower pubkey
+$cyan              
+              pu)$orange         Print watchtower URIs
+$cyan
+              pl)$orange         Print watchtower listeners
 
 ########################################################################################
 "
 }
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal
+case $choice in 
+m|M) back2main ;; q|Q|QUIT|Quit) exit 0 ;; p|P) return 0 ;;
+
+wts)
+watchtower_service
+;;
+
+wtc)
+announce "coming soon" 
+continue
+;;
+
+pp)
+clear
+lncli tower info | jq ".pubkey"
+enter_continue
+;;
+pu)
+clear
+lncli tower info | jq ".uris"
+enter_continue
+;;
+pl)
+clear
+lncli tower info | jq ".listeners"
+enter_continue
+;;
+
+*)
+invalid
+;;
+esac
+done
