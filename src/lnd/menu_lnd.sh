@@ -183,27 +183,31 @@ echo -ne "
 $menuDockerIP
 
 $cyan
-      (i)$orange              Important info
+      i)$orange              Important info
 $cyan
-      (s)$orange              Start $LND $orange$inside_docker 
+      s)$orange              Start $LND $orange$inside_docker 
 $cyan
-      (stop)$orange           Stop $LND $orange$inside_docker 
+      stop)$orange           Stop $LND $orange$inside_docker 
 $cyan
-      (rs)$orange             Restart $LND $inside_docker
+      rs)$orange             Restart $LND $inside_docker
+$cyan
+      wt)$orange             Enable/Disable Watch Tower Service$pink NEW
+$cyan
+      wtc)$orange            Connect to a remote Watch Tower$pink NEW
 $dkrmenu
-      (log)$orange            Inspect LND logs
+      log)$orange            Inspect LND logs
 $cyan
-      (conf)$orange             Inspect and edit $lndconf file (confv for vim)
+      conf)$orange           Inspect and edit $lndconf file (confv for vim)
 $cyan
-      (scb)$orange            Static Channel Backup 
+      scb)$orange            Static Channel Backup 
 $bright_blue
-      (t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
+      t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
 $cyan
-      (th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
+      th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
 $cyan
-      (w)$orange              ... wallet options
+      w)$orange              ... wallet options
 $cyan
-      (mm)$orange             ... more options
+      mm)$orange             ... more options
 $lnd_onion $clearnetURI
 $red $blinkon                                                      r to refresh $blinkoff$orange       
 ########################################################################################
