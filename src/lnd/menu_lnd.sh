@@ -397,7 +397,7 @@ if grep -q "litd" $ic >$dn 2>&1 ; then
 
     if grep -q lnd.tlsextraip $file ; then
     if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; lnd.tlsextraip/s/^..//' $file
+    gsed -i '/^; lnd.tlsextraip/s/^..//' $file
     else
     announce "Unexpectedly found 'lnd.tlsextraip' more than once in lit.conf.
         Abandoning automated modification to avoid errors."
@@ -407,7 +407,7 @@ if grep -q "litd" $ic >$dn 2>&1 ; then
 
     if grep -q lnd.externalip $file ; then
     if [[ $(cat $file | grep lnd.externalip | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; lnd.externalip/s/^..//' $file
+    gsed -i '/^; lnd.externalip/s/^..//' $file
     else
     announce "Unexpectedly found 'lnd.externalip' more than once in lit.conf.
         Abandoning automated modification to avoid errors."
@@ -419,7 +419,7 @@ if grep -q "litd" $ic >$dn 2>&1 ; then
 
     if grep -q lnd.tlsextradomain $file ; then
     if [[ $(cat $file | grep lnd.tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; lnd.tlsextradomain/s/^..//' $file
+    gsed -i '/^; lnd.tlsextradomain/s/^..//' $file
     else
     announce "Unexpectedly found 'lnd.tlsextradomain' more than once in lit.conf.
         Abandoning automated modification to avoid errors."
@@ -432,7 +432,7 @@ else
 
     if grep -q tlsextraip $file ; then
     if [[ $(cat $file | grep tlsextraip | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; tlsextraip/s/^..//' $file
+    gsed -i '/^; tlsextraip/s/^..//' $file
     else
     announce "Unexpectedly found 'tlsextraip' more than once in lnd.conf.
         Abandoning automated modification to avoid errors."
@@ -442,7 +442,7 @@ else
 
     if grep -q externalip $file ; then
     if [[ $(cat $file | grep externalip | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; externalip/s/^..//' $file
+    gsed -i '/^; externalip/s/^..//' $file
     else
     announce "Unexpectedly found 'externalip' more than once in lnd.conf.
         Abandoning automated modification to avoid errors."
@@ -454,7 +454,7 @@ else
 
     if grep -q tlsextradomain $file ; then
     if [[ $(cat $file | grep tlsextradomain | wc -l) == 1 ]] ; then #if string found only once
-    sed -i '/^; tlsextradomain/s/^..//' $file
+    gsed -i '/^; tlsextradomain/s/^..//' $file
     else
     announce "Unexpectedly found 'tlsextradomain' more than once in lnd.conf.
         Abandoning automated modification to avoid errors."
@@ -496,14 +496,14 @@ $orange
 
 externalIP=$(get_external_IP)
 
-sed -i '/^watchtower.active/d' $lndconf
-sed -i '/\[watchtower\]/a\
+gsed -i '/^watchtower.active/d' $lndconf
+gsed -i '/\[watchtower\]/a\
 watchtower.active=1' $lndconf
 
 yesorno "Also enable clearnet access to your watchtower on IP:
 $cyan
     $externalIP $orange?
-    " && { sed -i "/watchtower.active=1/a\\
+    " && { gsed -i "/watchtower.active=1/a\\
 watchtower.externalip=$externalIP" $lndconf
          }
 parmanode_conf_add "watchtower=true"
@@ -512,8 +512,8 @@ success "Watchtower settings enabled"
 else
 
 yesorno "Disable watchtower settings?" || return 1
-sed -i '/watchtower.active/d' $lndconf
-sed -i '/watchtower.externalip/d' $lndconf
+gsed -i '/watchtower.active/d' $lndconf
+gsed -i '/watchtower.externalip/d' $lndconf
 parmanode_conf_remove "watchtower=true"
 success "Watchtower settings disabled"
 fi
