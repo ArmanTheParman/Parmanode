@@ -5,7 +5,7 @@ function install_bitcoin {
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
-export version="27.2"
+export version="28.1"
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
