@@ -8,6 +8,13 @@ sversion=$(/Applications/Sparrow.app/Contents/MacOS/Sparrow --version | grep -Eo
 else
 sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
+
+if [[ $sversion != "2.1.1" ]] ; then 
+    newversiontext="${pink}                    usp)          Update sparrow$orange\n"
+    updateavailable="true"
+fi
+
+
 if [[ $OS == "Linux" ]] && [[ ! -e $HOME/Desktop/run_sparrow.sh ]] ; then
     shortcut="$cyan\n                  (dsk) $orange           Add Desktop Shortcut$red$blinkon NEW$blinkoff$orange\n"
 else
@@ -24,19 +31,19 @@ set_terminal_high ; echo -en "
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 $green
-                  (start) $orange         Start Sparrow 
+                  start) $orange         Start Sparrow 
 $red
-                  (mm)    $orange         Manage node connection...
+                     mm) $orange         Manage node connection...
 $shortcut$cyan
-                  (sc)    $orange         View/Edit config file (scv for vim)
+                     sc) $orange         View/Edit config file (scv for vim)
 $cyan
-                  (t)     $orange         Troubleshooting info
+                      t) $orange         Troubleshooting info
 $cyan
-                  (w)     $orange         Show saved wallet files
+                      w) $orange         Show saved wallet files
 $cyan
-                  (cl)    $orange         Clear connection certificates 
-                          $orange         (can help connection issues)
-
+                     cl) $orange         Clear connection certificates 
+                       
+$newversiontext
 
 ########################################################################################
 "
@@ -118,6 +125,10 @@ enter_continue ; jump $enter_cont
 set_terminal
 ;;
 
+usp)
+[[ $updateavailable != "true" ]] && continue
+update_sparrow
+;;
 *)
 invalid
 ;;
@@ -141,21 +152,21 @@ $cyan
                CURRENT SPARROW CONNECTION TYPE: $cyan$connection$orange
 
 
-$cyan                (d)  $orange     Bitcoin Core via tcp (default)
+$cyan                d)  $orange     Bitcoin Core via tcp (default)
 
-$cyan                (fs)   $orange   Fulcrum via ssl (port 50002)
+$cyan                fs)   $orange   Fulcrum via ssl (port 50002)
 
-$cyan                (ft)    $orange  Fulcrum via tcp (port 50001)
+$cyan                ft)    $orange  Fulcrum via tcp (port 50001)
 
-$cyan                (ftor) $orange   Fulcrum via Tor (port 7002)
+$cyan                ftor) $orange   Fulcrum via Tor (port 7002)
 
-$cyan                (et)    $orange  electrs via tcp (port 50005)
+$cyan                et)    $orange  electrs via tcp (port 50005)
                 
 $cyan                N/A   $orange    electrs via SSL (Not available)
 
-$cyan                (etor) $orange   electrs via Tor (port 7004) 
+$cyan                etor) $orange   electrs via Tor (port 7004) 
 
-$cyan                (rtor) $orange   To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+$cyan                rtor) $orange   To a remote Electrum/Fulcrum server via Tor (eg a friend's)
 
 
 ########################################################################################
@@ -208,4 +219,17 @@ invalid
 ;;
 esac
 done
+}
+
+
+function update_sparrow {
+
+announce "It's not always necessary to update Sparrow every time there is an 
+    incremental update, but you can. It's best to only do it via Parmanode, 
+    as it will verify the download for you. If you want to do it yourself, 
+    you can, but Parmanode might get confused.
+
+    To update to the latest version, uninstall Sparrow with Parmanode (your 
+    wallets will not be delted), then install it again, and you'll have the 
+    newer version."
 }
