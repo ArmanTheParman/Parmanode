@@ -1,5 +1,5 @@
 function enter_continue {
-echo -en "$@\n"
+echo -en "$1\n"
 unset enter_cont
 if [[ $installer == parmanodl ]] ; then return 0 ; fi
 
