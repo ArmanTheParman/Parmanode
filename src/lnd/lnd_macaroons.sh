@@ -42,7 +42,7 @@ $orange
 $pink$blinkon
 The above configuration may need some adjustment depending on your specific setup${blinkoff}$orange, eg
 instead of the internal IP, you may have a domain name, or the local host IP. You 
-may also omit the 'allowinstecure=true' setting and see if your connection works
+may also omit the 'allowinsecure=true' setting and see if your connection works
 without it.
 
 $red
