@@ -479,7 +479,7 @@ grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just
 
 file=$HOME/.lnd/lnd.conf
 
-if [[ $wts_status_logic == "disabled" ]] ; then
+if ! lncli tower info >/dev/null 2>&1 ; then
 
 yesorno "For information on watchtowers, see GitHub:
 $cyan
@@ -535,7 +535,7 @@ else
     wts_status_logic="disabled"
 fi
 
-pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
+#pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
 set_terminal ; echo -en "
 ########################################################################################$cyan
                                LND Watchtower Menu$orange
