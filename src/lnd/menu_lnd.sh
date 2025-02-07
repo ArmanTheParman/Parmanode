@@ -48,12 +48,10 @@ if grep -q "litd" $ic >$dn 2>&1 ; then
 lndlitd="true" 
 LND=LITD
 lndconf=lit.conf
-macs=""
 else 
 lndlitd="false" 
 LND=LND
 lndconf=lnd.conf
-macs="(Macs too!)"
 fi
 
 while true ; do
@@ -201,7 +199,7 @@ $cyan
 $cyan
       scb)$orange            Static Channel Backup 
 $bright_blue
-      t)$orange              Enable/disable TOR $pink $macs $orange      Currently: $colour1$lndtor$orange
+      t)$orange              Enable/disable TOR $pink $orange      Currently: $colour1$lndtor$orange
 $cyan
       th)$orange             Enable/disable Clearnet with Tor      Currently: $colour2$torhybrid$orange
 $cyan
