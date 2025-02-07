@@ -495,7 +495,8 @@ $orange
     Do it?" || return 1
 
 externalIP=$(get_external_IP)
-debug "externalIP"
+debug "$externalIP
+$lndconf"
 
 #delete old
 gsed -i '/^watchtower.active/d' $lndconf
