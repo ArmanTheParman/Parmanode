@@ -503,9 +503,8 @@ watchtower.active=1' $lndconf
 yesorno "Also enable clearnet access to your watchtower on IP:
 $cyan
     $externalIP $orange?
-    " && { gsed -i "/watchtower.active=1/a\\
-watchtower.externalip=$externalIP" $lndconf
-         }
+    " && gsed -i "/watchtower.active=1/a watchtower.externalip=$externalIP" $lndconf
+         
 parmanode_conf_add "watchtower=true"
 success "Watchtower settings enabled"
 
