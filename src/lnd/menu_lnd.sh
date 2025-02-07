@@ -515,7 +515,7 @@ yesorno "Also enable clearnet access to your watchtower on IP:
          }
          
 parmanode_conf_add "watchtower=true"
-success "Watchtower settings enabled -- RESTART LND MANUALLY TO TAKE EFFECT"
+success "Watchtower settings enabled -- $blue RESTART LND MANUALLY TO TAKE EFFECT$blue"
 
 else
 
@@ -523,6 +523,6 @@ yesorno "Disable watchtower settings?" || return 1
 gsed -i '/watchtower.active/d' $file
 gsed -i '/watchtower.externalip/d' $file
 parmanode_conf_remove "watchtower=true"
-success "Watchtower settings disabled -- RESTART LND MANUALLY TO TAKE EFFECT"
+success "Watchtower settings disabled --$blue  RESTART LND MANUALLY TO TAKE EFFECT$orange"
 fi
 }
