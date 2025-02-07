@@ -497,7 +497,7 @@ $orange
 externalIP=$(get_external_IP)
 
 sed -i '/^watchtower.active/d' $lndconf
-sed -i '/[watchtower]/a\
+sed -i '/\[watchtower\]/a\
 watchtower.active=1' $lndconf
 
 yesorno "Also enable clearnet access to your watchtower on IP:
