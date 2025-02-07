@@ -189,9 +189,7 @@ $cyan
 $cyan
       rs)$orange             Restart $LND $inside_docker
 $cyan
-      wt)$orange             Enable/Disable Watch Tower Service$pink NEW
-$cyan
-      wtc)$orange            Connect to a remote Watch Tower$pink NEW
+      mwt)$orange            Watchtower Service Menu$pink NEW
 $dkrmenu
       log)$orange            Inspect LND logs
 $cyan
@@ -233,8 +231,9 @@ debug "else"
 fi
 ;;
 
-wt)
-watchtower_toggle 
+mwt)
+grep -q "litd-end" $ic && announce "Not available with Litd using Parmanode just yet." && continue
+menu_watchtower
 ;;
 
 th)
@@ -525,4 +524,28 @@ gsed -i '/watchtower.externalip/d' $file
 parmanode_conf_remove "watchtower=true"
 success "Watchtower settings disabled --$blue  RESTART LND MANUALLY TO TAKE EFFECT$orange"
 fi
+}
+
+function menu_watchtower {
+
+set_terminal ; echo -en "
+########################################################################################$cyan
+                               LND Watchtower Menu$orange
+########################################################################################
+
+
+       Watchtower Service:     $wts_status
+
+       Watchtower connected:   $wtc_status
+
+
+$cyan
+              wts)$orange         Enable/Disable Watch Tower Service (provide service)
+$cyan
+              wtc)$orange         Connect to a remote Watch Tower (accept service)
+
+
+
+########################################################################################
+"
 }
