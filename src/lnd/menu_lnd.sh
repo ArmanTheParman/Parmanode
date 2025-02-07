@@ -639,8 +639,8 @@ echo -e "Please enter the tower in this format:$cyan pubkey@address:port
     The address can be clernet or onion\n"
 read tower
 lncli wtclient remove $tower
-fi
 }
+fi
 
 clear
 echo -e "${green}Connected towers...\n"
