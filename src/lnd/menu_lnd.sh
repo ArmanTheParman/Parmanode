@@ -523,7 +523,8 @@ fi
 }
 
 function menu_watchtower {
-    
+[[ $lndrunning == "false" ]] && return 1
+
 file=$HOME/.lnd/lnd.conf
 
 while true ; do
@@ -548,15 +549,17 @@ set_terminal ; echo -en "
        Watchtower connected:   $wtc_status
 
 $cyan
-               s)$orange         Enable/Disable Watch Tower Service (provide the service)
+               s)$orange         Enable/Disable Watch Tower Service (PROVIDE the service)
 $cyan
-               c)$orange         Connect to a remote Watch Tower (accept service)
+               c)$orange         Connect to a remote Watch Tower (ACCEPT the service)
 $cyan
-              pp)$orange         Print watchtower pubkey
+              pp)$orange         Print your watchtower pubkey
 $cyan              
-              pu)$orange         Print watchtower URIs
+              pu)$orange         Print your watchtower URIs
 $cyan
-              pl)$orange         Print watchtower listeners
+              pl)$orange         Print watchtower listeners (connections TO you)
+$cyan
+              pc)$orange         Print watchtower connections (connections you made)
 
 
 ########################################################################################
@@ -575,19 +578,25 @@ watchtower_connect
 ;;
 
 pp)
+[[ $wts_status_logic == "disabled" ]] && continue
 clear
 lncli tower info | jq ".pubkey"
 enter_continue
 ;;
 pu)
+[[ $wts_status_logic == "disabled" ]] && continue
 clear
 lncli tower info | jq ".uris"
 enter_continue
 ;;
 pl)
+[[ $wts_status_logic == "disabled" ]] && continue
 clear
 lncli tower info | jq ".listeners"
 enter_continue
+;;
+pc)
+print_wtconnections_made
 ;;
 
 *)
@@ -617,10 +626,7 @@ fi
 [[ -n $addremove ]] && {
     lncli wtclient $addremove 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@iiu4epqzm6cydqhezueenccjlyzrqeruntlzbx47mlmdgfwgtrll66qd.onion:9911
     lncli wtclient $addremove 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@34.216.52.158:9911
-    clear
-    echo -e "${green}Connected towers...\n"
-    lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
-    enter_continue
+    print_wtconnections_made 
 }
 
 yesorno "Would you like to$green connect$orange any towers manually?" && {
@@ -643,6 +649,11 @@ lncli wtclient remove $tower
 }
 fi
 
+print_wtconnections_made 
+
+}
+
+function print_wtconnections_made {
 clear
 echo -e "${green}Connected towers...\n"
 lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
