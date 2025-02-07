@@ -606,15 +606,23 @@ lncli wtclient towers >/dev/null 2>&1 || if yesorno "Add capability to connect t
     return 1
     fi
 
-yesorno "Would you like Parmanode to add Voltage Cloud as one of your watchtowers?" && {
-lncli wtclient add 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@iiu4epqzm6cydqhezueenccjlyzrqeruntlzbx47mlmdgfwgtrll66qd.onion:9911
-lncli wtclient add 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@34.216.52.158:9911
-clear
-echo -e "${green}Connected towers...\n"
-lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
-enter_continue
+unset addremove
+if ! lncli wtclent towers | grep -q 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf ; then
+    yesorno "Would you like Parmanode to$green add$orange Voltage Cloud as one of your watchtowers?" && addremove=add
+else
+    yesorno "Would you like Parmanode to$red remove$orange Voltage Cloud as one of your watchtowers?" && addremove=remove
+fi
+
+[[ -n $addremove ]] && {
+    lncli wtclient $addremove 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@iiu4epqzm6cydqhezueenccjlyzrqeruntlzbx47mlmdgfwgtrll66qd.onion:9911
+    lncli wtclient $addremove 023bad37e5795654cecc69b43599da8bd5789ac633c098253f60494bde602b60bf@34.216.52.158:9911
+    clear
+    echo -e "${green}Connected towers...\n"
+    lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
+    enter_continue
 }
-yesorno "Would you like to connect any other towers manually?" && {
+
+yesorno "Would you like to connect any towers manually?" && {
 clear
 echo -e "Please enter the tower in this format:$cyan pubkey@address:port
 
@@ -622,6 +630,18 @@ echo -e "Please enter the tower in this format:$cyan pubkey@address:port
 read tower
 lncli wtclient add $tower
 }
+
+if ! [[ $(lncli wtclient towers | wc -l) == 3 ]] ; then
+yesorno "Would you like to remove any towers manually?" && {
+clear
+echo -e "Please enter the tower in this format:$cyan pubkey@address:port
+
+    The address can be clernet or onion\n"
+read tower
+lncli wtclient remove $tower
+fi
+}
+
 clear
 echo -e "${green}Connected towers...\n"
 lncli wtclient towers | jq -r '.towers[] | {pubkey, addresses}'
