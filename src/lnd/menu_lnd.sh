@@ -558,6 +558,7 @@ $cyan
 $cyan
               pl)$orange         Print watchtower listeners
 
+
 ########################################################################################
 "
 choose "xpmq" ; read choice 
@@ -622,7 +623,7 @@ fi
     enter_continue
 }
 
-yesorno "Would you like to connect any towers manually?" && {
+yesorno "Would you like to$green connect$orange any towers manually?" && {
 clear
 echo -e "Please enter the tower in this format:$cyan pubkey@address:port
 
@@ -632,7 +633,7 @@ lncli wtclient add $tower
 }
 
 if ! [[ $(lncli wtclient towers | wc -l) == 3 ]] ; then
-yesorno "Would you like to remove any towers manually?" && {
+yesorno "Would you like to$red remove$orange any towers manually?" && {
 clear
 echo -e "Please enter the tower in this format:$cyan pubkey@address:port
 
