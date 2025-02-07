@@ -476,7 +476,7 @@ fi
 
 function watchtower_toggle {
 
-if grep -q "watchtower=true" $pc ; then
+if ! grep -q "watchtower=true" $pc ; then
 
 yesorno "For information on watchtowers, see GitHub:
 $cyan
