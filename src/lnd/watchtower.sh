@@ -12,11 +12,12 @@ else
     wts_status="${red}DISABLED$orange"
     wts_status_logic="disabled"
 fi
+
 if [[ $(lncli wtclient towers | wc -l) == 3 ]] ; then
 wtc_status="${red}NO$orange"
 else
 wtc_status="${green}YES$orange"
-lncli wtcient tower >$dn 2>&1 || wtc_status="${red}NO$orange"
+lncli wtclient tower >$dn 2>&1 || wtc_status="${red}NO$orange"
 fi
 
 #pubkey=$(lncli tower info | grep pubkey | cut -d \" -f 4)
