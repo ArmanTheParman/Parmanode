@@ -21,10 +21,12 @@ deactivate >/dev/null 2>&1
 		#They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
 		# this program.  
 	done #ends the loop
-    for file in $HOME/parman_programs/parmaweb/src/*.sh ; do
+
+
+    [[ -e $HOME/parman_programs/parmaweb ]] && for file in $HOME/parman_programs/parmaweb/src/*.sh ; do
 	    source $file
 	done
-    for file in $HOME/parman_programs/parminer/src/*.sh ; do
+    [[ -e $HOME/parman_programs/parminer ]] && for file in $HOME/parman_programs/parminer/src/*.sh ; do
 	    source $file
 	done
 
