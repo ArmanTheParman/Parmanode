@@ -149,7 +149,7 @@ echo -ne "$output3 $cyan
          $btcman
          $cyan      o)$orange            OTHER...
 
-                                                               $red hit 'r' to refresh $orange
+                                                         
 ########################################################################################
 "
 choose "xpmq" ; read choice
