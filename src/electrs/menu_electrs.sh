@@ -312,7 +312,7 @@ if [[ $bsync == "true" ]] ; then
 
 elif [[ $bsync == "false" ]] ; then
     #fetches block number...
-    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | tr -d '[[:space:]]') >$dn
+    export electrs_sync=$(tail -n5 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d = -f 2 | xargs) >$dn
     #in case an unexpected non-number string, printout, otherwise check if full synced.
     if ! echo $electrs_sync | grep -qE '^[0-9]+$' >$dn ; then
 

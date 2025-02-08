@@ -39,7 +39,7 @@ fi
 
 #Format the drive
 if [[ $OS == "Mac" ]] ; then
-        export disk_no_s=$(echo $disk | grep -oE 'disk[0-9]+' | tr -d '[:space:]') 
+        export disk_no_s=$(echo $disk | grep -oE 'disk[0-9]+' | xargs)
         set_terminal
 
         log "bitcoin" "eraseDisk $disk ..."

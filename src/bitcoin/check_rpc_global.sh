@@ -38,8 +38,9 @@ fi
 
 #fulcrum
 if [[ -e $fc ]] ; then
-export fulcrum_rpcuser=$(cat $fc | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
-export fulcrum_rpcpassword=$(cat $fc | grep rpcpassword | cut -d = -f 2 | tr -d '[:space:]' )
+#export fulcrum_rpcuser=$(cat $fc | grep rpcuser | cut -d = -f 2 | tr -d '[:space:]' )
+export fulcrum_rpcuser=$(cat $fc | grep rpcuser | cut -d = -f 2 | xargs )
+export fulcrum_rpcpassword=$(cat $fc | grep rpcpassword | cut -d = -f 2 | xargs )
 fi
 
 #mempool
@@ -50,8 +51,8 @@ fi
 
 #sparrow
 if [[ -e ~/.sparrow/config ]] ; then
-export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | tr -d '"[:space:]' )
-export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | tr -d '"[:space:],' )
+export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | xargs)
+export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | xargs)
 fi
 
 #public_pool

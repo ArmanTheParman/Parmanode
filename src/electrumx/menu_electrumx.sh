@@ -81,13 +81,13 @@ fi
 
 #Get version
 if [[ $electrumxis == docker ]] ; then
-        electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]'")
+        electrumx_version=$(docker exec electrumx /bin/bash -c "grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | xargs")
         log_size=$(docker exec electrumx /bin/bash -c "ls -l $logfile | awk '{print \$5}' | grep -oE [0-9]+" 2>$dn)
         log_size=$(echo $log_size | tr -d '\r\n')
         if docker exec -it electrumx /bin/bash -c "tail -n 10 $logfile" | grep -q "electrumx failed" ; then unset electrumx_version 
         fi
 else #electrumxis nondocker
-        electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | tr -d '[[:space:]]' )
+        electrumx_version=$(grep -Eo 'software version: ElectrumX.+$' $logfile | tail -n1 | grep -Eo [0-1].+$ | xargs)
 fi
 
 set_terminal_custom 50
@@ -375,8 +375,7 @@ if [[ $bsync == "true" ]] ; then
 
 elif [[ $bsync == "false" ]] ; then
     #fetches block number...
-    export electrumx_sync=$(tail -n20 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | tr -d '[[:space:]],' |\
-     grep -Eo '^[0-9]+') >$dn
+    export electrumx_sync=$(tail -n20 $logfile | grep height | tail -n 1 | grep -Eo 'height.+$' | cut -d : -f 2 | xargs | grep -Eo '^[0-9]+') >$dn
 
     bblock=$(echo $gbci | jq -r ".blocks")    
 

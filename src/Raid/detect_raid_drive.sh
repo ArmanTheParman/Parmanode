@@ -77,7 +77,7 @@ fi
 
 if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
 
-    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | tr -d '[:space:]')
+    export disk=$(diff -y $HOME/.parmanode/before $HOME/.parmanode/after | tail -n1 | grep -E '^\s' | grep -oE '/dev/\S+' | cut -d : -f 1 | xargs)
     debug "disk blkid diff is $disk"
 
     if [[ -z $disk ]] ; then
@@ -85,8 +85,8 @@ if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
     fi
 
 else
-    get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
-    export disk="/dev/$(cat $dp/.unique_line | awk '{print $1}' | tr -d '[:space:]')"
+    get_unique_line2 "$dp/before_lsblk" "$dp/after_lsblk"
+    export disk="/dev/$(tail -n1 $dp/.unique_line | awk '{print $1}' | xargs)"
     debug "disk lsblk diff is $disk"
     #deprecated as it gives unexpected results...
     # export disk="/dev/$(diff $HOME/.parmanode/before_lsblk $HOME/.parmanode/after_lsblk | tail -n1 | awk '{print $2}' | tr -d '[:space:]')"
