@@ -223,7 +223,7 @@ next)
     git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
         enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
     debug 1
-    source $pp/parmacloud/install_nextcloud.sh
+    for file in $pp/parmacloud/src/*.sh ; do source $file ; done
     debug 2
     install_nextcloud
     debug 3
