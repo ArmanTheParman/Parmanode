@@ -258,4 +258,8 @@ if [[ $(uname) == Linux ]] ; then
 fi
 }
 
-
+function test_8333_reachable {
+pn_tmux "nc -z -w 5 $external_IP 8333 || exit 1
+         sed -i '/_8333reachable.*$/d' $pc
+         echo '_8333reachable=true' >> $pc" "check_port_8333"
+}

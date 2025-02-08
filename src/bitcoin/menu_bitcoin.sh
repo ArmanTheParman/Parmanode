@@ -18,11 +18,11 @@ unset output1 output2 choice external8333 bitcoin_tor_status
 source $pc >$dn
 grep -q hide_port_8333 $hm || {
 if    [[ $bitcoin_tor_status == t || $bitcoin_tor_status == tonlyout ]] ; then
-    external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange"
+    external8333="${blue}Node is NOT reachable to the world via port 8333 due to TOR status$orange hit 1 to refresh"
 elif  grep -q "_8333reachable=true" $pc ; then
-    external8333="${green}Node is reachable to the world via port 8333$orange"
+    external8333="${green}Node is reachable to the world via port 8333$orange hit 1 to refresh"
 else
-    external8333="${red}Node is NOT reachable via port 8333
+    external8333="${red}Node is NOT reachable via port 8333.$orange hit 1 to refresh$red
 Requires port forwarding on your router - Parman can be hired to help.
 endthefed to hide this message.$orange"
 fi
@@ -164,7 +164,12 @@ endthefed)
 grep -q "hide_port_8333" $hm && { sed -i '/hide_port_8333_message=1/d' $hm >$dn ; continue ; }
 echo "hide_port_8333_message=1" >> $hm
 ;;
-
+1)
+test_8333_reachable
+please_wait
+sleep 5
+set_terminal
+;;
 r)
 set_terminal
 continue
