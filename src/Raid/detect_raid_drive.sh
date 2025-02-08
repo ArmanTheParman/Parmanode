@@ -85,7 +85,7 @@ if  [[ -e $dp/before ]] && ! diff -q $dp/before $dp/after >$dn 2>&1 ; then
     fi
 
 else
-    get_unique_line2 "$dp/before_lsblk" "$dp/after_lsblk"
+    get_unique_line "$dp/before_lsblk" "$dp/after_lsblk"
     export disk="/dev/$(tail -n1 $dp/.unique_line | awk '{print $1}' | xargs)"
     debug "disk lsblk diff is $disk"
     #deprecated as it gives unexpected results...
