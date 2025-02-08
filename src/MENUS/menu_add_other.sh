@@ -27,7 +27,7 @@ if [[ -n $piapps_n ]]          ; then echo -e  "$piapps_n"; fi
 if [[ -n $torb_n ]]            ; then echo -e  "$torb_n"; fi
 if [[ -n $qbittorrent_n ]]     ; then echo -e  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
-#if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
+if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
 if [[ -n $nginx_n ]]           ; then echo -e  "$nginx_n"; fi
 if [[ -n $nextcloud_n ]]       ; then echo -e  "$nextcloud_n"; fi
 if [[ -n $X11_n ]]             ; then echo -e  "$X11_n"; fi
@@ -50,7 +50,7 @@ if [[ -n $piapps_i ]]          ; then echo -e  "$piapps_i"; fi
 if [[ -n $torb_i ]]            ; then echo -e  "$torb_i"; fi
 if [[ -n $qbittorrent_i ]]     ; then echo -e  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
-#if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
+if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
 if [[ -n $nginx_i ]]           ; then echo -e  "$nginx_i"; fi
 if [[ -n $nextcloud_i ]]       ; then echo -e  "$nextcloud_i"; fi
 if [[ -n $X11_i ]]             ; then echo -e  "$X11_i"; fi
@@ -73,7 +73,7 @@ if [[ -n $torrelay_p ]]        ; then echo  -e "$pink$torrelay_p$orange"; fi #re
 if [[ -n $torb_p ]]            ; then echo  -e "$pink$torb_p$orange"; fi
 if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
-#if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
+if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
 if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
 if [[ -n $X11_p ]]             ; then echo  -e "$pinkX11_p$orange"; fi
