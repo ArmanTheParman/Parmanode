@@ -69,7 +69,8 @@ done
 ########################################################################################
 #BEFORE STATE, CAPTURE...
 if [[ $(uname) == "Linux" ]] ; then 
-    sudo blkid -g > $dp/before
+    sudo blkid -g >$dn #refreshes
+    sudo blkid > $dp/before
     sudo lsblk > $dp/before_lsblk
     fi
 
@@ -114,7 +115,8 @@ fi
 #AFTER STATE, CAPTURE...
 
 if [[ $(uname) == "Linux" ]] ; then
-    sudo blkid -g > $dp/after
+    sudo blkid -g >$dn #refreshes
+    sudo blkid > $dp/after
     sudo lsblk > $dp/after_lsblk
     fi
 

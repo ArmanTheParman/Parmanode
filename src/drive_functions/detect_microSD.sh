@@ -33,7 +33,7 @@ q|Q) exit ;;
 esac
 
 if [[ $(uname) == "Linux" ]] ; then 
-    sudo blkid -g >$dn
+    sudo blkid -g >$dn #refreshes
     sudo blkid > $HOME/.parmanode/before
     fi
 
@@ -60,7 +60,7 @@ set_terminal
 sleep 2.5
 
 if [[ $(uname) == "Linux" ]] ; then
-    sudo blkid -g >$dn
+    sudo blkid -g >$dn #refreshes
     sudo blkid > $HOME/.parmanode/after
     fi
 
