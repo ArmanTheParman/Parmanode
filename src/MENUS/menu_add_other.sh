@@ -177,12 +177,26 @@ tssh)
     return 0
     fi
     ;;
-# ws)
-#     if [[ -n $website_n ]] ; then
-#     install_website
-#     return 0
-#     fi
-#     ;;
+ws)
+    [[ ! -e $dp/.parmaweb_endabled ]] && announce "
+    With Parmaweb, you can host your own WordPress Server (Linux Only)
+    with a database configured, help with reverse proxying if you need it
+    and free domain name (or buy your own)$cyan yourchoice.parmacloud.com
+    
+    Contact Parman for setup. Fee is \$500USD." && continue
+
+    if [[ -n $website_n ]] ; then
+    git clone git@github.com:armantheparman/parmaweb.git $pp/parmaweb || {
+        enter_continue "Something went wrong" ; continue ; } #requires SSH key authority
+    
+    for file in $pp/parmaweb/src/*.sh ; do
+    source $file
+    done
+
+    install_website
+    return 0
+    fi
+    ;;
 ng)
     if [[ -n $nginx_n ]] ; then
     install_nginx

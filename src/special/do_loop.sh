@@ -14,13 +14,20 @@ deactivate >/dev/null 2>&1
 # source all the modules. Exclude executable scripts which aren't modules. Modules
 # are bits of codes saved elseshere. They are "sourced" to load the code into memory.
 
-	for file in $HOME/parman_programs/parmanode/src/**/*.sh ; do #for every file that ends in .sh, up to a directory
+	for file in $HOME/parman_programs/parmanode/src/*/*.sh ; do #for every file that ends in .sh, up to a directory
 	#length of 1, attach its name to the variable "file" then run the code below, 
 	#looping so each file gets sourced.
 	    source $file #"source" or also represented by "." means to run the code in the file.
 		#They doesn't need #!/bin/bash (or variations) statements inside, because it is being called by 
 		# this program.  
 	done #ends the loop
+    for file in $HOME/parman_programs/parmaweb/src/*.sh ; do
+	    source $file
+	done
+    for file in $HOME/parman_programs/parminer/src/*.sh ; do
+	    source $file
+	done
+
 
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
