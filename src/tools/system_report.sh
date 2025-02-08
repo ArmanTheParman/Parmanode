@@ -26,15 +26,15 @@ esac
 export omit="true" 
 export report="$tmp/system_report.txt" 
 export macprefix="/usr/local"
-echo -e "########################################################################################"
+echor -e "########################################################################################"
 echo -e "PARMANODL SYSTEM REPORT $(date)", $(head -n1 $pn/version.conf | sed 's/\"//g' | cut -d = -f 2) > $report
-echo -e "########################################################################################\n"
+echor -e "########################################################################################\n"
 
 heading "PN DIRECTORY CHECK"
 if [[ -d $HOME/parman_programs/parmanode ]] ; then
 echor "\$pn exists"
 else
-echo "\$pn DOES NOT EXIST"
+echor "\$pn DOES NOT EXIST"
 fi
 
 heading "GIT"
@@ -46,12 +46,18 @@ echor "\$dp exists\n contents:\n"
 cd $HOME/.parmanode
 ls -am >> $report
 else
-echo "\$dp DOES NOT EXIST"
+echor "\$dp DOES NOT EXIST"
 fi
 
 heading "HOME PARMANODE"
 cd $HOME/parmanode
 echor "$(ls -m)"
+
+heading "EXTERNAL DRIVE"
+if [[ $OS == "Linux" ]] ; then echor "$(mountpoint $pd)" ; fi
+if [[ $OS == "Mac" ]] ; then echor "$(diskutil list)" ; fi
+echor "$(cd $pd ; ls -ma)"
+
 
 heading "LOG COUNTER"
 echor "$(cat $dp/log_counter.conf)"
@@ -87,12 +93,12 @@ echor "$(cat $tmp/nginx.conf_error)"
 
 heading "BITCOIN"
 echor "IP is $IP"
-if [[ ! -e $HOME/.bitcoin ]] ; then echo "Bitcoin data dir doesn't exist." 
+if [[ ! -e $HOME/.bitcoin ]] ; then echor "Bitcoin data dir doesn't exist." 
 else
 cd $HOME/.bitcoin
 echor ".bitcion size..."
 echor "$(du -sh)"
-echo ".bitcoin contents..."
+echor ".bitcoin contents..."
 echor "$(ls -m)"
 echor "bitcoin.conf..."
 echor "$(cat $HOME/.bitcoin/bitcoin.conf)"
@@ -104,7 +110,7 @@ heading "DOCKER ..."
 echor "docker ps -a \n $(docker ps -a)"
 echor "docker ps \n $(docker ps) \n "
 containers=$(docker ps -q)
-echo "containers... \n $(docker ps -q)"
+echor "containers... \n $(docker ps -q)"
 for i in $containers ; do
 docker logs $i --tail 50 
 done
