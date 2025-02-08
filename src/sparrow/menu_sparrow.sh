@@ -162,12 +162,16 @@ $cyan                ftor) $orange   Fulcrum via Tor (port 7002)
 
 $cyan                et)    $orange  electrs via tcp (port 50005)
                 
-$cyan                N/A   $orange    electrs via SSL (Not available)
+$cyan                N/A   $orange   electrs via SSL (Not available)
 
-$cyan                etor) $orange   electrs via Tor (port 7004) 
+$cyan                xs)   $orange   ElextrumX via ssl (port 50002)
 
-$cyan                rtor) $orange   To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+$cyan                xt)    $orange  ElextrumX via tcp (port 50001)
 
+$blue                etor)    electrs via Tor (port 7004) 
+
+$blue                rtor)    To a remote Electrum/Fulcrum server via Tor (eg a friend's)
+$orange 
 
 ########################################################################################
 "
@@ -177,30 +181,26 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 d|D)
-sparrow_core
+make_sparrow_config
 return 0
 ;;
 
 ftor)
-no_mac || return 1
 sparrow_fulcrumtor
 return 0
 ;;
 
 etor)
-no_mac || return 1
-sparrow_electrstor
-return 0
+sparrow_electrstorreturn 0
 ;;
 
 fs)
-no_mac || return 1
-sparrow_fulcrumssl
+make_sparrow_config "fulcrumssl"
 return 0
 ;;
 
 ft)
-sparrow_fulcrumtcp
+make_sparrow_config "fulcrumtcp"
 return 0
 ;;
 
@@ -210,7 +210,16 @@ return 0
 ;;
 
 et)
-sparrow_electrs
+make_sparrow_config "electrstcp"
+return 0
+;;
+
+xt)
+make_sparrow_config "electrumxtcp"
+return 0
+;;
+xs)
+make_sparrow_config "electrumxssl"
 return 0
 ;;
 

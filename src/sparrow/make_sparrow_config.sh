@@ -3,6 +3,11 @@
 function  make_sparrow_config {
 export sparrowconf="$HOME/.sparrow/config"
 
+if ! grep silent <<<"$@" ; then 
+echo "If Sparrow is running, make sure to shut it down before proceeding."
+enter_continue
+fi
+
 source $HOME/.bitcoin/bitcoin.conf >$dn 2>&1
 if [[ ! -e $HOME/.sparrow ]] ; then mkdir $HOME/.sparrow >$dn 2>&1 ; fi
 rm $HOME/.sparrow/config >$dn 2>&1
@@ -93,7 +98,7 @@ fi
     
 if [[ $1 == "electrumxssl" ]] ; then
 sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
-sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"ssl:\/\/127.0.0.1:50008\"," $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/127.0.0.1:50008\"," $sparrowconf
 sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
 echo "connection=electrumxSSL" > $HOME/.parmanode/sparrow.connection
 return 0

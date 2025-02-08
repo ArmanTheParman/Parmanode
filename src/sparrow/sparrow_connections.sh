@@ -46,50 +46,8 @@ announce \
 return 1
 fi
 
-
 set_terminal
-echo "If Sparrow is running, make sure to shut it down before proceeding."
-enter_continue
-rm $HOME/.sparrow/config
 make_sparrow_config "electrstor"
 }
 
-function sparrow_fulcrumtcp {
-set_terminal
-if [[ $1 != silent ]] ; then 
-echo "If Sparrow is running, make sure to shut it down before proceeding."
-enter_continue
-fi
-rm $HOME/.sparrow/config
-make_sparrow_config "fulcrumtcp"
-}
 
-function sparrow_electrs {
-
-set_terminal
-if [[ $1 != silent ]] ; then 
-echo "If Sparrow is running, make sure to shut it down before proceeding." 
-enter_continue
-fi
-rm $HOME/.sparrow/config
-make_sparrow_config "electrstcp"
-}
-function sparrow_fulcrumssl {
-set_terminal
-if [[ $1 != silent ]] ; then 
-echo "If Sparrow is running, make sure to shut it down before proceeding."
-enter_continue
-fi
-rm $HOME/.sparrow/config
-make_sparrow_config "fulcrumssl"
-}
-
-function sparrow_core {
-set_terminal
-if [[ $1 != silent ]] ; then 
-echo "If Sparrow is running, make sure to shut it down before proceeding."
-enter_continue
-fi
-rm $HOME/.sparrow/config
-make_sparrow_config
-}

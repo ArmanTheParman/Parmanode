@@ -4,6 +4,7 @@ Version 3.53.0
     -Sparrow 2.1.1
     -smol drive detect bug fixed
     -get_unique_line function improved
+    -electrumX connection setting for Sparrow
 Version 3.52.2
     -Bitcoin external port check
     -New command from anywhere feature (hidden - type 'command' from almost anywhere)

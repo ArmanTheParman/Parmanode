@@ -43,7 +43,7 @@ if ! grep -q rpcuser $bc ; then _connect=cookie ; fi
 if grep -q electrs-end $ic ; then _connect=electrstcp ; fi
 if grep -q fulcrum-end $ic ; then _connect=fulcrumssl ; fi
 
-make_sparrow_config "$_connect"
+make_sparrow_config "$_connect" "silent"
 
 if [[ $OS == "Linux" ]] ; then unpack_sparrow ; fi
 if [[ $OS == "Mac" ]] ; then hdiutil attach $HOME/parmanode/Sparrow*
