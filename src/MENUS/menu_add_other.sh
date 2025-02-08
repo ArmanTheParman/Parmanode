@@ -220,7 +220,7 @@ next)
     Contact Parman for set up. Fee is \$US400." && continue 
 
     if [[ -n $nextcloud_n ]] ; then
-    git clone git@gihub.com:armantheparman/parmacloud.git $pp/parmacloud || {
+    git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
         enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
     source $pp/parmacloud/install_nextcloud.sh
     install_nextcloud
