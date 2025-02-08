@@ -1,5 +1,5 @@
 function detect_raid_drive {
-
+rm_after_before
 while true ; do
 sudo partprobe
 #BEFORE STATE, CAPTURE...
