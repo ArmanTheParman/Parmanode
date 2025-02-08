@@ -19,7 +19,10 @@ set_terminal_high ; echo -e "
            }$orange
         
         4) Move the existing Docker contents to the new location, and delete the
-           old directory
+           old directory$cyan
+
+               sudo rsync -aP /source/ /destination/
+               sudo rm -rf /old$orange
         
         5) Restart Docker:$cyan sudo service docker start $orange
 
