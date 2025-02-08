@@ -69,7 +69,6 @@ $orange
 ########################################################################################
 "
 read choice
-rm_after_before
 case $choice in a) back2main ;; esac
 continue 
 fi
@@ -100,7 +99,6 @@ fi
 
 break
 done
-rm_after_before
 
 #CONFIRMATION...
 

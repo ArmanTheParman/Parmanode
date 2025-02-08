@@ -148,14 +148,13 @@ $orange
 ########################################################################################
 "
 read choice
-rm_after_before
 case $choice in a) back2main ;; esac
 continue 
 fi
 
 if [[ $OS == Mac ]] ; then
     export disk=$(diff -U0 $HOME/.parmanode/before $HOME/.parmanode/after | grep -v 'synthesized'| grep -Eo 'dev/disk.+' | cut -d ' ' -f1) 
-    if [[ -z $disk ]] ; then announce "Error detecting drive. Aborting." ; rm_after_before ; return 1 ; fi
+    if [[ -z $disk ]] ; then announce "Error detecting drive. Aborting." ; return 1 ; fi
     break
 fi
 
@@ -182,6 +181,5 @@ if [[ $OS == Linux ]] ; then
 fi
     
 done
-rm_after_before
 }
 
