@@ -2,35 +2,26 @@ function nextcloud_storage_info {
 
 set_terminal_high ; echo -e "
 ########################################################################################
+    
+    The easiest way to store your NextCloud data to a different location to the
+    standard docker location$cyan /var/lib/docker$orange is to do this...
 
-    I tried really hard to make it easy to give you options to choose where to 
-    store your NextCloud data.
+        1) Make a new directory wherever you want (eg external drive)
 
-    NextCloud has pesky requirements so this is the best solution I came up with
-    for now...
+        2) Stop Docker:$cyan sudo service docker stop $orange
 
-    Normally, docker volumes are to be found here...
-$cyan
-       /var/lib/docker/volumes/ $orange 
+        3) Edit the file (or make new)$cyan /etc/docker/daemon.json$cyan and include
+           this json block:$pink
 
-    I suggest that if you want to store NextCloud data on an external drive, it's 
-    safest to adjust settings yourself. This is generally how...
+           {
+               "data-root": "/path/to/your/docker" 
+           }$orange
+        
+        4) Move the existing Docker contents to the new location, and delete the
+           old directory
+        
+        5) Restart Docker:$cyan sudo service docker start $orange
 
-        1)    Install NextCloud with Parmanode
-        2)    Stop the containers (use Parmanode menu)
-        3)    Prepare your external drive
-        4)    Move the above directory to your external drive, with its subdiretory 
-              structure and permissions in tact (this moves all docker volumes you
-              may be running, but that's probably fine).
-        5)    Create a simlink from the now missing path to the new location. The
-              command for this is...
-$cyan
-    sudo ln -s$green <full path to target directory>$cyan /var/lib/docker/volumes
-$orange
-        6)    Restart the container
-        7)    Test the container started properly, add some data using NextCloud GUI, 
-              and see if it has successfully been stored on the external drive before 
-              putting crucial files in there.        
 $green
     Finally, to keep your data safe, you might want to have a second copy. See
     the Rsync help tool in Parmanode menu, to synchronise your data storage to a
