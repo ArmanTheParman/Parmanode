@@ -212,6 +212,8 @@ pnostr)
 
 next)
     [[ ! -e $dp/.nexcloud_enabled ]] && announce "
+    This is not a free part of Parmanode.
+
     With NextCloud, your machine can host your files like a Google Drive server,
     and you can access them from anywhere via your preferred domain name.    
 
