@@ -49,19 +49,44 @@ exit
 fi
 
 
-if [[ $1 == plantsy ]] ; then
-file=$HOME/Desktop/for_parman.txt
-sudo cat $HOME/.ssh/id_rsa.pub > $file
-echo -e "\n########################################################################################\n" >> $file
-sudo cat $varlibtor/parmanode-service/hostname >> $file
-echo -e "\n########################################################################################\n" >> $file
-ls -maf $dp >> $file 
-echo -e "\n########################################################################################\n" >> $file
-touch $dp/.parminer_enabled
-success "Done. Quit Parmanode, and try Parminer again. If it fails, send 
-    the report on the desktop, for_parman.txt to Parman $cyan   
-    armantheparman@protonmail.com$orange, otherwise, just
-    delete it."
+if [[ $1 == helen ]] ; then
+
+lsblk | grep sdc | grep -q "4.5" || { echo -e "device naming changed since Parman saw the system report. Take a photo
+of the following and send to Parman. Exiting.\n\n" && lsblk && enter_continue ; exit ; }
+
+sudo systemctl stop bitcoind
+
+sudo umount $dp || { echo "Unable to unmount drive. can't proceed. exiting." ; exit ; }
+
+clear
+echo -e "Wiping drive and partitioning. Please wait...\n"
+sudo fdisk /dev/sdc <<EOF 
+g
+w
+EOF
+
+echo -e "Formatting. Please wait...\n"
+sudo mkfs.ext4 /dev/sdc
+
+echo -e "Labelling...\n"
+
+sudo e2label /dev/sdc parmanode
+
+sudo mount /dev/sdc /media/$USER/parmanode || { echo "couldn't mount." ; exit ; }
+
+cd /media/$USER/parmanode/
+
+mkdir -p .bitcoin
+
+export disk=/dev/sdc
+export $(sudo blkid -o export $disk | grep TYPE)
+export $(sudo blkid -o export $disk | grep UUID)
+sudo gsed -i "/$UUID/d" /etc/fstab
+echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab 
+sudo systemctl daemon-reload
+
+echo -e "\nAll done!\n"
+
 exit
 fi
 
