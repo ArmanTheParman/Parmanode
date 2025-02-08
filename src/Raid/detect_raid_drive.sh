@@ -3,7 +3,8 @@ function detect_raid_drive {
 while true ; do
 sudo partprobe
 #BEFORE STATE, CAPTURE...
-    sudo blkid -g > $dp/before
+    sudo blkid -g >$dn #refreshes
+    sudo blkid > $dp/before
     sudo lsblk > $dp/before_lsblk
 
 #increments at the end of the function. This function is called in a loop
@@ -46,7 +47,8 @@ set_terminal
 sleep 2.5
 
 #AFTER STATE, CAPTURE...
-    sudo blkid -g > $dp/after
+    sudo blkid -g >$dn #refreshes
+    sudo blkid > $dp/after
     sudo lsblk > $dp/after_lsblk
 
 if diff -q $dp/before $dp/after >$dn 2>&1 && \
