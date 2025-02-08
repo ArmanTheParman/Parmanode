@@ -222,8 +222,11 @@ next)
     if [[ -n $nextcloud_n ]] ; then
     git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
         enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
+    debug 1
     source $pp/parmacloud/install_nextcloud.sh
+    debug 2
     install_nextcloud
+    debug 3
     return 0
     fi
     ;;
