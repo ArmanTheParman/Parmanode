@@ -8,7 +8,8 @@ set_terminal_high ; echo -e "
 
         1) Make a new directory wherever you want (eg external drive)
 
-        2) Stop Docker:$cyan sudo service docker stop $orange
+        2) Stop Docker:$cyan sudo service docker stop $orange and double check that
+           no containers are running.
 
         3) Edit the file (or make new)$cyan /etc/docker/daemon.json$cyan and include
            this json block:$pink
