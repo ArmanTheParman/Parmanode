@@ -40,6 +40,8 @@ should be found in $HOME/parmanode/"
 verify_sparrow || return 1
 
 if ! grep -q rpcuser $bc ; then _connect=cookie ; fi
+if grep -q electrs-end $ic ; then _connect=electrstcp ; fi
+if grep -q fulcrum-end $ic ; then _connect=fulcrumssl ; fi
 
 make_sparrow_config "$_connect"
 

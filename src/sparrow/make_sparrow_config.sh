@@ -83,6 +83,22 @@ echo "connection=electrsTCP" > $HOME/.parmanode/sparrow.connection
 return 0
 fi
 
+if [[ $1 == "electrumxtcp" ]] ; then
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/127.0.0.1:50007\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
+echo "connection=electrumxTCP" > $HOME/.parmanode/sparrow.connection
+return 0
+fi
+    
+if [[ $1 == "electrumxssl" ]] ; then
+sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
+sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"ssl:\/\/127.0.0.1:50008\"," $sparrowconf
+sudo gsed -i "/useProxy/c\\  \"useProxy\": false," $sparrowconf
+echo "connection=electrumxSSL" > $HOME/.parmanode/sparrow.connection
+return 0
+fi
+
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 if [[ $1 == "electrstor" ]] ; then
 if ! which tor >$dn 2>&1 ; then install_tor ; fi
