@@ -26,86 +26,67 @@ esac
 export omit="true" 
 export report="$tmp/system_report.txt" 
 export macprefix="/usr/local"
-echo "PARMANODL SYSTEM REPORT $(date)", $(head -n1 $pn/version.conf | sed 's/\"//g' | cut -d = -f 2) > $report
+echo -e "########################################################################################"
+echo -e "PARMANODL SYSTEM REPORT $(date)", $(head -n1 $pn/version.conf | sed 's/\"//g' | cut -d = -f 2) > $report
+echo -e "########################################################################################\n"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#DIRECTORY CHECKS"
-#if dir doesn't exist, it will report
+heading "PN DIRECTORY CHECK"
 if [[ -d $HOME/parman_programs/parmanode ]] ; then
-echo -e "----------------------------------------------------------------------------------------" >> $report
 echor "\$pn exists"
-echor "$(git status)"
-cat $pn/version.conf >> $report
 else
 echo "\$pn DOES NOT EXIST"
 fi
 
-#if dir doesn't exist, it will report
+heading "GIT"
+echor "$(git status)"
+
+heading "DOT PARMANODE DIRECTORY CHECK"
 if [[ -d $HOME/.parmanode ]] ; then
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "\$dp exists"
-echo -e "----------------------------------------------------------------------------------------" >> $report
+echor "\$dp exists\n contents:\n"
 cd $HOME/.parmanode
 ls -am >> $report
 else
 echo "\$dp DOES NOT EXIST"
 fi
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-#parmanode.conf
-echor "#PARMNODE CONF"
-echor "$(cat $HOME/.parmanode/parmanode.conf)"
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-#programs
-echor "#PROGRAMS"
-echor "#which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux"
-echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux)"
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-#tmux
-echor "Tmux list..."
-echor "$(tmux ls)"
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-#prinout of $dp
-echor "#DOT PARMANODE PRINTOUT"
-cd $HOME/.parmanode
-echor "#printout of \$dp"
-for file in * .* ; do
-    if [[ -f $file && -s $file ]] ; then
-    echor "FILE: $file \n $(cat $file) \n" 
-    fi
-done
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-echor "#HOME PARMANODE"
+heading "HOME PARMANODE"
 cd $HOME/parmanode
 echor "$(ls -m)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
+heading "LOG COUNTER"
+echor "$(cat $dp/log_counter.conf)"
 
-#NGINX
-echor "#NGINX" 
+heading "PARMNODE CONF"
+echor "$(cat $HOME/.parmanode/parmanode.conf)"
+
+heading "PARMANODE.CONF"
+echor "$(cat $dp/parmanode.conf)"
+
+heading "INSTALLED.CONF"
+echor "$(cat $dp/installed.conf)"
+
+heading "PROGRAM CHECK"
+echor "which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh:"
+echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh)"
+
+heading "TMUX LIST..."
+echor "$(tmux ls)"
+
+heading "ELECTRUM CONNECTION"
+echor "$(cat $dp/electrum.connection)"
+
+heading "NGINX" 
 echor "$(sudo nginx -t)"
 cd "$macprefix/etc/nginx" && echor "$(pwd ; ls -m)"
 cd "$macprefix/etc/nginx/conf.d" && echor "$(pwd ; ls -m)"
 echor "$(file \"\$macprefix/etc/nginx/stream.conf\" && cat \"/etc/nginx/stream.conf\")"
 echor "$(file \"\$macprefix/etc/nginx/nginx.conf\" && cat \"/etc/nginx/nginx.conf\")"
-echor "NGINX ERROR FILE..."
+
+heading "NGINX ERROR FILE..."
 echor "$(cat $tmp/nginx.conf_error)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-#BITCOIN
-echor "#BITCOIN STUFF"
+heading "BITCOIN"
 echor "IP is $IP"
-#source $HOME/.bitcoin/bitcoin.conf
 if [[ ! -e $HOME/.bitcoin ]] ; then echo "Bitcoin data dir doesn't exist." 
 else
 cd $HOME/.bitcoin
@@ -119,69 +100,49 @@ echor "getblockchaininfo..."
 echor "$(bitcoin-cli getblockchaininfo)"
 fi
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-#DOCKER
-echor "#DOCKER ..."
+heading "DOCKER ..."
 echor "docker ps -a \n $(docker ps -a)"
 echor "docker ps \n $(docker ps) \n "
 containers=$(docker ps -q)
 echo "containers... \n $(docker ps -q)"
 for i in $containers ; do
 docker logs $i --tail 50 
-echo -e "----------------------------------------------------------------------------------------\n" >> $report
 done
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#BTCRPCEXPLORER"
+heading "BTCRPCEXPLORER"
 echor "env \n $(cat $HOME/parmanode/btc-rpc-explorer/.env)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#BTCPAY"
+heading "BTCPAY"
 echor "btcpay \n $(cat $HOME/.btcpayserver/Main/settings.config)"
 echor "nbxplorer \n $(cat $HOME/.nbxplorer/Main/settings.config)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#ELECTRS"
+heading "ELECTRS"
 echor "electrs config \n $(cat $HOME/.electrs/config.toml)"
 echor "ELECTRS_STREAM_FILE \n $(cat $tmp/nginx.conf_error)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#ELECTRUMX"
+heading "ELECTRUMX"
 echor "elecrrumx config \n $(cat $HOME/parmanode/electrumx/electrumx.conf)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#FULCRUM"
+heading "FULCRUM"
 echor "fulcrum config \n $(cat $fc)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#LND"
+heading "LND"
 echor "LND config \n $(cat $HOME/.lnd/lnd.conf)"
 if [[ $OS == "Linux" ]] ; then echor "$(journalctl -exu lnd.service)" ; fi
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#MEMPOOL"
+heading "MEMPOOL"
 echor "Mempool docker compose \n $(cat $hp/mempool/docker/docker-compose.yml)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#PUBLICPOOL"
-echor "public pool env \n $(cat $hp/public_pool/.env)"
-
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#TOR"
+heading "TOR"
 echor "$(which tor)"
 echor "$(sudo cat $torrc)"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-echor "#THUNDERHUB"
+heading "THUNDERHUB"
 echor "$(sudo cat $hp/thunderhub/account_1.yaml)"
 echor ".env.locl contents"
 echor "$(sudo cat $hp/thenderhub/.env.local | sed '/^#.*$/d' | sed '/^$/d')"
 
-echo -e "----------------------------------------------------------------------------------------" >> $report
-
-#system info
-echor "#SYSTEM INFO"
+heading "SYSTEM INFO"
 if [[ $(uname) == Darwin ]] ; then echor "$(system_profiler SPHardwareDataType)" ; fi
 echor "$(id)"
 echor "$(uname) , $(uname -m)"
@@ -200,10 +161,10 @@ echor "#HOME dir..."
 echor "$(cd ; ls -lah)"
 echo -e "----------------------------------------------------------------------------------------" >> $report
 echor "cpuinfo"
-echor "$(cat /proc/cpuinfo | head -n10)"
+echor "$(cat /proc/cpuinfo | head -n20)"
 echo -e "----------------------------------------------------------------------------------------" >> $report
 
-echor "#BASHRC/ZSHRC"
+heading "BASHRC/ZSHRC"
 echor "$(sudo cat $bashrc)"
 
 delete_private
@@ -250,7 +211,13 @@ mv $tmp/tempreport $report
 fi
 }
 
+function heading {
+echo -e "\n----------------------------------------------------------------------------------------" >> $report
+echo -e "##########################   $1   ####################################" >> $report
+echo -e "----------------------------------------------------------------------------------------\n" >> $report
+}
+
 function echor {
-echo -e "$1" >> "$report" 2>&1
+echo -e "$1" >> $report 2>&1
 }
 
