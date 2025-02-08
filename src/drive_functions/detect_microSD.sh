@@ -34,6 +34,7 @@ esac
 
 if [[ $(uname) == "Linux" ]] ; then 
     sudo blkid -g >$dn #refreshes
+    sleep 1
     sudo blkid > $HOME/.parmanode/before
     fi
 
@@ -61,6 +62,7 @@ sleep 2.5
 
 if [[ $(uname) == "Linux" ]] ; then
     sudo blkid -g >$dn #refreshes
+    sleep 1
     sudo blkid > $HOME/.parmanode/after
     fi
 

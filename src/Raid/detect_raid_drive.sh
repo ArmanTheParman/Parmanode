@@ -4,6 +4,7 @@ while true ; do
 sudo partprobe
 #BEFORE STATE, CAPTURE...
     sudo blkid -g >$dn #refreshes
+    sleep 1
     sudo blkid > $dp/before
     sudo lsblk > $dp/before_lsblk
 
@@ -48,6 +49,7 @@ sleep 2.5
 
 #AFTER STATE, CAPTURE...
     sudo blkid -g >$dn #refreshes
+    sleep 1
     sudo blkid > $dp/after
     sudo lsblk > $dp/after_lsblk
 
