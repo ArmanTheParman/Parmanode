@@ -24,7 +24,7 @@ set_terminal_high ; echo -e "
                sudo rsync -aP /source/ /destination/
                sudo rm -rf /old$orange
         
-        5) Restart Docker:$cyan sudo service docker start $orange
+        5) Restart Docker:$cyan sudo service docker start $orange Or, reboot.
 
 $green
     Finally, to keep your data safe, you might want to have a second copy. See
