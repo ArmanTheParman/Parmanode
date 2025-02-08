@@ -125,7 +125,7 @@ fi
 
 #Commands that refresh data
 pn_tmux "$dp/update_external_IP2.sh" "checking_external_IP"
-pn_tmux "#nc -z -w 5 $external_IP 8333 || exit 1
+pn_tmux "nc -z -w 5 $external_IP 8333 || exit 1
          sed -i '/_8333reachable.*$/d' $pc
          echo '_8333reachable=true' >> $pc" "check_port_8333"
 
