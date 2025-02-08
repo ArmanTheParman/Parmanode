@@ -211,7 +211,7 @@ pnostr)
     ;;
 
 next)
-    [[ ! -e $dp/.nexcloud_enabled ]] && announce "
+    [[ ! -e $dp/.parmacloud_enabled ]] && announce "
     This is not a free part of Parmanode.
 
     With NextCloud, your machine can host your files like a Google Drive server,
