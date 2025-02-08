@@ -49,7 +49,7 @@ exit
 fi
 
 
-if [[ $1 == helen ]] ; then
+if [[ $1 == goatlover ]] ; then
 
 lsblk | grep sdc | grep -q "4.5" || { echo -e "device naming changed since Parman saw the system report. Take a photo
 of the following and send to Parman. Exiting.\n\n" && lsblk && enter_continue ; exit ; }
