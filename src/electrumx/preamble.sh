@@ -5,23 +5,24 @@ if [[ $1 == electrumx ]] ; then
 echo -e "
 ########################################################################################
 
-    Electrum X is one of several types of Electrum SERVERS. It takes data from a 
-    Bitcoin Node (preferably yours!) and makes it's own database - same info but
-    organised differntly, allowing efficient communication with wallets.
+    Electrum X is a type of Electrum server designed to interface with a Bitcoin node 
+    (ideally your own!). It processes data from the node to build its own optimized 
+    database, reorganizing blockchain information to enable faster, more efficient 
+    communication with wallets like Electrum.
 
-    In some cases querying your own Electrum Server is more private that querying
-    your own Bitcoin Node - something to do with your wallet information being stored
-    in an encrypted fashion rather than clear text; I have looked too much into the
-    details, so the education about that stops here.
-    
-    The main reason is that you'll have a faster experience with your wallet. There
-    is not reason to have more than one Electrum server RUNNING, but you might like
-    to install various servers as sometimes the database can get corrupted, so it's
-    nice to have a spare.
-    
-    The reason you might want to specifically choose Electrum X over the others,
-    as far as I know, is that this one is the most powerful choice, and the one that
-    'all' the public servers run.
+    A key advantage of using your own Electrum server over querying a Bitcoin node 
+    directly is enhanced privacy. Electrum servers handle wallet data more securely—
+    for example, encrypting interactions that might otherwise be in plaintext. While 
+    the technical specifics are beyond this overview, this privacy layer is a benefit.  
+
+    The primary reason to run an Electrum server is performance. Electrum X streamlines 
+    wallet synchronization and queries, offering a smoother experience. While only one 
+    server is needed, maintaining backups can prevent downtime if database corruption 
+    occurs, though rare.  
+
+    Among Electrum servers, Electrum X is the most robust and widely adopted, powering 
+    nearly all public servers. Its maturity and scalability make it the default choice 
+    for reliability and compatibility.
 
 ########################################################################################
 "
