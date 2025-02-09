@@ -1,6 +1,6 @@
 function see_local_devices {
 announce "This will create a list of all connected device, navigate with the
-    tradiational vim commands or arrows.$red q$orange to exit it."
+    traditional vim commands or arrows.$red q$orange to exit it."
 
 case $enter_cont in q) return ;; esac
 
