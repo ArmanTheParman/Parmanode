@@ -50,7 +50,12 @@ get_onion_address_variable "fulcrum"
 sudo gsed -i "/serverType/c\\  \"serverType\": \"ELECTRUM_SERVER\","  $sparrowconf
 
 sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/$ONION_ADDR_FULCRUM:7002\"," $sparrowconf
+
 sudo gsed -i "/useProxy/c\\   \"useProxy\": true," $sparrowconf
+sudo gsed -i '/proxyServer/d' $sparrowconf 
+sudo gsed -i '/useProxy.*$/a\
+  "proxyServer": "127.0.0.1:9050",' $sparrowconf
+
 echo "connection=FulcrumTOR" > $HOME/.parmanode/sparrow.connection
 fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -121,6 +126,10 @@ sudo gsed -i "/serverType/c\\   \"serverType\": \"ELECTRUM_SERVER\","  $sparrowc
 
 sudo gsed -i "/electrumServer/c\\  \"electrumServer\": \"tcp:\/\/$ONION_ADDR_ELECTRS:7004\"," $sparrowconf
 sudo gsed -i "/useProxy/c\\   \"useProxy\": true," $sparrowconf
+sudo gsed -i '/proxyServer/d' $sparrowconf 
+sudo gsed -i '/useProxy.*$/a\
+  "proxyServer": "127.0.0.1:9050",' $sparrowconf
+
 echo "connection=ElectrsTOR" > $HOME/.parmanode/sparrow.connection
 fi
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
