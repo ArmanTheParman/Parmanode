@@ -91,7 +91,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
-	autoupdate
+	[[ $parminer == 1 ]] || autoupdate
 fi
 
 if [[ $needs_restart == "true" ]] ; then
