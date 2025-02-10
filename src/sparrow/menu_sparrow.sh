@@ -10,6 +10,7 @@ sversion=$($hp/Sparrow/bin/Sparrow --version | grep -Eo '[0-9].+$')
 fi
 
 if [[ $sversion != "2.1.1" ]] ; then 
+    debug "sversion... $sversion"
     newversiontext="${pink}                    usp)          Update sparrow$orange\n"
     updateavailable="true"
 fi
