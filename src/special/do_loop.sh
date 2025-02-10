@@ -65,7 +65,7 @@ if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise
 	fi
 fi
 #add to run count
-rp_counter
+[[ $parminer == 1 ]] || rp_counter
 test_internet_connected || exit
 ########################################################################################
 #Intro
@@ -74,7 +74,7 @@ set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
 
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
-if [[ $1 != menu ]] ; then
+[[ $parminer == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi
 
@@ -102,14 +102,14 @@ fi #end btcpayinstallsbitcoin
 #Health check
 parmanode1_fix
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
-if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
+[[ $parminer == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
    bash_check 
    check_architecture 
 fi
-apply_patches
+[[ $parminer == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
-install_parmashell 
+[[ $parminer == 1 ]] || install_parmashell 
 
 # get version, and suggest user to update if old.
 
@@ -127,7 +127,7 @@ custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
-if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
+[[ $parminer == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
 rossisfree 
 motd
 fi
@@ -139,8 +139,7 @@ test_8333_reachable
 jump $1
 # This is the main program, which is a menu that loops.
 
-if [[ $parminer != 1 ]] ; then #Parminer borrows do_loop function, but don't go to parmanode menu
-menu_main
-fi
+#Parminer borrows do_loop function, but don't go to parmanode menu
+[[ $parminer == 1 ]] || menu_main
 
 }
