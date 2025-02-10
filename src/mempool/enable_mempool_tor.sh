@@ -1,5 +1,4 @@
 function enable_mempool_tor {
-nogsedtest
 if ! which tor >$dn 2>&1 ; then install_tor ; fi   
 
 please_wait
@@ -38,14 +37,13 @@ if ! sudo grep "HiddenServicePort 8280 127.0.0.1:8180"  $torrc | grep -v "^#" >$
 fi
 
 restart_tor
-restart_mempool >$dn
+restart_mempool 
 get_onion_address_variable "mempool" 
 announce "FYI, changes have been made to torrc file, and Tor has been restarted."
 return 0
 }
 
 function disable_mempool_tor {
-nogsedtest
 sudo gsed -i "/mempool-service/d" $torrc 
 sudo gsed -i "/127.0.0.1:8180/d" $torrc
 restart_tor
