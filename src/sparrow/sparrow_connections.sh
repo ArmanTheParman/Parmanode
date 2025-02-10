@@ -41,7 +41,8 @@ return 1
 fi
 
 if ! grep -q "electrs_tor" $pc ; then
-debug "etor"
+debug "etor
+$(cat $ic)"
 announce \
 "Please enable TOR in electrs menu first."
 return 1
