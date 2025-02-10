@@ -1,7 +1,7 @@
 function menu_electrum {
 while true ; do 
 if ! grep -q "electrum-end" $ic ; then return 0 ; fi
-source $HOME/.parmanode/electrum.connection >$dn 2>&1
+source $dp/electrum.connection >$dn 2>&1
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7002" >$dn ; then connection=${green}fulcrumTOR ; fi
 if cat $HOME/.electrum/config | grep "\"server" | grep -q "7004" >$dn ; then connection=${green}electrsTOR ; fi
 
@@ -115,7 +115,7 @@ done
 function electrum_connection_menu {
 
 while true ; do
-source $HOME/.parmanode/electrum.connection >$dn 2>&1
+source $dp/electrum.connection >$dn 2>&1
 set_terminal
 echo -e "
 ########################################################################################
