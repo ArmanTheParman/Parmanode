@@ -191,7 +191,8 @@ return 0
 ;;
 
 etor)
-sparrow_electrstorreturn 0
+sparrow_electrstor
+return 0
 ;;
 
 fs)
