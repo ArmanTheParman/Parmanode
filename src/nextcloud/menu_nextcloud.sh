@@ -9,6 +9,15 @@ else
 nextcloud_running="${red}NOT RUNNING$orange"
 fi
 
+if ! { sudo test -e /etc/docker/daemon.json && \
+       grep -q "data-root" /etc/docker/daemon.json && \
+       vld=$(sudo cat /etc/docker/daemon.json 2>/dev/null | jq -r '."data-root"') 
+     } ; then 
+
+    vld=/var/lib/docker
+fi
+
+
 set_terminal ; echo -en "
 ########################################################################################$cyan
                                 N E X T C L O U D $orange
@@ -34,8 +43,8 @@ $cyan
     ACCESS: $green
             https://$IP:8020    $orange
 
-    DATA: $bright_blue
-           /var/lib/docker/volumes/nextcloud_aio_nextcloud_data/_data/
+    DATA DIRECTORY: $bright_blue
+    $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
 $orange   
 ########################################################################################
 "
