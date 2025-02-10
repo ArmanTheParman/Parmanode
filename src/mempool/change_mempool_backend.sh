@@ -10,7 +10,7 @@ echo -e "
 
 $green                 b) $orange       Bitcoin (simplest)
 
-     $green            e) $orange       electr (You must make sure its running)
+     $green            e) $orange       electrs (You must make sure its running)
 
           $green       ex)      $orange Electrum X (You must make sure its running)
 
