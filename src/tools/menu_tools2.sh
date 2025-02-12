@@ -69,6 +69,7 @@ announce "This is a decentralised Bitcoin Price Calculator.
 NODAEMON=true
 pn_tmux "python3 $pn/src/tools/UTXOracle.py" "UTXOracle
     echo 'hit <enter> to continue' ; read"
+enter_continue
 unset NODAEMON
 ;;
 
