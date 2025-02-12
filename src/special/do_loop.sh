@@ -30,6 +30,7 @@ deactivate >/dev/null 2>&1
 	    source $file
 	done
 
+if [[ $parminer == 1 ]] ; then premium=1 ; fi
 
 gsed_symlink 
 parmanode_variables $@ #CANNOT USE CUSTOM DEBUG FUNCTION BEFORE THIS"
@@ -65,7 +66,7 @@ if [[ -f $ic ]] ; then #execute only if an installed config file exits otherwise
 	fi
 fi
 #add to run count
-[[ $parminer == 1 ]] || rp_counter
+[[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
 ########################################################################################
 #Intro
@@ -74,7 +75,7 @@ set_terminal # custom function for screen size and colour.
 # argument "m" sets skip_intro to true in parman_variables
 
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
-[[ $parminer == 1 ]] || if [[ $1 != menu ]] ; then
+[[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi
 
@@ -91,7 +92,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
-	[[ $parminer == 1 ]] || autoupdate
+	[[ $premium == 1 ]] || autoupdate
 fi
 
 if [[ $needs_restart == "true" ]] ; then
@@ -102,14 +103,14 @@ fi #end btcpayinstallsbitcoin
 #Health check
 parmanode1_fix
 #prompts every 20 times parmanode is run (reducing load up time of Parmanode)
-[[ $parminer == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
+[[ $premium == 1 ]] || if [[ $rp_count == 1 || $((rp_count % 20 )) == 0 ]] ; then
    #environment checks
    bash_check 
    check_architecture 
 fi
-[[ $parminer == 1 ]] || apply_patches
+[[ $premium == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
-[[ $parminer == 1 ]] || install_parmashell 
+[[ $premium == 1 ]] || install_parmashell 
 
 # get version, and suggest user to update if old.
 
@@ -127,7 +128,7 @@ custom_startup $@
 if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 
 #message of the day
-[[ $parminer == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
+[[ $premium == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
 rossisfree 
 motd
 fi
@@ -140,6 +141,6 @@ jump $1
 # This is the main program, which is a menu that loops.
 
 #Parminer borrows do_loop function, but don't go to parmanode menu
-[[ $parminer == 1 ]] || menu_main
+[[ $premium == 1 ]] || menu_main
 
 }
