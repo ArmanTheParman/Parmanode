@@ -48,8 +48,8 @@ $blue
     \r    to approve your computer's credentials.\n$orange" ; continue ; }
     fi
 
-    cd $pp/parmanas
-    ./run_parmanas.sh
+    $pp/parmanas/run_parmanas.sh
+    enter_continue
 
 ;;
 
