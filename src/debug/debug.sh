@@ -5,7 +5,10 @@
 
 #truncatedebuglog to keep file size manageable.
 
+dn="/dev/null"
+
 function debug {
+dn="/dev/null"
 echo $(date) | tee -a $dp/debug.log >$dn 2>&1
 echo "${FUNCNAME[1]} <-- ${FUNCNAME[2]}" | tee -a $dp/debug.log >$dn 2>&1
 echo "$1" | tee -a $dp/debug.log >$dn 2>&1
@@ -25,6 +28,7 @@ fi
 }
 
 function debug2 {
+dn="/dev/null"
 echo $(date) | tee -a $dp/debug2.log >$dn 2>&1
 echo "${FUNCNAME[0]} <-- ${FUNCNAME[1]}" | tee -a $dp/debug2.log >$dn 2>&1
 echo "$1" | tee -a $dp/debug2.log >$dn 2>&1
@@ -39,6 +43,7 @@ fi
 }
 
 function debug3 {
+dn="/dev/null"
 echo "$1" | tee -a $dp/.debug3.log >$dn 2>&1
 if [[ $debug == 3 ]] ; then
 echo -e "${1}"
