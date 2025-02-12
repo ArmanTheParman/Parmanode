@@ -24,6 +24,8 @@ $cyan              pass)$orange      Change computer login/sudo password
 
 $cyan              qr)$orange        QRencode command line tool (Linux and Mac)
 
+#$cyan             uo)$orange        UTXOracle                                                    
+
 $orange
 ########################################################################################
 "
@@ -60,7 +62,15 @@ as)
 autossh_setup
 ;;
 
-
+uo)
+announce "This is a decentralised Bitcoin Price Calculator.
+    Bitcoin needs to be running for it to work.
+    Use$cyan <control> c$orange to exit it."
+NODAEMON=true
+pn_tmux "python3 $pn/src/tools/UTXOracle.py" "UTXOracle
+    echo 'hit <enter> to continue' ; read"
+unset NODAEMON
+;;
 
 pass)
 set_terminal
