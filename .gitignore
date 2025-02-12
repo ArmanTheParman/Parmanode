@@ -3,4 +3,5 @@
 ./src/rtl/RTL-Config.json
 test/
 __pycache__/
+*.swp
 
