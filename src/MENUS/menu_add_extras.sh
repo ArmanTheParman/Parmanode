@@ -13,6 +13,8 @@ echo -en "
 #                                                                                      #
 #$cyan              rr)$orange      RAID - join drives together                                   #
 #                                                                                      #
+#$cyan              pnas)$orange    ParmaNas - Network Attached Storage                           #
+#                                                                                      #
 #$cyan              h)$orange       HTOP - check system resources                                 #
 #                                                                                      #
 #$cyan              udev)$orange    Add UDEV rules for HWWs (only needed for Linux)               #
@@ -35,6 +37,21 @@ rr)
     return 0
 ;; 
 
+pnas)
+    [[ ! -e $dp/.parmanas_enabled ]] && {
+    announce "ParmaNas is not enabled by default in Parmanode; it is a
+    premium feature. Contact Parman for more info."
+    continue
+    }
+
+    if ! grep -q "parmanas-end" $ic ; then
+    git@github.com:armantheparman/parmanas.git $pp/parmanas || { enter_continue "Something went wrong. Contact Parman." ; continue ; }
+    fi
+
+    cd $pp/parmanas
+    ./run_parmanas.sh
+
+;;
 h|H|htop|HTOP|Htop)
 
     if [[ $OS == "Mac" ]] ; then htop ; break ; return 0 ; fi
