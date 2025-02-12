@@ -49,7 +49,6 @@ $blue
     fi
 
     $pp/parmanas/run_parmanas.sh
-    enter_continue
 
 ;;
 
