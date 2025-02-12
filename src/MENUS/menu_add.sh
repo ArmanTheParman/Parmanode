@@ -27,7 +27,7 @@ set_terminal_higher
 echo -en "
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> ${cyan}Install Menu$orange                                  #
+#    P A R M A N O D E --> Main Menu --> ${cyan}Add (Install) Menu$orange                            #
 #                                                                                      #
 ########################################################################################
 # $partial_install \033[88G#
@@ -41,12 +41,16 @@ echo -en "${bitcoin_new}" ; echo -en "
 #                                                                                      #
 #$cyan                      e)$orange           Extras ...                                         #
 #                                                                                      #
+#$blue                     pp)$blue           Premium ...        $orange                                #
+#                                                                                      #
 #                                                                                      #
 ########################################################################################
 "
 choose "xpmq" ; read choice 
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
+q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
+
 B|b|bitcoin|Bitcoin)
         if [[ -z $menuaddnewbitcoin ]] ; then
         set_terminal 
@@ -74,8 +78,6 @@ mm|MM|Mm|mM)
         return 0
         ;;
 
-m|M) back2main ;;
-
 w|W|wallets|Wallets)
         menu_add_wallets
         return 0
@@ -90,13 +92,12 @@ e|E)
         menu_add_extras
         return 0
         ;;
+
+pp)
+        menu_premium
+        return 0
+        ;;
     
-    q|Q|quit|QUIT)
-        exit 0
-        ;;
-    p|P)
-        back2main
-        ;;
     *)
         invalid
         continue

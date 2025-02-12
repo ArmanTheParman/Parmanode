@@ -1,7 +1,7 @@
 function menu_add_extras {
 while true ; do
 menu_add_source
-if [[ -e $hp/parman_books ]] ; then UPDATE="${red}UPDATE$orange " ; endline="                 #" ; else unset UPDATE ; endline="                        #"; fi
+if [[ -e $hp/parman_books ]] ; then UPDATE="${red}UPDATE$orange " ; endline="                  #" ; else unset UPDATE ; endline="                         #"; fi
 set_terminal
 echo -en "
 ########################################################################################
@@ -11,19 +11,13 @@ echo -en "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #
-#$cyan              rr)$orange      RAID - join drives together                                   #
+#$cyan              h)$orange       HTOP - check system resources                                  #
 #                                                                                      #
-#$cyan              pnas)$orange    ParmaNas - Network Attached Storage                           #
-#                                                                                      #
-#$cyan              h)$orange       HTOP - check system resources                                 #
-#                                                                                      #
-#$cyan              udev)$orange    Add UDEV rules for HWWs (only needed for Linux)               #
+#$cyan              udev)$orange    Add UDEV rules for HWWs (only needed for Linux)                #
 #                                                                                      #
 #$cyan              fb)$orange      ${UPDATE}Parman's recommended free books (pdfs)$endline
 #                                                                                      #
-#$cyan              cl)$orange      Core Lightning                                                #
-#                                                                                      #
-#$cyan              pm)$orange      ParMiner                                                      #
+#$cyan              cl)$orange      Core Lightning                                                 #
 #                                                                                      #
 ########################################################################################
 "
@@ -93,10 +87,6 @@ announce "Parmanode isn't configured to support Core Lightning, but it can insta
     command line or other means. Core Lightning may be implemende within Parmanode in 
     the future." 
 ;;
-pm)
-get_parminer
-;;
-
 
 *)
     invalid
@@ -109,61 +99,3 @@ return 0
 
 }
 
-
-function menu_qrencode {
-
-while true ; do
-set_terminal ; echo -en "
-########################################################################################
-                                     QR Encode
-########################################################################################
-
-
-                       ${pink}QREncode is installed on your system.
-
-
-$cyan
-                    info)$orange          Info fo DIY QR codes
-$cyan
-                    pub)$orange           QR of your computer's SSH pubkey
-
-
-########################################################################################
-"
-choose xpmq ; read choice 
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-quit|Q|q) exit ;; p|P) return 1 ;; m|M) back2main ;;
-info) qrencode_info ;;
-pub) 
-set_terminal_custom 50 100
-echo "Public key..."
-qrencode -t ANSIUTF8 "$(cat ~/.ssh/id_rsa.pub)"
-enter_continue
-;;
-
-*) invalid ;;
-esac
-done
-}
-
-function qrencode_info {
-set_terminal ; echo -en "
-########################################################################################
-                                  QREncode Info
-########################################################################################
-$orange
-    To use qrencode command manually, the syntax is ...
-$cyan
-                        qrencode -t ANSIUTF8 \"some text\"
-$orange
-    You can also QR the contents of a file ...
-$cyan
-                        qrencode -t ANSIUTF8 \"\$(cat /path/to/file)\"
-$orange
-    Don't omit the \" 
-
-########################################################################################
-"
-enter_continue
-}
