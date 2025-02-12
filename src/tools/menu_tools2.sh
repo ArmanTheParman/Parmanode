@@ -24,7 +24,7 @@ $cyan              pass)$orange      Change computer login/sudo password
 
 $cyan              qr)$orange        QRencode command line tool (Linux and Mac)
 
-#$cyan             uo)$orange        UTXOracle                                                    
+$cyan             uo)$orange         UTXOracle                                                    
 
 $orange
 ########################################################################################
