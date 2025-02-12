@@ -5,7 +5,7 @@
 
 #truncatedebuglog to keep file size manageable.
 
-dn="/dev/null"
+export dn="/dev/null"
 
 function debug {
 dn="/dev/null"
