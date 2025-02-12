@@ -43,9 +43,9 @@ $blue
     }
 
     if ! grep -q "parmanas-end" $ic ; then
-    git@github.com:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n    Something went wrong. Contact Parman.\n
+    git@github.com:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    It's possible you were trying to install ParmaNas before Parman has had a chance
-    \r    to approve your computer's credentials.\n" ; continue ; }
+    \r    to approve your computer's credentials.\n$orange" ; continue ; }
     fi
 
     cd $pp/parmanas
