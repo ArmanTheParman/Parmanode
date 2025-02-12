@@ -1,7 +1,9 @@
 function success {
 debug "pre-success menu"
+if [[ $bluesuccesscolour == "true" ]] ; then temp=$orange ; orange=$blue ; fi
+
 if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" ; fi
-set_terminal ; echo -e "
+set_terminal ; echo -e "$orange
 ########################################################################################
 $green                                  
                                   S U C C E S S  ! !
@@ -9,8 +11,9 @@ $orange
     $1 $has_finished $2
 
 ########################################################################################
-"
-enter_continue ; set_terminal ; return 0
+$orange"
+if [[ $bluesuccesscolour == "true" ]] ; then orange=$temp ; unset temp; fi
+enter_continue ; set_terminal ; unset blueseccesscolour ; return 0
 }
 
 
