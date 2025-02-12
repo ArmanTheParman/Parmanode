@@ -10,7 +10,9 @@ $cyan
 $orange
     THIS SOFTWARE ADD-ON IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
     IT (YOU DECIDE WHAT 'USE' MEANS), THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange if
-    you can afford it. << You could give more if you think it is deserved >>
+    you can afford it. I tried to make it easy, but using RAID is complex, and might
+    need to be customised for your needs. If things don't work out using Parmanode,
+    consider hiring Parman for assistance.
 $bright_blue
         https://armantheparman.com/donations
 $orange
