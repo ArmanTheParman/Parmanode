@@ -25,6 +25,12 @@ echo -e "
 ########################################################################################
 #                                                                                      #
 #                                                                                      #"
+if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
+echo -e "#$cyan                            (pw)$blue               WordPress Website (ParmaWeb)           $orange#
+#                                                                                      #"
+elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
+echo -e "#$cyan                            (pw)$blue               WordPress Website $red$blinkon(partial)$blinkoff$blue            #
+#                                                                                      #" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            (bitcoin)$orange$orange          Bitcoin Core                           #
 #                                                                                      #"
@@ -234,12 +240,6 @@ echo -e "#$cyan                            (th)$orange               Thunderhub 
 #                                                                                      #"
 elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhubmenu=1
 echo -e "#$cyan                            (th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                   #
-#                                                                                      #" ; fi
-if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (pw)$blue               WordPress Website (ParmaWeb)           $orange#
-#                                                                                      #"
-elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (pw)$blue               WordPress Website $red$blinkon(partial)$blinkoff$blue            #
 #                                                                                      #" ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
 echo -e "#$cyan                            (ld)$orange               LND (Docker)                           #
