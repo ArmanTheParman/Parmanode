@@ -24,38 +24,38 @@ if ! { sudo test -e /etc/docker/daemon.json && \
 fi
 
 
-set_terminal ; echo -en "$blue
-########################################################################################$orange
-                              PARMACLOUD - NextCloud $blue
-########################################################################################
+set_terminal 38 96 ; echo -en "$blue
+################################################################################################$orange
+                                  PARMACLOUD - NextCloud $blue
+################################################################################################
 
     NextCloud is:    $nextcloud_running
 
 $orange
-                      pass)$blue        Show setup password
+                      pass)$blue            Show setup password
 $orange
-                      reset)$blue       Reset a user account password
+                      reset)$blue           Reset a user account password
 $orange
-                      start)$blue       Start NextCloud Docker container
+                      start)$blue           Start NextCloud Docker container
 $orange
-                      stop)$blue        Stop NextCloud Docker container
+                      stop)$blue            Stop NextCloud Docker container
 $orange
-                      refresh)$blue     Refresh info after any manual file changes
-                                   - Restarts container as well
+                      refresh)$blue         Refresh info after any manual file changes
+                                       - Restarts container as well
 $orange
-                      data)$blue        Information about data storage and backups
+                      data)$blue            Information about data storage and backups
 
 
     ACCESS FOR INITIAL SETUP: $green
-            http://$IP:8020    $blue
+          http://$IP:8020    $blue
     
     REGULAR ACCESS: $pink
-            https://$parmacloud_domain $orange   mod)$blue   Modify domain
+          https://$parmacloud_domain $orange   mod)$blue   Modify domain
 
     DATA DIRECTORY: $pink
-    $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
+          $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
 $blue
-########################################################################################
+################################################################################################
 "
 choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
