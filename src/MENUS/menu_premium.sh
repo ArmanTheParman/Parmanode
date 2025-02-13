@@ -84,7 +84,7 @@ get_parminer
 ;;
 
 web)
-[[ ! -e $dp/.parmaweb_endabled ]] && announce_blue "
+[[ ! -e $dp/.parmaweb_enabled ]] && announce_blue "
     With Parmaweb, you can host your own WordPress Server (Linux Only)
     with a database configured, help with reverse proxying if you need it
     and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
