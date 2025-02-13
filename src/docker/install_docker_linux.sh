@@ -47,7 +47,7 @@ log "docker" "Install success. Reboot needed."
 success "Docker" "installing."
 if ! id | grep docker ; then
 while true ; do
-set_terminal "pink" ; echo -e "
+set_terminal ; echo -e "$pink
 ######################################################################################## 
 ######################################################################################## 
 $orange
