@@ -538,7 +538,7 @@ fi
 
 cloud) 
    if [[ $parmacloudapp == 1 ]] ; then
-   menu_nextcloud
+   menu_parmacloud
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
    else invalid
    fi
