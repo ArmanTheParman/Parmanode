@@ -68,7 +68,7 @@ cloud)
         enter_continue "Something went wrong" ; continue ; 
     } #requires SSH key authority 
 }
-for file in ./parmacloud/src/*.sh ; do source $file ; done
+for file in $pp/parmacloud/src/*.sh ; do source $file ; done
 install_nextcloud
 debug "pause"
 ;;
