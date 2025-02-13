@@ -1,10 +1,8 @@
 function menu_parmaweb {
 if ! grep -q "website-end" $ic ; then return 0 ; fi
 IP_address get #fetches external_IP variable without printed menu
-debug wait
 while true ; do
 unset website_ssl website_tor ONION_ADDR_WEBSITE W_tor W_tor_logic domain add_domain_name_option domain_name domain_name_text web_ssl_status_print
-get_onion_address_variable website
 source $pc >$dn 2>&1
 
 #SSL status
@@ -30,7 +28,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         W_tor_logic=off
         fi
 
-        if grep -q "website_tor=true" $HOME/.parmanode/parmanode.conf ; then 
+        if grep -q "website_tor=true" $pc ; then 
         get_onion_address_variable "website" 
         fi
     else
