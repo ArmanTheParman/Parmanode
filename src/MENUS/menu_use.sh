@@ -29,6 +29,9 @@ if [[ -e $pp/parminer ]] ; then
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
                        echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange
                             " ; fi
+if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
+                       echo -e "                        $cyan  (ws)$blue         WordPress Website$orange
+                            " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
                             " ; fi
@@ -130,9 +133,6 @@ if grep -q "electrumx-end" $HOME/.parmanode/installed.conf ; then electrumxapp=1
                             " ; fi
 if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp=1
                        echo -e "                        $cyan  (th)$orange         Thunderhub 
-                            " ; fi
-if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (ws)$blue         WordPress Website$orange
                             " ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
                        echo -e "                        $cyan  (ld)$orange         LND (Docker)
