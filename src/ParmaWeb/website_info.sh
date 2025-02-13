@@ -1,22 +1,22 @@
 
 function website_info {
 source $pc
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-$cyan
+$orange
                                   Website Info 
-$orange 
+$blue
     So you've decided to host your own webiste. Noice. Here's what you need to know...
     
-    Parmanode has installed$pink Wordpress.org$orange for you. Amazing huh? It's a 'what-you-see-
+    Parmanode has installed$pink Wordpress.org$blue for you. Amazing huh? It's a 'what-you-see-
     is-what-you-get' website editor. You use it to create pages for your website from
     within a browser, and the data is stored in a MariaDB database (MariaDB is a 
     MySQL open source fork).
 
     You'll create your account the first time you navigate to your computer's IP:
-$cyan    
+$orange
         http://$domain_name/myphpadmin
-$orange   
+$blue
     Then you can start building your website using the Wordpress tools.
 
     The website won't be available to the world automatically though. There's more to 
@@ -32,7 +32,7 @@ $orange
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Here's what's going on:
@@ -44,8 +44,8 @@ set_terminal ; echo -e "
     The traffic from the internet goes to that IP and to your router (you can think
     of it as your router's IP). The router manages the internal IP addresses of all
     the connected devices on your home network. It gives addesses like
-$cyan
-    192.168.0.100$orange or$cyan 192.168.0.174$orange
+$orange
+    192.168.0.100$blue or$orange 192.168.0.174$blue
 
     to any connected device. The first part of the number is consistent, and the last
     part is between 0 and 255. Actually, the router's internal IP address usually ends
@@ -53,9 +53,9 @@ $cyan
 
     For your computer, when it surfs the internet, data goes from the computer, to
     the router, then to some ISP exchange, then various hops across the globe to
-    the desination IP. Eg, for Google, the IP is$cyan 8.8.8.8.
-$orange
-    Your network's IP address is $external_IP
+    the desination IP. Eg, for Google, the IP is$orange 8.8.8.8.
+$blue
+    Your network's IP address is$green $external_IP$blue
 
     The rest of the network can see it, but they can not get inside; your router
     blocks traffic. It will only allow data in if your computer specifically connectec
@@ -64,7 +64,7 @@ $orange
 ########################################################################################
 "
 enter_coninue ; jump $enter_cont
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     If you want to be a server, ie host a website, you have to manually tweak your
@@ -90,7 +90,7 @@ set_terminal ; echo -e "
     instructions) to the appropriate machine on your home network. Once the request
     reaches your server's computer, the computer (well Nginx software actually) 
     which is listening specifically for port 80 traffic will serve information
-    from the appropriate directory ($cyan/var/www/website/$orange).
+    from the appropriate directory ($orange/var/www/website/$blue).
 
 ########################################################################################
 "

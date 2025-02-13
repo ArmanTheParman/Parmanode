@@ -14,7 +14,7 @@ restart_tor
 get_onion_address_variable "website" 
 
 parmanode_conf_add "website_tor=true"
-
+bluesuccesscolour="true"
 success "A Tor Hidden service has been set up for you website."
 }
 
@@ -28,4 +28,6 @@ sudo gsed -i "/127.0.0.1:80/d" $torrc
 
 set_terminal
 parmanode_conf_remove "website_tor"
+bluesuccesscolour="true"
+success "Tor service has been remove for you website."
 }

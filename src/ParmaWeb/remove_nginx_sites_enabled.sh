@@ -5,17 +5,17 @@ if [[ ! -e /etc/nginx/sites-enabled/default && ! -e /etc/nginx/sites-available/d
 if [[ $1 != silent ]] ; then
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Parmanode will remove the default server for nginx (the one that automatically is
     configured when nginx is installed).
 
-    If this is meaningless to you, great, hit$cyan <enter>$orange to continue and 
+    If this is meaningless to you, great, hit$orange <enter>$blue to continue and 
     Parmanode will delete it; it's not needed.
 
     If you do run a server with Nginx already, then this installation is not for you. 
-    You should hit$red a$orange and$cyan <enter>$orange to abort, otherwise Parmanode might 
+    You should hit$red a$blue and$orange <enter>$blue to abort, otherwise Parmanode might 
     delete your server configuration.
 
 ########################################################################################

@@ -2,16 +2,16 @@ function remove_domain {
 source $pc
 if [[ -n $domain_name ]] ; then
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     You currently have a domain associated with your server, $domain_name
 
     Do you want to remove it?
-$cyan
-                                    y)$orange     Yes
-$cyan
-                                    n)$orange     No
+$orange
+                                    y)$blue     Yes
+$orange
+                                    n)$blue     No
 
 ########################################################################################
 "
@@ -35,7 +35,7 @@ esac
 done
 else
 set_terminal
-echo -e "${green}No domain to remove...$orange"
+echo -e "${red}No domain to remove...$blue"
 sleep 1.5
 fi
 }

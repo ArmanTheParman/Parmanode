@@ -1,6 +1,6 @@
 function remove_ssl_website {
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Do you want to remove the certificates for your domain that was made by Certbot?
@@ -9,10 +9,10 @@ set_terminal ; echo -e "
     which will reset the configuration file to the default (no domain, listening on
     port 80), and then you can add your domain again, and add certificates again later
     if you want.
-$cyan
-                                    y)$orange     Yes
-$cyan
-                                    n)$orange     No
+$orange
+                                    y)$blue     Yes
+$orange
+                                    n)$blue     No
 
 ########################################################################################
 "

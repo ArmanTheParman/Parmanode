@@ -2,7 +2,7 @@
 function choose_database_name {
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     The default name for the database and directory where information about the
@@ -11,15 +11,15 @@ set_terminal ; echo -e "
     choose one of the following names - Parmanode will check they don't already
     exists.
 
-                        d)       website      $green(default) $orange
-                        2)       website2
-                        3)       website3
-                        4)       website4
-                        5)       website5
-                        6)       website6
-                        7)       website7
-                        8)       website8
-                        9)       website9
+                        d)$orange       website      $green(default) $blue
+                        2)$orange       website2
+                        3)$orange       website3
+                        4)$orange       website4
+                        5)$orange       website5
+                        6)$orange       website6
+                        7)$orange       website7
+                        8)$orange       website8
+                        9)$orange       website9
 
 
 ########################################################################################

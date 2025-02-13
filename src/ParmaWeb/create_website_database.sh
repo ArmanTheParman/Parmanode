@@ -1,7 +1,7 @@
 function create_website_database {
 set_terminal 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     MariaDB is the database that will hold your website's data. The database will be
@@ -9,13 +9,13 @@ set_terminal ; echo -e "
 
     A username for the database will be created, called 'parmanode'.
 
-    Please choose a$cyan password$orange for this user to access your website. BTW, it 
+    Please choose a$orange password$blue for this user to access your website. BTW, it 
     will be stored in the parmanode.conf file.
 
     It's best to not include any symbols.
     $pink
     NOTE YOU WILL NEED TO ENTER IT 3 TIMES. ONCE TO DECLARE IT, ANOTHER TO CONFIRM,
-    AND FILNALLY AGAIN TO USE IT TO CREATE THE DATABASE.$orange
+    AND FILNALLY AGAIN TO USE IT TO CREATE THE DATABASE.$blue
 
     Also note, the keystrokes to the password will not show.
 
@@ -23,10 +23,10 @@ set_terminal ; echo -e "
 
 "
 read -s password ; set_terminal ; if [[ -z $password ]] ; then announce "Password can not be empty" ; continue ; fi
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
-    Please repeat the$cyan password${orange}.
+    Please repeat the$orange password${blue}.
     
     After this you will be asked to enter the password one more time, not to set it 
     but USE it.
@@ -36,7 +36,7 @@ set_terminal ; echo -e "
 "
 read -s password2 ; set_terminal
 if [[ $password != $password2 ]] ; then
-enter_continue "Passwords don't match. Hit$cyan <enter>$orange to try again."
+enter_continue "Passwords don't match. Hit$orange <enter>$blue to try again."
 continue
 fi    
 break

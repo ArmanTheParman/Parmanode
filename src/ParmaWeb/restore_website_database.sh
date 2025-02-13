@@ -1,7 +1,7 @@
 function restore_website_database {
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
    Parmanode will restore your database to a file; you have to type in the full path
@@ -10,21 +10,21 @@ set_terminal ; echo -e "
    If you import a database that was not backed up by Parmanode, that is, if it's a
    foreign database with unanticipated settings, you might need do do some manuel 
    tweaking to get it to work with usernames and passwords and priviledges etc.
-$cyan
-   Please type in the full path of the file you want to import and hit <enter>:
 $orange
+   Please type in the full path of the file you want to import and hit <enter>:
+$blue
 ########################################################################################
 "
 choose "epmq" ; read databasefile ; set_terminal
 case $databasefile in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 *)
-echo -e "
+echo -e "$blue
 ########################################################################################
 
     You entered:
-$cyan
-    $choice $orange
+$orange
+    $choice $blue
 
     Is this correct? (y/n)
 
@@ -40,11 +40,11 @@ database_name=$(cat "$databasefile" | grep Database: | head -n1 | cut -d : -f 3 
 
 if [[ $database_name != "website" ]] ; then
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Parmanode has detected that you are importing a custom named database (It was
-    expecting a database called 'website' but got $database_name instead). This is
+    expecting a database called 'website' but got$orange $database_name$blue instead). This is
     totallty fine, just be aware that the database needs to exist (even if empty) and
     must have the same name, and the 'parmanode' user must have acces to it, for it 
     to import successfully.
@@ -61,17 +61,17 @@ done
 else # database to be imported must be called 'website'
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     If you import the website database, any existing data in the 'website' database
     will be MERGED.
 
-    You have choices... $cyan
+    You have choices... $orange
 
-        1)$orange    Continue and let the merge happen 
-$cyan
-        2)$orange    Abort, so you can delete and recreate a blank database first, 
+        1)$blue    Continue and let the merge happen 
+$orange
+        2)$blue    Abort, so you can delete and recreate a blank database first, 
               then you'll come back.
 
 ########################################################################################
@@ -85,10 +85,10 @@ done
 fi
 
 if ! sudo mysql -u root -p -e "SHOW DATABASES LIKE '$database_name';" | grep -q "$database_name"; then
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
-    The database $database_name does not exist in the destination. You must 
+    The database$orange $database_name$blue does not exist in the destination. You must 
     first create the database to allow an import/merge.
 
 ########################################################################################

@@ -2,24 +2,24 @@ function website_domain {
 unset domain site_name
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-$cyan
-                                    Domain Name
 $orange
+                                    Domain Name
+$blue
 
     Do you have a domain name to use? 
 
-$cyan                 n)$orange           No, just use my internal IP address 
+$orange                 n)$blue           No, just use my internal IP address 
                                           (for local use only)
 
-$cyan                 e)$orange           No, just use my external IP address 
+$orange                 e)$blue           No, just use my external IP address 
 
-$cyan                 y)$orange           ${green}Yes, and configure it
+$orange                 y)$blue           ${green}Yes, and configure it
 
-$cyan                 t)$orange           Tell me how ...
+$orange                 t)$blue           Tell me how ...
 
-$cyan                 r)$orange           ${red}Remove my domain$orange from Parmanode configuration 
+$orange                 r)$blue           ${red}Remove my domain$blue from Parmanode configuration 
 
 
 ########################################################################################
@@ -64,14 +64,14 @@ esac
 done
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Please type in your domain name, eg 
-$cyan
+$orange
         example.com
-$orange    
-    then$green <enter>$orange. If you have a 'www' prefix, you don't need to type that in here.
+$blue
+    then$green <enter>$blue. If you have a 'www' prefix, you don't need to type that in here.
 
 ########################################################################################
 "
@@ -82,12 +82,12 @@ case $domain in q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
 continue
 ;;
 *)
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
-    You have chosen$cyan $domain $orange
+    You have chosen$orange $domain $blue
 
-    ${green}y$orange and$cyan <enter>$orange to accept, and anything else to try again.
+    ${green}y$blue and$orange <enter>$blue to accept, and anything else to try again.
 
 ########################################################################################
 "
@@ -99,14 +99,14 @@ done
 
 if ! echo $domain | grep -qE '^www\.' ; then
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Would you like your domain with a 'www' prefix to also be accessible to visitors?
 
-                                ${green}y)$orange       yes
+                                ${green}y)$blue       yes
 
-                                ${red}n)$orange       no
+                                ${red}n)$blue       no
 
 ########################################################################################
 " 
@@ -146,6 +146,6 @@ if [[ -n $domain_name && -e /etc/nginx/conf.d/$website.conf ]] ; then
         
     local server_name="    server_name $domain_name $www_name;"
     sudo gsed -i "/#put server___name/c\\$server_name" $file
-    sudo systemctl restart nginx || echo "couldn't restart nginx. Something went wrong." && enter_continue
+    sudo systemctl restart nginx || echo -e "${blue}Couldn't restart nginx. Something went wrong." && enter_continue
 fi
 }

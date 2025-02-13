@@ -1,16 +1,16 @@
 function delete_website_database {
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 $red $blinkon
     Warning, you are about to delete your website's database - this holds all your
     website pages! $blinkoff
-$orange
+$blue
     Do you really want to do this?
 $red
                         do_it)      Yeah, delete, my website is shit.
 $green
                         n)          No! I made a mistake
-$orange
+$blue
 ########################################################################################
 "
 choose xpmq ; read choice

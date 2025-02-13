@@ -2,14 +2,14 @@ function website_ssl_on {
 
 if ! nmap -p 80 $external_IP | grep 80 | grep -q open ; then
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
-    Please be aware that for this to work, you must have$pink port 80 and 443$orange opened 
+    Please be aware that for this to work, you must have$pink port 80 and 443$blue opened 
     on your router and forwarded to this machine, otherwise the certificate generation
     process will fail.
     
-    To continue, type$cyan EndTheFed$orange and hit$cyan <enter>$orange otherwise just hit$red <enter>$orange 
+    To continue, type$orange EndTheFed$blue and hit$orange <enter>$blue otherwise just hit$red <enter>$blue
     to abort this.
 
 ########################################################################################
@@ -34,5 +34,6 @@ source $pc
 sudo certbot --nginx -d $domain_name || { echo -e "\nSomething went wrong" ; enter_continue ; return 1 ; }
 
 parmanode_conf_add "website_ssl=true"
+bluesuccesscolour="true"
 success "SSL has been turned on for your website"
 }

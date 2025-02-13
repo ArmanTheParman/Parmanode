@@ -5,35 +5,35 @@ server_onion="$(sudo cat /var/lib/tor/tor-server/hostname)"
 
 while true ; do 
 if grep -q "autoindex on" /etc/nginx/conf.d/tor-server.conf ; then status="on" ; else status="off" ; fi
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-        $cyan               Tor Web Server (Darknet Server) Menu $orange
+        $orange               Tor Web Server (Darknet Server) Menu $blue
 ########################################################################################
 
 
 
-$cyan             (info)$orange          Important information
+$orange             (info)$blue          Important information
 
-$cyan             (rt)     $orange       Restart Tor
+$orange             (rt)     $blue       Restart Tor
 
-$cyan             (sp)         $orange   Set permissions
+$orange             (sp)         $blue   Set permissions
 
-$cyan             (list)         $orange List file on the server
+$orange             (list)         $blue List file on the server
 
-$cyan             (off)     $orange      Turn off file indexing    [ Currently $status ]
+$orange             (off)     $blue      Turn off file indexing    [ Currently $status ]
             
-$cyan             (on)          $orange  Turn on file indexing     [ Currently $status ]
+$orange             (on)          $blue  Turn on file indexing     [ Currently $status ]
 
-$cyan             (rn)$orange            Retart Nginx 
+$orange             (rn)$blue            Retart Nginx 
 
-$cyan             (s)$orange             See Nginx status
+$orange             (s)$blue             See Nginx status
 
 
-$cyan  
+$orange  
 Onion address: $bright_blue  ${server_onion}:7001
-$cyan
-Server location:$bright_blue /tor-server/
 $orange
+Server location:$bright_blue /tor-server/
+$blue
 
 ########################################################################################
 "
@@ -52,13 +52,13 @@ info|Info|INFO) tor_server_info ;;
 
 list)
 set_terminal_high
-echo -e "
+echo -e "$blue
 ########################################################################################
 
-    Files in /tor-server: $orange
-$cyan
-$(sudo ls /tor-server)
+    Files in /tor-server: $blue
 $orange
+$(sudo ls /tor-server)
+$blue
 ########################################################################################
 "
 enter_continue ; jump $enter_cont
@@ -71,8 +71,8 @@ Every time you add files to the tor-server directory, you need to make
 sure the files have the correct permission settings otherwise they
 are not accessible by others connecting to your server.
 
-Hit $cyan<enter>$orange to continue and set the permissions automatically,
-or$red p$orange and$red <enter>$orange to go back."
+Hit $orange<enter>$blue to continue and set the permissions automatically,
+or$red p$blue and$red <enter>$blue to go back."
 read choice
 if [[ $choice == "p" || $choice == "P" ]] ; then return 1 ; fi
 

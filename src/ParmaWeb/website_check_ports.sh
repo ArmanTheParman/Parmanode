@@ -3,7 +3,7 @@ function website_check_ports {
 
 if sudo netstat -tulnp | grep -q :80 ; then
 if sudo netstat -tulnp | grep -q :80 | tail -n1 | grep -v nginx ; then
-echo -e "
+echo -e "$blue
 ########################################################################################
     
     It looks like port 80 is already being used by this computer. This port is the 
@@ -21,7 +21,7 @@ fi
 
 if sudo netstat -tulnp | grep -q :443  ; then
 if sudo netstat -tulnp | grep -q :443 | tail -n1 | grep -v nginx ; then
-echo -e "
+echo -e "$blue
 ########################################################################################
     
     It looks like port 443 is already being used by this computer. This port is the 
