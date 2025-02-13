@@ -1,7 +1,9 @@
 function make_website_nginx {
 # www=true/false
 # domain=internalIP/externalIP/damain_name
+debug "website database name: $website"
 if [[ -z $website ]] ; then website="website" ; fi
+debug "website database name: $website, after if"
 
 file="/etc/nginx/conf.d/$website.conf"
 sudo rm -rf $file

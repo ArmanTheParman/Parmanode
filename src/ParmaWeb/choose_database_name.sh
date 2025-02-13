@@ -41,5 +41,7 @@ d) export website="website" ; break ;;
 esac
 done
 
+debug "check website database name: $website"
+
 return 0
 }
