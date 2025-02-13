@@ -28,7 +28,7 @@ $blue
 
             y)          Yeah, this is great 
 $red              
-            n)          Nah, maybe later, too good to be true
+            n)          Nah, maybe later
 $blue
 
 ########################################################################################
