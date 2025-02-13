@@ -526,6 +526,7 @@ fi
 pm)
 if [[ $parminerapp == 1 ]] ; then
 $pp/parminer/run_parminer.sh
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
 ;;
@@ -533,6 +534,7 @@ fi
 pnas)
 if [[ $parmanasapp == 1 ]] ; then
 $pp/parmanas/run_parmanas.sh
+if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
 ;;
