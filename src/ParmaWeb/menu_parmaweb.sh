@@ -181,9 +181,9 @@ read -s databasepassword
 
 wpuser=$(mysql -u $databaseusername -p"$databasepassword" -e "
 USE $databasename;
-SELECT ID, user_login FROM wp_users;"  | tail -n1 | awk '{print $2'} | xargs)
+SELECT ID, user_login FROM wp_users;"  | tail -n1 | awk '{print $2'} | xargs || { enter_continue "some error, aborting" ; return1  ; })
 
-echo -e "${blue}Now please enter a new password you'd like for user: $wpuser
+echo -e "${blue}Now please enter a new password you'd like for user:$orange $wpuser$blue
     You won't see your keystrokes on screen, and you will not be asked
     to confirm your password."
 read -s newpassword
