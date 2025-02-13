@@ -1,4 +1,4 @@
-function menu_website {
+function menu_parmaweb {
 if ! grep -q "website-end" $ic ; then return 0 ; fi
 IP_address get #fetches external_IP variable without printed menu
 debug wait

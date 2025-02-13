@@ -373,7 +373,7 @@ fi
 
 uwebsite|uwps|uws|mwps|mws|mwebsite)
 if grep -q "website-end" $ic ; then
-menu_website
+menu_parmaweb
 invalid_flag=set
 else return 1
 fi
