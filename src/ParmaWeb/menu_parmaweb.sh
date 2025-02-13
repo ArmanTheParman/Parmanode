@@ -175,11 +175,11 @@ echo -e "$blue
     "
 read databasename
 echo -e "$blue
-    You will be asked for you database password next (in parmanode.conf). 
+    Please enter your database password next (in parmanode.conf). 
     "
-enter_continue
+read databasepassword
 
-wpuser=$(mysql -u $databaseusername -p -e "
+wpuser=$(mysql -u $databaseusername -p\"$databasepassword\" -e "
 USE $databasename;
 SELECT ID, user_login FROM wp_users;"  | tail -n1 | awk '{print $2'})
 
@@ -188,11 +188,10 @@ echo -e "${blue}Now please enter a new password you'd like for user: $wpuser
     to confirm your password."
 read -s newpassword
 
-echo -e "${blue}Now your database password again (the one stored in parmanode.conf)
-...
-"
-
-mysql -u $databaseusername -p -e "USE $databasename;
+# echo -e "${blue}Now your database password again (the one stored in parmanode.conf)
+# ...
+# "
+mysql -u $databaseusername -p"$databasepassword" -e "USE $databasename;
 UPDATE wp_users SET user_pass = MD5('$newpassword') WHERE user_login = '$databaseusername';" || enter_continue "problem"
 success_blue "Password reset"
 }
