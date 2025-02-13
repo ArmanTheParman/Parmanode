@@ -30,7 +30,7 @@ if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp
                        echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange
                             " ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (ws)$blue         WordPress Website$orange
+                       echo -e "                        $cyan  (pw)$blue         WordPress Website (ParmaWeb)$orange
                             " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
@@ -429,7 +429,7 @@ th)
    else invalid
    fi
    ;;
-ws) 
+pw) 
    if [[ $websiteapp == 1 ]] ; then
    menu_parmaweb
    if [[ -n $1 ]] ; then clear ; return 0 ; fi
