@@ -13,7 +13,7 @@ else
 bitcoin_new="#                                                                                      #
 #$green                      b)           Bitcoin Core/Knots                            $orange     #
 #                                                                                      #
-#$bright_blue                      bs)          Import own Bitcoin Core/Knots binaries        $orange     #
+#$green                      bs)          Import own Bitcoin Core/Knots binaries        $orange     #
 #                                                                                      #"
 fi
 
