@@ -12,7 +12,7 @@ menu_add_source
 set_terminal
 echo -en "$blue
 ########################################################################################
-#$orange          PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
+#$orange          PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue               #
 ########################################################################################
 #                                                                                      #
 #                                                                                      #$parmanas$parminer$parmacloud
