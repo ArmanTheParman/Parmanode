@@ -101,7 +101,6 @@ web)
 
     install_website
     return 0
-    fi
 }
 
 ;;
