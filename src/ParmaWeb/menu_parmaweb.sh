@@ -20,8 +20,9 @@ fi
 #Tor status
 if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep HiddenServiceDir | grep -q "website" >$dn 2>&1 ; then
-        if [[ -e /var/lib/tor/website-service ]] && \
-        sudo cat /var/lib/tor/website-service/hostname | grep "onion" >$dn 2>&1 ; then
+
+        if sudo test -d /var/lib/tor/website-service && \
+        sudo test -f /var/lib/tor/website-service/hostname >$dn 2>&1 ; then
         W_tor="${green}ON${blue}"
         W_tor_logic=on
         else 
