@@ -18,7 +18,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmanas$parminer$parmacloud
+#                                                                                      #$parmanas$parminer$parmacloud$parmaweb
 #$orange                rr)$blue        RAID - join drives together                                #
 #                                                                                      #
 #                                                                                      #
