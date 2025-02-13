@@ -8,9 +8,9 @@ menu_add_source
 #                                                                                      #"
 [[ ! -e $pp/parmanas ]] && parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #"
-&& parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
+! grep -q "website-" $ic 2>$dn && parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #"
-! grep -q "website-" $ic 2>$dn && 
+
 
 set_terminal
 echo -en "$blue
