@@ -9,9 +9,6 @@ menu_add_source
 set_terminal
 echo -en "$blue
 ########################################################################################
-#                                                                                      #
-#$orange    P A R M A N O D E --> Main Menu --> Install Menu  --> Premium      $blue               #
-#                                                                                      #
 #$orange       THESE PROGRAMS ARE EXTRA FEATURES AVAILABLE FOR A FEE: CONACT PARMAN          $blue #
 ########################################################################################
 # 
