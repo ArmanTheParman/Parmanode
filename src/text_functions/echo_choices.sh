@@ -170,6 +170,23 @@ echo -e "    $2
 fi
 if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
 }
+function announce_blue {
+set_terminal ; echo -e "$blue
+########################################################################################
+
+    $1"
+if [[ -z $2 ]] ; then
+echo -e "$blue
+########################################################################################
+$orange"
+else
+echo -e "$blue    $2
+
+########################################################################################
+$orange"
+fi
+if [[ $2 == enter || $3 == enter ]] ; then return 0 ; else enter_continue ; return 0 ; fi
+}
 
 
 function yesorno {
