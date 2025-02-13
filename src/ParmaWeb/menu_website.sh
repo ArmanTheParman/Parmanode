@@ -9,11 +9,11 @@ source $pc >$dn 2>&1
 
 #SSL status
 if [[ $website_ssl == "true" ]] ; then
-    web_ssl_status_print="${green}ON$orange"
+    web_ssl_status_print="${green}ON$blue"
     website_ssl_port="443"
     http=https
 else
-    web_ssl_status_print="${red}OFF$orange"
+    web_ssl_status_print="${red}OFF$blue"
     http=http
 fi
 
@@ -22,10 +22,10 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
     if sudo cat /etc/tor/torrc | grep -q "website" >$dn 2>&1 ; then
         if [[ -e /var/lib/tor/website-service ]] && \
         sudo cat /var/lib/tor/website-service/hostname | grep "onion" >$dn 2>&1 ; then
-        W_tor="${green}ON${orange}"
+        W_tor="${green}ON${blue}"
         W_tor_logic=on
         else 
-        W_tor="${red}OFF${orange}"
+        W_tor="${red}OFF${blue}"
         W_tor_logic=off
         fi
 
@@ -33,63 +33,63 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
         get_onion_address_variable "website" 
         fi
     else
-        W_tor="${red}OFF${orange}"
+        W_tor="${red}OFF${blue}"
         W_tor_logic=off
     fi
 fi
 
 if [[ -n $domain_name ]] ; then
 domain_name_text="
-        Domain Name:             $cyan $domain_name$orange
+        Domain Name:             $orang $domain_name$blue
 "
 else
 domain_name=$domain
 fi
 
 if [[ -n $ONION_ADDR_WEBSITE ]] ; then
-tor_menu="        $bright_blue$ONION_ADDR_WEBSITE $orange
+tor_menu="        $orange$ONION_ADDR_WEBSITE $blue
 "
 else
 unset tor_menu
 fi
 
-set_terminal_custom 45 ; echo -ne "
-########################################################################################$cyan
+set_terminal_custom 45 ; echo -ne "$blue
+########################################################################################$orange
 
-                                  WORDPRESS WEBSITE $orange
+                                  WORDPRESS WEBSITE $blue
 
 ########################################################################################
         $domain_name_text
 $tor_menu                      
 
-$yellow        To initialise:       $orange     $http://$domain_name/myphpadmin
-$yellow        Database's name:     $orange     website (or website1, website2 etc)
-$yellow        Database username:   $orange     parmanode
-$yellow        Wordpress login:     $orange     $http://$domain_name/wp-admin
-$yellow        Info Page:           $orange     $http://$domain_name/info.php
+$yellow        To initialise:       $blue     $http://$domain_name/myphpadmin
+$yellow        Database's name:     $blue     website (or website1, website2 etc)
+$yellow        Database username:   $blue     parmanode
+$yellow        Wordpress login:     $blue     $http://$domain_name/wp-admin
+$yellow        Info Page:           $blue     $http://$domain_name/info.php
 
 ----------------------------------------------------------------------------------------
 
-$yellow        Website data location: $orange   /var/www/website
-$yellow        Data file permissions: $orange   user=www-data ; group=www-data
-$yellow        Nginx configuration:   $orange   /etc/nginx/conf.d/website.conf
+$yellow        Website data location: $blue   /var/www/website
+$yellow        Data file permissions: $blue   user=www-data ; group=www-data
+$yellow        Nginx configuration:   $blue   /etc/nginx/conf.d/website.conf
 
 $yellow        TCP Port (http):          ${green}80
 $yellow        SSL port (https):         ${green}$website_ssl_port 
 $yellow        Tor Status:               $W_tor                     
-$orange
+$blue
 ----------------------------------------------------------------------------------------
                                                                                 $cyan
-                   i)            $orange Educational info ...                            $cyan
-                 max)            $orange How up increase upload file size ...            $cyan
-                 dom)            $orange Add/Change domain name                          $cyan
-                  dd)            $orange Delete database and create new                  $cyan
-                  bk)            $orange Back up database                                $cyan   
-                  rs)            $orange Restore backed up database                      $cyan   
+                   i)            $blue Educational info ...                            $cyan
+                 max)            $blue How up increase upload file size ...            $cyan
+                 dom)            $blue Add/Change domain name                          $cyan
+                  dd)            $blue Delete database and create new                  $cyan
+                  bk)            $blue Back up database                                $cyan   
+                  rs)            $blue Restore backed up database                      $cyan   
  
-                 tor)            $orange Tor enable/disable      $W_tor                  $cyan
-                 ssl)            $orange SSL enable/disable      $web_ssl_status_print   $cyan
-$orange
+                 tor)            $blue Tor enable/disable      $W_tor                  $cyan
+                 ssl)            $blue SSL enable/disable      $web_ssl_status_print   $cyan
+$blue
 ########################################################################################
 "
 choose "xpmq" ; read choice 
@@ -143,7 +143,7 @@ success "Database created"
 
 bk)
 backup_website_database || return 1 
-success "The database file should now be at$cyan $HOME/Desktop/website_database.sql$orange"
+success_blue "The database file should now be at$orange $HOME/Desktop/website_database.sql"
 ;;
 
 rs)
