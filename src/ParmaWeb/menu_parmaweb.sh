@@ -175,7 +175,7 @@ echo -e "$blue
     "
 read databasename
 echo -e "$blue
-    You will be asked for you database password next. 
+    You will be asked for you database password next (in parmanode.conf). 
     "
 enter_continue
 
@@ -193,10 +193,8 @@ echo -e "${blue}Now your database password again (the one stored in parmanode.co
 "
 
 mysql -u $databaseusername -p -e "USE $databasename;
-UPDATE wp_users SET user_pass = MD5('$newpassword') WHERE user_login = '$databaseusername';" && {
-    success_blue "Password reset"
-    }
-
+UPDATE wp_users SET user_pass = MD5('$newpassword') WHERE user_login = '$databaseusername';" || enter_continue "problem"
+success_blue "Password reset"
 }
 
 
