@@ -525,6 +525,7 @@ fi
 
 pm)
 if [[ $parminerapp == 1 ]] ; then
+please_wait
 cd $pp/parminer/ && git pull >$dn 2>&1
 $pp/parminer/run_parminer.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
@@ -534,6 +535,7 @@ fi
 
 pnas)
 if [[ $parmanasapp == 1 ]] ; then
+please_wait
 cd $pp/parmanas/ && git pull >$dn 2>&1
 $pp/parmanas/run_parmanas.sh
 if [[ -n $1 ]] ; then clear ; return 0 ; fi
