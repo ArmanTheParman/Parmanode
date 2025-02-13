@@ -175,7 +175,8 @@ echo -e "$blue
     "
 read databasename
 echo -e "$blue
-    Please enter your database password next (in parmanode.conf). 
+    Please enter your database password next (in parmanode.conf)
+    You won't see keystrokes. 
     "
 read -s databasepassword
 
