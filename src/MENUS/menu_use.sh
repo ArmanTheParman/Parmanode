@@ -132,7 +132,7 @@ if grep -q "thunderhub-end" $HOME/.parmanode/installed.conf ; then thunderhubapp
                        echo -e "                        $cyan  (th)$orange         Thunderhub 
                             " ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
-                       echo -e "                        $cyan  (ws)$blue         WordPress Website 
+                       echo -e "                        $cyan  (ws)$blue         WordPress Website$orange
                             " ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockerapp=1
                        echo -e "                        $cyan  (ld)$orange         LND (Docker)
