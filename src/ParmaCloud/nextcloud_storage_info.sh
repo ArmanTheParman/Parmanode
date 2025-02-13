@@ -19,12 +19,16 @@ set_terminal_high ; echo -e "$blue
            }$blue
         
         4) Move the existing Docker contents to the new location, and delete the
-           old directory$green
+           old directory$orange
 
                sudo rsync -aP /source/ /destination/
                sudo rm -rf /old$blue
         
-        5) Restart Docker:$orange sudo service docker start $blue Or, reboot.
+        5) Restart Docker:$orange 
+
+               sudo service docker start $blue 
+
+           Or, reboot.
 
 $green
     Finally, to keep your data safe, you might want to have a second copy. See
