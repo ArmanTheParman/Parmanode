@@ -15,7 +15,7 @@ $blue
 
     You'll create your account the first time you navigate to your computer's IP:
 $orange
-        http://$domain_name/myphpadmin
+        http://$domain_name/wp-admin
 $blue
     Then you can start building your website using the Wordpress tools.
 
