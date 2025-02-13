@@ -52,7 +52,7 @@ tor_menu="        $orange$ONION_ADDR_WEBSITE $blue
 else
 unset tor_menu
 fi
-
+debug "pause before set terminal"
 set_terminal_custom 45 ; echo -ne "$blue
 ########################################################################################$orange
 
