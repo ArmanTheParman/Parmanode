@@ -10,14 +10,14 @@ function make_parmacloud_ssh_keys {
 
 sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" && return 0
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" 
 
 echo "
 Host github-parmacloud
 HostName github.com
 User git
 IdentityFile ~/.ssh/parmacloud-key
-IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
 }
 
 
@@ -26,7 +26,7 @@ function make_parmaweb_ssh_keys {
 sudo test -f ~/.ssh/parmaweb-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N "" && return 0
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N ""
 
 echo "
 Host github-parmaweb
@@ -43,7 +43,7 @@ function make_parmanas_ssh_keys {
 sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" && return 0
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" 
 
 echo "
 Host github-parmanas
