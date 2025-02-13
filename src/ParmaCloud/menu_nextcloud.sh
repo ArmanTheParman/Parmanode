@@ -26,7 +26,7 @@ fi
 
 set_terminal 38 96 ; echo -en "$blue
 ################################################################################################$orange
-                                  PARMACLOUD - NextCloud $blue
+                                   PARMACLOUD - NextCloud $blue
 ################################################################################################
 
     NextCloud is:    $nextcloud_running
