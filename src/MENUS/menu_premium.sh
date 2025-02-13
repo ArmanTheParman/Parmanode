@@ -66,6 +66,8 @@ cloud)
 
     Contact Parman for set up. Fee is \$US400.$blue" && continue 
 
+make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made" ; continue ; }
+
 [[ ! -e $pp/parmacloud ]] && { 
     git clone git@github-parmacloud:armantheparman/parmacloud.git $pp/parmacloud || {
         enter_continue "Something went wrong" ; continue ; 
