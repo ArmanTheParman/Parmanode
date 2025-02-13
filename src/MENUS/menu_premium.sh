@@ -68,6 +68,7 @@ cloud)
         enter_continue "Something went wrong" ; continue ; 
     } #requires SSH key authority 
 }
+installed_conf_add "parmacloud-start"
 for file in $pp/parmacloud/src/*.sh ; do source $file ; done
 install_parmacloud
 debug "pause"
