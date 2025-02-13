@@ -155,7 +155,7 @@ pass)
 wp_password_reset
 ;;
 rphp)
-sudo systemctl restart php*
+sudo systemctl restart php*fpm
 ;;
 nlog)
 sudo less /var/log/nginx/error.log
