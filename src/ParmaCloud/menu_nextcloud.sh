@@ -40,8 +40,8 @@ $orange
                       data)$blue        Information about data storage and backups
 
 
-    ACCESS: $green
-            https://$IP:8020    $blue
+    ACCESS FOR INITIAL SETUP: $green
+            http://$IP:8020    $blue
 
     DATA DIRECTORY: $pink
     $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
