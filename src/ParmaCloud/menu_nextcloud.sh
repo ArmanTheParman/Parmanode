@@ -18,34 +18,34 @@ if ! { sudo test -e /etc/docker/daemon.json && \
 fi
 
 
-set_terminal ; echo -en "
-########################################################################################$cyan
-                              PARMACLOUD - NextCloud $orange
+set_terminal ; echo -en "$blue
+########################################################################################$orange
+                              PARMACLOUD - NextCloud $blue
 ########################################################################################
 
     NextCloud is:    $nextcloud_running
 
-$cyan
-                      pass)$orange        Show setup password
-$cyan
-                      reset)$orange       Reset a user account password
-$cyan
-                      start)$orange       Start NextCloud Docker container
-$cyan
-                      stop)$orange        Stop NextCloud Docker container
-$cyan
-                      refresh)$orange     Refresh info after any manual file changes
+$orange
+                      pass)$blue        Show setup password
+$orange
+                      reset)$blue       Reset a user account password
+$orange
+                      start)$blue       Start NextCloud Docker container
+$orange
+                      stop)$blue        Stop NextCloud Docker container
+$orange
+                      refresh)$blue     Refresh info after any manual file changes
                                    - Restarts container as well
-$cyan                      
-                      data)$orange        Information about data storage and backups
+$orange
+                      data)$blue        Information about data storage and backups
 
 
     ACCESS: $green
-            https://$IP:8020    $orange
+            https://$IP:8020    $blue
 
-    DATA DIRECTORY: $bright_blue
+    DATA DIRECTORY: $pink
     $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
-$orange   
+$blue
 ########################################################################################
 "
 choose "xpmq" ; read choice
