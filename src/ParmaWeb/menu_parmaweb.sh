@@ -179,7 +179,7 @@ echo -e "$blue
     "
 read databasepassword
 
-wpuser=$(mysql -u $databaseusername -p\"$databasepassword\" -e "
+wpuser=$(mysql -u $databaseusername -p"$databasepassword" -e "
 USE $databasename;
 SELECT ID, user_login FROM wp_users;"  | tail -n1 | awk '{print $2'})
 
