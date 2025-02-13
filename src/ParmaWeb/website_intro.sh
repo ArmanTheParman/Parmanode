@@ -8,15 +8,6 @@ $blue
     ParmaWeb is s tool to help you install a$green WordPress Server$blue from home or your VPS in
     an easy AF way.
 
-    Although Parmanode is Free Open Source Software, ParmaWeb is an add-on and is
-$red    not free$blue. You are free to try it, read the code, learn from it, but to USE it, 
-    the conditions are that you pay$green 75,000 sats$blue (once), if you can afford it, 
-    using this donation page:
-$orange
-        https://armantheparman.com/donations
-$blue
-    It's OK, I'm not going to hunt you down if you don't pay; honesty system.
-
     FYI, WordPress Servers are also known as LAMP or LEMP servers, and they're damn
     hard to install... I've made it easy for you though.
 
