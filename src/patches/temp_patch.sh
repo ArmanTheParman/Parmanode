@@ -81,7 +81,7 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
 fi
 
 if grep -q "nextcloud" $ic ; then
-    gsed -i 's/nextcloud/parmacloud/g' $ic >$dn 2>&1
+    gsed -i 's/nextcloud/parmacloud/g/' $ic >$dn 2>&1
 fi
 
 
