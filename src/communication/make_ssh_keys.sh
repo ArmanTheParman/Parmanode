@@ -22,3 +22,10 @@ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmaweb-key -N "" && return 0
 }
 
 
+function make_parmanas_ssh_keys {
+
+sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
+
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" && return 0
+}
+
