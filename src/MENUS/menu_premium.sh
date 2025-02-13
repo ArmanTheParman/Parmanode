@@ -3,7 +3,7 @@ while true ; do
 menu_add_source
 [[ ! -e $pp/parminer ]] && parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
-[[ ! -e $pp/parmacloud ]] && parmacloud="\n#$orange             cloud)$blue        ParmaCloud
+[[ ! -e $pp/parmacloud ]] && parmacloud="\n#$orange             cloud)$blue        ParmaCloud                                                 #
 #                                                                                      #"
 
 set_terminal
