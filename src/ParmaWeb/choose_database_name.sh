@@ -9,7 +9,9 @@ set_terminal ; echo -e "$blue
     website is stored is called 'website'. This may be a problem for people tinkering
     and installing more than one site on the same computer. In that case you can
     choose one of the following names - Parmanode will check they don't already
-    exists.
+    exists. Be warned setting up more than one website with Parmanode is not going
+    to run perfectly smoothly, more work needs to be done to make a multisites
+    system sufficiently robust.
 
                         d)$orange       website      $green(default) $blue
                         2)$orange       website2$blue

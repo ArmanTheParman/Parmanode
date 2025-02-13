@@ -86,7 +86,6 @@ $blue
                   dd)            $blue Delete database and create new                  $cyan
                   bk)            $blue Back up database                                $cyan   
                   rs)            $blue Restore backed up database                      $cyan   
- 
                  tor)            $blue Tor enable/disable      $W_tor                  $cyan
                  ssl)            $blue SSL enable/disable      $web_ssl_status_print   $cyan
 $blue
