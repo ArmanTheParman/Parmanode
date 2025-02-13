@@ -70,6 +70,7 @@ cloud)
 }
 for file in ./parmacloud/src/*.sh ; do source $file ; done
 install_nextcloud
+debug "pause"
 ;;
 
 pm)
