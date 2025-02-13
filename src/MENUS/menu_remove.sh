@@ -266,10 +266,10 @@ elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
 echo -e "#$cyan                            (litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                              #
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                             #
 #                                                                                      #"
 elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
-echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange       #
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange      #
 #                                                                                      #" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr                             #
