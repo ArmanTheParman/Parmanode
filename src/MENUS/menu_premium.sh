@@ -69,7 +69,7 @@ cloud)
     } #requires SSH key authority 
 }
 for file in $pp/parmacloud/src/*.sh ; do source $file ; done
-install_nextcloud
+install_parmacloud
 debug "pause"
 ;;
 
