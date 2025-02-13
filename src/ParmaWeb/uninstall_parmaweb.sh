@@ -1,4 +1,4 @@
-function uninstall_website {
+function uninstall_parmaweb {
 
 while true ; do
 set_terminal ; echo -e "$blue

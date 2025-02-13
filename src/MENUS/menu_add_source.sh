@@ -492,7 +492,7 @@ elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then
 website_p="#                                      WordPress Website (ParmaWeb)                    #"
 else
    #not installed
-website_n="#$cyan                            (ws)        $orange  Wordpress Website (ParmaWeb)                #"
+website_n="#$cyan                            (pw)        $orange  Wordpress Website (ParmaWeb)                #"
 fi
 
 #lnddocker

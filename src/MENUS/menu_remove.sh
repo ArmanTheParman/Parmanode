@@ -236,10 +236,10 @@ elif grep -q "thunderhub-start" $HOME/.parmanode/installed.conf ; then thunderhu
 echo -e "#$cyan                            (th)$orange               Thunderhub $red$blinkon(partial)$blinkoff$orange                   #
 #                                                                                      #" ; fi
 if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (ws)$orange               WordPress Website                      #
+echo -e "#$cyan                            (pw)$orange               WordPress Website (ParmaWeb)           #
 #                                                                                      #"
 elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=1
-echo -e "#$cyan                            (ws)$orange               WordPress Website $red$blinkon(partial)$blinkoff$orange            #
+echo -e "#$cyan                            (pw)$orange               WordPress Website $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
 if grep -q "lnddocker-end" $HOME/.parmanode/installed.conf ; then lnddockermenu=1
 echo -e "#$cyan                            (ld)$orange               LND (Docker)                           #
@@ -569,9 +569,9 @@ menu_main
 fi
 ;;
 
-ws)
+pw)
 if [[ $websitemenu == 1 ]] ; then
-uninstall_website
+uninstall_parmaweb
 menu_main
 fi
 ;;

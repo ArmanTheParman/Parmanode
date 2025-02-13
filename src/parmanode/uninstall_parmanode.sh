@@ -149,8 +149,8 @@ if grep -q "litd" $ic ; then
 uninstall_litd
 set_terminal
 fi
-if grep -q "website" $ic ; then
-uninstall_website
+if grep -q "parmaweb" $ic ; then
+uninstall_parmaweb
 set_terminal
 fi
 if grep -q "thunderhub" $ic ; then
