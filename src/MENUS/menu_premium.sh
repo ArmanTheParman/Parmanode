@@ -13,8 +13,8 @@ echo -en "$blue
 ########################################################################################
 # 
 #                                                                                      #$parminer
-#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #$parmacloud
-#                                                                                      #
+#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
+#                                                                                      #$parmacloud
 #$orange                rr)$blue        RAID - join drives together                                #
 #                                                                                      #
 ########################################################################################
