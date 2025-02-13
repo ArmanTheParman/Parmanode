@@ -14,10 +14,7 @@ echo -en "$blue
 ########################################################################################
 #$orange       THESE PROGRAMS ARE EXTRA FEATURES AVAILABLE FOR A FEE: CONACT PARMAN          $blue #
 ########################################################################################
-#                                                                                      #
-#                                                                                      #$parmanas
-#                                                                                      #$parminer
-#                                                                                      #$parmacloud
+#                                                                                      #$parmanas$parminer$parmacloud
 #$orange                rr)$blue        RAID - join drives together                                #
 #                                                                                      #
 #                                                                                      #
