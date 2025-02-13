@@ -130,7 +130,7 @@ q|Q) exit ;; ""|p|P) return 1 ;;
 *)
 yesorno_blue "Use $enter_cont?" || return 1
 parmanode_conf_remove "parmacloud_domain="
-parmanode_conf_add"parmacloud_domain=$enter_cont"
+parmanode_conf_add "parmacloud_domain=$enter_cont"
 ;;
 esac
 
