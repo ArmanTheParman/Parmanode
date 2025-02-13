@@ -29,7 +29,6 @@ if [[ -n $qbittorrent_n ]]     ; then echo -e  "$qbittorrent_n"; fi
 if [[ -n $torssh_n ]]          ; then echo -e  "$torssh_n"; fi
 if [[ -n $website_n ]]         ; then echo -e  "$website_n"; fi
 if [[ -n $nginx_n ]]           ; then echo -e  "$nginx_n"; fi
-if [[ -n $nextcloud_n ]]       ; then echo -e  "$nextcloud_n"; fi
 if [[ -n $X11_n ]]             ; then echo -e  "$X11_n"; fi
 if [[ -n $phoenix_n ]]             ; then echo -e  "$phoenix_n"; fi
 #if [[ -n $public_pool_n ]]     ; then echo -e  "$public_pool_n"; fi
@@ -52,7 +51,6 @@ if [[ -n $qbittorrent_i ]]     ; then echo -e  "$qbittorrent_i"; fi
 if [[ -n $torssh_i ]]          ; then echo -e  "$torssh_i"; fi
 if [[ -n $website_i ]]         ; then echo -e  "$website_i"; fi
 if [[ -n $nginx_i ]]           ; then echo -e  "$nginx_i"; fi
-if [[ -n $nextcloud_i ]]       ; then echo -e  "$nextcloud_i"; fi
 if [[ -n $X11_i ]]             ; then echo -e  "$X11_i"; fi
 if [[ -n $phoenix_i ]]           ; then echo -e  "$phoenix_i"; fi
 #if [[ -n $public_pool_i ]]   ; then echo -e  "$public_pool_i"; fi
@@ -75,7 +73,6 @@ if [[ -n $qbittorrent_p ]]     ; then echo  -e "$pink$qbittorrent_p$orange"; fi
 if [[ -n $torssh_p ]]          ; then echo  -e "$pink$torssh_p$orange"; fi
 if [[ -n $website_p ]]         ; then echo  -e "$pink$website_p$orange"; fi
 if [[ -n $nginx_p ]]           ; then echo  -e "$pink$nginx_p$orange"; fi
-if [[ -n $nextcloud_p ]]       ; then echo  -e "$pink$nextcloud_p$orange"; fi
 if [[ -n $X11_p ]]             ; then echo  -e "$pinkX11_p$orange"; fi
 if [[ -n $phoenix_p ]]           ; then echo  -e "$pink$phoenix_p$orange"; fi
 #if [[ -n $public_pool_p ]]     ; then echo -e "$pink$public_pool_p$orange"; fi
@@ -210,26 +207,7 @@ pnostr)
     fi
     ;;
 
-next)
-    [[ ! -e $dp/.parmacloud_enabled ]] && announce "
-    This is not a free part of Parmanode.
 
-    With NextCloud, your machine can host your files like a Google Drive server,
-    and you can access them from anywhere via your preferred domain name.    
-
-    Contact Parman for set up. Fee is \$US400." && continue 
-
-    if [[ -n $nextcloud_n ]] ; then
-    git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
-        enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
-    debug 1
-    for file in ./parmacloud/src/*.sh ; do source $file ; done
-    debug 2
-    install_nextcloud
-    debug 3
-    return 0
-    fi
-    ;;
 
 x11|X11)
     if [[ -n $X11_n ]] ; then

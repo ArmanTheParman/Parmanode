@@ -3,16 +3,20 @@ while true ; do
 menu_add_source
 [[ -e $pp/parminer ]] && parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
+[[ -e $pp/parmacloud ]] && parmacloud="\n#$orange         cloud)$blue        ParmaCloud
+#                                                                                      #"
+
 set_terminal
 echo -en "$blue
 ########################################################################################
 #                                                                                      #
-#    P A R M A N O D E --> Main Menu --> Install Menu  -->$cyan Premium      $blue               #
+#$orange    P A R M A N O D E --> Main Menu --> Install Menu  --> Premium      $blue               #
 #                                                                                      #
+#$orange       THESE PROGRAMS ARE EXTRA FEATURES AVAILABLE FOR A FEE: CONACT PARMAN          $blue #
 ########################################################################################
-#                                                                                      #
+# 
 #                                                                                      #$parminer
-#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
+#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #$parmacloud
 #                                                                                      #
 #$orange                rr)$blue        RAID - join drives together                                #
 #                                                                                      #
@@ -51,7 +55,14 @@ $blue
     fi
 
     $pp/parmanas/run_parmanas.sh
+;;
+cloud)
+  [[ ! -e $dp/.parmacloud_enabled ]] && announce "
 
+    With NextCloud, your machine can host your files like a Google Drive server,
+    and you can access them from anywhere via your preferred domain name.    
+
+    Contact Parman for set up. Fee is \$US400." && continue 
 ;;
 
 pm)
@@ -69,3 +80,17 @@ done
 return 0
 
 }
+next)
+
+
+    if [[ -n $nextcloud_n ]] ; then
+    git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
+        enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
+    debug 1
+    for file in ./parmacloud/src/*.sh ; do source $file ; done
+    debug 2
+    install_nextcloud
+    debug 3
+    return 0
+    fi
+    ;;
