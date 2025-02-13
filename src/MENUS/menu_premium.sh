@@ -33,14 +33,14 @@ rr)
 
 pnas)
     [[ ! -e $dp/.parmanas_enabled ]] && {
-    announce "ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
+    announce "${blue}ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
 
     It comes with all purchased fully-synced ParmanodL laptops and ParmaCloud machines 
     (16TB self-hosted cloud data + Parmanode Bitcoin Node.)
 
     Contact Parman for more info, or see...
-$blue    
-    https://parmanode.com/parmanodl$orange"
+$green
+    https://parmanode.com/parmanodl$blue"
 
     continue
     }
@@ -56,12 +56,12 @@ $blue
     $pp/parmanas/run_parmanas.sh
 ;;
 cloud)
-  [[ ! -e $dp/.parmacloud_enabled ]] && announce "
+  [[ ! -e $dp/.parmacloud_enabled ]] && announce "$blue
 
     With NextCloud, your machine can host your files like a Google Drive server,
     and you can access them from anywhere via your preferred domain name.    
 
-    Contact Parman for set up. Fee is \$US400." && continue 
+    Contact Parman for set up. Fee is \$US400.$blue" && continue 
 
 [[ ! -e $pp/parmacloud ]] && { 
     git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
