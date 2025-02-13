@@ -91,6 +91,8 @@ web)
     
     Contact Parman for setup. Fee is \$500 USD." && continue
 
+make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
+
 ! grep -q "website-end" $ic 2>$dn && {
 
     git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb || {
