@@ -83,6 +83,7 @@ $blue
                    i)            $blue Educational info ...                            $cyan
                  max)            $blue How up increase upload file size ...            $cyan
                  dom)            $blue Add/Change domain name                          $cyan
+                pass)            $blue Reset password                                  $cyan
                   dd)            $blue Delete database and create new                  $cyan
                   bk)            $blue Back up database                                $cyan   
                   rs)            $blue Restore backed up database                      $cyan   
@@ -150,9 +151,52 @@ rs)
 restore_website_database || return 1 
 success "Database restored"
 ;;
-
+pass)
+wp_password_reset
+;;
 *)
 invalid ;;
 esac
 done
 }
+
+
+function wp_password_reset {
+
+announce "The database username and password (in parmanode.conf) is needed to
+    change the Wordpress login password."
+
+echo -e "$blue
+    Please enter the database username (default is parmanode)
+    "
+read databaseusername
+echo -e "$blue
+    Please enter the database name (probably website, or website2, or website3 etc)
+    "
+read databasename
+echo -e "$blue
+    You will be asked for you database password next. 
+    "
+enter_continue
+
+wpuser=$(mysql -u $databaseusername -p -e "
+USE $databasename;
+SELECT ID, user_login FROM wp_users;"  | tail -n1 | awk '{print $2'})
+
+echo -e "${blue}Now please enter a new password you'd like for user: $wpuser
+    You won't see your keystrokes on screen, and you will not be asked
+    to confirm your password."
+read -s newpassword
+
+echo -e "${blue}Now your database password again (the one stored in parmanode.conf)
+...
+"
+
+mysql -u $databaseusername -p -e "USE $databasename;
+UPDATE wp_users SET user_pass = MD5('$newpassword') WHERE user_login = '$databaseusername';" && {
+    success_blue "Password reset"
+    }
+
+}
+
+
