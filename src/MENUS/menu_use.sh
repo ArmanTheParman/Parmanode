@@ -22,7 +22,7 @@ echo -e "
 "
 if [[ -e $pp/parmanas ]] ; then
                        echo -e "                   $cyan       (pnas)$orange       ParMiner
-                            " ; parmanasapp=1 fi
+                            " ; parmanasapp=1 ; fi
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$orange         ParMiner
                             " ; parminerapp=1 ; fi
