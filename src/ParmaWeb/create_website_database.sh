@@ -43,5 +43,8 @@ break
 done
 parmanode_conf_add "${website}_database_user=parmanode"
 parmanode_conf_add "${website}_database_password=$password"
-sudo mysql -u root -p -e "CREATE DATABASE $website; CREATE USER IF NOT EXISTS \"parmanode\"@'localhost' IDENTIFIED BY \"$password\"; GRANT ALL PRIVILEGES ON $website.* TO \"parmanode\"@\"localhost\"; FLUSH PRIVILEGES;" || enter_continue
+sudo mysql -u root -p -e "CREATE DATABASE $website;
+CREATE USER IF NOT EXISTS \"parmanode\"@'localhost' IDENTIFIED BY \"$password\";
+GRANT ALL PRIVILEGES ON $website.* TO 'parmanode'@'localhost';
+FLUSH PRIVILEGES;" || enter_continue
 }
