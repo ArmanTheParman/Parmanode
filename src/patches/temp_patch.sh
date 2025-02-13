@@ -80,6 +80,11 @@ if [[ -e $HOME/.lnd/lnd.conf ]] && ! grep -q "version 3.47.4" $HOME/.lnd/lnd.con
     sudo gsed -i 's/^; LND.*from version.*$/; LND conf configuration, message added by Parmanode, from version 3.47.4/' $HOME/.lnd/lnd.conf >$dn 2>&1
 fi
 
+if grep -q "nextcloud" $ic ; then
+    gsed -i 's/nextcloud/parmacloud/g' $ic >$dn 2>&1
+fi
+
+
 debug temppatchend
 }
 
