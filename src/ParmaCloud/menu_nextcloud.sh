@@ -94,13 +94,13 @@ done
 
 
 function nextcloud_password_reset {
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Please type the username for which you'd like to reset the password, eg 'admin'
 
 ########################################################################################
-"
+$orange"
 read user
 docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" && success "Password change done."
 }

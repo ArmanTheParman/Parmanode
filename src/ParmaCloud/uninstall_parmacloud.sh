@@ -1,10 +1,10 @@
 function uninstall_parmacloud {
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-$cyan
-                        Uninstall ParmaCloud (NextCloud)?
 $orange
+                        Uninstall ParmaCloud (NextCloud)?
+$blue
     Are you sure? (y) (n)
 
 ########################################################################################
@@ -23,16 +23,16 @@ docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
 docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud)
 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Do you want to remove the NextCloud Docker images as well? It can save some
     data.
-
+$red
                             d)    delete them
-
+$green
                             l)    Leave them
-
+$blue
 ########################################################################################
 "
 choose xpmq ; read choice 
