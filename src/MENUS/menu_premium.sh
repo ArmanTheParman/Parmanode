@@ -1,9 +1,12 @@
 function menu_premium {
 while true ; do
+unset parminer parmacloud parmanas
 menu_add_source
 [[ ! -e $pp/parminer ]] && parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
 [[ ! -e $pp/parmacloud ]] && parmacloud="\n#$orange             cloud)$blue        ParmaCloud                                                 #
+#                                                                                      #"
+[[ ! -e $pp/parmanas ]] && parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #"
 
 set_terminal
@@ -12,8 +15,8 @@ echo -en "$blue
 #$orange       THESE PROGRAMS ARE EXTRA FEATURES AVAILABLE FOR A FEE: CONACT PARMAN          $blue #
 ########################################################################################
 #                                                                                      #
+#                                                                                      #$parmanas
 #                                                                                      #$parminer
-#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #$parmacloud
 #$orange                rr)$blue        RAID - join drives together                                #
 #                                                                                      #
