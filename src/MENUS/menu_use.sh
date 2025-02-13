@@ -26,6 +26,9 @@ if [[ -e $pp/parmanas ]] ; then
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$blue         ParMiner$orange
                             " ; parminerapp=1 ; fi
+if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
+                       echo -e "                        $cyan  (next)$blue       NextCloud$orange
+                            " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
                             " ; fi
@@ -141,9 +144,6 @@ if grep -q "litd-end" $HOME/.parmanode/installed.conf ; then litdapp=1
                        echo -e "                        $cyan  (litd)$orange       LITD
                        "
                        echo -e "                        $cyan  (lt)$orange         Lightning Terminal
-                            " ; fi
-if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
-                       echo -e "                        $cyan  (next)$orange       NextCloud
                             " ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrapp=1
                        echo -e "                        $cyan  (pnostr)$orange     ParmaNostr 
