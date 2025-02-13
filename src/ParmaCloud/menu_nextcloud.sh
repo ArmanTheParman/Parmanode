@@ -1,6 +1,12 @@
 function menu_parmacloud {
 if ! grep -q "parmacloud-end" $ic ; then return 0 ; fi
+
 while true ; do 
+
+if ! grep -q parmacloud_domain $pc ; then
+parmanode_conf_add "parmacloud_domain=yourchoice.parmacloud.com"
+fi
+
 unset nextcloud_running
 source $pc
 if docker ps | grep -q nextcloud ; then
@@ -42,6 +48,9 @@ $orange
 
     ACCESS FOR INITIAL SETUP: $green
             http://$IP:8020    $blue
+    
+    REGULAR ACCESS: $pink
+            https://$parmacloud_domain $orange   mod)$blue   Modify domain
 
     DATA DIRECTORY: $pink
     $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
@@ -84,6 +93,11 @@ nextcloud_storage_info
 reset)
 nextcloud_password_reset
 ;;
+
+mod)
+parmacloud_modify_domain
+;;
+
 *)
 invalid
 ;;
@@ -103,4 +117,21 @@ set_terminal ; echo -e "$blue
 $orange"
 read user
 docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" && success "Password change done."
+}
+
+function parmacloud_modify_domain {
+announce_blue "This is only to make the menu screen appear accurate.
+    Changeing domain routing is done outsite of Parmanode.
+    Please type in your preferred domain, eg mycloudserver.com,
+    do not enter the https prefix. Or hit <enter> alone to abort."
+
+case $enter_cont in
+q|Q) exit ;; ""|p|P) return 1 ;;
+*)
+yesorno "Use $enter_cont?" || return 1
+parmanode_conf_remove "parmacloud_domain="
+parmanode_conf_add"parmacloud_domain=$enter_cont"
+;;
+esac
+
 }
