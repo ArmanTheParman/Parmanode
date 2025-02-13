@@ -82,15 +82,3 @@ return 0
 }
 next)
 
-
-    if [[ -n $nextcloud_n ]] ; then
-    git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
-        enter_continue "Something went wrong" ; continue ; } #requires SSH key authority 
-    debug 1
-    for file in ./parmacloud/src/*.sh ; do source $file ; done
-    debug 2
-    install_nextcloud
-    debug 3
-    return 0
-    fi
-    ;;
