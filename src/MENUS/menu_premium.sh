@@ -81,6 +81,30 @@ pm)
 get_parminer
 ;;
 
+web)
+[[ ! -e $dp/.parmaweb_endabled ]] && announce_blue "
+    With Parmaweb, you can host your own WordPress Server (Linux Only)
+    with a database configured, help with reverse proxying if you need it
+    and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
+    
+    Contact Parman for setup. Fee is \$500USD." && continue
+
+! grep -q "website-end" $ic 2>$dn && {
+
+    git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb || {
+        enter_continue "Something went wrong" ; continue 
+    } #requires SSH key authority
+    
+    for file in $pp/parmaweb/src/*.sh ; do
+    source $file
+    done
+
+    install_website
+    return 0
+    fi
+}
+
+;;
 
 *)
     invalid
@@ -92,24 +116,3 @@ done
 return 0
 
 }
-
-# ws)
-#     [[ ! -e $dp/.parmaweb_endabled ]] && announce_blue "
-#     With Parmaweb, you can host your own WordPress Server (Linux Only)
-#     with a database configured, help with reverse proxying if you need it
-#     and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
-    
-#     Contact Parman for setup. Fee is \$500USD." && continue
-
-#     if [[ -n $website_n ]] ; then
-#     git clone git@github.com:armantheparman/parmaweb.git $pp/parmaweb || {
-#         enter_continue "Something went wrong" ; continue ; } #requires SSH key authority
-    
-#     for file in $pp/parmaweb/src/*.sh ; do
-#     source $file
-#     done
-
-#     install_website
-#     return 0
-#     fi
-#     ;;
