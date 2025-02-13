@@ -60,6 +60,14 @@ cloud)
     and you can access them from anywhere via your preferred domain name.    
 
     Contact Parman for set up. Fee is \$US400." && continue 
+
+[[ ! -e $pp/parmacloud ]] && { 
+    git clone git@github.com:armantheparman/parmacloud.git $pp/parmacloud || {
+        enter_continue "Something went wrong" ; continue ; 
+    } #requires SSH key authority 
+}
+for file in ./parmacloud/src/*.sh ; do source $file ; done
+install_nextcloud
 ;;
 
 pm)
@@ -77,3 +85,4 @@ done
 return 0
 
 }
+
