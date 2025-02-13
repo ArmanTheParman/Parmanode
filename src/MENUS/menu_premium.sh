@@ -2,13 +2,13 @@ function menu_premium {
 while true ; do
 unset parminer parmacloud parmanas
 menu_add_source
-[[ ! -e $pp/parminer ]] && parminer="\n#$orange                pm)$blue        ParMiner                                                   #
+[[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
-[[ ! -e $pp/parmacloud ]] && parmacloud="\n#$orange             cloud)$blue        ParmaCloud                                                 #
+[[ ! -e $pp/parmacloud ]] &&      parmacloud="\n#$orange             cloud)$blue        ParmaCloud                                                 #
 #                                                                                      #"
-[[ ! -e $pp/parmanas ]] && parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
+[[ ! -e $pp/parmanas ]] &&          parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #"
-! grep -q "website-" $ic 2>$dn && parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
+! grep -q "website-" $ic 2>$dn &&   parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
 #                                                                                      #"
 
 
