@@ -551,13 +551,13 @@ fi
 unset nextcloud_i nextcloud_p next_cloud_n
 if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then 
   #installed
-nextcloud_i="#$blue                                      NextCloud                                       $orange#"
+nextcloud_i="#$blue                                      ParmaCloud                                      $orange#"
 elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then 
    #partially installed
-nextcloud_p="#$blue                                      NextCloud                                       $orange#"
+nextcloud_p="#$blue                                      ParmaCloud                                      $orange#"
 else
    #not installed
-nextcloud_n="#$cyan                            (next)      $blue  NextCloud                                   $orange#"
+nextcloud_n="#$cyan                            (cloud)      $blue ParmaCloud                                  $orange#"
 fi
 
 #parmanostr

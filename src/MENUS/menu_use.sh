@@ -7,7 +7,7 @@ unset bitcoinapp fulcrumapp fulcrumdkrapp btcpayapp torapp lndapp sparrowapp rtl
 unset torserverapp specterapp btcrpcexplorerapp electrsapp lnbitsapp trezorapp bitboxapp
 unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
-unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp nextcloudapp
+unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp parmacloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
 unset parminerapp parmanasapp
 set_terminal_custom 48
@@ -26,8 +26,8 @@ if [[ -e $pp/parmanas ]] ; then
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$blue         ParMiner$orange
                             " ; parminerapp=1 ; fi
-if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudapp=1
-                       echo -e "                        $cyan  (next)$blue       NextCloud$orange
+if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudapp=1
+                       echo -e "                        $cyan  (cloud)$blue      ParmaCloud$orange
                             " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
@@ -456,13 +456,6 @@ lt)
    else invalid
    fi
    ;;
-next) 
-   if [[ $nextcloudapp == 1 ]] ; then
-   menu_nextcloud
-   if [[ -n $1 ]] ; then clear ; return 0 ; fi
-   else invalid
-   fi
-   ;;
 pnostr) 
    if [[ $parmanostrapp == 1 ]] ; then
    menu_parmanostr
@@ -542,6 +535,14 @@ if [[ -n $1 ]] ; then clear ; return 0 ; fi
 else invalid
 fi
 ;;
+
+cloud) 
+   if [[ $parmacloudapp == 1 ]] ; then
+   menu_nextcloud
+   if [[ -n $1 ]] ; then clear ; return 0 ; fi
+   else invalid
+   fi
+   ;;
 
 *)
    invalid

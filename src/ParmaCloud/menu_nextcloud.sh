@@ -1,5 +1,5 @@
-function menu_nextcloud {
-if ! grep -q "nextcloud-end" $ic ; then return 0 ; fi
+function menu_parmacloud {
+if ! grep -q "parmacloud-end" $ic ; then return 0 ; fi
 while true ; do 
 unset nextcloud_running
 source $pc
@@ -20,10 +20,10 @@ fi
 
 set_terminal ; echo -en "
 ########################################################################################$cyan
-                                N E X T C L O U D $orange
+                              PARMACLOUD - NextCloud $orange
 ########################################################################################
 
-    Nextcloud is:    $nextcloud_running
+    NextCloud is:    $nextcloud_running
 
 $cyan
                       pass)$orange        Show setup password

@@ -1,9 +1,9 @@
-function uninstall_nextcloud {
+function uninstall_parmacloud {
 while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 $cyan
-                                 Uninstall NextCloud?
+                        Uninstall ParmaCloud (NextCloud)?
 $orange
     Are you sure? (y) (n)
 
@@ -52,7 +52,7 @@ invalid
 esac
 done
 
-installed_config_remove "nextcloud"
-parmanode_conf_remove "nextcloud"
-success "NextCloud has been uninstalled"
+installed_config_remove "parmacloud"
+parmanode_conf_remove "parmacloud"
+success "ParmaCloud (NextCloud) has been uninstalled"
 }

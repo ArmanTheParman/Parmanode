@@ -15,7 +15,7 @@ unset sparrowmenu rtlmenu electrummenu torservermenu btcTORmenu spectermenu btcr
 unset electrsmenu trezormenu ledgermenu bitboxmenu parmashellmenu bredockermenu parmaboxmenu
 unset anydeskmenu piholemenu torrelaymenu electrskdmenu piappsmenu torbmenu electrs2menu electrsdkr2menu
 unset public_poolmenu electrumxmenu thunderhubmenu lnddockermenu nginxmenu nostrrelaymenu litdmenu
-unset nextcloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu
+unset parmacloudmenu parmanostrmenu btcrecovermenu joinmarketmenu greenmenu X11menu
 
 echo -e "
 ########################################################################################
@@ -265,11 +265,11 @@ echo -e "#$cyan                            (litd)$orange             LIDT       
 elif grep -q "litd-start" $HOME/.parmanode/installed.conf ; then litdmenu=1
 echo -e "#$cyan                            (litd)$orange             LITD              $red$blinkon(partial)$blinkoff$orange            #
 #                                                                                      #" ; fi
-if grep -q "nextcloud-end" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
-echo -e "#$cyan                            (next)$orange             NextCloud                              #
+if grep -q "parmacloud-end" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange                              #
 #                                                                                      #"
-elif grep -q "nextcloud-start" $HOME/.parmanode/installed.conf ; then nextcloudmenu=1
-echo -e "#$cyan                            (next)$orange             NextCloud              $red$blinkon(partial)$blinkoff$orange       #
+elif grep -q "parmacloud-start" $HOME/.parmanode/installed.conf ; then parmacloudmenu=1
+echo -e "#$cyan                            (cloud)$blue            ParmaCloud$orange              $red$blinkon(partial)$blinkoff$orange       #
 #                                                                                      #" ; fi
 if grep -q "parmanostr-end" $HOME/.parmanode/installed.conf ; then parmanostrmenu=1
 echo -e "#$cyan                            (pnostr)$orange           Parmanostr                             #
@@ -598,9 +598,9 @@ menu_main
 fi
 ;;
 
-next)
-if [[ $nextcloudmenu == 1 ]] ; then
-uninstall_nextcloud
+cloud)
+if [[ $parmacloudmenu == 1 ]] ; then
+uninstall_parmacloud
 menu_main
 fi
 ;;
