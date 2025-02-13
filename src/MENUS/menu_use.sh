@@ -9,6 +9,7 @@ unset ledgerapp parmashellapp parmaboxapp anydeskapp piholeapp torrelayapp
 unset electrsdkrapp electrsdkr2app torbapp qbittorrentapp mempoolapp torsshapp public_poolapp
 unset electrumxapp thunderhubapp websiteapp lnddockerapp nostrrelay litdapp nextcloudapp
 unset parmanostrapp btcrecoverapp joinmarketapp greenapp parman_booksapp X11app phoenixapp
+unset parminerapp parmanasapp
 set_terminal_custom 48
 echo -e "
 ########################################################################################
@@ -19,9 +20,12 @@ echo -e "
 
 
 "
+if [[ -e $pp/parmanas ]] ; then
+                       echo -e "                   $cyan       (pnas)$orange       ParMiner
+                            " ; parmanasapp=1 fi
 if [[ -e $pp/parminer ]] ; then 
                        echo -e "                   $cyan       (pm)$orange         ParMiner
-                            " ; fi
+                            " ; parminerapp=1 ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
                             " ; fi
@@ -520,7 +524,17 @@ fi
 ;;
 
 pm)
+if [[ $parminerapp == 1 ]] ; then
 $pp/parminer/run_parminer.sh
+else invalid
+fi
+;;
+
+pnas)
+if [[ $parmanasapp == 1 ]] ; then
+$pp/parmanas/run_parmanas.sh
+else invalid
+fi
 ;;
 
 *)
