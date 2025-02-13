@@ -42,8 +42,6 @@ debug "printed colours" "silent"
 
 test_standard_install
 
-set_terminal
-
 #drive structure
 make_home_parmanode 
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
@@ -68,11 +66,6 @@ fi
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
-########################################################################################
-#Intro
-########################################################################################
-set_terminal # custom function for screen size and colour.
-# argument "m" sets skip_intro to true in parman_variables
 
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then

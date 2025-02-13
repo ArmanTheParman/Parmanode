@@ -1,12 +1,9 @@
 function set_terminal {
 # sets terminal size
 while true ; do
-read -p 1
 
 [[ -n $2 ]] && {
-read -p "n 2"
 printf "\033[8;%s;%st" $1 $2
-read -p Pause
 break
 }
 
@@ -18,9 +15,7 @@ break
 }
 
 [[ -z $1 ]] && {
-    read -p "z1"
 printf "\033[8;38;88t"   
-read -p "pause"
 break
 }
 break
@@ -32,7 +27,6 @@ echo -e "$orange" #Orange colour setting.
 
 tput clear
 
-read -p "after tput"
 
 return 0
 
