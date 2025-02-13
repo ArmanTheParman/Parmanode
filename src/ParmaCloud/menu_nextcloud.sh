@@ -116,7 +116,8 @@ set_terminal ; echo -e "$blue
 ########################################################################################
 $orange"
 read user
-docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" && success "Password change done."
+docker exec -it nextcloud-aio-nextcloud bash -c "sudo -u www-data php /var/www/html/occ user:resetpassword $user" || { enter_continue "some error" ; return 1 ; }
+success "Password change done." 
 }
 
 function parmacloud_modify_domain {
