@@ -1,6 +1,8 @@
 function menu_premium {
 while true ; do
 menu_add_source
+[[ -e $pp/parminer ]] && parminer="\n#$orange                pm)$blue        ParMiner                                                   #
+#                                                                                      #"
 set_terminal
 echo -en "$blue
 ########################################################################################
@@ -9,9 +11,7 @@ echo -en "$blue
 #                                                                                      #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #
-#$orange                pm)$blue        ParMiner                                                   #
-#                                                                                      #
+#                                                                                      #$parminer
 #$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #
 #$orange                rr)$blue        RAID - join drives together                                #
