@@ -21,10 +21,10 @@ echo -e "
 
 "
 if [[ -e $pp/parmanas ]] ; then
-                       echo -e "                   $cyan       (pnas)$orange       ParaNas
+                       echo -e "                   $cyan       (pnas)$blue       ParaNas$orange
                             " ; parmanasapp=1 ; fi
 if [[ -e $pp/parminer ]] ; then 
-                       echo -e "                   $cyan       (pm)$orange         ParMiner
+                       echo -e "                   $cyan       (pm)$blue         ParMiner$orange
                             " ; parminerapp=1 ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
