@@ -87,7 +87,7 @@ web)
     with a database configured, help with reverse proxying if you need it
     and free domain name (or buy your own)$orange yourchoice.parmacloud.com$blue
     
-    Contact Parman for setup. Fee is \$500USD." && continue
+    Contact Parman for setup. Fee is \$500 USD." && continue
 
 ! grep -q "website-end" $ic 2>$dn && {
 
