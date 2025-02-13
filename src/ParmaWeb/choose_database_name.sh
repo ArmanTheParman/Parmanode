@@ -12,14 +12,14 @@ set_terminal ; echo -e "$blue
     exists.
 
                         d)$orange       website      $green(default) $blue
-                        2)$orange       website2
-                        3)$orange       website3
-                        4)$orange       website4
-                        5)$orange       website5
-                        6)$orange       website6
-                        7)$orange       website7
-                        8)$orange       website8
-                        9)$orange       website9
+                        2)$orange       website2$blue
+                        3)$orange       website3$blue
+                        4)$orange       website4$blue
+                        5)$orange       website5$blue
+                        6)$orange       website6$blue
+                        7)$orange       website7$blue
+                        8)$orange       website8$blue
+                        9)$orange       website9$blue
 
 
 ########################################################################################
