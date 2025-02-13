@@ -39,7 +39,7 @@ if [[ $OS == Linux && -e /etc/tor/torrc ]] ; then
 fi
 
 if [[ -n $domain_name ]] ; then
-domain_name_text="
+domain_name_text="$pink
         Domain Name:             $orang $domain_name$blue
 "
 else
