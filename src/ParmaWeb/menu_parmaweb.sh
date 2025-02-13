@@ -88,6 +88,8 @@ $blue
                   rs)            $blue Restore backed up database                      $cyan   
                  tor)            $blue Tor enable/disable      $W_tor                  $cyan
                  ssl)            $blue SSL enable/disable      $web_ssl_status_print   $cyan
+                rphp)            $blue Restart php (troubleshoot)$cyan
+                nlog)            $blue Viw nginx error log$cyan
 $blue
 ########################################################################################
 "
@@ -151,6 +153,12 @@ success "Database restored"
 ;;
 pass)
 wp_password_reset
+;;
+rphp)
+sudo systemctl restart php*
+;;
+nlog)
+sudo less /var/log/nginx/error.log
 ;;
 *)
 invalid ;;
