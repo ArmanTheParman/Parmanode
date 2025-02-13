@@ -98,7 +98,7 @@ done
 yesorno_blue "About to delete the database $website" || return 0
 sudo mysql -u root -p -e "DROP DATABASE $website;" || enter_continue
 
-
+sudo rm -rf $pp/parmaweb
 sudo rm -rf /etc/nginx/conf.d/$website* >$dn 2>&1
 sudo rm -rf /etc/nginx/conf.d/$domain_name.conf >$dn 2>&1
 sudo rm -rf /etc/letsencrypt/live/$domain_name >$dn 2>&1
