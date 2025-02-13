@@ -14,7 +14,7 @@ if [[ -n $domain || -n $domain_name ]] ; then
     local server_name="server_name $domain_name $www_name;"
     fi
 
-    if [[ -n $domain ]] ; then
+    if [[ -n $domain && -z $domain_name ]] ; then
     local server_name="server_name $domain;"
     fi
 
