@@ -258,7 +258,7 @@ enter_continue
 ;;
 cbt)
 clear
-systemctl list-timers | grep certbot
+sudo systemctl list-timers | grep certbot
 enter_continue
 ;;
 *)
