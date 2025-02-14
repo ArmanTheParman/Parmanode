@@ -5,7 +5,11 @@ function install_bitcoin {
 
 #set compile to false, and make true later depending on choices
 export bitcoin_compile="false"
-export version="28.1"
+
+if [[ $version != "self" ]] ; then
+    export version="28.1"
+fi
+
 if [[ $btcpay_combo == "true" ]] ; then
 export btcdockerchoice="yes"
 else
@@ -55,7 +59,7 @@ debug "after format_ext_drive"
 
 #Just in case (redundant permission setting)
 
-if [[ $version == self ]] ; then break ; fi
+if [[ $version == "self" ]] ; then break ; fi
 
 if [[ $OS == "Linux" && $drive == "external" ]] ; then
     sudo chown -R $USER /media/$USER/parmanode >$dn 2>&1 \
