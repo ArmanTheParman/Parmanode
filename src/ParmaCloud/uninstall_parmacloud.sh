@@ -73,6 +73,5 @@ rm -rf $pp/parmacloud
 
 installed_conf_remove "parmacloud"
 parmanode_conf_remove "parmacloud"
-bluesuccesscolour="true"
-success "ParmaCloud (NextCloud) has been uninstalled"
+success_blue "ParmaCloud (NextCloud) has been uninstalled"
 }
