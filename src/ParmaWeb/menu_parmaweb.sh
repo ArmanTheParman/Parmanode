@@ -52,7 +52,7 @@ else
 unset tor_menu
 fi
 debug "pause before set terminal"
-set_terminal_custom 48 ; echo -ne "$blue
+set_terminal 48 88 ; echo -ne "$blue
 ########################################################################################$orange
 
                                   WORDPRESS WEBSITE $blue
@@ -214,26 +214,14 @@ success "Password reset"
 
 function menu_parmaweb2 {
 while true ; do
-set_terminal_custom 45 ; echo -ne "$blue
+set_terminal 38 88 ; echo -ne "$blue
 ########################################################################################$orange
 
-                                  WORDPRESS WEBSITE $blue
+                            WORDPRESS WEBSITE (PAGE 2)$blue
 
 ########################################################################################
         $domain_name_text
 $tor_menu                      
-
-$yellow        To initialise:       $blue     $http://$domain_name/myphpadmin
-$yellow        Database's name:     $blue     website (or website1, website2 etc)
-$yellow        Database username:   $blue     parmanode
-$yellow        Wordpress login:     $blue     $http://$domain_name/wp-admin
-$yellow        Info Page:           $blue     $http://$domain_name/info.php
-
-----------------------------------------------------------------------------------------
-
-$yellow        Website data location: $blue   /var/www/website
-$yellow        Data file permissions: $blue   user=www-data ; group=www-data
-$yellow        Nginx configuration:   $blue   /etc/nginx/conf.d/website.conf
 
 $yellow        TCP Port (http):          ${green}80
 $yellow        SSL port (https):         ${green}$website_ssl_port 
@@ -255,11 +243,13 @@ cdr)
 clear
 sudo certbot renew --dry-run
 enter_continue
+return 0
 ;;
 cbt)
 clear
 sudo systemctl list-timers | grep certbot
 enter_continue
+return 0
 ;;
 *)
 invalid ;;
