@@ -32,7 +32,7 @@ elif grep -q "website-start" $HOME/.parmanode/installed.conf ; then websitemenu=
 echo -e "#$cyan                            (pw)$blue               WordPress Website $red$blinkon(partial)$blinkoff$blue            #
 #                                                                                      #" ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
-echo -e "#$cyan                            (bitcoin)$orange$orange          Bitcoin Core                           #
+echo -e "#$cyan                            (bitcoin)$orange$orange          Bitcoin                                #
 #                                                                                      #"
 elif grep -q "bitcoin-start" $HOME/.parmanode/installed.conf ; then bitcoinmenu=1
 echo -e "#$cyan                            (bitcoin)$orange          Bitcoin $red$blinkon(partial)$blinkoff$orange                      #

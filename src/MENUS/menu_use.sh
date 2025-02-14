@@ -36,7 +36,7 @@ if grep -q "/dev/md" $ic ; then raidapp=1
                        echo -e "                   $cyan       (rr)$orange         RAID 
                             " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
-                       echo -e "                        $cyan  (b)$orange          Bitcoin Core
+                       echo -e "                        $cyan  (b)$orange          Bitcoin
                             " ; fi
 if grep -q "fulcrum-end" $HOME/.parmanode/installed.conf ; then fulcrumapp=1
                        echo -e "                        $cyan  (f)$orange          Fulcrum (an Electrum Server)

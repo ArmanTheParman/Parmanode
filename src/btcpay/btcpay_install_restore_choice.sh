@@ -9,7 +9,7 @@ $orange
 
 
     BTCPay Server is a self-hosted, open-source bitcoin payment processor. It will
-    connect to your own Bitcoin Core node and LND node.
+    connect to your own Bitcoin node and LND node.
 
     Please be aware that if this is the first time installing BTCPay on this computer,
     it make take a while as it compiles from source within a Docker Container. If you

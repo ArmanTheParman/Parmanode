@@ -12,7 +12,7 @@ echo -e "
       $cyan                               
                                      PRUNING
 $orange
-    Bitcoin core needs about 1Tb of free data, either on an external drive or 
+    Bitcoin needs about 1Tb of free data, either on an external drive or 
     internal drive (500 Gb approx for the current blockchain, plus another 500 Gb for 
     future blocks).
 
@@ -109,7 +109,7 @@ if [[ $prune_value =~ ^[0-9]+$ ]] ; then true ; else echo -e "Invalid entry. Hit
                                     # Anything below 50000 is ok (my somewhat arbitary cap). 
                                     # Even if zero is selected, it's fine as that turns 
                                     # pruning off. #Values entered below 550 are set at 
-                                    # a minimum value of 550 by Bitcoin core.
+                                    # a minimum value of 550 by Bitcoin.
                                     
 if (( $prune_value <= 50000 )) ; then break ; else echo -e "Number not in range. Hit$cyan <enter>$orange to try again." ; read ; continue ; fi
 done

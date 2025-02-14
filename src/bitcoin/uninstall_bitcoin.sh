@@ -20,7 +20,7 @@ set_terminal
 echo -e "
 ########################################################################################
 $cyan
-                         Bitcoin Core will be uninstalled
+                         Bitcoin will be uninstalled
 
 $red
     Are you sure, UNINSTALL BITCOIN?  (y or n)
@@ -38,7 +38,7 @@ q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;; y) break ;; n) return 1 ;; *) i
 esac
 done
 fi
-#Break point. Proceed to uninstall Bitcoin Core.
+#Break point. Proceed to uninstall Bitcoin.
 
 if [[ $combo == "true" ]] ; then
 while true
@@ -47,7 +47,7 @@ set_terminal
 echo -e "
 ########################################################################################
 
-               Both$cyan Bitcoin Core$orange and$green BTCPay Server$orange will be uninstalled 
+               Both$cyan Bitcoin$orange and$green BTCPay Server$orange will be uninstalled 
 $red
     Are you sure?
 $orange
@@ -61,7 +61,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) backtomain ;; y) break ;; n) return 1 ;; *) invalid ;;
 esac
 done
-#Break point. Proceed to uninstall Bitcoin Core.
+#Break point. Proceed to uninstall Bitcoin.
 
 if ! docker ps >$dn 2>&1 ; then
 announce "Docker doesn't seem to be running. Can't uninstall without that. Aborting."

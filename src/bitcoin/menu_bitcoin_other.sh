@@ -30,7 +30,7 @@ if grep -q "disable_bitcoin=true" $pc ; then
 fi
 echo -e "
 ########################################################################################
-                            ${cyan}Bitcoin Core Menu - OTHER ${orange}                               
+                            ${cyan}Bitcoin Menu - OTHER ${orange}                               
 ########################################################################################
 
 "
@@ -151,11 +151,11 @@ set_terminal_custom 55 ; echo -e "
     If for some reason, Bitcoin is not syncing to the correct drive, here's what's
     happening under the hood to help you tweak it.
 
-       1)   Bitcoin Core by default syncs to $green$HOME/.bitcoin$orange, unless specified
+       1)   Bitcoin by default syncs to $green$HOME/.bitcoin$orange, unless specified
             otherwise in bitcoin.conf (default location is different for Macs).
 
        2)   Parmanode never changes this default directory, instead it 'tricks' 
-            Bitcoin Core. For External drives, Parmanode will put a symlink (shortcut)
+            Bitcoin. For External drives, Parmanode will put a symlink (shortcut)
             at the location of $green$HOME/.bitcoin$orange, pointing to the external drive 
             directory which is$orange /media/$USER/parmanode/.bitcoin$orange for Linux and 
             $green /Volumes/parmanode/.bitcoin$orange for Macs.
@@ -182,7 +182,7 @@ set_terminal_custom 55 ; echo -e "
 
        7)   Parmanode also adds a line about the drive in the$red /etc/fstab$orange file on
             Linux machines. This is part of the 'import' process, so that the drive
-            always mounts when you reboot the computer, and Bitcoin Core can
+            always mounts when you reboot the computer, and Bitcoin can
             start up properly.$red I strongly recommend you don't fiddle with this file
          $orange   unless you are a super expert, because it can brick your OS if you get
             it wrong. 

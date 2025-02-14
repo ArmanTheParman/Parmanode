@@ -7,7 +7,7 @@ set_terminal ; echo -e "
     To make BTCPay Server work on Macs, some weird workarounds are needed. Not my 
     fault - it's Apple's fault.
 
-    The BTCPay container will be built together with Bitcoin Core in the same
+    The BTCPay container will be built together with Bitcoin in the same
     Docker container. 
    
     Restarting the computer should re-start the containers, but you might need to set
