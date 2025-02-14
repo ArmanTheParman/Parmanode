@@ -17,7 +17,7 @@ cd $hp || { enter_continue "Can't change directory. Aborting." ; return 1 ; }
 
 [[ -e $hp/bitcoin_github ]] && sudo rm -rf $hp/bitcoin_github >$dn 2>&1
 
-if [[ $knotsbitcoin != "true" && $libre_relay != "true" ]] ; then  
+if [[ $knotsbitcoin != "true" ]] ; then  
 
     git clone https://github.com/bitcoin/bitcoin.git bitcoin_github || { announce "Something went wrong with the download. Aborting." ; return 1 ; }
     
@@ -33,7 +33,7 @@ if [[ $knotsbitcoin != "true" && $libre_relay != "true" ]] ; then
                 git add . ; git commit -m "ordinals patch applied"
             fi
 
-elif [[ $knotsbitcoin == "true" && $libre_relay != "true" ]] ; then  #compile bitcoin not true
+elif [[ $knotsbitcoin == "true" ]] ; then  #compile bitcoin not true
     set_github_config
     if [[ -e $hp/bitcoinknots_github ]] ; then 
         cd $hp/bitcoinknots_github ; git fetch ; git pull ; git checkout origin/HEAD ; git pull 
@@ -41,11 +41,6 @@ elif [[ $knotsbitcoin == "true" && $libre_relay != "true" ]] ; then  #compile bi
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
     fi
 
-elif [[ $libre_relay == "true" ]] ; then
-  set_github_config 
-  cd $hp && git clone https://github.com/petertodd/bitcoin.git && cd bitcoin
-else
-  announce "something went wrong. Contact Parman. Error code HFSP-1"
 fi
 
 #clean up variables

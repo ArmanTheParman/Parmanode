@@ -33,8 +33,6 @@ $bright_blue
 $red
        6)  Guided compile of most recent Github update, i.e. pre-release
            (for testing only)
-
-      lr)  Libre Relay compile
 $orange
  INFO  7)  Read how to compile yourself, and import the installation to Parmanode. 
            You can come back to this menu after selecting this. 
@@ -76,9 +74,6 @@ export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 6)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version="master" ; break ;;
-lr)
-parmanode_conf_add "bitcoin_choice=compiled"
-export bitcoin_compile="true" ; export version="v28.1" ; libre_relay="true" ; break ;;
 7)
 bitcoin_compile_instructions
 return 0
