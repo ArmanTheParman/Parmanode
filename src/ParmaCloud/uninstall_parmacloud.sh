@@ -52,6 +52,18 @@ invalid
 esac
 done
 
+yesorno_blue "Do you want to remove all your NextCloud data?
+$orange
+    THIS CANNOT BE UNDONE.
+   $blue 
+    Note ths will remove volume data only if it has not been
+    moved to somewhere other than
+    /var/lib/docker/volumes/... " && announce "${blue}Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
+
+if [[ $enter_cont == DELETENEXTCLOUDDATA ]] ; then sudo rm -rf /var/lib/docker/volumes/nexcloud* || enter_continue ; fi
+
+rm -rf $pp/parmacloud
+
 installed_config_remove "parmacloud"
 parmanode_conf_remove "parmacloud"
 bluesuccesscolour="true"
