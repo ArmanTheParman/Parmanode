@@ -60,7 +60,14 @@ $orange
     moved to somewhere other than
     /var/lib/docker/volumes/... " && announce_blue "Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
 
-if [[ $enter_cont == DELETENEXTCLOUDDATA ]] ; then sudo rm -rf /var/lib/docker/volumes/nexcloud* || enter_continue ; fi
+if [[ $enter_cont == DELETENEXTCLOUDDATA ]] ; then 
+    docker volume ls | cut -d ' ' -f6  | grep nextcloud | while read line ; do docker volume rm $line ; done
+else
+    announce_blue "Docker volumes can manually be deleted with
+    $orange
+    docker volumes ls $orange -- to see the volumes $orange
+    docker volum rm name_of_volume $orange -- to permanently delete$blue"
+fi
 
 rm -rf $pp/parmacloud
 
