@@ -56,8 +56,7 @@ yesorno_blue "Do you want to remove all your NextCloud data?
 $orange
     THIS CANNOT BE UNDONE.
    $blue 
-    Note ths will remove volume data only if it has not been
-    moved to somewhere other than $orange
+    Note ths will remove volume data only if it hasn't been moved to somewhere other than$orange
 
     /var/lib/docker/volumes/... $blue" && announce_blue "Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
 
