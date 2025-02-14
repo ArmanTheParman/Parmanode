@@ -52,7 +52,7 @@ else
 unset tor_menu
 fi
 debug "pause before set terminal"
-set_terminal_custom 45 ; echo -ne "$blue
+set_terminal_custom 48 ; echo -ne "$blue
 ########################################################################################$orange
 
                                   WORDPRESS WEBSITE $blue
