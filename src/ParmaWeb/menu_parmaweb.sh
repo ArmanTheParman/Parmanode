@@ -89,7 +89,9 @@ $blue
                  tor)            $blue Tor enable/disable      $W_tor                  $cyan
                  ssl)            $blue SSL enable/disable      $web_ssl_status_print   $cyan
                 rphp)            $blue Restart php (troubleshoot)$cyan
-                nlog)            $blue Viw nginx error log$cyan
+                nlog)            $blue Viw nginx error log$cyan                        
+$red
+                next)             NEXT PAGE...
 $blue
 ########################################################################################
 "
@@ -160,6 +162,9 @@ sudo systemctl restart php*fpm
 nlog)
 sudo less /var/log/nginx/error.log
 ;;
+next)
+menu_parmaweb2
+;;
 *)
 invalid ;;
 esac
@@ -207,4 +212,57 @@ bluesuccesscolour="true"
 success "Password reset"
 }
 
+function menu_parmaweb2 {
+while true ; do
+set_terminal_custom 45 ; echo -ne "$blue
+########################################################################################$orange
 
+                                  WORDPRESS WEBSITE $blue
+
+########################################################################################
+        $domain_name_text
+$tor_menu                      
+
+$yellow        To initialise:       $blue     $http://$domain_name/myphpadmin
+$yellow        Database's name:     $blue     website (or website1, website2 etc)
+$yellow        Database username:   $blue     parmanode
+$yellow        Wordpress login:     $blue     $http://$domain_name/wp-admin
+$yellow        Info Page:           $blue     $http://$domain_name/info.php
+
+----------------------------------------------------------------------------------------
+
+$yellow        Website data location: $blue   /var/www/website
+$yellow        Data file permissions: $blue   user=www-data ; group=www-data
+$yellow        Nginx configuration:   $blue   /etc/nginx/conf.d/website.conf
+
+$yellow        TCP Port (http):          ${green}80
+$yellow        SSL port (https):         ${green}$website_ssl_port 
+$yellow        Tor Status:               $W_tor                     
+$blue
+----------------------------------------------------------------------------------------
+                                                                               $cyan
+                 cdr)            $blue Certbot Let's Encrypt Renewal Dry Run   $cyan
+                 cbt)            $blue Check Certbot renewals are running
+
+########################################################################################
+"
+choose "xpmq" ; read choice 
+jump $choice || { invalid ; continue ; } ; set_terminal_custom 45
+case $choice in
+q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
+
+cdr)
+clear
+sudo certbot renew --dry-run
+enter_continue
+;;
+cbt)
+clear
+systemctl list-timers | grep certbot
+enter_continue
+;;
+*)
+invalid ;;
+esac
+done
+}
