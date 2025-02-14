@@ -58,7 +58,7 @@ $orange
    $blue 
     Note ths will remove volume data only if it has not been
     moved to somewhere other than
-    /var/lib/docker/volumes/... " && announce "${blue}Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
+    /var/lib/docker/volumes/... " && announce_blue "Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
 
 if [[ $enter_cont == DELETENEXTCLOUDDATA ]] ; then sudo rm -rf /var/lib/docker/volumes/nexcloud* || enter_continue ; fi
 
