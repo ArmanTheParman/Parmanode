@@ -14,11 +14,11 @@ fi
 
 # Create a new GPT partition table and a single partition on the drive
 # interestingly, you can plonk a redirection in the middle of a heredoc like this:
-sudo fdisk "$disk_no_number" <<EOF >$dn 
+sudo fdisk "$disk_no_number" <<EOF >$dn || enter_continue
 g
 w
 EOF
-
+sleep 2
 # The above, with <<, is called a heredoc. The text between EOF and EOF is sent
 # to fdisk to the left of <<. Except the >/dev/null bit.
 # This will send g, enter, n, enter, 1, enter, enter, enter, & w to fdisk
