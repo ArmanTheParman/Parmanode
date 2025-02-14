@@ -57,8 +57,9 @@ $orange
     THIS CANNOT BE UNDONE.
    $blue 
     Note ths will remove volume data only if it has not been
-    moved to somewhere other than
-    /var/lib/docker/volumes/... " && announce_blue "Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
+    moved to somewhere other than $orange
+
+    /var/lib/docker/volumes/... $blue" && announce_blue "Type$red DELETENEXTCLOUDDATA$blue to confirm, othewise skipping."
 
 if [[ $enter_cont == DELETENEXTCLOUDDATA ]] ; then 
     docker volume ls | cut -d ' ' -f6  | grep nextcloud | while read line ; do docker volume rm $line ; done
