@@ -41,7 +41,7 @@ elif [[ $knotsbitcoin == "true" && $libre_relay != "true" ]] ; then  #compile bi
         cd $hp && git clone https://github.com/bitcoinknots/bitcoin.git bitcoinknots_github && cd bitcoinknots_github
     fi
 
-elif [[ libre_relay == "true" ]] ; then
+elif [[ $libre_relay == "true" ]] ; then
   set_github_config 
   cd $hp && git clone https://github.com/petertodd/bitcoin.git && cd bitcoin
 else
