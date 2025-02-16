@@ -40,7 +40,7 @@ function t { cd /tmp 2>/dev/null || cd $HOME/tmp ; a ; }
 function sd { cd /etc/systemd/system/ ; a ; }
 function gp { pn ; git pull ; a ; }
 function ct { cat /etc/crontab ; }
-function rp { pn ; ./run_parmanode.sh $@ ; }
+function rp { pn ; sudo ./run_parmanode.sh $@ ; }
 function e { exit ; }
 function pm { pp ; cd parminer ; a ; }
 function rpm { pm ; ./run_parminer.sh $@ ; }

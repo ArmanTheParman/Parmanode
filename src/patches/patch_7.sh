@@ -19,7 +19,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
     if [[ $OS == Linux ]] && ! which bc >$dn 2>&1 ; then
         if which tmux >$dn 2>&1 ; then
-            pn_tmux "sudo apt-get update -y && sudo apt-get install bc -y" "installing_bc"
+            pn_tmux "sudo apt-get update -y && sudo apt-get install bc -y" "installing_bc" >/dev/null 2>&1
         elif [[ $OS == Linux ]] ; then #mac should have by default anyway
             echo -e "${green}Installing the bc caluclator, necessary for Parmanode to think...$orange\n"
             sudo apt-get update -y && sudo apt-get install bc -y
