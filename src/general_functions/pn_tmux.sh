@@ -18,7 +18,7 @@ TMUX2=$TMUX ; unset TMUX ; clear
         if ! echo "$@" | grep sudo ; then 
             tmux new -s $tmuxname -d "$command"
         else
-            sudo bash -c "tmux new -s '$tmuxname' -d '$command' >/dev/null 2>&1"
+            sudo bash -c "tmux new -s '$tmuxname' -d '$command ; yes' >/dev/null 2>&1"
         fi
     fi
 
