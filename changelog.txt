@@ -1,9 +1,8 @@
-Version 3.54.1
-    -Tmux sudo improvement
-    -Sudo timeout longer
 Version 3.54.0
     -Premium features
     -ParmaNas
+    -Tmux sudo improvement
+    -Sudo timeout longer
 Version 3.53.0
     -LND Watchtower
     -Bitcoin update 28.1
