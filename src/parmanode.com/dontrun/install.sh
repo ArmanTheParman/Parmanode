@@ -1,10 +1,9 @@
 return 0
 # This is the install script kept at
 # https://parmanode.com/install.sh - the URL is easier to remember and shorter than if keeping it on Github.
-
 #!/bin/sh
 
-if [ $(uname -s) = Darwin ] ; then #important to leave a single '=' for sh
+if [ $(uname -s) = Darwin ] ; then
 curl https://parmanode.com/install_4mac2.sh | sh
 exit
 fi
@@ -16,7 +15,7 @@ sleep 5
 exit
 fi
 
-if ! which git >$dn ; then
+if ! which git >/dev/null ; then
 sudo apt-get update -y 
 sudo apt-get install git -y
 fi
@@ -38,15 +37,15 @@ git clone https://github.com/armantheparman/parmanode.git
 # sudo chown $USER:$(id -gn) $HOME/Desktop/parmanode.desktop
 clear
 
-echo "#Added by Parmanode..." | tee -a ~/.bashrc >$dn 2>&1
-echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >$dn 2>&1
+echo "#Added by Parmanode..." | tee -a ~/.bashrc >/dev/null 2>&1
+echo 'function rp { cd $HOME/parman_programs/parmanode ; ./run_parmanode.sh $@ ; }' | tee -a ~/.bashrc >/dev/null 2>&1
 
 
-echo "
+echo -e "
 ########################################################################################
 
-    To run Parmanode, open a NEW TERMINAL window, and type 'rp' (from any directory) 
-    followed by <enter>.
+    To run Parmanode, close this terminal, then\033[5m\033[31m OPEN A NEW TERMINAL WINDOW\033[0m, and
+    type 'rp' (from any directory) followed by <enter>.
 
 ########################################################################################
 "
