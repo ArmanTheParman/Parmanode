@@ -94,7 +94,21 @@ server {
 
     # Enable HSTS; max age in seconds; only if SSL on.
     add_header Strict-Transport-Security "max-age=315360000; includeSubDomains; preload";
-}#flag for end of first server block
+
+}#flag for end of server block 1
+
+server {
+
+    listen 80;
+    server_name *.onion;
+
+    location / {
+        root /var/www/$website;
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+}#flag for end of server block 2
+
 EOF
 fi
 
@@ -176,7 +190,20 @@ server {
 
     # Enable HSTS; max age in seconds; only if SSL on.
     add_header Strict-Transport-Security "max-age=315360000; includeSubDomains; preload";
-}
+
+}#flag for end of server block 1
+
+server {
+
+    listen 80;
+    server_name *.onion;
+
+    location / {
+        root /var/www/$website;
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+}#flag for end of server block 2
 EOF
 fi
 
