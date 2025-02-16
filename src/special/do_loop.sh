@@ -131,8 +131,6 @@ test_8333_reachable
 
 jump $1
 # This is the main program, which is a menu that loops.
-
 #Parminer borrows do_loop function, but don't go to parmanode menu
 [[ $premium == 1 ]] || menu_main
-
 }
