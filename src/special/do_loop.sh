@@ -2,6 +2,13 @@ function do_loop {
 clear
 #sudo will be needed. Running it early here, getting it out of the way, 
 #and it stays in the cache for a while.
+
+#Make a tempfile to stop annoying user with frequent sudo requests during the parmanode session
+#File is removed on exit
+[[ ! -e $HOME/.parmanode/.tempsudo ]] && mkdir -q $HOME/.parmanode/.tempsudo >/dev/null 2>&1
+echo "Defaults timestamp_timeout=180" | sudo tee $HOME/.parmanode/.tempsudo/custom_sudo_timeout >/dev/null 2>&1
+
+
 if ! echo $@ | grep -q "np" ; then
 sudo true ;
 fi

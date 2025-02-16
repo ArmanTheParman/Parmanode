@@ -10,6 +10,13 @@ remove_tor_log_patch
     fulcrum_service_patch 
     make_external_IP_script
     which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
+    if [[ $OS == "Linux" ]] ; then
+    echo "@includedir $HOME/.parmanode/.tempsudo/" | sudo tee -a /etc/sudoers.d/parmanode_include >$dn 2>&1
+    elif [[ $OS == "Mac" ]] ; then
+    echo "#includedir $HOME/.parmanode/.tempsudo/" | sudo tee -a /etc/sudoers.d/parmanode_include >$dn 2>&1
+    fi
+
+
 
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...
