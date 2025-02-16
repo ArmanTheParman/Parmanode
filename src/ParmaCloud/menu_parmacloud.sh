@@ -47,7 +47,7 @@ $orange
 
 
     ACCESS FOR INITIAL SETUP: $green
-          http://$IP:8020    $blue
+          https://$IP:8020    $blue
     
     REGULAR ACCESS: $pink
           https://$parmacloud_domain $orange   mod)$blue   Modify domain
