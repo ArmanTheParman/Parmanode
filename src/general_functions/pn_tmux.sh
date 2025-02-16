@@ -3,8 +3,6 @@ command="$1"
 tmuxname="$2"
 tmuxname=${tmuxname:-$(mktemp -u session-XXXXXX)}
 
-if echo "$@" | grep sudo ; then 
-
 if ! which tmux >$dn 2>&1 ; then 
 yesorno "Need tmux for this to work. OK to install?" || return 1
 fi
