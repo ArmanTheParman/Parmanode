@@ -12,7 +12,7 @@ remove_tor_log_patch
     which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
     pn_tmux "sudo strip /usr/local/bin/* >/dev/null 2>&1" "stripping_binaries" >/dev/null 2>&1
     sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout ||
-        echo "Defaults:$USER timestamp_timeout=120" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
+        echo "Defaults:$USER timestamp_timeout=45" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
 
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...
