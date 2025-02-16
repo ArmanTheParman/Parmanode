@@ -22,7 +22,8 @@ parmanode_conf_remove "orange="
 else
 parmanode_conf_add "orange=\"$reset\""
 fi
-announce "Please restart Parmanode to see the changes."
+announce "Please restart Parmanode to see the changes - quit, then 'rp' <enter> at the 
+    prompt."
 return 0
 ;;
 *) invalid ;;

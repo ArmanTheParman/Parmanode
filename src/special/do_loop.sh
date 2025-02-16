@@ -89,7 +89,8 @@ else
 fi
 
 if [[ $needs_restart == "true" ]] ; then
-announce "An update to Parmanode was made to the latest version. Please restart Parmanode."
+announce "An update to Parmanode was made to the latest version. Please restart Parmanode
+    by typing 'rp' and <enter> at the prompt."
 exit
 fi
 fi #end btcpayinstallsbitcoin
