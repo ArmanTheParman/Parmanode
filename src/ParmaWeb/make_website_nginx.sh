@@ -94,7 +94,7 @@ server {
 
     # Enable HSTS; max age in seconds; only if SSL on.
     add_header Strict-Transport-Security "max-age=315360000; includeSubDomains; preload";
-}
+}#flag for end of first server block
 EOF
 fi
 
