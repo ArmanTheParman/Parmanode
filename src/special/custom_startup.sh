@@ -1,6 +1,7 @@
 function custom_startup {
 if echo $@ | grep -q test ; then
-announce "no test available presently. Skipping."
+echo "Defaults timestamp_timeout=30" | sudo tee -a /etc/sudoers.d/custom_sudo_timeout
+#announce "no test available presently. Skipping."
 fi
 
 if echo $@ | grep -q fix ; then
