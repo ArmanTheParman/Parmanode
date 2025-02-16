@@ -10,7 +10,7 @@ remove_tor_log_patch
     fulcrum_service_patch 
     make_external_IP_script
     which tor >$dn && ! grep -q tor-end $ic && installed_conf_add "tor-end"
-    pn_tmux "sudo strip /usr/local/bin/* >/dev/null 2>&1" "stripping_binaries"
+    pn_tmux "sudo strip /usr/local/bin/* >/dev/null 2>&1" "stripping_binaries" >/dev/null 2>&1
 
     # if [[ $OS == "Linux" ]] ; then
 
