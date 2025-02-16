@@ -1,3 +1,5 @@
+Version 3.54.1
+    -Tmux sudo improvement
 Version 3.54.0
     -Premium features
     -ParmaNas
