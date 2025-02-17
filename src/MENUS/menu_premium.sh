@@ -10,6 +10,8 @@ menu_add_source
 #                                                                                      #"
 ! grep -q "website-" $ic 2>$dn &&   parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
 #                                                                                      #"
+[[ ! -e $pp/parmaraid ]] &&          parmaraid="\n#$orange              ps)$blue          ParmaNas - Network Attached Storage                        #
+#                                                                                      #"
 
 
 set_terminal
@@ -18,8 +20,7 @@ echo -en "$blue
 #$orange               PREMIUM FEATURES AVAILABLE FOR A FEE:$green CONACT PARMAN          $blue          #
 ########################################################################################
 #                                                                                      #
-#                                                                                      #$parmanas$parminer$parmacloud$parmaweb
-#$orange                rr)$blue        RAID - join drives together                                #
+#                                                                                      #$parmanas$parminer$parmacloud$parmaweb$parmaraid
 #                                                                                      #
 #                                                                                      #
 ########################################################################################
@@ -28,11 +29,6 @@ choose "xpmq" ; read choice
 jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
-
-rr)
-    install_raid 
-    return 0
-;; 
 
 pnas)
     [[ ! -e $dp/.parmanas_enabled ]] && {
@@ -106,7 +102,9 @@ make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; 
     install_website
     return 0
 }
-
+;;
+pr)
+install_raid
 ;;
 
 *)

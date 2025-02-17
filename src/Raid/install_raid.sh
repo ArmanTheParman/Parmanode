@@ -1,20 +1,10 @@
 function install_raid {
 
-if [[ $OS == Mac ]] ; then no_mac ; return 1 ; fi
-
 while true ; do
 set_terminal_custom 48 ; echo -e "
 ########################################################################################
 $cyan
-                                  R   A   I   D
-$orange
-    THIS SOFTWARE ADD-ON IS NOT FREE. YOU CAN TEST IT OUT FOR FREE, BUT IF YOU 'USE'
-    IT (YOU DECIDE WHAT 'USE' MEANS), THEN PLEASE CONTRIBUTE$green 20,000 SATS $orange if
-    you can afford it. I tried to make it easy, but using RAID is complex, and might
-    need to be customised for your needs. If things don't work out using Parmanode,
-    consider hiring Parman for assistance.
-$bright_blue
-        https://armantheparman.com/donations
+                                  ParmaRAID
 $orange
     RAID stands for Redundant Array of Independent Disks. There are various types, 
     each with their advantages and disadvantages. This Parmanode add-on offers 
@@ -33,33 +23,12 @@ $green
     only be able to store the capacity of the smaller drive.
 $green
     RAID-2 to 6 and 10 $orange
-    Look it up. Internet. Parmanode does not support these types for now.
-$cyan
-    YOU HAVE CHOICES... $orange
+    Less commonly used variations.
 
-$green                          0)$orange       RAID 0
-
-$green                          1)$orange       RAID 1
-
-$green                          p)$orange       Get out of here
+    ParmaRAID is not FOSS. Fee is 50,000 sats. Please contact Parman to enable.
+    
 
 ########################################################################################
-" 
-choose "xpmq" ; read choice
-jump $choice || { invalid ; continue ; } ; set_terminal
-case $choice in
-q|Q) exit 0 ;; p|P) return 1 ;; m|M) back2main ;;
-0)
-do_raid_0 || return 1
-;;
-1)
-debug "start 1)"
-do_raid_1 || return 1
-;;
-*)
-invalid
-;;
-esac
-done
-
+"
+enter_continue
 }
