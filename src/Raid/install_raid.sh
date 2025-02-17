@@ -27,7 +27,7 @@ $green
 $green
     RAID-1 $orange
     This allows you to have two drives that mirror each other, allowing for
-    redundancy and data protections. When mounted, it will appear that you have one
+    redundancy and data protection. When mountedn, it will appear that you have one
     drive connected. Each time you modify the contents, the data will be stored
     identically on both disks. If the two drives are different in size, both will
     only be able to store the capacity of the smaller drive.

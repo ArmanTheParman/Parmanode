@@ -108,10 +108,10 @@ set_terminal ; echo -e "
 
     The drive detected is: $green$disk$orange
 
-$pink
-    $(lsblk $disk)
+$blue
+$(lsblk $disk)
 
-    $(blkid $disk)
+$(blkid $disk)
 $orange
 ########################################################################################
 "

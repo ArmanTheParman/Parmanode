@@ -31,12 +31,12 @@ set_terminal ; echo -e "
 
     Please note that the RAID being set up will be configured to mount to:
 $cyan
-        /media/$USER/RAIDx$orange , where x is a number.
+        /media/$USER/RAIDx$orange, where x is a number.
 
     If you decide to use this RAID for a Bitcoin node with the help of Parmanode,
     the RAID mountpoint will be shifted to$cyan /media/$USER/parmanode.$orange
 
-    Some of the Parmabnode RAID menu options may then not work as expected, but that 
+    Some of the Parmanode RAID menu options may then not work as expected, but that 
     shouldn't particularly be a problem, just something to be aware of.
 
 ########################################################################################

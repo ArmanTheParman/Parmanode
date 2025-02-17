@@ -6,7 +6,7 @@ set_terminal ; echo -e "
 ########################################################################################
 
     Please enter a$cyan number$orange to indicate the number of drives you want to combine in
-    a RAID-0 configuration (it is limited by the number of drives you can 
+    a RAID configuration (it is limited by the number of drives you can 
     simultaneously connect to the computer).
 
 ########################################################################################
