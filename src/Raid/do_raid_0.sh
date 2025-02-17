@@ -48,7 +48,7 @@ q|Q) exit ;; m|M) back2main ;;
 esac
 done
 
-# unmount, partition, format, make raid, ?make nas
+# unmount, partition, format, make raid
 
 cat $dp/device_list.conf | while read device ; do
 set_terminal ; echo -e "${green}Preparing $device ...$orange" ; sleep 1.5
