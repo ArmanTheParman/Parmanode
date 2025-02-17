@@ -93,7 +93,7 @@ function detect_parmanode_drive {
 
 while true ; do
 clear
-sudo partprobe
+sudo partprobe 2>/dev/null
 if ! sudo blkid | grep -q "parmanode"  ; then
 yesorno "Please connect the Parmanode drive you wish to use. If it's already connected,
     Parmanode didn't detect it.

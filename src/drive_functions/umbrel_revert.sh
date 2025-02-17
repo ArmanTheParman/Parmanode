@@ -100,7 +100,7 @@ while sudo lsblk -o LABEL | grep -q parmanode ; do
 echo "Changing the label to umbrel"
 sudo e2label $disk umbrel 2>&1
 sleep 1
-sudo partprobe
+sudo partprobe 2>/dev/null
 done
 # fstab configuration
 # Finished. Info.

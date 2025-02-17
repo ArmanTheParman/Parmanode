@@ -1,5 +1,5 @@
 function stop_raids {
-sudo partprobe
+sudo partprobe 2>/dev/null
 raids_running=$(sudo mdadm --detail --scan | wc -l)
 raids_list=$(sudo mdadm --detail --scan | awk '/ARRAY/{print $2}')
 

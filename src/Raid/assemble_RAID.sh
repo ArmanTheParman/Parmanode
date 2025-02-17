@@ -1,5 +1,5 @@
 function assemble_RAID {
-sudo partprobe
+sudo partprobe 2>/dev/null
 
 sudo mdadm --assemble --scan
 echo  -e "

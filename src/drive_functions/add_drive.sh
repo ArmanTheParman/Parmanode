@@ -72,7 +72,7 @@ if [[ $make_label == "parmanode" ]] ; then
         sudo umount $disk* 2>$dn ; sudo umount $parmanode_drive 2>$dn
         sudo umount /media/$USER/parmanod* 2>$dn
         sudo e2label $disk parmanode >$dn || sudo exfatlabel $disk parmanode >$dn 2>&1
-        sudo partprobe 
+        sudo partprobe 2>/dev/null
         if [[ ! -e $parmanode_drive ]] ; then sudo mkdir -p $parmanode_drive ; fi
         sudo mount $disk $parmanode_drive 
         if ! mountpoint $parmanode_drive >$dn ; then announce "Drive didn't mount. There may be problems." ; fi
