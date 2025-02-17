@@ -13,8 +13,6 @@ $orange
 $orange
                           lc)$blue         List physically connected RAID drives
 $orange
-                          ums)$blue        Unmount/Mount/Stop menu ...
-$orange
                           i)$blue          info about RAIDs
 $blue
 ########################################################################################
@@ -58,9 +56,9 @@ enter_continue
 done
 ;;
 
-ums)
-unmount_and_stop_raid_menu || return 1
-;;
+# ums)
+# unmount_and_stop_raid_menu || return 1
+# ;;
 
 i)
 raid_info
@@ -74,3 +72,6 @@ done
 
 }
 
+
+#$orange
+#                          ums)$blue        Unmount/Mount/Stop menu ...
