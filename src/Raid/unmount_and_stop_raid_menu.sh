@@ -1,19 +1,21 @@
 function unmount_and_stop_raid_menu {
 while true ; do
 sudo partprobe 2>/dev/null
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     You can select which RAIDs to act on in the next screen...
+
+$orange
+                        mm) $blue   Mount RAID (mounts all connected)
+$orange
+                        u)$blue     Unmount (option to select which) 
+$red
+                        s)     Stop RAID (also unmounts)
 $green
-                             u)$orange     Unmount (option to select which) $green
+                        aa)    Assemble RAID (opposite to stop RAID)
 
-                             s) $orange    Stop RAID (also unmounts)$green 
-
-                             aa)  $orange  Assemble RAID (opposite to stop RAID)$green
-
-                             mm) $orange   Mount RAID (mounts all connected)
-
+$blue
 ########################################################################################
 "
 choose xpmq ; read choice 
