@@ -2,15 +2,6 @@ function assemble_RAID {
 sudo partprobe 2>/dev/null
 
 sudo mdadm --assemble --scan
-echo  -e "
-Mount too?  $green y $red n $orange
-
-"
-choose x ; read choice ; set_terminal 
-if [[ $choice == y ]] ; then
-mount_RAID || return 1
-fi
-
-enter_continue
+yesorno_blue "Mount too?" && { mount_RAID || return 1 ; }
 return 0
 }

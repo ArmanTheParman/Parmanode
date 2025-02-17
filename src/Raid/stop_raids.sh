@@ -7,12 +7,12 @@ if [[ $raids_running == 0 ]] ; then return 0 ; fi
 
 if [[ $raids_running == 1 ]] ; then 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-    $pink
+    $orange
     It looks like your system already has a RAID process running.
     $green
-$(sudo mdadm --detail --scan) $orange
+$(sudo mdadm --detail --scan) $blue
 
     Do you want Parmanode to stop it before continuing, or leave it and add a second
     RAID to the system?
@@ -20,7 +20,7 @@ $(sudo mdadm --detail --scan) $orange
                                 s)     Stop the RAID
                          $red   
                                 l)     Leave it alone
-                         $orange
+                         $blue
                                 x)     I don't know, leave ME alone (abort)
 
 ########################################################################################
@@ -32,7 +32,7 @@ q|Q) exit ;; x|p|P) return 1 ;; m|M) back2main ;; l) break ;;
 s)
 stop_it=$(sudo mdadm --detail --scan | awk '/ARRAY/{print $2}')
 sudo mdadm --stop $stop_it
-announce "RAID process stopped"
+announce_blue "RAID process stopped"
 unset stop_it
 break
 ;;
@@ -43,12 +43,12 @@ fi
 
 if [[ $raids_running -gt 1 ]] ; then 
 while true ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
-    $pink
+    $orange
     It looks like your system already has more than one RAID process running.
     $green
-$(sudo mdadm --detail --scan) $orange
+$(sudo mdadm --detail --scan) $blue
 
     Do you want Parmanode to stop thenm before continuing, or leave them alone and 
     add an extra RAID to the system?
@@ -57,7 +57,7 @@ $(sudo mdadm --detail --scan) $orange
                                 s)     Stop the RAIDs
                          $red   
                                 l)     Leave them alone
-                         $orange
+                         $blue
                                 x)     I don't know, leave ME alone (abort)
 
 ########################################################################################
@@ -70,7 +70,7 @@ s)
 for i in $raids_list; do
 sudo mdadm --stop $i
 done
-announce "RAID processes stopped"
+announce_blue "RAID processes stopped"
 break
 ;;
 esac

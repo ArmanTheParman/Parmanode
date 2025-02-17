@@ -8,13 +8,13 @@ fi
 set_terminal
 
 for i in $(sudo mdadm --detail --scan | awk '{print $2}') ; do
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Stop this RAID process?   $green y$orange or$red n$orange
-$bright_blue    
-$i
 $orange
+$i
+$blue
 ########################################################################################
 "
 choose xpmq ; read choice 

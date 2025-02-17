@@ -1,22 +1,22 @@
 function menu_raid {
 while true ; do
-set_terminal ; echo -e "
-########################################################################################$cyan
-                                R A I D - menu$orange
+set_terminal ; echo -e "$blue
+########################################################################################$orange
+                                R A I D - menu$blue
 ########################################################################################
-$cyan
-                          dt)$orange         Inspect RAID details$cyan
-
-                          lr)$orange         List running RAIDs$cyan
-
-                          lm)$orange         List mounted RAIDs$cyan
-
-                          lc)$orange         List physically connected RAID drives$cyan
-
-                          ums)$orange        Unmount/Mount/Stop menu ...$cyan
-
-                          i)$orange          info about RAIDs
-
+$orange
+                          dt)$blue         Inspect RAID details
+$orange
+                          lr)$blue         List running RAIDs
+$orange
+                          lm)$blue         List mounted RAIDs
+$orange
+                          lc)$blue         List physically connected RAID drives
+$orange
+                          ums)$blue        Unmount/Mount/Stop menu ...
+$orange
+                          i)$blue          info about RAIDs
+$blue
 ########################################################################################
 "
 choose xpmq ; read choice 
@@ -48,12 +48,12 @@ count=0
 for i in $device ; do
 count=$((count + 1))
 clear
-echo -ne "${green}################################# RAID number $count ########################################$orange
+echo -ne "${blue}################################# RAID number $count ########################################$orange
 
 "
 sudo mdadm --detail $i
-echo -e "$green
-########################################################################################$orange"
+echo -e "$blue
+########################################################################################"
 enter_continue
 done
 ;;

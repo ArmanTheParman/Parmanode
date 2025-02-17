@@ -1,7 +1,7 @@
 function raid_info {
-set_terminal ; echo -e "
-########################################################################################$cyan
-                             R A I D - info $orange
+set_terminal ; echo -e "$blue
+########################################################################################$orange
+                             R A I D - info $blue
 ########################################################################################
 
     It's easy to look up what RAIDs are and do, so this is not meant to be exhaustive,
@@ -25,15 +25,15 @@ return 0
 }
 
 function bitcoin_raid_info {
-set_terminal ; echo -e "
+set_terminal ; echo -e "$blue
 ########################################################################################
 
     Please note that the RAID being set up will be configured to mount to:
-$cyan
-        /media/$USER/RAIDx$orange, where x is a number.
+$orange
+        /media/$USER/RAIDx$blue, where x is a number.
 
     If you decide to use this RAID for a Bitcoin node with the help of Parmanode,
-    the RAID mountpoint will be shifted to$cyan /media/$USER/parmanode.$orange
+    the RAID mountpoint will be shifted to$orange /media/$USER/parmanode.$blue
 
     Some of the Parmanode RAID menu options may then not work as expected, but that 
     shouldn't particularly be a problem, just something to be aware of.
