@@ -10,7 +10,7 @@ menu_add_source
 #                                                                                      #"
 ! grep -q "website-" $ic 2>$dn &&   parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
 #                                                                                      #"
-[[ ! -e $pp/parmaraid ]] &&          parmaraid="\n#$orange              ps)$blue          ParmaNas - Network Attached Storage                        #
+[[ ! -e $pp/parmaraid ]] &&          parmaraid="\n#$orange              pr)$blue        ParmaRAID                                                  # 
 #                                                                                      #"
 
 
