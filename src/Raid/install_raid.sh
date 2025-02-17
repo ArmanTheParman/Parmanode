@@ -1,6 +1,5 @@
 function install_raid {
 
-while true ; do
 set_terminal_custom 48 ; echo -e "
 ########################################################################################
 $cyan
