@@ -14,7 +14,6 @@ local text_nostr="$yellow                (np)    add a non-Parmanode external dr
 " 
 
 while true ; do
-unset raid
 if [[ $btcpayinstallsbitcoin != "true" || $btcpay_combo == "true" ]] ; then
 set_terminal
 echo -e "
@@ -28,8 +27,6 @@ $green
                 (e)     Use an EXTERNAL drive (choice to format) 
 $red
                 (i)     Use an INTERNAL drive 
-$pink
-                (aa)    Use an EXTERNAL drive RAID array $orange
 "
 if [[ $1 == Bitcoin ]] ; then
     echo -e "$text" 
@@ -51,8 +48,6 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 else
 choice=i #btcpayinstallsbitcoin internal drive
 fi
-
-if [[ $choice == aa ]] ; then choice=e ; export raid="true" ; fi
 
 case $choice in
 
