@@ -33,7 +33,7 @@ if grep -q "website-end" $HOME/.parmanode/installed.conf ; then websiteapp=1
                        echo -e "                        $cyan  (pw)$blue         WordPress Website (ParmaWeb)$orange
                             " ; fi
 if grep -q "/dev/md" $ic ; then raidapp=1
-                       echo -e "                   $cyan       (rr)$orange         RAID 
+                       echo -e "                   $cyan       (rr)$blue         RAID 
                             " ; fi
 if grep -q "bitcoin-end" $HOME/.parmanode/installed.conf ; then bitcoinapp=1
                        echo -e "                        $cyan  (b)$orange          Bitcoin
