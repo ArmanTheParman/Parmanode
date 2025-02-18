@@ -32,18 +32,19 @@ set_terminal 38 96 ; echo -en "$blue
     NextCloud is:    $nextcloud_running
 
 $orange
-                      pass)$blue            Show setup password
+                      pass)$blue          Show setup password
 $orange
-                      reset)$blue           Reset a user account password
+                      reset)$blue         Reset a user account password
 $orange
-                      start)$blue           Start NextCloud Docker container
+                      start)$blue         Start NextCloud Docker container
 $orange
-                      stop)$blue            Stop NextCloud Docker container
+                      stop)$blue          Stop NextCloud Docker container
 $orange
-                      refresh)$blue         Refresh info after any manual file changes
-                                       - Restarts container as well
+                      restart)$blue       Restart (do after config changes)
+
+$orange               rerun)$blue         Destroy container and rerun (no data loss, be cool) 
 $orange
-                      data)$blue            Information about data storage and backups
+                      data)$blue          Information about data storage and backups
 
 
     ACCESS FOR INITIAL SETUP: $green
@@ -96,6 +97,11 @@ nextcloud_password_reset
 
 mod)
 parmacloud_modify_domain
+;;
+rerun)
+docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
+docker rm $(docker ps --format "{{.Names}}" | grep nextcloud)
+parmacloud_run
 ;;
 
 *)
