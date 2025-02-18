@@ -2,6 +2,7 @@ function parmacloud_run {
 
 if ! yesorno_blue "Regular or Reverse Proxy?" "reg" "Regular" "rev" "Reverse" ; then
 clear
+echo -e "$blue"
 sudo docker run \
 -d \
 --init \
@@ -20,6 +21,7 @@ sudo docker run \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
 clear
+echo -e "$blue"
 sudo docker run \
 -d \
 --init \
