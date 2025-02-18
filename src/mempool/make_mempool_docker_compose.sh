@@ -22,7 +22,7 @@ services:
       BACKEND_MAINNET_HTTP_HOST: "api"
     image: mempool/frontend:latest
     user: "0:0"
-    restart: on-failure
+    restart: unless-stopped
     stop_grace_period: 1m
     command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
     ports:
@@ -77,7 +77,7 @@ cat << EOF | tee -a $file >$dn 2>&1
 
     image: mempool/backend:latest
     user: "0:0"
-    restart: on-failure
+    restart: unless-stopped
     stop_grace_period: 1m
     command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
     volumes:
@@ -92,7 +92,7 @@ cat << EOF | tee -a $file >$dn 2>&1
       MYSQL_ROOT_PASSWORD: "admin"
     image: mariadb:10.5.21
     user: "0:0"
-    restart: on-failure
+    restart: unless-stopped
     stop_grace_period: 1m
     volumes:
       - $mysql_data:/var/lib/mysql
