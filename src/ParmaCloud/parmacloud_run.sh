@@ -1,7 +1,7 @@
 function parmacloud_run {
-echo "parmacloud_run" >>$HOME/Desktop/debug.log
 
 if ! yesorno_blue "Regular or Reverse Proxy?" "reg" "Regular" "rev" "Reverse" ; then
+clear
 sudo docker run \
 -d \
 --init \
@@ -19,6 +19,7 @@ sudo docker run \
 --volume /var/run/docker.sock:/var/run/docker.sock:ro \
 nextcloud/all-in-one:latest || { enter_continue "Something went wrong." ; return 1 ; }
 else
+clear
 sudo docker run \
 -d \
 --init \
