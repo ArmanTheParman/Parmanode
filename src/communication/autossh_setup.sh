@@ -142,8 +142,12 @@ set_terminal ; echo -e "
 ########################################################################################
 
     9. Monitoring. Check if there are any errors on the host computer:
-     $cyan
+$cyan
        sudo journalctl -fexu autossh-tunnel
+$orange 
+       and
+$cyan
+       sudo systemctl status autossh-tunnel
 $orange
 ########################################################################################
 "
@@ -156,7 +160,7 @@ while true ; do
 set_terminal ; echo -e "
 ########################################################################################
 
-    10. For domain name forwarding, Nginx on the VPS need to be configured. The 
+    10. For domain name forwarding, Nginx on the VPS needs to be configured. The 
         config set up can be tricky and is outside the scope of these instructions. 
         Make sure to restart nginx.service once done.
 $orange
