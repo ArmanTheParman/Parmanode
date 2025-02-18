@@ -41,8 +41,8 @@ $orange
                       stop)$blue          Stop NextCloud Docker container
 $orange
                       restart)$blue       Restart (do after config changes)
-
-$orange               rerun)$blue         Destroy container and rerun (no data loss, be cool) 
+$orange
+                      rerun)$blue         Destroy container and rerun (no data loss, be cool) 
 $orange
                       data)$blue          Information about data storage and backups
 
