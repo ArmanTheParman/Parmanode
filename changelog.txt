@@ -3,6 +3,7 @@ Version 3.54.0
     -ParmaNas
     -Tmux sudo improvement
     -Sudo timeout longer
+    -Mempool restart policy to unless-stopped improves reliability
 Version 3.53.0
     -LND Watchtower
     -Bitcoin update 28.1
