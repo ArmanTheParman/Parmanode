@@ -13,6 +13,9 @@ remove_tor_log_patch
     pn_tmux "sudo strip /usr/local/bin/* >/dev/null 2>&1" "stripping_binaries" >/dev/null 2>&1
     sudo test -e /etc/sudoers.d/parmanode_extend_sudo_timeout ||
         echo "Defaults:$USER timestamp_timeout=45" | sudo tee /etc/sudoers.d/parmanode_extend_sudo_timeout >/dev/null
+    [[ -e $hp/mempool/docker/docker-compose.yml ]] && 
+        gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
+        
 
 fulcrum_delete_old_log 
 #Docker containers sometimes won't have $USER variable set...
