@@ -1,5 +1,7 @@
 function parmacloud_run {
-if ! yesorno "Regular or Reverse Proxy?" "reg" "Regular" "rev" "Reverse" ; then
+echo "parmacloud_run" >>$HOME/Desktop/debug.log
+
+if ! yesorno_blue "Regular or Reverse Proxy?" "reg" "Regular" "rev" "Reverse" ; then
 sudo docker run \
 -d \
 --init \
