@@ -100,7 +100,7 @@ parmacloud_modify_domain
 ;;
 rerun)
 docker stop $(docker ps --format "{{.Names}}" | grep nextcloud) || enter_continue
-docker rm $(docker ps --format "{{.Names}}" | grep nextcloud) || enter_continue
+docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud) || enter_continue
 parmacloud_run
 ;;
 
