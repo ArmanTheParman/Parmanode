@@ -1,6 +1,6 @@
 function verify_lnd {
 #import Roasbeef's public key
-gpg --import $pn/src/lnd/roasbeef.pgp || enter_continue "Failed to import Roasbeef's public key. Please report to Parman."
+gpg --import $pn/src/lnd/roasbeef.pgp 
 
 
 cd $HOME/parmanode/lnd
