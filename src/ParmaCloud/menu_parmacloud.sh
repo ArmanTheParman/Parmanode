@@ -53,7 +53,7 @@ $orange
     REGULAR ACCESS: $pink
           https://$parmacloud_domain $orange   mod)$blue   Modify domain
 
-    DATA DIRECTORY: $pink
+    DEFAULT DATA DIRECTORY: $pink
           $vld/volumes/nextcloud_aio_nextcloud_data/_data/__NEXTCLOUD_username__
 $blue
 ################################################################################################
