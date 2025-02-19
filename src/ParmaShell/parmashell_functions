@@ -78,7 +78,7 @@ function vlt { cd /var/lib/tor ; a ; }
 function www { cd /var/www/ ; a ; }
 function ess { cd /etc/systemd/system ; a ; }
 function rn { sudo systemctl restart nginx.service && echo "" && echo "Nginx restarted" ; }
-function raid { cd /media/$USER/RAID ; a ; }
+function raid { cd /media/$USER/RAID || sleep 1.5 ; a ; }
 function vl { cd /var/log ; a ; }
 function vlt { cd /var/lib/tor ; a ; }
 function vln { cd /var/log/nginx ; a ; }
