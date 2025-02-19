@@ -9,7 +9,9 @@ if yesorno "Do you want version 17.5 or 18.5?
     
     18.5 is fixes some important bugs, but the gpg signatures provided seem corrupt.
     For this version, Parmanode skips gpg verification and goes straight to SHA256.
-    If this is a concern, choose 17.5." "1" "18.5" "2" "17.5" ; then
+    If this is a concern, choose 17.5.
+    
+    This warning will remain until a fix is found." "1" "18.5" "2" "17.5" ; then
 
     export lndversion="v0.18.5-beta"
 else
