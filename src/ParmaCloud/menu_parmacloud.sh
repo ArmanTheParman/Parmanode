@@ -129,13 +129,13 @@ success_blue "Password change done."
 function parmacloud_modify_domain {
 announce_blue "This is only to make the menu screen appear accurate.
     Changeing domain routing is done outsite of Parmanode.
-    Please type in your preferred domain, eg mycloudserver.com,
-    do not enter the https prefix. Or hit <enter> alone to abort."
+    Please$orange type in your preferred domain$blue, eg mycloudserver.com,
+    do not enter the https prefix. Or hit$cyan <enter>$blue alone to abort."
 
 case $enter_cont in
 q|Q) exit ;; ""|p|P) return 1 ;;
 *)
-yesorno_blue "Use $enter_cont?" || return 1
+yesorno_blue "Use $orange$enter_cont$blue to print on your ParmaCloud menu?" || return 1
 parmanode_conf_remove "parmacloud_domain="
 parmanode_conf_add "parmacloud_domain=$enter_cont"
 ;;
