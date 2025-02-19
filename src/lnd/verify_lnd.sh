@@ -1,6 +1,6 @@
 function verify_lnd {
 #import Roasbeef's public key
-gpg --import $pn/src/lnd/roasbeef.pgp 2>&1
+gpg --import $pn/src/lnd/roasbeef.pgp || enter_continue "Failed to import Roasbeef's public key. Please report to Parman."
 
 cd $HOME/parmanode/lnd
 debug "wait"
