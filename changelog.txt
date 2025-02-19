@@ -1,3 +1,5 @@
+Version 3.54.1
+    -LND 18.5
 Version 3.54.0
     -Premium features
     -ParmaNas
