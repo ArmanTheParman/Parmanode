@@ -7,7 +7,7 @@ cd $HOME/parmanode/lnd
 debug "wait"
 #verify SHA256 output list file.
 
-if [[ $lndversion="v0.18.5-beta" ]] || #this version provides corrupt signature files, goint to the hash file instead.
+[[ $lndversion="v0.18.5-beta" ]] || { #this version provides corrupt signature files, goint to the hash file instead.
     if  ! gpg --verify --status-fd 1 *.sig manifest*.txt 2>&1 | grep -qi GOOD ; then
         set_terminal
         echo "GPG verification failed. Unknown reason. Please report to Parman. Aborting."
@@ -18,6 +18,7 @@ if [[ $lndversion="v0.18.5-beta" ]] || #this version provides corrupt signature 
         echo -e "GPG verification$green passed$orange."
         sleep 2
     fi
+}
 
 #Perform SHA256 to verify
 if which sha256sum >$dn ; then
