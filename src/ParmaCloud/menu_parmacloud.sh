@@ -9,10 +9,11 @@ fi
 
 unset nextcloud_running
 source $pc
-if  [[ $(docker ps | grep -q nextcloud | wc -l) -gt 1 ]] ; then
+if  [[ $(docker ps | grep nextcloud | wc -l) -gt 1 ]] ; then
 nextcloud_running="${green}RUNNING$orange"
 elif docker ps | grep -q nextcloud ; then
-nextcloud_running="${red}PARTIALLY RUNNING$orange"
+nextcloud_running="${red}PARTIALLY RUNNING - you might need to access
+                                             initial setup link, see below$orange"
 else
 nextcloud_running="${red}NOT RUNNING$orange"
 fi
