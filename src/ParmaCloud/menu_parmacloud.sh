@@ -47,7 +47,7 @@ $orange
                       data)$blue          Information about data storage and backups
 
 
-    ACCESS FOR INITIAL SETUP: $green
+    ACCESS FOR INITIAL SETUP (and when restarting stopped containers): $green
           https://$IP:8020    $blue
     
     REGULAR ACCESS: $pink
