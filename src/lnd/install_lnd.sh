@@ -4,7 +4,17 @@ sned_sats
 
 unset remote_user remote_pass ipcore
 if grep -q "litd" $ic ; then announce "Can't install LND if you have LITD" ; return 1 ; fi
-export lndversion="v0.18.5-beta"
+
+if yesorno "Do you want version 17.5 or 18.5?
+    
+    18.5 is fixes some important bugs, but the gpg signatures provided seem corrupt.
+    For this version, Parmanode skips gpg verification and goes straight to SHA256.
+    If this is a concern, choose 17.5." "1" "18.5" "2" "17.5" ; then
+
+    export lndversion="v0.18.5-beta"
+else
+    export lndversion="v0.17.5-beta"
+fi
 
 bitcoin_choice_with_lnd || return 1
 
