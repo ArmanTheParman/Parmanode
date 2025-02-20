@@ -23,6 +23,15 @@ tmux
 invalid_flag=set
 ;;
 
+debugon)
+export debug=1
+invalid_flag=set
+;;
+debugoff)
+unset debug
+invalid_flag=set
+;;
+
 dockerps)
 clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
 
