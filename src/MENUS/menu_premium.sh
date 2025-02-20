@@ -1,6 +1,6 @@
 function menu_premium {
 while true ; do
-unset parminer parmacloud parmanas
+unset parminer parmacloud parmanas another
 menu_add_source
 [[ ! -e $pp/parminer ]] &&          parminer="\n#$orange                pm)$blue        ParMiner                                                   #
 #                                                                                      #"
@@ -12,6 +12,7 @@ if ! grep -q "website-" $ic 2>$dn ; then  parmaweb="\n#$orange               web
 #                                                                                      #"
 else
     parmaweb="\n#$orange               web)$blue        ParmaWeb (add another)                                     #"
+another="true"
 fi
 [[ ! -e $pp/parmaraid ]] &&        parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
 #                                                                                      #"
@@ -90,7 +91,7 @@ web)
     
     Contact Parman for setup. Fee is \$500 USD." && continue
 
-make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
+[[ -n $another ]] && make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
 
 ! grep -q "website-end" $ic 2>$dn && {
 
