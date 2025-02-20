@@ -75,6 +75,12 @@ parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
 export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 pk)
+
+if [[ $(uname -m) != "x86_64" ]] ; then
+announce "Knots precompiled only available for x86_64 at this stage."
+continue
+fi
+
 parmanode_conf_add "bitcoin_choice=knots_precompiled"
 export bitcoin_compile="false"
 export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
