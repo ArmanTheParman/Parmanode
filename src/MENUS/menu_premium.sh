@@ -8,8 +8,11 @@ menu_add_source
 #                                                                                      #"
 [[ ! -e $pp/parmanas ]] &&          parmanas="\n#$orange              pnas)$blue        ParmaNas - Network Attached Storage                        #
 #                                                                                      #"
-! grep -q "website-" $ic 2>$dn &&   parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
+if ! grep -q "website-" $ic 2>$dn ; then  parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
 #                                                                                      #"
+else
+    parmaweb="\n#$orange               web)$blue        ParmaWeb (add another)                                     #"
+fi
 [[ ! -e $pp/parmaraid ]] &&        parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
 #                                                                                      #"
 
