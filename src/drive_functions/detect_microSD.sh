@@ -87,7 +87,7 @@ if [[ $OS == Linux ]] ; then
     if [[ -z $disk ]] ; then announce "Error detecting Linux drive. Aborting." ; return 1 ; fi
     break
 fi
-    
+enter_continue "Something went wrong. Please report to Parman. Error code: 420" 
 done
 
 if [[ $OS == Linux ]] ; then
