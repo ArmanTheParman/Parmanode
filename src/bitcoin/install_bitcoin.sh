@@ -147,6 +147,7 @@ set_terminal
 if [[ $OS == "Linux" ]] ; then
 
     if ! which bitcoind >$dn ; then
+        enter_continue "Something went wrong. Bitcoin Core did not install correctly."
         install_failure "Bitcoin"
         log "bitcoin" "no binaries. install failure."
         unset importdrive
