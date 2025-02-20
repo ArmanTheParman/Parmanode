@@ -179,7 +179,7 @@ if [[ $OS == Linux ]] ; then
 
     break
 fi
-    
+enter_continue "Something went wrong. Please report to Parman. Error code: 420" && return 1
 done
 }
 
