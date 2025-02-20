@@ -4,7 +4,7 @@ cd $HOME/parmanode
 choose_sparrow_version
 
 #clean up previous downloads if any
-sudo rm -rf $hp/"*parrow-1."*
+sudo rm -rf $hp/"*parrow-*" >$dn
 
 if [[ $OS == "Linux" ]] ; then
 

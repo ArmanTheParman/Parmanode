@@ -67,7 +67,7 @@ sudo rm -rf /Applications/Sparrow.app
 fi
 
 #clean up downloads
-sudo rm -rf $hp/"*parrow-1."*
+sudo rm -rf $hp/"*parrow-*" >$dn
 installed_config_remove "sparrow"
 success "Sparrow" "being uninstalled."
 }

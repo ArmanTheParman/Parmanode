@@ -60,7 +60,7 @@ if [[ $OS == "Linux" ]] ; then
 fi
 
 #move download files, tidy up
-mv $hp/*arrow-1.* $hp/Sparrow/ >$dn
+mv $hp/*arrow-2.* $hp/Sparrow/ >$dn
 debug "moved sparrow files to $hp/Sparrow/"
 
 add_localhost_to_bitcoinconf
