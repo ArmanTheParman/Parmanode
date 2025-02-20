@@ -83,7 +83,7 @@ if [[ $OS == "Mac" ]] ; then
 fi
 
 # Remove binaries
-sudo rm /usr/local/bin/bitcoin* 2>$dn
+sudo rm /usr/local/bin/*bitcoin* 2>$dn
 
 #Modify config file
 installed_config_remove "bitcoin"
