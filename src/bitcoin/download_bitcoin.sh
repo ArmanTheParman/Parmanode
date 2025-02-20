@@ -3,7 +3,7 @@ function download_bitcoin {
 #not required for installation/setup of system outsite docker.
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
-
+if [[ $bitcoin_compile == "false" && bitcoinknots == "true" ]] ; then download_bitcoin_knots ; return 0 ; fi
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
 
@@ -127,4 +127,12 @@ sudo install -m 0755 -o $(whoami) -g $(whoami) -t /usr/local/bin $hp/bitcoin/bin
 sudo rm -rf $hp/bitcoin/bin
 sudo rm -rf $dp/temp >$dn 2>&1
 fi
+}
+
+
+function download_bitcoin_knots {
+git clone https://github.com/armantheparman/compiled_bitcoin_knots $hp/complied_bitcoin_knots
+sudo mv $hp/complied_bitcoin_knots/bin/* /usr/local/bin
+sudo rm -rf $hp/complied_bitcoin_knots
+return 0
 }
