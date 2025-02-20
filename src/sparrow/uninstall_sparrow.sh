@@ -69,5 +69,5 @@ fi
 #clean up downloads
 sudo rm -rf $hp/"*parrow-*" >$dn
 installed_config_remove "sparrow"
-success "Sparrow" "being uninstalled."
+success "Sparrow has been uninstalled"
 }

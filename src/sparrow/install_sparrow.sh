@@ -69,7 +69,19 @@ add_server_1_to_bitcoinconf
 installed_conf_add "sparrow-end"
 
 mkdir
-success "Sparrow has been installed"
+success "Sparrow has been installed.
+
+    If you want to be cautious and verify the software your self (good idea)
+    in addition to Parmanode having done it for you, you can do that. The
+    zipped files have been left in$cyan
+
+        $HOME/parmanode/Sparrow/$orange
+
+    You can delete them anytime.
+
+    You can study how to verify software in general if you become join
+    Parman's mentorship program. It's a good skill to have."
+
 return 0
 }
 

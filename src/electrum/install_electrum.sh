@@ -123,28 +123,21 @@ if [[ $computer_type == "Pi" ]] ; then
     udev
     fi
 
-set_terminal ; echo -e "
-########################################################################################
-$cyan
-                                S U C C E S S ! !
-$orange
-    Electrum has been installed. 
+success "Electrum has been installed. 
 $pink
     It's best to run Electrum through Parmanode$orange as extra background work has gone 
     in to making sure you have a good connection to the Electrs or Fulcrum server.
 
-    Do be patient when loading the wallet - it can take 30 seconds to a minute for it
-    to connect to the server. You'll see a red dot in the bottom right hand corner,
-    but eventually it should turn green if you wait a bit. 
-    
-    If it doesn't work, do this:
-$cyan
-        1.$orange Completely close Electrum$cyan
-        2.$orange Restart Fulcrum or electrs server$cyan
-        3.$orange Restart Electrum from the Parmanode menu
+    If you want to be cautious and verify the software your self (good idea)
+    in addition to Parmanode having done it for you, you can do that. The
+    zipped files have been left in$cyan
 
-########################################################################################
-"
+        $HOME/parmanode/electrum/$orange
+
+    You can delete them anytime.
+
+    You can study how to verify software in general if you become join Parman's 
+    mentorship program. It's a good skill to have."
 enter_continue ; jump $enter_cont 
 fi
 }
