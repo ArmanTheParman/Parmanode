@@ -134,5 +134,6 @@ function download_bitcoin_knots {
 git clone https://github.com/armantheparman/compiled_bitcoin_knots $hp/complied_bitcoin_knots
 sudo mv $hp/complied_bitcoin_knots/* /usr/local/bin
 sudo rm -rf $hp/complied_bitcoin_knots
+debug "after download_bitcoin_knots"
 return 0
 }
