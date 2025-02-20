@@ -27,7 +27,7 @@ $red
 $green
             gc)       Guided compile v$version
 $bright_blue
-         patch)       Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
+         patch)       Guided compile v$version $yellow(FILTER-ORDINALS patch$bright_blue, by Luke Dashjr)
 
          knots)       Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin 
                       Core) - syncs faster; bug fixes missing in Core; and power user options / tools.
