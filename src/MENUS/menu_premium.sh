@@ -94,19 +94,17 @@ web)
 
 [[ -n $another ]] && make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
 
-! grep -q "website-end" $ic 2>$dn && {
+git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb || {
+    enter_continue "Something went wrong" ; continue 
+} #requires SSH key authority
 
-    git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb || {
-        enter_continue "Something went wrong" ; continue 
-    } #requires SSH key authority
-    
-    for file in $pp/parmaweb/src/*.sh ; do
-    source $file
-    done
+for file in $pp/parmaweb/src/*.sh ; do
+source $file
+done
 
-    install_website
-    return 0
-}
+install_website
+return 0
+
 ;;
 pr)
 install_raid
