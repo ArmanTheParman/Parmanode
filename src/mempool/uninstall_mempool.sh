@@ -26,7 +26,7 @@ fi
 nogsedtest
 cd $hp/mempool/docker && docker compose down
 #need sudo, some dirs have container permissions
-cd $hp && sudo rm -rf ./mempool/
+cd $hp && sudo rm -rf $hp/mempool
 sudo gsed -i "/mempool-service/d" $macprefix/etc/tor/torrc 
 sudo gsed -i "/127.0.0.1:8180/d" $macprefix/etc/tor/torrc 
 installed_config_remove "mempool-"
