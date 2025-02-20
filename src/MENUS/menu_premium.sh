@@ -11,7 +11,8 @@ menu_add_source
 if ! grep -q "website-" $ic 2>$dn ; then  parmaweb="\n#$orange               web)$blue        ParmaWeb                                                   #
 #                                                                                      #"
 else
-    parmaweb="\n#$orange               web)$blue        ParmaWeb (add another)                                     #"
+    parmaweb="\n#$orange               web)$blue        ParmaWeb (add another)                                     #
+#                                                                                      #"
 another="true"
 fi
 [[ ! -e $pp/parmaraid ]] &&        parmaraid="\n#$orange                pr)$blue        ParmaRAID                                                  #
