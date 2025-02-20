@@ -95,8 +95,7 @@ web)
 [[ -n $another ]] && make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
 
 git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb || {
-    enter_continue "Something went wrong" ; continue 
-} #requires SSH key authority
+cd $pp/parmaweb && git pull >$dn 2>&1 ; } || { enter_continue "Something went wrong" ; continue ; } #requires SSH key authority
 
 for file in $pp/parmaweb/src/*.sh ; do
 source $file
