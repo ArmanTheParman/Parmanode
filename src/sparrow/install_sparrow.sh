@@ -34,11 +34,12 @@ fi
 
 please_wait
 download_sparrow || return 1
+debug_user "sparrow downloaded"
 installed_conf_add "sparrow-start"
 debug_user "check if files have been downloaded, esp shasum file.
 should be found in $HOME/parmanode/"
 verify_sparrow || return 1
-
+debug "sparrow verified"
 if ! grep -q rpcuser $bc ; then _connect=cookie ; fi
 if grep -q electrs-end $ic ; then _connect=electrstcp ; fi
 if grep -q fulcrum-end $ic ; then _connect=fulcrumssl ; fi
@@ -60,6 +61,7 @@ fi
 
 #move download files, tidy up
 mv $hp/*arrow-1.* $hp/Sparrow/ >$dn
+debug "moved sparrow files to $hp/Sparrow/"
 
 add_localhost_to_bitcoinconf
 add_server_1_to_bitcoinconf
