@@ -17,6 +17,12 @@ done
 invalid_flag=set 
 ;;
 
+tmux)
+clear
+tmux
+invalid_flag=set
+;;
+
 dockerps)
 clear ; docker ps ; enter_continue ; invalid_flag=set ;;       
 
