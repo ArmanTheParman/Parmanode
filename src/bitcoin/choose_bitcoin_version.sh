@@ -32,7 +32,7 @@ $bright_blue
          knots)       Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin 
                       Core) - syncs faster; bug fixes missing in Core; and power user options / tools.
      
-           pk)        Knots compiled by Parman (saves time, less secure than compiling yourself)
+           pk)       $yellow Knots$bright_blue compiled by Parman (saves time, less secure than compiling yourself)
 $red
           yolo)       Guided compile of most recent Github update, i.e. pre-release
                       (for testing only)
