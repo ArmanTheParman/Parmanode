@@ -68,7 +68,7 @@ add_server_1_to_bitcoinconf
 
 installed_conf_add "sparrow-end"
 
-rm $hp/sparrow-* >$dn 2>&1
+mkdir
 success "Sparrow has been installed"
 return 0
 }
