@@ -11,40 +11,40 @@ fi
 
 while true ; do
 #default version set at the beginning of instll_bitcoin()
-set_terminal ; echo -e "
-########################################################################################
+set_terminal 40 110 ; echo -e "
+##############################################################################################################
 $cyan
-    THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
+            THERE ARE SEVERAL WAYS TO INSTALL BITCOIN WITH PARMANODE. PLEASE CHOOSE...
 $orange
-########################################################################################
+##############################################################################################################
 $green
-   hit
- <enter>)  v$version - Download and verify 'trusted' releases
-$red
-  custom)  Custom version (you choose) - Download and verify 'trusted' releases
 
-      cc)  Guided compile custom version (you choose) 
+   hit <enter>)       v$version - Download and verify 'trusted' releases
+$red
+        custom)       Custom version (you choose) - Download and verify 'trusted' releases
+
+            cc)       Guided compile custom version (you choose) 
 $green
-      gc)  Guided compile v$version
+            gc)       Guided compile v$version
 $bright_blue
-   patch)  Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
+         patch)       Guided compile v$version (FILTER-ORDINALS patch, by Luke Dashjr)
 
-   knots)  Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin Core) - 
-           syncs faster; bug fixes missing in Core; and power user options / tools.
-
-     pk)   Knots compiled by Parman (saves time, less secure than compiling yourself)
+         knots)       Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin 
+                      Core) - syncs faster; bug fixes missing in Core; and power user options / tools.
+     
+           pk)        Knots compiled by Parman (saves time, less secure than compiling yourself)
 $red
-    yolo)  Guided compile of most recent Github update, i.e. pre-release
-           (for testing only)
+          yolo)       Guided compile of most recent Github update, i.e. pre-release
+                      (for testing only)
 $orange
-    info)  Read how to compile yourself, and import the installation to Parmanode. 
-           You can come back to this menu after selecting this. 
+          info)       Read how to compile yourself, and import the installation to Parmanode. 
+                      You can come back to this menu after selecting this. 
 
-  import)  IMPORT binaries you have compiled yourself (or previously downloaded without
-           the help of the Parmanode install process). 'Binaries' refers to the 
-           executable files, eg bitcoind and bitcoin-qt, not the blockchain.
+        import)       IMPORT binaries you have compiled yourself (or previously downloaded without
+                      the help of the Parmanode install process). 'Binaries' refers to the 
+                      executable files, eg bitcoind and bitcoin-qt, not the blockchain.
 $orange
-########################################################################################   
+##############################################################################################################
 "
 choose "xpmq" 
 unset bitcoin_compile ordinals_patch knotsbitcoin byo_bitcoin
