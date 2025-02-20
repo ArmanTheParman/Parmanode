@@ -107,7 +107,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 sudo chown -R $USER: $HOME/.bitcoin/ 
 fi
-debug "a bit later"
+debug "pause"
 
 if [[ $btcpayinstallsbitcoin != "true"  && $btcdockerchoice != "yes" ]] ; then
 #setting password. Managing behaviour of called function with variable and arguments.

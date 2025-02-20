@@ -51,8 +51,8 @@ fi
 
 #sparrow
 if [[ -e ~/.sparrow/config ]] ; then
-export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | xargs)
-export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | xargs)
+export sparrow_rpcuser=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 2 | xargs -0)
+export sparrow_rpcpassword=$(cat ~/.sparrow/config | grep 'coreAuth"' | cut -d : -f 3 | xargs -0)
 fi
 
 #public_pool
