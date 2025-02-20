@@ -3,7 +3,7 @@ function download_bitcoin {
 #not required for installation/setup of system outsite docker.
 
 if [[ $btcpay_combo == "true" ]] || [[ $btcdockerchoice == yes ]] ; then return 0 ; fi
-if [[ $bitcoin_compile == "false" && bitcoinknots == "true" ]] ; then download_bitcoin_knots ; return 0 ; fi
+if [[ $bitcoin_compile == "false" && $bitcoinknots == "true" ]] ; then download_bitcoin_knots ; return 0 ; fi
 # version == self means user has chosen to import own binaries.
 if [[ $version == self ]] ; then return 0 ; fi
 
