@@ -39,7 +39,7 @@ debug "printed colours" "silent"
 #if [[ $debug == 1 ]] ; then echo -e "${orange}printed colours, hit <enter>" ; read ; fi
 
 test_standard_install
-
+debug "1"
 #drive structure
 make_home_parmanode 
 make_dot_parmanode # NEW INSTALL FLAG ADDED HERE 
@@ -47,6 +47,7 @@ parmanode_conf_add # With no argument after the function, this will create a
                    # parmanode.conf file if it doesnt' exist.
 if [[ ! -e $ic ]] ; then touch $ic ; fi
 
+debug '2'
 # Load config variables
 source $HOME/.parmanode/parmanode.conf >$dn 2>&1 
 
@@ -64,7 +65,7 @@ fi
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
-
+debug "3"
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
@@ -85,7 +86,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 else
 	[[ $premium == 1 ]] || autoupdate
 fi
-
+debug "4"
 if [[ $needs_restart == "true" ]] ; then
 announce "An update to Parmanode was made to the latest version. Please restart Parmanode
     by typing 'rp' and <enter> at the prompt."
@@ -107,7 +108,7 @@ fi
 # get version, and suggest user to update if old.
 
 [[ $btcpayinstallsbitcoin == "true" ]] || update_version_info 
-
+debug "5"
 if [[ $exit_loop == "false" ]] ; then return 0 ; fi
 
 # set "trap" conditions; currently makes sure user's terminal reverts to default colours
@@ -124,7 +125,7 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 rossisfree 
 motd
 fi
-
+debug "6"
 #Commands that refresh data
 pn_tmux "$dp/update_external_IP2.sh" "checking_external_IP"
 test_8333_reachable
