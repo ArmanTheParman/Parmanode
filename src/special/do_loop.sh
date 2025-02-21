@@ -75,7 +75,7 @@ fi
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
 debug "3.5"
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
-
+    debug aa
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
 	cd $HOME/parman_programs/parmanode && git config pull.rebase false >$dn 2>&1 
 	git pull >$dn 2>&1 && needs_restart="true" >$dn 2>&1
@@ -83,6 +83,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
+    debug aaa
     autoupdate
 fi
 debug "4"
