@@ -65,12 +65,10 @@ fi
 #add to run count
 [[ $premium == 1 ]] || rp_counter
 test_internet_connected || exit
-debug "3"
 #btcpayinstallsbitcoin is for a docker container installation initiated by btcpay installation.
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi
-debug "3.1"
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
@@ -85,7 +83,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
-	[[ $premium == 1 ]] || autoupdate
+    autoupdate
 fi
 debug "4"
 if [[ $needs_restart == "true" ]] ; then
