@@ -12,7 +12,7 @@ echo -e "
     
     the config file. 
     
-    Hit$red s$orange to skip or$green anything else$cyan to continue and allow the changes to be made.
+    Hit$red s$orange to skip or$green anything else$orange to continue and allow the changes to be made.
 
 ########################################################################################
 "
