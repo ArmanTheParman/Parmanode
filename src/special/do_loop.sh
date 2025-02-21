@@ -70,11 +70,12 @@ debug "3"
 [[ $premium == 1 ]] || if [[ $1 != menu ]] ; then
    if [[ $skip_intro != "true" && $btcpayinstallsbitcoin != "true" ]] ; then intro ; instructions ; fi
 fi
-
+debug "3.1"
 #If the new_install file exists (created at install) then offer to update computer.
 #then delete the file so it doesn't ask again. 
 # .new_install created inside a function that creates .parmanode directory for the first time
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then
+debug "3.5"
 if [[ -e $HOME/.parmanode/.new_install ]] ; then
 
 	# If Parmanode has never run before, make sure to get latest version of Parmanode
