@@ -1,7 +1,5 @@
 function autoupdate {
-debug 000
 check_disk_space
-debug bbb
 ########################################################################################
 #Used by autoupdate toggle function
 if [[ $1 == on ]] ; then
@@ -17,8 +15,6 @@ sudo systemctl reload cron >$dn 2>&1
 return 0
 fi
 ########################################################################################
-
-debug ccc
 
 if [[ -f $hm ]] ; then
 . $hm >$dn
@@ -87,7 +83,6 @@ return 0
 invalid ;;
 esac 
 done
-debug eee
 fi
 }
 

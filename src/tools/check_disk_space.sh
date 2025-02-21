@@ -1,11 +1,7 @@
 function check_disk_space {
-debug x1
 space_left=$(df | grep -E '\/$' | awk '{print $4}' | tr -d \r)
-debug x2 
 if [[ $space_left -gt 5000000 ]] ; then return 0 ; fi
-debug x3
 while true ; do
-debug x4
 set_terminal ; echo -e "
 ########################################################################################
 $red
@@ -33,9 +29,7 @@ more) break ;;
 clean) free_up_space ;;
 *) invalid ;;
 esac
-debug x5
 done
-debug x6
 set_terminal ; echo -e "
 ########################################################################################
 
@@ -63,6 +57,5 @@ $cyan
  
 ########################################################################################
 "
-debug x7
 enter_continue ; jump $enter_cont
 }
