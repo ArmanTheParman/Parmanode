@@ -79,7 +79,7 @@ if [[ -e $HOME/.parmanode/.new_install ]] ; then
 	update_computer new_install 
 	rm $HOME/.parmanode/.new_install
 else
-    autoupdate
+    [[ $premium == 1 ]] || autoupdate
 fi
 if [[ $needs_restart == "true" ]] ; then
 announce "An update to Parmanode was made to the latest version. Please restart Parmanode
