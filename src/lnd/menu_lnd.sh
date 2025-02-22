@@ -1,5 +1,8 @@
 function menu_lnd {
 if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
+if grep -q "lnd_nowallet=true" $pc ; then announce "Please make sure to create a wallet first,
+    otherwise LND won't work at all." ; gsed -i '/lnd_nowallet=true/d' $pc ; fi
+
 if grep -q "btccombo-end" $ic && ! grep -q "BTCIP" $pc && grep -q "127.0.0.1" $HOME/.lnd/lnd.conf ; then
 while true ; do
 set_terminal ; echo -e "
