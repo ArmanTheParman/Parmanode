@@ -12,7 +12,9 @@ if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
 
     if ! which gsed >/dev/null ; then 
 
-        echo -e "\n \r    Couldn't get gsed symlink working. You could experience errors. 
+        echo -e "\n \r    Couldn't get gsed symlink working. You will experience errors if you continue 
+                \r    using Parmanode without getting this sorted first.
+
                 \r    This command seems to have failed: sudo ln -s $(which sed) /usr/bin/gsed 
                 \r    This command should show the gsed path: which gsed
 
