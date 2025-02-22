@@ -93,7 +93,9 @@ fi
     gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
         
 
-#if grep -q "onion" $bc
+if grep -q "onion" $bc && ! grep -q rpcbind= $bc ; then
+    echo "rpcbind=127.0.0.1" | tee -a $bc >$dn 2>&1
+fi
 
 
 debug temppatchend
