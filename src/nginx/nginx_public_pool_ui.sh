@@ -21,7 +21,7 @@ if [[ $1 = "remove" ]] ; then
 else #install
 
     #might need to install nginx
-    if ! which nginx >$dn ; then install_nginx ; fi
+    if ! sudo which nginx >$dn ; then install_nginx ; fi
 
 echo -en "
 server {

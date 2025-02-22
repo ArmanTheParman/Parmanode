@@ -21,7 +21,7 @@ elif [[ $OS == Linux ]] ; then
     fi
 fi
 
-if ! which nginx >$dn 2>&1 ; then sudo gsed -i "/nginx-/d" $ic  ; install_nginx ; debug "nginx1?" ; fi
+if ! sudo which nginx >$dn 2>&1 ; then sudo gsed -i "/nginx-/d" $ic  ; install_nginx ; debug "nginx1?" ; fi
 #nginx_stream public_pool install || { debug "nginx_stream failed" ; return 1 ; }
 
 #check for port 80 clash

@@ -47,7 +47,7 @@ echo "HiddenServicePort 7001 127.0.0.1:7001" | sudo tee -a /etc/tor/torrc >$dn 2
 sudo systemctl restart tor
 
 
-if ! which nginx >$dn 2>&1 ; then
+if ! sudo which nginx >$dn 2>&1 ; then
     set_terminal
     echo "Nginx needs to be installed in order to proceed. Do that now? y or n."
     read choice

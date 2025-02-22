@@ -495,7 +495,7 @@ X11|x11)
 
 ######Hidden Menu########
 ng)
-  if which nginx >$dn 2>&1 ; then
+  if sudo which nginx >$dn 2>&1 ; then
   menu_nginx
   fi
   ;;

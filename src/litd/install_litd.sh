@@ -9,7 +9,7 @@ if grep -q "lnd-" $ic ; then announce "cant have both LND and LITD"; return 1 ; 
 
 export litdversion="v0.12.5-alpha"
 
-if ! which nginx >$dn 2>&1 ; then install_nginx 
+if ! sudo which nginx >$dn 2>&1 ; then install_nginx 
 sudo rm /etc/nginx/sites-available/*
 sudo rm /etc/nginx/sites-enabled/*
 sudo systemctl restart nginx >$dn 2>&1

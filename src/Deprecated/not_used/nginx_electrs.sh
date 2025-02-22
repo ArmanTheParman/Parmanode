@@ -36,7 +36,7 @@ sudo rm $nginx_electrs_conf 2>$dn
 else #add
 
 #might need to install nginx
-if ! which nginx >$dn ; then install_nginx ; fi
+if ! sudo which nginx >$dn ; then install_nginx ; fi
 
 echo "include electrs.conf;" | sudo tee -a $nginx_conf >$dn 2>&1
 

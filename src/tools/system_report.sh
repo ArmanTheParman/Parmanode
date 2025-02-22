@@ -73,7 +73,7 @@ echor "$(cat $dp/installed.conf)"
 
 heading "PROGRAM CHECK"
 echor "which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh:"
-echor "$(which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh)"
+echor "$(sudo which nginx npm tor bitcoin-cli docker brew curl jq netstat tmux ssh)"
 
 heading "TMUX LIST..."
 echor "$(tmux ls)"

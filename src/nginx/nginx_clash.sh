@@ -17,7 +17,7 @@ fi
 if [[ $OS == Mac ]] ; then local nginxDir="/usr/local/etc/nginx" ; fi
 if [[ $OS == Linux ]] ; then local nginxDir="/etc/nginx" ; fi
 
-if ! which nginx >$dn 2>&1 ; then return 0 ; fi
+if ! sudo which nginx >$dn 2>&1 ; then return 0 ; fi
 
 fileNum=$(grep -rE '^\slisten.*\s+80\s+' $nginxDir/* | wc -l )
 
