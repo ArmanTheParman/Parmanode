@@ -429,7 +429,7 @@ function check_bitcoin_tor_status_and_mempool_IPs {
 
 source $pc
 
-if ! [[ $bitcoin_tor_status == "onlyout" || $bitcoin_tor_status == "toronly" ]] ; then return 0 ; fi
+if ! grep "onion" $bc ; then return 0 ; fi
 
 list_mempool_docker_IPs
 
