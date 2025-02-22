@@ -6,17 +6,18 @@ function gsed_symlink {
 
 #make a gsed symlink
 if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
-    debug "gsed symlink"
+
+    touch $HOME/Desktop/test__can_delete
     sudo ln -s $(which sed) /usr/bin/gsed 
     debug "pause after gsed symlink"
 
-if ! which gsed >/dev/null ; then 
+    if ! which gsed >/dev/null ; then 
 
-    echo -e "\n \r    Couldn't get gsed symlink working. You could experience errors. 
-             \r    Better call Parman for assistance.
+        echo -e "\n \r    Couldn't get gsed symlink working. You could experience errors. 
+                \r    Better call Parman for assistance.
 
-             \r    Hit <enter> to continue"
-    read
-fi
+                \r    Hit <enter> to continue"
+        read
+    fi
 fi
 }
