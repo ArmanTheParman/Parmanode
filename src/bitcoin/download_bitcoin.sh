@@ -131,7 +131,10 @@ fi
 
 
 function download_bitcoin_knots {
-bitcoin_compile_dependencies "GUI"
+
+bitcoin_compile_dependencies
+bitcoin_compile_dependencies "GUI" #Need both
+
 git clone https://github.com/armantheparman/compiled_bitcoin_knots $hp/complied_bitcoin_knots
 sudo mv $hp/complied_bitcoin_knots/* /usr/local/bin
 sudo rm -rf $hp/complied_bitcoin_knots
