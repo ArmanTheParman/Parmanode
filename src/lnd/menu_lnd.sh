@@ -2,7 +2,8 @@ function menu_lnd {
 if ! grep -q "lnd.*end" $ic && ! grep -q "litd-end" $ic ; then return 0 ; fi
 
 if grep -q "lnd_nowallet=true" $pc ; then 
-announce "Please make sure to create a wallet first, otherwise LND won't work at all." 
+announce "Please make sure to create a wallet first, otherwise LND won't work at all.
+    After you've made a wallet, you'll be able to install RTL wallet." 
 gsed -i '/lnd_nowallet=true/d' $pc 
 fi
 
