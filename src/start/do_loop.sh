@@ -95,6 +95,8 @@ parmanode1_fix
    bash_check 
    check_architecture 
 fi
+debug "bash_check and check_architecture" 
+
 [[ $premium == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
