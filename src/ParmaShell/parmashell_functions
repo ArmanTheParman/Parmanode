@@ -69,6 +69,14 @@ function vlt { cd /usr/local/var/lib/tor ; a ; }
 function raid { cd /Volumes/RAID ; a ; }
 else #if Linux
 function sss { sudo systemctl status "$1" ; }
+function sstart { sudo systemctl start "$1" ; }
+function sstop { sudo systemctl stop "$1" ; }
+function srestart { sudo systemctl restart "$1" ; }
+function sdr { sudo systemctl daemon-reload ; }
+function sstatus { sudo systemctl status "$1" ; }
+function sls { systemctl list-units --type=service --all ; }
+function jfexu { journalctl -exu "$1" ; }
+
 function colour { export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ ' ; }
 function color { colour ; }
 function en { cd /etc/nginx ; a ; }
@@ -84,3 +92,5 @@ function vl { cd /var/log ; a ; }
 function vlt { cd /var/lib/tor ; a ; }
 function vln { cd /var/log/nginx ; a ; }
 fi
+
+
