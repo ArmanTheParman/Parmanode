@@ -416,5 +416,5 @@ fi
 
 function record_docker_IPs {
 docker inspect -f '{{.Name}}={{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) \
-| gsed 's/^\///' | while read theip ; do echo rpcbind=$theip | tee $dp/docker_IPs >$dn 2>&1 ; done
+| gsed 's/^\///' | while read theip ; do echo $theip | tee $dp/docker_IPs >$dn 2>&1 ; done
 }
