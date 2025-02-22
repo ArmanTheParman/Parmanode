@@ -420,18 +420,32 @@ docker inspect -f '{{.Name}}={{range .NetworkSettings.Networks}}{{.IPAddress}}{{
 | gsed 's/^\///' | while read theip ; do echo $theip | tee -a $dp/docker_IPs >$dn 2>&1 ; done
 }
 
-function record_mempool_docker_IPs {
+function list_mempool_docker_IPs {
 record_docker_IPs
-grep "docker-mempool_web-1" $dp/docker_IPs | cut -d = -f2 >$dp/mempool_web_IP
-
+grep "docker-mempool_web-1" $dp/docker_IPs > $dp/mempool_IPs
+grep "docker-db-1" $dp/docker_IPs >> $dp/mempool_IPs
+grep "docker-api-1" $dp/docker_IPs >> $dp/mempool_IPs
 }
 
 
 function check_bitcoin_tor_status_and_mempool_IPs {
 
 source $pc
-if [[ $bitcoin_tor_status == "onlyout" || $bitcoin_tor_status == "toronly" ]] ; then
 
+if ! [[ $bitcoin_tor_status == "onlyout" || $bitcoin_tor_status == "toronly" ]] ; then return 0 ; fi
 
+list_mempool_docker_IPs
+
+cat $dp/mempool_IPs | while read line ; do
+    dockerIP=$(echo $line | cut -d = -f2)
+    if ! grep "$dockerIP" $bc ; 
+       yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" &&
+       clear ; echo "${green}OK..." ; sleep 1
+       echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
+       nees_restart_mempool="true"
+    fi
+done
+
+[[ $needs_restart_mempool == "true" ]] && restart_mempool
 
 }
