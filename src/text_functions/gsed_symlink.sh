@@ -7,7 +7,6 @@ function gsed_symlink {
 #make a gsed symlink
 if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
 
-    touch $HOME/Desktop/test__can_delete
     sudo ln -s $(which sed) /usr/bin/gsed 
     debug "pause after gsed symlink"
 
