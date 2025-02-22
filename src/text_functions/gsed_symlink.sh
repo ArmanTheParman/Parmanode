@@ -6,7 +6,7 @@ function gsed_symlink {
 
 #make a gsed symlink
 if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
-
+    debug "gsed symlink"
     sudo ln -s $(which sed) /usr/bin/gsed 
     debug "pause after gsed symlink"
 
