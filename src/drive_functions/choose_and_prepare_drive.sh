@@ -26,7 +26,7 @@ echo -e "
 $green
                 (e)     Use an EXTERNAL drive (choice to format) 
 $red
-                (i)     Use an INTERNAL drive 
+                (i)     Use an INTERNAL drive $orange
 "
 if [[ $1 == Bitcoin ]] ; then
     echo -e "$text" 
