@@ -65,6 +65,7 @@ if [[ $1 == "toronly" ]] ; then
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/bind=/d" $bc
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
+    rpcbind_adjust
     fi
 
 if [[ $2 == "onlyout" ]] ; then
@@ -72,6 +73,7 @@ if [[ $2 == "onlyout" ]] ; then
     sudo gsed -i "/listenonion=1/d" $bc
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1
+    rpcbind_adjust
     fi
 
 restart_tor
