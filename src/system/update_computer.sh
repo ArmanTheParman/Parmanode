@@ -29,9 +29,13 @@ $orange
     This function will update your operating system and add few tools that Parmanode 
     uses to function smoothly. 
 $green
-                       y)      Update
+                       y)      Does apt-get update and upgrade and installs 
+                               necssary tools.  
+$yellow
+                       t)      Doesn't update but installs necessary tools.  
 $red
-                       n)      Donchu dare (that means no)
+                       n)      Donchu dare (that means no) - you'll get Parmanode 
+                               errors.
 $orange
 ########################################################################################$yellow
 Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
@@ -42,9 +46,9 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     fi
 
     case $choice in
-    y|Y|Yes|yes|u)
+    y|Y|Yes|yes|u|t)
     sudo apt-get update -y
-    sudo apt-get upgrade -y 
+    [[ $choice == t ]] ||   sudo apt-get upgrade -y 
     sudo apt-get install -y jq
     sudo apt-get install -y netcat-tradiational
     sudo apt-get install -y vim
