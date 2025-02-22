@@ -66,7 +66,7 @@ MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
-" | sudo tee /etc/systemd/system/bitcoind.service >$dn 
+" | sudo tee /etc/systemd/system/bitcoind.service >$dn || enter_continue "Failed to write bitcoind.service file"
 
 #tee used instead of echo because redirection operator after sudo echo loses sudo privilages
 
