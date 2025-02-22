@@ -1,7 +1,7 @@
 function update_computer {
 set_terminal 
 
-if [[ $(uname) == Darwin ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
 
     if ! which brew >$dn 2>&1 ; then    
         install_homebrew || return 1
@@ -14,10 +14,10 @@ if [[ $(uname) == Darwin ]] ; then
 fi
 
 
-if [[ $(uname) == Linux ]] ; then
+if [[ $(uname) == "Linux" ]] ; then
 
     while true ; do
-    if [[ $1 == new_install ]] ; then
+    if [[ $1 == "new_install" ]] ; then
     set_terminal
     echo -e "
 ########################################################################################
@@ -52,6 +52,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     sudo apt-get install -y tmux
     sudo apt-get install -y ssh
     sudo apt-get install -y tor
+    sudo apt-get install -y mdadm
     if ! which tune2fs >$dn 2>&1 ; then sudo apt-get install -y e2fsprogs ; fi
     sudo systemctl enable ssh >$dn 2>&1
     sudo systemctl start ssh >$dn 2>&1
