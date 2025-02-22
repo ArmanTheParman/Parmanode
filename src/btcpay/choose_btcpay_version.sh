@@ -19,10 +19,10 @@ set_terminal ; echo -e "
     happens, you are welcome to do that.
 $green
 
-                few)$orange     Standard installation, v1.12.5
+                few)$orange     Standard installation, v2.0.3
 
 $red
-                hfsp)$orange    Newer release v2.0.3  $yellow(Stable, but limited 
+                hfsp)$orange    Newer release v2.0.6  $yellow(Stable, but limited 
                                                testing with Parmanode)
 $red
                 yolo)$orange    Latest version on the BTCPay GitHub master branch
@@ -41,12 +41,12 @@ fi
 case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 few)
-export btcpay_version_choice="v1.12.5"
+export btcpay_version_choice="v2.0.3"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
 hfsp)
-export btcpay_version_choice="v2.0.3"
+export btcpay_version_choice="v2.0.6"
 parmanode_conf_add "btcpay_version=$btcpay_version_choice"
 break
 ;;
