@@ -13,6 +13,7 @@ $cyan
 
                         $hp/tor-browser/ $orange directory. 
 $cyan    
+
        Mac:$orange      Run fromt the Mac OS Applications folder. 
 
 ######################################################################################## 
