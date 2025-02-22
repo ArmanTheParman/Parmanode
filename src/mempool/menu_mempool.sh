@@ -435,7 +435,7 @@ list_mempool_docker_IPs
 
 cat $dp/mempool_IPs | while read line ; do
     dockerIP=$(echo $line | cut -d = -f2)
-    if ! grep "$dockerIP" $bc ; 
+    if ! grep "$dockerIP" $bc ; then
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" &&
        clear ; echo "${green}OK..." ; sleep 1
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
