@@ -1,6 +1,7 @@
 Version 3.54.1
     -LND 18.5
     -Precompiled Bitcoin Knots made available
+    -mdadm with system update
 Version 3.54.0
     -Premium features
     -ParmaNas
