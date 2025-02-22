@@ -7,7 +7,7 @@ set_terminal ; echo -e "
 
     To use Tor Browser
 $cyan
-       Linux: $orange   Use the start menu, you'll find the Tor icon there. On
+       Linux:           ${orange}Use the start menu, you'll find the Tor icon there. On
                         some Linux distributions, it won't be there. In that case,
                         run it from the$cyan
 
