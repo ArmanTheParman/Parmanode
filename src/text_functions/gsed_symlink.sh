@@ -19,4 +19,4 @@ if ! which gsed >/dev/null ; then
     read
 fi
 fi
-}/
+}
