@@ -50,7 +50,7 @@ fi
 
 
 if [[ $1 == mempoolerror ]] ; then
-
+announce "About to gather information for mempool error and will save to Desktop/report.txt"
 docker ps > $Desktop/report.txt 2>&1
 echo "##1##" >> $Desktop/report.txt
 docker logs docker-api-1 >> $Desktop/report.txt 2>&1
@@ -82,7 +82,7 @@ ip a >> $Desktop/report.txt 2>&1
 echo "##14##" >> $Desktop/report.txt
 echo "UFW... $(sudo ufw status)" >> $Desktop/report.txt
 echo "##15##" >> $Desktop/report.txt
-
+announce "Report saved to Desktop/report.txt please send to Parman"
 fi
 
 }
