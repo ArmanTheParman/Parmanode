@@ -93,6 +93,9 @@ fi
     gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
         
 
+#if grep -q "onion" $bc
+
+
 debug temppatchend
 }
 
