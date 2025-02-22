@@ -54,6 +54,8 @@ if [[ $1 == "torandclearnet" ]] ; then
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
     sudo gsed -i "/discover=/d" $bc
     echo "discover=1" | sudo tee -a $bc >$dn 2>&1
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=torandclearnet"
     fi
 
 if [[ $1 == "toronly" ]] ; then
@@ -63,8 +65,10 @@ if [[ $1 == "toronly" ]] ; then
     sudo gsed -i "/externalip=/d" $bc
     debug "onion is $ONION_ADDR"
     echo "externalip=$ONION_ADDR" | sudo tee -a $bc >$dn 2>&1
-    sudo gsed -i "/bind=/d" $bc
+    sudo gsed -i "/^bind=/d" $bc
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=toronly"
     rpcbind_adjust
     fi
 
@@ -73,6 +77,8 @@ if [[ $2 == "onlyout" ]] ; then
     sudo gsed -i "/listenonion=1/d" $bc
     echo "listenonion=1" | sudo tee -a $bc >$dn 2>&1
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1
+    parmanode_conf_remove "bitcoin_tor_status"
+    parmanode_conf_add "bitcoin_tor_status=onlyout"
     rpcbind_adjust
     fi
 

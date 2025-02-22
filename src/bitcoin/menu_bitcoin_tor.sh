@@ -90,6 +90,7 @@ m|M) back2main ;; Q|q|quit|QUIT|Quit) exit 0 ;; p|P) return 1 ;;
 
 "4")
     bitcoin_tor_remove 
+    parmanode_conf_remove "bitcoin_tor_status"
     check_bitcoin_tor_status    
     break ;;
 

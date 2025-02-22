@@ -11,11 +11,11 @@ sudo gsed -i  "/onion/d"                    $bc
 sudo gsed -i  "/bind=127.0.0.1/d"           $bc
 sudo gsed -i  "/onlynet/d"                  $bc
 
-add_rpcbind
+add_rpcbind #adds 0.0.0.0
 
 rm $HOME/.bitcoin/onion* >$dn
 start_bitcoin
-
+parmanode_conf_remove "bitcoin_tor_status"
 set_terminal
 enter_continue "Tor connection for Bitcoin disabled"
 return 0

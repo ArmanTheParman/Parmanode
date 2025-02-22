@@ -1,7 +1,7 @@
 function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
-record_mempool_docker_IPs
+record_docker_IPs
 
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 nogsedtest
