@@ -57,6 +57,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     sudo apt-get install -y tmux
     sudo apt-get install -y ssh
     sudo apt-get install -y tor
+    sudo apt-get install -y ufw
     sudo apt-get install -y mdadm
     if ! which tune2fs >$dn 2>&1 ; then sudo apt-get install -y e2fsprogs ; fi
     sudo systemctl enable ssh >$dn 2>&1
