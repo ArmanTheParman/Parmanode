@@ -49,45 +49,40 @@ exit
 fi
 
 
-if [[ $1 == goatlover ]] ; then
+if [[ $1 == mempoolerror ]] ; then
 
-lsblk | grep sdc | grep -q "4.5" || { echo -e "device naming changed since Parman saw the system report. Take a photo
-of the following and send to Parman. Exiting.\n\n" && lsblk && enter_continue ; exit ; }
+docker ps > $Desktop/report.txt 2>&1
+echo "##1##" >> $Desktop/report.txt
+docker logs docker-api-1 >> $Desktop/report.txt 2>&1
+echo "##2##" >> $Desktop/report.txt
+docker logs docker-db-1 >> $Desktop/report.txt 2>&1
+echo "##3##" >> $Desktop/report.txt
+docker logs docker-mempool_web-1 >> $Desktop/report.txt 2>&1
+echo "##4##" >> $Desktop/report.txt
+sudo netstat -tulnp | grep -q :8332 >> $Desktop/report.txt 2>&1 || echo "no 8332" >> $Desktop/report.txt
+echo "##5##" >> $Desktop/report.txt
+sudo systemctl status bitcoind.service >> $Desktop/report.txt 2>&1
+echo "##6##" >> $Desktop/report.txt
+docker network ps >> $Desktop/report.txt 2>&1
+echo "##7##" >> $Desktop/report.txt
+cat $hp/mempool/docker/docker-compose.yml >> $Desktop/report.txt 2>&1
+echo "##8##" >> $Desktop/report.txt
+cat $HOME/.bitcoin/bitcoin.conf >> $Desktop/report.txt 2>&1
+echo "##9##" >> $Desktop/report.txt
+bitcoin-cli getblockchaininfo >> $Desktop/report.txt 2>&1
+echo "##10##" >> $Desktop/report.txt
+bitcoin-cli getmempoolinfo >> $Desktop/report.txt 2>&1
+echo "##11##" >> $Desktop/report.txt
+bitcoin-cli version >> $Desktop/report.txt 2>&1
+echo "##12##" >> $Desktop/report.txt
+curl -s ifconfig.me >> $Desktop/report.txt 2>&1
+echo "" >> $Desktop/report.txt
+echo "##13##" >> $Desktop/report.txt
+ip a >> $Desktop/report.txt 2>&1
+echo "##14##" >> $Desktop/report.txt
+echo "UFW... $(sudo ufw status)" >> $Desktop/report.txt
+echo "##15##" >> $Desktop/report.txt
 
-sudo systemctl stop bitcoind
-
-sudo umount $dp || { echo "Unable to unmount drive. can't proceed. exiting." ; exit ; }
-
-clear
-echo -e "Wiping drive and partitioning. Please wait...\n"
-sudo fdisk /dev/sdc <<EOF 
-g
-w
-EOF
-
-echo -e "Formatting. Please wait...\n"
-sudo mkfs.ext4 /dev/sdc
-
-echo -e "Labelling...\n"
-
-sudo e2label /dev/sdc parmanode
-
-sudo mount /dev/sdc /media/$USER/parmanode || { echo "couldn't mount." ; exit ; }
-
-cd /media/$USER/parmanode/
-
-mkdir -p .bitcoin
-
-export disk=/dev/sdc
-export $(sudo blkid -o export $disk | grep TYPE)
-export $(sudo blkid -o export $disk | grep UUID)
-sudo gsed -i "/$UUID/d" /etc/fstab
-echo "UUID=$UUID /media/$(whoami)/parmanode $TYPE defaults,nofail 0 2" | sudo tee -a /etc/fstab 
-sudo systemctl daemon-reload
-
-echo -e "\nAll done!\n"
-
-exit
 fi
 
 }
