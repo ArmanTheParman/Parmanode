@@ -433,7 +433,7 @@ if ! grep -q "onion" $bc ; then return 0 ; fi
 
 list_mempool_docker_IPs
 
-cat $dp/mempool_IPs | while read line ; do
+while read line ; do
     dockerIP=$(echo $line | cut -d = -f2)
     if ! grep "$dockerIP" $bc ; then
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" &&
@@ -441,7 +441,7 @@ cat $dp/mempool_IPs | while read line ; do
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
        nees_restart_mempool="true"
     fi
-done
+done < $dp/mempool_IPs
 
 [[ $needs_restart_mempool == "true" ]] && restart_mempool
 
