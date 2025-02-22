@@ -92,7 +92,11 @@ yesorno "Because you're enabled strict privacy settings for Bitcoin with Tor, RP
 
     You need to add the permitted IPs one by one to the bitcoin.conf file.
 
-    No worries, I'll help you.$cyan Do you want to continue with this? $orange" || return 0
+    No worries, I'll help you.$cyan Do you want to continue with this? $orange" \
+    || { announce "Or, just hit$red q$orange and$cyan <enter> $orange to quit."
+    case $enter_cont in q) exit ;; esac
+    jump $enter_cont
+    }
 
 #question 1 - localhost
 yesorno "${green}Question 1: 
