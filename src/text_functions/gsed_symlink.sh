@@ -7,12 +7,15 @@ function gsed_symlink {
 #make a gsed symlink
 if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
 
-    sudo ln -s "$(which sed)" /usr/bin/gsed 
+    sudo ln -s $(which sed) /usr/bin/gsed 
     debug "pause after gsed symlink"
 
     if ! which gsed >/dev/null ; then 
 
         echo -e "\n \r    Couldn't get gsed symlink working. You could experience errors. 
+                \r    This command seems to have failed: sudo ln -s $(which sed) /usr/bin/gsed 
+                \r    This command should show the gsed path: which gsed
+
                 \r    Better call Parman for assistance.
 
                 \r    Hit <enter> to continue"
