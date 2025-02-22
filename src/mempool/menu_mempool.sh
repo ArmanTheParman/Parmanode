@@ -439,7 +439,7 @@ while read line ; do
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" &&
        clear ; echo "${green}OK..." ; sleep 1
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
-       nees_restart_mempool="true"
+       needs_restart_mempool="true"
     fi
 done < $dp/mempool_IPs
 
