@@ -2,7 +2,7 @@ function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
 record_docker_IPs
-
+check_bitcoin_tor_status_and_mempool_IPs
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 nogsedtest
 #gsed on Macs creates a backup with an E at the end.
@@ -415,6 +415,23 @@ fi
 }
 
 function record_docker_IPs {
+rm $dp/docker_IPs >$dn 2>&1
 docker inspect -f '{{.Name}}={{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) \
-| gsed 's/^\///' | while read theip ; do echo $theip | tee $dp/docker_IPs >$dn 2>&1 ; done
+| gsed 's/^\///' | while read theip ; do echo $theip | tee -a $dp/docker_IPs >$dn 2>&1 ; done
+}
+
+function record_mempool_docker_IPs {
+record_docker_IPs
+grep "docker-mempool_web-1" $dp/docker_IPs | cut -d = -f2 >$dp/mempool_web_IP
+
+}
+
+
+function check_bitcoin_tor_status_and_mempool_IPs {
+
+source $pc
+if [[ $bitcoin_tor_status == "onlyout" || $bitcoin_tor_status == "toronly" ]] ; then
+
+
+
 }
