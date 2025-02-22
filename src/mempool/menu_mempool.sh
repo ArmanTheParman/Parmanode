@@ -1,7 +1,7 @@
 function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
-check_bitcoin_tor_status_and_mempool_IPs
+#check_bitcoin_tor_status_and_mempool_IPs
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 nogsedtest
 #gsed on Macs creates a backup with an E at the end.
