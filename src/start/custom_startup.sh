@@ -51,6 +51,7 @@ fi
 
 if [[ $1 == mempoolerror ]] ; then
 announce "About to gather information for mempool error and will save to Desktop/report.txt"
+Desktop=$HOME/Desktop
 docker ps > $Desktop/report.txt 2>&1
 echo "##1##" >> $Desktop/report.txt
 docker logs docker-api-1 >> $Desktop/report.txt 2>&1
