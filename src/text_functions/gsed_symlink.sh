@@ -5,9 +5,10 @@ function gsed_symlink {
 #gsed will point to sed, making code easier to write and read.
 
 #make a gsed symlink
-if [[ $(uname) == Linux ]] && ! which gsed >/dev/null 2>&1 ; then
+if [[ $(uname) == "Linux" ]] && ! which gsed >/dev/null 2>&1 ; then
 
-    sudo ln -s $(which sed) /usr/bin/gsed >/dev/null 2>&1
+    sudo ln -s $(which sed) /usr/bin/gsed 
+    debug "pause after gsed symlink""
 
 if ! which gsed >/dev/null ; then 
 
@@ -18,4 +19,4 @@ if ! which gsed >/dev/null ; then
     read
 fi
 fi
-}
+}/
