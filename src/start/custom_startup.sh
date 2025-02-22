@@ -83,6 +83,7 @@ echo "##14##" >> $Desktop/report.txt
 echo "UFW... $(sudo ufw status)" >> $Desktop/report.txt
 echo "##15##" >> $Desktop/report.txt
 announce "Report saved to Desktop/report.txt please send to Parman"
+exit
 fi
 
 }
