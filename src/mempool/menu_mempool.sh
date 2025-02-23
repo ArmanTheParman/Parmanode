@@ -432,7 +432,7 @@ source $pc
 if ! grep -q "onion" $bc && [[ $debug != 1 ]] ; then return 0 ; fi
 
 list_mempool_docker_IPs
-debug "000"
+rm $dp/do_restart 2>$dn
 while read line ; do
     dockerIP=$(echo $line | cut -d = -f2)
     if ! grep "$dockerIP" $bc ; then
@@ -440,11 +440,15 @@ while read line ; do
        {
        clear ; echo -e "${green}OK..." ; sleep 1
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
-       needs_restart_mempool="true"
+       touch $dp/do_restart
        }
     fi
 done < $dp/mempool_IPs
 
-[[ $needs_restart_mempool == "true" ]] && restart_mempool
+[[ -e $dp/do_restart]] && {
+    rm $dp/do_restart 
+    restart_bitcoin  
+    restart_mempool
+}
 
 }
