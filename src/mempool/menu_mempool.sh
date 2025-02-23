@@ -439,13 +439,13 @@ while read line ; do
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" </dev/tty && 
        {
        clear ; echo -e "${green}OK..." ; sleep 1
-       echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
+       echo "rpcbind=$dockerIP" | sudo tee -a $bc >$dn 2>&1
        touch $dp/do_restart
        }
     fi
 done < $dp/mempool_IPs
 
-[[ -e $dp/do_restart]] && {
+[[ -e $dp/do_restart ]] && {
     rm $dp/do_restart 
     restart_bitcoin  
     restart_mempool
