@@ -438,7 +438,7 @@ while read line ; do
     if ! grep "$dockerIP" $bc ; then
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" </dev/tty && 
        {
-       clear ; echo "${green}OK..." ; sleep 1
+       clear ; echo -e "${green}OK..." ; sleep 1
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
        needs_restart_mempool="true"
        }
