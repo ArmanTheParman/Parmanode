@@ -1,7 +1,8 @@
 function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
-check_bitcoin_tor_status_and_mempool_IPs
+grep -q "rpcbind=0.0.0.0" $bc || echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
+
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 nogsedtest
 #gsed on Macs creates a backup with an E at the end.
@@ -424,33 +425,3 @@ grep "docker-db-1" $dp/docker_IPs >> $dp/mempool_IPs
 grep "docker-api-1" $dp/docker_IPs >> $dp/mempool_IPs
 }
 
-
-function check_bitcoin_tor_status_and_mempool_IPs {
-debug "in check_bitcoin_tor_status_and_mempool_IPs"
-source $pc
-
-if ! grep -q "onion" $bc ; then return 0 ; fi
-
-list_mempool_docker_IPs
-rm $dp/do_restart 2>$dn
-while read line ; do
-    dockerIP=$(echo $line | cut -d = -f2)
-    if ! grep "$dockerIP" $bc ; then
-       yesorno "Mempool container IP$green $dockerIP$orange not in bitcoin.conf. Add?" </dev/tty && 
-       {
-       clear ; echo -e "${green}OK..." ; sleep 1
-       echo "rpcbind=$dockerIP" | sudo tee -a $bc >$dn 2>&1
-       touch $dp/do_restart
-       }
-    fi
-done < $dp/mempool_IPs
-
-[[ -e $dp/do_restart ]] && {
-    announce "Bitoin and Memppol need to be restarted for changes to take effect.
-    Give Parmanode a minute to refresh the status."
-    rm $dp/do_restart 
-    restart_bitcoin  
-    restart_mempool
-}
-
-}
