@@ -436,7 +436,7 @@ rm $dp/do_restart 2>$dn
 while read line ; do
     dockerIP=$(echo $line | cut -d = -f2)
     if ! grep "$dockerIP" $bc ; then
-       yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" </dev/tty && 
+       yesorno "Mempool container IP$green $dockerIP$orange not in bitcoin.conf. Add?" </dev/tty && 
        {
        clear ; echo -e "${green}OK..." ; sleep 1
        echo "rpcbind=$dockerIP" | sudo tee -a $bc >$dn 2>&1
