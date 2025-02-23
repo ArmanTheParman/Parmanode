@@ -96,7 +96,7 @@ apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitco
 
 function add_rpcbind {
 if [[ -e $bc ]] && ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 ; then 
-echo "rpcbind=0.0.0.0" | tee -a $bc >$dn 2>&1
+echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
 fi
 }
 
