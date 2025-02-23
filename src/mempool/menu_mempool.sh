@@ -446,6 +446,8 @@ while read line ; do
 done < $dp/mempool_IPs
 
 [[ -e $dp/do_restart ]] && {
+    announce "Bitoin and Memppol need to be restarted for changes to take effect.
+    Give Parmanode a minute to refresh the status."
     rm $dp/do_restart 
     restart_bitcoin  
     restart_mempool
