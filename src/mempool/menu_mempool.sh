@@ -1,7 +1,7 @@
 function menu_mempool {
 if ! grep -q "mempool-end" $ic ; then return 0 ; fi
 
-#check_bitcoin_tor_status_and_mempool_IPs
+check_bitcoin_tor_status_and_mempool_IPs
 export mempoolconf="$hp/mempool/docker/docker-compose.yml"
 nogsedtest
 #gsed on Macs creates a backup with an E at the end.
@@ -434,14 +434,19 @@ if ! grep -q "onion" $bc ; then return 0 ; fi
 list_mempool_docker_IPs
 
 while read line ; do
+    debug "in while loop, line is $line"
     dockerIP=$(echo $line | cut -d = -f2)
+    debug "in while loop 2, line is $line"
     if ! grep "$dockerIP" $bc ; then
+    debug "in while loop 3, line is $line"
        yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" && 
        {
+       debug "in while loop 4, line is $line"
        clear ; echo "${green}OK..." ; sleep 1
        echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
        needs_restart_mempool="true"
        }
+    debug "in while loop 5, line is $line"
     fi
 done < $dp/mempool_IPs
 
