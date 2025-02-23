@@ -69,7 +69,7 @@ if [[ $1 == "toronly" ]] ; then
     echo "bind=127.0.0.1" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=toronly"
-    rpcbind_adjust
+    add_rpcbind 
     fi
 
 if [[ $2 == "onlyout" ]] ; then
@@ -79,7 +79,7 @@ if [[ $2 == "onlyout" ]] ; then
     echo "onlynet=onion" | sudo tee -a $bc >$dn 2>&1
     parmanode_conf_remove "bitcoin_tor_status"
     parmanode_conf_add "bitcoin_tor_status=onlyout"
-    rpcbind_adjust
+    add_rpcbind 
     fi
 
 restart_tor

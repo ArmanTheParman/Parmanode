@@ -1,3 +1,4 @@
+#deprecated
 function rpcbind_adjust {
 
 yesorno "Because you're enabled strict privacy settings for Bitcoin with Tor, RPC 
