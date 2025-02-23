@@ -426,13 +426,13 @@ grep "docker-api-1" $dp/docker_IPs >> $dp/mempool_IPs
 
 
 function check_bitcoin_tor_status_and_mempool_IPs {
-
+debug "in check_bitcoin_tor_status_and_mempool_IPs"
 source $pc
 
 if ! grep -q "onion" $bc && [[ $debug != 1 ]] ; then return 0 ; fi
 
 list_mempool_docker_IPs
-
+debug "000"
 while read line ; do
     debug "in while loop, line is $line"
     dockerIP=$(echo $line | cut -d = -f2)
