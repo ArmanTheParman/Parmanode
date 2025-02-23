@@ -437,17 +437,17 @@ while read line ; do
     debug "in while loop, line is $line"
     dockerIP=$(echo $line | cut -d = -f2)
     debug "in while loop 2, line is $line"
-    if ! grep "$dockerIP" $bc ; then
-    debug "in while loop 3, line is $line"
-       yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" && 
-       {
-       debug "in while loop 4, line is $line"
-       clear ; echo "${green}OK..." ; sleep 1
-       echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
-       needs_restart_mempool="true"
-       }
-    debug "in while loop 5, line is $line"
-    fi
+    # if ! grep "$dockerIP" $bc ; then
+    # debug "in while loop 3, line is $line"
+    #    yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" && 
+    #    {
+    #    debug "in while loop 4, line is $line"
+    #    clear ; echo "${green}OK..." ; sleep 1
+    #    echo "rpcallowip=$dockerIP" | sudo tee -a $bc >$dn 2>&1
+    #    needs_restart_mempool="true"
+    #    }
+    # debug "in while loop 5, line is $line"
+    # fi
 done < $dp/mempool_IPs
 
 [[ $needs_restart_mempool == "true" ]] && restart_mempool
