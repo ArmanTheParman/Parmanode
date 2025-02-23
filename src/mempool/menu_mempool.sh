@@ -437,6 +437,7 @@ while read line ; do
     debug "in while loop, line is $line"
     dockerIP=$(echo $line | cut -d = -f2)
     debug "in while loop 2, line is $line"
+    read "test"
     # if ! grep "$dockerIP" $bc ; then
     # debug "in while loop 3, line is $line"
     #    yesorno "Mempool IP $dockerIP not in bitcoin.conf. Add?" && 
