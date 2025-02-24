@@ -16,7 +16,7 @@ grep -q "bitcoin-end" $ic || { announce "Must install Bitcoin first. Aborting." 
 sned_sats
 fi
 
-if [[ $OS == Linux ]] && ! which socat >$dn 2>&1 ; then 
+if [[ $OS == "Linux" ]] && ! which socat >$dn 2>&1 ; then 
     sudo apt-get update -y 
     sudo apt install socat -y 
 elif [[ $OS == Mac ]] && ! which socat >$dn 2>&1 ; then 
@@ -24,7 +24,7 @@ elif [[ $OS == Mac ]] && ! which socat >$dn 2>&1 ; then
     brew install socat 
 fi
 
-if [[ $OS == Linux ]] ; then
+if [[ $OS == "Linux" ]] ; then
 make_socat_service
 fi
 
@@ -153,7 +153,7 @@ fi
 #config
 make_electrs_config ; debug "config done"
 
-if [[ $OS == Linux ]] ; then make_electrs_service ; debug "service file done" ; fi
+if [[ $OS == "Linux" ]] ; then make_electrs_service ; debug "service file done" ; fi
 
 installed_config_add "electrs2-end" ; debug "finished electrs install"
 
