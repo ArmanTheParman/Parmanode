@@ -50,7 +50,12 @@ $green
     continue
     }
 #If ParmaNas is enabled, make the SSH keys and continue
-make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable." ; continue ; }
+make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable.
+$green
+
+$HOME/.ssh/parmanas-key ...
+
+$(cat ~/.ssh/parmanas-key.pub)$blue\n" ; continue ; }
 
 #If ParmaNas is enabled and SSH keys are made, clone the repo and run the script
 
