@@ -36,6 +36,7 @@ case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
 pnas)
+#If ParmaNas is not enabled, show the message and continue
     [[ ! -e $dp/.parmanas_enabled ]] && {
     announce_blue "ParmaNas (Network Attached Storage) is not enabled by default in Parmanode.
 
@@ -48,16 +49,20 @@ $green
 
     continue
     }
+#If ParmaNas is enabled, make the SSH keys and continue
+make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable." ; continue ; }
+
+#If ParmaNas is enabled and SSH keys are made, clone the repo and run the script
 
     if [[ ! -d $pp/parmanas ]] ; then
     git clone git@github.com:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaNas on your machine.\n$orange" ; continue ; }
     else
     cd $pp/parmanas && please_wait && git pull >$dn 2>&1
-    fi
 
     $pp/parmanas/run_parmanas.sh
 ;;
+
 cloud)
   [[ ! -e $dp/.parmacloud_enabled ]] && announce_blue "
 
@@ -66,7 +71,7 @@ cloud)
 
     Contact Parman for set up. Fee is \$US400.$blue" && continue 
 
-make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made" ; continue ; }
+make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
 
 [[ ! -e $pp/parmacloud ]] && { 
     git clone git@github-parmacloud:armantheparman/parmacloud.git $pp/parmacloud || {

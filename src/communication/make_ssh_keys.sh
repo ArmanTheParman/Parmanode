@@ -7,6 +7,8 @@ fi
 }
 
 function make_parmacloud_ssh_keys {
+#usage...
+#make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
 
 sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
@@ -39,6 +41,8 @@ IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 
 
 function make_parmanas_ssh_keys {
+#usage...
+#make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contact Parman to enable." ; continue ; }
 
 sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
 
