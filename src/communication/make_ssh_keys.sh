@@ -14,6 +14,7 @@ sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success 
 mkdir -p ~/.ssh
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" -C "$USER parmacloud"
 
+grep -q "github-parmacloud" ~/.ssh/config >$dn ||
 echo "
 Host github-parmacloud
 HostName github.com
@@ -30,6 +31,7 @@ sudo test -f ~/.ssh/parmaweb-key.pub && return 1 # 1 is logically success here f
 mkdir -p ~/.ssh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N "" -C "$USER parmaweb"
 
+grep -q "github-parmaweb" ~/.ssh/config >$dn || 
 echo "
 Host github-parmaweb
 HostName github.com
@@ -49,6 +51,7 @@ sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success he
 mkdir -p ~/.ssh
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" -C "$USER parmanas"
 
+grep -q "github-parmanas" ~/.ssh/config >$dn || 
 echo "
 Host github-parmanas
 HostName github.com
