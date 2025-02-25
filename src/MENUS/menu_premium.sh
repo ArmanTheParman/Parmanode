@@ -70,7 +70,7 @@ make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made" ; continu
 
 [[ ! -e $pp/parmacloud ]] && { 
     git clone git@github-parmacloud:armantheparman/parmacloud.git $pp/parmacloud || {
-        enter_continue "Something went wrong" ; continue ; 
+        enter_continue "Please contact Parman to enable ParmaCloud on your machine.\n$orange" ; continue ; 
     } #requires SSH key authority 
 }
 installed_conf_add "parmacloud-start"
@@ -94,7 +94,8 @@ web)
 [[ -n $another ]] && make_parmaweb_ssh_keys && { announce_blue "ParmaWeb SSH keys made" ; continue ; }
 
 git clone git@github-parmaweb:armantheparman/parmaweb.git $pp/parmaweb 2>$dn || {
-cd $pp/parmaweb && git pull >$dn 2>&1 ; } || { enter_continue "Something went wrong" ; continue ; } #requires SSH key authority
+cd $pp/parmaweb && git pull >$dn 2>&1 ; } || \
+{ enter_continue "Please contact Parman to enable ParmaWeb on your machine.\n$orange" ; continue ; } #requires SSH key authority
 
 for file in $pp/parmaweb/src/*.sh ; do
 source $file
