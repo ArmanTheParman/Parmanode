@@ -59,6 +59,7 @@ make_parmanas_ssh_keys && { announce_blue "Parmanas SSH keys made. Please contac
     \r    Please contact Parman to enable ParmaNas on your machine.\n$orange" ; continue ; }
     else
     cd $pp/parmanas && please_wait && git pull >$dn 2>&1
+    fi
 
     $pp/parmanas/run_parmanas.sh
 ;;
