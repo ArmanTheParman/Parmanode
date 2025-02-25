@@ -60,7 +60,7 @@ $(cat ~/.ssh/parmanas-key.pub)$blue\n" ; continue ; }
 #If ParmaNas is enabled and SSH keys are made, clone the repo and run the script
 
     if [[ ! -d $pp/parmanas ]] ; then
-    git clone git@github-pamanas:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
+    git clone git@github-parmanas:armantheparman/parmanas.git $pp/parmanas || { enter_continue "\n$blue    Something went wrong. Contact Parman.\n
     \r    Please contact Parman to enable ParmaNas on your machine.\n$orange" ; continue ; }
     else
     cd $pp/parmanas && please_wait && git pull >$dn 2>&1
