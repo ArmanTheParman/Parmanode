@@ -12,7 +12,7 @@ function make_parmacloud_ssh_keys {
 
 sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" 
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" -C "$USER parmacloud"
 
 echo "
 Host github-parmacloud
@@ -28,7 +28,7 @@ function make_parmaweb_ssh_keys {
 sudo test -f ~/.ssh/parmaweb-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N ""
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/parmaweb-key -N "" -C "$USER parmaweb"
 
 echo "
 Host github-parmaweb
@@ -47,7 +47,7 @@ function make_parmanas_ssh_keys {
 sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success here for the calling function
 
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" 
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" -C "$USER parmanas"
 
 echo "
 Host github-parmanas
