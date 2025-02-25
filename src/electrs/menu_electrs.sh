@@ -18,7 +18,7 @@ iselectrsrunning
 unset ONION_ADDR_ELECTRS E_tor E_tor_logic drive_electrs electrs_version electrs_sync 
 source $dp/parmanode.conf >$dn 2>&1
 
-if [[ $electrsrunning == "true" && $1 != fast ]] ; then menu_electrs_status # get elecyrs_sync variable (block number)
+if [[ $electrsrunning == "true" && $1 != fast ]] ; then menu_electrs_status # get electrs_sync variable (block number)
 fi
 
 #Tor status

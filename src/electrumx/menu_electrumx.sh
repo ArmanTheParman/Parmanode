@@ -47,7 +47,7 @@ source $dp/parmanode.conf >$dn 2>&1
 
 if [[ $refresh == "true" ]] ; then
     if [[ $running == "true" ]] ; then 
-        menu_electrumx_status # get elecyrs_sync variable (block number)
+        menu_electrumx_status # get electrs_sync variable (block number)
     fi
 else
     electrumx_sync="${blinkon}${orange}Type$red r$orange to refresh${blinkoff}$orange"
