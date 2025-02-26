@@ -1,0 +1,15 @@
+mount system
+sudo mount ./file /mnt
+
+bind mounts...
+
+for i in "/dev" "/proc" "/sys" "/run" "/dev/pts" ; do
+sudo mount --bind $i "/mnt/$i"
+done
+
+sudo chroot /mnt
+
+if rebuilding initramfs from scratch:
+update-initramfs -u -k all
+otherwise
+update-initramfs -u 
