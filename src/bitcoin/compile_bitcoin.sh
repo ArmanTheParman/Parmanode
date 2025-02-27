@@ -256,7 +256,7 @@ sudo apt-get install -y make              || { enter_continue "Something went wr
 sudo apt-get install -y automake          || { enter_continue "Something went wrong with automake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y cmake             || { enter_continue "Something went wrong with cmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y curl              || { enter_continue "Something went wrong with curl.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y g++-multilib     
+sudo apt-get install -y g++-multilib      || { enter_continue "Something went wrong with g++-multilib.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y libtool           || { enter_continue "Something went wrong with libtool.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y binutils          || { enter_continue "Something went wrong with binutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 sudo apt-get install -y bsdmainutils      || { enter_continue "Something went wrong with bsdmainutils.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
