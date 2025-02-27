@@ -31,9 +31,6 @@ $bright_blue
 
          knots)       Guided compile$yellow Bitcoin Knots$bright_blue (Luke Dashjr's version of Bitcoin 
                       Core) - syncs faster; bug fixes missing in Core; and power user options / tools.
-     
-      reckless)       ${yellow}Knots$bright_blue compiled by Parman (saves time, but may now work and
-                      less secure than compiling yourself)
 $red
        builder)       Guided compile of most recent Github update, i.e. pre-release
                       (for testing only)
@@ -75,16 +72,17 @@ knots)
 parmanode_conf_add "bitcoin_choice=knots"
 export bitcoin_compile="true"
 export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
-reckless)
 
-if [[ $(uname -m) != "x86_64" ]] ; then
-announce "Knots precompiled only available for x86_64 at this stage."
-continue
-fi
+#reckless)
+#if [[ $(uname -m) != "x86_64" ]] ; then
+#announce "Knots precompiled only available for x86_64 at this stage."
+#continue
+#fi
+#
+#parmanode_conf_add "bitcoin_choice=knots_precompiled"
+#export bitcoin_compile="false"
+#export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 
-parmanode_conf_add "bitcoin_choice=knots_precompiled"
-export bitcoin_compile="false"
-export knotsbitcoin="true" ; export version="27.x-knots" ; break ;;
 builder)
 parmanode_conf_add "bitcoin_choice=compiled"
 export bitcoin_compile="true" ; export version="master" ; break ;;
@@ -172,3 +170,8 @@ esac
 done
 
 }
+
+#### precompile not working because it's dynamically linked and getting issues.
+#     
+#      reckless)       ${yellow}Knots$bright_blue compiled by Parman (saves time, but may now work and
+#                      less secure than compiling yourself)
