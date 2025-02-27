@@ -47,6 +47,7 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
 
     case $choice in
     y|Y|Yes|yes|u|t)
+    clear
     sudo apt-get update -y
     [[ $choice == t ]] ||   sudo apt-get upgrade -y 
     sudo apt-get install -y jq
