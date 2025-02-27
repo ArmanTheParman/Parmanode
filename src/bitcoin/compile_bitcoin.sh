@@ -285,17 +285,17 @@ if [[ $1 == GUI ]] ; then
 
 sudo apt-get install -y qtchooser 
 sudo apt-get install -y qtbase5-dev-tools
-sudo apt-get install -y qtcreator  || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qtbase5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-qmake || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qt5-default  
-sudo apt-get install -y qtchooser || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5gui5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5core5a || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5dbus5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y qttools5-dev || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
-sudo apt-get install -y libqt5widgets5 || { enter_continue "Something went wrong with .$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtcreator          || { enter_continue "Something went wrong with qtcreator.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtbase5-dev        || { enter_continue "Something went wrong with qtbase5-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-qmake          || { enter_continue "Something went wrong with qt5-qmake.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev-tools || { enter_continue "Something went wrong with qttools5-dev-tools.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qt5-default        || { enter_continue "Something went wrong with qt5-default.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qtchooser          || { enter_continue "Something went wrong with qtchooser.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5gui5         || { enter_continue "Something went wrong with libqt5gui5.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5core5a       || { enter_continue "Something went wrong with libqt5core5a.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5dbus5        || { enter_continue "Something went wrong with libqt5dbus5.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y qttools5-dev       || { enter_continue "Something went wrong with qttools5-dev.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
+sudo apt-get install -y libqt5widgets5     || { enter_continue "Something went wrong with libqt5widgets5.$green i$ornage to ignore." ; [[ $enter_cont == i ]] || return 1 ; }
 
 fi
 }
