@@ -29,7 +29,7 @@ if [[ $OS == Linux ]] ; then
 configdir="$HOME/.config/@trezor/suite-desktop"
 elif [[ $OS == Mac ]] ; then
 sudo rm -rf /Applications/"Trezor Suite"
-configdir="/Users/ArmanK/Library/Application Support/@trezor/suite-desktop"
+configdir="$HOME/Library/Application Support/@trezor/suite-desktop"
 fi
 # && is necessary here as exit status of confirm function affects next command
 confirm_config_delete "$configdir" && sudo rm -rf $configdir
