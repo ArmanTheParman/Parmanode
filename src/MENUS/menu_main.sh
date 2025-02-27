@@ -18,7 +18,6 @@ else
 output_branch="   $space $orange"
 fi
 
-set_terminal_custom 52
 if [[ $debug = 1 ]] ; then
 debugstatus="#${red}    Debug mode is on$orange                                                                  #"
 else
@@ -52,6 +51,7 @@ fi
 # if statements in the menu printout makes the menu dynamic, ie changes according to the
 # tests performed. Variables are set to assist logic in the menu choice execution part
 # of the code at the bottom.
+set_terminal 49
 echo -en "$orange
 ########################################################################################
 #                                                                                      #
