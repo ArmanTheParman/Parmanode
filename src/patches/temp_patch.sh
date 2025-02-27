@@ -71,7 +71,7 @@ uninstall_parmashell silent ; install_parmashell
 fi
 
 #Leave until Mac has a non-docker fulcrum option
-if [[ $OS == Mac ]] && cat $ic 2>$dn | grep -q "fulcrum-end" ; then
+if [[ $OS == "Mac" ]] && cat $ic 2>$dn | grep -q "fulcrum-end" ; then
 sudo gsed -i 's/fulcrum-end/fulcrumdkr-end/' $ic >$dn 2>&1 
 sudo gsed -i 's/fulcrum-start/fulcrumdkr-start/' $ic >$dn 2>&1 
 log "fulcrum" "changed fulcrum-end to fulcrumdkr-end" 
@@ -93,7 +93,7 @@ fi
     gsed -i 's/on-failure/unless-stopped/g' $hp/mempool/docker/docker-compose.yml >/dev/null 2>&1
         
 
-if grep -q "onion" $bc && ! grep -q "rpcbind=127.0.0.1" $bc ; then
+[[ -e $bc ]] && if grep -q "onion" $bc && ! grep -q "rpcbind=127.0.0.1" $bc ; then
     echo "rpcbind=127.0.0.1" | tee -a $bc >$dn 2>&1
 fi
 
