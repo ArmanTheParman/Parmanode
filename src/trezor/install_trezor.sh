@@ -7,7 +7,7 @@ config_warning "Trezor Suite" || return 1
 if [[ $OS == Linux ]] ; then
 export configdir="$HOME/.config/@trezor/suite-desktop"
 elif [[ $OS == Mac ]] ; then
-export configdir="/Users/ArmanK/Library/Application Support/@trezor/suite-desktop"
+export configdir="$HOME/Library/Application Support/@trezor/suite-desktop"
 fi
 
 if [[ -d $configdir ]] ; then
