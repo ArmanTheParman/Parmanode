@@ -4,6 +4,6 @@ Mac...
 mount | grep nfs
 sudo dscacheutil -flushcache
 sudo nfsd restart
-sudo umount -f /Users/ArmanK/Desktop/parmanas
-sudo umount -l /Users/ArmanK/Desktop/parmanas
+sudo umount -f /Users/parman/Desktop/parmanas
+sudo umount -l /Users/parman/Desktop/parmanas
 
