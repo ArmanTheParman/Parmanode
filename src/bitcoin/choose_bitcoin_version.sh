@@ -19,7 +19,7 @@ $orange
 ##############################################################################################################
 $green
 
-   hit <enter>)       v$version - Download and verify 'trusted' releases
+    hit <enter>       v$version - Download and verify 'trusted' releases
 $green
           hfsp)       Guided compile v$version
 $red
