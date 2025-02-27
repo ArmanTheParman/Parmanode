@@ -1,0 +1,9 @@
+#### when the drive fails to unmount, eg, host disconnects/reboots. Try...
+
+Mac...
+mount | grep nfs
+sudo dscacheutil -flushcache
+sudo nfsd restart
+sudo umount -f /Users/ArmanK/Desktop/parmanas
+sudo umount -l /Users/ArmanK/Desktop/parmanas
+
