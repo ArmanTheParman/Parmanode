@@ -11,7 +11,7 @@ fi
 
 #no longer needed
 nogsedtest
-if cat $pc 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
+[[ -e $pc ]] && if cat $pc 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
 gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
 fi
 
@@ -40,8 +40,10 @@ rm $dp/.debug2.log >$dn 2>&1
 
 #fix values in torrc - linux 
 if which tor >$dn 2>&1 ; then
+[[ -e $torrc ]] && { 
 sudo gsed -i 's/8332/8333/g' $torrc >$dn 2.>&1
 sudo gsed -i 's/500001/50001/' $torrc >$dn 2>&1
+}
 fi
 
 if cat $ic 2>$dn | grep -q "lnd" ; then make_lnd_service_tor ; fi
