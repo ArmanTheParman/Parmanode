@@ -176,7 +176,7 @@ tssh)
 
 ng)
     if [[ -n $nginx_n ]] ; then
-    install_nginx
+    install_nginx && success "Nginx installed" 
     return 0
     fi
     ;;
