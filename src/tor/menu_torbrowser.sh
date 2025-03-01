@@ -12,6 +12,9 @@ $cyan
                         run it from the$cyan
 
                         $hp/tor-browser/ $orange directory. 
+$cyan
+       start)           ${orange}It won't always work, Tor Browser moves things around with
+                        permission.
 $cyan    
 
        Mac:$orange      Run fromt the Mac OS Applications folder. 
@@ -19,5 +22,7 @@ $cyan
 ######################################################################################## 
 "
 enter_continue ; jump $enter_cont 
+case $enter_cont in  start) nohup $hp/tor-browser/start-tor-browser.desktop >$dn 2>&1 & ;; 
+esac
 return 0
 }
