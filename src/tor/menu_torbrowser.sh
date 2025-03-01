@@ -1,24 +1,25 @@
 function menu_torbrowser {
 if ! grep -q "torb-end" $ic ; then return 0 ; fi
+if [[ $OS == "Mac" ]] ; then
+text="$cyan       Mac:             ${orange}Run fromt the Mac OS Applications folder.
+"
+else
+text="$cyan       start)           ${orange}start command here won't always work, because Tor 
+                        Browser moves things around without permission. You can
+                        alternatively use the start menu, you might find the Tor icon 
+                        there. Another way it to find the run script here: $cyan
+
+                        $hp/tor-browser/ $orange directory. 
+"
+fi
+
 set_terminal ; echo -e "
 ########################################################################################
 
                      $cyan              TOR Browser    $orange
 
-    To use Tor Browser
-$cyan
-       Linux:           ${orange}Use the start menu, you'll find the Tor icon there. On
-                        some Linux distributions, it won't be there. In that case,
-                        run it from the$cyan
 
-                        $hp/tor-browser/ $orange directory. 
-$cyan
-       start)           ${orange}It won't always work, Tor Browser moves things around with
-                        permission.
-$cyan    
-
-       Mac:             ${orange}Run fromt the Mac OS Applications folder. 
-
+       $text
 ######################################################################################## 
 "
 enter_continue ; jump $enter_cont 
