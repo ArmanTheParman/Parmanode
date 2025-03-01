@@ -24,7 +24,7 @@ set_terminal ; echo -e "
 "
 enter_continue ; jump $enter_cont 
 debug "enter_cont: $enter_cont"
-case $enter_cont in  start) nohup $hp/tor-browser/start-tor-browser.desktop >$dn 2>&1 & ;; 
+case $enter_cont in  start) nohup $hp/tor-browser/start-tor-browser.desktop ;; 
 esac
 return 0
 }
