@@ -73,9 +73,7 @@ echo -e "$debugstatus
 #                                                                                      #
 #$cyan    (dm)$orange                 ${yellow}Parmanode drive menu      $orange                                   #
 #                                                                                      #$icon
-#                                                                                      #
 #--------------------------------------------------------------------------------------#
-#                                                                                      #
 #                                                                                      #
 #$cyan                (h)$orange               Parman's Services/Products/${bright_blue}Help$orange                     #
 #$cyan                (t)$orange               Tools                                               #
@@ -87,7 +85,6 @@ echo -e "$debugstatus
 #$cyan                (uc)$orange              Update Computer                                     #
 #$red                (uninstall)$orange       Uninstall Parmanode                                 #
 #$cyan                (ap)$orange              About Parmanode                                     #
-#                                                                                      #
 #                                                                                      #
 ########################################################################################
 
