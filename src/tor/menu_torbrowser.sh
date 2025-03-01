@@ -17,7 +17,7 @@ $cyan
                         permission.
 $cyan    
 
-       Mac:$orange      Run fromt the Mac OS Applications folder. 
+       Mac:             ${orange}Run fromt the Mac OS Applications folder. 
 
 ######################################################################################## 
 "
