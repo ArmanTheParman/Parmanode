@@ -7,7 +7,7 @@ else
 text="$cyan       start)    ${orange}start command here won't always work, because Tor 
                         Browser moves things around without permission. You can
                         alternatively use the start menu, you might find the Tor icon 
-                        there. Another way it to find the run script here: $cyan
+                        there. Another way it to find the run script here: $green
 
                         $hp/tor-browser/ $orange directory. 
 "
@@ -23,6 +23,7 @@ set_terminal ; echo -e "
 ######################################################################################## 
 "
 enter_continue ; jump $enter_cont 
+debug "enter_cont: $enter_cont"
 case $enter_cont in  start) nohup $hp/tor-browser/start-tor-browser.desktop >$dn 2>&1 & ;; 
 esac
 return 0
