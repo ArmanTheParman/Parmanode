@@ -15,8 +15,10 @@ else
     if [[ $OS == Mac ]] ; then 
         brew_check Nginx || return 1
         brew install nginx 
-    else
+    elif [[ $OS == "Linux" ]] ; then
         sudo apt-get update -y && sudo apt-get install nginx-full -y 
+        sudo rm /etc/nginx/sites-enabled/default
+        sudo systemctl restart nginx
     fi
 
 fi
