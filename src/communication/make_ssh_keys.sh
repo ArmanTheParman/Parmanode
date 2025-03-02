@@ -67,7 +67,8 @@ make_parmacloud_ssh_keys
 make_parmaweb_ssh_keys
 make_parmanas_ssh_keys
 
-cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
+sudo cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
+sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//' | tee -a $HOME/Desktop/all_ssh_keys.txt
 echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
 return 0
 }
