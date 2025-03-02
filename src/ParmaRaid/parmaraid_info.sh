@@ -24,7 +24,7 @@ $green
     RAID-2 to 6 and 10 $blue
     Less commonly used variations.
 
-    ParmaRAID is not FOSS. Fee is 50,000 sats. Please contact Parman to enable.
+    ParmaRAID is not FOSS. Fee is$green 50,000 sats$orange. Please contact Parman to enable.
     
 
 ########################################################################################
