@@ -74,7 +74,7 @@ IdentityFile ~/.ssh/parmanas-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
-function make_and_get_all_ssh_keys {
+function get_all_ssh_keys {
 
 make_parmanode_ssh_keys
 make_parmacloud_ssh_keys
