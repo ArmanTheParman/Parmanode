@@ -1,4 +1,4 @@
-function parmaraid_info{
+function parmaraid_info {
 
 set_terminal_custom 48 ; echo -e "$blue
 ########################################################################################
