@@ -19,7 +19,7 @@ $blue
 " && {
 sudo umount $i >$dn
 sudo mdadm --stop $i 
-success "RAID process stopped"
+success_blue "RAID process stopped"
 unset this_device
 sudo partprobe 2>/dev/null
 }
