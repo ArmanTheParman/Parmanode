@@ -1,14 +1,25 @@
 function mount_RAID {
 
-for i in $(sudo mdadm --detail --scan | awk '{print $2}') ; do
-mount | grep -q "$i" && { set_terminal ; echo "$1 is already mounted" ; sleep 1.5 ; continue ; }
-set_terminal
-echo "mounting $i ..."
-sleep 1
-debug "1"
-sudo mkdir -p "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" >$dn
-debug "2"
-sudo mount $i "/media/$USER/RAID$(echo $i | sed 's!/dev/md/!!')" #mounts /dev/md/xxx to /media/$USER/RAIDxxx
+#used when installing
+if [[ -n $1 ]] ; then
+sudo mount $1 $2
 debug "mounted?"
-done
+return 0
+fi
+
+#used if there is more than one RAID in parmanode.conf
+if [[ $(grep raid $pc | wc -l) -gt 1 ]] ; then
+announce  "Please choose which number RAID you want to mount:
+    
+$(grep raid $pc | grep -n raid)
+"
+
+raid_choice=$enter_cont
+
+else
+#used if there is only one raid in parmanode.conf
+sudo mount \
+   $(grep raid= $pc | cut -d = -f 2 | cut -d @ -f 1) \
+   $(grep raid= $pc | cut -d @ -f 2) 
+fi
 }
