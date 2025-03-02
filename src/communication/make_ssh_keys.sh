@@ -7,19 +7,16 @@ fi
 }
 
 function make_parmaraid_ssh_keys {
-#usage...
-#make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
-
-sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
+sudo test -f $HOME/.ssh/parmaraid-key.pub && return 1 # 1 is logically success here for the calling function
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" -C "$USER parmacloud"
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmaraid-key -N "" -C "$USER parmaraid"
 
-grep -q "github-parmacloud" ~/.ssh/config >$dn ||
+grep -q "github-parmaraid" ~/.ssh/config >$dn ||
 echo "
-Host github-parmacloud
+Host github-parmaraid
 HostName github.com
 User git
-IdentityFile ~/.ssh/parmacloud-key
+IdentityFile ~/.ssh/parmaraid-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
 }
 
@@ -83,6 +80,7 @@ make_parmanode_ssh_keys
 make_parmacloud_ssh_keys
 make_parmaweb_ssh_keys
 make_parmanas_ssh_keys
+make_parmaraid_ssh_keys
 
 sudo cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
 echo "" >> $HOME/Desktop/all_ssh_keys.txt
