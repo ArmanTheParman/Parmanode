@@ -1,17 +1,18 @@
 function success_blue {
 bluesuccesscolour="true"
-success $@
+success "$@"
 }
 function success {
 debug "pre-success menu"
 if [[ $bluesuccesscolour == "true" ]] ; then temp=$orange ; orange=$blue ; fi
 
+if [[ -z $2 ]] ; then has_finished="" ; else has_finished="has finished" ; fi
 set_terminal ; echo -e "$orange
 ########################################################################################
 $green                                  
                                   S U C C E S S  ! !
 $orange
-    $1 
+    $1 $has_finished $2
 
 ########################################################################################
 $orange"
