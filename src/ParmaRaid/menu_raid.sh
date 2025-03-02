@@ -15,7 +15,6 @@ $orange
                        u)$blue         Unmount (option to select which) 
 $orange
                       aa)$green         Assemble RAIDs $orange
-                       s)$red         Stop RAID ('disassemble')
 $orange
                        i)$blue         Info about RAIDs
 
@@ -60,13 +59,6 @@ enter_continue
 done
 ;;
 
-# ums)
-# unmount_and_stop_raid_menu || return 1
-# ;;
-aa)
-assemble_RAID
-;;
-
 i)
 raid_info
 ;;
@@ -75,9 +67,9 @@ u)
 unmount_raids
 continue
 ;;
-s)
-do_RAID_stop_loop
-continue
+# s)
+# do_RAID_stop_loop
+# continue
 ;;
 aa)
 assemble_RAID
