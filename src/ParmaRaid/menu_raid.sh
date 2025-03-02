@@ -13,7 +13,9 @@ $orange
 $orange
                           lc)$blue         List physically connected RAID drives
 $orange
-                          i)$blue          info about RAIDs
+                          aa)$blue         Assemble RAIDs
+$orange
+                           i)$blue         info about RAIDs
 $blue
 ########################################################################################
 "
