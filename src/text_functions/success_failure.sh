@@ -2,6 +2,8 @@ function success_blue {
 bluesuccesscolour="true"
 success "$@"
 }
+
+
 function success {
 debug "pre-success menu"
 if [[ $bluesuccesscolour == "true" ]] ; then temp=$orange ; orange=$blue ; fi
