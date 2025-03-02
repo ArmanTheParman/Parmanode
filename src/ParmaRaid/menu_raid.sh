@@ -72,7 +72,7 @@ raid_info
 ;;
 
 u)
-do_RAID_unmount_loop
+unmount_raids
 continue
 ;;
 s)
