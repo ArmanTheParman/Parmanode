@@ -70,7 +70,7 @@ continue
 # s)
 # do_RAID_stop_loop
 # continue
-;;
+#;;
 aa)
 assemble_RAID
 ;;
