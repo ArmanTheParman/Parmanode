@@ -18,7 +18,7 @@ case $choice in
 q|Q) exit ;; p|P) return 1 ;; m|M) back2main ;;
 n) continue ;;
 y)
-sudo umount $i >$dn && success "RAID unmounted"
+sudo umount $i >$dn && success_blue "RAID unmounted"
 ;;
 *)
 continue ;;
