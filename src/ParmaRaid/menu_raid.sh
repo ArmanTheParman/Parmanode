@@ -11,7 +11,7 @@ $orange
                       lm)$blue         List mounted RAIDs $orange
                       lc)$blue         List physically connected RAID drives
 $orange
-                      mm)$blue         Mount RAIDs (mounts all connected) $orange
+                      mm)$blue         Mount RAID$orange
                        u)$blue         Unmount (option to select which) 
 $orange
                       aa)$green         Assemble RAIDs $orange

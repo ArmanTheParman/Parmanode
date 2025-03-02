@@ -13,13 +13,18 @@ announce  "Please choose which number RAID you want to mount:
     
 $(grep raid $pc | grep -n raid)
 "
+num=$enter_cont
 
-raid_choice=$enter_cont
+sudo mount \
+   $(grep raid= $pc | grep -E "^$num" | cut -d = -f 2 | cut -d @ -f 1) \
+   $(grep raid= $pc | grep -E "^$num" | cut -d @ -f 2) \
+   && success_blue "RAID mounted"
 
 else
 #used if there is only one raid in parmanode.conf
 sudo mount \
    $(grep raid= $pc | cut -d = -f 2 | cut -d @ -f 1) \
-   $(grep raid= $pc | cut -d @ -f 2) 
+   $(grep raid= $pc | cut -d @ -f 2) \
+   && success_blue "RAID mounted"
 fi
 }
