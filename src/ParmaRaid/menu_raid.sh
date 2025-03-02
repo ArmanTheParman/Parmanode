@@ -11,14 +11,14 @@ $orange
                       lm)$blue         List mounted RAIDs $orange
                       lc)$blue         List physically connected RAID drives
 $orange
-                      aa)$blue         Assemble RAIDs $red
-                       s)              Stop RAID ('disassemble')
-$orange
-                      mm) $blue        Mount RAIDs (mounts all connected) $orange
+                      mm)$blue         Mount RAIDs (mounts all connected) $orange
                        u)$blue         Unmount (option to select which) 
-
+$orange
+                      aa)$green         Assemble RAIDs $orange
+                       s)$red         Stop RAID ('disassemble')
 $orange
                        i)$blue         Info about RAIDs
+
 $blue########################################################################################
 "
 choose xpmq ; read choice 
