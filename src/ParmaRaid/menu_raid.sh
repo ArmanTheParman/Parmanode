@@ -61,6 +61,9 @@ done
 # ums)
 # unmount_and_stop_raid_menu || return 1
 # ;;
+aa)
+assemble_RAID
+;;
 
 i)
 raid_info
