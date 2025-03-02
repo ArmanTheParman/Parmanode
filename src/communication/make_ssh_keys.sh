@@ -2,7 +2,7 @@ function make_parmanode_ssh_keys {
 #if a .pub key does not exist in $HOME/.ssh, make one
 if [[ -z $(find "$HOME/.ssh" -type f -name "id_rsa.pub" 2>$dn) ]]; then
 mkdir -p $HOME/.ssh >$dn 2>&1
-ssh-keygen -t rsa -b 4096 -N "" <<< "" >$dn 2>&1
+ssh-keygen -t rsa -b 4096 -N "" -C "$USER parmanode" >$dn 2>&1
 fi
 }
 
@@ -51,7 +51,7 @@ sudo test -f $HOME/.ssh/parmanas-key.pub && return 1 # 1 is logically success he
 mkdir -p ~/.ssh
 ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmanas-key -N "" -C "$USER parmanas"
 
-grep -q "github-parmanas" ~/.ssh/config >$dn || 
+grep -q "github-parmanas" ~/.ssh/config >$dn 2>&1 || 
 echo "
 Host github-parmanas
 HostName github.com
@@ -60,3 +60,14 @@ IdentityFile ~/.ssh/parmanas-key
 IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn
 }
 
+function make_and_get_all_ssh_keys {
+
+make_parmanode_ssh_keys
+make_parmacloud_ssh_keys
+make_parmaweb_ssh_keys
+make_parmanas_ssh_keys
+
+cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
+echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
+return 0
+}
