@@ -69,6 +69,7 @@ make_parmanas_ssh_keys
 
 sudo cat $HOME/.ssh/*.pub >> $HOME/Desktop/all_ssh_keys.txt
 echo "" >> $HOME/Desktop/all_ssh_keys.txt
+echo "Parmanode ID" >> $HOME/Desktop/all_ssh_keys.txt
 sudo cat /var/lib/tor/parmanode-service/hostname | sed 's/\.onion//' | tee -a $HOME/Desktop/all_ssh_keys.txt >$dn 2>&1
 echo "SSH keys made and saved to Desktop/all_ssh_keys.txt"
 return 0
