@@ -2,9 +2,9 @@ function unmount_and_stop_raid_menu {
 while true ; do
 sudo partprobe 2>/dev/null
 set_terminal ; echo -e "$blue
+########################################################################################$orange
+                                    RAID MENU$blue
 ########################################################################################
-
-    You can select which RAIDs to act on in the next screen...
 
 $orange
                         mm) $blue   Mount RAID (mounts all connected)
