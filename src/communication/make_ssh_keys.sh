@@ -6,6 +6,23 @@ ssh-keygen -t rsa -b 4096 -N "" -C "$USER parmanode" >$dn 2>&1
 fi
 }
 
+function make_parmaraid_ssh_keys {
+#usage...
+#make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
+
+sudo test -f $HOME/.ssh/parmacloud-key.pub && return 1 # 1 is logically success here for the calling function
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/parmacloud-key -N "" -C "$USER parmacloud"
+
+grep -q "github-parmacloud" ~/.ssh/config >$dn ||
+echo "
+Host github-parmacloud
+HostName github.com
+User git
+IdentityFile ~/.ssh/parmacloud-key
+IdentitiesOnly yes" | sudo tee -a ~/.ssh/config >$dn 
+}
+
 function make_parmacloud_ssh_keys {
 #usage...
 #make_parmacloud_ssh_keys && { announce_blue "ParmaCloud SSH keys made. Please contact Parman to enable." ; continue ; }
