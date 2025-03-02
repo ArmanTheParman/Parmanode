@@ -124,6 +124,15 @@ fi
 return 1 
 }
 
+function invalid_blue {
+if [[ -n $invalid_flag ]] ; then unset invalid_flag ; return 1 ; fi 
+
+set_terminal
+echo -e " ${blue}Invalid choice. Hit ${orange}<enter>${blue} before trying again. $blue" ; read invalid
+if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
+return 0
+}
+
 function invalid {
 if [[ -n $invalid_flag ]] ; then unset invalid_flag ; return 1 ; fi 
 
@@ -131,7 +140,6 @@ set_terminal
 echo -e " ${yellow}Invalid choice. Hit ${cyan}<enter>${yellow} before trying again. $orange" ; read invalid
 if [[ $invalid == 'q' || $invalid == "exit" ]] ; then exit ; fi
 return 0
-
 }
 
 function please_wait_no_clear { 
