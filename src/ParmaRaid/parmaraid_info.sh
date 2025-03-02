@@ -1,4 +1,4 @@
-function install_raid {
+function parmaraid_info{
 
 set_terminal_custom 48 ; echo -e "$blue
 ########################################################################################

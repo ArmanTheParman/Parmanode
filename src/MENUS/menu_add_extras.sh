@@ -26,11 +26,6 @@ jump $choice || { invalid ; continue ; } ; set_terminal
 case $choice in
 q|Q) exit ;; p|P) return 0 ;; m|M) back2main ;;
 
-rr)
-    install_raid 
-    return 0
-;; 
-
 pnas)
     [[ ! -e $dp/.parmanas_enabled ]] && {
     announce "ParmaNas is not enabled by default in Parmanode; it is a
