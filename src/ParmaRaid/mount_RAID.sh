@@ -9,7 +9,7 @@ fi
 
 #used if there is more than one RAID in parmanode.conf
 if [[ $(grep raid $pc | wc -l) -gt 1 ]] ; then
-announce  "Please choose which number RAID you want to mount:
+announce_blue  "Please choose which number RAID you want to mount:
     
 $(grep raid $pc | grep -n raid)
 "
