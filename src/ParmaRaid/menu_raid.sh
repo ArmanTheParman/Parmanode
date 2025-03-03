@@ -14,6 +14,7 @@ $orange
                        u)$blue         Unmount (option to select which) 
 $orange
                       aa)$green         Assemble RAIDs $orange
+                    stop)$red         Stop Raid
 $orange
                        i)$blue         Info about RAIDs
 
@@ -66,10 +67,10 @@ u)
 unmount_raids
 continue
 ;;
-# s)
-# do_RAID_stop_loop
-# continue
-#;;
+stop)
+do_RAID_stop_loop
+continue
+;;
 aa)
 assemble_RAID
 ;;
