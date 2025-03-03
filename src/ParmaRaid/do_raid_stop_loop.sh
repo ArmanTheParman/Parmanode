@@ -18,7 +18,7 @@ $blue
 " && {
 sudo umount $i >$dn 2>&1
 sleep 1
-sudo mdadm --stop $i 
+sudo mdadm --stop $i || continue
 success_blue "RAID process stopped"
 unset this_device
 }
