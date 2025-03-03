@@ -1,6 +1,5 @@
 function menu_raid {
 while true ; do
-sudo partprobe 2>/dev/null
 set_terminal ; echo -e "$blue
 ########################################################################################$orange
                                 R A I D - menu$blue

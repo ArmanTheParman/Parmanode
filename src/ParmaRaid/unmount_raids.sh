@@ -1,5 +1,4 @@
 function unmount_raids {
-sudo partprobe 2>/dev/null #necessary to remove GPT table error (no partition on disk is intentional)
 mount | grep -q '/dev/md' || { announce_blue "No RAIDs mounted" ; return 1 ; }
 
 for i in $(mount | grep '/dev/md' | awk '{print $1}') ; do
