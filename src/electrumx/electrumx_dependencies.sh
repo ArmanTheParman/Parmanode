@@ -1,10 +1,11 @@
 function electrumx_dependencies {
 yesorno "OK to update the OS?" && update_computer 
 set_terminal
+
 echo -e "${green}Installing dependencies...$orange"
 sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot python3 python3-pip python3-dev | tee -a $dp/electrumx.log
-sudo apt-get install -y build-essential librocksdb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev | tee -a $dp/electrumx.log 
+sudo apt-get install -y build-essential librocksdb-dev libleveldb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev | tee -a $dp/electrumx.log 
 sudo apt-get install -y rocksdb-tools librocksdb6.11 | tee -a $dp/electrumx.log
 sudo python3 -m pip install --upgrade pip | tee -a $dp/electrumx.log
 sudo pip3 install virtualenv | tee -a $dp/electrumx.log
@@ -16,7 +17,7 @@ source parmanenv/bin/activate
 debug "virtual environment set? ... $VIRTUAL_ENV"
 cd $hp/electrumx
 pip install plyvel | tee -a $dp/electrumx.log
-python3 -c 'import plyvel' || python3 -c 'import plyvel --break-system-packages' || 
+python3 -c 'import plyvel' || python3 -c 'import plyvel' --break-system-packages || 
 { announce "plyvel failed. Aborting." ; return 1 ; } ; } &&
 deactivate #exits virtual env
 debug "after deactivate command"
