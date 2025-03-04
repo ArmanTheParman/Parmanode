@@ -12,21 +12,23 @@ sudo pip3 install virtualenv | tee -a $dp/electrumx.log
 debug "virtual env version... $(virtualenv --version)" 
 #virtual env install
 
-{ virtualenv parmanenv
-source parmanenv/bin/activate
-debug "virtual environment set? ... $VIRTUAL_ENV"
-cd $hp/electrumx
-pip install plyvel | tee -a $dp/electrumx.log
-python3 -c 'import plyvel' || python3 -c 'import plyvel' --break-system-packages || 
-{ enter_continue "plyvel failed. Aborting." ; return 1 ; } ; } &&
-deactivate #exits virtual env
-debug "after deactivate command"
+{
+    python3 -m venv parmanenv
+    source parmanenv/bin/activate
+    debug "virtual environment set? ... $VIRTUAL_ENV"
 
-#recommended in docs, but there's no need unless building applications...
-#pip3 install aiohttp -y
+    cd "$hp/electrumx"
+    
+    pip install plyvel | tee -a "$dp/electrumx.log"
 
-# python-rocksdb installed with setup.py script (pip3 install .)
+    # Correct way to check if plyvel is installed
+    python3 -c 'import plyvel' || {
+        enter_continue "plyvel failed. Aborting."
+        exit 1
+    }
 
+    deactivate  # Exit virtual environment
+    debug "after deactivate command"
 }
 
 function compile_rocksdb {
