@@ -1,12 +1,15 @@
 function electrumx_dependencies {
 yesorno "OK to update the OS?" && update_computer 
 set_terminal
+rm $dp/electrumx.log
 
 echo -e "${green}Installing dependencies...$orange"
 sudo apt-get remove -y libdpkg-perl #my machine had a newer version, preventing build-essential to be installed
 sudo apt-get install -y --fix-broken --no-install-recommends gcc g++ fakeroot python3 python3-pip python3-dev | tee -a $dp/electrumx.log
 sudo apt-get install -y build-essential librocksdb-dev libleveldb-dev libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev liblz4-dev libzstd-dev | tee -a $dp/electrumx.log 
 sudo apt-get install -y rocksdb-tools librocksdb6.11 | tee -a $dp/electrumx.log
+sudo apt-get install -y python3-venv python3-dev python3-pip virtualenv libsnappy-dev libleveldb-dev |  tee -a $dp/electrumx.log
+
 sudo python3 -m pip install --upgrade pip | tee -a $dp/electrumx.log
 sudo pip3 install virtualenv | tee -a $dp/electrumx.log
 debug "virtual env version... $(virtualenv --version)" 
