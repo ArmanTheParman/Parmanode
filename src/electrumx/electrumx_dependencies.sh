@@ -20,6 +20,7 @@ debug "virtual env version... $(virtualenv --version)"
     source parmanenv/bin/activate
     debug "virtual environment set? ... $VIRTUAL_ENV"
 
+    [[ -d $hp/electrumx ]] || mkdir -p $hp/electrumx 
     cd "$hp/electrumx"
     
     pip install plyvel | tee -a "$dp/electrumx.log"
