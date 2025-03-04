@@ -70,7 +70,8 @@ debug "dependencies passed"
 download_electrumx || { debug "download failed" ; return 1 ; }
 debug "download passed"
 #install
-cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1 ; }
+cd $hp/electrumx 
+{ pip3 install . || pip3 install . --break-system-packages } || { debug "'pip install .failed." ; return 1 ; }
 debug "pip install passed"
 
 #prepare drives. #drive_electrumx= variable set.
