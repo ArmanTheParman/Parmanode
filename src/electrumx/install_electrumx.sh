@@ -71,7 +71,7 @@ download_electrumx || { debug "download failed" ; return 1 ; }
 debug "download passed"
 #install
 cd $hp/electrumx || { enter_continue "error, electrumx directory doesn't exist" && return 1 ; }
-{ pip3 install . || pip3 install . --break-system-packages } || { debug "'pip install .failed." ; return 1 ; }
+{ pip3 install . || pip3 install . --break-system-packages ; } || { debug "'pip install .failed." ; return 1 ; }
 debug "pip install passed"
 
 #prepare drives. #drive_electrumx= variable set.
