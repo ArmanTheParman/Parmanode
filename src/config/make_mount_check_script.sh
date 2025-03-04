@@ -1,6 +1,5 @@
 # The systemd service file will run this script to make sure the drive is mounted if needed.
-# Can't simply make a text file, because it's dynamically adjusted according to the directories
-# in use
+# Can't simply make a text file, because it's dynamically adjusted according to the directories in use
 # Lots of backslashes as escape characters here so that the special characters are printed as is
 # rather than being interpreted.
 
@@ -12,6 +11,10 @@ function make_mount_check_script {
 echo "#!/bin/bash
 
 source \$HOME/.parmanode/parmanode.conf
+
+if hddpath=$(grep partial_hdd \$HOME/.parmanode/parmanod.conf | -d = -f 2) ; then
+    if ! mountpoint $hddpath ; then exit ; fi
+fi
 
 if [[ \$drive == \"internal\" ]] ; then exit 0 ; fi
 

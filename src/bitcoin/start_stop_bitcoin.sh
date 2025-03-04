@@ -34,7 +34,7 @@ if [[ $OS == "Linux" ]] ; then
     sleep 0.5
 fi                 
 
-if [[ $(uname) == Darwin ]] ; then
+if [[ $(uname) == "Darwin" ]] ; then
         if grep -q "drive=external" $pc >$dn ; then
                 if ! mount | grep -q /Volumes/parmanode ; then
                 announce "Drive needs to be mounted"
