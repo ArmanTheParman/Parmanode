@@ -55,7 +55,6 @@ case $choice in
 m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
-parmanode_conf_add "autoupdate_version2=true" #crontab edit was faulty first time around.
 hide_messages_add "autoupdate" "1" 
 cat << 'EOF' > "$HOME/.parmanode/update_script.sh"
 #!/bin/bash
