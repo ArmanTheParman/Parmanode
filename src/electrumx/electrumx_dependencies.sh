@@ -30,6 +30,7 @@ debug "virtual env version... $(virtualenv --version)"
     deactivate  # Exit virtual environment
     debug "after deactivate command"
 }
+}
 
 function compile_rocksdb {
 cd $hp
