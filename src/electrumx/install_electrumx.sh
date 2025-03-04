@@ -65,12 +65,13 @@ done
 fi #and if bitcoin running
 
 electrumx_dependencies || { debug "dependencies failed" ; return 1 ; }
-
+debug "dependencies passed"
 #download source code form github
 download_electrumx || { debug "download failed" ; return 1 ; }
-
+debug "download passed"
 #install
 cd $hp/electrumx && pip3 install . || { debug "'pip install .failed." ; return 1 ; }
+debug "pip install passed"
 
 #prepare drives. #drive_electrumx= variable set.
 choose_and_prepare_drive "Electrumx" || return 1
