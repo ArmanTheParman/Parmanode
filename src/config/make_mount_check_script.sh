@@ -12,7 +12,7 @@ echo "#!/bin/bash
 
 source \$HOME/.parmanode/parmanode.conf
 
-if hddpath=$(grep partial_hdd \$HOME/.parmanode/parmanod.conf | -d = -f 2) ; then
+if hddpath=\$(grep partial_hdd \$HOME/.parmanode/parmanode.conf | -d = -f 2) ; then
     if ! mountpoint $hddpath ; then exit ; fi
 fi
 
