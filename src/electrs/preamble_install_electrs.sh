@@ -8,19 +8,15 @@ echo -e "
     
     Parmanode will now install$cyan ELECTRS$orange on your system.
 
-    Please note, you may be prompted to install cargo, a necessary program to compile
-    electrs from source code. If you see an option to choose 1, 2, or 3, you need to
-    select 1 to continue the installation.
-
-    Also note, that because this is going to be compiled, no hash or gpg verification
-    is necessary. This is because you are not trusting anyone per se, except that 
-    the code is open source, and probably has had many eyes laid upon it. You are 
-    of course free to read the code yourself to be sure. 
+    Because this is going to be compiled, no hash or gpg verification is necessary. 
+    This is because you are not trusting anyone per se, except that the code is open 
+    source, and probably has had many eyes laid upon it. You are of course free to 
+    read the code yourself to be sure. 
 
     This might take 10 to 30 minutes, depending on the speed of your computer.
     
-    It should be much faster if this is not your computer's fist time 
-    (installing electrs ;P).
+    It should be much faster if this is not your computer's fist time installing
+    electrs. 
 
     PROCEED?
 $green
