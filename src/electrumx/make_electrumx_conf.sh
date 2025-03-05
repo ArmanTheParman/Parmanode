@@ -34,7 +34,7 @@ DAEMON_URL = http://$rpcuser:$rpcpassword@127.0.0.1:8332/
 
 # don't shitcon, remember the Parmanode policy, there's only 1 rule!
 # Bitcoin alone stops syncing at the segwit fork, bloody shitcoin developers!
-COIN = BitcoinSegwit  
+COIN = Bitcoin
 
 " | tee $hp/electrumx/electrumx.conf >$dn 2>&1
 }
