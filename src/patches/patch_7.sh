@@ -9,11 +9,6 @@ if cat $ic 2>$dn | grep -q "electrsdkr" ; then
 docker exec -d electrs /bin/bash -c "rm /home/parman/run_electrs.log" >$dn 2>&1
 fi
 
-#no longer needed
-nogsedtest
-[[ -e $pc ]] && if cat $pc 2>$dn | grep prefersbitcoinmempool_only_ask_once ; then
-gsed -i "/prefersbitcoinmempool_only_ask_once/d" $pc >$dn 2>&1
-fi
 
 #add bc command - needed for future joimarket app
 if [[ $btcpayinstallsbitcoin != "true" ]] ; then 
@@ -26,15 +21,6 @@ if [[ $btcpayinstallsbitcoin != "true" ]] ; then
         fi
     fi
 fi
-
-### Caused isses - removing.
-#torlogging - part of tor install/uninstall and joinmarket binding
-# if [[ -e $torrc ]] && ! grep -q "tornoticefile.log" $torrc ; then
-# echo "Log notice file $HOME/.tornoticefile.log" | sudo tee -a $torrc >$dn 2>&1
-# fi
-# if [[ -e $torrc ]] && ! grep -q "torinfofile.log" $torrc ; then
-# echo "Log notice file $HOME/.torinfofile.log" | sudo tee -a $torrc >$dn 2>&1
-# fi
 
 rm $dp/.debug2.log >$dn 2>&1
 
@@ -69,17 +55,7 @@ if [[ -f "$hp/fulcrum/fulcrum.conf" && ! -L "$hp/fulcrum/fulcrum.conf" ]] ; then
     sudo mkdir -p $HOME/.fulcrum >$dn 2>&1
     sudo mv $hp/fulcrum/fulcrum.conf $HOME/.fulcrum/ && \
         sudo ln -s $HOME/.fulcrum/fulcrum.conf $hp/fulcrum/fulcrum.conf >$dn 2>&1 && \
-        log "fulcrum" "moved fulcrum.conf to new location and made symlink"
     start_fulcrum
-fi
-
-# Remove potentially large file that's not needed, caused by a bug
-if find $HOME -maxdepth 1 -name ".*parmanodebackup*" -type f >$dn ; then 
-for i in $HOME/.*parmanodebackup* ; do
-    if grep -q "parmanodebackup" <<< $i ; then #redencancy for safety
-        sudo rm -rf "${i}" >$dn 2>&1
-    fi
-done
 fi
 
 if [[ $OS == Linux ]] && cat $ic 2>$dn | grep -q "btcpay" ; then 

@@ -97,6 +97,8 @@ parmanode1_fix
 fi
 debug "bash_check and check_architecture" 
 
+########################################################################################
+########################################################################################
 [[ $premium == 1 ]] || apply_patches
 #Add Parmashell (do after patches)
 [[ $premium == 1 ]] || install_parmashell 
@@ -118,6 +120,8 @@ if [[ $btcpayinstallsbitcoin == "true" ]] ; then install_bitcoin ; exit ; fi
 #message of the day
 [[ $premium == 1 ]] || if [[ $1 != menu ]] && [[ ! $debug == 1 ]] ; then
 rossisfree 
+########################################################################################
+########################################################################################
 motd
 fi
 #Commands that refresh data

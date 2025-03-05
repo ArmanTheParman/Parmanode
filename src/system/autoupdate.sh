@@ -56,7 +56,7 @@ m|M) back2main ;; q|Q) exit ;; p|P) return 1 ;;
 
 y|Y) 
 hide_messages_add "autoupdate" "1" 
-cat << 'EOF' > "$HOME/.parmanode/update_script.sh"
+cat << 'EOF' > $HOME/.parmanode/update_script.sh
 #!/bin/bash
 cd $HOME/parman_programs/parmanode && git config pull.rebase false && git pull
 EOF
