@@ -85,14 +85,6 @@ stop)
 docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
 ;;
 
-refresh)
-please_wait
-docker stop $(docker ps --format "{{.Names}}" | grep nextcloud)
-docker start nextcloud-aio-nextcloud || enter_continue
-docker exec -itu www-data nextcloud-aio-nextcloud bash -c "cd /var/www/html ; php occ files:scan --all"
-enter_continue
-;;
-
 data)
 nextcloud_storage_info
 ;;
