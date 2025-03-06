@@ -13,7 +13,8 @@ if  [[ $(docker ps | grep nextcloud | wc -l) -gt 1 ]] ; then
 nextcloud_running="${green}RUNNING$orange"
 elif docker ps | grep -q nextcloud ; then
 nextcloud_running="${red}PARTIALLY RUNNING - you might need to access the
-                                       initial setup link to get it going, see below$orange"
+                                       initial setup link to get it going, see below$orange
+                                       Then start the containers from the browser"
 else
 nextcloud_running="${red}NOT RUNNING$orange"
 fi
@@ -42,6 +43,8 @@ $orange
                       start)$blue         Start NextCloud Docker container
 $orange
                       stop)$blue          Stop NextCloud Docker container
+$orange
+                      refresh)$blue       Run if you manually modified the docker volume 
 $orange
                       restart)$blue       Restart (do after config changes)
 $orange
@@ -101,6 +104,10 @@ nextcloud_password_reset
 mod)
 parmacloud_modify_domain
 ;;
+refresh)
+refresh_parmacloud
+;;
+
 rerun)
 docker stop $(docker ps --format "{{.Names}}" | grep nextcloud) || enter_continue
 docker rm $(docker ps -a --format "{{.Names}}" | grep nextcloud) || enter_continue
@@ -144,4 +151,21 @@ parmanode_conf_add "parmacloud_domain=$enter_cont"
 ;;
 esac
 
+}
+
+function refresh_parmacloud {
+
+announce "If you modify files in the docker volume directory, it's not going to show up
+    in the NextCloud web interface unless you make sure any new files/directories are 
+    owned by www-data and you also have to run a database refresh command."
+
+jump $enter_cont
+case $enter_cont in
+q|Q) exit ;; p) return ;; m|M) back2main ;;
+"")
+clear
+docker exec -u www-data nextcloud-aio-nextcloud php occ files:scan --all
+enter_continue "Database refershed"
+;;
+esac
 }
