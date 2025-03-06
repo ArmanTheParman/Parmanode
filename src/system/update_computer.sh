@@ -49,21 +49,21 @@ Type$pink y$yellow or$pink n$yellow, then$cyan <enter>$yellow.$orange
     y|Y|Yes|yes|u|t)
     clear
     sudo apt-get update -y
-    [[ $choice == t ]] ||   sudo apt-get upgrade -y 
-    sudo apt-get install -y jq
-    sudo apt-get install -y netcat-tradiational
-    sudo apt-get install -y vim
-    sudo apt-get install -y net-tools
-    sudo apt-get install -y unzip
-    sudo apt-get install -y tmux
-    sudo apt-get install -y ssh
-    sudo apt-get install -y tor
-    sudo apt-get install -y ufw
-    sudo apt-get install -y mdadm
-    if ! which tune2fs >$dn 2>&1 ; then sudo apt-get install -y e2fsprogs ; fi
+    [[ $choice == t ]] || sudo apt-get upgrade -y | tee -a $ndebug
+    sudo apt-get install -y jq| tee -a $ndebug
+    sudo apt-get install -y netcat-tradiational | tee -a $ndebug
+    sudo apt-get install -y vim | tee -a $ndebug
+    sudo apt-get install -y net-tools | tee -a $ndebug
+    sudo apt-get install -y unzip | tee -a $ndebug
+    sudo apt-get install -y tmux | tee -a $ndebug
+    sudo apt-get install -y ssh | tee -a $ndebug
+    sudo apt-get install -y tor | tee -a $ndebug
+    sudo apt-get install -y ufw | tee -a $ndebug
+    sudo apt-get install -y mdadm | tee -a $ndebug
+    if ! which tune2fs >$dn 2>&1 ; then sudo apt-get install -y e2fsprogs | tee -a $ndebug ; fi
     sudo systemctl enable ssh >$dn 2>&1
     sudo systemctl start ssh >$dn 2>&1
-    install_fuse noupdate #linux minmal installs may need this to run AppImages
+    install_fuse noupdate | tee -a $ndebug #linux minmal installs may need this to run AppImages
     break
 
     ;;
