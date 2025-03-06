@@ -3,6 +3,7 @@ function make_parmanode_ssh_keys {
 if [[ -z $(find "$HOME/.ssh" -type f -name "id_rsa.pub" 2>$dn) ]]; then
 mkdir -p $HOME/.ssh >$dn 2>&1
 ssh-keygen -t rsa -b 4096 -N "" -C "$USER parmanode" >$dn 2>&1
+debug "line6 make parmanode ssh keys"
 fi
 }
 

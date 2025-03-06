@@ -95,7 +95,7 @@ apply_prune_bitcoin_conf "$@" # Here is where the prune choice is added to bitco
 ########################################################################################
 
 function add_rpcbind {
-if [[ -e $bc ]] && ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 ; then 
+[[ -e $bc ]] && if ! grep -q "rpcbind=0.0.0.0" $bc >$dn 2>&1 ; then 
 echo "rpcbind=0.0.0.0" | sudo tee -a $bc >$dn 2>&1
 fi
 }
@@ -107,7 +107,7 @@ if [[ ! -e $bc ]] ; then return 0 ; fi
 add_rpcbind
 
 #values below 172.16 are public internet reserved, and above are private networks
-if ! grep -q "rpcallowip=172.16" $bc ; then 
+[[ -e $bc ]] && if ! grep -q "rpcallowip=172.16" $bc ; then 
     sudo gsed -i '/rpcallowip=172.*$/d' $bc
     echo "rpcallowip=172.16.0.0/12"  | sudo tee -a $bc >$dn 2>&1
 fi
