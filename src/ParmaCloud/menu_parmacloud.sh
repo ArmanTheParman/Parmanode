@@ -35,7 +35,7 @@ set_terminal 38 96 ; echo -en "$blue
     NextCloud is:    $nextcloud_running
 
 $orange
-                      pass)$blue          Show setup password
+                      pass)$blue          Show setup passphrase
 $orange
                       reset)$blue         Reset a user account password
 $orange
